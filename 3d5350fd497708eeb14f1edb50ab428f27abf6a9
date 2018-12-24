@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3290dfe0_c50997e7",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-12-24T10:41:02Z",
+      "side": 1,
+      "message": "This logic doesn\u0027t seem right. Kyoung please provide more detail on how to know if a timer interrupt is a match, or something else.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
