@@ -77,21 +77,28 @@ void __hw_clock_source_set(uint32_t ts)
 
 static void __hw_clock_source_irq(int timer_id)
 {
-	/* Clear interrupt */
-	HPET_INTR_CLEAR = (1 << timer_id);
-
 	/* If IRQ is from timer 0, 32-bit timer overflowed */
 	process_timers(timer_id == 0);
 }
 
 void __hw_clock_source_irq_0(void)
 {
-	__hw_clock_source_irq(0);
+	/* Clear interrupt */
+	HPET_INTR_CLEAR = 1 << 0;
+
+#if defined(CHIP_FAMILY_ISH3)
+	if (HPET_MAIN_COUNTER_64 >> 32) {
+		HPET_MAIN_COUNTER_64 = 0;
+		__hw_clock_source_irq(0);
+	}
+#endif
 }
 DECLARE_IRQ(ISH_HPET_TIMER0_IRQ, __hw_clock_source_irq_0);
 
 void __hw_clock_source_irq_1(void)
 {
+	/* Clear interrupt */
+	HPET_INTR_CLEAR = 1 << 1;
 	__hw_clock_source_irq(1);
 }
 DECLARE_IRQ(ISH_HPET_TIMER1_IRQ, __hw_clock_source_irq_1);
