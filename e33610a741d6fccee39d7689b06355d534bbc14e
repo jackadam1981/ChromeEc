@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4e7a941b_46bd110a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee2656a8_cbbd4309",
+      "range": {
+        "startLine": 141,
+        "startChar": 27,
+        "endLine": 141,
+        "endChar": 37
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0db33e6_17bb8755",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d04cf7_6be58ecd",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71169be1_4fd645f7",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2018-12-20T22:00:34Z",
       "side": 1,
       "message": "Can you update this?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b844996_f63272b9",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Hopefully this is what you meant?",
+      "parentUuid": "71169be1_4fd645f7",
       "range": {
         "startLine": 155,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4d5684ef_ea074594",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fda551c_a9da80fe",
+      "range": {
+        "startLine": 506,
+        "startChar": 34,
+        "endLine": 506,
+        "endChar": 38
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6ac99f1_07ac6a2f",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2018-12-21T21:29:29Z",
       "side": 1,
       "message": "What happens if the resetting task owns a mutex?  What happens if the resetting task is waiting on a mutex and then the current mutex owner releases the mutex?  Can you write some test tasks to verify behavior for this?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 38
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d7ea1d_98a67060",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Yep good question. I\u0027ve just shared a doc with you where there was some discussion of this. \n\nThe conclusion was that a task that supports reset is responsible for releasing any mutexes it was holding [when it was reset] during the cleanup stage at task startup [after reset].\n\nTo enable this, I have a follow up CL ready which updates the implementation of mutex to store the task id rather than a constant value of 2, as the lock. It also adds a \u0027try_unlock\u0027 function that allows the task to release mutexes only if it was the task holding them.\n\nThe author of the task must ensure that it attempts to release all mutexes that *could* have been held (as well as performing any additional cleanup required).\n\nIf the task being reset is waiting on a mutex, and it is released before the reset is done, I believe that\u0027s fine, and will not affect / be affected by the reset. \n\nThe final part is that the reset should remove the task being reset from the waiters of all mutexes, so as to not be notified when it is released. This involves being able to iterate through all the mutexes (also discussed in the doc), which I think should also come in a follow up change.",
+      "parentUuid": "a6ac99f1_07ac6a2f",
       "range": {
         "startLine": 514,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "06dc117f_7f7d02fb",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Let me know if the helper functions have made any difference here. If not, then perhaps this function should be called something like try_invert_lock, just take a lock state, \u0027if_lock\u0027 and then:\n\nif (*state \u0026 WAITERS_MASK \u003d\u003d 0 \u0026\u0026\n    *state \u0026 LOCK \u003d\u003d if_lock)\n  *state \u003d SUPPORTED | (!if_lock \u0026 LOCK)",
+      "parentUuid": "e1938c93_7b4da4e9",
+      "range": {
+        "startLine": 538,
+        "startChar": 11,
+        "endLine": 538,
+        "endChar": 29
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca40679f_9927fcaf",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c96f45cc_557b5977",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "As above, let me know what you think",
+      "parentUuid": "ca40679f_9927fcaf",
+      "range": {
+        "startLine": 545,
+        "startChar": 10,
+        "endLine": 545,
+        "endChar": 19
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24eb591e_cdd9ebc6",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -174,6 +342,30 @@
       "writtenOn": "2018-12-21T21:29:29Z",
       "side": 1,
       "message": "Can you add?\nASSERT((*state \u0026 TASK_RESET_STATE_MASK) \u003d\u003d TASK_RESET_STATE_LOCKED)\n\nThis now can be tested easily by calling task_enable_resets() back to back.",
+      "range": {
+        "startLine": 559,
+        "startChar": 4,
+        "endLine": 559,
+        "endChar": 44
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d98d1ad_8c665d86",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Vadim what do you think about this? I think in the past you\u0027ve been keen to not add new asserts?",
+      "parentUuid": "24eb591e_cdd9ebc6",
       "range": {
         "startLine": 559,
         "startChar": 4,
@@ -255,6 +447,78 @@
     },
     {
       "key": {
+        "uuid": "e193134c_8e4d22a4",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d82629_fa8296d2",
+      "range": {
+        "startLine": 566,
+        "startChar": 6,
+        "endLine": 566,
+        "endChar": 24
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "991e9f0d_5a544b3a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Good question. We can easily just return if resets are unsupported, but this doesn\u0027t seem ideal as it could hide programming errors. Since we are *only* trying to catch programming errors here, I think I\u0027d be more in favour of something more drastic like an assert (and crash), but only in dev mode. Or a combination of both, to catch things early, and not break in production if we somehow get there by accident anyway. WDYT?",
+      "parentUuid": "bbf9708d_ab991632",
+      "range": {
+        "startLine": 566,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 3
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a73e5ea_8832aee8",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d570a69_a3b7031b",
+      "range": {
+        "startLine": 566,
+        "startChar": 5,
+        "endLine": 566,
+        "endChar": 6
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d857650_342e7c28",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -266,6 +530,30 @@
       "writtenOn": "2018-12-21T21:29:29Z",
       "side": 1,
       "message": "Under what conditions \"with correctly written code\" could task_disable_resets() be called and have either TASK_RESET_LOCK set or have bits set in TASK_WAITERS_MASK?  The only other place TASK_RESET_LOCK is set is in task_reset().  If task_reset() sets the lock, then the task is reset immediately.\n\nI think the sleep forever may be unneeded here, and it would be better to add two asserts:\n\nASSERT((*state \u0026 TASK_RESET_STATE_MASK) \u003d\u003d TASK_RESET_STATE_UNLOCKED)\nASSERT((*state \u0026 TASK_WAITERS_MASK) \u003d\u003d 0)\n\nAlternatively, if update_reset_state() fails, then ASSERT.",
+      "range": {
+        "startLine": 591,
+        "startChar": 4,
+        "endLine": 593,
+        "endChar": 28
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd1c212_fb8c2cdd",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Perhaps I\u0027ve misunderstood something, but I believe the situation I had in mind was:\n\n- A calls task_reset(B), acquires the lock, is pre-empted before performing the reset\n- B calls task_disable_resets, cannot acquire lock, should just wait until task A resets it",
+      "parentUuid": "6d857650_342e7c28",
       "range": {
         "startLine": 591,
         "startChar": 4,
@@ -324,6 +612,54 @@
     },
     {
       "key": {
+        "uuid": "6bc7ffa7_3ceb044b",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02ec6a71_7fa67977",
+      "range": {
+        "startLine": 598,
+        "startChar": 6,
+        "endLine": 598,
+        "endChar": 24
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec5be833_fd35030a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f86a48_5e19b053",
+      "range": {
+        "startLine": 598,
+        "startChar": 5,
+        "endLine": 598,
+        "endChar": 6
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9ce4100_1e0677f1",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "5f529dd8_cb8b7ff6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "It should be handled the same was as \u0027lock is held and waiter is empty\u0027",
+      "parentUuid": "b9ce4100_1e0677f1",
+      "range": {
+        "startLine": 599,
+        "startChar": 4,
+        "endLine": 599,
+        "endChar": 33
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb18360_be520da5",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -358,6 +718,30 @@
       "writtenOn": "2018-12-21T21:29:29Z",
       "side": 1,
       "message": "Can you rename this to task_was_reset() or something similar.  Should make the calling task easier to read.  e.g.\n  void tpm_task(void)\n      if (task_was_reset())\n          tpm_reset_now();",
+      "range": {
+        "startLine": 607,
+        "startChar": 4,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5ebe79_0229ffe3",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Yea IIRC I did call it this in a previous iteration at some point. I don\u0027t have strong feelings about this, but with this name I was trying to convey that this *must* be called on startup.\n\nMy concern with task_was_reset() is that it sounds like an optional \u0027get the status\u0027 function, rather than something that is an integral part of the framework that must be called regardless of whether you care about the return value.",
+      "parentUuid": "3fb18360_be520da5",
       "range": {
         "startLine": 607,
         "startChar": 4,
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "d039c055_929ceb99",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dea50fb_f071892c",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 0
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9eb1eefa_8ece9803",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -413,6 +821,30 @@
       "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47a0516_9003724c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "As discussed over VC, the \u0027task resetting itself\u0027 use case is sufficiently different that it it probably deserves it\u0027s own function - to be added in a follow up CL.",
+      "parentUuid": "9eb1eefa_8ece9803",
+      "range": {
+        "startLine": 674,
+        "startChar": 2,
+        "endLine": 675,
+        "endChar": 0
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "ebdf688d_81b2eef5",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f31a06_812001f1",
+      "range": {
+        "startLine": 680,
+        "startChar": 5,
+        "endLine": 680,
+        "endChar": 14
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da44812d_720d53fd",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -462,6 +918,30 @@
     },
     {
       "key": {
+        "uuid": "ce1a8140_34d770da",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da44812d_720d53fd",
+      "range": {
+        "startLine": 963,
+        "startChar": 23,
+        "endLine": 963,
+        "endChar": 31
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e1dbbbe_15ea88eb",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -482,6 +962,30 @@
       "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c819a7d_41ad28e1",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-12-24T20:29:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1dbbbe_15ea88eb",
+      "range": {
+        "startLine": 971,
+        "startChar": 4,
+        "endLine": 971,
+        "endChar": 13
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
