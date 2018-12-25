@@ -2076,6 +2076,11 @@
 /* "buffer" size of ipc_shared_obj. */
 #undef CONFIG_IPC_SHARED_OBJ_BUF_SIZE
 
+/* EC support rpmsg name service. */
+/* TODO: Is this needed? Or should this be enabled whenever CONFIG_IPI is true?
+ */
+#undef CONFIG_RPMSG_NAME_SERVICE
+
 /*****************************************************************************/
 /* Current/Power monitor */
 
