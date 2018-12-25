@@ -16,6 +16,24 @@
       "revId": "1fb3ba8bbd7b66b1f28f6e12303bb233da122e82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c7f736_3e0a48de",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-25T02:29:47Z",
+      "side": 1,
+      "message": "This aligns to https://crrev.com/c/1354900/21/drivers/mfd/cros_ec_dev.c and https://crrev.com/c/1354900/21/include/linux/mfd/cros_ec_commands.h",
+      "parentUuid": "533671f8_a5eed970",
+      "revId": "1fb3ba8bbd7b66b1f28f6e12303bb233da122e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
