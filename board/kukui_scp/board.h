@@ -14,17 +14,22 @@
 
 /* IPI configs */
 #define CONFIG_IPI
+#define CONFIG_RPMSG_NAME_SERVICE
 
 /* IPI ID should be in sync across kernel and EC. */
+/* TODO: After name service, we don't need anything besides IPI_NS_SERVICE on
+ * kernel side.
+ */
 #define IPI_SCP_INIT 0
-#define IPI_HOST_COMMAND 1
-#define IPI_MDP 2
-#define IPI_VDEC_H264 3
-#define IPI_VDEC_VP8 4
-#define IPI_VDEC_VP9 5
-#define IPI_VENC_H264 6
-#define IPI_VENC_VP8 7
-#define IPI_COUNT 8
+#define IPI_NS_SERVICE 1
+#define IPI_HOST_COMMAND 2
+#define IPI_MDP 3
+#define IPI_VDEC_H264 4
+#define IPI_VDEC_VP8 5
+#define IPI_VDEC_VP9 6
+#define IPI_VENC_H264 7
+#define IPI_VENC_VP8 8
+#define IPI_COUNT 9
 
 #undef  CONFIG_UART_CONSOLE
 /*
