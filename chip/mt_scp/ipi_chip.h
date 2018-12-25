@@ -22,8 +22,11 @@ typedef void (*ipc_handler_t)(void);
 #define SCP_FW_VERSION_LEN 32
 
 /* IPI ID should share/sync across kernel and EC. */
+// TODO: After name service, we don't need anything besides IPI_NS_SERVICE on
+// kernel side.
 enum ipi_id {
 	IPI_SCP_INIT = 0,
+	IPI_NS_SERVICE,
 	IPI_HOST_COMMAND,
 	IPI_MDP,
 	IPI_VDEC_H264,
@@ -66,6 +69,22 @@ struct ipc_share_obj {
 	uint32_t len;
 	/* Share buffer contents. */
 	uint8_t share_buf[CONFIG_IPC_SHARE_BUF_SIZE];
+};
+
+/*
+ * Size of the rpmsg device name, should sync across kernel and EC.
+ */
+#define RPMSG_NAME_SIZE 32
+
+/*
+ * The layout of name service message.
+ * This should sync across kernel and EC.
+ */
+struct rpmsg_ns_msg {
+	/* Name of the corresbonding rpmsg_driver. */
+	char name[RPMSG_NAME_SIZE];
+	/* IPC ID */
+	uint32_t id;
 };
 
 typedef void (*ipi_handler_t)(int id, void *data, unsigned int len);
