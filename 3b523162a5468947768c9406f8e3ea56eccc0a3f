@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c7b27f_581147d8",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-25T01:25:48Z",
+      "side": 1,
+      "message": "This should be in board/kukui_scp, not in the chip.",
+      "revId": "3b523162a5468947768c9406f8e3ea56eccc0a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afdec6b_8bd2ab00",
+        "filename": "chip/mt_scp/vdec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-25T01:25:48Z",
+      "side": 1,
+      "message": "no need to check this",
+      "revId": "3b523162a5468947768c9406f8e3ea56eccc0a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
