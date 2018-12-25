@@ -24,6 +24,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "ipi_chip.h"
+#include "mkbp_event.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -153,10 +154,38 @@ void ipi_inform_ap(void)
 	if (ret)
 		ccprintf("Failed to announce host command channel.\n");
 	// TODO: announce other channels (venc/vdec/...).
+
+#ifdef CONFIG_MKBP_EVENT
+	/* Is this correct? */
+	ns_msg.id = IPI_HOST_EVENT;
+	strncpy(ns_msg.name, "cros-ec-rpmsg", RPMSG_NAME_SIZE);
+	ret = ipi_send(IPI_NS_SERVICE, &ns_msg, sizeof(ns_msg), 1);
+	if (ret)
+		ccprintf("Failed to announce host event channel.\n");
+#endif
 #endif
 }
 
 #ifdef HAS_TASK_HOSTCMD
+#ifdef CONFIG_MKBP_EVENT
+void mkbp_set_host_active(int active)
+{
+	/*
+	 * Not sending anything, just interrupt AP.
+	 * TODO: Should we append the events here?
+	 */
+	ccprintf("%s\n", __func__);
+	if (active)
+		ipi_send(IPI_HOST_EVENT, NULL, 0, 0);
+}
+
+static void ipi_host_event_handler(int32_t id, void *buf, uint32_t len)
+{
+	/* Do nothing here. */
+}
+DECLARE_IPI(IPI_HOST_EVENT, ipi_host_event_handler, 1);
+#endif
+
 static void ipi_send_response_packet(struct host_packet *pkt)
 {
 	int ret;
