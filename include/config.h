@@ -2032,6 +2032,10 @@
 /* IPI share buffer address. */
 #undef CONFIG_IPC_SHARE_BUFFER_ADDR
 
+/* EC support rpmsg name service. */
+/* TODO: Is this needed? Or should this be enabled whenever CONFIG_IPI is true? */
+#undef CONFIG_RPMSG_NAME_SERVICE
+
 /*****************************************************************************/
 /* Current/Power monitor */
 
