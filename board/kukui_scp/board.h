@@ -23,13 +23,14 @@
 #define IPI_SCP_INIT 0
 #define IPI_NS_SERVICE 1
 #define IPI_HOST_COMMAND 2
-#define IPI_MDP 3
-#define IPI_VDEC_H264 4
-#define IPI_VDEC_VP8 5
-#define IPI_VDEC_VP9 6
-#define IPI_VENC_H264 7
-#define IPI_VENC_VP8 8
-#define IPI_COUNT 9
+#define IPI_HOST_EVENT 3
+#define IPI_MDP 4
+#define IPI_VDEC_H264 5
+#define IPI_VDEC_VP8 6
+#define IPI_VDEC_VP9 7
+#define IPI_VENC_H264 8
+#define IPI_VENC_VP8 9
+#define IPI_COUNT 10
 
 #undef  CONFIG_UART_CONSOLE
 /*
