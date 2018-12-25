@@ -20,6 +20,7 @@
 
 /* IPI configs */
 #define CONFIG_IPI
+#define CONFIG_RPMSG_NAME_SERVICE
 
 /* IPI ID should be in sync across kernel and EC. */
 #define IPI_SCP_INIT 0
@@ -34,6 +35,8 @@
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 8192
+
+#define IPI_NS_SERVICE 0xFF
 
 #undef  CONFIG_UART_CONSOLE
 /*
