@@ -2076,6 +2076,9 @@
 /* "buffer" size of ipc_shared_obj. */
 #undef CONFIG_IPC_SHARED_OBJ_BUF_SIZE
 
+/* EC support rpmsg name service. */
+#undef CONFIG_RPMSG_NAME_SERVICE
+
 /*****************************************************************************/
 /* Current/Power monitor */
 
