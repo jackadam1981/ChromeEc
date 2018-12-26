@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "db17c765_a8d5f780",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-26T11:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c7b27f_581147d8",
+      "revId": "3b523162a5468947768c9406f8e3ea56eccc0a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afdec6b_8bd2ab00",
         "filename": "chip/mt_scp/vdec.c",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "3b523162a5468947768c9406f8e3ea56eccc0a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1eff0d1_f3171903",
+        "filename": "chip/mt_scp/vdec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-26T11:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3afdec6b_8bd2ab00",
+      "revId": "3b523162a5468947768c9406f8e3ea56eccc0a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
