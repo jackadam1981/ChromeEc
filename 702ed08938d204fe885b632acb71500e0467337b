@@ -238,6 +238,24 @@
     },
     {
       "key": {
+        "uuid": "80bf0d57_ef2cc2ab",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-26T03:17:54Z",
+      "side": 1,
+      "message": "Have a discussion about this previously: https://docs.google.com/document/d/1UBsMgaazA7AtwsKSbtXPzjgrsR88heorJo1_bRt41co/edit#bookmark\u003did.72w5ip79aehy\nErin\u0027s comment is that they prefer keeping busy-waiting here, and they don\u0027t have such interrupt for informing IPI send is done from AP.\n\nipi_count is a trick to know that the send buffer processing is done (There is another task slips in from line:106, and ipi_count is incremented).",
+      "parentUuid": "04d6fc8b_1b5381ef",
+      "revId": "702ed08938d204fe885b632acb71500e0467337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f476461c_6648db1d",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 19
@@ -249,6 +267,24 @@
       "writtenOn": "2018-12-21T07:40:24Z",
       "side": 1,
       "message": "Why? If the handler is running, I\u0027m not sure why the EC would go to sleep?",
+      "revId": "702ed08938d204fe885b632acb71500e0467337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c848e0b_7986ab19",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-26T03:17:54Z",
+      "side": 1,
+      "message": "The sleep is shown in freertos, and it is probably due to freertos\u0027s sleep rules. Will remove this from EC.",
+      "parentUuid": "f476461c_6648db1d",
       "revId": "702ed08938d204fe885b632acb71500e0467337b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
