@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "4fdb4041_0ede404a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-26T18:44:30Z",
+      "side": 1,
+      "message": "nit: it may be better to have an inline function or macro called sleep_forever() to avoid writing in comments what can be set with code.",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 0
+      },
+      "revId": "a17d912415bdb8a38fec353d4d0c84e2fd3386c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe3c702_a1eec6f5",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-26T18:44:30Z",
+      "side": 1,
+      "message": "nit: I\u0027d put {} around the big \"while() {}\" block for better readability",
+      "range": {
+        "startLine": 665,
+        "startChar": 1,
+        "endLine": 665,
+        "endChar": 17
+      },
+      "revId": "a17d912415bdb8a38fec353d4d0c84e2fd3386c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e670bd0c_eda2bbc3",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-26T18:44:30Z",
+      "side": 1,
+      "message": "shouldn\u0027t this block after while have one less tab as its indentation?",
+      "range": {
+        "startLine": 667,
+        "startChar": 3,
+        "endLine": 667,
+        "endChar": 4
+      },
+      "revId": "a17d912415bdb8a38fec353d4d0c84e2fd3386c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bae00aae_36782211",
         "filename": "include/config.h",
         "patchSetId": 8

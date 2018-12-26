@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ed519d6a_19a68152",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-26T18:44:30Z",
+      "side": 1,
+      "message": "can\u0027t speak for Daisuke, but, yes, that\u0027s what was needed. the only other comment is that it\u0027s not entirely clear why we do \"-2\". I\u0027d do something like (you can probably come up with better names :)):\n\n/* Some comment that describes how we reserve high bits in one-hot task id representation */\n#define TASK_ID_RESERVED_SUPPORTED_FLAG  31\n#define TASK_ID_RESERVED_LOCK_FLAG  30\n#define TASK_ID_LAST_VALID 29\n\n#define TASK_RESET_SUPPORTED (1 \u003c\u003c TASK_ID_RESERVED_SUPPORTED_FLAG)\n#define TASK_RESET_LOCK (1 \u003c\u003c TASK_ID_RESERVED_LOCK_FLAG)\n\nBUILD_ASSERT(TASK_ID_COUNT \u003c\u003d TASK_ID_LAST_VALID)\n\nOr, alternatively:\n\nBUILD_ASSERT(TASK_ID_COUNT \u003c\u003d sizeof(unsigned) * 8); /* keep as is - make sure we are under 32 */\nBUILD_ASSERT((1 \u003c\u003c TASK_ID_COUNT) \u0026 TASK_RESET_STATE_MASK \u003d\u003d 0); /* add\u0027l check: we don\u0027t set reserved bits */",
+      "parentUuid": "7b844996_f63272b9",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 52
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fda551c_a9da80fe",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -519,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "8c7c4338_cb1e5591",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-26T18:44:30Z",
+      "side": 1,
+      "message": "I\u0027d prefer to not do asserts in the code, which reliability is critical for the overall system security. but I can live with it, if other cr50 folks feel that\u0027s acceptable.\n\nin any case, as of now, an accidental call of task_*_resets() in a task, which is not resettable, would lead to an unexpected behavior, which may be hard to catch. and, as we go forward, calling those functions may be introduced in such tasks through adding those calls to common utility functions, and then using utility functions in a non-resettable task - it can be hidden under several levels of func calls, so not immediately apparent that a particular function *can* under certain circumstances be called from a non-resettable task. \n\nso, I believe it should be fixed. the simplest fix imo is just ignoring these calls in non-resettable functions (feel free to add debug-only assert + CPRINT)",
+      "parentUuid": "991e9f0d_5a544b3a",
+      "range": {
+        "startLine": 566,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 3
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d857650_342e7c28",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -742,6 +790,30 @@
       "side": 1,
       "message": "Yea IIRC I did call it this in a previous iteration at some point. I don\u0027t have strong feelings about this, but with this name I was trying to convey that this *must* be called on startup.\n\nMy concern with task_was_reset() is that it sounds like an optional \u0027get the status\u0027 function, rather than something that is an integral part of the framework that must be called regardless of whether you care about the return value.",
       "parentUuid": "3fb18360_be520da5",
+      "range": {
+        "startLine": 607,
+        "startChar": 4,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "396a6975_a7f04c7c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-26T18:44:30Z",
+      "side": 1,
+      "message": "is there a way to have a special callback, specified for a resettable task in the task structure, to be called when it was reset? this way the common task-handling code will make sure it is called on reset before passing control to the main task function (which don\u0027t need to care about it, or can have a \u0027was_reset\u0027 flag always passed to it if we want special handling inside).",
+      "parentUuid": "da5ebe79_0229ffe3",
       "range": {
         "startLine": 607,
         "startChar": 4,
