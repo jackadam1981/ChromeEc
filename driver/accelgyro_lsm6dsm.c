@@ -447,8 +447,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 			normalized_rate = LSM6DSM_REG_TO_ODR(reg_val);
 		}
 		if (normalized_rate < LSM6DSM_ODR_MIN_VAL ||
-		    normalized_rate > MIN(LSM6DSM_ODR_MAX_VAL,
-			    CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ))
+		    normalized_rate > LSM6DSM_ODR_MAX_VAL)
 			return EC_RES_INVALID_PARAM;
 	}
 
