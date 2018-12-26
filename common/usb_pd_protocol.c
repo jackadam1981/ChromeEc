@@ -184,6 +184,8 @@ static struct pd_protocol {
 	int prev_request_mv;
 	/* Time for Try.SRC states */
 	uint64_t try_src_marker;
+	/* Time for src cut Vbus in hard reset state */
+	uint64_t ps_hard;
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -2780,6 +2782,8 @@ void pd_task(void *u)
 					pd[port].polarity =
 						(cc1 != TYPEC_CC_VOLT_RD);
 				}
+				//ccprints("p%d reboot:explicit contract",port);
+				//ccprints("before, SoftRst re-power nego");
 			} else
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 			{
@@ -2808,13 +2812,27 @@ void pd_task(void *u)
 				tcpm_set_msg_header(port, pd[port].power_role,
 						    pd[port].data_role);
 				tcpm_set_rx_enable(port, 1);
+				//ccprints("p%d if VDM", port);
 			} else {
 				/* Ensure state variables are at default */
 				pd_set_power_role(port, PD_ROLE_DEFAULT(port));
 				pd[port].vdm_state = VDM_STATE_DONE;
 				set_state(port, PD_DEFAULT_STATE(port));
+				//ccprints("p%d else VDM", port);
 			}
 		}
+
+		//if (evt & PD_EVENT_HARD_RESET) {
+		//	reset_device_and_notify(port);//try reg -> keep connect
+		//	pd[port].vdm_state = VDM_STATE_DONE;
+		//	set_state(port, PD_STATE_HARD_RESET_EXECUTE);
+			//Figure 7-27
+		//	if (pd[port].power_role == PD_ROLE_SOURCE) {
+		//		pd[port].ps_hard = get_time().val +
+		//			PD_T_PS_HARD_RESET;
+		//	}
+		//	ccprints("p%d if PD_EVENT_HARD_RESET", port);
+		//}
 #endif
 
 		/* process any potential incoming message */
@@ -3517,7 +3535,8 @@ void pd_task(void *u)
 						     PD_STATE_HARD_RESET_SEND :
 						     PD_STATE_SNK_DISCOVERY);
 			}
-
+			//if (snk_hard_reset_vbus_off == 0)
+			//	ccprints("p%d wait Vbus low", port);
 			if (!pd_is_vbus_present(port) &&
 			    !snk_hard_reset_vbus_off) {
 				/* VBUS has gone low, reset timeout */
@@ -3528,6 +3547,8 @@ void pd_task(void *u)
 						  PD_T_SRC_TURN_ON,
 						  PD_STATE_SNK_DISCONNECTED);
 			}
+			//if (snk_hard_reset_vbus_off == 1)
+			//	ccprints("p%d wait Vbus high", port);
 			if (pd_is_vbus_present(port) &&
 			    snk_hard_reset_vbus_off) {
 #ifdef CONFIG_USB_PD_TCPM_TCPCI
@@ -3913,7 +3934,9 @@ void pd_task(void *u)
 			if (pd[port].last_state == PD_STATE_SNK_SWAP_STANDBY)
 				tcpm_set_cc(port, TYPEC_CC_RD);
 #endif
-
+		//	if (pd[port].power_role == PD_ROLE_SOURCE &&
+		//	   get_time().val < pd[port].ps_hard)
+		//		break;
 			/* reset our own state machine */
 			pd_execute_hard_reset(port);
 			timeout = 10*MSEC;
