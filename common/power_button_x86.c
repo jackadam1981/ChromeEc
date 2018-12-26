@@ -475,6 +475,16 @@ DECLARE_HOOK(HOOK_LID_CHANGE, powerbtn_x86_lid_change, HOOK_PRIO_DEFAULT);
 #endif
 
 /**
+ * Delay send power button release
+ */
+static void power_button_release_deferred(void)
+{
+	CPRINTS("Delay power button 30 ms for waiting RSMRTS goes high.");
+	power_button_released(get_time().val);
+}
+DECLARE_DEFERRED(power_button_release_deferred);
+
+/**
  * Handle debounced power button changing state.
  */
 static void powerbtn_x86_changed(void)
@@ -502,8 +512,11 @@ static void powerbtn_x86_changed(void)
 			pwrbtn_state = PWRBTN_STATE_IDLE;
 			return;
 		}
-
-		power_button_released(get_time().val);
+		if (gpio_get_level(GPIO_PCH_RSMRST_L))
+			power_button_released(get_time().val);
+		else
+			hook_call_deferred(&power_button_release_deferred_data,
+					   30 * MSEC);
 	}
 
 	/* Wake the power button task */
