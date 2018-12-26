@@ -412,6 +412,24 @@
     },
     {
       "key": {
+        "uuid": "296060f4_500a8910",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "Okay...\n\nFor the ipi_count thing, how can another task slip in now that we have a mutex?",
+      "parentUuid": "80bf0d57_ef2cc2ab",
+      "revId": "702ed08938d204fe885b632acb71500e0467337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f476461c_6648db1d",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 19

@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca72b824_46967062",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "be in sync",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed45482_991d5077",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "This is a little verbose now...\n\nMaybe just CONFIG_IPC_SHARED_OBJ_BUF_SIZE",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88927a01_58317fd4",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "nit: Add * in blank lines too.",
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004b459b_fee1200a",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "priority",
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055e4326_5508da2f",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "I think the lock should be before the is_ipi_busy check.",
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6567680_7e8ab12e",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "I\u0027d reverse the logic:\n\nif (SCP_GIPC_IN \u0026 SCP_GIPC_IN_CLEAR_IPCN(0))\n  ipi_handler();\n\nSCP_GIPC_IN \u003d SCP_GPIC_IN_CLEAR_ALL;",
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb55cf3_4dbb07a3",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "If CONFIG_IPI is enabled, IPI_SCP_INIT must be defined.",
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225feca2_01628520",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "Just buffer? Since the object is shared, the buffer is, of course, shared too?",
+      "range": {
+        "startLine": 50,
+        "startChar": 9,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4ee273_13f4792a",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "Instead of defining a function with always the same code, can we just declare an array of booleans, and have DECLARE_IPI fill it up depending on a parameter?",
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ff8291_ec9887a7",
+        "filename": "chip/mt_scp/ipi_table.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-26T23:43:47Z",
+      "side": 1,
+      "message": "no (c), 2018 still ,-)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "a639094087c14bef027c02476066997a6d80cf7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
