@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ace1f815_8ff7b055",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-26T17:09:24Z",
+      "side": 1,
+      "message": "Add description: Mask of task IDs waiting to be reset (?)",
+      "revId": "a17d912415bdb8a38fec353d4d0c84e2fd3386c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae00aae_36782211",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-26T17:09:24Z",
+      "side": 1,
+      "message": "Extra newline?",
+      "revId": "a17d912415bdb8a38fec353d4d0c84e2fd3386c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
