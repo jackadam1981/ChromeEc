@@ -142,17 +142,17 @@ __attribute__((weak)) int board_is_lid_angle_tablet_mode(void)
  *   stay in tablet mode.
  *
  * Tablet mode is defined as the base being behind the lid. We use 2 threshold
- * to calculate tablet mode:
+ * to calculate tablet mode, which matches Chrome behaviour:
  * tablet_mode:
- *   1 |                  +-----<----+----------
- *     |                  \/         /\
- *     |                  |          |
- *   0 |------------------------>----+
- *     +------------------+----------+----------+ lid angle
- *     0                 240        300        360
+ *   1 |               +---<----+---------------
+ *     |               \/       /\
+ *     |               |        |
+ *   0 |------------------->----+
+ *     +---------------+--------+---------------+ lid angle
+ *     0              160      200             360
  */
-#define TABLET_ZONE_LID_ANGLE FLOAT_TO_FP(300)
-#define LAPTOP_ZONE_LID_ANGLE FLOAT_TO_FP(240)
+#define TABLET_ZONE_LID_ANGLE FLOAT_TO_FP(200)
+#define LAPTOP_ZONE_LID_ANGLE FLOAT_TO_FP(160)
 
 /*
  * We will change our tablet mode status when we are "convinced" that it has
