@@ -61,7 +61,7 @@ void chip_pre_init(void)
 
 static void scp_enable_tcm(void)
 {
-	/* Enable tightly coupled memory (TCM) */
+	/* Enable L1 cache and tightly coupled memory (TCM) */
 	SCP_CLK_L1_SRAM_PD = 0;
 	SCP_CLK_TCM_TAIL_SRAM_PD = 0;
 	/* SCP CM4 mod */
@@ -187,6 +187,89 @@ static void scp_enable_clock(void)
 			CG_I2C_M | CG_MAD_M;
 }
 
+void scp_cache_init(void)
+{
+	/* FIXME: Map 4MB at 0x50000000 */
+	uint32_t cache_dram_base = 0x50000000 >> SCP_L1_EXT_ADDR_SHIFT;
+
+	/* First make sure cache is disabled */
+	SCP_CACHE_REGION_EN(CACHE_DCACHE) = 0;
+	SCP_CACHE_CON(CACHE_DCACHE) = 0;
+
+	SCP_L1_REMAP_CFG0 = (cache_dram_base + 1) << 16 | cache_dram_base;
+	SCP_L1_REMAP_CFG1 = (cache_dram_base + 3) << 16 | (cache_dram_base + 2);
+
+	/* Disable sleep protect */
+	SCP_SLP_PROTECT_CFG = SCP_SLP_PROTECT_CFG &
+		~(P_CACHE_SLP_PROT_EN | D_CACHE_SLP_PROT_EN);
+
+	/* Region 0 enable */
+	{
+		int region = 0;
+		SCP_CACHE_ENTRY(CACHE_DCACHE, region) = 0x10000000;
+		SCP_CACHE_END_ENTRY(CACHE_DCACHE, region) = 0x10010000;
+		SCP_CACHE_ENTRY(CACHE_DCACHE, region) |= SCP_CACHE_ENTRY_C;
+
+		SCP_CACHE_REGION_EN(CACHE_DCACHE) |= 1 << region;
+	}
+
+	/* Set D-cache to 8 kb, clear other registers */
+	SCP_CACHE_CON(CACHE_DCACHE) |=
+		SCP_CACHE_CON_CACHESIZE_8KB;
+
+	/* Enable D-cache */
+	SCP_CACHE_CON(CACHE_DCACHE) |=
+		SCP_CACHE_CON_MCEN | SCP_CACHE_CON_CNTEN0 | SCP_CACHE_CON_CNTEN1;
+}
+
+static int command_cacheinfo(int argc, char **argv)
+{
+	uint64_t hit = ((uint64_t)SCP_CACHE_HCNT0U(CACHE_DCACHE) << 32) |
+		SCP_CACHE_HCNT0L(CACHE_DCACHE);
+	uint64_t access = ((uint64_t)SCP_CACHE_CCNT0U(CACHE_DCACHE) << 32) |
+		SCP_CACHE_CCNT0L(CACHE_DCACHE);
+
+	ccprintf("hit count:   %lu\n", hit);
+	ccprintf("access count: %lu\n", access);
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(cacheinfo, command_cacheinfo,
+			     NULL,
+			     "Dump cache info");
+
+static int command_cachetest(int argc, char **argv)
+{
+	uint32_t *cached = (void *)0x10000000;
+	uint32_t *direct = (void *)0x30000000;
+	int i, j;
+	const int it = 1000;
+	const int len = 0x100;
+	timestamp_t start;
+	uint32_t val;
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += cached[j];
+	}
+	ccprintf("cached: %d us (val: %x)\n", time_since32(start), val);
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += direct[j];
+	}
+	ccprintf("direct: %d us (val: %x)\n", time_since32(start), val);
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(cachetest, command_cachetest,
+			     NULL,
+			     "Do cache performance test");
+
 void system_pre_init(void)
 {
 	/* SRAM */
@@ -197,6 +280,8 @@ void system_pre_init(void)
 	scp_enable_pirq();
 	/* Init dram mapping */
 	scp_memmap_init();
+	/* Init cache */
+	scp_cache_init();
 }
 
 void system_reset(int flags)
