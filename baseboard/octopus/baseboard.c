@@ -359,3 +359,9 @@ void board_hibernate(void)
 	 */
 	msleep(200);
 }
+
+uint32_t board_is_wp_enabled(void)
+{
+	/* Dogfood devices do not have SW WP enabled. Check only for HW WP */
+	return !gpio_get_level(GPIO_WP_L);
+}
