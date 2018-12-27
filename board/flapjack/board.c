@@ -45,6 +45,8 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "driver/wpc/p9221_r7.h"
+
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -197,8 +199,13 @@ int board_set_active_charge_port(int charge_port)
 
 	switch (charge_port) {
 	case 0:
-		/* Don't charge from a source port */
+		/* Don't charge from a source port except wireless charging*/
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+		if (board_vbus_source_enabled(charge_port)
+			&& !wpc_chip_is_online())
+#else
 		if (board_vbus_source_enabled(charge_port))
+#endif
 			return -1;
 		break;
 	case CHARGE_PORT_NONE:
@@ -226,14 +233,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 int extpower_is_present(void)
 {
-	/*
-	 * The charger will indicate VBUS presence if we're sourcing 5V,
-	 * so exclude such ports.
-	 */
-	if (board_vbus_source_enabled(0))
-		return 0;
-	else
-		return tcpm_get_vbus_level(0);
+	return tcpm_get_vbus_level(0);
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -256,6 +256,10 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
 
 #ifdef SECTION_IS_RW
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+	/* Enable Wireless charger interrupts */
+	gpio_enable_interrupt(GPIO_P9221_INT_ODL);
+#endif
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
@@ -398,3 +402,35 @@ int board_allow_i2c_passthru(int port)
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 }
+
+#ifdef WPC_WITH_FOD
+uint8_t flapjack_fod[] = {0xa4, 0x2a, 0x86, 0x36, 0x84, 0x3d, 0x9a,
+				0x14, 0x9d, 0x0b, 0x85, 0x6f};
+uint8_t flapjack_fod_epp[] = {0xb0, 0x24, 0x90, 0x42, 0x88, 0x52, 0x88,
+				0x53, 0x91, 0x36, 0x9c, 0xf0};
+
+int board_get_fod(uint8_t **fod)
+{
+	*fod = flapjack_fod;
+	return ARRAY_SIZE(flapjack_fod);
+}
+
+int board_get_epp_fod(uint8_t **fod)
+{
+	*fod = flapjack_fod_epp;
+	return ARRAY_SIZE(flapjack_fod_epp);
+}
+#else
+int board_get_fod(uint8_t **fod)
+{
+	*fod = NULL;
+	return 0;
+}
+
+int board_get_epp_fod(uint8_t **fod)
+{
+	*fod = NULL;
+	return 0;
+}
+#endif
+
