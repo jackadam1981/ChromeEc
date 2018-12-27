@@ -16,6 +16,24 @@
       "revId": "86fb4455c9b0126b9fa0a37d8f3f495a1135a8f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5539a4fd_d3af6487",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2018-12-27T06:21:37Z",
+      "side": 1,
+      "message": "Our designer suggest us cache initial should finish before it used. In CM4 side, you need to care about cache operation (clean/invalidate), and skip the cache initial code since we move it to lk stage.",
+      "parentUuid": "c984487d_3cd58de0",
+      "revId": "86fb4455c9b0126b9fa0a37d8f3f495a1135a8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
