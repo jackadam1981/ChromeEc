@@ -558,6 +558,19 @@ static int init(const struct motion_sensor_t *s)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
+#ifdef CONFIG_MAG_LIS2MDL
+		/*
+		 * Add reboot memory content can fix pass-through mode got
+		 * stuck, more detail see b:115587004.
+		 */
+		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL3_ADDR,
+				LSM6DSM_BOOT);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+
+		msleep(20);
+#endif
+
 		/*
 		 * Output data not updated until have been read.
 		 * Prefer interrupt to be active low.
