@@ -534,6 +534,7 @@ static int init(const struct motion_sensor_t *s)
 	 *     struct stprivate_data *data = &lsm_data->a_data;
 	 */
 	struct stprivate_data *data = s->drv_data;
+	uint8_t ctrl_reg, reg_val = 0;
 
 	ret = st_raw_read8(s->port, s->addr, LSM6DSM_WHO_AM_I_REG, &tmp);
 	if (ret != EC_SUCCESS)
@@ -552,11 +553,50 @@ static int init(const struct motion_sensor_t *s)
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		mutex_lock(s->mutex);
 
+		/* Software reset procedure. */
+		reg_val = LSM6DSM_ODR_TO_REG(13000);
+		ctrl_reg = LSM6DSM_ODR_REG(MOTIONSENSE_TYPE_ACCEL);
+
+		/* Power OFF gyro. */
+		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL2_ADDR, 0);
+
+		/* Power ON Accel. */
+		ret = st_raw_write8(s->port, s->addr, ctrl_reg, reg_val);
+
 		/* Software reset. */
 		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL3_ADDR,
 				LSM6DSM_SW_RESET);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
+
+#ifdef CONFIG_MAG_LIS2MDL
+		/*
+		 * Reboot to reload memory content as pass-through mode can get
+		 * stuck.
+		 * Direct to the AN: See "AN4987 - LSM6DSM: always-on 3D
+		 * accelerometer and 3D gyroscope".
+		 */
+
+		/* Power ON Accel. */
+		ret = st_raw_write8(s->port, s->addr, ctrl_reg, reg_val);
+
+		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL3_ADDR,
+				LSM6DSM_BOOT);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+
+		/* Power OFF Accel. */
+		ret = st_raw_write8(s->port, s->addr, ctrl_reg, 0);
+
+		/*
+		 * Refer to AN4987, wait 15ms for accelerometer to doing full
+		 * reboot.
+		 */
+		msleep(15);
+#endif
+
+		/* Add Dummy read, not care about NAK. */
+		st_raw_read8(s->port, 0xFE, LSM6DSM_WHO_AM_I_REG, &tmp);
 
 		/*
 		 * Output data not updated until have been read.
