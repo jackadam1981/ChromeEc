@@ -57,6 +57,8 @@ const char *system_get_chip_revision(void)
 
 void chip_pre_init(void)
 {
+	/* Registers may not get cleared on boot, clear all regsiters here. */
+	SCP_SW_RSTN = SW_RST_ALL;
 }
 
 static void scp_enable_tcm(void)
