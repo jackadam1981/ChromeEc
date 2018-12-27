@@ -63,6 +63,8 @@
 
 #define SCP_CFG_BASE			0x405C0000
 
+#define SCP_SW_RSTN			REG32(SCP_CFG_BASE + 0x0)
+#define   SW_RST_ALL			0xffffffff
 #define SCP_AP_RESOURCE			REG32(SCP_CFG_BASE + 0x04)
 #define SCP_BUS_RESOURCE		REG32(SCP_CFG_BASE + 0x08)
 
