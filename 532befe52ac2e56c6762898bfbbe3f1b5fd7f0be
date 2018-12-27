@@ -16,6 +16,24 @@
       "revId": "532befe52ac2e56c6762898bfbbe3f1b5fd7f0be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc18ffae_dbc62817",
+        "filename": "chip/mt_scp/memmap.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2018-12-27T03:12:09Z",
+      "side": 1,
+      "message": "For performance, if CM4 views dram want to through cache, we can implement it by setting different mapping table.",
+      "parentUuid": "639a499d_4db1e16d",
+      "revId": "532befe52ac2e56c6762898bfbbe3f1b5fd7f0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
