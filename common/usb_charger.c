@@ -102,6 +102,14 @@ static void usb_charger_init(void)
 		usb_charger_reset_charge(i);
 		/* Initialize VBUS supplier based on whether VBUS is present. */
 		update_vbus_supplier(i, pd_is_vbus_present(i));
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+		charge_manager_update_charge(CHARGE_SUPPLIER_WPC_BPP,
+					     i, NULL);
+		charge_manager_update_charge(CHARGE_SUPPLIER_WPC_EPP,
+					     i, NULL);
+		charge_manager_update_charge(CHARGE_SUPPLIER_WPC_GPP,
+					     i, NULL);
+#endif
 	}
 }
 DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
