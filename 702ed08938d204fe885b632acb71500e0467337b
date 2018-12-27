@@ -430,6 +430,24 @@
     },
     {
       "key": {
+        "uuid": "d99fe810_635ae7d6",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-27T09:23:23Z",
+      "side": 1,
+      "message": "It is possible that if mutex_unlock before the while-loop.\n\nWe could move the unlock and enable_irq later than the while-loop, and remove the counter. But this could spend more time on blocking the interrupt.",
+      "parentUuid": "296060f4_500a8910",
+      "revId": "702ed08938d204fe885b632acb71500e0467337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f476461c_6648db1d",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 19
