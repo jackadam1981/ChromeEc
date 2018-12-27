@@ -34,6 +34,24 @@
       "revId": "532befe52ac2e56c6762898bfbbe3f1b5fd7f0be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c9a6b8_f8bee1f6",
+        "filename": "chip/mt_scp/memmap.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-27T04:15:43Z",
+      "side": 1,
+      "message": "Thanks, I see it now, we can access the AP memory at 0x50000000 either directly, or through cache:\nread 0x10000000 \u003d 0x08\nread 0x30000000 \u003d 0x08",
+      "parentUuid": "dc18ffae_dbc62817",
+      "revId": "532befe52ac2e56c6762898bfbbe3f1b5fd7f0be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
