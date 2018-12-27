@@ -19,6 +19,7 @@
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
 #include "driver/temp_sensor/tmp432.h"
+#include "driver/wpc/p9221_r7.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -212,6 +213,10 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
 
 #ifdef SECTION_IS_RW
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+	/* Enable Wireless charger interrupts */
+	gpio_enable_interrupt(GPIO_P9221_INT_ODL);
+#endif
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
@@ -420,3 +425,31 @@ int board_allow_i2c_passthru(int port)
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 }
+
+#ifdef WPC_WITH_FOD
+uint8_t flapjack_fod[] = {0xa4, 0x2a, 0x86, 0x36, 0x84, 0x3d, 0x9a, 
+                                 0x14, 0x9d, 0x0b, 0x85, 0x6f};
+uint8_t flapjack_fod_epp[] = {0xb0, 0x24, 0x90, 0x42, 0x88, 0x52, 0x88, 
+                                  0x53, 0x91, 0x36, 0x9c, 0xf0};
+
+int board_get_fod(uint8_t **fod){
+	*fod = flapjack_fod;
+	return (sizeof(flapjack_fod)/sizeof(flapjack_fod[0]));
+}
+
+int board_get_epp_fod(uint8_t **fod){
+	*fod = flapjack_fod_epp;
+	return (sizeof(flapjack_fod_epp)/sizeof(flapjack_fod_epp[0]));
+}
+#else
+int board_get_fod(uint8_t **fod){
+	*fod = NULL;
+	return 0;
+}
+
+int board_get_epp_fod(uint8_t **fod){
+	*fod = NULL;
+	return 0;
+}
+#endif
+
