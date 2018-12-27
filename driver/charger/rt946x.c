@@ -16,6 +16,9 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+#include "driver/wpc/p9221_r7.h"
+#endif
 #include "rt946x.h"
 #include "task.h"
 #include "timer.h"
@@ -24,6 +27,8 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 
 /* Charger parameters */
 static const struct charger_info rt946x_charger_info = {
@@ -914,6 +919,18 @@ void rt946x_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+void rt946x_cb_update_charger(int type,struct charge_port_info *chg)
+{
+	if(!chg)
+		charge_manager_update_dualrole(0, CAP_UNKNOWN);
+	else
+		charge_manager_update_dualrole(0, CAP_DEDICATED);
+
+	charge_manager_update_charge(type, 0, chg);
+}
+#endif
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
@@ -926,17 +943,41 @@ void usb_charger_task(void *u)
 
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
+
+			CPRINTS("VBUS Attached voltage:%d\n",charger_get_vbus_voltage(0));
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+			notify_p9221_detect_defer_work(1,rt946x_cb_update_charger);
+#endif
 			bc12_type = rt946x_get_bc12_device_type();
+
+			CPRINTS("bc12_type %d \n",bc12_type);
+
 			if (bc12_type != CHARGE_SUPPLIER_NONE) {
-				chg.current = rt946x_get_bc12_ilim(bc12_type);
-				charge_manager_update_charge(bc12_type,
-							     0, &chg);
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+                                if((CHARGE_SUPPLIER_BC12_SDP == bc12_type) &&
+                                	wpc_chip_is_online()){
+
+                                        CPRINTS("NOW WPC ONLINE Do nothing at all\n");
+
+                                }else{
+
+#endif
+					chg.current = rt946x_get_bc12_ilim(bc12_type);
+					charge_manager_update_charge(bc12_type,
+								     0, &chg);
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+				}
+#endif
 				rt946x_enable_bc12_detection(0);
 			}
 		}
 
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
+			CPRINTS("VBUS detached bc12_type:%d",bc12_type);
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+			notify_p9221_detect_defer_work(0,rt946x_cb_update_charger);
+#endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
 			rt946x_enable_bc12_detection(1);
 		}
