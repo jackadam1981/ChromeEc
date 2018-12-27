@@ -63,7 +63,8 @@ void chip_pre_init(void)
 
 static void scp_enable_tcm(void)
 {
-	/* Enable tightly coupled memory (TCM) */
+	/* Enable L1 cache and tightly coupled memory (TCM) */
+	/* TODO(b/117804463): This is probably not necessary anymore. */
 	SCP_CLK_L1_SRAM_PD = 0;
 	SCP_CLK_TCM_TAIL_SRAM_PD = 0;
 	/* SCP CM4 mod */
@@ -187,6 +188,54 @@ static void scp_enable_clock(void)
 			CG_I2C_M | CG_MAD_M;
 }
 
+static void cpu_invalidate_icache(void)
+{
+	SCP_CACHE_OP(CACHE_ICACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_ICACHE) |=
+		OP_INVALIDATE_ALL_LINES | SCP_CACHE_OP_EN;
+	asm volatile("dsb; isb");
+}
+
+void cpu_invalidate_dcache(void)
+{
+	SCP_CACHE_OP(CACHE_DCACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_DCACHE) |=
+		OP_INVALIDATE_ALL_LINES | SCP_CACHE_OP_EN;
+	asm volatile("dsb;");
+}
+
+void cpu_clean_invalidate_dcache(void)
+{
+	SCP_CACHE_OP(CACHE_DCACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_DCACHE) |=
+		OP_CACHE_FLUSH_ALL_LINES | SCP_CACHE_OP_EN;
+	SCP_CACHE_OP(CACHE_DCACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_DCACHE) |=
+		OP_INVALIDATE_ALL_LINES | SCP_CACHE_OP_EN;
+	asm volatile("dsb;");
+}
+
+static int command_cacheinfo(int argc, char **argv)
+{
+	const char cache_name[] = {'I', 'D'};
+	int c;
+
+	for (c = 0; c < 2; c++) {
+		uint64_t hit = ((uint64_t)SCP_CACHE_HCNT0U(c) << 32) |
+			SCP_CACHE_HCNT0L(c);
+		uint64_t access = ((uint64_t)SCP_CACHE_CCNT0U(c) << 32) |
+			SCP_CACHE_CCNT0L(c);
+
+		ccprintf("%ccache hit count:    %lu\n", cache_name[c], hit);
+		ccprintf("%ccache access count: %lu\n", cache_name[c], access);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(cacheinfo, command_cacheinfo,
+			     NULL,
+			     "Dump cache info");
+
 void system_pre_init(void)
 {
 	/* SRAM */
@@ -197,6 +246,9 @@ void system_pre_init(void)
 	scp_enable_pirq();
 	/* Init dram mapping */
 	scp_memmap_init();
+	/* Init cache */
+	cpu_invalidate_icache();
+	cpu_invalidate_dcache();
 }
 
 void system_reset(int flags)
