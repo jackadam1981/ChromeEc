@@ -558,6 +558,25 @@ static int init(const struct motion_sensor_t *s)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
+#ifdef CONFIG_MAG_LIS2MDL
+		/*
+		 * Reboot to reload memory content as pass-through mode can get
+		 * stuck.
+		 * Direct to the AN: See "AN4987 - LSM6DSM: always-on 3D
+		 * accelerometer and 3D gyroscope".
+		 */
+		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL3_ADDR,
+				LSM6DSM_BOOT);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+
+		/*
+		 * Refer to AN4987, wait 15ms for accelerometer to doing full
+		 * reboot.
+		 */
+		msleep(15);
+#endif
+
 		/*
 		 * Output data not updated until have been read.
 		 * Prefer interrupt to be active low.
