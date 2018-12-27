@@ -61,7 +61,7 @@ void chip_pre_init(void)
 
 static void scp_enable_tcm(void)
 {
-	/* Enable tightly coupled memory (TCM) */
+	/* Enable L1 cache and tightly coupled memory (TCM) */
 	SCP_CLK_L1_SRAM_PD = 0;
 	SCP_CLK_TCM_TAIL_SRAM_PD = 0;
 	/* SCP CM4 mod */
@@ -187,6 +187,85 @@ static void scp_enable_clock(void)
 			CG_I2C_M | CG_MAD_M;
 }
 
+void scp_dcache_invalidate(void)
+{
+	SCP_CACHE_OP(CACHE_DCACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_DCACHE) |=
+		OP_INVALIDATE_ALL_LINES | SCP_CACHE_OP_EN;
+	asm volatile("dsb;");
+}
+
+void scp_cache_flush(void)
+{
+	SCP_CACHE_OP(CACHE_DCACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_DCACHE) |=
+		OP_CACHE_FLUSH_ALL_LINES | SCP_CACHE_OP_EN;
+	SCP_CACHE_OP(CACHE_DCACHE) &= ~SCP_CACHE_OP_OP_MASK;
+	SCP_CACHE_OP(CACHE_DCACHE) |=
+		OP_INVALIDATE_ALL_LINES | SCP_CACHE_OP_EN;
+	asm volatile("dsb;");
+}
+
+static int command_cacheinfo(int argc, char **argv)
+{
+	uint64_t hit = ((uint64_t)SCP_CACHE_HCNT0U(CACHE_DCACHE) << 32) |
+		SCP_CACHE_HCNT0L(CACHE_DCACHE);
+	uint64_t access = ((uint64_t)SCP_CACHE_CCNT0U(CACHE_DCACHE) << 32) |
+		SCP_CACHE_CCNT0L(CACHE_DCACHE);
+
+	ccprintf("hit count:   %lu\n", hit);
+	ccprintf("access count: %lu\n", access);
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(cacheinfo, command_cacheinfo,
+			     NULL,
+			     "Dump cache info");
+
+static int command_cachetest(int argc, char **argv)
+{
+	uint32_t *cached = (void *)0x10000000;
+	uint32_t *direct = (void *)0x30000000;
+	int i, j;
+	const int it = 1000;
+	const int len = 0x100;
+	timestamp_t start;
+	uint32_t val;
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += cached[j];
+	}
+	ccprintf("cached: %d us (val: %x)\n", time_since32(start), val);
+	cflush();
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		scp_dcache_invalidate();
+		for (j = 0; j < len; j++)
+			val += cached[j];
+	}
+	ccprintf("cached+flush: %d us (val: %x)\n", time_since32(start), val);
+	cflush();
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += direct[j];
+	}
+	ccprintf("direct: %d us (val: %x)\n", time_since32(start), val);
+	cflush();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(cachetest, command_cachetest,
+			     NULL,
+			     "Do cache performance test");
+
 void system_pre_init(void)
 {
 	/* SRAM */
@@ -197,6 +276,10 @@ void system_pre_init(void)
 	scp_enable_pirq();
 	/* Init dram mapping */
 	scp_memmap_init();
+	/* Init cache */
+	scp_dcache_invalidate();
+
+
 }
 
 void system_reset(int flags)
