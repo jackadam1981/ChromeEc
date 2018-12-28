@@ -5,10 +5,11 @@
  * SCP memory map
  */
 
-#include "chip/mt_scp/registers.h"
 #include "common.h"
+#include "compile_time_macros.h"
 #include "hooks.h"
 #include "memmap.h"
+#include "registers.h"
 
 struct addr_map {
 	uintptr_t ap_addr;
@@ -114,6 +115,11 @@ int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr)
  */
 #define CACHE_TRANS_AP_ADDR 0x50000000
 #define CACHE_TRANS_SCP_CACHE_ADDR 0x10000000
+
+#ifdef CONFIG_DRAM_BASE
+BUILD_ASSERT(CONFIG_DRAM_BASE_LOAD == CACHE_TRANS_AP_ADDR);
+BUILD_ASSERT(CONFIG_DRAM_BASE == CACHE_TRANS_SCP_CACHE_ADDR);
+#endif
 
 int memmap_ap_to_scp_cache(uintptr_t ap_addr, uintptr_t *scp_addr)
 {

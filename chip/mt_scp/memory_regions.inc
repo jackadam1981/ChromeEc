@@ -1,1 +1,4 @@
 REGION_LOAD(stepping_stone, rwx, 0x00000, 0x8)
+#ifdef CONFIG_DRAM_BASE
+REGION_LOAD(dram, rwx, CONFIG_DRAM_BASE, CONFIG_DRAM_SIZE)
+#endif
