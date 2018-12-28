@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ea6cca0_b67691f0",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-28T06:07:16Z",
+      "side": 1,
+      "message": "Should this be 0f? SCP 0x9 is supposed to match to 0xf, I think.",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "0d3f849838433c56cfc35091f9aa1339ea2ac4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8babb88_05cb9e4f",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-28T06:07:16Z",
+      "side": 1,
+      "message": "0xd and 0xe mapping are not documented above.",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "0d3f849838433c56cfc35091f9aa1339ea2ac4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac68318_5ff67530",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-28T06:07:16Z",
+      "side": 1,
+      "message": "So this is fixed and can\u0027t be modified?",
+      "revId": "0d3f849838433c56cfc35091f9aa1339ea2ac4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
