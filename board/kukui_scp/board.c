@@ -6,9 +6,11 @@
 
 #include "common.h"
 #include "console.h"
+#include "cpu.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "link_defs.h"
 #include "registers.h"
 #include "memmap.h"
 #include "task.h"
@@ -73,3 +75,114 @@ static int command_memmaptest(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(memmaptest, command_memmaptest,
 			     NULL,
 			     "Do remmap test");
+
+static int command_dcachetest(int argc, char **argv)
+{
+	uint32_t *cached = (void *)0x10000000;
+	uint32_t *direct = (void *)0x30000000;
+	int i, j;
+	const int it = 1000;
+	const int len = 0x100;
+	timestamp_t start;
+	uint64_t val;
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += cached[j];
+	}
+	ccprintf("cached: %d us (val: %lx)\n", time_since32(start), val);
+	cflush();
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		cpu_invalidate_dcache();
+		for (j = 0; j < len; j++)
+			val += cached[j];
+	}
+	ccprintf("cached+inval: %d us (val: %lx)\n", time_since32(start), val);
+	cflush();
+
+	start = get_time();
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += direct[j];
+	}
+	ccprintf("direct: %d us (val: %lx)\n", time_since32(start), val);
+	cflush();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(dcachetest, command_dcachetest,
+			     NULL,
+			     "Do D-cache performance test");
+
+static inline uint64_t perf_test(void)
+{
+	volatile int x = 0;
+	int i, it;
+	uint64_t total;
+
+	for (it = 0; it < 10; it++) {
+		total = it;
+		for (i = 0; i < 100000; i++) {
+			total += i;
+			x = !x;
+		}
+	}
+
+	return total;
+}
+
+__SECTION(dram) static void icache_test(void)
+{
+	uint64_t total;
+	timestamp_t start;
+
+	start = get_time();
+	total = perf_test();
+
+	ccprintf("%d us (total: %lx)\n", time_since32(start), total);
+	cflush();
+}
+
+__SECTION(dram) static int command_icachetest(int argc, char **argv)
+{
+	void (*test_cached)(void) = &icache_test;
+	uintptr_t tmp;
+	void (*test_direct)(void);
+
+	memmap_scp_cache_to_ap((uintptr_t)&icache_test, &tmp);
+	memmap_ap_to_scp(tmp, (uintptr_t *)&test_direct);
+
+	ccprintf("run from DRAM (cached): ");
+	(*test_cached)();
+	ccprintf("run from DRAM (direct): ");
+	(*test_direct)();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(icachetest, command_icachetest,
+			     NULL,
+			     "Do I-cache performance test");
+
+static int command_perftest(int argc, char **argv)
+{
+	uint64_t total;
+	timestamp_t start;
+
+	start = get_time();
+	total = perf_test();
+
+	ccprintf("run from SRAM: %d us (total: %lx)\n",
+		time_since32(start), total);
+	cflush();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(perftest, command_perftest,
+			     NULL,
+			     "Do I-cache performance test");
