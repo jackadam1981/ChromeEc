@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e93ea9_fac9bb8f",
+        "filename": "chip/mt_scp/memory_regions.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-28T05:38:25Z",
+      "side": 1,
+      "message": "I think this should be in the global link script, not mt_scp specific.",
+      "revId": "fd48fbf77d5891e9c2ceb60049e6e47268dce382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
