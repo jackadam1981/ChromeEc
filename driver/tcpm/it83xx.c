@@ -29,6 +29,7 @@
 #define PD_IT83XX_VCONN_TURN_OFF_DELAY_US 500
 #endif
 
+uint8_t evt_flag;
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{&IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0},
 	{&IT83XX_GPIO_GPCRH1, &IT83XX_GPIO_GPCRH2, IT83XX_IRQ_USBPD1},
@@ -335,6 +336,28 @@ static void it83xx_set_data_role(enum usbpd_port port, int pd_role)
 
 static void it83xx_init(enum usbpd_port port, int role)
 {
+	int *cc1, *cc2;
+	/* Hard reset */
+	if (evt_flag) {
+		/* clear reset flag */
+		evt_flag = 0x00;
+		/* Reset HW */
+		USBPD_SW_RESET(port);
+		ccprints("p%d do evt_flag: Hard reset flag", port);
+		*cc1 = USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) >> 1;
+		*cc2 = USBPD_GET_CC2_PULL_REGISTER_SELECTION(port) >> 3;
+		ccprints("P%d assert cc1 %d cc2 %d (Rp=1 Rd=0)", port, *cc1,
+			 *cc2);
+		/*
+		 * SRC: charge manager will re-set cc rp(1.5/3A), when turn
+		 * on/off Vbus. Needn't to do here.
+		 */
+		return;
+	}
+	/* Tcpm init */
+	/* clear reset flag */
+	evt_flag = 0x00;
+	ccprints("p%d init: clear evt_flag", port);
 	/* Invalidate last received message id variable */
 	invalidate_last_message_id(port);
 	/* bit7: Reload CC parameter setting. */
@@ -579,6 +602,7 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+	ccprints("p%d polling disconn", port);
 	/* Invalidate last received message id variable */
 	invalidate_last_message_id(port);
 	/* exit BIST test data mode */

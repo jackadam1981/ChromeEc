@@ -102,6 +102,7 @@ struct usbpd_ctrl_t {
 	uint8_t irq;
 };
 
+extern uint8_t evt_flag;
 extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 extern const struct tcpm_drv it83xx_tcpm_drv;
 /* Disable integrated pd module */
