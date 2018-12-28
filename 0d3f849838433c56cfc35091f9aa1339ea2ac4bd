@@ -62,6 +62,24 @@
       "revId": "0d3f849838433c56cfc35091f9aa1339ea2ac4bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412074ee_92978279",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-28T06:14:06Z",
+      "side": 1,
+      "message": "Meh, this is set by MT8183_SCP_L1_REMAP_CFG0 on AP side.\n\nThe SCP-side address seems to be fixed, though.",
+      "parentUuid": "dac68318_5ff67530",
+      "revId": "0d3f849838433c56cfc35091f9aa1339ea2ac4bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
