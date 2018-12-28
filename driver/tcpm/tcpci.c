@@ -323,8 +323,13 @@ static int tcpm_alert_status(int port, int *alert)
 int tcpci_tcpm_set_rx_enable(int port, int enable)
 {
 	/* If enable, then set RX detect for SOP and HRST */
-	return tcpc_write(port, TCPC_REG_RX_DETECT,
-			  enable ? TCPC_REG_RX_DETECT_SOP_HRST_MASK : 0);
+	return tcpc_write(port, TCPC_REG_RX_DETECT, enable ?
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+		TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK
+#else
+		TCPC_REG_RX_DETECT_SOP_HRST_MASK
+#endif
+		: 0);
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
@@ -337,6 +342,9 @@ int tcpci_tcpm_get_vbus_level(int port)
 int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
 	int rv, cnt, reg = TCPC_REG_RX_DATA;
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	int frm;
+#endif
 
 	rv = tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &cnt);
 
@@ -345,9 +353,21 @@ int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 		rv = EC_ERROR_UNKNOWN;
 		goto clear;
 	}
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	rv = tcpc_read(port, TCPC_REG_RX_BUF_FRAME_TYPE, &frm);
+	if (rv != EC_SUCCESS) {
+		rv = EC_ERROR_UNKNOWN;
+		goto clear;
+	}
+#endif
 
 	rv = tcpc_read16(port, TCPC_REG_RX_HDR, (int *)head);
 
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	/* Encode message address in bits 31 to 28 */
+	*head &= 0x0000ffff;
+	*head |= ((frm & 7) << 28);
+#endif
 	cnt = cnt - 3;
 	if (rv == EC_SUCCESS && cnt > 0) {
 		tcpc_read_block(port, reg, (uint8_t *)payload, cnt);

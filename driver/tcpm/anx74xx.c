@@ -48,12 +48,24 @@ static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT];
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+/* Save the message address */
+static int msg_sop[CONFIG_USB_PD_PORT_COUNT];
+#endif
+
 static int anx74xx_tcpm_init(int port);
 
 static void anx74xx_tcpm_set_auto_good_crc(int port, int enable)
 {
-	tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_2,
-		   enable ? ANX74XX_REG_REPLY_SOP_EN : 0);
+	tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_2, enable ?
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+		ANX74XX_REG_REPLY_SOP_EN |
+		ANX74XX_REG_REPLY_SOP_1_EN |
+		ANX74XX_REG_REPLY_SOP_2_EN
+#else
+		ANX74XX_REG_REPLY_SOP_EN
+#endif
+		: 0);
 }
 
 static void anx74xx_update_cable_det(int port, int mode)
@@ -818,7 +830,10 @@ static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 		clear_recvd_msg_int(port);
 		return EC_ERROR_UNKNOWN;
 	}
-	*head = reg;
+	*head = reg & 0x0000ffff;
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	*head |= (msg_sop[port] << 28);
+#endif
 
 	len = PD_HEADER_CNT(*head) * 4;
 	if (!len) {
@@ -950,6 +965,13 @@ void anx74xx_tcpc_alert(int port)
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, reg);
 
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	if (reg & ANX74XX_REG_EXT_SOP)
+		msg_sop[port] = PD_MSG_SOP;
+	else if (reg & ANX74XX_REG_EXT_SOP_PRIME)
+		msg_sop[port] = PD_MSG_SOPP;
+#endif
+
 	/* Check for Hard Reset done bit */
 	if (reg & ANX74XX_REG_ALERT_TX_HARD_RESETOK)
 		/* ANX hardware clears the request bit */
@@ -959,6 +981,11 @@ void anx74xx_tcpc_alert(int port)
 	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, reg);
+
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	if (reg & ANX74XX_REG_EXT_SOP_PRIME_PRIME)
+		msg_sop[port] = PD_MSG_SOPPP;
+#endif
 
 	if (reg & ANX74XX_REG_EXT_HARD_RST) {
 		/* hard reset received */

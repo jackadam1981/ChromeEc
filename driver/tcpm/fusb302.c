@@ -685,6 +685,13 @@ static int fusb302_tcpm_set_rx_enable(int port, int enable)
 				   reg & ~TCPC_REG_MASK_BC_LVL);
 	}
 
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	/* Enable SOP' and SOP'' packet reception */
+	tcpc_read(port, TCPC_REG_CONTROL1, &reg);
+	reg |= (TCPC_REG_CONTROL1_ENSOP1 | TCPC_REG_CONTROL1_ENSOP2);
+	tcpc_write(port, TCPC_REG_CONTROL1, reg);
+#endif
+
 	fusb302_auto_goodcrc_enable(port, enable);
 
 	return 0;
@@ -757,6 +764,18 @@ static int fusb302_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 		else
 			memcpy(payload, buf, len);
 	}
+
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	{
+		int reg;
+
+		tcpc_read(port, TCPC_REG_STATUS1, &reg);
+		if (reg & TCPC_REG_STATUS1_RXSOP1)
+			*header = (PD_MSG_SOPP << 28);
+		else if (reg & TCPC_REG_STATUS1_RXSOP2)
+			*header = (PD_MSG_SOPPP << 28);
+	}
+#endif
 
 	return rv;
 }

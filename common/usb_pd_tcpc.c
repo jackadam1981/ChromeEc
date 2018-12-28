@@ -626,7 +626,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	int bit;
 	char *msg = "---";
 	uint32_t val = 0;
-	uint16_t header;
+	uint32_t header;
 	uint32_t pcrc, ccrc;
 	int p, cnt;
 	uint32_t eop;
@@ -646,6 +646,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	/* Find the Start Of Packet sequence */
 	while (bit > 0) {
 		bit = pd_dequeue_bits(port, bit, 20, &val);
+#if !defined(CONFIG_USB_PD_ENCODE_SOP)
 		if (val == PD_SOP) {
 			break;
 		} else if (val == PD_SOP_PRIME) {
@@ -655,22 +656,47 @@ int pd_analyze_rx(int port, uint32_t *payload)
 			CPRINTF("SOP''\n");
 			return PD_RX_ERR_UNSUPPORTED_SOP;
 		}
+#endif
 	}
 	if (bit < 0) {
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+		if (val == PD_SOP)
+			msg = "SOP";
+		else if (val == PD_SOP_PRIME)
+			msg = "SOP'";
+		else if (val == PD_SOP_PRIME_PRIME)
+			msg = "SOP''";
+#else
 		msg = "SOP";
+#endif
 		goto packet_err;
 	}
 
 	/* read header */
-	bit = decode_short(port, bit, &header);
+	bit = decode_short(port, bit, (uint16_t *)&header);
 
 #ifdef CONFIG_COMMON_RUNTIME
 	mutex_lock(&pd_crc_lock);
 #endif
 
 	crc32_init();
-	crc32_hash16(header);
+	crc32_hash16((uint16_t)header);
 	cnt = PD_HEADER_CNT(header);
+
+#ifdef CONFIG_USB_PD_ENCODE_SOP
+	/* Encode message address in bits 31 to 28 */
+	header &= 0x0000ffff;
+	if (val == PD_SOP) {
+		header |= (PD_MSG_SOP << 28);
+	} else if (val == PD_SOP_PRIME) {
+		header |= (PD_MSG_SOPP << 28);
+	} else if (val == PD_SOP_PRIME_PRIME) {
+		header |= (PD_MSG_SOPPP << 28);
+	} else {
+		msg = "SOP*";
+		goto packet_err;
+	}
+#endif
 
 	/* read payload data */
 	for (p = 0; p < cnt && bit > 0; p++) {
