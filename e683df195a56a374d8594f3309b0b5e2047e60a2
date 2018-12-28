@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c801608d_e819f2d5",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-28T20:47:00Z",
+      "side": 1,
+      "message": "would it be clearer to represent this as an array of two 16-bit ints?",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 17
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb383492_1605b343",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-28T20:47:00Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the registers, but perhaps these should only be enabled if we\u0027re the Vconn source?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49068f07_66da7618",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-28T20:47:00Z",
+      "side": 1,
+      "message": "ditto here; should only happen if we\u0027re the vconn source",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 45
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e99682f4_7cf458bd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-28T20:47:00Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 328,
+        "startChar": 2,
+        "endLine": 328,
+        "endChar": 45
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
