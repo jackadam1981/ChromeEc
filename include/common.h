@@ -10,6 +10,8 @@
 
 #include <stdint.h>
 
+void dump_scratchpad(void);
+
 /*
  * Macros to concatenate 2 - 4 tokens together to form a single token.
  * Multiple levels of nesting are required to convince the preprocessor to

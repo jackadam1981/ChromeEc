@@ -272,6 +272,10 @@ void svc_handler(int desched, task_id_t resched)
 
 	current = current_task;
 
+	ccprintf("svc_handler: exc=0x%x current=%x %x %x sp~%x\n", exc,
+		current, current_task, tasks, &t);
+	ccprintf("svc_scratchpad=%08x %08x", scratchpad, *(uint32_t *)scratchpad);
+
 #ifdef CONFIG_DEBUG_STACK_OVERFLOW
 	if (*current->stack != STACK_UNUSED_VALUE) {
 		panic_printf("\n\nStack overflow in %s task!\n",
@@ -289,6 +293,13 @@ void svc_handler(int desched, task_id_t resched)
 		 */
 		tasks_ready &= ~(1 << (current - tasks));
 	}
+
+	if (!(tasks_ready & tasks_enabled)) {
+		ccprintf("svc_handler: exc=0x%x current=%d %d %d\n", exc,
+			current, current_task, tasks);
+		return;
+	}
+
 	ASSERT(resched <= TASK_ID_COUNT);
 	tasks_ready |= 1 << resched;
 
@@ -330,6 +341,10 @@ void __schedule(int desched, int resched)
 {
 	register int p0 asm("r0") = desched;
 	register int p1 asm("r1") = resched;
+
+	dump_scratchpad();
+	cflush();
+	udelay(20000);
 
 	asm("svc 0"::"r"(p0),"r"(p1));
 }
@@ -690,6 +705,7 @@ void task_pre_init(void)
 		stack_next += ssize;
 	}
 
+	ccprintf("%s\n", __func__);
 	/*
 	 * Fill in guard value in scratchpad to prevent stack overflow
 	 * detection failure on the first context switch.  This works because
@@ -699,8 +715,15 @@ void task_pre_init(void)
 	((task_ *)scratchpad)->stack = (uint32_t *)scratchpad;
 	*(uint32_t *)scratchpad = STACK_UNUSED_VALUE;
 
+	dump_scratchpad();
+
 	/* Initialize IRQs */
 	__nvic_init_irqs();
+}
+
+void dump_scratchpad(void)
+{
+	ccprintf("scratchpad=%08x %08x\n", scratchpad, *(uint32_t *)scratchpad);
 }
 
 void task_clear_fp_used(void)
@@ -725,6 +748,10 @@ int task_start(void)
 	exc_end_time = t.le.lo;
 #endif
 	start_called = 1;
+
+	dump_scratchpad();
+
+	ccprintf("Calling task_start sp~%x\n", &t);
 
 	return __task_start(&need_resched_or_profiling);
 }

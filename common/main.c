@@ -206,6 +206,8 @@ test_mockable __keep int main(void)
 	}
 #endif  /* !CONFIG_VBOOT_EFS && CONFIG_RWSIG && !HAS_TASK_RWSIG */
 
+	dump_scratchpad();
+
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
 	 * into account the time before timer_init(), but it'll at least catch
