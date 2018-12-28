@@ -90,14 +90,14 @@ int spi_enable(int port, int enable)
 		else
 			IT83XX_GPIO_GRC1 |= 0x10;
 
-		gpio_config_module(MODULE_SPI, 1);
+		gpio_config_module(MODULE_SPI_MASTER, 1);
 	} else {
 		if (port == SSPI_CH_CS1)
 			IT83XX_GPIO_GRC1 &= ~0x20;
 		else
 			IT83XX_GPIO_GRC1 &= ~0x10;
 
-		gpio_config_module(MODULE_SPI, 0);
+		gpio_config_module(MODULE_SPI_MASTER, 0);
 	}
 
 	return EC_SUCCESS;
@@ -133,6 +133,7 @@ int spi_transaction(const struct spi_device_t *spi_device,
 		else
 			/* Write 1 to start the data transmission of CS0 */
 			IT83XX_SSPI_SPISTS |= 0x10;
+
 		rxdata[idx] = IT83XX_SSPI_SPIDATA;
 	}
 
@@ -167,5 +168,47 @@ static void sspi_init(void)
 	for (i = 0; i < spi_devices_used; i++)
 		/* Disabling spi module */
 		spi_enable(spi_devices[i].port, 0);
+
 }
 DECLARE_HOOK(HOOK_INIT, sspi_init, HOOK_PRIO_INIT_SPI);
+
+static int command_spihello_slave(int argc, char **argv)
+{
+	int i;
+	uint8_t tx_buf[] = {0x03, 0xEE, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00,
+	 0x01, 0x02, 0x03, 0x04};
+
+	for (i = 0; i < spi_devices_used; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+
+		spi_transaction(&spi_devices[i], tx_buf,
+			sizeof(tx_buf), NULL, 0);
+
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spihello, command_spihello_slave,
+			     "SPI",
+			     "SPI hello");
+
+static int command_spiproto_slave(int argc, char **argv)
+{
+	int i;
+	uint8_t tx_buf[] = {0x03, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+	for (i = 0; i < spi_devices_used; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+
+		spi_transaction(&spi_devices[i], tx_buf,
+			sizeof(tx_buf), NULL, 0);
+
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spiproto, command_spiproto_slave,
+			     "SPI",
+			     "SPI proto");

@@ -81,7 +81,7 @@
  * times to get correct time.
  */
 #define IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
-#elif defined(CHIP_VARIANT_IT8320DX)
+#elif defined(CHIP_VARIANT_IT8320DX) || defined(CHIP_VARIANT_IT8320EX)
 #define CONFIG_FLASH_SIZE  0x00080000
 /*
  * Set VCC power status as power-off, then PLL change
@@ -95,9 +95,14 @@
  * gets set incorrectly resulting in a memory access exception.
  */
 #define IT83XX_ESPI_RESET_MODULE_BY_FW
+
 /* Watchdog reset supports hardware reset. */
+#if defined(CHIP_VARIANT_IT8320DX)
 /* TODO(b/111264984): watchdog hardware reset function failed. */
 #undef IT83XX_ETWD_HW_RESET_SUPPORT
+#else
+#define IT83XX_ETWD_HW_RESET_SUPPORT
+#endif
 /*
  * (b/112452221):
  * Floating-point multiplication single-precision is failed on DX version,

@@ -119,6 +119,11 @@ void chip_pre_init(void)
 {
 	/* bit4, enable debug mode through SMBus */
 	IT83XX_SMB_SLVISELR &= ~(1 << 4);
+
+#ifdef IT83XX_ETWD_HW_RESET_SUPPORT
+	/* ensure we don't enable watchdog hardware reset at default. */
+	IT83XX_GCTRL_ETWDUARTCR &= ~(1 << 0);
+#endif
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
