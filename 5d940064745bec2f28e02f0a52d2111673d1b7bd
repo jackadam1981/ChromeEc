@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c818316_de2b7a33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-29T00:34:15Z",
+      "side": 1,
+      "message": "at init time",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae49eb69_3bddb8d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-29T00:34:15Z",
+      "side": 1,
+      "message": "rephrase: \nWithout this patch, the pass-through mode will get stuck after sysjump.\nForce a reboot of the lsm6dsm accelerometer side at init() to allow magnetomer initialization to complete.",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa229b1f_e311d176",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-29T00:34:15Z",
+      "side": 1,
+      "message": "I don\u0027t see in the doc if it should be after or before software reset.\nAlso, when is it cleared?",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b80c6ad_e37bdb34",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-29T00:34:15Z",
+      "side": 1,
+      "message": "It is better to explain here: we can always refer back to b:115587004 from the change id.",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e10497b_3c1287b6",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-29T00:34:15Z",
+      "side": 1,
+      "message": "where does this timeout comes from? Any timeout on the init() should be minimized as it will impact boot time (if the sensor is only powered in S3/S0).",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
