@@ -44,6 +44,20 @@ enum comm_interface {
 int comm_init(int interfaces, const char *device_name);
 
 /**
+ * Initialize dev interface
+ *
+ * @return 0 in case of success, or error code.
+ */
+int comm_init_dev(const char *device_name);
+
+/**
+ * Initialize input & output buffers
+ *
+ * @return 0 in case of success, or error code.
+ */
+int comm_init_buffer(void);
+
+/**
  * Send a command to the EC.  Returns the length of output data returned (0 if
  * none), or negative on error.
  */
