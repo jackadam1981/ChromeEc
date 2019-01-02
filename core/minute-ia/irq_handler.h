@@ -46,7 +46,7 @@ struct irq_data {
 		".section .text._irq_"#irq"_handler\n"			\
 		"_irq_"#irq"_handler:\n"				\
 			"pusha\n"					\
-			"add  $1, __in_isr\n"				\
+			"lock; addl  $1, __in_isr\n"			\
 			"call "#routine"\n"				\
 			"push $0\n"					\
 			"push $0\n"					\
@@ -63,8 +63,8 @@ struct irq_data {
 			rstr_fpu_ctx					\
 			"1:\n"						\
 			"movl $"#vector ", (0xFEC00040)\n"              \
-			"sub  $1, __in_isr\n"				\
 			"movl $0x00, (0xFEE000B0)\n" 			\
+			"lock; subl  $1, __in_isr\n"			\
 			"popa\n"					\
 			"iret\n"					\
 		);
