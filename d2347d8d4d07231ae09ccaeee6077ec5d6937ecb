@@ -105,6 +105,24 @@
       "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd8f2e0_33c17a0f",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-02T10:19:45Z",
+      "side": 1,
+      "message": "Partly because we setup the cached memory view from the AP, so I was wondering if we should setup the non-cached view from AP too.\n\nAlso, this may depend on how b:122028868 will be implemented.",
+      "parentUuid": "a5a8ca16_11c76b5e",
+      "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
