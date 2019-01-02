@@ -69,6 +69,24 @@
       "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556b19b5_9e0c6c2e",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-02T10:02:48Z",
+      "side": 1,
+      "message": "ACK. But need to make sure setting this in AP won\u0027t break the SCP initialization.",
+      "parentUuid": "638cc13b_0e41f848",
+      "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
