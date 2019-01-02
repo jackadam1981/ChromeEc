@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d2e6e44_6f45b25d",
+        "filename": "power/cometlake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-01-02T07:44:26Z",
+      "side": 1,
+      "message": "Hi Scott\n\nMay it be gpio_set_level(GPIO_EC_PCH_SYS_PWROK, all_sys_pwrgd_in)?\nWe should control the GPIO_EC_PCH_SYS_PWROK based on the GPIO_PG_EC_ALL_SYS_PWRGD, shouldn\u0027t we?",
+      "revId": "0dc6cfa9cf36e31e512fdd868dc7a89f749afc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
