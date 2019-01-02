@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "ed135ba4_fa529d71",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-02T22:05:24Z",
+      "side": 1,
+      "message": "It is not documented, but the bit gets cleared automatically after the reboot is complete - like SW reset. I tried it in my setup.",
+      "parentUuid": "fa229b1f_e311d176",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b80c6ad_e37bdb34",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 3
@@ -81,6 +99,24 @@
       "writtenOn": "2018-12-29T00:34:15Z",
       "side": 1,
       "message": "where does this timeout comes from? Any timeout on the init() should be minimized as it will impact boot time (if the sensor is only powered in S3/S0).",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b46faccd_827634f8",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-02T22:05:24Z",
+      "side": 1,
+      "message": "https://www.st.com/content/ccc/resource/technical/document/application_note/group0/9a/61/96/60/49/2c/44/bc/DM00352102/files/DM00352102.pdf/jcr:content/translations/en.DM00352102.pdf.\n\nProbably better to put that document in our reference documentation list. Please refer to the reboot sequence section.",
+      "parentUuid": "7e10497b_3c1287b6",
       "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
