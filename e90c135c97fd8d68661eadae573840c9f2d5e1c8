@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e58b9af_e859f077",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-02T21:37:40Z",
+      "side": 1,
+      "message": "No shift required. The \"addr\" is already shifted. This ensures that the appropriate measurement is read.",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "e90c135c97fd8d68661eadae573840c9f2d5e1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
