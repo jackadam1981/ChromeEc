@@ -87,6 +87,24 @@
       "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a8ca16_11c76b5e",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-02T10:12:54Z",
+      "side": 1,
+      "message": "The map view is only for CM4 viewing. I\u0027m curious why you think it\u0027s better to set in AP side?",
+      "parentUuid": "556b19b5_9e0c6c2e",
+      "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
