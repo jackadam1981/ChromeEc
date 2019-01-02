@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d614ebc5_957c132e",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-02T19:39:35Z",
+      "side": 1,
+      "message": "Good call. Applied that logic above too",
+      "parentUuid": "3b80c72e_98c8ec61",
+      "range": {
+        "startLine": 63,
+        "startChar": 26,
+        "endLine": 63,
+        "endChar": 29
+      },
+      "revId": "fc782f0da91fcd055ef086e563330f1115a6db7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "256cbccc_d2e8a5aa",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "fc782f0da91fcd055ef086e563330f1115a6db7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70044cad_2f73d415",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-02T19:39:35Z",
+      "side": 1,
+      "message": "the implementation of __task_start in switch.S doesn\u0027t use the parameter, so I removed the unused parameter in the parent CL:1389057",
+      "parentUuid": "256cbccc_d2e8a5aa",
+      "range": {
+        "startLine": 653,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 3
+      },
+      "revId": "fc782f0da91fcd055ef086e563330f1115a6db7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
