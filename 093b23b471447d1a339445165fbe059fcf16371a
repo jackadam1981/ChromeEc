@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b039fafa_4dde035a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-01-02T03:49:57Z",
+      "side": 1,
+      "message": "Could we notice that this new SKU is for Laser? ex: \u0027phaser: add sku 17 for Laser.\u0027",
+      "revId": "093b23b471447d1a339445165fbe059fcf16371a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d26a0a_9e161b09",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-01-02T03:49:57Z",
+      "side": 1,
+      "message": "exceeds 80 chars?",
+      "revId": "093b23b471447d1a339445165fbe059fcf16371a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
