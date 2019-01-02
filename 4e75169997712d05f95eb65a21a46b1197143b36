@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "781c563d_aec5b789",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-02T19:54:32Z",
+      "side": 1,
+      "message": "Please make it more specific.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5217b3eb_e1114c6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-02T19:54:32Z",
+      "side": 1,
+      "message": "What happens to PS8625 and the EEPROM when i2c transaction is interfered by the EC? Do we have to reset them? Do we have a way to avoid simultaneous access (from two i2c masters)?",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56edfbf2_dbf670db",
+        "filename": "board/karma/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-02T19:54:32Z",
+      "side": 1,
+      "message": "nit: Can we remove it?",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 13
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
