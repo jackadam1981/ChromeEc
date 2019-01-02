@@ -33,6 +33,24 @@
       "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52345ada_f6add9e2",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-02T09:45:14Z",
+      "side": 1,
+      "message": "SGTM, we can do it over IPI, or a fixed address contains the table.",
+      "parentUuid": "40243e86_87115e7b",
+      "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
