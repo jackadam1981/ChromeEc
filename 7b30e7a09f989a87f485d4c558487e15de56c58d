@@ -34,6 +34,24 @@
       "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb96e845_618c1673",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-03T08:00:26Z",
+      "side": 1,
+      "message": "I don\u0027t need to modify anything.\n\nIf the register table document is correct, SCP_REMAP_CFG3 \u003d 0x10000A03; does the remapping I wrote above, the comments document a different mapping.",
+      "parentUuid": "27f46aee_5af8e53d",
+      "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
