@@ -22,6 +22,9 @@ enum sps_mode {
 #define SPS_FIFO_SIZE		(1 << 10)
 #define SPS_FIFO_MASK		(SPS_FIFO_SIZE - 1)
 
+#define SPS_RXBUF_MAX 512
+extern uint8_t sps_rxbuf[SPS_RXBUF_MAX];
+
 /*
  * Tx interrupt callback function prototype. This function returns a portion
  * of the received SPI data and current status of the CS line. When CS is

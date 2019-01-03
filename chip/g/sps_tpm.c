@@ -87,8 +87,7 @@
  * buffer will start with a four-byte header, followed by whatever data
  * is sent by the master (none for a read, 1 to 64 bytes for a write).
  */
-#define RXBUF_MAX 512			/* chosen arbitrarily */
-static uint8_t rxbuf[RXBUF_MAX];
+uint8_t sps_rxbuf[SPS_RXBUF_MAX];
 static unsigned rxbuf_count;		/* num bytes received */
 static uint32_t bytecount;		/* Num of payload bytes when writing. */
 static uint32_t regaddr;		/* Address of register to read/write. */
@@ -142,9 +141,9 @@ static void process_rx_data(uint8_t *data, size_t data_size, int cs_deasserted)
 	/* We're receiving some bytes, so don't sleep */
 	disable_sleep(SLEEP_MASK_SPI);
 
-	if ((rxbuf_count + data_size) > RXBUF_MAX) {
+	if ((rxbuf_count + data_size) > SPS_RXBUF_MAX) {
 		CPRINTS("TPM SPI input overflow: %d + %d > %d in state %d",
-			rxbuf_count, data_size, RXBUF_MAX, sps_tpm_state);
+			rxbuf_count, data_size, SPS_RXBUF_MAX, sps_tpm_state);
 		sps_tx_status(TPM_STALL_DEASSERT);
 		sps_tpm_state = SPS_TPM_STATE_RX_BAD;
 		/* In this state, this function won't be called again until
@@ -152,7 +151,7 @@ static void process_rx_data(uint8_t *data, size_t data_size, int cs_deasserted)
 		 * transaction. */
 		return;
 	}
-	memcpy(rxbuf + rxbuf_count, data, data_size);
+	memcpy(sps_rxbuf + rxbuf_count, data, data_size);
 	rxbuf_count += data_size;
 
 	/* Okay, we have enough. Now what? */
@@ -161,7 +160,7 @@ static void process_rx_data(uint8_t *data, size_t data_size, int cs_deasserted)
 			return;	/* Header is 4 bytes in size. */
 
 		/* Got the header. What's it say to do? */
-		if (header_says_to_read(rxbuf, &regaddr, &bytecount)) {
+		if (header_says_to_read(sps_rxbuf, &regaddr, &bytecount)) {
 			/* Send the stall deassert manually */
 			txbuf[0] = TPM_STALL_DEASSERT;
 
@@ -188,7 +187,7 @@ static void process_rx_data(uint8_t *data, size_t data_size, int cs_deasserted)
 	    (sps_tpm_state == SPS_TPM_STATE_RECEIVING_WRITE_DATA))
 		/* Ok, we have all the write data, pass it to the tpm. */
 		tpm_register_put(regaddr - TPM_LOCALITY_0_SPI_BASE,
-				 rxbuf + rxbuf_count - bytecount, bytecount);
+				sps_rxbuf + rxbuf_count - bytecount, bytecount);
 }
 
 static void tpm_rx_handler(uint8_t *data, size_t data_size, int cs_deasserted)
