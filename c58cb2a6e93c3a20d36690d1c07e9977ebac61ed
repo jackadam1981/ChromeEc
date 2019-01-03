@@ -16,6 +16,47 @@
       "revId": "c58cb2a6e93c3a20d36690d1c07e9977ebac61ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a1dedf_19940218",
+        "filename": "power/cometlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T21:21:30Z",
+      "side": 1,
+      "message": "yes please. Reference from PDG (v0.7 page 591) needs min 10ms before Power good",
+      "parentUuid": "0ec2a80f_f7afd687",
+      "revId": "c58cb2a6e93c3a20d36690d1c07e9977ebac61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6e1a96_29aaed70",
+        "filename": "power/cometlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T21:21:30Z",
+      "side": 1,
+      "message": "is there a plan to add logic here?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 8
+      },
+      "revId": "c58cb2a6e93c3a20d36690d1c07e9977ebac61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
