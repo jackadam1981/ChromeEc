@@ -93,6 +93,30 @@
       "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc65638c_fa7b9d4c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-03T20:54:09Z",
+      "side": 1,
+      "message": "We need to add the same value to the comparator not double(\u003c\u003c 1).\nAnyway, we will get new patch for HPET.",
+      "parentUuid": "9197cc2d_82904838",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
