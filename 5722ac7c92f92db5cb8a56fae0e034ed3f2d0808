@@ -16,6 +16,24 @@
       "revId": "5722ac7c92f92db5cb8a56fae0e034ed3f2d0808",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e9d506_4faaf3b1",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T22:05:32Z",
+      "side": 1,
+      "message": "Yes, a new config is required because the resistor on hatch is different. Of the two options I picked the one I believe will cause the fan to be on more than would be required as a short term solution. I will open an issue and add a TODO for this. That\u0027s one of the reasons I hadn\u0027t put this CL up for review yet.",
+      "parentUuid": "44a1afc4_4dc3f91d",
+      "revId": "5722ac7c92f92db5cb8a56fae0e034ed3f2d0808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
