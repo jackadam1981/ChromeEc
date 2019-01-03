@@ -88,7 +88,7 @@
  * is sent by the master (none for a read, 1 to 64 bytes for a write).
  */
 #define RXBUF_MAX 512			/* chosen arbitrarily */
-static uint8_t rxbuf[RXBUF_MAX];
+uint8_t rxbuf[RXBUF_MAX];
 static unsigned rxbuf_count;		/* num bytes received */
 static uint32_t bytecount;		/* Num of payload bytes when writing. */
 static uint32_t regaddr;		/* Address of register to read/write. */
@@ -188,7 +188,7 @@ static void process_rx_data(uint8_t *data, size_t data_size, int cs_deasserted)
 	    (sps_tpm_state == SPS_TPM_STATE_RECEIVING_WRITE_DATA))
 		/* Ok, we have all the write data, pass it to the tpm. */
 		tpm_register_put(regaddr - TPM_LOCALITY_0_SPI_BASE,
-				 rxbuf + rxbuf_count - bytecount, bytecount);
+				rxbuf + rxbuf_count - bytecount, bytecount);
 }
 
 static void tpm_rx_handler(uint8_t *data, size_t data_size, int cs_deasserted)
