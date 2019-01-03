@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df39865d_b6aa2373",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-03T23:57:07Z",
+      "side": 1,
+      "message": "These will be replaced something like below after we fix current problem with comparator.\n\n        uint64_t tmp \u003d HPET_MAIN_COUNTER;\n        uint32_t hi \u003d tmp \u003e\u003e 32;\n        uint32_t lo \u003d tmp;\n        uint32_t r;\n        const uint32_t d \u003d CLOCK_FACTOR;\n\n        hi %\u003d d;\n\n        asm(\"divl %2\" : \"\u003da\" (lo), \"\u003dd\" (r)\n            : \"rm\" (d), \"0\" (lo), \"1\" (hi));\n\n        return lo;",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "353eb2cce7879ab6de2c46bbbb92bbb27ab356ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
