@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f721bd5_7b5c0c83",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-03T17:20:24Z",
+      "side": 0,
+      "message": "we should remove this define now since this was the only use",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "db9a02ec4110769b7300f45ade770205e70934de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
