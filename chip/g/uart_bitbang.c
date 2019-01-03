@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "pmu.h"
 #include "registers.h"
+#include "sps.h"
 #include "task.h"
 #include "timer.h"
 #include "uart_bitbang.h"
@@ -26,6 +27,8 @@
 	 (rate == 115200))
 
 #define TIMEUS_CLK_FREQ 24 /* units: MHz */
+#define START_BIT	0
+#define STOP_BIT	1
 
 /* Flag indicating whether bit banging is enabled or not. */
 static uint8_t bitbang_enabled;
@@ -206,7 +209,7 @@ static void uart_bitbang_write_char(char c)
 	next_tick = get_next_tick(bit_period_ticks);
 
 	/* Start bit. */
-	gpio_set_level(bitbang_config.tx_gpio, 0);
+	gpio_set_level(bitbang_config.tx_gpio, START_BIT);
 	wait_ticks(&next_tick);
 
 	/* 8 data bits. */
@@ -228,7 +231,7 @@ static void uart_bitbang_write_char(char c)
 	}
 
 	/* 1 stop bit. */
-	gpio_set_level(bitbang_config.tx_gpio, 1);
+	gpio_set_level(bitbang_config.tx_gpio, STOP_BIT);
 
 	/*
 	 * Re-enable interrupts early: this could be the last byte and the
@@ -299,7 +302,7 @@ static int uart_bitbang_receive_char(uint8_t *rxed_char, uint32_t *next_tick)
 
 
 	/* Check that the stop bit is valid. */
-	if (stop_bit != 1) {
+	if (stop_bit != STOP_BIT) {
 #if BITBANG_DEBUG
 		stop_bit_err_cnt++;
 		stop_bit_discard[stop_bit_discard_idx] = rx_char;
@@ -320,7 +323,6 @@ static int uart_bitbang_receive_char(uint8_t *rxed_char, uint32_t *next_tick)
 
 void uart_bitbang_irq(void)
 {
-	uint8_t rx_buffer[20];
 	size_t i = 0;
 	uint32_t next_tick;
 
@@ -330,13 +332,17 @@ void uart_bitbang_irq(void)
 		uint32_t max_time;
 		int rv;
 new_char:
-		rv = uart_bitbang_receive_char(rx_buffer + i, &next_tick);
+		/*
+		 * reuse sps_rxbuf[] for reading data in bitbang mode, which
+		 * holds AP in reset.
+		 */
+		rv = uart_bitbang_receive_char(sps_rxbuf + i, &next_tick);
 		gpio_clear_pending_interrupt(bitbang_config.rx_gpio);
 
 		if (rv != EC_SUCCESS)
 			break;
 
-		if (++i == sizeof(rx_buffer))
+		if (++i == SPS_RXBUF_MAX)
 			break;
 		/*
 		 * For the duration of one byte wait for another byte from the
@@ -344,15 +350,16 @@ new_char:
 		 */
 		max_time = GR_TIMEUS_CUR_MAJOR(0) + bit_period_ticks * 10;
 		while (GR_TIMEUS_CUR_MAJOR(0) < max_time) {
-			if (!gpio_get_level(bitbang_config.rx_gpio)) {
-				next_tick = get_next_tick(bit_period_ticks);
-				goto new_char;
-			}
+			if (gpio_get_level(bitbang_config.rx_gpio) == STOP_BIT)
+				continue;
+
+			next_tick = get_next_tick(bit_period_ticks);
+			goto new_char;
 		}
 
 	} while (0);
 
-	QUEUE_ADD_UNITS(bitbang_config.uart_in, rx_buffer, i);
+	QUEUE_ADD_UNITS(bitbang_config.uart_in, sps_rxbuf, i);
 }
 
 #if BITBANG_DEBUG
@@ -360,17 +367,17 @@ static int write_test_pattern(int pattern_idx)
 {
 	switch (pattern_idx) {
 	case 0:
-		uart_bitbang_write_char(uart, 'a');
-		uart_bitbang_write_char(uart, 'b');
-		uart_bitbang_write_char(uart, 'c');
-		uart_bitbang_write_char(uart, '\n');
+		uart_bitbang_write_char('a');
+		uart_bitbang_write_char('b');
+		uart_bitbang_write_char('c');
+		uart_bitbang_write_char('\n');
 		ccprintf("wrote: 'abc\\n'\n");
 		break;
 
 	case 1:
-		uart_bitbang_write_char(uart, 0xAA);
-		uart_bitbang_write_char(uart, 0xCC);
-		uart_bitbang_write_char(uart, 0x55);
+		uart_bitbang_write_char(0xAA);
+		uart_bitbang_write_char(0xCC);
+		uart_bitbang_write_char(0x55);
 		ccprintf("wrote: '0xAA 0xCC 0x55'\n");
 		break;
 
@@ -477,8 +484,8 @@ static int command_bitbang_dump_stats(int argc, char **argv)
 	ccprintf("%d chars read\n", read_char_cnt);
 	ccprintf("Contents\n");
 	ccprintf("[");
-	for (i = 0; i < RX_BUF_SIZE; i++)
-		ccprintf(" %02x ", rx_buf[i] & 0xFF);
+	for (i = 0; i < SPS_RXBUF_MAX; i++)
+		ccprintf(" %02x ", sps_rxbuf[i] & 0xFF);
 	ccprintf("]\n");
 	ccprintf("Discards\nparity: ");
 	ccprintf("[");
