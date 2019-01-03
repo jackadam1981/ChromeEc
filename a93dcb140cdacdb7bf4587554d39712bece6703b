@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3fea5e_820e0b32",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-03T20:49:32Z",
+      "side": 1,
+      "message": "How long does this state need to last? Will it also be lost during deep sleep?",
+      "range": {
+        "startLine": 140,
+        "startChar": 23,
+        "endLine": 140,
+        "endChar": 55
+      },
+      "revId": "a93dcb140cdacdb7bf4587554d39712bece6703b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
