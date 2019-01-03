@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3a92719_6b850456",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-03T21:07:44Z",
+      "side": 1,
+      "message": "You need to add a comment to gpio.inc saying if you change the gpio names you also need to change the names here.\n\nCan you also add GPIO_ prefix to these names, so it\u0027s clear these are gpios?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ff3fadc_addac078",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-03T21:07:44Z",
+      "side": 1,
+      "message": "Arent these pins and gpios already setup in gpio.inc. I think you just need to use gpio_set_flags to enable necessary outputs/pullups and then change the drive strength.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1849ef93_9918fc88",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-03T21:07:44Z",
+      "side": 1,
+      "message": "We also should prevent i2c from being enabled/disabled if the closed source set 1 is being used.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f25ef4c_9d418479",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-03T21:07:44Z",
+      "side": 1,
+      "message": "This isn\u0027t true. Write protect is just one part of factory mode and can be controlled independently. Maybe you should rename this to ccd_wp_force_disabled or we should add another ccd flag that tracks if factory mode is enabled.",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 55
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
