@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0fb98757_fa715657",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-03T01:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c818316_de2b7a33",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae49eb69_3bddb8d2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7cfdd80_67111f63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-03T01:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae49eb69_3bddb8d2",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +153,24 @@
       "side": 1,
       "message": "https://www.st.com/content/ccc/resource/technical/document/application_note/group0/9a/61/96/60/49/2c/44/bc/DM00352102/files/DM00352102.pdf/jcr:content/translations/en.DM00352102.pdf.\n\nProbably better to put that document in our reference documentation list. Please refer to the reboot sequence section.",
       "parentUuid": "7e10497b_3c1287b6",
+      "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d51dfb0_12914df6",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-03T01:51:22Z",
+      "side": 1,
+      "message": "Refer to the documentation, the reboot sequence should wait 15ms at least.",
+      "parentUuid": "b46faccd_827634f8",
       "revId": "5d940064745bec2f28e02f0a52d2111673d1b7bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
