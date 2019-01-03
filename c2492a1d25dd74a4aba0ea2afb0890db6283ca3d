@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0735151_81f7c745",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "nit: why not #ifndef?",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 13
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6a78cd_40683b69",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "You don\u0027t need this if you do uint32_t header \u003d 0, do you?",
+      "range": {
+        "startLine": 688,
+        "startChar": 11,
+        "endLine": 688,
+        "endChar": 21
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945ec34e_76159c4c",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "Please define a macro. Besides, you only need 2 bits (00, 01, 10, 11), right? It\u0027s confusing to allocate 4 bits.",
+      "range": {
+        "startLine": 690,
+        "startChar": 24,
+        "endLine": 690,
+        "endChar": 29
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0820b5be_d2fcf3b1",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "You should check error. Otherwise, you would get random results...",
+      "range": {
+        "startLine": 795,
+        "startChar": 2,
+        "endLine": 795,
+        "endChar": 11
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0cd7b63_f5ad384f",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "head",
+      "range": {
+        "startLine": 797,
+        "startChar": 4,
+        "endLine": 797,
+        "endChar": 10
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0aa0ac8_374dae99",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "|\u003d",
+      "range": {
+        "startLine": 799,
+        "startChar": 11,
+        "endLine": 799,
+        "endChar": 12
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19fa97b_d8910014",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T23:05:36Z",
+      "side": 1,
+      "message": "I suspect this actually is meant to be CONFIG_USB_PD_DECODE_SOP? Encoding SOP states in uint32_t is just a way for us to handle other SOPs, right?",
+      "range": {
+        "startLine": 3279,
+        "startChar": 21,
+        "endLine": 3279,
+        "endChar": 27
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
