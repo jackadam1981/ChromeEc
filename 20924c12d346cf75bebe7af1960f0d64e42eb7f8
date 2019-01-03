@@ -16,6 +16,24 @@
       "revId": "20924c12d346cf75bebe7af1960f0d64e42eb7f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9450f0b_e7f50ddb",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:12:13Z",
+      "side": 1,
+      "message": "Yes, that\u0027s added in a subsequent CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1387591/3",
+      "parentUuid": "18c020b6_14b04697",
+      "revId": "20924c12d346cf75bebe7af1960f0d64e42eb7f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
