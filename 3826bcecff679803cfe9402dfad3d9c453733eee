@@ -88,6 +88,24 @@
       "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646b2f4f_d1071c48",
+        "filename": "power/cometlake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:12:21Z",
+      "side": 1,
+      "message": "I think that makes sense. I have moved the chipset_pre_init_callback function to cometlake.c",
+      "parentUuid": "4838c660_7c0c7231",
+      "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
