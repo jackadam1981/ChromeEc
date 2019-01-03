@@ -16,6 +16,24 @@
       "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56bfa6e7_05dfab5a",
+        "filename": "power/cometlake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T00:50:43Z",
+      "side": 1,
+      "message": "These are being turned on in chipset_pre_init_callback(void) in baseboard.c. I thought you had said that was a better hook since it\u0027s only called after its determined it\u0027s ok to power up the AP. Is this not the right place, or do you think something is being missed?",
+      "parentUuid": "fc434880_434d8ff7",
+      "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
