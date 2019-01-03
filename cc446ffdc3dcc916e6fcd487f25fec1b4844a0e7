@@ -46,6 +46,30 @@
       "revId": "cc446ffdc3dcc916e6fcd487f25fec1b4844a0e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854e98e3_e05e5d0e",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-03T23:09:19Z",
+      "side": 1,
+      "message": "Or is this \"Real Mode x87 FPU State Image in Memory, 32-Bit Format\" Figure 8-10?\n\nThe following line in task_defs.h seems to imply the header is the 32-bit format\n#define FPU_CTX_SZ\t\t108 /* 28 bytes header + 80 bytes registers */\n\nShould we be setting all 28 bytes of the header?",
+      "parentUuid": "d020600b_8122e993",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 51
+      },
+      "revId": "cc446ffdc3dcc916e6fcd487f25fec1b4844a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
