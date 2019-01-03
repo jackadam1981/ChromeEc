@@ -16,6 +16,24 @@
       "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f46aee_5af8e53d",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-03T07:54:30Z",
+      "side": 1,
+      "message": "Why do you need to modify from FreeRTOS original 0xF0000000\u003c-\u003e0x90000000 to 0xF0000000\u003c-\u003e0x00000000?",
+      "parentUuid": "8c4ff124_e27dd23c",
+      "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
