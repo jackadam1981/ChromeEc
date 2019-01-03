@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "36a329d4_cb9813a0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-03T20:06:52Z",
+      "side": 1,
+      "message": "let\u0027s move this back to the main method (or why did you move this out)?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3290dfe0_c50997e7",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "HPET 0 is periodic mode and main counter should not be cleared.\nWhen Comparator and main counter are matches, interrupt is generated and this interrupt increase ‘clksrc_high’ by one.\nAnd comparator value also increase by initial setting by HW. \n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nWhen the main counter value matches the value in the timer’s comparator value register, \nAn interrupt can be generated. The hardware will then automatically increase the value in the comparator\nvalue register by the last value written to that register.\n\nExample: if the value written to T0CV is 00000123h, then\n•\tAn interrupt will be generated when the main counter reaches 00000123h.\n•\tT0CV will then be adjusted to 00000246h.\n•\tAnother interrupt will be generated when the main counter reaches 00000246h\n•\tT0CV will then be adjusted to 00000369h\n•\tWhen the incremented value is greater than the maximum value possible for TnCV, the value will wrap around through 0.  For example, if the current value in a 32-bit timer is FFFF0000h and the last value written to this register is 20000, then after the next interrupt the value will change to 00010000h\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
       "parentUuid": "3290dfe0_c50997e7",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9197cc2d_82904838",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-03T20:06:52Z",
+      "side": 1,
+      "message": "With CL:1394753 fixing the #DE exception, can we make this logic\n\nHPET_TIMER_COMP_64(0) \u003d HPET_TIMER_COMP_64(0) \u003c\u003c 1;\n\ninstead of resetting the counter to 0.\n\nAlso we don\u0027t need to working above the comparitor overflow since that would take more than 800 years to overflow.",
+      "parentUuid": "0e211a78_4e9cdd8f",
       "range": {
         "startLine": 90,
         "startChar": 1,
