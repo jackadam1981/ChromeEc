@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "89a3af54_ee9b7cfc",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:13:35Z",
+      "side": 1,
+      "message": "This currently defined based on the charger type.\n/*\n * Define CONFIG_CHARGER_NARROW_VDC for chargers that use a Narrow VDC power\n * architecture.\n */\n#if defined(CONFIG_CHARGER_ISL9237) || defined(CONFIG_CHARGER_ISL9238)\n#define CONFIG_CHARGER_NARROW_VDC\n#endif\n\nThe 25710 is very similar to the 25703 that\u0027s used on Octopus and we don\u0027t have it defined for that one.",
+      "parentUuid": "dd8bd6d2_ff65aecc",
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffe37093_423977be",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6dda7f2_751aaebc",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe37093_423977be",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 30
+      },
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c68133d5_1f5042ae",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:13:35Z",
+      "side": 1,
+      "message": "I changed this to 60000 and I added your partner email to the bug so you should have access.",
+      "parentUuid": "d2be9a0e_b47817c8",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cabac6e_35c2eeba",
         "filename": "baseboard/hatch/battery.c",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2019-01-03T18:48:22Z",
       "side": 1,
       "message": "we can use common code and remove this file",
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15f56e5_edfba33d",
+        "filename": "baseboard/hatch/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:13:35Z",
+      "side": 1,
+      "message": "I prefer to wait until I have done power up to know that I can just use the common code.",
+      "parentUuid": "7cabac6e_35c2eeba",
       "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
