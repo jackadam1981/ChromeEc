@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f729f36c_987562c8",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T21:25:08Z",
+      "side": 1,
+      "message": "looks like BQ25710 is also a NVDC charger",
+      "parentUuid": "89a3af54_ee9b7cfc",
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffe37093_423977be",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 2
@@ -128,6 +146,30 @@
       "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34fe65f9_8495d415",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T21:25:08Z",
+      "side": 1,
+      "message": "thank you",
+      "parentUuid": "c68133d5_1f5042ae",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
