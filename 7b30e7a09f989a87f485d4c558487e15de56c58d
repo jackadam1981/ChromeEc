@@ -52,6 +52,24 @@
       "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7fdb8b9_a138b4a4",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-03T08:02:08Z",
+      "side": 1,
+      "message": "EXT_ADDR10[21:16]remap register for addr msb 31~28 equal to 0xf\n\u003d\u003e EXT_ADDR10[21:16] \u003d 0, not 0x9",
+      "parentUuid": "fb96e845_618c1673",
+      "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
