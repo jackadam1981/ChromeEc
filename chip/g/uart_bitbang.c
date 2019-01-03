@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "pmu.h"
 #include "registers.h"
+#include "shared_mem.h"
 #include "task.h"
 #include "timer.h"
 #include "uart_bitbang.h"
@@ -26,6 +27,7 @@
 	 (rate == 115200))
 
 #define TIMEUS_CLK_FREQ 24 /* units: MHz */
+#define RX_BUF_SIZE	257
 
 /* Flag indicating whether bit banging is enabled or not. */
 static uint8_t bitbang_enabled;
@@ -35,6 +37,9 @@ static uint8_t bitbang_wanted;
 /* Current bitbang context */
 static uint32_t bit_period_ticks;
 static uint8_t set_parity;
+
+/* Bitbang receive buffer pointer */
+static uint8_t *rx_buffer;
 
 #if BITBANG_DEBUG
 /* debug counters and log */
@@ -320,9 +325,11 @@ static int uart_bitbang_receive_char(uint8_t *rxed_char, uint32_t *next_tick)
 
 void uart_bitbang_irq(void)
 {
-	uint8_t rx_buffer[20];
 	size_t i = 0;
 	uint32_t next_tick;
+
+	if (!rx_buffer)
+		return;
 
 	/* Empirically chosen IRQ latency compensation. */
 	next_tick = get_next_tick(bit_period_ticks  - 40);
@@ -336,7 +343,7 @@ new_char:
 		if (rv != EC_SUCCESS)
 			break;
 
-		if (++i == sizeof(rx_buffer))
+		if (++i == RX_BUF_SIZE)
 			break;
 		/*
 		 * For the duration of one byte wait for another byte from the
@@ -349,7 +356,6 @@ new_char:
 				goto new_char;
 			}
 		}
-
 	} while (0);
 
 	QUEUE_ADD_UNITS(bitbang_config.uart_in, rx_buffer, i);
@@ -394,6 +400,10 @@ static int command_bitbang(int argc, char **argv)
 			if (!strcasecmp("disable", argv[2])) {
 				bitbang_wanted = 0;
 				ccd_update_state();
+				if (rx_buffer) {
+					shared_mem_release(rx_buffer);
+					rx_buffer = NULL;
+				}
 				return EC_SUCCESS;
 			}
 			return EC_ERROR_PARAM2;
@@ -422,6 +432,10 @@ static int command_bitbang(int argc, char **argv)
 			if (servo_is_connected())
 				ccprintf("%sing superseded by servo\n",
 					feature_name);
+
+			if (shared_mem_size() < RX_BUF_SIZE)
+				return EC_ERROR_MEMORY_ALLOCATION;
+			shared_mem_acquire(RX_BUF_SIZE, (char **)&rx_buffer);
 
 			bitbang_wanted = 1;
 			ccd_update_state();
@@ -477,8 +491,13 @@ static int command_bitbang_dump_stats(int argc, char **argv)
 	ccprintf("%d chars read\n", read_char_cnt);
 	ccprintf("Contents\n");
 	ccprintf("[");
-	for (i = 0; i < RX_BUF_SIZE; i++)
-		ccprintf(" %02x ", rx_buf[i] & 0xFF);
+	if (rx_buffer) {
+		for (i = 0; i < RX_BUF_SIZE; i++) {
+			ccprintf(" %02x%s", rx_buffer[i] & 0xFF);
+			if (!((i + 1) & 0x0F))
+				ccprintf("\n ");
+		}
+	}
 	ccprintf("]\n");
 	ccprintf("Discards\nparity: ");
 	ccprintf("[");
