@@ -52,6 +52,24 @@
       "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "542318e2_b404614c",
+        "filename": "power/cometlake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T01:18:52Z",
+      "side": 1,
+      "message": "In case POWER_G3S5 in the state machine in intel_x86.c calls chipset_pre_init_callback() if the config option is enabled. That\u0027s where those 2 rails are being enabled. That function because it\u0027s in baseboard.c, is in the following CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1377571",
+      "parentUuid": "83e0b371_f608f99c",
+      "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
