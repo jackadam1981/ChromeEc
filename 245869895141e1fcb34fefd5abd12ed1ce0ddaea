@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbcbd486_944d2b5a",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca35d18_a0118374",
+      "range": {
+        "startLine": 140,
+        "startChar": 34,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "245869895141e1fcb34fefd5abd12ed1ce0ddaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fce88bc_8c7dafd5",
         "filename": "board/hatch/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-03T18:57:36Z",
       "side": 1,
       "message": "is there a plan to use this PWM?",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "245869895141e1fcb34fefd5abd12ed1ce0ddaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a581dc4a_1308162b",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-03T21:14:55Z",
+      "side": 1,
+      "message": "All the boards that have keyboard backlight have this configuration.",
+      "parentUuid": "1fce88bc_8c7dafd5",
       "range": {
         "startLine": 78,
         "startChar": 19,
