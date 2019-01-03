@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "memmap.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -33,3 +34,30 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_EINT7_TP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static int command_memmaptest(int argc, char **argv)
+{
+	uintptr_t scp = 0x0f001000;
+	uintptr_t ap, scp2;
+	int i;
+
+	for (i = 0; i < 15; i++, scp += 0x10001000) {
+		int ret;
+
+		ret = memmap_scp_to_ap(scp, &ap);
+		if (ret != EC_SUCCESS) {
+			ccprintf("%08x INVAL\n", scp);
+			continue;
+		}
+
+		ret = memmap_ap_to_scp(ap, &scp2);
+
+		ccprintf("%08x %08x %s", scp, ap,
+			(ret == EC_SUCCESS && scp == scp2) ? "OK" : "BAD");
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(memmaptest, command_memmaptest,
+			     NULL,
+			     "Do remmap test");
