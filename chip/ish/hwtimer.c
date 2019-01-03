@@ -52,13 +52,15 @@ void __hw_clock_event_clear(void)
 uint32_t __hw_clock_source_read(void)
 {
 #if defined(CHIP_FAMILY_ISH3)
-	uint64_t tmp = HPET_MAIN_COUNTER_64;
-	uint32_t hi = tmp >> 32;
-	uint32_t lo = tmp;
-	uint32_t q, r;
-	const uint32_t d = CLOCK_FACTOR;
-	asm ("divl %4" : "=d" (r), "=a" (q) : "0" (hi), "1" (lo), "rm" (d) : "cc");
-	return q;
+	const register uint64_t tmp = HPET_MAIN_COUNTER_64;
+	const uint32_t divisor = CLOCK_FACTOR;
+	/* Modulating hi first ensures that the quotient fits in 32-bits */
+	const register uint32_t hi = ((uint32_t)(tmp >> 32)) % divisor;
+	const register uint32_t lo = tmp;
+
+	register uint32_t quotient;
+	asm("divl %3" : "=a"(quotient) : "d"(hi), "a"(lo), "rm"(divisor));
+	return quotient;
 #else
 	return HPET_MAIN_COUNTER;
 #endif
