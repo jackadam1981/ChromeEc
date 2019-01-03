@@ -318,9 +318,9 @@ static int uart_bitbang_receive_char(uint8_t *rxed_char, uint32_t *next_tick)
 	return EC_SUCCESS;
 }
 
+extern uint8_t *rxbuf;		/* borrow this from sps_tpm.c */
 void uart_bitbang_irq(void)
 {
-	uint8_t rx_buffer[20];
 	size_t i = 0;
 	uint32_t next_tick;
 
@@ -330,13 +330,13 @@ void uart_bitbang_irq(void)
 		uint32_t max_time;
 		int rv;
 new_char:
-		rv = uart_bitbang_receive_char(rx_buffer + i, &next_tick);
+		rv = uart_bitbang_receive_char(rxbuf + i, &next_tick);
 		gpio_clear_pending_interrupt(bitbang_config.rx_gpio);
 
 		if (rv != EC_SUCCESS)
 			break;
 
-		if (++i == sizeof(rx_buffer))
+		if (++i == sizeof(rxbuf))
 			break;
 		/*
 		 * For the duration of one byte wait for another byte from the
@@ -352,7 +352,7 @@ new_char:
 
 	} while (0);
 
-	QUEUE_ADD_UNITS(bitbang_config.uart_in, rx_buffer, i);
+	QUEUE_ADD_UNITS(bitbang_config.uart_in, rxbuf, i);
 }
 
 #if BITBANG_DEBUG

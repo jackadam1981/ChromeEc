@@ -88,7 +88,7 @@
  * is sent by the master (none for a read, 1 to 64 bytes for a write).
  */
 #define RXBUF_MAX 512			/* chosen arbitrarily */
-static uint8_t rxbuf[RXBUF_MAX];
+uint8_t rxbuf[RXBUF_MAX];
 static unsigned rxbuf_count;		/* num bytes received */
 static uint32_t bytecount;		/* Num of payload bytes when writing. */
 static uint32_t regaddr;		/* Address of register to read/write. */
