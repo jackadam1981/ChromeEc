@@ -52,13 +52,14 @@ void __hw_clock_event_clear(void)
 uint32_t __hw_clock_source_read(void)
 {
 #if defined(CHIP_FAMILY_ISH3)
-	uint64_t tmp = HPET_MAIN_COUNTER_64;
-	uint32_t hi = tmp >> 32;
-	uint32_t lo = tmp;
-	uint32_t q, r;
-	const uint32_t d = CLOCK_FACTOR;
-	asm ("divl %4" : "=d" (r), "=a" (q) : "0" (hi), "1" (lo), "rm" (d) : "cc");
-	return q;
+	/* This code has been optimized specifically for value of 12 */
+	BUILD_ASSERT(CLOCK_FACTOR == 12);
+	/*
+	 * Dividing by 12 is equivalent to multiplying by inverse mod (2^64) of
+	 * 3 then dividing by 4.
+	 */
+	#define INVERSE_MOD_3 0xAAAAAAAAAAAAAAABULL
+	return (HPET_MAIN_COUNTER_64 * INVERSE_MOD_3) >> 2;
 #else
 	return HPET_MAIN_COUNTER;
 #endif
