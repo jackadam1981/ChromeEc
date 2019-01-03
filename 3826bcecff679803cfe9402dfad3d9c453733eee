@@ -70,6 +70,24 @@
       "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4838c660_7c0c7231",
+        "filename": "power/cometlake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T01:33:50Z",
+      "side": 1,
+      "message": "Okay thank you.\nMay be we can add those power sequence related logic in cometlake.c itself and peripheral specific power on/of logic in baseboard or board.",
+      "parentUuid": "542318e2_b404614c",
+      "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
