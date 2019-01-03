@@ -52,13 +52,36 @@ void __hw_clock_event_clear(void)
 uint32_t __hw_clock_source_read(void)
 {
 #if defined(CHIP_FAMILY_ISH3)
-	uint64_t tmp = HPET_MAIN_COUNTER_64;
-	uint32_t hi = tmp >> 32;
-	uint32_t lo = tmp;
+	/* This code has been optimized specifically for value of 12 */
+	BUILD_ASSERT(CLOCK_FACTOR == 12);
+
+	const uint64_t tmp = HPET_MAIN_COUNTER_64;
+	const uint32_t hi = tmp >> 32;
+	const uint32_t d = (CLOCK_FACTOR >> 2);
+	uint32_t result = 0;
 	uint32_t q, r;
-	const uint32_t d = CLOCK_FACTOR;
-	asm ("divl %4" : "=d" (r), "=a" (q) : "0" (hi), "1" (lo), "rm" (d) : "cc");
-	return q;
+	/*
+	 * Divide upper 32-bits as if they were the least significant 32-bits by
+	 * 3 (CLOCK_FACTOR is 3 << 2); we will take care of the 2^2 later.
+	 * This divide operation will not overflow the 32-bit quotient.
+	 */
+	asm("divl %4"
+	    : "=d"(r), "=a"(q)
+	    : "0"(result), "1"(hi), "rm"(d)
+	    : "cc");
+	/*
+	 * Take quotient and shift up by 32 minus the the 2^2 we need to
+	 * account for from above division.
+	 */
+	result = q << 30;
+	/* If there is a remainder, add 1/3 or 2/3 manually */
+	if (r) {
+		--r;
+		result += (0x15555555 << r);
+	}
+	/* Add the bottom 32-bit division by CLOCK_FACTOR to our result */
+	result += ((uint32_t)tmp) / CLOCK_FACTOR;
+	return result;
 #else
 	return HPET_MAIN_COUNTER;
 #endif
