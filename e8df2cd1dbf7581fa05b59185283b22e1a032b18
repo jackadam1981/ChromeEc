@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ccae644_c909ac7c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-03T14:07:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003d6ce7_e3035a0c",
+      "range": {
+        "startLine": 508,
+        "startChar": 16,
+        "endLine": 508,
+        "endChar": 33
+      },
+      "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba155706_0373b9ec",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-02T20:42:58Z",
       "side": 1,
       "message": "Can you come up with a proper condition?",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 15
+      },
+      "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64e5f03b_3da08737",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-03T14:07:36Z",
+      "side": 1,
+      "message": "Sorry I\u0027m not sure what you mean, but very happy to change this!",
+      "parentUuid": "ba155706_0373b9ec",
       "range": {
         "startLine": 601,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "79715e95_d7e768a9",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-03T14:07:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f340f3_770da271",
+      "range": {
+        "startLine": 603,
+        "startChar": 3,
+        "endLine": 603,
+        "endChar": 55
+      },
+      "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9e30fe6_7ee6d989",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14038820_98b49c9e",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-03T14:07:36Z",
+      "side": 1,
+      "message": "Yes that was my assumption, added explicit check.",
+      "parentUuid": "f9e30fe6_7ee6d989",
+      "range": {
+        "startLine": 613,
+        "startChar": 32,
+        "endLine": 614,
+        "endChar": 24
+      },
+      "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
