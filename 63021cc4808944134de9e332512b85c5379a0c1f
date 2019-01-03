@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50015dbd_ce1c0084",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T22:03:15Z",
+      "side": 1,
+      "message": "nit: need a space.",
+      "range": {
+        "startLine": 727,
+        "startChar": 7,
+        "endLine": 727,
+        "endChar": 8
+      },
+      "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8261327b_d0984d9f",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T22:03:15Z",
+      "side": 1,
+      "message": "nit: I would remove it.",
+      "range": {
+        "startLine": 767,
+        "startChar": 3,
+        "endLine": 767,
+        "endChar": 64
+      },
+      "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbde9cd_a2fa8279",
+        "filename": "include/task.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T22:03:15Z",
+      "side": 1,
+      "message": "nit: Now we can get rid of it?",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 52
+      },
+      "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

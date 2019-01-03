@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a85b3af5_2438555c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-03T22:03:15Z",
+      "side": 1,
+      "message": "CR50_DEV is only for cr50 but this reset function is for all projects.",
+      "parentUuid": "64e5f03b_3da08737",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 15
+      },
+      "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22f340f3_770da271",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 9
