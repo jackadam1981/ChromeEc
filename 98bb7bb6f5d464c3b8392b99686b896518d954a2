@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd8bd6d2_ff65aecc",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T18:48:22Z",
+      "side": 1,
+      "message": "NARROV_VDC charger config needed?",
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe37093_423977be",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T18:48:22Z",
+      "side": 1,
+      "message": "need to remove?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 30
+      },
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2be9a0e_b47817c8",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T18:48:22Z",
+      "side": 1,
+      "message": "I think big core projects are 60W. Can you please add access to crosbug?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cabac6e_35c2eeba",
+        "filename": "baseboard/hatch/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T18:48:22Z",
+      "side": 1,
+      "message": "we can use common code and remove this file",
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
