@@ -123,6 +123,24 @@
       "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd42f91e_836c9208",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-03T02:05:46Z",
+      "side": 1,
+      "message": "Nicolas,after double confirm with our designer again about the reason. He suggested us set cache configuration before release CM4 just prevented 8KB/8KB cache size be touched not because of hardware limitation. So...I think if we can control the code size only located at 512KB-8KB*2. The best solution is all the cache setting move to SCP side. What do you think?",
+      "parentUuid": "ebd8f2e0_33c17a0f",
+      "revId": "d2347d8d4d07231ae09ccaeee6077ec5d6937ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
