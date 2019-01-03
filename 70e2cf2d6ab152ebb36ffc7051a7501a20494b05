@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dd940d3_13f0a35a",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-03T02:29:42Z",
+      "side": 0,
+      "message": "This is too small to read large data. Data loss happens after the first 20 byte transfer.\n\nInstead of this CL, this can be simply redefined like \"uint8_t rx_buffer[257];\".",
+      "range": {
+        "startLine": 323,
+        "startChar": 19,
+        "endLine": 323,
+        "endChar": 21
+      },
+      "revId": "70e2cf2d6ab152ebb36ffc7051a7501a20494b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
