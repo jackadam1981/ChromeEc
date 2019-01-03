@@ -34,6 +34,24 @@
       "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e0b371_f608f99c",
+        "filename": "power/cometlake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-03T01:05:07Z",
+      "side": 1,
+      "message": "I mean, we haven\u0027t enabled EN_PP5000_A, EN_A_RAILS so we need to enable them before moving to S5.",
+      "parentUuid": "56bfa6e7_05dfab5a",
+      "revId": "3826bcecff679803cfe9402dfad3d9c453733eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
