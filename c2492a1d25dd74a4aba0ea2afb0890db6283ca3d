@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91c1d829_924350d1",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0735151_81f7c745",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 13
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c6a78cd_40683b69",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97537727_cce8329a",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6a78cd_40683b69",
+      "range": {
+        "startLine": 688,
+        "startChar": 11,
+        "endLine": 688,
+        "endChar": 21
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "55afaf3d_c357f8ba",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "The USB TCPC spec. uses 3-bits to encode SOP* in the RX_BUF_FRAME_TYPE register. This include SOP_DBG\u0027, SOP_DBG\u0027\u0027, and Cable Reset.",
+      "parentUuid": "945ec34e_76159c4c",
+      "range": {
+        "startLine": 690,
+        "startChar": 24,
+        "endLine": 690,
+        "endChar": 29
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0820b5be_d2fcf3b1",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e8d6e2_65f5f1bb",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0820b5be_d2fcf3b1",
+      "range": {
+        "startLine": 795,
+        "startChar": 2,
+        "endLine": 795,
+        "endChar": 11
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c860056e_097f9739",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0cd7b63_f5ad384f",
+      "range": {
+        "startLine": 797,
+        "startChar": 4,
+        "endLine": 797,
+        "endChar": 10
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0aa0ac8_374dae99",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6fe8a952_2dd514c9",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0aa0ac8_374dae99",
+      "range": {
+        "startLine": 799,
+        "startChar": 11,
+        "endLine": 799,
+        "endChar": 12
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d19fa97b_d8910014",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d59f56_c53e4a95",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-04T18:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19fa97b_d8910014",
+      "range": {
+        "startLine": 3279,
+        "startChar": 21,
+        "endLine": 3279,
+        "endChar": 27
+      },
+      "revId": "c2492a1d25dd74a4aba0ea2afb0890db6283ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
