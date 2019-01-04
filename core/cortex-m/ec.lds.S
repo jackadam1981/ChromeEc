@@ -271,7 +271,10 @@ SECTIONS
 #else
     } > FLASH
 #endif
+
+#if defined(CONFIG_FLASH_PHYSICAL)
     __ro_end = . ;
+#endif
 
     .bss : {
 	/*
@@ -328,7 +331,10 @@ SECTIONS
     } > IRAM
 #endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
-#ifdef CONFIG_EXTERNAL_STORAGE
+#if !defined(CONFIG_FLASH_PHYSICAL)
+    __ro_end = . ;
+    .data : {
+#elif defined(CONFIG_EXTERNAL_STORAGE)
     .data : AT(LOADADDR(.rodata) + SIZEOF(.rodata)) {
 #else
     .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
