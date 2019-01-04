@@ -22,6 +22,30 @@
       "revId": "a93dcb140cdacdb7bf4587554d39712bece6703b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d236f4_10f50b72",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-04T21:22:45Z",
+      "side": 1,
+      "message": "I believe the AP has to be running to run the EC diagnostics - so this state doesn\u0027t need to be saved through deep sleep.",
+      "parentUuid": "3a3fea5e_820e0b32",
+      "range": {
+        "startLine": 140,
+        "startChar": 23,
+        "endLine": 140,
+        "endChar": 55
+      },
+      "revId": "a93dcb140cdacdb7bf4587554d39712bece6703b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
