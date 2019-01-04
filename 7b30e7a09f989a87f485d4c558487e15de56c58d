@@ -70,6 +70,24 @@
       "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef18e61_60470313",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-04T01:06:13Z",
+      "side": 1,
+      "message": "In our FreeRTOS code dma_api.c.. we have set it as\n            drv_write_reg32(REMAP_CFG1, 0x07060504);\n            drv_write_reg32(REMAP_CFG2, 0x02010008);\n            drv_write_reg32(REMAP_CFG3, 0x10090A03);",
+      "parentUuid": "d7fdb8b9_a138b4a4",
+      "revId": "7b30e7a09f989a87f485d4c558487e15de56c58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
