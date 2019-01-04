@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28628f93_23396c61",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-04T21:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a92719_6b850456",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ff3fadc_addac078",
         "filename": "board/cr50/closed_source_set1.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-03T21:07:44Z",
       "side": 1,
       "message": "Arent these pins and gpios already setup in gpio.inc. I think you just need to use gpio_set_flags to enable necessary outputs/pullups and then change the drive strength.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2dd4aea_0e7be94e",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-04T21:22:06Z",
+      "side": 1,
+      "message": "The PINMUX entries in gpio.inc update GPIOn_GPIOn_SEL and DIOBn_CTL registers, but don\u0027t write DIOBn_SEL.\n\ngpio_set_flags() only updates GPIO registers doesn\u0027t write to any of the PINMUX registers (DIOBn_SEL, DIOBn_CTL, and GPIOn_GPIOn_SEL).\n\nAt a bare minimum the writes to DIOBn_SEL are required.  The other registers have reasonable defaults as setup by gpio.inc.  The danger is that this code is then dependent on gpio.inc doing the correct thing.\n\nThe code savings appears to be 88 bytes between the bare minimum, and explicitly setting all required PINMUX settings.",
+      "parentUuid": "1ff3fadc_addac078",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b32d2f4b_392903c8",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-04T21:22:06Z",
+      "side": 1,
+      "message": "This path is already covered usb_i2c_board_enable() calls usb_i2c_board_is_enabled(), which returns false if close source set 1 is active.",
+      "parentUuid": "1849ef93_9918fc88",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f25ef4c_9d418479",
         "filename": "common/ccd_config.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-03T21:07:44Z",
       "side": 1,
       "message": "This isn\u0027t true. Write protect is just one part of factory mode and can be controlled independently. Maybe you should rename this to ccd_wp_force_disabled or we should add another ccd flag that tracks if factory mode is enabled.",
+      "range": {
+        "startLine": 684,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 55
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cba488c_87bf171b",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-04T21:22:06Z",
+      "side": 1,
+      "message": "Added new internal flag CCD_FLAG_FACTORY_MODE_ENABLED to track the factory mode state.",
+      "parentUuid": "0f25ef4c_9d418479",
       "range": {
         "startLine": 684,
         "startChar": 0,
