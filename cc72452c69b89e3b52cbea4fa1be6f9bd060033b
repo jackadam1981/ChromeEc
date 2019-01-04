@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ef1df8a9_0f9b99a2",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-04T23:17:56Z",
+      "side": 1,
+      "message": "ok then keep 44 through 46. I think using gpio_set_flags to configure the pins is more readable.",
+      "parentUuid": "b2dd4aea_0e7be94e",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1849ef93_9918fc88",
         "filename": "board/cr50/usb_i2c.c",
         "patchSetId": 5
@@ -140,6 +164,29 @@
       "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f273288_3457a07a",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-04T23:17:56Z",
+      "side": 1,
+      "message": "Wont !usb_i2c_board_is_enabled be true here and ina_connect will be called",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "cc72452c69b89e3b52cbea4fa1be6f9bd060033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

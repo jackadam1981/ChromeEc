@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5164316_4c00f1da",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-04T23:17:56Z",
+      "side": 1,
+      "message": "Just return ccd_get_flag(CCD_FLAG_FACTORY_MODE_ENABLED)",
+      "revId": "d9d92097ebbe7a79ae867d32e5a3b076767d2954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
