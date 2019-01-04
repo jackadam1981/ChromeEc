@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "fdcc05a5_0444df72",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-04T04:37:36Z",
+      "side": 1,
+      "message": "Oh right sorry. I\u0027ve removed this - the idea was for it to show up by default when doing development, but I couldn\u0027t see such a thing (equivalent of CR50_DEV for all projects). I am guessing that always showing this will not do any harm?",
+      "parentUuid": "a85b3af5_2438555c",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 15
+      },
+      "revId": "e8df2cd1dbf7581fa05b59185283b22e1a032b18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22f340f3_770da271",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 9

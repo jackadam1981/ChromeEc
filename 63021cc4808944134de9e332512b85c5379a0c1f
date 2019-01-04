@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43e96362_9e87bcfd",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-04T04:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50015dbd_ce1c0084",
+      "range": {
+        "startLine": 727,
+        "startChar": 7,
+        "endLine": 727,
+        "endChar": 8
+      },
+      "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8261327b_d0984d9f",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2b1d7b42_82f8eef9",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-04T04:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8261327b_d0984d9f",
+      "range": {
+        "startLine": 767,
+        "startChar": 3,
+        "endLine": 767,
+        "endChar": 64
+      },
+      "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbbde9cd_a2fa8279",
         "filename": "include/task.h",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71add37_1b3cfab8",
+        "filename": "include/task.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-04T04:37:36Z",
+      "side": 1,
+      "message": "Good point, reworded. I\u0027ve left something as I think it should not be standard practise to call multiple times.",
+      "parentUuid": "dbbde9cd_a2fa8279",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 52
+      },
+      "revId": "63021cc4808944134de9e332512b85c5379a0c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
