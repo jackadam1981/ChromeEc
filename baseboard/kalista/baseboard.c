@@ -481,6 +481,9 @@ static void board_init(void)
 	board_extpower();
 
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		gpio_enable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
