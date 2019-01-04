@@ -564,6 +564,11 @@ static void charge_manager_get_best_charge_port(int *new_port,
 
 	}
 
+	ccprintf("dn:%s: new_port=%d new_sup=%d cur=%d vol=%d\n",
+		 __func__, port, supplier,
+		 available_charge[supplier][port].current,
+		 available_charge[supplier][port].voltage);
+	cflush();
 	*new_port = port;
 	*new_supplier = supplier;
 }
