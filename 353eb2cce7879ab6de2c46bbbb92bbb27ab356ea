@@ -46,6 +46,30 @@
       "revId": "353eb2cce7879ab6de2c46bbbb92bbb27ab356ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abcb6a05_c4e1e7d1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-04T18:48:07Z",
+      "side": 1,
+      "message": "Nevermind. The multiplication by modulus inversion will only work if we can do 64-bit multiplication (which we cannot do on the ISH, right)?\n\nAssuming we don\u0027t have access to 64-bit multiple, I replaces this code with your suggested snippet. Thanks again for reviewing!",
+      "parentUuid": "4e317b46_1c2f0bc3",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "353eb2cce7879ab6de2c46bbbb92bbb27ab356ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
