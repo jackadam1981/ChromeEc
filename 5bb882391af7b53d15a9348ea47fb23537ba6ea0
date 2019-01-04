@@ -22,6 +22,30 @@
       "revId": "5bb882391af7b53d15a9348ea47fb23537ba6ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d220e10e_71acf608",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-04T02:11:47Z",
+      "side": 1,
+      "message": "I think we do. (linker fails otherwise:\n/usr/x86_64-pc-linux-gnu/arm-none-eabi/binutils-bin/2.27.0/ld.bfd.real:build/kukui_scp/firmware_image.lds:2389: syntax error\n)",
+      "parentUuid": "bd404343_158c85f2",
+      "range": {
+        "startLine": 95,
+        "startChar": 21,
+        "endLine": 95,
+        "endChar": 46
+      },
+      "revId": "5bb882391af7b53d15a9348ea47fb23537ba6ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
