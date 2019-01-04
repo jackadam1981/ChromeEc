@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93d061ed_c48f9408",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8606,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-04T21:26:44Z",
+      "side": 1,
+      "message": "do we need to release this lock somewhere (e.g. release_gec_lock)",
+      "range": {
+        "startLine": 8606,
+        "startChar": 6,
+        "endLine": 8606,
+        "endChar": 22
+      },
+      "revId": "606260b02ef44e58b27c722e7c06de72d0ef8570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
