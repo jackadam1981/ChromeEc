@@ -333,6 +333,24 @@
     },
     {
       "key": {
+        "uuid": "01c82ca3_d43b785d",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2019-01-04T01:26:20Z",
+      "side": 1,
+      "message": "Do we really want to make this change in motion_sense.c given that we won\u0027t use hid code for now?",
+      "parentUuid": "7d9a7903_c59db568",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b848725_9dce3a8b",
         "filename": "common/motion_sense_hid.c",
         "patchSetId": 5
@@ -676,6 +694,24 @@
       "writtenOn": "2018-12-11T22:24:30Z",
       "side": 1,
       "message": "LID variables are not needed.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9c7d5e_76971f1d",
+        "filename": "test/test_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2019-01-04T01:26:20Z",
+      "side": 1,
+      "message": "Actually they are for the \u0027rotate\u0027 function in the driver to work/ not throw compile errors",
+      "parentUuid": "738dd0dd_b24dcd56",
       "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
