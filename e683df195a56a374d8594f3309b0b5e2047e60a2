@@ -73,6 +73,53 @@
     },
     {
       "key": {
+        "uuid": "05027355_9db30380",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-04T21:47:40Z",
+      "side": 1,
+      "message": "I also think that this should be a union struct or something to 1) avoid casts 2) make it very explicit what is going on. Thoughts?",
+      "parentUuid": "d1ddfa7b_6252d380",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 17
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e304c6b6_ec1b1133",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-04T21:47:40Z",
+      "side": 1,
+      "message": "where is the non error case for SOP\u0027 and SOP\u0027\u0027?",
+      "range": {
+        "startLine": 663,
+        "startChar": 2,
+        "endLine": 668,
+        "endChar": 17
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb383492_1605b343",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1

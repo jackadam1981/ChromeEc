@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b86e0192_bd8ac0d2",
+        "filename": "chip/host/usb_pd_phy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-04T21:47:40Z",
+      "side": 1,
+      "message": "since you took it this far, how to you feel about adding some unit tests (or did I just miss them)?",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 35
+      },
+      "revId": "732eb9b3f6c2dd27fdd007f1b0a2f20d39c4a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
