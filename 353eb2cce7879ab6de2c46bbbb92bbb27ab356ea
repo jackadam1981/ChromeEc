@@ -22,6 +22,30 @@
       "revId": "353eb2cce7879ab6de2c46bbbb92bbb27ab356ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e317b46_1c2f0bc3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-04T18:04:25Z",
+      "side": 1,
+      "message": "Your version is easier to read and more general purpose, thank you for sharing it.\n\nThis got me thinking though about another way. Please see new patch set. It is much simpler and faster (but it is still tuned to value of 12, which I think should be okay)",
+      "parentUuid": "df39865d_b6aa2373",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "353eb2cce7879ab6de2c46bbbb92bbb27ab356ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
