@@ -288,7 +288,7 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 
 static void bc12_detect(int port)
 {
-	int device_type, charger_status;
+	int device_type, chg_status;
 	struct charge_port_info charge;
 	int type;
 
@@ -296,15 +296,16 @@ static void bc12_detect(int port)
 
 	if (usb_charger_port_is_sourcing_vbus(port)) {
 		/* If we're sourcing VBUS then we're not charging */
-		device_type = charger_status = 0;
+		device_type = chg_status = 0;
 	} else {
 		/* Set device type */
 		device_type = pi3usb9281_get_device_type(port);
-		charger_status = pi3usb9281_get_charger_status(port);
+		chg_status = pi3usb9281_get_charger_status(port);
 	}
 
 	/* Debounce pin plug order if we detect a charger */
-	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
+	if (device_type || PI3USB9281_CHG_STATUS_ANY(chg_status)) {
+		timestamp_t timeout;
 		/* next operation might trigger a detach interrupt */
 		pi3usb9281_disable_interrupts(port);
 		/*
@@ -347,13 +348,20 @@ static void bc12_detect(int port)
 		pi3usb9281_set_interrupt_mask(port, 0xff);
 
 		/* Re-read ID registers */
-		device_type = pi3usb9281_get_device_type(port);
-		charger_status = pi3usb9281_get_charger_status(port);
+		timeout.val = get_time().val + 200 * MSEC;
+		do {
+			device_type = pi3usb9281_get_device_type(port);
+			chg_status = pi3usb9281_get_charger_status(port);
+			if (device_type ||
+					PI3USB9281_CHG_STATUS_ANY(chg_status))
+				break;
+			msleep(40);
+		} while (get_time().val < timeout.val);
 	}
 
 	/* Attachment: decode + update available charge */
-	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
-		if (PI3USB9281_CHG_STATUS_ANY(charger_status))
+	if (device_type || PI3USB9281_CHG_STATUS_ANY(chg_status)) {
+		if (PI3USB9281_CHG_STATUS_ANY(chg_status))
 			type = CHARGE_SUPPLIER_PROPRIETARY;
 		else if (device_type & PI3USB9281_TYPE_CDP)
 			type = CHARGE_SUPPLIER_BC12_CDP;
@@ -364,8 +372,7 @@ static void bc12_detect(int port)
 		else
 			type = CHARGE_SUPPLIER_OTHER;
 
-		charge.current = pi3usb9281_get_ilim(device_type,
-						     charger_status);
+		charge.current = pi3usb9281_get_ilim(device_type, chg_status);
 		charge_manager_update_charge(type, port, &charge);
 	} else { /* Detachment: update available charge to 0 */
 		charge.current = 0;
