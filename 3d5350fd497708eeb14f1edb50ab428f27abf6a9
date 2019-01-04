@@ -189,6 +189,30 @@
       "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23676acb_f82885fb",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-04T22:28:22Z",
+      "side": 1,
+      "message": "It should work like that. I\u0027m sorry for confusion. Currently we have bugs in HPET. one is with \"xxx_read() with #DE error\" and the other is with comparator. The value in comparator latched at enable and should be increased automatically by H/W but it\u0027s not working. Here, we just wanted to say we are coming with new patch for HPET.",
+      "parentUuid": "264c9ba6_51d3bc87",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "3d5350fd497708eeb14f1edb50ab428f27abf6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
