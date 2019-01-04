@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64eaeac7_5553ad72",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-04T19:29:11Z",
+      "side": 1,
+      "message": "I am not sure if it is ok to initiate reboot only if magnetometer is present?\ni.e. \n#ifdef CONFIG_MAG_LIS2MDL\n                ret \u003d st_raw_write8(s-\u003eport, s-\u003eaddr, LSM6DSM_CTRL3_ADDR,\n\t\t\t\tLSM6DSM_BOOT);\n\t\tif (ret !\u003d EC_SUCCESS)\n\t\t\tgoto err_unlock;\n\n\t\tmsleep(20);\n#endif\n\nPlus point - additional delay is introduced only in those boards where magnetometer is present. Flip side - variable bootup delay may get introduced.",
+      "revId": "bca54cabbbe003c5e21ee2389c3b2c1047b34e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
