@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec30a8d1_54cc15d6",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-05T00:20:09Z",
+      "side": 1,
+      "message": "I see implementation of atomic functions in atomic.h uses \"lock\" prefix and I also kept it (T.T lazy) when I modified the file but actually we don\u0027t need the \"lock\" prefix since ISH has one core and it is obviously true that we don\u0027t need to worry about other modules(DMA ...) access(ruin) to those memory location(variable) during runtime.\n\nI don\u0027t know if core(Minute-IA) implemented lock prefix signal with its SRAM(definitely not cache lock) or not. but anyway, I don\u0027t think they modified existing implementation in core and the prefix increases opcode size so let\u0027s remove \"lock\".",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d46cb6f8_97a1dcba",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-05T00:20:09Z",
+      "side": 1,
+      "message": "same.. let\u0027s remove lock",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
