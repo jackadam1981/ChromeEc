@@ -22,6 +22,30 @@
       "revId": "732eb9b3f6c2dd27fdd007f1b0a2f20d39c4a9bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f62c95_fbff02c0",
+        "filename": "chip/host/usb_pd_phy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-05T00:13:56Z",
+      "side": 1,
+      "message": "I plan to add tests in the new pd stack because the current pd stack doesn\u0027t support communication with SOP\u0027 and SOP\u0027\u0027.",
+      "parentUuid": "b86e0192_bd8ac0d2",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 35
+      },
+      "revId": "732eb9b3f6c2dd27fdd007f1b0a2f20d39c4a9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
