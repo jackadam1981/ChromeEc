@@ -70,6 +70,30 @@
       "revId": "cc446ffdc3dcc916e6fcd487f25fec1b4844a0e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2744be_7e085b48",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2019-01-05T01:02:46Z",
+      "side": 1,
+      "message": "1. Format of register sets is \"32bit Protected mode\", which is 28 bytes(6 registers including unused bytes/bits)\n2. Instruction pointer, Data pointer and Opcode registers does not need to be initialized since these registers will be changed when task started.\n3. \"/* 28 bytes header + 80 bytes registers */\n     26 bytes header is Execution Environment Registers, control, status, tag, Opcode,    \n Instruction and Data registers. Total is 28 bytes. \n 80 bytes are 8 registers of 10bytes general purpose data registers. \n4. Control register should be initialized for FPU configuration per task.",
+      "parentUuid": "854e98e3_e05e5d0e",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 51
+      },
+      "revId": "cc446ffdc3dcc916e6fcd487f25fec1b4844a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
