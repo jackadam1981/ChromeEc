@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5e797b6_9ce9d361",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-06T06:09:48Z",
+      "side": 1,
+      "message": "We may have to do as a separate change, since port_mutex array also needs to be fixed?",
+      "parentUuid": "6f721e5b_45ff02b1",
+      "range": {
+        "startLine": 40,
+        "startChar": 30,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a2fd2b1_90795fd1",
         "filename": "common/i2c_master.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-03T22:43:50Z",
       "side": 1,
       "message": "do you want to print an error in the failure case?\n\nAlso, can we just compare port \u003c CONFIG_PORT_COUNT",
+      "range": {
+        "startLine": 766,
+        "startChar": 1,
+        "endLine": 766,
+        "endChar": 24
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f3c2390_d2d1b84c",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-06T06:09:48Z",
+      "side": 1,
+      "message": "Sure, I can print an error message. Also I believe you meant I2C_PORT_COUNT and not CONFIG_PORT_COUNT. I didn\u0027t see anything regarding CONFIG_PORT_COUNT in codesearch",
+      "parentUuid": "7a2fd2b1_90795fd1",
       "range": {
         "startLine": 766,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fba3794c_547125af",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-06T06:09:48Z",
+      "side": 1,
+      "message": "system_is_locked is checking for lock is applied(RO_PROTECT_NOW is set) in addition WP is asserted. I am not sure if there are cases where WP is asserted but lock is not applied. That might lead to TCPC I2C tunnels left unprotected.",
+      "parentUuid": "42e27bb2_f4767674",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 1
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c413f2a_0c1931ba",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-03T22:43:50Z",
       "side": 1,
       "message": "can we loop on CONFIG_USB_PD_PORT_COUNT instead (dragonegg has 3 ports for instance)\n\nthe global tcpc_config_t *tcpc_config has the i2c_port that we need.",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 6
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f9bbe6_b0846ffd",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-06T06:09:48Z",
+      "side": 1,
+      "message": "Sure, that works perfectly fine to me.",
+      "parentUuid": "4c413f2a_0c1931ba",
       "range": {
         "startLine": 379,
         "startChar": 0,
