@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "413ec29d_071e0b0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-01-06T02:28:39Z",
+      "side": 1,
+      "message": "EC won’t interfere i2c transaction between PS8625 and EEPROM.\nPS8625 will read EEPROM during system power on.\nAnd EC only write EEPROM once in factory product line(already power on to OS).\nIt won’t happen simultaneous access due to we use program EDID by ectool.",
+      "parentUuid": "5217b3eb_e1114c6b",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56edfbf2_dbf670db",
         "filename": "board/karma/gpio.inc",
         "patchSetId": 3
