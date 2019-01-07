@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bbb32829_29c2bdb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-07T17:38:31Z",
+      "side": 1,
+      "message": "\u003e PS8625 will read EEPROM during system power on\n\nCan you elaborate it? Exactly what causes PS8625 to read EEPROM? S3-\u003eS0 transition or it\u0027s triggered by software? I understand the main scenario. I\u0027m just trying to think of corner cases.",
+      "parentUuid": "413ec29d_071e0b0c",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56edfbf2_dbf670db",
         "filename": "board/karma/gpio.inc",
         "patchSetId": 3
