@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "36f40d35_b40333a1",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-07T03:51:31Z",
+      "side": 1,
+      "message": "This function was moved to the cometlake power sequencing CL.",
+      "parentUuid": "13ae1b32_6c314fbd",
+      "revId": "11911df1f0e768355213f2a66b0e4b118b6f33da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e17d99d6_594cc5bc",
         "filename": "board/hatch/gpio.inc",
         "patchSetId": 4
