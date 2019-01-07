@@ -46,6 +46,30 @@
       "revId": "606260b02ef44e58b27c722e7c06de72d0ef8570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455fc188_fd58e4ee",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8606,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T16:45:04Z",
+      "side": 1,
+      "message": "Oh I see, thanks.\n\nThe release_gec_lock in out: may try to release a lock it doesn\u0027t have own, right? Should we reorganize the code or add a comment at least?\n\nThe conditions are \ninterfaces \u003d COMM_DEV\ncomm_init_dev returns 0\ncomm_init_buffer returns 1 (it doesn\u0027t really matter from here though)",
+      "parentUuid": "85590ed1_8ce5c617",
+      "range": {
+        "startLine": 8606,
+        "startChar": 6,
+        "endLine": 8606,
+        "endChar": 22
+      },
+      "revId": "606260b02ef44e58b27c722e7c06de72d0ef8570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
