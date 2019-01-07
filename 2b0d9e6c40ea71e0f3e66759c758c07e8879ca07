@@ -22,6 +22,30 @@
       "revId": "2b0d9e6c40ea71e0f3e66759c758c07e8879ca07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a533b5_af660707",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-01-07T17:33:29Z",
+      "side": 0,
+      "message": "Looks like this \"PWRBTN_STATE_WAS_OFF\" pre-dates the existence of PWRBTN_STATE_BOOT_KB_RESET and originates from:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/7b155fb8aca5784c3e85f0853869d4add2a099f0/chip/lm4/power_button.c#328\n\nPWRBTN_STATE_BOOT_KB_RESET and PWRBTN_STATE_WAS_OFF are similar, but I think it makes sense to always have PWRBTN_STATE_INIT_ON go to PWRBTN_STATE_BOOT_KB_RESET, and only use PWRBTN_STATE_WAS_OFF when stretching a press of the physical button.",
+      "parentUuid": "82faa11b_08894528",
+      "range": {
+        "startLine": 374,
+        "startChar": 4,
+        "endLine": 374,
+        "endChar": 39
+      },
+      "revId": "2b0d9e6c40ea71e0f3e66759c758c07e8879ca07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
