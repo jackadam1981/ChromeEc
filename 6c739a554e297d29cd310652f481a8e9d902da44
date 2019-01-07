@@ -22,6 +22,30 @@
       "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda72a5c_dcf7c786",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-07T19:16:54Z",
+      "side": 1,
+      "message": "Let me check USB_POWER_DELIVERY. CONFIG_USB_PD_PORT_COUNT did not work because tcpc_config was not defined in plankton",
+      "parentUuid": "321db4f9_6ae3d1e4",
+      "range": {
+        "startLine": 354,
+        "startChar": 7,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
