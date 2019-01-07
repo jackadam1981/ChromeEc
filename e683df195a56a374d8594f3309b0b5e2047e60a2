@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "32cdf18f_2709e9bc",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-07T15:26:15Z",
+      "side": 1,
+      "message": "This \"should\" be handled in the while loop on 647. I need to add the break",
+      "parentUuid": "21bf34e2_8756f3fb",
+      "range": {
+        "startLine": 663,
+        "startChar": 2,
+        "endLine": 668,
+        "endChar": 17
+      },
+      "revId": "e683df195a56a374d8594f3309b0b5e2047e60a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb383492_1605b343",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
