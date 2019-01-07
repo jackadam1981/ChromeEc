@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b08fe45_d7e83afc",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T16:59:38Z",
+      "side": 1,
+      "message": "should this still be a while loop since every path now exits the loop in the first iteration?",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 18
+      },
+      "revId": "255144d25fb64ec823a712fc0aef2ceec381d5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
