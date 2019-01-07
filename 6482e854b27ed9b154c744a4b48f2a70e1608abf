@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ccb09c7_f1d5ad90",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-07T20:10:18Z",
+      "side": 1,
+      "message": "This number is empirical. FYI, the default value of RDD_MAX_WAIT_TIME_COUNTER is 0xc80, which can be translated to around 10 milliseconds.",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
