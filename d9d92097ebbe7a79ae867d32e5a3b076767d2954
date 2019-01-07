@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e3b0bdb_cf8df839",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-07T21:47:52Z",
+      "side": 1,
+      "message": "Yes - this is the default drive strength defined by the Cr50 silicon.  The PINMUX entries in gpio.inc update the DIO_CTL register but only change the IE (input enable), PD (pulldown), and PU (pullup) fields - the DS (drive strength) field is not modified.  I also checked the register values after booting with and without these lines included to verify these lines are not needed.",
+      "parentUuid": "d5da59ed_f5cfb7e6",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "d9d92097ebbe7a79ae867d32e5a3b076767d2954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0567d1a3_da5579b1",
         "filename": "board/cr50/closed_source_set1.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "d9d92097ebbe7a79ae867d32e5a3b076767d2954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af716304_7b79e0db",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-07T21:47:52Z",
+      "side": 1,
+      "message": "No - but the EVT version of the hardware now has an external pull-up.  Plus this signal is not yet driven by the closed source EC.  If the EC adds support for this signal then I\u0027ll have to test whether the internal pull-up is needed at that time.",
+      "parentUuid": "0567d1a3_da5579b1",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "d9d92097ebbe7a79ae867d32e5a3b076767d2954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
