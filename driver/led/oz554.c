@@ -91,14 +91,8 @@ void backlight_enable_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&backlight_enable_deferred_data, 30 * MSEC);
 }
 
-static void on_chipset_resume(void)
+static void init_oz554(void)
 {
 	gpio_enable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, on_chipset_resume, HOOK_PRIO_DEFAULT);
-
-static void on_chipset_shutdown(void)
-{
-	gpio_disable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, on_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, init_oz554, HOOK_PRIO_DEFAULT);
