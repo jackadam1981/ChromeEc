@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "41b1b867_4ce4fa58",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-07T15:23:11Z",
+      "side": 1,
+      "message": "Looking at the code further, it seems port_mutex does not need to be updated. i2c_lock function ensures multi port to controller translation and then using that to prevent out of bound access. \n\nI will update port_protected array to be of size I2C_PORT_COUNT in this CL itself.",
+      "parentUuid": "d5e797b6_9ce9d361",
+      "range": {
+        "startLine": 40,
+        "startChar": 30,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a2fd2b1_90795fd1",
         "filename": "common/i2c_master.c",
         "patchSetId": 1
