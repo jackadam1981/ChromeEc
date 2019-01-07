@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5def696f_13c154b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2019-01-07T23:00:03Z",
+      "side": 1,
+      "message": "You should make sure to fully shut down the battery and then plug in AC power (AKA simulate factory ship mode).  That was what triggered the original bug.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c79abec6365e3394e8eb323ab8546b0f39c9318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0304e2d_f43af31b",
         "filename": "power/sdm845.c",
         "patchSetId": 1
