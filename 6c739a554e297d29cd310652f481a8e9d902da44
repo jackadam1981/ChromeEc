@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "321db4f9_6ae3d1e4",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T19:13:38Z",
+      "side": 1,
+      "message": "can you use CONFIG_USB_POWER_DELIVERY instead? It is almost a logical parent to CONFIG_USB_PD_TCPM_TCPCI\n\nor even better, can you use #ifdef CONFIG_USB_PD_PORT_COUNT (I don\u0027t know if there are any causes that don\u0027t define tpcp_config though)",
+      "range": {
+        "startLine": 354,
+        "startChar": 7,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
