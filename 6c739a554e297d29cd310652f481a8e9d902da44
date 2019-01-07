@@ -46,6 +46,30 @@
       "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48c615a_58c0dde0",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-07T21:45:38Z",
+      "side": 1,
+      "message": "Checking for CONFIG_USB_POWER_DELIVERY does not help in samus, coffeecake, hoho, twinkie where tcpc_config is not defined.",
+      "parentUuid": "cda72a5c_dcf7c786",
+      "range": {
+        "startLine": 354,
+        "startChar": 7,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
