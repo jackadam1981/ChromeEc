@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ee7111f2_fc8ff3d2",
+        "filename": "power/cometlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-07T03:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a1dedf_19940218",
+      "revId": "c58cb2a6e93c3a20d36690d1c07e9977ebac61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc6e1a96_29aaed70",
         "filename": "power/cometlake.c",
         "patchSetId": 5
@@ -48,6 +66,30 @@
       "writtenOn": "2019-01-03T21:21:30Z",
       "side": 1,
       "message": "is there a plan to add logic here?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 8
+      },
+      "revId": "c58cb2a6e93c3a20d36690d1c07e9977ebac61ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b2b056_d4cae371",
+        "filename": "power/cometlake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-07T03:51:20Z",
+      "side": 1,
+      "message": "No, this should have been removed, what I was going to put there I put below the switch statement.",
+      "parentUuid": "fc6e1a96_29aaed70",
       "range": {
         "startLine": 114,
         "startChar": 0,
