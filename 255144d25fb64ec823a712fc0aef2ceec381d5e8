@@ -22,6 +22,30 @@
       "revId": "255144d25fb64ec823a712fc0aef2ceec381d5e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb114e74_93283723",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-01-07T17:13:36Z",
+      "side": 1,
+      "message": "Actually I should not have added the \"else\". pd_dequeue_bits needs to be called repeatedly until SOP is found.",
+      "parentUuid": "7b08fe45_d7e83afc",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 18
+      },
+      "revId": "255144d25fb64ec823a712fc0aef2ceec381d5e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
