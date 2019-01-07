@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa434f75_fb3fbf93",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T17:36:27Z",
+      "side": 1,
+      "message": "I also realized that reading this 64-bit register could tear while we were reading it in 2 32-bit parts. I am open for any better optimizations here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
