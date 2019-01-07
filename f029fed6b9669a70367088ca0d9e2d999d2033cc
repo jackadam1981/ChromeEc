@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f37f124a_8027f887",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-07T21:45:23Z",
+      "side": 1,
+      "message": "nit: Why do you need this?",
+      "range": {
+        "startLine": 858,
+        "startChar": 12,
+        "endLine": 858,
+        "endChar": 25
+      },
+      "revId": "f029fed6b9669a70367088ca0d9e2d999d2033cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e665124_d8799333",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-07T21:45:23Z",
+      "side": 1,
+      "message": "Is there anything which will break if we remove it (set it by default)?",
+      "range": {
+        "startLine": 3279,
+        "startChar": 7,
+        "endLine": 3279,
+        "endChar": 31
+      },
+      "revId": "f029fed6b9669a70367088ca0d9e2d999d2033cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
