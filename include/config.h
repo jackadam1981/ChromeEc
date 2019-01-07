@@ -1081,6 +1081,12 @@
 #undef CONFIG_CHIP_PANIC_BACKUP
 
 /*
+ * Address to write panic data to (struct panic_data). If undefined, panic data
+ * goes at the end of RAM.
+ */
+#undef CONFIG_PANIC_DATA_ADDR
+
+/*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.
  */
