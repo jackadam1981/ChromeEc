@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caf42084_d13484b9",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T17:21:25Z",
+      "side": 1,
+      "message": "nit:\n\nI find this a little difficult to read when this is interleaved, what do you think about writing it similar to:\n\n#ifdef DECODE_SOP\nif (val \u003d\u003d SOP || val \u003d\u003d SOP\u0027 || val \u003d\u003d SOP\u0027\u0027)\n   break;\n#else\nif (val \u003d\u003d SOP)\n  break;\nelse if (val \u003d\u003d SOP\u0027)\n  cprint(\"sop\u0027)\n  return error;\n...\n\n#endif\n\nthoughts?",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 3
+      },
+      "revId": "9bcbf26b4822c886d64c6e9c864dd51df30b80d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
