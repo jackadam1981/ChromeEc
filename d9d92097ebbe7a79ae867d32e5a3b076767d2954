@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d5da59ed_f5cfb7e6",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-07T21:22:55Z",
+      "side": 1,
+      "message": "Is this the default drive strength?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "d9d92097ebbe7a79ae867d32e5a3b076767d2954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0567d1a3_da5579b1",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-07T21:22:55Z",
+      "side": 1,
+      "message": "Is this pull up configured somewhere else now?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 40
+      },
+      "revId": "d9d92097ebbe7a79ae867d32e5a3b076767d2954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5164316_4c00f1da",
         "filename": "common/ccd_config.c",
         "patchSetId": 6
