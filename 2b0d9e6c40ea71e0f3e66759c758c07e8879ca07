@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82faa11b_08894528",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T16:34:08Z",
+      "side": 0,
+      "message": "what affect does this have removing this clause (or what was its previous intent)? Before did we allow the DUT be powered off while it was auto turning on? (and not we ignore it).\n\nThis seems right, just making sure I understand.",
+      "range": {
+        "startLine": 374,
+        "startChar": 4,
+        "endLine": 374,
+        "endChar": 39
+      },
+      "revId": "2b0d9e6c40ea71e0f3e66759c758c07e8879ca07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
