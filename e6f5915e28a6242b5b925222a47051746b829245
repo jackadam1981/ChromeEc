@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0de6d76b_59b98240",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T17:06:33Z",
+      "side": 1,
+      "message": "Oh yes, I meant I2C_PORT_COUNT",
+      "parentUuid": "6f3c2390_d2d1b84c",
+      "range": {
+        "startLine": 766,
+        "startChar": 1,
+        "endLine": 766,
+        "endChar": 24
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42e27bb2_f4767674",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "system_is_locked is checking for lock is applied(RO_PROTECT_NOW is set) in addition WP is asserted. I am not sure if there are cases where WP is asserted but lock is not applied. That might lead to TCPC I2C tunnels left unprotected.",
       "parentUuid": "42e27bb2_f4767674",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 1
+      },
+      "revId": "e6f5915e28a6242b5b925222a47051746b829245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00129876_e850fadc",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T17:06:33Z",
+      "side": 1,
+      "message": "If the system is unlocked though, then the developer has access to change the system already. I think it is okay to leave the tunnels unprotected in this case\n\nAny non-dev customer would always be in locked state.",
+      "parentUuid": "fba3794c_547125af",
       "range": {
         "startLine": 353,
         "startChar": 0,
