@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69e0312c_9aea9951",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-07T14:37:16Z",
+      "side": 1,
+      "message": "I was using this lock to ensure we didn\u0027t have any issue with stale cache values (basically a memory barrier).\n\nIt does increase the code size, but that doesn\u0027t seem like it is really a big issue since we have plenty of flash space for the ISH.\n\nI feel like keeping the lock here does not cost very much in terms of size and performance (in the big picture) and it ensures that we won\u0027t run into an difficult-to-trace issues with in_isr becoming unbalance in corner case scenarios.",
+      "parentUuid": "ec30a8d1_54cc15d6",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46cb6f8_97a1dcba",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
