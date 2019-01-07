@@ -46,6 +46,30 @@
       "revId": "1b326c03a56874a022f98148fbd5eba5870a622c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853cd9ef_8d3a9891",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-07T21:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1388e27c_c73dd5b3",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 40
+      },
+      "revId": "1b326c03a56874a022f98148fbd5eba5870a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
