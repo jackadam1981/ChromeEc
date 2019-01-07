@@ -290,7 +290,6 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 static void bc12_detect(int port)
 {
 	int device_type, chg_status;
-	int type;
 
 	if (usb_charger_port_is_sourcing_vbus(port)) {
 		/* If we're sourcing VBUS then we're not charging */
@@ -367,6 +366,8 @@ static void bc12_detect(int port)
 	/* Attachment: decode + update available charge */
 	if (device_type || PI3USB9281_CHG_STATUS_ANY(chg_status)) {
 		struct charge_port_info chg;
+		int type;
+
 		if (PI3USB9281_CHG_STATUS_ANY(chg_status))
 			type = CHARGE_SUPPLIER_PROPRIETARY;
 		else if (device_type & PI3USB9281_TYPE_CDP)
@@ -382,17 +383,8 @@ static void bc12_detect(int port)
 		chg.current = pi3usb9281_get_ilim(device_type, chg_status);
 		charge_manager_update_charge(type, port, &chg);
 	} else {
-		/* Detachment */
-		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
-					     port, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
-					     port, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
-					     port, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
-					     port, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
-					     port, NULL);
+		/* Detachment: update available charge to 0 */
+		usb_charger_reset_charge(port);
 	}
 }
 
