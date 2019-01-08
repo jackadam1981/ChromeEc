@@ -187,6 +187,30 @@
       "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f7d4ec7_59ebd568",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-08T22:31:00Z",
+      "side": 1,
+      "message": "Historically there have been a lot of bugs related to the stability of the CC lines. If this causes CUR_WAIT_TIME_COUNTER to constantly reset, I don\u0027t want it to hold the ec in reset. I think we should just increase RDD_WAIT_TIME and only call the deferred function once.",
+      "parentUuid": "582b2157_5e9801a1",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
