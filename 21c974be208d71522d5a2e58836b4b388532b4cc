@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3db4acfc_7f84f60e",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T16:10:52Z",
+      "side": 1,
+      "message": "lock prefix is not needed and can be left out. the instruction should either complete or not complete from the standpoint of the core. if it used a stale value cached in an internal non-ISA register it would be a huge implementation bug in minute-ia core. i.e. the read-modify-write should look to be atomic from the standpoint of the core.",
+      "parentUuid": "f452ce02_e47f280d",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46cb6f8_97a1dcba",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
