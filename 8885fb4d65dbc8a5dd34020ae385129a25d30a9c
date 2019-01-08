@@ -46,6 +46,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9482628_0b560590",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-08T20:09:01Z",
+      "side": 1,
+      "message": "if running this function is triggered by TPM_Startup - can we piggiback on the commit which is guaranteed to be invoked after TPM_Startup finished processing?",
+      "parentUuid": "4f5a361e_f4da8375",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
