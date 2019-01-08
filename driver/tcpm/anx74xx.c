@@ -846,16 +846,16 @@ static int anx74xx_tcpm_get_vbus_level(int port)
 
 static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
-	int reg = 0, rv = EC_SUCCESS;
-	int len = 0;
+	int reg, rv = EC_SUCCESS;
+	int len;
 
 	/* Fetch the header */
-	rv |= tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg);
+	rv = tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg);
 	if (rv) {
 		clear_recvd_msg_int(port);
 		return EC_ERROR_UNKNOWN;
 	}
-	*head = reg & 0x0000ffff;
+	*head = reg;
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	*head |= PD_HEADER_SOP(msg_sop[port]);
 #endif
@@ -869,9 +869,7 @@ static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 	/* Receive message : assuming payload have enough
 	 * memory allocated
 	 */
-	rv |= anx74xx_read_pd_obj(port, (uint8_t *)payload, len);
-	if (rv)
-		return EC_ERROR_UNKNOWN;
+	rv = anx74xx_read_pd_obj(port, (uint8_t *)payload, len);
 
 	return rv;
 }
