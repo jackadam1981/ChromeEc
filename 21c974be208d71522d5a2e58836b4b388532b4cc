@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f452ce02_e47f280d",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-08T00:14:47Z",
+      "side": 1,
+      "message": "I\u0027m sorry I don\u0027t get your point regarding \"stale cache values\" and \"memory barrier\" here.\n\nI don\u0027t see any potential issue without \"lock\" prefix. Although I don\u0027t have number increased by keeping the \"lock\" prefix but it\u0027s obvious there\u0027re more fetching, decoding, waiting for memory bus locked/unlocked(?).\n\nThis is pre-/post-amble of ISR which is executed so much frequently.",
+      "parentUuid": "69e0312c_9aea9951",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46cb6f8_97a1dcba",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
