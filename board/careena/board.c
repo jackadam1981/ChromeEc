@@ -14,6 +14,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "driver/accelgyro_bmi160.h"
 #include "driver/led/lm3630a.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
@@ -100,6 +101,26 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+void board_update_sensor_config_from_sku(void)
+{
+	if (board_is_convertible()) {
+		/*
+		 * Careena's baseboard is rotated 180 degrees about the +y axis
+		 * relative to the Grunt reference design.
+		 */
+		grunt_base_standard_ref[0][0] = FLOAT_TO_FP(-1);
+		grunt_base_standard_ref[2][2] = FLOAT_TO_FP(-1);
+
+		/* Enable Gyro interrupts */
+		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+	} else {
+		motion_sensor_count = 0;
+		/* Gyro is not present, don't allow line to float */
+		gpio_set_flags(GPIO_6AXIS_INT_L,
+			       GPIO_INPUT | GPIO_PULL_DOWN);
+	}
+}
 
 void board_overcurrent_event(int port)
 {

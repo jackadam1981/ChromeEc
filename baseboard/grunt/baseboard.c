@@ -564,8 +564,9 @@ int board_get_version(void)
 int board_is_convertible(void)
 {
 	/* Grunt: 6 */
+	/* Garrus: 48 */
 	/* Kasumi360: 82 */
-	return (sku_id == 6 || sku_id == 82);
+	return (sku_id == 6 || sku_id == 48 || sku_id == 82);
 }
 
 int board_is_lid_angle_tablet_mode(void)
