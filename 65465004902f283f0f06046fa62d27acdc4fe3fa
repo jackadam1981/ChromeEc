@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4857d089_50fd20d8",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-08T17:06:59Z",
+      "side": 1,
+      "message": "Can you define this in config_chip.h?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "65465004902f283f0f06046fa62d27acdc4fe3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f44d23bd_83ac4923",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-08T17:06:59Z",
+      "side": 1,
+      "message": "Can this be derived from NPCX796FC\u0027s macro?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "65465004902f283f0f06046fa62d27acdc4fe3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
