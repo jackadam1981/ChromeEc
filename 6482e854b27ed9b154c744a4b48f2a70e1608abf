@@ -92,6 +92,29 @@
       "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582b2157_5e9801a1",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-08T19:18:04Z",
+      "side": 1,
+      "message": "rdd_is_detected isn\u0027t reading the current state of the cc lines. It returns the last stable state, so we don\u0027t really care about the RDD CUR_WAIT_TIME_COUNTER.  I think if RDD_WAIT_TIME is greater than the time for rdd to settle, then we should be ok just calling the deferred function once because rdd will have been able to determine the stable state.",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
