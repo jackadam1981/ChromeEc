@@ -855,7 +855,7 @@ static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 		clear_recvd_msg_int(port);
 		return EC_ERROR_UNKNOWN;
 	}
-	*head = reg & 0x0000ffff;
+	*head = reg;
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	*head |= PD_HEADER_SOP(msg_sop[port]);
 #endif
