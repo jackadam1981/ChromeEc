@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66d3e794_997787bd",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-01-08T22:23:52Z",
+      "side": 1,
+      "message": "Looks good. Suggestion: You could use virtual_set_mux function to check for previous state and send host event.",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "dab6a9de6b052b9af1b061f206abd07267dfab0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
