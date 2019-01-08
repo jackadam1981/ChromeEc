@@ -32,6 +32,11 @@ void get_storage_seed(void *buf, size_t *len);
 uint8_t get_current_pcr_digest(const uint8_t bitmask[2],
 			       uint8_t sha256_of_selected_pcr[32]);
 
+/* Notifies the TPM2 code when a nvmem_commit has been performed as part of the
+ * pinweaver initialization so that commit isn't called without being needed.
+ */
+void nvmem_commit_succeeded(void);
+
 #ifdef __cplusplus
 }
 #endif

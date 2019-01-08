@@ -752,6 +752,7 @@ static int load_merkle_tree(struct merkle_tree_t *merkle_tree)
 			ret = writevars();
 			if (ret != EC_SUCCESS)
 				return ret;
+			nvmem_commit_succeeded();
 		}
 		pw_restart_count = log->restart_count;
 	}

@@ -56,6 +56,9 @@ extern "C" uint8_t get_current_pcr_digest(const uint8_t bitmask[2],
   return 0;
 }
 
+extern "C" void nvmem_commit_succeeded(void) {
+}
+
 extern "C" int DCRYPTO_ladder_is_enabled(void) {
   return 1;
 }

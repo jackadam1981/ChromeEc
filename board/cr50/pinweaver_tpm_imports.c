@@ -36,3 +36,8 @@ uint8_t get_current_pcr_digest(const uint8_t bitmask[2],
 	memcpy(sha256_of_selected_pcr, &pcr_digest.b.buffer, 32);
 	return 0;
 }
+
+void nvmem_commit_succeeded(void)
+{
+	g_updateNV = 0;
+}

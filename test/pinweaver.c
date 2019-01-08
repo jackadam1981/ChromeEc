@@ -797,6 +797,10 @@ uint8_t get_current_pcr_digest(const uint8_t bitmask[2],
 	return 0;
 }
 
+void nvmem_commit_succeeded(void)
+{
+}
+
 /******************************************************************************/
 /* Mock implementations of nvmem_vars functionality.
  */
