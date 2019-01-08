@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41cdcd7b_84f9d4b3",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-08T22:56:47Z",
+      "side": 1,
+      "message": "retained original code as hpd mux may change but hpd may remain same.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "1880b9b209e0347fe9603d27b23da6289f2ac349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
