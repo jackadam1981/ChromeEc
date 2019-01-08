@@ -16,6 +16,24 @@
       "revId": "30533a4bd1d5c12933ab44411ac0e12dce467f3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385fdd31_73df34e2",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-08T18:41:56Z",
+      "side": 1,
+      "message": "This is the patch that adds all of the \"atomic locking\" to the __in_isr variable (in addition to balancing the calss). Locking for this var doesn\u0027t exist before this patch",
+      "parentUuid": "f35cf38a_91223433",
+      "revId": "30533a4bd1d5c12933ab44411ac0e12dce467f3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
