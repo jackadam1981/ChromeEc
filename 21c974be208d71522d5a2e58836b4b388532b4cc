@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "8042b1e8_5f90824a",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T17:01:42Z",
+      "side": 1,
+      "message": "I\u0027m not against leaving it. For an optimization standpoint you could something like this:\n\n/* When multiple cores are employed this should be \"lock;\" */\n#define ASM_LOCK_PREFIX \n\nThen you can still put ASM_LOCK_PREFIX in this and other places. It will not do anything, but you still have that info in here.",
+      "parentUuid": "dec8fdb5_9d3dcc1d",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46cb6f8_97a1dcba",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
