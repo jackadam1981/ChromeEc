@@ -70,6 +70,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d27d76_996c25bc",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-01-08T20:34:53Z",
+      "side": 1,
+      "message": "What would that look like? A modification to writevars() so that commit isn\u0027t necessarily called, leaving out writevars() and setting g_updateNV to TRUE, etc.?",
+      "parentUuid": "f9482628_0b560590",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
