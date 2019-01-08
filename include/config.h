@@ -2587,6 +2587,9 @@
  */
 #undef CONFIG_PWM_KBLIGHT
 
+/* Adjustment PMW percentage for keybaord backlight */
+#undef CONFIG_PWM_KBLIGHT_MAX
+
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
 
