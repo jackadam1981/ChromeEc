@@ -62,6 +62,24 @@
       "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571691f0_9b045cba",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-08T01:06:53Z",
+      "side": 1,
+      "message": "Unlike ARM integer division instruction(since v7), x86 \"divl\" generates overflow error if quotient \u003e 0xFFFFFFFF(bigger than 32 container) and divisor cannot be over 32bit value. so compiler cannot simply emit \"divl\" since it doesn\u0027t know any values here. So the compiler tries to put(link) special compiler provided lib function(__udivdi3) for x86 which, of course, is not allowed in ECOS.\n\nBut one thing I agree is that these days 64 bit division shouldn\u0027t be something special. So I believe we should provide __udivi3 for x86.\n\nBUT FOR HERE, due to overhead of __udivi3(which supports fully 64bit/64bit), I believe this solution is good enough.",
+      "parentUuid": "66b3d564_a3309a46",
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
