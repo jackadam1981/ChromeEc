@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ac7c0b7_2694a0d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-08T19:12:08Z",
+      "side": 1,
+      "message": "typo: \"unplug\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ccb09c7_f1d5ad90",
         "filename": "chip/g/rbox.c",
         "patchSetId": 3
@@ -22,6 +45,53 @@
       "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12a47bcf_994553d5",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-08T19:12:08Z",
+      "side": 1,
+      "message": "Perhaps include this in a comment with the code.",
+      "parentUuid": "7ccb09c7_f1d5ad90",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "335c0e49_47a59017",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-08T19:12:08Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need the else after the return.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "6482e854b27ed9b154c744a4b48f2a70e1608abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
