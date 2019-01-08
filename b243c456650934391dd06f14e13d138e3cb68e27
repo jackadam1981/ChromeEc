@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9400e47a_6c6c6bef",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T22:45:51Z",
+      "side": 1,
+      "message": "Where I think this goes wrong (admittedly this is just my intuition) is that it assumes there\u0027s no borrowing from the upper end. This derivation works because you are starting with the answer you want from the get-go.\n\nI think your math works only when lo % CLOCK_FACTOR \u003d\u003d 0 as well as 2^32 % CLOCK_FACTOR \u003d\u003d 0. i.e. hi and lo can be independent.\n\nIt\u0027s easier to cache the value of your counter and use that for comparisons and derivations, imo.",
+      "revId": "b243c456650934391dd06f14e13d138e3cb68e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
