@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4d35e275_0fe1042c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T17:20:53Z",
+      "side": 1,
+      "message": "\u003e Without marking them as register, the compiler would save these value to the stack (and read them back). Marking them as register let\u0027s the compiler skip this step (and just keep the values in a register\n\nI understand what it\u0027s doing, but it is unnecessary (as you noted below). We should allow the compiler to optimize accordingly. \n\n\u003e \n\u003e It also appears that we are compiling this (and all other EC code) with -O0 instead of -O3. If we were to move to -O1 or -O3, then I think that the compiler wouldn\u0027t write the values to the stack in that case as well.\n\nThis is broken. At the very least we should be compiling with -O2 always. And if we have register pressure we should be employing -fomit-frame-pointer as well.\n\n\u003e \n\u003e Basically adding register keyword here made the assembly smaller for this function and __hw_clock_source_read\n\nFix the optimization settings. There\u0027s no reason to decorate variables like this.",
+      "parentUuid": "0f5229b4_ddf8aa0b",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa434f75_fb3fbf93",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 4
@@ -69,6 +93,47 @@
       "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deac29dc_7dd9bb9d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T17:20:53Z",
+      "side": 1,
+      "message": "Isn\u0027t that what read_main_timer() is doing? Though, it is assuming that when a !\u003d b the next read won\u0027t roll over. I\u0027m not sure that\u0027s a great assumption though. It really should be a while loop waiting until there isn\u0027t roll over.\n\nWhat is the hpet\u0027s counter size and actual tick rate? Seems like we are optimizing for precision of counter but because of the core not aligning to hpet register sizes, we\u0027re just burning cycles on every read.\n\nAny reason we aren\u0027t caching the upper 32-bits and just using 32-bit arithmetic when the cached value matches or keeping a diff such that one can quickly calculate microseconds from it?",
+      "parentUuid": "fa434f75_fb3fbf93",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3943113a_725cd718",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T17:20:53Z",
+      "side": 1,
+      "message": "I do not understand this bit. I understand that he hi modulus will bring the upper 32 bits such that the final quotient is below 2^32, but does that say about the actual result? It doesn\u0027t seem like the calculated result is correct in practice since it is my understanding we should keeping a constant ticking value that can\u0027t be achieved with this current math. Perhaps a better explanation is warranted here?",
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
