@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f5229b4_ddf8aa0b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-08T16:21:10Z",
+      "side": 1,
+      "message": "Without marking them as register, the compiler would save these value to the stack (and read them back). Marking them as register let\u0027s the compiler skip this step (and just keep the values in a register\n\nIt also appears that we are compiling this (and all other EC code) with -O0 instead of -O3. If we were to move to -O1 or -O3, then I think that the compiler wouldn\u0027t write the values to the stack in that case as well.\n\nBasically adding register keyword here made the assembly smaller for this function and __hw_clock_source_read",
+      "parentUuid": "bd059293_c323c9f1",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa434f75_fb3fbf93",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 4
@@ -98,6 +122,24 @@
       "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f91a8d3_a70b4e2a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-08T16:21:10Z",
+      "side": 1,
+      "message": "We can provide __udivdi3 in a followup CL.\n\nSince 64-bit by 64-bit divide is a iterative solution instead of a single instruction, we would like to omit the loop overhead when reading the clock (which happens pretty frequently in my understanding)",
+      "parentUuid": "b99960ac_405dc557",
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
