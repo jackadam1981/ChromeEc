@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bad10e3_cb091f24",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-08T22:26:41Z",
+      "side": 1,
+      "message": "Can you get rid of these (rv, len)?",
+      "range": {
+        "startLine": 849,
+        "startChar": 8,
+        "endLine": 849,
+        "endChar": 12
+      },
+      "revId": "44fda27bb0ad499f47a73ec82bde1fe40ea326d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce7969d_baae3ab1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-08T22:26:41Z",
+      "side": 1,
+      "message": "Could you remove it?",
+      "range": {
+        "startLine": 853,
+        "startChar": 4,
+        "endLine": 853,
+        "endChar": 5
+      },
+      "revId": "44fda27bb0ad499f47a73ec82bde1fe40ea326d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f67e15_ab0d30a5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-08T22:26:41Z",
+      "side": 1,
+      "message": "This one as well. rv must be 0 if we reach here.",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 872,
+        "endChar": 5
+      },
+      "revId": "44fda27bb0ad499f47a73ec82bde1fe40ea326d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd93c232_a94a151a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-08T22:26:41Z",
+      "side": 1,
+      "message": "Do you know why we convert it? Can you just return rv?",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 26
+      },
+      "revId": "44fda27bb0ad499f47a73ec82bde1fe40ea326d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
