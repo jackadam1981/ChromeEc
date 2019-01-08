@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0ebc8f54_4849f53a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-01-08T03:26:05Z",
+      "side": 1,
+      "message": "Should be S3-\u003eS0 transition.\nAnd we are also confirm it only read once when PS8625 power on.",
+      "parentUuid": "bbb32829_29c2bdb9",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56edfbf2_dbf670db",
         "filename": "board/karma/gpio.inc",
         "patchSetId": 3
