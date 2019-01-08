@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "59fc540a_ac65f82f",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "I moved restore_host_wake_alarm() to a deferred task in clock-stm32f0.c.",
+      "parentUuid": "b8887016_55889f99",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70a61d4a_785dab9c",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 1
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "c2aa7c05_cc57308a",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2f8e69_7cd85cd4",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 49
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6e45aa6_43a53170",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 1
@@ -164,6 +212,30 @@
       "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96094c23_bce1c085",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "233da810_2c5c64fa",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 36
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -358,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "01bf48ba_fe66035b",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "Removed the else condition after CL:1390947 landed.",
+      "parentUuid": "eeb8c417_25488de2",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81fc9f7c_5f0301b9",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 1
@@ -402,6 +498,30 @@
       "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a84a5e6_c3202901",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "This is now defined locally in clock-stm32f0.c.",
+      "parentUuid": "f67d5464_cc4f3f11",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -452,6 +572,30 @@
     },
     {
       "key": {
+        "uuid": "401b8e11_db22e76b",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e400570d_7f11644c",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 18
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5399a59_ef2d0073",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 1
@@ -496,6 +640,30 @@
       "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b4d5c4_7c266268",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-08T01:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eea60b25_4867a0b2",
+      "range": {
+        "startLine": 322,
+        "startChar": 34,
+        "endLine": 322,
+        "endChar": 53
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
