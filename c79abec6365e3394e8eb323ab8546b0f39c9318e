@@ -69,6 +69,30 @@
       "revId": "c79abec6365e3394e8eb323ab8546b0f39c9318e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b26ea67_c947d134",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2019-01-08T05:30:41Z",
+      "side": 1,
+      "message": "That\u0027s only the unwedge code.  Clock stretches are part of normal i2c transfers though.  AKA:\n\n/*\n * Timeout for SCL held to low by slave device . (SMBus spec. unit:ms).\n * Some I2C devices may violate this timing and clock stretch for longer.\n * TODO: Consider increasing this timeout.\n */\n#define I2C_MIN_TIMEOUT 25\n\n...so I guess we should consider bumping that up.  I guess it hasn\u0027t been an issue on any recent devices though?  Maybe the original device with the problem was just a really weird one.\n\n---\n\nIn any case, it still seems weird to leave this as a TODO when you\u0027ve added a call to wait for the battery to be stable.",
+      "parentUuid": "ecd024a4_b6b20735",
+      "range": {
+        "startLine": 427,
+        "startChar": 1,
+        "endLine": 431,
+        "endChar": 4
+      },
+      "revId": "c79abec6365e3394e8eb323ab8546b0f39c9318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
