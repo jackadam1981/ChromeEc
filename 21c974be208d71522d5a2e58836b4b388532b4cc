@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "dec8fdb5_9d3dcc1d",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-08T16:27:59Z",
+      "side": 1,
+      "message": "Thank you Hyuanwoo and Aaron for the explanation. Since this is a single core, \"lock\" does not have any effect. I can safely remove it here and in atomic.h\n\nI would however like to keep the lock statement here (and in atomic.h) since 1) it would be safer for multi-core situations (which may be a scenario that never happens though) and 2) I think it documents the code a little better because it makes the reader understand that __in_isr is a global var that multiple reader and writers access. Hopefully the cost of keeping it on a single core chip is negligible, since there is no other core to notify during \"the lock part\" of the operation.\n\nEither way, I will update this and atomic.h to be the same. Hyungwoo and Aaron, are you still against leaving the \"lock\" with the above justification?",
+      "parentUuid": "3db4acfc_7f84f60e",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "21c974be208d71522d5a2e58836b4b388532b4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d46cb6f8_97a1dcba",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 1
