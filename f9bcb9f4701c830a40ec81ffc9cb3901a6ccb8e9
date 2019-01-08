@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d13b40f_431144e2",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-01-08T04:03:56Z",
+      "side": 1,
+      "message": "we should probably hide this section under the\nrelevant #ifdef CHIP_FAMILY_ISH4, etc.",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "f9bcb9f4701c830a40ec81ffc9cb3901a6ccb8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f15043_fa500715",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-01-08T04:03:56Z",
+      "side": 1,
+      "message": "is this value relevant in this patch or should it be part of another patch?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "f9bcb9f4701c830a40ec81ffc9cb3901a6ccb8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c6ef78_3feeee7d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-01-08T04:03:56Z",
+      "side": 1,
+      "message": "unmask?",
+      "revId": "f9bcb9f4701c830a40ec81ffc9cb3901a6ccb8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
