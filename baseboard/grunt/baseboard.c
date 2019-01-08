@@ -565,6 +565,7 @@ int board_is_convertible(void)
 {
 	/* Grunt: 6 */
 	/* Kasumi360: 82 */
+	/* Barla360: TBD */
 	return (sku_id == 6 || sku_id == 82);
 }
 
