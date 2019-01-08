@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd059293_c323c9f1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T00:13:14Z",
+      "side": 1,
+      "message": "Why are the locals marked with \u0027register\u0027?",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa434f75_fb3fbf93",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 4
@@ -22,6 +45,23 @@
       "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66b3d564_a3309a46",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T00:13:14Z",
+      "side": 1,
+      "message": "Why again do we need to open code divl instruction here? Why can\u0027t we just do a 64-bit division? Does the compiler not correctly emit the divl instruction?",
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
