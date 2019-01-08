@@ -22,6 +22,30 @@
       "revId": "0a689061f9ec287c9f1546f53e5d90d34edf436f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b09a2dc_205f895f",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-08T21:45:36Z",
+      "side": 1,
+      "message": "Moved this to sps.h and renamed it sps_rxbuf so that it can be easily identified.",
+      "parentUuid": "293b1d7f_6b2dc7f7",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 22
+      },
+      "revId": "0a689061f9ec287c9f1546f53e5d90d34edf436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
