@@ -333,13 +333,13 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	 * it is better to use Tx FIFO threshold interrupt(as in Rx) for
 	 * better CPU usuage.
 	 * */
-	expire_ts = __hw_clock_source_read() + I2C_TX_FLUSH_TIMEOUT_USEC;
+	expire_ts = get_time().val + I2C_TX_FLUSH_TIMEOUT_USEC;
 	if (in_size > (ISH_I2C_FIFO_SIZE - out_size)) {
 
 		while ((i2c_mmio_read(ctx->base, IC_STATUS) &
 			(1 << IC_STATUS_TFE)) == 0) {
 
-			if (__hw_clock_source_read() >= expire_ts) {
+			if (get_time().val >= expire_ts) {
 				ctx->error_flag = 1;
 				break;
 			}
@@ -397,12 +397,12 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	ctx->interrupts = 0;
 
 	/* do not disable device before master is idle */
-	expire_ts = __hw_clock_source_read() + I2C_TSC_TIMEOUT;
+	expire_ts = get_time().val + I2C_TSC_TIMEOUT;
 
 	while (i2c_mmio_read(ctx->base, IC_STATUS) &
 	       (1 << IC_STATUS_MASTER_ACTIVITY)) {
 
-		if (__hw_clock_source_read() >= expire_ts) {
+		if (get_time().val >= expire_ts) {
 			ctx->error_flag = 1;
 			break;
 		}
