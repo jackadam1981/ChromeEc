@@ -70,6 +70,30 @@
       "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05026997_ef044e3f",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-08T14:59:17Z",
+      "side": 1,
+      "message": "Hmmm, I guess we can use this TCPCI. My concern with it is that a board will use a non compliant TCPC that isn\u0027t based on the tcpci spec and therefore doesn\u0027t define it.\n\nThere probably aren\u0027t many TCPCs in the future that will do this, but there are a few that don\u0027t need TCPCI today. They actually define TCPCI right now because of a change I make for RX buffers a while back, but I do eventually want to revert that unneeded dependency. I am still sitting on a change that does this CL:1276706 that needs some more work (in the CL stack)\n\nMaybe adding \u0026\u0026 !defined(CONFIG_USB_PD_TCPM_STUB) will help here",
+      "parentUuid": "f48c615a_58c0dde0",
+      "range": {
+        "startLine": 354,
+        "startChar": 7,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "6c739a554e297d29cd310652f481a8e9d902da44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
