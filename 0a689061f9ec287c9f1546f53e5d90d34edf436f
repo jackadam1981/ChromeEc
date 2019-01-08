@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "293b1d7f_6b2dc7f7",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-08T19:36:51Z",
+      "side": 1,
+      "message": "I think reusing the sps buffer is a great idea here, as the AP would be held in reset when bitbang session is in progress.\n\nBut there should be no extern declarations in .c files, also, the size limit needs to be somehow enforced.",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 22
+      },
+      "revId": "0a689061f9ec287c9f1546f53e5d90d34edf436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
