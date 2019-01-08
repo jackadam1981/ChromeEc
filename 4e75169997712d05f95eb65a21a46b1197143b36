@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "452282f0_6adccc71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-08T03:26:52Z",
+      "side": 1,
+      "message": "Daisuke, after sync with Quanta in the meeting. We won\u0027t have two i2c masters on the i2c bus at the same time. When the GPIOC3 set to low, EC sees the EEPROM. In contrast, when the GPIOC3 set to high, PS8625 sees the EEPROM. Normally, GPIOC3 will only be set to low in the factory process. For the rest of the time, GPIOC3 must be set to high.",
+      "parentUuid": "bbb32829_29c2bdb9",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 47
+      },
+      "revId": "4e75169997712d05f95eb65a21a46b1197143b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56edfbf2_dbf670db",
         "filename": "board/karma/gpio.inc",
         "patchSetId": 3
