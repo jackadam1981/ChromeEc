@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40e9bd47_f3903e68",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-01-08T23:32:04Z",
+      "side": 1,
+      "message": "+1 to round up",
+      "range": {
+        "startLine": 527,
+        "startChar": 33,
+        "endLine": 527,
+        "endChar": 35
+      },
+      "revId": "c9f522a360b857864b32d7b70156afe434ac2eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41800ade_8c5313c1",
+        "filename": "test/test_config.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-01-08T23:32:04Z",
+      "side": 1,
+      "message": "measured: 64.22mΩ -\u003e 65",
+      "range": {
+        "startLine": 252,
+        "startChar": 27,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "c9f522a360b857864b32d7b70156afe434ac2eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b70d365_2adb51c8",
+        "filename": "test/test_config.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-01-08T23:32:04Z",
+      "side": 1,
+      "message": "measured: 32.45mΩ -\u003e 33",
+      "range": {
+        "startLine": 255,
+        "startChar": 26,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "c9f522a360b857864b32d7b70156afe434ac2eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
