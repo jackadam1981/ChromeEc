@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98e2002b_b44ff133",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-08T03:14:47Z",
+      "side": 1,
+      "message": "1) shall we move it into writevars() or even nvmem_commit/nvmem_save itself to support the general case? assuming other code sets g_updateNV *after* making NV changes, any commit after that would commit them as well, so repeating is not needed.\n2) are there any cases when writevars/nvmem_commit failed, and we release the lock? then retrying the commit is known to be doomed. maybe nvmem_commit_succeeded should be tighter integrated into writevars/nvmem_commit/nvmem_save logic to decide what exactly we do in various situations.",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
