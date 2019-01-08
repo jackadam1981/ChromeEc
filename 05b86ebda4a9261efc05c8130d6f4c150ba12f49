@@ -80,6 +80,24 @@
       "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99960ac_405dc557",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-08T01:54:26Z",
+      "side": 1,
+      "message": "yes, we should provide __udivdi3 and company. We can provide our own implementation.",
+      "parentUuid": "571691f0_9b045cba",
+      "revId": "05b86ebda4a9261efc05c8130d6f4c150ba12f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
