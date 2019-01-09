@@ -22,6 +22,30 @@
       "revId": "b1970c8233fbc81249297d62cd39a7b53749037e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e976c1e_09daafe0",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-01-09T17:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e68fd3e_86402466",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 34
+      },
+      "revId": "b1970c8233fbc81249297d62cd39a7b53749037e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
