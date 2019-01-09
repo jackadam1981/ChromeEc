@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "170b9275_ec9d47b0",
+        "filename": "power/cometlake.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-09T03:21:15Z",
+      "side": 1,
+      "message": "update year",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b3bd9925cf4c96cb84df058ec568c450da5e7b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f415009_aaa1bc24",
         "filename": "power/cometlake.c",
         "patchSetId": 7
@@ -87,6 +110,29 @@
         "startChar": 17,
         "endLine": 132,
         "endChar": 41
+      },
+      "revId": "b3bd9925cf4c96cb84df058ec568c450da5e7b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c444ca_f6402751",
+        "filename": "power/cometlake.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-09T03:21:15Z",
+      "side": 1,
+      "message": "update year",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
       },
       "revId": "b3bd9925cf4c96cb84df058ec568c450da5e7b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
