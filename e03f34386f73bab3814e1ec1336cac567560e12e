@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97c9ecf0_df82b06d",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-09T18:41:22Z",
+      "side": 1,
+      "message": "Not exactly critical or anything, but isn\u0027t this comment:\n\na) redundant with the comment above\nb) technically not true since one of the variants (bip IIRC) doesn\u0027t have the hardware pin?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 3
+      },
+      "revId": "e03f34386f73bab3814e1ec1336cac567560e12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
