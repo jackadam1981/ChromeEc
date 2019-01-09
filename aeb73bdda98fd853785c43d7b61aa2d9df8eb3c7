@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abffaf9f_713624b4",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-01-09T17:22:51Z",
+      "side": 1,
+      "message": "no ned to set to 0s, you set them later line 154-158",
+      "revId": "aeb73bdda98fd853785c43d7b61aa2d9df8eb3c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
