@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7535d673_b8b2f13b",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-09T01:24:46Z",
+      "side": 1,
+      "message": "__idle won\u0027t set delay_us \u003d\u003d 0, because one of the entry condition for deep sleep mode is next_delay \u003e (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY).\nSo I think it\u0027s safe to assume \u0027!delay_us \u003d\u003d host sets rtc alarm\u0027.\nAlso, if we set rtc alarm with delay_us \u003d\u003d 0 \u0026\u0026 delay_s \u003d\u003d 0, set_rtc_alarm() will return after resetting rtc alarm.\n\nIf we push the logic into __idle, we have to read rtc alarm and convert it to seconds every time we enter idle mode.\nThe overhead can be avoided if we save the timestamp and calculate the alarm wake time here.",
+      "parentUuid": "c52ce3e0_c17db877",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8ad79a5_c8a48867",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 4
