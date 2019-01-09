@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "timer.h"
+#include "charger.h"
 
 static int debounced_extpower_presence;
 
@@ -40,11 +41,23 @@ static void extpower_deferred(void)
 }
 DECLARE_DEFERRED(extpower_deferred);
 
+static void extpower_deferred_1(void)
+{
+	if(gpio_get_level(GPIO_AC_PRESENT)){
+		charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	}
+
+}
+DECLARE_DEFERRED(extpower_deferred_1);
+
 void extpower_interrupt(enum gpio_signal signal)
 {
 	/* Trigger deferred notification of external power change */
 	hook_call_deferred(&extpower_deferred_data,
 			CONFIG_EXTPOWER_DEBOUNCE_MS * MSEC);
+
+	hook_call_deferred(&extpower_deferred_1_data,
+			30 * MSEC);
 }
 
 static void extpower_init(void)
