@@ -312,6 +312,13 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	if (!pin_mode)
 		return 0;
 
+	/*
+	 * Multi-function operation is only allowed if that pin config is
+	 * supported.
+	 */
+	mf_pref = (pin_mode & MODE_DP_PIN_MF_MASK) ? mf_pref : 0;
+	CPRINTS("pin_mode: %x, mf: %d", pin_mode, mf_pref);
+
 	/* Connect the SBU and USB lines to the connector. */
 	ppc_set_sbu(port, 1);
 	usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
