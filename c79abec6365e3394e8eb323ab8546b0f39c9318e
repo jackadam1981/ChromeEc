@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ecd430f5_1c605cae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2019-01-09T18:43:22Z",
+      "side": 1,
+      "message": "OK.  Presumably the battery that we have simply doesn\u0027t have this weird quirk.  Maybe they realized that it was a bad idea to stretch the clock for so long...  Still seems like it doesn\u0027t hurt to wait for the battery to report that it\u0027s ready.",
+      "parentUuid": "7a9ff85b_745bca9e",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c79abec6365e3394e8eb323ab8546b0f39c9318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0304e2d_f43af31b",
         "filename": "power/sdm845.c",
         "patchSetId": 1
