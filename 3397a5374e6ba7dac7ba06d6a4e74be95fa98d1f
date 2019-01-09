@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5ded9c7_c13b3353",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-09T20:29:08Z",
+      "side": 1,
+      "message": "Louis, do you bypass repo upload checks by any chance? It is very annoying to see all repo upload warnings when trying to cherry pick the patches into the branch.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "3397a5374e6ba7dac7ba06d6a4e74be95fa98d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
