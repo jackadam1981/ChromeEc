@@ -404,6 +404,8 @@ enum power_state power_chipset_init(void)
 	if (!(reset_flags & RESET_FLAG_SYSJUMP)) {
 		CPRINTS("not sysjump; forcing system shutdown");
 		set_system_power(0);
+		/* POWER_GOOD needs time to drop if it is a forced shutdown */
+		wait_pmic_pwron(0, FORCE_OFF_RESPONSE_TIMEOUT);
 		init_power_state = POWER_G3;
 	} else {
 		/* In the SYSJUMP case, we check if the AP is on */
