@@ -22,6 +22,30 @@
       "revId": "3397a5374e6ba7dac7ba06d6a4e74be95fa98d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "716daa5c_f3df0efc",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-09T22:41:19Z",
+      "side": 1,
+      "message": "Very sorry about this, I\u0027m not sure what happened here. I run repo upload checks as a matter of course; there was however a period where my chroot got into a bad state and was using an older toolchain than required to build servo_v4, so that board failed to build with an out of flash space error. At that time I did bypass repo upload checks to get around this (until I had time to make a new chroot), however I did not* do so until after a first run of the checks and ensuring that the servo_v4 out of flash error was the only one. *I guess I messed up here, and this got through - apologies again.\n\nI\u0027ll send a change to fix the errors.",
+      "parentUuid": "c5ded9c7_c13b3353",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 9
+      },
+      "revId": "3397a5374e6ba7dac7ba06d6a4e74be95fa98d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
