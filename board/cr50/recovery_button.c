@@ -68,6 +68,10 @@ static enum vendor_cmd_rc vc_get_rec_btn(enum vendor_cmd_cc code,
 	*(uint8_t *)buf = is_rec_btn_pressed();
 	*response_size = 1;
 
+	// Test of wrong style comment
+
+	ccprintf("VENDOR_CC_GET_REC_BTN: %d\n", *(uint8_t *)buf);
+
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_REC_BTN, vc_get_rec_btn);
