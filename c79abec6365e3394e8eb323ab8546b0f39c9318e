@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ef653326_491ef3c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-09T19:29:31Z",
+      "side": 1,
+      "message": "It\u0027s hard to repro even in the originally reported bug (6/3000). Even if the battery in Cheza has the same problem, it\u0027s not likely we can repro the issue w/o mass production.",
+      "parentUuid": "ecd430f5_1c605cae",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c79abec6365e3394e8eb323ab8546b0f39c9318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0304e2d_f43af31b",
         "filename": "power/sdm845.c",
         "patchSetId": 1
