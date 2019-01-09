@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e68fd3e_86402466",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-09T05:28:40Z",
+      "side": 1,
+      "message": "Barla360 base accel x,y,z axis should not the same grunt. Should we separate careena_base_standard_ref to override .rot_standard_ref?",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 34
+      },
+      "revId": "b1970c8233fbc81249297d62cd39a7b53749037e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
