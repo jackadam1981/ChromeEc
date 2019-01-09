@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fb1e48a_ce34ecfc",
+        "filename": "baseboard/hatch/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-09T02:22:51Z",
+      "side": 1,
+      "message": "copyright header will have to change for 2019.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "bba9b3b289f66d5c21b345e074f92ff300636644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73a7128_a1dacced",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-09T02:22:51Z",
+      "side": 1,
+      "message": "There\u0027s only one overcurrent pin?",
+      "revId": "bba9b3b289f66d5c21b345e074f92ff300636644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
