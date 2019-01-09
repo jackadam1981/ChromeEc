@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c52ce3e0_c17db877",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-09T00:20:22Z",
+      "side": 1,
+      "message": "If you want to go this route, please add a new parameter to the function instead (`save_rtc` or something), it\u0027s not guaranteed that __idle will set a delay_us !\u003d 0 (in the unlikely case where next_delay \u003d\u003d STOP_MODE_LATENCY).\n\nBut IMHO all this logic should be in __idle.",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ad79a5_c8a48867",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-09T00:20:22Z",
+      "side": 1,
+      "message": "Again, this looks fragile",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea60b8b1_abf4ebfd",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-09T00:20:22Z",
+      "side": 1,
+      "message": "Instead of the extra logic in the core, can you add something here to save the old RTC alarm value?\n\nYou access that value above in the if too, so maybe you can just save it once on function entry?",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
