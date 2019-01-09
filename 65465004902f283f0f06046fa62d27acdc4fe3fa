@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4a44e2cc_953f9b86",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-09T01:36:50Z",
+      "side": 1,
+      "message": "Happy New Year, as these are new files, all the headers should be updated to 2019.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "65465004902f283f0f06046fa62d27acdc4fe3fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4857d089_50fd20d8",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 5
