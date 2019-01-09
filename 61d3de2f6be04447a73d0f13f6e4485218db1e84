@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "79f62da0_418ec306",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-09T01:38:07Z",
+      "side": 1,
+      "message": "Understood about not pushing the logic in __idle, makes sense.\n\nI still think you need to add a parameter to this function. Relying on delay_us \u003d\u003d 0 is obscure and fragile.",
+      "parentUuid": "7535d673_b8b2f13b",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8ad79a5_c8a48867",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 4
@@ -48,6 +66,23 @@
       "writtenOn": "2019-01-09T00:20:22Z",
       "side": 1,
       "message": "Again, this looks fragile",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7387b45c_3ce2dae0",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-09T01:38:07Z",
+      "side": 1,
+      "message": "Should this function be in clock-f.c for consistency? (since you save the value there)",
       "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
