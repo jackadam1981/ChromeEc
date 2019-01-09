@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f152e2f2_ab1b1237",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-09T21:59:52Z",
+      "side": 1,
+      "message": "I added a new arg \u0027save_alarm\u0027 to set_rtc_alarm().",
+      "parentUuid": "79f62da0_418ec306",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8ad79a5_c8a48867",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 4
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "d2991904_face42e4",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-09T21:59:52Z",
+      "side": 1,
+      "message": "With the new arg \u0027save_alarm\u0027, do you think it\u0027better now?",
+      "parentUuid": "d8ad79a5_c8a48867",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7387b45c_3ce2dae0",
         "filename": "chip/stm32/clock-stm32f0.c",
         "patchSetId": 4
@@ -83,6 +119,24 @@
       "writtenOn": "2019-01-09T01:38:07Z",
       "side": 1,
       "message": "Should this function be in clock-f.c for consistency? (since you save the value there)",
+      "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37f052e1_ed2da56b",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-09T21:59:52Z",
+      "side": 1,
+      "message": "I moved is_host_wake_alarm_expired() and restore_host_wake_alarm() to clock-f.c. But we still need a stub here to make a deferred call for restore_host_wake_alarm().",
+      "parentUuid": "7387b45c_3ce2dae0",
       "revId": "61d3de2f6be04447a73d0f13f6e4485218db1e84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
