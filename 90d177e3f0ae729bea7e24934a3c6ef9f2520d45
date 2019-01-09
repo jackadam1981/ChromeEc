@@ -16,6 +16,24 @@
       "revId": "90d177e3f0ae729bea7e24934a3c6ef9f2520d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4adccff1_988fa8f2",
+        "filename": "board/cr50/closed_source_set1.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-09T20:33:55Z",
+      "side": 1,
+      "message": "I commented it out as the capability is not yet needed and it relates to the preceding comment block.  I didn\u0027t bypass repo upload so I\u0027m not sure why it wasn\u0027t caught.  Is the preferred style to #if 0 or enclose the statement in the comment block?  Or should it get removed completely?",
+      "parentUuid": "f2b4859f_6cd54404",
+      "revId": "90d177e3f0ae729bea7e24934a3c6ef9f2520d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
