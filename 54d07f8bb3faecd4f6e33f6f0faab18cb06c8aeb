@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "588ab858_ca4a23ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-01-09T23:54:12Z",
+      "side": 1,
+      "message": "turning",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "54d07f8bb3faecd4f6e33f6f0faab18cb06c8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b17ec6_5bd8d2ba",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-01-09T23:54:12Z",
+      "side": 1,
+      "message": "Why isn\u0027t it just part of set_system_power() to wait for the on or off timeout?",
+      "revId": "54d07f8bb3faecd4f6e33f6f0faab18cb06c8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
