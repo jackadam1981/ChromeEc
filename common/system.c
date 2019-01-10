@@ -719,7 +719,7 @@ int system_set_active_copy(enum system_image_copy_t copy)
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy)
 {
-#ifdef CONFIG_VBOOT_EFS
+#ifdef CONFIG_VBOOT_EFS_
 	if (copy == SYSTEM_IMAGE_RW_B)
 		return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_B_STORAGE_OFF;
 #endif

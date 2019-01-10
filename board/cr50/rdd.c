@@ -92,7 +92,8 @@ void uartn_tx_connect(int uart)
 	 * something to transmit) and servo is disconnected (we won't be
 	 * drive-fighting with servo).
 	 */
-	if (servo_is_connected() || !ccd_ext_is_enabled())
+	if (!ec_is_speaking() &&
+			(servo_is_connected() || !ccd_ext_is_enabled()))
 		return;
 
 	if (uart == UART_AP) {
@@ -227,6 +228,15 @@ static void ccd_state_change_hook(void)
 		flags_want |= CCD_ENABLE_UART_AP;
 	if (ec_is_rx_allowed())
 		flags_want |= CCD_ENABLE_UART_EC;
+	if (ec_is_speaking()) {
+		/*
+		 * These must be available for cr50 to receive commands from EC.
+		 * We need to prevent the disable section below from disabling
+		 * these flags. That is, servo must be disconnected.
+		 */
+		flags_want |= CCD_ENABLE_UART_EC;
+		flags_want |= CCD_ENABLE_UART_EC_TX;
+	}
 
 #ifdef CONFIG_UART_BITBANG
 	if (uart_bitbang_is_wanted())

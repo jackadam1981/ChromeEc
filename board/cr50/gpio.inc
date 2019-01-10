@@ -68,6 +68,9 @@ GPIO_INT(DETECT_EC,       PIN(1, 2),  GPIO_INT_HIGH, ec_detect_asserted)
 GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
 	 servo_detect_asserted)
 
+GPIO_INT(CCD_MODE_L,      PIN(0, 5), GPIO_INT_FALLING | GPIO_PULL_UP,
+	 ccd_mode_asserted)
+
 /*****************************************************************************/
 /* NON STANDARD INTERRUPT GPIOs - handlers defined and configured in board.c */
 /*
@@ -93,7 +96,7 @@ GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
  * Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
  * it decided instead.
  */
-GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_INPUT | GPIO_PULL_UP)
+/*GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_INPUT | GPIO_PULL_UP)*/
 
 /* Battery present signal is active low */
 GPIO(BATT_PRES_L,     PIN(0, 6), GPIO_INPUT)
@@ -138,6 +141,11 @@ GPIO(I2CS_SDA,        PIN(0, 14), GPIO_INPUT)
  * drain so it can still be used as the cr50 rx signal when it is deasserted.
  */
 GPIO(EC_TX_CR50_RX_OUT, PIN(0, 15), GPIO_ODR_HIGH)
+
+/*
+ * EC_ENTERING_RW is R4
+ */
+/*GPIO(EC_ENTERING_RW, PIN(2, 4), GPIO_ODR_HIGH)*/
 
 /* Unimplemented signals which we need to emulate for now */
 /* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
