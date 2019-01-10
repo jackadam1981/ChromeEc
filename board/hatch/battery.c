@@ -35,7 +35,8 @@ const struct board_batt_params board_battery_info[] = {
 	/* SMP Dell FMXMT Battery Information */
 	[BATTERY_KEYSTONE] = {
 		.fuel_gauge = {
-			.manuf_name = "SMP-LIS",
+			.manuf_name = "SMP-LIS3.78",
+			/* .device_name = "DELL FMXMT", */
 			.ship_mode = {
 				.reg_addr = 0x0,
 				.reg_data = { 0x10, 0x10 },
