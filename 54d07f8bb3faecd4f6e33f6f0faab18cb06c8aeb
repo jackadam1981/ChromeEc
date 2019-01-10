@@ -135,6 +135,24 @@
       "revId": "54d07f8bb3faecd4f6e33f6f0faab18cb06c8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff68eade_224f1553",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-10T23:11:49Z",
+      "side": 1,
+      "message": "Yes, after calling the set_system_power(), it will either be a proper state or timeout (showing some error message and can\u0027t do anything helpful).",
+      "parentUuid": "bac742f5_33cb9830",
+      "revId": "54d07f8bb3faecd4f6e33f6f0faab18cb06c8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
