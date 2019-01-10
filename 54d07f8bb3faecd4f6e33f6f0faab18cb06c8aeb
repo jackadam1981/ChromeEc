@@ -81,6 +81,24 @@
       "revId": "54d07f8bb3faecd4f6e33f6f0faab18cb06c8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cf4a98_a94dd5db",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2019-01-10T21:21:51Z",
+      "side": 1,
+      "message": "Right but the \"on\" case also does something where it waits with usleep(SYSTEM_POWER_ON_DELAY).",
+      "parentUuid": "0c56afdb_92a47e56",
+      "revId": "54d07f8bb3faecd4f6e33f6f0faab18cb06c8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
