@@ -25,7 +25,9 @@ ENTRY(reset)
 MEMORY
 {
 #if !defined(CONFIG_FLASH_PHYSICAL)
-    IRAM (rwx)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
+    IRAM_RO (rx) : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_RO_SIZE
+    IRAM (rwx) : ORIGIN = CONFIG_RAM_BASE + CONFIG_RAM_RO_SIZE, \
+                  LENGTH = CONFIG_RAM_SIZE - CONFIG_RAM_RO_SIZE
 #else
 #if defined(SECTION_IS_RO) && defined(NPCX_RO_HEADER)
     /*
@@ -116,7 +118,7 @@ SECTIONS
     } > CDRAM AT > FLASH
 #else
 #if !defined(CONFIG_FLASH_PHYSICAL)
-    } > IRAM
+    } > IRAM_RO
 #else
     } > FLASH
 #endif /* !CONFIG_FLASH_PHYSICAL */
@@ -261,7 +263,7 @@ SECTIONS
 #endif
         . = ALIGN(4);
 #if !defined(CONFIG_FLASH_PHYSICAL)
-    } > IRAM
+    } > IRAM_RO
 #elif defined(CONFIG_EXTERNAL_STORAGE)
     } > CDRAM AT > FLASH
 #else
