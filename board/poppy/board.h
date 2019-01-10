@@ -166,6 +166,9 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 
+/* To enable Ap Hang detection logic for Debugging only  */
+#define CONFIG_AP_HANG_DETECT
+
 /* BC 1.2 charger */
 #define CONFIG_BC12_DETECT_PI3USB9281
 #define CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT 2

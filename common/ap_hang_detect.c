@@ -47,7 +47,7 @@ static void hang_detect_deferred(void)
 	}
 
 	/* Otherwise, we're starting with the host event */
-	CPRINTS("hang detect sending host event");
+	CPRINTS("hang detect sending host event  :  HANG DETECTED   !! ");
 	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
 
 	/* If we're also rebooting, defer for the remaining delay */
@@ -55,8 +55,8 @@ static void hang_detect_deferred(void)
 		CPRINTS("hang detect continuing (for reboot)");
 		timeout_will_reboot = 1;
 		hook_call_deferred(&hang_detect_deferred_data,
-				   (hdparams.warm_reboot_timeout_msec -
-				    hdparams.host_event_timeout_msec) * MSEC);
+			(hdparams.warm_reboot_timeout_msec -
+				hdparams.host_event_timeout_msec) * MSEC);
 	} else {
 		/* Not rebooting, so go back to idle */
 		active = 0;
@@ -77,13 +77,13 @@ static void hang_detect_start(const char *why)
 		timeout_will_reboot = 0;
 		active = 1;
 		hook_call_deferred(&hang_detect_deferred_data,
-				   hdparams.host_event_timeout_msec * MSEC);
+				   hdparams.host_event_timeout_msec * SECOND);
 	} else if (hdparams.warm_reboot_timeout_msec) {
 		CPRINTS("hang detect started on %s (for reboot)", why);
 		timeout_will_reboot = 1;
 		active = 1;
 		hook_call_deferred(&hang_detect_deferred_data,
-				   hdparams.warm_reboot_timeout_msec * MSEC);
+				hdparams.warm_reboot_timeout_msec * MSEC);
 	}
 }
 
@@ -94,7 +94,6 @@ static void hang_detect_stop(const char *why)
 {
 	if (active)
 		CPRINTS("hang detect stopped on %s", why);
-
 	active = 0;
 }
 
@@ -110,22 +109,26 @@ void hang_detect_stop_on_host_command(void)
 static void hang_detect_power_button(void)
 {
 	if (power_button_is_pressed()) {
+		hdparams.flags = EC_HANG_START_ON_POWER_PRESS;
 		if (hdparams.flags & EC_HANG_START_ON_POWER_PRESS)
 			hang_detect_start("power button");
 	} else {
+		hdparams.flags = EC_HANG_STOP_ON_POWER_RELEASE;
 		if (hdparams.flags & EC_HANG_STOP_ON_POWER_RELEASE)
 			hang_detect_stop("power button");
 	}
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, hang_detect_power_button,
-	     HOOK_PRIO_DEFAULT);
+		HOOK_PRIO_DEFAULT);
 
 static void hang_detect_lid(void)
 {
 	if (lid_is_open()) {
+		hdparams.flags = EC_HANG_START_ON_LID_OPEN;
 		if (hdparams.flags & EC_HANG_START_ON_LID_OPEN)
 			hang_detect_start("lid open");
 	} else {
+		hdparams.flags = EC_HANG_START_ON_LID_CLOSE;
 		if (hdparams.flags & EC_HANG_START_ON_LID_CLOSE)
 			hang_detect_start("lid close");
 	}
@@ -134,6 +137,8 @@ DECLARE_HOOK(HOOK_LID_CHANGE, hang_detect_lid, HOOK_PRIO_DEFAULT);
 
 static void hang_detect_resume(void)
 {
+	hdparams.host_event_timeout_msec = 120;
+	hdparams.flags = EC_HANG_START_ON_RESUME;
 	if (hdparams.flags & EC_HANG_START_ON_RESUME)
 		hang_detect_start("resume");
 }
@@ -141,6 +146,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, hang_detect_resume, HOOK_PRIO_DEFAULT);
 
 static void hang_detect_suspend(void)
 {
+	hdparams.flags = EC_HANG_STOP_ON_SUSPEND;
 	if (hdparams.flags & EC_HANG_STOP_ON_SUSPEND)
 		hang_detect_stop("suspend");
 }
@@ -156,11 +162,23 @@ static void hang_detect_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hang_detect_shutdown, HOOK_PRIO_DEFAULT);
 
+
+static void hang_detect_start_on_ec_reset(void)
+{
+	hdparams.host_event_timeout_msec = 120;
+	hang_detect_start("chip reset");
+}
+
+DECLARE_HOOK(HOOK_INIT, hang_detect_start_on_ec_reset, HOOK_PRIO_DEFAULT);
+
+
 /*****************************************************************************/
 /* Host command */
 
 static int hang_detect_host_command(struct host_cmd_handler_args *args)
 {
+
+
 	const struct ec_params_hang_detect *p = args->params;
 
 	/* Handle stopping hang timer on request */
@@ -194,15 +212,15 @@ static int hang_detect_host_command(struct host_cmd_handler_args *args)
 	 * the host event timeout because a warm reboot will win.
 	 */
 	if (hdparams.warm_reboot_timeout_msec &&
-	    hdparams.warm_reboot_timeout_msec <=
-	    hdparams.host_event_timeout_msec)
+		hdparams.warm_reboot_timeout_msec <=
+		hdparams.host_event_timeout_msec)
 		hdparams.host_event_timeout_msec = 0;
 
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HANG_DETECT,
-		     hang_detect_host_command,
-		     EC_VER_MASK(0));
+		hang_detect_host_command,
+		EC_VER_MASK(0));
 
 /*****************************************************************************/
 /* Console command */
@@ -233,5 +251,5 @@ static int command_hang_detect(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(hangdet, command_hang_detect,
-			NULL,
-			"Print hang detect state");
+	NULL,
+	"Print hang detect state");

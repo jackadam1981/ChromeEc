@@ -210,7 +210,8 @@
 #undef CONFIG_ALS_LIGHTBAR_DIMMING
 
 /* Support AP hang detection host command and state machine */
-#undef CONFIG_AP_HANG_DETECT
+/* #undef CONFIG_AP_HANG_DETECT */
+#define CONFIG_AP_HANG_DETECT
 
 /* Support AP Warm reset Interrupt. */
 #undef CONFIG_AP_WARM_RESET_INTERRUPT
