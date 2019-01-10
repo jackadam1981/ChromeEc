@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bfff94d_a2c98031",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-10T18:06:45Z",
+      "side": 1,
+      "message": "can you put this in a define (INTERVAL) next to the startup delay define?",
+      "range": {
+        "startLine": 299,
+        "startChar": 9,
+        "endLine": 299,
+        "endChar": 11
+      },
+      "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd05785_504a8c63",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-10T18:06:45Z",
+      "side": 1,
+      "message": "evt \u0026\u003d (USB_CHG_EVENT_BC12 | USB_CHG_EVENT_INTR);\nif (evt)\n  return evt;\n\nOr are you trying to leave the USB_CHG_EVENT_INTR when BC12 is also present?",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 14
+      },
+      "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
