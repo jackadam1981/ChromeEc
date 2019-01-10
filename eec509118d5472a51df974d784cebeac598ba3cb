@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fd3f1e37_12d8d2a0",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-10T03:23:33Z",
+      "side": 1,
+      "message": "What I mean is this:\n\nset_rtc_alarm(..., 1);\n \u003d\u003e host_wake_time is set\nset_rtc_alarm(..., 0);\n \u003d\u003e host_wake_time is still set set\n\n__rtc_alarm_irq triggers due to the no save alarm, and resets host_wake_time. Is that expected?\n\nMaybe it is, but the comment needs to be updated: (host_wake_time.ts.val) means that an alarm was _saved_, not necessarily that the host set the alarm that actually triggered.",
+      "parentUuid": "e569188c_fcf9f207",
+      "revId": "eec509118d5472a51df974d784cebeac598ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa60e805_c4ecdf0d",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 5
