@@ -52,6 +52,24 @@
       "revId": "66e4311f7ad5bfa4279f22212b703db3d4ed8f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c140c1cc_fd26c682",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-10T18:34:30Z",
+      "side": 1,
+      "message": "Ah, I like that; it\u0027s pretty simple and also provides logging of the mux state.",
+      "parentUuid": "ffc7f79e_1747e4a3",
+      "revId": "66e4311f7ad5bfa4279f22212b703db3d4ed8f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
