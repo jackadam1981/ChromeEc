@@ -34,6 +34,24 @@
       "revId": "66e4311f7ad5bfa4279f22212b703db3d4ed8f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc7f79e_1747e4a3",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-10T18:04:15Z",
+      "side": 1,
+      "message": "I would do:\n\n  mux_mode \u003d ((pin_mode \u0026 MODE_DP_PIN_MF_MASK) \u0026\u0026 mf_pref) ?\n             TYPEC_MUX_DOCK : TYPEC_MUX_DP;\n  CPRINTS(\"pin_mode: %x, mf: %d, mux: %d\", pin_mode, mf_pref, mux_mode);\n  ...\n  usb_mux_set(port, mux_mode, ...);",
+      "parentUuid": "9ed7e43a_f4e703ad",
+      "revId": "66e4311f7ad5bfa4279f22212b703db3d4ed8f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
