@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe374f6_f46b0d90",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-10T18:39:41Z",
+      "side": 1,
+      "message": "please add comment saying why we need this 15ms sleep (required for full reboot)",
+      "range": {
+        "startLine": 571,
+        "startChar": 2,
+        "endLine": 571,
+        "endChar": 8
+      },
+      "revId": "1f69c3b2a417e57a80e0b3ec7ff382926b13f845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
