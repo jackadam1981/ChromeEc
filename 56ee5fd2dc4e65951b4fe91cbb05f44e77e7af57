@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cdd148f8_3f6e2084",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-10T00:46:28Z",
+      "side": 1,
+      "message": "please check here: \nhttps://drive.google.com/drive/u/0/folders/1IKYMda_qadp0o5amRTstxs5_Lp-Kj6S_\nthe Kabylake PCH EDS page 49, HPET register group, timer 0 config and capabilities.",
+      "parentUuid": "b1edeb98_6eeb9440",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "775e757a_2dbfc296",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c128dd_a9cfe216",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-10T00:46:28Z",
+      "side": 1,
+      "message": "This line is gone after rebase. Should be it\u0027s decided not needed later.",
+      "parentUuid": "775e757a_2dbfc296",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7f057453_5e3922da",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-10T00:46:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "21af3bba_05f24e16",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c954abbf_76ca861b",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4267bb53_a0e0ed67",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-10T00:46:28Z",
+      "side": 1,
+      "message": "You are right. Removed for timer 0, 1. 2. Even timer 0 doesn\u0027t need it.",
+      "parentUuid": "c954abbf_76ca861b",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a53962f9_850eb22d",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 9
@@ -114,6 +210,30 @@
       "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783d0a46_5fe36d2d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-10T00:46:28Z",
+      "side": 1,
+      "message": "Done. Grouped the low power idle case.",
+      "parentUuid": "a53962f9_850eb22d",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 28
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
