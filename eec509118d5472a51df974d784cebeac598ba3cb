@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6125e7fd_dd749116",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-10T02:15:02Z",
+      "side": 1,
+      "message": "There\u0027s quite a bit of code duplication with set_rtc_alarm here...\n\nWould it be possible to merge some of the code?",
+      "revId": "eec509118d5472a51df974d784cebeac598ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d4c341_e1f482cc",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-10T02:15:02Z",
+      "side": 1,
+      "message": "This means that there is a value _saved_, not necessarily that the alarm was set by the host.\n\nWhat am I missing?",
+      "revId": "eec509118d5472a51df974d784cebeac598ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa60e805_c4ecdf0d",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-10T02:15:02Z",
+      "side": 1,
+      "message": "saved by set_rtc_alarm, where it\u0027s saved is an implementation detail ,-)",
+      "revId": "eec509118d5472a51df974d784cebeac598ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
