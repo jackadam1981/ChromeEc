@@ -267,7 +267,18 @@ SECTIONS
 #else
     } > FLASH
 #endif
-    __data_lma_start = . ;
+
+    .data_lma : {
+	/* Explicilty allocate a space for .data section LMA. */
+        __data_lma_start = .;
+        . += __data_end - __data_start;
+#if !defined(CONFIG_FLASH_PHYSICAL)
+    } > IRAM
+#elif defined(CONFIG_EXTERNAL_STORAGE)
+    } > CDRAM AT > FLASH
+#else
+    } > FLASH
+#endif
 
     .bss : {
 	/*
@@ -325,9 +336,9 @@ SECTIONS
 #endif /* defined(CONFIG_REPLACE_LOADER_WITH_BSS_SLOW) */
 
 #ifdef CONFIG_EXTERNAL_STORAGE
-    .data : AT(LOADADDR(.rodata) + SIZEOF(.rodata)) {
+    .data : AT(LOADADDR(.data_lma)) {
 #else
-    .data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
+    .data : AT(ADDR(.data_lma)) {
 #endif
         . = ALIGN(4);
         __data_start = .;
