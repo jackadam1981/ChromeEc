@@ -437,6 +437,11 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 
 	/* EC sleep */
 	ec_sleep = 1;
+#if defined(IT83XX_ESPI_INHIBIT_CS_BY_PAD_DISABLED) && \
+defined(CONFIG_HOSTCMD_ESPI)
+	/* Disable eSPI pad. */
+	IT83XX_ESPI_ESGCTRL2 |= (1 << 6);
+#endif
 	clock_ec_pll_ctrl(EC_PLL_SLEEP);
 	interrupt_enable();
 	/* standby instruction */
@@ -452,8 +457,14 @@ void clock_sleep_mode_wakeup_isr(void)
 	uint32_t st_us, c;
 
 	/* trigger a reboot if wake up EC from sleep mode (system hibernate) */
-	if (clock_ec_wake_from_sleep())
+	if (clock_ec_wake_from_sleep()) {
+#if defined(IT83XX_ESPI_INHIBIT_CS_BY_PAD_DISABLED) && \
+defined(CONFIG_HOSTCMD_ESPI)
+		/* Enable eSPI pad. */
+		IT83XX_ESPI_ESGCTRL2 &= ~(1 << 6);
+#endif
 		system_reset(SYSTEM_RESET_HARD);
+	}
 
 	if (IT83XX_ECPM_PLLCTRL == EC_PLL_DEEP_DOZE) {
 		clock_ec_pll_ctrl(EC_PLL_DOZE);
