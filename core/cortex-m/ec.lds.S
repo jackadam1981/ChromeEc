@@ -270,6 +270,15 @@ SECTIONS
     __ro_end = . ;
 
     .bss : {
+#if !defined(CONFIG_FLASH_PHYSICAL)
+	/*
+	 * If text, rodata, data, and bss sections are all in the IRAM,
+	 * we have to move out space between __ro_end and __bss_start for
+	 * .data section LMA.  If not, data's LMA would be cleared by
+	 * .bss section on program startup.
+	 */
+        . = . + (__data_end - __data_start);
+#endif
 	/*
 	 * Align to 512 bytes. This is convenient when some memory block
 	 * needs big alignment. This is the beginning of the RAM, so there
