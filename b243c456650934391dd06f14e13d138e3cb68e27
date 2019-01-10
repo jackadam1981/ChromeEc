@@ -16,6 +16,24 @@
       "revId": "b243c456650934391dd06f14e13d138e3cb68e27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c94e7be_e9457dd3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-10T17:00:49Z",
+      "side": 1,
+      "message": "Hand checking this algorithm with a few numbers yields the intended results:\n\n(0xFFFFFFFF * 12) \u003d 0xBFFFFFFF4 which is the 64-bit value of 12Mhz counter for a clock read of 0xFFFFFFFF\n\n\n0xBFFFFFFF4 / 12 \u003d\u003e 0xFFFFFFFF\n\n0xBFFFFFFF4 + 11 \u003d 0xBFFFFFFFF\n\n0xBFFFFFFFF / 12 \u003d\u003e 0xFFFFFFFF\n\nThen 0xC00000000 converts to 0x0 after only keeping the remainder of the hi bytes\n0x0 / 12 \u003d\u003e 0x0\n\nDo this at the next rollover points also works.\n\n\n---\n\nI am not getting the cache value of the counter comment. Are we just caching the hi bytes and comparing them to the real counter value and if they differ then do something? I don\u0027t see how that would obviate the need for this divide operation though.",
+      "parentUuid": "9400e47a_6c6c6bef",
+      "revId": "b243c456650934391dd06f14e13d138e3cb68e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
