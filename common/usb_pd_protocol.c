@@ -1645,8 +1645,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY) {
 			/* reset message ID and swap roles */
 			pd[port].msg_id = 0;
-			pd_set_power_role(port, PD_ROLE_SINK);
-			pd_update_roles(port);
+			//pd_set_power_role(port, PD_ROLE_SINK);
+			//pd_update_roles(port);
 			/*
 			 * Give the state machine time to read VBUS as high.
 			 * Note: This is empirically determined, not strictly
@@ -3339,22 +3339,30 @@ void pd_task(void *u)
 		case PD_STATE_SRC_SWAP_STANDBY:
 			/* Send PS_RDY to let sink know our power is off */
 			if (pd[port].last_state != pd[port].task_state) {
+				/* move here. Figure 8-11, 12 */
+				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd_set_power_role(port, PD_ROLE_SINK);
+				pd_update_roles(port);
 				/* Send PS_RDY */
 				res = send_control(port, PD_CTRL_PS_RDY);
 				if (res < 0) {
+					tcpm_set_cc(port, TYPEC_CC_RP);
+					pd_set_power_role(port, PD_ROLE_SOURCE);
+					//pd_update_roles(port);//debnce st. do
 					timeout = 10*MSEC;
 					set_state(port,
 						  PD_STATE_SRC_DISCONNECTED);
 					break;
 				}
 				/* Switch to Rd and swap roles to sink */
-				tcpm_set_cc(port, TYPEC_CC_RD);
-				pd_set_power_role(port, PD_ROLE_SINK);
+				//tcpm_set_cc(port, TYPEC_CC_RD);
+				//pd_set_power_role(port, PD_ROLE_SINK);
 				/* Wait for PS_RDY from new source */
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_T_PS_SOURCE_ON,
 						  PD_STATE_SNK_DISCONNECTED);
+				//error recovery should start from unattach.src
 			}
 			break;
 		case PD_STATE_SUSPENDED: {
@@ -3796,13 +3804,19 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_SWAP_COMPLETE:
 			/* Send PS_RDY and change to source role */
+			/* move here. Figure 8-11, 12 */
+			pd_set_power_role(port, PD_ROLE_SOURCE);
+			pd_update_roles(port);
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res < 0) {
 				/* Restore Rd */
 				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd_set_power_role(port, PD_ROLE_SINK);
+				//pd_update_roles(port);//debounce state will do
 				pd_power_supply_reset(port);
 				timeout = 10 * MSEC;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
+				//error recovery should start from unattach.src
 				break;
 			}
 
@@ -3810,9 +3824,13 @@ void pd_task(void *u)
 			snk_cap_count = PD_SNK_CAP_RETRIES+1;
 			caps_count = 0;
 			pd[port].msg_id = 0;
-			pd_set_power_role(port, PD_ROLE_SOURCE);
-			pd_update_roles(port);
-			set_state(port, PD_STATE_SRC_DISCOVERY);
+			//pd_set_power_role(port, PD_ROLE_SOURCE);
+			//pd_update_roles(port);
+			/* Wait for not too early send SRC_Cap, ch.6.6.8 */
+			set_state_timeout(port, get_time().val +
+					PD_T_SWAP_SRC_START,
+					PD_STATE_SRC_DISCOVERY);
+			//set_state(port, PD_STATE_SRC_DISCOVERY);
 			timeout = 10*MSEC;
 			break;
 #ifdef CONFIG_USBC_VCONN_SWAP

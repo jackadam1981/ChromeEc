@@ -180,6 +180,7 @@ enum pd_rx_errors {
 #define PD_T_TRY_TIMEOUT      (550*MSEC) /* between 550ms and 1100ms */
 #define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
 #define PD_T_SINK_REQUEST     (100*MSEC) /* Wait 100ms before next request */
+#define PD_T_SWAP_SRC_START    (20*MSEC) /* Wait, not too early send SRC_Cap */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
