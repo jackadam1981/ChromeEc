@@ -20,11 +20,19 @@
 #include "shared_mem.h"
 #include "system.h"
 #include "usb_pd.h"
+#include "uart.h"
+#include "version.h"
 #include "vboot.h"
 #include "vb21_struct.h"
 
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
+
+#define CR50_UART	CONFIG_CONSOLE_UART
+#define CR50_UART_IRQ	NPCX_IRQ_UART
+
+//static struct sha256_ctx __ctx;
+static uint8_t *__hash;
 
 static int has_matrix_keyboard(void)
 {
@@ -47,6 +55,7 @@ static int is_low_power_ap_boot_supported(void)
 
 static int verify_slot(enum system_image_copy_t slot)
 {
+#if 0
 	const struct vb21_packed_key *vb21_key;
 	const struct vb21_signature *vb21_sig;
 	const struct rsa_public_key *key;
@@ -101,11 +110,13 @@ static int verify_slot(enum system_image_copy_t slot)
 		return EC_ERROR_INVAL;
 	}
 
-	rv = vboot_verify(data, len, key, sig);
+	__hash = vboot_get_hash(data, len, &__ctx);
+	rv = vboot_verify(__hash, key, sig);
 	if (rv) {
 		CPRINTS("Invalid data (%d)", rv);
 		return EC_ERROR_INVAL;
 	}
+#endif
 
 	CPRINTS("Verified %s", system_image_copy_t_to_string(slot));
 
@@ -130,6 +141,99 @@ static int hc_verify_slot(struct host_cmd_handler_args *args)
 	return verify_slot(slot) ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
+
+static int send_to_cr50(uint8_t *data, uint64_t timeout)
+{
+	uint64_t until = get_time().val + timeout;
+	uart_clear_input();
+	uart_puts(data);
+	while (get_time().val < until) {
+		int c = uart_getc();
+		if (c != -1)
+			return c == 0xce ? EC_SUCCESS : EC_ERROR_UNKNOWN;
+		msleep(10);
+	}
+	return EC_ERROR_TIMEOUT;
+}
+
+static int handshake_cr50_open(void)
+{
+	/* EC sends 63 '0xec' */
+	uint8_t handshaker[32];
+	memset(handshaker, 0xec, sizeof(handshaker));
+	handshaker[sizeof(handshaker) - 1] = 0;
+	/* CPRINTS("Handshake opening"); */
+	/* We'll get reset by cr50 if this is an illegal timing */
+	return send_to_cr50(handshaker, 200 * MSEC);
+}
+
+static int handshake_cr50_close(void)
+{
+	uint8_t handshaker[32];
+	memset(handshaker, 0xec, sizeof(handshaker));
+	handshaker[sizeof(handshaker) - 1] = 0;
+	/* CPRINTS("Handshake closing"); */
+	return send_to_cr50(handshaker, 200 * MSEC);
+}
+
+static void toggle_ccd_mode(void)
+{
+	int level = gpio_get_level(GPIO_CCD_MODE_ODL);
+	gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+	gpio_set_level(GPIO_CCD_MODE_ODL, 0);
+	msleep(10);
+	gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+	msleep(10);
+	gpio_set_level(GPIO_CCD_MODE_ODL, level);
+}
+
+static void send_identity_to_cr50(enum system_image_copy_t slot)
+{
+	/* +1 for a nul character. This fits version string too. */
+	uint8_t buf[SHA256_DIGEST_SIZE+1];
+	const struct image_data *image_data;
+	//int32_t version = ver_get_num_commits(slot);
+
+	/* Clear Tx buffer. Console task hasn't started yet. */
+	uart_flush_output();
+
+	/* Wake up cr50. cr50 has to clear its uart, too. */
+	toggle_ccd_mode();
+
+	if (handshake_cr50_open()) {
+		CPRINTS("Failed to open handshake with cr50");
+		return;
+	}
+
+	/* send version */
+	image_data = system_get_image_data(slot);
+	if (!image_data)
+		goto exit;
+
+	memset(buf, 0, sizeof(buf));
+	memcpy(buf, image_data->version, sizeof(image_data->version));
+	if (send_to_cr50(buf, 200 * MSEC))
+		goto exit;
+
+	/* send hash */
+	memset(buf, 0, sizeof(buf));
+	memcpy(buf, __hash, sizeof(__hash));
+	if (send_to_cr50(buf, 200 * MSEC))
+		goto exit;
+
+exit:
+	if (handshake_cr50_close())
+		CPRINTS("Failed to close handshake with cr50");
+}
+
+
+int command_cr50(int argc, char *argv[])
+{
+	//toggle_ccd_mode();
+	send_identity_to_cr50(SYSTEM_IMAGE_RW_A);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cr50, command_cr50, NULL, "Toggle CCD_MODE_L");
 
 static int verify_and_jump(void)
 {
@@ -159,7 +263,10 @@ static int verify_and_jump(void)
 				system_image_copy_t_to_string(slot));
 	}
 
-	/* 3. Jump (and reboot) */
+	/* 3. Send identity to cr50 */
+	send_identity_to_cr50(slot);
+
+	/* 4. Jump (and reboot) */
 	rv = system_run_image_copy(slot);
 	CPRINTS("Failed to jump (%d)", rv);
 
@@ -175,7 +282,7 @@ static void request_power(void)
 static void request_recovery(void)
 {
 	CPRINTS("%s", __func__);
-	led_critical();
+	//led_critical();
 }
 
 static int is_manual_recovery(void)

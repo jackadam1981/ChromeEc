@@ -6,6 +6,7 @@
 #include "common.h"
 #include "vb21_struct.h"
 #include "rsa.h"
+#include "sha256.h"
 
 /**
  * Validate key contents.
@@ -35,16 +36,17 @@ int vb21_is_signature_valid(const struct vb21_signature *sig,
  */
 int vboot_is_padding_valid(const uint8_t *data, uint32_t start, uint32_t end);
 
+uint8_t *vboot_get_hash(const uint8_t *data, int len, struct sha256_ctx *ctx);
+
 /**
  * Verify data by RSA signature
  *
- * @param data Data to be verified.
- * @param len  Number of bytes in <data>.
+ * @param data Hash data to be verified.
  * @param key  Key to be used for verification.
  * @param sig  Signature of <data>
  * @return EC_SUCCESS or EC_ERROR_*
  */
-int vboot_verify(const uint8_t *data, int len,
+int vboot_verify(uint8_t *hash,
 		 const struct rsa_public_key *key, const uint8_t *sig);
 
 /**

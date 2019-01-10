@@ -17,8 +17,8 @@
 struct usart_config {
 	int uart;
 
-	struct producer const producer;
-	struct consumer const consumer;
+	struct producer producer;
+	struct consumer consumer;
 };
 
 extern struct consumer_ops const uart_consumer_ops;
@@ -52,7 +52,7 @@ extern struct producer_ops const uart_producer_ops;
 		     UART,						\
 		     RX_QUEUE,						\
 		     TX_QUEUE)						\
-	struct usart_config const NAME = {				\
+	struct usart_config NAME = {				\
 		.uart      = UART,					\
 		.consumer  = {						\
 			.queue = &TX_QUEUE,				\
@@ -71,7 +71,9 @@ void send_data_to_usb(struct usart_config const *config);
 /* Read data from the consumer queue and send it to the UART */
 void get_data_from_usb(struct usart_config const *config);
 
+void usart_set_ec_uart_queue(struct queue const *pq, struct queue const *cq);
+
 /* Helper for UART bitbang mode. */
-extern struct usart_config const ec_uart;
+extern struct usart_config ec_uart;
 
 #endif  /* __CROS_FORWARD_UART_H */

@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ec_comm.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -40,7 +41,7 @@ defined(SECTION_IS_RO)))
 
 #ifdef CONFIG_STREAM_USART1
 struct usb_stream_config const ap_usb;
-struct usart_config const ap_uart;
+struct usart_config ap_uart;
 
 #ifdef CONFIG_STREAM_SIGNATURE
 /*
@@ -106,13 +107,32 @@ USB_STREAM_CONFIG(ap_usb,
 
 #ifdef CONFIG_STREAM_USART2
 struct usb_stream_config const ec_usb;
-struct usart_config const ec_uart;
+struct usart_config ec_uart;
+struct ec_comm_config const ec_cmd;
 
 static struct queue const ec_uart_to_usb =
 	QUEUE_DIRECT(QUEUE_SIZE_UART_RX, uint8_t,
 		     ec_uart.producer, ec_usb.consumer);
+
 static struct queue const ec_usb_to_uart =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
+
+struct queue const ec_uart_to_cmd =
+	QUEUE_DIRECT(EC_COMM_PACKET_SIZE, uint8_t,
+		     ec_uart.producer, ec_cmd.consumer);
+
+struct queue const ec_cmd_to_uart =
+	QUEUE_DIRECT(EC_COMM_PACKET_SIZE, uint8_t,
+		     ec_cmd.producer, ec_uart.consumer);
+
+struct ec_comm_config const ec_cmd = {
+	.consumer = {
+		.queue = &ec_cmd_to_uart,
+		.ops = &command_consumer_ops, },
+	.producer = {
+		.queue = &ec_uart_to_cmd,
+		.ops = &command_producer_ops, },
+};
 
 USART_CONFIG(ec_uart,
 	     UART_EC,
@@ -128,6 +148,16 @@ USB_STREAM_CONFIG(ec_usb,
 		  ec_usb_to_uart,
 		  ec_uart_to_usb)
 #endif
+
+void usart_set_ec_uart_queue(struct queue const *pq, struct queue const *cq)
+{
+	task_disable_irq(GC_IRQNUM_UART2_RXINT);
+	task_disable_irq(GC_IRQNUM_UART2_TXINT);
+	ec_uart.producer.queue = pq;
+	ec_uart.consumer.queue = cq;
+	task_enable_irq(GC_IRQNUM_UART2_RXINT);
+	task_enable_irq(GC_IRQNUM_UART2_TXINT);
+}
 
 void get_data_from_usb(struct usart_config const *config)
 {

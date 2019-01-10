@@ -16,6 +16,9 @@
 
 static enum device_state state = DEVICE_STATE_INIT;
 
+/* TODO: Put this in a long-life register */
+static int ec_rw = 0;
+
 void print_ec_state(void)
 {
 	ccprintf("EC:      %s\n", device_state_name(state));
@@ -25,6 +28,11 @@ int ec_is_on(void)
 {
 	/* Debouncing and on are both still on */
 	return (state == DEVICE_STATE_DEBOUNCING || state == DEVICE_STATE_ON);
+}
+
+int ec_is_in_ro(void)
+{
+	return ec_rw == 0;
 }
 
 int ec_is_rx_allowed(void)

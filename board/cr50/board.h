@@ -242,6 +242,7 @@ void ec_detect_asserted(enum gpio_signal signal);
 void ec_tx_cr50_rx(enum gpio_signal signal);
 void servo_detect_asserted(enum gpio_signal signal);
 void tpm_rst_deasserted(enum gpio_signal signal);
+void ccd_mode_asserted(enum gpio_signal signal);
 
 void post_reboot_request(void);
 
@@ -329,8 +330,10 @@ void print_servo_state(void);
 int ap_is_on(void);
 int ap_uart_is_on(void);
 int ec_is_on(void);
+int ec_is_in_ro(void);
 int ec_is_rx_allowed(void);
 int servo_is_connected(void);
+int ec_is_speaking(void);
 
 void set_ap_on(void);
 
