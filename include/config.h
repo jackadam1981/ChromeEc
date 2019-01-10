@@ -2632,6 +2632,19 @@
 #undef CONFIG_DATA_RAM_SIZE
 #undef CONFIG_RAM_SIZE
 
+/*
+ * CONFIG_DATA_SECTION_MAX_SIZE indicates the data section max size in the
+ * image.  We can retrieve data section size by SIZEOF(.data), however,
+ * linker might not be able to know the size when allocates data section's
+ * LMA space. This might be a problem if .text, .rodata and .bss section are
+ * all puts in the same memory space, e.g. RAM. (.data section LMA is usually
+ * located right after .rodata section, and right before .bss section.)
+ * .data section's LMA might be overlapped with .bss section so that it would
+ * get cleared to zero on program startup.
+ * This flag is currently only needed for a image with RAM space only.
+ */
+#undef CONFIG_MAX_DATA_SECTION_SIZE
+
 /* Enable rbox peripheral */
 #undef CONFIG_RBOX
 
