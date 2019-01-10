@@ -16,6 +16,24 @@
       "revId": "66e4311f7ad5bfa4279f22212b703db3d4ed8f3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed7e43a_f4e703ad",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-10T05:34:11Z",
+      "side": 1,
+      "message": "I had wanted to show the corrected mf_pref, essentially making this print say \"this is the mode selected\". I think it may be useful to show that a correction did occur. What are your thoughts on adding \"(corrected)\" after the MF bit?",
+      "parentUuid": "2353aa43_9303f41f",
+      "revId": "66e4311f7ad5bfa4279f22212b703db3d4ed8f3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
