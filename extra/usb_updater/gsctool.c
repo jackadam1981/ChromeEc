@@ -207,7 +207,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikMmO:oPpR:rS:stUuVvw";
+static char *short_opts = "aBbcd:F:fhIikMmO:oPpR:rS:stUuVvwz";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -237,6 +237,7 @@ static const struct option long_opts[] = {
 	{"version",	                0,   NULL, 'v'},
 	{"wp",		                0,   NULL, 'w'},
 	{"upstart",	                0,   NULL, 'u'},
+	{"recovery_state",	        0,   NULL, 'z'},
 	{},
 };
 
@@ -579,6 +580,7 @@ static void usage(int errs)
 	       "  -V,--verbose             Enable debug messages\n"
 	       "  -v,--version             Report this utility version\n"
 	       "  -w,--wp                  Get the current wp setting\n"
+	       "  -z,--recovery_state      Get the recovery button state\n"
 	       "\n", progname, VID, PID);
 
 	exit(errs ? update_error : noop);
@@ -2131,6 +2133,35 @@ static int process_tpm_mode(struct transfer_descriptor *td,
 	return rv;
 }
 
+static void process_recovery_state(struct transfer_descriptor *td)
+{
+	int rv;
+	size_t response_size;
+	uint8_t response;
+
+	printf("Getting Recovery State\n");
+
+	response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_REC_BTN, NULL, 0, &response,
+		&response_size);
+
+	if (rv) {
+		fprintf(stderr, "Failed to get recovery state, %d\n",
+			rv);
+		exit(update_error);
+	}
+	if (response_size != sizeof(response)) {
+		fprintf(stderr, "Unexpected response size %zd while getting "
+			"recovery state\n",
+			response_size);
+		exit(update_error);
+	}
+
+	printf("Recovery Button State is %d\n", response);
+}
+
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -2168,6 +2199,7 @@ int main(int argc, char *argv[])
 	uint32_t sn_bits_arg[3];
 	int sn_inc_rma = 0;
 	uint8_t sn_inc_rma_arg;
+	int recovery_state = 0;
 
 	// Explicitly sets buffering type to line buffered so that output lines
 	// can be written to pipe instantly. This is needed when the
@@ -2337,6 +2369,9 @@ int main(int argc, char *argv[])
 		case 'w':
 			wp = 1;
 			break;
+		case 'z':
+			recovery_state = 1;
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -2377,7 +2412,8 @@ int main(int argc, char *argv[])
 	    !sn_inc_rma &&
 	    !openbox_desc_file &&
 	    !tpm_mode &&
-	    !wp) {
+	    !wp &&
+	    !recovery_state) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -2442,6 +2478,9 @@ int main(int argc, char *argv[])
 
 	if (rma)
 		process_rma(&td, rma_auth_code);
+
+	if (recovery_state)
+		process_recovery_state(&td);
 
 	if (factory_mode)
 		process_factory_mode(&td, factory_mode_arg);
