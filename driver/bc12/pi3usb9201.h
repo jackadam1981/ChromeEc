@@ -35,7 +35,7 @@ enum pi3usb9201_mode {
 
 
 #define PI3USB9201_REG_CTRL_2_AUTO_SW (1 << 1)
-#define PI3USB9201_REG_CTRL_2_START_DET (1 << 2)
+#define PI3USB9201_REG_CTRL_2_START_DET (1 << 3)
 
 
 #define PI3USB9201_REG_CLIENT_STS_CHG_OTHER (1 << 0)
