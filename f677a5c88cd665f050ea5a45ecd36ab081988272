@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3543ecc_ce3cc490",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-11T01:02:00Z",
+      "side": 1,
+      "message": "This is definitely an improvement, I am just wondering if we should not keep data_avail as a fixed status bit, but generate it on the fly when status register is read as the \u0027fifo_read_index !\u003d fifo_write_index\u0027 condition.",
+      "revId": "f677a5c88cd665f050ea5a45ecd36ab081988272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
