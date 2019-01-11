@@ -328,6 +328,10 @@ static void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 	mux->hpd_update(port, 1, 0);
+#ifdef BOARD_USBC_MST_PORT
+	if (port == BOARD_USBC_MST_PORT)
+		baseboard_mst_enable_control(MST_TYPE_C1, 1);
+#endif
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
@@ -343,6 +347,10 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		return 1;
 	}
 	mux->hpd_update(port, lvl, irq);
+#ifdef BOARD_USBC_MST_PORT
+	if (port == BOARD_USBC_MST_PORT)
+		baseboard_mst_enable_control(MST_TYPE_C1, lvl);
+#endif
 
 	/* ack */
 	return 1;
@@ -354,6 +362,10 @@ static void svdm_exit_dp_mode(int port)
 
 	svdm_safe_dp_mode(port);
 	mux->hpd_update(port, 0, 0);
+#ifdef BOARD_USBC_MST_PORT
+	if (port == BOARD_USBC_MST_PORT)
+		baseboard_mst_enable_control(MST_TYPE_C1, 0);
+#endif
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)

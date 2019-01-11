@@ -37,6 +37,9 @@
 #define CONFIG_THROTTLE_AP
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 
+/* MST */
+#define BOARD_USBC_MST_PORT 1
+
 /*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
