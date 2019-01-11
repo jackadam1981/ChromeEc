@@ -69,6 +69,21 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
+static void hpd_interrupt(enum gpio_signal signal)
+{
+	int c1_hpd = gpio_get_level(GPIO_TCPC_USB_C1_HPD);
+	int hdmi_hpd = gpio_get_level(GPIO_HDMI_CONN_HPD);
+
+	/*
+	 * The MST_EN signal should be set if either HPD lines are high and
+	 * cleared only if both HPD signals are low.
+	 */
+	if (!c1_hpd && !hdmi_hpd)
+		gpio_set_level(GPIO_EN_MST, 0);
+	else
+		gpio_set_level(GPIO_EN_MST, 1);
+}
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
