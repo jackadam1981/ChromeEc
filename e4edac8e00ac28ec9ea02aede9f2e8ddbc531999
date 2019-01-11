@@ -22,6 +22,30 @@
       "revId": "e4edac8e00ac28ec9ea02aede9f2e8ddbc531999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d031b1e_39c08924",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-11T02:39:30Z",
+      "side": 1,
+      "message": "we often can get cr50 logs for the bugs that happen during board bringup and factory stress tests. seeing something like that would be a good indication of where to look. \nCL:1406248 dealt with one case when underruns could happen. but in general, they shouldn\u0027t happen at all.\n\nan alt to reporting is sending only as much as available to i2c queue - but even then reporting an error would make sense, since it is always expected that data_size \u003c\u003d still_in_fifo.",
+      "parentUuid": "bcda78e9_022977e3",
+      "range": {
+        "startLine": 455,
+        "startChar": 2,
+        "endLine": 456,
+        "endChar": 30
+      },
+      "revId": "e4edac8e00ac28ec9ea02aede9f2e8ddbc531999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
