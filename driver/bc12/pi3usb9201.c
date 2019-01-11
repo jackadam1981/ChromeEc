@@ -70,6 +70,7 @@ static int pi3usb9201_set_mode(int port, int desired_mode)
 {
 	int rv;
 	int reg;
+	int mode;
 
 	rv = raw_read8(port, PI3USB9201_REG_CTRL_1, &reg);
 	if (rv)
@@ -80,6 +81,11 @@ static int pi3usb9201_set_mode(int port, int desired_mode)
 
 	reg |= (desired_mode << PI3USB9201_REG_CTRL_1_INT_MODE_BIT_SHIFT);
 
+	rv = raw_write8(port, PI3USB9201_REG_CTRL_1, reg);
+	pi3usb9201_get_mode(port, &mode);
+	CPRINTS("bc12: set mode desred = %x, mode = %x",
+		desired_mode, mode);
+
 	return  raw_write8(port, PI3USB9201_REG_CTRL_1, reg);
 }
 
@@ -89,7 +95,6 @@ static void bc12_detect(int port)
 
 	pi3usb9201_reg_dump(port);
 	pi3usb9201_get_mode(port, &mode);
-	CPRINTS("bc12: mode = %x", mode);
 }
 
 void usb_charger_set_switches(int port, enum usb_switch setting)
