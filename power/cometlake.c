@@ -99,7 +99,16 @@ enum power_state power_handle_state(enum power_state state)
 	int all_sys_pwrgd_in;
 	int all_sys_pwrgd_out;
 
-	common_intel_x86_handle_rsmrst(state);
+	/*
+	 * Check if RSMRST_L signal state has changed. If the current value
+	 * passed along to PCH is low, then only check for transition in the
+	 * PP5000_A rail is up. If the value is currently high, then always
+	 * check.
+	 */
+	//	if (power_has_signals(PP5000_PGOOD_POWER_SIGNAL_MASK) ||
+	if (gpio_get_level(GPIO_PP5000_A_PG_OD) ||
+	    gpio_get_level(GPIO_EC_PCH_RSMRST_L))
+		common_intel_x86_handle_rsmrst(state);
 
 	switch (state) {
 
