@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcda78e9_022977e3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-11T01:05:12Z",
+      "side": 1,
+      "message": "Honestly, I am not sure how valuable this is, especially since most of the time we are not watching the cr50 console at all.\n\nWe need a mechanism to log various error conditions and reporting them to the AP when requested, this would be a good example of such a condition.",
+      "range": {
+        "startLine": 455,
+        "startChar": 2,
+        "endLine": 456,
+        "endChar": 30
+      },
+      "revId": "e4edac8e00ac28ec9ea02aede9f2e8ddbc531999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
