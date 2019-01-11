@@ -45,7 +45,7 @@ static void pi3usb9201_reg_dump(int port)
 	int i;
 	int reg;
 
-	for (i = PI3USB9201_REG_CTRL_1; i < PI3USB9201_REG_HOST_STS; i++) {
+	for (i = PI3USB9201_REG_CTRL_1; i <= PI3USB9201_REG_HOST_STS; i++) {
 		if (raw_read8(port, i, &reg) == EC_SUCCESS)
 			CPRINTS("pi3usb9201: reg 0x%02x\t%x", i, reg);
 	}
@@ -70,6 +70,7 @@ static int pi3usb9201_set_mode(int port, int desired_mode)
 {
 	int rv;
 	int reg;
+	int mode;
 
 	rv = raw_read8(port, PI3USB9201_REG_CTRL_1, &reg);
 	if (rv)
@@ -80,20 +81,56 @@ static int pi3usb9201_set_mode(int port, int desired_mode)
 
 	reg |= (desired_mode << PI3USB9201_REG_CTRL_1_INT_MODE_BIT_SHIFT);
 
+	rv = raw_write8(port, PI3USB9201_REG_CTRL_1, reg);
+	pi3usb9201_get_mode(port, &mode);
+	CPRINTS("bc12: set mode desred = %x, mode = %x",
+		desired_mode, mode);
+
 	return  raw_write8(port, PI3USB9201_REG_CTRL_1, reg);
+}
+
+static void bc12_start_detection(int port)
+{
+	int reg;
+
+	pi3usb9201_set_mode(port, PI3USB9201_CLIENT_MODE);
+	//msleep(100);
+	if (raw_read8(port, PI3USB9201_REG_CTRL_2, &reg))
+		return;
+
+	reg |= PI3USB9201_REG_CTRL_2_START_DET;
+	/* debug gpio for timing */
+	gpio_set_level(GPIO_LED_3_L, 1);
+	raw_write8(port, PI3USB9201_REG_CTRL_2, reg);
+	CPRINTS("pi3usb9201: port %d starting bc1.2 detection", port);
+}
+
+static void bc12_stop_detection(int port)
+{
+	int reg;
+
+	pi3usb9201_set_mode(port, PI3USB9201_POWER_DOWN);
+	//msleep(100);
+	if (raw_read8(port, PI3USB9201_REG_CTRL_2, &reg))
+		return;
+
+	reg &= ~PI3USB9201_REG_CTRL_2_START_DET;
+	/* debug gpio for timing */
+	raw_write8(port, PI3USB9201_REG_CTRL_2, reg);
+	CPRINTS("pi3usb9201: port %d stopping bc1.2 detection", port);
 }
 
 static void bc12_detect(int port)
 {
-	int mode;
+	//int mode;
 
-	pi3usb9201_reg_dump(port);
-	pi3usb9201_get_mode(port, &mode);
-	CPRINTS("bc12: mode = %x", mode);
+	//pi3usb9201_reg_dump(port);
+	//pi3usb9201_get_mode(port, &mode);
 }
 
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
+#if 1
 	int mode;
 
 
@@ -109,7 +146,6 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 
 	/* mutex_unlock(&usb_switch_lock[port]); */
 
-	CPRINTS("bc12: set switch %d", setting);
 
 	if (setting == USB_SWITCH_DISCONNECT) {
 		mode = PI3USB9201_POWER_DOWN;
@@ -119,7 +155,11 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 		mode = PI3USB9201_USB_PATH_ON;
 	}
 
-	pi3usb9201_set_mode(port, mode);
+		CPRINTS("bc12: set switch %d, pi3usb mode = %d",
+			setting, mode);
+
+		//pi3usb9201_set_mode(port, mode);
+#endif
 }
 
 
@@ -142,7 +182,9 @@ void usb_charger_task(void *u)
 		if (evt & USB_CHG_EVENT_BC12) {
 			/* Read interrupt register to clear on chip */
 			//pi3usb9281_get_interrupts(port);
-			bc12_detect(port);
+			gpio_set_level(GPIO_LED_3_L, 0);
+			CPRINTS("pi3usb9201: port %d int event", port);
+			pi3usb9201_reg_dump(port);
 		}
 		/* } else if (evt & USB_CHG_EVENT_INTR) { */
 		/* 	/\* Check the interrupt register, and clear on chip *\/ */
@@ -163,6 +205,48 @@ void usb_charger_task(void *u)
 			CPRINTS("VBUS p%d %d", port,
 				pd_snk_is_vbus_provided(port));
 #endif
+			//bc12_detect(port);
+			/*
+			 * If VBUS is present, then need to put in client mode
+			 * and start detection.
+			 */
+			if (pd_snk_is_vbus_provided(port)) {
+				/* pi3usb9201_set_mode(port, */
+				/* 		    PI3USB9201_CLIENT_MODE); */
+				bc12_start_detection(port);
+			} else {
+				bc12_stop_detection(port);
+			}
 		}
 	}
 }
+
+static int command_bc12_dump(int argc, char **argv)
+{
+	int port;
+
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = atoi(argv[1]);
+	if (port >= 2)
+		return EC_ERROR_PARAM1;
+
+	if (argc < 3) {
+		pi3usb9201_reg_dump(port);
+		return EC_SUCCESS;
+	}
+
+	if (!strncasecmp(argv[2], "client", 6)) {
+		pi3usb9201_reg_dump(port);
+		ccprintf("starting bc1.2 detection\n");
+		bc12_start_detection(port);
+		msleep(1000);
+		pi3usb9201_reg_dump(port);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bc12_dump, command_bc12_dump, "<Type-C port>",
+			"dump the PPC regs");
