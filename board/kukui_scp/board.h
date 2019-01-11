@@ -9,6 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 #define CONFIG_FLASH_SIZE 0x40000 /* Image file size: 256KB */
+#define CONFIG_MAX_DATA_SECTION_SIZE 0x80 /* 128 byte */
 #undef  CONFIG_LID_SWITCH
 #undef  CONFIG_FW_INCLUDE_RO
 
