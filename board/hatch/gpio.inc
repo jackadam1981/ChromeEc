@@ -58,6 +58,7 @@ GPIO(LED_3_L,                  PIN(C, 2), GPIO_OUT_HIGH)
 GPIO(LED_4_L,                  PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(EC_KB_BL_EN,              PIN(8, 6), GPIO_OUT_LOW)         /* Keyboard backlight */
 GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
+GPIO(EN_MST,                   PIN(9, 6), GPIO_OUT_HIGH)
 
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
