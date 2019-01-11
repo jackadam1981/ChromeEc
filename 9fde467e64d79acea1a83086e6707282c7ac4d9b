@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6468a34_72b53649",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-11T23:44:27Z",
+      "side": 1,
+      "message": "Way too long for a title. How about \u0027Disable KB regardless of AP power state\u0027?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 111
+      },
+      "revId": "9fde467e64d79acea1a83086e6707282c7ac4d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f82c92c2_906cac33",
         "filename": "board/elm/board.c",
         "patchSetId": 1
