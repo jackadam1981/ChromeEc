@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63240fd9_4ec85b2d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-11T20:24:39Z",
+      "side": 1,
+      "message": "Reboot to reload memory content as pass-through mode can get stuck.",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69226b3_e06f35ba",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-11T20:24:39Z",
+      "side": 1,
+      "message": "Direct to the AN: See \"AN4987 - LSM6DSM: always-on 3D accelerometer and 3D gyroscope\"\nNot everyone seeing this code has access to buganizer.",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9132469f_30379de3",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-11T20:24:39Z",
+      "side": 1,
+      "message": "Given boot imply reset, put the reset code between\n#else\n#endif",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
