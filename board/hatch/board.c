@@ -69,6 +69,26 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
+static void hpd_mst_en_ctrl_deferred(void)
+{
+	int c1_hpd = gpio_get_level(GPIO_TCPC_USB_C1_HPD);
+	int hdmi_hpd = gpio_get_level(GPIO_HDMI_CONN_HPD);
+
+	if (!c1_hpd && !hdmi_hpd)
+		gpio_set_level(GPIO_EN_MST, 0);
+	else
+		gpio_set_level(GPIO_EN_MST, 1);
+
+	CPRINTS("HPD: c1 %d, hdmi %d, en = %d",
+		c1_hpd, hdmi_hpd, (!c1_hpd & !hdmi_hpd) ? 0: 1);
+}
+DECLARE_DEFERRED(hpd_mst_en_ctrl_deferred);
+
+static void hpd_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&hpd_mst_en_ctrl_deferred_data, 2 * MSEC);
+}
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
