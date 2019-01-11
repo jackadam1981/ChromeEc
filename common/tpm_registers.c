@@ -82,6 +82,13 @@
 #define GOOGLE_DID 0x0028
 #define CR50_RID	0  /* No revision ID yet */
 
+/*
+ * I2CS writes must limit the burstsize to 63 for fifo writes to work
+ * properly. For I2CS fifo writes the first byte is the I2C TPM address
+ * and the next up to 62 bytes are the data to write to that register.
+ */
+#define MAX_BURSTCNT	63
+
 static __preserved uint8_t reset_in_progress;
 
 /* Tpm state machine states. */
@@ -191,7 +198,7 @@ static void set_tpm_state(enum tpm_states state)
 		tpm_.regs.sts &= ~data_avail;
 		/* Set burst size for the following write requests. */
 		tpm_.regs.sts &= ~(burst_count_mask << burst_count_shift);
-		tpm_.regs.sts |= 63 << burst_count_shift;
+		tpm_.regs.sts |= MAX_BURSTCNT << burst_count_shift;
 	}
 }
 
@@ -467,14 +474,14 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 	if (tpm_.fifo_write_index == tpm_.fifo_read_index) {
 		tpm_sts &= ~(data_avail | command_ready);
 		/* Burst size for the following write requests. */
-		tpm_sts |= 63 << burst_count_shift;
+		tpm_sts |= MAX_BURSTCNT << burst_count_shift;
 	} else {
 		/*
 		 * Tell the master how much there is to read in the next
 		 * burst.
 		 */
-		tpm_sts |= MIN(tpm_.fifo_write_index -
-			       tpm_.fifo_read_index, 63) << burst_count_shift;
+		tpm_sts |= MIN(tpm_.fifo_write_index - tpm_.fifo_read_index,
+			       MAX_BURSTCNT) << burst_count_shift;
 	}
 
 	tpm_.regs.sts = tpm_sts;
@@ -564,13 +571,8 @@ static void tpm_init(void)
 
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
-	/*
-	 * I2CS writes must limit the burstsize to 63 for fifo writes to work
-	 * properly. For I2CS fifo writes the first byte is the I2C TPM address
-	 * and the next up to 62 bytes are the data to write to that register.
-	 */
 	tpm_.regs.sts = (tpm_family_tpm2 << tpm_family_shift) |
-		(63 << burst_count_shift) | sts_valid;
+		(MAX_BURSTCNT << burst_count_shift) | sts_valid;
 
 	/* TPM2 library functions. */
 	_plat__Signal_PowerOn();
@@ -1060,7 +1062,8 @@ void tpm_task(void)
 			set_tpm_state(tpm_state_completing_cmd);
 			tpm_sts = tpm_.regs.sts;
 			tpm_sts &= ~(burst_count_mask << burst_count_shift);
-			tpm_sts |= (MIN(response_size, 63) << burst_count_shift)
+			tpm_sts |= (MIN(response_size,
+					MAX_BURSTCNT) << burst_count_shift)
 				| data_avail;
 			tpm_.regs.sts = tpm_sts;
 		}
