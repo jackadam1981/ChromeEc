@@ -22,6 +22,30 @@
       "revId": "4b718f963d4263365ffffc3e0675a3487bc0b8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef0d406_4fe93a66",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-11T21:56:29Z",
+      "side": 0,
+      "message": "Same reason, since timer0_config is initialized to 0; up to this point, no one set this mask(0x1f \u003c\u003c 9), so no need to clear it. Keep it is OK, it can explicitly let developer know those bits should not be set.",
+      "parentUuid": "582e731d_670976f4",
+      "range": {
+        "startLine": 142,
+        "startChar": 19,
+        "endLine": 142,
+        "endChar": 45
+      },
+      "revId": "4b718f963d4263365ffffc3e0675a3487bc0b8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

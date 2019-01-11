@@ -22,6 +22,30 @@
       "revId": "69730af3c1ab53e55fa8b18b5a835ae7fb14dfe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5097bc_fc3f353c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-01-11T21:56:29Z",
+      "side": 1,
+      "message": "Even when overflow, still compare lower 32 bits. The longest deep sleep time I got is 249ms, so it\u0027s safe only compare lower 32 bits to main counter.",
+      "parentUuid": "dc836237_6018f535",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "69730af3c1ab53e55fa8b18b5a835ae7fb14dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
