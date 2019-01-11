@@ -16,6 +16,24 @@
       "revId": "f677a5c88cd665f050ea5a45ecd36ab081988272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26096053_10498b6e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-11T01:06:20Z",
+      "side": 1,
+      "message": "that\u0027s also a good idea, but I\u0027ll start with this, and suggest refactoring in a separate CL. this one is\nbtw, I realized I need a followup to this: resetting burstcnt to 63, otherwise it stays at what it was at this point. and if it was, say, 12, the next command will be read in 12-byte increments.\nturned out we rely on burstcnt to be pre-set by the previous operation. setting it in *-\u003eidle makes more sense (and is required in our case).",
+      "parentUuid": "b3543ecc_ce3cc490",
+      "revId": "f677a5c88cd665f050ea5a45ecd36ab081988272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
