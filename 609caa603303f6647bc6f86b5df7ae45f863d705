@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29337f83_b5355cf4",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-11T15:39:30Z",
+      "side": 1,
+      "message": "nit: no need to clean the field as we are setting all bits to 1 in the next line.",
+      "revId": "609caa603303f6647bc6f86b5df7ae45f863d705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
