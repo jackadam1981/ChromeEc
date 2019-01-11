@@ -16,6 +16,24 @@
       "revId": "609caa603303f6647bc6f86b5df7ae45f863d705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "addb029e_40e59ca3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-11T19:09:50Z",
+      "side": 1,
+      "message": "right, but 63 is only 6 bits out of 16 that the burstcnt field contains. The top 10 bits should never be set, but I\u0027d prefer still clearing them just in case to make sure we recover after potential burstcnt-related errors when going to idle.",
+      "parentUuid": "29337f83_b5355cf4",
+      "revId": "609caa603303f6647bc6f86b5df7ae45f863d705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
