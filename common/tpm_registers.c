@@ -451,7 +451,11 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 		tpm_.fifo_read_index;
 	uint32_t tpm_sts;
 
-	data_size = MIN(data_size, still_in_fifo);
+	if (still_in_fifo < data_size) {
+		ccprintf("[%T TPM FIFO underrun: %u < %u]\n",
+			 still_in_fifo, data_size);
+		data_size = still_in_fifo;
+	}
 	memcpy(dest,
 	       tpm_.regs.data_fifo + tpm_.fifo_read_index,
 	       data_size);
