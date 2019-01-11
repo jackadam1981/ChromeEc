@@ -46,6 +46,30 @@
       "revId": "da570041729cea2a5fd7fb8241bad56b0014fcae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b06501_37e393b4",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-11T17:46:19Z",
+      "side": 1,
+      "message": "Ah, that is very subtle. Can you add that as a comment to the Enable eSPI pad comment just above",
+      "parentUuid": "4a992028_55dc2da0",
+      "range": {
+        "startLine": 466,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 34
+      },
+      "revId": "da570041729cea2a5fd7fb8241bad56b0014fcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
