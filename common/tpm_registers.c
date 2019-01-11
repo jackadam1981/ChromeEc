@@ -181,13 +181,17 @@ static void set_version_string(void)
 
 static void set_tpm_state(enum tpm_states state)
 {
+	ccprintf("state transition from %d to %d\n", tpm_.state, state);
 	CPRINTF("state transition from %d to %d\n", tpm_.state, state);
 	tpm_.state = state;
 
 	if (state == tpm_state_idle) {
+		ccprintf("Transition to IDLE, sts= %08x\n", tpm_.regs.sts);
 		/* Make sure FIFO is empty. */
 		tpm_.fifo_read_index = 0;
 		tpm_.fifo_write_index = 0;
+		tpm_.regs.sts &= ~data_avail;
+		ccprintf("Transition to IDLE, sts->%08x\n", tpm_.regs.sts);
 	}
 }
 
@@ -246,13 +250,16 @@ static void access_reg_write(uint8_t data)
 			 * TODO: need to decide what to do if there is a
 			 * command in progress.
 			 */
+			ccprintf("LOCALITY: unexpected release in: %u, 0x%08x\n", tpm_.state, tpm_.regs.sts);
 			CPRINTF("%s: locality release request in state %d\n",
 			__func__, tpm_.state);
 			break;
 		}
 		tpm_.regs.access &= ~active_locality;
 		/* No matter what we do, fall into idle state. */
+		ccprintf("IDLE: write(active_locality)\n");
 		set_tpm_state(tpm_state_idle);
+		ccprintf("IDLE: write(active_locality): 0x%08x\n", tpm_.regs.sts);
 		break;
 
 	default:
@@ -279,8 +286,10 @@ static void sts_reg_write_cr(void)
 	case tpm_state_completing_cmd:
 	case tpm_state_executing_cmd:
 	case tpm_state_receiving_cmd:
+		ccprintf("IDLE: write_cr(compl/exec/recv)\n");
 		set_tpm_state(tpm_state_idle);
 		tpm_.regs.sts &= ~command_ready;
+		ccprintf("IDLE: write_cr(compl/exec/recv): 0x%08x\n", tpm_.regs.sts);
 		break;
 	}
 }
@@ -305,6 +314,7 @@ static void sts_reg_write_tg(void)
 
 static void sts_reg_write_rr(void)
 {
+	ccprintf("sts_reg_write_rr\n");
 	switch (tpm_.state) {
 	case tpm_state_idle:
 	case tpm_state_ready:
@@ -359,6 +369,7 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 	uint32_t packet_size;
 	struct tpm_cmd_header *tpmh;
 
+	ccprintf("fifo_reg_write: data_size=%u\n", data_size);
 	/*
 	 * Make sure we are in the appropriate state, otherwise ignore this
 	 * access.
@@ -367,12 +378,16 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 		set_tpm_state(tpm_state_receiving_cmd);
 
 	if (tpm_.state != tpm_state_receiving_cmd) {
+		ccprintf("%s: ignoring data in state %d\n",
+			__func__, tpm_.state);
 		CPRINTF("%s: ignoring data in state %d\n",
 			__func__, tpm_.state);
 		return;
 	}
 
 	if ((tpm_.fifo_write_index + data_size) > sizeof(tpm_.regs.data_fifo)) {
+		ccprintf("%s: receive buffer overflow: %d in addition to %d\n",
+			__func__, data_size, tpm_.fifo_write_index);
 		CPRINTF("%s: receive buffer overflow: %d in addition to %d\n",
 			__func__, data_size, tpm_.fifo_write_index);
 		tpm_.fifo_write_index = 0;
@@ -385,9 +400,11 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 	       data, data_size);
 
 	tpm_.fifo_write_index += data_size;
+	ccprintf("fifo_reg_write: write_index -> %u\n", tpm_.fifo_write_index);
 
 	/* Verify that size in the header matches the block size */
 	if (tpm_.fifo_write_index < 6) {
+		ccprintf("fifo_reg_write: more data (<6)\n");
 		tpm_.regs.sts |= expect; /* More data is needed. */
 		return;
 	}
@@ -395,6 +412,7 @@ static void fifo_reg_write(const uint8_t *data, uint32_t data_size)
 	tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
 	packet_size = be32toh(tpmh->size);
 	if (tpm_.fifo_write_index < packet_size) {
+		ccprintf("fifo_reg_write: more data (< size(%u))\n", packet_size);
 		tpm_.regs.sts |= expect; /* More data is needed. */
 		return;
 	}
@@ -451,6 +469,8 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 		tpm_.fifo_read_index;
 	uint32_t tpm_sts;
 
+	ccprintf("fifo_reg_read: data_size=%u, still_in_fifo=%u (w=%u, r=%u), sts=0x%08x\n",
+	         data_size, still_in_fifo, tpm_.fifo_write_index, tpm_.fifo_read_index, tpm_.regs.sts);
 	data_size = MIN(data_size, still_in_fifo);
 	memcpy(dest,
 	       tpm_.regs.data_fifo + tpm_.fifo_read_index,
@@ -464,6 +484,7 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 		tpm_sts &= ~(data_avail | command_ready);
 		/* Burst size for the following write requests. */
 		tpm_sts |= 63 << burst_count_shift;
+		ccprintf("fifo_reg_read: set burstcnt to fixed 63, no avail\n");
 	} else {
 		/*
 		 * Tell the master how much there is to read in the next
@@ -471,8 +492,11 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 		 */
 		tpm_sts |= MIN(tpm_.fifo_write_index -
 			       tpm_.fifo_read_index, 63) << burst_count_shift;
+		ccprintf("fifo_reg_read: set burstcnt to %u\n", MIN(tpm_.fifo_write_index -
+                               tpm_.fifo_read_index, 63));
 	}
 
+	ccprintf("fifo_reg_read: sts->0x%08x\n", tpm_sts);
 	tpm_.regs.sts = tpm_sts;
 }
 
@@ -558,6 +582,7 @@ static void tpm_init(void)
 		return;
 	}
 
+	ccprintf("IDLE: initial\n");
 	set_tpm_state(tpm_state_idle);
 	tpm_.regs.access = tpm_reg_valid_sts;
 	/*
@@ -619,6 +644,8 @@ static void tpm_init(void)
 
 size_t tpm_get_burst_size(void)
 {
+	ccprintf("get_burst_size: sts=%08x -> %u\n", tpm_.regs.sts,
+	         (tpm_.regs.sts >> burst_count_shift) & burst_count_mask);
 	return (tpm_.regs.sts >> burst_count_shift) & burst_count_mask;
 }
 
@@ -1053,6 +1080,7 @@ void tpm_task(void)
 			}
 			tpm_.fifo_read_index = 0;
 			tpm_.fifo_write_index = response_size;
+			ccprintf("COMPLETE: r->0, w->%u\n", tpm_.fifo_write_index);
 			set_tpm_state(tpm_state_completing_cmd);
 			tpm_sts = tpm_.regs.sts;
 			tpm_sts &= ~(burst_count_mask << burst_count_shift);

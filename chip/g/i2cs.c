@@ -162,9 +162,11 @@ static void poll_read_state(void)
 	 */
 	static uint16_t last_i2cs_read_irq_count = ~0;
 
+	//CPUTS("DBGDBG poll_read_state\n");
 	if (ap_is_on()) {
 		if (!gpio_get_level(GPIO_I2CS_SDA)) {
 			if (last_i2cs_read_irq_count == i2cs_read_irq_count) {
+				CPUTS("DBGDBG reset i2c\n");
 				/*
 				 * SDA line is low and number of RX interrupts
 				 * has not changed since last poll when it was
@@ -287,6 +289,20 @@ void i2cs_post_read_data(uint8_t byte_to_read)
 	last_read_pointer = (last_read_pointer + 1) & REGISTER_FILE_MASK;
 }
 
+void dbgdump(const char* pfx, uint8_t *buffer, size_t len)
+{
+#define MAX_DBGSTR_SIZE 64
+	const char dbgchr[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+	char dbgstr[MAX_DBGSTR_SIZE*2+1];
+	size_t n;
+	for (n=0; n<len && n<MAX_DBGSTR_SIZE; n++) {
+		dbgstr[2*n] = dbgchr[(buffer[n]>>4) & 0x0F];
+		dbgstr[2*n+1] = dbgchr[buffer[n] & 0x0F];
+	}
+	dbgstr[2*n] = 0;
+	CPRINTF("%s len=%u: %s\n", pfx, len, dbgstr);
+}
+
 void i2cs_post_read_fill_fifo(uint8_t *buffer, size_t len)
 {
 	volatile uint32_t *value_addr;
@@ -296,6 +312,8 @@ void i2cs_post_read_fill_fifo(uint8_t *buffer, size_t len)
 	uint32_t start_offset;
 	uint32_t num_words;
 	int i, j;
+
+	dbgdump("RESP", buffer, len);
 
 	/* Get offset into 1st fifo word*/
 	start_offset = last_read_pointer & 0x3;
