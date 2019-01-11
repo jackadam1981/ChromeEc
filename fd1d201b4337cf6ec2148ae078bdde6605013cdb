@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65d9653e_85c22c98",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-11T18:02:02Z",
+      "side": 1,
+      "message": "This one too. Thanks,",
+      "range": {
+        "startLine": 849,
+        "startChar": 12,
+        "endLine": 849,
+        "endChar": 25
+      },
+      "revId": "fd1d201b4337cf6ec2148ae078bdde6605013cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae2b226_ae1f5b8c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-11T18:02:02Z",
+      "side": 1,
+      "message": "I think this should be rv or remove rv entirely (i.e. if (tcpc_read16(...)) ...).",
+      "range": {
+        "startLine": 856,
+        "startChar": 9,
+        "endLine": 856,
+        "endChar": 25
+      },
+      "revId": "fd1d201b4337cf6ec2148ae078bdde6605013cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf8fb6b_2e80ecb1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-11T18:02:02Z",
+      "side": 1,
+      "message": "Please do: return anx74xx_read_pd_obj(port, (uint8_t *)payload, len);",
+      "range": {
+        "startLine": 872,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 11
+      },
+      "revId": "fd1d201b4337cf6ec2148ae078bdde6605013cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
