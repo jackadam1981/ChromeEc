@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8368dbb8_ba944d77",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-11T15:55:51Z",
+      "side": 1,
+      "message": "doesn\u0027t this equally apply to I2C and SPI?",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 8
+      },
+      "revId": "62ce8bc113488f648dce02f63f04239ce9433e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
