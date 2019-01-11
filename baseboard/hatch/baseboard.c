@@ -224,6 +224,10 @@ void baseboard_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_TCPC_USB_C1_HPD);
 	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
 
+	/* Enable BC 1.2 interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
