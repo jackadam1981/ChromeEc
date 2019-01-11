@@ -22,6 +22,30 @@
       "revId": "da570041729cea2a5fd7fb8241bad56b0014fcae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a992028_55dc2da0",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-01-11T06:35:01Z",
+      "side": 1,
+      "message": "No.\nWe will not need to enable eSPI pad here if Dx is able to enable watchdog hardware reset function. But the function is failed due to this bug b:111264984, so this is a software reset (PLL setting is not reset).\nWe will not go into the change PLL sequence on reboot if PLL setting is the same, so the operation of enabling eSPI pad will not be applied.",
+      "parentUuid": "3ed2590b_37d9a649",
+      "range": {
+        "startLine": 466,
+        "startChar": 2,
+        "endLine": 466,
+        "endChar": 34
+      },
+      "revId": "da570041729cea2a5fd7fb8241bad56b0014fcae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
