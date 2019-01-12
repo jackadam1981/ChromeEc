@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81574c69_a80de4e8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-12T00:11:06Z",
+      "side": 1,
+      "message": "There is a bit of duplication here.\nCan you help refactor?",
+      "range": {
+        "startLine": 1230,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 6
+      },
+      "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de646d6_c9cad4f5",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-12T00:11:06Z",
+      "side": 1,
+      "message": "more than 80 chars - can you break the line?",
+      "range": {
+        "startLine": 2514,
+        "startChar": 0,
+        "endLine": 2514,
+        "endChar": 105
+      },
+      "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb1ff4c_e95c42c4",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2523,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-12T00:11:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
