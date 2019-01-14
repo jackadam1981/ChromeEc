@@ -248,7 +248,6 @@ void post_reboot_request(void);
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
 void deassert_sys_rst(void);
-int is_sys_rst_asserted(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
@@ -260,6 +259,7 @@ int is_ec_rst_asserted(void);
  */
 void ccd_update_state(void);
 
+<<<<<<< HEAD   (9c16be cr50: Fix C99 style comment in _plat__OwnerClearCallback())
 /**
  * Return the state of the BOARD_USE_PLT_RST board strap option.
  *
@@ -277,6 +277,8 @@ int board_rst_pullup_needed(void);
  *
  * @return 0 if option is not set, !=0 if option set.
  */
+=======
+>>>>>>> BRANCH (1e788e cr50: convert functions into static for code downsize.)
 int board_tpm_uses_i2c(void);
 /**
  * Return the state of the BOARD_SLAVE_CONFIG_SPI board strap option.
