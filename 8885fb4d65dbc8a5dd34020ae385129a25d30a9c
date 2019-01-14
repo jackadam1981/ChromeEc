@@ -94,6 +94,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ffe16e_0e63804d",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-14T23:27:14Z",
+      "side": 1,
+      "message": "yes, but for that we need to make sure we only call writevars() from the TPM task (because g_updateNV only works there). note that iiuc writevars() now can be called before TPM task is running, from the initialization code.\n\nor the other way around. writevars() is aggressive, and commits asap, not waiting for the end of the command (as it does now). then we shall continue to commit from within writevars(), but unset g_updateNV after a successful commit. this will work regardless of the task writevars() is called from. and is probably simpler to implement now.",
+      "parentUuid": "e9d27d76_996c25bc",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
