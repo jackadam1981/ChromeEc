@@ -82,10 +82,6 @@ void bn_init(struct LITE_BIGNUM *bn, void *buf, size_t len);
 #define bn_bits(b) ((b)->dmax * LITE_BN_BITS2)
 int bn_eq(const struct LITE_BIGNUM *a, const struct LITE_BIGNUM *b);
 int bn_check_topbit(const struct LITE_BIGNUM *N);
-int bn_modexp(struct LITE_BIGNUM *output,
-			const struct LITE_BIGNUM *input,
-			const struct LITE_BIGNUM *exp,
-			const struct LITE_BIGNUM *N);
 int bn_modexp_word(struct LITE_BIGNUM *output,
 			const struct LITE_BIGNUM *input,
 			uint32_t pubexp,

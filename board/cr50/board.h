@@ -248,7 +248,6 @@ void post_reboot_request(void);
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
 void deassert_sys_rst(void);
-int is_sys_rst_asserted(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
@@ -260,23 +259,6 @@ int is_ec_rst_asserted(void);
  */
 void ccd_update_state(void);
 
-/**
- * Return the state of the BOARD_USE_PLT_RST board strap option.
- *
- * @return 0 if option is not set, !=0 if option set.
- */
-int board_use_plt_rst(void);
-/**
- * Return the state of the BOARD_NEEDS_SYS_RST_PULL_UP board strap option.
- *
- * @return 0 if option is not set, !=0 if option set.
- */
-int board_rst_pullup_needed(void);
-/**
- * Return the state of the BOARD_SLAVE_CONFIG_I2C board strap option.
- *
- * @return 0 if option is not set, !=0 if option set.
- */
 int board_tpm_uses_i2c(void);
 /**
  * Return the state of the BOARD_SLAVE_CONFIG_SPI board strap option.

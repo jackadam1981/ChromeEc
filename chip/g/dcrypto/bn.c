@@ -392,8 +392,10 @@ static void bn_modexp_internal(struct LITE_BIGNUM *output,
 }
 
 /* output = input ^ exp % N */
-int bn_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
-		const struct LITE_BIGNUM *exp, const struct LITE_BIGNUM *N)
+static int bn_modexp(struct LITE_BIGNUM *output,
+		const struct LITE_BIGNUM *input,
+		const struct LITE_BIGNUM *exp,
+		const struct LITE_BIGNUM *N)
 {
 #ifndef CR50_NO_BN_ASM
 	if ((bn_bits(N) & 255) == 0) {

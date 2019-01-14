@@ -1265,7 +1265,11 @@ void usb_save_suspended_state(void)
 
 }
 
-void usb_restore_suspended_state(void)
+/*
+ * Restore from non-volatile memory the state of the USB hardware registers
+ * which was lost by powering them down.
+ */
+static void usb_restore_suspended_state(void)
 {
 	int i;
 	uint32_t pid;
