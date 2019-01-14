@@ -225,6 +225,14 @@ static enum power_state power_common_state(enum power_state state)
 				delay = CONFIG_HIBERNATE_BATT_SEC;
 #endif
 			target_time = last_shutdown_time + delay * 1000000ull;
+			/*
+			 * Since can't cutoff battery if EC in hibernate mode
+			 * Prevent from hibernating if battery
+			 * soc <= BATTERY_LEVEL_SHUTDOWN
+			 */
+			if (charge_get_percent() <= BATTERY_LEVEL_SHUTDOWN)
+				target_time = time_now + delay * 1000000ull;
+
 			if (time_now > target_time) {
 				/*
 				 * Time's up.  Hibernate until wake pin
