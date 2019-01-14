@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e2f2f4c_43f81844",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-14T06:36:48Z",
+      "side": 1,
+      "message": "let correct the variable name. ioapic_icr_last \u003d\u003e lapic_isr_reg",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e772167_b54b5be5",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-14T06:36:48Z",
+      "side": 1,
+      "message": "We don\u0027t support nested IRQ and I don\u0027t think we will support it for normal use cases.",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8aea02_c36c5387",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-14T06:36:48Z",
+      "side": 1,
+      "message": "For me(although I\u0027m new to ECOS), it looks like \"svc_call\" is for counting synchronous exception so I think it should be moved to __swicth_to in switch.S in our case.",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
