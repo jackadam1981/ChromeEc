@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dae2851f_3d06a593",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-14T15:27:34Z",
+      "side": 1,
+      "message": "octopus",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98031b93_2d36fcdc",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-14T15:27:34Z",
+      "side": 1,
+      "message": "Just curious: Shouldn\u0027t espi_fw_reset_module() be done unconditionally every time clock_init is done? Is it always guaranteed that ESPI_RESET_L will be asserted when EC control reaches this point? Could there be any race conditions?",
+      "range": {
+        "startLine": 272,
+        "startChar": 5,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
