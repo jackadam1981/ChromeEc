@@ -11,6 +11,7 @@ EC_DIR="$(readlink -f "${SCRIPT_DIR}/..")"
 if [[ "$(basename "${EC_DIR}")" != "ec" ]]; then
 	EC_DIR=
 fi
+TEMP_DIR=""
 
 # Loads script libraries.
 . "/usr/share/misc/shflags" || exit 1
@@ -228,12 +229,17 @@ DEFINE_integer port "${DEFAULT_PORT}" \
 	"Port to communicate to servo on."
 DEFINE_boolean raiden "${FLAGS_FALSE}" \
 	"Use raiden_debug_spi programmer"
+DEFINE_string read "" "Full pathname to save the firmware image read from EC. "\
+"Available for STM32 chip only."
 DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
 DEFINE_integer timeout 600 \
 	"Timeout for flashing the EC, measured in seconds."
 DEFINE_boolean verbose "${FLAGS_FALSE}" \
 	"Verbose hw control logging"
+DEFINE_boolean verify "${FLAGS_FALSE}" \
+	"Verify EC flash contents after programming. "\
+"Available for STM32 chip only."
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -380,6 +386,19 @@ if [ "${CHIP}" = "stm32_dfu" -o "${CHIP}" = "it83xx" ]; then
 	NEED_SERVO="no"
 fi
 
+if [[ "${CHIP}" != "stm32" ]]; then
+	if [[ -n "${FLAGS_read}" ]]; then
+		die "The flag is not yet supported on ${CHIP}."
+	fi
+
+	# If verification is not supported, then show a warning message.
+	# Keep it running however.
+	if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+		warn "Ignoring '--verify'" \
+		"since read is not supported on ${CHIP}."
+	fi
+fi
+
 servo_has_warm_reset() {
 	dut_control -i warm_reset >/dev/null 2>&1
 }
@@ -524,6 +543,11 @@ cleanup() {
 		info "Sending SIGCONT to process ${pid}!"
 		kill -CONT ${pid}
 	done
+
+	# If TEMP_DIR exists, then delete it.
+	if [[ -n "${TEMP_DIR}" ]]; then
+		rm -rf "${TEMP_DIR}" > /dev/null 2>&1
+	fi
 
 	if [ "${CHIP}" == "it83xx" ] ; then
 		info "Reinitialize ftdi_i2c interface"
@@ -980,13 +1004,52 @@ function flash_stm32() {
 		info "Saving log in ${FLAGS_logfile}"
 	fi
 
-	# Unprotect flash, erase, and write
-	STM32MON_COMMAND="${STM32MON} -d ${EC_UART} ${log_option} -U -u -e -w"
-	if [ "${FLAGS_verbose}" = ${FLAGS_TRUE} ]; then
-		echo "${STM32MON_COMMAND}" "${IMG}"
+	local STM32MON_OPT="-d ${EC_UART} ${log_option}"
+	local IMG_READ=""
+	if [[ -z "${FLAGS_read}" ]]; then
+		info "Starting programming firmware image to EC."
+		# Unprotect flash, erase, and write
+		local STM32MON_COMMAND="${STM32MON} ${STM32MON_OPT} -u -e -w"
+		if [[ "${FLAGS_verbose}" == "${FLAGS_TRUE}" ]]; then
+			echo "${STM32MON_COMMAND}" "${IMG}"
+		fi
+		timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			${STM32MON_COMMAND} "${IMG}"
+
+		if [[ "${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+			local TEMP_SUFFIX=".$(basename ${SCRIPT}).${BOARD}"
+			TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
+			IMG_READ="${TEMP_DIR}/ec.read.bin"
+		fi
+	else
+		IMG_READ="${FLAGS_read}"
 	fi
-	timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		${STM32MON_COMMAND} "${IMG}"
+
+	# Read EC image.
+	if [[ -n "${IMG_READ}" ]]; then
+		info "Starting reading firmware image from EC."
+		local STM32MON_READ_CMD="${STM32MON} ${STM32MON_OPT} -U -r"
+		if [[ "${FLAGS_verbose}" == "${FLAGS_TRUE}" ]]; then
+			echo "${STM32MON_READ_CMD} ${IMG_READ}"
+		fi
+		timeout -k 10 -s 9 "${FLAGS_timeout}" \
+			${STM32MON_READ_CMD} "${IMG_READ}"
+	fi
+
+	# Verify the flash by comparing the source image to the read image,
+	# only if it was a flash write request.
+	if [[ -z "${FLAGS_read}" && \
+		"${FLAGS_verify}" == "${FLAGS_TRUE}" ]]; then
+		info "Verify EC flash contents."
+		if [[ "${FLAGS_verbose}" == "${FLAGS_TRUE}" ]]; then
+			echo "diff ${IMG} ${IMG_READ}"
+		fi
+		diff "${IMG}" "${IMG_READ}" > /dev/null 2>&1
+		if [[ $? != 0 ]]; then
+			die "Verification failed."
+		fi
+	fi
+
 	# Remove the Application processor reset
 	# TODO(crosbug.com/p/30738): we cannot rely on servo_VARS to restore it
 	if $(servo_has_warm_reset); then
