@@ -237,6 +237,14 @@ const char *system_get_version(enum system_image_copy_t copy);
 uint32_t system_get_sku_id(void);
 
 /**
+ * Check if need  battery cutoff
+ *
+ * @return A value that if RO version is 10068.82  previous version
+ * and sku id is 70 and 71
+ */
+int whether_cutoff_battery(void);
+
+/**
  * Return the board version number.  The meaning of this number is
  * board-dependent; boards where the code actually cares about this should
  * declare enum board_version in board.h.

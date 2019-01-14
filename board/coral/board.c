@@ -66,6 +66,26 @@
 
 static int sku_id;
 
+int whether_cutoff_battery(void)
+{
+	/*
+	 * This action only affect 10068.82  previous version
+	 * and sku id is 70 and 71
+	 * coral_v1.1.7292/10068.82
+	 */
+	uint32_t sku_id;
+	const char *version_ro;
+	char version_minor[5] = {0};
+
+	sku_id = system_get_sku_id();
+	version_ro = system_get_version(SYSTEM_IMAGE_RO);
+	strncpy(version_minor, version_ro + 11, 4);
+	return ((70 == sku_id || 71 == sku_id) &&
+				atoi(version_minor) < 7292);
+
+}
+
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
