@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95f9df2_b2c79592",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "is this meant to be used only when programming a new image? In this case help text like \"Verify EC flash contents after programming\" or along these lines would be clearer",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 62
+      },
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c958245_4914eda4",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "here and in the rest of this patch: bash variables need to be quoted",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 62
+      },
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf7cedf_bc9a235f",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "comments should be full sentences, starting with capital letter and ending with a period.",
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45530ece_828c5bac",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "why a whitespace change?",
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8434fc59_ccb99c0c",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "using \u0027info\u0027 instead of \u0027echo\u0027 whould generate colored messages",
+      "range": {
+        "startLine": 1005,
+        "startChar": 3,
+        "endLine": 1005,
+        "endChar": 7
+      },
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4452c82_cb08cffd",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "is this check even needed? This is the same as body of the \u0027esle\u0027 clause in line 1815 - no?",
+      "range": {
+        "startLine": 1019,
+        "startChar": 1,
+        "endLine": 1019,
+        "endChar": 30
+      },
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d656c3_e7fb66eb",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T21:38:00Z",
+      "side": 1,
+      "message": "what if \u0027verify\u0027 is requested without \u0027read\u0027?",
+      "range": {
+        "startLine": 1029,
+        "startChar": 9,
+        "endLine": 1029,
+        "endChar": 22
+      },
+      "revId": "d6daeac81ea4347b17fb01fece2fa12f598acb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
