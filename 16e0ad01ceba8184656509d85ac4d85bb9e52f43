@@ -45,6 +45,30 @@
       "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd87978_d6a52989",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-14T17:26:08Z",
+      "side": 1,
+      "message": "There\u0027s a couple of issues: timing on when this pin is asserted. How do we actually catch it so that reboots are robust? What happens when AP resets asynchronously from EC? Do we catcht he espi assertion and do the right thing? We can \u0027t unconditionally do this because we go through this path on sw sync as well, iirc.",
+      "parentUuid": "98031b93_2d36fcdc",
+      "range": {
+        "startLine": 272,
+        "startChar": 5,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
