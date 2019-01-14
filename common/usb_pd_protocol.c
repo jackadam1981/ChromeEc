@@ -411,7 +411,25 @@ static void handle_device_access(int port)
 	}
 }
 
-static int pd_device_in_low_power(int port)
+/*
+ * This can be called from any task. If we are in the PD task, we can handle
+ * immediately. Otherwise, we need to notify the PD task via event.
+ */
+void pd_device_accessed(int port)
+{
+	if (port == TASK_ID_TO_PD_PORT(task_get_current())) {
+		/* Ignore any access to device while it is waking up */
+		if (pd[port].flags & PD_FLAGS_LPM_TRANSITION)
+			return;
+
+		handle_device_access(port);
+	}
+	else
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       PD_EVENT_DEVICE_ACCESSED, 0);
+}
+
+int pd_device_in_low_power(int port)
 {
 	/*
 	 * If we are actively waking the device up in the PD task, do not
@@ -441,20 +459,6 @@ static int reset_device_and_notify(int port)
 	else
 		CPRINTS("TCPC p%d init failed!", port);
 
-	/*
-	 * Before getting the other tasks that are waiting, clear the reset
-	 * event from this PD task to prevent multiple reset/init events
-	 * occurring.
-	 *
-	 * The double reset event happens when the higher priority PD interrupt
-	 * task gets an interrupt during the above tcpm_init function. When that
-	 * occurs, the higher priority task waits correctly for us to finish
-	 * waking the TCPC, but it has also set PD_EVENT_TCPC_RESET again, which
-	 * would result in a second, unnecessary init.
-	 */
-	atomic_clear(task_get_event_bitmap(task_get_current()),
-		     PD_EVENT_TCPC_RESET);
-
 	waiting_tasks = atomic_read_clear(&pd[port].tasks_waiting_on_reset);
 
 	/*
@@ -476,7 +480,7 @@ static int reset_device_and_notify(int port)
 	return rv;
 }
 
-static void pd_wait_for_wakeup(int port)
+void pd_wait_for_wakeup(int port)
 {
 	if (port == TASK_ID_TO_PD_PORT(task_get_current())) {
 		/* If we are in the PD task, we can directly reset */
@@ -496,30 +500,6 @@ static void pd_wait_for_wakeup(int port)
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			       PD_EVENT_TCPC_RESET, 0);
 		task_wait_event_mask(TASK_EVENT_PD_AWAKE, -1);
-	}
-}
-
-void pd_wait_exit_low_power(int port)
-{
-	if (pd_device_in_low_power(port))
-		pd_wait_for_wakeup(port);
-}
-
-/*
- * This can be called from any task. If we are in the PD task, we can handle
- * immediately. Otherwise, we need to notify the PD task via event.
- */
-void pd_device_accessed(int port)
-{
-	if (port == TASK_ID_TO_PD_PORT(task_get_current())) {
-		/* Ignore any access to device while it is waking up */
-		if (pd[port].flags & PD_FLAGS_LPM_TRANSITION)
-			return;
-
-		handle_device_access(port);
-	} else {
-		task_set_event(PD_PORT_TO_TASK_ID(port),
-			       PD_EVENT_DEVICE_ACCESSED, 0);
 	}
 }
 
