@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73edfab1_1c67e3a0",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-14T16:34:45Z",
+      "side": 1,
+      "message": "Nit: casta",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b213d0_9276c74e",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-14T16:34:45Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t match the board type or the number of LEDs for this system",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c512ca9b_7d315bcb",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-14T16:34:45Z",
+      "side": 1,
+      "message": "Comment not applicable here",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f508293_2bba4a6a",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-14T16:34:45Z",
+      "side": 1,
+      "message": "If a system is in S0, does this statement mean the charging LED will always be off in that case?  So the customer would have no visibility to whether it\u0027s charging based on the LED, or if a battery error happens when their system is on?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
