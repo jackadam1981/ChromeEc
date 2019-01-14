@@ -34,6 +34,24 @@
       "revId": "b243c456650934391dd06f14e13d138e3cb68e27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e05d6e4_debd6425",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-01-14T18:56:47Z",
+      "side": 1,
+      "message": "You can keep a 64-bit snapshot of the timer and subtract the difference to accumulate time that can be returned in microseconds. \n\nI was less worried about rollover and more worried about getting a correct intermediate answer when the division needs to borrow. I still think you are defining things up front to work for the below algebra to just work, but if the 2\u0027s complement math works out that\u0027s fine. But I think we can generally get rid of 64-bit division for the most part. i.e. diff between 2 clock timestamps does not exceed 32-bits.",
+      "parentUuid": "5c94e7be_e9457dd3",
+      "revId": "b243c456650934391dd06f14e13d138e3cb68e27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
