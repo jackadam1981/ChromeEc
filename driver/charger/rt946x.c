@@ -979,6 +979,40 @@ static int mt6370_get_bc12_ilim(int charge_supplier)
 		return USB_CHARGER_MIN_CURR_MA;
 	}
 }
+
+void print_chgtype(int chg_type)
+{
+	char *s = "Other";
+	switch (chg_type) {
+	case MT6370_CHG_TYPE_CDP:
+		s = "CDP";
+		break;
+	case MT6370_CHG_TYPE_DCP:
+		s = "DCP";
+		break;
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
+		s = "Samsung Charger";
+		break;
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+		s = "Apple 0.5A";
+		break;
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+		s = "Apple 1.0A";
+		break;
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+		s = "Apple 2.1A";
+		break;
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
+		s = "Apple 2.4A";
+		break;
+	case MT6370_CHG_TYPE_SDP:
+		s = "SDP";
+		break;
+	default:
+		break;
+	}
+	ccprintf("%s\n", s);
+}
 #else /* !CONFIG_CHARGER_MT6370 */
 
 static int rt946x_get_bc12_device_type(int charger_type)
@@ -1037,6 +1071,7 @@ void usb_charger_task(void *u)
 #if defined(CONFIG_CHARGER_MT6370)
 			chg_type = mt6370_get_charger_type();
 			bc12_type = mt6370_get_bc12_device_type(chg_type);
+			print_chgtype(chg_type);
 			if (bc12_type != CHARGE_SUPPLIER_NONE) {
 				chg.current = mt6370_get_bc12_ilim(chg_type);
 				charge_manager_update_charge(bc12_type,
