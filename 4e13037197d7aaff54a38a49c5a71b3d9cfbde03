@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "399c6295_178486ad",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T23:25:29Z",
+      "side": 1,
+      "message": "still not quoted, both here and some more below",
+      "range": {
+        "startLine": 390,
+        "startChar": 50,
+        "endLine": 390,
+        "endChar": 63
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed09b9c_688c88cf",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T23:25:29Z",
+      "side": 1,
+      "message": "if you mean to suppress both stdout and stderr, the order should be reversed:\n2\u003e/dev/null 1\u003e\u00262\n\nalso, will this do the trick:\n\n  \u003e /dev/null 2\u003e\u00261\n\n?",
+      "range": {
+        "startLine": 542,
+        "startChar": 21,
+        "endLine": 542,
+        "endChar": 37
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e62aea_1818ec05",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T23:25:29Z",
+      "side": 1,
+      "message": "-U seems common for all use cases, can be included in STM32MON_OPT",
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8b0a55_a58a01eb",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T23:25:29Z",
+      "side": 1,
+      "message": "it is better to use the pattern which would associate the temp object with the script which created it, say\n\nmktemp -d \".${SCRIPT}.XXXXXX\"\n\nin this case if the temp object is not deleted for whatever reason it is clear who created it.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 15,
+        "endLine": 1013,
+        "endChar": 44
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba3c937_dd77a045",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T23:25:29Z",
+      "side": 1,
+      "message": "this check should happen only in case this is a write invocation, no?",
+      "range": {
+        "startLine": 1031,
+        "startChar": 3,
+        "endLine": 1031,
+        "endChar": 68
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a07b20_55a10f68",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-14T23:25:29Z",
+      "side": 1,
+      "message": "same comment:\n\n\u003e/dev/null 2\u003e\u00261\n\nwill do the trick",
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
