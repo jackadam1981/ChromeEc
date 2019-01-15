@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "364df73c_b6d62994",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-15T23:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e2f2f4c_43f81844",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e772167_b54b5be5",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "27c5cc3b_1b48d553",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-15T23:20:32Z",
+      "side": 1,
+      "message": "The code previously seems to want to account for nested IRQ so I maintained that. It shouldn\u0027t hurt anything if nested IRQ don\u0027t happen",
+      "parentUuid": "8e772167_b54b5be5",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc8aea02_c36c5387",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c68296b_3b62ef70",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-15T23:20:32Z",
+      "side": 1,
+      "message": "I see it as the number of times a register IRQ was called.\nThe unregistered IRQ count is lost (but it does print to the console since it is unexpected)\nThe number of switchto call is instrumented through task_switches variable. \n\nThat should cover all of the cases since switchto and default_int_handler are the only irq that don\u0027t go through task_start_irq_handler",
+      "parentUuid": "bc8aea02_c36c5387",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
