@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6c507b6_43b040e2",
+        "filename": "board/kukui_scp/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-01-15T11:17:06Z",
+      "side": 1,
+      "message": "A beginning question: which script or config will define this?  (if I want to have another macro HAS_XXXX_XXX)",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c8e689_a536814f",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 20
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-01-15T11:17:06Z",
+      "side": 1,
+      "message": "Will it still okay by TASK_ALWAYS if \"HAS_TASK_VDEC_SERVICE\" has not defined?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6610d531_eab3018d",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-01-15T11:17:06Z",
+      "side": 1,
+      "message": "I may misunderstand with console channel.  Shall we (from viewpoint of best practice) register another channel for vdec and venc (i.e. CC_VDEC and CC_VENC)?",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52257a53_a37a4a3d",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-01-15T11:17:06Z",
+      "side": 1,
+      "message": "9",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9330e3a4_52a7bd21",
         "filename": "board/kukui_scp/venc.c",
         "patchSetId": 20
