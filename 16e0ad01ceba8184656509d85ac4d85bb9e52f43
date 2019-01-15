@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e374faa_90099eb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-01-15T02:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dae2851f_3d06a593",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98031b93_2d36fcdc",
         "filename": "chip/it83xx/clock.c",
         "patchSetId": 2
