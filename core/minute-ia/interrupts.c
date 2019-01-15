@@ -45,6 +45,11 @@ void set_ioapic_redtbl_raw(const unsigned irq, const uint32_t val)
 	write_ioapic_reg(redtbl_hi, DEST_APIC_ID);
 }
 
+uint32_t get_ioapic_redtbl_lo(const unsigned irq)
+{
+	return read_ioapic_reg(IOAPIC_IOREDTBL + 2 * irq);
+}
+
 void unmask_interrupt(uint32_t irq)
 {
 	uint32_t val;
@@ -113,11 +118,66 @@ static inline uint32_t get_current_vector(void)
 	return 0;
 }
 
+uint32_t lapic_lvt_error_count;
+uint32_t ioapic_pending_count;
+
+/* Get LAPIC ISR, TMR, or IRR vector bit */
+static inline int lapic_get_vector(uint32_t reg_base, uint32_t vector)
+{
+	uint32_t offset = (vector >> 5) * 0x10;
+	uint32_t bit = vector & 0x1f;
+
+	return (REG32(reg_base + offset) >> bit) & 1;
+}
+
+static void handle_lapic_lvt_error(void)
+{
+	uint32_t esr = REG32(LAPIC_ESR_REG);
+	uint32_t ioapic_redtbl, vec;
+	int irq, max_irq_entries;
+
+	/* Ack LVT ERROR exception */
+	REG32(LAPIC_ESR_REG) = 0;
+	lapic_lvt_error_count++;
+
+	/*
+	 * When IOAPIC has more than 1 interrupts in remote IRR state,
+	 * LAPIC raises internal error.
+	 */
+	if (esr & LAPIC_ERR_RECV_ILLEGAL) {
+		/* Scan redirect table entries */
+		max_irq_entries = (read_ioapic_reg(IOAPIC_VERSION) >> 16) &
+				  0xff;
+		for (irq = 0; irq < max_irq_entries; irq++) {
+			ioapic_redtbl = get_ioapic_redtbl_lo(irq);
+			/* Skip masked IRQs */
+			if (ioapic_redtbl & IOAPIC_REDTBL_MASK)
+				continue;
+			/* If pending interrupt is not in LAPIC, clear it. */
+			if (ioapic_redtbl & IOAPIC_REDTBL_IRR) {
+				vec = IRQ_TO_VEC(irq);
+				if (!lapic_get_vector(LAPIC_IRR_REG, vec)) {
+					/* End of interrupt */
+					REG32(IOAPIC_EOI_REG) = vec;
+					ioapic_pending_count++;
+				}
+			}
+		}
+	}
+
+	CPRINTF("LAPIC error ESR:0x%02x,count:%u IOAPIC pending count:%u\n",
+		esr, lapic_lvt_error_count, ioapic_pending_count);
+}
+
 /* Should only be called in interrupt context */
 void unhandled_vector(void)
 {
 	uint32_t vec = get_current_vector();
-	CPRINTF("Ignoring vector 0x%0x!\n", vec);
+
+	if (vec == LAPIC_LVT_ERROR_VECTOR)
+		handle_lapic_lvt_error();
+	else
+		CPRINTF("Ignoring vector 0x%0x!\n", vec);
 	/* Put the vector number in eax so default_int_handler can use it */
 	asm("" : : "a" (vec));
 }
