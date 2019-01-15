@@ -608,7 +608,7 @@ static void configure_board_specific_gpios(void)
 		closed_source_set1_configure_gpios();
 }
 
-void decrement_retry_counter(void)
+static void decrement_retry_counter(void)
 {
 	uint32_t counter = GREG32(PMU, LONG_LIFE_SCRATCH0);
 
