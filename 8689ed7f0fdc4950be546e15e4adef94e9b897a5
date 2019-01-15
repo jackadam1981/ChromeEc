@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff3da34a_800083af",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-15T18:24:33Z",
+      "side": 1,
+      "message": "now that I am able to read it better with the comments you provided (thank you!). This logical OR\u0027ing of two independent states doesn\u0027t seem correct. Can you explain this logic?",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
