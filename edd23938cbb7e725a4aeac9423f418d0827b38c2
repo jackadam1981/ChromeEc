@@ -22,6 +22,30 @@
       "revId": "edd23938cbb7e725a4aeac9423f418d0827b38c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88355a16_3dc1516c",
+        "filename": "board/liara/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-01-15T23:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c026817a_5d467a5f",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 77
+      },
+      "revId": "edd23938cbb7e725a4aeac9423f418d0827b38c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
