@@ -216,15 +216,8 @@ size_t queue_remove_memcpy(struct queue const *q,
 	return queue_advance_head(q, transfer);
 }
 
-size_t queue_peek_units(struct queue const *q,
-			void *dest,
-			size_t i,
-			size_t count)
-{
-	return queue_peek_memcpy(q, dest, i, count, memcpy);
-}
-
-size_t queue_peek_memcpy(struct queue const *q,
+/* Peek (return but don't remove) the count elements starting with the i'th. */
+static size_t queue_peek_memcpy(struct queue const *q,
 			 void *dest,
 			 size_t i,
 			 size_t count,
@@ -242,4 +235,12 @@ size_t queue_peek_memcpy(struct queue const *q,
 	}
 
 	return transfer;
+}
+
+size_t queue_peek_units(struct queue const *q,
+			void *dest,
+			size_t i,
+			size_t count)
+{
+	return queue_peek_memcpy(q, dest, i, count, memcpy);
 }

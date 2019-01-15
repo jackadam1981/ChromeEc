@@ -191,15 +191,6 @@ size_t queue_peek_units(struct queue const *q,
 			size_t i,
 			size_t count);
 
-/* Peek (return but don't remove) the count elements starting with the i'th. */
-size_t queue_peek_memcpy(struct queue const *q,
-			 void *dest,
-			 size_t i,
-			 size_t count,
-			 void *(*memcpy)(void *dest,
-				const void *src,
-				size_t n));
-
 /*
  * These macros will statically select the queue functions based on the number
  * of units that are to be added or removed if they can.  The single unit add
