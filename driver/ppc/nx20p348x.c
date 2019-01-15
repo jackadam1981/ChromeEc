@@ -15,6 +15,7 @@
 #include "tcpm.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -327,6 +328,7 @@ static void nx20p348x_handle_interrupt(int port)
 		 * been completed yet, but is required for TI PPC. When that
 		 * work is complete, tie it in here.
 		 */
+		pd_handle_overcurrent(port);
 	}
 
 	/* Check for Vbus reverse current protection */
