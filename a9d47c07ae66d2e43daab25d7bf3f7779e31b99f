@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dc8338ee_536efd1d",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 20
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-15T17:10:01Z",
+      "side": 1,
+      "message": "It\u0027s the other way around: TASK_ALWAYS(X, .. defines HAS_TASK_X",
+      "parentUuid": "a8c8e689_a536814f",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6610d531_eab3018d",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 20
