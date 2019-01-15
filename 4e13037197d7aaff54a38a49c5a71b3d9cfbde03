@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47a8e408_a25cf741",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T00:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "399c6295_178486ad",
+      "range": {
+        "startLine": 390,
+        "startChar": 50,
+        "endLine": 390,
+        "endChar": 63
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed09b9c_688c88cf",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4d4cdfe4_08cfc623",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T00:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed09b9c_688c88cf",
+      "range": {
+        "startLine": 542,
+        "startChar": 21,
+        "endLine": 542,
+        "endChar": 37
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e62aea_1818ec05",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e23b01a7_2f2681cb",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T00:25:43Z",
+      "side": 1,
+      "message": "Removing -U here because it is not required in programming an image.\nChecked this running without -U.",
+      "parentUuid": "65e62aea_1818ec05",
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "7b2920f4_27c35fb5",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T00:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8b0a55_a58a01eb",
+      "range": {
+        "startLine": 1013,
+        "startChar": 15,
+        "endLine": 1013,
+        "endChar": 44
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cba3c937_dd77a045",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "5bfa464b_53fc013b",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T00:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba3c937_dd77a045",
+      "range": {
+        "startLine": 1031,
+        "startChar": 3,
+        "endLine": 1031,
+        "endChar": 68
+      },
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13a07b20_55a10f68",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -125,6 +239,24 @@
       "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50d2ede_12cf55e9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T00:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a07b20_55a10f68",
+      "revId": "4e13037197d7aaff54a38a49c5a71b3d9cfbde03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
