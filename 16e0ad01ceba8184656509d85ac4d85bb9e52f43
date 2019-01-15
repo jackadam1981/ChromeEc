@@ -93,6 +93,30 @@
       "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3605e87d_f055c53f",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-01-15T02:21:15Z",
+      "side": 1,
+      "message": "We do need to add a condition here to ensure espi won\u0027t get reset after sysjump. Because the system is already in S0 state, We should not reset espi without eSPI_RST# asserted.\n\nWe can unconditionally do the reset if we start from RO image, because SOC\u0027s power are off during init. (eSPI_RST# should be asserted since SOC has no power)\n\nOr should we change the condition to this:\nsystem_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RO\nSo we can guarantee espi will always reset when init in RO image.",
+      "parentUuid": "a4c46de3_e578e1aa",
+      "range": {
+        "startLine": 272,
+        "startChar": 5,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "16e0ad01ceba8184656509d85ac4d85bb9e52f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
