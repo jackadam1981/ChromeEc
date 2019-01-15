@@ -142,6 +142,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "944a7cbe_c7977eeb",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-15T21:59:10Z",
+      "side": 1,
+      "message": "In fact the code I am working on makes nvmem vars independent of TPM vars and nvmem vars get written into the flash immediately, there is no commit operation.",
+      "parentUuid": "18d0532a_e2b4d4d5",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
