@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa046e8_ce5a2b5d",
+        "filename": "board/casta/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-15T16:58:59Z",
+      "side": 1,
+      "message": "Given the above special behavior in led_set_color_battery(), this function should probably manipulate the GPIOs directly.  This will be called anytime someone uses \"ectool led\" from the AP console, and testers will expect setting battery LED colors to work regardless of power state.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 72
+      },
+      "revId": "c6498477a9ddf14366bf75e6646fb099ecc47cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
