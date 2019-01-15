@@ -46,6 +46,30 @@
       "revId": "69730af3c1ab53e55fa8b18b5a835ae7fb14dfe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16857ad2_beb4c6ea",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-15T21:47:14Z",
+      "side": 1,
+      "message": "Can we add a comment saying we never expect the clock wake to be more than ~6 minutes in the future (otherwise, this would double roll over)",
+      "parentUuid": "1f5097bc_fc3f353c",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "69730af3c1ab53e55fa8b18b5a835ae7fb14dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
