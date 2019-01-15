@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c6c05f7_0d686275",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-15T18:16:57Z",
+      "side": 1,
+      "message": "Can you add a comment # Read EC image.",
+      "range": {
+        "startLine": 1009,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 34
+      },
+      "revId": "e13ea00d311042947ea9a00bebce05a0c1807307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59e04f0_c644b5ea",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-15T18:16:57Z",
+      "side": 1,
+      "message": "Start programming EC firmware",
+      "range": {
+        "startLine": 1010,
+        "startChar": 8,
+        "endLine": 1010,
+        "endChar": 49
+      },
+      "revId": "e13ea00d311042947ea9a00bebce05a0c1807307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "617d1522_62beaec3",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-15T18:16:57Z",
+      "side": 1,
+      "message": "Start reading EC firmware.",
+      "revId": "e13ea00d311042947ea9a00bebce05a0c1807307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb8bf6f_c71cdb6e",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-15T18:16:57Z",
+      "side": 1,
+      "message": "In the rest of flash_ec FLAGS_TRUE is never in quotes. I think we should remove the \" to keep this consistent with the entire file.",
+      "range": {
+        "startLine": 1044,
+        "startChar": 30,
+        "endLine": 1044,
+        "endChar": 45
+      },
+      "revId": "e13ea00d311042947ea9a00bebce05a0c1807307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
