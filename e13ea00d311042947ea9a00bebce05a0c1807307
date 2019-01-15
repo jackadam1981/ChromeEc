@@ -85,6 +85,30 @@
       "revId": "e13ea00d311042947ea9a00bebce05a0c1807307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f68d90b_4b28e6ba",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-15T18:24:33Z",
+      "side": 1,
+      "message": "ah, this is right: when in [[ ... ]] bash handles expansion properly even if the variable includes spaces. So there is no need to quote inside [[  ]]",
+      "parentUuid": "4fb8bf6f_c71cdb6e",
+      "range": {
+        "startLine": 1044,
+        "startChar": 30,
+        "endLine": 1044,
+        "endChar": 45
+      },
+      "revId": "e13ea00d311042947ea9a00bebce05a0c1807307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
