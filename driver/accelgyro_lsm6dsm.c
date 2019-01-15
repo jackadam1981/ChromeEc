@@ -21,7 +21,7 @@
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
 #ifdef CONFIG_ACCEL_FIFO
-static uint32_t last_interrupt_timestamp;
+static volatile uint32_t last_interrupt_timestamp;
 #endif
 
 /**
@@ -51,9 +51,13 @@ static int config_interrupt(const struct motion_sensor_t *s)
 		return ret;
 
 #ifdef CONFIG_ACCEL_FIFO
-	/* As soon as one sample is ready, trigger an interrupt. */
+	/*
+	 * As soon as one sample is ready, trigger an interrupt.
+	 * While the FIFO length will be read in uint16, this register is in
+	 * bytes
+	 */
 	ret = st_raw_write8(s->port, s->addr, LSM6DSM_FIFO_CTRL1_ADDR,
-			 OUT_XYZ_SIZE / sizeof(uint16_t));
+			 OUT_XYZ_SIZE);
 	if (ret != EC_SUCCESS)
 		return ret;
 	int1_ctrl_val |= LSM6DSM_INT_FIFO_TH | LSM6DSM_INT_FIFO_OVR |
@@ -198,7 +202,7 @@ static int fifo_next(struct lsm6dsm_data *private)
  * push_fifo_data - Scan data pattern and push upside
  */
 static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
-			   uint16_t flen)
+			   uint16_t flen, uint32_t int_ts)
 {
 	struct lsm6dsm_data *private = accel->drv_data;
 	/* In FIFO sensors are mapped in a different way. */
@@ -232,8 +236,7 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 
 		vect.flags = 0;
 		vect.sensor_num = accel - motion_sensors + id;
-		motion_sense_fifo_add_data(&vect, accel + id, 3,
-					   last_interrupt_timestamp);
+		motion_sense_fifo_add_data(&vect, accel + id, 3, int_ts);
 
 		fifo += OUT_XYZ_SIZE;
 		flen -= OUT_XYZ_SIZE;
@@ -246,7 +249,7 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 	uint8_t fifo[FIFO_READ_LEN];
 
 	/*
-	 * DIFF[9:0] are number of unread uint16 in FIFO
+	 * DIFF[11:0] are number of unread uint16 in FIFO
 	 * mask DIFF and compute total byte len to read from FIFO.
 	 */
 	left = fsts->len & LSM6DSM_FIFO_DIFF_MASK;
@@ -269,7 +272,7 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 			return err;
 
 		/* Manage patterns and push data. */
-		push_fifo_data(s, fifo, length);
+		push_fifo_data(s, fifo, length, last_interrupt_timestamp);
 		left -= length;
 	} while (left > 0);
 
