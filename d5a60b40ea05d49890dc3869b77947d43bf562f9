@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d45974d3_3a5831b0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-15T06:48:52Z",
+      "side": 1,
+      "message": "Hi Mario, Should we add power off accel in our case?",
+      "range": {
+        "startLine": 589,
+        "startChar": 2,
+        "endLine": 589,
+        "endChar": 53
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
