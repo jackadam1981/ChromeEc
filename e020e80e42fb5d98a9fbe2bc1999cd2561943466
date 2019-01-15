@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00ea7c53_ba88e6f1",
+        "filename": "board/atlas_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "Why is this code in board.c?\nIt is touchpad related. It could be reuse on other EC, \ncould driver/touchpad or even common/touchpad a better location?",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "938cdb90_31d6ae11",
+        "filename": "board/atlas_ish/centroiding",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "Is it time to move this code out of experimental? It is not experimental anymore :-).",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de14f2a_b58aa22d",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "remove comment: everything in board/... is board specific.",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d369091_2b8beab1",
+        "filename": "board/atlas_ish/hid.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "Add source: https://usb.org/sites/default/files/documents/hid1_11.pdf?",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b61ddd6b_5afc8a1f",
+        "filename": "board/atlas_ish/hid.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "It does not belong board. This is common HID code.",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50aa9128_e8e8177f",
+        "filename": "board/atlas_ish/i2c_hid_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "use a less generic name, even if static.",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "262d2515_10e75d5a",
+        "filename": "board/atlas_ish/i2c_hid_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "EC is always little indian, consider using 16bit, or at least, use a macro.",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41b9e76b_7573f13e",
+        "filename": "board/atlas_ish/tsc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:41:56Z",
+      "side": 1,
+      "message": "This code belong in /driver directory.",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
