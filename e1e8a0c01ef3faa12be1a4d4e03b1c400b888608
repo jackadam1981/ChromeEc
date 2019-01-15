@@ -22,6 +22,30 @@
       "revId": "e1e8a0c01ef3faa12be1a4d4e03b1c400b888608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47819a02_823d2c29",
+        "filename": "board/liara/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-01-15T23:59:08Z",
+      "side": 1,
+      "message": "charge_get_percent() always returns 100 if charge_state_v2\u0027s \"is_full\" flag is true, so I think that should work ok here.",
+      "parentUuid": "355c82b0_01e81469",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 32
+      },
+      "revId": "e1e8a0c01ef3faa12be1a4d4e03b1c400b888608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
