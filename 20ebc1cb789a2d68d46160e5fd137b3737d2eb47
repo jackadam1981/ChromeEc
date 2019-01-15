@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "99872a9c_9aaae127",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:26:01Z",
+      "side": 1,
+      "message": "Did you check the read magnetometer values are correct?",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63240fd9_4ec85b2d",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -101,6 +118,24 @@
       "side": 1,
       "message": "Sorry, I\u0027m not clear what do you mean? Can put your code on here?",
       "parentUuid": "9132469f_30379de3",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cef3587_fb111d5a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:26:01Z",
+      "side": 1,
+      "message": "Move line 555 so that we have:\n#ifdef CONFIG_MAG_LIS2MDL\n  ... \n  st_raw_write8( ... LSM6DSM_BOOT);\n  ...\n#else\n  ... \n  st_raw_write8( ... LSM6DSM_SW_RESET);\n  ...\n#endif",
+      "parentUuid": "cc84705a_c93d92d1",
       "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
