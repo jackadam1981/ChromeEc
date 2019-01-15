@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8b3f34a_d7cf4d0e",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T21:29:43Z",
+      "side": 0,
+      "message": "I have another CL which allocates a shmem.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1394286\n\nWill shift to that CL.",
+      "parentUuid": "7819e5e7_35e0b5a8",
+      "revId": "5b7aae0d2e3d4ed147ad66910b5fefb0ed501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab943949_212aa2a8",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 3
