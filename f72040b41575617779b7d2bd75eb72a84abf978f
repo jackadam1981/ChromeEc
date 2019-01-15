@@ -22,6 +22,30 @@
       "revId": "f72040b41575617779b7d2bd75eb72a84abf978f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "175150ed_dcde67c3",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T22:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b12105d_cf33c814",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "f72040b41575617779b7d2bd75eb72a84abf978f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

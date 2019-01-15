@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a0ac1999_e2511090",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T22:34:48Z",
+      "side": 0,
+      "message": "Misunderstood the comment. \nJust extended this local variable.",
+      "parentUuid": "d8b3f34a_d7cf4d0e",
+      "revId": "5b7aae0d2e3d4ed147ad66910b5fefb0ed501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab943949_212aa2a8",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 3
@@ -51,6 +69,24 @@
       "revId": "5b7aae0d2e3d4ed147ad66910b5fefb0ed501e8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ede9dc_a1277d4c",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-15T22:34:48Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ab943949_212aa2a8",
+      "revId": "5b7aae0d2e3d4ed147ad66910b5fefb0ed501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
