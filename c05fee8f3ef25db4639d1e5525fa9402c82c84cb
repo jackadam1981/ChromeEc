@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d998af6_2bda835a",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a07d59_4b6b6f40",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c76cdd44_6f3eba37",
         "filename": "core/minute-ia/include/math.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb8d7e2_e6e35229",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "According to https://lists.gnu.org/archive/html/bug-binutils/2015-10/msg00063.html , this long-known problem is an wont-fix. GCC and other compilers rely on this bug to generate x87 code. In this inline asm, we expect gas to generate machine code \"DC E9 FSUB %%ST(0),%%ST(1)\" instead of Intel\u0027s FSUBR. And \"DC E9\" stores ST(1) - ST(0) into ST(1), that matches what we need.",
+      "parentUuid": "c76cdd44_6f3eba37",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c39f0a10_2134f601",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b20b09_683c497b",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c49ff74f_03b94bf5",
         "filename": "core/minute-ia/include/math.h",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e41f249_4d1625ad",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "Done. https://gcc.gnu.org/onlinedocs/gcc/Machine-Constraints.html\nu: Second from top of 80387 floating-point stack (%st(1)).",
+      "parentUuid": "c49ff74f_03b94bf5",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "78d76234_e9cad673",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "These inline math functions are added to support centroiding library for now. And it doesn\u0027t need floorf().",
+      "parentUuid": "d808852c_814d8c53",
+      "range": {
+        "startLine": 121,
+        "startChar": 20,
+        "endLine": 121,
+        "endChar": 25
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858352a1_39fa8629",
         "filename": "core/minute-ia/include/math.h",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f3425c_7a130344",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858352a1_39fa8629",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 53
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "2566c2fa_87e8a2d1",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "Done. Let gcc handle stack.",
+      "parentUuid": "c8da1553_600a112a",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a872f4b0_e6105a3c",
         "filename": "core/minute-ia/include/math.h",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa872eda_878fa91a",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-15T10:26:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a872f4b0_e6105a3c",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
