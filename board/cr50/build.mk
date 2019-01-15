@@ -93,7 +93,7 @@ CFLAGS += -DEMBEDDED_MODE=1
 CFLAGS += -DSUPPORT_UNALIGNED=1
 
 # Add dependencies on that library
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $$(find build/cr50/tpm2/ -name '*.o')
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a
 
 #$(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2

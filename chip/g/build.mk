@@ -218,8 +218,7 @@ $(out)/RW/ec.RW_B.flat: $(out)/RW/ec.RW.flat
 $(out)/RW/ec.RW.flat $(out)/RW/ec.RW_B.flat: SIGNER_EXTRAS = $(RW_SIGNER_EXTRAS)
 
 ifeq ($(CONFIG_DCRYPTO),y)
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/cryptoc \
-						-lcryptoc
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $$(find build/cr50/cryptoc -name '*.o')
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 
 # Force the external build each time, so it can look for changed sources.
