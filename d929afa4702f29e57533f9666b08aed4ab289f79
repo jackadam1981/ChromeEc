@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ecb5927_29e5de9d",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:29:13Z",
+      "side": 1,
+      "message": "Is a code change similar to CL/1389994 needed as well for LSM6DSO?",
+      "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e008a89c_2c7b0c4d",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:29:13Z",
+      "side": 1,
+      "message": "use MIN or GENERIC_MIN in last resort instead.",
+      "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ded58c_77f5ebc3",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:29:13Z",
+      "side": 1,
+      "message": "nit: indent bit(s) in register with one more tab. For instance, see #define STM32_PWR_CR in chip/stm32/registers.h.",
+      "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7bea72_6c14b864",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:29:13Z",
+      "side": 1,
+      "message": "(_sensor)",
+      "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1abc297_2d5f13c2",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-15T17:29:13Z",
+      "side": 1,
+      "message": "Use 13000 instead of LSM6DSO_ODR_MIN_VAL: the second argument is the step, which happen to be equal to the minimumal ODR.",
+      "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
