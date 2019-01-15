@@ -258,6 +258,8 @@ int tcpci_tcpc_drp_toggle(int port)
 {
 	int rv;
 
+	CPRINTS("**** %s", __func__);
+
 	/* Set auto drp toggle */
 	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);
 

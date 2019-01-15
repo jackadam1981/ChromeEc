@@ -30,6 +30,8 @@ static int mt6370_init(int port)
 {
 	int rv;
 
+	CPRINTS("**** %s", __func__);
+
 	/* Software reset. */
 	rv = tcpc_write(port, MT6370_REG_SWRESET, 1);
 	if (rv)
@@ -93,6 +95,8 @@ static int mt6370_get_cc(int port, int *cc1, int *cc2)
 	 */
 	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
 
+	CPRINTS("**** %s status=0x%x role=0x%x", __func__, status, role);
+
 	if (TCPC_REG_ROLE_CTRL_DRP(role))
 		is_snk = TCPC_REG_CC_STATUS_TERM(status);
 	else
@@ -114,6 +118,7 @@ static int mt6370_enter_low_power_mode(int port)
 {
 	int rv;
 
+	CPRINTS("**** %s", __func__);
 	/* VBUS_DET_EN for detecting charger plug. */
 	rv = tcpc_write(port, MT6370_REG_BMC_CTRL,
 			MT6370_REG_BMCIO_LPEN | MT6370_REG_VBUS_DET_EN);
