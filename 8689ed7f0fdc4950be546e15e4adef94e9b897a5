@@ -22,6 +22,30 @@
       "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e40617_2d3d8f71",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-15T18:58:38Z",
+      "side": 1,
+      "message": "hpd \u0026 mux states are different but reading the entire mux state is a single function hence we or  the status and send it. Would you like me to add this comment here?",
+      "parentUuid": "ff3da34a_800083af",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
