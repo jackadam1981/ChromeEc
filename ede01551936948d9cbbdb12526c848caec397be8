@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "954959fa_c030b3a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-15T01:35:47Z",
+      "side": 1,
+      "message": "Are you sure the test result is expected? Please use the \u0027ectool pwmgetduty kb\u0027 to check the value",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d15fc2f_930c7ef6",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-15T01:35:47Z",
+      "side": 1,
+      "message": "Maybe can change it to CONFIG_PWM_KBLIGHT_RECONFIG_PERCENTAGE",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2845e6_5806ae3f",
+        "filename": "common/pwm_kblight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-15T01:35:47Z",
+      "side": 1,
+      "message": "change it to:\n#ifdef CONFIG...\n    percent \u003d percent * CONFIG... / 100 / 100;\n#endif",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6140858_6a90cc61",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2590,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-15T01:35:47Z",
+      "side": 1,
+      "message": "Reconfig the max value of",
+      "range": {
+        "startLine": 2590,
+        "startChar": 3,
+        "endLine": 2590,
+        "endChar": 13
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
