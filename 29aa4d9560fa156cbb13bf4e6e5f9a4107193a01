@@ -22,6 +22,30 @@
       "revId": "29aa4d9560fa156cbb13bf4e6e5f9a4107193a01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "770bd0d3_d22c61c9",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-01-15T09:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fcc401_a33f6628",
+      "range": {
+        "startLine": 272,
+        "startChar": 5,
+        "endLine": 272,
+        "endChar": 26
+      },
+      "revId": "29aa4d9560fa156cbb13bf4e6e5f9a4107193a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
