@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7819e5e7_35e0b5a8",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-15T21:23:36Z",
+      "side": 0,
+      "message": "having thought a bit more about this, sorry if we have discussed this and I forgot:\n\nwhy can you not allocate a buffer here? This would be contained inside this function, no more than 300 or so bytes would be required, right?\n\nOtherwise this patch creates too many dependencies between bitbang and sps drivers, for not obvious good reason.",
+      "revId": "5b7aae0d2e3d4ed147ad66910b5fefb0ed501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab943949_212aa2a8",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-15T21:23:36Z",
+      "side": 0,
+      "message": "this api change should also be a separate patch.",
+      "revId": "5b7aae0d2e3d4ed147ad66910b5fefb0ed501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
