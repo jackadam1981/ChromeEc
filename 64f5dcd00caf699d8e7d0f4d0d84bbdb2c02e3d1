@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8aa3cbfe_4ede429b",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-01-15T08:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73edfab1_1c67e3a0",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1b213d0_9276c74e",
         "filename": "board/casta/led.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b869afa7_2cf3efbc",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-01-15T08:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1b213d0_9276c74e",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5af5f296_7a6c5148",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-01-15T08:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c512ca9b_7d315bcb",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f508293_2bba4a6a",
         "filename": "board/casta/led.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aca76c5_197ac292",
+        "filename": "board/casta/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-01-15T08:26:08Z",
+      "side": 1,
+      "message": "\u003e If a system is in S0, does this statement mean the charging LED will always be off in that case?  So the customer would have no visibility to whether it\u0027s charging based on the LED, or if a battery error happens when their system is on?\n\nUser can check if it is charging with tray icon. Casta has 3-in-1 led and it is not suitable for displaying power \u0026 charging information at the same time.",
+      "parentUuid": "6f508293_2bba4a6a",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "64f5dcd00caf699d8e7d0f4d0d84bbdb2c02e3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
