@@ -22,6 +22,30 @@
       "revId": "834286d145e2d108e97358ecd9d42de67d4d8073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ec6122_46596046",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-15T09:01:24Z",
+      "side": 1,
+      "message": "The original source is 5.5V, which I think it is fine. Since that this is the maximum voltage it can request.",
+      "parentUuid": "7f088c2c_4a3a657c",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 20,
+        "endChar": 54
+      },
+      "revId": "834286d145e2d108e97358ecd9d42de67d4d8073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
