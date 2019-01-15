@@ -6,6 +6,10 @@
 
 CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7-m -mcpu=cortex-m3
+ifeq ($(CONFIG_LTO),y)
+# Re-include the core's build.mk file so we can remove the lto flag.
+include core/$(CORE)/build.mk
+endif
 
 ifeq ($(CONFIG_DCRYPTO),y)
 INCLUDE_ROOT := $(abspath ./include)
@@ -218,8 +222,8 @@ $(out)/RW/ec.RW_B.flat: $(out)/RW/ec.RW.flat
 $(out)/RW/ec.RW.flat $(out)/RW/ec.RW_B.flat: SIGNER_EXTRAS = $(RW_SIGNER_EXTRAS)
 
 ifeq ($(CONFIG_DCRYPTO),y)
-$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/cryptoc \
-						-lcryptoc
+CRYPTOC_OBJS = $$(find build/cr50/cryptoc -name '*.o')
+$(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_OBJS)
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 
 # Force the external build each time, so it can look for changed sources.
