@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "80ea9d0c_20c572bc",
+        "filename": "common/pwm_kblight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-15T01:37:07Z",
+      "side": 1,
+      "message": "Correct above:\npercent \u003d percent * CONFIG... / 100;",
+      "parentUuid": "cf2845e6_5806ae3f",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6140858_6a90cc61",
         "filename": "include/config.h",
         "patchSetId": 1
