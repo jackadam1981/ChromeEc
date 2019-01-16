@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5ba6e53_fc0cf5dd",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-16T16:22:34Z",
+      "side": 1,
+      "message": "okay, I will add it to make it safe.",
+      "parentUuid": "3c3a387f_a13cbb93",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "d0909c871e572183112b30d17ce608e2f7a91861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7155bb5_8a12445d",
         "filename": "driver/usb_mux_virtual.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-16T15:14:55Z",
       "side": 1,
       "message": "seems like a good macro (combining these flags)\n\nAlso same comment for the other HPD flags",
+      "range": {
+        "startLine": 66,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 55
+      },
+      "revId": "d0909c871e572183112b30d17ce608e2f7a91861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771d9dd1_bbf5f1f8",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-16T16:22:34Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "f7155bb5_8a12445d",
       "range": {
         "startLine": 66,
         "startChar": 31,
