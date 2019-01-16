@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8dfa7b73_a8ee73b5",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-16T00:50:42Z",
+      "side": 1,
+      "message": "Yeah, it looks like initial baseporting is not done well. OK, let\u0027s keep it.",
+      "parentUuid": "27c5cc3b_1b48d553",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc8aea02_c36c5387",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 4
@@ -140,6 +164,30 @@
       "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "429a440a_5601031f",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-16T00:50:42Z",
+      "side": 1,
+      "message": "For me, it looks like\n\n- \"task_switches\" is for counting number of actual task switches. Not all __switchto calls increase the number of \"task_switches\".\n\n- most of all, svc_calls is about to count synchronous exceptions. For now, we only have one normal synchronous exception(__switchto). Other synchronous exceptions are for error cases(fetch, aborts \u0027\u0027\u0027) and we are not handling them.\n\nAnyway, according to the implementation of \"taskinfo\", \"Total exceptions \u003d all irqs + svc_call\" which means \"asynchronous exceptions(total irqs) + synchronous exception(svc_call)\".\n\nSo I believe it should be moved to __switch_to in \"switch.S\".",
+      "parentUuid": "8c68296b_3b62ef70",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
