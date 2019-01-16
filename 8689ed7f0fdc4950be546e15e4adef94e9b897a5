@@ -46,6 +46,30 @@
       "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79a7a9c_c8d194c1",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T03:25:27Z",
+      "side": 1,
+      "message": "If they are independent states why would be mix them. We lose resolution. Are some flags only stored in one variable vs the other?",
+      "parentUuid": "f9e40617_2d3d8f71",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
