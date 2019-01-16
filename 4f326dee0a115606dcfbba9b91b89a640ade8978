@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64a1f1e6_c5766986",
+        "filename": "board/casta/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-16T21:30:36Z",
+      "side": 1,
+      "message": "I would guess it\u0027s necessary because they\u0027re pretty much the same LED (a 3-in-1), so any \"ectool\" calls to set one affects the other.\n\nDid you find that this addition was necessary because the LED state machine code assumes the battery and power LEDs are separate when it does its auto control checks?  I almost wonder if it would be easier to logically treat them as one battery LED, and use the chipset clause later to turn the power LED on when we\u0027re in S0.",
+      "parentUuid": "388577a3_a559b34d",
+      "range": {
+        "startLine": 56,
+        "startChar": 45,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "4f326dee0a115606dcfbba9b91b89a640ade8978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f42256bf_4c70fad7",
         "filename": "board/casta/led.c",
         "patchSetId": 7
