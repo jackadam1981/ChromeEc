@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a39cecf_d7c87e0a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T15:06:59Z",
+      "side": 1,
+      "message": "When I read page 40/105 of the datasheet, I read \"Minimum resolution for the FIFO is 1 LSB \u003d 2 bytes (1 word) in FIFO\" to mean that the LSB is 2 bytes so the previous code actually seems more correct",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "b59a90248d7c2a2fe3ddb9926023ba8bb081c53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcb9e6ed_d3959e5b",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
