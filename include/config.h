@@ -2504,6 +2504,12 @@
 /* MKBP events are sent using host event */
 #undef CONFIG_MKBP_USE_HOST_EVENT
 
+/* MKBP events are informed by GPIO interrupt */
+#define CONFIG_MKBP_USE_GPIO
+
+/* MKBP events are sent by custom method. */
+#undef CONFIG_MKBP_USE_CUSTOM
+
 /*
  * With this option, we can define the MKBP wakeup events in this mask (as a
  * white list) in board level, those events allow to interrupt AP during S3.
