@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b53a1314_63339daa",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T14:32:31Z",
+      "side": 1,
+      "message": "we can remove this todo, right?",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 330,
+        "endChar": 5
+      },
+      "revId": "60582afd4164a84efb389eebde3c7c963901095f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
