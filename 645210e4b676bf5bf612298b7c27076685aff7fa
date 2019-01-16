@@ -143,6 +143,23 @@
     },
     {
       "key": {
+        "uuid": "44ef19bf_38fe693b",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-16T19:45:17Z",
+      "side": 1,
+      "message": "there is no atomic_read or atomic_test_bit. Is it ok to read normally here then or should I use a mutex?",
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90b636b1_272d57fd",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 14
