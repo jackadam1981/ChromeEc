@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "388577a3_a559b34d",
+        "filename": "board/casta/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T20:21:40Z",
+      "side": 1,
+      "message": "why have battery here?",
+      "range": {
+        "startLine": 56,
+        "startChar": 45,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "4f326dee0a115606dcfbba9b91b89a640ade8978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f42256bf_4c70fad7",
+        "filename": "board/casta/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T20:21:40Z",
+      "side": 1,
+      "message": "why have power here?",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "4f326dee0a115606dcfbba9b91b89a640ade8978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cce09402_e1534408",
+        "filename": "board/casta/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T20:21:40Z",
+      "side": 1,
+      "message": "should be broken up by led_id. See https://chromium.googlesource.com/chromiumos/platform/ec/+/c5d961bd3d17cfe6d6764533d532661dc617967c/board/phaser/led.c#92",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "4f326dee0a115606dcfbba9b91b89a640ade8978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
