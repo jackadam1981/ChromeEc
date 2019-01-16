@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ea0c1f5_574e1a5f",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-16T05:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad7ddd0_bd9c381d",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "032fb44e5edf775ddad63354362bb1d756866133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0edcb78d_4cf693fb",
         "filename": "board/kukui/battery.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "032fb44e5edf775ddad63354362bb1d756866133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13341d57_59a3a44a",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-16T05:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0edcb78d_4cf693fb",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "032fb44e5edf775ddad63354362bb1d756866133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
