@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "968c7a67_c9a6c402",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1177024
+      },
+      "writtenOn": "2019-01-16T20:24:20Z",
+      "side": 1,
+      "message": "I\u0027ve addressed this in a separate change, not sure it makes things clearer though,\nso feel free to drop it.",
+      "parentUuid": "81574c69_a80de4e8",
+      "range": {
+        "startLine": 1230,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 6
+      },
+      "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9de646d6_c9cad4f5",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9c01a42d_3562c0ce",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1177024
+      },
+      "writtenOn": "2019-01-16T20:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de646d6_c9cad4f5",
+      "range": {
+        "startLine": 2514,
+        "startChar": 0,
+        "endLine": 2514,
+        "endChar": 105
+      },
+      "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdb1ff4c_e95c42c4",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c84e7f_7bb914f0",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2523,
+      "author": {
+        "id": 1177024
+      },
+      "writtenOn": "2019-01-16T20:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdb1ff4c_e95c42c4",
+      "revId": "9220e6b9163ae81f1c5e57e2a486059e35a90953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
