@@ -54,6 +54,29 @@
     },
     {
       "key": {
+        "uuid": "339a0618_ce6d9795",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T20:11:46Z",
+      "side": 1,
+      "message": "please add more comments to what and why we are doing this. The comment you referenced in the commit message comment was helpful. Let\u0027s add something like that here too",
+      "range": {
+        "startLine": 133,
+        "startChar": 12,
+        "endLine": 133,
+        "endChar": 34
+      },
+      "revId": "f0826c438df01d6c90f6f9f73498ad9defbadb3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6bad0aa_cc723cd0",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 1
@@ -88,6 +111,30 @@
       "writtenOn": "2019-01-15T10:34:51Z",
       "side": 1,
       "message": "Maybe move it out of unhandled_vector() and register the vector in init?",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 34
+      },
+      "revId": "f0826c438df01d6c90f6f9f73498ad9defbadb3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec7d5c3_4cbd9611",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T20:11:46Z",
+      "side": 1,
+      "message": "+1. Let\u0027s just register this explicitly",
+      "parentUuid": "8592a9c8_8ec17fb4",
       "range": {
         "startLine": 177,
         "startChar": 5,
