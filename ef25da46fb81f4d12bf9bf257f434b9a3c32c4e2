@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c7bd5ac_d28110e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-16T17:37:46Z",
+      "side": 1,
+      "message": "nit: this should be qualified as \u0027cr50 tpm i2c protocol\u0027 as GPIO_INT_AP_L is not something used commonly.",
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70275812_00a64e33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-16T17:37:46Z",
+      "side": 1,
+      "message": "should there be a \n\n3. goto 5\n\nat this point?",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f34d1b_eef6afd7",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-16T17:37:46Z",
+      "side": 1,
+      "message": "This is not something you add, but but when the code returns here the poll timer is not restarted?",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 9
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5349bf8a_7c7fb673",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-16T17:37:46Z",
+      "side": 1,
+      "message": "this should be in the else clause of line 223",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8a29ce_242f174f",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-16T17:37:46Z",
+      "side": 1,
+      "message": "maybe this should be called first thing in this function, then you could just return after line 222 and not need the \u0027else\u0027 clause at all.",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 71
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
