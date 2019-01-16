@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0327c21_44a66483",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-01-16T02:34:30Z",
+      "side": 1,
+      "message": "I only check keyboard backlight compare with 100%. I will using ectool pwmgetduty kb check it again.",
+      "parentUuid": "954959fa_c030b3a7",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45a3a373_4ce78400",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5d394c6c_dd17a158",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-01-16T02:34:30Z",
+      "side": 1,
+      "message": "Because I using other account and can\u0027t repo upload, so I change account and modify it. I will move it. Thanks.",
+      "parentUuid": "45a3a373_4ce78400",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d15fc2f_930c7ef6",
         "filename": "board/rammus/board.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-01-15T01:35:47Z",
       "side": 1,
       "message": "Maybe can change it to CONFIG_PWM_KBLIGHT_RECONFIG_PERCENTAGE",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "ede01551936948d9cbbdb12526c848caec397be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71566604_3b33ff39",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-01-16T02:34:30Z",
+      "side": 1,
+      "message": "I will change it to CONFIG_PWM_KBLIGHT_RECONFIG_PERCENTAGE",
+      "parentUuid": "5d15fc2f_930c7ef6",
       "range": {
         "startLine": 32,
         "startChar": 8,
