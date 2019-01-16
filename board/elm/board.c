@@ -500,9 +500,14 @@ static void board_chipset_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
+void board_motion_lid_calc(void);
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
+#ifdef CONFIG_LID_ANGLE
+	/* disable keyboard wake entirely in S3 when DUT in tent or tablet mode */
+	board_motion_lid_calc();
+#endif
 	board_spi_disable();
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(&tmp432_set_power_deferred_data, 0);
@@ -667,5 +672,14 @@ void lid_angle_peripheral_enable(int enable)
 uint16_t tcpc_get_alert_status(void)
 {
 	return gpio_get_level(GPIO_PD_MCU_INT) ? PD_STATUS_TCPC_ALERT_0 : 0;
+}
+
+void board_motion_lid_calc(void)
+{
+	if (motion_sensors[BASE_ACCEL].state == SENSOR_INITIALIZED && \
+		motion_sensors[LID_ACCEL].state == SENSOR_INITIALIZED)
+	{
+		motion_lid_calc();
+	}
 }
 
