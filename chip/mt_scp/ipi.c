@@ -44,6 +44,8 @@ static struct ipc_shared_obj *const scp_recv_obj =
 				  sizeof(struct ipc_shared_obj));
 #ifdef HAS_TASK_HOSTCMD
 static struct host_packet ipi_packet;
+static char host_command_mark = '\x01';
+static char host_event_mark = '\x02';
 #endif
 
 /* Check if SCP to AP IPI is in use. */
@@ -70,6 +72,7 @@ int ipi_send(int32_t id, void *buf, uint32_t len, int wait)
 		/* Prevent from infinity wait when be in ISR context. */
 		return EC_ERROR_BUSY;
 
+	CPRINTS("ipi_send id=%d len=%d", id, len);
 	if (len > sizeof(scp_send_obj->buffer))
 		return EC_ERROR_INVAL;
 
@@ -77,7 +80,7 @@ int ipi_send(int32_t id, void *buf, uint32_t len, int wait)
 	mutex_lock(&ipi_lock);
 
 	/* Check if there is already an IPI pending in AP. */
-	if (is_ipi_busy()) {
+	if (is_ipi_busy() && *ipi_wakeup_table[id]) {
 		/*
 		 * If the following conditions meet,
 		 *   1) There is an IPI pending in AP.
@@ -154,15 +157,6 @@ void ipi_inform_ap(void)
 	if (ret)
 		ccprintf("Failed to announce host command channel.\n");
 	// TODO: announce other channels (venc/vdec/...).
-
-#ifdef CONFIG_MKBP_EVENT
-	/* Is this correct? */
-	ns_msg.id = IPI_HOST_EVENT;
-	strncpy(ns_msg.name, "cros-ec-rpmsg", RPMSG_NAME_SIZE);
-	ret = ipi_send(IPI_NS_SERVICE, &ns_msg, sizeof(ns_msg), 1);
-	if (ret)
-		ccprintf("Failed to announce host event channel.\n");
-#endif
 #endif
 }
 
@@ -176,21 +170,15 @@ void mkbp_set_host_active(int active)
 	 */
 	ccprintf("%s\n", __func__);
 	if (active)
-		ipi_send(IPI_HOST_EVENT, NULL, 0, 0);
+		ipi_send(IPI_HOST_COMMAND, &host_event_mark, 1, 0);
 }
-
-static void ipi_host_event_handler(int32_t id, void *buf, uint32_t len)
-{
-	/* Do nothing here. */
-}
-DECLARE_IPI(IPI_HOST_EVENT, ipi_host_event_handler, 1);
 #endif
 
 static void ipi_send_response_packet(struct host_packet *pkt)
 {
 	int ret;
 
-	ret = ipi_send(IPI_HOST_COMMAND, pkt->response, pkt->response_size, 0);
+	ret = ipi_send(IPI_HOST_COMMAND, pkt->response - 1, pkt->response_size + 1, 0);
 	if (ret)
 		CPRINTS("#ERR IPI HOSTCMD %d", ret);
 }
@@ -223,7 +211,8 @@ static void ipi_hostcmd_handler(int32_t id, void *buf, uint32_t len)
 	ipi_packet.request_max = IPI_MAX_REQUEST_SIZE;
 	ipi_packet.request_size = host_request_expected_size(r);
 
-	ipi_packet.response = scp_send_obj->buffer;
+	scp_send_obj->buffer[0] = host_command_mark;
+	ipi_packet.response = scp_send_obj->buffer + 1;
 	/* Reserve space for the preamble and trailing byte */
 	ipi_packet.response_max = IPI_MAX_RESPONSE_SIZE;
 	ipi_packet.response_size = 0;

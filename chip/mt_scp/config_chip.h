@@ -75,7 +75,7 @@
 #define VENTI_TASK_STACK_SIZE 768
 
 /* IPI */
-#define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
+#define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 320
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
 	(CONFIG_RAM_BASE -                                                     \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * sizeof(int32_t)) * 2)
