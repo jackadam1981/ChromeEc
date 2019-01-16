@@ -11,6 +11,9 @@
 #define CONFIG_FLASH_SIZE 0x40000 /* Image file size: 256KB */
 #undef  CONFIG_LID_SWITCH
 #undef  CONFIG_FW_INCLUDE_RO
+#define CONFIG_MKBP_EVENT
+#undef CONFIG_MKBP_USE_GPIO
+#define CONFIG_MKBP_USE_CUSTOM
 
 /* IPI configs */
 #define CONFIG_IPI
