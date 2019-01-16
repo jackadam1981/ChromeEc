@@ -46,6 +46,30 @@
       "revId": "60582afd4164a84efb389eebde3c7c963901095f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b93c285f_3784fedd",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T20:26:48Z",
+      "side": 1,
+      "message": "It is just what you are doing. Thanks!",
+      "parentUuid": "c5b14a63_6ebef43b",
+      "range": {
+        "startLine": 326,
+        "startChar": 3,
+        "endLine": 330,
+        "endChar": 5
+      },
+      "revId": "60582afd4164a84efb389eebde3c7c963901095f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
