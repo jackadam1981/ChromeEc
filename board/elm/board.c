@@ -503,6 +503,17 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
+#ifdef BOARD_HANA
+	/*
+	 * Hana does not have functioning accelerometers in suspend,
+	 * so we cannot tell which mode we are in (clamshell, tablet, etc.).
+	 * Therefore for consistency, disable keyboard scanning and
+	 * trackpad wake in S3.
+	 */
+	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+	/* Disable trackpad interrupts. */
+	gpio_set_level(GPIO_EN_TP_INT_L, 1);
+#endif /* BOARD_HANA */
 	board_spi_disable();
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(&tmp432_set_power_deferred_data, 0);
