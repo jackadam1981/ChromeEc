@@ -70,6 +70,30 @@
       "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3defaa4_7ceafaa4",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-16T03:30:44Z",
+      "side": 1,
+      "message": "Yes some flags stored in one variable and others in other variable.\nUpdating the state of these flags is by independent sub modules in EC.\nHowever these flags are combined data for virtual mux or discrete mux.",
+      "parentUuid": "f79a7a9c_c8d194c1",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
