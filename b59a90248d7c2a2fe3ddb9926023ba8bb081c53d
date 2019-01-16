@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e4dde5e_920af0ee",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-16T16:00:33Z",
+      "side": 1,
+      "message": "I feel like the spec is relatively ambiguous about the units on this register, because it also mentions that the register will be compared to the number of \"bytes written to FIFO\".\n\nHaving said that, 3 would be correct-ish for either bytes or uint16\u0027s, so it\u0027s probably the safer option here.",
+      "parentUuid": "5a39cecf_d7c87e0a",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "b59a90248d7c2a2fe3ddb9926023ba8bb081c53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcb9e6ed_d3959e5b",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b59a90248d7c2a2fe3ddb9926023ba8bb081c53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09367fb_49cff187",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-16T16:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb9e6ed_d3959e5b",
+      "range": {
+        "startLine": 275,
+        "startChar": 34,
+        "endLine": 275,
+        "endChar": 58
+      },
+      "revId": "b59a90248d7c2a2fe3ddb9926023ba8bb081c53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
