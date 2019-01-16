@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7ace50f9_20b4d385",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-16T07:37:42Z",
+      "side": 1,
+      "message": "This isn\u0027t a normal behavior and I will rephrase commit message here. According to Kernel APIC driver, we should not receive any LAPIC internal error. None of the public errata I found related to this problem, but in Kernel APIC driver:\n        /*\n         * Some unknown Intel IO/APIC (or APIC) errata is biting us with\n         * certain networking cards. If high frequency interrupts are\n         * happening on a particular IOAPIC pin, plus the IOAPIC routing\n         * entry is masked/unmasked at a high rate as well then sooner or\n         * later IOAPIC line gets \u0027stuck\u0027, no more interrupts are received\n         * from the device. If focus CPU is disabled then the hang goes\n         * away, oh well :-(\n         *\n         * [ This bug can be reproduced easily with a level-triggered\n         *   PCI Ne2000 networking cards and PII/PIII processors, dual\n         *   BX chipset. ]\n         */\n        /*\n         * Actually disabling the focus CPU check just makes the hang less\n         * frequent as it makes the interrupt distributon model be more\n         * like LRU than MRU (the short-term load is more even across CPUs).\n         */\n\nThis CL tries to unstuck IOAPIC by EOI it\u0027s entry manually. I should mark it as a workaround.",
+      "parentUuid": "23ca1f9d_35e781ae",
+      "revId": "f0826c438df01d6c90f6f9f73498ad9defbadb3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e254d42_f9cb0629",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 1
