@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "532bd71a_1ba0c802",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T22:41:55Z",
+      "side": 1,
+      "message": "This line make me think we should move the bss section before the ro data section (to actually put it at the beginning of IRAM), then we don\u0027t need to worry about the LMA/VMA for bss conflicting with the LMA of .data.\n\nThoughts? (this is the first time I am looking at linker scripts so that might be all wrong)",
+      "range": {
+        "startLine": 284,
+        "startChar": 25,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "6b92cc0b770b7dbbabe6a60110c04a389bd47282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
