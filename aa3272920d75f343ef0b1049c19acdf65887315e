@@ -22,6 +22,30 @@
       "revId": "aa3272920d75f343ef0b1049c19acdf65887315e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17618eac_5c701060",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2639,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-16T03:12:44Z",
+      "side": 1,
+      "message": ".data section is allocated after .bss, so looks like we cannot retrieve the size by SIZEOF(.data).\n\nSome experiments:\n \n1. If we use \". \u003d . + SIZEOF(.data);\" at ec.lds.S:279, and removes line . \u003d ALIGN(512);\n   we have\n\n   000074b4 A __ro_end   \n   000074b8 B __bss_start\n\n   the size (__bss_start - __ro_end) \u003d 4\n\n2. Use a trick \". \u003d . + (__data_end - __data_start);\" at ec.lds.S:279, and removes line . \u003d ALIGN(512);\n\n   we have\n\n   000074b4 A __ro_end         \n   000074e4 a __hey_flash_used \n   000074e4 A __image_size     \n   000074e8 B __bss_start      \n\n   the size (__bss_start - __ro_end) \u003d 52, which is what we need here.",
+      "parentUuid": "38d58f87_cf18b922",
+      "range": {
+        "startLine": 2638,
+        "startChar": 3,
+        "endLine": 2639,
+        "endChar": 12
+      },
+      "revId": "aa3272920d75f343ef0b1049c19acdf65887315e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
