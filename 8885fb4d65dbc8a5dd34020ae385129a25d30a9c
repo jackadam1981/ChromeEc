@@ -166,6 +166,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18455d8a_8966717f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-16T22:25:57Z",
+      "side": 1,
+      "message": "so, let\u0027s go with #2 then. and call nvmem_commit_succeeded() from nvmem_commit() itself. \nthis way we won\u0027t need to change anything when writevars() changes in the future (what otherwise would be quite hard to remember, since it is is in the unrelated part of the code)",
+      "parentUuid": "944a7cbe_c7977eeb",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
