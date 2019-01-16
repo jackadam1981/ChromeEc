@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bae74c1_9450b1cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-16T08:40:02Z",
+      "side": 1,
+      "message": "Yes, I will post the result to b:115587004.",
+      "parentUuid": "99872a9c_9aaae127",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63240fd9_4ec85b2d",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "Move line 555 so that we have:\n#ifdef CONFIG_MAG_LIS2MDL\n  ... \n  st_raw_write8( ... LSM6DSM_BOOT);\n  ...\n#else\n  ... \n  st_raw_write8( ... LSM6DSM_SW_RESET);\n  ...\n#endif",
       "parentUuid": "cc84705a_c93d92d1",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b664c333_250d92b0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-16T08:40:02Z",
+      "side": 1,
+      "message": "According the experiment and ST comment from b:115587004, only do BOOT still cannot reachable magnetometer after sysjump, it should be SW_RESET + BOOT + delay 15ms. so we added extra BOOT sequence to fix pass-through mode problem.",
+      "parentUuid": "3cef3587_fb111d5a",
       "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
