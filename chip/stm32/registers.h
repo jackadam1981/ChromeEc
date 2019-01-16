@@ -1231,15 +1231,27 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CR_PLLON		(1 << 24)
 #define STM32_RCC_CR_PLLRDY		(1 << 25)
 
-#if defined(CHIP_VARIANT_STM32F446)
-/* Required or recommended clocks for stm32f446 */
+/* STM32F4 recommended common clock settings */
 #define STM32F4_PLL_REQ 2000000
 #define STM32F4_RTC_REQ 1000000
-#define STM32F4_IO_CLOCK  42000000
-#define STM32F4_USB_REQ 48000000
-#define STM32F4_VCO_CLOCK 336000000
 #define STM32F4_HSI_CLOCK 16000000
 #define STM32F4_LSI_CLOCK 32000
+
+#if defined(CHIP_VARIANT_STM32F41X)
+#define STM32F4_IO_CLOCK  48000000
+#define STM32F4_VCO_CLOCK 384000000
+#elif defined(CHIP_VARIANT_STM32F446)
+#endif
+
+#if !defined(CHIP_VARIANT_STM32F76X)
+#define STM32F4_USB_REQ 48000000
+#endif
+
+#if defined(CHIP_VARIANT_STM32F446)
+/* Required or recommended clocks for stm32f446 */
+#define STM32F4_IO_CLOCK  42000000
+#define STM32F4_VCO_CLOCK 336000000
+
 #define STM32F4_TIMER_CLOCK STM32F4_IO_CLOCK
 #define STM32F4_PLLP_DIV 4
 #define STM32F4_AHB_PRE 0x8
@@ -1249,13 +1261,6 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #elif defined(CHIP_VARIANT_STM32F412)
 /* Required or recommended clocks for stm32f412 */
-#define STM32F4_PLL_REQ 2000000
-#define STM32F4_RTC_REQ 1000000
-#define STM32F4_IO_CLOCK  48000000
-#define STM32F4_USB_REQ 48000000
-#define STM32F4_VCO_CLOCK 384000000
-#define STM32F4_HSI_CLOCK 16000000
-#define STM32F4_LSI_CLOCK 32000
 #define STM32F4_TIMER_CLOCK (STM32F4_IO_CLOCK * 2)
 #define STM32F4_PLLP_DIV 4
 #define STM32F4_AHB_PRE 0x0
@@ -1265,13 +1270,6 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #elif defined(CHIP_VARIANT_STM32F411)
 /* Required or recommended clocks for stm32f411 */
-#define STM32F4_PLL_REQ 2000000
-#define STM32F4_RTC_REQ 1000000
-#define STM32F4_IO_CLOCK  48000000
-#define STM32F4_USB_REQ 48000000
-#define STM32F4_VCO_CLOCK 384000000
-#define STM32F4_HSI_CLOCK 16000000
-#define STM32F4_LSI_CLOCK 32000
 #define STM32F4_TIMER_CLOCK STM32F4_IO_CLOCK
 #define STM32F4_PLLP_DIV 4
 #define STM32F4_AHB_PRE 0x8
@@ -1281,13 +1279,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #elif defined(CHIP_VARIANT_STM32F76X)
 /* Required or recommended clocks for stm32f767/769 */
-#define STM32F4_PLL_REQ 2000000
-#define STM32F4_RTC_REQ 1000000
 #define STM32F4_IO_CLOCK 45000000
 #define STM32F4_USB_REQ 45000000 /* not compatible with USB, will use PLLSAI */
 #define STM32F4_VCO_CLOCK 360000000
-#define STM32F4_HSI_CLOCK 16000000
-#define STM32F4_LSI_CLOCK 32000
 #define STM32F4_TIMER_CLOCK (STM32F4_IO_CLOCK * 2)
 #define STM32F4_PLLP_DIV 2   /* sys = VCO/2  = 180 Mhz */
 #define STM32F4_AHB_PRE 0x0  /* AHB = sysclk = 180 Mhz */
