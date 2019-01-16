@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d9c40df_4a0f9d14",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2864,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-16T16:45:11Z",
+      "side": 1,
+      "message": "Sure, will do.",
+      "parentUuid": "08c8c68c_7d940d1b",
+      "range": {
+        "startLine": 2863,
+        "startChar": 2,
+        "endLine": 2864,
+        "endChar": 45
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "810e8701_11aa6906",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-16T14:28:45Z",
       "side": 1,
       "message": "can we call this before the ppc_snk_is_connected.\n\nIf so, we can put this ppc_sink_is_connected in the below if condition (just to make it easier to identify that it is indeed the same case)",
+      "range": {
+        "startLine": 3018,
+        "startChar": 3,
+        "endLine": 3023,
+        "endChar": 10
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba6305c_8fcabb70",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-16T16:45:11Z",
+      "side": 1,
+      "message": "I will check. Aseda can you please let us know if the comment does not work.",
+      "parentUuid": "810e8701_11aa6906",
       "range": {
         "startLine": 3018,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7a866f4b_819b30cc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 4521,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-16T16:45:11Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "4a818b8f_1e8fd816",
+      "range": {
+        "startLine": 4520,
+        "startChar": 23,
+        "endLine": 4521,
+        "endChar": 44
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90b636b1_272d57fd",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 14
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-16T14:28:45Z",
       "side": 1,
       "message": "hmm, I just realized that this should be atomic access since multiple tasks are accessing the same memory address. Let\u0027s replace this will atomic_set and atomic_clear\n\n(this is not the case for the oc_event_cnt_tbl array since each port has its own memory location)",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 31
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776d3144_473f505d",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-16T16:45:11Z",
+      "side": 1,
+      "message": "Ok, makes sense.",
+      "parentUuid": "90b636b1_272d57fd",
       "range": {
         "startLine": 164,
         "startChar": 2,
