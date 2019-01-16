@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "b87db56e_13d88f22",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-16T03:47:04Z",
+      "side": 1,
+      "message": "Channel definitions are placed in include/console_channel.inc.\nMost channels are guarded by several macros, either by COFNIG... or by HAS_TASK...\n\nIf the channels are too noisy, we can use a standalone channels for sure ;).",
+      "parentUuid": "6610d531_eab3018d",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52257a53_a37a4a3d",
         "filename": "board/kukui_scp/vdec.h",
         "patchSetId": 20
@@ -106,6 +130,30 @@
       "writtenOn": "2019-01-15T11:17:06Z",
       "side": 1,
       "message": "9",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a9d47c07ae66d2e43daab25d7bf3f7779e31b99f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7d84c1_8d3d38de",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-16T03:47:04Z",
+      "side": 1,
+      "message": "This was uploaded in 2018 ;) We can change this at next upload.",
+      "parentUuid": "52257a53_a37a4a3d",
       "range": {
         "startLine": 1,
         "startChar": 16,
