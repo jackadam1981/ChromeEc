@@ -94,6 +94,30 @@
       "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498d76e6_8ef9e850",
+        "filename": "driver/usb_mux_virtual.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-16T03:36:17Z",
+      "side": 1,
+      "message": "let\u0027s me more explict about that in comments here and where variable are define (what flags are expected to be kept in what variables)",
+      "parentUuid": "e3defaa4_7ceafaa4",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "8689ed7f0fdc4950be546e15e4adef94e9b897a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
