@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d168ff_57b309ff",
+        "filename": "common/pwm_kblight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-16T02:31:33Z",
+      "side": 1,
+      "message": "remove tab",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 1
+      },
+      "revId": "22d899692e8f8ef2c3985bc65f9648b25b3a1179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c2f22c_92a44fd6",
+        "filename": "common/pwm_kblight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-16T02:31:33Z",
+      "side": 1,
+      "message": "Can we change it to below code?\n#ifdef CONFIG_PWM_KBLIGHT_RECONFIG_PERCENTAGE\n    percent *\u003d CONFIG_PWM_KBLIGHT_RECONFIG_PERCENTAGE / 100;\n#endif\n    pwm_set_duty(kblight_pwm_ch, percent);\n    return EC_SUCCESS;",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "22d899692e8f8ef2c3985bc65f9648b25b3a1179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
