@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cad7773_6ac8eced",
+        "filename": "common/queue.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-17T21:49:49Z",
+      "side": 1,
+      "message": "This uint32_t will eventually wraps around. Then, \u0027queue_count \u003d tail - head\u0027 no longer makes sense?",
+      "range": {
+        "startLine": 114,
+        "startChar": 11,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "88a1790bb7d82a30e052f1e10a9c7c88fb5c5c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
