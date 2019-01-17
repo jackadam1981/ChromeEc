@@ -10,6 +10,8 @@
 
 #include "gpio.h"
 
+void change_oz554_setting(int reg, int data);
+
 void backlight_enable_interrupt(enum gpio_signal signal);
 
 #endif

@@ -34,7 +34,7 @@ struct oz554_value {
  */
 
 /* This ordering is suggested by vendor. */
-static const struct oz554_value order[] = {
+static struct oz554_value order[] = {
 	/*
 	 * Reigster 0x01: Operation frequency control
 	 * Frequency selection: 300(KHz)
@@ -88,6 +88,18 @@ static void set_oz554_reg(void)
 		}
 	}
 	CPRINTS("Wrote OZ554 settings");
+}
+
+void change_oz554_setting(int reg, int data)
+{
+	if (reg >= OZ554_DATA_SIZE)
+		return;
+	else if (reg == 0)
+		reg = 5;
+	else
+		reg--;
+
+	order[reg].data = data;
 }
 
 static void backlight_enable_deferred(void)
