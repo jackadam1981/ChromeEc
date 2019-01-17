@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6954c9eb_c0c875ba",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-17T22:24:29Z",
+      "side": 1,
+      "message": "\"Now that I check for ap_is_on() it spits out a couple . Looks like there is a delay between ap_is_on() getting notified the AP is off and the SDA line going low.\"\n\npresumably this comment applies to this latest code.\n\ndo you mean to say that the SDA line goes low before ap state is properly debounced so that ap_is_on() starts returning False?\n\nShould we increase the poll period to make sure that ap state debounce completes sooner?\n\nMary, what do you think?",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
