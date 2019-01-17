@@ -22,6 +22,30 @@
       "revId": "6b92cc0b770b7dbbabe6a60110c04a389bd47282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79daed59_a45d507a",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-17T09:30:57Z",
+      "side": 1,
+      "message": "I think the problem still holds at least for kukui_scp.\nIt then be a problem that you have to clear a space between __bss_end and __data_start (ideally, we still want a separate address for data section\u0027s LMA/VMA)",
+      "parentUuid": "532bd71a_1ba0c802",
+      "range": {
+        "startLine": 284,
+        "startChar": 25,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "6b92cc0b770b7dbbabe6a60110c04a389bd47282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
