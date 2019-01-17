@@ -19,6 +19,7 @@
 
 #define CONFIG_LED_COMMON
 #define OCTOPUS_BATT_FUEL_LOW_LED 10
+#define OCTOPUS_BATT_FULL_S5_LED
 
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */

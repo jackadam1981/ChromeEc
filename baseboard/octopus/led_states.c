@@ -32,11 +32,21 @@ static enum led_states led_get_state(void)
 		else if (charge_lvl < led_charge_lvl_2)
 			new_state = STATE_CHARGING_LVL_2;
 		else
-			new_state = STATE_CHARGING_FULL_CHARGE;
+#ifdef OCTOPUS_BATT_FULL_S5_LED
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+				new_state = STATE_CHARGING_FULL_S5;
+			else
+#endif
+				new_state = STATE_CHARGING_FULL_CHARGE;
 		break;
 	case PWR_STATE_DISCHARGE_FULL:
 		if (extpower_is_present()) {
-			new_state = STATE_CHARGING_FULL_CHARGE;
+#ifdef OCTOPUS_BATT_FULL_S5_LED
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+				new_state = STATE_CHARGING_FULL_S5;
+			else
+#endif
+				new_state = STATE_CHARGING_FULL_CHARGE;
 			break;
 		}
 		/* Intentional fall-through */
