@@ -22,6 +22,30 @@
       "revId": "81affea1a05ebaf169c874e3139fc5ecb930985a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f72d0a6_b8b8e89d",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-17T17:29:36Z",
+      "side": 1,
+      "message": "Yes, I will add the comment.",
+      "parentUuid": "948e5d8a_a72d7c8b",
+      "range": {
+        "startLine": 331,
+        "startChar": 32,
+        "endLine": 331,
+        "endChar": 48
+      },
+      "revId": "81affea1a05ebaf169c874e3139fc5ecb930985a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
