@@ -141,6 +141,30 @@
       "revId": "22d899692e8f8ef2c3985bc65f9648b25b3a1179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83443a81_0f1a59c7",
+        "filename": "common/pwm_kblight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-01-17T09:05:04Z",
+      "side": 1,
+      "message": "When I using \"percent *\u003d CONFIG_PWM_KBLIGHT_RECONFIG_PECENTAGE / 100;\", the PWM duty will get 0.\nIf I modify to \"percent \u003d percent * CONFIG_PWM_KBLIGHT_RECONFIG_PERCENTAGE / 100;\", the PWM duty max value is correct.\nDo you have any suggest?",
+      "parentUuid": "28979e43_c83e53e1",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "22d899692e8f8ef2c3985bc65f9648b25b3a1179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
