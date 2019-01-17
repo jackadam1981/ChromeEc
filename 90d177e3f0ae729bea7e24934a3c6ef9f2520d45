@@ -22,6 +22,30 @@
       "revId": "90d177e3f0ae729bea7e24934a3c6ef9f2520d45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ff9cc7_08b406a7",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T22:05:54Z",
+      "side": 0,
+      "message": "Ah, you are right. I assumed the pull ups stayed active as long ad the cr50 was up. Testing G3 previously would spew a bunch of I2CS bus is stuck messaged. Now that I check for ap_is_on() it spits out a couple . Looks like there is a delay between ap_is_on() getting notified the AP is off and the SDA line going low.",
+      "parentUuid": "42ce20d4_050df210",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "90d177e3f0ae729bea7e24934a3c6ef9f2520d45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
