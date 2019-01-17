@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b87f3f1e_6e5d8423",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2864,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-17T17:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9c40df_4a0f9d14",
+      "range": {
+        "startLine": 2863,
+        "startChar": 2,
+        "endLine": 2864,
+        "endChar": 45
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810e8701_11aa6906",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -93,6 +117,30 @@
       "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2055012_bd85e043",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-17T17:28:39Z",
+      "side": 1,
+      "message": "I moved it around. But this required additional change at line 664 - 678.\n\nWith Aseda\u0027s original change - when the port enterted SRC_DISCONNECTED state, sink was also blindly marked as disconnected. OC event counter was scheduled to be cleared after OC_COOL_OFF_DELAY(2 Seconds). Before that cleared the OC event counter, the port enters SRC_DISCONNECT_DEBOUNCE state(within 20 ms) and the port was marked as in connected state and then checked for latched off state. That prevented the OC event counter from getting cleared.\n\nWith moving around the code, we have to check if the sink is disconnected before marking the sink as disconnected when the port enters SRC_DISCONNECTED state. That helped and later when I disconnected the sink, it is identified correctly. Until the sink is physically disconnected, the port did not deliver any power even if the sink power was reduced.\n\naaboagye@ if you see anything odd with this new sequence please let me know.",
+      "parentUuid": "5ba6305c_8fcabb70",
+      "range": {
+        "startLine": 3018,
+        "startChar": 3,
+        "endLine": 3023,
+        "endChar": 10
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "0ed2fd8b_d973ccaf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 4521,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-17T17:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a866f4b_819b30cc",
+      "range": {
+        "startLine": 4520,
+        "startChar": 23,
+        "endLine": 4521,
+        "endChar": 44
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44ef19bf_38fe693b",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 14
@@ -172,6 +244,24 @@
       "side": 1,
       "message": "It is okay to read is here non-atomically. We could make it volatile, but we shouldn\u0027t need to since this code can\u0027t optimize out a read completely (just one read for the entire function would be okay too)",
       "parentUuid": "44ef19bf_38fe693b",
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eadaaa6f_8b9a412d",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-17T17:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b075b598_704a9527",
       "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -222,6 +312,30 @@
       "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20516715_76102bfd",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-17T17:28:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "776d3144_473f505d",
+      "range": {
+        "startLine": 164,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 31
+      },
+      "revId": "645210e4b676bf5bf612298b7c27076685aff7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
