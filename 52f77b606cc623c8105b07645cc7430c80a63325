@@ -22,6 +22,30 @@
       "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2754d81f_e5c1e55f",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T22:35:09Z",
+      "side": 1,
+      "message": "Yep, correct. I\u0027m guessing this was a problem with the original code too. It just went unnoticed because there was no print statement.\nI see two stuck messages. Each message takes 450ms, so that\u0027s 900ms. If the ap_is_on() debounce is 1000ms, we would need a minimum poll interval of 333ms. I would say lets build some slack in and make it 350ms for a total of 1050ms.\n\nThoughts?",
+      "parentUuid": "6954c9eb_c0c875ba",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
