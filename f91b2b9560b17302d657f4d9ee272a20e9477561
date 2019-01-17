@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bead9765_79c1658d",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-17T22:45:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fbef09e_527320d7",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "f91b2b9560b17302d657f4d9ee272a20e9477561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a98388b_8f6d0ed4",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2018-11-19T15:26:49Z",
       "side": 1,
       "message": "should this check be moved into servo_is_connected()? After all we don\u0027t trust the heuristics we use to determine if servo is connected or not, we might also always return false from that function?",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "f91b2b9560b17302d657f4d9ee272a20e9477561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3141e7_820a0c22",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-17T22:45:07Z",
+      "side": 1,
+      "message": "servo_is_connected is used by the servo state machine. Just moving this to servo_is_connected would mess with the state machine.\n\nI updated the state machine to ignore servo with \u0027ccdblock ignore_servo enable\u0027 then redetect servo state on \u0027ccdblock ignore_servo disable\u0027",
+      "parentUuid": "1a98388b_8f6d0ed4",
       "range": {
         "startLine": 102,
         "startChar": 32,
