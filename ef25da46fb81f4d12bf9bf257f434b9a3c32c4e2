@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fc70ce6e_0ea73bea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T16:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c7bd5ac_d28110e6",
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70275812_00a64e33",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65c9e50_58455961",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T16:28:01Z",
+      "side": 1,
+      "message": "I added a 4. to indicate the master receives the interrupt.",
+      "parentUuid": "70275812_00a64e33",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1fdadfbd_b9c2ca6c",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T16:28:01Z",
+      "side": 1,
+      "message": "i2cs_register_write_complete_handler calls hook_call_deferred.",
+      "parentUuid": "24f34d1b_eef6afd7",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 9
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5349bf8a_7c7fb673",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 3
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "3842b655_e434dfea",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T16:28:01Z",
+      "side": 1,
+      "message": "I changed it to an else and removed the return.",
+      "parentUuid": "5349bf8a_7c7fb673",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab8a29ce_242f174f",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 3
@@ -108,6 +198,30 @@
       "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c6ef829_5d4f3971",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T16:28:01Z",
+      "side": 1,
+      "message": "i2cs_register_write_complete_handler actually calls hook_call_deferred for us. I added a comment to clarify.",
+      "parentUuid": "ab8a29ce_242f174f",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 71
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
