@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "oz554.h"
 #include "task.h"
 #include "timer.h"
 
@@ -34,7 +35,7 @@ struct oz554_value {
  */
 
 /* This ordering is suggested by vendor. */
-static const struct oz554_value order[] = {
+static struct oz554_value order[] = {
 	/*
 	 * Reigster 0x01: Operation frequency control
 	 * Frequency selection: 300(KHz)
@@ -102,8 +103,20 @@ void backlight_enable_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&backlight_enable_deferred_data, 30 * MSEC);
 }
 
+void oz554_change_order(int offset, int data)
+{
+	if (offset > 5)
+		return;
+	if (offset == 0)
+		order[5].data = data;
+	else
+		order[offset - 1].data = data;
+}
+
 static void init_oz554(void)
 {
+	oz554_board_init();
+
 	gpio_enable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 }
 DECLARE_HOOK(HOOK_INIT, init_oz554, HOOK_PRIO_DEFAULT);
