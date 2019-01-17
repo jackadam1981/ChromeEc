@@ -10,6 +10,9 @@
 
 #include "gpio.h"
 
+void oz554_board_init(void) __attribute__((weak));
+void oz554_change_order(int offset, int data);
+
 void backlight_enable_interrupt(enum gpio_signal signal);
 
 #endif
