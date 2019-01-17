@@ -46,6 +46,30 @@
       "revId": "6b92cc0b770b7dbbabe6a60110c04a389bd47282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759bcaa0_5c44017b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-17T09:31:51Z",
+      "side": 1,
+      "message": "s/clear a space/make a space/",
+      "parentUuid": "79daed59_a45d507a",
+      "range": {
+        "startLine": 284,
+        "startChar": 25,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "6b92cc0b770b7dbbabe6a60110c04a389bd47282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
