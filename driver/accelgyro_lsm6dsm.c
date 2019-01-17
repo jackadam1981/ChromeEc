@@ -71,7 +71,7 @@ static int config_interrupt(const struct motion_sensor_t *s)
  * @s: Motion sensor pointer: must be MOTIONSENSE_TYPE_ACCEL.
  * @fmode: BYPASS or CONTINUOUS
  */
-static int fifo_disable(const struct motion_sensor_t *s)
+int fifo_disable(const struct motion_sensor_t *s)
 {
 	return st_raw_write8(s->port, s->addr, LSM6DSM_FIFO_CTRL5_ADDR, 0x00);
 }
@@ -93,12 +93,13 @@ static void fifo_reset_pattern(struct lsm6dsm_data *private)
  * Configure FIFO decimator to have every time the right pattern
  * with acc/gyro
  */
-static int fifo_enable(const struct motion_sensor_t *accel)
+int fifo_enable(const struct motion_sensor_t *accel)
 {
 	int err, i, rate;
 	uint8_t decimator[FIFO_DEV_NUM] = { 0 };
 	unsigned int min_odr = LSM6DSM_ODR_MAX_VAL;
 	unsigned int max_odr = 0;
+	uint8_t odr_reg_val;
 	struct lsm6dsm_data *private = accel->drv_data;
 	/* In FIFO sensors are mapped in a different way. */
 	uint8_t agm_maps[] = {
@@ -123,6 +124,12 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 		return EC_SUCCESS;
 	}
 
+	/* FIFO ODR must be set before the decimation factors */
+	odr_reg_val = LSM6DSM_ODR_TO_REG(max_odr) <<
+					LSM6DSM_FIFO_CTRL5_ODR_OFF;
+	err = st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL5_ADDR,
+			    odr_reg_val);
+
 	/* Scan all sensors configuration to calculate FIFO decimator. */
 	private->config.total_samples_in_pattern = 0;
 	for (i = FIFO_DEV_GYRO; i < FIFO_DEV_NUM; i++) {
@@ -144,10 +151,12 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL4_ADDR,
 			decimator[FIFO_DEV_MAG]);
 #endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+	/*
+	 * After ODR and decimation values are set, continuous mode can be
+	 * enabled
+	 */
 	err = st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL5_ADDR,
-			 (LSM6DSM_ODR_TO_REG(max_odr) <<
-			  LSM6DSM_FIFO_CTRL5_ODR_OFF) |
-			 LSM6DSM_FIFO_MODE_CONTINUOUS_VAL);
+			    odr_reg_val | LSM6DSM_FIFO_MODE_CONTINUOUS_VAL);
 	if (err != EC_SUCCESS)
 		return err;
 	fifo_reset_pattern(private);
@@ -252,6 +261,16 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 	left *= sizeof(uint16_t);
 	left = (left / OUT_XYZ_SIZE) * OUT_XYZ_SIZE;
 
+	/*
+	 * TODO(b/122912601): phaser360: Investigate Standard Deviation error
+	 *				 during CtsSensorTests
+	 * - track number of samples to throw out after ODR changes
+	 * Accel discard: "should" be 0 for freq <= 26, 1 until 1666 Hz (table
+	 * 17)
+	 * Gyro discard: 12.5 Hz - 2, 26-833 Hz - 3 (table 19)
+	 * - check "pattern" register versus where code thinks it is parsing
+	 */
+
 	/* Push all data on upper side. */
 	do {
 		/* Fit len to pre-allocated static buffer. */
@@ -278,22 +297,6 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 	} while (left > 0);
 
 	return EC_SUCCESS;
-}
-
-/**
- * accelgyro_config_fifo - update mode and ODR for FIFO decimator
- */
-int accelgyro_config_fifo(const struct motion_sensor_t *accel)
-{
-	int err;
-
-	/* Changing in ODR must stop FIFO. */
-	err = fifo_disable(accel);
-	if (err != EC_SUCCESS)
-		return err;
-
-
-	return fifo_enable(accel);
 }
 #endif /* CONFIG_ACCEL_FIFO */
 
@@ -441,6 +444,14 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val = 0;
 
+#ifdef CONFIG_ACCEL_FIFO
+	/* FIFO must be disabled before setting any ODR values */
+	ret = fifo_disable(LSM6DSM_MAIN_SENSOR(s));
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to disable FIFO. Error: %d", ret);
+		return ret;
+	}
+#endif
 	ctrl_reg = LSM6DSM_ODR_REG(s->type);
 	if (rate > 0) {
 		reg_val = LSM6DSM_ODR_TO_REG(rate);
@@ -461,7 +472,9 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	if (ret == EC_SUCCESS) {
 		data->base.odr = normalized_rate;
 #ifdef CONFIG_ACCEL_FIFO
-		accelgyro_config_fifo(LSM6DSM_MAIN_SENSOR(s));
+		ret = fifo_enable(LSM6DSM_MAIN_SENSOR(s));
+		if (ret != EC_SUCCESS)
+			CPRINTS("Failed to enable FIFO. Error: %d", ret);
 #endif
 	}
 
