@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eccf5a77_32ece6dd",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-17T16:35:44Z",
+      "side": 0,
+      "message": "Why do we need adc after boot? If we don\u0027t need it, maybe we should disable the console command instead? Or call adc_enable/disable in the command?",
+      "revId": "9c16be4ddd6f8bb19c3cbc7db9c0a4dae877a8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
