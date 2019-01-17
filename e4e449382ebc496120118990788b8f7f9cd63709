@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2a500b_edfc4835",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-17T22:30:52Z",
+      "side": 0,
+      "message": "Is there any particular reason to delete this function? I assume it\u0027s a style preference for an explicit\n\ndisable\ncheck\nenable\n\nflow?",
+      "revId": "e4e449382ebc496120118990788b8f7f9cd63709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
