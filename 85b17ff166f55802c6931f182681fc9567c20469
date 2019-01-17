@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72240404_46202a29",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-17T17:38:40Z",
+      "side": 1,
+      "message": "This should better be in karma/board.c (i.e. board_get_panel_id).",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 1
+      },
+      "revId": "85b17ff166f55802c6931f182681fc9567c20469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
