@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12040c39_4d7342bf",
+        "filename": "util/flash_ec",
+        "patchSetId": 9
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-17T17:26:40Z",
+      "side": 1,
+      "message": "-c[r50_mode] flag, stm32mon does not bother setting UART attributes and it doesn\u0027t print the message \"Failed to enable parity.\".",
+      "range": {
+        "startLine": 1001,
+        "startChar": 2,
+        "endLine": 1001,
+        "endChar": 21
+      },
+      "revId": "dcbfff913267ecf0c0c74b94b8f5c516a9027411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
