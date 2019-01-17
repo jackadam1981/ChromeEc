@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "948e5d8a_a72d7c8b",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-17T17:25:26Z",
+      "side": 1,
+      "message": "is the ! because of active low? If so, can you add a comment?",
+      "range": {
+        "startLine": 331,
+        "startChar": 32,
+        "endLine": 331,
+        "endChar": 48
+      },
+      "revId": "81affea1a05ebaf169c874e3139fc5ecb930985a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
