@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "bde260b1_ae7a3eee",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-17T21:20:13Z",
+      "side": 1,
+      "message": "I misunderstood what you said originally. Updated.",
+      "parentUuid": "ea553c4a_e9b26542",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab8a29ce_242f174f",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 3
