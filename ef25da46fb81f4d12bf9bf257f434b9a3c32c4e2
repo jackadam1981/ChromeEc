@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "ea553c4a_e9b26542",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-17T17:13:26Z",
+      "side": 1,
+      "message": "this did not really address the comment: i2cs_sda_low_count could be set to zero in line 222, but the code still checks if it is equal to READ_STATUS_CHECK_THRESHOLD in line 237.\n\nalso, why do you drop the return - keeping it in reduces following code indentation, which improves readability.",
+      "parentUuid": "3842b655_e434dfea",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 2
+      },
+      "revId": "ef25da46fb81f4d12bf9bf257f434b9a3c32c4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab8a29ce_242f174f",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 3
