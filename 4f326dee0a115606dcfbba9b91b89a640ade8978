@@ -92,6 +92,30 @@
       "revId": "4f326dee0a115606dcfbba9b91b89a640ade8978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bccc231_49a740ef",
+        "filename": "board/casta/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-01-17T00:13:07Z",
+      "side": 1,
+      "message": "This function is called after parameter check. When I execute \u0027ectool led battery blue\u0027 it returns INVALID_PARAM. Should this check led_id?",
+      "parentUuid": "cce09402_e1534408",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 0
+      },
+      "revId": "4f326dee0a115606dcfbba9b91b89a640ade8978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
