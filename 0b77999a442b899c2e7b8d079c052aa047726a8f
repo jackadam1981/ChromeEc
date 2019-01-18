@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c338764_f1d0668a",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-18T14:47:17Z",
+      "side": 1,
+      "message": "instead of adding this new config, can we instead update the led_update_battery method to  know about the 2 special case enums now\n\nThe section under\n/* If this state is undefined, turn the LED off */\nwould now detect an undefined STATE_CHARGING_FULL_S5 and STATE_DISCHARGE_S0_BAT_LOW and default to the appropriate fallback.\n\nThoughts?",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "0b77999a442b899c2e7b8d079c052aa047726a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
