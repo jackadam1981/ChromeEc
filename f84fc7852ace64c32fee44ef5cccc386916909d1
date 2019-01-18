@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "950d5099_fc996577",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-18T22:21:54Z",
+      "side": 1,
+      "message": "That does sound more official, so I\u0027ll take it",
+      "parentUuid": "b7c9e083_1b4e68ac",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 69
+      },
+      "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49c1dca9_8cc2b261",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1832f3f9_dc9023e8",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-18T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c1dca9_8cc2b261",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 4
+      },
+      "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c9733d1_9975715f",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0470c2c0_4bf527fc",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-18T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9733d1_9975715f",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 73
+      },
+      "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
