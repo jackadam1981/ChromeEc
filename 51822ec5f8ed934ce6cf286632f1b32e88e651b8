@@ -22,6 +22,30 @@
       "revId": "51822ec5f8ed934ce6cf286632f1b32e88e651b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ddd866_d2409b55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-18T02:31:26Z",
+      "side": 1,
+      "message": "kukui neeeds to append a AP bootblock in EC RO image, and transfer this bootblock to AP on boot to boot the whole system.\n\nThis means that it will build a AP bootblock appened EC image.",
+      "parentUuid": "3d9496a6_f38f084f",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "51822ec5f8ed934ce6cf286632f1b32e88e651b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
