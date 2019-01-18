@@ -70,6 +70,24 @@
       "revId": "9c16be4ddd6f8bb19c3cbc7db9c0a4dae877a8d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfecb64_4953007f",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-18T01:52:17Z",
+      "side": 0,
+      "message": "It sounds like you should just remove this code snippet.",
+      "parentUuid": "11fff2c8_1e60cc26",
+      "revId": "9c16be4ddd6f8bb19c3cbc7db9c0a4dae877a8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
