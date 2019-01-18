@@ -46,6 +46,30 @@
       "revId": "0b77999a442b899c2e7b8d079c052aa047726a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e398d447_e911834f",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-18T15:48:17Z",
+      "side": 1,
+      "message": "Oh good call on the low battery. Let\u0027s just add a fallback for this new case then",
+      "parentUuid": "10716d2e_aaf6d977",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "0b77999a442b899c2e7b8d079c052aa047726a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
