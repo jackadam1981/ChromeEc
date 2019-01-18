@@ -175,6 +175,24 @@
       "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b36d4f8_f4bb0780",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-18T01:05:10Z",
+      "side": 1,
+      "message": "Hi Gwendal, Does it ok to keep now code sequence?",
+      "parentUuid": "b664c333_250d92b0",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
