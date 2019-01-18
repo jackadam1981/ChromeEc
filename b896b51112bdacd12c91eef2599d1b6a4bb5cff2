@@ -45,6 +45,30 @@
       "revId": "b896b51112bdacd12c91eef2599d1b6a4bb5cff2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd55d3ad_8ecfd086",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-18T15:11:23Z",
+      "side": 1,
+      "message": "I\u0027ll look through the application notes and check.  My best guess is that we changed the ODR and/or decimation of the slave device and need to update it, in which case I should confirm what the step ordering is supposed to be for that case",
+      "parentUuid": "1188002f_1f31bc7b",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "b896b51112bdacd12c91eef2599d1b6a4bb5cff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

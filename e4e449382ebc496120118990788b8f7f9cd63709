@@ -16,6 +16,24 @@
       "revId": "e4e449382ebc496120118990788b8f7f9cd63709",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1f160f_019a7952",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-18T15:11:23Z",
+      "side": 0,
+      "message": "Generally, yes.  I also didn\u0027t like the idea of keeping the function around when, for accel and gyro purposes at least, there are steps always needed between the disable/enable. I need to read the sensorhub chapter this morning to verify the steps there.",
+      "parentUuid": "fa2a500b_edfc4835",
+      "revId": "e4e449382ebc496120118990788b8f7f9cd63709",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
