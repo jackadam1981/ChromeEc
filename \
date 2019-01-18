@@ -1,0 +1,33 @@
+flash_ec: add "--read" and "--verify" flags for npcx chip.
+
+"--read" takes a following string as a path to store the image file.
+If it is specified, flash_ec reads only an EC firmware image and store
+it to the given path, but does not program EC firmware.
+
+"--verify" lets flash_ec read EC firmware image after flashing it, and
+compare the read image to the source image to check if they match.
+
+CQ-DEPEND=CL:1409497
+BUG=b:123044471
+BRANCH=none
+TEST=manually ran flash_ec on coral.
+util/flash_ec --board coral --image ${IMG_PATH} --verify --verbose
+util/flash_ec --board coral --read ${TEMP_IMG_PATH} --verbose
+util/flash_ec --chip npcx_spi --raiden --image ${IMG_PATH} --verify
+util/flash_ec --chip npcx_spi --raiden --read ${TEMP_IMG_PATH}
+
+Change-Id: I5461ec7ce0c6d0bdb2eb984d9f7fb73c2f73a420
+Signed-off-by: Namyoon Woo <namyoon@chromium.org>
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Jan 17 16:18:22 2019 -0800
+#
+# On branch flash_ec_verify_npcx
+# Your branch is ahead of 'cros/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   util/flash_ec
+#
