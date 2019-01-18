@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53582a9d_9122ce7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-18T19:15:35Z",
+      "side": 1,
+      "message": "Can you elaborate here?",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "935174701b25bf630783924758eaf4d1429a02f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95f558fe_d7828b3b",
+        "filename": "board/casta/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-18T19:15:35Z",
+      "side": 1,
+      "message": "Can you add a TODO, something like \"remove this routine after rev0 is not supported\"?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "935174701b25bf630783924758eaf4d1429a02f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
