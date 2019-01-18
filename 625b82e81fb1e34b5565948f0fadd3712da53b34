@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a96c1d5d_e20e007d",
+        "filename": "board/elm/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-18T02:02:55Z",
+      "side": 1,
+      "message": "I would just put:\n\n    \n#ifdef BOARD_HANA\n        /*\n         * Hana does not have functioning accelerometers in suspend,\n         * so we cannot tell which mode we are in (clamshell, tablet, etc.). \n         * Therefore for consistency, disable keyboard scanning and\n         * trackpad wake in S3.\n         */\n        keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);\n        /* Disable trackpad interrupts. */\n        gpio_set_level(GPIO_EN_TP_INT_L, 1);\n#endif /* BOARD_HANA */",
+      "revId": "625b82e81fb1e34b5565948f0fadd3712da53b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
