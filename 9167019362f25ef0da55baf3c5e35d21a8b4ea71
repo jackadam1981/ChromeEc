@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94bb29c6_e49c7794",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-18T00:17:15Z",
+      "side": 1,
+      "message": "Converting this into case statement, so that the future CLs on different chips could be simpler by adding cases.",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 34
+      },
+      "revId": "9167019362f25ef0da55baf3c5e35d21a8b4ea71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
