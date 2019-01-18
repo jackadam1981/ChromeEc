@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ff9c597c_72dff4f6",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-18T15:09:30Z",
+      "side": 1,
+      "message": "Good call. Thanks for catching that!",
+      "parentUuid": "269b4619_d06f4365",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc8aea02_c36c5387",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 4
@@ -259,6 +283,30 @@
       "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca40739_48c1105b",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-18T15:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7504bc3c_cecfe3db",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
