@@ -16,6 +16,24 @@
       "revId": "625b82e81fb1e34b5565948f0fadd3712da53b34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a6382f_9fe05a14",
+        "filename": "board/elm/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-01-18T02:37:57Z",
+      "side": 1,
+      "message": "I have a concern that DUT can\u0027t restore keyboard and trackpad function when resumed from S3 if DUT has no sensors.",
+      "parentUuid": "a96c1d5d_e20e007d",
+      "revId": "625b82e81fb1e34b5565948f0fadd3712da53b34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
