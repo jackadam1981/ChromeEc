@@ -46,6 +46,30 @@
       "revId": "f970990ecb167101616fa27c72f33243b4c9bace",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545c8fc2_9e127c02",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2019-01-18T06:55:32Z",
+      "side": 1,
+      "message": "It seems to be hard to merge it into IPI_SCP_INIT. I\u0027ll move IPI_NS_SERVICE to 0xFF instead.",
+      "parentUuid": "151e54ab_1ff2f293",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "f970990ecb167101616fa27c72f33243b4c9bace",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
