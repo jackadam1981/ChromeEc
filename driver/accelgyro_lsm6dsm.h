@@ -277,8 +277,17 @@ struct lsm6dsm_data {
 	struct lsm6dsm_fifo_data config;
 	struct lsm6dsm_fifo_data current;
 	int next_in_patten;
+	/* After an ODR change, some amount of junk data will need discarded */
+	int samples_to_discard[FIFO_DEV_NUM];
 #endif
 };
+
+/*
+ * Note: The specific number of samples to discard depends on the filters
+ * configured for the chip, as well as the ODR being set.  For most of our
+ * allowed ODRs, 4 should suffice.
+ */
+#define LSM6DSM_DISCARD_SAMPLES 4
 
 #define LSM6DSM_MAIN_SENSOR(_s) ((_s) - (_s)->type)
 
