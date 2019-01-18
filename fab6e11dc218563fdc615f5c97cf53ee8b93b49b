@@ -120,6 +120,29 @@
     },
     {
       "key": {
+        "uuid": "269b4619_d06f4365",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-18T03:48:02Z",
+      "side": 1,
+      "message": "I believe this should return vector number.\n\nif vector number is for irq then increase corresponding irq_dist.\nif vector number is TS_VECTOR(0x20) then increase \"svc_calls\"",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc8aea02_c36c5387",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 4
@@ -212,6 +235,30 @@
       "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7504bc3c_cecfe3db",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-18T03:48:02Z",
+      "side": 1,
+      "message": "I believe it should be increased only when there\u0027s \"normal\" ordinary synchronous exception.\nFor now, TS_VECTOR(0x20) is the only.",
+      "parentUuid": "466aa3d7_a7605bee",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 274,
+        "endChar": 27
+      },
+      "revId": "fab6e11dc218563fdc615f5c97cf53ee8b93b49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
