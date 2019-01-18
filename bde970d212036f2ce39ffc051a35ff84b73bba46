@@ -45,6 +45,30 @@
       "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e04671d_9154819f",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-18T18:49:49Z",
+      "side": 1,
+      "message": "USB_CHG_EVENT_BC12 and USB_CHG_EVENT_INTR are mutually exclusive. Only Oak uses the latter. \n\nWith this CL, I think Oak can use USB_CHG_EVENT_BC12 as well (and we can get rid of USB_CHG_EVENT_INTR) but that should be done in a separate context.",
+      "parentUuid": "5fd05785_504a8c63",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 14
+      },
+      "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
