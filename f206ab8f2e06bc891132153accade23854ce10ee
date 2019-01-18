@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05a0b948_eb4fb335",
+        "filename": "board/casta/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-18T14:53:16Z",
+      "side": 1,
+      "message": "should we just check the GPIO state of the BLUE LED instead (so we don\u0027t to encode the power led states in multiple places).",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "f206ab8f2e06bc891132153accade23854ce10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
