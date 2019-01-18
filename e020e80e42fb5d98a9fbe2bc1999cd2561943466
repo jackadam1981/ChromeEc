@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b93754b7_2abf1f2c",
+        "filename": "board/atlas_ish/centroiding",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2019-01-18T08:28:33Z",
+      "side": 1,
+      "message": "Hi, the repository is named \u0027experimental-touch-fw\u0027 because we had no idea if we would ever use it in production at the beginning. The centroiding library has been used in Pixelbook\u0027s trackpad since then so we have reason to rename the repo. I would see how this can be done.",
+      "parentUuid": "938cdb90_31d6ae11",
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5de14f2a_b58aa22d",
         "filename": "board/atlas_ish/gpio.inc",
         "patchSetId": 3
