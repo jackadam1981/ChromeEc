@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c9e083_1b4e68ac",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-18T22:12:14Z",
+      "side": 1,
+      "message": "Maybe \"After an ODR change, the sensor needs a few samples worth of data to stabilize to a correct reading; discard initial samples with incorrect values\"",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 69
+      },
+      "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c1dca9_8cc2b261",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-18T22:12:14Z",
+      "side": 1,
+      "message": "Can/should/could this be an unsigned number? Would it ever make sense for it to be negative? I know it hardly matters since we\u0027re on the order of magnitude of single digits",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 4
+      },
+      "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9733d1_9975715f",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-18T22:12:14Z",
+      "side": 1,
+      "message": "Would it make sense to add a link to the application note here? That way future interested parties don\u0027t have to figure it out by sheer luck/magic",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 73
+      },
+      "revId": "f84fc7852ace64c32fee44ef5cccc386916909d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
