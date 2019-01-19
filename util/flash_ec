@@ -265,6 +265,10 @@ function get_servo_type() {
 	fi
 }
 
+function get_board_name() {
+	echo "$($DUT_CONTROL_CMD ec_board | sed -e s/ec_board://)"
+}
+
 BOARD=${FLAGS_board}
 
 in_array() {
@@ -793,6 +797,11 @@ function flash_flashrom() {
 
 	if [ ! -x "$FLASHROM" ]; then
 		die "no flashrom util found."
+	fi
+
+	if [[ -z ${BOARD} ]]; then
+		BOARD="$(get_board_name)"
+		info "Board : ${BOARD}"
 	fi
 
 	# Check whether the SPI flash is internal to the NPCX's EC.
