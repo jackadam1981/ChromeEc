@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08296152_016edcf0",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-19T01:33:08Z",
+      "side": 1,
+      "message": "Before this CL, this used to fail if \"flash_ec\" was run without \"--board\".\n\nError messages were like this:\n\"Running flashrom:\n sudo /usr/sbin/flashrom -p raiden_debug_spi:target\u003dEC,serial\u003d0680203B-922A4826 --get-size\nERROR: Chip size is 0!\"",
+      "range": {
+        "startLine": 815,
+        "startChar": 1,
+        "endLine": 815,
+        "endChar": 30
+      },
+      "revId": "5245c780c2e6a9ccb238850a0385de6b6784179b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
