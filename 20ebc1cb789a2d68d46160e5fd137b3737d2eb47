@@ -193,6 +193,24 @@
       "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ce00d5_fb70e071",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-19T01:15:56Z",
+      "side": 1,
+      "message": "ping",
+      "parentUuid": "0b36d4f8_f4bb0780",
+      "revId": "20ebc1cb789a2d68d46160e5fd137b3737d2eb47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
