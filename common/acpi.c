@@ -362,7 +362,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 				if (mode_field & 1)
 					mode = USB_CHARGE_MODE_ENABLED;
 
-				if (usb_charge_set_mode(i, mode)) {
+				if (usb_charge_set_mode(i, mode, 0)) {
 					CPRINTS("ERROR: could not set charge "
 						"mode of USB port p%d to %d",
 						i, mode);
