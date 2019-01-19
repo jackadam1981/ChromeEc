@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8256e5a_d6f1463a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-19T01:24:19Z",
+      "side": 1,
+      "message": "I would leave accel, to indicate this function only works when the motion_sensor is the accelerometer pointer.",
+      "revId": "d9b6942e96f6aac7d84caf163c8341d99e51a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1f2d6b_672bfbc0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-19T01:24:19Z",
+      "side": 1,
+      "message": "remove err\u003d not tested.",
+      "revId": "d9b6942e96f6aac7d84caf163c8341d99e51a051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
