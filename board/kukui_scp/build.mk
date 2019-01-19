@@ -9,3 +9,5 @@ CHIP:=mt_scp
 CHIP_VARIANT:=mt8183
 
 board-y=board.o
+
+board-$(CONFIG_AUDIO_CODEC_WOV)+=wov.o
