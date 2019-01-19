@@ -4466,6 +4466,53 @@ enum mkbp_cec_event {
 };
 
 /*****************************************************************************/
+/* Commands for WoV on EC codec. */
+
+#define EC_CMD_EC_CODEC_WOV 0x00BD
+
+#define EC_CODEC_WOV_CAP_AUDIO_SHM	(1UL << 1)
+#define EC_CODEC_WOV_CAP_LANG_SHM	(1UL << 2)
+
+enum ec_codec_wov_subcmd {
+	EC_CODEC_WOV_GET_CAPABILITIES = 0,
+	EC_CODEC_WOV_ENABLE,
+	EC_CODEC_WOV_DISABLE,
+	EC_CODEC_WOV_IS_ENABLED,
+	EC_CODEC_WOV_IS_HOTWORD_DETECTED,
+	EC_CODEC_WOV_READ,
+	EC_CODEC_WOV_SUBCMD_COUNT,
+};
+
+struct __ec_todo_packed ec_param_ec_codec_wov {
+	/* enum ec_codec_wov_subcmd */
+	uint8_t cmd;
+
+	union {
+		struct __ec_todo_unpacked ec_param_ec_codec_wov_read {
+			uint8_t *buf;
+			uint32_t len;
+		} read_param;
+	};
+};
+
+struct ec_response_ec_codec_wov_get_capabilities {
+	uint32_t capabilities;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_is_enabled {
+	uint8_t is_enabled;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_is_hotword_detected {
+	uint8_t is_hotword_detected;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_read {
+	uint8_t buf[64];
+	uint32_t len;
+} __ec_align4;
+
+/*****************************************************************************/
 /* System commands */
 
 /*

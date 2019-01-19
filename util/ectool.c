@@ -290,6 +290,8 @@ const char help_str[] =
 	"      Wait for the MKBP event of type and display it\n"
 	"  wireless <flags> [<mask> [<suspend_flags> <suspend_mask>]]\n"
 	"      Enable/disable WLAN/Bluetooth radio\n"
+	"  wov [command]\n"
+	"      Wake-on-Voice related commands\n"
 	"";
 
 /* Note: depends on enum system_image_copy_t */
@@ -5805,6 +5807,173 @@ int cmd_wireless(int argc, char *argv[])
 }
 
 
+int cmd_wov_get_capabilities(int argc, char *argv[])
+{
+	int rv;
+	struct ec_param_ec_codec_wov p = {0};
+	struct ec_response_ec_codec_wov_get_capabilities r;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s %s\n", argv[0], argv[1]);
+		return -1;
+	}
+
+	p.cmd = EC_CODEC_WOV_GET_CAPABILITIES;
+	rv = ec_command(EC_CMD_EC_CODEC_WOV, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed: %d\n", rv);
+		return rv;
+	}
+
+	fprintf(stderr, "Capabilities:\n");
+	if (r.capabilities & EC_CODEC_WOV_CAP_AUDIO_SHM)
+		fprintf(stderr, "  EC_CODEC_WOV_CAP_AUDIO_SHM\n");
+	if (r.capabilities & EC_CODEC_WOV_CAP_LANG_SHM)
+		fprintf(stderr, "  EC_CODEC_WOV_CAP_LANG_SHM\n");
+
+	return 0;
+}
+int cmd_wov_enable(int argc, char *argv[])
+{
+	int rv;
+	struct ec_param_ec_codec_wov p = {0};
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s %s\n", argv[0], argv[1]);
+		return -1;
+	}
+
+	p.cmd = EC_CODEC_WOV_ENABLE;
+	rv = ec_command(EC_CMD_EC_CODEC_WOV, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0) {
+		fprintf(stderr, "Failed: %d\n", rv);
+		return rv;
+	}
+
+	fprintf(stderr, "Success!\n");
+	return 0;
+}
+int cmd_wov_disable(int argc, char *argv[])
+{
+	int rv;
+	struct ec_param_ec_codec_wov p = {0};
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s %s\n", argv[0], argv[1]);
+		return -1;
+	}
+
+	p.cmd = EC_CODEC_WOV_DISABLE;
+	rv = ec_command(EC_CMD_EC_CODEC_WOV, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0) {
+		fprintf(stderr, "Failed: %d\n", rv);
+		return rv;
+	}
+
+	fprintf(stderr, "Success!\n");
+	return 0;
+}
+int cmd_wov_is_enabled(int argc, char *argv[])
+{
+	int rv;
+	struct ec_param_ec_codec_wov p = {0};
+	struct ec_response_ec_codec_wov_is_enabled r;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s %s\n", argv[0], argv[1]);
+		return -1;
+	}
+
+	p.cmd = EC_CODEC_WOV_IS_ENABLED;
+	rv = ec_command(EC_CMD_EC_CODEC_WOV, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed: %d\n", rv);
+		return rv;
+	}
+
+	fprintf(stderr, "%d\n", r.is_enabled);
+	return 0;
+}
+int cmd_wov_is_hotword_detected(int argc, char *argv[])
+{
+	int rv;
+	struct ec_param_ec_codec_wov p = {0};
+	struct ec_response_ec_codec_wov_is_hotword_detected r;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s %s\n", argv[0], argv[1]);
+		return -1;
+	}
+
+	p.cmd = EC_CODEC_WOV_IS_HOTWORD_DETECTED;
+	rv = ec_command(EC_CMD_EC_CODEC_WOV, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed: %d\n", rv);
+		return rv;
+	}
+
+	fprintf(stderr, "%d\n", r.is_hotword_detected);
+	return 0;
+}
+int cmd_wov_read(int argc, char *argv[])
+{
+	int rv;
+	struct ec_param_ec_codec_wov p = {0};
+	struct ec_response_ec_codec_wov_read r;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s %s\n", argv[0], argv[1]);
+		return -1;
+	}
+
+	p.cmd = EC_CODEC_WOV_READ;
+	p.read_param.len = sizeof(r.buf);
+	rv = ec_command(EC_CMD_EC_CODEC_WOV, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed: %d\n", rv);
+		return rv;
+	}
+
+	r.buf[r.len] = 0;
+	fprintf(stderr, "[%s]\n", r.buf);
+	return 0;
+}
+int cmd_wov(int argc, char *argv[])
+{
+	struct {
+		char *cmd;
+		int (*exec)(int, char *[]);
+	} cmds[] = {
+		{"get_capabilities", cmd_wov_get_capabilities},
+		{"enable", cmd_wov_enable},
+		{"disable", cmd_wov_disable},
+		{"is_enabled", cmd_wov_is_enabled},
+		{"is_hotword_detected", cmd_wov_is_hotword_detected},
+		{"read", cmd_wov_read},
+		{},
+	};
+
+	if (argc >= 2) {
+		size_t i;
+
+		for (i = 0; cmds[i].cmd; ++i)
+			if (strcmp(cmds[i].cmd, argv[1]) == 0)
+				return cmds[i].exec(argc, argv);
+	}
+
+	fprintf(stderr, "Usage: wov [command]\n"
+			"\n"
+			"command:\n"
+			"  get_capabilities\n"
+			"  enable\n"
+			"  disable\n"
+			"  is_enabled\n"
+			"  is_hotword_detected\n"
+			"  read\n");
+	return -1;
+}
+
+
 int cmd_i2c_protect(int argc, char *argv[])
 {
 	struct ec_params_i2c_passthru_protect p;
@@ -8535,6 +8704,7 @@ const struct command commands[] = {
 	{"version", cmd_version},
 	{"waitevent", cmd_wait_event},
 	{"wireless", cmd_wireless},
+	{"wov", cmd_wov},
 	{NULL, NULL}
 };
 

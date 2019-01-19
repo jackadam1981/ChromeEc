@@ -3781,6 +3781,7 @@
 
 /* Support Wake-on-Voice */
 #undef CONFIG_WAKE_ON_VOICE
+#undef CONFIG_AUDIO_CODEC_WOV
 
 /*
  * Write protect signal is active-high.  If this is defined, there must be a
