@@ -33,11 +33,13 @@ enum usb_charge_mode {
 /**
  * Set USB charge mode for the port.
  *
- * @param usb_port_id	Port to set.
- * @param mode		New mode for port.
+ * @param usb_port_id		Port to set.
+ * @param mode			New mode for port.
+ * @param inhibit_charge	Inhibit charging during system suspend.
  * @return EC_SUCCESS, or non-zero if error.
  */
-int usb_charge_set_mode(int usb_port_id, enum usb_charge_mode mode);
+int usb_charge_set_mode(int usb_port_id, enum usb_charge_mode mode,
+			int inhibit_charge);
 
 #ifdef HAS_TASK_USB_CHG_P0
 #define USB_CHG_EVENT_BC12 TASK_EVENT_CUSTOM(1)
