@@ -465,6 +465,17 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void usb_charge_mode_init(void)
+{
+	/*
+	 * By default, turn the charging off when system suspends.
+	 * If system power on with connecting a USB device,
+	 * the OS must send an event to EC to clear 8th-bit.
+	 */
+	usb_charge_set_mode(0, USB_CHARGE_MODE_CDP | 0x80);
+}
+DECLARE_HOOK(HOOK_INIT, usb_charge_mode_init, HOOK_PRIO_DEFAULT + 1);
+
 /**
  * Buffer the AC present GPIO to the PCH.
  */
