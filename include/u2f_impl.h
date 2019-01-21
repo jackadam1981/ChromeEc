@@ -98,6 +98,19 @@ int g2f_individual_keypair(p256_int *d, p256_int *pk_x, p256_int *pk_y);
  */
 int u2f_gen_kek_seed(int commit);
 
+/* Size in bytes of G2F attestation certificate. */
+#define G2F_ATTESTATION_CERT_LEN	314
+
+/**
+ * Gets the x509 certificate for the attestation keypair returned
+ * by g2f_individual_keypair().
+ *
+ * @param buf pointer to a buffer that must be at least
+ * G2F_ATTESTATION_CERT_LEN bytes.
+ * @return TRUE if certificate was successfully written to buf.
+ */
+int g2f_attestation_cert(uint8_t *buf);
+
 /* ---- protocol extensions ---- */
 
 /* Use non-standard extensions to the U2F protocol */
