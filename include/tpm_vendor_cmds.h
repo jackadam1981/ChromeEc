@@ -115,6 +115,12 @@ enum vendor_cmd_cc {
 	 * current state, to mark it as RMA'd but with an unknown RMA count.
 	 */
 	VENDOR_CC_SN_INC_RMA = 42,
+	/*
+	 *
+	 */
+	VENDOR_CC_U2F_GENERATE = 43,
+	VENDOR_CC_U2F_SIGN = 44,
+	VENDOR_CC_U2F_ATTEST = 45,
 
 	/*
 	 * Gets the latched state of a power button press to indicate user
