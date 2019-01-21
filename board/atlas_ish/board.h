@@ -37,6 +37,8 @@
 #define CONFIG_HECI
 /* HID subsystem */
 #define CONFIG_HID_SUBSYS
+/* Host command over HECI */
+#define CONFIG_HOSTCMD_HECI
 
 /* I2C ports */
 #define I2C_PORT_TP ISH_I2C0
