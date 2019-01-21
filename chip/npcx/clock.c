@@ -22,6 +22,7 @@
 #include "uart.h"
 #include "uartn.h"
 #include "util.h"
+#include "vboot_hash.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -115,8 +116,11 @@ void clock_init(void)
 	NPCX_HFCGP  = (FPRED << 4);
 	NPCX_HFCBCD = (NPCX_HFCBCD & 0xF0) | (APB1DIV | (APB2DIV << 2));
 #elif defined(CHIP_FAMILY_NPCX7)
-	NPCX_HFCGP   = ((FPRED << 4) | AHB6DIV);
-	NPCX_HFCBCD  = (FIUDIV << 4);
+#ifdef CONFIG_ACCEL_HASH_AT_BOOTUP
+	clock_turbo();
+#else
+	clock_normal();
+#endif
 	NPCX_HFCBCD1 = (APB1DIV | (APB2DIV << 4));
 	NPCX_HFCBCD2 = APB3DIV;
 #endif
@@ -163,12 +167,31 @@ void clock_turbo(void)
 	NPCX_HFCBCD = (1 << 4);
 }
 
-void clock_turbo_disable(void)
+void clock_normal(void)
 {
 	/* Set CORE_CLK (CPU), AHB6_CLK and FIU_CLK back to original values. */
 	NPCX_HFCGP = ((FPRED << 4) | AHB6DIV);
 	NPCX_HFCBCD = (FIUDIV << 4);
 }
+
+#ifdef CONFIG_ACCEL_HASH_AT_BOOTUP
+/*
+ * Check if vboot hashing is completed. If it is, set the core clock
+ * back to normal frequency.
+ */
+static void clock_turbo_disable(void);
+DECLARE_DEFERRED(clock_turbo_disable);
+static void clock_turbo_disable(void)
+{
+#ifdef CONFIG_VBOOT_HASH
+	if (vboot_hash_in_progress())
+		hook_call_deferred(&clock_turbo_disable_data, 100 * MSEC);
+	else
+#endif
+		clock_normal();
+}
+DECLARE_HOOK(HOOK_INIT, clock_turbo_disable, HOOK_PRIO_INIT_VBOOT_HASH + 1);
+#endif
 #endif
 
 /**

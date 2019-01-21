@@ -167,6 +167,6 @@ void clock_turbo(void);
 /**
  * Set the CPU clock back to normal freq.
  */
-void clock_turbo_disable(void);
+void clock_normal(void);
 
 #endif /* __CROS_EC_CLOCK_CHIP_H */
