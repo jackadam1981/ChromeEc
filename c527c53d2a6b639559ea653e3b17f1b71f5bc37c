@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aca1f563_477b0a15",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-01-21T05:58:08Z",
+      "side": 1,
+      "message": "There\u0027s only external pull down rather than pull high resistor.\nLooks should be GPIO_OUT_LOW to have capability for driving high.",
+      "range": {
+        "startLine": 107,
+        "startChar": 37,
+        "endLine": 107,
+        "endChar": 49
+      },
+      "revId": "c527c53d2a6b639559ea653e3b17f1b71f5bc37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8083eec_bd0a0905",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-01-21T05:58:08Z",
+      "side": 1,
+      "message": "In Soraka, it\u0027s GPIO_OUT_LOW since the load switch supports reverse current block.\nWe\u0027re using same part (NX20P5090), should be fine to leverage same setting.",
+      "range": {
+        "startLine": 108,
+        "startChar": 37,
+        "endLine": 108,
+        "endChar": 65
+      },
+      "revId": "c527c53d2a6b639559ea653e3b17f1b71f5bc37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab399bdc_c54fa970",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-01-21T05:58:08Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 109,
+        "startChar": 37,
+        "endLine": 109,
+        "endChar": 65
+      },
+      "revId": "c527c53d2a6b639559ea653e3b17f1b71f5bc37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d0e86f_8dcd3ca5",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-01-21T05:58:08Z",
+      "side": 1,
+      "message": "There\u0027s only external pull down rather than pull high resistor.\nLooks should be GPIO_OUT_LOW to have capability for driving high.",
+      "range": {
+        "startLine": 110,
+        "startChar": 37,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "c527c53d2a6b639559ea653e3b17f1b71f5bc37c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
