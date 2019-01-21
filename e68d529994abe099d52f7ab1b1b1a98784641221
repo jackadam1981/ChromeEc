@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34d097cc_8bd57272",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-21T01:38:15Z",
+      "side": 1,
+      "message": "I would have put that in the power/mt8183.c file.\n\nElse it\u0027s not very useful to test for defined(BOARD_KUKUI) here.",
+      "revId": "e68d529994abe099d52f7ab1b1b1a98784641221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
