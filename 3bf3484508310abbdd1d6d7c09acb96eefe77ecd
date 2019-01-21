@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "80bf3879_dc7664b4",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-21T01:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6927cabd_c2372eac",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "3bf3484508310abbdd1d6d7c09acb96eefe77ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "630db939_ce51ed2c",
         "filename": "power/mt8183.c",
         "patchSetId": 1
@@ -63,6 +87,24 @@
       "revId": "3bf3484508310abbdd1d6d7c09acb96eefe77ecd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c300570c_382def33",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-21T01:02:48Z",
+      "side": 1,
+      "message": "Ack. I assume flapjack follows kukui\u0027s power rail design?",
+      "parentUuid": "630db939_ce51ed2c",
+      "revId": "3bf3484508310abbdd1d6d7c09acb96eefe77ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
