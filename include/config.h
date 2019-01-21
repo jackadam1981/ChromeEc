@@ -944,6 +944,12 @@
  */
 #undef CONFIG_CLOCK_SRC_EXTERNAL
 
+/*
+ * Increase core clock frequency when EC boots up until the HASH computation
+ * finishes
+ */
+#undef CONFIG_CLOCK_TURBO_ACCEL_HASH_AT_BOOTUP
+
 /*****************************************************************************/
 /* Support curve25519 public key cryptography */
 #undef CONFIG_CURVE25519
