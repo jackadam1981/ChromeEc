@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "398e3d16_e147affe",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-01-21T06:40:59Z",
+      "side": 1,
+      "message": "compiling aes-gcm.c needs -std\u003dc99 and -Wno-declaration-after-statement. So $(CFLAGS) and $(C_WARN) should swap to prevent overwrite.",
+      "range": {
+        "startLine": 80,
+        "startChar": 19,
+        "endLine": 80,
+        "endChar": 38
+      },
+      "revId": "473bbf4d88c58afa2344d846b2b26a4051bb602e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
