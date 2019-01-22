@@ -46,6 +46,30 @@
       "revId": "d602fb826fd0b6c10407351494ca60ea9b526867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47be09d7_60298e61",
+        "filename": "util/flash_ec",
+        "patchSetId": 14
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-22T18:09:30Z",
+      "side": 1,
+      "message": "ah, right, this is two strings, not a concatenated string.",
+      "parentUuid": "fd6e14cb_a589f107",
+      "range": {
+        "startLine": 988,
+        "startChar": 7,
+        "endLine": 988,
+        "endChar": 10
+      },
+      "revId": "d602fb826fd0b6c10407351494ca60ea9b526867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
