@@ -70,6 +70,30 @@
       "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c548501_774e6d16",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-22T22:37:40Z",
+      "side": 1,
+      "message": "So the debounce time is actually 2 seconds. Up to 1 second to transition to DEVICE_STATE_DEBOUNCING and another second to transition to DEVICE_STATE_OFF. So I made the interval 700ms for a total of 2100ms before the i2cs bus is reset.",
+      "parentUuid": "46952e96_bb8b3123",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
