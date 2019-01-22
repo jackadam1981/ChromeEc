@@ -88,6 +88,17 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+/* TODO: Casta: remove this routine after rev0 is not supported */
+static void board_init(void)
+{
+	uint32_t val;
+	if (cbi_get_board_version(&val) == EC_SUCCESS && val > 0)
+		return;
+
+	gpio_set_flags(GPIO_USB_C0_MUX_INT_ODL, GPIO_INT_FALLING | GPIO_PULL_UP);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Sanity check the port. */
