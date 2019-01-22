@@ -337,3 +337,21 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+void ampton_startup(void)
+{
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+	sleep(1);
+	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 1);
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, ampton_startup, HOOK_PRIO_DEFAULT);
+
+void ampton_shutdown(void)
+{
+	/* set the MB/IO PS8751 to Rp for lower power consumption */
+	i2c_write8(0x02, 0x16, 0x1a, 0x05);
+	i2c_write8(0x04, 0x16, 0x1a, 0x05);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, ampton_shutdown, HOOK_PRIO_DEFAULT);
