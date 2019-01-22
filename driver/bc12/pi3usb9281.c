@@ -373,8 +373,6 @@ static uint32_t bc12_detect(int port)
 		evt = task_wait_event(PI3USB9281_RESET_DEBOUNCE_MS * MSEC);
 		if (evt & USB_CHG_EVENT_BC12)
 			evt &= ~USB_CHG_EVENT_BC12;
-		else if (evt & USB_CHG_EVENT_INTR)
-			evt &= ~USB_CHG_EVENT_INTR;
 		else
 			return evt;
 
@@ -430,12 +428,6 @@ void usb_charger_task(void *u)
 			/* Read interrupt register to clear on chip */
 			pi3usb9281_get_interrupts(port);
 			evt = bc12_detect(port);
-		} else if (evt & USB_CHG_EVENT_INTR) {
-			/* USB_CHG_EVENT_INTR & _BC12 are mutually exclusive */
-			/* Check the interrupt register, and clear on chip */
-			if (pi3usb9281_get_interrupts(port) &
-					PI3USB9281_INT_ATTACH_DETACH)
-				evt = bc12_detect(port);
 		}
 
 		/*
