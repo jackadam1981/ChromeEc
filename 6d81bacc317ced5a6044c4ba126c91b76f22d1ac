@@ -22,6 +22,30 @@
       "revId": "6d81bacc317ced5a6044c4ba126c91b76f22d1ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5b8cde_1a3148e6",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-22T16:25:23Z",
+      "side": 1,
+      "message": "Being reminded that the PS8751 is mux only here, this won\u0027t affect the USBC state machine.\n\nHowever, we should create a const struct usb_mux_driver ps8xxx_usb_mux_driver for PS8751 and make a ps8xxx_mux_enter_low_power_mode function for enter_low_power mode driver function that performs the ampton_shutdown commands (the other driver method will still be the tcpci_tcpm_mux_* functions).\n\nAlso, we may not need the ampton_startup commands as the existing usb mux driver will re-initialize the device (see tcpci_tcpm_mux_init)",
+      "parentUuid": "262a6afc_7339a46b",
+      "range": {
+        "startLine": 357,
+        "startChar": 36,
+        "endLine": 357,
+        "endChar": 51
+      },
+      "revId": "6d81bacc317ced5a6044c4ba126c91b76f22d1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
