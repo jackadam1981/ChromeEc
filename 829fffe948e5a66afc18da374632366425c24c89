@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e71e6c4_02187280",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-22T16:45:08Z",
+      "side": 1,
+      "message": "I believe we don\u0027t need to convert pin_status to PANEL ID. You can just use pin_status as a panel ID. (I would read pins in board_init_oz554.)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "829fffe948e5a66afc18da374632366425c24c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
