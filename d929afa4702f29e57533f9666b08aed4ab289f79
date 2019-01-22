@@ -84,6 +84,23 @@
       "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "453628d7_62417c67",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-22T22:31:09Z",
+      "side": 1,
+      "message": "CL:1423597 needs to be applied to LSM6DSO as well, otherwise the range will be incorrect.",
+      "revId": "d929afa4702f29e57533f9666b08aed4ab289f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
