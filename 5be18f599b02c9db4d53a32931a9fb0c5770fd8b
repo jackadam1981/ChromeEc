@@ -68,6 +68,30 @@
       "revId": "5be18f599b02c9db4d53a32931a9fb0c5770fd8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e91252_d354a8d2",
+        "filename": "board/casta/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-22T21:39:52Z",
+      "side": 1,
+      "message": "I should clarify, is this line connected in version 0?  I\u0027d been assuming it wasn\u0027t.  If it is connected and able to receive interrupts, then disregard my comment",
+      "parentUuid": "8f8791ed_ecfd2bdd",
+      "range": {
+        "startLine": 98,
+        "startChar": 41,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "5be18f599b02c9db4d53a32931a9fb0c5770fd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
