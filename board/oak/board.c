@@ -68,8 +68,8 @@ void pd_mcu_interrupt(enum gpio_signal signal)
 #if BOARD_REV >= OAK_REV4
 void usb_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_INTR, 0);
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_INTR, 0);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 #endif /* BOARD_REV >= OAK_REV4 */
 
