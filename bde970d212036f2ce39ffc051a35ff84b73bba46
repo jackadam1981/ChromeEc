@@ -93,6 +93,30 @@
       "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a0b3cff_b2376e74",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-22T17:51:35Z",
+      "side": 1,
+      "message": "I\u0027m expecting to see USB_CHG_EVENT_INTR to be removed. It\u0027s a little cleaner to remove the \u0027else if\u0027 clause. https://crrev.com/c/1426153.",
+      "parentUuid": "c32d57d1_e4e85cc4",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 14
+      },
+      "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
