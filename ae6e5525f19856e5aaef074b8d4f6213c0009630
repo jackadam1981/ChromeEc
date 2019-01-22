@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ff882e4_2166f3a0",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-22T16:55:44Z",
+      "side": 1,
+      "message": "Lets just create another parameter to this method instead of encoding it in the caller",
+      "range": {
+        "startLine": 104,
+        "startChar": 25,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "ae6e5525f19856e5aaef074b8d4f6213c0009630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
