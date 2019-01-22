@@ -22,6 +22,30 @@
       "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99a003f_1f4e5eec",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-22T23:21:05Z",
+      "side": 1,
+      "message": "It will based on the latest patches (by your suggestion)",
+      "parentUuid": "5415c86f_5ad3db5f",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
