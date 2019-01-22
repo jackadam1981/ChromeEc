@@ -159,6 +159,24 @@
       "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df833300_250f3960",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-22T10:23:10Z",
+      "side": 1,
+      "message": "OK~ we check it on b/123205971",
+      "parentUuid": "811e4c7b_51cbe119",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
