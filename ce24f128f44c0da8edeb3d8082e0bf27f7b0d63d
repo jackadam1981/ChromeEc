@@ -22,6 +22,30 @@
       "revId": "ce24f128f44c0da8edeb3d8082e0bf27f7b0d63d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d6c9bd_b7e2fd9b",
+        "filename": "board/cr50/recovery_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-22T20:16:01Z",
+      "side": 1,
+      "message": "My thinking was that the process of recording and popping a recovery key combo routine could be used on other boards in the future.  But it probably makes sense to protect the call to pop_recovery_button_state() based on board_uses_closed_source_set1().",
+      "parentUuid": "0b21a264_ecf915d5",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "ce24f128f44c0da8edeb3d8082e0bf27f7b0d63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
