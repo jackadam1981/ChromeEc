@@ -22,6 +22,30 @@
       "revId": "d602fb826fd0b6c10407351494ca60ea9b526867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6e14cb_a589f107",
+        "filename": "util/flash_ec",
+        "patchSetId": 14
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-22T17:12:04Z",
+      "side": 1,
+      "message": "This is right. \" bit\" makes double spaces.",
+      "parentUuid": "4ea203df_e0242e7f",
+      "range": {
+        "startLine": 988,
+        "startChar": 7,
+        "endLine": 988,
+        "endChar": 10
+      },
+      "revId": "d602fb826fd0b6c10407351494ca60ea9b526867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
