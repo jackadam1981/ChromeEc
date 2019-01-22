@@ -194,6 +194,8 @@ static void clock_set_pll(enum pll_freq_idx idx)
 				1, 1, 5, 1, 0);
 		task_clear_pending_irq(et_ctrl_regs[LOW_POWER_EXT_TIMER].irq);
 #ifdef CONFIG_HOSTCMD_ESPI
+		asm volatile ("nop16");
+		asm volatile ("nop");  /* hardware reset, no exception */
 		/*
 		 * Workaround for (b:70537592):
 		 * We have to set chip select pin as input mode in order to
