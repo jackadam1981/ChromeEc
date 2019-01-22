@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f46cc2b0_235a9fd5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-22T15:30:46Z",
+      "side": 1,
+      "message": "this should be static",
+      "revId": "e284e3a9f79a1c233a6c2d61f8fb06352bd16f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64e0e816_9db78928",
+        "filename": "board/cr50/recovery_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-22T15:30:46Z",
+      "side": 1,
+      "message": "please add a comment describing what this function does.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "e284e3a9f79a1c233a6c2d61f8fb06352bd16f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
