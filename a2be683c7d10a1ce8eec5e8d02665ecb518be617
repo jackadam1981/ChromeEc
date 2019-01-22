@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "7dc5fbca_09b9ca4b",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-22T08:36:27Z",
+      "side": 1,
+      "message": "After confirm with out designer, the Sylvia_SCP_CODA.xls should update as\n\nL1C_EXT_ADDR_OTHER1\nRemap register for addr msb 31 to 28 equl to 0x1 Replace addr msb 33 to 28.\n\nL1C_EXT_ADDR_OTHER0\nRemap register for addr msb 31 to 28 equl to 0x0, and not overlap with L1C_EXT_ADDR0 to L1C_EXT_ADDR7, Replace addr msb 33 to 28.\n\nSorry to confuse you.",
+      "parentUuid": "4eb5591a_c5dce5b2",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "946c7b33_39023ed3",
         "filename": "chip/mt_scp/memmap.c",
         "patchSetId": 5
