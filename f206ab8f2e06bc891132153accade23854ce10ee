@@ -22,6 +22,30 @@
       "revId": "f206ab8f2e06bc891132153accade23854ce10ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255eff7b_f729de9f",
+        "filename": "board/casta/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-01-22T00:16:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a0b948_eb4fb335",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "f206ab8f2e06bc891132153accade23854ce10ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
