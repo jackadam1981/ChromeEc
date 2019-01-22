@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "4f20bb7c_ec8337c7",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-22T09:25:48Z",
+      "side": 1,
+      "message": "No worries, thanks for the clarification ,-)",
+      "parentUuid": "7dc5fbca_09b9ca4b",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "946c7b33_39023ed3",
         "filename": "chip/mt_scp/memmap.c",
         "patchSetId": 5
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "* FIXME: It seems like we need to call this twice, else the cache\n\t * keeps stale data?!\n\u003e\u003e It should work once.. I think twice is bug...",
       "parentUuid": "946c7b33_39023ed3",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811e4c7b_51cbe119",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-22T09:25:48Z",
+      "side": 1,
+      "message": "Filed b/123205971.",
+      "parentUuid": "2e2336a0_d412c440",
       "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
