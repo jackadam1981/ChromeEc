@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1d31671a_1d2079f2",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-22T07:01:00Z",
+      "side": 1,
+      "message": "I see how it\u0027s remapped, but I don\u0027t understand _why_ it\u0027s remapped.\n\nYour datasheet (1.10 SCP, 105C013C L1C_REMAP_OTHER) says: \"\"\"OTHER1: Remap register for addr msb 31 to 28 equal to 0x0 and not overlap with L1C_EXT_ADDR0 to L1C_EXT_ADDR7.\"\"\"\n\nHowever, in 0x10000000, bits 31 to 28 are 0x1, not 0x0. So I don\u0027t get why this works. Unless the datasheet is wrong?",
+      "parentUuid": "cc8f1340_dc47ed3f",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "946c7b33_39023ed3",
         "filename": "chip/mt_scp/memmap.c",
         "patchSetId": 5
