@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "49535e7c_5b888dfd",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-22T20:05:44Z",
+      "side": 1,
+      "message": "I added this CONFIG option and updated the driver to force a compile error if this option is not defined.",
+      "parentUuid": "f729f36c_987562c8",
+      "revId": "98bb7bb6f5d464c3b8392b99686b896518d954a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffe37093_423977be",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 2
