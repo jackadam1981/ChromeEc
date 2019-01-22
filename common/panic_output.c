@@ -109,7 +109,11 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,
 void panic(const char *msg)
 {
 	panic_printf("\n** PANIC: %s\n", msg);
+#ifdef CONFIG_SOFTWARE_PANIC
+	software_panic(PANIC_SW_MSG, (uint32_t) msg);
+#else
 	panic_reboot();
+#endif
 }
 
 struct panic_data *panic_get_data(void)
