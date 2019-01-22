@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "beb5580c_c0be6ba2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-22T19:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46cc2b0_235a9fd5",
+      "revId": "e284e3a9f79a1c233a6c2d61f8fb06352bd16f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e0e816_9db78928",
         "filename": "board/cr50/recovery_button.c",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "e284e3a9f79a1c233a6c2d61f8fb06352bd16f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7cdde9_6e9a5881",
+        "filename": "board/cr50/recovery_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-22T19:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e0e816_9db78928",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "e284e3a9f79a1c233a6c2d61f8fb06352bd16f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
