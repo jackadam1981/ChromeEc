@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cc8f1340_dc47ed3f",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-22T03:00:16Z",
+      "side": 1,
+      "message": "I think this document is more clearly to show the mapping\n\nCM4 view memory layout. “Sylvia SCP Memory Map”, and sheet \"i8 d8 mem map\" is the memory of current FreeRTOS image.\nhttps://drive.google.com/open?id\u003d1i3uC0wFiy8aiDh51-eHphHX-jm8CM5svnlGk3dRs1zU",
+      "parentUuid": "985d0949_f86cf433",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "946c7b33_39023ed3",
         "filename": "chip/mt_scp/memmap.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-01-04T03:08:15Z",
       "side": 1,
       "message": "and this",
+      "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2336a0_d412c440",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-01-22T03:00:16Z",
+      "side": 1,
+      "message": "* FIXME: It seems like we need to call this twice, else the cache\n\t * keeps stale data?!\n\u003e\u003e It should work once.. I think twice is bug...",
+      "parentUuid": "946c7b33_39023ed3",
       "revId": "a2be683c7d10a1ce8eec5e8d02665ecb518be617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
