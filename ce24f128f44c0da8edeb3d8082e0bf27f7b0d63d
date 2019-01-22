@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b21a264_ecf915d5",
+        "filename": "board/cr50/recovery_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-22T19:34:38Z",
+      "side": 1,
+      "message": "should this run only on the appropriately bootstrapped boards?",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "ce24f128f44c0da8edeb3d8082e0bf27f7b0d63d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
