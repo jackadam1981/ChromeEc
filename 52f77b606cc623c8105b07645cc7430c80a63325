@@ -46,6 +46,30 @@
       "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46952e96_bb8b3123",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-22T21:03:21Z",
+      "side": 1,
+      "message": "yes, let\u0027s increase polling interval and see that the misleading error messages go away",
+      "parentUuid": "2754d81f_e5c1e55f",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "52f77b606cc623c8105b07645cc7430c80a63325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
