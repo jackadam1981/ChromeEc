@@ -117,6 +117,30 @@
       "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "673102af_38034198",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T22:23:11Z",
+      "side": 1,
+      "message": "ah, that explains it. Thanks!",
+      "parentUuid": "3a0b3cff_b2376e74",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 378,
+        "endChar": 14
+      },
+      "revId": "bde970d212036f2ce39ffc051a35ff84b73bba46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
