@@ -81,6 +81,24 @@
       "revId": "bba9b3b289f66d5c21b345e074f92ff300636644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc680f0_85a33d7e",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-01-23T02:41:36Z",
+      "side": 1,
+      "message": "It seems strange. If set, do both ports report an overcurrent condition and lose their data?",
+      "parentUuid": "8a081d69_b840e48f",
+      "revId": "bba9b3b289f66d5c21b345e074f92ff300636644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
