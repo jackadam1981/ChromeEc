@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dd99f275_a20f8884",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-23T17:28:54Z",
+      "side": 1,
+      "message": "Ah yes, x86 does not ever call CHIPSET_PRE_INIT hook notify. Ignore my comment.",
+      "parentUuid": "5456d2bc_32e0c9f5",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "6e165a85a2674f7304364a36510d8fc1c527b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c590b56_9b26cf1b",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "We have done this before, entering hibernate to reduce power number in system hibernate.\nThis change is to reduce power number after system shutdown and before entering hibernate (default is one hour, #define CONFIG_HIBERNATE_DELAY_SEC 3600).",
       "parentUuid": "4c590b56_9b26cf1b",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 20
+      },
+      "revId": "6e165a85a2674f7304364a36510d8fc1c527b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c37191_a08ff5c4",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-23T17:28:54Z",
+      "side": 1,
+      "message": "Aah okay.",
+      "parentUuid": "d7bb78eb_3f700293",
       "range": {
         "startLine": 189,
         "startChar": 1,
