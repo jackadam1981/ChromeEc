@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d72edab_03b0888f",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-23T21:12:25Z",
+      "side": 1,
+      "message": "nit: how about just CONFIG_ACCEL_HASH_AT_BOOTUP?",
+      "range": {
+        "startLine": 177,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "68c4c0d0c60a1cb988db5ff2395b2c362a296775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a108b3a4_e13a23af",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-23T21:12:25Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "68c4c0d0c60a1cb988db5ff2395b2c362a296775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
