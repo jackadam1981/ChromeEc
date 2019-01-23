@@ -137,6 +137,30 @@
       "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d02fbeb8_7fe4dee3",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-23T02:32:29Z",
+      "side": 1,
+      "message": "It is already G3 state when this code is executed, So it wouldn\u0027t force the APP off earlier for SKU 70/71. The purpose here is for this scenario: 1.The unit power off. 2.EC enter G3 state. 3.The SOC is 4% and 1 hour has passed. 4. EC enter hibernate mode(we want to prevent this step from happening here otherwise it seems no chance to cutoff battery)",
+      "parentUuid": "a2c5b16f_dfe06fd4",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
