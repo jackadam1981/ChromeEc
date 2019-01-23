@@ -445,9 +445,33 @@ SECTIONS
 #endif /* CONFIG_CHIP_MEMORY_REGIONS */
 
 #ifdef CONFIG_DRAM_BASE
+    . = CONFIG_DRAM_BASE;
+    /* Allocate space for original copy of .data.dram (see .data_lma above). */
+    .dram.data_lma : {
+        __dram_data_lma_start = .;
+        . += __dram_data_end - __dram_data_start;
+    } > DRAM
+
+    .dram.data : AT(ADDR(.dram.data_lma)) {
+        . = ALIGN(4);
+        __dram_data_start = .;
+        *(.dram.data*)
+	__dram_data_end = .;
+    } > DRAM
+
+    /* Rest of DRAM sections, e.g. text. */
     .dram : {
+        . = ALIGN(4);
         KEEP(*(SORT(.dram.keep.*)))
         *(SORT(.dram.*))
+    } > DRAM
+
+    /* FIXME: This can be NOLOAD */
+    .dram.bss : {
+	. = ALIGN(4);
+        __dram_bss_start = .;
+        *(SORT(.dram.bss*))
+        __dram_bss_end = .;
     } > DRAM
 #endif
 
