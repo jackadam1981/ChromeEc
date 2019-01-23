@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c9bcd6a_887de004",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-23T22:14:06Z",
+      "side": 1,
+      "message": "Add tab for alignment",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 1
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e3cbf9_a67c7ded",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-23T22:14:06Z",
+      "side": 1,
+      "message": "Does it work as the whole string is quoted by \" too?",
+      "range": {
+        "startLine": 880,
+        "startChar": 41,
+        "endLine": 880,
+        "endChar": 47
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d4d46f_fac46205",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-23T22:14:06Z",
+      "side": 1,
+      "message": "Quoted by [[ ]]? Compare the numbers via -eq",
+      "range": {
+        "startLine": 897,
+        "startChar": 2,
+        "endLine": 897,
+        "endChar": 21
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
