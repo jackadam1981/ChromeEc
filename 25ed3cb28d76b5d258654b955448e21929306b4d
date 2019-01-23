@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "628efd6f_542c9bb6",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-23T01:23:10Z",
+      "side": 1,
+      "message": "I\u0027d just say (press_ms \u003e 0) or (press_ms !\u003d 0), then remove the comment above that says the same thing.",
+      "revId": "25ed3cb28d76b5d258654b955448e21929306b4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
