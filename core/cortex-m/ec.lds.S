@@ -428,6 +428,9 @@ SECTIONS
 
 #ifdef CONFIG_DRAM_BASE
     .dram : {
+        __dram_bss_start = .;
+        *(SORT(.dram.bss*))
+        __dram_bss_end = .;
         KEEP(*(SORT(.dram.keep.*)))
         *(SORT(.dram.*))
     } > DRAM
