@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f4d4968_c6ada1d9",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-23T23:26:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t work with a tab here. It causes a parsing error.\n\n\u003d\u003d\u003d\u003d\nflags:WARN getopt: invalid option -- \u0027l\u0027\n -- \u0027of\u0027 \u0027the\u0027 \u0027file\u0027 \u0027to\u0027 \u0027store\u0027 \u0027EC\u0027 \u0027firmware\u0027 \u0027image.:h\u0027 \u0027bitbang_rate:,board:,chip:,image:,logfile:,offset:,port:,raiden,read:,ro,timeout:,verbose,verify,help,noraiden,noro,noverbose,noverify,nohelp\u0027 \u0027--board\u003dcoral\u0027 \u0027--read\u0027 \u0027/tmp/ec.coral.read.bin\u0027 \u0027--verbose\u0027 \u0027--logfile\u0027 \u0027/tmp/flash_ec.coral.log\u0027\nflags:FATAL unable to parse provided options with getopt.",
+      "parentUuid": "4c9bcd6a_887de004",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 1
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34e3cbf9_a67c7ded",
         "filename": "util/flash_ec",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b627cadf_6ec02705",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-23T23:26:45Z",
+      "side": 1,
+      "message": "Either way works. Got a comment from patchset#5. Leaving this as it used to be.",
+      "parentUuid": "34e3cbf9_a67c7ded",
+      "range": {
+        "startLine": 880,
+        "startChar": 41,
+        "endLine": 880,
+        "endChar": 47
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72d4d46f_fac46205",
         "filename": "util/flash_ec",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbeab025_13ef247f",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-23T23:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72d4d46f_fac46205",
+      "range": {
+        "startLine": 897,
+        "startChar": 2,
+        "endLine": 897,
+        "endChar": 21
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
