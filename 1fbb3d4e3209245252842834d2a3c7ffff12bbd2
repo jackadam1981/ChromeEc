@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f362b62d_019ead31",
+        "filename": "board/coral/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-23T03:37:39Z",
+      "side": 1,
+      "message": "OK, I will do it",
+      "parentUuid": "a4e1cc1b_3b189036",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a8379d6_82493706",
         "filename": "board/coral/board.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0f5db0c6_d10e8150",
+        "filename": "board/coral/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-23T03:37:39Z",
+      "side": 1,
+      "message": "OK, I will do it",
+      "parentUuid": "2a8379d6_82493706",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84c5c423_12055d87",
         "filename": "board/coral/board.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2019-01-23T01:47:50Z",
       "side": 1,
       "message": "This number is only guaranteed to increment assuming the git tag of the branch does not change. Sine this is a FW branch, then that\u0027s probably safe, but might as well check the major version as well.",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904a2df2_30664299",
+        "filename": "board/coral/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-23T03:37:39Z",
+      "side": 1,
+      "message": "OK, I will do it",
+      "parentUuid": "84c5c423_12055d87",
       "range": {
         "startLine": 84,
         "startChar": 26,
