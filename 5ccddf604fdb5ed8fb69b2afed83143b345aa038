@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4dc884f_a6f751bc",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T22:32:49Z",
+      "side": 1,
+      "message": "please add /* allow suspend charging */ next to this 0 please.\n\nAlso other call site that had a naked 0 or 1\n\n(or you could make a define constant; either way)",
+      "range": {
+        "startLine": 365,
+        "startChar": 36,
+        "endLine": 365,
+        "endChar": 38
+      },
+      "revId": "5ccddf604fdb5ed8fb69b2afed83143b345aa038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d407651_3ebac992",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T22:32:49Z",
+      "side": 1,
+      "message": "it would feel safer to me to only call disabled when inhibit was true (and no call into enable otherwise)",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "5ccddf604fdb5ed8fb69b2afed83143b345aa038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
