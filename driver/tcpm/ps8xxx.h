@@ -46,8 +46,10 @@
 #define IN_HPD  (1 << 0)
 #define HPD_IRQ (1 << 1)
 #define PS8XXX_REG_MUX_DP_EQ_CONFIGURATION      0xD3
+#define PS8XXX_REG_MUX_USB_SS2C_EQ		0xE1
 #define PS8XXX_REG_MUX_USB_C2SS_EQ              0xE7
 #define PS8XXX_REG_MUX_USB_C2SS_HS_THRESHOLD    0xE8
+#define PS8XXX_REG_MUX_USB_C2SS_DE		0xEA
 
 #elif defined(CONFIG_USB_PD_TCPM_PS8805)
 /* Vendor defined registers */
