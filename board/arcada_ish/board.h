@@ -31,11 +31,16 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
+/* HECI Support*/
+#define CONFIG_HECI
+/* ISH IPC (over HECI) */
+#define CONFIG_ISH_IPC
+
 /* I2C ports */
 #define I2C_PORT_SENSOR ISH_I2C0
 #define CONFIG_CMD_I2C_XFER
 
-/* Undefine features */
+/* Undefined features */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_KEYBOARD
