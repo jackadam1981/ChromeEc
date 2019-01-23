@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "60d90150_0375dcb4",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2019-01-23T16:07:43Z",
+      "side": 1,
+      "message": "Hi Devin,\n\nthe BOOT procedure stop any sensorhub pending operation but do not power off the accel, so if you wants to have an initial condition similar to power on I think is better to shut down the\nXL, in any case this operation is not mandatory for BOOT procedure\n\nAlso suggest you to move XL power down after msleep(15), my mistake ;-) (line 595)",
+      "parentUuid": "d45974d3_3a5831b0",
+      "range": {
+        "startLine": 589,
+        "startChar": 2,
+        "endLine": 589,
+        "endChar": 53
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee49326f_ecda185c",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -100,6 +124,30 @@
       "writtenOn": "2019-01-23T15:09:01Z",
       "side": 1,
       "message": "Can we issue a dummy read to accel/gyro itself. Should it be to some reserved address?",
+      "range": {
+        "startLine": 599,
+        "startChar": 24,
+        "endLine": 599,
+        "endChar": 28
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c23d850_2b7a100c",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2019-01-23T16:07:43Z",
+      "side": 1,
+      "message": "Please move this dummy read into driver/sensorhub_lsm6dsm.c after enabling the passthrough  in CL:1361992, it should be something like following patch:\n \n--- driver/sensorhub_lsm6dsm.c    2019-01-14 16:25:01.919088239 +0100\n+++ driver/sensorhub_lsm6dsm.c    2019-01-14 16:24:58.131128691 +0100\n@@ -291,7 +291,10 @@\n         return ret;\n     }\n \n-     ret \u003d st_raw_read8(s-\u003eport, slv_addr, whoami_reg, \u0026tmp);\n+    /* Add Dummy read, not care about NAK. */\n+    st_raw_read8(s-\u003eport, 0xFE, whoami_reg, \u0026tmp);\n+\n+    ret \u003d st_raw_read8(s-\u003eport, slv_addr, whoami_reg, \u0026tmp);\n     if (ret !\u003d EC_SUCCESS) {\n         CPRINTF(\"%s: %s type:0x%x WAIR error ret: %d\\n\",\n             __func__, s-\u003ename, s-\u003etype, ret);\n\n\nx Karthikeyan: This operation is needed to remove any pending operation on I2C master interface of LSM6DSM, 0xFF is not an internal register: since we are in passthrough mode this address is also repeated on the master unlocking any operations in progress",
+      "parentUuid": "ee49326f_ecda185c",
       "range": {
         "startLine": 599,
         "startChar": 24,
