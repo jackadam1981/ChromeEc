@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "506a0d6c_ad325178",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-23T15:09:01Z",
+      "side": 1,
+      "message": "Can you define a macro for this as something like Base High Performance ODR?",
+      "range": {
+        "startLine": 557,
+        "startChar": 31,
+        "endLine": 557,
+        "endChar": 36
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a084c7d5_6c6b2918",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-23T15:09:01Z",
+      "side": 1,
+      "message": "Is it ok to continue if the power off gyro and power on accel failed? If it is not ok, please handle the failure cases.",
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d45974d3_3a5831b0",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -42,6 +82,29 @@
         "startChar": 2,
         "endLine": 589,
         "endChar": 53
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee49326f_ecda185c",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-23T15:09:01Z",
+      "side": 1,
+      "message": "Can we issue a dummy read to accel/gyro itself. Should it be to some reserved address?",
+      "range": {
+        "startLine": 599,
+        "startChar": 24,
+        "endLine": 599,
+        "endChar": 28
       },
       "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
