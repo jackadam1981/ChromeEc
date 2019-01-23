@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "47082888_fa6f08b9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-23T02:46:30Z",
+      "side": 1,
+      "message": "I\u0027m sorry, Scott. It seems that all projects should be impacted if removing these changes because of the macro definition. All projects could neither enter hibernate mode nor cutoff battery except SKU70-71.",
+      "parentUuid": "a9cc90fc_b0df94e8",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 33
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd1111ef_1460cf67",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 6
