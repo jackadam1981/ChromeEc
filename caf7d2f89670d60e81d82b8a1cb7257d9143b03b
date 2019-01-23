@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3f1520_d6ba8a63",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T14:52:05Z",
+      "side": 1,
+      "message": "Similar to below, guard this by the config option for the Rohm charger.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "caf7d2f89670d60e81d82b8a1cb7257d9143b03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af78637_926a4d2a",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T14:52:05Z",
+      "side": 1,
+      "message": "This should be guarded by the config option for the Rohm charger as it\u0027s only being put here in common code to address an issue with the Rohm charger IC. In addition, should add a comment as to what this additional deferred call is for and maybe a more specific name. extpower_deferred_set_input_current for instance?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "caf7d2f89670d60e81d82b8a1cb7257d9143b03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
