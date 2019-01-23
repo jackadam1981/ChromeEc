@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f51a757b_cf0da9d0",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2019-01-23T21:42:27Z",
+      "side": 1,
+      "message": "This is meant to log the address of the panic string, as a hint for where things went wrong? If this is how things are done everywhere in embedded-land then carry on, but it may be helpful to have a clarifying comment for why this is done.",
+      "range": {
+        "startLine": 113,
+        "startChar": 30,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "7aeefa0d6c71ba8a6632e70f2496d729e144ef76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786ee7a7_2b6a2ba0",
+        "filename": "common/panic_output.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2019-01-23T21:42:27Z",
+      "side": 1,
+      "message": "Is it worth reassuring in a comment that software_panic() has the same intended side-effects as panic_reboot()?",
+      "revId": "7aeefa0d6c71ba8a6632e70f2496d729e144ef76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
