@@ -46,6 +46,30 @@
       "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f713c4e_ac6f2399",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-23T00:27:12Z",
+      "side": 1,
+      "message": "I don\u0027t see the function call in the latest patch. I\u0027m sorry I think I gave you confusion.\n\nI wanted to have \"irq_dist\" for interrupts and \"svc_calls\" for __switchto.\n\nInside \"task_start_irq_handler\", increase \"irq_dist\" for interrupts(one of the asynchronous exceptions), and increase \"svc_calls\" for __switchto(one of the synchronous exceptions)\n\nI think you have right fix in the function but still we need to keep the function call in __switchto.",
+      "parentUuid": "f99a003f_1f4e5eec",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
