@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "833dcaf1_109f87e7",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-01-23T09:55:52Z",
+      "side": 1,
+      "message": "I changed the name to CONFIG_CLOCK_TURBO_ACCEL_HASH_AT_BOOTUP in the new patchset",
+      "parentUuid": "c574a1a3_48daa590",
+      "range": {
+        "startLine": 177,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "ade5c7347d2fe2054e2959eb04d16bf9edaecda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72df5aa7_fcea34f4",
         "filename": "chip/npcx/clock.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-23T01:05:24Z",
       "side": 1,
       "message": "How do we like defining HOOK_VBOOT_HASH_DONE?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 76
+      },
+      "revId": "ade5c7347d2fe2054e2959eb04d16bf9edaecda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39232d3e_3b414ad2",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-01-23T09:55:52Z",
+      "side": 1,
+      "message": "This hook function was referred from the CL:326792.\nIf we add a new hook type HOOK_VBOOT_HASH_DONE, we may need to hook_notify it in the hook init function \"vboot_hash_init\". This will touch the code in the common layer (common/vboot_hash.c.)",
+      "parentUuid": "72df5aa7_fcea34f4",
       "range": {
         "startLine": 193,
         "startChar": 0,
