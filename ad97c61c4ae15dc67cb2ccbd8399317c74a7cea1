@@ -70,6 +70,30 @@
       "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82aa2746_99a41d07",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T22:37:25Z",
+      "side": 1,
+      "message": "Just to make sure I understand, you are suggesting no change at this point, right?\n\nIf so can you give your +1",
+      "parentUuid": "3f713c4e_ac6f2399",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
