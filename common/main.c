@@ -17,8 +17,9 @@
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "lpc.h"
 #include "keyboard_scan.h"
+#include "link_defs.h"
+#include "lpc.h"
 #ifdef CONFIG_MPU
 #include "mpu.h"
 #endif
@@ -114,6 +115,14 @@ test_mockable __keep int main(void)
 
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
+
+#ifdef CONFIG_DRAM_BASE
+	/* Now that DRAM is initialized, clear up DRAM .bss, copy .data over. */
+	memset(&__dram_bss_start, 0,
+	       (uintptr_t)(&__dram_bss_end) - (uintptr_t)(&__dram_bss_start));
+	memcpy(&__dram_data_start, &__dram_data_lma_start,
+	       (uintptr_t)(&__dram_data_end) - (uintptr_t)(&__dram_data_start));
+#endif
 
 	/* be less verbose if we boot for USB resume to meet spec timings */
 	if (!(system_get_reset_flags() & RESET_FLAG_USB_RESUME)) {
