@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e1cc1b_3b189036",
+        "filename": "board/coral/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T01:47:50Z",
+      "side": 1,
+      "message": "battery_is_cutoff_required() and move this from board.c to battery.c",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8379d6_82493706",
+        "filename": "board/coral/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T01:47:50Z",
+      "side": 1,
+      "message": "The comment is a little ambiguous. Mabye \"this function is used to identify Coral SKU 70-71 units with EC RO FW older than v7292. For these units, want to prevent batteries from reaching \u003c 1% SOC.",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 54
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c5c423_12055d87",
+        "filename": "board/coral/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T01:47:50Z",
+      "side": 1,
+      "message": "This number is only guaranteed to increment assuming the git tag of the branch does not change. Sine this is a FW branch, then that\u0027s probably safe, but might as well check the major version as well.",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cc90fc_b0df94e8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T01:47:50Z",
+      "side": 1,
+      "message": "This can be removed. The call to \"whether_cutoff_battery()\" can be from \u0027board_cut_off_battery()\u0027. This way we don\u0027t need to change common code and the fix remains more board specific. If it\u0027s not SKU 70/71 then have board_cut_off_battery() simply return.",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 33
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd1111ef_1460cf67",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T01:47:50Z",
+      "side": 1,
+      "message": "Similar to above, remove this block.",
+      "range": {
+        "startLine": 570,
+        "startChar": 2,
+        "endLine": 574,
+        "endChar": 3
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c5b16f_dfe06fd4",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-23T01:47:50Z",
+      "side": 1,
+      "message": "Is the idea hear to force the AP off earlier for SKU 70/71?",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
