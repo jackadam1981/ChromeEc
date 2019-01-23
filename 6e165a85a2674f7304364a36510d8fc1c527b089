@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5456d2bc_32e0c9f5",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-01-23T09:58:43Z",
+      "side": 1,
+      "message": "I don\u0027t see HOOK_CHIPSET_PRE_INIT event called from chipset task of x86. Do I missing something?",
+      "parentUuid": "85a78099_ce12aab4",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "6e165a85a2674f7304364a36510d8fc1c527b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c590b56_9b26cf1b",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-23T05:51:35Z",
       "side": 1,
       "message": "Does this need to be done when system enters G3 or before entering hibernate? If it is required before entering hibernate, then it can be done as part of system_hibernate call in chip. That way boards don\u0027t need to remember these calls during init / shutdown.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 20
+      },
+      "revId": "6e165a85a2674f7304364a36510d8fc1c527b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7bb78eb_3f700293",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-01-23T09:58:43Z",
+      "side": 1,
+      "message": "We have done this before, entering hibernate to reduce power number in system hibernate.\nThis change is to reduce power number after system shutdown and before entering hibernate (default is one hour, #define CONFIG_HIBERNATE_DELAY_SEC 3600).",
+      "parentUuid": "4c590b56_9b26cf1b",
       "range": {
         "startLine": 189,
         "startChar": 1,
