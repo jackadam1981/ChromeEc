@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c554d77b_972c6578",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T14:52:55Z",
+      "side": 0,
+      "message": "For the wilco project, we will be using this mag device in non-cascade mode. I will end of fleshing out this stub for these functions (and set the parent to null in the board configuration).\n\nCan we leave them?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "853b1f6cd9ee16ddac8b41770d9d22cc2ab07978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84264498_5023af69",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T14:52:55Z",
+      "side": 0,
+      "message": "why are we removing this? This field makes it explicitly how the board is laid out, which affect how we access the magometer.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 38
+      },
+      "revId": "853b1f6cd9ee16ddac8b41770d9d22cc2ab07978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
