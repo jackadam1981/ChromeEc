@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "730cc81b_49a618ce",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-23T22:35:19Z",
+      "side": 1,
+      "message": "add a comment to what this is doing please (or better yet use TCPC_REG_ROLE_CTRL_SET if you can)",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 43
+      },
+      "revId": "b455c2de6ade474b977ec3f74b397ad17fbf8cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
