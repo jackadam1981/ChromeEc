@@ -93,6 +93,30 @@
       "revId": "68c4c0d0c60a1cb988db5ff2395b2c362a296775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb494fd_53e15e8f",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-24T17:47:16Z",
+      "side": 1,
+      "message": "If that\u0027s the case, let\u0027s remove it. Thank you,",
+      "parentUuid": "160da816_d063a34b",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "68c4c0d0c60a1cb988db5ff2395b2c362a296775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
