@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "66266990_735ab9dd",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T21:07:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f4d4968_c6ada1d9",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 1
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34e3cbf9_a67c7ded",
         "filename": "util/flash_ec",
         "patchSetId": 7
@@ -84,6 +108,54 @@
       "side": 1,
       "message": "Either way works. Got a comment from patchset#5. Leaving this as it used to be.",
       "parentUuid": "34e3cbf9_a67c7ded",
+      "range": {
+        "startLine": 880,
+        "startChar": 41,
+        "endLine": 880,
+        "endChar": 47
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1b42ef1_2318ee76",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T21:07:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b627cadf_6ec02705",
+      "range": {
+        "startLine": 880,
+        "startChar": 41,
+        "endLine": 880,
+        "endChar": 47
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c6915c9_b2c30625",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T21:07:56Z",
+      "side": 1,
+      "message": "If ${L} is a filename with whitespace, like \"two words.bin\", it will cause problem. I don\u0027t know how to solve it in an easy way. As ${L} is not an arbitrary input from user, we can just leave it as is.",
+      "parentUuid": "b627cadf_6ec02705",
       "range": {
         "startLine": 880,
         "startChar": 41,
@@ -140,6 +212,29 @@
       "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "230d1e0a_142902d9",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T21:07:56Z",
+      "side": 1,
+      "message": "I guess it will cause problem if the filename has whitespace, try --read \"two words.bin\" to check.",
+      "range": {
+        "startLine": 936,
+        "startChar": 46,
+        "endLine": 936,
+        "endChar": 59
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
