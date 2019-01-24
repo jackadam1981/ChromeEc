@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc2d825_a2c9b9aa",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-24T22:53:33Z",
+      "side": 1,
+      "message": "nit: explicitly\n\nAlso, spaces, not tab (for whatever reason...)",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 14
+      },
+      "revId": "74cb1eb7ed0db019dde83ac2e63c6f0268952f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
