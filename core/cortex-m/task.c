@@ -144,6 +144,8 @@ static task_ tasks[TASK_ID_COUNT];
 BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
 BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
 
+unsigned char test_big_array[] = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8,
+				  0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf};
 
 /* Stacks for all tasks */
 #define TASK(n, r, d, s)  + s
