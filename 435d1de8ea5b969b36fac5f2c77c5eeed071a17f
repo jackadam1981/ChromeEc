@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59f46320_37d07aa3",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-24T15:09:41Z",
+      "side": 1,
+      "message": "should we also conditional include these lines too? Are they needed when there is no cascade device?",
+      "range": {
+        "startLine": 556,
+        "startChar": 2,
+        "endLine": 568,
+        "endChar": 19
+      },
+      "revId": "435d1de8ea5b969b36fac5f2c77c5eeed071a17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac993b3c_a27c7aa5",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-24T15:09:41Z",
+      "side": 1,
+      "message": "since it is theoretically possible for other devices to be behind the gyro hub, I think it would be better to see if there are any senors configured with a parent that matches this gryo. Thoughts?",
+      "range": {
+        "startLine": 576,
+        "startChar": 7,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "435d1de8ea5b969b36fac5f2c77c5eeed071a17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
