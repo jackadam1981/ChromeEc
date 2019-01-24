@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28f83998_d02d2314",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T18:53:18Z",
+      "side": 1,
+      "message": "Adding this new board seems unrelated.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96112c18_2a28c459",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T18:53:18Z",
+      "side": 1,
+      "message": "The lab infra doesn\u0027t pass the board_name to this script. It can\u0027t help much.",
+      "range": {
+        "startLine": 830,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 67
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b166af04_74b80789",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T18:53:18Z",
+      "side": 1,
+      "message": "Line 323 and 351 does the same in_array work and assign it to ${CHIP}. Doing the below ${CHIP} comparison is enough.",
+      "range": {
+        "startLine": 836,
+        "startChar": 1,
+        "endLine": 836,
+        "endChar": 61
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
