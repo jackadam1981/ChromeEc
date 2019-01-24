@@ -22,6 +22,30 @@
       "revId": "bd74d3309ed8b7ae94625c31aa55342f574ddc3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76527984_63b8f60f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-01-24T18:01:55Z",
+      "side": 1,
+      "message": "I re-ran the OS level reboot stress test, and manually grounding SDA. They both passed.\n\nTrying the shutdown test still fails some of the time.\n\nSuccess 1:\n[155774.938264 AP on -\u003e debouncing]\n[155775.938584 AP off]\n[155775.941434 AP debouncing -\u003e off]\n[155775.944764 AP UART off]\n[155775.948182 CCD state: UARTEC]\n[155775.950578 I2C disconnect]\n\nSuccess 2:\n[155856.956254 AP on -\u003e debouncing]\n[155857.956322 AP off]\n[155857.959142 AP debouncing -\u003e off]\n[155857.962640 AP UART off]\n[155857.966004 CCD state: UARTEC]\n[155857.968308 I2C disconnect]\n\nFailure:\n[155615.333486 First I2CS poll] # Manually calculated\n[155614.900563 AP on / ap_detect first poll] # Manually calculated\n[155615.900563 AP on -\u003e debouncing]\n[155616.033486 Second I2CS poll] # Manually calculated\n[155616.733487 I2CS bus is stuck] # Third poll\n[155616.900704 AP off]\n[155616.903607 AP debouncing -\u003e off] # 2 seconds from first ap_detect poll\n[155616.906884 AP UART off]\n[155616.910298 CCD state: UARTEC]\n[155616.912625 I2C disconnect]\n\nIt looks like I was off by 1 in my math.\n\nap_detect: best case \u003d\u003e 1 second, worse case \u003d\u003e 2 seconds\ni2c stuck: best case \u003d\u003e 1.4 seconds, worst case \u003d\u003e 2.1 seconds.\n\nWe need the i2c stuck best case to be greater than the ap_detect worst case.\n\nSo, we can either:\n1) Increase the i2c stuck interval to 1.1 seconds for a best case of 2.2s and worst cast of 3.3s\n2) Leave the interval at 700ms and increase the threshold to 4 for a best case of 2.1s and worst case of 2.8s.\n\nThoughts?",
+      "parentUuid": "880bb450_afd8803d",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "bd74d3309ed8b7ae94625c31aa55342f574ddc3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
