@@ -94,6 +94,30 @@
       "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6b56e6a_5c6b3608",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-24T18:55:37Z",
+      "side": 1,
+      "message": "No, The latest patch(patch set #8) doesn\u0027t have \"task_start_irq_handler_call\" in __switchto. I want you to add the function call again in __switchto.",
+      "parentUuid": "82aa2746_99a41d07",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
