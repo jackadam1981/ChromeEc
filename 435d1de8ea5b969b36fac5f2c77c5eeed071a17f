@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5286e42e_420ff16a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-01-24T18:53:34Z",
+      "side": 1,
+      "message": "It makes sense to turn off the gyro (and turn on the accel) if we\u0027re running in MOTIONSENSE_TYPE_ACCEL.",
+      "parentUuid": "59f46320_37d07aa3",
+      "range": {
+        "startLine": 556,
+        "startChar": 2,
+        "endLine": 568,
+        "endChar": 19
+      },
+      "revId": "435d1de8ea5b969b36fac5f2c77c5eeed071a17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac993b3c_a27c7aa5",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-24T15:09:41Z",
       "side": 1,
       "message": "since it is theoretically possible for other devices to be behind the gyro hub, I think it would be better to see if there are any senors configured with a parent that matches this gryo. Thoughts?",
+      "range": {
+        "startLine": 576,
+        "startChar": 7,
+        "endLine": 576,
+        "endChar": 25
+      },
+      "revId": "435d1de8ea5b969b36fac5f2c77c5eeed071a17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b39b1513_b732dfd1",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-01-24T18:53:34Z",
+      "side": 1,
+      "message": "Since we\u0027re not using any other sensors, and this works for now, can we treat that as a TODO? That seems like a helpful improvement for later.",
+      "parentUuid": "ac993b3c_a27c7aa5",
       "range": {
         "startLine": 576,
         "startChar": 7,
