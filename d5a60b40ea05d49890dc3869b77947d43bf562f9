@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6404f77_730260f0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-24T09:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506a0d6c_ad325178",
+      "range": {
+        "startLine": 557,
+        "startChar": 31,
+        "endLine": 557,
+        "endChar": 36
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a084c7d5_6c6b2918",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -39,6 +63,24 @@
       "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4471599e_e3be022a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-24T09:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a084c7d5_6c6b2918",
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
