@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67ba01f5_963daa4b",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-01-24T03:37:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d72edab_03b0888f",
+      "range": {
+        "startLine": 177,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "68c4c0d0c60a1cb988db5ff2395b2c362a296775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a108b3a4_e13a23af",
         "filename": "chip/npcx/clock.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-23T21:12:25Z",
       "side": 1,
       "message": "Do you need this?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "68c4c0d0c60a1cb988db5ff2395b2c362a296775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160da816_d063a34b",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-01-24T03:37:09Z",
+      "side": 1,
+      "message": "I am not sure if there will be a project in the future that define CONFIG_ACCEL_HASH_AT_BOOTUP and un-define CONFIG_VBOOT_HASH. If there is, there will be a link error.",
+      "parentUuid": "a108b3a4_e13a23af",
       "range": {
         "startLine": 186,
         "startChar": 0,
