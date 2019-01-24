@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06c18f3_9246cea6",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-01-24T16:54:12Z",
+      "side": 1,
+      "message": "Since this is for debug, should this not consume the button press?",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "f44db52b2c85201d88dbc95143fd6be87b2ed1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
