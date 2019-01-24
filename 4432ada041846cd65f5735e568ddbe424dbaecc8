@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f7072782_94f8be3d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-24T23:46:42Z",
+      "side": 1,
+      "message": "Is there any command which evaluates rv as \u0027the length of output data returned\u0027?\n\nIf not, my first option is to change ec_command for good:\n\n  int ec_command(...)\n  {\n    int rv \u003d ec_command_proto(...);\n    return rv \u003c 0 ? rv : 0;\n  }\n\nEven if there are such commands, we can make them call ec_command_proto or change ec_command to:\n\n  int ec_command(..., int *insize);\n\nOr apply CMD_RETURN(rv) everywhere. Thank you for cleaning up the mess whatever option you choose.\n\n\u003e I think it would reduce future mistakes\n\nI agree. If we don\u0027t fix this comprehensively, I think we will keep making the same mistake.",
+      "parentUuid": "5b61232e_decd57a3",
+      "range": {
+        "startLine": 1291,
+        "startChar": 1,
+        "endLine": 1291,
+        "endChar": 11
+      },
+      "revId": "4432ada041846cd65f5735e568ddbe424dbaecc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ec38ac7_02f590db",
         "filename": "util/ectool.c",
         "patchSetId": 1
