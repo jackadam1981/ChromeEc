@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d45ed0a3_071fcda9",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T23:04:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "649be73c_d1c7b3db",
+      "range": {
+        "startLine": 830,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 67
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b166af04_74b80789",
         "filename": "util/flash_ec",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Actually, line 322 will be False because \"${BOARD}\" is null.\n\nFYI: I defined \"TEMP_BOARD\" at line 832 instead of putting value into BOARD because BOARD is referred in get_serial function.",
       "parentUuid": "b166af04_74b80789",
+      "range": {
+        "startLine": 836,
+        "startChar": 1,
+        "endLine": 836,
+        "endChar": 61
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7686c7a4_97d94314",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-01-24T23:04:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "830fcc56_6c6ebb58",
       "range": {
         "startLine": 836,
         "startChar": 1,
