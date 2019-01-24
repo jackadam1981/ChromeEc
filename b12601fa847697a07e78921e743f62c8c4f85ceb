@@ -46,6 +46,30 @@
       "revId": "b12601fa847697a07e78921e743f62c8c4f85ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f98f9d_52391ac6",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-24T00:59:35Z",
+      "side": 1,
+      "message": "ok. SGTM.",
+      "parentUuid": "0fcba29c_21805569",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "b12601fa847697a07e78921e743f62c8c4f85ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
