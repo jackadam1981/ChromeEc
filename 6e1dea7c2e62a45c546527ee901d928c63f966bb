@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b2d7d38_ca9ff785",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-24T21:01:01Z",
+      "side": 1,
+      "message": "there is a mux write that you can/should use now: e.g. https://chromium.googlesource.com/chromiumos/platform/ec/+/c7db1b252418b36a6a0ec619b45ad0aa443af3c8/board/reef/board.c#291",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 11
+      },
+      "revId": "6e1dea7c2e62a45c546527ee901d928c63f966bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
