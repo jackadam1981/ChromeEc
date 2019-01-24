@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5b61232e_decd57a3",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-24T22:59:35Z",
+      "side": 1,
+      "message": "So technically that is correct because insize is 0 (you will get negative for error and only 0 on success), which is why I didn\u0027t change it.\n\nHowever, if you think it would be better to be consistent and use the macro I\u0027m all for that. I think it would reduce future mistakes with copy/paste errors since the difference is subtle.",
+      "parentUuid": "e3cd4f07_5a64ff67",
+      "range": {
+        "startLine": 1291,
+        "startChar": 1,
+        "endLine": 1291,
+        "endChar": 11
+      },
+      "revId": "4432ada041846cd65f5735e568ddbe424dbaecc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ec38ac7_02f590db",
         "filename": "util/ectool.c",
         "patchSetId": 1
