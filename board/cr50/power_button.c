@@ -13,6 +13,7 @@
 #include "system_chip.h"
 #include "task.h"
 #include "timer.h"
+#include "u2f_impl.h"
 
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
@@ -120,7 +121,11 @@ void board_physical_presence_enable(int enable)
 static int command_powerbtn(int argc, char **argv)
 {
 	ccprintf("powerbtn: %s\n",
-		 rbox_powerbtn_is_pressed() ? "pressed\n" : "released\n");
+		 rbox_powerbtn_is_pressed() ? "pressed" : "released");
+
+#ifdef CR50_DEV
+	pop_check_presence(1);
+#endif
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn, "",
