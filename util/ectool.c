@@ -52,6 +52,12 @@ static struct option long_opts[] = {
 
 #define GEC_LOCK_TIMEOUT_SECS	30  /* 30 secs */
 
+/*
+ * ec_command returns negative on failure and the *length* of the output data
+ * on success
+ */
+#define CMD_RETURN(rv) (rv < 0 ? rv : 0)
+
 const char help_str[] =
 	"Commands:\n"
 	"  adcread <channel>\n"
@@ -416,7 +422,7 @@ int cmd_adc_read(int argc, char *argv[])
 		return 0;
 	}
 
-	return rv;
+	return CMD_RETURN(rv);
 }
 
 int cmd_add_entropy(int argc, char *argv[])
@@ -576,7 +582,7 @@ int cmd_test(int argc, char *argv[])
 			&p, sizeof(p), &r, sizeof(r));
 	printf("rv = %d\n", rv);
 
-	return rv;
+	return CMD_RETURN(rv);
 }
 
 int cmd_s5(int argc, char *argv[])
@@ -1335,7 +1341,7 @@ int cmd_rollback_info(int argc, char *argv[])
 	printf("Rollback min version: %d\n", r.rollback_min_version);
 	printf("RW rollback version:  %d\n", r.rw_rollback_version);
 
-	return 0;
+	return CMD_RETURN(rv);
 }
 
 int cmd_apreset(int argc, char *argv[])
@@ -1807,7 +1813,7 @@ int cmd_pd_device_info(int argc, char *argv[])
 		printf(" CurImg:%s\n", image_names[r0->current_image]);
 	}
 
-	return rv;
+	return CMD_RETURN(rv);
 }
 
 int cmd_flash_pd(int argc, char *argv[])
@@ -6793,7 +6799,7 @@ int cmd_board_version(int argc, char *argv[])
 		return rv;
 
 	printf("%d\n", response.board_version);
-	return rv;
+	return CMD_RETURN(rv);
 }
 
 static void cmd_cbi_help(char *cmd)
@@ -7405,7 +7411,7 @@ static int cmd_kbid(int argc, char *argv[])
 		/* Valid keyboard ID value was reported*/
 		printf("%x\n", response.keyboard_id);
 	}
-	return rv;
+	return CMD_RETURN(rv);
 }
 
 static int cmd_keyconfig(int argc, char *argv[])
