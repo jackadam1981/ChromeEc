@@ -181,6 +181,30 @@
       "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4726e5ef_347715de",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2019-01-24T08:00:18Z",
+      "side": 1,
+      "message": "Sorry, 0xFF is the resultant I2C address + R/W bit on the bus (0xFE address plus read operation) so 0xFE and 0xFF are the same things in this case",
+      "parentUuid": "6c8eda5d_1d2f96b0",
+      "range": {
+        "startLine": 599,
+        "startChar": 24,
+        "endLine": 599,
+        "endChar": 28
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
