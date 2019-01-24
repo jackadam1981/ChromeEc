@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3db200d_cc171a91",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-24T07:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f3f1520_d6ba8a63",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "caf7d2f89670d60e81d82b8a1cb7257d9143b03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8af78637_926a4d2a",
         "filename": "common/extpower_gpio.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "caf7d2f89670d60e81d82b8a1cb7257d9143b03b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ae2dfb_c9589001",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-24T07:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8af78637_926a4d2a",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "caf7d2f89670d60e81d82b8a1cb7257d9143b03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
