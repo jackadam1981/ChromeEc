@@ -157,6 +157,30 @@
       "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c8eda5d_1d2f96b0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2019-01-24T01:29:07Z",
+      "side": 1,
+      "message": "Hi Gwendal, Can move forward the patch to CL:1361992 as Mario suggestion?\n\nHi Mario, I am confuse the dummy read address is 0xFE or 0xFF?",
+      "parentUuid": "9c23d850_2b7a100c",
+      "range": {
+        "startLine": 599,
+        "startChar": 24,
+        "endLine": 599,
+        "endChar": 28
+      },
+      "revId": "d5a60b40ea05d49890dc3869b77947d43bf562f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
