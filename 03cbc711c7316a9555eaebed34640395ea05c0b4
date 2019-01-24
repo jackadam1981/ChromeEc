@@ -34,6 +34,24 @@
       "revId": "03cbc711c7316a9555eaebed34640395ea05c0b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40e69ce_8b2fb407",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-24T18:11:54Z",
+      "side": 1,
+      "message": "Yes, I opened https://issuetracker.google.com/123351726 to track this.",
+      "parentUuid": "898437ef_0f04aa26",
+      "revId": "03cbc711c7316a9555eaebed34640395ea05c0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
