@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9edff9b_4acc402b",
+        "filename": "common/acpi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-24T02:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4dc884f_a6f751bc",
+      "range": {
+        "startLine": 365,
+        "startChar": 36,
+        "endLine": 365,
+        "endChar": 38
+      },
+      "revId": "5ccddf604fdb5ed8fb69b2afed83143b345aa038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d407651_3ebac992",
         "filename": "common/usb_port_power_smart.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "5ccddf604fdb5ed8fb69b2afed83143b345aa038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bafb34cc_c8b3e4f8",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-24T02:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d407651_3ebac992",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 0
+      },
+      "revId": "5ccddf604fdb5ed8fb69b2afed83143b345aa038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
