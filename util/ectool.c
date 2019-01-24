@@ -1305,6 +1305,33 @@ int cmd_rwsig_action(int argc, char *argv[])
 	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
 }
 
+<<<<<<< HEAD   (8f4372 fpsensor: fixup FP_TEMPLATE_FORMAT_VERSION)
+=======
+int cmd_rollback_info(int argc, char *argv[])
+{
+	struct ec_response_rollback_info r;
+	int rv;
+
+	rv = ec_command(EC_CMD_ROLLBACK_INFO, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: EC_CMD_ROLLBACK_INFO failed: %d\n", rv);
+		return rv;
+	}
+
+	/* Print versions */
+	printf("Rollback block id:    %d\n", r.id);
+	printf("Rollback min version: %d\n", r.rollback_min_version);
+	printf("RW rollback version:  %d\n", r.rw_rollback_version);
+
+	return 0;
+}
+
+int cmd_apreset(int argc, char *argv[])
+{
+	return ec_command(EC_CMD_AP_RESET, 0, NULL, 0, NULL, 0);
+}
+
+>>>>>>> CHANGE (88824c ectool: rollbackinfo: return correct exit code on success)
 #define FP_FRAME_INDEX_SIMPLE_IMAGE -1
 
 /*
