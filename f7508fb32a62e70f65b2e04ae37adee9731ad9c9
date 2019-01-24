@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff74e3d0_4b2a5d56",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-24T19:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28f83998_d02d2314",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96112c18_2a28c459",
         "filename": "util/flash_ec",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "649be73c_d1c7b3db",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-24T19:13:48Z",
+      "side": 1,
+      "message": "The lab infra (firmware_programmer.py) passes \"--chip\u003dnpcx_spi\". To recognize it as npcx_int_spi, board name needs to be queried for this version. \n\nHowever, in long term plan, crrev.com/c/1432782 will modify servo board overlay file so that the lab infra would pass \"--chip\u003dnpcx_int_spi\", and this board name dependency shall be removed.",
+      "parentUuid": "96112c18_2a28c459",
+      "range": {
+        "startLine": 830,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 67
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b166af04_74b80789",
         "filename": "util/flash_ec",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "830fcc56_6c6ebb58",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-24T19:13:48Z",
+      "side": 1,
+      "message": "Actually, line 322 will be False because \"${BOARD}\" is null.\n\nFYI: I defined \"TEMP_BOARD\" at line 832 instead of putting value into BOARD because BOARD is referred in get_serial function.",
+      "parentUuid": "b166af04_74b80789",
+      "range": {
+        "startLine": 836,
+        "startChar": 1,
+        "endLine": 836,
+        "endChar": 61
+      },
+      "revId": "f7508fb32a62e70f65b2e04ae37adee9731ad9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
