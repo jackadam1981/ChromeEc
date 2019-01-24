@@ -118,6 +118,30 @@
       "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08023c8b_566fd16c",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-24T20:55:02Z",
+      "side": 1,
+      "message": "I apologize for the misunderstanding. I thought that I had task_start_irq_call in the latest patch set.\n\nDone.",
+      "parentUuid": "a6b56e6a_5c6b3608",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "ad97c61c4ae15dc67cb2ccbd8399317c74a7cea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
