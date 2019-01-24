@@ -31,6 +31,9 @@ reset:
 	ldr r2, =0xE000ED08   /* VTABLE register in SCB*/
 	str r1, [r2]
 
+infinite_loop:
+  b infinite_loop
+
 	/* Clear BSS */
 	mov r0, #0
 	ldr r1,_bss_start
