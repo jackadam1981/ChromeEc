@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e875d71c_40595519",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-25T02:29:43Z",
+      "side": 1,
+      "message": "This should ideally be one of the power signals that we track. It would be useful in case of S0ix. But it can be done as a follow-up. It would be good to raise a bug for this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "5bf596811ea13bced755bf7bc999cb994547d782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
