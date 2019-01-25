@@ -235,6 +235,30 @@
       "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a1f170a_c95d1043",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-01-25T00:04:26Z",
+      "side": 1,
+      "message": "Tested with the command line below and verify the file creation.\n\n./util/flash_ec --board\u003dcoral  --read \"/tmp/ec.cor a l.bin\" --verbose",
+      "parentUuid": "230d1e0a_142902d9",
+      "range": {
+        "startLine": 936,
+        "startChar": 46,
+        "endLine": 936,
+        "endChar": 59
+      },
+      "revId": "b78ef95ed04f2394f59723db4fff53101b8451da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
