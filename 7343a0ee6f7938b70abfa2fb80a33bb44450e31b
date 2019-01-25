@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ec345849_3ae574db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-25T23:52:27Z",
+      "side": 1,
+      "message": "Yeah, the driver seems to be in a bad state in that case (see bug), so that doesn\u0027t work anymore either (unless timberslide has been stopped beforehand).",
+      "parentUuid": "e308c49a_a8a8fe16",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "7343a0ee6f7938b70abfa2fb80a33bb44450e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83507af1_1a855100",
         "filename": "board/nocturne_fp/flash_fp_mcu",
         "patchSetId": 1
