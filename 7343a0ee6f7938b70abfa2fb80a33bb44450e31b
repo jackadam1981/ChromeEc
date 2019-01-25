@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e308c49a_a8a8fe16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-25T23:49:41Z",
+      "side": 1,
+      "message": "True, but /sys/kernel/debug/cros_fp/console_log gets updated and you can just \u0027cat\u0027 it",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "7343a0ee6f7938b70abfa2fb80a33bb44450e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83507af1_1a855100",
         "filename": "board/nocturne_fp/flash_fp_mcu",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2019-01-25T22:48:02Z",
       "side": 1,
       "message": "I\u0027m assuming that timberslide will always be running, so this will intentionally fail if the log path changes. Let me know if timberslide is running in the factory.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "7343a0ee6f7938b70abfa2fb80a33bb44450e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f25b440_d135c3e5",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-25T23:49:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure that\u0027s the case in the factory, but flash_fp_mcu is also used by devs during early bringup with custom images.\nI wouldn\u0027t block a tool as low-level as this on a higher level daemon, it\u0027s going to fail at the worst possible time and will block/delay a build because of something super trivial.",
+      "parentUuid": "83507af1_1a855100",
       "range": {
         "startLine": 55,
         "startChar": 0,
