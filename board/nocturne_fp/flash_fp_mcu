@@ -7,6 +7,8 @@
 CNL_GPIOCHIP="gpiochip268"
 # Kabylake PCH GPIOs
 KBL_GPIOCHIP="gpiochip360"
+# TODO(crbug.com/925545)
+TIMBERSLIDE_LOG_PATH="LOG_PATH=/sys/kernel/debug/cros_fp/console_log"
 
 if [ -e "/sys/class/gpio/${CNL_GPIOCHIP}" ]; then
 	# Meowth configuration
@@ -45,6 +47,13 @@ fi
 
 if ectool gpioget EC_WP_L | grep -q '= 0'; then
 	echo "Please make sure WP is deasserted."
+	exit 1
+fi
+
+# TODO(crbug.com/925545): stop timberslide so /var/log/cros_fp.log
+# continues to update after flashing.
+if ! stop timberslide "${TIMBERSLIDE_LOG_PATH}"; then
+	echo "Unable to stop timberslide."
 	exit 1
 fi
 
@@ -98,5 +107,11 @@ sleep 2
 echo "${SPIID}" > /sys/bus/spi/drivers/cros-ec-spi/bind
 # Kernel driver is back, we are no longer controlling power
 echo ${GPIO_PWREN} > /sys/class/gpio/unexport
+
+# TODO(crbug.com/925545)
+if ! start timberslide "${TIMBERSLIDE_LOG_PATH}"; then
+	echo "WARNING: unable to restart timberslide."
+fi
+
 # Test it
 ectool --name=cros_fp version
