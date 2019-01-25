@@ -35,6 +35,8 @@
 #define CONFIG_HECI
 /* ISH IPC (over HECI) */
 #define CONFIG_ISH_IPC
+/* Host command over HECI */
+#define CONFIG_HOSTCMD_HECI
 
 /* I2C ports */
 #define I2C_PORT_SENSOR ISH_I2C0
