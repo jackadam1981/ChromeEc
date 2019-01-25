@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06573b1f_104376f1",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-25T16:33:51Z",
+      "side": 1,
+      "message": "let\u0027s spell out watchdog here please",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b3749b3_f510d9f6",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-25T16:33:51Z",
+      "side": 1,
+      "message": "Are you using `repo upload` to upload changes. The presubmit hooks complain about the style violations. Please run pre-submit hooks before uploading patches in the future.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#upload-changes",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a43367_1c249595",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-25T16:33:51Z",
+      "side": 1,
+      "message": "comment is out of date",
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "026382b1_893c889a",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-25T16:33:51Z",
+      "side": 1,
+      "message": "why are we using a counter approach instead of setting T1 to the time we actually want (or 500ms before we actually want so we can print out a stack trace)",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e9a8ada_5726ef45",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-25T16:33:51Z",
+      "side": 1,
+      "message": "doesn\u0027t this need to be in an else block otherwise the watch dog timer is effectively 1 second instead of 10 seconds",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77d74dc_71cec5fc",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-25T16:33:51Z",
+      "side": 1,
+      "message": "we should grow the idle task size in atlas_ish and arcada_ish instead of adding this code",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
