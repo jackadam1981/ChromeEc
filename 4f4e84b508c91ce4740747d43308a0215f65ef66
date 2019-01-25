@@ -22,6 +22,30 @@
       "revId": "4f4e84b508c91ce4740747d43308a0215f65ef66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daebb31b_8484db9a",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-25T00:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db78a696_8b7fdd57",
+      "range": {
+        "startLine": 258,
+        "startChar": 4,
+        "endLine": 258,
+        "endChar": 47
+      },
+      "revId": "4f4e84b508c91ce4740747d43308a0215f65ef66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
