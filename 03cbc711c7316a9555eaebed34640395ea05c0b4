@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf6ea3a8_3644f127",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-25T02:44:49Z",
+      "side": 1,
+      "message": "If this is placed at the start of the function, then battery_is_present needs to be called only once.\n\nif (battery_is_present() !\u003d BP_YES) {\n   CPRINTS(\"Skipping C0/C1 TCPC reset because no battery\");\n   return;\n}",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 55
+      },
+      "revId": "03cbc711c7316a9555eaebed34640395ea05c0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e4c7a6_60967d1b",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-25T02:44:49Z",
+      "side": 1,
+      "message": "Do we really need this? I think on octopus eventually we got rid of this and just used CONFIG_BATTERY_PRESENT_GPIO: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1109443/6/baseboard/octopus/baseboard.h\n\nCan we do the same for hatch?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "03cbc711c7316a9555eaebed34640395ea05c0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f524e96c_64869e0a",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 8
