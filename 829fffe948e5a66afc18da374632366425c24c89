@@ -22,6 +22,30 @@
       "revId": "829fffe948e5a66afc18da374632366425c24c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4e7952_6ec0aa1d",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-01-25T03:11:23Z",
+      "side": 1,
+      "message": "You mean we should use one id pin status as a panel id?\nBecause we  are not sure how many panel will be used for this project.\nWe need reserve enough ID for future.\nIf use a pin status as a panel id, we only can support 3 panels.\nWe afraid that not enough.",
+      "parentUuid": "3e71e6c4_02187280",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "829fffe948e5a66afc18da374632366425c24c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
