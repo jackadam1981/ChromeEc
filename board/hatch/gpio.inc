@@ -104,3 +104,9 @@ ALTERNATE(PIN_MASK(4, 0x01), 0, MODULE_PWM, 0)                             /* TA
 
 /* ADC */
 ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)                             /* ADC0-1 */
+
+/* Power Switch Logic (PSL) inputs */
+ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, 0)                             /* GPIOD2 = LID_OPEN */
+ALTERNATE(PIN_MASK(0, 0x07), 0, MODULE_PMU, 0)                             /* GPIO00 = ACOK_OD,
+                                                                              GPIO01 = MECH_PWR_BTN_ODL
+                                                                              GPIO02 = EC_RST_ODL */
