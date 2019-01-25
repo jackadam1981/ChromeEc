@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ac29228_1f4525d5",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "I am not sure what the rules are, but since we are pushing this file to the repo in 2019, should this say 2019? Or is \"date file first written\" authoritative?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355f7285_8d29d2e2",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "This should quite likely be volatile",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53296ef5_e3e55197",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "Mind being a bit more verbose here? Is this a watermark interrupt? Does this happen every sample? What condition clears the interrupt so that a new one can be triggered?\n\nWe have had a bunch of issues related to this kind of concern with other IMUs, and having the answers conveniently available at the right time can be a life-saver.\n\nIf there is a spec-sheet and/or any application notes for this device, it might also be worth putting a link to them at the top of the file. Like \"Refer to...\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 60
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a458d0_5c663a0d",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "Can\u0027t we just pass last_interrupt_timestamp to load_fifo() here?",
+      "range": {
+        "startLine": 233,
+        "startChar": 28,
+        "endLine": 233,
+        "endChar": 36
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fcf1574_45b2f0d1",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "nit: alignment, here and below",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00462a78_58ca5385",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "Would this make more sense as a static inline function, for readability?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 12
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daaa7055_ca53b1c1",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-01-25T18:54:50Z",
+      "side": 1,
+      "message": "Would it make sense to use LSM6DSO_FIFO_DEV_NUM here?",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 32
+      },
+      "revId": "c2ea462e1c40d17ee19d495c4fbf1294cf671d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
