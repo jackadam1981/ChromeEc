@@ -46,6 +46,30 @@
       "revId": "829fffe948e5a66afc18da374632366425c24c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75b125f_d970ba08",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-25T16:50:57Z",
+      "side": 1,
+      "message": "I meant there is no need to convert pin_status to enum panel_id_list.",
+      "parentUuid": "cc4e7952_6ec0aa1d",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "829fffe948e5a66afc18da374632366425c24c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
