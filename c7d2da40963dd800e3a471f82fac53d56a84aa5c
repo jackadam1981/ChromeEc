@@ -22,6 +22,30 @@
       "revId": "c7d2da40963dd800e3a471f82fac53d56a84aa5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b6b42d_20d30e1f",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-01-25T00:32:44Z",
+      "side": 1,
+      "message": "Furquan, this one: https://chromium-review.googlesource.com/c/chromiumos/overlays/board-overlays/+/1423758",
+      "parentUuid": "360e811c_a46f4704",
+      "range": {
+        "startLine": 473,
+        "startChar": 8,
+        "endLine": 473,
+        "endChar": 35
+      },
+      "revId": "c7d2da40963dd800e3a471f82fac53d56a84aa5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
