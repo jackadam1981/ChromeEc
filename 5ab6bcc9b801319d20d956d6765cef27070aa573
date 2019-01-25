@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de05333c_237f73c0",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-25T02:48:51Z",
+      "side": 1,
+      "message": "Is this true for hatch? If not we can just get rid of CONFIG_KEYBOARD_BOARD_CONFIG and select default scan config.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "5ab6bcc9b801319d20d956d6765cef27070aa573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
