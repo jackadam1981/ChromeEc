@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3aef6f55_b557ec1b",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-25T00:59:50Z",
+      "side": 1,
+      "message": "I\u0027ll have to read over the code more thoroughly to see if any things in ectool.c are using the \u0027length of output data returned\u0027.\n\nIs the ec_command only used by files in the \"util\" directory (i.e., header not exported and used by other components)? It looks like that but want to confirm.\n\nDo all the underlying ec_command_proto callbacks obey the same return as ec_command (negative on failure and length of bytes on success)? I suppose things would be really broken if they didn\u0027t, but just checking.",
+      "parentUuid": "f7072782_94f8be3d",
+      "range": {
+        "startLine": 1291,
+        "startChar": 1,
+        "endLine": 1291,
+        "endChar": 11
+      },
+      "revId": "4432ada041846cd65f5735e568ddbe424dbaecc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ec38ac7_02f590db",
         "filename": "util/ectool.c",
         "patchSetId": 1
