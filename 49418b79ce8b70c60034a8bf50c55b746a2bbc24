@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6aee1618_7c36f4a2",
+        "filename": "common/fan.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-01-25T02:52:18Z",
+      "side": 1,
+      "message": "Commit message doesn\u0027t talk about this change. It might be good to split this into a separate CL since it is fixing an issue in current fan implementation.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 30
+      },
+      "revId": "49418b79ce8b70c60034a8bf50c55b746a2bbc24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
