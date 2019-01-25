@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83507af1_1a855100",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-25T22:48:02Z",
+      "side": 1,
+      "message": "I\u0027m assuming that timberslide will always be running, so this will intentionally fail if the log path changes. Let me know if timberslide is running in the factory.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "7343a0ee6f7938b70abfa2fb80a33bb44450e31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
