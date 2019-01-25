@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "57cb33fa_eb5cda5d",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-25T18:40:09Z",
+      "side": 1,
+      "message": "Applying CMD_RETURN(rv) consistently in ectool.c is ok with me. We\u0027ll just wait for somebody to dig deeper someday.",
+      "parentUuid": "3aef6f55_b557ec1b",
+      "range": {
+        "startLine": 1291,
+        "startChar": 1,
+        "endLine": 1291,
+        "endChar": 11
+      },
+      "revId": "4432ada041846cd65f5735e568ddbe424dbaecc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ec38ac7_02f590db",
         "filename": "util/ectool.c",
         "patchSetId": 1
