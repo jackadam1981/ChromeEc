@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d65939fd_cc329d08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "The BootROM in MT8183 only support read the code from eMMC . It does not support read code from SPI  Flash.  \nTherefor we need to add the bootblock of Coreboot in EC image. And EC would simulate a eMMC device for MT8183 to  read from .\n\nYou can use the attached bootblock.bin  and build a new EC image for testing.\n\nPlease also flash firmware to SPI flash othersise the EC can\u0027t get the AP boot up state .\n\nPlease refer to b:123376617",
+      "parentUuid": "dce3a00e_d4a483d4",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4313f29c_928801c7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "33fe5db5_ad612a2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4313f29c_928801c7",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 61
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9fe2097_2728701d",
         "filename": "board/flapjack/gpio.inc",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89db8c7_221e44b2",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9fe2097_2728701d",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9bf8dc5e_6f5f6d3e",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "There is a big difference between Flapjack\u0027s GPIO and Kuku\u0027s. \nWe want to change all of the GPIO configuratin in another seperate new CL. \nThis CL only to un-symlink from Kuku\u0027s gpio.inc.\n\nWhat do you think?",
+      "parentUuid": "e5d6ebe5_48d0d391",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01cd03fc_ab2352aa",
         "filename": "board/flapjack/led.c",
         "patchSetId": 2
@@ -137,6 +233,30 @@
       "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f77d3716_0b168fb3",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01cd03fc_ab2352aa",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "98fa27e5_65a98fdc",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab2ad0c_c7bbe145",
+      "range": {
+        "startLine": 5,
+        "startChar": 22,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f11752a_f23c325d",
         "filename": "board/flapjack/led.c",
         "patchSetId": 2
@@ -183,6 +327,30 @@
       "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc17a82_5e1329dd",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f11752a_f23c325d",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 48
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "1572f79d_43f9b6a0",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a6c5fd_ed6bab88",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c492db68_5382e587",
         "filename": "board/flapjack/led.c",
         "patchSetId": 2
@@ -220,6 +412,30 @@
       "writtenOn": "2019-01-26T00:18:21Z",
       "side": 1,
       "message": "We should use display_charge. It provides consistent view with the OS. It can be done in a separate CL.",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c39817e0_982fe51b",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-26T13:21:39Z",
+      "side": 1,
+      "message": "We will implement the LED drivers for FLapjack according to it\u0027s spec in a new CL.",
+      "parentUuid": "c492db68_5382e587",
       "range": {
         "startLine": 36,
         "startChar": 6,
