@@ -11,6 +11,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "motion_sense.h"
 #include "task.h"
 #include "uart.h"
 
@@ -38,3 +39,8 @@ void lpc_set_acpi_status_mask(uint8_t mask)
 {
 }
 #endif
+
+struct motion_sensor_t motion_sensors[] = {
+	[BASE_ACCEL] = {}, /* TODO: dummpy implemnetation */
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
