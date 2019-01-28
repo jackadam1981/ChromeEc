@@ -374,7 +374,8 @@ static int ipc_get_protocol_data(const struct ipc_if_ctx *ctx,
 		break;
 	}
 
-	memcpy(dest, src, payload_size);
+	if (dest && src)
+		memcpy(dest, src, payload_size);
 
 	return len;
 }
@@ -694,6 +695,10 @@ void ipc_mng_task(void)
 	int payload_size;
 	struct ipc_msg msg;
 	ipc_handle_t handle;
+
+	REG32(PMU_VNN_REQ) = (1 << 3);
+	while (!(REG32(PMU_VNN_REQ_ACK) & (1 << 0)))
+		;
 
 	handle = ipc_open(IPC_PEER_ID_HOST, IPC_PROTOCOL_MNG,
 			  EVENT_FLAG_BIT_MNG_MSG);
