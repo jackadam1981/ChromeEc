@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f003413b_4fe2d726",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-01-28T02:58:09Z",
+      "side": 1,
+      "message": "Hi scott\n\nShould we need to add the \"GPIO_HIB_WAKE_HIGH\" in these wake source?\nThese source will be triggered by low level if you don\u0027t add the flag.\nexample:\nACOK_OD woke up unit from hibernate mode by unplug AC.\nLid_OPEN open woke up unit from hibernate mode by lid close.",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38b63d6e_396d7ed8",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-01-28T02:58:09Z",
+      "side": 1,
+      "message": "same reason as lid_open",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0534dd7_79dda8b8",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-01-28T02:58:09Z",
+      "side": 1,
+      "message": "same reason as lid_open",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6af440_14172b62",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-01-28T02:58:09Z",
+      "side": 1,
+      "message": "same reason as lid_open",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
