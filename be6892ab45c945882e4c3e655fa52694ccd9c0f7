@@ -22,6 +22,30 @@
       "revId": "be6892ab45c945882e4c3e655fa52694ccd9c0f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc6630a_3570cb71",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2019-01-28T13:20:37Z",
+      "side": 1,
+      "message": "I\u0027ll remove this. I was using the register for checkpoint as I couldn\u0027t get UART to work on my device for some reason.",
+      "parentUuid": "a27c134b_5cd2bad5",
+      "range": {
+        "startLine": 139,
+        "startChar": 24,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "be6892ab45c945882e4c3e655fa52694ccd9c0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
