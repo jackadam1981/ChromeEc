@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5ea8702_bc91bf59",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T02:43:13Z",
+      "side": 1,
+      "message": "variable atm",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "e52162d8cf278733d594163e86ca8110b338ec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e27be8_7873c293",
+        "filename": "board/cr50/tpm2/virtual_nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T02:43:13Z",
+      "side": 1,
+      "message": "Guaranteed? I currently see G2F cert sizes 313, 314, 315. So, we probably need a max size here, not a fixed one for every chip.\nAnd even if we increase tha max size to 315 to account for that, what happens if the actual cert is smaller? Looks like we need to report the actual, not max, size.",
+      "range": {
+        "startLine": 37,
+        "startChar": 39,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "e52162d8cf278733d594163e86ca8110b338ec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
