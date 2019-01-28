@@ -199,7 +199,7 @@ static unsigned u2f_register(struct apdu apdu, void *buf,
 	m_off += cert_len;
 
 	/* Sign over the response w/ the attestation key */
-	drbg_rfc6979_init(&ctx, &att_d, &h);
+	hmac_drbg_init_rfc6979(&ctx, &att_d, &h);
 	if (!dcrypto_p256_ecdsa_sign(&ctx, &att_d, &h, &r, &s)) {
 		p256_clear(&att_d);
 		p256_clear(&od);
@@ -284,7 +284,7 @@ static unsigned u2f_authenticate(struct apdu apdu, void *buf,
 	if (u2f_origin_key(od_seed, &origin_d))
 		return U2F_SW_WTF + 2;
 
-	drbg_rfc6979_init(&ctx, &origin_d, &h);
+	hmac_drbg_init_rfc6979(&ctx, &origin_d, &h);
 	if (!dcrypto_p256_ecdsa_sign(&ctx, &origin_d, &h, &r, &s)) {
 		p256_clear(&origin_d);
 		return U2F_SW_WTF + 3;
@@ -386,12 +386,10 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	U2F_GENERATE_RESP *resp;
 
 	/* Origin keypair */
-	uint8_t od_seed[SHA256_DIGEST_SIZE];
-	p256_int od, opk_x, opk_y;
+	p256_int od_seed, od, opk_x, opk_y;
 
 	/* Key handle */
 	uint8_t kh[U2F_FIXED_KH_SIZE];
-	uint8_t tmp[U2F_FIXED_KH_SIZE];
 
 	if (input_size != sizeof(U2F_GENERATE_REQ) ||
 	    *response_size < sizeof(U2F_GENERATE_RESP))
@@ -403,17 +401,16 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Generate origin-specific keypair */
-	if (u2f_origin_keypair(od_seed, &od, &opk_x, &opk_y) !=
-	    EC_SUCCESS) {
-		CPRINTF("Origin keypair gen failed");
-		return VENDOR_RC_INTERNAL_ERROR;
-	}
+	do {
+		if (!DCRYPTO_ladder_random(&od_seed))
+			return VENDOR_RC_INTERNAL_ERROR;
 
-	/* Generate key handle */
-	/* Interleave origin ID and origin priv key, wrap and export. */
-	interleave32(req->appId, od_seed, tmp);
-	if (wrap_kh(NULL, tmp, kh, ENCRYPT_MODE) != EC_SUCCESS)
-		return VENDOR_RC_INTERNAL_ERROR;
+		u2f_origin_user_keyhandle((const p256_int *) req->appId,
+					  (const p256_int *) req->userSecret,
+					  &od_seed,
+					  kh);
+	} while (u2f_origin_user_keypair(kh, &od, &opk_x, &opk_y) !=
+		 EC_SUCCESS);
 
 	/*
 	 * From this point: the request 'req' content is invalid as it is
@@ -447,12 +444,8 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	const U2F_SIGN_REQ *req = buf;
 	U2F_SIGN_RESP *resp;
 
-	/* Decrypted key handle. */
-	uint8_t unwrapped_kh[KH_LEN];
-
-	/* Contents of key handle after de-interleaving. */
-	uint8_t od_seed[SHA256_DIGEST_SIZE];
-	uint8_t origin[U2F_APPID_SIZE];
+	/* Re-created key handle. */
+	uint8_t recreated_kh[KH_LEN];
 
 	struct drbg_ctx ctx;
 
@@ -465,10 +458,18 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	if (input_size != sizeof(U2F_SIGN_REQ))
 		return VENDOR_RC_BOGUS_ARGS;
 
-	/* Decrypt and unwrap key handle. */
-	if (wrap_kh(NULL, req->keyHandle, unwrapped_kh, DECRYPT_MODE))
+	/*
+	 * Re-create the key handle and compare against that which
+	 * was provided. This allows us to verify that the key handle
+	 * is owned by the current user and appId.
+	 */
+	u2f_origin_user_keyhandle((const p256_int*) req->appId,
+				  (const p256_int*) req->userSecret,
+				  (const p256_int*) req->keyHandle,
+				  recreated_kh);
+
+	if (memcmp(recreated_kh, req->keyHandle, KH_LEN) != 0)
 		return VENDOR_RC_NOT_ALLOWED;
-	deinterleave64(unwrapped_kh, origin, od_seed);
 
 	/* Check origin matches. */
 	if (memcmp(origin, req->appId, U2F_APPID_SIZE) != 0)
@@ -479,14 +480,15 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 		return VENDOR_RC_NOT_ALLOWED;
 
 	/* Re-create origin-specific key. */
-	if (u2f_origin_key(od_seed, &origin_d))
+	if (u2f_origin_user_keypair(
+		req->keyHandle, &origin_d, NULL, NULL) != EC_SUCCESS)
 		return VENDOR_RC_INTERNAL_ERROR;
 
 	/* Prepare hash to sign. */
 	p256_from_bin(req->hash, &h);
 
 	/* Sign. */
-	drbg_rfc6979_init(&ctx, &origin_d, &h);
+	hmac_drbg_init_rfc6979(&ctx, &origin_d, &h);
 	if (!dcrypto_p256_ecdsa_sign(&ctx, &origin_d, &h, &r, &s)) {
 		p256_clear(&origin_d);
 		return VENDOR_RC_INTERNAL_ERROR;
@@ -595,7 +597,7 @@ static enum vendor_cmd_rc u2f_attest(enum vendor_cmd_cc code,
 	}
 
 	/* Sign over the response w/ the attestation key */
-	drbg_rfc6979_init(&dr_ctx, &d, &h);
+	hmac_drbg_init_rfc6979(&dr_ctx, &d, &h);
 	if (!dcrypto_p256_ecdsa_sign(&dr_ctx, &d, &h, &r, &s)) {
 		CPRINTF("Signing error");
 		return VENDOR_RC_INTERNAL_ERROR;
