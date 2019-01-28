@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99c8fef9_b0b60783",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-28T23:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06573b1f_104376f1",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 6
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b3749b3_f510d9f6",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "06640480_646da608",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-28T23:41:43Z",
+      "side": 1,
+      "message": "Thanks for the info. I am not using \"repo upload\". Will do that from next patch.",
+      "parentUuid": "7b3749b3_f510d9f6",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3a43367_1c249595",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1658aa_d473f576",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-28T23:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a43367_1c249595",
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "fdc54dc0_5c327d3b",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-28T23:41:43Z",
+      "side": 1,
+      "message": "That was to give some warnings before actual watchdog expiring. I have re-written this function to give a 500ms warning before actual watchdog expiring.",
+      "parentUuid": "026382b1_893c889a",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e9a8ada_5726ef45",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 5
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4142cabf_0bd01981",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-28T23:41:43Z",
+      "side": 1,
+      "message": "We won\u0027t need this in new wdt_interrupt function.",
+      "parentUuid": "0e9a8ada_5726ef45",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e77d74dc_71cec5fc",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 5
@@ -131,6 +245,30 @@
       "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144daeda_1a06cd45",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-28T23:41:43Z",
+      "side": 1,
+      "message": "I am removing stack related code as there will be a separate CL for it and we will have chance to sync when that goes public.",
+      "parentUuid": "e77d74dc_71cec5fc",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "0ffde36225899759bb918d5efbf265fbda3d0a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
