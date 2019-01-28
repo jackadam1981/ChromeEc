@@ -203,6 +203,55 @@ int u2f_origin_key(const uint8_t *seed, p256_int *d)
 					   (const uint8_t *)tmp) == 0;
 }
 
+int u2f_origin_user_keyhandle(const p256_int *origin,
+			      const p256_int *user,
+			      const p256_int *origin_seed,
+			      uint8_t *key_handle)
+{
+	LITE_HMAC_CTX ctx;
+
+	memcpy(key_handle, origin_seed, P256_NBYTES);
+
+	DCRYPTO_HMAC_SHA256_init(&ctx, salt_kek, SHA256_DIGEST_SIZE);
+	HASH_update(&ctx.hash, origin, P256_NBYTES);
+	HASH_update(&ctx.hash, user, P256_NBYTES);
+	HASH_update(&ctx.hash, origin_seed, P256_NBYTES);
+
+	memcpy(key_handle + P256_NBYTES,
+	       DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
+
+	return EC_SUCCESS;
+}
+
+int u2f_origin_user_keypair(const uint8_t *key_handle,
+			    p256_int *d,
+			    p256_int *pk_x,
+			    p256_int *pk_y)
+{
+	struct drbg_ctx drbg;
+	uint32_t origin_seed_bound[P256_NDIGITS];
+	p256_int key_seed;
+
+	memcpy(origin_seed_bound,
+	       key_handle,
+	       sizeof(origin_seed_bound));
+
+	if (!_derive_key(U2F_ORIGIN,
+			 origin_seed_bound,
+			 origin_seed_bound))
+		return EC_ERROR_UNKNOWN;
+
+	hmac_drbg_init(&drbg,
+		       salt_kek, P256_NBYTES,
+		       origin_seed_bound, sizeof(origin_seed_bound),
+		       key_handle, P256_NBYTES * 2);
+
+	hmac_drbg_generate_p256(&drbg, &key_seed);
+
+	return DCRYPTO_p256_key_from_bytes(
+	    pk_x, pk_y, d, (uint8_t *) &key_seed) == 0;
+}
+
 int u2f_gen_kek(const uint8_t *origin, uint8_t *kek, size_t key_len)
 {
 	uint32_t buf[P256_NDIGITS];
