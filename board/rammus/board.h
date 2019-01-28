@@ -118,6 +118,9 @@
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_LID_ANGLE_UPDATE
 
+/* Lower maximal ODR to 100Hz */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 100000
+
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 512
 
