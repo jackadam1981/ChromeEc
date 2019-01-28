@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d39f8a96_4de7ece9",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-28T17:17:05Z",
+      "side": 1,
+      "message": "Let\u0027s check the boundary (because this is an API). It costs just a few bytes of ROM.",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 10
+      },
+      "revId": "f00a523e004e8adf4c0ebf4966a1c8a25066f9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b46d66_eec27fbf",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-28T17:17:05Z",
+      "side": 1,
+      "message": "oz554_board_init is more consistent with other APIs.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "f00a523e004e8adf4c0ebf4966a1c8a25066f9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13bf50ee_4c8e8ca0",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-28T17:17:05Z",
+      "side": 1,
+      "message": "Same here. oz554_change_order is more consistent.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "f00a523e004e8adf4c0ebf4966a1c8a25066f9cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
