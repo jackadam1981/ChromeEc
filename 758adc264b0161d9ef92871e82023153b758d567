@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39426e2d_9b97434f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-28T23:53:34Z",
+      "side": 1,
+      "message": "Could you format the description as follows?\n\nBUG\u003db/123363463\nBRANCH\u003dnone\nTEST\u003d(whatever test you performed. probably it should show the buffer is cleared.)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "758adc264b0161d9ef92871e82023153b758d567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
