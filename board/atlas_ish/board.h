@@ -75,6 +75,12 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+enum sensor_id {
+	BASE_ACCEL,
+	BASE_GYRO,
+	LID_ALS,
+};
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
