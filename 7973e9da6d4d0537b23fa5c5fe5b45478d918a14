@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03329571_55eef058",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-28T18:56:40Z",
+      "side": 1,
+      "message": "Shall we separate usb_pd_policy.c as well? (https://crrev.com/c/1436714)",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "7973e9da6d4d0537b23fa5c5fe5b45478d918a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
