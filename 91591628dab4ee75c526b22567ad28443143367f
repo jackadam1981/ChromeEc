@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0850b32f_ae3958e9",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T11:55:35Z",
+      "side": 1,
+      "message": "in the original U2F_REGISTER we had a different order so that consume happened even if we didn\u0027t care about enforcing user presence:\n\tif (pop_check_presence(apdu.p1 \u0026 G2F_CONSUME) !\u003d POP_TOUCH_YES \u0026\u0026\n\t    (apdu.p1 \u0026 U2F_AUTH_FLAG_TUP) !\u003d 0) {\n\nnot sure if that\u0027s important.",
+      "range": {
+        "startLine": 400,
+        "startChar": 6,
+        "endLine": 401,
+        "endChar": 66
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c6c1a78_b8d01774",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T11:55:35Z",
+      "side": 1,
+      "message": "hm, is it?\nRequest is U2F_APPID_SIZE+1\u003d33, response is U2F_EC_POINT+1+U2F_APPID_SIZE+p256_int\u003d130",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 420,
+        "endChar": 44
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40237101_307a790e",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T11:55:35Z",
+      "side": 1,
+      "message": "do we need to do it always? the original authenticate had\n\t/* Sense user presence, with optional consume */\n\tflags \u003d pop_check_presence(apdu.p1 \u0026 G2F_CONSUME) \u003d\u003d POP_TOUCH_YES;\n\n\t/* Mandatory user presence? */\n\tif ((apdu.p1 \u0026 U2F_AUTH_ENFORCE) !\u003d 0 \u0026\u0026 flags \u003d\u003d 0)\n\t\treturn U2F_SW_CONDITIONS_NOT_SATISFIED;",
+      "range": {
+        "startLine": 475,
+        "startChar": 5,
+        "endLine": 475,
+        "endChar": 23
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "797c8b2a_20e1c8a2",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T11:55:35Z",
+      "side": 1,
+      "message": "shall we check that req-\u003eappId \u003d\u003d origin? otherwise, what\u0027s even the point of interleaving origin into kh.\nnote that by checking the origin here, we prevent origin2 from getting stuff signed with the key handle belonging to origin1 (if it get a hold of it somehow). not sure if it\u0027s too important (iiuc the attack vector is: mitm to capture kh for siteA, then request user presence from a different site, but pass to siteA), but we have the ability to check the origin, let\u0027s use it.",
+      "range": {
+        "startLine": 478,
+        "startChar": 1,
+        "endLine": 478,
+        "endChar": 37
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a08a948_8aee092a",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-28T11:55:35Z",
+      "side": 1,
+      "message": "So, checking for this error code gives a padding oracle for AES CBC with KEK. Not sure how critical that is, but I\u0027d check with somebody.",
+      "range": {
+        "startLine": 527,
+        "startChar": 9,
+        "endLine": 527,
+        "endChar": 30
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
