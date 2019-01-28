@@ -329,6 +329,30 @@
       "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0343bf6_82dc830a",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-28T23:04:31Z",
+      "side": 1,
+      "message": "How long are we delaying hibernate for? Does it never hibernate when the SOC is \u003c 4%. \n\nMy other concern here is that I think this should have a config option guard as other boards won\u0027t have the function battery_is_cutoff_required() defined and so those builds will fail. I know this is a coral FW branch, but I don\u0027t think we should break builds for other boards.",
+      "parentUuid": "d02fbeb8_7fe4dee3",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
