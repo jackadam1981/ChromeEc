@@ -54,6 +54,10 @@ struct irq_data {
 		"_irq_"#irq"_handler:\n"				\
 			"pusha\n"					\
 			ASM_LOCK_PREFIX "addl  $1, __in_isr\n"		\
+			"movl $stack_end, %eax\n"			\
+			"movl %esp, (%eax)\n"				\
+			"movl %eax, %esp\n"				\
+			"movl %esp, %ebp\n"				\
 			task_start_irq_handler_call			\
 			"call "#routine"\n"				\
 			"push $0\n"					\
@@ -61,6 +65,8 @@ struct irq_data {
 			"call switch_handler\n"				\
 			"addl $0x08, %esp\n"				\
 			"test %eax, %eax\n"				\
+			"movl $stack_end, %eax\n"			\
+			"movl (%eax), %esp\n"				\
 			"je 1f\n"					\
 			"movl current_task, %eax\n"			\
 			save_fpu_ctx 					\

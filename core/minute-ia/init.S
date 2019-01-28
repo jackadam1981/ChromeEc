@@ -373,4 +373,5 @@ reset:
 stack_start:
 .space CONFIG_STACK_SIZE, 0
 stack_end:
+.long 0			# save stack pointer of preempted context
 .global stack_end
