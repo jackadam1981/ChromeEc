@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "28024873_17bd6e5e",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-28T17:28:13Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "9bf8dc5e_6f5f6d3e",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 20
+      },
+      "revId": "6649d287a1b1869cbfb390d8653b8b0bff307bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01cd03fc_ab2352aa",
         "filename": "board/flapjack/led.c",
         "patchSetId": 2
