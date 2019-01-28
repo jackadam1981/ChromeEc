@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cf435a4_4c96ed44",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-28T09:23:48Z",
+      "side": 1,
+      "message": "I do wonder if we should move some of the logic into emmc_task to ensure this gets high enough priority. But as long as it works...",
+      "revId": "21ecc98e9713cb75da5589c63340e962f3d3e06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
