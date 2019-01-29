@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b3b12348_db060a05",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-29T21:50:25Z",
+      "side": 1,
+      "message": "Is that a preference for readability or is there an underlying reason why it won\u0027t work in some cases? (just curious since it will go away \n with shflags anyway)",
+      "parentUuid": "d6731831_f80d6463",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "105fdbb9_11063af6",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2019-01-29T21:32:53Z",
       "side": 1,
       "message": "That does conform with the style guide, but it\u0027s also unrelated and leaves the file with an inconsistent style (there are still tabs around). It\u0027s better to either change all of them (maybe in a separate CL?) or none",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d0d95d_507588f3",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-29T21:50:25Z",
+      "side": 1,
+      "message": "My editor just auto-changed this one, but agree it should be done separately.",
+      "parentUuid": "aa814200_9446582b",
       "range": {
         "startLine": 65,
         "startChar": 0,
