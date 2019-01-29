@@ -22,6 +22,30 @@
       "revId": "728f95fdb3879fab179a593077f5c045b94b7371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afce0a59_080706bf",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-29T01:31:15Z",
+      "side": 1,
+      "message": "We need __data_lma_start variable, at least for init.S, which use this variable as the starting point, and copy over data from __data_lma_start to __data_start.\n\nAnd I don\u0027t think we need __data_lma_end variable atm (yet), since that we can calculate this by __data_lma_start + __data_end - __data_start, and we don\u0027t have a user/consumer for __data_lma_end either.",
+      "parentUuid": "43d2c066_e75a19c8",
+      "range": {
+        "startLine": 280,
+        "startChar": 8,
+        "endLine": 280,
+        "endChar": 21
+      },
+      "revId": "728f95fdb3879fab179a593077f5c045b94b7371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
