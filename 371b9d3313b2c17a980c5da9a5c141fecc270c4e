@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30795c09_beb99d47",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T00:01:01Z",
+      "side": 1,
+      "message": "move to before \"task_start_irq_handler_call\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
