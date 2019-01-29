@@ -29,8 +29,10 @@
 #define CHARGE_PHASE_CHANGED_CURRENT_MA 1800
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
+#define CYCLE_OUT_OF_RANGE CYCLE_ZONE_COUNT
 
 #define BAT_LEVEL_PD_LIMIT 85
+#define AC_IN_48HR	172800
 
 static uint8_t batt_id = 0xff;
 
@@ -128,6 +130,102 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 		return BATTERY_NOT_DISCONNECTED;
 	return BATTERY_DISCONNECTED;
 }
+
+enum {
+	CYCLE_ZONE_0,
+	CYCLE_ZONE_1,
+	CYCLE_ZONE_2,
+	CYCLE_ZONE_3,
+	CYCLE_ZONE_4,
+	CYCLE_ZONE_5,
+	CYCLE_ZONE_COUNT
+} cycle_zone;
+
+static struct {
+	int cycle_min;
+	int cycle_max;
+	int desired_voltage;
+} cycle_zones[BATTERY_COUNT][CYCLE_ZONE_COUNT] = {
+	[BATTERY_SIMPLO] = {
+		{0, 21, 4350},
+		{21, 51, 4335},
+		{51, 301, 4320},
+		{301, 601, 4300},
+		{601, 1001, 4250},
+	},
+	[BATTERY_AETECH] = {
+		{0, 2, 4200},
+		{3, 100, 4350},
+	}
+};
+
+BUILD_ASSERT(ARRAY_SIZE(cycle_zones[0]) == CYCLE_ZONE_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(cycle_zones) == BATTERY_COUNT);
+
+void charge_cycle_lcv(struct charge_state_data *curr)
+{
+	int bat_cycle;
+
+	/* Cycle Count */
+	battery_cycle_count(&bat_cycle);
+
+	if (batt_id >= BATTERY_COUNT)
+		batt_id = gpio_get_level(GPIO_BATT_ID);
+
+	if ((bat_cycle < cycle_zones[batt_id][0].cycle_min) ||
+	    (bat_cycle >= cycle_zones[batt_id][CYCLE_ZONE_COUNT - 1].cycle_max))
+		cycle_zone = CYCLE_OUT_OF_RANGE;
+	else {
+		for (cycle_zone = 0; cycle_zone <
+				CYCLE_ZONE_COUNT; cycle_zone++) {
+			if (bat_cycle <
+				cycle_zones[batt_id][cycle_zone].cycle_max)
+				break;
+		}
+	}
+
+	switch (cycle_zone) {
+	case CYCLE_ZONE_0:
+	case CYCLE_ZONE_1:
+	case CYCLE_ZONE_2:
+	case CYCLE_ZONE_3:
+	case CYCLE_ZONE_4:
+	case CYCLE_ZONE_5:
+		if (curr->requested_voltage <
+			cycle_zones[batt_id][cycle_zone].desired_voltage)
+		break;
+		curr->requested_voltage =
+			cycle_zones[batt_id][cycle_zone].desired_voltage;
+		break;
+	case CYCLE_OUT_OF_RANGE:
+		curr->requested_voltage =
+			cycle_zones[batt_id][CYCLE_ZONE_5].desired_voltage;
+		break;
+	}
+}
+
+static int limit_timeac_over;
+/* When the system AC IN lasts longer than 48 hours
+ * and Charger Voltage > 4.25V, need change charge
+ * voltage from 4.4V to 4.25V
+ */
+static void limit_vtime(void)
+{
+	static int count;
+	int ac;
+
+	ac = extpower_is_present();
+
+	if (ac == 1 && limit_timeac_over != 1) {
+		if (++count >= AC_IN_48HR)
+			limit_timeac_over = 1;
+	} else if (ac == 0) {
+		limit_timeac_over = 0;
+		count = 0;
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, limit_vtime, HOOK_PRIO_DEFAULT);
+
 
 int charger_profile_override(struct charge_state_data *curr)
 {
@@ -245,6 +343,13 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
 		curr->state = ST_IDLE;
 		break;
+	}
+
+	charge_cycle_lcv(curr);
+
+	if (limit_timeac_over == 1) {
+		if (curr->requested_voltage > 4250)
+			curr->requested_voltage = 4250;
 	}
 
 	/*
