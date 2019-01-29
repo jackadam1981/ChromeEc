@@ -22,6 +22,30 @@
       "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abbb4567_3641e00b",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T00:15:42Z",
+      "side": 1,
+      "message": "Actually I have fixed in my \"dedicated stack for exceptions\" patch. You can refer it or you can come up with yours. I\u0027ll change my patch once you submit new one here.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1440022",
+      "parentUuid": "30795c09_beb99d47",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
