@@ -78,8 +78,18 @@
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
+/*
+ * define CONFIG_MAG_LIS2MDL if using LIS2MDL magnetometer irrespective
+ * of cascade mode or standalone mode.
+ * define CONFIG_SENSORHUB_LSM6DSM to enable sensor hub in LSM6DSM accel/
+ * gyro module if using any other sensor in cascade mode.
+ * define CONFIG_MAG_LSM6DSM_LIS2MDL if using LIS2DML magnetometer in cascade
+ * mode with LSM6DSM accel/gyro module so that FIFO configuration can be
+ * performed.
+ */
 #undef CONFIG_MAG_LIS2MDL
 #undef CONFIG_SENSORHUB_LSM6DSM
+#undef CONFIG_MAG_LSM6DSM_LIS2MDL
 
 /* Support for BMI160 hardware orientation sensor */
 #undef CONFIG_BMI160_ORIENTATION_SENSOR
