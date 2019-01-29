@@ -46,6 +46,30 @@
       "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67e1df1_d2ec596d",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:27:31Z",
+      "side": 1,
+      "message": "Why move these before task_start_irq_handler_call? Since the task_start_irq_handler method does not use its variable (void* unused), we do not need to push anything on the stack for it.\n\nThese pushes are for switch_handler function call instead of task_start_irq_handler",
+      "parentUuid": "abbb4567_3641e00b",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
