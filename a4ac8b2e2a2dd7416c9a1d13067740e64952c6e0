@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "99dbddad_7827e635",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:57:07Z",
+      "side": 1,
+      "message": "That was a review comment I got a while ago, and it makes sense for readability: double negatives are best avoided.\nThe style guide go/shstyle#Testing_Strings doesn\u0027t mention it explicitly to be fair",
+      "parentUuid": "b3b12348_db060a05",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "105fdbb9_11063af6",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
