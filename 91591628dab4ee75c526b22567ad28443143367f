@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6d56b05_4b981fb6",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T01:56:44Z",
+      "side": 1,
+      "message": "Good point, reverted",
+      "parentUuid": "0850b32f_ae3958e9",
+      "range": {
+        "startLine": 400,
+        "startChar": 6,
+        "endLine": 401,
+        "endChar": 66
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c6c1a78_b8d01774",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e7b3f1aa_479f5d58",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T01:56:44Z",
+      "side": 1,
+      "message": "Oops sorry, out of date comment. Removed and added an output size check at the top",
+      "parentUuid": "7c6c1a78_b8d01774",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 420,
+        "endChar": 44
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40237101_307a790e",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-01-28T11:55:35Z",
       "side": 1,
       "message": "do we need to do it always? the original authenticate had\n\t/* Sense user presence, with optional consume */\n\tflags \u003d pop_check_presence(apdu.p1 \u0026 G2F_CONSUME) \u003d\u003d POP_TOUCH_YES;\n\n\t/* Mandatory user presence? */\n\tif ((apdu.p1 \u0026 U2F_AUTH_ENFORCE) !\u003d 0 \u0026\u0026 flags \u003d\u003d 0)\n\t\treturn U2F_SW_CONDITIONS_NOT_SATISFIED;",
+      "range": {
+        "startLine": 475,
+        "startChar": 5,
+        "endLine": 475,
+        "endChar": 23
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227d60d9_fccbd2d3",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T01:56:44Z",
+      "side": 1,
+      "message": "Yes we need to do it because we do not know the contents of what we are signing, and it could have a \u0027user presence asserted\u0027 bit set, so we must check for user presence",
+      "parentUuid": "40237101_307a790e",
       "range": {
         "startLine": 475,
         "startChar": 5,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "76e76f4a_3e9877a9",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T01:56:44Z",
+      "side": 1,
+      "message": "Right, yes sorry, added. I am also not sure about the actual risk here (was thinking about this also for the new scheme) - will investigate this more out of interest.",
+      "parentUuid": "797c8b2a_20e1c8a2",
+      "range": {
+        "startLine": 478,
+        "startChar": 1,
+        "endLine": 478,
+        "endChar": 37
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a08a948_8aee092a",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-01-28T11:55:35Z",
       "side": 1,
       "message": "So, checking for this error code gives a padding oracle for AES CBC with KEK. Not sure how critical that is, but I\u0027d check with somebody.",
+      "range": {
+        "startLine": 527,
+        "startChar": 9,
+        "endLine": 527,
+        "endChar": 30
+      },
+      "revId": "91591628dab4ee75c526b22567ad28443143367f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50246f93_9e2c0d05",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T01:56:44Z",
+      "side": 1,
+      "message": "Good point, I\u0027m hoping this is ok since it is the same as currently happens in u2f_authenticate (with a different error code)",
+      "parentUuid": "2a08a948_8aee092a",
       "range": {
         "startLine": 527,
         "startChar": 9,
