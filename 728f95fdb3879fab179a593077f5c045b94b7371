@@ -46,6 +46,30 @@
       "revId": "728f95fdb3879fab179a593077f5c045b94b7371",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93073395_32cb8c11",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:59:56Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I just didn\u0027t see __data_lma_start get referenced anywhere, so it must be an implicit use for __data_lma_start that I didn\u0027t see.",
+      "parentUuid": "afce0a59_080706bf",
+      "range": {
+        "startLine": 280,
+        "startChar": 8,
+        "endLine": 280,
+        "endChar": 21
+      },
+      "revId": "728f95fdb3879fab179a593077f5c045b94b7371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
