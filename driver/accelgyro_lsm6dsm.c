@@ -154,7 +154,7 @@ static int accelgyro_fifo_enable(const struct motion_sensor_t *accel)
 	st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL3_ADDR,
 			(decimator[FIFO_DEV_GYRO] << LSM6DSM_FIFO_DEC_G_OFF) |
 			(decimator[FIFO_DEV_ACCEL] << LSM6DSM_FIFO_DEC_XL_OFF));
-#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+#ifdef CONFIG_LSM6DSM_SEC_I2C
 	st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL4_ADDR,
 			decimator[FIFO_DEV_MAG]);
 #endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */

@@ -10,6 +10,8 @@
 
 #include "stm_mems_common.h"
 #include "mag_cal.h"
+#include "mag_bmm150.h"
+#include "mag_lis2mdl.h"
 
 #define LSM6DSM_I2C_ADDR(__x)		(__x << 1)
 
@@ -285,6 +287,33 @@ struct lsm6dsm_fifo_data {
 	int total_samples_in_pattern;
 };
 
+/*
+ * lsm6dsm_data is used for accel gyro and the sensor connect to a LSM6DSM.
+ *
+ * +---- lsm6dsm_data ------------------------------------------------+
+ * | +--- stprivate_data ---+                                         |
+ * | |                      | ST common data for accelerometer        |
+ * | +----------------------+                                         |
+ * | +--- stprivate_data ---+                                         |
+ * | |                      | ST common data for gyroscope            |
+ * | +----------------------+                                         |
+ * | +--- stprivate_data ---+                                         |
+ * | |                      | ST common data for LIS2MDL magnetomer   |
+ * | +----------------------+ (optional)                              |
+ * |                                                                  |
+ * | Fifo Information                                                 |
+ * |                                                                  |
+ * | +----- Magnetometer information -----------------------------+   |
+ * | | +--- mag_cal_t ------+                                     |   |
+ * | | |                    | Data for online calibration         |   |
+ * | | +--------------------+                                     |   |
+ * | | Other privata data                                         |   |
+ * | +------------------------------------------------------------+   |
+ * +------------------------------------------------------------------+
+ *
+ * In motion_sensors array, use LSM6DSM_ST_DATA to point drv_data
+ * to the right st_data structure.
+ */
 struct lsm6dsm_data {
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 	struct stprivate_data st_data[3];
@@ -305,6 +334,9 @@ struct lsm6dsm_data {
 	union {
 #ifdef CONFIG_MAG_LSM6DSM_BMM150
 		struct bmm150_private_data   compass;
+#endif
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+		struct lis2mdl_private_data  compass;
 #endif
 		struct mag_cal_t             cal;
 	};
