@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd58bb8e_58935613",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-01-29T17:17:01Z",
+      "side": 1,
+      "message": "May not be a big deal but the enumeration for Kukui is changed with this (from 3 to 4)?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 6
+      },
+      "revId": "9ccb943093a9142bdcfe5976dfd2e488d8fcace4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
