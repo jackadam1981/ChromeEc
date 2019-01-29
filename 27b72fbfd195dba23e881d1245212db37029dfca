@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "62d1c569_42a89669",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T21:01:41Z",
+      "side": 1,
+      "message": "We don\u0027t really need this extra long 0, do we? We don\u0027t check for stack overrun and this one extra 32-bit slot isn\u0027t going to give us much protection, right? Should we just comment that the bottom of the stack contains the task\u0027s stack pointer?",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 0
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1af6ccff_9c87a3bb",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 4
@@ -96,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ef3a3e4d_334dff0a",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T21:01:41Z",
+      "side": 1,
+      "message": "Can we add that comment above this line just to state assumptions",
+      "parentUuid": "1c53a58f_d188b0be",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f542277_b2d44dc3",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 4
@@ -131,6 +178,30 @@
       "side": 1,
       "message": "This is a special space located in bottom of stack and ,yes, I already added this special space after the stack_end. please check init.S",
       "parentUuid": "9f542277_b2d44dc3",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c8852a7_6d3aae77",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T21:01:41Z",
+      "side": 1,
+      "message": "I was thinking for stack growth, but I was growing the stack to higher memory address in my mind instead of lower memory. This is fine.",
+      "parentUuid": "d5927676_1ca1dd7c",
       "range": {
         "startLine": 59,
         "startChar": 16,
@@ -187,6 +258,30 @@
       "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f8a260_d22301c9",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T21:01:41Z",
+      "side": 1,
+      "message": "Since we don\u0027t use it yet, I would like to add all instance of proper ebp use then (or at the same time).\n\nI would say let\u0027s hold off on adding this since it is untested, or at the very least, let\u0027s put it in a separate CL",
+      "parentUuid": "47d8346a_e793846c",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
