@@ -12,8 +12,11 @@
 
 /* Number of writes needed to invoke battery cutoff command */
 #define SHIP_MODE_WRITES 2
+#define SHIP_MODE_WRITES_WB 3
 
 struct ship_mode_info {
+	const int wb_support;
+	const uint8_t reg_data_wb[SHIP_MODE_WRITES_WB];
 	const uint8_t reg_addr;
 	const uint16_t reg_data[SHIP_MODE_WRITES];
 };
