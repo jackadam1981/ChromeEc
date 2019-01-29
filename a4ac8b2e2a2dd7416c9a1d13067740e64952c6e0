@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "d084214f_8391e813",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:32:53Z",
+      "side": 1,
+      "message": "/usr/share/misc/shflags already has a way to parse the command line, can you use that instead? You can see an example use case in dev_install with all the DEFINE_xxxx flags.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6731831_f80d6463",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:32:53Z",
+      "side": 1,
+      "message": "Rather than \"! -z\" it\u0027s better to use \"-n\".\nIn this particular case you can use a boolean flag from shflags anyway :-)",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105fdbb9_11063af6",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:32:53Z",
+      "side": 1,
+      "message": "It would be nice to have the opposite check in the READ case. If the file already exists, do not blindly overwrite it. That will save some headaches where people overwrite the golden firmware /opt/google/biod/fw/xxx",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa814200_9446582b",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:32:53Z",
+      "side": 1,
+      "message": "That does conform with the style guide, but it\u0027s also unrelated and leaves the file with an inconsistent style (there are still tabs around). It\u0027s better to either change all of them (maybe in a separate CL?) or none",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91615d5c_ea605d45",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:32:53Z",
+      "side": 1,
+      "message": "Can you avoid duplicating the code? It\u0027s at the point where we should have a common file providing the functionality, and that is sourced by both scripts I think.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a5a85ef_594936c1",
         "filename": "board/nocturne_fp/flash_fp_mcu",
         "patchSetId": 1
