@@ -61,6 +61,11 @@
 				 CONFIG_FLASH_NVMEM_OFFSET_A)
 #define CONFIG_FLASH_NVMEM_BASE_B (CONFIG_PROGRAM_MEMORY_BASE + \
 				 CONFIG_FLASH_NVMEM_OFFSET_B)
+#define CONFIG_FLASH_NEW_NVMEM_BASE_A  (CONFIG_FLASH_NVMEM_BASE_A + \
+                                        CONFIG_FLASH_BANK_SIZE)
+#define CONFIG_FLASH_NEW_NVMEM_BASE_B  (CONFIG_FLASH_NVMEM_BASE_B + \
+                                        CONFIG_FLASH_BANK_SIZE)
+
 /* Size partition in NvMem */
 #define NVMEM_PARTITION_SIZE (CFG_TOP_SIZE - CONFIG_FLASH_NVCTR_SIZE)
 /* Size in bytes of NvMem area */
