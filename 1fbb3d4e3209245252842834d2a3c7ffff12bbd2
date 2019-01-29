@@ -353,6 +353,30 @@
       "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cae3259_10d8a162",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-29T02:31:39Z",
+      "side": 1,
+      "message": "Yes, it would never hibernate when the SOC is \u003c 4%. Should it be OK?\nOK, it should be. I shall upload a new patch with a config option soon. Thank you very much.",
+      "parentUuid": "d0343bf6_82dc830a",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
