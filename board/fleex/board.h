@@ -20,6 +20,9 @@
 #define CONFIG_LED_COMMON
 #define OCTOPUS_BATT_FUEL_LOW_LED 10
 
+/* Battery */
+#define CONFIG_BATTERY_CUT_OFF_WB
+
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
@@ -79,8 +82,14 @@ enum sensor_id {
 /* List of possible batteries */
 enum battery_type {
 	BATTERY_BYD,
+	BATTERY_BYD16,
 	BATTERY_LGC,
+	BATTERY_LGC3,
 	BATTERY_SIMPLO,
+	BATTERY_SIMPLO_ATL,
+	BATTERY_SIMPLO_LS,
+	BATTERY_SWD_ATL,
+	BATTERY_SWD_COS,
 	BATTERY_TYPE_COUNT,
 };
 

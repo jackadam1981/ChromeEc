@@ -365,6 +365,14 @@
 #undef CONFIG_BATTERY_CUT_OFF
 
 /*
+ * Support battery cut-off write block as host command and console command.
+ *
+ * Once defined, you have to implement a board_cut_off_battery() function
+ * in board/???/battery.c file.
+ */
+#undef CONFIG_BATTERY_CUT_OFF_WB
+
+/*
  * The default delay is 1 second. Define this if a board prefers
  * different delay.
  */
