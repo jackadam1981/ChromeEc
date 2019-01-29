@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50e59a92_a29da7a9",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T19:51:40Z",
+      "side": 1,
+      "message": "I understand what you mean I\u0027ll find the proper name.",
+      "parentUuid": "0effdc71_8ef1283b",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 9
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1af6ccff_9c87a3bb",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c53a58f_d188b0be",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T19:51:40Z",
+      "side": 1,
+      "message": "we do not allow nested IRQ.",
+      "parentUuid": "1af6ccff_9c87a3bb",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d5927676_1ca1dd7c",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T19:51:40Z",
+      "side": 1,
+      "message": "This is a special space located in bottom of stack and ,yes, I already added this special space after the stack_end. please check init.S",
+      "parentUuid": "9f542277_b2d44dc3",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d85712e_e5629ac9",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d8346a_e793846c",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T19:51:40Z",
+      "side": 1,
+      "message": "Yes, this was my big concern. My main concern was \"Do I need to care about debugger ? or not.\"\nAnd although we don\u0027t have any implementation to support debugger but my decision is \"OK, let\u0027s have it for coming debugger implementation\"",
+      "parentUuid": "6d85712e_e5629ac9",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
