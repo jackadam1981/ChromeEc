@@ -577,6 +577,8 @@ static void configure_board_specific_gpios(void)
 	if (board_use_plt_rst()) {
 		/* Use plt_rst_l as the tpm reset signal. */
 		GWRITE(PINMUX, GPIO1_GPIO0_SEL, GC_PINMUX_DIOM3_SEL);
+		/* Use plt_rst_l to detect when the AP has reset. */
+		GWRITE(PINMUX, GPIO1_GPIO4_SEL, GC_PINMUX_DIOM3_SEL);
 
 		/* Enable the input */
 		GWRITE_FIELD(PINMUX, DIOM3_CTL, IE, 1);
@@ -599,6 +601,8 @@ static void configure_board_specific_gpios(void)
 	} else {
 		/* Use sys_rst_l as the tpm reset signal. */
 		GWRITE(PINMUX, GPIO1_GPIO0_SEL, GC_PINMUX_DIOM0_SEL);
+		/* Use sys_rst_l to detect when the AP has reset. */
+		GWRITE(PINMUX, GPIO1_GPIO4_SEL, GC_PINMUX_DIOM0_SEL);
 		/* Enable the input */
 		GWRITE_FIELD(PINMUX, DIOM0_CTL, IE, 1);
 
@@ -920,6 +924,15 @@ void tpm_rst_deasserted(enum gpio_signal signal)
 	hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
 }
 
+/* Deassert EC_RST_L once the AP has been reset. */
+void ap_reset_detected(enum gpio_signal signal)
+{
+	gpio_disable_interrupt(GPIO_AP_IN_RESET);
+	CPRINTS("AP reset detected. Deasserting EC_RST_L");
+	deassert_ec_rst();
+	enable_sleep(SLEEP_MASK_AP_RUN);
+}
+
 void assert_sys_rst(void)
 {
 	/*
@@ -956,6 +969,21 @@ int is_sys_rst_asserted(void)
 		&& (gpio_get_flags(GPIO_SYS_RST_L_OUT) & GPIO_OUTPUT)
 #endif
 		&& (gpio_get_level(GPIO_SYS_RST_L_OUT) == 0);
+}
+
+void board_closed_loop_reset(void)
+{
+	/* Disable sleep while waiting for the reset */
+	disable_sleep(SLEEP_MASK_AP_RUN);
+
+	/* Disable AP communications with the TPM until cr50 sees the reset */
+	tpm_stop();
+
+	/* Use EC_RST_L to reset the system */
+	assert_ec_rst();
+
+	/* Enable the interrupt to detect AP reset */
+	gpio_enable_interrupt(GPIO_AP_IN_RESET);
 }
 
 /**
@@ -1115,7 +1143,10 @@ static int command_ec_rst(int argc, char **argv)
 		if (!ccd_is_cap_enabled(CCD_CAP_REBOOT_EC_AP))
 			return EC_ERROR_ACCESS_DENIED;
 
-		if (!strcasecmp("pulse", argv[1])) {
+		if (!strcasecmp("cl", argv[1])) {
+			/* Assert EC_RST_L until TPM_RST_L is asserted */
+			board_closed_loop_reset();
+		} else if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing EC reset\n");
 			board_reboot_ec();
 		} else if (parse_bool(argv[1], &val)) {
@@ -1133,7 +1164,7 @@ static int command_ec_rst(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ecrst, command_ec_rst,
-	"[pulse | <BOOLEAN>]",
+	"[cl | pulse | <BOOLEAN>]",
 	"Assert/deassert EC_RST_L to reset the EC (and AP)");
 
 /*

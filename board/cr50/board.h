@@ -242,6 +242,7 @@ void ec_detect_asserted(enum gpio_signal signal);
 void ec_tx_cr50_rx(enum gpio_signal signal);
 void servo_detect_asserted(enum gpio_signal signal);
 void tpm_rst_deasserted(enum gpio_signal signal);
+void ap_reset_detected(enum gpio_signal signal);
 
 void post_reboot_request(void);
 
@@ -315,6 +316,7 @@ int board_battery_is_present(void);
 int board_fwmp_allows_unlock(void);
 int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);
+void board_closed_loop_reset(void);
 int board_wipe_tpm(void);
 int board_is_first_factory_boot(void);
 
