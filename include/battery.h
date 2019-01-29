@@ -337,6 +337,16 @@ int battery_manufacturer_date(int *year, int *month, int *day);
 int battery_imbalance_mv(void);
 
 /**
+ * Battery cut off command via SMBus write block.
+ */
+int cut_off_battery_block_write(int type);
+
+/**
+ * Battery cut off command via SMBus write word.
+ */
+int cut_off_battery_sb_write(int type);
+
+/**
  * Call board-specific cut-off function.
  *
  * @return EC_RES_INVALID_COMMAND if the battery doesn't support.

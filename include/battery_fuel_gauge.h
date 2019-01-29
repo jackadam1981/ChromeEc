@@ -14,6 +14,7 @@
 #define SHIP_MODE_WRITES 2
 
 struct ship_mode_info {
+	const int wb_support;
 	const uint8_t reg_addr;
 	const uint16_t reg_data[SHIP_MODE_WRITES];
 };
