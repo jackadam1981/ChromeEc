@@ -22,6 +22,30 @@
       "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3b0e30_6ef5f81c",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T19:41:10Z",
+      "side": 0,
+      "message": "Hm.. it requires long explanation. Let me try.\n\nAs you know, a context needs stack for its execution(calling...)\nSo during the boot, what should be done at early stage is assigning stack. so that it can do \"call\" or allocation local variables.\n\nIn our case, the first stack assigning happens in init.S. The stack is for execution for initializing. Usually, in many OSes, this early stack for initializing system(OS, H/W) used by idle task. it\u0027s because the boot context(or we can say reset context), at the end, call idle function(which means the boot context becomes idle task)\n\nBut our case, idle task has it\u0027s own stack defined in ec.tasklist. so we just use this early stack once during the boot and never use. So I decided to use this stack for exception handlers\n\nBUT!! the stack is used during the boot for initialization so we should disable the exception during this period. so now exceptions are enabled at the time the first task scheduled.\n\nOf course, I could make this stack used by the boot process and exceptions at the same time by adding a few instructions in exception handlers but I didn\u0027t want to add the thing only meaningful during boot time. during runtime, it\u0027s just wasting computing power.\n\nI know enabling irq for early printf is useful but in our case, I just delayed from uart_init() to tast_start().\n\nThere were some options without disabling interrupt. one option was to allocation completely separate memory area and just don\u0027t care about wasting memory for the early stack(used once and never used during runtime).\n\nthe other option was using any known bss area(so not used during initialization) for the early stack and zeros the area just before start the first task.\n\nFor short, to re-use the stack used by boot process, I need to disable interrupt until first task scheduled.",
+      "parentUuid": "0d328e04_8ca7624d",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
