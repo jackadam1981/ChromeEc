@@ -17,6 +17,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
 
@@ -31,8 +32,10 @@
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
 
 #define BAT_LEVEL_PD_LIMIT 85
+#define AC_IN_TIMEOUT_US (48*HOUR)
 
 static uint8_t batt_id = 0xff;
+static uint64_t acin_start_time;
 
 /* Do not change the enum values. We directly use strap gpio level to index. */
 enum battery_type {
@@ -127,6 +130,40 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	if (battery_is_present() == BP_YES)
 		return BATTERY_NOT_DISCONNECTED;
 	return BATTERY_DISCONNECTED;
+}
+
+static struct {
+	int cycle_max;
+	int desired_voltage;
+} cycle_zones[] = {
+		{300, 4376},
+		{600, 4320},
+		{1000, 4300},
+};
+
+void charge_cycle_lcv(struct charge_state_data *curr)
+{
+	int bat_cycle;
+
+	/* Cycle Count */
+	battery_cycle_count(&bat_cycle);
+
+	for (cycle_zone = 0; cycle_zone <
+		ARRAY_SIZE(cycle_zones); cycle_zone++) {
+		if (bat_cycle <= cycle_zones[cycle_zone].cycle_max)
+			break;
+	}
+
+	curr->requested_voltage = (cycle_zone < ARRAY_SIZE(cycle_zones)) ?
+		MIN(curr->requested_voltage,
+			cycle_zones[cycle_zone].desired_voltage) : 4250;
+}
+
+/* Return 1 if AC plugged in for longer than 48 hours, return 0 otherwise. */
+static int charge_lowvoltage(void)
+{
+	return acin_start_time &&
+	   (get_time().val - acin_start_time > AC_IN_TIMEOUT_US);
 }
 
 int charger_profile_override(struct charge_state_data *curr)
@@ -247,6 +284,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		break;
 	}
 
+	charge_cycle_lcv(curr);
+
+	if (charge_lowvoltage() && batt_id == BATTERY_SIMPLO)
+		curr->requested_voltage = MIN(curr->requested_voltage, 4250);
+
 	/*
 	 * When the charger says it's done charging, even if fuel gauge says
 	 * SOC < BATTERY_LEVEL_NEAR_FULL, we'll overwrite SOC with
@@ -272,6 +314,8 @@ int charger_profile_override(struct charge_state_data *curr)
 static void board_protection_reset(void)
 {
 	enable_idle();
+
+	acin_start_time = extpower_is_present() ? get_time().val : 0;
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_protection_reset, HOOK_PRIO_DEFAULT);
 
