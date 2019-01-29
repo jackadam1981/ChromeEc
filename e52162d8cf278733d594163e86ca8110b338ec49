@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6eb7effe_8f8450bf",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T06:46:24Z",
+      "side": 1,
+      "message": "As discussed, updated to use a fixed size equal to maximum size, as getting the size requires a TPM command anyway, so may as well read the whole thing as it\u0027s only a couple of bytes difference.",
+      "parentUuid": "d5ea8702_bc91bf59",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "e52162d8cf278733d594163e86ca8110b338ec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10e27be8_7873c293",
         "filename": "board/cr50/tpm2/virtual_nvmem.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e52162d8cf278733d594163e86ca8110b338ec49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2148406_732715b8",
+        "filename": "board/cr50/tpm2/virtual_nvmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T06:46:24Z",
+      "side": 1,
+      "message": "Updated to use a max size as discussed IRL",
+      "parentUuid": "10e27be8_7873c293",
+      "range": {
+        "startLine": 37,
+        "startChar": 39,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "e52162d8cf278733d594163e86ca8110b338ec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
