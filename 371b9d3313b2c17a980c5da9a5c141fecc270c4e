@@ -94,6 +94,30 @@
       "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcae859c_026ea3e4",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T21:27:15Z",
+      "side": 1,
+      "message": "Again, thank you for your very thorough reviews. I have updated the CL with this knowledge.",
+      "parentUuid": "b3dde188_b2b2e48c",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
