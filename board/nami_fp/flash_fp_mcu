@@ -3,6 +3,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+usage() {
+  echo "Usage: $0 [-r] ec.bin"
+  echo "options:"
+  echo "  -r    read instead of write"
+  echo "  -h    show help (this message)"
+  exit 1
+}
+
 # Kabylake PCH GPIOs
 KBL_GPIOCHIP="gpiochip360"
 
@@ -23,15 +31,39 @@ else
 	exit 1
 fi
 
-if [ ! -f "$1" ]; then
-	echo "Invalid image file: $1"
-	echo "Usage: $0 ec.bin"
-	exit 1
+readonly STM32MON_READ_FLAGS=" -U -u -p -s ${SPIDEV} -r"
+readonly STM32MON_WRITE_FLAGS="-U -u -p -s ${SPIDEV} -e -w"
+READ=""
+FILE=""
+STM32MON_FLAGS=""
+
+while getopts "r:h" OPTION; do
+  case ${OPTION} in
+  r)
+    READ="1"
+    FILE="${OPTARG}"
+    ;;
+  *|h)
+    usage
+    ;;
+  esac
+done
+shift $((${OPTIND} - 1))
+
+if [ ! -z "${READ}" ]; then
+  STM32MON_FLAGS="${STM32MON_READ_FLAGS}"
+else
+  STM32MON_FLAGS="${STM32MON_WRITE_FLAGS}"
+  FILE="${1}"
+  if [ ! -f "${FILE}" ]; then
+    echo "Invalid image file: ${FILE}"
+    usage
+  fi
 fi
 
 if ectool gpioget EC_WP_L | grep -q '= 0'; then
-	echo "Please make sure WP is deasserted."
-	exit 1
+  echo "Please make sure WP is deasserted."
+  exit 1
 fi
 
 # Ensure the ACPI is not cutting power when unloading cros-ec-spi
@@ -61,7 +93,7 @@ echo "${SPIID}" > /sys/bus/spi/drivers/spidev/bind
 echo 1 > /sys/class/gpio/gpio${GPIO_NRST}/value
 echo "in" > /sys/class/gpio/gpio${GPIO_NRST}/direction
 
-stm32mon -U -u -p -s ${SPIDEV} -e -w $1
+stm32mon ${STM32MON_FLAGS} ${FILE}
 
 # unload spidev
 echo "${SPIID}" > /sys/bus/spi/drivers/spidev/unbind
