@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9268a9c0_edeac59e",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "Add comment that this is Reload command bit, please",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887f5307_6c5e5c0d",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "the mode of this file is wrong. Please remove execute attribute\n\nAlso remove the (c)\n\nPlease use repo upload",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c1a302_57d8f04b",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "comment is wrong now. should be 10s not 1s.\n\n\nIt would also be helpful if we use define this as (10 * MSEC) instead to make it more readable\n\nThis would require the watch dog to have micro second resolution, which also seems reasonable since _hw_read is in microsecond resolution.",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 56
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9091f4f3_eb769ea1",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "let\u0027s add a comment saying we are waiting for hardware confirmation that the watch dog timer actually reloaded.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91d1255_584d5903",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "if we use T1 for the warning and T2 for the reset, then we should be able to read the value of the watch dog and print out stack trace at this point.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dba4e98_f896f6ba",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "can we set the clock dividor the the same as [0], so we have micro second resolution always?\n\nThen we can use (10*SECOND) and (10 * SECOND - (500 * MSEC)) and the watchdog and early warning interrupt times.\n\n\n[0] https://chromium.googlesource.com/chromiumos/platform/ec/+/ca7eba386a9e837cc0ec20a198a26a06066466e4/chip/ish/hwtimer.c#17",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec63670_a7d49fd8",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "shouldn\u0027t we not reload at this point, won\u0027t this prevent the watchdog hardware from tripping?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c786fc0_53c33383",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "the mode of this file is wrong. Please remove execute attribute",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "712d0fb1_063f5b92",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:18:24Z",
+      "side": 1,
+      "message": "this +x bit has been set on this file. Please revert this change.\n\nrepo upload also catches this type of mistake. Again, please use repo upload",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "c5fe196d5aafd0a8c5844b3660895e123fbd2eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
