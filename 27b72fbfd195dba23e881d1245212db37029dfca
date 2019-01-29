@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0effdc71_8ef1283b",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:58:19Z",
+      "side": 1,
+      "message": "can we rename this to cached_stack_ptr:\n\nand keep stack_end pointing to .global stack_end so there is not confusion about which one is being used in any file",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 9
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af6ccff_9c87a3bb",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:58:19Z",
+      "side": 1,
+      "message": "Are we guaranteed to not have nested IRQ/exceptions? If we nest at all, then we lost the last value of the stack. Should we add a check to __in_isr \u003d\u003d 1?",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f542277_b2d44dc3",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:58:19Z",
+      "side": 1,
+      "message": "don\u0027t we need to ensure that there is enough space after stack_end for the stack to grow without running into anything else, i.e. should we reserve space in init.S?",
+      "range": {
+        "startLine": 59,
+        "startChar": 16,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d85712e_e5629ac9",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T16:58:19Z",
+      "side": 1,
+      "message": "I haven\u0027t seen the \"frame pointer\" register used in the in minute-ia code yet. Do we need to set this since we aren\u0027t setting it anywhere else?",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "27b72fbfd195dba23e881d1245212db37029dfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
