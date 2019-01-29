@@ -592,7 +592,7 @@ static int init(const struct motion_sensor_t *s)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
-#ifdef CONFIG_MAG_LIS2MDL
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 		/*
 		 * TODO: Check for pass-through mode instead of magnetometer
 		 * config.
@@ -625,7 +625,7 @@ static int init(const struct motion_sensor_t *s)
 		ret = st_raw_write8(s->port, s->addr, ctrl_reg, 0);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
-#endif
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 
 		/*
 		 * Output data not updated until have been read.
