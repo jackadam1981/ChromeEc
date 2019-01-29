@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "87c7bcfc_f62e9d25",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-29T21:38:28Z",
+      "side": 1,
+      "message": "You mean between nocturne/nami?\n\nYes, I\u0027d like to do that, but that was discouraged here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1370745/5#message-a5389d2cb37ef01ba3d2542716af45bc135e78e2",
+      "parentUuid": "91615d5c_ea605d45",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a5a85ef_594936c1",
         "filename": "board/nocturne_fp/flash_fp_mcu",
         "patchSetId": 1
