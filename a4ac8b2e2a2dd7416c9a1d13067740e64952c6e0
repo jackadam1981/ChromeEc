@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9768c610_651f926b",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-29T23:22:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this is POSIX shell. I\u0027d just drop it.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d084214f_8391e813",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2019-01-29T21:32:53Z",
       "side": 1,
       "message": "/usr/share/misc/shflags already has a way to parse the command line, can you use that instead? You can see an example use case in dev_install with all the DEFINE_xxxx flags.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ee8947_a0956c2c",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-29T23:22:06Z",
+      "side": 1,
+      "message": "Is /usr/share/misc/shflags always available on the DUT?\n\nI\u0027ve a bit worried about adding a dependency to this script (it\u0027s meant to be simple, for debugging/testing/RMA...).",
+      "parentUuid": "d084214f_8391e813",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -84,6 +131,30 @@
       "side": 1,
       "message": "That was a review comment I got a while ago, and it makes sense for readability: double negatives are best avoided.\nThe style guide go/shstyle#Testing_Strings doesn\u0027t mention it explicitly to be fair",
       "parentUuid": "b3b12348_db060a05",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af26ca0f_a20de6a9",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-29T23:22:06Z",
+      "side": 1,
+      "message": "+1 for \u0027-n\u0027\n\nof more commonly: \"${READ}\" \u003d \"y\"",
+      "parentUuid": "99dbddad_7827e635",
       "range": {
         "startLine": 53,
         "startChar": 5,
