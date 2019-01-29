@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fdf48be_509ffdb1",
+        "filename": "include/u2f.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-01-29T08:32:35Z",
+      "side": 1,
+      "message": "so, we switched to using U2F_FIXED_KH_SIZE in the latest CL. wouldn\u0027t it be better to support variable-size keyhandles from the very beginning (e.g. if we ever change the kh-calc algorithm, we can prepend a byte with version to kh and do migration where possible before dropping the old scheme).",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "8a81d196317f54c9a51b90fdb8c68a5f8e2f295c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
