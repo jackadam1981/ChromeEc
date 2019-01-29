@@ -91,6 +91,30 @@
       "revId": "37294e276bdc6bef56846a7f212aa64a8bd40f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e802ccd_878db8eb",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-01-29T00:57:45Z",
+      "side": 1,
+      "message": "We try increase to 95%, but it still fail.\nThe 92% is discussed with ASUS.",
+      "parentUuid": "df3c2007_ccdc029c",
+      "range": {
+        "startLine": 532,
+        "startChar": 25,
+        "endLine": 532,
+        "endChar": 27
+      },
+      "revId": "37294e276bdc6bef56846a7f212aa64a8bd40f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
