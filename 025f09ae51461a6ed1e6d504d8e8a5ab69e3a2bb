@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfb79969_38ee1bef",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-29T19:39:32Z",
+      "side": 1,
+      "message": "Add a comment to provide context as to how this differs from the other LIS2MDL config, and whether they both need to be defined in cascade mode",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 33
+      },
+      "revId": "025f09ae51461a6ed1e6d504d8e8a5ab69e3a2bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
