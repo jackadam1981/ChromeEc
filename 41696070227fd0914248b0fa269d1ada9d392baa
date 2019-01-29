@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80dc8dfc_ca1e669e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T15:08:30Z",
+      "side": 1,
+      "message": "it seems weird to have CONFIG_BATTERY_CUT_OFF_WB defined without CONFIG_BATTERY_CUT_OFF\n\n\nCan we remove this #ifdef and always keep the if (battery_is_cut_off()) condition since it seems like a reasonable condition to check before trying to put the battery in cutoff.\n\n(we could even move this is cutoff check up a level into the board_cut_off_battery)",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "41696070227fd0914248b0fa269d1ada9d392baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adfe376_3b8e252d",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T15:08:30Z",
+      "side": 1,
+      "message": "if the above condition moves out, then we should create a sb_write_block function that board_cut_off_battery should use instead.",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "41696070227fd0914248b0fa269d1ada9d392baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24fef04_16cfcaec",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T15:08:30Z",
+      "side": 1,
+      "message": "let\u0027s change this to a length, if it is non-zero then we go down the write block path, if it is 0 then we use the reg_data path",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "41696070227fd0914248b0fa269d1ada9d392baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416860ca_0ac3d531",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-29T15:08:30Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be the case any more. Let\u0027s update this comment",
+      "range": {
+        "startLine": 370,
+        "startChar": 41,
+        "endLine": 370,
+        "endChar": 62
+      },
+      "revId": "41696070227fd0914248b0fa269d1ada9d392baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
