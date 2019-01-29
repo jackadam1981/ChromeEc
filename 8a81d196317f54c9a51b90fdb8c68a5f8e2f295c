@@ -22,6 +22,30 @@
       "revId": "8a81d196317f54c9a51b90fdb8c68a5f8e2f295c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb39ea6d_ef5eab05",
+        "filename": "include/u2f.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-01-29T10:44:48Z",
+      "side": 1,
+      "message": "yea good point, as discussed IRL, leaving this as-is, and I will do the work necessary to migrate if this is required in future",
+      "parentUuid": "8fdf48be_509ffdb1",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "8a81d196317f54c9a51b90fdb8c68a5f8e2f295c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
