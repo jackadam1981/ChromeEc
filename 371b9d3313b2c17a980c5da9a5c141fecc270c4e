@@ -70,6 +70,30 @@
       "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3dde188_b2b2e48c",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-29T19:05:54Z",
+      "side": 1,
+      "message": "%ecx and %edx have the arguments(resched and desched) through software interrupt(__schedule()).\nThe problem is \"task_start_irq_handler\" uses(ruins) %ecx and %edx in it.\n\nso the contents of the registers should be protected before calling \"task_start_irq_handler\" so that it can used by \"switch_handler\" w/o problem.\n\nI saw mis-behavior due to this.",
+      "parentUuid": "a67e1df1_d2ec596d",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "371b9d3313b2c17a980c5da9a5c141fecc270c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
