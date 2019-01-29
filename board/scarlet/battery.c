@@ -18,6 +18,7 @@
 #include "hooks.h"
 #include "system.h"
 #include "usb_pd.h"
+#include "timer.h"
 #include "util.h"
 
 /*
@@ -29,10 +30,13 @@
 #define CHARGE_PHASE_CHANGED_CURRENT_MA 1800
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
+#define CYCLE_OUT_OF_RANGE CYCLE_ZONE_COUNT
 
 #define BAT_LEVEL_PD_LIMIT 85
+#define AC_IN_48HR	(48*HOUR)
 
 static uint8_t batt_id = 0xff;
+static timestamp_t acin_start_time;
 
 /* Do not change the enum values. We directly use strap gpio level to index. */
 enum battery_type {
@@ -127,6 +131,72 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	if (battery_is_present() == BP_YES)
 		return BATTERY_NOT_DISCONNECTED;
 	return BATTERY_DISCONNECTED;
+}
+
+enum {
+	CYCLE_ZONE_0,
+	CYCLE_ZONE_1,
+	CYCLE_ZONE_2,
+	CYCLE_ZONE_COUNT
+} cycle_zone;
+
+static struct {
+	int cycle_min;
+	int cycle_max;
+	int desired_voltage;
+} cycle_zones[CYCLE_ZONE_COUNT] = {
+		{0, 301, 4376},
+		{301, 601, 4320},
+		{601, 1001, 4300},
+};
+
+void charge_cycle_lcv(struct charge_state_data *curr)
+{
+	int bat_cycle;
+
+	/* Cycle Count */
+	battery_cycle_count(&bat_cycle);
+
+	if ((bat_cycle < cycle_zones[0].cycle_min) ||
+	    (bat_cycle >= cycle_zones[CYCLE_ZONE_COUNT - 1].cycle_max))
+		cycle_zone = CYCLE_OUT_OF_RANGE;
+	else {
+		for (cycle_zone = 0; cycle_zone <
+				CYCLE_ZONE_COUNT; cycle_zone++) {
+			if (bat_cycle <
+				cycle_zones[cycle_zone].cycle_max)
+				break;
+		}
+	}
+
+	switch (cycle_zone) {
+	case CYCLE_ZONE_0:
+		break;
+	case CYCLE_ZONE_1:
+	case CYCLE_ZONE_2:
+		curr->requested_voltage = MIN(curr->requested_voltage,
+			cycle_zones[cycle_zone].desired_voltage);
+		break;
+	case CYCLE_OUT_OF_RANGE:
+		curr->requested_voltage =
+			MIN(curr->requested_voltage, 4250);
+		break;
+	}
+}
+
+/**
+ * When the system AC IN lasts longer than 48 hours
+ * and Charger Voltage > 4.25V, need change charge
+ * voltage to 4.25V
+ *
+ * @return 0, or non-zero if AC_IN not 48hr.
+ */
+static int charge_lowvoltage(void)
+{
+	if (acin_start_time.val &&
+	   (get_time().val - acin_start_time.val > AC_IN_48HR))
+		return 0;
+	return 1;
 }
 
 int charger_profile_override(struct charge_state_data *curr)
@@ -247,6 +317,13 @@ int charger_profile_override(struct charge_state_data *curr)
 		break;
 	}
 
+	charge_cycle_lcv(curr);
+
+	if (!charge_lowvoltage() && batt_id == BATTERY_SIMPLO) {
+		if (curr->requested_voltage > 4250)
+			curr->requested_voltage = 4250;
+	}
+
 	/*
 	 * When the charger says it's done charging, even if fuel gauge says
 	 * SOC < BATTERY_LEVEL_NEAR_FULL, we'll overwrite SOC with
@@ -271,7 +348,10 @@ int charger_profile_override(struct charge_state_data *curr)
 
 static void board_protection_reset(void)
 {
+	acin_start_time.val = 0;
 	enable_idle();
+	if (extpower_is_present())
+		acin_start_time = get_time();
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_protection_reset, HOOK_PRIO_DEFAULT);
 
