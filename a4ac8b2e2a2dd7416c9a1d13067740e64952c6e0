@@ -141,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "13851e51_dc436b34",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-29T21:48:15Z",
+      "side": 1,
+      "message": ":-)\n\nYep! Now that flash_fp_mcu (and presumably config.sh) is deployed cleanly to test images by an ebuild and we\u0027re adding more features, we can do the opposite of what that clueless reviewer wanted :-)\nDoes that make sense?",
+      "parentUuid": "87c7bcfc_f62e9d25",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 1
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a5a85ef_594936c1",
         "filename": "board/nocturne_fp/flash_fp_mcu",
         "patchSetId": 1
