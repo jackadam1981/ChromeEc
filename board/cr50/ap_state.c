@@ -4,12 +4,11 @@
  *
  * AP state machine
  */
-#include "ccd_config.h"
-#include "common.h"
-#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "registers.h"
 #include "system.h"
+#include "tpm_registers.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
@@ -105,6 +104,7 @@ void set_ap_on(void)
 	gpio_enable_interrupt(GPIO_DETECT_TPM_RST_L_ASSERTED);
 }
 
+uint8_t waiting_for_ap_reset;
 /*
  * If TPM_RST_L is asserted, the AP is in reset. Disable all AP functionality
  * in 1 second if it remains asserted.
@@ -113,6 +113,7 @@ void tpm_rst_asserted(enum gpio_signal signal)
 {
 	/* Disable the level triggered interrupt */
 	gpio_disable_interrupt(GPIO_DETECT_TPM_RST_L_ASSERTED);
+	CPRINTS("TPM RST asserted");
 
 	/*
 	 * It's possible the signal is being pulsed. Wait 1 second to disable
@@ -122,6 +123,29 @@ void tpm_rst_asserted(enum gpio_signal signal)
 	hook_call_deferred(&deferred_set_ap_off_data, SECOND);
 
 	set_state(DEVICE_STATE_DEBOUNCING);
+
+	if (waiting_for_ap_reset) {
+		waiting_for_ap_reset = 0;
+		deassert_ec_rst();
+		enable_sleep(SLEEP_MASK_AP_RUN);
+	}
+}
+
+void board_closed_loop_reset(void)
+{
+	/* Disable sleep while waiting for the reset */
+	disable_sleep(SLEEP_MASK_AP_RUN);
+
+	waiting_for_ap_reset = 1;
+
+	/* Disable AP communications with the TPM until cr50 sees the reset */
+	tpm_stop();
+
+	/* Use EC_RST_L to reset the system */
+	assert_ec_rst();
+
+	/* Enable the interrupt to detect AP reset */
+	gpio_enable_interrupt(GPIO_DETECT_TPM_RST_L_ASSERTED);
 }
 
 /**
