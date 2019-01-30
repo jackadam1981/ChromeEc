@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "2b9fafa9_982d79e1",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-30T00:23:16Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1444096",
+      "parentUuid": "54d0d95d_507588f3",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91615d5c_ea605d45",
         "filename": "board/nocturne_fp/flash_fp_mcu",
         "patchSetId": 1
