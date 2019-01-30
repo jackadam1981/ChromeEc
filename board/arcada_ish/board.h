@@ -31,11 +31,24 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
+#define CONFIG_ACCELGYRO_LSM6DS3
+
+/* HECI Support*/
+#define CONFIG_HECI
+/* ISH IPC (over HECI) */
+#define CONFIG_ISH_IPC
+/* Host command over HECI */
+#define CONFIG_HOSTCMD_HECI
+
 /* I2C ports */
 #define I2C_PORT_SENSOR ISH_I2C0
 #define CONFIG_CMD_I2C_XFER
 
-/* Undefine features */
+/* EC Console Commands */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+
+/* Undefined features */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_KEYBOARD
@@ -55,7 +68,6 @@
 #undef CONFIG_WATCHDOG
 
 /* Modules we want to exclude */
-#undef CONFIG_CMD_ACCELS
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_CMD_TIMERINFO
@@ -66,6 +78,13 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+
+/* Motion sensors */
+enum sensor_id {
+	BASE_ACCEL,
+	/* TODO(b/122281217): Add remain sensors */
+	SENSOR_COUNT
+};
 
 #endif /* !__ASSEMBLER__ */
 
