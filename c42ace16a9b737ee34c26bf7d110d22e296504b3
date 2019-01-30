@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10b57ca7_938338c7",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T02:32:17Z",
+      "side": 1,
+      "message": "\u003e I\u0027m confused. What are the changes? Is this CL ready for review?\n\nHi Daisuke:\nThere maybe some mistakes in Gerrit review system.\n\nWe un-symlink usb_pd_policy.c and copy it from kukui . \nIn local ,run \u0027git log  --name-status -1\u0027 it shows\n\nT       board/flapjack/usb_pd_policy.c\n\n\nPlease select \"Patchset 1\" against \"Patchset 5\" in Gerrit file diff page. \nThen the file contents would show .",
+      "parentUuid": "9ae0450d_6e407f0d",
+      "revId": "c42ace16a9b737ee34c26bf7d110d22e296504b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d003dca1_bd0df362",
         "filename": "board/flapjack/usb_pd_policy.c",
         "patchSetId": 4
