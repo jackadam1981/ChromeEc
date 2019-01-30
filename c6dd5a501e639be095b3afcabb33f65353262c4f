@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "310d809e_91643d8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T03:52:51Z",
+      "side": 1,
+      "message": "Does Kukui have the same ALS sensor?",
+      "revId": "c6dd5a501e639be095b3afcabb33f65353262c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddbcbc81_5fd4d2ef",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T03:52:51Z",
+      "side": 1,
+      "message": "If Kukui suport OPT3001, Please change the commit message",
+      "revId": "c6dd5a501e639be095b3afcabb33f65353262c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
