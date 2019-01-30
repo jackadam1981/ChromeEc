@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "99654497_2d0b7316",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T16:53:21Z",
+      "side": 1,
+      "message": "I uploaded https://crrev.com/c/1446631/. Please rebase on it.",
+      "parentUuid": "10b57ca7_938338c7",
+      "revId": "c42ace16a9b737ee34c26bf7d110d22e296504b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d003dca1_bd0df362",
         "filename": "board/flapjack/usb_pd_policy.c",
         "patchSetId": 4
