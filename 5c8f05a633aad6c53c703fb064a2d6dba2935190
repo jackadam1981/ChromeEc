@@ -22,6 +22,30 @@
       "revId": "5c8f05a633aad6c53c703fb064a2d6dba2935190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae9403e3_c532f81b",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-01-30T18:26:20Z",
+      "side": 1,
+      "message": "I used the same prefix since this rule uses the same make command to build as the test builds (cmd_host_test).\n\nthe fact that this is a fuzz build is reflected in the suffix of the target (_fuzz), so it is clear what it is.",
+      "parentUuid": "a04050c6_a7264d97",
+      "range": {
+        "startLine": 279,
+        "startChar": 29,
+        "endLine": 279,
+        "endChar": 33
+      },
+      "revId": "5c8f05a633aad6c53c703fb064a2d6dba2935190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
