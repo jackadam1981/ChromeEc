@@ -347,12 +347,15 @@ const mat33_fp_t lid_standard_ref = {
 #endif
 };
 
+
+#ifdef BOARD_KUKUI
 /* Matrix to rotate accelrator into standard reference frame */
 const mat33_fp_t mag_standard_ref = {
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
+#endif
 
 struct motion_sensor_t motion_sensors[] = {
 	/*
@@ -419,6 +422,7 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 	 },
 	},
+#ifdef BOARD_KUKUI
 	[LID_MAG] = {
 	 .name = "Lid Mag",
 	 .active_mask = SENSOR_ACTIVE_S0,
@@ -435,6 +439,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMM150_MAG_MIN_FREQ,
 	 .max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
 	},
+#endif
 	[VSYNC] = {
 	 .name = "Camera vsync",
 	 .active_mask = SENSOR_ACTIVE_S0,
