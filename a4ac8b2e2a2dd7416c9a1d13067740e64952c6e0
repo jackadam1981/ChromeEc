@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6a44dd0e_68ca1934",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-01-30T00:17:28Z",
+      "side": 1,
+      "message": "At least on nocturne it\u0027s required by chromeos-installer that is required by virtual/target-chromium-os (and factory_installer). dev_install also uses it (although that one seems to have forgotten to enforce the dependency tbf), so does powerd_suspend. Seems like a relatively safe assumption, wdyt?",
+      "parentUuid": "20ee8947_a0956c2c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6731831_f80d6463",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
