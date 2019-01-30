@@ -2995,6 +2995,16 @@
  */
 #define CONFIG_TASK_PROFILING
 
+/*
+ * If define, tasks can have platform specific flags.
+ * The flags are task specific but consumed by system's
+ * low level components like task scheduler.
+ *
+ * This enables existing macros to accept task specific flags like below
+ * TASK_xxxxx(n, r, d, s) -> TASK_xxxxx(n, r, d, s, f)
+ */
+#define CONFIG_TASK_HAS_FLAGS
+
 /*****************************************************************************/
 /* Temperature sensor config */
 

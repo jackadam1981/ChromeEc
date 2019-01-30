@@ -25,7 +25,13 @@ struct taskinfo {
 	uint32_t stack_size;
 };
 
-#define TASK(n, r, d, s)  {	\
+#ifdef CONFIG_TASK_HAS_FLAGS
+#define TASK(n, r, d, s, f)	__TASK_(n, r, d, s)
+#else
+#define TASK(n, r, d, s)	__TASK_(n, r, d, s)
+#endif
+
+#define __TASK_(n, r, d, s)  {	\
 	.name = #n,		\
 	.routine = #r,		\
 	.stack_size = s,	\
@@ -33,6 +39,7 @@ struct taskinfo {
 static const struct taskinfo taskinfos[] = {
 	CONFIG_TASK_LIST
 };
+#undef __TASK_
 #undef TASK
 
 uint32_t GET_TASKINFOS_FUNC(const struct taskinfo **infos)

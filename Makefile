@@ -123,6 +123,8 @@ endif
 
 _tsk_lst_flags+=-I$(BDIR) -DBOARD_$(UC_BOARD) -I$(BASEDIR) \
 		-DBASEBOARD_$(UC_BASEBOARD) -D_MAKEFILE \
+		-I. -I./include -Itest -Ifuzz -Icore/$(CORE) -Ichip/$(CHIP) \
+		-imacros include/config.h \
 		-imacros $(_tsk_lst_file)
 
 _tsk_lst_ro:=$(shell $(CPP) -P -DSECTION_IS_RO \
