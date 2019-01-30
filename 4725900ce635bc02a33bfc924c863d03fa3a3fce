@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85414135_6a17922b",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-30T21:03:45Z",
+      "side": 1,
+      "message": "Ah, let make this 5 here and bit shift when we set the actual register. This confused me at first",
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae58d37_d481bf16",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-30T21:03:45Z",
+      "side": 1,
+      "message": "Can we just make the divisor make each tick 100usecs and comment it as such (and not add periods together)",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc24399_a5172e51",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-30T21:03:45Z",
+      "side": 1,
+      "message": "this addition doesn\u0027t work because T2 is already bit shifted?",
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fedbaf_e6d37e23",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-30T21:03:45Z",
+      "side": 1,
+      "message": "Should this be 10.0s?\n\nWon\u0027t T2 go off after 0.5 seconds? or is T2 start after T1. I am a little confused about this. Can you explain a little more please.",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
