@@ -143,6 +143,40 @@
     },
     {
       "key": {
+        "uuid": "f0a02878_0f00ce3c",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-30T03:30:41Z",
+      "side": 1,
+      "message": "Source file should not be an executable. Please make it 644",
+      "revId": "6943e2a82bd3f6ab85453321049850bd83e2d26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf490cb6_9c4f81fe",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-01-30T03:30:41Z",
+      "side": 1,
+      "message": "The file mode becomes 755, should be 644.",
+      "revId": "6943e2a82bd3f6ab85453321049850bd83e2d26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd5b9b6a_bac9e7f8",
         "filename": "board/kukui/board.h",
         "patchSetId": 1
