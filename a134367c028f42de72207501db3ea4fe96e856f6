@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a638b460_81bc6d2a",
+        "filename": "board/meep/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-30T22:18:01Z",
+      "side": 1,
+      "message": "Why add the FPU here?  I believe we\u0027ve been using fixed-point math for our octopus boards",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ed9d75_93361971",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-30T22:18:01Z",
+      "side": 1,
+      "message": "This can go back to being static if it\u0027s no longer needed for the sensorhub code",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 25
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d009073_3ba69c9b",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-30T22:18:01Z",
+      "side": 1,
+      "message": "How does this check differ from the one performed in lines 572-577?",
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97fd2e60_4aec16a4",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-30T22:18:01Z",
+      "side": 1,
+      "message": "Would this also be the array size if CONFIG_MAG_LSM6DSM_BMM150 is defined?  Or does that magnetometer require a different data structure?  \n\nIt might also be worth clarifying somewhere that this is indexed by the enum motionsensor_type, so it may need re-factored if we add an external sensor of a different type",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a44ac3_c1929bb6",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-30T22:18:01Z",
+      "side": 1,
+      "message": "Same include as line 14?",
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
