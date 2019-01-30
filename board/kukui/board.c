@@ -327,9 +327,15 @@ static struct bmi160_drv_data_t g_bmi160_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t lid_standard_ref = {
+#ifdef BOARD_FLAPJACK_REV
+	{ 0,  FLOAT_TO_FP(-1),  0},
+	{ FLOAT_TO_FP(-1), 0,  0},
+	{ 0,  0, FLOAT_TO_FP(-1)}
+#else
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0,  FLOAT_TO_FP(1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
+#endif
 };
 
 /* Matrix to rotate accelrator into standard reference frame */
