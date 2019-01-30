@@ -104,6 +104,10 @@
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
+#define CONFIG_ALS_OPT3001
+#ifdef BOARD_FLAPJACK_REV
+#define CONFIG_ACCEL_FORCE_MODE_MASK	(1 << LID_ALS)
+#endif
 
 /* Camera VSYNC */
 #define CONFIG_SYNC
@@ -190,6 +194,7 @@
 #define I2C_PORT_BATTERY  1
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
 #define I2C_PORT_ACCEL    1
+#define I2C_PORT_ALS      1
 
 /* Route sbs host requests to virtual battery driver */
 #define VIRTUAL_BATTERY_ADDR 0x16
@@ -230,11 +235,15 @@ enum power_signal {
 	POWER_SIGNAL_COUNT,
 };
 
+#define CONFIG_ALS
+#define ALS_COUNT 1
+
 /* Motion sensors */
 enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
 	LID_MAG,
+	LID_ALS,
 	VSYNC,
 };
 
