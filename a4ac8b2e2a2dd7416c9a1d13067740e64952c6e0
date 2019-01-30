@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0270cde_bf9e14eb",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-30T00:11:50Z",
+      "side": 1,
+      "message": "Looks like it is?\n\nhttp://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#readonly\n\nhttps://google.github.io/styleguide/shell.xml?showone\u003dRead-only_Variables#Read-only_Variables",
+      "parentUuid": "9768c610_651f926b",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d084214f_8391e813",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
