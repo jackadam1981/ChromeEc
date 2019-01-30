@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Copyright 2018 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -8,7 +8,7 @@ CNL_GPIOCHIP="gpiochip268"
 # Kabylake PCH GPIOs
 KBL_GPIOCHIP="gpiochip360"
 
-if [ -e "/sys/class/gpio/${CNL_GPIOCHIP}" ]; then
+if [[ -e "/sys/class/gpio/${CNL_GPIOCHIP}" ]]; then
   # Meowth configuration
 
   SPIDEV="/dev/spidev1.0"
@@ -20,7 +20,7 @@ if [ -e "/sys/class/gpio/${CNL_GPIOCHIP}" ]; then
   GPIO_BOOT0=289
   # FP_PWR_EN is on GPP_A11 = 268 + 11 = 279
   GPIO_PWREN=279
-elif [ -e "/sys/class/gpio/${KBL_GPIOCHIP}" ]; then
+elif [[ -e "/sys/class/gpio/${KBL_GPIOCHIP}" ]]; then
   # Nocturne configuration
 
   SPIDEV="/dev/spidev32765.0"
@@ -37,7 +37,7 @@ else
   exit 1
 fi
 
-if [ ! -f "$1" ]; then
+if [[ ! -f "$1" ]]; then
   echo "Invalid image file: $1"
   echo "Usage: $0 ec.bin"
   exit 1
