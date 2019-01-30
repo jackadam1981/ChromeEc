@@ -94,6 +94,30 @@
       "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9d3765_168131ec",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-30T02:21:43Z",
+      "side": 0,
+      "message": "introduced new changes for this\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1444538\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1444792",
+      "parentUuid": "17a869b4_0a7c7c18",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
