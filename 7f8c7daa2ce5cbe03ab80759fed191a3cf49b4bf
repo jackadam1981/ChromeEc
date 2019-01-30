@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45897269_be71fc55",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-30T02:08:15Z",
+      "side": 1,
+      "message": "Please don\u0027t change the behavior of the other battery packs.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "7f8c7daa2ce5cbe03ab80759fed191a3cf49b4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3166565_164391f6",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-30T02:08:15Z",
+      "side": 1,
+      "message": "As mentioned in your original CL, please implement this feature with timer.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 0
+      },
+      "revId": "7f8c7daa2ce5cbe03ab80759fed191a3cf49b4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6b770a_77a9e2ac",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-30T02:08:15Z",
+      "side": 1,
+      "message": "This looks incorrect.\nYou completely overwrite the request voltage from the above temperature-based charge algorithm.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 24
+      },
+      "revId": "7f8c7daa2ce5cbe03ab80759fed191a3cf49b4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
