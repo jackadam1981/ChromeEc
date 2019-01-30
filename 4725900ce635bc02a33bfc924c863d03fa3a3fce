@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4b88d0b3_20f3ec43",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-30T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85414135_6a17922b",
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fae58d37_d481bf16",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-30T21:03:45Z",
       "side": 1,
       "message": "Can we just make the divisor make each tick 100usecs and comment it as such (and not add periods together)",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 26
+      },
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4119c5aa_d2b41c72",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-30T23:59:51Z",
+      "side": 1,
+      "message": "In this field we need a value to make the entire desired period when T1 and T2 counted down to zero. As T1 + T2 is 100, this field is effectively/strictly 100ms. We only have one byte field for T1 and T2. So a 100usec granularity can\u0027t be made as it gives only 10ms (100 * 100us) maximum period and we will need to use extra counter to accommodate it which would complicate the code flow. Let me know if you feel we should go that way.",
+      "parentUuid": "fae58d37_d481bf16",
       "range": {
         "startLine": 21,
         "startChar": 8,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "7b839e9a_c95ff201",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-30T23:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcc24399_a5172e51",
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30fedbaf_e6d37e23",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 7
@@ -79,6 +139,30 @@
       "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e97143b_22ccbe20",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-01-30T23:59:51Z",
+      "side": 1,
+      "message": "T2 starts after T1 expires. So in our case we need to put them 9.5s and 0.5s. Sorry for the confusion.",
+      "parentUuid": "30fedbaf_e6d37e23",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "4725900ce635bc02a33bfc924c863d03fa3a3fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
