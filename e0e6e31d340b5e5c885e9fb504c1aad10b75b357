@@ -70,6 +70,30 @@
       "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a869b4_0a7c7c18",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-30T01:04:24Z",
+      "side": 0,
+      "message": "\u003e\u003e How did you catch this specific case?\nI implemented thing in exception handler and didn\u0027t work. The only thing makes the implementation not working is someone enables interrupt(I\u0027m an experienced who knows how it should work or what makes this kind of problem) since I know \"cli\" called in .reset.\nSo I searched \"sti\" -\u003e found \"interrupt_enable()\" -\u003e searched \"interrupt_enable()\" before task_start() -\u003e found uart_init(). ^.^;;;;;;\n\n\n\u003e\u003e Also, should we put a protection in interrupt_enable(void) (minute-ia/task.c) to  ensure that it is never called before tasks are started (to prevent future bugs) ?\nHm.. T.T , yeah, I know but I didn\u0027t do it since it needed other proper changes like move \"start_called\" to proper place. How lazy I\u0027m. Let me get the proper change first. Thank you.",
+      "parentUuid": "cb6487dc_4fe3cb69",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
