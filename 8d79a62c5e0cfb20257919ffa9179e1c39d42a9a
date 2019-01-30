@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3e4c3606_a1865c28",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-30T23:55:42Z",
+      "side": 1,
+      "message": "Does this function either need protection against setting the CC lines on a TCPC mux (similar to tcpci_tcpm_mux_init()) or a comment on the ps8xxx_usb_mux_driver that this is meant for mux-only applications?",
+      "range": {
+        "startLine": 210,
+        "startChar": 11,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "8d79a62c5e0cfb20257919ffa9179e1c39d42a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b515a98a_f88fe104",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 1
