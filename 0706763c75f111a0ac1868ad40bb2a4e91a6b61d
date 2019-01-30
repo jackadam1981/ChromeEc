@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47ec8e7_9db6e747",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-01-30T21:55:38Z",
+      "side": 1,
+      "message": "IIUC, 4350mV should match to cycle# 21-50, 4335mV should match to cycle# 51-300, ...etc.\nCan you confirm with HW folks?\n\nAlso, didn\u0027t we only agree to implement the protection for cycle# \u003e 300?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "0706763c75f111a0ac1868ad40bb2a4e91a6b61d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
