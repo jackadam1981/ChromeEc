@@ -12,13 +12,20 @@
  * TASK_NOTEST(n, r, d, s) for tasks that can be excluded in test binaries,
  * where :
  * 'n' in the name of the task
- * 'r' in the main routine of the task
+ * 'r' in the main routine of the task. should use MIA_ROUTINE() or MIA_ROUTINE_FPU()
+ *     - MIA_ROUTINE(r) : task doesn't use FPU H/W
+ *     - MIA_ROUTINE_FPU(r) : task uses FPU H/W
+ *     Example: if a task has large stack size and it uses FPU H/W, then
+ *      TASK_ALWAYS(ID, MIA_ROUTINE_FPU(routine), params, LARGER_TASK_STACK_SIZE)
  * 'd' in an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
  */
 
+#define MIA_ROUTINE(r)				(r)
+#define MIA_ROUTINE_FPU(r)			(r)
+
 #define CONFIG_TASK_LIST \
-	TASK_ALWAYS(HOOKS, hook_task, NULL, HUGE_TASK_STACK_SIZE) \
-	TASK_ALWAYS(CONSOLE, console_task, NULL, LARGER_TASK_STACK_SIZE) \
-	TASK_ALWAYS(HECI_RX, heci_rx_task, NULL, HUGE_TASK_STACK_SIZE) \
-	TASK_ALWAYS(IPC_MNG, ipc_mng_task, NULL, LARGER_TASK_STACK_SIZE)
+	TASK_ALWAYS(HOOKS, MIA_ROUTINE(hook_task), NULL, HUGE_TASK_STACK_SIZE) \
+	TASK_ALWAYS(CONSOLE, MIA_ROUTINE(console_task), NULL, LARGER_TASK_STACK_SIZE) \
+	TASK_ALWAYS(HECI_RX, MIA_ROUTINE(heci_rx_task), NULL, HUGE_TASK_STACK_SIZE) \
+	TASK_ALWAYS(IPC_MNG, MIA_ROUTINE(ipc_mng_task), NULL, LARGER_TASK_STACK_SIZE)
