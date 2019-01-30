@@ -22,6 +22,30 @@
       "revId": "6982e8f0c0fd7a89041d39509d61619cb731ce32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3225e176_656de203",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-01-30T20:26:55Z",
+      "side": 1,
+      "message": "Will do. Are there any devices that would have this config and need to be flashed?",
+      "parentUuid": "37aaba3f_57b00888",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "6982e8f0c0fd7a89041d39509d61619cb731ce32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
