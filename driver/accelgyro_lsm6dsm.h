@@ -27,6 +27,7 @@
 /* Who Am I */
 #define LSM6DSM_WHO_AM_I_REG		0x0f
 #define LSM6DSM_WHO_AM_I		0x6a
+#define LSM6DS3_WHO_AM_I		0x69
 
 /* COMMON DEFINE FOR ACCEL-GYRO SENSORS */
 #define LSM6DSM_EN_BIT			0x01
@@ -68,10 +69,6 @@
 #define LSM6DSM_ODR_REG(_sensor) \
 	(LSM6DSM_CTRL1_ADDR + _sensor)
 #define LSM6DSM_ODR_MASK		0xf0
-
-/* Hardware FIFO size in byte */
-#define LSM6DSM_MAX_FIFO_SIZE		4096
-#define LSM6DSM_MAX_FIFO_LENGTH	(LSM6DSM_MAX_FIFO_SIZE / OUT_XYZ_SIZE)
 
 /* FIFO decimator registers and bitmask */
 #define LSM6DSM_FIFO_CTRL1_ADDR		0x06
