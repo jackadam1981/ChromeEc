@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc25c98e_2f8d5a02",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T17:27:42Z",
+      "side": 1,
+      "message": "Is this all we need to supply power to the USB port?\n\nCan you explain how power flow is controlled by EN_N, RX_N, and FLAG_N?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306b83e9_e2d69791",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T17:27:42Z",
+      "side": 1,
+      "message": "Let\u0027s rename this: NCP3902_EN_L.",
+      "range": {
+        "startLine": 66,
+        "startChar": 16,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
