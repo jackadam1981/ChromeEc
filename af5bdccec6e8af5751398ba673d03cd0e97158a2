@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac1e3d96_5277e339",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T17:29:33Z",
+      "side": 1,
+      "message": "Also, can you clarify whether we\u0027re using autonomous mode or slave mode for NCP3902?",
+      "parentUuid": "cc25c98e_2f8d5a02",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "306b83e9_e2d69791",
         "filename": "board/flapjack/usb_pd_policy.c",
         "patchSetId": 8
