@@ -15,10 +15,20 @@
  * 'r' in the main routine of the task
  * 'd' in an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
+ *     - 3 least significant bits are used to give tailed information to
+ *       system s/w (e.g. scheduler)
+ *     - BIT 0(TASK_FLAG_USE_FPU) : set if the task uses FPU unit.
+ *     - BIT 1 : reserved.
+ *     - BIT 2 : reserved.
+ *     Example: if a task has large stack size and it uses FPU H/W, then
+ *      TASK_ALWAYS(ID, routine, task params, (LARGER_TASK_STACK_SIZE | MIA_TASK_FLAG_USE_FPU))
  */
 
+#define MIA_ROUTINE(r)				(r)
+#define MIA_ROUTINE_FPU(r)			(r)
+
 #define CONFIG_TASK_LIST \
-	TASK_ALWAYS(HOOKS, hook_task, NULL, HUGE_TASK_STACK_SIZE) \
-	TASK_ALWAYS(CONSOLE, console_task, NULL, LARGER_TASK_STACK_SIZE) \
-	TASK_ALWAYS(HECI_RX, heci_rx_task, NULL, HUGE_TASK_STACK_SIZE) \
-	TASK_ALWAYS(IPC_MNG, ipc_mng_task, NULL, LARGER_TASK_STACK_SIZE)
+	TASK_ALWAYS(HOOKS, MIA_ROUTINE(hook_task), NULL, HUGE_TASK_STACK_SIZE) \
+	TASK_ALWAYS(CONSOLE, MIA_ROUTINE_FPU(console_task), NULL, LARGER_TASK_STACK_SIZE) \
+	TASK_ALWAYS(HECI_RX, MIA_ROUTINE(heci_rx_task), NULL, HUGE_TASK_STACK_SIZE) \
+	TASK_ALWAYS(IPC_MNG, MIA_ROUTINE_FPU(ipc_mng_task), NULL, LARGER_TASK_STACK_SIZE)
