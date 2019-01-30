@@ -842,9 +842,7 @@ static void tpm_reset_now(int wipe_first)
 	 * includes this file's .bss in the same section, so it will be cleared
 	 * at the same time.
 	 */
-	memset(&__bss_libtpm2_start, 0,
-	       (uintptr_t)(&__bss_libtpm2_end) -
-	       (uintptr_t)(&__bss_libtpm2_start));
+	memset(__bss_libtpm2_start, 0, __bss_libtpm2_end - __bss_libtpm2_start);
 
 	/*
 	 * NOTE: If any __initialized variables need reinitializing after

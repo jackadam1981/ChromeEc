@@ -20,8 +20,8 @@ extern const struct console_command __cmds[];
 extern const struct console_command __cmds_end[];
 
 /* Extension commands. */
-extern const void *__extension_cmds;
-extern const void *__extension_cmds_end;
+extern const void *const __extension_cmds;
+extern const void *const __extension_cmds_end;
 
 /* Hooks */
 extern const struct hook_data __hooks_init[];
@@ -92,21 +92,21 @@ extern const struct mkbp_event_source __mkbp_evt_srcs_end[];
 /* IRQs (interrupt handlers) */
 extern const struct irq_priority __irqprio[];
 extern const struct irq_priority __irqprio_end[];
-extern const void *__irqhandler[];
+extern const void *const __irqhandler[];
 
 /* Shared memory buffer.  Use via shared_mem.h interface. */
 extern uint8_t __shared_mem_buf[];
 
 /* Image sections used by the TPM2 library */
-extern uint8_t *__bss_libtpm2_start;
-extern uint8_t *__bss_libtpm2_end;
-extern uint8_t *__data_libtpm2_start;
-extern uint8_t *__data_libtpm2_end;
+extern uint8_t *const __bss_libtpm2_start;
+extern uint8_t *const __bss_libtpm2_end;
+extern uint8_t *const __data_libtpm2_start;
+extern uint8_t *const __data_libtpm2_end;
 
 /* Image sections. */
-extern const void *__data_lma_start;
-extern const void *__data_start;
-extern const void *__data_end;
+extern const void *const __data_lma_start;
+extern void *const __data_start;
+extern void *const __data_end;
 
 /* Helper for special chip-specific memory sections */
 #ifdef CONFIG_CHIP_MEMORY_REGIONS
