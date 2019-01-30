@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "7892c4dd_b67c9d59",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-01-30T03:45:00Z",
+      "side": 1,
+      "message": "No particular preference, but switching to bash means changing quite a bit more of the style (e.g. [[ instead of [). I think bash is always available?",
+      "parentUuid": "a5dfc995_57b7184d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d084214f_8391e813",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
