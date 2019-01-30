@@ -377,6 +377,30 @@
       "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030c9fbc_f545ac87",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-01-30T02:39:44Z",
+      "side": 1,
+      "message": "Hi Scott, usually OS would power off when the SOC is 4% but EC controls battery to be cutoff if the SOC is 3%. EC would enter hibernate after 1 hour and the board would take more than 1 hour to consume battery power from 4% to 3% in G3 state, so there is no chance to cutoff battery if we don\u0027t prevent EC from entering hibernate mode here. That\u0027s the reason why I add code here.",
+      "parentUuid": "5cae3259_10d8a162",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
