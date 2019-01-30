@@ -156,20 +156,45 @@ void board_closed_loop_reset(void)
  */
 static void init_ap_detect(void)
 {
-	gpio_enable_interrupt(GPIO_TPM_RST_L);
 	/*
-	 * Enable TPM reset GPIO interrupt.
-	 *
-	 * If the TPM_RST_L signal is already high when cr50 wakes up or
-	 * transitions to high before we are able to configure the gpio then we
-	 * will have missed the edge and the tpm reset isr will not get
-	 * called. Check that we haven't already missed the rising edge. If we
-	 * have alert tpm_rst_isr.
+	 * After resuming from any reset other than deep sleep cr50 needs to
+	 * make sure the rest of the system has reset. If cr50 is using needs
+	 * to use a closed loop reset, it can't rely on the EC_RST pulse from RO
+	 * resetting the system. Reset the system with the closed loop reset
+	 * during init.
+	 * During this reset, the ap state will not be set to 'on' until the AP
+	 * enters and then leaves reset. The tpm waits until the ap is on before
+	 * allowing any tpm activity, so it wont do anything until the reset is
+	 * complete.
 	 */
-	if (gpio_get_level(GPIO_TPM_RST_L))
-		tpm_rst_deasserted(GPIO_TPM_RST_L);
-	else
-		tpm_rst_asserted(GPIO_TPM_RST_L);
+	if (board_uses_closed_loop_reset() &&
+	    !(system_get_reset_flags() & RESET_FLAG_HIBERNATE)) {
+		board_closed_loop_reset();
+	} else {
+		/*
+		 * If the TPM_RST_L signal is already high when cr50 wakes up or
+		 * transitions to high before we are able to configure the gpio
+		 * then we will have missed the edge and the tpm reset isr will
+		 * not get called. Check that we haven't already missed the
+		 * rising edge. If we have alert tpm_rst_isr.
+		 *
+		 * DONT alert tpm_rst_isr if the board is waiting for the closed
+		 * loop reset to finish. The isr is edge triggered, so
+		 * tpm_rst_deasserted wont be triggered until the AP enters and
+		 * exits reset which is what we want. The AP state will remain
+		 * "init" until the AP enters reset. This is good. The TPM and
+		 * other peripherals check ap_is_on before enabling interactions
+		 * with the AP. "init" is not considered "on", so AP
+		 * communications will be disabled until the board comes out of
+		 * reset.
+		 */
+		if (gpio_get_level(GPIO_TPM_RST_L))
+			tpm_rst_deasserted(GPIO_TPM_RST_L);
+		else
+			tpm_rst_asserted(GPIO_TPM_RST_L);
+	}
+	/* Enable TPM reset GPIO interrupt. */
+	gpio_enable_interrupt(GPIO_TPM_RST_L);
 }
 /*
  * TPM_RST_L isn't setup until board_init. Make sure init_ap_detect happens
