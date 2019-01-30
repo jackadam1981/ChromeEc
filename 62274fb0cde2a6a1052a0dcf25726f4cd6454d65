@@ -22,6 +22,30 @@
       "revId": "62274fb0cde2a6a1052a0dcf25726f4cd6454d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4064640_bd1a3488",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-30T20:58:07Z",
+      "side": 0,
+      "message": "When a task is scheduled, FLAGS register is also restored by scheduler and the initial value of FLAGS register of tasks enable interrupt.\n\nSo when hook_task is scheduled, interrupt is enabled.\n\nYou can check with following code in task_pre_init()\n\"sp[10] \u003d INITIAL_EFLAGS;\"",
+      "parentUuid": "01a295f1_625260ec",
+      "range": {
+        "startLine": 392,
+        "startChar": 1,
+        "endLine": 392,
+        "endChar": 17
+      },
+      "revId": "62274fb0cde2a6a1052a0dcf25726f4cd6454d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
