@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "aed4fcc2_d685697d",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T18:29:40Z",
+      "side": 1,
+      "message": "+1 to switching to bash",
+      "parentUuid": "39456c80_3843faad",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d084214f_8391e813",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "drinkcat@ Are you ok with switching to /usr/share/misc/shflags based on norvez@\u0027s comment?",
       "parentUuid": "6a44dd0e_68ca1934",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4d5f79_6e710b51",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T18:29:40Z",
+      "side": 1,
+      "message": "+1 to using shflags (wherever possible).",
+      "parentUuid": "c2f0b499_003afa7a",
       "range": {
         "startLine": 40,
         "startChar": 0,
