@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbb6f98f_f195b85f",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-30T17:51:26Z",
+      "side": 1,
+      "message": "Add comment:\nMinimal range in mdps.",
+      "revId": "7a1d3a78a6a33558e2d750bf6bbc1a801080ff0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c607fa_9cb7f429",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-30T17:51:26Z",
+      "side": 1,
+      "message": "_fs in dps.",
+      "revId": "7a1d3a78a6a33558e2d750bf6bbc1a801080ff0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a785e4a_56cdb24a",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-30T17:51:26Z",
+      "side": 1,
+      "message": "in dps.",
+      "revId": "7a1d3a78a6a33558e2d750bf6bbc1a801080ff0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "275ac47b_3542091f",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-30T17:51:26Z",
+      "side": 1,
+      "message": "Accroding to AN 5192 [https://www.st.com/content/ccc/resource/technical/document/application_note/group0/56/95/d6/a1/34/4c/49/6d/DM00517282/files/DM00517282.pdf/jcr:content/translations/en.DM00517282.pdf], samples need to be discarded after ODR change, like in LSM6DSM. See CL:1423123.",
+      "revId": "7a1d3a78a6a33558e2d750bf6bbc1a801080ff0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
