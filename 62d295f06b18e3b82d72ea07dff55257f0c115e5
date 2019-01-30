@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b19484b_28d50a00",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Please clarify why SECOND and not MSEC?",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf9a971_d981b879",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "no change, please match with original file",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d784835_8269d25a",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Can you move this to OS? on boot set the flag with ectool?",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a725b7_cdf13f18",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f275bb3_3919f081",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Move to OS?",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4441ee9a_ed896255",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701dd062_cc246ede",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Can this be moved to OS?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 42
+      },
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab171666_2723f0b6",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20edd57c_f8bb4bda",
+        "filename": "common/ap_hang_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2019-01-30T04:23:11Z",
+      "side": 1,
+      "message": "Can you make this under new config?",
+      "revId": "62d295f06b18e3b82d72ea07dff55257f0c115e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
