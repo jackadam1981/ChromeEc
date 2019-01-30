@@ -956,6 +956,10 @@ int is_sys_rst_asserted(void)
  */
 void board_reboot_ap(void)
 {
+	if (board_uses_closed_loop_reset()) {
+		board_closed_loop_reset(1);
+		return;
+	}
 	assert_sys_rst();
 	msleep(20);
 	deassert_sys_rst();
@@ -966,6 +970,10 @@ void board_reboot_ap(void)
  */
 static void board_reboot_ec(void)
 {
+	if (board_uses_closed_loop_reset()) {
+		board_closed_loop_reset(1);
+		return;
+	}
 	assert_ec_rst();
 	deassert_ec_rst();
 }
@@ -1110,7 +1118,7 @@ static int command_ec_rst(int argc, char **argv)
 
 		if (!strcasecmp("cl", argv[1])) {
 			/* Assert EC_RST_L until TPM_RST_L is asserted */
-			board_closed_loop_reset();
+			board_closed_loop_reset(1);
 		} else if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing EC reset\n");
 			board_reboot_ec();
