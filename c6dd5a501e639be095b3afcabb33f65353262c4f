@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "25c59b8a_2278af60",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T07:09:15Z",
+      "side": 1,
+      "message": "replace white space with tab",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 0
+      },
+      "revId": "c6dd5a501e639be095b3afcabb33f65353262c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "199e130a_2eb8e9da",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T07:09:15Z",
+      "side": 1,
+      "message": "the same",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 10
+      },
+      "revId": "c6dd5a501e639be095b3afcabb33f65353262c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddbcbc81_5fd4d2ef",
         "filename": "board/kukui/board.h",
         "patchSetId": 1
@@ -30,6 +76,23 @@
       "writtenOn": "2019-01-30T03:52:51Z",
       "side": 1,
       "message": "If Kukui suport OPT3001, Please change the commit message",
+      "revId": "c6dd5a501e639be095b3afcabb33f65353262c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32901e75_ce03d718",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T07:09:15Z",
+      "side": 1,
+      "message": "white space",
       "revId": "c6dd5a501e639be095b3afcabb33f65353262c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
