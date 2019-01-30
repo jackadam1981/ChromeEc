@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2de51e52_1fd810a3",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-30T23:54:01Z",
+      "side": 1,
+      "message": "Yes it is needed here and I have added it.",
+      "parentUuid": "f003413b_4fe2d726",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38b63d6e_396d7ed8",
         "filename": "board/hatch/gpio.inc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-01-28T02:58:09Z",
       "side": 1,
       "message": "same reason as lid_open",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561019fc_2998b07d",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-30T23:54:01Z",
+      "side": 1,
+      "message": "That flag is only needed for a wake source which is active high. Both power button and ec reset are active low as wake sources.",
+      "parentUuid": "38b63d6e_396d7ed8",
       "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "219219eb_eab18a54",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-30T23:54:01Z",
+      "side": 1,
+      "message": "Yes, it\u0027s needed and has been added.",
+      "parentUuid": "d0534dd7_79dda8b8",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad6af440_14172b62",
         "filename": "board/hatch/gpio.inc",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2019-01-28T02:58:09Z",
       "side": 1,
       "message": "same reason as lid_open",
+      "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eebadafd_76181e5a",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-01-30T23:54:01Z",
+      "side": 1,
+      "message": "Not required for this wake source.",
+      "parentUuid": "ad6af440_14172b62",
       "revId": "ebe5acbf6daefb4c19d78a6733a64b9b8cb296d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
