@@ -118,6 +118,30 @@
       "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "802f42f4_d23fbe3a",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-01-30T20:46:19Z",
+      "side": 0,
+      "message": "changes look good. Should we now add protection to enable_interrupt to ensure that task_started is 1?",
+      "parentUuid": "af9d3765_168131ec",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "e0e6e31d340b5e5c885e9fb504c1aad10b75b357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
