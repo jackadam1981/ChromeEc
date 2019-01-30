@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e56a04e_9cea3c10",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-30T23:45:05Z",
+      "side": 1,
+      "message": "I would prefer a way to restrict the sensor here to just Accel (index 0) and Gyro (index 1). If a different sensor id is passed, then we will end up configuring wrong registers and that will lead to undefined behavior.\n\nAlso since the macros are organized based on the register \u0026 their bit fields, it is better to move this macro and ODR_MASK macro near CTRL1_ADDR (near line 70).",
+      "revId": "819719d8b8de5e011b4a96d440f906e657e8ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb2a277_f9e74f77",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-30T23:45:05Z",
+      "side": 1,
+      "message": "Is it better to check _dec \u003c\u003d 4, since I am not sure about the possibility of _dec taking 5, 6 and 7 as values. If they take those values, then the decimation setting will be incorrect.",
+      "revId": "819719d8b8de5e011b4a96d440f906e657e8ae9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
