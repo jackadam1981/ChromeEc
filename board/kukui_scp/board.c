@@ -137,7 +137,7 @@ static __attribute__((always_inline)) inline uint64_t perf_test(void)
 	return total;
 }
 
-__SECTION(dram) static void icache_test(void)
+__SECTION(dram.text) static void icache_test(void)
 {
 	uint64_t total;
 	timestamp_t start;
@@ -149,7 +149,7 @@ __SECTION(dram) static void icache_test(void)
 	cflush();
 }
 
-__SECTION(dram) static int command_icachetest(int argc, char **argv)
+__SECTION(dram.text) static int command_icachetest(int argc, char **argv)
 {
 	void (*test_cached)(void) = &icache_test;
 	uintptr_t tmp;
@@ -186,3 +186,8 @@ static int command_perftest(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(perftest, command_perftest,
 			     NULL,
 			     "Do I-cache performance test");
+
+int command_my_dram_test(int argc, char **argv);
+DECLARE_SAFE_CONSOLE_COMMAND(dramtest, command_my_dram_test,
+			     NULL,
+			     "DRAM placing test");
