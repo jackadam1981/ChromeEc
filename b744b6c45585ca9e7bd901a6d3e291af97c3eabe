@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a8e56ce_ce89c840",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-30T16:30:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we want to manage this complexity, which will increase even more. Shall we split board.h and board.c?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 6
+      },
+      "revId": "b744b6c45585ca9e7bd901a6d3e291af97c3eabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
