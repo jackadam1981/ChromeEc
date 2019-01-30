@@ -25,6 +25,14 @@
 /* Value to store in unused stack */
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
+/*
+ * 3 least significant bits of stack size are used for special purpose.
+ * BIT 0 : if set, it indicates the task uses FPU H/W. for this task,
+ *         FPU H/W context is saved/restored to/from memory
+ */
+#define TASK_SS_FLAG_MASK	0x00000007
+#define TASK_SS_FLAG_USE_FPU	0x00000001 /* task uses FPU */
+
 /* declare task routine prototypes */
 #define TASK(n, r, d, s) void r(void *);
 void __idle(void);
@@ -93,12 +101,14 @@ static void task_exit_trap(void)
 #define TASK(n, r, d, s)  {	\
 	.r0 = (uint32_t)d,	\
 	.pc = (uint32_t)r,	\
-	.stack_size = s,	\
+	.stack_size = (s) & ~TASK_SS_FLAG_MASK,	\
+	.ss_flags = (s) & TASK_SS_FLAG_MASK \
 },
 static const struct {
 	uint32_t r0;
 	uint32_t pc;
 	uint16_t stack_size;
+	uint32_t ss_flags;
 } tasks_init[] = {
 	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
 	CONFIG_TASK_LIST
@@ -474,10 +484,11 @@ void task_print_list(void)
 {
 	int i;
 
-	ccputs("Task Ready Name         Events      Time (s)  StkUsed\n");
+	ccputs("Task Ready Name         Events      Time (s)  StkUsed UseFPU\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
 		char is_ready = (tasks_ready & (1<<i)) ? 'R' : ' ';
+		char use_fpu = tasks[i].use_fpu ? 'O' : 'X';
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
@@ -487,9 +498,9 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
+		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d %c\n", i, is_ready,
 			 task_names[i], tasks[i].events, tasks[i].runtime,
-			 stackused, tasks_init[i].stack_size);
+			 stackused, tasks_init[i].stack_size, use_fpu);
 		cflush();
 	}
 }
@@ -606,6 +617,9 @@ void task_pre_init(void)
 		/* Copy default x86 FPU state for each task */
 		memcpy(tasks[i].fp_ctx, default_fp_ctx,
 			sizeof(default_fp_ctx));
+
+		if (tasks_init[i].ss_flags & TASK_SS_FLAG_USE_FPU)
+			tasks[i].use_fpu = 1;
 #endif
 		/* Fill unused stack; also used to detect stack overflow. */
 		for (sp = stack_next; sp < (uint32_t *)tasks[i].sp; sp++)
@@ -618,7 +632,6 @@ void task_pre_init(void)
 
 	/* Initialize IRQs */
 	init_interrupts();
-
 }
 
 void task_clear_fp_used(void)

@@ -9,10 +9,11 @@
 #define __CROS_EC_IRQ_HANDLER_H
 
 #include "registers.h"
+#include "task_defs.h"
 
 #ifdef CONFIG_FPU
-#define save_fpu_ctx	"fnsave 20(%eax)\n"
-#define rstr_fpu_ctx	"frstor 20(%eax)\n"
+#define save_fpu_ctx	"fnsave "FPU_CTX_OFFSET_STR"(%eax)\n"
+#define rstr_fpu_ctx	"frstor "FPU_CTX_OFFSET_STR"(%eax)\n"
 #else
 #define save_fpu_ctx
 #define rstr_fpu_ctx
@@ -68,11 +69,18 @@ struct irq_data {
 			"test %eax, %eax\n"				\
 			"je 1f\n"					\
 			"movl current_task, %eax\n"			\
+			"movl "FPU_USE_OFFSET_STR"(%eax), %ebx\n"	\
+			"test %ebx, %ebx\n"				\
+			"jz 2f\n"					\
 			save_fpu_ctx 					\
+			"2:\n"						\
 			"movl %esp, (%eax)\n"				\
 			"movl next_task, %eax\n"			\
 			"movl %eax, current_task\n"			\
 			"movl (%eax), %esp\n"				\
+			"movl "FPU_USE_OFFSET_STR"(%eax), %ebx\n"	\
+			"test %ebx, %ebx\n"				\
+			"jz 1f\n"					\
 			rstr_fpu_ctx					\
 			"1:\n"						\
 			"movl $"#vector ", (0xFEC00040)\n"              \

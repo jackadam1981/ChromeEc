@@ -6,8 +6,20 @@
 #ifndef __CROS_EC_TASK_DEFS_H
 #define __CROS_EC_TASK_DEFS_H
 
-#define FPU_CTX_SZ		108 /* 28 bytes header + 80 bytes registers */
-#define FPU_CTX_OFFSET		20  /* offsetof(task_, fp_ctx) */
+#ifdef CONFIG_FPU
+#define FPU_CTX_SZ		108  /* 28 bytes header + 80 bytes registers */
+#define FPU_CTX_OFFSET		20   /* offsetof(task_, fp_ctx) */
+#define FPU_USE_OFFSET		(FPU_CTX_OFFSET + FPU_CTX_SZ)
+
+/*
+ * defines for inline asm
+ * two level of macros allow to stringize the result of a macro argument
+ */
+#define xstr(s) str(s)
+#define str(a)	#a
+#define FPU_CTX_OFFSET_STR	xstr(FPU_CTX_OFFSET)	/* "20" */
+#define FPU_USE_OFFSET_STR	xstr(FPU_USE_OFFSET)	/* "128" */
+#endif
 
 #ifndef __ASSEMBLER__
 typedef union {
@@ -22,6 +34,7 @@ typedef union {
 		uint32_t *stack;	/* Start of stack */
 #ifdef CONFIG_FPU
 		uint8_t fp_ctx[FPU_CTX_SZ]; /* x87 FPU context */
+		uint32_t use_fpu;	/* set if task uses FPU */
 #endif
 	};
 } task_;

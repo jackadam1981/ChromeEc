@@ -15,6 +15,13 @@
  * 'r' in the main routine of the task
  * 'd' in an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
+ *     - 3 least significant bits are used to give tailed information to
+ *       system s/w (e.g. scheduler)
+ *     - BIT 0 : set if the task uses FPU unit.
+ *     - BIT 1 : reserved.
+ *     - BIT 2 : reserved.
+ *     Example: if a task has large stack size and it uses FPU H/W, then
+ *      TASK_ALWAYS(ID, routine, task params, (LARGER_TASK_STACK_SIZE | 0x01))
  */
 
 #define CONFIG_TASK_LIST \
