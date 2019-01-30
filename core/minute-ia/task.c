@@ -628,5 +628,5 @@ int task_start(void)
 #ifdef CONFIG_TASK_PROFILING
 	task_start_time = exc_end_time = get_time().val;
 #endif
-	return __task_start();
+	return __task_start(&start_called);
 }
