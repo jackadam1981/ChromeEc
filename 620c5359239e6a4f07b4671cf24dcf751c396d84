@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2b2d422_d8aa345d",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-01-30T01:42:30Z",
+      "side": 1,
+      "message": "The ADC configuration of Flapjack may not change in future.\nSo we don\u0027t limit the BOARD_FLAPJACK_REV to 1.",
+      "revId": "620c5359239e6a4f07b4671cf24dcf751c396d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
