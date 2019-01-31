@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "783b5def_a4f1fb73",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T18:33:37Z",
+      "side": 1,
+      "message": "According to the datasheet, EN_N functionality is much more complex.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "c1cd0671de0a7f95a399d2212e86d357d4f3e503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
