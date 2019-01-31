@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "688538da_5c47c8e8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-01-31T01:51:17Z",
+      "side": 1,
+      "message": "how about adding as ccprintf(\"\\nsensor %d name: %s\\n\", motion_sensors[i].name)",
+      "range": {
+        "startLine": 1740,
+        "startChar": 14,
+        "endLine": 1740,
+        "endChar": 15
+      },
+      "revId": "9c1258972f737953bb5e6878dbddc56c59310ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
