@@ -958,6 +958,9 @@
 /* Support PMIC power control */
 #undef CONFIG_PMIC
 
+/* Supporting simultaneous display of single or multiple LED color functions */
+#undef CONFIG_LED_SET_MULTICOLOR
+
 /*****************************************************************************/
 /*
  * Optional console commands
