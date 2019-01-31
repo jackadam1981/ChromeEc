@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "83d2263a_993d775d",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2019-01-31T09:31:19Z",
+      "side": 1,
+      "message": "I’m not following. But wb_support is used board_battery_info by each board battery.c, if board_battery_info add .wb_support\u003d1, it will go down the write block path, otherwise use the reg_data path.",
+      "parentUuid": "d24fef04_16cfcaec",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "41696070227fd0914248b0fa269d1ada9d392baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "416860ca_0ac3d531",
         "filename": "include/config.h",
         "patchSetId": 1
