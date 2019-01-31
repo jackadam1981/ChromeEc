@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b78d1ce_acd70a7d",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-01-31T21:34:45Z",
+      "side": 1,
+      "message": "init_ap_detect happens somewhere in the middle of HOOK_INIT. tpm_stop calls if_stop. if_stop isn\u0027t defined until the end of hook init. Should tpm_stop check if if_stop is defined before calling it?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "8acfd263693eb8bfa2f90492b15186a7b8b15e14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
