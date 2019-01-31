@@ -99,6 +99,11 @@
 #define CONFIG_SYNC
 #define CONFIG_SYNC_COMMAND
 #define CONFIG_SYNC_INT_EVENT TASK_EVENT_CUSTOM(5)
+
+/* EEPROM */
+#define CONFIG_CROS_BOARD_INFO
+#define I2C_ADDR_EEPROM    0xA0
+#define CONFIG_CRC8
 #endif /* SECTION_IS_RW */
 
 /* To be able to indicate the device is in tablet mode. */
@@ -181,6 +186,7 @@
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
 #define I2C_PORT_ACCEL    1
 #define I2C_PORT_ALS      1
+#define I2C_PORT_EEPROM   1
 
 /* Route sbs host requests to virtual battery driver */
 #define VIRTUAL_BATTERY_ADDR 0x16
