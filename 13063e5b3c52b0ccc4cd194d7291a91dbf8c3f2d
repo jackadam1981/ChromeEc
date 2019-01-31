@@ -16,6 +16,24 @@
       "revId": "13063e5b3c52b0ccc4cd194d7291a91dbf8c3f2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c861e3_5d925d84",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-01-31T00:04:01Z",
+      "side": 1,
+      "message": "I believe it\u0027s defined once CONFIG_MAG_LSM6DSM_LIS2MDL is, so meep should/would have it set",
+      "parentUuid": "2f07a56a_b97c073e",
+      "revId": "13063e5b3c52b0ccc4cd194d7291a91dbf8c3f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
