@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6012e3b_fdae7873",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T18:51:23Z",
+      "side": 1,
+      "message": "Done, revert back to use accel as variable, to make it clear the sensor must be the accelerometer.",
+      "parentUuid": "40a9cd1b_39e44caa",
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "751660be_9123a6e3",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 7
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "80e91b36_e426d1ce",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T18:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "751660be_9123a6e3",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 33
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e18a3f2_3341a487",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 7
@@ -53,6 +95,30 @@
       "writtenOn": "2019-01-31T17:55:27Z",
       "side": 1,
       "message": "Applicable only to LIS2MDL and not applicable to BMI150?",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "127764af_4f6b8d90",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T18:51:23Z",
+      "side": 1,
+      "message": "Already replied in patch 6:\nOnly sensors that use st_mems_common needs stprivate_data.\nBMM150 use a different structure, melted into BMI160.",
+      "parentUuid": "1e18a3f2_3341a487",
       "range": {
         "startLine": 289,
         "startChar": 0,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "1be1b21d_4590a460",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T18:51:23Z",
+      "side": 1,
+      "message": "Correct. I have a CL train to support LIS2MDL behind BMI160 for nocturne, but at this stage it would take more time to check in. This is a p4 effort given due to magnetometer placement, the data gather is not usable (https://b.corp.google.com/issues/110363137#comment38).\nI will repost the CLs if needed.",
+      "parentUuid": "f91056dc_64d99e79",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7bc187d5_0a5b5df9",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "d9310353_98b39407",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T18:51:23Z",
+      "side": 1,
+      "message": "Yes. More code are needed for standalone support, not tested yet.",
+      "parentUuid": "7bc187d5_0a5b5df9",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c76dc166_462ee3b3",
         "filename": "driver/stm_mems_common.c",
         "patchSetId": 7
@@ -122,6 +236,30 @@
       "writtenOn": "2019-01-31T17:55:27Z",
       "side": 1,
       "message": "Is this include required?",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06a230b_96bca4a9",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T18:51:23Z",
+      "side": 1,
+      "message": "not anymore, removed.",
+      "parentUuid": "c76dc166_462ee3b3",
       "range": {
         "startLine": 8,
         "startChar": 3,
