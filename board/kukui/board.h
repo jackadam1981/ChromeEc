@@ -9,7 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 /* board revision */
-#define BOARD_REV 1
+#define BOARD_REV 2
 
 #if BOARD_REV < 1 || BOARD_REV > 2
 #error "Board revision out of range"
