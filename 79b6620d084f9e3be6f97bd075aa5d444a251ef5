@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b7c50c4_3e1caf65",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T19:18:50Z",
+      "side": 1,
+      "message": "Where is BOARD_REV defined as \u00272\u0027? I see only \u00271\u0027. Regardless, aren\u0027t you supposed to use ADC_BOARD_ID?\n\nFYI: flapjack forked (and will continue to fork). So, you can start removing flapjack support.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "79b6620d084f9e3be6f97bd075aa5d444a251ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
