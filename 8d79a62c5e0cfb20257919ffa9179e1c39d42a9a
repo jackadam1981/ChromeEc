@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85a18dae_48c614cc",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2019-01-31T11:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4c3606_a1865c28",
+      "range": {
+        "startLine": 210,
+        "startChar": 11,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "8d79a62c5e0cfb20257919ffa9179e1c39d42a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b515a98a_f88fe104",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8d79a62c5e0cfb20257919ffa9179e1c39d42a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca9cbd67_6c93512d",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2019-01-31T11:45:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b515a98a_f88fe104",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "8d79a62c5e0cfb20257919ffa9179e1c39d42a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
