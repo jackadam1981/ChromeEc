@@ -756,8 +756,11 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 		if (motion_sensor_time_to_read(ts, sensor)) {
 			/* Get latest data for local calculation */
 			ret = motion_sense_read(sensor);
+			if (ret)
+				CPRINTF("Error reading sensor!\n");
 			sensor->last_collection = ts->le.lo;
 		} else {
+			CPRINTF("Not time to read yet!\n");
 			ret = EC_ERROR_BUSY;
 		}
 		if (ret == EC_SUCCESS) {
@@ -1027,7 +1030,7 @@ void motion_sense_task(void *u)
 		} else {
 			wait_us = -1;
 		}
-
+		CPRINTF("About to wait %d us\n", wait_us);
 		event = task_wait_event(wait_us);
 	}
 }

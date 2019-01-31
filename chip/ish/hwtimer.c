@@ -29,16 +29,63 @@ static uint32_t last_deadline;
  * Scale the values and support it.
  */
 
+static int close_calls;
+static int tick_margin = 30;
+
 void __hw_clock_event_set(uint32_t deadline)
 {
+	uint32_t q, clock_val_hi, clock_val_low;
+	uint32_t divisor = SECOND;
+
+	clock_val_hi = deadline >> (32 - 15);
+	clock_val_low = deadline << 15;
+
+	/* If the current deadline is already sooner, don't do anything */
+	// if (last_deadline !=0 && last_deadline < deadline)
+	// 	return;
+
 	last_deadline = deadline;
+
+	/* disable first */
+	HPET_TIMER_CONF_CAP(1) &= ~HPET_Tn_INT_ENB_CNF;
+
 #if defined(CHIP_FAMILY_ISH3)
 	HPET_TIMER_COMP(1) = deadline * CLOCK_FACTOR;
 #else
-	HPET_TIMER_COMP(1) = deadline;
+	asm("divl %3"
+	    : "=a"(q)
+	    : "d"(clock_val_hi), "a"(clock_val_low), "rm"(divisor));
+
+	HPET_TIMER_COMP(1) = q;
 #endif
+	/* Ensure we are at least one tick in the future */
+	if ((HPET_TIMER_COMP(1) - HPET_MAIN_COUNTER) <= tick_margin) {
+		HPET_TIMER_COMP(1) = HPET_MAIN_COUNTER + tick_margin;
+		close_calls++;
+	}
+
 	HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
 }
+
+
+static int manual_fire(int argc, char **argv)
+{
+	char *e;
+
+	ccprintf("close calls: %d; margin %d\n", close_calls, tick_margin);
+
+	ccprintf("timer 1: %d, main %d\n", HPET_TIMER_COMP(1), HPET_MAIN_COUNTER);
+
+	if (argc == 2) {
+		tick_margin = strtoi(argv[1], &e, 0);
+	}
+
+	task_trigger_irq(ISH_HPET_TIMER1_IRQ);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(manualfire, manual_fire,
+			"msec",
+			"Busy-wait for msec (large delays will reset)");
 
 uint32_t __hw_clock_event_get(void)
 {
@@ -101,7 +148,7 @@ uint32_t __hw_clock_source_read(void)
 	asm("divl %3" : "=a"(quotient) : "d"(hi), "a"(lo), "rm"(divisor));
 	return quotient;
 #else
-	return HPET_MAIN_COUNTER;
+	return ((uint64_t)HPET_MAIN_COUNTER * SECOND) >> 15;
 #endif
 }
 
@@ -111,7 +158,7 @@ void __hw_clock_source_set(uint32_t ts)
 #if defined(CHIP_FAMILY_ISH3)
 	HPET_MAIN_COUNTER_64 = (uint64_t)ts * CLOCK_FACTOR;
 #else
-	HPET_MAIN_COUNTER = ts;
+	HPET_MAIN_COUNTER = (ts * ISH_HPET_CLK_FREQ) / SECOND;
 #endif
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
@@ -155,7 +202,7 @@ int __hw_clock_source_init(uint32_t start_t)
 #if defined(CHIP_FAMILY_ISH3)
 	HPET_MAIN_COUNTER_64 = (uint64_t)start_t * CLOCK_FACTOR;
 #else
-	HPET_MAIN_COUNTER = start_t;
+	HPET_MAIN_COUNTER = (start_t * ISH_HPET_CLK_FREQ) / SECOND;
 #endif
 
 #if defined(CHIP_FAMILY_ISH3)
@@ -166,7 +213,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_TIMER_COMP_64(0) = (uint64_t)CLOCK_FACTOR << 32; /*0xC00000000ULL;*/
 #else
 	/* Set comparator value */
-	HPET_TIMER_COMP(0) = 0XFFFFFFFF;
+	HPET_TIMER_COMP(0) = ((uint64_t)ISH_HPET_CLK_FREQ << 32) / SECOND;
 #endif
 	/* Timer 0 - enable periodic mode */
 	timer0_config |= HPET_Tn_TYPE_CNF;
@@ -187,12 +234,12 @@ int __hw_clock_source_init(uint32_t start_t)
 				HPET_Tn_INT_ROUTE_CNF_SHIFT);
 
 	/* Level triggered interrupt */
-	timer0_config |= HPET_Tn_INT_TYPE_CNF;
-	timer1_config |= HPET_Tn_INT_TYPE_CNF;
+	// timer0_config |= HPET_Tn_INT_TYPE_CNF;
+	// timer1_config |= HPET_Tn_INT_TYPE_CNF;
 
 	/* Enable interrupt */
 	timer0_config |= HPET_Tn_INT_ENB_CNF;
-	timer1_config |= HPET_Tn_INT_ENB_CNF;
+	/*timer1_config |= HPET_Tn_INT_ENB_CNF;*/
 
 	/* Unask HPET IRQ in IOAPIC */
 	task_enable_irq(ISH_HPET_TIMER0_IRQ);
