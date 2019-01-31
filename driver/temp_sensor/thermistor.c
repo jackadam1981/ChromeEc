@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "common.h"
+#include "gpio.h"
 #include "thermistor.h"
 #include "util.h"
 
@@ -98,6 +99,15 @@ int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr)
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
 
+#ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
+	/*
+	 * If the power rail for the thermistor circuit is not enabled, then
+	 * need to ignore any ADC measurments.
+	 */
+	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
+		return EC_ERROR_UNKNOWN;
+#endif
+
 	*temp_ptr = thermistor_linear_interpolate(mv, &thermistor_info_51_47);
 	*temp_ptr = C_TO_K(*temp_ptr);
 	return EC_SUCCESS;
@@ -140,6 +150,15 @@ int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr)
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
 
+#ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
+	/*
+	 * If the power rail for the thermistor circuit is not enabled, then
+	 * need to ignore any ADC measurments.
+	 */
+	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
+		return EC_ERROR_UNKNOWN;
+#endif
+
 	*temp_ptr = thermistor_linear_interpolate(mv, &thermistor_info_13_47);
 	*temp_ptr = C_TO_K(*temp_ptr);
 	return EC_SUCCESS;
@@ -181,6 +200,15 @@ int get_temp_6v0_51k1_47k_4050b(int idx_adc, int *temp_ptr)
 
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
+
+#ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
+	/*
+	 * If the power rail for the thermistor circuit is not enabled, then
+	 * need to ignore any ADC measurments.
+	 */
+	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
+		return EC_ERROR_UNKNOWN;
+#endif
 
 	*temp_ptr = thermistor_linear_interpolate(mv, &thermistor_info_6v0_51_47);
 	*temp_ptr = C_TO_K(*temp_ptr);
