@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6541a025_d61080cd",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-01-31T08:58:01Z",
+      "side": 1,
+      "message": "Is this all we need to supply power to the USB port?\nAnswer：Yes, we only to pull up GPIO_NCP3902_EN_L and GPIO_EN_PP5000_USBC to supply power to the USB port.\n\nCan you explain how power flow is controlled by EN_N, RX_N, and FLAG_N?\nAnswer：In flapjack, we not used FLAG_N to contrl the OTG power supply and lead it floating. When OTG plugin we pullup EN_N,NCP3902 enter slave mode, and the RX_N is pull down by external pull-down resistor.\n\nAlso, can you clarify whether we\u0027re using autonomous mode or slave mode for NCP3902?\nAnswer: When OTG plugin NCP3902 enter slave mode and other scenes it is autonomous mode.\n\nThe truth table of NCP3902 opration see\nhttps://docs.google.com/spreadsheets/d/1Z2eA2ENaoZIbg0bQM4GVzh_TYXGzVZKV-Rn1Fd3KCto/edit#gid\u003d1739821269",
+      "parentUuid": "ac1e3d96_5277e339",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "306b83e9_e2d69791",
         "filename": "board/flapjack/usb_pd_policy.c",
         "patchSetId": 8
@@ -69,6 +93,30 @@
       "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ca02cc_f3ef958b",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-01-31T08:58:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "306b83e9_e2d69791",
+      "range": {
+        "startLine": 66,
+        "startChar": 16,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
