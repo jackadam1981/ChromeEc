@@ -72,8 +72,9 @@
  * CONFIG_ACCEL_LIS2DE if using lis2de chip. CONFIG_ACCEL_LIS2D_COMMON get
  * automatically defined if either of them get defined.
  */
-#undef CONFIG_ACCEL_LIS2DH
 #undef CONFIG_ACCEL_LIS2DE
+#undef CONFIG_ACCEL_LIS2DH
+#undef CONFIG_ACCEL_LNG2DM
 #undef CONFIG_ACCEL_LIS2D_COMMON
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
@@ -4177,7 +4178,9 @@
  * Automatically define CONFIG_ACCEL_LIS2D_COMMON if either child option is
  * defined.
  */
-#if defined(CONFIG_ACCEL_LIS2DH) || defined(CONFIG_ACCEL_LIS2DE)
+#if defined(CONFIG_ACCEL_LIS2DH) || \
+	defined(CONFIG_ACCEL_LIS2DE) || \
+	defined(CONFIG_ACCEL_LNG2DM)
 #define CONFIG_ACCEL_LIS2D_COMMON
 #endif
 

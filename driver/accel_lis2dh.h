@@ -111,7 +111,7 @@ enum lis2dh_odr {
  * selected, here Only Normal Power mode supported (10 bits).
  * But for lis2de, it has only one 8bit resolution.
  */
-#ifdef CONFIG_ACCEL_LIS2DE
+#if defined(CONFIG_ACCEL_LIS2DE) || defined(CONFIG_ACCEL_LNG2DM)
 #define LIS2DH_RESOLUTION       8
 #elif defined(CONFIG_ACCEL_LIS2DH)
 #define LIS2DH_RESOLUTION      	10
