@@ -68,6 +68,12 @@ int pd_set_power_supply_ready(int port)
 	vbus_en = 1;
 	charger_enable_otg_power(1);
 
+#if BOARD_REV >= 2
+	/* TODO(b:123268580): Implement POGO discharge logic. */
+	gpio_set_level(GPIO_EN_USBC_CHARGE_L, 1);
+	gpio_set_level(GPIO_EN_PP5000_USBC, 1);
+#endif
+
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
@@ -85,6 +91,12 @@ void pd_power_supply_reset(int port)
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);
+
+#if BOARD_REV >= 2
+	/* TODO(b:123268580): Implement POGO discharge logic. */
+	gpio_set_level(GPIO_EN_USBC_CHARGE_L, 0);
+	gpio_set_level(GPIO_EN_PP5000_USBC, 0);
+#endif
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
