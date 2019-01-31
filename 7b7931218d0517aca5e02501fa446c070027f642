@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7816276f_9d0c9150",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T17:11:20Z",
+      "side": 1,
+      "message": "We need to revisit these. We\u0027ll be using CBI.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 62
+      },
+      "revId": "7b7931218d0517aca5e02501fa446c070027f642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b128b5a_35543dcd",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T17:11:20Z",
+      "side": 1,
+      "message": "Flapjack (or better delete this line entirely). I see no value.",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "7b7931218d0517aca5e02501fa446c070027f642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53c0fbc8_efcb5167",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T17:11:20Z",
+      "side": 1,
+      "message": "We have to revisit these. There is no non-tablet mode.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "7b7931218d0517aca5e02501fa446c070027f642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
