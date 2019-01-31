@@ -7,6 +7,8 @@
 
 #include "adc.h"
 #include "common.h"
+#include "console.h"
+#include "gpio.h"
 #include "thermistor.h"
 #include "util.h"
 
@@ -98,8 +100,14 @@ int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr)
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
 
+#ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
+	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
+		return EC_ERROR_UNKNOWN;
+#endif
+
 	*temp_ptr = thermistor_linear_interpolate(mv, &thermistor_info_51_47);
 	*temp_ptr = C_TO_K(*temp_ptr);
+
 	return EC_SUCCESS;
 }
 #endif /* CONFIG_STEINHART_HART_3V3_51K1_47K_4050B */
