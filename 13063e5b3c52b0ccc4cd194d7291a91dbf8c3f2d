@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f07a56a_b97c073e",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T00:01:58Z",
+      "side": 1,
+      "message": "I don\u0027t see this macro being defined/enabled in any board. Do we need this macro and the prior macro?",
+      "revId": "13063e5b3c52b0ccc4cd194d7291a91dbf8c3f2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
