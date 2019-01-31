@@ -4,7 +4,7 @@
  */
 
 /**
- * LSM6DSx (x is L or M) accelerometer and gyro module for Chrome EC
+ * LSM6DSx (x is L/M/3) accelerometer and gyro module for Chrome EC
  * 3D digital accelerometer & 3D digital gyroscope
  * This driver supports both devices LSM6DSM and LSM6DSL
  */
@@ -559,7 +559,11 @@ static int init(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
+#ifdef CONFIG_ACCELGYRO_LSM6DS3
+	if (tmp != LSM6DS3_WHO_AM_I)
+#else
 	if (tmp != LSM6DSM_WHO_AM_I)
+#endif
 		return EC_ERROR_ACCESS_DENIED;
 
 	/*

@@ -78,6 +78,7 @@
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
+#undef CONFIG_ACCELGYRO_LSM6DS3
 #undef CONFIG_MAG_LIS2MDL
 #undef CONFIG_SENSORHUB_LSM6DSM
 
@@ -2377,6 +2378,9 @@
  * - HOST(x64), CSME, PMC, cAVS, and ISP
  */
 #undef CONFIG_ISH_IPC
+
+/* Support host command interface over HECI */
+#undef CONFIG_HOSTCMD_HECI
 
 /*
  * EC supports x86 host communication with AP. This can either be through LPC

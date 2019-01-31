@@ -47,6 +47,12 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	if (port == DUMMY_GPIO_BANK)
 		return;
 
+	/* ISH does not support level-trigger interrupts; only edge. */
+	if (flags & (GPIO_INT_F_HIGH | GPIO_INT_F_LOW)) {
+		ccprintf("Unsupported GPIO configuration for %d 0x%x\n", port,
+			 mask);
+	}
+
 	/* GPSR/GPCR Output high/low */
 	if (flags & GPIO_HIGH) /* Output high */
 		ISH_GPIO_GPSR |= mask;
