@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed16dd6f_b6943b7a",
+        "filename": "board/meep/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T06:08:44Z",
+      "side": 1,
+      "message": "fixed point will probably not work with magnetometer calibration code given the amount of division and subtraction.\nBeside, meep EC has a FPU, why not using it when we are doing intensive matrix operations?",
+      "parentUuid": "a638b460_81bc6d2a",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6ed9d75_93361971",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4fab8a63_084aadd7",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ed9d75_93361971",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 25
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d009073_3ba69c9b",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef38054_67498c1d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T06:08:44Z",
+      "side": 1,
+      "message": "merging error, removed.",
+      "parentUuid": "0d009073_3ba69c9b",
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "ceb5b823_f5f48353",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T06:08:44Z",
+      "side": 1,
+      "message": "Only sensors that use st_mems_common needs stprivate_data.\nBMM150 use a different structure, melted into BMI160.",
+      "parentUuid": "97fd2e60_4aec16a4",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46a44ac3_c1929bb6",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 6
@@ -102,6 +192,24 @@
       "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb1b3106_57fe3360",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a44ac3_c1929bb6",
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

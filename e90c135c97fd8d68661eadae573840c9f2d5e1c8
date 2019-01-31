@@ -22,6 +22,30 @@
       "revId": "e90c135c97fd8d68661eadae573840c9f2d5e1c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93511eec_28c84b72",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-01-31T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e58b9af_e859f077",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "e90c135c97fd8d68661eadae573840c9f2d5e1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
