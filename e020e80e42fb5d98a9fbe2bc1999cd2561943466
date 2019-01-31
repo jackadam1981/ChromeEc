@@ -139,6 +139,29 @@
     },
     {
       "key": {
+        "uuid": "cf95b33a_03ec6ba2",
+        "filename": "board/atlas_ish/ish_hid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-01-31T23:08:55Z",
+      "side": 1,
+      "message": "Currently Host side driver ignores these values and uses hard-coded(fixed) IDs but there will be patch for host driver use these values for registering HID device. So that we can use the Firmware updater from vendors(e.g Elan) as it is.\n\nSo please use the Product ID and Vendor ID from the device. If you want to use your own, should be unique IDs distinguishable from other HID devices.\n\nFor this case, if you use your own product ID and vendor(Google?) ID then still we can use the updater from Elan since it allows product ID and vendor ID as parameters.",
+      "range": {
+        "startLine": 433,
+        "startChar": 8,
+        "endLine": 434,
+        "endChar": 17
+      },
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41b9e76b_7573f13e",
         "filename": "board/atlas_ish/tsc.c",
         "patchSetId": 3
