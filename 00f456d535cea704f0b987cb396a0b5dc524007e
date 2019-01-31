@@ -22,6 +22,30 @@
       "revId": "00f456d535cea704f0b987cb396a0b5dc524007e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f898d0_c4a9fe85",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-01-31T05:58:03Z",
+      "side": 1,
+      "message": "it should always set the VNN request when open IPC, not clear why it works before on atlas without setting it.  \n\nHi Rushikesh, can you verify this patch on atlas ?",
+      "parentUuid": "dc0709fb_6a94a594",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 45
+      },
+      "revId": "00f456d535cea704f0b987cb396a0b5dc524007e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
