@@ -33,6 +33,47 @@
       "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be933033_e72389c2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T18:51:52Z",
+      "side": 1,
+      "message": "Isn\u0027t this basically the same as mt6370_led_set_color?",
+      "parentUuid": "2112397b_5a23523e",
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fd2a85_708ddc4a",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-01-31T18:51:52Z",
+      "side": 1,
+      "message": "How does \u0027multiple\u0027 mode work?",
+      "range": {
+        "startLine": 584,
+        "startChar": 17,
+        "endLine": 584,
+        "endChar": 30
+      },
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
