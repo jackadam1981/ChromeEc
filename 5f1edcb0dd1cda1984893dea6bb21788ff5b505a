@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40a9cd1b_39e44caa",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T17:55:27Z",
+      "side": 1,
+      "message": "s -\u003e @s\n\nThat seems to be the EC argument description convention. Also no empty line between the function summary and the argument desciption - I am referring to the fifo_disable function above.",
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751660be_9123a6e3",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T17:55:27Z",
+      "side": 1,
+      "message": "Applicable only to LIS2MDL and not applicable to BMI150?",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 33
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e18a3f2_3341a487",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T17:55:27Z",
+      "side": 1,
+      "message": "Applicable only to LIS2MDL and not applicable to BMI150?",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91056dc_64d99e79",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T17:55:27Z",
+      "side": 1,
+      "message": "I see this defined only for secondary sensor behind LSM6DSM. I am not sure if this has been defined for secondary sensor behind BMI160.",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc187d5_0a5b5df9",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T17:55:27Z",
+      "side": 1,
+      "message": "What if this is not defined. Then cal may be undeclared?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c76dc166_462ee3b3",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-01-31T17:55:27Z",
+      "side": 1,
+      "message": "Is this include required?",
+      "range": {
+        "startLine": 8,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "5f1edcb0dd1cda1984893dea6bb21788ff5b505a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
