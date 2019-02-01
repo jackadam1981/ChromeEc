@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf95f8cf_407dae63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T07:46:09Z",
+      "side": 1,
+      "message": "I certainly hope you did actually test this ,-) Please say how you tested this.",
+      "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f91dcc7_e3fa9fc9",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 5
@@ -19,6 +36,40 @@
         "endLine": 36,
         "endChar": 19
       },
+      "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c908d5_7354f710",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T07:46:09Z",
+      "side": 1,
+      "message": "You don\u0027t need to store the minimum, since min[i+1]\u003d\u003dmax[i] Also, I\u0027d store the value for the \u003e1000 cycles case. Also, no need for the enum above.\n\nJust do this:\n\nstatic struct {\n\tint cycle_max;\n\tint desired_voltage;\n} cycle_zones[] \u003d {\n\t\t{300, 4376},\n\t\t{600, 4320},\n\t\t{1000, 4300},\n\t\t{INT_MAX, 4250},\n};",
+      "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1156eb89_4a5ccb65",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T07:46:09Z",
+      "side": 1,
+      "message": "for (cycle_zone \u003d 0; cycle_zone \u003c ARRAY_SIZE(cycles_zones)-1; cycle_zone++) {\n ...\n\n(-1 because we don\u0027t event need to compare with the last entry in the array)",
       "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +116,23 @@
         "endLine": 167,
         "endChar": 38
       },
+      "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f57ec9_89899c44",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T07:46:09Z",
+      "side": 1,
+      "message": "4376 is already the maximum you\u0027d request, so I don\u0027t see the point of this check.\n\nI\u0027d just remove the whole switch statement, and just do:\n\ncurr-\u003erequested_voltage \u003d MIN(curr-\u003erequested_voltage,\n\t\t\tcycle_zones[cycle_zone].desired_voltage);",
       "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -186,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "6381e3f2_5060dc25",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T07:46:09Z",
+      "side": 1,
+      "message": "Also, just return the test value, no need for an if:\n\nreturn acin_start_time.val \u0026\u0026\n\t   (get_time().val - acin_start_time.val \u003e AC_IN_48HR);",
+      "parentUuid": "977f89cc_cc0d3d46",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 9
+      },
+      "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "253902df_c179682e",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 5
@@ -226,6 +318,23 @@
         "endLine": 322,
         "endChar": 6
       },
+      "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f0a26d_18d29f33",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T07:46:09Z",
+      "side": 1,
+      "message": "curr-\u003erequested_voltage \u003d MIN(curr-\u003erequested_voltage, 4250);",
       "revId": "80a7c3f6e5391c27d90a5c167238f9203e9b0301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
