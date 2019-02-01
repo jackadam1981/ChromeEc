@@ -150,6 +150,17 @@ static void motion_sense_fifo_add_unit(
 	mutex_unlock(&g_sensor_mutex);
 }
 
+static void motion_sense_insert_odr(struct motion_sensor_t *sensor)
+{
+	struct ec_response_motion_sensor_data vector;
+	vector.flags = MOTIONSENSE_SENSOR_FLAG_ODR |
+		       MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
+	vector.timestamp = __hw_clock_source_read();
+	vector.sensor_num = sensor - motion_sensors;
+
+	motion_sense_fifo_add_unit(&vector, sensor, 0);
+}
+
 static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
 {
 	struct ec_response_motion_sensor_data vector;
@@ -264,6 +275,7 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 		config_id = SENSOR_CONFIG_AP;
 	}
 	roundup = !!(sensor->config[config_id].odr & ROUND_UP_FLAG);
+
 	ret = sensor->drv->set_data_rate(sensor, odr, roundup);
 	if (ret)
 		return ret;
@@ -743,6 +755,9 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 		} else {
 			ret = EC_ERROR_BUSY;
 		}
+	}
+	if (*event & TASK_EVENT_MOTION_ODR_CHANGE) {
+		motion_sense_insert_odr(sensor);
 	}
 	if (*event & TASK_EVENT_MOTION_FLUSH_PENDING) {
 		int flush_pending;
