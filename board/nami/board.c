@@ -1058,3 +1058,18 @@ void board_kblight_init(void)
 		break;
 	}
 }
+
+int ccd_mode_cmd(int argc, char *argv[])
+{
+	int level = gpio_get_level(GPIO_CCD_MODE_ODL);
+
+	gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+	gpio_set_level(GPIO_CCD_MODE_ODL, 0);
+	msleep(10);
+	gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+	msleep(10);
+
+	gpio_set_level(GPIO_CCD_MODE_ODL, level);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ccd, ccd_mode_cmd, NULL, "Toggle CCD_MODE_L");
