@@ -22,6 +22,30 @@
       "revId": "c1cd0671de0a7f95a399d2212e86d357d4f3e503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e77f874_7bcc154e",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-02-01T02:00:24Z",
+      "side": 1,
+      "message": "yes, from the datasheet EN_N has two classes complex functions.\nIn autonomous mode, in which we only need to keep EN_N low , and USBIN/OUT/RX_N update status automatically.\nIn slave mode, we can pulldown EN_N manually soon after the USBIN or OUT signal in to open the switch, but in this mode of flapjack we never pulldown it until USBIN signal is disappear to keep the USBIN and OUT is not connect in this mode.",
+      "parentUuid": "783b5def_a4f1fb73",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "c1cd0671de0a7f95a399d2212e86d357d4f3e503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

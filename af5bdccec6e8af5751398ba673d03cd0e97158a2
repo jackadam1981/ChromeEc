@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "6666a265_5b120e46",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-02-01T02:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2b3227_91045706",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "306b83e9_e2d69791",
         "filename": "board/flapjack/usb_pd_policy.c",
         "patchSetId": 8
@@ -155,6 +179,30 @@
       "writtenOn": "2019-01-31T18:33:37Z",
       "side": 1,
       "message": "Can you explain why we need to check the previous vbus_en?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68e7c9f8_b094c61e",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-02-01T02:00:24Z",
+      "side": 1,
+      "message": "if vbus_en is 0, means vbus not need to change, and then no need the delay (250ms) to wait vbus discharge.",
+      "parentUuid": "8793ceab_ad6ab0d6",
       "range": {
         "startLine": 86,
         "startChar": 1,
