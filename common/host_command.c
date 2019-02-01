@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "espi.h"
 #include "host_command.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -23,13 +24,16 @@
 #define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
 
-#define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
-
 /* Maximum delay to skip printing repeated host command debug output */
 #define HCDEBUG_MAX_REPEAT_DELAY (50 * MSEC)
 
 /* Stop printing repeated host commands "+" after this count */
 #define HCDEBUG_MAX_REPEAT_COUNT 5
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+/* TODO: (need a queue) ESPI OOB data */
+static uint8_t espi_oob_data[ESPI_OOB_MAX_LENGTH];
+#endif
 
 static struct host_cmd_handler_args *pending_args;
 
@@ -449,6 +453,19 @@ void host_command_task(void *u)
 					host_command_process(pending_args);
 			host_send_response(pending_args);
 		}
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+		/* Process eSPI OOB data */
+		if (evt & TASK_EVENT_ESPI_OOB_RECEIVE) {
+			/* TODO */
+			CPRINTS("len=%d", espi_oob_receive(espi_oob_data));
+		}
+
+		if (evt & TASK_EVENT_ESPI_OOB_SEND_DONE) {
+			/* TODO */
+			espi_oob_send(espi_oob_data, 10, 10);
+		}
+#endif
 
 		/* reset rate limiting if we have slept enough */
 		if (t0.val - t1.val > CONFIG_HOSTCMD_RATE_LIMITING_MIN_REST)
