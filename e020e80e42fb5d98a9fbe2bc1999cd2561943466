@@ -54,6 +54,29 @@
     },
     {
       "key": {
+        "uuid": "1f0dbf24_b6adf699",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-01T00:04:37Z",
+      "side": 1,
+      "message": "Please show us the stack usage of this task.\n\nIf we have (at least) two different paths(call histories) and each requires huge memory but never at the same time then we get optimized memory usage from this huge stack.\n\nOtherwise, it\u0027s better to have them in bss to remove unnecessary stack operation.\n\nAnyway, show us the code.",
+      "range": {
+        "startLine": 23,
+        "startChar": 50,
+        "endLine": 23,
+        "endChar": 56
+      },
+      "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5de14f2a_b58aa22d",
         "filename": "board/atlas_ish/gpio.inc",
         "patchSetId": 3
