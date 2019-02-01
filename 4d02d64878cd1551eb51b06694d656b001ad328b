@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "634e4820_3b4c7c85",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "From the battery spec, it appears this also needs a block format?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da14b6bf_995a12d5",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "I\u0027m unclear on how this translates into writing \"0x0010, twice data within 4 seconds\".  From the function implemented, it seems like this would write \"0x02 0x10 0x00\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 40
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae77b20_2beeb705",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "If I\u0027m reading the battery specification correctly, this address is 0x10?",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b72390_297bae68",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "This value appears to be 12.9 V in the spec",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 24
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9647db_fa8f1df6",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "Also 0x10?",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 20
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1d3a8ba_1fb111ce",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "12.9 V in the spec",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 33
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2daaf600_d08e3827",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T22:33:37Z",
+      "side": 1,
+      "message": "Comment doesn\u0027t appear to match the reg_data_wb arrays previously, which were all 3 values",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 56
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
