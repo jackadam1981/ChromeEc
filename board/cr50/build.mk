@@ -10,6 +10,11 @@ CHIP:=g
 CHIP_FAMILY:=cr50
 CHIP_VARIANT ?= cr50_fpga
 
+# Use coreboot-sdk
+$(call set-option,CROSS_COMPILE_arm,\
+  $(CROSS_COMPILE_coreboot_sdk_arm),\
+  /opt/coreboot-sdk/bin/arm-eabi-)
+
 # This file is included twice by the Makefile, once to determine the CHIP info
 # and then again after defining all the CONFIG_ and HAS_TASK variables. We use
 # a guard so that recipe definitions and variable extensions only happen the
