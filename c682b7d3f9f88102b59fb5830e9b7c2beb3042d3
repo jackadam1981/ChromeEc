@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "e2211bb5_1812b06e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-01T17:58:09Z",
+      "side": 1,
+      "message": "\u003e This function can combines the colors we need.\n\nCan you elaborate it? mt6370_led_set_color_independent can only set one LED at a time. What do you mean by \u0027open LED\u0027 and \u0027each other\u0027?",
+      "parentUuid": "18a31703_4f8312dc",
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63fd2a85_708ddc4a",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 5
