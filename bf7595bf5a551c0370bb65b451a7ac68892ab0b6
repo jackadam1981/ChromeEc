@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a9a4dee2_124455e4",
+        "filename": "board/kukui_scp/update_scp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T08:17:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "31eab9a0_2a75511b",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 5
+      },
+      "revId": "bf7595bf5a551c0370bb65b451a7ac68892ab0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f20c3468_fe758209",
         "filename": "board/kukui_scp/update_scp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-01-31T02:32:11Z",
       "side": 1,
       "message": "Should we use ec.R[OW].elf instead?",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "bf7595bf5a551c0370bb65b451a7ac68892ab0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdbe8387_e0f04f5b",
+        "filename": "board/kukui_scp/update_scp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-01T08:17:13Z",
+      "side": 1,
+      "message": "No, they are different (I wasted a lot of time figuring this out _again_ this week)\n\nec.RW.elf is mapping to the SCP address space (DRAM@0x10000000), while ec.obj moves the DRAM to 0x50000000 (where it can be loaded by the kernel SCP driver)",
+      "parentUuid": "f20c3468_fe758209",
       "range": {
         "startLine": 24,
         "startChar": 29,
