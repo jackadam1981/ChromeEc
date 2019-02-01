@@ -343,14 +343,6 @@ struct lsm6dsm_data {
 #endif  /* CONFIG_MAG_CALIBRATE */
 };
 
-/*
- * Note: The specific number of samples to discard depends on the filters
- * configured for the chip, as well as the ODR being set.  For most of our
- * allowed ODRs, 4 should suffice.
- * See: ST's LSM6DSM application notes (AN4987) Tables 17 and 19 for details
- */
-#define LSM6DSM_DISCARD_SAMPLES 4
-
 #define LSM6DSM_ST_DATA(g, type) (&(&(g))->st_data[(type)])
 
 #define LSM6DSM_MAIN_SENSOR(_s) ((_s) - (_s)->type)

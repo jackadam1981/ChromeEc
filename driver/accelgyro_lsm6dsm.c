@@ -22,6 +22,37 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
+struct odr_sample_discard_t {
+	int min_odr;
+	int samples_to_discard;
+};
+
+/*
+ * Note: The specific number of samples to discard depends on the filters
+ * configured for the chip, as well as the ODR being set.  For the default
+ * filter bits we set, the values below should suffice.
+ * See: ST's LSM6DSM application notes (AN4987) Tables 17 and 19 for details
+ */
+
+struct odr_sample_discard_t accel_discards[] = {
+	{ 0,		1  },
+	{ 12500,	1  },
+	{ 52000,	2  },
+	{ 1666000,	3  },
+	{ 3333000,	4  },
+	{ 6666000,	14 },
+};
+
+struct odr_sample_discard_t gyro_discards[] = {
+	{ 0,		2   },
+	{ 12500,	3   },
+	{ 26000,	4   },
+	{ 1660000,	135 },
+	{ 3330000,	270 },
+	{ 6660000,	540 },
+};
+
+
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
 #endif
@@ -98,7 +129,8 @@ static void fifo_reset_pattern(struct lsm6dsm_data *private)
  * Configure FIFO decimator to have every time the right pattern
  * with acc/gyro
  */
-static int accelgyro_fifo_enable(const struct motion_sensor_t *accel)
+static int accelgyro_fifo_enable(const struct motion_sensor_t *accel,
+				 enum motionsensor_type type)
 {
 	int err, i, rate;
 	uint8_t decimator[FIFO_DEV_NUM] = { 0 };
@@ -132,8 +164,37 @@ static int accelgyro_fifo_enable(const struct motion_sensor_t *accel)
 	/* FIFO ODR must be set before the decimation factors */
 	odr_reg_val = LSM6DSM_ODR_TO_REG(max_odr) <<
 					LSM6DSM_FIFO_CTRL5_ODR_OFF;
-	err = st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL5_ADDR,
+	st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL5_ADDR,
 			    odr_reg_val);
+
+	/* Set the number of samples to throw out for new sensor data rate */
+	switch (type) {
+	case MOTIONSENSE_TYPE_GYRO:
+		rate = st_get_data_rate(accel + agm_maps[FIFO_DEV_GYRO]);
+		for (i = 1; i < ARRAY_SIZE(gyro_discards); i++) {
+			if (rate < gyro_discards[i].min_odr) {
+				private->samples_to_discard[FIFO_DEV_GYRO] =
+				    gyro_discards[i - 1].samples_to_discard;
+				break;
+			}
+		}
+		break;
+	case MOTIONSENSE_TYPE_ACCEL:
+		rate = st_get_data_rate(accel + agm_maps[FIFO_DEV_ACCEL]);
+		for (i = 1; i < ARRAY_SIZE(accel_discards); i++) {
+			if (rate < accel_discards[i].min_odr) {
+				private->samples_to_discard[FIFO_DEV_ACCEL] =
+				    accel_discards[i - 1].samples_to_discard;
+				break;
+			}
+		}
+		break;
+	default:
+		/* No other sensors require sample discard */
+		break;
+	}
+
+
 
 	/* Scan all sensors configuration to calculate FIFO decimator. */
 	private->config.total_samples_in_pattern = 0;
@@ -144,8 +205,6 @@ static int accelgyro_fifo_enable(const struct motion_sensor_t *accel)
 			decimator[i] = LSM6DSM_FIFO_DECIMATOR(max_odr / rate);
 			private->config.total_samples_in_pattern +=
 				private->config.samples_in_pattern[i];
-			private->samples_to_discard[i] =
-							LSM6DSM_DISCARD_SAMPLES;
 		} else {
 			/* Not in FIFO if sensor disabled. */
 			private->config.samples_in_pattern[i] = 0;
@@ -286,12 +345,6 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 	left = fsts->len & LSM6DSM_FIFO_DIFF_MASK;
 	left *= sizeof(uint16_t);
 	left = (left / OUT_XYZ_SIZE) * OUT_XYZ_SIZE;
-
-	/*
-	 * TODO(b/122912601): phaser360: Investigate Standard Deviation error
-	 *				 during CtsSensorTests
-	 * - check "pattern" register versus where code thinks it is parsing
-	 */
 
 	/* Push all data on upper side. */
 	do {
@@ -497,7 +550,7 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	if (ret == EC_SUCCESS) {
 		data->base.odr = normalized_rate;
 #ifdef CONFIG_ACCEL_FIFO
-		ret = accelgyro_fifo_enable(LSM6DSM_MAIN_SENSOR(s));
+		ret = accelgyro_fifo_enable(LSM6DSM_MAIN_SENSOR(s), s->type);
 		if (ret != EC_SUCCESS)
 			CPRINTS("Failed to enable FIFO. Error: %d", ret);
 #endif
