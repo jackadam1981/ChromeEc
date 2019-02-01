@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b882647_e7a4dc7e",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-01T18:09:50Z",
+      "side": 1,
+      "message": "OK, now, I got what\u0027s VNN.\n\nPlease make a function and call it and add comments on the function.\n\nThis is a task that handles MNG messages using IPC. What you are doing is not directly related with handling msg. VNN should be look like a service provided by PMC but through API. Here, you are asking \"power rail on\" but it is obviously true you would have asking \"power rail off\" somewhere that is dedicated to deep sleep management. So provide as API and call it.\n\nMore over, according to ISH document, it\u0027s introduced from ISH4 so please have either SoC verification or selectively compilation with XXXX_CONFIG.",
+      "range": {
+        "startLine": 699,
+        "startChar": 1,
+        "endLine": 701,
+        "endChar": 3
+      },
+      "revId": "d1cbedebf189be3fc8b7409681e6b6be5dee01a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
