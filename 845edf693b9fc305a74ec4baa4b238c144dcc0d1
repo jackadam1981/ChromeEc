@@ -22,6 +22,30 @@
       "revId": "845edf693b9fc305a74ec4baa4b238c144dcc0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f12334d_e5b31431",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-01T21:34:44Z",
+      "side": 0,
+      "message": "Ah, sorry about the lack of bug report. In hindsight, perhaps I should have filed bug, but I think I didn\u0027t because it was such a small change. (oh, actually Nathan filed a bug at crbug.com/920877)\n\nThe Apple USB-C Digital AV Multiport Adapter with hw version 6 and fw version 2 sends a IRQ 0 and HPD low as part of the initial DPStatus PDO. Then in the Attention VDM, it sets IRQ 1 and HPD high. At this point in time, the HPD signal back to our GPU(cur_lvl) is low, so the previous code would NAK it. Further Attention VDMs are sent, but they\u0027re still sent with IRQ 1 and HPD high and therefore NAK\u0027d indefinitely and the GPU never saw HPD go high to go and read the DPCD registers and attempt link training.\n\nMy interpretation was that this was intending to NAK the case where IRQ is 1 but HPD is low, since that contradicts the DP spec.\n\nWith this change, we fall into the else clause and end up asserting HPD to the GPU which then causes the graphics driver to read the DPCD registers and start link training.",
+      "parentUuid": "dcffe967_c38095a4",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 29
+      },
+      "revId": "845edf693b9fc305a74ec4baa4b238c144dcc0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
