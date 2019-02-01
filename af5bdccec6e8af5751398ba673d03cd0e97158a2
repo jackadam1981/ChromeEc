@@ -236,6 +236,30 @@
       "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461259b5_f9700057",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-01T18:50:01Z",
+      "side": 1,
+      "message": "I see you add msleep to the new patchset. so, this lgtm.",
+      "parentUuid": "93cfe51f_5f9e9afc",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "af5bdccec6e8af5751398ba673d03cd0e97158a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
