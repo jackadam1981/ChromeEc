@@ -19,6 +19,24 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
 
+/* build eSPI message header */
+#define ESPI_HEADER(cycle_type, tag, len)          (((cycle_type) << 16)| \
+						    ((tag) << 12) | (len))
+
+/* build OOB message SMBus header */
+#define SMBUS_HEADER(dest_addr, cmd, byte_cnt)     (((dest_addr) << 16)| \
+						    ((cmd) << 8) | (byte_cnt))
+
+/* build peripheral message specific header */
+#define SPECIFIC_HEADER(msg_code, msg_specific)    (((msg_code) << 32)| \
+						     (msg_specific))
+
+/* build flash message address header */
+#define ADDRESS_HEADER(addr0, addr1, addr2, addr3) (((addr0) << 24)| \
+						    ((addr1) << 16)| \
+						    ((addr2) << 8)| \
+						     (addr3))
+
 struct vw_channel_t {
 	uint8_t  index;         /* VW index of signal */
 	uint8_t  level_mask;    /* level bit of signal */
@@ -544,9 +562,11 @@ static void (*espi_isr[])(uint8_t evt) = {
 void espi_interrupt(void)
 {
 	int i;
+	int byte_cnt;
 	/* get espi interrupt events */
 	uint8_t espi_event = IT83XX_ESPI_ESGCTRL0;
 
+	ccprints("espi_interrupt");
 	/* write-1 to clear */
 	IT83XX_ESPI_ESGCTRL0 = espi_event;
 	/* process espi interrupt events */
@@ -554,6 +574,23 @@ void espi_interrupt(void)
 		if (espi_event & (1 << i))
 			espi_isr[i](i);
 	}
+
+	/*
+	 * bit1: this bit indicates the slave has transmited a packet to PCH
+	 * successfully.
+	 */
+	if (IT83XX_ESPI_ESUCTRL0 & ESPI_UPSTREAM_DONE) {
+		/*
+		 * if initial flash(check flag):
+		 * 1.write/erase need check 0x31b6/b7/b8 (like ACK) before w1c.
+		 * 2.read need check 0x31b6/b7/b8 and 0x3400 (like ACK + data)
+		 * before w1c.
+		 */
+		/* write-1-clear upstream done event */
+		IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_DONE;
+		ccprints("upstream tx done");
+	}
+
 	/*
 	 * bit7: the slave has received a peripheral posted/completion.
 	 * This bit indicates the slave has received a packet from eSPI
@@ -566,8 +603,171 @@ void espi_interrupt(void)
 		CPRINTS("A packet from peripheral channel is ignored!");
 	}
 
+	/*
+	 * bit7: this bit indicates the slave has received a packet from eSPI
+	 * OOB channel.
+	 */
+	if (IT83XX_ESPI_ESOCTRL0 & ESPI_INTERRUPT_EVENT_PUT_OOB) {
+		/*
+		 * byte_cnt = specific data + data (RTC last 7 byte,
+		 * temp last 1 byte).
+		 */
+		byte_cnt = IT83XX_ESPI_QUEUE0_PUT_OOB(2);
+		for (i = 0; i < byte_cnt; i++)
+			ccprints("OOB data = 0x%x",
+				 IT83XX_ESPI_QUEUE0_PUT_OOB(i + 3));
+#if 0
+		global uint8_t *pbuff;
+		pbuff = &IT83XX_ESPI_QUEUE0_PUT_OOB(3);
+#endif
+		/* write-1-clear OOB event */
+		IT83XX_ESPI_ESOCTRL0 = ESPI_INTERRUPT_EVENT_PUT_OOB;
+	}
+
+	/*
+	 * bit7: this bit indicates the slave has received a packet from eSPI
+	 * flash channel.
+	 */
+	if (IT83XX_ESPI_ESPISAFSC1 & ESPI_INTERRUPT_EVENT_PUT_FLASH)
+		/* if (IT83XX_ESPI_ESPISAFSC1 & ESPI_FLASH_NP_CYCLE_WRITE)
+		 *          buf(0x3480) data write flash addr(0x31D4)
+		 * else if (IT83XX_ESPI_ESPISAFSC1 & ESPI_FLASH_NP_CYCLE_ERASE)
+		 *          erase flash addr(0x31D4)
+		 */
+		/* write-1-clear flash event */
+		IT83XX_ESPI_ESPISAFSC1 = ESPI_INTERRUPT_EVENT_PUT_FLASH;
+
 	task_clear_pending_irq(IT83XX_IRQ_ESPI);
 }
+
+/* compose peripheral packet format */
+void peripheral_message(int pc_header, uint64_t message, char *pdata)
+{
+	int i,
+	    len = (pc_header & 0xFFF) - 5;
+	/* cycle type */
+	IT83XX_ESPI_ESUCTRL1 = (char)(pc_header >> 16);
+	/* tag + len[11:8] */
+	IT83XX_ESPI_ESUCTRL2 = (char)(pc_header >> 8);
+	/* len[7:0] */
+	IT83XX_ESPI_ESUCTRL3 = (char)pc_header;
+	/* message cmd ex.LTR =0x01 */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(0) = (char)(message >> 32);
+	/* message specific byte0 */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(1) = (char)(message >> 24);
+	/* message specific byte1 */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(2) = (char)(message >> 16);
+	/* message specific byte2 */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(3) = (char)(message >> 8);
+	/* message specific byte3 */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(4) = (char)message;
+	for (i = 0; i < len; i++)
+		/* data bytes */
+		IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(5 + i) = *(pdata + i);
+}
+
+/* compose flash packet format */
+void flash_message(int flash_header, int addr, char *pdata)
+{
+	int i,
+	    len = (flash_header & 0xFFF) - 5;
+	/* cycle type */
+	IT83XX_ESPI_ESUCTRL1 = (char)(flash_header >> 16);
+	/* tag + len[11:8] */
+	IT83XX_ESPI_ESUCTRL2 = (char)(flash_header >> 8);
+	/* len[7:0] */
+	IT83XX_ESPI_ESUCTRL3 = (char)flash_header;
+	/* address[31:24] */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(0) = (char)(addr >> 24);
+	/* address[23:16] */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(1) = (char)(addr >> 16);
+	/* address[15:8] */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(2) = (char)(addr >> 8);
+	/* address[7:0] */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(3) = (char)addr;
+	for (i = 0; i < len; i++)
+		IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(4 + i) = *(pdata + i);
+
+	/*
+	 * need to set initial flash flag for receiving ACK + data in upstream
+	 * done isr.
+	 */
+}
+
+/* compose OOB packet format */
+void OOB_message(int oob_header, int smb_header, char *pdata)
+{
+	/* base 3100h */
+	/* cycle type */
+	IT83XX_ESPI_ESUCTRL1 = (char)(oob_header >> 16);
+	/* tag + len[11:8] */
+	IT83XX_ESPI_ESUCTRL2 = (char)(oob_header >> 8);
+	/* len[7:0] */
+	IT83XX_ESPI_ESUCTRL3 = (char)oob_header;
+	/* base 3400h */
+	/* SMBus destination addr */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(0) = (char)(smb_header >> 16);
+	/* SMBus cmd */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(1) = (char)(smb_header >> 8);
+	/* SMBus byte count */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(2) = (char)smb_header;
+	/* SMBus source addr */
+	IT83XX_ESPI_QUEUE1_PUT_UPSTREAM(3) = *pdata;
+}
+
+/* initial eSPI command to PCH */
+static int initial_command(void)
+{
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_EN;
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_GO;
+	return EC_SUCCESS;
+}
+
+/* initial eSPI RTC command to PCH by console cmd */
+static int initial_rtc(int argc, char **argv)
+{
+	char tag, data;
+	uint16_t len;
+	int espi_header, smb_header;
+
+	tag = 0;
+	len = 0x04;
+	espi_header = ESPI_HEADER(ESPI_UPSTREAM_CYCLE_OOB_MESSAGE, tag, len);
+	smb_header = SMBUS_HEADER(OOB_SMBUS_DEST_ADDR_PCH,
+				  OOB_SMBUS_CMD_GET_PCH_RTC, 0x01);
+	data = OOB_SMBUS_SRC_ADDR_EC;
+	OOB_message(espi_header, smb_header, &data);
+	initial_command();
+	ccprints("RTC msg done");
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(initrtc, initial_rtc,
+			NULL,
+			"initial_rtc");
+
+/* initial eSPI temperature command to PCH by console cmd */
+static int initial_temp(int argc, char **argv)
+{
+	char tag, data;
+	uint16_t len;
+	int espi_header, smb_header;
+
+	tag = 0;
+	len = 0x04;
+	espi_header = ESPI_HEADER(ESPI_UPSTREAM_CYCLE_OOB_MESSAGE, tag, len);
+	smb_header = SMBUS_HEADER(OOB_SMBUS_DEST_ADDR_PCH,
+				  OOB_SMBUS_CMD_GET_PCH_TEMP, 0x01);
+	data = OOB_SMBUS_SRC_ADDR_EC;
+	OOB_message(espi_header, smb_header, &data);
+	initial_command();
+	ccprints("temp msg done");
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(inittemp, initial_temp,
+			NULL,
+			"initial_temp");
 
 #ifdef IT83XX_ESPI_INHIBIT_CS_BY_PAD_DISABLED
 /* Enable/Disable eSPI pad */
@@ -608,6 +808,11 @@ void espi_init(void)
 	IT83XX_ESPI_VWCTRL0 |= (1 << 7);
 	task_enable_irq(IT83XX_IRQ_ESPI_VW);
 
+	/* need to ++FLASH, PC ISR EN */
+	/* bit5: upstream interrupt enable */
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_INTERRUPT_EN;
+	/* bit7: OOB interrupt enable */
+	IT83XX_ESPI_ESOCTRL1 |= ESPI_INTERRUPT_EVENT_PUT_OOB_EN;
 	/* bit7: eSPI interrupt enable */
 	IT83XX_ESPI_ESGCTRL1 |= (1 << 7);
 	/* bit4: eSPI to WUC enable */
