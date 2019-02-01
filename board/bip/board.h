@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_HOSTCMD_ESPI_OOB
+
 /* Select Baseboard features */
 #define VARIANT_OCTOPUS_EC_ITE8320
 #define VARIANT_OCTOPUS_CHARGER_BQ25703

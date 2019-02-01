@@ -8,6 +8,7 @@
 #include "console.h"
 #include "espi.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "port80.h"
 #include "power.h"
 #include "registers.h"
@@ -541,6 +542,60 @@ static void (*espi_isr[])(uint8_t evt) = {
 	[7] = espi_no_isr,
 };
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+int espi_oob_receive(uint8_t *oob_data)
+{
+	int i;
+	uint8_t oob_len;
+	uint8_t espi_oob_event;
+
+	/* Read PUT_OOB length */
+	oob_len = IT83XX_ESPI_ESOCTRL4;
+	oob_len &= 0x3F;
+
+	/* Read PUT_OOB data */
+	for (i = 0; i < oob_len; i++)
+		oob_data[i] = IT83XX_ESPI_QUEUE_PUT_OOB(i, 0);
+
+	/* write 1 to clear PUT_OOB status */
+	espi_oob_event = IT83XX_ESPI_ESOCTRL0;
+	IT83XX_ESPI_ESOCTRL0 = espi_oob_event | ESPI_INTERRUPT_EVENT_PUT_PC;
+
+	return oob_len;
+}
+
+void espi_oob_send(uint8_t *oob_data)
+{
+	int i;
+	uint8_t reg;
+	uint16_t oob_len = oob_data[2] | (oob_data[1] & 0x0F) << 4;
+
+	/* Set upstream cycle type */
+	IT83XX_ESPI_ESUCTRL1 = oob_data[0];
+
+	/* Set upstream Tag */
+	IT83XX_ESPI_ESUCTRL2 = oob_data[1] & 0xF0;
+
+	/* Set upstream length[11:8] */
+	IT83XX_ESPI_ESUCTRL2 = oob_data[1] & 0x0F;
+
+	/* length[7:0] */
+	IT83XX_ESPI_ESUCTRL3 = oob_data[2];
+
+	/* Set upstream data */
+	for (i = 0; i < oob_len; i++)
+		IT83XX_ESPI_QUEUE_PUT_PC(i, 1) = oob_data[i + 3];
+
+	/* Set upstream enable */
+	reg = IT83XX_ESPI_ESUCTRL0;
+	IT83XX_ESPI_ESUCTRL0 = reg | ESPI_INTERRUPT_EVENT_PUT_PC;
+
+	/* Set upstream go */
+	IT83XX_ESPI_ESUCTRL0 = reg | ESPI_INTERRUPT_EVENT_UPSTREAM_GO |
+					ESPI_INTERRUPT_EVENT_PUT_PC;
+}
+#endif
+
 void espi_interrupt(void)
 {
 	int i;
@@ -565,6 +620,22 @@ void espi_interrupt(void)
 		IT83XX_ESPI_ESPCTRL0 = ESPI_INTERRUPT_EVENT_PUT_PC;
 		CPRINTS("A packet from peripheral channel is ignored!");
 	}
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	/* eSPI OOB message interrupt occurred */
+	espi_event = IT83XX_ESPI_ESOCTRL0;
+	if (espi_event & ESPI_INTERRUPT_EVENT_PUT_PC)
+		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_ESPI_OOB_RECEIVE, 0);
+
+	/* eSPI OOB upstream done asserted */
+	espi_event = IT83XX_ESPI_ESUCTRL0;
+	if (espi_event & ESPI_INTERRUPT_EVENT_UPSTREAM_DONE) {
+		IT83XX_ESPI_ESUCTRL0 = espi_event |
+			ESPI_INTERRUPT_EVENT_UPSTREAM_DONE;
+		task_set_event(TASK_ID_HOSTCMD,
+			TASK_EVENT_ESPI_OOB_SEND_DONE, 0);
+	}
+#endif
 
 	task_clear_pending_irq(IT83XX_IRQ_ESPI);
 }
