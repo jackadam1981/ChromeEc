@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54c88a2c_57c1ceaf",
+        "filename": "board/meep/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 0,
+      "message": "I have to admit, the more time I spend with this driver code the more I appreciate collapsing the data structures into one, given that many of the previous driver calls would just reference fields in the base accelerometer\u0027s data structure anyway.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "5b8fb198763619551dc2cfff648cea022c18901e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

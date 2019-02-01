@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78528f2b_16eb3a14",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "Just as an FYI, I\u0027m working on the change to fine-tune the discard scheme by sensor type and ODR.  As far as I can tell, we have no need to discard magnetometer data after ODR change, correct?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e35e845_9f3f0c97",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "I\u0027m not completely certain I understand, why create a union of these structures?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 3
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc055b69_698459d7",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "Does this or the data structure need a comment explaining that the accelerometer\u0027s st_data must be first in the lsm6dsm_data structure for this to work, if I\u0027m reading all the pointer manipulation and re-casting correctly?",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 61
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45bef95_75668020",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "Why is this section necessary for one pass-thru sensor but not the other?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb3b68f_a5896b26",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "It would probably be worth a comment for when this data structure should be used for the LIS2MDL configuration versus the pass-thru sensor (as the case seems to be with the LSM6DSM)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

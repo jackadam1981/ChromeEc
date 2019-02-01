@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "86ad5a76_4835e997",
+        "filename": "board/meep/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "Part of it is that one of our ECs had a known FPU silicon issue we wanted to avoid. We should be okay enabling this on meep though.",
+      "parentUuid": "ed16dd6f_b6943b7a",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6ed9d75_93361971",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 6
@@ -175,6 +199,30 @@
       "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eef63f2_878d7ff5",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-01T18:13:57Z",
+      "side": 1,
+      "message": "Okay.  It might still be worth a comment about which configs need which driver/data combo and a brief explanation how the indexing to this array works, but that\u0027s up to you.",
+      "parentUuid": "ceb5b823_f5f48353",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 33
+      },
+      "revId": "a134367c028f42de72207501db3ea4fe96e856f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
