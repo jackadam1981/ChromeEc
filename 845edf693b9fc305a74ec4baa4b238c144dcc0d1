@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcffe967_c38095a4",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-02-01T20:07:48Z",
+      "side": 0,
+      "message": "IIRC this was meant to nack the attention in hopes that the UFP would send another as without a queue to hold the IRQ it would have to drop be dropped on the floor.\n\nAre there more details on how this fixed the failure?  BUG\u003dnone :(",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 29
+      },
+      "revId": "845edf693b9fc305a74ec4baa4b238c144dcc0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
