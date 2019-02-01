@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "baa99ae3_baa236fa",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-01T07:06:16Z",
+      "side": 1,
+      "message": "in math_util.h, added in CL:1387923",
+      "parentUuid": "072af88d_281e32e5",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 13
+      },
+      "revId": "8c466d313a7599e317e17ca2238c92b67f7c149c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e097167_0410e894",
         "filename": "common/motion_lid.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f628daaf_d0701ff1",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-01T07:06:16Z",
+      "side": 1,
+      "message": "in math_util.h, added in CL:1387923",
+      "parentUuid": "5e097167_0410e894",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 14
+      },
+      "revId": "8c466d313a7599e317e17ca2238c92b67f7c149c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dc577ac_f5f4100f",
         "filename": "common/motion_lid.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2019-01-31T09:20:44Z",
       "side": 1,
       "message": "implicit declaration of function \u0027dot_product\u0027?",
+      "range": {
+        "startLine": 399,
+        "startChar": 5,
+        "endLine": 399,
+        "endChar": 16
+      },
+      "revId": "8c466d313a7599e317e17ca2238c92b67f7c149c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588e7421_1636d6b6",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-01T07:06:16Z",
+      "side": 1,
+      "message": "in math_util.h, added in CL:1387923",
+      "parentUuid": "8dc577ac_f5f4100f",
       "range": {
         "startLine": 399,
         "startChar": 5,
