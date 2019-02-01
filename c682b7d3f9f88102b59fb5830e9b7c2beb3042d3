@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f8dd035c_561fa22e",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1324980
+      },
+      "writtenOn": "2019-02-01T01:51:46Z",
+      "side": 1,
+      "message": "If you don‘’t turn off LED, the former will affect the latter when switching state.\nOur LED display status requires only four situations: discharge, charging, full charge and state error.",
+      "parentUuid": "41413612_1156a54d",
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2112397b_5a23523e",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 5
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "18a31703_4f8312dc",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1324980
+      },
+      "writtenOn": "2019-02-01T01:51:46Z",
+      "side": 1,
+      "message": "The mt6370_led_set_color function only turn on single color of LED  at the same time, so it can\u0027t  satisfy our needs that the color of the open LED doesn\u0027t affect each other. This function can combines the colors we need.",
+      "parentUuid": "be933033_e72389c2",
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63fd2a85_708ddc4a",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 5
@@ -74,6 +110,30 @@
       "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e70119_e10d24ac",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1324980
+      },
+      "writtenOn": "2019-02-01T01:51:46Z",
+      "side": 1,
+      "message": "It means that you can turn on the LED color at the same time without affecting each other.",
+      "parentUuid": "63fd2a85_708ddc4a",
+      "range": {
+        "startLine": 584,
+        "startChar": 17,
+        "endLine": 584,
+        "endChar": 30
+      },
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
