@@ -137,6 +137,15 @@ struct motion_sensor_t {
 	uint32_t flush_pending;
 
 	/*
+	 * Whether an ODR change event is pending.
+	 * Since we do not send the data rate, we do not need to
+	 * keep an accurate count of how many ODR changes have happened
+	 * since the last time we notified the AP. Knowing that we need
+	 * to notify is sufficient.
+	 */
+	uint32_t odr_pending;
+
+	/*
 	 * Allow EC to request an higher frequency for the sensors than the AP.
 	 * We will downsample according to oversampling_ratio, or ignore the
 	 * samples altogether if oversampling_ratio is 0.
