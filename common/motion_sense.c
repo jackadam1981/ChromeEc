@@ -150,11 +150,18 @@ static void motion_sense_fifo_add_unit(
 	mutex_unlock(&g_sensor_mutex);
 }
 
-static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
+enum motion_sense_async_event {
+	ASYNC_EVENT_FLUSH = MOTIONSENSE_SENSOR_FLAG_FLUSH |
+			    MOTIONSENSE_SENSOR_FLAG_TIMESTAMP,
+	ASYNC_EVENT_ODR =   MOTIONSENSE_SENSOR_FLAG_ODR |
+			    MOTIONSENSE_SENSOR_FLAG_TIMESTAMP,
+};
+
+static void motion_sense_insert_async_event(struct motion_sensor_t *sensor,
+					    enum motion_sense_async_event evt)
 {
 	struct ec_response_motion_sensor_data vector;
-	vector.flags = MOTIONSENSE_SENSOR_FLAG_FLUSH |
-		       MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
+	vector.flags = evt;
 	vector.timestamp = __hw_clock_source_read();
 	vector.sensor_num = sensor - motion_sensors;
 
@@ -264,6 +271,7 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 		config_id = SENSOR_CONFIG_AP;
 	}
 	roundup = !!(sensor->config[config_id].odr & ROUND_UP_FLAG);
+
 	ret = sensor->drv->set_data_rate(sensor, odr, roundup);
 	if (ret)
 		return ret;
@@ -745,11 +753,16 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 			ret = EC_ERROR_BUSY;
 		}
 	}
+	if (*event & TASK_EVENT_MOTION_ODR_CHANGE) {
+		motion_sense_insert_async_event(sensor,
+			ASYNC_EVENT_ODR);
+	}
 	if (*event & TASK_EVENT_MOTION_FLUSH_PENDING) {
 		int flush_pending;
 		flush_pending = atomic_read_clear(&sensor->flush_pending);
 		for (; flush_pending > 0; flush_pending--) {
-			motion_sense_insert_flush(sensor);
+			motion_sense_insert_async_event(sensor,
+				ASYNC_EVENT_FLUSH);
 		}
 	}
 #else
