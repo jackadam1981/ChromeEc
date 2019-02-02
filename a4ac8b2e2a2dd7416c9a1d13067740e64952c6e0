@@ -312,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "b87b3f16_0ddda84b",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-02T03:09:03Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "0f3524bc_0f1ed98c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "a4ac8b2e2a2dd7416c9a1d13067740e64952c6e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6731831_f80d6463",
         "filename": "board/nami_fp/flash_fp_mcu",
         "patchSetId": 1
