@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "c2715b2c_4532079f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-02T11:56:35Z",
+      "side": 1,
+      "message": "The function mt6370_led_set_color() would turn off the other LEDs when it turns on one LED. For example, if we call mt6370_led_set_color(LED_RED),and then call mt6370_led_set_color(LED_GREEN). Then the Red led will be turned off and the Green led will be turned on.\n\nPer flapjack\u0027s spec, we need to set white led which is composed by Red/Green/Blue leds. Then the function mt6370_led_set_color() can\u0027t turn on all of the three leds at the same time. So we add a new function  mt6370_led_set_color_independent() to set one led separately.\n\nWe will elaborate this function by passing the bit mask such as  \"(1 \u003c\u003c LED_RED) || (1 \u003c\u003c LED_GREEN)\" to it after the CNY holiday.\n\nWhat do you think?",
+      "parentUuid": "e2211bb5_1812b06e",
+      "revId": "c682b7d3f9f88102b59fb5830e9b7c2beb3042d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63fd2a85_708ddc4a",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 5
