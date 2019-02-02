@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "afe9b63d_a0a6059b",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-02T01:47:52Z",
+      "side": 1,
+      "message": "that\u0027s correct.",
+      "parentUuid": "78528f2b_16eb3a14",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 31
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bba5f2c0_c5c9258a",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-01T21:28:11Z",
       "side": 1,
       "message": "If the readings from BMI150 magnetometer is handled through FIFO, then we need to set the decimation factor appropriately for that too. May be check against CONFIG_LSM6DSM_SEC_I2C?",
+      "range": {
+        "startLine": 157,
+        "startChar": 7,
+        "endLine": 157,
+        "endChar": 33
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f728a5_c0ad6f69",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-02T01:47:52Z",
+      "side": 1,
+      "message": "Fixed. I am not sure yet how to configure BMM150 when behind LSM6DSM. When behind BMI160, it is in force mode. We may set it up at the right frequency when behind LSM6DSM.",
+      "parentUuid": "bba5f2c0_c5c9258a",
       "range": {
         "startLine": 157,
         "startChar": 7,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "90fcec18_ff31deac",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-02T01:47:52Z",
+      "side": 1,
+      "message": "All magnetometer needs mag_cal_t.\nBMI150 needs more data to store temperature compensation.\nThe first field of compasss is cal to allow magnetometer compensation to work on all magnetometer.",
+      "parentUuid": "7a5d9fce_ac06a8f9",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 3
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc055b69_698459d7",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 8
@@ -106,6 +178,30 @@
       "writtenOn": "2019-02-01T18:13:57Z",
       "side": 1,
       "message": "Does this or the data structure need a comment explaining that the accelerometer\u0027s st_data must be first in the lsm6dsm_data structure for this to work, if I\u0027m reading all the pointer manipulation and re-casting correctly?",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 61
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3764b661_4f5d4ba1",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-02T01:47:52Z",
+      "side": 1,
+      "message": "Ascii art to the rescue :-).",
+      "parentUuid": "bc055b69_698459d7",
       "range": {
         "startLine": 327,
         "startChar": 1,
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "5c56da5d_20bd4177",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-02T01:47:52Z",
+      "side": 1,
+      "message": "Behind BMI160, LIS2MDL is in forced mode (it collect data on BMI160 request).\nBehind LMS6DSM, it is in continuous mode: it collect data on its own. In that mode, it average 2 readings for compensating for the measurement bias (see magnetometer offset cancellation in AN5069 - https://www.st.com/content/ccc/resource/technical/document/application_note/group0/a3/5d/fa/98/34/34/4f/2f/DM00427201/files/DM00427201.pdf/jcr:content/translations/en.DM00427201.pdf) \nIt can not do it in forced mode [https://buganizer.corp.google.com/issues/110363137#comment7]",
+      "parentUuid": "e45bef95_75668020",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcb3b68f_a5896b26",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 8
@@ -152,6 +272,30 @@
       "writtenOn": "2019-02-01T18:13:57Z",
       "side": 1,
       "message": "It would probably be worth a comment for when this data structure should be used for the LIS2MDL configuration versus the pass-thru sensor (as the case seems to be with the LSM6DSM)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1b9220_05c4d569",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-02T01:47:52Z",
+      "side": 1,
+      "message": "You\u0027re right, I should use lis2mdl_private_data in lsm6dsm.h. Fixed.",
+      "parentUuid": "bcb3b68f_a5896b26",
       "range": {
         "startLine": 46,
         "startChar": 0,
