@@ -46,6 +46,30 @@
       "revId": "845edf693b9fc305a74ec4baa4b238c144dcc0d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd82eb4_badb9322",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-02-02T00:20:57Z",
+      "side": 0,
+      "message": "Thanks for explanation and pointer to bug.  Your explanation makes complete sense now that I\u0027ve re-read this part of spec in particular,\n\nIf a single message represents both a transition to HPD_High and an IRQ_HPD, the converter\nshall ensure that HPD is taken high for a minimum of 2ms before generating the IRQ_HPD.\n\nMeaning its perfectly reasonable for HPD-\u003ePD transmitter to group both the original HPD assertion and its first IRQ together and for that reason cur_lvl could be low.\n\nI think previously, we saw packets where at least the initial HPD was asserted in the absence of the IRQ always.",
+      "parentUuid": "1f12334d_e5b31431",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 29
+      },
+      "revId": "845edf693b9fc305a74ec4baa4b238c144dcc0d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
