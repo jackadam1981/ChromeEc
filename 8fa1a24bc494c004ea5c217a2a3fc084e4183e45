@@ -46,6 +46,30 @@
       "revId": "8fa1a24bc494c004ea5c217a2a3fc084e4183e45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3580c0e7_32b0b7cf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-04T22:35:41Z",
+      "side": 1,
+      "message": "s/reset/deep sleep behavior/",
+      "parentUuid": "f13e5bcb_226f45c4",
+      "range": {
+        "startLine": 1334,
+        "startChar": 9,
+        "endLine": 1334,
+        "endChar": 53
+      },
+      "revId": "8fa1a24bc494c004ea5c217a2a3fc084e4183e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
