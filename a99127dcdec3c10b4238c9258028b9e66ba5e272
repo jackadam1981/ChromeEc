@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74a854fe_0c89fe81",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "let\u0027s use this parameter to encode the FPU usage or not\n\nDefine new flag (define) as well",
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb0471c5_7b6a5d96",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "should this all go behind the save_fpu_ctx macro? Otherwise when we compile without CONFIG_FPU we have leftover code that applyies to FPU",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd568f0f_a3bbe2dc",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "pull from d (parameter) instead of s (stack size).\n\nLet\u0027s make this flag bit 31 (and clear it off of r0 like you are doing for stack_size)",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 36
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11c13bdb_e039bc53",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "Can we use \u0027Y\u0027 and \u0027N\u0027 instead of OX",
+      "range": {
+        "startLine": 491,
+        "startChar": 37,
+        "endLine": 491,
+        "endChar": 38
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a617392_ce260150",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "hmm, I guess your other CL for passing the R0 hasn\u0027t gone through yet. We could clear the FPU bit here (with comments of course)",
+      "range": {
+        "startLine": 611,
+        "startChar": 11,
+        "endLine": 611,
+        "endChar": 16
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221338c0_02f99f16",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "(small nit) let\u0027s put use_fpu first so we don\u0027t have to have the extra + CTX_SZ addition. Unless you feel strongly about not moving it, then we can leave it.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a25aa8b_514ec98d",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:40:36Z",
+      "side": 1,
+      "message": "we have STRINGIFY() in common.h for this already",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
