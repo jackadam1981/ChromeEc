@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b2850fe9_970f0d72",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T22:03:26Z",
+      "side": 1,
+      "message": "Hm.... I see problem that the values defined here also used by \"util/export_taskinfo.c\". stack_size will be wrong here unless we change this file. I don\u0027t know who is using this but to avoid changing this file, maybe we can introduce new macro for flag(or property) here which can make people easily get what they have to do and provide correct information to other common functions like \"export_taskinfo.c\". for example.\n\n#define MIA_TASK_FLAG_USE_FPU\n#define ROUTINE(r, f)        (r)\n\ndefine CONFIG_TASK_LIST \\\n\tTASK_ALWAYS(HOOKS, ROUTINE(hook_task, 0), NULL, HUGE_TASK_STACK_SIZE) \\\n\tTASK_ALWAYS(FPU_TASK, ROUTINE(fpu_task, MIA_TASK_FLAG_USE_FPU), NULL, LARGER_TASK_STACK_SIZE) \n\nand redefine ROUTINE(r, f) and MIA_TASK_FLAG_USE_FPU in \"task.c\" to get correct information.\n\n\nOR, just use different defines\n\n#define ROUTINE(r)               (r)\n#define ROUTINE_FPU(r)           (r)   \u003c\u003d redefine in task.c\" \n\nAny thought ?",
+      "parentUuid": "9f9b7a67_81cb6bd9",
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb0471c5_7b6a5d96",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 1
