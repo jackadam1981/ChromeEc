@@ -225,6 +225,12 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+
+	/* Enable LED channel for P0B*/
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA0, 0xFE);
+
+	/* Enable PWM_backlight for P0B*/
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA2, 0xAC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
