@@ -19,6 +19,8 @@
 
 /* EC Defines */
 #define CONFIG_ADC
+#define CONFIG_CRC8
+#define CONFIG_CROS_BOARD_INFO
 #define CONFIG_HIBERNATE_PSL
 #define CONFIG_PWM
 #define CONFIG_VBOOT_HASH
