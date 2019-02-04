@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "342c888d_d5ecd508",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-02-04T23:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af932e6a_ce8f56e3",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47b8d52a_605b5a27",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-04T18:20:00Z",
       "side": 1,
       "message": "what is your reference for ISH5 having a 12Mhz clock. I am seeing a 32kHz main counter\n\nSee this as a reference: https://chromium.googlesource.com/chromiumos/platform/ec/+/ae676b1d4770ec3a289f5dfd77030ee1e0e68002/chip/ish/hpet.h#72\n\nMaybe we should use that define as well?",
+      "range": {
+        "startLine": 20,
+        "startChar": 41,
+        "endLine": 20,
+        "endChar": 57
+      },
+      "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee7e277_3b0148d8",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-02-04T23:35:34Z",
+      "side": 1,
+      "message": "The clock watchdog uses is different from HPET. The watchdog timer is derived by dividing the func_clk clock, 120MHz for both ISH3 and ISH5.",
+      "parentUuid": "47b8d52a_605b5a27",
       "range": {
         "startLine": 20,
         "startChar": 41,
@@ -68,6 +116,30 @@
       "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1428ab_0992f7bc",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2019-02-04T23:35:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12ebf685_63b8413f",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
