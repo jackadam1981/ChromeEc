@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b12f3f2_b3ba1ca1",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:00:05Z",
+      "side": 1,
+      "message": "should we remove the CONFIG_SENSORHUB_LSM6DSM concept now since CONFIG_LSM6DSM_SEC_I2C and CONFIG_MAG_LSM6DSM_LIS2MDL/CONFIG_MAG_LSM6DSM_BMM150 cover that case?",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "8676ff2308ab56696c230c8d0580b7d7978d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb044731_f73b196e",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:00:05Z",
+      "side": 1,
+      "message": "Can you add to the comment here that this gets automatically defined when appropriate",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 7
+      },
+      "revId": "8676ff2308ab56696c230c8d0580b7d7978d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecac121d_5d7ff743",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:00:05Z",
+      "side": 1,
+      "message": "Can you add to the comment here that this gets automatically defined when appropriate",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 7
+      },
+      "revId": "8676ff2308ab56696c230c8d0580b7d7978d0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
