@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "744665aa_5b75afdb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-04T22:17:09Z",
+      "side": 1,
+      "message": "Are these all the board properties we need? Do we want to disable deep sleep? I think the red board may enter deep sleep after 20 seconds unless you pullup PLT_RST",
+      "range": {
+        "startLine": 1334,
+        "startChar": 9,
+        "endLine": 1334,
+        "endChar": 53
+      },
+      "revId": "8fa1a24bc494c004ea5c217a2a3fc084e4183e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
