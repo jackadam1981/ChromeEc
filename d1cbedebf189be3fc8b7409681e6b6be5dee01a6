@@ -22,6 +22,30 @@
       "revId": "d1cbedebf189be3fc8b7409681e6b6be5dee01a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5b7458_94288ec6",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T16:58:44Z",
+      "side": 1,
+      "message": "All I see in documentations is \"Vnn_req Assert Bit 2\" Let\u0027s add more descrition on what bit2 means as well.",
+      "parentUuid": "5b882647_e7a4dc7e",
+      "range": {
+        "startLine": 699,
+        "startChar": 1,
+        "endLine": 701,
+        "endChar": 3
+      },
+      "revId": "d1cbedebf189be3fc8b7409681e6b6be5dee01a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
