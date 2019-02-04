@@ -63,6 +63,7 @@ GPIO(I2C7_SDA,			PIN(B, 2), GPIO_INPUT | GPIO_SEL_1P8V)		/* EC_I2C_SENSOR_SDA */
  * not defined here as GPIOs.
  */
 GPIO(PCH_SLP_S0_L,		PIN(A, 4), GPIO_INPUT)
+GPIO(EC_INT_L,			PIN(C, 6), GPIO_ODR_HIGH)
 
 GPIO(EN_USB_A0_5V,		PIN(6, 1), GPIO_OUT_LOW)			/* Enable A0 5V Charging */
 GPIO(EN_USB_A1_5V,		PIN(C, 0), GPIO_OUT_LOW)			/* Enable A1 5V Charging */

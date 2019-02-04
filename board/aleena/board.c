@@ -239,3 +239,11 @@ static void board_kblight_init(void)
 	lm3630a_poweron();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_kblight_init, HOOK_PRIO_DEFAULT);
+
+static void board_init(void)
+{
+	CLEAR_BIT(NPCX_DEVALT(1), NPCX_DEVALT1_SMI_SL);
+	CLEAR_BIT(NPCX_HIPMIE(PM_CHAN_1), NPCX_HIPMIE_SMIE);
+	gpio_set_flags(GPIO_EC_INT_L, GPIO_ODR_HIGH);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
