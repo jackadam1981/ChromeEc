@@ -286,6 +286,13 @@ static void emmc_disable_spi(void)
 
 	emmc_enabled = 0;
 	CPRINTS("emmc disabled");
+
+#if defined(CONIFG_HUAQIN_JUMPTO_RW)
+	if (system_get_image_copy() == SYSTEM_IMAGE_RO){
+		CPRINTS("Now Huaqin jump to RW");
+		system_run_image_copy(SYSTEM_IMAGE_RW);
+	}
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, emmc_disable_spi, HOOK_PRIO_FIRST);
 
