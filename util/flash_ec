@@ -230,7 +230,7 @@ DEFINE_integer port "${DEFAULT_PORT}" \
 	"Port to communicate to servo on."
 DEFINE_boolean raiden "${FLAGS_FALSE}" \
 	"Use raiden_debug_spi programmer"
-DEFINE_string read "" "Stm32 and npcx_(|int_)spi only:"\
+DEFINE_string read "" "Stm32, it83xx and npcx_(|int_)spi only:"\
 " pathname of the file to store EC firmware image."
 DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
@@ -238,7 +238,7 @@ DEFINE_integer timeout 600 \
 	"Timeout for flashing the EC, measured in seconds."
 DEFINE_boolean verbose "${FLAGS_FALSE}" \
 	"Verbose hw control logging"
-DEFINE_boolean verify "${FLAGS_FALSE}" "Stm32 and npcx_(int_)spi only:"\
+DEFINE_boolean verify "${FLAGS_FALSE}" "Stm32, it83xx and npcx_(int_)spi only:"\
 " verify EC firmware image after programming."
 
 # Parse command line
@@ -387,7 +387,7 @@ if [ "${CHIP}" = "stm32_dfu" -o "${CHIP}" = "it83xx" ]; then
 fi
 
 case "${CHIP}" in
-	"stm32"|"npcx_spi"|"npcx_int_spi") ;;
+	"stm32"|"npcx_spi"|"npcx_int_spi"|"it83xx") ;;
 	*)
 		if [[ -n "${FLAGS_read}" ]]; then
 			die "The flag is not yet supported on ${CHIP}."
@@ -910,7 +910,7 @@ function flash_flashrom() {
 		} > $T
 		fi
 
-		info "Start programming EC firmware image."
+		info "Programming EC firmware image."
 		local FLASHROM_WRITE="${FLASHROM_CMDLINE} ${FLASHROM_OPTIONS}"
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
 			info "Running flashrom:" 1>&2
@@ -920,7 +920,7 @@ function flash_flashrom() {
 			${FLASHROM_WRITE} -w "${T}"
 	else
 		# Read EC image.
-		info "Start reading EC firmware image."
+		info "Reading EC firmware image."
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
 			info "Running flashrom:" 1>&2
 			echo " ${FLASHROM_CMDLINE} -r ${FLAGS_read}" 1>&2
@@ -930,7 +930,7 @@ function flash_flashrom() {
 	fi
 	if [[ -z "${FLAGS_read}" && "${FLAGS_verify}" == ${FLAGS_TRUE} ]]; then
 		# Verify EC image.
-		info "Verify EC firmware image."
+		info "Verifying EC firmware image."
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
 			info "Running flashrom:" 1>&2
 			echo " ${FLASHROM_CMDLINE} -v ${T}" 1>&2
@@ -1018,10 +1018,10 @@ function flash_stm32() {
 		STM32MON_OPT+=" -L ${FLAGS_logfile}"
 	fi
 
-	local IMG_READ=""
+	local IMG_READ="${FLAGS_read}"
 	# Program EC image.
-	if [[ -z "${FLAGS_read}" ]]; then
-		info "Start programming EC firmware image."
+	if [[ -z "${IMG_READ}" ]]; then
+		info "Programming EC firmware image."
 		# Unprotect flash, erase, and write
 		local STM32MON_COMMAND="${STM32MON} ${STM32MON_OPT} -u -e -w"
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
@@ -1033,17 +1033,15 @@ function flash_stm32() {
 		# If it is a program-verify request, then make a temporary
 		# directory to store the image
 		if [[ "${FLAGS_verify}" == ${FLAGS_TRUE} ]]; then
-			local TEMP_SUFFIX=".$(basename ${SCRIPT}).${BOARD}"
+			local TEMP_SUFFIX=".$(basename ${SCRIPT}).${CHIP}"
 			TEMP_DIR="$(mktemp -d --suffix="${TEMP_SUFFIX}")"
 			IMG_READ="${TEMP_DIR}/ec.read.bin"
 		fi
-	else
-		IMG_READ="${FLAGS_read}"
 	fi
 
 	# Read EC image.
 	if [[ -n "${IMG_READ}" ]]; then
-		info "Start reading EC firmware image."
+		info "Reading EC firmware image."
 		local STM32MON_READ_CMD="${STM32MON} ${STM32MON_OPT} -U -r"
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
 			echo "${STM32MON_READ_CMD} ${IMG_READ}"
@@ -1054,9 +1052,8 @@ function flash_stm32() {
 
 	# Verify the flash by comparing the source image to the read image,
 	# only if it was a flash write request.
-	if [[ -z "${FLAGS_read}" && \
-		"${FLAGS_verify}" == ${FLAGS_TRUE} ]]; then
-		info "Verify EC firmware image."
+	if [[ -z "${FLAGS_read}" && "${FLAGS_verify}" == ${FLAGS_TRUE} ]]; then
+		info "Verifying EC firmware image."
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
 			echo "diff ${IMG} ${IMG_READ}"
 		fi
@@ -1110,9 +1107,9 @@ function flash_it83xx() {
 		dut_control i2c_mux:remote_adc
 	fi
 
-	# Now the we have enabled the I2C mux on the servo to talk to the dut,
-	# we need to switch the I2C mux on the dut to allow ec programing (if
-	# there is a mux on the dut)
+	# Now the we have enabled the I2C mux on the servo to talk to
+	# the dut, we need to switch the I2C mux on the dut to allow ec
+	# programing (if there is a mux on the dut)
 	if $(servo_has_dut_i2c_mux); then
 		set +e
 		local retry_count=3
@@ -1158,13 +1155,30 @@ function flash_it83xx() {
 		ITEFLASH_PARAM+=("--debug")
 	fi
 
-	info "Run iteflash..."
-	if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
-		echo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --erase \
+	local IMG_READ="${FLAGS_read}"
+	# Program EC Image
+	if [[ -z "${IMG_READ}" ]]; then
+		info "Programming EC firmware image"
+		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
+			echo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --erase \
+				--write="${IMG}"
+		fi
+		sudo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --erase \
 			--write="${IMG}"
+
+		# iteflash verifies the programmed EC binary by reading it
+		# back as default. No need to verify here.
 	fi
 
-	sudo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --erase --write="${IMG}"
+	# Read EC Image
+	if [[ -n "${IMG_READ}" ]]; then
+		info "Reading EC firmware image"
+		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
+			echo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" \
+			--read="${IMG_READ}"
+		fi
+		sudo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --read "${IMG_READ}"
+	fi
 }
 
 function flash_lm4() {
