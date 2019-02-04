@@ -1107,9 +1107,9 @@ function flash_it83xx() {
 		dut_control i2c_mux:remote_adc
 	fi
 
-	# Now the we have enabled the I2C mux on the servo to talk to the dut,
-	# we need to switch the I2C mux on the dut to allow ec programing (if
-	# there is a mux on the dut)
+	# Now the we have enabled the I2C mux on the servo to talk to
+	# the dut, we need to switch the I2C mux on the dut to allow ec
+	# programing (if there is a mux on the dut)
 	if $(servo_has_dut_i2c_mux); then
 		set +e
 		local retry_count=3
