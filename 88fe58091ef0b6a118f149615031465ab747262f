@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "048f35c0_f11bd8eb",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T18:04:22Z",
+      "side": 1,
+      "message": "let\u0027s convert this to a combination of defines that are defined in the header (the comment is still good)",
+      "range": {
+        "startLine": 50,
+        "startChar": 48,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "88fe58091ef0b6a118f149615031465ab747262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20739b19_e7c99224",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T18:04:22Z",
+      "side": 1,
+      "message": "here and the reset of the file needs to have defines created in the header file that we can reference to make the code more readable and maintainable",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "88fe58091ef0b6a118f149615031465ab747262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
