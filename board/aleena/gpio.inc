@@ -68,7 +68,7 @@ GPIO(EN_USB_A0_5V,		PIN(6, 1), GPIO_OUT_LOW)			/* Enable A0 5V Charging */
 GPIO(EN_USB_A1_5V,		PIN(C, 0), GPIO_OUT_LOW)			/* Enable A1 5V Charging */
 GPIO(EN_USB_C0_TCPC_PWR,	PIN(6, 0), GPIO_OUT_LOW)			/* Enable C0 TCPC Power */
 GPIO(USB_C0_OC_L,		PIN(7, 3), GPIO_OUT_HIGH)			/* C0 Over Current */
-GPIO(USB_C1_OC_L,		PIN(7, 2), GPIO_OUT_HIGH)			/* C1 Over Current */
+GPIO(EC_INT_L,			PIN(7, 2), GPIO_OUT_HIGH)			/* C1 Over Current */
 GPIO(USB_C0_PD_RST_L,		PIN(3, 2), GPIO_OUT_HIGH)			/* C0 PD Reset */
 GPIO(USB_C1_PD_RST_L,		PIN(D, 5), GPIO_OUT_HIGH)			/* C1 PD Reset */
 GPIO(USB_C0_BC12_VBUS_ON_L,	PIN(4, 0), GPIO_ODR_HIGH)			/* C0 BC1.2 Power */
