@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b93f6455_12c622b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-04T23:04:37Z",
+      "side": 1,
+      "message": "Yes, I have fixed the message.",
+      "parentUuid": "82b4dafd_90ca4cff",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "ee3d823f6723c7f4990feb44a85e1d2731ea0622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2a912aa_2ed15205",
         "filename": "power/cometlake.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "ee3d823f6723c7f4990feb44a85e1d2731ea0622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1cee0fb_bfda614a",
+        "filename": "power/cometlake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-04T23:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a912aa_2ed15205",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "ee3d823f6723c7f4990feb44a85e1d2731ea0622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
