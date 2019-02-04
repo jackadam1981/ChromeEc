@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af932e6a_ce8f56e3",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T18:20:00Z",
+      "side": 1,
+      "message": "this comment isn\u0027t right",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b8d52a_605b5a27",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T18:20:00Z",
+      "side": 1,
+      "message": "what is your reference for ISH5 having a 12Mhz clock. I am seeing a 32kHz main counter\n\nSee this as a reference: https://chromium.googlesource.com/chromiumos/platform/ec/+/ae676b1d4770ec3a289f5dfd77030ee1e0e68002/chip/ish/hpet.h#72\n\nMaybe we should use that define as well?",
+      "range": {
+        "startLine": 20,
+        "startChar": 41,
+        "endLine": 20,
+        "endChar": 57
+      },
+      "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ebf685_63b8413f",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-04T18:20:00Z",
+      "side": 1,
+      "message": "please add comment that T2 does not start until T1 elapses. It is not clear that is the case from documentation",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "848e38cab52432882abe3d6903247aa3a66c18cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
