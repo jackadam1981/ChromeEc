@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f9b7a67_81cb6bd9",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "I believe we should provide 32 bit opaque parameter for a task. Using this parameter to micro-control low level components is not a good idea. We also many task declaration with \"NULL\"(which implicitly indicates word size available) in many ec.tasklist files.\n\nCurrently we have \"name\", \"routine\", \"opaque parameter\", and \"stack size\" in task declaration and among them, \"opaque parameter\" is the only thing should be completely owned by the task and shouldn\u0027t be used by any other components.\n\nWe may use \"name\" with special pre/post-fix or \"routine\"(or \"stack size\") with special least significant bit. I believe we should use \"routine\" or \"stack size\".\n\nMaybe \"routine\" is better than \"stack size\" ? to indicate the task has special property ?\n\n\n\nFor the \"define\", I\u0027ve already defined flag in task.c. I\u0027ll use them in the example.",
+      "parentUuid": "74a854fe_0c89fe81",
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb0471c5_7b6a5d96",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3232b688_bf72d0ea",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "Huk!!!! Yes, I didn\u0027t try to compile without CONFIG_FPU.\nThanks you~~",
+      "parentUuid": "fb0471c5_7b6a5d96",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8e6805c6_d60ebf2f",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "Again, I disagree to use d for this.",
+      "parentUuid": "fd568f0f_a3bbe2dc",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 36
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11c13bdb_e039bc53",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385dffe2_f98cd57c",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "No, problem",
+      "parentUuid": "11c13bdb_e039bc53",
+      "range": {
+        "startLine": 491,
+        "startChar": 37,
+        "endLine": 491,
+        "endChar": 38
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "3da10dc6_cb6544dc",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "I prefer to use either \"routine\" or \"stack size\"",
+      "parentUuid": "9a617392_ce260150",
+      "range": {
+        "startLine": 611,
+        "startChar": 11,
+        "endLine": 611,
+        "endChar": 16
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "221338c0_02f99f16",
         "filename": "core/minute-ia/task_defs.h",
         "patchSetId": 1
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "99307012_098527c9",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "221338c0_02f99f16",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a25aa8b_514ec98d",
         "filename": "core/minute-ia/task_defs.h",
         "patchSetId": 1
@@ -154,6 +292,30 @@
       "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62a19d3d_beef383b",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-04T21:17:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a25aa8b_514ec98d",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "a99127dcdec3c10b4238c9258028b9e66ba5e272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
