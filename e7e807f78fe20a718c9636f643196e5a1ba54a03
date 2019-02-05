@@ -22,6 +22,30 @@
       "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac903554_61a2c151",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-05T14:54:01Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "428f9fdc_2eaff190",
+      "range": {
+        "startLine": 199,
+        "startChar": 10,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
