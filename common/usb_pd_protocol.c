@@ -438,8 +438,10 @@ static int reset_device_and_notify(int port)
 
 	if (rv == EC_SUCCESS)
 		CPRINTS("TCPC p%d init ready", port);
-	else
+	else {
 		CPRINTS("TCPC p%d init failed!", port);
+		return rv;
+	}
 
 	/*
 	 * Before getting the other tasks that are waiting, clear the reset
