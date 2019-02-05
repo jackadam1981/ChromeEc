@@ -46,6 +46,23 @@
       "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773739e3_782f3b1d",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T19:31:05Z",
+      "side": 1,
+      "message": "Another thing to note here: This solution works under the assumption that all temp sensors are powered using the same GPIO. e.g. Ampton has two temp_sensors (get_temp_3v3_51k1_47k_4050b and get_temp_3v3_13k7_47k_4050b), but from the code it looks like only one of them is powered using a GPIO. There could be interesting combinations that could come up because of that e.g. if sensor1 is powered using a GPIO and board uses this config then sensor2 might check for that GPIO even though it is never powered off. Not sure if this can have any side-effects.",
+      "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
