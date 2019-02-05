@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c4caf0_134dad75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "just one to?",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bab3305_6958c114",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "blank lines not required",
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a530a37_2a9490e8",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "096a57ca_6e357b47",
+        "filename": "baseboard/hatch/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "This will be dependent on the value of BOARD_USBC_MST_PORT i.e. if port is 0, then you will have to pass in MST_TYPE_C0.",
+      "range": {
+        "startLine": 352,
+        "startChar": 31,
+        "endLine": 352,
+        "endChar": 42
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c49287_b9ebb303",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "As discussed, this is okay as the first pass. But we might probably want to think about potentially extending usb_mux to allow handling of MST or something that will allow support for more than one MST and more than one USB-C port HPD.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc4d2de_adac2c48",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "USB_PD_PORT_TCPC_1?",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e9e60c_7b462b36",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-05T00:24:03Z",
+      "side": 1,
+      "message": "Can you please add a comment indicating this is unused and will be removed in future revisions?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
