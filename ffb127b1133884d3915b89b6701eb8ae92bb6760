@@ -46,6 +46,30 @@
       "revId": "ffb127b1133884d3915b89b6701eb8ae92bb6760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60237b77_c8a0fa94",
+        "filename": "board/aleena/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2019-02-05T21:32:41Z",
+      "side": 1,
+      "message": "In that case, should we just change it in grunt/baseboard.h instead of for aleena?",
+      "parentUuid": "20e13fb2_91bc8908",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "ffb127b1133884d3915b89b6701eb8ae92bb6760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
