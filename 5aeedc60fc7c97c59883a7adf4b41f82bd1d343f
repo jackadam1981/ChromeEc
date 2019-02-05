@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "06e2f743_65c40f48",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-05T22:11:50Z",
+      "side": 1,
+      "message": "It looks like the first field of bmm150_private_data is the set of compensation registers, not the mag_cal_t structure: \n\nhttp://cs/chromeos_public/src/platform/ec/driver/mag_bmm150.h?l\u003d110\u0026rcl\u003d8d9d2ace61857cf683273a4c9cac3083074a3a33",
+      "parentUuid": "90fcec18_ff31deac",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 3
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc055b69_698459d7",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 8
