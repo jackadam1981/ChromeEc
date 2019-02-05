@@ -29,6 +29,10 @@
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3630A
 
+/* FIFO size is a power of 2. */
+#undef CONFIG_ACCEL_FIFO
+#define CONFIG_ACCEL_FIFO 256
+
 /* Motion sensing drivers */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
