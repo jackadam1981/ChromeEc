@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "246aca81_6a3b6246",
+        "filename": "common/event_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-05T04:38:45Z",
+      "side": 0,
+      "message": "Renamed to UNIT_COUNT because it is confusing IMHO.\n\nFYI, \nLOG_SIZE is the total number of \"units\" in log_events[].\nCONFIG_EVENT_LOG_SIZE is the bytes of log_events[], given from configuration.\n\"EVENT_LOG_SIZE()\" is the bytes of payload in a log event.\n\nI think their names should be revised.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "fe59e6140d7ff8ee90359d3144bffb6fbcf4e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
