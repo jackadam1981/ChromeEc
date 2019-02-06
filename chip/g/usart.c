@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ec_comm.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -107,6 +108,7 @@ USB_STREAM_CONFIG(ap_usb,
 #ifdef CONFIG_STREAM_USART2
 struct usb_stream_config const ec_usb;
 struct usart_config ec_uart;
+struct ec_comm_config const ec_cmd;
 
 struct queue const ec_uart_to_usb =
 	QUEUE_DIRECT(QUEUE_SIZE_UART_RX, uint8_t,
@@ -114,6 +116,23 @@ struct queue const ec_uart_to_usb =
 
 struct queue const ec_usb_to_uart =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
+
+struct queue const ec_uart_to_cmd =
+	QUEUE_DIRECT(EC_COMM_PACKET_SIZE, uint8_t,
+		     ec_uart.producer, ec_cmd.consumer);
+
+struct queue const ec_cmd_to_uart =
+	QUEUE_DIRECT(EC_COMM_PACKET_SIZE, uint8_t,
+		     ec_cmd.producer, ec_uart.consumer);
+
+struct ec_comm_config const ec_cmd = {
+	.consumer = {
+		.queue = &ec_cmd_to_uart,
+		.ops = &ec_comm_consumer_ops, },
+	.producer = {
+		.queue = &ec_uart_to_cmd,
+		.ops = &ec_comm_producer_ops, },
+};
 
 USART_CONFIG(ec_uart,
 	     UART_EC,

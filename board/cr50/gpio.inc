@@ -68,6 +68,13 @@ GPIO_INT(DETECT_EC_UART,  PIN(1, 2),  GPIO_INT_HIGH, ec_detect_asserted)
 GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
 	 servo_detect_asserted)
 
+/*
+ * Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
+ * it decided instead.
+ */
+GPIO_INT(CCD_MODE_L,      PIN(0, 5), GPIO_INT_FALLING | GPIO_ODR_HIGH,
+	 ccd_mode_asserted)
+
 /*****************************************************************************/
 /* NON STANDARD INTERRUPT GPIOs - handlers defined and configured in board.c */
 /*
@@ -90,12 +97,6 @@ GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
 
 /* Pull this low to reset the AP. (We reset the EC with the RBOX.) */
 GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
-
-/*
- * Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
- * it decided instead.
- */
-GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Battery present signal is active low */
 GPIO(BATT_PRES_L,     PIN(0, 6), GPIO_INPUT)
