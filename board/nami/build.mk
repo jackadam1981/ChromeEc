@@ -8,6 +8,8 @@
 
 CHIP:=npcx
 CHIP_VARIANT:=npcx5m6g
+FLASH_SIZE:=0x80000
+VBOOT:=efs
 
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o

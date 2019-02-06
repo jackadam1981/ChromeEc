@@ -20,6 +20,27 @@
 #define CONFIG_MAPPED_STORAGE_BASE 0x64000000
 #undef  CONFIG_FLASH_PSTATE
 
+#ifdef CONFIG_VBOOT_EFS
+/*
+ * Flash stores 3 images: RO, RW_A, RW_B. We divide the flash into 3 parts.
+ * For example, a 512KB SPI flash is divided as follows:
+ *
+ *   128KB (2/8) - RO
+ *   196KB (3/8) - RW_A
+ *   196KB (3/8) - RW_B
+ *
+ * A public key is stored at the end of RO. Signatures are stored at the
+ * end of RW_A and RW_B, respectively.
+ */
+#define CONFIG_RO_SIZE			 (CONFIG_FLASH_SIZE / 4)
+#define CONFIG_RW_SIZE			 (CONFIG_FLASH_SIZE * 3 / 8)
+#define CONFIG_EC_PROTECTED_STORAGE_OFF	 0
+#define CONFIG_EC_PROTECTED_STORAGE_SIZE (CONFIG_RO_SIZE)
+#define CONFIG_EC_WRITABLE_STORAGE_OFF	 (CONFIG_RO_SIZE)
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE	 (CONFIG_FLASH_SIZE - CONFIG_RO_SIZE)
+
+#else /* CONFIG_VBOOT_EFS */
+
 #if defined(CHIP_VARIANT_NPCX5M5G)
 #define CONFIG_EC_PROTECTED_STORAGE_OFF  0
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE 0x20000
@@ -44,6 +65,8 @@
 #else
 #error "Unsupported chip variant"
 #endif
+
+#endif /* CONFIG_VBOOT_EFS */
 
 /* Header support which is used by booter to copy FW from flash to code ram */
 #define NPCX_RO_HEADER
