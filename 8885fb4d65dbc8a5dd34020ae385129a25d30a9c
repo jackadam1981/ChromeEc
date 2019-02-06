@@ -214,6 +214,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca01b975_23b6f5ec",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-06T20:17:12Z",
+      "side": 1,
+      "message": "imo, that\u0027s too much knowledge for pinweaver. what if we move it outside of TPM_Startup. what if some other pinweaver function needs to change this variable in a different place in the future.\nI\u0027d rather let nvmem subsystem know that there is a global variable that controls commits (in the current implementation). that\u0027s generic enough, and covers all cases, and only needs to change if we change the underlying nvmem implementation (doesn\u0027t care about vars, if they don\u0027t use nvmem_commit in the future).\n\nalternatively, nvmem_commit on an unlocked cache with no changes shall just succeed instead of giving an error.",
+      "parentUuid": "35d049c3_bfa3208a",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
