@@ -61,6 +61,7 @@ board-y += tpm2/virtual_nvmem.o
 board-y += tpm_nvmem_ops.o
 board-y += wp.o
 board-$(CONFIG_U2F) += u2f.o
+board-y += ec_comm.o
 
 ifneq ($(H1_RED_BOARD),)
 CPPFLAGS += -DH1_RED_BOARD
