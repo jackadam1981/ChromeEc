@@ -590,3 +590,10 @@ int led_set_brightness(enum ec_led_id id, const uint8_t *brightness)
 	else
 		return set_color(id, LED_OFF, 0);
 }
+
+void led_critical(void)
+{
+	hook_call_deferred(&tick_battery_data, -1);
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		set_color(EC_LED_ID_POWER_LED, LED_RED, 100);
+}
