@@ -22,6 +22,30 @@
       "revId": "4d384b814ece4169a8cbdd5015398cf37bc0f8b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed42265a_7d179ed1",
+        "filename": "util/flash_ec",
+        "patchSetId": 47
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-06T22:37:20Z",
+      "side": 1,
+      "message": "$DUT_I2C_DEV expected to be present in the environment, i.e. to come from the invoker of flash_ec.  It\u0027s a temporary hack, not to be submitted (note work-in-progress status of this CL).\n\nWhen I was last working on this CL, I had not yet implemented in i2c-pseudo module a way for the controller (servod) to query for its I2C adapter number.  I\u0027ve implemented that now in i2c-pseudo, but I haven\u0027t finished updating servod to actually make it available via dut-control yet.\n\nIn other words, there is no \"dut-control dut_i2c_dev\" command yet, but there will be and needs to be before this CL is ready for full review + submit.",
+      "parentUuid": "08a3f069_f1e11b8a",
+      "range": {
+        "startLine": 1184,
+        "startChar": 12,
+        "endLine": 1184,
+        "endChar": 23
+      },
+      "revId": "4d384b814ece4169a8cbdd5015398cf37bc0f8b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
