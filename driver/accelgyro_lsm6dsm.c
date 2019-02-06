@@ -524,6 +524,7 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	 */
 	if (s->type == MOTIONSENSE_TYPE_MAG) {
 		struct mag_cal_t *cal = LIS2MDL_CAL(s);
+		const struct motion_sensor_t *accel;
 
 		init_mag_cal(cal);
 		/*
@@ -539,6 +540,16 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 			cal->batch_size = 0;
 		CPRINTS("Batch size: %d", cal->batch_size);
 		mutex_lock(s->mutex);
+		/*
+		 * Ensure Accel ODR >= Mag ODR and allow accelgyro_fifo_enable
+		 * to select the required decimation settings.
+		 */
+		accel = LSM6DSM_MAIN_SENSOR(s);
+		if (normalized_rate > st_get_data_rate(accel)) {
+			ctrl_reg = LSM6DSM_ODR_REG(accel->type);
+			ret = st_write_data_with_mask(accel, ctrl_reg,
+						LSM6DSM_ODR_MASK, reg_val);
+		}
 	} else
 #endif
 	{
