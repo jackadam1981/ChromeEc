@@ -3852,6 +3852,7 @@
 #error Include config.h instead of board.h!
 #endif
 
+#include "board_flash.h"
 #include "config_chip.h"
 #include "board.h"
 

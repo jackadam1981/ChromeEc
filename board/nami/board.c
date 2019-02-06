@@ -710,6 +710,7 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+#ifdef SECTION_IS_RW
 /* Lid Sensor mutex */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
@@ -842,6 +843,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+#endif
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
 #ifndef TEST_BUILD
@@ -874,6 +876,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 static void setup_motion_sensors(void)
 {
+#ifdef SECTION_IS_RW
 	switch (oem) {
 	case PROJECT_AKALI:
 		if (sku & SKU_ID_MASK_CONVERTIBLE) {
@@ -889,6 +892,7 @@ static void setup_motion_sensors(void)
 	default:
 		break;
 	}
+#endif
 }
 
 static void setup_fans(void)
@@ -1007,8 +1011,10 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 
 	/* Enable Accel/Gyro interrupt for convertibles. */
+#ifdef SECTION_IS_RW
 	if (sku & SKU_ID_MASK_CONVERTIBLE)
 		gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+#endif
 
 #ifndef TEST_BUILD
 	/* Disable scanning KSO13 & 14 if keypad isn't present. */

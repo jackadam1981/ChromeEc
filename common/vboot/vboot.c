@@ -28,6 +28,15 @@
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
+#define DEBUG_VBOOT_EFS
+#ifdef DEBUG_VBOOT_EFS
+# define STR_HELPER(x) #x
+# define STR(x) STR_HELPER(x)
+# pragma message "CONFIG_RO_SIZE: " STR(CONFIG_RO_SIZE)
+# pragma message "CONFIG_RW_SIZE: " STR(CONFIG_RW_SIZE)
+# pragma message "CONFIG_FLASH_ERASE_SIZE: " STR(CONFIG_FLASH_ERASE_SIZE)
+#endif
+
 static int has_matrix_keyboard(void)
 {
 	return 0;

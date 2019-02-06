@@ -28,8 +28,8 @@
 #elif defined(CHIP_VARIANT_NPCX5M6G)
 #define CONFIG_EC_PROTECTED_STORAGE_OFF  0
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE 0x40000
-#define CONFIG_EC_WRITABLE_STORAGE_OFF   0x40000
-#define CONFIG_EC_WRITABLE_STORAGE_SIZE  0x40000
+#define CONFIG_EC_WRITABLE_STORAGE_OFF   (CONFIG_RO_SIZE)
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE  (CONFIG_FLASH_SIZE - CONFIG_RO_SIZE)
 #elif defined(CHIP_VARIANT_NPCX7M6F) || defined(CHIP_VARIANT_NPCX7M6FB) || \
 	defined(CHIP_VARIANT_NPCX7M6FC) || defined(CHIP_VARIANT_NPCX7M6G)
 #define CONFIG_EC_PROTECTED_STORAGE_OFF  0
@@ -55,17 +55,17 @@
 
 /* RO firmware in program memory - use all of program memory */
 #define CONFIG_RO_MEM_OFF	0
+#ifndef CONFIG_RO_SIZE
 #define CONFIG_RO_SIZE		NPCX_PROGRAM_MEMORY_SIZE
+#endif
 
 /*
- * RW firmware in program memory - Identical to RO, only one image loaded at
- * a time.
+ * RW firmware in program memory - May not be identical to RO, only one image
+ * loaded at a time.
  */
 #define CONFIG_RW_MEM_OFF	CONFIG_RO_MEM_OFF
+#ifndef CONFIG_RW_SIZE
 #define CONFIG_RW_SIZE		CONFIG_RO_SIZE
-
-#if (CONFIG_RO_SIZE != CONFIG_RW_SIZE)
-#error "Unsupported.. FLASH_ERASE_SIZE assumes RO and RW size is same!"
 #endif
 
 #if (CONFIG_RO_MEM_OFF != 0)
@@ -74,23 +74,42 @@
 
 /*
  * CONFIG_FLASH_ERASE_SIZE is set to maximum possible out of 64k, 32k and 4k
- * depending upon alignment of CONFIG_RO_SIZE. There are two assumptions here:
+ * depending on alignment of CONFIG_RO/RW_SIZE. There are two assumptions here:
  * 1. CONFIG_RO_MEM_OFF is always 0 i.e. RO starts at 0.
- * 2. CONFIG_RO_SIZE and CONFIG_RW_SIZE are the same.
  *
  * If above assumptions are not true, then additional checks would be required
  * to ensure that erase block size is selected based on the alignment of both
  * CONFIG_RO_SIZE and CONFIG_RW_SIZE and the offset of RO.
  */
 #if ((CONFIG_RO_SIZE & (0x10000 - 1)) == 0)
-#define CONFIG_FLASH_ERASE_SIZE	0x10000
-#define NPCX_ERASE_COMMAND		CMD_BLOCK_64K_ERASE
+#define FLASH_ERASE_SIZE_RO		0x10000
+#define NPCX_ERASE_COMMAND_RO		CMD_BLOCK_64K_ERASE
 #elif ((CONFIG_RO_SIZE & (0x8000 - 1)) == 0)
-#define CONFIG_FLASH_ERASE_SIZE	0x8000
-#define NPCX_ERASE_COMMAND		CMD_BLOCK_32K_ERASE
+#define FLASH_ERASE_SIZE_RO		0x8000
+#define NPCX_ERASE_COMMAND_RO		CMD_BLOCK_32K_ERASE
 #else
-#define CONFIG_FLASH_ERASE_SIZE	0x1000
-#define NPCX_ERASE_COMMAND		CMD_SECTOR_ERASE
+#define FLASH_ERASE_SIZE_RO		0x1000
+#define NPCX_ERASE_COMMAND_RO		CMD_SECTOR_ERASE
+#endif
+
+#if ((CONFIG_RW_SIZE & (0x10000 - 1)) == 0)
+#define FLASH_ERASE_SIZE_RW		0x10000
+#define NPCX_ERASE_COMMAND_RW		CMD_BLOCK_64K_ERASE
+#elif ((CONFIG_RW_SIZE & (0x8000 - 1)) == 0)
+#define FLASH_ERASE_SIZE_RW		0x8000
+#define NPCX_ERASE_COMMAND_RW		CMD_BLOCK_32K_ERASE
+#else
+#define FLASH_ERASE_SIZE_RW		0x1000
+#define NPCX_ERASE_COMMAND_RW		CMD_SECTOR_ERASE
+#endif
+
+/* Pick the smaller (more granular) erase size */
+#if (FLASH_ERASE_SIZE_RO < FLASH_ERASE_SIZE_RW)
+#define CONFIG_FLASH_ERASE_SIZE	FLASH_ERASE_SIZE_RO
+#define NPCX_ERASE_COMMAND	NPCX_ERASE_COMMAND_RO
+#else
+#define CONFIG_FLASH_ERASE_SIZE	FLASH_ERASE_SIZE_RW
+#define NPCX_ERASE_COMMAND	NPCX_ERASE_COMMAND_RW
 #endif
 
 #define CONFIG_FLASH_BANK_SIZE		CONFIG_FLASH_ERASE_SIZE
