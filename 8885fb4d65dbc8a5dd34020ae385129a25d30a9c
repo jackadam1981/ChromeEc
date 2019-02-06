@@ -190,6 +190,30 @@
       "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d049c3_bfa3208a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-06T18:28:05Z",
+      "side": 1,
+      "message": "I looked at this some more and it does not feel right to go and modify the internal variable of the TPM2 library.\n\nHere is another ides: what if we add a new API to (key, value) pair layer: \u0027copywars()\u0027 - it will copy the variables into the NVMEM cache, but will not call commit.\n\nAnd we know that TPM_Startup will trigger nvmem_commit() in the end of processing.",
+      "parentUuid": "18455d8a_8966717f",
+      "range": {
+        "startLine": 755,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 25
+      },
+      "revId": "8885fb4d65dbc8a5dd34020ae385129a25d30a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
