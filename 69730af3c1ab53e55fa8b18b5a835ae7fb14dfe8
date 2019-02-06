@@ -94,6 +94,30 @@
       "revId": "69730af3c1ab53e55fa8b18b5a835ae7fb14dfe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49bd91fc_daa75f4e",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-06T14:29:14Z",
+      "side": 1,
+      "message": "I never saw the comment update",
+      "parentUuid": "5b43f256_2bd16afd",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 45
+      },
+      "revId": "69730af3c1ab53e55fa8b18b5a835ae7fb14dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
