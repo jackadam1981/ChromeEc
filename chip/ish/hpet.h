@@ -30,7 +30,11 @@
  * Use this register to see HPET timer are settled after a write.
  */
 #define CONTROL_AND_STATUS_REG		0x160
-#define HPET_T_CONF_CAP_BIT		0x4
+#define HPET_T1_CMP_SETTLING		(1 << 8)
+#define HPET_T1_CAP_SETTLING		(1 << 5)
+#define HPET_MAIN_COUNTER_SETTLING	(1 << 2)
+#define HPET_T1_SETTLING		(HPET_T1_CAP_SETTLING | \
+					 HPET_T1_CMP_SETTLING)
 
 #define HPET_ENABLE_CNF			(1<<0)
 #define HPET_LEGACY_RT_CNF		(1<<1)
