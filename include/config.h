@@ -1295,6 +1295,11 @@
  */
 #define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US 0
 
+/*
+ * Add support for reporting sensors as HID objects.
+ */
+#undef CONFIG_MOTION_SENSE_HID
+
 /******************************************************************************/
 /* Host to RAM (H2RAM) Memory Mapping */
 
