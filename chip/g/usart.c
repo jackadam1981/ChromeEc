@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "ec_comm.h"
 #include "queue.h"
 #include "queue_policies.h"
 #ifdef CONFIG_STREAM_SIGNATURE
@@ -163,8 +164,10 @@ void send_data_to_usb(struct usart_config const *config)
 	while ((i < room) && uartn_rx_available(uart))
 		buffer[i++] = uartn_read_char(uart);
 
-	if (i)
-		QUEUE_ADD_UNITS(uart_in, buffer, i);
+	if (i) {
+		if (!packet_mode_is_enabled(buffer, i))
+			QUEUE_ADD_UNITS(uart_in, buffer, i);
+	}
 }
 
 static void uart_read(struct producer const *producer, size_t count)
