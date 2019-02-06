@@ -393,6 +393,30 @@
     },
     {
       "key": {
+        "uuid": "dcefe26b_3e7177da",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-06T16:01:26Z",
+      "side": 1,
+      "message": "this is another way to approach the issue, the problem with is is that the device will have to reboot the second time soon after booting chrome os. This is considered a no go for many reasons.",
+      "parentUuid": "7bdaf87d_f8f62b51",
+      "range": {
+        "startLine": 169,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 33
+      },
+      "revId": "aa191a18490a1f5637dfac3b5009b45dd7c9e743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32538737_c57e551c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1
@@ -450,6 +474,30 @@
       "writtenOn": "2019-02-05T22:06:08Z",
       "side": 1,
       "message": "Is there any way to avoid this? For SFS in nugget-os, Sergio (spmoreira@) wrote a checksum/hash at the beginning of each page / data segment. This was checked to determine if a write had completed and provided some notion of consistency.\n\nWhat do we do if a commit fails?\n\nDo you plan on it being safe to fall back, or do we need to clear the entire nvmem?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 12
+      },
+      "revId": "aa191a18490a1f5637dfac3b5009b45dd7c9e743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd46de7_295f722c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-06T16:01:26Z",
+      "side": 1,
+      "message": "each element has its own hash, there is no problem with verifying consistency, the issue is that not all elements have been updated and the commit operation got interrupted.\n\nThe design talks about it, but this code does not yet properly handle this case.",
+      "parentUuid": "4b50e3e1_2c44146d",
       "range": {
         "startLine": 197,
         "startChar": 0,
