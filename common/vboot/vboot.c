@@ -20,11 +20,17 @@
 #include "shared_mem.h"
 #include "system.h"
 #include "usb_pd.h"
+#include "uart.h"
+#include "version.h"
 #include "vboot.h"
 #include "vb21_struct.h"
 
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
+
+#define EC_CR50_SYNC_TIMEOUT_US	(200 * MSEC)
+#define EC_CR50_SYNC_CHAR	0xec
+#define EC_CR50_SYNC_RETRIES	5
 
 static int has_matrix_keyboard(void)
 {
@@ -131,9 +137,73 @@ static int hc_verify_slot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
 
+static int send_to_cr50(const char *data, int len)
+{
+	uint64_t timeout = get_time().val + EC_CR50_SYNC_TIMEOUT_US;
+
+	uart_clear_input();
+	uart_put(data, len);
+
+	while (get_time().val < timeout) {
+		int c = uart_getc();
+		if (c != -1)
+			return c == EC_CR50_SYNC_CHAR ?
+					EC_SUCCESS : EC_ERROR_UNKNOWN;
+		msleep(10);
+	}
+
+	return EC_ERROR_TIMEOUT;
+}
+
+static int enable_packet_mode(void)
+{
+	uint8_t buf[16];
+
+	/* TODO: Wake up cr50 */
+
+	memset(buf, EC_CR50_SYNC_CHAR, sizeof(buf));
+
+	return send_to_cr50(buf, sizeof(buf));
+}
+
+int send_identity_to_cr50(enum system_image_copy_t slot)
+{
+	/* +1 for a nul character. This fits version string too. */
+	const char *ver;
+	int len;
+	int rv;
+
+	if (!uart_init_done())
+		CPRINTS("UART not ready");
+
+	/* send version */
+	ver = system_get_version(slot);	/* ver is guaranteed to be non-NULL */
+	len = strlen(ver);
+	if (!len)
+		return EC_ERROR_UNKNOWN;
+
+	/* Clear Tx buffer. Console task hasn't started yet. */
+	uart_flush_output();
+
+	rv = enable_packet_mode();
+	if (rv)
+		return rv;
+
+	/* Send version string */
+	return send_to_cr50(ver, len);
+}
+
+
+int command_cr50(int argc, char *argv[])
+{
+	return send_identity_to_cr50(SYSTEM_IMAGE_RW_A);
+}
+DECLARE_CONSOLE_COMMAND(cr50, command_cr50, NULL, "Toggle CCD_MODE_L");
+
 static int verify_and_jump(void)
 {
 	enum system_image_copy_t slot;
+	int i;
 	int rv;
 
 	/* 1. Decide which slot to try */
@@ -159,7 +229,16 @@ static int verify_and_jump(void)
 				system_image_copy_t_to_string(slot));
 	}
 
-	/* 3. Jump (and reboot) */
+	/* 3. Send identity to cr50 */
+	for (i = 0; i < EC_CR50_SYNC_RETRIES; i++) {
+		rv = send_identity_to_cr50(slot);
+		if (rv == EC_SUCCESS)
+			break;
+		CPRINTS("Failed to send version %d times (%d)", i+1, rv);
+		cflush();
+	}
+
+	/* 4. Jump (and reboot) */
 	rv = system_run_image_copy(slot);
 	CPRINTS("Failed to jump (%d)", rv);
 
