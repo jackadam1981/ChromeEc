@@ -22,6 +22,8 @@
 #include "usb_charge.h"
 #include "util.h"
 
+#undef DEBUG_MT6370
+
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
@@ -996,6 +998,28 @@ int rt946x_enable_charge_termination(int en)
 
 #ifdef CONFIG_CHARGER_MT6370
 /* MT6370 LDO */
+
+#ifdef DEBUG_MT6370
+static int command_mt6370(int argc, char **argv)
+{
+	char *e;
+	int rv;
+	int reg, val;
+
+	reg = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	rv = rt946x_read8(reg, &val);
+	if (rv)
+		return rv;
+
+	ccprintf("reg[0x%02x] = 0x%02x\n", reg, val);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(mt6370, command_mt6370, NULL, NULL);
+#endif
 
 int mt6370_set_ldo_voltage(int mv)
 {
