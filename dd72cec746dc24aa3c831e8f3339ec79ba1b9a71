@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d4e6fd9d_4d1d1d6e",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-07T22:10:56Z",
+      "side": 1,
+      "message": "nit: set_fifo_params-\u003e fifo_enable \u0026 update the summary",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "dd72cec746dc24aa3c831e8f3339ec79ba1b9a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcf6dc60_ed87737e",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 11
@@ -42,6 +65,47 @@
         "endLine": 502,
         "endChar": 41
       },
+      "revId": "dd72cec746dc24aa3c831e8f3339ec79ba1b9a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8bc1b9d_840b28b7",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-07T22:10:56Z",
+      "side": 1,
+      "message": "Diana\u0027s assessment is correct. Either we have to move this line after line 528 or we have to set/update the accel ODR everytime within fifo_enable.",
+      "parentUuid": "01ad99da_bd11077e",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 41
+      },
+      "revId": "dd72cec746dc24aa3c831e8f3339ec79ba1b9a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba11d99_f92423be",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-07T22:10:56Z",
+      "side": 1,
+      "message": "Can we add a comment here that cal should always be the first member here. So that when someone else updates the data structure, they don\u0027t end up accidentally adding new members at the head.",
       "revId": "dd72cec746dc24aa3c831e8f3339ec79ba1b9a71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
