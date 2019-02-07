@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4b470f7_62ba840b",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-07T18:49:20Z",
+      "side": 1,
+      "message": "do we still need these defines?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "03465ce025c41ed73a244d6ecf9360a93713aa4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a20cb0_db382635",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-07T18:49:20Z",
+      "side": 1,
+      "message": "should we check for values over 7 and return an error?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 33,
+        "endLine": 1036,
+        "endChar": 37
+      },
+      "revId": "03465ce025c41ed73a244d6ecf9360a93713aa4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "323c41bc_97d1a1af",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-07T18:49:20Z",
+      "side": 1,
+      "message": "it looks like flapjack/led.c is using this functions. Does it still work there too? (looks like it might misinterpret the enum values as a mask)\n\nMaybe rename to led_set_color_mask (just to ensure we don\u0027t miss anything else)",
+      "range": {
+        "startLine": 576,
+        "startChar": 4,
+        "endLine": 576,
+        "endChar": 24
+      },
+      "revId": "03465ce025c41ed73a244d6ecf9360a93713aa4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
