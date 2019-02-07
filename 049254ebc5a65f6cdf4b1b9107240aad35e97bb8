@@ -22,6 +22,30 @@
       "revId": "049254ebc5a65f6cdf4b1b9107240aad35e97bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec275fa_ac868e53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T15:58:15Z",
+      "side": 1,
+      "message": "It probably should.  At the moment, it just returns very high temperatures in G3.  We could use the CONFIG_TEMP_SENSOR_POWER_GPIO after it\u0027s merged to fix this though.\n\nS5:\n[44.401584 power state 1 \u003d S5, in 0x00e9]\ntemps\n  Battery             : 295 K \u003d 22 C\n  Ambient             : 300 K \u003d 27 C\n  Charger             : 305 K \u003d 32 C\n\nG3:\n[54.416611 power state 0 \u003d G3, in 0x0080]\ntemps\n  Battery             : 295 K \u003d 22 C\n  Ambient             : 373 K \u003d 100 C\n  Charger             : 373 K \u003d 100 C",
+      "parentUuid": "336ce816_2c355f52",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "049254ebc5a65f6cdf4b1b9107240aad35e97bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
