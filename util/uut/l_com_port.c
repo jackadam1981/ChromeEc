@@ -200,6 +200,55 @@ bool com_config_uart(int h_dev_drv, struct comport_fields com_port_fields)
 	return true;
 }
 
+/**
+ * Discard zeros in the console before starting programming. If the EC was
+ * just held in reset, the EC console may be filled with hundreds of 0s. Read
+ * them before we start programming, so they don't interfere with communication.
+ *
+ * This is the same as drain_input in stm32mon.
+ * TODO: create common library for initializing serial consoles.
+ */
+static void com_drain_console(int fd)
+{
+	uint8_t buffer[64];
+	int res, i;
+	int count_of_zeros;
+
+	/* eat trailing garbage */
+	count_of_zeros = 0;
+	do {
+		res = read(fd, buffer, sizeof(buffer));
+		if (res > 0) {
+
+			/* Discard zeros in the beginning of the buffer. */
+			for (i = 0; i < res; i++)
+				if (buffer[i])
+					break;
+
+			count_of_zeros += i;
+			if (i == res) {
+				/* Only zeros, nothing to print out. */
+				continue;
+			}
+
+			/* Discard zeros in the end of the buffer. */
+			while (!buffer[res - 1]) {
+				count_of_zeros++;
+				res--;
+			}
+
+			printf("Recv[%d]:", res - i);
+			for (; i < res; i++)
+				printf("%02x ", buffer[i]);
+			printf("\n");
+		}
+	} while (res > 0);
+
+	if (count_of_zeros)
+		printf("%d zeros ignored\n", count_of_zeros);
+}
+
+
 /******************************************************************************
  * Function: int com_port_open()
  *
@@ -240,6 +289,12 @@ int com_port_open(const char *com_port_dev_name,
 		close(port_handler);
 		return INVALID_HANDLE_VALUE;
 	}
+
+	/*
+	 * Drain the console before programming in case we were invoked soon
+	 * after reset.
+	 */
+	com_drain_console(port_handler);
 
 	return port_handler;
 }
