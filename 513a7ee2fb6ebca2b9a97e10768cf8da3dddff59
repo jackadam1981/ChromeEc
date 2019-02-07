@@ -65,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "b2f67e85_b79a4dd8",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-07T02:34:31Z",
+      "side": 1,
+      "message": "How about making the HDMI port the last port in this enum? Then PD port number will map to this value as well.\n\nAlso, the term \"mst_source\" to me is the GPU. I think a better name might be \"stream_sink_port\".",
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "096a57ca_6e357b47",
         "filename": "baseboard/hatch/usb_pd_policy.c",
         "patchSetId": 9
@@ -81,6 +98,46 @@
         "startChar": 31,
         "endLine": 352,
         "endChar": 42
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25e7cea_2e791f2f",
+        "filename": "baseboard/hatch/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-07T02:34:31Z",
+      "side": 1,
+      "message": "If my suggestion is taken, this would just become \"port\".",
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ade2508_0d8878a3",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-07T02:34:31Z",
+      "side": 1,
+      "message": "Maybe \"hdmi_hpd_interrupt\"?",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 25
       },
       "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
