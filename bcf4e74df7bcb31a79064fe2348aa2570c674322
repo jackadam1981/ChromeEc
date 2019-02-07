@@ -22,6 +22,30 @@
       "revId": "bcf4e74df7bcb31a79064fe2348aa2570c674322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc60fb9b_33aa8c6c",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-02-07T23:12:14Z",
+      "side": 1,
+      "message": "I don\u0027t find this property in cros_config schema:\nhttps://cs.corp.google.com/chromeos_public/src/platform2/chromeos-config/README.md\n\nHowever, IIUC, powerd always sets full factory as 100%.",
+      "parentUuid": "92db47e3_3c70020e",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "bcf4e74df7bcb31a79064fe2348aa2570c674322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
