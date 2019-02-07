@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f499c63d_fc07ea36",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-07T19:43:42Z",
+      "side": 1,
+      "message": "They\u0027re still used for mt6370_led_set_dim_mode.",
+      "parentUuid": "d4b470f7_62ba840b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "03465ce025c41ed73a244d6ecf9360a93713aa4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96a20cb0_db382635",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4d5a9b2c_b5a8e5b1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-07T19:43:42Z",
+      "side": 1,
+      "message": "Kukui/Flapjack code space is extremely tight. Hopefully the comments and existing calls should be enough.",
+      "parentUuid": "96a20cb0_db382635",
+      "range": {
+        "startLine": 1036,
+        "startChar": 33,
+        "endLine": 1036,
+        "endChar": 37
+      },
+      "revId": "03465ce025c41ed73a244d6ecf9360a93713aa4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "323c41bc_97d1a1af",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-07T18:49:20Z",
       "side": 1,
       "message": "it looks like flapjack/led.c is using this functions. Does it still work there too? (looks like it might misinterpret the enum values as a mask)\n\nMaybe rename to led_set_color_mask (just to ensure we don\u0027t miss anything else)",
+      "range": {
+        "startLine": 576,
+        "startChar": 4,
+        "endLine": 576,
+        "endChar": 24
+      },
+      "revId": "03465ce025c41ed73a244d6ecf9360a93713aa4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6866b4_88e62e68",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-07T19:43:42Z",
+      "side": 1,
+      "message": "flapjack/led.c was forked from kukui/led.c while the patch was pending for review... I\u0027m rewriting flapjack/led.c in a separate CL.",
+      "parentUuid": "323c41bc_97d1a1af",
       "range": {
         "startLine": 576,
         "startChar": 4,
