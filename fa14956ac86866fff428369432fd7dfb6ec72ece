@@ -16,6 +16,24 @@
       "revId": "fa14956ac86866fff428369432fd7dfb6ec72ece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b40f112_cc65992b",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2019-02-07T18:41:15Z",
+      "side": 1,
+      "message": "That\u0027s much better. Thanks.\n\nI assumed that the concept of a \"B\" side was specific to chip/g, but I now see that it is used outside of chip/g.",
+      "parentUuid": "87c21d9c_e4268651",
+      "revId": "fa14956ac86866fff428369432fd7dfb6ec72ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
