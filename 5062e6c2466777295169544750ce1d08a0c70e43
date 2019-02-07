@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "457b5dd7_7d9ebbb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-02-07T04:40:55Z",
+      "side": 1,
+      "message": "typo: composite",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "5062e6c2466777295169544750ce1d08a0c70e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a742eb0c_303eb641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-02-07T04:40:55Z",
+      "side": 1,
+      "message": "Hopefully you tested that it\u0027s possible to set colors, maybe via some sort of console or host command?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "5062e6c2466777295169544750ce1d08a0c70e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
