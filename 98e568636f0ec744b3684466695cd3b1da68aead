@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4384b218_b0e74dd0",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-07T23:48:01Z",
+      "side": 0,
+      "message": "If I understand correctly, Aleena (and all other Grunt variants) don\u0027t have a GPIO and it is only Kasumi360 (a variant of Aleena that is recognized by SKU at runtime) that actually has it.\n\nIf so, this doesn\u0027t seem right - as it would actually end up disabling the ACPI interrupt on Aleena as well, where no GPIO would ever occur.\n\nOr am I missing something?",
+      "revId": "98e568636f0ec744b3684466695cd3b1da68aead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
