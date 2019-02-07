@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee135d64_ea6d6cf6",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-07T02:41:34Z",
+      "side": 1,
+      "message": "replace with \"possibly accumulated in the console RX buffer\"",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "6595767784c29fc5f7cd1d2345598752c708ec25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87378cc5_37e5c062",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-07T02:41:34Z",
+      "side": 1,
+      "message": "why is it called differently here? Just curious.",
+      "range": {
+        "startLine": 208,
+        "startChar": 23,
+        "endLine": 208,
+        "endChar": 34
+      },
+      "revId": "6595767784c29fc5f7cd1d2345598752c708ec25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d17ddf3_701752c0",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-07T02:41:34Z",
+      "side": 1,
+      "message": "it\u0027s not trailing in this case, is it?",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 16
+      },
+      "revId": "6595767784c29fc5f7cd1d2345598752c708ec25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd64d90_685e35b6",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-07T02:41:34Z",
+      "side": 1,
+      "message": "should you check for res \u003c\u003d 0 and break out of the loop in this case? \n\nThen no need to check again in line 245\n\nalso, you don\u0027t care about read errors - res \u003c 0, not sure if this is necessary",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 15
+      },
+      "revId": "6595767784c29fc5f7cd1d2345598752c708ec25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f1c96f1_236e9405",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-07T02:41:34Z",
+      "side": 1,
+      "message": "could a zero be a legitimate part of the console stream?",
+      "range": {
+        "startLine": 234,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 45
+      },
+      "revId": "6595767784c29fc5f7cd1d2345598752c708ec25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70726873_aa4fa13c",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-07T02:41:34Z",
+      "side": 1,
+      "message": "wouldn\u0027t this drain the entire console rx buffer contents, including legitimate data? com_drain_console() will print it, is this all we need here? Couldn\u0027t this result in sync errors as well?",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 18
+      },
+      "revId": "6595767784c29fc5f7cd1d2345598752c708ec25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
