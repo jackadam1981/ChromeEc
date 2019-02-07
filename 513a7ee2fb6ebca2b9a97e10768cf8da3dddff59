@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28fb99fd_6f67246f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40c4caf0_134dad75",
+      "range": {
+        "startLine": 10,
+        "startChar": 59,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bab3305_6958c114",
         "filename": "baseboard/hatch/baseboard.c",
         "patchSetId": 9
@@ -39,6 +63,24 @@
       "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23756881_1feafbaf",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bab3305_6958c114",
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0e7059ad_e6341052",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "No, this is no longer required since we are not going to use the HPD signal from the TCPC.",
+      "parentUuid": "7a530a37_2a9490e8",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2f67e85_b79a4dd8",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 9
@@ -76,6 +142,24 @@
       "writtenOn": "2019-02-07T02:34:31Z",
       "side": 1,
       "message": "How about making the HDMI port the last port in this enum? Then PD port number will map to this value as well.\n\nAlso, the term \"mst_source\" to me is the GPU. I think a better name might be \"stream_sink_port\".",
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98377edb_5025f6a4",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a good suggestion. I was planning on doing that to make it easier to know which source to use.",
+      "parentUuid": "b2f67e85_b79a4dd8",
       "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +206,48 @@
     },
     {
       "key": {
+        "uuid": "c3645d14_2e8a62e7",
+        "filename": "baseboard/hatch/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c25e7cea_2e791f2f",
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b854b8a_9e8fa19b",
+        "filename": "baseboard/hatch/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "096a57ca_6e357b47",
+      "range": {
+        "startLine": 352,
+        "startChar": 31,
+        "endLine": 352,
+        "endChar": 42
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ade2508_0d8878a3",
         "filename": "board/hatch/board.c",
         "patchSetId": 9
@@ -133,6 +259,30 @@
       "writtenOn": "2019-02-07T02:34:31Z",
       "side": 1,
       "message": "Maybe \"hdmi_hpd_interrupt\"?",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa37346_90340a11",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a better name. I have changed it.",
+      "parentUuid": "7ade2508_0d8878a3",
       "range": {
         "startLine": 72,
         "startChar": 12,
@@ -191,6 +341,54 @@
     },
     {
       "key": {
+        "uuid": "fe782f9b_39e50771",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "I have opened an issue and added a TODO here to track that work.",
+      "parentUuid": "81c49287_b9ebb303",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b814ba_2fbe3eb5",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc4d2de_adac2c48",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29e9e60c_7b462b36",
         "filename": "board/hatch/gpio.inc",
         "patchSetId": 9
@@ -211,6 +409,30 @@
       "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0654ba8e_e030d9ea",
+        "filename": "board/hatch/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-07T23:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29e9e60c_7b462b36",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "513a7ee2fb6ebca2b9a97e10768cf8da3dddff59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
