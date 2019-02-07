@@ -22,6 +22,30 @@
       "revId": "1cc3d5b2ebc62d49ecd3a32685ddb9419dcbe5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5e862c_3956a200",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-07T20:15:43Z",
+      "side": 1,
+      "message": "Sorry, just saw the CL stack. Will review those first",
+      "parentUuid": "4938b9eb_4f541d3a",
+      "range": {
+        "startLine": 342,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 9
+      },
+      "revId": "1cc3d5b2ebc62d49ecd3a32685ddb9419dcbe5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
