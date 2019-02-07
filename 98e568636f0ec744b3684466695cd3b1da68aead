@@ -16,6 +16,24 @@
       "revId": "98e568636f0ec744b3684466695cd3b1da68aead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f24f5e5_cf7d64e5",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-02-07T23:55:15Z",
+      "side": 0,
+      "message": "All Grunt family devices have this GPIO connected the same in HW.\nAIUI, the MKBP event is only used for sensor data, and only Kasumi360 has sensors.",
+      "parentUuid": "4384b218_b0e74dd0",
+      "revId": "98e568636f0ec744b3684466695cd3b1da68aead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
