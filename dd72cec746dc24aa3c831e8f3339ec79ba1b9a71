@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf6dc60_ed87737e",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T20:57:40Z",
+      "side": 1,
+      "message": "Do you believe we don\u0027t need to discard accelerometer samples after changing the ODR for this then?  Or will we want to set up an accelerometer discard any time we have to increase its ODR to work with the magnetometer?",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 72
+      },
+      "revId": "dd72cec746dc24aa3c831e8f3339ec79ba1b9a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ad99da_bd11077e",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T20:57:40Z",
+      "side": 1,
+      "message": "It seems like this call to set the accelerometer back would need to be later in this function.\n\nLet\u0027s say the following happens: \n1. Accelerometer is at 13Hz, like it often is and gyro is at 0.\n\n2. Magnetometer is configured to 100Hz, and this will cause fifo_enable to set the accel register to 100Hz before this function completes\n\n3. Magnetometer is configured to be off.   Since the call to set the magnetometer\u0027s ODR to 0 isn\u0027t until line 528, wouldn\u0027t this call just set the accelerometer to 100Hz again because max_odr is still 100?  And then the fifo_enable call for the magnetometer wouldn\u0027t change the acelerometer because max_odr would now be 13, which isn\u0027t larger than the configured ODR?",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 41
+      },
+      "revId": "dd72cec746dc24aa3c831e8f3339ec79ba1b9a71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "a9121a71_7193dfd7",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T20:57:40Z",
+      "side": 1,
+      "message": "Thanks for fixing this",
+      "parentUuid": "06e2f743_65c40f48",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 3
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc055b69_698459d7",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 8
@@ -235,6 +259,30 @@
       "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ffdd26_46ef5dad",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T20:57:40Z",
+      "side": 1,
+      "message": "And it is lovely :)",
+      "parentUuid": "3764b661_4f5d4ba1",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 61
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -285,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "91b26589_91b1daf5",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T20:57:40Z",
+      "side": 1,
+      "message": "Thank you for the explanation.  That makes sense",
+      "parentUuid": "5c56da5d_20bd4177",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcb3b68f_a5896b26",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 8
@@ -329,6 +401,30 @@
       "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6bb3b13_ccf646ed",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-07T20:57:40Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "dc1b9220_05c4d569",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "5aeedc60fc7c97c59883a7adf4b41f82bd1d343f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
