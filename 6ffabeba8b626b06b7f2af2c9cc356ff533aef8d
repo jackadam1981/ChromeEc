@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7243f81_176d66d6",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-07T20:20:40Z",
+      "side": 1,
+      "message": "should we also check that data is a valid ptr?",
+      "range": {
+        "startLine": 607,
+        "startChar": 1,
+        "endLine": 608,
+        "endChar": 9
+      },
+      "revId": "6ffabeba8b626b06b7f2af2c9cc356ff533aef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cbd8bea_46c1d7a1",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-07T20:20:40Z",
+      "side": 1,
+      "message": "can we change to the following:\n\nfor (i \u003d 0; i \u003c len; i+\u003d16) {\n  for (j\u003di, j \u003c i + 16; j++)\n...\n}",
+      "range": {
+        "startLine": 610,
+        "startChar": 1,
+        "endLine": 610,
+        "endChar": 41
+      },
+      "revId": "6ffabeba8b626b06b7f2af2c9cc356ff533aef8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
