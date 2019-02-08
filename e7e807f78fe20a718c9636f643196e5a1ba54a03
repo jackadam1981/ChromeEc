@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db13f2cf_83441665",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-08T00:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0777fc4e_747d2691",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "428f9fdc_2eaff190",
         "filename": "driver/temp_sensor/thermistor.c",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "0f360f51_fd8e128a",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-08T00:03:56Z",
+      "side": 1,
+      "message": "Yeah, I thought about that too. I think had left it this way because the function call was in the variable declaration. But, I have changed the order.",
+      "parentUuid": "ac903554_61a2c151",
+      "range": {
+        "startLine": 199,
+        "startChar": 10,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "773739e3_782f3b1d",
         "filename": "driver/temp_sensor/thermistor.c",
         "patchSetId": 4
@@ -101,6 +149,24 @@
       "side": 1,
       "message": "Actually, it looks like both ampton thermistors are on PP3300_A.  Bip had a thermistor on PP6000_LDO_OUT, and ampton\u0027s initial code was copied from there.  So I should put in a change to fix that.",
       "parentUuid": "773739e3_782f3b1d",
+      "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff4dc12_77dc4e91",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-08T00:03:56Z",
+      "side": 1,
+      "message": "To me it seems unlikely that if thermistor circuits are being used that they would be controlled by different enable lines.",
+      "parentUuid": "319b3ba9_97cfbf02",
       "revId": "e7e807f78fe20a718c9636f643196e5a1ba54a03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
