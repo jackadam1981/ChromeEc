@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f630f42_8bb5fb37",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T21:36:22Z",
+      "side": 1,
+      "message": "Let\u0027s be more generic, and call the feature indepedant Sensor Hub:\nwe need it to give the cros ec device where the sensors are a different name than cros_ec.\ncrosh_sh would work for the ISH as well as other architecture where the sensor hub is standalone.",
+      "revId": "fee55b85ce4e8e1552c1551327498925effc181e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
