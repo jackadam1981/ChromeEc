@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b197d6ea_73a73268",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T16:46:36Z",
+      "side": 1,
+      "message": "There was still a problem in patch set 4 where the timer didn\u0027t fire, so I added this while loop to ensure that it is armed before leaving the function. With this extra protection, I haven\u0027t seen a T1 timer miss running over night.",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "384dd650c0e5b60891535ddfc54d050045637d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
