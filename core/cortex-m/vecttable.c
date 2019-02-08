@@ -106,6 +106,10 @@ void svc_helper_handler()
 #define null (void*)0,
 #endif /* PASS 2 */
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winitializer-overrides"
+#endif
 table(
 	item(stack_end)
 	item(reset)
@@ -379,6 +383,9 @@ table(
 	irq(253)
 	irq(254)
 )
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 
 #if PASS == 1
 #undef PASS

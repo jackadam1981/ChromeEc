@@ -262,11 +262,11 @@ void clock_refresh_console_in_use(void)
 {
 }
 
+DECLARE_IRQ(STM32_IRQ_LPTIM1, lptim_interrupt, 2);
 void lptim_interrupt(void)
 {
 	STM32_LPTIM_ICR(1) = STM32_LPTIM_INT_CMPM;
 }
-DECLARE_IRQ(STM32_IRQ_LPTIM1, lptim_interrupt, 2);
 
 static uint16_t lptim_read(void)
 {
