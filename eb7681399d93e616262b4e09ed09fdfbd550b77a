@@ -69,6 +69,30 @@
       "revId": "eb7681399d93e616262b4e09ed09fdfbd550b77a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e83d126_593100af",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-02-08T20:13:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5690bf99_640035ac",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 34
+      },
+      "revId": "eb7681399d93e616262b4e09ed09fdfbd550b77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
