@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4c685ba_3cacdbab",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-02-08T19:23:53Z",
+      "side": 1,
+      "message": "Jett, Gwendal already answered this question to Diana earlier:\n\"Only sensors that use st_mems_common needs stprivate_data.\nBMM150 use a different structure, melted into BMI160.\"\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1361992/6/driver/accelgyro_lsm6dsm.h#289",
+      "parentUuid": "402a09a5_1ece8e1a",
+      "range": {
+        "startLine": 318,
+        "startChar": 7,
+        "endLine": 318,
+        "endChar": 33
+      },
+      "revId": "eb7681399d93e616262b4e09ed09fdfbd550b77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5690bf99_640035ac",
         "filename": "driver/mag_bmm150.h",
         "patchSetId": 12
