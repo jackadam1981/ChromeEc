@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9cbbafe3_5ba1b7fb",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T20:39:32Z",
+      "side": 1,
+      "message": "GPIO_INT_HIGH is a common combination for defining two base flags: GPIO_INPUT and GPIO_INT_F_HIGH.\n\nMost gpio.inc board files use the common combination flags.\n\nHere I want to check for the base flag that represent high and low triggers (without caring about the base GPIO_INPUT flag).\n\nThanks for digging on this to make sure it was correct!",
+      "parentUuid": "8eb41957_85099d21",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49d78fb_894c0db5",
         "filename": "chip/ish/gpio.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "172b5c56_f73244da",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T20:39:32Z",
+      "side": 1,
+      "message": "changed to %02x since this will only by a single byte",
+      "parentUuid": "d49d78fb_894c0db5",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "984b753e_51e20959",
         "filename": "chip/ish/gpio.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbd87af_932e9fd2",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T20:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984b753e_51e20959",
+      "range": {
+        "startLine": 61,
+        "startChar": 19,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
