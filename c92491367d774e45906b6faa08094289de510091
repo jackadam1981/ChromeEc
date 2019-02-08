@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e356c5d0_bdabebd3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-08T23:40:41Z",
+      "side": 1,
+      "message": "Have a single function for _odr and _flush.",
+      "revId": "c92491367d774e45906b6faa08094289de510091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1a996e_3b5b4d64",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-08T23:40:41Z",
+      "side": 1,
+      "message": "You send an ODR change for all sensors?",
+      "revId": "c92491367d774e45906b6faa08094289de510091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
