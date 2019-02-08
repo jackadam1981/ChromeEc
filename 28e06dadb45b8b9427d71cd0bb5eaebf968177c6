@@ -22,6 +22,30 @@
       "revId": "28e06dadb45b8b9427d71cd0bb5eaebf968177c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f941e6_dc90fa2c",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-02-08T18:32:20Z",
+      "side": 1,
+      "message": "Not sure if we can set PD_MAX_POWER_MW to 18000 and relax PD_MAX_CURRENT_MA a bit?",
+      "parentUuid": "51108dbc_5f07f8d7",
+      "range": {
+        "startLine": 145,
+        "startChar": 30,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "28e06dadb45b8b9427d71cd0bb5eaebf968177c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
