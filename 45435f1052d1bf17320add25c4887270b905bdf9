@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ead22af_f160a366",
+        "filename": "common/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T01:23:37Z",
+      "side": 1,
+      "message": "using a separate variable is better, as you don\u0027t want all EC to compile in motion_sense_hid.o.",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337f5c53_4991b22a",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T01:23:37Z",
+      "side": 1,
+      "message": "Please integrate CL:1377573 into this CL. \nspoof_host_buffer should move to the unit test code. See how other sensor unit test are doing.\nYou can also look at CL:1388844 unit test.",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d56951_2726c51f",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T01:23:37Z",
+      "side": 1,
+      "message": "use if.",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556e913d_3a0f9de1",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T01:23:37Z",
+      "side": 1,
+      "message": "upload with --verify, only make -j buildall error is tolerated.",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
