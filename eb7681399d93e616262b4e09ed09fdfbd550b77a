@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "402a09a5_1ece8e1a",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T17:28:53Z",
+      "side": 1,
+      "message": "why are CONFIG_MAG_LSM6DSM_BMM150 and CONFIG_MAG_LSM6DSM_LIS2MDL not the same for the number of st_data entries?\n\nIt doesn\u0027t seem that the LIS2MDL stprivate_data should be here since it is not part of the base sensor (it is a separate IC just like BMM150)\n\n\n(The union below does make sense though since)",
+      "range": {
+        "startLine": 318,
+        "startChar": 7,
+        "endLine": 318,
+        "endChar": 33
+      },
+      "revId": "eb7681399d93e616262b4e09ed09fdfbd550b77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5690bf99_640035ac",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T17:28:53Z",
+      "side": 1,
+      "message": "let\u0027s add a comment that lsm6dsm_data union depends on this being the first element in this struct.\n\nAlso, let\u0027s add the comment for lis2mdl_private_data too",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 34
+      },
+      "revId": "eb7681399d93e616262b4e09ed09fdfbd550b77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
