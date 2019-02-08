@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e94a157_b584c138",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T20:58:12Z",
+      "side": 1,
+      "message": "having both of these available is going to make it easy to make mistakes espeically since _led_set_color will probably accept LED_GREEN without complaining right (since it can cast the enum to a uint8_t silently)\n\nIt would be nice if you could standardize on one.",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "92fda755eca0491d8c95d93e60dd03a2f9c7ae65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
