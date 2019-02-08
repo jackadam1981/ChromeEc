@@ -358,6 +358,19 @@ void __keep report_panic(void)
  */
 void exception_panic(void)
 {
+#ifdef __clang__
+  /*
+   * clang warns:
+   *
+   * inline asm clobber list contains reserved registers: R7
+   *
+   * but this is ok because we are actually setting the clobber list to
+   * avoid that register from being clobbered. We don't actually clobber it in
+   * the assembly.
+   */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winline-asm"
+#endif
 	/* Save registers and branch directly to panic handler */
 	asm volatile(
 		"mov r0, %[pregs]\n"
@@ -374,6 +387,9 @@ void exception_panic(void)
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
 			"r10", "r11", "cc", "memory"
 		);
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 }
 
 #ifdef CONFIG_SOFTWARE_PANIC
