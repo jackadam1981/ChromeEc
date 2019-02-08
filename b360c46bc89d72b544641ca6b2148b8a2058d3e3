@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7000f614_fda374bd",
+        "filename": "core/minute-ia/config_core.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-08T23:51:15Z",
+      "side": 1,
+      "message": "Minute-IA is the name of core. I added MIA since it\u0027s MIA specific.\nIf we don\u0027t specify MIA and just use TASK_FLAG_USE_FPU, then it looks the flag is for common for all cores.\nBy having MIA prefix. the value 0x00000001 is assigned for FPU in MIA. Other cores which need per-task flags can assign the same value(0x00000001) for its own purpose.",
+      "parentUuid": "be762f96_fb0699f6",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec5adf60_a4512775",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30009fc8_f189a897",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-08T23:51:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec5adf60_a4512775",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
