@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a050f922_489e4912",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T16:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d02c5c71_df40c2d6",
+      "revId": "a81a1b4340c7adaddb9e8e166881b3725407f0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82acc8a1_092c3d6b",
         "filename": "board/arcada_ish/board.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b920d163_7c0c6484",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T16:52:08Z",
+      "side": 1,
+      "message": "We removed DS3 config option since DSM was sufficient",
+      "parentUuid": "82acc8a1_092c3d6b",
+      "revId": "a81a1b4340c7adaddb9e8e166881b3725407f0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65b32e97_ab5fb46b",
         "filename": "board/arcada_ish/gpio.inc",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "a81a1b4340c7adaddb9e8e166881b3725407f0c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1772ebf2_6354b29f",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T16:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b32e97_ab5fb46b",
+      "revId": "a81a1b4340c7adaddb9e8e166881b3725407f0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
