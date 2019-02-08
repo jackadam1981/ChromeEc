@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eb41957_85099d21",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-08T17:33:55Z",
+      "side": 1,
+      "message": "I don\u0027t really know how this works (are we setting flags for both input and output?), but there\u0027s a very similar flag to this one, GPIO_INT_HIGH, defined here: http://cs/chromeos_public/src/platform/ec/include/gpio.h?l\u003d50\n\nWe don\u0027t want that instead do we? And similarly for GPIO_INT_LOW",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49d78fb_894c0db5",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-08T17:33:55Z",
+      "side": 1,
+      "message": "nit: Maybe %08x to make the mask more explicit?",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984b753e_51e20959",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-08T17:33:55Z",
+      "side": 1,
+      "message": "nit: Maybe %08x to make the mask more explicit?",
+      "range": {
+        "startLine": 61,
+        "startChar": 19,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "f7284b7eb49cf49cb70d3abd166818320eb7a4cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
