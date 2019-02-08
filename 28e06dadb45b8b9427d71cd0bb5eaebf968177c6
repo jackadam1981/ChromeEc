@@ -46,6 +46,30 @@
       "revId": "28e06dadb45b8b9427d71cd0bb5eaebf968177c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe85bf4_b5aa5cca",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-08T21:14:45Z",
+      "side": 1,
+      "message": "PDO current is not directly used as a factor when selecting a PDO. Roughly speaking, power (\u003d PD_MAX_CURRENT_MA x PDO voltage) is checked against PD_MAX_POWER_MW. So, 5V/3A can be still selected because 5V * 2A \u003d 10 is less than 18W.\n\nSource will be informed 2A is our max. MT6370 will use it also to limit the input current.",
+      "parentUuid": "79f941e6_dc90fa2c",
+      "range": {
+        "startLine": 145,
+        "startChar": 30,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "28e06dadb45b8b9427d71cd0bb5eaebf968177c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
