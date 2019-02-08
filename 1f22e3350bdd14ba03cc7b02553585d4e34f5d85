@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3803632d_525d3b75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-08T23:28:45Z",
+      "side": 1,
+      "message": "The EEPROM isn\u0027t populated yet. It can be read (dumped).",
+      "parentUuid": "8cff64c2_e26f3aa0",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "1f22e3350bdd14ba03cc7b02553585d4e34f5d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19d65747_0ead99a6",
         "filename": "board/flapjack/board.c",
         "patchSetId": 3
