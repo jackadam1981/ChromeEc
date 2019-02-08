@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "221e6af0_3d277acf",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T16:40:58Z",
+      "side": 1,
+      "message": "I like the idea. We could potentially add a chip specific override to gpio.h\n\nUpon second thought though, we can\u0027t catch all of the misconfigurations (like defining both falling and rising edge at the same time) so for constancy it seems nice to report all gpio misconfigurations the same. Thoughts?",
+      "parentUuid": "ee88b781_89777cd1",
+      "revId": "b5f67f7e720ad6362619307df9da7ae115058dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3e2200c_587fdf53",
         "filename": "chip/ish/gpio.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b5f67f7e720ad6362619307df9da7ae115058dbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77519c79_4a990cff",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T16:40:58Z",
+      "side": 1,
+      "message": "I want this to always print unconditionally since this is an error that needs to be addressed. We have taken this approach in other gpio misconfiguration.\n\nWe could also have an assertion failure here to halt the chip instead (which is a a little more dangerous and typically avoided)",
+      "parentUuid": "b3e2200c_587fdf53",
+      "revId": "b5f67f7e720ad6362619307df9da7ae115058dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
