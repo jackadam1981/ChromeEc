@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee88b781_89777cd1",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T00:56:24Z",
+      "side": 1,
+      "message": "I did not look in detail, but another way would be to undef GPIO_INT_F_HIGH for ISH.",
+      "revId": "b5f67f7e720ad6362619307df9da7ae115058dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e2200c_587fdf53",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-08T00:56:24Z",
+      "side": 1,
+      "message": "Don\u0027t usse ccprintf directly.  Use CPRINTS(CC_GPIO, ...",
+      "revId": "b5f67f7e720ad6362619307df9da7ae115058dbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
