@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be762f96_fb0699f6",
+        "filename": "core/minute-ia/config_core.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T23:03:34Z",
+      "side": 1,
+      "message": "what does MIA mean? (can we drop the MIA)?",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5adf60_a4512775",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-08T23:03:34Z",
+      "side": 1,
+      "message": "with this change, you will need to update arcada_ish as well.\n\nPlease run `repo upload` to upload changes as this will force you to run pre-sumbit checks including building all of the boards in platform/ec",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
