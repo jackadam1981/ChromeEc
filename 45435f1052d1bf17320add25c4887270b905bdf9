@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "001a1313_8f8ebd4c",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2019-02-08T02:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337f5c53_4991b22a",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3d56951_2726c51f",
         "filename": "common/motion_sense_hid.c",
         "patchSetId": 14
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "5884f069_dfa6a94a",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2019-02-08T02:15:37Z",
+      "side": 1,
+      "message": "Already changed this in old patches e.g. #13. Not sure why it\u0027s showing up here.",
+      "parentUuid": "b3d56951_2726c51f",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "556e913d_3a0f9de1",
         "filename": "common/motion_sense_hid.c",
         "patchSetId": 14
@@ -64,6 +100,24 @@
       "writtenOn": "2019-02-08T01:23:37Z",
       "side": 1,
       "message": "upload with --verify, only make -j buildall error is tolerated.",
+      "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba362aec_9872f887",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2019-02-08T02:15:37Z",
+      "side": 1,
+      "message": "Already changed this in old patches e.g. #13. Not sure why it\u0027s showing up here.",
+      "parentUuid": "556e913d_3a0f9de1",
       "revId": "45435f1052d1bf17320add25c4887270b905bdf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
