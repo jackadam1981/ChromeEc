@@ -69,6 +69,24 @@
       "revId": "c92491367d774e45906b6faa08094289de510091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dbc732a_6c8e3606",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-09T01:14:27Z",
+      "side": 1,
+      "message": "But you are calling from motion_sense_process() which is called for all sensors.",
+      "parentUuid": "63bb65b8_58704746",
+      "revId": "c92491367d774e45906b6faa08094289de510091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
