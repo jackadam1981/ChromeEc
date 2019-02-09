@@ -4,6 +4,7 @@
  */
 
 #include "heci_client.h"
+#include "registers.h"
 #include "system_state.h"
 #include "console.h"
 
@@ -27,6 +28,7 @@
 #define SYSTEM_STATE_STATE_CHANGE_REQ           0x4
 
 #define SUSPEND_STATE_BIT                       (1<<1) /* suspend/resume */
+uint32_t vnn_value;
 
 struct ss_header {
 	uint32_t cmd;
@@ -102,6 +104,15 @@ static int ss_subsys_suspend(void)
 						ss_subsys_ctx.clients[i]);
 	}
 
+#if defined(CHIP_FAMILY_ISH5)
+	/*
+	 * PMU_VNN_REQ is used by ISH FW to assert ish_pmc_vnn_req indication
+	 * towards PMC; if any bit is set, system won't enter S0ix.
+	 * To De-assert, write 1 to clear each bit
+	 */
+	vnn_value = REG32(PMU_VNN_REQ);
+	REG32(PMU_VNN_REQ) = vnn_value;
+#endif
 	return EC_SUCCESS;
 }
 
@@ -114,7 +125,17 @@ static int ss_subsys_resume(void)
 			ss_subsys_ctx.clients[i]->cbs->resume(
 						ss_subsys_ctx.clients[i]);
 	}
-
+#if defined(CHIP_FAMILY_ISH5)
+	/* Restore VNN */
+	if (vnn_value != 0) {
+		/* if we got resume, VNN_REQ3 (1<<3) is already set,
+		 * so don't set it to 1 again which clear it */
+		vnn_value &= ~VNN_REQ3_IPC_HOST_W;
+		REG32(PMU_VNN_REQ) = vnn_value;
+		while (!(REG32(PMU_VNN_REQ_ACK) & PMU_VNN_REQ_ACK_STATUS))
+			;
+	}
+#endif
 	return EC_SUCCESS;
 }
 

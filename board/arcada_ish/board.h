@@ -25,6 +25,11 @@
 #undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
 #define CONFIG_ISH_UART_0
+/* HECI Support*/
+#define CONFIG_HECI
+/* ISH IPC (over HECI) */
+#define CONFIG_ISH_IPC
+
 /* EC */
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
