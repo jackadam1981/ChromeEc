@@ -374,7 +374,8 @@ static int ipc_get_protocol_data(const struct ipc_if_ctx *ctx,
 		break;
 	}
 
-	memcpy(dest, src, payload_size);
+	if (dest && src)
+		memcpy(dest, src, payload_size);
 
 	return len;
 }
@@ -466,6 +467,10 @@ static void ipc_host2ish_isr(void)
 {
 	uint32_t pisr = REG32(IPC_PISR);
 	uint32_t pimr = REG32(IPC_PIMR);
+	if (!(REG32(PMU_VNN_REQ) & (1 << 3) ))
+		REG32(PMU_VNN_REQ) = (1 << 3);
+	/*while (!(REG32(PMU_VNN_REQ_ACK) & (1 << 0)))
+		;*/
 
 	if ((pisr & IPC_PISR_HOST2ISH_BIT) && (pimr & IPC_PIMR_HOST2ISH_BIT))
 		handle_msg_recv_interrupt(IPC_PEER_ID_HOST);
@@ -694,6 +699,10 @@ void ipc_mng_task(void)
 	int payload_size;
 	struct ipc_msg msg;
 	ipc_handle_t handle;
+
+	REG32(PMU_VNN_REQ) = (1 << 3);
+	while (!(REG32(PMU_VNN_REQ_ACK) & (1 << 0)))
+		;
 
 	handle = ipc_open(IPC_PEER_ID_HOST, IPC_PROTOCOL_MNG,
 			  EVENT_FLAG_BIT_MNG_MSG);

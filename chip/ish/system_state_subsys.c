@@ -4,6 +4,7 @@
  */
 
 #include "heci_client.h"
+#include "registers.h"
 #include "system_state.h"
 #include "console.h"
 
@@ -27,6 +28,7 @@
 #define SYSTEM_STATE_STATE_CHANGE_REQ           0x4
 
 #define SUSPEND_STATE_BIT                       (1<<1) /* suspend/resume */
+uint32_t vnn_value;
 
 struct ss_header {
 	uint32_t cmd;
@@ -102,6 +104,10 @@ static int ss_subsys_suspend(void)
 						ss_subsys_ctx.clients[i]);
 	}
 
+	/* De-assert VNN_REQ, write 1 to clear */
+	vnn_value = REG32(PMU_VNN_REQ);
+	REG32(PMU_VNN_REQ) = vnn_value;
+
 	return EC_SUCCESS;
 }
 
@@ -115,6 +121,15 @@ static int ss_subsys_resume(void)
 						ss_subsys_ctx.clients[i]);
 	}
 
+	/* Restore VNN */
+	if (vnn_value != 0) {
+		/* if we got resume, bit (1<<3) is already set,
+		 * so don't set it to 1 again which clear it */
+		vnn_value &= ~(1 << 3);
+		REG32(PMU_VNN_REQ) = vnn_value;
+		while (!(REG32(PMU_VNN_REQ_ACK) & (1 << 0)))
+			;
+	}
 	return EC_SUCCESS;
 }
 
