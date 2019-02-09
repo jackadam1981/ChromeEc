@@ -467,6 +467,16 @@ static void ipc_host2ish_isr(void)
 	uint32_t pisr = REG32(IPC_PISR);
 	uint32_t pimr = REG32(IPC_PIMR);
 
+#if defined(CHIP_FAMILY_ISH5)
+	/*
+	 * If VNN power for host ipc write is not on, ISH will not
+	 * get host ipc message; so send VNN_REQ3 to PMC
+	 */
+	if (!(REG32(PMU_VNN_REQ) & VNN_REQ3_IPC_HOST_W)) {
+		REG32(PMU_VNN_REQ) = VNN_REQ3_IPC_HOST_W;
+	}
+#endif
+
 	if ((pisr & IPC_PISR_HOST2ISH_BIT) && (pimr & IPC_PIMR_HOST2ISH_BIT))
 		handle_msg_recv_interrupt(IPC_PEER_ID_HOST);
 }
@@ -695,6 +705,11 @@ void ipc_mng_task(void)
 	struct ipc_msg msg;
 	ipc_handle_t handle;
 
+#if defined(CHIP_FAMILY_ISH5)
+	REG32(PMU_VNN_REQ) = VNN_REQ3_IPC_HOST_W;
+	while (!(REG32(PMU_VNN_REQ_ACK) & PMU_VNN_REQ_ACK_STATUS))
+		;
+#endif
 	handle = ipc_open(IPC_PEER_ID_HOST, IPC_PROTOCOL_MNG,
 			  EVENT_FLAG_BIT_MNG_MSG);
 
