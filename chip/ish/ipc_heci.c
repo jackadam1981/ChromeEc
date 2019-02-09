@@ -695,6 +695,12 @@ void ipc_mng_task(void)
 	struct ipc_msg msg;
 	ipc_handle_t handle;
 
+#if defined(CHIP_FAMILY_ISH5)
+	/* Ensure that power for host IPCs is requested and ack'ed */
+	PMU_VNN_REQ = VNN_REQ_IPC_HOST_WRITE & ~PMU_VNN_REQ;
+	while (!(PMU_VNN_REQ_ACK & PMU_VNN_REQ_ACK_STATUS))
+		continue;
+#endif
 	handle = ipc_open(IPC_PEER_ID_HOST, IPC_PROTOCOL_MNG,
 			  EVENT_FLAG_BIT_MNG_MSG);
 
