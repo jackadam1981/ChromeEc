@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f81f74ed_20503496",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-09T00:36:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e356c5d0_bdabebd3",
+      "revId": "c92491367d774e45906b6faa08094289de510091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c1a996e_3b5b4d64",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-08T23:40:41Z",
       "side": 1,
       "message": "You send an ODR change for all sensors?",
+      "revId": "c92491367d774e45906b6faa08094289de510091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63bb65b8_58704746",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-09T00:36:36Z",
+      "side": 1,
+      "message": "No, it\u0027s calling insert_odr with a specific sensor object, not all sensors.\n\nUnless I am misunderstanding what you mean?",
+      "parentUuid": "5c1a996e_3b5b4d64",
       "revId": "c92491367d774e45906b6faa08094289de510091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
