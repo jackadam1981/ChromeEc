@@ -87,6 +87,24 @@
       "revId": "c92491367d774e45906b6faa08094289de510091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "746318a1_01e51f6c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-09T01:18:23Z",
+      "side": 1,
+      "message": "Ah, yeah I see what you\u0027re saying now. I may have to do something similar to what flush_pending is doing for ODR changes. Thanks!",
+      "parentUuid": "4dbc732a_6c8e3606",
+      "revId": "c92491367d774e45906b6faa08094289de510091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
