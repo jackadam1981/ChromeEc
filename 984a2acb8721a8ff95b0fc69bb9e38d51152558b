@@ -34,6 +34,24 @@
       "revId": "984a2acb8721a8ff95b0fc69bb9e38d51152558b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0b1b6b_8ab15e2b",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-11T21:59:11Z",
+      "side": 1,
+      "message": "You can have a single uint32 and do a atomic_add(odrr_pending , 1 \u003c\u003c sensor_id);\n\nI see your point for request/response, but at the time we get the flag, we have already sent a confirmation to user space.",
+      "parentUuid": "f16b8857_8a6deb3b",
+      "revId": "984a2acb8721a8ff95b0fc69bb9e38d51152558b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
