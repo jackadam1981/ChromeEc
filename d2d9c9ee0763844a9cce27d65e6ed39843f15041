@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bbef4af_ce5aa833",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T08:26:12Z",
+      "side": 1,
+      "message": "This still looks wrong, if requested_voltage is currently \u003c 4250 (e.g. if the temperature is too high), you\u0027ll _increase_ the voltage to 4250.\n\nThis code becomes _much_ simpler if you just add a last entry with INT_MAX in cycle_zones.",
+      "revId": "d2d9c9ee0763844a9cce27d65e6ed39843f15041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
