@@ -425,6 +425,30 @@
       "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5970c68b_47b1b798",
+        "filename": "power/common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-02-11T08:32:00Z",
+      "side": 1,
+      "message": "I\u0027m sorry, do you mean here should be added a config option? if so please refer to the latest patch(Patchset 8). Thank you very much.",
+      "parentUuid": "85bc90a2_c09e0e74",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "1fbb3d4e3209245252842834d2a3c7ffff12bbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
