@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cd86e55_41450c3f",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-11T18:55:48Z",
+      "side": 1,
+      "message": "We eventually want the sensor to be active during S3 too, yes?",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5536184e_26bd7efe",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-11T18:55:48Z",
+      "side": 1,
+      "message": "Is this saying that in S0, the ISH will sample the sensor at a rate of 130 Hz. The sensor won\u0027t be sampled at all by the AP (this makes sense, as all data will go through the ISH, yes?) and the sensor won\u0027t be sampled by the ISH in S3 or S5. It would eventually need to get sampled in S3 to wake on a lid open, right? \n\nI don\u0027t understand what the ec_rate is setting here, the explanation in motion_sense.h isn\u0027t great. What is this setting? I also am nervous that you use MSEC, but the motion_sense.h says this value should be in units of uSec.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4319c5f9_5e2bebde",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-11T18:55:48Z",
+      "side": 1,
+      "message": "static too?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c655bd_c3ef7c8d",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-11T18:55:48Z",
+      "side": 1,
+      "message": "These two names don\u0027t match, is this a simple typo?",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
