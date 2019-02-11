@@ -99,6 +99,29 @@
     },
     {
       "key": {
+        "uuid": "445463f3_e4f13f1a",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-02-11T21:30:22Z",
+      "side": 1,
+      "message": "Please rename it to ac_charge_timeout",
+      "range": {
+        "startLine": 171,
+        "startChar": 11,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "374a158e_f8638aac",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 7
@@ -110,6 +133,24 @@
       "writtenOn": "2019-02-11T07:33:35Z",
       "side": 1,
       "message": "Does this hook get executed if the EC boots with AC connected?",
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2e4861_7382496c",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-02-11T21:30:22Z",
+      "side": 1,
+      "message": "I think so.\nIt\u0027s better to preserve this time-keeping across reboot.\nAny ideas?",
+      "parentUuid": "374a158e_f8638aac",
       "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
