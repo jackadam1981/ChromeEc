@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6870cb3_442930b4",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T07:33:35Z",
+      "side": 1,
+      "message": "Alphabetical order",
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f18f0339_b9bb15da",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T07:33:35Z",
+      "side": 1,
+      "message": "Get rid of this enum, it\u0027s useless and unclear it needs to match the length in the array below.",
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67282cd4_8fd2bd54",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T07:33:35Z",
+      "side": 1,
+      "message": "fix indentation",
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3cc4627_699d8504",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T07:33:35Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(cycle_zones), if you want to go this way.",
+      "range": {
+        "startLine": 165,
+        "startChar": 41,
+        "endLine": 165,
+        "endChar": 59
+      },
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28caf31_e03067ec",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T07:33:35Z",
+      "side": 1,
+      "message": "I\u0027d much rather have this value in the cycle_zones array.",
+      "range": {
+        "startLine": 167,
+        "startChar": 46,
+        "endLine": 167,
+        "endChar": 50
+      },
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374a158e_f8638aac",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-11T07:33:35Z",
+      "side": 1,
+      "message": "Does this hook get executed if the EC boots with AC connected?",
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
