@@ -16,6 +16,24 @@
       "revId": "984a2acb8721a8ff95b0fc69bb9e38d51152558b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16b8857_8a6deb3b",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-11T19:30:41Z",
+      "side": 1,
+      "message": "That was my original hunch too, but I gave it some thought over the weekend, and it seemed to me like we would lose the ability to keep track of requests/responses for this but not save much in return.\n\nIf you think the space saving is worth it, sure, I can do it - but wouldn\u0027t this still need to be a per-sensor uint32_t? The operations on it need to be atomic and per-sensor and it looks like uint32_t* is all our atomic.h supports",
+      "parentUuid": "ea57ad8a_9dceddf8",
+      "revId": "984a2acb8721a8ff95b0fc69bb9e38d51152558b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
