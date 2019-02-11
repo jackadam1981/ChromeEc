@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3512e5a7_bc0abe8d",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-11T20:14:50Z",
+      "side": 1,
+      "message": "This field indicate in which state the sensor is powered up. Looking at the firecrest schematics, sensors are powered with 3D3V_SEN_S0, so they need to be reinitialize at every transition into S0.\n\nThe board layout may be wrong, I would expect the sensors to up in S3 to calculate lid angle while suspended. See below.",
+      "parentUuid": "8cd86e55_41450c3f",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5536184e_26bd7efe",
         "filename": "board/arcada_ish/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-11T18:55:48Z",
       "side": 1,
       "message": "Is this saying that in S0, the ISH will sample the sensor at a rate of 130 Hz. The sensor won\u0027t be sampled at all by the AP (this makes sense, as all data will go through the ISH, yes?) and the sensor won\u0027t be sampled by the ISH in S3 or S5. It would eventually need to get sampled in S3 to wake on a lid open, right? \n\nI don\u0027t understand what the ec_rate is setting here, the explanation in motion_sense.h isn\u0027t great. What is this setting? I also am nervous that you use MSEC, but the motion_sense.h says this value should be in units of uSec.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd253a7_136f27c3",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-11T20:14:50Z",
+      "side": 1,
+      "message": "13Hz, not 130Hz. \nAll sensor data go through the EC.\nIt is not necessary yet, but will be once the lid accel is added to calculate the lid angle.\n\nLid open can be detected with the hall sensor.\nBut ultimately, the accelerometers should be sampled in S3 as well to prevent wake up on keyboard event when the user transition from clamshell to tablet while in S3.\n\nec_rate is the period the EC wakes up to retrieve accelerometer data to calculate lid angle. It will be removed once FIFO/Interrupt mode is supported by ISH.",
+      "parentUuid": "5536184e_26bd7efe",
       "range": {
         "startLine": 52,
         "startChar": 0,
