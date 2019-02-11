@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea57ad8a_9dceddf8",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-11T19:28:05Z",
+      "side": 1,
+      "message": "To save space, you should have a global flag for odr_pending. Contrary to flush pending, if I sent 2 ODR change back to back, the kernel does not need to keep track of the number of outstanding change requests.",
+      "revId": "984a2acb8721a8ff95b0fc69bb9e38d51152558b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
