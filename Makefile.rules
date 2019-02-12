@@ -103,7 +103,8 @@ cmd_c_to_o = $(CC) -std=gnu11 $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $< \
 		-MT $(@D)/$(@F) -o $(@D)/$(@F)
 cmd_c_to_s = $(CC) -S $(C_WARN) $(CFLAGS) -MMD -MP -MF $@.d -c $< \
 		-MT $(@D)/$(@F) -o $(@D)/$(@F)
-cmd_cxx_to_o = $(CXX) -std=c++11 $(CFLAGS) $(CXXFLAGS) -MMD -MP -MF $@.d -c $< \
+CXX_FILTER:=-nostdlib -nostdinc -Ibuiltin/ -I/mnt/host/source/src/platform/ec/builtin
+cmd_cxx_to_o = $(CXX) -std=gnu++11 $(filter-out $(CXX_FILTER), $(CFLAGS)) $(CXXFLAGS) -MMD -MP -MF $@.d -c $< \
 		      -MT $(@D)/$(@F) -o $(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $(wildcard $*.c)) \
@@ -613,6 +614,9 @@ $(out)/RO/%.s:%.c
 	$(call quiet,c_to_s,CC     )
 $(out)/RW/%.s:%.c
 	$(call quiet,c_to_s,CC     )
+
+$(out)/RW/common/fpsensor/fpsensor.o:common/fpsensor/fpsensor.cc
+	$(call quiet,cxx_to_o,CC     )
 
 $(out)/RO/%.o:%.cc
 	$(call quiet,cxx_to_o,CXX    )
