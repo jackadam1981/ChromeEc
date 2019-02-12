@@ -136,7 +136,7 @@ ifneq ($(cc-name),clang)
 CFLAGS+= -ffat-lto-objects
 CFLAGS+= -fconserve-stack
 endif
-CXXFLAGS+=-DPROTOBUF_INLINE_NOT_IN_HEADERS=0
+CXXFLAGS+=-DPROTOBUF_INLINE_NOT_IN_HEADERS=0  -I/usr/armv7m-cros-eabi/usr/include/c++/v1 -DHIDE_EC_STDLIB
 
 ifeq ($(LIBFTDI_NAME),)
 FTDIVERSION:=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
@@ -172,7 +172,7 @@ ifneq (${SYSROOT},)
   LDFLAGS_EXTRA+=--sysroot=${SYSROOT}
 endif
 LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
-	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
+	$(LDFLAGS_EXTRA) $(CFLAGS_CPU) -lc++ -lc
 MEMSIZE_FLAGS=
 ifeq ($(cc-name),gcc)
 MEMSIZE_FLAGS+=-Wl,--print-memory-usage
