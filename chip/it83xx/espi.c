@@ -8,6 +8,7 @@
 #include "console.h"
 #include "espi.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "port80.h"
 #include "power.h"
 #include "registers.h"
@@ -541,6 +542,60 @@ static void (*espi_isr[])(uint8_t evt) = {
 	[7] = espi_no_isr,
 };
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+int espi_oob_receive(uint8_t *oob_data)
+{
+	int i;
+	int oob_len;
+
+	/* Read PUT_OOB length */
+	oob_len = IT83XX_ESPI_ESOCTRL4;
+	if (oob_len <= ESPI_OOB_MAX_LENGTH) {
+		oob_len &= 0x7F;
+
+	/* Read PUT_OOB data */
+	for (i = 0; i < oob_len; i++)
+		oob_data[i] = IT83XX_ESPI_QUEUE(PUT_OOB, i);
+	} else {
+		/* received OOB data length more than buffer size 80 bytes */
+		oob_len = -1;
+		CPRINTS("received OOB message over buffer size");
+	}
+
+	/* write 1 to clear PUT_OOB status */
+	IT83XX_ESPI_ESOCTRL0 = ESPI_INTERRUPT_EVENT_PUT_OOB;
+	/* enable OOB interrupt */
+	IT83XX_ESPI_ESOCTRL1 |= ESPI_INTERRUPT_PUT_OOB_EN;
+
+	return oob_len;
+}
+
+void espi_oob_send(uint8_t *oob_data)
+{
+	int i;
+	uint16_t oob_len = oob_data[2] | (oob_data[1] & 0x0F) << 4;
+
+	/* Set upstream cycle type */
+	IT83XX_ESPI_ESUCTRL1 = oob_data[0];
+
+	/* Set upstream Tag */
+	IT83XX_ESPI_ESUCTRL2 = oob_data[1] & 0xF0;
+
+	/* Set upstream length[11:8] */
+	IT83XX_ESPI_ESUCTRL2 = oob_data[1] & 0x0F;
+
+	/* length[7:0] */
+	IT83XX_ESPI_ESUCTRL3 = oob_data[2];
+
+	/* Set upstream data */
+	for (i = 0; i < oob_len; i++)
+		IT83XX_ESPI_QUEUE(PUT_OOB, i) = oob_data[i + 3];
+
+	/* Set upstream go and enable */
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_GO | ESPI_UPSTREAM_EN;
+}
+#endif
+
 void espi_interrupt(void)
 {
 	int i;
@@ -565,6 +620,23 @@ void espi_interrupt(void)
 		IT83XX_ESPI_ESPCTRL0 = ESPI_INTERRUPT_EVENT_PUT_PC;
 		CPRINTS("A packet from peripheral channel is ignored!");
 	}
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	/* eSPI OOB message interrupt occurred */
+	if (IT83XX_ESPI_ESOCTRL0 & ESPI_INTERRUPT_EVENT_PUT_OOB) {
+		/* disable OOB interrupt */
+		IT83XX_ESPI_ESOCTRL1 &= ~ESPI_INTERRUPT_PUT_OOB_EN;
+		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_ESPI_OOB_RECEIVE, 0);
+	}
+
+	/* eSPI OOB upstream done asserted */
+	if (IT83XX_ESPI_ESUCTRL0 & ESPI_UPSTREAM_INTERRUPT_EVENT_DONE) {
+		/* write-1-clear upstream done event */
+		IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_INTERRUPT_EVENT_DONE;
+		task_set_event(TASK_ID_HOSTCMD,
+			TASK_EVENT_ESPI_OOB_SEND_DONE, 0);
+	}
+#endif
 
 	task_clear_pending_irq(IT83XX_IRQ_ESPI);
 }
@@ -608,6 +680,12 @@ void espi_init(void)
 	IT83XX_ESPI_VWCTRL0 |= (1 << 7);
 	task_enable_irq(IT83XX_IRQ_ESPI_VW);
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	/* bit5: upstream interrupt enable */
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_INTERRUPT_EN;
+	/* bit7: OOB interrupt enable */
+	IT83XX_ESPI_ESOCTRL1 |= ESPI_INTERRUPT_PUT_OOB_EN;
+#endif
 	/* bit7: eSPI interrupt enable */
 	IT83XX_ESPI_ESGCTRL1 |= (1 << 7);
 	/* bit4: eSPI to WUC enable */
