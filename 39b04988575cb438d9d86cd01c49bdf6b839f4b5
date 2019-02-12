@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82b0fe5c_fe9e7939",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "Why do you need this #ifdef ... #endif?",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 33
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8317c2_13e433d9",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "You should plumb i2c_read16 to this function (to reduce code duplicate).",
+      "range": {
+        "startLine": 308,
+        "startChar": 4,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76564b01_b2c8784d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "I think we should return error if len \u003e 2 (instead of secretly correcting it).",
+      "range": {
+        "startLine": 312,
+        "startChar": 9,
+        "endLine": 312,
+        "endChar": 37
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b2245c_37eda201",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "Please join them.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 11
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c4b1b98_57afd0c8",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "you don\u0027t need this.",
+      "range": {
+        "startLine": 387,
+        "startChar": 9,
+        "endLine": 387,
+        "endChar": 11
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2513ca6b_01af406b",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 4
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa61310_8dfe22fa",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "slave_addr",
+      "range": {
+        "startLine": 270,
+        "startChar": 6,
+        "endLine": 270,
+        "endChar": 15
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e896817e_57ebc976",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "i2c_read_offset16(int port, int slave_addr, uint16_t offset, int *data, int len) is clearer?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 78
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f5a7e6_34539c8c",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:36:51Z",
+      "side": 1,
+      "message": "Please add function description.",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 25
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
