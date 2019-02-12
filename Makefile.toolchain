@@ -23,6 +23,15 @@ ifneq ($(TEST_FUZZ)$(TEST_ASAN)$(TEST_MSAN)$(TEST_UBSAN),)
 CC=clang
 endif
 
+CXX_BOARDS:=dartmonkey \
+            bloonchipper \
+            nucleo-dartmonkey
+
+ifeq ($(filter $(BOARD), $(CXX_BOARDS)), $(BOARD))
+USE_CXX:=1
+CC=clang
+endif
+
 # Extract cc-name
 cc-name:=$(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
 
@@ -123,8 +132,12 @@ HOST_CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(CFLAGS_TEST) \
 	 $(EXTRA_CFLAGS) $(CFLAGS_COVERAGE) $(CFLAGS_HOSTTEST) $(LATE_CFLAGS_DEFINE) \
 	 -DSECTION_IS_$(BLD)=$(EMPTY) -DSECTION=$(BLD) $(CPPFLAGS_$(BLD))
 ifneq ($(BOARD),host)
-CPPFLAGS+=-ffreestanding -fno-builtin -nostdinc -nostdlib
+# TODO(b/236025198): Remove when compiling C++
+CPPFLAGS+=-fno-builtin
+ifneq ($(USE_CXX), 1)
+CPPFLAGS+=-ffreestanding -nostdinc -nostdlib
 CPPFLAGS+=-Ibuiltin/
+endif
 else
 CPPFLAGS+=-Og
 endif
@@ -137,6 +150,9 @@ CFLAGS+= -ffat-lto-objects
 CFLAGS+= -fconserve-stack
 endif
 CXXFLAGS+=-DPROTOBUF_INLINE_NOT_IN_HEADERS=0
+ifeq ($(USE_CXX), 1)
+CXXFLAGS+=-I/usr/armv7m-cros-eabi/usr/include/c++/v1 -DHIDE_EC_STDLIB
+endif
 
 ifeq ($(LIBFTDI_NAME),)
 FTDIVERSION:=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
@@ -171,8 +187,13 @@ HOST_CXXFLAGS=$(HOST_CFLAGS)
 ifneq (${SYSROOT},)
   LDFLAGS_EXTRA+=--sysroot=${SYSROOT}
 endif
-LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
+LDFLAGS=-g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
+ifeq ($(USE_CXX), 1)
+LDFLAGS+=-lnosys
+else
+LDFLAGS+=-nostdlib
+endif
 MEMSIZE_FLAGS=
 ifeq ($(cc-name),gcc)
 MEMSIZE_FLAGS+=-Wl,--print-memory-usage
