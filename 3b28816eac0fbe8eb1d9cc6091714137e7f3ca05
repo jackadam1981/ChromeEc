@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cddb139_88e36ce9",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-12T17:30:50Z",
+      "side": 1,
+      "message": "Both these Simplo batteries have the exact same entries except manuf_name. Does it make sense to de-duplicate them?\n\nIn fact, the Simplo battery above this entry is also the same except manuf_name and discharging_min_c. Not sure if the discharing_min_c is a typo there or it really has a different range.",
+      "range": {
+        "startLine": 179,
+        "startChar": 18,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0803eafa_925e0be1",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-12T17:30:50Z",
+      "side": 1,
+      "message": "Same here for SWD batteries.",
+      "range": {
+        "startLine": 235,
+        "startChar": 18,
+        "endLine": 235,
+        "endChar": 30
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826be36b_a70f1ca1",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-12T17:30:50Z",
+      "side": 1,
+      "message": "Instead of doing everything as part of this function, can we split this into two functions?\n\nif (... wb_support)\n    ret \u003d cut_off_battery_block_write();\nelse\n    ret \u003d cut_off_battery_sb_write();",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef1bcb1c_8513e800",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-12T17:30:50Z",
+      "side": 1,
+      "message": "The way reg_data_wb is currently defined, cutdata would always be 2. Isn\u0027t that right?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6734330d_1d15155c",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-12T17:30:50Z",
+      "side": 1,
+      "message": "The way this param is defined, it seems like reg_data_wb[0] is always going to be 2. Would it make sense to instead put the data in reg_data always and check if wb_support is set to 1 and if yes create a local array with [2, reg_data[0], reg_data[1]] and use that for the write.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
