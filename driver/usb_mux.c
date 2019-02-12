@@ -226,10 +226,16 @@ DECLARE_CONSOLE_COMMAND(typec, command_typec,
 			"Control type-C connector muxing");
 #endif
 
+__attribute__((weak)) uint8_t board_get_pin_mode(int port)
+{
+	return 0;
+}
+
 static int hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_mux_info *p = args->params;
 	struct ec_response_usb_pd_mux_info *r = args->response;
+	struct ec_response_usb_pd_mux_info_v1 *r_v1 = args->response;
 	int port = p->port;
 	const struct usb_mux *mux;
 
@@ -246,10 +252,21 @@ static int hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	    mux->hpd_update == &virtual_hpd_update)
 		mux->hpd_update(port, r->flags & USB_PD_MUX_HPD_LVL, 0);
 #endif
+	if (args->version == 0)
+		args->response_size = sizeof(*r);
+	else {
+		r_v1->flags = r->flags;
 
-	args->response_size = sizeof(*r);
+		/* Get the current pin mode */
+		r_v1->pin_mode = board_get_pin_mode(port);
+
+		/* Get the current CC state */
+		r_v1->cc_state = pd_get_cc_state(port);
+
+		args->response_size = sizeof(*r_v1);
+	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
