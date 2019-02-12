@@ -71,6 +71,11 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
+enum sensor_id {
+	BASE_ACCEL = 0,
+	BASE_GYRO,
+};
+
 enum pwm_channel {
 	PWM_CH_KBLIGHT,
 	PWM_CH_FAN,
