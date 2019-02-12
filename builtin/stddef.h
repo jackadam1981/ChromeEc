@@ -19,7 +19,11 @@ typedef __SIZE_TYPE__ ssize_t;
 #undef unsigned
 
 #ifndef NULL
+#ifdef __cplusplus
+#define NULL nullptr
+#else
 #define NULL ((void *)0)
+#endif
 #endif
 
 #ifndef __WCHAR_TYPE__
