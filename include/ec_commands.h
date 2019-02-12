@@ -1908,9 +1908,16 @@ struct ec_params_rand_num {
 	uint16_t num_rand_bytes; /**< num random bytes to generate */
 } __ec_align4;
 
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wextern-c-compat"
+#endif /* __clang__ */
 struct ec_response_rand_num {
 	uint8_t rand[0]; /**< generated random numbers */
 } __ec_align4;
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 
 BUILD_ASSERT(sizeof(struct ec_response_rand_num) == 0);
 
