@@ -4950,6 +4950,9 @@ struct ec_params_usb_pd_mux_info {
 
 struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
+#ifdef CONFIG_USB_MUX_VIRTUAL
+	uint8_t cc_state; /* USB_PD CC state */
+#endif
 } __ec_align1;
 
 #define EC_CMD_PD_CHIP_INFO		0x011B
