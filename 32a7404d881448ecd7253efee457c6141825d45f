@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edd7abac_206abb5c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4953,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-12T23:34:38Z",
+      "side": 1,
+      "message": "we should not conditionally include fields in an EC command. We would need to unconditionally add this field and bump the version of this EC command (and potentially add another stating that this field is valid to read)",
+      "range": {
+        "startLine": 4953,
+        "startChar": 7,
+        "endLine": 4953,
+        "endChar": 29
+      },
+      "revId": "32a7404d881448ecd7253efee457c6141825d45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
