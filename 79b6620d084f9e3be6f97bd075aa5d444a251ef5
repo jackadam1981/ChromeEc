@@ -22,6 +22,30 @@
       "revId": "79b6620d084f9e3be6f97bd075aa5d444a251ef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaaf3d88_19c81a66",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-12T05:33:33Z",
+      "side": 1,
+      "message": "It is defined as 1 for now.  We will change to 2 when we are all ready to shift to P2 board.\n\n\u003e Regardless, aren\u0027t you supposed to use ADC_BOARD_ID?\nConsidering the limited RO space, I\u0027d like to hold this a compile time logic as long as it can be.  We could probably shift to use ADC_BOARD_ID after the new boards ready.\n\n\u003e FYI: flapjack forked (and will continue to fork). So, you can start removing flapjack support.\nGot it, thanks for the hint!",
+      "parentUuid": "7b7c50c4_3e1caf65",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "79b6620d084f9e3be6f97bd075aa5d444a251ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
