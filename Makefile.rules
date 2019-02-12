@@ -614,6 +614,9 @@ $(out)/RO/%.s:%.c
 $(out)/RW/%.s:%.c
 	$(call quiet,c_to_s,CC     )
 
+$(out)/RW/common/fpsensor/fpsensor.o:common/fpsensor/fpsensor.cc
+	$(call quiet,cxx_to_o,CC     )
+
 $(out)/RO/%.o:%.cc
 	$(call quiet,cxx_to_o,CXX    )
 $(out)/RW/%.o:%.cc
