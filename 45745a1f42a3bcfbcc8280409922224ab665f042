@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d340e5b0_afdbebee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "try on a campfire machine.",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27dde3b3_eefb9768",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "5038, 5037 has been taken in the meantime - need to change coreboot as well.",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db26c6a_17126291",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "usually. 2 spaces between code and comments.",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c458315e_2784c263",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "move this code in the /test directory.",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc24306_e1da3c6c",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "If the test define \"send_response\", then this code goes away.",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "652e735c_dfd9cf00",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "merge comments:\n/*\n * ...\n */",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f88bad_0635f372",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-12T22:17:54Z",
+      "side": 1,
+      "message": "alignement.",
+      "revId": "45745a1f42a3bcfbcc8280409922224ab665f042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
