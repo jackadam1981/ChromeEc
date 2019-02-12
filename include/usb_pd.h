@@ -1863,6 +1863,13 @@ int pd_get_partner_usb_comm_capable(int port);
  */
 int pd_is_vbus_present(int port);
 
+/**
+ * Return current CC state on the specified port.
+ *
+ * @param port USB-C port number
+ */
+int pd_get_cc_state(int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

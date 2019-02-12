@@ -241,6 +241,9 @@ static int hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 
 #ifdef CONFIG_USB_MUX_VIRTUAL
+	/* Get the current CC state */
+	r->cc_state = pd_get_cc_state(port);
+
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if ((r->flags & USB_PD_MUX_HPD_IRQ) &&
 	    mux->hpd_update == &virtual_hpd_update)
