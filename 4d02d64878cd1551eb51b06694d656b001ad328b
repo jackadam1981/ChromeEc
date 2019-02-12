@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc28668f_eda6e0a7",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-12T12:53:44Z",
+      "side": 1,
+      "message": "Compal battery team has updated the battery spec.\nCode and spec are matched.\nInclude SMP-LSN3.66、SMP-ATL3.61、BYD-BYD3.685.",
+      "parentUuid": "634e4820_3b4c7c85",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "4d02d64878cd1551eb51b06694d656b001ad328b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da14b6bf_995a12d5",
         "filename": "board/fleex/battery.c",
         "patchSetId": 2
