@@ -4663,6 +4663,27 @@ struct ec_response_usb_pd_control_v1 {
 	char state[32];
 } __ec_align1;
 
+enum pd_cc_states {
+	PD_CC_NONE,
+
+	/* From DFP perspective */
+	PD_CC_NO_UFP,
+	PD_CC_AUDIO_ACC,
+	PD_CC_DEBUG_ACC,
+	PD_CC_UFP_ATTACHED,
+
+	/* From UFP perspective */
+	PD_CC_DFP_ATTACHED
+};
+
+struct ec_response_usb_pd_control_v2 {
+	uint8_t enabled;
+	uint8_t role;
+	uint8_t polarity;
+	char state[32];
+	enum pd_cc_states cc_state;	/* USB_PD CC state */
+} __ec_align1;
+
 #define EC_CMD_USB_PD_PORTS 0x0102
 
 /* Maximum number of PD ports on a device, num_ports will be <= this */
@@ -4951,6 +4972,7 @@ struct ec_params_usb_pd_mux_info {
 struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
 } __ec_align1;
+
 
 #define EC_CMD_PD_CHIP_INFO		0x011B
 
