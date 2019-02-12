@@ -9,12 +9,18 @@
 /*
  * Only defined for C: https://en.cppreference.com/w/c/language/_Noreturn
  *
- * C++ uses [[noreturn]]: https://en.cppreference.com/w/cpp/language/attributes/noreturn
+ * C++ uses [[noreturn]]:
+ * https://en.cppreference.com/w/cpp/language/attributes/noreturn
  */
 #ifndef __cplusplus
 #ifndef noreturn
 #define noreturn _Noreturn
 #endif
+#else
+/*
+ * https://gcc.gnu.org/bugzilla/show_bug.cgi?id=89232
+ */
+#define noreturn
 #endif
 
 #endif /* __CROS_EC_STDNORETURN_H__ */

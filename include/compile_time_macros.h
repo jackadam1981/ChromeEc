@@ -8,8 +8,10 @@
 #ifndef __CROS_EC_COMPILE_TIME_MACROS_H
 #define __CROS_EC_COMPILE_TIME_MACROS_H
 
+#if 0
 #ifdef __cplusplus
 #include <type_traits>
+#endif
 #endif
 
 /* sys/util.h in zephyr provides equivalents to most of these macros */
