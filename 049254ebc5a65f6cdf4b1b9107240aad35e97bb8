@@ -70,6 +70,30 @@
       "revId": "049254ebc5a65f6cdf4b1b9107240aad35e97bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4c3769_b91a0a76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-12T19:52:39Z",
+      "side": 1,
+      "message": "Either way.  I can either make a new CL for it, or rebase and add the config here after it lands",
+      "parentUuid": "580cf5e5_51a60fc6",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "049254ebc5a65f6cdf4b1b9107240aad35e97bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
