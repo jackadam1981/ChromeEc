@@ -46,6 +46,30 @@
       "revId": "049254ebc5a65f6cdf4b1b9107240aad35e97bb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580cf5e5_51a60fc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-12T19:21:54Z",
+      "side": 1,
+      "message": "SGTM. Do you want to wait until that CL lands?",
+      "parentUuid": "5ec275fa_ac868e53",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "049254ebc5a65f6cdf4b1b9107240aad35e97bb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
