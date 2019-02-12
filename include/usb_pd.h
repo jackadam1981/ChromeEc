@@ -764,19 +764,6 @@ enum pd_states {
 #define PD_BBRMFLG_POWER_ROLE        (1 << 1)
 #define PD_BBRMFLG_DATA_ROLE         (1 << 2)
 
-enum pd_cc_states {
-	PD_CC_NONE,
-
-	/* From DFP perspective */
-	PD_CC_NO_UFP,
-	PD_CC_AUDIO_ACC,
-	PD_CC_DEBUG_ACC,
-	PD_CC_UFP_ATTACHED,
-
-	/* From UFP perspective */
-	PD_CC_DFP_ATTACHED
-};
-
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 enum pd_dual_role_states {
 	/* While disconnected, toggle between src and sink */

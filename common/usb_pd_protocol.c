@@ -4832,6 +4832,7 @@ static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
+	struct ec_response_usb_pd_control_v2 *r_v2 = args->response;
 	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
 
@@ -4900,13 +4901,21 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 		strzcpy(r_v1->state,
 			pd_state_names[pd[p->port].task_state],
 			sizeof(r_v1->state));
-		args->response_size = sizeof(*r_v1);
+
+		if (args->version == 1)
+			args->response_size = sizeof(*r_v1);
+		else {
+			/* Get the current CC state */
+			r_v2->cc_state = pd[p->port].cc_state;
+
+			args->response_size = sizeof(*r_v2);
+		}
 	}
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
 		     hc_usb_pd_control,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static int hc_remote_flash(struct host_cmd_handler_args *args)
 {
