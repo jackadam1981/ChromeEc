@@ -11,6 +11,7 @@
 #include "cros_board_info.h"
 #include "gpio.h"
 #include "host_command.h"
+#include "system.h"
 #include "i2c.h"
 #include "timer.h"
 
@@ -201,7 +202,7 @@ int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
 
 static int eeprom_is_write_protected(void)
 {
-	return !gpio_get_level(GPIO_WP_L);
+	return system_is_locked();
 }
 
 static int write_board_info(void)
