@@ -117,6 +117,30 @@
       "revId": "bf7595bf5a551c0370bb65b451a7ac68892ab0b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8659c06_08c30005",
+        "filename": "board/kukui_scp/update_scp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-12T17:51:04Z",
+      "side": 1,
+      "message": "I suppose it wouldn\u0027t hurt the readability to describe in the script why this isn\u0027t *.elf.",
+      "parentUuid": "b8d5f5cb_2e018671",
+      "range": {
+        "startLine": 24,
+        "startChar": 29,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "bf7595bf5a551c0370bb65b451a7ac68892ab0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
