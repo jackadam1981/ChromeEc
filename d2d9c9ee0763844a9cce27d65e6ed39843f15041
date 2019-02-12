@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "109c981d_243fe334",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-02-12T00:24:26Z",
+      "side": 1,
+      "message": "As Nicolas mentioned, please let us know your test plan.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "d2d9c9ee0763844a9cce27d65e6ed39843f15041",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bbef4af_ce5aa833",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 8
