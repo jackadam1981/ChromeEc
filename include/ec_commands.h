@@ -4952,6 +4952,25 @@ struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
 } __ec_align1;
 
+enum pd_cc_states {
+	PD_CC_NONE,
+
+	/* From DFP perspective */
+	PD_CC_NO_UFP,
+	PD_CC_AUDIO_ACC,
+	PD_CC_DEBUG_ACC,
+	PD_CC_UFP_ATTACHED,
+
+	/* From UFP perspective */
+	PD_CC_DFP_ATTACHED
+};
+
+struct ec_response_usb_pd_mux_info_v1 {
+	uint8_t flags;			/* USB_PD_MUX_*-encoded USB mux state */
+	enum pd_cc_states cc_state;	/* USB_PD CC state */
+	uint8_t pin_mode;		/* DP pin mode */
+} __ec_align1;
+
 #define EC_CMD_PD_CHIP_INFO		0x011B
 
 struct ec_params_pd_chip_info {
