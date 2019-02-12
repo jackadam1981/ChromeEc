@@ -5201,7 +5201,7 @@ static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 int cmd_usb_pd_mux_info(int argc, char *argv[])
 {
 	struct ec_params_usb_pd_mux_info p;
-	struct ec_response_usb_pd_mux_info r;
+	struct ec_response_usb_pd_mux_info_v1 r;
 	int num_ports, rv, i;
 
 	rv = ec_command(EC_CMD_USB_PD_PORTS, 0, NULL, 0,
@@ -5212,7 +5212,7 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 
 	for (i = 0; i < num_ports; i++) {
 		p.port = i;
-		rv = ec_command(EC_CMD_USB_PD_MUX_INFO, 0,
+		rv = ec_command(EC_CMD_USB_PD_MUX_INFO, 1,
 				&p, sizeof(p),
 				&r, sizeof(r));
 		if (rv < 0)
@@ -5231,6 +5231,8 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 		if (r.flags & USB_PD_MUX_HPD_IRQ)
 			printf("HPD_IRQ ");
 		printf("\n");
+
+		printf("CC state 0x%x\n", r.cc_state);
 	}
 
 	return 0;
