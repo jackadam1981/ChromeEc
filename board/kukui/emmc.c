@@ -304,7 +304,7 @@ static void emmc_check_status(void)
 	}
 
 	/* Check if AP has booted again, next time. */
-	hook_call_deferred(&emmc_check_status_data, 100 * MSEC);
+	hook_call_deferred(&emmc_check_status_data, 10 * MSEC);
 }
 
 void emmc_task(void *u)
