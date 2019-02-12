@@ -362,6 +362,11 @@ int pd_is_vbus_present(int port)
 #endif
 }
 
+int pd_get_cc_state(int port)
+{
+	return pd[port].cc_state;
+}
+
 static void set_polarity(int port, int polarity)
 {
 	tcpm_set_polarity(port, polarity);
