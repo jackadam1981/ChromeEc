@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9054115_5e9c071d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-13T18:06:04Z",
+      "side": 1,
+      "message": "Mostly talking to myself. \n\nIt would be nice if we consolidate these. For example, r and ra16 can be distinguished by how \u003coffset\u003e is specified: 0x?? -\u003e r, 0x00?? -\u003e ra16. Same for r16 and r16a16.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 4,
+        "endLine": 1100,
+        "endChar": 44
+      },
+      "revId": "e9a0794505437b5e9cfc822b2d70bf0d8036ea93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb29d140_92259ef2",
+        "filename": "include/i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-13T18:06:04Z",
+      "side": 1,
+      "message": "You can delete this and the sentence still makes sense.",
+      "range": {
+        "startLine": 287,
+        "startChar": 9,
+        "endLine": 287,
+        "endChar": 24
+      },
+      "revId": "e9a0794505437b5e9cfc822b2d70bf0d8036ea93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf9a84a_08a72f3c",
+        "filename": "include/i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-13T18:06:04Z",
+      "side": 1,
+      "message": "This one is redundant too.",
+      "range": {
+        "startLine": 288,
+        "startChar": 19,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "e9a0794505437b5e9cfc822b2d70bf0d8036ea93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

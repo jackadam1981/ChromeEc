@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "fb8f0071_7b0f1f47",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-13T18:06:04Z",
+      "side": 1,
+      "message": "I meant making i2c_read16 call i2c_read_addr16 but it makes i2c_read_addr16 look cumbersome.",
+      "parentUuid": "a3323ea4_7423058b",
+      "range": {
+        "startLine": 308,
+        "startChar": 4,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76564b01_b2c8784d",
         "filename": "common/i2c_master.c",
         "patchSetId": 7
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "e896817e_57ebc976",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 78
+      },
+      "revId": "39b04988575cb438d9d86cd01c49bdf6b839f4b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b1ead4e_554b283e",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-13T18:06:04Z",
+      "side": 1,
+      "message": "What about \"uint16_t offset\"?",
+      "parentUuid": "75496666_80301431",
       "range": {
         "startLine": 272,
         "startChar": 0,
