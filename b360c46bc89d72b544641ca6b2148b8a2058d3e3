@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "2a6c5be5_00e4c8b2",
+        "filename": "core/minute-ia/config_core.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T00:07:12Z",
+      "side": 1,
+      "message": "Ah, I should have figured that out. I guess I think of Missing In Action when I see MIA ;)\n\nMIA_ prefix is good",
+      "parentUuid": "7000f614_fda374bd",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3433905_ee7f1f45",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T00:07:12Z",
+      "side": 1,
+      "message": "can we use bigger numbers, I don\u0027t want to accidentally collide later.\n\nLabels of 8 and 9 are probably far enough out of the way.",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec5adf60_a4512775",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 8
@@ -93,6 +140,29 @@
       "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "365387a3_8529809f",
+        "filename": "core/minute-ia/task_defs.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T00:07:12Z",
+      "side": 1,
+      "message": "nit: can you add /* CONFIG_FPU */ here to to give a hint about the nesting defines",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "b360c46bc89d72b544641ca6b2148b8a2058d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
