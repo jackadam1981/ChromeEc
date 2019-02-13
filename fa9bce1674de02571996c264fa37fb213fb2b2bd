@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "baf9b05f_b4c4606a",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T21:51:33Z",
+      "side": 1,
+      "message": "The sensors (and ISH) are only going to be powered on during S0. The ISH is only providing the 180 degree signal. There are two other hall sensors that provide the lid open/closed signal to the EC which will wake up the AP.\n\n\nThe 180 degree signal is used for tablet mode detection and should be routed through the EC to the AP.\n\nOtherwise the raw sensor data from sensors is available to the OS and apps.",
+      "parentUuid": "71d60a82_3a42a91f",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5536184e_26bd7efe",
         "filename": "board/arcada_ish/board.c",
         "patchSetId": 4
@@ -141,6 +165,30 @@
       "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab0d4f8_bcdb9f3f",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T21:51:33Z",
+      "side": 1,
+      "message": "Regarding the need for S3/S0ix lid angle calculations:\n - I think the device is actually suppose to wake up when it transitions clamshell -\u003e tablet or tablet -\u003e clamshell. The AP wakes up so it can set the correct wake sources again.\n - Without lid angle availability during S3, we can\u0027t wake up the AP to kick off the above process, which is definitely an issue.\n\nFor now, I want to leave S0 only config since that reflect the hardware.\n\nI am however trying to figure out what our options are going forward with getting lid angle in S0ix (b/120295222#comment25)",
+      "parentUuid": "bf361833_7f22e00a",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
