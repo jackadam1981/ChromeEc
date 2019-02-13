@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "cff52427_95414f35",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-13T21:11:05Z",
+      "side": 1,
+      "message": "I don\u0027t see one scanning Makefile.rules. I agree that it would be nice to add something like that so we\u0027re not comparing to a specific compiler.",
+      "parentUuid": "f9abb18a_c74f697c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81f2143d_b4ce6bf5",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
@@ -274,6 +298,30 @@
       "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d728b54b_5d8952ab",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-13T21:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b14534fd_43a7a0b6",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
