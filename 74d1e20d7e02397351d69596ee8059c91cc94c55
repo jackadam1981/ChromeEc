@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ecfe3d3_8ffc60b4",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-13T08:33:34Z",
+      "side": 1,
+      "message": "@tony, can you help double check these numbers?\nI\u0027m not sure if I interpret the spec correctly.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "74d1e20d7e02397351d69596ee8059c91cc94c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5b3028_cf2c7033",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-13T08:33:34Z",
+      "side": 1,
+      "message": "This too.",
+      "revId": "74d1e20d7e02397351d69596ee8059c91cc94c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
