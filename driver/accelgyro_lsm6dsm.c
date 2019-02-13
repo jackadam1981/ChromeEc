@@ -321,8 +321,9 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 	}
 }
 
-static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
+static int load_fifo(struct motion_sensor_t *accel, const struct fstatus *fsts)
 {
+	struct lsm6dsm_data *private = LSM6DSM_GET_DATA(accel);
 	int err, left, length;
 	uint8_t fifo[FIFO_READ_LEN];
 
@@ -339,6 +340,21 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 	 *				 during CtsSensorTests
 	 * - check "pattern" register versus where code thinks it is parsing
 	 */
+	if (fsts->pattern == 0 &&
+	    !(private->current.total_samples_in_pattern == 0 ||
+	      private->current.total_samples_in_pattern == private->config.total_samples_in_pattern)) {
+	      /* We are not at the beginning of a patter. */
+	      CPRINTS("expecting beginning of pattern: sample left: %d out of %d",
+	              private->current.total_samples_in_pattern,
+		      private->config.total_samples_in_pattern);
+	}
+
+	if ((private->current.total_samples_in_pattern == 0 ||
+	     private->current.total_samples_in_pattern == private->config.total_samples_in_pattern) &&
+	    fsts->pattern != 0) {
+	      /* We are not at the beginning of a patter. */
+	      CPRINTS("expecting beginning of pattern: pattern: %d", fsts->pattern);
+	}
 
 	/* Push all data on upper side. */
 	do {
@@ -349,7 +365,7 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 			length = left;
 
 		/* Read data and copy in buffer. */
-		err = st_raw_read_n_noinc(s->port, s->addr,
+		err = st_raw_read_n_noinc(accel->port, accel->addr,
 					  LSM6DSM_FIFO_DATA_ADDR,
 					  fifo, length);
 		if (err != EC_SUCCESS)
@@ -361,7 +377,7 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 		 * copy of the current time in case another interrupt comes in
 		 * during processing.
 		 */
-		push_fifo_data(s, fifo, length, last_interrupt_timestamp);
+		push_fifo_data(accel, fifo, length, last_interrupt_timestamp);
 		left -= length;
 	} while (left > 0);
 
@@ -384,28 +400,58 @@ void lsm6dsm_interrupt(enum gpio_signal signal)
 /**
  * irq_handler - bottom half of the interrupt stack
  */
-static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
+static int irq_handler(struct motion_sensor_t *accel, uint32_t *event)
 {
 	int ret = EC_SUCCESS;
 
-	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
+	if ((accel->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_LSM6DSM_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
 #ifdef CONFIG_ACCEL_FIFO
-	{
+	do {
+		struct lsm6dsm_data *private = LSM6DSM_GET_DATA(accel);
 		struct fstatus fsts;
+		int i = 0;
+		uint8_t stale_sample[OUT_XYZ_SIZE];
+
 		/* Read how many data pattern on FIFO to read and pattern. */
-		ret = st_raw_read_n_noinc(s->port, s->addr,
+		ret = st_raw_read_n_noinc(accel->port, accel->addr,
 				LSM6DSM_FIFO_STS1_ADDR,
 				(uint8_t *)&fsts, sizeof(fsts));
 		if (ret != EC_SUCCESS)
 			return ret;
 		if (fsts.len & (LSM6DSM_FIFO_DATA_OVR | LSM6DSM_FIFO_FULL))
-			CPRINTS("%s FIFO Overrun: %04x", s->name, fsts.len);
-		if (!(fsts.len & LSM6DSM_FIFO_EMPTY))
-			ret = load_fifo(s, &fsts);
-	}
+			CPRINTS("%s FIFO Overrun: %04x", accel->name, fsts.len);
+		/* Check if there is something to do. */
+		if (fsts.len & LSM6DSM_FIFO_EMPTY)
+			return EC_SUCCESS;
+
+		/* Check driver and device FIFO patterns are in sync. */
+		if ((private->current.total_samples_in_pattern ==
+		     private->config.total_samples_in_pattern) &&
+		    fsts.pattern != 0) {
+			CPRINTS("Removing event: %d, %d",
+				fsts.pattern,
+				private->config.total_samples_in_pattern);
+			/*
+			 * The FIFO settings have been changed, but we have
+			 * stale data, remove them one by one and check
+			 * the pattern again.
+			 */
+			st_raw_read_n_noinc(accel->port, accel->addr,
+					    LSM6DSM_FIFO_DATA_ADDR,
+					    stale_sample, OUT_XYZ_SIZE);
+			/* To be sure we are not in a infinite loop. */
+			if (++i > private->config.total_samples_in_pattern) {
+				CPRINTS("Unable to remote stale events: %d",
+						fsts.pattern);
+				return EC_ERROR_UNKNOWN;
+			}
+			continue;
+		}
+		return load_fifo(accel, &fsts);
+	} while (1);
 #endif
 	return ret;
 }
