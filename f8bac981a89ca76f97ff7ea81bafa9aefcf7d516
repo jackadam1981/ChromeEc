@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13e3cd45_7bb6eaea",
+        "filename": "util/ec_uartd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-02-13T20:33:41Z",
+      "side": 0,
+      "message": "I guess this is not needed anymore? Did we update ftdi.h and now there\u0027s no more need for ignoring these warnings?",
+      "revId": "f8bac981a89ca76f97ff7ea81bafa9aefcf7d516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

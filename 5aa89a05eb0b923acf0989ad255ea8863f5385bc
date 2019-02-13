@@ -16,6 +16,93 @@
       "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3baaa83e_b39ec373",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-02-13T20:33:41Z",
+      "side": 1,
+      "message": "If there\u0027s a good reason for moving it, or if most other place has this under. Then yeah, it would be great to move them all under to be consistent.\n\nThough... perhaps a separate CL with all these DECLARE_IRQ moves?",
+      "parentUuid": "70acfa67_a0d964c0",
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81f2143d_b4ce6bf5",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-02-13T20:33:41Z",
+      "side": 1,
+      "message": "Would be nice if we didn\u0027t have to have a huge block around this just for clang. It does distract from what this code is actually supposed to do.\n\nIs there no way to rewrite it to make both compilers happy?",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 16
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "085454fd_b4b46c6c",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-02-13T20:33:41Z",
+      "side": 1,
+      "message": "Perhaps rename this?",
+      "range": {
+        "startLine": 386,
+        "startChar": 6,
+        "endLine": 386,
+        "endChar": 9
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71b3d59_ecc3bb32",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-02-13T20:33:41Z",
+      "side": 1,
+      "message": "I guess someone\u0027s complaining about unused function?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
