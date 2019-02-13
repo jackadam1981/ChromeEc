@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2ca3189e_d2ac2c52",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-13T01:31:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a09550_c809b49a",
+      "range": {
+        "startLine": 377,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 34
+      },
+      "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec36d683_a270f149",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 2
