@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ba09b30_098b813b",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-13T04:52:03Z",
+      "side": 1,
+      "message": "The average here is meant to be longer average, like 1 minute. Keeping a TODO is ok.",
+      "revId": "d4573e6f4c694541f600886e0adae462ec6042fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
