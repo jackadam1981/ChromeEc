@@ -33,9 +33,11 @@
 
 #define BAT_LEVEL_PD_LIMIT 85
 #define AC_IN_TIMEOUT_US (48*HOUR)
+#define AC_IN_45degree_TIMEOUT_US (2*HOUR)
 
 static uint8_t batt_id = 0xff;
 static uint64_t acin_start_time;
+static uint64_t acin_overtemp_start_time;
 
 /* Do not change the enum values. We directly use strap gpio level to index. */
 enum battery_type {
@@ -164,7 +166,26 @@ void charge_cycle_lcv(struct charge_state_data *curr)
 static int ac_charge_timeout(void)
 {
 	return acin_start_time &&
-	   (get_time().val - acin_start_time > AC_IN_TIMEOUT_US);
+	    (get_time().val - acin_start_time > AC_IN_TIMEOUT_US);
+}
+
+/*
+ * Return 1 if AC plugged in for longer than 2 hours, and Battery
+ * temperature > 45 degree when Battery Voltage > 4.1V , return 0 otherwise.
+ */
+static int check_ac_battemp_timout(struct charge_state_data *curr)
+{
+	if (curr->ac && (curr->batt.voltage > 4100) &&
+	    ((curr->batt.temperature - 2731) > 450)) {
+	    if (acin_overtemp_start_time == 0)
+		    acin_overtemp_start_time =  get_time().val;
+	} else {
+	    acin_overtemp_start_time = 0;
+	}
+
+	return acin_overtemp_start_time &&
+	    (get_time().val - acin_overtemp_start_time >
+	    AC_IN_45degree_TIMEOUT_US);
 }
 
 int charger_profile_override(struct charge_state_data *curr)
@@ -236,6 +257,17 @@ int charger_profile_override(struct charge_state_data *curr)
 				temp_zones[batt_id][temp_zone].temp_max)
 				break;
 		}
+	}
+
+	/*
+	 * Limit max charge voltage based on high temp Discharge pack to 4.1V
+	 * and keeping battery boltage to 4.1V.
+	 */
+	if (check_ac_battemp_timout(curr) && batt_id == BATTERY_SIMPLO) {
+	    curr->requested_voltage = 4100;
+	    curr->requested_current = 0;
+	    curr->state = ST_IDLE;
+	    return 0;
 	}
 
 	if (curr->state != ST_CHARGE) {
@@ -319,6 +351,8 @@ static void board_protection_reset(void)
 	enable_idle();
 
 	acin_start_time = extpower_is_present() ? get_time().val : 0;
+
+	acin_overtemp_start_time = 0;
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_protection_reset, HOOK_PRIO_DEFAULT);
 
