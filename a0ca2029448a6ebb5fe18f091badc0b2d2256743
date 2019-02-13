@@ -99,6 +99,30 @@
     },
     {
       "key": {
+        "uuid": "bfb1a929_b0dfef14",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-02-13T01:29:54Z",
+      "side": 1,
+      "message": "could remind array value should I setting?",
+      "parentUuid": "f28caf31_e03067ec",
+      "range": {
+        "startLine": 167,
+        "startChar": 46,
+        "endLine": 167,
+        "endChar": 50
+      },
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "445463f3_e4f13f1a",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 7
@@ -150,6 +174,24 @@
       "writtenOn": "2019-02-11T21:30:22Z",
       "side": 1,
       "message": "I think so.\nIt\u0027s better to preserve this time-keeping across reboot.\nAny ideas?",
+      "parentUuid": "374a158e_f8638aac",
+      "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "691f33bf_af427502",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2019-02-13T01:29:54Z",
+      "side": 1,
+      "message": "yes , if unplug AC time set zero",
       "parentUuid": "374a158e_f8638aac",
       "revId": "a0ca2029448a6ebb5fe18f091badc0b2d2256743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
