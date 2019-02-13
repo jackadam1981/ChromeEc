@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22bbd7dc_86bad365",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T23:56:17Z",
+      "side": 1,
+      "message": "I removed this because I can\u0027t see an entry point that would need this. The MNG task should enable this bit first thing. What are your thoughts, or am I missing a scenario?",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 6
+      },
+      "revId": "e7e4045d461818c01072404dc8a03973bb1f4924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
