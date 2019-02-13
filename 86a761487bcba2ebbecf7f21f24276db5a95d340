@@ -16,6 +16,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3665197b_8362a564",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-02-13T21:07:37Z",
+      "side": 1,
+      "message": "The scheme is a hack to enforce the \"a\" section attribute (allocatable. The interesting bit here is that there are no other attributes). The @ then comments out the rest of the line where gcc puts its own default section attributes (that aren\u0027t overridable).",
+      "parentUuid": "92766862_fa6dc133",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
