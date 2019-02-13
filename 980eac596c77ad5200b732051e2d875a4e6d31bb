@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1ccb679_50be9088",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-13T20:55:48Z",
+      "side": 1,
+      "message": "Probably add LNG2DM to the comment block",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "980eac596c77ad5200b732051e2d875a4e6d31bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c49c631_217f8daa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-13T20:55:48Z",
+      "side": 1,
+      "message": "This will need re-based with the recent changes",
+      "range": {
+        "startLine": 2434,
+        "startChar": 1,
+        "endLine": 2434,
+        "endChar": 30
+      },
+      "revId": "980eac596c77ad5200b732051e2d875a4e6d31bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
