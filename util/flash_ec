@@ -189,6 +189,12 @@ BOARDS_RAIDEN=(
 	soraka
 )
 
+# Board that has TCA9543 compatible chip of I2C bus switch
+BOARDS_TCA9543=(
+	bip
+	ampton
+)
+
 # A map of supported board + chip + servo permutations.
 # The value is a regex that will be checked against $SERVO_TYPE.
 # i.e., If a board needs to use one CHIP when connected via a Suzy-Q and another
@@ -344,6 +350,9 @@ if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
 fi
 
 SERVO_TYPE="$(get_servo_type)"
+if [[ -z "${SERVO_TYPE}" && -n "$(lsusb -d 18d1:5014)" ]] ; then
+	SERVO_TYPE="ccd_without_servo";
+fi
 
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 ]]; then
 	die "board '${BOARD}' not supported. Please manually specify --chip="
@@ -550,7 +559,8 @@ cleanup() {
 	# If TEMP_DIR exists, then delete it.
 	[[ -d "${TEMP_DIR}" ]] && rm -rf "${TEMP_DIR}" > /dev/null 2>&1
 
-	if [ "${CHIP}" == "it83xx" ] ; then
+	if [[ "${CHIP}" == "it83xx" ]] && \
+	   [[ ! "${SERVO_TYPE}" =~ "ccd_without_servo" ]] ; then
 		info "Reinitialize ftdi_i2c interface"
 		dut_control ftdii2c_cmd:init
 		dut_control ftdii2c_cmd:open
@@ -1106,25 +1116,50 @@ function flash_it83xx() {
 		die "no iteflash util found."
 	fi
 
-	dut_control i2c_mux_en:on
-	dut_control i2c_mux:remote_adc
+	if [[ ! "${SERVO_TYPE}" =~ "ccd_without_servo" ]]; then
+		dut_control i2c_mux_en:on
+		dut_control i2c_mux:remote_adc
 
-	# Now the we have enabled the I2C mux on the servo to talk to the dut,
-	# we need to switch the I2C mux on the dut to allow ec programing (if
-	# there is a mux on the dut)
-	if $(servo_has_dut_i2c_mux); then
-		dut_control dut_i2c_mux:ec_prog
+		# Now the we have enabled the I2C mux on the servo to talk to the dut,
+		# we need to switch the I2C mux on the dut to allow ec programing (if
+		# there is a mux on the dut)
+		if $(servo_has_dut_i2c_mux); then
+			dut_control dut_i2c_mux:ec_prog
+		fi
+
+		# Ensure that the AP is off while we are flashing the EC
+		servo_ec_hard_reset
+
+		if [[ "${SERVO_TYPE}" =~ "servo_v2" ]]; then
+			info "Close connection to ftdi_i2c interface"
+			dut_control ftdii2c_cmd:close
+		fi
 	fi
 
-	# Ensure that the AP is off while we are flashing the EC
-	servo_ec_hard_reset
+	declare -a ITEFLASH_PARAM
+	if [[ "${SERVO_TYPE}" =~ "ccd_without_servo" ]]; then
+		# CCD mode without servo
+		ITEFLASH_PARAM+=("--send-waveform=1")
+		ITEFLASH_PARAM+=("--i2c-interface=ccd")
+		if $(in_array "${BOARDS_TCA9543[@]}" "${BOARD}"); then
+			ITEFLASH_PARAM+=("--i2c-mux")
+		fi
+	elif [[ "${SERVO_TYPE}" =~ "servo_v2" ]]; then
+		ITEFLASH_PARAM+=("--send-waveform=1")
+		ITEFLASH_PARAM+=("--i2c-interface=ftdi")
+	fi
 
-	info "Close connection to ftdi_i2c interface"
-	dut_control ftdii2c_cmd:close
+	if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
+		ITEFLASH_PARAM+=("--debug")
+	fi
 
 	info "Run iteflash..."
-	sudo "${ITEFLASH}" --i2c-interface=ftdi --send-waveform=1 --erase \
-		--write="${IMG}"
+	if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
+		echo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --erase \
+			--write="${IMG}"
+	fi
+
+	sudo "${ITEFLASH}" "${ITEFLASH_PARAM[@]}" --erase --write="${IMG}"
 }
 
 function flash_lm4() {
