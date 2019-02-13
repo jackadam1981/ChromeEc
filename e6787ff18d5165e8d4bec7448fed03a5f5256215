@@ -16,6 +16,24 @@
       "revId": "e6787ff18d5165e8d4bec7448fed03a5f5256215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a34bf9_5cba6423",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-13T07:02:30Z",
+      "side": 1,
+      "message": "Can\u0027t get data flash access working correctly (it seems needs a different method than other commands).\nThere\u0027s another command that outputs its model number \"L16D2P31\", maybe we can use this?",
+      "parentUuid": "a33911f2_7038ca6c",
+      "revId": "e6787ff18d5165e8d4bec7448fed03a5f5256215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
