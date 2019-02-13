@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "71d60a82_3a42a91f",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-13T00:15:12Z",
+      "side": 1,
+      "message": "Should we follow up with an EE about how the sensor is powered, if we need it to be on a different rail? That seems very time sensitive if so.",
+      "parentUuid": "3512e5a7_bc0abe8d",
+      "range": {
+        "startLine": 39,
+        "startChar": 17,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5536184e_26bd7efe",
         "filename": "board/arcada_ish/board.c",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "13Hz, not 130Hz. \nAll sensor data go through the EC.\nIt is not necessary yet, but will be once the lid accel is added to calculate the lid angle.\n\nLid open can be detected with the hall sensor.\nBut ultimately, the accelerometers should be sampled in S3 as well to prevent wake up on keyboard event when the user transition from clamshell to tablet while in S3.\n\nec_rate is the period the EC wakes up to retrieve accelerometer data to calculate lid angle. It will be removed once FIFO/Interrupt mode is supported by ISH.",
       "parentUuid": "5536184e_26bd7efe",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf361833_7f22e00a",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-13T00:15:12Z",
+      "side": 1,
+      "message": "Oops on my bad Hz math. We don\u0027t need the sensors for ARC++ do we? Playing a game with a tilt sensor at 13Hz probably wouldn\u0027t be good.\nAck on sensor data going through EC.\nAck on FIFO/interrupt mode.\n\nAnyone else, do you know about our needs for the sensor in S3?",
+      "parentUuid": "9bd253a7_136f27c3",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "f86fc715_7f029893",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-13T00:15:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711602a5_45ac958e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70c655bd_c3ef7c8d",
         "filename": "board/arcada_ish/board.h",
         "patchSetId": 4
@@ -187,6 +259,30 @@
       "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143a317a_b6010991",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1311094
+      },
+      "writtenOn": "2019-02-13T00:15:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3606faf_60f27d13",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "fa9bce1674de02571996c264fa37fb213fb2b2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
