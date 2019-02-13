@@ -11,6 +11,8 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_HOSTCMD_ESPI_OOB
+
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 #define CONFIG_LOW_POWER_IDLE
