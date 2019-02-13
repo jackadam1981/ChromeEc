@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a33911f2_7038ca6c",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-13T05:26:20Z",
+      "side": 1,
+      "message": "Does 0x01f8 (ID Information 1), 0x01fc (ID information 2) 0x0200~0x207 (Cell Information) report useful information?",
+      "revId": "e6787ff18d5165e8d4bec7448fed03a5f5256215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
