@@ -183,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "b695b078_da94ef9d",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-13T20:49:34Z",
+      "side": 1,
+      "message": "Yes, but I\u0027d like to at least disable on a per-file basis so we don\u0027t introduce new bugs because we\u0027ve missed a valid warning (that only clang produces).",
+      "parentUuid": "c83519d7_329fcd7d",
+      "range": {
+        "startLine": 372,
+        "startChar": 34,
+        "endLine": 372,
+        "endChar": 47
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "085454fd_b4b46c6c",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
