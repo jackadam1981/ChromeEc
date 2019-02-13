@@ -16,6 +16,24 @@
       "revId": "f8bac981a89ca76f97ff7ea81bafa9aefcf7d516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ee1aee_c6f2cc23",
+        "filename": "util/ec_uartd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-13T20:46:48Z",
+      "side": 0,
+      "message": "Yes, it\u0027s not needed (compiles with both gcc and clang). I\u0027m not exactly sure what changed since it was introduced in 2013:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+blame/85cac7ec14fd2d29a64047297db79b36571731c8/util/ec_uartd.c\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/357e508392ca37b60ea17a9ac5725f84586aac9e",
+      "parentUuid": "13e3cd45_7bb6eaea",
+      "revId": "f8bac981a89ca76f97ff7ea81bafa9aefcf7d516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
