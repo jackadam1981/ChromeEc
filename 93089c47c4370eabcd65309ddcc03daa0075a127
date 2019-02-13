@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca68f2b6_45d93b8f",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-13T02:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c0bed72_3a2f40d4",
+      "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6debf1ff_16382405",
         "filename": "baseboard/hatch/baseboard.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6f914e61_93768310",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-13T02:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6debf1ff_16382405",
+      "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f2e9a7a_f1041392",
         "filename": "board/hatch/board.c",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-02-12T20:05:25Z",
       "side": 1,
       "message": "Check the sensor interrupt is enabled:\n\t\t/* Enable Base Accel interrupt */\n\t\tgpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);",
+      "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86759f62_3eb3f27c",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-13T02:20:37Z",
+      "side": 1,
+      "message": "I have added this in the board_init() hook",
+      "parentUuid": "5f2e9a7a_f1041392",
       "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d0d1b0f3_db1bcca2",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-13T02:20:37Z",
+      "side": 1,
+      "message": "This sensor is connected to the PP1800_A rail which is turned on when the AP goes from G3 -\u003e S5",
+      "parentUuid": "c921260a_979e1478",
+      "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "091a9a59_ebcb0873",
         "filename": "board/hatch/board.c",
         "patchSetId": 1
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "e285571b_85353bd3",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-13T02:20:37Z",
+      "side": 1,
+      "message": "I assume you mean I don\u0027t need the .ec_rate initialization parameter here?",
+      "parentUuid": "091a9a59_ebcb0873",
+      "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc0e02dd_07e592c4",
         "filename": "board/hatch/board.c",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d88f43f7_87930b50",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-13T02:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc0e02dd_07e592c4",
+      "revId": "93089c47c4370eabcd65309ddcc03daa0075a127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
