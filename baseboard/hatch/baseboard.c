@@ -363,3 +363,13 @@ void baseboard_mst_enable_control(enum mst_source src, int level)
 
 	gpio_set_level(GPIO_EN_MST, mst_input_levels ? 1 : 0);
 }
+
+/* Enable or disable input devices, based on chipset state */
+#ifndef TEST_BUILD
+void lid_angle_peripheral_enable(int enable)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		enable = 0;
+	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+}
+#endif

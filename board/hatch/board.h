@@ -78,7 +78,8 @@ enum adc_channel {
 };
 
 enum sensor_id {
-	BASE_ACCEL = 0,
+	LID_ACCEL = 0,
+	BASE_ACCEL,
 	BASE_GYRO,
 	SENSOR_COUNT,
 };
