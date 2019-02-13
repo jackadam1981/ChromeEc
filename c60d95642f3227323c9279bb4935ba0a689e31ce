@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ab907a7_3dae19fc",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-13T15:10:44Z",
+      "side": 1,
+      "message": "Our octopus boards are using the LSM6DS3TR-C and have the 0x6a value for WHO_AM_I.  So we may need to double check the best names for these defines",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "c60d95642f3227323c9279bb4935ba0a689e31ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "286e9469_ef5f241b",
         "filename": "util/ectool.c",
         "patchSetId": 4
