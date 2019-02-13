@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15e27688_7318e5ca",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T22:04:54Z",
+      "side": 1,
+      "message": "Move these up top somewhere with the rest of the macros.",
+      "revId": "2e12a9ded4a1712ecb00679e905f71eeeb174d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3108c9d_e33242b9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T22:04:54Z",
+      "side": 1,
+      "message": "Make this option take a 0|1|false|true value.  See -W/--send-waveform for an example.\n\nThat way we can change the default without changing the command line interface.",
+      "revId": "2e12a9ded4a1712ecb00679e905f71eeeb174d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80894c59_c16e2dd3",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T22:04:54Z",
+      "side": 1,
+      "message": "Delete this line, it will be zero-initialized by default when omitted from {}.\n\nWe could explicitly set all default zero values here, but it ends up being unnecessarily verbose, basically duplicating the whole struct definition.",
+      "revId": "2e12a9ded4a1712ecb00679e905f71eeeb174d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23041798_d30466de",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-13T22:04:54Z",
+      "side": 1,
+      "message": "Also reset the mux after programming is complete (whether success or failure).",
+      "revId": "2e12a9ded4a1712ecb00679e905f71eeeb174d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
