@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b20c7138_0fb33985",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2019-02-13T21:23:44Z",
+      "side": 1,
+      "message": "It\u0027s strange that you\u0027re getting this info from usb_pd_protocol and not from the mux driver. Maybe this isn\u0027t the right host command to use.",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1499921f_b8ecfdf9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4957,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2019-02-13T21:23:44Z",
+      "side": 1,
+      "message": "You\u0027re proposing to return \u0027enum pd_cc_states\u0027 values here? In that case, you\u0027ll need to move the definition of \u0027enum pd_cc_states\u0027 into this file so users of the host command can decode the value.\n\nBut taking a step back, what is the exact info about the state of the port you need? Can you get that info already from another host command, or encode that info into a new USB_PD_MUX_* flag instead?",
+      "range": {
+        "startLine": 4957,
+        "startChar": 1,
+        "endLine": 4957,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea81e489_3e7a13e2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2019-02-13T21:23:44Z",
+      "side": 1,
+      "message": "Should the return type be \"enum pd_cc_states\"?",
+      "range": {
+        "startLine": 1871,
+        "startChar": 0,
+        "endLine": 1871,
+        "endChar": 3
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
