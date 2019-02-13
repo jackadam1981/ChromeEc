@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5978a249_4bec9908",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-02-13T23:05:10Z",
+      "side": 1,
+      "message": "#define EC_CR50_SYNC_TIMEOUT_US (200 * MSEC)",
+      "range": {
+        "startLine": 138,
+        "startChar": 37,
+        "endLine": 138,
+        "endChar": 47
+      },
+      "revId": "d03bf109e8dcf63a0199ad7494a34a31d88ee2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9a88ba_2ec77caf",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-02-13T23:05:10Z",
+      "side": 1,
+      "message": "#define EC_CR50_SYNC_CHAR 0xec",
+      "range": {
+        "startLine": 146,
+        "startChar": 15,
+        "endLine": 146,
+        "endChar": 19
+      },
+      "revId": "d03bf109e8dcf63a0199ad7494a34a31d88ee2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d07fe5_5e74dbc9",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-02-13T23:05:10Z",
+      "side": 1,
+      "message": "#define EC_CR50_SYNC_RETRIES 5",
+      "range": {
+        "startLine": 228,
+        "startChar": 17,
+        "endLine": 228,
+        "endChar": 18
+      },
+      "revId": "d03bf109e8dcf63a0199ad7494a34a31d88ee2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
