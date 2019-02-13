@@ -91,4 +91,11 @@ const char *espi_vw_get_wire_name(enum espi_vw_signal signal);
 int espi_signal_is_vw(int signal);
 
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+/* TODO: add details */
+#define ESPI_OOB_MAX_LENGTH 80
+int espi_oob_receive(uint8_t *oob_data);
+void espi_oob_send(uint8_t *oob_data);
+#endif
+
 #endif  /* __CROS_EC_ESPI_H */
