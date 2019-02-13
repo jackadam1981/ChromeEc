@@ -31,8 +31,8 @@
 #define CR50_I2C_SUBCLASS  82
 #define CR50_I2C_PROTOCOL  1
 
-#define CROS_CMD_ADDR	  0x78
-#define CROS_CMD_ITE_SYNC    0
+#define CROS_CMD_ADDR		0x78	/* USB_I2C_CMD_ADDR 0xF0 >> 1 */
+#define CROS_CMD_ITE_SYNC	0
 
 /* DBGR I2C addresses */
 #define I2C_CMD_ADDR   0x5A
@@ -88,6 +88,7 @@ struct iteflash_config {
 	const char *output_filename;
 	int send_waveform;  /* boolean */
 	int erase;  /* boolean */
+	int i2c_mux; /* boolean */
 	int debug;  /* boolean */
 	int usb_interface;
 	int usb_vid;
@@ -421,6 +422,30 @@ static int i2c_read_byte(struct common_hnd *chnd, uint8_t cmd, uint8_t *data)
 	ret = i2c_byte_transfer(chnd, I2C_DATA_ADDR, data, 0, 1);
 	if (ret < 0)
 		return -EIO;
+
+	return 0;
+}
+
+/* I2C MUX Configuration: TCA9543 or PCA9546 */
+#define I2C_MUX_CMD_ADDR	0x70
+#define I2C_MUX_CMD_INAS	0x01
+#define I2C_MUX_CMD_EC_PROG	0x02
+
+/**
+ *
+ * val: 0x01 = inas
+ *      0x02 = ec_prog
+ */
+static int config_i2c_mux(struct common_hnd *chnd)
+{
+	int ret;
+	uint8_t cmd = I2C_MUX_CMD_EC_PROG;
+
+	ret = i2c_byte_transfer(chnd, I2C_MUX_CMD_ADDR, &cmd, 1, 1);
+	if (ret < 0) {
+		fprintf(stderr, "Failed to config I2C MUX to EC");
+		return -EIO;
+	}
 
 	return 0;
 }
@@ -834,7 +859,8 @@ static int ftdi_send_special_waveform(struct common_hnd *chnd)
 
 static int send_special_waveform(struct common_hnd *chnd)
 {
-	int ret;
+	const int max_iterations = 10;
+	int ret = 0;
 	int iterations;
 
 	if (!chnd->conf.i2c_if->send_special_waveform) {
@@ -842,10 +868,6 @@ static int send_special_waveform(struct common_hnd *chnd)
 			"special waveform with the chosen I2C interface.\n");
 		return -1;
 	}
-
-	/* Is this printed log line accurate here?  Is this FTDI-specific? */
-	printf("Waiting for the EC power-on sequence ...");
-	fflush(stdout);
 
 	iterations = 0;
 
@@ -873,17 +895,16 @@ static int send_special_waveform(struct common_hnd *chnd)
 			}
 		} else {
 			ret = -1;
-			if (!(iterations % 10))
-				printf("!please reset EC if flashing sequence"
-					" is not starting!\n");
+			if (!(iterations % max_iterations))
+				fprintf(stderr, "!please reset EC if flashing"
+					" sequence is not starting!\n");
 		}
-
-	} while (ret && (iterations++ < 10));
+	} while (ret && (iterations++ < max_iterations));
 
 	if (ret)
-		printf(" Failed!\n");
+		fprintf(stderr, "Failed to send special waveform!\n");
 	else
-		printf(" Done.\n");
+		printf("Done with sending special waveform.\n");
 
 	return ret;
 }
@@ -1598,6 +1619,7 @@ static const struct option longopts[] = {
 	{"help", 0, 0, 'h'},
 	{"i2c-interface", 1, 0, 'c'},
 	{"interface", 1, 0, 'i'},
+	{"i2c-mux", 0, 0, 'm'},
 	{"product", 1, 0, 'p'},
 	{"range", 1, 0, 'R'},
 	{"read", 1, 0, 'r'},
@@ -1619,6 +1641,8 @@ static void display_usage(char *program)
 	fprintf(stderr, "-c, --i2c-interface <ccd|ftdi> : I2C interface "
 			"to use\n");
 	fprintf(stderr, "--i[interface] <1> : FTDI interface: A=1, B=2, ...\n");
+	fprintf(stderr, "-m, --i2c-mux : Config i2c-mux to EC."
+		" Works with CCD i2c-interface.\n");
 	fprintf(stderr, "--p[roduct] <0x1234> : USB product ID\n");
 	fprintf(stderr, "[-R|--range base[:size]] - allow to read or write "
 		"just a slice of the file, starting at <base>. <size> bytes, or"
@@ -1680,7 +1704,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 {
 	int opt, idx, rv;
 
-	while ((opt = getopt_long(argc, argv, "?R:dehc:i:p:r:s:uv:W:w:",
+	while ((opt = getopt_long(argc, argv, "?R:dehc:i:mp:r:s:uv:W:w:",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'c':
@@ -1706,6 +1730,9 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 			break;
 		case 'i':
 			conf->usb_interface = atoi(optarg);
+			break;
+		case 'm':
+			conf->i2c_mux = 1;
 			break;
 		case 'p':
 			conf->usb_pid = strtol(optarg, NULL, 16);
@@ -1772,6 +1799,7 @@ int main(int argc, char **argv)
 		/* Default flag settings. */
 		.conf = {
 			.send_waveform = 1,
+			.i2c_mux = 0,
 			.usb_interface = SERVO_INTERFACE,
 			.usb_vid = SERVO_USB_VID,
 			.usb_pid = SERVO_USB_PID,
@@ -1790,6 +1818,13 @@ int main(int argc, char **argv)
 
 	/* Register signal handler after opening the communications channel. */
 	register_sigaction();
+
+	if (chnd.conf.i2c_mux) {
+		printf("configure I2C MUX to program EC.\n");
+
+		if (config_i2c_mux(&chnd))
+			goto terminate;
+	}
 
 	/* Trigger embedded monitor detection */
 	if (chnd.conf.send_waveform) {
