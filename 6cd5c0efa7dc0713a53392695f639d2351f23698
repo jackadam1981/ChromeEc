@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7a09550_c809b49a",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-13T01:27:24Z",
+      "side": 1,
+      "message": "I will remove from this patch.",
+      "parentUuid": "1455b69a_60b9f73d",
+      "range": {
+        "startLine": 377,
+        "startChar": 1,
+        "endLine": 378,
+        "endChar": 34
+      },
+      "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec36d683_a270f149",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9b77d023_1ba8208b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-13T01:27:24Z",
+      "side": 1,
+      "message": "Used define.",
+      "parentUuid": "ec36d683_a270f149",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 32
+      },
+      "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57499722_0db0a5ea",
         "filename": "chip/ish/system_state_subsys.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e745248_a68d26d5",
+        "filename": "chip/ish/system_state_subsys.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-13T01:27:24Z",
+      "side": 1,
+      "message": "Details added.",
+      "parentUuid": "57499722_0db0a5ea",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
