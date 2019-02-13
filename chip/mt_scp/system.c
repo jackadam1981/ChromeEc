@@ -232,9 +232,7 @@ void system_reset(int flags)
 		}
 	}
 
-	/* SCB AIRCR reset */
-	CPU_NVIC_APINT = 0x05fa0004;
-	/* Spin wait for chip to reboot */
+	/* Spin wait for watchdog reset */
 	while (1)
 		;
 }
