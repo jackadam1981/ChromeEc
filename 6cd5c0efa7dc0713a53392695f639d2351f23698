@@ -164,6 +164,30 @@
       "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f20e880c_46ae19a5",
+        "filename": "chip/ish/system_state_subsys.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2019-02-13T15:04:35Z",
+      "side": 1,
+      "message": "Logic behind why we do this - SoC S0ix state requires various IPs \u0026 power domains to be in power gated state. Any IP holding power domain request will block S0ix transition. IN this case ISH should release the VNN request (power domain) for the SoC to enter S0ix. \n\nIdeally ISH should request/release the VNN dynamically based on utilization. As a temporary w/a, we release the VNN request in suspend so that the SoC can enter S0ix in suspend. We acquire the VNN request back on resume.",
+      "parentUuid": "0e745248_a68d26d5",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
