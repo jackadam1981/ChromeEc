@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bb7f5da_1cab2395",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T23:01:29Z",
+      "side": 1,
+      "message": "Wow that is super poor naming on st\u0027s part.\n\nhttps://www.st.com/resource/en/datasheet/lsm6ds3.pdf  -\u003e Who_Am_I \u003d 0x69\nhttps://www.st.com/content/ccc/resource/technical/document/application_note/group0/90/41/09/82/24/d9/4f/29/DM00472670/files/DM00472670.pdf/jcr:content/translations/en.DM00472670.pdf (LSM6DS3TR-C) -\u003e Who_Am_I \u003d 0x6A\n\nThis actually got through the CQ!!!! So I uploaded a new change: CL:1470894",
+      "parentUuid": "5ab907a7_3dae19fc",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "c60d95642f3227323c9279bb4935ba0a689e31ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "286e9469_ef5f241b",
         "filename": "util/ectool.c",
         "patchSetId": 4
