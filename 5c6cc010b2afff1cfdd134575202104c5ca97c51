@@ -22,6 +22,30 @@
       "revId": "5c6cc010b2afff1cfdd134575202104c5ca97c51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6273183_35dabdbc",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-13T21:48:38Z",
+      "side": 0,
+      "message": "Ok, thanks for the heads up. I feel like most build systems that I\u0027ve seen do something early in the configuration (Makefile or whatever is being used) like:\n\nCFLAGS:\u003d$(CPPFLAGS) $(CFLAGS)\n\nso that you can just use CFLAGS everywhere without worrying about this. Let me see what is done here.",
+      "parentUuid": "6a145c44_7b5c158d",
+      "range": {
+        "startLine": 61,
+        "startChar": 69,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "5c6cc010b2afff1cfdd134575202104c5ca97c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
