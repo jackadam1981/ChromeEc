@@ -2181,8 +2181,19 @@ static void pd_update_try_source(void)
 	 * check if battery is present with its state of charge.
 	 * Also check if battery is initialized and ready to provide power.
 	 */
-	pd_try_src_enable &= (battery_is_present() == BP_YES);
-#endif
+	pd_try_src_enable &=
+		(battery_is_present() == BP_YES)
+#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
+	/*
+	 * Don't attempt Try.Src if the battery is in the disconnect state.  The
+	 * discharge FET may not be enabled and so attempting Try.Src may cut
+	 * off our only power source at the time.
+	 */
+		&& (battery_get_disconnect_state() ==
+		    BATTERY_NOT_DISCONNECTED)
+#endif /* CONFIG_BATTERY_REVIVE_DISCONNECT */
+		;
+#endif /* CONFIG_BATTERY_PRESENT_[CUSTOM|GPIO] */
 
 	/*
 	 * Clear this flag to cover case where a TrySrc
