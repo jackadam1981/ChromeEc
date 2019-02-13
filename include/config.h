@@ -304,6 +304,7 @@
 #undef CONFIG_BATTERY_BQ27621
 #undef CONFIG_BATTERY_BQ4050
 #undef CONFIG_BATTERY_MAX17055
+#undef CONFIG_BATTERY_MM8013
 
 /*
  * MAX17055 support alert on voltage, current, temperature, and state-of-charge.
@@ -3979,6 +3980,7 @@
 	defined(CONFIG_BATTERY_BQ27621) || \
 	defined(CONFIG_BATTERY_BQ4050) || \
 	defined(CONFIG_BATTERY_MAX17055) || \
+	defined(CONFIG_BATTERY_MM8013) || \
 	defined(CONFIG_BATTERY_SMART)
 #define CONFIG_BATTERY
 #endif
