@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92766862_fa6dc133",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-13T20:59:24Z",
+      "side": 1,
+      "message": "I can change this to just \".text.vecttable\" for both gcc and clang (removing ifdef need). However, I\u0027m actually not sure what the \\\"a\\\" @ syntax is means, so I didn\u0027t do that out of caution.",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
