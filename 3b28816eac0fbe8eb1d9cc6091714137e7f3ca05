@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf3a1690_b3e2dcce",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-13T13:26:35Z",
+      "side": 1,
+      "message": "Have confirmed with Compal battery team discharing_min_c is correct.",
+      "parentUuid": "1cddb139_88e36ce9",
+      "range": {
+        "startLine": 179,
+        "startChar": 18,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0803eafa_925e0be1",
         "filename": "board/fleex/battery.c",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "103f93a5_c523e3e6",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-13T13:26:35Z",
+      "side": 1,
+      "message": "Update at patch 5.",
+      "parentUuid": "826be36b_a70f1ca1",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 69
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef1bcb1c_8513e800",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 3
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "01979377_7ce071ef",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-13T13:26:35Z",
+      "side": 1,
+      "message": "Update at patch 5 cut_off_battery_block_write() function.",
+      "parentUuid": "ef1bcb1c_8513e800",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6734330d_1d15155c",
         "filename": "include/battery_fuel_gauge.h",
         "patchSetId": 3
@@ -105,6 +177,30 @@
       "writtenOn": "2019-02-12T17:30:50Z",
       "side": 1,
       "message": "The way this param is defined, it seems like reg_data_wb[0] is always going to be 2. Would it make sense to instead put the data in reg_data always and check if wb_support is set to 1 and if yes create a local array with [2, reg_data[0], reg_data[1]] and use that for the write.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "3b28816eac0fbe8eb1d9cc6091714137e7f3ca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767098af_493dfbdf",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-13T13:26:35Z",
+      "side": 1,
+      "message": "Update at patch 5.",
+      "parentUuid": "6734330d_1d15155c",
       "range": {
         "startLine": 19,
         "startChar": 1,
