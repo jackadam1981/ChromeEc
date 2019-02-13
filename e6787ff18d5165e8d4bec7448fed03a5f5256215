@@ -34,6 +34,24 @@
       "revId": "e6787ff18d5165e8d4bec7448fed03a5f5256215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe3cb15_884039ac",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-13T07:17:29Z",
+      "side": 1,
+      "message": "Looks like this is what we want?\n\nhttps://www.impextrom.com/en/l16d2p31-battery-for-tablet-lenovo-tab-4-10-tb-x304f-7000mah-4-4v-27wh-li-polymer-p1000022166",
+      "parentUuid": "38a34bf9_5cba6423",
+      "revId": "e6787ff18d5165e8d4bec7448fed03a5f5256215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
