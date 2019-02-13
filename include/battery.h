@@ -123,6 +123,15 @@ int battery_get_avg_voltage(void); /* in mV */
 /* All of the above BATT_FLAG_BAD_* bits */
 #define BATT_FLAG_BAD_ANY			0x000007fc
 
+/* Number of writes needed to invoke battery cutoff command */
+#define SHIP_MODE_WRITES 2
+
+struct ship_mode_info {
+	const uint8_t wb_support;
+	const uint8_t reg_addr;
+	const uint16_t reg_data[SHIP_MODE_WRITES];
+};
+
 /* Battery constants */
 struct battery_info {
 	/* Design voltage in mV */
@@ -335,6 +344,16 @@ int battery_manufacturer_date(int *year, int *month, int *day);
  * the battery pack, in millivolts.  On error or unimplemented, returns '0'.
  */
 int battery_imbalance_mv(void);
+
+/**
+ * Battery cut off command via SMBus write block.
+ */
+int cut_off_battery_block_write(const struct ship_mode_info *ship_mode);
+
+/**
+ * Battery cut off command via SMBus write word.
+ */
+int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode);
 
 /**
  * Call board-specific cut-off function.
