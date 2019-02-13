@@ -22,6 +22,30 @@
       "revId": "f47fa7ddc10028f655330c7349406ba2306922df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "176e8044_da2a37a5",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-13T19:33:00Z",
+      "side": 1,
+      "message": "I inferred this from the following sentence in ISH datasheet\n\n\"Due to Hardware latencies, it is recommended to use a comparator value greater than 25 for Timer 0 in periodic mode in ISH.\"\n\nHonestly, it took a while to figure out anything that would make the timer fire reliably. There is not much to go on in the datasheet.\n\nLooking at the settling latency for the shadow writes, it takes at least ~130us, so we would need at least that much buffer time.\n\n\"1 b1 :HPET Latency fix is enabled (Enabled\nby default where the shadow registers in\nfast clock domain allow faster read/write\naccess to this register)\n1 b0: HPET Latency fix is disabled (Disables\nthe latency fix and switches to legacy mode\nwhere each register read/write takes more\nthan 130 us) .\"\n\nWhat are your thoughts?",
+      "parentUuid": "7f965adf_33c81b1e",
+      "range": {
+        "startLine": 40,
+        "startChar": 35,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "f47fa7ddc10028f655330c7349406ba2306922df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
