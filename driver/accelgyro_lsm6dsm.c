@@ -215,7 +215,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
  */
 static int fifo_next(struct lsm6dsm_data *private)
 {
-	int next_id;
+	int next_id, i, samples_left;
 
 	if (private->current.total_samples_in_pattern == 0)
 		fifo_reset_pattern(private);
@@ -225,19 +225,35 @@ static int fifo_next(struct lsm6dsm_data *private)
 		 * Not expected we are supposed to be called to process FIFO
 		 * data.
 		 */
-		CPRINTF("[%T FIFO empty pattern]\n");
+		CPRINTS("FIFO empty pattern");
 		return FIFO_DEV_INVALID;
 	}
 
 	for (next_id = private->next_in_patten + 1; 1; next_id++) {
 		if (next_id == FIFO_DEV_NUM)
 			next_id = FIFO_DEV_GYRO;
-		if (private->current.samples_in_pattern[next_id] != 0) {
-			private->current.samples_in_pattern[next_id]--;
-			private->current.total_samples_in_pattern--;
-			private->next_in_patten = next_id;
-			return next_id;
+		samples_left = private->current.samples_in_pattern[next_id];
+		/* Check if this sensors still have sample in pattern. */
+		if (samples_left == 0)
+			continue;
+		/*
+		 * Check if this sensor is eligible. another sensors has more
+		 * samples left.
+		 */
+		for (i = FIFO_DEV_GYRO; i < FIFO_DEV_NUM; i++) {
+			if ((private->config.samples_in_pattern[i] *
+			     samples_left) <
+			    (private->config.samples_in_pattern[next_id] *
+			     private->current.samples_in_pattern[i]))
+				break;
 		}
+		/* Another sensor needs to be proccessed */
+		if (i != FIFO_DEV_NUM)
+			continue;
+		private->current.samples_in_pattern[next_id]--;
+		private->current.total_samples_in_pattern--;
+		private->next_in_patten = next_id;
+		return next_id;
 	}
 	/* Will never happen. */
 	return FIFO_DEV_INVALID;
