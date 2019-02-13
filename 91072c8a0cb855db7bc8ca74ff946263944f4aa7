@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2926419_7747be7c",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-13T22:24:07Z",
+      "side": 1,
+      "message": "I\u0027ll take a look at it",
+      "parentUuid": "b20c7138_0fb33985",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1499921f_b8ecfdf9",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e73a414c_408fa922",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4957,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-13T22:24:07Z",
+      "side": 1,
+      "message": "I just need the current CC state of the USB_PD mux. I don\u0027t think there is any host command which is giving out this information. I can change it as enum pd_cc_states for the host command to decode the value.",
+      "parentUuid": "1499921f_b8ecfdf9",
+      "range": {
+        "startLine": 4957,
+        "startChar": 1,
+        "endLine": 4957,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea81e489_3e7a13e2",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-13T21:23:44Z",
       "side": 1,
       "message": "Should the return type be \"enum pd_cc_states\"?",
+      "range": {
+        "startLine": 1871,
+        "startChar": 0,
+        "endLine": 1871,
+        "endChar": 3
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8ad33a_a8a921aa",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-13T22:24:07Z",
+      "side": 1,
+      "message": "I\u0027ll change this",
+      "parentUuid": "ea81e489_3e7a13e2",
       "range": {
         "startLine": 1871,
         "startChar": 0,
