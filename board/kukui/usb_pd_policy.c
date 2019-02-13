@@ -301,6 +301,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl = gpio_get_level(GPIO_USB_C0_HPD_OD);
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+	int mf_pref = PD_VDO_DPSTS_MF_PREF(payload[1]);
 	const struct usb_mux * const mux = &usb_muxes[port];
 
 	dp_status[port] = payload[1];
@@ -311,6 +312,15 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
 		return 1;
 	}
+
+	if (lvl)
+		usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
+			    USB_SWITCH_CONNECT, pd_get_polarity(port));
+	else
+		usb_mux_set(port, mf_pref ? TYPEC_MUX_USB : TYPEC_MUX_NONE,
+			    USB_SWITCH_CONNECT, pd_get_polarity(port));
+
+	mux->hpd_update(port, lvl, irq);
 
 	if (irq & cur_lvl) {
 		uint64_t now = get_time().val;
@@ -339,7 +349,6 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 	}
 
-	mux->hpd_update(port, lvl, irq);
 	/* ack */
 	return 1;
 }
