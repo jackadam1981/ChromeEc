@@ -22,6 +22,10 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
+ifeq ($(cc-name),clang)
+LDFLAGS_EXTRA+=-Wl,--noinhibit-exec
+endif
+
 core-y=cpu.o init.o ldivmod.o llsr.o uldivmod.o vecttable.o
 core-$(CONFIG_AES)+=aes.o
 core-$(CONFIG_AES_GCM)+=ghash.o
