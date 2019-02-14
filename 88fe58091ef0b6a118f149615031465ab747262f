@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc6a078c_b9ce1ff1",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-14T10:05:30Z",
+      "side": 1,
+      "message": "It was done and the comment is also modified because of incorrect description.",
+      "parentUuid": "048f35c0_f11bd8eb",
+      "range": {
+        "startLine": 50,
+        "startChar": 48,
+        "endLine": 50,
+        "endChar": 52
+      },
+      "revId": "88fe58091ef0b6a118f149615031465ab747262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20739b19_e7c99224",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "88fe58091ef0b6a118f149615031465ab747262f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f50b340_40380907",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-14T10:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20739b19_e7c99224",
+      "range": {
+        "startLine": 58,
+        "startChar": 13,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "88fe58091ef0b6a118f149615031465ab747262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
