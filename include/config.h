@@ -1546,8 +1546,15 @@
 /* Number of regions of different size/type */
 #undef CONFIG_FLASH_REGION_TYPE_COUNT
 
-/* Total size of writable flash */
-#undef CONFIG_FLASH_SIZE
+/*
+ * Total size of writable flash
+ *
+ * #undef CONFIG_FLASH_SIZE
+ *
+ * This can be defined in board.h or board's build.mk if it's referenced
+ * before board.h. It should be defined in config_chip.h if the flash is
+ * internal to the chip.
+ */
 
 /* Minimum flash write size (in bytes) */
 #undef CONFIG_FLASH_WRITE_SIZE
