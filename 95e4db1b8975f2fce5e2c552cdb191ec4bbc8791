@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef0514f5_4b96de52",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T20:58:44Z",
+      "side": 1,
+      "message": "All board using batch will have sensors and use a BMI160.\nIs it a given or some board may not have sensors at all (clamshell) or different sensors?",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2b04a1_9939330a",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T20:58:44Z",
+      "side": 1,
+      "message": "base",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca2f4c5d_c6950b4b",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T20:58:44Z",
+      "side": 1,
+      "message": "base",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9f451e_e07f6aee",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T20:58:44Z",
+      "side": 1,
+      "message": "merge with setup_fans?",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da11df7_cf27f10a",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T20:58:44Z",
+      "side": 1,
+      "message": "add SENSOR_COUNT to be consistent.",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
