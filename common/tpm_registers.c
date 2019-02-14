@@ -114,7 +114,7 @@ static struct {
 	uint32_t fifo_read_index;   /* for read commands */
 	uint32_t fifo_write_index;  /* for write commands */
 	struct tpm_register_file  regs;
-} tpm_;
+} tpm_  __attribute__((section(".bss.Tpm2_common")));
 
 /* Bit definitions for some TPM registers. */
 enum tpm_access_bits {
@@ -142,14 +142,14 @@ enum tpm_sts_bits {
 };
 
 /* Used to count bytes read in version string */
-static int tpm_fw_ver_index;
+static int tpm_fw_ver_index __attribute__((section(".bss.Tpm2_common")));
 /*
  * Used to store the full version string, which includes version of the two RO
  * and two RW regions in the flash as well as the version string of the four
  * cr50 image components. The number is somewhat arbitrary, calculated for the
  * worst case scenario when all compontent trees are 'dirty'.
  */
-static uint8_t tpm_fw_ver[80];
+static uint8_t tpm_fw_ver[80]  __attribute__((section(".bss.Tpm2_common")));
 
 /*
  * We need to be able to report firmware version to the host, both RO and RW
@@ -750,7 +750,7 @@ static __preserved int wipe_result;
 /*
  * Did tpm_reset_request() request nvmem wipe? (intentionally cleared on reset)
  */
-static int wipe_requested;
+static int wipe_requested __attribute__((section(".bss.Tpm2_common")));
 
 int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 {
