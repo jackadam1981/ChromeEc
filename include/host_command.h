@@ -10,6 +10,11 @@
 
 #include "common.h"
 #include "ec_commands.h"
+
+#define TASK_EVENT_CMD_PENDING		TASK_EVENT_CUSTOM(1)
+#define TASK_EVENT_ESPI_OOB_RECEIVE	TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_ESPI_OOB_SEND_DONE	TASK_EVENT_CUSTOM(4)
+
 enum power_state;
 
 /* Args for host command handler */

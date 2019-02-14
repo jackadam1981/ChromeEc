@@ -91,4 +91,26 @@ const char *espi_vw_get_wire_name(enum espi_vw_signal signal);
 int espi_signal_is_vw(int signal);
 
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+/**
+ * eSPI OOB channel data buffer size is maximum 80 bytes(ITE hw design).
+ * Actually length field can reach 4096 bytes defined in intel espi spec.
+ */
+#define ESPI_OOB_MAX_LENGTH 80
+
+/**
+ * Receive messages from eSPI OOB channel
+ * @param oob_data point to the oob data array buffer
+ * @return received OOB data length or -1 if data length over buffer size
+ */
+int espi_oob_receive(uint8_t *oob_data);
+
+/**
+ * Send messages via eSPI OOB channel
+ * @param oob_data point to the oob data array buffer
+ * @return EC_SUCCESS, or non-zero if error
+ */
+enum ec_error_list espi_oob_send(uint8_t *oob_data);
+#endif
+
 #endif  /* __CROS_EC_ESPI_H */
