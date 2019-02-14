@@ -5,6 +5,7 @@
 
 /* Flash memory module for Chrome EC */
 
+#include "common.h"
 #include "flash.h"
 #include "host_command.h"
 #include "registers.h"

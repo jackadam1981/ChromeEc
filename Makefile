@@ -104,7 +104,7 @@ UC_PROJECT:=$(call uppercase,$(PROJECT))
 # Transform the configuration into make variables.  This must be done after
 # the board/baseboard/project/chip/core variables are defined, since some of
 # the configs are dependent on particular configurations.
-includes=include core/$(CORE)/include $(dirs) $(out) fuzz test
+includes=include core/$(CORE)/include $(dirs) $(out) fuzz test include/last
 ifdef CTS_MODULE
 includes+=cts/$(CTS_MODULE) cts
 endif

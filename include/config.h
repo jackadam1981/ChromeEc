@@ -3853,6 +3853,7 @@
 #error Include config.h instead of board.h!
 #endif
 
+#include "pre_config_chip.h"
 #include "config_chip.h"
 #include "board.h"
 

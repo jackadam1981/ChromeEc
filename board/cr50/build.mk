@@ -73,7 +73,7 @@ CFLAGS += -I$(EXTLIB)
 
 # For the benefit of the tpm2 library.
 INCLUDE_ROOT := $(abspath ./include)
-CFLAGS += -I$(INCLUDE_ROOT)
+CFLAGS += -I$(INCLUDE_ROOT) -I$(INCLUDE_ROOT)/last
 CPPFLAGS += -I$(abspath ./builtin)
 CPPFLAGS += -I$(abspath ./chip/$(CHIP))
 # For core includes
