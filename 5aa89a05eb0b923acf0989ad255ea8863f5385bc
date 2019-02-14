@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "60db44d6_6e87b9a8",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T18:28:57Z",
+      "side": 1,
+      "message": "This is going to touch 114 files. Hope that\u0027s ok...\n\n git grep -l DECLARE_IRQ  | wc -l\n 114",
+      "parentUuid": "7b59d9b8_06bb8ef4",
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9abb18a_c74f697c",
         "filename": "core/cortex-m/build.mk",
         "patchSetId": 1
