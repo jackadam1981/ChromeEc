@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1fa9bc3_301d8625",
+        "filename": "chip/ish/system_state_subsys.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-14T00:59:42Z",
+      "side": 1,
+      "message": "Here is too late to set HOST_WRITE; can\u0027t reach here.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 50
+      },
+      "revId": "7f22c06b5f4e8efb2f7d92124119c4dfa9ca7d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
