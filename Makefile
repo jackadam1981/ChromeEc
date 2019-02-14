@@ -186,6 +186,9 @@ $(eval BOARD_$(UC_BOARD)=y)
 $(eval CHIP_$(UC_CHIP)=y)
 $(eval CHIP_VARIANT_$(UC_CHIP_VARIANT)=y)
 $(eval CHIP_FAMILY_$(UC_CHIP_FAMILY)=y)
+ifneq ($(FLASH_SIZE),)
+CFLAGS_DEFINE+= -DCONFIG_FLASH_SIZE=$(FLASH_SIZE)
+endif
 
 # Private subdirectories may call this from their build.mk
 # First arg is the path to be prepended to configured *.o files.
