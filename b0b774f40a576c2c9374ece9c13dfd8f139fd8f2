@@ -152,6 +152,30 @@
       "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2860b5a6_8aa012f9",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-14T04:43:28Z",
+      "side": 1,
+      "message": "It is signed, but i2c_read16 interpret the data as an unsigned int (and store that value to an signed int32)\nAnyway, changed to i2c_read_block, should be better now.",
+      "parentUuid": "642c85fb_05936a90",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 46
+      },
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
