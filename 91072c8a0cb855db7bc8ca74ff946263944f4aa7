@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "55460a8e_02e82722",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T20:38:27Z",
+      "side": 1,
+      "message": "this is necessary since they point to the exact same memory location.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 25
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b20c7138_0fb33985",
         "filename": "driver/usb_mux.c",
         "patchSetId": 4
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "For Intel specific purpose, we are getting the DP mode configuration i.e. A/B/C/D/E/F from amode. Similarly, we are planning to get all the USB mux related information through single host command and we are so getting the cc state info from the usb_pd_protocol.",
       "parentUuid": "c2926419_7747be7c",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68be81ca_bb6bccff",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T20:38:27Z",
+      "side": 1,
+      "message": "Which states in particular do we care about? Do we care about audio accessory for example?\n\nIf there are only a few of the states that we care about, we can just directly encode them into the flags.\n\n\nThe only other host command that I saw that might fit was ec_response_usb_pd_control and I could see the argument go either either way to put this data in that command instead.",
+      "parentUuid": "1c797afd_56db7c3e",
       "range": {
         "startLine": 256,
         "startChar": 19,
