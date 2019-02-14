@@ -613,6 +613,7 @@ void lpcrst_interrupt(enum gpio_signal signal)
  * or logging of EMI host communication? We don't observe
  * this ISR so Host is not writing to MCHP_EMI_H2E_MBX(0).
  */
+DECLARE_IRQ(MCHP_IRQ_EMI0, emi0_interrupt, 1);
 void emi0_interrupt(void)
 {
 	uint8_t h2e;
@@ -621,7 +622,6 @@ void emi0_interrupt(void)
 	CPRINTS("LPC Host 0x%02x -> EMI0 H2E(0)", h2e);
 	port_80_write(h2e);
 }
-DECLARE_IRQ(MCHP_IRQ_EMI0, emi0_interrupt, 1);
 
 /*
  * ISR empties BIOS Debug 0 FIFO and
@@ -683,6 +683,7 @@ static int acpi_ec0_custom(int is_cmd, uint8_t value,
 }
 #endif
 
+DECLARE_IRQ(MCHP_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 void acpi_0_interrupt(void)
 {
 	uint8_t value, result, is_cmd;
@@ -720,7 +721,6 @@ void acpi_0_interrupt(void)
 	 */
 	lpc_generate_sci();
 }
-DECLARE_IRQ(MCHP_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 
 #ifdef CONFIG_BOARD_ID_CMD_ACPI_EC1
 /*
@@ -728,6 +728,7 @@ DECLARE_IRQ(MCHP_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
  * Used to handle custom ACPI EC0 command requiring
  * two byte response.
  */
+DECLARE_IRQ(MCHP_IRQ_ACPIEC0_OBE, acpi_0_obe_isr, 1);
 void acpi_0_obe_isr(void)
 {
 	uint8_t sts, data;
@@ -750,9 +751,9 @@ void acpi_0_obe_isr(void)
 
 	lpc_generate_sci();
 }
-DECLARE_IRQ(MCHP_IRQ_ACPIEC0_OBE, acpi_0_obe_isr, 1);
 #endif
 
+DECLARE_IRQ(MCHP_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
 void acpi_1_interrupt(void)
 {
 	uint8_t st = MCHP_ACPI_EC_STATUS(1);
@@ -804,13 +805,13 @@ void acpi_1_interrupt(void)
 		host_command_received(&host_cmd_args);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
 
 #ifdef HAS_TASK_KEYPROTO
 /*
  * Reading data out of input buffer clears read-only status
  * in 8042EM. Next, we must clear aggregator status.
  */
+DECLARE_IRQ(MCHP_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 void kb_ibf_interrupt(void)
 {
 	if (lpc_keyboard_input_pending())
@@ -820,7 +821,6 @@ void kb_ibf_interrupt(void)
 	MCHP_INT_SOURCE(MCHP_8042_GIRQ) = MCHP_8042_IBF_GIRQ_BIT;
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(MCHP_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 
 /*
  * Interrupt generated when Host reads data byte from 8042EM
@@ -829,12 +829,12 @@ DECLARE_IRQ(MCHP_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
  * aggregator. Clear aggregator 8042EM OBE R/WC status bit before
  * invoking task.
  */
+DECLARE_IRQ(MCHP_IRQ_8042EM_OBE, kb_obe_interrupt, 1);
 void kb_obe_interrupt(void)
 {
 	MCHP_INT_SOURCE(MCHP_8042_GIRQ) = MCHP_8042_OBE_GIRQ_BIT;
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(MCHP_IRQ_8042EM_OBE, kb_obe_interrupt, 1);
 #endif
 
 /*

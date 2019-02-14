@@ -390,17 +390,17 @@ static void sps_cs_deassert_interrupt(uint32_t port)
 	GREG32(SPS, TXFIFO_WPTR) = GREG32(SPS, TXFIFO_RPTR);
 }
 
+DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_interrupt, 1);
 void _sps0_interrupt(void)
 {
 	sps_rx_interrupt(0, 0);
 }
 
+DECLARE_IRQ(GC_IRQNUM_SPS0_CS_DEASSERT_INTR, _sps0_cs_deassert_interrupt, 1);
 void _sps0_cs_deassert_interrupt(void)
 {
 	sps_cs_deassert_interrupt(0);
 }
-DECLARE_IRQ(GC_IRQNUM_SPS0_CS_DEASSERT_INTR, _sps0_cs_deassert_interrupt, 1);
-DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_interrupt, 1);
 
 #ifdef CONFIG_SPS_TEST
 

@@ -33,6 +33,7 @@
  * to I/O 80h and 90h.  LSB to 0x80 and MSB to 0x90.
  *
  */
+DECLARE_IRQ(MCHP_IRQ_PORT80DBG0, port_80_interrupt, 3);
 void port_80_interrupt(void)
 {
 	int d;
@@ -46,6 +47,5 @@ void port_80_interrupt(void)
 
 	MCHP_INT_SOURCE(MCHP_P80_GIRQ) = MCHP_P80_GIRQ_BIT(0);
 }
-DECLARE_IRQ(MCHP_IRQ_PORT80DBG0, port_80_interrupt, 3);
 
 

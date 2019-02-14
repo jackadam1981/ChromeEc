@@ -125,17 +125,17 @@ static void __hw_clock_source_irq(int timer_id)
 	process_timers(timer_id == 0);
 }
 
+DECLARE_IRQ(ISH_HPET_TIMER0_IRQ, __hw_clock_source_irq_0);
 void __hw_clock_source_irq_0(void)
 {
 	__hw_clock_source_irq(0);
 }
-DECLARE_IRQ(ISH_HPET_TIMER0_IRQ, __hw_clock_source_irq_0);
 
+DECLARE_IRQ(ISH_HPET_TIMER1_IRQ, __hw_clock_source_irq_1);
 void __hw_clock_source_irq_1(void)
 {
 	__hw_clock_source_irq(1);
 }
-DECLARE_IRQ(ISH_HPET_TIMER1_IRQ, __hw_clock_source_irq_1);
 
 int __hw_clock_source_init(uint32_t start_t)
 {

@@ -41,11 +41,14 @@ struct irq_data {
  * __asm__
  * Note: currently we don't allow nested irq handling
  */
-#define DECLARE_IRQ(irq, routine) DECLARE_IRQ_(irq, routine, irq + 32 + 10)
+#define DECLARE_IRQ(irq, routine)	\
+	DECLARE_IRQ_(irq, routine, irq + 32 + 10, void __keep)
+#define DECLARE_IRQ_STATIC(irq, routine)	\
+	DECLARE_IRQ_(irq, routine, irq + 32 + 10, static void __attribute__((used)))
 /* Each irq has a irq_data structure placed in .rodata.irqs section,
  * to be used for dynamically setting up interrupt gates */
-#define DECLARE_IRQ_(irq, routine, vector)				\
-	void __keep routine(void);					\
+#define DECLARE_IRQ_(irq, routine, vector, routine_type)				\
+	routine_type routine(void);					\
 	void IRQ_HANDLER(irq)(void); 					\
 	__asm__ (".section .rodata.irqs\n");				\
 	const struct irq_data __keep CONCAT4(__irq_, irq, _, routine)	\

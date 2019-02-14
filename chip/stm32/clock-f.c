@@ -304,6 +304,7 @@ void reset_rtc_alarm(struct rtc_time_reg *rtc)
 	rtc_lock_regs();
 }
 
+DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
 void __rtc_alarm_irq(void)
 {
 	struct rtc_time_reg rtc;
@@ -317,7 +318,6 @@ void __rtc_alarm_irq(void)
 	}
 #endif
 }
-DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
 
 __attribute__((weak))
 int clock_get_timer_freq(void)

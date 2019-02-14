@@ -21,13 +21,18 @@
  * Macro to connect the interrupt handler "routine" to the irq number "irq" and
  * ensure it is enabled in the interrupt controller with the right priority.
  */
-#define DECLARE_IRQ(irq, routine, priority) DECLARE_IRQ_(irq, routine, priority)
-#define DECLARE_IRQ_(irq, routine, priority)                    \
+#define DECLARE_IRQ(irq, routine, priority) 			\
+	DECLARE_IRQ_(irq, routine, priority, void __keep)
+
+#define DECLARE_IRQ_STATIC(irq, routine, priority) 		\
+	DECLARE_IRQ_(irq, routine, priority, static void __attribute__((used)))
+
+#define DECLARE_IRQ_(irq, routine, priority, routine_type)	\
 	void IRQ_HANDLER(irq)(void) __attribute__((naked));	\
 	typedef struct {					\
 		int dummy[irq >= CONFIG_IRQ_COUNT ? -1 : 1];	\
 	} irq_num_check_##irq;					\
-	void __keep routine(void);				\
+	routine_type routine(void);				\
 	void IRQ_HANDLER(irq)(void)				\
 	{							\
 		asm volatile("mov r0, lr\n"			\

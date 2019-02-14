@@ -302,6 +302,7 @@ void dma_clear_isr(enum dma_channel channel)
 
 #ifdef CONFIG_DMA_DEFAULT_HANDLERS
 #ifdef CHIP_FAMILY_STM32F0
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_1, dma_event_interrupt_channel_1, 1);
 void dma_event_interrupt_channel_1(void)
 {
 	if (STM32_DMA1_REGS->isr & STM32_DMA_ISR_TCIF(STM32_DMAC_CH1)) {
@@ -311,8 +312,8 @@ void dma_event_interrupt_channel_1(void)
 				(dma_irq[STM32_DMAC_CH1].cb_data);
 	}
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_1, dma_event_interrupt_channel_1, 1);
 
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_2_3, dma_event_interrupt_channel_2_3, 1);
 void dma_event_interrupt_channel_2_3(void)
 {
 	int i;
@@ -325,8 +326,8 @@ void dma_event_interrupt_channel_2_3(void)
 		}
 	}
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_2_3, dma_event_interrupt_channel_2_3, 1);
 
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, dma_event_interrupt_channel_4_7, 1);
 void dma_event_interrupt_channel_4_7(void)
 {
 	int i;
@@ -339,20 +340,19 @@ void dma_event_interrupt_channel_4_7(void)
 		}
 	}
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, dma_event_interrupt_channel_4_7, 1);
 
 #else /* !CHIP_FAMILY_STM32F0 */
 
 #define DECLARE_DMA_IRQ(x) \
+	DECLARE_IRQ(CONCAT2(STM32_IRQ_DMA_CHANNEL_, x), \
+		    CONCAT2(dma_event_interrupt_channel_, x), 1);	\
 	void CONCAT2(dma_event_interrupt_channel_, x)(void) \
 	{ \
 		dma_clear_isr(CONCAT2(STM32_DMAC_CH, x)); \
 		if (dma_irq[CONCAT2(STM32_DMAC_CH, x)].cb != NULL) \
 			(*dma_irq[CONCAT2(STM32_DMAC_CH, x)].cb) \
 				(dma_irq[CONCAT2(STM32_DMAC_CH, x)].cb_data); \
-	} \
-	DECLARE_IRQ(CONCAT2(STM32_IRQ_DMA_CHANNEL_, x), \
-		    CONCAT2(dma_event_interrupt_channel_, x), 1);
+	}
 
 DECLARE_DMA_IRQ(1);
 DECLARE_DMA_IRQ(2);

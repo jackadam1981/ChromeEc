@@ -139,6 +139,7 @@ static void gpio_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
+DECLARE_IRQ_STATIC(ISH_GPIO_IRQ, gpio_interrupt);
 static void gpio_interrupt(void)
 {
 	int i;
@@ -157,4 +158,3 @@ static void gpio_interrupt(void)
 		}
 	}
 }
-DECLARE_IRQ(ISH_GPIO_IRQ, gpio_interrupt);

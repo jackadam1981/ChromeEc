@@ -610,6 +610,7 @@ static void usb_interrupt_handle_wake(uint16_t status)
 }
 #endif /* CONFIG_USB_SUSPEND && CONFIG_USB_REMOTE_WAKEUP */
 
+DECLARE_IRQ(STM32_IRQ_USB_LP, usb_interrupt, 1);
 void usb_interrupt(void)
 {
 	uint16_t status = STM32_USB_ISTR;
@@ -646,7 +647,6 @@ void usb_interrupt(void)
 	/* ack only interrupts that we handled */
 	STM32_USB_ISTR = ~status;
 }
-DECLARE_IRQ(STM32_IRQ_USB_LP, usb_interrupt, 1);
 
 void usb_init(void)
 {

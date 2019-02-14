@@ -103,13 +103,13 @@ static void uart_clear_rx_fifo(int channel)
 /**
  * Interrupt handler for UART
  */
+DECLARE_IRQ(MEC1322_IRQ_UART, uart_ec_interrupt, 1);
 void uart_ec_interrupt(void)
 {
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(MEC1322_IRQ_UART, uart_ec_interrupt, 1);
 
 void uart_init(void)
 {

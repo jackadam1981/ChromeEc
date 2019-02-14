@@ -206,6 +206,7 @@ void tim_rx2_handler(uint32_t stat)
 	led_set_activity(1);
 }
 
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, tim_dma_handler, 1);
 void tim_dma_handler(void)
 {
 	stm32_dma_regs_t *dma = STM32_DMA1_REGS;
@@ -220,7 +221,6 @@ void tim_dma_handler(void)
 	/* time to process the samples */
 	task_set_event(TASK_ID_SNIFFER, TASK_EVENT_CUSTOM(stat), 0);
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, tim_dma_handler, 1);
 
 static void rx_timer_init(int tim_id, timer_ctlr_t *tim, int ch_idx, int up_idx)
 {

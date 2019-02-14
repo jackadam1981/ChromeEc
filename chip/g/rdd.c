@@ -107,6 +107,7 @@ DECLARE_DEFERRED(rdd_connect);
 /**
  * Debug accessory detect interrupt
  */
+DECLARE_IRQ_STATIC(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT, rdd_interrupt, 1);
 static void rdd_interrupt(void)
 {
 	uint8_t cc1 = GREAD_FIELD(RDD, INPUT_PIN_VALUES, CC1);
@@ -170,7 +171,6 @@ static void rdd_interrupt(void)
 	/* Clear the interrupt */
 	GWRITE_FIELD(RDD, INT_STATE, INTR_DEBUG_STATE_DETECTED, 1);
 }
-DECLARE_IRQ(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT, rdd_interrupt, 1);
 
 void init_rdd_state(void)
 {
