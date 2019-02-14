@@ -22,6 +22,30 @@
       "revId": "68846e6beef8e0d2046d01a4a6af64f78e69dead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52b3a9be_12041d95",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2193,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T21:26:06Z",
+      "side": 1,
+      "message": "Yeah, battery status / fuel gauge reporting is due for a refactor.",
+      "parentUuid": "29c3a8e9_8ddd00e5",
+      "range": {
+        "startLine": 2192,
+        "startChar": 5,
+        "endLine": 2193,
+        "endChar": 31
+      },
+      "revId": "68846e6beef8e0d2046d01a4a6af64f78e69dead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

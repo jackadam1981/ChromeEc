@@ -22,6 +22,30 @@
       "revId": "232c261f933c51418fffbe4db0ea0921288fbc09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a78fa1c4_115ba571",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2184,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T21:26:06Z",
+      "side": 0,
+      "message": "This is literally what I had on the original change, but Daisuke suggested to combine them somehow. (https://crrev.com/c/1470896/1/common/usb_pd_protocol.c#2144)",
+      "parentUuid": "cc32c97f_5cbc944c",
+      "range": {
+        "startLine": 2184,
+        "startChar": 1,
+        "endLine": 2184,
+        "endChar": 55
+      },
+      "revId": "232c261f933c51418fffbe4db0ea0921288fbc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
