@@ -166,6 +166,7 @@ void __hw_clock_event_clear(void)
 }
 
 /* Irq for hwtimer event */
+DECLARE_IRQ(ITIM16_INT(ITIM_EVENT_NO), __hw_clock_event_irq, 3);
 void __hw_clock_event_irq(void)
 {
 	/* ITIM event module disable */
@@ -196,7 +197,6 @@ void __hw_clock_event_irq(void)
 #endif
 
 }
-DECLARE_IRQ(ITIM16_INT(ITIM_EVENT_NO), __hw_clock_event_irq, 3);
 
 
 /*****************************************************************************/
@@ -247,6 +247,7 @@ void __hw_clock_source_set(uint32_t ts)
 }
 
 /* Irq for hwtimer tick */
+DECLARE_IRQ(NPCX_IRQ_ITIM32, __hw_clock_source_irq, 3);
 void __hw_clock_source_irq(void)
 {
 	/* Is timeout trigger trigger? */
@@ -265,7 +266,6 @@ void __hw_clock_source_irq(void)
 #endif
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_ITIM32, __hw_clock_source_irq, 3);
 
 /* Handle ITIM32 overflow if interrupt is disabled */
 void __hw_clock_handle_overflow(uint32_t clksrc_high)

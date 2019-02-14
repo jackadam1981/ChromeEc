@@ -259,6 +259,8 @@ static void poll_read_state(void)
 }
 
 /* Process the 'end of a write cycle' interrupt. */
+DECLARE_IRQ(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT,
+	    _i2cs_write_complete_int, 1);
 void __attribute__((used)) _i2cs_write_complete_int(void)
 {
 	/* Reset the IRQ condition. */
@@ -324,8 +326,6 @@ void __attribute__((used)) _i2cs_write_complete_int(void)
 	delay_sleep_by(1 * SECOND);
 	enable_sleep(SLEEP_MASK_I2C_SLAVE);
 }
-DECLARE_IRQ(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT,
-	    _i2cs_write_complete_int, 1);
 
 void i2cs_post_read_data(uint8_t byte_to_read)
 {

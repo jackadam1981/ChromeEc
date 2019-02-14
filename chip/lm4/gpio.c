@@ -324,6 +324,30 @@ static void gpio_interrupt(int port, uint32_t mis)
 	}
 }
 
+/*
+ * Declare IRQs.  Nesting this macro inside the GPIO_IRQ_FUNC macro works
+ * poorly because DECLARE_IRQ() stringizes its inputs.
+ */
+DECLARE_IRQ(LM4_IRQ_GPIOA, __gpio_a_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOB, __gpio_b_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOC, __gpio_c_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOD, __gpio_d_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOE, __gpio_e_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOF, __gpio_f_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOG, __gpio_g_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOH, __gpio_h_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOJ, __gpio_j_interrupt, 1);
+#if defined(KB_SCAN_ROW_GPIO) && (KB_SCAN_ROW_GPIO != LM4_GPIO_K)
+DECLARE_IRQ(LM4_IRQ_GPIOK, __gpio_k_interrupt, 1);
+#endif
+DECLARE_IRQ(LM4_IRQ_GPIOL, __gpio_l_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOM, __gpio_m_interrupt, 1);
+#if defined(KB_SCAN_ROW_GPIO) && (KB_SCAN_ROW_GPIO != LM4_GPIO_N)
+DECLARE_IRQ(LM4_IRQ_GPION, __gpio_n_interrupt, 1);
+#endif
+DECLARE_IRQ(LM4_IRQ_GPIOP, __gpio_p_interrupt, 1);
+DECLARE_IRQ(LM4_IRQ_GPIOQ, __gpio_q_interrupt, 1);
+
 /**
  * Handlers for each GPIO port.  These read and clear the interrupt bits for
  * the port, then call the master handler above.
@@ -357,27 +381,3 @@ GPIO_IRQ_FUNC(__gpio_p_interrupt, LM4_GPIO_P);
 GPIO_IRQ_FUNC(__gpio_q_interrupt, LM4_GPIO_Q);
 
 #undef GPIO_IRQ_FUNC
-
-/*
- * Declare IRQs.  Nesting this macro inside the GPIO_IRQ_FUNC macro works
- * poorly because DECLARE_IRQ() stringizes its inputs.
- */
-DECLARE_IRQ(LM4_IRQ_GPIOA, __gpio_a_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOB, __gpio_b_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOC, __gpio_c_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOD, __gpio_d_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOE, __gpio_e_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOF, __gpio_f_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOG, __gpio_g_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOH, __gpio_h_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOJ, __gpio_j_interrupt, 1);
-#if defined(KB_SCAN_ROW_GPIO) && (KB_SCAN_ROW_GPIO != LM4_GPIO_K)
-DECLARE_IRQ(LM4_IRQ_GPIOK, __gpio_k_interrupt, 1);
-#endif
-DECLARE_IRQ(LM4_IRQ_GPIOL, __gpio_l_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOM, __gpio_m_interrupt, 1);
-#if defined(KB_SCAN_ROW_GPIO) && (KB_SCAN_ROW_GPIO != LM4_GPIO_N)
-DECLARE_IRQ(LM4_IRQ_GPION, __gpio_n_interrupt, 1);
-#endif
-DECLARE_IRQ(LM4_IRQ_GPIOP, __gpio_p_interrupt, 1);
-DECLARE_IRQ(LM4_IRQ_GPIOQ, __gpio_q_interrupt, 1);

@@ -173,6 +173,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	return et_ctrl_regs[EVENT_EXT_TIMER].irq;
 }
 
+DECLARE_IRQ(CPU_INT_GROUP_3, __hw_clock_source_irq, 1);
 static void __hw_clock_source_irq(void)
 {
 	/* Determine interrupt number. */
@@ -221,7 +222,6 @@ static void __hw_clock_source_irq(void)
 		return;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_3, __hw_clock_source_irq, 1);
 
 #ifdef IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 /* Number of CPU cycles in 125 us */

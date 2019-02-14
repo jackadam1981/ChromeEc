@@ -463,6 +463,7 @@ static void handle_busy_clear_interrupt(const uint32_t peer_id)
  * ISH Peripheral DB Clear Status Register
  *  Bit 0 - If set, indicates interrupt was caused by clearing Host2ISH DB
  */
+DECLARE_IRQ_STATIC(ISH_IPC_HOST2ISH_IRQ, ipc_host2ish_isr);
 static void ipc_host2ish_isr(void)
 {
 	uint32_t pisr = REG32(IPC_PISR);
@@ -485,8 +486,8 @@ static void ipc_host2ish_isr(void)
 	if ((pisr & IPC_PISR_HOST2ISH_BIT) && (pimr & IPC_PIMR_HOST2ISH_BIT))
 		handle_msg_recv_interrupt(IPC_PEER_ID_HOST);
 }
-DECLARE_IRQ(ISH_IPC_HOST2ISH_IRQ, ipc_host2ish_isr);
 
+DECLARE_IRQ_STATIC(ISH_IPC_ISH2HOST_CLR_IRQ, ipc_host2ish_busy_clear_isr);
 static void ipc_host2ish_busy_clear_isr(void)
 {
 	uint32_t busy_clear = REG32(IPC_BUSY_CLEAR);
@@ -496,7 +497,6 @@ static void ipc_host2ish_busy_clear_isr(void)
 	    (pimr & IPC_PIMR_ISH2HOST_CLR_BIT))
 		handle_busy_clear_interrupt(IPC_PEER_ID_HOST);
 }
-DECLARE_IRQ(ISH_IPC_ISH2HOST_CLR_IRQ, ipc_host2ish_busy_clear_isr);
 
 int ipc_write(const ipc_handle_t handle, const void *buf, const size_t buf_size)
 {

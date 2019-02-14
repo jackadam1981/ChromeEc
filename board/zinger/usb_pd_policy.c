@@ -419,6 +419,7 @@ int pd_board_checks(void)
 
 }
 
+DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
 void pd_adc_interrupt(void)
 {
 	/* Clear flags */
@@ -447,7 +448,6 @@ void pd_adc_interrupt(void)
 	/* clear ADC irq so we don't get a second interrupt */
 	task_clear_pending_irq(STM32_IRQ_ADC_COMP);
 }
-DECLARE_IRQ(STM32_IRQ_ADC_COMP, pd_adc_interrupt, 1);
 
 /* ----------------- Vendor Defined Messages ------------------ */
 const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
