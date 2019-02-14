@@ -13,7 +13,10 @@ $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_arm),arm-none-eabi-)
 CFLAGS_FPU-$(CONFIG_FPU)=-mfpu=fpv4-sp-d16 -mfloat-abi=hard
 
 # CPU specific compilation flags
-CFLAGS_CPU+=-mthumb -Os -mno-sched-prolog
+CFLAGS_CPU+=-mthumb -Os
+ifneq ($(cc-name),clang)
+CFLAGS_CPU+=-mno-sched-prolog
+endif
 CFLAGS_CPU+=-mno-unaligned-access
 CFLAGS_CPU+=$(CFLAGS_FPU-y)
 
@@ -25,6 +28,19 @@ endif
 ifeq ($(cc-name),clang)
 LDFLAGS_EXTRA+=-Wl,--noinhibit-exec
 endif
+
+$(out)/RO/core/cortex-m/vecttable.o: CFLAGS+=-Wno-initializer-overrides
+$(out)/RW/core/cortex-m/vecttable.o: CFLAGS+=-Wno-initializer-overrides
+
+# clang warns:
+#
+#     inline asm clobber list contains reserved registers: R7
+#
+# but this is ok because we are actually setting the clobber list to
+# avoid that register from being clobbered. We don't actually clobber it in
+# the assembly.
+$(out)/RO/core/cortex-m/panic.o: CFLAGS+=-Wno-inline-asm
+$(out)/RW/core/cortex-m/panic.o: CFLAGS+=-Wno-inline-asm
 
 core-y=cpu.o init.o ldivmod.o llsr.o uldivmod.o vecttable.o
 core-$(CONFIG_AES)+=aes.o
