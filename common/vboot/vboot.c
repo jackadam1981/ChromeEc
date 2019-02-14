@@ -200,6 +200,12 @@ int command_cr50(int argc, char *argv[])
 }
 DECLARE_CONSOLE_COMMAND(cr50, command_cr50, NULL, "Toggle CCD_MODE_L");
 
+static int host_cmd_efs(struct host_cmd_handler_args *args)
+{
+	return send_identity_to_cr50(SYSTEM_IMAGE_RW_A);
+}
+DECLARE_HOST_COMMAND(EC_CMD_EFS, host_cmd_efs, EC_VER_MASK(0));
+
 static int verify_and_jump(void)
 {
 	enum system_image_copy_t slot;
