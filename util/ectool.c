@@ -92,6 +92,8 @@ const char help_str[] =
 	"      Read or write CEC messages and settings\n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
+	"  efs\n"
+	"      Send EC version string to Cr50\n"
 	"  eventclear <mask>\n"
 	"      Clears EC host events flags where mask has bits set\n"
 	"  eventclearb <mask>\n"
@@ -7157,6 +7159,17 @@ int cmd_ec_hash(int argc, char *argv[])
 }
 
 
+int cmd_efs(int argc, char *argv[])
+{
+	int rv;
+
+	rv = ec_command(EC_CMD_EFS, 0, NULL, 0, NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	return 0;
+}
+
 int cmd_rtc_get(int argc, char *argv[])
 {
 	struct ec_response_rtc r;
@@ -8435,6 +8448,7 @@ const struct command commands[] = {
 	{"console", cmd_console},
 	{"cec", cmd_cec},
 	{"echash", cmd_ec_hash},
+	{"efs", cmd_efs},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},
 	{"eventget", cmd_host_event_get_raw},
