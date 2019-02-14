@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9ee6585_d977761e",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T04:47:57Z",
+      "side": 1,
+      "message": "Maybe \u0027CC_USBCHARGE\u0027?",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "b3997cc3d078f80e3bb395f1e3d78dd79936d8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df02a6fa_a63eac81",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T04:47:57Z",
+      "side": 1,
+      "message": "Why is this not defined if you have TCPC VBUS detection?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "b3997cc3d078f80e3bb395f1e3d78dd79936d8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0c2861_36c13f28",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T04:47:57Z",
+      "side": 1,
+      "message": "typo: \u0027adapter\u0027",
+      "range": {
+        "startLine": 177,
+        "startChar": 10,
+        "endLine": 177,
+        "endChar": 17
+      },
+      "revId": "b3997cc3d078f80e3bb395f1e3d78dd79936d8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9b58db_9b815925",
+        "filename": "driver/bc12/pi3usb9201.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T04:47:57Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 14
+      },
+      "revId": "b3997cc3d078f80e3bb395f1e3d78dd79936d8b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
