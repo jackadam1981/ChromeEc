@@ -369,8 +369,10 @@ void exception_panic(void)
 		"bl report_panic\n" : :
 			[pregs] "r" (pdata_ptr->cm.regs),
 			[pstack] "r" (pstack_addr) :
-			/* Constraints protecting these from being clobbered.
-			 * Gcc should be using r0 & r12 for pregs and pstack. */
+			/*
+			 * Constraints protecting these from being clobbered.
+			 * Compiler should be using r0 & r12 for pregs & pstack.
+			 */
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
 			"r10", "r11", "cc", "memory"
 		);
