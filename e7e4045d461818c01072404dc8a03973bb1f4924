@@ -46,6 +46,30 @@
       "revId": "e7e4045d461818c01072404dc8a03973bb1f4924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b6aa65_100881de",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-14T00:39:40Z",
+      "side": 1,
+      "message": "According to my test, either in this ISR, or at the beginning of handle_msg_recv_interrupt(). Later than those won\u0027t work.",
+      "parentUuid": "00d6ef79_6fd5093d",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 6
+      },
+      "revId": "e7e4045d461818c01072404dc8a03973bb1f4924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
