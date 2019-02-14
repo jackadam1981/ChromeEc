@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cc81208_3188f092",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-14T01:35:09Z",
+      "side": 1,
+      "message": "I think you might have to rebase since a change was in CQ to change this.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "e1cc5bff46c82508f4425a3c97d5684f370842d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
