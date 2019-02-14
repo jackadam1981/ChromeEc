@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12b52b7b_f5071ba1",
+        "filename": "include/hid.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-02-14T00:27:04Z",
+      "side": 1,
+      "message": "remove, already defined in include/ec_commands.h, used by coreboot.\nSee d77c7d3b62878ce \"WIP: Fixes in motion_hid\"",
+      "revId": "9db9fde338d71a29f34cac5322a97d67b274dbfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
