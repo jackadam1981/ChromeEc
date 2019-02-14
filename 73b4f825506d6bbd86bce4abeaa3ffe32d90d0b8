@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d75e01d_79a3054b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "Is this for Fast Role Swap (FRS) or something else?\n\nAlso, we haven\u0027t sourced anything higher than 5V from the DUT yet, so we might not need this support yet. Thoughts?",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90453db4_c0342d34",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "Instead of turning OVP off completely, can we set it to 22V?\n\ne.g. Set VBUS_OVP_THR_CFG to 0x370 ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd3d21e_2dcfdf3b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "nit: this comment doesn\u0027t apply (since you have this same comment on line 78)\n\nSay Enable Vbus monitor here instead please",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc232d8_757ca3f5",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "this should set both CC lines to the designated pull regardless of polarity. DUTs present Rd or Rp resistors on both CC lines always.",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24afc39_3b2f1301",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "why can\u0027t we use the standard tcpci_tcpm_get_cc?\n\nIf not, please add more comments to this function",
+      "range": {
+        "startLine": 169,
+        "startChar": 11,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcb7bb7_c2293570",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "why do we need to set the polarity back to 0, what bad thing happens if we don\u0027t do this?",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 27
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b614cd_29865d15",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "we shouldn\u0027t do this automatically (here and in set_polarity).\n\nWe rely on the tcpc_discharge_vbus method instead. If any customization is needed there, then we can hook in there.",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 41
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bbbeb1b_06772fc9",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "what is bit4. This should be a define or at least have a comment",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 23
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f7eb1c_ef5c0de2",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "move this to line 258 to reduce scope",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 18
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945b147e_3015d003",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "add a comment that we are assuming that the MCU is using little endian encoding\n\nAlso, this could fail on some processor due to unaligned access right?\n\nThis seems a little dangerous if the alignment isn\u0027t correct",
+      "range": {
+        "startLine": 260,
+        "startChar": 3,
+        "endLine": 260,
+        "endChar": 24
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8228133_8688f4a4",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "Please add comment saying size header plus reset of message size (to explain the +1)",
+      "range": {
+        "startLine": 264,
+        "startChar": 29,
+        "endLine": 264,
+        "endChar": 41
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83e54d9_838ca314",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "why are we reading the fault status register here and nothing doing anything with the result?",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 11
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b386eda_65cc5ffb",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "read from TCPC_REG_RX_BUF_FRAME_TYPE instead and drop the +1 (since you already read this)",
+      "range": {
+        "startLine": 286,
+        "startChar": 28,
+        "endLine": 286,
+        "endChar": 48
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0accb454_5ed19329",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "let\u0027s call this TCPC_REG_FAULT_CTRL_VBUS_OVP_FAULT_DIS since 1 means disable",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3abb5e8f_ba43d336",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:00:40Z",
+      "side": 1,
+      "message": "let\u0027s call this TCPC_REG_POWER_CTRL_VBUS_VOL_MONITOR_DIS\n\nsince 1 means disable and 0 means enabled; it will help the code read a little better",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
