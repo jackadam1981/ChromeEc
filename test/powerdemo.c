@@ -104,6 +104,7 @@ int power_demo_init(void)
 
 
 /* GPIO interrupt handler */
+DECLARE_IRQ(LM4_IRQ_GPIOD, __gpio_d_interrupt, 1);
 static void __gpio_d_interrupt(void)
 {
 	uint32_t mis = LM4_GPIO_MIS(LM4_GPIO_D);
@@ -122,8 +123,6 @@ static void __gpio_d_interrupt(void)
 		}
 	}
 }
-
-DECLARE_IRQ(LM4_IRQ_GPIOD, __gpio_d_interrupt, 1);
 
 
 /* Timer interrupt handler */

@@ -74,6 +74,7 @@ int uart_read_char(void)
 /**
  * Interrupt handlers for UART0
  */
+DECLARE_IRQ(GC_IRQNUM_UART0_TXINT, uart_ec_tx_interrupt, 1);
 void uart_ec_tx_interrupt(void)
 {
 	/* Clear transmit interrupt status */
@@ -82,8 +83,8 @@ void uart_ec_tx_interrupt(void)
 	/* Fill output FIFO */
 	uart_process_output();
 }
-DECLARE_IRQ(GC_IRQNUM_UART0_TXINT, uart_ec_tx_interrupt, 1);
 
+DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
 void uart_ec_rx_interrupt(void)
 {
 	/* Clear receive interrupt status */
@@ -92,7 +93,6 @@ void uart_ec_rx_interrupt(void)
 	/* Read input FIFO until empty */
 	uart_process_input();
 }
-DECLARE_IRQ(GC_IRQNUM_UART0_RXINT, uart_ec_rx_interrupt, 1);
 #endif  /* USE_UART_INTERRUPTS */
 
 void uart_init(void)

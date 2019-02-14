@@ -263,6 +263,7 @@ void lpc_clear_acpi_status_mask(uint8_t mask)
  * ISH Peripheral DB Clear Status Register
  *  Bit 0 - If set, indicates interrupt was caused by clearing Host2ISH DB
  */
+DECLARE_IRQ_STATIC(ISH_IPC_HOST2ISH_IRQ, ipc_interrupt_handler);
 static void ipc_interrupt_handler(void)
 {
 	uint32_t pisr = REG32(IPC_PISR);
@@ -292,7 +293,6 @@ static void ipc_interrupt_handler(void)
 		task_set_event(TASK_ID_IPC_COMM, EVENT_FLAG_BIT_WRITE_IPC, 0);
 	}
 }
-DECLARE_IRQ(ISH_IPC_HOST2ISH_IRQ, ipc_interrupt_handler);
 
 /* Task that listens for incomming IPC messages from Host and initiate host
  * command processing.

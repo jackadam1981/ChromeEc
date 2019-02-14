@@ -109,8 +109,8 @@ void pmu_powerdown_exit(void)
 /**
  * Handle PMU interrupt
  */
+/* DECLARE_IRQ(GC_IRQNUM_PMU_PMUINT, pmu_interrupt, 1); */
 void pmu_interrupt(void)
 {
 	/* TBD */
 }
-/* DECLARE_IRQ(GC_IRQNUM_PMU_PMUINT, pmu_interrupt, 1); */

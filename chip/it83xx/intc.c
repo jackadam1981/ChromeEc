@@ -107,6 +107,7 @@ static void chip_pd_irq(enum usbpd_port port)
 }
 #endif
 
+DECLARE_IRQ(CPU_INT_GROUP_5, intc_cpu_int_group_5, 2);
 void intc_cpu_int_group_5(void)
 {
 	/* Determine interrupt number. */
@@ -126,8 +127,8 @@ void intc_cpu_int_group_5(void)
 		break;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_5, intc_cpu_int_group_5, 2);
 
+DECLARE_IRQ(CPU_INT_GROUP_4, intc_cpu_int_group_4, 2);
 void intc_cpu_int_group_4(void)
 {
 	/* Determine interrupt number. */
@@ -159,8 +160,8 @@ void intc_cpu_int_group_4(void)
 		break;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_4, intc_cpu_int_group_4, 2);
 
+DECLARE_IRQ(CPU_INT_GROUP_12, intc_cpu_int_group_12, 2);
 void intc_cpu_int_group_12(void)
 {
 	/* Determine interrupt number. */
@@ -194,8 +195,8 @@ void intc_cpu_int_group_12(void)
 		break;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_12, intc_cpu_int_group_12, 2);
 
+DECLARE_IRQ(CPU_INT_GROUP_7, intc_cpu_int_group_7, 2);
 void intc_cpu_int_group_7(void)
 {
 	/* Determine interrupt number. */
@@ -211,8 +212,8 @@ void intc_cpu_int_group_7(void)
 		break;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_7, intc_cpu_int_group_7, 2);
 
+DECLARE_IRQ(CPU_INT_GROUP_6, intc_cpu_int_group_6, 2);
 void intc_cpu_int_group_6(void)
 {
 	/* Determine interrupt number. */
@@ -248,4 +249,3 @@ void intc_cpu_int_group_6(void)
 		break;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_6, intc_cpu_int_group_6, 2);

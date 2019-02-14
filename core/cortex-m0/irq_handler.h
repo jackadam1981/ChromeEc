@@ -21,6 +21,7 @@
 #define DECLARE_IRQ(irq, routine, priority) DECLARE_IRQ_(irq, routine, priority)
 #ifdef CONFIG_TASK_PROFILING
 #define DECLARE_IRQ_(irq, routine, priority)                    \
+	void routine(void);					\
 	void IRQ_HANDLER(irq)(void)				\
 	{							\
 		void *ret = __builtin_return_address(0);	\

@@ -645,6 +645,7 @@ static void shi_handle_cs_assert(void)
 }
 
 /* This routine handles all interrupts of this module */
+DECLARE_IRQ(NPCX_IRQ_SHI, shi_int_handler, 2);
 void shi_int_handler(void)
 {
 	uint8_t stat_reg;
@@ -827,7 +828,6 @@ void shi_int_handler(void)
 			log_unexpected_state("IBF");
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_SHI, shi_int_handler, 2);
 
 /* Handle an CS assert event on the SHI_CS_L pin */
 void shi_cs_event(enum gpio_signal signal)

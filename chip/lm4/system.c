@@ -323,11 +323,11 @@ void system_reset_rtc_alarm(void)
 /**
  * Hibernate module interrupt
  */
+DECLARE_IRQ(LM4_IRQ_HIBERNATE, __hibernate_irq, 1);
 void __hibernate_irq(void)
 {
 	system_reset_rtc_alarm();
 }
-DECLARE_IRQ(LM4_IRQ_HIBERNATE, __hibernate_irq, 1);
 
 /**
  * Enable hibernate interrupt

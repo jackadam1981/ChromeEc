@@ -116,6 +116,7 @@ void uart_enable_interrupt(void)
  * Interrupt handler for UART.
  * Lower priority below other critical ISR's.
  */
+DECLARE_IRQ(MCHP_IRQ_UART0, uart_ec_interrupt, 2);
 void uart_ec_interrupt(void)
 {
 	/* Read input FIFO until empty, then fill output FIFO */
@@ -123,7 +124,6 @@ void uart_ec_interrupt(void)
 	/* Trace statement to provide time marker for UART output? */
 	uart_process_output();
 }
-DECLARE_IRQ(MCHP_IRQ_UART0, uart_ec_interrupt, 2);
 
 void uart_init(void)
 {

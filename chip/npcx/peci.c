@@ -269,6 +269,7 @@ static void peci_init(void)
 DECLARE_HOOK(HOOK_INIT, peci_init, HOOK_PRIO_DEFAULT);
 
 /* If received a PECI DONE interrupt, post the event to PECI task */
+DECLARE_IRQ(NPCX_IRQ_PECI, peci_done_interrupt, 4);
 void peci_done_interrupt(void){
 	if (peci_pending_task_id != NULL_PENDING_TASK_ID)
 		task_set_event(peci_pending_task_id, TASK_EVENT_PECI_DONE, 0);
@@ -278,7 +279,6 @@ void peci_done_interrupt(void){
 	SET_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_CRC_ERR);
 	SET_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_ABRT_ERR);
 }
-DECLARE_IRQ(NPCX_IRQ_PECI, peci_done_interrupt, 4);
 
 /*****************************************************************************/
 /* Console commands */

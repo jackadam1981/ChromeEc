@@ -67,6 +67,7 @@ static const struct res_cfg {
 
 #ifdef HAS_TASK_SNIFFER
 /* we don't have the default DMA handlers */
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_2_3, dma_event_interrupt_channel_3, 3);
 void dma_event_interrupt_channel_3(void)
 {
 	if (STM32_DMA1_REGS->isr & STM32_DMA_ISR_TCIF(STM32_DMAC_CH3)) {
@@ -74,7 +75,6 @@ void dma_event_interrupt_channel_3(void)
 		task_wake(TASK_ID_CONSOLE);
 	}
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_2_3, dma_event_interrupt_channel_3, 3);
 #endif
 
 static void twinkie_init(void)

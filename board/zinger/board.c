@@ -27,12 +27,12 @@ static uint32_t * const rw_rst =
 	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE+CONFIG_RW_MEM_OFF+4);
 
 /* External interrupt EXTINT7 for external comparator on PA7 */
+DECLARE_IRQ(STM32_IRQ_EXTI4_15, pd_rx_interrupt, 1);
 void pd_rx_interrupt(void)
 {
 	/* trigger reception handling */
 	pd_rx_handler();
 }
-DECLARE_IRQ(STM32_IRQ_EXTI4_15, pd_rx_interrupt, 1);
 
 static void jump_to_rw(void)
 {

@@ -161,6 +161,7 @@ int uart_read_char(void)
 }
 
 /* Interrupt handler for console USART */
+DECLARE_IRQ(STM32_IRQ_USART(UARTN), uart_interrupt, 2);
 void uart_interrupt(void)
 {
 #ifndef CONFIG_UART_TX_DMA
@@ -215,7 +216,6 @@ void uart_interrupt(void)
 		STM32_USART_CR1(UARTN_BASE) |= STM32_USART_CR1_TXEIE;
 #endif
 }
-DECLARE_IRQ(STM32_IRQ_USART(UARTN), uart_interrupt, 2);
 
 /**
  * Handle clock frequency changes

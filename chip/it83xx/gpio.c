@@ -667,6 +667,8 @@ static void gpio_interrupt(int port, uint8_t mask)
  * the interrupt number which was triggered, calls the master handler above,
  * and clears status registers.
  */
+/* Route all WKO interrupts coming from INT#2 into __gpio_irq. */
+DECLARE_IRQ(CPU_INT_2_ALL_GPIOS, __gpio_irq, 1);
 static void __gpio_irq(void)
 {
 	/* Determine interrupt number. */
@@ -699,6 +701,3 @@ static void __gpio_irq(void)
 	/* Run the GPIO master handler above with corresponding port/mask. */
 	gpio_interrupt(gpio_irqs[irq].gpio_port, gpio_irqs[irq].gpio_mask);
 }
-
-/* Route all WKO interrupts coming from INT#2 into __gpio_irq. */
-DECLARE_IRQ(CPU_INT_2_ALL_GPIOS, __gpio_irq, 1);

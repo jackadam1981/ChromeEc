@@ -1085,6 +1085,7 @@ const FPVW girq25_vw_handlers[MCHP_GIRQ25_NUM_M2S] = {
 };
 
 /* Interrupt handler for eSPI virtual wires in MSVW00 - MSVW01 */
+DECLARE_IRQ(MCHP_IRQ_GIRQ24, espi_mswv1_interrupt, 2);
 void espi_mswv1_interrupt(void)
 {
 	uint32_t d, girq24_result, bpos;
@@ -1102,10 +1103,10 @@ void espi_mswv1_interrupt(void)
 		bpos = __builtin_ctz(girq24_result);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_GIRQ24, espi_mswv1_interrupt, 2);
 
 
 /* Interrupt handler for eSPI virtual wires in MSVW07 - MSVW10 */
+DECLARE_IRQ(MCHP_IRQ_GIRQ25, espi_msvw2_interrupt, 2);
 void espi_msvw2_interrupt(void)
 {
 	uint32_t d, girq25_result, bpos;
@@ -1123,7 +1124,6 @@ void espi_msvw2_interrupt(void)
 		bpos = __builtin_ctz(girq25_result);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_GIRQ25, espi_msvw2_interrupt, 2);
 
 
 
@@ -1167,6 +1167,7 @@ DECLARE_IRQ(MCHP_IRQ_GIRQ25, espi_msvw2_interrupt, 2);
  * equivalent to eSPI Platform Reset.
  *
  */
+DECLARE_IRQ(MCHP_IRQ_ESPI_RESET, espi_reset_isr, 3);
 void espi_reset_isr(void)
 {
 	uint8_t erst;
@@ -1205,12 +1206,12 @@ void espi_reset_isr(void)
 		trace0(0, ESPI, 0, "eSPI Reset assert");
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_RESET, espi_reset_isr, 3);
 
 /*
  * eSPI Virtual Wire channel enable handler
  * Must disable once VW Enable is set by eSPI Master
  */
+DECLARE_IRQ(MCHP_IRQ_ESPI_VW_EN, espi_vw_en_isr, 2);
 void espi_vw_en_isr(void)
 {
 	MCHP_INT_DISABLE(MCHP_ESPI_GIRQ) = MCHP_ESPI_VW_EN_GIRQ_BIT;
@@ -1226,12 +1227,12 @@ void espi_vw_en_isr(void)
 	if (0x03 == (espi_channels_ready & 0x03))
 		espi_send_boot_load_done();
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_VW_EN, espi_vw_en_isr, 2);
 
 
 /*
  * eSPI OOB TX and OOB channel enable change interrupt handler
  */
+DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_UP, espi_oob_tx_isr, 2);
 void espi_oob_tx_isr(void)
 {
 	uint32_t sts;
@@ -1258,10 +1259,10 @@ void espi_oob_tx_isr(void)
 		trace11(0, ESPI, 0, "eSPI OOB_TX Status = 0x%08x", sts);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_UP, espi_oob_tx_isr, 2);
 
 
 /* eSPI OOB RX interrupt handler */
+DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_DN, espi_oob_rx_isr, 2);
 void espi_oob_rx_isr(void)
 {
 	uint32_t sts;
@@ -1273,13 +1274,13 @@ void espi_oob_rx_isr(void)
 	CPRINTS("eSPI OOB_DN status = 0x%x", sts);
 	trace11(0, ESPI, 0, "eSPI OOB_RX Status = 0x%08x", sts);
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_DN, espi_oob_rx_isr, 2);
 
 
 /*
  * eSPI Flash Channel enable change and data transfer
  * interrupt handler
  */
+DECLARE_IRQ(MCHP_IRQ_ESPI_FC, espi_fc_isr, 2);
 void espi_fc_isr(void)
 {
 	uint32_t sts;
@@ -1307,10 +1308,10 @@ void espi_fc_isr(void)
 		trace11(0, ESPI, 0, "eSPI FC Status = 0x%08x", sts);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_FC, espi_fc_isr, 2);
 
 
 /* eSPI Peripheral Channel interrupt handler */
+DECLARE_IRQ(MCHP_IRQ_ESPI_PC, espi_pc_isr, 2);
 void espi_pc_isr(void)
 {
 	uint32_t sts;
@@ -1336,7 +1337,6 @@ void espi_pc_isr(void)
 		trace11(0, ESPI, 0, "eSPI PC Status = 0x%08x", sts);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_PC, espi_pc_isr, 2);
 
 
 /************************************************************************/

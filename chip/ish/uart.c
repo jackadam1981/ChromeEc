@@ -136,13 +136,13 @@ int uart_read_char(void)
 	return REG8(RBR(id));
 }
 
+DECLARE_IRQ(ISH_DEBUG_UART_IRQ, uart_ec_interrupt);
 void uart_ec_interrupt(void)
 {
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(ISH_DEBUG_UART_IRQ, uart_ec_interrupt);
 #endif /* !defined(CONFIG_POLLING_UART) */
 
 static int uart_return_baud_rate_by_id(int baud_rate_id)

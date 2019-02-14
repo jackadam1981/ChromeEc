@@ -151,6 +151,7 @@ void gpio_init(void)
 DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
 /* Interrupt handler */
+DECLARE_IRQ(SCP_IRQ_EINT, gpio_interrupt, 1);
 void __keep gpio_interrupt(void)
 {
 	int bit, port;
@@ -173,5 +174,4 @@ void __keep gpio_interrupt(void)
 		}
 	}
 }
-DECLARE_IRQ(SCP_IRQ_EINT, gpio_interrupt, 1);
 

@@ -281,6 +281,7 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 /*
  * Clear interrupt and run handler.
  */
+DECLARE_IRQ(NRF51_PERID_GPIOTE, gpio_interrupt, 1);
 void gpio_interrupt(void)
 {
 	const struct gpio_info *g;
@@ -305,4 +306,3 @@ void gpio_interrupt(void)
 			gpio_irq_handlers[signal](signal);
 	}
 }
-DECLARE_IRQ(NRF51_PERID_GPIOTE, gpio_interrupt, 1);

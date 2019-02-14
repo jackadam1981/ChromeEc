@@ -484,6 +484,7 @@ void espi_espirst_handler(void)
 }
 
 /* Handle eSPI virtual wire interrupt 1 */
+DECLARE_IRQ(NPCX_IRQ_WKINTA_2, __espi_wk2a_interrupt, 3);
 void __espi_wk2a_interrupt(void)
 {
 	uint8_t pending_bits = NPCX_WKPND(MIWU_TABLE_2, MIWU_GROUP_1);
@@ -503,9 +504,9 @@ void __espi_wk2a_interrupt(void)
 	if (IS_BIT_SET(pending_bits, 6))
 		espi_vw_evt_oobrst();
 }
-DECLARE_IRQ(NPCX_IRQ_WKINTA_2, __espi_wk2a_interrupt, 3);
 
 /* Handle eSPI virtual wire interrupt 2 */
+DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 3);
 void __espi_wk2b_interrupt(void)
 {
 	uint8_t pending_bits = NPCX_WKPND(MIWU_TABLE_2, MIWU_GROUP_2);
@@ -519,9 +520,9 @@ void __espi_wk2b_interrupt(void)
 	if (IS_BIT_SET(pending_bits, 0))
 		espi_vw_evt_hostrst_warn();
 }
-DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 3);
 
 /* Interrupt handler for eSPI status changed */
+DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 4);
 void espi_interrupt(void)
 {
 	int chan;
@@ -595,7 +596,6 @@ void espi_interrupt(void)
 		status = NPCX_ESPISTS & mask;
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 4);
 
 /*****************************************************************************/
 /* eSPI Initialization functions */

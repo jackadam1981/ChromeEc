@@ -515,12 +515,12 @@ static void handle_interrupt(int controller)
 		task_set_event(id, TASK_EVENT_I2C_IDLE, 0);
 }
 
-void i2c0_interrupt(void) { handle_interrupt(0); }
-void i2c1_interrupt(void) { handle_interrupt(1); }
-void i2c2_interrupt(void) { handle_interrupt(2); }
-void i2c3_interrupt(void) { handle_interrupt(3); }
-
 DECLARE_IRQ(MEC1322_IRQ_I2C_0, i2c0_interrupt, 2);
 DECLARE_IRQ(MEC1322_IRQ_I2C_1, i2c1_interrupt, 2);
 DECLARE_IRQ(MEC1322_IRQ_I2C_2, i2c2_interrupt, 2);
 DECLARE_IRQ(MEC1322_IRQ_I2C_3, i2c3_interrupt, 2);
+
+void i2c0_interrupt(void) { handle_interrupt(0); }
+void i2c1_interrupt(void) { handle_interrupt(1); }
+void i2c2_interrupt(void) { handle_interrupt(2); }
+void i2c3_interrupt(void) { handle_interrupt(3); }

@@ -155,6 +155,7 @@ int adc_read_channel(enum adc_channel ch)
  * @return  none
  * @notes   Only handle SW-triggered conversion in npcx chip
  */
+DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 void adc_interrupt(void)
 {
 	if (IS_BIT_SET(NPCX_ADCSTS, NPCX_ADCSTS_EOCEV)) {
@@ -172,7 +173,6 @@ void adc_interrupt(void)
 			task_set_event(task_waiting, TASK_EVENT_ADC_DONE, 0);
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 
 /**
  * ADC initial.

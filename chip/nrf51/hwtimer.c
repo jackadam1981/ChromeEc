@@ -116,6 +116,9 @@ void __hw_clock_source_set(uint32_t ts)
 
 
 /* Interrupt handler for timer */
+/* DECLARE_IRQ doesn't like the NRF51_PERID_TIMER(n) macro */
+BUILD_ASSERT(NRF51_PERID_TIMER(HWTIMER) == NRF51_PERID_TIMER0);
+DECLARE_IRQ(NRF51_PERID_TIMER0, timer_irq, 1);
 void timer_irq(void)
 {
 	int overflow = 0;
@@ -130,10 +133,6 @@ void timer_irq(void)
 
 	process_timers(overflow);
 }
-
-/* DECLARE_IRQ doesn't like the NRF51_PERID_TIMER(n) macro */
-BUILD_ASSERT(NRF51_PERID_TIMER(HWTIMER) == NRF51_PERID_TIMER0);
-DECLARE_IRQ(NRF51_PERID_TIMER0, timer_irq, 1);
 
 int __hw_clock_source_init(uint32_t start_t)
 {
