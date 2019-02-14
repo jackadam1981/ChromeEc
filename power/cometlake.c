@@ -91,6 +91,11 @@ void chipset_pre_init_callback(void)
 	while (!gpio_get_level(GPIO_PP5000_A_PG_OD))
 		;
 
+	/*
+	 * The A rails are now up, but ALL_SYS_POWER_GOOD is not. This is a
+	 * state where the MP2979 registers can be reprogrammed if necessary.
+	 */
+	mp2979_check_registers();
 }
 
 enum power_state power_handle_state(enum power_state state)

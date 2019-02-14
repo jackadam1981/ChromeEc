@@ -16,6 +16,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -176,4 +177,109 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC_ODL, !is_overcurrented);
+}
+
+/* MPS Programming */
+struct mp2979_reg_info {
+	int page;
+	int cmd;
+	int value;
+};
+
+static const struct mp2979_reg_info mp2979_reg[] = {
+	{0, 0xCE, 0x720A},
+	{0, 0x2B, 0x1C02},
+	{0, 0xE4, 0xAC20},
+	{0, 0xCF, 0x00FA},
+	{0, 0xF1, 0x0005},
+	{0, 0x2F, 0xB8A6},
+	{1, 0xE4, 0x0610},
+	{1, 0x2F, 0x0000},
+	{2, 0xE4, 0x0308},
+	{2, 0x2F, 0x0000},
+};
+
+int mp2979_check_registers(void)
+{
+	static int verified;
+	int i;
+	int rv;
+	int value;
+	int change_made = 0;
+	int page;
+	int pe_level;
+
+	/* If verifed is set, then this check already has been done */
+	if (verified) {
+		CPRINTS("MP2979: Registers were already verfied!");
+		return EC_SUCCESS;
+	}
+
+	pe_level = gpio_get_level(GPIO_MP2979_PE);
+	/* Enable Program Engine */
+	gpio_set_flags(GPIO_MP2979_PE, GPIO_OUT_HIGH);
+
+	CPRINTS("MP2979: PE pin: before %d after %d",
+		pe_level, gpio_get_level(GPIO_MP2979_PE));
+
+	/* Check register values and correct if necessary */
+	for (i = 0; i < ARRAY_SIZE(mp2979_reg); i++) {
+		/* Ensure on correct page */
+		rv = i2c_read8(BOARD_MP2979_PORT, BOARD_MP2979_ADDR,
+			       BOARD_MP2979_PAGE_CMD, &page);
+
+		CPRINTS("MP2979[%d]: page read = %d, rv = %d", i, page, rv);
+		if (rv)
+			goto mp2979_exit;
+		if (page != mp2979_reg[i].page) {
+			rv = i2c_write8(BOARD_MP2979_PORT, BOARD_MP2979_ADDR,
+			       BOARD_MP2979_PAGE_CMD, mp2979_reg[i].page);
+			rv = i2c_read8(BOARD_MP2979_PORT, BOARD_MP2979_ADDR,
+			       BOARD_MP2979_PAGE_CMD, &page);
+			if (rv || (page != mp2979_reg[i].page)) {
+				CPRINTS("mp2979: Failed page set!");
+				goto mp2979_exit;
+			}
+		}
+		/* Get current value of register */
+		rv = i2c_read16(BOARD_MP2979_PORT, BOARD_MP2979_ADDR,
+			       mp2979_reg[i].cmd, &value);
+		if (rv)
+			goto mp2979_exit;
+
+		CPRINTS("MP2979[%d]: page %d off 0x%x rd = 0x%x, des = 0x%x",
+			i, page, mp2979_reg[i].cmd, value, mp2979_reg[i].value);
+		if (value != mp2979_reg[i].value) {
+			rv = i2c_write16(BOARD_MP2979_PORT, BOARD_MP2979_ADDR,
+			       mp2979_reg[i].cmd, mp2979_reg[i].value);
+			if (rv)
+				goto mp2979_exit;
+			/* count number of registers changed */
+			change_made++;
+		}
+	}
+
+	/* If any registers have changed then need to write to flash */
+	if (change_made) {
+		uint8_t buf = 0x15;
+
+		CPRINTS("MP2979: %d registers were changed", change_made);
+		/* Store all user data by write cmd = 0x15 with no data */
+		rv = i2c_xfer(BOARD_MP2979_PORT, BOARD_MP2979_ADDR, &buf,
+			      1, 0, 0);
+		if (rv)
+			goto mp2979_exit;
+		msleep(300);
+	}
+
+	/*
+	 * At this point, all registers were either correct, or have been
+	 * updated to the desired values.
+	 */
+	verified = 1;
+	rv = EC_SUCCESS;
+
+mp2979_exit:
+	gpio_set_flags(GPIO_MP2979_PE, GPIO_INPUT);
+	return rv;
 }

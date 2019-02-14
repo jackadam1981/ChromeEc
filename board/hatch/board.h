@@ -46,6 +46,12 @@
  */
 #define USB_PD_PORT_TCPC 1
 
+/* MP2979 Programming */
+#define BOARD_MP2979_REG_CHECK
+#define BOARD_MP2979_ADDR 0x40
+#define BOARD_MP2979_PORT I2C_PORT_POWER
+#define BOARD_MP2979_PAGE_CMD 0x0
+
 /*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
@@ -102,6 +108,7 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+int mp2979_check_registers(void);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

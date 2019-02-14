@@ -61,8 +61,13 @@ GPIO(EN_USB_A_LOW_PWR_OD,      PIN(9, 4), GPIO_OUT_LOW)
 /* Misc Signals */
 GPIO(EC_BATT_PRES_ODL,         PIN(E, 1), GPIO_INPUT)
 GPIO(LED_1_L,                  PIN(C, 4), GPIO_OUT_HIGH)        /* Yellow (hatch) */
-GPIO(LED_2_L,                  PIN(C, 3), GPIO_OUT_HIGH)        /* White (hatch) */
+GPIO(LED_2_L,                  PIN(C, 3), GPIO_OUT_HIGH)        /* White (hatch)
+								   */
+#ifdef BOARD_MP2979_REG_CHECK
+GPIO(MP2979_PE,                PIN(C, 2), GPIO_INPUT)
+#else
 GPIO(LED_3_L,                  PIN(C, 2), GPIO_OUT_HIGH)
+#endif
 GPIO(LED_4_L,                  PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(EC_KB_BL_EN,              PIN(8, 6), GPIO_OUT_LOW)         /* Keyboard backlight */
 GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
