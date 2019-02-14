@@ -86,6 +86,7 @@ void keyboard_raw_enable_interrupt(int enable)
 	}
 }
 
+DECLARE_IRQ(MCHP_IRQ_KSC_INT, keyboard_raw_interrupt, 1);
 void keyboard_raw_interrupt(void)
 {
 	/* Clear interrupt status bits */
@@ -96,7 +97,6 @@ void keyboard_raw_interrupt(void)
 	/* Wake keyboard scan task to handle interrupt */
 	task_wake(TASK_ID_KEYSCAN);
 }
-DECLARE_IRQ(MCHP_IRQ_KSC_INT, keyboard_raw_interrupt, 1);
 
 int keyboard_raw_is_input_low(int port, int id)
 {

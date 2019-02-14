@@ -26,10 +26,10 @@ extern struct producer_ops const uart_producer_ops;
 #define CONFIGURE_INTERRUPTS(NAME,					\
 			     RXINT,					\
 			     TXINT)					\
-	void CONCAT2(NAME, _rx_int_)(void);				\
-	void CONCAT2(NAME, _tx_int_)(void);				\
 	DECLARE_IRQ(RXINT, CONCAT2(NAME, _rx_int_), 1);			\
+	void CONCAT2(NAME, _rx_int_)(void);				\
 	DECLARE_IRQ(TXINT, CONCAT2(NAME, _tx_int_), 1);			\
+	void CONCAT2(NAME, _tx_int_)(void);				\
 	void CONCAT2(NAME, _tx_int_)(void)				\
 	{								\
 		/* Clear transmit interrupt status */			\

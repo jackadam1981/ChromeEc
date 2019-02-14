@@ -98,13 +98,13 @@ uint32_t dcrypto_call(uint32_t adr)
 	}
 }
 
+DECLARE_IRQ(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT, dcrypto_done_interrupt, 1);
 void __keep dcrypto_done_interrupt(void)
 {
 	GREG32(CRYPTO, INT_STATE) = GC_CRYPTO_INT_STATE_HOST_CMD_DONE_MASK;
 	task_clear_pending_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
 	task_set_event(my_task_id, TASK_EVENT_DCRYPTO_DONE, 0);
 }
-DECLARE_IRQ(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT, dcrypto_done_interrupt, 1);
 
 void dcrypto_imem_load(size_t offset, const uint32_t *opcodes,
 			size_t n_opcodes)
