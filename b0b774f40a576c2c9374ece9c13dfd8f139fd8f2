@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd3ef8b4_72d1a32b",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-14T01:43:36Z",
+      "side": 1,
+      "message": "I think we can drop this? Since we already have a return code.",
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdf661c8_cc001fc6",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-14T01:43:36Z",
+      "side": 1,
+      "message": "I would use EC_SUCCESS instead.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881d922f_fa1b6341",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-14T01:43:36Z",
+      "side": 1,
+      "message": "I think we can drop this line?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 46
+      },
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
