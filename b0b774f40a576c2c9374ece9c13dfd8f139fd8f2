@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ab7b41bc_ce0b1e69",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-14T04:27:43Z",
+      "side": 1,
+      "message": "Yes, this is redundant.\nBut it\u0027s not for the error case, its purpose is to clear out the 2 high bytes in normal case.\n(i2c_read16 also does this for us, just put here for safety in case of i2c_read16 changes its behavior.)",
+      "parentUuid": "dd3ef8b4_72d1a32b",
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdf661c8_cc001fc6",
         "filename": "driver/battery/mm8013.c",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ee76a7eb_a60dc865",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-14T04:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdf661c8_cc001fc6",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "881d922f_fa1b6341",
         "filename": "driver/battery/mm8013.c",
         "patchSetId": 9
@@ -53,6 +95,30 @@
       "writtenOn": "2019-02-14T01:43:36Z",
       "side": 1,
       "message": "I think we can drop this line?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 46
+      },
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603f3517_6cc97177",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-02-14T04:27:43Z",
+      "side": 1,
+      "message": "no, this is required to convert a 16 bit unsigned int to a signed value.\n(i2c_read16 returns a 16 bit unsigned int inside a signed 32 bit int...)\nBut I should have a less confusing way to do this.",
+      "parentUuid": "881d922f_fa1b6341",
       "range": {
         "startLine": 187,
         "startChar": 0,
