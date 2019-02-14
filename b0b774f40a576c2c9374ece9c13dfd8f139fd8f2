@@ -128,6 +128,30 @@
       "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642c85fb_05936a90",
+        "filename": "driver/battery/mm8013.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-14T04:33:29Z",
+      "side": 1,
+      "message": "Ack.\n\nBut I see it is a signed integer in the datasheet.\n\nAverage Current [0x14/0x15]\nThis command returns the average current which flows into a battery or out from a battery.\nData Type: signed integer\nUnit: [mA]",
+      "parentUuid": "603f3517_6cc97177",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 46
+      },
+      "revId": "b0b774f40a576c2c9374ece9c13dfd8f139fd8f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
