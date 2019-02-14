@@ -14,58 +14,20 @@
 
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 {
-	int bit, mode_reg_index, shift;
-	uint32_t mode_bits, mode_mask;
-
-	/* Up to 8 alt functions per port */
-	if (func > 7)
-		return;
-
-	while (mask) {
-		/* 32 gpio per port */
-		bit = get_next_bit(&mask);
-		/* 8 gpio per mode reg */
-		mode_reg_index = (port << 2) | (bit >> 3);
-		/*
-		 * b[3]   - write enable(?)
-		 * b[2:0] - mode
-		 */
-		shift = (bit & 7) << 2;
-		mode_bits = func << shift;
-		mode_mask = ~(0xf << shift);
-		AP_GPIO_MODE(mode_reg_index) = (AP_GPIO_MODE(mode_reg_index) &
-						mode_mask) | mode_bits;
-	}
 }
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
-	return !!(AP_GPIO_DIN(gpio_list[signal].port) &
-		  gpio_list[signal].mask);
+	return 0;
 }
 
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
-	if (value)
-		AP_GPIO_DOUT(gpio_list[signal].port) |= gpio_list[signal].mask;
-	else
-		AP_GPIO_DOUT(gpio_list[signal].port) &= ~gpio_list[signal].mask;
 }
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
-	/* Set input/output mode */
-	if (flags & GPIO_OUTPUT) {
-		/* Set level before changing to output mode */
-		if (flags & GPIO_HIGH)
-			AP_GPIO_DOUT(port) |= mask;
-		if (flags & GPIO_LOW)
-			AP_GPIO_DOUT(port) &= ~mask;
-		AP_GPIO_DIR(port) |= mask;
-	} else {
-		AP_GPIO_DIR(port) &= ~mask;
-	}
 
 	if (flags & (GPIO_INT_F_RISING | GPIO_INT_F_HIGH))
 		SCP_EINT_POLARITY_SET[port] = mask;
