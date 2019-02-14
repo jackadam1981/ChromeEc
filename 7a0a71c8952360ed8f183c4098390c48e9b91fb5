@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7be3397f_33b41451",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-14T15:43:02Z",
+      "side": 1,
+      "message": "This is ok to use int. Better be int for consistency.",
+      "range": {
+        "startLine": 308,
+        "startChar": 43,
+        "endLine": 308,
+        "endChar": 50
+      },
+      "revId": "7a0a71c8952360ed8f183c4098390c48e9b91fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c85eb664_e354255c",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-14T15:43:02Z",
+      "side": 1,
+      "message": "Let\u0027s use one variable (uint16_t offset) for both.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 1,
+        "endLine": 1005,
+        "endChar": 20
+      },
+      "revId": "7a0a71c8952360ed8f183c4098390c48e9b91fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9eaae1_d051e2a2",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-14T15:43:02Z",
+      "side": 1,
+      "message": "Please do:\n  offset_size \u003d (strlen(argv[4]) \u003d\u003d 6) ? 2 : 1;",
+      "range": {
+        "startLine": 1023,
+        "startChar": 8,
+        "endLine": 1023,
+        "endChar": 32
+      },
+      "revId": "7a0a71c8952360ed8f183c4098390c48e9b91fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1153ed82_95325e57",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-14T15:43:02Z",
+      "side": 1,
+      "message": "if (offset_size \u003d\u003d 2)\n  ...\nelse\n  ...",
+      "range": {
+        "startLine": 1038,
+        "startChar": 16,
+        "endLine": 1038,
+        "endChar": 40
+      },
+      "revId": "7a0a71c8952360ed8f183c4098390c48e9b91fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
