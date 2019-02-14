@@ -100,6 +100,7 @@ UC_CHIP_FAMILY:=$(call uppercase,$(CHIP_FAMILY))
 UC_CHIP_VARIANT:=$(call uppercase,$(CHIP_VARIANT))
 UC_CORE:=$(call uppercase,$(CORE))
 UC_PROJECT:=$(call uppercase,$(PROJECT))
+UC_VBOOT:=$(call uppercase,$(VBOOT))
 
 # Transform the configuration into make variables.  This must be done after
 # the board/baseboard/project/chip/core variables are defined, since some of
@@ -188,6 +189,10 @@ $(eval CHIP_VARIANT_$(UC_CHIP_VARIANT)=y)
 $(eval CHIP_FAMILY_$(UC_CHIP_FAMILY)=y)
 ifneq ($(FLASH_SIZE),)
 CFLAGS_DEFINE+= -DCONFIG_FLASH_SIZE=$(FLASH_SIZE)
+endif
+ifneq ($(UC_VBOOT),)
+$(eval CONFIG_VBOOT_$(UC_VBOOT)=y)
+CFLAGS_DEFINE+= -DCONFIG_VBOOT_$(UC_VBOOT)
 endif
 
 # Private subdirectories may call this from their build.mk

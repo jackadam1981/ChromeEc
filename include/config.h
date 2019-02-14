@@ -3708,8 +3708,13 @@
 
 /*****************************************************************************/
 
-/* Support early firmware selection */
-#undef CONFIG_VBOOT_EFS
+/*
+ * Enable Early Firmware Selection
+ *
+ * #undef CONFIG_VBOOT_EFS
+ *
+ * This should be defined in board's build.mk.
+ */
 
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
