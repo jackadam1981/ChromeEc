@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "49f92cb5_6bb944ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T00:12:12Z",
+      "side": 1,
+      "message": "add description, BUG id, TEST and BRANCH.\nuse --verify option of repo upload --br ...",
+      "revId": "d1cbedebf189be3fc8b7409681e6b6be5dee01a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b882647_e7a4dc7e",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 2
