@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "27dc7bca_cfe9694e",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2019-02-14T21:10:14Z",
+      "side": 1,
+      "message": "\u0027enum pd_cc_states\u0027 doesn\u0027t encode DP alt mode DFP_D pin assignment (rightfully so, I think) so pd_get_cc_state() doesn\u0027t help you at all. Take a look at pd_dfp_dp_get_pin_mode() and how it is used in board usb_pd_policy files instead.\n\nFor a recent non-Intel Chromebook project, we determined we only cared about supporting pin assignment C and E, and we were able to get away with not sharing pin assignment with the host (see https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/phy/phy-rockchip-typec.c#832) (check with bleung@ to see if it\u0027s still the case). Does only supporting pin assignment C and E make this CL much simpler, or maybe not even necessary at all?",
+      "parentUuid": "68be81ca_bb6bccff",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1499921f_b8ecfdf9",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
