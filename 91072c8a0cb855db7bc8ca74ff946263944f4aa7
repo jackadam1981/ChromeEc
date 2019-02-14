@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "5893982e_25859925",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-14T21:29:51Z",
+      "side": 1,
+      "message": "Following additional configs are needed for Intel MUX configuration than in r-\u003eflags.\n1. role UFP/DP from ec_response_usb_pd_control_v1\n2. DP mode from ec_params_usb_pd_get_mode_response vdo[0] has the info of it\n3. need debug accessory mode info - 1 bit is okay for both Audio \u0026 Debug acc\n4. need cable type (emark/regular) - 1 bit is okay\n\nif we add cc_state we can remove calling ec_response_usb_pd_control_v1 (it will cover 1 \u0026 3)\nDP mode can be clubbed with cc_state (it will cover 2)\ncable type can be added in r-\u003eflags (it will cover 4)",
+      "parentUuid": "27dc7bca_cfe9694e",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1499921f_b8ecfdf9",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
