@@ -22,6 +22,46 @@
       "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689e6e88_9c9df378",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T05:13:52Z",
+      "side": 1,
+      "message": "what\u0027s the reasoning behind this?",
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4696e916_1a77ebc7",
+        "filename": "include/config.h",
+        "patchSetId": 48
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-14T05:13:52Z",
+      "side": 1,
+      "message": "If this is the case, why not automatically define it for users.\n\nAlso, can you name this \u0027CONFIG_USB_TYPEC_SM\u0027 like the other state machine options?",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 23
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
