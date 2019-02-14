@@ -188,6 +188,30 @@
       "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0391b58b_303ac08a",
+        "filename": "chip/ish/system_state_subsys.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-14T00:36:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f20e880c_46ae19a5",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "6cd5c0efa7dc0713a53392695f639d2351f23698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

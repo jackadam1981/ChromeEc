@@ -22,6 +22,30 @@
       "revId": "e7e4045d461818c01072404dc8a03973bb1f4924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00d6ef79_6fd5093d",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-14T00:36:15Z",
+      "side": 1,
+      "message": "After suspend, VNN_REQ is cleared, we have req host write power, otherwise  handle_msg_recv_interrupt() can not retrieve doorbell/message. Then resume() will not be called.",
+      "parentUuid": "22bbd7dc_86bad365",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 6
+      },
+      "revId": "e7e4045d461818c01072404dc8a03973bb1f4924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

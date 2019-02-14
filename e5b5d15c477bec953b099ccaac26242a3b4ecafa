@@ -45,6 +45,30 @@
       "revId": "e5b5d15c477bec953b099ccaac26242a3b4ecafa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c07df19_c84e5d7d",
+        "filename": "chip/ish/system_state_subsys.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-14T00:36:15Z",
+      "side": 1,
+      "message": "Ah, Yes, you\u0027re right. I overlooked the sequence. Thanks.",
+      "parentUuid": "377cd180_56e0b8f2",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 6
+      },
+      "revId": "e5b5d15c477bec953b099ccaac26242a3b4ecafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
