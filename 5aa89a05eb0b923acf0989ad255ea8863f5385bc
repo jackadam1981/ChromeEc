@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b5e46cd8_7b086ef8",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T23:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed444e0b_866dfea2",
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70acfa67_a0d964c0",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 1
@@ -105,6 +123,24 @@
       "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c70ffe_22eac6a7",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T23:55:17Z",
+      "side": 1,
+      "message": "See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1474576",
+      "parentUuid": "60db44d6_6e87b9a8",
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "af6476cc_c93061b0",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T23:55:17Z",
+      "side": 1,
+      "message": "Just squelching the warning for now in the makefile: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1474577/1/core/cortex-m/build.mk",
+      "parentUuid": "7b0881b5_1e224d12",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 16
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c83519d7_329fcd7d",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
@@ -249,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "dcc9b46e_0501a2b7",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T23:55:17Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1474577",
+      "parentUuid": "b695b078_da94ef9d",
+      "range": {
+        "startLine": 372,
+        "startChar": 34,
+        "endLine": 372,
+        "endChar": 47
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "085454fd_b4b46c6c",
         "filename": "core/cortex-m/panic.c",
         "patchSetId": 1
@@ -293,6 +377,30 @@
       "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bde3aca_82ac676b",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T23:55:17Z",
+      "side": 1,
+      "message": "Renamed",
+      "parentUuid": "38c0c1e4_da531446",
+      "range": {
+        "startLine": 386,
+        "startChar": 6,
+        "endLine": 386,
+        "endChar": 9
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -388,6 +496,30 @@
       "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a434733d_70e347e8",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-14T23:55:17Z",
+      "side": 1,
+      "message": "I\u0027d like to do this, but there are quite a few changes already.",
+      "parentUuid": "59731881_8da06944",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "5aa89a05eb0b923acf0989ad255ea8863f5385bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
