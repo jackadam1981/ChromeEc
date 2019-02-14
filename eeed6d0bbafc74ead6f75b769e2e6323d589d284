@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7836fcc_e4af008e",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-14T21:37:45Z",
+      "side": 1,
+      "message": "Requires hardware rework for these features, right? Probably not merge it to the tree until we have the hardware fixed.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "eeed6d0bbafc74ead6f75b769e2e6323d589d284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
