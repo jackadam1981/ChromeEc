@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2307da03_fa16c7dc",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:29:54Z",
+      "side": 1,
+      "message": "Let\u0027s also add a comment that says we write the block of data twice to cutoff the battery",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e430bad0_0b91b445",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:29:54Z",
+      "side": 1,
+      "message": "we can just return rv here (we should convert it to EC_RES_ error space)\n\nhere and all other new code added (i.e. lines 116, 131, and 137)",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398e57f5_fc2881b3",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:29:54Z",
+      "side": 1,
+      "message": "can drop the \u0027\u003d\u003d 1\u0027",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 151,
+        "endChar": 66
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14446715_3ee54496",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:29:54Z",
+      "side": 1,
+      "message": "instead of passing type into both of these functions, let pass in \n\n\u0026board_battery_info[type].fuel_gauge.ship_mode\n\nto limit the scope of data that the functions have access to",
+      "range": {
+        "startLine": 152,
+        "startChar": 35,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bba54a_140b01e0",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T17:29:54Z",
+      "side": 1,
+      "message": "similar to the sb_write method, should we add a section for that uses smbus_write_block if SMBus is defined?",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 23
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
