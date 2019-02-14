@@ -46,6 +46,30 @@
       "revId": "232c261f933c51418fffbe4db0ea0921288fbc09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c30433_4025294a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2184,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T21:49:02Z",
+      "side": 0,
+      "message": "haha, a lot of cooks in the kitchen it seems.\n\nI would interpret was he meant to be to only check the disconnected state since it is the superset check (and if it isn\u0027t defined fallback on the existing check)\n\nlike \n\n#ifdef disconnect\n  pd_try_src_enable \u0026\u003d (battery_get_disconnect_state() \u003d\u003d\n\t\t    BATTERY_NOT_DISCONNECTED);\n#elif defined(CONFIG_BATTERY_PRESENT_CUSTOM) || \\\n\tdefined(CONFIG_BATTERY_PRESENT_GPIO)\n  pd_try_src_enable \u0026\u003d (battery_is_present() \u003d\u003d BP_YES);\n#endif\n\n\npersonally, I like keeping them independent, but I am okay either way. I\u0027ll let Daisuke comment.",
+      "parentUuid": "a78fa1c4_115ba571",
+      "range": {
+        "startLine": 2184,
+        "startChar": 1,
+        "endLine": 2184,
+        "endChar": 55
+      },
+      "revId": "232c261f933c51418fffbe4db0ea0921288fbc09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
