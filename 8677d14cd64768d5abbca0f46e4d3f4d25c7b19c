@@ -316,6 +316,23 @@
     },
     {
       "key": {
+        "uuid": "e44c7415_2ef27202",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T00:16:35Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d9a7903_c59db568",
         "filename": "common/motion_sense_hid.c",
         "patchSetId": 5
@@ -419,6 +436,23 @@
       "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a62b64e8_c9088633",
+        "filename": "include/motion_sense_hid.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-14T00:16:35Z",
+      "side": 1,
+      "message": "This register actually belongs to ec_commands.h, as it is share with ACPI to tell which register to use get a description. See http://download.microsoft.com/download/7/d/d/7dd44bb7-2a7a-4505-ac1c-7227d3d96d5b/hid-over-i2c-protocol-spec-v1-0.docx  section 10.1",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
