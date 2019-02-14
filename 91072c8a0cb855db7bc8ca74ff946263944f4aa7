@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1c797afd_56db7c3e",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-14T19:46:02Z",
+      "side": 1,
+      "message": "For Intel specific purpose, we are getting the DP mode configuration i.e. A/B/C/D/E/F from amode. Similarly, we are planning to get all the USB mux related information through single host command and we are so getting the cc state info from the usb_pd_protocol.",
+      "parentUuid": "c2926419_7747be7c",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1499921f_b8ecfdf9",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I just need the current CC state of the USB_PD mux. I don\u0027t think there is any host command which is giving out this information. I can change it as enum pd_cc_states for the host command to decode the value.",
       "parentUuid": "1499921f_b8ecfdf9",
+      "range": {
+        "startLine": 4957,
+        "startChar": 1,
+        "endLine": 4957,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1145a7ce_b5d738a5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4957,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-14T19:46:02Z",
+      "side": 1,
+      "message": "The new USB_PD_MUX flag has 3 unused bits and the pd_cc_state enum is also needs 3 bit. So is the pd_cc_state enum going to expand more than 3 bits? If not, I can encode it in the new USB_PD_MUX flag itself.",
+      "parentUuid": "e73a414c_408fa922",
       "range": {
         "startLine": 4957,
         "startChar": 1,
