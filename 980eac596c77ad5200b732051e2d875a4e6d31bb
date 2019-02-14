@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "29d44609_e055532d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-14T22:12:55Z",
+      "side": 1,
+      "message": "our driver/file naming for sensors is starting to get a little whacky.\n\nI really think we need to take a step back soon and revamp how drivers are named and reused\n\n(this comment does not block this CL)",
+      "range": {
+        "startLine": 4185,
+        "startChar": 8,
+        "endLine": 4185,
+        "endChar": 33
+      },
+      "revId": "980eac596c77ad5200b732051e2d875a4e6d31bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c49c631_217f8daa",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
