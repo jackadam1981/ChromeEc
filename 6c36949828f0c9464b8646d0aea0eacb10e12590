@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8ab86ba_b752762a",
+        "filename": "board/kukui_scp/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-15T11:57:58Z",
+      "side": 1,
+      "message": "So, the problem here is that the compiler assumes that uint32_t *capabilities is actually aligned. But it\u0027s not guaranteed to be...\n\nTBH, the console command is just for debugging, so I\u0027d get rid of this function, and just move the code into ec_codec_wov_get_capabilities .",
+      "revId": "6c36949828f0c9464b8646d0aea0eacb10e12590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
