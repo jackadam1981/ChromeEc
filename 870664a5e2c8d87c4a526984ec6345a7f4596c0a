@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6ea0396_edb42fed",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:32:13Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this be something that is variant specific? Or do you plan to clean that up later?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "870664a5e2c8d87c4a526984ec6345a7f4596c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
