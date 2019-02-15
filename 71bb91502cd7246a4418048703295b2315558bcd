@@ -46,6 +46,30 @@
       "revId": "71bb91502cd7246a4418048703295b2315558bcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c88fe99_748f493c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T03:45:04Z",
+      "side": 1,
+      "message": "I was wondering if pkg-config returns \u0027-lftdi -lusb-1.0\u0027. If so, you would supply two \u0027-lusb-1.0\u0027 to BUILD_CFLAGS. Is pkg-config smart enough to remove duplicates if you run \u0027pkg-config --libs libftdi1 libusb-1.0\u0027?\n\nAs long as you know it won\u0027t break builds in older distros, I\u0027m fine with the duplicate.",
+      "parentUuid": "c12771b2_295e9f4e",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 57
+      },
+      "revId": "71bb91502cd7246a4418048703295b2315558bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
