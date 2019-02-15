@@ -200,11 +200,21 @@
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
+#define FLAPJACK_SKUID_DEF1 0x2
+#define FLAPJACK_SKUID_DEF2 0xFF
+
 #ifndef __ASSEMBLER__
 
 enum oem_id {
 	PROJECT_FLAPJACK = 0,
 	PROJECT_COUNT,
+};
+
+enum board_type {
+	BOARD_DEFAULT = 0,
+	BOARD_C18,
+	BOARD_C19,
+	BOARD_UNKNOWN,
 };
 
 enum adc_channel {
