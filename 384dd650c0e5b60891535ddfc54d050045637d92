@@ -46,6 +46,30 @@
       "revId": "384dd650c0e5b60891535ddfc54d050045637d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa53f0ab_9dd79340",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-15T20:50:42Z",
+      "side": 1,
+      "message": "I didn\u0027t quite understand your last comment. Let me know if this addresses it:\n\nIn one of code iterations, I did not have this do ... while loop. I only armed the timer, then waited for the timer to settle. In that iteration, I \"missed\" a timer event within ~2 hours. Once the timer1 event is missed, the entire OS scheduling stops working.\n\nWhat I mean by \"missing\" a timer event is that the code calls __hw_clock_event_set with a deadline in the future and this function execute to completion, but the timer1 IRQ never fires, and when I look at the system later, timer1 is not enabled (i.e. HPET_Tn_INT_ENB_CNF is unset). In that situation, if I manually fire the IRQ for timer1, then the task scheduling can start running again for a little while.\n\nAdding the extra do...while loop seemed to fix the issue I was seeing where the timer was never enabled and was being \"missed\".",
+      "parentUuid": "57a90f14_3209d42c",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "384dd650c0e5b60891535ddfc54d050045637d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
