@@ -22,6 +22,30 @@
       "revId": "16abc1ec668a5b02739ab2867b4ad1b4020e6e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d7a766_f198d529",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-15T22:26:07Z",
+      "side": 1,
+      "message": "So the default value can change without changing the flag interface, and so that callers can set it explicitly regardless of current default.\n\nCould do that via separate --i2c-mux and --no-i2c-mux options.  Or however you prefer.  I don\u0027t have much of a preference.  I suggested this form to match -W / --send-waveform, which is the only other boolean option that can be configured either way currently.\n\nIf this is changed to --i2c-mux + --no-i2c-mux, or some other form, please update -W / --send-waveform to match.",
+      "parentUuid": "d7e343c9_ad3d572e",
+      "range": {
+        "startLine": 1733,
+        "startChar": 7,
+        "endLine": 1733,
+        "endChar": 8
+      },
+      "revId": "16abc1ec668a5b02739ab2867b4ad1b4020e6e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
