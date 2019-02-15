@@ -33,3 +33,35 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_EINT7_TP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+#include "watchdog.h"
+
+static int command_busytest(int argc, char **argv)
+{
+	int i, j, k;
+	const int it = 40000;
+	const int len = 0x100;
+	char buffer[len];
+	timestamp_t start;
+	uint64_t val;
+
+	for (j = 0; j < len; j++)
+		buffer[j] = j;
+
+	for (k = 0; k < 20; k++) {
+		start = get_time();
+		val = 0;
+		for (i = 0; i < it; i++) {
+			for (j = 0; j < len; j++)
+				val += buffer[j];
+		}
+		ccprintf("direct: %d us (val: %lx)\n", time_since32(start), val);
+		cflush();
+		watchdog_reload();
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(busytest, command_busytest,
+			     NULL,
+			     "Busy loop");
