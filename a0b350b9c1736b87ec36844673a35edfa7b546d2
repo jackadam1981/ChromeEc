@@ -34,6 +34,24 @@
       "revId": "a0b350b9c1736b87ec36844673a35edfa7b546d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fd82ab_a9b0e80b",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-15T06:15:24Z",
+      "side": 1,
+      "message": "That was more of an observation than something to address ,-)\n\nI guess we\u0027ll have to lock all the AP register space. There are still bad things you could do even if you had access to AP_GPIO_DOUT...",
+      "parentUuid": "f951d0ba_c4f656f3",
+      "revId": "a0b350b9c1736b87ec36844673a35edfa7b546d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
