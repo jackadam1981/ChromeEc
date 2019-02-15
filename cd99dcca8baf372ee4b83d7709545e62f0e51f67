@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cdd851d_aac27f2d",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-02-15T23:35:13Z",
+      "side": 1,
+      "message": "nit: avoid go links to public docs in comments, so external users can also access them. Can you put the full URL instead?",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "cd99dcca8baf372ee4b83d7709545e62f0e51f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
