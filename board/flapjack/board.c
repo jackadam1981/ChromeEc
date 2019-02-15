@@ -53,6 +53,42 @@ uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
 
+int board_type(void)
+{
+	if (sku == 2||sku == 3) {
+		return BOARD_C18;
+	} else if (sku == 5||sku == 6) {
+		return BOARD_C19;
+	}
+	return BOARD_UNKNOW;
+}
+
+void board_update_backlight_from_sku(void)
+{
+
+	switch (board_type()) {
+	case BOARD_C18 :
+		/* Enable backlight channel and set dim for C18*/
+		update_backlight(0xFA, 0xC8);
+		break;
+	case BOARD_C19:
+		/* Enable backlight channel and set dim for C19*/
+		update_backlight(0xFE, 0xC4);
+		break;
+	default:
+		update_backlight(0xFE, 0xC4);
+		break;
+	}
+}
+
+void update_backlight(uint8_t channel,uint8_t dim)
+{
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA0, channel);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA5, dim);
+	/* Enable PWM_backlight */
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA2, 0xAC);
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -68,6 +104,7 @@ static void cbi_init(void)
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
 	CPRINTS("SKU: 0x%08x", sku);
+	board_update_backlight_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
