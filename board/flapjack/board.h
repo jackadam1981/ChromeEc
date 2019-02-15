@@ -207,6 +207,13 @@ enum oem_id {
 	PROJECT_COUNT,
 };
 
+enum board_type {
+	BOARD_UNKNOWN = 0,
+	BOARD_C18,
+	BOARD_C19,
+	BOARD_DEFAULT,
+};
+
 enum adc_channel {
 	/* Real ADC channels begin here */
 	ADC_BOARD_ID = 0,

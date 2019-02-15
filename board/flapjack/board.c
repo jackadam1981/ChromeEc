@@ -53,6 +53,53 @@ uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
 
+/*  TODO: replace with actual sku id. */
+static const int SKUID_C18[] = {0x12};
+static const int SKUID_C19[] = {0x13};
+
+static int board_type(void)
+{
+	int i;
+
+	if (sku == 0x2 || sku == 0xFF)
+		return BOARD_DEFAULT;
+
+	for(i = 0; i < ARRAY_SIZE(SKUID_C18); i++) {
+		if (sku == SKUID_C18[i])
+			return BOARD_C18;
+	}
+
+	for(i = 0; i < ARRAY_SIZE(SKUID_C19); i++) {
+		if (sku == SKUID_C19[i])
+			return BOARD_C19;
+	}
+
+	return BOARD_UNKNOWN;
+}
+
+static void board_update_backlight_from_sku(void)
+{
+	uint8_t channel = 0xFE;
+	uint8_t dim = 0xC4;
+
+	switch (board_type()) {
+	case BOARD_C18:
+		/* Enable backlight channel and set dim for C18*/
+		channel = 0xFA;
+		dim = 0xC8;
+		break;
+	case BOARD_C19:
+		/* Enable backlight channel and set dim for C19*/
+	case BOARD_DEFAULT:
+	default:
+		break;
+	}
+
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA0, channel);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA5, dim);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA2, 0xAC);
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -68,6 +115,7 @@ static void cbi_init(void)
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
 	CPRINTS("SKU: 0x%08x", sku);
+	board_update_backlight_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
