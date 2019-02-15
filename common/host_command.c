@@ -950,7 +950,8 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 #ifdef CONFIG_HOSTCMD_ESPI_OOB
 static int command_espioob_initrtc(int argc, char **argv)
 {
-	int ret;
+	int i, oob_len, ret;
+	uint32_t *evt;
 
 	/* TODO: Add data */
 	espi_oob_data[0] = 0x07; /* cycle type */
@@ -962,6 +963,18 @@ static int command_espioob_initrtc(int argc, char **argv)
 	espi_oob_data[6] = 0x1f; /* SMBus source addr */
 
 	ret = espi_oob_send(espi_oob_data);
+
+	if (ret == EC_SUCCESS) {
+		evt = task_get_event_bitmap(task_get_current());
+		if (*evt & TASK_EVENT_ESPI_OOB_RECEIVE) {
+			oob_len = espi_oob_receive(espi_oob_data);
+			for (i = 0; i < oob_len; i++)
+				ccprints("received oob_data[%d] = 0x%x",
+					i, espi_oob_data[i]);
+		}
+	} else if (ret == EC_ERROR_TIMEOUT || ret == EC_ERROR_ACCESS_DENIED)
+		ccprints("retry later");
+
 	return ret;
 }
 DECLARE_CONSOLE_COMMAND(initrtc, command_espioob_initrtc,

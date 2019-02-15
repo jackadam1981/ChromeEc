@@ -21,6 +21,10 @@
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
 #define ESPI_UPSTREAM_MAX_LENGTH 80
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+static task_id_t current_task_id;
+#endif
+
 struct vw_channel_t {
 	uint8_t  index;         /* VW index of signal */
 	uint8_t  level_mask;    /* level bit of signal */
@@ -571,7 +575,7 @@ int espi_oob_receive(uint8_t *oob_data)
 
 enum ec_error_list espi_oob_send(uint8_t *oob_data)
 {
-	int i;
+	int i, events;
 	uint16_t oob_len = oob_data[2] | (oob_data[1] & 0x0F) << 4;
 
 	/* If upstream busy or eSPI master disable OOB channel then return */
@@ -605,6 +609,13 @@ enum ec_error_list espi_oob_send(uint8_t *oob_data)
 	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_EN;
 	/* Set upstream go */
 	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_GO;
+
+	current_task_id = task_get_current();
+	events = task_wait_event_mask(TASK_EVENT_ESPI_OOB_SEND_DONE, 10*MSEC);
+	/* Handle timeout */
+	if (!(events & TASK_EVENT_ESPI_OOB_SEND_DONE))
+		return EC_ERROR_TIMEOUT;
+
 	return EC_SUCCESS;
 }
 #endif
@@ -642,7 +653,8 @@ void espi_interrupt(void)
 	if (IT83XX_ESPI_ESOCTRL0 & ESPI_INTERRUPT_EVENT_PUT_OOB) {
 		/* disable OOB interrupt */
 		IT83XX_ESPI_ESOCTRL1 &= ~ESPI_INTERRUPT_PUT_OOB_EN;
-		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_ESPI_OOB_RECEIVE, 0);
+		task_set_event(current_task_id, TASK_EVENT_ESPI_OOB_RECEIVE, 0);
+		ccprints("ESPI_INTERRUPT_EVENT_PUT_OOB");
 	}
 
 	/* eSPI OOB upstream done asserted */
@@ -650,8 +662,9 @@ void espi_interrupt(void)
 		reg = IT83XX_ESPI_ESUCTRL0 & ~ESPI_UPSTREAM_CHANNEL_DIS;
 		/* write-1-clear upstream done event */
 		IT83XX_ESPI_ESUCTRL0 = reg;
-		task_set_event(TASK_ID_HOSTCMD,
-			TASK_EVENT_ESPI_OOB_SEND_DONE, 0);
+		task_set_event(current_task_id,
+				TASK_EVENT_ESPI_OOB_SEND_DONE, 0);
+		ccprints("ESPI_UPSTREAM_INTERRUPT_EVENT_DONE");
 	}
 #endif
 
