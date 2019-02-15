@@ -70,6 +70,30 @@
       "revId": "16abc1ec668a5b02739ab2867b4ad1b4020e6e62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c120b2c3_1704c990",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-15T23:46:52Z",
+      "side": 1,
+      "message": "I revert it to have simply \u0027-m\u0027.\n\nNow I understand matthewb@\u0027s comment on specifying explicitly boolean type: If the default value should be changed in future, then the existence of parameter also should be translated into a different meaning.\n\nHowever, we already have the mixed style among boolean parameters in iteflash.\n\u0027--debug\u0027 simply enables the debug mode, and is not likely to have the default value changed in future. Likewise \u0027--i2c_mux\u0027 would simply enable i2c_mux, and the default value should not be changed, I believe.",
+      "parentUuid": "e142908d_2fae7896",
+      "range": {
+        "startLine": 1733,
+        "startChar": 7,
+        "endLine": 1733,
+        "endChar": 8
+      },
+      "revId": "16abc1ec668a5b02739ab2867b4ad1b4020e6e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
