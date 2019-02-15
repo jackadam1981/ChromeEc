@@ -16,6 +16,24 @@
       "revId": "5c1108d012386c1b1b421ea1359ced0f092ddbf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f62b7b_be52d6a3",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2019-02-15T09:27:03Z",
+      "side": 1,
+      "message": "Done.\nDidn\u0027t see a register for force reset in FreeRTOS code, so added code to make deadline close.",
+      "parentUuid": "f6384209_47ea1167",
+      "revId": "5c1108d012386c1b1b421ea1359ced0f092ddbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
