@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eeb1ae9_7c332e47",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Nothing is using the return value.",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "f78d279560fe3ae7b99780afe2eb144e890829d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4d95d4_6214b2bc",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "These three functions can be combined into one:\n\nstatic void pi3usb9201_rmw(int port, int offset, int mask, int value)\n{\n    int reg;\n    if (raw_read8(port, offset, \u0026reg))\n        return;\n\n    reg \u0026\u003d ~mask;\n    reg |\u003d value;\n\n    raw_write8(port, offset, reg);\n}",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "f78d279560fe3ae7b99780afe2eb144e890829d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a855f07_78cdb66e",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "f78d279560fe3ae7b99780afe2eb144e890829d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d94a4ae_175bcd45",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "this too.",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 10
+      },
+      "revId": "f78d279560fe3ae7b99780afe2eb144e890829d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff756a1d_1087e74d",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Is this case needed? It would just default to 500 if this case is not added.",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 13
+      },
+      "revId": "f78d279560fe3ae7b99780afe2eb144e890829d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06466be4_87811041",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Probably add index to indicate that this array basically corresponds to the bits in reg client status register. Something like:\n\n[PI3USB9201_REG_CLIENT_STS_CHG_OTHER] \u003d {CHARGER_SUPPLIER_OTHER, 500}\n...\n\nYou will have to change definition of macro PI3USB9201_REG_CLIENT_STS_CHG_OTHER and rest to remove (1 \u003c\u003c) and just have the bit #.",
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b6dad0_d628feb9",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Since the three functions here seem to be doing something very similar, do you think it makes sense to provide a helper function:\n\nstatic int pi3usb9201_rmw(int port, int reg, int mask, int val)\n{\n    ...\n\n    rv \u003d raw_read8(port, reg, \u0026reg_val);\n    if (rv)\n        return rv;\n\n     reg_val \u0026\u003d ~mask;\n     reg_val |\u003d val;\n\n     return raw_write8(port, reg, reg_val);\n}\n\nand then have:\nstatic int pi3usb9201_interrupt_mask(int port, int enable)\n{\n    return pi3usb9201_rmw(port, PI3USB9201_REG_CTRL_1, PI3USB9201_REG_CTRL_1_INT_MASK, enable \u003c\u003c PI3USB9201_REG_CTRL_1_INT_SHIFT);\n}",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9a17ff9_ffe0fdac",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Nothing is using the return values of these functions. Did you intend to use those to check for errors in caller?",
+      "range": {
+        "startLine": 61,
+        "startChar": 7,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dc07b39_ac15b89c",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "supplier",
+      "range": {
+        "startLine": 131,
+        "startChar": 21,
+        "endLine": 131,
+        "endChar": 29
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb289eb_e0f472a1",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "else if (vbus)",
+      "range": {
+        "startLine": 190,
+        "startChar": 6,
+        "endLine": 190,
+        "endChar": 40
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a412b086_ae09b74f",
+        "filename": "driver/bc12/pi3usb9201.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Are these expected to be used outside pi3usb9201.c? If not, then these should be moved to the .c file.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f123204_09b3fa73",
+        "filename": "driver/bc12/pi3usb9201.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "So the mask is 3 bits and PI3USB9201_REG_CTRL_1_INT_MODE is just 1 bit? Are there multiple modes defined by bits 4:1? And why does it not use (1 \u003c\u003c PI3USB9201_REG_CTRL_1_INT_MODE_BIT_SHIFT)\n\nAlso, the mask above seems to be a mask with shift but this is without shift? It might be better to have consistent mask definitions.",
+      "range": {
+        "startLine": 34,
+        "startChar": 44,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0126dc12_a0162335",
+        "filename": "driver/bc12/pi3usb9201.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-15T09:30:41Z",
+      "side": 1,
+      "message": "Probably prefix pi3usb2901_?",
+      "range": {
+        "startLine": 61,
+        "startChar": 40,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "b34c21252c47b52a3865bbc272080bd3bdb68df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
