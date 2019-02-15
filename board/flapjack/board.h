@@ -200,6 +200,14 @@
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
+#define PANEL_SIZE_MASK	0x2
+#define BL_CHANNEL3	0xFA
+#define BL_CHANNEL4	0xFE
+#define BL_C18_DIM	0xC8
+#define BL_C19_DIM	0xC4
+#define BL_PWM_EN	0xAC
+
+
 #ifndef __ASSEMBLER__
 
 enum oem_id {
