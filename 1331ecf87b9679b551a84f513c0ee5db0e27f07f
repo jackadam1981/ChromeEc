@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "490af2ab_5b0c5a85",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-15T22:03:20Z",
+      "side": 1,
+      "message": "I don\u0027t think there is anything CCD-specific about this option, nor anything specific to an i2c-interface setting.\n\n(I\u0027m considering use of CCD a separate dimension from --i2c-interface\u003dccd because once https://crrev.com/c/1301154 is in place, CCD will also work with --i2c-interface\u003di2c-dev.)\n\nI think it\u0027s worth explaining this is equivalent to using dut-control dut_i2c_mux, and that this option should only be used when not using servod.",
+      "range": {
+        "startLine": 1643,
+        "startChar": 25,
+        "endLine": 1643,
+        "endChar": 54
+      },
+      "revId": "1331ecf87b9679b551a84f513c0ee5db0e27f07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db188557_c457de95",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-15T22:03:20Z",
+      "side": 1,
+      "message": "The config struct is just for options which are actually configurable.  There is no option for changing i2_mux_addr, so doesn\u0027t need to be here.  Just use I2C_MUX_CMD_ADDR_DEFAULT directly in config_i2c_mux().",
+      "revId": "1331ecf87b9679b551a84f513c0ee5db0e27f07f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
