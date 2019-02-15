@@ -22,6 +22,30 @@
       "revId": "fb10052a676a5621bc78d1c784c476958c11cd30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb16b8b_43039a87",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-15T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125bd062_c8a1d166",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "fb10052a676a5621bc78d1c784c476958c11cd30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
