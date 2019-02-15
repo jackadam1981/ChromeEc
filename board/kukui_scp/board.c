@@ -33,3 +33,60 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_EINT7_TP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+#include "watchdog.h"
+
+#define DWT_CONTROL REG32(0xE0001000)
+#define DWT_CYCCNT REG32(0xE0001004)
+#define DEMCR REG32(0xE000EDFC)
+
+static void busy(void) {
+	int i, j;
+	const int it = 5000;
+	const int len = 0x100;
+	char buffer[len];
+	timestamp_t start;
+	uint32_t cyc;
+	volatile uint64_t val;
+
+	DEMCR |= 0x01000000;
+	DWT_CONTROL &= ~1;
+	DWT_CYCCNT = 0;
+
+	start = get_time();
+	DWT_CONTROL |= 1;
+	for (j = 0; j < len; j++)
+		buffer[j] = j;
+
+	val = 0;
+	for (i = 0; i < it; i++) {
+		for (j = 0; j < len; j++)
+			val += buffer[j];
+	}
+	cyc = DWT_CYCCNT;
+	ccprintf("busyloop: %d us (val: %lx) cyc: %d\n", time_since32(start), val, cyc);
+	cflush();
+}
+
+static int command_busytest(int argc, char **argv)
+{
+	int k;
+
+	for (k = 0; k < 20; k++) {
+		busy();
+		watchdog_reload();
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(busytest, command_busytest,
+			     NULL,
+			     "Busy loop");
+
+static void busy_loop(void);
+DECLARE_DEFERRED(busy_loop);
+static void busy_loop(void) {
+	busy();
+//	hook_call_deferred(&busy_loop_data, 1*MSEC);
+}
+DECLARE_HOOK(HOOK_INIT, busy_loop, HOOK_PRIO_LAST);
