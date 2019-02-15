@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47fb721b_1aabd358",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "This should be a const (or better be removed).",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f5ed97_9c9e1a55",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "Why not sizeof?",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c15308f_a0ba4213",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "Please merge.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b912b8_72a341e3",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "You don\u0027t need these.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9eadefb_8ea6b327",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "\u0027if (rv) \u0027 for consistency.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347795f9_40953045",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "Here as well.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 11
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e521a1_a5b99c67",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "Is it expected i2c_write_block fails if battery is cutoff? If so, doesn\u0027t i2c_write_block naturally return error?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b2affe_b724061c",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "Please add description for all arguments and return values.",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 69
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e13f1c_fa15bc56",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T18:13:17Z",
+      "side": 1,
+      "message": "Need function description. Other functions here are just a bad example.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
