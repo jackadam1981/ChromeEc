@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd0848f3_b53927dc",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T17:52:47Z",
+      "side": 1,
+      "message": "I think this should be between line 124 \u0026 125.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ff93759_09a4527d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T17:52:47Z",
+      "side": 1,
+      "message": "Let\u0027s put this between line 148 and 149.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 6
+      },
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
