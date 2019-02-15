@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "492267ce_41318a7b",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1324980
+      },
+      "writtenOn": "2019-02-15T08:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8473d0c_1263b029",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "e9ab381a096bafdc699bf698970d798f803793ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70de6346_635c043d",
         "filename": "board/flapjack/board.c",
         "patchSetId": 2
@@ -63,6 +87,24 @@
       "revId": "e9ab381a096bafdc699bf698970d798f803793ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88eca36a_a4c23009",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1324980
+      },
+      "writtenOn": "2019-02-15T08:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70de6346_635c043d",
+      "revId": "e9ab381a096bafdc699bf698970d798f803793ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
