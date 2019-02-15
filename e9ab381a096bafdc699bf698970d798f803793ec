@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6391a5e2_e92d53e3",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T06:56:20Z",
+      "side": 1,
+      "message": "Have we discussed whether we using SKU ID as a bitmap or an index to SKU table?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "e9ab381a096bafdc699bf698970d798f803793ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70de6346_635c043d",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-15T06:56:20Z",
+      "side": 1,
+      "message": "static",
+      "revId": "e9ab381a096bafdc699bf698970d798f803793ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
