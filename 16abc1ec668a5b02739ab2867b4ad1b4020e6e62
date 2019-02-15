@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7e343c9_ad3d572e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-15T22:17:58Z",
+      "side": 1,
+      "message": "why do we need a parameter for this option? As presented it is purely Boolean, why bother the user with specifying yes or no explicitly?",
+      "range": {
+        "startLine": 1733,
+        "startChar": 7,
+        "endLine": 1733,
+        "endChar": 8
+      },
+      "revId": "16abc1ec668a5b02739ab2867b4ad1b4020e6e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
