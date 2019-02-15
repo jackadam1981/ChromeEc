@@ -89,6 +89,9 @@
 /* This isn't optional, since the bootrom will always look for both */
 #define CHIP_HAS_RO_B
 
+/* This chip implements the clock_enable_module function */
+#define CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE
+
 /* It's easier for us to consider each half as having its own RO and RW */
 #define CFG_FLASH_HALF (CONFIG_FLASH_SIZE >> 1)
 

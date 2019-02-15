@@ -57,6 +57,9 @@
 /* Use SHI module version 2 supported by npcx7 family */
 #define NPCX_SHI_V2
 
+/* This chip implements the clock_enable_module function */
+#define CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE
+
 /*****************************************************************************/
 /* Memory mapping */
 #define NPCX_BTRAM_SIZE    0x800 /* 2KB data ram used by booter. */

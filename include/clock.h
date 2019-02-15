@@ -34,7 +34,11 @@ int clock_get_freq(void);
  *                      clock.
  * @param enable	Enable clock if non-zero; disable if zero.
  */
+#ifdef CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE
 void clock_enable_module(enum module_id module, int enable);
+#else
+static inline void clock_enable_module(enum module_id module, int enable) { };
+#endif
 
 /**
  * Enable or disable the PLL.

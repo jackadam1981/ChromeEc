@@ -30,6 +30,9 @@
 /* Number of I2C ports, can be overridden in variant */
 #define I2C_PORT_COUNT 2
 
+/* This chip implements the clock_enable_module function */
+#define CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE
+
 #if defined(CHIP_VARIANT_STM32L476)
 #include "config-stm32l476.h"
 #elif defined(CHIP_VARIANT_STM32L15X)

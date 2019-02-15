@@ -971,6 +971,9 @@
  */
 #undef CONFIG_CLOCK_SRC_EXTERNAL
 
+/* Indicate if a chip implements the clock_enable_module function */
+#undef CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE
+
 /*****************************************************************************/
 /* Support curve25519 public key cryptography */
 #undef CONFIG_CURVE25519
