@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b88ac1a0_3a4e4182",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-15T00:25:45Z",
+      "side": 1,
+      "message": "should this be a directory returned by mkdtemp? Or at least placed somewhere outside of the tree?\n\nAt the very least this needs to be added to .gitignore.",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "89a0c2a6a483a6c41f36e1b4fc33d1b91b231ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4005c80e_cde59d6c",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-15T00:25:45Z",
+      "side": 1,
+      "message": "please add a comment explaining what this function does.",
+      "revId": "89a0c2a6a483a6c41f36e1b4fc33d1b91b231ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
