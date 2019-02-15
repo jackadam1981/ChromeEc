@@ -950,8 +950,6 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 #ifdef CONFIG_HOSTCMD_ESPI_OOB
 static int command_espioob_initrtc(int argc, char **argv)
 {
-	int ret;
-
 	/* TODO: Add data */
 	espi_oob_data[0] = 0x07; /* cycle type */
 	espi_oob_data[1] = 0x00; /* tag + len[11:8] */
@@ -961,8 +959,7 @@ static int command_espioob_initrtc(int argc, char **argv)
 	espi_oob_data[5] = 0x01; /* SMBus byte count */
 	espi_oob_data[6] = 0x1f; /* SMBus source addr */
 
-	ret = espi_oob_send(espi_oob_data);
-	return ret;
+	return espi_oob_send(espi_oob_data);
 }
 DECLARE_CONSOLE_COMMAND(initrtc, command_espioob_initrtc,
 			NULL, "Send ESPI OOB RTC command");
