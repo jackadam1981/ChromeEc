@@ -22,6 +22,30 @@
       "revId": "81f61d73bd25f39711165e2cd83b08aa40605334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef54daba_da79f801",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-02-15T02:16:05Z",
+      "side": 1,
+      "message": "yeah, I\u0027ve tested. I was also surprised and did some Googling.\nBasically you can have more than one local labels with same number. The closest label is used. In our case, since I have specified direction \"f\"(forward) it\u0027s very safe.",
+      "parentUuid": "b2d10072_5f8fe9d0",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "81f61d73bd25f39711165e2cd83b08aa40605334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
