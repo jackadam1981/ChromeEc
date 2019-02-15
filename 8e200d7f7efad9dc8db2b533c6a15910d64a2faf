@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "702e6a7e_abe1315e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-15T10:05:35Z",
+      "side": 1,
+      "message": "Update at patch 2.",
+      "parentUuid": "2307da03_fa16c7dc",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e430bad0_0b91b445",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-14T17:29:54Z",
       "side": 1,
       "message": "we can just return rv here (we should convert it to EC_RES_ error space)\n\nhere and all other new code added (i.e. lines 116, 131, and 137)",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6be2c8_61b2ef9b",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-15T10:05:35Z",
+      "side": 1,
+      "message": "Update at patch 2.",
+      "parentUuid": "e430bad0_0b91b445",
       "range": {
         "startLine": 112,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ca4d5ff2_d5e3be63",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-15T10:05:35Z",
+      "side": 1,
+      "message": "Update at patch 2.",
+      "parentUuid": "398e57f5_fc2881b3",
+      "range": {
+        "startLine": 151,
+        "startChar": 61,
+        "endLine": 151,
+        "endChar": 66
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14446715_3ee54496",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "68fb8efa_72c25958",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-15T10:05:35Z",
+      "side": 1,
+      "message": "Update at patch 2.",
+      "parentUuid": "14446715_3ee54496",
+      "range": {
+        "startLine": 152,
+        "startChar": 35,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bba54a_140b01e0",
         "filename": "driver/battery/smart.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-02-14T17:29:54Z",
       "side": 1,
       "message": "similar to the sb_write method, should we add a section for that uses smbus_write_block if SMBus is defined?",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 23
+      },
+      "revId": "8e200d7f7efad9dc8db2b533c6a15910d64a2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64c17dd_4f1866ad",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-15T10:05:35Z",
+      "side": 1,
+      "message": "SMBus_wirte_block data type is uint8_t, but sb_write_block val is const uint8_t leverage i2c_write_block data type.\nIf add a section for that uses smbus_write_block that it will build error.\n\ninclude/smbus.h:93:5: note: expected ‘uint8_t *’ but argument is of type ‘const uint8_t *’\n int smbus_write_block(uint8_t i2c_port, uint8_t slave_addr,",
+      "parentUuid": "77bba54a_140b01e0",
       "range": {
         "startLine": 121,
         "startChar": 8,
