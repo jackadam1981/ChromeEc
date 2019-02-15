@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d10ca503_93797831",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-15T08:56:29Z",
+      "side": 1,
+      "message": "please add some message on the current status of the SKU",
+      "revId": "ed5585f53e5a67371750fa68c3de3fbe5cf903dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ff821e_7632527a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-15T08:56:29Z",
+      "side": 1,
+      "message": "Could you put the test methods and test current of C18 and C19 here ?",
+      "revId": "ed5585f53e5a67371750fa68c3de3fbe5cf903dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab17990_08a26fdf",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-15T08:56:29Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to define SKU_ID instead of number\n\nplease also add /* To do */ for future modification.",
+      "revId": "ed5585f53e5a67371750fa68c3de3fbe5cf903dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36ccbe6_771055ed",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-15T08:56:29Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ed5585f53e5a67371750fa68c3de3fbe5cf903dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8bb54d_d40783bf",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-15T08:56:29Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 51
+      },
+      "revId": "ed5585f53e5a67371750fa68c3de3fbe5cf903dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
