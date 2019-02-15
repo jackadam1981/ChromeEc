@@ -16,6 +16,24 @@
       "revId": "e9161248d2e881c2a12a10db08c01bac46245d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a89fac2_5ba7f80a",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-15T05:11:40Z",
+      "side": 1,
+      "message": "oh... yeah, this looks wrong... (that probably makes us skip the invalidate step)",
+      "parentUuid": "9bbbc5d3_7af14b38",
+      "revId": "e9161248d2e881c2a12a10db08c01bac46245d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
