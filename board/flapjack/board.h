@@ -207,6 +207,12 @@ enum oem_id {
 	PROJECT_COUNT,
 };
 
+enum board_type {
+	BOARD_UNKNOW = -1,
+	BOARD_C18,
+	BOARD_C19,
+};
+
 enum adc_channel {
 	/* Real ADC channels begin here */
 	ADC_BOARD_ID = 0,
@@ -243,6 +249,10 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+
+int board_is_convertible(void);
+
+void update_backlight(uint8_t channle,uint8_t dim);
 
 #endif /* !__ASSEMBLER__ */
 
