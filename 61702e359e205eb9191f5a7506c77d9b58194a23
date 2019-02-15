@@ -22,6 +22,30 @@
       "revId": "61702e359e205eb9191f5a7506c77d9b58194a23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05313168_664bb4e7",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-15T14:48:26Z",
+      "side": 1,
+      "message": "Scratch my comments. I now realize that it won\u0027t work as expected for Gyro 52 Hz, XL 26 Hz and Mag 13 Hz.",
+      "parentUuid": "4b9fd827_80921467",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 3
+      },
+      "revId": "61702e359e205eb9191f5a7506c77d9b58194a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
