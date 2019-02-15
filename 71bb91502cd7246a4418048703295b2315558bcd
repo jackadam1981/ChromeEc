@@ -22,6 +22,30 @@
       "revId": "71bb91502cd7246a4418048703295b2315558bcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12771b2_295e9f4e",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-15T03:01:28Z",
+      "side": 1,
+      "message": "I did not check, as there are no older distributions around, but presumably it would be the same what the newer distribution returns -lusb-1.0 and -I/usr/include/libusb-1.0\n\nutils and extra/usb_updater both explicitly require usb-1.0",
+      "parentUuid": "20b5057e_1492fd01",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 57
+      },
+      "revId": "71bb91502cd7246a4418048703295b2315558bcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
