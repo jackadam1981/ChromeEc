@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6384209_47ea1167",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-15T06:56:31Z",
+      "side": 1,
+      "message": "This will take a few seconds though. Can we manually poke the watchdog register to force the deadline to be close (I think that\u0027s what FreeRTOS does), or just force a reset, if there is such a register?",
+      "revId": "5c1108d012386c1b1b421ea1359ced0f092ddbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
