@@ -42,6 +42,121 @@
     },
     {
       "key": {
+        "uuid": "041c2ab6_a4492608",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-15T23:05:17Z",
+      "side": 1,
+      "message": "Should this check come before the above if/else tree so VPDs can also use CONFIG_USB_PD_DECODE_SOP?",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 5
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80bb630e_9614d2ee",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-15T23:05:17Z",
+      "side": 1,
+      "message": "Are these the right defines to use here?  Is this code not running because the board is a VPD, or because the board is running the new PD stack?",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 68
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a01aff_c29773c5",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-15T23:05:17Z",
+      "side": 1,
+      "message": "Are the prl_rx states a TODO for later, or will we not be implementing them?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6343eb68_77b4c9bf",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-15T23:05:17Z",
+      "side": 1,
+      "message": "How many of the common protocol layer states are we planning to implement?  From the PD 3.0 spec, it looks like there are about 10 states in their 6.11.2.2.1 \"Common Protocol Layer Message Transmission State Diagram\" but it looks like only 5 are represented here?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5955a13_0eed3029",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-15T23:05:17Z",
+      "side": 1,
+      "message": "Will all boards using this state machine need to support PD 3.0 then?",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 28
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4696e916_1a77ebc7",
         "filename": "include/config.h",
         "patchSetId": 48
