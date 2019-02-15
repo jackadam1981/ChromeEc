@@ -13,6 +13,7 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
+#define CONFIG_HOSTCMD_ESPI_OOB
 /* I2C bus configuraiton */
 #define I2C_PORT_ACCEL	I2C_PORT_SENSOR
 
