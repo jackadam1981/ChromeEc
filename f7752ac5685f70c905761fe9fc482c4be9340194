@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36c757f_39c55110",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-15T00:22:38Z",
+      "side": 1,
+      "message": "nit: I\u0027d start the new sentence here. \", t\" -\u003e \". T\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 34,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "f7752ac5685f70c905761fe9fc482c4be9340194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d614a63_fe2ae692",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-15T00:22:38Z",
+      "side": 1,
+      "message": "nit: allows",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 51
+      },
+      "revId": "f7752ac5685f70c905761fe9fc482c4be9340194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
