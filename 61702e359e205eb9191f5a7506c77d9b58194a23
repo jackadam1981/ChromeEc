@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9fd827_80921467",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-15T06:30:14Z",
+      "side": 1,
+      "message": "My 2 cents to simplify this code. If the ratio of current.samples_in_pattern[next_id] to current.total_samples_in_pattern \u003e\u003d the ratio of config.samples_in_pattern[next_id] to config.total_samples_in_pattern then return the next_id. Else move to the next sensor. This way we can avoid the inner loop and no need to compare against individual sensors.\n\nBelow is the calculation based on XL ODR at 52 Hz, G ODR at 26 Hz and M ODR at 13 Hz \n\n       G XL M   Total Samples in pattern\nConfig 2 4  1   7\n\nCurrent\nIter   G XL M   Total Samples in pattern\n0      2 4  1   7                            2/7 \u003d\u003d 2/7 so pickup G and move to the next ID\n1      1 4  1   6                            4/6 \u003e 4/7 so pickup XL and move to the next ID\n2      1 3  1   5                            1/5 \u003e 1/7 so pickup M and move to the next ID\n3      1 3  0   4                            1/4 \u003c 2/7 so do not pick up G and try the next ID\n                                             3/4 \u003e 4/7 so pick up XL and move to the next ID\n4      1 2  0   3                            magnetometer is 0 so continue to the next ID\n5      1 2  0   3                            1/3 \u003e 2/7, so pick up G and move to the next ID\n6      0 2  0   2                            2/2 \u003e 4/7, so pick up XL and move to the next ID\n7      0 1  0   1                            magnetometer is 0 so continue to the next ID\n8      0 1  0   1                            gyro is 0 so continue to the next ID\n9      0 1  0   1                            1/1 \u003e 4/7, so pick up XL and move to the next ID\n10     0 0  0   0\n\nBelow is the code using pure integer multiplication:\n\n    if (private-\u003ecurrent.samples_in_pattern[next_id] * private-\u003econfig.total_samples_in pattern \u003e\u003d\n        private-\u003econfig.samples_in_pattern[next_id] * private-\u003ecurrent.total_samples_in_pattern) {\n       private-\u003ecurrent.samples_in_pattern[next_id]--;\n       private-\u003ecurrent.total_samples_in_pattern--;\n       private-\u003enext_in_patten \u003d next_id;\n       return next_id;\n    }",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 3
+      },
+      "revId": "61702e359e205eb9191f5a7506c77d9b58194a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
