@@ -53,6 +53,56 @@ uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
 
+/*  TODO: replace with actual sku id. */
+static const int SKUID_C18[] = {0x12};
+static const int SKUID_C19[] = {0x13};
+
+static int board_type(void)
+{
+	int i;
+
+	if (sku == FLAPJACK_SKUID_DEF1 || sku == FLAPJACK_SKUID_DEF2)
+		return BOARD_DEFAULT;
+
+	for(i = 0; i < ARRAY_SIZE(SKUID_C18); i++) {
+		if (sku == SKUID_C18[i])
+			return BOARD_C18;
+	}
+
+	for(i = 0; i < ARRAY_SIZE(SKUID_C19); i++) {
+		if (sku == SKUID_C19[i])
+			return BOARD_C19;
+	}
+
+	return BOARD_UNKNOWN;
+}
+
+static void board_update_backlight_from_sku(void)
+{
+	uint8_t channel;
+	uint8_t dim;
+
+	switch (board_type()) {
+	case BOARD_C18:
+		/* Enable backlight channel and set dim for C18 */
+		channel = 0xFA;
+		dim = 0xC8;
+		break;
+	case BOARD_C19:
+		/* Enable backlight channel and set dim for C19 */
+	case BOARD_DEFAULT:
+		/* Enable backlight channel and set dim default to C19 configuration */
+	default:
+		channel = 0xFE;
+		dim = 0xC4;
+		break;
+	}
+
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA0, channel);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA5, dim);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA2, 0xAC);
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -249,6 +299,7 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+	board_update_backlight_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
