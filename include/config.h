@@ -971,6 +971,12 @@
  */
 #undef CONFIG_CLOCK_SRC_EXTERNAL
 
+/*
+ * Increase core clock frequency to accelerate the computation of security
+ * algorithm (Ex:SHA/RSA)
+ */
+#undef CONFIG_ACCEL_CPU_FOR_SECURITY_COMPUTATION
+
 /*****************************************************************************/
 /* Support curve25519 public key cryptography */
 #undef CONFIG_CURVE25519

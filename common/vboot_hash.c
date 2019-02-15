@@ -5,6 +5,7 @@
 
 /* Verified boot hash computing module for Chrome EC */
 
+#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "flash.h"
@@ -64,6 +65,9 @@ void vboot_hash_abort(void)
 		data_size = 0;
 		hash = NULL;
 	}
+#ifdef CONFIG_ACCEL_CPU_FOR_SECURITY_COMPUTATION
+	clock_enable_module(MODULE_FAST_CPU, 0);
+#endif
 }
 
 static void vboot_hash_next_chunk(void);
@@ -146,6 +150,9 @@ static void vboot_hash_next_chunk(void)
 		/* Handle receiving abort during finalize */
 		if (want_abort)
 			vboot_hash_abort();
+#ifdef CONFIG_ACCEL_CPU_FOR_SECURITY_COMPUTATION
+		clock_enable_module(MODULE_FAST_CPU, 0);
+#endif
 
 		return;
 	}
@@ -176,6 +183,9 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 		return EC_ERROR_INVAL;
 	}
 
+#ifdef CONFIG_ACCEL_CPU_FOR_SECURITY_COMPUTATION
+	clock_enable_module(MODULE_FAST_CPU, 1);
+#endif
 	/* Save new hash request */
 	data_offset = offset;
 	data_size = size;
