@@ -53,6 +53,22 @@ uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
 
+static void board_setup_panel(void)
+{
+	uint8_t channel;
+	uint8_t dim;
+
+	channel = sku & PANEL_SIZE_MASK ? BL_CHANNEL3 : BL_CHANNEL4;
+	dim = sku & PANEL_SIZE_MASK ? BL_C18_DIM : BL_C19_DIM;
+
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, MT6370_BACKLIGHT_BLEN,
+		channel);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, MT6370_BACKLIGHT_BLDIM,
+		dim);
+	i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, MT6370_BACKLIGHT_BLPWM,
+		BL_PWM_EN);
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -249,6 +265,7 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+	board_setup_panel();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
