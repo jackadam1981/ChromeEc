@@ -22,6 +22,30 @@
       "revId": "7f22c06b5f4e8efb2f7d92124119c4dfa9ca7d80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b615a5fc_c26ef4e4",
+        "filename": "chip/ish/system_state_subsys.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-15T00:04:35Z",
+      "side": 1,
+      "message": "I added it back to the ISR",
+      "parentUuid": "b1fa9bc3_301d8625",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 50
+      },
+      "revId": "7f22c06b5f4e8efb2f7d92124119c4dfa9ca7d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
