@@ -16,6 +16,24 @@
       "revId": "a0b350b9c1736b87ec36844673a35edfa7b546d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f951d0ba_c4f656f3",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2019-02-15T06:10:51Z",
+      "side": 1,
+      "message": "I\u0027m just trying to remove all SCP access to AP GPIO in this patch to test if the pinmux setting in kernel is correct or not, and I didn\u0027t really check what should/could still be used after we lock down memory access to AP from SCP.",
+      "parentUuid": "58f76ea8_6b27dce1",
+      "revId": "a0b350b9c1736b87ec36844673a35edfa7b546d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
