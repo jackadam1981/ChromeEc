@@ -6,6 +6,12 @@
 . /usr/share/misc/shflags
 
 DEFINE_boolean 'read' "${FLAGS_FALSE}" 'Read instead of write' 'r'
+# Both flash read and write protection are removed by default, but you
+# can optionally enable them (for testing purposes).
+DEFINE_boolean 'remove_flash_read_protect' "${FLAGS_TRUE}" \
+  'Remove flash read protection while performing command' 'U'
+DEFINE_boolean 'remove_flash_write_protect' "${FLAGS_TRUE}" \
+  'Remove flash write protection while performing command' 'u'
 FLAGS_HELP="Usage: ${0} [flags] ec.bin"
 
 # Process commandline flags
@@ -25,8 +31,10 @@ echo "$(readlink -f "$0")"
 readonly CROS_EC_SPI_MODALIAS_STR="of:NcrfpTCgoogle,cros-ec-spi"
 
 check_hardware_write_protect_disabled() {
-  if ectool gpioget EC_WP_L | grep -q '= 0'; then
-    echo "Please make sure WP is deasserted."
+  local hardware_write_protect_state="$(crossystem wpsw_cur)"
+  if [[ "${hardware_write_protect_state}" != "0" ]]; then
+    echo "Please make sure hardware write protect is disabled."
+    echo "See https://www.chromium.org/chromium-os/firmware-porting-guide/firmware-ec-write-protection"
     exit 1
   fi
 }
@@ -52,9 +60,19 @@ flash_fp_mcu_stm32() {
   local file="${5}"
   local spiid
 
-  local STM32MON_READ_FLAGS=" -U -u -p -s ${spidev} -r"
-  local STM32MON_WRITE_FLAGS="-U -u -p -s ${spidev} -e -w"
+  local STM32MON_READ_FLAGS=" -p -s ${spidev} -r"
+  local STM32MON_WRITE_FLAGS="-p -s ${spidev} -e -w"
   local stm32mon_flags=""
+
+  if [[ "${FLAGS_remove_flash_write_protect}" -eq "${FLAGS_TRUE}" ]]; then
+    STM32MON_READ_FLAGS=" -u ${STM32MON_READ_FLAGS}"
+    STM32MON_WRITE_FLAGS="-u ${STM32MON_WRITE_FLAGS}"
+  fi
+
+  if [[ "${FLAGS_remove_flash_read_protect}" -eq "${FLAGS_TRUE}" ]]; then
+    STM32MON_READ_FLAGS=" -U ${STM32MON_READ_FLAGS}"
+    STM32MON_WRITE_FLAGS="-U ${STM32MON_WRITE_FLAGS}"
+  fi
 
   if [[ "${FLAGS_read}" -eq "${FLAGS_TRUE}" ]]; then
     if [[ -e "${file}" ]]; then
@@ -109,7 +127,12 @@ flash_fp_mcu_stm32() {
   echo 1 > "/sys/class/gpio/gpio${gpio_nrst}/value"
   echo "in" > "/sys/class/gpio/gpio${gpio_nrst}/direction"
 
-  stm32mon ${stm32mon_flags} "${file}"
+  # Print out the actual underlying command we're running and run it
+  local cmd="stm32mon ${stm32mon_flags} ${file}"
+  echo "${cmd}"
+  ${cmd}
+
+  local cmd_exit_status=$?
 
   # unload spidev
   echo "${spiid}" > /sys/bus/spi/drivers/spidev/unbind
@@ -134,6 +157,11 @@ flash_fp_mcu_stm32() {
   if [[ -n "${gpio_pwren}" ]]; then
     echo "${gpio_pwren}" > /sys/class/gpio/unexport
   fi
+
+  if [[ "${cmd_exit_status}" -ne 0 ]]; then
+    exit 1
+  fi
+
   # Test it
   ectool --name=cros_fp version
 }
