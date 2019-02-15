@@ -80,6 +80,10 @@ void pwm_set_freq(enum pwm_channel ch, uint32_t freq)
 	/* Calculate maximum resolution for the given freq. and prescaler */
 	pwm_res[ch] = (clock / pre) / freq;
 
+	/* Prevent maximum PWM resolution exceed CTR/DCR resolution. */
+	if (pwm_res[ch] > NPCX_PWM_MAX_DUTY)
+		pwm_res[ch] = NPCX_PWM_MAX_DUTY;
+
 	/* Set PWM prescaler. */
 	NPCX_PRSC(mdl) = pre - 1;
 
@@ -154,10 +158,11 @@ void pwm_set_raw_duty(enum pwm_channel ch, uint16_t duty)
 	/* duty ranges from 0 - 0xffff, so scale down to 0 - pwm_res[ch] */
 	sd = DIV_ROUND_NEAREST(duty * pwm_res[ch], EC_PWM_MAX_DUTY);
 
-	/* Set the duty cycle */
-	NPCX_DCR(mdl) = (uint16_t)sd;
-
-	pwm_enable(ch, !!duty);
+	/* Turn off PWM signal by setting DCR > CTR */
+	if (sd == 0)
+		NPCX_DCR(mdl) = NPCX_CTR(mdl) + 1;
+	else /* Set the duty cycle */
+		NPCX_DCR(mdl) = (uint16_t)sd;
 }
 
 /**
@@ -183,7 +188,7 @@ uint16_t pwm_get_raw_duty(enum pwm_channel ch)
 	int mdl = pwm_channels[ch].channel;
 
 	/* Return duty */
-	if (!pwm_get_enabled(ch))
+	if (!pwm_get_enabled(ch) || NPCX_DCR(mdl) > NPCX_CTR(mdl))
 		return 0;
 	else
 		/*
