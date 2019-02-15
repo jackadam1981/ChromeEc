@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1bf63b4_0333ee9c",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-02-15T23:49:12Z",
+      "side": 1,
+      "message": "You can keep URLs on 1 line even if it goes beyond 80 columns\nhttps://google.github.io/styleguide/shell.xml?showone\u003dLine_Length_and_Long_Strings#Line_Length_and_Long_Strings\n\n(the C++ style guide explicitly mentions URLs as an exception to 80 columns)",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "8311accd65ec22cac41b1dd876c024dc13bfe949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
