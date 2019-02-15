@@ -22,6 +22,30 @@
       "revId": "91e0bd7fe095b40dc983254b9015301cfae6d3db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47cde112_e600c503",
+        "filename": "common/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-15T00:39:01Z",
+      "side": 1,
+      "message": "\u003e is DRAM not set up before all of the _init functions? Can we move this up to the other manually memory override?\n\nI agree it\u0027s a bit too far down. We can probably move it after system_pre_init.\n\n\u003e Also, this is more of a learning questions for me. I thought linker did this stuff for you by setting the LMA and VMA up correctly. What breaks down in this case? (maybe we can include that explanation in a comment here in the code too)\n\nThe linker just puts things at the right place, the core init code clears bss and copies the data:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/core/cortex-m/init.S#34",
+      "parentUuid": "ff736002_5c345128",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 6
+      },
+      "revId": "91e0bd7fe095b40dc983254b9015301cfae6d3db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
