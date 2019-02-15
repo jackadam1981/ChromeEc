@@ -29,7 +29,8 @@
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
 #define EC_CR50_SYNC_TIMEOUT_US	(200 * MSEC)
-#define EC_CR50_SYNC_CHAR	0xec
+#define EC_CR50_ACK_CHAR	0xec
+#define EC_CR50_NACK_CHAR	0xbd
 #define EC_CR50_SYNC_RETRIES	5
 
 static int has_matrix_keyboard(void)
@@ -145,11 +146,18 @@ static int send_to_cr50(const char *data, int len)
 	uart_put(data, len);
 
 	while (get_time().val < timeout) {
-		int c = uart_getc();
-		if (c != -1)
-			return c == EC_CR50_SYNC_CHAR ?
-					EC_SUCCESS : EC_ERROR_UNKNOWN;
-		msleep(10);
+		switch (uart_getc()) {
+		case EC_CR50_ACK_CHAR:
+			return EC_SUCCESS;
+		case EC_CR50_NACK_CHAR:
+			return EC_ERROR_VBOOT_ROLLBACK;
+		case -1:
+			/* No data */
+			msleep(10);
+			continue;
+		default:
+			return EC_ERROR_UNKNOWN;
+		}
 	}
 
 	return EC_ERROR_TIMEOUT;
@@ -161,7 +169,7 @@ static int enable_packet_mode(void)
 
 	/* TODO: Wake up cr50 */
 
-	memset(buf, EC_CR50_SYNC_CHAR, sizeof(buf));
+	memset(buf, EC_CR50_ACK_CHAR, sizeof(buf));
 
 	return send_to_cr50(buf, sizeof(buf));
 }
@@ -206,22 +214,57 @@ static int host_cmd_efs(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_EFS, host_cmd_efs, EC_VER_MASK(0));
 
+static int check_rollback(enum system_image_copy_t slot)
+{
+	int i, rv;
+
+	CPRINTS("%s for %s", __func__, system_image_copy_t_to_string(slot));
+
+	for (i = 0; i < EC_CR50_SYNC_RETRIES; i++) {
+		CPRINTS("Sending version %d times", i+1);
+		rv = send_identity_to_cr50(slot);
+		if (rv != EC_ERROR_TIMEOUT)
+			/* Including EC_ERROR_VBOOT_ROLLBACK & EC_SUCCESS */
+			return rv;
+	}
+
+	return rv;
+}
+
 static int verify_and_jump(void)
 {
 	enum system_image_copy_t slot;
-	int i;
 	int rv;
 
 	/* 1. Decide which slot to try */
 	slot = system_get_active_copy();
 
-	/* 2. Verify the slot */
+	/* 2. Check rollback */
+	rv = check_rollback(slot);
+	if (rv) {
+		CPRINTS("Rollback check failed (0x%x)", rv);
+		if (rv != EC_ERROR_VBOOT_ROLLBACK)
+			/* Can't talk to Cr50. Other slot isn't worth trying. */
+			return rv;
+		slot = system_get_update_copy();
+		rv = check_rollback(slot);
+		if (rv)
+			return rv;
+	}
+
+	/* 3. Verify the slot */
 	rv = verify_slot(slot);
 	if (rv) {
 		if (rv == EC_ERROR_VBOOT_KEY)
 			/* Key error. The other slot isn't worth trying. */
 			return rv;
+		if (slot == system_get_update_copy())
+			/* No more slot to try */
+			return rv;
 		slot = system_get_update_copy();
+		rv = check_rollback(slot);
+		if (rv)
+			return rv;
 		/* TODO(chromium:767050): Skip reading key again. */
 		rv = verify_slot(slot);
 		if (rv)
@@ -233,15 +276,6 @@ static int verify_and_jump(void)
 		if (system_set_active_copy(slot))
 			CPRINTS("Failed to activate %s",
 				system_image_copy_t_to_string(slot));
-	}
-
-	/* 3. Send identity to cr50 */
-	for (i = 0; i < EC_CR50_SYNC_RETRIES; i++) {
-		rv = send_identity_to_cr50(slot);
-		if (rv == EC_SUCCESS)
-			break;
-		CPRINTS("Failed to send version %d times (%d)", i+1, rv);
-		cflush();
 	}
 
 	/* 4. Jump (and reboot) */
