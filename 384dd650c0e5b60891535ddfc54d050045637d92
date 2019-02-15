@@ -22,6 +22,30 @@
       "revId": "384dd650c0e5b60891535ddfc54d050045637d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57a90f14_3209d42c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-15T04:23:35Z",
+      "side": 1,
+      "message": "Even this interrupt enable bit is set, it may not in place when exiting?",
+      "parentUuid": "b197d6ea_73a73268",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "384dd650c0e5b60891535ddfc54d050045637d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
