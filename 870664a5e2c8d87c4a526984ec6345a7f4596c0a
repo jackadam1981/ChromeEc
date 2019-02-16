@@ -22,6 +22,30 @@
       "revId": "870664a5e2c8d87c4a526984ec6345a7f4596c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dbba509_4afcafa9",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-16T22:22:41Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that this bc1.2 chip will be used on all hatch based systems",
+      "parentUuid": "c6ea0396_edb42fed",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "870664a5e2c8d87c4a526984ec6345a7f4596c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
