@@ -330,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "bdfc9d48_8a2f21af",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:19:15Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "05b2affe_b724061c",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 69
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19e13f1c_fa15bc56",
         "filename": "include/battery_smart.h",
         "patchSetId": 2
