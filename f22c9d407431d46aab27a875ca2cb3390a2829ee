@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe36f095_bab87944",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-16T02:27:31Z",
+      "side": 1,
+      "message": "actually this check is redundant:\n1. if active masks are non-zero, we won\u0027t restore backup copies.\n2. if active masks are zero, restoring is as good as doing nothing.",
+      "range": {
+        "startLine": 187,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 50
+      },
+      "revId": "f22c9d407431d46aab27a875ca2cb3390a2829ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
