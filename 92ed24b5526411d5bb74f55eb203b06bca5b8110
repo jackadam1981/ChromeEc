@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24bf62e9_288475ce",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-16T01:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23086933_c9c635c5",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 0
+      },
+      "revId": "92ed24b5526411d5bb74f55eb203b06bca5b8110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e0e688_6fcc5a58",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "33d6bb9e_5654d5e4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-16T01:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e0e688_6fcc5a58",
+      "range": {
+        "startLine": 1205,
+        "startChar": 3,
+        "endLine": 1205,
+        "endChar": 35
+      },
+      "revId": "92ed24b5526411d5bb74f55eb203b06bca5b8110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7a31562_e389bf29",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-14T18:38:56Z",
       "side": 1,
       "message": "I assume EC task events are idempotent? This is already set somewhere above, is it going to be an issue?",
+      "range": {
+        "startLine": 1633,
+        "startChar": 2,
+        "endLine": 1634,
+        "endChar": 37
+      },
+      "revId": "92ed24b5526411d5bb74f55eb203b06bca5b8110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "132bfb6e_216e5334",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-02-16T01:17:57Z",
+      "side": 1,
+      "message": "This is not the host task, but the console task. If both host and console set ODR at the same time, the last one to set wins.",
+      "parentUuid": "e7a31562_e389bf29",
       "range": {
         "startLine": 1633,
         "startChar": 2,
