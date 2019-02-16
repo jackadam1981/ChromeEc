@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7812f7ca_f4335ad8",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-16T22:22:50Z",
+      "side": 1,
+      "message": "No, there will be boards without accel_gryo, so I have put those related config options in board.h",
+      "parentUuid": "ef0514f5_4b96de52",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da2b04a1_9939330a",
         "filename": "board/hatch/board.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1ed38f_ad289e49",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-16T22:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2b04a1_9939330a",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d46bebcb_b01c4d30",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-16T22:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca2f4c5d_c6950b4b",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc9f451e_e07f6aee",
         "filename": "board/hatch/board.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2019-02-14T20:58:44Z",
       "side": 1,
       "message": "merge with setup_fans?",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb69177_3b7d8c18",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-16T22:22:50Z",
+      "side": 1,
+      "message": "I removed the hook from setup_fans and am calling now from board_init.",
+      "parentUuid": "bc9f451e_e07f6aee",
       "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -84,6 +156,24 @@
       "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06a20880_6ad9f3c9",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-16T22:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da11df7_cf27f10a",
+      "revId": "95e4db1b8975f2fce5e2c552cdb191ec4bbc8791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
