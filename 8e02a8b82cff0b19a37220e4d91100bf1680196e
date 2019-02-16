@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad49e72b_56f3cc63",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-16T00:16:17Z",
+      "side": 1,
+      "message": "Do we even need the ifdef? Won\u0027t clock_enable_module be a no-op if the chip does not support it?",
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd0848f3_b53927dc",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
