@@ -46,6 +46,30 @@
       "revId": "e339a23c82d841274302ad8d851f67bc0114296c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03fec1d_9f7f5eb1",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-16T01:10:09Z",
+      "side": 1,
+      "message": "Yeah, I think so... It\u0027s a bit tricky to do this right (without writing too much code). It can be done in a separate CL. Please add a comment explaining the limitation (module can be disabled anytime by other tasks).",
+      "parentUuid": "f72276b1_796424c3",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 24
+      },
+      "revId": "e339a23c82d841274302ad8d851f67bc0114296c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
