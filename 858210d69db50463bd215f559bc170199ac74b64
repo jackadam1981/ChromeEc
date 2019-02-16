@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6236b40_0822cae5",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "47fb721b_1aabd358",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 9
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8f5ed97_9c9e1a55",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "18145f60_d774acbf",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "a8f5ed97_9c9e1a55",
+      "range": {
+        "startLine": 109,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c15308f_a0ba4213",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-15T18:13:17Z",
       "side": 1,
       "message": "Please merge.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d45b5a_60d6fccf",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "5c15308f_a0ba4213",
       "range": {
         "startLine": 114,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "16f58fd5_366fb728",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "d9eadefb_8ea6b327",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347795f9_40953045",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 2
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "b97fbe16_efbdf0fe",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "347795f9_40953045",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 11
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5e521a1_a5b99c67",
         "filename": "driver/battery/smart.c",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2019-02-15T18:13:17Z",
       "side": 1,
       "message": "Is it expected i2c_write_block fails if battery is cutoff? If so, doesn\u0027t i2c_write_block naturally return error?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214d5f30_138170be",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Yes, if the battery is cutoff i2c_write_block will return the error.\nThis is to prevent any commands from being written to the battery.",
+      "parentUuid": "c5e521a1_a5b99c67",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -197,6 +341,30 @@
       "writtenOn": "2019-02-15T18:13:17Z",
       "side": 1,
       "message": "Need function description. Other functions here are just a bad example.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "858210d69db50463bd215f559bc170199ac74b64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b18822_2b0e544d",
+        "filename": "include/battery_smart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-16T08:18:38Z",
+      "side": 1,
+      "message": "Update at patch 3.",
+      "parentUuid": "19e13f1c_fa15bc56",
       "range": {
         "startLine": 150,
         "startChar": 0,
