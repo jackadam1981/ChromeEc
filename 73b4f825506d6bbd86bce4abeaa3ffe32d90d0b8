@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66a74eaa_3ce42d22",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "Yes it is related to FRS, so if FRS is not supported this be should stay 0",
+      "parentUuid": "0d75e01d_79a3054b",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90453db4_c0342d34",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-14T17:00:40Z",
       "side": 1,
       "message": "Instead of turning OVP off completely, can we set it to 22V?\n\ne.g. Set VBUS_OVP_THR_CFG to 0x370 ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e602cb7e_5d43367e",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "it is possible, however if the high level TCPM code does not handle OVP it is better to just keep it disabled. If the high level TCPM code does handle OVP, then it is better to set the value closer to the actual expected VBus voltage.",
+      "parentUuid": "90453db4_c0342d34",
       "range": {
         "startLine": 60,
         "startChar": 1,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9018dab9_629a3383",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "The problem is that the existing code is not fully compatible with TCPC spec, and therefore we had to override it with this function.\nPlease refer to the TCPC spec  Revision 2.0, Version 1.0, Figure 4-16 (TCPC State Diagram after a Connection)\nYou will see under the Attached.Src  state the following text “Drive one CC line based on RC Do not drive CC line that has VCONN connected”.\nSo the pull value (Rd or Rp) should be applied only to one CC line (according to the connection polarity) and the other CC line should stay Open.\nSetting both CC lines to the same value will result in a wrong CC status and wrong connection handling.",
+      "parentUuid": "8cc232d8_757ca3f5",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e24afc39_3b2f1301",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -105,6 +177,30 @@
       "writtenOn": "2019-02-14T17:00:40Z",
       "side": 1,
       "message": "why can\u0027t we use the standard tcpci_tcpm_get_cc?\n\nIf not, please add more comments to this function",
+      "range": {
+        "startLine": 169,
+        "startChar": 11,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c03189_9a06b6e6",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "tcpci_tcpm_get_cc() does not behave correct when we set the pull resistor (Rp or Rd) only to one CC line (as I explain in my comment on set_cc function), therefore we had to override it with this function.",
+      "parentUuid": "e24afc39_3b2f1301",
       "range": {
         "startLine": 169,
         "startChar": 11,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "d6468f6b_bcb5d89f",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "I saw the following problem: If I connect a device is one orientation and then disconnect it and connect in a different orientation something goes wrong (not sure what) and the connection does not work. We didn’t fully debug it, but we found that setting the polarity back to 0 solves the problem.",
+      "parentUuid": "edcb7bb7_c2293570",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 27
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07b614cd_29865d15",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "753e0cd3_b8c9d788",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "Please refer to the TCPC spec  Revision 2.0, Version 1.0, Figure 4-15 (TCPC State Diagram before a Connection).\nPOWER_CONTROL.AutoDischargeDisconnect must be set to 1 in order for the TCPC HW state machine to switch from MAINTAIN_STATE to Attached.Src or Attached.Snk. \nSo I agree that this is not the perfect place to do it , but it was done here since this bit (AutoDischargeDisconnect) is currently not handled at all by the google TCPM code.",
+      "parentUuid": "07b614cd_29865d15",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 41
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bbbeb1b_06772fc9",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -174,6 +318,30 @@
       "writtenOn": "2019-02-14T17:00:40Z",
       "side": 1,
       "message": "what is bit4. This should be a define or at least have a comment",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 23
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f5749b_22b2ec00",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "This is the \"Debug Accessory Control\" bit , so it looks like a mistake. Need to remove this line.",
+      "parentUuid": "3bbbeb1b_06772fc9",
       "range": {
         "startLine": 229,
         "startChar": 5,
@@ -278,6 +446,30 @@
     },
     {
       "key": {
+        "uuid": "01954cfc_b5be8a9c",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "This code can be removed (it was only used during debug).",
+      "parentUuid": "c83e54d9_838ca314",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 11
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b386eda_65cc5ffb",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -289,6 +481,30 @@
       "writtenOn": "2019-02-14T17:00:40Z",
       "side": 1,
       "message": "read from TCPC_REG_RX_BUF_FRAME_TYPE instead and drop the +1 (since you already read this)",
+      "range": {
+        "startLine": 286,
+        "startChar": 28,
+        "endLine": 286,
+        "endChar": 48
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3648895_246002d7",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-17T12:12:29Z",
+      "side": 1,
+      "message": "Please note that our TCPC chip is compatible with spec  Revision 2.0, Version 1.0.\nTherefore all access to the Receive buffer data is through offset 0x30 (TCPC_REG_RX_BYTE_CNT)",
+      "parentUuid": "4b386eda_65cc5ffb",
       "range": {
         "startLine": 286,
         "startChar": 28,
