@@ -489,6 +489,21 @@ static int anx7447_mux_init(int port)
 	return anx7447_mux_set(port, TYPEC_MUX_NONE);
 }
 
+static inline void anx7447_configure_aux_src(int port, int on_off)
+{
+	int reg;
+
+	mux_read(port, 0xa9, &reg);
+
+	if (on_off)
+		reg |= (1 << 5);
+	else
+		reg &= ~(1 << 5);
+
+	mux_write(port, 0xa9, reg);
+	CPRINTS("set aux_src to %s, reg = 0x%x", (on_off) ? "on" : "off", reg);
+}
+
 /*
  * Set mux.
  *
@@ -547,6 +562,12 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 	rv |= mux_write(port, ANX7447_REG_TCPC_AUX_SWITCH, aux_sw);
 
 	anx[port].mux_state = mux_state;
+
+	if ( mux_type == TYPEC_MUX_DP ||
+	     mux_type == TYPEC_MUX_DOCK )
+		anx7447_configure_aux_src(port, 1);
+	else
+		anx7447_configure_aux_src(port, 0);
 
 	return rv;
 }
