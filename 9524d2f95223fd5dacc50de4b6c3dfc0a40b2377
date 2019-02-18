@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a61090c4_1b557660",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-18T13:22:54Z",
+      "side": 1,
+      "message": "nit: enable \u003c\u003c 3 would do the same thing.",
+      "revId": "9524d2f95223fd5dacc50de4b6c3dfc0a40b2377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86c9140_9ce3348a",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-18T13:22:54Z",
+      "side": 1,
+      "message": "There?",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 7
+      },
+      "revId": "9524d2f95223fd5dacc50de4b6c3dfc0a40b2377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
