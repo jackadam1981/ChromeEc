@@ -135,4 +135,7 @@ enum ish_i2c_port {
 #define LAPIC_ISR_REG   0xFEE00170
 #define LAPIC_ICR_REG   (ISH_LAPIC_BASE + 0x300)
 
+#define WR_IPC_ISH_RST_REG         (ISH_IPC_BASE + 0x44)
+#define WR_ISH_RESET_PREP_IRQ      62
+#define WR_ISH_RESET_PREP_VEC      IRQ_TO_VEC(WR_ISH_RESET_PREP_IRQ)
 #endif /* __CROS_EC_REGISTERS_H */
