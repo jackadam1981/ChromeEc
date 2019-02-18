@@ -407,8 +407,12 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	/* Key handle */
 	uint8_t kh[U2F_FIXED_KH_SIZE];
 
+	size_t response_buf_size = *response_size;
+
+	*response_size = 0;
+
 	if (input_size != sizeof(U2F_GENERATE_REQ) ||
-	    *response_size < sizeof(U2F_GENERATE_RESP))
+	    response_buf_size < sizeof(U2F_GENERATE_RESP))
 		return VENDOR_RC_BOGUS_ARGS;
 
 	/* Maybe enforce user presence, w/ optional consume */
@@ -434,6 +438,8 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	 */
 	resp = buf;
 
+	*response_size = sizeof(*resp);
+
 	/* Insert origin-specific public keys into the response */
 	p256_to_bin(&opk_x, resp->pubKey.x); /* endianness */
 	p256_to_bin(&opk_y, resp->pubKey.y); /* endianness */
@@ -442,9 +448,6 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 
 	/* Copy key handle to response. */
 	memcpy(resp->keyHandle, kh, sizeof(kh));
-
-	*response_size = sizeof(resp->pubKey) +
-			 sizeof(kh);
 
 	return VENDOR_RC_SUCCESS;
 }
@@ -486,6 +489,9 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	/* Hash, and corresponding signature. */
 	p256_int h, r, s;
 
+	/* Response is smaller than request, so no need to check this. */
+	*response_size = 0;
+
 	if (input_size != sizeof(U2F_SIGN_REQ))
 		return VENDOR_RC_BOGUS_ARGS;
 
@@ -519,11 +525,12 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	 */
 	resp = buf;
 
+	*response_size = sizeof(*resp);
+
 	p256_to_bin(&r, resp->sig_r);
 	p256_to_bin(&s, resp->sig_s);
 
-	*response_size = sizeof(U2F_SIGN_RESP);
-	return 0;
+	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_SIGN, u2f_sign);
 
@@ -593,6 +600,9 @@ static enum vendor_cmd_rc u2f_attest(enum vendor_cmd_cc code,
 	/* Attestation key */
 	p256_int d, pk_x, pk_y;
 
+	/* Response is smaller than request, so no need to check this. */
+	*response_size = 0;
+
 	if (input_size != sizeof(U2F_ATTEST_REQ))
 		return VENDOR_RC_BOGUS_ARGS;
 
@@ -629,6 +639,8 @@ static enum vendor_cmd_rc u2f_attest(enum vendor_cmd_cc code,
 	 * The response is smaller than the request, so we have the space.
 	 */
 	resp = buf;
+
+	*response_size = sizeof(*resp);
 
 	p256_to_bin(&r, resp->sig_r);
 	p256_to_bin(&s, resp->sig_s);
