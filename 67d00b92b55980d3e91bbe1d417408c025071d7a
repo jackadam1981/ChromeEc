@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26b0b457_0d52fb33",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "PLEASE not use local variables.",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9b8c0f_4c698c56",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "The same",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518d0e2c_f8acdbf2",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "Do we have a generic Flapjack?",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1a6d98a_40f10cc4",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "remove this function to decrease stack size.\n\nmove the code body to board_update_backlight_from_sku() instead",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a21d1d45_8f265a06",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "set two variables",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4477780_ab79b520",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "set two variables",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe734102_05ee02ba",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "set two variables",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0215c59a_bb2b03ce",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-18T03:48:25Z",
+      "side": 1,
+      "message": "i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA0, channel);\n\ti2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA5, dim);\n\ti2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, 0xA2, 0xAC);\n\nhere",
+      "revId": "67d00b92b55980d3e91bbe1d417408c025071d7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
