@@ -53,6 +53,7 @@ enum ish_i2c_port {
 #define ISH_IPC_ISH2HOST_CLR_IRQ   24
 #define ISH_UART0_IRQ              34
 #define ISH_UART1_IRQ              35
+#define WR_ISH_RESET_PREP_IRQ      62
 
 /* Interrupt vectors 0-31 are architecture reserved.
  * Vectors 32-255 are user-defined.
@@ -94,6 +95,7 @@ enum ish_i2c_port {
 #define ISH_UART0_VEC              IRQ_TO_VEC(ISH_UART0_IRQ)
 #define ISH_UART1_VEC              IRQ_TO_VEC(ISH_UART1_IRQ)
 #define ISH_IPC_VEC                IRQ_TO_VEC(ISH_IPC_HOST2ISH_IRQ)
+#define WR_ISH_RESET_PREP_VEC      IRQ_TO_VEC(WR_ISH_RESET_PREP_IRQ)
 
 #ifdef CONFIG_ISH_UART_0
 #define ISH_DEBUG_UART       		UART_PORT_0
@@ -114,6 +116,7 @@ enum ish_i2c_port {
 #define IPC_HOST2ISH_MSG_REGS      (ISH_IPC_BASE + 0xE0)
 #define IPC_ISH2HOST_DOORBELL      (ISH_IPC_BASE + 0x54)
 #define IPC_BUSY_CLEAR             (ISH_IPC_BASE + 0x378)
+#define WR_IPC_ISH_RST_REG         (ISH_IPC_BASE + 0x44)
 
 /* IOAPIC registers */
 #define IOAPIC_IDX        0xFEC00000
