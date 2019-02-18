@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f50d235b_a187e319",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-18T07:22:24Z",
+      "side": 1,
+      "message": "It\u0027s going to be a lot of added code...\n\nInstead, can you just name the option CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE , and set it in chip/npcx/config_chip.h?\n\nThen in include/clock.h, add an ifdef and setup an empty inline if the config option is not set:\n#ifdef CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE\nvoid clock_enable_module(enum module_id module, int enable);\n#else\ninline void clock_enable_module(enum module_id module, int enable) {};\n#endif\n\nWDYT?",
+      "parentUuid": "d1b4ea17_d954d6de",
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd0848f3_b53927dc",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
