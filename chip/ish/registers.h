@@ -36,6 +36,8 @@ enum ish_i2c_port {
 #define ISH_I2C2_BASE     0x00105000
 #define ISH_UART_BASE     0x00103000
 #define ISH_GPIO_BASE     0x001F0000
+#define ISH_PMU_BASE      0x00800000
+#define ISH_CCU_BASE      0x00900000
 #define ISH_IPC_BASE      0x00B00000
 #define ISH_IOAPIC_BASE   0xFEC00000
 #define ISH_HPET_BASE     0xFED00000
@@ -53,6 +55,7 @@ enum ish_i2c_port {
 #define ISH_IPC_ISH2HOST_CLR_IRQ   24
 #define ISH_UART0_IRQ              34
 #define ISH_UART1_IRQ              35
+#define ISH_RESET_PREP_IRQ         62
 
 /* Interrupt vectors 0-31 are architecture reserved.
  * Vectors 32-255 are user-defined.
@@ -94,6 +97,7 @@ enum ish_i2c_port {
 #define ISH_UART0_VEC              IRQ_TO_VEC(ISH_UART0_IRQ)
 #define ISH_UART1_VEC              IRQ_TO_VEC(ISH_UART1_IRQ)
 #define ISH_IPC_VEC                IRQ_TO_VEC(ISH_IPC_HOST2ISH_IRQ)
+#define ISH_RESET_PREP_VEC         IRQ_TO_VEC(ISH_RESET_PREP_IRQ)
 
 #ifdef CONFIG_ISH_UART_0
 #define ISH_DEBUG_UART       		UART_PORT_0
@@ -110,10 +114,26 @@ enum ish_i2c_port {
 #define IPC_PIMR                   (ISH_IPC_BASE + 0x4)
 #define IPC_ISH2HOST_MSG_REGS      (ISH_IPC_BASE + 0x60)
 #define IPC_ISH_FWSTS              (ISH_IPC_BASE + 0x34)
+#define IPC_ISH_RST_REG            (ISH_IPC_BASE + 0x44)
 #define IPC_HOST2ISH_DOORBELL      (ISH_IPC_BASE + 0x48)
 #define IPC_HOST2ISH_MSG_REGS      (ISH_IPC_BASE + 0xE0)
 #define IPC_ISH2HOST_DOORBELL      (ISH_IPC_BASE + 0x54)
 #define IPC_BUSY_CLEAR             (ISH_IPC_BASE + 0x378)
+
+/* PMU Registers */
+#define PMU_RST_PREP               (ISH_PMU_BASE + 0x5c)
+#define PMU_RST_PREP_GET           (1 << 0)
+#define PMU_RST_PREP_AVAIL         (1 << 1)
+#define PMU_RST_PREP_INT_MASK      (1 << 31)
+#define PMU_PMC_HOST_RST_CTL       (ISH_PMU_BASE + 0xfff20)
+#define PMU_HOST_RST_B             (1 << 0)
+
+/* CCU Registers */
+#define CCU_TCG_EN                 (ISH_CCU_BASE + 0x0)
+#define CCU_BCG_EN                 (ISH_CCU_BASE + 0x4)
+#define CCU_RST_HST                (ISH_CCU_BASE + 0x34)
+#define CCU_TCG_DISABLE            (ISH_CCU_BASE + 0x38)
+#define CCU_BCG_DISABLE            (ISH_CCU_BASE + 0x3c)
 
 /* IOAPIC registers */
 #define IOAPIC_IDX        0xFEC00000
