@@ -16,6 +16,29 @@
       "revId": "7c867a9aec39abfb1506f43921f7f81016d5e7a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea11c757_c33f5643",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-18T07:25:04Z",
+      "side": 1,
+      "message": "CPU\n\nThe comment from chip/stm32/clock-stm32h7.c would have been enough ,-) \u003d\u003e\n/* Assume we have a single task using MODULE_FAST_CPU */",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 11
+      },
+      "revId": "7c867a9aec39abfb1506f43921f7f81016d5e7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
