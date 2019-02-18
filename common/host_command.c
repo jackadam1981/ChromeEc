@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "espi.h"
 #include "host_command.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -23,13 +24,16 @@
 #define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
 
-#define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
-
 /* Maximum delay to skip printing repeated host command debug output */
 #define HCDEBUG_MAX_REPEAT_DELAY (50 * MSEC)
 
 /* Stop printing repeated host commands "+" after this count */
 #define HCDEBUG_MAX_REPEAT_COUNT 5
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+/* TODO: (need a queue) ESPI OOB data */
+static uint8_t espi_oob_data[ESPI_OOB_MAX_LENGTH];
+#endif
 
 static struct host_cmd_handler_args *pending_args;
 
@@ -432,6 +436,9 @@ static void host_command_init(void)
 
 void host_command_task(void *u)
 {
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	int i, oob_len;
+#endif
 	timestamp_t t0, t1, t_recess;
 	t_recess.val = 0;
 	t1.val = 0;
@@ -449,6 +456,22 @@ void host_command_task(void *u)
 					host_command_process(pending_args);
 			host_send_response(pending_args);
 		}
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+		if (evt & TASK_EVENT_ESPI_OOB_SEND_DONE) {
+			/* TODO */
+			CPRINTS("ESPI OOB message sent");
+		}
+
+		/* Process eSPI OOB data */
+		if (evt & TASK_EVENT_ESPI_OOB_RECEIVE) {
+			/* TODO */
+			oob_len = espi_oob_receive(espi_oob_data);
+			for (i = 0; i < oob_len; i++)
+				CPRINTS("received oob_data[%d] = 0x%x",
+					i, espi_oob_data[i]);
+		}
+#endif
 
 		/* reset rate limiting if we have slept enough */
 		if (t0.val - t1.val > CONFIG_HOSTCMD_RATE_LIMITING_MIN_REST)
@@ -923,3 +946,34 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+static int command_espi_oob(int argc, char **argv)
+{
+	char cmd;
+
+	/* Handle sub-commands */
+	if (argc == 2) {
+		if (!strcasecmp(argv[1], "temp"))
+			cmd = 0x01; /* SMBus cmd: get temperature */
+		else if (!strcasecmp(argv[1], "rtc"))
+			cmd = 0x02; /* SMBus cmd: get RTC */
+		else
+			return EC_ERROR_PARAM1;
+
+		/* init OOB get RTC/temperature command */
+		espi_oob_data[0] = 0x07; /* cycle type */
+		espi_oob_data[1] = 0x00; /* tag + len[11:8] */
+		espi_oob_data[2] = 0x04; /* len[7:0] */
+		espi_oob_data[3] = 0x02; /* SMBus destination addr */
+		espi_oob_data[4] = cmd;  /* SMBus cmd */
+		espi_oob_data[5] = 0x01; /* SMBus byte count */
+		espi_oob_data[6] = 0x1f; /* SMBus source addr */
+
+		return espi_oob_send(espi_oob_data);
+	} else
+		return EC_ERROR_PARAM_COUNT;
+}
+DECLARE_CONSOLE_COMMAND(oob, command_espi_oob, "[temp | rtc]",
+			"Send ESPI OOB temperature/RTC command");
+#endif
