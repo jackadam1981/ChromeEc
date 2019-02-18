@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "241c530b_260cd601",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-18T06:47:06Z",
+      "side": 1,
+      "message": "Without this ifdef, there will be a linking error when \"make buildall\".\nEx:\nbuild/ampton/RO/common/vboot_hash.o: In function `vboot_hash_next_chunk\u0027:\nvboot_hash.c:(.text.vboot_hash_next_chunk+0x10): undefined reference to `clock_enable_module\u0027\ncollect2: error: ld returned 1 exit status",
+      "parentUuid": "ad49e72b_56f3cc63",
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd0848f3_b53927dc",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2fba5982_f140d6e2",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-18T06:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd0848f3_b53927dc",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ff93759_09a4527d",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e103f4_4d0effe9",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-18T06:47:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff93759_09a4527d",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 6
+      },
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
