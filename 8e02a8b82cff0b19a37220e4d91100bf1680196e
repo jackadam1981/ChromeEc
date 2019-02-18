@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d1b4ea17_d954d6de",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-18T07:12:56Z",
+      "side": 1,
+      "message": "Yeah I think we\u0027ll want to define clock_enable_module on all ECs. I\u0027ll prepare a patch for that.",
+      "parentUuid": "241c530b_260cd601",
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd0848f3_b53927dc",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
