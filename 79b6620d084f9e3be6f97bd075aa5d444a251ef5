@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2420c8cb_f9625ea6",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-02-18T09:11:53Z",
+      "side": 1,
+      "message": "I was making mistake, as long as EN_USBC_CHARGE_L is set to 1 then sourcing power to USB-C should not affect POGO side.",
+      "parentUuid": "bc000ea3_11d08c8c",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "79b6620d084f9e3be6f97bd075aa5d444a251ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b4920ef_ed7c8237",
         "filename": "board/kukui/usb_pd_policy.c",
         "patchSetId": 1
