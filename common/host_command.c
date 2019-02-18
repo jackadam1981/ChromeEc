@@ -482,6 +482,8 @@ DECLARE_HOST_COMMAND(EC_CMD_PROTO_VERSION,
 		     host_command_proto_version,
 		     EC_VER_MASK(0));
 
+#include "console.h"
+
 static int host_command_hello(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_hello *p = args->params;
@@ -490,6 +492,12 @@ static int host_command_hello(struct host_cmd_handler_args *args)
 
 	r->out_data = d + 0x01020304;
 	args->response_size = sizeof(*r);
+
+	{
+		volatile intptr_t unaligned_ptr = 0xcdef;
+                cflush();
+                ccprintf("%08x", *(volatile int *)unaligned_ptr);
+	}
 
 	return EC_RES_SUCCESS;
 }
