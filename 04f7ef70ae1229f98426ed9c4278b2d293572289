@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78e444f4_a30e8349",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d0db9d_4b6ab812",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 54
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "689e6e88_9c9df378",
         "filename": "chip/stm32/usb_pd_phy.c",
         "patchSetId": 48
@@ -39,6 +63,24 @@
       "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1df901d_2292a66e",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "A leftover from my debugging.",
+      "parentUuid": "689e6e88_9c9df378",
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "17c456e7_a4e12db4",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "From the spec: If the port is a VCONN-Powered USB Device, it shall respond to USB PD Discover Identity queries on SOP’. It shall not send or respond to messages on SOP.",
+      "parentUuid": "041c2ab6_a4492608",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 5
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80bb630e_9614d2ee",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 48
@@ -85,6 +151,30 @@
       "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f2012e5_28dacfec",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "80bb630e_9614d2ee",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 68
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "9b8cf48e_bda659e7",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "I compressed the prl_rx states into one function. see prl_rx_wait_for_phy_message below.",
+      "parentUuid": "38a01aff_c29773c5",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 35
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6343eb68_77b4c9bf",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 48
@@ -122,6 +236,30 @@
       "writtenOn": "2019-02-15T23:05:17Z",
       "side": 1,
       "message": "How many of the common protocol layer states are we planning to implement?  From the PD 3.0 spec, it looks like there are about 10 states in their 6.11.2.2.1 \"Common Protocol Layer Message Transmission State Diagram\" but it looks like only 5 are represented here?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053d4e5a_db31a666",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "I folded some of the states into other states and I\u0027ve added comments to reflect this. But I did overlook the prl_tx_phy_layer_reset state.",
+      "parentUuid": "6343eb68_77b4c9bf",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "7dab2bd8_efd51a2e",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 48
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "Yes but this shouldn\u0027t be a problem since PD 3.0 devices are required to be backwards compatible with PD 2.0.",
+      "parentUuid": "f5955a13_0eed3029",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 28
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4696e916_1a77ebc7",
         "filename": "include/config.h",
         "patchSetId": 48
@@ -177,6 +339,30 @@
       "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f5312d_023cf63a",
+        "filename": "include/config.h",
+        "patchSetId": 48
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-02-19T22:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4696e916_1a77ebc7",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 23
+      },
+      "revId": "04f7ef70ae1229f98426ed9c4278b2d293572289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
