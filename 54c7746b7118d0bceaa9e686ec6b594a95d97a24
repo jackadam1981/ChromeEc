@@ -33,6 +33,29 @@
       "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1110a56_52dc818c",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-19T21:28:27Z",
+      "side": 1,
+      "message": "as discussed offline, this will also need to be updated.",
+      "range": {
+        "startLine": 542,
+        "startChar": 5,
+        "endLine": 542,
+        "endChar": 12
+      },
+      "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
