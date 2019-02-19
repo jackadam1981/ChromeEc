@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "54888591_28100d18",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-19T23:29:26Z",
+      "side": 1,
+      "message": "\u003e What\u0027s the point of seeing it in \u0027git status\u0027 if this is something which does not affect the result of the build?\n\nMainly just because I like to know if my git directory is *really* clean without running \"git status --ignored\". I generally don\u0027t like to have unknown files lingering about when I\u0027m trying to do a \"clean\" build, though in this case it shouldn\u0027t affect the build. It\u0027s mainly just paranoia and personal preference.\n\nPutting it in the build directory should work.",
+      "parentUuid": "4ee94643_fa72a469",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "89a0c2a6a483a6c41f36e1b4fc33d1b91b231ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4005c80e_cde59d6c",
         "filename": "util/compare_smaps.sh",
         "patchSetId": 1
