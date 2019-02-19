@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3b1a6b4_dde12eac",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-02-19T21:09:18Z",
+      "side": 1,
+      "message": "This also needs some pure secret entropy as input; from a FIPS perspective, the dev_salt as comes out of keyladder is not pure enough.\n\nThus some 256 bit of generated-once random and stored when u2f is activated. The FIPS haggling will be about quality of that random, which has headroom.\n\nkey_handle should be labelled as additional input parameter only.\n\nThus the 3 parameters to this drbg_init should be\n1) stored pure entropy\n2) dev_salt\n3) key_handle",
+      "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10bc3b3a_fedcbb7d",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-02-19T21:09:18Z",
+      "side": 1,
+      "message": "memcmp leaks timing, so with many requests one could use that as oracle to get the expected secret value.\nThere\u0027s a safe_memcpy or such somewhere that does not leak in the time domain.",
+      "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
