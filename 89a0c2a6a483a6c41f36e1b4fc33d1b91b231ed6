@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4ee94643_fa72a469",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-19T22:42:06Z",
+      "side": 1,
+      "message": "What\u0027s the point of seeing it in \u0027git status\u0027 if this is something which does not affect the result of the build?\n\nhow about placing it in ./build if you are OK with this script overwriting it each time it runs.",
+      "parentUuid": "2633ca6f_b868251b",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "89a0c2a6a483a6c41f36e1b4fc33d1b91b231ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4005c80e_cde59d6c",
         "filename": "util/compare_smaps.sh",
         "patchSetId": 1
