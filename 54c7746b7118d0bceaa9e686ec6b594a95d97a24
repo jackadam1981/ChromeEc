@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8089ca29_bbda1ee5",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-02-19T22:49:49Z",
+      "side": 1,
+      "message": "Thanks!\n\nI will add some pure secret entropy; just checking this needs to be different from salt_kek used in dev_salt derivation? (which is random entropy, generated once during U2F initialization, see \nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/board/cr50/u2f.c?rcl\u003d2f45ad6eadd33e9d872a6fa249c0b0517ef4fc15\u0026l\u003d116 )\n\nI\u0027ll move key_handle to pass it as additional input during generation.",
+      "parentUuid": "d3b1a6b4_dde12eac",
+      "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10bc3b3a_fedcbb7d",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "491adec1_7ff08910",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-02-19T22:49:49Z",
+      "side": 1,
+      "message": "Thanks, will address this in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1475102",
+      "parentUuid": "10bc3b3a_fedcbb7d",
+      "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1110a56_52dc818c",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -47,6 +83,30 @@
       "writtenOn": "2019-02-19T21:28:27Z",
       "side": 1,
       "message": "as discussed offline, this will also need to be updated.",
+      "range": {
+        "startLine": 542,
+        "startChar": 5,
+        "endLine": 542,
+        "endChar": 12
+      },
+      "revId": "54c7746b7118d0bceaa9e686ec6b594a95d97a24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e44830_c92b0e7d",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-02-19T22:49:49Z",
+      "side": 1,
+      "message": "Update in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1475102",
+      "parentUuid": "b1110a56_52dc818c",
       "range": {
         "startLine": 542,
         "startChar": 5,
