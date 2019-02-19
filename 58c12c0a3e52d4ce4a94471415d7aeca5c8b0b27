@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "14a840af_f300abdb",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-02-19T00:25:02Z",
+      "side": 1,
+      "message": "Issue is that we don\u0027t have an interrupt flag saving mechanism such that we don\u0027t enable irqs at the wrong time. i.e. disble_irq should return the state of interrupt mask such that a subsequent re-enablement doesn\u0027t happen at the wrong time w.r.t. expectations. I\u0027m not sure we\u0027ve documented expectations of irq handlers and how consistent our implementations are if our handlers are running with or w/o interrupts enabled.",
+      "parentUuid": "65df3a5a_8fda2318",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7bf8017e_26f57251",
         "filename": "core/runtime.md",
         "patchSetId": 2
