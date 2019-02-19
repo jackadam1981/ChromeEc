@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "3bff9ed5_c84bb2f7",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-19T05:35:54Z",
+      "side": 1,
+      "message": "This is done in the CL:1475097. Now this CL simply call clock_enable_module around the security computation. Also note that other EC chips (ex: stm32s and g) already implemented this function also have to define CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE in their chip config header file.",
+      "parentUuid": "f50d235b_a187e319",
+      "revId": "8e02a8b82cff0b19a37220e4d91100bf1680196e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd0848f3_b53927dc",
         "filename": "common/vboot_hash.c",
         "patchSetId": 2
