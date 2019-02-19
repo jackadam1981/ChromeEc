@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f817815f_0ee41f29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-19T05:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ec5180_d90597af",
+      "revId": "7c867a9aec39abfb1506f43921f7f81016d5e7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea11c757_c33f5643",
         "filename": "chip/npcx/clock.c",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "7c867a9aec39abfb1506f43921f7f81016d5e7a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb13e803_2cf1aec4",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-19T05:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea11c757_c33f5643",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 11
+      },
+      "revId": "7c867a9aec39abfb1506f43921f7f81016d5e7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
