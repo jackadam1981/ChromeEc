@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f06183e_3d8e651f",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-19T01:12:22Z",
+      "side": 1,
+      "message": "we can remove this",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "d62fb37ef6aa731a206d92dda696af37e633c33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f962aa77_01ad6378",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-19T01:12:22Z",
+      "side": 1,
+      "message": "BOARD_UNKNOWN",
+      "revId": "d62fb37ef6aa731a206d92dda696af37e633c33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5375da5d_9de4410f",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-19T01:12:22Z",
+      "side": 1,
+      "message": "please add BOARD_FLAPJACK",
+      "revId": "d62fb37ef6aa731a206d92dda696af37e633c33d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
