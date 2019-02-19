@@ -59,7 +59,6 @@
 /* By default, set hcdebug to off */
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
-#undef CONFIG_LID_SWITCH
 #undef CONFIG_LTO
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_IGNORE_LID
@@ -80,6 +79,9 @@
 #define CONFIG_CHARGER_OTG
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
+
+/* Emulate hall by lid_switch. */
+#define GPIO_LID_OPEN GPIO_HALL_INT_L
 
 /* Increase tx buffer size, as we'd like to stream EC log to AP. */
 #undef CONFIG_UART_TX_BUF_SIZE
