@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21805867_62cd44d2",
+        "filename": "board/dragonegg/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-19T15:25:43Z",
+      "side": 1,
+      "message": "remove before publishing code, we can enable on need basis",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "9fab62e0bd0d05a6d65a0476c8d9fa420f4048af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a36305_baa2132e",
+        "filename": "common/host_command.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-19T15:25:43Z",
+      "side": 1,
+      "message": "please add MACROs",
+      "range": {
+        "startLine": 965,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 50
+      },
+      "revId": "9fab62e0bd0d05a6d65a0476c8d9fa420f4048af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e13ea1_77d7b9f8",
+        "filename": "common/host_command.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-19T15:25:43Z",
+      "side": 1,
+      "message": "we can use int and enum for these command bytes.",
+      "range": {
+        "startLine": 977,
+        "startChar": 47,
+        "endLine": 977,
+        "endChar": 62
+      },
+      "revId": "9fab62e0bd0d05a6d65a0476c8d9fa420f4048af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
