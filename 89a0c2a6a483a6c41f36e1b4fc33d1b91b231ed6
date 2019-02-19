@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2633ca6f_b868251b",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-19T22:29:01Z",
+      "side": 1,
+      "message": "I mainly wanted it somewhere that\u0027s convenient to find, which is why I didn\u0027t use mktemp. (It makes it easier to open the results in a visual diff viewer). It\u0027s not something people would normally run unless they were trying to compare builds. It\u0027s also not run as part of the build process or anything. I usually like to leave things like that out of .gitignore so they show up in my \"git status\", but I can add to .gitignore if that\u0027s preferable (to accidentally check it in someone would have to do \"git add maps\" and then \"git commit\". \"git commit -a\" wouldn\u0027t add a new directory).",
+      "parentUuid": "b88ac1a0_3a4e4182",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "89a0c2a6a483a6c41f36e1b4fc33d1b91b231ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4005c80e_cde59d6c",
         "filename": "util/compare_smaps.sh",
         "patchSetId": 1
