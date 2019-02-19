@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "435f9cbf_eea89108",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-19T08:06:40Z",
+      "side": 1,
+      "message": "Indentation ,-)",
+      "revId": "e6a9cb93c7fc48fa7e31744587eafd5d18b51810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f52925_5f4ed4f9",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-19T08:06:40Z",
+      "side": 1,
+      "message": "Does it even make sense to try to connect USB 3.0 if we don\u0027t have it?\n\nSame for TYPEC_MUX_DOCK",
+      "range": {
+        "startLine": 320,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 43
+      },
+      "revId": "e6a9cb93c7fc48fa7e31744587eafd5d18b51810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
