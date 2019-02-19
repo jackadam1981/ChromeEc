@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9e74f5e_eb7a4dce",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-19T16:18:09Z",
+      "side": 1,
+      "message": "should we set backup_sci_mask and backup_smi_mask to 0 after this call to ensure failures on  subsequent trips down to S0ix don\u0027t restore bad flags as well?",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 62
+      },
+      "revId": "9a1e5dd6431118d99c51087b084edf5c8e8a8b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
