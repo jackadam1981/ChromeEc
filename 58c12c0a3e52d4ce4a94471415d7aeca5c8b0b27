@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "35b7285d_41617652",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-19T00:57:28Z",
+      "side": 1,
+      "message": "We just disable _all_ interrupts with interrupt_disable/enable (cpsid/e i on M0), so you don\u0027t really need to save flags.\n\nUnless you have nested functions that try to disable interrupts. Don\u0027t do that ,-)",
+      "parentUuid": "14a840af_f300abdb",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7bf8017e_26f57251",
         "filename": "core/runtime.md",
         "patchSetId": 2
