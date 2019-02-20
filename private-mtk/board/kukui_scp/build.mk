@@ -12,9 +12,8 @@ board-private-y = private-nolib.o
 PRIVPATH=private-mtk/board/kukui_scp
 RWPATH=$(out)/RW/$(PRIVPATH)
 
-libprivate-objs = private.o private2.o
-
-$(RWPATH)/libprivate.a: $(foreach o, $(libprivate-objs), $(RWPATH)/$(o))
+$(RWPATH)/libprivate.a: $(PRIVPATH)/libprivate.a
+	@cp $^ $@
 
 $(out)/RW/ec.RW.elf: $(RWPATH)/libprivate.a
 # Include the whole libprivate archive (not just the symbols that are used)
