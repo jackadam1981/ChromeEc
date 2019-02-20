@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5b6328_d0bbe5ef",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4507,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-02-20T22:16:47Z",
+      "side": 1,
+      "message": "Here is the \"unaligned\" disaster I met.  I changed it from uint8_t to uint32_t.\n\nThe uint8_t would cause unaligned for the following union-ed structure.  I thought compiler should do it for me, but it didn\u0027t.\n\nI am thinking to change all __small_integer__ to at least 4-bytes.",
+      "range": {
+        "startLine": 4507,
+        "startChar": 1,
+        "endLine": 4507,
+        "endChar": 9
+      },
+      "revId": "0bebcbdeef642a9be0e0bd489db1b76c535dc3b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
