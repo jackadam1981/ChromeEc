@@ -34,6 +34,24 @@
       "revId": "2839c15e5b772ea0333805ebc49c57c5e8b7cb4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b8a9e5_8f16e704",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-20T02:38:28Z",
+      "side": 1,
+      "message": "I mean size of every object listed in the smap file - it would be interesting to see what sizes changed, if any, and for what reason, don\u0027t you think?",
+      "parentUuid": "269dc5b7_0c475bd1",
+      "revId": "2839c15e5b772ea0333805ebc49c57c5e8b7cb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
