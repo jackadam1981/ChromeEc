@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35d755f1_a6d608da",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-20T23:44:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a4b2aff_0f1b9521",
+      "range": {
+        "startLine": 1714,
+        "startChar": 5,
+        "endLine": 1714,
+        "endChar": 8
+      },
+      "revId": "545c4000f284955312345f3fdbfa98893d26599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8612247d_5eebda88",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bc59b87c_999eadcd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-20T23:44:44Z",
+      "side": 1,
+      "message": "I don\u0027t think we care about those. The entrance into the SNK_READY state at L1776 would be if we were already in a contract. The issue that I\u0027ve seen is as soon as the explicit contract is established, both port partners try to go down their respective policy/interrogation paths",
+      "parentUuid": "8612247d_5eebda88",
+      "range": {
+        "startLine": 1715,
+        "startChar": 3,
+        "endLine": 1715,
+        "endChar": 39
+      },
+      "revId": "545c4000f284955312345f3fdbfa98893d26599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3701f348_56b1bb32",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-20T18:58:21Z",
       "side": 1,
       "message": "In my past experiences I have usually seen this type of timer referred to as a holdoff timer.",
+      "range": {
+        "startLine": 3757,
+        "startChar": 43,
+        "endLine": 3757,
+        "endChar": 53
+      },
+      "revId": "545c4000f284955312345f3fdbfa98893d26599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c84e7bc_d6d79914",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3757,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-20T23:44:44Z",
+      "side": 1,
+      "message": "Thanks, I couldn\u0027t think of a good name at the time.",
+      "parentUuid": "3701f348_56b1bb32",
       "range": {
         "startLine": 3757,
         "startChar": 43,
