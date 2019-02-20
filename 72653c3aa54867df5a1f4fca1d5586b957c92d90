@@ -16,6 +16,24 @@
       "revId": "72653c3aa54867df5a1f4fca1d5586b957c92d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c96a9ca_884f7030",
+        "filename": "util/iteflash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-20T01:46:58Z",
+      "side": 1,
+      "message": "Will fix this in my next work on iteflash, which is about enabling iteflash to work with \".*ccd_cr50\" servo type.",
+      "parentUuid": "bb7d9962_efaeb26d",
+      "revId": "72653c3aa54867df5a1f4fca1d5586b957c92d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
