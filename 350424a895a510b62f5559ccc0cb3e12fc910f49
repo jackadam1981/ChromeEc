@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "022cdfc3_4e632987",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-20T16:52:05Z",
+      "side": 1,
+      "message": "should this be uint8_t\n\nWhen we use it we downcast it to unit8_t so we would loose precision there",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 132,
+        "endChar": 15
+      },
+      "revId": "350424a895a510b62f5559ccc0cb3e12fc910f49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
