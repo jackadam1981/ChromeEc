@@ -865,19 +865,12 @@ static int send_special_waveform(struct common_hnd *chnd)
 			 * loop.
 			 */
 			ret = check_chipid(chnd);
-
-			/* disable watchdog before programming sequence */
-			if (!ret) {
-				dbgr_disable_watchdog(chnd);
-				dbgr_disable_protect_path(chnd);
-			}
 		} else {
 			ret = -1;
 			if (!(iterations % 10))
 				printf("!please reset EC if flashing sequence"
 					" is not starting!\n");
 		}
-
 	} while (ret && (iterations++ < 10));
 
 	if (ret)
@@ -1567,6 +1560,22 @@ static int ftdi_i2c_interface_post_waveform(struct common_hnd *chnd)
 	return 0;
 }
 
+static int interface_post_waveform(struct common_hnd *chnd)
+{
+	int ret = 0;
+
+	printf("Performing post special waveform work...\n");
+
+	/* disable watchdog before programming sequence */
+	dbgr_disable_watchdog(chnd);
+	dbgr_disable_protect_path(chnd);
+
+	if (chnd->conf.i2c_if->interface_post_waveform)
+		ret = chnd->conf.i2c_if->interface_post_waveform(chnd);
+
+	return ret;
+}
+
 /* Close the FTDI USB handle */
 static int ftdi_i2c_interface_shutdown(struct common_hnd *chnd)
 {
@@ -1806,8 +1815,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (chnd.conf.i2c_if->interface_post_waveform &&
-	    chnd.conf.i2c_if->interface_post_waveform(&chnd))
+	if (interface_post_waveform(&chnd))
 		goto terminate;
 
 	if (chnd.conf.input_filename) {
