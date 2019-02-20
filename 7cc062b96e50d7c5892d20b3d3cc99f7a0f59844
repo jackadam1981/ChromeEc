@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31f2466b_eb080bb8",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-20T00:08:45Z",
+      "side": 1,
+      "message": "safe_memcmp, as mschilder@ suggests here?",
+      "range": {
+        "startLine": 469,
+        "startChar": 8,
+        "endLine": 469,
+        "endChar": 14
+      },
+      "revId": "7cc062b96e50d7c5892d20b3d3cc99f7a0f59844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
