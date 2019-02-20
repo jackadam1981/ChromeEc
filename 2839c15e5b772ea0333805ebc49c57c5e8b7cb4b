@@ -16,6 +16,24 @@
       "revId": "2839c15e5b772ea0333805ebc49c57c5e8b7cb4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269dc5b7_0c475bd1",
+        "filename": "util/compare_smaps.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-20T02:07:12Z",
+      "side": 1,
+      "message": "The size of the ec.RO.elf and ec.RW.elf files? Or the size of each individual object (.o) file? Or something else?",
+      "parentUuid": "c2aede76_52515c86",
+      "revId": "2839c15e5b772ea0333805ebc49c57c5e8b7cb4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
