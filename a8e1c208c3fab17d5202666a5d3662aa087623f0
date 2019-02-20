@@ -46,6 +46,30 @@
       "revId": "a8e1c208c3fab17d5202666a5d3662aa087623f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fffed4d_59142258",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-02-20T02:12:33Z",
+      "side": 1,
+      "message": "Yes, this is the place we can get the SKU id. But the setup here doesn\u0027t seem to be cbi_init related. Therefore I\u0027m not sure this is the best place... maybe inside board_init is better. Dai, please correct me if I were wrong.\nThanks.",
+      "parentUuid": "ac02cf6b_d1aaef53",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "a8e1c208c3fab17d5202666a5d3662aa087623f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
