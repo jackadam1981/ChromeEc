@@ -22,6 +22,30 @@
       "revId": "3d94252cbc17779dbd7557fcacebc9e0ba86c696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3cd7eb1_f8bc2126",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-02-20T02:01:21Z",
+      "side": 1,
+      "message": "This is only FW change due to the power sequence is not fit panel spec before.\n30ms might be too early to turn on backlight for all panel and cause garbage.\nFor fix this issue, need change to 1s.",
+      "parentUuid": "e631af3b_d31ffe64",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "3d94252cbc17779dbd7557fcacebc9e0ba86c696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
