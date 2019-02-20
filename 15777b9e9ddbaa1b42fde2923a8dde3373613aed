@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb63088f_afec98ac",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-20T01:59:50Z",
+      "side": 1,
+      "message": "this is not how it was formatted in that other patch, but as you mentioned, you can reconcile this when working on the upcoming change.",
+      "range": {
+        "startLine": 1642,
+        "startChar": 3,
+        "endLine": 1642,
+        "endChar": 6
+      },
+      "revId": "15777b9e9ddbaa1b42fde2923a8dde3373613aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
