@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a4b2aff_0f1b9521",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-20T18:58:21Z",
+      "side": 1,
+      "message": "Maybe make this a #define and add a comment there as to where the 200 msec came from as opposed to say 100 msec or 500?",
+      "range": {
+        "startLine": 1714,
+        "startChar": 5,
+        "endLine": 1714,
+        "endChar": 8
+      },
+      "revId": "545c4000f284955312345f3fdbfa98893d26599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3701f348_56b1bb32",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3757,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-20T18:58:21Z",
+      "side": 1,
+      "message": "In my past experiences I have usually seen this type of timer referred to as a holdoff timer.",
+      "range": {
+        "startLine": 3757,
+        "startChar": 43,
+        "endLine": 3757,
+        "endChar": 53
+      },
+      "revId": "545c4000f284955312345f3fdbfa98893d26599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
