@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b86a7320_dbb1a678",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-20T06:16:45Z",
+      "side": 1,
+      "message": "I will remove it in next patch set with other modification all together.",
+      "parentUuid": "66a74eaa_3ce42d22",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90453db4_c0342d34",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -107,6 +131,30 @@
       "writtenOn": "2019-02-14T17:00:40Z",
       "side": 1,
       "message": "nit: this comment doesn\u0027t apply (since you have this same comment on line 78)\n\nSay Enable Vbus monitor here instead please",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7996493_ab8cc5a0",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-20T06:16:45Z",
+      "side": 1,
+      "message": "I will change it in next patch set with other modification all together.",
+      "parentUuid": "fdd3d21e_2dcfdf3b",
       "range": {
         "startLine": 69,
         "startChar": 11,
@@ -354,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "9fda0e10_b5cafcab",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-20T06:16:45Z",
+      "side": 1,
+      "message": "I will remove it in next patch set with other modification all together.",
+      "parentUuid": "09f5749b_22b2ec00",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 23
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10f7eb1c_ef5c0de2",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -377,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "a20bfb8f_5143a167",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-20T06:16:45Z",
+      "side": 1,
+      "message": "I will move it to line 258 in next patch set with other modification all together.",
+      "parentUuid": "10f7eb1c_ef5c0de2",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 18
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "945b147e_3015d003",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -388,6 +484,30 @@
       "writtenOn": "2019-02-14T17:00:40Z",
       "side": 1,
       "message": "add a comment that we are assuming that the MCU is using little endian encoding\n\nAlso, this could fail on some processor due to unaligned access right?\n\nThis seems a little dangerous if the alignment isn\u0027t correct",
+      "range": {
+        "startLine": 260,
+        "startChar": 3,
+        "endLine": 260,
+        "endChar": 24
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4fd2115_91cd3001",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-20T06:16:45Z",
+      "side": 1,
+      "message": "I will add the comment in next patch set with other modification all together.",
+      "parentUuid": "945b147e_3015d003",
       "range": {
         "startLine": 260,
         "startChar": 3,
@@ -458,6 +578,30 @@
       "side": 1,
       "message": "This code can be removed (it was only used during debug).",
       "parentUuid": "c83e54d9_838ca314",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 11
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceff348e_72fb29bf",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-02-20T06:16:45Z",
+      "side": 1,
+      "message": "I will remove it in next patch set with other modification all together.",
+      "parentUuid": "01954cfc_b5be8a9c",
       "range": {
         "startLine": 266,
         "startChar": 1,
