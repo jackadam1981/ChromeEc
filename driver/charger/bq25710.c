@@ -266,6 +266,17 @@ int charger_set_option(int option)
 	return raw_write16(BQ25710_REG_CHARGE_OPTION_0, option);
 }
 
+static void bq25710_init(void)
+{
+	int reg;
+
+	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
+		raw_write16(BQ25710_REG_PROCHOT_OPTION_1,
+			reg & ~BQ25710_PROCHOT_PROFILE_VDPM);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, bq25710_init, HOOK_PRIO_INIT_I2C + 1);
+
 #ifdef CONFIG_CHARGE_RAMP_HW
 
 static void bq25710_chg_ramp_handle(void)
