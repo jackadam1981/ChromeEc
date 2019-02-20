@@ -512,9 +512,9 @@ static int dbgr_disable_watchdog(struct common_hnd *chnd)
 	ret |= i2c_write_byte(chnd, 0x30, 0x30);
 
 	if (ret < 0)
-		printf("DBGR DISABLE WATCHDOG FAILED!\n");
+		fprintf(stderr, "DBGR DISABLE WATCHDOG FAILED!\n");
 
-	return 0;
+	return ret;
 }
 
 /* disable protect path from DBGR */
@@ -529,9 +529,9 @@ static int dbgr_disable_protect_path(struct common_hnd *chnd)
 	}
 
 	if (ret < 0)
-		printf("DISABLE PROTECT PATH FROM DBGR FAILED!\n");
+		fprintf(stderr, "DISABLE PROTECT PATH FROM DBGR FAILED!\n");
 
-	return 0;
+	return ret;
 }
 
 /* Enter follow mode and FSCE# high level */
@@ -865,19 +865,12 @@ static int send_special_waveform(struct common_hnd *chnd)
 			 * loop.
 			 */
 			ret = check_chipid(chnd);
-
-			/* disable watchdog before programming sequence */
-			if (!ret) {
-				dbgr_disable_watchdog(chnd);
-				dbgr_disable_protect_path(chnd);
-			}
 		} else {
 			ret = -1;
 			if (!(iterations % 10))
 				printf("!please reset EC if flashing sequence"
 					" is not starting!\n");
 		}
-
 	} while (ret && (iterations++ < 10));
 
 	if (ret)
@@ -1567,6 +1560,27 @@ static int ftdi_i2c_interface_post_waveform(struct common_hnd *chnd)
 	return 0;
 }
 
+static int interface_post_waveform(struct common_hnd *chnd)
+{
+	int ret;
+
+	printf("Performing post special waveform work...\n");
+
+	/* disable watchdog before programming sequence */
+	ret = dbgr_disable_watchdog(chnd);
+	if (ret < 0)
+		return ret;
+
+	ret = dbgr_disable_protect_path(chnd);
+	if (ret < 0)
+		return ret;
+
+	if (chnd->conf.i2c_if->interface_post_waveform)
+		ret = chnd->conf.i2c_if->interface_post_waveform(chnd);
+
+	return ret;
+}
+
 /* Close the FTDI USB handle */
 static int ftdi_i2c_interface_shutdown(struct common_hnd *chnd)
 {
@@ -1806,8 +1820,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (chnd.conf.i2c_if->interface_post_waveform &&
-	    chnd.conf.i2c_if->interface_post_waveform(&chnd))
+	if (interface_post_waveform(&chnd))
 		goto terminate;
 
 	if (chnd.conf.input_filename) {
