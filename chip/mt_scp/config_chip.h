@@ -80,6 +80,9 @@
 	(CONFIG_RAM_BASE -                                                     \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * sizeof(int32_t)) * 2)
 
+/* Wake on voice */
+#define CONFIG_WAKE_ON_VOICE
+
 #define CONFIG_CHIP_PRE_INIT
 
 #define GPIO_PIN(num) ((num) / 32), ((num) % 32)
