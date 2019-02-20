@@ -865,19 +865,12 @@ static int send_special_waveform(struct common_hnd *chnd)
 			 * loop.
 			 */
 			ret = check_chipid(chnd);
-
-			/* disable watchdog before programming sequence */
-			if (!ret) {
-				dbgr_disable_watchdog(chnd);
-				dbgr_disable_protect_path(chnd);
-			}
 		} else {
 			ret = -1;
 			if (!(iterations % 10))
 				printf("!please reset EC if flashing sequence"
 					" is not starting!\n");
 		}
-
 	} while (ret && (iterations++ < 10));
 
 	if (ret)
@@ -1567,6 +1560,22 @@ static int ftdi_i2c_interface_post_waveform(struct common_hnd *chnd)
 	return 0;
 }
 
+static int interface_post_waveform(struct common_hnd *chnd)
+{
+	int ret = 0;
+
+	printf("Performing Post special waveform work...\n");
+
+	/* disable watchdog before programming sequence */
+	dbgr_disable_watchdog(chnd);
+	dbgr_disable_protect_path(chnd);
+
+	if (chnd->conf.i2c_if->interface_post_waveform)
+		ret = chnd->conf.i2c_if->interface_post_waveform(chnd);
+
+	return ret;
+}
+
 /* Close the FTDI USB handle */
 static int ftdi_i2c_interface_shutdown(struct common_hnd *chnd)
 {
@@ -1611,7 +1620,7 @@ static const struct option longopts[] = {
 static void display_usage(char *program)
 {
 	fprintf(stderr, "Usage: %s [-d] [-v <VID>] [-p <PID>] \\\n"
-		"      [-c <ccd|ftdi>] [-i <1|2>] [-s <serial>] [-u] \\\n"
+		"      [-c <ccd|ftdi>] [-i <1|2>] [-s <serial>] \\\n"
 		"      [-e] [-r <file>] [-W <0|1|false|true>] [-w <file>] \\\n"
 		"      [-R base[:size]]\n",
 		program);
@@ -1628,7 +1637,6 @@ static void display_usage(char *program)
 	fprintf(stderr, "--r[ead] <file> : read the flash content and "
 			"write it into <file>\n");
 	fprintf(stderr, "--s[erial] <serialname> : USB serial string\n");
-	fprintf(stderr, "--u[nprotect] : remove flash write protect\n");
 	fprintf(stderr, "--v[endor] <0x1234> : USB vendor ID\n");
 	fprintf(stderr, "-W, --send-waveform <0|1|false|true> : Send the "
 		"special waveform?\n    Default is true. Set to false if ITE"
@@ -1806,8 +1814,7 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (chnd.conf.i2c_if->interface_post_waveform &&
-	    chnd.conf.i2c_if->interface_post_waveform(&chnd))
+	if (interface_post_waveform(&chnd))
 		goto terminate;
 
 	if (chnd.conf.input_filename) {
