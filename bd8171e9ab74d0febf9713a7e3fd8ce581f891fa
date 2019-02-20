@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "749f27de_0d249f60",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-02-20T20:24:24Z",
+      "side": 1,
+      "message": "Add comment explaining why asm is needed here.",
+      "revId": "bd8171e9ab74d0febf9713a7e3fd8ce581f891fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f699fe8e_daf51775",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-02-20T20:24:24Z",
+      "side": 1,
+      "message": "Calling scale_us2ticks() here would be easier to understand.",
+      "revId": "bd8171e9ab74d0febf9713a7e3fd8ce581f891fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd51ea0b_0398d443",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-02-20T20:24:24Z",
+      "side": 1,
+      "message": "Would be nice to understand what the HW is doing that makes this do-while necessary.",
+      "revId": "bd8171e9ab74d0febf9713a7e3fd8ce581f891fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
