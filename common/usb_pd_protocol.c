@@ -233,6 +233,13 @@ static struct pd_protocol {
 	/* protocol revision */
 	uint8_t rev;
 #endif
+	/*
+	 * Time at which the port acting as a sink can start to request for
+	 * higher power and interrogate the port partner.  Some port partners
+	 * are really chatty after the initial request so we allow this time for
+	 * the port partner to send any messages in order to avoid a collsiion.
+	 */
+	uint64_t snk_ready_quiet_time;
 } pd[CONFIG_USB_PD_PORT_COUNT];
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -677,6 +684,9 @@ static inline void set_state(int port, enum pd_states next_state)
 			ppc_clear_oc_event_counter(port);
 		}
 #endif /* CONFIG_USBC_PPC */
+		/* Clear the quiet time deadline. */
+		pd[port].snk_ready_quiet_time = 0;
+
 		/* Clear the input current limit */
 		pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
@@ -1695,6 +1705,13 @@ static void handle_ctrl_request(int port, uint16_t head,
 		} else if (pd[port].task_state == PD_STATE_SNK_SWAP_STANDBY) {
 			/* Do nothing, assume this is a redundant PD_RDY */
 		} else if (pd[port].power_role == PD_ROLE_SINK) {
+			/*
+			 * Give the source ~200ms to send any messages before we
+			 * start our interrogation.
+			 */
+			if (pd[port].task_state == PD_STATE_SNK_TRANSITION)
+				pd[port].snk_ready_quiet_time = get_time().val +
+					200 * MSEC;
 			set_state(port, PD_STATE_SNK_READY);
 			pd_set_input_current_limit(port, pd[port].curr_limit,
 						   pd[port].supply_voltage);
@@ -3735,6 +3752,16 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_READY:
 			timeout = 20*MSEC;
+
+			/*
+			 * Don't send any traffic yet until our quiet time
+			 * period has expired.  Some devices are chatty once we
+			 * reach the SNK_READY state and we may end up in a
+			 * collsiion of messages if we try to immediately send
+			 * our interrogations.
+			 */
+			if (get_time().val <= pd[port].snk_ready_quiet_time)
+				break;
 
 			/*
 			 * Don't send any PD traffic if we woke up due to
