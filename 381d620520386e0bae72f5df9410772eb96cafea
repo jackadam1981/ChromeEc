@@ -22,6 +22,30 @@
       "revId": "381d620520386e0bae72f5df9410772eb96cafea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ead1eb_a1fc3ac7",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-02-20T10:06:06Z",
+      "side": 1,
+      "message": "Yes good point, added",
+      "parentUuid": "1d53d8bc_439515df",
+      "range": {
+        "startLine": 492,
+        "startChar": 13,
+        "endLine": 492,
+        "endChar": 23
+      },
+      "revId": "381d620520386e0bae72f5df9410772eb96cafea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
