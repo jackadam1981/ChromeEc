@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f0011c4_07f7d987",
+        "filename": "util/iteflash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-20T01:04:39Z",
+      "side": 1,
+      "message": "nit: This initial value is unused.  Though if you think it\u0027s easier to reason about, I don\u0027t really mind it.\n\nDid you mean to move the while () condition to the beginning of the loop?  (Possibly turning it into a for () loop.)",
+      "revId": "7ad69e3423dedb7efdfb5db270a2c617485b54cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291c8cbf_cd7e62d2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-20T01:04:39Z",
+      "side": 1,
+      "message": "\"configure\" -\u003e \"configuring\"",
+      "revId": "7ad69e3423dedb7efdfb5db270a2c617485b54cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09876fb_caecb51b",
+        "filename": "util/iteflash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-20T01:04:39Z",
+      "side": 1,
+      "message": "\"configure\" -\u003e \"configuring\"",
+      "revId": "7ad69e3423dedb7efdfb5db270a2c617485b54cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
