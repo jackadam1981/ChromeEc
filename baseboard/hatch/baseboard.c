@@ -11,6 +11,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "driver/bc12/pi3usb9201.h"
+#include "driver/charger/bq25710.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -226,6 +227,12 @@ void baseboard_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+
+static void baseboard_charger_init(void)
+{
+	bq25710_set_prochot_vdpm(0);
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_charger_init, HOOK_PRIO_INIT_I2C + 1);
 
 uint16_t tcpc_get_alert_status(void)
 {
