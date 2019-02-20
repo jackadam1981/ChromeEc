@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fec9d459_9e2df290",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-20T17:49:58Z",
+      "side": 1,
+      "message": "or both.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "9e3d614535ffee8f0294c888d45392a57f1b4b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33f63a7_2ff8d0a2",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-20T17:49:58Z",
+      "side": 1,
+      "message": "this could be \n\ninclude $(foreach dir,$(PDIR) $(PBDIR),$(dir)/build.mk)\n\nand most includes above could follow this pattern, just a thought.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "9e3d614535ffee8f0294c888d45392a57f1b4b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
