@@ -97,8 +97,19 @@ static int bq25710_set_low_power_mode(int enable)
 }
 #endif
 
-/* Charger interfaces */
+/* Disbale VDPM prochot profile at initialization */
+static void bq25710_disable_prochot_vdpm(void)
+{
+	int reg;
 
+	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
+		raw_write16(BQ25710_REG_PROCHOT_OPTION_1,
+			    (reg & ~BQ25710_PROCHOT_PROFILE_VDPM));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, bq25710_disable_prochot_vdpm, HOOK_PRIO_INIT_I2C + 1);
+
+/* Charger interfaces */
 const struct charger_info *charger_get_info(void)
 {
 	return &bq25710_charger_info;
