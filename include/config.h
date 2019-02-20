@@ -667,6 +667,9 @@
 #undef CONFIG_CHARGER_RT9467
 #undef CONFIG_CHARGER_SY21612
 
+/* Disbale VDPM prochot profile at initialization */
+#undef CONFIG_CHARGER_BQ25710_DISABLE_VDPM
+
 /*
  * Enable the CHG_EN at initialization to turn-on the BGATE which allows voltage
  * to be applied to the battery PACK & wakes the battery if it is in shipmode.
