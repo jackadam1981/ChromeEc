@@ -22,6 +22,30 @@
       "revId": "e404d7320823e1ccd219c032b9e3cd8023383977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050ddd4e_1430e971",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-20T23:56:21Z",
+      "side": 1,
+      "message": "eh, actually (input_size \u003c 2 || input_size \u003e sizeof(U2F_ATTEST_REQ) || input_size !\u003d 2+req-\u003edataLen)",
+      "parentUuid": "36b79a78_caeef548",
+      "range": {
+        "startLine": 596,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 30
+      },
+      "revId": "e404d7320823e1ccd219c032b9e3cd8023383977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
