@@ -97,8 +97,31 @@ static int bq25710_set_low_power_mode(int enable)
 }
 #endif
 
-/* Charger interfaces */
+/* bq25710-specific charger interfaces */
+int bq25710_set_prochot(int mask, int enable)
+{
+	int rv;
+	int reg;
 
+	mask &= BQ25710_PROCHOT_PROFILE_MASK_ALL;
+
+	rv = raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= mask;
+	else
+		reg &= ~mask;
+
+	rv = raw_write16(BQ25710_REG_PROCHOT_OPTION_1, reg);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+
+/* Common charger interfaces */
 const struct charger_info *charger_get_info(void)
 {
 	return &bq25710_charger_info;
