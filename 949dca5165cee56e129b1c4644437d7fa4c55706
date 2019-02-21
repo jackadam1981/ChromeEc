@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8366cae3_c67837ef",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-21T04:09:05Z",
+      "side": 1,
+      "message": "I think we should switch to using dedicated interrupt instead of SCI for MKBP on hatch (just like all recent x86 boards).",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "949dca5165cee56e129b1c4644437d7fa4c55706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0cca75e_f3a239eb",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-21T04:09:05Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "949dca5165cee56e129b1c4644437d7fa4c55706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a350693_15b8d490",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-21T04:09:05Z",
+      "side": 1,
+      "message": "Don\u0027t we need Lid accel?",
+      "range": {
+        "startLine": 145,
+        "startChar": 23,
+        "endLine": 145,
+        "endChar": 38
+      },
+      "revId": "949dca5165cee56e129b1c4644437d7fa4c55706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
