@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53361b43_eb7ef199",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-21T18:38:22Z",
+      "side": 1,
+      "message": "We dont use AP UART TX state for AP state anymore. Its only used for AP uart state in ap_uart_state.c. That is untouched. It still does all of the polling. AP UART TX is only used to enable/disable ap uart.\n\nThe ap_state machine as is is pretty hard to modify. The state machine has to have certain states set at certain points to handle AP detection properly and it is very slow to detect AP off. It takes a second and it will only detect AP off if TPM_RST_L stays asserted for 1 second. \n\nFor Mistral we need to detect AP off immediately. So we are adding a interrupt to detect TPM_RST_L asserted. If we have both the rising edge and low interrupts on TPM_RST_L, we might as well use them for detecting AP state. I think its easier to follow and is less fragile.",
+      "parentUuid": "2d6d106e_794c8e3f",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0459dd82_12a1275d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c1a790a1_b69f8d6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-21T18:38:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0459dd82_12a1275d",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c0f5f82_b6183a05",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-21T15:29:57Z",
       "side": 1,
       "message": "this argument is not use in this function",
+      "range": {
+        "startLine": 111,
+        "startChar": 38,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed53805_6332b900",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-21T18:38:22Z",
+      "side": 1,
+      "message": "This is the standard interrupt handler function definition.",
+      "parentUuid": "0c0f5f82_b6183a05",
       "range": {
         "startLine": 111,
         "startChar": 38,
