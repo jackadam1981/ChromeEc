@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44835089_38c679b1",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-21T19:58:00Z",
+      "side": 1,
+      "message": "let\u0027s wrap this with REG32 here so access looks like:\n\nISH_WR_IPC_RST_REG \u003d ISH_WR_IPC_RST_REG;\n\nAlso let\u0027s use the ISH_ prefix like most of the other register definitions",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 56
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c05480_6da53c21",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-21T19:58:00Z",
+      "side": 1,
+      "message": "these should all be defined in regsiters.h instead",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03c55b9_b824141d",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-21T19:58:00Z",
+      "side": 1,
+      "message": "why are we toggling. Is it to ensure that there is a rising edge?\n\nAlso can you describe that this is doing, like \"We are telling the PMC that the ISH wants to be reset. When the PMC sees a rising edge it will cut power to ISH and ISH will go through initial boot flow with CSME\" or something that is more accurate than that.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16c3033_6d2d4e82",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-21T19:58:00Z",
+      "side": 1,
+      "message": "let\u0027s define REG32 version of these register in the registers.h file please\n\n\nAlso, please add comments to what and why we are doing each line. What would happen if we didn\u0027t have one of these lines?\n\nAlso, why can\u0027t we enable the IRQ in earlier system initialization. why does it have to be once task scheduling has started?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
