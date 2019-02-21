@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d6d106e_794c8e3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-21T15:29:57Z",
+      "side": 1,
+      "message": "I don\u0027t understand this reasoning:\n\nare we not using AP UART TX any more for AP state, are there any problems with AP state detection not being reliable?\n\nIt took us a while to get AP state machine right, there should be a good reason to change this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0459dd82_12a1275d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-21T15:29:57Z",
+      "side": 1,
+      "message": "what does this test demonstrate? What platform was it ran on, isn\u0027t behavior of TPM_RST_L different on X86 and ARM?",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0f5f82_b6183a05",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-21T15:29:57Z",
+      "side": 1,
+      "message": "this argument is not use in this function",
+      "range": {
+        "startLine": 111,
+        "startChar": 38,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
