@@ -107,7 +107,7 @@ static void thermal_control(void)
 		}
 	}
 
-	if (!num_sensors_read) {
+	if (!num_sensors_read && !chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
 		/*
 		 * Trigger a SMI event if we can't read any sensors.
 		 *
