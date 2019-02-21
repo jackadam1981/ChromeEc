@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03035478_56072606",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1571,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-02-21T02:13:51Z",
+      "side": 1,
+      "message": "nit, should probably also catch return val of each of these calls and error accordingly.",
+      "range": {
+        "startLine": 1570,
+        "startChar": 1,
+        "endLine": 1571,
+        "endChar": 33
+      },
+      "revId": "dd29731b485094336aad99472763d82bfad71c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
