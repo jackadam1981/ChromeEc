@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f18a951_4590e866",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-21T03:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "435f9cbf_eea89108",
+      "revId": "e6a9cb93c7fc48fa7e31744587eafd5d18b51810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05f52925_5f4ed4f9",
         "filename": "board/kukui/usb_pd_policy.c",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "e6a9cb93c7fc48fa7e31744587eafd5d18b51810",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d14f4643_1b490a27",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-21T03:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f52925_5f4ed4f9",
+      "range": {
+        "startLine": 320,
+        "startChar": 30,
+        "endLine": 320,
+        "endChar": 43
+      },
+      "revId": "e6a9cb93c7fc48fa7e31744587eafd5d18b51810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
