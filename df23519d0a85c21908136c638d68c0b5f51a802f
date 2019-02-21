@@ -91,6 +91,30 @@
       "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082aa547_e4fb7473",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-21T22:10:42Z",
+      "side": 1,
+      "message": "Increase priority higher than HOOK_PRIO_DEFAULT? Or put somewhere like main.c()?",
+      "parentUuid": "e16c3033_6d2d4e82",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
