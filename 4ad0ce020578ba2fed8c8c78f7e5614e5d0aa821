@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "891c2881_ca5c3e41",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-21T01:19:02Z",
+      "side": 1,
+      "message": "I feel like this comment should be moved down to where the parameter is used near line 113.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 56
+      },
+      "revId": "4ad0ce020578ba2fed8c8c78f7e5614e5d0aa821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a370362d_e01937f7",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-21T01:19:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these cases save the return value and pass that back to the calling function?",
+      "range": {
+        "startLine": 302,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 12
+      },
+      "revId": "4ad0ce020578ba2fed8c8c78f7e5614e5d0aa821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed8d9d3_a245dc65",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-21T01:19:02Z",
+      "side": 1,
+      "message": "Like above, this could pass the error code back to caller instead of returning EC_SUCCESS?",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 9
+      },
+      "revId": "4ad0ce020578ba2fed8c8c78f7e5614e5d0aa821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
