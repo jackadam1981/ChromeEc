@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "803c9085_f5c94c04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-21T04:12:43Z",
+      "side": 1,
+      "message": "This is doing more than just adding the lid accel sensor? It also enables lid angle calculation on EC.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "0ac002f2405cfce3d61259aa001e19158cf054bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c14c1de_6a9d3dae",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-21T04:12:43Z",
+      "side": 1,
+      "message": "This will have to be done only if sku is convertible. Probably add a TODO and raise a bug to fix this later?",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 57
+      },
+      "revId": "0ac002f2405cfce3d61259aa001e19158cf054bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c890d5_020f80cf",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-02-21T04:12:43Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "0ac002f2405cfce3d61259aa001e19158cf054bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
