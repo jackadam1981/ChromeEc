@@ -22,6 +22,30 @@
       "revId": "bfa9e8ca32b24b88d18777cfe373c6d136ea1349",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219cefe8_cb34db81",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-21T11:37:53Z",
+      "side": 1,
+      "message": "The way we use these right now (basically just as a collection of object that we link with --whole-archive), it shouldn\u0027t make a difference. But it might be useful in the future.",
+      "parentUuid": "0bf62cb1_bc3ef8a7",
+      "range": {
+        "startLine": 94,
+        "startChar": 19,
+        "endLine": 94,
+        "endChar": 21
+      },
+      "revId": "bfa9e8ca32b24b88d18777cfe373c6d136ea1349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
