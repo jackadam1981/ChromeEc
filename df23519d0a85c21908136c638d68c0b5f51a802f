@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9296da8c_b64a2794",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-21T22:58:46Z",
+      "side": 1,
+      "message": "Moved.",
+      "parentUuid": "62c05480_6da53c21",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 56
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c03c55b9_b824141d",
         "filename": "chip/ish/reset_prep_wr.c",
         "patchSetId": 4
@@ -92,6 +116,30 @@
       "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09416720_faab0b2c",
+        "filename": "chip/ish/reset_prep_wr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2019-02-21T22:58:46Z",
+      "side": 1,
+      "message": "Comments added.",
+      "parentUuid": "c03c55b9_b824141d",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "df23519d0a85c21908136c638d68c0b5f51a802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
