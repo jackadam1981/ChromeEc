@@ -22,6 +22,30 @@
       "revId": "153c90a2026f1ae56705e4880e2461354d1ac9af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e588b887_12b75036",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-02-21T19:54:19Z",
+      "side": 0,
+      "message": "The second proposal sounds slightly better to me. Will do.",
+      "parentUuid": "e059eb08_4659daea",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 28
+      },
+      "revId": "153c90a2026f1ae56705e4880e2461354d1ac9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
