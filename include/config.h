@@ -2449,6 +2449,9 @@
 /* Use Virtual Wire for Platform Reset instead of a sideband signal */
 #undef CONFIG_HOSTCMD_ESPI_PLTRST_IS_VWIRE
 
+/* Enable eSPI Out-Of-band (OOB) channel */
+#undef CONFIG_HOSTCMD_ESPI_OOB
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
