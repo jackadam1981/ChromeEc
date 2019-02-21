@@ -46,6 +46,30 @@
       "revId": "e404d7320823e1ccd219c032b9e3cd8023383977",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702b324f_4629295b",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-02-21T03:55:21Z",
+      "side": 1,
+      "message": "Done, please check carefully though. My intention was to require 0 - n bytes of data, with an arbitrary amount of padding (up to the max) afterwards.",
+      "parentUuid": "050ddd4e_1430e971",
+      "range": {
+        "startLine": 596,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 30
+      },
+      "revId": "e404d7320823e1ccd219c032b9e3cd8023383977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
