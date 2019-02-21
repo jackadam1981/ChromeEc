@@ -22,6 +22,30 @@
       "revId": "4da158b506f6f2c8643500765ba70bcf81690971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ee575a_91abb926",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-21T23:44:33Z",
+      "side": 1,
+      "message": "If it is detecting falling edge and TPM_RST_L is already asserted when we start the closed loop reset, then tpm_rst_asserted wont get triggered.\n\nI think its mostly for closed loop reset support. Should I add a comment here in that patch?",
+      "parentUuid": "c1ad6aa6_2396e288",
+      "range": {
+        "startLine": 74,
+        "startChar": 51,
+        "endLine": 74,
+        "endChar": 62
+      },
+      "revId": "4da158b506f6f2c8643500765ba70bcf81690971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
