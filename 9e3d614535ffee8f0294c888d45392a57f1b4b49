@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e03a66cf_7a22ae3e",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-21T01:08:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec9d459_9e2df290",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "9e3d614535ffee8f0294c888d45392a57f1b4b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b33f63a7_2ff8d0a2",
         "filename": "Makefile",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-20T17:49:58Z",
       "side": 1,
       "message": "this could be \n\ninclude $(foreach dir,$(PDIR) $(PBDIR),$(dir)/build.mk)\n\nand most includes above could follow this pattern, just a thought.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "9e3d614535ffee8f0294c888d45392a57f1b4b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d0c00bc_d22bf505",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-21T01:08:55Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. I can do that in a follow-up CL (I don\u0027t know if we can handle the BASEDIR/private things cleanly...)",
+      "parentUuid": "b33f63a7_2ff8d0a2",
       "range": {
         "startLine": 222,
         "startChar": 0,
