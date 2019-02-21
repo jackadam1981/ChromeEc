@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e4f26f1_66da773c",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-21T21:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b50e8b5d_399dd946",
+      "range": {
+        "startLine": 78,
+        "startChar": 37,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "84f6c51d266a26bc55997f09811fa756f859875b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "374ba21b_bd5e4a4d",
         "filename": "board/cr50/scratch_reg1.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-21T15:45:50Z",
       "side": 1,
       "message": "we have much more properties than we used to, maybe it would be better readable if they were listed here one per line, sorted.",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "84f6c51d266a26bc55997f09811fa756f859875b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf9e9a5_24cb3667",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-21T21:49:58Z",
+      "side": 1,
+      "message": "I uploaded some cls to list one per line and sort this.",
+      "parentUuid": "374ba21b_bd5e4a4d",
       "range": {
         "startLine": 86,
         "startChar": 30,
