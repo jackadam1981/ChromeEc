@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b861b997_a0ece310",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-21T23:24:37Z",
+      "side": 0,
+      "message": "why are you dropping this deferred call?",
+      "range": {
+        "startLine": 750,
+        "startChar": 1,
+        "endLine": 751,
+        "endChar": 52
+      },
+      "revId": "153c90a2026f1ae56705e4880e2461354d1ac9af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
