@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f1751115_67a136da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-21T18:51:09Z",
+      "side": 1,
+      "message": "this is not clear from the patch description, please update.",
+      "parentUuid": "53361b43_eb7ef199",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0459dd82_12a1275d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "This is the standard interrupt handler function definition.",
       "parentUuid": "0c0f5f82_b6183a05",
+      "range": {
+        "startLine": 111,
+        "startChar": 38,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "9a2f39218744e7d03b8cb3c19c230546e5f965df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb01be01_f1464d6f",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-21T18:51:09Z",
+      "side": 1,
+      "message": "can you call it \u0027unused\u0027 in this case?",
+      "parentUuid": "3ed53805_6332b900",
       "range": {
         "startLine": 111,
         "startChar": 38,
