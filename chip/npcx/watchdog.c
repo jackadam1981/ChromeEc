@@ -96,9 +96,12 @@ void IRQ_HANDLER(ITIM16_INT(ITIM_WDG_NO))(void)
 			 * stack for ARM EABI.  This also conveninently saves
 			 * R0=LR so we can pass it to task_resched_if_needed. */
 			"push {r0, lr}\n"
-			"bl watchdog_check\n"
+			"bl %[watchdog_check]\n"
 			"pop {r0, lr}\n"
-			"b task_resched_if_needed\n");
+			"b %[task_resched_if_needed]\n"
+			:
+			: [watchdog_check] "rim" (watchdog_check),
+			  [task_resched_if_needed] "rim"(task_resched_if_needed));
 }
 const struct irq_priority __keep IRQ_PRIORITY(ITIM16_INT(ITIM_WDG_NO))
 __attribute__((section(".rodata.irqprio")))

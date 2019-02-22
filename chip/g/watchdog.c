@@ -38,7 +38,7 @@ void IRQ_HANDLER(GC_IRQNUM_WATCHDOG0_WDOGINT)(void)
 		     "push {r0, lr}\n"
 		     /* We've lowered our runlevel, so just rebooting the ARM
 		      * core doesn't work. */
-		     "bl trace_and_reset\n"
+		     "bl %[trace_and_reset]\n"
 		     /* Do NOT reset the watchdog interrupt here; it will
 		      * be done in watchdog_reload(), or reset will be
 		      * triggered if we don't call that by the next watchdog
@@ -47,10 +47,13 @@ void IRQ_HANDLER(GC_IRQNUM_WATCHDOG0_WDOGINT)(void)
 		      * once.
 		      */
 		     "mov r0, %[irq]\n"
-		     "bl task_disable_irq\n"
+		     "bl %[task_disable_irq]\n"
 		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n"
-		     : : [irq] "i" (GC_IRQNUM_WATCHDOG0_WDOGINT));
+		     "b %[task_resched_if_needed]\n"
+		     : : [irq] "i" (GC_IRQNUM_WATCHDOG0_WDOGINT),
+		         [trace_and_reset] "rim" (trace_and_reset),
+			 [task_disable_irq] "rim" (task_disable_irq),
+			 [task_resched_if_needed] "rim" (task_resched_if_needed));
 }
 const struct irq_priority __keep IRQ_PRIORITY(GC_IRQNUM_WATCHDOG0_WDOGINT)
 	__attribute__((section(".rodata.irqprio")))

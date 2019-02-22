@@ -8,10 +8,15 @@
 #ifndef __CROS_EC_IRQ_HANDLER_H
 #define __CROS_EC_IRQ_HANDLER_H
 
+#include "task.h"
+
 #ifdef CONFIG_TASK_PROFILING
-#define bl_task_start_irq_handler "bl task_start_irq_handler\n"
+#define bl_task_start_irq_handler "bl %[task_start_irq_handler]\n"
+#define op_task_start_irq_handler [task_start_irq_handler] "rim" \
+	(task_start_irq_handler),
 #else
 #define bl_task_start_irq_handler ""
+#define op_task_start_irq_handler
 #endif
 
 /* Helper macros to build the IRQ handler and priority struct names */
@@ -33,9 +38,14 @@
 		asm volatile("mov r0, lr\n"			\
 			     "push {r0, lr}\n"			\
 			     bl_task_start_irq_handler		\
-			     "bl "#routine"\n"			\
+			     "bl %[r]\n"			\
 			     "pop {r0, lr}\n"			\
-			     "b task_resched_if_needed\n"	\
+			     "b %[task_resched_if_needed]\n"	\
+			     :					\
+			     : [r] "rim" (routine),		\
+			       op_task_start_irq_handler	\
+			       [task_resched_if_needed] "rim"	\
+			        (task_resched_if_needed)	\
 			    );					\
 	}							\
 	const struct irq_priority __keep IRQ_PRIORITY(irq)	\

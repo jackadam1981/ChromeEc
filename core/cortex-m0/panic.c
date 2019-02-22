@@ -155,9 +155,10 @@ void exception_panic(void)
 		"mov r5, lr\n"
 		"stmia r0!, {r1-r5}\n"
 		"mov sp, %[pstack]\n"
-		"bl report_panic\n" : :
+		"bl %[report_panic]\n" : :
 			[pregs] "r" (pdata_ptr->cm.regs),
-			[pstack] "r" (pstack_addr) :
+			[pstack] "r" (pstack_addr),
+			[report_panic] "rim" (report_panic) :
 			/* Constraints protecting these from being clobbered.
 			 * Gcc should be using r0 & r12 for pregs and pstack. */
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
@@ -170,8 +171,9 @@ void software_panic(uint32_t reason, uint32_t info)
 {
 	__asm__("mov " STRINGIFY(SOFTWARE_PANIC_INFO_REG) ", %0\n"
 		"mov " STRINGIFY(SOFTWARE_PANIC_REASON_REG) ", %1\n"
-		"bl exception_panic\n"
-		: : "r"(info), "r"(reason));
+		"bl %[exception_panic]\n"
+		: : "r"(info), "r"(reason),
+		  [exception_panic] "rim" (exception_panic));
 	__builtin_unreachable();
 }
 

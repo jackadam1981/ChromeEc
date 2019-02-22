@@ -34,7 +34,7 @@ void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
 		      * stack for ARM EABI.  This also conveniently saves
 		      * R0=LR so we can pass it to task_resched_if_needed. */
 		     "push {r0, lr}\n"
-		     "bl watchdog_trace\n"
+		     "bl %[watchdog_trace]\n"
 		      /* Do NOT reset the watchdog interrupt here; it will
 		       * be done in watchdog_reload(), or reset will be
 		       * triggered if we don't call that by the next watchdog
@@ -43,10 +43,13 @@ void IRQ_HANDLER(LM4_IRQ_WATCHDOG)(void)
 		       * once.
 		       */
 		     "mov r0, %[irq]\n"
-		     "bl task_disable_irq\n"
+		     "bl %[task_disable_irq]\n"
 		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n"
-			: : [irq] "i" (LM4_IRQ_WATCHDOG));
+		     "b %[task_resched_if_needed]\n"
+			: : [irq] "i" (LM4_IRQ_WATCHDOG),
+			[watchdog_trace] "rim" (watchdog_trace),
+			[task_disable_irq] "rim" (task_disable_irq),
+			[task_resched_if_needed] "rim" (task_resched_if_needed));
 }
 const struct irq_priority __keep IRQ_PRIORITY(LM4_IRQ_WATCHDOG)
 	__attribute__((section(".rodata.irqprio")))

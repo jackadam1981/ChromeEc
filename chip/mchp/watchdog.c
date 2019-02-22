@@ -109,9 +109,12 @@ void IRQ_HANDLER(MCHP_IRQ_TIMER16_0)(void)
 		      * R0=LR so we can pass it to task_resched_if_needed.
 		      */
 		     "push {r0, lr}\n"
-		     "bl watchdog_check\n"
+		     "bl %[watchdog_check]\n"
 		     "pop {r0, lr}\n"
-		     "b task_resched_if_needed\n");
+		     "b %[task_resched_if_needed]\n"
+		     :
+		     : [watchdog_check] "rim" (watchdog_check),
+		       [task_resched_if_needed] "rim" (task_resched_if_needed));
 }
 
 /*

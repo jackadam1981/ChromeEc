@@ -392,8 +392,10 @@ void IRQ_HANDLER(IRQ_WD)(void)
 		     /* Must push registers in pairs to keep 64-bit aligned
 		      * stack for ARM EABI. */
 		     "push {r0, lr}\n"
-		     "bl watchdog_check\n"
-		     "pop {r0,pc}\n");
+		     "bl %[watchdog_check]\n"
+		     "pop {r0,pc}\n"
+		     :
+		     : [watchdog_check] "rim" (watchdog_check));
 }
 const struct irq_priority __keep IRQ_PRIORITY(IRQ_WD)
 	__attribute__((section(".rodata.irqprio")))

@@ -262,13 +262,14 @@ void exception_panic(void)
 {
 #ifdef CONFIG_DEBUG_PRINTF
 	asm volatile(
-		"mov r0, %0\n"
+		"mov r0, %[message]\n"
 		/* TODO: Should this be SP_process instead of SP_main? */
 		"mov r3, sp\n"
 		"ldr r1, [r3, #6*4]\n" /* retrieve exception PC */
 		"ldr r2, [r3, #5*4]\n" /* retrieve exception LR */
-		"bl debug_printf\n"
-	: : "r"("PANIC PC=%08x LR=%08x\n\n"));
+		"bl %[debug_printf]\n"
+	: : [message] "r" ("PANIC PC=%08x LR=%08x\n\n"),
+	    [debug_printf] "rim" (debug_printf));
 #endif
 	cpu_reset();
 }
