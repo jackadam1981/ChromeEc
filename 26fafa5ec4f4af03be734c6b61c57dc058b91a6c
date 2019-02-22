@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153a9eba_ff504db2",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T18:18:47Z",
+      "side": 1,
+      "message": "Can you rebase this CL on top of https://crrev.com/c/1481829 ?  Looks like much of the diff is in common.",
+      "revId": "26fafa5ec4f4af03be734c6b61c57dc058b91a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
