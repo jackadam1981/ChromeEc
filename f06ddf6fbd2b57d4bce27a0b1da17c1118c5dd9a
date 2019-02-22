@@ -22,6 +22,23 @@
       "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b711b2_6dd01fa7",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-22T02:55:35Z",
+      "side": 1,
+      "message": "Did you mean:\n\n  if (!num_sensors_read) {\n    if (chipset_in_state(...))\n      smi_sensor_failure_warning();\n    return;\n  }\n\n?",
+      "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
