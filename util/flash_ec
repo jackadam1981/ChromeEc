@@ -61,6 +61,7 @@ BOARDS_STM32=(
 	chocodile_bec
 	chocodile_vpdmcu
 	glados_pd
+	hatch_fp
 	jerry
 	minimuffin
 	nami_fp
@@ -587,7 +588,7 @@ case "${BOARD}" in
         chocodile_bec ) MCU="usbpd" ;;
 	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
-	nami_fp|nocturne_fp ) MCU="usbpd" ;;
+	hatch_fp|nami_fp|nocturne_fp ) MCU="usbpd" ;;
 	dingdong|hoho|twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
