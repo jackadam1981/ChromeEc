@@ -34,6 +34,7 @@
 #include "registers.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "tcpci.h"
 #include "temp_sensor.h"
@@ -239,3 +240,35 @@ static void board_kblight_init(void)
 	lm3630a_poweron();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_kblight_init, HOOK_PRIO_DEFAULT);
+
+static void board_tablet_prochot(void)
+{
+	int temp, desire_prochot;
+	int prochot = gpio_get_level(GPIO_CPU_PROCHOT);
+
+	/* control CPU_PROCHOT for thermal control only in tablet mode */
+	if (!tablet_get_mode())
+		return;
+
+	temp_sensor_read(1, &temp);
+
+	/*
+	 * Pull low when temp higher than 327K
+	 * Pull high when temp lower than 324K
+	 */
+	if (prochot)
+		desire_prochot = temp >= 327 ? 0 : 1;
+	else
+		desire_prochot = temp <= 324 ? 1 : 0;
+
+	if (prochot != desire_prochot)
+		gpio_set_level(GPIO_CPU_PROCHOT, desire_prochot);
+}
+DECLARE_HOOK(HOOK_SECOND, board_tablet_prochot, HOOK_PRIO_DEFAULT);
+
+static void board_tablet_change(void)
+{
+	if (!tablet_get_mode())
+		gpio_set_level(GPIO_CPU_PROCHOT, 1);
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_tablet_change, HOOK_PRIO_DEFAULT);
