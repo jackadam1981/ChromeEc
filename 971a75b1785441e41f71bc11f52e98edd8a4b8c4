@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e7a4d90_2169224a",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-22T17:31:24Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 63
+      },
+      "revId": "971a75b1785441e41f71bc11f52e98edd8a4b8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96652b68_c62772fe",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-22T17:31:24Z",
+      "side": 1,
+      "message": "You should check the return value.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 17
+      },
+      "revId": "971a75b1785441e41f71bc11f52e98edd8a4b8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c16f5b9_3d0350ac",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-22T17:31:24Z",
+      "side": 1,
+      "message": "This check shouldn\u0027t be usually necessary. So, you shouldn\u0027t need desired_prochot.",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 31
+      },
+      "revId": "971a75b1785441e41f71bc11f52e98edd8a4b8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d2e0216_41aa2842",
+        "filename": "board/aleena/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-22T17:31:24Z",
+      "side": 1,
+      "message": "Our convention is to append _L to active low signal names.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "971a75b1785441e41f71bc11f52e98edd8a4b8c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
