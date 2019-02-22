@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "218a920a_38c38994",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T15:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8668053_5207cb2e",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1e1c0dd_3dbb558e",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "77a97527_42048191",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T15:01:53Z",
+      "side": 1,
+      "message": "That is the whole point of this change. No need to respond",
+      "parentUuid": "c1e1c0dd_3dbb558e",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b36e021d_d3e78a1a",
         "filename": "include/battery_fuel_gauge.h",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc734ba_b095a337",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T15:01:53Z",
+      "side": 1,
+      "message": "I added a comment here.",
+      "parentUuid": "b36e021d_d3e78a1a",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
