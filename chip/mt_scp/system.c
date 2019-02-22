@@ -185,12 +185,18 @@ static void scp_enable_clock(void)
 			CG_I2C_M | CG_MAD_M;
 }
 
+static void scp_select_cpu_clock(enum scp_clk_sel sel)
+{
+	SCP_CLK_SEL = sel;
+}
+
 void system_pre_init(void)
 {
 	/* SRAM */
 	scp_enable_tcm();
 	/* Clock */
 	scp_enable_clock();
+	scp_select_cpu_clock(CLK_SEL_ULPOSC_2);
 	/* Peripheral IRQ */
 	scp_enable_pirq();
 	/* Init dram mapping (and cache) */
