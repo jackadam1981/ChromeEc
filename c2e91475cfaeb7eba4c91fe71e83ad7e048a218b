@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d721b04_be067005",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-22T17:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b42dcee_0a959fc7",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 35
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce54ece5_eb0ade7c",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1c980358_9f15ca46",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-22T17:52:13Z",
+      "side": 1,
+      "message": "In my experience, dut_control dut_i2c_mux sometimes gets a timeout.",
+      "parentUuid": "ce54ece5_eb0ade7c",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 8
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f84deb6_eca81521",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d770497a_4bff9191",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-22T17:52:13Z",
+      "side": 1,
+      "message": "servo_micro case shall be handled in another CL.\nIt will be done in b/124388894.",
+      "parentUuid": "9f84deb6_eca81521",
+      "range": {
+        "startLine": 1147,
+        "startChar": 1,
+        "endLine": 1147,
+        "endChar": 3
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
