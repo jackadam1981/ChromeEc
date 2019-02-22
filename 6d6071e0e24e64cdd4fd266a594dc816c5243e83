@@ -22,6 +22,30 @@
       "revId": "6d6071e0e24e64cdd4fd266a594dc816c5243e83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c217be_3a52b5dd",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-02-22T18:27:35Z",
+      "side": 1,
+      "message": "it doesn\u0027t now.\ntpm_read_not_found() only returns tpm_read_success or tpm_read_not_found",
+      "parentUuid": "bec8ec64_9a0df742",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "6d6071e0e24e64cdd4fd266a594dc816c5243e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
