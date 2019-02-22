@@ -16,6 +16,24 @@
       "revId": "b9bcd5c271e8e5ee39f746c13543b98fefbafae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd51f87_269d6c92",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-22T22:29:39Z",
+      "side": 1,
+      "message": "For this function, your comment is right.\nJust wanted to keep this statement pattern that appears for other ECs.\nPlease take a look at line 1021.",
+      "parentUuid": "b9f8fdc8_635f1b33",
+      "revId": "b9bcd5c271e8e5ee39f746c13543b98fefbafae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
