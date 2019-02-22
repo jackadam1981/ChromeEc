@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "b1dd8626_b9d783f1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T22:08:17Z",
+      "side": 1,
+      "message": "(I also never experienced it with Servo v2, and my guess is nobody else did or this retry loop would be here already.)",
+      "parentUuid": "b38bd8af_43a24b52",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 8
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f84deb6_eca81521",
         "filename": "util/flash_ec",
         "patchSetId": 2
