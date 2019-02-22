@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8668053_5207cb2e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T14:39:48Z",
+      "side": 1,
+      "message": "even though it isn\u0027t needed for the compiler, I would make this line\n\nship_mode-\u003ereg_data[0] \u0026 0xFF,\n\nTo make the reader understand by looking at it that we are always dropping the top byte of the data.\n\n(here and next line)",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e1c0dd_3dbb558e",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T14:39:48Z",
+      "side": 1,
+      "message": "looking at all of this again, the only different between the 2 paths on the i2c bus is the 0x02 data\n\nfor example, the previous path would write the follow 2 i2c transaction to the bus:\n\n1) reg_addr, regdata[0] \u0026 xFF, regdata[0] \u003e\u003e 8\nthen\n2) reg_addr, regdata[1] \u0026 xFF, regdata[1] \u003e\u003e 8\n\nThis new path is very similar except the i2c bus looks like\n\n1) reg_addr, 0x02, regdata[0] \u0026 xFF, regdata[1] \u0026 xFF\nthen\n2) reg_addr, 0x02, regdata[0] \u0026 xFF, regdata[1] \u0026 xFF\n\n\nIs the 0x02 really needed (I am hoping that it is optional)? Have we tested the path without the 0x02 just to make sure that it won\u0027t work? It would just be really nice to have only one path if we really didn\u0027t need both paths.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36e021d_d3e78a1a",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T14:39:48Z",
+      "side": 1,
+      "message": "add a comment here then saying that if this bit is true, then reg_data only support 8-bit writes and will be written in a block with a length prefix, otherwise reg_data is a 16-bit value that will get written twice.\n\nPlease describe the behavior difference by change this flag",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "3f2f95fc27cfcbaf0e3675cdf415b2accda56c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
