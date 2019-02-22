@@ -31,6 +31,7 @@
 
 enum battery_type {
 	BATTERY_SIMPLO = 0,
+	BATTERY_AETECH,
 	BATTERY_COUNT
 };
 
@@ -47,19 +48,63 @@ static const struct battery_info info[] = {
 		.discharging_min_c	= -20,
 		.discharging_max_c	= 60,
 	},
+	[BATTERY_AETECH] = {
+		.voltage_max		= 4400,
+		.voltage_normal		= 3860,
+		.voltage_min		= 3000,
+		.precharge_current	= 256,
+		.start_charging_min_c	= 0,
+		.start_charging_max_c	= 45,
+		.charging_min_c		= 0,
+		.charging_max_c		= 60,
+		.discharging_min_c	= -20,
+		.discharging_max_c	= 60,
+	},
 };
 
 static const struct max17055_batt_profile batt_profile[] = {
 	[BATTERY_SIMPLO] = {
-		.is_ez_config		= 1,
-		.design_cap		= MAX17055_DESIGNCAP_REG(6910),
-		.ichg_term		= MAX17055_ICHGTERM_REG(235),
-		.v_empty_detect		= MAX17055_VEMPTY_REG(3000, 3600),
+		.is_ez_config		= 0,
+		.design_cap		= 0x2e78, /* 5948mAh */
+		.ichg_term		= 0x02ec, /* 117 mA */
+		/* Empty voltage = 3400mV, Recovery voltage = 4000mV */
+		.v_empty_detect		= 0xaa64,
+		.learn_cfg		= 0x4402,
+		.dpacc			= 0x0c7d,
+		.rcomp0			= 0x0011,
+		.tempco			= 0x0209,
+		.qr_table00		= 0x5a00,
+		.qr_table10		= 0x2980,
+		.qr_table20		= 0x1100,
+		.qr_table30		= 0x1000,
+	},
+	[BATTERY_AETECH] = {
+		.is_ez_config		= 0,
+		.design_cap		= 0x3407, /* 6659mAh */
+		.ichg_term		= 0x0340, /* 130mA */
+		/* Empty voltage = 3400mV, Recovery voltage = 4000mV */
+		.v_empty_detect		= 0xaa64,
+		.learn_cfg		= 0x4402,
+		.dpacc			= 0x0c7e,
+		.rcomp0			= 0x000f,
+		.tempco			= 0x000b,
+		.qr_table00		= 0x5800,
+		.qr_table10		= 0x2680,
+		.qr_table20		= 0x0d00,
+		.qr_table30		= 0x0b00,
 	},
 };
 
 static const struct max17055_alert_profile alert_profile[] = {
 	[BATTERY_SIMPLO] = {
+		.v_alert_mxmn = VALRT_DISABLE,
+		.t_alert_mxmn = MAX17055_TALRTTH_REG(
+			BATTERY_SIMPLO_CHARGE_MAX_TEMP,
+			BATTERY_SIMPLO_CHARGE_MIN_TEMP),
+		.s_alert_mxmn = SALRT_DISABLE,
+		.i_alert_mxmn = IALRT_DISABLE,
+	},
+	[BATTERY_AETECH] = {
 		.v_alert_mxmn = VALRT_DISABLE,
 		.t_alert_mxmn = MAX17055_TALRTTH_REG(
 			BATTERY_SIMPLO_CHARGE_MAX_TEMP,
@@ -127,6 +172,14 @@ int charger_profile_override(struct charge_state_data *curr)
 		int desired_voltage; /* mV */
 	} temp_zones[BATTERY_COUNT][TEMP_ZONE_COUNT] = {
 		[BATTERY_SIMPLO] = {
+			/* TEMP_ZONE_0 */
+			{BATTERY_SIMPLO_CHARGE_MIN_TEMP * 10, 150, 1772, 4376},
+			/* TEMP_ZONE_1 */
+			{150, 450, 4020, 4376},
+			/* TEMP_ZONE_2 */
+			{450, BATTERY_SIMPLO_CHARGE_MAX_TEMP * 10, 3350, 4300},
+		},
+		[BATTERY_AETECH] = {
 			/* TEMP_ZONE_0 */
 			{BATTERY_SIMPLO_CHARGE_MIN_TEMP * 10, 150, 1772, 4376},
 			/* TEMP_ZONE_1 */
