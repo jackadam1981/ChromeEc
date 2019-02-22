@@ -46,6 +46,30 @@
       "revId": "4da158b506f6f2c8643500765ba70bcf81690971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7b7326_b56114d4",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-02-22T19:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ee575a_91abb926",
+      "range": {
+        "startLine": 74,
+        "startChar": 51,
+        "endLine": 74,
+        "endChar": 62
+      },
+      "revId": "4da158b506f6f2c8643500765ba70bcf81690971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
