@@ -22,6 +22,30 @@
       "revId": "a300824d365f4adba61c11a3fa4022cf86c435c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3859043_ef4ef9d0",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-22T10:33:36Z",
+      "side": 1,
+      "message": "buildall will fail.\nBelow is buildall error message, it seems not this code problem.\n\nmake[2]: *** Waiting for unfinished jobs....\nmake[2]: *** No rule to make target \u0027chip/stm32/usb_endpoints.S\u0027, needed by \u0027build/polyberry/RO/chip/stm32/usb_endpoints.o\u0027.  Stop.\nmake[2]: *** Waiting for unfinished jobs....\nmake[2]: *** No rule to make target \u0027chip/stm32/usb_endpoints.S\u0027, needed by \u0027build/hoho/RO/chip/stm32/usb_endpoints.o\u0027.  Stop.\nmake[2]: *** Waiting for unfinished jobs....\nmake[2]: *** No rule to make target \u0027chip/stm32/usb_endpoints.S\u0027, needed by \u0027build/tigertail/RO/chip/stm32/usb_endpoints.o\u0027.  Stop.\nmake[2]: *** Waiting for unfinished jobs....\nmake[2]: *** No rule to make target \u0027chip/g/usb_endpoints.S\u0027, needed by \u0027build/cr50/RW/chip/g/usb_endpoints.o\u0027.  Stop.\nmake[2]: *** Waiting for unfinished jobs....\nmake[1]: *** [Makefile.rules:208: proj-cr50] Error 2\nmake[1]: *** Waiting for unfinished jobs....\nmake[1]: *** [Makefile.rules:208: proj-dingdong] Error 2\nmake[1]: *** [Makefile.rules:208: proj-pdeval-stm32f072] Error 2",
+      "parentUuid": "88988523_c8c83e1f",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "a300824d365f4adba61c11a3fa4022cf86c435c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
