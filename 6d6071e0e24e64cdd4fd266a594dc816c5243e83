@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bec8ec64_9a0df742",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-02-22T18:25:45Z",
+      "side": 1,
+      "message": "Does this have other failure return codes besides tpm_read_not_found?\nThose would all silently get mapped to success here?",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "6d6071e0e24e64cdd4fd266a594dc816c5243e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
