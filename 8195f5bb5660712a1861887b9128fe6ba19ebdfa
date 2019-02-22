@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e4ee8a_b8a68771",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2019-02-22T22:05:35Z",
+      "side": 1,
+      "message": "I suspect ADDR is OPT3001_I2C_ADDR2",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "8195f5bb5660712a1861887b9128fe6ba19ebdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
