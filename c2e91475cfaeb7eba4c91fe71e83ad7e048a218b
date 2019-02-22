@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b38bd8af_43a24b52",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T22:05:25Z",
+      "side": 1,
+      "message": "That should not be.  I\u0027ve never experienced that with Servo Micro connected to Bip or Ampton.\n\nDo a bit more testing to find out if this is specific to any of CR50/CCD, or specific Board, or specific even to SuzyQ vs Servo v4 CCD.  Then comment exactly which hardware has this issue, and ideally filter for it here, so we can remove the workaround with minimal testing once we\u0027ve fixed the underlying problem.",
+      "parentUuid": "1c980358_9f15ca46",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 8
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f84deb6_eca81521",
         "filename": "util/flash_ec",
         "patchSetId": 2
