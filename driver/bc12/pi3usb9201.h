@@ -20,6 +20,7 @@
 #define PI3USB9201_REG_CTRL_1_INT_MASK (1 << 0)
 #define PI3USB9201_REG_CTRL_1_MODE (1 << 1)
 #define PI3USB9201_REG_CTRL_1_MODE_MASK (0x7 << 1)
+#define PI3USB9201_REG_CTRL_1_MODE_SHIFT 1
 
 /* Control_2 regiter bit definitions */
 #define PI3USB9201_REG_CTRL_2_AUTO_SW (1 << 1)
