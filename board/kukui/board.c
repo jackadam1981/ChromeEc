@@ -227,6 +227,10 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+
+	/* Enable MT6370 DB_POSVOUT/DB_NEGVOUT (controled by _EN pins). */
+	/* TODO(b:123669273): clean this up. */
+	i2c_write8(0, 0x68, 0xb0, 0x01);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
