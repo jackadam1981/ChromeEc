@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d979e69_f853348c",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T21:07:20Z",
+      "side": 1,
+      "message": "please add a comment for this function. Read table lo?",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04aabed0_b94e7596",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T21:07:20Z",
+      "side": 1,
+      "message": "Please add a comment saying how vector is laid out and how the reg_base is laid out in relation",
+      "range": {
+        "startLine": 125,
+        "startChar": 63,
+        "endLine": 125,
+        "endChar": 69
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f37c5b3_f105b2eb",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T21:07:20Z",
+      "side": 1,
+      "message": "I would have expected this to be multiply by 4 instead of 16 so we could address all of the bits.\n\nit appears that vector value of 0x1f to 0x20 skips 96 bits in sequence",
+      "range": {
+        "startLine": 127,
+        "startChar": 19,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b15ce299_6820cdc5",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-22T21:07:20Z",
+      "side": 1,
+      "message": "Also alternate that seems little easier to read to me (I know it is subjective though)\nREG32(reg_base + offset) \u0026 (1 \u003c\u003c bit);\n\n(your call)",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 46
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
