@@ -136,7 +136,7 @@
 #define CONFIG_BATTERY_MAX17055_ALERT
 
 /* Battery parameters for max17055 ModelGauge m5 algorithm. */
-#define BATTERY_MAX17055_RSENSE             5     /* m-ohm */
+#define BATTERY_MAX17055_RSENSE             10    /* m-ohm */
 #define BATTERY_DESIRED_CHARGING_CURRENT    2000  /* mA */
 
 #define PD_OPERATING_POWER_MW 15000
