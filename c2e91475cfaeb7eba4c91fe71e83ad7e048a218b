@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b42dcee_0a959fc7",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-22T16:57:13Z",
+      "side": 1,
+      "message": "I guess it is specific for servo_v2 which uses ftdi. Servo-micro, servo v4 with CCD, and Suzy-Q don\u0027t work using this approach. Probably put it in a servo_v2-only if clause.",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 35
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce54ece5_eb0ade7c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-22T16:57:13Z",
+      "side": 1,
+      "message": "Why need this retry? a bug?",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 8
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f84deb6_eca81521",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-22T16:57:13Z",
+      "side": 1,
+      "message": "What about the else case, like a servo micro?",
+      "range": {
+        "startLine": 1147,
+        "startChar": 1,
+        "endLine": 1147,
+        "endChar": 3
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
