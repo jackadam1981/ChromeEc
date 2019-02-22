@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f8fdc8_635f1b33",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T22:15:58Z",
+      "side": 1,
+      "message": "Use \"else\" instead of re-testing value of $IMG_READ.\n\nWith use of if-else, I have a small preference for the initial test to be -n, but that\u0027s minor.",
+      "revId": "b9bcd5c271e8e5ee39f746c13543b98fefbafae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
