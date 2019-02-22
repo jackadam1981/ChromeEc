@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6ed8a2e_ceef050b",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T17:53:38Z",
+      "side": 1,
+      "message": "The $() part should be removed, this line should simply be:\n\nif servo_has_dut_i2c_mux; then",
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b42dcee_0a959fc7",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -46,6 +63,47 @@
       "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "745ec8b1_dd406222",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T17:53:38Z",
+      "side": 1,
+      "message": "Yes, make this conditioned on servo_v2, and make the CR50-direct case a simple \"else\" branch.",
+      "parentUuid": "8b42dcee_0a959fc7",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 35
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5a0aa2_85e805f2",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T17:53:38Z",
+      "side": 1,
+      "message": "The $() part should be removed, this line should simply be:\n\nif servo_has_dut_i2c_mux; then\n\n(Yes I realize that mistake was already present, but since you\u0027re touching this line anyways, might as well fix it.)",
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -140,6 +198,30 @@
       "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3682f4e_ceab6bbe",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-22T17:53:38Z",
+      "side": 1,
+      "message": "I have a long-pending CL for servo_micro via servod (which will also support CCD via servod, since servod abstracts away the detail of which kind of servo is in use).  See https://goto.google.com/cros-ite-ec-reflash for complete current state of things.\n\nThat said, there should be an else clause here to error cleanly.",
+      "parentUuid": "9f84deb6_eca81521",
+      "range": {
+        "startLine": 1147,
+        "startChar": 1,
+        "endLine": 1147,
+        "endChar": 3
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
