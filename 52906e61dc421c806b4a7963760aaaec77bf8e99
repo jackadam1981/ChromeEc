@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4caaf98_7bd917c6",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T00:29:47Z",
+      "side": 1,
+      "message": "Isn\u0027t this too strict if we can fall back to the i2c call below?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
