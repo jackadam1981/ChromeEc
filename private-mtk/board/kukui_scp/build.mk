@@ -12,10 +12,8 @@ board-private-y = private-nolib.o vdec.o
 PRIVPATH=private-mtk/board/kukui_scp
 RWPATH=$(out)/RW/$(PRIVPATH)
 
-dirs-y += $(PRIVPATH)/project1
-libproject1-objs = project1/private.o project1/private2.o
-
-$(RWPATH)/libproject1.a: $(foreach o, $(libproject1-objs), $(RWPATH)/$(o))
+$(RWPATH)/libproject1.a: $(PRIVPATH)/libproject1.a
+	@cp $^ $@
 
 $(out)/RW/ec.RW.elf: $(RWPATH)/libproject1.a
 # Include the whole libproject1 archive (not just the symbols that are used)
