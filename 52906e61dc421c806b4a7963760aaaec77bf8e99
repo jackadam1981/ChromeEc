@@ -22,6 +22,30 @@
       "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52699cdc_170ce8a9",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2019-02-23T02:50:43Z",
+      "side": 1,
+      "message": "We think it can early found SMbus write block function not implemented yet when compiler.",
+      "parentUuid": "b4caaf98_7bd917c6",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
