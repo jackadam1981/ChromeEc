@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a47aefd7_ecc6753f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "Please remove. The dependency isn\u0027t really necessary or informative.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "926fb7d2_e5daaacb",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "Can you just do:\n\n  #define PANEL_SIZE_MASK 0x1\n\n  channel \u003d sku \u0026 PANEL_SIZE_MASK ? 0xfe : 0xfa;\n  dim \u003d sku \u0026 PANEL_SIZE_MASK ? 0xc4 : 0xc8;\n\nand delete board_type?",
+      "range": {
+        "startLine": 85,
+        "startChar": 9,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebe7ae1_841d8207",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "Please split the line.",
+      "range": {
+        "startLine": 94,
+        "startChar": 66,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ac53ec_248d6816",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "Could you add these registers in rt946x.h?",
+      "range": {
+        "startLine": 101,
+        "startChar": 43,
+        "endLine": 101,
+        "endChar": 47
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529aef7b_8053cd16",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "What does 0xAC mean? Comment please.",
+      "range": {
+        "startLine": 103,
+        "startChar": 49,
+        "endLine": 103,
+        "endChar": 53
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe2b349_c37ad5f4",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "nit: This is redundant. How do you like board_setup_panel?",
+      "range": {
+        "startLine": 302,
+        "startChar": 23,
+        "endLine": 302,
+        "endChar": 32
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "602bed22_8081c5ba",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-23T03:10:11Z",
+      "side": 1,
+      "message": "We use bit 0 of SKU_ID to differentiate the screen size. 0\u003dC18, 1\u003dC19.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 32
+      },
+      "revId": "b274b94f4076d7261d391baca3043a2b3706e6ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
