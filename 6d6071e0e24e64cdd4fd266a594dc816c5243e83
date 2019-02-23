@@ -46,6 +46,30 @@
       "revId": "6d6071e0e24e64cdd4fd266a594dc816c5243e83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161516e8_10672f6e",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-02-23T00:36:30Z",
+      "side": 1,
+      "message": "I can instead make this check for success and not found, and cover any unknown [future] cases explicitly, but if we encounter one of those we should probably just disable u2f? ..and we should probably also do the same for the other two keys above? If that\u0027s the plan I think that should be a separate CL",
+      "parentUuid": "d6c217be_3a52b5dd",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "6d6071e0e24e64cdd4fd266a594dc816c5243e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
