@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "336c69f4_01aee13b",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-24T10:05:14Z",
+      "side": 1,
+      "message": "No problem , but if so I think you should also add common code to handle this alert.",
+      "parentUuid": "20cdfd9a_4a15a875",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdd3d21e_2dcfdf3b",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "That is one scenario that we only need to apply a single CC resistor. When we are connecting as a SNK should we apply Rd on both CC lines.\n\nBasically, this is only every applying a single CC resistor, are there not any cases in the spec were we need to apply resistor to both CC lines?\n\nIt seems that we should clean up common code, to follow the spec better to specify when only a since CC line should be updated and the update all drivers at that point.\n\n\n----\n\n\nAlso, how poorly does this driver behave if you don\u0027t have this special logic? It seems like we shouldn\u0027t add the special logic here, but make this behave like common code expects then change the common code to follow the spec better.",
       "parentUuid": "9018dab9_629a3383",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a2807a_589ba4a0",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-24T10:05:14Z",
+      "side": 1,
+      "message": "Applying a resistor to both CC lines should happens only when there is no connection (when calling tcpci_tcpc_drp_toggle() ). Once there is a connection one CC line is used for communication and the other is used for Vconn (and therefore should be left Open).\nAnyhow I agree that the correct fix is to change the common code and then we will be able to fix and simplify this function.",
+      "parentUuid": "16ee52ea_816dd1b2",
       "range": {
         "startLine": 143,
         "startChar": 11,
@@ -937,6 +985,30 @@
       "side": 1,
       "message": "yes, I can tell that is compliant from the code.\n\n0x30 has the number of bytes\n0x31 starts the data\n\n\nYou already read the number of bytes on line 279, you don\u0027t need to read 0x30 again. You can start reading from 0x31 for cnt number of bytes.",
       "parentUuid": "f3648895_246002d7",
+      "range": {
+        "startLine": 286,
+        "startChar": 28,
+        "endLine": 286,
+        "endChar": 48
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196cb9f1_92e3cf57",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1160634
+      },
+      "writtenOn": "2019-02-24T10:05:14Z",
+      "side": 1,
+      "message": "As I said above, all access to the Receive buffer is through offset 0x30, you can not start reading from offset 0x31.",
+      "parentUuid": "37ead1b6_01e48bf7",
       "range": {
         "startLine": 286,
         "startChar": 28,
