@@ -5,7 +5,7 @@
 #
 # Private board specific files build
 
-board-private-y = private-nolib.o
+board-private-y = private-nolib.o vdec.o
 
 # TODO(b/121406695): We do not include the archive in RO, since we do not care
 # about RO image
