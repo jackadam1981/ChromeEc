@@ -94,6 +94,30 @@
       "revId": "3d94252cbc17779dbd7557fcacebc9e0ba86c696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48145940_c0eec5fa",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-02-24T15:44:26Z",
+      "side": 1,
+      "message": "Due to FW lock down is coming, could we merge this first?\nIf there’s new project or new panel need new timing, we can define a variable for delay timing by project or panel id.",
+      "parentUuid": "675b4b80_c77b699a",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "3d94252cbc17779dbd7557fcacebc9e0ba86c696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
