@@ -29,9 +29,11 @@ static struct consumer const event_vdec_consumer = {
 	}),
 };
 
-/* Symbols we don't have in the drop. */
-static void vdec_h264_service_init(void) {}
-static vdec_msg_handler vdec_h264_msg_handler;
+/* Stub functions only provided by private overlays. */
+#ifndef HAVE_PRIVATE_MT8183
+void vdec_h264_service_init(void) {}
+void vdec_h264_msg_handler(void* data) {}
+#endif
 
 static void event_vdec_written(struct consumer const *consumer, size_t count)
 {
@@ -44,7 +46,7 @@ static void vdec_h264_ipi_handler(int id, void *data, uint32_t len)
 
 	rsv_msg.type = VDEC_H264;
 	memcpy(rsv_msg.msg, data, MIN(len, sizeof(rsv_msg.msg)));
-	rsv_msg.handler[VDEC_H264] = vdec_h264_msg_handler;
+	rsv_msg.handler[VDEC_H264] = &vdec_h264_msg_handler;
 
 	/*
 	 * If there is no other IPI handler touch this queue, we don't need to
