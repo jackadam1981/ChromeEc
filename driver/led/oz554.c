@@ -18,6 +18,8 @@
 
 #define I2C_ADDR_OZ554		0x62
 
+int oz554_delay_timing = 30 * MSEC;
+
 struct oz554_value {
 	uint8_t offset;
 	uint8_t data;
@@ -99,7 +101,7 @@ DECLARE_DEFERRED(backlight_enable_deferred);
 
 void backlight_enable_interrupt(enum gpio_signal signal)
 {
-	hook_call_deferred(&backlight_enable_deferred_data, 30 * MSEC);
+	hook_call_deferred(&backlight_enable_deferred_data, oz554_delay_timing);
 }
 
 int oz554_set_config(int offset, int data)

@@ -6,6 +6,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "oz554.h"
+#include "timer.h"
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
@@ -21,9 +22,11 @@ void oz554_board_init(void)
 	switch (pin_status) {
 	case 0x04:
 		CPRINTS("PANEL_LM_SSE2");
+		oz554_delay_timing = SECOND;
 		break;
 	case 0x05:
 		CPRINTS("PANEL_LM_SSK1");
+		oz554_delay_timing = SECOND;
 		/* Reigster 0x02: Setting LED current: 55(mA) */
 		if (oz554_set_config(2, 0x55))
 			CPRINTS("oz554 config failed");
