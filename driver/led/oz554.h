@@ -23,4 +23,6 @@ int oz554_set_config(int offset, int data);
 
 void backlight_enable_interrupt(enum gpio_signal signal);
 
+extern int oz554_delay_timing;
+
 #endif
