@@ -23,4 +23,9 @@ struct vdec_service {
 	unsigned char msg[48];
 	vdec_msg_handler handler[VDEC_MAX];
 };
+
+/* Functions provided by private overlay. */
+void vdec_h264_service_init(void);
+void vdec_h264_msg_handler(void* data);
+
 #endif /* __CROS_EC_SCP_VDEC_H */
