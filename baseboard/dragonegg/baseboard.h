@@ -134,6 +134,9 @@
 #define I2C_PORT_EEPROM		IT83XX_I2C_CH_A
 #define I2C_ADDR_EEPROM		0xA0
 
+/* Enable the encoding of msg SOP* in bits 31-28 of 32-bit msg header type */
+#define CONFIG_USB_PD_DECODE_SOP
+
 #ifndef __ASSEMBLER__
 
 enum power_signal {

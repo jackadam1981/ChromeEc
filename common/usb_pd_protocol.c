@@ -233,6 +233,18 @@ static struct pd_protocol {
 	uint16_t dev_id;
 	uint32_t dev_rw_hash[PD_RW_HASH_SIZE/4];
 	enum ec_current_image current_image;
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	/*
+	 * When a discover identity command is sent, cable_type stores the cable
+	 * attributes and it is cleared when the cable is disconnected
+	 */
+	uint8_t cable_type;
+
+	/* Type of SOP* message to be tranmitted */
+	enum tcpm_transmit_type msg_type;
+#endif
+
 #ifdef CONFIG_USB_PD_REV30
 	/* PD Collision avoidance buffer */
 	uint16_t ca_buffered;
@@ -1930,6 +1942,15 @@ static void handle_request(int port, uint16_t head,
 		CPRINTF("\n");
 	}
 
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	/*
+	 * Check for discovery identity command response and store the
+	 * product type appended in bit 29-27 of ID Header VDO
+	 */
+	if (cnt > 1 && PD_VDO_CMD(payload[0]) == CMD_DISCOVER_IDENT)
+		pd[port].cable_type = PD_IDH_PTYPE(payload[1]);
+#endif
+
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
 	 * a hard reset if we get one.
@@ -2063,8 +2084,15 @@ static void pd_vdm_send_state_machine(int port)
 				   pd[port].data_role, pd[port].msg_id,
 				   (int)pd[port].vdo_count,
 				   pd_get_rev(port), 0);
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+		res = pd_transmit(port, pd[port].msg_type, header,
+				  pd[port].vdo_data);
+#else
 		res = pd_transmit(port, TCPC_TX_SOP, header,
 				  pd[port].vdo_data);
+#endif
+
 		if (res < 0) {
 			pd[port].vdm_state = VDM_STATE_ERR_SEND;
 		} else {
@@ -2986,6 +3014,11 @@ void pd_task(void *u)
 				break;
 			}
 
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			/* Resetting cable type */
+			pd[port].cable_type = 0;
+#endif
+
 			/*
 			 * If Try.SRC state is not active, then handle
 			 * the normal DRP toggle from SRC->SNK.
@@ -3322,9 +3355,21 @@ void pd_task(void *u)
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			    (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
 #ifndef CONFIG_USB_PD_SIMPLE_DFP
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+				pd[port].msg_type = TCPC_TX_SOP;
+#endif /* CONFIG_USB_PD_DECODE_SOP */
 				pd_send_vdm(port, USB_SID_PD,
 					    CMD_DISCOVER_IDENT, NULL, 0);
-#endif
+#ifdef CONFIG_USB_PD_DECODE_SOP
+				/* Sending SOP' to get the cable plug type */
+				pd[port].msg_type = TCPC_TX_SOP_PRIME;
+				pd_send_vdm(port, USB_SID_PD,
+					    CMD_DISCOVER_IDENT, NULL, 0);
+
+#endif /* CONFIG_USB_PD_DECODE_SOP */
+
+#endif /* CONFIG_USB_PD_SIMPLE_DFP */
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
 			}
@@ -3506,7 +3551,10 @@ void pd_task(void *u)
 				timeout = 10*MSEC;
 				break;
 			}
-
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			/* Resetting cable type */
+			pd[port].cable_type = 0;
+#endif
 			/*
 			 * If Try.SRC is active and failed to detect a SNK,
 			 * then it transitions to TryWait.SNK. Need to prevent
@@ -3808,8 +3856,17 @@ void pd_task(void *u)
 			/* If DFP, send discovery SVDMs */
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			     (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
+#ifdef CONFIG_USB_PD_DECODE_SOP
+				pd[port].msg_type = TCPC_TX_SOP;
+#endif
 				pd_send_vdm(port, USB_SID_PD,
 					    CMD_DISCOVER_IDENT, NULL, 0);
+#ifdef CONFIG_USB_PD_DECODE_SOP
+				/* Sending SOP' to get the cable plug type */
+				pd[port].msg_type = TCPC_TX_SOP_PRIME;
+				pd_send_vdm(port, USB_SID_PD,
+					    CMD_DISCOVER_IDENT, NULL, 0);
+#endif
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
 			}
@@ -4785,6 +4842,12 @@ static int command_pd(int argc, char **argv)
 			debug_level > 0 ?
 				pd_state_names[pd[port].task_state] : "",
 			pd[port].flags);
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	} else if (!strcasecmp(argv[2], "cabletype")) {
+		ccprintf("Cable type for port%d is 0x%x\n",
+			port, pd[port].cable_type);
+#endif
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -4810,6 +4873,9 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"\n\t<port> flash [erase|reboot|signature|info|version]"
 #endif /* CONFIG_CMD_PD_FLASH */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			"\n\t<port> cabletype"
+#endif /* CONFIG_USB_PD_DECODE_SOP */
 			,
 			"USB PD");
 
