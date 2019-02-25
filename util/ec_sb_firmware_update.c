@@ -469,7 +469,7 @@ static enum fw_update_state s1_read_battery_info(
 	if (!(fw_update->flags & F_AC_PRESENT)) {
 		fw_update->rv = 0;
 		log_msg(fw_update, S1_READ_INFO,
-			"Require AC Adapter Counnected.");
+			"Require AC Adapter Connected.");
 		return S10_TERMINAL;
 	}
 
