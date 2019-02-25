@@ -1546,6 +1546,10 @@ enum ITIM16_MODULE_T {
 #define NPCX_VWEVMS(n)              REG32(NPCX_ESPI_BASE_ADDR + 0x140 + (4*(n)))
 #define NPCX_VWCTL                  REG32(NPCX_ESPI_BASE_ADDR + 0x2FC)
 
+/* eSPI OOB channel registers */
+#define NPCX_OOBRXBUF(n)            REG32(NPCX_ESPI_BASE_ADDR + 0x300 + (4*(n)))
+#define NPCX_OOBTXBUF(n)            REG32(NPCX_ESPI_BASE_ADDR + 0x380 + (4*(n)))
+
 /* eSPI register fields */
 #define NPCX_ESPICFG_PCHANEN             0
 #define NPCX_ESPICFG_VWCHANEN            1
@@ -1617,6 +1621,11 @@ enum ITIM16_MODULE_T {
 #define NPCX_VWEVMS_WIRE                 FIELD(0, 4)
 #define NPCX_VWEVSM_VALID                FIELD(4, 4)
 #define NPCX_VWEVMS_VALID                FIELD(4, 4)
+/* eSPI OOB channel register fields */
+#define NPCX_OOBCTL_OOB_FREE             0
+#define NPCX_OOBCTL_OOB_AVAIL            1
+#define NPCX_OOBCTL_RSTBUFHEADS          2
+#define NPCX_OOBCTL_OOBPLSIZE            FIELD(10, 3)
 
 /* Macro functions for eSPI CFG & IE */
 #define IS_SLAVE_CHAN_ENABLE(ch)         IS_BIT_SET(NPCX_ESPICFG, ch)
@@ -1685,6 +1694,14 @@ enum ITIM16_MODULE_T {
 				 (i >= 64  && i <= 127) ? ESPI_VW_TYPE_PLT : \
 				 (i >= 128 && i <= 255) ? ESPI_VW_TYPE_GPIO : \
 							ESPI_VW_TYPE_NONE)
+/* Enable mask for ESPIIE & ESPIWE */
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+#define ESPIIE_MASK (ESPIIE_GENERIC | ESPIIE_VW | ESPIIE_OOBRX)
+#define ESPIWE_MASK (ESPIWE_GENERIC | ESPIWE_VW | ESPIWE_OOBRX)
+#else
+#define ESPIIE_MASK (ESPIIE_GENERIC | ESPIIE_VW)
+#define ESPIWE_MASK (ESPIWE_GENERIC | ESPIWE_VW)
+#endif
 
 /* Bit filed manipulation for VWEVMS Value */
 #define VWEVMS_INX(i)                ((i<<8)  & 0x00007F00)
