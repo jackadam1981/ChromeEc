@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "4dd6f1b1_99a9d3a2",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-25T19:02:19Z",
+      "side": 1,
+      "message": "Don\u0027t need the $(). This $() makes the output of the command as a new command.",
+      "range": {
+        "startLine": 1123,
+        "startChar": 3,
+        "endLine": 1123,
+        "endChar": 5
+      },
+      "revId": "84c3b71249d016b849b089891f982c849c78197a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0d74d0f_e49e247b",
         "filename": "util/flash_ec",
         "patchSetId": 10
