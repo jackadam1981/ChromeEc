@@ -22,6 +22,30 @@
       "revId": "a0e8b069d41989aa69c985ca6d9505e0135b2e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70f72c8_b9ae5d42",
+        "filename": "include/clock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-25T23:38:02Z",
+      "side": 1,
+      "message": "We do use weak symbols in the codebase, but I find this pattern much less error-prone. With weak symbols, you never know for sure which version is used, which this, it\u0027s far more straightforward.",
+      "parentUuid": "9beac831_2b519c7f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "a0e8b069d41989aa69c985ca6d9505e0135b2e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
