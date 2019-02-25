@@ -69,6 +69,29 @@
       "revId": "0bebcbdeef642a9be0e0bd489db1b76c535dc3b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adce17cc_ac46473c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4514,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-25T06:11:36Z",
+      "side": 1,
+      "message": "Change this to __packed should solve issue above.",
+      "range": {
+        "startLine": 4514,
+        "startChar": 9,
+        "endLine": 4514,
+        "endChar": 27
+      },
+      "revId": "0bebcbdeef642a9be0e0bd489db1b76c535dc3b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
