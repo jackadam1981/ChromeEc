@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9beac831_2b519c7f",
+        "filename": "include/clock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-25T17:04:19Z",
+      "side": 1,
+      "message": "Why don\u0027t you define default clock_enable_module with __attribute__((weak))? Then, we don\u0027t need CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "a0e8b069d41989aa69c985ca6d9505e0135b2e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
