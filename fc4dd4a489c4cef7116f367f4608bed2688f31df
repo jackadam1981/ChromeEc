@@ -39,6 +39,30 @@
       "revId": "fc4dd4a489c4cef7116f367f4608bed2688f31df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cec175_01df55f2",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-25T20:22:00Z",
+      "side": 1,
+      "message": "Done.\n\nThis retry logic is a bandaid fix, and should be removed in near future with a fix.\nIt doesn\u0027t deserve much style care, I think.",
+      "parentUuid": "e4f85a9b_cfc65256",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 59
+      },
+      "revId": "fc4dd4a489c4cef7116f367f4608bed2688f31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
