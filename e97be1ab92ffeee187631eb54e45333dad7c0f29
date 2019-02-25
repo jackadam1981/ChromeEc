@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb872a0_acac214b",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-25T12:24:14Z",
+      "side": 1,
+      "message": "Well you use #define, not enum, for the very similar CKSW_SEL_SLOW_* below...\n\nMaybe stick with defines for everything?",
+      "revId": "e97be1ab92ffeee187631eb54e45333dad7c0f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51cbb8d_fd568b65",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-25T12:24:14Z",
+      "side": 1,
+      "message": "I\u0027d just call SCP_CLK_SEL \u003d CLK_SEL_ULPOSC_2 here, simpler...",
+      "revId": "e97be1ab92ffeee187631eb54e45333dad7c0f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
