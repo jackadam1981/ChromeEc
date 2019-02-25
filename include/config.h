@@ -2907,6 +2907,9 @@
  */
 #undef CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP
 
+/* Enable eSPI Out-Of-band (OOB) channel */
+#undef CONFIG_HOSTCMD_ESPI_OOB
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
