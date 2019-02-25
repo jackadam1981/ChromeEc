@@ -16,6 +16,7 @@
 #include "espi.h"
 #include "lpc_chip.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "timer.h"
 
 /* Console output macros */
@@ -26,6 +27,10 @@
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
 #endif
+/* OOB channel maximum payload size */
+#define NPCX_OOB_MAX_PAYLOAD 64
+/* Maximum timeout for host handles OOB_AVAIL bit in STATUS (Unit:ms) */
+#define ESPI_OOB_MAX_TIMEOUT 100
 
 /* Default eSPI configuration for VW events */
 struct vwevms_config_t {
@@ -591,6 +596,13 @@ void espi_interrupt(void)
 		if (IS_BIT_SET(status, NPCX_ESPISTS_VWUPD))
 			CPRINTS("VW Updated INT");
 
+		/* OOB data received */
+		if (IS_BIT_SET(status, NPCX_ESPISTS_OOBRX)) {
+			CPRINTS("OOBRX INT");
+			task_set_event(TASK_ID_HOSTCMD,
+					TASK_EVENT_ESPI_OOB_RECEIVE, 0);
+		}
+
 		/* Get status again */
 		status = NPCX_ESPISTS & mask;
 	}
@@ -626,6 +638,127 @@ void espi_init(void)
 	for (i = 0; i < ARRAY_SIZE(espi_vw_int_list); i++)
 		espi_enable_vw_int(&espi_vw_int_list[i]);
 }
+
+/*****************************************************************************/
+/* eSPI OOB utilities */
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+int espi_oob_receive(uint8_t *oob_data)
+{
+	int idx_buf, sz_package;
+	uint32_t header;
+	uint8_t *ptr_hdr;
+
+	/*
+	 * PUT_OOB header (first 4 bytes) in npcx 32-bits rx buffer
+	 *
+	 * [24:31] - LEN[0:7]     Data length of PUT_OOB request package
+	 * [20:23] - TAG          Tag of PUT_OOB
+	 * [16:19] - LEN[8:11]    Data length of PUT_OOB request package
+	 * [8:15]  - CYCLE_TYPE   Cycle type of PUT_OOB
+	 * [0:7]   - SZ_PACK      Reserved. (Npcx only)
+	 */
+	header   = NPCX_OOBRXBUF(0);
+	ptr_hdr  = (uint8_t *)&header;
+
+	sz_package = ptr_hdr[3] | (ptr_hdr[2] & 0x0F) << 8;
+	/* Check out of OOB received buffer size */
+	if (sz_package > NPCX_OOB_MAX_PAYLOAD) {
+		CPRINTS("Out of OOB received buffer");
+		return EC_ERROR_OVERFLOW;
+	}
+
+	/* Read PUT_OOB header */
+	*(oob_data++) = (header >> 8) & 0xFF;
+	*(oob_data++) = (header >> 16) & 0xFF;
+	*(oob_data++) = (header >> 24) & 0xFF;
+
+	/* Read PUT_OOB data data into 32-bits rx buffer in little endian */
+	for (idx_buf = 0; idx_buf < sz_package/4; idx_buf++) {
+		uint32_t data = NPCX_OOBRXBUF(idx_buf+1);
+
+		*(oob_data++) = data & 0xFF;
+		*(oob_data++) = (data >> 8) & 0xFF;
+		*(oob_data++) = (data >> 16) & 0xFF;
+		*(oob_data++) = (data >> 24) & 0xFF;
+	}
+
+	/* Read remaining bytes of package */
+	if (sz_package % 4) {
+		int i;
+		uint32_t data = NPCX_OOBRXBUF(idx_buf+1);
+
+		for (i = 0; i < sz_package % 4; i++)
+			*(oob_data++) = (data >> (8*i)) & 0xFF;
+	}
+
+	/* Notify host OOB received buffer is free now. */
+	SET_BIT(NPCX_OOBCTL, NPCX_OOBCTL_OOB_FREE);
+
+	return EC_SUCCESS;
+}
+
+int espi_oob_send(uint8_t *oob_data)
+{
+	int idx_buf;
+	int sz_package = oob_data[2] | (oob_data[1] & 0x0F) << 8;
+	uint16_t timeout = ESPI_OOB_MAX_TIMEOUT;
+
+	/* Check out of OOB transmitted buffer size */
+	if (sz_package > NPCX_OOB_MAX_PAYLOAD) {
+		CPRINTS("Out of OOB transmitted buffer");
+		return EC_ERROR_OVERFLOW;
+	}
+
+	/* Check OOB Transmit Queue is available? */
+	while (--timeout) {
+		/* Transmit queue is empty. */
+		if (!IS_BIT_SET(NPCX_OOBCTL, NPCX_OOBCTL_OOB_AVAIL))
+			break;
+		udelay(1000);
+	}
+	if (timeout == 0)
+		return EC_ERROR_TIMEOUT;
+
+	/*
+	 * GET_OOB header (first 4 bytes) in npcx 32-bits tx buffer
+	 *
+	 * [24:31] - LEN[0:7]     Data length of GET_OOB request package
+	 * [20:23] - TAG          Tag of GET_OOB
+	 * [16:19] - LEN[8:11]    Data length of GET_OOB request package
+	 * [8:15]  - CYCLE_TYPE   Cycle type of GET_OOB
+	 * [0:7]   - SZ_PACK      Package size plus 3 bytes header. (Npcx only)
+	 */
+	NPCX_OOBTXBUF(0) = (sz_package + 3)    |
+			   (oob_data[0] << 8)  |
+			   (oob_data[1] << 16) |
+			   (oob_data[2] << 24);
+
+	/* Move pointer to data package */
+	oob_data += 3;
+	/* Write GET_OOB data into 32-bits tx buffer in little endian */
+	for (idx_buf = 0; idx_buf < sz_package/4; idx_buf++, oob_data += 4)
+		NPCX_OOBTXBUF(idx_buf+1) =  oob_data[0]        |
+					   (oob_data[1] << 8)  |
+					   (oob_data[2] << 16) |
+					   (oob_data[3] << 24);
+
+	/* Write remaining bytes of package */
+	if (sz_package % 4) {
+		int i;
+		uint32_t data = 0;
+
+		for (i = 0; i < sz_package % 4; i++)
+			data |= (oob_data[i] << (8*i));
+
+		NPCX_OOBTXBUF(idx_buf+1) = data;
+	}
+
+	/* Notify host a new OOB packet is ready. */
+	SET_BIT(NPCX_OOBCTL, NPCX_OOBCTL_OOB_AVAIL);
+
+	return EC_SUCCESS;
+}
+#endif
 
 static int command_espi(int argc, char **argv)
 {
