@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2f1b767_e5aceaab",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-25T21:49:59Z",
+      "side": 1,
+      "message": "Let\u0027s check return values. I think using OR is ok (i.e. \u0027rv |\u003d i2c_write8(...);\u0027). Then we print error message \u0027if (rv) CPRINTS(\"Failed panel setup\");\u0027",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "85900c85fc244f9eb9eb5a0ecdcdb7ccfefbce4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f6646e_a0108564",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-25T21:49:59Z",
+      "side": 1,
+      "message": "Please name it SKU_ID_PANEL_SIZE_MASK.",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "85900c85fc244f9eb9eb5a0ecdcdb7ccfefbce4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd077a26_127fb352",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-25T21:49:59Z",
+      "side": 1,
+      "message": "nit: I would put these in board.c because they\u0027re very local (they\u0027re not going to be used anywhere else).",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 29
+      },
+      "revId": "85900c85fc244f9eb9eb5a0ecdcdb7ccfefbce4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
