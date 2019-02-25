@@ -727,8 +727,9 @@ static inline void set_state(int port, enum pd_states next_state)
 			 * change Rp to 3A for all ports. If the other port is
 			 * occupied, it'll be given 3A and this port will be
 			 * given 1.5A.
-			 * In either case, this port is immediately reset to
-			 * 1.5A by tcpm_select_rp_value.
+			 * In either case, this port is first set to 1.5 A, and
+			 * the call to pd_power_supply_ready will cache the
+			 * correct Rp value later.
 			 */
 			pd_power_supply_reset(port);
 			tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
@@ -3110,6 +3111,12 @@ void pd_task(void *u)
 #endif /* CONFIG_USBC_SS_MUX */
 					break;
 				}
+				/*
+				 * Set correct Rp value determined during
+				 * pd_set_power_supply_ready now that Vconn
+				 * is being sourced
+				 */
+				tcpm_set_cc(port, TYPEC_CC_RP);
 #endif /* CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP */
 				/* If PD comm is enabled, enable TCPC RX */
 				if (pd_comm_is_enabled(port))
@@ -4107,6 +4114,14 @@ void pd_task(void *u)
 				pd_set_power_role(port, PD_ROLE_SINK);
 				timeout = 2*MSEC;
 			} else if (next_state == PD_STATE_SRC_DISCONNECTED) {
+				/*
+				 * Always start Rp at 1.5 A so bad port partners
+				 * that don't monitor Rp changes shouldn't draw
+				 * more than this.  Set Rp to 3.0 A if
+				 * applicable after entering Attached.SRC state.
+				 */
+				tcpm_select_rp_value(port,
+						     CONFIG_USB_PD_PULLUP);
 				tcpm_set_cc(port, TYPEC_CC_RP);
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				timeout = 2*MSEC;
