@@ -4772,6 +4772,7 @@ struct ec_response_usb_pd_control_v2 {
 	char state[32];
 	uint8_t cc_state; /* USBC_PD_CC_*Encoded cc state */
 	uint8_t dp_mode;  /* Current DP pin mode (MODE_DP_PIN_[A-E]) */
+	uint8_t cable_type; /* Type of cable attached */
 } __ec_align1;
 
 #define EC_CMD_USB_PD_PORTS 0x0102
