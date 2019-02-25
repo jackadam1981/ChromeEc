@@ -5135,6 +5135,9 @@ int cmd_usb_pd(int argc, char *argv[])
 			else if (r_v2->cc_state & USBC_PD_CC_DFP_ATTACHED)
 				printf("DFP attached");
 			printf("\n");
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			printf("Cable type: 0x%x", r_v2->cable_type);
+#endif
 		}
 
 		/* If connected to a PD device, then print port partner info */

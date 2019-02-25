@@ -4768,6 +4768,9 @@ struct ec_response_usb_pd_control_v2 {
 	uint8_t role;
 	uint8_t polarity;
 	uint8_t cc_state; /* PD_CC_*Encoded cc state */
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	uint8_t cable_type;
+#endif
 	char state[32];
 } __ec_align1;
 
