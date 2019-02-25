@@ -22,6 +22,30 @@
       "revId": "1dee511edb110f2faa40ac9c6482e9ac7ce9c627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0307ad_7b6c6cbe",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2019-02-25T08:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3b6d64_a32d201f",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "1dee511edb110f2faa40ac9c6482e9ac7ce9c627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
