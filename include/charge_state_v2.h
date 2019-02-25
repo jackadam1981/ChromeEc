@@ -89,5 +89,27 @@ int board_is_base_connected(void);
  */
 void board_enable_base_power(int enable);
 
-#endif /* __CROS_EC_CHARGE_STATE_V2_H */
+/**
+ * Board-specific routine to reset the base (in case it is unresponsive, e.g.
+ * if we told it to hibernate).
+ */
+void board_base_reset(void);
 
+/**
+ * Callback with which boards determine action on critical low battery
+ *
+ * The default implementation is provided in charge_state_v2.c. Overwrite it
+ * to customize it.
+ *
+ * @param curr Pointer to struct charge_state_data
+ * @return Action to take.
+ */
+enum critical_shutdown {
+	CRITICAL_SHUTDOWN_IGNORE,
+	CRITICAL_SHUTDOWN_HIBERNATE,
+	CRITICAL_SHUTDOWN_CUTOFF,
+};
+enum critical_shutdown board_critical_shutdown_check(
+		struct charge_state_data *curr);
+
+#endif /* __CROS_EC_CHARGE_STATE_V2_H */
