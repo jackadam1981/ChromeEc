@@ -5135,6 +5135,23 @@ int cmd_usb_pd(int argc, char *argv[])
 			else if (r_v2->cc_state & USBC_PD_CC_DFP_ATTACHED)
 				printf("DFP attached");
 			printf("\n");
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			if (r_v2->cable_type & IDH_PTYPE_UNDEF)
+				printf("Product type undefined");
+			else if (r_v2->cable_type & IDH_PTYPE_HUB)
+				printf("Product type hub");
+			else if (r_v2->cable_type & IDH_PTYPE_PERIPH)
+				printf("Product type is peripheral");
+			else if (r_v2->cable_type & IDH_PTYPE_PCABLE)
+				printf("Product type is a passive cable");
+			else if (r_v2->cable_type & IDH_PTYPE_ACABLE)
+				printf("Product type is a active cable");
+			else if (r_v2->cable_type & IDH_PTYPE_AMA)
+				printf("Product type is an AMA");
+			else
+				printf("Unknown product type");
+#endif
 		}
 
 		/* If connected to a PD device, then print port partner info */
