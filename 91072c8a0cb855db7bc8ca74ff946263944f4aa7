@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "8bd14106_b720c72c",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2019-02-25T19:41:35Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s proper to stuff misc. attributes into the EC_CMD_USB_PD_MUX_INFO reply to save host commands for your particular use (what if everyone did that?). With the exception of DFP_D pin assignment, I think the attributes you need are already reported or better reported by other host commands.\n\nRegarding DFP_D pin assignment, I think it may make sense for EC_CMD_USB_PD_MUX_INFO to report it, but I don\u0027t agree with adding a board callback to grab the data. Instead the info should be reported to the mux driver using the existing set() interface and retrieved using the existing get() interface.",
+      "parentUuid": "5893982e_25859925",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1499921f_b8ecfdf9",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
