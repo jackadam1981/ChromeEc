@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "0155e1e9_e67f57c6",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-25T20:12:23Z",
+      "side": 1,
+      "message": "Okay I\u0027ll remove the dp pin mode board callback function and figure out a way to report it via existing interface. I\u0027ll create a separate review for the DP pin mode assignment altogether.",
+      "parentUuid": "8bd14106_b720c72c",
+      "range": {
+        "startLine": 256,
+        "startChar": 19,
+        "endLine": 256,
+        "endChar": 40
+      },
+      "revId": "91072c8a0cb855db7bc8ca74ff946263944f4aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1499921f_b8ecfdf9",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
