@@ -724,11 +724,15 @@ static inline void set_state(int port, enum pd_states next_state)
 			 * If CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is
 			 * defined, Rp is reset as follows.
 			 * If all ports are open, pd_power_supply_reset will
-			 * change Rp to 3A for all ports. If the other port is
-			 * occupied, it'll be given 3A and this port will be
-			 * given 1.5A.
-			 * In either case, this port is immediately reset to
-			 * 1.5A by tcpm_select_rp_value.
+			 * change Rp to CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
+			 * for all ports. If the other port is
+			 * occupied, behavior depends on
+			 * CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT.
+			 *
+			 * In either case, this port's TCPC Rp cache is set to
+			 * CONFIG_USB_PD_PULLUP, and the call to
+			 * pd_power_supply_ready will cache the correct Rp
+			 * value later.
 			 */
 			pd_power_supply_reset(port);
 			tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
@@ -3110,6 +3114,13 @@ void pd_task(void *u)
 #endif /* CONFIG_USBC_SS_MUX */
 					break;
 				}
+				/*
+				 * Set correct Rp value determined during
+				 * pd_set_power_supply_ready.  This should be
+				 * safe because Vconn is being sourced,
+				 * preventing incorrect CCD detection.
+				 */
+				tcpm_set_cc(port, TYPEC_CC_RP);
 #endif /* CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP */
 				/* If PD comm is enabled, enable TCPC RX */
 				if (pd_comm_is_enabled(port))
@@ -4107,6 +4118,19 @@ void pd_task(void *u)
 				pd_set_power_role(port, PD_ROLE_SINK);
 				timeout = 2*MSEC;
 			} else if (next_state == PD_STATE_SRC_DISCONNECTED) {
+				/*
+				 * Always start Rp at CONFIG_USB_PD_PULLUP for
+				 * two reasons:
+				 * 1. Prevent invalid CCD mode detection
+				 * 2. Prevent bad port partners who do not honor
+				 *    Rp changes from drawing more than this
+				 *    initially presented value
+				 *
+				 * A higher Rp may be set later after entering
+				 * the Attached.SRC state.
+				 */
+				tcpm_select_rp_value(port,
+						     CONFIG_USB_PD_PULLUP);
 				tcpm_set_cc(port, TYPEC_CC_RP);
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				timeout = 2*MSEC;
