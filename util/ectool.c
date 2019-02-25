@@ -5137,6 +5137,25 @@ int cmd_usb_pd(int argc, char *argv[])
 			else
 				printf("UNKNOWN");
 			printf("\n");
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			printf("Cable type:");
+			if (r_v2->cable_type & IDH_PTYPE_UNDEF)
+				printf("Undefined");
+			else if (r_v2->cable_type & IDH_PTYPE_HUB)
+				printf("Hub");
+			else if (r_v2->cable_type & IDH_PTYPE_PERIPH)
+				printf("Peripheral");
+			else if (r_v2->cable_type & IDH_PTYPE_PCABLE)
+				printf("Passive cable");
+			else if (r_v2->cable_type & IDH_PTYPE_ACABLE)
+				printf("Active cable");
+			else if (r_v2->cable_type & IDH_PTYPE_AMA)
+				printf("AMA");
+			else
+				printf("UNKNOWN");
+			printf("\n");
+#endif
 		}
 
 		/* If connected to a PD device, then print port partner info */
