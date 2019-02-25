@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "821f9d9a_f1385639",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-25T06:45:28Z",
+      "side": 1,
+      "message": "How about b:120953723 ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "0afb1a8dbc516d5605aed58e88e89aa308772d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "926dbb8c_76fd6bf5",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-25T06:45:28Z",
+      "side": 1,
+      "message": "nit: EC uses /* ... */ comment styles.\n\nAlso, add a bug link in TODO. e.g. TODO(b:....):",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "0afb1a8dbc516d5605aed58e88e89aa308772d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d22f3b6_b2e53d49",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-25T06:45:28Z",
+      "side": 1,
+      "message": "nit: This can be a singled line comment.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "0afb1a8dbc516d5605aed58e88e89aa308772d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11bb7c87_647ea56d",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2079,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-25T06:45:28Z",
+      "side": 1,
+      "message": "\" over IPI.\"",
+      "range": {
+        "startLine": 2079,
+        "startChar": 32,
+        "endLine": 2079,
+        "endChar": 33
+      },
+      "revId": "0afb1a8dbc516d5605aed58e88e89aa308772d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6163c0_ad27bc85",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2080,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-02-25T06:45:28Z",
+      "side": 1,
+      "message": "Maybe remove this line?",
+      "range": {
+        "startLine": 2080,
+        "startChar": 2,
+        "endLine": 2080,
+        "endChar": 79
+      },
+      "revId": "0afb1a8dbc516d5605aed58e88e89aa308772d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
