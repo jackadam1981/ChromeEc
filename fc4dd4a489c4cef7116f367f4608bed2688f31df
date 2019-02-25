@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a9cd51f_0263639b",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-25T20:02:00Z",
+      "side": 1,
+      "message": "Make this an \"if\" statement too.",
+      "revId": "fc4dd4a489c4cef7116f367f4608bed2688f31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f85a9b_cfc65256",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-25T20:02:00Z",
+      "side": 1,
+      "message": "How about on one line:\n\n(( --num_attempts \u003c\u003d 0 )) \u0026\u0026 die \"dut_i2c_mux failed.\"\n\nThough I\u0027d prefer an actual \"if\" statement TBH.\n\nif (( --num_attempts \u003c\u003d 0 )); then\n  die \"dut_i2c_mux failed.\"\nfi",
+      "range": {
+        "startLine": 1125,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 59
+      },
+      "revId": "fc4dd4a489c4cef7116f367f4608bed2688f31df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
