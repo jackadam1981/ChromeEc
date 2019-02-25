@@ -2500,8 +2500,14 @@
 /* Support MKBP event */
 #undef CONFIG_MKBP_EVENT
 
-/* MKBP events are sent using host event */
+/* MKBP events are sent by using host event */
 #undef CONFIG_MKBP_USE_HOST_EVENT
+
+/* MKBP events are sent by using GPIO */
+#undef CONFIG_MKBP_USE_GPIO
+
+/* MKBP events are sent by using custom method. */
+#undef CONFIG_MKBP_USE_CUSTOM
 
 /*
  * With this option, we can define the MKBP wakeup events in this mask (as a
