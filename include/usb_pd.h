@@ -726,6 +726,11 @@ enum pd_states {
 #define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
 #define PD_FLAGS_LPM_TRANSITION    (1 << 19)/* Tracks HW LPM transition */
 #endif
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+#define PD_FLAGS_SOP_PRIME_ENABLE   (1 << 20) /* Enable SOP' Transmission */
+#endif
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
