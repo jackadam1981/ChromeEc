@@ -46,6 +46,30 @@
       "revId": "7c55aca65c8635bb09b263e72f77525e06d52f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df4dd40_82d27b91",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-25T20:41:31Z",
+      "side": 1,
+      "message": "Ah, it worked because ftdi_special_waveform() *also* calls ftdi_config_i2c().  So when special waveform is enabled, there are redundant ftdi_config_i2c() calls.  I\u0027ll clean that up in another CL.\n\nIn the meantime I do think this should be above disable watchdog, but I can move it later when I get rid of the ftdi_config_i2c() redundancy.",
+      "parentUuid": "10493fb7_3e81c1e8",
+      "range": {
+        "startLine": 1596,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 57
+      },
+      "revId": "7c55aca65c8635bb09b263e72f77525e06d52f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
