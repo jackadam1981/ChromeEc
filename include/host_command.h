@@ -12,6 +12,10 @@
 #include "common.h"
 #include "ec_commands.h"
 
+#define TASK_EVENT_CMD_PENDING		TASK_EVENT_CUSTOM_BIT(1)
+#define TASK_EVENT_ESPI_OOB_RECEIVE	TASK_EVENT_CUSTOM_BIT(2)
+#define TASK_EVENT_ESPI_OOB_SEND_DONE	TASK_EVENT_CUSTOM_BIT(4)
+
 /* Args for host command handler */
 struct host_cmd_handler_args {
 	/*

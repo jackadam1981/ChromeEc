@@ -3089,6 +3089,9 @@
  */
 #undef CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
 
+/* Enable eSPI Out-Of-band (OOB) channel */
+#undef CONFIG_HOSTCMD_ESPI_OOB
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
