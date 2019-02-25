@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "550a0e5f_b8e24ebb",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-25T06:51:13Z",
+      "side": 1,
+      "message": "BL_CHANNEL3 should be change to BL_CHANNEL0-2\nBL_CHANNEL4 should be change to BL_CHANNEL0-3\n\nsku \u0026 PANEL_SIZE_MASK \u003d\u003d 1 .  channel should equal to 4 channels",
+      "revId": "6a9fd72572954e7373656fc58382e54e68eecfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d39e84e_3fbbff12",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-02-25T06:51:13Z",
+      "side": 1,
+      "message": "please also change this.",
+      "revId": "6a9fd72572954e7373656fc58382e54e68eecfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
