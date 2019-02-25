@@ -310,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "1ed4c299_b1ea49ca",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-25T17:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5af18e_11cb49aa",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1133,
+        "endChar": 8
+      },
+      "revId": "c2e91475cfaeb7eba4c91fe71e83ad7e048a218b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f84deb6_eca81521",
         "filename": "util/flash_ec",
         "patchSetId": 2
