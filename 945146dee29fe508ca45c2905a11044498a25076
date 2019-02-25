@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64b903b5_c5416dc4",
+        "filename": "common/host_command.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-25T07:50:00Z",
+      "side": 1,
+      "message": "There\u0027re 3 bytes header in PUT_OOB protocol. We might miss the last byte for \"YY\".",
+      "range": {
+        "startLine": 501,
+        "startChar": 17,
+        "endLine": 501,
+        "endChar": 29
+      },
+      "revId": "945146dee29fe508ca45c2905a11044498a25076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
