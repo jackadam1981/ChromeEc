@@ -407,7 +407,7 @@ static int mkbp_uses_gpio(void)
 	return board_get_version() >= 2;
 }
 
-void mkbp_set_host_active(int active)
+void mkbp_set_host_active_via_custom(int active)
 {
 	if (mkbp_uses_gpio())
 		mkbp_set_host_active_via_gpio(active);
