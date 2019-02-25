@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "espi.h"
 #include "host_command.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -23,13 +24,16 @@
 #define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
 
-#define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
-
 /* Maximum delay to skip printing repeated host command debug output */
 #define HCDEBUG_MAX_REPEAT_DELAY (50 * MSEC)
 
 /* Stop printing repeated host commands "+" after this count */
 #define HCDEBUG_MAX_REPEAT_COUNT 5
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+/* TODO: (need a queue?) ESPI OOB data */
+static uint8_t espi_oob_data[ESPI_OOB_MAX_LENGTH];
+#endif
 
 static struct host_cmd_handler_args *pending_args;
 
@@ -430,6 +434,83 @@ static void host_command_init(void)
 #endif
 }
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+int process_espi_oob_cycle_data(void)
+{
+	int oob_len, i;
+
+	/* Byte 3 - slave address */
+	if (espi_oob_data[3] != (OOB_SMBUS_SRC_ADDR_EC << 1))
+		return EC_ERROR_INVAL;
+
+	/*
+	 * Byte 1[3:0] - length [11:8]
+	 * Byte 2      - length [7:0]
+	 */
+	oob_len = (espi_oob_data[1] & 0x0F) << 8 | espi_oob_data[2];
+
+	/* Byte 4 - eSPI OOB command */
+	switch (espi_oob_data[4]) {
+	case OOB_SMBUS_GET_TEMP:
+		/*
+		 * Byte 5 - Byte count 2
+		 * Byte 6 - Master address
+		 * Byte 7 - Temperature
+		 */
+		if (oob_len != OOB_SMBUS_REC_TEMP_LENGTH ||
+			espi_oob_data[5] != OOB_SMBUS_REC_TEMP_BYTE_COUNT ||
+			espi_oob_data[6] !=
+				(OOB_SMBUS_DEST_ADDR_PCH_SOC_MC | 0x1) ||
+			espi_oob_data[7] == 0xFF)
+			return EC_ERROR_INVAL;
+
+		CPRINTS("temp = %d deg C", espi_oob_data[7]);
+		break;
+
+	case OOB_SMBUS_GET_RTC:
+		/*
+		 * Byte 5 - Byte count 9
+		 * Byte 6 - Master address
+		 */
+		if (oob_len != OOB_SMBUS_REC_RTC_LENTGH ||
+			espi_oob_data[5] != OOB_SMBUS_REC_RTC_BYTE_COUNT ||
+			espi_oob_data[6] !=
+				(OOB_SMBUS_DEST_ADDR_PCH_SOC_MC | 0x1))
+			return EC_RES_INVALID_RESPONSE;
+
+		/*
+		 * Byte 7[0]-DS - Daylight saving (1-enable, 0-disabled)
+		 * Byte 7[1]-HF - Hour format (1-24hr format, 0-12hr format)
+		 * Byte 7[2]-DM - Data mode (1-Binay, 0-BCD)
+		 * Byte 7[7]-MD - Meridium (when HF=0; 1-PM, 0-AM)
+		 */
+		CPRINTF("DS:HF:DM:MD::%d:%d:%d:%d\n", espi_oob_data[7] & 0x1,
+			!!(espi_oob_data[7] & 0x2), !!(espi_oob_data[7] & 0x4),
+			!!(espi_oob_data[7] & 0x80));
+
+		/*
+		 * Byte  8 - PCH RTC Time: Seconds
+		 * Byte  9 - PCH RTC Time: Minutes
+		 * Byte 10 - PCH RTC Time: Hours
+		 * Byte 11 - PCH RTC Time: Day of Week
+		 * Byte 12 - PCH RTC Time: Day of Month
+		 * Byte 13 - PCH RTC Time: Month
+		 * Byte 14 - PCH RTC Time: Year
+		 */
+		CPRINTF("SS:MN:HH:DW:DD:MM:YY:");
+		for (i = 8; i <= 14; i++)
+			CPRINTF(":%02x", espi_oob_data[i]);
+		CPRINTF("\n");
+		break;
+
+	default:
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+#endif
+
 void host_command_task(void *u)
 {
 	timestamp_t t0, t1, t_recess;
@@ -449,6 +530,20 @@ void host_command_task(void *u)
 					host_command_process(pending_args);
 			host_send_response(pending_args);
 		}
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+		if (evt & TASK_EVENT_ESPI_OOB_SEND_DONE)
+			CPRINTS("ESPI OOB message sent");
+
+		/* Process eSPI OOB data */
+		if (evt & TASK_EVENT_ESPI_OOB_RECEIVE) {
+			if (espi_oob_receive(espi_oob_data) != EC_SUCCESS ||
+				(espi_oob_data[0] == ESPI_OOB_CYCLE_TYPE &&
+				process_espi_oob_cycle_data())) {
+				CPRINTS("Invalid eSPI OOB message");
+			}
+		}
+#endif
 
 		/* reset rate limiting if we have slept enough */
 		if (t0.val - t1.val > CONFIG_HOSTCMD_RATE_LIMITING_MIN_REST)
@@ -923,3 +1018,51 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+static int command_espi_oob(int argc, char **argv)
+{
+	char *e;
+	uint8_t cmd, byte_count, dst_addr;
+	uint16_t data_len;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	cmd = (uint8_t) strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	/* Prepare eSPI OOB data for commands */
+	switch (cmd) {
+	case OOB_SMBUS_GET_TEMP:
+	case OOB_SMBUS_GET_RTC:
+		data_len = 0x4;
+		byte_count = 0x1;
+		dst_addr = OOB_SMBUS_DEST_ADDR_PCH_SOC_MC;
+		break;
+	default:
+		return EC_ERROR_PARAM1;
+	}
+
+	/* cycle type */
+	espi_oob_data[0] = ESPI_OOB_CYCLE_TYPE;
+	/* tag + len[11:8] */
+	espi_oob_data[1] = ESPI_TAG_LEN_FIELD(0, data_len);
+	/* len[7:0] */
+	espi_oob_data[2] = data_len;
+	/* SMBus destination addr */
+	espi_oob_data[3] = dst_addr;
+	/* SMBus cmd */
+	espi_oob_data[4] = cmd;
+	/* SMBus byte count */
+	espi_oob_data[5] = byte_count;
+	/* SMBus source addr (slave request) */
+	espi_oob_data[6] = (OOB_SMBUS_SRC_ADDR_EC << 1) | 0x1;
+
+	return espi_oob_send(espi_oob_data);
+}
+DECLARE_CONSOLE_COMMAND(oob, command_espi_oob,
+			"cmd",
+			"Send ESPI OOB command");
+#endif
