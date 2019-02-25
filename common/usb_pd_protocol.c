@@ -239,6 +239,16 @@ static struct pd_protocol {
 	uint16_t dev_id;
 	uint32_t dev_rw_hash[PD_RW_HASH_SIZE/4];
 	enum ec_current_image current_image;
+
+	/*
+	 * When a discover identity command is sent, cable_type stores the
+	 * cable attributes and it is cleared when the cable is disconnected.
+	 */
+	enum idh_ptype cable_type;
+
+	/* Type of SOP* message to be transmitted */
+	enum tcpm_transmit_type msg_type;
+
 #ifdef CONFIG_USB_PD_REV30
 	/* PD Collision avoidance buffer */
 	uint16_t ca_buffered;
@@ -762,6 +772,12 @@ static inline void set_state(int port, enum pd_states next_state)
 		pd[port].rev = PD_REV30;
 #endif
 		pd[port].dev_id = 0;
+		pd[port].flags &= ~PD_FLAGS_RESET_ON_DISCONNECT_MASK;
+
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			/* Resetting cable type. */
+			pd[port].cable_type = IDH_PTYPE_UNDEF;
+
 #ifdef CONFIG_CHARGE_MANAGER
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
 #endif
@@ -2015,6 +2031,18 @@ static void handle_request(int port, uint16_t head,
 		CPRINTF("\n");
 	}
 
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+		/* Check for discovery identity ack from the cable */
+		if (cnt > 1 && pd[port].msg_type == TCPC_TX_SOP_PRIME &&
+		   (PD_VDO_CMD(payload[0]) == CMD_DISCOVER_IDENT) &&
+		   (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK))
+			pd[port].cable_type = PD_IDH_PTYPE(payload[1]);
+
+		pd[port].msg_type = TCPC_TX_SOP;
+
+	} else
+		pd[port].cable_type = IDH_PTYPE_UNDEF;
+
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
 	 * a hard reset if we get one.
@@ -2136,11 +2164,21 @@ static void pd_vdm_send_state_machine(int port)
 			break;
 		}
 
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+			if (pd[port].msg_type != TCPC_TX_SOP_PRIME &&
+			    pdo_busy(port))
+				/*
+				 * SOP Prime is being transmitted before the
+				 * source capabilities have been established,
+				 * hence skip checking if the PDO is in ready
+				 * state.
+				 */
+				break;
 		/*
 		 * if there's traffic or we're not in PDO ready state don't send
 		 * a VDM.
 		 */
-		if (pdo_busy(port))
+		} else if (pdo_busy(port))
 			break;
 
 		/* Prepare and send VDM */
@@ -2148,8 +2186,14 @@ static void pd_vdm_send_state_machine(int port)
 				   pd[port].data_role, pd[port].msg_id,
 				   (int)pd[port].vdo_count,
 				   pd_get_rev(port), 0);
-		res = pd_transmit(port, TCPC_TX_SOP, header,
-				  pd[port].vdo_data);
+
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			res = pd_transmit(port, pd[port].msg_type, header,
+					  pd[port].vdo_data);
+		else
+			res = pd_transmit(port, TCPC_TX_SOP, header,
+					  pd[port].vdo_data);
+
 		if (res < 0) {
 			pd[port].vdm_state = VDM_STATE_ERR_SEND;
 		} else {
@@ -3064,6 +3108,7 @@ void pd_task(void *u)
 		/* if nothing to do, verify the state of the world in 500ms */
 		this_state = pd[port].task_state;
 		timeout = 500*MSEC;
+
 		switch (this_state) {
 		case PD_STATE_DISABLED:
 			/* Nothing to do */
@@ -3325,6 +3370,11 @@ void pd_task(void *u)
 			/* Wait for power source to enable */
 			if (pd[port].last_state != pd[port].task_state) {
 				pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
+
+				if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+					pd[port].flags |=
+						PD_FLAGS_CHECK_CABLE_ENABLE;
+
 				/* reset various counters */
 				caps_count = 0;
 				pd[port].msg_id = 0;
@@ -3368,6 +3418,23 @@ void pd_task(void *u)
 						    PD_STATE_HARD_RESET_SEND :
 						    PD_STATE_SRC_DISCONNECTED);
 			}
+
+			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+				/*
+				 * Send SOP Prime packet before eastablishing
+				 * the source capabilities.
+				 * reference : USB_PD_R2_0 Section 4.5.
+				 */
+				if (pd[port].flags &
+				    PD_FLAGS_CHECK_CABLE_ENABLE) {
+					pd[port].msg_type = TCPC_TX_SOP_PRIME;
+					pd_send_vdm(port, USB_SID_PD,
+						    CMD_DISCOVER_IDENT,
+						    NULL, 0);
+					pd[port].flags &=
+						~PD_FLAGS_CHECK_CABLE_ENABLE;
+					break;
+				}
 
 			/* Send source cap some minimum number of times */
 			if (caps_count < PD_CAPS_COUNT  &&
@@ -3516,7 +3583,7 @@ void pd_task(void *u)
 #ifndef CONFIG_USB_PD_SIMPLE_DFP
 				pd_send_vdm(port, USB_SID_PD,
 					    CMD_DISCOVER_IDENT, NULL, 0);
-#endif
+#endif /* CONFIG_USB_PD_SIMPLE_DFP */
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
 			}
@@ -3819,6 +3886,11 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
 						  PD_FLAGS_CHECK_DR_ROLE |
 						  PD_FLAGS_CHECK_IDENTITY;
+
+				if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+					pd[port].flags |=
+						PD_FLAGS_CHECK_CABLE_ENABLE;
+
 				if (new_cc_state == PD_CC_DEBUG_ACC)
 					pd[port].flags |=
 						PD_FLAGS_TS_DTS_PARTNER;
@@ -3832,6 +3904,10 @@ void pd_task(void *u)
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
 			if (pd[port].last_state != pd[port].task_state)
 				pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
+
+			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+				pd[port].flags |= PD_FLAGS_CHECK_CABLE_ENABLE;
+
 #ifdef CONFIG_USB_PD_VBUS_DETECT_NONE
 			/*
 			 * Can't measure vbus state so this is the maximum
@@ -4481,6 +4557,10 @@ static void pd_chipset_startup(void)
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		pd_set_dual_role_no_wakeup(i, PD_DRP_TOGGLE_OFF);
 		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
+
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			pd[i].flags |= PD_FLAGS_CHECK_CABLE_ENABLE;
+
 		task_set_event(PD_PORT_TO_TASK_ID(i),
 			       PD_EVENT_POWER_STATE_CHANGE |
 				       PD_EVENT_UPDATE_DUAL_ROLE,
@@ -5038,6 +5118,20 @@ static int command_pd(int argc, char **argv)
 			debug_level > 0 ?
 				pd_state_names[pd[port].task_state] : "",
 			pd[port].flags);
+
+	} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+		   !strcasecmp(argv[2], "cabletype")) {
+		ccprintf("Cable type for port%d is: ", port);
+			switch (pd[port].cable_type) {
+			case IDH_PTYPE_PCABLE:
+				ccprintf("Passive");
+				break;
+			case IDH_PTYPE_ACABLE:
+				ccprintf("Active");
+				break;
+			default:
+				ccprintf("Invalid");
+			}
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -5064,6 +5158,9 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 			"\n\t<port> flash [erase|reboot|signature|info|version]"
 #endif /* CONFIG_CMD_PD_FLASH */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+#ifdef CONFIG_USB_PD_DECODE_SOP
+			"\n\t<port> cabletype"
+#endif /* CONFIG_USB_PD_DECODE_SOP */
 			,
 			"USB PD");
 
@@ -5188,7 +5285,8 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 
 		r_v2->cc_state =  pd[p->port].cc_state;
 		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
-
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			r_v2->cable_type = pd[p->port].cable_type;
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);
 		else

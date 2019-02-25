@@ -528,8 +528,18 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 		if (rv)
 			return rv;
 	}
-
-	return tcpc_write(port, TCPC_REG_TRANSMIT, TCPC_REG_TRANSMIT_SET(type));
+	/*
+	 * On receiving a received message on SOP, protocol layer
+	 * discards the pending  SOP messages queued for transmission.
+	 * But it doesn't do the same for SOP' message. So retry is
+	 * assigned to 0 to avoid multiple transmission.
+	 */
+	if (type == TCPC_TX_SOP_PRIME)
+		return tcpc_write(port, TCPC_REG_TRANSMIT,
+				  TCPC_REG_TRANSMIT_SET_WITHOUT_RETRY(type));
+	else
+		return tcpc_write(port, TCPC_REG_TRANSMIT,
+				  TCPC_REG_TRANSMIT_SET_WITH_RETRY(type));
 }
 
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
