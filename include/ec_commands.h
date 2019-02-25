@@ -4863,8 +4863,13 @@ struct ec_response_usb_pd_control_v2 {
 	char state[32];
 	uint8_t cc_state; /* USBC_PD_CC_*Encoded cc state */
 	uint8_t dp_mode;  /* Current DP pin mode (MODE_DP_PIN_[A-E]) */
-	/* CL:1500994 Current cable type */
-	uint8_t reserved_cable_type;
+	/*
+	 * Valid idh_ptype enum:
+	 * IDH_PTYPE_ACTIVE for an active emark cable or
+	 * IDH PTYYPE_PASSIVE for a passive emark cable or
+	 * IDH_PTYPE_UNDEF for a non - emark cable.
+	 */
+	uint8_t cable_type;
 } __ec_align1;
 
 #define EC_CMD_USB_PD_PORTS 0x0102
