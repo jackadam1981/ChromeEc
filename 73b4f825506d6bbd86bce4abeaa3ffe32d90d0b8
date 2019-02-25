@@ -476,6 +476,30 @@
     },
     {
       "key": {
+        "uuid": "2fbd5411_dfd29aa7",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1326273
+      },
+      "writtenOn": "2019-02-25T10:35:58Z",
+      "side": 1,
+      "message": "Nuvoton will further investigate it. Will update once we will have more information",
+      "parentUuid": "abf1a2b8_3c327fb1",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 27
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07b614cd_29865d15",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
