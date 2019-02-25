@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "101d8f44_1afe10f1",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-25T15:47:48Z",
+      "side": 1,
+      "message": "we are printing it in task. I think we can remove it here",
+      "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35077f9e_bf69f759",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-25T15:47:48Z",
+      "side": 1,
+      "message": "#define MUTIPLE_4(x) ((x) \u0026 0x3 ? (4 * ((x) \u003e\u003e 2)) + 4: (x))\nso that logic @686 can be removed",
+      "range": {
+        "startLine": 676,
+        "startChar": 29,
+        "endLine": 676,
+        "endChar": 41
+      },
+      "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
