@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2943ef5b_e7f4973a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-02-25T20:29:15Z",
+      "side": 1,
+      "message": "Did you test this is the correct order with Servo v2?  I think this should go before watchdog disable.",
+      "range": {
+        "startLine": 1596,
+        "startChar": 0,
+        "endLine": 1597,
+        "endChar": 57
+      },
+      "revId": "7c55aca65c8635bb09b263e72f77525e06d52f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
