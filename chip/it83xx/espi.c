@@ -8,6 +8,7 @@
 #include "console.h"
 #include "espi.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "port80.h"
 #include "power.h"
 #include "registers.h"
@@ -18,6 +19,18 @@
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+#define ESPI_UPSTREAM_MAX_LENGTH 80
+
+/* eSPI cycle type field lookup table */
+static const char espi_cycle_type_lookup_table[] = {
+	[ESPI_FLASH_READ_CYCLE_TYPE] = IT83XX_ESPI_FLASH_READ_CYCLE_TYPE,
+	[ESPI_FLASH_WRITE_CYCLE_TYPE] = IT83XX_ESPI_FLASH_WRITE_CYCLE_TYPE,
+	[ESPI_FLASH_ERASE_CYCLE_TYPE] = IT83XX_ESPI_FLASH_ERASE_CYCLE_TYPE,
+	[ESPI_OOB_CYCLE_TYPE] = IT83XX_ESPI_OOB_CYCLE_TYPE,
+};
+#endif
 
 struct vw_channel_t {
 	uint8_t  index;         /* VW index of signal */
@@ -541,9 +554,86 @@ static void (*espi_isr[])(uint8_t evt) = {
 	[7] = espi_no_isr,
 };
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+int espi_oob_receive(uint8_t *oob_data)
+{
+	int i;
+	int ret = EC_SUCCESS;
+
+	/* Read eSPI cycle type */
+	if (IT83XX_ESPI_ESOCTRL0 & ESPI_INTERRUPT_EVENT_PUT_OOB)
+		oob_data[0] = ESPI_OOB_CYCLE_TYPE;
+	else
+		CPRINTS("%s() is only for OOB channel", __func__);
+	/* Read PUT_PC tag */
+	oob_data[1] = IT83XX_ESPI_ESUCTRL2 & 0xF0;
+	/* Read PUT_OOB length */
+	oob_data[2] = IT83XX_ESPI_ESOCTRL4 & 0x7F;
+	if (oob_data[2] <= ESPI_OOB_MAX_LENGTH) {
+		/* Read PUT_OOB data */
+		for (i = 3; i < oob_data[2] + 3; i++)
+			oob_data[i] = IT83XX_ESPI_QUEUE(PUT_OOB_OFFSET, i - 3);
+	} else {
+		/* Received OOB data length more than buffer size 80 bytes */
+		ret = EC_ERROR_OVERFLOW;
+		CPRINTS("received OOB message over buffer size");
+	}
+
+	/* Write 1 to clear PUT_OOB status */
+	IT83XX_ESPI_ESOCTRL0 = ESPI_INTERRUPT_EVENT_PUT_OOB;
+	/* Enable OOB interrupt */
+	IT83XX_ESPI_ESOCTRL1 |= ESPI_INTERRUPT_PUT_OOB_EN;
+
+	return ret;
+}
+
+int espi_oob_send(uint8_t *oob_data)
+{
+	int i;
+	uint16_t oob_len = oob_data[2] | (oob_data[1] & 0x0F) << 4;
+
+	/* If upstream busy or eSPI master disable OOB channel then return */
+	if ((IT83XX_ESPI_ESUCTRL0 & ESPI_UPSTREAM_BUSY) ||
+		!(IT83XX_ESPI_CH2CC & ESPI_OOB_MESSAGE_CHANNEL_EN))
+		return EC_ERROR_ACCESS_DENIED;
+
+	/* If invalid cycle type then return */
+	if (!espi_cycle_type_lookup_table[oob_data[0]])
+		return EC_ERROR_INVAL;
+
+	/* Set upstream cycle type */
+	IT83XX_ESPI_ESUCTRL1 = espi_cycle_type_lookup_table[oob_data[0]];
+	/* Set upstream Tag */
+	IT83XX_ESPI_ESUCTRL2 = oob_data[1] & 0xF0;
+	/* Set upstream length[11:8] */
+	IT83XX_ESPI_ESUCTRL2 = oob_data[1] & 0x0F;
+	/* Length[7:0] */
+	IT83XX_ESPI_ESUCTRL3 = oob_data[2];
+
+	/*
+	 * Limited by upstream data buffer size(our hw design 80 bytes).
+	 * Actually length field can reach 4096 bytes in intel espi spec.
+	 */
+	ASSERT(oob_len <= ESPI_UPSTREAM_MAX_LENGTH);
+
+	/* Set upstream data */
+	for (i = 0; i < oob_len; i++)
+		IT83XX_ESPI_QUEUE(PUT_UPSTREAM_OFFSET, i) = oob_data[i + 3];
+	/* Set upstream enable */
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_EN;
+	/* Set upstream go */
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_GO;
+
+	return EC_SUCCESS;
+}
+#endif
+
 void espi_interrupt(void)
 {
 	int i;
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	uint8_t reg;
+#endif
 	/* get espi interrupt events */
 	uint8_t espi_event = IT83XX_ESPI_ESGCTRL0;
 
@@ -565,6 +655,24 @@ void espi_interrupt(void)
 		IT83XX_ESPI_ESPCTRL0 = ESPI_INTERRUPT_EVENT_PUT_PC;
 		CPRINTS("A packet from peripheral channel is ignored!");
 	}
+
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	/* eSPI OOB message interrupt occurred */
+	if (IT83XX_ESPI_ESOCTRL0 & ESPI_INTERRUPT_EVENT_PUT_OOB) {
+		/* disable OOB interrupt */
+		IT83XX_ESPI_ESOCTRL1 &= ~ESPI_INTERRUPT_PUT_OOB_EN;
+		task_set_event(TASK_ID_HOSTCMD, TASK_EVENT_ESPI_OOB_RECEIVE, 0);
+	}
+
+	/* eSPI OOB upstream done asserted */
+	if (IT83XX_ESPI_ESUCTRL0 & ESPI_UPSTREAM_INTERRUPT_EVENT_DONE) {
+		reg = IT83XX_ESPI_ESUCTRL0 & ~ESPI_UPSTREAM_CHANNEL_DIS;
+		/* write-1-clear upstream done event */
+		IT83XX_ESPI_ESUCTRL0 = reg;
+		task_set_event(TASK_ID_HOSTCMD,
+			TASK_EVENT_ESPI_OOB_SEND_DONE, 0);
+	}
+#endif
 
 	task_clear_pending_irq(IT83XX_IRQ_ESPI);
 }
@@ -608,6 +716,12 @@ void espi_init(void)
 	IT83XX_ESPI_VWCTRL0 |= (1 << 7);
 	task_enable_irq(IT83XX_IRQ_ESPI_VW);
 
+#ifdef CONFIG_HOSTCMD_ESPI_OOB
+	/* bit5: upstream interrupt enable */
+	IT83XX_ESPI_ESUCTRL0 |= ESPI_UPSTREAM_INTERRUPT_EN;
+	/* bit7: OOB interrupt enable */
+	IT83XX_ESPI_ESOCTRL1 |= ESPI_INTERRUPT_PUT_OOB_EN;
+#endif
 	/* bit7: eSPI interrupt enable */
 	IT83XX_ESPI_ESGCTRL1 |= (1 << 7);
 	/* bit4: eSPI to WUC enable */
