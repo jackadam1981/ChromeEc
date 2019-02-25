@@ -46,6 +46,30 @@
       "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb7d46f_3f3772d3",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-25T19:04:07Z",
+      "side": 1,
+      "message": "But i2c_write_block(I2C_PORT_BATTERY, BATTERY_ADDR, reg, val, len) works right? Maybe it\u0027s better just /* TODO: ... */ ?",
+      "parentUuid": "52699cdc_170ce8a9",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
