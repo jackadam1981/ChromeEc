@@ -8,6 +8,8 @@
 
 common-y=util.o
 common-y+=version.o printf.o queue.o queue_policies.o
+common-$(CONFIG_HOSTCMD_RTC)+=rtc.o
+common-$(CONFIG_HOSTCMD_RTC_SYNC)+=rtc.o
 
 common-$(CONFIG_ACCELGYRO_BMA255)+=math_util.o
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
@@ -69,7 +71,6 @@ common-$(CONFIG_FMAP)+=fmap.o
 common-$(CONFIG_GESTURE_SW_DETECTION)+=gesture.o
 common-$(CONFIG_HOSTCMD_EVENTS)+=host_event_commands.o
 common-$(CONFIG_HOSTCMD_PD)+=host_command_master.o
-common-$(CONFIG_HOSTCMD_RTC)+=rtc.o
 common-$(CONFIG_I2C_MASTER)+=i2c_master.o
 common-$(CONFIG_I2C_SLAVE)+=i2c_slave.o
 common-$(CONFIG_I2C_VIRTUAL_BATTERY)+=virtual_battery.o
