@@ -1632,3 +1632,15 @@ int board_write_serial(const char *serialno)
 }
 #endif
 #endif  /* CONFIG_SERIALNO_LEN */
+
+#if defined(HAS_TASK_CHIPSET)
+static void print_rtc(void)
+{
+	print_system_rtc(CC_SYSTEM);
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,  print_rtc, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME,    print_rtc, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND,   print_rtc, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP,   print_rtc, HOOK_PRIO_DEFAULT);
+#endif /* defined(HAS_CHIPSET_TASK) */
