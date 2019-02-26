@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf2492a_6a5697fb",
+        "filename": "board/kukui_scp/wov_sample.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-26T10:40:54Z",
+      "side": 1,
+      "message": "Move to chip/mt_scp/wov.c",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "6e42ada62a6a892843fcceb733676ef570f783dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb55fae_c6716491",
+        "filename": "board/kukui_scp/wov_sample.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-26T10:40:54Z",
+      "side": 1,
+      "message": "Driver instance won\u0027t go away easily. Don\u0027t need to check in a loop.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "6e42ada62a6a892843fcceb733676ef570f783dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
