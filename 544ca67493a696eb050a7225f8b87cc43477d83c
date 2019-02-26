@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b814516f_4c6985a9",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-26T15:10:37Z",
+      "side": 1,
+      "message": "Sure I\u0027ll add comment here. But the name is directly copied from below (line 56):\n  const uint32_t redtbl_lo \u003d IOAPIC_IOREDTBL + 2 * irq;",
+      "parentUuid": "9d979e69_f853348c",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04aabed0_b94e7596",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-22T21:07:20Z",
       "side": 1,
       "message": "Please add a comment saying how vector is laid out and how the reg_base is laid out in relation",
+      "range": {
+        "startLine": 125,
+        "startChar": 63,
+        "endLine": 125,
+        "endChar": 69
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c796cfae_f7fa8599",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-26T15:10:37Z",
+      "side": 1,
+      "message": "I will add register layout comment in next patchset.",
+      "parentUuid": "04aabed0_b94e7596",
       "range": {
         "startLine": 125,
         "startChar": 63,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7ddcb0d6_8ba43cc1",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-26T15:10:37Z",
+      "side": 1,
+      "message": "Yes LAPIC register layout was designed in an weird way with 96 bits gap. This code is derived from Kernel lapic.c:\n  #define VEC_POS(v) ((v) \u0026 (32 - 1))\n  #define REG_POS(v) (((v) \u003e\u003e 5) \u003c\u003c 4)\n  static inline void kvm_lapic_set_vector(int vec, void *bitmap)\n  {\n          set_bit(VEC_POS(vec), (bitmap) + REG_POS(vec));\n  }\nI should clone Kernel\u0027s macro name here to make it more clear.",
+      "parentUuid": "3f37c5b3_f105b2eb",
+      "range": {
+        "startLine": 127,
+        "startChar": 19,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b15ce299_6820cdc5",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-02-22T21:07:20Z",
       "side": 1,
       "message": "Also alternate that seems little easier to read to me (I know it is subjective though)\nREG32(reg_base + offset) \u0026 (1 \u003c\u003c bit);\n\n(your call)",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 46
+      },
+      "revId": "544ca67493a696eb050a7225f8b87cc43477d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b708f0_f5149c21",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-02-26T15:10:37Z",
+      "side": 1,
+      "message": "Sure I will modify that way.",
+      "parentUuid": "b15ce299_6820cdc5",
       "range": {
         "startLine": 130,
         "startChar": 1,
