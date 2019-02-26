@@ -81,6 +81,24 @@
       "revId": "f1122c203d5e65b46b12f972bddf68f5aa9a7cb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a2d1fae_ce89f46c",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-26T21:09:48Z",
+      "side": 1,
+      "message": "We could put this in common code and guard it by a new config option like CONFIG_PRINT_RTC_CHECKS or something and octopus can define CONFIG_PRINT_RTC_CHECKS...\n\nbut at the same time, I don\u0027t think we should limit this feature to octopus, so maybe we don\u0027t actually need the new define at all and just add it to all boards by adding this code to common/system/.c in a guard for HAS_CHIPSET_TASK",
+      "parentUuid": "c1f793f4_391454f9",
+      "revId": "f1122c203d5e65b46b12f972bddf68f5aa9a7cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
