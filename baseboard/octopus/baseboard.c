@@ -379,3 +379,13 @@ void board_hibernate(void)
 	 */
 	msleep(200);
 }
+
+static void print_rtc(void)
+{
+	print_system_rtc(CC_SYSTEM);
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,  print_rtc, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME,    print_rtc, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND,   print_rtc, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP,   print_rtc, HOOK_PRIO_DEFAULT);
