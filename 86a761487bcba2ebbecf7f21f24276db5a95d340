@@ -34,6 +34,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b623f4_72c83c02",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-26T18:10:07Z",
+      "side": 1,
+      "message": "Using:\n\n arm-none-eabi-objdump -h ./build/nocturne_fp/RO/core/cortex-m/vecttable.o\n\nhere\u0027s what I see for the \"text.vecttable\" section:\n\nOriginal code with gcc:\n CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n\nclang with this change (no \"a,@\"):\n CONTENTS, ALLOC, LOAD, RELOC, DATA\n\ngcc with removing the \"a,@\":\n CONTENTS, ALLOC, LOAD, RELOC, DATA\n\nSo unless you want it to be a read-only code section instead of data, it looks like it is allocatable without the \"a,@\" and we could just remove that for both compilers to avoid the ifdef.",
+      "parentUuid": "3665197b_8362a564",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
