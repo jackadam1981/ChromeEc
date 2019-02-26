@@ -70,6 +70,30 @@
       "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b796b9f_75b44285",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2019-02-26T03:19:33Z",
+      "side": 1,
+      "message": "Yes, it makes sense. In this case, we send i2c protocol:\n    slave_addr + cmd + number_of_data + data_0 + data_1.\nAbove protocol is actually same as smbus write block.\nIf a device(ex.battery) ask for smbus protocol, it should still be workable.",
+      "parentUuid": "beb7d46f_3f3772d3",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 31
+      },
+      "revId": "52906e61dc421c806b4a7963760aaaec77bf8e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
