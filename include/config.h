@@ -2114,6 +2114,9 @@
  */
 #undef CONFIG_IT83XX_FLASH_CLOCK_48MHZ
 
+/* Add this config when IT8320 I2C as slave */
+#undef CONFIG_IT83XX_I2C_SLAVE
+
 /* To define it, if I2C channel C and PECI used at the same time. */
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
 
