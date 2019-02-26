@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "4da7045f_195d99c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-26T23:15:21Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is defined, and no other sink is connected, the Rp should be that of CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1f9514_707df9de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-26T23:15:21Z",
+      "side": 1,
+      "message": "I think the fact that the Rp-3.0A wasn\u0027t being consistently advertised, is a bug. However, now due to the false debug accessory detect, the Rp-3.0A is problematic.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b7f5da_9f4b049b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-26T23:15:21Z",
+      "side": 1,
+      "message": "Hmm, did this change? I thought it was to reduce all ports to CONFIG_USB_PD_PULLUP?",
+      "range": {
+        "startLine": 727,
+        "startChar": 37,
+        "endLine": 729,
+        "endChar": 17
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c82f2cb4_9017cbe4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-26T23:15:21Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PULLUP",
+      "range": {
+        "startLine": 730,
+        "startChar": 48,
+        "endLine": 730,
+        "endChar": 53
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ee31bd6_1c298a74",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -159,6 +251,52 @@
         "startChar": 27,
         "endLine": 3116,
         "endChar": 32
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d627e9_6a39b47f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4118,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-26T23:15:21Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PULLUP?",
+      "range": {
+        "startLine": 4118,
+        "startChar": 26,
+        "endLine": 4118,
+        "endChar": 31
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825572d3_5e894223",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-02-26T23:15:21Z",
+      "side": 1,
+      "message": "\"A higher Rp may be set\"?",
+      "range": {
+        "startLine": 4120,
+        "startChar": 24,
+        "endLine": 4120,
+        "endChar": 40
       },
       "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
