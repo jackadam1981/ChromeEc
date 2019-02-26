@@ -22,6 +22,30 @@
       "revId": "42d38a9191614e9cb127d9bd231cc4cf0fa324e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8310969a_8613ea21",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-02-26T17:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527c2cf0_16642a40",
+      "range": {
+        "startLine": 586,
+        "startChar": 35,
+        "endLine": 586,
+        "endChar": 37
+      },
+      "revId": "42d38a9191614e9cb127d9bd231cc4cf0fa324e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
