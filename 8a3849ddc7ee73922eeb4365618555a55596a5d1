@@ -400,6 +400,24 @@
     },
     {
       "key": {
+        "uuid": "c457efc9_d720e83d",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-02-26T06:17:42Z",
+      "side": 1,
+      "message": "sorry.. for so late...\nI review https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1378109/ and found the different about dma_scp_to_ap(uint32_t scp_addr) to memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr);\n\nIf AP @0x0 is not useful for scp side. Could we use memmap_scp_to_ap API the same as before using only one parameter and return 0 for error?",
+      "parentUuid": "432b16a8_0197b6d7",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "000ef4ca_e7ce3dcb",
         "filename": "chip/mt_scp/dma_chip.h",
         "patchSetId": 3
