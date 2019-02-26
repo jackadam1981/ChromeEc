@@ -48,12 +48,14 @@ void mkbp_set_host_active_via_event(int active)
 }
 #endif
 
-__attribute__((weak)) void mkbp_set_host_active(int active)
+void mkbp_set_host_active(int active)
 {
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 	mkbp_set_host_active_via_event(active);
 #elif defined(CONFIG_MKBP_USE_GPIO)
 	mkbp_set_host_active_via_gpio(active);
+#elif defined(CONFIG_MKBP_USE_CUSTOM)
+	mkbp_set_host_active_via_custom(active);
 #else
 #error "Must define at least one set_host_active method."
 #endif
