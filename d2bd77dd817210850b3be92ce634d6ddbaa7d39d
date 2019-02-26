@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb3001e3_de082397",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T04:32:37Z",
+      "side": 1,
+      "message": "s",
+      "revId": "d2bd77dd817210850b3be92ce634d6ddbaa7d39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f86959_f221c791",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T04:32:37Z",
+      "side": 1,
+      "message": "use",
+      "range": {
+        "startLine": 18,
+        "startChar": 56,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "d2bd77dd817210850b3be92ce634d6ddbaa7d39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
