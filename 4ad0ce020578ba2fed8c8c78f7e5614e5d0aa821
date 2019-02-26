@@ -164,6 +164,30 @@
       "revId": "4ad0ce020578ba2fed8c8c78f7e5614e5d0aa821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837f093e_e1bac47f",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-02-26T05:37:55Z",
+      "side": 1,
+      "message": "charger_get_vbus_voltage() is an common API defined in charger.h and implemented in rt946x.c, bd9995x.c, and here. If we want to pass in a pointer for voltage, we\u0027ll need to touch code in lots of places. Maybe we can file a public bug and leave this work to it?",
+      "parentUuid": "fb6da1b2_574ae626",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 9
+      },
+      "revId": "4ad0ce020578ba2fed8c8c78f7e5614e5d0aa821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
