@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ee31bd6_1c298a74",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T20:47:10Z",
+      "side": 1,
+      "message": "reset?",
+      "range": {
+        "startLine": 731,
+        "startChar": 34,
+        "endLine": 731,
+        "endChar": 39
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781ad1f3_163a2838",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T20:47:10Z",
+      "side": 1,
+      "message": "Can you clarify this? I guess you meant \u0027pd_power_supply will set the correct Rp value, which is applied later when a port is connected\u0027?",
+      "range": {
+        "startLine": 730,
+        "startChar": 6,
+        "endLine": 732,
+        "endChar": 29
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a53950b_eaf9db93",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T20:47:10Z",
+      "side": 1,
+      "message": "you mean \u0027because\u0027?",
+      "range": {
+        "startLine": 3116,
+        "startChar": 37,
+        "endLine": 3116,
+        "endChar": 41
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a018bb3_74143fdb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T20:47:10Z",
+      "side": 1,
+      "message": "reset?",
+      "range": {
+        "startLine": 3116,
+        "startChar": 27,
+        "endLine": 3116,
+        "endChar": 32
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
