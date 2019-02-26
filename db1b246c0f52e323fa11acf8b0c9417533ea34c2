@@ -22,6 +22,30 @@
       "revId": "db1b246c0f52e323fa11acf8b0c9417533ea34c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5320d3a1_568d5a97",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2019-02-26T06:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e874f86d_68f1094d",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "db1b246c0f52e323fa11acf8b0c9417533ea34c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
