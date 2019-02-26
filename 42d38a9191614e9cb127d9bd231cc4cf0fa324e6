@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "527c2cf0_16642a40",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-26T00:30:14Z",
+      "side": 1,
+      "message": "Thanks for fixing the typo. I missed this \u0027a\u0027 but would be nice if you can remove it.",
+      "range": {
+        "startLine": 586,
+        "startChar": 35,
+        "endLine": 586,
+        "endChar": 37
+      },
+      "revId": "42d38a9191614e9cb127d9bd231cc4cf0fa324e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
