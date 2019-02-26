@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e67a8bb1_4c83f8a0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-26T21:31:46Z",
+      "side": 1,
+      "message": "In my testing, this call to reset won\u0027t change the selected_rp array on a fresh plug-in since the previous charge manager bitmap will match the current one.  So yes, pd_power_supply_ready will be the one actually changing selected_rp and the call to set cc later will set 3.0 A Rp if only one dongle is connected.",
+      "parentUuid": "781ad1f3_163a2838",
+      "range": {
+        "startLine": 730,
+        "startChar": 6,
+        "endLine": 732,
+        "endChar": 29
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a53950b_eaf9db93",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -82,6 +106,54 @@
       "writtenOn": "2019-02-26T20:47:10Z",
       "side": 1,
       "message": "reset?",
+      "range": {
+        "startLine": 3116,
+        "startChar": 27,
+        "endLine": 3116,
+        "endChar": 32
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32c8db7_6a836df2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3116,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-26T21:31:46Z",
+      "side": 1,
+      "message": "We can set it safely here because we\u0027re in Attached.SRC and Vconn is on so we shouldn\u0027t hit issues with CCD detection.\n\nHaving said that, I don\u0027t know how important this step really is.  Any PD port partners are allowed to disregard the Rp level and draw whatever current we advertised in our source capabilities.  So this clause is really only needed for non-PD port partners that need 3.0 A.  I don\u0027t know how common of a scenario that is.",
+      "parentUuid": "7a53950b_eaf9db93",
+      "range": {
+        "startLine": 3116,
+        "startChar": 37,
+        "endLine": 3116,
+        "endChar": 41
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cef423_6dc6d761",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3116,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-26T21:31:46Z",
+      "side": 1,
+      "message": "Ready, see above comment",
+      "parentUuid": "1a018bb3_74143fdb",
       "range": {
         "startLine": 3116,
         "startChar": 27,
