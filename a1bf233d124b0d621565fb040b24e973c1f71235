@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4f593034_ddac26c3",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-26T05:57:15Z",
+      "side": 1,
+      "message": "It\u0027s used for debugging only when DEBUG_ESPI is set. When DEBUG_ESPI is zero, it\u0027s an empty macro function.",
+      "parentUuid": "101d8f44_1afe10f1",
+      "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35077f9e_bf69f759",
         "filename": "chip/npcx/espi.c",
         "patchSetId": 2
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "this is also not needed if we use.\nfor (idx_buf \u003d 0; idx_buf \u003c sz_package; idx_buf++)\nas additional bytes are NA as we have oob_len",
       "parentUuid": "35077f9e_bf69f759",
+      "range": {
+        "startLine": 676,
+        "startChar": 29,
+        "endLine": 676,
+        "endChar": 41
+      },
+      "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4abbb0_cd559e4b",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-26T05:57:15Z",
+      "side": 1,
+      "message": "If my understanding is correct, you want to merge @686 stuff as below. Am I right?\n\nsz_rx_buf \u003d MUTIPLE_4(sz_package)/4;\nfor (idx_buf \u003d 0; idx_buf \u003c sz_rx_buf; idx_buf++) {\n\tint i;\n\tint len \u003d (idx_buf \u003d\u003d sz_rx_buf - 1) \u0026\u0026 (sz_package % 4) ?\n\t\t\t(sz_package % 4) : 4;\n\n\tuint32_t data \u003d NPCX_OOBRXBUF(idx_buf+1);\n\tfor (i \u003d 0; i \u003c len; i++)\n\t\t*(oob_data++) \u003d (data \u003e\u003e (8*i)) \u0026 0xFF;\n}",
+      "parentUuid": "e872d098_845a76e0",
       "range": {
         "startLine": 676,
         "startChar": 29,
