@@ -11,3 +11,5 @@ CHIP_FAMILY:=ish5
 CHIP_VARIANT:=ish5p0
 
 board-y=board.o
+
+prepend-header-y=board/arcada_ish/header.bin
