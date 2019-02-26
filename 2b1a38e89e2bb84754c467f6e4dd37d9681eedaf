@@ -22,6 +22,30 @@
       "revId": "2b1a38e89e2bb84754c467f6e4dd37d9681eedaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8babceab_cd89b076",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4970,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-02-26T22:24:06Z",
+      "side": 1,
+      "message": "Do you want me to add pd_cc_states to ec_response_usb_pd_control_v1 and make it ec_response_pd_control_v2 or any other suggestions?",
+      "parentUuid": "405dd5cf_94b7626c",
+      "range": {
+        "startLine": 4970,
+        "startChar": 1,
+        "endLine": 4970,
+        "endChar": 28
+      },
+      "revId": "2b1a38e89e2bb84754c467f6e4dd37d9681eedaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
