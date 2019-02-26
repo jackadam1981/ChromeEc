@@ -7,9 +7,16 @@
 /* TODO(chromium:733844): Move this conversion to kernel rtc-cros-ec driver */
 
 #include "rtc.h"
+#include "console.h"
 
 static uint16_t days_since_year_start[12] = {
-0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+	0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+
+#define SEC_PER_HOUR 3600
+#define SEC_PER_MINUTE 60
+#define SEC_PER_DAY 86400
+#define MIN_PER_HOUR 60
+#define SEC_PER_MIN 60
 
 /* Conversion between calendar date and seconds eclapsed since 1970-01-01 */
 uint32_t date_to_sec(struct calendar_date time)
@@ -27,6 +34,11 @@ uint32_t date_to_sec(struct calendar_date time)
 		(IS_LEAP_YEAR(time.year) && time.month > 2) +
 		(time.day - 1)) * SECS_PER_DAY;
 
+	/* Add current time of day as well */
+	sec += time.hour * SEC_PER_HOUR;
+	sec += time.minute * SEC_PER_MINUTE;
+	sec += time.second;
+
 	/* add the accumulated time in seconds from 1970 to 2000 */
 	return sec + SECS_TILL_YEAR_2K;
 }
@@ -36,6 +48,7 @@ struct calendar_date sec_to_date(uint32_t sec)
 	struct calendar_date time;
 	int day_tmp; /* for intermediate calculation */
 	int i;
+	int hms;
 
 	/* RTC time must be after year 2000. */
 	sec = (sec > SECS_TILL_YEAR_2K) ? (sec - SECS_TILL_YEAR_2K) : 0;
@@ -54,14 +67,21 @@ struct calendar_date sec_to_date(uint32_t sec)
 	}
 	for (i = 1; i < 12; i++) {
 		if (days_since_year_start[i] +
-		    (IS_LEAP_YEAR(time.year) && (i >= 2)) >= day_tmp)
+			(IS_LEAP_YEAR(time.year) && (i >= 2)) >= day_tmp)
 			break;
 	}
 	time.month = i;
 
 	day_tmp -= days_since_year_start[time.month - 1] +
-		   (IS_LEAP_YEAR(time.year) && (time.month > 2));
+		(IS_LEAP_YEAR(time.year) && (time.month > 2));
 	time.day = day_tmp;
+
+	/* The residual seconds gives the time of day */
+	hms = sec % SEC_PER_DAY;
+
+	time.hour = hms / SEC_PER_HOUR;
+	time.minute = (hms % SEC_PER_HOUR) / MIN_PER_HOUR;
+	time.second = (hms % SEC_PER_HOUR) % SEC_PER_MIN;
 
 	return time;
 }
