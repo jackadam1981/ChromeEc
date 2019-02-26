@@ -40,6 +40,9 @@ static int test_time_conversion(void)
 	time_1.year = 0;
 	time_1.month = 1;
 	time_1.day = 1;
+	time_1.hour = 0;
+	time_1.minute = 0;
+	time_1.second = 0;
 
 	/* Test from year 2000 to 2050 */
 	for (i = 0; i <= 50; i++) {

@@ -17,6 +17,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "rtc.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
@@ -790,7 +791,6 @@ static int host_command_get_features(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_FEATURES,
 		     host_command_get_features,
 		     EC_VER_MASK(0));
-
 
 /*****************************************************************************/
 /* Console commands */
