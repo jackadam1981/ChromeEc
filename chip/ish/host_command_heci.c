@@ -20,6 +20,8 @@
 /* Handle for all heci cros_ec interactions */
 static heci_handle_t heci_cros_ec_handle = HECI_INVALID_HANDLE;
 
+static uint8_t mem_mapped[0x200] __attribute__ ((section(".bss.big_align")));
+
 /*
  * If we hit response buffer size issues, we can increase this. This is the
  * current size of a single HECI packet.
@@ -31,6 +33,23 @@ static uint8_t response_buffer[IPC_MAX_PAYLOAD_SIZE] __aligned(4);
 static struct host_packet heci_packet;
 
 #define HECI_CROS_EC_RESPONSE_MAX sizeof(response_buffer)
+
+void lpc_set_acpi_status_mask(uint8_t mask)
+{
+}
+
+uint8_t *lpc_get_memmap_range(void)
+{
+	return mem_mapped + 0x100;
+}
+
+void lpc_update_host_event_status(void)
+{
+}
+
+void lpc_clear_acpi_status_mask(uint8_t mask)
+{
+}
 
 static void heci_send_response_packet(struct host_packet *pkt)
 {

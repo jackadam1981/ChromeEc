@@ -2394,32 +2394,23 @@
 #undef CONFIG_LOW_POWER_S0
 
 /*
- * Enable Host Embedded Controller Interface protocol. ISH (Intel Sensor Hub)
- * Uses this protocol for the basis of communication.
+ * Enable HID subsystem using HECI on Intel ISH (Integrated Sensor Hub)
  */
-#undef CONFIG_HECI
+#undef CONFIG_HID_HECI
 
 /*
- * Enable inter-processor communication between ISH (Intel Sensor Hub) and
- * other modules in Intel SoC(listed below).
- * - HOST(x64), CSME, PMC, cAVS, and ISP
- */
-#undef CONFIG_ISH_IPC
-
-/* Support host command interface over HECI */
-#undef CONFIG_HOSTCMD_HECI
-
-/*
- * EC supports x86 host communication with AP. This can either be through LPC
- * or eSPI. The CONFIG_HOSTCMD_X86 will get automatically defined if either
- * CONFIG_HOSTCMD_LPC or CONFIG_HOSTCMD_ESPI are defined. LPC and eSPI are
- * mutually exclusive.
+ * EC supports x86 host communication with AP. This can either be through LPC,
+ * eSPI, or HECI. The CONFIG_HOSTCMD_X86 will get automatically defined if any
+ * CONFIG_HOSTCMD_LPC, CONFIG_HOSTCMD_ESPI, or CONFIG_HOSTCMD_HECI are defined.
+ * LPC, eSPI, and HECI are mutually exclusive.
  */
 #undef CONFIG_HOSTCMD_X86
 /* Support host command interface over LPC bus. */
 #undef CONFIG_HOSTCMD_LPC
 /* Support host command interface over eSPI bus. */
 #undef CONFIG_HOSTCMD_ESPI
+/* Support host command interface over HECI on Intel ISH */
+#undef CONFIG_HOSTCMD_HECI
 
 /*
  * SLP signals (SLP_S3 and SLP_S4) use virtual wires intead of physical pins
@@ -3863,20 +3854,37 @@
 
 /******************************************************************************/
 /*
- * Automatically define CONFIG_HOSTCMD_X86 if either child option is defined.
- * Ensure LPC and eSPI are mutually exclusive
+ * Automatically define CONFIG_HOSTCMD_X86 if any child option is defined.
+ * Ensure LPC and eSPI and HECI are mutually exclusive
  */
-#if defined(CONFIG_HOSTCMD_LPC) || defined(CONFIG_HOSTCMD_ESPI)
+#if defined(CONFIG_HOSTCMD_LPC) || \
+	defined(CONFIG_HOSTCMD_ESPI) || \
+	defined(CONFIG_HOSTCMD_HECI)
 #define CONFIG_HOSTCMD_X86
 #endif
 
-#if defined(CONFIG_HOSTCMD_LPC) && defined(CONFIG_HOSTCMD_ESPI)
+#ifdef CONFIG_HOSTCMD_LPC
+#if defined(CONFIG_HOSTCMD_ESPI) || defined(CONFIG_HOSTCMD_HECI)
 #error Must select only one type of host communication bus.
+#endif
+#endif
+
+#ifdef CONFIG_HOSTCMD_ESPI
+#if defined(CONFIG_HOSTCMD_LPC) || defined(CONFIG_HOSTCMD_HECI)
+#error Must select only one type of host communication bus.
+#endif
+#endif
+
+#ifdef CONFIG_HOSTCMD_HECI
+#if defined(CONFIG_HOSTCMD_LPC) || defined(CONFIG_HOSTCMD_ESPI)
+#error Must select only one type of host communication bus.
+#endif
 #endif
 
 #if defined(CONFIG_HOSTCMD_X86) && \
 	!defined(CONFIG_HOSTCMD_LPC) && \
-	!defined(CONFIG_HOSTCMD_ESPI)
+	!defined(CONFIG_HOSTCMD_ESPI) && \
+	!defined(CONFIG_HOSTCMD_HECI)
 #error Must select one type of host communication bus.
 #endif
 

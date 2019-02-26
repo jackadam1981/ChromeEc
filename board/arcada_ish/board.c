@@ -17,6 +17,8 @@
 
 #include "gpio_list.h" /* has to be included last */
 
+uint32_t mkbp_last_event_time;
+
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {
 	{
@@ -86,19 +88,3 @@ int board_idle_task(void *unused)
 	while (1)
 		task_wait_event(-1);
 }
-
-/*
- * Dummy functions to remove 'undefined' symbol link error for acpi.o
- * due to CONFIG_LPC flag
- * TODO(b/123634700): clean this up when implement EC->AP communication
- */
-#ifdef CONFIG_HOSTCMD_LPC
-int lpc_query_host_event_state(void)
-{
-	return 0;
-}
-
-void lpc_set_acpi_status_mask(uint8_t mask)
-{
-}
-#endif
