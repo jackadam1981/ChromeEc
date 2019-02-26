@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "405dd5cf_94b7626c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4970,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-26T18:22:34Z",
+      "side": 1,
+      "message": "The code around how we are making this change all looks good, but as Shawn pointed out, this data really doesn\u0027t belong here.\n\nThis is a USB mux command, which should deal with mux data, not USB-C connection state. I could see this command returning the _A _B _C, etc configuration, but again not the USB-C CC connection state.",
+      "range": {
+        "startLine": 4970,
+        "startChar": 1,
+        "endLine": 4970,
+        "endChar": 28
+      },
+      "revId": "2b1a38e89e2bb84754c467f6e4dd37d9681eedaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
