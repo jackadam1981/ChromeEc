@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fd90e87_af26689d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-02-27T01:21:16Z",
+      "side": 1,
+      "message": "sorry, I\u0027m a bit late with these questions, but out of curiosity:\n\n- why does this difference show up - is this some field which is filled up by the linker, so the contents don\u0027t not matter at this point?\n\n- the code change makes sense, but the test should have compared object dumps from gcc objects before and after the change - that would be an ultimate proof that the change does not affect code generation.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
