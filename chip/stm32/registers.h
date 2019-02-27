@@ -1393,9 +1393,16 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CSR_LSIRDY		(1 << 1)
 
 #define STM32_RCC_HB_DMA1		(1 << 24)
+#if defined(CHIP_FAMILY_STM32F4)
+#define STM32_RCC_PB2_TIM9		(1 << 16)
+#define STM32_RCC_PB2_TIM10		(1 << 17)
+#define STM32_RCC_PB2_TIM11		(1 << 18)
+#else /* !defined(CHIP_FAMILY_STM32F4) */
 #define STM32_RCC_PB2_TIM9		(1 << 2)
 #define STM32_RCC_PB2_TIM10		(1 << 3)
 #define STM32_RCC_PB2_TIM11		(1 << 4)
+#endif
+
 #define STM32_RCC_PB1_USB		(1 << 23)
 
 #define STM32_RCC_DCKCFGR2              REG32(STM32_RCC_BASE + 0x94)
