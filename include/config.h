@@ -355,6 +355,9 @@
 
 /* Support audio codec. */
 #undef CONFIG_AUDIO_CODEC
+/* Audio codec caps. */
+#undef CONFIG_AUDIO_CODEC_CAP_WOV_AUDIO_SHM
+#undef CONFIG_AUDIO_CODEC_CAP_WOV_LANG_SHM
 /* Support audio codec on DMIC. */
 #undef CONFIG_AUDIO_CODEC_DMIC
 /* Support audio codec software gain on DMIC. */
@@ -362,6 +365,11 @@
 #undef CONFIG_AUDIO_CODEC_DMIC_MAX_SOFTWARE_GAIN
 /* Support audio codec on I2S RX. */
 #undef CONFIG_AUDIO_CODEC_I2S_RX
+/* Support audio codec on WoV. */
+#undef CONFIG_AUDIO_CODEC_WOV
+/* Audio codec buffers. */
+#undef CONFIG_AUDIO_CODEC_WOV_AUDIO_BUF_LEN
+#undef CONFIG_AUDIO_CODEC_WOV_LANG_BUF_LEN
 
 /* Allow proprietary communication protocols' extensions. */
 #undef CONFIG_EXTENSION_COMMAND
@@ -4891,6 +4899,12 @@
 
 #define CONFIG_ISH_PM_AONTASK
 
+#endif
+
+/******************************************************************************/
+/* EC Codec Wake-on-Voice related definitions */
+#ifdef CONFIG_AUDIO_CODEC_WOV
+#define CONFIG_SHA256
 #endif
 
 
