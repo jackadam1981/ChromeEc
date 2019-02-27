@@ -13,6 +13,7 @@ CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
 chip-y=clock.o gpio.o memmap.o system.o uart.o
 
 # Optional chip modules
+chip-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o
 chip-$(CONFIG_COMMON_TIMER)+=hrtimer.o
 chip-$(CONFIG_I2C)+=i2c.o
 chip-$(CONFIG_IPI)+=ipi.o ipi_table.o
