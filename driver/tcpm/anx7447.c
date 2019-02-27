@@ -388,6 +388,7 @@ static int anx7447_get_vbus_voltage(int port)
 	int vbus_volt = 0;
 
 	tcpc_read16(port, TCPC_REG_VBUS_VOLTAGE, &vbus_volt);
+	CPRINTS("%s: port %d vbus_volt %d", __func__, port, vbus_volt);
 
 	return vbus_volt;
 }

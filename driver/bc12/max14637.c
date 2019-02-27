@@ -126,6 +126,7 @@ static void detect_or_power_down_ic(const int port)
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	vbus_present = tcpm_get_vbus_level(port);
+	CPRINTS("%s: port %d vbus_present %d", __func__, port, vbus_present);
 #else
 	vbus_present = pd_snk_is_vbus_provided(port);
 #endif /* !defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) */
@@ -135,6 +136,7 @@ static void detect_or_power_down_ic(const int port)
 		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
 #endif
+		CPRINTS("%s: detecting bc12 port %d", __func__, port);
 		bc12_detect(port);
 	} else {
 		power_down_ic(port);
@@ -157,8 +159,10 @@ void usb_charger_task(void *u)
 	while (1) {
 		evt = task_wait_event(-1);
 
-		if (evt & USB_CHG_EVENT_VBUS)
+		if (evt & USB_CHG_EVENT_VBUS) {
+			CPRINTS("%s: Detecting or powering down IC port %d", __func__, port);
 			detect_or_power_down_ic(port);
+		}
 	}
 }
 

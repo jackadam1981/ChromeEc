@@ -2692,8 +2692,14 @@ void pd_task(void *u)
 	 * present. This flag is used to maintain a PD connection after a
 	 * reset by sending a soft reset.
 	 */
-	pd[port].flags |=
-		pd_is_vbus_present(port) ? PD_FLAGS_VBUS_NEVER_LOW : 0;
+	if (pd_is_vbus_present(port)) {
+		pd[port].flags |= PD_FLAGS_VBUS_NEVER_LOW;
+		CPRINTS("%s: PD_FLAGS_VBUS_NEVER_LOW", __func__);
+#ifdef HAS_TASK_USB_CHG_P0
+		CPRINTS("%s: setting USB_CHG_EVENT_VBUS", __func__);
+		task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS, 0);
+#endif
+	}
 #endif
 
 	/* Disable TCPC RX until connection is established */
