@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eac7f8cd_96e3c4b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-27T19:50:54Z",
+      "side": 1,
+      "message": "Thanks for the tip! I like the newer version of this patch much better now. Thanks!",
+      "parentUuid": "b8ef5954_f6e2f2a5",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "4691e3a7b8a5185ae57eb2503a3cf841e56a40bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b7ffd1e_4264e4fc",
         "filename": "Makefile.rules",
         "patchSetId": 1
