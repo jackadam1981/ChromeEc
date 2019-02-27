@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5d132fc_2e6937a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "And? What\u0027s the output? ,-)",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc27f5e_6e2fec60",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "Add const back?",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea01aedc_3e194ea9",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "What is bit 0 (1 \u003c\u003c 0)?\n\nCLK_HIGH_CORE_CG is bit 1 (1 \u003c\u003c 1), so I\u0027d understand if we unset that one.",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4edd5c5b_25ad3d3d",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "Why are you not disabling EN_CLK_HIGH in this branch?\n\nI assume both ULPOSC1 and ULPOSC2 need that, but in that case, will ULPOSC2 work when ULPOSC1 has been disabled?",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c9b125_f747f036",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "Drop the TODO",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1de43c_633298e0",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "minor nit, space after { and before }",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71db4063_1c7e15d9",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T01:56:58Z",
+      "side": 1,
+      "message": "I think it\u0027s clearer to do:\n\ndeadline.val \u003d get_time().val + 400 * MSEC;",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
