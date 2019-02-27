@@ -2,6 +2,103 @@
   "comments": [
     {
       "key": {
+        "uuid": "023e254b_72a4de6f",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "K \u003c T, let\u0027s keep alphabetical order?",
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c4e62b_bf1a8d8b",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "lower case for macro parameters",
+      "range": {
+        "startLine": 210,
+        "startChar": 31,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ec0223_37fa820e",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "* ? really? Not \u0026?",
+      "range": {
+        "startLine": 218,
+        "startChar": 45,
+        "endLine": 218,
+        "endChar": 46
+      },
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d8f3da_37f72f54",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "\u0026?",
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b3d36d_a31f3287",
+        "filename": "chip/mt_scp/wov.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "merge both tests in one line?",
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54a6ee25_44c35f0d",
         "filename": "chip/mt_scp/wov.c",
         "patchSetId": 1
@@ -19,6 +116,40 @@
         "endLine": 79,
         "endChar": 28
       },
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd568be_829515e5",
+        "filename": "chip/mt_scp/wov.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any plan to have more than one wov driver, so I\u0027d just have global function names wow_enable_fifo(), etc... It\u0027s less nice software engineering, but it makes the code more compact as the compiler can inline at LTO stage.",
+      "revId": "e46217c2532305053992ef6071308525c48d5d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594d6433_dce28ab3",
+        "filename": "chip/mt_scp/wov.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-02-27T10:58:01Z",
+      "side": 1,
+      "message": "Will there be a need to change configuration at runtime? If not, I\u0027d just use a global configuration.",
       "revId": "e46217c2532305053992ef6071308525c48d5d69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
