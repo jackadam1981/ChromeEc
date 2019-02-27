@@ -17,3 +17,5 @@ board-$(HAS_TASK_ISP_SERVICE)+=isp_p1_srv.o
 # FD
 board-$(HAS_TASK_FD_SERVICE)+=fd.o
 
+# Optional board modules
+board-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o
