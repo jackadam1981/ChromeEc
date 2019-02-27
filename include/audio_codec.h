@@ -59,4 +59,38 @@ struct audio_codec_i2s_rx_driver {
 int audio_codec_register_i2s_rx_driver(
 	struct audio_codec_i2s_rx_driver *driver);
 
+
+struct audio_codec_wov_driver {
+	int (*enable)(void);
+	int (*disable)(void);
+
+	int32_t (*read)(void *buf, uint32_t count);
+	int (*enable_notifier)(void);
+	int (*disable_notifier)(void);
+	void (*set_read_notifiee)(void (*cb)(void *priv_data), void *priv_data);
+
+	int (*translate_addr_ec_to_ap)(uintptr_t ec_addr, uintptr_t *ap_addr);
+
+	uintptr_t audio_buf_addr;
+	uint32_t audio_buf_len;
+	uint8_t audio_buf_type;
+
+	uintptr_t lang_buf_addr;
+	uint32_t lang_buf_len;
+	uint8_t lang_buf_type;
+};
+
+/*
+ * Register WoV driver.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_register_wov_driver(struct audio_codec_wov_driver *driver);
+
+/*
+ * Task for running WoV.
+ */
+void audio_codec_wov_task(void *arg);
+
 #endif
