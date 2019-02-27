@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "355753eb_f5bc31f8",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-27T17:48:46Z",
+      "side": 1,
+      "message": "This change makes EC request 9000mV @1666mA (instead of 5V @3A). I want to verify this does actually reduce the heat. If the inductor is the heat source, maybe we need to tweak PD_MAX_VOLTAGE_MV.",
+      "range": {
+        "startLine": 146,
+        "startChar": 30,
+        "endLine": 146,
+        "endChar": 35
+      },
+      "revId": "66162b9b1079b04c3b8d7d6e74d72f5bb8934172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
