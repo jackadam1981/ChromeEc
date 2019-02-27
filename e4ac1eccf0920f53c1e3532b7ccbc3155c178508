@@ -70,6 +70,30 @@
       "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ae3f9f_40fb9df4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-27T02:38:33Z",
+      "side": 1,
+      "message": "Actually I think my last statement was wrong; need to refresh my ARM assembly a bit.\n\n\"bl\" behaves as described, but it\u0027s intended to call a subroutine (in this case exception_panic) and then that should return to the next instruction (via the link register).\n\nThe noop/empty could be used for alignment of the data load of 0xdead6660. exception_panic is also marked \"noreturn\", so it shouldn\u0027t ever return to the noop/empty instructoin, but will look a bit more in depth tomorrow because now I\u0027m curious.",
+      "parentUuid": "2714a1bc_88ba9d5d",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
