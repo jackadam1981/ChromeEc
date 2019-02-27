@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0b160c6c_82523560",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-27T17:23:33Z",
+      "side": 1,
+      "message": "Looking at the code related to CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT, I think this comment mostly applies to boards using this config (currently, nami).  I\u0027ll try to clarify the commenting as best as I can",
+      "parentUuid": "adfedf7b_70891c01",
+      "range": {
+        "startLine": 727,
+        "startChar": 37,
+        "endLine": 729,
+        "endChar": 17
+      },
+      "revId": "ece6ed9b0da60624cb39079e3dd7d5aed65a884e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c82f2cb4_9017cbe4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
