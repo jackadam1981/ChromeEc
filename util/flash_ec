@@ -47,42 +47,26 @@ die() {
 
 
 BOARDS_IT83XX=(
-	ampton
-	bip
-	dragonegg
 	glkrvp_ite
 	it83xx_evb
 	reef_it8320
 )
 
-BOARDS_LM4=(
-	samus
-)
-
 BOARDS_STM32=(
-	big
-	blaze
 	chell_pd
 	coffeecake
 	chocodile_bec
 	chocodile_vpdmcu
-	elm
-	flapjack
 	glados_pd
-	hammer
 	jerry
-	kitty
-	kukui
 	minimuffin
 	nami_fp
 	nocturne_fp
-	oak
 	oak_pd
 	pit
 	plankton
 	rainier
 	samus_pd
-	scarlet
 	staff
 	strago_pd
 	wand
@@ -122,51 +106,8 @@ BOARDS_NPCX_7M7X_JTAG=(
 )
 
 BOARDS_NPCX_SPI=(
-	coral
-	eve
-	fizz
 	glkrvp
 	lux
-	nami
-	nautilus
-	poppy
-	rammus
-	reef
-	soraka
-)
-
-BOARDS_NPCX_INT_SPI=(
-	atlas
-	bobba
-	casta
-	fleex
-	grunt
-	meep
-	nocturne
-	phaser
-	yorp
-)
-
-BOARDS_NPCX_UUT=(
-	bobba
-	casta
-	cheza
-	fleex
-	grunt
-	hatch
-	meep
-	phaser
-	yorp
-)
-
-BOARDS_NRF51=(
-	hadoken
-)
-
-BOARDS_MEC1322=(
-	chell
-	glados
-	strago
 )
 
 BOARDS_SPI_1800MV=(
@@ -251,10 +192,6 @@ fi
 
 set -e
 
-if [ -z "${FLAGS_board}" -a -z "${FLAGS_chip}" ]; then
-	die "should specify a board or a chip."
-fi
-
 DUT_CONTROL_CMD="dut-control --port=${FLAGS_port}"
 
 function dut_control() {
@@ -271,6 +208,17 @@ function get_servo_type() {
 	fi
 }
 
+SERVO_EC_CHIP=$(($DUT_CONTROL_CMD ec_chip) | sed -e s/ec_chip://)
+SERVO_EC_CHIP=${SERVO_EC_CHIP,,}
+if [[ "${SERVO_EC_CHIP}" =~ "unknown" ]]; then
+	SERVO_EC_CHIP=""
+fi
+
+if [[ -z "${FLAGS_board}" && -z "${FLAGS_chip}" && \
+      -z "${SERVO_EC_CHIP}" ]]; then
+	die "should specify a board or a chip."
+fi
+
 BOARD=${FLAGS_board}
 
 in_array() {
@@ -286,10 +234,6 @@ in_array() {
 }
 
 declare -a SUPPORTED_CHIPS
-
-if $(in_array "${BOARDS_LM4[@]}" "${BOARD}"); then
-	SUPPORTED_CHIPS+=("lm4")
-fi
 
 if $(in_array "${BOARDS_STM32[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("stm32")
@@ -319,22 +263,6 @@ if $(in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("npcx_spi")
 fi
 
-if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
-	SUPPORTED_CHIPS+=("npcx_int_spi")
-fi
-
-if $(in_array "${BOARDS_NPCX_UUT[@]}" "${BOARD}"); then
-	SUPPORTED_CHIPS+=("npcx_uut")
-fi
-
-if $(in_array "${BOARDS_NRF51[@]}" "${BOARD}"); then
-	SUPPORTED_CHIPS+=("nrf51")
-fi
-
-if $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
-	SUPPORTED_CHIPS+=("mec1322")
-fi
-
 if $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("it83xx")
 fi
@@ -342,6 +270,12 @@ fi
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
 	SUPPORTED_CHIPS+="${FLAGS_chip}"
 fi
+
+if [[ -n "${SERVO_EC_CHIP}" ]]; then
+	SUPPORTED_CHIPS+=("${SERVO_EC_CHIP}")
+fi
+
+warn "SUPPORTED_CHIPS= ${SUPPORTED_CHIPS[@]}," ${#SUPPORTED_CHIPS[@]}
 
 SERVO_TYPE="$(get_servo_type)"
 
@@ -700,7 +634,7 @@ if [ "${CHIP}" = "npcx_uut" ] ; then
 fi
 toad_VARS="${MCU}_uart_parity ${MCU}_uart_baudrate boot_mode"
 
-if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
+if [[ "${CHIP}" == "npcx_int_spi" ]]; then
 	servo_v2_VARS+=" fw_up"
 	servo_micro_VARS+=" fw_up"
 fi
