@@ -46,6 +46,30 @@
       "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2714a1bc_88ba9d5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-27T01:56:22Z",
+      "side": 1,
+      "message": "For the difference between clang and gcc, I believe it\u0027s just a difference in what the two assemblers use as a placeholder. The clang assembler is inserting an actual noop instruction, while gcc is inserting empty value.\n\nIt looks like it\u0027s because the \"bl\" instruction copies the address of the next instruction (the one with the noop/emtpy val) into the link register. In this case the target \"exception_panic\" is not a symbol in this object, so it probably has to be resolved at link time like you suggested.",
+      "parentUuid": "4e418849_dfac1d89",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
