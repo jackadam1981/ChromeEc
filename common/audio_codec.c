@@ -18,7 +18,17 @@ static struct {
 		uint32_t len;
 		uint8_t type;
 	} shms[EC_CODEC_SHM_ID_LAST];
-} priv;
+} priv = {
+	.capabilities =
+		0
+#ifdef CONFIG_AUDIO_CODEC_CAP_WOV_AUDIO_SHM
+		| BIT(EC_CODEC_CAP_WOV_AUDIO_SHM)
+#endif
+#ifdef CONFIG_AUDIO_CODEC_CAP_WOV_LANG_SHM
+		| BIT(EC_CODEC_CAP_WOV_LANG_SHM)
+#endif
+		,
+};
 
 static int get_capabilities(struct host_cmd_handler_args *args)
 {
