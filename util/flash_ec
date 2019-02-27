@@ -251,10 +251,6 @@ fi
 
 set -e
 
-if [ -z "${FLAGS_board}" -a -z "${FLAGS_chip}" ]; then
-	die "should specify a board or a chip."
-fi
-
 DUT_CONTROL_CMD="dut-control --port=${FLAGS_port}"
 
 function dut_control() {
@@ -270,6 +266,17 @@ function get_servo_type() {
 		$DUT_CONTROL_CMD servo_type | sed -e s/servo_type://
 	fi
 }
+
+SERVO_EC_CHIP="$(($DUT_CONTROL_CMD ec_chip) | sed -e s/ec_chip://)"
+SERVO_EC_CHIP="${SERVO_EC_CHIP,,}"
+if [[ "${SERVO_EC_CHIP}" =~ "unknown" ]]; then
+	SERVO_EC_CHIP=""
+fi
+
+if [[ -z "${FLAGS_board}" && -z "${FLAGS_chip}" && \
+      -z "${SERVO_EC_CHIP}" ]]; then
+	die "should specify a board or a chip."
+fi
 
 BOARD=${FLAGS_board}
 
@@ -341,6 +348,10 @@ fi
 
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
 	SUPPORTED_CHIPS+="${FLAGS_chip}"
+fi
+
+if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${SERVO_EC_CHIP}" ]]; then
+	SUPPORTED_CHIPS+=("${SERVO_EC_CHIP}")
 fi
 
 SERVO_TYPE="$(get_servo_type)"
