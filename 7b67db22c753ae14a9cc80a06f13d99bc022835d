@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df616604_1500f96b",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-02-27T22:30:20Z",
+      "side": 1,
+      "message": "is there a recovery mechanism for it?\nif one set of OOB fails then all the commands are blocked",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
