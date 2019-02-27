@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ffcfd98_b97b76a0",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-27T18:10:29Z",
+      "side": 1,
+      "message": "As I am looking at this more, I don\u0027t think that HECI should defined HOSTCMD_X86 since that is what is causing us to make this memory map. No one is mapping this memory on the client side so we should really try to drop this requirement for HECI",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 77
+      },
+      "revId": "10d9e11c889bac61c5d241f7b6c6772826d9e556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af342d1f_2c34b9e8",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-27T18:10:29Z",
+      "side": 1,
+      "message": "let\u0027s update the comment to specify that HOSTCMD_X86 implies both cros_ec command interface and memory mapped region",
+      "range": {
+        "startLine": 2402,
+        "startChar": 19,
+        "endLine": 2402,
+        "endChar": 46
+      },
+      "revId": "10d9e11c889bac61c5d241f7b6c6772826d9e556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
