@@ -64,6 +64,11 @@
 #define CONFIG_DEBUG_STACK_OVERFLOW
 #define CONFIG_CMD_GPIO_EXTENDED
 
+#define CONFIG_EC_CODEC_WOV
+#define CONFIG_EC_CODEC_WOV_CAP_AUDIO_SHM
+#define CONFIG_EC_CODEC_WOV_CAP_LANG_SHM
+#define DEBUG_WOV
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
