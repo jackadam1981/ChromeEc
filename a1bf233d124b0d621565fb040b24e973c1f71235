@@ -129,6 +129,30 @@
       "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933bf8ff_086ad452",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-27T03:04:17Z",
+      "side": 1,
+      "message": "It will access out of oob_data\u0027s range. \n\nFor example, if sz_package is 9 bytes, this code still puts data in oob_data[9+3], oob_data[10+3] and oob_data[11+3]. From the driver point of view, we don\u0027t expect oob_data\u0027s size is larger than sz_package plus header size.",
+      "parentUuid": "9f5fe131_2c758f68",
+      "range": {
+        "startLine": 676,
+        "startChar": 29,
+        "endLine": 676,
+        "endChar": 41
+      },
+      "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
