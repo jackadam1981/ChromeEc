@@ -46,6 +46,30 @@
       "revId": "2b1a38e89e2bb84754c467f6e4dd37d9681eedaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a8a045_17b809bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4970,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-27T17:42:14Z",
+      "side": 1,
+      "message": "the cc states on ec_response_usb_pd_control_v2 will work",
+      "parentUuid": "8babceab_cd89b076",
+      "range": {
+        "startLine": 4970,
+        "startChar": 1,
+        "endLine": 4970,
+        "endChar": 28
+      },
+      "revId": "2b1a38e89e2bb84754c467f6e4dd37d9681eedaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
