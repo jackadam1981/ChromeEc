@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8d38eb5_024b518a",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-27T18:39:04Z",
+      "side": 1,
+      "message": "Can you check with Furquan if this is still needed for Nocturne? IIRC, it was required to keep support for older hardware while also using the GPIO on newer hardware. If the older HW is now out of support, it would be nice to simplify this.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "c8213e5e3d8a7a9ba290f573375beed7110637bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8787eb_b5c889f7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-27T18:39:04Z",
+      "side": 1,
+      "message": "It looks like these are mutually exclusive. If so, could we instead have something like\n\n    #define MKBP_EVENT_DELIVERY_GPIO 1\n    #define MKBP_EVENT_DELIVERY_HOST 2\n\nand here\n\n    #if CONFIG_MKBP_HOST_EVENT_DELIVERY \u003d\u003d MKBP_EVENT_DELIVERY_GPIO\n    // thing 1\n    #elif CONFIG_MKBP_HOST_EVENT_DELIVERY \u003d\u003d ...\n    // other stuff\n    #else\n    #error \"Please define CONFIG_MKBP_HOST_EVENT_DELIVERY\"\n    #endif\n\nThe advantage would be that you can\u0027t accidentally or otherwise define both methods and expect anything to work.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "c8213e5e3d8a7a9ba290f573375beed7110637bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc33d40_e9eb34cd",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2509,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-02-27T18:39:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this is used anywhere else. Do we need to #undef it? Is it documented?",
+      "range": {
+        "startLine": 2509,
+        "startChar": 0,
+        "endLine": 2509,
+        "endChar": 50
+      },
+      "revId": "c8213e5e3d8a7a9ba290f573375beed7110637bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
