@@ -24,6 +24,8 @@
  * | ROM vectortable, .text, .rodata, .data LMA
  * +-------------------- 0x10000
  * | RAM .bss, .data
+ * +-------------------- 0x6BDB0
+ * | Audio SHM
  * +-------------------- 0x7BDB0
  * | IPI shared buffer with AP (288 + 8) * 2
  * +-------------------- 0x7C000
@@ -36,7 +38,10 @@
 #define CONFIG_ROM_BASE 0x00800
 #define CONFIG_RAM_BASE 0x10000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
-#define CONFIG_RAM_SIZE (CONFIG_IPC_SHARED_OBJ_ADDR - CONFIG_RAM_BASE)
+#define CONFIG_RAM_SIZE (CONFIG_AUDIO_SHM_BASE - CONFIG_RAM_BASE)
+#define CONFIG_AUDIO_SHM_BASE \
+	(CONFIG_IPC_SHARED_OBJ_ADDR - CONFIG_AUDIO_SHM_SIZE)
+#define CONFIG_AUDIO_SHM_SIZE 0x10000
 #define CONFIG_RO_MEM_OFF 0
 
 /* Access DRAM through cached access */
@@ -93,6 +98,11 @@
 #define CONFIG_DEBUG_EXCEPTIONS
 #define CONFIG_DEBUG_STACK_OVERFLOW
 #define CONFIG_CMD_GPIO_EXTENDED
+
+#define CONFIG_EC_CODEC_WOV
+#define CONFIG_EC_CODEC_WOV_CAP_AUDIO_SHM
+#define CONFIG_EC_CODEC_WOV_CAP_LANG_SHM
+#define DEBUG_WOV
 
 #ifndef __ASSEMBLER__
 
