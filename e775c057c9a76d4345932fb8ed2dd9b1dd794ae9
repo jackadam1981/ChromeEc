@@ -69,6 +69,29 @@
       "revId": "e775c057c9a76d4345932fb8ed2dd9b1dd794ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8000a3c_b8163df0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1110359
+      },
+      "writtenOn": "2019-02-27T10:13:45Z",
+      "side": 1,
+      "message": "anx7447_mux_set() doesn\u0027t consider Debug Accessory mode. There will be a miss when TCPC exits low power mode with the CCD cable plug in since the bit7 of register 0xA9 will be recovered to 0.",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 31
+      },
+      "revId": "e775c057c9a76d4345932fb8ed2dd9b1dd794ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
