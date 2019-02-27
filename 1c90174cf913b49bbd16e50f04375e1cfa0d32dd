@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bbb43c4_fc1b5049",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-27T06:49:57Z",
+      "side": 1,
+      "message": "Now that this is in common code, we can replace octopus with common/system",
+      "revId": "1c90174cf913b49bbd16e50f04375e1cfa0d32dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e21e3c8_1fe2dc16",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-02-27T06:49:57Z",
+      "side": 1,
+      "message": "A minor nit: lines 1642 to 1645 appears neat like a table, but I am not sure if we have any alignment requirements from a conventional standpoint. If there is one, we use tabs instead of spaces. Hope gerrit is not suppressing tabs.",
+      "revId": "1c90174cf913b49bbd16e50f04375e1cfa0d32dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
