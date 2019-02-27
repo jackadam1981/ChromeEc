@@ -1660,10 +1660,15 @@ static void handle_ctrl_request(int port, uint16_t head,
 		break;
 	case PD_CTRL_GET_SINK_CAP:
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		send_sink_cap(port);
+		if (pd[port].task_state == PD_STATE_SRC_READY ||
+		    pd[port].task_state == PD_STATE_SNK_READY)
+			send_sink_cap(port);
 #else
-		send_control(port, REFUSE(pd[port].rev));
+		if (pd[port].task_state == PD_STATE_SRC_READY)
+			send_control(port, REFUSE(pd[port].rev));
 #endif
+		else
+			set_state(port, PD_STATE_SOFT_RESET);
 		break;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_CTRL_GOTO_MIN:
