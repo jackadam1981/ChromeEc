@@ -22,6 +22,30 @@
       "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e418849_dfac1d89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-27T01:40:27Z",
+      "side": 1,
+      "message": "I compared the gcc disassembly of the object (uldivmod.o) before and after the change and they were identical (with a script comparing all boards that compiled it) before submitting. I should have documented this, sorry.",
+      "parentUuid": "9fd90e87_af26689d",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
