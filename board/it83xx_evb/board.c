@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "i2cs.h"
 #include "intc.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -205,6 +206,16 @@ const struct i2c_port_t i2c_ports[] = {
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* I2C slave ports */
+const struct i2c_slv_port_t i2c_slv_ports[] = {
+	[IT83XX_I2C_CH_A] = {"evb-a"},
+#if 0
+	[IT83XX_I2C_CH_D] = {"evb-d"},
+	[IT83XX_I2C_CH_E] = {"evb-e"},
+	[IT83XX_I2C_CH_F] = {"evb-f"},
+#endif
+};
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
