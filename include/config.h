@@ -301,6 +301,10 @@
 #undef CONFIG_AUDIO_CODEC_DMIC
 /* Support audio codec on I2S RX. */
 #undef CONFIG_AUDIO_CODEC_I2S_RX
+/* Support audio codec on WoV. */
+#undef CONFIG_AUDIO_CODEC_WOV
+#undef CONFIG_AUDIO_CODEC_CAP_WOV_AUDIO_SHM
+#undef CONFIG_AUDIO_CODEC_CAP_WOV_LANG_SHM
 
 /*
  * Enable support for CPU caches behaving according to the ARMv7-M ISA.
