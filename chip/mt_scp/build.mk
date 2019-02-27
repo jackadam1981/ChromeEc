@@ -18,3 +18,4 @@ chip-$(CONFIG_I2C)+=i2c.o
 chip-$(CONFIG_IPI)+=ipi.o ipi_table.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+chip-$(CONFIG_EC_CODEC_WOV)+=wov.o
