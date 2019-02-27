@@ -96,6 +96,12 @@
 
 #define CONFIG_FPU
 
+#define CONFIG_AUDIO_CODEC
+#define CONFIG_AUDIO_CODEC_DMIC
+#define CONFIG_AUDIO_CODEC_WOV
+#define CONFIG_AUDIO_CODEC_CAP_WOV_AUDIO_SHM
+#define CONFIG_AUDIO_CODEC_CAP_WOV_LANG_SHM
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
