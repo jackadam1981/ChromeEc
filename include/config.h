@@ -3793,6 +3793,11 @@
 /* Support Wake-on-Voice */
 #undef CONFIG_WAKE_ON_VOICE
 
+/* Support Codec EC Wake-on-Voice */
+#undef CONFIG_EC_CODEC_WOV
+#undef CONFIG_EC_CODEC_WOV_CAP_AUDIO_SHM
+#undef CONFIG_EC_CODEC_WOV_CAP_LANG_SHM
+
 /*
  * Write protect signal is active-high.  If this is defined, there must be a
  * GPIO named GPIO_WP; if not defined, there must be a GPIO names GPIO_WP_L.

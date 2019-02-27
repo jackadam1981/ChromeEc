@@ -617,6 +617,9 @@ enum host_event_code {
 	/* Keyboard recovery combo with hardware reinitialization */
 	EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT = 30,
 
+	/* WoV */
+	EC_HOST_EVENT_WOV = 31,
+
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
 	 * it reads back as set, then the entire event mask should be
@@ -4559,6 +4562,99 @@ struct __ec_todo_packed ec_param_codec_i2s {
 
 /*****************************************************************************/
 
+/* Commands for WoV on EC codec. */
+
+#define EC_CMD_EC_CODEC_WOV 0x00BD
+
+enum ec_codec_wov_subcmd {
+	EC_CODEC_WOV_GET_CAPABILITIES = 0,
+	EC_CODEC_WOV_GET_SHM_ADDR,
+	EC_CODEC_WOV_SET_LANG,
+	EC_CODEC_WOV_SET_LANG_SHM,
+	EC_CODEC_WOV_GET_LANG,
+	EC_CODEC_WOV_ENABLE,
+	EC_CODEC_WOV_DISABLE,
+	EC_CODEC_WOV_IS_ENABLED,
+	EC_CODEC_WOV_IS_HOTWORD_DETECTED,
+	EC_CODEC_WOV_RESET,
+	EC_CODEC_WOV_READ_AUDIO,
+	EC_CODEC_WOV_READ_AUDIO_SHM,
+	EC_CODEC_WOV_SUBCMD_COUNT,
+};
+
+enum ec_codec_wov_cap {
+	EC_CODEC_WOV_CAP_AUDIO_SHM = 1,
+	EC_CODEC_WOV_CAP_LANG_SHM,
+	EC_CODEC_WOV_CAP_LAST = 31,
+};
+
+enum ec_codec_wov_shm_id {
+	EC_CODEC_WOV_SHM_ID_AUDIO = 0,
+	EC_CODEC_WOV_SHM_ID_LANG,
+	EC_CODEC_WOV_SHM_ID_LAST,
+};
+
+enum ec_codec_wov_shm_type {
+	EC_CODEC_WOV_SHM_TYPE_SYSTEM_RAM,
+	EC_CODEC_WOV_SHM_TYPE_EC_RAM,
+};
+
+struct ec_param_ec_codec_wov {
+	/* enum ec_codec_wov_subcmd */
+	uint8_t cmd;
+
+	union {
+		struct ec_param_ec_codec_wov_get_shm_addr {
+			uint8_t shm_id;
+		} get_shm_addr_param;
+
+		struct __packed ec_param_ec_codec_wov_set_lang {
+			char name[20];
+			uint32_t total_len;
+			uint32_t offset;
+			uint32_t len;
+			uint8_t buf[128];
+		} set_lang_param;
+
+		struct ec_param_ec_codec_wov_set_lang_shm {
+			char name[20];
+		} set_lang_shm_param;
+	};
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_get_capabilities {
+	uint32_t capabilities;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_get_shm_addr {
+	uint64_t phys_addr;
+	uint32_t len;
+	uint8_t type;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_get_lang {
+	char name[20];
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_is_enabled {
+	uint8_t enabled;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_is_hotword_detected {
+	uint8_t detected;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_read_audio {
+	uint8_t buf[128];
+	uint32_t len;
+} __ec_align4;
+
+struct ec_response_ec_codec_wov_read_audio_shm {
+	uint32_t offset;
+	uint32_t len;
+} __ec_align4;
+
+/*****************************************************************************/
 /* System commands */
 
 /*

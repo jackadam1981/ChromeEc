@@ -148,6 +148,7 @@ common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
+common-$(CONFIG_EC_CODEC_WOV)+=wov.o
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
