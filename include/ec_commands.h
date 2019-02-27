@@ -629,6 +629,9 @@ enum host_event_code {
 	/* Keyboard recovery combo with hardware reinitialization */
 	EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT = 30,
 
+	/* WoV */
+	EC_HOST_EVENT_WOV = 31,
+
 	/*
 	 * The high bit of the event mask is not used as a host event code.  If
 	 * it reads back as set, then the entire event mask should be
@@ -4578,10 +4581,14 @@ enum ec_codec_subcmd {
 };
 
 enum ec_codec_cap {
+	EC_CODEC_CAP_WOV_AUDIO_SHM = 1,
+	EC_CODEC_CAP_WOV_LANG_SHM,
 	EC_CODEC_CAP_LAST = 31,
 };
 
 enum ec_codec_shm_id {
+	EC_CODEC_SHM_ID_WOV_AUDIO = 0,
+	EC_CODEC_SHM_ID_WOV_LANG,
 	EC_CODEC_SHM_ID_LAST,
 };
 
@@ -4725,6 +4732,56 @@ struct ec_param_ec_codec_i2s_rx {
 			uint8_t adjacent_to_ch1;
 		} __packed set_tdm_config_param;
 	};
+} __packed;
+
+/*****************************************************************************/
+/* Commands for WoV on audio codec. */
+
+#define EC_CMD_EC_CODEC_WOV 0x00BF
+
+enum ec_codec_wov_subcmd {
+	EC_CODEC_WOV_SET_LANG = 0,
+	EC_CODEC_WOV_SET_LANG_SHM,
+	EC_CODEC_WOV_GET_LANG,
+	EC_CODEC_WOV_ENABLE,
+	EC_CODEC_WOV_DISABLE,
+	EC_CODEC_WOV_READ_AUDIO,
+	EC_CODEC_WOV_READ_AUDIO_SHM,
+	EC_CODEC_WOV_SUBCMD_COUNT,
+};
+
+struct ec_param_ec_codec_wov {
+	/* enum ec_codec_wov_subcmd */
+	uint8_t cmd;
+
+	union {
+		struct ec_param_ec_codec_wov_set_lang {
+			uint8_t hash[32];
+			uint32_t total_len;
+			uint32_t offset;
+			uint8_t buf[128];
+			uint32_t len;
+		} __packed set_lang_param;
+
+		struct ec_param_ec_codec_wov_set_lang_shm {
+			uint8_t hash[32];
+			uint32_t total_len;
+		} __packed set_lang_shm_param;
+	};
+} __packed;
+
+struct ec_response_ec_codec_wov_get_lang {
+	uint8_t hash[32];
+} __packed;
+
+struct ec_response_ec_codec_wov_read_audio {
+	uint8_t buf[128];
+	uint32_t len;
+} __packed;
+
+struct ec_response_ec_codec_wov_read_audio_shm {
+	uint32_t offset;
+	uint32_t len;
 } __packed;
 
 /*****************************************************************************/
