@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8ef5954_f6e2f2a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-27T01:55:11Z",
+      "side": 1,
+      "message": "Have you checked build.mk in chip directories? There are chip-specific rules to compose custom images. Maybe we can contain this under chip/ish/build.mk?",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "4691e3a7b8a5185ae57eb2503a3cf841e56a40bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7ffd1e_4264e4fc",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-27T01:55:11Z",
+      "side": 1,
+      "message": "Split line here?",
+      "range": {
+        "startLine": 103,
+        "startChar": 67,
+        "endLine": 103,
+        "endChar": 68
+      },
+      "revId": "4691e3a7b8a5185ae57eb2503a3cf841e56a40bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720943a3_397261a0",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-27T01:55:11Z",
+      "side": 1,
+      "message": "Why not:\n\t$(if $(prepend-header-y),$(call quiet,prepend_header_mv,ADD_HDR), \\\n\t\t$(call quiet,mv_from_tmp,MV     ))\n?",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 28
+      },
+      "revId": "4691e3a7b8a5185ae57eb2503a3cf841e56a40bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
