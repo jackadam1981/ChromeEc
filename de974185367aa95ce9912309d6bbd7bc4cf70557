@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e612050_f3cb0f84",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2660,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-28T20:47:09Z",
+      "side": 1,
+      "message": "This probably needs an #ifdef CONFIG_USB_PD_TCPC_LOW_POWER\n\nFor boards not using low power TCPCs (ex. Apel), we may need to contemplate another solution.",
+      "range": {
+        "startLine": 2660,
+        "startChar": 0,
+        "endLine": 2660,
+        "endChar": 40
+      },
+      "revId": "de974185367aa95ce9912309d6bbd7bc4cf70557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
