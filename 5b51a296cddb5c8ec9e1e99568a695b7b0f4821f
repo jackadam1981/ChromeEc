@@ -22,6 +22,30 @@
       "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55a7540_5ea39643",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-28T00:54:52Z",
+      "side": 1,
+      "message": "This is always needed if the charge_manager_source_port previously set CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT on the port.  If the charge_manager_source_port set CONFIG_USB_PD_PULLUP, this call doesn\u0027t cost us much time since it only caches the value.\n\nThis addition is necessary to avoid triggering CCD on dongles with Rd/Ra.  Presenting 3A in that scenario can cause CCD mode detection until the set_state line 738 tcpm_select_rp_value() code runs (on our systems, for about 30 ms, which is long enough to kill display communication for some HDMI dongles)",
+      "parentUuid": "3aa6a06e_db1e5f0b",
+      "range": {
+        "startLine": 4132,
+        "startChar": 4,
+        "endLine": 4133,
+        "endChar": 33
+      },
+      "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
