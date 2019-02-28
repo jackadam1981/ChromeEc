@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "780f56b6_5d7bef62",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "829e4289_c1205905",
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec447d42_9995c7f1",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5716e6de_eec3cd08",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 1,
+      "message": "It converts to lowercase. Actually we don\u0027t have any ec_chip names with uppercase yet as I know, but just want to make it sure.",
+      "parentUuid": "ec447d42_9995c7f1",
+      "range": {
+        "startLine": 212,
+        "startChar": 16,
+        "endLine": 212,
+        "endChar": 29
+      },
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71a5ca59_9f5636d0",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a98092d1_2a3b1066",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 1,
+      "message": "I am going to handle this in another CL for npcx_int_spi and npcx_uut.",
+      "parentUuid": "71a5ca59_9f5636d0",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 17
+      },
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

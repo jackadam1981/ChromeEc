@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fad1fc32_6de54230",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for IT83XX.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6ef371b_d5f4771f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for LM4.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f74f2b2_8ec35e5b",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for stm32.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7f5332e_f3605b3c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for npcx_spi.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 7
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63a505b8_def8f756",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for npcx_int_spi and npcx_uut.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 1
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "734ddb25_cc896137",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for nrf51.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 1
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "204ccef4_f3b1c7df",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T17:25:11Z",
+      "side": 0,
+      "message": "I am going to split this part from this CL to another for mec1322.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "0289c0050a8e8993263769fd6bb5ccf2f5c3e3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
