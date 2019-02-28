@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ddd1f380_04674942",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-28T16:59:35Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I meant. It\u0027s completely local to npcx/pwm.c.",
+      "parentUuid": "57cfcc61_b8c98199",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97009b80_c8f6fb49",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -237,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "6a765b44_9ded8d7a",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-28T16:59:35Z",
+      "side": 1,
+      "message": "I think we should set this to 0%. Not in this patch.",
+      "parentUuid": "90a673c3_d2cbe3e3",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f26aef6_86d7f4de",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -284,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "6020fe6c_e6b93b31",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-28T16:59:35Z",
+      "side": 1,
+      "message": "What about \u0027similar redundant lines\u0027?",
+      "parentUuid": "6deb4da4_b3b0d968",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f15122e_baaa251d",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -319,6 +391,30 @@
       "side": 1,
       "message": "Using DCR \u003e CTR to disable the PWM is stated in our datasheet. And I have discussed this with my Israeli colleagues. They also confirmed it.\n\nYou\u0027re right. We should remove the dependence between pwm_enable()/pwm_get_enabled() and pwm_set_raw_duty()/pwm_get_raw_duty().",
       "parentUuid": "5f15122e_baaa251d",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265faac2_440ffe15",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-02-28T16:59:35Z",
+      "side": 1,
+      "message": "Then, can you fix pwm_get_enabled and pwm_enable? The definition of \u0027enable\u0027 is currently blurry.",
+      "parentUuid": "6ce287dd_3f469bc7",
       "range": {
         "startLine": 191,
         "startChar": 0,
