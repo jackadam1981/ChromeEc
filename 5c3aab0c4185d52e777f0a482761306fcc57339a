@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "829e4289_c1205905",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-02-28T16:21:21Z",
+      "side": 1,
+      "message": "Add \"\" to avoid word splitting",
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec447d42_9995c7f1",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-02-28T16:21:21Z",
+      "side": 1,
+      "message": "I\u0027ve never seen ,,. What does it do?",
+      "range": {
+        "startLine": 212,
+        "startChar": 16,
+        "endLine": 212,
+        "endChar": 29
+      },
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a5ca59_9f5636d0",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-02-28T16:21:21Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 17
+      },
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
