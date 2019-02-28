@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bdb5b2a_e5a8a623",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-28T23:15:19Z",
+      "side": 1,
+      "message": "After removing the mapping of BOARDS_NPCX_INT_SPI and BOARD_NPCX_UUT, does this one-board-mapping-multiple-chip case still happen?",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 53
+      },
+      "revId": "cdd56f4674f8495a29386599aeee972378dc9cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
