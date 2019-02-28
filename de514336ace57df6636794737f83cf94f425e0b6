@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "083a386f_0285713b",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-02-28T16:12:32Z",
+      "side": 1,
+      "message": "Maybe we should rename this method? I would expect a diff method to return the diff between two times, either positive or negative, regardless of how big the difference is.\n\nI\u0027m assuming the reason for not doing the whole comparison is due to speed?",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "de514336ace57df6636794737f83cf94f425e0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07dd00d3_d90a80b4",
+        "filename": "test/stm32_clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-02-28T16:12:32Z",
+      "side": 1,
+      "message": "Can\u0027t you include clock-f.h? Did you change the the build.mk not link in the object? I\u0027ve never worked with the EC build system, so maybe Jett can answer.",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "de514336ace57df6636794737f83cf94f425e0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
