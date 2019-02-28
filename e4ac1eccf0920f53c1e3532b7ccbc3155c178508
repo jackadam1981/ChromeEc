@@ -94,6 +94,30 @@
       "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a856be_6258673a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-28T02:32:00Z",
+      "side": 1,
+      "message": "Explanation round 2:\n* We\u0027re compiling with Thumb instructions (Thumb 1 is 16-bits, Thumb-2 32-bits): \n\nhttp://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.ddi0210c/CACBCAAE.html\n\nhttp://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.dui0471i/CHDFEDDB.html\n\n* There is an LDR  pseudoinstruction in the code so we need to load that constant from somewhere (pseudoinstruction \"ldr SOFTWARE_PANIC_REASON_REG, \u003dPANIC_SW_DIV_ZERO\" and real generated instruction at address b8 in the disassembly): \n\nhttp://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.dui0041c/Babbfdih.html\n\n* Although our architecture (armv7-E) appears to support hardware unaligned access, it\u0027s slower than aligned access:\n\nhttp://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.faqs/ka15414.html\n\n* The last instruction in the assembly file is the branch (\"bl exception_panic\"). (It\u0027s a 32-bit Thumb2 instruction).\n\n* After the last instruction, we are at address 0xbe. This is not 32-bit aligned (because there are some Thumb1 16-bit instructions used). Instead of putting the constant for the LDR at an unaligned address, the compiler/assembler inserts padding.\n\n* In the case of gcc, it pads with 16-bits of zeros. In the case of clang, it pads with a 16-bit noop instruction. Either should be fine given that it should never be executed (\"exception_panic\" has the \"noreturn\" attribute).",
+      "parentUuid": "75ae3f9f_40fb9df4",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e4ac1eccf0920f53c1e3532b7ccbc3155c178508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
