@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ce67e95_110c4034",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-28T19:38:49Z",
+      "side": 1,
+      "message": "Can you please give a brief description here as to why VDPM-triggered prochot needs to be disabled.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "cedce6b8d6905a492d6224c543db5e4b32d0b5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21312c48_7a1b92b8",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-02-28T19:38:49Z",
+      "side": 1,
+      "message": "I don\u0027t think this initialization should be done via an API call to the charger driver. If we think this will be setting might be different on some future platform that uses the same charger, then we should add a new config option. Something like CONFIG_CHARGER_BQ25710_DISABLE_VDPM. Then the init routine in the driver will clear this bit if the config option is defined. This way it stays in the driver but can still be board/plaform configurable.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 40
+      },
+      "revId": "cedce6b8d6905a492d6224c543db5e4b32d0b5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
