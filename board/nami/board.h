@@ -312,7 +312,7 @@ enum model_id {
  * delay to turn on the power supply max is ~16ms.
  * delay to turn off the power supply max is about ~180ms.
  */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000  /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	100000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000 /* us */
 
 /* delay to turn on/off vconn */
