@@ -70,6 +70,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3aaa025_a624fc93",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-02-28T17:29:59Z",
+      "side": 1,
+      "message": "Adding yllin@ since he added the code in ipi_table.c to get his opinion too.\n\nI believe the intent was to mark it \"allocatable\" like you mentioned based on my reading of this: https://sourceware.org/binutils/docs/as/Section.html\n\n For ELF targets, the .section directive is used like this:\n\n .section name [, \"flags\"[, @type[,flag_specific_arguments]]]\n\n The optional flags argument is a quoted string which may contain any combination of the following characters:\n\n a\n  section is allocatable\n\nIt doesn\u0027t seem like the \"@\" should do anything since there\u0027s no \"type\" included. Also, note that both gcc and clang seem to function fine without the \"a,@\" (only tried the nocturne_fp board). I\u0027m only testing that it boots up and responds to commands, but I assume it would be completely broken since these are interrupt vectors (as it is with clang when including the \"a,@\" that becomes part of the section name instead of an attribute).\n\nAnything else I should do to convince everyone it\u0027s not necessary?",
+      "parentUuid": "6d002aee_3245364f",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
