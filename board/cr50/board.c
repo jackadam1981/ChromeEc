@@ -667,15 +667,17 @@ static void  check_board_id_mismatch(void)
 /*
  * Check if ITE SYNC sequence generation was requested before the reset, if so
  * - clear the request and call the function to generate the sequence.
+ * Return 1 if ITE EC SYNC must be triggered or
+ *        0 otherwise.
  */
-static void maybe_trigger_ite_sync(void)
+static int maybe_trigger_ite_sync(void)
 {
 	uint32_t lls1;
 
 	lls1 = GREG32(PMU, LONG_LIFE_SCRATCH1);
 
 	if (!(lls1 & BOARD_ITE_EC_SYNC_NEEDED))
-		return;
+		return 0;
 
 	/* Clear the sync required bit, this should work only once. */
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
@@ -683,6 +685,7 @@ static void maybe_trigger_ite_sync(void)
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
 
 	generate_ite_sync();
+	return 1;
 }
 
 /* Initialize board. */
@@ -704,7 +707,10 @@ static void board_init(void)
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
-	maybe_trigger_ite_sync();
+	if (maybe_trigger_ite_sync()) {
+		/* To flash ITE, CCD should be open. */
+		ccd_init_state = CCD_STATE_OPENED;
+	}
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
