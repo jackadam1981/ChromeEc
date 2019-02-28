@@ -46,6 +46,30 @@
       "revId": "cdd56f4674f8495a29386599aeee972378dc9cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8d982dc_ec0c4775",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-02-28T23:30:18Z",
+      "side": 1,
+      "message": "As this case never happens, you may make the error message more clear. One possible way is that the ec_chip from servod is different (some bug) from the above board-\u003echip mapping, resulting \u003e1 SUPPORTED_CHIPS. May catch this error explicitly.",
+      "parentUuid": "315a3a81_1d344452",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 53
+      },
+      "revId": "cdd56f4674f8495a29386599aeee972378dc9cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
