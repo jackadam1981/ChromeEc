@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "eb730878_359edcff",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-02-28T16:06:44Z",
+      "side": 1,
+      "message": "This paradigm isn\u0027t used in the EC very much yet, but I do like the approach.\n\nOne potential downside of this approach at least for the EC build system is that we might not have access to the MKBP_EVENT_DELIVERY_GPIO defines values in our build system, where we do have access to CONFIG_MKBP_USE_GPIO and CONFIG_MKBP_USE_HOST_EVENT to include different complication units (which may not be needed in this case though)\n\nIn the EC today, the mutual exclusiveness of config options is done in config.h (see hostcmd_lpc and hostcmd_espi)\n\nI lean toward doing it the way EC already does it today, but I could be swayed",
+      "parentUuid": "ae8787eb_b5c889f7",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "c8213e5e3d8a7a9ba290f573375beed7110637bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc33d40_e9eb34cd",
         "filename": "include/config.h",
         "patchSetId": 1
