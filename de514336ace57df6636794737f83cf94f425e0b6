@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "856013d4_01a5adc9",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-02-28T16:27:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure the origin of this procedure ... if I were to speculate, I would imagine it was simply a pattern used twice without a good name. Open to suggestions here on how to refactor.\n\nIf a programmer just wanted the general case of difference, I don\u0027t see why they wouldn\u0027t use rtc_to_sec(rtc0) - rtc_to_sec(rtc1)... perhaps the right move here is just to document that.",
+      "parentUuid": "083a386f_0285713b",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 21
+      },
+      "revId": "de514336ace57df6636794737f83cf94f425e0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07dd00d3_d90a80b4",
         "filename": "test/stm32_clock.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-28T16:12:32Z",
       "side": 1,
       "message": "Can\u0027t you include clock-f.h? Did you change the the build.mk not link in the object? I\u0027ve never worked with the EC build system, so maybe Jett can answer.",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "de514336ace57df6636794737f83cf94f425e0b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae261f27_f9981cac",
+        "filename": "test/stm32_clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-02-28T16:27:43Z",
+      "side": 1,
+      "message": "Yes, including clock-f.h works, albeit with a few extra #defines before the include. The issue comes with linking clock-f.o (or even building that object). Since the test is built for the \u0027host\u0027 board, everything under chip/stm32 never even gets built. Not sure a good way around this, and I don\u0027t want to rewrite the build system here.",
+      "parentUuid": "07dd00d3_d90a80b4",
       "range": {
         "startLine": 9,
         "startChar": 19,
