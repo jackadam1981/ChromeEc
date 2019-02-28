@@ -22,6 +22,30 @@
       "revId": "cdd56f4674f8495a29386599aeee972378dc9cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315a3a81_1d344452",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-02-28T23:21:53Z",
+      "side": 1,
+      "message": "I left it just for future case where a new board is mapped to multiple chips (perhaps by mistake).",
+      "parentUuid": "0bdb5b2a_e5a8a623",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 53
+      },
+      "revId": "cdd56f4674f8495a29386599aeee972378dc9cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
