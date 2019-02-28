@@ -22,6 +22,30 @@
       "revId": "de974185367aa95ce9912309d6bbd7bc4cf70557",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b1ab73_1e738dff",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2660,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-02-28T21:03:44Z",
+      "side": 1,
+      "message": "Though to be clear, I suspect just getting this working for the LPM boards for this CL is good.  We can probably create a TODO or bug for later to generally address the issue of calling into the driver functions when they\u0027re uninitialized.  \n\nJett, any opinions here?",
+      "parentUuid": "4e612050_f3cb0f84",
+      "range": {
+        "startLine": 2660,
+        "startChar": 0,
+        "endLine": 2660,
+        "endChar": 40
+      },
+      "revId": "de974185367aa95ce9912309d6bbd7bc4cf70557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
