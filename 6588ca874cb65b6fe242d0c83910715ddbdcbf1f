@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e7f9fb8_43bdb186",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387e571d_04a1bd1b",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cfc1bdc_3c1fc9a4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bd8a0db7_3d13d42f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cfc1bdc_3c1fc9a4",
+      "range": {
+        "startLine": 18,
+        "startChar": 50,
+        "endLine": 18,
+        "endChar": 57
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25ebebcf_81bd8c31",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-02-27T19:15:42Z",
       "side": 1,
       "message": "Can you make it static?",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57cfcc61_b8c98199",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "There\u0027s a non-static declaration in include/pwm.h (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/pwm.h#26) \nI need to remove this declaration before making it static. Is it OK?",
+      "parentUuid": "25ebebcf_81bd8c31",
       "range": {
         "startLine": 57,
         "startChar": 5,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "49aa7011_9d1887a8",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97009b80_c8f6fb49",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "371afe64_6edf4259",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-02-27T19:15:42Z",
       "side": 1,
       "message": "Why do we have to start 100%? (While-you-are-here question, ...)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a673c3_d2cbe3e3",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Usually, the initial duty of PWM controlled fan is 100%. We just put the initial duty value as the same as fan\u0027s.",
+      "parentUuid": "371afe64_6edf4259",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6deb4da4_b3b0d968",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f26aef6_86d7f4de",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f15122e_baaa251d",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2019-02-27T19:15:42Z",
       "side": 1,
       "message": "I\u0027m not sure about this. If we\u0027re solid about using DCR \u003e CTR to disable the PWM, we should update pwm_get_enabled and pwm_enable accordingly.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce287dd_3f469bc7",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Using DCR \u003e CTR to disable the PWM is stated in our datasheet. And I have discussed this with my Israeli colleagues. They also confirmed it.\n\nYou\u0027re right. We should remove the dependence between pwm_enable()/pwm_get_enabled() and pwm_set_raw_duty()/pwm_get_raw_duty().",
+      "parentUuid": "5f15122e_baaa251d",
       "range": {
         "startLine": 191,
         "startChar": 0,
@@ -183,6 +351,30 @@
       "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f79c372_2aeb1887",
+        "filename": "chip/npcx/pwm_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-02-28T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78c202a_21756c56",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
