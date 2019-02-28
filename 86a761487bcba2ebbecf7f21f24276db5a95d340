@@ -52,6 +52,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d002aee_3245364f",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-02-28T12:39:26Z",
+      "side": 1,
+      "message": "right, then it must have been the code section thing (note that it\u0027s a text section). I can\u0027t find the docs I used back then to figure out what it was about exactly, but note that we use that pattern elsewhere in the tree, like chip/mt_scp/ipi_table.c.",
+      "parentUuid": "10b623f4_72c83c02",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
