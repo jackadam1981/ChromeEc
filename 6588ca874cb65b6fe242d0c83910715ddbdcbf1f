@@ -523,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "c98c1724_79029a41",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-01T02:16:33Z",
+      "side": 1,
+      "message": "Please refer Figure. 24 in npcx5\u0027s datasheet. Setting DCR \u003e CTR means that the result of 16-bits comparator is always false. It equals the duty cycle is zero. And setting bit 7 in PWMCTL means turn off all input clock sources of PWM module. Its output only relies on INVP bit.\n\nI think the explanation in commit message is not good enough. I\u0027ll update it later.",
+      "parentUuid": "b598eda1_cbb1cb10",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c78c202a_21756c56",
         "filename": "chip/npcx/pwm_chip.h",
         "patchSetId": 1
