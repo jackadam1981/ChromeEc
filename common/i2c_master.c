@@ -1064,7 +1064,7 @@ static int command_i2cxfer(int argc, char **argv)
 		/* 8-bit write */
 		if (argc < 6)
 			return EC_ERROR_PARAM5;
-                if(offset_size == 2)
+                if(offset_size == 1)
 		        rv = i2c_write8(port, slave_addr, offset, v);
                 else
                         rv = i2c_write_offset16(port, slave_addr, offset, v, 1);
@@ -1073,7 +1073,7 @@ static int command_i2cxfer(int argc, char **argv)
 		/* 16-bit write */
 		if (argc < 6)
 			return EC_ERROR_PARAM5;
-                if(offset_size == 2)
+                if(offset_size == 1)
 		        rv = i2c_write16(port, slave_addr, offset, v);
                 else
                         rv = i2c_write_offset16(port, slave_addr, offset, v, 2);
