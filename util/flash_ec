@@ -136,10 +136,6 @@ BOARDS_NPCX_UUT=(
 	yorp
 )
 
-BOARDS_NRF51=(
-	hadoken
-)
-
 BOARDS_SPI_1800MV=(
 	coral
 	reef
@@ -299,10 +295,6 @@ fi
 
 if $(in_array "${BOARDS_NPCX_UUT[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("npcx_uut")
-fi
-
-if $(in_array "${BOARDS_NRF51[@]}" "${BOARD}"); then
-	SUPPORTED_CHIPS+=("nrf51")
 fi
 
 if $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then
