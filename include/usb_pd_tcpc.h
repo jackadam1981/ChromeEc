@@ -59,5 +59,6 @@ int tcpc_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 		  const uint32_t *data);
 int rx_buf_is_empty(int port);
 void rx_buf_clear(int port);
+void invalidate_last_message_id(int port);
 
 #endif /* __CROS_EC_USB_PD_TCPC_H */

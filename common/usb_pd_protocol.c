@@ -25,6 +25,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pd_tcpc.h"
 #include "usbc_ppc.h"
 #include "tcpm.h"
 #include "version.h"
@@ -2947,6 +2948,9 @@ void pd_task(void *u)
 			/* Nothing to do */
 			break;
 		case PD_STATE_SRC_DISCONNECTED:
+#ifdef CONFIG_USB_PD_TCPC
+			invalidate_last_message_id(port);
+#endif
 			timeout = 10*MSEC;
 			tcpm_get_cc(port, &cc1, &cc2);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -3501,6 +3505,9 @@ void pd_task(void *u)
 			break;
 		}
 		case PD_STATE_SNK_DISCONNECTED:
+#ifdef CONFIG_USB_PD_TCPC
+			invalidate_last_message_id(port);
+#endif
 #ifdef CONFIG_USB_PD_LOW_POWER
 			timeout = (drp_state[port] !=
 				PD_DRP_TOGGLE_ON ? SECOND : 10*MSEC);

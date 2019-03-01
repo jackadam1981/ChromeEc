@@ -257,6 +257,7 @@ static struct pd_port_controller {
 	int rx_head[RX_BUFFER_SIZE+1];
 	uint32_t rx_payload[RX_BUFFER_SIZE+1][7];
 	int rx_buf_head, rx_buf_tail;
+	uint8_t msg_id_last;
 
 	/* Next transmit */
 	enum tcpm_transmit_type tx_type;
@@ -264,6 +265,34 @@ static struct pd_port_controller {
 	uint32_t tx_payload[7];
 	const uint32_t *tx_data;
 } pd[CONFIG_USB_PD_PORT_COUNT];
+
+void invalidate_last_message_id(int port)
+{
+	/*
+	 * Message id starts from 0 to 7. If msg_id_last is initialized to 0,
+	 * it will lead to repetitive message id with first received packet,
+	 * so initialize it with an invalid value 0xff.
+	 */
+	pd[port].msg_id_last = 0xff;
+}
+
+static int consume_repeat_message(int port, uint16_t msg_header)
+{
+	uint8_t msg_id = PD_HEADER_ID(msg_header);
+	/* ret = 0 -> not a repeat message */
+	int ret = 0;
+
+	/* If repeat message ignore, except softreset control request. */
+	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
+	    PD_HEADER_CNT(msg_header) == 0)
+		invalidate_last_message_id(port);
+	else if (pd[port].msg_id_last != msg_id)
+		pd[port].msg_id_last = msg_id;
+	else if (pd[port].msg_id_last == msg_id)
+		ret = 1;
+
+	return ret;
+}
 
 static int rx_buf_is_full(int port)
 {
@@ -422,7 +451,8 @@ static int send_validate_message(int port, uint16_t header,
 		}
 		/* read the incoming packet if any */
 		head = pd_analyze_rx(port, payload);
-		pd_rx_complete(port);
+		if (head != PD_RX_ERR_ID)
+			pd_rx_complete(port);
 		/* keep RX monitoring on to avoid collisions */
 		pd_rx_enable_monitoring(port);
 		if (head > 0) { /* we got a good packet, analyze it */
@@ -643,6 +673,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	bit = pd_find_preamble(port);
 	if (bit == PD_RX_ERR_HARD_RESET || bit == PD_RX_ERR_CABLE_RESET) {
 		/* Hard reset or cable reset */
+		invalidate_last_message_id(port);
 		return bit;
 	} else if (bit < 0) {
 		msg = "Preamble";
@@ -738,6 +769,15 @@ int pd_analyze_rx(int port, uint32_t *payload)
 		goto packet_err;
 	}
 
+	if (PD_HEADER_TYPE(phs.pd_header) != PD_CTRL_GOOD_CRC &&
+	    consume_repeat_message(port, phs.pd_header)) {
+		pd_rx_complete(port);
+		send_goodcrc(port, PD_HEADER_ID(phs.pd_header));
+		bit = PD_RX_ERR_ID;
+		msg = "MSG_ID";
+		goto packet_err;
+	}
+
 	/*
 	 * Check EOP. EOP is 5 bits, but last bit may not be able to
 	 * be dequeued, depending on ending state of CC line, so stop
@@ -821,7 +861,8 @@ int tcpc_run(int port, int evt)
 		res = pd[port].rx_head[pd[port].rx_buf_head] =
 			pd_analyze_rx(port,
 				pd[port].rx_payload[pd[port].rx_buf_head]);
-		pd_rx_complete(port);
+		if (res != PD_RX_ERR_ID)
+			pd_rx_complete(port);
 
 		/*
 		 * If there is space in buffer, then increment head to keep
@@ -1160,6 +1201,7 @@ void tcpc_init(int port)
 
 	/* make sure PD monitoring is disabled initially */
 	pd[port].rx_enabled = 0;
+	invalidate_last_message_id(port);
 
 	/* make initial readings of CC voltages */
 	for (i = 0; i < 2; i++) {
