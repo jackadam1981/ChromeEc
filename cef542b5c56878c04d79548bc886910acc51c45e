@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e6ae507c_02ad3a05",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4907,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T20:20:37Z",
+      "side": 1,
+      "message": "FYI: https://crrev.com/c/1496770.",
+      "parentUuid": "0dc611b4_1df1aaa9",
+      "range": {
+        "startLine": 4907,
+        "startChar": 3,
+        "endLine": 4907,
+        "endChar": 17
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03c24d74_92103182",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
