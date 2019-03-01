@@ -2623,14 +2623,12 @@ struct tuple *getvar(const uint8_t *key, uint8_t key_len)
 	return NULL;
 }
 
-int freevar(struct tuple *var)
+void freevar(struct tuple *var)
 {
 	void *vc;
 
 	vc = (uint8_t *)var - offsetof(struct max_var_container, t_header);
 	shared_mem_release(vc);
-
-	return EC_SUCCESS; /* Could verify var first before releasing. */
 }
 
 static enum ec_error_list save_container(struct nn_container *nc)
