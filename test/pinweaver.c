@@ -831,11 +831,10 @@ struct tuple *getvar(const uint8_t *key, uint8_t key_len)
 	return var;
 }
 
-int freevar(struct tuple *var)
+void freevar(struct tuple *var)
 {
-	free(var);
-
-	return EC_SUCCESS;
+	if (var)
+		free(var);
 }
 const uint8_t *tuple_val(const struct tuple *tpl)
 {
