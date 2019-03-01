@@ -46,6 +46,30 @@
       "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c7039c_9464480d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T01:51:14Z",
+      "side": 1,
+      "message": "We come here (AUTO_TOGGLE) only if a port is open, right? We set Rp to CONFIG_USB_PD_PULLUP on disconnect (to fix the CCD detection bug), right? How do we get Rp\u003d3A on a open port?",
+      "parentUuid": "d55a7540_5ea39643",
+      "range": {
+        "startLine": 4132,
+        "startChar": 4,
+        "endLine": 4133,
+        "endChar": 33
+      },
+      "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
