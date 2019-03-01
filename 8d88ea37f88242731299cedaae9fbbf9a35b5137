@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0a10199_b773e8dd",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-01T01:26:46Z",
+      "side": 1,
+      "message": "Actually this will have to be guarded by CONFIG_CMD_RTC or CONFIG_RTC(once the current CL lands for changing the config).",
+      "range": {
+        "startLine": 1637,
+        "startChar": 12,
+        "endLine": 1637,
+        "endChar": 21
+      },
+      "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
