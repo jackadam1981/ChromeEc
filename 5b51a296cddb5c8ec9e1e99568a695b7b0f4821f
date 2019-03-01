@@ -70,6 +70,30 @@
       "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f186e53d_78ee2402",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-01T15:05:01Z",
+      "side": 1,
+      "message": "We do set CONFIG_USB_PD_PULLUP on disconnect, which is why our fleex bug doesn\u0027t show up on multiple plugs/unplugs to port 0.  \n\nHowever, if you start with something in port 1 and unplug from port 1, the power supply reset will cache 3A for Rp.  Then, on plug-in to port 0 there will be a brief window of 3A on port 0 between this tcpm_set_cc call (which sets 3A) and the set_state call (which sets 1.5A).",
+      "parentUuid": "39c7039c_9464480d",
+      "range": {
+        "startLine": 4132,
+        "startChar": 4,
+        "endLine": 4133,
+        "endChar": 33
+      },
+      "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
