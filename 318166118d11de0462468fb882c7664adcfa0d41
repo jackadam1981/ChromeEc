@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0b79c86_fd0017fc",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 57
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-03-01T21:59:30Z",
+      "side": 1,
+      "message": "wouldn\u0027t this be better defined where the enum is defined?",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "318166118d11de0462468fb882c7664adcfa0d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
