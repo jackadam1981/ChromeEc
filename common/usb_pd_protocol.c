@@ -25,6 +25,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pd_tcpc.h"
 #include "usbc_ppc.h"
 #include "tcpm.h"
 #include "version.h"
@@ -2919,8 +2920,18 @@ void pd_task(void *u)
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
-			tcpm_dequeue_message(port, payload, &head);
-			handle_request(port, head, payload);
+			/*
+			 * Dequeue and consume duplicate message ID for PD_TCPC
+			 * since off-board TCPC will automatically perform this
+			 * de-dup logic before notifying the EC.
+			 */
+			if (tcpm_dequeue_message(port, payload, &head) ==
+								EC_SUCCESS
+#ifdef CONFIG_USB_PD_TCPC
+			    && !consume_repeat_message(port, head)
+#endif
+			   )
+				handle_request(port, head, payload);
 
 			/* Check if there are any more messages */
 			if (tcpm_has_pending_message(port))
@@ -2939,6 +2950,13 @@ void pd_task(void *u)
 			/* Nothing to do */
 			break;
 		case PD_STATE_SRC_DISCONNECTED:
+#ifdef CONFIG_USB_PD_TCPC
+			/*
+			 * Invalidate message ID for PD_TCPC since off-board TCPC
+			 * will automatically perform this de-dup logic itself.
+			 */
+			invalidate_last_message_id(port);
+#endif
 			timeout = 10*MSEC;
 			tcpm_get_cc(port, &cc1, &cc2);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -3493,6 +3511,13 @@ void pd_task(void *u)
 			break;
 		}
 		case PD_STATE_SNK_DISCONNECTED:
+#ifdef CONFIG_USB_PD_TCPC
+			/*
+			 * Invalidate message ID for PD_TCPC since off-board TCPC
+			 * will automatically perform this de-dup logic itself.
+			 */
+			invalidate_last_message_id(port);
+#endif
 #ifdef CONFIG_USB_PD_LOW_POWER
 			timeout = (drp_state[port] !=
 				PD_DRP_TOGGLE_ON ? SECOND : 10*MSEC);
