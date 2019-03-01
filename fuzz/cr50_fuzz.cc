@@ -68,11 +68,10 @@ extern "C" void nvmem_wipe_cache(void) {
 extern "C" void run_test(void) {}
 
 void InitializeFuzzerRun() {
-  memset(__host_flash, 0xff, sizeof(__host_flash));
-  nvmem_init();
-  nvmem_enable_commits();
-  initvars();
-  srand(0);
+	memset(__host_flash, 0xff, sizeof(__host_flash));
+	nvmem_init();
+	nvmem_enable_commits();
+	srand(0);
 }
 
 // Used to verify the model hasn't become out of sync with the implementation.
