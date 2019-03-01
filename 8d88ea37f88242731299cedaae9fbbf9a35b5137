@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7e48e4b9_bb8d209b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T21:42:02Z",
+      "side": 1,
+      "message": "This is ambiguous. I would say \u0027Print RTC timestamps at power events\u0027.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6356c29c_31cda8c9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
