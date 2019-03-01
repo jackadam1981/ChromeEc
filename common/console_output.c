@@ -155,7 +155,17 @@ static int command_ch(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 };
-DECLARE_SAFE_CONSOLE_COMMAND(chan, command_ch,
-			     "[ save | restore | <mask> ]",
+DECLARE_SAFE_CONSOLE_COMMAND(chan, command_ch, "[ save | restore | <mask> ]",
 			     "Save, restore, get or set console channel mask");
 #endif /* CONFIG_CONSOLE_CHANNEL */
+
+int usb_printf(const char *format, ...)
+{
+	int rv;
+	va_list args;
+
+	va_start(args, format);
+	rv = usb_vprintf(format, args);
+	va_end(args);
+	return rv;
+}
