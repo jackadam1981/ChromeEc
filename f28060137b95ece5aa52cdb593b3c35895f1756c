@@ -39,6 +39,30 @@
       "revId": "f28060137b95ece5aa52cdb593b3c35895f1756c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25404407_45e6e4bd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2662,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-01T16:58:54Z",
+      "side": 1,
+      "message": "The flag will be cleared during reset_device_and_notify a few calls later, but should take advantage of our existing LPM architecture to force other tasks to wait on this init before accessing TCPC functions.  \n\nSince we\u0027re always calling reset_device_and_notify unconditionally, the primary difference between this and the previous code (other than forcing other tasks to queue), would be that the PD task will call a wake on itself.  \n\nA more complete solution would be to set up a similar wait at the TCPM level so tasks have to wait on init before accessing any TCPM functions.  I\u0027ve been talking to Jett about how we might be able to implement that later.",
+      "parentUuid": "67c57b65_798c3770",
+      "range": {
+        "startLine": 2662,
+        "startChar": 20,
+        "endLine": 2662,
+        "endChar": 40
+      },
+      "revId": "f28060137b95ece5aa52cdb593b3c35895f1756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
