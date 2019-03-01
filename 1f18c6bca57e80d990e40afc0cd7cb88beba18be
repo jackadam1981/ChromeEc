@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28bf0c71_7a8cd81e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-01T18:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c9343a_f4462cf1",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "1f18c6bca57e80d990e40afc0cd7cb88beba18be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74d3f021_bfaf9ea9",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "1f18c6bca57e80d990e40afc0cd7cb88beba18be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ee2509_e02ded0e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-01T18:12:12Z",
+      "side": 1,
+      "message": "Couldn\u0027t find any info about glkrvp.\nNot listed in goldeneye, no Care \u0026 Feeding doc, no servo overlay...",
+      "parentUuid": "6d7f0b29_8f8ad84d",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "1f18c6bca57e80d990e40afc0cd7cb88beba18be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
