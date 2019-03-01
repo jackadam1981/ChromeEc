@@ -118,6 +118,30 @@
       "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3e83b81_da4844ce",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-01T18:59:52Z",
+      "side": 1,
+      "message": "Do you mean configuring the charge manager to always select CONFIG_USB_PD_PULLUP on unplugged ports?  Or changing the set_state logic to also select that value on other ports under some disconnect circumstances? \n\nAs it stands, since the PD task is the one changing the Rp value to deal with the CCD detection issue in most cases already, it seems logical to add coverage for this corner case here as well.  Unless you\u0027d like to move all the CONFIG_USB_PD_PULLUP selection into the charge manager?",
+      "parentUuid": "abffd20a_02c6b8ae",
+      "range": {
+        "startLine": 4132,
+        "startChar": 4,
+        "endLine": 4133,
+        "endChar": 33
+      },
+      "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
