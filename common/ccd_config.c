@@ -349,7 +349,7 @@ static void ccd_set_state(enum ccd_state state)
  */
 static void ccd_load_config(void)
 {
-	const struct tuple *t;
+	struct tuple *t;
 
 	/* Don't reload if we're already loaded */
 	if (ccd_config_loaded)
@@ -389,6 +389,7 @@ static void ccd_load_config(void)
 
 ccd_is_loaded:
 	ccd_config_loaded = 1;
+	freevar(t);
 
 	/* Notify CCD users of configuration change */
 	hook_notify(HOOK_CCD_CHANGE);
@@ -407,8 +408,6 @@ static int ccd_save_config(void)
 		      (const uint8_t *)&config, sizeof(config));
 	if (rv)
 		return rv;
-
-	rv = writevars();
 
 	/*
 	 * Notify CCD users of configuration change.

@@ -654,8 +654,9 @@ static int find_relevant_entry(const struct pw_log_storage_t *log,
 
 static int load_log_data(struct pw_log_storage_t *log)
 {
-	const struct tuple *ptr;
+	struct tuple *ptr;
 	const struct pw_log_storage_t *view;
+	int rv = EC_SUCCESS;
 
 	ptr = getvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1);
 	if (ptr == NULL)
@@ -663,30 +664,27 @@ static int load_log_data(struct pw_log_storage_t *log)
 
 	view = (void *)tuple_val(ptr);
 	if (ptr->val_len != sizeof(struct pw_log_storage_t))
-		return PW_ERR_NV_LENGTH_MISMATCH;
-	if (view->storage_version != PW_STORAGE_VERSION)
-		return PW_ERR_NV_VERSION_MISMATCH;
+		rv = PW_ERR_NV_LENGTH_MISMATCH;
+	else if (view->storage_version != PW_STORAGE_VERSION)
+		rv = PW_ERR_NV_VERSION_MISMATCH;
+	else
+		memcpy(log, view, ptr->val_len);
 
-	memcpy(log, view, ptr->val_len);
-	return EC_SUCCESS;
+	freevar(ptr);
+
+	return rv;
 }
 
 int store_log_data(const struct pw_log_storage_t *log)
 {
-	int ret;
-
-	ret = setvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1, (uint8_t *)log,
+	return setvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1, (uint8_t *)log,
 		     sizeof(struct pw_log_storage_t));
-	if (ret != EC_SUCCESS)
-		return ret;
-
-	return writevars();
 }
 
-static int load_merkle_tree(struct merkle_tree_t *merkle_tree)
+static int load_merkle_tree(struct merkle_tree_t *merkle_tree,
+			    struct tuple **ptr)
 {
 	int ret;
-	const struct tuple *ptr;
 
 	cprints(CC_TASK, "PinWeaver: Loading Tree!");
 
@@ -694,13 +692,13 @@ static int load_merkle_tree(struct merkle_tree_t *merkle_tree)
 	{
 		const struct pw_long_term_storage_t *tree;
 
-		ptr = getvar(PW_TREE_VAR, sizeof(PW_TREE_VAR) - 1);
-		if (ptr == NULL)
+		*ptr = getvar(PW_TREE_VAR, sizeof(PW_TREE_VAR) - 1);
+		if (*ptr == NULL)
 			return PW_ERR_NV_EMPTY;
 
-		tree = (void *)tuple_val(ptr);
+		tree = (void *)tuple_val(*ptr);
 		/* Add storage format updates here. */
-		if (ptr->val_len != sizeof(*tree))
+		if ((*ptr)->val_len != sizeof(*tree))
 			return PW_ERR_NV_LENGTH_MISMATCH;
 		if (tree->storage_version != PW_STORAGE_VERSION)
 			return PW_ERR_NV_VERSION_MISMATCH;
@@ -719,13 +717,13 @@ static int load_merkle_tree(struct merkle_tree_t *merkle_tree)
 	{
 		struct pw_log_storage_t *log;
 
-		ptr = getvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1);
-		if (ptr == NULL)
+		*ptr = getvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1);
+		if (*ptr == NULL)
 			return PW_ERR_NV_EMPTY;
 
-		log = (void *)tuple_val(ptr);
+		log = (void *)tuple_val(*ptr);
 		/* Add storage format updates here. */
-		if (ptr->val_len != sizeof(struct pw_log_storage_t))
+		if ((*ptr)->val_len != sizeof(struct pw_log_storage_t))
 			return PW_ERR_NV_LENGTH_MISMATCH;
 		if (log->storage_version != PW_STORAGE_VERSION)
 			return PW_ERR_NV_VERSION_MISMATCH;
@@ -747,9 +745,6 @@ static int load_merkle_tree(struct merkle_tree_t *merkle_tree)
 			ret = setvar(PW_LOG_VAR0, sizeof(PW_LOG_VAR0) - 1,
 				     (uint8_t *)log,
 				     sizeof(struct pw_log_storage_t));
-			if (ret != EC_SUCCESS)
-				return ret;
-			ret = writevars();
 			if (ret != EC_SUCCESS)
 				return ret;
 		}
@@ -1357,7 +1352,12 @@ DECLARE_VENDOR_COMMAND(VENDOR_CC_PINWEAVER,
 
 void pinweaver_init(void)
 {
-	load_merkle_tree(&pw_merkle_tree);
+	struct tuple *ptr;
+
+	load_merkle_tree(&pw_merkle_tree, &ptr);
+
+	if (ptr)
+		freevar(ptr);
 }
 
 int get_path_auxiliary_hash_count(const struct merkle_tree_t *merkle_tree)

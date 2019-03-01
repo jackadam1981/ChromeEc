@@ -180,6 +180,9 @@ enum ec_error_list {
 	/* something wrong in a HW */
 	EC_ERROR_HW_INTERNAL = 25,
 
+	/* Sometimes operation is expected to have to be repeated. */
+	EC_ERROR_TRY_AGAIN = 26,
+
 	/* Verified boot errors */
 	EC_ERROR_VBOOT_SIGNATURE = 0x1000, /* 4096 */
 	EC_ERROR_VBOOT_SIG_MAGIC = 0x1001,
