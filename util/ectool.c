@@ -512,10 +512,15 @@ int cmd_hibdelay(int argc, char *argv[])
 int cmd_hostsleepstate(int argc, char *argv[])
 {
 	struct ec_params_host_sleep_event p;
+	struct ec_params_host_sleep_event_v1 p1;
+	void *pp = &p;
+	size_t psize = sizeof(p);
+	char *afterscan;
+	int version = 0;
 
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s "
-			"[suspend|wsuspend|resume|freeze|thaw]\n",
+			"[suspend|wsuspend|resume|freeze|thaw] [timeout]\n",
 			argv[0]);
 		return -1;
 	}
@@ -526,16 +531,34 @@ int cmd_hostsleepstate(int argc, char *argv[])
 		p.sleep_event = HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND;
 	else if (!strcmp(argv[1], "resume"))
 		p.sleep_event = HOST_SLEEP_EVENT_S3_RESUME;
-	else if (!strcmp(argv[1], "freeze"))
+	else if (!strcmp(argv[1], "freeze")) {
 		p.sleep_event = HOST_SLEEP_EVENT_S0IX_SUSPEND;
-	else if (!strcmp(argv[1], "thaw"))
+
+		/* If a duration was specified, use the v2 command form. */
+		if (argc > 2) {
+			p1.sleep_event = p.sleep_event;
+			p1.reserved = 0;
+			p1.u.suspend_params.sleep_timeout_ms =
+				strtoul(argv[2], &afterscan, 0);
+
+			if ((*afterscan != '\0') || (afterscan == argv[2])) {
+				fprintf(stderr, "Invalid value: %s\n", argv[2]);
+				return -1;
+			}
+
+			pp = &p1;
+			psize = sizeof(p1);
+			version = 1;
+		}
+
+	} else if (!strcmp(argv[1], "thaw"))
 		p.sleep_event = HOST_SLEEP_EVENT_S0IX_RESUME;
 	else {
 		fprintf(stderr, "Unknown command: %s\n", argv[1]);
 		return -1;
 	}
 
-	return ec_command(EC_CMD_HOST_SLEEP_EVENT, 0, &p, sizeof(p), NULL, 0);
+	return ec_command(EC_CMD_HOST_SLEEP_EVENT, version, pp, psize, NULL, 0);
 }
 
 int cmd_test(int argc, char *argv[])
