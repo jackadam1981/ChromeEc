@@ -72,7 +72,7 @@ static void power_button_handler(void)
 }
 DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT, power_button_handler, 1);
 
-static void power_button_release_handler(void)
+void power_button_release_handler(void)
 {
 #ifdef CR50_DEV
 	CPRINTS("power button released");
