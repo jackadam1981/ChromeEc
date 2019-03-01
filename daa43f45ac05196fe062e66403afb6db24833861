@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3211b4e_76cd7c1d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-01T17:44:04Z",
+      "side": 1,
+      "message": "After you modified the line 301 to include SERVO_EC_CHIP only if SUPPORTED_CHIPS is empty, this case will never happen. Looks like the original message is more reasonable, or just die with impossibly reaching here.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 3
+      },
+      "revId": "daa43f45ac05196fe062e66403afb6db24833861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
