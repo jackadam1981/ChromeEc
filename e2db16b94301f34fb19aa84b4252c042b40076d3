@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "944f2404_54769b6b",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 56
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-03-01T19:53:57Z",
+      "side": 1,
+      "message": "where does the number 6 come from?  I see:\n\nenum tcpm_transmit_type {\n\tTCPC_TX_SOP \u003d 0,\n\tTCPC_TX_SOP_PRIME \u003d 1,\n\tTCPC_TX_SOP_PRIME_PRIME \u003d 2,\n\tTCPC_TX_SOP_DEBUG_PRIME \u003d 3,\n\tTCPC_TX_SOP_DEBUG_PRIME_PRIME \u003d 4,\n\tTCPC_TX_HARD_RESET \u003d 5,\n\tTCPC_TX_CABLE_RESET \u003d 6,\n\tTCPC_TX_BIST_MODE_2 \u003d 7\n};\n\nwhich has 5 valid targets, two of which we don\u0027t use care about.\n\nEither way, this shouldn\u0027t be a magic number...",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "e2db16b94301f34fb19aa84b4252c042b40076d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
