@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "866a18c0_d27669c2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-01T19:50:36Z",
+      "side": 1,
+      "message": "Removed the check here which is not required.",
+      "range": {
+        "startLine": 2661,
+        "startChar": 1,
+        "endLine": 2661,
+        "endChar": 36
+      },
+      "revId": "f28060137b95ece5aa52cdb593b3c35895f1756c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67c57b65_798c3770",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
