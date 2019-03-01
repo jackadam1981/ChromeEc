@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "854fcab0_172a8db0",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-01T17:58:07Z",
+      "side": 1,
+      "message": "You may prepare a PSA to chromeos-firmware@ to mention this change, i.e. adding new board to servo overlay instead of here, and reminding people to sync their servod if the ec_chip attribute was added recently.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 56
+      },
+      "revId": "273dca5ca6e9f0034517d0cf88702c8283138027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0b8090_14117363",
+        "filename": "util/flash_ec",
+        "patchSetId": 11
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-01T17:58:07Z",
+      "side": 1,
+      "message": "Great! This is what I couldn\u0027t think of. It made the below logic much simpler.",
+      "range": {
+        "startLine": 356,
+        "startChar": 6,
+        "endLine": 356,
+        "endChar": 37
+      },
+      "revId": "273dca5ca6e9f0034517d0cf88702c8283138027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
