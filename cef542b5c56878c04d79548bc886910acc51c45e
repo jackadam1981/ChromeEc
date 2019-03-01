@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0d4caec_055b8555",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4907,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-01T01:10:26Z",
+      "side": 1,
+      "message": "Any suggestions?",
+      "parentUuid": "36e95552_0bfc72b6",
+      "range": {
+        "startLine": 4907,
+        "startChar": 3,
+        "endLine": 4907,
+        "endChar": 17
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03c24d74_92103182",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-01T00:40:33Z",
       "side": 1,
       "message": "Why not just pd[port].cc_state?",
+      "range": {
+        "startLine": 4913,
+        "startChar": 20,
+        "endLine": 4913,
+        "endChar": 44
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdb588d_f9141443",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4913,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-01T01:10:26Z",
+      "side": 1,
+      "message": "For Intel retimer, we need the cc state for configuring the accessory mode. It will be accessed in driver code.\nOnce we publish the driver, we will make this a global function. I\u0027ll remove this in this CL",
+      "parentUuid": "03c24d74_92103182",
       "range": {
         "startLine": 4913,
         "startChar": 20,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2e886f7f_11a939e5",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-01T01:10:26Z",
+      "side": 1,
+      "message": "It was a previous change, I\u0027ll remove it",
+      "parentUuid": "287e85fd_9ac62029",
+      "range": {
+        "startLine": 255,
+        "startChar": 21,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60010dac_1e02ad25",
         "filename": "include/ec_commands.h",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "06991138_f86c8ffa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4684,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-01T01:10:26Z",
+      "side": 1,
+      "message": "As per the previous discussion with Shawn, the pd_get_cc_state should be returning enum so that the host command can decode the value",
+      "parentUuid": "60010dac_1e02ad25",
+      "range": {
+        "startLine": 4684,
+        "startChar": 1,
+        "endLine": 4684,
+        "endChar": 5
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3648d80_ba13c7b4",
         "filename": "include/usb_pd.h",
         "patchSetId": 9
@@ -105,6 +201,30 @@
       "writtenOn": "2019-03-01T00:40:33Z",
       "side": 1,
       "message": "Why do you export it?",
+      "range": {
+        "startLine": 1853,
+        "startChar": 0,
+        "endLine": 1858,
+        "endChar": 44
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f7e3eb_6e534f16",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-01T01:10:26Z",
+      "side": 1,
+      "message": "We will remove it in this CL",
+      "parentUuid": "a3648d80_ba13c7b4",
       "range": {
         "startLine": 1853,
         "startChar": 0,
