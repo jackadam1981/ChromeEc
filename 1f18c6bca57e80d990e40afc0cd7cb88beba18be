@@ -45,6 +45,30 @@
       "revId": "1f18c6bca57e80d990e40afc0cd7cb88beba18be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7f0b29_8f8ad84d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-01T18:06:43Z",
+      "side": 1,
+      "message": "I think there is no servo overlay for the board \u0027glkrvp\u0027.",
+      "parentUuid": "74d3f021_bfaf9ea9",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "1f18c6bca57e80d990e40afc0cd7cb88beba18be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
