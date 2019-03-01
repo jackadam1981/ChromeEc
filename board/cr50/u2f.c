@@ -76,7 +76,7 @@ static const uint8_t k_salt = NVMEM_VAR_U2F_SALT;
 
 static int load_state(void)
 {
-	const struct tuple *t_salt = getvar(&k_salt, sizeof(k_salt));
+	struct tuple *t_salt = getvar(&k_salt, sizeof(k_salt));
 
 	if (!t_salt) {
 		/* create random salt */
@@ -85,10 +85,9 @@ static int load_state(void)
 		if (setvar(&k_salt, sizeof(k_salt),
 			   (const uint8_t *)salt, sizeof(salt)))
 			return 0;
-		/* really save the new variable to flash */
-		writevars();
 	} else {
 		memcpy(salt, tuple_val(t_salt), sizeof(salt));
+		freevar(t_salt);
 	}
 
 	if (read_tpm_nvmem_hidden(
@@ -100,7 +99,7 @@ static int load_state(void)
 		 * or not used it with updated fw that resets kek seed
 		 * on TPM clear.
 		 */
-		if (t_salt) {
+		if (t_salt) { /* Note that memory has been freed already!. */
 			/*
 			 * We have previously used u2f, and may have
 			 * existing registrations; we don't want to
