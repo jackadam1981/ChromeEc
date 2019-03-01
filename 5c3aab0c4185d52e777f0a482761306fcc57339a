@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ccf1da4d_9b544b4f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-01T02:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a08d6ec_3af24022",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "829e4289_c1205905",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "Will handle in another CL for npcx_int_spi and npcx_uut.",
       "parentUuid": "d2fece6b_592b2db6",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "5c3aab0c4185d52e777f0a482761306fcc57339a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce23a3dc_c818d570",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-01T02:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea342ab_1cd2022d",
       "range": {
         "startLine": 280,
         "startChar": 0,
