@@ -547,6 +547,30 @@
     },
     {
       "key": {
+        "uuid": "dd538201_8f385ab5",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T17:09:38Z",
+      "side": 1,
+      "message": "So, what\u0027s the answer to the first case? Should pwm_get_enabled return false if DCR \u003e CTR?",
+      "parentUuid": "c98c1724_79029a41",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c78c202a_21756c56",
         "filename": "chip/npcx/pwm_chip.h",
         "patchSetId": 1
