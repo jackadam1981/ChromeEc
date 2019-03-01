@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0dc611b4_1df1aaa9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4907,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T01:36:24Z",
+      "side": 1,
+      "message": "I don\u0027t know who is consuming it. I thought those strings were used only in a debug build but they\u0027re not. It\u0027s certainly worth a revisit.",
+      "parentUuid": "e0d4caec_055b8555",
+      "range": {
+        "startLine": 4907,
+        "startChar": 3,
+        "endLine": 4907,
+        "endChar": 17
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03c24d74_92103182",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "As per the previous discussion with Shawn, the pd_get_cc_state should be returning enum so that the host command can decode the value",
       "parentUuid": "60010dac_1e02ad25",
+      "range": {
+        "startLine": 4684,
+        "startChar": 1,
+        "endLine": 4684,
+        "endChar": 5
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ac6b98_30ebed50",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4684,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T01:36:24Z",
+      "side": 1,
+      "message": "The size of enum is ambiguous. That\u0027s most likely why there is no response/params struct using it. They\u0027re cast to uint*_t.",
+      "parentUuid": "06991138_f86c8ffa",
       "range": {
         "startLine": 4684,
         "startChar": 1,
