@@ -499,6 +499,30 @@
     },
     {
       "key": {
+        "uuid": "b598eda1_cbb1cb10",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T01:23:41Z",
+      "side": 1,
+      "message": "For example, should pwm_get_enabled return false if NPCX_DCR(mdl) \u003e NPCX_CTR(mdl)?\n\nShould pwm_enable(x, 0) set NPCX_DCR(mdl) \u003d NPCX_CTR(mdl) + 1?\n\nWhat should \u0027enable\u0027 mean now? Is it just NPCX_PWMCTL(mdl) \u0026 NPCX_PWMCTL_PWR or NPCX_DCR(mdl) \u003e NPCX_CTR(mdl) or both?",
+      "parentUuid": "82d15a10_f4af1efc",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c78c202a_21756c56",
         "filename": "chip/npcx/pwm_chip.h",
         "patchSetId": 1
