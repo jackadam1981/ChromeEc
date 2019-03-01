@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6356c29c_31cda8c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-01T01:29:17Z",
+      "side": 1,
+      "message": "I was just looking closely at the implementation of print_rtc and it doesn\u0027t look like there is a concept of true RTC on NPCX EC. It is mostly counting ticks starting with Vcc1 power-up. What is print_rtc actually printing out for you? If it is just a tick count, then it will have to be synced in some way with coreboot RTC seconds and use that on EC (see julius\u0027s comment on the bug).",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0a10199_b773e8dd",
         "filename": "common/system.c",
         "patchSetId": 4
