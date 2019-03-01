@@ -22,6 +22,30 @@
       "revId": "e2db16b94301f34fb19aa84b4252c042b40076d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d63dad_fa754afe",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 56
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-01T21:50:21Z",
+      "side": 1,
+      "message": "I totally meant to remove the magic number before uploading the CL. Nevertheless, I still counted incorrectly.",
+      "parentUuid": "944f2404_54769b6b",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "e2db16b94301f34fb19aa84b4252c042b40076d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
