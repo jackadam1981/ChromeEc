@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06184c53_6a830090",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-01T04:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d772f9_7f74b8da",
+      "range": {
+        "startLine": 1319,
+        "startChar": 23,
+        "endLine": 1319,
+        "endChar": 24
+      },
+      "revId": "14ac0b988a0c5293eb86aee7c96bb47bedc5b937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53d49fa0_703bca8b",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "14ac0b988a0c5293eb86aee7c96bb47bedc5b937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8893627c_7974660d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-01T04:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d49fa0_703bca8b",
+      "range": {
+        "startLine": 1328,
+        "startChar": 46,
+        "endLine": 1328,
+        "endChar": 49
+      },
+      "revId": "14ac0b988a0c5293eb86aee7c96bb47bedc5b937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "65f2665b_a3aa59a6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-01T04:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81860b82_ebb8c2cb",
+      "range": {
+        "startLine": 1339,
+        "startChar": 15,
+        "endLine": 1339,
+        "endChar": 19
+      },
+      "revId": "14ac0b988a0c5293eb86aee7c96bb47bedc5b937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c71a7375_b6634955",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-02-28T16:56:36Z",
       "side": 1,
       "message": "I think you\u0027re missing a ! before the second i2c_prop.\n\nHow about:\nif ((!!i2c_prop) \u003d\u003d (!!spi_prop))",
+      "range": {
+        "startLine": 1340,
+        "startChar": 2,
+        "endLine": 1340,
+        "endChar": 56
+      },
+      "revId": "14ac0b988a0c5293eb86aee7c96bb47bedc5b937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d05c7af_efab1b59",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-01T04:55:05Z",
+      "side": 1,
+      "message": "I am missing the !.\n\nDoes if ((!!i2c_prop) \u003d\u003d (!!spi_prop)) work?\n\nIf it does, I think this is less readable... I think there\u0027s some operation we could do like (!((!i2c_prop) ^ (!spi_prop)) or something, but I think I prefer what\u0027s there now. \n\nI will add a more comprehensive test.",
+      "parentUuid": "c71a7375_b6634955",
       "range": {
         "startLine": 1340,
         "startChar": 2,
