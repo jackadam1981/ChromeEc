@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13cefeee_a5d2b0df",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T17:50:56Z",
+      "side": 1,
+      "message": "We should go by the battery vendors, right? \n\nWhere is the detection code? The plan is to use BATT_ID on ADC, right? Can you upload the detection code as well?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "2368f594aa19c80445f6c0a4f8b354d4b2c8d4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
