@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4564a40_9a7a7fbe",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T17:59:51Z",
+      "side": 1,
+      "message": "Can you use \u0027offset_size \u003d\u003d 2\u0027 and swap i2c_write8 and i2c_write_offset16 for consistency?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 0
+      },
+      "revId": "0566ada2da378b0da8d0b3c22fcd3db6a195a945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c8d4d1_21ec5954",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-01T17:59:51Z",
+      "side": 1,
+      "message": "Can you fix the pace after \u0027if\u0027?",
+      "range": {
+        "startLine": 1076,
+        "startChar": 16,
+        "endLine": 1076,
+        "endChar": 18
+      },
+      "revId": "0566ada2da378b0da8d0b3c22fcd3db6a195a945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
