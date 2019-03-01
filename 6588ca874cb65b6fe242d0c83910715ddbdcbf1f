@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "886ba3a4_a68d7ce1",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-01T00:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd1f380_04674942",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97009b80_c8f6fb49",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -356,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "c47bb1ca_deb5b26b",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-01T00:57:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6020fe6c_e6b93b31",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f15122e_baaa251d",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 1
@@ -415,6 +463,30 @@
       "side": 1,
       "message": "Then, can you fix pwm_get_enabled and pwm_enable? The definition of \u0027enable\u0027 is currently blurry.",
       "parentUuid": "6ce287dd_3f469bc7",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d15a10_f4af1efc",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-01T00:57:51Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t get your point. Setting bit 7 in PWMCTL is necessary. Or its input clock will be disabled. Could you give me more detail about this? Thanks.",
+      "parentUuid": "265faac2_440ffe15",
       "range": {
         "startLine": 191,
         "startChar": 0,
