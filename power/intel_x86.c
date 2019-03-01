@@ -39,6 +39,7 @@
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 enum sys_sleep_state {
 	SYS_SLEEP_S3,
@@ -224,7 +225,97 @@ static void handle_chipset_reset(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
 
-#endif
+#ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
+#ifdef CONFIG_POWER_S0IX_FAILURE_DETECTION
+
+static uint16_t slp_s0ix_timeout;
+static uint16_t slp_s0ix_transitions;
+
+static void s0ix_transition_timeout(void);
+DECLARE_DEFERRED(s0ix_transition_timeout);
+
+static void s0ix_increment_transition(void)
+{
+	if ((slp_s0ix_transitions & EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK) <
+	    EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK)
+		slp_s0ix_transitions += 1;
+}
+
+static void s0ix_suspend_transition(void)
+{
+	s0ix_increment_transition();
+	hook_call_deferred(&s0ix_transition_timeout_data, -1);
+}
+
+static void s0ix_resume_transition(void)
+{
+	s0ix_increment_transition();
+	hook_call_deferred(&s0ix_transition_timeout_data,
+			   (uint32_t)slp_s0ix_timeout * 1000);
+}
+
+static void s0ix_transition_timeout(void)
+{
+	/* Mark the timeout. */
+	slp_s0ix_transitions |= EC_HOST_RESUME_SLEEP_TIMEOUT;
+	hook_call_deferred(&s0ix_transition_timeout_data, -1);
+
+	/*
+	 * Wake up the AP so they don't just chill in a
+	 * non-suspended state and burn power. Overload a
+	 * vaguely related event bit since event bits are at a
+	 * premium.
+	 */
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+static void s0ix_start_suspend(uint16_t timeout)
+{
+	/* Use zero internally to indicate no timeout. */
+	slp_s0ix_transitions = 0;
+	if (timeout == EC_HOST_SLEEP_TIMEOUT_INFINITE) {
+		slp_s0ix_timeout = 0;
+		return;
+	}
+
+	slp_s0ix_timeout = timeout;
+	hook_call_deferred(&s0ix_transition_timeout_data,
+			   (uint32_t)timeout * 1000);
+}
+
+static uint16_t
+s0ix_complete_suspend(void)
+{
+	hook_call_deferred(&s0ix_transition_timeout_data, -1);
+	return slp_s0ix_transitions;
+}
+
+static void s0ix_reset_tracking(void)
+{
+	slp_s0ix_transitions = 0;
+	slp_s0ix_timeout = 0;
+}
+
+#else /* !CONFIG_POWER_S0IX_FAILURE_DETECTION */
+
+#define s0ix_suspend_transition()
+#define s0ix_resume_transition()
+#define s0ix_start_suspend(_timeout)
+#define s0ix_complete_suspend() (0)
+#define s0ix_reset_tracking()
+
+#endif /* CONFIG_POWER_S0IX_FAILURE_DETECTION */
+
+void power_reset_host_sleep_state(void)
+{
+	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
+	s0ix_reset_tracking();
+	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
+					      CONFIG_SLEEP_TIMEOUT_MS);
+}
+
+#endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
+#endif /* CONFIG_POWER_S0IX */
 
 void chipset_throttle_cpu(int throttle)
 {
@@ -459,11 +550,13 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0S0ix:
+
 		/*
 		 * Call hooks only if we haven't notified listeners of S0ix
 		 * suspend.
 		 */
 		s0ix_transition(S0IX_NOTIFY_SUSPEND, HOOK_CHIPSET_SUSPEND);
+		s0ix_suspend_transition();
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -479,6 +572,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 
+		s0ix_resume_transition();
 		return POWER_S0;
 #endif
 
@@ -549,8 +643,11 @@ power_board_handle_host_sleep_event(enum host_sleep_event state)
 	/* Default weak implementation -- no action required. */
 }
 
-void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
+uint16_t power_chipset_handle_host_sleep_event(enum host_sleep_event state,
+					       uint16_t timeout)
 {
+	uint16_t sleep_transitions = 0;
+
 	power_board_handle_host_sleep_event(state);
 
 #ifdef CONFIG_POWER_S0IX
@@ -561,6 +658,8 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		 * notification needs to be sent to listeners.
 		 */
 		s0ix_notify = S0IX_NOTIFY_SUSPEND;
+
+		s0ix_start_suspend(timeout);
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*
@@ -574,10 +673,14 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 			;
 		lpc_s0ix_resume_restore_masks();
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
+		sleep_transitions = s0ix_complete_suspend();
+
 	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	}
 #endif
+
+	return sleep_transitions;
 }
 
 #endif

@@ -192,12 +192,24 @@ void power_set_pause_in_s5(int pause);
 enum host_sleep_event power_get_host_sleep_state(void);
 
 /**
+ * Set sleep state of host.
+ *
+ * @param state The new state to set.
+ */
+void power_set_host_sleep_state(enum host_sleep_event state);
+
+/**
  * Provide callback to allow chipset to take any action on host sleep event
  * command.
  *
  * @param state Current host sleep state updated by the host.
+ * @param timeout The timeout in milliseconds before EC should assert a wake
+ * event. Currently only applicable to S0ix suspend state.
+ * @return Number of sleep line transitions that were observed if detection is
+ * enabled.
  */
-void power_chipset_handle_host_sleep_event(enum host_sleep_event state);
+uint16_t power_chipset_handle_host_sleep_event(enum host_sleep_event state,
+					       uint16_t duration);
 
 /**
  * Provide callback to allow board to take any action on host sleep event
@@ -216,6 +228,7 @@ void power_board_handle_host_sleep_event(enum host_sleep_event state);
 #define HOST_SLEEP_EVENT_DEFAULT_RESET		0
 
 #ifdef CONFIG_POWER_S0IX
+
 /**
  * Reset the sleep state reported by the host.
  *
