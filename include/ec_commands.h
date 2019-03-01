@@ -4206,6 +4206,22 @@ struct ec_params_host_sleep_event {
 	uint8_t sleep_event;
 } __ec_align1;
 
+#define EC_HOST_SLEEP_TIMEOUT_DEFAULT 0
+#define EC_HOST_SLEEP_TIMEOUT_INFINITE 0xFFFF
+
+struct ec_params_host_sleep_event_v1 {
+	uint8_t sleep_event;
+	uint8_t reserved;
+	uint16_t sleep_timeout;
+} __ec_align1;
+
+#define EC_HOST_RESUME_SLEEP_TIMEOUT 0x8000
+#define EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK 0x7FFF
+
+struct ec_response_host_sleep_event_v1 {
+	uint16_t sleep_transitions;
+} __ec_align1;
+
 /*****************************************************************************/
 /* Device events */
 #define EC_CMD_DEVICE_EVENT 0x00AA

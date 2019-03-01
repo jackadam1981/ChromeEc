@@ -121,6 +121,8 @@ static const char *power_signal_get_name(enum gpio_signal signal)
 }
 #endif
 
+void power_chipset_power_update_signals(uint32_t old, uint32_t new);
+
 /**
  * Update input signals mask
  */
@@ -137,6 +139,9 @@ static void power_update_signals(void)
 
 	if ((in_signals & in_debug) != (inew & in_debug))
 		CPRINTS("power in 0x%04x", inew);
+
+	if (in_signals != inew)
+		power_chipset_power_update_signals(in_signals, inew);
 
 	in_signals = inew;
 }
@@ -860,42 +865,55 @@ DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5,
 
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 /* Track last reported sleep event */
-static enum host_sleep_event host_sleep_state;
+enum host_sleep_event host_sleep_state;
 
-void __attribute__((weak))
-power_chipset_handle_host_sleep_event(enum host_sleep_event state)
+uint16_t __attribute__((weak))
+power_chipset_handle_host_sleep_event(enum host_sleep_event state,
+				      uint16_t timeout)
 {
 	/* Default weak implementation -- no action required. */
+	return 0;
 }
 
 static int host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_host_sleep_event *p = args->params;
+	const struct ec_params_host_sleep_event_v1 *p = args->params;
+	struct ec_response_host_sleep_event_v1 *r = args->response;
+	uint16_t timeout = 0;
+
+	if (args->version >= 1)
+		timeout = p->sleep_timeout;
+
+	if (timeout == 0)
+		timeout = CONFIG_SLEEP_TIMEOUT_MS;
 
 	host_sleep_state = p->sleep_event;
 
-	power_chipset_handle_host_sleep_event(host_sleep_state);
+	r->sleep_transitions =
+		power_chipset_handle_host_sleep_event(host_sleep_state,
+						      timeout);
+
+	if (args->version >= 1)
+		args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT,
 		     host_command_host_sleep_event,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 enum host_sleep_event power_get_host_sleep_state(void)
 {
 	return host_sleep_state;
 }
 
-#ifdef CONFIG_POWER_S0IX
-void power_reset_host_sleep_state(void)
-{
-	host_sleep_state = HOST_SLEEP_EVENT_DEFAULT_RESET;
-	power_chipset_handle_host_sleep_event(host_sleep_state);
-}
-#endif /* CONFIG_POWER_S0IX */
-
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
+
+void __attribute__((weak))
+power_chipset_power_update_signals(uint32_t old, uint32_t new)
+{
+	/* Default weak implementation -- no action taken. */
+}
 
 #ifdef CONFIG_POWER_PP5000_CONTROL
 /* 5V enable request bitmask from various tasks. */
