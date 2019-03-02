@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6557289_130151d8",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-02T16:57:50Z",
+      "side": 1,
+      "message": "Now how does ccd_config_loaded get set if there was no data in NVMEM?  I think this needs to be in both places, and that seems to be how it is in ToT.",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 372,
+        "endChar": 9
+      },
+      "revId": "e4c099b1cb1878194a27381e65dc3dab2d24e105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
