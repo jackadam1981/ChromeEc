@@ -45,6 +45,30 @@
       "revId": "cedce6b8d6905a492d6224c543db5e4b32d0b5c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306c1c10_c2c54de1",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-03-02T01:27:06Z",
+      "side": 1,
+      "message": "SGTM. Will go this route.",
+      "parentUuid": "21312c48_7a1b92b8",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 40
+      },
+      "revId": "cedce6b8d6905a492d6224c543db5e4b32d0b5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
