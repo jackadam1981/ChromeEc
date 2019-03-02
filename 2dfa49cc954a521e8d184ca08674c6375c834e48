@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "481b7d4f_bcab40ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-02T09:50:21Z",
+      "side": 1,
+      "message": "STM32F4L/STM32L? STM32L4 seems to use that, and STM32F4L does not exist. Can you fix?",
+      "revId": "2dfa49cc954a521e8d184ca08674c6375c834e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb912e06_43e9cd67",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-02T09:50:21Z",
+      "side": 1,
+      "message": "Since you\u0027re at it, can you either: fix this one too, or only define it in the else branch?",
+      "revId": "2dfa49cc954a521e8d184ca08674c6375c834e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179e0e88_d965b7f8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-02T09:50:21Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2dfa49cc954a521e8d184ca08674c6375c834e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
