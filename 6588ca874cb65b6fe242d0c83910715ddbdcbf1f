@@ -571,6 +571,30 @@
     },
     {
       "key": {
+        "uuid": "b540d0c8_7d556d6c",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "No, only bit 7 of PWM_CTL reflects module is enabled or not.\nDCR \u003e CTR means the duty cycle of pwm is zero. There is a slight difference.\n\nIf pwm module is disabled, the signal of pwm is always low regardless of its duty cycle. If pwm module is enabled, the signal of pwm is always low only its duty cycle is zero. Please refer https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/pwm.c#100. We still need to distinguish pwm modules is disabled and its duty cycle is zero although the signal is always low in both cases.",
+      "parentUuid": "dd538201_8f385ab5",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 59
+      },
+      "revId": "6588ca874cb65b6fe242d0c83910715ddbdcbf1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c78c202a_21756c56",
         "filename": "chip/npcx/pwm_chip.h",
         "patchSetId": 1

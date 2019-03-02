@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18ddff08_ab1b6f52",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9083412_3ad7ff27",
+      "range": {
+        "startLine": 81,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df7bb0bb_4aae5777",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-01T17:09:38Z",
       "side": 1,
       "message": "Should it set DCR \u003d CTR + 1 for enable (and restore DCR for disable)?",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45534caa_c8d0395d",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "No. Only bit 7 of PWM_CTL can turn on/off module.",
+      "parentUuid": "df7bb0bb_4aae5777",
       "range": {
         "startLine": 99,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bec7d9f7_3fd6c50b",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "No. Let only bit 7 of PWM_CTL reflect module is enabled or not.",
+      "parentUuid": "f8f842e6_0b735788",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0bb52e_e61ba79d",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332cc079_6ac429a7",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f0bb52e_e61ba79d",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8ee762f6_a6033bd9",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "682496aa_9a92d327",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 16
+      },
+      "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ceb0960_b4f33b4b",
         "filename": "chip/npcx/pwm.c",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23949b05_4a19302d",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-02T02:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ceb0960_b4f33b4b",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 14
+      },
+      "revId": "0a4a05d92d85a70a9194af3f0c5417bd717ce7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
