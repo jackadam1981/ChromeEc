@@ -369,7 +369,6 @@ static void ccd_load_config(void)
 			CPRINTS("CCD using default config");
 			ccd_reset_config(CCD_RESET_TEST_LAB);
 		}
-		ccd_config_loaded = 1;
 		return;
 	}
 
@@ -487,6 +486,8 @@ int ccd_reset_config(unsigned int flags)
 		raw_set_flag(CCD_FLAG_TEST_LAB, old_lab);
 
 	mutex_unlock(&ccd_config_mutex);
+
+	ccd_config_loaded = 1;
 
 	return ccd_save_config();
 }
