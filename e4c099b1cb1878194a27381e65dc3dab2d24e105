@@ -22,6 +22,30 @@
       "revId": "e4c099b1cb1878194a27381e65dc3dab2d24e105",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "360f160b_f61b32c4",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-02T17:00:38Z",
+      "side": 1,
+      "message": "Oh, wait, I see, you\u0027ve moved setting it to ccd_reset_config.  gerrit folded the code below so it looked like it was all one function",
+      "parentUuid": "d6557289_130151d8",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 372,
+        "endChar": 9
+      },
+      "revId": "e4c099b1cb1878194a27381e65dc3dab2d24e105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
