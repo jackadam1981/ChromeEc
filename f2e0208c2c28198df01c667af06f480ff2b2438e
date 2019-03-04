@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b93b92a8_96cf8f7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-04T09:49:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6545b1ba_c0b37676",
+      "range": {
+        "startLine": 10,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 74
+      },
+      "revId": "f2e0208c2c28198df01c667af06f480ff2b2438e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6715c4fd_5e4f00fc",
         "filename": "board/kukui/board.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7b5f6f5b_d387f938",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-04T09:49:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6715c4fd_5e4f00fc",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 70
+      },
+      "revId": "f2e0208c2c28198df01c667af06f480ff2b2438e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d741f784_0ee2b307",
         "filename": "board/kukui/board.c",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2019-03-04T08:49:34Z",
       "side": 1,
       "message": "How about name these values in driver\u0027s header?",
+      "revId": "f2e0208c2c28198df01c667af06f480ff2b2438e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d738309_c944679f",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-04T09:49:29Z",
+      "side": 1,
+      "message": "Done. I can\u0027t reuse anything from pi3usb9201.c without refactoring it, because the driver assumes we enables full feature of it. This is what I can do with the header.",
+      "parentUuid": "d741f784_0ee2b307",
       "revId": "f2e0208c2c28198df01c667af06f480ff2b2438e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
