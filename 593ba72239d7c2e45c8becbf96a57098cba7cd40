@@ -16,6 +16,24 @@
       "revId": "593ba72239d7c2e45c8becbf96a57098cba7cd40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4877779_113a3fee",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-04T06:19:22Z",
+      "side": 1,
+      "message": "Currently, nocturne board uses both methods(GPIO and HOST_EVENT).\nSo, the idea is, if using CUSTOM, then the other config are allowed to be defined.",
+      "parentUuid": "617be88b_a6340168",
+      "revId": "593ba72239d7c2e45c8becbf96a57098cba7cd40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
