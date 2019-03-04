@@ -84,6 +84,7 @@ const struct i2c_port_t i2c_ports[] = {
 	{"tcpc0",     I2C_PORT_TCPC0,     400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"battery",   I2C_PORT_BATTERY,   400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"accelgyro", I2C_PORT_ACCEL,     400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{"bc12",      I2C_PORT_BC12,      400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -227,6 +228,12 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+
+#if BOARD_REV == 2
+	/* configure PI3USB9201 to USB Path ON Mode */
+	gpio_set_level(GPIO_EN_PP3300_POGO, 1);
+	i2c_write8(I2C_PORT_BC12, 0xBE, 0, 0x0E);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
