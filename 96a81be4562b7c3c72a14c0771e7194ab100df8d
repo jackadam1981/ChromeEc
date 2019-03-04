@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b37ad340_c518f9e5",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-04T21:01:20Z",
+      "side": 1,
+      "message": "nit, why not just make this default and remove \u0027else\u0027",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 22
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4dc5deb_b400e33e",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-04T21:01:20Z",
+      "side": 1,
+      "message": "missing \u0027o\u0027: chcodile_bec -\u003e chocodile_bec",
+      "range": {
+        "startLine": 655,
+        "startChar": 21,
+        "endLine": 655,
+        "endChar": 33
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
