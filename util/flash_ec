@@ -56,22 +56,15 @@ BOARDS_IT83XX=(
 )
 
 BOARDS_STM32=(
-	chell_pd
 	coffeecake
 	chocodile_bec
 	chocodile_vpdmcu
-	glados_pd
 	jerry
 	minimuffin
-	nami_fp
-	nocturne_fp
-	oak_pd
 	pit
 	plankton
 	rainier
-	samus_pd
 	staff
-	strago_pd
 	wand
 	whiskers
 	zinger
@@ -191,6 +184,8 @@ DEFINE_string board "${DEFAULT_BOARD}" \
 	"The board to run debugger on."
 DEFINE_string chip "" \
 	"The chip to run debugger on."
+DEFINE_boolean fpmcu "${FLAGS_FALSE}" \
+	"Flash a fingerprint EC instead of main EC."
 DEFINE_string image "" \
 	"Full pathname of the EC firmware image to flash."
 DEFINE_string logfile "" \
@@ -207,6 +202,8 @@ DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
 DEFINE_integer timeout 600 \
 	"Timeout for flashing the EC, measured in seconds."
+DEFINE_boolean usbpd "${FLAGS_FALSE}" \
+	"Flash a usbpd EC instead of main EC."
 DEFINE_boolean verbose "${FLAGS_FALSE}" \
 	"Verbose hw control logging"
 DEFINE_boolean verify "${FLAGS_FALSE}" "Stm32 and npcx_(int_)spi only:"\
@@ -238,7 +235,15 @@ function get_servo_type() {
 	fi
 }
 
-SERVO_EC_CHIP="$(($DUT_CONTROL_CMD ec_chip) | sed -e s/ec_chip://)"
+if [[ "${FLAGS_usbpd}" == ${FLAGS_TRUE} ]]; then
+	TARGET_CHIP="usbpd_chip"
+elif [[ "${FLAGS_fpmcu}" == ${FLAGS_TRUE} ]]; then
+	TARGET_CHIP="fpmcu_chip"
+else
+	TARGET_CHIP="ec_chip"
+fi
+
+SERVO_EC_CHIP="$(${DUT_CONTROL_CMD} ${TARGET_CHIP} | cut -d: -f2)"
 SERVO_EC_CHIP="${SERVO_EC_CHIP,,}"
 if [[ "${SERVO_EC_CHIP}" =~ "unknown" ]]; then
 	SERVO_EC_CHIP=""
@@ -359,8 +364,9 @@ if [ -n "${FLAGS_chip}" -a "${CHIP}" != "${FLAGS_chip}" ]; then
 	die "board ${BOARD} doesn't use chip ${FLAGS_chip}"
 fi
 
-if [ "${CHIP}" = "stm32_dfu" -o "${CHIP}" = "it83xx" ]; then
+if [[ "${CHIP}" == "stm32_dfu" ]]; then
 	NEED_SERVO="no"
+	DUT_CONTROL_CMD="true"
 fi
 
 case "${CHIP}" in
@@ -643,15 +649,14 @@ function servo_ec_uart() {
 	echo $PTY
 }
 
-# Servo variables management
-case "${BOARD}" in
-        chocodile_bec ) MCU="usbpd" ;;
-	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
-	chell_pd|glados_pd ) MCU="usbpd" ;;
-	nami_fp|nocturne_fp ) MCU="usbpd" ;;
-	dingdong|hoho|twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
-	*) MCU="ec" ;;
-esac
+# USBPD or FPMCU EC variables management
+if [[ "${FLAGS_usbpd}" == ${FLAGS_TRUE} || \
+      "${FLAGS_fpmcu}" == ${FLAGS_TRUE} || \
+      "${BOARD}" == "chcodile_bec" ]]; then
+	MCU="usbpd"
+else
+	MCU="ec"
+fi
 
 # Not every control is supported on every servo type.  Therefore, define which
 # controls are supported by each servo type.
