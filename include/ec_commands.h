@@ -4755,6 +4755,22 @@ struct ec_response_usb_pd_control_v1 {
 	char state[32];
 } __ec_align1;
 
+/* Flags representing usbc PD CC state */
+#define USBC_PD_CC_NONE		(1 << 0) /* No accessory connected */
+#define USBC_PD_CC_NO_UFP	(1 << 1) /* No UFP accessory connected */
+#define USBC_PD_CC_AUDIO_ACC	(1 << 2) /* Audio accessory connected */
+#define USBC_PD_CC_DEBUG_ACC	(1 << 3) /* Debug accessory connected */
+#define USBC_PD_CC_UFP_ATTACHED	(1 << 4) /* UFP attached to usbc */
+#define USBC_PD_CC_DFP_ATTACHED	(1 << 5) /* DPF attached to usbc */
+
+struct ec_response_usb_pd_control_v2 {
+	uint8_t enabled;
+	uint8_t role;
+	uint8_t polarity;
+	uint8_t cc_state; /* PD_CC_*Encoded cc state */
+	char state[32];
+} __ec_align1;
+
 #define EC_CMD_USB_PD_PORTS 0x0102
 
 /* Maximum number of PD ports on a device, num_ports will be <= this */
