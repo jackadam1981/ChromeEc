@@ -15,6 +15,7 @@
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/battery/max17055.h"
+#include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/rt946x.h"
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
@@ -84,8 +85,18 @@ const struct i2c_port_t i2c_ports[] = {
 	{"tcpc0",     I2C_PORT_TCPC0,     400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"battery",   I2C_PORT_BATTERY,   400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"accelgyro", I2C_PORT_ACCEL,     400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+#if BOARD_REV == 2
+	{"bc12",      I2C_PORT_BC12,      400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+#endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+#if BOARD_REV == 2
+#define PI3USB9201_PORT_0 0
+const struct pi3usb2901_config_t pi3usb2901_bc12_chips[] = {
+	[PI3USB9201_PORT_0] = {I2C_PORT_BC12, PI3USB9201_I2C_ADDR_3},
+};
+#endif
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -227,6 +238,12 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+
+#if BOARD_REV == 2
+	/* configure PI3USB9201 to USB Path ON Mode */
+	gpio_set_level(GPIO_EN_PP3300_POGO, 1);
+	pi3usb9201_set_mode(PI3USB9201_PORT_0, PI3USB9201_USB_PATH_ON);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
