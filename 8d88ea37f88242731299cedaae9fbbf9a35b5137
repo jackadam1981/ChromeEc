@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8cf679ee_3a475adb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-04T21:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e48e4b9_bb8d209b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6356c29c_31cda8c9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "82d25af9_954c8b5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-04T21:48:26Z",
+      "side": 1,
+      "message": "While testing it, I added an extra print statement.  Correct, there is no RTC in the NPC EC.  print_system_rtc() is stubbed out in include/system.h, depending on the value of CONFIG_CMD_RTC.  For any EC that does support that, the RTC time will get printed out.",
+      "parentUuid": "6356c29c_31cda8c9",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0a10199_b773e8dd",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81eeb3de_d65f9990",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-04T21:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a10199_b773e8dd",
+      "range": {
+        "startLine": 1637,
+        "startChar": 12,
+        "endLine": 1637,
+        "endChar": 21
+      },
+      "revId": "8d88ea37f88242731299cedaae9fbbf9a35b5137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
