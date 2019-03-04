@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b384e67_1656502a",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-04T22:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba67fa1c_8dab4129",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 24
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67ae17cc_cafeb9f2",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30874165_f64d9d62",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-04T22:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67ae17cc_cafeb9f2",
+      "range": {
+        "startLine": 206,
+        "startChar": 10,
+        "endLine": 206,
+        "endChar": 19
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8195c7db_40e275ca",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-04T22:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b37ad340_c518f9e5",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 22
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce607f00_07e5dab9",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fe59cca9_2102821d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-04T22:11:13Z",
+      "side": 1,
+      "message": "That function could cover \"sed -e s/${dut_control_name}://\" as well, but the change is gonna be too big to resolve this CL. \nWill handle it in another CL.",
+      "parentUuid": "ce607f00_07e5dab9",
+      "range": {
+        "startLine": 246,
+        "startChar": 53,
+        "endLine": 246,
+        "endChar": 60
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4dc5deb_b400e33e",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c13358_05b269b6",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-04T22:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4dc5deb_b400e33e",
+      "range": {
+        "startLine": 655,
+        "startChar": 21,
+        "endLine": 655,
+        "endChar": 33
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
