@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ba67fa1c_8dab4129",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-04T21:13:52Z",
+      "side": 1,
+      "message": "Use the term \"MCU\" to match its name.",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 24
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ae17cc_cafeb9f2",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-04T21:13:52Z",
+      "side": 1,
+      "message": "Same here, \"USB PD\".",
+      "range": {
+        "startLine": 206,
+        "startChar": 10,
+        "endLine": 206,
+        "endChar": 19
+      },
+      "revId": "96a81be4562b7c3c72a14c0771e7194ab100df8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b37ad340_c518f9e5",
         "filename": "util/flash_ec",
         "patchSetId": 2
