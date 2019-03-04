@@ -1065,6 +1065,12 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_PECI_AWFCSV      REG8(IT83XX_PECI_BASE+0x0D)
 #define IT83XX_PECI_PADCTLR     REG8(IT83XX_PECI_BASE+0x0E)
 
+/*
+ * The count number of the counter for 25 ms register.
+ * The 25 ms register is calculated by (count number *1.024 kHz).
+ */
+#define I2C_CLK_LOW_TIMEOUT  255 /* ~=249 ms */
+
 /* SMBus/I2C Interface (SMB/I2C) */
 #define IT83XX_SMB_BASE   0x00F01C00
 
@@ -1091,6 +1097,21 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_SMB_PECERC(ch)   REG8(IT83XX_SMB_BASE+0x47+(ch << 6))
 #define IT83XX_SMB_SMBPCTL(ch)  REG8(IT83XX_SMB_BASE+0x4A+(ch << 6))
 #define IT83XX_SMB_HOCTL2(ch)   REG8(IT83XX_SMB_BASE+0x50+(ch << 6))
+#define IT83XX_SMB_SLVEN        (1 << 5)
+#define IT83XX_SMB_RESLADR      REG8(IT83XX_SMB_BASE+0x48)
+#define IT83XX_SMB_SLDA         REG8(IT83XX_SMB_BASE+0x49)
+#define IT83XX_SMB_SLSTA        REG8(IT83XX_SMB_BASE+0x4B)
+#define IT83XX_SMB_SPDS         (1 << 5)
+#define IT83XX_SMB_RCS          (1 << 3)
+#define IT83XX_SMB_STS          (1 << 2)
+#define IT83XX_SMB_SDS          (1 << 1)
+#define IT83XX_SMB_SICR         REG8(IT83XX_SMB_BASE+0x4C)
+#define IT83XX_SMB_RESLADR2     REG8(IT83XX_SMB_BASE+0x51)
+#define IT83XX_SMB_ENADDR2      (1 << 7)
+#define IT83XX_SMB_SFFCTL       REG8(IT83XX_SMB_BASE+0x55)
+#define IT83XX_SMB_SAFE         (1 << 0)
+#define IT83XX_SMB_SFFSTA       REG8(IT83XX_SMB_BASE+0x56)
+#define IT83XX_SMB_SFFFULL      (1 << 6)
 
 /* BRAM */
 #define IT83XX_BRAM_BASE  0x00F02200
