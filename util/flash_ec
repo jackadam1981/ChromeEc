@@ -56,22 +56,15 @@ BOARDS_IT83XX=(
 )
 
 BOARDS_STM32=(
-	chell_pd
 	coffeecake
 	chocodile_bec
 	chocodile_vpdmcu
-	glados_pd
 	jerry
 	minimuffin
-	nami_fp
-	nocturne_fp
-	oak_pd
 	pit
 	plankton
 	rainier
-	samus_pd
 	staff
-	strago_pd
 	wand
 	whiskers
 	zinger
@@ -191,6 +184,8 @@ DEFINE_string board "${DEFAULT_BOARD}" \
 	"The board to run debugger on."
 DEFINE_string chip "" \
 	"The chip to run debugger on."
+DEFINE_boolean fpmcu "${FLAGS_FALSE}" \
+	"Flash a fingerprint MCU instead of main EC."
 DEFINE_string image "" \
 	"Full pathname of the EC firmware image to flash."
 DEFINE_string logfile "" \
@@ -207,6 +202,8 @@ DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
 DEFINE_integer timeout 600 \
 	"Timeout for flashing the EC, measured in seconds."
+DEFINE_boolean usbpd "${FLAGS_FALSE}" \
+	"Flash a USB PD instead of main EC."
 DEFINE_boolean verbose "${FLAGS_FALSE}" \
 	"Verbose hw control logging"
 DEFINE_boolean verify "${FLAGS_FALSE}" "Stm32 and npcx_(int_)spi only:"\
@@ -238,8 +235,26 @@ function get_servo_type() {
 	fi
 }
 
-SERVO_EC_CHIP="$(($DUT_CONTROL_CMD ec_chip) | sed -e s/ec_chip://)"
+MCU=
+if [[ "${FLAGS_usbpd}" == ${FLAGS_TRUE} ]]; then
+	MCU="usbpd"
+elif [[ "${FLAGS_fpmcu}" == ${FLAGS_TRUE} ]]; then
+	MCU="fpmcu"
+fi
+
+if [[ "${BOARD}" == "chocodile_bec" ]]; then
+	MCU="usbpd"
+fi
+
+TARGET_CHIP="${MCU:="ec"}_chip"
+SERVO_EC_CHIP="$(${DUT_CONTROL_CMD} ${TARGET_CHIP})"
+SERVO_EC_CHIP="${SERVO_EC_CHIP##*:}"
 SERVO_EC_CHIP="${SERVO_EC_CHIP,,}"
+
+warn "MCU is ${MCU}"
+warn "TARGET_CHIP is ${TARGET_CHIP}"
+warn "SERVO_EC_CHIP is ${SERVO_EC_CHIP}"
+
 if [[ "${SERVO_EC_CHIP}" =~ "unknown" ]]; then
 	SERVO_EC_CHIP=""
 fi
@@ -359,8 +374,9 @@ if [ -n "${FLAGS_chip}" -a "${CHIP}" != "${FLAGS_chip}" ]; then
 	die "board ${BOARD} doesn't use chip ${FLAGS_chip}"
 fi
 
-if [[ "${CHIP}" = "stm32_dfu" ]]; then
+if [[ "${CHIP}" == "stm32_dfu" ]]; then
 	NEED_SERVO="no"
+	DUT_CONTROL_CMD="true"
 fi
 
 case "${CHIP}" in
@@ -410,6 +426,10 @@ servo_usbpd_hard_reset() {
 	dut_control usbpd_reset:on sleep:0.5 usbpd_reset:off
 }
 
+servo_fpmcu_hard_reset() {
+	dut_control fpmcu_reset:on sleep:0.5 fpmcu_reset:off
+}
+
 servo_sh_hard_reset() {
 	dut_control sh_reset:on
 	dut_control sh_reset:off
@@ -446,6 +466,10 @@ servo_ec_boot0() {
 
 servo_usbpd_boot0() {
 	dut_control usbpd_boot_mode:$1
+}
+
+servo_fpmcu_boot0() {
+	dut_control fpmcu_boot_mode:$1
 }
 
 servo_sh_boot0() {
@@ -635,23 +659,14 @@ function ec_image() {
 # Find the EC UART provided by servo.
 function servo_ec_uart() {
 	SERVOD_FAIL="Cannot communicate with servod. Is servod running?"
-	PTY=$(($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
-	       $DUT_CONTROL_CMD ${MCU}_uart_pty) | cut -d: -f2)
+	PTY="$($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
+	      $DUT_CONTROL_CMD ${MCU}_uart_pty)"
+	PTY="${PTY##*:}"
 	if [[ -z "${PTY}" ]]; then
 	    die "${SERVOD_FAIL}"
 	fi
 	echo $PTY
 }
-
-# Servo variables management
-case "${BOARD}" in
-        chocodile_bec ) MCU="usbpd" ;;
-	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
-	chell_pd|glados_pd ) MCU="usbpd" ;;
-	nami_fp|nocturne_fp ) MCU="usbpd" ;;
-	dingdong|hoho|twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
-	*) MCU="ec" ;;
-esac
 
 # Not every control is supported on every servo type.  Therefore, define which
 # controls are supported by each servo type.
@@ -746,8 +761,8 @@ function get_serial() {
 		sn_ctl=""
 	fi
 
-	SERIALNAME=$(${DUT_CONTROL_CMD} "${sn_ctl}serialname" | cut -d: -f2)
-	echo $SERIALNAME
+	SERIALNAME="$(${DUT_CONTROL_CMD} "${sn_ctl}serialname")"
+	echo "${SERIALNAME##*:}"
 }
 
 # Board specific flashing scripts
