@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd0dbb83_d4ad637a",
+        "filename": "chip/npcx/pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-04T18:19:59Z",
+      "side": 1,
+      "message": "By the way, this whole thing can be as simple as:\n\nNPCX_DCR(mdl) \u003d sd ? sd : NPCX_PWM_MAX_RAW_DUTY + 1;\n\nI don\u0027t think you need to cast sd by uint16_t any more because duty, pwm_res[ch], EC_PWM_MAX_DUTY are all bounded.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 31
+      },
+      "revId": "8c1955f5b69d9b002ecf05224a5463c7fd5a64ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
