@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd6d496d_bddc3649",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-04T12:11:49Z",
+      "side": 1,
+      "message": "You can include that unconditionally, that\u0027s fine.",
+      "revId": "96fbac446a7daee239d199970a805640ef213c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170954a6_1029064b",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-04T12:11:49Z",
+      "side": 1,
+      "message": "Can you OR the relevant PI3USB9201_REG_CTRL_1_* registers instead?",
+      "range": {
+        "startLine": 244,
+        "startChar": 28,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "96fbac446a7daee239d199970a805640ef213c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
