@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df6fa2b5_c7a7a2f3",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-05T02:16:24Z",
+      "side": 1,
+      "message": "This should naturally avoid including tpm2 and cryptoc for \u0027emerge ec-utils\u0027, right? Do you have BOARD\u003dcr50 exported?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
