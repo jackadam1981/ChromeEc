@@ -46,6 +46,29 @@
       "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdddb1ce_7b29975b",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-05T02:39:43Z",
+      "side": 1,
+      "message": "Do we care about the case where a directory which is supposed to be included is missing?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
