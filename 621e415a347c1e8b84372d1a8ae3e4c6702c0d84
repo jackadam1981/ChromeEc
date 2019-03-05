@@ -22,6 +22,30 @@
       "revId": "621e415a347c1e8b84372d1a8ae3e4c6702c0d84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d490b9_bcdb1c91",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-05T03:50:41Z",
+      "side": 1,
+      "message": "these concern are not a problem: the file is expected to be exactly 512K in size (checked in get_file_or_die(), and here we are could be decrementing the size to get rid of the padding, if any.\n\nIf there is no padding, the data_len would be 512K, so the operation in line 727 is a noop. If there is padding then we\u0027d transfer a few extra 0xFF bytes in the end of the image, but the image is written into the erased flash page, so 0xFF is the contents there already.",
+      "parentUuid": "ec57232b_d97c1ce3",
+      "range": {
+        "startLine": 727,
+        "startChar": 1,
+        "endLine": 728,
+        "endChar": 0
+      },
+      "revId": "621e415a347c1e8b84372d1a8ae3e4c6702c0d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
