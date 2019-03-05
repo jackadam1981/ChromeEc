@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec57232b_d97c1ce3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-05T03:36:11Z",
+      "side": 1,
+      "message": "wait, \n1) data_ptr points inside the common buffer, into which we read the file in get_file_or_die(). and in get_file_or_die() we allocate exactly the file length. so, if the file size is not 4-bytes aligned we risk reading past the end of this buffer when transferring the last section.\n2) we actually transmit garbage for unaligned-sized data: start of the next section or random data after the end of the last section.\n\nto deal with (1) we can malloc(len+3) in get_file_or_die(). not sure how critical (2) is, but to deal with it we may want to track data_len and actual_data_in_buf_len and for the last tpm_send_pkt()/transfer_block() first copy into an intermediate buffer, set the extra bytes to zero, and then sending from there.",
+      "range": {
+        "startLine": 727,
+        "startChar": 1,
+        "endLine": 728,
+        "endChar": 0
+      },
+      "revId": "621e415a347c1e8b84372d1a8ae3e4c6702c0d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
