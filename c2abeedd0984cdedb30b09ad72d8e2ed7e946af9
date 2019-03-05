@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc3be6de_e6dd2400",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-05T05:57:10Z",
+      "side": 1,
+      "message": "hmm good question. We can\u0027t really hold the AP in reset on Mistral. So I am not sure how we are supposed to hold the AP in reset while wiping the TPM.\n\nside note. we probably shouldn\u0027t have 2 implementations for wiping the TPM.",
+      "parentUuid": "9016204c_c4f5d308",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c7e525e_fb0a2b87",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -59,6 +83,30 @@
       "writtenOn": "2019-03-05T05:43:47Z",
       "side": 1,
       "message": "Do you mean RBOX?",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39385ece_2203662b",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-05T05:57:10Z",
+      "side": 1,
+      "message": "no. RO starts asserting EC_RST_L. then normally we do another short pulse in RW. the RO pulse is too short.",
+      "parentUuid": "5a7179cf_35f9378b",
       "range": {
         "startLine": 165,
         "startChar": 15,
