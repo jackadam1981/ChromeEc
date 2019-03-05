@@ -94,6 +94,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f80c6ee_4e42c123",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-03-05T09:23:07Z",
+      "side": 1,
+      "message": "clear ESPI_UPSTREAM_BUSY bit cases:\n1.master read our upstream data buffer\n2.master assert espi reset pin\n\nIf upstream buffer in busy state, data in upstream buffer can\u0027t be overwritten. And because of cost, our upstream buffer can store just one command set. 　",
+      "parentUuid": "e92de4df_7be357e7",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
