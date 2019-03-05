@@ -460,6 +460,30 @@
     },
     {
       "key": {
+        "uuid": "fb7deabc_3e62c924",
+        "filename": "include/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-05T22:07:38Z",
+      "side": 1,
+      "message": "I think its better to expose APIs than to directly operate on the variables across different files.",
+      "parentUuid": "d58a248b_63d61473",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 46
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0774f3a_da85acfc",
         "filename": "power/common.c",
         "patchSetId": 1
@@ -683,6 +707,30 @@
       "side": 1,
       "message": "Yeah... to me it seems like a tradeoff. I\u0027ll post my defense of doing it this way and then we can decide:\n1. common_intel_x86_power_handle_state() is already getting a little hairy, and I didn\u0027t want to sprinkle a bunch more ifdefs into it. Keeping all the code here made it very easy to reason about, and easy to excise with a feature macro.\n2. It seemed cleaner to me to have this code run in response to power signal changes, rather than the while(1) grinding that power_handle_state() seems to do. I guess it\u0027s not a whole lot of code, but it still seemed nice to keep that load off the EC.\n3. The other nice part about having a callout when the power signals change is that you don\u0027t have to go fishing through chipset_get_sleep_signal(), you can just operate on the old and new arguments containing all the power signal states.",
       "parentUuid": "0f2a65df_fdccd677",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 39
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0974044c_e45c13b7",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-05T22:07:38Z",
+      "side": 1,
+      "message": "I understand the intent to keep things separate, but in practice this handling is not separate from the power state machine itself. We already have a notion of power state and adding sub states which are completely separate from that adds more complexity than is required.\n\n1. You can always add empty functions with #ifs outside the common_intel_x86_power_handle_state if that function seems ugly.\n2. Even though it is a while(1) loop, that task just calls task_wait_event(-1) in power_common_state to wait for an actual event change to take action. So, it won\u0027t change the EC load.\n3. You can always use power_get_state if you don\u0027t want to query the sleep signal. In fact if the calls are made from appropriate states in common_intel_x86_power_handle_state, there is no need to check for sleep signals since the power state guarantees state of the signal.",
+      "parentUuid": "88d4095b_b044836b",
       "range": {
         "startLine": 246,
         "startChar": 5,
