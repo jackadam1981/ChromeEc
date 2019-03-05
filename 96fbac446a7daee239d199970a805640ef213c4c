@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e2f1c2d8_b4960c79",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-05T03:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd6d496d_bddc3649",
+      "revId": "96fbac446a7daee239d199970a805640ef213c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "170954a6_1029064b",
         "filename": "board/kukui/board.c",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "96fbac446a7daee239d199970a805640ef213c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebda4515_0344bc44",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-05T03:55:39Z",
+      "side": 1,
+      "message": "Done (with CL:1502192)",
+      "parentUuid": "170954a6_1029064b",
+      "range": {
+        "startLine": 244,
+        "startChar": 28,
+        "endLine": 244,
+        "endChar": 44
+      },
+      "revId": "96fbac446a7daee239d199970a805640ef213c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
