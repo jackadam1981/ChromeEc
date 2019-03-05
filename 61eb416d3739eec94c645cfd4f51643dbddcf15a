@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9deb4846_4cedd6ca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3368,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T20:52:05Z",
+      "side": 1,
+      "message": "I believe pd_send_vdm currently only queues up one message at a time to send.  So this would cause us to not send the previous SOP message, correct?  Is that the intent?",
+      "range": {
+        "startLine": 3365,
+        "startChar": 0,
+        "endLine": 3368,
+        "endChar": 38
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64fa965_b733d8ac",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3868,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T20:52:05Z",
+      "side": 1,
+      "message": "Same concern as above",
+      "range": {
+        "startLine": 3865,
+        "startChar": 0,
+        "endLine": 3868,
+        "endChar": 38
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ed65ce_c002ae3a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4771,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T20:52:05Z",
+      "side": 1,
+      "message": "Same concern as the cc_state review.  New structure members need to be placed at the end since the code will access the \"state\" member using a v1 pointer",
+      "range": {
+        "startLine": 4771,
+        "startChar": 1,
+        "endLine": 4771,
+        "endChar": 20
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
