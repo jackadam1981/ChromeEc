@@ -22,6 +22,30 @@
       "revId": "87af6b9f25c5a920bb3f2ec266d5101724c8bff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5034b3_95b211d5",
+        "filename": "board/bip/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-05T21:59:05Z",
+      "side": 1,
+      "message": "I didn\u0027t think it would either... Without this change, bip reports 2704 bytes free in Flash (from make savesizes).  With it enabled:\n\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/8.2.0/../../../../nds32le-elf/bin/ld: build/bip/RO/ec.RO.elf section `.rodata\u0027 will not fit in region `FLASH\u0027\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/8.2.0/../../../../nds32le-elf/bin/ld: region `FLASH\u0027 overflowed by 920 bytes",
+      "parentUuid": "257e170f_78254d87",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "87af6b9f25c5a920bb3f2ec266d5101724c8bff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
