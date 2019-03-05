@@ -219,9 +219,14 @@ void intc_cpu_int_group_6(void)
 	int intc_group_6 = intc_get_ec_int();
 
 	switch (intc_group_6) {
-#ifdef CONFIG_I2C
+#if defined(CONFIG_I2C_MASTER) || defined(CONFIG_I2C_SLAVE)
 	case IT83XX_IRQ_SMB_A:
-		i2c_interrupt(IT83XX_I2C_CH_A);
+#ifdef CONFIG_I2C_SLAVE
+		if (IT83XX_SMB_SFFCTL & IT83XX_SMB_SAFE)
+			i2c_slv_interrupt(IT83XX_I2C_CH_A);
+		else
+#endif
+			i2c_interrupt(IT83XX_I2C_CH_A);
 		break;
 
 	case IT83XX_IRQ_SMB_B:
