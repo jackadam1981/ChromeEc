@@ -166,6 +166,30 @@
       "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf48d7b9_f598ed28",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T18:30:25Z",
+      "side": 1,
+      "message": "Let me know your thoughts on the most recent patchset.  It should remove the disconnect we currently have between the PD task selecting its own CC values and the charge manager selecting them.",
+      "parentUuid": "2d4f748b_6278123d",
+      "range": {
+        "startLine": 4132,
+        "startChar": 4,
+        "endLine": 4133,
+        "endChar": 33
+      },
+      "revId": "5b51a296cddb5c8ec9e1e99568a695b7b0f4821f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
