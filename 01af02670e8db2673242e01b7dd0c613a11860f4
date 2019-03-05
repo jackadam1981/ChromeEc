@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b4083bc_ff2b37d5",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "c8fdafec_d48302dd",
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ef6b5b3_415c8199",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "sleep signal(SLP_S0)",
+      "range": {
+        "startLine": 4311,
+        "startChar": 66,
+        "endLine": 4311,
+        "endChar": 78
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffdf03b9_c88b0ba3",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4311,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "9ef6b5b3_415c8199",
       "range": {
         "startLine": 4311,
         "startChar": 66,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "78ff346c_0bb9ae8c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4312,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "604b9fe4_db1f7a46",
+      "range": {
+        "startLine": 4312,
+        "startChar": 11,
+        "endLine": 4312,
+        "endChar": 17
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cdc3773_088f8e96",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "Do we need a config for this? It is defined by all boards.",
+      "range": {
+        "startLine": 4321,
+        "startChar": 32,
+        "endLine": 4321,
+        "endChar": 53
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9240ad0_cd07479e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4321,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Unfortunately it\u0027s not uniformly defined across all instances of enum power_signal. For instance baseboard/octopus/baseboard.h defines it as X86_SLP_S0_N. However, if we merge my state machine into the main state machine as you suggested, I can use chipset_get_sleep_signal() with the common define, and then this would go away.",
+      "parentUuid": "0cdc3773_088f8e96",
       "range": {
         "startLine": 4321,
         "startChar": 32,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "e6d6a108_9023f543",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4215,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "00eb0803_1353607e",
+      "range": {
+        "startLine": 4213,
+        "startChar": 1,
+        "endLine": 4215,
+        "endChar": 24
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0edb8502_0ff5170d",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "4",
+      "range": {
+        "startLine": 4216,
+        "startChar": 12,
+        "endLine": 4216,
+        "endChar": 13
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa5e99ae_9f28fcc5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4216,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "mm... actually 2, right?",
+      "parentUuid": "0edb8502_0ff5170d",
       "range": {
         "startLine": 4216,
         "startChar": 12,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "2756cf5a_ea8ceb63",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4219,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Will add comments. I want to return whether there was a timeout separately from the number of transitions so that I can distinguish between failure to go down and timeout during sleepwalking. So I stole a bit from here.",
+      "parentUuid": "cf1ab70d_ea0ab396",
+      "range": {
+        "startLine": 4217,
+        "startChar": 0,
+        "endLine": 4219,
+        "endChar": 52
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bbd992c_9b10fc57",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -168,6 +330,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "Can you please add comment indicating what this means?",
+      "range": {
+        "startLine": 4222,
+        "startChar": 1,
+        "endLine": 4222,
+        "endChar": 28
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea55e0c_3f7b603a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4222,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "2bbd992c_9b10fc57",
       "range": {
         "startLine": 4222,
         "startChar": 1,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "af8deaec_0f2915f2",
+        "filename": "include/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "03ca99d8_7dcb765a",
+      "range": {
+        "startLine": 204,
+        "startChar": 47,
+        "endLine": 205,
+        "endChar": 29
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09ed36b1_6a158483",
         "filename": "include/power.h",
         "patchSetId": 1
@@ -214,6 +424,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "Why is this being exposed external to power.c? Anything requiring it should use power_get_host_sleep_state and it should never be updated by any other EC component.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 46
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d58a248b_63d61473",
+        "filename": "include/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "I moved power_reset_host_sleep_state() into intel_x86.c because I didn\u0027t like the intel-specific ifdefs polluting common.c, and I could make my own variables static (which I subsequently forgot to do) if I moved it. But unfortunately that meant I had to expose host_sleep_state since power_reset_host_sleep_state() clears it.",
+      "parentUuid": "09ed36b1_6a158483",
       "range": {
         "startLine": 226,
         "startChar": 0,
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "2cda7498_4d1de9c0",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Mm... but I\u0027d have to pass host_cmd_handler_args. It seems weird to be making decisions about which command version is supported and which response version form to send back so deep in the feature code. Given that this is not a hot command, I\u0027d prefer to have the versioning/command-form stuff out here, since the overhead is minimal and it reduces the chances of messing things up in the future if this these parameters are adopted by others or this command is extended again.\n\nBut you\u0027re right, I should just just pass ec_params_host_sleep_event_v1 and ec_response_host_event_sleep_v1 down into power_chipset_handle_host_sleep_event(), so that I\u0027m not juggling all these different fields. I will do that.",
+      "parentUuid": "e0774f3a_da85acfc",
+      "range": {
+        "startLine": 884,
+        "startChar": 1,
+        "endLine": 889,
+        "endChar": 0
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d186ec89_9386a78b",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -260,6 +518,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "static",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 8
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e72060d_c33c8c6b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "d186ec89_9386a78b",
       "range": {
         "startLine": 239,
         "startChar": 0,
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "24298a0c_e3eb7b86",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "5b3937cf_3755f1b4",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 4
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19a90291_720f3052",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -318,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "869d6e19_e1501ab6",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "19a90291_720f3052",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 8
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f2a65df_fdccd677",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -329,6 +659,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "This seems unnecessary. EC already tracks state transitions and that can be easily used to increment slp_s0ix_transitions without having to maintain a separate state machine. Please see my comment on line 402.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 39
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d4095b_b044836b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Yeah... to me it seems like a tradeoff. I\u0027ll post my defense of doing it this way and then we can decide:\n1. common_intel_x86_power_handle_state() is already getting a little hairy, and I didn\u0027t want to sprinkle a bunch more ifdefs into it. Keeping all the code here made it very easy to reason about, and easy to excise with a feature macro.\n2. It seemed cleaner to me to have this code run in response to power signal changes, rather than the while(1) grinding that power_handle_state() seems to do. I guess it\u0027s not a whole lot of code, but it still seemed nice to keep that load off the EC.\n3. The other nice part about having a callout when the power signals change is that you don\u0027t have to go fishing through chipset_get_sleep_signal(), you can just operate on the old and new arguments containing all the power signal states.",
+      "parentUuid": "0f2a65df_fdccd677",
       "range": {
         "startLine": 246,
         "startChar": 5,
@@ -410,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "04a7a799_63cba456",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m realizing this state can be combined with WAITING_FOR_SUSPEND. They used to do something different, but now it\u0027s the same!",
+      "parentUuid": "db972413_5ea2fc4d",
+      "range": {
+        "startLine": 279,
+        "startChar": 6,
+        "endLine": 279,
+        "endChar": 28
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b63c9b62_5bbb935e",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -421,6 +799,30 @@
       "writtenOn": "2019-03-05T18:54:23Z",
       "side": 1,
       "message": "This can just unconditionally wake the host by setting host_set_single_event. There is not need to check for state here.",
+      "range": {
+        "startLine": 294,
+        "startChar": 12,
+        "endLine": 294,
+        "endChar": 35
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "debf4530_d5a3b89f",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-05T21:02:43Z",
+      "side": 1,
+      "message": "Sure. I was trying to be a little defensive against unforeseen bugs, but yeah, I can remove the state checks.",
+      "parentUuid": "b63c9b62_5bbb935e",
       "range": {
         "startLine": 294,
         "startChar": 12,
