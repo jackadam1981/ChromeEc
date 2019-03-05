@@ -42,7 +42,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.location = MOTIONSENSE_LOC_BASE,
 		.drv = &lsm6dsm_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &lsm6dsm_a_data,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_a_data,
+				MOTIONSENSE_TYPE_ACCEL),
 		.port = I2C_PORT_SENSOR,
 		.addr = LSM6DSM_ADDR1,
 		.rot_standard_ref = NULL, /* TODO rotate correctly */
@@ -56,6 +57,24 @@ struct motion_sensor_t motion_sensors[] = {
 				.ec_rate = 100 * MSEC,
 			},
 		},
+	},
+
+	[BASE_GYRO] = {
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LSM6DS3,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_a_data,
+				MOTIONSENSE_TYPE_GYRO),
+		.port = I2C_PORT_SENSOR,
+		.addr = LSM6DSM_ADDR1,
+		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
+		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
 	},
 	/* TODO(b/122281217): Add remain sensors */
 };

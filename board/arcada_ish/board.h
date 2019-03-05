@@ -79,6 +79,7 @@
 /* Motion sensors */
 enum sensor_id {
 	BASE_ACCEL,
+	BASE_GYRO,
 	/* TODO(b/122281217): Add remain sensors */
 	SENSOR_COUNT
 };
