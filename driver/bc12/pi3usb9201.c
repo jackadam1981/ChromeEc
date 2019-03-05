@@ -21,17 +21,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
-enum pi3usb9201_mode {
-	PI3USB9201_POWER_DOWN,
-	PI3USB9201_SDP_HOST_MODE,
-	PI3USB9201_DCP_HOST_MODE,
-	PI3USB9201_CDP_HOST_MODE,
-	PI3USB9201_CLIENT_MODE,
-	PI3USB9201_RESERVED_1,
-	PI3USB9201_RESERVED_2,
-	PI3USB9201_USB_PATH_ON,
-};
-
 enum pi3usb9201_client_sts {
 	CHG_OTHER = 0,
 	CHG_2_4A,
@@ -68,34 +57,6 @@ static const struct bc12_status bc12_chg_limits[] = {
 #endif
 };
 
-static inline int raw_read8(int port, int offset, int *value)
-{
-	return i2c_read8(pi3usb2901_bc12_chips[port].i2c_port,
-			 pi3usb2901_bc12_chips[port].i2c_addr,
-			 offset, value);
-}
-
-static inline int raw_write8(int port, int offset, int value)
-{
-	return i2c_write8(pi3usb2901_bc12_chips[port].i2c_port,
-			  pi3usb2901_bc12_chips[port].i2c_addr,
-			  offset, value);
-}
-
-static int pi3usb9201_raw(int port, int reg, int mask, int val)
-{
-	int rv;
-	int reg_val;
-
-	rv = raw_read8(port, reg, &reg_val);
-	if (rv)
-		return rv;
-
-	reg_val &= ~mask;
-	reg_val |= val;
-
-	return raw_write8(port, reg, reg_val);
-}
 
 static int pi3usb9201_interrupt_mask(int port, int enable)
 {
@@ -109,13 +70,6 @@ static int pi3usb9201_bc12_detect_ctrl(int port, int enable)
 	return pi3usb9201_raw(port, PI3USB9201_REG_CTRL_2,
 			      PI3USB9201_REG_CTRL_2_START_DET,
 			      enable ? PI3USB9201_REG_CTRL_2_START_DET : 0);
-}
-
-static int pi3usb9201_set_mode(int port, int desired_mode)
-{
-	return pi3usb9201_raw(port, PI3USB9201_REG_CTRL_1,
-			      PI3USB9201_REG_CTRL_1_MODE_MASK,
-			      desired_mode << 1);
 }
 
 static void bc12_update_charge_manager(int port)
