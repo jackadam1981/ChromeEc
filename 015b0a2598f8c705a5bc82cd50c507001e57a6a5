@@ -22,6 +22,30 @@
       "revId": "015b0a2598f8c705a5bc82cd50c507001e57a6a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f29d3f_286c7e11",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-03-05T06:15:44Z",
+      "side": 1,
+      "message": "I like your proposal that we may disable VPDM by default and add the config in the future when it\u0027s needed. Scott, do you think it\u0027s a good idea?",
+      "parentUuid": "2705ffce_2994b07a",
+      "range": {
+        "startLine": 671,
+        "startChar": 7,
+        "endLine": 671,
+        "endChar": 42
+      },
+      "revId": "015b0a2598f8c705a5bc82cd50c507001e57a6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
