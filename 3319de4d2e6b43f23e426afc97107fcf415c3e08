@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26c4c9b8_7d093218",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-05T08:38:58Z",
+      "side": 1,
+      "message": "Done. In function of i2c_init has been configured.",
+      "parentUuid": "53111f41_71d8fe90",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "3319de4d2e6b43f23e426afc97107fcf415c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64447c37_eaf377fd",
         "filename": "chip/it83xx/i2cs.h",
         "patchSetId": 7
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a7bd51d6_fb5088f6",
+        "filename": "chip/it83xx/i2cs.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-05T08:38:58Z",
+      "side": 1,
+      "message": "So far the two signal pins of data and clock have no need setting gpio mode in I2C slave function. So there is no add for this temporarily.",
+      "parentUuid": "64447c37_eaf377fd",
+      "revId": "3319de4d2e6b43f23e426afc97107fcf415c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e5d4b3c_92ca7c90",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 7
@@ -53,6 +95,30 @@
       "writtenOn": "2019-03-05T00:36:28Z",
       "side": 1,
       "message": "call: i2c_slv_interrupt() in i2c_interrupt()\nso that we can avoid multiple if else\nif (IT83XX_SMB_SFFCTL \u0026 IT83XX_SMB_SAFE)\n\t\t\ti2c_slv_interrupt(xyz);",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 16
+      },
+      "revId": "3319de4d2e6b43f23e426afc97107fcf415c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e10d1d_7ffb2cd2",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-05T08:38:58Z",
+      "side": 1,
+      "message": "In i2c_interrupt function, it is mainly used the I2C channel as the master. \nThe interrupt of I2C channel A does not need to enter i2c_interrupt if it \nis used as the slave. These two interrupts are divided in two different modes.",
+      "parentUuid": "6e5d4b3c_92ca7c90",
       "range": {
         "startLine": 229,
         "startChar": 3,
