@@ -70,6 +70,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92de4df_7be357e7",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-03-05T08:47:33Z",
+      "side": 1,
+      "message": "If our upstream buffer is in busy state, we need eSPI master asserting reset pin to let us leave this state. Once leaving busy state, we should wait eSPI master configuring us, then we\u0027re able to send oob messages. So, I think hook funtion to eSPI reset interrupt still can\u0027t send oob messages.   \n\n\u003cp.s\u003e Our upstream buffer block machanism is also according to eSPI base spec, see ch5.3. \nOnce FW setting upstream go, HW will assert eSPI _AVAIL and alert host. The _AVAIL or _FREE, once asserted, must continue to be committed by eSPI slave until the corresponding action is taken by master to the associated slave’s buffer.\nFor example, PC_AVAIL once asserted by slave must only be affected by GET_PC command from master and so on. Once asserted, the slave is not allowed to change the _AVAIL or _FREE indication due to other unrelated events.",
+      "parentUuid": "d3e98d00_f62ae942",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
