@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b13a55b5_dfd501ee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3368,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T23:12:25Z",
+      "side": 1,
+      "message": "Where do you see the SOP messages being prioritized over SOP_PRIME? Can you confirm with a PD capture (or by using a alternate mode dongle like HDMI) that we are still sending the SOP discover identity?\n\nI see pd_send_vdm() calling queue_vdm(), which then places the request into the vdo_data structure for the port.  The vdo_data structure won\u0027t be emptied until the next task loop iteration when pd_vdm_send_state_machine() runs.  I don\u0027t see a way for the SOP message to be sent.",
+      "parentUuid": "f633e910_0c63980b",
+      "range": {
+        "startLine": 3365,
+        "startChar": 0,
+        "endLine": 3368,
+        "endChar": 38
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b64fa965_b733d8ac",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
