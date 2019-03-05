@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe6b7d52_25e97ae4",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-05T01:54:16Z",
+      "side": 1,
+      "message": "I think this id check should be guarded by CONFIG_RPMSG_NAME_SERVICE?",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "8a9691b33ae949e48cb6eefbe5391f0eaebfaf8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
