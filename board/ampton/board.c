@@ -66,6 +66,22 @@ int ppc_get_alert_status(int port)
 #define USB_PD_PORT_ITE_0      0
 #define USB_PD_PORT_ITE_1      1
 
+/* Some external monitor can't display normaliy (eg.ViewSonic VX2880)
+ * We need to tune the mux for display those monitor normally.
+ */
+static int tune_mux(int port)
+{
+	int p = (port == 0) ? I2C_PORT_USBC0 : I2C_PORT_USBC1;
+
+	/* Auto EQ disabled, compensate for channel lost up to 3.6dB */
+	i2c_write8(p, 0x16, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	/* DP output swing adjustment +15% */
+	i2c_write8(p, 0x16, PS8XXX_REG_MUX_DP_OUTPUT_CONFIGURATION,
+		0xc0);
+
+	return EC_SUCCESS;
+}
+
 struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		/* Use PS8751 as mux only */
@@ -74,6 +90,7 @@ struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.board_init = &tune_mux,
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
@@ -82,6 +99,7 @@ struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.board_init = &tune_mux,
 	}
 };
 
