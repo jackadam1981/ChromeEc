@@ -211,6 +211,10 @@ void lpc_s3_resume_clear_masks(void)
 
 #endif
 
+#ifdef CONFIG_HOSTCMD_HECI
+void heci_send_host_events(host_event_t events);
+#endif
+
 /*
  * Maintain two copies of the events that are set.
  *
@@ -311,6 +315,8 @@ void host_set_events(host_event_t mask)
 
 #ifdef CONFIG_HOSTCMD_X86
 	lpc_set_host_event_state(events);
+#elif defined(CONFIG_HOSTCMD_HECI)
+	heci_send_host_events(events);
 #else
 	*(host_event_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = events;
 #ifdef CONFIG_MKBP_EVENT
@@ -325,6 +331,7 @@ void host_set_events(host_event_t mask)
 void host_set_single_event(enum host_event_code event)
 {
 	host_event_t ev = 0;
+	CPRINTS("host_set_single_event %d", event);
 
 	host_event_set_bit(&ev, event);
 	host_set_events(ev);
