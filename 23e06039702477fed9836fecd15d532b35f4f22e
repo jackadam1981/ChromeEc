@@ -69,6 +69,30 @@
       "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16084990_43923e2e",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-05T03:09:51Z",
+      "side": 1,
+      "message": "we care when building Cr50, but if the directories were not there in that case, cr50 building would fail.",
+      "parentUuid": "bdddb1ce_7b29975b",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
