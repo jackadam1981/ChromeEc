@@ -99,6 +99,30 @@
       "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3899ef6e_8860664d",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-05T20:31:10Z",
+      "side": 1,
+      "message": "We currently turn off fans in s3 and s5. So, we can use CHIPSET_STATE_ANY_OFF (and CHIPSET_STATE_ANY_SUSPEND optionally because sensors are powered). I doubt we will change this behavior but if we do, we can revisit this code here.",
+      "parentUuid": "b60e187b_b90a0807",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 66
+      },
+      "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
