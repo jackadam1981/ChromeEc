@@ -57,6 +57,48 @@
       "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a147cd3b_2a720c7b",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-05T17:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b9c292a_39d619a9",
+      "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b60e187b_b90a0807",
+        "filename": "common/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-05T17:32:38Z",
+      "side": 1,
+      "message": "I thought about that, but I was thinking this change solves the known potential issue of having the EC console fill up with \"can\u0027t read any temp sensors!\" messages in  known state and maybe some system might want fan control while in S5 and rely on temp sensors for that case.",
+      "parentUuid": "efde8bbc_3104e7c4",
+      "range": {
+        "startLine": 110,
+        "startChar": 44,
+        "endLine": 110,
+        "endChar": 66
+      },
+      "revId": "f06ddf6fbd2b57d4bce27a0b1da17c1118c5dd9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
