@@ -164,6 +164,29 @@
       "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5549f58_8eb39568",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-05T21:17:12Z",
+      "side": 1,
+      "message": "there could be a \u0027return\u0027 here, no need for the \u0027else\u0027 below in that case.",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
