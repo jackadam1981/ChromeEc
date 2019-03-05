@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9016204c_c4f5d308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-05T05:43:47Z",
+      "side": 1,
+      "message": "What about the EC resets done by board_wipe_tpm() and factory_enable_deferred()?  Should those paths also use the closed loop reset?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c7e525e_fb0a2b87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-05T05:43:47Z",
+      "side": 1,
+      "message": "\u0027doing\u0027",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7179cf_35f9378b",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-05T05:43:47Z",
+      "side": 1,
+      "message": "Do you mean RBOX?",
+      "range": {
+        "startLine": 165,
+        "startChar": 15,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
