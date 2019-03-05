@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "effdaead_f37a7411",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-05T06:13:41Z",
+      "side": 1,
+      "message": "I think we need to discuss how to safely wipe the Mistral TPM when we can\u0027t hold the AP in reset.\nCan we make those changes in a followup CL? I think it will require some refactoring of the wipe tpm stuff. I think this CL is good for getting basic Cr50 Mistral functionality working.",
+      "parentUuid": "dc3be6de_e6dd2400",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c7e525e_fb0a2b87",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -69,6 +93,30 @@
       "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b0da780_c2df0042",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-05T06:13:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c7e525e_fb0a2b87",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "c2abeedd0984cdedb30b09ad72d8e2ed7e946af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
