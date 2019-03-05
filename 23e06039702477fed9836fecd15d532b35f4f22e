@@ -93,6 +93,30 @@
       "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85197ec8_82719729",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-05T17:01:03Z",
+      "side": 1,
+      "message": "My recommendation is handling this explicitly. That is, we set dir_list for gsctool differently. Maybe we can pass a target to getversion.sh? There may be a better way.",
+      "parentUuid": "16084990_43923e2e",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
