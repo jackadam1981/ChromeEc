@@ -46,6 +46,30 @@
       "revId": "a0e8b069d41989aa69c985ca6d9505e0135b2e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa56e747_b7b8c5be",
+        "filename": "include/clock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-05T17:25:55Z",
+      "side": 1,
+      "message": "I would search for clock_enable_module. I find it here, weakly defined. I would continue to search. I find it in in npcx/clock.c, which is included in npcx/build.mk. This is a routine search (at least for me). We have lots of APIs which are implemented differently chip to chip, core to core, driver to driver. So, I believe finding a right definition among multiple definitions is a routine for (all of?) us.\n\nIn general, there might be a tricky weak function but at least this one now doesn\u0027t seem complicated. An advantage is one fewer config variable (CONFIG_CHIP_HAS_CLOCK_ENABLE_MODULE).",
+      "parentUuid": "d70f72c8_b9ae5d42",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "a0e8b069d41989aa69c985ca6d9505e0135b2e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
