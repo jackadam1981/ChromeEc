@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f13e2f58_16a374ee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T18:47:41Z",
+      "side": 1,
+      "message": "I would strongly prefer this not be const.  I\u0027ve found the \"pd dump\" command very useful when interacting with ODMs who don\u0027t have a PD analyzer handy and have an issue we can\u0027t reproduce since it allows us to print all the received packets and sent packets without them having to change their EC FW.  \n\nCould there be a new config to remove the strings for smaller boards?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "e9c0d1c9f221e74198c276c81f0305d5b565348b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
