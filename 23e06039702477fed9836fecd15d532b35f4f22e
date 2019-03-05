@@ -22,6 +22,30 @@
       "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11218432_2d78c0ed",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-05T02:18:35Z",
+      "side": 1,
+      "message": "The makefile in extra/usb_updater has \n\nBOARD :\u003d cr50\n\nhardcoded, because gsctools need some cr50 board files.",
+      "parentUuid": "df6fa2b5_c7a7a2f3",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
