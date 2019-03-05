@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2705ffce_2994b07a",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-05T03:08:09Z",
+      "side": 1,
+      "message": "I am curious if we really need this config i.e. would there be boards that need VDPM prochot enabled? Would they not run into the same issue as hatch i.e. on AC disconnect PROCHOT gets asserted. Does it make sense to do the VDPM disabling by default for now and if there is a board in the future, this config can be added. Only reason for avoiding the config is to ensure we don\u0027t end up requiring all boards with this charger to just set this config.",
+      "range": {
+        "startLine": 671,
+        "startChar": 7,
+        "endLine": 671,
+        "endChar": 42
+      },
+      "revId": "015b0a2598f8c705a5bc82cd50c507001e57a6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
