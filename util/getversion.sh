@@ -102,6 +102,9 @@ main() {
 
   # Create a combined version string for all component directories.
   for git_dir in ${dir_list[@]}; do
+    if [[ ! -d ${git_dir} ]]; then
+      continue
+    fi
     pushd "${git_dir}" > /dev/null
     component="$(basename "${git_dir}")"
     values=( $(get_tree_version) )
