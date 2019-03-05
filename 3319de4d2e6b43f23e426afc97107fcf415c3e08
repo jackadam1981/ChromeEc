@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53111f41_71d8fe90",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-05T00:36:28Z",
+      "side": 1,
+      "message": "may be can call from i2c_init() so that we can avoid these duplications",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "3319de4d2e6b43f23e426afc97107fcf415c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64447c37_eaf377fd",
+        "filename": "chip/it83xx/i2cs.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-05T00:36:28Z",
+      "side": 1,
+      "message": "need to add additional pins as in struct i2c_port_t?",
+      "revId": "3319de4d2e6b43f23e426afc97107fcf415c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e5d4b3c_92ca7c90",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-05T00:36:28Z",
+      "side": 1,
+      "message": "call: i2c_slv_interrupt() in i2c_interrupt()\nso that we can avoid multiple if else\nif (IT83XX_SMB_SFFCTL \u0026 IT83XX_SMB_SAFE)\n\t\t\ti2c_slv_interrupt(xyz);",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 16
+      },
+      "revId": "3319de4d2e6b43f23e426afc97107fcf415c3e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
