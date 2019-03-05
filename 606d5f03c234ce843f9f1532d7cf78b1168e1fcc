@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60936c14_e6e8ab20",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-05T17:30:24Z",
+      "side": 1,
+      "message": "this could have been \n\t\tspi_prop \u003d !!((GREG32(PMU, LONG_LIFE_SCRATCH1) \u0026\n\t\t\t    BOARD_SLAVE_CONFIG_SPI));\n\t\ti2c_prop \u003d !!((GREG32(PMU, LONG_LIFE_SCRATCH1) \u0026\n\t\t\t    BOARD_SLAVE_CONFIG_I2C));\n\n\t\t/* Make sure exactly one interface is selected */\n\t\tif (!(i2c_prop ^ spi_prop))",
+      "range": {
+        "startLine": 1335,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 57
+      },
+      "revId": "606d5f03c234ce843f9f1532d7cf78b1168e1fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
