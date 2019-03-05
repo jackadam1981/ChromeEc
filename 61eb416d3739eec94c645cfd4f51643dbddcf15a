@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f633e910_0c63980b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3368,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-05T22:02:32Z",
+      "side": 1,
+      "message": "SOP message gets priority over SOP_PRIME. So if we send SOP and SOP_PRIME, SOP message will get queued. Here, the SOP message is queued and the message is transmitted, them the SOP_PRIME message gets queued and transmitted. The intent is to send SOP_PRIME message to the cable without disturbing the flow.",
+      "parentUuid": "9deb4846_4cedd6ca",
+      "range": {
+        "startLine": 3365,
+        "startChar": 0,
+        "endLine": 3368,
+        "endChar": 38
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b64fa965_b733d8ac",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -68,6 +92,30 @@
       "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "468c6af2_8377917f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4771,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-05T22:02:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ed65ce_c002ae3a",
+      "range": {
+        "startLine": 4771,
+        "startChar": 1,
+        "endLine": 4771,
+        "endChar": 20
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
