@@ -63,7 +63,7 @@ usb_updater2: usb_updater2.c Makefile
 .PHONY: clean
 
 generated_version.h: $(GSCTOOL_SOURCES)
-	@(cd ../../; util/getversion.sh) > $@
+	@(cd ../../; BOARD= util/getversion.sh) > $@
 
 clean:
 	rm -rf $(PROGRAMS) *~ *.o *.d dp generated_version.h
