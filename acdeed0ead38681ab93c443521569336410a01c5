@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cdcb6bd_1e888759",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3993,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-05T23:05:54Z",
+      "side": 1,
+      "message": "this doesn\u0027t catch all of the cases. I have never tried this but would the following work?\n\n#if defined(CONFIG_MKBP_USE_CUSTOM) + defined(CONFIG_MKBP_USE_GPIO) + defined(CONFIG_MKBP_USE_HOST_EVENT) \u003e 1\n#error Must select only one ....\n#endif",
+      "revId": "acdeed0ead38681ab93c443521569336410a01c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
