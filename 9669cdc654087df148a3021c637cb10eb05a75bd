@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e762ade_eafede74",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-05T17:37:38Z",
+      "side": 1,
+      "message": "I think we should export pi3usb9201_set_mode and call it here. If we fix a bug in the driver, all callers will be fixed automatically.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 0
+      },
+      "revId": "9669cdc654087df148a3021c637cb10eb05a75bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
