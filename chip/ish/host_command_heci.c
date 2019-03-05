@@ -32,6 +32,12 @@ static struct host_packet heci_packet;
 
 #define HECI_CROS_EC_RESPONSE_MAX sizeof(response_buffer)
 
+
+/* TODO(b/123634700): send the host event via heci */
+void heci_send_host_events(host_event_t events)
+{
+}
+
 static void heci_send_response_packet(struct host_packet *pkt)
 {
 	heci_send_msg(heci_cros_ec_handle, pkt->response, pkt->response_size);

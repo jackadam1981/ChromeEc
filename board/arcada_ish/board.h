@@ -32,8 +32,15 @@
 #define CONFIG_I2C_MASTER
 
 #define CONFIG_ACCELGYRO_LSM6DSM	/* For LSM6DS3 */
-/* TODO(b/123634700): This is temporary until FIFO is supported */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << BASE_ACCEL)
+
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT TASK_EVENT_CUSTOM(4)
+
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_HOST_EVENT
 
 /* Host command over HECI */
 #define CONFIG_HOSTCMD_HECI
@@ -75,6 +82,7 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+#include "host_command.h"
 
 /* Motion sensors */
 enum sensor_id {
@@ -83,6 +91,8 @@ enum sensor_id {
 	/* TODO(b/122281217): Add remain sensors */
 	SENSOR_COUNT
 };
+
+void heci_send_host_events(host_event_t events);
 
 #endif /* !__ASSEMBLER__ */
 
