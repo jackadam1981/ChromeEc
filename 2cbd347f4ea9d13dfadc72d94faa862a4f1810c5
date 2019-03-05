@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "944daaaa_3d757654",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4770,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-05T18:41:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the new variable be placed at the end of the structure?  Since the new member is in the middle of the structure, I\u0027d expect there to be problems with the state variable, which is populated with a v1 pointer",
+      "range": {
+        "startLine": 4770,
+        "startChar": 0,
+        "endLine": 4770,
+        "endChar": 48
+      },
+      "revId": "2cbd347f4ea9d13dfadc72d94faa862a4f1810c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
