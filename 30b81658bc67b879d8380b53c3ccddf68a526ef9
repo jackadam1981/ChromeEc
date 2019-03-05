@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d13055b6_965b4938",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-05T18:10:14Z",
+      "side": 1,
+      "message": "nsanders@ || shurst@: I hope to remove this if statement. \n                      Would you be ok to run flash_ec on chocodile_bec like this?\n                      \u0027flash_ec --board\u003dchocodile_bec --image ${img} --usbpd\u0027",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 2
+      },
+      "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f77e9441_5a5ffd53",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-05T18:10:14Z",
+      "side": 1,
+      "message": "coconutruben@: this removes the longest prefix ending \":\" from the text. \n               This looks simpler to me rather than to have a function for cut or sed.",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 36
+      },
+      "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
