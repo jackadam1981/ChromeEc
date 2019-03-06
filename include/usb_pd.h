@@ -1962,6 +1962,15 @@ int pd_is_vbus_present(int port);
  */
 uint8_t board_get_dp_pin_mode(int port);
 
+#ifdef CONFIG_USB_PD_RETIMER
+/**
+ * Return current CC state on the specified port.
+ *
+ * @param port USB-C port number
+ */
+enum pd_cc_states pd_get_cc_state(int port);
+#endif
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
