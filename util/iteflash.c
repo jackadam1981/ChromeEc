@@ -96,6 +96,8 @@ struct iteflash_config {
 	int erase;  /* boolean */
 	int i2c_mux; /* boolean */
 	int debug;  /* boolean */
+	int disable_watchdog;  /* boolean */
+	int disable_protect_path;  /* boolean */
 	int usb_interface;
 	int usb_vid;
 	int usb_pid;
@@ -1587,9 +1589,11 @@ static int post_waveform_work(struct common_hnd *chnd)
 		if (ret)
 			return ret;
 	}
+
 	ret = dbgr_disable_watchdog(chnd);
 	if (ret)
 		return ret;
+
 	ret = dbgr_disable_protect_path(chnd);
 	if (ret)
 		return ret;
@@ -1627,6 +1631,8 @@ static const struct option longopts[] = {
 	{"serial", 1, 0, 's'},
 	{"vendor", 1, 0, 'v'},
 	{"write", 1, 0, 'w'},
+	{"disable-watchdog", 1, 0, 'z'},
+	{"disable-protect-path", 1, 0, 'Z'},
 	{NULL, 0, 0, 0}
 };
 
@@ -1661,6 +1667,9 @@ static void display_usage(char *program)
 		"\tDefault is true. Set to false if ITE direct firmware\n"
 		"\tupdate mode has already been enabled.\n");
 	fprintf(stderr, "-w, --write <file> : Write <file> to flash.\n");
+	fprintf(stderr, "-z, --disable-watchdog : Disable EC watchdog.\n");
+	fprintf(stderr, "-Z, --disable-protect-path : Disable EC protect path."
+		"\n");
 	exit(2);
 }
 
@@ -1706,7 +1715,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 {
 	int opt, idx, rv;
 
-	while ((opt = getopt_long(argc, argv, "?R:dehc:i:mp:r:s:uv:W:w:",
+	while ((opt = getopt_long(argc, argv, "?R:dehc:i:mp:r:s:uv:W:w:z:Z:",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'c':
@@ -1770,6 +1779,10 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 		case 'w':
 			conf->output_filename = optarg;
 			break;
+		case 'z':
+			conf->disable_watchdog = 1;
+		case 'Z':
+			conf->disable_protect_path = 1;
 		}
 	}
 	return 0;
