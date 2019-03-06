@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a4564396_8029cbad",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-06T06:59:31Z",
+      "side": 1,
+      "message": "I think these variables make it easy to correlate them with the ccd flags. Also I think changing this would also complicate the bpforce command. I can change it if you think this is best, but I\u0027m inclined to leave it as is.",
+      "parentUuid": "8904efd5_c0b75222",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78ded462_8c5ca5f7",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7882019c_3498159f",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-06T06:59:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78ded462_8c5ca5f7",
+      "range": {
+        "startLine": 145,
+        "startChar": 41,
+        "endLine": 145,
+        "endChar": 43
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "405acd01_f2ac5628",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-06T06:59:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f82844c3_23ed5ed4",
+      "range": {
+        "startLine": 149,
+        "startChar": 12,
+        "endLine": 149,
+        "endChar": 14
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15e65af9_56cfe558",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2019-03-06T06:49:10Z",
       "side": 1,
       "message": "Was this a bug that the current code wasn\u0027t resetting the board WP setting?",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 31
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d2b0eb_f8a42991",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-06T06:59:31Z",
+      "side": 1,
+      "message": "Yeah. When I disabled factory mode, I saw the write protect atboot setting was correct, but the current wp setting wasn\u0027t getting updated.",
+      "parentUuid": "15e65af9_56cfe558",
       "range": {
         "startLine": 470,
         "startChar": 0,
@@ -137,6 +233,30 @@
       "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5523ce7_304a0ddd",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-06T06:59:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d24d2530_e40edbf7",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
