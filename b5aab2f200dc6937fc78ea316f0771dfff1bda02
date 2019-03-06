@@ -22,6 +22,30 @@
       "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d87f30_efee338c",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-06T06:49:19Z",
+      "side": 1,
+      "message": "Is simply moving these function to header okay? Or how do we usually express \"I only want free functions from this driver, don\u0027t give me any charge manager things\" in ec config?",
+      "parentUuid": "15eebfc0_594ab08b",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
