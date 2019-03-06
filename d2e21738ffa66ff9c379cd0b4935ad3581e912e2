@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd62a592_5e75c626",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-06T09:54:16Z",
+      "side": 1,
+      "message": "Why do you need a deferred?",
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63322bf7_fcb537cc",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-06T09:54:16Z",
+      "side": 1,
+      "message": "Huh, starting to wonder if we should just drop these. Maybe for next CL, don\u0027t worry about it now.",
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
