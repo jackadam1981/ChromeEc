@@ -555,6 +555,30 @@
     },
     {
       "key": {
+        "uuid": "392b1843_b64b20e2",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-06T21:00:21Z",
+      "side": 1,
+      "message": "Eesh, actually to do that I\u0027d have to drag ec_commands.h into everybody that\u0027s including power.h. Maybe I should just leave it as is.",
+      "parentUuid": "2cda7498_4d1de9c0",
+      "range": {
+        "startLine": 884,
+        "startChar": 1,
+        "endLine": 889,
+        "endChar": 0
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d186ec89_9386a78b",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
