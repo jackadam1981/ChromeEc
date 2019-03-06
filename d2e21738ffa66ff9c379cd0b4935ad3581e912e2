@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "5847dd18_14dbec56",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-06T09:59:31Z",
+      "side": 1,
+      "message": "It\u0027s defined by DECLARE_DEFERRED macro.",
+      "parentUuid": "0678c158_6e89f446",
+      "range": {
+        "startLine": 238,
+        "startChar": 21,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "386d01e1_1e60fb2c",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-06T09:59:31Z",
+      "side": 1,
+      "message": "board_runtime_config calls board_get_version, and it needs adc to be ready ATM. However, it\u0027s not, and it triggers watchdog.",
+      "parentUuid": "cd62a592_5e75c626",
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63322bf7_fcb537cc",
         "filename": "power/mt8183.c",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c633ba50_9eadec14",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-06T09:59:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63322bf7_fcb537cc",
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
