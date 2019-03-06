@@ -27,6 +27,9 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	CPRINTS("%s(%d)", __func__, reason);
 	report_ap_reset(reason);
 
+	/* Turn off RMSRST_L  to meet tPCH12 */
+	gpio_set_level(GPIO_EC_PCH_RSMRST_L, 0);
+
 	/* Turn off A (except PP5000_A) rails*/
 	gpio_set_level(GPIO_EN_A_RAILS, 0);
 
@@ -42,13 +45,14 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	/* Now wait for PP5000_A and RSMRST_L to go low */
 	while ((gpio_get_level(GPIO_PP5000_A_PG_OD) ||
-		power_has_signals(IN_PGOOD_ALL_CORE)) && (timeout_ms > 0)) {
+		power_has_signals(IN_PGOOD_ALL_CORE)) &&
+		(gpio_get_level(GPIO_PG_EC_RSMRST_L)) && (timeout_ms > 0)) {
 		msleep(1);
 		timeout_ms--;
 	};
 
 	if (!timeout_ms)
-		CPRINTS("PP5000_A rail still up!  Assuming G3.");
+		CPRINTS("PP5000_A rail or RSMRST still up!  Assuming G3.");
 }
 
 void chipset_handle_espi_reset_assert(void)
