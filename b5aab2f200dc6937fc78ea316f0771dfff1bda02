@@ -94,6 +94,30 @@
       "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b55c31f0_bfa39e3a",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-06T23:57:53Z",
+      "side": 1,
+      "message": "That is sad. We need to refactor these drivers. They shouldn\u0027t run a task. I\u0027m not interested in reviewing any major refactoring now. So, I guess the best we can do now is to use the i2c API (as you did in the other CL) or put this in a different compilation unit.",
+      "parentUuid": "dda0938e_1195ef77",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
