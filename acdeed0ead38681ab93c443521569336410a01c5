@@ -16,6 +16,24 @@
       "revId": "acdeed0ead38681ab93c443521569336410a01c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d3afb1_ee8699f0",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3993,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-06T01:51:29Z",
+      "side": 1,
+      "message": "Yes, it doesn\u0027t catch all the cases.\nNocturne uses both GPIO and HOST_EVENT and has a customized deliver methods.\nSo, if a board defined CONFIG_MKBP_USE_CUSTOM, then it won\u0027t check if CONFIG_MKBP_USE_GPIO and CONFIG_MKBP_USE_HOST_EVENT are defined.\n\nAnd, the method for check exclusiveness is a good idea. Thanks!",
+      "parentUuid": "5cdcb6bd_1e888759",
+      "revId": "acdeed0ead38681ab93c443521569336410a01c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
