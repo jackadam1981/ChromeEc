@@ -70,6 +70,24 @@
       "revId": "acdeed0ead38681ab93c443521569336410a01c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fee461_9f6f650b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3993,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-06T05:36:10Z",
+      "side": 1,
+      "message": "Thanks furquan\u0027s reply in https://crrev.com/c/1490795.  We can remove the multiple kinds of mkbp delivery methods in board nocturne.",
+      "parentUuid": "f7a59d38_cfe2484b",
+      "revId": "acdeed0ead38681ab93c443521569336410a01c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
