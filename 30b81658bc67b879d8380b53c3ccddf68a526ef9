@@ -45,6 +45,53 @@
       "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b78e65_064156d0",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-06T16:09:30Z",
+      "side": 1,
+      "message": "can you add that as a comment right above so people unfamiliar with bash substitution don\u0027t have to look it up",
+      "parentUuid": "f77e9441_5a5ffd53",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 36
+      },
+      "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32749010_cebf60b8",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-06T16:09:30Z",
+      "side": 1,
+      "message": "why warn instead of info?",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 4
+      },
+      "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
