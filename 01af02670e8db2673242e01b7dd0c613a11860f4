@@ -484,6 +484,30 @@
     },
     {
       "key": {
+        "uuid": "cd57d99c_9b7b17bc",
+        "filename": "include/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-06T17:50:58Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "fb7deabc_3e62c924",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 46
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0774f3a_da85acfc",
         "filename": "power/common.c",
         "patchSetId": 1
@@ -731,6 +755,30 @@
       "side": 1,
       "message": "I understand the intent to keep things separate, but in practice this handling is not separate from the power state machine itself. We already have a notion of power state and adding sub states which are completely separate from that adds more complexity than is required.\n\n1. You can always add empty functions with #ifs outside the common_intel_x86_power_handle_state if that function seems ugly.\n2. Even though it is a while(1) loop, that task just calls task_wait_event(-1) in power_common_state to wait for an actual event change to take action. So, it won\u0027t change the EC load.\n3. You can always use power_get_state if you don\u0027t want to query the sleep signal. In fact if the calls are made from appropriate states in common_intel_x86_power_handle_state, there is no need to check for sleep signals since the power state guarantees state of the signal.",
       "parentUuid": "88d4095b_b044836b",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 39
+      },
+      "revId": "01af02670e8db2673242e01b7dd0c613a11860f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fbd2bae_fab59eba",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-06T17:50:58Z",
+      "side": 1,
+      "message": "I\u0027m convinced. Will do.",
+      "parentUuid": "0974044c_e45c13b7",
       "range": {
         "startLine": 246,
         "startChar": 5,
