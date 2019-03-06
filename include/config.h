@@ -3393,6 +3393,11 @@
 #undef CONFIG_USB_PD_TCPM_TUSB422
 
 /*
+ * Type-C multi-protocol retimer to be used in on-board applications.
+ */
+#undef CONFIG_USB_PD_RETIMER_INTEL_BB
+
+/*
  * Adds an EC console command to erase the ANX7447 OCM flash.
  * Note: this is intended to be a temporary option and
  * won't be needed when ANX7447 are put on boards with OCM already erased
