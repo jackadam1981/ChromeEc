@@ -227,51 +227,57 @@ void init_wp_state(void)
 /**
  * Wipe the TPM
  *
+ * @param reset_required: reset the system after wiping the TPM.
+ *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int board_wipe_tpm(void)
+int board_wipe_tpm(int reset_required)
 {
 	int rc;
 
-	/*
-	 * Blindly zapping the TPM space while the AP is awake and poking at
-	 * it will bork the TPM task and the AP itself, so force the whole
-	 * system off by holding the EC in reset.
-	 */
-	CPRINTS("%s: force EC off", __func__);
-	assert_ec_rst();
+	/* Disable all TPM communications */
+	tpm_stop();
+
+	/* Assert EC_RST_L to hold the system in reset if required */
+	if (reset_required) {
+		CPRINTS("%s: force EC off", __func__);
+		assert_ec_rst();
+	}
 
 	/* Wipe the TPM's memory and reset the TPM task. */
 	rc = tpm_reset_request(1, 1);
 	if (rc != EC_SUCCESS) {
 		/*
-		 * If anything goes wrong (which is unlikely), we REALLY don't
-		 * want to unlock the console. It's possible to fail without
-		 * the TPM task ever running, so rebooting is probably our best
-		 * bet for fixing the problem.
+		 * If anything goes wrong (which is unlikely), reset the EC and
+		 * pass through the error we got.
 		 */
 		CPRINTS("%s: Couldn't wipe nvmem! (rc %d)", __func__, rc);
-		cflush();
-		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
-			     SYSTEM_RESET_HARD);
-
-		/*
-		 * That should never return, but if it did, release EC reset
-		 * and pass through the error we got.
-		 */
-		deassert_ec_rst();
+		board_reboot_ec();
 		return rc;
 	}
 
 	CPRINTS("TPM is erased");
 
+	/*
+	 * TPM was wiped out successfully, let's prevent further communications
+	 * from the AP until next reboot.
+	 */
+	tpm_stop();
+
 	/* Tell the TPM task to re-enable NvMem commits. */
 	tpm_reinstate_nvmem_commits();
 
-	/* Let the rest of the system boot. */
-	CPRINTS("%s: release EC reset", __func__);
-	deassert_ec_rst();
-
+	/*
+	 * Use board_reboot_ec to ensure the system resets instead of
+	 * deassert_ec_reset. Some boards don't reset immediately when EC_RST_L
+	 * is asserted. board_reboot_ec will ensure the system has actually
+	 * reset before releasing it. If the system has a normal reset scheme,
+	 * EC reset will be released immediately.
+	 */
+	if (reset_required) {
+		CPRINTS("%s: reset EC", __func__);
+		board_reboot_ec();
+	}
 	return EC_SUCCESS;
 }
 
