@@ -15,6 +15,10 @@
 #include "power.h"
 #include "util.h"
 
+#ifdef CONFIG_MKBP_USE_HECI
+#include "host_command_heci.h"
+#endif
+
 static uint32_t events;
 uint32_t mkbp_last_event_time;
 
@@ -48,6 +52,14 @@ void mkbp_set_host_active_via_event(int active)
 }
 #endif
 
+#ifdef CONFIG_MKBP_USE_HECI
+void mkbp_set_host_active_via_heci(int active)
+{
+	if (active)
+		heci_send_mkbp_event();
+}
+#endif
+
 void mkbp_set_host_active(int active)
 {
 #if defined(CONFIG_MKBP_USE_CUSTOM)
@@ -56,6 +68,8 @@ void mkbp_set_host_active(int active)
 	mkbp_set_host_active_via_event(active);
 #elif defined(CONFIG_MKBP_USE_GPIO)
 	mkbp_set_host_active_via_gpio(active);
+#elif defined(CONFIG_MKBP_USE_HECI)
+	mkbp_set_host_active_via_heci(active);
 #endif
 }
 
