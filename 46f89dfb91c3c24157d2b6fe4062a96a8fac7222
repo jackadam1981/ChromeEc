@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83bfbba3_82abbef6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T06:49:10Z",
+      "side": 1,
+      "message": "Are you able to enable factory mode after forcing the BP state to disconnected?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 71
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8904efd5_c0b75222",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T06:49:10Z",
+      "side": 1,
+      "message": "Any thought on combining these an enum?\nenum bp_forced_state {\n  BP_FOLLOW_BATT_PRES,\n  BP_FORCE_DISCONNECT,\n  BP_FORCE_CONNECT,\n}\n\nThis would result in atomic operations in command_bpforce(), but add some complication to board_battery_is_present().",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ded462_8c5ca5f7",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T06:49:10Z",
+      "side": 1,
+      "message": "should be \u0027BP\u0027",
+      "range": {
+        "startLine": 145,
+        "startChar": 41,
+        "endLine": 145,
+        "endChar": 43
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82844c3_23ed5ed4",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T06:49:10Z",
+      "side": 1,
+      "message": "BP",
+      "range": {
+        "startLine": 149,
+        "startChar": 12,
+        "endLine": 149,
+        "endChar": 14
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e65af9_56cfe558",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T06:49:10Z",
+      "side": 1,
+      "message": "Was this a bug that the current code wasn\u0027t resetting the board WP setting?",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 31
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24d2530_e40edbf7",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T06:49:10Z",
+      "side": 1,
+      "message": "Since the name is so similar to CCD_FLAG_OVERIDE_WP_AT_BOOT, maybe expand \u0027BP\u0027 to \u0027BATT_PRES\u0027 here to avoid confusion.  On first scan, I thought you had duplicated the WP flags.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
