@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "c3427f52_4dfd5804",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4917,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-06T21:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c89e2ef_ae06774f",
+      "range": {
+        "startLine": 4909,
+        "startChar": 2,
+        "endLine": 4917,
+        "endChar": 0
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "287e85fd_9ac62029",
         "filename": "driver/usb_mux.c",
         "patchSetId": 9
