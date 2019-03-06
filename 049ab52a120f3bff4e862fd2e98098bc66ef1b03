@@ -46,6 +46,30 @@
       "revId": "049ab52a120f3bff4e862fd2e98098bc66ef1b03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e2e2104_c5e71f40",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-06T10:09:35Z",
+      "side": 0,
+      "message": "Got it, please mention this in the commit message.",
+      "parentUuid": "aa447bd8_0fa93f4e",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "049ab52a120f3bff4e862fd2e98098bc66ef1b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
