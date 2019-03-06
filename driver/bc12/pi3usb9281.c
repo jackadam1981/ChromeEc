@@ -316,75 +316,74 @@ static uint32_t bc12_detect(int port)
 
 	if (usb_charger_port_is_sourcing_vbus(port)) {
 		/* If we're sourcing VBUS then we're not charging */
-		device_type = PI3USB9281_TYPE_NONE;
-		chg_status = PI3USB9281_CHG_NONE;
-	} else {
-		/* Set device type */
-		device_type = pi3usb9281_get_device_type(port);
-		chg_status = pi3usb9281_get_charger_status(port);
+		usb_charger_reset_charge(port);
+		return evt;
 	}
 
 	/* Debounce pin plug order if we detect a charger */
-	if (device_type || PI3USB9281_CHG_STATUS_ANY(chg_status)) {
-		/* next operation might trigger a detach interrupt */
-		pi3usb9281_disable_interrupts(port);
-		/*
-		 * Ensure D+/D- are open before resetting
-		 * Note: we can't simply call pi3usb9281_set_switches() because
-		 * another task might override it and set the switches closed.
-		 */
-		pi3usb9281_set_switch_manual(port, 1);
-		pi3usb9281_set_pins(port, 0);
+	/* next operation might trigger a detach interrupt */
+	pi3usb9281_disable_interrupts(port);
+	/*
+	 * Ensure D+/D- are open before resetting
+	 * Note: we can't simply call pi3usb9281_set_switches() because
+	 * another task might override it and set the switches closed.
+	 */
+	pi3usb9281_set_switch_manual(port, 1);
+	pi3usb9281_set_pins(port, 0);
 
-		/* Delay to debounce pin attach order */
-		msleep(PI3USB9281_DETECT_DEBOUNCE_MS);
+	/* Delay to debounce pin attach order */
+	msleep(PI3USB9281_DETECT_DEBOUNCE_MS);
 
-		/*
-		 * Reset PI3USB9281 to refresh detection registers. After reset,
-		 * - Interrupt is globally disabled
-		 * - All interrupts are unmasked (=enabled)
-		 *
-		 * WARNING: This reset is acceptable for samus_pd,
-		 * but may not be acceptable for devices that have
-		 * an OTG / device mode, as we may be interrupting
-		 * the connection.
-		 */
-		pi3usb9281_reset(port);
+	/*
+	 * Reset PI3USB9281 to refresh detection registers. After reset,
+	 * - Interrupt is globally disabled
+	 * - All interrupts are unmasked (=enabled)
+	 *
+	 * WARNING: This reset is acceptable for samus_pd,
+	 * but may not be acceptable for devices that have
+	 * an OTG / device mode, as we may be interrupting
+	 * the connection.
+	 */
+	pi3usb9281_reset(port);
 
-		/*
-		 * Restore data switch settings - switches return to
-		 * closed on reset until restored.
-		 */
-		usb_charger_set_switches(port, USB_SWITCH_RESTORE);
+	/*
+	 * Restore data switch settings - switches return to
+	 * closed on reset until restored.
+	 */
+	usb_charger_set_switches(port, USB_SWITCH_RESTORE);
 
-		/*
-		 * Wait after reset, before re-enabling interrupt, so that
-		 * spurious interrupts from this port are ignored.
-		 */
-		msleep(PI3USB9281_RESET_DEBOUNCE_MS);
+	/*
+	 * Wait after reset, before re-enabling interrupt, so that
+	 * spurious interrupts from this port are ignored.
+	 */
+	msleep(PI3USB9281_RESET_DEBOUNCE_MS);
 
-		/* Re-enable interrupts */
-		pi3usb9281_enable_interrupts(port);
+	/* Re-enable interrupts */
+	pi3usb9281_enable_interrupts(port);
 
-		/*
-		 * Consume interrupt (expectedly) triggered by the reset.
-		 * If it's other event (e.g. VBUS), return immediately.
-		 */
-		evt = task_wait_event(PI3USB9281_RESET_DEBOUNCE_MS * MSEC);
-		if (evt & USB_CHG_EVENT_BC12)
-			evt &= ~USB_CHG_EVENT_BC12;
-		else if (evt & USB_CHG_EVENT_INTR)
-			evt &= ~USB_CHG_EVENT_INTR;
-		else
-			return evt;
+	/*
+	 * Consume interrupt (expectedly) triggered by the reset.
+	 * If it's other event (e.g. VBUS), return immediately.
+	 */
+	evt = task_wait_event(PI3USB9281_RESET_DEBOUNCE_MS * MSEC);
+	if (evt & USB_CHG_EVENT_BC12)
+		evt &= ~USB_CHG_EVENT_BC12;
+	else if (evt & USB_CHG_EVENT_INTR)
+		evt &= ~USB_CHG_EVENT_INTR;
+	else if (evt & TASK_EVENT_TIMER) {
+		/* This is expected for detach because device is gone. */
+		evt &= ~TASK_EVENT_TIMER;
+		usb_charger_reset_charge(port);
+		return evt;
+	} else
+		return evt;
 
-		/* Debounce is done. Registers should have trustworthy values */
-		device_type = PI3USB9281_TYPE_NONE;
-		chg_status = PI3USB9281_CHG_NONE;
-		if (pc3usb9281_read_interrupt(port) == EC_SUCCESS) {
-			device_type = pi3usb9281_get_device_type(port);
-			chg_status = pi3usb9281_get_charger_status(port);
-		}
+	/* Debounce is done. Registers should have trustworthy values */
+	device_type = PI3USB9281_TYPE_NONE;
+	chg_status = PI3USB9281_CHG_NONE;
+	if (pc3usb9281_read_interrupt(port) == EC_SUCCESS) {
+		device_type = pi3usb9281_get_device_type(port);
+		chg_status = pi3usb9281_get_charger_status(port);
 	}
 
 	/* Attachment: decode + update available charge */
