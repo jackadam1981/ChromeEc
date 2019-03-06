@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "09891fe3_3b411805",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-03-06T01:31:12Z",
+      "side": 1,
+      "message": "Do you mind to remind that we need to do the rework(volume down should be reroute to gpio93 from gpio57) on proto boards before testing.",
+      "revId": "d174bb295ac199ba564ee5838f44344e4d961d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "715b25ec_3d3e3ef4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
