@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "0678c158_6e89f446",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-06T09:57:05Z",
+      "side": 1,
+      "message": "Maybe a stupid question: where\u0027s this variable defined?",
+      "range": {
+        "startLine": 238,
+        "startChar": 21,
+        "endLine": 238,
+        "endChar": 46
+      },
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63322bf7_fcb537cc",
         "filename": "power/mt8183.c",
         "patchSetId": 1

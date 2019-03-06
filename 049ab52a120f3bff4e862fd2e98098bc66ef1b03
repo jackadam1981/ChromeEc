@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05b7ba89_5dce9f90",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-06T09:57:05Z",
+      "side": 0,
+      "message": "Does this means we don\u0027t need these anymore, even for Kukui rev 1?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "049ab52a120f3bff4e862fd2e98098bc66ef1b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
