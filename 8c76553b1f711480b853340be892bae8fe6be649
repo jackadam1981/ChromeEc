@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fa6873e_8f6becb3",
+        "filename": "common/timesync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-06T20:35:03Z",
+      "side": 1,
+      "message": "This isn\u0027t really my domain, but I worry that this may be too slow with all the soft division operations, at least if we ever actually want to put it into every CPRITNF().\n\nHow about doing something like this:\n\n{\n uint32_t current_secs \u003d get_time() / SECOND;\n uint32_t diff_secs \u003d current_secs - local_epoch.local_secs;\n\n if (unlikely(diff_secs \u003e 60 - local_epoch.rtc_tm.second)) {\n   if (unlikely(diff_secs \u003e 120 - local_epoch.rtc_tm.second ||\n                local_epoch.rtc_tm.minute \u003d\u003d 59)) { // rare slow paths\n     local_epoch.rtc_tm \u003d sec_to_date(date_to_sec(local_epoch.rtc_tm) + diff_secs);\n   } else {\n     local_epoch.rtc_tm.second +\u003d diff_secs - 60\n     local_epoch.rtc_tm.minute++;\n } else {\n   local_epoch.rtc_tm.second +\u003d diff_secs;\n }\n\n local_epoch.local_secs \u003d current_secs;\n return local_epoch.rtc_tm;\n}\n\nIn order to do this efficiently you\u0027d want to store the RTC sync point as a struct calendar_date, not an epoch second, so maybe that means we should just transfer the timestamp in that format from coreboot right away, because right now we\u0027d just be converting back and forth a bunch of times for no reason.",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
