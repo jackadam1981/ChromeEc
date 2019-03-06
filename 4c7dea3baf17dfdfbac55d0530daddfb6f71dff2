@@ -22,6 +22,30 @@
       "revId": "4c7dea3baf17dfdfbac55d0530daddfb6f71dff2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab50e45e_ba45ac6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T01:59:07Z",
+      "side": 1,
+      "message": "The issue I encountered was on Wilco.  The first factory boot called ccd_reset_config() which then called HOOK_CCD_CHANGE.  Wilco specific code performs a ccd_get() to read the factory mode flag.  However because the ccd_config_loaded flag was still 0, ccd_get() returned 0 for the factory mode flag.  The original code only set the ccd_config_loaded after ccd_reset_config() returned.\n\nThis change delays the first HOOK_CCD_CHANGE until after the ccd_config_loaded flag is set.",
+      "parentUuid": "95e0453f_061f055f",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "4c7dea3baf17dfdfbac55d0530daddfb6f71dff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
