@@ -118,6 +118,30 @@
       "revId": "87af6b9f25c5a920bb3f2ec266d5101724c8bff7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228380f3_23613993",
+        "filename": "board/bip/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T17:25:39Z",
+      "side": 1,
+      "message": "So it was pulling in some rtc functions (and software division functions!) which brought it in over the edge of bip\u0027s flash space.  Jett and I talked and we agree it\u0027s reasonable to just leave this feature #undef\u0027d for bip.",
+      "parentUuid": "4f3f33c0_98db4d09",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "87af6b9f25c5a920bb3f2ec266d5101724c8bff7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
