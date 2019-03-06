@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e8628e0c_333d97e5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3368,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-06T00:50:18Z",
+      "side": 1,
+      "message": "I didn\u0027t realize that the queue is used for 1 message at a time. This is over writing the SOP message. The precedence is on the hardware side. So, I\u0027ll have to think over where can I send the SOP\u0027 message without disturbing the flow. Any suggestions as to where can I send it?",
+      "parentUuid": "b13a55b5_dfd501ee",
+      "range": {
+        "startLine": 3365,
+        "startChar": 0,
+        "endLine": 3368,
+        "endChar": 38
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b64fa965_b733d8ac",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
