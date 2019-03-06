@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "0e7eac87_8c11b9c2",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-06T16:20:54Z",
+      "side": 1,
+      "message": "after CL:1490794 lands, we can either use CUSTOM or add a new one for HECI",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "50e5267a1f284e00efa6c95c442da23974a0f2d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d902877d_097b1a51",
         "filename": "board/arcada_ish/board.h",
         "patchSetId": 3
