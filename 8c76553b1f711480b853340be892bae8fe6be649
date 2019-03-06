@@ -34,6 +34,24 @@
       "revId": "8c76553b1f711480b853340be892bae8fe6be649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591797c1_29a8867f",
+        "filename": "common/timesync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-06T21:09:13Z",
+      "side": 1,
+      "message": "Well, it would be useful to decide now if it does have an impact on what the ideal format for the sync message between coreboot and the EC is, because we don\u0027t want to have to change that after we started shipping things. I do think putting it in CPRINTF would be a great convenience feature (and shouldn\u0027t really cost anything with a careful implementation like suggested above), but I don\u0027t know how the EC people feel about it. (I did my fair share of EC log reconstruction on Scarlet, and having to manually add up seconds and then transform epoch back into dates everywhere certainly was a bit of a chore.)",
+      "parentUuid": "791c6a35_0dcb51c2",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
