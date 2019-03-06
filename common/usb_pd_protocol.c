@@ -2737,6 +2737,12 @@ void pd_task(void *u)
 			this_state = PD_STATE_SOFT_RESET;
 
 			/*
+			 * Re-discover any alternate modes we may have been
+			 * using with this port partner.
+			 */
+			pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
+
+			/*
 			 * Set the TCPC reset event such that we can set our CC
 			 * terminations, determine polarity, and enable RX so we
 			 * can hear back from our port partner.
