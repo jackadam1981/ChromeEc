@@ -16,6 +16,24 @@
       "revId": "8c76553b1f711480b853340be892bae8fe6be649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791c6a35_0dcb51c2",
+        "filename": "common/timesync.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T21:04:16Z",
+      "side": 1,
+      "message": "That\u0027s an interesting idea.  Right now, the code is only called from the HOOK_CHIPSET_* hooks.  I think that change makes more sense if we do want to integrate it into CPRINTF, for example.  For the purposes it\u0027s used for right now, sec_to_date is still probably going to be called every time.  I\u0027m thinking of maybe filing a Feature Request for that change and see if there\u0027s enough interest in it.  Thoughts?",
+      "parentUuid": "9fa6873e_8f6becb3",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
