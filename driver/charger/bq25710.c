@@ -34,6 +34,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /* Charger parameters */
 static const struct charger_info bq25710_charger_info = {
@@ -345,10 +346,12 @@ static void bq25710_chg_ramp_handle(void)
 	 * Once the charge ramp is stable write back the stable ramp
 	 * current to input current register.
 	 */
+	ramp_curr = chg_ramp_get_current_limit();
 	if (chg_ramp_is_stable()) {
-		ramp_curr = chg_ramp_get_current_limit();
 		if (ramp_curr && !charger_set_input_current(ramp_curr))
-			CPRINTF("stable ramp current=%d\n", ramp_curr);
+			CPRINTS("bq25710: stable ramp current=%d\n", ramp_curr);
+	} else {
+		CPRINTS("bq25710: ico failed, current=%d\n", ramp_curr);
 	}
 }
 DECLARE_DEFERRED(bq25710_chg_ramp_handle);
@@ -356,6 +359,8 @@ DECLARE_DEFERRED(bq25710_chg_ramp_handle);
 int charger_set_hw_ramp(int enable)
 {
 	int option3_reg, option2_reg, rv;
+	int reg;
+	int vbus;
 
 	rv = raw_read16(BQ25710_REG_CHARGE_OPTION_3, &option3_reg);
 	if (rv)
@@ -363,6 +368,13 @@ int charger_set_hw_ramp(int enable)
 	rv = raw_read16(BQ25710_REG_CHARGE_OPTION_2, &option2_reg);
 	if (rv)
 		return rv;
+
+	vbus = charger_get_vbus_voltage(0);
+
+	rv = raw_read16(BQ25710_REG_INPUT_VOLTAGE, &reg);
+	if(!rv)
+		CPRINTS("bq25710: vindpm_reg(%x) = %d, thresh = %d, vbus = %d",
+			reg, reg, (reg + 3200), vbus);
 
 	if (enable) {
 		/* Set InputVoltage register to BC1.2 minimum ramp voltage */
