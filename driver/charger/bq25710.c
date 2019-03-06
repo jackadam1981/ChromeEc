@@ -7,6 +7,7 @@
 
 #include "battery_smart.h"
 #include "bq25710.h"
+#include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
@@ -34,6 +35,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /* Charger parameters */
 static const struct charger_info bq25710_charger_info = {
@@ -277,6 +279,7 @@ int charger_set_input_current(int input_current)
 {
 	int num_steps = INPUT_CURRENT_TO_REG(input_current);
 
+	CPRINTS("bq25710: IIN_HOST = %d mA", input_current);
 	return raw_write16(BQ25710_REG_IIN_HOST, num_steps <<
 			  BQ25710_CHARGE_IIN_BIT_0FFSET);
 }
@@ -352,63 +355,111 @@ int charger_set_option(int option)
 
 #ifdef CONFIG_CHARGE_RAMP_HW
 
-static void bq25710_chg_ramp_handle(void)
-{
-	int ramp_curr;
-
-	/*
-	 * Once the charge ramp is stable write back the stable ramp
-	 * current to input current register.
-	 */
-	if (chg_ramp_is_stable()) {
-		ramp_curr = chg_ramp_get_current_limit();
-		if (ramp_curr && !charger_set_input_current(ramp_curr))
-			CPRINTF("stable ramp current=%d\n", ramp_curr);
-	}
-}
-DECLARE_DEFERRED(bq25710_chg_ramp_handle);
-
-int charger_set_hw_ramp(int enable)
+static void bq25710_disable_ico_mode(void)
 {
 	int option3_reg, option2_reg, rv;
 
 	rv = raw_read16(BQ25710_REG_CHARGE_OPTION_3, &option3_reg);
 	if (rv)
-		return rv;
+		return;
 	rv = raw_read16(BQ25710_REG_CHARGE_OPTION_2, &option2_reg);
 	if (rv)
-		return rv;
+		return;
+	/*  Disable ICO algorithm */
+	option3_reg &= ~BQ25710_CHARGE_OPTION_3_EN_ICO_MODE;
 
-	if (enable) {
-		/* Set InputVoltage register to BC1.2 minimum ramp voltage */
-		rv = raw_write16(BQ25710_REG_INPUT_VOLTAGE,
-			BQ25710_BC12_MIN_VOLTAGE_MV);
-		if (rv)
-			return rv;
+	/*
+	 * 1b: Input current limit is set by the lower value of
+	 * ILIM_HIZ pin and BQ25710_REG_IIN_HOST
+	 */
+	option2_reg |= BQ25710_CHARGE_OPTION_2_EN_EXTILIM;
 
-		/*  Enable ICO algorithm */
-		option3_reg |= BQ25710_CHARGE_OPTION_3_EN_ICO_MODE;
+	raw_write16(BQ25710_REG_CHARGE_OPTION_2, option2_reg);
+	raw_write16(BQ25710_REG_CHARGE_OPTION_3, option3_reg);
+}
+DECLARE_DEFERRED(bq25710_disable_ico_mode);
 
-		/* 0b: Input current limit is set by BQ25710_REG_IIN_HOST */
-		option2_reg &= ~BQ25710_CHARGE_OPTION_2_EN_EXTILIM;
+static void bq25710_chg_ramp_handle(void)
+{
+	int ramp_curr;
+	int vbus = charger_get_vbus_voltage(0);
 
-		/* Charge ramp may take up to 2s to settle down */
-		hook_call_deferred(&bq25710_chg_ramp_handle_data, (4 * SECOND));
+	CPRINTS("bq25710: chg_ramp_handle: vbus = %d mV", vbus);
+
+	/*
+	 * Once the charge ramp is stable write back the stable ramp
+	 * current to input current register.
+	 */
+	ramp_curr = chg_ramp_get_current_limit();
+	if (chg_ramp_is_stable()) {
+		if (ramp_curr && !charger_set_input_current(ramp_curr))
+			CPRINTS("bq25710: stable ramp current=%d\n", ramp_curr);
 	} else {
-		/*  Disable ICO algorithm */
-		option3_reg &= ~BQ25710_CHARGE_OPTION_3_EN_ICO_MODE;
+		CPRINTS("bq25710: ico failed, current=%d\n", ramp_curr);
+		hook_call_deferred(&bq25710_disable_ico_mode_data, 0);
+	}
+}
+DECLARE_DEFERRED(bq25710_chg_ramp_handle);
 
-		/*
-		 * 1b: Input current limit is set by the lower value of
-		 * ILIM_HIZ pin and BQ25710_REG_IIN_HOST
-		 */
-		option2_reg |= BQ25710_CHARGE_OPTION_2_EN_EXTILIM;
+static void bq25710_enable_ico_mode(void)
+{
+	int option3_reg, option2_reg, rv;
+	int vbus_nom = charge_manager_get_charger_voltage();
+	int threshold;
+	int reg;
+	int vbus = charger_get_vbus_voltage(0);
+
+
+	threshold = (((vbus_nom * 950) - (0 * 1000)) + 500) / 1000;
+	CPRINTS("bq25710: v_pdo = %d, v_act = %d,  th = %d mV, vindpm = %d mV",
+		vbus_nom, vbus, threshold, threshold - 3200);
+
+	if (raw_read16(BQ25710_REG_CHARGER_STATUS, &reg))
+		return;
+
+	CPRINTS("bq25710: sts = %x, IN_VINDPM = %d",
+		reg, reg & BQ25710_CHARGE_STATUS_IN_VINDPM);
+
+	rv = raw_read16(BQ25710_REG_CHARGE_OPTION_3, &option3_reg);
+	if (rv)
+		return;
+	rv = raw_read16(BQ25710_REG_CHARGE_OPTION_2, &option2_reg);
+	if (rv)
+		return;
+
+	/* Set InputVoltage register to BC1.2 minimum ramp voltage */
+	rv = raw_write16(BQ25710_REG_INPUT_VOLTAGE, threshold - 3200);
+	if (rv)
+		return;
+
+	/*  Enable ICO algorithm */
+	option3_reg |= BQ25710_CHARGE_OPTION_3_EN_ICO_MODE;
+
+	/* 0b: Input current limit is set by BQ25710_REG_IIN_HOST */
+	option2_reg &= ~BQ25710_CHARGE_OPTION_2_EN_EXTILIM;
+
+	/* Charge ramp may take up to 2s to settle down */
+	hook_call_deferred(&bq25710_chg_ramp_handle_data, (4 * SECOND));
+
+	raw_write16(BQ25710_REG_CHARGE_OPTION_2, option2_reg);
+	raw_write16(BQ25710_REG_CHARGE_OPTION_3, option3_reg);
+}
+DECLARE_DEFERRED(bq25710_enable_ico_mode);
+
+int charger_set_hw_ramp(int enable)
+{
+	int vbus = charger_get_vbus_voltage(0);
+
+	CPRINTS("bq25710: set hw ramp: vbus = %d mV", vbus);
+	if (enable) {
+		hook_call_deferred(&bq25710_enable_ico_mode_data, (4 * SECOND));
+		hook_call_deferred(&bq25710_disable_ico_mode_data, -1);
+	} else {
+		hook_call_deferred(&bq25710_disable_ico_mode_data, 0);
+		hook_call_deferred(&bq25710_enable_ico_mode_data, -1);
 	}
 
-	rv = raw_write16(BQ25710_REG_CHARGE_OPTION_2, option2_reg);
-	if (rv)
-		return rv;
-	return raw_write16(BQ25710_REG_CHARGE_OPTION_3, option3_reg);
+	return EC_SUCCESS;
 }
 
 int chg_ramp_is_stable(void)
@@ -417,6 +468,9 @@ int chg_ramp_is_stable(void)
 
 	if (raw_read16(BQ25710_REG_CHARGER_STATUS, &reg))
 		return 0;
+
+	CPRINTS("bq25710: sts = 0x%x, IN_VINDPM = %d",
+		reg, reg & BQ25710_CHARGE_STATUS_IN_VINDPM);
 
 	return reg & BQ25710_CHARGE_STATUS_ICO_DONE;
 }
