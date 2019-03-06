@@ -46,6 +46,30 @@
       "revId": "7b045940d9b17eeb7b53e9073058447631b2fd91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a679c4e1_7e52d3e1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-06T01:19:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a7bbebd_ec3dcd2e",
+      "range": {
+        "startLine": 425,
+        "startChar": 19,
+        "endLine": 425,
+        "endChar": 58
+      },
+      "revId": "7b045940d9b17eeb7b53e9073058447631b2fd91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
