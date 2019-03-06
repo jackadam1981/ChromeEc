@@ -51,6 +51,7 @@
 #define BQ25710_CHARGE_OPTION_3_EN_ICO_MODE	(1 << 11)
 
 /* ChargeStatus Register */
+#define BQ25710_CHARGE_STATUS_IN_VINDPM	(1 << 12)
 #define BQ25710_CHARGE_STATUS_ICO_DONE		(1 << 14)
 
 /* IIN_DPM Register */
