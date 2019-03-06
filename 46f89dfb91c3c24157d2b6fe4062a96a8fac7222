@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dcb6a51f_57b25d6b",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T07:06:38Z",
+      "side": 1,
+      "message": "I\u0027m fine with your implementation.",
+      "parentUuid": "a4564396_8029cbad",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78ded462_8c5ca5f7",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
@@ -163,6 +187,29 @@
       "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30cb472e_a6ec26c7",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-06T07:06:38Z",
+      "side": 1,
+      "message": "I noticed ccd_get_flag() is already forcing the return value to a boolean.  Is this needed again?",
+      "range": {
+        "startLine": 241,
+        "startChar": 20,
+        "endLine": 242,
+        "endChar": 40
+      },
+      "revId": "46f89dfb91c3c24157d2b6fe4062a96a8fac7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
