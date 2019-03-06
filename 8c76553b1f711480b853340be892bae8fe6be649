@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cf254f3c_3ee2e2bd",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T23:28:09Z",
+      "side": 1,
+      "message": "Aha, I hadn\u0027t even noticed that :) Done.",
+      "parentUuid": "5f1c7ff0_32c6fb19",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49b6da4d_7df414f3",
         "filename": "common/host_command.c",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "8c76553b1f711480b853340be892bae8fe6be649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463af33e_b002de4c",
+        "filename": "common/host_command.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T23:28:09Z",
+      "side": 1,
+      "message": "Good catch, thanks.  It\u0027s not necessary anymore.",
+      "parentUuid": "49b6da4d_7df414f3",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "abdd0c7d_58ab5eab",
+        "filename": "common/rtc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T23:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fd1dce_c9deb454",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91996763_f77937fa",
         "filename": "common/rtc.c",
         "patchSetId": 8
@@ -67,6 +121,24 @@
       "revId": "8c76553b1f711480b853340be892bae8fe6be649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbfbabb_f7be813e",
+        "filename": "common/rtc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T23:28:09Z",
+      "side": 1,
+      "message": "Oops, missed that in some refactoring.",
+      "parentUuid": "91996763_f77937fa",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +162,30 @@
       "revId": "8c76553b1f711480b853340be892bae8fe6be649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9569f856_ec67f602",
+        "filename": "common/rtc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T23:28:09Z",
+      "side": 1,
+      "message": "The optimizer appears to be too smart, and is attempting to turn that into a modulus operation :) So I left it as a manual modulus calculation for now.",
+      "parentUuid": "47fb6fc5_cd3ca0c4",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -160,6 +256,24 @@
       "revId": "8c76553b1f711480b853340be892bae8fe6be649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b05c678_05261e3b",
+        "filename": "test/rtc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-06T23:28:09Z",
+      "side": 1,
+      "message": "Oops, that was a typo.  Fixed.",
+      "parentUuid": "9492378c_d5903a7b",
+      "revId": "8c76553b1f711480b853340be892bae8fe6be649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
