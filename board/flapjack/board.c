@@ -329,7 +329,33 @@ struct {
 };
 BUILD_ASSERT(ARRAY_SIZE(kukui_boards) == BOARD_VERSION_COUNT);
 
+struct {
+	int battery_id;
+	int expect_mv;
+} const flapjack_batteries[] = {
+	{ BATT_ID_ATL_8,       900 },  /* 100K  */
+	{ BATT_ID_SUNWODA_8,  1484 },  /* 470K  */
+	{ BATT_ID_ATL_10,      576 },  /* 47K   */
+	{ BATT_ID_SUNWODA_10, 1200 },  /* 200K  */
+};
+
 #define THRESHOLD_MV 56 /* Simply assume 1800/16/2 */
+
+static int board_read_adc(int channel)
+{
+	int mv;
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
+	/* Wait to allow cap charge */
+	msleep(10);
+	mv = adc_read_channel(channel);
+
+	if (mv == ADC_READ_ERROR)
+		mv = adc_read_channel(channel);
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+	return mv;
+}
 
 int board_get_version(void)
 {
@@ -340,15 +366,7 @@ int board_get_version(void)
 	if (version != BOARD_VERSION_UNKNOWN)
 		return version;
 
-	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
-	/* Wait to allow cap charge */
-	msleep(10);
-	mv = adc_read_channel(ADC_BOARD_ID);
-
-	if (mv == ADC_READ_ERROR)
-		mv = adc_read_channel(ADC_BOARD_ID);
-
-	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+	mv = board_read_adc(ADC_BOARD_ID);
 
 	for (i = 0; i < BOARD_VERSION_COUNT; ++i) {
 		if (mv < kukui_boards[i].expect_mv + THRESHOLD_MV) {
@@ -358,6 +376,28 @@ int board_get_version(void)
 	}
 
 	return version;
+}
+
+int board_get_battery_id(void)
+{
+	static int batt_id = BATT_ID_UNKNOWN;
+	int mv;
+	int i;
+
+	if (batt_id != BATT_ID_UNKNOWN)
+		return batt_id;
+
+	mv = board_read_adc(ADC_BATT_ID);
+
+	for (i = 0; i < ARRAY_SIZE(flapjack_batteries); ++i) {
+		if ((mv <= flapjack_batteries[i].expect_mv + THRESHOLD_MV) &&
+		    (mv > flapjack_batteries[i].expect_mv - THRESHOLD_MV)) {
+			batt_id = flapjack_batteries[i].battery_id;
+			break;
+		}
+	}
+
+	return batt_id;
 }
 
 /* Motion sensors */
