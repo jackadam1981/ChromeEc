@@ -46,6 +46,30 @@
       "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db81e1d8_ddaf8a92",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-06T18:01:27Z",
+      "side": 1,
+      "message": "You can export it by declaring it in pi3usb9201.h (and removing \u0027static\u0027). I don\u0027t understand the 2nd question.",
+      "parentUuid": "c4d87f30_efee338c",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
