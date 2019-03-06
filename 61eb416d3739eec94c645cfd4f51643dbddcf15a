@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a8e80a41_b3751499",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3368,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-06T21:27:55Z",
+      "side": 1,
+      "message": "Generally speaking, this is the kind of scenario where we add a new PD_FLAGS definition which can trigger the message to send when we\u0027re in a steady state.  You can look at PD_FLAGS_CHECK_IDENTITY, PD_FLAGS_CHECK_PR_ROLE, and similar for examples of how this usually works.",
+      "parentUuid": "e8628e0c_333d97e5",
+      "range": {
+        "startLine": 3365,
+        "startChar": 0,
+        "endLine": 3368,
+        "endChar": 38
+      },
+      "revId": "61eb416d3739eec94c645cfd4f51643dbddcf15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b64fa965_b733d8ac",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
