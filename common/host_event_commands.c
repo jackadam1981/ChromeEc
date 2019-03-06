@@ -300,9 +300,11 @@ void host_set_events(host_event_t mask)
 	mask &= lpc_get_all_host_event_masks();
 #endif
 
+#ifndef CONFIG_HOSTCMD_HECI
 	/* exit now if nothing has changed */
 	if (!((events & mask) != mask || (events_copy_b & mask) != mask))
 		return;
+#endif
 
 	HOST_EVENT_CPRINTS("event set", mask);
 

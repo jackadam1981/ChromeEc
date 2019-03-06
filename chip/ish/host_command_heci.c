@@ -27,34 +27,73 @@ static heci_handle_t heci_cros_ec_handle = HECI_INVALID_HANDLE;
  * Aligning with other assumptions in host command stack, only a single host
  * command can be processed at a given time.
  */
-static uint8_t response_buffer[IPC_MAX_PAYLOAD_SIZE] __aligned(4);
-static struct host_packet heci_packet;
 
-#define HECI_CROS_EC_RESPONSE_MAX sizeof(response_buffer)
+struct cros_ec_ishtp_msg_hdr {
+	uint8_t command;
+	uint8_t status;
+	uint8_t reserved[2];
+} __packed;
+
+#define CROS_EC_ISHTP_MSG_HDR_SIZE sizeof(struct cros_ec_ishtp_msg_hdr)
+#define HECI_CROS_EC_RESPONSE_MAX \
+	(IPC_MAX_PAYLOAD_SIZE - CROS_EC_ISHTP_MSG_HDR_SIZE)
+
+struct cros_ec_ishtp_msg {
+	struct cros_ec_ishtp_msg_hdr hdr;
+	uint8_t response_buffer[HECI_CROS_EC_RESPONSE_MAX] __aligned(4);
+} __packed;
+
+struct cros_ec_ishtp_evt_msg {
+	struct cros_ec_ishtp_msg_hdr hdr;
+	host_event_t events;
+} __packed;
+
+enum heci_cros_ec_commands {
+	CROS_EC_HOST_REQUEST = 1,
+	CROS_EC_HOST_RESPONSE = 2,
+	CROS_EC_EVENT = 3
+};
+
+static struct cros_ec_ishtp_msg cros_ec_ishtp_msg;
+static struct host_packet heci_packet;
 
 
 /* TODO(b/123634700): send the host event via heci */
 void heci_send_host_events(host_event_t events)
 {
+	struct cros_ec_ishtp_evt_msg evt;
+
+	evt.hdr.command = CROS_EC_EVENT;
+	evt.hdr.status = 0;
+	evt.events = events;
+
+	heci_send_msg(heci_cros_ec_handle, (uint8_t *)&evt, sizeof(evt));
 }
 
 static void heci_send_response_packet(struct host_packet *pkt)
 {
-	heci_send_msg(heci_cros_ec_handle, pkt->response, pkt->response_size);
+	cros_ec_ishtp_msg.hdr.command = CROS_EC_HOST_RESPONSE;
+	cros_ec_ishtp_msg.hdr.status = 0;
+	heci_send_msg(heci_cros_ec_handle, (uint8_t *)&cros_ec_ishtp_msg,
+		      pkt->response_size + CROS_EC_ISHTP_MSG_HDR_SIZE);
 }
 
 static void cros_ec_ishtp_subsys_new_msg_received(const heci_handle_t handle,
 					uint8_t *msg, const size_t msg_size)
 {
+	if (msg[0] != CROS_EC_HOST_REQUEST) {
+		CPRINTS("Unknown HECI packet 0x%02x", msg[0]);
+		return;
+	}
 	memset(&heci_packet, 0, sizeof(heci_packet));
 
 	heci_packet.send_response = heci_send_response_packet;
 
-	heci_packet.request = msg;
+	heci_packet.request = msg + CROS_EC_ISHTP_MSG_HDR_SIZE;
 	heci_packet.request_max = HECI_MAX_MSG_SIZE;
-	heci_packet.request_size = msg_size;
+	heci_packet.request_size = msg_size - CROS_EC_ISHTP_MSG_HDR_SIZE;
 
-	heci_packet.response = &response_buffer;
+	heci_packet.response = &cros_ec_ishtp_msg.response_buffer;
 	heci_packet.response_max = HECI_CROS_EC_RESPONSE_MAX;
 	heci_packet.response_size = 0;
 
