@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "host_command_heci.h"
 #include "i2c.h"
 #include "motion_sense.h"
 #include "power.h"
@@ -114,7 +115,8 @@ int board_idle_task(void *unused)
 		task_wait_event(-1);
 }
 
-/* TODO(b/123634700): send the mkpb event via heci */
 void mkbp_set_host_active_via_custom(int active)
 {
+	if (active)
+		heci_send_mkbp_event();
 }
