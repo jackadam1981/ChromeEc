@@ -13,7 +13,14 @@
 
 /* Task event bitmasks */
 /* Tasks may use the bits in TASK_EVENT_CUSTOM for their own events */
+<<<<<<< HEAD   (08a8cd bloog: add support keyboard backlight)
 #define TASK_EVENT_CUSTOM(x)	(x & 0x0003ffff)
+=======
+#define TASK_EVENT_CUSTOM(x)	(x & 0x0000ffff)
+
+/* Used to signal that sysjump preparation has completed */
+#define TASK_EVENT_SYSJUMP_READY BIT(16)
+>>>>>>> CHANGE (f8206f USB PD: Re-discover port partner when a contract was in plac)
 
 #define TASK_EVENT_PD_AWAKE	(1 << 18)
 
