@@ -168,6 +168,29 @@
     },
     {
       "key": {
+        "uuid": "3c89e2ef_ae06774f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4917,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-06T16:14:43Z",
+      "side": 1,
+      "message": "nit: let\u0027s reduce the nesting level of this code.\n\nAlso in the else clause, let\u0027s use r_v2 for everything (we don\u0027t need a r_v1 anymore)\n\nthe args-\u003eresponse_size can be set in switch statement below this if..else structure",
+      "range": {
+        "startLine": 4909,
+        "startChar": 2,
+        "endLine": 4917,
+        "endChar": 0
+      },
+      "revId": "cef542b5c56878c04d79548bc886910acc51c45e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "287e85fd_9ac62029",
         "filename": "driver/usb_mux.c",
         "patchSetId": 9
