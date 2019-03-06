@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70631a53_4a0df65e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-06T00:00:45Z",
+      "side": 1,
+      "message": "Since now we reset ports to CONFIG_USB_PD_PULLUP on disconnect (\u0026 PR swap), we don\u0027t need this.",
+      "range": {
+        "startLine": 1079,
+        "startChar": 6,
+        "endLine": 1079,
+        "endChar": 29
+      },
+      "revId": "0ceae25e2a57be6d28dd714b1246877944869684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b11573_a15b2168",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-06T00:00:45Z",
+      "side": 1,
+      "message": "nit: Please join the lines.",
+      "range": {
+        "startLine": 719,
+        "startChar": 4,
+        "endLine": 720,
+        "endChar": 15
+      },
+      "revId": "0ceae25e2a57be6d28dd714b1246877944869684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71aea42e_c2d323e1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-06T00:00:45Z",
+      "side": 1,
+      "message": "nit: Please use a single line comment.",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 6
+      },
+      "revId": "0ceae25e2a57be6d28dd714b1246877944869684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
