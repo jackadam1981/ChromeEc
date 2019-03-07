@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9b86e8c_60ee1ce9",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T22:46:34Z",
+      "side": 1,
+      "message": "maybe add a comment saying we know this is valid because we send in reponse_buffer at the same offset (or maybe use response_buffer here directly)",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "e48b0b569ffd225fcb2790c17e83d655faf9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4713d3bd_2aa28bb2",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T22:46:34Z",
+      "side": 1,
+      "message": "replace with in-\u003ehdr.command",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 46
+      },
+      "revId": "e48b0b569ffd225fcb2790c17e83d655faf9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195b7334_919a93ef",
+        "filename": "chip/ish/host_command_heci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T22:46:34Z",
+      "side": 1,
+      "message": "if this is a common define, then we should put it in include/host_command_heci.h instead",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "e48b0b569ffd225fcb2790c17e83d655faf9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
