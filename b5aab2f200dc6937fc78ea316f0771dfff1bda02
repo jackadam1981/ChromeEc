@@ -118,6 +118,30 @@
       "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78672e0b_313f490f",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-07T08:22:11Z",
+      "side": 1,
+      "message": "Ack. Reverted back to patchset #2.",
+      "parentUuid": "b55c31f0_bfa39e3a",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "b5aab2f200dc6937fc78ea316f0771dfff1bda02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
