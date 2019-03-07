@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6bb8743e_ae459e3e",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-07T01:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5425d9_008f5f98",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "b430a424dbe1bb736162dd542622443246de88db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "515a13d0_91637332",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-06T21:22:10Z",
       "side": 1,
       "message": "Does this work?\n\nI think this is just looking at any EPP charger with serial no 0xe5e5",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 43
+      },
+      "revId": "b430a424dbe1bb736162dd542622443246de88db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96062fae_8ed356bb",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-07T01:50:54Z",
+      "side": 1,
+      "message": "If TX device is not the dedicated GPP charger, but this TX can supply voltage \u003e 7V, It\u0027s seem as a EPP charger.",
+      "parentUuid": "515a13d0_91637332",
       "range": {
         "startLine": 764,
         "startChar": 2,
