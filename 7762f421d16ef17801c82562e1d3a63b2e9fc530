@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "518a3683_4960f310",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-07T03:19:05Z",
+      "side": 1,
+      "message": "\"Please check that servod is running, or manually specify --chip.\"",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 62
+      },
+      "revId": "7762f421d16ef17801c82562e1d3a63b2e9fc530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
