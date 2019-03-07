@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d4fb607_7a816b44",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T22:29:37Z",
+      "side": 1,
+      "message": "shouldn\u0027t be need this initialization to 0",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4626788b_dd856c94",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T22:29:37Z",
+      "side": 1,
+      "message": "why guard this on debug level?",
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
