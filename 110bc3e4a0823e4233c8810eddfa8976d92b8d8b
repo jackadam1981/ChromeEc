@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4456c3d7_ed73cda7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-07T21:32:52Z",
+      "side": 1,
+      "message": "+1 to what Jett said. It avoids each caller having to check this and unexpected bytes showing up in CBI for the tags.",
+      "parentUuid": "011972f8_a168aa54",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "110bc3e4a0823e4233c8810eddfa8976d92b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "023c8333_e038b182",
         "filename": "common/cbi.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-03-07T14:53:54Z",
       "side": 1,
       "message": "another alternative that seems easier to read to me:\n\nhead-\u003etotal_size \u003d (p - cbi);\n\n\n(your call)",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 49
+      },
+      "revId": "110bc3e4a0823e4233c8810eddfa8976d92b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cc724f_a163f01d",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-07T21:32:52Z",
+      "side": 1,
+      "message": "I like that! :)",
+      "parentUuid": "023c8333_e038b182",
       "range": {
         "startLine": 202,
         "startChar": 2,
