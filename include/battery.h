@@ -51,6 +51,10 @@ extern struct ec_response_battery_dynamic_info
  * level < this level.
  */
 #define BATTERY_LEVEL_SHUTDOWN		  3
+/* Battery cutoff before it is too low */
+#ifdef CONFIG_BATTERY_SAFETY_CUTOFF
+#define BATTERY_SAFETY_CUTOFF		CONFIG_BATTERY_SAFETY_CUTOFF
+#endif
 
 /*
  * Sometimes we have hardware to detect battery present, sometimes we have to
