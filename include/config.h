@@ -315,7 +315,6 @@
  */
 #undef CONFIG_BATTERY_MAX17055_ALERT
 
-
 /* Compile mock battery support; used by tests. */
 #undef CONFIG_BATTERY_MOCK
 
@@ -329,6 +328,11 @@
  * no power button press is required.
  */
 #undef CONFIG_BATTERY_HW_PRESENT_CUSTOM
+
+/* Doing a safety shutdown; in order to have better user experience, we shut
+ * down the device before its battery is too low.
+ */
+#undef CONFIG_BATTERY_SAFETY_SHUTDOWN
 
 /*
  * If defined, the charger will check for battery presence before attempting
