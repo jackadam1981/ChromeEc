@@ -22,6 +22,30 @@
       "revId": "eba16b7ea42651e9e3d67cc643d67c870dd3fcc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13dc1d4e_e86ea241",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-03-07T19:09:12Z",
+      "side": 1,
+      "message": "Yeah, it makes sense to return 0 if (reg \u003e\u003e 8) \u003d\u003d 0.",
+      "parentUuid": "e007c443_78c888bb",
+      "range": {
+        "startLine": 318,
+        "startChar": 27,
+        "endLine": 318,
+        "endChar": 53
+      },
+      "revId": "eba16b7ea42651e9e3d67cc643d67c870dd3fcc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
