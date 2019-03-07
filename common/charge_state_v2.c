@@ -1320,11 +1320,11 @@ static int shutdown_on_critical_battery(void)
 	}
 
 	if (battery_too_low() && !curr.batt_is_charging) {
-		CPRINTS("Low battery: %d%%, %dmV",
+		CPRINTS("Battery Too Low: %d%%, %dmV",
 			curr.batt.state_of_charge, curr.batt.voltage);
 		battery_critical = 1;
 	}
-
+	
 	if (!battery_critical) {
 		/* Reset shutdown warning time */
 		shutdown_warning_time.val = 0;
