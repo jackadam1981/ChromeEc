@@ -93,6 +93,30 @@
       "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503f83b3_1134be4f",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-07T23:14:38Z",
+      "side": 1,
+      "message": "Actually firmware doesn\u0027t even call it. So, it\u0027s ok.",
+      "parentUuid": "990875b9_1f2331b4",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 54
+      },
+      "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
