@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1d3ef30_d6bca958",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-07T17:45:47Z",
+      "side": 1,
+      "message": "Though we already have board-specific flags (e.g. bitbang_rate, logfile) already, but I\u0027d rather not add that kind of flags any more unless it is an inevitable situation.\nI am ok with iteflash change though.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
