@@ -69,6 +69,30 @@
       "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990875b9_1f2331b4",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-07T21:35:49Z",
+      "side": 1,
+      "message": "+1 to what Jett said.",
+      "parentUuid": "3ef1c679_3ce538ef",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 54
+      },
+      "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
