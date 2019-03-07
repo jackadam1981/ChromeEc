@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "b3ee973e_bd226bb0",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-07T08:55:41Z",
+      "side": 1,
+      "message": "Huh. Should we have this as INIT hook instead, with prio ADC+1 (I think there is something like that)?",
+      "parentUuid": "386d01e1_1e60fb2c",
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63322bf7_fcb537cc",
         "filename": "power/mt8183.c",
         "patchSetId": 1
