@@ -124,6 +124,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f76e24_eee7d8be",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-07T03:42:30Z",
+      "side": 1,
+      "message": "Oops, just noticed that pgeorgi@ already in this thread...",
+      "parentUuid": "15b7feca_4183e822",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
