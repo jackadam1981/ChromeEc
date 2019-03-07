@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8760c0aa_d0da7a23",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-07T02:18:20Z",
+      "side": 1,
+      "message": "nit: It\u0027s ambiguous to me. I would say null character.",
+      "range": {
+        "startLine": 101,
+        "startChar": 49,
+        "endLine": 101,
+        "endChar": 51
+      },
+      "revId": "5fefc6a932d915438fb0cab0842053dcb70873a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
