@@ -22,6 +22,53 @@
       "revId": "110bc3e4a0823e4233c8810eddfa8976d92b8d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011972f8_a168aa54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T14:53:54Z",
+      "side": 1,
+      "message": "\u003e Can we fix this in cbi-util? We need to keep the library compact. We need to keep things offline and off the chip as much as possible.\n\nThis doesn\u0027t seem like it adds much to the on chip size cost. It seems worth it to put the check in the common code.",
+      "parentUuid": "303a76d6_7b2f8c9d",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "110bc3e4a0823e4233c8810eddfa8976d92b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023c8333_e038b182",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T14:53:54Z",
+      "side": 1,
+      "message": "another alternative that seems easier to read to me:\n\nhead-\u003etotal_size \u003d (p - cbi);\n\n\n(your call)",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 49
+      },
+      "revId": "110bc3e4a0823e4233c8810eddfa8976d92b8d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
