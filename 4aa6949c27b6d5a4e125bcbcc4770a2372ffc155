@@ -22,6 +22,52 @@
       "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c560a5f_56f99a58",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:29:42Z",
+      "side": 1,
+      "message": "just a thought: maybe these boolean fields should be one bit in size.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "288a8034_274e3af3",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:29:42Z",
+      "side": 1,
+      "message": "breaks are miisng - is this intentional?\n\nwhere are these values used?",
+      "range": {
+        "startLine": 1782,
+        "startChar": 0,
+        "endLine": 1785,
+        "endChar": 34
+      },
+      "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
