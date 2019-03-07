@@ -354,7 +354,7 @@ struct lsm6dsm_data {
  * allowed ODRs, 4 should suffice.
  * See: ST's LSM6DSM application notes (AN4987) Tables 17 and 19 for details
  */
-#define LSM6DSM_DISCARD_SAMPLES 4
+#define LSM6DSM_DISCARD_SAMPLES 5
 
 #define LSM6DSM_ST_DATA(g, type) (&(&(g))->st_data[(type)])
 
