@@ -114,6 +114,23 @@
       "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636249be_f9c5d282",
+        "filename": "util/iteflash.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:24:23Z",
+      "side": 1,
+      "message": "this could be moved below line 1598, no need not duplicate it in line 1585 then",
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
