@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "9e9c52a9_5746e34d",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-07T09:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ee973e_bd226bb0",
+      "revId": "d2e21738ffa66ff9c379cd0b4935ad3581e912e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63322bf7_fcb537cc",
         "filename": "power/mt8183.c",
         "patchSetId": 1
