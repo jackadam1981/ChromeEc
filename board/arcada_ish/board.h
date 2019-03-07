@@ -31,9 +31,21 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
-#define CONFIG_ACCELGYRO_LSM6DSM	/* For LSM6DS3 */
+#define CONFIG_ACCEL_LNG2DM		/* Base sensor: LNG2DM */
+#define CONFIG_ACCELGYRO_LSM6DSM	/* Lid sensor: LSM6DS3 */
 /* TODO(b/123634700): This is temporary until FIFO is supported */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << BASE_ACCEL)
+#define CONFIG_ACCEL_FORCE_MODE_MASK ((1 << LID_ACCEL) | (1 << LID_GYRO) | (1 << BASE_ACCEL))
+
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+
+#define CONFIG_TABLET_MODE
+/*#define CONFIG_HALL_SENSOR*/
+/*#define HALL_SENSOR_GPIO_L GPIO_LID_CL_NB_L*/
+
+#define GPIO_LID_OPEN GPIO_LID_CL_NB_L
 
 /* Host command over HECI */
 #define CONFIG_HOSTCMD_HECI
@@ -58,7 +70,6 @@
 #undef CONFIG_KEYBOARD_KSO_BASE
 #undef CONFIG_FLASH
 #undef CONFIG_FMAP
-#undef CONFIG_LID_SWITCH
 #undef CONFIG_SWITCH
 /* TODO: Watch Dog is supported but temporarily removed. Currently under 
  * development on KBL and will be carried over to WHL.
@@ -78,6 +89,8 @@
 
 /* Motion sensors */
 enum sensor_id {
+	LID_ACCEL,
+	LID_GYRO,
 	BASE_ACCEL,
 	/* TODO(b/122281217): Add remain sensors */
 	SENSOR_COUNT

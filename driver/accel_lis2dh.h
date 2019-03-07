@@ -19,6 +19,13 @@
 #define LIS2DH_ADDR0		LIS2DH_I2C_ADDR(0x18)
 #define LIS2DH_ADDR1		LIS2DH_I2C_ADDR(0x19)
 
+/*
+ * 8-bit address is 0101 00XW b. Where 'X' is determined
+ * by the voltage on the ADDR pin, and 'W' is read write bit
+ */
+#define LNG2DM_ADDR0		0x50
+#define LNG2DM_ADDR1		0x52
+
 /* Who Am I  */
 #define LIS2DH_WHO_AM_I_REG	0x0f
 #define LIS2DH_WHO_AM_I		0x33
@@ -111,7 +118,7 @@ enum lis2dh_odr {
  * selected, here Only Normal Power mode supported (10 bits).
  * But for lis2de, it has only one 8bit resolution.
  */
-#ifdef CONFIG_ACCEL_LIS2DE
+#if defined(CONFIG_ACCEL_LIS2DE) || defined(CONFIG_ACCEL_LNG2DM)
 #define LIS2DH_RESOLUTION       8
 #elif defined(CONFIG_ACCEL_LIS2DH)
 #define LIS2DH_RESOLUTION      	10

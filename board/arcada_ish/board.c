@@ -5,8 +5,9 @@
 
 /* Arcada ISH board-specific configuration */
 
-#include "accelgyro_lsm6dsm.h"
 #include "console.h"
+#include "driver/accel_lis2dh.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -28,24 +29,35 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* Sensor config */
+static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
+
 /* sensor private data */
 static struct lsm6dsm_data lsm6dsm_a_data;
+static struct stprivate_data g_lis2dh_data;
+
+/* Matrix to rotate lid sensor into standard reference frame */
+const mat33_fp_t lid_rot_ref = {
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0,  FLOAT_TO_FP(1)}
+};
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
-	[BASE_ACCEL] = {
-		.name = "Base Accel",
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
 		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_LSM6DS3,
 		.type = MOTIONSENSE_TYPE_ACCEL,
-		.location = MOTIONSENSE_LOC_BASE,
+		.location = MOTIONSENSE_LOC_LID,
 		.drv = &lsm6dsm_drv,
-		.mutex = &g_base_mutex,
-		.drv_data = &lsm6dsm_a_data,
+		.mutex = &g_lid_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_a_data,
+				MOTIONSENSE_TYPE_ACCEL),
 		.port = I2C_PORT_SENSOR,
 		.addr = LSM6DSM_ADDR1,
-		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		.rot_standard_ref = &lid_rot_ref,
 		.default_range = 4,  /* g */
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,
 		.max_frequency = LSM6DSM_ODR_MAX_VAL,
@@ -55,8 +67,59 @@ struct motion_sensor_t motion_sensors[] = {
 				.odr = 13000 | ROUND_UP_FLAG,
 				.ec_rate = 100 * MSEC,
 			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
 		},
 	},
+
+	[LID_GYRO] = {
+		.name = "Lid Gyro",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LSM6DS3,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_a_data,
+				MOTIONSENSE_TYPE_GYRO),
+		.port = I2C_PORT_SENSOR,
+		.addr = LSM6DSM_ADDR1,
+		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
+		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+	},
+
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LNG2DM,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lis2dh_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_lis2dh_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = LNG2DM_ADDR0,
+		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		/* We only use 2g because its resolution is only 8-bits */
+		.default_range = 2, /* g */
+		.min_frequency = LIS2DH_ODR_MIN_VAL,
+		.max_frequency = LIS2DH_ODR_MAX_VAL,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+		},
+	},
+
 	/* TODO(b/122281217): Add remain sensors */
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -86,3 +149,14 @@ int board_idle_task(void *unused)
 	while (1)
 		task_wait_event(-1);
 }
+
+
+#ifndef TEST_BUILD
+void lid_angle_peripheral_enable(int enable)
+{
+	// ??? TODO is this a good spot to set GPIO???
+
+
+	/* Do nothing. ISH doesn't disable any peripherals */
+}
+#endif
