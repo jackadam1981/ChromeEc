@@ -142,6 +142,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9a27bd_d941ebbf",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-07T04:56:13Z",
+      "side": 1,
+      "message": "How about adding a const?\n\n#define table(x) const func vectors[] __attribute__((section(\".text.vecttable\"))) \u003d { x [IRQ_UNUSED_OFFSET] \u003d null };\n\nI use gcc, and the section has the same flags as it was:\n\n 5 .text.vecttable 00000298  00000000  00000000  00000050  2**2\n                 CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE\n\nNot sure what clang would look like",
+      "parentUuid": "64f76e24_eee7d8be",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
