@@ -330,6 +330,11 @@
  */
 #undef CONFIG_BATTERY_HW_PRESENT_CUSTOM
 
+/* If defined, ec will cut off battery when system is idle
+ * instead of hibernation.
+ */
+#undef CONFIG_CUTOFF_DELAY_SEC
+
 /*
  * If defined, the charger will check for battery presence before attempting
  * to communicate with it. This avoids the 30 second delay when booting
