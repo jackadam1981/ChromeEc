@@ -160,6 +160,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "103e4392_1ba38d86",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-03-07T10:22:32Z",
+      "side": 1,
+      "message": "Thanks Yilun, that\u0027s looking pretty good! Tom, could you try with clang to see if it\u0027s reasonable there as well? In that case we can get rid of this hack (maybe it was only required for gcc4.9?)",
+      "parentUuid": "3d9a27bd_d941ebbf",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
