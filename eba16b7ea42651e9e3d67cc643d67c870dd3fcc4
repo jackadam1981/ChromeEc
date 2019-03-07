@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e007c443_78c888bb",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-07T17:39:53Z",
+      "side": 1,
+      "message": "Do you think this should be changed so that VBUS is reported as 0, until (reg \u003e\u003e 8) !\u003d 0. Any value of VBUS \u003c 3.2V can\u0027t be measured, and what is happening now is that VBUS measurement will always return 3200 until VBUS \u003e 3.2V. I think this is most confusing when no external charger is connected, but we still report 3200 mV for VBUS.",
+      "range": {
+        "startLine": 318,
+        "startChar": 27,
+        "endLine": 318,
+        "endChar": 53
+      },
+      "revId": "eba16b7ea42651e9e3d67cc643d67c870dd3fcc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
