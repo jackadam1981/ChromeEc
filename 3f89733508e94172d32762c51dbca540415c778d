@@ -22,6 +22,30 @@
       "revId": "3f89733508e94172d32762c51dbca540415c778d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c8b97c1_ccd45f75",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-07T01:42:53Z",
+      "side": 1,
+      "message": "Uh oh.. yes, I will fix that.",
+      "parentUuid": "f5fe1ed5_1df4bdf2",
+      "range": {
+        "startLine": 98,
+        "startChar": 78,
+        "endLine": 98,
+        "endChar": 79
+      },
+      "revId": "3f89733508e94172d32762c51dbca540415c778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
