@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88561627_c0f7fbea",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-07T20:03:05Z",
+      "side": 1,
+      "message": "Note that there\u0027s basically no way to format this that passes the checkpatch style checker. It wants it to be wrapped in \"do { } while(0)\", which doesn\u0027t make sense for a variable declaration.",
+      "revId": "62797bb955dfcd2e5381948ea777e506c33b501e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
