@@ -1297,6 +1297,15 @@ enum critical_shutdown board_critical_shutdown_check(
 #endif
 }
 
+/* Battery is low but not too low yet. */
+static inline int battery_low(void)
+{
+	return ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+		 curr.batt.state_of_charge < BATTERY_SAFETY_CUTOFF) ||
+		(!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
+		 curr.batt.voltage <= batt_info->voltage_min));
+}
+
  /*
   * If the battery is at extremely low charge (and discharging) or extremely
   * high temperature, the EC will notify the AP and start a timer. If the
@@ -1320,10 +1329,19 @@ static int shutdown_on_critical_battery(void)
 	}
 
 	if (battery_too_low() && !curr.batt_is_charging) {
-		CPRINTS("Low battery: %d%%, %dmV",
+		CPRINTS("Battery Too Low: %d%%, %dmV",
 			curr.batt.state_of_charge, curr.batt.voltage);
 		battery_critical = 1;
 	}
+
+#ifdef CONFIG_BATTERY_SAFETY_CUTOFF
+	if (battery_low() && !curr.batt_is_charging &&
+			chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		CPRINTS("Low Battery: %d%%, %dmV",
+			curr.batt.state_of_charge, curr.batt.voltage);
+		battery_critical = 1;
+	}
+#endif
 
 	if (!battery_critical) {
 		/* Reset shutdown warning time */

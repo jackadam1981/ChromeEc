@@ -315,7 +315,6 @@
  */
 #undef CONFIG_BATTERY_MAX17055_ALERT
 
-
 /* Compile mock battery support; used by tests. */
 #undef CONFIG_BATTERY_MOCK
 
@@ -329,6 +328,16 @@
  * no power button press is required.
  */
 #undef CONFIG_BATTERY_HW_PRESENT_CUSTOM
+
+/* In order to have better user experience, we cutoff battery when
+ * system is off and battery is low.
+ */
+#undef CONFIG_BATTERY_SAFETY_CUTOFF
+
+/* If defined, ec will cut off battery when system is idle
+ * instead of hibernation.
+ */
+#undef CONFIG_CUTOFF_DELAY_SEC
 
 /*
  * If defined, the charger will check for battery presence before attempting
