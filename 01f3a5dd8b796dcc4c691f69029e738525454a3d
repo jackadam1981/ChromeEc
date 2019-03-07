@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29aa857d_e1b6f861",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:12:09Z",
+      "side": 1,
+      "message": "I\u0027m realizing now that this is actually the lid instead of the base sensor, can we update it in this CL?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "01f3a5dd8b796dcc4c691f69029e738525454a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
