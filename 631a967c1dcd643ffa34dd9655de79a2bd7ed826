@@ -45,6 +45,30 @@
       "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ef1c679_3ce538ef",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T14:56:13Z",
+      "side": 1,
+      "message": "If the new function instead used on chip, then it will get optimized out. It seems worth it to add to common code in this scenario (since it won\u0027t actually affect the chip flash size)",
+      "parentUuid": "77a262bd_c8a69637",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 54
+      },
+      "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
