@@ -92,6 +92,30 @@
       "revId": "e775c057c9a76d4345932fb8ed2dd9b1dd794ae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ea99164_9e389d9d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-03-07T08:04:41Z",
+      "side": 1,
+      "message": "In my opinion, you maybe can add the anx7447_mux_init into anx7447_init to force modifying the default value to correct value.",
+      "parentUuid": "d8000a3c_b8163df0",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 31
+      },
+      "revId": "e775c057c9a76d4345932fb8ed2dd9b1dd794ae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
