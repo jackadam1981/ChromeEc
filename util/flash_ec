@@ -76,6 +76,7 @@ BOARDS_STM32=(
 	minimuffin
 	nami_fp
 	nocturne_fp
+	hatch_fp
 	oak
 	oak_pd
 	pit
@@ -671,7 +672,7 @@ case "${BOARD}" in
         chocodile_bec ) MCU="usbpd" ;;
 	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
-	nami_fp|nocturne_fp ) MCU="usbpd" ;;
+	nami_fp|nocturne_fp|hatch_fp ) MCU="usbpd" ;;  # TODO(tom): think we can rename to fpmcu and create "servo_fpmcu_boot0" like the others
 	dingdong|hoho|twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
