@@ -16,6 +16,24 @@
       "revId": "62797bb955dfcd2e5381948ea777e506c33b501e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de6a0b5_d3cbf8af",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-03-07T20:47:17Z",
+      "side": 1,
+      "message": "Yes, checkpatch is a rather stupid style checker.",
+      "parentUuid": "88561627_c0f7fbea",
+      "revId": "62797bb955dfcd2e5381948ea777e506c33b501e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
