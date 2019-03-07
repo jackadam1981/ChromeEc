@@ -106,6 +106,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b7feca_4183e822",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-07T03:41:25Z",
+      "side": 1,
+      "message": "Apologize that I miss this thread.\n\n+pgeorgi@\n\nI am also getting ideas from this change: https://crrev.com/c/1177710\n\nFor vecttable case, I think we should keep \"a,@\". Since that all the table elements are decided at compile time, and we won\u0027t change the vecttable value after program starts.  So we should keep it READONLY IMO.",
+      "parentUuid": "06c9181c_9d694c03",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
