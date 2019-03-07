@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7813e4a3_9ed56ea5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:09:58Z",
+      "side": 0,
+      "message": "this is not necessary any more?",
+      "range": {
+        "startLine": 1574,
+        "startChar": 1,
+        "endLine": 1574,
+        "endChar": 26
+      },
+      "revId": "1641ef6a6e12ca4e26764ad0a083fc07a08da96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1847060_ffd52730",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:09:58Z",
+      "side": 0,
+      "message": "why not keep this message?",
+      "range": {
+        "startLine": 1585,
+        "startChar": 2,
+        "endLine": 1585,
+        "endChar": 54
+      },
+      "revId": "1641ef6a6e12ca4e26764ad0a083fc07a08da96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

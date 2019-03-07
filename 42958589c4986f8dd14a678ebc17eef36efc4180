@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a655941_44f89b2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:09:58Z",
+      "side": 1,
+      "message": "can you confirm that iteflash over SuzyQ still works fine?",
+      "revId": "42958589c4986f8dd14a678ebc17eef36efc4180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f524515_2277f11a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:09:58Z",
+      "side": 1,
+      "message": "this could have been re-written more succinctly as\n\n\tret \u003d dbgr_disable_watchdog(chnd);\n\tif (!ret)\n\t    return dbgr_disable_protect_path(chnd);\n\n\treturn ret;",
+      "range": {
+        "startLine": 1590,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 10
+      },
+      "revId": "42958589c4986f8dd14a678ebc17eef36efc4180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
