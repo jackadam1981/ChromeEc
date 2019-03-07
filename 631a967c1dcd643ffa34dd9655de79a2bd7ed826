@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "850338cd_008bf7c0",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-07T08:07:47Z",
+      "side": 1,
+      "message": "Please skip it if size\u003d\u003d0:\n\nif (bi.model.size)\n     \tp \u003d cbi_set_data(p, CBI_TAG_MODEL_ID, \u0026bi.model.val, bi.model.size);",
+      "range": {
+        "startLine": 342,
+        "startChar": 5,
+        "endLine": 342,
+        "endChar": 69
+      },
+      "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a262bd_c8a69637",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-07T08:07:47Z",
+      "side": 1,
+      "message": "Same comment as in CL:1506439. Can you create a local utility function here (instead of an API on the chip)?\n\nWe need to keep things offline and off the chip as much as possible.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 54
+      },
+      "revId": "631a967c1dcd643ffa34dd9655de79a2bd7ed826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
