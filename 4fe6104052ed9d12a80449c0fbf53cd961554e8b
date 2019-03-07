@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3c97b7d_bfae4063",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-07T17:14:58Z",
+      "side": 1,
+      "message": "Could you justify the need for this flag?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 43
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624a274f_8a0c43ff",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-07T17:14:58Z",
+      "side": 1,
+      "message": "Would you justify flags as well?\nIt looks like this patch remains experimental.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d3b4ec_b38bc00e",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-07T17:14:58Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 3
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d74554a_5ae36f51",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-07T17:14:58Z",
+      "side": 1,
+      "message": "I\u0027d rather keep consistency with the other part in this script.",
+      "range": {
+        "startLine": 495,
+        "startChar": 6,
+        "endLine": 495,
+        "endChar": 13
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b3f287_a2dec0b1",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-07T17:14:58Z",
+      "side": 1,
+      "message": "This is not the scope of the bug.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
