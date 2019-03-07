@@ -178,6 +178,24 @@
       "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f535394_174cf00a",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-07T19:04:11Z",
+      "side": 1,
+      "message": "Confirmed that with yllin@\u0027s const suggestion, it is READONLY with clang. The only difference between clang and gcc is that gcc marks the section with the CODE attribute, but clang uses DATA. It does run, and I think it\u0027s fine (technically it is data -- array of addresses -- not executable code):\n\n  .text.vecttable 00000298  00000000  00000000  00000060  2**2\n                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA",
+      "parentUuid": "103e4392_1ba38d86",
+      "revId": "86a761487bcba2ebbecf7f21f24276db5a95d340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
