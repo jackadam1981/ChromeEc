@@ -93,6 +93,30 @@
       "revId": "b430a424dbe1bb736162dd542622443246de88db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08399423_c15f79bd",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-07T02:19:39Z",
+      "side": 1,
+      "message": "What I mean is that this line just read the serial number of the EPP charger and check if the serial number equal 0xe5e5 or not.\n\nIt didn\u0027t actually check whether the charger is actuall GPP or EPP.",
+      "parentUuid": "96062fae_8ed356bb",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 43
+      },
+      "revId": "b430a424dbe1bb736162dd542622443246de88db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
