@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50da9427_b90d8b90",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "where does active come from?\n\nAlso can we remove this from board and only perform it in host_command_heci.c?",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 11
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935439e5_54268ba7",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "there is an __ec align 4 we can use for this (see ec_command.h)",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fc6b72_82afe854",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "I am a little hesitant about defining the struct like this since someone could accidentally create one of the stack or create multiple and this have a large payload for response_buffer.\n\nI think just creating a static response_buffer the size of IPC_MAX_PAYLOAD_SIZE is a litte more safe, and then we can cast it to what ever structure we need.\n\n\nMaybe we define this as\n\ncros_ec_ishtp_msg {\n  struct cros_ec_ishtp_msg_hdr hdr;\n  uint8_t data[0];\n} __ec_align4;\n\n\nand still have\n\nstatic uint8_t response_buffer[IPC_MAX_PAYLOAD_SIZE] __aligned(4);\n\nthen we can cast like:\n\nstruct cros_ec_ishtp_msg *out \u003d (void*) response_buffer;\nout-\u003ehrd.command \u003d 1;",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb3cc22_fcaff9ee",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "CROS_EC_COMMAND \u003d 1, /* initiated from AP */\nCROS_MKBP_EVENT \u003d 2, /* initiated from EC */\n\nthoughts?\n\n\n\nBoth request and response can use the same CROS_EC_COMMAND interface",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc102e9_c1b8a915",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "could also instantiate struct cros_ec_ishtp_msg here for consistency\n\n(just an option though)",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373d7ede_6d5ef67f",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "let\u0027s rename this to be more command specific now: heci_send_hostcmd_reponse or something like that",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42cc75dc_8a0518ef",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "let\u0027s use member access\n\nIf we define at the top of the function:\nstruct cros_ec_ishtp_msg *in \u003d msg;\n\nthen\nheci_packet.request \u003d in-\u003edata;",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 55
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d92011_9ab4cfb7",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-07T16:34:41Z",
+      "side": 1,
+      "message": "this could also be something like\n\nstruct cros_ec_istp_msg *out \u003d (void*) response_buffer;\n\nthen\n\nheci_packet.response \u003d out-\u003edata;",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "ff8210ca226b2e0d9beeb2938e1e3319ee67b62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
