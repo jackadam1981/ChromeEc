@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c68f32f_4ae94687",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-07T18:17:06Z",
+      "side": 1,
+      "message": "how does this demonstrate that non 256 byte chunks can be also read successfully?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 45
+      },
+      "revId": "c2474b09cbf6070966a5428d17ae2e1c7babe020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
