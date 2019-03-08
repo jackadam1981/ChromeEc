@@ -552,6 +552,23 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 	return 1 << get_next_bit(&pin_caps);
 }
 
+/*
+ * VDO has information about the Display Port capabilities and
+ * DFP pin assignments. Extracting this information and returing
+ * one of the MODE_DP_PIN_[A-E] values.
+ */
+uint8_t get_dp_pin_mode(int port)
+{
+	/*
+	 * svids[0] has the Standard Vendor id assigned by USB-IF.
+	 * When PD sets the Vendor defined DP config pins, mode_vdo[0]
+	 * gets updated with board specific DP config pins.
+	 */
+	uint32_t mode = pe[port].svids[0].mode_vdo[0];
+
+	return mode ? 1 << __fls(mode) : 0;
+}
+
 int pd_dfp_exit_mode(int port, uint16_t svid, int opos)
 {
 	struct svdm_amode_data *modep;
