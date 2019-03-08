@@ -300,7 +300,6 @@ static enum power_state power_common_state(enum power_state state)
 {
 	switch (state) {
 	case POWER_G3:
-
 		if (want_g3_exit) {
 			want_g3_exit = 0;
 			return POWER_G3S5;
