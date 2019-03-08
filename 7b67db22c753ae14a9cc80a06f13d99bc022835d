@@ -166,6 +166,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6fbbef_88e505c6",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-08T06:26:52Z",
+      "side": 1,
+      "message": "Hi Dino,\n\nI was testing OOB_SMBUS_DEST_ADDR_PCH_PECI_MCTP host\u0027s OOB commands, for some commands host doesn\u0027t respond (these commands are not available outside yet). When OOB_SMBUS_DEST_ADDR_PCH_PECI_MCTP host is not responding OOB_SMBUS_DEST_ADDR_PCH_SOC_MC host can still responds, but these commands are blocked with this logic.",
+      "parentUuid": "3786912b_f7eb4525",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
