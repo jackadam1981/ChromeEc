@@ -39,6 +39,24 @@
       "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e5af3d0_f7546dba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-08T00:02:23Z",
+      "side": 1,
+      "message": "because if we don\u0027t, pd_state_names will be in all builds.",
+      "parentUuid": "4626788b_dd856c94",
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
