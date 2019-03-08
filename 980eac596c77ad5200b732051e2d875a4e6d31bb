@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29c690bc_9c8cc5f4",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T17:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ccb679_50be9088",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "980eac596c77ad5200b732051e2d875a4e6d31bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29d44609_e055532d",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-14T22:12:55Z",
       "side": 1,
       "message": "our driver/file naming for sensors is starting to get a little whacky.\n\nI really think we need to take a step back soon and revamp how drivers are named and reused\n\n(this comment does not block this CL)",
+      "range": {
+        "startLine": 4185,
+        "startChar": 8,
+        "endLine": 4185,
+        "endChar": 33
+      },
+      "revId": "980eac596c77ad5200b732051e2d875a4e6d31bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d919fe9_d688a91f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T17:15:05Z",
+      "side": 1,
+      "message": "We really couldn\u0027t think of any better name since they only share the first letter\n\nMaybe  LXX2DX would work, but I don\u0027t think that adds any clarity",
+      "parentUuid": "29d44609_e055532d",
       "range": {
         "startLine": 4185,
         "startChar": 8,
