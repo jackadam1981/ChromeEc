@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a25c65_40e07fbd",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "SEC",
+      "range": {
+        "startLine": 85,
+        "startChar": 40,
+        "endLine": 85,
+        "endChar": 47
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88c28ef_9e44eb8d",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "(2 * SEC)",
+      "range": {
+        "startLine": 86,
+        "startChar": 40,
+        "endLine": 86,
+        "endChar": 47
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748ffbae_ee1d74e1",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "these shouldn\u0027t be defined in board.h, but in a chip/ish directory. Maybe chip_config.h would be a good place",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b1932b_f10812eb",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "for platform/ec code we use\n\nstruct name {\n  ...\n};\n\n\nnot typedef struct\n\nit is worth sticking to the existing paradigms.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9570f483_eac3d950",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "please add more documentation to these. We need to know what they are for.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9829201_14633c95",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "what is the GDT?",
+      "range": {
+        "startLine": 36,
+        "startChar": 27,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee0f6fd_666326a7",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "use __packed\n\n(or __ec_align4 if needed)\n\nsee ec_commands.h",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05eb2aae_563167e1",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "is this a known bug? (any documentation links you could add in the code?)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ffd462_b043aa5e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "what is a tss segment?",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a4e721_6e89177c",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "all unset fields get set to 0 (since this is in the bss section - or we should add that support)",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fae6760_58ae3b5a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "please use a combination of bit defines to construct this to make it easier to see what bits are getting set (and why)",
+      "range": {
+        "startLine": 68,
+        "startChar": 39,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d74f1fd_0a730d9a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:31:07Z",
+      "side": 1,
+      "message": "why is this need in the header file?\n\nAlso what is this file for?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "ee176f8f8cd10a8ee29d9d2c60b52b00f513e898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
