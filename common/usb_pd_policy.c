@@ -552,6 +552,18 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 	return 1 << get_next_bit(&pin_caps);
 }
 
+/*
+ * VDO has information about the Display Port capabilities and
+ * DFP pin assignments. Extracting this infromation and returing
+ * the DP pin mode.
+ */
+uint8_t get_dp_pin_mode(int port)
+{
+	uint32_t mode = pe[port].svids[0].mode_vdo[0];
+
+	return mode ? 1 << __fls(mode) : 0;
+}
+
 int pd_dfp_exit_mode(int port, uint16_t svid, int opos)
 {
 	struct svdm_amode_data *modep;
