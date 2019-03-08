@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9cd20b17_633ac334",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-08T00:13:54Z",
+      "side": 1,
+      "message": "it is actually \"in addition to\" right?",
+      "range": {
+        "startLine": 1271,
+        "startChar": 4,
+        "endLine": 1271,
+        "endChar": 27
+      },
+      "revId": "4c14b63cef60a787f53ddedbdda0fedbc5ebbc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "485b0e47_2f987c5d",
         "filename": "include/config.h",
         "patchSetId": 1
