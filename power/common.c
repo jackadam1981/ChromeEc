@@ -236,6 +236,14 @@ static enum power_state power_common_state(enum power_state state)
 			if (battery_is_cutoff_required() &&
 				charge_get_percent() <= BATTERY_LEVEL_SHUTDOWN)
 				target_time = time_now + delay * 1000000ull;
+			/* Coral SKU 160-166 units disable hibernate on G3 idle
+			/* and do the battery cutoff when RSOC < 6% in S5/G3 power state
+			 */
+		    if (nasher_sku_id() && (charge_get_percent() <= BATTERY_LEVEL_CRITICAL)) {
+				board_cut_off_battery();
+			} else if(nasher_sku_id()) {
+				target_time = time_now + delay * 1000000ull;
+			}
 #endif
 			if (time_now > target_time) {
 				/*

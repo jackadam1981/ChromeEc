@@ -919,7 +919,7 @@ int battery_is_cutoff_required(void)
 	strncpy(version_minor, version_ro + 11, 4);
 	return (!strncmp(version_ro, "coral_v1.1.", 11) &&
 			atoi(version_minor) < 7292 &&
-			(70 == sku_id || 71 == sku_id));
+			((70 == sku_id || 71 == sku_id) || (sku_id >= 160 && sku_id <= 166)));
 
 }
 
