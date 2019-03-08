@@ -57,6 +57,24 @@
       "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c579f4_7c981269",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:02:39Z",
+      "side": 1,
+      "message": "They already are (at least for this CL). If dump level (or debug level) is set able on the console command, then the strings need to be part of the builds to start with",
+      "parentUuid": "7e5af3d0_f7546dba",
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
