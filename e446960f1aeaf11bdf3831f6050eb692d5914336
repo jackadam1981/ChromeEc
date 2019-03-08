@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a17c94_b8974b59",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T22:21:46Z",
+      "side": 1,
+      "message": "nit: could just be response_buffer (since it is already a uint8_t). Your call, just an idea; okay either way",
+      "range": {
+        "startLine": 72,
+        "startChar": 36,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "e446960f1aeaf11bdf3831f6050eb692d5914336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
