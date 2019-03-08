@@ -14,6 +14,8 @@
 
 
 .global __idt
+.global __gdt
+.global __gdt_ptr
 
 # GDT is loaded by ISH ROM. The FW code retains the same GDT
 # and hence the same segment selector
@@ -300,19 +302,51 @@ __gdt:
 	.byte 0x00
 	.byte 0x00
 	# Entry 1: Code descriptor
-	.word 0xffff	# Limit: xffff
-	.word 0x0000	# Base: xxxx0000
-	.byte 0x00	# Base: xx00xxxx
-	.byte 0x9b	# Code E/R, Present, DPL0, Acesssed=1
-	.byte 0xcf	# Limit fxxxx, Page Gra, 32 bit
-	.byte 0x00	# Base: 00xxxxxx
-	# Entry 0: Data descriptor
-	.word 0xffff	# Limit: xffff
-	.word 0x0000	# Base: xxxx0000
-	.byte 0x00	# Base: xx00xxxx
-	.byte 0x93	# Data R/W, Present, DPL0, Acesssed=1
-	.byte 0xcf	# Limit fxxxx, Page Gra, 32 bit
-	.byte 0x00	# Base: 00xxxxxx
+	# Base: 0x0
+	# Limit: 0xfffff, granularity is 4096-byte pages
+	# Flags: 0x9b (Code E/R, Present, DPL0, Acesssed=1)
+	.word 0xffff	# Limit (0:15)
+	.word 0x0000	# Base  (0:15)
+	.byte 0x00	# Base  (16:23)
+	.byte 0x9b	# Flags
+	.byte 0xcf	# Limit (16:19)
+	.byte 0x00	# Base  (24:31)
+	# Entry 2: Data descriptor
+	# Base: 0x0
+	# Limit: 0xfffff, granularity is 4096-byte pages
+	# Flags: 0x93 (Data R/W, Present, DPL0, Acesssed=1)
+	.word 0xffff	# Limit (0:15)
+	.word 0x0000	# Base  (0:15)
+	.byte 0x00	# Base  (16:23)
+	.byte 0x93	# Flags
+	.byte 0xcf	# Limit (16:19)
+	.byte 0x00	# Base  (24:31)
+
+#if defined(CONFIG_ISH_PM_AONTASK)
+	# placeholder entries, will be updated by init_aon_task()
+	# in power_mgt.c
+	# Entry 3: placeholder TSS descriptor for main FW
+	.word 0x0000	# Limit (0:15)
+	.word 0x0000	# Base  (0:15)
+	.byte 0x00	# Base  (16:23)
+	.byte 0x00	# Flags
+	.byte 0x00	# Limit (16:19)
+	.byte 0x00	# Base  (24:31)
+	# Entry 4: placeholder TSS descriptor for aontask
+	.word 0x0000	# Limit (0:15)
+	.word 0x0000	# Base  (0:15)
+	.byte 0x00	# Base  (16:23)
+	.byte 0x00	# Flags
+	.byte 0x00	# Limit (16:19)
+	.byte 0x00	# Base  (24:31)
+	# Entry 5: placeholder LDT descriptor for aontask
+	.word 0x0000	# Limit (0:15)
+	.word 0x0000	# Base  (0:15)
+	.byte 0x00	# Base  (16:23)
+	.byte 0x00	# Flags
+	.byte 0x00	# Limit (16:19)
+	.byte 0x00	# Base  (24:31)
+#endif
 
 #.section .data
 __idt_ptr:
