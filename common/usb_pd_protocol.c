@@ -4951,6 +4951,8 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 			pd_state_names[pd[p->port].task_state],
 			sizeof(r_v2->state));
 		r_v2->cc_state =  pd[p->port].cc_state;
+		r_v2->pin_mode = get_dp_mode(p->port);
+
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);
 		else

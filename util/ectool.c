@@ -5140,6 +5140,23 @@ int cmd_usb_pd(int argc, char *argv[])
 			else
 				printf("UNKNOWN");
 			printf("\n");
+
+			printf("DP pin mode:");
+			if (r_v2->pin_mode == MODE_DP_PIN_A)
+				printf("A");
+			else if (r_v2->pin_mode == MODE_DP_PIN_B)
+				printf("B");
+			else if (r_v2->pin_mode == MODE_DP_PIN_C)
+				printf("C");
+			else if (r_v2->pin_mode == MODE_DP_PIN_D)
+				printf("D");
+			else if (r_v2->pin_mode == MODE_DP_PIN_E)
+				printf("E");
+			else if (r_v2->pin_mode == MODE_DP_PIN_F)
+				printf("F");
+			else
+				printf("UNKNOWN");
+			printf("\n");
 		}
 
 		/* If connected to a PD device, then print port partner info */

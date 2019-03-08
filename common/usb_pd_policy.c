@@ -552,6 +552,15 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 	return 1 << get_next_bit(&pin_caps);
 }
 
+uint8_t get_dp_mode(int port)
+{
+	uint32_t mode = pe[port].svids[0].mode_vdo[0];
+
+	mode = 1 << get_next_bit(&mode);
+	/* Converting the 32 bit DP pin mode to 8 bit */
+	return (mode >> 8) & 0xFF;
+}
+
 int pd_dfp_exit_mode(int port, uint16_t svid, int opos)
 {
 	struct svdm_amode_data *modep;

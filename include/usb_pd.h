@@ -1394,6 +1394,13 @@ uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos);
 int pd_dfp_dp_get_pin_mode(int port, uint32_t status);
 
 /**
+ * Return the DisplayPort pin mode on the specified port
+ *
+ * @param port USB-C port number
+ */
+uint8_t get_dp_mode(int port);
+
+/**
  * Exit alternate mode on DFP
  *
  * @param port USB-C port number
