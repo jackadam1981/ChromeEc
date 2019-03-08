@@ -190,6 +190,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701beb69_537cd733",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-03-08T10:19:36Z",
+      "side": 1,
+      "message": "Vijay, Do you mean that you send a command and it will cause the busy bit of MT83XX ESPI_ESU CTRL0 register always be true? Which command did you send?",
+      "parentUuid": "1a6fbbef_88e505c6",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
