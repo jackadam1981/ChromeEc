@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "94d793d7_0e3cdbe1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4185,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-08T17:19:19Z",
+      "side": 1,
+      "message": "I can not get any public doc on LNG2DM, and ST has normalized all 2x2mm low/medium accuracy accelerator with LIS2D name, so LIS2D is a meaningful name.",
+      "parentUuid": "4d919fe9_d688a91f",
+      "range": {
+        "startLine": 4185,
+        "startChar": 8,
+        "endLine": 4185,
+        "endChar": 33
+      },
+      "revId": "980eac596c77ad5200b732051e2d875a4e6d31bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c49c631_217f8daa",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
