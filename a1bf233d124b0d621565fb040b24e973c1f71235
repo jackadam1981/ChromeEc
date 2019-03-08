@@ -177,6 +177,30 @@
       "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a27e2c4_14010a1a",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-03-08T09:07:29Z",
+      "side": 1,
+      "message": "Sorry for the late reply.\n\n@665 just check whether received oob package exceeds the npcx hardware rx buffer size. What I mean is the pointer, oob_data, doesn\u0027t make sure it\u0027s 4 bytes alignment.  \n\nIf the definition of ESPI_OOB_MAX_LENGTH in common layer is not 4-byte alignment, we might have a chance to access out of espi_oob_data array.",
+      "parentUuid": "8081510a_2d7181fb",
+      "range": {
+        "startLine": 676,
+        "startChar": 29,
+        "endLine": 676,
+        "endChar": 41
+      },
+      "revId": "a1bf233d124b0d621565fb040b24e973c1f71235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
