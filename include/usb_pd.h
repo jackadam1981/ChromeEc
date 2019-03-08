@@ -1846,6 +1846,14 @@ int pd_get_partner_usb_comm_capable(int port);
  */
 int pd_is_vbus_present(int port);
 
+/**
+ * Get board specific current DisplayPort pin mode on the specified port.
+ *
+ * @param port USB-C port number
+ * @return DP pin mode if used else 0
+ */
+uint8_t board_get_dp_pin_mode(int port) __attribute__((weak));
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
