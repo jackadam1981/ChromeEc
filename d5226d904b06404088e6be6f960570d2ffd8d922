@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4dd12cf_bc370ea9",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-08T19:38:33Z",
+      "side": 1,
+      "message": "Because the lid and base use the same i2c bus should only be one mutex?",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "d5226d904b06404088e6be6f960570d2ffd8d922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
