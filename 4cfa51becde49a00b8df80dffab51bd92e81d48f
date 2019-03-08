@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f240204c_b3d62f74",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-08T00:18:00Z",
+      "side": 1,
+      "message": "Created a #define and also used in the set_mode function.",
+      "parentUuid": "7a7a291c_3d38efff",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 12
+      },
+      "revId": "4cfa51becde49a00b8df80dffab51bd92e81d48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11838fcd_633e91ba",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2d291b5a_5f509fd3",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-08T00:18:00Z",
+      "side": 1,
+      "message": "This comment was applicable to how this was being done previously, but is outdated now. I will update the comment to reflect the current design which is that this function only gets called if client_status is non zero.",
+      "parentUuid": "11838fcd_633e91ba",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 55
+      },
+      "revId": "4cfa51becde49a00b8df80dffab51bd92e81d48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84363c13_b625d06a",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-05T21:35:23Z",
       "side": 1,
       "message": "I think this if block is broken if CONFIG_USB_PD_VBUS_DETECT_TCPC is defined.  Maybe add braces?",
+      "range": {
+        "startLine": 236,
+        "startChar": 8,
+        "endLine": 236,
+        "endChar": 38
+      },
+      "revId": "4cfa51becde49a00b8df80dffab51bd92e81d48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80af28df_c2a1571d",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-08T00:18:00Z",
+      "side": 1,
+      "message": "I moved the guard above the #ifndef",
+      "parentUuid": "84363c13_b625d06a",
       "range": {
         "startLine": 236,
         "startChar": 8,
