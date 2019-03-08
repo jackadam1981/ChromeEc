@@ -1547,6 +1547,11 @@
 #undef CONFIG_HIBERNATE_BATT_PCT
 #undef CONFIG_HIBERNATE_BATT_SEC
 
+/* If defined, ec will cut off battery when system is idle
+ * instead of hibernation.
+ */
+#undef CONFIG_CUTOFF_DELAY_SEC
+
 /* For ECs with multiple wakeup pins, define enabled wakeup pins */
 #undef CONFIG_HIBERNATE_WAKEUP_PINS
 
