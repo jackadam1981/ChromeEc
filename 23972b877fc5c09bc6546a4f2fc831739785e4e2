@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff6cf70b_e758ca62",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "this should be based on CONFIG_DMA instead\n\n\nish/config_chip.h should define CONFIG_DMA if CHIP_FAMILY_ISH5 is defined",
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8180a397_fd926c0f",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "please add documentation for these fields. If dma_err a boolean or counter?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8124364_66888b4d",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "seems like we should add a timeout for this in case we never get the expected result",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da084f3_6173352f",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "these obfuscate the code, please just call the methods directly",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 67
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67c7411_930d189a",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "what is this line for?",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 13
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f54bf970_192b4bdb",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "this should be put in a more common minute-ia location (core/minute-ia/task.c)\n\nWe should also consider combining them with the existing methods.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c2bf3c_bbd5d0d1",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "why ++ instead of \u003d 1 ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7ade93_97346b19",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "what is this for? This needs a comment",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55c517b_1bc3fdb2",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "remove these. See note in register.h about using REG32 directly there",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 52
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4fedab_43545add",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "these all need function comments stating what they do and what the parameters are for and what the return value means",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d8259f_bec4b640",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "these should both be functions instead of defines",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24a51231_70dbc911",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-08T21:12:18Z",
+      "side": 1,
+      "message": "I would recommend wrapping this in REG32() here so we can access directly in the more easily",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 68
+      },
+      "revId": "23972b877fc5c09bc6546a4f2fc831739785e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
