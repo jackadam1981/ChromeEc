@@ -45,6 +45,30 @@
       "revId": "4c14b63cef60a787f53ddedbdda0fedbc5ebbc9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "814f797d_57c79150",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4084,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-08T00:17:50Z",
+      "side": 1,
+      "message": "I was doing that way so that if another bc12 chip with similar requirements could be added more easily. But, I did change this to #ifdef",
+      "parentUuid": "485b0e47_2f987c5d",
+      "range": {
+        "startLine": 4084,
+        "startChar": 1,
+        "endLine": 4084,
+        "endChar": 11
+      },
+      "revId": "4c14b63cef60a787f53ddedbdda0fedbc5ebbc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
