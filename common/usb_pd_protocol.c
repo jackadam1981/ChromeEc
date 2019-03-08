@@ -4875,6 +4875,11 @@ static const enum typec_mux typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
 };
 #endif
 
+__attribute__((weak)) uint8_t get_dp_pin_mode(int port)
+{
+	return 0;
+}
+
 static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
@@ -4951,6 +4956,8 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 			pd_state_names[pd[p->port].task_state],
 			sizeof(r_v2->state));
 		r_v2->cc_state =  pd[p->port].cc_state;
+		r_v2->dp_mode = get_dp_pin_mode(p->port);
+
 		if (args->version == 1)
 			args->response_size = sizeof(*r_v1);
 		else
