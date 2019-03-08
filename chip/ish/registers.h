@@ -56,6 +56,7 @@ enum ish_i2c_port {
 #define ISH_UART0_IRQ              34
 #define ISH_UART1_IRQ              35
 #define ISH_RESET_PREP_IRQ         62
+#define ISH_PMU_WAKEUP_IRQ         18
 
 /* Interrupt vectors 0-31 are architecture reserved.
  * Vectors 32-255 are user-defined.
@@ -137,6 +138,18 @@ enum ish_i2c_port {
 #define CCU_RST_HST		REG32(ISH_CCU_BASE + 0x34)
 #define CCU_TCG_ENABLE		REG32(ISH_CCU_BASE + 0x38)
 #define CCU_BCG_ENABLE		REG32(ISH_CCU_BASE + 0x3c)
+#define CCU_BCG_BIT_MIA		(0x1 << 0)
+#define CCU_BCG_BIT_DMA		(0x1 << 1)
+#define CCU_BCG_BIT_I2C0	(0x1 << 2)
+#define CCU_BCG_BIT_I2C1	(0x1 << 3)
+#define CCU_BCG_BIT_SPI 	(0x1 << 4)
+#define CCU_BCG_BIT_SRAM	(0x1 << 5)
+#define CCU_BCG_BIT_HPET	(0x1 << 6)
+#define CCU_BCG_BIT_UART	(0x1 << 7)
+#define CCU_BCG_BIT_GPIO	(0x1 << 8)
+#define CCU_BCG_BIT_I2C2	(0x1 << 9)
+#define CCU_BCG_BIT_SPI2	(0x1 << 10)
+#define CCU_BCG_BIT_ALL		(0x7ff)
 
 /* CSME Registers */
 #define ISH_RST_REG		REG32(ISH_IPC_BASE + 0x44)
