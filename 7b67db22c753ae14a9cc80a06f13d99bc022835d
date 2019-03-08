@@ -142,6 +142,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3786912b_f7eb4525",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-03-08T05:59:14Z",
+      "side": 1,
+      "message": "Hi Vijay,\n\nWe don\u0027t have the mechanism to just reset busy state (OOB channel), unless host get the upstream cycle or eSPI_RST is asserted.\n\nAnd even under this condition that we are able to reset busy state and re-initiate an upstream transaction, I assume the busy state will be set again immediately because the master doesn\u0027t response an upstream transaction.\n\nWe can remove the condition of upstream busy here, but I guess we won\u0027t able to send next command until master responses to an upstream transaction (busy cleared).\nDo you want us to remove it?",
+      "parentUuid": "39f046e7_a026b852",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
