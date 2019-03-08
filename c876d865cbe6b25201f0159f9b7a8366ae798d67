@@ -34,6 +34,24 @@
       "revId": "c876d865cbe6b25201f0159f9b7a8366ae798d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846495cd_5397e8b1",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-08T00:18:09Z",
+      "side": 1,
+      "message": "Or actually (again), I found that I needed a little time for the bc1.2 chip to power on. Setting the interrupt mask below will fail if there isn\u0027t some wait.",
+      "parentUuid": "809a5114_e5f4a92d",
+      "revId": "c876d865cbe6b25201f0159f9b7a8366ae798d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
