@@ -31,9 +31,10 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
-#define CONFIG_ACCELGYRO_LSM6DSM	/* For LSM6DS3 */
-/* TODO(b/123634700): This is temporary until FIFO is supported */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#define CONFIG_ACCEL_LNG2DM	 /* Base sensor: LNG2DM (uses LIS2DH driver) */
+#define CONFIG_ACCELGYRO_LSM6DSM /* Lid sensor: LSM6DS3 (uses LSM6DSM driver) */
+/* TODO(b/123634700): This (all sensors) is temporary until FIFO is supported */
+#define CONFIG_ACCEL_FORCE_MODE_MASK  ((1 << SENSOR_COUNT) - 1)
 
 /* Host command over HECI */
 #define CONFIG_HOSTCMD_HECI
@@ -80,6 +81,7 @@
 enum sensor_id {
 	LID_ACCEL,
 	LID_GYRO,
+	BASE_ACCEL,
 	/* TODO(b/122281217): Add remain sensors */
 	SENSOR_COUNT
 };
