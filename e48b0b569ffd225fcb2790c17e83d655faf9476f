@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d694cfae_8684f14a",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-08T22:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b86e8c_60ee1ce9",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "e48b0b569ffd225fcb2790c17e83d655faf9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4713d3bd_2aa28bb2",
         "filename": "chip/ish/host_command_heci.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "e48b0b569ffd225fcb2790c17e83d655faf9476f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1300da_3859b95d",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-08T22:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4713d3bd_2aa28bb2",
+      "range": {
+        "startLine": 83,
+        "startChar": 40,
+        "endLine": 83,
+        "endChar": 46
+      },
+      "revId": "e48b0b569ffd225fcb2790c17e83d655faf9476f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
