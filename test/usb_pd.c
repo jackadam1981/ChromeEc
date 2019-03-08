@@ -182,6 +182,13 @@ static void simulate_rx_msg(int port, uint16_t header, int cnt,
 	pd_simulate_rx(port);
 }
 
+static void simulate_hard_reset(int port)
+{
+	simulate_rx_msg(port, PD_HEADER(PD_RX_ERR_HARD_RESET, PD_ROLE_SOURCE,
+			PD_ROLE_DFP, pd_port[port].msg_rx_id,
+			0, pd_port[port].rev, 0), 0, NULL);
+}
+
 static void simulate_wait(int port)
 {
 	uint16_t header = PD_HEADER(PD_CTRL_WAIT, PD_ROLE_SOURCE,
@@ -291,6 +298,7 @@ static void unplug(int port)
 	pd_port[port].msg_rx_id = 0;
 	pd_port[port].has_vbus = 0;
 	pd_port[port].partner_role = -1;
+	simulate_hard_reset(port);
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	usleep(30 * MSEC);
 }
