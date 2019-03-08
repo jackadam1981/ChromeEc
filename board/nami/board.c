@@ -1082,3 +1082,20 @@ uint8_t board_set_battery_level_shutdown(void)
 	else
 		return BATTERY_LEVEL_SHUTDOWN;
 }
+
+enum critical_shutdown board_system_is_idle(uint64_t last_shutdown_time,
+					    uint32_t delay, uint64_t now)
+{
+	uint64_t target = last_shutdown_time + delay * SECOND;
+
+	if (oem == PROJECT_VAYNE)
+		/*
+		 * Don't do anything. Battery eventually will reach critical
+		 * charge (3%). Then, board_critical_shutdown_check will be
+		 * called, which requests cutoff.
+		 */
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+	return now > target ?
+			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
+}
