@@ -1053,6 +1053,7 @@
 #undef  CONFIG_CMD_PD_CONTROL
 #undef  CONFIG_CMD_PD_DEV_DUMP_INFO
 #undef  CONFIG_CMD_PD_FLASH
+#define CONFIG_CMD_PECI
 #undef  CONFIG_CMD_PLL
 #undef  CONFIG_CMD_PMU
 #define CONFIG_CMD_POWERINDEBUG
@@ -2530,6 +2531,9 @@
 
 /* Support PECI interface to x86 processor */
 #undef CONFIG_PECI
+
+/* Common code for PECI interface to x86 processor */
+#undef CONFIG_PECI_COMMON
 
 /*
  * Maximum operating temperature in degrees Celcius used on some x86
