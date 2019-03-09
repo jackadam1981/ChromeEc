@@ -22,6 +22,6 @@ chip-$(CONFIG_ADC)+=adc.o
 chip-$(CONFIG_HOSTCMD_X86)+=lpc.o ec2i.o
 chip-$(CONFIG_HOSTCMD_ESPI)+=espi.o
 chip-$(CONFIG_SPI_MASTER)+=spi_master.o
-chip-$(CONFIG_PECI)+=peci.o
+chip-$(CONFIG_PECI_COMMON)+=peci.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 chip-$(CONFIG_I2C)+=i2c.o
