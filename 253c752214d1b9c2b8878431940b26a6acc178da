@@ -1,0 +1,319 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df846781_2d6880b6",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4312,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "It would be good to mention that this is used for S0ix only.",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0379dbc_5641bd8f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4210,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "(CONFIG_SLEEP_TIMEOUT_MS)",
+      "range": {
+        "startLine": 4210,
+        "startChar": 30,
+        "endLine": 4210,
+        "endChar": 31
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb3c9ee_f28df58b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4219,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "nit: Single-line comments generally just use /* ... */",
+      "range": {
+        "startLine": 4217,
+        "startChar": 1,
+        "endLine": 4219,
+        "endChar": 4
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39627ab3_e68347d8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4224,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 4222,
+        "startChar": 1,
+        "endLine": 4224,
+        "endChar": 4
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d4cef1_110b30c4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4227,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "I was thinking about this some more today and was wondering if it would be cleaner to put this in a union of its own indicating what sleep event the param is applicable for.\n\ni.e.\n\nunion {\n    /* Params for HOST_SLEEP_EVENT_S0IX_SUSPEND */\n    struct s0ix_params {\n         uint16_t s0ix_timeout;\n    };\n    uint16_t reserved;\n};\n\nSimilary for response below. That keeps it very clear when the param is valid and when it is just reserved.",
+      "range": {
+        "startLine": 4227,
+        "startChar": 2,
+        "endLine": 4227,
+        "endChar": 3
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c7e1c4c_89360032",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4232,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "sleep_timeout_ms",
+      "range": {
+        "startLine": 4232,
+        "startChar": 10,
+        "endLine": 4232,
+        "endChar": 23
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e7b611_493ab7f6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4236,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "When a timeout occurs, host event is already set to indicate the failure. Is it really necessary/useful to set this as well?",
+      "range": {
+        "startLine": 4236,
+        "startChar": 8,
+        "endLine": 4236,
+        "endChar": 36
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edd2e34_6442596c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4249,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "It would be good to indicate that this is valid only when the host sleep event is set to HOST_SLEEP_EVENT_S0IX_RESUME.",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de4e52d_d8c13f52",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "EC_HOST_SLEEP_TIMEOUT_DEFAULT.",
+      "range": {
+        "startLine": 884,
+        "startChar": 16,
+        "endLine": 884,
+        "endChar": 17
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "974bf1e1_c3ce273b",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "It still feels very wrong that the timeout and transitions are handled in common code even though they do not really apply to all platforms using this common driver. I think it would make sense to just pass ec_params_host_sleep_event_v1 and ec_response_host_sleep_event_v1 into power_chipset_handle_host_sleep_event and let it handle those as the platform implementations like. I understand that you are worried about including ec_commands.h in power.h since it is included by other files too, but it shouldn\u0027t be too bad. We can always forward declare these two structs, but I think it is just fine to just include ec_commands.h directly in power.h",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f53823_b3dcb54d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "Just curious: How much additional space does this feature use?",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 42
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab675896_c26390ee",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "Why is the count incremented on both suspend and resume? Wouldn\u0027t it be better to just increment on suspend. Allows holding double the number of entries than sleep signal transitions.",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073eb3be_c156b85c",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "Can you please add a comment indicating why this callback is being scheduled?",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25eaa04_448ec8b0",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "nit: comments can grow upto 80 characters.",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9318df4_27609979",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-09T02:35:39Z",
+      "side": 1,
+      "message": "nit: move to previous line.",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 27
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
