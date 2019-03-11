@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b47db93a_b8ff8664",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:06:05Z",
+      "side": 1,
+      "message": "Deleted.  If these are ever needed it should be for specific boards, in which case flash_ec should just apply these automatically based on the board, not require the user to set them.",
+      "parentUuid": "e1d3ef30_d6bca958",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c560a5f_56f99a58",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "369d91e5_b70d22df",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:06:05Z",
+      "side": 1,
+      "message": "A bitmask is less readable and clunkier to work with IMO.  Would use one if needed to save memory.  Not useful here.",
+      "parentUuid": "6c560a5f_56f99a58",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "288a8034_274e3af3",
         "filename": "util/iteflash.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4568578b_e865cae4",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:06:05Z",
+      "side": 1,
+      "message": "Fixed and fixed.",
+      "parentUuid": "288a8034_274e3af3",
+      "range": {
+        "startLine": 1782,
+        "startChar": 0,
+        "endLine": 1785,
+        "endChar": 34
+      },
+      "revId": "4aa6949c27b6d5a4e125bcbcc4770a2372ffc155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
