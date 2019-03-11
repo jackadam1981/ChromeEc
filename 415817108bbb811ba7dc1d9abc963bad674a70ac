@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b810938_0b964b28",
+        "filename": "board/it83xx_evb/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-11T20:56:27Z",
+      "side": 1,
+      "message": "okay will add CONFIG_PECI_COMMON only for common code",
+      "parentUuid": "72b57ec9_e4d912d6",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "415817108bbb811ba7dc1d9abc963bad674a70ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fcd35c3e_fdbe1391",
         "filename": "chip/it83xx/build.mk",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4dbe1110_161c60f4",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-11T20:56:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcd35c3e_fdbe1391",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "415817108bbb811ba7dc1d9abc963bad674a70ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a32d8ef_42213dca",
         "filename": "include/peci.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-11T09:07:45Z",
       "side": 1,
       "message": "Are these definitions chip specific?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "415817108bbb811ba7dc1d9abc963bad674a70ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b09c43_6e60d2c3",
+        "filename": "include/peci.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-11T20:56:27Z",
+      "side": 1,
+      "message": "dint check it, thanks will move to chip and add int as return",
+      "parentUuid": "2a32d8ef_42213dca",
       "range": {
         "startLine": 38,
         "startChar": 0,
