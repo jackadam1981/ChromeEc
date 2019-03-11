@@ -101,7 +101,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 	}
 	/* Set KBSOUT to zero to detect key-press */
 	else if (col == KEYBOARD_COLUMN_ALL) {
-		mask = ~((1 << KEYBOARD_COLS) - 1);
+		mask = ~(BIT(keyboard_cols) - 1);
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 1);
 #endif
@@ -114,7 +114,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 		else
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
-		mask = ~(1 << col_out);
+		mask = ~BIT(col_out);
 	}
 
 	/* Set KBSOUT */
@@ -161,32 +161,8 @@ DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 5);
 /* Run keyboard factory testing, scan out KSO/KSI if any shorted. */
 int keyboard_factory_test_scan(void)
 {
-	int i, j;
-	uint16_t shorted = 0;
-	uint32_t port, id;
-
-	/* Disable keyboard scan while testing */
-	keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_CLOSED);
-
-	/* Set all of KSO/KSI pins to internal pull-up and input */
-	for (i = 0; i < keyboard_factory_scan_pins_used; i++) {
-
-		if (keyboard_factory_scan_pins[i][0] < 0)
-			continue;
-
-		port = keyboard_factory_scan_pins[i][0];
-		id = keyboard_factory_scan_pins[i][1];
-
-		gpio_set_alternate_function(port, 1 << id, -1);
-		gpio_set_flags_by_mask(port, 1 << id,
-			GPIO_INPUT | GPIO_PULL_UP);
-	}
-
-	/*
-	 * Set start pin to output low, then check other pins
-	 * going to low level, it indicate the two pins are shorted.
-	 */
-	for (i = 0; i < keyboard_factory_scan_pins_used; i++) {
+	return (NPCX_PDIN(port) & BIT(id)) == 0;
+}
 
 		if (keyboard_factory_scan_pins[i][0] < 0)
 			continue;

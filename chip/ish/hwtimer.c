@@ -22,6 +22,115 @@ static uint32_t last_deadline;
  * EC expects timer value in 1MHz.
  * Scale the values and support it.
  */
+#define ROLLOVER_CMP_VAL (((uint64_t)ISH_HPET_CLK_FREQ << 32) / SECOND)
+
+/*
+ * The ISH hardware needs at least 25 ticks of leeway to arms the timer.
+ * ISH4/5 are the slowest with 32kHz timers, so we wait at least 800us when
+ * scheduling events in the future
+ */
+#define MINIMUM_EVENT_DELAY_US 800
+
+/* Scaling helper methods for different ISH chip variants */
+#ifdef CHIP_FAMILY_ISH3
+#define CLOCK_FACTOR 12
+BUILD_ASSERT(CLOCK_FACTOR * SECOND == ISH_HPET_CLK_FREQ);
+
+static inline uint64_t scale_us2ticks(uint32_t us)
+{
+	return (uint64_t)us * CLOCK_FACTOR;
+}
+
+static inline uint32_t scale_ticks2us(uint64_t ticks)
+{
+	/*
+	 * We drop into asm here since this is on the critical path of reading
+	 * the hardware timer for clock result. This needs to be efficient.
+	 *
+	 * Modulating hi first ensures that the quotient fits in 32-bits due to
+	 * the follow math:
+	 * Let ticks = (hi << 32) + lo;
+	 * Let hi = N*CLOCK_FACTOR + R; where R is hi % CLOCK_FACTOR
+	 *
+	 * ticks = (N*CLOCK_FACTOR << 32) + (R << 32) + lo
+	 *
+	 * ticks / CLOCK_FACTOR = ((N*CLOCK_FACTOR << 32) + (R << 32) + lo) /
+	 *                        CLOCK_FACTOR
+	 * ticks / CLOCK_FACTOR = (N*CLOCK_FACTOR << 32) / CLOCK_FACTOR +
+	 *                        (R << 32) / CLOCK_FACTOR +
+	 *                        lo / CLOCK_FACTOR
+	 * ticks / CLOCK_FACTOR = (N << 32) +
+	 *                        (R << 32) / CLOCK_FACTOR +
+	 *                        lo / CLOCK_FACTOR
+	 * If we want to truncate to 32 bits, then the N << 32 can be dropped.
+	 * (ticks / CLOCK_FACTOR) & 0xFFFFFFFF = ((R << 32) + lo) / CLOCK_FACTOR
+	 */
+	const uint32_t divisor = CLOCK_FACTOR;
+	const uint32_t hi = ((uint32_t)(ticks >> 32)) % divisor;
+	const uint32_t lo = ticks;
+	uint32_t quotient;
+
+	asm("divl %3" : "=a"(quotient) : "d"(hi), "a"(lo), "rm"(divisor));
+	return quotient;
+}
+
+#elif defined(CHIP_FAMILY_ISH4) || defined(CHIP_FAMILY_ISH5)
+#define CLOCK_SCALE_BITS 15
+BUILD_ASSERT(BIT(CLOCK_SCALE_BITS) == ISH_HPET_CLK_FREQ);
+
+static inline uint32_t scale_us2ticks(uint32_t us)
+{
+	/*
+	 * ticks = us * ISH_HPET_CLK_FREQ / SECOND;
+	 *
+	 * First multiple us by ISH_HPET_CLK_FREQ via bit shift, then use
+	 * 64-bit div into 32-bit result.
+	 *
+	 * We use asm directly to maintain full 32-bit precision without using
+	 * an iterative divide (i.e. 64-bit / 64-bit => 64-bit). We use the
+	 * 64-bit / 32-bit => 32-bit asm instruction directly since there is no
+	 * way to emitted that instruction via the compiler.
+	 *
+	 * The intermediate result of (us * ISH_HPET_CLK_FREQ) needs 64-bits of
+	 * precision to maintain full 32-bit precision for the end result.
+	 */
+	const uint32_t hi = us >> (32 - CLOCK_SCALE_BITS);
+	const uint32_t lo = us << CLOCK_SCALE_BITS;
+	const uint32_t divisor = SECOND;
+	uint32_t ticks;
+
+	asm("divl %3" : "=a"(ticks) : "d"(hi), "a"(lo), "rm"(divisor));
+	return ticks;
+}
+
+static inline uint32_t scale_ticks2us(uint64_t ticks)
+{
+	/*
+	 * us = ticks / ISH_HPET_CLK_FREQ * SECOND;
+	 */
+	const uint64_t intermediate = (uint64_t)ticks * SECOND;
+
+	return intermediate >> CLOCK_SCALE_BITS;
+}
+#endif /* CHIP_FAMILY_ISH4 || CHIP_FAMILY_ISH5 */
+
+/*
+ * The 64-bit read on a 32-bit chip can tear during the read. Ensure that the
+ * value returned for 64-bit didn't rollover while we were reading it.
+ */
+static inline uint64_t read_main_timer(void)
+{
+	timestamp_t t;
+	uint32_t hi;
+
+	do {
+		t.le.hi = HPET_MAIN_COUNTER_64_HI;
+		t.le.lo = HPET_MAIN_COUNTER_64_LO;
+		hi = HPET_MAIN_COUNTER_64_HI;
+	} while (t.le.hi != hi);
+
+	return t.val;
+}
 
 void __hw_clock_event_set(uint32_t deadline)
 {
@@ -55,7 +164,7 @@ void __hw_clock_source_set(uint32_t ts)
 static void __hw_clock_source_irq(int timer_id)
 {
 	/* Clear interrupt */
-	HPET_INTR_CLEAR = (1 << timer_id);
+	HPET_INTR_CLEAR = BIT(timer_id);
 
 	/* If IRQ is from timer 0, 32-bit timer overflowed */
 	process_timers(timer_id == 0);

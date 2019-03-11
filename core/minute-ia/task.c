@@ -144,13 +144,13 @@ static int need_resched_or_profiling;
  * can do their init within a task switching context.  The hooks task will then
  * make a call to enable all tasks.
  */
-static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
+static uint32_t tasks_ready = BIT(TASK_ID_HOOKS);
 /*
  * Initially allow only the HOOKS and IDLE task to run, regardless of ready
  * status, in order for HOOK_INIT to complete before other tasks.
  * task_enable_all_tasks() will open the flood gates.
  */
-static uint32_t tasks_enabled = (1 << TASK_ID_HOOKS) | (1 << TASK_ID_IDLE);
+static uint32_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
 
 static int start_called;  /* Has task swapping started */
 
@@ -433,7 +433,7 @@ uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 void task_enable_all_tasks(void)
 {
 	/* Mark all tasks as ready and table to run. */
-	tasks_ready = tasks_enabled = (1 << TASK_ID_COUNT) - 1;
+	tasks_ready = tasks_enabled = BIT(TASK_ID_COUNT) - 1;
 
 	/* BUG: task_start() was likely already called */
 	start_called = 1;
@@ -516,7 +516,7 @@ void mutex_unlock(struct mutex *mtx)
 	while (waiters) {
 		task_id_t id = __fls(waiters);
 
-		waiters &= ~(1 << id);
+		waiters &= ~BIT(id);
 
 		/* Somebody is waiting on the mutex */
 		task_set_event(id, TASK_EVENT_MUTEX, 0);

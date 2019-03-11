@@ -1014,6 +1014,45 @@ int charge_manager_get_power_limit_uw(void)
 }
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
+
+static inline int has_other_active_source(int port)
+{
+	return source_port_bitmap & ~BIT(port);
+}
+
+static inline int is_active_source(int port)
+{
+	return source_port_bitmap & BIT(port);
+}
+
+static int can_supply_max_current(int port)
+{
+#ifdef CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT
+	/*
+	 * This guarantees active 3A source continues to supply 3A.
+	 *
+	 * Since redistribution occurs sequentially, younger ports get
+	 * priority. Priority surfaces only when 3A source is released.
+	 * That is, when 3A source is released, the youngest active
+	 * port gets 3A.
+	 */
+	int p;
+	if (!is_active_source(port))
+		/* Non-active ports don't get 3A */
+		return 0;
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++) {
+		if (p == port)
+			continue;
+		if (source_port_rp[p] ==
+				CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)
+			return 0;
+	}
+	return 1;
+#else
+	return is_active_source(port) && !has_other_active_source(port);
+#endif /* CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT */
+}
+
 void charge_manager_source_port(int port, int enable)
 {
 	uint32_t prev_bitmap = source_port_bitmap;

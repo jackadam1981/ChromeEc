@@ -715,7 +715,7 @@ static void setup_bj(void)
 
 	switch (oem) {
 	case OEM_KENCH:
-		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
+		bj = (BJ_ADAPTER_90W_MASK & BIT(sku)) ?
 			BJ_90W_19P5V : BJ_65W_19P5V;
 		break;
 	case OEM_TEEMO:
@@ -724,11 +724,11 @@ static void setup_bj(void)
 	case OEM_WUKONG_N:
 	case OEM_WUKONG_A:
 	case OEM_WUKONG_M:
-		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
+		bj = (BJ_ADAPTER_90W_MASK & BIT(sku)) ?
 			BJ_90W_19V : BJ_65W_19V;
 		break;
 	default:
-		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
+		bj = (BJ_ADAPTER_90W_MASK & BIT(sku)) ?
 			BJ_90W_19P5V : BJ_65W_19P5V;
 		break;
 	}

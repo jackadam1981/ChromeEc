@@ -102,8 +102,92 @@ void unhandled_vector(void)
 
 		asm("movl (%1), %0\n" : "=&r" (vec) : "r" (ioapic_icr_last));
 		if (vec) {
-			vec = (32 * __fls(vec)) + i;
-			break;
+			return (32 * i) + __fls(vec);
+		}
+	}
+
+	return 0x100;
+}
+
+static uint32_t lapic_lvt_error_count;
+static uint32_t ioapic_pending_count;
+
+/*
+ * Get LAPIC ISR, TMR, or IRR vector bit.
+ *
+ * LAPIC ISR, TMR, and IRR bit vector registers are laid out in a way that
+ * skips 3 32bit word after one 32 bit entry:
+ *
+ *  ADDR         |  32 vectors   |    +0x4    |   +0x8    |   +0xC
+ * --------------+---------------+------------+-----------+------------
+ *  BASE         |  0 ~ 31       |    skip 96 bits
+ * --------------+---------------+------------+-----------+------------
+ *  BASE + 0x10  |  32 ~ 64      |    skip 96 bits
+ * --------------+---------------+------------+-----------+------------
+ *  BASE + 0x20  |  64 ~ 96      |    skip 96 bits
+ * --------------+---------------+------------+-----------+------------
+ *  ...
+ *
+ * From Kernel LAPIC driver:
+ * #define VEC_POS(v) ((v) & (32 - 1))
+ * #define REG_POS(v) (((v) >> 5) << 4)
+ */
+static inline unsigned int lapic_get_vector(uint32_t reg_base, uint32_t vector)
+{
+	uint32_t reg_pos = (vector >> 5) << 4;
+	uint32_t vec_pos = vector & (32 - 1);
+
+	return REG32(reg_base + reg_pos) & BIT(vec_pos);
+}
+
+/*
+ * Normally, LAPIC_LVT_ERROR_VECTOR doesn't need a handler. But ISH IOAPIC
+ * has an unknown bug on high frequency interrupts. A similar issue has been
+ * found in PII/PIII era according to x86 APIC Kernel driver. When IOAPIC
+ * routing entry is masked/unmasked at a high rate, IOAPIC line gets stuck and
+ * no more interrupts are received from it.
+ *
+ * The solution in Kernel driver changes interrupt distribution model. But it
+ * doesn't solve the problem completely. Just make it hang less frequent.
+ *
+ * ISH IOAPIC-LAPIC was configured in a way so we can manually send EOI (end of
+ * interrupt) to IOAPIC. So in the workaround below, we ack all IOAPIC vectors
+ * not in LAPIC IRR (interrupt request register). The side effect is we kicked
+ * out some of the interrupts without handling them. It depends on the
+ * peripheral hardware design if it re-send this irq.
+ */
+void handle_lapic_lvt_error(void)
+{
+	uint32_t esr = REG32(LAPIC_ESR_REG);
+	uint32_t ioapic_redtbl, vec;
+	int irq, max_irq_entries;
+
+	/* Ack LVT ERROR exception */
+	REG32(LAPIC_ESR_REG) = 0;
+	lapic_lvt_error_count++;
+
+	/*
+	 * When IOAPIC has more than 1 interrupts in remote IRR state,
+	 * LAPIC raises internal error.
+	 */
+	if (esr & LAPIC_ERR_RECV_ILLEGAL) {
+		/* Scan redirect table entries */
+		max_irq_entries = (read_ioapic_reg(IOAPIC_VERSION) >> 16) &
+				  0xff;
+		for (irq = 0; irq < max_irq_entries; irq++) {
+			ioapic_redtbl = get_ioapic_redtbl_lo(irq);
+			/* Skip masked IRQs */
+			if (ioapic_redtbl & IOAPIC_REDTBL_MASK)
+				continue;
+			/* If pending interrupt is not in LAPIC, clear it. */
+			if (ioapic_redtbl & IOAPIC_REDTBL_IRR) {
+				vec = IRQ_TO_VEC(irq);
+				if (!lapic_get_vector(LAPIC_IRR_REG, vec)) {
+					/* End of interrupt */
+					REG32(IOAPIC_EOI_REG) = vec;
+					ioapic_pending_count++;
+				}
+			}
 		}
 	}
 

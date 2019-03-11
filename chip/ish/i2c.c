@@ -301,8 +301,34 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 	i2c_init_transaction(ctx, slave_addr, flags);
 
-	/* Write device id */
-	i2c_write_buffer(ctx->base, 1, out, &curr_index, total_len);
+	/* Write W data */
+	if (out_size)
+		i2c_write_buffer(ctx->base, out_size, out,
+				&curr_index, total_len);
+
+	/* Wait here until Tx is completed so that FIFO becomes empty.
+	 * This is optimized for smaller Tx data size.
+	 * If need to write big data ( > ISH_I2C_FIFO_SIZE ),
+	 * it is better to use Tx FIFO threshold interrupt(as in Rx) for
+	 * better CPU usuage.
+	 * */
+	expire_ts = __hw_clock_source_read() + I2C_TX_FLUSH_TIMEOUT_USEC;
+	if (in_size > (ISH_I2C_FIFO_SIZE - out_size)) {
+
+		while ((i2c_mmio_read(ctx->base, IC_STATUS) &
+			BIT(IC_STATUS_TFE)) == 0) {
+
+			if (__hw_clock_source_read() >= expire_ts) {
+				ctx->error_flag = 1;
+				break;
+			}
+			CPU_RELAX();
+		}
+	}
+
+	begin_indx = 0;
+	while (in_size) {
+		int rd_size;  /* read size for on i2c transaction */
 
 	/* Write W data */
 	i2c_write_buffer(ctx->base, (is_read ? 0 : out_size - 1),
@@ -344,7 +370,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	expire_ts = __hw_clock_source_read() + I2C_TSC_TIMEOUT;
 
 	while (i2c_mmio_read(ctx->base, IC_STATUS) &
-	       (1 << IC_STATUS_MASTER_ACTIVITY)) {
+	       BIT(IC_STATUS_MASTER_ACTIVITY)) {
 
 		if (__hw_clock_source_read() >= expire_ts) {
 			ctx->error_flag = 1;

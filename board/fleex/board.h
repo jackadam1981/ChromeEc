@@ -26,11 +26,8 @@
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
 /* Sensors without hardware FIFO are in forced mode */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
-
-/* USB PD */
-#define CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
-#undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* Volume button */
 #define CONFIG_VOLUME_BUTTONS
