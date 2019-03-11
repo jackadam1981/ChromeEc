@@ -30,6 +30,8 @@ struct adc_profile_t {
 	int dma_buffer_size;
 };
 
+static void adc_init(void);
+
 #ifdef CONFIG_ADC_PROFILE_SINGLE
 static const struct dma_option dma_single = {
 	STM32_DMAC_ADC, (void *)&STM32_ADC_DR,
@@ -258,6 +260,9 @@ int adc_read_channel(enum adc_channel ch)
 	int restore_watchdog = 0;
 
 	mutex_lock(&adc_lock);
+
+	adc_init();
+
 	if (adc_watchdog_enabled()) {
 		restore_watchdog = 1;
 		adc_disable_watchdog_no_lock();
@@ -328,4 +333,3 @@ static void adc_init(void)
 	while (!(STM32_ADC_ISR & STM32_ADC_ISR_ADRDY))
 		STM32_ADC_CR = STM32_ADC_CR_ADEN;
 }
-DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
