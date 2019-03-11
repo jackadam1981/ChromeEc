@@ -22,6 +22,53 @@
       "revId": "f62fe7d7a38d263023272fc43248e324c25e8b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3aa559d_7f2bf9ac",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-11T17:17:18Z",
+      "side": 1,
+      "message": "power button or lid?",
+      "parentUuid": "a24123cb_0d085895",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 24
+      },
+      "revId": "f62fe7d7a38d263023272fc43248e324c25e8b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89e693a_73052adf",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-11T17:17:18Z",
+      "side": 1,
+      "message": "what happened to the indentation here?",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 5
+      },
+      "revId": "f62fe7d7a38d263023272fc43248e324c25e8b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
