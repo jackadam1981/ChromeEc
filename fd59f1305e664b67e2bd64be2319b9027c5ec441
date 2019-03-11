@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "6653e9f0_f3d50fe4",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Because the data role set happens after the task is initialized, then even in a EC reboot case, the BC12_EVT will be set. When this relied on VBUS detect, then it had to manually check because the PPC wouoldn\u0027t detect a VBUS change and so there was no event to wake this task.",
+      "parentUuid": "1d5961c1_fd81a089",
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15450cde_b54b8fcd",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -88,6 +106,54 @@
     },
     {
       "key": {
+        "uuid": "ff94079c_7a78f8e4",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Events that set any bits in these registers will also drive the interrupt line. So it\u0027s only after an interrupt that these status values need to be read. It might be the case that when support for the host mode features are included it would make sense to read these each time the task is woken.",
+      "parentUuid": "0d27aa1e_16834a8f",
+      "range": {
+        "startLine": 228,
+        "startChar": 8,
+        "endLine": 228,
+        "endChar": 29
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65257720_48cd8a62",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "I do think this makes sense and have modified as suggested.",
+      "parentUuid": "15450cde_b54b8fcd",
+      "range": {
+        "startLine": 228,
+        "startChar": 45,
+        "endLine": 228,
+        "endChar": 50
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3288454c_5e51185a",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "a5530054_e6691808",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3288454c_5e51185a",
+      "range": {
+        "startLine": 232,
+        "startChar": 28,
+        "endLine": 232,
+        "endChar": 38
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d47c7b55_b356dce2",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -122,6 +212,30 @@
       "writtenOn": "2019-03-11T03:57:43Z",
       "side": 1,
       "message": "So, the VBUS detect is just being printed but no action taken on it?",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 35
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af819d09_79a82d16",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Yes, previously VBUS changes resulted in bc1.2 detection being triggered, but now it\u0027s either data role settings or CC_OPEN. So the only function remaining here is the VBUS console print and this is here to make this driver consistent with our other bc1.2 driver.",
+      "parentUuid": "d47c7b55_b356dce2",
       "range": {
         "startLine": 239,
         "startChar": 2,
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "442a29af_e6113389",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84707772_bda4babd",
+      "range": {
+        "startLine": 255,
+        "startChar": 22,
+        "endLine": 255,
+        "endChar": 25
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4221b12_2acb0a7b",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -177,6 +315,30 @@
       "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527ce378_8783c505",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4221b12_2acb0a7b",
+      "range": {
+        "startLine": 259,
+        "startChar": 47,
+        "endLine": 259,
+        "endChar": 48
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "dd550c3f_91180f40",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b01a64_50b28ddb",
+      "range": {
+        "startLine": 268,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ef8defb_b4ec7e59",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -214,6 +400,30 @@
       "writtenOn": "2019-03-11T03:57:43Z",
       "side": 1,
       "message": "Is there a reason why this is checked specifically here and not in other places where mode is being set?",
+      "range": {
+        "startLine": 279,
+        "startChar": 15,
+        "endLine": 279,
+        "endChar": 47
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ba826c_60f15050",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "I was concerned that setting host_cdp mode might affect the d+/d- switches, disconnecting the USB if it was already in this mode.",
+      "parentUuid": "6ef8defb_b4ec7e59",
       "range": {
         "startLine": 279,
         "startChar": 15,
@@ -246,6 +456,30 @@
       "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd2daa2_08b357d2",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c385028f_c8789c5e",
+      "range": {
+        "startLine": 300,
+        "startChar": 55,
+        "endLine": 300,
+        "endChar": 56
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
