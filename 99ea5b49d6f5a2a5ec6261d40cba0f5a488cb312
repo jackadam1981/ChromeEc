@@ -85,6 +85,29 @@
       "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86762d33_9aefad8a",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T22:18:37Z",
+      "side": 1,
+      "message": "why don\u0027t we print it only if the port is in dp mode?",
+      "range": {
+        "startLine": 5143,
+        "startChar": 0,
+        "endLine": 5159,
+        "endChar": 16
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
