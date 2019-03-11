@@ -22,6 +22,30 @@
       "revId": "74de529f69f0f0e72ce9db1019411f674b29a2de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4837abdd_50c25f9c",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-11T21:38:42Z",
+      "side": 1,
+      "message": "I moved the change to CL:1515821, to be reviewed separately.",
+      "parentUuid": "ed458982_4b3677b9",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 12
+      },
+      "revId": "74de529f69f0f0e72ce9db1019411f674b29a2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
