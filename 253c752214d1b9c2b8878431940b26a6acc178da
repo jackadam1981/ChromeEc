@@ -207,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "70ef368b_80bd8eea",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4227,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T17:47:16Z",
+      "side": 1,
+      "message": "Taking the example of MKBP event command/response:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/ec_commands.h#3464\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/ec_commands.h#3439\n\nI understand the case for EC_CMD_HOST_SLEEP_EVENT is slightly different because these are maybe more related than MKBP events, but if we look closely at the sleep event types, then the command params/response do not apply to every event.\n\ne.g. timeout in command: Applies to HOST_SLEEP_EVENT_S0IX_SUSPEND. Could be extended to HOST_SLEEP_EVENT_S3_SUSPEND and HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND. Does not apply to HOST_SLEEP_EVENT_S3_RESUME or HOST_SLEEP_EVENT_S0IX_RESUME.\n\nSimilarly on the response side -- sleep_transitions -- Applies to HOST_SLEEP_EVENT_S3_RESUME and HOST_SLEEP_EVENT_S0IX_RESUME, but does not apply to other sleep event types (HOST_SLEEP_EVENT_S0IX_SUSPEND, HOST_SLEEP_EVENT_S3_SUSPEND, HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND). Hence, the ask to make the params separate and apply only to specific event types.\n\nIf you want, you can have suspend_params and resume_resp_params. But since it is a union, I don\u0027t think it saves/consumes more/less space. But helps with the clarity, especially because this file is included by multiple users -- kernel, coreboot, depthcharge (though kernel is the only user of this specific command).",
+      "parentUuid": "30cf1e4d_e574bfb2",
+      "range": {
+        "startLine": 4227,
+        "startChar": 2,
+        "endLine": 4227,
+        "endChar": 3
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c7e1c4c_89360032",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -289,6 +313,30 @@
       "side": 1,
       "message": "Yes, I think it is. The host events get processed elsewhere, and is overloaded with other functionality. Reporting the suspend failure directly in the resume message makes sense to me. If you\u0027re worried about stealing a bit, I could expand the transition count out to 32-bits.",
       "parentUuid": "52e7b611_493ab7f6",
+      "range": {
+        "startLine": 4236,
+        "startChar": 8,
+        "endLine": 4236,
+        "endChar": 36
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7848c8b4_e40bb378",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4236,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T17:47:16Z",
+      "side": 1,
+      "message": "\u003e Reporting the suspend failure directly in the resume message makes sense to me.\n\nSG",
+      "parentUuid": "b48a21c9_b3a3e594",
       "range": {
         "startLine": 4236,
         "startChar": 8,
@@ -400,6 +448,24 @@
     },
     {
       "key": {
+        "uuid": "e2b559b3_146821c0",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T17:47:16Z",
+      "side": 1,
+      "message": "These are in a way tied to:\n1. Event types being sent from the host\n2. How the handlers in EC actually want to use those\n\ne.g. S0IX_RESUME does not care about the timeout and yet there is processing happening for the same and timeout being passed into the callers for that. That is the reason I said we should have unions within the command and response structures indicating which params apply to which events.\n\nSimilarly, sleep_transitions is being set for suspend commands and returned by setting response_size to sizeof(*r) even for those commands -- which is not correct. Sleep transitions has no meaning for the suspend commands. Currently this works just fine because suspend does not expect any params to be passed, but if in the future this changes, it needs to unnecessarily set these params even though they are unused.",
+      "parentUuid": "94cb06ae_87634e5b",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6f53823_b3dcb54d",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
@@ -447,6 +513,30 @@
     },
     {
       "key": {
+        "uuid": "cd2bf2a1_e185ef84",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T17:47:16Z",
+      "side": 1,
+      "message": "Thanks for checking this.",
+      "parentUuid": "d51bdb75_fdf49c57",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 42
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab675896_c26390ee",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
@@ -482,6 +572,30 @@
       "side": 1,
       "message": "This is a debugging facility, I\u0027d rather not make assumptions like that. Maybe the sleep line is storming and toggling too fast for the EC to notice, (or maybe the EC gets way too bogged down and is missing transitions). It seems most useful to faithfully report what was seen, rather than baking in assumptions. Are you worried that we\u0027ll do more than 32000 transitions during a sleep phase, and then detect a problem we\u0027ll want to look into? I could extend the counter out to 32-bits.",
       "parentUuid": "ab675896_c26390ee",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a258c0_2aad5170",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T17:47:16Z",
+      "side": 1,
+      "message": "\u003e This is a debugging facility, I\u0027d rather not make assumptions like that. Maybe the sleep \n\u003e line is storming and toggling too fast for the EC to notice, (or maybe the EC gets way too \n\u003e bogged down and is missing transitions).\n\nI don\u0027t understand the comment about assumptions. Isn\u0027t it safe to assume that if the SLP_S0# line was asserted, it would be de-asserted only once before it is asserted again? If there is a storm that keeps the EC from noticing, then there is actually no good way for even incrementing this count i.e. the count is anyways not going to be accurate. So, it is still best-effort.\n\n\u003e Are you worried that we\u0027ll do more than 32000 transitions during a sleep phase, and then \n\u003e detect a problem we\u0027ll want to look into?\n\nThat is actually very much possible. On KBL, SLP_S0# toggles every 8 seconds (1 de-assertion and 1 assertion). With that it takes ~2048 seconds to reach ~32000 transitions (2048 * 8 * 2), which is ~30minutes of sleep. Bumping up to 32 definitely sounds like a good thing to do.",
+      "parentUuid": "78f4df54_f4926165",
       "range": {
         "startLine": 252,
         "startChar": 1,
