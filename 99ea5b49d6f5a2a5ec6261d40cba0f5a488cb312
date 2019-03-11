@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2edc62cd_45323b9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T22:16:12Z",
+      "side": 1,
+      "message": "current",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73613c2c_81628a03",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
