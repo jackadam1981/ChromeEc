@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c47c6812_be2cb4cf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4210,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f0379dbc_5641bd8f",
+      "range": {
+        "startLine": 4210,
+        "startChar": 30,
+        "endLine": 4210,
+        "endChar": 31
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb3c9ee_f28df58b",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69075755_1f858447",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4219,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5cb3c9ee_f28df58b",
+      "range": {
+        "startLine": 4217,
+        "startChar": 1,
+        "endLine": 4219,
+        "endChar": 4
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "db9754d4_2a79a343",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4224,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39627ab3_e68347d8",
+      "range": {
+        "startLine": 4222,
+        "startChar": 1,
+        "endLine": 4224,
+        "endChar": 4
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d4cef1_110b30c4",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -99,6 +171,30 @@
       "writtenOn": "2019-03-09T02:35:39Z",
       "side": 1,
       "message": "I was thinking about this some more today and was wondering if it would be cleaner to put this in a union of its own indicating what sleep event the param is applicable for.\n\ni.e.\n\nunion {\n    /* Params for HOST_SLEEP_EVENT_S0IX_SUSPEND */\n    struct s0ix_params {\n         uint16_t s0ix_timeout;\n    };\n    uint16_t reserved;\n};\n\nSimilary for response below. That keeps it very clear when the param is valid and when it is just reserved.",
+      "range": {
+        "startLine": 4227,
+        "startChar": 2,
+        "endLine": 4227,
+        "endChar": 3
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30cf1e4d_e574bfb2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4227,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "I\u0027d actually like to avoid mentioning s0ix in the protocol section, at least outside of comments. I\u0027m trying to keep this facility generic from the protocol perspective. The fact that it\u0027s only currently implemented for S0ix is an implementation detail, not a protocol detail. I imagine others in the future may want to wire this functionality up for other sleep lines. For instance, we have this exact same problem for S3 in Cheza, where if the bus votes aren\u0027t all correct then it suspends to a shallower idle state and just quietly doesn\u0027t do full power collapse.",
+      "parentUuid": "24d4cef1_110b30c4",
       "range": {
         "startLine": 4227,
         "startChar": 2,
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "70efb8a9_0d32cf9a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4232,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c7e1c4c_89360032",
+      "range": {
+        "startLine": 4232,
+        "startChar": 10,
+        "endLine": 4232,
+        "endChar": 23
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e7b611_493ab7f6",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -145,6 +265,30 @@
       "writtenOn": "2019-03-09T02:35:39Z",
       "side": 1,
       "message": "When a timeout occurs, host event is already set to indicate the failure. Is it really necessary/useful to set this as well?",
+      "range": {
+        "startLine": 4236,
+        "startChar": 8,
+        "endLine": 4236,
+        "endChar": 36
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48a21c9_b3a3e594",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4236,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Yes, I think it is. The host events get processed elsewhere, and is overloaded with other functionality. Reporting the suspend failure directly in the resume message makes sense to me. If you\u0027re worried about stealing a bit, I could expand the transition count out to 32-bits.",
+      "parentUuid": "52e7b611_493ab7f6",
       "range": {
         "startLine": 4236,
         "startChar": 8,
@@ -197,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "10443f3c_b9dc11bd",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2de4e52d_d8c13f52",
+      "range": {
+        "startLine": 884,
+        "startChar": 16,
+        "endLine": 884,
+        "endChar": 17
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "974bf1e1_c3ce273b",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -214,6 +382,24 @@
     },
     {
       "key": {
+        "uuid": "94cb06ae_87634e5b",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "I did this this way because I consider this a generic facility that I anticipate being ported to other sleep signals. I wanted common handling of these protocol fields so we\u0027d have confidence in their values when they did finally get wired up. This also seems consistent with the style I see throughout the rest of the EC code, where protocol differences are handled at the top level command handlers, and individual values are passed to the more low-level functions.",
+      "parentUuid": "974bf1e1_c3ce273b",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6f53823_b3dcb54d",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
@@ -225,6 +411,30 @@
       "writtenOn": "2019-03-09T02:35:39Z",
       "side": 1,
       "message": "Just curious: How much additional space does this feature use?",
+      "range": {
+        "startLine": 229,
+        "startChar": 7,
+        "endLine": 229,
+        "endChar": 42
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51bdb75_fdf49c57",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "About 168 bytes of flash space on our EC.",
+      "parentUuid": "b6f53823_b3dcb54d",
       "range": {
         "startLine": 229,
         "startChar": 7,
@@ -260,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "78f4df54_f4926165",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "This is a debugging facility, I\u0027d rather not make assumptions like that. Maybe the sleep line is storming and toggling too fast for the EC to notice, (or maybe the EC gets way too bogged down and is missing transitions). It seems most useful to faithfully report what was seen, rather than baking in assumptions. Are you worried that we\u0027ll do more than 32000 transitions during a sleep phase, and then detect a problem we\u0027ll want to look into? I could extend the counter out to 32-bits.",
+      "parentUuid": "ab675896_c26390ee",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 29
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "073eb3be_c156b85c",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
@@ -277,6 +511,24 @@
     },
     {
       "key": {
+        "uuid": "c3c6aa69_15bc0e02",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "073eb3be_c156b85c",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c25eaa04_448ec8b0",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
@@ -291,6 +543,24 @@
       "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe8d4be_46ebad13",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "c25eaa04_448ec8b0",
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -314,6 +584,30 @@
       "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f5d5e3_30a12be5",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-11T16:30:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9318df4_27609979",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 27
+      },
+      "revId": "253c752214d1b9c2b8878431940b26a6acc178da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
