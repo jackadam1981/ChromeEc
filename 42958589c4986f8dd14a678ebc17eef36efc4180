@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7185179_7464dd83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T22:37:36Z",
+      "side": 1,
+      "message": "I haven\u0027t gotten that to work on my Bip w/o these changes (i.e. using ToT), so I\u0027ve been asking Namyoon to verify that.  He is aware and his +2 are contingent on CCD reflashing continuing to work for him.",
+      "parentUuid": "4a655941_44f89b2e",
+      "revId": "42958589c4986f8dd14a678ebc17eef36efc4180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f524515_2277f11a",
         "filename": "util/iteflash.c",
         "patchSetId": 5
