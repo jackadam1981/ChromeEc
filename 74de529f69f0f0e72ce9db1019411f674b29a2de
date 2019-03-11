@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed458982_4b3677b9",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T19:42:04Z",
+      "side": 1,
+      "message": "You need to properly lock and unlock the mutex. Please refer to adc-stm32l.c. You probably should fix this init issue first in a separate patch. If you\u0027re doing is, please do it in a common file (adc-common.c).",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 12
+      },
+      "revId": "74de529f69f0f0e72ce9db1019411f674b29a2de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
