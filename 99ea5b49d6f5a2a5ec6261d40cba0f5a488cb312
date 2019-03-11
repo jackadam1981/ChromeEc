@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73613c2c_81628a03",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:38:04Z",
+      "side": 1,
+      "message": "this is helpful, thank you.\n\nPlease add that the return value is one of the MODE_DP_PIN_[A-E] values",
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ddc741a_21dfd841",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:38:04Z",
+      "side": 1,
+      "message": "Is this always guaranteed to be MODE_DP_PIN_[A-E] for all display port implementations?\n\nI didn\u0027t see any documentation for mode_vdo. Can you point me to something I can confirm that this is the case?",
+      "range": {
+        "startLine": 562,
+        "startChar": 35,
+        "endLine": 562,
+        "endChar": 43
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87a1d11_783ee342",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4773,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:38:04Z",
+      "side": 1,
+      "message": "normally we would need to make another version here to add any fields, but since we just added v2 and no one is using it yet, we can add a field. This is slightly risky though and should be avoided in the future.\n\nWe should add all needed fields for a new version of the struct in one CL.",
+      "range": {
+        "startLine": 4773,
+        "startChar": 1,
+        "endLine": 4773,
+        "endChar": 43
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
