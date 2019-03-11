@@ -93,6 +93,30 @@
       "revId": "5ce8e06e6d268853a2654e173bb4452d6d5322c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711730d5_0b1aabf6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-11T16:59:40Z",
+      "side": 1,
+      "message": "Well, these seem to be the only two places where this value is used and battery_level_shutdown is initialized during init.",
+      "parentUuid": "e2bba9f2_efdb63ba",
+      "range": {
+        "startLine": 1289,
+        "startChar": 31,
+        "endLine": 1289,
+        "endChar": 53
+      },
+      "revId": "5ce8e06e6d268853a2654e173bb4452d6d5322c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
