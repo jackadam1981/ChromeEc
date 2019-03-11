@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf5c9cd_dbf5d4c1",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:24:53Z",
+      "side": 1,
+      "message": "looks like we will get 2 prints for every duplicate msg id (here and on line 795). Should we just have one?",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 60
+      },
+      "revId": "83edf3039a968233938d7fcfe2925fec02a29def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7378248_9bed7872",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:24:53Z",
+      "side": 1,
+      "message": "let\u0027s move this down after the len check. I am looking at the return value of this function and it is a little unclear.\n\nI think we would want bit to \u003d\u003d 0 so we return a 0 if we encounter a repeat message",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 750,
+        "endChar": 2
+      },
+      "revId": "83edf3039a968233938d7fcfe2925fec02a29def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
