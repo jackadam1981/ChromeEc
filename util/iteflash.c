@@ -15,9 +15,8 @@
 #include <time.h>
 #include <unistd.h>
 
-#pragma GCC diagnostic ignored "-Wstrict-prototypes"
-#include <ftdi.h>
-#pragma GCC diagnostic pop
+#include "compile_time_macros.h"
+#include "usb_if.h"
 
 /* default USB device : Servo v2 */
 #define SERVO_USB_VID 0x18d1
@@ -32,8 +31,8 @@
 #define I2C_FREQ 400000
 
 /* I2C pins on the FTDI interface */
-#define SCL_BIT        (1 << 0)
-#define SDA_BIT        (1 << 1)
+#define SCL_BIT        BIT(0)
+#define SDA_BIT        BIT(1)
 
 /* Chip ID register value */
 #define CHIP_ID 0x8380

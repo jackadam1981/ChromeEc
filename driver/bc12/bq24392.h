@@ -7,8 +7,8 @@
 
 #include "gpio.h"
 
-#define BQ24392_FLAGS_ENABLE_ACTIVE_LOW		(1 << 0)
-#define BQ24392_FLAGS_CHG_DET_ACTIVE_LOW	(1 << 1)
+#define MAX14637_FLAGS_ENABLE_ACTIVE_LOW		BIT(0)
+#define MAX14637_FLAGS_CHG_DET_ACTIVE_LOW		BIT(1)
 
 struct bq24392_config_t {
 	/*

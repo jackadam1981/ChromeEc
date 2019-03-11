@@ -49,15 +49,17 @@
 #define HPET_INTR_CLEAR		REG32(ISH_HPET_BASE + GENERAL_INT_STAT_REG)
 #define HPET_CTRL_STATUS	REG32(ISH_HPET_BASE + CONTROL_AND_STATUS_REG)
 
-#define HPET_TIMER_CONF_CAP(x) \
-	REG32(ISH_HPET_BASE + TIMER0_CONF_CAP_REG + (x * 0x20))
-#define HPET_TIMER_COMP(x) \
-	REG32(ISH_HPET_BASE + TIMER0_COMP_VAL_REG + (x * 0x20))
+/* ISH 4/5: Special status register
+ * Use this register to see HPET timer are settled after a write.
+ */
+#define HPET_CTRL_STATUS	REG32(ISH_HPET_BASE + 0x160)
+#define HPET_T1_CMP_SETTLING		BIT(8)
+#define HPET_T1_CAP_SETTLING		BIT(5)
+#define HPET_MAIN_COUNTER_SETTLING	BIT(2)
+#define HPET_T1_SETTLING		(HPET_T1_CAP_SETTLING | \
+					 HPET_T1_CMP_SETTLING)
 
-#if defined CONFIG_ISH_20
-#define ISH_HPET_CLK_FREQ		1000000		/* 1 MHz clock */
-
-#elif defined CONFIG_ISH_30
+#if defined(CHIP_FAMILY_ISH3)
 #define ISH_HPET_CLK_FREQ		12000000	/* 12 MHz clock */
 
 #elif defined CONFIG_ISH_40

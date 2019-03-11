@@ -273,7 +273,7 @@ static void board_report_pmic_fault(const char *str)
 	    != EC_SUCCESS)
 		return;
 
-	if (!(vrfault & (1 << 4)))
+	if (!(vrfault & BIT(4)))
 		return;
 
 	/* VRFAULT has occurred, print VRFAULT status bits. */
@@ -289,9 +289,12 @@ static void board_report_pmic_fault(const char *str)
 		pwrstat2);
 
 	/* Clear all faults -- Write 1 to clear. */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x8, (1 << 4));
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x16, pwrstat1);
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x17, pwrstat2);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
+		   BD99992GW_REG_RESETIRQ1, BIT(4));
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
+		   BD99992GW_REG_PWRSTAT1, pwrstat1);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
+		   BD99992GW_REG_PWRSTAT2, pwrstat2);
 
 	/*
 	 * Status of the fault registers can be checked in the OS by looking at

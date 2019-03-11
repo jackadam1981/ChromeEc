@@ -286,7 +286,17 @@ enum oem_id {
 	PROJECT_COUNT,
 };
 
-#define SKU_ID_MASK_CONVERTIBLE	(1 << 9)
+enum model_id {
+	/* Sona variants */
+	MODEL_SYNDRA = 1,
+	/* Akali variants */
+	MODEL_EKKO = 1,
+	MODEL_BARD = 2,
+};
+
+#define SKU_ID_MASK_CONVERTIBLE	BIT(9)
+#define SKU_ID_MASK_KEYPAD	BIT(15)
+#define SKU_ID_MASK_UK2		BIT(18)
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*

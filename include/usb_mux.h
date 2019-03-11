@@ -82,6 +82,9 @@ struct usb_mux_driver {
 	int (*enter_low_power_mode)(int port_addr);
 };
 
+/* Flags used for usb_mux.flags */
+#define USB_MUX_FLAG_NOT_TCPC BIT(0) /* TCPC/MUX device used only as MUX */
+
 /* Describes a USB mux present in the system */
 struct usb_mux {
 	/*

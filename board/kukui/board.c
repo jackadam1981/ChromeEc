@@ -392,6 +392,22 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
+	[LID_MAG] = {
+	 .name = "Lid Mag",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_MAG,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = BMI160_ADDR0,
+	 .default_range = BIT(11), /* 16LSB / uT, fixed */
+	 .rot_standard_ref = &mag_standard_ref,
+	 .min_frequency = BMM150_MAG_MIN_FREQ,
+	 .max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
+	},
 	[VSYNC] = {
 	 .name = "Camera vsync",
 	 .active_mask = SENSOR_ACTIVE_S0,

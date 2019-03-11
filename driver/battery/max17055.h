@@ -48,11 +48,34 @@
 #define REG_MODELCFG                0xdb
 
 /* Status reg (0x00) flags */
-#define STATUS_POR                  0x0002
-#define STATUS_BST                  0x0008
+#define STATUS_POR                  BIT(1)
+#define STATUS_IMN                  BIT(2)
+#define STATUS_BST                  BIT(3)
+#define STATUS_IMX                  BIT(6)
+#define STATUS_VMN                  BIT(8)
+#define STATUS_TMN                  BIT(9)
+#define STATUS_SMN                  BIT(10)
+#define STATUS_VMX                  BIT(12)
+#define STATUS_TMX                  BIT(13)
+#define STATUS_SMX                  BIT(14)
+#define STATUS_ALL_ALRT                                                        \
+	(STATUS_IMN | STATUS_IMX | STATUS_VMN | STATUS_VMX | STATUS_TMN |      \
+	 STATUS_TMX | STATUS_SMN | STATUS_SMX)
+
+/* Alert disable values (0x01, 0x02, 0x03, 0xb4) */
+#define VALRT_DISABLE               0xff00
+#define TALRT_DISABLE               0x7f80
+#define SALRT_DISABLE               0xff00
+#define IALRT_DISABLE               0x7f80
 
 /* Config reg (0x1d) flags */
-#define CONF_TSEL                   0x8000
+#define CONF_AEN                    BIT(2)
+#define CONF_IS                     BIT(11)
+#define CONF_VS                     BIT(12)
+#define CONF_TS                     BIT(13)
+#define CONF_SS                     BIT(14)
+#define CONF_TSEL                   BIT(15)
+#define CONF_ALL_STICKY             (CONF_IS | CONF_VS | CONF_TS | CONF_SS)
 
 /* FStat reg (0x3d) flags */
 #define FSTAT_DNR                   0x0001

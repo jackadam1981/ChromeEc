@@ -2573,7 +2573,7 @@ static int pd_restart_tcpc(int port)
 
 #ifdef HAS_TASK_PD_INT_C0
 /* Events for pd_interrupt_handler_task */
-#define PD_PROCESS_INTERRUPT  (1<<0)
+#define PD_PROCESS_INTERRUPT  BIT(0)
 
 static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_COUNT];
 

@@ -2515,7 +2515,7 @@ struct __ec_todo_packed ec_params_motion_sense {
 			/*
 			 * Scale for calibration:
 			 * By default scale is 1, it is encoded on 16bits:
-			 * 1 = BIT(1)5
+			 * 1 = BIT(15)
 			 * ~2 = 0xFFFF
 			 * ~0 = 0.
 			 */

@@ -69,10 +69,45 @@ static const struct adc_profile_t profile = {
 };
 #endif
 
+static void adc_init(void)
+{
+	/*
+	 * If clock is already enabled, and ADC module is enabled
+	 * then this is a warm reboot and ADC is already initialized.
+	 */
+	if (STM32_RCC_APB2ENR & BIT(9) && (STM32_ADC_CR & STM32_ADC_CR_ADEN))
+		return;
+
+	/* Enable ADC clock */
+	clock_enable_module(MODULE_ADC, 1);
+	/* check HSI14 in RCC ? ON by default */
+
+	/* ADC calibration (done with ADEN = 0) */
+	STM32_ADC_CR = STM32_ADC_CR_ADCAL; /* set ADCAL = 1, ADC off */
+	/* wait for the end of calibration */
+	while (STM32_ADC_CR & STM32_ADC_CR_ADCAL)
+		;
+
+	/* Single conversion, right aligned, 12-bit */
+	STM32_ADC_CFGR1 = profile.cfgr1_reg;
+	/* clock is ADCCLK (ADEN must be off when writing this reg) */
+	STM32_ADC_CFGR2 = profile.cfgr2_reg;
+	/* Sampling time */
+	STM32_ADC_SMPR = profile.smpr_reg;
+
+	/*
+	 * ADC enable (note: takes 4 ADC clocks between end of calibration
+	 * and setting ADEN).
+	 */
+	STM32_ADC_CR = STM32_ADC_CR_ADEN;
+	while (!(STM32_ADC_ISR & STM32_ADC_ISR_ADRDY))
+		STM32_ADC_CR = STM32_ADC_CR_ADEN;
+}
+
 static void adc_configure(int ain_id)
 {
 	/* Select channel to convert */
-	STM32_ADC_CHSELR = 1 << ain_id;
+	STM32_ADC_CHSELR = BIT(ain_id);
 
 	/* Disable DMA */
 	STM32_ADC_CFGR1 &= ~STM32_ADC_CFGR1_DMAEN;
@@ -91,16 +126,16 @@ static void adc_continuous_read(int ain_id)
 	STM32_ADC_CFGR1 |= STM32_ADC_CFGR1_CONT;
 
 	/* Start continuous conversion */
-	STM32_ADC_CR |= 1 << 2; /* ADSTART */
+	STM32_ADC_CR |= BIT(2); /* ADSTART */
 }
 
 static void adc_continuous_stop(void)
 {
 	/* Stop on-going conversion */
-	STM32_ADC_CR |= 1 << 4; /* ADSTP */
+	STM32_ADC_CR |= BIT(4); /* ADSTP */
 
 	/* Wait for conversion to stop */
-	while (STM32_ADC_CR & (1 << 4))
+	while (STM32_ADC_CR & BIT(4))
 		;
 
 	/* CONT=0 -> continuous mode off */
@@ -138,7 +173,7 @@ static void adc_interval_read(int ain_id, int interval_ms)
 	STM32_TIM_CR1(TIM_ADC) |= 1;
 
 	/* Start ADC conversion */
-	STM32_ADC_CR |= 1 << 2; /* ADSTART */
+	STM32_ADC_CR |= BIT(2); /* ADSTART */
 }
 
 static void adc_interval_stop(void)
@@ -147,10 +182,10 @@ static void adc_interval_stop(void)
 	STM32_ADC_CFGR1 &= ~STM32_ADC_CFGR1_EXTEN_MASK;
 
 	/* Set ADSTP to clear ADSTART */
-	STM32_ADC_CR |= 1 << 4; /* ADSTP */
+	STM32_ADC_CR |= BIT(4); /* ADSTP */
 
 	/* Wait for conversion to stop */
-	while (STM32_ADC_CR & (1 << 4))
+	while (STM32_ADC_CR & BIT(4))
 		;
 
 	/* Stop the timer */
@@ -269,10 +304,10 @@ int adc_read_channel(enum adc_channel ch)
 	STM32_ADC_ISR = 0xe;
 
 	/* Start conversion */
-	STM32_ADC_CR |= 1 << 2; /* ADSTART */
+	STM32_ADC_CR |= BIT(2); /* ADSTART */
 
 	/* Wait for end of conversion */
-	while (!(STM32_ADC_ISR & (1 << 2)))
+	while (!(STM32_ADC_ISR & BIT(2)))
 		;
 	/* read converted value */
 	value = STM32_ADC_DR;

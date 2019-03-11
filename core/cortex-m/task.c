@@ -136,6 +136,27 @@ static const struct {
 
 /* Contexts for all tasks */
 static task_ tasks[TASK_ID_COUNT];
+
+/* Reset constants and state for all tasks */
+#define TASK_RESET_SUPPORTED		BIT(31)
+#define TASK_RESET_LOCK			BIT(30)
+#define TASK_RESET_STATE_MASK		(TASK_RESET_SUPPORTED | TASK_RESET_LOCK)
+#define TASK_RESET_WAITERS_MASK		~TASK_RESET_STATE_MASK
+#define TASK_RESET_UNSUPPORTED		0
+#define TASK_RESET_STATE_LOCKED		(TASK_RESET_SUPPORTED | TASK_RESET_LOCK)
+#define TASK_RESET_STATE_UNLOCKED	TASK_RESET_SUPPORTED
+
+#ifdef CONFIG_TASK_RESET_LIST
+#define ENABLE_RESET(n) \
+	[TASK_ID_##n] = TASK_RESET_SUPPORTED,
+static uint32_t task_reset_state[TASK_ID_COUNT] = {
+#ifdef CONFIG_TASK_RESET_LIST
+	CONFIG_TASK_RESET_LIST
+#endif
+};
+#undef ENABLE_RESET
+#endif /* CONFIG_TASK_RESET_LIST */
+
 /* Sanity checks about static task invariants */
 BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
 BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));

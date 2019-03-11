@@ -11,6 +11,6 @@
 #include "temp_sensor/bd99992gw.h"
 
 #define BD99992GW_REG_SDWNCTRL		0x49
-#define BD99992GW_SDWNCTRL_SWDN		(1 << 0) /* SWDN mask */
+#define BD99992GW_SDWNCTRL_SWDN		BIT(0) /* SWDN mask */
 
 #endif  /* __CROS_EC_PMIC_BD99992GW_H */
