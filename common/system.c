@@ -37,6 +37,9 @@
 #include "version.h"
 #include "watchdog.h"
 
+/* Include system.inc for reset_flag_descs. */
+#include "system.inc"
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -85,16 +88,6 @@ struct jump_data {
 
 /* Jump data (at end of RAM, or preceding panic data) */
 static struct jump_data *jdata;
-
-/*
- * Reset flag descriptions.  Must be in same order as bits of RESET_FLAG_
- * constants.
- */
-static const char * const reset_flag_descs[] = {
-	"other", "reset-pin", "brownout", "power-on", "watchdog", "soft",
-	"hibernate", "rtc-alarm", "wake-pin", "low-battery", "sysjump",
-	"hard", "ap-off", "preserved", "usb-resume", "rdd", "rbox",
-	"security", "ap-watchdog" };
 
 static uint32_t reset_flags;
 static int jumped_to_image;
