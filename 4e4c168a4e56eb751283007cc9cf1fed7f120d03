@@ -46,6 +46,30 @@
       "revId": "4e4c168a4e56eb751283007cc9cf1fed7f120d03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5228ed_b1ed6320",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T23:36:37Z",
+      "side": 1,
+      "message": "Okay. We can go ahead with this, but it definitely seems like adding an API would be better since it is actually the same event i.e. data role change and let the task query the current state to take appropriate action.",
+      "parentUuid": "0d161c43_646d2786",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "4e4c168a4e56eb751283007cc9cf1fed7f120d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
