@@ -547,9 +547,9 @@ static void usage(int errs)
 	       "                           Get or set Info1 board ID fields\n"
 	       "                           ID could be 32 bit hex or 4 "
 	       "character string.\n"
-	       "  -S,--sn_bits SN_1:SN_2:SN_3\n"
+	       "  -S,--sn_bits SN_BITS\n"
 	       "                           Set Info1 SN bits fields.\n"
-	       "                           SN_n should be 32 bit hex.\n"
+	       "                           SN_BITS should be 96 bit hex.\n"
 	       "  -R,--sn_rma_inc RMA_INC\n"
 	       "                           Increment SN RMA count by RMA_INC.\n"
 	       "                           RMA_INC should be 0-7.\n"
@@ -1493,20 +1493,26 @@ static int parse_bid(const char *opt,
 
 static int parse_sn_bits(const char *opt, uint32_t *sn_bits)
 {
-	const char *s;
-	char *e;
-	int i = 0;
+	const char *s = opt;
+	size_t len = strlen(s);
 
-	s = opt;
-	sn_bits[i] = (uint32_t)strtoul(s, &e, 0);
-
-	while (s != e && *e == ':' && i < 2) {
-		s = e + 1;
-		i++;
-		sn_bits[i] = (uint32_t)strtoul(s, &e, 0);
+	if (!strncmp(s, "0x", 2)) {
+		s += 2;
+		len -= 2;
 	}
+	if (len != 24) return 0;
 
-	return *e == '\0' && i == 2;
+	char h[9];
+	h[8] = 0;
+	for (size_t i = 0; i < len; i += 8) {
+		char* e;
+		memcpy(h, s + i, 8);
+		// TODO(crbug.com/940329): Remove test for 0x after bug fixed.
+		if (!strncmp(h, "0x", 2)) return 0;
+		sn_bits[i] = htole32(strtoul(h, &e, 16));
+		if (e - h != 8) return 0;
+	}
+	return 1;
 }
 
 static int parse_sn_inc_rma(const char *opt, uint8_t *arg)
