@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62bff3b9_f8d8dbb5",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:28:08Z",
+      "side": 1,
+      "message": "can we simulate a disconnect instead (or make the state machine run disconnect code, which should invalidate the msg_id)",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 27
+      },
+      "revId": "8826eb0f39ced9d8529bcd676d7dfd41ebf8596e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
