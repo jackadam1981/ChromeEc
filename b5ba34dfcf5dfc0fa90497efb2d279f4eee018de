@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e8c2046_7d384ef1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:46:48Z",
+      "side": 1,
+      "message": "Also, let\u0027s add a comment here saying this is when we are going shutdown (before it was the time less the delay)",
+      "range": {
+        "startLine": 90,
+        "startChar": 31,
+        "endLine": 90,
+        "endChar": 52
+      },
+      "revId": "b5ba34dfcf5dfc0fa90497efb2d279f4eee018de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
