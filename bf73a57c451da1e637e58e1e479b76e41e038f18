@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5401dab1_74eab113",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:58:05Z",
+      "side": 1,
+      "message": "Yeah that\u0027s a copy and paste leftover. I\u0027ve fixed the comment.",
+      "parentUuid": "2114bfc5_6bcf1728",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 56
+      },
+      "revId": "bf73a57c451da1e637e58e1e479b76e41e038f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fce6e6f0_f10c160f",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d961b813_f274bc19",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:58:05Z",
+      "side": 1,
+      "message": "I should probably reduces this to 1 msec.",
+      "parentUuid": "fce6e6f0_f10c160f",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 10
+      },
+      "revId": "bf73a57c451da1e637e58e1e479b76e41e038f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc08fac5_62a3a2a1",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-11T04:10:37Z",
       "side": 1,
       "message": "By default, the interrupts are masked on power-on? And then a later set mode would enable this?",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 36
+      },
+      "revId": "bf73a57c451da1e637e58e1e479b76e41e038f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d457be_1830f3d6",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T23:58:05Z",
+      "side": 1,
+      "message": "Interrupts are not masked on power up. Currently interrupts are only being relied on for bc1.2 detection. So, the interrupt mask should be set after power up and it will be cleared when bc1.2 detection is triggered.",
+      "parentUuid": "dc08fac5_62a3a2a1",
       "range": {
         "startLine": 219,
         "startChar": 1,
