@@ -34,6 +34,24 @@
       "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae21c92_c0604295",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-11T20:00:33Z",
+      "side": 1,
+      "message": "I have no doubts that this fixes the problem, I am curios if this is the best way to fix it. Adding a check in the flow is going to slow things down, even if very insignificantly.\n\nWhat check got removed? Can you please comment on the bug, can we discuss the options there?",
+      "parentUuid": "d82f7501_2a452444",
+      "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
