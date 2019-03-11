@@ -52,6 +52,24 @@
       "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491264a3_d0f95774",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-11T20:58:41Z",
+      "side": 1,
+      "message": "Let me give the background regarding how we got here. Here is Namyoon\u0027s observation(which he updated in the bug - b/126909037) based on his USB traffic analysis when he ran EC console commands on EC terminal:\n\n- PC-\u003eDUT USB traffic: ok\n- CR50 usart, \u0027get_data_from_usb\u0027 : ok\n- UART_SERVO_TX_EC_RX: ok\n- UART_EC_TX_SERVO_RX: ok\n- CR50 usart, \u0027send_data_to_usb\u0027 : ok\n- DUT-\u003ePC USB traffic : no traffic observed\n\nThis is when we got into this driver. I observed that there is a helper function tx_fifo_is_ready but is not being used at all. Used git logs to identify that it\u0027s usage was removed here: crrev.com/c/826905.\n\nThen asked Namyoon to output the output of tx_fifo_is_ready when the issue happens and he observed that it returned 0. Here is the code and the corresponding output:\n\nCode:\n/* Try to send some bytes to the host */\nint tx_stream_handler(struct usb_stream_config const *config)\n{\n  size_t count;\n\n  cprintf(CC_USB, \"((%d))\\n\", tx_fifo_is_ready(config));\n  if (!*config-\u003eis_reset)\n    return 0;\n\n  count \u003d QUEUE_REMOVE_UNITS(config-\u003econsumer.queue, config-\u003etx_ram,\n    config-\u003etx_size);\n  cprintf(CC_USB, \"[[%d]]\\n\", count);\n  if (count)\n    usb_enable_tx(config, count);\n  return count;\n}\nOutput:\n((0))\n[[42]]\n@1@1@\n((0))\n[[1]]\n@1@1@\n((0))\n[[1]]\n@1@1@\n((0))\n[[1]]\n@1@1@\n((0))\n[[1]]\n\nThat is why we added this check. Again we are not sure if there is another alternate solution.",
+      "parentUuid": "4ae21c92_c0604295",
+      "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
