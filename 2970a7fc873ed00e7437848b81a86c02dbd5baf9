@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6704b92_29c94811",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-11T16:25:03Z",
+      "side": 1,
+      "message": "I know you are just copying this, but why is this reassignment needed? \n\nYou can call the argument \u0027s\u0027 and get rid of this line",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1496,
+        "endChar": 21
+      },
+      "revId": "2970a7fc873ed00e7437848b81a86c02dbd5baf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e35b72_9856e701",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-11T16:25:03Z",
+      "side": 1,
+      "message": "8 and 9 throughout this function should be expressed a a constant and used instead.\n\nsomething like\n\n#define HEX_NUM_SIZE 8\nchar h[HEX_NUM_SIZE + 1];\n\netc.",
+      "range": {
+        "startLine": 1505,
+        "startChar": 8,
+        "endLine": 1505,
+        "endChar": 10
+      },
+      "revId": "2970a7fc873ed00e7437848b81a86c02dbd5baf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f150d9_26e9ca37",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-11T16:25:03Z",
+      "side": 1,
+      "message": "you already checked for 0x in line 1499 above,and for the string to be 24 characters long,  do you expect the string to have 0x in the middle?",
+      "range": {
+        "startLine": 1511,
+        "startChar": 6,
+        "endLine": 1511,
+        "endChar": 36
+      },
+      "revId": "2970a7fc873ed00e7437848b81a86c02dbd5baf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
