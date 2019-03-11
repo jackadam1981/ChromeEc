@@ -18,25 +18,17 @@
 #include "hooks.h"
 #include "usb_pd.h"
 #include "util.h"
+#include "board.h"
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
-
-/* We have only one battery now. */
-#define BATT_ID 0
 
 #define BAT_LEVEL_PD_LIMIT 85
 
 #define BATTERY_ATL_CHARGE_MIN_TEMP 0
 #define BATTERY_ATL_CHARGE_MAX_TEMP 60
 
-enum battery_type {
-	BATTERY_ATL_C18 = 0,
-	BATTERY_ATL_C19,
-	BATTERY_COUNT
-};
-
-static const struct battery_info info[] = {
-	[BATTERY_ATL_C18] = {
+static const struct battery_info info[BATTERY_COUNT] = {
+	[BATTERY_C18_ATL] = {
 		.voltage_max		= 4400,
 		.voltage_normal		= 3850,
 		.voltage_min		= 3000,
@@ -48,7 +40,7 @@ static const struct battery_info info[] = {
 		.discharging_min_c	= -20,
 		.discharging_max_c	= 60,
 	},
-	[BATTERY_ATL_C19] = {
+	[BATTERY_C19_ATL] = {
 		.voltage_max		= 4400,
 		.voltage_normal		= 3850,
 		.voltage_min		= 3000,
@@ -60,10 +52,11 @@ static const struct battery_info info[] = {
 		.discharging_min_c	= -20,
 		.discharging_max_c	= 60,
 	},
+	/* TODO: filling others (C1?_SUNWODA) */
 };
 
-static const struct max17055_batt_profile batt_profile[] = {
-	[BATTERY_ATL_C18] = {
+static const struct max17055_batt_profile batt_profile[BATTERY_COUNT] = {
+	[BATTERY_C18_ATL] = {
 		.is_ez_config		= 0,
 		.design_cap		= 0x2e78, /* 5948mAh */
 		.ichg_term		= 0x02ec, /* 117 mA */
@@ -78,7 +71,7 @@ static const struct max17055_batt_profile batt_profile[] = {
 		.qr_table20		= 0x1100,
 		.qr_table30		= 0x1000,
 	},
-	[BATTERY_ATL_C19] = {
+	[BATTERY_C19_ATL] = {
 		.is_ez_config		= 0,
 		.design_cap		= 0x3407, /* 6659mAh */
 		.ichg_term		= 0x0340, /* 130mA */
@@ -93,10 +86,11 @@ static const struct max17055_batt_profile batt_profile[] = {
 		.qr_table20		= 0x0d00,
 		.qr_table30		= 0x0b00,
 	},
+	/* TODO: filling others (C1?_SUNWODA) */
 };
 
-static const struct max17055_alert_profile alert_profile[] = {
-	[BATTERY_ATL_C18] = {
+static const struct max17055_alert_profile alert_profile[BATTERY_COUNT] = {
+	[BATTERY_C18_ATL] = {
 		.v_alert_mxmn = VALRT_DISABLE,
 		.t_alert_mxmn = MAX17055_TALRTTH_REG(
 			BATTERY_ATL_CHARGE_MAX_TEMP,
@@ -104,7 +98,7 @@ static const struct max17055_alert_profile alert_profile[] = {
 		.s_alert_mxmn = SALRT_DISABLE,
 		.i_alert_mxmn = IALRT_DISABLE,
 	},
-	[BATTERY_ATL_C19] = {
+	[BATTERY_C19_ATL] = {
 		.v_alert_mxmn = VALRT_DISABLE,
 		.t_alert_mxmn = MAX17055_TALRTTH_REG(
 			BATTERY_ATL_CHARGE_MAX_TEMP,
@@ -112,21 +106,32 @@ static const struct max17055_alert_profile alert_profile[] = {
 		.s_alert_mxmn = SALRT_DISABLE,
 		.i_alert_mxmn = IALRT_DISABLE,
 	},
+	/* TODO: filling others (C1?_SUNWODA) */
 };
+
+static int get_batt_type(void)
+{
+	static int b_type = BATTERY_UNKNOWN;
+
+	if (b_type != BATTERY_UNKNOWN)
+		return b_type;
+	b_type = board_get_battery_type();
+	return b_type;
+}
 
 const struct battery_info *battery_get_info(void)
 {
-	return &info[BATT_ID];
+	return &info[get_batt_type()];
 }
 
 const struct max17055_batt_profile *max17055_get_batt_profile(void)
 {
-	return &batt_profile[BATT_ID];
+	return &batt_profile[get_batt_type()];
 }
 
 const struct max17055_alert_profile *max17055_get_alert_profile(void)
 {
-	return &alert_profile[BATT_ID];
+	return &alert_profile[get_batt_type()];
 }
 
 int board_cut_off_battery(void)
@@ -171,7 +176,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		int desired_current; /* mA */
 		int desired_voltage; /* mV */
 	} temp_zones[BATTERY_COUNT][TEMP_ZONE_COUNT] = {
-		[BATTERY_ATL_C18] = {
+		[BATTERY_C18_ATL] = {
 			/* TEMP_ZONE_0 */
 			{BATTERY_ATL_CHARGE_MIN_TEMP * 10, 150, 1772, 4376},
 			/* TEMP_ZONE_1 */
@@ -179,7 +184,7 @@ int charger_profile_override(struct charge_state_data *curr)
 			/* TEMP_ZONE_2 */
 			{450, BATTERY_ATL_CHARGE_MAX_TEMP * 10, 3350, 4300},
 		},
-		[BATTERY_ATL_C19] = {
+		[BATTERY_C19_ATL] = {
 			/* TEMP_ZONE_0 */
 			{BATTERY_ATL_CHARGE_MIN_TEMP * 10, 150, 1772, 4376},
 			/* TEMP_ZONE_1 */
@@ -187,18 +192,19 @@ int charger_profile_override(struct charge_state_data *curr)
 			/* TEMP_ZONE_2 */
 			{450, BATTERY_ATL_CHARGE_MAX_TEMP * 10, 3350, 4300},
 		},
+		/* TODO: filling others (C1?_SUNWODA) */
 	};
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones[0]) == TEMP_ZONE_COUNT);
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones) == BATTERY_COUNT);
 
 	if ((curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE) ||
-	    (bat_temp_c < temp_zones[BATT_ID][0].temp_min) ||
-	    (bat_temp_c >= temp_zones[BATT_ID][TEMP_ZONE_COUNT - 1].temp_max))
+	    (bat_temp_c < temp_zones[get_batt_type()][0].temp_min) ||
+	    (bat_temp_c >= temp_zones[get_batt_type()][TEMP_ZONE_COUNT - 1].temp_max))
 		temp_zone = TEMP_OUT_OF_RANGE;
 	else {
 		for (temp_zone = 0; temp_zone < TEMP_ZONE_COUNT; temp_zone++) {
 			if (bat_temp_c <
-				temp_zones[BATT_ID][temp_zone].temp_max)
+				temp_zones[get_batt_type()][temp_zone].temp_max)
 				break;
 		}
 	}
@@ -211,9 +217,9 @@ int charger_profile_override(struct charge_state_data *curr)
 	case TEMP_ZONE_1:
 	case TEMP_ZONE_2:
 		curr->requested_current =
-			temp_zones[BATT_ID][temp_zone].desired_current;
+			temp_zones[get_batt_type()][temp_zone].desired_current;
 		curr->requested_voltage =
-			temp_zones[BATT_ID][temp_zone].desired_voltage;
+			temp_zones[get_batt_type()][temp_zone].desired_voltage;
 		break;
 	case TEMP_OUT_OF_RANGE:
 		curr->requested_current = curr->requested_voltage = 0;
