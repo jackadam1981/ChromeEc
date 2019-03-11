@@ -88,7 +88,7 @@ static struct jump_data *jdata;
 
 /*
  * Reset flag descriptions.  Must be in same order as bits of RESET_FLAG_
- * constants.
+ * constants.  Must be synced with util/ectool.c:reset_flag_strings.
  */
 static const char * const reset_flag_descs[] = {
 	"other", "reset-pin", "brownout", "power-on", "watchdog", "soft",

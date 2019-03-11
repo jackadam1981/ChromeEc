@@ -760,6 +760,10 @@ static const char *reset_cause_to_str(uint16_t cause)
 
 int cmd_uptimeinfo(int argc, char *argv[])
 {
+	/*
+	 * reset_flag_strings must be synced with
+	 * common/system.c:reset_flag_descs.
+	 */
 	static const char * const reset_flag_strings[] = {
 		"other",
 		"reset-pin",
