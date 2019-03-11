@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3717473_b835ce56",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T23:27:42Z",
+      "side": 1,
+      "message": "Can you say this change won\u0027t unfix bugs like chromium:799535, b:79185392?",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
