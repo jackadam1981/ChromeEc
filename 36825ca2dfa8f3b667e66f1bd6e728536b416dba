@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "252b8d0a_2b4e47f6",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-11T18:30:45Z",
+      "side": 1,
+      "message": "Please exclude \"--erase\" and \"--write\" here. This function can read as well, which crrev.com/c/1482057 implements.",
+      "range": {
+        "startLine": 1059,
+        "startChar": 1,
+        "endLine": 1059,
+        "endChar": 63
+      },
+      "revId": "36825ca2dfa8f3b667e66f1bd6e728536b416dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
