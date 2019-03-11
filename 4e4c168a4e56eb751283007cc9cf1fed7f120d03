@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfeef61c_f8c57f30",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T01:36:59Z",
+      "side": 1,
+      "message": "I am curious: Do we need two separate events here? Can the task be woken up by a generic USB_CHG_EVENT_DR_CHANGE and then it can query what the current data role is to take appropriate action?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "4e4c168a4e56eb751283007cc9cf1fed7f120d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
