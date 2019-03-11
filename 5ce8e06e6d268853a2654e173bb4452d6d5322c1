@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76f9baeb_37e1c921",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T16:21:02Z",
+      "side": 1,
+      "message": "Currently, BATTERY_LEVEL_SHUTDOWN can be changed by redefining it in board.h. If it\u0027s not redefined, the default value is used. With this change, the same rule applies. board_set_battery_level_shutdown can be redefined in board.c. If not, the default function will be used.\n\nWhen there is a default value or behavior, I believe this is the simplest implementation in C. I don\u0027t see a particular problem with renaming or refactoring.",
+      "parentUuid": "cf963993_b6a35bbf",
+      "range": {
+        "startLine": 1280,
+        "startChar": 0,
+        "endLine": 1283,
+        "endChar": 1
+      },
+      "revId": "5ce8e06e6d268853a2654e173bb4452d6d5322c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "807debd4_65245ce3",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-11T15:42:47Z",
       "side": 1,
       "message": "shouldn\u0027t we call the new function here otherwise any run-time decision will get ignored? (unless they were determined before charger_init)",
+      "range": {
+        "startLine": 1289,
+        "startChar": 31,
+        "endLine": 1289,
+        "endChar": 53
+      },
+      "revId": "5ce8e06e6d268853a2654e173bb4452d6d5322c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2bba9f2_efdb63ba",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T16:21:02Z",
+      "side": 1,
+      "message": "Currently, the code is written assuming this is a static decision. Larger code has to be reviewed to check if changing this value anytime won\u0027t break any code which assumes this value is fixed. We can make it an anytime decision when that\u0027s necessary and worth the cost (of larger code review).",
+      "parentUuid": "807debd4_65245ce3",
       "range": {
         "startLine": 1289,
         "startChar": 31,
