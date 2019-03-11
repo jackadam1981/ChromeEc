@@ -93,6 +93,24 @@
       "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f07c41_261324f2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:31:34Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t thinking of the case where someone specifically defined the DEBUG_LEVEL as 0; I have only every defined it as 9.\n\nWe should add an else case that nulls the string instead of leaving it uninitialized.",
+      "parentUuid": "434d4d7e_4a2e80b5",
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
