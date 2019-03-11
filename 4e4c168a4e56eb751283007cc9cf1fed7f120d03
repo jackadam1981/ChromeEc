@@ -22,6 +22,30 @@
       "revId": "4e4c168a4e56eb751283007cc9cf1fed7f120d03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d161c43_646d2786",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-11T21:51:54Z",
+      "side": 1,
+      "message": "I thought it was easier to encode this knowledge in the event. The primary reason is that we don\u0027t currently have an api to query the data role outside of usb_pd_protocol.com. So rather than modify the API, it would be easier to just have the extra event,",
+      "parentUuid": "cfeef61c_f8c57f30",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "4e4c168a4e56eb751283007cc9cf1fed7f120d03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
