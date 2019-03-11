@@ -500,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "6092ac1c_b034152c",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-03-11T05:52:30Z",
+      "side": 1,
+      "message": "After further investigation, I found that there is a bug of handling the polarity setting in the  tcpci_nct38xx_set_polarity function. These codes here can removed without any issue after the fix.",
+      "parentUuid": "2fbd5411_dfd29aa7",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 27
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07b614cd_29865d15",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
