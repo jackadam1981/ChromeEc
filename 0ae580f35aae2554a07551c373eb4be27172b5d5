@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b0c09ca_b53214cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-03-11T15:25:59Z",
+      "side": 1,
+      "message": "might be no necessary since you have bloog in the beginning already.",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "0ae580f35aae2554a07551c373eb4be27172b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d0e0cb3_56a5a5c1",
+        "filename": "board/bloog/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-03-11T15:25:59Z",
+      "side": 1,
+      "message": "Do we leverage all battery from meep / mimrock?",
+      "revId": "0ae580f35aae2554a07551c373eb4be27172b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568b99e6_d9c50060",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-03-11T15:25:59Z",
+      "side": 1,
+      "message": "Bloog",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 49
+      },
+      "revId": "0ae580f35aae2554a07551c373eb4be27172b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3e93da7_ad57a15b",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-03-11T15:25:59Z",
+      "side": 1,
+      "message": "Bloog",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "0ae580f35aae2554a07551c373eb4be27172b5d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
