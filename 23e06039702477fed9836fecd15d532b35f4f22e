@@ -117,6 +117,30 @@
       "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d09811_e155a0c4",
+        "filename": "util/getversion.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-11T22:27:52Z",
+      "side": 1,
+      "message": "Ok, come to think of it, this is a good point, we should not be setting BOARD\u003dcr50 unless we want those directories included.\n\nAnd the fix is much simpler, and in a different file.",
+      "parentUuid": "85197ec8_82719729",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "23e06039702477fed9836fecd15d532b35f4f22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
