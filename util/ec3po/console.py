@@ -24,6 +24,7 @@ import re
 import select
 import stat
 import sys
+import time
 import traceback
 
 import interpreter
@@ -61,6 +62,7 @@ INTERROGATION_MODES = ['never', 'always', 'auto']  # List of modes which control
                                                    # when interrogations are
                                                    # performed with the EC.
 
+TIMESTAMP_PRINT_DECISECS = 100
 
 class EscState(object):
   """Class which contains an enumeration for states of ESC sequences."""
@@ -858,6 +860,12 @@ def StartLoop(console, command_active, shutdown_pipe=None):
     # an iteration.
     continue_looping = True
 
+    # Used to keep track of when to print host timestamps.
+    # Currently this is 10 seconds after any RX activity on
+    # the EC's UART (ec_uart_pty)
+    ts_ctr = TIMESTAMP_PRINT_DECISECS
+    master_evt = True
+
     while continue_looping:
       # Check to see if pts is connected to anything
       events = ep.poll(0)
@@ -877,6 +885,17 @@ def StartLoop(console, command_active, shutdown_pipe=None):
       if not select_output:
         continue
       ready_for_reading = select_output[0]
+
+      # select timed out
+      if len(ready_for_reading) == 0:
+        if master_evt is True:
+          ts_ctr = ts_ctr - 1
+          if ts_ctr == 0:
+            master_evt = False
+            ts_ctr = TIMESTAMP_PRINT_DECISECS
+            tm = time.strftime("\n[Host Time] %d %b %Y %H:%M:%S\n",
+                               time.localtime())
+            os.write(console.master_pty, tm)
 
       for obj in ready_for_reading:
         if obj is console.master_pty:
@@ -950,6 +969,9 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                   ('u' if master_connected else '') +
                   ('i' if command_active.value else ''), data.strip())
             if master_connected:
+              # set flag to indicate activity, and reset counter
+              master_evt = True
+              ts_ctr = TIMESTAMP_PRINT_DECISECS
               os.write(console.master_pty, data)
             if command_active.value:
               os.write(console.interface_pty, data)
