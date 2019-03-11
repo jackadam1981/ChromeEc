@@ -16,6 +16,24 @@
       "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d82f7501_2a452444",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-11T19:57:41Z",
+      "side": 1,
+      "message": "Earlier flush operation used to check the readiness of the FIFO which got removed.\n\nIt is just a hypothesis at this point that overwriting the DMA registers while another DMA transaction is in progress is possibly putting the USB bridge in an undefined state. This is supported by the EC console working fine after rebooting Cr50 which resets USB bridge.",
+      "parentUuid": "681937d8_e5b15403",
+      "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
