@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2114bfc5_6bcf1728",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T04:10:37Z",
+      "side": 1,
+      "message": "Comment doesn\u0027t match the action being taken?",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 56
+      },
+      "revId": "bf73a57c451da1e637e58e1e479b76e41e038f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce6e6f0_f10c160f",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T04:10:37Z",
+      "side": 1,
+      "message": "From the datasheet, it looks like the chip enable time is 500us.",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 10
+      },
+      "revId": "bf73a57c451da1e637e58e1e479b76e41e038f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc08fac5_62a3a2a1",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T04:10:37Z",
+      "side": 1,
+      "message": "By default, the interrupts are masked on power-on? And then a later set mode would enable this?",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 36
+      },
+      "revId": "bf73a57c451da1e637e58e1e479b76e41e038f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
