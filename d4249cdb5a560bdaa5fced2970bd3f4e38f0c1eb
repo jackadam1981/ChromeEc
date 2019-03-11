@@ -129,6 +129,24 @@
       "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a3d51e_1514b32b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T16:02:18Z",
+      "side": 1,
+      "message": "if (debug_level \u003e 0 ) \n  strzcpy (...)\nelse\n  r_v1-\u003estate[0] \u003d \u0027\\0\u0027;\n\nThe else ensure that we send a proper null terminated string over the host command interface if we don\u0027t have the strings in our image.",
+      "parentUuid": "3d5eb98f_14a969be",
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
