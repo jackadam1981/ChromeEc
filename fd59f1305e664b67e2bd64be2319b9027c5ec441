@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcafe12a_61b625c9",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "just pass in NULL, NULL since this function doesn\u0027t care about the status.",
+      "range": {
+        "startLine": 181,
+        "startChar": 29,
+        "endLine": 181,
+        "endChar": 43
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5961c1_fd81a089",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "Don\u0027t you need some processing before starting the task and waiting for interrupt to ensure the state is correct at EC boot up?",
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15450cde_b54b8fcd",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "Should this just be NULL since this block does not care about host status. And then pi3usb9201 can check to make sure pointer is not NULL before returning the status:\n\nint rv;\nint status;\n\nrv \u003d raw_read8(port, PI3USB9201_REG_CLIENT_STS, \u0026status);\nif (client)\n    *client \u003d status;\n\nrv |\u003d raw_read8(port, PI3USB9201_REG_HOST_STS, \u0026status);\nif (host)\n    *host \u003d status;\n\nreturn rv;",
+      "range": {
+        "startLine": 228,
+        "startChar": 45,
+        "endLine": 228,
+        "endChar": 50
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d27aa1e_16834a8f",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "Actually, shouldn\u0027t this be done every time this task is woken up? i.e. read both client and host status and clear those?",
+      "range": {
+        "startLine": 228,
+        "startChar": 8,
+        "endLine": 228,
+        "endChar": 29
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3288454c_5e51185a",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "detection?",
+      "range": {
+        "startLine": 232,
+        "startChar": 28,
+        "endLine": 232,
+        "endChar": 38
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d47c7b55_b356dce2",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "So, the VBUS detect is just being printed but no action taken on it?",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 35
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84707772_bda4babd",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "USB_CHARGER_MIN_CURR_MA",
+      "range": {
+        "startLine": 255,
+        "startChar": 22,
+        "endLine": 255,
+        "endChar": 25
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4221b12_2acb0a7b",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "is that intentional?",
+      "range": {
+        "startLine": 259,
+        "startChar": 47,
+        "endLine": 259,
+        "endChar": 48
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b01a64_50b28ddb",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "space before p",
+      "range": {
+        "startLine": 268,
+        "startChar": 4,
+        "endLine": 268,
+        "endChar": 5
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef8defb_b4ec7e59",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "Is there a reason why this is checked specifically here and not in other places where mode is being set?",
+      "range": {
+        "startLine": 279,
+        "startChar": 15,
+        "endLine": 279,
+        "endChar": 47
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c385028f_c8789c5e",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-11T03:57:43Z",
+      "side": 1,
+      "message": "or NONE",
+      "range": {
+        "startLine": 300,
+        "startChar": 55,
+        "endLine": 300,
+        "endChar": 56
+      },
+      "revId": "fd59f1305e664b67e2bd64be2319b9027c5ec441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
