@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf963993_b6a35bbf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:42:47Z",
+      "side": 1,
+      "message": "I like the paradigm of using CONFIG options to force compiler errors if the contract isn\u0027t implemented properly. Using weak function are more brittle for rename refactors, etc.\n\n\nCan we add a new config option, and if that is defined we must provide a board_override function (or maybe even an extern uint8_t board_battery_level_shutdown)",
+      "range": {
+        "startLine": 1280,
+        "startChar": 0,
+        "endLine": 1283,
+        "endChar": 1
+      },
+      "revId": "5ce8e06e6d268853a2654e173bb4452d6d5322c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807debd4_65245ce3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-11T15:42:47Z",
+      "side": 1,
+      "message": "shouldn\u0027t we call the new function here otherwise any run-time decision will get ignored? (unless they were determined before charger_init)",
+      "range": {
+        "startLine": 1289,
+        "startChar": 31,
+        "endLine": 1289,
+        "endChar": 53
+      },
+      "revId": "5ce8e06e6d268853a2654e173bb4452d6d5322c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
