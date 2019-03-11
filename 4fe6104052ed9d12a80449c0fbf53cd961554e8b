@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63af1da8_3340b9ec",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:09:49Z",
+      "side": 1,
+      "message": "I don\u0027t remember for sure at this point, but I think it was for keeping EC state after a failure (or success).  Regular users of flash_ec shouldn\u0027t need this flag, but I\u0027d like to keep it as something handy during development.  I\u0027ve added a warning to the help output.",
+      "parentUuid": "d3c97b7d_bfae4063",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 43
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "624a274f_8a0c43ff",
         "filename": "util/flash_ec",
         "patchSetId": 51
@@ -45,6 +69,30 @@
       "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb631a3_f88e8436",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:09:49Z",
+      "side": 1,
+      "message": "This patch is not experimental.\n\n--iteflash_use_ftdi_with_servo_v2\u003dtrue (default value) maintains the existing behavior with Servo v2.\n\n--iteflash_use_ftdi_with_servo_v2\u003dfalse is experimental.  I\u0027ve added an \"EXPERIMENTAL\" warning to the help output.  It works, or did many months ago when I last tested it by first sending the waveform from Servo Micro.  It would be nice to move servo_v2 waveform generation into a servod command at some point.  With that done we could delete the flag, keeping the \"true\" behavior, and then simplify Servod by removing the FTDI close+reopen hackery.\n\n--iteflash_use_cr50_direct_with_ccd\u003dtrue (default value) maintains the existing behavior with CCD.  It is still supported in this patch because i2c-pseudo isn\u0027t checked in yet.  Once i2c-pseudo is checked in and enabled in labstation images, I will delete this flag and keep only the \"false\" behavior.  I\u0027ve added a TODO comment for that.\n\n--iteflash_use_cr50_direct_with_ccd\u003dfalse is *not* experimental, it should work for boards where reflashing via CR50 works at all.  As mentioned I need your time+help to test it.  I was not able to successfully reflash the Bip I have via CR50 yesterday with or without my changes (failed at same place either way), and I can\u0027t spend time troubleshooting it.",
+      "parentUuid": "624a274f_8a0c43ff",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fbe4d818_30c4b3b8",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:09:49Z",
+      "side": 1,
+      "message": "Using \u0026\u0026 that way is generally a misuse.  E.g. if it ends up at the bottom of a function, now the function is returning a likely unintended failure value.  And it fails badly when combined with set -e.\n\nAn \"if\" is the proper way.\n\n(Note that || in this manner is not as bad because when the condition is not met, there is a successful return value / exit code.)",
+      "parentUuid": "44d3b4ec_b38bc00e",
+      "range": {
+        "startLine": 491,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 3
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d74554a_5ae36f51",
         "filename": "util/flash_ec",
         "patchSetId": 51
@@ -91,6 +163,30 @@
       "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025e8983_514b815b",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:09:49Z",
+      "side": 1,
+      "message": "The rest of the script is not consistent.  I did this cleanup months ago, IIRC because I got fed up with typing all the unnecessary {}.\n\nThat said, if everyone else likes the {}, I\u0027ll go along.  Changed to use {} everywhere in this function.",
+      "parentUuid": "7d74554a_5ae36f51",
+      "range": {
+        "startLine": 495,
+        "startChar": 6,
+        "endLine": 495,
+        "endChar": 13
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7cd8aeca_1229dbff",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:09:49Z",
+      "side": 1,
+      "message": "This is existing code, not new with this CL...",
+      "parentUuid": "d0b3f287_a2dec0b1",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 3
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "636249be_f9c5d282",
         "filename": "util/iteflash.c",
         "patchSetId": 51
@@ -131,6 +251,24 @@
       "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8cb9ce2_b5a4ad6e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:09:49Z",
+      "side": 1,
+      "message": "I prefer this (continue to) close the file early, rather than hold it open while reading from the EC.",
+      "parentUuid": "636249be_f9c5d282",
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
