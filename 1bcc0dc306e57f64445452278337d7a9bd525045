@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f37edb9_c06a1cf0",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-11T02:08:45Z",
+      "side": 1,
+      "message": "If I understand correctly what the response is, it might be good to make sure that this array is aligned on a 4-byte boundary (we don\u0027t use CONFIG_HOSTCMD_ALIGNED, but we should design the interface to keep it possible in the future).",
+      "revId": "1bcc0dc306e57f64445452278337d7a9bd525045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6216f2e2_f2c12654",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-11T02:08:45Z",
+      "side": 1,
+      "message": "Move this into mkbp_set_host_active_via_custom (you can keep static const)",
+      "revId": "1bcc0dc306e57f64445452278337d7a9bd525045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
