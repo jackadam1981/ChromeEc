@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d41a6860_cf4168b5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:05:36Z",
+      "side": 0,
+      "message": "This was redundant, check_chipid() is always called regardless of which I2C interface is in use.",
+      "parentUuid": "7813e4a3_9ed56ea5",
+      "range": {
+        "startLine": 1574,
+        "startChar": 1,
+        "endLine": 1574,
+        "endChar": 26
+      },
+      "revId": "1641ef6a6e12ca4e26764ad0a083fc07a08da96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1847060_ffd52730",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "1641ef6a6e12ca4e26764ad0a083fc07a08da96d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8874667_0a171ae1",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:05:36Z",
+      "side": 0,
+      "message": "\"Post special waveform work\" was too vague.  I\u0027ve add logging lines for the specific actions of disabling watchdog and disabling protect path.",
+      "parentUuid": "e1847060_ffd52730",
+      "range": {
+        "startLine": 1585,
+        "startChar": 2,
+        "endLine": 1585,
+        "endChar": 54
+      },
+      "revId": "1641ef6a6e12ca4e26764ad0a083fc07a08da96d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

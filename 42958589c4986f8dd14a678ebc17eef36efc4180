@@ -39,6 +39,30 @@
       "revId": "42958589c4986f8dd14a678ebc17eef36efc4180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74158ddb_58e1bd23",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-11T18:05:36Z",
+      "side": 1,
+      "message": "Done, with the condition inverted.",
+      "parentUuid": "5f524515_2277f11a",
+      "range": {
+        "startLine": 1590,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 10
+      },
+      "revId": "42958589c4986f8dd14a678ebc17eef36efc4180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
