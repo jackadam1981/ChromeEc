@@ -13,9 +13,10 @@ session-persistent command history.
 from __future__ import print_function
 
 import argparse
+import binascii
 import copy
 import ctypes
-import binascii
+from datetime import datetime
 # pylint: disable=cros-logging-import
 import logging
 import os
@@ -60,7 +61,6 @@ ENHANCED_EC_INTERROGATION_TIMEOUT = 1.0  # Maximum number of seconds to wait for
 INTERROGATION_MODES = ['never', 'always', 'auto']  # List of modes which control
                                                    # when interrogations are
                                                    # performed with the EC.
-
 
 class EscState(object):
   """Class which contains an enumeration for states of ESC sequences."""
@@ -950,7 +950,10 @@ def StartLoop(console, command_active, shutdown_pipe=None):
                   ('u' if master_connected else '') +
                   ('i' if command_active.value else ''), data.strip())
             if master_connected:
-              os.write(console.master_pty, data)
+              now = datetime.now()
+              tm = now.strftime("\n[%d %b %Y %H:%M:%S.%f] ")
+              data2 = data.replace('\n', tm)
+              os.write(console.master_pty, data2)
             if command_active.value:
               os.write(console.interface_pty, data)
 
