@@ -111,6 +111,24 @@
       "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d5eb98f_14a969be",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-11T15:39:47Z",
+      "side": 1,
+      "message": "pd_state_names doesn\u0027t exist in a build which doesn\u0027t use it. Could you elaborate \u0027add an else case that nulls the string\u0027 and explain why we should do so?",
+      "parentUuid": "e9f07c41_261324f2",
+      "revId": "d4249cdb5a560bdaa5fced2970bd3f4e38f0c1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
