@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6623e10c_3434b933",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-12T08:41:22Z",
+      "side": 1,
+      "message": "We think this is easier to implement in kernel side if hostcmd and hostevent share the same ID.",
+      "parentUuid": "3cb697e3_d2cd2acd",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 46
+      },
+      "revId": "ebdba6285e8c37b9476b059a5a554bc7d18db3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4660e1d7_655d3076",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 16
