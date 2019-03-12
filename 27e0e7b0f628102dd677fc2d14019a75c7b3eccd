@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fa912c94_d55e941d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-12T23:47:16Z",
+      "side": 1,
+      "message": "I guess I generally presume that any line of code written will inevitably be copied and used somewhere else. I pretty much have to run this file through the preprocessor anyway to grok it. :)\n\nI defer to Randall\u0027s opinion though.",
+      "parentUuid": "ee357478_a7db951b",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 57
+      },
+      "revId": "27e0e7b0f628102dd677fc2d14019a75c7b3eccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32c2e3f0_a6e14fe7",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 3
