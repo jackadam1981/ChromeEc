@@ -391,10 +391,10 @@ static void set_vconn(int port, int enable)
 {
 	/*
 	 * We always need to tell the TCPC to enable Vconn first, otherwise some
-	 * TCPCs get confused when a PPC sets secondary CC line to 5V and TCPC
-	 * immediately disconnect. If there is a PPC, both devices will
-	 * potentially source Vconn, but that should be okay since Vconn has
-	 * "make before break" electrical requirements when swapping anyway.
+	 * TCPCs get confused when a PPC sets the secondary CC line to 5V and
+	 * the TCPC immediately disconnects. If there is a PPC, both devices
+	 * will potentially source Vconn, but that should be okay since Vconn
+	 * has "make before break" electrical requirements when swapping anyway.
 	 */
 	tcpm_set_vconn(port, enable);
 #ifdef CONFIG_USBC_PPC_VCONN
