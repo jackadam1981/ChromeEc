@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fab23a27_e6b9905e",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T16:51:55Z",
+      "side": 1,
+      "message": "we we are counting on reusing the parameters for exception_panic_1 for this call, we should make a comment stating assumptions",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 24
+      },
+      "revId": "376913f80f22587db8fc180922210bfd3c56a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74840bc0_a24ea31a",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T16:51:55Z",
+      "side": 1,
+      "message": "nit:\n\nwhile (1)\n  continue;\n\n(just slightly easier to read)",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "376913f80f22587db8fc180922210bfd3c56a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e973fa8_161a8a08",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T16:51:55Z",
+      "side": 1,
+      "message": "where do these parameters get pushed on the stack (we should include that in the comments)",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "376913f80f22587db8fc180922210bfd3c56a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54666d97_3b0f9f5b",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T16:51:55Z",
+      "side": 1,
+      "message": "while (1)\n   continue;\n\n\nis what I have seen too. I think it reads just slightly better.",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "376913f80f22587db8fc180922210bfd3c56a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -49,6 +49,47 @@
     },
     {
       "key": {
+        "uuid": "d599e599_72c44985",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T16:51:55Z",
+      "side": 1,
+      "message": "I couldn\u0027t tell from your output, what value is get_current_interrupt_vector returning?",
+      "parentUuid": "8afce189_326a39d3",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5272fc_704479ee",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T16:51:55Z",
+      "side": 1,
+      "message": "nit: Save register to globally panic structure",
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efbe5174_6b991382",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 1
