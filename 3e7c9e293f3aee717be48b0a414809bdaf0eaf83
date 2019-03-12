@@ -94,6 +94,30 @@
       "revId": "3e7c9e293f3aee717be48b0a414809bdaf0eaf83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12ab1071_f606147d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-12T20:21:45Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1481659/3/baseboard/dragonegg/usb_pd_policy.c\nthis was the original intended change.\nis there way to know dp_status so that we can use pd_dfp_dp_get_pin_mode() directly?",
+      "parentUuid": "bd5f22df_d201db76",
+      "range": {
+        "startLine": 559,
+        "startChar": 13,
+        "endLine": 559,
+        "endChar": 33
+      },
+      "revId": "3e7c9e293f3aee717be48b0a414809bdaf0eaf83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
