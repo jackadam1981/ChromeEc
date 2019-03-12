@@ -72,6 +72,41 @@
     },
     {
       "key": {
+        "uuid": "5692358e_d8319523",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-12T18:32:15Z",
+      "side": 1,
+      "message": "Got it, CONFIG_ACCEL_FORCE_MODE_MASK fooled me, but it has been fixed in #3.\n\nec_rate can still be removed, since sensor sends interrupt for every samples. \nec_rate remaining usage it when to send an interrupt to the host. But since ARC++ will set ec_rate (via sampling_rate) when it needs interrupt, we don\u0027t need to set it up anymore in the EC. If you prefer, I can send a wide CL across all board to fix that.",
+      "parentUuid": "49d7f025_3002c38f",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41125e73_1cb44d53",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-12T18:32:15Z",
+      "side": 1,
+      "message": "Use 13000 for consistency, use same ec_rate as S0.",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2725230_69274bf4",
         "filename": "board/arcada_ish/board.h",
         "patchSetId": 2
@@ -101,6 +136,24 @@
       "side": 1,
       "message": "Are you talking about memory mapped transport between EC and AP when using LPC/eSPI?",
       "parentUuid": "f2725230_69274bf4",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc930e1_cfdd8268",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-12T18:32:15Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "75d29b83_ba3f7d2a",
       "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
