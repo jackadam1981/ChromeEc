@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aaae10b_fc8fd220",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T20:01:07Z",
+      "side": 1,
+      "message": "Where do you see this happening in the code?  I see mode_vdo being set with a copy of our DiscoverMode payload in dfp_consume_modes, but every other reference I find is just reading the variable",
+      "range": {
+        "startLine": 564,
+        "startChar": 51,
+        "endLine": 565,
+        "endChar": 52
+      },
+      "revId": "c443a3a0f28832367355f3088cd07e9fc14d32b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

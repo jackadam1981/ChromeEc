@@ -70,6 +70,30 @@
       "revId": "3e7c9e293f3aee717be48b0a414809bdaf0eaf83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd5f22df_d201db76",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T20:01:07Z",
+      "side": 1,
+      "message": "Can you explain more about why pd_dfp_dp_get_pin_mode doesn\u0027t work for your purposes?  This function should reflect what we sent to the port partner during Configure",
+      "parentUuid": "494cd0c5_4900b6b2",
+      "range": {
+        "startLine": 559,
+        "startChar": 13,
+        "endLine": 559,
+        "endChar": 33
+      },
+      "revId": "3e7c9e293f3aee717be48b0a414809bdaf0eaf83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

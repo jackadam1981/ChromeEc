@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "e0069e7f_1ea9c634",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T20:01:07Z",
+      "side": 1,
+      "message": "The mode_vdo field is populated when we send DiscoverModes.  In the DisplayPort Alternate Mode on USB Type-C doc, it looks like the top bits of the VDO are reserved, and the next set of bits are UFP_D pin support and DPF_D pin support.\n\nI really have 3 concerns with this function: \n\n1. It seems dangerous to rely on the reserved bits always being zero.  The function would be more resilient to packet changes if it masks off the bits it is interested in.\n\n2. This only pulls one supported pin.  This doesn\u0027t seem like an accurate representation of the information we got from the port partner, given they may have set multiple pins.\n\n3. The 0th SVID is not guaranteed to be for display port.  The port partner may send us its SVIDs in an arbitrary order, so this code will only work for very specific dongles.",
+      "parentUuid": "5ddc741a_21dfd841",
+      "range": {
+        "startLine": 562,
+        "startChar": 35,
+        "endLine": 562,
+        "endChar": 43
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c87a1d11_783ee342",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
