@@ -2454,17 +2454,17 @@ struct ec_response_motion_sensor_data {
 	/* Each sensor is up to 3-axis. */
 	union {
 		int16_t             data[3];
-		struct __ec_todo_packed {
+		struct __ec_align2 {
 			uint16_t    reserved;
 			uint32_t    timestamp;
 		};
-		struct __ec_todo_unpacked {
+		struct __ec_align2 {
 			uint8_t     activity; /* motionsensor_activity */
 			uint8_t     state;
 			int16_t     add_info[2];
 		};
 	};
-} __ec_todo_packed;
+} __ec_align_offset2;
 
 /* Note: used in ec_response_get_next_data */
 struct ec_response_motion_sense_fifo_info {
@@ -2480,12 +2480,12 @@ struct ec_response_motion_sense_fifo_info {
 	uint16_t total_lost;
 	/* Lost events since the last fifo_info, per sensors */
 	uint16_t lost[0];
-} __ec_todo_packed;
+} __ec_align2;
 
 struct ec_response_motion_sense_fifo_data {
 	uint32_t number_data;
 	struct ec_response_motion_sensor_data data[0];
-} __ec_todo_packed;
+} __ec_align4;
 
 /* List supported activity recognition */
 enum motionsensor_activity {
@@ -2501,7 +2501,7 @@ struct ec_motion_sense_activity {
 	uint8_t enable;   /* 1: enable, 0: disable */
 	uint8_t reserved;
 	uint16_t parameters[3]; /* activity dependent parameters */
-} __ec_todo_unpacked;
+} __ec_align2;
 
 /* Module flag masks used for the dump sub-command. */
 #define MOTIONSENSE_MODULE_FLAG_ACTIVE BIT(0)
@@ -2555,7 +2555,7 @@ struct ec_params_motion_sense {
 	uint8_t cmd;
 	union {
 		/* Used for MOTIONSENSE_CMD_DUMP */
-		struct __ec_todo_unpacked {
+		struct {
 			/*
 			 * Maximal number of sensor the host is expecting.
 			 * 0 means the host is only interested in the number
@@ -2567,7 +2567,7 @@ struct ec_params_motion_sense {
 		/*
 		 * Used for MOTIONSENSE_CMD_KB_WAKE_ANGLE.
 		 */
-		struct __ec_todo_unpacked {
+		struct {
 			/* Data to set or EC_MOTION_SENSE_NO_VALUE to read.
 			 * kb_wake_angle: angle to wakup AP.
 			 */
@@ -2578,7 +2578,7 @@ struct ec_params_motion_sense {
 		 * Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_DATA
 		 * and MOTIONSENSE_CMD_PERFORM_CALIB.
 		 */
-		struct __ec_todo_unpacked {
+		struct {
 			uint8_t sensor_num;
 		} info, info_3, data, fifo_flush, perform_calib,
 				list_activities;
@@ -2587,7 +2587,7 @@ struct ec_params_motion_sense {
 		 * Used for MOTIONSENSE_CMD_EC_RATE, MOTIONSENSE_CMD_SENSOR_ODR
 		 * and MOTIONSENSE_CMD_SENSOR_RANGE.
 		 */
-		struct __ec_todo_unpacked {
+		struct {
 			uint8_t sensor_num;
 
 			/* Rounding flag, true for round-up, false for down. */
@@ -2600,7 +2600,7 @@ struct ec_params_motion_sense {
 		} ec_rate, sensor_odr, sensor_range;
 
 		/* Used for MOTIONSENSE_CMD_SENSOR_OFFSET */
-		struct __ec_todo_packed {
+		struct {
 			uint8_t sensor_num;
 
 			/*
@@ -2629,7 +2629,7 @@ struct ec_params_motion_sense {
 		} sensor_offset;
 
 		/* Used for MOTIONSENSE_CMD_SENSOR_SCALE */
-		struct __ec_todo_packed {
+		struct {
 			uint8_t sensor_num;
 
 			/*
@@ -2662,7 +2662,7 @@ struct ec_params_motion_sense {
 		/* (no params) */
 
 		/* Used for MOTIONSENSE_CMD_FIFO_READ */
-		struct __ec_todo_unpacked {
+		struct {
 			/*
 			 * Number of expected vector to return.
 			 * EC may return less or 0 if none available.
@@ -2676,7 +2676,7 @@ struct ec_params_motion_sense {
 		/* (no params) */
 
 		/* Used for MOTIONSENSE_CMD_FIFO_INT_ENABLE */
-		struct __ec_todo_unpacked {
+		struct {
 			/*
 			 * 1: enable, 0 disable fifo,
 			 * EC_MOTION_SENSE_NO_VALUE return value.
@@ -2685,21 +2685,18 @@ struct ec_params_motion_sense {
 		} fifo_int_enable;
 
 		/* Used for MOTIONSENSE_CMD_SPOOF */
-		struct __ec_todo_packed {
+		struct {
 			uint8_t sensor_id;
 
 			/* See enum motionsense_spoof_mode. */
 			uint8_t spoof_enable;
-
-			/* Ignored, used for alignment. */
-			uint8_t reserved;
 
 			/* Individual component values to spoof. */
 			int16_t components[3];
 		} spoof;
 
 		/* Used for MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE. */
-		struct __ec_todo_unpacked {
+		struct {
 			/*
 			 * Lid angle threshold for switching between tablet and
 			 * clamshell mode.
@@ -2716,12 +2713,12 @@ struct ec_params_motion_sense {
 			int16_t hys_degree;
 		} tablet_mode_threshold;
 	};
-} __ec_todo_packed;
+} __ec_align4;
 
 struct ec_response_motion_sense {
 	union {
 		/* Used for MOTIONSENSE_CMD_DUMP */
-		struct __ec_todo_unpacked {
+		struct {
 			/* Flags representing the motion sensor module. */
 			uint8_t module_flags;
 
@@ -2736,7 +2733,7 @@ struct ec_response_motion_sense {
 		} dump;
 
 		/* Used for MOTIONSENSE_CMD_INFO. */
-		struct __ec_todo_unpacked {
+		struct {
 			/* Should be element of enum motionsensor_type. */
 			uint8_t type;
 
@@ -2748,7 +2745,7 @@ struct ec_response_motion_sense {
 		} info;
 
 		/* Used for MOTIONSENSE_CMD_INFO version 3 */
-		struct __ec_todo_unpacked {
+		struct {
 			/* Should be element of enum motionsensor_type. */
 			uint8_t type;
 
@@ -2778,7 +2775,7 @@ struct ec_response_motion_sense {
 		 * MOTIONSENSE_CMD_FIFO_INT_ENABLE and
 		 * MOTIONSENSE_CMD_SPOOF.
 		 */
-		struct __ec_todo_unpacked {
+		struct {
 			/* Current value of the parameter queried. */
 			int32_t ret;
 		} ec_rate, sensor_odr, sensor_range, kb_wake_angle,
@@ -2788,13 +2785,13 @@ struct ec_response_motion_sense {
 		 * Used for MOTIONSENSE_CMD_SENSOR_OFFSET,
 		 * PERFORM_CALIB.
 		 */
-		struct __ec_todo_unpacked  {
+		struct {
 			int16_t temp;
 			int16_t offset[3];
 		} sensor_offset, perform_calib;
 
 		/* Used for MOTIONSENSE_CMD_SENSOR_SCALE */
-		struct __ec_todo_unpacked  {
+		struct {
 			int16_t temp;
 			uint16_t scale[3];
 		} sensor_scale;
@@ -2803,7 +2800,7 @@ struct ec_response_motion_sense {
 
 		struct ec_response_motion_sense_fifo_data fifo_read;
 
-		struct __ec_todo_packed {
+		struct {
 			uint16_t reserved;
 			uint32_t enabled;
 			uint32_t disabled;
@@ -2812,7 +2809,7 @@ struct ec_response_motion_sense {
 		/* No params for set activity */
 
 		/* Used for MOTIONSENSE_CMD_LID_ANGLE */
-		struct __ec_todo_unpacked {
+		struct {
 			/*
 			 * Angle between 0 and 360 degree if available,
 			 * LID_ANGLE_UNRELIABLE otherwise.
@@ -2821,7 +2818,7 @@ struct ec_response_motion_sense {
 		} lid_angle;
 
 		/* Used for MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE. */
-		struct __ec_todo_unpacked {
+		struct {
 			/*
 			 * Lid angle threshold for switching between tablet and
 			 * clamshell mode.
@@ -2831,9 +2828,8 @@ struct ec_response_motion_sense {
 			/* Hysteresis degree. */
 			uint16_t hys_degree;
 		} tablet_mode_threshold;
-
 	};
-} __ec_todo_packed;
+} __ec_align4;
 
 /*****************************************************************************/
 /* Force lid open command */
@@ -3443,7 +3439,7 @@ union __ec_align_offset1 ec_response_get_next_data {
 	uint32_t host_event;
 	uint64_t host_event64;
 
-	struct __ec_todo_unpacked {
+	struct {
 		/* For aligning the fifo_info */
 		uint8_t reserved[3];
 		struct ec_response_motion_sense_fifo_info info;
