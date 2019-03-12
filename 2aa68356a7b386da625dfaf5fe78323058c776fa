@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3011ffe2_10c60c49",
+        "filename": "util/iteflash.c",
+        "patchSetId": 55
+      },
+      "lineNbr": 1686,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-12T22:11:59Z",
+      "side": 0,
+      "message": "I\u0027m ok with this removal, but I see stm32mon also has exit(2) in usage displaying function.\nCurious about other chrome seniors\u0027 opinion.",
+      "range": {
+        "startLine": 1686,
+        "startChar": 1,
+        "endLine": 1686,
+        "endChar": 9
+      },
+      "revId": "2aa68356a7b386da625dfaf5fe78323058c776fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

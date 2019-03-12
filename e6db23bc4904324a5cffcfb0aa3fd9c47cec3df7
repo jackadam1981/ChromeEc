@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c62f9a94_2dcf3bf7",
+        "filename": "util/flash_ec",
+        "patchSetId": 55
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-12T22:11:59Z",
+      "side": 1,
+      "message": "Since \"servo_save()\" already sets i2c_mux_en on and i2c_mux remote_adc,\nI think it is not necessary to set here again. \nI checked the run both with this and without this, and both ran good.",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 5
+      },
+      "revId": "e6db23bc4904324a5cffcfb0aa3fd9c47cec3df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f881366_239e01c4",
+        "filename": "util/flash_ec",
+        "patchSetId": 55
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-12T22:11:59Z",
+      "side": 1,
+      "message": "dragonegg servod doesn\u0027t have dut_i2c_mux. As I understand, this should be executed no matter dut has dut_i2c_mux or not.",
+      "range": {
+        "startLine": 510,
+        "startChar": 3,
+        "endLine": 513,
+        "endChar": 5
+      },
+      "revId": "e6db23bc4904324a5cffcfb0aa3fd9c47cec3df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
