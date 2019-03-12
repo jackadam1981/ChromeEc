@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "4e9034c7_423231c6",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T18:20:51Z",
+      "side": 1,
+      "message": "get_current_interrupt_vector should return a number between 0 and 255. I don\u0027t know how the code could return something out of that range even. Let\u0027s look into this a little more",
+      "parentUuid": "30e3d2f4_aba742ac",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b5272fc_704479ee",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 1
