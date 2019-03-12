@@ -22,6 +22,30 @@
       "revId": "ebdba6285e8c37b9476b059a5a554bc7d18db3ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2002a4e8_cb40eb6d",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-12T04:03:59Z",
+      "side": 1,
+      "message": "__ec_align4 contains __align(4) __packed.  But we cannot apply __packed to byte arrays.\n\n\nchip/mt_scp/ipi.c:57:2: error: \u0027packed\u0027 attribute ignored for field of type \u0027uint8_t[284]\u0027 {aka \u0027unsigned char[284]\u0027} [-Werror\u003dattributes]\n  uint8_t response[IPI_MAX_RESPONSE_SIZE] __ec_align4;\n  ^~~~~~~",
+      "parentUuid": "4660e1d7_655d3076",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "ebdba6285e8c37b9476b059a5a554bc7d18db3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
