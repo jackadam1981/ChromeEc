@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "573cf949_3f46193b",
+        "filename": "board/bloog/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T15:57:15Z",
+      "side": 1,
+      "message": "This can be removed unless you\u0027re planning to run on meep protos",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "405f24d465e3f3b60e0f32013bb43f1e876d4477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c51bdfe_d37ba708",
+        "filename": "board/bloog/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T15:57:15Z",
+      "side": 1,
+      "message": "Is bloog using a keyboard backlight?  I thought meep chose to not stuff that circuit",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 44
+      },
+      "revId": "405f24d465e3f3b60e0f32013bb43f1e876d4477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87cc71c2_28738759",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T15:57:15Z",
+      "side": 1,
+      "message": "This note seems incorrect.  Update to reflect the LEDs planned and add a TODO and bug for any additional LED work",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 54
+      },
+      "revId": "405f24d465e3f3b60e0f32013bb43f1e876d4477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
