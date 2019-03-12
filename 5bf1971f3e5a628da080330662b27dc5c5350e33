@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b83b92_7f4cd2c9",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "we don\u0027t need to have this guard since we just defined it.\n\nIf we need to add a sanity check, we can add that to config.h (but let\u0027s add it only if needed)\n\n\n#if  defined(CONFIG_ISH_PM_D0I1) || defined(CONFIG_ISH_PM_D0I1) ..\n#ifndef CONFIG_LOW_POWER_IDLE\n#error Must use CONFIG_LOW_POWER_IDLE if using lower ISH power states\n#endif\n#endif",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b6c645_2671ff5d",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "this derivation of CONFIG_ISH_PM_AONTASK should move to config.h",
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d498d0a_efa5af0f",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "s/Glabal/Global/",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4f37f2_8f81db17",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "s/Segmenti/Segment/",
+      "range": {
+        "startLine": 14,
+        "startChar": 51,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062c887b_d91d85aa",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "thank you for this helpful header",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c564b1e_bd2751eb",
+        "filename": "chip/ish/aontaskfw/ish_aon_share.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "can you add a comment reference to the enum value that this will hold",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "983e6327_d39f95c6",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "you don\u0027t need this phrase \"not a bug\" :)\n\nI was just curious why. The rest of your comment explains why",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c19440b_5cf5b5af",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "should we add a ROM section to this memory map (since we define that section in config_chip.h)",
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8d25e2_da740732",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "is this not 256 because of the 8 byte offset for the debugger? If so, lets add that to the comment (otherwise it looks like a typo)",
+      "range": {
+        "startLine": 13,
+        "startChar": 88,
+        "endLine": 13,
+        "endChar": 91
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c92eef_03939df7",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "lets\u0027 use #elif to show that they are mutually exclusive\n\nAlso what about ISH4?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd7de50_ac615a05",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "please add comment for this line",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c030b43_9ceebf08",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "let\u0027s make this a define (we have used it twice, with the same helpful comment)",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 32
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa102e4_31703354",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "same here, let\u0027s name 0x89 appropriately with a define",
+      "range": {
+        "startLine": 115,
+        "startChar": 54,
+        "endLine": 115,
+        "endChar": 58
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6750d9_9a70255f",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "we need to account for the sleep mask. See https://chromium.googlesource.com/chromiumos/platform/ec/+/7b02d9fe128a271d0b9472656a120f15e5cfa870/chip/npcx/clock.c#301 as an example",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 12
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed43946_ef3b4dfc",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:45:32Z",
+      "side": 1,
+      "message": "what is the short description for this? powered off completely?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
