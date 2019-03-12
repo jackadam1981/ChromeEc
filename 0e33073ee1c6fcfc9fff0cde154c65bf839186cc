@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cdfb621_47adad8c",
+        "filename": "driver/charger/bq24738.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T23:22:44Z",
+      "side": 0,
+      "message": "These are easier to read. For these, I think we need a different macro. Something like\n\n  #define BITS(n, m) ((n) \u003c\u003c (m))\n\nHow do these look in the kernel?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
