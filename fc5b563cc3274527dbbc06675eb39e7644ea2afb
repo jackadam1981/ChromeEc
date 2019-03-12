@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a1a4837_ccb60756",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-12T15:47:41Z",
+      "side": 1,
+      "message": "Is it possible to have a single panic function and use get_current_interrupt_vector in exception_panic?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efbe5174_6b991382",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-03-12T15:47:41Z",
+      "side": 1,
+      "message": "looks like the rest of the ec code uses while (1),",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 3
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
