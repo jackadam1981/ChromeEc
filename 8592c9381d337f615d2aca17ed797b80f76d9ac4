@@ -16,6 +16,24 @@
       "revId": "8592c9381d337f615d2aca17ed797b80f76d9ac4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6816cc8_638c9fb6",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-12T17:17:23Z",
+      "side": 1,
+      "message": "Ah yes, I thought that went it and was trying to find it but couldn\u0027t. Thanks for the link. (It looks like there are still open questions on the CL)\n\nWe can submit here and update this section of code when we submit that CL",
+      "parentUuid": "53dcd6cd_f5c1fb5c",
+      "revId": "8592c9381d337f615d2aca17ed797b80f76d9ac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
