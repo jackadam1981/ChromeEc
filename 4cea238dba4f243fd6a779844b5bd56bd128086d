@@ -22,6 +22,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a82e26_974fd128",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T14:57:48Z",
+      "side": 1,
+      "message": "I\u0027d say the scenarios are: \n\nlocked (customer) systems - this change shouldn\u0027t affect them since they will clear their explicit contract bit in RO before jumping to RW in pd_partner_port_reset()\n\nunlocked RO boot - this change is setting a flag which we already set during pd_chipset_startup() so I would expect behavior to be unchanged\n\nunlocked RO-\u003eRW jump (sourcing partner, since sinking partner would go through disconnect when we turn off vbus) - this change will alter our behavior for this scenario.  We will be sending a second enter mode to a port partner without an exit mode.  However, without this change I believe the usb_mux_init() on line 2712 (as well as whatever HPD line initialization the specific board does) mean it is unlikely display will work after the jump.  So the display may not work with this, but I don\u0027t believe it works at all without it. \n\nI haven\u0027t worked with hardware configurations beyond octopus, but please let me know if there are scenarios I haven\u0027t thought of where this wouldn\u0027t be a general improvement.",
+      "parentUuid": "f3717473_b835ce56",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
