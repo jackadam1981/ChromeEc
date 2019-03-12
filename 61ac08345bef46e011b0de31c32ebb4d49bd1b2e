@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81864366_8d315989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:36:22Z",
+      "side": 1,
+      "message": "No bug? Please create one. This change deserves one.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d51390_3859cd2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:36:22Z",
+      "side": 1,
+      "message": "Please describe what test is done.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2b9dacd_c45c0ac4",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:36:22Z",
+      "side": 1,
+      "message": "We typically have a compile time check for const arrays:\n\n  assert(ARRAY_SIZE(info) \u003d\u003d BATTERY_COUNT)\n\nPlease add it:",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f29fe37_d5f0d3d9",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:36:22Z",
+      "side": 1,
+      "message": "Let\u0027s define this outside of the function. It deserves better visibility.",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
