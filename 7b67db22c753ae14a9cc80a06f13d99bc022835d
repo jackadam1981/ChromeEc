@@ -214,6 +214,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ff2cd8_672b74b8",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-12T00:55:34Z",
+      "side": 1,
+      "message": "I don\u0027t have approvals to share the command yet. I will check if I can share it in email.\n(IT83XX_ESPI_ESUCTRL0 \u0026 ESPI_UPSTREAM_BUSY) is true when the command sent.",
+      "parentUuid": "701beb69_537cd733",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
