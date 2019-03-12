@@ -46,6 +46,30 @@
       "revId": "6a8d3345df1519ea571939b10acc13100c090d88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8b73c0_247f5af9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T20:41:50Z",
+      "side": 1,
+      "message": "Scott, as long as you\u0027re perusing the CL, any opinions here? Would it be better to not sleep for the 18ms, or only sleep on systems with external TCPCs?",
+      "parentUuid": "eea7b325_ea799c2a",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 23
+      },
+      "revId": "6a8d3345df1519ea571939b10acc13100c090d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
