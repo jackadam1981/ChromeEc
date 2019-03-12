@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a9d2a323_f5fa1ff1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-12T19:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2edc62cd_45323b9a",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73613c2c_81628a03",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "c0c05592_d09300c2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-12T19:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73613c2c_81628a03",
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ddc741a_21dfd841",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2019-03-11T15:38:04Z",
       "side": 1,
       "message": "Is this always guaranteed to be MODE_DP_PIN_[A-E] for all display port implementations?\n\nI didn\u0027t see any documentation for mode_vdo. Can you point me to something I can confirm that this is the case?",
+      "range": {
+        "startLine": 562,
+        "startChar": 35,
+        "endLine": 562,
+        "endChar": 43
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae324129_79bb66e9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-12T19:59:05Z",
+      "side": 1,
+      "message": "The Documentation can be found in USB_PD_R3_0 v1.2 section 6.4.4: Vendor defined message subsection 6.4.4.2.1: SVID - It says the SVID field Shall contain either a 16-bit USB Standard ID value (SID) or the 16-bit assigned to the vendor by the USB-IF (VID).",
+      "parentUuid": "5ddc741a_21dfd841",
       "range": {
         "startLine": 562,
         "startChar": 35,
@@ -108,6 +174,30 @@
       "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1e04ad_ce9b4f94",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5159,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-12T19:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86762d33_9aefad8a",
+      "range": {
+        "startLine": 5143,
+        "startChar": 0,
+        "endLine": 5159,
+        "endChar": 16
+      },
+      "revId": "99ea5b49d6f5a2a5ec6261d40cba0f5a488cb312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
