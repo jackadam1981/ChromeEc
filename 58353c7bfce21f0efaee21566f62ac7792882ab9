@@ -22,6 +22,30 @@
       "revId": "58353c7bfce21f0efaee21566f62ac7792882ab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d5a3b7_69e4c073",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-12T01:44:20Z",
+      "side": 1,
+      "message": "Oops. something wrong with my gerrit setup. This looks good.",
+      "parentUuid": "c8cf1a08_346b3f6d",
+      "range": {
+        "startLine": 339,
+        "startChar": 4,
+        "endLine": 340,
+        "endChar": 68
+      },
+      "revId": "58353c7bfce21f0efaee21566f62ac7792882ab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
