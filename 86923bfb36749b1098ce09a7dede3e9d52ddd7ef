@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73e44fec_70feaf22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T18:05:56Z",
+      "side": 1,
+      "message": "Can you describe what this patch does (Turn on blue LED when system is on) instead of the issue it\u0027ll solve?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "86923bfb36749b1098ce09a7dede3e9d52ddd7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3aa1e2e_b8d2e78e",
+        "filename": "board/casta/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T18:05:56Z",
+      "side": 1,
+      "message": "nit: } else {",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "86923bfb36749b1098ce09a7dede3e9d52ddd7ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
