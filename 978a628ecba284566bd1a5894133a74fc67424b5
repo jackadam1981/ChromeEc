@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467b257f_a46be0f8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T20:19:17Z",
+      "side": 0,
+      "message": "I would absolutely love to see these PD states constant across our boards.  I remember my first type-c bug it was very frustrating having to look up all of our board\u0027s configs in order to translate this enum.\n\nThat being said, was there any reason besides saving string space these were here?  I assume we don\u0027t rely on the compiler to warn us for newly defined states that aren\u0027t handled in our giant \"switch\", since it ends with a \"default\" case.  Would there be any other reasons to not define enum values we don\u0027t use?",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 30
+      },
+      "revId": "978a628ecba284566bd1a5894133a74fc67424b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
