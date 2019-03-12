@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7c10e0d_a670b2ef",
+        "filename": "common/peci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-03-12T09:36:11Z",
+      "side": 1,
+      "message": "Do we need at least two valid samples?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "664fba22d8cbda94ad4c71e15cb219d68f9b1c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
