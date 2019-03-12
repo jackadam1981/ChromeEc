@@ -22,6 +22,30 @@
       "revId": "c2474b09cbf6070966a5428d17ae2e1c7babe020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46556aa4_d32b2ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-12T00:01:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure why I thought this was correct.  IT8320_eflash_SMBus_Programming_Guide.pdf \"Fast Read E-Flash\" section shows hardcoded 0x00 lowest address byte, and states only page size (256 byte) boundaries for reads.\n\nI\u0027ve changed this to have command_read_pages() error when given a non-page-size address.",
+      "parentUuid": "5c68f32f_4ae94687",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 45
+      },
+      "revId": "c2474b09cbf6070966a5428d17ae2e1c7babe020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
