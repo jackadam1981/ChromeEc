@@ -46,6 +46,30 @@
       "revId": "c443a3a0f28832367355f3088cd07e9fc14d32b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c68511_5d449655",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-12T21:03:31Z",
+      "side": 1,
+      "message": "That appears to reference the initial writing of mode_vdo[0] when we discover modes.  The above comment implies, to me at least, that it gets updated after we send the configuration with our selected pin.",
+      "parentUuid": "da54dfbb_4c55c7f0",
+      "range": {
+        "startLine": 564,
+        "startChar": 51,
+        "endLine": 565,
+        "endChar": 52
+      },
+      "revId": "c443a3a0f28832367355f3088cd07e9fc14d32b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
