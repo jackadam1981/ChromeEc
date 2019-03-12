@@ -22,6 +22,30 @@
       "revId": "36825ca2dfa8f3b667e66f1bd6e728536b416dba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061026f0_24390fef",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-12T00:01:08Z",
+      "side": 1,
+      "message": "That CL is pending.  If it gets checked in first I will properly merge/rebase, w/o breaking reads.\n\nThe base revision (top-of-tree as of this morning) unconditionally applies --erase and --write.  This CL doesn\u0027t change that.",
+      "parentUuid": "252b8d0a_2b4e47f6",
+      "range": {
+        "startLine": 1059,
+        "startChar": 1,
+        "endLine": 1059,
+        "endChar": 63
+      },
+      "revId": "36825ca2dfa8f3b667e66f1bd6e728536b416dba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
