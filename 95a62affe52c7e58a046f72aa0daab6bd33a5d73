@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b838116b_d849a793",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-12T17:07:48Z",
+      "side": 1,
+      "message": "We have support for lid angle calculation. CL:1388844 is a rewrite using chrome code.\nYou can access EC lid calculation today with:\nectool motionsense lid_angle",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea54343_f7948ffb",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-12T17:07:48Z",
+      "side": 1,
+      "message": "Since sensor is in fornce mode, ec_rate is moot. Remove it.",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2725230_69274bf4",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-03-12T17:07:48Z",
+      "side": 1,
+      "message": "Note: Add comment: since LPC transport is not used, any order is acceptable.",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
