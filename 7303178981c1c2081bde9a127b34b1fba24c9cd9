@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ba9f8c9_4fe10598",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T01:39:51Z",
+      "side": 1,
+      "message": "Can you cherry-pick CL:1481771 first?",
+      "revId": "7303178981c1c2081bde9a127b34b1fba24c9cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56186fcd_75c12eb0",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T01:39:51Z",
+      "side": 1,
+      "message": "We should remove this (and use cbi_get_board_version) consistently.",
+      "range": {
+        "startLine": 360,
+        "startChar": 4,
+        "endLine": 360,
+        "endChar": 21
+      },
+      "revId": "7303178981c1c2081bde9a127b34b1fba24c9cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422036b1_69822ab5",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T01:39:51Z",
+      "side": 1,
+      "message": "Please use ABS().",
+      "range": {
+        "startLine": 393,
+        "startChar": 6,
+        "endLine": 394,
+        "endChar": 59
+      },
+      "revId": "7303178981c1c2081bde9a127b34b1fba24c9cd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
