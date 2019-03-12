@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d979ce1_74b635e8",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:26:39Z",
+      "side": 1,
+      "message": "enum battery_type",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 3
+      },
+      "revId": "dabff9fca546896d63132cb632a3a7bd020bb659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74cc5423_6233108e",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:26:39Z",
+      "side": 1,
+      "message": "enum battery_type type. \u0027type\u0027 is enough because of the context.",
+      "range": {
+        "startLine": 362,
+        "startChar": 8,
+        "endLine": 362,
+        "endChar": 21
+      },
+      "revId": "dabff9fca546896d63132cb632a3a7bd020bb659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d21e30_e8e75030",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:26:39Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "dabff9fca546896d63132cb632a3a7bd020bb659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a778bd_915fc0f3",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:26:39Z",
+      "side": 1,
+      "message": "We can put this on the top to assign 0 to it. Then, you don\u0027t need to initialize batt_type in board_get_battery_type.",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 16
+      },
+      "revId": "dabff9fca546896d63132cb632a3a7bd020bb659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551fa15c_1918c463",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-12T22:26:39Z",
+      "side": 1,
+      "message": "Why do you export this?",
+      "range": {
+        "startLine": 265,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 26
+      },
+      "revId": "dabff9fca546896d63132cb632a3a7bd020bb659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
