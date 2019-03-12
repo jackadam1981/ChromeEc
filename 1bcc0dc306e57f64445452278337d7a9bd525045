@@ -87,6 +87,24 @@
       "revId": "1bcc0dc306e57f64445452278337d7a9bd525045",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fbf2aad_0e010154",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-12T08:44:43Z",
+      "side": 1,
+      "message": "Thanks, I probably miss to add that change to this commit.",
+      "parentUuid": "47e7b748_aa90d3a9",
+      "revId": "1bcc0dc306e57f64445452278337d7a9bd525045",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
