@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8afce189_326a39d3",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-12T16:14:40Z",
+      "side": 1,
+      "message": "`get_current_interrupt_vector` appears to be giving me total garbage:\n\n    \u003e rw 0xFFFFFFFF 0xdeadbeef\n    write 0xffffffff \u003d 0xdeadbeef\n\n    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d PANIC \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n    Interrupt vector number: 0xFFFFFFE8 (unknown)\n\n    Error Code \u003d 0xFF006363\n    EIP        \u003d 0x00000008\n    CS         \u003d 0x00010202\n    EFLAGS     \u003d 0x00000000\n    EAX        \u003d 0x00000060\n    EBX        \u003d 0xDEADBEEF\n    ECX        \u003d 0xFF01505F\n    EDX        \u003d 0x00103085\n    ESI        \u003d 0xFF015140\n    EDI        \u003d 0xFFFFFFFF\n\n    Resetting system...\n    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n    \u003e divzero\n\n    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d PANIC \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n    Interrupt vector number: 0xFFFFFFE8 (unknown)\n\n    Error Code \u003d 0xFF000008\n    EIP        \u003d 0x00010282\n    CS         \u003d 0x00000001\n    EFLAGS     \u003d 0x00000000\n    EAX        \u003d 0x00000001\n    EBX        \u003d 0xFF00D240\n    ECX        \u003d 0x00000000\n    EDX        \u003d 0x00000000\n    ESI        \u003d 0x00000000\n    EDI        \u003d 0xFF0126A8\n\n    Resetting system...\n    \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nI can\u0027t find any other way to derive the interrupt vector number, so I\nthink this macro might be the best way. Open to suggestions.",
+      "parentUuid": "2a1a4837_ccb60756",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efbe5174_6b991382",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb493dd_c44e6189",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-12T16:14:40Z",
+      "side": 1,
+      "message": "Will change both of these in next (incoming) patch set.",
+      "parentUuid": "efbe5174_6b991382",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 3
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
