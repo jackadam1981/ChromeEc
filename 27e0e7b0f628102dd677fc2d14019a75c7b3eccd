@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "774844d9_3b05018c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-12T17:23:46Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 284,
+        "startChar": 17,
+        "endLine": 284,
+        "endChar": 27
+      },
+      "revId": "27e0e7b0f628102dd677fc2d14019a75c7b3eccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c2e3f0_a6e14fe7",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-12T17:23:46Z",
+      "side": 1,
+      "message": "nit: Add comment to indicate what the #endif refers to like you did with __clang__? (not sure what the style is since the file doesn\u0027t seem consistent)",
+      "revId": "27e0e7b0f628102dd677fc2d14019a75c7b3eccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
