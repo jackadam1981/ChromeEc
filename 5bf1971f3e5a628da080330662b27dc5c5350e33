@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "2758faff_77e49d9b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "Thinking about this again, shouldn\u0027t we make room for the entire 256 bytes here for the stack and the reserved section for GDB? Otherwise the 8 bytes reserved for GDB are withing the RAM section",
+      "parentUuid": "a70d1c88_bba53986",
+      "range": {
+        "startLine": 13,
+        "startChar": 88,
+        "endLine": 13,
+        "endChar": 91
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09c92eef_03939df7",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 5

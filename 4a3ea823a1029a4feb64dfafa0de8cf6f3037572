@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44067c21_f13539d2",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "uint8_t * seems more appropriate than char * here.\n\n(here and other fields in the structure)",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe0dd18_1f8462fa",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "why do you need this uint32_t cast here? I think it should work without it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 34,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c51a0ebe_96ae39b3",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "please implement or add a TODO with a new issue that tracks this work\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/e7edd0ebedf85c13a1c97deb302c44655f4ca2d9/chip/mec1322/clock.c#260 as an example",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae957347_4fda6fd1",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "this should be guarded by if defined(d0i2) || defined(D0i3)",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 29
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a045b75e_455d47b0",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "do we need to flush the cache when we transition back from AON task as well?",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf30f6d_8cc824dd",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "should we set pm_state before halting cpu?",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 9
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e4866b_4545c1ab",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T21:06:23Z",
+      "side": 1,
+      "message": "should be D0, right? (not D0i0)",
+      "range": {
+        "startLine": 200,
+        "startChar": 30,
+        "endLine": 200,
+        "endChar": 47
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
