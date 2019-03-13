@@ -18,6 +18,9 @@
 #define HECI_CLIENT_CROS_EC_ISH_GUID { 0x7b7154d0, 0x56f4, 0x4bdc,\
 			 { 0xb0, 0xd8, 0x9e, 0x7c, 0xda, 0xe0, 0xd6, 0xa0 } }
 
+/* Command bit mask */
+#define IS_RESPONSE                             (1 << 7)
+
 /* Handle for all heci cros_ec interactions */
 static heci_handle_t heci_cros_ec_handle = HECI_INVALID_HANDLE;
 
@@ -67,7 +70,7 @@ static void heci_send_hostcmd_response(struct host_packet *pkt)
 	struct cros_ec_ishtp_msg *out =
 		(struct cros_ec_ishtp_msg *)response_buffer;
 
-	out->hdr.channel = CROS_EC_COMMAND;
+	out->hdr.channel = CROS_EC_COMMAND | IS_RESPONSE;
 	out->hdr.status = 0;
 	heci_send_msg(heci_cros_ec_handle, (uint8_t *)out,
 		      pkt->response_size + CROS_EC_ISHTP_MSG_HDR_SIZE);
