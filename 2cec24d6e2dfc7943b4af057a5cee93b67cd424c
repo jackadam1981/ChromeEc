@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "93414e34_ca02922b",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fc27f5e_6e2fec60",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4113ea78_696946af",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eddd34f_0f2eee30",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4113ea78_696946af",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "c2b3f142_1bba70c0",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea01aedc_3e194ea9",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4edd5c5b_25ad3d3d",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 2
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "c4abed1f_fae58af3",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done. Yes I assume that too. But for now we don\u0027t need to disable CLOCK_HIGH, so I will remove the whole function.",
+      "parentUuid": "4edd5c5b_25ad3d3d",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45c9b125_f747f036",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 2
@@ -101,6 +173,24 @@
       "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9f8749_a31630f4",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c9b125_f747f036",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "7e4343f3_d56062ef",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b1de43c_633298e0",
+      "range": {
+        "startLine": 184,
+        "startChar": 24,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71db4063_1c7e15d9",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 2
@@ -141,6 +255,24 @@
       "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c240ae99_b3215aad",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-03-13T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71db4063_1c7e15d9",
+      "revId": "2cec24d6e2dfc7943b4af057a5cee93b67cd424c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
