@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5489481_eb2be99f",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-13T20:59:02Z",
+      "side": 1,
+      "message": "These look identical, too.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "cd35690c119ac18968bebd0706188b582e5f9aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8143e12_adb0deb5",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-13T20:59:02Z",
+      "side": 1,
+      "message": "These are identical. Can you define one and use a pointer to it?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "cd35690c119ac18968bebd0706188b582e5f9aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
