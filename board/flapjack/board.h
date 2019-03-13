@@ -243,6 +243,16 @@ enum sensor_id {
 	VSYNC,
 };
 
+/* Batteries */
+enum battery_type {
+	BATTERY_UNKNOWN = 0,
+	BATTERY_C18_ATL,
+	BATTERY_C18_SUNWODA,
+	BATTERY_C19_ATL,
+	BATTERY_C19_SUNWODA,
+	BATTERY_COUNT,
+};
+
 #include "gpio_signal.h"
 #include "registers.h"
 
@@ -252,6 +262,7 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 #endif
 
 void board_reset_pd_mcu(void);
+enum battery_type board_get_battery_type(void);
 
 #endif /* !__ASSEMBLER__ */
 
