@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "359eb98e_f14659ad",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T17:40:32Z",
+      "side": 1,
+      "message": "I can remove it here, but we should definitely send a platform/ec wide CL for this clean up.",
+      "parentUuid": "5692358e_d8319523",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41125e73_1cb44d53",
         "filename": "board/arcada_ish/board.c",
         "patchSetId": 2
@@ -104,6 +122,24 @@
       "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e76e8b2f_d5abcee2",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T17:40:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41125e73_1cb44d53",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +193,24 @@
       "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6fa9aa_f16d1a6c",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T17:40:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecc930e1_cfdd8268",
+      "revId": "95a62affe52c7e58a046f72aa0daab6bd33a5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
