@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3d19159b_d0ede0cd",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-13T15:37:52Z",
+      "side": 1,
+      "message": "(Below is what you already know, documenting this on this CL in case someone comes looking for it in the future)\n\nget_current_interrupt_vector had some issues, and I patched some bugs with it in later patch set. It now returns an integer in 0-255, or 256 upon error. The error condition can occur when ISR\u003d0, see b:128444630. This means we won\u0027t be able to make use of get_current_interrupt_vector for now, and this macro-based solution may be the best option at the moment. Hopefully we figure out b:128444630 and get a little more elegant solution.",
+      "parentUuid": "4e9034c7_423231c6",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "fc5b563cc3274527dbbc06675eb39e7644ea2afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b5272fc_704479ee",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 1
