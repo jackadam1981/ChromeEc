@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2848ddae_0cee922e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4894,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-13T23:37:45Z",
+      "side": 1,
+      "message": "Kernel (USBC excon driver) is handling the entry and exit to/from the DP mode.",
+      "parentUuid": "0c4e4621_79d65c29",
+      "range": {
+        "startLine": 4894,
+        "startChar": 0,
+        "endLine": 4894,
+        "endChar": 22
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
