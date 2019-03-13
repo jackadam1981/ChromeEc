@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0c4e4621_79d65c29",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4894,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-13T23:30:35Z",
+      "side": 1,
+      "message": "Who is handling entry and exit to/from the mode?",
+      "parentUuid": "42d44929_c58516b8",
+      "range": {
+        "startLine": 4894,
+        "startChar": 0,
+        "endLine": 4894,
+        "endChar": 22
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
