@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b306506d_d73b1c14",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "The \u0027rv\u0027 value from line 345 gets lost in this case.",
+      "range": {
+        "startLine": 354,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd16cbcd_f5d389f6",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "Why is this function being designated as inline?",
+      "range": {
+        "startLine": 492,
+        "startChar": 7,
+        "endLine": 492,
+        "endChar": 13
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48134231_8e194acf",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "This function and configure_aux_src are both operating on the same register value, the only difference being which bit is being set/cleared. I think these should be combined into one function.\n\nstatic void anx7447_mux_configure(int port, int mask, int val)\n\nWhere mask indicates which bit of ANX7447_REG_ANALOG_CTRL_9 is being modified and val indicates 0/1. I don\u0027t know if mux_configure is the best name, but something like that makes sense to me.",
+      "range": {
+        "startLine": 492,
+        "startChar": 19,
+        "endLine": 492,
+        "endChar": 40
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7995b159_f7d276c5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "This line exceeds 80 characters and feels like it\u0027s useful for debugging but probably not that useful to add to the EC log on a full time basis.",
+      "range": {
+        "startLine": 504,
+        "startChar": 8,
+        "endLine": 504,
+        "endChar": 84
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edb218f_72cd642d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "block comments should be in the form of:\n\n/*\n * Once need to configure the mux, should set ...\n * ... to normal mode.\n */",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 575,
+        "endChar": 16
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de51e57_b0a1e09a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "The mux is being put into safe mode here, prior to setting the tcpc switch values in lines 579-581. Do those steps require safe mode? If so was that step missing before?",
+      "range": {
+        "startLine": 578,
+        "startChar": 1,
+        "endLine": 578,
+        "endChar": 31
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547ba950_ca3c2f3b",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-13T17:19:55Z",
+      "side": 1,
+      "message": "Fix the comment style similar to my previous comment. Which step is removing the internal pullups? It looks like it\u0027s the call to anx7447_configure_aux_src\n\nIf I were just looking at this code without other context, I would be very confused as to why safe mode is required to be entered then exited in DP/Dock mode, but not required to change when it\u0027s not the other mode. Also, the other mode here refers to what\u0027s used for debug accessory, right?",
+      "range": {
+        "startLine": 584,
+        "startChar": 4,
+        "endLine": 585,
+        "endChar": 41
+      },
+      "revId": "c3fc5e43e76bd5bc0857a422cb856aa760239d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
