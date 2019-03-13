@@ -6,12 +6,15 @@
 /* Clocks, PLL and power settings */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+static unsigned int scp_measure_ulposc_freq(int osc);
 
 void clock_init(void)
 {
@@ -63,14 +66,14 @@ void clock_init(void)
 	task_enable_irq(SCP_IRQ_CLOCK2);
 }
 
-/* TODO(b/120176040): add ULPOSC calibration */
-static const struct {
+static struct {
 	uint8_t div;
 	uint8_t cali;
+	uint16_t mhz;
 } ulposc_config[] = {
 	/* Default config */
-	{ .div = 12, .cali = 32},
-	{ .div = 16, .cali = 32},
+	{ .div = 12, .cali = 32, .mhz = 250 },
+	{ .div = 16, .cali = 32, .mhz = 330 },
 };
 
 static void scp_ulposc_config(int osc)
@@ -96,7 +99,32 @@ static void scp_ulposc_config(int osc)
 	AP_ULPOSC_CON13(osc) |= OSC_DIV2_EN;
 }
 
-void scp_clock_high_enable(int osc)
+static unsigned int scp_calibrate_ulposc(int osc, unsigned int target_mhz)
+{
+	uint8_t cali_min = 0;
+	uint8_t cali_max = 63;
+	unsigned int mhz;
+
+	if (osc != 0 && osc != 1)
+		return 0;
+
+	do {
+		ulposc_config[osc].cali = (cali_min + cali_max) / 2;
+		scp_ulposc_config(osc);
+		mhz = scp_measure_ulposc_freq(osc) * 26 / 1024;
+
+		if (mhz < target_mhz)
+			cali_min = ulposc_config[osc].cali;
+		else if (mhz > target_mhz)
+			cali_max = ulposc_config[osc].cali;
+		else
+			break;
+	} while ((cali_max - cali_min) > 1);
+
+	return mhz;
+}
+
+static void scp_clock_high_enable(int osc)
 {
 	/* Enable high speed clock */
 	SCP_CLK_EN |= EN_CLK_HIGH;
@@ -146,15 +174,17 @@ void scp_enable_clock(void)
 	SCP_CLK_ON_CTRL |= HIGH_CORE_DIS_SUB;
 	scp_ulposc_config(0);
 	scp_clock_high_enable(0); /* Turn on ULPOSC1 */
+	scp_calibrate_ulposc(0, ulposc_config[0].mhz);
 	scp_ulposc_config(1);
 	scp_clock_high_enable(1); /* Turn on ULPOSC2 */
+	scp_calibrate_ulposc(1, ulposc_config[1].mhz);
 
 	/* Enable default clock gate */
 	SCP_CLK_GATE |= CG_DMA_CH3 | CG_DMA_CH2 | CG_DMA_CH1 | CG_DMA_CH0 |
 			CG_I2C_M | CG_MAD_M;
 }
 
-unsigned int clock_measure_ulposc_freq(int osc)
+static unsigned int scp_measure_ulposc_freq(int osc)
 {
 	timestamp_t deadline;
 	unsigned int result = 0;
@@ -217,10 +247,12 @@ DECLARE_IRQ(SCP_IRQ_CLOCK2, clock_fast_wakeup_irq, 3);
 int command_ulposc(int argc, char *argv[])
 {
 	/* SCP clock meter counts every (26MHz / 1024) tick */
-	ccprintf("ULPOSC1 frequency: %u MHz\n",
-		 clock_measure_ulposc_freq(0) * 26 / 1024);
-	ccprintf("ULPOSC2 frequency: %u MHz\n",
-		 clock_measure_ulposc_freq(1) * 26 / 1024);
+	ccprintf("ULPOSC1 frequency: %u MHz cali:%u\n",
+		 scp_measure_ulposc_freq(0) * 26 / 1024,
+		 ulposc_config[0].cali);
+	ccprintf("ULPOSC2 frequency: %u MHz cali:%u\n",
+		 scp_measure_ulposc_freq(1) * 26 / 1024,
+		 ulposc_config[1].cali);
 
 	return EC_SUCCESS;
 }
