@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d12a0c40_b9d30b72",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4894,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-13T21:33:05Z",
+      "side": 1,
+      "message": "Why weak?",
+      "range": {
+        "startLine": 4894,
+        "startChar": 0,
+        "endLine": 4894,
+        "endChar": 22
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1578ca3_f2e635f0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4774,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-13T21:33:05Z",
+      "side": 1,
+      "message": "Is there anybody speaking the previous v2 out there? This field may or may not exist but the caller can\u0027t tell.",
+      "range": {
+        "startLine": 4774,
+        "startChar": 9,
+        "endLine": 4774,
+        "endChar": 16
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
