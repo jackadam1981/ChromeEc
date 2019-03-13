@@ -997,30 +997,6 @@ DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
 			"Scan I2C ports for devices");
 #endif
 
-void i2c_read_len(int port, int slave_addr, int offset, int count)
-{
-	uint8_t data[256];
-	int rv = 0;
-
-	rv = i2c_xfer(port, slave_addr, 0, 0, data, count);
-
-	if (!rv)
-		ccprintf("read data address=0x%x", data);
-}
-
-int i2c_write_len(int port, int slave_addr, int offset, int count)
-{
-	uint8_t buf[256];
-	int i;
-
-	buf[0] = offset;
-
-	for (i = 1; i < count; i++)
-		buf[i] = i;
-
-	return i2c_xfer(port, slave_addr, buf, count, 0, 0);
-}
-
 #ifdef CONFIG_CMD_I2C_XFER
 static int command_i2cxfer(int argc, char **argv)
 {
@@ -1100,19 +1076,6 @@ static int command_i2cxfer(int argc, char **argv)
 			rv = i2c_write_offset16(port, slave_addr, offset, v, 2);
 		else
 			rv = i2c_write16(port, slave_addr, offset, v);
-
-	} else if (strcasecmp(argv[1], "r256") == 0) {
-		/* Arbitrary length read; param5 = len */
-		if (argc < 6 || v < 0)
-			return EC_ERROR_PARAM5;
-
-		i2c_read_len(port, slave_addr, offset, v);
-
-	} else if (strcasecmp(argv[1], "w256") == 0) {
-		if (argc < 6)
-			return EC_ERROR_PARAM5;
-
-		rv = i2c_write_len(port, slave_addr, 0, v);
 
 	} else {
 		return EC_ERROR_PARAM1;

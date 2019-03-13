@@ -144,7 +144,7 @@
  */
 #define CONFIG_H2RAM_BASE               0x0008D000
 #define CONFIG_H2RAM_SIZE               0x00001000
-#define CONFIG_H2RAM_HOST_LPC_IO_BASE   0x800
+#define CONFIG_H2RAM_HOST_LPC_IO_BASE   0x700
 
 /****************************************************************************/
 /* Customize the build */

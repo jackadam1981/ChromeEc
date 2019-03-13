@@ -202,7 +202,9 @@ const struct i2c_port_t i2c_ports[] = {
 	{"battery", IT83XX_I2C_CH_C, 100, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
 	{"evb-1",   IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
 	{"evb-2",   IT83XX_I2C_CH_B, 100, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
+#if 0
 	{"opt-4",   IT83XX_I2C_CH_E, 100, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
+#endif
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -217,7 +219,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* I2C slave ports */
 const struct i2c_slv_port_t i2c_slv_ports[] = {
 	[IT83XX_I2C_CH_A] = {"evb-a", I2C_SLAVE_ADDRA, I2C_SLAVE_ADDRA2},
-#if 0
+#if 1
 	[IT83XX_I2C_CH_D] = {"evb-d", I2C_SLAVE_ADDRD, 0x00},
 	[IT83XX_I2C_CH_E] = {"evb-e", I2C_SLAVE_ADDRE, 0x00},
 	[IT83XX_I2C_CH_F] = {"evb-f", I2C_SLAVE_ADDRF, 0x00},

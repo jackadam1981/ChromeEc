@@ -21,9 +21,7 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
-#ifdef CONFIG_HOSTCMD_X86
     H2RAM (rw) : ORIGIN = CONFIG_H2RAM_BASE, LENGTH = CONFIG_H2RAM_SIZE
-#endif
 }
 SECTIONS
 {
@@ -237,14 +235,18 @@ SECTIONS
 
     __image_size = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
 
-#ifdef CONFIG_HOSTCMD_X86
     .h2ram (NOLOAD) : {
         . += CONFIG_H2RAM_HOST_LPC_IO_BASE;
         *(.h2ram.pool.hostcmd)
         . = ALIGN(256);
         *(.h2ram.pool.acpiec)
-    } > H2RAM
+#ifdef CONFIG_I2C_SLAVE
+        . = ALIGN(256);
+        *(.h2ram.pool.i2cslvtx)
+        . = ALIGN(256);
+        *(.h2ram.pool.i2cslvrx)
 #endif
+    } > H2RAM
 
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
     /DISCARD/ : {
