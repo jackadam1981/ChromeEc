@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3b5419e8_ae72d627",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-13T22:44:13Z",
+      "side": 1,
+      "message": "As of patchset 57, --iteflash_use_ftdi_with_servo_v2\u003dfalse is no longer experimental, it works including waveform generation.\n\nThe default is still \u003dtrue.",
+      "parentUuid": "2bb631a3_f88e8436",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44d3b4ec_b38bc00e",
         "filename": "util/flash_ec",
         "patchSetId": 51
