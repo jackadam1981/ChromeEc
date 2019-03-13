@@ -698,6 +698,13 @@ enum pd_states {
 	PD_STATE_COUNT,
 };
 
+/* Generate compile-time errors for unsupported states */
+#ifndef CONFIG_USBC_VCONN_SWAP
+#define PD_STATE_VCONN_SWAP_SEND UNSUPPORTED_PD_STATE_VCONN_SWAP_SEND
+#define PD_STATE_VCONN_SWAP_INIT UNSUPPORTED_PD_STATE_VCONN_SWAP_INIT
+#define PD_STATE_VCONN_SWAP_READY UNSUPPORTED_PD_STATE_VCONN_SWAP_READY
+#endif
+
 #define PD_FLAGS_PING_ENABLED      (1 << 0) /* SRC_READY pings enabled */
 #define PD_FLAGS_PARTNER_DR_POWER  (1 << 1) /* port partner is dualrole power */
 #define PD_FLAGS_PARTNER_DR_DATA   (1 << 2) /* port partner is dualrole data */
