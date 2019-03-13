@@ -113,7 +113,7 @@ const struct adc_t adc_channels[] = {
 	[ADC_BOARD_ID] = {"BOARD_ID", 3300, 4096, 0, STM32_AIN(10)},
 	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
 	[ADC_BATT_ID] = {"BATT_ID", 3300, 4096, 0, STM32_AIN(7)},
-	[ADC_USBC_THERM] = {"USBC_THERM", 3300, 4096, 0, STM32_AIN(14)},
+	[ADC_USBC_THERM] = {"USBC_THERM", 1, 1, 0, STM32_AIN(14)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -244,8 +244,30 @@ int pd_snk_is_vbus_provided(int port)
 	return rt946x_is_vbus_ready();
 }
 
+static int read_adc(enum adc_channel ch)
+{
+	int mv = adc_read_channel(ch);
+	if (mv == ADC_READ_ERROR)
+		mv = adc_read_channel(ch);
+	return mv;
+}
+
+/* Threshold to detect USB-C board. If the USB-C board isn't connected,
+ * USBC_THERM is floating thus the ADC pin should read the pull-up voltage. */
+const int usbc_therm_threshold = 1700;
+
 static void board_init(void)
 {
+#ifdef SECTION_IS_RO
+	/* If USB-C board isn't connected, the device is being assembled.
+	 * We cut off the battery until the assembly is done for safety. */
+	int mv = read_adc(ADC_USBC_THERM);
+	if (mv > usbc_therm_threshold) {
+		CPRINTS("USBC_THERM=%d", mv);
+		cflush();
+		board_cut_off_battery();
+	}
+#endif
 	/* Set SPI1 PB13/14/15 pins to high speed */
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000000;
 
@@ -270,7 +292,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
 	board_setup_panel();
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_ADC + 1);
 
 void board_config_pre_init(void)
 {
@@ -343,11 +365,7 @@ int board_get_version(void)
 	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
 	/* Wait to allow cap charge */
 	msleep(10);
-	mv = adc_read_channel(ADC_BOARD_ID);
-
-	if (mv == ADC_READ_ERROR)
-		mv = adc_read_channel(ADC_BOARD_ID);
-
+	mv = read_adc(ADC_BOARD_ID);
 	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
 
 	for (i = 0; i < BOARD_VERSION_COUNT; ++i) {
