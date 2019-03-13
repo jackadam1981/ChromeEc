@@ -59,13 +59,16 @@ int board_vbus_source_enabled(int port)
 	return vbus_en;
 }
 
+int board_is_sourcing_vbus(int port)
+{
+	return board_vbus_source_enabled(port);
+}
+
 int pd_set_power_supply_ready(int port)
 {
-
 	pd_set_vbus_discharge(port, 0);
 	/* Provide VBUS */
 	vbus_en = 1;
-	charger_enable_otg_power(1);
 
 	if (board_get_version() >= 2) {
 		/* TODO(b:123268580): Implement POGO discharge logic. */
@@ -86,7 +89,6 @@ void pd_power_supply_reset(int port)
 	prev_en = vbus_en;
 	/* Disable VBUS */
 	vbus_en = 0;
-	charger_enable_otg_power(0);
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);

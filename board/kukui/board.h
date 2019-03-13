@@ -74,7 +74,6 @@
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
-#define CONFIG_CHARGER_OTG
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
 
@@ -120,6 +119,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
+#define CONFIG_USB_PD_5V_EN_CUSTOM
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
@@ -231,6 +231,7 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+int board_is_sourcing_vbus(int port);
 
 #endif /* !__ASSEMBLER__ */
 
