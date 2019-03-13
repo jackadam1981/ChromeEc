@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95dd58ac_fd84ed01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-13T20:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81864366_8d315989",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43d51390_3859cd2f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "037bc9c2_db80544c",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-13T20:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2b9dacd_c45c0ac4",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f29fe37_d5f0d3d9",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 4
@@ -91,6 +139,30 @@
       "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4462f7_429622a5",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-13T20:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f29fe37_d5f0d3d9",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "61ac08345bef46e011b0de31c32ebb4d49bd1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
