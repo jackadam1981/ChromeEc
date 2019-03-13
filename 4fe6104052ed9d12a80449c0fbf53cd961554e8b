@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d5a8090b_e8dcaa29",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-13T23:52:03Z",
+      "side": 1,
+      "message": "I assume that the final patch would drop either of cases, and not have these flags. Right?",
+      "parentUuid": "3b5419e8_ae72d627",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44d3b4ec_b38bc00e",
         "filename": "util/flash_ec",
         "patchSetId": 51
