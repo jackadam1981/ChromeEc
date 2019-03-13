@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32b8aebe_615f2c3f",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b83b92_7f4cd2c9",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67b6c645_2671ff5d",
         "filename": "board/arcada_ish/board.h",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafc9728_cc1a6f42",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67b6c645_2671ff5d",
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "bcb3e84a_0a57669d",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done! thanks for point out this typo error, :)",
+      "parentUuid": "4d498d0a_efa5af0f",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd4f37f2_8f81db17",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 5
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "234277e1_3f38ccc2",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done! thanks for point out this typo error, :)",
+      "parentUuid": "dd4f37f2_8f81db17",
+      "range": {
+        "startLine": 14,
+        "startChar": 51,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "062c887b_d91d85aa",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 5
@@ -99,6 +189,30 @@
       "writtenOn": "2019-03-12T17:45:32Z",
       "side": 1,
       "message": "thank you for this helpful header",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e030c54a_ed9074aa",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062c887b_d91d85aa",
       "range": {
         "startLine": 18,
         "startChar": 1,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "d3a32aa4_b28e0023",
+        "filename": "chip/ish/aontaskfw/ish_aon_share.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c564b1e_bd2751eb",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "983e6327_d39f95c6",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 5
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "639d733f_4b40ae3a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983e6327_d39f95c6",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c19440b_5cf5b5af",
         "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
         "patchSetId": 5
@@ -168,6 +330,24 @@
       "writtenOn": "2019-03-12T17:45:32Z",
       "side": 1,
       "message": "should we add a ROM section to this memory map (since we define that section in config_chip.h)",
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac00247e_1186bce2",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "this \u0027ROM\u0027 section is just reserved for some special usage, such as some SW registers, these SW registers will be used between ISH BUP, shim loader and aontask, so not defined in aontask\u0027s link script.\n\nwill comments these SW registers when aontask access them later.",
+      "parentUuid": "9c19440b_5cf5b5af",
       "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "a70d1c88_bba53986",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8d25e2_da740732",
+      "range": {
+        "startLine": 13,
+        "startChar": 88,
+        "endLine": 13,
+        "endChar": 91
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09c92eef_03939df7",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 5
@@ -217,6 +421,30 @@
       "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42b85a6_19405df3",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09c92eef_03939df7",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "58b7c21d_3a819cdb",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd7de50_ac615a05",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c030b43_9ceebf08",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5
@@ -263,6 +515,30 @@
       "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289b39c5_f761cb9b",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c030b43_9ceebf08",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 32
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "f628499f_5514abb0",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa102e4_31703354",
+      "range": {
+        "startLine": 115,
+        "startChar": 54,
+        "endLine": 115,
+        "endChar": 58
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d6750d9_9a70255f",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5
@@ -300,6 +600,30 @@
       "writtenOn": "2019-03-12T17:45:32Z",
       "side": 1,
       "message": "we need to account for the sleep mask. See https://chromium.googlesource.com/chromiumos/platform/ec/+/7b02d9fe128a271d0b9472656a120f15e5cfa870/chip/npcx/clock.c#301 as an example",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 12
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95399385_06cfdbf1",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "already did in the \u0027d0ix_decide()\u0027 function. :) \nif not allowed for deep sleep state, will enter D0i0 state which just halt the cpu, peripherals can still work, and cpu will wakeup immediately if a interrupt occurs.",
+      "parentUuid": "4d6750d9_9a70255f",
       "range": {
         "startLine": 336,
         "startChar": 1,
@@ -332,6 +656,30 @@
       "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554bfccc_a46cbf19",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-13T09:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed43946_ef3b4dfc",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 17
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
