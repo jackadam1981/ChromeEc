@@ -6,6 +6,7 @@
 /* I2C module for Chrome EC */
 
 #include <stddef.h>
+#include <string.h>
 #include "gpio.h"
 #include "hooks.h"
 #include "console.h"
@@ -13,6 +14,7 @@
 #include "task.h"
 #include "compile_time_macros.h"
 #include "i2cs.h"
+#include "clock.h"
 
 #define I2C_READ_MAXFIFO_DATA 16
 /* The size must be a power of 2 */
@@ -21,9 +23,14 @@
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 
+static uint8_t eh_in_data[I2C_MAX_BUFFER_SIZE]
+			__attribute__((section(".h2ram.pool.i2cslvtx")));
+static uint8_t eh_out_data[I2C_MAX_BUFFER_SIZE]
+			__attribute__((section(".h2ram.pool.i2cslvrx")));
+
 uint32_t w_index;
 uint32_t r_index;
-uint8_t pbuffer[I2C_MAX_BUFFER_SIZE];
+static uint8_t pbuffer[I2C_MAX_BUFFER_SIZE];
 
 void buffer_index_reset(void)
 {
@@ -36,16 +43,17 @@ void buffer_index_reset(void)
 /* Data structure to define I2C slave control configuration. */
 struct i2c_slv_ctrl_t {
 	int irq;              /* slave irq */
-
+	int reg_shift;
+	enum clock_gate_offsets clock_gate;
 };
 
 /* I2C slave control */
 const struct i2c_slv_ctrl_t i2c_slv_ctrl[] = {
-	[IT83XX_I2C_CH_A] = {IT83XX_IRQ_SMB_A},
-#if 0
-	[IT83XX_I2C_CH_D] = {IT83XX_IRQ_SMB_D},
-	[IT83XX_I2C_CH_E] = {IT83XX_IRQ_SMB_E},
-	[IT83XX_I2C_CH_F] = {IT83XX_IRQ_SMB_F},
+	[IT83XX_I2C_CH_A] = {IT83XX_IRQ_SMB_A, -1, CGC_OFFSET_SMBA},
+#if 1
+	[IT83XX_I2C_CH_D] = {IT83XX_IRQ_SMB_D, 3, CGC_OFFSET_SMBD},
+	[IT83XX_I2C_CH_E] = {IT83XX_IRQ_SMB_E, 0, CGC_OFFSET_SMBE},
+	[IT83XX_I2C_CH_F] = {IT83XX_IRQ_SMB_F, 1, CGC_OFFSET_SMBF},
 #endif
 };
 
@@ -53,7 +61,7 @@ const unsigned int i2c_slvs_used = ARRAY_SIZE(i2c_slv_ctrl);
 
 void i2c_slave_read_write_data(int port)
 {
-	int i, count, slv_status;
+	int i, count, slv_status, sft_port;
 
 	slv_status = IT83XX_SMB_SLSTA;
 
@@ -116,6 +124,35 @@ void i2c_slave_read_write_data(int port)
 
 		/* Write clear the slave status */
 		IT83XX_SMB_SLSTA = slv_status;
+
+	} else {
+
+		sft_port = i2c_slv_ctrl[port].reg_shift;
+
+		if (IT83XX_I2C_STR(sft_port) & IT83XX_I2C_INTPEND) {
+			/* Bus busy */
+			if (IT83XX_I2C_STR(sft_port) & IT83XX_I2C_BB) {
+				/* Master to read data */
+				if (IT83XX_I2C_STR(sft_port) & IT83XX_I2C_RW)
+					IT83XX_I2C_IRQ_ST(port)
+						= IT83XX_I2C_IDR_CLR;
+				/* Master to write data */
+				else
+					IT83XX_I2C_IRQ_ST(port)
+						= IT83XX_I2C_IDW_CLR;
+
+			} else {
+				/* Slave finish */
+				IT83XX_I2C_IRQ_ST(port) = IT83XX_I2C_P_CLR
+				| IT83XX_I2C_SLVDATAFLG;
+			}
+		}
+
+		if (IT83XX_I2C_STR(sft_port) & IT83XX_I2C_TIME_OUT)
+			CPRINTS("TIME OUT");
+
+		/* Hardware reset */
+		IT83XX_I2C_CTR(sft_port) |= IT83XX_I2C_HALT;
 	}
 }
 
@@ -130,6 +167,10 @@ void i2c_slv_interrupt(int port)
 
 void i2c_slave_enable(int port, uint8_t slv_addr1, uint8_t slv_addr2)
 {
+	int sft_port;
+
+	clock_enable_peripheral(i2c_slv_ctrl[port].clock_gate, 0, 0);
+
 	if (port < I2C_STANDARD_PORT_COUNT) {
 
 		/* This field defines the SMCLK0/1/2 clock/data low timeout. */
@@ -161,6 +202,50 @@ void i2c_slave_enable(int port, uint8_t slv_addr1, uint8_t slv_addr2)
 
 		/* bit5 : Enable the SMBus slave device */
 		IT83XX_SMB_HOCTL2(port) |= IT83XX_SMB_SLVEN;
+	} else {
+		/* Shift register */
+		sft_port = i2c_slv_ctrl[port].reg_shift;
+
+		/* Enable SMBus D channel */
+		IT83XX_GPIO_GRC2 |= 0x20;
+		/* Enable SMBus E channel */
+		IT83XX_GCTRL_PMER1 |= 0x01;
+		/* Enable SMBus F channel */
+		IT83XX_GCTRL_PMER1 |= 0x02;
+
+		/* Time out status */
+		IT83XX_I2C_TOS(sft_port) = 0x80;
+
+		/* slave address(8-bit)*/
+		IT83XX_I2C_IDR(sft_port) = slv_addr1 << 1;
+
+		/* I2C module enable and command queue mode */
+		IT83XX_I2C_CTR1(sft_port) = IT83XX_I2C_COMQ_EN
+		| IT83XX_I2C_MDL_EN;
+
+		/* State reset and hardware reset */
+		IT83XX_I2C_CTR(sft_port) = IT83XX_I2C_STARST | IT83XX_I2C_HALT;
+
+		/* I2C interrupt enable and set acknowledge */
+		IT83XX_I2C_CTR(sft_port) = IT83XX_I2C_INTEN | IT83XX_I2C_ACK;
+
+		/* Clear read and write data buffer of DMA */
+		memset(eh_in_data, 0, I2C_MAX_BUFFER_SIZE);
+		memset(eh_out_data, 0, I2C_MAX_BUFFER_SIZE);
+
+		IT83XX_I2C_RAMHA(sft_port) = ((uint32_t)eh_in_data>>8);
+		IT83XX_I2C_RAMLA(sft_port) = (uint32_t)eh_in_data;
+		IT83XX_I2C_RAMHA2(sft_port) = ((uint32_t)eh_out_data>>8);
+		IT83XX_I2C_RAMLA2(sft_port) = (uint32_t)eh_out_data;
+
+		/*
+		 * bit3 : Slave ID write flag
+		 * bit2 : Slave ID read flag
+		 * bit1 : Slave received data flag
+		 * bit0 : Slave finish
+		 */
+		IT83XX_I2C_IRQ_ST(sft_port) = 0x0F;
+
 	}
 }
 
