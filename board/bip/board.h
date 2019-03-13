@@ -32,6 +32,9 @@
 #undef CONFIG_MKBP_USE_GPIO
 #define CONFIG_MKBP_USE_HOST_EVENT
 
+/* Space is super tight, so start jettisoning the non-critical stuff! */
+#undef CONFIG_CMD_KEYBOARD
+
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
