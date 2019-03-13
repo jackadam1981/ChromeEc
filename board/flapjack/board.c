@@ -285,7 +285,56 @@ void board_config_pre_init(void)
 					  (3 << 20) | (3 << 24);
 }
 
+struct {
+	enum battery_type type;
+	int expect_mv;
+} const flapjack_batteries[] = {
+	{ BATTERY_C18_ATL,       900 },  /* 100K  */
+	{ BATTERY_C18_SUNWODA,  1484 },  /* 470K  */
+	{ BATTERY_C19_ATL,       576 },  /* 47K   */
+	{ BATTERY_C19_SUNWODA,  1200 },  /* 200K  */
+};
+
 #define THRESHOLD_MV 56 /* Simply assume 1800/16/2 */
+
+static int board_read_adc(int channel)
+{
+	int mv;
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
+	/* Wait to allow cap charge */
+	msleep(10);
+
+	mv = adc_read_channel(channel);
+	if (mv == ADC_READ_ERROR)
+		mv = adc_read_channel(channel);
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+	return mv;
+}
+
+enum battery_type board_get_battery_type(void)
+{
+	static enum battery_type type = BATTERY_UNKNOWN;
+	int mv;
+	int i;
+
+	if (type != BATTERY_UNKNOWN)
+		return type;
+
+	mv = board_read_adc(ADC_BATT_ID);
+
+	for (i = 0; i < ARRAY_SIZE(flapjack_batteries); i++) {
+		if (ABS(mv - flapjack_batteries[i].expect_mv) < THRESHOLD_MV) {
+			type = flapjack_batteries[i].type;
+			break;
+		}
+	}
+
+	CPRINTS("Battery Type: %d", type);
+
+	return type;
+}
 
 /* Motion sensors */
 /* Mutexes */
