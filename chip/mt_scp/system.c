@@ -156,6 +156,10 @@ void scp_set_clock_high(int osc, int on)
 /* TODO(b/120176040): move to clock.c */
 static void scp_enable_clock(void)
 {
+	/* Reset SCP clock selection and divisor to default */
+	SCP_CLK_SEL = 0;
+	SCP_CLK_DIV_SEL = 0;
+
 	/* VREQ */
 	SCP_CPU_VREQ = 0x10001;
 	SCP_SECURE_CTRL &= ~ENABLE_SPM_MASK_VREQ;
