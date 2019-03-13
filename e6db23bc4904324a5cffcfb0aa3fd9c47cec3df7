@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdc365e6_6720ed3c",
+        "filename": "util/flash_ec",
+        "patchSetId": 55
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-13T21:56:16Z",
+      "side": 1,
+      "message": "I\u0027ve cleaned up the i2c_mux_en handling as discussed in person.  Patchset 56 improves on both this and base/ToT.",
+      "parentUuid": "c62f9a94_2dcf3bf7",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 5
+      },
+      "revId": "e6db23bc4904324a5cffcfb0aa3fd9c47cec3df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f881366_239e01c4",
         "filename": "util/flash_ec",
         "patchSetId": 55
@@ -45,6 +69,30 @@
       "revId": "e6db23bc4904324a5cffcfb0aa3fd9c47cec3df7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea75463_896bff2a",
+        "filename": "util/flash_ec",
+        "patchSetId": 55
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-13T21:56:16Z",
+      "side": 1,
+      "message": "i2c_mux_en is on Servo v2.  It is independent of dut_i2c_mux or anything else on the DUT.  When using Servo v2, it is necessary to point the Servo v2\u0027s I2C mux at the DUT to communicate with the DUT\u0027s I2C mux, if present (n/a for Dragonegg).",
+      "parentUuid": "5f881366_239e01c4",
+      "range": {
+        "startLine": 510,
+        "startChar": 3,
+        "endLine": 513,
+        "endChar": 5
+      },
+      "revId": "e6db23bc4904324a5cffcfb0aa3fd9c47cec3df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
