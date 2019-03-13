@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268e5a84_3333041f",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-13T18:22:15Z",
+      "side": 1,
+      "message": "is this really needed?\n\nthe CROS_EC_COMMAND channel is not 2-way. Only the AP makes requests, and only the ISH makes responses. We don\u0027t need this bit, right?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "8d0640e12d2fe50f3eb682a1ae36126f92c02318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
