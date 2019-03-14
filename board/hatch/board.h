@@ -30,6 +30,8 @@
 #define CONFIG_PWM_KBLIGHT
 
 /* Sensors */
+/* Common Sensor Defines */
+#define CONFIG_TABLET_MODE
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160
