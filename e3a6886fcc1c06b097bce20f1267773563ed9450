@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709c6772_c1d1fd54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 61
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T17:05:33Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it have CL:1282275 as well?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "e3a6886fcc1c06b097bce20f1267773563ed9450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0850a7fc_5b898036",
+        "filename": "util/iteflash.c",
+        "patchSetId": 61
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T17:05:33Z",
+      "side": 1,
+      "message": "you might want to add this as well perhaps?\n\tnull_and_free((void **)\u0026conf-\u003ei2c_dev_path);",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 43
+      },
+      "revId": "e3a6886fcc1c06b097bce20f1267773563ed9450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2401b0c7_328004b9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 61
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T17:05:33Z",
+      "side": 1,
+      "message": "s/D/D:/",
+      "range": {
+        "startLine": 1905,
+        "startChar": 43,
+        "endLine": 1905,
+        "endChar": 44
+      },
+      "revId": "e3a6886fcc1c06b097bce20f1267773563ed9450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
