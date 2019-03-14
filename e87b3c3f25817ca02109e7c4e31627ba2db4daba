@@ -22,6 +22,30 @@
       "revId": "e87b3c3f25817ca02109e7c4e31627ba2db4daba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f0fde8_919044b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-14T16:33:38Z",
+      "side": 1,
+      "message": "using emerge, bip actually has 8K+ free space in flash after this change",
+      "parentUuid": "1e4f2e39_afc694a4",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "e87b3c3f25817ca02109e7c4e31627ba2db4daba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
