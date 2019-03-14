@@ -31,6 +31,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 static struct mutex g_lid_mutex;
 /* sensor private data */
 static struct lsm6dsm_data lsm6dsm_a_data;
+static struct lis2mdl_private_data lis2mdl_data;
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
@@ -75,6 +76,23 @@ struct motion_sensor_t motion_sensors[] = {
 		.rot_standard_ref = NULL, /* TODO rotate correctly */
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,
 		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+	},
+
+	[LID_MAG] = {
+		.name = "Lid Mag",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_MAG,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lis2mdl_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &lis2mdl_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = LIS2MDL_ADDR0,
+		.default_range = 1 << 11, /* 16LSB / uT, fixed */
+		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		.min_frequency = LIS2MDL_ODR_MIN_VAL,
+		.max_frequency = LIS2MDL_ODR_MAX_VAL,
 	},
 	/* TODO(b/122281217): Add remain sensors */
 };

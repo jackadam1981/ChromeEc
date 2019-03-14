@@ -16,6 +16,10 @@
 #include "driver/stm_mems_common.h"
 #include "task.h"
 
+#define CPUTS(outstr) cputs(CC_I2C, outstr)
+#define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
+
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 #ifndef CONFIG_SENSORHUB_LSM6DSM
 #error "Need Sensor Hub LSM6DSM support"
@@ -88,10 +92,7 @@ static int get_range(const struct motion_sensor_t *s)
 static int set_offset(const struct motion_sensor_t *s,
 		      const int16_t *offset, int16_t temp)
 {
-
-#ifdef CONFIG_LSM6DSM_SEC_I2C
 	struct mag_cal_t *cal = LIS2MDL_CAL(s);
-#endif
 
 	cal->bias[X] = offset[X];
 	cal->bias[Y] = offset[Y];
@@ -109,9 +110,7 @@ static int set_offset(const struct motion_sensor_t *s,
 static int get_offset(const struct motion_sensor_t *s,
 		      int16_t *offset, int16_t *temp)
 {
-#ifdef CONFIG_LSM6DSM_SEC_I2C
 	struct mag_cal_t *cal = LIS2MDL_CAL(s);
-#endif
 	intv3_t offset_int;
 
 	rotate(cal->bias, *s->rot_standard_ref, offset_int);
@@ -180,13 +179,72 @@ err_unlock:
 	mutex_unlock(s->mutex);
 	return ret;
 }
-#endif  /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+#else  /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+int lis2mdl_read(const struct motion_sensor_t *s, intv3_t v)
+{
+	uint8_t raw[OUT_XYZ_SIZE];
+	/*
+	 * This is mostly for debugging, read happens through LSM6DSM/BMI160
+	 * FIFO.
+	 */
+	mutex_lock(s->mutex);
+	CPRINTS("%s", __func__);
+	mutex_unlock(s->mutex);
+	lis2mdl_normalize(s, v, raw);
+	rotate(v, *s->rot_standard_ref, v);
+	return EC_SUCCESS;
+}
+
+int lis2mdl_init(const struct motion_sensor_t *s)
+{
+	int ret = EC_ERROR_UNIMPLEMENTED;
+	int data;
+	struct mag_cal_t *cal = LIS2MDL_CAL(s);
+
+	mutex_lock(s->mutex);
+	i2c_read8(s->port, s->addr, LIS2MDL_WHO_AM_I_REG, &data);
+
+	CPRINTS("%s WHO AM I 0x%02x", __func__, data);
+
+	if (data != LIS2MDL_WHO_AM_I)
+		goto err_unlock;
+/* 
+	i2c_write8(s->port, s->addr, LIS2MDL_CFG_REG_A_ADDR, LIS2MDL_SW_RESET); */
+
+/* 	ret = sensorhub_config_ext_reg(
+			LSM6DSM_MAIN_SENSOR(s),
+			CONFIG_ACCELGYRO_SEC_ADDR,
+			LIS2MDL_CFG_REG_A_ADDR,
+			LIS2MDL_ODR_100HZ | LIS2MDL_CONT_MODE);
+	if (ret != EC_SUCCESS)
+		goto err_unlock;
+
+	ret = sensorhub_config_slv0_read(
+			LSM6DSM_MAIN_SENSOR(s),
+			CONFIG_ACCELGYRO_SEC_ADDR,
+			LIS2MDL_OUT_REG, OUT_XYZ_SIZE);
+	if (ret != EC_SUCCESS)
+		goto err_unlock; */
+
+	mutex_unlock(s->mutex);
+	init_mag_cal(cal);
+	cal->radius = 0.0f;
+	return EC_SUCCESS;
+
+err_unlock:
+	mutex_unlock(s->mutex);
+	return ret;
+}
+#endif
 
 const struct accelgyro_drv lis2mdl_drv = {
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 	.init = lis2mdl_thru_lsm6dsm_init,
 	.read = lis2mdl_thru_lsm6dsm_read,
 	.set_data_rate = lsm6dsm_set_data_rate,
+#else
+	.init = lis2mdl_init,
+	.read = lis2mdl_read,
 #endif
 	.set_range = set_range,
 	.get_range = get_range,

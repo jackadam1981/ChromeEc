@@ -59,6 +59,13 @@ struct lis2mdl_private_data {
 #error "EC too slow for magnetometer"
 #endif
 
+#define LIS2MDL_GET_DATA(_s) \
+	((struct lis2mdl_private_data *)(_s->drv_data))
+
+#ifndef CONFIG_LSM6DSM_SEC_I2C
+#define LIS2MDL_CAL(_s) (&LIS2MDL_GET_DATA(_s)->cal)
+#endif
+
 void lis2mdl_normalize(const struct motion_sensor_t *s,
 		       intv3_t v,
 		       uint8_t *data);
