@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21c57add_0c0d96b8",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T19:38:48Z",
+      "side": 1,
+      "message": "s/-B/-b/",
+      "range": {
+        "startLine": 1832,
+        "startChar": 40,
+        "endLine": 1832,
+        "endChar": 42
+      },
+      "revId": "91e69e45adeeafc58c9f44b54e10dd70ecf1fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
