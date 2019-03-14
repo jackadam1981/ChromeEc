@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e50f12f1_9bf8febd",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44067c21_f13539d2",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe0dd18_1f8462fa",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f51bb0_0c6e6f30",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe0dd18_1f8462fa",
+      "range": {
+        "startLine": 114,
+        "startChar": 34,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4d80a034_9bbb04d8",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c51a0ebe_96ae39b3",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae957347_4fda6fd1",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2019-03-13T21:06:23Z",
       "side": 1,
       "message": "this should be guarded by if defined(d0i2) || defined(D0i3)",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 29
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d4c913_6c5241cf",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "already guarded by CONFIG_ISH_PM_AONTASK,  for D3 and Sx flow process, also need aontask and switch to aontask for final handle",
+      "parentUuid": "ae957347_4fda6fd1",
       "range": {
         "startLine": 159,
         "startChar": 12,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "82b9310d_9c608aee",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "when comeback from aontask, only enabled cache, no flush :)",
+      "parentUuid": "a045b75e_455d47b0",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbf30f6d_8cc824dd",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "398d40e6_5bd982c2",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf30f6d_8cc824dd",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 9
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6e4866b_4545c1ab",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -160,6 +304,30 @@
       "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c8ef82a_5b9a39a1",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-14T09:13:49Z",
+      "side": 1,
+      "message": "Done! Done! thanks for point out this error! :)",
+      "parentUuid": "d6e4866b_4545c1ab",
+      "range": {
+        "startLine": 200,
+        "startChar": 30,
+        "endLine": 200,
+        "endChar": 47
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
