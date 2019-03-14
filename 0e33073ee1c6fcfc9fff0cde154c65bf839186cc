@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4664184a_b07ce15b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T17:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74824f93_2dd3d480",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "952aa767_d93f9e1f",
         "filename": "include/common.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-12T23:13:05Z",
       "side": 1,
       "message": "Since we\u0027re doing this, shall we remove \u0027#include \"compile_time_macros.h\"\u0027 from all files which #include \"common.h\"?\n\n(We should probably do that for stdint.h as well. These will be basically treated as a part of common.h.)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ac82c1_d8c98579",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T17:44:53Z",
+      "side": 1,
+      "message": "I like to import in .c file all needed includes, even if they are implicitly included by other includes. I will do it in another CL if needed.",
+      "parentUuid": "952aa767_d93f9e1f",
       "range": {
         "startLine": 12,
         "startChar": 0,
