@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "28330ace_f86abc02",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-14T20:13:51Z",
+      "side": 1,
+      "message": "we can make dp_status[] share able global variable and use pd_dfp_dp_get_pin_mode() directly here.\nwould you prefer that?",
+      "parentUuid": "4077f307_e1f910e2",
+      "range": {
+        "startLine": 4975,
+        "startChar": 18,
+        "endLine": 4975,
+        "endChar": 33
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
