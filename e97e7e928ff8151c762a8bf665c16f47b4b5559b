@@ -22,6 +22,30 @@
       "revId": "e97e7e928ff8151c762a8bf665c16f47b4b5559b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0964397a_549c2d33",
+        "filename": "util/flash_ec",
+        "patchSetId": 57
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-14T00:16:42Z",
+      "side": 1,
+      "message": "Comment added.\n\nThis is especially needed for --iteflash_use_ftdi_with_servo_v2\u003dfalse case, however since cleanup() can get invoked at any time (once installed as an exit trip), best to handle this properly regardless of --iteflash_use_ftdi_with_servo_v2 value.",
+      "parentUuid": "6eed6136_9a03b064",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 32
+      },
+      "revId": "e97e7e928ff8151c762a8bf665c16f47b4b5559b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
