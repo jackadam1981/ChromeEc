@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "766a664b_52935633",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T23:17:12Z",
+      "side": 0,
+      "message": "Add a new config:\nCONFIG_SENSOR_TIGHT_TIMESTAMP",
+      "revId": "1b45905f5f4cb1dbaae34bdf076a547695a47793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2b63d4_0a031e83",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T23:17:12Z",
+      "side": 0,
+      "message": "#ifdef CONFIG_SENSOR_TIGHT_TIMESTAMP around.",
+      "revId": "1b45905f5f4cb1dbaae34bdf076a547695a47793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
