@@ -1317,9 +1317,16 @@ function flash_it83xx() {
 		ITEFLASH_ARGS=( "sudo" "--" "${ITEFLASH_ARGS[@]}" \
 			"--send-waveform=0" "--i2c-interface=linux" \
 			"--i2c-dev-path=$(dut_i2c_dev)" )
-		if servo_is_ccd; then
+		if servo_is_ccd && [[ -z "${ITEFLASH_BLOCK_WRITE_SIZE}" ]]; then
 			ITEFLASH_ARGS+=( "--block-write-size=256" )
 		fi
+	fi
+
+	# ITEFLASH_BLOCK_WRITE_SIZE comes from the environment, not an internal
+	# variable.
+	if [[ -n "${ITEFLASH_BLOCK_WRITE_SIZE}" ]]; then
+		ITEFLASH_ARGS+=( \
+			"--block-write-size=${ITEFLASH_BLOCK_WRITE_SIZE}" )
 	fi
 
 	local ERROR_MSG
