@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7950052_66a10174",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-14T23:37:33Z",
+      "side": 1,
+      "message": "does flash_ec use the new command line parameter in all cases?\n\nhow does this demonstrate that the default still works,  - direct programming with iteflash over CCD would be a good demonstration.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "6ceddf3e92407f9ff1f0d1e69e1197d6869fec18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
