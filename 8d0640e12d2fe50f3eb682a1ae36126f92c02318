@@ -22,6 +22,30 @@
       "revId": "8d0640e12d2fe50f3eb682a1ae36126f92c02318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa51a1e_86165023",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2019-03-14T15:20:26Z",
+      "side": 1,
+      "message": "I was keeping it to be consistent with other ishtp implementation, but I guess we can do without it. Will drop.",
+      "parentUuid": "268e5a84_3333041f",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "8d0640e12d2fe50f3eb682a1ae36126f92c02318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
