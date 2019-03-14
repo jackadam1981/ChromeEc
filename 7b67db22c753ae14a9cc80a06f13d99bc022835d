@@ -238,6 +238,30 @@
       "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96b3679_e4ef68df",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-03-14T03:27:50Z",
+      "side": 1,
+      "message": "Vijay, I tried OOB command with OOB_SMBUS_DEST_ADDR_PCH_PECI_MCTP destination and command value 3 (eSPI spec table 2-20: 0x3-0xFF reserved). After sending this command, the ESPI_UPSTREAM_BUSY bit is ready state which means host had read our OOB cycle. But the command is not supported, host does not respond.",
+      "parentUuid": "75ff2cd8_672b74b8",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 32
+      },
+      "revId": "7b67db22c753ae14a9cc80a06f13d99bc022835d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
