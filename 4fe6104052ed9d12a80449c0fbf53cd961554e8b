@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "25427d18_2b860332",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-14T05:18:43Z",
+      "side": 1,
+      "message": "I\u0027ve deleted --reset_ec_on_exit.",
+      "parentUuid": "63af1da8_3340b9ec",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 43
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "624a274f_8a0c43ff",
         "filename": "util/flash_ec",
         "patchSetId": 51
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "I\u0027m not planning to drop either flag in this patch.\n\nI am planning to get rid of --iteflash_use_cr50_direct_with_ccd and only support its \"false\" codepath later.  That is blocked on two things:\n\n1) i2c-pseudo being checked in.\n\n2) Speed up the \"false\" codepath.  Right now it\u0027s about 2x slower than the \"true\" codepath (which itself is maybe 20% slower than using Servo Micro), probably because iteflash block_write_size with i2c-dev is 1/2 vs cr50 direct, but I suspect it could be increased when using i2c-dev with cr50.  As I\u0027ve mentioned we should make block_write_size configurable on iteflash command line, but I don\u0027t want to introduce any more patches before this one in the relation chain.\n\n\nI am less certain about getting rid of --iteflash_use_ftdi_with_servo_v2 in the near future.  Currently its \"false\" codepath is about 10x slower than its \"true\" codepath.  (Though even \"false\" is still faster than any Servo Micro or CR50 codepath!)  That correlates with the relative block_write_sizes in iteflash for i2c-dev vs FTDI direct, so it might be possible to approach speed parity, but I have no confidence there until I\u0027ve actually tested it, and it\u0027s not a priority for me.\n\nAlso, the current --iteflash_use_ftdi_with_servo_v2\u003dfalse implementation still requires the servod ftdii2c_cmd hackery.  Getting rid of that would be a big win for simplicity, but will likely be a good chunk of work to reimplement the special waveform within servod.  I can\u0027t commit to that, but I would like to see it done someday.",
       "parentUuid": "d5a8090b_e8dcaa29",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "4fe6104052ed9d12a80449c0fbf53cd961554e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b6f15be_54071863",
+        "filename": "util/flash_ec",
+        "patchSetId": 51
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-14T05:18:43Z",
+      "side": 1,
+      "message": "I\u0027ve move these two flags to separate CLs.",
+      "parentUuid": "1504b932_dd29c667",
       "range": {
         "startLine": 178,
         "startChar": 0,
