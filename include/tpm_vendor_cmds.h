@@ -157,6 +157,7 @@ enum vendor_cmd_rc {
 
 	/* Only 7 bits available; max is 127 */
 	VENDOR_RC_NO_SUCH_COMMAND = 127,
+	VENDOR_RC_ERR = 0x500,
 };
 
 /*
@@ -184,7 +185,6 @@ enum vendor_cmd_rc {
  *   Bit  7     F=0   Confirms to Table 14, Format-Zero Response Codes
  *   Bits 6:0   num   128 possible failure reasons
  */
-#define VENDOR_RC_ERR 0x00000500
 
 /*** Structures and constants for VENDOR_CC_SPI_HASH ***/
 
