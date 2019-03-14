@@ -97,6 +97,29 @@
     },
     {
       "key": {
+        "uuid": "4077f307_e1f910e2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-14T19:54:01Z",
+      "side": 1,
+      "message": "I\u0027m wondering whether we can call pd_dfp_dp_get_pin_mode or not. It takes pd_state but it may be maintained by usb_pd_policy.c as well.",
+      "range": {
+        "startLine": 4975,
+        "startChar": 18,
+        "endLine": 4975,
+        "endChar": 33
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
