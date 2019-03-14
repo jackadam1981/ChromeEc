@@ -1235,6 +1235,13 @@ function flash_it83xx() {
 	# Build the iteflash command line.
 	local ITEFLASH_ARGS=( "${ITEFLASH_BIN}" )
 
+	# ITEFLASH_BLOCK_WRITE_SIZE comes from the environment, not an internal
+	# variable.
+	if [[ -n "${ITEFLASH_BLOCK_WRITE_SIZE}" ]]; then
+		ITEFLASH_ARGS+=( \
+			"--block-write-size=${ITEFLASH_BLOCK_WRITE_SIZE}" )
+	fi
+
 	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
 		ITEFLASH_ARGS+=( "--send-waveform=1" "--i2c-interface=ftdi" )
 	else
