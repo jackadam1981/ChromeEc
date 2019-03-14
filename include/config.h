@@ -1015,7 +1015,7 @@
 #undef  CONFIG_CMD_COMXTEST
 #define CONFIG_CMD_CRASH
 #define CONFIG_CMD_DEVICE_EVENT
-#undef  CONFIG_CMD_DLOG
+#undef  CONFIG_CMD_FLASH_LOG
 #undef  CONFIG_CMD_ECTEMP
 #define CONFIG_CMD_FASTCHARGE
 #undef  CONFIG_CMD_FLASH
@@ -1452,6 +1452,10 @@
 /* This enables chip-specific access functions */
 #define CONFIG_FLASH_PHYSICAL
 #undef CONFIG_FLASH_BANK_SIZE
+/* Provide event log stored in flash memory. */
+#undef CONFIG_FLASH_LOG
+#undef CONFIG_FLASH_LOG_BASE
+#undef CONFIG_FLASH_LOG_SPACE
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
 #undef CONFIG_FLASH_ROW_SIZE

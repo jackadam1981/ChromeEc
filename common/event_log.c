@@ -128,7 +128,7 @@ retry:
 	return total_size * UNIT_SIZE;
 }
 
-#ifdef CONFIG_CMD_DLOG
+#ifdef CONFIG_CMD_FLASH_LOG
 /*
  * Display TPM event logs.
  */

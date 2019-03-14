@@ -1,0 +1,169 @@
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Test Cr-50 Non-Voltatile memory module
+ */
+
+#include <stdlib.h>
+
+#include "common.h"
+#include "flash_log.h"
+#include "test_util.h"
+#include "util.h"
+
+struct log_stats {
+	size_t total_size;
+	size_t entry_count;
+};
+
+static int verify_single_entry(uint8_t fill_byte, int expected_type)
+{
+	int entry_size;
+	union entry_u e;
+
+	memset((void *)CONFIG_FLASH_LOG_BASE, fill_byte,
+	       CONFIG_FLASH_LOG_SPACE);
+	flash_log_init();
+
+	/* After initialization there should be a single log entry. */
+	entry_size = flash_log_dequeue_event(0, e.entry, sizeof(e.entry));
+	TEST_ASSERT(entry_size == sizeof(e.r));
+	TEST_ASSERT(e.r.type == expected_type);
+
+	entry_size = flash_log_dequeue_event(e.r.timestamp, e.entry,
+					     sizeof(e.entry));
+	TEST_ASSERT(entry_size == 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_init_from_scratch(void)
+{
+	return verify_single_entry(0xff, FE_LOG_START);
+}
+
+static int test_init_from_corrupted(void)
+{
+	/* Let's mess up the log space. */
+	return verify_single_entry(0x55, FE_LOG_CORRUPTED);
+}
+
+static int verify_log(struct log_stats *stats)
+{
+	union entry_u e;
+	size_t actual_size;
+	size_t actual_count;
+	int entry_size;
+
+	e.r.timestamp = 0;
+	actual_size = 0;
+	actual_count = 0;
+
+	while ((entry_size = flash_log_dequeue_event(e.r.timestamp, e.entry,
+						     sizeof(e))) > 0) {
+		actual_count++;
+		actual_size += FLASH_LOG_ENTRY_SIZE(e.r.size);
+	}
+
+	TEST_ASSERT(entry_size == 0);
+
+	stats->total_size = actual_size;
+	stats->entry_count = actual_count;
+
+	return EC_SUCCESS;
+}
+
+static int fill_to_threshold(size_t threshold, struct log_stats *stats)
+{
+	union entry_u e;
+	int i;
+	uint8_t entry_type;
+	uint8_t payload_size;
+	size_t total_size;
+	size_t entry_count;
+
+	/* Start with an only entry in the log. */
+	TEST_ASSERT(verify_single_entry(0xff, FE_LOG_START) == EC_SUCCESS);
+
+	srand(0); /* Let's make sure it is consistent. */
+	entry_count = 1;
+	total_size = FLASH_LOG_ENTRY_SIZE(0);
+
+	/* Let's fill up the log to compaction limit. */
+	do {
+		entry_type = rand() % 0xfe;
+		payload_size = rand() % MAX_FLASH_LOG_PAYLOAD_SIZE;
+		for (i = 0; i < payload_size; i++)
+			e.entry[i] = (i + entry_type) & 0xff;
+
+		flash_log_add_event(entry_type, payload_size, e.entry);
+		total_size += FLASH_LOG_ENTRY_SIZE(payload_size);
+		entry_count++;
+	} while (total_size <= threshold);
+
+	TEST_ASSERT(verify_log(stats) == EC_SUCCESS);
+	TEST_ASSERT(stats->total_size == total_size);
+	TEST_ASSERT(stats->entry_count == entry_count);
+
+	/* This should get the log over the compaction threshold. */
+	flash_log_add_event(entry_type, payload_size, e.entry);
+	TEST_ASSERT(verify_log(stats) == EC_SUCCESS);
+
+	return EC_SUCCESS;
+}
+
+static int test_run_time_compaction(void)
+{
+	struct log_stats stats;
+
+	TEST_ASSERT(fill_to_threshold(RUN_TIME_LOG_FULL_WATERMARK, &stats) ==
+		    EC_SUCCESS);
+
+	/*
+	 * Compacted space is guaranteed not to exceed the threshold plus the
+	 * size of the largest possible entry.
+	 */
+	TEST_ASSERT(stats.total_size <
+		    (COMPACTION_SPACE_PRESERVE +
+		     FLASH_LOG_ENTRY_SIZE(MAX_FLASH_LOG_PAYLOAD_SIZE)));
+
+	return EC_SUCCESS;
+}
+
+static int test_init_time_compaction(void)
+{
+	struct log_stats stats;
+
+	TEST_ASSERT(fill_to_threshold(STARTUP_LOG_FULL_WATERMARK, &stats) ==
+		    EC_SUCCESS);
+
+	/*
+	 * Init should roll the log back below the compaction preservation
+	 * threshold.
+	 */
+	flash_log_init();
+	TEST_ASSERT(verify_log(&stats) == EC_SUCCESS);
+
+	/*
+	 * Compacted space is guaranteed not to exceed the threshold plus the
+	 * size of the largest possible entry.
+	 */
+	TEST_ASSERT(stats.total_size <
+		    (COMPACTION_SPACE_PRESERVE +
+		     FLASH_LOG_ENTRY_SIZE(MAX_FLASH_LOG_PAYLOAD_SIZE)));
+
+	return EC_SUCCESS;
+}
+
+void run_test(void)
+{
+	test_reset();
+
+	RUN_TEST(test_init_from_scratch);
+	RUN_TEST(test_init_from_corrupted);
+	RUN_TEST(test_run_time_compaction);
+	RUN_TEST(test_init_time_compaction);
+
+	test_print_result();
+}
