@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "7f1ba73f_95276f06",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-14T20:34:20Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, Daisuke, but pd_dfp_dp_get_pin_mode will return a 0 if get_modep() fails.  Following how we populate the \"amodes\" array, it appears we allocate this during the enter mode phase, which should mean we\u0027re in a DP alternate mode state.  However, from a preliminary glance I\u0027m not sure I find where, after entering the state once on a port, we would fail get_modep() in future calls on the port after the dongle is unplugged.\n\nVijay, could the patch\u0027s test description be more specific?  Does this field return something sane for the following scenarios: nothing plugged in, DP dongle plugged in, non-DP partner (ex. charger, USB hub without display)?",
+      "parentUuid": "28330ace_f86abc02",
+      "range": {
+        "startLine": 4975,
+        "startChar": 18,
+        "endLine": 4975,
+        "endChar": 33
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
