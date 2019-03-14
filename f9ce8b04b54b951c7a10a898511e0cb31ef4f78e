@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e72c157_ca467756",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T21:11:49Z",
+      "side": 1,
+      "message": "I expect --iteflash_cr50_through_servod\u003dTrue won\u0027t have any problem with USB interface claiming, and won\u0027t need this retrial code, which could be one of its benefit, I think.\nIt would be nice that this CL prove it and erase this code, or I can do it in another CL.",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1106,
+        "endChar": 6
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e84d80_6fd116a8",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T21:11:49Z",
+      "side": 1,
+      "message": "Can this CL just delete these lines and not introduce iteflash_cr50_through_servod, and wait until i2c psuedo driver gets merged?\nAlso it would be good to retitle this CL, and it would be nice to explain why --iteflash_cr50_through_servod\u003dTrue is better than --iteflash_cr50_through_servod\u003dFalse, more than just because i2c pseudo can cover CCD mode.",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1146,
+        "endChar": 62
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "016c27c2_1e1565bb",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T21:11:49Z",
+      "side": 1,
+      "message": "It should be separated in another CL, which is about performance tuning, that can be applied even to --iteflash_cr50_through_servod\u003dTrue, I assume.",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1154,
+        "endChar": 4
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
