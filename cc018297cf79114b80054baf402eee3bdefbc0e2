@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7bf6d6d_6c0ca908",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-03-14T16:11:29Z",
+      "side": 1,
+      "message": "I\u0027m confused as how you can know what the right answer is here given that currently the lid accel is mounted on a paddle that rotates independent to the actual lid. As the TODO above states this needs to wait until the lid accel is in the lid.",
+      "range": {
+        "startLine": 147,
+        "startChar": 24,
+        "endLine": 147,
+        "endChar": 40
+      },
+      "revId": "cc018297cf79114b80054baf402eee3bdefbc0e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
