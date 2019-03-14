@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a9c45b0f_2fc427a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T19:02:02Z",
+      "side": 1,
+      "message": "Removed, apply only to new board.",
+      "parentUuid": "8f9579e5_99082d1f",
+      "revId": "0dfe84f7d09e79c6dbe61e2a2a4fc5af921afe04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f706f98a_14f4edda",
         "filename": "include/motion_sense.h",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "0dfe84f7d09e79c6dbe61e2a2a4fc5af921afe04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007dc0d9_4654e12b",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T19:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f706f98a_14f4edda",
+      "revId": "0dfe84f7d09e79c6dbe61e2a2a4fc5af921afe04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
