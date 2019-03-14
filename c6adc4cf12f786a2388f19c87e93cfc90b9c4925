@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b30cfa2_f828755b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T23:33:18Z",
+      "side": 1,
+      "message": "s/use dwith/used with/",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "c6adc4cf12f786a2388f19c87e93cfc90b9c4925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b456b9c_0f5bdaf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T23:33:18Z",
+      "side": 1,
+      "message": "Thanks!",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "c6adc4cf12f786a2388f19c87e93cfc90b9c4925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba2fdedf_8600dcb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T23:33:18Z",
+      "side": 1,
+      "message": "This is not an benefit of this CL. I think it is a great option to run iteflash without servod.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 70
+      },
+      "revId": "c6adc4cf12f786a2388f19c87e93cfc90b9c4925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

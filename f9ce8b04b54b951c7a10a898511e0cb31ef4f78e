@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3abc65ce_99e796dc",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T23:33:18Z",
+      "side": 1,
+      "message": "i2c pseudo driver could help crrev.com/c/1490412 get merged as it is, and eventually flash doesn\u0027t need to retry for dut_i2c_mux here. \nI explained in b/126189871.\n\nI think either this code line or \"benefit #1\" in the CL message needs to be deleted.",
+      "parentUuid": "aa65d58a_52b17460",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1106,
+        "endChar": 6
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e84d80_6fd116a8",
         "filename": "util/flash_ec",
         "patchSetId": 5
