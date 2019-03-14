@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d38719e_79f07d74",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T16:31:21Z",
+      "side": 1,
+      "message": "Would you consider to have small b instead?\nI prefer to suppress the population of the capital letter flags, because they require additional key (SHIFT) press, and it is likely to make mistakes, in my opinion.",
+      "range": {
+        "startLine": 1806,
+        "startChar": 29,
+        "endLine": 1806,
+        "endChar": 30
+      },
+      "revId": "f55586c86eed86de8910ad24d2a86ba5a75acb1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d803af5f_c6a39b8f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-14T16:31:21Z",
+      "side": 1,
+      "message": "This patch has converted this value from no_argument to required_argument for nodisable-protect-path and nodisable-watchdog, which doesn\u0027t look correct.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 28,
+        "endLine": 1814,
+        "endChar": 29
+      },
+      "revId": "f55586c86eed86de8910ad24d2a86ba5a75acb1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
