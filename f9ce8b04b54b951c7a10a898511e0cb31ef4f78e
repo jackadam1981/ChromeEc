@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa65d58a_52b17460",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-14T22:22:27Z",
+      "side": 1,
+      "message": "--iteflash_cr50_through_servod does not change anything before this point in execution.  I don\u0027t see how it can make a difference here.",
+      "parentUuid": "2e72c157_ca467756",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1106,
+        "endChar": 6
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e84d80_6fd116a8",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "361e9957_bb6c4492",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-14T22:22:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e84d80_6fd116a8",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1146,
+        "endChar": 62
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "016c27c2_1e1565bb",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b731b8_ac20a0cf",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-14T22:22:27Z",
+      "side": 1,
+      "message": "--block-write-size is added by itself in previous CL from relation chain.\n\nThis is not needed with --iteflash_cr50_through_servod\u003dtrue because 256 bytes is the default with --i2c-interface\u003dccd.  Though it wouldn\u0027t be harmful to explicitly set it to default, if you prefer.\n\nLeaving out --block-write-size\u003d256 would make this CL roughly double reflashing times via CR50 (when using new code path).  That would be unacceptable, not something that should be submitted.\n\n(Slow reflash speeds for a given Servo type are better than no reflashing support at all, but I wouldn\u0027t make this change if it significantly slows down something that is already working.)",
+      "parentUuid": "016c27c2_1e1565bb",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1154,
+        "endChar": 4
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
