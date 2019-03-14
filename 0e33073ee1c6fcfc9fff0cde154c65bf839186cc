@@ -93,6 +93,30 @@
       "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7a869d_ae867450",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-14T21:09:20Z",
+      "side": 1,
+      "message": "I thought you added compile_time_macros.h here because you wanted it to be part of common (like stdint.h). If not, can you tell me how  compile_time_macros.h is referenced in common.h? I quickly scanned them but couldn\u0027t find a dependency.\n\nFYI: I usually follow the IWYU principal, too but one drawback is maintaining the list strictly. When some code is removed, it\u0027s rare that #includes are revised. It\u0027s more likely to happen with these util/builtin macros as the developers usually don\u0027t care where they are defined.",
+      "parentUuid": "48ac82c1_d8c98579",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
