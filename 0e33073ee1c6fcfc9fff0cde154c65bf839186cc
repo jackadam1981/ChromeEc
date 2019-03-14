@@ -22,6 +22,30 @@
       "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212c9b74_aa6ae16a",
+        "filename": "driver/charger/bq24738.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-14T17:50:26Z",
+      "side": 0,
+      "message": "There is GENMASK(h, l): CHARGE_WATCHDOG_175SEC_DEFAULT would become GENMASK(15, 13). I am not sure that\u0027s better.\n[See include/linux/bitops.h]\nI will revert .h when BIT is in middle of \u003c\u003c.",
+      "parentUuid": "9cdfb621_47adad8c",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "0e33073ee1c6fcfc9fff0cde154c65bf839186cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
