@@ -22,6 +22,30 @@
       "revId": "978a628ecba284566bd1a5894133a74fc67424b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9775791c_73317b6a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-14T21:48:50Z",
+      "side": 0,
+      "message": "One disadvantage of this patch is that we lose compile time check to catch invalid states. We can define unsupported states as \u0027reserved\u0027 instead. \n\n#ifdef CONFIG_USBC_VCONN_SWAP\n\tPD_STATE_VCONN_SWAP_SEND,\n\tPD_STATE_VCONN_SWAP_INIT,\n\tPD_STATE_VCONN_SWAP_READY,\n#else\n        PD_STATE_UNSUPPORTED_10,\n        PD_STATE_UNSUPPORTED_11,\n        PD_STATE_UNSUPPORTED_12,\n#endif\n\nThis way, if they appear in the code by mistake, we\u0027ll still get a compile error (while we enjoy the unified numbering). \n\nTo make it more readable, we can do:\n\n        PD_STATE_10(VCONN_SWAP_SEND),\n\nand\n\n#ifdef CONFIG_USBC_VCONN_SWAP\n        #define PD_STATE_10(X) PD_STATE_#X\n#else\n        #define PD_STATE_10(X) PD_STATE_UNSUPPORTED_10\n#endif",
+      "parentUuid": "467b257f_a46be0f8",
+      "range": {
+        "startLine": 660,
+        "startChar": 0,
+        "endLine": 660,
+        "endChar": 30
+      },
+      "revId": "978a628ecba284566bd1a5894133a74fc67424b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
