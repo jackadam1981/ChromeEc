@@ -176,7 +176,6 @@ void motion_sense_fifo_add_data(struct ec_response_motion_sensor_data *data,
 				struct motion_sensor_t *sensor,
 				int valid_data,
 				uint32_t time) {
-	motion_sense_insert_timestamp(time);
 	motion_sense_fifo_add_unit(data, sensor, valid_data);
 }
 
