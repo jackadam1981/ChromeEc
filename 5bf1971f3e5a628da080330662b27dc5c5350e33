@@ -684,6 +684,30 @@
     },
     {
       "key": {
+        "uuid": "2d9dc4e3_f3989da8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-14T15:35:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "95399385_06cfdbf1",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 336,
+        "endChar": 12
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ed43946_ef3b4dfc",
         "filename": "chip/ish/power_mgt.h",
         "patchSetId": 5

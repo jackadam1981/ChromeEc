@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "aea375a8_84a79058",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-14T15:35:11Z",
+      "side": 1,
+      "message": "Try commenting out (or removing) D0i3 and D0i2 CONFIG options in board.h and try compiling. You will get an error ;)",
+      "parentUuid": "67d4c913_6c5241cf",
+      "range": {
+        "startLine": 159,
+        "startChar": 12,
+        "endLine": 159,
+        "endChar": 29
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a045b75e_455d47b0",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -234,6 +258,30 @@
       "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74759cb8_64ea4ac8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-14T15:35:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82b9310d_9c608aee",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "4a3ea823a1029a4feb64dfafa0de8cf6f3037572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

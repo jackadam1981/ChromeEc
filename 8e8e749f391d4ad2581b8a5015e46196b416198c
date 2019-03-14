@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5763f7f7_e549e8ba",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-14T15:35:11Z",
+      "side": 1,
+      "message": "this call is suppose to reset a hold off timer that prevents the chip from sleeping if a use is interactive with the console via UART. This prevent laggy or weird console behavior while a user is typing on the console",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "8e8e749f391d4ad2581b8a5015e46196b416198c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
