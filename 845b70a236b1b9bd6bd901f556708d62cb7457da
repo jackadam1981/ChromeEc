@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f1786b_0f27b3d7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-03-15T22:16:54Z",
+      "side": 1,
+      "message": "dut_control_get() can return the exit code, such that it can be:\nPTY\u003d$(dut_control_get raw_${MCU}_uart_pty || dut_control_get ${MCU}_uart_pty)",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 17
+      },
+      "revId": "845b70a236b1b9bd6bd901f556708d62cb7457da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
