@@ -236,18 +236,19 @@ void intc_cpu_int_group_6(void)
 	case IT83XX_IRQ_SMB_C:
 		i2c_interrupt(IT83XX_I2C_CH_C);
 		break;
-
+#ifdef CONFIG_I2C_SLAVE
 	case IT83XX_IRQ_SMB_D:
-		i2c_interrupt(IT83XX_I2C_CH_D);
+		i2c_slv_interrupt(IT83XX_I2C_CH_D);
 		break;
 
 	case IT83XX_IRQ_SMB_E:
-		i2c_interrupt(IT83XX_I2C_CH_E);
+		i2c_slv_interrupt(IT83XX_I2C_CH_E);
 		break;
 
 	case IT83XX_IRQ_SMB_F:
-		i2c_interrupt(IT83XX_I2C_CH_F);
+		i2c_slv_interrupt(IT83XX_I2C_CH_F);
 		break;
+#endif
 #endif
 	default:
 		break;
