@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c8da06a_3069421a",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-15T12:39:57Z",
+      "side": 1,
+      "message": "Do you think C18 and C19 may have different alert profile in future, if not, this can be fixed one.",
+      "parentUuid": "a5489481_eb2be99f",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "cd35690c119ac18968bebd0706188b582e5f9aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8143e12_adb0deb5",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-13T20:59:02Z",
       "side": 1,
       "message": "These are identical. Can you define one and use a pointer to it?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "cd35690c119ac18968bebd0706188b582e5f9aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111c26fa_3ed00507",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-15T12:39:57Z",
+      "side": 1,
+      "message": "from the battery spec, when TEMP\u003d[20-40] Celsius, ICHG \u003d 0.5*CminMax\nC18 and C19 has different capacity:\nfor C18 CminMax\u003d5950 mAh, \nfor C19 CminMax\u003d6500 mAh",
+      "parentUuid": "a8143e12_adb0deb5",
       "range": {
         "startLine": 140,
         "startChar": 0,
