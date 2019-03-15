@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "b0291d32_f357e3b9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-15T01:11:21Z",
+      "side": 1,
+      "message": "Updated the patch\u0027s test description",
+      "parentUuid": "7f1ba73f_95276f06",
+      "range": {
+        "startLine": 4975,
+        "startChar": 18,
+        "endLine": 4975,
+        "endChar": 33
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
