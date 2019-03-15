@@ -8,6 +8,7 @@
 #include "console.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/mag_lis2mdl.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -31,11 +32,13 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* Sensor config */
 static struct mutex g_lid_mutex;
+static struct mutex g_lid_mag_mutex;
 static struct mutex g_base_mutex;
 
 /* sensor private data */
 static struct lsm6dsm_data lsm6dsm_a_data;
 static struct stprivate_data g_lis2dh_data;
+static struct lis2mdl_private_data lis2mdl_a_data;
 
 /* Matrix to rotate lid sensor into standard reference frame */
 const mat33_fp_t lid_rot_ref = {
@@ -120,8 +123,79 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 	},
 
+	[LID_MAG] = {
+		.name = "Lid Mag",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LIS2MDL,
+		.type = MOTIONSENSE_TYPE_MAG,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lis2mdl_drv,
+		.mutex = &g_lid_mag_mutex,
+		.drv_data = &lis2mdl_a_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = LIS2MDL_ADDR,
+		.default_range = 50, /* Gs (Gauss) */
+		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		.min_frequency = LIS2MDL_ODR_MIN_VAL,
+		.max_frequency = LIS2MDL_ODR_MAX_VAL,
+	},
 	/* TODO(b/122281217): Add remain sensors */
 };
+
+/*******************************************************************************
+ * Test commands:
+ * Keeping these in here until the appropriate rotations matrix is provided.
+ * This change is a WIP!
+ ******************************************************************************/
+static int command_lis2mdl_init(int argc, char **argv)
+{
+	return lis2mdl_drv.init(&motion_sensors[LID_MAG]);
+}
+
+DECLARE_CONSOLE_COMMAND(maginit, command_lis2mdl_init, "",
+			"Initialize the magnetometer");
+
+static int command_lis2mdl_set_data_rate(int argc, char **argv)
+{
+	int rate = 0, rnd = 0;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	rate = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	rnd = strtoi(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	return lis2mdl_drv.set_data_rate(&motion_sensors[LID_MAG], rate, rnd);
+}
+
+DECLARE_CONSOLE_COMMAND(magrate, command_lis2mdl_set_data_rate,
+			"rate(Hz) round-up(bool)",
+			"Set the ODR");
+
+static int command_lis2mdl_read(int argc, char **argv)
+{
+	struct motion_sensor_t *s = &motion_sensors[LID_MAG];
+	int ret = lis2mdl_drv.read(s, s->raw_xyz);
+
+	if (ret == EC_SUCCESS)
+		ccprintf("[%d,%d,%d]", s->raw_xyz[0], s->raw_xyz[1],
+			 s->raw_xyz[2]);
+	return ret;
+}
+
+DECLARE_CONSOLE_COMMAND(magread, command_lis2mdl_read, "",
+			"Read the current registers");
+
+/*******************************************************************************
+ * END Test commands
+ ******************************************************************************/
+
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* Initialize board. */
