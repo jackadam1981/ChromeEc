@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "29139864_8c680ef7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:56:08Z",
+      "side": 1,
+      "message": "Could you make it more specific (to batteries being added)?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa28f9f_c04272eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:56:08Z",
+      "side": 1,
+      "message": "Needs to be updated.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212b565a_5b6279f9",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:56:08Z",
+      "side": 1,
+      "message": "Zone 3 is missing. I think this whole diagram is redundant (thus it won\u0027t be updated when code changes).",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 0
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b74640d_c6effd42",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:56:08Z",
+      "side": 1,
+      "message": "This is not accurate.",
+      "range": {
+        "startLine": 128,
+        "startChar": 33,
+        "endLine": 128,
+        "endChar": 35
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9a3336_9a1ede1c",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:56:08Z",
+      "side": 1,
+      "message": "Can you put this variable back to charger_profile_override?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 11
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73336b39_8fc739f5",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 7
@@ -18,6 +133,29 @@
         "startChar": 0,
         "endLine": 164,
         "endChar": 54
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2932860a_36a79776",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:56:08Z",
+      "side": 1,
+      "message": "Can you move this up (while you\u0027re here)?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 11
       },
       "revId": "e444165828eb172868006ee91e5244b24b81d87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
