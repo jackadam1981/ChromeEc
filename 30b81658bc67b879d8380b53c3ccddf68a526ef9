@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9059b29c_d573b631",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-15T20:24:51Z",
+      "side": 1,
+      "message": "Please check crrev.com/c/1524669.",
+      "parentUuid": "78b78e65_064156d0",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 36
+      },
+      "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32749010_cebf60b8",
         "filename": "util/flash_ec",
         "patchSetId": 4
@@ -92,6 +116,30 @@
       "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe32ad2_a398e8eb",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-15T20:24:51Z",
+      "side": 1,
+      "message": "It was for debugging. Shouldn\u0027t have been uploaded here.",
+      "parentUuid": "32749010_cebf60b8",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 4
+      },
+      "revId": "30b81658bc67b879d8380b53c3ccddf68a526ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
