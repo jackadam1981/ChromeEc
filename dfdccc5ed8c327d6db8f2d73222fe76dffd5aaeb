@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "156e3133_16aa12bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-15T20:32:54Z",
+      "side": 1,
+      "message": "There are more projects than just the kernel pulling this in. Can we change this to check the CHROMIUM_EC #define instead?",
+      "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
