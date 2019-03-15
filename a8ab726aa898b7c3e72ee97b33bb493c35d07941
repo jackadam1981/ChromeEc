@@ -22,6 +22,99 @@
       "revId": "a8ab726aa898b7c3e72ee97b33bb493c35d07941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4241845a_a73a8450",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:15:31Z",
+      "side": 1,
+      "message": "Yes. Please remove the count from the declaration.",
+      "parentUuid": "58c1b0cb_f428110e",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "a8ab726aa898b7c3e72ee97b33bb493c35d07941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6ede09_3b0e3293",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:15:31Z",
+      "side": 1,
+      "message": "Why do you need this function?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 0
+      },
+      "revId": "a8ab726aa898b7c3e72ee97b33bb493c35d07941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55823993_fcc120a9",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:15:31Z",
+      "side": 1,
+      "message": "Please call get_batt_type at a proper time in init and reference the static variable. \n\nWe should precisely control the timing to identify the battery (only once per reset). And please print the type to the console.",
+      "range": {
+        "startLine": 203,
+        "startChar": 30,
+        "endLine": 203,
+        "endChar": 45
+      },
+      "revId": "a8ab726aa898b7c3e72ee97b33bb493c35d07941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3610e1d8_88ea6fd9",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T18:15:31Z",
+      "side": 1,
+      "message": "80+",
+      "range": {
+        "startLine": 204,
+        "startChar": 73,
+        "endLine": 204,
+        "endChar": 79
+      },
+      "revId": "a8ab726aa898b7c3e72ee97b33bb493c35d07941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
