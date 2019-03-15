@@ -13,7 +13,6 @@ struct i2c_slv_port_t {
 	const char *name;     /* Port name */
 	uint8_t slave_adr;    /* slave address(7-bit without R/W) */
 	uint8_t slave_adr2;   /* slave address2(7-bit without R/W) */
-
 };
 
 extern const struct i2c_slv_port_t i2c_slv_ports[];
