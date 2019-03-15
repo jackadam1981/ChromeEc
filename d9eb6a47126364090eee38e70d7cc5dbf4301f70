@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "6567de09_bc02b64d",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T19:20:23Z",
+      "side": 1,
+      "message": "Seems reasonable, and the current CL does improve readability.",
+      "parentUuid": "975b895c_d8492101",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1777b8f_b740d451",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
