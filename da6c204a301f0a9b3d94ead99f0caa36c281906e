@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2ee5c66_674306ef",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T22:05:31Z",
+      "side": 1,
+      "message": "Do you mind annotating these while you\u0027re here? Thank you,\n\n    /* C0 */ PD_STATE_DISABLE,",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 696,
+        "endChar": 26
+      },
+      "revId": "da6c204a301f0a9b3d94ead99f0caa36c281906e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
