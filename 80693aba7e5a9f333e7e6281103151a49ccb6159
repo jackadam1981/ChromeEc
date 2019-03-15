@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4ca9112_c6563310",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T21:08:08Z",
+      "side": 1,
+      "message": "This is defined under the ISH design doc (Chapter 4, \"Timers\", in the table at the top); units are Hz, so this is 120 MHz.",
+      "parentUuid": "cd6ba265_7fcce882",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 20
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b29d729_f70a8fe7",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b0ce5b_7ca53b81",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T21:08:08Z",
+      "side": 1,
+      "message": "Since we adjust the clock divider relative to WDT_CLOCK_HZ when we initialize the WDT, the units should work out the same... the interrupts to adjust T1/T2 will simply happen more times per a collective amount of clock cycles, but the same number of times per second.\n\nDon\u0027t have access to something which uses ISH4 architecture to back my logic... but this was how I mathed it out in my head.",
+      "parentUuid": "8b29d729_f70a8fe7",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "781a0b3a_3428ff31",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T21:08:08Z",
+      "side": 1,
+      "message": "Agree... ACK.",
+      "parentUuid": "4c3ee39c_80163210",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61f1531b_bd36e18d",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-03-15T20:05:52Z",
       "side": 1,
       "message": "We should print out program counter information (of the non interrupt context).\n\nSee example: https://chromium.googlesource.com/chromiumos/platform/ec/+/36db1e3862efd21889acfd698c61e11d355b5318/core/cortex-m0/watchdog.c#34",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc12c989_b8557833",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T21:08:08Z",
+      "side": 1,
+      "message": "I\u0027ll work on this. I believe that the processor\u0027s interrupt handler will push %EIP just like it does for exceptions, so should not be too hard.",
+      "parentUuid": "61f1531b_bd36e18d",
       "range": {
         "startLine": 47,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ed605745_8e5f7a9c",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T21:08:08Z",
+      "side": 1,
+      "message": "The live print of seconds left was pretty useful to verify that my logic of what 1 second was worked out. I imagine someone who was implementing on another board would appreciate the same thing. Do you really think it\u0027s worth removing?",
+      "parentUuid": "b00a931f_6c1b0d61",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "545a24ff_2daa971c",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2019-03-15T20:05:52Z",
       "side": 1,
       "message": "I don\u0027t think that disabling watchdog reset is something we would ever want to do on command line. I don\u0027t think it is worth having the console command (although it may have been useful for the feature development)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbda0149_5f20aa78",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T21:08:08Z",
+      "side": 1,
+      "message": "I designed this console command with the thoughts that it would be really easy to test and implement the watchdog on future ISH cores simply by running \u0027wdt enable ...\u0027, even if CONFIG_WATCHDOG is undef\u0027ed. It could also be useful for quick experimentation of finding practical values for T1 and T2.\n\nAlong the same lines, maybe useful for temporarily disabling WDT for testing a new feature.\n\nIf you don\u0027t think any of that would actually be useful, willing to remove.",
+      "parentUuid": "545a24ff_2daa971c",
       "range": {
         "startLine": 93,
         "startChar": 0,
