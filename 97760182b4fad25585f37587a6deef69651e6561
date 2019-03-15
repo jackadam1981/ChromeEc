@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b467fd3d_e8bda8f2",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-15T01:15:32Z",
+      "side": 0,
+      "message": "I think this change won\u0027t work for P1?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "97760182b4fad25585f37587a6deef69651e6561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
