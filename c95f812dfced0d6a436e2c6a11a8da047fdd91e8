@@ -46,6 +46,30 @@
       "revId": "c95f812dfced0d6a436e2c6a11a8da047fdd91e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3238a16d_160d4372",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T19:11:26Z",
+      "side": 1,
+      "message": "Sent out CL:1526317 will completely fleshed out alternative",
+      "parentUuid": "02589ef6_0a84bed4",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 6
+      },
+      "revId": "c95f812dfced0d6a436e2c6a11a8da047fdd91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
