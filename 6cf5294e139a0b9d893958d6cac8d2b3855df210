@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "4972ecf9_cca36f10",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-15T19:34:50Z",
+      "side": 1,
+      "message": "Thanks for the feedback Diana,\nusbc event happens -\u003e virtual MUX sends EC_HOST_EVENT_USB_MUX -\u003e Kernel reads USB mux, if the mux has DP flag then -\u003e Kernel request hc_usb_pd_control(), by this time dp_pin mode will be already set hence timing is okay.",
+      "parentUuid": "54fa29df_63dae081",
+      "range": {
+        "startLine": 4975,
+        "startChar": 18,
+        "endLine": 4975,
+        "endChar": 33
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
