@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "13437d55_727301ab",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-15T00:25:32Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll create another CL to remove this part.",
+      "parentUuid": "b7826e28_3f1271c4",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1106,
+        "endChar": 6
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e84d80_6fd116a8",
         "filename": "util/flash_ec",
         "patchSetId": 5
