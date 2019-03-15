@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "69023855_e0d0ff61",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-15T01:52:26Z",
+      "side": 1,
+      "message": "got it.",
+      "parentUuid": "6e237b91_c641b7b5",
+      "range": {
+        "startLine": 763,
+        "startChar": 26,
+        "endLine": 763,
+        "endChar": 48
+      },
+      "revId": "b430a424dbe1bb736162dd542622443246de88db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "515a13d0_91637332",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 6
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I\u0027ll look at GPP distinction.\n\nLet\u0027s remove GPP in this patch. Just set it to be EPP for now.",
       "parentUuid": "d67b3262_c74b49bd",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 43
+      },
+      "revId": "b430a424dbe1bb736162dd542622443246de88db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed6c3cb_f23db8ee",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-15T01:52:26Z",
+      "side": 1,
+      "message": "ok,i have delete the GPP charger in this patch, and add it when we know how to detect it.",
+      "parentUuid": "7b0a03f3_dbc56352",
       "range": {
         "startLine": 764,
         "startChar": 2,
