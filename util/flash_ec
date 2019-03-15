@@ -191,15 +191,9 @@ function dut_control_get() {
 	fi
 	# Remove the longest prefix ending ':'
 	echo "${DUT_GETVAL##*:}"
- }
-
-function get_servo_type() {
-	if dut_control "servo_type" ; then
-		$DUT_CONTROL_CMD servo_type | sed -e s/servo_type://
-	fi
 }
 
-SERVO_EC_CHIP="$(($DUT_CONTROL_CMD ec_chip) | sed -e s/ec_chip://)"
+SERVO_EC_CHIP="$(dut_control_get ec_chip)"
 SERVO_EC_CHIP="${SERVO_EC_CHIP,,}"
 if [[ "${SERVO_EC_CHIP}" =~ "unknown" ]]; then
 	SERVO_EC_CHIP=""
@@ -267,7 +261,7 @@ if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${SERVO_EC_CHIP}" ]]; then
 	SUPPORTED_CHIPS+=("${SERVO_EC_CHIP}")
 fi
 
-SERVO_TYPE="$(get_servo_type)"
+SERVO_TYPE="$(dut_control_get servo_type)"
 
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 ]]; then
 	# This happens if ${FLAGS_board} is not known in this flash_ec yet,
@@ -575,8 +569,9 @@ function ec_image() {
 # Find the EC UART provided by servo.
 function servo_ec_uart() {
 	SERVOD_FAIL="Cannot communicate with servod. Is servod running?"
-	PTY=$(($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
-	       $DUT_CONTROL_CMD ${MCU}_uart_pty) | cut -d: -f2)
+	PTY=$($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
+	       $DUT_CONTROL_CMD ${MCU}_uart_pty)
+	PTY="${PTY##*:}"
 	if [[ -z "${PTY}" ]]; then
 	    die "${SERVOD_FAIL}"
 	fi
@@ -691,8 +686,7 @@ function get_serial() {
 		sn_ctl=""
 	fi
 
-	SERIALNAME=$(${DUT_CONTROL_CMD} "${sn_ctl}serialname" | cut -d: -f2)
-	echo $SERIALNAME
+	dut_control_get "${sn_ctl}serialname"
 }
 
 # Board specific flashing scripts
