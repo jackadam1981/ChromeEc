@@ -31,6 +31,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* Sensor config */
 static struct mutex g_lid_mutex;
+static struct mutex g_lid_mag_mutex;
 static struct mutex g_base_mutex;
 
 /* sensor private data */
@@ -120,8 +121,24 @@ struct motion_sensor_t motion_sensors[] = {
 		},
 	},
 
-	/* TODO(b/122281217): Add remain sensors */
+	[LID_MAG] = {
+		.name = "Lid Mag",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LIS2MDL,
+		.type = MOTIONSENSE_TYPE_MAG,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lis2mdl_drv,
+		.mutex = &g_lid_mag_mutex,
+		.drv_data = &lis2mdl_a_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = LIS2MDL_ADDR,
+		.default_range = 50, /* Gs (Gauss) */
+		.rot_standard_ref = NULL, /* TODO rotate correctly */
+		.min_frequency = LIS2MDL_ODR_MIN_VAL,
+		.max_frequency = LIS2MDL_ODR_MAX_VAL,
+	},
 };
+
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* Initialize board. */

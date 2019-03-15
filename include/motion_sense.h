@@ -87,6 +87,7 @@ struct motion_sensor_t {
 	enum motionsensor_type type;
 	enum motionsensor_location location;
 	const struct accelgyro_drv *drv;
+	/* One mutex per physical chip. */
 	struct mutex *mutex;
 	void *drv_data;
 
