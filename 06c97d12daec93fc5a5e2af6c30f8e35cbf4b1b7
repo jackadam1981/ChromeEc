@@ -45,6 +45,30 @@
       "revId": "06c97d12daec93fc5a5e2af6c30f8e35cbf4b1b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2828d60_675a347f",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-15T22:35:02Z",
+      "side": 1,
+      "message": "OK, so I screwed up twice here:\n\nI put in WDT_CLOCK_HZ as 120,000 (120 KHz), not MHz. But then I multiplied by 100 instead of dividing by 10, which puts us at the right value. So I have that to fix.\n\nBut... that worked. So all I can think is that our supplemental registers documentation just has a typo. 12,000,000 \u003e 2^16. It also indicates it\u0027s a 32-bit register and and that bits 31:0 are RW access for the clock divider. The 16h0001 - 16hffff has just got to be a typo; I can\u0027t think of any other explanation for my code working.",
+      "parentUuid": "e1421dff_9077a8ea",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "06c97d12daec93fc5a5e2af6c30f8e35cbf4b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
