@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6474cbc0_7fb41b38",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T22:15:53Z",
+      "side": 1,
+      "message": "This should be \"${DUT_GETVAL#*:}\" (single pound sign), no?  It may be valid for a value to contain a colon, but it is not valid for a dut-control command name to contain one, so only strip up to the first colon.\n\nTBH, I prefer either cut (first choice) or sed (second choice) for this.  I think this use of bash is much more esoteric.  But I don\u0027t feel strongly about it.",
+      "revId": "440cd6b0dc3b17d5d89921ad96024d7c7afce747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f601b53_70540761",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T22:15:53Z",
+      "side": 1,
+      "message": "Just curious, is the case expected to vary?\n\nI am okay with the case-insensitive comparison even if not, but wondering if it has actually changed across CR50 FW versions.",
+      "revId": "440cd6b0dc3b17d5d89921ad96024d7c7afce747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
