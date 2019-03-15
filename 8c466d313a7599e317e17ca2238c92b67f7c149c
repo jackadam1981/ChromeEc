@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f233eed1_b7ad0d7b",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-15T19:49:22Z",
+      "side": 1,
+      "message": "It comes from chrome testing: \nhttps://cs.corp.google.com/eureka_internal/chromium/src/ash/wm/tablet_mode/tablet_mode_controller.cc?rcl\u003d0\u0026l\u003d75\n\nIf the hinge (X axis) is greater than this value, the device is almost vertical: the angle calculation is not reliable anymore:\nhttps://cs.corp.google.com/eureka_internal/chromium/src/ash/wm/tablet_mode/tablet_mode_controller.cc?rcl\u003d0\u0026l\u003d467",
+      "parentUuid": "13c1ff03_3b25da80",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "8c466d313a7599e317e17ca2238c92b67f7c149c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "072af88d_281e32e5",
         "filename": "common/motion_lid.c",
         "patchSetId": 5
