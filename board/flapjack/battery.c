@@ -19,9 +19,12 @@
 #include "usb_pd.h"
 #include "util.h"
 #include "board.h"
+#include "adc.h"
+#include "adc_chip.h"
+#include "math_util.h"
 
-/* We have only one battery now. */
-#define BATT_ID BATTERY_C18_ATL
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define BAT_LEVEL_PD_LIMIT 85
 
@@ -150,19 +153,67 @@ static const struct {
 	/* TODO: append more details for other batteries */
 };
 
+static struct {
+	enum battery_type type;
+	int expect_mv;
+} const flapjack_batteries[] = {
+	{ BATTERY_C18_ATL,       900 },  /* 100K  */
+	{ BATTERY_C19_ATL,       576 },  /* 47K   */
+	/* TODO: append more details for other batteries */
+};
+BUILD_ASSERT(ARRAY_SIZE(flapjack_batteries) < BATTERY_COUNT);
+
+#define THRESHOLD_MV 56 /* Simply assume 1800/16/2 */
+
+static enum battery_type batt_type = BATTERY_UNKNOWN;
+
+static void get_battery_type(void)
+{
+	static int probed = 0;
+	int mv;
+	int i;
+
+	/* Only probe once. */
+	if (probed)
+		return;
+	probed = 1;
+
+	assert(batt_type == BATTERY_UNKNOWN);
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
+	/* Wait to allow cap charge */
+	msleep(10);
+
+	mv = adc_read_channel(ADC_BATT_ID);
+	if (mv == ADC_READ_ERROR)
+		mv = adc_read_channel(ADC_BATT_ID);
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+
+	for (i = 0; i < ARRAY_SIZE(flapjack_batteries); i++) {
+		if (ABS(mv - flapjack_batteries[i].expect_mv) < THRESHOLD_MV) {
+			batt_type = flapjack_batteries[i].type;
+			break;
+		}
+	}
+
+	CPRINTS("Battery Type: %d", batt_type);
+}
+DECLARE_HOOK(HOOK_INIT, get_battery_type, HOOK_PRIO_INIT_I2C + 1);
+
 const struct battery_info *battery_get_info(void)
 {
-	return &info[BATT_ID];
+	return &info[batt_type];
 }
 
 const struct max17055_batt_profile *max17055_get_batt_profile(void)
 {
-	return &batt_profile[BATT_ID];
+	return &batt_profile[batt_type];
 }
 
 const struct max17055_alert_profile *max17055_get_alert_profile(void)
 {
-	return &alert_profile[BATT_ID];
+	return &alert_profile[batt_type];
 }
 
 int board_cut_off_battery(void)
@@ -191,13 +242,13 @@ int charger_profile_override(struct charge_state_data *curr)
 		return 0;
 
 	if ((curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE) ||
-	    (bat_temp_c < temp_zones[BATT_ID][0].temp_min) ||
-	    (bat_temp_c >= temp_zones[BATT_ID][TEMP_ZONE_COUNT - 1].temp_max))
+	    (bat_temp_c < temp_zones[batt_type][0].temp_min) ||
+	    (bat_temp_c >= temp_zones[batt_type][TEMP_ZONE_COUNT - 1].temp_max))
 		temp_zone = TEMP_OUT_OF_RANGE;
 	else {
 		for (temp_zone = 0; temp_zone < TEMP_ZONE_COUNT; temp_zone++) {
 			if (bat_temp_c <
-				temp_zones[BATT_ID][temp_zone].temp_max)
+				temp_zones[batt_type][temp_zone].temp_max)
 				break;
 		}
 	}
@@ -208,9 +259,9 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->state = ST_IDLE;
 	} else {
 		curr->requested_current =
-			temp_zones[BATT_ID][temp_zone].desired_current;
+			temp_zones[batt_type][temp_zone].desired_current;
 		curr->requested_voltage =
-			temp_zones[BATT_ID][temp_zone].desired_voltage;
+			temp_zones[batt_type][temp_zone].desired_voltage;
 	}
 
 	/*
