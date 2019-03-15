@@ -758,8 +758,8 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 				vector.data[Z] = v[Z];
 				motion_sense_fifo_add_data(&vector, sensor, 3,
 						   __hw_clock_source_read());
+				sensor->last_collection = ts->le.lo;
 			}
-			sensor->last_collection = ts->le.lo;
 		} else {
 			ret = EC_ERROR_BUSY;
 		}
