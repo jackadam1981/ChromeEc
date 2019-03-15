@@ -2333,7 +2333,7 @@ static void pd_partner_port_reset(int port)
 	/* If we just lost power, don't apply Rp. */
 	if (!explicit_contract_in_place ||
 	   system_get_reset_flags() &
-	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
+	   (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON))
 		return;
 
 	/*
