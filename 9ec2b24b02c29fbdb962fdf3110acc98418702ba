@@ -1,0 +1,504 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d99d8e18_91450f47",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "You don\u0027t need this guard.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5e58a1e_91c94760",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "This means if we\u0027re supplying power to usb-c port but there is a wireless charger, we\u0027ll return EC_SUCCESS. I bet this will cause lots of breakage throughout the charger \u0026 battery code because the code doesn\u0027t assume one port can be a sink and a source at the same time.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73375c5_89859a8b",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 482,
+        "startChar": 7,
+        "endLine": 482,
+        "endChar": 19
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e39fc1_0855118b",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "You don\u0027t need to this guard.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be2aa17_8b830724",
+        "filename": "board/kukui/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "I think it\u0027s time to fork.",
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d5b1b2_ef5168a0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "What\u0027s the rationale for CHARGE_SUPPLIER_WPC_BPP \u003c CHARGE_SUPPLIER_VBUS?",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b02647c_089304ee",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Can you explain this?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 5
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55c3b40_b3c3ae4f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Is this the right place to do this? Can you comment on the architecture/design about wpc integration in the bug?",
+      "range": {
+        "startLine": 941,
+        "startChar": 0,
+        "endLine": 945,
+        "endChar": 12
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffc5299_60471be1",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Can we keep it static (and export it only when it\u0027s needed)?",
+      "range": {
+        "startLine": 58,
+        "startChar": 25,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9c2530_aad170ae",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "I think we should stop passing wpc locally unless we have a plan to have multiple wpc_charger_info\u0027s.",
+      "range": {
+        "startLine": 288,
+        "startChar": 27,
+        "endLine": 288,
+        "endChar": 55
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6125b13_3ea7ca85",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "nit:\n\nif (p9221_read16(...) || chip_id !\u003d P9221_CHIP_ID)\n  return false;\nelse\n  return true;",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 54
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f00623e_d07f12fa",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Why don\u0027t you reference p9221_charger_info directly?",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 55
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86766a26_c1d38721",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "return ret;",
+      "range": {
+        "startLine": 322,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 11
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06f366f_208bc7e9",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "can you call it only if it\u0027s needed?",
+      "range": {
+        "startLine": 625,
+        "startChar": 21,
+        "endLine": 625,
+        "endChar": 38
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee704e39_ad69fdba",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Can you read it only once per reset?",
+      "range": {
+        "startLine": 695,
+        "startChar": 24,
+        "endLine": 695,
+        "endChar": 45
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6f2524_e7c3e5ac",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Can you describe what this function does and what it\u0027s trying to achieve? It looks set the chip online then turn it off but for what?",
+      "range": {
+        "startLine": 734,
+        "startChar": 4,
+        "endLine": 734,
+        "endChar": 28
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a015aa2f_810bf42d",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Why not void?",
+      "range": {
+        "startLine": 949,
+        "startChar": 7,
+        "endLine": 949,
+        "endChar": 10
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484f6b49_9d281f0f",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "return ret.",
+      "range": {
+        "startLine": 955,
+        "startChar": 2,
+        "endLine": 955,
+        "endChar": 11
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c74f25_b364ddef",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 962,
+        "startChar": 2,
+        "endLine": 962,
+        "endChar": 11
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27b4925_74109d91",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "FYI: This macro is about to be added by another patch. You\u0027ll get duplicate def error.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b01b304_4a41a81b",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Please describe each of these. These are \u0027reserved\u0027 on my reference manual.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 29
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a72d092_2f8d2f30",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-15T21:06:17Z",
+      "side": 1,
+      "message": "Please add description to each of these.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 13
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
