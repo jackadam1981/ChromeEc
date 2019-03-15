@@ -97,6 +97,38 @@ static void bc12_interrupt(enum gpio_signal signal)
 	}
 }
 
+void board_hibernate_late(void)
+{
+	int i;
+	const uint32_t hibernate_pins[][2] = {
+		/* Turn off LEDs in hibernate */
+		{GPIO_LED_1_L, GPIO_INPUT | GPIO_PULL_UP}, /* Yellow (hatch) */
+		{GPIO_LED_2_L, GPIO_INPUT | GPIO_PULL_UP}, /* White (hatch) */
+		{GPIO_LED_3_L, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_LED_4_L, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_LID_OPEN, GPIO_INT_RISING | GPIO_PULL_DOWN},
+	};
+
+	/* Change GPIOs' state in hibernate for better power consumption */
+	for (i = 0; i < ARRAY_SIZE(hibernate_pins); ++i)
+		gpio_set_flags(hibernate_pins[i][0], hibernate_pins[i][1]);
+
+	gpio_config_module(MODULE_KEYBOARD_SCAN, 0);
+
+	/*
+	 * Calling gpio_config_module sets disabled alternate function pins to
+	 * GPIO_INPUT.  But to prevent keypresses causing leakage currents
+	 * while hibernating we want to enable GPIO_PULL_UP as well.
+	 */
+	gpio_set_flags_by_mask(0x2, 0x03, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(0x1, 0x7F, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(0x0, 0xF0, GPIO_INPUT | GPIO_PULL_UP);
+	gpio_set_flags_by_mask(0x8, 0x04, GPIO_INPUT | GPIO_PULL_UP);
+	/* KBD_KSO2 needs to have a pull-down enabled instead of pull-up */
+	gpio_set_flags_by_mask(0x1, 0x80, GPIO_INPUT | GPIO_PULL_DOWN);
+}
+
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
