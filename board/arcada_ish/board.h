@@ -33,6 +33,8 @@
 
 #define CONFIG_ACCEL_LNG2DM	 /* Base sensor: LNG2DM (uses LIS2DH driver) */
 #define CONFIG_ACCELGYRO_LSM6DSM /* Lid sensor: LSM6DS3 (uses LSM6DSM driver) */
+#define CONFIG_MAG_LIS2MDL		/* Lid sensor: LIS2DML */
+#define CONFIG_MAG_CALIBRATE
 
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCEL_FIFO 256
@@ -100,6 +102,7 @@ enum sensor_id {
 	LID_ACCEL,
 	LID_GYRO,
 	BASE_ACCEL,
+	LID_MAG,
 	/* TODO(b/122281217): Add remain sensors */
 	SENSOR_COUNT
 };
