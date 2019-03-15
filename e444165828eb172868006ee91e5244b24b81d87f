@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73336b39_8fc739f5",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-15T18:07:28Z",
+      "side": 1,
+      "message": "With the size being fixed, there\u0027s no need for the assertions?",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 54
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
