@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e149ad3_4f4ce075",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-15T00:37:09Z",
+      "side": 1,
+      "message": "Does the calibration drift with temperature? Can you try to load up the system and see how it changes?",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "692dbeab_6f210cbe",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-15T00:37:09Z",
+      "side": 1,
+      "message": "I think you are still confirming these numbers with MTK?",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e7f044_f93368e2",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-15T00:37:09Z",
+      "side": 1,
+      "message": "In theory, it should be possible to do some slightly smarter arithmetic to land closer to the real value (is cali value at least somehow proportional to frequency?)\n\nNot really worth it if calibration is very fast.",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2712fc8c_74a5d388",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-15T00:37:09Z",
+      "side": 1,
+      "message": "One more quick question, how long does the calibration take?\n\nWorth case should be log_2(64) * 400ms \u003d 2.4 s, but I assume we don\u0027t usually timeout.",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
