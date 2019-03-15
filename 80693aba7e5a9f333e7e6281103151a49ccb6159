@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd6ba265_7fcce882",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T20:05:52Z",
+      "side": 1,
+      "message": "isn\u0027t this actually 10 (since the watch dog tick is 100ms)?",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 20
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b29d729_f70a8fe7",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T20:05:52Z",
+      "side": 1,
+      "message": "this won\u0027t work for ISH4 since it has a different watch dog timer frequency, right?\n\nShould we also express this in terms of WDT_CLOCK_HZ?\n#define WDT_T1_PERIOD (95 * WDT_CLOCK_HZ / 10)\n#define WDT_T2_PERIOD (5 * WDT_CLOCK_HZ / 10)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3ee39c_80163210",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T20:05:52Z",
+      "side": 1,
+      "message": "we should make this a define",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f1531b_bd36e18d",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T20:05:52Z",
+      "side": 1,
+      "message": "We should print out program counter information (of the non interrupt context).\n\nSee example: https://chromium.googlesource.com/chromiumos/platform/ec/+/36db1e3862efd21889acfd698c61e11d355b5318/core/cortex-m0/watchdog.c#34",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b00a931f_6c1b0d61",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T20:05:52Z",
+      "side": 1,
+      "message": "we normally trigger watchdog reset with `waitms 15000`",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545a24ff_2daa971c",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T20:05:52Z",
+      "side": 1,
+      "message": "I don\u0027t think that disabling watchdog reset is something we would ever want to do on command line. I don\u0027t think it is worth having the console command (although it may have been useful for the feature development)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
