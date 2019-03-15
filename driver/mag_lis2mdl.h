@@ -12,26 +12,41 @@
 #include "mag_cal.h"
 #include "stm_mems_common.h"
 
-#define LIS2MDL_I2C_ADDR(__x)		(__x << 1)
-
 /*
- * 7-bit address is 0011110Xb. Where 'X' is determined
- * by the voltage on the ADDR pin
+ * 8-bit address is 0011110Wb where the last bit represents whether the
+ * operation is a read or a write.
  */
-#define LIS2MDL_ADDR0			LIS2MDL_I2C_ADDR(0x1e)
-#define LIS2MDL_ADDR1			LIS2MDL_I2C_ADDR(0x1f)
+#define LIS2MDL_ADDR			0x3c
 
 /* Registers */
 #define LIS2MDL_WHO_AM_I_REG		0x4f
 #define LIS2MDL_WHO_AM_I		0x40
 
 #define LIS2MDL_CFG_REG_A_ADDR		0x60
-#define LIS2MDL_SW_RESET		0x20
-#define LIS2MDL_ODR_100HZ		0xc
-#define LIS2MDL_CONT_MODE		0x0
+#define LIS2MDL_FLAG_TEMP_COMPENSATION	0x80
+#define LIS2MDL_FLAG_REBOOT		0x40
+#define LIS2MDL_FLAG_SW_RESET		0x20
+#define LIS2MDL_FLAG_LOW_POWER		0x10
+#define LIS2MDL_ODR_100HZ		0x0c
+#define LIS2MDL_ODR_50HZ		0x08
+#define LIS2MDL_ODR_20HZ		0x04
+#define LIS2MDL_ODR_10HZ		0x00
+#define LIS2MDL_MODE_IDLE		0x03
+#define LIS2MDL_MODE_SINGLE		0x01
+#define LIS2MDL_MODE_CONT		0x00
+#define LIS2MDL_ODR_MODE_MASK		0x8f
+
+/* The configuration to be set during init */
+#define LIS2MDL_INIT_CONFIG (LIS2MDL_MODE_IDLE | LIS2MDL_FLAG_SW_RESET)
 
 #define LIS2MDL_STATUS_REG		0x67
 #define LIS2MDL_OUT_REG			0x68
+
+#define LIS2MDL_X_DIRTY			0x01
+#define LIS2MDL_Y_DIRTY			0x02
+#define LIS2MDL_Z_DIRTY			0x04
+#define LIS2MDL_XYZ_DIRTY		0x08
+#define LIS2MDL_XYZ_DIRTY_MASK		0x0f
 
 #define	LIS2DSL_RESOLUTION		16
 /*
@@ -42,7 +57,6 @@
  */
 #define LIS2MDL_RATIO(_in) (((_in) * 24) / 10)
 
-
 struct lis2mdl_private_data {
 	/* lsm6dsm_data union requires cal be first element */
 	struct mag_cal_t cal;
@@ -52,9 +66,16 @@ struct lis2mdl_private_data {
 #endif
 };
 
+#define LIS2MDL_GET_DATA(_s) \
+	((struct lis2mdl_private_data *)(_s->drv_data))
+
+#if !defined(CONFIG_LSM6DSM_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
+#define LIS2MDL_CAL(_s) (&LIS2MDL_GET_DATA(_s)->cal)
+#endif
+
 
 #define LIS2MDL_ODR_MIN_VAL	10000
-#define LIS2MDL_ODR_MAX_VAL	50000
+#define LIS2MDL_ODR_MAX_VAL	100000
 #if (CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ <= LIS2MDL_ODR_MAX_VAL)
 #error "EC too slow for magnetometer"
 #endif
