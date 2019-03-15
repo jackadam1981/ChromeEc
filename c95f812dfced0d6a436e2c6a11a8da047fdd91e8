@@ -22,6 +22,30 @@
       "revId": "c95f812dfced0d6a436e2c6a11a8da047fdd91e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02589ef6_0a84bed4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T18:49:23Z",
+      "side": 1,
+      "message": "It does compile. I verified that is will give us the intended compile-time error effect.\n\nI believe we need to define these after the enum as the define actually hides the real enum value from the rest of code. (I didn\u0027t try adding the defines above the enum definition though)",
+      "parentUuid": "54138c47_49f8ae38",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 6
+      },
+      "revId": "c95f812dfced0d6a436e2c6a11a8da047fdd91e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
