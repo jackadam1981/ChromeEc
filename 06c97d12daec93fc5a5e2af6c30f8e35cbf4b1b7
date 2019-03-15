@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86e5d709_99e27e10",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T22:01:04Z",
+      "side": 1,
+      "message": "this should be 120000000 for 120MHz, right?",
+      "range": {
+        "startLine": 178,
+        "startChar": 23,
+        "endLine": 178,
+        "endChar": 29
+      },
+      "revId": "06c97d12daec93fc5a5e2af6c30f8e35cbf4b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1421dff_9077a8ea",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T22:01:04Z",
+      "side": 1,
+      "message": "this should be WDT_CLOCK_HZ / 10 to get 0.1 second resolution like you want.\n\n(when WDT HZ is set to 120000000 120Mhz)\n\n\nAlso, the datasheet says the the max legal value is 0xffff. Something is weird here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "06c97d12daec93fc5a5e2af6c30f8e35cbf4b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

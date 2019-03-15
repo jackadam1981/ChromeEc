@@ -281,6 +281,30 @@
       "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c28b3a3_1cd5ef56",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-15T22:01:04Z",
+      "side": 1,
+      "message": "I know it was helpful code, I don\u0027t think it is worth maintaining long-term. Sorry :(",
+      "parentUuid": "fbda0149_5f20aa78",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "80693aba7e5a9f333e7e6281103151a49ccb6159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
