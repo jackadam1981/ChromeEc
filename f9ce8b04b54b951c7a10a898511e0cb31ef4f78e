@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b7826e28_3f1271c4",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T00:15:33Z",
+      "side": 1,
+      "message": "The ordering should be:\n1) This CL.  (Which means i2c-pseudo and servod support need to be checked in of course.)\n2) CL:1490412\n3) New CL to delete the retry loop.\n\n*This* CL alone does not address b/126189871.  Deleting the retry loop in this CL would be wrong, because the issue still exists until CL:1490412 is submitted.  That CL cannot be submitted until after this one, because it will break the CR50 direct path.  Hence need for 3 step process.\n\n(I suppose we could have this CL and CL:1490412 CQ-DEPEND on eachother, so that they must get merged together.  I\u0027d rather just remove the retry loop separately, but if you really like the circular CQ-DEPEND option, go ahead \u0026 update your CL and then I\u0027ll do the same to this one. :-)",
+      "parentUuid": "3abc65ce_99e796dc",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1106,
+        "endChar": 6
+      },
+      "revId": "f9ce8b04b54b951c7a10a898511e0cb31ef4f78e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52e84d80_6fd116a8",
         "filename": "util/flash_ec",
         "patchSetId": 5

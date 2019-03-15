@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "054c1a28_a838c083",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T00:15:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b30cfa2_f828755b",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "c6adc4cf12f786a2388f19c87e93cfc90b9c4925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b456b9c_0f5bdaf5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0e2a56d7_8e986474",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T00:15:33Z",
+      "side": 1,
+      "message": "[marking as resolved]",
+      "parentUuid": "1b456b9c_0f5bdaf5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "c6adc4cf12f786a2388f19c87e93cfc90b9c4925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba2fdedf_8600dcb8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-14T23:33:18Z",
       "side": 1,
       "message": "This is not an benefit of this CL. I think it is a great option to run iteflash without servod.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 70
+      },
+      "revId": "c6adc4cf12f786a2388f19c87e93cfc90b9c4925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aff3bac_3839434e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T00:15:33Z",
+      "side": 1,
+      "message": "Deleted",
+      "parentUuid": "ba2fdedf_8600dcb8",
       "range": {
         "startLine": 29,
         "startChar": 0,
