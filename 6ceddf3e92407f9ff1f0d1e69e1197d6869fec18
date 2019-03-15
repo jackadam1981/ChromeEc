@@ -22,6 +22,30 @@
       "revId": "6ceddf3e92407f9ff1f0d1e69e1197d6869fec18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66ec55c_7125fbf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T00:10:53Z",
+      "side": 1,
+      "message": "As of this patch flash_ec still invokes iteflash with --i2c-interface\u003dccd for CR50.\n\nThe switch to using --i2c-interface\u003dlinux for CR50 is later in the relation chain.",
+      "parentUuid": "a7950052_66a10174",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "6ceddf3e92407f9ff1f0d1e69e1197d6869fec18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
