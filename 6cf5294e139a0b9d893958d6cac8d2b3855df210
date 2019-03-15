@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "54fa29df_63dae081",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4975,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-15T19:26:11Z",
+      "side": 1,
+      "message": "Thank you.\n\nI confirmed that the code will use pd_dfp_pe_init() to clear the amodes array after disconnect and any time the check identity sequence starts again, so pd_dfp_dp_get_pin_mode() should return 0 unless we\u0027ve actually entered a mode on that port. So this should be generally safe, though if the host command comes through between the enter mode and filling in dp_status, it won\u0027t pick up whether the multi-function preferred bit was set.  \n\nHow precise does your timing for using this host command need to be?",
+      "parentUuid": "b0291d32_f357e3b9",
+      "range": {
+        "startLine": 4975,
+        "startChar": 18,
+        "endLine": 4975,
+        "endChar": 33
+      },
+      "revId": "6cf5294e139a0b9d893958d6cac8d2b3855df210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1578ca3_f2e635f0",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
