@@ -22,6 +22,30 @@
       "revId": "32220ceb5438325deb926f35235b9faaf56e3006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6817c332_a8eaea10",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-15T00:25:10Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "232ac770_c3bc9b8a",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 66
+      },
+      "revId": "32220ceb5438325deb926f35235b9faaf56e3006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
