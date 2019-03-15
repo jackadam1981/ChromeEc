@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d024e0c2_f8a92068",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-15T17:58:55Z",
+      "side": 0,
+      "message": "root is needed for --i2c-interface\u003dlinux.  I think our options are:\n\n[A] Leave sudo in place here (abandon this CL).\n[B] Delete sudo now, require that users run flash_ec as root when necessary.  (Not sure if this behavior change is acceptable to human users or lab automation.)\n[C] Delete sudo now, then in https://crrev.com/c/1301154 re-apply it conditionally based on --i2c-interface mode.\n\nIf root is needed with Servo v2, then my preference is [A] since soon all flash_ec invocations of iteflash will use either --i2c-interface\u003dftdi or --i2c-interface\u003dlinux.\n\nIf root is *not* needed with Servo v2, then my preference is [C].\n\nLet me know Servo v2 testing results.",
+      "revId": "36db1e3862efd21889acfd698c61e11d355b5318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
