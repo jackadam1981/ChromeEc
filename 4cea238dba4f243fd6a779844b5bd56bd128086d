@@ -70,6 +70,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b36b0c9_37655503",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-16T00:40:46Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why this patch is needed. Can you explain what case will be fixed exactly how? You\u0027re trying to fix a powered HDMI dongle after RO-\u003eRW jump in unlocked systems? How do you know it\u0027ll improve more than regress more?\n\nFYI: I\u0027m thinking of resetting all (or at least DP) alt. modes by disconnecting partners on every AP reset (s5-\u003es3). Some monitors don\u0027t deal with exit DP mode properly (legitimately because the DP spec doesn\u0027t require that).\n\nIt has a potential to fix several bugs, including yours, b/110441862, chromium:887731.",
+      "parentUuid": "3ab5df3e_76294be3",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
