@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "74c68402_37756024",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T01:20:12Z",
+      "side": 1,
+      "message": "single pound will return the shortest matching pattern, double pound will return the longest matching pattern. Should a command name contain one or more, ## will always return the value.",
+      "parentUuid": "6474cbc0_7fb41b38",
+      "revId": "440cd6b0dc3b17d5d89921ad96024d7c7afce747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f601b53_70540761",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-15T22:15:53Z",
       "side": 1,
       "message": "Just curious, is the case expected to vary?\n\nI am okay with the case-insensitive comparison even if not, but wondering if it has actually changed across CR50 FW versions.",
+      "revId": "440cd6b0dc3b17d5d89921ad96024d7c7afce747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f016717_25bd7e0b",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T01:20:12Z",
+      "side": 1,
+      "message": "No. The case is not expected to vary, and it shouldn\u0027t.\nI might be too paranoid, but this care is not harmful. \u0027Always\u0027, \u0027IfOpened\u0027 ... these texts are for human readability, and somebody could be tempted to do some cosmetic work on them.",
+      "parentUuid": "0f601b53_70540761",
       "revId": "440cd6b0dc3b17d5d89921ad96024d7c7afce747",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
