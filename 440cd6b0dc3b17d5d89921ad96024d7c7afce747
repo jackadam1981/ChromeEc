@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5cc5eb6f_36bf18f9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-16T01:33:17Z",
+      "side": 1,
+      "message": "Change to single #.\n\nA dut-control command name must never contain a colon.\n\nA value returned from a command may contain a colon.",
+      "parentUuid": "74c68402_37756024",
+      "revId": "440cd6b0dc3b17d5d89921ad96024d7c7afce747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f601b53_70540761",
         "filename": "util/flash_ec",
         "patchSetId": 2
