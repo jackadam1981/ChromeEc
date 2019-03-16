@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba97a4de_5c4916e9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T03:50:53Z",
+      "side": 1,
+      "message": "stm32_dfu case won\u0027t reach this code since #SUPPORTED_CHIPS[@] should be 1.",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 3
+      },
+      "revId": "2ecdaad67e093ac16f06ec6f62ba33b0f22fef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "608d598a_86fa7447",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T03:50:53Z",
+      "side": 1,
+      "message": "This can be under line 290. Any objections?",
+      "range": {
+        "startLine": 300,
+        "startChar": 25,
+        "endLine": 300,
+        "endChar": 52
+      },
+      "revId": "2ecdaad67e093ac16f06ec6f62ba33b0f22fef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

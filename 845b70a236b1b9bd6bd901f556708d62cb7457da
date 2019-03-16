@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "57c1fd76_72cc8d94",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T03:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c5b7c13_994e9775",
+      "revId": "845b70a236b1b9bd6bd901f556708d62cb7457da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7d74d1a_85988f9a",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T03:50:53Z",
+      "side": 1,
+      "message": "Moving this to the below so that this won\u0027t happen in servod-less cases, like stm32_dfu.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "845b70a236b1b9bd6bd901f556708d62cb7457da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f1786b_0f27b3d7",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -80,6 +121,48 @@
       "revId": "845b70a236b1b9bd6bd901f556708d62cb7457da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27f7631_3ed77833",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T03:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb54982b_070f28a6",
+      "revId": "845b70a236b1b9bd6bd901f556708d62cb7457da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18944431_b84d669a",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-16T03:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5120f75_22dbffbb",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 17
+      },
+      "revId": "845b70a236b1b9bd6bd901f556708d62cb7457da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
