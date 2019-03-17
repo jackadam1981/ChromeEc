@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82bff05a_41e9fdc0",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ebc2fe3_603d996a",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17443653_3651cf7b",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2019-03-16T05:33:07Z",
       "side": 1,
       "message": "Why do we move the old data? Can\u0027t we just use a circular buffer instead? (using erased space as end/start indicators).",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320f0b6e_9c98c335",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "I think moving data simplifies log management, also, note that you need to erase the entire page anyways, so a portion of the log needs to be re-written in any case.",
+      "parentUuid": "17443653_3651cf7b",
       "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "616796f1_702a5324",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77dbe003_94bbefe2",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e811d6e3_9c7b1625",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "ed6ae15f_6bf66e64",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Platform means chip architecture, I guess it is too broad here, changed to chip.",
+      "parentUuid": "e811d6e3_9c7b1625",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 31
+      },
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ee71b13_3972dd0a",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -99,6 +189,24 @@
       "writtenOn": "2019-03-16T05:33:07Z",
       "side": 1,
       "message": "We don\u0027t usually use callbacks (for one thing, they make the static stack analysis harder to manage).\n\nI\u0027d either use a weak function that is overridden in the chip/ directory, or a config option (where the function can be defined as an inline no-op if the config is not set). I think we tend to prefer the former for this use case.",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d329d70f_ea0a81b5",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "I am not sure who \u0027we\u0027 is in this case, Cr50 code uses callbacks.\n\nI personally think this makes it easier to follow the code than to try figuring out who and when overrides weak functions. This particular callback will not affect stack use analysis. \n\nLet\u0027s see what others think.",
+      "parentUuid": "4ee71b13_3972dd0a",
       "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "4fcc7b09_bd8df25e",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "which ones don\u0027t have direct access, is there a config option for this? I would rather use direct access where possible to speed up things.",
+      "parentUuid": "9922d226_b6fad8bc",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "036a3a27_e3fe2b29",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -133,6 +259,24 @@
       "writtenOn": "2019-03-16T05:33:07Z",
       "side": 1,
       "message": "Be careful that some chips have CONFIG_FLASH_WRITE_SIZE !\u003d 1, and your code might not work then. In some cases, CONFIG_FLASH_WRITE_SIZE \u003e 8, so you\u0027ll need to write header and data in one go.\n\nAt the very least, make sure to add BUILD_ASSERT to prevent this code from being used on such chips.",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b262c987_c56f8ac0",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "good catch, I did not know there were flash cases with write size larger than 4. \n\nNote that this function is guaranteed to be called with padded size, it\u0027s just write sizes larger than the log header structure are not supported by this code. Added a build assert for this in the .h file.",
+      "parentUuid": "036a3a27_e3fe2b29",
       "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "ddabb5e1_2941aa89",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "we can\u0027t use a mutex here because this function needs to be non-blocking, and the EC codebase does not provide non-blocking mutexes.\n\nIf one becomes available, this will be easy to change.",
+      "parentUuid": "3e4c4dd4_42392886",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73194099_3ac280fb",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "683f6697_550565e9",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73194099_3ac280fb",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5122b67d_92874167",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -184,6 +364,24 @@
       "writtenOn": "2019-03-16T05:33:07Z",
       "side": 1,
       "message": "See above, this needs to take care of alignement and minimum flash write size.",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71355bba_11b8c1da",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "The FLASH_LOG_ENTRY_SIZE macro used in line 260 takes care of necessary size and alignment.",
+      "parentUuid": "5122b67d_92874167",
       "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -213,6 +411,30 @@
     },
     {
       "key": {
+        "uuid": "6b735f95_3cfaf445",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7718a97_53f2d715",
+      "range": {
+        "startLine": 313,
+        "startChar": 18,
+        "endLine": 313,
+        "endChar": 19
+      },
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8fefc23_bad9a7c4",
         "filename": "common/flash_log.c",
         "patchSetId": 2
@@ -224,6 +446,24 @@
       "writtenOn": "2019-03-16T05:33:07Z",
       "side": 1,
       "message": "CONFIG_FLASH_ERASED_VALUE32\n\nSome (old) chips appear to erase to 0 (git grep CONFIG_FLASH_ERASED_VALUE32)",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c42da54_79560cc8",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "I did not know we use chips with erased value of 0 - good catch, fixed.",
+      "parentUuid": "e8fefc23_bad9a7c4",
       "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -247,6 +487,24 @@
     },
     {
       "key": {
+        "uuid": "95cd0a5f_f1f09f0c",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb348cd_def70434",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bf24ae0_b0e88ecc",
         "filename": "test/build.mk",
         "patchSetId": 2
@@ -261,6 +519,24 @@
       "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a73f44_9b45eb56",
+        "filename": "test/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-17T20:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bf24ae0_b0e88ecc",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
