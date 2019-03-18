@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c20c583d_360c9ff7",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T17:36:01Z",
+      "side": 1,
+      "message": "Seems we should be able to acknowledge the IRQ somehow in hardware since we definitely don\u0027t want the IRQ to repeatly fire, that will definitely ensure that the device cannot recover in the 500 ms",
+      "parentUuid": "b9bf70d9_acc8e116",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a931586_bedd425a",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "We only use a single segment in our minute-ia core implementation, so there\u0027s not the possibility of a far call here.",
       "parentUuid": "9a931586_bedd425a",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1eb0093_78806689",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T17:36:01Z",
+      "side": 1,
+      "message": "Near call is what I thought, but looking at the Operation pseudo code for (near) call, it only looks like it pushes EIP on the stack not CS",
+      "parentUuid": "a1315dd1_1901df3b",
       "range": {
         "startLine": 66,
         "startChar": 11,
