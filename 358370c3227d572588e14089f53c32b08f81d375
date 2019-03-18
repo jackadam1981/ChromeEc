@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "3addc173_b880d20c",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T22:24:03Z",
+      "side": 1,
+      "message": "This appears to be for core/minute-ia; as it applies to more than just ISH. Can it be implemented there instead of under chip/ish?",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fd9b40_235bdfc1",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T22:24:03Z",
+      "side": 1,
+      "message": "Are we able to use struct IDT_entry_t from core/minute-ia/interrupts.h instead of re-implementing here?",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7647baae_ede34727",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T22:24:03Z",
+      "side": 1,
+      "message": "If you are able to use the code under core/minute-ia/interrupts.{c,h}, you should get this functionality for free (set_interrupt_gate).",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8af57ae_54275dc0",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 10
@@ -145,6 +196,47 @@
         "endLine": 214,
         "endChar": 45
       },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4277ada5_9b9c1b33",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T22:24:03Z",
+      "side": 1,
+      "message": "Pre-submit hooks should have complained at this line. Are you using ``repo upload`` to push changes to gerrit?",
+      "parentUuid": "996802c5_48e5e195",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90861332_08fa6c09",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T22:24:03Z",
+      "side": 1,
+      "message": "Isn\u0027t this already done under core/minute-ia/init.S? I might need some explanation as to why this is a separate IDT (and we can\u0027t just add values to core/minute-ia, or make calls to set_interrupt_gate).",
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
