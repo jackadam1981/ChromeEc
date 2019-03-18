@@ -449,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "b63d18de_17cb5567",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-18T07:55:36Z",
+      "side": 1,
+      "message": "fix above comments:\n\nthe 8 bytes reserved for GDB will not inside this 256 bytes.",
+      "parentUuid": "137e9896_89f74e3b",
+      "range": {
+        "startLine": 13,
+        "startChar": 88,
+        "endLine": 13,
+        "endChar": 91
+      },
+      "revId": "5bf1971f3e5a628da080330662b27dc5c5350e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09c92eef_03939df7",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 5
