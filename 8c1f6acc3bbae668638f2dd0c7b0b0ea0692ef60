@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "271ca29e_40111ec6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2048,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-18T14:42:22Z",
+      "side": 1,
+      "message": "change format to\n\nrma unlock failed, code \u003cnumber\u003e(\u003cstring representation\u003e)",
+      "range": {
+        "startLine": 2048,
+        "startChar": 45,
+        "endLine": 2048,
+        "endChar": 47
+      },
+      "revId": "8c1f6acc3bbae668638f2dd0c7b0b0ea0692ef60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
