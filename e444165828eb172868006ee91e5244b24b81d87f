@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51fe0f37_3d3e4da0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29139864_8c680ef7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fa28f9f_c04272eb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "e444165828eb172868006ee91e5244b24b81d87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0eb0b9_64adf9ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa28f9f_c04272eb",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "10a246cf_fe0f4e33",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "This diagram is delete.",
+      "parentUuid": "212b565a_5b6279f9",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 0
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b74640d_c6effd42",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "e444165828eb172868006ee91e5244b24b81d87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6cfd89_840ab31f",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b74640d_c6effd42",
+      "range": {
+        "startLine": 128,
+        "startChar": 33,
+        "endLine": 128,
+        "endChar": 35
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ad90e4e2_50e490be",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d9a3336_9a1ede1c",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 11
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73336b39_8fc739f5",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 7
@@ -137,6 +257,30 @@
       "revId": "e444165828eb172868006ee91e5244b24b81d87f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5311f89_7326e068",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73336b39_8fc739f5",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 54
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3dbb515a_c1e73d91",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2932860a_36a79776",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 11
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c693525b_2f166511",
         "filename": "board/flapjack/board.h",
         "patchSetId": 7
@@ -174,6 +342,30 @@
       "writtenOn": "2019-03-15T18:12:06Z",
       "side": 1,
       "message": "Is this R2101? Why did we change it?",
+      "range": {
+        "startLine": 139,
+        "startChar": 44,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "e444165828eb172868006ee91e5244b24b81d87f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f069e681_753ae65e",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-18T03:51:33Z",
+      "side": 1,
+      "message": "Yes, it is R2101. this change is follow hardware design, and fuelgauge model parameter is baseon  RSENSE\u003d10 m-ohm.",
+      "parentUuid": "c693525b_2f166511",
       "range": {
         "startLine": 139,
         "startChar": 44,
