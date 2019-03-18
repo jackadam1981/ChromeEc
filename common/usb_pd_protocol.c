@@ -896,11 +896,14 @@ static void pd_ca_send_pending(int port)
 
 	tcpm_get_cc(port, &cc1, &cc2);
 	if ((cc1 != TYPEC_CC_VOLT_RP_1_5) &&
-			(cc2 != TYPEC_CC_VOLT_RP_1_5))
+			(cc2 != TYPEC_CC_VOLT_RP_1_5)) {
 		if (pd_transmit(port, pd[port].ca_type,
 				pd[port].ca_header,
 				pd[port].ca_buffer) < 0)
 			return;
+	} else {
+		return;
+	}
 
 	/* Message was sent, so free up the buffer. */
 	pd[port].ca_buffered = 0;
