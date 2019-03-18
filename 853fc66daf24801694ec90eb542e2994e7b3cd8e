@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3d06b5fd_9aaaf27f",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T18:00:27Z",
+      "side": 1,
+      "message": "I think your solution fixes the problem, but I still think we should still try to make the IRQ stop interrupting the process for the 500ms though",
+      "parentUuid": "4b08e5fb_74ffb815",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a931586_bedd425a",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 3
@@ -189,6 +213,30 @@
       "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a51c142_8be8c7d0",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T18:00:27Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Makes sense!",
+      "parentUuid": "2c754f55_65c6e51a",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
