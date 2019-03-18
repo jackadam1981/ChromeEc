@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6014143_7bb6e990",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-18T03:38:51Z",
+      "side": 1,
+      "message": "Moving the enum here while keeping temp_zone[][] around line 120 where it references TEMP_ZONE_COUNT -- this doesn\u0027t seem right with compilation, IMO.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 13
+      },
+      "revId": "927975553eaf9254124fb6144fb120c401f6e3f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
