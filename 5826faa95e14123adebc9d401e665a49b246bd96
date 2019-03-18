@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebcf0155_c879c964",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "Use [*] instead of [@] here.",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12fb0892_0b4353b4",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "Double quotes around ${DUT_CTRL_CML[@]} for proper argument expansion.\n\n[matthewb@idle:~ 0]$ a\u003d( one \"foo bar\" )\n[matthewb@idle:~ 0]$ print_args.py ${a[@]}\n[\u0027/usr/local/google/home/matthewb/bin/print_args.py\u0027, \u0027one\u0027, \u0027foo\u0027, \u0027bar\u0027]\n[matthewb@idle:~ 0]$ print_args.py \"${a[@]}\"\n[\u0027/usr/local/google/home/matthewb/bin/print_args.py\u0027, \u0027one\u0027, \u0027foo bar\u0027]\n[matthewb@idle:~ 0]$",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd37510c_71f26c3d",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "No need for the trailing \u003d.",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb6f598_206f574b",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "Use \"$@\" (be sure to quote it) and put double quotes around the ${}, like so:\n\n  DUT_GETVAL\u003d$(\"${DUT_CONTROL_CMD[@]}\" \"$@\")\n\nThe double quotes fix arg expansion as mentioned above.",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54fa378a_da24c829",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "Print the whole failed command line:\n\n  error \"dut-control command failed: $(${DUT_CONTROL_CMD[*]} $*)\"\n\nConsider putting the whole command line into an ARGS variable before executing/erroring, e.g:\n\n  local ARGS\u003d( \"${DUT_CONTROL_CMD[@]}\" \"$@\" )\n\nThen down here you can do:\n\n  error \"dut-control command failed: ${ARGS[*]}\"\n\nNote use of * instead of @ in the error line (but not when actually running dut-control!).",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f715a6f7_647e1e08",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "How about returning the actual dut-control exit code?\n\nMaybe this should become:\n\nfunction dut_control_get() {\n  local ARGS\u003d( \"${DUT_CONTROL_CMD[@]}\" \"$@\" )\n  local DUT_GETVAL\u003d$(\"${ARGS[@]}\")\n  local RETVAL\u003d$?\n  if (( \"$RETVAL\" )); then\n    error \"dut-control command failed: ${ARGS[*]}\"\n    return \"$RETVAL\"\n  fi\n  echo \"${DUT_GETVAL#*:}\"\n}",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e693cbb7_67f194c6",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-18T17:33:42Z",
+      "side": 1,
+      "message": "Quotes like so:\n\n  \"${DUT_CONTROL_CMD[@]}\"\n\nAlso should ${!SERVO_VARS_NAME} be quoted?  I think so...",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
