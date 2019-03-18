@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3a7472fc_04c1c480",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T23:01:46Z",
+      "side": 1,
+      "message": "Latest patch set disables the IRQ during interrupt, and enables during reload.",
+      "parentUuid": "3d06b5fd_9aaaf27f",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a931586_bedd425a",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 3
