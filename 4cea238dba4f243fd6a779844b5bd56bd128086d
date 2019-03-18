@@ -94,6 +94,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70cc7e08_d7dd61cb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-18T16:30:42Z",
+      "side": 1,
+      "message": "If you follow the linked bug, this is an EC reset scenario so disconnecting on AP reset won\u0027t help because we go straight from S0 to S5/RO.  It has tested well so far, and since this shouldn\u0027t affect customer systems it seems low risk.\n\nThe dongle EC reset is a scenario we get a lot of ODM bugs filed for, so I\u0027d like it to work as well as possible.  Right now, we mostly maintain our contract and state during EC reset, but not quite entirely.  I\u0027d like to improve our behavior for this situation as much as I can to reduce our bug volume during ODM testing.  There\u0027s also a related change I\u0027m working on to save our Vconn state that I should have posted this week.",
+      "parentUuid": "4b36b0c9_37655503",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
