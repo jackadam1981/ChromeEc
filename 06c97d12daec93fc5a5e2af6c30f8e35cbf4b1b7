@@ -93,6 +93,30 @@
       "revId": "06c97d12daec93fc5a5e2af6c30f8e35cbf4b1b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb74568_6969086b",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T15:39:39Z",
+      "side": 1,
+      "message": "@Hebo/Hyungwoo/Li, is the watchdog clock dividor register 32-bit or 16-bits",
+      "parentUuid": "a2828d60_675a347f",
+      "range": {
+        "startLine": 32,
+        "startChar": 14,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "06c97d12daec93fc5a5e2af6c30f8e35cbf4b1b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

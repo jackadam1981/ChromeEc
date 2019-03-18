@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "436feb87_c825a55e",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T15:39:39Z",
+      "side": 1,
+      "message": "We would want to print this out the second time we got close to a watch dog reset before a reset occurred. We can count on the IRQ from calling us twice for the same timer expiration event",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a931586_bedd425a",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T15:39:39Z",
+      "side": 1,
+      "message": "you can drop the \\t\n\nAlso, add a comment here saying that we use call to push errorcode, eip, cs, and eflags on the stack so we have access to it to print a debug warning.\n\nAlso how do we know that this is a far call instead of a near call? It looks like they push different things on the stack.",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
