@@ -94,6 +94,30 @@
       "revId": "e87b3c3f25817ca02109e7c4e31627ba2db4daba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "283f2f85_a493d783",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-18T19:03:26Z",
+      "side": 1,
+      "message": "I\u0027m saying we should think of how to catch coreboot-sdk build failures by buildall.",
+      "parentUuid": "14fd7de1_16dd963b",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "e87b3c3f25817ca02109e7c4e31627ba2db4daba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
