@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4caaf16_e576f2e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-18T16:34:58Z",
+      "side": 1,
+      "message": "What about SUNWODA?",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058794c6_7e827f37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-18T16:34:58Z",
+      "side": 1,
+      "message": "Can you make it more specific? We don\u0027t need to say a future plan in the patch description. If you\u0027re adding more batteries in this patch, please list them.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab917f3_053796e4",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-18T16:34:58Z",
+      "side": 1,
+      "message": "Can you remove this and add BUILD_ASSERT after the array?",
+      "range": {
+        "startLine": 33,
+        "startChar": 38,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e5f8a9_96ebea8a",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-18T16:34:58Z",
+      "side": 1,
+      "message": "Why did you move this back?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 3
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
