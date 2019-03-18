@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4b08e5fb_74ffb815",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T17:47:23Z",
+      "side": 1,
+      "message": "When I did a `waitms 9600`, the device recovered after the warning and I was able to get the warning to happen again.",
+      "parentUuid": "c20c583d_360c9ff7",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a931586_bedd425a",
         "filename": "chip/ish/watchdog.c",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Near call is what I thought, but looking at the Operation pseudo code for (near) call, it only looks like it pushes EIP on the stack not CS",
       "parentUuid": "a1315dd1_1901df3b",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "853fc66daf24801694ec90eb542e2994e7b3cd8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c754f55_65c6e51a",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-18T17:47:23Z",
+      "side": 1,
+      "message": "That\u0027s not the EIP that is the parameter to watchdog_warning though. Errorcode, EIP, CS, and EFLAGS are pushed by the interrupt handler, *then* call pushes the return address (the EIP you were looking at). When we call watchdog_warning, the parameter named \"eip\" comes from the interrupt handler; we\u0027re not talking about the return address.",
+      "parentUuid": "c1eb0093_78806689",
       "range": {
         "startLine": 66,
         "startChar": 11,
