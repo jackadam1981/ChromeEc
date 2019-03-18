@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8af57ae_54275dc0",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "let\u0027s use \"greater than\" instead of behind\n\nAlso, let\u0027s add a comment here saying we need to preserve space in the interrupt gate for both IRQ or just the wakeup IRQ depending on the if RESET_PREP is enabled\n\nAlso, why don\u0027t we also reserve space for all of the IRW and omit this special logic?",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e62e5f_1d029edc",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "we already have these defined in common.h\n\nuse STRINGIFY instead please",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f9c989_01ef75eb",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "why use ASM for this. We could easily write this in C and let the compiler do it.\n\nAlso, let\u0027s add comments, like acknowledge this ISR in the IOAPIC then clear the LPAIC\n\nSame comment for this and reset_prep_isr below",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ce7a4e_a1509c78",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "I kind of asked this in a earlier comment, but why don\u0027t we just reserve 255 entries so we know we always have enough?",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e87792_cc78b638",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "Can you add a comment why you need and explicit memory barrier here?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 19
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5945dadd_feff71d2",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "let\u0027s use a C loop here instead\n\n(as you probably already know, we can\u0027t use usleep since we don\u0027t want to give control back to the scheduling system)",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 5
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996802c5_48e5e195",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "nit: let\u0027s use a continue:\n\nwhile (...)\n  continue;",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b02fa19a_6e427ad7",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-18T16:40:07Z",
+      "side": 1,
+      "message": "let\u0027s update to code to OR all of the D0iX states here in the #if\n\nor add comment saying that D0i1 is required for all other lower power states and if d0i1 is enabled then we know we will need this irq",
+      "range": {
+        "startLine": 431,
+        "startChar": 7,
+        "endLine": 431,
+        "endChar": 25
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
