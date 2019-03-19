@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a504a83_275d7ce0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-19T20:56:39Z",
+      "side": 1,
+      "message": "Can you define SQA?  From the context I understand the purpose, but I don\u0027t know the acronym.",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3013f29a_33142165",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -105,6 +128,30 @@
       "writtenOn": "2019-03-19T01:37:33Z",
       "side": 1,
       "message": "this is used in three places now, could be refactored as\n\nstatic int board_id_set(const struct board_id *id)\n{\n    return ~(id-\u003etype \u0026 id-\u003etype_inv \u0026 id-\u003eflags);\n}",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 56
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f5abd98_6c2bf6c7",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-19T20:56:39Z",
+      "side": 1,
+      "message": "I agree - this also improves readability.",
+      "parentUuid": "fb774cff_ec948d05",
       "range": {
         "startLine": 150,
         "startChar": 8,
