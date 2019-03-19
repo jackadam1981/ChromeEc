@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fda345c1_b7ace17b",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-19T05:11:09Z",
+      "side": 1,
+      "message": "If we declare the array to be unbounded (i.e. []), what will be the size of the array? Probably BATTERY_C19_ATL + 1, but we\u0027d be using BATTERY_COUNT (once Sunwoda is in), and change the BUILD_ASSERT accordingly. In that case, will it be less error-prone to declare it as a fixed size array?",
+      "parentUuid": "5ab917f3_053796e4",
+      "range": {
+        "startLine": 33,
+        "startChar": 38,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00e5f8a9_96ebea8a",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 10
