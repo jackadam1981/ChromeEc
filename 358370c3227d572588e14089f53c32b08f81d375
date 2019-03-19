@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b2b0630_8e001dd0",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:47:10Z",
+      "side": 1,
+      "message": "yes, this is common x86 cpu architecture related data structure definitions, it\u0027s more better to put in core/minute-ia folder. :)\n\nbut i think before moving it to core/minute-ia, we need make all the definitions are unify, and all other code not re-implementing but just using the unify definitions from this single file (ia_structs.h etc).\n\njust as you mentioned, the core/minute-ia/interrupts.h already defined \u0027IDT_entry\u0027, i think at best put all x86 tables definitions including this \u0027IDT_entry\u0027 into the single unify ia_structs.h, remove the \u0027IDT_entry\u0027 defines in interrupts.h, let it using the one defined in ia_structs.h. \n\nbut for current patch, i think we at best focus on ISH PM functions, impact other parts as few as possible, especially for the basic core code of minute-ia. after this patch fully verified and merged, then we can consider to do this, make ia_structs.h more common for minute-ia and move to core/miniute-ia folder. \n@Jet and Jack, how do you think about it ?",
+      "parentUuid": "3addc173_b880d20c",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7fd9b40_235bdfc1",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-18T22:24:03Z",
       "side": 1,
       "message": "Are we able to use struct IDT_entry_t from core/minute-ia/interrupts.h instead of re-implementing here?",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c49e97_8b43fcd3",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:47:10Z",
+      "side": 1,
+      "message": "yes, that\u0027s a good question :) \naontask needs it\u0027s own IDT and can\u0027t reuse the on defined in core/init.S, and needs other x86 tables definitions, such as GDT, LDT, TSS. And I think at best we need a unify common header file (ia_structs.h etc) to define all x86 arch related tables, such as GDT, IDT, LDT, TSS and so on. and this file should be located in core/minute-ia/include folder, all other code should using the unified definitions from this header file and no re-implementing.  \n\njust as my early comments, can we do this after this patch fully verified and merged ? since at current need focus on the ISH PM functions, and at best to impact other codes as few as possible.:)      \n\n@Jet and Jack,  how do you think about it ?",
+      "parentUuid": "b7fd9b40_235bdfc1",
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1124eaf8_79933d88",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:47:10Z",
+      "side": 1,
+      "message": "Done! aontask must need it\u0027s own IDT, can\u0027t use the one which defined in core/init.S, so can\u0027t use \u0027set_interrupt_gate\u0027 functions from core/minute-ia/interrupts.c. \n\nchip/ish/aontaskfw/ish_aontask.c already added detail comments to explain this. :)",
+      "parentUuid": "7647baae_ede34727",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
