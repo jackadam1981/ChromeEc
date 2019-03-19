@@ -422,6 +422,30 @@
       "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad1fabf_0821daa3",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T21:20:46Z",
+      "side": 1,
+      "message": "this is a good question. for instance you can check the second definition in every ifneq clause:\n\t\nifneq ($(CR50_SQA),)\nifneq ($(CR50_DEV),)\n$(error Both CR50_DEV and CR50_SQA are deifined!)\nendif\n... \t\nendif\n\nnot very elegant, maybe there is a better way. But I think we need to make sure both can\u0027t be defined.",
+      "parentUuid": "a14b6f84_44420554",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

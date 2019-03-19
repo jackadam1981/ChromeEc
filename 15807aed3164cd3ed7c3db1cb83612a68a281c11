@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "587842de_831c2aa3",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T21:20:46Z",
+      "side": 1,
+      "message": "this should be static, it will make it easier for the compiler to inline.",
+      "revId": "15807aed3164cd3ed7c3db1cb83612a68a281c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
