@@ -70,6 +70,24 @@
       "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46958311_4caae23e",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T17:09:47Z",
+      "side": 1,
+      "message": "go/synopsys_controller_programmers_guide\n\nI am quoting Table 10-4 in \"USB 2.0 Hi-Speed On-The-Go (OTG) Programmer’s Guide\", on page 273:\n\"This 2-bit value describes the status of the data buffer. The possible options are:\n■ 2’b00: Host ready\n■ 2’b01: DMA busy\n■ 2’b10: DMA done\n■ 2’b11: Host busy\nThe application needs to make these bits as 2’b00 (Host Ready) as a last step after\npreparing the entire descriptor ready.Once the software makes these bits as\nHostReady then it must not alter the descriptor until DMA done\"\n\nStatus cycle is in the order of \u0027Host Ready\u0027 -\u003e \u0027DMA Busy\u0027 -\u003e \u0027DMA Done\u0027 -\u003e \u0027Hosy Busy\u0027.\ntx_fifo_is_ready() says True if status is \u0027DMA Done\u0027 or \u0027Hosy Busy\u0027.\nIt must be called before \u0027usb_enable_tx()\u0027, which modifies the descriptor (struct g_usb_desc).",
+      "parentUuid": "491264a3_d0f95774",
+      "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
