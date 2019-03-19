@@ -124,7 +124,7 @@ uint32_t board_id_mismatch(const struct SignedHeader *sh)
  * @return EC_SUCCESS or an error code in cases of various failures to read or
  *              if the space has been already initialized.
  */
-static int write_board_id(const struct board_id *id)
+static int write_board_id(const struct board_id *id, int clear_flags)
 {
 	struct board_id id_test;
 	uint32_t rv;
@@ -146,7 +146,8 @@ static int write_board_id(const struct board_id *id)
 		return rv;
 	}
 
-	if (~(id_test.type & id_test.type_inv & id_test.flags) != 0) {
+	if (!clear_flags &&
+	    (~(id_test.type & id_test.type_inv & id_test.flags) != 0)) {
 		CPRINTS("%s: Board ID already programmed", __func__);
 		return EC_ERROR_ACCESS_DENIED;
 	}
@@ -196,7 +197,7 @@ static enum vendor_cmd_rc vc_set_board_id(enum vendor_cmd_cc code,
 	id.flags = be32toh(id.flags);
 
 	/* We care about the LSB only. */
-	*pbuf = write_board_id(&id);
+	*pbuf = write_board_id(&id, 0);
 
 	return *pbuf;
 }
@@ -206,6 +207,9 @@ static int command_board_id(int argc, char **argv)
 {
 	struct board_id id;
 	int rv = EC_ERROR_PARAM_COUNT;
+#if defined(CR50_DEV) || defined(CR50_SQA)
+	int clear_flags;
+#endif
 
 	if (argc == 1) {
 		rv = read_board_id(&id);
@@ -234,17 +238,39 @@ static int command_board_id(int argc, char **argv)
 		id.flags = strtoi(argv[2], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM2;
-
-		rv = write_board_id(&id);
-	} else {
-		ccprintf("specify board type and flags\n");
-		rv = EC_ERROR_PARAM_COUNT;
 	}
+#endif
+#if defined(CR50_DEV) || defined(CR50_SQA)
+	else if (argc == 2 && !strcasecmp(argv[1], "force_pvt")) {
+
+		clear_flags = 1;
+		rv = read_board_id(&id);
+		if (rv != EC_SUCCESS) {
+			CPRINTS("%s: error reading Board ID", __func__);
+			return rv;
+		}
+		if (~(id.type & id.type_inv & id.flags) == 0) {
+			CPRINTS("%s: Board ID isn't set", __func__);
+			return EC_ERROR_INVAL;
+		}
+		id.flags = 0;
+
+	} else  {
+		return EC_ERROR_PARAM_COUNT;
+	}
+	rv = write_board_id(&id, clear_flags);
 #endif
 	return rv;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(bid,
-			     command_board_id, NULL, "Set/Get Board ID");
+DECLARE_SAFE_CONSOLE_COMMAND(bid, command_board_id,
+#ifdef CR50_DEV
+			     "[force_pvt | bid flags]",
+#elif defined(CR50_SQA)
+			     "[force_pvt]",
+#else
+			     NULL,
+#endif
+			     "Set/Get Board ID");
 
 static enum vendor_cmd_rc vc_get_board_id(enum vendor_cmd_cc code,
 					  void *buf,

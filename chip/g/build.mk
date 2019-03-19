@@ -126,6 +126,10 @@ ifneq ($(CONFIG_RW_B),)
 $(out)/$(PROJECT).obj: $(out)/RW/ec.RW_B.flat
 endif
 
+ifneq ($(CR50_SQA),)
+CPPFLAGS += -DCR50_SQA=$(CR50_SQA)
+endif
+
 ifneq ($(CR50_DEV),)
 CPPFLAGS += -DCR50_DEV=$(CR50_DEV)
 endif
