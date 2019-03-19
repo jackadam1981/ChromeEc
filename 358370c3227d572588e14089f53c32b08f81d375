@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "afcf135e_b34a548f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! added detail comments for this. :)",
+      "parentUuid": "b8af57ae_54275dc0",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4e62e5f_1d029edc",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 10
@@ -90,6 +108,30 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53b8add_d8e1a5f6",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e62e5f_1d029edc",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "b0e2352a_160f80c1",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! since \u0027iret\u0027 instruction must need inline asm code, so originally using asm code for all. :) \nnow changed to c code for EOI registers, just \u0027iret\u0027 using asm code, seems good.",
+      "parentUuid": "e4f9c989_01ef75eb",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4ce7a4e_a1509c78",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 10
@@ -130,6 +196,24 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3e85c4_851cc28b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! added detail comments to explain this. :)",
+      "parentUuid": "a4ce7a4e_a1509c78",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "1fe31925_ae22a30c",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! yes, no needed here",
+      "parentUuid": "61e87792_cc78b638",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 19
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5945dadd_feff71d2",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 10
@@ -176,6 +284,30 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90f95db_6c24515b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! yes, we can\u0027t use \u0027usleep\u0027 from main FW, now changed to C code. :)",
+      "parentUuid": "5945dadd_feff71d2",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 5
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "45bfa0c2_b21d1169",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! I just git clone the ec code, and git push to the gerrit. \nso, there is a hook can do the coding style checking ?  but i can\u0027t see it on my side. how can i enable the coding style checking hook ?",
+      "parentUuid": "4277ada5_9b9c1b33",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90861332_08fa6c09",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 10
@@ -240,6 +396,24 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f6aeb63_593ada07",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! yes, aontask is a separated program FW and resides in AON memory, need it\u0027s own IDT, and can\u0027t reuse the one in main FW (core/minute-ia/init.S), since the main SRAM will be power offed or will be put in retention mode in aontask.  \n\nalready added the detail comments about this in the begging of chip/ish/aontaskfw/ish_aontask.c file",
+      "parentUuid": "90861332_08fa6c09",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +437,30 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f68dd3e_9d03d2e4",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-19T09:00:58Z",
+      "side": 1,
+      "message": "Done! yes, added comments for this, main FW only need handle PMU wakeup interrupt in D0i1. :)",
+      "parentUuid": "b02fa19a_6e427ad7",
+      "range": {
+        "startLine": 431,
+        "startChar": 7,
+        "endLine": 431,
+        "endChar": 25
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
