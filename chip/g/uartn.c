@@ -112,6 +112,16 @@ int uartn_read_char(int uart)
 	return GR_UART_RDATA(uart);
 }
 
+int uartn_drain_rx_fifo(int uart, uint8_t *buf, size_t buf_size)
+{
+	size_t read_count = 0;
+
+	while (uartn_rx_available(uart) && (read_count < buf_size))
+		buf[read_count++] = GR_UART_RDATA(uart);
+
+	return read_count;
+}
+
 void uartn_disable_interrupt(int uart)
 {
 	task_disable_irq(interrupt[uart].tx_int);

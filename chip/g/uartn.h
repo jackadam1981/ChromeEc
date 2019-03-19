@@ -118,4 +118,8 @@ void uartn_enable(int uart);
  * done explicitly via uartn_tx_disconnect().
  */
 void uartn_disable(int uart);
+
+/* Read up to buf_size bytes from RX FIFO. */
+int uartn_drain_rx_fifo(int uart, uint8_t *buf, size_t buf_size);
+
 #endif  /* __CROS_EC_UARTN_H */

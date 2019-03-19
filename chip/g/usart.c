@@ -145,24 +145,15 @@ void get_data_from_usb(struct usart_config const *config)
 
 void send_data_to_usb(struct usart_config const *config)
 {
-	/*
-	 * UART RX FIFO is 32 bytes in size, let's have little extra room so
-	 * that we could catch up if we are draining the FIFO while the chip
-	 * keeps receiving.
-	 */
-	uint8_t buffer[50];
+	uint8_t buffer[35]; /* Just a few bytes more than the RX FIFO size. */
 	uint32_t i;
 	uint32_t room;
 	struct queue const *uart_in = config->producer.queue;
 	int uart = config->uart;
 
 
-	i = 0;
 	room = MIN(sizeof(buffer), queue_space(uart_in));
-
-	while ((i < room) && uartn_rx_available(uart))
-		buffer[i++] = uartn_read_char(uart);
-
+	i = uartn_drain_rx_fifo(uart, buffer, room);
 	if (i)
 		QUEUE_ADD_UNITS(uart_in, buffer, i);
 }
