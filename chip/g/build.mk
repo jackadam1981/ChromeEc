@@ -127,7 +127,17 @@ $(out)/$(PROJECT).obj: $(out)/RW/ec.RW_B.flat
 endif
 
 ifneq ($(CR50_DEV),)
+ifneq ($(CR50_SQA),)
+$(error Both CR50_DEV and CR50_SQA are deifined!)
+endif
+endif
+
+ifneq ($(CR50_DEV),)
 CPPFLAGS += -DCR50_DEV=$(CR50_DEV)
+endif
+
+ifneq ($(CR50_SQA),)
+CPPFLAGS += -DCR50_DEV=$(CR50_SQA)
 endif
 
 MANIFEST := util/signer/ec_RW-manifest-dev.json
