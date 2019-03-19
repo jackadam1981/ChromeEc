@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d0ded53_776dddd2",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T15:50:29Z",
+      "side": 1,
+      "message": "Would you confirm that sudo is necessary here, and if so, please explain the reason.",
+      "range": {
+        "startLine": 1141,
+        "startChar": 19,
+        "endLine": 1141,
+        "endChar": 24
+      },
+      "revId": "898c35c47482cae909856b218e89f55ad48b34a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
