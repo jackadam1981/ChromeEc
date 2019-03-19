@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2532100a_c6fceec2",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-19T15:44:35Z",
+      "side": 1,
+      "message": "I can understand the desire to just leave these separate from core/minute-ia as then you won\u0027t have to worry about making this coherent with the code already there. But, this adds a lot of technical debt to our code, and would take significant refactoring to solve later on.\n\nIn other words, yes, this should be joined with the definitions in core/minute-ia and coherent with what is there.",
+      "parentUuid": "5b2b0630_8e001dd0",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7fd9b40_235bdfc1",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "yes, that\u0027s a good question :) \naontask needs it\u0027s own IDT and can\u0027t reuse the on defined in core/init.S, and needs other x86 tables definitions, such as GDT, LDT, TSS. And I think at best we need a unify common header file (ia_structs.h etc) to define all x86 arch related tables, such as GDT, IDT, LDT, TSS and so on. and this file should be located in core/minute-ia/include folder, all other code should using the unified definitions from this header file and no re-implementing.  \n\njust as my early comments, can we do this after this patch fully verified and merged ? since at current need focus on the ISH PM functions, and at best to impact other codes as few as possible.:)      \n\n@Jet and Jack,  how do you think about it ?",
       "parentUuid": "b7fd9b40_235bdfc1",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173ee146_4050c71b",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-19T15:44:35Z",
+      "side": 1,
+      "message": "Might be unlikely that we will come back to fix this once it is merged.",
+      "parentUuid": "63c49e97_8b43fcd3",
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +140,24 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed27b710_a4c1db06",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-19T15:44:35Z",
+      "side": 1,
+      "message": "At a minimum can we use the same struct definitions to reduce the amount of bitshifting to make this happen?",
+      "parentUuid": "1124eaf8_79933d88",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -424,6 +478,30 @@
       "side": 1,
       "message": "Done! I just git clone the ec code, and git push to the gerrit. \nso, there is a hook can do the coding style checking ?  but i can\u0027t see it on my side. how can i enable the coding style checking hook ?",
       "parentUuid": "4277ada5_9b9c1b33",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa039916_ec6f64ef",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-19T15:44:35Z",
+      "side": 1,
+      "message": "Please don\u0027t use \"git push\" to upload changes. This skips the style checks. Instead, use \"repo upload\" as described here:\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#upload-changes\n\nThis will take care of running all of the style checks for you.",
+      "parentUuid": "45bfa0c2_b21d1169",
       "range": {
         "startLine": 214,
         "startChar": 1,
