@@ -406,6 +406,7 @@ static uint32_t bc12_detect(int port)
 		chg.voltage = USB_CHARGER_VOLTAGE_MV;
 		chg.current = pi3usb9281_get_ilim(device_type, chg_status);
 		charge_manager_update_charge(type, port, &chg);
+		CPRINTS("%s: type=%d", __func__, type);
 	} else {
 		/* Detachment: update available charge to 0 */
 		usb_charger_reset_charge(port);
@@ -428,8 +429,14 @@ void usb_charger_task(void *u)
 		/* Interrupt from the Pericom chip, determine charger type */
 		if (evt & USB_CHG_EVENT_BC12) {
 			/* Read interrupt register to clear on chip */
-			pi3usb9281_get_interrupts(port);
-			evt = bc12_detect(port);
+			int intr = pi3usb9281_get_interrupts(port);
+			if (intr & PI3USB9281_INT_DETACH) {
+				CPRINTS("%s: detach", __func__);
+				usb_charger_reset_charge(port);
+			} else if (intr & PI3USB9281_INT_ATTACH) {
+				CPRINTS("%s: attach", __func__);
+				evt = bc12_detect(port);
+			}
 		} else if (evt & USB_CHG_EVENT_INTR) {
 			/* USB_CHG_EVENT_INTR & _BC12 are mutually exclusive */
 			/* Check the interrupt register, and clear on chip */
