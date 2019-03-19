@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "994527ac_f89b5983",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-19T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "867d4c08_44f28847",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "6dd70ba9d8557f8cf101ca6d53b4c0e705fc7e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90444f90_79b8e9e3",
         "filename": "chip/g/board_id.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6dd70ba9d8557f8cf101ca6d53b4c0e705fc7e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81299400_08f62d1e",
+        "filename": "chip/g/board_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-19T21:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90444f90_79b8e9e3",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "6dd70ba9d8557f8cf101ca6d53b4c0e705fc7e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
