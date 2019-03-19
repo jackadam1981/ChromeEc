@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "23305315_8424f00f",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-19T23:38:13Z",
+      "side": 1,
+      "message": "That shouldn\u0027t be, $RETVAL should become the exit status of the $(\"${ARGS[@]}\") subshell.  Did you try it and it didn\u0027t work that way?\n\nOtherwise patchset 5 looks good, just would be nice to pass on the actual exit status unless there\u0027s a specific reason to always use 1 for failure.",
+      "parentUuid": "3973e278_b3980a57",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e693cbb7_67f194c6",
         "filename": "util/flash_ec",
         "patchSetId": 3
