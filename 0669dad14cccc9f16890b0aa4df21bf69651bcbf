@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ed3fd36_7f6be48f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-19T21:57:41Z",
+      "side": 1,
+      "message": "I just got it from the bug.... Vadim what does it mean?\n\nAny other ideas?",
+      "parentUuid": "9a504a83_275d7ce0",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3013f29a_33142165",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -446,6 +470,30 @@
       "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2eddef_37eebd0a",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-19T21:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad1fabf_0821daa3",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
