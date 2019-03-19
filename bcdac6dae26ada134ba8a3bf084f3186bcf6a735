@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a96cd91_3d1ae2f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-19T03:53:16Z",
+      "side": 1,
+      "message": "now with SUNWODA, we have got the spec, now wait the fuel gauge vendor build parameters.",
+      "parentUuid": "f4caaf16_e576f2e0",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "058794c6_7e827f37",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-18T16:34:58Z",
       "side": 1,
       "message": "Can you make it more specific? We don\u0027t need to say a future plan in the patch description. If you\u0027re adding more batteries in this patch, please list them.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86814675_b29ed7ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-19T03:53:16Z",
+      "side": 1,
+      "message": "could we only add ATL in this patch, and SUNWODA in next?",
+      "parentUuid": "058794c6_7e827f37",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -82,6 +130,30 @@
       "writtenOn": "2019-03-18T16:34:58Z",
       "side": 1,
       "message": "Why did you move this back?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 3
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bcea9ab_56a6dbf9",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-19T03:53:16Z",
+      "side": 1,
+      "message": "This is only used in function charger_profile_override, and only move temp_zone define back, temp_zones will build error (TEMP_ZONE_COUNT not defined before used).",
+      "parentUuid": "00e5f8a9_96ebea8a",
       "range": {
         "startLine": 160,
         "startChar": 0,
