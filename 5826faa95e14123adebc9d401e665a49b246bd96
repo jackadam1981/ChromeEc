@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c4a547c_a873d661",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebcf0155_c879c964",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12fb0892_0b4353b4",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a086c0_a4ec157f",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12fb0892_0b4353b4",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9015e1cb_e403c658",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd37510c_71f26c3d",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eb6f598_206f574b",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f829fe_ce9963b3",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "I\u0027ll keep it as 1, since dut-control rearrange the results, not in the order of argument appearance.",
+      "parentUuid": "0eb6f598_206f574b",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d3593e24_79bdc532",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54fa378a_da24c829",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f715a6f7_647e1e08",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "3973e278_b3980a57",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "RETVAL always gets 0 in this code.",
+      "parentUuid": "f715a6f7_647e1e08",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e693cbb7_67f194c6",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -118,6 +226,24 @@
       "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b26779_3954b330",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T21:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e693cbb7_67f194c6",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
