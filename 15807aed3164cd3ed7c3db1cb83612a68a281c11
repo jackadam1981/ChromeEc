@@ -16,6 +16,24 @@
       "revId": "15807aed3164cd3ed7c3db1cb83612a68a281c11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0bb2467_830ecba5",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T21:26:25Z",
+      "side": 1,
+      "message": "ah, scrape this - I was looking at the diffs between patchsets and this looked like you added this function locally only.",
+      "parentUuid": "587842de_831c2aa3",
+      "revId": "15807aed3164cd3ed7c3db1cb83612a68a281c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
