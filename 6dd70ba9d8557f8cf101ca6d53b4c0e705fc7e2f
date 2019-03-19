@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "867d4c08_44f28847",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-19T21:37:13Z",
+      "side": 1,
+      "message": "Nit - this comment is no longer needed - new function is self documenting.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "6dd70ba9d8557f8cf101ca6d53b4c0e705fc7e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90444f90_79b8e9e3",
+        "filename": "chip/g/board_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-19T21:37:13Z",
+      "side": 1,
+      "message": "Nit: \"Check if every\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "6dd70ba9d8557f8cf101ca6d53b4c0e705fc7e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
