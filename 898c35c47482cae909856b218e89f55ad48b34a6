@@ -22,6 +22,30 @@
       "revId": "898c35c47482cae909856b218e89f55ad48b34a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9c732c_e029d854",
+        "filename": "util/flash_ec",
+        "patchSetId": 10
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-19T15:53:51Z",
+      "side": 1,
+      "message": "i2c-dev devices are only accessible by root:\n\n$ ls -ld /dev/i2c-0\ncrw-rw---- 1 root i2c 89, 0 Mar 13 11:41 /dev/i2c-0\n\nI am considering giving iteflash a flag to drop root permissions after opening the device, but either way root is necessary to start it.",
+      "parentUuid": "5d0ded53_776dddd2",
+      "range": {
+        "startLine": 1141,
+        "startChar": 19,
+        "endLine": 1141,
+        "endChar": 24
+      },
+      "revId": "898c35c47482cae909856b218e89f55ad48b34a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
