@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3013f29a_33142165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "Images built with this flag (aka SQA Cr50 images) will",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9c5498_3514c5f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "console command",
+      "range": {
+        "startLine": 14,
+        "startChar": 42,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe54eba_9d1017c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "updates (including downgrading to lower Cr50 version number) will not be rejected",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada7e0b6_949896c2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "this could be defined as say\n\n#define CR50_RELAXED (defined(CR50_DEV) || defined(CR50_SQA))\n\nin cr50/board.h  and used everywhere, just in case this condition needs to be tweaked.",
+      "range": {
+        "startLine": 1665,
+        "startChar": 0,
+        "endLine": 1665,
+        "endChar": 42
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb774cff_ec948d05",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "this is used in three places now, could be refactored as\n\nstatic int board_id_set(const struct board_id *id)\n{\n    return ~(id-\u003etype \u0026 id-\u003etype_inv \u0026 id-\u003eflags);\n}",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 56
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdab281b_80225c0c",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "isn\u0027t write_board_id() going to be invoked when argc \u003d\u003d 1 now?",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 39
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18e5f095_aca99360",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "nit: should be defined after CR50_DEV for alphanumerical order.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 5
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a091e0_0e2cdacd",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-19T01:37:33Z",
+      "side": 1,
+      "message": "CR50_DEV and CR50_SQA should be mutually exclusive.",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "0669dad14cccc9f16890b0aa4df21bf69651bcbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
