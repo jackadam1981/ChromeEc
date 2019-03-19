@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b725608_60dbe38d",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-19T22:06:43Z",
+      "side": 1,
+      "message": "Here\u0027s an alternative that would support additional CR50 build flags in the future.\n\nCR50_OPTS\u003d\n\nifneq ($(CR50_DEV),)\nCPPFLAGS +\u003d -DCR50_DEV\u003d$(CR50_DEV)\nCR50_OPTS+\u003dCR50_DEV\nendif\n\nifneq ($(CR50_SQA),)\nCPPFLAGS +\u003d -DCR50_SQA\u003d$(CR50_SQA)\nCR50_OPTS+\u003dCR50_SQA\nendif\n\n# Test if more than one Cr50 build option is specified\nifneq ($(wordlist 2,3,$(CR50_OPTS)),)\n$(error Incompatible CR50 build options specified: $(CR50_OPTS))\nendif",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "e4bc7f73618219a1852a1dc1037ead07a9ea1538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
