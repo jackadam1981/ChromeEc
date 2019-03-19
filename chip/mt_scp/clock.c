@@ -98,20 +98,28 @@ static void scp_ulposc_config(int osc)
 
 void scp_clock_high_enable(int osc)
 {
+	volatile int i = 700000;
 	/* Enable high speed clock */
 	SCP_CLK_EN |= EN_CLK_HIGH;
 
 	switch (osc) {
 	case 0:
-		/* After 25ms, enable ULPOSC */
-		udelay(25 * MSEC);
+		/*
+		 * After 25ms, enable ULPOSC.
+		 * Note that we can't use udelay here since the clock isn't configured
+		 * correctly yet. The value 700000 is chosen so this loop takes about 25
+		 * ms.
+		 * */
+		while (i--)
+			;
 		SCP_CLK_EN |= CG_CLK_HIGH;
 		break;
 	case 1:
 		/* Turn off ULPOSC2 high-core-disable switch */
 		SCP_CLK_ON_CTRL &= ~HIGH_CORE_DIS_SUB;
 		/* After 25ms, turn on ULPOSC2 high core clock gate */
-		udelay(25 * MSEC);
+		while (i--)
+			;
 		SCP_CLK_HIGH_CORE |= CLK_HIGH_CORE_CG;
 		break;
 	default:
