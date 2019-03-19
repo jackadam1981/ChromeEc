@@ -230,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "9f4a36a3_4148ddb7",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T23:57:54Z",
+      "side": 1,
+      "message": "Yes, I tried it.\nAnd this is another simple test script.\n\n#!/bin/bash\n\nDUT_CONTROL_CMD\u003d( \"dut-control\" )\n\nfunction dut_control_get() {\n  local ARGS\u003d( \"${DUT_CONTROL_CMD[@]}\" \"$@\" )\n  local DUT_GETVAL\u003d$(\"${ARGS[@]}\")\n  local RETVAL\u003d$?\n  if (( \"$RETVAL\" )); then\n    echo \"failed?: ${RETVAL}\"\n  else\n    echo \"success? ${RETVAL}\" \n  fi\n}\n\ndut_control_get ec_chip\ndut_control_get xxxxxxx\n\n\u003cEOF\u003e\n\n$ ./test.sh\nsuccess? 0\nProblem with [\u0027xxxxxxx\u0027] :: No control named \"xxxxxxx\"\n\nsuccess? 0",
+      "parentUuid": "23305315_8424f00f",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e693cbb7_67f194c6",
         "filename": "util/flash_ec",
         "patchSetId": 3
