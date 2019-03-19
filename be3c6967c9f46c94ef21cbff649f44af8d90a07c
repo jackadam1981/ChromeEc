@@ -22,6 +22,30 @@
       "revId": "be3c6967c9f46c94ef21cbff649f44af8d90a07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f55ae4_cd88b675",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2019-03-19T09:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a8d2b27_39272a20",
+      "range": {
+        "startLine": 354,
+        "startChar": 4,
+        "endLine": 354,
+        "endChar": 5
+      },
+      "revId": "be3c6967c9f46c94ef21cbff649f44af8d90a07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
