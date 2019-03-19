@@ -88,6 +88,24 @@
       "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d84eae71_a6617f1c",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-19T17:34:04Z",
+      "side": 1,
+      "message": "I traced the value of \"in_desc-\u003eflags\" and DIEPCTL3, which is about ec_usb TX endpoint.\n\n                    |   no traffic            | after dut-control lid_open timeout\n--------------------+-------------------------+------------------------------------\nin_desc-\u003eflags      | 0x8A000000              | 0x0A000006\n                    | DMA Done                | Host Ready             \u003c----\n  Tx Bytes          | 0 bytes                 | 6 Bytes                \u003c----\n  Last Desc         | True                    | True\n  Short Packet      | False                   | False\n  INTR on Complete  | True                    | True               \n--------------------+-------------------------+------------------------------------\nDIEPCTL3            | 0x00C98040              | 0x80C88040\n  EPENABLED [31]    | 0x1                     | 0x0                    \u003c----\n  TXFNUM    [25:22] | 0x3                     | 0x3\n  EPTYPE    [19:18] | 0x2 \u003d Bulk              | 0x02 \u003d Bulk\n  DPID      [16]    | 0x1 \u003d DATA 1            | 0x0 \u003d DATA 0           \u003c---\n  USBACTEP  [15]    | 0x1 \u003d Active            | 0x1 \u003d Active\n  Max Packet Size   | 0x40                    | 0x40\n   in bytes [10:0]  |                         |\n--------------------+-------------------------+------------------------------------\n\nOnce EC endpoint is corrupted, Tx Bytes doesn\u0027t decrease, in my observation.",
+      "parentUuid": "46958311_4caae23e",
+      "revId": "b83c2feb658bc5de8516dcca171959a671bed5b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
