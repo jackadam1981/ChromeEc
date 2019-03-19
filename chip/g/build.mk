@@ -130,6 +130,10 @@ ifneq ($(CR50_DEV),)
 CPPFLAGS += -DCR50_DEV=$(CR50_DEV)
 endif
 
+ifneq ($(CR50_SQA),)
+CPPFLAGS += -DCR50_DEV=$(CR50_SQA)
+endif
+
 MANIFEST := util/signer/ec_RW-manifest-dev.json
 CR50_RO_KEY ?= rom-testkey-A.pem
 
