@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "c567ce4a_bfc880a9",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-20T20:20:53Z",
+      "side": 1,
+      "message": "Jett, you might have forgotten to click \"Reply\" once you submitted comments on CL:1531275. Not seeing them here...\n\nIs there any reason we need to union the more descriptive field names with dword_lo and dword_hi at all? It seems to me that the only use of dword_lo and dword_hi would be to set values thru some ugly bitshifting, and that we should only provide the more descriptive fields.",
+      "parentUuid": "a56b1824_b32d4e78",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7647baae_ede34727",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
