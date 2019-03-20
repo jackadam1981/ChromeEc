@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "825c34a8_cbcdba3c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-20T16:42:23Z",
+      "side": 1,
+      "message": "can we put this consume_repeate_message call in the tcpm_dequeue_message?\n\nWe also need a note as to why the only applies to PD_TPCP (explain below in another comment)",
+      "range": {
+        "startLine": 2925,
+        "startChar": 0,
+        "endLine": 2927,
+        "endChar": 6
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b6ed9a_42f28207",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2949,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-20T16:42:23Z",
+      "side": 1,
+      "message": "we can move this into set_state near hook_notify(HOOK_USB_PD_DISCONNECT);\n\nLet\u0027s also add a comment saying that we need to only invalidate the RX last message ID for PD_TCPC since off-board TCPC will automatically perform this de-dup logic before notifying the EC.",
+      "range": {
+        "startLine": 2949,
+        "startChar": 3,
+        "endLine": 2949,
+        "endChar": 36
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0feba4_6f32876b",
+        "filename": "include/usb_pd_tcpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-20T16:42:23Z",
+      "side": 1,
+      "message": "we should add function headers here of what these do and when to call them",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 26
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
