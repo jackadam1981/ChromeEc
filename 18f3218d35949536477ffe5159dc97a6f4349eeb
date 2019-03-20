@@ -22,6 +22,30 @@
       "revId": "18f3218d35949536477ffe5159dc97a6f4349eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83da7f7a_dd5faa21",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-20T19:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d9b6c08_2dff06ef",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 12
+      },
+      "revId": "18f3218d35949536477ffe5159dc97a6f4349eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
