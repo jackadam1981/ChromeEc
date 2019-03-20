@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "605cce6b_e65a43ab",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-20T16:58:06Z",
+      "side": 1,
+      "message": "Ah-ha, it\u0027s \"local\" that suppresses the subshell exit code.  This works:\n\nfunction dut_control_get() {\n  local ARGS DUT_GETVAL RETVAL\n  ARGS\u003d( \"${DUT_CONTROL_CMD[@]}\" \"$@\" )\n  DUT_GETVAL\u003d$(\"${ARGS[@]}\")\n  RETVAL\u003d$?\n  if (( \"$RETVAL\" )); then\n    echo \"failed?: ${RETVAL}\"\n  else\n    echo \"success? ${RETVAL}\" \n  fi\n}\n\nOr for actual use here:\n\nfunction dut_control_get() {\n  local ARGS DUT_GETVAL RETVAL\n  ARGS\u003d( \"${DUT_CONTROL_CMD[@]}\" \"$@\" )\n  DUT_GETVAL\u003d$(\"${ARGS[@]}\")\n  RETVAL\u003d$?\n  if (( \"$RETVAL\" )); then\n    error \"dut-control command failed: ${ARGS[*]}\"\n    return \"$RETVAL\"\n  fi\n  echo \"${DUT_GETVAL#*:}\"\n}",
+      "parentUuid": "9f4a36a3_4148ddb7",
+      "revId": "5826faa95e14123adebc9d401e665a49b246bd96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e693cbb7_67f194c6",
         "filename": "util/flash_ec",
         "patchSetId": 3
