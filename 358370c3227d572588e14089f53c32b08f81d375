@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e1c109c3_053b100d",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-20T11:56:31Z",
+      "side": 1,
+      "message": "Done! moved to core/minute-ia folder. :)",
+      "parentUuid": "2532100a_c6fceec2",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7fd9b40_235bdfc1",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
@@ -108,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "4282ab0c_2a21447c",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-20T11:56:31Z",
+      "side": 1,
+      "message": "moved ia_structs.h into core/minute-ia folder with a new CL.\n\nsome questions:\n\ncore/minute-ia/interrupts.h already defined IDT_entry:\n\n/* Interrupt descriptor entry */\nstruct IDT_entry_t {\n\tuint16_t ISR_low;\t/* Low 16 bits of handler address. */\n\tuint16_t segment_selector;\t/* Flat model means this is not changed. */\n\tuint8_t zero;\t\t/* Must be set to zero. */\n\tuint8_t flags;\t\t/* Flags for this entry. */\n\tuint16_t ISR_high;\t/* High 16 bits of handler address. */\n} __attribute__ ((packed));\ntypedef struct IDT_entry_t IDT_entry;\n\nit\u0027s coding style seems not match others, such as has capital letters, and typdedef struct xxxx_t xxxx. \n\ncan we define a unify idt_entry with same style of other tables (gdt,ldt etc) in ia_structs.h,  such as : \nunion idt_entry {\n     struct {\n         uint32_t dword_lo;\n         uint32_t dword_hi;\n     }\n     struct {\n\tuint16_t isr_lo;\t/* Low 16 bits of handler address. */\n\tuint16_t segment_selector;\t/* Flat model means this is not changed. */\n\tuint8_t zero;\t\t/* Must be set to zero. */\n\tuint8_t flags;\t\t/* Flags for this entry. */\n\tuint16_t isr_hi;\t\n     }\n}\n\nand remove the IDT_entry_t in interrupts.h ? \nthis should be a very small changes to the interrupts.c and interrupts.h. \n\nhow do you think about it? if it\u0027s ok, will update the patch.",
+      "parentUuid": "173ee146_4050c71b",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7647baae_ede34727",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
@@ -155,6 +191,24 @@
       "side": 1,
       "message": "At a minimum can we use the same struct definitions to reduce the amount of bitshifting to make this happen?",
       "parentUuid": "1124eaf8_79933d88",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "344dba81_af1d1d90",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-20T11:56:31Z",
+      "side": 1,
+      "message": "do you mean to reuse the IDT_entry definitions in core/minute-ia/interrupts.h ?",
+      "parentUuid": "ed27b710_a4c1db06",
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
