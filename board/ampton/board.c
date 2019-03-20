@@ -342,3 +342,18 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+int board_get_sn5s330_analog_current_limit_delay(int port)
+{
+	int regval;
+
+	if (port == 0) {
+		regval = (PPX_ILIM_DEGLITCH_0_US_200 << 3) |
+			PPX_ILIM_DEGLITCH_0_US_1000;
+	} else {
+		regval = (PPX_ILIM_DEGLITCH_0_US_200 << 3) |
+			PPX_ILIM_DEGLITCH_0_US_200;
+	}
+
+	return regval;
+}

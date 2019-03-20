@@ -157,4 +157,7 @@ extern const struct ppc_drv sn5s330_drv;
  */
 void sn5s330_interrupt(int port);
 
+__attribute__((weak))
+int board_get_sn5s330_analog_current_limit_delay(int port);
+
 #endif /* defined(__CROS_EC_SN5S330_H) */
