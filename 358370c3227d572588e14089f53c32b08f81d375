@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "a56b1824_b32d4e78",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-20T17:14:42Z",
+      "side": 1,
+      "message": "I commented on CL:1531275 with this too. We should remove the definitions in interrupt.h and use the new more complete definitions you are providing.\n\nAlso, the existing definition in interrupts.h does not follow typically style, and we should correct that when we are moving the definitions. Thank you!",
+      "parentUuid": "4282ab0c_2a21447c",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7647baae_ede34727",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
@@ -209,6 +227,24 @@
       "side": 1,
       "message": "do you mean to reuse the IDT_entry definitions in core/minute-ia/interrupts.h ?",
       "parentUuid": "ed27b710_a4c1db06",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7608235_94049d04",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-20T17:14:42Z",
+      "side": 1,
+      "message": "interrupts.h should not have any duplicate definitions. Anything that is defined today that would go in this new file should be removed from interrupts.h",
+      "parentUuid": "344dba81_af1d1d90",
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

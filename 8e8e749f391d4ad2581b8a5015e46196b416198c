@@ -22,6 +22,30 @@
       "revId": "8e8e749f391d4ad2581b8a5015e46196b416198c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0d7385_4ac49a35",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-20T17:14:42Z",
+      "side": 1,
+      "message": "Let\u0027s add a open BUG and a TODO that tracks this work, please",
+      "parentUuid": "5763f7f7_e549e8ba",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "8e8e749f391d4ad2581b8a5015e46196b416198c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
