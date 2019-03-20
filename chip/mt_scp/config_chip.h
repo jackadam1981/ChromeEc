@@ -38,6 +38,8 @@
 #define CONFIG_PROGRAM_MEMORY_BASE 0
 #define CONFIG_MAPPED_STORAGE_BASE 0
 #define CONFIG_CHIP_MEMORY_REGIONS
+/* Enable MPU to protect code RAM from writing, and data RAM from execution.*/
+#define CONFIG_MPU
 
 /* Unsupported features/commands */
 #undef CONFIG_CMD_FLASHINFO
