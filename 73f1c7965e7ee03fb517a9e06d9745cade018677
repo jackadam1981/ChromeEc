@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "422a0dfa_2434a2a3",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-20T21:23:46Z",
+      "side": 1,
+      "message": "well, as per the comment you highlight below still only 7 bits should be used for the actual error code.\n\nI had to move VENDOR_RC_ERR into this enum because new compiler makes variable of enum vendor_cmd_rc typpe large enough to accommodate the maximum enum value, which makes them 8 bits in size, and in turn does not allow to set the 0x500 bits.",
+      "parentUuid": "220c211d_d6af19e2",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "73f1c7965e7ee03fb517a9e06d9745cade018677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bd77abf_4a5779cd",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2019-03-20T21:12:37Z",
       "side": 1,
       "message": "If it is still valid, then shouldn\u0027t this be moved to up close to \"enum vendor_cmd_rc\" as VENDOR_RC_ERR moved?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "73f1c7965e7ee03fb517a9e06d9745cade018677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a7cbe5_73c28147",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-20T21:23:46Z",
+      "side": 1,
+      "message": "good catch, will move to stay above VENDOR_RC_ERR assignment.",
+      "parentUuid": "1bd77abf_4a5779cd",
       "range": {
         "startLine": 175,
         "startChar": 0,
