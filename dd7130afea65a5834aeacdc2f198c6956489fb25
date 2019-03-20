@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0e521e_b79fdc25",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-20T01:15:20Z",
+      "side": 1,
+      "message": "why are you using strncasecmp() even though you are comparing the entire string?\n\nwill strcasecmp() not work? If you want to accept abbreviations you should be comparing up to strlen(argv[1])",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
