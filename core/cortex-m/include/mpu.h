@@ -76,6 +76,7 @@ enum mpu_region {
  * Enable MPU
  */
 void mpu_enable(void);
+void mpu_disable(void);
 
 /**
  * Returns the value of MPU type register

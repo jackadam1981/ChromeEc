@@ -147,7 +147,7 @@ void mpu_enable(void)
 	MPU_CTRL |= MPU_CTRL_PRIVDEFEN | MPU_CTRL_HFNMIENA | MPU_CTRL_ENABLE;
 }
 
-static void mpu_disable(void)
+void mpu_disable(void)
 {
 	MPU_CTRL &= ~(MPU_CTRL_PRIVDEFEN | MPU_CTRL_HFNMIENA | MPU_CTRL_ENABLE);
 }
