@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f475a17b_323057d2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-20T19:25:57Z",
+      "side": 1,
+      "message": "In the servo_v4 firmware branch, there is no implementation of tcpm_dequeue_message. Instead it has tcpm_get_message. So I kept consume_repeat_message outside so that it requires minimal effort to resolve merge conflict.",
+      "parentUuid": "825c34a8_cbcdba3c",
+      "range": {
+        "startLine": 2925,
+        "startChar": 0,
+        "endLine": 2927,
+        "endChar": 6
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19b6ed9a_42f28207",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
