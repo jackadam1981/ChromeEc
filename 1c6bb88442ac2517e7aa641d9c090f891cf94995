@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ce77395_346fcad3",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-20T20:22:38Z",
+      "side": 1,
+      "message": "For both ldt_entry and idt_entry, we should change dword_lo and dword_hi to smaller, more descriptive field names.",
+      "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
