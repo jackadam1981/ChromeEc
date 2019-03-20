@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b49c19e2_bcf6b55b",
+        "filename": "board/chocodile_vpdmcu/ec.tasklist",
+        "patchSetId": 59
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-03-20T22:47:46Z",
+      "side": 1,
+      "message": "expect this to be copied to new designs.  is this going to be needed on all instantiations, or is it specific to chocodile?",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc0427d_fa318537",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-03-20T22:47:46Z",
+      "side": 1,
+      "message": "whoa, why are you reinitting the ADC every time you read it",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
