@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c6a2137b_c8e076b6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2949,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-20T16:48:43Z",
+      "side": 1,
+      "message": "As a side question, how does this work on our ITE TCPCs?  I\u0027ve seen calls to invalidate the message ID in that code on soft reset or hard reset, but wasn\u0027t sure how things work on a disconnect.",
+      "parentUuid": "19b6ed9a_42f28207",
+      "range": {
+        "startLine": 2949,
+        "startChar": 3,
+        "endLine": 2949,
+        "endChar": 36
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0feba4_6f32876b",
         "filename": "include/usb_pd_tcpc.h",
         "patchSetId": 3
