@@ -73,7 +73,7 @@
 #define TASK_STACK_SIZE 488
 #define LARGER_TASK_STACK_SIZE 640
 #define VENTI_TASK_STACK_SIZE 768
-
+#define VCODEC_TASK_STACK_SIZE 1024 
 /* IPI */
 #define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
