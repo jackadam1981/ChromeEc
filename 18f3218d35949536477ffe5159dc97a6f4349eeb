@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d9b6c08_2dff06ef",
+        "filename": "util/flash_ec",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-20T19:19:29Z",
+      "side": 1,
+      "message": "I think you can avoid ENABLE_ERREXIT by doing either:\n\nRETVAL\u003d0\nDUT_GETVAL\u003d\"$( \"${ARGS[@]}\" )\" || RETVAL\u003d\"$?\"\n\nOr:\n\nDUT_GETVAL\u003d\"$( \"${ARGS[@]}\" )\" \u0026\u0026 RETVAL\u003d\"$?\" || RETVAL\u003d\"$?\"\n\nEither way include a comment explaining that this is to handle the set -e case.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 12
+      },
+      "revId": "18f3218d35949536477ffe5159dc97a6f4349eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
