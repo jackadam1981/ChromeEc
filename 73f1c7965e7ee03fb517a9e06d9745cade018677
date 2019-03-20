@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "755a232a_57f2812a",
+        "filename": "common/flash_log_vc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-20T21:12:37Z",
+      "side": 1,
+      "message": "s/2017/2019/",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "73f1c7965e7ee03fb517a9e06d9745cade018677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220c211d_d6af19e2",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-20T21:12:37Z",
+      "side": 1,
+      "message": "Since VENDOR_RC_ERR joined this enum - officially -, this comment should be either deleted or modified, in my opinion.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "73f1c7965e7ee03fb517a9e06d9745cade018677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd77abf_4a5779cd",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-20T21:12:37Z",
+      "side": 1,
+      "message": "If it is still valid, then shouldn\u0027t this be moved to up close to \"enum vendor_cmd_rc\" as VENDOR_RC_ERR moved?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "73f1c7965e7ee03fb517a9e06d9745cade018677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
