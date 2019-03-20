@@ -12,6 +12,7 @@
 #include "task_defs.h"
 #include "irq_handler.h"
 #include "console.h"
+#include "ia_structs.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -19,7 +20,7 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /* The IDT  - initialized in init.S */
-extern IDT_entry __idt[NUM_VECTORS];
+extern struct idt_entry __idt[NUM_VECTORS];
 
 /* To count the interrupt nesting depth. Usually it is not nested */
 volatile uint32_t __in_isr;
@@ -104,16 +105,12 @@ static const irq_desc_t system_irqs[] = {
 void set_interrupt_gate(uint8_t num, isr_handler_t func, uint8_t flags)
 {
 	uint16_t code_segment;
-	uint32_t base = (uint32_t) func;
-
-	__idt[num].ISR_low = (uint16_t) (base & USHRT_MAX);
-	__idt[num].ISR_high = (uint16_t) ((base >> 16UL) & USHRT_MAX);
 
 	/* When the flat model is used the CS will never change. */
 	__asm volatile ("mov %%cs, %0":"=r" (code_segment));
-	__idt[num].segment_selector = code_segment;
-	__idt[num].zero = 0;
-	__idt[num].flags = flags;
+
+	__idt[num].dword_lo = GEN_IDT_DESC_LO(func, code_segment, flags);
+	__idt[num].dword_up = GEN_IDT_DESC_UP(func, code_segment, flags);
 }
 
 /* This should only be called from an interrupt context */
@@ -259,11 +256,11 @@ void init_interrupts(void)
 
 	/* Setup gates for IRQs declared by drivers using DECLARE_IRQ */
 	for (; p < __irq_data_end; p++)
-		set_interrupt_gate(IRQ_TO_VEC(p->irq), p->routine, IDT_FLAGS);
+		set_interrupt_gate(IRQ_TO_VEC(p->irq), p->routine, IDT_DESC_FLAGS);
 
 	/* Setup gate for LAPIC_LVT_ERROR vector */
 	set_interrupt_gate(LAPIC_LVT_ERROR_VECTOR, _lapic_error_handler,
-			   IDT_FLAGS);
+			   IDT_DESC_FLAGS);
 
 	/* Mask all interrupts by default in IOAPIC */
 	for (entry = 0; entry < max_entries; entry++)
@@ -279,7 +276,7 @@ void init_interrupts(void)
 				      system_irqs[entry].polarity |
 				      system_irqs[entry].trigger);
 
-	set_interrupt_gate(ISH_TS_VECTOR, __switchto, IDT_FLAGS);
+	set_interrupt_gate(ISH_TS_VECTOR, __switchto, IDT_DESC_FLAGS);
 
 	/* Note: At reset, ID field is already set to 0 in APIC ID register */
 

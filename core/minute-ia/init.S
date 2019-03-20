@@ -7,6 +7,7 @@
 
 #include "config.h"
 #include "interrupts.h"
+#include "ia_structs.h"
 
 	.equ	CR0_NW,		(1 << 29)
 	.equ	CR0_CD,		(1 << 30)
@@ -25,7 +26,7 @@
 	.word def_irq_low	# low 16 bits of default_int_handler
 	.word code_seg
 	.byte 0
-	.byte IDT_FLAGS
+	.byte IDT_DESC_FLAGS
 	.word def_irq_high	# high 16 bits of default_int_handler
 .endm
 
