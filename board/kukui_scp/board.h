@@ -37,6 +37,8 @@
 #define CONFIG_RAM_BASE 0x10000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
 #define CONFIG_RAM_SIZE (CONFIG_IPC_SHARED_OBJ_ADDR - CONFIG_RAM_BASE)
+#define CONFIG_CODE_RAM_SIZE CONFIG_RAM_BASE
+#define CONFIG_DATA_RAM_SIZE (ICACHE_BASE - CONFIG_RAM_BASE)
 #define CONFIG_RO_MEM_OFF 0
 
 /* Access DRAM through cached access */
@@ -82,11 +84,6 @@
 #undef    UART0_PINMUX_11_12
 #undef    UART0_PINMUX_110_112
 
-/*
- * Allow dangerous commands all the time, since we don't have a write protect
- * switch.
- */
-#define CONFIG_SYSTEM_UNLOCKED
 /* Debugging features */
 #define CONFIG_DEBUG_EXCEPTIONS
 #define CONFIG_DEBUG_STACK_OVERFLOW

@@ -2689,7 +2689,16 @@
  * bytes, respectively.
  * Usually, CONFIG_DATA_RAM_SIZE = CONFIG_RAM_SIZE but some chips need to
  * allocate RAM for the mask ROM. Then CONFIG_DATA_RAM_SIZE > CONFIG_RAM_SIZE.
+ *
+ * CONFIG_CODE_RAM_SIZE indicate size of all code RAM available on the chip in
+ * bytes.  This is needed when a chip with external storage stored
+ * code section, or a chip without an internal flash but need to protect its
+ * code section.
+ * Usually, CONFIG_CODE_RAM_SIZE = CONFIG_RO_SIZE, but some chips may have other
+ * value, e.g. mt_scp which doesn't have RO image, and the size code RAM size
+ * is calculated by its memory layout.
  */
+#undef CONFIG_CODE_RAM_SIZE
 #undef CONFIG_DATA_RAM_SIZE
 #undef CONFIG_RAM_SIZE
 
@@ -3899,10 +3908,18 @@
 
 /******************************************************************************/
 /*
+ * Set default code ram size unless it's customized by the chip.
+ */
+#ifndef CONFIG_CODE_RAM_SIZE
+#define CONFIG_CODE_RAM_SIZE CONFIG_RO_SIZE
+#endif
+
+/******************************************************************************/
+/*
  * Set default data ram size unless it's customized by the chip.
  */
 #ifndef CONFIG_DATA_RAM_SIZE
-#define CONFIG_DATA_RAM_SIZE	CONFIG_RAM_SIZE
+#define CONFIG_DATA_RAM_SIZE CONFIG_RAM_SIZE
 #endif
 
 /******************************************************************************/
