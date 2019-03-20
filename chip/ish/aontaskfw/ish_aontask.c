@@ -271,12 +271,29 @@ struct ish_aon_share aon_share = {
 
 static void handle_d0i2(void)
 {
-	/* TODO set main SRAM into retention mode */
+	int delay_cnt;
 
-	/* ish_halt();*/
+	/* set SRAM to retention mode*/
+	PMU_LDO_CTRL = PMU_LDO_BIT_RETENTION_ON | PMU_LDO_BIT_ON;
+
+	/* delay some cycles before halt */
+	delay_cnt = SRAM_RETENTION_CYCLES_DELAY;
+
+	while (delay_cnt > 0)
+		delay_cnt--;
+
+	ish_halt();
 	/* wakeup from PMU interrupt */
 
-	/* TODO main SRAM into normal mode */
+	/* set SRAM to normal mode */
+	PMU_LDO_CTRL = PMU_LDO_BIT_ON;
+
+	/**
+	 * poll LDO_READY status to make sure SRAM LDO is on
+	 * (exited retention mode)
+	 */
+	while (!(PMU_LDO_CTRL & PMU_LDO_BIT_READY))
+		;
 }
 
 static void handle_d0i3(void)

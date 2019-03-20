@@ -211,18 +211,29 @@ static void enter_d0i0(void)
 
 static void enter_d0i1(void)
 {
-	timestamp_t t0, t1;
+	uint64_t current_irq_map;
 
+	timestamp_t t0, t1;
 	t0 = get_time();
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I1;
 
-	/* TODO: enable Trunk Clock Gating (TCG) of ISH */
+	/* only enable PMU wakeup interrupt */
+	current_irq_map = disable_all_interrupts();
+	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
+
+	/* enable Trunk Clock Gating (TCG) of ISH */
+	CCU_TCG_EN = 1;
 
 	/* halt ISH cpu, will wakeup from PMU wakeup interrupt */
 	ish_halt();
 
-	/* TODO disable Trunk Clock Gating (TCG) of ISH */
+	/* disable Trunk Clock Gating (TCG) of ISH */
+	CCU_TCG_EN = 0;
+
+	/* restore interrupts */
+	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
+	restore_interrupts(current_irq_map);
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
 
@@ -237,21 +248,36 @@ static void enter_d0i1(void)
 
 static void enter_d0i2(void)
 {
-	timestamp_t t0, t1;
+	uint64_t current_irq_map;
 
+	timestamp_t t0, t1;
 	t0 = get_time();
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I2;
 
-	/* TODO: enable Trunk Clock Gating (TCG) of ISH */
+	/* only enable PMU wakeup interrupt */
+	current_irq_map = disable_all_interrupts();
+	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
+
+	/* enable Trunk Clock Gating (TCG) of ISH */
+	CCU_TCG_EN = 1;
+
+	/* enable power gating of RF(Cache) and ROMs */
+	PMU_RF_ROM_PWR_CTRL = 1;
 
 	switch_to_aontask();
+
 	/* returned from aontask */
 
-	/* TODO just for test, will remove later */
-	ish_halt();
+	/* disable power gating of RF(Cache) and ROMs */
+	PMU_RF_ROM_PWR_CTRL = 0;
 
-	/* TODO disable Trunk Clock Gating (TCG) of ISH */
+	/* disable Trunk Clock Gating (TCG) of ISH */
+	CCU_TCG_EN = 0;
+
+	/* restore interrupts */
+	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
+	restore_interrupts(current_irq_map);
 
 	t1 = get_time();
 
