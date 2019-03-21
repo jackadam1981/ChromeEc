@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1370c48c_f81a6048",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T17:46:38Z",
+      "side": 1,
+      "message": "do we need to define CONFIG_ROM_BASE for zinger, stm32l476g-eval, and hadoken?\n\nAlso should we undef CONFIG_ROM_BASE in config.h with a description (that this is used in the no physical flash case)?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "04c8c39fbfa9dd11b83f797cb0080fa31080228d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
