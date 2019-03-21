@@ -147,7 +147,7 @@ enum pd_rx_errors {
 
 #define BDO(mode, cnt)      ((mode) | ((cnt) & 0xFFFF))
 
-#define SVID_DISCOVERY_MAX 16
+#define SVID_DISCOVERY_MAX 20
 
 /* Timers */
 #define PD_T_SINK_TX          (18*MSEC) /* between 16ms and 20 */
