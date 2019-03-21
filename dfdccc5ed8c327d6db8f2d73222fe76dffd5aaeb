@@ -52,6 +52,24 @@
       "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c613a3_3097c5f4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-03-21T18:28:38Z",
+      "side": 1,
+      "message": "Does the BUILD_ASSERT() need to be defined when building for util? Isn\u0027t it enough to have it for one target?\n\nI don\u0027t really care about the exact solution, but we should find some way to make sure this doesn\u0027t have any dependencies when copied out into any other project (not just the kernel). You can also define a new __IN_CROS_EC_DIR__ macro or something like that if you want.",
+      "parentUuid": "990a58d9_6a6e649c",
+      "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
