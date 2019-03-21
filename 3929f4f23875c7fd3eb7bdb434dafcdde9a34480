@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "21805416_267e0663",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-21T04:15:33Z",
+      "side": 1,
+      "message": "yes, it was my first reaction as well (the benefit is we can retain more unread entries when we reach the full log: 100% of its size instead of 25%). but if we do circular buffer, we\u0027ll have to erase \u0026 rewrite the log page in flash on every addition of the new log entry, instead of doing erase only when we are compacting. which may not be great for flash wear - not sure if that\u0027s a concern.",
+      "parentUuid": "320f0b6e_9c98c335",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77dbe003_94bbefe2",
         "filename": "common/flash_log.c",
         "patchSetId": 2
