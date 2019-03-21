@@ -180,6 +180,24 @@
     },
     {
       "key": {
+        "uuid": "058c8705_ebdcb894",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T21:36:32Z",
+      "side": 1,
+      "message": "I didn\u0027t click reply, thanks. they were pending. We should use the more descriptive set of field names instead of using bit shifting, yes.",
+      "parentUuid": "c567ce4a_bfc880a9",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7647baae_ede34727",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
