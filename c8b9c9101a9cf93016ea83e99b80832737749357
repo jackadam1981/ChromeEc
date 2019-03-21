@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e4e110a_5fbb9f09",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "Do we have any experience of failures like flash write failures etc from test devices etc? If so, we might be able to simply retry writing an object and invalidate the previous attempt with a retry limit. We also might need a way of ignoring a page if the page header cannot be written as intended.",
+      "range": {
+        "startLine": 244,
+        "startChar": 39,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40397812_1969ecba",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "There is some potential for pointer alignment issues here. It isn\u0027t a problem if data_offset is only ever set/changed in a safe way.",
+      "range": {
+        "startLine": 400,
+        "startChar": 37,
+        "endLine": 400,
+        "endChar": 52
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad22640_4db3e6ab",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "It might be helpful to say why you an object will only ever cross one boundary---the size of an object must be less than a page including the header.",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 470,
+        "endChar": 25
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b39cc0_5ad6aaa9",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "Does it make sense to make the alignment defined by a build time macro? If the alignment requirements aren\u0027t likely to vary, it is probably a non-issue.",
+      "range": {
+        "startLine": 578,
+        "startChar": 34,
+        "endLine": 578,
+        "endChar": 35
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5f865e_f03488d7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "Reshuffle?",
+      "range": {
+        "startLine": 742,
+        "startChar": 3,
+        "endLine": 742,
+        "endChar": 12
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9193584_bf6c784f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "Would it be preferable to save the container regardless of type (excluding deleted containers and delimiters) assuming certain fields like the size are always present? Alternatively you could reserve a group of types for ones that should be copied and ones that should not.\n\nI bring this up because we might want to be able to support rolling back without data loss.",
+      "range": {
+        "startLine": 802,
+        "startChar": 2,
+        "endLine": 803,
+        "endChar": 9
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac87c7a_4d60cd80",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "Do you actually check for two delimiters? It seems like the finalized delimiter from the last compacted page would be enough.",
+      "range": {
+        "startLine": 839,
+        "startChar": 1,
+        "endLine": 839,
+        "endChar": 23
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f448ee7_1094e8f1",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "It might be beneficial to add a debug-only/test-only assert to make sure data_size is in the expected range.",
+      "range": {
+        "startLine": 851,
+        "startChar": 31,
+        "endLine": 851,
+        "endChar": 40
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce9355f_d5b1fbec",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2019-03-21T23:09:20Z",
+      "side": 1,
+      "message": "You are not using the reserved_index parameter (unless I am missing something)",
+      "range": {
+        "startLine": 934,
+        "startChar": 48,
+        "endLine": 935,
+        "endChar": 19
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
