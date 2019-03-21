@@ -236,6 +236,30 @@
       "revId": "b430a424dbe1bb736162dd542622443246de88db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0125c53_163c55de",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-21T20:59:46Z",
+      "side": 1,
+      "message": "quickest way to detect GPP.\n\n1. manufacture \u003d 0x0072 (P9221R7_EPP_TX_MFG_CODE_REG)\n2. bit 25 of tx_id is 1 (P9221R7_PROP_TX_ID_REG)",
+      "parentUuid": "eed6c3cb_f23db8ee",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 43
+      },
+      "revId": "b430a424dbe1bb736162dd542622443246de88db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
