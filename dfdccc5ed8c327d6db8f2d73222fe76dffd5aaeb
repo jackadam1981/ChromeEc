@@ -34,6 +34,24 @@
       "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990a58d9_6a6e649c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113845
+      },
+      "writtenOn": "2019-03-21T10:48:44Z",
+      "side": 1,
+      "message": "Or, we can always define CHROMIUM_EC in EC Makefile.\nCurrently it is only used here.",
+      "parentUuid": "6c5bb154_b421e87f",
+      "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
