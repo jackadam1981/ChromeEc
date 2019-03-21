@@ -16,6 +16,52 @@
       "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92879dd8_6c7a8e51",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T21:35:23Z",
+      "side": 1,
+      "message": "We should make this definition more complete (see interrupts.h) and remove the version in interrupts.h",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a6b0ce_3bb063e4",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T21:35:23Z",
+      "side": 1,
+      "message": "we should keep this definition and remove the one in interrupt.h (and move existing code to use this definition in this CL)",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 67
+      },
+      "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
