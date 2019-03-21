@@ -53,8 +53,6 @@ void dcrypto_init_and_lock(void)
 	GREG32(CRYPTO, INT_STATE) = -1;   /* Reset all the status bits. */
 	GREG32(CRYPTO, INT_ENABLE) = -1;  /* Enable all status bits. */
 
-	task_enable_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
-
 	/* Reset. */
 	GREG32(CRYPTO, CONTROL) = 1;
 	GREG32(CRYPTO, CONTROL) = 0;
@@ -78,7 +76,7 @@ void dcrypto_unlock(void)
 
 uint32_t dcrypto_call(uint32_t adr)
 {
-	uint32_t event;
+	uint32_t event, status;
 
 	do {
 		/* Reset all the status bits. */
@@ -86,6 +84,24 @@ uint32_t dcrypto_call(uint32_t adr)
 	} while (GREG32(CRYPTO, INT_STATE) & 3);
 
 	GREG32(CRYPTO, HOST_CMD) = 0x08000000 + adr; /* Call imem:adr. */
+
+	/* In the vhaven emulator, writing to the HOST_CMD register
+	 * will run the entire DCRYPTO program synchronously.  As vhaven
+	 * also handles interrupts inefficiently (due to a flaw in Unicorn that
+	 * drops the JIT cache on every interrupt), it's considerably faster
+	 * (~30x) to check the status immediately after the call and avoid the
+	 * interrupt handling entirely.  On actual hardware, this is effectively
+	 * a no-op, as no practical program will complete this fast (a few clock
+	 * cycles), and we'll wait for completion on the interrupt instead.
+	 */
+	status = GREG32(CRYPTO, STATUS) & GC_CRYPTO_STATUS_STATE_MASK;
+	if (status == 0x0) { /* 0 == HALT */
+		return 0;
+	}
+
+	/* Enabling this interrupt late (ie, after the HOST_CMD call above) is
+	 * safe, because the interrupt is level-triggered and we can't miss it. */
+	task_enable_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
 
 	event = task_wait_event_mask(TASK_EVENT_DCRYPTO_DONE,
 				     DCRYPTO_CALL_TIMEOUT_US);
@@ -102,6 +118,7 @@ void __keep dcrypto_done_interrupt(void)
 {
 	GREG32(CRYPTO, INT_STATE) = GC_CRYPTO_INT_STATE_HOST_CMD_DONE_MASK;
 	task_clear_pending_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
+	task_disable_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
 	task_set_event(my_task_id, TASK_EVENT_DCRYPTO_DONE, 0);
 }
 DECLARE_IRQ(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT, dcrypto_done_interrupt, 1);
