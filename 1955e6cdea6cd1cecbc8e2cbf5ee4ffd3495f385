@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ccd372c7_05fb2f24",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4239,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:36:46Z",
+      "side": 1,
+      "message": "Maybe the comment should read something more like \"This space is reserved if the command is not a suspend\"? I wasn\u0027t actually trying to block out any extra space for non-suspend commands, just account for the space already taken by suspend commands.",
+      "parentUuid": "41cd7a43_f87315c6",
+      "range": {
+        "startLine": 4239,
+        "startChar": 2,
+        "endLine": 4239,
+        "endChar": 19
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac9b3244_8a60896c",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
