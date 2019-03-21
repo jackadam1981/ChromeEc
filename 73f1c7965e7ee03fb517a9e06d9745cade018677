@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "34725537_d0c8bfeb",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-21T18:12:16Z",
+      "side": 1,
+      "message": "this comment about 7 bits still deserves to be modified, otherwise seeing RC_ERR here is confusing.\nI\u0027d move the description of the error code bits here and say that we have 7 bits for the actual error code and RC_ERR is the T+V bits mask that is added to all of them.",
+      "parentUuid": "422a0dfa_2434a2a3",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "73f1c7965e7ee03fb517a9e06d9745cade018677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bd77abf_4a5779cd",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 3
