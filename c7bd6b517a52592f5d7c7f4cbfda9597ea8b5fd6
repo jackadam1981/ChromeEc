@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae397878_1dc6451e",
+        "filename": "board/nami_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-21T22:40:36Z",
+      "side": 1,
+      "message": "missing outer quotes on \"$(dirname ...)\"\n\nalso don\u0027t need braces with \"$0\"",
+      "revId": "c7bd6b517a52592f5d7c7f4cbfda9597ea8b5fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1abee303_7f0b7fb8",
+        "filename": "board/nocturne_fp/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-03-21T22:40:36Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "c7bd6b517a52592f5d7c7f4cbfda9597ea8b5fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
