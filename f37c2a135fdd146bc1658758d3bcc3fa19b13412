@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de69736e_0969a768",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T17:45:08Z",
+      "side": 1,
+      "message": "Please surround it by if (oem \u003d\u003d OEM_TEEMO) { ... }.",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 18
+      },
+      "revId": "f37c2a135fdd146bc1658758d3bcc3fa19b13412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
