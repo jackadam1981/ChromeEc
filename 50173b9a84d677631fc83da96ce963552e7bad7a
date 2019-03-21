@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e187e9fd_1898fc43",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-21T03:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179d86a2_2e8ccba6",
+      "revId": "50173b9a84d677631fc83da96ce963552e7bad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7650c255_adff3c5b",
         "filename": "board/kukui_scp/board.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-21T00:01:23Z",
       "side": 1,
       "message": "if the sizeof causes problem, move the #define under \"__ASSEMBLER__\"?\n\nBut, does the linker script even need to know CONFIG_IPC_SHARED_OBJ_ADDR?",
+      "revId": "50173b9a84d677631fc83da96ce963552e7bad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdf6f43_44cddfc4",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-21T03:32:11Z",
+      "side": 1,
+      "message": "\u003e if the sizeof causes problem, move the #define under \"__ASSEMBLER__\"?\n\nipi.c needs CONFIG_IPC_SHARED_OBJ_ADDR, so it should stay out of \"__ASSEMBLER__\"\n\n\u003e But, does the linker script even need to know CONFIG_IPC_SHARED_OBJ_ADDR?\n\nIt is needed at next patch actually: https://crrev.com/c/1530263/1/board/kukui_scp/board.h#50\n\nWe need this macro to locate the bound of the IRAM.",
+      "parentUuid": "7650c255_adff3c5b",
       "revId": "50173b9a84d677631fc83da96ce963552e7bad7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
