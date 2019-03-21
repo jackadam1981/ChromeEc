@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f4f6a4f_367a1600",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T22:15:44Z",
+      "side": 1,
+      "message": "nit: I would remove it because it\u0027s redundant.",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 17
+      },
+      "revId": "da42d8b027e2034505a8806c619c852024aaf8e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a446d7df_9c3a98b2",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T22:15:44Z",
+      "side": 1,
+      "message": "nit: This is more like \u0027range\u0027 or \u0027margin\u0027 than threshold.",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 20
+      },
+      "revId": "da42d8b027e2034505a8806c619c852024aaf8e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

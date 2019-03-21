@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "828e1fb7_70cce90c",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T22:15:44Z",
+      "side": 1,
+      "message": "This function is called only once per reset/jump.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 12
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255ea93b_683bba52",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T22:15:44Z",
+      "side": 1,
+      "message": "This is always true.",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 36
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa56b16_b7dadc77",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T22:15:44Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b438d9e_65d478e6",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T22:15:44Z",
+      "side": 1,
+      "message": "How about board_config_pre_init?",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 66
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
