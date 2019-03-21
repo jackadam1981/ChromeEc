@@ -22,6 +22,30 @@
       "revId": "a81151acf6428be236b8460d2b696a69b7300d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833473d7_0a2f84b1",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:39:06Z",
+      "side": 0,
+      "message": "I think so. This was added when we were debugging reset behavior and had instances of AP reset without TPM reset.\n\nThis has not been a problem for a while now, and in any case I think we don\u0027t want to be flooding the log with tpm reset events happening pretty often.",
+      "parentUuid": "46ed8240_621bcb64",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 769,
+        "endChar": 30
+      },
+      "revId": "a81151acf6428be236b8460d2b696a69b7300d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
