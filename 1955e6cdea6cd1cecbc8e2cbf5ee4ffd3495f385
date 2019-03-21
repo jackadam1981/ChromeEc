@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "41cd7a43_f87315c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4239,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T21:33:31Z",
+      "side": 1,
+      "message": "this doesn\u0027t reserve any space since the above struct is also uint16_t sized. Please remove (or make it bigger to actually reserve space)",
+      "range": {
+        "startLine": 4239,
+        "startChar": 2,
+        "endLine": 4239,
+        "endChar": 19
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac9b3244_8a60896c",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
