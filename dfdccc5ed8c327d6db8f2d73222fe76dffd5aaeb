@@ -16,6 +16,24 @@
       "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c5bb154_b421e87f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113845
+      },
+      "writtenOn": "2019-03-21T10:38:40Z",
+      "side": 1,
+      "message": "CHROMIUM_EC is defined when building EC images, but not defined when compiling \u0027util/*\u0027.\nNot sure if it would be better to always include compile_time_macros.h and add \u0027#ifndef ... #endif\u0027 to guard those macros.",
+      "parentUuid": "156e3133_16aa12bc",
+      "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
