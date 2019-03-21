@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "f5c73a10_431ed465",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:36:53Z",
+      "side": 1,
+      "message": "both wear and time - writing a few bytes of the new record is much faster than erasing the page and rewriting it.\n\nThe main idea of this is that the log grows very slow and is polled by the host often, so there is no harm in dropping old entries.",
+      "parentUuid": "21805416_267e0663",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77dbe003_94bbefe2",
         "filename": "common/flash_log.c",
         "patchSetId": 2

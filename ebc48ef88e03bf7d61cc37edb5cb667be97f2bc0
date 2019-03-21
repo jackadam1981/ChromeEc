@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ded12dfb_691fa7c6",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:36:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9aeb7df9_7144495d",
+      "range": {
+        "startLine": 202,
+        "startChar": 26,
+        "endLine": 202,
+        "endChar": 28
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d668440_1ca2a9a7",
         "filename": "common/flash_log.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-21T04:15:33Z",
       "side": 1,
       "message": "probably an overkill, but can we keep a track of such errors in in-memory variable (flag or counter) and dump an error about that (\"one or more log entries lost due to held lock\") next time when we successfully grab the lock for the next log entry (or periodically).",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 9
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac2cb1b_4c7ff055",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:36:53Z",
+      "side": 1,
+      "message": "sure, good idea, let me add it.",
+      "parentUuid": "6d668440_1ca2a9a7",
       "range": {
         "startLine": 255,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dded853f_3b26df64",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:36:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e60b419_8144d1f1",
+      "range": {
+        "startLine": 269,
+        "startChar": 7,
+        "endLine": 269,
+        "endChar": 19
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d3c2b4a_578a9f37",
         "filename": "common/flash_log.c",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "79740d41_0f228348",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:36:53Z",
+      "side": 1,
+      "message": "I was thinking about letting the user keep the context, but thought it was an overkill: so what if sometimes reading the log will require scanning it - this will not take much time and will happen very infrequently, I am not sure extra complexity is needed\n\nMaybe leave it as future enhancement?",
+      "parentUuid": "8d3c2b4a_578a9f37",
+      "range": {
+        "startLine": 303,
+        "startChar": 4,
+        "endLine": 303,
+        "endChar": 27
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da1c70d2_4421321c",
         "filename": "common/flash_log.c",
         "patchSetId": 3
@@ -105,6 +201,24 @@
       "writtenOn": "2019-03-21T04:15:33Z",
       "side": 1,
       "message": "don\u0027t we need to also reset log_write_cursor, so that the next flash_log_add_event() starts writing from the beginning?\nand don\u0027t we want to reset log_read_context so that it starts returning no entries after erasing? basically, clear the cached version when we erase the flash.\nand if so, erasing may need to go after the flash_log_dequeue_event() loop.",
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd77ee94_5eb7df29",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T14:36:53Z",
+      "side": 1,
+      "message": "good catch. I was always rebooting after erasing, so I did not see this problem, will add.",
+      "parentUuid": "da1c70d2_4421321c",
       "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
