@@ -222,6 +222,75 @@
       "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca10439_2aae0c41",
+        "filename": "test/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-21T18:31:29Z",
+      "side": 1,
+      "message": "s/2016/2019/",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cfe2520_4ec0f54b",
+        "filename": "test/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-21T18:31:29Z",
+      "side": 1,
+      "message": "nit: I think that it would be helpful for readers if this is replaced with \u0027e.r.payload[i] instead, which will be matching to line 481~483 in common/flash_log.c. \nline 100, and 110 should be like this as well:\n    flash_log_add_event(entry_type, payload_size, e.r.payload);\n\nOr, it can be just uint8 entry[] rather than union entry_u e.",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5465bc2_86767496",
+        "filename": "test/flash_log.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-21T18:31:29Z",
+      "side": 1,
+      "message": "s/2016/2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
