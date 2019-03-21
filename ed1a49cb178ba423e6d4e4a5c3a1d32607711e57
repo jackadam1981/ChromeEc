@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d7d312e3_8b471f59",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T21:40:19Z",
+      "side": 1,
+      "message": "okay, I can buy that.\n\nIf we leave it here, the flow control with {} and an ifdef seem like a future landmine, can we re-write it as follows:\n\nif (tcpm_dequeue_message(port, payload, \u0026head) \u003d\u003d\n\t\t\t\t\tEC_SUCCESS\n#ifdef CONFIG_USB_PD_TCPC\n     \u0026\u0026 !consume_repeat_message(port, head)\n#endif\n   ) {\n\nhandle_request(....\n\n}",
+      "parentUuid": "f475a17b_323057d2",
+      "range": {
+        "startLine": 2925,
+        "startChar": 0,
+        "endLine": 2927,
+        "endChar": 6
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19b6ed9a_42f28207",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
