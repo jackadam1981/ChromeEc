@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "37ca3a4b_90e2b309",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-21T19:39:13Z",
+      "side": 1,
+      "message": "You saw \u0027lid open\u0027 and \u0027lid close\u0027 on EC console, right? Can you mention that too?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "2998c33ea7f06532591dbf2ebb3180d3081a69b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28620642_95fb4114",
         "filename": "board/flapjack/gpio.inc",
         "patchSetId": 2
