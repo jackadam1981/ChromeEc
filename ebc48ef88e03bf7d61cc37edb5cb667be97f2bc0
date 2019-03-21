@@ -271,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "b7e4c911_c7e6ff28",
+        "filename": "test/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T18:48:31Z",
+      "side": 1,
+      "message": "of course, this should be .payload",
+      "parentUuid": "1cfe2520_4ec0f54b",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5465bc2_86767496",
         "filename": "test/flash_log.tasklist",
         "patchSetId": 3
@@ -291,6 +315,30 @@
       "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195d5950_8f31015d",
+        "filename": "test/flash_log.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-21T18:48:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5465bc2_86767496",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ebc48ef88e03bf7d61cc37edb5cb667be97f2bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
