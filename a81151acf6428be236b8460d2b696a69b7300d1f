@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46ed8240_621bcb64",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-21T04:17:34Z",
+      "side": 0,
+      "message": "does it mean we don\u0027t need this event in practice?",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 769,
+        "endChar": 30
+      },
+      "revId": "a81151acf6428be236b8460d2b696a69b7300d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
