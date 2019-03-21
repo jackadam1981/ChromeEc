@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac9b3244_8a60896c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4240,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "nit: If this union is left unnamed, then the use of \"u.\" can be avoided while accessing sleep_timeout_ms.",
+      "range": {
+        "startLine": 4240,
+        "startChar": 3,
+        "endLine": 4240,
+        "endChar": 4
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0cac84_673df436",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4267,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "same comment as above.",
+      "range": {
+        "startLine": 4267,
+        "startChar": 3,
+        "endLine": 4267,
+        "endChar": 4
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c1a2d0a_483b23bc",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "nit: Should be enough to check:\nif (slp_s0ix_transitions \u003c EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK)",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 42
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f5950a_5848ca52",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "If slp_s0ix_timeout is 0, this should just return early.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 26
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b3dc5d_5e7addf8",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "same here.",
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91b0a38_3a176d35",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "If slp_s0ix_timeout is set to 0(i.e. no failure detection case), then the deferred call will happen right away.",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 261,
+        "endChar": 32
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8224d4_465f6840",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "nit: s0ix_complete_resume?",
+      "range": {
+        "startLine": 686,
+        "startChar": 16,
+        "endLine": 686,
+        "endChar": 23
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff113b9d_ab7cfb3a",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "Why not set version \u003d 1 and get the value of sleep transitions?",
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296e238c_b117e9ba",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-21T06:47:14Z",
+      "side": 1,
+      "message": "No information printed out sleep transitions if sleep_event was resume?",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 18
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
