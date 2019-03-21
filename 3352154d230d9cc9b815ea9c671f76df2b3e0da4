@@ -34,6 +34,24 @@
       "revId": "3352154d230d9cc9b815ea9c671f76df2b3e0da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8255b2c1_117d28b5",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-21T19:04:54Z",
+      "side": 1,
+      "message": "[marking as resolved, the other CL has the changes]",
+      "parentUuid": "1d495b41_1924a23e",
+      "revId": "3352154d230d9cc9b815ea9c671f76df2b3e0da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
