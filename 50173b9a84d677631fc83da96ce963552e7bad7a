@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "179d86a2_2e8ccba6",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-21T00:01:23Z",
+      "side": 1,
+      "message": "super nit: /* alone on first line",
+      "revId": "50173b9a84d677631fc83da96ce963552e7bad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7650c255_adff3c5b",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-21T00:01:23Z",
+      "side": 1,
+      "message": "if the sizeof causes problem, move the #define under \"__ASSEMBLER__\"?\n\nBut, does the linker script even need to know CONFIG_IPC_SHARED_OBJ_ADDR?",
+      "revId": "50173b9a84d677631fc83da96ce963552e7bad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
