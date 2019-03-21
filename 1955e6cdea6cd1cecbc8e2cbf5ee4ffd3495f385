@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b663113_724c3e46",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4240,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "I know. I actually really like the explicit name there, as I think unions are often easy to miss, and time-consuming to debug. Having that little identifier there gives folks looking at the uses of this structure that little hint that they\u0027re reaching through something unioned. There was also a time when anonymous structs and unions were less portable, though that\u0027s less of a concern these days.\n\nAnyway, if it\u0027s important I can remove it, but I think it\u0027s nice.",
+      "parentUuid": "ac9b3244_8a60896c",
+      "range": {
+        "startLine": 4240,
+        "startChar": 3,
+        "endLine": 4240,
+        "endChar": 4
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d0cac84_673df436",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "8597b98f_b1eac5d8",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "If transitions occurred after the deferred timeout expired (so I had ORed in 0x80000000), but before the resume message, I\u0027d miss those transitions unless I have the MASK in there (since 0x8000001 \u003e 0x7FFFFFFF). So I think I need it, right?",
+      "parentUuid": "9c1a2d0a_483b23bc",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 42
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4f5950a_5848ca52",
         "filename": "power/intel_x86.c",
         "patchSetId": 3
@@ -82,6 +130,30 @@
       "writtenOn": "2019-03-21T06:47:14Z",
       "side": 1,
       "message": "If slp_s0ix_timeout is 0, this should just return early.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 26
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f589eb4_07c5d9fa",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "I guess you\u0027re suggesting this because I do need something for the case below, so might as well do it here as well for symmetry? But I could also just put the hook_call_deferred in the conditional portion, and then keep the increment_transitions as unconditional. The s0ix_increment_transition() is so little code it didn\u0027t seem worth it to conditionalize.",
+      "parentUuid": "d4f5950a_5848ca52",
       "range": {
         "startLine": 246,
         "startChar": 1,
@@ -134,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "4add131a_38efb2ce",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "Good catch. I\u0027ll make sure that case is tested before the next spin.",
+      "parentUuid": "f91b0a38_3a176d35",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 261,
+        "endChar": 32
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8224d4_465f6840",
         "filename": "power/intel_x86.c",
         "patchSetId": 3
@@ -157,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "7edf5be0_7048ecba",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c8224d4_465f6840",
+      "range": {
+        "startLine": 686,
+        "startChar": 16,
+        "endLine": 686,
+        "endChar": 23
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff113b9d_ab7cfb3a",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -174,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "e2a6b9f9_24f27b6d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "I\u0027d need to go detect what version of the command is supported in order to work with older ECs. I can add that.",
+      "parentUuid": "ff113b9d_ab7cfb3a",
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "296e238c_b117e9ba",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -185,6 +323,30 @@
       "writtenOn": "2019-03-21T06:47:14Z",
       "side": 1,
       "message": "No information printed out sleep transitions if sleep_event was resume?",
+      "range": {
+        "startLine": 561,
+        "startChar": 8,
+        "endLine": 561,
+        "endChar": 18
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75a1b8b_f8befb42",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-21T21:33:22Z",
+      "side": 1,
+      "message": "Yeah, this would be easy enough to add once I\u0027ve done all the version detection of what the EC supports.",
+      "parentUuid": "296e238c_b117e9ba",
       "range": {
         "startLine": 561,
         "startChar": 8,
