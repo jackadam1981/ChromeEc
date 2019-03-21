@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "94064fcb_b637e877",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-21T22:06:55Z",
+      "side": 1,
+      "message": "I can do that. I am totally in favor of not creating a future landmine.",
+      "parentUuid": "d7d312e3_8b471f59",
+      "range": {
+        "startLine": 2925,
+        "startChar": 0,
+        "endLine": 2927,
+        "endChar": 6
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19b6ed9a_42f28207",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
