@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96396628_5339e017",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T13:37:40Z",
+      "side": 1,
+      "message": "why is this here? anx7447_mux_init should get called appropriately if the ANX is also the mux.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 12
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f5fc5e_c2f481bd",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T13:37:40Z",
+      "side": 1,
+      "message": "should have port prefix",
+      "range": {
+        "startLine": 522,
+        "startChar": 10,
+        "endLine": 522,
+        "endChar": 13
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b18de9a_a1504388",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T13:37:40Z",
+      "side": 1,
+      "message": "while you are here can you add\n\nC%d to the front of this string, and add the port variable to the front of the list",
+      "range": {
+        "startLine": 543,
+        "startChar": 10,
+        "endLine": 543,
+        "endChar": 19
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075858c8_c984cf99",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T13:37:40Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 593,
+        "endChar": 6
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
