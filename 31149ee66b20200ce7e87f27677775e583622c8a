@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3590b098_6481ae09",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T17:31:45Z",
+      "side": 1,
+      "message": "Let\u0027s make T1 10 seconds, and T2 1 second",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "31149ee66b20200ce7e87f27677775e583622c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703be011_b64376b3",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-21T17:31:45Z",
+      "side": 1,
+      "message": "__builtin_unreachable(); should work here instead",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "31149ee66b20200ce7e87f27677775e583622c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
