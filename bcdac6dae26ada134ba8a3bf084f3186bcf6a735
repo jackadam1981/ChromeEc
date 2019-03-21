@@ -187,6 +187,30 @@
       "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6f2443_0fa194a9",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-21T17:18:28Z",
+      "side": 1,
+      "message": "The build error was due to the move of temp_zone enum in patchset #9 (which I had commented on). In patchset #8 both enum and temp_zones array are outside the function.",
+      "parentUuid": "2bcea9ab_56a6dbf9",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 3
+      },
+      "revId": "bcdac6dae26ada134ba8a3bf084f3186bcf6a735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
