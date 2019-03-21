@@ -13,7 +13,7 @@
 #endif
 
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 #ifdef CHROMIUM_EC
@@ -419,7 +419,7 @@ extern "C"{
  * parent structure that the alignment will still be true given the packing of
  * the parent structure.  This is particularly important if the sub-structure
  * will be passed as a pointer to another function, since that function will
- * not know about the misaligment caused by the parent structure's packing.
+ * not know about the misalignment caused by the parent structure's packing.
  *
  * Also be very careful using __packed - particularly when nesting non-packed
  * structures inside packed ones.  In fact, DO NOT use __packed directly;
@@ -5174,6 +5174,30 @@ struct ec_params_set_cbi {
  */
 #define EC_CMD_GET_UPTIME_INFO 0x0121
 
+/* Reset causes */
+#define EC_RESET_FLAG_OTHER       (1 << 0)   /* Other known reason */
+#define EC_RESET_FLAG_RESET_PIN   (1 << 1)   /* Reset pin asserted */
+#define EC_RESET_FLAG_BROWNOUT    (1 << 2)   /* Brownout */
+#define EC_RESET_FLAG_POWER_ON    (1 << 3)   /* Power-on reset */
+#define EC_RESET_FLAG_WATCHDOG    (1 << 4)   /* Watchdog timer reset */
+#define EC_RESET_FLAG_SOFT        (1 << 5)   /* Soft reset trigger by core */
+#define EC_RESET_FLAG_HIBERNATE   (1 << 6)   /* Wake from hibernate */
+#define EC_RESET_FLAG_RTC_ALARM   (1 << 7)   /* RTC alarm wake */
+#define EC_RESET_FLAG_WAKE_PIN    (1 << 8)   /* Wake pin triggered wake */
+#define EC_RESET_FLAG_LOW_BATTERY (1 << 9)   /* Low battery triggered wake */
+#define EC_RESET_FLAG_SYSJUMP     (1 << 10)  /* Jumped directly to this image
+					      */
+#define EC_RESET_FLAG_HARD        (1 << 11)  /* Hard reset from software */
+#define EC_RESET_FLAG_AP_OFF      (1 << 12)  /* Do not power on AP */
+#define EC_RESET_FLAG_PRESERVED   (1 << 13)  /* Some reset flags preserved from
+					      * previous boot */
+#define EC_RESET_FLAG_USB_RESUME  (1 << 14)  /* USB resume triggered wake */
+#define EC_RESET_FLAG_RDD         (1 << 15)  /* USB Type-C debug cable */
+#define EC_RESET_FLAG_RBOX        (1 << 16)  /* Fixed Reset Functionality */
+#define EC_RESET_FLAG_SECURITY    (1 << 17)  /* Security threat */
+#define EC_RESET_FLAG_AP_WATCHDOG (1 << 18)  /* AP experienced a watchdog reset
+					      */
+
 struct ec_response_uptime_info {
 	/*
 	 * Number of milliseconds since the last EC boot. Sysjump resets
@@ -5194,8 +5218,8 @@ struct ec_response_uptime_info {
 	uint32_t ap_resets_since_ec_boot;
 
 	/*
-	 * The set of flags which describe the EC's most recent reset.  See
-	 * include/system.h RESET_FLAG_* for details.
+	 * The set of flags which describe the EC's most recent reset.
+	 * See EC_RESET_FLAG_* for details.
 	 */
 	uint32_t ec_reset_flags;
 
