@@ -64,6 +64,10 @@
 #define CONFIG_SOFTWARE_PANIC
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VOLUME_BUTTONS
+#undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
+#define DEDICATED_CHARGE_PORT 1
+#define CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
 
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_MT6370
@@ -74,6 +78,7 @@
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
 #define CONFIG_CHARGER_OTG
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
@@ -232,6 +237,11 @@ enum sensor_id {
 	VSYNC,
 };
 
+enum charge_port {
+	CHARGE_PORT_USB_C,
+	CHARGE_PORT_POGO,
+};
+
 #include "gpio_signal.h"
 #include "registers.h"
 
@@ -242,6 +252,11 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+int board_discharge_on_ac(int enable);
+int board_charge_port_is_sink(int port);
+int board_charge_port_is_connected(int port);
+int board_get_source_voltage(int port);
+int board_get_source_current(int port);
 
 #endif /* !__ASSEMBLER__ */
 
