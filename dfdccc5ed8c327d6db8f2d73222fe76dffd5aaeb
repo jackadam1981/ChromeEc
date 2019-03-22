@@ -70,6 +70,24 @@
       "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d811ecbf_bc3bc37a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113845
+      },
+      "writtenOn": "2019-03-22T12:38:55Z",
+      "side": 1,
+      "message": "util.h includes compile_time_macros.h so we\u0027ll encounter BUILD_ASSERT redefinition error if we manually define it here.\nUploaded a separate CL for compile_time_macros.h things:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1535086",
+      "parentUuid": "55c613a3_3097c5f4",
+      "revId": "dfdccc5ed8c327d6db8f2d73222fe76dffd5aaeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
