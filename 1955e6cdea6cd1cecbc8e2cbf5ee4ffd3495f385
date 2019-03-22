@@ -96,6 +96,23 @@
     },
     {
       "key": {
+        "uuid": "b31563e7_1087ef66",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4244,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-03-22T15:10:44Z",
+      "side": 1,
+      "message": "Do we need to use the top bit of slp_s0ix_transitions to track if there was a timeout, or could we just have a separate flag to track this? Using a separate variable for the timeout flag will make the code simpler in places, so we don\u0027t have to `slp_s0ix_transitions \u0026 EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK`",
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d0cac84_673df436",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
