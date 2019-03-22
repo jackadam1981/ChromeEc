@@ -24,6 +24,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /* Charger parameters */
 static const struct charger_info rt946x_charger_info = {
