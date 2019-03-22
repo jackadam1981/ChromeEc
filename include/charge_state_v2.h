@@ -126,4 +126,27 @@ enum critical_shutdown {
 enum critical_shutdown board_critical_shutdown_check(
 		struct charge_state_data *curr);
 
+/**
+ * Callback to set battery level for shutdown
+ *
+ * A board can implement this to customize shutdown battery level at runtime.
+ *
+ * @return battery level for shutdown
+ */
+uint8_t board_set_battery_level_shutdown(void);
+
+/**
+ * Check whether enough power is available for the OS to boot.
+ *
+ * @return 0: Power is good. 1: Power is short.
+ */
+int charge_state_limit_power(void);
+
+/**
+ * Callback which allows a board to decide whether power is ready for OS
+ *
+ * @return 0: Power is good. 1: Power is short.
+ */
+int board_check_os_boot_power(void);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
