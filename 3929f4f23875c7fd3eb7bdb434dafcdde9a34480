@@ -156,6 +156,24 @@
     },
     {
       "key": {
+        "uuid": "65017862_f6efcfac",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-22T05:43:15Z",
+      "side": 1,
+      "message": "Yes. I think what I had in mind is log size \u003e erase size (page). If log size \u003d\u003d erase size, then there is no point using a circular log.",
+      "parentUuid": "858a199b_befe9cf1",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77dbe003_94bbefe2",
         "filename": "common/flash_log.c",
         "patchSetId": 2
