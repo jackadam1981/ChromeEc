@@ -704,12 +704,6 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED1]   = { 3, PWM_CONFIG_DSLEEP, 1200 },
 	[PWM_CH_LED2] = { 5, PWM_CONFIG_DSLEEP, 1200 },
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
-	/*
-	 * 1.2kHz is a multiple of both 50 and 60. So a video recorder
-	 * (generally designed to ignore either 50 or 60 Hz flicker) will not
-	 * alias with refresh rate.
-	 */
-	[PWM_CH_KBLIGHT] = { 2, 0, 1200 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -974,6 +968,24 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+static void bc12_enable(void)
+{
+	enum gpio_signal pin;
+	/* This branch is only for 2nd gen.. No need to check SKU or MODEL. */
+	switch (oem) {
+	case PROJECT_AKALI:	/* For Ekko, Bard */
+		pin = GPIO_BC12_ENABLE_1;
+		break;
+	case PROJECT_PANTHEON:	/* For Pyke */
+		pin = GPIO_BC12_ENABLE_2;
+		break;
+	default:
+		return;
+	}
+	gpio_set_level(pin, 1);
+	CPRINTS("BC12 enabled");
+}
+
 static void board_init(void)
 {
 	int reg;
@@ -1032,6 +1044,11 @@ static void board_init(void)
 		 */
 		swap(scancode_set2[0][4], scancode_set2[7][2]);
 #endif
+	if (host_get_events() &
+			EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY))
+		/* If recovery mode is being entered, enable BC1.2 for a USB
+		 * drive. */
+		bc12_enable();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -1054,7 +1071,9 @@ void board_kblight_init(void)
 	case PROJECT_SONA:
 		if (sku == 0x3AE2)
 			break;
+#ifdef CONFIG_PWM_KBLIGHT
 		kblight_register(&kblight_pwm);
+#endif
 		break;
 	}
 }
@@ -1067,4 +1086,47 @@ enum critical_shutdown board_critical_shutdown_check(
 	else
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 
+}
+
+uint8_t board_set_battery_level_shutdown(void)
+{
+	if (oem == PROJECT_VAYNE)
+		/* We match the shutdown threshold with Powerd's.
+		 * 4 + 1 = 5% because Powerd uses '<=' while EC uses '<'. */
+		return CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE + 1;
+	else
+		return BATTERY_LEVEL_SHUTDOWN;
+}
+
+/*
+ * Check if the board supports BC1.2 toggling. If it does, AP can boot on 15W.
+ */
+static int is_low_power_boot_supported(void)
+{
+	if ((oem == PROJECT_AKALI) &&
+			(model == MODEL_BARD || model == MODEL_EKKO))
+		return 1;
+	if ((oem == PROJECT_PANTHEON) && (sku & SKU_ID_MASK_PYKE))
+		return 1;
+	return 0;
+}
+
+int board_check_os_boot_power(void)
+{
+	int limit = charge_state_limit_power();
+
+	if (is_low_power_boot_supported()) {
+		if (!limit)
+			/* Power is ready. Enable BC1.2 before booting OS */
+			bc12_enable();
+	}
+
+	return limit;
+}
+
+int board_set_min_power_mw_for_power_on(void)
+{
+	if (is_low_power_boot_supported())
+		return 15000;
+	return CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON;
 }
