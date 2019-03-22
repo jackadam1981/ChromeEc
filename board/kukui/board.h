@@ -64,6 +64,9 @@
 #define CONFIG_SOFTWARE_PANIC
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VOLUME_BUTTONS
+#undef CONFIG_DEDICATED_CHARGE_PORT_COUNT
+#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
+#define DEDICATED_CHARGE_PORT 1
 
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_MT6370
@@ -225,6 +228,11 @@ enum sensor_id {
 	LID_GYRO,
 	LID_MAG,
 	VSYNC,
+};
+
+enum charge_port {
+	CHARGE_PORT_USB_C,
+	CHARGE_PORT_POGO,
 };
 
 #include "gpio_signal.h"
