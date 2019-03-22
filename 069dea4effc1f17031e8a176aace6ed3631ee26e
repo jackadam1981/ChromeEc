@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "91ac4aa7_d399838a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4226,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-22T23:05:45Z",
+      "side": 1,
+      "message": "What is the purpose of these single-element unions?",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c16ee505_36a5b641",
+        "filename": "include/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-03-22T23:05:45Z",
+      "side": 1,
+      "message": "Unless you have a specific reason, it\u0027s probably better from an alignment perspective to start the struct with the largest element",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eeda5b17_2c127062",
         "filename": "power/common.c",
         "patchSetId": 4
