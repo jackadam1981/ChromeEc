@@ -63,6 +63,25 @@ static void gauge_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_CHARGER);
 }
 
+static void pogo_vbus_present(enum gpio_signal signal)
+{
+	if (gpio_get_level(GPIO_POGO_VBUS_PRESENT)) {
+		struct charge_port_info info = {
+			.voltage = 5000, .current = 1500};
+
+		charge_manager_update_charge(
+			CHARGE_SUPPLIER_OTHER,
+			CHARGE_PORT_POGO,
+			&info);
+	} else {
+		charge_manager_update_charge(
+			CHARGE_SUPPLIER_OTHER,
+			CHARGE_PORT_POGO,
+			NULL);
+	}
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+
 #include "gpio_list.h"
 
 /******************************************************************************/
@@ -152,15 +171,29 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+static void board_pogo_charge_init(void)
+{
+	int i;
+	/* Initialize all charge suppliers to 0 */
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; i++)
+		charge_manager_update_charge(i, CHARGE_PORT_POGO, NULL);
+}
+DECLARE_HOOK(HOOK_INIT, board_pogo_charge_init,
+	     HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+
 int board_set_active_charge_port(int charge_port)
 {
 	CPRINTS("New chg p%d", charge_port);
+	/* TODO(b/128386458): implement POGO charge logic */
 
 	switch (charge_port) {
-	case 0:
+	case CHARGE_PORT_USB_C:
 		/* Don't charge from a source port */
 		if (board_vbus_source_enabled(charge_port))
 			return -1;
+		break;
+	case CHARGE_PORT_POGO:
+		CPRINTS("board_set_active_charge_port(CHARGE_PORT_POGO)");
 		break;
 	case CHARGE_PORT_NONE:
 		/*
@@ -236,6 +269,9 @@ static void board_init(void)
 
 	/* Enable gauge interrupt from max17055 */
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
+
+	/* Enable pogo charging signal */
+	gpio_enable_interrupt(GPIO_POGO_VBUS_PRESENT);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
