@@ -70,6 +70,24 @@
       "revId": "fabdbd197c2e6a2073ec84d3b03eca6ebb99fc1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a0073b_0e9488b4",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-22T05:52:45Z",
+      "side": 1,
+      "message": "Oh, udelay uses __hw_clock_source_read(). Not sure why that\u0027d make a difference, still.",
+      "parentUuid": "d0509f23_860e5e58",
+      "revId": "fabdbd197c2e6a2073ec84d3b03eca6ebb99fc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
