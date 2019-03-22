@@ -267,6 +267,24 @@
     },
     {
       "key": {
+        "uuid": "f3c08e37_545547eb",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T01:28:56Z",
+      "side": 1,
+      "message": "oh well, there are many examples of using callbacks, and in this case it has advantage of making the code easier to read, so I prefer to leave this as is.",
+      "parentUuid": "d3d60a97_bd6bd8c1",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9922d226_b6fad8bc",
         "filename": "common/flash_log.c",
         "patchSetId": 2

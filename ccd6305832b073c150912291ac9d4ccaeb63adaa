@@ -16,6 +16,24 @@
       "revId": "ccd6305832b073c150912291ac9d4ccaeb63adaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c217a5_e796f643",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T01:28:56Z",
+      "side": 1,
+      "message": "it is defined as default in flash.c, not available anywhere else.",
+      "parentUuid": "270bad6c_bb0f3133",
+      "revId": "ccd6305832b073c150912291ac9d4ccaeb63adaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
