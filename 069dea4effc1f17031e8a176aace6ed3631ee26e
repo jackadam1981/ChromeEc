@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "83f62542_5c09b654",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4226,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T23:53:22Z",
+      "side": 1,
+      "message": "The idea is to indicate that these parameters and return values are specific to certain values of sleep_state. For non-suspend sleep_state values for instance, the space used by suspend_params is available for other things.",
+      "parentUuid": "30104a2b_402b9283",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c16ee505_36a5b641",
         "filename": "include/power.h",
         "patchSetId": 4
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "dde5dd62_b9860da4",
+        "filename": "include/power.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T23:53:22Z",
+      "side": 1,
+      "message": "The compiler will add padding for me, but you\u0027re right it would look cleaner. Will fix.",
+      "parentUuid": "c16ee505_36a5b641",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eeda5b17_2c127062",
         "filename": "power/common.c",
         "patchSetId": 4
@@ -65,6 +101,24 @@
       "writtenOn": "2019-03-22T22:28:11Z",
       "side": 1,
       "message": "Is it possible to initialize ctx with a safe value, so that it is not sending back any uninitialized value from the stack to AP on resume - especially when version is \u003e\u003d 1 but CONFIG_POWER_S0IX_FAILURE_DETECTION is disabled.",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2f1e46_7332cdd6",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T23:53:22Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "eeda5b17_2c127062",
       "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
