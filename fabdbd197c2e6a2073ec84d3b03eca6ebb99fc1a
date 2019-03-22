@@ -16,6 +16,24 @@
       "revId": "fabdbd197c2e6a2073ec84d3b03eca6ebb99fc1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15024fc8_6d5f1b74",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-22T03:50:30Z",
+      "side": 1,
+      "message": "(but maybe we should figure out why the main clock is not on at this time, and fix that instead?",
+      "parentUuid": "565cab17_c106192c",
+      "revId": "fabdbd197c2e6a2073ec84d3b03eca6ebb99fc1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
