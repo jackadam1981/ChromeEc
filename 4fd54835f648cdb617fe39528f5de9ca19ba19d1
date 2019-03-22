@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d64b8d67_a7ca6dc4",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c11e647_101ebeb8",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e81f293b_a6f5d6ad",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0e794a2a_66cd3649",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "OK, that\u0027s what I had at first but I thought this looked cleaner. I\u0027ll revert.",
+      "parentUuid": "e81f293b_a6f5d6ad",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8793a27_c1a89be5",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-21T20:26:50Z",
       "side": 1,
       "message": "where is call supposed to come from otherwise?",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e008b4c_a5f8c8d3",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "I\u0027ll have to search. I\u0027m not sure. The old code had a guard here which I assumed meant that there if CONFIG_LSM6DSM_SEC_I2C isn\u0027t defined, there\u0027s some global cal that should be used. I must admit this #ifdef was very perplexing to me. Should we go through the other boards and see if this chip is used with some global cal defined?",
+      "parentUuid": "b8793a27_c1a89be5",
       "range": {
         "startLine": 104,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "43b74e1f_37197b76",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5dcf615_45e4077a",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 5
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc5bd45d_b8a5c1fa",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-03-21T20:26:50Z",
       "side": 1,
       "message": "should this mutex start before is_data_ready call?",
+      "range": {
+        "startLine": 256,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 11
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5b73d1_2ae3bbe2",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "That\u0027s what I thought too, but when you pointed me at https://chromium.googlesource.com/chromiumos/platform/ec/+/a4c7cc8ab45d47fff3ab4c45d6a93ea449208e4d/driver/accel_lis2dh.c#135 I see a different behavior. It seems that the mutex is only used for setting the sensor configuration and reading the values. I don\u0027t mind moving it up if you\u0027d like.",
+      "parentUuid": "dc5bd45d_b8a5c1fa",
       "range": {
         "startLine": 256,
         "startChar": 1,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "a92958f0_762ef80a",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "961f062a_f3c6a3d3",
+      "range": {
+        "startLine": 329,
+        "startChar": 9,
+        "endLine": 329,
+        "endChar": 23
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8069524f_95cbf065",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2019-03-21T20:26:50Z",
       "side": 1,
       "message": "why 1000 here? is it conversion from mHz to uHz?",
+      "range": {
+        "startLine": 358,
+        "startChar": 23,
+        "endLine": 358,
+        "endChar": 27
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c4943c_37144047",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Yeah, MAG_CAL_MIN_BATCH_WINDOW_US is in micro-seconds. So we\u0027re taking the normalized rate in mHz -\u003e uHz / window length \u003d\u003e total number of samples in a batch window. Should I add a comment explaining for the next person?",
+      "parentUuid": "8069524f_95cbf065",
       "range": {
         "startLine": 358,
         "startChar": 23,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "5b1285c0_85924ea0",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4acac21_97a83114",
+      "range": {
+        "startLine": 371,
+        "startChar": 3,
+        "endLine": 371,
+        "endChar": 19
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "083ed065_9076e9fc",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -197,6 +389,30 @@
       "writtenOn": "2019-03-21T20:26:50Z",
       "side": 1,
       "message": "should we ensure that the failure cause sets this to 0 (here and above if case too)",
+      "range": {
+        "startLine": 376,
+        "startChar": 3,
+        "endLine": 376,
+        "endChar": 13
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444ee97a_4bf68eae",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Failure here would be a write failure, so we didn\u0027t change the ODR. I\u0027m not sure we should set the base.odr to 0 in that case since it just hasn\u0027t changed.",
+      "parentUuid": "083ed065_9076e9fc",
       "range": {
         "startLine": 376,
         "startChar": 3,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "7f13ffb3_1945a29d",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfe2a92_9ecd50fc",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 389,
+        "endChar": 70
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78eb7969_df6aefcc",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
@@ -252,6 +492,30 @@
       "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e37b3762_be9e1e0e",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333749
+      },
+      "writtenOn": "2019-03-22T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78eb7969_df6aefcc",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "4fd54835f648cdb617fe39528f5de9ca19ba19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
