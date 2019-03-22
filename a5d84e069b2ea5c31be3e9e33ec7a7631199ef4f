@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "289306cf_3bda05fe",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-22T21:54:46Z",
+      "side": 1,
+      "message": "Okay, can we instead skip the #ifdef and call anx7447_mux_set(port, TYPEC_MUX_NONE) directly here instead. It feels weird to have this call the mux init based on the compiler options",
+      "parentUuid": "b5073ebc_00b0c51c",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 12
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9f5fc5e_c2f481bd",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 9
