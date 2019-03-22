@@ -93,6 +93,30 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7245deba_33f43be4",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-03-22T17:45:37Z",
+      "side": 1,
+      "message": "oh, sorry, I was looking at the patch delta; looks like you had moved it before and were just moving it back to where it was.  disregard.",
+      "parentUuid": "153f1619_0be8aa15",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
