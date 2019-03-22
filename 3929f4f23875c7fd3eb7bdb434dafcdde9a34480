@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "858a199b_befe9cf1",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T04:26:16Z",
+      "side": 1,
+      "message": "here are two options:\n\n- we try keeping a full circular log. We start with an empty page, then the log fills up and we need to wrap around. At this point if we want to keep the entire log, we\u0027d need to erase the entire page, write back most of the log and just overwrite  a little part of it, large enough for the new entry.\n\nThis is not a good idea for a couple obvious reasons:\n   . erasing the page every time is really expensive from flash wear \n     standpoint\n   . erasing and rewriting the entire page will take long time\n\n- we do not try to keep a full log. We keep filling it up until it is close to capacity, and then preserve the last 25% of it, erase the page and write the 25% of contents back. Erasing would happen much less often now, not with every new entry, but only when log is close to capacity. Saving new entries would be much faster, as there is no erase involved and just a few bytes have to be written, not 2K.\n\nSo, we need to write back the preserved 25% of the log - why not to write them at the beginning - in this case there is no need to worry about wrapping.\n\n\nDoes this make sense?",
+      "parentUuid": "831d5b04_1a2570ab",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77dbe003_94bbefe2",
         "filename": "common/flash_log.c",
         "patchSetId": 2
