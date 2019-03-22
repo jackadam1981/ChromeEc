@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30104a2b_402b9283",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4226,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-22T23:37:58Z",
+      "side": 1,
+      "message": "I have the same question, especially given that version \u0026 sleep state are used to extract the required information.",
+      "parentUuid": "91ac4aa7_d399838a",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c16ee505_36a5b641",
         "filename": "include/power.h",
         "patchSetId": 4
