@@ -37,6 +37,75 @@
     },
     {
       "key": {
+        "uuid": "04d933a1_31a3ebbf",
+        "filename": "common/flash_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-22T17:31:42Z",
+      "side": 1,
+      "message": "With what byte value?  Seems like we should reserve an entry type for this.\n\nOr do you mean that the entry size itself is padded?\n\nOr do you assume that all readers have some external way of knowing the flash programming alignment?",
+      "range": {
+        "startLine": 43,
+        "startChar": 56,
+        "endLine": 43,
+        "endChar": 62
+      },
+      "revId": "ccd6305832b073c150912291ac9d4ccaeb63adaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d774a8a8_f31c1df0",
+        "filename": "common/flash_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-22T17:31:42Z",
+      "side": 1,
+      "message": "This seems risky for events logged from a panic handler.  Perhaps those should not attempt compaction?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "ccd6305832b073c150912291ac9d4ccaeb63adaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928d17d6_bbcbf967",
+        "filename": "common/flash_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-22T17:31:42Z",
+      "side": 1,
+      "message": "(for example, if memory allocation fails)",
+      "range": {
+        "startLine": 65,
+        "startChar": 43,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "ccd6305832b073c150912291ac9d4ccaeb63adaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "651d152f_bb99eef6",
         "filename": "test/flash_log.c",
         "patchSetId": 4
