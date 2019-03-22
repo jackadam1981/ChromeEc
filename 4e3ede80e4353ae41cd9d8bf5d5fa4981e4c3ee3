@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9de2451d_246dcfa3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-22T16:54:01Z",
+      "side": 1,
+      "message": "Does it make sense to set this here, when it looks like the cable plug packet is sent before we have an explicit contract in place?\n\nWe may need to be more careful with the coding here.  I have copies of both the 2.0 version 1.3 and 3.0 version 1.2 spec in front of me, and it appears that between the two versions there\u0027s a change in the \"SOP\u0027/SOP\" Communication with Cable Plugs\" section such that in PD 2.0 the DFP can communicate with cable plugs, and in PD 3.0 it\u0027s the Vconn source which is allowed to communicate with them. \n\nOur current stack has some support written in for PD 3.0 but boards only use it for PD 2.0.  So you wouldn\u0027t necessarily need to implement the 3.0 logic right now, but try to keep it in mind and leave TODOs in the code.",
+      "range": {
+        "startLine": 1653,
+        "startChar": 0,
+        "endLine": 1655,
+        "endChar": 6
+      },
+      "revId": "4e3ede80e4353ae41cd9d8bf5d5fa4981e4c3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af5a703_9daf8af9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-22T16:54:01Z",
+      "side": 1,
+      "message": "What\u0027s the reasoning behind this?  Is it just to take advantage of the fact that only the source is allowed to communicate with cable plugs with no contract in place?",
+      "range": {
+        "startLine": 3274,
+        "startChar": 0,
+        "endLine": 3275,
+        "endChar": 19
+      },
+      "revId": "4e3ede80e4353ae41cd9d8bf5d5fa4981e4c3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2048ee2_e7b79dee",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-22T16:54:01Z",
+      "side": 1,
+      "message": "The flag name could describe the code actions better.  Ex. CHECK_CABLE or something similar",
+      "range": {
+        "startLine": 731,
+        "startChar": 8,
+        "endLine": 731,
+        "endChar": 33
+      },
+      "revId": "4e3ede80e4353ae41cd9d8bf5d5fa4981e4c3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
