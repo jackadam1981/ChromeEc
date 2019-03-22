@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5073ebc_00b0c51c",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1110359
+      },
+      "writtenOn": "2019-03-22T07:14:10Z",
+      "side": 1,
+      "message": "CCD case doesn\u0027t run to anx7447_mux_set,so anx7447_mux_init is added here. Then use anx7447_mux_set to determine which type-c device we use.",
+      "parentUuid": "96396628_5339e017",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 12
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9f5fc5e_c2f481bd",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 9
