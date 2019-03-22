@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f578cbc_37beaaba",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-22T22:04:12Z",
+      "side": 1,
+      "message": "nit: can we call this i2c_slave.o instead, just easier to read for me",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a057e17_c8fcbd31",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-22T22:04:12Z",
+      "side": 1,
+      "message": "what does this mean?\n\nand what does -1 mean, right shift by one?",
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6460859_ffddc826",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-22T22:04:12Z",
+      "side": 1,
+      "message": "please use .field_name initialization so it self doecuments what these field are",
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65368a4_bd98bddd",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-22T22:04:12Z",
+      "side": 1,
+      "message": "why not count?",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
