@@ -8,6 +8,7 @@
 #include "console.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/mag_lis2mdl.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -37,6 +38,7 @@ static struct mutex g_base_mutex;
 /* sensor private data */
 static struct lsm6dsm_data lsm6dsm_a_data;
 static struct stprivate_data g_lis2dh_data;
+static struct lis2mdl_private_data lis2mdl_a_data;
 
 /* Matrix to rotate lid sensor into standard reference frame */
 const mat33_fp_t lid_rot_ref = {
