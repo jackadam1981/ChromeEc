@@ -433,6 +433,18 @@ static void board_pmic_init(void)
 	if (err)
 		goto pmic_error;
 
+<<<<<<< HEAD   (1bc050 flapjack: reuse kukui_scp for flapjack)
+=======
+	/*
+	 * V100ACNT Register Field Description. Default: 0x2A
+	 * [1:0] : 11b Forced PWM Operation.
+	 * [5:4] : 01b Output Voltage Select Vnom (1V)
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V100ACNT, 0x1B);
+	if (err)
+		goto pmic_error;
+
+>>>>>>> CHANGE (9496ab Fizz: Apply VR1 fix for all variants)
 	CPRINTS("PMIC init done");
 	pmic_initialized = 1;
 	return;
