@@ -1067,3 +1067,26 @@ enum critical_shutdown board_critical_shutdown_check(
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 
 }
+
+uint8_t board_set_battery_level_shutdown(void)
+{
+	if (oem == PROJECT_VAYNE)
+		/* We match the shutdown threshold with Powerd's.
+		 * 4 + 1 = 5% because Powerd uses '<=' while EC uses '<'. */
+		return CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE + 1;
+	else
+		return BATTERY_LEVEL_SHUTDOWN;
+}
+
+int board_check_os_boot_power(void)
+{
+	int limit = charge_state_limit_power();
+
+	if (oem == PROJECT_PANTHEON && model == MODEL_PYKE) {
+		if (!limit)
+			/* Power is ready. Enable BC1.2 before booting OS */
+			gpio_set_level(GPIO_BC12_ENABLE, 1);
+	}
+
+	return limit;
+}

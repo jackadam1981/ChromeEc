@@ -104,7 +104,7 @@
 /* EC's thresholds. 3%: boot, 2%: no boot. Required for soft sync. */
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON		3
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC 1
-#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		27000
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON		15000
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT	15000
 /* AP's thresholds. */
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 3
@@ -301,6 +301,8 @@ enum model_id {
 	/* Akali variants */
 	MODEL_EKKO = 1,
 	MODEL_BARD = 2,
+	/* Pantheon variants */
+	MODEL_PYKE = 1,
 };
 
 #define SKU_ID_MASK_CONVERTIBLE	(1 << 9)
