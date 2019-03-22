@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "777cd4d8_2e9c10cd",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-22T18:12:42Z",
+      "side": 1,
+      "message": "uint32_t also stored as little-endian, so no need to reverse.",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 59
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca81123_49f167ce",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-22T18:12:42Z",
+      "side": 1,
+      "message": "Should read mf_id first. If it is not 0x72 then no need to read tx_id.",
+      "range": {
+        "startLine": 778,
+        "startChar": 2,
+        "endLine": 778,
+        "endChar": 65
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af6307f_4c086b9d",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-22T18:12:42Z",
+      "side": 1,
+      "message": "charge_supplier",
+      "range": {
+        "startLine": 788,
+        "startChar": 52,
+        "endLine": 788,
+        "endChar": 66
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b866a5c3_c9ca5c30",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-22T18:12:42Z",
+      "side": 1,
+      "message": "0x%08x. It\u0027s 32-bit.",
+      "range": {
+        "startLine": 788,
+        "startChar": 39,
+        "endLine": 788,
+        "endChar": 51
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       "revId": "26900a15131e1038d478098a9e123a2ac15e79de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e54c514_1be75de9",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-22T18:12:42Z",
+      "side": 1,
+      "message": "It\u0027s the WPC foriegn object detection.\n\nhttps://www.wirelesspowerconsortium.com/data/downloadables/1/9/0/9/wpc1704-vladimir-muratov-methods-for-foreign-object-detection.pdf",
+      "parentUuid": "b2092556_5181d1ce",
+      "range": {
+        "startLine": 406,
+        "startChar": 7,
+        "endLine": 406,
+        "endChar": 19
+      },
+      "revId": "26900a15131e1038d478098a9e123a2ac15e79de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
