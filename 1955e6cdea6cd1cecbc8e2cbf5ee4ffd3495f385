@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7f5e5a9a_a80d1302",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4239,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T18:08:32Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "55438aee_e6c64098",
+      "range": {
+        "startLine": 4239,
+        "startChar": 2,
+        "endLine": 4239,
+        "endChar": 19
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac9b3244_8a60896c",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "72a86985_5b83aa3e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4240,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T18:08:32Z",
+      "side": 1,
+      "message": "I\u0027m a sucker for consistency. I\u0027ll remove it.",
+      "parentUuid": "8d0ce7b4_5e129e9b",
+      "range": {
+        "startLine": 4240,
+        "startChar": 3,
+        "endLine": 4240,
+        "endChar": 4
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b31563e7_1087ef66",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -155,6 +203,24 @@
       "writtenOn": "2019-03-22T15:10:44Z",
       "side": 1,
       "message": "Do we need to use the top bit of slp_s0ix_transitions to track if there was a timeout, or could we just have a separate flag to track this? Using a separate variable for the timeout flag will make the code simpler in places, so we don\u0027t have to `slp_s0ix_transitions \u0026 EC_HOST_RESUME_SLEEP_TRANSITIONS_MASK`",
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261499a7_c8e476d3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4244,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T18:08:32Z",
+      "side": 1,
+      "message": "Sure, that\u0027s a possibility. I was trying to be efficient with the bytes since these messages go back and forth during suspend/resume, and a mask didn\u0027t seem super complicated. It seems ok as-is to me, do you feel strongly?",
+      "parentUuid": "b31563e7_1087ef66",
       "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -243,6 +309,30 @@
       "side": 1,
       "message": "I was making the assumption that if timeout occurred, there would be no more transitions.",
       "parentUuid": "8597b98f_b1eac5d8",
+      "range": {
+        "startLine": 239,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 42
+      },
+      "revId": "1955e6cdea6cd1cecbc8e2cbf5ee4ffd3495f385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e54879_f9478b61",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-03-22T18:08:32Z",
+      "side": 1,
+      "message": "Ah, yeah I think it might be useful to keep the count accurate just in case somebody is getting aggressive with their timeouts.",
+      "parentUuid": "0553d915_38baef26",
       "range": {
         "startLine": 239,
         "startChar": 5,
