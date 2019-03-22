@@ -16,19 +16,16 @@
 extern "C"{
 #endif
 
+#ifdef CHROMIUM_EC
 /*
  * Include common.h for CONFIG_HOSTCMD_ALIGNED, if it's defined. This
  * generates more efficient code for accessing request/response structures on
  * ARM Cortex-M if the structures are guaranteed 32-bit aligned.
  */
-#ifdef CHROMIUM_EC
 #include "common.h"
-#endif
-
-#ifdef __KERNEL__
-#define BUILD_ASSERT(_cond)
-#else
 #include "compile_time_macros.h"
+#else
+#define BUILD_ASSERT(_cond)
 #endif
 
 /*
