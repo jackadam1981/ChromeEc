@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "831d5b04_1a2570ab",
+        "filename": "common/flash_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-22T03:14:44Z",
+      "side": 1,
+      "message": "\u003e we\u0027ll have to erase \u0026 rewrite the log page in flash on every addition of the new log entry,\n\nReally? Normally you can just keep writing to an erased page.",
+      "parentUuid": "f5c73a10_431ed465",
+      "revId": "3929f4f23875c7fd3eb7bdb434dafcdde9a34480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77dbe003_94bbefe2",
         "filename": "common/flash_log.c",
         "patchSetId": 2
