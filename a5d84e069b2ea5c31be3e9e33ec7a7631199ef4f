@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5dc87d0b_f4e74263",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2019-03-22T07:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f5fc5e_c2f481bd",
+      "range": {
+        "startLine": 522,
+        "startChar": 10,
+        "endLine": 522,
+        "endChar": 13
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b18de9a_a1504388",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 9
@@ -92,6 +116,30 @@
       "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b080568_7e61250e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2019-03-22T07:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b18de9a_a1504388",
+      "range": {
+        "startLine": 543,
+        "startChar": 10,
+        "endLine": 543,
+        "endChar": 19
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +186,54 @@
       "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a61b817_8ed88f52",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2019-03-22T07:58:58Z",
+      "side": 1,
+      "message": "Only TYPEC_MUX_NONE",
+      "parentUuid": "d3972c97_be4bbcbe",
+      "range": {
+        "startLine": 593,
+        "startChar": 6,
+        "endLine": 593,
+        "endChar": 32
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06a6eda_6e6bab1b",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2019-03-22T07:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075858c8_c984cf99",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 593,
+        "endChar": 6
+      },
+      "revId": "a5d84e069b2ea5c31be3e9e33ec7a7631199ef4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
