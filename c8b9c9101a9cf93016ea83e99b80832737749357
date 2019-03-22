@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "918133f4_8bb2019b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "we have not seen instances of catastrophic flash failures yet, and this patchset is meant to make flash failures due to wear much less likely on top of that. We might want to think about working around persistent flash failures, but it should be a separate enhancement.",
+      "parentUuid": "9e4e110a_5fbb9f09",
+      "range": {
+        "startLine": 244,
+        "startChar": 39,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40397812_1969ecba",
         "filename": "common/new_nvmem.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-21T23:09:20Z",
       "side": 1,
       "message": "There is some potential for pointer alignment issues here. It isn\u0027t a problem if data_offset is only ever set/changed in a safe way.",
+      "range": {
+        "startLine": 400,
+        "startChar": 37,
+        "endLine": 400,
+        "endChar": 52
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7423df_01c2c842",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "this is a good point: there are issues with unaligned access, but they are addressed in the code using the pointer - when this function is called we don\u0027t know what the intended use is.\n\nAnd since page header address is guaranteed to be aligned properly, the user of this function has full control on the alignment of the result.",
+      "parentUuid": "40397812_1969ecba",
       "range": {
         "startLine": 400,
         "startChar": 37,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ef9a5849_bc19aece",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "added a comment.",
+      "parentUuid": "3ad22640_4db3e6ab",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 470,
+        "endChar": 25
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4b39cc0_5ad6aaa9",
         "filename": "common/new_nvmem.c",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2019-03-21T23:09:20Z",
       "side": 1,
       "message": "Does it make sense to make the alignment defined by a build time macro? If the alignment requirements aren\u0027t likely to vary, it is probably a non-issue.",
+      "range": {
+        "startLine": 578,
+        "startChar": 34,
+        "endLine": 578,
+        "endChar": 35
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a195c834_a9862938",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "yes, good point, I just recently found out that there are devices with different minimum write sizes in the EC tree. Let me use the config value instead.",
+      "parentUuid": "a4b39cc0_5ad6aaa9",
       "range": {
         "startLine": 578,
         "startChar": 34,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1bcb03f2_95af21a4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef5f865e_f03488d7",
+      "range": {
+        "startLine": 742,
+        "startChar": 3,
+        "endLine": 742,
+        "endChar": 12
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9193584_bf6c784f",
         "filename": "common/new_nvmem.c",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2019-03-21T23:09:20Z",
       "side": 1,
       "message": "Would it be preferable to save the container regardless of type (excluding deleted containers and delimiters) assuming certain fields like the size are always present? Alternatively you could reserve a group of types for ones that should be copied and ones that should not.\n\nI bring this up because we might want to be able to support rolling back without data loss.",
+      "range": {
+        "startLine": 802,
+        "startChar": 2,
+        "endLine": 803,
+        "endChar": 9
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631a01a9_6591c16a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this scheme allows for introducing new object types, especially since the (key,value) pair is so flexible, so I would not worry about rollback in this case.",
+      "parentUuid": "a9193584_bf6c784f",
       "range": {
         "startLine": 802,
         "startChar": 2,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0f2b7192_5afeddf8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "ah, another good point. Even though when compacting, delimiters are not copied, the delimiter added in lines 807..835  could be the last written object, let me add a check for that.",
+      "parentUuid": "8ac87c7a_4d60cd80",
+      "range": {
+        "startLine": 839,
+        "startChar": 1,
+        "endLine": 839,
+        "endChar": 23
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f448ee7_1094e8f1",
         "filename": "common/new_nvmem.c",
         "patchSetId": 8
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e609b5d1_bd86c4dc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "we don\u0027t really have much use for asserts, if this ever a problem, in debug setup panic text would be enough clue as of what happened.",
+      "parentUuid": "1f448ee7_1094e8f1",
+      "range": {
+        "startLine": 851,
+        "startChar": 31,
+        "endLine": 851,
+        "endChar": 40
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ce9355f_d5b1fbec",
         "filename": "common/new_nvmem.c",
         "patchSetId": 8
@@ -197,6 +389,30 @@
       "writtenOn": "2019-03-21T23:09:20Z",
       "side": 1,
       "message": "You are not using the reserved_index parameter (unless I am missing something)",
+      "range": {
+        "startLine": 934,
+        "startChar": 48,
+        "endLine": 935,
+        "endChar": 19
+      },
+      "revId": "c8b9c9101a9cf93016ea83e99b80832737749357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad6bd50_93debb2e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-22T18:40:48Z",
+      "side": 1,
+      "message": "good point, this comment is a leftover from code fractoring, changed the comment and the function prototype.",
+      "parentUuid": "6ce9355f_d5b1fbec",
       "range": {
         "startLine": 934,
         "startChar": 48,
