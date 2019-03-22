@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeda5b17_2c127062",
+        "filename": "power/common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-22T22:28:11Z",
+      "side": 1,
+      "message": "Is it possible to initialize ctx with a safe value, so that it is not sending back any uninitialized value from the stack to AP on resume - especially when version is \u003e\u003d 1 but CONFIG_POWER_S0IX_FAILURE_DETECTION is disabled.",
+      "revId": "069dea4effc1f17031e8a176aace6ed3631ee26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
