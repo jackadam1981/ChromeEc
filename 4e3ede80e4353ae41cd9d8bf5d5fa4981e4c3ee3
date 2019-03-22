@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca5e2a00_1763e4cf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-22T18:18:51Z",
+      "side": 1,
+      "message": "I\u0027ll remove the enabling in here since cable plug packet is sent before we have an explicit contract in place. I\u0027ll open a cros-bug and add TODO mentioning the above",
+      "parentUuid": "9de2451d_246dcfa3",
+      "range": {
+        "startLine": 1653,
+        "startChar": 0,
+        "endLine": 1655,
+        "endChar": 6
+      },
+      "revId": "4e3ede80e4353ae41cd9d8bf5d5fa4981e4c3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0af5a703_9daf8af9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "689ba730_32401870",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-22T18:18:51Z",
+      "side": 1,
+      "message": "Along with source being able to communicate before the explicit contract, another use case is for the source to limit the capabilities it offers based on the current carrying capability of the cable",
+      "parentUuid": "0af5a703_9daf8af9",
+      "range": {
+        "startLine": 3274,
+        "startChar": 0,
+        "endLine": 3275,
+        "endChar": 19
+      },
+      "revId": "4e3ede80e4353ae41cd9d8bf5d5fa4981e4c3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2048ee2_e7b79dee",
         "filename": "include/usb_pd.h",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-22T16:54:01Z",
       "side": 1,
       "message": "The flag name could describe the code actions better.  Ex. CHECK_CABLE or something similar",
+      "range": {
+        "startLine": 731,
+        "startChar": 8,
+        "endLine": 731,
+        "endChar": 33
+      },
+      "revId": "4e3ede80e4353ae41cd9d8bf5d5fa4981e4c3ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "844cbf33_544d7fa7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-22T18:18:51Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll change the name",
+      "parentUuid": "a2048ee2_e7b79dee",
       "range": {
         "startLine": 731,
         "startChar": 8,
