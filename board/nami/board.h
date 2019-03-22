@@ -304,6 +304,7 @@ enum model_id {
 #define SKU_ID_MASK_CONVERTIBLE	(1 << 9)
 #define SKU_ID_MASK_KEYPAD	(1 << 15)
 #define SKU_ID_MASK_UK2		(1 << 18)
+#define SKU_ID_MASK_PYKE	(1 << 24)
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*

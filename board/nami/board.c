@@ -1032,6 +1032,11 @@ static void board_init(void)
 		 */
 		swap(scancode_set2[0][4], scancode_set2[7][2]);
 #endif
+	if (host_get_events() &
+			EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY))
+		/* If recovery mode is being entered, enable BC1.2 for a USB
+		 * drive. */
+		gpio_set_level(GPIO_BC12_ENABLE, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -1067,4 +1072,45 @@ enum critical_shutdown board_critical_shutdown_check(
 	else
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 
+}
+
+uint8_t board_set_battery_level_shutdown(void)
+{
+	if (oem == PROJECT_VAYNE)
+		/* We match the shutdown threshold with Powerd's.
+		 * 4 + 1 = 5% because Powerd uses '<=' while EC uses '<'. */
+		return CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE + 1;
+	else
+		return BATTERY_LEVEL_SHUTDOWN;
+}
+
+/*
+ * Check if the board supports BC1.2 toggling. If it does, AP can boot on 15W.
+ */
+static int is_low_power_boot_supported(void)
+{
+	if ((oem == PROJECT_PANTHEON) && (sku & SKU_ID_MASK_PYKE))
+		return 1;
+
+	return 0;
+}
+
+int board_check_os_boot_power(void)
+{
+	int limit = charge_state_limit_power();
+
+	if (is_low_power_boot_supported()) {
+		if (!limit)
+			/* Power is ready. Enable BC1.2 before booting OS */
+			gpio_set_level(GPIO_BC12_ENABLE, 1);
+	}
+
+	return limit;
+}
+
+int board_set_min_power_mw_for_power_on(void)
+{
+	if (is_low_power_boot_supported())
+		return 15000;
+	return CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON;
 }
