@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "2f59a53e_2c07d15b",
+        "filename": "common/flash_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-03-22T19:11:56Z",
+      "side": 1,
+      "message": "I think this expresses your intent:\n\nLog entries are always aligned to a multiple of the physical flash write size.  It is assumed that the reader and writer both know that size.  Bytes between the end of one entry and the start of the next one have undefined value and are not examined by the reader.\n\nThough I think this would be safer:\n\nLog entries may be padded to a multiple of the physical flash write size by appending bytes with the value FLASH_LOG_PAD, which is a reserved entry type.  This enables a reader which does not know the physical flash write size to parse log entries from a flash page.\n\nThat also allows compaction to be more efficient.  Compacted entries could be completely byte-packed since they\u0027re all written at once.  New entries written after that can be padded to the write size.",
+      "parentUuid": "bc44e46a_e0cc9b32",
+      "range": {
+        "startLine": 43,
+        "startChar": 56,
+        "endLine": 43,
+        "endChar": 62
+      },
+      "revId": "ccd6305832b073c150912291ac9d4ccaeb63adaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d774a8a8_f31c1df0",
         "filename": "common/flash_log.c",
         "patchSetId": 4
