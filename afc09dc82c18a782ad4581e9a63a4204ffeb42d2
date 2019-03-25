@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "212de34f_129b3ee7",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "we don\u0027t need these lines if the depend on .o in build.mk file, right?",
+      "range": {
+        "startLine": 564,
+        "startChar": 1,
+        "endLine": 567,
+        "endChar": 32
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a66ad7_95319ef4",
+        "filename": "chip/ish/aontaskfw/ish_aon_share.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "main",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88cf258_df27a8f0",
+        "filename": "chip/ish/aontaskfw/ish_aon_share.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "main",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e481e5ca_44f6d48c",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "this should be fw, right?\n\ndid you want to create a new make variable names ish-aontask-dma?\n\n\nAlso please add .o suffix to end of filename\n\n(and do this for other lines in the file in their appropriate CL please)",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f0dd59_337e90e8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "let\u0027s call this __aon_ro_start and __aon_rw_start\n\nsince the platform/ec codebase already has a different concept that uses the RO and RW names.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774ca4d2_a17f8a93",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "what does snowball mean?",
+      "range": {
+        "startLine": 289,
+        "startChar": 8,
+        "endLine": 289,
+        "endChar": 21
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f498a47_d1b6ab96",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "should we account for these in the linker script? What will prevent us from reusing this same memory location?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 61
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33227b1_0af6ca71",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:48:25Z",
+      "side": 1,
+      "message": "did you change this so it would be in the RW section of ram instead of RO?",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 14
+      },
+      "revId": "afc09dc82c18a782ad4581e9a63a4204ffeb42d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
