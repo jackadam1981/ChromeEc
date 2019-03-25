@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa727a2b_ffc582ee",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "what if the bit is already set here, we will be turning off the VNN request.\n\nWe should check that the bit isn\u0027t already set (because someone else request requested that VNN bit)\n\n---\n\nAlso add a comment saying that we prevent platform S0ix while we are performing a dma transfer",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c6e797_60d199c5",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "nit: add a continue; in the loop please",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b97f11a7_76340718",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "can you explain this part (in a comment). Why are we enabled with kernel and disabled otherwise",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 50
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47c10def_07dd52ee",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "we should make a \n\n#define DMA_CTRL(chan) REG32(chan + 0x...4)\n\nand use\n\nDMA_CTRL \u003d chunk;\n\ndirectly\n\n\n(here and DMA_DAR(chan) and DAM_SAR(chan) below)",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 33
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d967a7b7_15ca3d39",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "nit: can be on one line",
+      "range": {
+        "startLine": 119,
+        "startChar": 17,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4c1e4f_570e3ade",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "make the definition of DMA_CLD_ERR_REG include REG32 so we can write to it directly",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cea371f_27c87ee2",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "we don\u0027t typically use typedefs in platform/ec, let\u0027s change this to\n\nenum dma_mode {\n  ...\n};\n\ninstead so it match other platform/ec code",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71defd3a_8a9918a4",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "where is UMA? is is DRAM?\n\nDoesn\u0027t the ish have isn\u0027t only local DRAM?",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da730169_0cf1a3c9",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "why type of return codes are expected on success or failure\n\n(here and other method in the file)",
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d714f84f_1d4c4e26",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "is this setting a configuration but not doing any transfer?\n\nIf so, let\u0027s name is somethign else like ish_dma_set_page_size etc.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6d3ac4_45feb5da",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:16:51Z",
+      "side": 1,
+      "message": "Can you spell what OCP is please",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "40f3c562a8e416effb66e749f3340031b21074c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
