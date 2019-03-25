@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "f65de8a5_5d4077b5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2949,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-25T22:18:32Z",
+      "side": 1,
+      "message": "Makes sense and thanks for pointing that out. I definitely did overlook the #ifdef USB_PD_DUAL_ROLE and that is why I felt like it handles only the SRC_DISCONNECTED case.",
+      "parentUuid": "50024f74_1d073a6b",
+      "range": {
+        "startLine": 2949,
+        "startChar": 3,
+        "endLine": 2949,
+        "endChar": 36
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0feba4_6f32876b",
         "filename": "include/usb_pd_tcpc.h",
         "patchSetId": 3
