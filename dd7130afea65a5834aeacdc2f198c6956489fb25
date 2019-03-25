@@ -70,6 +70,30 @@
       "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af0a5563_c0eb18fa",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-25T23:13:01Z",
+      "side": 1,
+      "message": "Now the commands just compare the \"follow\" part of the string.",
+      "parentUuid": "c3d37a8a_e954ad27",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
