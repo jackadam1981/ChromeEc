@@ -54,7 +54,7 @@
 #define TASK_STACK_SIZE 488
 #define LARGER_TASK_STACK_SIZE 640
 #define VENTI_TASK_STACK_SIZE 768
-
+#define VCODEC_TASK_STACK_SIZE 512 
 #define CONFIG_CHIP_PRE_INIT
 
 #define GPIO_PIN(num) ((num) / 32), ((num) % 32)
