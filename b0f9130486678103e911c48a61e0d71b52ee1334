@@ -22,6 +22,30 @@
       "revId": "b0f9130486678103e911c48a61e0d71b52ee1334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385c9200_7c816995",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-25T23:46:54Z",
+      "side": 1,
+      "message": "I don\u0027t think I would know what bp enable means in terms of disconnecting and connecting the battery.",
+      "parentUuid": "75cd1ae7_57f076aa",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "b0f9130486678103e911c48a61e0d71b52ee1334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
