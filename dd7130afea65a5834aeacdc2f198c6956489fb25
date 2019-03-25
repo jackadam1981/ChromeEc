@@ -94,6 +94,30 @@
       "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79ceb542_dcacf861",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-25T23:21:51Z",
+      "side": 1,
+      "message": "I like use of the strn variants to protect against buffer overflows if one or more of the string arguments is missing a NUL.",
+      "parentUuid": "c3d37a8a_e954ad27",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
