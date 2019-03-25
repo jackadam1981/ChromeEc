@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bb11ec3_d23d7667",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-25T19:41:07Z",
+      "side": 1,
+      "message": "__attribute__ ((noreturn))",
+      "revId": "bd29f46403f812080ce31c95d11d3071e7119261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4517374_afc4e318",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-25T19:41:07Z",
+      "side": 1,
+      "message": "Make sure to add CQ-DEPEND as appropriate, as this is not defined in this CL.",
+      "revId": "bd29f46403f812080ce31c95d11d3071e7119261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678f46b4_f8f11b87",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-03-25T19:41:07Z",
+      "side": 1,
+      "message": "__attribute__ ((noreturn))\n\nand add infinite loop or __builtin_unreachable after the changing the registers?",
+      "revId": "bd29f46403f812080ce31c95d11d3071e7119261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
