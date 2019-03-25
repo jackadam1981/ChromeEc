@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "e3ef321f_cd92861c",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:55:37Z",
+      "side": 1,
+      "message": "Please add a comment explain this and how it is used please. And that -1 means unused.",
+      "parentUuid": "1134cf17_1e09706c",
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6460859_ffddc826",
         "filename": "chip/it83xx/i2cs.c",
         "patchSetId": 13
@@ -187,6 +205,30 @@
       "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a77998f_cc7f7f7a",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:55:37Z",
+      "side": 1,
+      "message": "sounds good. thanks for the explanation",
+      "parentUuid": "66463af5_bf3969f0",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
