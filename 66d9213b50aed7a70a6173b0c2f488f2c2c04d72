@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70a111dc_7806098f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T22:20:02Z",
+      "side": 1,
+      "message": "you don\u0027t need the weak attribute here, do you. I thought you only needed that on the implementation side",
+      "range": {
+        "startLine": 1855,
+        "startChar": 39,
+        "endLine": 1855,
+        "endChar": 62
+      },
+      "revId": "66d9213b50aed7a70a6173b0c2f488f2c2c04d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
