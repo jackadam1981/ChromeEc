@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75cd1ae7_57f076aa",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-25T23:40:39Z",
+      "side": 1,
+      "message": "since parse_pool() supports off/false/disable/no and on/true/enable/yes you could switch the BP command usage to \u003cbool\u003e/follow_batt_pres. Then the argument parsing could be moved into command_wp() and shared by both.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "b0f9130486678103e911c48a61e0d71b52ee1334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
