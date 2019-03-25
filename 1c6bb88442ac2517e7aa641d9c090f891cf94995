@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "1dbfb46d_5ce7db9f",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-25T09:03:50Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "92879dd8_6c7a8e51",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "232e0cb9_689c1e84",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-25T09:03:50Z",
+      "side": 1,
+      "message": "Done！ using union structure for both detail smaller fields and lower \u0026 upper dword which are easy for data value assignment using bit shift macros.",
+      "parentUuid": "6ce77395_346fcad3",
+      "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87a6b0ce_3bb063e4",
         "filename": "core/minute-ia/ia_structs.h",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e669e0_40c28205",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-25T09:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a6b0ce_3bb063e4",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 67
+      },
+      "revId": "1c6bb88442ac2517e7aa641d9c090f891cf94995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
