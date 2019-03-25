@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbadfa95_1153f019",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T09:24:59Z",
+      "side": 1,
+      "message": "Change to static variable.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "113988e5ff922d3445674ab5a72370ef4497cdd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "479e707e_ad633f81",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T09:24:59Z",
+      "side": 1,
+      "message": "Add the time out register.",
+      "range": {
+        "startLine": 258,
+        "startChar": 2,
+        "endLine": 258,
+        "endChar": 45
+      },
+      "revId": "113988e5ff922d3445674ab5a72370ef4497cdd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

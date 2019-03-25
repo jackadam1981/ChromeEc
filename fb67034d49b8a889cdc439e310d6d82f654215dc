@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13a43cab_3cea216f",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T09:24:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0f578cbc_37beaaba",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a057e17_c8fcbd31",
         "filename": "chip/it83xx/i2cs.c",
         "patchSetId": 13
@@ -36,6 +60,24 @@
       "writtenOn": "2019-03-22T22:04:12Z",
       "side": 1,
       "message": "what does this mean?\n\nand what does -1 mean, right shift by one?",
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1134cf17_1e09706c",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T09:24:59Z",
+      "side": 1,
+      "message": "The base address of enhanced channel D, E and F are respectively located \nat a fixed spacing. The \"reg_shift\" is a parameter to calculate address \nof channel D, E and F respectively. Channel A and channel D, E. F are\nlocated in different areas, this parameter is not required.",
+      "parentUuid": "9a057e17_c8fcbd31",
       "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d965b480_2d91bd84",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T09:24:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d6460859_ffddc826",
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f65368a4_bd98bddd",
         "filename": "chip/it83xx/i2cs.c",
         "patchSetId": 13
@@ -70,6 +130,30 @@
       "writtenOn": "2019-03-22T22:04:12Z",
       "side": 1,
       "message": "why not count?",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ecabf7_51a9d38d",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T09:24:59Z",
+      "side": 1,
+      "message": "In the read ISR, no matter how many data bytes are transferred, \nI2C slave will receive 16 bytes data at one time. The count will\nshow the not enough 16 bytes amount of data for the last time, \nand these data will be handled at stop condition.",
+      "parentUuid": "f65368a4_bd98bddd",
       "range": {
         "startLine": 81,
         "startChar": 20,
