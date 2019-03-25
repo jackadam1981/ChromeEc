@@ -342,3 +342,10 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+static void usb_charge_mode_init(void)
+{
+	usb_charge_set_mode(1, USB_CHARGE_MODE_CDP,
+		USB_DISALLOW_SUSPEND_CHARGE);
+}
+DECLARE_HOOK(HOOK_INIT, usb_charge_mode_init, HOOK_PRIO_DEFAULT + 1);
