@@ -22,6 +22,30 @@
       "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edadc08b_6c7df876",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-25T22:55:42Z",
+      "side": 1,
+      "message": "I think I\u0027m going to switch to just comparing the first 6 letters to save some space. same with the wp command.\n\nNo other strncasecmp calls check the length of argv[1]. Is it necessary? Should we be doing that everywhere?",
+      "parentUuid": "1b0e521e_b79fdc25",
+      "range": {
+        "startLine": 149,
+        "startChar": 6,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "dd7130afea65a5834aeacdc2f198c6956489fb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
