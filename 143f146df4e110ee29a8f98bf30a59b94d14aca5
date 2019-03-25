@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "4880763e_12cca3c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-25T15:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43669c53_29201d9f",
+      "range": {
+        "startLine": 9,
+        "startChar": 66,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "143f146df4e110ee29a8f98bf30a59b94d14aca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a08dc3db_cdb1e7e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-25T15:58:22Z",
+      "side": 1,
+      "message": "Done\n\nsorry, typed this up in the environment without spell checker.",
+      "parentUuid": "ecd25c2a_745007b8",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "143f146df4e110ee29a8f98bf30a59b94d14aca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98285ff8_d22f466a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "143f146df4e110ee29a8f98bf30a59b94d14aca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe00ba76_84b4687a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-25T15:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98285ff8_d22f466a",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "143f146df4e110ee29a8f98bf30a59b94d14aca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0a8a71d6_3bedf18c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-25T15:58:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5762c2_e9a867c9",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "143f146df4e110ee29a8f98bf30a59b94d14aca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d134699_4840a6e9",
         "filename": "include/flash_log.h",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2019-03-24T01:49:40Z",
       "side": 1,
       "message": "nit: s/monotonously/monotonically/\n\nNote that flash_log_dequeue_event() relies on the timestamp incrementing between log events.  That works with a monotonic counter, but is unlikely to be true with a 32-bit wall clock time.\n\nIf two events have the same timestamp, then looping with flash_log_dequeue_event() will skip the second event.\n\nI don\u0027t have a good way around that without adding more complexity, such as a variable-length encoding of a higher-bit-depth timestamp.  If you go that way, you could also use differential timestamps, which will yield a more efficient encoding because the delta between timestamps is likely \u003c32 bits.",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 28
+      },
+      "revId": "143f146df4e110ee29a8f98bf30a59b94d14aca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cacb91_b989621f",
+        "filename": "include/flash_log.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-25T15:58:22Z",
+      "side": 1,
+      "message": "yes, I thought about this (a chance of having multiple entries having the same timestamp).\n\nOne of the expectations of the users of this facility is that the events are very rare, but generally speaking they still could happen within a second.\n\nMaybe the solution would be to have the retrieval context keep track of entries with the same timestamp. I suggest we leave this for the time when real time is available and are used here, adding a TODO.",
+      "parentUuid": "1d134699_4840a6e9",
       "range": {
         "startLine": 31,
         "startChar": 4,
