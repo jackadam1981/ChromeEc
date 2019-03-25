@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "50024f74_1d073a6b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2949,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:59:35Z",
+      "side": 1,
+      "message": "The set_state suggestion will actually handle both src and snk cases. The code is difficult to follow because of all of the ifdef. In dual role toggle mode, this is the start of the if statement: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/a4c7cc8ab45d47fff3ab4c45d6a93ea449208e4d/common/usb_pd_protocol.c#670",
+      "parentUuid": "b3118ce9_3bd97c89",
+      "range": {
+        "startLine": 2949,
+        "startChar": 3,
+        "endLine": 2949,
+        "endChar": 36
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0feba4_6f32876b",
         "filename": "include/usb_pd_tcpc.h",
         "patchSetId": 3
