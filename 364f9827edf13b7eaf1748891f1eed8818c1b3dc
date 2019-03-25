@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "dc15c759_c75dfd88",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-25T20:49:02Z",
+      "side": 1,
+      "message": "sorry, I missed this comment at the time.\n\nI don\u0027t think it is a good idea to add more code just to verify this feature, we need to measure actual signal state, maybe check how it behaves with VPP1800 and VP3300 cases (it is supposed to be 3.3V tolerant, right).\n\nAlso, the test should include running on a few representative platforms. Do they all have pullups on this pin?",
+      "parentUuid": "a3b344ed_bdd8e147",
+      "range": {
+        "startLine": 870,
+        "startChar": 8,
+        "endLine": 870,
+        "endChar": 39
+      },
+      "revId": "364f9827edf13b7eaf1748891f1eed8818c1b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74873dd4_f4f2f299",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
