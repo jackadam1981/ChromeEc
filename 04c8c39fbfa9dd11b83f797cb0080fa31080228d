@@ -22,6 +22,30 @@
       "revId": "04c8c39fbfa9dd11b83f797cb0080fa31080228d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52648567_31a0f082",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-25T21:36:32Z",
+      "side": 1,
+      "message": "Done for adding CONFIG_ROM_BASE description in config.h.\n\nFor board zinger and hadoken both have a cortex-m0, so they won\u0027t get affected by cortex-m linker script change.\n\nFor board stm32l476g-eval, \"#undef CONFIG_FLASH_PHSYICAL\" is guarded by __ASSEMBLER__, and this is also not affected by the linker script change (linker script only runs preprocessor).\n\nBesides of undefining CONFIG_FLASH_PHYSICAL, should we add new config CONFIG_ROM for the boards which really need a ROM instead?\n\nFor instance, a board without flash, and it doesn\u0027t need a ROM, it can do\n\n\n#undef CONFIG_FLASH_PHYSICAL\n\n\na board without flash, and it needs a ROM, it can do\n\n\n#undef CONFIG_FLASH_PHYSICAL\n#define CONFIG_ROM\n\n\nNot sure if we should do this or not, since the linker script is  complicated enough...",
+      "parentUuid": "1370c48c_f81a6048",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "04c8c39fbfa9dd11b83f797cb0080fa31080228d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
