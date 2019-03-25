@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4e83f78_199cab60",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-25T14:36:57Z",
+      "side": 1,
+      "message": "super nit: */",
+      "revId": "b2d5c3934e89c45aff3e0d46ec65d0e53d7510cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a40776_59c87b58",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-03-25T14:36:57Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer a for loop, to keep the initial value at the same place:\n\nfor (i \u003d 700000; i; i--)\n\nOr maybe define an inline function:\n\ninline void busy_udelay(int usec) {\n    volatile int i \u003d usec * 28;\n    while (i--)\n       ;\n}",
+      "revId": "b2d5c3934e89c45aff3e0d46ec65d0e53d7510cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
