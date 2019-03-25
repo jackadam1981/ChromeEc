@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "ad0c55a1_94b5f421",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2949,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-03-25T15:39:55Z",
+      "side": 1,
+      "message": "Should I move this alone near HOOK_USB_PD_DISCONNECTED because it does not seem to handle the case for SNK_DISCONNECTED and it feels a little inconsistent to handle one case in set_state and the other case here unless I am missing something bigger.",
+      "parentUuid": "1e98a4cc_eb4ec4b8",
+      "range": {
+        "startLine": 2949,
+        "startChar": 3,
+        "endLine": 2949,
+        "endChar": 36
+      },
+      "revId": "ed1a49cb178ba423e6d4e4a5c3a1d32607711e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0feba4_6f32876b",
         "filename": "include/usb_pd_tcpc.h",
         "patchSetId": 3
