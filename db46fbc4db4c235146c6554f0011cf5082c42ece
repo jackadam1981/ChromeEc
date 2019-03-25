@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f1aff9f_ed0472fa",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need the comment on the endif when the #if and #endif are really close together (I normal use 1 - 3 lines as my subjective guide)\n\nOtherwise having the comment on the #endif if very helpful",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 61
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b389eb5_88107290",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "we typically use defined like a function for example\n\n#elif defined(CONFIG_MAG_LIS2MDL)",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 32
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3136be71_c6bd3544",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "nit: rename to ready\n\nIt makes\nif (!ready)\nread easier",
+      "range": {
+        "startLine": 234,
+        "startChar": 23,
+        "endLine": 234,
+        "endChar": 26
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3bfe5cb_f54d9d92",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "nit: can we do sizeof(intv3_t)  or sizeof(v) instead? sizeof(s-\u003eraw_xyz) is the riskiest one.",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 43
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87535ef_56c7a949",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like the correct default. EC_ERROR_UNKNOWN seems like a better choice",
+      "range": {
+        "startLine": 268,
+        "startChar": 11,
+        "endLine": 268,
+        "endChar": 33
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1810509_95e2ec2e",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "this cast doesn\u0027t seem correct. I thought the drv_data was type lis2mdl_private_data, which doesn\u0027t cast to a stprivate_data correctly",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 43
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb55c51_fcea1176",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "nit: rename to who_am_i",
+      "range": {
+        "startLine": 285,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 8
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d665a05_d8323a6a",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:08:45Z",
+      "side": 1,
+      "message": "same comment, this doesn\u0027t seem right",
+      "range": {
+        "startLine": 323,
+        "startChar": 8,
+        "endLine": 323,
+        "endChar": 42
+      },
+      "revId": "db46fbc4db4c235146c6554f0011cf5082c42ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
