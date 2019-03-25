@@ -22,22 +22,43 @@ enum {
 	 * similar to D0I3, but will reset ISH
 	 */
 	ISH_PM_STATE_D3,
-	/* ISH received reset_prep interrupt during S0->Sx transition */
-	ISH_PM_STATE_RESET_PREP,
+	/**
+	 * reset ISH, main FW received 'reboot' command, or received
+	 * reset_prep interrupt during S0->Sx transition etc.
+	 */
+	ISH_PM_STATE_RESET,
 	ISH_PM_STATE_NUM
 };
 
-/* halt ISH cpu */
-static inline void ish_halt(void)
+/* halt ISH minute-ia cpu core */
+static inline void ish_mia_halt(void)
 {
 	/* make sure interrupts are enabled before halting */
 	__asm__ volatile("sti;\n"
 			 "hlt;");
 }
 
-/* ish low power management initialization,
+/* reset ISH mintue-ia cpu core  */
+static inline void ish_mia_reset(void)
+{
+	/*
+	 * ISH HW looks at the rising edge of this bit to
+	 * trigger a MIA reset.
+	 */
+	ISH_RST_REG = 0;
+	ISH_RST_REG = 1;
+}
+
+
+/**
+ * ish low power management initialization,
  * should be called at system init stage before RTOS task scheduling start
  */
 void ish_pm_init(void);
+
+/**
+ * reset ISH (reset minute-ia cpu core, and power off main SRAM)
+ */
+void ish_pm_reset(void);
 
 #endif /* __CROS_EC_POWER_MGT_H */

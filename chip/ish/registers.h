@@ -117,6 +117,7 @@ enum ish_i2c_port {
 /* IPC_Registers */
 #define IPC_PISR                   (ISH_IPC_BASE + 0x0)
 #define IPC_PIMR                   (ISH_IPC_BASE + 0x4)
+#define IPC_PIMR_CSME_CSR_BIT      (0x1 << 23)
 #define IPC_ISH2HOST_MSG_REGS      (ISH_IPC_BASE + 0x60)
 #define IPC_ISH_FWSTS              (ISH_IPC_BASE + 0x34)
 #define IPC_HOST2ISH_DOORBELL      (ISH_IPC_BASE + 0x48)

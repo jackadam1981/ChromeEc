@@ -223,7 +223,7 @@ static void enter_d0i0(void)
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I0;
 
 	/* halt ISH cpu, will wakeup from any interrupt */
-	ish_halt();
+	ish_mia_halt();
 
 	t1 = get_time();
 
@@ -252,7 +252,7 @@ static void enter_d0i1(void)
 	CCU_TCG_EN = 1;
 
 	/* halt ISH cpu, will wakeup from PMU wakeup interrupt */
-	ish_halt();
+	ish_mia_halt();
 
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
@@ -419,6 +419,15 @@ static void pm_process(uint32_t idle_us)
 
 void ish_pm_init(void)
 {
+	/* clear reset bit */
+	ISH_RST_REG = 0;
+
+	/* clear reset history register in CCU */
+	CCU_RST_HST = CCU_RST_HST;
+
+	/* disable TCG and disable BCG */
+	CCU_TCG_EN = 0;
+	CCU_BCG_EN = 0;
 
 #ifdef CONFIG_ISH_PM_AONTASK
 	init_aon_task();
@@ -426,6 +435,38 @@ void ish_pm_init(void)
 
 	/* unmask all wake up events */
 	PMU_MASK_EVENT = ~PMU_MASK_EVENT_BIT_ALL;
+
+#ifdef CONFIG_ISH_PM_RESET_PREP
+	/* unmask reset prep avail interrupt */
+	PMU_RST_PREP = 0;
+
+	task_enable_irq(ISH_RESET_PREP_IRQ);
+#endif
+
+}
+
+void ish_pm_reset(void)
+{
+#ifdef CONFIG_ISH_PM_AONTASK
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_RESET;
+
+	/* only enable PMU wakeup interrupt */
+	disable_all_interrupts();
+	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
+
+	/* enable Trunk Clock Gating (TCG) of ISH */
+	CCU_TCG_EN = 1;
+
+	/* enable power gating of RF(Cache) and ROMs */
+	PMU_RF_ROM_PWR_CTRL = 1;
+
+	switch_to_aontask();
+
+#else
+	ish_mia_reset();
+#endif
+
+	__builtin_unreachable();
 }
 
 void __idle(void)
@@ -501,5 +542,33 @@ static void pmu_wakeup_isr(void)
 }
 
 DECLARE_IRQ(ISH_PMU_WAKEUP_IRQ, pmu_wakeup_isr);
+
+#endif
+
+#ifdef CONFIG_ISH_PM_RESET_PREP
+
+/**
+ * from ISH5.0, when system doing S0->Sx transition, will receive reset prep
+ * interrupt, will switch to aontask for handling
+ *
+ */
+static void reset_prep_isr(void)
+{
+	/* mask reset prep avail interrupt */
+	PMU_RST_PREP = PMU_RST_PREP_INT_MASK;
+
+	/**
+	 * Indicate completion of servicing the interrupt to IOAPIC first
+	 * then indicate completion of servicing the interrupt to LAPIC
+	 */
+	*(volatile uint32_t *)IOAPIC_EOI_REG = ISH_RESET_PREP_VEC;
+	*(volatile uint32_t *)LAPIC_EOI_REG = 0x0;
+
+	ish_pm_reset();
+
+	__builtin_unreachable();
+}
+
+DECLARE_IRQ(ISH_RESET_PREP_IRQ, reset_prep_isr);
 
 #endif
