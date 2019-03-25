@@ -84,7 +84,6 @@ void system_pre_init(void)
 	/* Clock */
 	SCP_CLK_SEL = CLK_SEL_SYS_26M;
 	scp_enable_clock();
-	SCP_CLK_SEL = CLK_SEL_ULPOSC_2;
 	/* Peripheral IRQ */
 	scp_enable_pirq();
 	/* Init dram mapping (and cache) */
