@@ -46,6 +46,30 @@
       "revId": "04c8c39fbfa9dd11b83f797cb0080fa31080228d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04bd6209_1535a933",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T21:56:28Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I think this is fine with the comments in config.h",
+      "parentUuid": "52648567_31a0f082",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "04c8c39fbfa9dd11b83f797cb0080fa31080228d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
