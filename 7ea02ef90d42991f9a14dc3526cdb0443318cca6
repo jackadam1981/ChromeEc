@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d11738a7_960ef363",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-25T14:59:20Z",
+      "side": 1,
+      "message": "It looks like you have some leftover stuff from the cherry-pick.",
+      "range": {
+        "startLine": 1308,
+        "startChar": 0,
+        "endLine": 1309,
+        "endChar": 7
+      },
+      "revId": "7ea02ef90d42991f9a14dc3526cdb0443318cca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab7b90d_a130484c",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-03-25T14:59:20Z",
+      "side": 1,
+      "message": "This line too",
+      "revId": "7ea02ef90d42991f9a14dc3526cdb0443318cca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
