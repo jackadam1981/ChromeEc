@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fd4e7c7_55db2228",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:36:10Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we need these definitions anymore. Why can\u0027t we always use the more granular struct definitions isntead?",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "82824c9f984bbc214270a285abe5476e24467685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7705ff_62e27e70",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T20:36:10Z",
+      "side": 1,
+      "message": "seems like we won\u0027t need these marco when we are using the more granular field definitions.\n\nMaybe we replace them with some incline functions if that makes sense though",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 0
+      },
+      "revId": "82824c9f984bbc214270a285abe5476e24467685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
