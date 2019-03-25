@@ -163,6 +163,30 @@
       "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66463af5_bf3969f0",
+        "filename": "chip/it83xx/i2cs.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-25T10:36:10Z",
+      "side": 1,
+      "message": "\u003e In the read ISR, no matter how many data bytes are transferred, \n\u003e I2C slave will receive 16 bytes data at one time. The count will\n\u003e show the not enough 16 bytes amount of data for the last time, \n\u003e and these data will be handled at stop condition.\n\nRestate the question,\nI2C master will not get how many data bytes in the buffer,\nso master will read maximum FIFO space(16-byte). \nEven though there is extra data bytes to be read, these \ndata bytes will be handled at stop condition.",
+      "parentUuid": "f8ecabf7_51a9d38d",
+      "range": {
+        "startLine": 81,
+        "startChar": 20,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "fb67034d49b8a889cdc439e310d6d82f654215dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
