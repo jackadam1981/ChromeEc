@@ -37,6 +37,7 @@ BUILD_ASSERT(sizeof(touchpad_fw_full_hash) == SHA256_DIGEST_SIZE);
 struct {
 	uint32_t base_offset;
 	uint32_t top_offset;
+	int first_chunk;
 } update_section;
 
 #ifdef CONFIG_TOUCHPAD_VIRTUAL_OFF
@@ -54,8 +55,10 @@ static int is_touchpad_block(uint32_t block_offset, size_t body_size)
 #endif
 
 /*
- * Verify that the passed in block fits into the valid area. If it does, and
- * is destined to the base address of the area - erase the area contents.
+ * Verify that the passed in block fits into the valid area. If this is the
+ * first block received, and it is the lowest or highest block in the area -
+ * erase the area contents. Data may be written from start-to-end or from
+ * end-to-start.
  *
  * Return success, or indication of an erase failure or chunk not fitting into
  * valid area.
@@ -79,12 +82,17 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		 * If this is the first chunk for this section, it needs to
 		 * be erased.
 		 */
-		if (block_offset == base) {
+		if (!update_section.first_chunk &&
+		    (block_offset == base ||
+		     block_offset + body_size == update_section.top_offset)) {
+			CPRINTF("first chunk received: erase 0x%x..+0x%x\n",
+				base, size);
 			if (flash_physical_erase(base, size) != EC_SUCCESS) {
 				CPRINTF("%s:%d erase failure of 0x%x..+0x%x\n",
 					__func__, __LINE__, base, size);
 				return UPDATE_ERASE_FAILURE;
 			}
+			update_section.first_chunk = 1;
 		}
 
 		return UPDATE_SUCCESS;
@@ -175,12 +183,14 @@ void fw_update_start(struct first_response_pdu *rpdu)
 		/* RO running, so update RW */
 		update_section.base_offset = CONFIG_RW_MEM_OFF;
 		update_section.top_offset = CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE;
+		update_section.first_chunk = 0;
 		version = system_get_version(SYSTEM_IMAGE_RW);
 		break;
 	case SYSTEM_IMAGE_RW:
 		/* RW running, so update RO */
 		update_section.base_offset = CONFIG_RO_MEM_OFF;
 		update_section.top_offset = CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE;
+		update_section.first_chunk = 0;
 		version = system_get_version(SYSTEM_IMAGE_RO);
 		break;
 	default:
