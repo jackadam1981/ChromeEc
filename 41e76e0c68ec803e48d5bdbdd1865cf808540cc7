@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "307675d2_91e85ef0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4889,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:40:45Z",
+      "side": 1,
+      "message": "please add a function header, what are the expected return values",
+      "range": {
+        "startLine": 4889,
+        "startChar": 0,
+        "endLine": 4889,
+        "endChar": 61
+      },
+      "revId": "41e76e0c68ec803e48d5bdbdd1865cf808540cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0138d7b6_a5310002",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 4768,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-25T16:40:45Z",
+      "side": 1,
+      "message": "again, please add uint_8 reserve_cable_type into this CL please.\n\nIt is not good practice to add to existing struct definitions, but we are letting is slide this time since no one should be using the new cc_state yet.",
+      "revId": "41e76e0c68ec803e48d5bdbdd1865cf808540cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
