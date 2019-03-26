@@ -262,6 +262,7 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 #endif
 
 void board_reset_pd_mcu(void);
+void board_get_battery_type(void);
 
 #endif /* !__ASSEMBLER__ */
 
