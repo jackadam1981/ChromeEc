@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08a28ab_b19c875b",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-03-26T19:21:43Z",
+      "side": 1,
+      "message": "CHARGE_SUPPLIER_DEDICATED often refers to non-PD charger, especially BJ adapter charger. Not sure if it is good to do it here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 30,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
