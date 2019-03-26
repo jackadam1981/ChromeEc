@@ -283,9 +283,20 @@ int battery_device_chemistry(char *dest, int size);
 int battery_manufacturer_date(int *year, int *month, int *day);
 
 /**
+<<<<<<< HEAD   (a7ed75 Kefka: Disable hibernate on G3 idle, cutoff battery on criti)
  * Call board-specific cut-off function.
+=======
+ * Report the absolute difference between the highest and lowest cell voltage in
+ * the battery pack, in millivolts.  On error or unimplemented, returns '0'.
+ */
+int battery_imbalance_mv(void);
+
+/**
+ * Execute board-specific battery cutoff
+>>>>>>> CHANGE (8c3109 chgstv2: Disable battery communication after cutoff)
  *
- * @return EC_RES_INVALID_COMMAND if the battery doesn't support.
+ * @return EC_RES_INVALID_COMMAND if the battery doesn't support or EC_SUCCESS
+ *         if cutoff is successfully requested.
  */
 int board_cut_off_battery(void);
 
@@ -293,6 +304,14 @@ int board_cut_off_battery(void);
  * Return if the battery has been cut off.
  */
 int battery_is_cut_off(void);
+
+/**
+ * Request battery cutoff
+ *
+ * @return non-zero if cutoff fails or EC_SUCCESS if cutoff is successfully
+ *         requested.
+ */
+int battery_cutoff(void);
 
 /**
  * Read battery vendor parameter.
