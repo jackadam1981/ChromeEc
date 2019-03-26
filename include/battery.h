@@ -349,6 +349,13 @@ int board_cut_off_battery(void);
 int battery_is_cut_off(void);
 
 /**
+ * Call board_cut_off_battery function
+ *
+ * @return non-zero if battery cut off was fail.
+ */
+int battery_cutoff(void);
+
+/**
  * Read battery vendor parameter.
  *
  * Vendor parameter handlers are implemented in a board-specific battery.c
