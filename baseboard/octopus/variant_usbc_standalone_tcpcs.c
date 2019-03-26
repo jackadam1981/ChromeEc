@@ -16,6 +16,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
+#include "task.h"
 #include "tcpci.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
