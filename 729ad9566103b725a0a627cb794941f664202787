@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1480f22b_2a0494cf",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-26T05:22:12Z",
+      "side": 1,
+      "message": "If it\u0027s called more than once, the assert below will fail. So, I don\u0027t know what scenario you\u0027re referring to but whatever it is, it\u0027s contradicting with the code.",
+      "parentUuid": "f91c0efe_57393ce6",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 12
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "255ea93b_683bba52",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 11
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "5df098a2_cb395640",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-26T05:22:12Z",
+      "side": 1,
+      "message": "That\u0027s for BOARD_ID. We\u0027re not reading it.",
+      "parentUuid": "7ea82532_7bc66a49",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 42
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b438d9e_65d478e6",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 11
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "Do you mean for board_config_pre_init() to call this function?",
       "parentUuid": "6b438d9e_65d478e6",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 66
+      },
+      "revId": "729ad9566103b725a0a627cb794941f664202787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ef7623_afd98019",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-26T05:22:12Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "89212fac_2cb20307",
       "range": {
         "startLine": 201,
         "startChar": 0,
