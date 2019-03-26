@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dbbbc48_f2eb9f93",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T16:47:54Z",
+      "side": 1,
+      "message": "Ah, this is much better. thank you.\n\nUnderstanding this better, I think storing the offset here would be simpler, for example we could specify 0x180, 0x0 and 0x80 and then we can just call it offset (which does not needs as much comments to example; just a simple \"offset from base 0x0f03500 register; -1 means unused\" comment would suffice).",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3fb0c42_d31b0856",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T16:47:54Z",
+      "side": 1,
+      "message": "can you create issue trackers for this work, please?\n\n(same below)",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 54
+      },
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
