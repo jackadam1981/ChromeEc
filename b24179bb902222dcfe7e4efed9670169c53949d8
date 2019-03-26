@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "081366d9_14182e33",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "please use CONFIG_DMA as that has already been specified in config.h",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e761b08_ca6ed4cb",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "about how long will this take to go though. the watchdog timer is 10secs. Will the watchdog happen before this is reached?\n\nMore comments and reasoning behind code please.",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a86f7e_e682cceb",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "why do we have to 0x4 here? We should create another define if needed.",
+      "range": {
+        "startLine": 111,
+        "startChar": 10,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324a86b2_1089a49b",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "add comment here:\n\nMark the DMA VNN power rail as no longer needed",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fcaac5_a765a9db",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "how are HOST_DRAM and UMA different then?\n\nCan you add a few comments around that difference\n\nAlso add that SRAM is local to ISH and DRAM and UMA are system level but reserved for ISH use",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78862536_7220e07f",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "spell out in the comments here please",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e3a14c_11a40edd",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2401,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:42:01Z",
+      "side": 1,
+      "message": "we should be able to reuse CONFIG_DMA, right? If not, let\u0027s explain why to define one and not the other.",
+      "range": {
+        "startLine": 2401,
+        "startChar": 7,
+        "endLine": 2401,
+        "endChar": 24
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
