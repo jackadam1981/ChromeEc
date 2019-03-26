@@ -75,6 +75,9 @@ enum battery_disconnect_state {
 	BATTERY_DISCONNECT_ERROR,
 };
 
+/* Battery cut off state */
+extern int battery_cutoff_state;
+
 /* Battery parameters */
 struct batt_params {
 	int temperature;      /* Temperature in 0.1 K */

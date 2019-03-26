@@ -41,7 +41,7 @@ struct ec_response_battery_dynamic_info battery_dynamic[CONFIG_BATTERY_COUNT];
 #define CONFIG_BATTERY_CUTOFF_DELAY_US (1 * SECOND)
 #endif
 
-static enum battery_cutoff_states battery_cutoff_state =
+int battery_cutoff_state =
 	BATTERY_CUTOFF_STATE_NORMAL;
 
 #endif
