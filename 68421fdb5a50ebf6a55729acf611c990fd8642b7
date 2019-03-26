@@ -22,6 +22,30 @@
       "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963c5c4f_f3ee90ac",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-26T23:35:01Z",
+      "side": 1,
+      "message": "If a port is managed by usb_charger, it won\u0027t be a dedicated charge port. So I think it\u0027s safe to initialize it here.",
+      "parentUuid": "f08a28ab_b19c875b",
+      "range": {
+        "startLine": 97,
+        "startChar": 30,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
