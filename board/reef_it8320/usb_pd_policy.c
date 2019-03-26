@@ -290,6 +290,7 @@ static int svdm_dp_status(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
 
+	/* dp_flags[port] = DP_FLAGS_DP_ON; *//* DFP_D ... connected */
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_STATUS | VDO_OPOS(opos));
 	payload[1] = VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
