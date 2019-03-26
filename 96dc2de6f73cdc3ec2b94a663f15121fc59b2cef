@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "833f8a30_c29a50c2",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259159
+      },
+      "writtenOn": "2019-03-26T17:14:21Z",
+      "side": 1,
+      "message": "Can you expand on this comment explaining this non-traditional interrupt enabling logic with something like the following: (needs a bit of wordsmithing):\n\nThe vhaven emulator\u0027s dcrypto implementation is synchronous, and the status will be \"done\", from the firmware\u0027s point of view, immediately.  The synchronous operation is why we enable the IRQ after the dcrypto call.\n\nEnabling the IRQ after the call is safe because the IRQs are level triggered and won\u0027t get cleared until the ISR runs and clears the INT_STATE bits.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "96dc2de6f73cdc3ec2b94a663f15121fc59b2cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
