@@ -283,9 +283,9 @@ void board_config_pre_init(void)
 	 */
 	STM32_DMA_CSELR(STM32_DMAC_CH4) = (8 << 12) | (8 << 16) |
 					  (3 << 20) | (3 << 24);
-}
 
-#define THRESHOLD_MV 56 /* Simply assume 1800/16/2 */
+	board_get_battery_type();
+}
 
 /* Motion sensors */
 /* Mutexes */
