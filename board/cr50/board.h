@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#include "env_config.h"
+
 #define CONFIG_LTO
 
 /*
