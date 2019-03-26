@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4afcf556_7a19585b",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-26T01:56:26Z",
+      "side": 1,
+      "message": "yes, the uint32_t is little-endian, i read the B4-\u003eB7, the value is B4:0xea, B5:0x0b, B6:0x54 B7:0xe0, when the uint32_t read, this first bit ec received from I2C transefer is 0xe0, and then  0x54-\u003e0x0b-\u003e0xea, if not reverse, the data is not correctly.",
+      "parentUuid": "777cd4d8_2e9c10cd",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 59
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca81123_49f167ce",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3693f3_3c5d80c1",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-26T01:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca81123_49f167ce",
+      "range": {
+        "startLine": 778,
+        "startChar": 2,
+        "endLine": 778,
+        "endChar": 65
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf9fa19_52c8e569",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-26T01:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b866a5c3_c9ca5c30",
+      "range": {
+        "startLine": 788,
+        "startChar": 39,
+        "endLine": 788,
+        "endChar": 51
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d675b56_be55f519",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-26T01:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af6307f_4c086b9d",
+      "range": {
+        "startLine": 788,
+        "startChar": 52,
+        "endLine": 788,
+        "endChar": 66
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
