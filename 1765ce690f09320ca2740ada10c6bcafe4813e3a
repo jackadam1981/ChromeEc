@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d87e03e_0a4849b2",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T15:29:19Z",
+      "side": 0,
+      "message": "Let\u0027s add a note on this method and safe0c that it may return the incorrect result immediately after a chip reset as the ADC needs time to initialize",
+      "range": {
+        "startLine": 397,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 31
+      },
+      "revId": "1765ce690f09320ca2740ada10c6bcafe4813e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
