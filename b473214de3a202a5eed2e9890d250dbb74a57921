@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8b2d093_45c2b32d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-26T20:30:18Z",
+      "side": 1,
+      "message": "Does this also need a check that this is a SOP\u0027 response?  Otherwise it seems like we could end up with an SOP product type saved into the cable_type field",
+      "range": {
+        "startLine": 1963,
+        "startChar": 0,
+        "endLine": 1964,
+        "endChar": 49
+      },
+      "revId": "b473214de3a202a5eed2e9890d250dbb74a57921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b041de2f_e429bd7e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3274,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-26T20:30:18Z",
+      "side": 1,
+      "message": "I might be missing it, but where does this flag get set for the source if we unplug and re-plug?  I see it set in SNK_DISCONNECTED_DEBOUNCE, SNK_HARD_RESET_RECOVER, and pd_chipset_startup. I would guess the startup set covers the first plug-in, but the flag setting afterwards seems like it would depend on what is plugged in to the port before the next time we source. \n\nWith the current place it\u0027s being used, it almost seems like the flag could simply be set in SRC_STARTUP after we source Vconn unless I\u0027m missing a case.",
+      "range": {
+        "startLine": 3274,
+        "startChar": 3,
+        "endLine": 3274,
+        "endChar": 52
+      },
+      "revId": "b473214de3a202a5eed2e9890d250dbb74a57921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9d28ab_6a7d0b66",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4775,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-26T20:30:18Z",
+      "side": 1,
+      "message": "Does this need rebased with the most recent DP pin change?",
+      "range": {
+        "startLine": 4775,
+        "startChar": 1,
+        "endLine": 4775,
+        "endChar": 49
+      },
+      "revId": "b473214de3a202a5eed2e9890d250dbb74a57921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
