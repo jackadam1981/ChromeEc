@@ -22,6 +22,30 @@
       "revId": "c4fec9a04577265aaef5628a84311d6e92d9a3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605294a2_e80bbff3",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T17:00:44Z",
+      "side": 1,
+      "message": "Let\u0027s define anx7447_mux_set in this file even when CONFIG_USB_PD_TCPM_MUX is not present.\n\nanx7447_mux_set seems like a function that is usefull to both TCPC and MUX",
+      "parentUuid": "02301835_8d36eca2",
+      "range": {
+        "startLine": 352,
+        "startChar": 7,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "c4fec9a04577265aaef5628a84311d6e92d9a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
