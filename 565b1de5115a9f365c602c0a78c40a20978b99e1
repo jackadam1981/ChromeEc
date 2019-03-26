@@ -45,6 +45,46 @@
       "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153a3c71_8b733855",
+        "filename": "chip/it83xx/i2c_slave.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-26T18:55:07Z",
+      "side": 1,
+      "message": "may be we can put this in include/",
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9bf18b_a5f66063",
+        "filename": "chip/it83xx/i2c_slave.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-26T18:55:07Z",
+      "side": 1,
+      "message": "can you please share insights on why 2 slave addresses?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
