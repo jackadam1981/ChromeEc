@@ -22,6 +22,30 @@
       "revId": "1765ce690f09320ca2740ada10c6bcafe4813e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48cf3747_fc20f914",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-26T21:22:38Z",
+      "side": 0,
+      "message": "Preferably, it would be good to note how long this may take and whether the register will be valid at the time of TCPC_INITIALIZATION_STATUS being cleared.",
+      "parentUuid": "0d87e03e_0a4849b2",
+      "range": {
+        "startLine": 397,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 31
+      },
+      "revId": "1765ce690f09320ca2740ada10c6bcafe4813e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
