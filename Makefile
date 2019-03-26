@@ -86,6 +86,20 @@ not_cfg = $(subst ro rw,y,$(filter-out $(1:y=ro rw),ro rw))
 # The board makefile sets $CHIP and the chip makefile sets $CORE.
 # Include those now, since they must be defined for _flag_cfg below.
 include $(BDIR)/build.mk
+
+ifneq ($(ENV_VARS),)
+# Let's make sure $(out)/env_config.h changes if value any of the above
+# variables has changed since the prvious make invocation. This in turn will
+# make sure that relevant object files are re-built.
+env_config := $(out)/env_config.h
+stage_file := $(shell printf '%s' $(env_config).$$$$)
+$(shell [ -d $(out) ] || mkdir -p $(out))
+$(foreach env_flag, $(ENV_VARS), \
+  $(shell printf "/* %s=%s */\n" $(env_flag) $($(env_flag)) >> $(stage_file)))
+$(shell cmp -s $(stage_file) $(env_config) && rm -f $(stage_file) || \
+    mv $(stage_file) $(env_config))
+endif
+
 # Baseboard directory
 ifneq (,$(BASEBOARD))
 BASEDIR:=baseboard/$(BASEBOARD)
@@ -153,7 +167,9 @@ CPPFLAGS_RO+=$(foreach t,$(_tsk_cfg_ro),-D$(t)) \
 CPPFLAGS_RW+=$(foreach t,$(_tsk_cfg_rw),-D$(t)) \
 		$(foreach t,$(_tsk_cfg_ro),-D$(t)_RO)
 CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t))
-
+ifneq ($(ENV_VARS),)
+CPPFLAGS += -DINCLUDE_ENV_CONFIG
+endif
 # Get the CONFIG_ and VARIANT_ options that are defined for this target and make
 # them into variables available to this build script
 _flag_cfg_ro:=$(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
