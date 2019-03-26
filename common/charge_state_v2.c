@@ -1335,6 +1335,7 @@ static int is_battery_critical(void)
   */
 static int shutdown_on_critical_battery(void)
 {
+	int rv;
 	if (!is_battery_critical()) {
 		/* Reset shutdown warning time */
 		shutdown_target_time.val = 0;
@@ -1365,7 +1366,14 @@ static int shutdown_on_critical_battery(void)
 			break;
 		case CRITICAL_SHUTDOWN_CUTOFF:
 			CPRINTS("Cutoff due to critical battery");
-			board_cut_off_battery();
+			rv = board_cut_off_battery();
+			if (!rv) {
+				CPRINTS("Battery cut off is successful.");
+				battery_set_cut_off(
+					BATTERY_CUTOFF_STATE_CUT_OFF);
+			} else {
+				CPRINTS("Battery cut off has failed.");
+			}
 			break;
 		case CRITICAL_SHUTDOWN_IGNORE:
 		default:
