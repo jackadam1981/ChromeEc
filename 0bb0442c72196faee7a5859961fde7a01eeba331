@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "732384f8_d0115821",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T16:11:06Z",
+      "side": 1,
+      "message": "nit: can we keep the same level of indent as the preceeding code (i.e. remove a tab)\n\n--\n\nSorry to be so nit picky, but what do you think about the following comment:\n\nInvalidate message IDs for PD_TCPC only, since off-board TCPCs will automatically perform message id de-dup logic without manual intervention",
+      "range": {
+        "startLine": 751,
+        "startChar": 3,
+        "endLine": 755,
+        "endChar": 36
+      },
+      "revId": "0bb0442c72196faee7a5859961fde7a01eeba331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80491bc9_9d0a5ded",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2931,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T16:11:06Z",
+      "side": 1,
+      "message": "nit: add \"only\" after this please",
+      "range": {
+        "startLine": 2931,
+        "startChar": 51,
+        "endLine": 2931,
+        "endChar": 58
+      },
+      "revId": "0bb0442c72196faee7a5859961fde7a01eeba331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc1feb0_4375599a",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-26T16:11:06Z",
+      "side": 1,
+      "message": "we can drop the ret variable and return 1 here directly (and return 0 below)",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 10
+      },
+      "revId": "0bb0442c72196faee7a5859961fde7a01eeba331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
