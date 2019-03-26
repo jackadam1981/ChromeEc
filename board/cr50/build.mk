@@ -15,6 +15,21 @@ CHIP_VARIANT ?= cr50_fpga
 # a guard so that recipe definitions and variable extensions only happen the
 # second time.
 ifeq ($(BOARD_MK_INCLUDED_ONCE),)
+
+# List of variables which can be defined in the environment or set in the make
+# command line.
+ENV_VARS = CR50_DEV CR50_SQA H1_RED_BOARD
+
+# Let's make sure $(out)/env_config.h changes if value any of the above
+# variables has changed since the prvious make invocation. This in turn will
+# make sure that relevant object files are re-built.
+env_config := $(out)/env_config.h
+stage_file := $(shell printf '%s' $(env_config).$$$$)
+$(foreach env_flag, $(ENV_VARS), \
+  $(shell printf "/* %s=%s */\n" $(env_flag) $($(env_flag)) >> $(stage_file)))
+$(shell cmp -s $(stage_file) $(env_config) && rm -f $(stage_file) || \
+    mv $(stage_file) $(env_config))
+
 BOARD_MK_INCLUDED_ONCE=1
 SIG_EXTRA = --cros
 else
@@ -95,6 +110,7 @@ endif
 CFLAGS += -DEMBEDDED_MODE=1
 # Configure cryptoc headers to handle unaligned accesses.
 CFLAGS += -DSUPPORT_UNALIGNED=1
+CFLAGS += -I$(realpath $(out))
 
 TPM2_OBJS = $(shell find $(out)/tpm2 -name '*.cp.o')
 # Add dependencies on that library

@@ -6,6 +6,14 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#ifdef CHROMIUM_EC
+/*
+ * When building for an EC target, pick up the .h file wich allows to
+ * keep track of changing make variables.
+ */
+#include "env_config.h"
+#endif
+
 #define CONFIG_LTO
 
 /*
