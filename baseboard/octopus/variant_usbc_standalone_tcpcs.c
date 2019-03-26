@@ -16,6 +16,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
+#include "task.h"
 #include "tcpci.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
@@ -171,6 +172,7 @@ void board_reset_pd_mcu(void)
 		 */
 		gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
 		msleep(PS8XXX_RESET_DELAY_MS);
+		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
 		gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 1);
 	}
 #else
@@ -188,6 +190,7 @@ void board_reset_pd_mcu(void)
 	    battery_is_present() == BP_YES) {
 		gpio_set_level(GPIO_USB_C0_PD_RST, 1);
 		msleep(ANX74XX_RESET_HOLD_MS);
+		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
 		gpio_set_level(GPIO_USB_C0_PD_RST, 0);
 		msleep(ANX74XX_RESET_FINISH_MS);
 	}
@@ -203,6 +206,7 @@ void board_reset_pd_mcu(void)
 		 */
 		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 		msleep(PS8XXX_RESET_DELAY_MS);
+		task_set_event(TASK_ID_PD_C1, PD_EVENT_TCPC_RESET, 0);
 		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
 	} else {
 		CPRINTS("Skipping C1 TCPC reset because no battery");
