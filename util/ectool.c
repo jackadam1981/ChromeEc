@@ -5014,7 +5014,7 @@ int cmd_usb_pd(int argc, char *argv[])
 	int rv, i, j;
 	int option_ok;
 	char *e;
-	int cmdver = 2;
+	int cmdver = 0;
 
 	BUILD_ASSERT(ARRAY_SIZE(role_str) == USB_PD_CTRL_ROLE_COUNT);
 	BUILD_ASSERT(ARRAY_SIZE(mux_str) == USB_PD_CTRL_MUX_COUNT);
@@ -5023,8 +5023,10 @@ int cmd_usb_pd(int argc, char *argv[])
 	p.mux = USB_PD_CTRL_MUX_NO_CHANGE;
 	p.swap = USB_PD_CTRL_SWAP_NONE;
 
-	if (!ec_cmd_version_supported(EC_CMD_USB_PD_CONTROL, cmdver))
-		cmdver = 0;
+	if (ec_cmd_version_supported(EC_CMD_USB_PD_CONTROL, 2))
+		cmdver = 2;
+	else if (ec_cmd_version_supported(EC_CMD_USB_PD_CONTROL, 1))
+		cmdver = 1;
 
 	if (argc < 2) {
 		fprintf(stderr, "No port specified.\n");
