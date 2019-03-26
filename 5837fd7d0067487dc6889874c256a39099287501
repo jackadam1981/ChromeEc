@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be6945ef_ce45f464",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-26T13:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b133e8c2_e7a74e40",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 52
+      },
+      "revId": "5837fd7d0067487dc6889874c256a39099287501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5df6be2e_e8328f88",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e827830f_06833b68",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-26T13:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df6be2e_e8328f88",
+      "range": {
+        "startLine": 117,
+        "startChar": 33,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "5837fd7d0067487dc6889874c256a39099287501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26eb8c33_27922918",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 12
@@ -68,6 +116,30 @@
       "revId": "5837fd7d0067487dc6889874c256a39099287501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac44e14_2570d3d1",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-26T13:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26eb8c33_27922918",
+      "range": {
+        "startLine": 198,
+        "startChar": 19,
+        "endLine": 198,
+        "endChar": 20
+      },
+      "revId": "5837fd7d0067487dc6889874c256a39099287501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
