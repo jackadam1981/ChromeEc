@@ -298,6 +298,23 @@ int battery_is_cut_off(void)
 	return (battery_cutoff_state == BATTERY_CUTOFF_STATE_CUT_OFF);
 }
 
+static void battery_set_cut_off_state(enum battery_cutoff_states state)
+{
+	battery_cutoff_state = state;
+}
+
+int battery_cutoff(void)
+{
+	int rv;
+
+	rv = board_cut_off_battery();
+	if (rv)
+		CPRINTS("Battery cut off failed (%d)", rv);
+	else
+		battery_set_cut_off_state(BATTERY_CUTOFF_STATE_CUT_OFF);
+	return rv;
+}
+
 static void pending_cutoff_deferred(void)
 {
 	int rv;
@@ -314,7 +331,7 @@ DECLARE_DEFERRED(pending_cutoff_deferred);
 static void clear_pending_cutoff(void)
 {
 	if (extpower_is_present()) {
-		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
+		battery_set_cut_off_state(BATTERY_CUTOFF_STATE_NORMAL);
 		hook_call_deferred(&pending_cutoff_deferred_data, -1);
 	}
 }
@@ -328,19 +345,13 @@ static int battery_command_cutoff(struct host_cmd_handler_args *args)
 	if (args->version == 1) {
 		p = args->params;
 		if (p->flags & EC_BATTERY_CUTOFF_FLAG_AT_SHUTDOWN) {
-			battery_cutoff_state = BATTERY_CUTOFF_STATE_PENDING;
+			battery_set_cut_off_state(BATTERY_CUTOFF_STATE_PENDING);
 			CPRINTS("Battery cut off at-shutdown is scheduled");
 			return EC_RES_SUCCESS;
 		}
 	}
 
-	rv = board_cut_off_battery();
-	if (rv == EC_RES_SUCCESS) {
-		CPRINTS("Battery cut off is successful.");
-		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
-	} else {
-		CPRINTS("Battery cut off has failed.");
-	}
+	rv = battery_cutoff();
 
 	return rv;
 }
@@ -364,7 +375,7 @@ static int command_cutoff(int argc, char **argv)
 
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "at-shutdown")) {
-			battery_cutoff_state = BATTERY_CUTOFF_STATE_PENDING;
+			battery_set_cut_off_state(BATTERY_CUTOFF_STATE_PENDING);
 			return EC_SUCCESS;
 		} else {
 			return EC_ERROR_INVAL;
@@ -374,7 +385,7 @@ static int command_cutoff(int argc, char **argv)
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
 		ccprintf("[%T Battery cut off]\n");
-		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
+		battery_set_cut_off_state(BATTERY_CUTOFF_STATE_CUT_OFF);
 		return EC_SUCCESS;
 	}
 
