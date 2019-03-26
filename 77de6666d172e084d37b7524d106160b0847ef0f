@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddf8ecbc_e1fbc5f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-26T02:32:55Z",
+      "side": 1,
+      "message": "nit, disconnected",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "77de6666d172e084d37b7524d106160b0847ef0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e3b34d_ce7d44e4",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-26T02:32:55Z",
+      "side": 1,
+      "message": "Curious how this is determined?  From my testing my SBU1 line is routinely above 350mV when servo V4 USB-C is disconnected from DUT but power-supply is connected to servo V4.\n\n  @@               NAME  COUNT  AVERAGE  STDDEV     MAX     MIN\n  @@       sample_msecs    100   113.22    0.83  117.14  111.24\n  @@   servo_v4_sbu1_mv    100   357.82   55.63  584.00  331.00\n\nAny concern that will delay the disconnect?",
+      "range": {
+        "startLine": 272,
+        "startChar": 19,
+        "endLine": 272,
+        "endChar": 22
+      },
+      "revId": "77de6666d172e084d37b7524d106160b0847ef0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
