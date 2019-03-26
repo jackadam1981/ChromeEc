@@ -349,6 +349,11 @@ int board_cut_off_battery(void);
 int battery_is_cut_off(void);
 
 /**
+ * Set battery cut off state.
+ */
+void battery_set_cut_off(enum battery_cutoff_states status);
+
+/**
  * Read battery vendor parameter.
  *
  * Vendor parameter handlers are implemented in a board-specific battery.c
