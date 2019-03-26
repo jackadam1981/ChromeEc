@@ -61,8 +61,9 @@
 #define CMD_RU       0x92 /* Disables the read protection */
 
 #define RESP_NACK    0x1f
-#define RESP_ACK     0x79
+#define RESP_ACK     0x79 /* 0b 0111 1001 */
 #define RESP_BUSY    0x76
+#define RESP_ACK_ISH 0xBC /* 0b 1011 1100, 1 bit shifted REST_ACK */
 
 /* SPI Start of Frame */
 #define SOF          0x5A
@@ -106,6 +107,7 @@ struct stm32_def {
 #define DEFAULT_BAUDRATE B38400
 #define PAGE_SIZE 256
 #define INVALID_I2C_ADAPTER -1
+#define MAX_RETRY_COUNT		(EXT_ERASE_TIMEOUT / DEFAULT_TIMEOUT)
 
 enum interface_mode {
 	MODE_SERIAL,
@@ -129,6 +131,7 @@ const char *serial_port = "/dev/ttyUSB1";
 const char *input_filename;
 const char *output_filename;
 uint32_t offset = 0x08000000, length = 0;
+int tolerant_to_ackish;
 
 /* optional command flags */
 enum {
@@ -158,6 +161,27 @@ static void discard_input(int);
 
 /* On user request save all data exchange with the target in this log file. */
 static FILE *log_file;
+
+/* Statistic data structure for response kind */
+struct _stat_response {
+	const char * const event_name;
+	uint32_t event_count;
+} stat_resp[] = {
+	{ "RESP_ACK",	0 },
+	{ "RESP_NACK",	0 },
+	{ "RESP_BUSY",	0 },
+	{ "RESP_ACK_ISH", 0 },
+	{ "JUNK",	0 },
+};
+
+enum {
+	RESP_ACK_IDX = 0,
+	RESP_NACK_IDX,
+	RESP_BUSY_IDX,
+	RESP_ACK_ISH_IDX,
+	JUNK_IDX,
+	MAX_EVENT_IDX
+};
 
 /*
  * Print data into the log file, in hex, 16 bytes per line, prefix the first
@@ -369,12 +393,12 @@ static void discard_input(int fd)
 		printf("%d zeros ignored\n", count_of_zeros);
 }
 
-int wait_for_ack(int fd)
+static int wait_for_ack(int fd)
 {
 	uint8_t resp;
 	int res;
 	time_t deadline = time(NULL) + DEFAULT_TIMEOUT;
-	uint8_t ack = RESP_ACK;
+	const uint8_t ack = RESP_ACK;
 
 	while (time(NULL) < deadline) {
 		res = read_wrapper(fd, &resp, 1);
@@ -382,27 +406,38 @@ int wait_for_ack(int fd)
 			perror("Failed to read answer");
 			return -EIO;
 		}
-		if (res == 1) {
-			if (resp == RESP_ACK) {
-				if (mode == MODE_SPI) /* Ack the ACK */
-					if (write_wrapper(fd, &ack, 1) != 1)
-						return -EIO;
-				return 0;
-			} else if (resp == RESP_NACK) {
-				fprintf(stderr, "NACK\n");
-				if (mode == MODE_SPI) /* Ack the NACK */
-					if (write_wrapper(fd, &ack, 1) != 1)
-						return -EIO;
-				discard_input(fd);
-				return -EINVAL;
-			} else if (resp == RESP_BUSY) {
-				/* I2C Boot protocol 1.1 */
-				deadline = time(NULL) + DEFAULT_TIMEOUT;
-			} else {
-				if (mode == MODE_SERIAL)
-					fprintf(stderr, "Receive junk: %02x\n",
-						resp);
-			}
+
+		if (res != 1)
+			continue;
+
+		if (resp == RESP_ACK) {
+			stat_resp[RESP_ACK_IDX].event_count++;
+			if (mode == MODE_SPI) /* Ack the ACK */
+				if (write_wrapper(fd, &ack, 1) != 1)
+					return -EIO;
+			return 0;
+		} else if (resp == RESP_ACK_ISH && (tolerant_to_ackish == 1)) {
+			stat_resp[RESP_ACK_ISH_IDX].event_count++;
+			if (mode == MODE_SPI) /* Ack the ACK */
+				if (write_wrapper(fd, &ack, 1) != 1)
+					return -EIO;
+			return 0;
+		} else if (resp == RESP_NACK) {
+			stat_resp[RESP_NACK_IDX].event_count++;
+			fprintf(stderr, "NACK\n");
+			if (mode == MODE_SPI) /* Ack the NACK */
+				if (write_wrapper(fd, &ack, 1) != 1)
+					return -EIO;
+			discard_input(fd);
+			return -EINVAL;
+		} else if (resp == RESP_BUSY) {
+			stat_resp[RESP_BUSY_IDX].event_count++;
+			/* I2C Boot protocol 1.1 */
+			deadline = time(NULL) + DEFAULT_TIMEOUT;
+		} else {
+			stat_resp[JUNK_IDX].event_count++;
+			if (mode == MODE_SERIAL)
+				fprintf(stderr, "Receive junk: %02x\n", resp);
 		}
 	}
 	fprintf(stderr, "Timeout\n");
@@ -639,6 +674,8 @@ int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 	uint32_t remaining = size;
 	uint32_t addr_be;
 	uint8_t cnt;
+	int retries = MAX_RETRY_COUNT;
+
 	payload_t loads[2] = {
 		{4, (uint8_t *)&addr_be},
 		{1, &cnt}
@@ -652,8 +689,13 @@ int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 		fflush(stdout);
 		res = send_command(fd, CMD_READMEM, loads, 2, buffer, cnt + 1,
 				   0);
-		if (res < 0)
-			return -EIO;
+		if (res < 0) {
+			if (--retries == 0)
+				return -EIO;
+			continue;
+		}
+		retries = MAX_RETRY_COUNT;
+
 		buffer += cnt + 1;
 		address += cnt + 1;
 		remaining -= cnt + 1;
@@ -670,6 +712,8 @@ int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 	uint32_t addr_be;
 	uint32_t cnt;
 	uint8_t outbuf[257];
+	int retries = MAX_RETRY_COUNT;
+
 	payload_t loads[2] = {
 		{4, (uint8_t *)&addr_be},
 		{sizeof(outbuf), outbuf}
@@ -690,8 +734,13 @@ int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 			fflush(stdout);
 			res = send_command(fd, CMD_WRITEMEM, loads, 2,
 					   NULL, 0, 1);
-			if (res < 0)
-				return -EIO;
+			if (res < 0) {
+				if (--retries == 0)
+					return -EIO;
+				continue;
+			}
+
+			retries = MAX_RETRY_COUNT;
 		}
 		buffer += cnt;
 		address += cnt;
@@ -707,7 +756,7 @@ int command_ext_erase(int fd, uint16_t count, uint16_t start)
 	uint16_t count_be = htons(count);
 	payload_t load = { 2, (uint8_t *)&count_be };
 	uint16_t *pages = NULL;
-	int retries = EXT_ERASE_TIMEOUT / DEFAULT_TIMEOUT;
+	int retries = MAX_RETRY_COUNT;
 
 	if (count < 0xfff0) {
 		int i;
@@ -813,7 +862,7 @@ int command_erase(int fd, uint16_t count, uint16_t start)
 int command_read_unprotect(int fd)
 {
 	int res;
-	int retries = EXT_ERASE_TIMEOUT / DEFAULT_TIMEOUT;
+	int retries = MAX_RETRY_COUNT;
 
 	printf("Unprotecting flash read...\n");
 
@@ -1087,6 +1136,7 @@ int parse_parameters(int argc, char **argv)
 			break;
 		case 'c':
 			flags |= FLAG_CR50_MODE;
+			tolerant_to_ackish = 1;
 			break;
 		case 'd':
 			serial_port = optarg;
@@ -1144,6 +1194,19 @@ int parse_parameters(int argc, char **argv)
 	return flags;
 }
 
+static void display_stat_response(void)
+{
+	uint32_t total_events = MAX_EVENT_IDX;
+	uint32_t idx;
+
+	printf("--\n");
+	for (idx = 0; idx < total_events; ++idx) {
+		printf("%-15s %d\n", stat_resp[idx].event_name,
+				stat_resp[idx].event_count);
+	}
+	printf("--\n");
+}
+
 int main(int argc, char **argv)
 {
 	int ser;
@@ -1151,6 +1214,7 @@ int main(int argc, char **argv)
 	int ret = 1;
 	int flags;
 
+	tolerant_to_ackish = 0;
 	/* Parse command line options */
 	flags = parse_parameters(argc, argv);
 
@@ -1226,5 +1290,12 @@ terminate:
 
 	/* Close serial port */
 	close(ser);
+
+	display_stat_response();
+	if (ret)
+		fprintf(stderr, "Failed\n");
+	else
+		printf("Done\n");
+
 	return ret;
 }
