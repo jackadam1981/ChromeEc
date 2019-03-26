@@ -397,6 +397,7 @@ extern "C"{
  * handle actual C code so keep it separate.
  */
 #ifndef __ACPI__
+#ifndef __KERNEL__
 
 /*
  * Define __packed if someone hasn't beat us to it.  Linux kernel style
@@ -474,8 +475,10 @@ extern "C"{
  */
 #define __ec_todo_packed __packed
 #define __ec_todo_unpacked
+#endif  /* CONFIG_HOSTCMD_ALIGNED */
 
-#else  /* !CONFIG_HOSTCMD_ALIGNED */
+#endif  /* !__KERNEL */
+#if (defined __KERNEL__) || !(defined CONFIG_HOSTCMD_ALIGNED)
 
 /*
  * Packed structures make no assumption about alignment, so they do inefficient
@@ -490,7 +493,7 @@ extern "C"{
 #define __ec_todo_packed __packed
 #define __ec_todo_unpacked
 
-#endif  /* !CONFIG_HOSTCMD_ALIGNED */
+#endif  /* __KERNEL__ || !CONFIG_HOSTCMD_ALIGNED */
 
 /* LPC command status byte masks */
 /* EC has written a byte in the data register and host hasn't read it yet */
