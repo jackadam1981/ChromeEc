@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4322d56_ff4b6575",
+        "filename": "util/ectool.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 5126,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2019-03-26T07:26:34Z",
+      "side": 1,
+      "message": "I feel like this if-statement is useless. \n Based on line 5014, 5023, 5024, then only possible values of `cmdver` is either 0 or 2.  This part is within the else-statement at line 5111, which means `cmdver` must not be 0 at this stage, then I think it must be 2.",
+      "revId": "f1b9abca8b287e18cfe63006b9b5d75c31501286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
