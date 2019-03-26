@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8947703_6d888bad",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5026,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-26T23:47:37Z",
+      "side": 1,
+      "message": "may be you can bring this logic to line 5104 for better readability.\n\nterminate with else statement instead of assigning 0 @5017\ncmdver \u003d 0;",
+      "range": {
+        "startLine": 5026,
+        "startChar": 0,
+        "endLine": 5026,
+        "endChar": 1
+      },
+      "revId": "da4c687a8c08e34b7a8e6dd374f3e6a785824784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
