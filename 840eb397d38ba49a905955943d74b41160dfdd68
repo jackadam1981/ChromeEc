@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f1c3dbc_4d87d459",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-27T17:30:44Z",
+      "side": 0,
+      "message": "This might confuse users in case of servod-less run, like STM32_DFU chip. Converting it to warning level.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 7
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b43acfef_99a8c271",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-27T17:30:44Z",
+      "side": 0,
+      "message": "This exits flash_ec even it was supposed to fail, like STM32_DFU chip. Adding || to prevent exiting.",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6294660a_50b85b59",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-27T17:30:44Z",
+      "side": 0,
+      "message": "This exits flash_ec even it was supposed to fail, like STM32_DFU chip. Adding || to prevent exiting.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 42
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
