@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aec9885e_85285a5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-27T22:29:40Z",
+      "side": 1,
+      "message": "Reason for revert: Broke some dut-control invocations, see b/129425648 .",
+      "revId": "ad0fc697768d9ec732dcc4c3df9f54bf72ce080e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69831293_50dd8c8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-27T22:29:40Z",
+      "side": 1,
+      "message": "BUG\u003db:129425648",
+      "revId": "ad0fc697768d9ec732dcc4c3df9f54bf72ce080e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
