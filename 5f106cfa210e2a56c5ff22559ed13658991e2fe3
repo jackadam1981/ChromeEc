@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a519c214_80250f99",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-03-27T18:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a41d458a_8ba15aeb",
+      "range": {
+        "startLine": 307,
+        "startChar": 30,
+        "endLine": 307,
+        "endChar": 32
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d81045b_c209ac00",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e432ef58_d1b3ab35",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-03-27T18:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d81045b_c209ac00",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 8
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5f42550_a04520d9",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-27T18:19:44Z",
       "side": 1,
       "message": "on a second thought:\nhow about we assert here itself if port# exceeds or slave address is invalid?",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 26
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c821b8d0_a7b95736",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-03-27T18:40:48Z",
+      "side": 1,
+      "message": "We want to return an error instead of assert because this is primarily for console command.",
+      "parentUuid": "d5f42550_a04520d9",
       "range": {
         "startLine": 513,
         "startChar": 0,
