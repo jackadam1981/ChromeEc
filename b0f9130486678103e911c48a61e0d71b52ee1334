@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f617c508_191b3fc3",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-27T21:52:55Z",
+      "side": 1,
+      "message": "Change to\nccprintf(\"Flash WP: %s%sabled\\n\", board_forcing_wp() ? \"forced \" : \"\",\n\t\t wp_is_asserted() ? \"ena\" : \"dis\");",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 0
+      },
+      "revId": "b0f9130486678103e911c48a61e0d71b52ee1334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850d8764_7709879d",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-27T21:52:55Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 0
+      },
+      "revId": "b0f9130486678103e911c48a61e0d71b52ee1334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75cd1ae7_57f076aa",
         "filename": "board/cr50/wp.c",
         "patchSetId": 6
@@ -37,6 +83,30 @@
       "side": 1,
       "message": "I don\u0027t think I would know what bp enable means in terms of disconnecting and connecting the battery.",
       "parentUuid": "75cd1ae7_57f076aa",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "b0f9130486678103e911c48a61e0d71b52ee1334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3243c9bd_6c1f52a2",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-03-27T21:52:55Z",
+      "side": 1,
+      "message": "I\u0027m also not sure what to do with the usage.  Separate console commands is much clearer to document - so maybe it\u0027s not worth combing these commands for 124 bytes of savings.  You do get back 10 bytes with the wp printf changes noted above.\n\nYou could also save a few bytes by making \"follow_batt_pres\" a macro and and use in the strncasecmp and usage descriptions.",
+      "parentUuid": "385c9200_7c816995",
       "range": {
         "startLine": 249,
         "startChar": 0,
