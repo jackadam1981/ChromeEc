@@ -52,6 +52,24 @@
       "revId": "57521cbeb511a3e7b864a91bb069d27f9cf747ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934872f7_b11205fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-27T18:09:20Z",
+      "side": 1,
+      "message": "Either way the servod-less command is different.  In this case, the difference is extra args to flash_ec, but I don\u0027t think that\u0027s better than just running iteflash directly.\n\nSo I\u0027m -1 on this to avoid flash_ec complications with no clear benefit.",
+      "parentUuid": "50a46586_4e05e665",
+      "revId": "57521cbeb511a3e7b864a91bb069d27f9cf747ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
