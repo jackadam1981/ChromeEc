@@ -417,6 +417,161 @@
     },
     {
       "key": {
+        "uuid": "c0945bc5_b153f7a9",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "let\u0027s spell this out, please",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c3e917_8226b766",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "this is now BIT(0) in ec codebase",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185cc5a5_025d2132",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "more comments for what these defines are for, please?\n\nwhat is TC obj, wand what is it used for",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90694485_80a8e55f",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "please add a description of what information should go in this struct. Also worth mentioning that this is a per-port structure",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3c9718_b32a7f6d",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "let\u0027s make this an enum",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5d48779_30b522c2",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "enum please",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56954d11_be99456f",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "is this just a bool, please document",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0941e242_e7718479",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -433,6 +588,75 @@
         "startChar": 9,
         "endLine": 45,
         "endChar": 18
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b15fc7_65f7e8bc",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "s/ct/tc/ ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9415112e_5e61c49a",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "doesn\u0027t this define the tc object in every complication unit we compile.\n\nShould we declare an extern tc instead and have a single complication unit define it.\n\nAlso, should we pack this structure, otherwise the uint8_t fields are going to take 8 bytes instead of 1.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa753aa_9553f773",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "why are these defined as static methods?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 6
       },
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -479,6 +703,121 @@
         "startChar": 0,
         "endLine": 2024,
         "endChar": 57
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1380f2ee_16321aa6",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "we recently changed the conditional compiling of states for our existing stack, keeping the enum always defined yet still catching state misuse as a compile time error:\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/ec/+/840eb397d38ba49a905955943d74b41160dfdd68/include/usb_pd.h#701\n\nWhat are your thoughts about applying that methodolody here?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189b3826_02176c7f",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "what id, is this the typec_state? Should we be returning the enum instead?",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ae7d04_bdaf5c14",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "this should be an enum",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc26ddd_4a45d6f7",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "is this the state timeout (what loop)?\n\nAlso, I have seen states existing at different times if different conditions are met. Can we make timeouts with conditions that are run instead?\n\nHere is an example: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/840eb397d38ba49a905955943d74b41160dfdd68/common/usb_pd_protocol.c#2978",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 48
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6fc6d0_c48fcefa",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:52:42Z",
+      "side": 1,
+      "message": "this seems like an appropriate place to describe (very briefly) what the support timer is used for and why the code cares.",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 2
       },
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
