@@ -22,6 +22,30 @@
       "revId": "7581def1eabcac30571059ffa935d62929fbd010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ade5f4c_98f20086",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T19:54:25Z",
+      "side": 1,
+      "message": "Even further, we should add this check logic in ish code instead of common code. chip_i2c_xfer would be a good place\n\n(also when we move it, let\u0027s use 8-bit addresses of \u003c\u003d 0x0F  and 0xF0 \u003c\u003d X \u003c\u003d 0xFF). Still reference the manual is good though.",
+      "parentUuid": "963c26c7_a6055176",
+      "range": {
+        "startLine": 1024,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 0
+      },
+      "revId": "7581def1eabcac30571059ffa935d62929fbd010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
