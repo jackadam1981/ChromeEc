@@ -49,6 +49,120 @@
     },
     {
       "key": {
+        "uuid": "eed6ca06_3b8a1edd",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: try to keep this in alphabetical order",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ce35fa_08d87b18",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3b4703_5693ab1f",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "Is this pin active low? Or what\u0027s the _L suffix for?",
+      "range": {
+        "startLine": 237,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 49
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5251610c_4d51d9e8",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "Same question here",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42128d30_8b9f9da2",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "And here",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be459b15_1c8a238d",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "Can you append \"_present\" to these?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 23
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cc0427d_fa318537",
         "filename": "chip/stm32/adc-stm32f0.c",
         "patchSetId": 59
@@ -117,6 +231,258 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cde0ca1_dda4df3e",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 451,
+        "startChar": 26,
+        "endLine": 451,
+        "endChar": 27
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39628054_cc871883",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "Does this really need to be gated by PD 3.0? I understand that SinkTxOk termination is used, but the internal AMS flag is probably still useful for PD 2.0?",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ddfb1f_945d3334",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: stray open paren",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1153,
+        "endChar": 5
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d87e62a_b14e3f17",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: stray open paren",
+      "range": {
+        "startLine": 1163,
+        "startChar": 4,
+        "endLine": 1163,
+        "endChar": 5
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787ce608_37a934c1",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "range": {
+        "startLine": 1431,
+        "startChar": 50,
+        "endLine": 1431,
+        "endChar": 53
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bd859c_7acfd629",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: missing brackets",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abe1ddc_2b87f4cc",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "nit: missing brackets",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40e7b6f3_8ae82560",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1708,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "what\u0027s this?",
+      "range": {
+        "startLine": 1708,
+        "startChar": 25,
+        "endLine": 1708,
+        "endChar": 27
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208d7017_396e8b50",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "What\u0027s the point of this?",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0941e242_e7718479",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "What\u0027s a \"ct\" port? Charge-thru?",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805ee33f_c7f430a5",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "Should you check for VCONN presence before switching to it?",
+      "range": {
+        "startLine": 1980,
+        "startChar": 0,
+        "endLine": 1985,
+        "endChar": 57
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d80c8d5_18e311e5",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-03-27T18:18:32Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2024,
+        "endChar": 57
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
