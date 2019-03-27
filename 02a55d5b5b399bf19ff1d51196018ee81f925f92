@@ -22,6 +22,29 @@
       "revId": "02a55d5b5b399bf19ff1d51196018ee81f925f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826fad5b_ce887fb7",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-03-27T01:06:39Z",
+      "side": 1,
+      "message": "nit: do you see a benefit in having FLIP and NOFLIP as a def above for polarity to make the state machine more readable?",
+      "range": {
+        "startLine": 362,
+        "startChar": 4,
+        "endLine": 362,
+        "endChar": 12
+      },
+      "revId": "02a55d5b5b399bf19ff1d51196018ee81f925f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
