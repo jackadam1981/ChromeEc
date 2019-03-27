@@ -153,7 +153,7 @@ static const mat33_fp_t lid_standard_ref = {
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 		.name = "Lid Accel",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_BMA255,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_LID,
@@ -180,7 +180,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_BMI160,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
@@ -206,7 +206,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_GYRO] = {
 		.name = "Base Gyro",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_BMI160,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_BASE,
@@ -223,7 +223,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[LID_ALS] = {
 		.name = "Light",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_OPT3001,
 		.type = MOTIONSENSE_TYPE_LIGHT,
 		.location = MOTIONSENSE_LOC_LID,
