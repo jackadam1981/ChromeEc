@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e2b9d0e_9c6cc4d1",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-27T21:25:52Z",
+      "side": 1,
+      "message": "could this be simpler:\n\nif ((pop_check_presence(1) \u003d\u003d POP_TOUCH_YES) || rbox_powerbtn_is_pressed())\n\nand the rest of the file does not have to change?",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 44
+      },
+      "revId": "eabb277e87620142154f578bbf14ba2528fa54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "778f8455_400489df",
         "filename": "board/cr50/power_button.c",
         "patchSetId": 2
