@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9e2802b3_86d240b5",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1321643
+      },
+      "writtenOn": "2019-03-27T19:35:13Z",
+      "side": 1,
+      "message": "I see. New patch no longer touches i2c_init_transaction. I am still comparing the 7 bit version though because that is what chip_i2c_xfer will be using (used in console command).",
+      "parentUuid": "a1779147_5d8b50a9",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d81045b_c209ac00",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 1
