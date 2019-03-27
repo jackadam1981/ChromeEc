@@ -45,6 +45,29 @@
       "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f42550_a04520d9",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-27T18:19:44Z",
+      "side": 1,
+      "message": "on a second thought:\nhow about we assert here itself if port# exceeds or slave address is invalid?",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 26
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
