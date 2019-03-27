@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a41d458a_8ba15aeb",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-27T18:14:23Z",
+      "side": 1,
+      "message": "\u003c 0 also needed?",
+      "range": {
+        "startLine": 307,
+        "startChar": 30,
+        "endLine": 307,
+        "endChar": 32
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d81045b_c209ac00",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-27T18:14:23Z",
+      "side": 1,
+      "message": "please add details of allowed slave addresses.",
+      "range": {
+        "startLine": 313,
+        "startChar": 4,
+        "endLine": 313,
+        "endChar": 8
+      },
+      "revId": "5f106cfa210e2a56c5ff22559ed13658991e2fe3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
