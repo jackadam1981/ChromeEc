@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "963c26c7_a6055176",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-27T19:34:17Z",
+      "side": 1,
+      "message": "this is applicable only to ISH. Please add ifdef",
+      "range": {
+        "startLine": 1024,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 0
+      },
+      "revId": "7581def1eabcac30571059ffa935d62929fbd010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
