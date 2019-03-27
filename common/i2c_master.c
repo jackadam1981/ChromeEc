@@ -1000,7 +1000,7 @@ DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
 #ifdef CONFIG_CMD_I2C_XFER
 static int command_i2cxfer(int argc, char **argv)
 {
-	int port, slave_addr;
+	int port, slave_addr, slave_addr_7bit;
 	uint16_t offset = 0;
 	uint8_t offset_size = 0;
 	int v = 0;
@@ -1014,9 +1014,17 @@ static int command_i2cxfer(int argc, char **argv)
 	port = strtoi(argv[2], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM2;
+	else if (port < 0 || port >= i2c_ports_used)
+		return EC_ERROR_PARAM2;
 
 	slave_addr = strtoi(argv[3], &e, 0);
 	if (*e)
+		return EC_ERROR_PARAM3;
+
+	/* Check for reserved I2C addresses, pg. 74 in DW_apb_i2c.pdf */
+	slave_addr_7bit = slave_addr >> 1;
+	if (slave_addr_7bit <= 0x07 || (slave_addr_7bit >= 0x78 &&
+		slave_addr_7bit <= 0x7f))
 		return EC_ERROR_PARAM3;
 
 	offset = strtoi(argv[4], &e, 0);
