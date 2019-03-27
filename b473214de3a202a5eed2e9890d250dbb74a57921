@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "43fca3b1_47b805ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-27T22:10:15Z",
+      "side": 1,
+      "message": "What about hubs and other accessories?  Won\u0027t they also ACK the Discover Identity command and fill in the cable_type?  Is that desired?",
+      "parentUuid": "f58533a2_d30a6250",
+      "range": {
+        "startLine": 1963,
+        "startChar": 0,
+        "endLine": 1964,
+        "endChar": 49
+      },
+      "revId": "b473214de3a202a5eed2e9890d250dbb74a57921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b041de2f_e429bd7e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
