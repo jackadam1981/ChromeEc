@@ -13,6 +13,7 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_opt3001.h"
+#include "driver/als_tcs3400.h"
 #include "driver/ppc/sn5s330.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -132,6 +133,18 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 	.offset = 0,
 };
 
+static struct tcs3400_drv_data_t g_tcs3400_data = {
+	.scale = 1,
+	.uscale = 0,
+	.offset = 0,
+};
+
+static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
+	.scale = 1,
+	.uscale = 0,
+	.offset = { 0, 0, 0 },
+};
+
 /* Matrix to rotate accelrator into standard reference frame */
 static const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(1), 0},
@@ -235,6 +248,50 @@ struct motion_sensor_t motion_sensors[] = {
 		.default_range = 0x2b11a1,
 		.min_frequency = OPT3001_LIGHT_MIN_FREQ,
 		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+
+	[CLEAR_ALS] = {
+		.name = "Clear Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3400_drv,
+		.drv_data = &g_tcs3400_data,
+		.port = I2C_PORT_TEST,
+		.addr = TCS3400_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0, /* Gain, 0 = 1x gain */
+		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
+		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+
+	[RGB_ALS] = {
+		.name = "RGB Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.type = MOTIONSENSE_TYPE_LIGHT_EXT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3400_rgb_drv,
+		.drv_data = &g_tcs3400_rgb_data,
+		.port = I2C_PORT_TEST,
+		.addr = TCS3400_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0, /* Gain, 0 = 1x gain */
+		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
+		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
 		.config = {
 			/* Run ALS sensor in S0 */
 			[SENSOR_CONFIG_EC_S0] = {
@@ -372,6 +429,7 @@ static void board_init(void)
 	setup_fans();
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+	gpio_enable_interrupt(GPIO_BASE_TCS3400_INT_L);
 	/* Select correct gpio signal for PP5000_A control */
 	board_gpio_set_pp5000();
 }
