@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6120432b_e1faf4cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-27T15:17:18Z",
+      "side": 1,
+      "message": "Can you elaborate how this patch will fix the issue that Simplo battery can\u0027t enter shipping mode?\n\nThe battery is cutoff but woken up immediately (by chgstv2)? This patch will prevent it?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "f08c81e99ed6b894b36e61357ec4b125578c95b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c63348e_75ee0b88",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-27T15:17:18Z",
+      "side": 1,
+      "message": "Why is enum battery_cutoff_states removed?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "f08c81e99ed6b894b36e61357ec4b125578c95b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b2f80e_73455931",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-27T15:17:18Z",
+      "side": 1,
+      "message": "Can you define an API (e.g. battery_set_cutoff_state(enum ...)) in common/battery.c and call it instead?",
+      "range": {
+        "startLine": 1372,
+        "startChar": 0,
+        "endLine": 1373,
+        "endChar": 34
+      },
+      "revId": "f08c81e99ed6b894b36e61357ec4b125578c95b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
