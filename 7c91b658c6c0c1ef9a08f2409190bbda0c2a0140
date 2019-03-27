@@ -16,6 +16,24 @@
       "revId": "7c91b658c6c0c1ef9a08f2409190bbda0c2a0140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04955af7_3939fe52",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-27T20:59:01Z",
+      "side": 1,
+      "message": "besides a simple gpio implementation disabling interrupts while sending host commands through another layer can be very dangerous if the layer needs to use interrupts to execute properly.\n\nAll new boards specify tight_timestamps, are we saying that we don\u0027t want newer boards on the EC to specify this flag?",
+      "parentUuid": "789b096d_3aec91ba",
+      "revId": "7c91b658c6c0c1ef9a08f2409190bbda0c2a0140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
