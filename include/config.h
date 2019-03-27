@@ -243,6 +243,8 @@
 #undef CONFIG_ALS_SI114X
 /* Check if the device revision is supported */
 #undef CONFIG_ALS_SI114X_CHECK_REVISION
+#undef CONFIG_ALS_TCS3400
+#undef CONFIG_ALS_TCS3400_INT_EVENT
 
 /*
  * Define the event to raise when a sensor interrupt triggers.
