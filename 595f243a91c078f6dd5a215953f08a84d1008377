@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "903794e7_6cb11946",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-03-27T02:03:16Z",
+      "side": 1,
+      "message": "That\u0027s strange.\n\nThe GPP checking data suppose to be in 0xe0 tho and other 24 bit is short serial no.\n\nIf you try 2 charger, the 0xe0 part will stay the same.",
+      "parentUuid": "4afcf556_7a19585b",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 59
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca81123_49f167ce",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 10
