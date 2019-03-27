@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "fdf75d9e_bc692940",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed6ca06_3b8a1edd",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25ce35fa_08d87b18",
         "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
         "patchSetId": 59
@@ -80,6 +98,24 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd684af_00e9f974",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ce35fa_08d87b18",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +199,30 @@
     },
     {
       "key": {
+        "uuid": "af76a188_be2be202",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be459b15_1c8a238d",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 23
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cc0427d_fa318537",
         "filename": "chip/stm32/adc-stm32f0.c",
         "patchSetId": 59
@@ -234,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "4621117c_e21a213d",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7245deba_33f43be4",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cde0ca1_dda4df3e",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 59
@@ -257,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "2059928b_63e7dbc6",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cde0ca1_dda4df3e",
+      "range": {
+        "startLine": 451,
+        "startChar": 26,
+        "endLine": 451,
+        "endChar": 27
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39628054_cc871883",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 59
@@ -268,6 +376,24 @@
       "writtenOn": "2019-03-27T18:18:32Z",
       "side": 1,
       "message": "Does this really need to be gated by PD 3.0? I understand that SinkTxOk termination is used, but the internal AMS flag is probably still useful for PD 2.0?",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4a0b1dd_25e3a0d8",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "This code is only for collision avoidance. Potential AMS problems are handled in the policy engine.",
+      "parentUuid": "39628054_cc871883",
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -297,6 +423,30 @@
     },
     {
       "key": {
+        "uuid": "14a5cfc8_c0b59763",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00ddfb1f_945d3334",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1153,
+        "endChar": 5
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d87e62a_b14e3f17",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 59
@@ -317,6 +467,30 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a04cac7_4bc37c5d",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d87e62a_b14e3f17",
+      "range": {
+        "startLine": 1163,
+        "startChar": 4,
+        "endLine": 1163,
+        "endChar": 5
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -343,6 +517,30 @@
     },
     {
       "key": {
+        "uuid": "8c94fdbf_2baa0cff",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "787ce608_37a934c1",
+      "range": {
+        "startLine": 1431,
+        "startChar": 50,
+        "endLine": 1431,
+        "endChar": 53
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69bd859c_7acfd629",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 59
@@ -360,6 +558,24 @@
     },
     {
       "key": {
+        "uuid": "2175ac54_df958cdf",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "WARNING: braces {} are not necessary for single statement blocks\n            #3069: FILE: common/usb_prl_sm.c:1458:\n            +\t\telse {\n            +\t\t\tset_state(port, RCH_OBJ(port), rch_requesting_chunk);\n            +\t\t}",
+      "parentUuid": "69bd859c_7acfd629",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2abe1ddc_2b87f4cc",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 59
@@ -374,6 +590,24 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfde26c1_ab63ffa9",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "WARNING: braces {} are not necessary for single statement blocks\n            #3076: FILE: common/usb_prl_sm.c:1465:\n            +\telse {\n            +\t\tset_state(port, RCH_OBJ(port), rch_report_error);\n            +\t}",
+      "parentUuid": "2abe1ddc_2b87f4cc",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -400,6 +634,30 @@
     },
     {
       "key": {
+        "uuid": "a62fd349_ec7c3b11",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1708,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e7b6f3_8ae82560",
+      "range": {
+        "startLine": 1708,
+        "startChar": 25,
+        "endLine": 1708,
+        "endChar": 27
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "208d7017_396e8b50",
         "filename": "common/usb_tc_sm.c",
         "patchSetId": 59
@@ -414,6 +672,24 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2595d457_d252888d",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "No point. It\u0027s left over from the original stack. I\u0027ll remove it.",
+      "parentUuid": "208d7017_396e8b50",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -618,6 +894,30 @@
     },
     {
       "key": {
+        "uuid": "08aa6379_18dfb7ef",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Yes. I\u0027ll change it to Charge-Through",
+      "parentUuid": "0941e242_e7718479",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9415112e_5e61c49a",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -687,6 +987,30 @@
     },
     {
       "key": {
+        "uuid": "febe0eb1_ea783a16",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "805ee33f_c7f430a5",
+      "range": {
+        "startLine": 1980,
+        "startChar": 0,
+        "endLine": 1985,
+        "endChar": 57
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d80c8d5_18e311e5",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -707,6 +1031,30 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d77f2d0_07a6f7de",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-03-27T20:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d80c8d5_18e311e5",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2024,
+        "endChar": 57
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
