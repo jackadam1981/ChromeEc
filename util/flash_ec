@@ -203,7 +203,7 @@ function dut_control_get() {
 	# || statement is attached to avoid an exit if error exit is enabled.
 	DUT_GETVAL=$( "${ARGS[@]}" ) || RETVAL="$?"
 	if (( "${RETVAL}" )) ; then
-		error "${FUNCNAME[0]} failed: ${ARGS[*]} returned ${RETVAL}."
+		warn "${FUNCNAME[0]} failed: ${ARGS[*]} returned ${RETVAL}."
 		return "${RETVAL}"
 	fi
 	# Remove the shortest prefix ending ':'
@@ -263,7 +263,7 @@ if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
 fi
 
 if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 ]]; then
-	SERVO_EC_CHIP="$(dut_control_get ec_chip)"
+	SERVO_EC_CHIP="$(dut_control_get ec_chip)" || SERVO_EC_CHIP=""
 	SERVO_EC_CHIP="${SERVO_EC_CHIP,,}"
 	if [[ "${SERVO_EC_CHIP}" =~ "unknown" || -z "${SERVO_EC_CHIP}" ]]; then
 		die "Please check that servod is running or," \
@@ -329,7 +329,7 @@ case "${CHIP}" in
 		;;
 esac
 
-SERVO_TYPE="$(dut_control_get servo_type)"
+SERVO_TYPE="$(dut_control_get servo_type)" || SERVO_TYPE=""
 
 servo_has_warm_reset() {
 	dut_control -i warm_reset >/dev/null 2>&1
@@ -1143,6 +1143,10 @@ function flash_it83xx() {
 	elif [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
 		info "Closing servod connection to ftdi_i2c interface"
 		dut_control_or_die ftdii2c_cmd:close
+	elif [[ "${SERVOTYPE}" == "" ]]; then
+		# TODO(b/124388894): Once I2C pseudo driver lands, remove this
+		# workaround code.
+		warn "Servod is not detected."
 	else
 		die "This servo type is not yet supported: ${SERVO_TYPE}"
 	fi
@@ -1152,6 +1156,13 @@ function flash_it83xx() {
 
 	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
 		ITEFLASH_ARGS+=( "--send-waveform=1" "--i2c-interface=ftdi" )
+	elif [[ -z "${SERVO_TYPE}" ]]; then
+		# TODO(b/124388894): Once I2C pseudo driver lands, remove this
+		# workaround code.
+		ITEFLASH_ARGS+=( "--send-waveform=1" "--i2c-interface=ccd" )
+		if [[ "${BOARD}" != "dragonegg" ]]; then
+			ITEFLASH_ARGS+=( "--i2c-mux" )
+		fi
 	else
 		ITEFLASH_ARGS+=( "--send-waveform=0" )
 		if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]]; then
