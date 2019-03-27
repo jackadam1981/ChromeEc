@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebde2a11_a577bf31",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "081366d9_14182e33",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e761b08_ca6ed4cb",
         "filename": "chip/ish/dma.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0157ce4_8c0c2caf",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "The UINT32_MAX is 4294967295 and UINT32_MAX/64 is 67108864, the ish runs in 120M clock which is 120000000HZ, here approximately has about 1 memory read instruction, 1 arithmetic instruction, 1 compare and jump instruction, 1 inc instruction. So the time is about (4*67108864)/120000000 \u003d 2.2 seconds.",
+      "parentUuid": "0e761b08_ca6ed4cb",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7d4581c4_99bd20f2",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a86f7e_e682cceb",
+      "range": {
+        "startLine": 111,
+        "startChar": 10,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "324a86b2_1089a49b",
         "filename": "chip/ish/dma.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaed5a59_a605acb9",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "324a86b2_1089a49b",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fcc63cdf_57b2b02f",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5fcaac5_a765a9db",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78862536_7220e07f",
         "filename": "chip/ish/ish_dma.h",
         "patchSetId": 5
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0a20f57d_935618b9",
+        "filename": "chip/ish/ish_dma.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78862536_7220e07f",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61e3a14c_11a40edd",
         "filename": "include/config.h",
         "patchSetId": 5
@@ -160,6 +304,30 @@
       "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beac7a8c_e0d2cd72",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2401,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-27T05:21:55Z",
+      "side": 1,
+      "message": "The CONFIG_DMA mainly enable the dma transfer method for peripherals while this driver performed paging between SRAM and DRAM. If not using a seperate config option, then enable CONFIG_DMA will also enable peripherals to use dma method to perform data transfer which may not be what we want, also some unnecessary code will be added into the final binary . So using an independent CONFIG_DMA_PAGING option will make things clear an simple.",
+      "parentUuid": "61e3a14c_11a40edd",
+      "range": {
+        "startLine": 2401,
+        "startChar": 7,
+        "endLine": 2401,
+        "endChar": 24
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
