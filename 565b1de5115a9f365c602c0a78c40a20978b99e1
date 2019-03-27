@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0acb6aaf_1f351889",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-27T05:56:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4dbbbc48_f2eb9f93",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3fb0c42_d31b0856",
         "filename": "chip/it83xx/i2c_slave.c",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-26T16:47:54Z",
       "side": 1,
       "message": "can you create issue trackers for this work, please?\n\n(same below)",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 54
+      },
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "780ad7c3_8f8e2134",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-27T05:56:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a3fb0c42_d31b0856",
       "range": {
         "startLine": 161,
         "startChar": 3,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "9754846f_22a96339",
+        "filename": "chip/it83xx/i2c_slave.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-27T05:56:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "153a3c71_8b733855",
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb9bf18b_a5f66063",
         "filename": "chip/it83xx/i2c_slave.h",
         "patchSetId": 15
@@ -76,6 +142,30 @@
       "writtenOn": "2019-03-26T18:55:07Z",
       "side": 1,
       "message": "can you please share insights on why 2 slave addresses?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "565b1de5115a9f365c602c0a78c40a20978b99e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06272286_541173cd",
+        "filename": "chip/it83xx/i2c_slave.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-03-27T05:56:41Z",
+      "side": 1,
+      "message": "The specification supports two I2C slave address,\nbut only need one slave address in the current \npayload.",
+      "parentUuid": "fb9bf18b_a5f66063",
       "range": {
         "startLine": 15,
         "startChar": 0,
