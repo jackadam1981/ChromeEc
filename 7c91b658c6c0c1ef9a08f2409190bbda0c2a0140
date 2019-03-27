@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "789b096d_3aec91ba",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-27T00:49:09Z",
+      "side": 1,
+      "message": "The problem is that if you disable the interrupts, you can be interrupted between line 101 and 102. When it happens, the interrupt will appear to have occur later than it did, and will impact the filter for sensor data.\n\nThe assumption is that if we don\u0027t care about tight timestamp, we don\u0027t need timestamp to be really close from the event generator.\n\nTherefore, I would replace CONFIG_MKBP_USE_GPIO with CONFIG_SENSOR_TIGHT_TIMESTAMPS.",
+      "revId": "7c91b658c6c0c1ef9a08f2409190bbda0c2a0140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
