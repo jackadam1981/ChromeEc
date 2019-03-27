@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37f1b15f_c45370df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1311301
+      },
+      "writtenOn": "2019-03-27T01:12:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37ca3a4b_90e2b309",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "2998c33ea7f06532591dbf2ebb3180d3081a69b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28620642_95fb4114",
         "filename": "board/flapjack/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-21T19:35:38Z",
       "side": 1,
       "message": "Can you rename it to LID_OPEN?",
+      "range": {
+        "startLine": 42,
+        "startChar": 9,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "2998c33ea7f06532591dbf2ebb3180d3081a69b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242035e8_e0cae3ba",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1311301
+      },
+      "writtenOn": "2019-03-27T01:12:38Z",
+      "side": 1,
+      "message": "Yes, I can, but I think it\u0027s best to use \"HALL_INT_L\", That will match with the hardware schematic. How do you think?",
+      "parentUuid": "28620642_95fb4114",
       "range": {
         "startLine": 42,
         "startChar": 9,
