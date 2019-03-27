@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "778f8455_400489df",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1276303
+      },
+      "writtenOn": "2019-03-27T21:20:49Z",
+      "side": 1,
+      "message": "NIT: could be more compact as:\n*(uint8_t *)buf \u003d rbox_powerbtn_is_pressed();\nor if the return value isn\u0027t trusted to remain strictly 1 vs 0 in future code changes:\n*(uint8_t *)buf \u003d rbox_powerbtn_is_pressed() ? 1 : 0\nor\n*(uint8_t *)buf \u003d !!rbox_powerbtn_is_pressed();",
+      "revId": "eabb277e87620142154f578bbf14ba2528fa54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
