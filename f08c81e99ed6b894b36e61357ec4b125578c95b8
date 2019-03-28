@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78067b11_3231fdd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2019-03-28T01:48:07Z",
+      "side": 1,
+      "message": "Simplo battery is using Renesas gague ic. The Renesas F/W cut-off process would CANCEL if EC communicates with it again within 10secs \nSo this patch is return battery is cutoff state when execute battery cut-off command success. \nSB_read/SB_Write(smart.c) will block data access if battery is cutoff state.",
+      "parentUuid": "6120432b_e1faf4cd",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "f08c81e99ed6b894b36e61357ec4b125578c95b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c63348e_75ee0b88",
         "filename": "common/battery.c",
         "patchSetId": 1
