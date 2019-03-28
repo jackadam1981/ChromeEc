@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6edf1cad_04fb6a55",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-03-28T17:49:47Z",
+      "side": 1,
+      "message": "Thank you for the explanation, let\u0027s put that in a comment so that information isn\u0027t lost",
+      "parentUuid": "b0157ce4_8c0c2caf",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "b24179bb902222dcfe7e4efed9670169c53949d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39a86f7e_e682cceb",
         "filename": "chip/ish/dma.c",
         "patchSetId": 5
