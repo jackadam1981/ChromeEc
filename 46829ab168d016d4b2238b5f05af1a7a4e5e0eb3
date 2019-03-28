@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1156bab8_519137ea",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-03-28T03:41:48Z",
+      "side": 1,
+      "message": "This is not necessary. return at below",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 12
+      },
+      "revId": "46829ab168d016d4b2238b5f05af1a7a4e5e0eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

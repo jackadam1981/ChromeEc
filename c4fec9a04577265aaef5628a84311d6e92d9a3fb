@@ -46,6 +46,30 @@
       "revId": "c4fec9a04577265aaef5628a84311d6e92d9a3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d393fda_85e2c274",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-03-28T03:41:48Z",
+      "side": 1,
+      "message": "Jett, Do you mean define an empty anx7447_mux_set? or just move the function out from the #ifdef CONFIG_USB_PD_TCPM_MUX .. ?",
+      "parentUuid": "605294a2_e80bbff3",
+      "range": {
+        "startLine": 352,
+        "startChar": 7,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "c4fec9a04577265aaef5628a84311d6e92d9a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
