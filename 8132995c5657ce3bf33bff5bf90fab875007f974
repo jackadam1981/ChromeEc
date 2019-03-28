@@ -22,6 +22,30 @@
       "revId": "8132995c5657ce3bf33bff5bf90fab875007f974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9d0210_258dd044",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-28T17:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ad3f5f_89ed001a",
+      "range": {
+        "startLine": 114,
+        "startChar": 20,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "8132995c5657ce3bf33bff5bf90fab875007f974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
