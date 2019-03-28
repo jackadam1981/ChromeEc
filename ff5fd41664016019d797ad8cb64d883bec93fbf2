@@ -16,6 +16,24 @@
       "revId": "ff5fd41664016019d797ad8cb64d883bec93fbf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00d7121a_d62d839c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-28T16:36:05Z",
+      "side": 1,
+      "message": "Ah, my bad.\nI am just undoing it rather than adding another function for this. flash_ec is already complicated enough.",
+      "parentUuid": "344aa448_d0392bed",
+      "revId": "ff5fd41664016019d797ad8cb64d883bec93fbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
