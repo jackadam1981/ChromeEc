@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77ec65ca_ac6fed47",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-28T05:06:12Z",
+      "side": 1,
+      "message": "Change to:\n\nSERVO_EC_CHIP\u003d\"$(dut_control_get ec_chip || true)\"\n\nOr:\n\nSERVO_EC_CHIP\u003d\"$(dut_control_get ec_chip || :)\"",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52999637_3a0bfe5f",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-28T05:06:12Z",
+      "side": 1,
+      "message": "Change to:\n\nSERVO_TYPE\u003d\"$(dut_control_get servo_type || true)\"\n\nOr:\n\nSERVO_TYPE\u003d\"$(dut_control_get servo_type || :)\"",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac6d74bc_039659cd",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-28T05:06:12Z",
+      "side": 1,
+      "message": "Seeing these changed to arrays makes me happy.  Good cleanup here.",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cde36076_6239feb4",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-28T05:06:12Z",
+      "side": 1,
+      "message": "Above this line (not part of the same line!) add:\n\nlocal SERVO_VARS_NAME",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

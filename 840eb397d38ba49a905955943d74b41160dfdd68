@@ -22,6 +22,30 @@
       "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf15c8c8_dbb2c70a",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-28T05:06:12Z",
+      "side": 0,
+      "message": "Looks like this predated that CL, this line was moved in that CL.  Either way, removing this line seems fine to me.",
+      "parentUuid": "35bb9348_c7b058d4",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 6
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
