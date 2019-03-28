@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35bb9348_c7b058d4",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-28T01:29:58Z",
+      "side": 0,
+      "message": "This is from crrev.com/c/300392 in 2015, but I don\u0027t see any reason not to restore servo settings for npcx EC.\nI tested without these two lines on servo_v2, servo_v4_with_(servo_micro|ccd_cr50) for the test, and all run instances were good. Please check log in the CL message.",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 6
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
