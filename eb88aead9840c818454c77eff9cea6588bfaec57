@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e51e34c0_a2a69b37",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-28T04:13:40Z",
+      "side": 1,
+      "message": "question: does this increase the size to I2C_ENHANCED_PORT_COUNT even if we use only 1 i2c slave port?",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "eb88aead9840c818454c77eff9cea6588bfaec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4924525_00ecaa31",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-03-28T04:13:40Z",
+      "side": 1,
+      "message": "want rename as slv_addr as 2nd addr is removed?",
+      "range": {
+        "startLine": 200,
+        "startChar": 40,
+        "endLine": 200,
+        "endChar": 49
+      },
+      "revId": "eb88aead9840c818454c77eff9cea6588bfaec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
