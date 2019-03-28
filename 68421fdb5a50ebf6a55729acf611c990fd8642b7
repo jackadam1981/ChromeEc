@@ -70,6 +70,30 @@
       "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228e578d_24c021e7",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-28T13:18:07Z",
+      "side": 1,
+      "message": "hmm.. did I missed something? I think dedicated port and pd port are mutually exclusive, we should not call usb_charger_reset_charge(port) on a dedicated port. (if this happens, it is a bug)\n\nI agree that dedicated supplier should be handled separately, but if the port is a pd port, we should initialize some good value for it.",
+      "parentUuid": "33308940_fb94af69",
+      "range": {
+        "startLine": 97,
+        "startChar": 30,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
