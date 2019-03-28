@@ -1866,6 +1866,12 @@ static inline uint8_t board_get_usb_pd_port_count(void)
 #endif /* CONFIG_USB_POWER_DELIVERY */
 #endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
 
+/*
+ * Notify the AP that we have entered into DisplayPort Alternate Mode.  This
+ * sets a MODE_CHANGE host event which may wake the AP.
+ */
+void pd_notify_dp_alt_mode_entry(void);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
