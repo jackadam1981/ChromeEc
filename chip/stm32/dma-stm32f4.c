@@ -59,6 +59,22 @@ void dma_select_channel(enum dma_channel channel, uint8_t req)
 {
 	STM2_DMAMUX_CxCR(DMAMUX1, channel) = req;
 }
+#else /* CHIP_FAMILY_STM32F4 */
+void dma_select_channel(enum dma_channel channel, uint8_t request)
+{
+	/*
+	 * Translation of the terminology in code compared to STM32F412 RM
+	 * Code       | STM32F412 Reference Manual
+	 * channel   <-> stream
+	 * request   <-> channel
+	 */
+	stm32_dma_stream_t *stream = dma_get_channel(channel);
+	uint32_t scr = stream->scr;
+
+	scr &= ~STM32_DMA_CCR_CHANNEL_MASK;
+	scr |= (STM32_DMA_CCR_CHANNEL(request) & STM32_DMA_CCR_CHANNEL_MASK);
+	stream->scr = scr;
+}
 #endif
 
 void dma_disable(enum dma_channel ch)
