@@ -22,6 +22,30 @@
       "revId": "3b87024f988028b679b3d3f3188f83259222410e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8099fc13_49758bce",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-03-28T17:21:56Z",
+      "side": 1,
+      "message": "I have verified that it works as I can see the output for Battery type to be correct.\nBut I think HOOK_INIT is probably better.",
+      "parentUuid": "319a821c_c6ff339a",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 23
+      },
+      "revId": "3b87024f988028b679b3d3f3188f83259222410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
