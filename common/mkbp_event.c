@@ -168,11 +168,20 @@ static void activate_mkbp_with_events(uint32_t events_to_add)
 	int skip_interrupt = 0;
 	int rv, schedule_deferred = 0;
 
-#ifdef CONFIG_MKBP_WAKEUP_MASK
+#if defined(CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK) || \
+	defined(CONFIG_MKBP_WAKEUP_MASK)
 	/* Only assert interrupt for wake events if host is sleeping */
+#ifdef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK
 	skip_interrupt = host_is_sleeping() &&
 			 !(host_get_events() & CONFIG_MKBP_WAKEUP_MASK);
-#endif
+#endif /* CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK */
+
+#ifdef CONFIG_MKBP_WAKEUP_MASK
+	/* Check to see if this MKBP event should wake the system. */
+	skip_interrupt = skip_interrupt &&
+		!(events_to_add & CONFIG_MKBP_WAKEUP_MASK);
+#endif /* CONFIG_MKBP_WAKEUP_MASK */
+#endif /* defined(CONFIG_MKBP_[HOST_EVENT_]WAKEUP_MASK) */
 
 	mutex_lock(&state.lock);
 	state.events |= events_to_add;
@@ -346,6 +355,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_NEXT_EVENT,
 		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 #ifdef CONFIG_MKBP_WAKEUP_MASK
+#ifdef CONFIG_MKBP_USE_HOST_EVENT
 static int mkbp_get_wake_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
@@ -358,4 +368,5 @@ static int mkbp_get_wake_mask(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
 		     mkbp_get_wake_mask,
 		     EC_VER_MASK(0));
-#endif
+#endif /* CONFIG_MKBP_USE_HOST_EVENT */
+#endif /* CONFIG_MKBP_WAKEUP_MASK */

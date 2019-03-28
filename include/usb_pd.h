@@ -1832,6 +1832,9 @@ int pd_capable(int port);
  */
 int pd_is_vbus_present(int port);
 
+
+int pd_notify_dp_alt_mode_entry(void);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

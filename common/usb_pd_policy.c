@@ -7,10 +7,12 @@
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "mkbp_event.h"
 #include "registers.h"
 #include "rsa.h"
 #include "sha256.h"
@@ -33,6 +35,22 @@
 #endif
 
 static int rw_flash_changed = 1;
+
+static int dp_alt_mode_entry_get_next_event(uint8_t *data)
+{
+	return EC_SUCCESS;
+}
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED,
+		     dp_alt_mode_entry_get_next_event);
+
+int pd_notify_dp_alt_mode_entry(void)
+{
+	CPRINTS("Waking AP due to DP Alt Mode Entry...");
+	mkbp_send_event(EC_MKBP_EVENT_DP_ALT_MODE_ENTERED);
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+
+	return 0;
+}
 
 int pd_check_requested_voltage(uint32_t rdo, const int port)
 {
