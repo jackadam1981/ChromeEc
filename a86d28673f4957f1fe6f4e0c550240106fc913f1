@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "42282524_3b328bbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-28T17:31:22Z",
+      "side": 1,
+      "message": "line \u003e 80chars ... reformat",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 83
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b4dea32_5ad4ac88",
         "filename": "common/battery.c",
         "patchSetId": 4
@@ -64,6 +87,99 @@
         "startChar": 3,
         "endLine": 1376,
         "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343438db_f273a221",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-28T17:31:22Z",
+      "side": 1,
+      "message": "From API perspective (battery.h) I don\u0027t believe zero rv constitutes that cut off was successful.  There is an existing API \u0027battery_is_cut_off\u0027 that does though.  Should we be calling that as well here?",
+      "parentUuid": "8883a849_0a4f8426",
+      "range": {
+        "startLine": 1369,
+        "startChar": 3,
+        "endLine": 1376,
+        "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755f515f_3912a423",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-28T17:31:22Z",
+      "side": 1,
+      "message": "nit, \u0027Set current battery cut off state\u0027",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 352,
+        "endChar": 28
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b76c0a_cecde7b9",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-28T17:31:22Z",
+      "side": 1,
+      "message": "nit, battery_set_cut_off_state would be clearer in my opinion",
+      "range": {
+        "startLine": 354,
+        "startChar": 5,
+        "endLine": 354,
+        "endChar": 24
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c83e53b_c2800dc8",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-03-28T17:31:22Z",
+      "side": 1,
+      "message": "nit, state",
+      "range": {
+        "startLine": 354,
+        "startChar": 52,
+        "endLine": 354,
+        "endChar": 58
       },
       "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
