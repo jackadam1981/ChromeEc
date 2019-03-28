@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7151c0c_b59eaec7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "nit: alphabetic order.",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8f46f4_cd3d35e0",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "CONFIG_MAG_BMI160_LIS2MDL is also possible, although not fully implemented yet.",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1c1eb3_2585ecb6",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "Don\u0027t assume that CONFIG_MAG_LIS2MDL is not defined when CONFIG_MAG_LSM6DSM_LIS2MDL is: it is defined automatically when CONFIG_MAG_LSM6DSM_LIS2MDL or CONFIG_MAG_BMI160_LIS2MDL is defined in config.h.\n\nIf you want to test a machine with lis2mdl behind a lsm6dsm, apply changes https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1474578 and friend.",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a89c547_2c8a698a",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "why 10?",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb31b88_796b4bbc",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "where do you save the rate for get_data_rate()?",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d685a7_97be179e",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "do you plan to implement .irq_handler as well? It is unlikely magnetometer will work at 100Hz, but it would make the time-stamping more precise.",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10392316_bc6d049d",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-28T22:37:14Z",
+      "side": 1,
+      "message": "is 100Hz ODR realistic for a magnetometer?",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
