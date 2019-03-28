@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbeec279_1b275e71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Solved it by patch 5.",
+      "parentUuid": "42282524_3b328bbf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 83
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b4dea32_5ad4ac88",
         "filename": "common/battery.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4326feec_97a5e560",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Solved it by patch 5.",
+      "parentUuid": "4b4dea32_5ad4ac88",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab132681_a4ecc3cb",
         "filename": "common/battery.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1416a1d_0366c770",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Solved it by patch 5.",
+      "parentUuid": "ab132681_a4ecc3cb",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "306ec5ae_5223d574",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Follow Dai\u0027s suggestion to update patch 5 first.",
+      "parentUuid": "343438db_f273a221",
+      "range": {
+        "startLine": 1369,
+        "startChar": 3,
+        "endLine": 1376,
+        "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "755f515f_3912a423",
         "filename": "include/battery.h",
         "patchSetId": 4
@@ -138,6 +234,30 @@
       "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9118529_c9c441ef",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Solved it by patch 5.",
+      "parentUuid": "755f515f_3912a423",
+      "range": {
+        "startLine": 352,
+        "startChar": 3,
+        "endLine": 352,
+        "endChar": 28
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +304,54 @@
       "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f12bbf_91366a26",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Solved it by patch 5.",
+      "parentUuid": "69b76c0a_cecde7b9",
+      "range": {
+        "startLine": 354,
+        "startChar": 5,
+        "endLine": 354,
+        "endChar": 24
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a5a32a2_1dc39ea1",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T17:54:39Z",
+      "side": 1,
+      "message": "Solved it by patch 5.",
+      "parentUuid": "2c83e53b_c2800dc8",
+      "range": {
+        "startLine": 354,
+        "startChar": 52,
+        "endLine": 354,
+        "endChar": 58
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
