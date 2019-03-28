@@ -41,11 +41,17 @@
 static const struct dma_option dma_tx_option = {
 	STM32_DMAC_SPI1_TX, (void *)&SPI_TXDR,
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+#ifdef CHIP_FAMILY_STM32F4
+	| STM32_DMA_CCR_CHANNEL(STM32_SPI1_TX_REQ_CH)
+#endif
 };
 
 static const struct dma_option dma_rx_option = {
 	STM32_DMAC_SPI1_RX, (void *)&SPI_RXDR,
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+#ifdef CHIP_FAMILY_STM32F4
+	| STM32_DMA_CCR_CHANNEL(STM32_SPI1_RX_REQ_CH)
+#endif
 };
 
 /*
