@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "344aa448_d0392bed",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-03-28T16:26:44Z",
+      "side": 1,
+      "message": "\"local\" is only valid in a function.\n\nMove this code into a function, and then call it in this same spot here.",
+      "revId": "ff5fd41664016019d797ad8cb64d883bec93fbf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
