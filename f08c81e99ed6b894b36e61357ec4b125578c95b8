@@ -92,6 +92,30 @@
       "revId": "f08c81e99ed6b894b36e61357ec4b125578c95b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa38fd75_4f70b85a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2019-03-28T11:36:00Z",
+      "side": 1,
+      "message": "I will submit a new patch.",
+      "parentUuid": "22b2f80e_73455931",
+      "range": {
+        "startLine": 1372,
+        "startChar": 0,
+        "endLine": 1373,
+        "endChar": 34
+      },
+      "revId": "f08c81e99ed6b894b36e61357ec4b125578c95b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
