@@ -94,6 +94,30 @@
       "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41c4426_2db7fe2a",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-03-28T14:34:02Z",
+      "side": 1,
+      "message": "What I\u0027m trying to achieve is: when adding a dedicated port to a board, I don\u0027t need to add extra init code for normal pd ports.",
+      "parentUuid": "228e578d_24c021e7",
+      "range": {
+        "startLine": 97,
+        "startChar": 30,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "68421fdb5a50ebf6a55729acf611c990fd8642b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
