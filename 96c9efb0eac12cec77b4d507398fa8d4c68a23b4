@@ -22,6 +22,30 @@
       "revId": "96c9efb0eac12cec77b4d507398fa8d4c68a23b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e86e06_38d8c0a1",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-03-28T18:59:59Z",
+      "side": 1,
+      "message": "Would it be alright after the second gpio_set? \n\nInitially, I\u0027d tried setting it after the resets were complete, but the PD task was still managing to read the vbus register before going through the re-init.  I would guess this was happening during one of the msleep calls?  Do you know if we allow task switching during msleep?",
+      "parentUuid": "8610dc00_c1426b20",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 56
+      },
+      "revId": "96c9efb0eac12cec77b4d507398fa8d4c68a23b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
