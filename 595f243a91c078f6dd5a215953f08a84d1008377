@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "58402ac6_af04ff39",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-03-28T03:36:19Z",
+      "side": 1,
+      "message": "I have tried another charger, the B4-\u003eB7 value is B4:0x3d B5:0xbd B6:0x53 B7:0xe0 , the B7\u0027s value is the same. but the bit25 (B4\u0027s bit1) is 0, but this is a GPP TX, i\u0027m not sure the bit25 of B4-\u003eB7 is the flag of GPP.\n\notherway, can you share the docments of P9221-R7, the vendor IDT say that all the docments need release from google.",
+      "parentUuid": "903794e7_6cb11946",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 59
+      },
+      "revId": "595f243a91c078f6dd5a215953f08a84d1008377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca81123_49f167ce",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 10
