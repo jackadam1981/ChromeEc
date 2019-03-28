@@ -46,6 +46,30 @@
       "revId": "3b87024f988028b679b3d3f3188f83259222410e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e548343_edba69db",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-28T18:12:36Z",
+      "side": 1,
+      "message": "Let\u0027s use HOOK_INIT. UART isn\u0027t even initialized when board_config_pre_init is called. Thank you,",
+      "parentUuid": "8099fc13_49758bce",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 23
+      },
+      "revId": "3b87024f988028b679b3d3f3188f83259222410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
