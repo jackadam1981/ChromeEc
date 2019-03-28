@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "1a78e82f_73553f7b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-03-28T00:29:34Z",
+      "side": 1,
+      "message": "We need the response from the cable only",
+      "parentUuid": "43fca3b1_47b805ef",
+      "range": {
+        "startLine": 1963,
+        "startChar": 0,
+        "endLine": 1964,
+        "endChar": 49
+      },
+      "revId": "b473214de3a202a5eed2e9890d250dbb74a57921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b041de2f_e429bd7e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
