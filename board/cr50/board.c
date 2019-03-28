@@ -937,7 +937,7 @@ void deassert_sys_rst(void)
 	gpio_set_level(GPIO_SYS_RST_L_OUT, 1);
 }
 
-int is_sys_rst_asserted(void)
+static int is_sys_rst_asserted(void)
 {
 #ifdef CONFIG_GPIO_GET_EXTENDED
 	/*
