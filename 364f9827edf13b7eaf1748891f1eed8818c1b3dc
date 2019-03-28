@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "2987191d_86a6f8c1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-28T01:44:15Z",
+      "side": 1,
+      "message": "On cheza SYS_RST_L_OUT is always 0. It\u0027s only pulled up to 1.8V even though VDDIOM is 3.3V. Reading the flags is the only reliable way to tell if cr50 is asserting sys_rst_l.",
+      "parentUuid": "034d7e7d_2fbf4344",
+      "range": {
+        "startLine": 870,
+        "startChar": 8,
+        "endLine": 870,
+        "endChar": 39
+      },
+      "revId": "364f9827edf13b7eaf1748891f1eed8818c1b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74873dd4_f4f2f299",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
