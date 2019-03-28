@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "afd18a6e_2f647833",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-28T18:02:23Z",
+      "side": 1,
+      "message": "This pattern is used throughout in common/battery.c. We should clarify the return value definition for board_cut_off_battery in battery.h but currently it looks 0 means cutoff was successfully requested. battery_cutoff_state is set to BATTERY_CUTOFF_STATE_CUT_OFF when cutoff was successfully requested. It doesn\u0027t tell whether cutoff is effective or not.\n\nbattery_is_cut_off just returns battery_cutoff_state \u003d\u003d BATTERY_CUTOFF_STATE_CUT_OFF. It doesn\u0027t do any real cutoff check.",
+      "parentUuid": "343438db_f273a221",
+      "range": {
+        "startLine": 1369,
+        "startChar": 3,
+        "endLine": 1376,
+        "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "755f515f_3912a423",
         "filename": "include/battery.h",
         "patchSetId": 4
