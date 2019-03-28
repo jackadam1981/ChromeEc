@@ -59,6 +59,22 @@ void dma_select_channel(enum dma_channel channel, uint8_t req)
 {
 	STM2_DMAMUX_CxCR(DMAMUX1, channel) = req;
 }
+#else /* CHIP_FAMILY_STM32F4 */
+void dma_select_channel(enum dma_channel channel, uint8_t request)
+{
+	/*
+	 * Translation of the terminology in code compared to STM32F412 RM
+	 * Code       | STM32F412 Reference Manual
+	 * channel   <-> stream
+	 * request   <-> channel
+	 */
+	stm32_dma_stream_t *stream = dma_get_channel(channel);
+	uint32_t scr = stream->scr;
+
+	scr &= ~STM32_DMA_CCR_CHANNEL_MASK;
+	scr |= (STM32_DMA_CCR_CHANNEL(request) & STM32_DMA_CCR_CHANNEL_MASK);
+	stream->scr = scr;
+}
 #endif
 
 void dma_disable(enum dma_channel ch)
@@ -102,12 +118,26 @@ static void prepare_stream(enum dma_channel stream, unsigned count,
 	dma_stream->spar = (uint32_t)periph;
 	dma_stream->sm0ar = (uint32_t)memory;
 	dma_stream->sndtr = count;
+#ifdef CHIP_VARIANT_STM32F412
+	ccr = dma_stream->scr;
+	/* Do not overwrite the active request */
+	ccr &= STM32_DMA_CCR_CHANNEL_MASK;
+	ccr |= flags & STM32_DMA_CCR_PFCTRL;
+	ccr |= STM32_DMA_CCR_PL_VERY_HIGH;
+	dma_stream->scr = ccr;
+	/* Disable direct mode, use FIFO mode */
+	dma_stream->sfcr &= ~STM32_DMA_SFCR_DMDIS;
+	/* Set flags such as burst size, increment offset, ... */
+	ccr |= flags & ~STM32_DMA_CCR_CHANNEL_MASK;
+	dma_stream->scr |= ccr;
+#else /* CHIP_VARIANT_STM32F412 */
 	dma_stream->scr = ccr;
 	ccr |= flags & STM32_DMA_CCR_CHANNEL_MASK;
 	dma_stream->scr = ccr;
 	dma_stream->sfcr &= ~STM32_DMA_SFCR_DMDIS;
 	ccr |= flags;
 	dma_stream->scr = ccr;
+#endif /* CHIP_VARIANT_STM32F412 */
 }
 
 void dma_go(stm32_dma_stream_t *stream)

@@ -674,6 +674,9 @@ static void spi_init(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	dma_select_channel(STM32_DMAC_SPI1_TX, DMAMUX1_REQ_SPI1_TX);
 	dma_select_channel(STM32_DMAC_SPI1_RX, DMAMUX1_REQ_SPI1_RX);
+#elif defined(CHIP_FAMILY_STM32F4)
+	dma_select_channel(STM32_DMAC_SPI1_TX, STM32_SPI1_TX_REQ_CH);
+	dma_select_channel(STM32_DMAC_SPI1_RX, STM32_SPI1_RX_REQ_CH);
 #endif
 	/*
 	 * Enable rx/tx DMA and get ready to receive our first transaction and
