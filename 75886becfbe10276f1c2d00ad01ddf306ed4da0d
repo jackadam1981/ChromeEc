@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbf3247e_17ca229c",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T18:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781051ee_add2dcd1",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 44
+      },
+      "revId": "75886becfbe10276f1c2d00ad01ddf306ed4da0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6869d33f_22eaffd5",
         "filename": "common/battery.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c55255fd_2e10c415",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T18:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6869d33f_22eaffd5",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 11
+      },
+      "revId": "75886becfbe10276f1c2d00ad01ddf306ed4da0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49337fc6_438145aa",
         "filename": "common/battery.c",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "75886becfbe10276f1c2d00ad01ddf306ed4da0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3f3004_e5c87268",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2019-03-28T18:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49337fc6_438145aa",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 2
+      },
+      "revId": "75886becfbe10276f1c2d00ad01ddf306ed4da0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
