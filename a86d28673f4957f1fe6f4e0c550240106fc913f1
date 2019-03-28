@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b4dea32_5ad4ac88",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-28T16:18:04Z",
+      "side": 1,
+      "message": "I think this is still a good practice. It just needs to be static.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab132681_a4ecc3cb",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-28T16:18:04Z",
+      "side": 1,
+      "message": "I believe what we should do is to define a new API battery_cutoff, which does the lines highlighted:\n\nint battery_cutoff(void)\n{\n  rv \u003d board_cut_off_battery();\n  if (rv)\n    CPRINTS(\"Battery cut off failed (%d)\", rv);\n  else\n    battery_set_cut_off(BATTERY_CUTOFF_STATE_CUT_OFF);\n  return rv;\n}",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8883a849_0a4f8426",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-28T16:18:04Z",
+      "side": 1,
+      "message": "Let\u0027s replace this with a new API suggested above (i.e. battery_cutoff). This way, the API takes care of the internal state change.",
+      "range": {
+        "startLine": 1369,
+        "startChar": 3,
+        "endLine": 1376,
+        "endChar": 4
+      },
+      "revId": "a86d28673f4957f1fe6f4e0c550240106fc913f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
