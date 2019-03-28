@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "034d7e7d_2fbf4344",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-03-28T01:38:47Z",
+      "side": 1,
+      "message": "we already have all of the gpio_get_flag code in chip/g/gpio.inc. This just enables using it...\n\nI did make a change to separate extending gpio_get from the rest of the gpio cmd extension stuff. We probably shouldn\u0027t allow people to change the gpio flags using gpioset.",
+      "parentUuid": "dc15c759_c75dfd88",
+      "range": {
+        "startLine": 870,
+        "startChar": 8,
+        "endLine": 870,
+        "endChar": 39
+      },
+      "revId": "364f9827edf13b7eaf1748891f1eed8818c1b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74873dd4_f4f2f299",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
