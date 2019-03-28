@@ -10,6 +10,7 @@
 #include "compile_time_macros.h"
 #include "ec_commands.h"
 #include "gpio.h"
+#include "power_button.h"
 #include "system.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -295,6 +296,14 @@ static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
 		svdm_safe_dp_mode(port);
+
+		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+			/*
+			 * Wake the system up to since we've attached an adapter
+			 */
+			power_button_pch_pulse();
+
+
 		return 0;
 	}
 
@@ -382,6 +391,11 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 
 	cur_lvl = gpio_get_level(hpd);
 	dp_status[port] = payload[1];
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+	    (irq || lvl))
+		/* Wake up the AP. */
+		power_button_pch_pulse();
 
 	/* Its initial DP status message prior to config */
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
