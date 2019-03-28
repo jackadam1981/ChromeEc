@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5704925f_3a9c4dde",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-28T16:22:47Z",
+      "side": 1,
+      "message": "I am undoing this, becase this should not be exit-failure tolerant. \nFor STM32_DFU, it shouldn\u0027t reach here. \nI\u0027ve checked it with ./util/flash_ec --board\u003ddingdong.",
+      "parentUuid": "77ec65ca_ac6fed47",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52999637_3a0bfe5f",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da162e9_e220addd",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-28T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52999637_3a0bfe5f",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -67,6 +103,24 @@
       "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d45eac6_c4c4a6fa",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-28T16:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cde36076_6239feb4",
+      "revId": "4346d5e58f5002b8d44d4af8274120ed245dea6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
