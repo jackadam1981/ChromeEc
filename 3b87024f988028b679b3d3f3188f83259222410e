@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319a821c_c6ff339a",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-28T17:16:40Z",
+      "side": 1,
+      "message": "We need to verify this works or we can use HOOK_INIT/ HOOK_PRIO_FIRST.",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 23
+      },
+      "revId": "3b87024f988028b679b3d3f3188f83259222410e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
