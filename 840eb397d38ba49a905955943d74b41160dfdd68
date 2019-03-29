@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f45e0fc5_229ea3cf",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:30:16Z",
+      "side": 0,
+      "message": "I don\u0027t think you can drop this for the failure case - if tpm reset did not succeed we don\u0027t know what state we are in, it is safer to reboot. (and log a flash log event before that).",
+      "range": {
+        "startLine": 254,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

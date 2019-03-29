@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95562bd0_4630a4a1",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:30:16Z",
+      "side": 1,
+      "message": "I am not sure there is a point in stopping tpm here - it will be stopped before tpm reset request will be processed. \n\nThe same goes for assertion the EC reset beforehand - why is this necessary? Is it not enough to call board_reboot_ec() in the end when reset is required?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555be626_8ea1a935",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:30:16Z",
+      "side": 1,
+      "message": "shouldn\u0027t tpm be stopped only if reset is not required?",
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6548ad_895d4783",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:30:16Z",
+      "side": 1,
+      "message": "What is the role of this function now - just to report that factory enable failed and change the flags?\n\nCould this be handled by ccd_config_changed() if it is invoked after TPM_RESET_TIME? The ablsense of the \u0027saved, rebooting\u0027 message \n\nAlso, even though this is not this patch\u0027s doing, but ccd_config_changed() is called on any change, is there a need to verify that the expected change took place before concluding that factory reset succeeded?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4f83a3_dacf0e45",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:30:16Z",
+      "side": 1,
+      "message": "you are not changing this now, but I am curious if this should be\n\nreset_required_ |\u003d !!reset_required;\n\nso that there is no way to cancel the reset once requested.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
