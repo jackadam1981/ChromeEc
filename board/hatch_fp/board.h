@@ -110,10 +110,10 @@
 
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_MASTER
-#define CONFIG_SPI_FP_PORT  1 /* SPI2: first master config */
+#define CONFIG_SPI_FP_PORT  0 /* SPI2: first master config */
 #ifdef SECTION_IS_RW
 /* TODO(b/124773209): Enable FP once rollback code has been fixed */
-#if 0
+#if 1
 #define CONFIG_FP_SENSOR_FPC1025
 #define CONFIG_CMD_FPSENSOR_DEBUG
 #endif
@@ -146,10 +146,10 @@
 /*TODO(b/125506600): Support rollback protection */
 #if 0
 #define CONFIG_ROLLBACK
-#define CONFIG_ROLLBACK_SECRET_SIZE 32
 
 #define CONFIG_ROLLBACK_MPU_PROTECT
 #endif
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
 
 /*
  * We do not use any "locally" generated entropy: this is normally used

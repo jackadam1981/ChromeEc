@@ -353,7 +353,10 @@ void fp_task(void)
 
 static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 {
+  /* TODO(b/125506600): Support rollback protection */
+#if 0
 	int ret;
+#endif
 	uint8_t key_buf[SHA256_DIGEST_SIZE];
 	uint8_t prk[SHA256_DIGEST_SIZE];
 	uint8_t message[sizeof(user_id) + 1];
@@ -368,6 +371,8 @@ static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 		return EC_RES_ERROR;
 	}
 
+	/* TODO(b/125506600): Support rollback protection */
+#if 0
 	/*
 	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
 	 * anti-rollback blocks.
@@ -377,6 +382,8 @@ static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 		CPRINTS("Failed to read rollback secret: %d", ret);
 		return EC_RES_ERROR;
 	}
+#endif
+
 	/*
 	 * IKM is the concatenation of the rollback secret and the seed from
 	 * the TPM.
