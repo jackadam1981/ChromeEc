@@ -94,6 +94,30 @@
       "revId": "c4fec9a04577265aaef5628a84311d6e92d9a3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a62cd4c_b15c839a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1110359
+      },
+      "writtenOn": "2019-03-29T08:02:28Z",
+      "side": 1,
+      "message": "If move anx7447_mux_set out of #ifdef CONFIG_USB_PD_TCPM_MUX gaurd, mux_write,anx7447_configure_aux_src and anx7447_mux_safemode which are invoked by anx7447_mux_set will also need to be moved out of #ifdef CONFIG_USB_PD_TCPM_MUX. Otherwise, these functions won\u0027t be defined when CONFIG_USB_PD_TCPM_MUX is not present. Moreover, I don\u0027t know it\u0027s reasonable or not if write TCPC register w/o #ifdef CONFIG_USB_PD_TCPM_MUX. This might need Analogix\u0027s comment.",
+      "parentUuid": "c22fc175_289125af",
+      "range": {
+        "startLine": 352,
+        "startChar": 7,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "c4fec9a04577265aaef5628a84311d6e92d9a3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
