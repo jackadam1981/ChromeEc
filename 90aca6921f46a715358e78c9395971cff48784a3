@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99585e54_79a855d7",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-29T03:07:07Z",
+      "side": 1,
+      "message": "will delete this space in the next patch.",
+      "revId": "90aca6921f46a715358e78c9395971cff48784a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f926166_1bcab3ee",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-29T03:07:07Z",
+      "side": 1,
+      "message": "On ACK_ISH, wait_for_ack returns -EUCLEAN to acknowledge the caller that it wasn\u0027t a clean ACK. The caller can retry it at its right timing.",
+      "range": {
+        "startLine": 433,
+        "startChar": 11,
+        "endLine": 433,
+        "endChar": 18
+      },
+      "revId": "90aca6921f46a715358e78c9395971cff48784a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "115f525b_97926b45",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-29T03:07:07Z",
+      "side": 1,
+      "message": "will delete in the next patch.",
+      "revId": "90aca6921f46a715358e78c9395971cff48784a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
