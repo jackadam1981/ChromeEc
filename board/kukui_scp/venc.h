@@ -18,12 +18,10 @@ typedef void (*venc_msg_handler)(void *msg);
 
 struct venc_service {
 	enum venc_type type;
-	unsigned char msg[48];
-	venc_msg_handler handler[VENC_MAX];
+	unsigned char msg[288];
 };
 
 /* Functions provided by private overlay. */
-void venc_h264_service_init(void);
 void venc_h264_msg_handler(void *data);
 
 #endif /* __CROS_EC_SCP_VENC_H */
