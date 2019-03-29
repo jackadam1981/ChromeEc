@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "9bfcfea3_de86f852",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "I mean \"key size and contents\u0027 -\u003e \u0027key\u0027. The unique id for the (k,v) tuples is just |k|, right? which is k size and k contents, or just \"key\".",
+      "parentUuid": "d9b78c1d_5f98ab0f",
+      "range": {
+        "startLine": 99,
+        "startChar": 27,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a598da62_809f927f",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -328,6 +352,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e5604c0_1785a768",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bca290f_95d255ec",
+      "range": {
+        "startLine": 109,
+        "startChar": 57,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -422,6 +470,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4f4620_1d66b0bf",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "491365b7_a9b15d51",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1412,6 +1484,30 @@
     },
     {
       "key": {
+        "uuid": "a9287124_976f1b80",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "ah, got it. I missed that it\u0027s not \u0027\u003c\u003d\" in (at-\u003emt.data_offset + num_bytes) \u003c CONFIG_FLASH_BANK_SIZE.\nBtw, that comment above /* All requested data fits in the current page. */ should probably be smth like\n/* Requested data doesn\u0027t reach the end of the current page. */, since even if it fits, we still take a different path.",
+      "parentUuid": "71cae431_13dd88d6",
+      "range": {
+        "startLine": 482,
+        "startChar": 16,
+        "endLine": 482,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "848c7897_3d5ae36c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1741,6 +1837,30 @@
     },
     {
       "key": {
+        "uuid": "146fbb3f_d20a426a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "hm, we start it, but what if it doesn\u0027t compact anything. if we actually store more data than (sizeof(page_list)-3) pages, we can fill all pages and list_index can be \u003d\u003d sizeof(page_list)-1.",
+      "parentUuid": "97f57606_cc044b02",
+      "range": {
+        "startLine": 875,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44f880cc_b0ea94ef",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1835,6 +1955,30 @@
     },
     {
       "key": {
+        "uuid": "24f6c507_c37f772c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "Yeah, I agree with the odds, you are probably right. It just something in me that protests against treating 00..00 and FF..FF as the same value in case we start both values as some sort of an indicator in the future (which we likely never will). :)\n\nWe have 6 PCRs (17-22), for which initial value is FF..FF (and we never use them in practice, so they are always stay at FF..FF). How important is it to avoid storing them?\n\nBtw, what happens in this case, if we have, say, only PCRs 0 \u0026 1, which are neither 00 nor FF.\nUpon restoring the PCRs after save-state-and-reboot, will 17-22 go to FF as expected?",
+      "parentUuid": "a63a8945_ffbe0bfa",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af5d73a0_872b0b6d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1870,6 +2014,30 @@
       "side": 1,
       "message": "I don\u0027t think we would ever change the number of supported algorithms on the fly - this would wreck chaos with the reserved objects structure, this is why I did not care about it here.\n\nIf we ever do, we\u0027d need to change the nvmem layout version, and take care of the transition.",
       "parentUuid": "af5d73a0_872b0b6d",
+      "range": {
+        "startLine": 978,
+        "startChar": 1,
+        "endLine": 978,
+        "endChar": 46
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2777e33_57340718",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "I agree, not not completely. I can easily see us dropping SHA1, SHA384 and SHA512, which we don\u0027t use in Chrome OS, to save space in the flash in the future.\n\nCan we at least add some compile-time checks that breaks in case we change the set of algos or the number of PCRs (e.g. check the size of s_pcrs[]?) to remind us to update this file.\n\nLike at the beginning of this file:\n/*\n * This implementation assumes 4 banks (SHA-1, 256, 384, 512) of 24 PCRs.\n * Will break otherwise.\n */\nstatic_assert(IMPLEMENTATION_PCR \u003d\u003d 24);\nstatic_assert(sizeof(PCR) \u003d\u003d  SHA1_DIGEST_SIZE + SHA256_DIGEST_SIZE + ...);",
+      "parentUuid": "a78189bc_9704871e",
       "range": {
         "startLine": 978,
         "startChar": 1,
@@ -1926,6 +2094,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bbc68b9_d59c5319",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eac3c8a6_5e619c4f",
+      "range": {
+        "startLine": 1001,
+        "startChar": 1,
+        "endLine": 1002,
+        "endChar": 45
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -2117,6 +2309,30 @@
     },
     {
       "key": {
+        "uuid": "9329ac5a_d71c2f20",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aaa15782_d3e67576",
+      "range": {
+        "startLine": 1075,
+        "startChar": 1,
+        "endLine": 1075,
+        "endChar": 21
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbe07ea4_349394b3",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -2152,6 +2368,30 @@
       "side": 1,
       "message": "I like this better, because in this case the intelligence of how many objects are there is contained in NvGetReserved(), but if you really prefer the for() loop I can change it.",
       "parentUuid": "fbe07ea4_349394b3",
+      "range": {
+        "startLine": 1159,
+        "startChar": 1,
+        "endLine": 1159,
+        "endChar": 10
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7870cde_5f9df9a1",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "but similarly to PCRs, we don\u0027t support cases when NvGetReserved returns a non-zero ri.size for a different number of parameters, right? we rely on it being 0..NV_VIRTUAL_RESERVE_LAST. otherwise the PCR objects numbering scheme breaks.",
+      "parentUuid": "3598e2cc_23504979",
       "range": {
         "startLine": 1159,
         "startChar": 1,
@@ -2822,6 +3062,30 @@
     },
     {
       "key": {
+        "uuid": "101bffac_48e483e0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "I also don\u0027t expect. but if we return an error here, wouldn\u0027t that be sufficient for proper handling? we\u0027ll do whatever we already do in case save fails.",
+      "parentUuid": "99591cb0_4520a8dd",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15260864_e96d503b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -2857,6 +3121,30 @@
       "side": 1,
       "message": "If Cr50 dies here the init function will make sure that there is only one instance of var with this key is there, and we don\u0027t really care that this is the old one, because if we crashed, the process must have not completed anyways.",
       "parentUuid": "15260864_e96d503b",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149c879f_028c266d",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "why would init do that?\nwe have a new variable written and a proper delimiter after it (save_var() does add_final_delimiter() in case of success). it will just continue using nvmem as-is. and nvmem will have two copies of the var. we will continue reading the old one, which is ok. but if we later delete it or change it again, the 1st one will be deleted, but the 2nd one then will become \u0027active\u0027.",
+      "parentUuid": "c80d13bd_c044f592",
       "range": {
         "startLine": 2692,
         "startChar": 1,
@@ -3045,6 +3333,30 @@
       "side": 1,
       "message": "Frankly, I don\u0027t think it is worth optimizing this very infrequent use case. Also, this could be easily added later if it is decided that this is necessary.",
       "parentUuid": "d3a9465b_12ce3d15",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff15e889_33119d24",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-03-29T21:48:19Z",
+      "side": 1,
+      "message": "it\u0027s more about simplifying than optimizing. I\u0027d just prefer the logic and the data structure to be simple for this case, so that we don\u0027t miss some corner cases, esp if we make more changes to the whole nvmem thing in the future. e.g. even now I haven\u0027t quiet checked what happens if right from the beginning or after adding a few fake (k,v) pairs, there\u0027s\n - less that container header space left on the page.\n - enough space for container header, but not for tuple header.\n - exactly enough space for tuple header, but not for any key or value data.\n - enough space for tuple header + 1 byte for the key value.",
+      "parentUuid": "8fb02a86_baf996e1",
       "range": {
         "startLine": 2749,
         "startChar": 4,
