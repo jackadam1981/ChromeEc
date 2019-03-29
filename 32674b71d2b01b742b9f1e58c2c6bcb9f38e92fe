@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "291d960e_0500bda8",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-03-29T20:44:17Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here. You should modify the make rules in the chip/ish/build.mk. See above",
+      "range": {
+        "startLine": 380,
+        "startChar": 27,
+        "endLine": 380,
+        "endChar": 43
+      },
+      "revId": "32674b71d2b01b742b9f1e58c2c6bcb9f38e92fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c108f92_f8c16cec",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-03-29T20:44:17Z",
+      "side": 1,
+      "message": "Add the new dependency here (not at the root):\n\n$(out)/$(PROJECT).bin: $(ish-aontask-fw-bin) $(out)/RW/$(PROJECT).RW.flat",
+      "revId": "32674b71d2b01b742b9f1e58c2c6bcb9f38e92fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
