@@ -98,7 +98,8 @@ static void set_host_interrupt(int active)
 	if (old_active == 0 && active == 1)
 		mkbp_last_event_time = __hw_clock_source_read();
 
-	mkbp_set_host_active(active);
+	if (old_active != active)
+		mkbp_set_host_active(active);
 
 	old_active = active;
 
