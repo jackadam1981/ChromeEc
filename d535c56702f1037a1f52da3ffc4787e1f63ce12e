@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32fbb854_a38763ea",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:39:41Z",
+      "side": 1,
+      "message": "not this patch\u0027s issue, but should the checks in  line 413..419 happen only if check in line 421 fails?",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 20
+      },
+      "revId": "d535c56702f1037a1f52da3ffc4787e1f63ce12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98063b17_1824b88a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:39:41Z",
+      "side": 1,
+      "message": "can this be printed out in line 420?",
+      "range": {
+        "startLine": 425,
+        "startChar": 2,
+        "endLine": 426,
+        "endChar": 30
+      },
+      "revId": "d535c56702f1037a1f52da3ffc4787e1f63ce12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0d8685_b6786836",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T03:39:41Z",
+      "side": 1,
+      "message": "this is what will make sure that EC and AP UARTs are enabled?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "d535c56702f1037a1f52da3ffc4787e1f63ce12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
