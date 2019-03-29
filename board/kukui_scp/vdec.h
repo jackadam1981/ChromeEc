@@ -21,7 +21,6 @@ typedef void (*vdec_msg_handler)(void *msg);
 struct vdec_service {
 	enum vdec_type type;
 	unsigned char msg[48];
-	vdec_msg_handler handler[VDEC_MAX];
 };
 
 /* Functions provided by private overlay. */
