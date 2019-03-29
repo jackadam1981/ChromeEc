@@ -29,9 +29,11 @@ static struct consumer const event_venc_consumer = {
 	}),
 };
 
+static struct mutex venc_lock;
+static venc_msg_handler mtk_venc_msg_handle[VENC_MAX];
+
 /* Stub functions only provided by private overlays. */
 #ifndef HAVE_PRIVATE_MT8183
-void venc_h264_service_init(void) {}
 void venc_h264_msg_handler(void *data) {}
 #endif
 
@@ -44,16 +46,19 @@ static void venc_h264_ipi_handler(int id, void *data, uint32_t len)
 {
 	struct venc_service rsv_msg;
 
+	if (!len)
+		return;
 	rsv_msg.type = VENC_H264;
 	memcpy(rsv_msg.msg, data, MIN(len, sizeof(rsv_msg.msg)));
-	rsv_msg.handler[VENC_H264] = &venc_h264_msg_handler;
 
 	/*
 	 * If there is no other IPI handler touch this queue, we don't need to
 	 * interrupt_disable() or task_disable_irq().
 	 */
+	mutex_lock(&venc_lock);
 	if (!queue_add_unit(&event_venc_queue, &rsv_msg))
 		CPRINTS("Could not send venc %d to the queue.", rsv_msg.type);
+	mutex_unlock(&venc_lock);
 }
 DECLARE_IPI(IPI_VENC_H264, venc_h264_ipi_handler, 1);
 
@@ -63,20 +68,23 @@ void venc_service_task(void *u)
 	struct venc_service rsv_msg;
 	size_t size;
 
-	venc_h264_service_init();
-
+	mtk_venc_msg_handle[VENC_H264] = venc_h264_msg_handler;
 	while (1) {
 		/*
 		 * Queue unit is added in IPI handler, which is in ISR context.
 		 * Disable IRQ to prevent a clobbered queue.
 		 */
 		task_disable_irq(SCP_IRQ_IPC0);
+		mutex_lock(&venc_lock);
 		size = queue_remove_unit(&event_venc_queue, &rsv_msg);
+		mutex_unlock(&venc_lock);
 		task_enable_irq(SCP_IRQ_IPC0);
 
 		if (!size)
 			task_wait_event(-1);
-		else if (rsv_msg.handler[rsv_msg.type])
-			rsv_msg.handler[rsv_msg.type](rsv_msg.msg);
+		else if (mtk_venc_msg_handle[rsv_msg.type])
+			venc_h264_msg_handler(rsv_msg.msg);
+		else
+			CPRINTS("VENC Handler is NULL.\n");
 	}
 }
