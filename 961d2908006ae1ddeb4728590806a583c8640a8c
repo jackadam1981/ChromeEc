@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b7c2c21_dc353ef1",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ffa4b3d_810f8d52",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 57
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "602551ef_11fa4bc1",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "why do we need to have this limit? if we actually use less, no need to check. if we start using more, that\u0027s probably because we need those extra (k,v) pairs, and updating the limit to accommodate more is just extra work w/o clear benefit.",
+      "range": {
+        "startLine": 52,
+        "startChar": 65,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631e7659_fb64d115",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I think it is good to have a limit just to control how much space object of this type consume in NVMEM. The actual use should be much lower, since the maximum space is limited and we must have a certain room left for TPM objects, I think we should have a limit for (key, value) pairs as well.",
+      "parentUuid": "602551ef_11fa4bc1",
       "range": {
         "startLine": 52,
         "startChar": 65,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4409314c_c983a65b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "updated the description.",
+      "parentUuid": "b4f3dda4_ddb9fe54",
+      "range": {
+        "startLine": 62,
+        "startChar": 33,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e506fa7a_3a2e526f",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "Am I right that the real reason is that we allocate scratch buffer \u003d page size, and the object must fit there completely, including the container header. otherwise, we could have allow objects up to 2048 (due to 11-bit size field).",
+      "range": {
+        "startLine": 67,
+        "startChar": 64,
+        "endLine": 68,
+        "endChar": 20
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7173f4b1_ca06a78a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "correct, this code doesn\u0027t support object + container header spanning more than two pages.",
+      "parentUuid": "e506fa7a_3a2e526f",
       "range": {
         "startLine": 67,
         "startChar": 64,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dbeca3d3_f567f241",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "right, the idea is that only two contiguous generations could be present at any given time. But the reality is that the generation field is not even helping much, because there is enough information about objects given their location between transaction delimiters. We might drop the generation field eventually.",
+      "parentUuid": "cb9339f6_3785ec1f",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f2ba0a3_c2c0cbfb",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d9b78c1d_5f98ab0f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2ba0a3_c2c0cbfb",
+      "range": {
+        "startLine": 99,
+        "startChar": 27,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a598da62_809f927f",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -151,6 +295,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "can we store the duplicate of the 1st byte / 4 bytes (per the list above) of tpm objects unencrypted before the actual object to avoid the need to decrypt when checking if it\u0027s the same object? or does that make us susceptible to some form of attack?",
+      "range": {
+        "startLine": 109,
+        "startChar": 57,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bca290f_95d255ec",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I thought about it, and decided against it: we want to be able to verify the object before comparing, and we can\u0027t verify before decryption.\n\nWe could calculate hash value after encrypting, but I also was not sure if exposing the indices is not a security issue, so I decided to play it safe.",
+      "parentUuid": "a598da62_809f927f",
       "range": {
         "startLine": 109,
         "startChar": 57,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "622b1223_58e026f7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes, this is how it works - compaction scans the entire storage and copies discovered valid objects in order it find them.",
+      "parentUuid": "06f2be9b_5996abce",
+      "range": {
+        "startLine": 127,
+        "startChar": 36,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e3021e2_b9e202db",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -197,6 +389,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "or we could add \u0027empty reserved objects that we haven\u0027t seen yet\u0027 (which will be different from values present in cache) after reaching the end of flash list",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491365b7_a9b15d51",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "the set of reserved objects is fixed, the provision above is just a failsafe mechanism to guarantee that we do not end up without a reserved object in flash as a result of some bug. Having the object in flash will guarantee that when commit time comes the actual value in the cache will be examined and compared with the one stored in the flash.\n\nSo, when we need to recover from cases when not reserved objects are found int the flash (mostly when recovering from catastrophic failures), we put into flash missing reserved objects with value of zero.",
+      "parentUuid": "6e3021e2_b9e202db",
       "range": {
         "startLine": 147,
         "startChar": 3,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "dfd00680_c66c7654",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "In reality I am pretty sure we would never encounter a case where pre-migration TPM storage exceeds 10K: yes, there is room for 12K there, but this implementation stores some reserved objects in marshaled form, and this is guaranteed to save at least one kilobyte.\n\nIf existing data requires more than 10K the migration would fail without destroying the \u0027legacy\u0027 nvmem contents.",
+      "parentUuid": "41866f7d_b7f970ef",
+      "range": {
+        "startLine": 177,
+        "startChar": 11,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c878702a_db3ef304",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -243,6 +483,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "so, we\u0027ll have a modified update process? for cur versions \u003c X, install migration-capable-cr50 and reboot, for versions \u003e\u003d X, install the latest cr50? and devices stuck at old cr50 will go through double-reboot?",
+      "range": {
+        "startLine": 185,
+        "startChar": 65,
+        "endLine": 186,
+        "endChar": 33
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c59407b6_d420a0e5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes, either this, or not doing the second update immediately, but waiting for the user to restart the device.",
+      "parentUuid": "c878702a_db3ef304",
       "range": {
         "startLine": 185,
         "startChar": 65,
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "7dcd2d14_4dc8441f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ee884c_c6a60720",
+      "range": {
+        "startLine": 221,
+        "startChar": 15,
+        "endLine": 221,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24ba684f_f8d85948",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -298,6 +586,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d8fd0a3_6b1dd0cc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24ba684f_f8d85948",
+      "range": {
+        "startLine": 222,
+        "startChar": 40,
+        "endLine": 222,
+        "endChar": 49
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "6cc75d1c_58d1e6ad",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29952cd7_0800b728",
+      "range": {
+        "startLine": 223,
+        "startChar": 15,
+        "endLine": 223,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c776db41_83a92acd",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -344,6 +680,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4855dbda_602c42bc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c776db41_83a92acd",
+      "range": {
+        "startLine": 227,
+        "startChar": 45,
+        "endLine": 227,
+        "endChar": 46
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "75539812_2efe44c7",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b58cba4_a232a1ba",
+      "range": {
+        "startLine": 232,
+        "startChar": 64,
+        "endLine": 232,
+        "endChar": 72
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccf89c0a_f15a9226",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "6cada1b1_bec4037c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccf89c0a_f15a9226",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 15
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d48f4625_947f0fc2",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -413,6 +821,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d3b809_5f131fd8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d48f4625_947f0fc2",
+      "range": {
+        "startLine": 238,
+        "startChar": 61,
+        "endLine": 238,
+        "endChar": 70
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -462,6 +894,54 @@
     },
     {
       "key": {
+        "uuid": "d19fedb7_bcca4616",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98ef7a6_fc4aed68",
+      "range": {
+        "startLine": 239,
+        "startChar": 23,
+        "endLine": 239,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "097d0999_dcfdea83",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb476ec1_609848f8",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 22
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a6c33a3_7fb30221",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -485,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "92abfa6c_78e20e98",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6c33a3_7fb30221",
+      "range": {
+        "startLine": 250,
+        "startChar": 10,
+        "endLine": 250,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f64424dd_55c2ce47",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -496,6 +1000,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "it did",
+      "range": {
+        "startLine": 313,
+        "startChar": 37,
+        "endLine": 313,
+        "endChar": 77
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac3e352_bc2d03f3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "that\u0027s true, added use of flash log here and in other places.",
+      "parentUuid": "f64424dd_55c2ce47",
       "range": {
         "startLine": 313,
         "startChar": 37,
@@ -531,6 +1059,30 @@
     },
     {
       "key": {
+        "uuid": "f94e50a6_37a25583",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I think we should just reboot immediately, added this in the logging function.",
+      "parentUuid": "202094f1_506caaec",
+      "range": {
+        "startLine": 344,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 3
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3345921_eb53d289",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -542,6 +1094,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "is there a way to encourage inlining (and then optimizing out) this wrapper? I hope compiler does it already anyways, though",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 6
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d7f82a6_414b5d7e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes, the compiler inlines these on its own.",
+      "parentUuid": "b3345921_eb53d289",
       "range": {
         "startLine": 364,
         "startChar": 0,
@@ -577,6 +1153,30 @@
     },
     {
       "key": {
+        "uuid": "7b66d30f_77d9a59a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "we happen to have exactly 256 pages, so this works out just fine.",
+      "parentUuid": "507853c6_2a967847",
+      "range": {
+        "startLine": 415,
+        "startChar": 24,
+        "endLine": 415,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b4e0a15_026d5bb8",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -600,6 +1200,30 @@
     },
     {
       "key": {
+        "uuid": "29b2b165_c1572665",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4e0a15_026d5bb8",
+      "range": {
+        "startLine": 425,
+        "startChar": 44,
+        "endLine": 425,
+        "endChar": 51
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "122b3109_ae440f95",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -611,6 +1235,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "at-\u003emt.ph can be NULL",
+      "range": {
+        "startLine": 443,
+        "startChar": 23,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa9a9f95_6051dc33",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "one element is guaranteed to be in the list, so this could not be NULL.",
+      "parentUuid": "122b3109_ae440f95",
       "range": {
         "startLine": 443,
         "startChar": 23,
@@ -646,6 +1294,30 @@
     },
     {
       "key": {
+        "uuid": "01243646_421eca68",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "code in lines 440..443 takes care of this.",
+      "parentUuid": "be1a4286_7cec9f6e",
+      "range": {
+        "startLine": 454,
+        "startChar": 27,
+        "endLine": 454,
+        "endChar": 34
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95fb621c_2e2f7d75",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -657,6 +1329,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "nit: could combine handling two cases (the one above \u0026 the one below) into one:\ntogo \u003d min(num_bytes, CONFIG_FLASH_BANK_SIZE - at-\u003emt.data_offset);\nif (buf) { memcpy(..., togo); buf +\u003d ... }\ntogo \u003d num_bytes - togo;\nif (!togo) return num_bytes;",
+      "range": {
+        "startLine": 462,
+        "startChar": 8,
+        "endLine": 462,
+        "endChar": 52
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12fce4de_88b7d64b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I am not sure this makes it better readable, prefer to leave as is.",
+      "parentUuid": "95fb621c_2e2f7d75",
       "range": {
         "startLine": 462,
         "startChar": 8,
@@ -692,6 +1388,30 @@
     },
     {
       "key": {
+        "uuid": "71cae431_13dd88d6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "In fact it can be zero, in case what we read ended at the current page boundary.\n\ncheck in line 451 does not include equality. And if we reached the top of the page we want the next read to start at the right offset on the next page.",
+      "parentUuid": "fcb5b17f_7ff8396d",
+      "range": {
+        "startLine": 482,
+        "startChar": 16,
+        "endLine": 482,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "848c7897_3d5ae36c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -703,6 +1423,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "do we know page_list[0] contains a valid index at this point?",
+      "range": {
+        "startLine": 542,
+        "startChar": 25,
+        "endLine": 542,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3987e611_b004d1ea",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes, at least one page is always in the list.",
+      "parentUuid": "848c7897_3d5ae36c",
       "range": {
         "startLine": 542,
         "startChar": 25,
@@ -738,6 +1482,30 @@
     },
     {
       "key": {
+        "uuid": "04f7c44e_8c564e5c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I am pretty sure this is well defined. The compiler does not know anything about the value in hash, be it masked or not, it just takes the proper number of LSB.",
+      "parentUuid": "15b87984_1d09994a",
+      "range": {
+        "startLine": 577,
+        "startChar": 1,
+        "endLine": 577,
+        "endChar": 31
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72aee2fa_55dfc7f7",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -749,6 +1517,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "nit: temp_ch? since that\u0027s what we asked for",
+      "range": {
+        "startLine": 611,
+        "startChar": 13,
+        "endLine": 611,
+        "endChar": 16
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4737e16_9f4506b2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "removed this check completely, as nvmem_read_bytes() will log a flash error in this case.",
+      "parentUuid": "72aee2fa_55dfc7f7",
       "range": {
         "startLine": 611,
         "startChar": 13,
@@ -784,6 +1576,30 @@
     },
     {
       "key": {
+        "uuid": "6205b142_efd33714",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "correct, fixed the comment.",
+      "parentUuid": "4bb35015_17c1d284",
+      "range": {
+        "startLine": 638,
+        "startChar": 19,
+        "endLine": 638,
+        "endChar": 27
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df4e8ead_6eaeef22",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -795,6 +1611,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "can be \u003e max nvmem page",
+      "range": {
+        "startLine": 740,
+        "startChar": 27,
+        "endLine": 740,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661b8b0f_a18c2f2f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "the idea is that page_list[0] always contains a valid page index. Initialization does not succeed without this, and compaction also does not succeed without this.",
+      "parentUuid": "df4e8ead_6eaeef22",
       "range": {
         "startLine": 740,
         "startChar": 27,
@@ -830,6 +1670,30 @@
     },
     {
       "key": {
+        "uuid": "88a9e083_634e6517",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "badf6563_f5a1862a",
+      "range": {
+        "startLine": 803,
+        "startChar": 3,
+        "endLine": 803,
+        "endChar": 20
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e02aa23c_c06d5393",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -841,6 +1705,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "can we get ARRAY_SIZE(page_list) at this point? e.g. if start_new_flash_page() is called from verify_delimiter().",
+      "range": {
+        "startLine": 875,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f57606_cc044b02",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "we should not, because we always start compaction when there are at least two more pages in the list.",
+      "parentUuid": "e02aa23c_c06d5393",
       "range": {
         "startLine": 875,
         "startChar": 1,
@@ -876,6 +1764,30 @@
     },
     {
       "key": {
+        "uuid": "4056b30a_dc0f584f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "changed the return value to match the comment. It is in fact a Boolean, so the exact value does not matter.",
+      "parentUuid": "44f880cc_b0ea94ef",
+      "range": {
+        "startLine": 955,
+        "startChar": 10,
+        "endLine": 955,
+        "endChar": 39
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9233c29b_548db25b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -887,6 +1799,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "in theory, we can have a PCR that starts at all zeros, and some extend operations set it to all F\u0027s. in this case all F\u0027s !\u003d empty, and shall be saved.",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63a8945_ffbe0bfa",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Well, we could, the chances of that are 1/(2^(pcr number of bits)), right?\n\nNote that ending up with PCR of all zeros is just as likely as ending up with PCR of all ones.\n\nConsidering these two conditions to be marks of an uniitialized PCR greatly simplifies the code, do you think this is a problem and we should not do it?",
+      "parentUuid": "9233c29b_548db25b",
       "range": {
         "startLine": 959,
         "startChar": 5,
@@ -922,6 +1858,30 @@
     },
     {
       "key": {
+        "uuid": "a78189bc_9704871e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I don\u0027t think we would ever change the number of supported algorithms on the fly - this would wreck chaos with the reserved objects structure, this is why I did not care about it here.\n\nIf we ever do, we\u0027d need to change the nvmem layout version, and take care of the transition.",
+      "parentUuid": "af5d73a0_872b0b6d",
+      "range": {
+        "startLine": 978,
+        "startChar": 1,
+        "endLine": 978,
+        "endChar": 46
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5452800d_34704bfa",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -933,6 +1893,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "not sure if worth it, but: \nwe may decide to add/remove PCR digest algorithms in the future (e.g. drop all non-SHA256 since we don\u0027t use them). it probably makes sense to have .unique_index that identifies the digest in pcr_arrays[] and build reserved_index as NV_VIRTUAL_RESERVE_LAST + PCR_INDEX_START + pdsc-\u003eunique_index * NUM_STATIC_PCR + pcr_index; Then we can add/delete banks and add/ignore reserved pcr objects in nvram.\nsimilarly, we can reserve a whole block of object indices for PCRs (more than NUM_OF_PCRS) from PCR_INDEX_START to PCR_INDEX_END (\u003d_START + 144, for example, enough for 6 banks, still leaving 256-39-144 \u003e 70 indices for other reserved_data)",
+      "range": {
+        "startLine": 1001,
+        "startChar": 1,
+        "endLine": 1002,
+        "endChar": 45
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac3c8a6_5e619c4f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "As described in the previous comment, adding new algorithm type will require careful transition implementation, I would rather postpone caring about this to that time, as I hope it will never come :)",
+      "parentUuid": "5452800d_34704bfa",
       "range": {
         "startLine": 1001,
         "startChar": 1,
@@ -968,6 +1952,30 @@
     },
     {
       "key": {
+        "uuid": "a7641203_43419f62",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "210a8dc2_3e3e24d2",
+      "range": {
+        "startLine": 1013,
+        "startChar": 75,
+        "endLine": 1013,
+        "endChar": 77
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d2abbce_d709b47b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -979,6 +1987,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "I see new_p !\u003d old_p check is done in all places where we call restore_struct, but it\u0027s better to move it inside. otherwise, we may forget to do it in the future and use garbage data from *preserved, which is not filled if new_p \u003d\u003d old_p",
+      "range": {
+        "startLine": 1037,
+        "startChar": 1,
+        "endLine": 1037,
+        "endChar": 64
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d3c6d2_a42e8c76",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "good point, done.",
+      "parentUuid": "8d2abbce_d709b47b",
       "range": {
         "startLine": 1037,
         "startChar": 1,
@@ -1014,6 +2046,30 @@
     },
     {
       "key": {
+        "uuid": "9dfe8dc9_003558ed",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "good catch! I wonder how come none of the tests caught this.",
+      "parentUuid": "0c7940e8_02f203e6",
+      "range": {
+        "startLine": 1068,
+        "startChar": 31,
+        "endLine": 1068,
+        "endChar": 32
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70213eef_79866f79",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1025,6 +2081,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "do we know there\u0027s enough room? if yes, we do we even pass room to marshal_state_clear(). if not, we should check return values for *_Marshal functions, here and below. and check room before memcpy().\n\nsame for marshal_state_reset_data()",
+      "range": {
+        "startLine": 1075,
+        "startChar": 1,
+        "endLine": 1075,
+        "endChar": 21
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa15782_d3e67576",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1075,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "in this particular case we do know that we have enough room, because this is called with a page sized buffer, let me drop passing the size parameter.",
+      "parentUuid": "70213eef_79866f79",
       "range": {
         "startLine": 1075,
         "startChar": 1,
@@ -1060,6 +2140,30 @@
     },
     {
       "key": {
+        "uuid": "3598e2cc_23504979",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I like this better, because in this case the intelligence of how many objects are there is contained in NvGetReserved(), but if you really prefer the for() loop I can change it.",
+      "parentUuid": "fbe07ea4_349394b3",
+      "range": {
+        "startLine": 1159,
+        "startChar": 1,
+        "endLine": 1159,
+        "endChar": 10
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a546238_9c0d473d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1071,6 +2175,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "where is the caller?",
+      "range": {
+        "startLine": 1351,
+        "startChar": 17,
+        "endLine": 1351,
+        "endChar": 31
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e9b361_18ed55d4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "The caller is a patch above this one.",
+      "parentUuid": "4a546238_9c0d473d",
       "range": {
         "startLine": 1351,
         "startChar": 17,
@@ -1106,6 +2234,30 @@
     },
     {
       "key": {
+        "uuid": "b34abf82_72aa7658",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes, the migration code will not go above 5 flash pages, and if the original flash contents does not fit, the migration would fail and a log event would be logged.",
+      "parentUuid": "99e3ebb1_46e2a55a",
+      "range": {
+        "startLine": 1374,
+        "startChar": 4,
+        "endLine": 1374,
+        "endChar": 59
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7de79643_8974a064",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1126,6 +2278,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72ea097_d523f634",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7de79643_8974a064",
+      "range": {
+        "startLine": 1399,
+        "startChar": 3,
+        "endLine": 1400,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1152,6 +2328,30 @@
     },
     {
       "key": {
+        "uuid": "d504c705_39723ad3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3dee078_1fbbe3ce",
+      "range": {
+        "startLine": 1443,
+        "startChar": 22,
+        "endLine": 1443,
+        "endChar": 27
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23f9b9fa_b594ffff",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1163,6 +2363,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "nit: spaces instead?",
+      "range": {
+        "startLine": 1835,
+        "startChar": 14,
+        "endLine": 1835,
+        "endChar": 16
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4953e6_f514f523",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "is there an issue with the tab here? I actually always try to use tabs where they fit.",
+      "parentUuid": "23f9b9fa_b594ffff",
       "range": {
         "startLine": 1835,
         "startChar": 14,
@@ -1198,6 +2422,30 @@
     },
     {
       "key": {
+        "uuid": "d303fcc6_9790f493",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "since NN_OBJ_TUPLE are not a subject to transaction processing, there will be only one instance on NN_OBJ_TUPLE object in case there is a valid transaction delimiter.",
+      "parentUuid": "18eb8f09_df6a655d",
+      "range": {
+        "startLine": 1866,
+        "startChar": 10,
+        "endLine": 1866,
+        "endChar": 15
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63ff19cd_286a21cb",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1209,6 +2457,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "so, we never actually check .generation here, relying instead on page numbers and transaction delimiters. \nbut when we do update_xxx it helps to make sure that we never attempt to delete the newly added one (generation+1), in case something is wrong and we never find the old copy (generation). is that the rationale for still keeping .generation in the header?",
+      "range": {
+        "startLine": 1944,
+        "startChar": 3,
+        "endLine": 1944,
+        "endChar": 16
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d08c13bb_4a58b585",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yeah, with adding transaction delimiters there is no point in checking generation any more, I kept is as some extra datapoint for debugging in case there are some weird failures we can\u0027t figure out.\n\nBut the idea is that the later encountered object is newer, but can be discarded if there is no transaction delimiter after this later encountered object.",
+      "parentUuid": "63ff19cd_286a21cb",
       "range": {
         "startLine": 1944,
         "startChar": 3,
@@ -1244,6 +2516,30 @@
     },
     {
       "key": {
+        "uuid": "da598741_9a55bacf",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "the presence of the non-finalized delimiter tells us tht the transaction was completed, but it is possible that earlier instances of the objects present in the last transaction were not deleted. \n\nSo verify_last_section() will look for duplicates of the objects found above the previous delimiter, and if there are any - will remove the earlier instance of these duplicates.\n\nIt will not wipe out everything. Or did I misunderstand the comment?",
+      "parentUuid": "86296a9f_cab3897b",
+      "range": {
+        "startLine": 1989,
+        "startChar": 9,
+        "endLine": 1989,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26932be9_0e9dfed6",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1255,6 +2551,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "so, we always keep tuples even if there is no delimiter after them. is it because it\u0027s always a single tuple per transaction? and if the tuple itself would have been written incorrectly, its container hash wouldn\u0027t checkout and it would be discarded anyways?",
+      "range": {
+        "startLine": 2011,
+        "startChar": 2,
+        "endLine": 2011,
+        "endChar": 41
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa47b72_d75d193a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2011,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "right, this might be a deficiency of this scheme, but tuples are not subject of transaction integrity, the old instance is removed as soon as the new one is written. So, if there is a delimiter on the top of the flash, finalized or not, we are guaranteed to have only one instance of any tuple.",
+      "parentUuid": "26932be9_0e9dfed6",
       "range": {
         "startLine": 2011,
         "startChar": 2,
@@ -1290,6 +2610,30 @@
     },
     {
       "key": {
+        "uuid": "33ecb948_6c6432de",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Correct, the startup code will try to find a legacy partition, and if found - call the migration, if not - call this function directly.",
+      "parentUuid": "49aa563d_da874dbb",
+      "range": {
+        "startLine": 2105,
+        "startChar": 19,
+        "endLine": 2105,
+        "endChar": 33
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f11f0f6_55dcb796",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1301,6 +2645,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "do we need this comment? :)",
+      "range": {
+        "startLine": 2277,
+        "startChar": 25,
+        "endLine": 2277,
+        "endChar": 48
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "310191fb_91c0b8d0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I guess I had some deep thoughts about this case :)\n\ncomment deleted.",
+      "parentUuid": "4f11f0f6_55dcb796",
       "range": {
         "startLine": 2277,
         "startChar": 25,
@@ -1336,6 +2704,30 @@
     },
     {
       "key": {
+        "uuid": "17773524_6884db27",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary here: process_pcr() will check the it.",
+      "parentUuid": "9394d141_2ee682d4",
+      "range": {
+        "startLine": 2342,
+        "startChar": 1,
+        "endLine": 2342,
+        "endChar": 26
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21283590_ab86b57a",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1359,6 +2751,30 @@
     },
     {
       "key": {
+        "uuid": "4310b5ac_d0f1b9fd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21283590_ab86b57a",
+      "range": {
+        "startLine": 2426,
+        "startChar": 29,
+        "endLine": 2426,
+        "endChar": 31
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7e502f3_13858021",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1370,6 +2786,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "and return error?",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99591cb0_4520a8dd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "honestly, I don\u0027t expect the cipher to fail, and not sure what to do about this. Should this be a reason to log a flash error and reboot?",
+      "parentUuid": "e7e502f3_13858021",
       "range": {
         "startLine": 2609,
         "startChar": 3,
@@ -1405,6 +2845,30 @@
     },
     {
       "key": {
+        "uuid": "c80d13bd_c044f592",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "If Cr50 dies here the init function will make sure that there is only one instance of var with this key is there, and we don\u0027t really care that this is the old one, because if we crashed, the process must have not completed anyways.",
+      "parentUuid": "15260864_e96d503b",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "302e4e50_b93bb47c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1425,6 +2889,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15848743_7f93d0d5",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "302e4e50_b93bb47c",
+      "range": {
+        "startLine": 2720,
+        "startChar": 35,
+        "endLine": 2720,
+        "endChar": 42
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1451,6 +2939,30 @@
     },
     {
       "key": {
+        "uuid": "306255d5_100fe5b3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2721,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198cf96d_9e3543aa",
+      "range": {
+        "startLine": 2721,
+        "startChar": 14,
+        "endLine": 2721,
+        "endChar": 22
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6791d00_ee27308c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1474,6 +2986,30 @@
     },
     {
       "key": {
+        "uuid": "a1086c5c_8407bb90",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6791d00_ee27308c",
+      "range": {
+        "startLine": 2724,
+        "startChar": 40,
+        "endLine": 2724,
+        "endChar": 47
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a9465b_12ce3d15",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1485,6 +3021,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "can we have a new object type instead to indicate that this space is taken? this would allow to avoid this create-var/delete-var loop.",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb02a86_baf996e1",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "Frankly, I don\u0027t think it is worth optimizing this very infrequent use case. Also, this could be easily added later if it is decided that this is necessary.",
+      "parentUuid": "d3a9465b_12ce3d15",
       "range": {
         "startLine": 2749,
         "startChar": 4,
@@ -1520,6 +3080,30 @@
     },
     {
       "key": {
+        "uuid": "15d43e26_a05047e1",
+        "filename": "include/new_nvmem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "let\u0027s see. 2^21 page erases - I don\u0027t think we should worry about wrapping here, the flash would be dead way before this number of cycles :).",
+      "parentUuid": "c9d40336_e75cd4a4",
+      "range": {
+        "startLine": 51,
+        "startChar": 14,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9433df_2ca2998d",
         "filename": "include/new_nvmem.h",
         "patchSetId": 9
@@ -1531,6 +3115,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "nit: the meaning of the comment is unclear. we just want to say that we limit payload size at 2K?\nor it\u0027s just a leftover comment from times when size was \u003e 11 bits?",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeaff0ce_bcf47379",
+        "filename": "include/new_nvmem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "yes, the idea is that 11 bits is enough for the size field. Let me clarify.",
+      "parentUuid": "3f9433df_2ca2998d",
       "range": {
         "startLine": 76,
         "startChar": 30,
@@ -1566,6 +3174,30 @@
     },
     {
       "key": {
+        "uuid": "b9fb5b08_27dc3518",
+        "filename": "include/new_nvmem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "right, the structure evolved and the comment staid behind, fixed.",
+      "parentUuid": "8ef425a4_1aa84bd2",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c347a83_cb29de64",
         "filename": "include/new_nvmem.h",
         "patchSetId": 9
@@ -1577,6 +3209,30 @@
       "writtenOn": "2019-03-28T05:57:20Z",
       "side": 1,
       "message": "don\u0027t we want to use NVMEM_TEST_BUILD for fuzzing as well?",
+      "range": {
+        "startLine": 147,
+        "startChar": 27,
+        "endLine": 147,
+        "endChar": 46
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a676d8_23db3447",
+        "filename": "include/new_nvmem.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T00:21:30Z",
+      "side": 1,
+      "message": "fizzing does not need access to these functions, it uses the main API.",
+      "parentUuid": "5c347a83_cb29de64",
       "range": {
         "startLine": 147,
         "startChar": 27,
