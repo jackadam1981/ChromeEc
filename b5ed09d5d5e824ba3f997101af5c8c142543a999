@@ -16,6 +16,24 @@
       "revId": "b5ed09d5d5e824ba3f997101af5c8c142543a999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f966577d_c3fb3f47",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-03-29T10:12:21Z",
+      "side": 1,
+      "message": "The oldest patch doesn\u0027t have this issue, right? I will switch back to the old implementation of interrupt_lock/interrupt_unlock with them as still standalone implementation because of your AON resource limitation.",
+      "parentUuid": "fcd3a902_f597ad88",
+      "revId": "b5ed09d5d5e824ba3f997101af5c8c142543a999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
