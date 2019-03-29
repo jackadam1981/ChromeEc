@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5458a10b_c90a4162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-29T21:58:36Z",
+      "side": 1,
+      "message": "- Check the sensor is presented by the kernel (/sys/bus/iio/device should have a device pointing a link with cros-ec-mag in it.\n- Check ARC++ is pickup the sensor up\n- Check an android app to be sure the sensor is sending data (AIDA64 for instance).\n- Check calibration is quicking in.\n- Check a compass app.",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7151c0c_b59eaec7",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
@@ -142,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "c3bef027_9cb88d31",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-29T21:58:36Z",
+      "side": 1,
+      "message": "Got it. put the constant in .h then.",
+      "parentUuid": "f8abd171_d3e0f7ee",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffb31b88_796b4bbc",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
@@ -212,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "f2b183d8_dc933452",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-29T21:58:36Z",
+      "side": 1,
+      "message": "All chromeos devices must pass CTS tests. With P, the CTS sensor tests look at time stamping more carefully. They will not accept too much gap between samples.\nIf the EC misses a sample, the CTS test will fail with messages like:\n  junit.framework.AssertionFailedError: VerifySensorOperation | sensor\u003d\u0027Gravity Sensor\u0027, samplingPeriod\u003d5000us, maxReportLatency\u003d0us | 207 events gaps: position\u003d2, delta_time\u003d10.73ms; position\u003d11, delta_time\u003d9.27ms; position\u003d14, delta_time\u003d9.34ms; 204 more; (expected \u003c9.00ms)\n\n[See https://cs.corp.google.com/pi-arc-dev/cts/tests/sensor/src/android/hardware/cts/helpers/sensorverification/EventGapVerification.java?dr\u003dCSs\u0026g\u003d0]\n\nThis is why we put the \"high frequency\" sensors behind IMU FIFO to be sure no events are lost.\nLimiting frequency at 50Hz give 20ms to the EC to respond to a request.\n\nWith an irq_handler(), we can tag the time an event occur precisely, which help pass the jitter verification done by CTS [https://cs.corp.google.com/pi-arc-dev/cts/tests/sensor/src/android/hardware/cts/helpers/sensorverification/EventGapVerification.java?rcl\u003dcf1969a847b6aa8d39c01eacb1ba15092df9781e\u0026l\u003d16]: at 100Hz, if the EC is delayed for more than 8ms to process an event, even if it did not miss it, we would not be CTS compliant and would not be able to chip the device with the magnetometer enabled.\nWith the irq_handler, we save a timestamp at which the event occurred, and the EC can come really late to pick it up, it will insert the event in the FIFO for the host at the time the sample was acquired, not the time the EC pick it up.",
+      "parentUuid": "edb9dc3a_5ba348bc",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10392316_bc6d049d",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 7
@@ -241,6 +294,24 @@
       "side": 1,
       "message": "See table 25 on https://drive.google.com/file/d/1b_P-fEGqyebHKAhXtJbZD0Eg_ZHXl5LL/view?usp\u003dsharing",
       "parentUuid": "10392316_bc6d049d",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5737debd_a6f70ddf",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-03-29T21:58:36Z",
+      "side": 1,
+      "message": "It is not because the magnetometer can do it it is worth exposing it:\nIf the EC says 100Hz is supported, apps may be tempted to use it at max frequency.\nOn my Nokia phone, looking with dumpsys sensorservice, I have: minRate\u003d1.00Hz | maxRate\u003d50.00Hz",
+      "parentUuid": "2b9c0b5b_1c4c0ced",
       "revId": "54524470020019671059592ce6ed7cff2e400937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
