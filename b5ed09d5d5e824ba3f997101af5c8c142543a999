@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcd3a902_f597ad88",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T09:35:33Z",
+      "side": 1,
+      "message": "interrupt_unlock() will call \u0027sti\u0027 to enable interrupts, it\u0027s dangerous when calling ish_dma_init() which will call here in system init stage before task_start().\n\nin fact, i already met strange crash issues when doing ish_dma_init() in ish_pm_init() which called by system_pre_init(), the crash issues caused by interrupts generated before task_start(), it triggerd task switch, but the kernel status are unknown before task_start().\n\nso i made a W/A in power_mgt.c for this issue. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1531772/3/chip/ish/power_mgt.c#449    \n\nlike all other drivers,  their init function all got called in main() before task_start().\n\nso we need make sure ish_dma_init() function should not enable interrupt.",
+      "revId": "b5ed09d5d5e824ba3f997101af5c8c142543a999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
