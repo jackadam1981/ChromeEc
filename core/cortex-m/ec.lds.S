@@ -256,6 +256,12 @@ SECTIONS
         KEEP(*(.rodata.usb_ep.usb_ep_reset))
         KEEP(*(.rodata.usb_ep.usb_iface_request))
 
+#ifdef CONFIG_BOARD_BINARY
+	__bb = .;
+	KEEP(*(.rodata.bb))
+	__bb_end = .;
+#endif
+
         . = ALIGN(4);
         *(.rodata*)
 

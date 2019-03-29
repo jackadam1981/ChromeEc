@@ -15,6 +15,10 @@
 #include "task.h"
 #include "test_util.h"
 
+/* BB configuration */
+extern const uint8_t __bb[];
+extern const uint8_t __bb_end[];
+
 /* Console commands */
 extern const struct console_command __cmds[];
 extern const struct console_command __cmds_end[];

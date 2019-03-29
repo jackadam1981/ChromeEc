@@ -32,8 +32,9 @@
 #define CONFIG_STM32_CLOCK_LSE
 #define CONFIG_SWITCH
 #define CONFIG_WATCHDOG_HELP
-
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
+
+#define CONFIG_BOARD_BINARY
 
 #undef  CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1

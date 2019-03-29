@@ -7,6 +7,9 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#ifdef CONFIG_BOARD_BINARY
+#include "board_binary.h"
+#endif
 #include "charge_state.h"
 #include "chipset.h"
 #include "console.h"
@@ -38,6 +41,10 @@ enum battery_type {
 	BATTERY_COUNT
 };
 
+#ifdef CONFIG_BOARD_BINARY
+static struct battery_info *info;
+static struct max17055_batt_profile *batt_profile;
+#else
 static const struct battery_info info[] = {
 	[BATTERY_SIMPLO] = {
 		.voltage_max		= 4400,
@@ -97,12 +104,17 @@ static const struct max17055_batt_profile batt_profile[] = {
 		.qr_table30		= 0x0480,
 	},
 };
+#endif
 
 const struct battery_info *battery_get_info(void)
 {
 	if (batt_id >= BATTERY_COUNT)
 		batt_id = gpio_get_level(GPIO_BATT_ID);
 
+#ifdef CONFIG_BOARD_BINARY
+	if (info == NULL)
+		info = (struct battery_info *)bb_lookup(BATTERY_INFO);
+#endif
 	return &info[batt_id];
 }
 
@@ -110,7 +122,11 @@ const struct max17055_batt_profile *max17055_get_batt_profile(void)
 {
 	if (batt_id >= BATTERY_COUNT)
 		batt_id = gpio_get_level(GPIO_BATT_ID);
-
+#ifdef CONFIG_BOARD_BINARY
+	if (batt_profile == NULL)
+		batt_profile =
+		(struct max17055_batt_profile *)bb_lookup(BATTERY_PROFILE);
+#endif
 	return &batt_profile[batt_id];
 }
 

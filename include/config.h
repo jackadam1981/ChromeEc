@@ -83,6 +83,11 @@
 #undef CONFIG_ACCELGYRO_LSM6DSM
 #undef CONFIG_ACCELGYRO_LSM6DSO
 
+/*
+ * Enable runtime initialization of structures
+ */
+#undef CONFIG_BOARD_BINARY
+
 /* Add sensorhub function for LSM6DSM, required if 2nd device attached. */
 #undef CONFIG_SENSORHUB_LSM6DSM
 
