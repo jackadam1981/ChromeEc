@@ -10,7 +10,7 @@
 /* magic macro to implement IRQ prefix / exit */
 .macro vector name, entry_number
 .weak \name\()_handler
-.set \name\()_handler, unhandled_irq
+/*.set \name\()_handler, unhandled_irq*/
 j __entry_\()\name
 .pushsection .text.vectirq
 .global __entry_\()\name
