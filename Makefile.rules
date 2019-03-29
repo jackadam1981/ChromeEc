@@ -377,7 +377,7 @@ $(out)/%.lds: core/$(CORE)/ec.lds.S
 $(out)/%_B.lds: core/$(CORE)/ec.lds.S
 	$(call quiet,lds_b,LDS_B  )
 
-$(out)/%.bin: $(out)/%.obj
+$(out)/%.bin: $(out)/%.obj $(PROJECT_EXTRA)
 	$(call quiet,obj_to_bin,OBJCOPY)
 	$(if $(wildcard $(PEM)),$(call quiet,rsasign,SIGN   ),)
 	$(if $(wildcard $(PEM)),$(call quiet,extractrw-y,EXTR_RW), \
