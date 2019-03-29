@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae839884_d0c3b06b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-03-29T18:17:35Z",
+      "side": 1,
+      "message": "I have to correct this as 8 bytes, and to remove \"downsizing\" from the title. This CL is now only for cleanup.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "c87f0d3898dd791471edc5e4d07fcfd6131fc1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
