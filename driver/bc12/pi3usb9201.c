@@ -37,6 +37,9 @@ struct bc12_status {
 	int current_limit;
 };
 
+/* Used to store last BC1.2 detection result */
+static enum charge_supplier bc12_supplier[CONFIG_USB_PD_PORT_COUNT];
+
 static const struct bc12_status bc12_chg_limits[] = {
 	[CHG_OTHER] = {CHARGE_SUPPLIER_OTHER, 500},
 	[CHG_2_4A] = {CHARGE_SUPPLIER_PROPRIETARY, 2400},
@@ -160,6 +163,8 @@ static void bc12_update_charge_manager(int port, int client_status)
 	pi3usb9201_bc12_detect_ctrl(port, 0);
 	/* Inform charge manager of new supplier type and current limit */
 	charge_manager_update_charge(supplier, port, &new_chg);
+	/* Save most recent bc12 detection type */
+	bc12_supplier[port] = supplier;
 }
 
 static int bc12_detect_start(int port)
@@ -192,8 +197,13 @@ static void bc12_power_down(int port)
 	pi3usb9201_bc12_detect_ctrl(port, 0);
 	/* Mask interrupts unitl next bc1.2 detection event */
 	pi3usb9201_interrupt_mask(port, 1);
-	/* Let charge manager know there's no more charge available. */
-	charge_manager_update_charge(CHARGE_SUPPLIER_NONE, port, NULL);
+	/*
+	 * Let charge manager know there's no more charge available for the
+	 * supplier type that was most recently detected.
+	 */
+	charge_manager_update_charge(bc12_supplier[port], port, NULL);
+	/* Reset most recent bc12 detection type */
+	bc12_supplier[port] = CHARGE_SUPPLIER_NONE;
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
 	/* Indicate PP5000_A rail is not required by USB_CHG task. */
 	power_5v_enable(task_get_current(), 0);
@@ -215,6 +225,14 @@ void usb_charger_task(void *u)
 {
 	int port = (task_get_current() == TASK_ID_USB_CHG_P0 ? 0 : 1);
 	uint32_t evt;
+	int i;
+
+	/*
+	 * Set most recent bc1.2 detection supplier result to
+	 * CHARGE_SUPPLIER_NONE for all ports.
+	 */
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		bc12_supplier[port] = CHARGE_SUPPLIER_NONE;
 
 	/*
 	 * The is no specific initialization required for the pi3usb9201 other
@@ -263,6 +281,8 @@ void usb_charger_task(void *u)
 				charge_manager_update_charge(
 					CHARGE_SUPPLIER_OTHER,
 					port, &new_chg);
+				/* Save most recent bc12 detection type */
+				bc12_supplier[port] = CHARGE_SUPPLIER_OTHER;
 				CPRINTS("pi3usb9201[p%d]: bc1.2 failed use "
 					"defaults", port);
 			}
