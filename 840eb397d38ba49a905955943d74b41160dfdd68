@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d994677_b62252d1",
+        "filename": "include/queue.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-29T21:21:25Z",
+      "side": 0,
+      "message": "I think this function is a useful API, even though it is not yet used  as such, it should not be deleted from global scope.",
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
