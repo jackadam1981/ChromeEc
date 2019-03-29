@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1a8d9b6_06a31781",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "080f217d_37f69c38",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "603f15ec_25c08384",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 12
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "cfeb059f_908a7d89",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "745191b8_d27f4e7b",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 23
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "400b93f1_a28807e3",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 12
@@ -91,6 +139,30 @@
       "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f55668_8f702f4a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400b93f1_a28807e3",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "71686764_3eb0abc9",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Ack!\n\nwe can guaranteed that all interrupts are masked except PMU wakeup interrupt and reset_prep (if configed), and should make aontask as simple possible to make sure it\u0027s quality that wouldn\u0027t trigger any exceptions. per our experiences on several generations of ISH products, it\u0027s works well.  :)",
+      "parentUuid": "d9a5ada5_a20df5f4",
+      "range": {
+        "startLine": 134,
+        "startChar": 24,
+        "endLine": 134,
+        "endChar": 41
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eaaaffb_831449b2",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 12
@@ -137,6 +233,30 @@
       "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24fea1c_a354047e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Ack!\n\nwe can\u0027t do this,  since aontask also access the address which not inside the AON memory space, such as PMU/CCU registers, IO registers.",
+      "parentUuid": "3eaaaffb_831449b2",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 238,
+        "endChar": 21
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "eb6c10a7_b97a7a36",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Ack!\n\nwhen calling the \u0027iret\u0027, cpu will auto save current cpu\u0027s context including the next execute instruction (here is the begging of the while loop ) into aon_tss (eip field for next execute instruction). so next time, when main FW switch to aontask, will start execute from the code which pointed by the eip field in aon_tss. \n\nwe initialized the aon_tss\u0027s eip value with the ish_aon_main() address, so the first time, the aontask start run from ish_aon_main(). but from \nthe second time, will always start execute from the begging of the while loop.",
+      "parentUuid": "372b6cf3_13229f24",
+      "range": {
+        "startLine": 340,
+        "startChar": 6,
+        "endLine": 340,
+        "endChar": 57
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15b8dcd2_c1fb546a",
         "filename": "core/minute-ia/init.S",
         "patchSetId": 12
@@ -183,6 +327,30 @@
       "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a3109d_fd3d283f",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b8dcd2_c1fb546a",
+      "range": {
+        "startLine": 322,
+        "startChar": 23,
+        "endLine": 322,
+        "endChar": 28
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "83ab8a64_c25eb9ce",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 12
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a7690b_6e433aac",
+      "range": {
+        "startLine": 327,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 8
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e4c3f8a_1ccf01b1",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 12
@@ -229,6 +421,30 @@
       "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06087a91_46cf859c",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Ack!\nbut there don\u0027t have a single function for mask all irqs, \nand we need these functions to mask and restore all irqs when entering low power mode. \n\nmaybe, we can think about to merge this features to the existing \u0027mask_interrupt()\u0027 and \u0027unmask_interrupt()\u0027 functions, but need the parameter changed, change \u0027uint32_t irq\u0027 to \u0027uint64_t irq_map\u0027 :\n\nuint64_t get_current_irq_mask_map(void)\n{\n\n}\n\nvoid mask_interrupt(uint64_t irq_map)\n{\n  /* mask all the interrupts in the irq_map */\n}\n\nvoid unmask_interrupt(uint64_t irq_map)\n{\n  /* unmask all the interrupts in the irq_map */\n}\n\nhow do you think about it,  if it\u0027s ok,  will do it.",
+      "parentUuid": "8e4c3f8a_1ccf01b1",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "afff1cd9d7e59096592593268051a9ef897886cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

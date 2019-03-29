@@ -198,6 +198,24 @@
     },
     {
       "key": {
+        "uuid": "44025163_9bd28bde",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done!\nusing union structure for both detail smaller fields and lower \u0026 upper dword which are easy for data value assignment using bit shift macros.\nthis can using the macros to encapsulate the ugly bit shift operations internally, and keep the caller very clean.",
+      "parentUuid": "058c8705_ebdcb894",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7647baae_ede34727",
         "filename": "chip/ish/aontaskfw/ia_structs.h",
         "patchSetId": 10
@@ -284,6 +302,24 @@
       "revId": "358370c3227d572588e14089f53c32b08f81d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c7c1c85_944bdd24",
+        "filename": "chip/ish/aontaskfw/ia_structs.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7608235_94049d04",
+      "revId": "358370c3227d572588e14089f53c32b08f81d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

@@ -46,6 +46,30 @@
       "revId": "8e8e749f391d4ad2581b8a5015e46196b416198c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1822ca_993e4b90",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:09:42Z",
+      "side": 1,
+      "message": "Done!\n\ncreated a cros_bug: \nhttps://partnerissuetracker.corp.google.com/issues/129246461",
+      "parentUuid": "be0d7385_4ac49a35",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "8e8e749f391d4ad2581b8a5015e46196b416198c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
