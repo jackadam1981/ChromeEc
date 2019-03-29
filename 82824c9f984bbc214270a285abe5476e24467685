@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b65c108_48fb6de5",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:04:33Z",
+      "side": 1,
+      "message": "Hi Jet,\n\nusing a union with these dwords can bring many benefits, such as efficiency and convenience, \nwith the help macros (GEN_GDT_DESC_LO,...),  we can have very clean and easy understand code, \nsuch as: \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1531275/4/core/minute-ia/interrupts.c#157\n\nand we can also using exactly same definitions in asm code:  \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1531275/4/core/minute-ia/init.S#299\n\nthis can keep the unify, clean definitions and usages for all code in ec.\n\nand the small detailed fields in the union also keeps field details which can be easily understand when reading code.\n\nso, i think this is good for our code,  suggest keep this. :)",
+      "parentUuid": "6fd4e7c7_55db2228",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "82824c9f984bbc214270a285abe5476e24467685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc7705ff_62e27e70",
         "filename": "core/minute-ia/ia_structs.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-25T20:36:10Z",
       "side": 1,
       "message": "seems like we won\u0027t need these marco when we are using the more granular field definitions.\n\nMaybe we replace them with some incline functions if that makes sense though",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 0
+      },
+      "revId": "82824c9f984bbc214270a285abe5476e24467685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dbe2789_e683ccc9",
+        "filename": "core/minute-ia/ia_structs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-03-29T08:04:33Z",
+      "side": 1,
+      "message": "Hi Jet,\n\njust as above comments, suggest keep these definitions. :)",
+      "parentUuid": "cc7705ff_62e27e70",
       "range": {
         "startLine": 137,
         "startChar": 0,
