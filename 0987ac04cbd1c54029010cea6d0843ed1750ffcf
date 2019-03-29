@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d643ee9_f4f086c2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "nit: please align indentation.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ca81ab_645536c8",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Please consolidate.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 9
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5803fbbf_4babeec2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Can you explain why you chose VBUS?",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de951ad6_e29701a2",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "I think it\u0027s better to initialize them in usb_charger_reset_charge.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 19
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64879849_73cea000",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed. Why do you guard p9221_r7.h?",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41bc7eab_97ca4f0a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Why not CC_CHARGER?",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7cc443_37926a3a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "nit: Let\u0027s remove and save 4 bytes.",
+      "range": {
+        "startLine": 944,
+        "startChar": 14,
+        "endLine": 944,
+        "endChar": 17
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec33d8b_b96a0a02",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "This will break the line before the end bracket.",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8d52ec_425897a0",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "The file name indicates this driver is for r7 but there is lots of code in it which deals with non-r7. We should remove them to save space and increase readability.",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7524a67_1cc9d592",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Let\u0027s append prefix here: cprints(CC_USBPD, \"WPC \" format, ## args)",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2ff329_9a3a4ea2",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Does this change at run-time?",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee58704a_59875c28",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "This register description is missing from the datasheet, too.",
+      "range": {
+        "startLine": 622,
+        "startChar": 39,
+        "endLine": 622,
+        "endChar": 54
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f912d358_cb0042a1",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Shall we print something before return?",
+      "range": {
+        "startLine": 975,
+        "startChar": 2,
+        "endLine": 975,
+        "endChar": 9
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0454d3d_42097864",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "What does this number mean?",
+      "range": {
+        "startLine": 977,
+        "startChar": 14,
+        "endLine": 977,
+        "endChar": 16
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac96a02e_5370ace8",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "I don\u0027t think these numbers are useful. Please remove them.",
+      "range": {
+        "startLine": 981,
+        "startChar": 20,
+        "endLine": 981,
+        "endChar": 21
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bfaf084_d1ddbe85",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "There is no description about this register in the datasheet I have. However, based on the way it\u0027s used in p9221_is_r7, I assume it\u0027s a chip identifier. If that\u0027s the case, we should read it once in init (instead of repeatedly here). Or does it change dynamically? Following what rules?",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f57528_74481b3d",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "Why isn\u0027t this checked?",
+      "range": {
+        "startLine": 989,
+        "startChar": 3,
+        "endLine": 989,
+        "endChar": 6
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783e7302_b28a8bb2",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "These need to be annotated, too.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 23
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ded58df1_f56c50dd",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "These need descriptions (functionality, args, return).",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 0
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbb880e_6682bd78",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-29T21:31:56Z",
+      "side": 1,
+      "message": "I think this deserves a more generic name: CONFIG_WIRELESS_CHARGER.",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
