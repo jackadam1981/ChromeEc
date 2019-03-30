@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "07ad9fc0_28d99821",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "ah, right, I was carried away a little, one needs key and contents to verify full similarity, but to identify the object the key is enough",
+      "parentUuid": "9bfcfea3_de86f852",
+      "range": {
+        "startLine": 99,
+        "startChar": 27,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a598da62_809f927f",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1508,6 +1532,30 @@
     },
     {
       "key": {
+        "uuid": "6c590f44_6f7e003b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "edited the comment as suggested.",
+      "parentUuid": "a9287124_976f1b80",
+      "range": {
+        "startLine": 482,
+        "startChar": 16,
+        "endLine": 482,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848c7897_3d5ae36c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1861,6 +1909,30 @@
     },
     {
       "key": {
+        "uuid": "a8213677_2499630f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "ok,let me add a check here.",
+      "parentUuid": "146fbb3f_d20a426a",
+      "range": {
+        "startLine": 875,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 23
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44f880cc_b0ea94ef",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -1979,6 +2051,30 @@
     },
     {
       "key": {
+        "uuid": "900dd61f_cffbf69f",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "so, as discussed, it turns out that those PCRs in question are not held in the NVMEM, so luckily there is nothing which needs to be done here :)",
+      "parentUuid": "24f6c507_c37f772c",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af5d73a0_872b0b6d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -2038,6 +2134,30 @@
       "side": 1,
       "message": "I agree, not not completely. I can easily see us dropping SHA1, SHA384 and SHA512, which we don\u0027t use in Chrome OS, to save space in the flash in the future.\n\nCan we at least add some compile-time checks that breaks in case we change the set of algos or the number of PCRs (e.g. check the size of s_pcrs[]?) to remind us to update this file.\n\nLike at the beginning of this file:\n/*\n * This implementation assumes 4 banks (SHA-1, 256, 384, 512) of 24 PCRs.\n * Will break otherwise.\n */\nstatic_assert(IMPLEMENTATION_PCR \u003d\u003d 24);\nstatic_assert(sizeof(PCR) \u003d\u003d  SHA1_DIGEST_SIZE + SHA256_DIGEST_SIZE + ...);",
       "parentUuid": "a78189bc_9704871e",
+      "range": {
+        "startLine": 978,
+        "startChar": 1,
+        "endLine": 978,
+        "endChar": 46
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0bcc4d8_b85da4c3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "ok, added static asserts after the pcr_arrays array.",
+      "parentUuid": "a2777e33_57340718",
       "range": {
         "startLine": 978,
         "startChar": 1,
@@ -2392,6 +2512,30 @@
       "side": 1,
       "message": "but similarly to PCRs, we don\u0027t support cases when NvGetReserved returns a non-zero ri.size for a different number of parameters, right? we rely on it being 0..NV_VIRTUAL_RESERVE_LAST. otherwise the PCR objects numbering scheme breaks.",
       "parentUuid": "3598e2cc_23504979",
+      "range": {
+        "startLine": 1159,
+        "startChar": 1,
+        "endLine": 1159,
+        "endChar": 10
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d1a383_f26915ff",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "ok, since migration code is interim and hopefully we\u0027re not going to add or remove virtual objects before this code goes away, I\u0027ll do it.",
+      "parentUuid": "f7870cde_5f9df9a1",
       "range": {
         "startLine": 1159,
         "startChar": 1,
@@ -3086,6 +3230,30 @@
     },
     {
       "key": {
+        "uuid": "133d0dca_1a25b0aa",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "let me just drop this check here. A better way to handle this would be to log a flash event and reboot in the app_cipher() in case of failure.",
+      "parentUuid": "101bffac_48e483e0",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15260864_e96d503b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3145,6 +3313,30 @@
       "side": 1,
       "message": "why would init do that?\nwe have a new variable written and a proper delimiter after it (save_var() does add_final_delimiter() in case of success). it will just continue using nvmem as-is. and nvmem will have two copies of the var. we will continue reading the old one, which is ok. but if we later delete it or change it again, the 1st one will be deleted, but the 2nd one then will become \u0027active\u0027.",
       "parentUuid": "c80d13bd_c044f592",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70be28d_43db6b2b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "why would init make sure that there is only one instance of the variable? I think this is a reasonable thing to do. \n\nthere are three cases during initialization:\n  - there is a finalized delimiter at the top of the flash. This is the normal state, no further processing is required.\n\n   - there is a delimiter at the top, but it is not finalized. In this case all tuples must be OK, because the new tuple is saved only after the previous instance (if existed) was erased\n\n   - there is no delimiter at the end of the flash. This is an indication of the H1 crashed, or power yanked at the wrong time. The assumption made is that we should not worry too much/trust too to whatever was written after the last valid delimiter, and should just get rid of it all, because there is no way to verify what is what. This includes the tuples found above the last valid delimiter.\n\nWe might want to keep the tuples present after the last delimiter in this case, how about I open a tracker issue to discuss what we want to do and address it later.",
+      "parentUuid": "149c879f_028c266d",
       "range": {
         "startLine": 2692,
         "startChar": 1,
@@ -3357,6 +3549,30 @@
       "side": 1,
       "message": "it\u0027s more about simplifying than optimizing. I\u0027d just prefer the logic and the data structure to be simple for this case, so that we don\u0027t miss some corner cases, esp if we make more changes to the whole nvmem thing in the future. e.g. even now I haven\u0027t quiet checked what happens if right from the beginning or after adding a few fake (k,v) pairs, there\u0027s\n - less that container header space left on the page.\n - enough space for container header, but not for tuple header.\n - exactly enough space for tuple header, but not for any key or value data.\n - enough space for tuple header + 1 byte for the key value.",
       "parentUuid": "8fb02a86_baf996e1",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41fe9b6d_f3a1cf47",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-03-30T00:43:53Z",
+      "side": 1,
+      "message": "I don\u0027t think adding another object type just for this case is a simplification: we will have to start checking for it everywhere we look at object types, does not seem very reasonable to me.\n\nNote that the last tuple does not have to fit into the page, in fact it is expected to spill over, I modified the code to limit the spillover to the minimum (and fixed a bug in value size calculations as a result).\n\nThe TPM wipe out test still passes.",
+      "parentUuid": "ff15e889_33119d24",
       "range": {
         "startLine": 2749,
         "startChar": 4,
