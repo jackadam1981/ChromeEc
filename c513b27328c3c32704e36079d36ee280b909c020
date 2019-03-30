@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2a2f5f6_27446358",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-03-30T03:35:05Z",
+      "side": 1,
+      "message": "Could you check other projects (kernel, mosys, depthcharge, coreboot, etc.) do not set this macro? I somehow remember that\u0027s not the case.",
+      "range": {
+        "startLine": 22,
+        "startChar": 57,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "c513b27328c3c32704e36079d36ee280b909c020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
