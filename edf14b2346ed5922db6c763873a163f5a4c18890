@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "e91d5da2_68a46f0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-30T18:58:28Z",
+      "side": 1,
+      "message": "Can you please add details of what the power numbers look like with and without this change?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595a63c9_1cd0a8db",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-30T18:58:28Z",
+      "side": 1,
+      "message": "Why is this being configured here? It is already done as part of PSL IN configuration.",
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf9197e_d67d8e2c",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-30T18:58:28Z",
+      "side": 1,
+      "message": "This seems like something that should be done in the chip/npcx code as it applies to more than just hatch. BTW, isn\u0027t this already disabled since PSL mode shuts down all modules except the PSL. Or are you noticing extra power consumption because of this?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 0
+      },
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef29780_a2855fec",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-03-30T18:58:28Z",
+      "side": 1,
+      "message": "What is the power difference that you see? I believe these should all be done as part of the common chip npcx code. Any reason not to do it there?",
+      "range": {
+        "startLine": 120,
+        "startChar": 17,
+        "endLine": 121,
+        "endChar": 61
+      },
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58a08cb9_0ea9f992",
         "filename": "board/hatch/board.c",
         "patchSetId": 2
