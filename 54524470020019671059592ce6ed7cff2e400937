@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e86fa65_7d325429",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-01T21:56:45Z",
+      "side": 1,
+      "message": "Thanks for the list. I\u0027ll make sure I get these. I just uploaded a new patch that was tested in that I could read the new values in /sys/bus/iio/devices/iio:device4/in_magn_*_raw. The Android apps on the other hand were not seeing the values yet. I\u0027ll keep plugging away at it.",
+      "parentUuid": "5458a10b_c90a4162",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7151c0c_b59eaec7",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
@@ -124,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "b275cdc5_796590b1",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-01T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a98b342_5c83756d",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a89c547_2c8a698a",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
@@ -177,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "c6ca1c50_68e14ab9",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-01T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3bef027_9cb88d31",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffb31b88_796b4bbc",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
@@ -206,6 +260,24 @@
       "side": 1,
       "message": "Good catch, forgot to test that.",
       "parentUuid": "ffb31b88_796b4bbc",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcde4675_0f20e5a6",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-01T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "265dad3c_91dbf263",
       "revId": "54524470020019671059592ce6ed7cff2e400937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -265,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "809715ea_e143ca0c",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-01T21:56:45Z",
+      "side": 1,
+      "message": "Thanks, looks like the magnetometer (when not running behind the accelerometer) does not have a FIFO. I lowered the max rate to 50HZ.",
+      "parentUuid": "f2b183d8_dc933452",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10392316_bc6d049d",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 7
@@ -315,6 +405,24 @@
       "revId": "54524470020019671059592ce6ed7cff2e400937",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ed5ca9_9c3f4b8f",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-01T21:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5737debd_a6f70ddf",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
