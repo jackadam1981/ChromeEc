@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "305b48a8_48f26963",
+        "filename": "board/hatch_fp/flash_fp_mcu",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-01T20:19:47Z",
+      "side": 1,
+      "message": "I changed this for the /usr/local vs /usr issue:\n . \"$(dirname \"$(readlink -f \"$0\")\")\"/../share/flash_fp_mcu/flash_fp_mcu_common.sh\n\nhttps://crrev.com/c/1535118",
+      "revId": "647aef10336194968a4bb65432a91a0a2b7e1553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
