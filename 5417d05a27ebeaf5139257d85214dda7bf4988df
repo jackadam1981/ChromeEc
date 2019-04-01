@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01d12f36_0e6a78e0",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "do we have some check at higher levels that makes sure that we have space in nvmem? probably not, since that\u0027d require to know the exact state of the underlying pages (or at the very least the total size of all vars and all nvmem objects to make sure they still should fit)?\n\nif we don\u0027t have a soft-check, a user can cause keep creating \u0026 writing nvram spaces until TPM goes out of boundaries trying to allocate a new page for an already full nvmem. I\u0027d suggest returning an error through the call stack in case there\u0027s not enough space instead of turning that into a catastrophic error.",
+      "range": {
+        "startLine": 905,
+        "startChar": 2,
+        "endLine": 905,
+        "endChar": 27
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ff8055_22a8358c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "why saved_list_index+2? don\u0027t we want to \"fill up the current top page\"? then, as soon as we reach saved_list_index+1, which is after the current top page, we shall stop?\nand are we guaranteed to have 2 free pages at this point?",
+      "range": {
+        "startLine": 2818,
+        "startChar": 52,
+        "endLine": 2818,
+        "endChar": 55
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

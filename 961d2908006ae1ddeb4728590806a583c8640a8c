@@ -2075,6 +2075,30 @@
     },
     {
       "key": {
+        "uuid": "0f343152_af2221a4",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "ok, but that\u0027s our current implementation. I\u0027m fine with landing as-is to avoid delaying the patch further, but can we add some ideally compile-time check that all PCRs that we save in nvmem have default values of 0..0?",
+      "parentUuid": "900dd61f_cffbf69f",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af5d73a0_872b0b6d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -2783,6 +2807,30 @@
     },
     {
       "key": {
+        "uuid": "da5e0479_5e5ea685",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc4953e6_f514f523",
+      "range": {
+        "startLine": 1835,
+        "startChar": 14,
+        "endLine": 1835,
+        "endChar": 16
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18eb8f09_df6a655d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -2912,6 +2960,30 @@
       "side": 1,
       "message": "the presence of the non-finalized delimiter tells us tht the transaction was completed, but it is possible that earlier instances of the objects present in the last transaction were not deleted. \n\nSo verify_last_section() will look for duplicates of the objects found above the previous delimiter, and if there are any - will remove the earlier instance of these duplicates.\n\nIt will not wipe out everything. Or did I misunderstand the comment?",
       "parentUuid": "86296a9f_cab3897b",
+      "range": {
+        "startLine": 1989,
+        "startChar": 9,
+        "endLine": 1989,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1351b45_75bccbdd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "verify_last_section() at the end does\n  if (ch-\u003econtainer_type !\u003d NN_OBJ_TRANSACTION_DEL) return EC_ERROR_INVAL;\nwhich will cause verify_delimiter() to return an error, the loop in retrieve_nvmem_contents() will break, and we\u0027ll get to the code that currently doesn\u0027t wipe out anything, but can be easily modified to do that in the future.\n  /*\n   * Something is really messed up, need to wipe out and start\n   * from scratch?\n   */\n  ccprintf(\"%s:%d FAILURE!\\n\", __func__, __LINE__);\n\nThis is a fringe case when container_type !\u003d NN_OBJ_TRANSACTION_DEL \u0026\u0026 container_type !\u003d NN_OBJ_OLD_COPY, while container_type_copy \u003d\u003d NN_OBJ_TRANSACTION_DEL. Iiuc, it can\u0027t happen due to a sudden power loss (thanks to checking type_copy). So, maybe potentially wiping everything is ok.",
+      "parentUuid": "da598741_9a55bacf",
       "range": {
         "startLine": 1989,
         "startChar": 9,
@@ -3254,6 +3326,30 @@
     },
     {
       "key": {
+        "uuid": "b414bde4_dc352adb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "are all app_cipher() failures fatal? can there be a legitimate error during normal operation (e.g. to indicate that some key material needs to be initialized first to use it). If so, I\u0027d expect that we need to do that here: if (!app_cipher(...)) { log an event and reboot }.",
+      "parentUuid": "133d0dca_1a25b0aa",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15260864_e96d503b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3337,6 +3433,30 @@
       "side": 1,
       "message": "why would init make sure that there is only one instance of the variable? I think this is a reasonable thing to do. \n\nthere are three cases during initialization:\n  - there is a finalized delimiter at the top of the flash. This is the normal state, no further processing is required.\n\n   - there is a delimiter at the top, but it is not finalized. In this case all tuples must be OK, because the new tuple is saved only after the previous instance (if existed) was erased\n\n   - there is no delimiter at the end of the flash. This is an indication of the H1 crashed, or power yanked at the wrong time. The assumption made is that we should not worry too much/trust too to whatever was written after the last valid delimiter, and should just get rid of it all, because there is no way to verify what is what. This includes the tuples found above the last valid delimiter.\n\nWe might want to keep the tuples present after the last delimiter in this case, how about I open a tracker issue to discuss what we want to do and address it later.",
       "parentUuid": "149c879f_028c266d",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9345a482_6c864acd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "here is how we change a tuple in setvar() in case the key already exists:\n1) call save_var() with generation++ for new value\n  a) in save_var(): save_container() adds a new tuple to the end of nvmem\n  b) in save_var(): add_final_delimiter() adds a new finalized delimiter to the end of nvmem\n2) call invalidate_object() for old tuple: sets its type to NN_OBJ_OLD_COPY\n\nIf the power is lost between 1b and 2, we have two tuples and a finalized delimiter.\nIf we reboot and attempt to read it, we\u0027ll get the old value, which is ok-ish since setvar technically hasn\u0027t completed yet.\nBut if later we call setvar(..., NULL, 0) to erase that variable, for example, it will find the 1st tuple and call invalidate_object() for it; so the the 2nd tuple will then become visible, and subsequent attempts to read that var will return it.\nSimilarly, a later setvar that changes the variable value again will do 1a and 1b and add a 3rd tuple, then erase the 1st tuple at step 2. And read attempts will return the value from tuple 2.",
+      "parentUuid": "d70be28d_43db6b2b",
       "range": {
         "startLine": 2692,
         "startChar": 1,
@@ -3573,6 +3693,30 @@
       "side": 1,
       "message": "I don\u0027t think adding another object type just for this case is a simplification: we will have to start checking for it everywhere we look at object types, does not seem very reasonable to me.\n\nNote that the last tuple does not have to fit into the page, in fact it is expected to spill over, I modified the code to limit the spillover to the minimum (and fixed a bug in value size calculations as a result).\n\nThe TPM wipe out test still passes.",
       "parentUuid": "ff15e889_33119d24",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b90054e_7404e745",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-01T20:14:09Z",
+      "side": 1,
+      "message": "I don\u0027t agree that it\u0027s not a simplification, but fine. Calculating the required size of the container and adding a specialized container once sounds like a simpler and more reliable procedure than repurposing a meaningful container type and then adding it in the loop due to that chosen container type size limitations, where each \u0027add container\u0027 operation can fail (we are already recovering from some weird state, so this flash page is definitely unreliable).\nBtw, what happens if we write that variable once, but then fail to write again. We end up with a page with some tuple that contains some fake k,v pair. I don\u0027t worry too much about ending up in that state, but why even have a possibility of that? Recovery procedures should be as simple as possible. But that\u0027s just my opinion.",
+      "parentUuid": "41fe9b6d_f3a1cf47",
       "range": {
         "startLine": 2749,
         "startChar": 4,
