@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f30f1f56_bda3dabb",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-01T04:52:00Z",
+      "side": 1,
+      "message": "Done!\n\nthank you, Yuval, this is much better, now, we no need change root makefiles. :)",
+      "parentUuid": "291d960e_0500bda8",
+      "range": {
+        "startLine": 380,
+        "startChar": 27,
+        "endLine": 380,
+        "endChar": 43
+      },
+      "revId": "32674b71d2b01b742b9f1e58c2c6bcb9f38e92fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c108f92_f8c16cec",
         "filename": "chip/ish/build.mk",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "32674b71d2b01b742b9f1e58c2c6bcb9f38e92fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b53612_2ed11cb3",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-01T04:52:00Z",
+      "side": 1,
+      "message": "Done!\n\nthank you, Yuval, this is much better, now, we no need change root makefiles. :)",
+      "parentUuid": "8c108f92_f8c16cec",
+      "revId": "32674b71d2b01b742b9f1e58c2c6bcb9f38e92fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
