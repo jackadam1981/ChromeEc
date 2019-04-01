@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ed7f94ed_349f7a1c",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "When configured as a GPIO: The pin presents a RD when low (RD_L) and RP3A0 when high.",
+      "parentUuid": "ea3b4703_5693ab1f",
+      "range": {
+        "startLine": 237,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 49
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5251610c_4d51d9e8",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 59
@@ -159,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "2afd77b9_0c9b9d59",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "When configured as a GPIO: The pin presents a RD when low (RD_L) and RP3A0 when high.",
+      "parentUuid": "5251610c_4d51d9e8",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42128d30_8b9f9da2",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 59
@@ -173,6 +215,24 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd51b16c_28fa64df",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "When configured as a GPIO: The pin presents a RD when low (RD_L) and RP3A0 when high.",
+      "parentUuid": "42128d30_8b9f9da2",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -716,6 +776,30 @@
     },
     {
       "key": {
+        "uuid": "2db6824b_5f45514d",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0945bc5_b153f7a9",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c3e917_8226b766",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -736,6 +820,30 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d61a49f_57a828a0",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c3e917_8226b766",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -762,6 +870,30 @@
     },
     {
       "key": {
+        "uuid": "de499c80_8fffd2df",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "185cc5a5_025d2132",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90694485_80a8e55f",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -779,6 +911,24 @@
     },
     {
       "key": {
+        "uuid": "06f89086_eafb87f5",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90694485_80a8e55f",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd3c9718_b32a7f6d",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -790,6 +940,30 @@
       "writtenOn": "2019-03-27T20:52:42Z",
       "side": 1,
       "message": "let\u0027s make this an enum",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39aba119_50d8b445",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "I agree that this should be an enum but I get the following error when I change #define PD_ROLE_SINK to an enum:\n\ncommon/usb_pd_protocol.c:2919:23: error: self-comparison always evaluates to true [-Werror,-Wtautological-compare]\n        (PD_ROLE_SINK \u003d\u003d PD_ROLE_SINK \u0026\u0026\n\nThis should be fixed in another CL",
+      "parentUuid": "fd3c9718_b32a7f6d",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -845,6 +1019,30 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df285186_e8a83a96",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56954d11_be99456f",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -918,6 +1116,30 @@
     },
     {
       "key": {
+        "uuid": "763a1416_a2d2995b",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b15fc7_65f7e8bc",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9415112e_5e61c49a",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -941,6 +1163,30 @@
     },
     {
       "key": {
+        "uuid": "50b9fed5_84aa467f",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "This TC object is specific to Charge-Through Vconn powered devices. TC objects for Source, Sink, DRP, and VPD, will all have different fields. See usb_tc_vpd_sm.h. So I don\u0027t think it should be declared extern.\n\nI guess we could pack the structure but we\u0027ll incur a performance hit. I tend to lean toward sacrificing a few bytes for performance in this case.",
+      "parentUuid": "9415112e_5e61c49a",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 31
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaa753aa_9553f773",
         "filename": "include/usb_tc_ctvpd_sm.h",
         "patchSetId": 59
@@ -952,6 +1198,30 @@
       "writtenOn": "2019-03-27T20:52:42Z",
       "side": 1,
       "message": "why are these defined as static methods?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 6
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07787669_dc8d92c9",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "These should be private and not called directly. The state machine framework calls them indirectly through the function pointer array objects starting on line 186.",
+      "parentUuid": "eaa753aa_9553f773",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -1081,6 +1351,30 @@
     },
     {
       "key": {
+        "uuid": "55d7c76f_29825fbe",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "The enum name is misleading. These are the state ids used in testing and for indexing into the state name table.",
+      "parentUuid": "1380f2ee_16321aa6",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "189b3826_02176c7f",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 59
@@ -1101,6 +1395,30 @@
       "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b083251_26a4920b",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "enum typec_states",
+      "parentUuid": "189b3826_02176c7f",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1127,6 +1445,30 @@
     },
     {
       "key": {
+        "uuid": "d22e83de_acb3c40f",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ae7d04_bdaf5c14",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bc26ddd_4a45d6f7",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 59
@@ -1150,6 +1492,30 @@
     },
     {
       "key": {
+        "uuid": "c1146d0e_780d774a",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "This sets the state machine loop timeout value. Each state that deals with a particular conditional timeout does so as follows: using cc_debounce as an example:\ntc[port].cc_debounce \u003d get_time().val + PD_T_CC_DEBOUNCE;\n\nThen each loop of the state machine in the particular state would:\nif (get_time().val \u003c tc[port].cc_debounce)",
+      "parentUuid": "0bc26ddd_4a45d6f7",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 48
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b6fc6d0_c48fcefa",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 59
@@ -1161,6 +1527,30 @@
       "writtenOn": "2019-03-27T20:52:42Z",
       "side": 1,
       "message": "this seems like an appropriate place to describe (very briefly) what the support timer is used for and why the code cares.",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd759fa_12e7ae4e",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 59
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-01T19:38:33Z",
+      "side": 1,
+      "message": "From the spec.\n\nA Charge-Through VCONN-Powered USB Device shall start a Charge-Through Support Timer when it\nenters the Attached.SNK state. If a Charge-Through VCONN-Powered USB Device fails to exit the\nAttached.SNK state before the Charge-Through Support Timer exceeds tAMETimeout, it shall\npresent a USB Billboard Device Class interface indicating that it does not support Charge-Through.\n\nI think it\u0027ll get untenable to try and define USB Type-C/PD terms and acronyms. The spec. should be consulted for the definitions.",
+      "parentUuid": "0b6fc6d0_c48fcefa",
       "range": {
         "startLine": 81,
         "startChar": 3,
