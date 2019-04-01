@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "786362f6_0baff51b",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T18:37:57Z",
+      "side": 1,
+      "message": "Use --dashed-words naming convention for long options",
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8086e048_5e6efecc",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T18:37:57Z",
+      "side": 1,
+      "message": "Docstring?",
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c46e061_ed3c2c03",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T18:37:57Z",
+      "side": 1,
+      "message": "Please use the Python 3 style print function and use \"from __future__ import print_function\"",
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
