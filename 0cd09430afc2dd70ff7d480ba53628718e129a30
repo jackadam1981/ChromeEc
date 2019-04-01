@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2980c8e_72be3688",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:36Z",
+      "side": 1,
+      "message": "FORTEST: this is a special hatch. TCS3400 will never be used at that location on hatch.",
+      "revId": "0cd09430afc2dd70ff7d480ba53628718e129a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c06af7e_f33cfbef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:36Z",
+      "side": 1,
+      "message": "Not in this CL, update comment.",
+      "revId": "0cd09430afc2dd70ff7d480ba53628718e129a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82d0253_9d73bc97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:36Z",
+      "side": 1,
+      "message": "This CL is close to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1529860, \nYou could use same changeid to preserve history.",
+      "revId": "0cd09430afc2dd70ff7d480ba53628718e129a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c482bb_925c0529",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:36Z",
+      "side": 1,
+      "message": "explain",
+      "revId": "0cd09430afc2dd70ff7d480ba53628718e129a30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
