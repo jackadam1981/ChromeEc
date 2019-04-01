@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dac72ad1_fc0804f8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-01T22:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53dc09d0_353370e1",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5b9b225_bfa6af6a",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "87a08cee_766e85c6",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-01T22:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5b9b225_bfa6af6a",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee498c51_e678e1d8",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f43ddeb5_fa175490",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-01T22:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee498c51_e678e1d8",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "bab5e6f6_db782fcc",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-01T22:59:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this at least check and verify chip type?  It could avoid extra code needed to not attempt to load the tcs3400\u0027s als_rgb driver if the als driver\u0027s tcs3400_init() fails.",
+      "parentUuid": "a96a6e61_83c5a9c8",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a688816_373b7032",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 2
@@ -135,6 +207,24 @@
       "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e96e33b1_099684cb",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-01T22:59:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5f9083_e181fabd",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
