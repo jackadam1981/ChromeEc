@@ -22,6 +22,30 @@
       "revId": "c513b27328c3c32704e36079d36ee280b909c020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b26b2fb0_51d910a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113845
+      },
+      "writtenOn": "2019-04-01T05:59:27Z",
+      "side": 1,
+      "message": "I checked both code search and grep the whole ChromiumOS source tree (chromiumos/src/),\nand do not see this macro being set elsewhere:\n\n~/chromiumos/src$ grep -Frn CHROMIUM_EC .\n./third_party/kernel/v4.4/include/linux/mfd/cros_ec_commands.h:29:#ifdef CHROMIUM_EC\n./third_party/flashrom/cros_ec_commands.h:20:#ifdef CHROMIUM_EC\n./third_party/coreboot/src/ec/google/chromeec/ec_commands.h:47:#ifdef CHROMIUM_EC\n./platform/depthcharge/src/drivers/ec/cros/commands.h:16:#ifdef CHROMIUM_EC\n./platform/ec/include/ec_commands.h:8:/* CHROMIUM_EC is expected to be defined when building images or utils in\n./platform/ec/include/ec_commands.h:22:#ifdef CHROMIUM_EC\n./platform/ec/Makefile.toolchain:124:COMMON_CFLAGS\u003d-DCHROMIUM_EC",
+      "parentUuid": "a2a2f5f6_27446358",
+      "range": {
+        "startLine": 22,
+        "startChar": 57,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "c513b27328c3c32704e36079d36ee280b909c020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
