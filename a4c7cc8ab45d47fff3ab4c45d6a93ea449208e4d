@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "907f3445_badb81a7",
+        "filename": "common/update_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-01T05:04:53Z",
+      "side": 0,
+      "message": "Looking at this, it sounds like we could just send a block with offset\u003d\u003dbase, and size\u003d0, that\u0027d trigger the erase.\n\nThen we can chose which order we can send the blocks (e.g. do it in reverse).",
+      "revId": "a4c7cc8ab45d47fff3ab4c45d6a93ea449208e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
