@@ -178,6 +178,9 @@ struct max17055_batt_profile {
 /* Return the special battery parameters max17055 needs. */
 const struct max17055_batt_profile *max17055_get_batt_profile(void);
 
+/* Based on the battery type to determine manufacturer. */
+int max17055_get_manufacturer_name(char *dest, int size);
+
 #ifdef CONFIG_BATTERY_MAX17055_ALERT
 /*
  * max17055 supports alert on voltage, current, state-of-charge, and
