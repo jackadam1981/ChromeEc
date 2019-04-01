@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7fcaa569_205479c1",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-01T22:24:07Z",
+      "side": 1,
+      "message": "@Yuval, can you comment on how you were able to get these numbers, can you upload your CL too, please?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 73
+      },
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "786362f6_0baff51b",
         "filename": "chip/ish/util/pack_ec.py",
         "patchSetId": 2
