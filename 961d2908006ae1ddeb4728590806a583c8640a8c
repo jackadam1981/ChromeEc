@@ -2099,6 +2099,30 @@
     },
     {
       "key": {
+        "uuid": "d6c91b84_8db5f30a",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "how would you suggest we check that? Right now we are checking that there are 4 banks and 64 PCRs (that is indices are in 0..15 range). \n\nDo you foresee a change in the reserved memory layout where more PCRs will be saved?",
+      "parentUuid": "0f343152_af2221a4",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af5d73a0_872b0b6d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -2996,6 +3020,30 @@
     },
     {
       "key": {
+        "uuid": "f843e911_907ab1b3",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "so, what needs to be done here?",
+      "parentUuid": "a1351b45_75bccbdd",
+      "range": {
+        "startLine": 1989,
+        "startChar": 9,
+        "endLine": 1989,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26932be9_0e9dfed6",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3040,6 +3088,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5a1710d_2eb5f4e2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2011,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa47b72_d75d193a",
+      "range": {
+        "startLine": 2011,
+        "startChar": 2,
+        "endLine": 2011,
+        "endChar": 41
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -3090,6 +3162,30 @@
     },
     {
       "key": {
+        "uuid": "3f5b25cd_82903a30",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ecb948_6c6432de",
+      "range": {
+        "startLine": 2105,
+        "startChar": 19,
+        "endLine": 2105,
+        "endChar": 33
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f11f0f6_55dcb796",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3137,6 +3233,30 @@
     },
     {
       "key": {
+        "uuid": "ebc88512_0f73e768",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "310191fb_91c0b8d0",
+      "range": {
+        "startLine": 2277,
+        "startChar": 25,
+        "endLine": 2277,
+        "endChar": 48
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9394d141_2ee682d4",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3181,6 +3301,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f2cc60_8956a9af",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17773524_6884db27",
+      "range": {
+        "startLine": 2342,
+        "startChar": 1,
+        "endLine": 2342,
+        "endChar": 26
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -3350,6 +3494,30 @@
     },
     {
       "key": {
+        "uuid": "5cc393d2_6e650b38",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "I think this error logging needs to be added to app_cipher() directly.\n\nI am opening a tracker issue with all unaddressed comments, those would be small incremental changes which would be easy to reason about and test.",
+      "parentUuid": "b414bde4_dc352adb",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15260864_e96d503b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3457,6 +3625,30 @@
       "side": 1,
       "message": "here is how we change a tuple in setvar() in case the key already exists:\n1) call save_var() with generation++ for new value\n  a) in save_var(): save_container() adds a new tuple to the end of nvmem\n  b) in save_var(): add_final_delimiter() adds a new finalized delimiter to the end of nvmem\n2) call invalidate_object() for old tuple: sets its type to NN_OBJ_OLD_COPY\n\nIf the power is lost between 1b and 2, we have two tuples and a finalized delimiter.\nIf we reboot and attempt to read it, we\u0027ll get the old value, which is ok-ish since setvar technically hasn\u0027t completed yet.\nBut if later we call setvar(..., NULL, 0) to erase that variable, for example, it will find the 1st tuple and call invalidate_object() for it; so the the 2nd tuple will then become visible, and subsequent attempts to read that var will return it.\nSimilarly, a later setvar that changes the variable value again will do 1a and 1b and add a 3rd tuple, then erase the 1st tuple at step 2. And read attempts will return the value from tuple 2.",
       "parentUuid": "d70be28d_43db6b2b",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8994f7_9fe75725",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "ah, you are right, I already forgot that after writing vars we also adding the delimiter.\n\nI think the procedure should be changed such that non-finalized delimiter is added if this is a re-write of the var, and the delimiter should be finalized after the old copy is deleted. I doon\u0027t want to rush this fix now, is it OK if I add it to the new tracker issue?",
+      "parentUuid": "9345a482_6c864acd",
       "range": {
         "startLine": 2692,
         "startChar": 1,
@@ -3717,6 +3909,30 @@
       "side": 1,
       "message": "I don\u0027t agree that it\u0027s not a simplification, but fine. Calculating the required size of the container and adding a specialized container once sounds like a simpler and more reliable procedure than repurposing a meaningful container type and then adding it in the loop due to that chosen container type size limitations, where each \u0027add container\u0027 operation can fail (we are already recovering from some weird state, so this flash page is definitely unreliable).\nBtw, what happens if we write that variable once, but then fail to write again. We end up with a page with some tuple that contains some fake k,v pair. I don\u0027t worry too much about ending up in that state, but why even have a possibility of that? Recovery procedures should be as simple as possible. But that\u0027s just my opinion.",
       "parentUuid": "41fe9b6d_f3a1cf47",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1ada29_e3bbbd9e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "I hear what you are saying, but still am very reluctant to allocate a new object type for this, the object type name space is very limited. \n\nMaybe we could save a TPM object with some well know index for this. Or maybe we can modify compaction to start on the next page to make sure that the current top page would be recycled.\n\nLet me add this to the list of open issues.",
+      "parentUuid": "1b90054e_7404e745",
       "range": {
         "startLine": 2749,
         "startChar": 4,

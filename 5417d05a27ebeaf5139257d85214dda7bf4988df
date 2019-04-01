@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02d84f96_3b14e066",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "The TPM library checks room in the NVMEM cache before trying to add an object, by design flash storage is supposed to guarantee to accommodate the cache contents.\n\nWe could experience this failure also during compaction, and in that case there is no point in returning an error, something must be really messed up, this is why I think failing here unconditionally is a better signal.",
+      "parentUuid": "01d12f36_0e6a78e0",
+      "range": {
+        "startLine": 905,
+        "startChar": 2,
+        "endLine": 905,
+        "endChar": 27
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9ff8055_22a8358c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-01T20:14:09Z",
       "side": 1,
       "message": "why saved_list_index+2? don\u0027t we want to \"fill up the current top page\"? then, as soon as we reach saved_list_index+1, which is after the current top page, we shall stop?\nand are we guaranteed to have 2 free pages at this point?",
+      "range": {
+        "startLine": 2818,
+        "startChar": 52,
+        "endLine": 2818,
+        "endChar": 55
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ccfbf0_732a0766",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T22:41:24Z",
+      "side": 1,
+      "message": "we have 11K or so of NVMEM cache and 20K flash allocated for NVMEM storage, this is why I thought it is better to start compaction while we still have an extra spare page. Maybe we should limit the flash space to 16K, I am not sure.",
+      "parentUuid": "a9ff8055_22a8358c",
       "range": {
         "startLine": 2818,
         "startChar": 52,
