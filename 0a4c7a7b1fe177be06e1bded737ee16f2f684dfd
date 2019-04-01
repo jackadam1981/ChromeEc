@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3042910_801f609c",
+        "filename": "util/signer/ec_RW-manifest-prod.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-01T19:20:41Z",
+      "side": 1,
+      "message": "When we release the real prod image, will we need to change this? Or just override it with an arg in one of the scripts?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "0a4c7a7b1fe177be06e1bded737ee16f2f684dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
