@@ -97,7 +97,11 @@ static void board_dc_jack_handle(void)
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
 				DC_JACK_PORT_0, &charge_dc_jack);
 }
-DECLARE_HOOK(HOOK_AC_CHANGE, board_dc_jack_handle, HOOK_PRIO_FIRST);
+
+void board_dc_jack_interrupt(enum gpio_signal signal)
+{
+	board_dc_jack_handle();
+}
 
 static void board_charge_init(void)
 {
