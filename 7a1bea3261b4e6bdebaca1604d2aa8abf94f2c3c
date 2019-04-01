@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab817106_c85c0fd6",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T23:14:51Z",
+      "side": 1,
+      "message": "Condition is always true, as count is unsigned type",
+      "revId": "7a1bea3261b4e6bdebaca1604d2aa8abf94f2c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1ae04e_6d67b775",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T23:14:51Z",
+      "side": 1,
+      "message": "How come we can\u0027t use usleep(SRAM_RETENTION_US_DELAY) instead? Also, with the definition of delay above, it looks like this will infinite loop and ish_halt will never be reached.",
+      "revId": "7a1bea3261b4e6bdebaca1604d2aa8abf94f2c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
