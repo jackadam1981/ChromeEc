@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6df09c47_1ebd4361",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1332998
+      },
+      "writtenOn": "2019-04-01T17:21:35Z",
+      "side": 1,
+      "message": "Ack. Will update it.",
+      "parentUuid": "e91d5da2_68a46f0a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "595a63c9_1cd0a8db",
         "filename": "board/hatch/board.c",
         "patchSetId": 2
@@ -76,6 +100,30 @@
       "writtenOn": "2019-03-30T18:58:28Z",
       "side": 1,
       "message": "What is the power difference that you see? I believe these should all be done as part of the common chip npcx code. Any reason not to do it there?",
+      "range": {
+        "startLine": 120,
+        "startChar": 17,
+        "endLine": 121,
+        "endChar": 61
+      },
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9737eef_d49869aa",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1332998
+      },
+      "writtenOn": "2019-04-01T17:21:35Z",
+      "side": 1,
+      "message": "Furquan,\n\nI followed older version of implementation (e.g. reef/bobba/yorp etc - board_hibernate_late) for similar functionality. We saw that when we put system in hibernation - power consumption is too much. Will update with numbers actual numbers.",
+      "parentUuid": "fef29780_a2855fec",
       "range": {
         "startLine": 120,
         "startChar": 17,
