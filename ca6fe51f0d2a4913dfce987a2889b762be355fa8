@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53dc09d0_353370e1",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "Remove all code up to line 60, will never be used anymore.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b9b225_bfa6af6a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "If success, you need to return EC_RES_IN_PROGRESS, to let the motion_sense task knows not to use raw_xyz yet.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2423924_cdd61f93",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "Why not concatenate the 2 functions, and if the sensor is ready, scop all the registers values from register 0x94 (CDATAL), to 0x9B (BDATAH), using i2c_read_block: it will be more efficient for the i2c bus.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a96a6e61_83c5a9c8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "that will be a no op",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a688816_373b7032",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "All these function will be different to look set/get the proper channel.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5f9083_e181fabd",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7754c4b_d3c3c254",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "Use #ifndef __CROS_EC_ALS_TCS3400 like other include files.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe99241c_c62c307d",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "Remove, use BIT() instead.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6c5b0b_0b854e89",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "remove HAS_TASK_ALS, it is never going to happen again.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de31d9d3_248ec135",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "scale/uscale/offset: cut and paste from opt3001.h. Consider using a common data structure.\nMoreover, will become an array of 4 entries for Clear+RGB.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f676dc5f_118028ad",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T17:48:30Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
