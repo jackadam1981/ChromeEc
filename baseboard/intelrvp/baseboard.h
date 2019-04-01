@@ -64,7 +64,7 @@
 
 /* BC1.2 config */
 #ifdef HAS_TASK_USB_CHG_P0
-#define CONFIG_CHARGE_RAMP_HW
+	#define CONFIG_CHARGE_RAMP_HW
 #endif
 
 /* USB PD config */
@@ -78,6 +78,10 @@
 #define CONFIG_USB_POWER_DELIVERY
 
 /* USB MUX */
+#ifdef CONFIG_USB_MUX_VIRTUAL
+	#define CONFIG_HOSTCMD_LOCATE_CHIP
+	#define CONFIG_INTEL_VIRTUAL_MUX
+#endif
 #define CONFIG_USBC_SS_MUX
 
 /* SoC / PCH */
@@ -116,18 +120,18 @@
 
 /* Temperature sensor */
 #ifdef CONFIG_TEMP_SENSOR
-#define CONFIG_STEINHART_HART_3V0_22K6_47K_4050B
-#define CONFIG_THERMISTOR
-#define CONFIG_THROTTLE_AP
+	#define CONFIG_STEINHART_HART_3V0_22K6_47K_4050B
+	#define CONFIG_THERMISTOR
+	#define CONFIG_THROTTLE_AP
 #ifdef CONFIG_PECI
-#define CONFIG_PECI_COMMON
-#endif
-#endif
+	#define CONFIG_PECI_COMMON
+#endif /* CONFIG_PECI */
+#endif /* CONFIG_TEMP_SENSOR */
 
 /* Fan features */
 #ifdef CONFIG_FANS
-#undef CONFIG_FAN_INIT_SPEED
-#define CONFIG_FAN_INIT_SPEED 50
+	#undef CONFIG_FAN_INIT_SPEED
+	#define CONFIG_FAN_INIT_SPEED 50
 #endif
 
 /* I2C ports */
@@ -135,11 +139,11 @@
 #define CONFIG_I2C_MASTER
 
 /* EC exclude modules */
-#undef CONFIG_WATCHDOG
 
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
+#include "module_id.h"
 #include "registers.h"
 #include "usb_pd_tcpm.h"
 
