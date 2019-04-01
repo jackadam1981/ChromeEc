@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dcb86eda_fd490d1f",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d643ee9_f4f086c2",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62ca81ab_645536c8",
         "filename": "common/charge_manager.c",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "97b37fdf_62b151b4",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ca81ab_645536c8",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 9
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5803fbbf_4babeec2",
         "filename": "common/charge_manager.c",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2019-03-29T21:31:56Z",
       "side": 1,
       "message": "Can you explain why you chose VBUS?",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4403cf07_1eca8daf",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "In function cros_usbpd_charger_get_power_info in kernel/drivers/power/supply/cros_usbpd-charger.c, the USB_CHG_TYPE_OTHER and USB_CHG_TYPE_PROPRIETARY both represent POWER_SUPPLY_USB_TYPE_APPLE_BRICK_ID, so if we want use USB_CHG_TYPE_PROPRIETARY for wireless charger supply, the defult will be not USB_CHG_TYPE_OTHER, if not the default in ec was equal wireless charge in kernel.",
+      "parentUuid": "5803fbbf_4babeec2",
       "range": {
         "startLine": 369,
         "startChar": 13,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "abbebb16_dfa83c24",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "I also think so.",
+      "parentUuid": "de951ad6_e29701a2",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 19
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64879849_73cea000",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 11
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b5420efa_8883c114",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64879849_73cea000",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41bc7eab_97ca4f0a",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 11
@@ -137,6 +257,30 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7363f981_bcfb57bc",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41bc7eab_97ca4f0a",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "18bc5cd4_31e53b54",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7cc443_37926a3a",
+      "range": {
+        "startLine": 944,
+        "startChar": 14,
+        "endLine": 944,
+        "endChar": 17
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8d52ec_425897a0",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -191,6 +359,24 @@
       "writtenOn": "2019-03-29T21:31:56Z",
       "side": 1,
       "message": "The file name indicates this driver is for r7 but there is lots of code in it which deals with non-r7. We should remove them to save space and increase readability.",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f9450d_04631468",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "can we modify the name p9221-r7 to p9221 to contain non-r7 or delete the non-r7 in driver?",
+      "parentUuid": "5c8d52ec_425897a0",
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -220,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "335da218_6e4dcf3c",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7524a67_1cc9d592",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f2ff329_9a3a4ea2",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -231,6 +441,30 @@
       "writtenOn": "2019-03-29T21:31:56Z",
       "side": 1,
       "message": "Does this change at run-time?",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc86b45_a02dd7ee",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "the cust_id is not changed at run-time. The reference driver we used is not only for R7, it suit all p9221 IC.",
+      "parentUuid": "5f2ff329_9a3a4ea2",
       "range": {
         "startLine": 64,
         "startChar": 8,
@@ -266,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "f2e08451_c281b9a3",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "from the register map, this register description as follow:\nFOD REGISTERS (0X70 -\u003e 0X7F, 16-BYTES).\nThe FOD Registers are divided into 8 pairs. Each pair has one byte for gain setting, and one byte for offset setting. The first 6 pairs control the Received Power calculation for 6 power sectors during Power Transfer phase. The seventh pair calibrates the internal DC Load, and the eight pair is used during EPP Calibration Phase 1. The set values of the FOD Registers are found with the help of IDT developed calibration procedure using the nok9 tester. The FW initializes the FOD Registers from one of two sets default values, one for BPP mode, and one for EPP mode.\nThe correct set is loaded at completion of the ID \u0026 Configuration Phase. The AP may modify the registers at any time if needed to update the values.",
+      "parentUuid": "ee58704a_59875c28",
+      "range": {
+        "startLine": 622,
+        "startChar": 39,
+        "endLine": 622,
+        "endChar": 54
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f912d358_cb0042a1",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -286,6 +544,30 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b21444_0286e2bc",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f912d358_cb0042a1",
+      "range": {
+        "startLine": 975,
+        "startChar": 2,
+        "endLine": 975,
+        "endChar": 9
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +594,30 @@
     },
     {
       "key": {
+        "uuid": "36758207_8bbd2f62",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "delete the number:Done",
+      "parentUuid": "e0454d3d_42097864",
+      "range": {
+        "startLine": 977,
+        "startChar": 14,
+        "endLine": 977,
+        "endChar": 16
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac96a02e_5370ace8",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -332,6 +638,54 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b6cba6_86bd402b",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac96a02e_5370ace8",
+      "range": {
+        "startLine": 981,
+        "startChar": 20,
+        "endLine": 981,
+        "endChar": 21
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00c8c756_640cc027",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac96a02e_5370ace8",
+      "range": {
+        "startLine": 981,
+        "startChar": 20,
+        "endLine": 981,
+        "endChar": 21
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -375,6 +729,48 @@
     },
     {
       "key": {
+        "uuid": "9ee01c52_3f0a7de3",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "The customer id is identifier the chip is R7 or other, it\u0027s stable for one fixed IC.",
+      "parentUuid": "3bfaf084_d1ddbe85",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fd0f50_8164723f",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f57528_74481b3d",
+      "range": {
+        "startLine": 989,
+        "startChar": 3,
+        "endLine": 989,
+        "endChar": 6
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "783e7302_b28a8bb2",
         "filename": "driver/wpc/p9221_r7.h",
         "patchSetId": 11
@@ -398,6 +794,30 @@
     },
     {
       "key": {
+        "uuid": "b8392dfa_37ee619d",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783e7302_b28a8bb2",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 23
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ded58df1_f56c50dd",
         "filename": "driver/wpc/p9221_r7.h",
         "patchSetId": 11
@@ -418,6 +838,30 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78786bb3_6adf4cdd",
+        "filename": "driver/wpc/p9221_r7.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-01T12:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded58df1_f56c50dd",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 0
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
