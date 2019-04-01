@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a800bda7_8b90c964",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T18:13:58Z",
+      "side": 1,
+      "message": "tpm reset will stop communications for the duration of wipe out, so there is no risk of AP interfering with the process.",
+      "parentUuid": "862ac879_6a62488e",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "555be626_8ea1a935",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
