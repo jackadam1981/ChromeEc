@@ -62,6 +62,10 @@
 		} \
 	} while (0)
 
+/* Battery design capacity */
+#define BATTERY_C18_ATL_DESIGN_CAP		0x2e78	/* 5948mAh */
+#define BATTERY_C19_ATL_DESIGN_CAP		0x3407	/* 6659mAh */
+
 static int fake_state_of_charge = -1;
 
 static int max17055_read(int offset, int *data)
@@ -176,7 +180,28 @@ int battery_time_at_rate(int rate, int *minutes)
 
 int battery_manufacturer_name(char *dest, int size)
 {
-	strzcpy(dest, "<unkn>", size);
+	uint16_t batt_design_cap = 0;
+	int batt_type = BATTERY_UNKNOWN;
+
+	batt_design_cap = max17055_get_batt_profile()->design_cap;
+
+	if (batt_design_cap == BATTERY_C18_ATL_DESIGN_CAP)
+		batt_type = BATTERY_C18_ATL;
+	else if (batt_design_cap == BATTERY_C19_ATL_DESIGN_CAP)
+		batt_type = BATTERY_C19_ATL;
+
+	switch (batt_type) {
+		case BATTERY_C18_ATL:
+			strzcpy(dest, "C18_ATL", size);
+			break;
+		case BATTERY_C19_ATL:
+			strzcpy(dest, "C19_ATL", size);
+			break;
+		case BATTERY_UNKNOWN:
+		default:
+			strzcpy(dest, "<unkn>", size);
+			break;
+	}
 
 	return EC_SUCCESS;
 }
