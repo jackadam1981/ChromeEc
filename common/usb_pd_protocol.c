@@ -374,6 +374,8 @@ int pd_is_vbus_present(int port)
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	return tcpm_get_vbus_level(port);
 #else
+	/*int i = pd_snk_is_vbus_provided(port);*/
+	/*ccprints("pd_snk_is_vbus_provided %d", i);*/
 	return pd_snk_is_vbus_provided(port);
 #endif
 }
@@ -1329,7 +1331,6 @@ void pd_execute_hard_reset(int port)
 
 static void execute_soft_reset(int port)
 {
-	pd[port].msg_id = 0;
 	set_state(port, DUAL_ROLE_IF_ELSE(port, PD_STATE_SNK_DISCOVERY,
 						PD_STATE_SRC_DISCOVERY));
 	CPRINTF("C%d Soft Rst\n", port);
@@ -1660,10 +1661,17 @@ static void handle_ctrl_request(int port, uint16_t head,
 		break;
 	case PD_CTRL_GET_SINK_CAP:
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		send_sink_cap(port);
+		if (pd[port].task_state == PD_STATE_SRC_READY ||
+		    pd[port].task_state == PD_STATE_SNK_READY)
+			send_sink_cap(port);
+		else if (pd[port].task_state == PD_STATE_SNK_TRANSITION)
+			set_state(port, PD_STATE_HARD_RESET_SEND);
 #else
-		send_control(port, REFUSE(pd[port].rev));
+		if (pd[port].task_state == PD_STATE_SRC_READY)
+			send_control(port, REFUSE(pd[port].rev));
 #endif
+		else
+			set_state(port, PD_STATE_SOFT_RESET);
 		break;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	case PD_CTRL_GOTO_MIN:
@@ -1839,6 +1847,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 		}
 		break;
 	case PD_CTRL_SOFT_RESET:
+		/* Reset message id counter */
+		pd[port].msg_id = 0;
 		execute_soft_reset(port);
 		/* We are done, acknowledge with an Accept packet */
 		send_control(port, PD_CTRL_ACCEPT);
@@ -1928,6 +1938,7 @@ static void handle_request(int port, uint16_t head,
 	int cnt = PD_HEADER_CNT(head);
 	int data_role = PD_HEADER_DROLE(head);
 	int p;
+	/*int type = PD_HEADER_TYPE(head);*/
 
 	/* dump received packet content (only dump ping at debug level 3) */
 	if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
@@ -1943,6 +1954,7 @@ static void handle_request(int port, uint16_t head,
 	 * a hard reset if we get one.
 	 */
 	if (!pd_is_connected(port))
+		/*ccprints("rcv %d (3 = accept), dis send hard", type);*/
 		set_state(port, PD_STATE_HARD_RESET_SEND);
 
 	/*
@@ -2844,7 +2856,6 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			if (pd[port].task_state == PD_STATE_SOFT_RESET) {
 				int cc1, cc2;
-
 				/*
 				 * Set the terminations to match our power
 				 * role.
@@ -4176,7 +4187,6 @@ void pd_task(void *u)
 			}
 		}
 #endif
-
 		/* Check for disconnection if we're connected */
 		if (!pd_is_connected(port))
 			continue;
