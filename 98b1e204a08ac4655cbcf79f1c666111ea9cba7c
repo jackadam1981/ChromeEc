@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "862ac879_6a62488e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-04-01T18:00:28Z",
+      "side": 1,
+      "message": "I would think we at least want to assert the EC reset here so the AP doesn\u0027t attempt any further TPM communication prior to the deferred TPM wipe.  This is the current behavior in both code paths.  I agree the tpm_stop() doesn\u0027t seem to be explicitly needed if an EC reset is done.\n\nIf we want the EC/AP held in reset here, do you need a new board_assert_closed_reset() function?  The function would block until the AP as acknowledged the reset.",
+      "parentUuid": "95562bd0_4630a4a1",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "555be626_8ea1a935",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
