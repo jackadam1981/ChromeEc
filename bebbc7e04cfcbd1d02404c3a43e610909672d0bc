@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5caba2dd_21c24dbd",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T22:54:37Z",
+      "side": 1,
+      "message": "So this appears to compile and work. But for my own personal reference... what allows us to use these C-style bitfiddling of constants in assembly source? Is this just some GAS-specific syntax?",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 60
+      },
+      "revId": "bebbc7e04cfcbd1d02404c3a43e610909672d0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
