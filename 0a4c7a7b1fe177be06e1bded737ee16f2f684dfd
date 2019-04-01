@@ -22,6 +22,30 @@
       "revId": "0a4c7a7b1fe177be06e1bded737ee16f2f684dfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d82decbc_5bd59722",
+        "filename": "util/signer/ec_RW-manifest-prod.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-01T19:22:15Z",
+      "side": 1,
+      "message": "yes, we will have to change this, the process is still not quite clear, but at the very least for automated signing we want this flag to be on, this is why I added this here.",
+      "parentUuid": "a3042910_801f609c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "0a4c7a7b1fe177be06e1bded737ee16f2f684dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
