@@ -314,7 +314,7 @@ static int dfp_discover_svids(int port, uint32_t *payload)
 	return 1;
 }
 
-static void dfp_consume_svids(int port, int cnt, uint32_t *payload)
+static int dfp_consume_svids(int port, int cnt, uint32_t *payload)
 {
 	int i;
 	uint32_t *ptr = payload + 1;
@@ -348,8 +348,7 @@ static void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 		vdo++;
 	}
 	/* TODO(tbroch) need to re-issue discover svids if > 12 */
-	if (i && ((i % 12) == 0))
-		CPRINTF("ERR:SVID+12\n");
+	return (i && ((i % 12) == 0)) == 1 ? 1 : 0;
 }
 
 static int dfp_discover_modes(int port, uint32_t *payload)
@@ -748,8 +747,15 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 #endif
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, cnt, payload);
-			rsize = dfp_discover_modes(port, payload);
+			if (dfp_consume_svids(port, cnt, payload))
+				/* If SVID > 12, send discover SVID */
+				rsize = dfp_discover_svids(port, payload);
+			else
+				/*
+				 * If has discoverd all SVID, discover modes
+				 * of SVID.
+				 */
+				rsize = dfp_discover_modes(port, payload);
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
@@ -827,8 +833,16 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			rsize = 0;
 		}
 	} else if (cmd_type == CMDT_RSP_NAK) {
-		/* nothing to do */
-		rsize = 0;
+		switch (cmd) {
+		case CMD_DISCOVER_MODES:
+			/* if has other SVID, discover its mode */
+			pe[port].svid_idx++;
+			rsize = dfp_discover_modes(port, payload);
+			break;
+		default:
+			/* nothing to do */
+			rsize = 0;
+		}
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 	} else {
 		CPRINTF("ERR:CMDT:%d\n", cmd);
