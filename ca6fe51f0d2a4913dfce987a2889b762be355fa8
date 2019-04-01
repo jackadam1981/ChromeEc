@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "ee498c51_e678e1d8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T18:01:22Z",
+      "side": 1,
+      "message": "save timestamp, see last_interrupt_timestamp in bmi160.c",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2423924_cdd61f93",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 2
@@ -47,6 +64,23 @@
       "writtenOn": "2019-04-01T17:48:30Z",
       "side": 1,
       "message": "Why not concatenate the 2 functions, and if the sensor is ready, scop all the registers values from register 0x94 (CDATAL), to 0x9B (BDATAH), using i2c_read_block: it will be more efficient for the i2c bus.",
+      "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f53e46_e4254da4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-01T18:01:22Z",
+      "side": 1,
+      "message": "what do you do with v? you need to copy to sensor-\u003eraw_xyz and append to the FIFO (smotion_sense_fifo_add_data()), see accelgyro_bmi160.c bmi160_decode_header() for an example.\n\n[In the CLs that will support RGB, the rgb sensor will be the next sensor in motion_sensors array.]",
       "revId": "ca6fe51f0d2a4913dfce987a2889b762be355fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
