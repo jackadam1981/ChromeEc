@@ -703,13 +703,21 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			func = svdm_rsp.exit_mode;
 			break;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-		case CMD_ATTENTION:
+		case CMD_ATTENTION: {
+			struct svdm_amode_data *modep;
+
+			modep = get_modep(port, PD_VDO_VID(payload[0]));
 			/*
 			 * attention is only SVDM with no response
 			 * (just goodCRC) return zero here.
 			 */
 			dfp_consume_attention(port, payload);
+			/* Entered DP mode and UFP_D connected */
+			if (modep->fx->svid  == USB_SID_DISPLAYPORT && modep &&
+			    modep->opos && (payload[1] & 0x02))
+				return rsize = modep->fx->config(port, payload);
 			return 0;
+		}
 #endif
 		default:
 			CPRINTF("ERR:CMD:%d\n", cmd);
@@ -779,7 +787,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 			/* DP status response & UFP's DP attention have same
 			   payload */
 			dfp_consume_attention(port, payload);
-			if (modep && modep->opos)
+			/* Entered DP mode and UFP_D connected */
+			if (modep && modep->opos && (payload[1] & 0x02))
 				rsize = modep->fx->config(port, payload);
 			else
 				rsize = 0;
