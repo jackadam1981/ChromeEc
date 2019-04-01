@@ -1185,6 +1185,7 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 	int rlen = 0;
 	uint32_t *rdata;
 
+	/* ccprints("vdm state %d", pd[port].vdm_state); */
 	if (pd[port].vdm_state == VDM_STATE_BUSY) {
 		/* If UFP responded busy retry after timeout */
 		if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
@@ -1197,6 +1198,10 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 		} else {
 			pd[port].vdm_state = VDM_STATE_DONE;
 		}
+	} else if (pd[port].vdm_state == VDM_STATE_ERR_TMOUT) {
+		/* If UFP responded timeout, do nothing */
+		pd[port].vdm_state = VDM_STATE_DONE;
+		return;
 	}
 
 	if (PD_VDO_SVDM(payload[0]))
@@ -2043,6 +2048,7 @@ static uint64_t vdm_get_ready_timeout(uint32_t vdm_hdr)
 			timeout = PD_T_VDM_RCVR_RSP;
 		break;
 	}
+	/*ccprints("SenderRsptimeout val %d, setting 27ms", timeout);*/
 	return timeout;
 }
 
@@ -2094,6 +2100,13 @@ static void pd_vdm_send_state_machine(int port)
 		if (pd[port].vdm_timeout.val &&
 		    (get_time().val > pd[port].vdm_timeout.val)) {
 			pd[port].vdm_state = VDM_STATE_ERR_TMOUT;
+			pd[port].vdm_timeout.val = 0;
+			/* If UFP responded exit structured VDM mode timeout */
+			if (PD_VDO_CMD(pd[port].vdo_data[0]) == CMD_EXIT_MODE) {
+				set_state(port, PD_STATE_HARD_RESET_SEND);
+				task_wake(PD_PORT_TO_TASK_ID(port));
+			}
+		/*ccprints("state %d, -1 = timeout", pd[port].vdm_state);*/
 		}
 		break;
 	default:
@@ -2808,6 +2821,9 @@ void pd_task(void *u)
 		}
 
 		/* wait for next event/packet or timeout expiration */
+		if (pd[port].vdm_timeout.val &&
+		    (pd[port].vdm_timeout.val - get_time().val < timeout))
+			timeout = pd[port].vdm_timeout.val - get_time().val;
 		evt = task_wait_event(timeout);
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER

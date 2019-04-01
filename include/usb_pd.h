@@ -193,7 +193,7 @@ enum pd_rx_errors {
 #define PD_T_VDM_BUSY         (100*MSEC) /* at least 100ms */
 #define PD_T_VDM_E_MODE        (25*MSEC) /* enter/exit the same max */
 #define PD_T_VDM_RCVR_RSP      (15*MSEC) /* max of 15ms */
-#define PD_T_VDM_SNDR_RSP      (30*MSEC) /* max of 30ms */
+#define PD_T_VDM_SNDR_RSP      (27*MSEC) /* between 24ms and 30ms */
 #define PD_T_VDM_WAIT_MODE_E  (100*MSEC) /* enter/exit the same max */
 
 /* function table for entered mode */
