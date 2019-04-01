@@ -22,6 +22,30 @@
       "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc56b3d_929033a6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-01T18:21:30Z",
+      "side": 0,
+      "message": "Ok. I\u0027ll add this back. If wipe tpm fails, cr50 will reboot and log the failure.",
+      "parentUuid": "f45e0fc5_229ea3cf",
+      "range": {
+        "startLine": 254,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

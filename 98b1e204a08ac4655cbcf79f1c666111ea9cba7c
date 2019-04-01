@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6ce7c86f_f2dfe181",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-01T18:21:30Z",
+      "side": 1,
+      "message": "We can\u0027t always assert ec reset, because RMA centers don\u0027t want the board to reset after they do RMA open. We need to have a way to wipe the TPM without resetting the AP. tpm_stop ensures the AP can\u0027t use the TPM even though it\u0027s still up.\n\nWe were asserting EC_RST_L before, so I thought we should keep that. I\u0027m fine with removing both.\nassert_ec_rst doesn\u0027t work very quickly on Mistral, so I thought tpm_stop would guarantee the tpm is stopped even if the AP doesn\u0027t stop.\n\nI thought adding tpm_stop is pretty harmless, because tpm_reset_request should clear it quickly. It just guarantees the TPM can\u0027t be used.",
+      "parentUuid": "862ac879_6a62488e",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "555be626_8ea1a935",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
@@ -84,6 +108,24 @@
       "writtenOn": "2019-03-29T03:30:16Z",
       "side": 1,
       "message": "shouldn\u0027t tpm be stopped only if reset is not required?",
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9330ad_2d2cc3be",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-01T18:21:30Z",
+      "side": 1,
+      "message": "If a reset is required, board_reboot_ec will reset the system. That will reset the tpm and clear tpm_stop. Once again the AP isn\u0027t guaranteed to be in reset right here, so I thought stopping the TPM is safest. It will be cleared if we reset the system in line 279.\n\nI can update the comment or I can do it only if reset isn\u0027t required.",
+      "parentUuid": "555be626_8ea1a935",
       "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -113,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "1df62b8c_4fc4c69a",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-01T18:21:30Z",
+      "side": 1,
+      "message": "Yeah. I am not entirely clear on why we have a deferred call to this function. It seems like we should know if factory_enable failed in line 72....\nI think maybe we should file a bug to rework this.",
+      "parentUuid": "4d6548ad_895d4783",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a4f83a3_dacf0e45",
         "filename": "common/factory_mode.c",
         "patchSetId": 4
@@ -124,6 +190,30 @@
       "writtenOn": "2019-03-29T03:30:16Z",
       "side": 1,
       "message": "you are not changing this now, but I am curious if this should be\n\nreset_required_ |\u003d !!reset_required;\n\nso that there is no way to cancel the reset once requested.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806e30a7_d213cfc1",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-01T18:21:30Z",
+      "side": 1,
+      "message": "Yeah. I will do that in a separate change.",
+      "parentUuid": "3a4f83a3_dacf0e45",
       "range": {
         "startLine": 90,
         "startChar": 1,
