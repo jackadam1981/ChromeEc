@@ -25,6 +25,40 @@
     },
     {
       "key": {
+        "uuid": "3f3cec5e_90a9fb2e",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T23:01:59Z",
+      "side": 1,
+      "message": "Line too long (limit is 80 chars)",
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5885b572_0848ecb7",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T23:01:59Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "786362f6_0baff51b",
         "filename": "chip/ish/util/pack_ec.py",
         "patchSetId": 2
@@ -70,6 +104,23 @@
       "writtenOn": "2019-04-01T18:37:57Z",
       "side": 1,
       "message": "Please use the Python 3 style print function and use \"from __future__ import print_function\"",
+      "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1552038_919e1aac",
+        "filename": "chip/ish/util/pack_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-01T23:01:59Z",
+      "side": 1,
+      "message": "Line too long. Also, indentation is not to style. Run \"cros lint\" on the file.",
       "revId": "2d3426808e7b36ff0d5d002b6ba998c735b61176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
