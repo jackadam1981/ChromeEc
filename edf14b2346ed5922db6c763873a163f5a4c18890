@@ -136,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "46cf77e5_332f7092",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-01T18:24:47Z",
+      "side": 1,
+      "message": "As Mulin indicated, it should not be necessary to configure these pins when entering PSL. Can you please raise a bug with the details you identify and add the folks on reviewer list here to the bug? Thanks!",
+      "parentUuid": "f9737eef_d49869aa",
+      "range": {
+        "startLine": 120,
+        "startChar": 17,
+        "endLine": 121,
+        "endChar": 61
+      },
+      "revId": "edf14b2346ed5922db6c763873a163f5a4c18890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58a08cb9_0ea9f992",
         "filename": "board/hatch/board.c",
         "patchSetId": 2
