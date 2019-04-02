@@ -59,7 +59,7 @@ static __thread task_id_t my_task_id = TASK_ID_INVALID;
 
 static void task_enable_all_tasks_callback(void);
 
-#define TASK(n, r, d, s) void r(void *);
+#define TASK(n, r, d, s, f) void r(void *);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
 CONFIG_CTS_TASK_LIST
@@ -77,7 +77,7 @@ void _run_test(void *d)
 	run_test();
 }
 
-#define TASK(n, r, d, s) {r, d},
+#define TASK(n, r, d, s, f) {r, d},
 const struct task_args task_info[TASK_ID_COUNT] = {
 	{__idle, NULL},
 	CONFIG_TASK_LIST
@@ -87,7 +87,7 @@ const struct task_args task_info[TASK_ID_COUNT] = {
 };
 #undef TASK
 
-#define TASK(n, r, d, s) #n,
+#define TASK(n, r, d, s, f) #n,
 static const char * const task_names[] = {
 	"<< idle >>",
 	CONFIG_TASK_LIST

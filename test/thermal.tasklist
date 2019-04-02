@@ -3,16 +3,20 @@
  * found in the LICENSE file.
  */
 
-/**
+/*
  * List of enabled tasks in the priority order
  *
  * The first one has the lowest priority.
  *
- * For each task, use the macro TASK_TEST(n, r, d, s) where :
- * 'n' in the name of the task
- * 'r' in the main routine of the task
- * 'd' in an opaque parameter passed to the routine at startup
+ * For each task, use the macro TASK_TEST(n, r, d, s, f) where :
+ * 'n' is the name of the task
+ * 'r' is the main routine of the task
+ * 'd' is an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
+ * 'f' is the bit flags for the platform specific information
+ *
+ * For USB PD tasks, IDs must be in consecutive order and correspond to
+ * the port which they are for. See TASK_ID_TO_PD_PORT() macro.
  */
 #define CONFIG_TEST_TASK_LIST \
-	TASK_TEST(CHIPSET, chipset_task, NULL, TASK_STACK_SIZE)
+	TASK_TEST(CHIPSET, chipset_task, NULL, TASK_STACK_SIZE, 0)

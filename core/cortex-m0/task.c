@@ -32,7 +32,7 @@ typedef union {
 #define STACK_UNUSED_VALUE 0xdeadd00d
 
 /* declare task routine prototypes */
-#define TASK(n, r, d, s) void r(void *);
+#define TASK(n, r, d, s, f) void r(void *);
 void __idle(void);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
@@ -40,7 +40,7 @@ CONFIG_CTS_TASK_LIST
 #undef TASK
 
 /* Task names for easier debugging */
-#define TASK(n, r, d, s)  #n,
+#define TASK(n, r, d, s, f)  #n,
 static const char * const task_names[] = {
 	"<< idle >>",
 	CONFIG_TASK_LIST
@@ -89,7 +89,7 @@ static void task_exit_trap(void)
 }
 
 /* Startup parameters for all tasks. */
-#define TASK(n, r, d, s)  {	\
+#define TASK(n, r, d, s, f)  {	\
 	.r0 = (uint32_t)d,	\
 	.pc = (uint32_t)r,	\
 	.stack_size = s,	\
@@ -99,7 +99,7 @@ static const struct {
 	uint32_t pc;
 	uint16_t stack_size;
 } tasks_init[] = {
-	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
+	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE, 0)
 	CONFIG_TASK_LIST
 	CONFIG_TEST_TASK_LIST
 	CONFIG_CTS_TASK_LIST
@@ -114,9 +114,9 @@ BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
 
 
 /* Stacks for all tasks */
-#define TASK(n, r, d, s)  + s
+#define TASK(n, r, d, s, f)  + s
 uint8_t task_stacks[0
-		    TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
+		    TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE, 0)
 		    CONFIG_TASK_LIST
 		    CONFIG_TEST_TASK_LIST
 		    CONFIG_CTS_TASK_LIST
