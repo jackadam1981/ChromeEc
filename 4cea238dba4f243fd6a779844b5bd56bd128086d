@@ -238,6 +238,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bcf70e8_8ebef04f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-02T20:44:33Z",
+      "side": 1,
+      "message": "Locked system EC reset: \n\nEC sourcing or sinking: During RO, pd_partner_port_reset() runs, disconnects if we were previously sinking, and clears the explicit contract flag.  Upon RO-\u003eRW jump, the port will start out in one of the disconnected states and will set CHECK_IDENTITY as usual during SRC_STARTUP or SNK_DISCONNECTED_DEBOUNCE.  \n\nUnlocked system EC reset:\n\nEC sourcing: During RO, we set CHECK_IDENTITY.  However, the call to pd_power_supply_reset() removes Vbus for the partner so all attempts at soft resetting fail and the connection hard resets, starting things from scratch (where CHECK_IDENTITY will be set per locked RO-\u003eRW).  Same happens on the RO-\u003eRW jump since it again removes Vbus.\n\nEC sinking: During RO, we set CHECK_IDENTITY and proceed with the port soft reset as usual.  Note the pd_chipset_startup() hook will also set this flag, but it will do so before the task has completed soft reset negotiation and gotten to SNK_READY, so the behavior is the same in my testing.  During the RO-\u003eRW jump, we set CHECK_IDENTITY again and soft reset again.  \n\nIn order to restore our previous alternate mode state, I believe we\u0027d want to save these pieces of information off at a minimum: \n- TYPEC_MUX value (which we derive from saving the dp_status in board files currently)\n- opos of the SVID\n- HPD status\n- honestly, probably all of the svdm_svid_data if we want to avoid weird scenarios where we receive a new VDM and then attempt to reference data from those structures\n\nWe could also consider adding an exit mode call using HOOK_SYSJUMP somehow, though given your earlier comment about exit mode not working with some monitors, that may not help.  I assume when you say you disconnect partners, you mean a hard reset or a full cc/vbus disconnect? \n\nI checked out a copy of the fizz branch to take a look at and it appears to not contain any of the flags we\u0027re using to attempt to maintain contracts.  I know we hit bugs maintaining our contracts, but I would guess there was good reason to add these to begin with (including battery-less cases, where the brown out potential is there). \n\nJett and Aseda, any thoughts about the pros of maintaining the contracts as we do, versus the cons of its complexity? \n\nWould you mind clarifying what EFS means?  I haven\u0027t found this term in the type-c or PD spec.",
+      "parentUuid": "c7c97560_0ffa275c",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
