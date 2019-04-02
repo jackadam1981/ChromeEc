@@ -8,11 +8,24 @@
 #include <system.h>
 #include <hwtimer.h>
 #include <util.h>
+#include <string.h>
+
 #include "interrupts.h"
 #include "aontaskfw/ish_aon_share.h"
 #include "power_mgt.h"
 #include "watchdog.h"
 #include "ish_dma.h"
+#include "stdbool.h"
+
+
+/*** for power measurement only ***/
+static bool s_bpowermeas = false;
+static bool s_bD0 = false;
+static bool s_bD0i0 = false;
+static bool s_bD0i1 = false;
+static bool s_bD0i2 = false;
+static bool s_bD0i3 = false;
+/*** end of power measurement only ***/
 
 #ifdef CONFIG_ISH_PM_DEBUG
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -263,6 +276,12 @@ static void enter_d0i0(void)
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I0;
 
 	/* halt ISH cpu, will wakeup from any interrupt */
+    if (s_bpowermeas && s_bD0i0 ) {
+        disable_all_interrupts();
+#ifdef CONFIG_ISH_PM_RESET_PREP
+	    task_enable_irq(ISH_RESET_PREP_IRQ);
+#endif
+    }
 	ish_mia_halt();
 
 	t1 = get_time();
@@ -286,7 +305,7 @@ static void enter_d0i1(void)
 
 	/* only enable PMU wakeup interrupt */
 	current_irq_map = disable_all_interrupts();
-	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
+	if (!(s_bpowermeas && s_bD0i1 )) task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
 #ifdef CONFIG_ISH_PM_RESET_PREP
 	task_enable_irq(ISH_RESET_PREP_IRQ);
@@ -327,7 +346,7 @@ static void enter_d0i2(void)
 
 	/* only enable PMU wakeup interrupt */
 	current_irq_map = disable_all_interrupts();
-	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
+	if (!(s_bpowermeas && s_bD0i2 ))task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
 #ifdef CONFIG_ISH_PM_RESET_PREP
 	task_enable_irq(ISH_RESET_PREP_IRQ);
@@ -376,7 +395,7 @@ static void enter_d0i3(void)
 
 	/* only enable PMU wakeup interrupt */
 	current_irq_map = disable_all_interrupts();
-	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
+	if (!(s_bpowermeas && s_bD0i3 )) task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
 #ifdef CONFIG_ISH_PM_RESET_PREP
 	task_enable_irq(ISH_RESET_PREP_IRQ);
@@ -439,7 +458,27 @@ static void pm_process(uint32_t idle_us)
 {
 	int decide;
 
+    if (s_bpowermeas&&s_bD0) return;
+    
 	decide = d0ix_decide(idle_us);
+    if (s_bpowermeas) {
+        if (s_bD0i0) decide = ISH_PM_STATE_D0I0;
+        else if (s_bD0i1) decide = ISH_PM_STATE_D0I1;
+        else if (s_bD0i2) {
+            if (pm_ctx.aon_valid) decide = ISH_PM_STATE_D0I2;
+            else {
+                CPRINTF("aontask NOT exit, d0i2 can't enter.\n");
+                return;
+            }
+        }
+        else if (s_bD0i3) {
+            if (pm_ctx.aon_valid) decide = ISH_PM_STATE_D0I3;
+            else {
+                CPRINTF("aontask NOT exit, d0i2 can't enter.\n");
+                return;
+            }
+        }
+    }
 
 #ifdef CONFIG_WATCHDOG
 	watchdog_disable();
@@ -600,8 +639,61 @@ static int command_idle_stats(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
+
+/**
+ * Enter special power state. Need to reboot to exit the holding power state.
+ */
+static int command_enter_pmstate(int argc, char **argv)
+{
+    if (argc == 1) {
+        ccprintf("usage: enterpmstate d0/d0i0/d0i1/d0i2/d0i3. Need to reboot to exit the state.\n");
+    } else if (!strncmp(argv[1], "d0", strlen(argv[1]))) {
+        s_bpowermeas=true;
+        s_bD0=true;
+        s_bD0i0=false;
+        s_bD0i1=false;
+        s_bD0i2=false;
+        s_bD0i3=false;
+    } else if (!strncmp(argv[1], "d0i0", strlen(argv[1]))) {
+        s_bpowermeas=true;
+        s_bD0=false;
+        s_bD0i0=true;
+        s_bD0i1=false;
+        s_bD0i2=false;
+        s_bD0i3=false;
+    } else if (!strncmp(argv[1], "d0i1", strlen(argv[1]))) {
+        s_bpowermeas=true;
+        s_bD0=false;
+        s_bD0i0=false;
+        s_bD0i1=true;
+        s_bD0i2=false;
+        s_bD0i3=false;
+    } else if (!strncmp(argv[1], "d0i2", strlen(argv[1]))) {
+        s_bpowermeas=true;
+        s_bD0=false;
+        s_bD0i0=false;
+        s_bD0i1=false;
+        s_bD0i2=true;
+        s_bD0i3=false;
+    } else if (!strncmp(argv[1], "d0i3", strlen(argv[1]))) {
+        s_bpowermeas=true;
+        s_bD0=false;
+        s_bD0i0=false;
+        s_bD0i1=false;
+        s_bD0i2=false;
+        s_bD0i3=true;
+    } else {
+        ccprintf("Wrong command. usage: enterpmstate d0/d0i0/d0i1/d0i2/d0i3. Need to reboot to exit the state.\n");
+    }
+    return EC_SUCCESS;
+
+}
+
+
 DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
 			"Print last idle stats");
+DECLARE_CONSOLE_COMMAND(enterpmstate, command_enter_pmstate, "",
+			"usage: enterpmstate d0/d0i0/d0i1/d0i2/d0i3. Need to reboot to exit the state.");
 
 
 #ifdef CONFIG_ISH_PM_D0I1
