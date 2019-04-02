@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e86ba241_a460cb7b",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:58:01Z",
+      "side": 1,
+      "message": "remove: if LISMDL_CAL happens not to be defined, compilation will fail line 101.\nNote that LISMDL_CAL is defined when used behind an IMU.",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4b6b61_7860edbf",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:58:01Z",
+      "side": 1,
+      "message": "remove.",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3caf4586_e387148c",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:58:01Z",
+      "side": 1,
+      "message": "where is the related ifdef? Line 20 ends with line 24.\nAlso, CONFIG_MAG_LIS2MDL is always true, otherwise this file won\u0027t be compiled (see build.mk).",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7135df85_2a984d2f",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:58:01Z",
+      "side": 1,
+      "message": "As said before, you need a irq_handler. It is very unlikely we will pass CTS without one.",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
