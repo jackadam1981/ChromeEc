@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1304afef_f0ffbd30",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-02T14:51:48Z",
+      "side": 1,
+      "message": "This seems like an ugly hack... why does minute-ia not define a flag value?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "1077dc2154ac7f02338e33d800b053542a2cbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
