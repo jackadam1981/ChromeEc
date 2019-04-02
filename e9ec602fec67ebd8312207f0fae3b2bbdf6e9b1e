@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cf2406e_487acf21",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "don\u0027t call it load fifo, there is no fifo.",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "785c16fc_7bfce817",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "disable interrupt earlier, whatever the status is.",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448ddb51_f7b475d3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "will never happen (and it is not set).",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a44a286c_6746fa6c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "return an error, will never happen.",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccf5e8d_619e64b8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "s + 1",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3313b832_9822bc76",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "it will be more complicated, as we need offsets for the 3 channels.",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a911fdcc_9b42c580",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T21:25:46Z",
+      "side": 1,
+      "message": "read is a no-op for rgb.",
+      "revId": "e9ec602fec67ebd8312207f0fae3b2bbdf6e9b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
