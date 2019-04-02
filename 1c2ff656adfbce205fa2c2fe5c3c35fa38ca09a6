@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d4ca66d8_ab5a7aea",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ec4fdae_4e52c0ac",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 7
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "714d7faa_3da61f91",
         "filename": "fuzz/nvmem_tpm2_mock.c",
         "patchSetId": 11
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "b2391b29_34e53d14",
+        "filename": "test/legacy_nvmem_dump.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "this proved a bit tricky, but I managed to fool it :)",
+      "parentUuid": "adddb7c4_f77ca239",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 77
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d040876_62e04aef",
         "filename": "test/nvmem.c",
         "patchSetId": 11
@@ -375,6 +423,30 @@
       "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d95604a2_d796c72e",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8ef905_b5dc5bfa",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -425,6 +497,30 @@
     },
     {
       "key": {
+        "uuid": "41d2b3b9_21ce6d27",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e70ba2e7_e760a8bf",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 78,
+        "endChar": 18
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfa177b3_2fed572c",
         "filename": "test/nvmem.c",
         "patchSetId": 11
@@ -460,6 +556,30 @@
       "side": 1,
       "message": "sure, let me do that.\n\nI meant to test NVMEM which is not erased but does not contain the correct flashrom partition, changing just a simple byte  should give the same effect.",
       "parentUuid": "dfa177b3_2fed572c",
+      "range": {
+        "startLine": 294,
+        "startChar": 11,
+        "endLine": 294,
+        "endChar": 29
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067933c8_be0fe885",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "ah, actually once I looked at this I remembered - the idea of this test is to test initialization of the flash which is neither all ones nor has a valid nvmem snapshot (i.e. has a proper hash stored in the legacy header, etc.). There was a problem with the init code which was not erasing the flash when it did not find a proper snapshot, it was just trying to write over it, this is why I added this test (and this is what the comment header says actually).\n\nIf we corrupt a byte in a tpm object we won\u0027t know about it anyways.",
+      "parentUuid": "e27b8532_2ec430cd",
       "range": {
         "startLine": 294,
         "startChar": 11,
@@ -566,6 +686,30 @@
     },
     {
       "key": {
+        "uuid": "cf4395c5_9bcbe9f6",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "I updated the comment.",
+      "parentUuid": "b9463819_7de8a0e3",
+      "range": {
+        "startLine": 891,
+        "startChar": 35,
+        "endLine": 891,
+        "endChar": 50
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dec59237_8ee3c0e5",
         "filename": "test/nvmem.c",
         "patchSetId": 11
@@ -601,6 +745,30 @@
       "side": 1,
       "message": "As discussed on the other patch, we should never try saving more than there is room, by design. I am not sure this is something worth testing. As for incomplete setvar - this is a good test to add, I think it should come after the problem with completing setvar in new_nvmem.c is solved.",
       "parentUuid": "dec59237_8ee3c0e5",
+      "range": {
+        "startLine": 1339,
+        "startChar": 5,
+        "endLine": 1339,
+        "endChar": 13
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c75602_b3763e0a",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "Added requirement to properly test setvar() failure modes to the bug.",
+      "parentUuid": "f667f0c0_c82104a2",
       "range": {
         "startLine": 1339,
         "startChar": 5,
@@ -657,6 +825,30 @@
       "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09c6a01_46102ff6",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T04:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31796143_047f6c47",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 30
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
