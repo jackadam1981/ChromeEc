@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "0a38e693_61878a94",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-02T23:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e814a59f_c8a603fa",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "555be626_8ea1a935",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
@@ -168,6 +192,24 @@
       "side": 1,
       "message": "right, I guess my original comment should have read \n\nshouldn\u0027t tpm be stopped only if reset IS required?\n\nhow are tpm comms restarted in this case when EC reset is not required?",
       "parentUuid": "eb9330ad_2d2cc3be",
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bb6e3e_0006d3a8",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-02T23:36:06Z",
+      "side": 1,
+      "message": "The user will eventually reboot the AP and that will clear it. After RMA open the tpm needs to stay disabled until the user reboots the AP.",
+      "parentUuid": "f90d2927_1c7646e0",
       "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
