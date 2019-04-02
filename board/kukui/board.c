@@ -68,15 +68,11 @@ static void pogo_vbus_present(enum gpio_signal signal)
 	if (gpio_get_level(GPIO_POGO_VBUS_PRESENT)) {
 		struct charge_port_info info = {
 			.voltage = 5000, .current = 1500};
-		/*
-		 * Set supplier type to PD to have same priority as type c
-		 * port.
-		 */
 		charge_manager_update_charge(
-			CHARGE_SUPPLIER_PD, CHARGE_PORT_POGO, &info);
+			CHARGE_SUPPLIER_DEDICATED, CHARGE_PORT_POGO, &info);
 	} else {
 		charge_manager_update_charge(
-			CHARGE_SUPPLIER_PD, CHARGE_PORT_POGO, NULL);
+			CHARGE_SUPPLIER_DEDICATED, CHARGE_PORT_POGO, NULL);
 	}
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
