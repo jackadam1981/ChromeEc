@@ -52,6 +52,24 @@
       "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57d6427_b0550e88",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T23:15:18Z",
+      "side": 1,
+      "message": "honestly, does not seem to make much sense to me for the reason I explained above, but following the surrounding style is a good justification.",
+      "parentUuid": "35574be0_12c81a82",
+      "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
