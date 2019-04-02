@@ -46,6 +46,30 @@
       "revId": "1077dc2154ac7f02338e33d800b053542a2cbab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "716366b5_94abf83e",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-02T16:23:24Z",
+      "side": 1,
+      "message": "From a technical debt perspective, I think it would be better to do a find/replace across the tasklist files adding the extra parameter. While this is a clever way to solve the problem without refactoring the tasklists, it adds an unusual layer of complexity to defining tasks.",
+      "parentUuid": "a5f490f1_44ebda03",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "1077dc2154ac7f02338e33d800b053542a2cbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
