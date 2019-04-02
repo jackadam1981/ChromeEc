@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc0baaa8_38dce5d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-02T19:43:07Z",
+      "side": 1,
+      "message": "typo: control",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "61f006852544c42f39494cdf46d9fcb21d971a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18d6375_d9265930",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2700,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-02T19:43:07Z",
+      "side": 1,
+      "message": "If this is defined, should we automatically define CONFIG_KEYBOARD_BACKLIGHT at the end of config.h?",
+      "range": {
+        "startLine": 2700,
+        "startChar": 7,
+        "endLine": 2700,
+        "endChar": 25
+      },
+      "revId": "61f006852544c42f39494cdf46d9fcb21d971a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
