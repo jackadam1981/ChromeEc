@@ -5006,12 +5006,12 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 				PD_CTRL_RESP_ROLE_EXT_POWERED : 0);
 		r_v2->polarity = pd[p->port].polarity;
 
-		if (debug_level > 0)
-			strzcpy(r_v2->state,
-				pd_state_names[pd[p->port].task_state],
+#if !defined(CONFIG_USB_PD_DEBUG_LEVEL) || (CONFIG_USB_PD_DEBUG_LEVEL != 0)
+		strzcpy(r_v2->state, pd_state_names[pd[p->port].task_state],
 				sizeof(r_v2->state));
-		else
-			r_v2->state[0] = '\0';
+#else
+		r_v2->state[0] = '\0';
+#endif
 
 		r_v2->cc_state =  pd[p->port].cc_state;
 		r_v2->dp_mode = board_get_dp_pin_mode(p->port);
