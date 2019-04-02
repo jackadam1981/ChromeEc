@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "61630bf3_6b11b33f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T22:02:59Z",
+      "side": 1,
+      "message": "Use board name as prefix.",
+      "revId": "c75c27b11774bfec9cc3a51faa92e68ed7c03ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4902a3de_8ba2a8ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T22:02:59Z",
+      "side": 1,
+      "message": "Can\u0027t you use existing EC console commands line accel_init, accel_read?",
+      "revId": "c75c27b11774bfec9cc3a51faa92e68ed7c03ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e60ed7_bd98f423",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-02T22:02:59Z",
+      "side": 1,
+      "message": "Is it complicated: \n.default_range \u003d 1 \u003c\u003c 11, /* 16LSB / uT, fixed */\nSee LIS2MDL_RATIO.",
+      "revId": "c75c27b11774bfec9cc3a51faa92e68ed7c03ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e85cef3_14c461bb",
         "filename": "board/arcada_ish/board.h",
         "patchSetId": 5
