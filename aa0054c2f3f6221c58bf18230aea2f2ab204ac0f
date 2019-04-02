@@ -22,6 +22,30 @@
       "revId": "aa0054c2f3f6221c58bf18230aea2f2ab204ac0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4d2c1e_d40ba420",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1335003
+      },
+      "writtenOn": "2019-04-02T09:20:10Z",
+      "side": 1,
+      "message": "I agree.\nI think we should call an interface inside this function. This interface, which I\u0027ll implement in the flapjack project\u0027s private code, and implement a ((weak)) function to ensure that other developers call this function without an error.",
+      "parentUuid": "1b20b4cc_5ad23049",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "aa0054c2f3f6221c58bf18230aea2f2ab204ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
