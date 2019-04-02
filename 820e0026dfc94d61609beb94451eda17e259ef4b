@@ -16,6 +16,24 @@
       "revId": "820e0026dfc94d61609beb94451eda17e259ef4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a498cc2_221feb4e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-02T21:59:49Z",
+      "side": 1,
+      "message": "I was thinking we could add the source for all eventually? It\u0027s nice to be able to quickly find the info since we tend to have different people working on different chips. (e.g., I want to make a change to read the flash size register, which is different across all. I could quickly implement this for all if I knew exactly where the flash layout was for each chip. Having to dig around for each makes me less inclined to take the time and only change it for the chip I care about.)",
+      "parentUuid": "55bc41e1_1d6c2553",
+      "revId": "820e0026dfc94d61609beb94451eda17e259ef4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
