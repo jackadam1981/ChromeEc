@@ -3003,13 +3003,14 @@
  * List of enabled tasks in ascending priority order.  This is normally
  * defined in each board's ec.tasklist file.
  *
- * For each task, use the macro TASK_ALWAYS(n, r, d, s) for base tasks and
- * TASK_NOTEST(n, r, d, s) for tasks that can be excluded in test binaries,
+ * For each task, use the macro TASK_ALWAYS(n, r, d, s, f) for base tasks and
+ * TASK_NOTEST(n, r, d, s, f) for tasks that can be excluded in test binaries,
  * where :
  * 'n' is the name of the task
  * 'r' is the main routine of the task
  * 'd' is an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
+ * 'f' is the bit flags for the platform specific information
  */
 #undef CONFIG_TASK_LIST
 
