@@ -46,6 +46,29 @@
       "revId": "c513b27328c3c32704e36079d36ee280b909c020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b975ee72_66834a97",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-02T01:10:48Z",
+      "side": 1,
+      "message": "Can we negate it only if it\u0027s not defined so that any definition used in a foreign project will be effective?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "c513b27328c3c32704e36079d36ee280b909c020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
