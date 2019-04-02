@@ -49,6 +49,9 @@
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 
+/* USB Type C and USB PD defines */
+#define CONFIG_USB_PD_TCPM_PS8751
+
 /* Volume Button feature */
 #define CONFIG_VOLUME_BUTTONS
 #define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL

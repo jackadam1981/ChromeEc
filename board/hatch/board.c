@@ -14,6 +14,9 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_opt3001.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/tcpm/anx7447.h"
+#include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "fan.h"
@@ -122,13 +125,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
 		.i2c_slave_addr = AN7447_TCPC0_I2C_ADDR,
 		.drv = &anx7447_tcpm_drv,
-		.flags = TCPC_FLAGS_ALERT_ACTIVE_LOW,
+		.flags = TCPC_FLAGS_ALERT_ACTIVE_LOW |
+		TCPC_FLAGS_RESET_ACTIVE_HIGH,
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
-		.flags = TCPC_FLAGS_ALERT_ACTIVE_LOW,
+		.flags = TCPC_FLAGS_ALERT_ACTIVE_LOW |
+		TCPC_FLAGS_RESET_ACTIVE_LOW,
 	},
 };
 

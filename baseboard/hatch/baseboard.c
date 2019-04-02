@@ -33,9 +33,6 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-#define USB_PD_PORT_TCPC_0	0
-#define USB_PD_PORT_TCPC_1	1
-
 /******************************************************************************/
 /* Wake up pins */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -145,23 +142,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
 /******************************************************************************/
-/* USB-C TPCP Configuration */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_TCPC_0] = {
-		.i2c_host_port = I2C_PORT_TCPC0,
-		.i2c_slave_addr = AN7447_TCPC0_I2C_ADDR,
-		.drv = &anx7447_tcpm_drv,
-		.pol = TCPC_ALERT_ACTIVE_LOW,
-	},
-	[USB_PD_PORT_TCPC_1] = {
-		.i2c_host_port = I2C_PORT_TCPC1,
-		.i2c_slave_addr = PS8751_I2C_ADDR1,
-		.drv = &ps8xxx_tcpm_drv,
-		.pol = TCPC_ALERT_ACTIVE_LOW,
-	},
-};
-
-/******************************************************************************/
 /* USB-C PPC Configuration */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
@@ -177,17 +157,6 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_TCPC_0] = {
-		.driver = &anx7447_usb_mux_driver,
-		.hpd_update = &anx7447_tcpc_update_hpd_status,
-	},
-	[USB_PD_PORT_TCPC_1] = {
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-	}
-};
 
 const struct pi3usb2901_config_t pi3usb2901_bc12_chips[] = {
 	[USB_PD_PORT_TCPC_0] = {
@@ -251,6 +220,16 @@ uint16_t tcpc_get_alert_status(void)
 
 void board_reset_pd_mcu(void)
 {
+	int i;
+	int level;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		if (battery_is_present() == BP_YES) {
+			level = !!(tcpc_config[i].flags &
+				   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+			gpio_set_level
+		}
+	}
 	/*
 	 * C0: Assert reset to TCPC0 (ANX7447) for required delay (1ms) only if
 	 * we have a battery
