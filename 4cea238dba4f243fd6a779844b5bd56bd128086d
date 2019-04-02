@@ -190,6 +190,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c97560_0ffa275c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-02T16:50:51Z",
+      "side": 1,
+      "message": "I think we should fix how RW restores the contract made by RO and how pd_task initializes the USB muxes.\n\nIf saving \u0026 restoring all necessary info is too costly, we should cleanly disconnect (\u0026 reinit) in RW for a unlocked system.\n\nIf a battery less case is the reason we can\u0027t completely disconnect, we should evaluate how important battery less boot is. If it\u0027s really necessary, we should apply EFS. Then, we don\u0027t have to fix any bug like this. For example, Fizz doesn\u0027t have this issue (and all other bugs caused by RO-\u003eRW jump) because it never makes contract twice (1st in RO and 2nd in RW).",
+      "parentUuid": "13598d79_76620797",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
