@@ -46,6 +46,30 @@
       "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607d05ff_15e8820a",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-02T21:12:30Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "dcc56b3d_929033a6",
+      "range": {
+        "startLine": 254,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "840eb397d38ba49a905955943d74b41160dfdd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
