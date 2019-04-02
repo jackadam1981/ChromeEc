@@ -16,6 +16,24 @@
       "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9c830c_77b4b95f",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-02T23:03:08Z",
+      "side": 1,
+      "message": "This is to make it consistent with the rest of the declarations.",
+      "parentUuid": "2b349a65_2dfe1b66",
+      "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
