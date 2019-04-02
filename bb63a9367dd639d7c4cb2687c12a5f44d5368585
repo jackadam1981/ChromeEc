@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b349a65_2dfe1b66",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T23:01:00Z",
+      "side": 1,
+      "message": "just curious, why do you think this is better: (1 \u003c\u003c 20) or, better yet (1U \u003c\u003c 20) is very clear, whereas BIT(20) is something which needs to be looked up, etc.",
+      "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
