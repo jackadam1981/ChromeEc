@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed2051d1_67a95648",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1335003
+      },
+      "writtenOn": "2019-04-02T09:37:50Z",
+      "side": 1,
+      "message": "Considering that two batteries used in the same project have the same typical capacity and four batteries have different ID resistance values, it is better to use the battery ID to distinguish the manufacturer information.",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "888733a215bce47978ebb8ffd36a7dc19695b284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
