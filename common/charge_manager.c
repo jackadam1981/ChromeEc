@@ -31,7 +31,7 @@
 /* Charge supplier priority: lower number indicates higher priority. */
 test_mockable const int supplier_priority[] = {
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
-	[CHARGE_SUPPLIER_DEDICATED] = 0,
+	[CHARGE_SUPPLIER_DEDICATED] = CHARGE_SUPPLIER_DEDICATED_PRIORITY,
 #endif
 	[CHARGE_SUPPLIER_PD] = 1,
 	[CHARGE_SUPPLIER_TYPEC] = 2,

@@ -644,6 +644,12 @@
 /* Number of charge ports excluding type-c ports */
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 0
 
+/*
+ * Priority of dedicated charge supplier, lower number indicates higher
+ * priority.
+ */
+#define CHARGE_SUPPLIER_DEDICATED_PRIORITY 0
+
 /* Allow charge manager to default to charging from dual-role partners */
 #undef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 
