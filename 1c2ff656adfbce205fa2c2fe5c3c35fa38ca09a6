@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6170b8af_e5a4f53b",
+        "filename": "chip/host/config_chip.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "why do we need different sizes for test implementation?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6268aac1_001d67c4",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "The convention is to have two spaces instead of a tab for indent.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 7
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714d7faa_3da61f91",
+        "filename": "fuzz/nvmem_tpm2_mock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "so, we always assume that the requested handle is not defined. is that always ok?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398851d9_e0dea141",
+        "filename": "fuzz/nvmem_tpm2_mock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "this assumes that NvEarlyStageFindHandle() is always called before NvGetReserved(). this may change in the future, right?\nif we don\u0027t need anything returned by NvEarlyStageFindHandle(), I\u0027d just turn that function into { return 0; }\nand in NvGetReserved() do \n  if (!initialized) {\n    initialize res_addrs[];\n  }\n  do what it currently does",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c212a8d0_e956d965",
+        "filename": "fuzz/nvmem_tpm2_mock.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "can we just include the actual src/third_party/tpm2/tpm_generated.c to avoid redefining these?",
+      "range": {
+        "startLine": 67,
+        "startChar": 7,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1cf77c4_35e45fc8",
+        "filename": "test/legacy_nvmem_dump.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "the binary dump is completely unmaintainable in case we want to change something in the set of stored objects for testing more corner cases.\ncan we explicitly represent as a set of stored objects instead?",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed43ac3_8fe292dd",
+        "filename": "test/legacy_nvmem_dump.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "nit: why 13 bytes in the 1st line w/o the leading tab, when the rest is 12/line \u0026 indented?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 77
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d040876_62e04aef",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "can we do static_assert(sizeof(legacy_nvmem_image) \u003d\u003d NVMEM_PARTITION_SIZE, \"...\") or BUILD_ASSERT, depending on how we compile it?\n\nwhy is this check important? can we have sizeof(legacy_nvmem_image) \u003c NVMEM_PARTITION_SIZE and in prepare_nvmem_contents() fill the tail with FFs?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bcc35da_c6c2b084",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "not anymore.\nbtw, why could we assume that before? did we always call it only with divisible sizes or it is the app_compute_hash() requirement?",
+      "range": {
+        "startLine": 77,
+        "startChar": 67,
+        "endLine": 78,
+        "endChar": 18
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa177b3_2fed572c",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "shall this be actually prepare_new_flash() and then corrupt one of the objects (not on the 1st page) to break traversing the object list? Filling with 0x55 is too obviously corrupted.",
+      "range": {
+        "startLine": 294,
+        "startChar": 11,
+        "endLine": 294,
+        "endChar": 29
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46313b91_443ddf9f",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "nit: incomplete",
+      "range": {
+        "startLine": 826,
+        "startChar": 33,
+        "endLine": 826,
+        "endChar": 41
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9226db8e_0e78f9c8",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "why these? what do they represent?",
+      "range": {
+        "startLine": 891,
+        "startChar": 35,
+        "endLine": 891,
+        "endChar": 50
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec59237_8ee3c0e5",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "can we add a couple of tests: \n1) keep adding objects until the nvmem area is full, make sure that we eventually get an error and don\u0027t crash / don\u0027t corrupt nvmem.\n2) incomplete setvar",
+      "range": {
+        "startLine": 1339,
+        "startChar": 5,
+        "endLine": 1339,
+        "endChar": 13
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed781ffc_c6b5bdf1",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "nit: do we need this change?",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 30
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317ec8e7_cf79b9b9",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T02:09:54Z",
+      "side": 1,
+      "message": "nit: for readability, I\u0027d do\nfor (i\u003d0; i\u003c...) {\n  if ((key_len \u003d\u003d...)\n    break;\n}\nif (i\u003e\u003dARRAY_SIZE(vars))\n  return NULL;\n\nvar \u003d malloc(...)\netc.",
+      "range": {
+        "startLine": 820,
+        "startChar": 3,
+        "endLine": 828,
+        "endChar": 4
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
