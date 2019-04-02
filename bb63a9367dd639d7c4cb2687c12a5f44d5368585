@@ -34,6 +34,24 @@
       "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35574be0_12c81a82",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-04-02T23:09:47Z",
+      "side": 1,
+      "message": "I personally find BIT(n) intuitive and easier to read, but this is my own bias.  At my previous company, we defined separate macros for each BIT (e.g. BIT0, BIT13, BIT27, etc), so I\u0027m more used to this.\nLooks like Mary is matching the style of the existing file, so either change the other CCD flags to use (1U \u003c\u003c n) style or keep these new definitions as BIT(20) and BIT(21).",
+      "parentUuid": "2b349a65_2dfe1b66",
+      "revId": "bb63a9367dd639d7c4cb2687c12a5f44d5368585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
