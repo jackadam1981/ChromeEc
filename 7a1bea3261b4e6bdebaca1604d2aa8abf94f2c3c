@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb49ab84_317f6657",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-02T01:20:06Z",
+      "side": 1,
+      "message": "if the count reach to 0, will break out of loop, it\u0027s safe here. :)",
+      "parentUuid": "ab817106_c85c0fd6",
+      "revId": "7a1bea3261b4e6bdebaca1604d2aa8abf94f2c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a1ae04e_6d67b775",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-01T23:14:51Z",
       "side": 1,
       "message": "How come we can\u0027t use usleep(SRAM_RETENTION_US_DELAY) instead? Also, with the definition of delay above, it looks like this will infinite loop and ish_halt will never be reached.",
+      "revId": "7a1bea3261b4e6bdebaca1604d2aa8abf94f2c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d06b913_4f84bfbf",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-02T01:20:06Z",
+      "side": 1,
+      "message": "we can\u0027t use usleep() here, aontask is a separated program, and here already switched out of ecos scheduler, so can\u0027t use any functions related to ecos scheduler. :) \n\nhere we just need some cycles delay (very fast, no need micro or mini seconds level) for HW complete the operation, so the simple count based delay() is enough here.",
+      "parentUuid": "6a1ae04e_6d67b775",
       "revId": "7a1bea3261b4e6bdebaca1604d2aa8abf94f2c3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
