@@ -152,20 +152,14 @@ void __hw_clock_event_set(uint32_t deadline)
 	 */
 	HPET_TIMER_COMP(1) = read_main_timer() + scale_us2ticks(remaining_us);
 
-	do {
-		/* Arm timer */
-		HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
-
 #if defined(CHIP_FAMILY_ISH4) || defined(CHIP_FAMILY_ISH5)
-		/* Wait for timer settings to settle ~ 150us */
-		while (HPET_CTRL_STATUS & HPET_T1_SETTLING)
-			continue;
+	/* Wait for timer settings to settle ~ 150us */
+	while (HPET_CTRL_STATUS & HPET_T1_SETTLING)
+		continue;
 #endif
-	/*
-	 * TODO(b/124890290): Remove or update while loop that ensures timer is
-	 * armed once we have a better hardware understanding.
-	 */
-	} while (!(HPET_TIMER_CONF_CAP(1) & HPET_Tn_INT_ENB_CNF));
+
+	/* Arm timer */
+	HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
 }
 
 uint32_t __hw_clock_event_get(void)
@@ -275,11 +269,8 @@ int __hw_clock_source_init(uint32_t start_t)
 		continue;
 #endif
 
-	/*
-	 * LEGACY_RT_CNF for HPET1 interrupt routing
-	 * and enable overall HPET counter/interrupts.
-	 */
-	HPET_GENERAL_CONFIG |= (HPET_ENABLE_CNF | HPET_LEGACY_RT_CNF);
+	/* Enable HPET */
+	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 
 	/* Return IRQ value for OS event timer */
 	return ISH_HPET_TIMER1_IRQ;
