@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4eeea253_5b4fe29c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "This, I suspect, is the one and only important remaining issue with this CL.\nIf we can guarantee that if the objects fit into a cache they are guaranteed to fit into flash pages, then yes, we can go with die-if-fail-to-alloc page approach, since it is all checked at a higher level. and this might be the main reason to enforce that max 1000 bytes in k,v tuples limitation (otherwise it\u0027s just a waste of code size to do those checks imo): basically, we need to guarantee that cache contents + 1000 bytes always fit in flash (assuming all pages are healthy - if pages start becoming unwritable/unerasable then yes, we can die).\nIf we can\u0027t guarantee that, then we need a soft-error, I\u0027m afraid. Again, can change in a separate CL to avoid stalling this one, but needs to go in before this feature is considered ready for prepvt.",
+      "parentUuid": "02d84f96_3b14e066",
+      "range": {
+        "startLine": 905,
+        "startChar": 2,
+        "endLine": 905,
+        "endChar": 27
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9ff8055_22a8358c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 11
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "we have 11K or so of NVMEM cache and 20K flash allocated for NVMEM storage, this is why I thought it is better to start compaction while we still have an extra spare page. Maybe we should limit the flash space to 16K, I am not sure.",
       "parentUuid": "a9ff8055_22a8358c",
+      "range": {
+        "startLine": 2818,
+        "startChar": 52,
+        "endLine": 2818,
+        "endChar": 55
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be41f2e_6bb804bb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "for the \u0027guaranteed to have 2 pages\u0027 part:\n\nso, we are guaranteed to have only 11K+1K of data (plus some amount of overhead for container headers) stored there, right? it\u0027d be great to see those calculations, and maybe capture assumptions in static_asserts (e.g. nvmem_area_size - 2*page_size \u003e max_possible_data + max_possible_overhead, which are calc\u0027ed somehow from other parameters).\n\nwhat about \u0027why saved_list_index+2\u0027? is +2 correct?",
+      "parentUuid": "93ccfbf0_732a0766",
       "range": {
         "startLine": 2818,
         "startChar": 52,

@@ -2123,6 +2123,30 @@
     },
     {
       "key": {
+        "uuid": "5c3a4f83_8ecce578",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "No, I\u0027m saying we ideally need to check that the default values for those saved PCRs are 0..0. If we set a flag for one of those PCRs that the default value is F..F, or 0..0\u003clast_non_zero_byte\u003e, this will stop working.\nNo good idea for how to do it at compile time - we need to check the .resetLocality doesn\u0027t have 0x10 bit set (or simply is \u003d\u003d 0) in all entries in s_initAttributes[] that have .saveState \u003d\u003d 1 (or simply the first NUM_STATIC_PCR entries). And that HCRTM_PCR, if defined, is \u003e\u003d NUM_STATIC_PCR.\n\nThose checks probably belong in PCR.c, where we define s_initAttributes[]. \n\nIn theory, I can come up with\n#define IS_INIT2ZERO_PCR(n) (s_initAttributes[n].resetLocality \u003d\u003d 0)\n#define FIRST_PCRS_INIT2ZERO(n) ((n) \u003d\u003d 0 ? IS_INIT2ZERO_PCR(n) : IS_INIT2ZERO_PCR(n) \u0026\u0026 FIRST_PCRS_INIT2ZERO(n-1))\n\nconst int we_ar_ok \u003d FIRST_PCRS_INIT2ZERO(NUM_STATIC_PCR-1);\nstatic_assert(we_are_ok, ...);\n#ifdef HCRTM_PCR\nstatic_assert(HCRTM_PCR \u003e\u003d NUM_STATIC_PCR, ...);\n#endif\n\nBut I\u0027m not sure the compiler will eat this in practice :)\nI guess, we can document that we rely on that and move on.",
+      "parentUuid": "d6c91b84_8db5f30a",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af5d73a0_872b0b6d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3044,6 +3068,30 @@
     },
     {
       "key": {
+        "uuid": "3351b295_dfdf07e6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "probably\nenum ec_error_list res \u003d verify_last_section(\u0026master_at.dt, nc);\nif (res \u003d\u003d EC_SUCCESS) /* potentially other errors can be added like EC_ERROR_TRY_AGAIN */\n  return res;\n/* fall through to the case when the delimiter is not there */",
+      "parentUuid": "f843e911_907ab1b3",
+      "range": {
+        "startLine": 1989,
+        "startChar": 9,
+        "endLine": 1989,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26932be9_0e9dfed6",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3518,6 +3566,30 @@
     },
     {
       "key": {
+        "uuid": "9da1370f_88438be6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "ok. I\u0027m fine with addressing it in a followup CL",
+      "parentUuid": "5cc393d2_6e650b38",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15260864_e96d503b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3649,6 +3721,30 @@
       "side": 1,
       "message": "ah, you are right, I already forgot that after writing vars we also adding the delimiter.\n\nI think the procedure should be changed such that non-finalized delimiter is added if this is a re-write of the var, and the delimiter should be finalized after the old copy is deleted. I doon\u0027t want to rush this fix now, is it OK if I add it to the new tracker issue?",
       "parentUuid": "9345a482_6c864acd",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c144e96_34410210",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "I\u0027m fine with addressing it in a followup CL to avoid stalling this XL thing forever. this particular fix for vars should go in before we pick the new nvmem into prepvt.",
+      "parentUuid": "7a8994f7_9fe75725",
       "range": {
         "startLine": 2692,
         "startChar": 1,
@@ -3933,6 +4029,30 @@
       "side": 1,
       "message": "I hear what you are saying, but still am very reluctant to allocate a new object type for this, the object type name space is very limited. \n\nMaybe we could save a TPM object with some well know index for this. Or maybe we can modify compaction to start on the next page to make sure that the current top page would be recycled.\n\nLet me add this to the list of open issues.",
       "parentUuid": "1b90054e_7404e745",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f156930a_48435596",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-02T19:03:46Z",
+      "side": 1,
+      "message": "\u003e Let me add this to the list of open issues.\n\nsure. and we can go with the current impl for now.",
+      "parentUuid": "ce1ada29_e3bbbd9e",
       "range": {
         "startLine": 2749,
         "startChar": 4,
