@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "e814a59f_c8a603fa",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T23:10:53Z",
+      "side": 1,
+      "message": "I think it is safe to drop both here because as both EC reset and tpm_stop would be called by the tpm reset handler",
+      "parentUuid": "6ce7c86f_f2dfe181",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 2
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "555be626_8ea1a935",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "If a reset is required, board_reboot_ec will reset the system. That will reset the tpm and clear tpm_stop. Once again the AP isn\u0027t guaranteed to be in reset right here, so I thought stopping the TPM is safest. It will be cleared if we reset the system in line 279.\n\nI can update the comment or I can do it only if reset isn\u0027t required.",
       "parentUuid": "555be626_8ea1a935",
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90d2927_1c7646e0",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T23:10:53Z",
+      "side": 1,
+      "message": "right, I guess my original comment should have read \n\nshouldn\u0027t tpm be stopped only if reset IS required?\n\nhow are tpm comms restarted in this case when EC reset is not required?",
+      "parentUuid": "eb9330ad_2d2cc3be",
       "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
