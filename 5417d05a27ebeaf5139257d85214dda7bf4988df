@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5beccc2a_8b4017fc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "We sure can guarantee it with the current state: the cache size is less than 12K, the flash space allotted for NVMEM storage is 20K, out of which 1K is left for (key, value) pairs, i.e. 19K. We start compaction if there are 2 pages left, i.e. compaction starts at 15K boundary - how can this not fit?\n\nI added a build assert in the beginning of the file.",
+      "parentUuid": "4eeea253_5b4fe29c",
+      "range": {
+        "startLine": 905,
+        "startChar": 2,
+        "endLine": 905,
+        "endChar": 27
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9ff8055_22a8358c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 11
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "for the \u0027guaranteed to have 2 pages\u0027 part:\n\nso, we are guaranteed to have only 11K+1K of data (plus some amount of overhead for container headers) stored there, right? it\u0027d be great to see those calculations, and maybe capture assumptions in static_asserts (e.g. nvmem_area_size - 2*page_size \u003e max_possible_data + max_possible_overhead, which are calc\u0027ed somehow from other parameters).\n\nwhat about \u0027why saved_list_index+2\u0027? is +2 correct?",
       "parentUuid": "93ccfbf0_732a0766",
+      "range": {
+        "startLine": 2818,
+        "startChar": 52,
+        "endLine": 2818,
+        "endChar": 55
+      },
+      "revId": "5417d05a27ebeaf5139257d85214dda7bf4988df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3ed3db_6a011bdd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "no, you are right, +1 is enough here, I don\u0027t remember how I came up with +2",
+      "parentUuid": "9be41f2e_6bb804bb",
       "range": {
         "startLine": 2818,
         "startChar": 52,

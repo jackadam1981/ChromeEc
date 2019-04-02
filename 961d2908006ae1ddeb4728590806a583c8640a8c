@@ -2147,6 +2147,30 @@
     },
     {
       "key": {
+        "uuid": "d29d9738_3fdad406",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "added a comment.",
+      "parentUuid": "5c3a4f83_8ecce578",
+      "range": {
+        "startLine": 959,
+        "startChar": 5,
+        "endLine": 959,
+        "endChar": 13
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af5d73a0_872b0b6d",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3092,6 +3116,30 @@
     },
     {
       "key": {
+        "uuid": "a7e1d61f_3280a462",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1989,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "I am not confident that this is the right thing to do - the code below runs under assumption that there is no delimiter finalized or not on the top of the flash. \"revisit \u0027verify_last_section() failures\u0027 to the list of outstanding issues.",
+      "parentUuid": "3351b295_dfdf07e6",
+      "range": {
+        "startLine": 1989,
+        "startChar": 9,
+        "endLine": 1989,
+        "endChar": 28
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26932be9_0e9dfed6",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3590,6 +3638,30 @@
     },
     {
       "key": {
+        "uuid": "b3b88c4d_d08a602e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2609,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da1370f_88438be6",
+      "range": {
+        "startLine": 2609,
+        "startChar": 3,
+        "endLine": 2609,
+        "endChar": 58
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15260864_e96d503b",
         "filename": "common/new_nvmem.c",
         "patchSetId": 9
@@ -3754,6 +3826,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b387e69_45b926ee",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c144e96_34410210",
+      "range": {
+        "startLine": 2692,
+        "startChar": 1,
+        "endLine": 2692,
+        "endChar": 24
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -4062,6 +4158,30 @@
       "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e94f894_9fef1734",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-02T21:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f156930a_48435596",
+      "range": {
+        "startLine": 2749,
+        "startChar": 4,
+        "endLine": 2751,
+        "endChar": 37
+      },
+      "revId": "961d2908006ae1ddeb4728590806a583c8640a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
