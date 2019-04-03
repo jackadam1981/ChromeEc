@@ -428,6 +428,30 @@
     },
     {
       "key": {
+        "uuid": "118af7ab_a7b121cb",
+        "filename": "test/legacy_nvmem_dump.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T23:05:57Z",
+      "side": 1,
+      "message": "ok, adding it there.",
+      "parentUuid": "7f166f85_9b02961c",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bed43ac3_8fe292dd",
         "filename": "test/legacy_nvmem_dump.h",
         "patchSetId": 11
