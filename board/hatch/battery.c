@@ -87,6 +87,34 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c	= 60,
 		},
 	},
+
+		/* SMP SDI Dell FMXMT Battery Information */
+	[BATTERY_MURATA] = {
+		.fuel_gauge = {
+			.manuf_name = "Murata KT00404001",
+			.ship_mode = {
+				.reg_addr = 0x0,
+				.reg_data = { 0x10, 0x10 },
+			},
+			.fet = {
+				.reg_addr = 0x0,
+				.reg_mask = 0x2000,
+				.disconnect_val = 0x2000,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 8800,
+			.voltage_normal		= 7660, /* mV */
+			.voltage_min		= 6000, /* mV */
+			.precharge_current	= 256,	/* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 60,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= 0,
+			.discharging_max_c	= 60,
+		},
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
