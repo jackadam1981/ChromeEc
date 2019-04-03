@@ -76,6 +76,8 @@ static void mkbp_set_host_active(int active)
 #endif
 }
 
+uint32_t get_last_heci_mkbp_timestamp(void);
+
 /**
  * Assert host keyboard interrupt line.
  */
@@ -99,6 +101,11 @@ static void set_host_interrupt(int active)
 		mkbp_last_event_time = __hw_clock_source_read();
 
 	mkbp_set_host_active(active);
+
+#ifdef CONFIG_MKBP_USE_HECI
+	if (old_active == 0 && active == 1)
+		mkbp_last_event_time = get_last_heci_mkbp_timestamp();
+#endif
 
 	old_active = active;
 

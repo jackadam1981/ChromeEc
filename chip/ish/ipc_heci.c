@@ -23,11 +23,13 @@
  *  - Doorbell Clear Status Register (DB CSR)
  */
 
+/* todo sort */
 #include "registers.h"
 #include "console.h"
 #include "task.h"
 #include "util.h"
 #include "ipc_heci.h"
+#include "hwtimer.h"
 #include "ish_fwst.h"
 #include "queue.h"
 #include "hooks.h"
@@ -177,6 +179,7 @@ struct ipc_if_ctx {
 	struct queue tx_queue;
 	uint8_t is_tx_ipc_busy;
 	uint8_t initialized;
+	uint32_t *timestamp_of_outgoing_doorbell;
 };
 
 /* list of peer contexts */
@@ -228,7 +231,7 @@ static inline void ipc_disable_pimr_clearing_interrupt(
 	REG32(IPC_PIMR) &= ~ctx->pimr_2host_clearing_bit;
 }
 
-static void write_payload_and_ring_drbl(const struct ipc_if_ctx *ctx,
+static void write_payload_and_ring_drbl(struct ipc_if_ctx *ctx,
 					uint32_t drbl,
 					const uint8_t *payload,
 					size_t payload_size)
@@ -249,6 +252,12 @@ static void write_payload_and_ring_drbl(const struct ipc_if_ctx *ctx,
 			*(uint8_t *)(payload + msg_idx);
 		msg_idx++;
 		payload_size--;
+	}
+
+	/* Set first time */
+	if (ctx->timestamp_of_outgoing_doorbell) {
+		*ctx->timestamp_of_outgoing_doorbell = __hw_clock_source_read();
+		ctx->timestamp_of_outgoing_doorbell = NULL;
 	}
 
 	REG32(ctx->out_drbl_reg) = drbl;
@@ -498,7 +507,7 @@ static void ipc_host2ish_busy_clear_isr(void)
 }
 DECLARE_IRQ(ISH_IPC_ISH2HOST_CLR_IRQ, ipc_host2ish_busy_clear_isr);
 
-int ipc_write(const ipc_handle_t handle, const void *buf, const size_t buf_size)
+int ipc_write_timestamp(const ipc_handle_t handle, const void *buf, const size_t buf_size, uint32_t* timestamp)
 {
 	int ret;
 	struct ipc_if_ctx *ctx;
@@ -547,6 +556,7 @@ int ipc_write(const ipc_handle_t handle, const void *buf, const size_t buf_size)
 		return -EC_ERROR_OVERFLOW;
 	}
 
+	ctx->timestamp_of_outgoing_doorbell = timestamp;
 	ret = ipc_write_raw(ctx, drbl, payload, payload_size);
 	if (ret)
 		return ret;
