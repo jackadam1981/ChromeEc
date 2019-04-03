@@ -75,6 +75,24 @@
       "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab82f97_850651c3",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-03T10:20:04Z",
+      "side": 0,
+      "message": "Not sure if my understanding is correct,\nThe two state we want to avoid is:\n  (1) PP5000_USBC\u003d1 and USBC_CHARGE_L\u003d0 (usb-c port can\u0027t charge and supply power at the same time)\n  (2) USBC_CHARGE_L\u003d0 and POGO_CHARGE_L\u003d0 (can\u0027t charge from both paths at the same time)\n\npd_set_power_supply_ready ensures (1) won\u0027t happen, and board_set_active_charge_port ensures (2) won\u0027t happen.\n\nIn your example,\nAfter board_set_active_charge_port(POGO), the state is USBC_CHARGE_L\u003d1, POGO_CHARGE_L\u003d0, PP5000_USBC\u003dany.\nThen, after pd_power_supply_reset(USBC), PP5000_USBC\u003d0. So this should be ok.",
+      "parentUuid": "00029c51_898b9baf",
+      "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
