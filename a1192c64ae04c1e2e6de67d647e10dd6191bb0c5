@@ -141,6 +141,30 @@
       "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa48bcb8_3d4ece77",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T18:44:22Z",
+      "side": 1,
+      "message": "Right, servo v4 makes it easier, but it is some piece of hardware a hobbyist is very unlikely to have.\n\nI really don\u0027t understand your guys reluctance to make this mode of operation more visible, it is by far preferable by people in the open software community who we (Chrome OS) are trying to cater to.\n\nBut I\u0027ll leave this to your discretion.",
+      "parentUuid": "1ea918f9_4e80f3f8",
+      "range": {
+        "startLine": 82,
+        "startChar": 48,
+        "endLine": 82,
+        "endChar": 110
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
