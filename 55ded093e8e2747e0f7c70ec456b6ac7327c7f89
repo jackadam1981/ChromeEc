@@ -46,6 +46,30 @@
       "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b96dab8a_c34072a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-03T04:18:33Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PD_DEBUG_LEVEL is undefined, the strings should be included because debug_level can be changed at run-time.\n\nHave you tried \u0027pd dump 1\u0027 to raise debug level?",
+      "parentUuid": "17dd91e2_00d18efe",
+      "range": {
+        "startLine": 5009,
+        "startChar": 1,
+        "endLine": 5014,
+        "endChar": 6
+      },
+      "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
