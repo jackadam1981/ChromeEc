@@ -46,6 +46,30 @@
       "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f75d2b_e0aebb8d",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-03T23:06:11Z",
+      "side": 1,
+      "message": "Yeah the test team only needs to go to prod, but we\u0027re also using CR50_SQA to give to people who need to switch a board from prod to prepvt.\nAlso probably we want to use it so people can go from whatever to the MP test board id, so they can verify mp releases.",
+      "parentUuid": "93d905fa_dd9066f0",
+      "range": {
+        "startLine": 544,
+        "startChar": 31,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
