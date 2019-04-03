@@ -22,6 +22,30 @@
       "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17dd91e2_00d18efe",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-03T03:05:13Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PD_DEBUG_LEVEL is undefined, debug_level will be 0 by default and the string won\u0027t be included in the host command outputs (on my systems running ToT currently, the state in \"ectool usbpd\" and the debugfs is empty, when it doesn\u0027t need to be since we have the strings in our build).",
+      "parentUuid": "3d5f0f73_f5da6aa7",
+      "range": {
+        "startLine": 5009,
+        "startChar": 1,
+        "endLine": 5014,
+        "endChar": 6
+      },
+      "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
