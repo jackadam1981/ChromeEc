@@ -189,6 +189,30 @@
       "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96c3e114_b51fce22",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T20:05:15Z",
+      "side": 1,
+      "message": "sounds great and I am not suggesting restructuring, but mentioning clearly that ITE EC can be programmed without any servo board and the need to create chroot and run servod would sure make a lot of difference helpful.\n\nI am planning to publish a doc describing how one can reprogram chrome OS ap and ec firmware without any servos, servods or even chroot. I\u0027ll mention it here once it is available.",
+      "parentUuid": "bacf6e82_29e61fad",
+      "range": {
+        "startLine": 82,
+        "startChar": 48,
+        "endLine": 82,
+        "endChar": 110
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
