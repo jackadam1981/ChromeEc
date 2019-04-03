@@ -34,6 +34,24 @@
       "revId": "7c91b658c6c0c1ef9a08f2409190bbda0c2a0140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d90a70a_0b5be655",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2019-04-03T22:29:07Z",
+      "side": 1,
+      "message": "Seems like there are layering violations with the timestampin in some of the stack. As jett notes, you can\u0027t do stuff like this when more complex communication protocols are employed.\n\nWhy is the interrupt enable after the set host active? How many timestamps are needed and what are they supposed to cover? Do we need a callback for when the signalling has actually been done instead of relying on simple triggering mechanisms which interrupt_disable() is implicitly assuming?",
+      "parentUuid": "04955af7_3939fe52",
+      "revId": "7c91b658c6c0c1ef9a08f2409190bbda0c2a0140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
