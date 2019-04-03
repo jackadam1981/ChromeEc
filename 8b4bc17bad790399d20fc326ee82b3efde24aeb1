@@ -139,6 +139,24 @@
       "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab01808a_39cfbb9e",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-03T15:32:04Z",
+      "side": 1,
+      "message": "Since this magnometer doesn\u0027t have a HW Fifo, doesn\u0027t this sensor not get exposed to the sensor ring in the same way and only becomes an on-demand sensor?",
+      "parentUuid": "061a0c99_9ebcbc74",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
