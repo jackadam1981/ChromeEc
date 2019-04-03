@@ -117,6 +117,30 @@
       "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ea918f9_4e80f3f8",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T18:39:17Z",
+      "side": 1,
+      "message": "Is this document meant to be read only by partners?\n\nI am thinking about a hobbyist who does not have any servo but wants to be able to update the device firmware. The iteflash utility provides this ability, I think it would be beneficial to emphasize it in this document.\n\nIn fact this goes for all partners too: if they want to run FAFT - yes, they need servos and servod. If they just want to change ap/ec firmware - they don\u0027t need any of that, just SuzyQ. They don\u0027t even need the chroot. I think we should make this clearer, but not necessarily in this document.",
+      "parentUuid": "abada6a4_a5f6fceb",
+      "range": {
+        "startLine": 82,
+        "startChar": 48,
+        "endLine": 82,
+        "endChar": 110
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
