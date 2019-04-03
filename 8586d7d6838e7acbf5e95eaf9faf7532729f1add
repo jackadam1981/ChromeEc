@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "a13a0ae4_88aeda5e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-03T16:26:27Z",
+      "side": 1,
+      "message": "Agreed. I was mainly trying to follow the existing style which seems to print things in the callee. In general, this file is due for a lot of improvement, but I\u0027ve also gotten feedback that I should be following the existing style rather than improve: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1541818/3/util/stm32mon.c#102",
+      "parentUuid": "a8801d0a_cd9af8a6",
+      "range": {
+        "startLine": 1021,
+        "startChar": 2,
+        "endLine": 1021,
+        "endChar": 61
+      },
+      "revId": "8586d7d6838e7acbf5e95eaf9faf7532729f1add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ad91659_ada29dba",
         "filename": "util/stm32mon.c",
         "patchSetId": 4
