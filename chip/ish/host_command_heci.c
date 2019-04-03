@@ -52,9 +52,7 @@ enum heci_cros_ec_channel {
 static uint8_t response_buffer[IPC_MAX_PAYLOAD_SIZE] __aligned(4);
 static struct host_packet heci_packet;
 
-static uint32_t heci_mkbp_last_event_time;
-
-void heci_send_mkbp_event(void)
+void heci_send_mkbp_event(uint32_t *timestamp)
 {
 	struct cros_ec_ishtp_msg evt;
 
@@ -62,14 +60,8 @@ void heci_send_mkbp_event(void)
 	evt.hdr.status = 0;
 
 	heci_send_msg_get_timestamp(heci_cros_ec_handle, (uint8_t *)&evt,
-				    sizeof(evt), &heci_mkbp_last_event_time);
+				    sizeof(evt), timestamp);
 }
-
-uint32_t get_last_heci_mkbp_timestamp(void)
-{
-	return heci_mkbp_last_event_time;
-}
-
 
 static void heci_send_hostcmd_response(struct host_packet *pkt)
 {

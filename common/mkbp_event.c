@@ -14,10 +14,13 @@
 #include "link_defs.h"
 #include "mkbp_event.h"
 #include "power.h"
+#include "task.h"
 #include "util.h"
 
 static uint32_t events;
 uint32_t mkbp_last_event_time;
+/* Protects race between setting event mask and asserting interrupt */
+static struct mutex host_interrupt_state_lock;
 
 static void set_event(uint8_t event_type)
 {
@@ -50,31 +53,12 @@ static void mkbp_set_host_active_via_event(int active)
 #endif
 
 #ifdef CONFIG_MKBP_USE_HECI
-static void mkbp_set_host_active_via_heci(int active)
+static void mkbp_set_host_active_via_heci(int active, uint32_t *timestamp)
 {
 	if (active)
-		heci_send_mkbp_event();
+		heci_send_mkbp_event(timestamp);
 }
 #endif
-
-/*
- * This communicates to the AP whether an MKBP event is currently available
- * for processing.
- *
- * @param active  1 if there is an event, 0 otherwise
- */
-static void mkbp_set_host_active(int active)
-{
-#if defined(CONFIG_MKBP_USE_CUSTOM)
-	mkbp_set_host_active_via_custom(active);
-#elif defined(CONFIG_MKBP_USE_HOST_EVENT)
-	mkbp_set_host_active_via_event(active);
-#elif defined(CONFIG_MKBP_USE_GPIO)
-	mkbp_set_host_active_via_gpio(active);
-#elif defined(CONFIG_MKBP_USE_HECI)
-	mkbp_set_host_active_via_heci(active);
-#endif
-}
 
 uint32_t get_last_heci_mkbp_timestamp(void);
 
@@ -84,6 +68,10 @@ uint32_t get_last_heci_mkbp_timestamp(void);
 static void set_host_interrupt(int active)
 {
 	static int old_active;
+
+	/* Only set on rising and falling edges */
+	if (old_active == active)
+		return;
 	/*
 	 * If we are going to perform a simple GPIO toggle, then pause
 	 * interrupts to let last_event_time marker have the best chance of
@@ -97,14 +85,15 @@ static void set_host_interrupt(int active)
 	interrupt_disable();
 #endif
 
-	if (old_active == 0 && active == 1)
-		mkbp_last_event_time = __hw_clock_source_read();
 
-	mkbp_set_host_active(active);
-
-#ifdef CONFIG_MKBP_USE_HECI
-	if (old_active == 0 && active == 1)
-		mkbp_last_event_time = get_last_heci_mkbp_timestamp();
+#if defined(CONFIG_MKBP_USE_CUSTOM)
+	mkbp_set_host_active_via_custom(active);
+#elif defined(CONFIG_MKBP_USE_HOST_EVENT)
+	mkbp_set_host_active_via_event(active);
+#elif defined(CONFIG_MKBP_USE_GPIO)
+	mkbp_set_host_active_via_gpio(active);
+#elif defined(CONFIG_MKBP_USE_HECI)
+	mkbp_set_host_active_via_heci(active, old_active ? NULL : &mkbp_last_event_time);
 #endif
 
 	old_active = active;
@@ -113,6 +102,13 @@ static void set_host_interrupt(int active)
 	interrupt_enable();
 #endif
 }
+
+static int command_fire_trigger(int argc, char **argv)
+{
+	mkbp_set_host_active_via_heci(1, NULL);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(fire_mkbp, command_fire_trigger, NULL, NULL);
 
 #ifdef CONFIG_MKBP_WAKEUP_MASK
 /**
@@ -135,6 +131,7 @@ static inline int host_is_sleeping(void)
 
 int mkbp_send_event(uint8_t event_type)
 {
+	mutex_lock(&host_interrupt_state_lock);
 	set_event(event_type);
 
 #ifdef CONFIG_MKBP_WAKEUP_MASK
@@ -142,13 +139,31 @@ int mkbp_send_event(uint8_t event_type)
 	if (host_is_sleeping()) {
 		/* Skip host wake if this isn't a wake event */
 		if (!(host_get_events() & CONFIG_MKBP_WAKEUP_MASK) &&
-		      event_type != EC_MKBP_EVENT_KEY_MATRIX)
+		      event_type != EC_MKBP_EVENT_KEY_MATRIX) {
+			mutex_unlock(&host_interrupt_state_lock);
 			return 0;
+		}
 	}
 #endif
 
 	set_host_interrupt(1);
+	mutex_unlock(&host_interrupt_state_lock);
 	return 1;
+}
+
+static int clear_interrupt_if_no_events(void)
+{
+	int cleared;
+
+	mutex_lock(&host_interrupt_state_lock);
+
+	cleared = !events;
+	if (cleared)
+		set_host_interrupt(0);
+
+	mutex_unlock(&host_interrupt_state_lock);
+
+	return cleared;
 }
 
 static int mkbp_get_next_event(struct host_cmd_handler_args *args)
@@ -168,7 +183,9 @@ static int mkbp_get_next_event(struct host_cmd_handler_args *args)
 				break;
 
 		if (i == EC_MKBP_EVENT_COUNT) {
-			set_host_interrupt(0);
+			/* If an event was set, start loop over again */
+			if (!clear_interrupt_if_no_events())
+				continue;
 			return EC_RES_UNAVAILABLE;
 		}
 
@@ -203,9 +220,8 @@ static int mkbp_get_next_event(struct host_cmd_handler_args *args)
 			set_event(evt);
 	} while (data_size == -EC_ERROR_BUSY);
 
-	if (!events)
-		set_host_interrupt(0);
-	else if (args->version >= 2)
+	/* Try to clear the interrupt if there are no events left */
+	if (!clear_interrupt_if_no_events() && args->version >= 2)
 		resp[0] |= EC_MKBP_HAS_MORE_EVENTS;
 
 	if (data_size < 0)
