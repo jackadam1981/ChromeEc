@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "63b8becd_64bbf9ad",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-03T02:08:55Z",
+      "side": 1,
+      "message": "Wouldn\u0027t that have broken the build before this change? Pre-change cal was only declared in this scope if we were using the LIS2MDL in chain with the LSM6DSM. It seems like if anything this line should have been:\n\n#ifdef LIS2MDL_CAL",
+      "parentUuid": "e86ba241_a460cb7b",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd4b6b61_7860edbf",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-02T21:58:01Z",
       "side": 1,
       "message": "remove.",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ada2be0_a505a951",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-03T02:08:55Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "cd4b6b61_7860edbf",
       "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8053992b_ea32892d",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-03T02:08:55Z",
+      "side": 1,
+      "message": "It\u0027s line 127.",
+      "parentUuid": "3caf4586_e387148c",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7135df85_2a984d2f",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 8
@@ -64,6 +118,24 @@
       "writtenOn": "2019-04-02T21:58:01Z",
       "side": 1,
       "message": "As said before, you need a irq_handler. It is very unlikely we will pass CTS without one.",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061a0c99_9ebcbc74",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-03T02:08:55Z",
+      "side": 1,
+      "message": "I looked into it but the lis2mdl doesn\u0027t have a FIFO. Looking at other irq handlers they basically don\u0027t do anything in the cases where the FIFO isn\u0027t in place. So wouldn\u0027t the irq be a noop?",
+      "parentUuid": "7135df85_2a984d2f",
       "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
