@@ -16,6 +16,24 @@
       "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1af177_4f476c5d",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-03T08:26:38Z",
+      "side": 0,
+      "message": "From the comment above, I think if we don\u0027t change the value of EN_USB_CHARGE_L here, ec will stay in a \"good\" state.\nAlso PD_EVENT_POWER_CHANGE will trigger re-selecting the charge path. If we can ensure the state is good after board_set_active_charge_port(), then it should be okay.",
+      "parentUuid": "2514b1a8_502a7361",
+      "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
