@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50452e5c_49e5c33b",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-03T23:36:42Z",
+      "side": 1,
+      "message": "Change looks good. It seems like this is being repeated multiple places. It can also be handled by a helper function:\n\nvoid bc12_update_supplier(enum charge_supplier supplier, int port, struct charge_port_info *new_chg)\n{\n    if (bc12_supplier[port] !\u003d CHARGE_SUPPLIER_NONE)\n        charge_manager_update_charge(bc12_supplier[port], port, NULL);\n    bc12_supplier[port] \u003d supplier;\n    if (supplier !\u003d CHARGE_SUPPLIER_NONE)\n        charge_manager_update_charge(supplier, port, new_chg);\n}\n\nThen you can just call it directly from different places in this file:\n\nbc12_update_supplier(supplier, port, \u0026new_chg); or\nbc12_update_supplier(CHARGE_SUPPLIER_NONE, port, NULL);\n\nThat will just ensure the last supplier type always gets cleared no matter what. Anyways, the change in its current form looks good too, so I will leave upto you to decide which one you want to go with.",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 312,
+        "endChar": 47
+      },
+      "revId": "2c946f9d74bd002414c08c924d0e7bbcccf2c89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
