@@ -34,6 +34,24 @@
       "revId": "54b2cb1df0a562b3a3ddb9005e44368319d876b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca8ffae_db4969aa",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-03T23:08:54Z",
+      "side": 1,
+      "message": "I\u0027ve added a check here to update the charge_manager if the most recent saved supplier type is not NONE.",
+      "parentUuid": "8ad40f63_aa7808f1",
+      "revId": "54b2cb1df0a562b3a3ddb9005e44368319d876b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
