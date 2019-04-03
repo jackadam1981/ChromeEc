@@ -22,6 +22,30 @@
       "revId": "86781d5afd9b7cfdb887b94b2be6eec7a30623f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c12415_7f268c21",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-03T21:35:07Z",
+      "side": 0,
+      "message": "gpio_get_level(SYS_RST_L) is useless on cheza. Reading the flags is the only way to tell if cr50 is asserting sys_rst_l.",
+      "parentUuid": "9f345120_9fe5a867",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 47
+      },
+      "revId": "86781d5afd9b7cfdb887b94b2be6eec7a30623f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
