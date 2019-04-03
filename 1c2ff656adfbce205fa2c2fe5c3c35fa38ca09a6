@@ -404,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "7f166f85_9b02961c",
+        "filename": "test/legacy_nvmem_dump.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-03T22:58:51Z",
+      "side": 1,
+      "message": "Yep, that\u0027s the minimal idea. Can go to the todo bucket.",
+      "parentUuid": "957df858_55cb5924",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bed43ac3_8fe292dd",
         "filename": "test/legacy_nvmem_dump.h",
         "patchSetId": 11
@@ -922,6 +946,30 @@
       "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66344f03_68f03f87",
+        "filename": "test/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-03T22:58:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4c75602_b3763e0a",
+      "range": {
+        "startLine": 1339,
+        "startChar": 5,
+        "endLine": 1339,
+        "endChar": 13
+      },
+      "revId": "1c2ff656adfbce205fa2c2fe5c3c35fa38ca09a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
