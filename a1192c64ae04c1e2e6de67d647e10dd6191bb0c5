@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1028ffa_80f43faa",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T18:22:35Z",
+      "side": 1,
+      "message": "s/servod/servo and servod/",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0421e4b_3f182d31",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T18:22:35Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to mention Servo V4 here - if people have the servo they are likely to run servod anyways.\n\nThe appeal of this alternative is that no additional hardware is required.",
+      "range": {
+        "startLine": 82,
+        "startChar": 48,
+        "endLine": 82,
+        "endChar": 110
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

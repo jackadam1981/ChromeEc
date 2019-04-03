@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "453bbe9b_279c9103",
+        "filename": "util/iteflash.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T18:22:35Z",
+      "side": 1,
+      "message": "I think I saw it communicating after botched sync sequence on Dragonegg. Probably not a big deal either way.",
+      "parentUuid": "19580d97_04e49590",
+      "range": {
+        "startLine": 29,
+        "startChar": 91,
+        "endLine": 29,
+        "endChar": 166
+      },
+      "revId": "1a9b2257e227aa9696d5dfff64ef1d1cd4130b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f185fdae_2d73f646",
         "filename": "util/iteflash.md",
         "patchSetId": 3
