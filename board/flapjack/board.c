@@ -29,6 +29,9 @@
 #include "i2c.h"
 #include "power.h"
 #include "power_button.h"
+#ifdef SECTION_IS_RW
+#include "lid_switch.h"
+#endif
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
@@ -93,11 +96,6 @@ DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	schedule_deferred_pd_interrupt(0 /* port */);
-}
-
-static void hall_interrupt(enum gpio_signal signal)
-{
-	/* TODO(b/111378000): Implement hall_interrupt */
 }
 
 static void gauge_interrupt(enum gpio_signal signal)
