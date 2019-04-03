@@ -22,6 +22,30 @@
       "revId": "127ae50d30e794a13b30a1644211154b2eabee65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16309842_bb8fcdfb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T20:48:32Z",
+      "side": 1,
+      "message": "ah, yes, this whole paragraph is messed up, fixed.",
+      "parentUuid": "96677a23_21a747c3",
+      "range": {
+        "startLine": 267,
+        "startChar": 20,
+        "endLine": 267,
+        "endChar": 33
+      },
+      "revId": "127ae50d30e794a13b30a1644211154b2eabee65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
