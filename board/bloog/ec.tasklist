@@ -1,4 +1,6 @@
-/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+<<<<<<< HEAD   (2cf498 led_pwm: use NEAR_FULL_COLOR when discharging-on-ac)
+=======
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -24,3 +26,4 @@
 	TASK_ALWAYS(PD_C1, pd_task, NULL, VENTI_TASK_STACK_SIZE) \
 	TASK_ALWAYS(PD_INT_C0, pd_interrupt_handler_task, 0, VENTI_TASK_STACK_SIZE) \
 	TASK_ALWAYS(PD_INT_C1, pd_interrupt_handler_task, 1, VENTI_TASK_STACK_SIZE)
+>>>>>>> CHANGE (6bd030 ec.tasklist: Consolidate duplicate comments)
