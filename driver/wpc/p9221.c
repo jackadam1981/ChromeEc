@@ -1006,3 +1006,35 @@ void wireless_power_charger_task(void *u)
 		p9221_irq_thread(wpc);
 	}
 }
+
+static int command_p9221_print_debug(int argc, char **argv)
+{
+	struct wpc_charger_info *wpc = wpc_get_charger_info();
+	uint32_t data = 0;
+	int man, ma, mv, mw, voset, epp_rp, epp_cp;
+
+	if (!wpc_chip_is_online()) {
+		CPRINTS("offline");
+		return EC_SUCCESS;
+	}
+
+	p9221_reg_read_cooked(wpc, P9221R7_IOUT_REG, &data);
+	ma = data / 1000;
+
+	p9221_reg_read_cooked(wpc, P9221R7_VOUT_REG, &data);
+	mv = data / 1000;
+	mw = ma * mv / 1000;
+
+	p9221_read8(wpc, P9221R7_VOUT_SET_REG, &voset);
+	p9221_read16(wpc, P9221R7_EPP_TX_MFG_CODE_REG, &man);
+
+	p9221_read8(wpc, P9221R7_EPP_REQ_NEGOTIATED_POWER_REG, &epp_rp);
+	p9221_read8(wpc, P9221R7_EPP_CUR_NEGOTIATED_POWER_REG, &epp_cp);
+
+	CPRINTS("man:%04x ma:%d mv:%d mw:%d voset:%2d epp_rp:%d epp_cp:%d",
+		man, ma, mv, mw, voset, epp_rp, epp_cp);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(p9221, command_p9221_print_debug, "",
+			"get the state of the p9221");
