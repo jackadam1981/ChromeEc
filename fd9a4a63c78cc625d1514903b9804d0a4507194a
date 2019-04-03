@@ -22,6 +22,30 @@
       "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b8bc40_bfc0b138",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T20:27:22Z",
+      "side": 0,
+      "message": "but this does not address the problem of b/117676461, right?",
+      "parentUuid": "611d5b15_8de09d54",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 39
+      },
+      "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
