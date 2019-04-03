@@ -166,13 +166,13 @@ struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
-		.pol = TCPC_ALERT_ACTIVE_LOW,
+		.flags = TCPC_FLAGS_ALERT_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_ANX7447] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
 		.i2c_slave_addr = AN7447_TCPC3_I2C_ADDR, /* Verified on v1.1 */
 		.drv = &anx7447_tcpm_drv,
-		.pol = TCPC_ALERT_ACTIVE_LOW,
+		.flags = TCPC_FLAGS_ALERT_ACTIVE_LOW,
 	},
 };
 

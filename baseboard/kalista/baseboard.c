@@ -151,7 +151,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{I2C_PORT_TCPC0, I2C_ADDR_TCPC0, &ps8xxx_tcpm_drv,
-			TCPC_ALERT_ACTIVE_LOW},
+			TCPC_FLAGS_ALERT_ACTIVE_LOW},
 };
 
 static int ps8751_tune_mux(int port)
