@@ -46,6 +46,30 @@
       "revId": "efc29ed4a7394fba193ed0b63f091d54d9b0af16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7947e1_745bfe9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-03T16:53:07Z",
+      "side": 1,
+      "message": "I\u0027m wondering if this is really a dedicated charger or should be something else.\n\nHere are the properties a dedicated port has to inherit:\n\n1. dedicated port is sink only\n2. dedicated port is always connected\n3. dedicated port is given highest priority\n4. dedicated port number is larger than PD port number\n\nThe entire codebase is written assuming these properties are held. So, if you\u0027re changing any of these, you need to visit every single line of related code and verify the property can be changed.",
+      "parentUuid": "6190c74d_d3d688f8",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "efc29ed4a7394fba193ed0b63f091d54d9b0af16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
