@@ -28,7 +28,7 @@
 #define P9221_TX_TIMEOUT_MS		(20 * 1000*1000)
 #define P9221_DCIN_TIMEOUT_MS		(2 * 1000*1000)
 #define P9221_VRECT_TIMEOUT_MS		(2 * 1000*1000)
-#define P9221_NOTIFIER_DELAY_MS		(80*1000)
+#define P9221_NOTIFIER_DELAY_MS		(100 * 1000)
 #define P9221R7_ILIM_MAX_UA		(1600 * 1000)
 #define P9221R7_OVER_CHECK_NUM		3
 
@@ -730,6 +730,8 @@ int p9221_notifier_check_det(struct wpc_charger_info *wpc)
 	if (wpc->online)
 		goto done;
 
+	p9221_write8(wpc, P9221R7_EPP_REQ_NEGOTIATED_POWER_REG,
+		     P9221_DC_IVL_EPP_MV / 500);
 	/* send out a FOD but is_epp() is still invalid */
 	p9221_set_online(wpc);
 
@@ -755,6 +757,8 @@ static int p9221_get_charge_supplier(struct wpc_charger_info *wpc)
 
 	if (p9221_is_r7(wpc) && p9221_is_epp(wpc)) {
 		wpc->charge_supplier = CHARGE_SUPPLIER_WPC_EPP;
+		p9221_write8(wpc, P9221R7_VOUT_SET_REG,
+			     P9221_DC_IVL_EPP_MV / 100);
 
 		ret = p9221_read16(wpc, P9221R7_EPP_TX_MFG_CODE_REG, &txmf_id);
 		if (ret || txmf_id != P9221_GPP_TX_MF_ID)
@@ -830,7 +834,7 @@ static int p9221_reg_write_cooked_r7(struct wpc_charger_info *wpc,
 	case P9221R7_VOUT_SET_REG:
 		/* uV -> 0.1V */
 		val /= 1000;
-		if (val < 3500 || val > 9000)
+		if (val < 3500 || val > 11000)
 			return -EC_ERROR_INVAL;
 		data = val / 100;
 		break;

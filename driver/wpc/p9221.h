@@ -243,7 +243,7 @@
 #define P9221_DC_ICL_BPP_MA			1000
 #define P9221_DC_ICL_EPP_MA			1100
 #define P9221_DC_IVL_BPP_MV			5000
-#define P9221_DC_IVL_EPP_MV			9000
+#define P9221_DC_IVL_EPP_MV			11000
 #define P9221_EPP_THRESHOLD_UV			7000000
 
 #define true    1
