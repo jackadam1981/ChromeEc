@@ -3003,7 +3003,7 @@
 /* Task config */
 
 /*
- * List of enabled tasks in ascending priority order.  This is normally
+ * List of enabled tasks in ascending priority order. This is normally
  * defined in each board's ec.tasklist file.
  *
  * For each task, use the macro TASK_ALWAYS(n, r, d, s) for base tasks and
@@ -3013,6 +3013,9 @@
  * 'r' is the main routine of the task
  * 'd' is an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
+ *
+ * For USB PD tasks, IDs must be in consecutive order and correspond to
+ * the port which they are for. See TASK_ID_TO_PD_PORT() macro.
  */
 #undef CONFIG_TASK_LIST
 
