@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b470644_b7121757",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-03T22:34:59Z",
+      "side": 1,
+      "message": "I think, it is not necessary, and not matching to line24~line28",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "64978098b8647ae7d13d2efefe911cada70def59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
