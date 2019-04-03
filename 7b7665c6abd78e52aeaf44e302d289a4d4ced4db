@@ -34,6 +34,24 @@
       "revId": "7b7665c6abd78e52aeaf44e302d289a4d4ced4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b7131a4_1a5e03ae",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-03T09:13:55Z",
+      "side": 1,
+      "message": "Wait.. is EN_PP5000_USBC(\u003d PP1800_S3_EN) also not implemented in P1?\nIf so, we can remove more if\u0027s.",
+      "parentUuid": "e1d7b067_bce20f36",
+      "revId": "7b7665c6abd78e52aeaf44e302d289a4d4ced4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
