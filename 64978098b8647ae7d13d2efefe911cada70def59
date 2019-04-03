@@ -46,6 +46,30 @@
       "revId": "64978098b8647ae7d13d2efefe911cada70def59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1599e11f_7ce10fcf",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-03T23:45:23Z",
+      "side": 1,
+      "message": "I misread the original type as \"int8_t\".",
+      "parentUuid": "65d38500_1793906d",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "64978098b8647ae7d13d2efefe911cada70def59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
