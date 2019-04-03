@@ -46,6 +46,30 @@
       "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6aeaf43_d4eedb97",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-03T20:36:30Z",
+      "side": 0,
+      "message": "It does fix the problem where cr50 is outputting high briefly on SYS_RST_L.\n\nIt doesn\u0027t remove the internal pullup on SYS_RST_L which might be a different problem.",
+      "parentUuid": "f2b8bc40_bfc0b138",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 39
+      },
+      "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
