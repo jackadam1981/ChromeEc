@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "611d5b15_8de09d54",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-03T18:14:44Z",
+      "side": 0,
+      "message": "This is the issue. We should have set SYS_RST_L to 0 before enabling the output.\n\nThis change switches to using the g chip pseudo open drain support instead of flipping these two lines, because that g chip support is better and less hacky than this setting flags connecting pinmux stuff.\nWith the chip/g/gpio.c support we wont need to worry about changing this code everytime we change the gpio SYS_RST_L is using.",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 39
+      },
+      "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
