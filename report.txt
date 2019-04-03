@@ -1,0 +1,213 @@
+build/kukui_scp/RW/ec.RW.elf
+/opt/coreboot-sdk/bin/arm-eabi-objdump
+build/kukui_scp/util/export_taskinfo.so
+Task: HOOKS, Max size: 244 (180 + 64), Allocated size: 640
+Call Trace:
+    hook_task (88) [common/hooks.c:171] 29b4
+        -> hook_task[common/hooks.c:247] 2ae8
+    task_wait_event (0) [core/cortex-m/task.c:455] 5b2c
+        -> task_wait_event[core/cortex-m/task.c:455] 5b2e
+    __wait_evt (40) [core/cortex-m/task.c:400] 57f8
+        -> __wait_evt[core/cortex-m/task.c:409] 586e
+    get_time (24) [common/timer.c:176] 4ac0
+        -> get_time[common/timer.c:179] 4ac8
+        -> get_time[common/timer.c:182] 4ad4
+    __hw_clock_source_read (8) [chip/mt_scp/hrtimer.c:189] 1380
+        -> __hw_clock_source_read[chip/mt_scp/hrtimer.c:190] 138a
+    __aeabi_uldivmod (20) [core/cortex-m/uldivmod.S:39] 5fec
+Task: HOSTCMD, Max size: 428 (364 + 64), Allocated size: 640
+Call Trace:
+    host_command_task (80) [common/host_command.c:434] 309c
+        -> host_command_task[common/host_command.c:449] 30fe
+    host_command_process (48) [common/host_command.c:673] 2f78
+        -> host_command_process[common/host_command.c:678] 3014
+           - host_command_debug_request[common/host_command.c:666]
+        -> host_command_process[common/host_command.c:678] 301e
+           - host_command_debug_request[common/host_command.c:669]
+        -> host_command_process[common/host_command.c:708] 304e
+        -> host_command_process[common/host_command.c:711] 3062
+    cprints (32) [common/console_output.c:82] 2464
+        -> cprints[common/console_output.c:92] 2478
+    cprintf (24) [common/console_output.c:60] 2388
+        -> cprintf[common/console_output.c:75] 23a0
+    uart_vprintf (8) [common/uart_buffering.c:270] 4e08
+        -> uart_vprintf[common/uart_buffering.c:271] 4e12
+    vfnprintf (120) [common/printf.c:55] 3c14
+        -> vfnprintf[common/printf.c:194] 3d98
+    get_time (24) [common/timer.c:176] 4ac0
+        -> get_time[common/timer.c:179] 4ac8
+        -> get_time[common/timer.c:182] 4ad4
+    __hw_clock_source_read (8) [chip/mt_scp/hrtimer.c:189] 1380
+        -> __hw_clock_source_read[chip/mt_scp/hrtimer.c:190] 138a
+    __aeabi_uldivmod (20) [core/cortex-m/uldivmod.S:39] 5fec
+Task: VDEC_SERVICE, Max size: 516 (452 + 64), Allocated size: 640
+Call Trace:
+    vdec_service_task (80) [board/kukui_scp/vdec.c:69] b3c
+        -> vdec_service_task[board/kukui_scp/vdec.c:90] b8c
+    vdec_h264_msg_handler (32) [private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_srv.c:327] 7bb4
+        -> vdec_h264_msg_handler[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_srv.c:339] 7c74
+           - handle_dec_start_msg[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_srv.c:202]
+    vdec_h264_decode (16) [private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:743] 68b4
+        -> vdec_h264_decode[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:757] 690e
+           - handle_slice_nalu[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:402]
+    vdec_h264_parse_slice_hdr (48) [private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_parse.c:122] 7674
+        -> vdec_h264_parse_slice_hdr[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_parse.c:292] 7838
+    prepare_slice_ref_pic_list (64) [private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:717] 65d4
+        -> prepare_slice_ref_pic_list[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:726] 679c
+           - set_refb_slice_pic_list[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:629]
+             - set_ref_b[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:546]
+        -> prepare_slice_ref_pic_list[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:726] 67ee
+           - set_refb_slice_pic_list[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:630]
+             - set_ref_b1[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:564]
+    h264_get_mv_buffer (8) [private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:493] 6534
+        -> h264_get_mv_buffer[private-mt8183/board/kukui_scp/vdec_h264/vdec_h264_decode.c:502] 6566
+    cprintf (24) [common/console_output.c:60] 2388
+        -> cprintf[common/console_output.c:75] 23a0
+    uart_vprintf (8) [common/uart_buffering.c:270] 4e08
+        -> uart_vprintf[common/uart_buffering.c:271] 4e12
+    vfnprintf (120) [common/printf.c:55] 3c14
+        -> vfnprintf[common/printf.c:194] 3d98
+    get_time (24) [common/timer.c:176] 4ac0
+        -> get_time[common/timer.c:179] 4ac8
+        -> get_time[common/timer.c:182] 4ad4
+    __hw_clock_source_read (8) [chip/mt_scp/hrtimer.c:189] 1380
+        -> __hw_clock_source_read[chip/mt_scp/hrtimer.c:190] 138a
+    __aeabi_uldivmod (20) [core/cortex-m/uldivmod.S:39] 5fec
+Task: VENC_SERVICE, Max size: 796 (732 + 64), Allocated size: 640
+Call Trace:
+    venc_service_task (320) [board/kukui_scp/venc.c:67] c18
+        -> venc_service_task[board/kukui_scp/venc.c:86] c64
+    venc_h264_msg_handler (120) [private-mt8183/board/kukui_scp/venc_h264/venc_h264_srv.c:161] 88c8
+        -> venc_h264_msg_handler[private-mt8183/board/kukui_scp/venc_h264/venc_h264_srv.c:174] 8988
+           - handle_h264_enc_encode_msg[private-mt8183/board/kukui_scp/venc_h264/venc_h264_srv.c:112]
+    venc_h264_enc (72) [private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:1374] 83f0
+        -> venc_h264_enc[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:1379] 841c
+           - h264_encode_sps[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:938]
+        -> venc_h264_enc[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:1381] 8482
+           - h264_encode_pps[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:994]
+        -> venc_h264_enc[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:1383] 85a0
+           - h264_encode_frame[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:1125]
+    h264_seq_lvl_mmr_setting (16) [private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:446] 7d8c
+        -> h264_seq_lvl_mmr_setting[private-mt8183/board/kukui_scp/venc_h264/venc_h264_drv.c:538] 7ef8
+    cprintf (24) [common/console_output.c:60] 2388
+        -> cprintf[common/console_output.c:75] 23a0
+    uart_vprintf (8) [common/uart_buffering.c:270] 4e08
+        -> uart_vprintf[common/uart_buffering.c:271] 4e12
+    vfnprintf (120) [common/printf.c:55] 3c14
+        -> vfnprintf[common/printf.c:194] 3d98
+    get_time (24) [common/timer.c:176] 4ac0
+        -> get_time[common/timer.c:179] 4ac8
+        -> get_time[common/timer.c:182] 4ad4
+    __hw_clock_source_read (8) [chip/mt_scp/hrtimer.c:189] 1380
+        -> __hw_clock_source_read[chip/mt_scp/hrtimer.c:190] 138a
+    __aeabi_uldivmod (20) [core/cortex-m/uldivmod.S:39] 5fec
+Task: ISP_SERVICE, Max size: 684 (620 + 64), Allocated size: 1536
+Call Trace:
+    isp_service_task (184) [board/kukui_scp/isp_p1_srv.c:93] a94
+        -> isp_service_task[board/kukui_scp/isp_p1_srv.c:111] ad0
+    isp_msg_handler (32) [private-mt8183/board/kukui_scp/isp/isp_p1_task.c:42] 6120
+        -> isp_msg_handler[private-mt8183/board/kukui_scp/isp/isp_p1_task.c:87] 61f4
+    enqueueFrame (24) [private-mt8183/mtk/isp/isp_function.c:2130] b2d8
+        -> enqueueFrame[private-mt8183/mtk/isp/isp_function.c:2173] b372
+    camEnqueMetaData (40) [private-mt8183/mtk/isp/isp_function.c:1823] b160
+        -> camEnqueMetaData[private-mt8183/mtk/isp/isp_function.c:1859] b270
+    setLcsFrame (0) [private-mt8183/mtk/isp/isp_function.c:1805] b13c
+        -> setLcsFrame[private-mt8183/mtk/isp/isp_function.c:1810] b156
+    camRawPipeSetLcs (136) [private-mt8183/mtk/isp/isp_function.c:1401] a838
+        -> camRawPipeSetLcs[private-mt8183/mtk/isp/isp_function.c:1466] a9c6
+        -> camRawPipeSetLcs[private-mt8183/mtk/isp/isp_function.c:1471] a9e0
+    cprintf (24) [common/console_output.c:60] 2388
+        -> cprintf[common/console_output.c:75] 23a0
+    uart_vprintf (8) [common/uart_buffering.c:270] 4e08
+        -> uart_vprintf[common/uart_buffering.c:271] 4e12
+    vfnprintf (120) [common/printf.c:55] 3c14
+        -> vfnprintf[common/printf.c:194] 3d98
+    get_time (24) [common/timer.c:176] 4ac0
+        -> get_time[common/timer.c:179] 4ac8
+        -> get_time[common/timer.c:182] 4ad4
+    __hw_clock_source_read (8) [chip/mt_scp/hrtimer.c:189] 1380
+        -> __hw_clock_source_read[chip/mt_scp/hrtimer.c:190] 138a
+    __aeabi_uldivmod (20) [core/cortex-m/uldivmod.S:39] 5fec
+Task: CONSOLE, Max size: 356 (292 + 64), Allocated size: 640
+Call Trace:
+    console_task (72) [common/console.c:652] 1f18
+        -> console_task[common/console.c:662] 2162
+           - console_handle_char[common/console.c:605]
+    load_history (8) [common/console.c:340] 1d50
+        -> load_history[common/console.c:345] 1d66
+    move_cursor_begin (8) [common/console.c:317] 1c70
+        -> move_cursor_begin[common/console.c:321] 1c7c
+    cprintf (24) [common/console_output.c:60] 2388
+        -> cprintf[common/console_output.c:75] 23a0
+    uart_vprintf (8) [common/uart_buffering.c:270] 4e08
+        -> uart_vprintf[common/uart_buffering.c:271] 4e12
+    vfnprintf (120) [common/printf.c:55] 3c14
+        -> vfnprintf[common/printf.c:194] 3d98
+    get_time (24) [common/timer.c:176] 4ac0
+        -> get_time[common/timer.c:179] 4ac8
+        -> get_time[common/timer.c:182] 4ad4
+    __hw_clock_source_read (8) [chip/mt_scp/hrtimer.c:189] 1380
+        -> __hw_clock_source_read[chip/mt_scp/hrtimer.c:190] 138a
+    __aeabi_uldivmod (20) [core/cortex-m/uldivmod.S:39] 5fec
+Unresolved indirect callsites:
+    In function queue_remove_direct:
+        -> queue_remove_direct[common/queue_policies.c:27] 4048
+    In function jump_to_image:
+        -> jump_to_image[common/system.c:612] 4104
+    In function hook_notify:
+        -> hook_notify[common/hooks.c:129] 2932
+    In function hook_task:
+        -> hook_task[common/hooks.c:199] 2ad8
+    In function host_packet_respond:
+        -> host_packet_respond[common/host_command.c:240] 2b62
+    In function gpio_interrupt:
+        -> gpio_interrupt[chip/mt_scp/gpio.c:172] 1120
+    In function vfnprintf:
+        -> vfnprintf[common/printf.c:75] 3c32
+        -> vfnprintf[common/printf.c:88] 3c4e
+        -> vfnprintf[common/printf.c:96] 3c66
+        -> vfnprintf[common/printf.c:171] 3d5a
+        -> vfnprintf[common/printf.c:172] 3d76
+        -> vfnprintf[common/printf.c:310] 3ef2
+        -> vfnprintf[common/printf.c:315] 3f14
+        -> vfnprintf[common/printf.c:318] 3f34
+    In function mkbp_get_next_event:
+        -> mkbp_get_next_event[common/mkbp_event.c:194] 3912
+    In function host_send_response:
+        -> host_send_response[common/host_command.c:153] 2df2
+    In function console_task:
+        -> console_task[common/console.c:662] 2288
+           - console_handle_char[common/console.c:531]
+             - handle_command[common/console.c:248]
+    In function ipc_handler:
+        -> ipc_handler[chip/mt_scp/ipi.c:296] 1754
+           - ipi_handler[chip/mt_scp/ipi.c:150]
+    In function queue_advance_head:
+        -> queue_advance_head[common/queue.c:105] 3f90
+    In function host_command_process:
+        -> host_command_process[common/host_command.c:704] 3040
+    In function queue_advance_tail:
+        -> queue_advance_tail[common/queue.c:116] 3fb2
+    In function queue_add_direct:
+        -> queue_add_direct[common/queue_policies.c:18] 403a
+Unresolved annotation signatures:
+    pd_power_supply_reset: function is not found
+    set_state: function is not found
+    command_accel_init: function is not found
+    pd_request_vconn_swap: function is not found
+    tcpm_transmit[driver/tcpm/tcpm.h:142]: function is not found
+    pd_execute_hard_reset: function is not found
+    charge_manager_update_dualrole: function is not found
+    anx74xx_tcpm_transmit: function is not found
+    get_range[driver/accel_kionix.c]: function is not found
+    panic: function is not found
+    pd_dfp_exit_mode: function is not found
+    command_display_accel_info: function is not found
+    motion_lid_calc[common/motion_lid.c]: function is not found
+    usb_mux_set: function is not found
+    pd_send_request_msg: function is not found
+There are cycles in the following function sets:
+[__tx_char]
+[panic_txchar]
+[host_events_atomic_clear]
+[__idle]
