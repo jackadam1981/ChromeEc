@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fbb740d_cc5358d7",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-03T22:40:28Z",
+      "side": 1,
+      "message": "I used macros for addresses like this that are common. Other things (even size of system memory, otp area, and option bytes) seems to be different across chips so I didn\u0027t create constants since that just adds an unnecessary level of indirection when reading the code.",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "ebeebd0d1fa18ce8b7709b8787674bb58d5fc179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
