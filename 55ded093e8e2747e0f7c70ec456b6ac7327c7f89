@@ -70,6 +70,30 @@
       "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5605280_c094a863",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-03T15:12:55Z",
+      "side": 1,
+      "message": "Yes, and that works.\n\nMy concern is that this creates an unnecessary extra step for ODMs to get the PD state from ectool, and that dogfood units wouldn\u0027t be able to provide the PD state information in their cros_ec_pdinfo.  If the strings are there, it seems worthwhile to include them.\n\nWe could consider switching to always including the enum state value to print from these tools, but that would necessitate creating a new structure field since the v1 and v2 structures only have the string state.  This seems more simple for the majority use-case.",
+      "parentUuid": "b96dab8a_c34072a5",
+      "range": {
+        "startLine": 5009,
+        "startChar": 1,
+        "endLine": 5014,
+        "endChar": 6
+      },
+      "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
