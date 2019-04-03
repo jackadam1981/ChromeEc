@@ -22,6 +22,30 @@
       "revId": "9a56fb0425e094c685b4cd84c60b1f9bdd24146d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a91da02_0a6592cf",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-03T10:30:26Z",
+      "side": 1,
+      "message": "If both paths are turned off, what will happen if we want to boot ec without battery?",
+      "parentUuid": "72620acf_8e6c6144",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "9a56fb0425e094c685b4cd84c60b1f9bdd24146d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
