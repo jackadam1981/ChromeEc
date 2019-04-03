@@ -70,6 +70,30 @@
       "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74060dd_e8dc08f3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T21:24:09Z",
+      "side": 0,
+      "message": "this should be mentioned in the patch description, and explained why the pulse is not there any more, and that the pullup is still there so the H1 will still drive the pin.",
+      "parentUuid": "e6aeaf43_d4eedb97",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 39
+      },
+      "revId": "fd9a4a63c78cc625d1514903b9804d0a4507194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

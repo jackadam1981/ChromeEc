@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96a47e4e_c64a8f37",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T21:24:09Z",
+      "side": 1,
+      "message": "since you are enabling this config for this board, you don\u0027t have to check it here, this is not common code.",
+      "range": {
+        "startLine": 943,
+        "startChar": 1,
+        "endLine": 949,
+        "endChar": 5
+      },
+      "revId": "d2ac3a4239f402a356ea532cd59bb672723634b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
