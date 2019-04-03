@@ -64,6 +64,12 @@ table(ipi_handler_t, ipi_handler_table,
 	ipi_x_func(handler, ipi_arguments, 5)
 	ipi_x_func(handler, ipi_arguments, 6)
 	ipi_x_func(handler, ipi_arguments, 7)
+	ipi_x_func(handler, ipi_arguments, 8)
+	ipi_x_func(handler, ipi_arguments, 9)
+	ipi_x_func(handler, ipi_arguments, 10)
+	ipi_x_func(handler, ipi_arguments, 11)
+	ipi_x_func(handler, ipi_arguments, 12)
+	ipi_x_func(handler, ipi_arguments, 13)
 );
 
 /*
@@ -78,6 +84,12 @@ table(int*, ipi_wakeup_table,
 	ipi_x_var(wakeup, 5)
 	ipi_x_var(wakeup, 6)
 	ipi_x_var(wakeup, 7)
+	ipi_x_var(wakeup, 8)
+	ipi_x_var(wakeup, 9)
+	ipi_x_var(wakeup, 10)
+	ipi_x_var(wakeup, 11)
+	ipi_x_var(wakeup, 12)
+	ipi_x_var(wakeup, 13)
 );
 
 #if PASS == 1
