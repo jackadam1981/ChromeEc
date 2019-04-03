@@ -237,6 +237,29 @@
       "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f4aa24_3d6bac17",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T23:33:40Z",
+      "side": 1,
+      "message": "having looked at the rendered version, maybe this should be changed to \n\nSuzyQ aka SuzyQable\n\notherwise it seems ambiguous to me and might mean that these are two different things. Or maybe this is a language barrier problem.",
+      "range": {
+        "startLine": 82,
+        "startChar": 120,
+        "endLine": 82,
+        "endChar": 122
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
