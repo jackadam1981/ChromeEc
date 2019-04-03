@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d37ae54_54a3f61d",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-03T22:57:15Z",
+      "side": 1,
+      "message": "I think sqa images should be able to change the flags to whatever they want, so they can change between prod and prepvt images freely.",
+      "range": {
+        "startLine": 544,
+        "startChar": 31,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
