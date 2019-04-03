@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2514b1a8_502a7361",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-03T08:04:53Z",
+      "side": 0,
+      "message": "What\u0027s the reason to delete these two lines?\n\nI think gpio_set_level(GPIO_EN_POGO_CHARGE_L, 1); is more like an insurance to prevent from turning the wrong power path. (since that the power supply is reset here)",
+      "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

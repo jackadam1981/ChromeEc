@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1caf2b6_3b240354",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-03T08:04:53Z",
+      "side": 1,
+      "message": "ahh... considering that GPIO_EN_POGO_CHARGE_L and GPIO_EN_USBC_CHARGE_L in P2 map to PP3300_S0_EN and PP1800_SE_3N in P1 (both pins are not implemented), I think we can just drop the if in this case.\n\nand it would better that you add a comment for these two GPIOs for not effecting p1 here.\n\nSorry to make you change this again.",
+      "revId": "7b7665c6abd78e52aeaf44e302d289a4d4ced4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
