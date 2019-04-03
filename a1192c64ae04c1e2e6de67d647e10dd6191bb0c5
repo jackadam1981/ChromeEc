@@ -45,6 +45,30 @@
       "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abada6a4_a5f6fceb",
+        "filename": "util/iteflash.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2019-04-03T18:33:03Z",
+      "side": 1,
+      "message": "Servo V4 is the primary CCD interface, and the required mechanism for partners to use for validation and moblab, so if SuzyQ is mentioned servo v4 should be mentioned.",
+      "parentUuid": "f0421e4b_3f182d31",
+      "range": {
+        "startLine": 82,
+        "startChar": 48,
+        "endLine": 82,
+        "endChar": 110
+      },
+      "revId": "a1192c64ae04c1e2e6de67d647e10dd6191bb0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
