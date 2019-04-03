@@ -52,6 +52,24 @@
       "revId": "7b7665c6abd78e52aeaf44e302d289a4d4ced4db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cd39144_1445e9d3",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-03T10:01:23Z",
+      "side": 1,
+      "message": "Yes, this GPIO also free on P1.",
+      "parentUuid": "8b7131a4_1a5e03ae",
+      "revId": "7b7665c6abd78e52aeaf44e302d289a4d4ced4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5598ec0a_1d186812",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-03T10:01:23Z",
+      "side": 0,
+      "message": "I think we can also remove this \"if\", GPIOs inside this if are not working at P1.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2514b1a8_502a7361",
         "filename": "board/kukui/usb_pd_policy.c",
         "patchSetId": 12
@@ -31,6 +54,24 @@
       "side": 0,
       "message": "From the comment above, I think if we don\u0027t change the value of EN_USB_CHARGE_L here, ec will stay in a \"good\" state.\nAlso PD_EVENT_POWER_CHANGE will trigger re-selecting the charge path. If we can ensure the state is good after board_set_active_charge_port(), then it should be okay.",
       "parentUuid": "2514b1a8_502a7361",
+      "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00029c51_898b9baf",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-03T10:01:23Z",
+      "side": 0,
+      "message": "pd_power_supply_reset can be called from many paths.  What if we are charging from POGO, and suddently changes to USBC path?\n\ne.g.\n\nboard_set_active_charge_port(POGO);\npd_power_supply_reset(USBC);\n\nI think in this case it may break the system IMO? (Or this won\u0027t be a case? apologize that I am asking this dumb question.)",
+      "parentUuid": "7d1af177_4f476c5d",
       "revId": "aab7a81e55ba410152229d4b54f816c7460d5ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72620acf_8e6c6144",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-03T10:01:23Z",
+      "side": 1,
+      "message": "If you want to let board_set_active_charge_port to control the power source, it would be better to make this to be GPIO_OUT_HIGH for safety. (both source deasserted)",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "9a56fb0425e094c685b4cd84c60b1f9bdd24146d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
