@@ -118,6 +118,30 @@
       "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee6d4d8_34752a58",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-03T19:09:45Z",
+      "side": 1,
+      "message": "Do we anticipate platforms which run host commands removing the strings from their builds?  The most constrained platforms I know of (servo_v4, zinger, etc.) aren\u0027t also running host commands.  \n\nI can understand taking the time to up-rev the command structure and maintain the strings in ectool if it\u0027s anticipated that a lot of platforms will want to remove the strings, it just seems like it might be over-developing for a currently unused scenario.",
+      "parentUuid": "78610454_8e5d837c",
+      "range": {
+        "startLine": 5009,
+        "startChar": 1,
+        "endLine": 5014,
+        "endChar": 6
+      },
+      "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
