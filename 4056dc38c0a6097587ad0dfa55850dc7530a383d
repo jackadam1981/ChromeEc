@@ -636,6 +636,24 @@
     },
     {
       "key": {
+        "uuid": "dd7c7a20_27368f55",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 59
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-03T01:41:20Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s weird. Did checkpatch change recently? Unless it\u0027s because you broke up the blocks with the comment?",
+      "parentUuid": "2175ac54_df958cdf",
+      "revId": "4056dc38c0a6097587ad0dfa55850dc7530a383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2abe1ddc_2b87f4cc",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 59

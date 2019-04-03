@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f816b10b_3f334964",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 62
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-03T01:41:20Z",
+      "side": 1,
+      "message": "These always return 1, what\u0027s the point of the assertions around the host_connect_* functions?",
+      "revId": "99e5a5da51f281aead6fb76e6c9bd640bde9f59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b362beb3_d01128fc",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 62
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-03T01:41:20Z",
+      "side": 1,
+      "message": "Same question for disconnects too",
+      "revId": "99e5a5da51f281aead6fb76e6c9bd640bde9f59a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
