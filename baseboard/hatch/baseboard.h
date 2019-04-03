@@ -42,6 +42,9 @@
 #define CONFIG_POWER_S0IX
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 
+/* Console Commands */
+#define CONFIG_CMD_BATT_MFG_ACCESS
+
 /* Common Keyboard Defines */
 #define CONFIG_CMD_KEYBOARD
 #define CONFIG_KEYBOARD_BOARD_CONFIG
