@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab5ec246_65b03e1e",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2019-04-03T18:07:05Z",
+      "side": 1,
+      "message": "Can you define 1 \u003c\u003c 29 as P9221R7_PROP_TX_ID_GPP_MASK (or similar name) in the header file?",
+      "range": {
+        "startLine": 769,
+        "startChar": 14,
+        "endLine": 769,
+        "endChar": 21
+      },
+      "revId": "9379ce9eb7806d33f16f1f839ddef05380afae42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
