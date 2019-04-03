@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d5f0f73_f5da6aa7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-03T02:24:39Z",
+      "side": 1,
+      "message": "What\u0027s the difference?\n\ndebug_level is const int if CONFIG_USB_PD_DEBUG_LEVEL is defined. So, i think we already do what you expect, don\u0027t we?",
+      "range": {
+        "startLine": 5009,
+        "startChar": 1,
+        "endLine": 5014,
+        "endChar": 6
+      },
+      "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
