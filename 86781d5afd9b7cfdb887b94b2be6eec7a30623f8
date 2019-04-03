@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa63cbf4_48fe9083",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-03T21:16:05Z",
+      "side": 1,
+      "message": "gpio_get_flags_by_mask happens to be protected by different flags in different files:\n\nno protection in\nchip/g/gpio.c\nchip/mt_scp/gpio.c\nchip/stm32/gpio-f0-l.c\n\n#ifdef CONFIG_CMD_GPIO_EXTENDED in\nchip/npcx/gpio.c\n\n\nifdef CONFIG_GPIO_GET_EXTENDED in\ncommon/gpio.c\ninclude/gpio.h\n\n\nthis inconsistency should be fixed, also, these functions seem to be taking very small space, and would be dropped by the linker if not used, maybe a simpler thing to do is to make them available without explicit config?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 57
+      },
+      "revId": "86781d5afd9b7cfdb887b94b2be6eec7a30623f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
