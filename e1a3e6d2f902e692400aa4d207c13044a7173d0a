@@ -189,6 +189,30 @@
       "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277bf5f4_0adf0be6",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-04T21:23:18Z",
+      "side": 1,
+      "message": "If we ask someone to qualify a test prepvt or mp image, they\u0027ll probably need to change their board id to some non-zero flags. It would be useful if we could build them a SQA image instead of a dbg image to change their flags.",
+      "parentUuid": "96f49598_2023cdf6",
+      "range": {
+        "startLine": 544,
+        "startChar": 31,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
