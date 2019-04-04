@@ -22,6 +22,30 @@
       "revId": "2c946f9d74bd002414c08c924d0e7bbcccf2c89d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a098789a_bb02e4c6",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-04T00:02:23Z",
+      "side": 1,
+      "message": "Yeah, I was thinking about the helper function too. I implemented it now, to make sure I didn\u0027t forget about it.",
+      "parentUuid": "50452e5c_49e5c33b",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 312,
+        "endChar": 47
+      },
+      "revId": "2c946f9d74bd002414c08c924d0e7bbcccf2c89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
