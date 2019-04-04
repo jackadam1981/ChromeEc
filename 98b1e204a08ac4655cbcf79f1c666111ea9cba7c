@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "a3b7bf7a_4f58d92a",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T17:15:44Z",
+      "side": 1,
+      "message": "please open the bug and mention it in this patch description.",
+      "parentUuid": "1df62b8c_4fc4c69a",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a4f83a3_dacf0e45",
         "filename": "common/factory_mode.c",
         "patchSetId": 4
