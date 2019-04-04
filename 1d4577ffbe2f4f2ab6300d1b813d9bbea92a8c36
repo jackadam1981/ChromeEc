@@ -92,6 +92,30 @@
       "revId": "1d4577ffbe2f4f2ab6300d1b813d9bbea92a8c36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86396c39_65bd4b6e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T17:16:44Z",
+      "side": 1,
+      "message": "ugh, of course I mean to say \u0027after e tpm_reset() completes and before the above tpm_stop() is executed\u0027",
+      "parentUuid": "78e5767b_db43d8ef",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 0
+      },
+      "revId": "1d4577ffbe2f4f2ab6300d1b813d9bbea92a8c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
