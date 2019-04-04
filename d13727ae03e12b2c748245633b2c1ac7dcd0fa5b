@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78e6aae_7dcb534a",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-04T19:34:01Z",
+      "side": 1,
+      "message": "Though original code doesn\u0027t do ack polling, but I am quoting it from command_ext_erase.",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 872,
+        "endChar": 12
+      },
+      "revId": "d13727ae03e12b2c748245633b2c1ac7dcd0fa5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ec99f98_315c109c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-04T19:34:01Z",
+      "side": 1,
+      "message": "Though original code doesn\u0027t do ack polling, but I am quoting it from command_ext_erase.",
+      "range": {
+        "startLine": 903,
+        "startChar": 63,
+        "endLine": 903,
+        "endChar": 71
+      },
+      "revId": "d13727ae03e12b2c748245633b2c1ac7dcd0fa5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
