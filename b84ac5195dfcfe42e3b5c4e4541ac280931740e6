@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07d59110_066f2840",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T18:07:08Z",
+      "side": 1,
+      "message": "this is board code, we know flash log is enabled for this booard, no need for compile time check.",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 23
+      },
+      "revId": "b84ac5195dfcfe42e3b5c4e4541ac280931740e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
