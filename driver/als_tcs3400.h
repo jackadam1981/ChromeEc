@@ -65,6 +65,8 @@
 #endif
 
 #define TCS3400_GET_DATA(_s) ((struct tcs3400_drv_data_t *)(_s)->drv_data)
+#define TCS3400_RGB_GET_DATA(_s) \
+	((struct tcs3400_rgb_drv_data_t *)(_s)->drv_data)
 
 struct tcs3400_drv_data_t {
 	int rate;
@@ -74,7 +76,16 @@ struct tcs3400_drv_data_t {
 	int16_t offset;
 };
 
+struct tcs3400_rgb_drv_data_t {
+	int rate;
+	int last_value[3];
+	int16_t scale;
+	int16_t uscale;
+	int16_t offset[3];
+};
+
 extern const struct accelgyro_drv tcs3400_drv;
+extern const struct accelgyro_drv tcs3400_rgb_drv;
 
 void tcs3400_interrupt(enum gpio_signal signal);
 #endif /* __CROS_EC_ALS_TCS3400_H */
