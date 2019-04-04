@@ -50,9 +50,28 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+#define FLAPJACK_BOARD_P0D 3
+
+/* Refer to coreboot/src/mainboard/google/kukui/display.h */
+enum panel_id {
+	PANEL_KUKUI_INNOLUX = 0,
+	PANEL_BOE_HIMAX8279D10P,
+	PANEL_BOE_HIMAX8279D8P,
+	PANEL_UNKNOWN,
+};
+
+struct {
+	enum panel_id id;
+	int expect_mv;
+} const panel_ids[] = {
+	{ PANEL_BOE_HIMAX8279D10P, 98 },
+	{ PANEL_BOE_HIMAX8279D8P, 280 },
+};
+
 uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
+enum panel_id pid;
 
 static void board_setup_panel(void)
 {
@@ -60,8 +79,24 @@ static void board_setup_panel(void)
 	uint8_t dim;
 	int rv = 0;
 
-	channel = sku & SKU_ID_PANEL_SIZE_MASK ? 0xfe : 0xfa;
-	dim = sku & SKU_ID_PANEL_SIZE_MASK ? 0xc4 : 0xc8;
+	if (board_version >= FLAPJACK_BOARD_P0D) { /* P0d onward */
+		switch(pid) {
+			case PANEL_BOE_HIMAX8279D8P:
+				channel = 0xfa;
+				dim = 0xc8;
+				break;
+			case PANEL_BOE_HIMAX8279D10P:
+				channel = 0xfe;
+				dim = 0xc4;
+				break;
+			default:
+				CPRINTS("Unrecognized panel %d\n", pid);
+				return;
+		}
+	} else {
+		channel = sku & SKU_ID_PANEL_SIZE_MASK ? 0xfe : 0xfa;
+		dim = sku & SKU_ID_PANEL_SIZE_MASK ? 0xc4 : 0xc8;
+	}
 
 	rv |= i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, MT6370_BACKLIGHT_BLEN,
 		channel);
@@ -72,6 +107,30 @@ static void board_setup_panel(void)
 	if (rv)
 		CPRINTS("Board setup panel failed\n");
 }
+
+static void board_get_panel_id(void)
+{
+	int mv;
+	int i;
+
+	gpio_set_level(GPIO_EC_LCM_ID_EN_L, 0);
+
+	mv = adc_read_channel(ADC_LCM_ID);
+	if (mv == ADC_READ_ERROR)
+		mv = adc_read_channel(ADC_LCM_ID);
+
+	gpio_set_level(GPIO_EC_LCM_ID_EN_L, 1);
+
+	for (i = 0; i < ARRAY_SIZE(panel_ids); i++) {
+		if (ABS(mv - panel_ids[i].expect_mv) < MARGIN_MV) {
+			pid = panel_ids[i].id;
+			break;
+		}
+	}
+
+	CPRINTS("LCM ID: %d", pid);
+}
+DECLARE_HOOK(HOOK_INIT, board_get_panel_id, HOOK_PRIO_FIRST);
 
 static void cbi_init(void)
 {
@@ -87,6 +146,8 @@ static void cbi_init(void)
 
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
+	if (board_version >= FLAPJACK_BOARD_P0D) /* P0d onward */
+		sku |= ((pid & 0xf) << 16); /* Use bit[19-16] for lcm */
 	CPRINTS("SKU: 0x%08x", sku);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
@@ -106,7 +167,7 @@ static void gauge_interrupt(enum gpio_signal signal)
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] = {"BOARD_ID", 3300, 4096, 0, STM32_AIN(10)},
+	[ADC_LCM_ID] = {"LCM_ID", 3300, 4096, 0, STM32_AIN(10)},
 	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
 	[ADC_BATT_ID] = {"BATT_ID", 3300, 4096, 0, STM32_AIN(7)},
 	[ADC_USBC_THERM] = {"USBC_THERM", 3300, 4096, 0, STM32_AIN(14)},

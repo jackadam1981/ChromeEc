@@ -220,12 +220,14 @@ enum oem_id {
 
 enum adc_channel {
 	/* Real ADC channels begin here */
-	ADC_BOARD_ID = 0,
+	ADC_LCM_ID = 0,
 	ADC_EC_SKU_ID,
 	ADC_BATT_ID,
 	ADC_USBC_THERM,
 	ADC_CH_COUNT
 };
+
+#define MARGIN_MV 56 /* Simply assume 1800/16/2 */
 
 /* power signal definitions */
 enum power_signal {
