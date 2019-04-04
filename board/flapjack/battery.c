@@ -159,8 +159,6 @@ static struct {
 };
 BUILD_ASSERT(ARRAY_SIZE(batteries) < BATTERY_COUNT);
 
-#define MARGIN_MV 56 /* Simply assume 1800/16/2 */
-
 static enum battery_type batt_type = BATTERY_UNKNOWN;
 
 static void board_get_battery_type(void)
