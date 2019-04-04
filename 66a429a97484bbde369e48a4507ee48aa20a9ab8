@@ -46,6 +46,30 @@
       "revId": "66a429a97484bbde369e48a4507ee48aa20a9ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5aebcd_a658ade5",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T23:29:24Z",
+      "side": 1,
+      "message": "Then can you remove #define __ARG_PLACEHOLDER_1 0,? At least that\u0027ll make it closer to the expectation. IS_ENABLED(FOO(\u003d1)) -\u003e 1 IS_ENABLED(FOO(\u003d2)) -\u003e 0 doesn\u0027t make sense.\n\nMacros with numeric values need arithmetic comparison anyway.",
+      "parentUuid": "2839afb3_9edc7adf",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 27
+      },
+      "revId": "66a429a97484bbde369e48a4507ee48aa20a9ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
