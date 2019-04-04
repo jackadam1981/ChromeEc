@@ -220,11 +220,23 @@ enum oem_id {
 
 enum adc_channel {
 	/* Real ADC channels begin here */
-	ADC_BOARD_ID = 0,
+	ADC_LCM_ID = 0,
 	ADC_EC_SKU_ID,
 	ADC_BATT_ID,
 	ADC_USBC_THERM,
 	ADC_CH_COUNT
+};
+
+#define MARGIN_MV 56 /* Simply assume 1800/16/2 */
+
+#define FLAPJACK_BOARD_P0D 3 /* Board revision for P0d */
+
+/* Refer to coreboot/src/mainboard/google/kukui/display.h */
+enum panel_id {
+	PANEL_KUKUI_INNOLUX = 0,
+	PANEL_BOE_HIMAX8279D10P,
+	PANEL_BOE_HIMAX8279D8P,
+	PANEL_UNKNOWN,
 };
 
 /* power signal definitions */
