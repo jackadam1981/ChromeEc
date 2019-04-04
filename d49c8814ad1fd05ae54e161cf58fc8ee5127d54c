@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb65f7f9_20fa5edb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58857c01_177fbfab",
+      "range": {
+        "startLine": 2630,
+        "startChar": 1,
+        "endLine": 2630,
+        "endChar": 3
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d18aefa5_e95def1b",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bf309b0d_1369ef71",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18aefa5_e95def1b",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 53
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79e53825_158a4576",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 15
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-04T19:32:17Z",
       "side": 1,
       "message": "curious: why not continue using NVMEM_VAR_TEST_VAR (and changing it from 0x00 to 0x01, if needed for some reason)? then having { 0x01 } for a test value name would be a bit more noticeable than hard-coding 1 here.",
+      "range": {
+        "startLine": 179,
+        "startChar": 7,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3015e77e_59993943",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "I agree with the comment below, this command is not needed, not sure why I made this change even.",
+      "parentUuid": "79e53825_158a4576",
       "range": {
         "startLine": 179,
         "startChar": 7,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3303413b_bf242478",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "removed the command.",
+      "parentUuid": "7018cfc7_e4f6433a",
+      "range": {
+        "startLine": 201,
+        "startChar": 40,
+        "endLine": 201,
+        "endChar": 59
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57fd7014_d544dff6",
         "filename": "common/pinweaver.c",
         "patchSetId": 15
@@ -105,6 +201,30 @@
       "writtenOn": "2019-04-04T19:32:17Z",
       "side": 1,
       "message": "I understand that with having ptr as a new OUT param for load_merkle_tree() we can minimize the changes and add freevar() in one place instead of for every return internally.\nBut the callers of load_merkle_tree() don\u0027t care about that variable, so it\u0027d be better to avoid exposing it.\n\nIf the goal is to minimize changes, can we use Linux kernel approach, for example, with \n  goto out; // where we did return ret; before\n\nout:\n  if (ptr) freevar(ptr);\n  return ret;",
+      "range": {
+        "startLine": 1359,
+        "startChar": 1,
+        "endLine": 1360,
+        "endChar": 15
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb01e48_9fdc8b82",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "moved ptr handling into load_merkle_tre()",
+      "parentUuid": "57fd7014_d544dff6",
       "range": {
         "startLine": 1359,
         "startChar": 1,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "dd1d120b_609b80b3",
+        "filename": "common/shmalloc.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "it could be in a separate CL, but so far dest_ptr was left unchanged, I thought it was more robust to set it to zero in case of failure, and the caller now can check *gest_ptr as indication of success which makes it more consistent with a generic malloc() use case.",
+      "parentUuid": "39cc3f2c_912d8c0e",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 18
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0b2e596_10650196",
         "filename": "common/tpm_registers.c",
         "patchSetId": 15
@@ -151,6 +295,30 @@
       "writtenOn": "2019-04-04T19:32:17Z",
       "side": 1,
       "message": "why moving this after nvmem_enable_commits()? wouldn\u0027t that reset commits_enabled set inside nvmem_enable_commits() back to 0?",
+      "range": {
+        "startLine": 851,
+        "startChar": 1,
+        "endLine": 851,
+        "endChar": 7
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96b73f4_ee442ce1",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "we want all outstanding items to be saved before memory is cleaned, this is what enable_commits() is for. \n\nAnd note that when TPM is initialized commits are explicitly disabled for some time.",
+      "parentUuid": "c0b2e596_10650196",
       "range": {
         "startLine": 851,
         "startChar": 1,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "8bf656bd_9d9399c6",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "the issue is that we have to pass here the allocated pointer, and it is not const by definition.",
+      "parentUuid": "2260401b_19a40650",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f81e7f7_188e5093",
         "filename": "include/nvmem_vars.h",
         "patchSetId": 15
@@ -206,6 +398,30 @@
       "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db0d402_9eb9e7c6",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T20:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f81e7f7_188e5093",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
