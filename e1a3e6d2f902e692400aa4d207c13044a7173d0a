@@ -117,6 +117,30 @@
       "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa2ecf4_ae89f224",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-04T16:19:56Z",
+      "side": 1,
+      "message": "They have set the board ids incorrectly in the past, but the issue with those incorrect board ids is always the flags. The flags lockout certain images and early stage boards sometimes need to run prepvt images. The RLZ part of the board id doesn\u0027t really affect cr50 very much so there\u0027s no real need to change the RLZ part.",
+      "parentUuid": "2443bf72_b131865a",
+      "range": {
+        "startLine": 544,
+        "startChar": 31,
+        "endLine": 544,
+        "endChar": 33
+      },
+      "revId": "e1a3e6d2f902e692400aa4d207c13044a7173d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
