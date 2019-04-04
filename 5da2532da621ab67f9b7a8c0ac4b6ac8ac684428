@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3001fd3_87f0a0d9",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Let\u0027s take this out (as static const int). See my comments below for rationale.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b8be15_6ec15c68",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "no need to init to zero.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8608833_b4684082",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "BTY, I don\u0027t see these used anywhere.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 22
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe97f5a_039b372e",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right.",
+      "range": {
+        "startLine": 539,
+        "startChar": 30,
+        "endLine": 539,
+        "endChar": 33
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f060b1_406d5176",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "We should not proceed if p9221_block_read fails. wpc-\u003epp_buf_valid \u003d false and bail out.",
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca611d15_43bba9b3",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Please use hexdump in util.c.",
+      "range": {
+        "startLine": 544,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 15
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a4240c_f4ed692d",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "I can\u0027t make sense of this. p9221_notifier_check_det calls p9221_set_online then calls p9221_vbus_check_timeout_defer. Why are we setting it offline?",
+      "range": {
+        "startLine": 707,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 0
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5142b00_a9b756b2",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "I think this is redundant.",
+      "range": {
+        "startLine": 946,
+        "startChar": 1,
+        "endLine": 946,
+        "endChar": 39
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27c1166_8ed07086",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "if (p9221_clear_interrupts(wpc, irq_src))\n  return;",
+      "range": {
+        "startLine": 965,
+        "startChar": 1,
+        "endLine": 966,
+        "endChar": 11
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e57f5b_b1e6e438",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "this is redundant. please remove.",
+      "range": {
+        "startLine": 967,
+        "startChar": 2,
+        "endLine": 967,
+        "endChar": 38
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc3009f_984ec373",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Please delete.",
+      "range": {
+        "startLine": 975,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 4
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d259e12_09688aa0",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "if (p9221_read8(wpc, P9221_CUSTOMER_ID_REG, \u0026cid) || cid !\u003d cust_id)\n   assert(0);",
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

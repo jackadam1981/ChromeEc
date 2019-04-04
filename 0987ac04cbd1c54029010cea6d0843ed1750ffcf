@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "64221a5c_136e2bc6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Can we create a dedicated class for wireless chargers?",
+      "parentUuid": "4403cf07_1eca8daf",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de951ad6_e29701a2",
         "filename": "common/usb_charger.c",
         "patchSetId": 11
@@ -348,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "082d663a_2a57af25",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "I\u0027m talking about the \u0027\\n\u0027.",
+      "parentUuid": "6ec33d8b_b96a0a02",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8d52ec_425897a0",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -377,6 +419,24 @@
       "side": 1,
       "message": "can we modify the name p9221-r7 to p9221 to contain non-r7 or delete the non-r7 in driver?",
       "parentUuid": "5c8d52ec_425897a0",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cff899_113a2779",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "For now, it\u0027s probably better to focus on the stability and the functionality.\n\nHowever, due to the limited space, we should later try to make the driver include only r7 code. I guess it\u0027s possible to properly exclude lines by #ifdef ... #endif.",
+      "parentUuid": "19f9450d_04631468",
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -477,6 +537,53 @@
     },
     {
       "key": {
+        "uuid": "5bb28c32_92000d2e",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "We can reduce the code size by statically defining cust_id (as const).",
+      "parentUuid": "9bc86b45_a02dd7ee",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de56fe43_647839ef",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "I guess this name is from the original code but it should be something like p9221_config_fod or p9221_set_fod.",
+      "range": {
+        "startLine": 614,
+        "startChar": 12,
+        "endLine": 614,
+        "endChar": 27
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee58704a_59875c28",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -517,6 +624,121 @@
         "startChar": 39,
         "endLine": 622,
         "endChar": 54
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498fd3e4_8b79a459",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "if (p9221_is_epp(wpc)) {\n\t\tfod_count \u003d board_get_epp_fod(\u0026fod);\n\t\tepp \u003d true;\n\t} else {\n\t\tfod_count \u003d board_get_fod(\u0026fod);\n\t}\n\n\tif (!fod_count || !fod)\n\t\tgoto no_fod;",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 14
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20342bbd_f18b7eeb",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Let\u0027s remove CPRINTS and goto no_fod. We can assign some integer to ret to distinguish errors here and line 653.",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 10
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda767a2_ba65a6b8",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Same here. Please remove CPRINTS and goto no_fod.",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 10
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d3354b_e20f5ad6",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Why do we need these? Can we remove them? \n\nWe should use hexdump in util.c anyway.",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 43
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcd7c56_be955c88",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Let\u0027s print ret.",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 37
       },
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -768,6 +990,24 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fcbb396_c2d6cec6",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:22:37Z",
+      "side": 1,
+      "message": "Then we should not detect it at run-time. Otherwise, we have to carry the code of all other p9221 revisions. Once a board is manufactured this chip won\u0027t be swapped. We should statically set customer ID to a const variable (cust_id). We can check if they match at run-time.",
+      "parentUuid": "9ee01c52_3f0a7de3",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
