@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00d01ee0_258fe26c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T22:37:18Z",
+      "side": 1,
+      "message": "I don\u0027t think it is a good idea: this patch should deal with error recovery. If you think these invocations need to be changed to periodically poll and sending nags while polling - this should be a subject of different patch and different tracker item.",
+      "parentUuid": "b78e6aae_7dcb534a",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 872,
+        "endChar": 12
+      },
+      "revId": "d13727ae03e12b2c748245633b2c1ac7dcd0fa5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec99f98_315c109c",
         "filename": "util/stm32mon.c",
         "patchSetId": 5
