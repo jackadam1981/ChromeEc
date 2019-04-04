@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3995c198_1037cdaa",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-04-04T21:27:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e2b9d0e_9c6cc4d1",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 44
+      },
+      "revId": "eabb277e87620142154f578bbf14ba2528fa54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "778f8455_400489df",
         "filename": "board/cr50/power_button.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2019-03-27T21:20:49Z",
       "side": 1,
       "message": "NIT: could be more compact as:\n*(uint8_t *)buf \u003d rbox_powerbtn_is_pressed();\nor if the return value isn\u0027t trusted to remain strictly 1 vs 0 in future code changes:\n*(uint8_t *)buf \u003d rbox_powerbtn_is_pressed() ? 1 : 0\nor\n*(uint8_t *)buf \u003d !!rbox_powerbtn_is_pressed();",
+      "revId": "eabb277e87620142154f578bbf14ba2528fa54c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7842f7de_38c182a6",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-04-04T21:27:04Z",
+      "side": 1,
+      "message": "Used Vadim\u0027s change.",
+      "parentUuid": "778f8455_400489df",
       "revId": "eabb277e87620142154f578bbf14ba2528fa54c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
