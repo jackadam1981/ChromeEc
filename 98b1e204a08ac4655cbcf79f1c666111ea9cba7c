@@ -287,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "6a6f0efd_c0c9ff22",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-04T17:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b7bf7a_4f58d92a",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 39
+      },
+      "revId": "98b1e204a08ac4655cbcf79f1c666111ea9cba7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a4f83a3_dacf0e45",
         "filename": "common/factory_mode.c",
         "patchSetId": 4
