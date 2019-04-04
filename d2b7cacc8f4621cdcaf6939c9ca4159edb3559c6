@@ -445,6 +445,53 @@
       "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b775f32_c1b8d945",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T18:22:34Z",
+      "side": 1,
+      "message": "but refactoring in lines 566..584 is not equivalent: it now has two loops instead of one.",
+      "parentUuid": "d79a2998_b9849a8d",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 657,
+        "endChar": 60
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6b84c0e_c492fa7c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T18:22:34Z",
+      "side": 1,
+      "message": "not sure what to do about this case, this is the only one handling timeouts, maybe make the need for timeout handling a separate parameter?",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 0
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
