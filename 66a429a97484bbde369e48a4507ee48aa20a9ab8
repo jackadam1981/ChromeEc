@@ -22,6 +22,30 @@
       "revId": "66a429a97484bbde369e48a4507ee48aa20a9ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2839afb3_9edc7adf",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-04T21:58:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure the  #define FOO n (n \u003e 0) --\u003e return 1 case is possible given how the macro is constructed. It requires that an __ARG_PLACEHOLDER_n exist so the substitution will work.",
+      "parentUuid": "c3e89ae4_95d06dbb",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 27
+      },
+      "revId": "66a429a97484bbde369e48a4507ee48aa20a9ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
