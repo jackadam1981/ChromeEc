@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40d0ad24_d93177ff",
+        "filename": "util/iteflash.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-04T18:03:06Z",
+      "side": 1,
+      "message": "I think UART and SPI are common.  I\u0027d rather leave that out of this doc, to keep this focused on the IT8320.\n\nIf you think that\u0027s essential context for this sentence, then I lean towards just deleting this sentence.  I put this in as a quick way to explain why these boards need something special (proxying I2C through servod), but this really isn\u0027t a full explanation, and I\u0027m not sure a full explanation would be worthwhile in this doc.\n\nIn fact..deleted.  Let me know if you miss this sentence and want it reinstated.",
+      "parentUuid": "670aaeef_fefa509e",
+      "range": {
+        "startLine": 31,
+        "startChar": 74,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "0c0704813a350db3c7e0aaf734bf09456dae65a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dabe4a6_0f8d0951",
         "filename": "util/iteflash.md",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "0c0704813a350db3c7e0aaf734bf09456dae65a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8cbef4_ad0af756",
+        "filename": "util/iteflash.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-04T18:03:06Z",
+      "side": 1,
+      "message": "Fixed, thanks.",
+      "parentUuid": "4dabe4a6_0f8d0951",
+      "range": {
+        "startLine": 95,
+        "startChar": 9,
+        "endLine": 95,
+        "endChar": 37
+      },
+      "revId": "0c0704813a350db3c7e0aaf734bf09456dae65a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
