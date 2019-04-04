@@ -8,6 +8,7 @@
 #include "heci_client.h"
 #include "host_command.h"
 #include "host_command_heci.h"
+#include "timer.h"
 #include "ipc_heci.h"
 #include "util.h"
 
@@ -55,22 +56,44 @@ static struct host_packet heci_packet;
 void heci_send_mkbp_event(void)
 {
 	struct cros_ec_ishtp_msg evt;
+	int rv, tries = 3;
 
 	evt.hdr.channel = CROS_MKBP_EVENT;
 	evt.hdr.status = 0;
 
-	heci_send_msg(heci_cros_ec_handle, (uint8_t *)&evt, sizeof(evt));
+	do {
+		rv = heci_send_msg(heci_cros_ec_handle,
+						 (uint8_t *)&evt, sizeof(evt));
+		if (rv < 0) {
+			CPRINTS("Could not send mkbp event (%d): %d", tries, rv);
+			msleep(2);
+		}
+		else {
+			break;
+		}
+	} while (--tries >= 0);
 }
 
 static void heci_send_hostcmd_response(struct host_packet *pkt)
 {
 	struct cros_ec_ishtp_msg *out =
 		(struct cros_ec_ishtp_msg *)response_buffer;
+	int rv, tries = 3;
 
 	out->hdr.channel = CROS_EC_COMMAND;
 	out->hdr.status = 0;
-	heci_send_msg(heci_cros_ec_handle, (uint8_t *)out,
-		      pkt->response_size + CROS_EC_ISHTP_MSG_HDR_SIZE);
+
+	do {
+		rv = heci_send_msg(heci_cros_ec_handle, (uint8_t *)out,
+			      pkt->response_size + CROS_EC_ISHTP_MSG_HDR_SIZE);
+		if (rv < 0) {
+			CPRINTS("Could not send hostcmd response (%d): %d", tries, rv);
+			msleep(2);
+		}
+		else {
+			break;
+		}
+	} while (--tries >= 0);
 }
 
 static void cros_ec_ishtp_subsys_new_msg_received(const heci_handle_t handle,

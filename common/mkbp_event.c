@@ -16,6 +16,11 @@
 #include "power.h"
 #include "util.h"
 
+
+#define CPUTS(outstr) cputs(CC_LPC, outstr)
+#define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_LPC, format, ## args)
+
 static uint32_t events;
 uint32_t mkbp_last_event_time;
 
@@ -106,6 +111,14 @@ static void set_host_interrupt(int active)
 	interrupt_enable();
 #endif
 }
+
+static int command_fire_trigger(int argc, char **argv)
+{
+	set_host_interrupt(0);
+	set_host_interrupt(1);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(fire_mkbp, command_fire_trigger, NULL, NULL);
 
 #ifdef CONFIG_MKBP_WAKEUP_MASK
 /**
