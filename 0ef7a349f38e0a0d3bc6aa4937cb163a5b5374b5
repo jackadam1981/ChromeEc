@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f85994a_3f61457b",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T19:44:23Z",
+      "side": 1,
+      "message": "We\u0027re getting LCM_ID through ADC not BOARD_VERSION.",
+      "range": {
+        "startLine": 303,
+        "startChar": 4,
+        "endLine": 303,
+        "endChar": 21
+      },
+      "revId": "0ef7a349f38e0a0d3bc6aa4937cb163a5b5374b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
