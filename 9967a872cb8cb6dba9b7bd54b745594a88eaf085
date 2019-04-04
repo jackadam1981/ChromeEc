@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe2c7ea9_c2d699b3",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-04-04T17:24:10Z",
+      "side": 1,
+      "message": "I cherry picked the change and the first build fails following \"make clobber\".  Subsequent builds work as expected - changing an environment variable causes a full rebuild.\nThe first build fails whether or not the \"-j\" option is used.\nTo fix, you probably want use a make rule to create env_config.h so you can setup a dependency.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "9967a872cb8cb6dba9b7bd54b745594a88eaf085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
