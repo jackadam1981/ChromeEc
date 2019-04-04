@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "bde5bf0b_a4c5aca5",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T22:11:08Z",
+      "side": 1,
+      "message": "nvmem_enable_commits() sets state in the variable which is not affected by the memset in line 851, /core/cortex-m/ec.lds.S shows which modules\u0027 .bss is placed betwee  __bss_libtpm2_start and __bss_libtpm2_end",
+      "parentUuid": "68bdcd19_9dfccd93",
+      "range": {
+        "startLine": 851,
+        "startChar": 1,
+        "endLine": 851,
+        "endChar": 7
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2260401b_19a40650",
         "filename": "include/nvmem_vars.h",
         "patchSetId": 15
