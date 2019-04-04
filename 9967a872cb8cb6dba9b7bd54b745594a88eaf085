@@ -22,6 +22,30 @@
       "revId": "9967a872cb8cb6dba9b7bd54b745594a88eaf085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1881bb9_6222fc53",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T17:27:40Z",
+      "side": 1,
+      "message": "yes, this fails, and a few things I try which do not fail either ignore this file, or rebuild the entire image every time.\n\nI\u0027ll have to get to this later (unless you or someone else beats me to it :)",
+      "parentUuid": "fe2c7ea9_c2d699b3",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "9967a872cb8cb6dba9b7bd54b745594a88eaf085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
