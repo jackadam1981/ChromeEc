@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb6c638a_d031bcda",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1304436
+      },
+      "writtenOn": "2019-04-04T23:37:29Z",
+      "side": 1,
+      "message": "Would it be possible to add more to this? Since we\u0027re going through the trouble of pulling info from SOP\u0027 DiscIdentity can we pass back the full response: ID Header VDO, Cert Stat VDO, Product VDO, Product Type VDO(s)?",
+      "revId": "468d680c637931d00e2e50d6e0efaa940057cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31adffb_c6254583",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1304436
+      },
+      "writtenOn": "2019-04-04T23:37:29Z",
+      "side": 1,
+      "message": "Can we store more information here (see my first comment)? Maybe just buffer the whole payload and let the host parse it out.",
+      "revId": "468d680c637931d00e2e50d6e0efaa940057cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c06cf98_a31f2346",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1304436
+      },
+      "writtenOn": "2019-04-04T23:37:29Z",
+      "side": 1,
+      "message": "Is this supposed to guard the if statement on line 2103? It looks like there\u0027s either something missing here or EC style is really strange.",
+      "revId": "468d680c637931d00e2e50d6e0efaa940057cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507e968e_5401e3fd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 5057,
+      "author": {
+        "id": 1304436
+      },
+      "writtenOn": "2019-04-04T23:37:29Z",
+      "side": 1,
+      "message": "Would it be possible to send back the whole DiscIdentity payload for the cable rather than just active/passive/none?",
+      "revId": "468d680c637931d00e2e50d6e0efaa940057cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea7d64a_d50b8941",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4775,
+      "author": {
+        "id": 1304436
+      },
+      "writtenOn": "2019-04-04T23:37:29Z",
+      "side": 1,
+      "message": "Can we add more info on the cable? See my other comments and Benson\u0027s comment. I\u0027d like to also add the same information to EC_CMD_USB_PD_DISCOVERY for the partner, but that probably belongs in another CL.",
+      "revId": "468d680c637931d00e2e50d6e0efaa940057cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
