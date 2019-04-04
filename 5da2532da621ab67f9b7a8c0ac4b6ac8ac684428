@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "51b42659_1cf9af94",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:38:21Z",
+      "side": 1,
+      "message": "Can you explain this? A wireless charger will appear as BC12_SDP?",
+      "range": {
+        "startLine": 939,
+        "startChar": 9,
+        "endLine": 940,
+        "endChar": 26
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3001fd3_87f0a0d9",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -127,6 +150,29 @@
         "startChar": 2,
         "endLine": 544,
         "endChar": 15
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbb997a_185eeb86",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:38:21Z",
+      "side": 1,
+      "message": "What\u0027s the difference between this and p9221_is_online?",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 12
       },
       "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -260,6 +306,29 @@
       "writtenOn": "2019-04-04T17:22:37Z",
       "side": 1,
       "message": "if (p9221_read8(wpc, P9221_CUSTOMER_ID_REG, \u0026cid) || cid !\u003d cust_id)\n   assert(0);",
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98bb2b98_e19ec7be",
+        "filename": "driver/wpc/p9221.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T17:38:21Z",
+      "side": 1,
+      "message": "When does it go online and when does it go offline?",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 44
+      },
       "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
