@@ -166,6 +166,30 @@
       "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eced2f6e_b0b90fdd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-04T14:14:21Z",
+      "side": 1,
+      "message": "Currently, as far as I can tell, there aren\u0027t platforms taking advantage of CONFIG_USB_PD_DEBUG_LEVEL of 0 yet to save space.  I would anticipate this mostly being used by platforms which are very space constrained.  The most space constrained platforms that use PD that I know of are ones like the servo_v4 and zinger, which don\u0027t set HAS_TASK_HOSTCMD (the gating config of this host command section).\n\nIf these assumptions are correct, then it seems unlikely that there will be boards with both CONFIG_USB_PD_DEBUG_LEVEL 0 and HAS_TASK_HOSTCMD.  Thereby, up-reving the PD response version to add the enum value and adding strings to ectool would represent development and maintenance work with little payoff, when three lines of C changes would do the same job.",
+      "parentUuid": "25489161_c229ccdc",
+      "range": {
+        "startLine": 5009,
+        "startChar": 1,
+        "endLine": 5014,
+        "endChar": 6
+      },
+      "revId": "55ded093e8e2747e0f7c70ec456b6ac7327c7f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
