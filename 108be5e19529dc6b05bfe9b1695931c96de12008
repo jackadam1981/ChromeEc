@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32d6f33_0ee596b8",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-04-04T21:28:15Z",
+      "side": 1,
+      "message": "Do you enable CONFIG_THROTTLE_AP? If no, don\u0027t need to undef it as the throttle_ap will not be built.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5f70ff_e779a8f9",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-04-04T21:28:15Z",
+      "side": 1,
+      "message": "I don\u0027t see this config in ToT.",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 21
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f5453b_330c5b53",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-04-04T21:28:15Z",
+      "side": 1,
+      "message": "It is used by servod power_state control. FAFT calls servod.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 26
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79a1c73a_2fbff61e",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-04-04T21:28:15Z",
+      "side": 1,
+      "message": "If the regulator_ir357x not built, undef\u0027ing it has no effect.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "366fd1c0_0fea7414",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-04-04T21:28:15Z",
+      "side": 1,
+      "message": "Though these commands are not used in current FAFT, they have high potential some future test cases will use them. Better to keep them for future-proof.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 25
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98ac788_49301abb",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-04-04T21:28:15Z",
+      "side": 1,
+      "message": "Type-C PD FAFT will use it.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 20
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
