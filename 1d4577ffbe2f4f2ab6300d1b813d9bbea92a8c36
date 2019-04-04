@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44f976e3_87540891",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-04-04T16:50:14Z",
+      "side": 1,
+      "message": "Without the EC/AP reset, there is a window between the completion of tpm_reset_now() (which calls if_start()) and the return from  tpm_reset_request().  If we don\u0027t want the AP accessing TPM after a wipe, then I think you need a new board_assert_ec_rst() function that handles the closed loop case.\n\nIf the EC/AP reset won\u0027t be done, then the comment needs to be updated.",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 0
+      },
+      "revId": "1d4577ffbe2f4f2ab6300d1b813d9bbea92a8c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
