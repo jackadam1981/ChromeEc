@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a9c1ced_581ebd7f",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T22:15:52Z",
+      "side": 1,
+      "message": "We don\u0027t but that\u0027s ok. If CONFIG_CMD_APTHROTTLE is undefined here, we won\u0027t ever need to think about it again.",
+      "parentUuid": "a32d6f33_0ee596b8",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a5f70ff_e779a8f9",
         "filename": "board/flapjack/board.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-04T21:28:15Z",
       "side": 1,
       "message": "I don\u0027t see this config in ToT.",
+      "range": {
+        "startLine": 182,
+        "startChar": 7,
+        "endLine": 182,
+        "endChar": 21
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db8a6dcb_69e36f35",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T22:15:52Z",
+      "side": 1,
+      "message": "It\u0027s coming. Please trace the patch stack.",
+      "parentUuid": "9a5f70ff_e779a8f9",
       "range": {
         "startLine": 182,
         "startChar": 7,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "76ebc67f_e5d953df",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T22:15:52Z",
+      "side": 1,
+      "message": "That\u0027s ok. If it is undefined here, we won\u0027t ever need to think about it again.",
+      "parentUuid": "79a1c73a_2fbff61e",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "366fd1c0_0fea7414",
         "filename": "board/flapjack/board.h",
         "patchSetId": 3
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "47c720fe_66f130b3",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T22:15:52Z",
+      "side": 1,
+      "message": "Unfortunately, we don\u0027t have such a luxury now. When we\u0027re closer to FSI, we can put back these.",
+      "parentUuid": "366fd1c0_0fea7414",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 25
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d98ac788_49301abb",
         "filename": "board/flapjack/board.h",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2019-04-04T21:28:15Z",
       "side": 1,
       "message": "Type-C PD FAFT will use it.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 20
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfeef0e6_b8fe6797",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-04T22:15:52Z",
+      "side": 1,
+      "message": "Even in RO? How is it used? Maybe we should split the pd command. It\u0027s too big as a single command.",
+      "parentUuid": "d98ac788_49301abb",
       "range": {
         "startLine": 196,
         "startChar": 0,
