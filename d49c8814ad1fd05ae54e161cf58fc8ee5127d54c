@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "26ec8bdd_31fc9c0f",
+        "filename": "include/nvmem_vars.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T21:16:58Z",
+      "side": 1,
+      "message": "ah, after our offline discussion: you are right, this could and should be const, changed along with the return value of getvar() and all use cases.\n\nthe original design required the callers of getvar provide the memory, and this is when const did not work for me, I just had this phantom meory :).",
+      "parentUuid": "8bf656bd_9d9399c6",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "d49c8814ad1fd05ae54e161cf58fc8ee5127d54c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f81e7f7_188e5093",
         "filename": "include/nvmem_vars.h",
         "patchSetId": 15
