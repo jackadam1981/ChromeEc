@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eccbf691_10717bcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "pastes on the local pastebin are not helpful in the patch description.\n\nDid you see cases of recovery from \u0027ackish\u0027? Could stm32mon run faster now by any chance?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08df3008_bd04076f",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "Let\u0027s not change the default - people might be using this utility expecting it to connect to /dev/ttyUSB1 by default.",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9772309_965e1960",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "this comment is not clear to me, what does \u0027acknowledge the caller\u0027 mean?",
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be694099_38517e25",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "BTW, what it mode SPI? Can stm32mon run over SPI also?! There should be no out of sync characters when operating over SPI, so maybe the if() in line 422 should include mode !\u003d NODE_SPI ?",
+      "range": {
+        "startLine": 429,
+        "startChar": 6,
+        "endLine": 429,
+        "endChar": 23
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa9221c_77576b0b",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "good catch. Should it be returned in \u0027return\u0027 statements above?",
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fbb0a2_7c8f9a5e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "here and in other similar cased: this should be postdecrement if you want to try up to MAX_RETRY_COUNT.",
+      "range": {
+        "startLine": 579,
+        "startChar": 49,
+        "endLine": 579,
+        "endChar": 58
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abc65f9_7fb4b35d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "why EINVAL is a reason to retry? This is counterintuitive.",
+      "range": {
+        "startLine": 579,
+        "startChar": 11,
+        "endLine": 579,
+        "endChar": 26
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b57679_1f1c0cb0",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "no commented out code should go in.",
+      "range": {
+        "startLine": 623,
+        "startChar": 2,
+        "endLine": 623,
+        "endChar": 25
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df370436_1f268a47",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "why does the logic have to change from lines 567..568 of the original?",
+      "range": {
+        "startLine": 632,
+        "startChar": 3,
+        "endLine": 634,
+        "endChar": 0
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cfc088d_9abc3d12",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-04T16:38:03Z",
+      "side": 1,
+      "message": "this pattern shows up multiple times in the file now. It would help to have a wrapper which would accept the same parameters and do the retries in one place.",
+      "range": {
+        "startLine": 655,
+        "startChar": 1,
+        "endLine": 657,
+        "endChar": 60
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
