@@ -1188,6 +1188,16 @@ static void set_usb_mux_with_current_data_role(int port)
 #endif /* CONFIG_POWER_COMMON */
 
 #ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
+
+	/* Don't set the mux state until CC negotiation has completed or timed
+	 * out. */
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX_QUIRK_DELAYED) &&
+	    (pd[port].task_state == PD_STATE_SRC_DISCONNECTED_DEBOUNCE ||
+	     pd[port].task_state == PD_STATE_SNK_READY)) {
+		CPRINTS("Quirk: Skipping mux config");
+		return;
+	}
+
 	/*
 	 * Need to connect SS mux for if new data role is DFP.
 	 * If new data role is UFP, then disconnect the SS mux.
@@ -3181,6 +3191,12 @@ void pd_task(void *u)
 				}
 			} else if (caps_count < PD_CAPS_COUNT) {
 				timeout = next_src_cap - now.val;
+			} else if (IS_ENABLED(
+					    CONFIG_USBC_SS_MUX_QUIRK_DELAYED)) {
+				timeout = 0;
+				CPRINTS("Timed out, setting mux");
+				set_usb_mux_with_current_data_role(
+					port);
 			}
 			break;
 		case PD_STATE_SRC_NEGOCIATE:
