@@ -492,6 +492,30 @@
       "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e385a2_ece76dc9",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 1,
+      "message": "replaced with send_command_retry.",
+      "parentUuid": "e6b84c0e_c492fa7c",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 0
+      },
+      "revId": "d2b7cacc8f4621cdcaf6939c9ca4159edb3559c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

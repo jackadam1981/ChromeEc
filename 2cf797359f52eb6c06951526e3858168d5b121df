@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8be72b12_a542bc2f",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5625b02d_1fa169e1",
+      "range": {
+        "startLine": 779,
+        "startChar": 3,
+        "endLine": 779,
+        "endChar": 52
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68d2fb15_bc0e94e2",
         "filename": "util/stm32mon.c",
         "patchSetId": 6
@@ -48,6 +72,76 @@
     },
     {
       "key": {
+        "uuid": "ba7c422b_b03bc944",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68d2fb15_bc0e94e2",
+      "range": {
+        "startLine": 791,
+        "startChar": 9,
+        "endLine": 793,
+        "endChar": 0
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6c52587_8530e15e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 1,
+      "message": "Undoing this for the same reason of command_read_unprotect() undoing.",
+      "range": {
+        "startLine": 965,
+        "startChar": 0,
+        "endLine": 985,
+        "endChar": 2
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0d7f4d7_58599e28",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 1,
+      "message": "Undoing this.",
+      "range": {
+        "startLine": 1009,
+        "startChar": 1,
+        "endLine": 1010,
+        "endChar": 0
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c343f9bb_eb50834e",
         "filename": "util/stm32mon.c",
         "patchSetId": 6
@@ -68,6 +162,30 @@
       "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1252cfc4_098001af",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c343f9bb_eb50834e",
+      "range": {
+        "startLine": 1058,
+        "startChar": 9,
+        "endLine": 1058,
+        "endChar": 26
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

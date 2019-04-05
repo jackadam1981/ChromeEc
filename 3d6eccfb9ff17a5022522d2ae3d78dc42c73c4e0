@@ -22,6 +22,30 @@
       "revId": "3d6eccfb9ff17a5022522d2ae3d78dc42c73c4e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18edf104_3eb0a1d5",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T03:57:47Z",
+      "side": 0,
+      "message": "Per STM32 command set document, CMD_WU/WP/RU/RP needs to get ACK twice after sending command.\nIn this code, wait_for_ack() after send_command is necessary. meanwhile send_command_retry() with ACK_POLL does secondary wait_for_ack() only it gets timeout from send_command().\n\nHowever, I am undoing this. This is a simple transaction (command transfer once and acks twice), and just I don\u0027t think it is worthy to increase complication here.",
+      "parentUuid": "4632e9f3_4375abfa",
+      "range": {
+        "startLine": 820,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 44
+      },
+      "revId": "3d6eccfb9ff17a5022522d2ae3d78dc42c73c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
