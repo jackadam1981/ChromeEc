@@ -462,23 +462,64 @@ enum idh_ptype {
  * <3>     :: SOP" controller present? (0b == no, 1b == yes)
  * <2:0>   :: USB SS Signaling support
  */
-#define CABLE_ATYPE 0
-#define CABLE_BTYPE 1
-#define CABLE_CTYPE 2
-#define CABLE_PLUG       0
-#define CABLE_RECEPTACLE 1
-#define CABLE_CURR_1A5   0
-#define CABLE_CURR_3A    1
-#define CABLE_CURR_5A    2
-#define CABLE_USBSS_U2_ONLY  0
-#define CABLE_USBSS_U31_GEN1 1
-#define CABLE_USBSS_U31_GEN2 2
+
+enum cable_type_support {
+	CABLE_ATYPE = 0,
+	CABLE_BTYPE = 1,
+	CABLE_CTYPE = 2,
+};
+
+enum cable_connector_type {
+	CABLE_PLUG = 0,
+	CABLE_RECEPTACLE = 1,
+};
+
+enum cable_current_capacity {
+	CABLE_CURRENT_3A = 1,
+	CABLE_CURRENT_5A = 2,
+};
+
+enum usb_ss_support {
+	USB_SS_U2_ONLY = 0,
+	USB_SS_U31_GEN1 = 1,
+	USB_SS_U31_GEN2 = 2,
+};
+
+enum cable_dir_support {
+	CABLE_FIXED = 0,
+	CABLE_CHANGABLE = 1,
+};
+
+struct cable_vdo {
+	union {
+		struct {
+			enum usb_ss_support ss_support: 3;
+			uint8_t cable_controller : 1;
+			uint8_t cable_vbus : 1;
+			enum cable_current_capacity cable_current : 2;
+			enum cable_dir_support ssrx2 : 1;
+			enum cable_dir_support ssrx1 : 1;
+			enum cable_dir_support sstx2 : 1;
+			enum cable_dir_support sstx1 : 1;
+			uint8_t cable_termination_type : 2;
+			uint8_t cable_latency : 4;
+			enum cable_connector_type connector_type : 1;
+			enum cable_type_support cable_type : 2;
+			uint8_t reserved : 4;
+			uint8_t cable_fw_version : 4;
+			uint8_t cable_hw_version : 4;
+			};
+		uint32_t raw_value;
+	};
+};
+
 #define VDO_CABLE(hw, fw, cbl, gdr, lat, term, tx1d, tx2d, rx1d, rx2d, cur, vps, sopp, usbss) \
 	(((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((cbl) & 0x3) << 18	\
 	 | (gdr) << 17 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11	\
 	 | (tx1d) << 10 | (tx2d) << 9 | (rx1d) << 8 | (rx2d) << 7	\
 	 | ((cur) & 0x3) << 5 | (vps) << 4 | (sopp) << 3		\
 	 | ((usbss) & 0x7))
+
 
 /*
  * AMA VDO
