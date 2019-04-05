@@ -735,6 +735,11 @@ size: $(out)/$(PROJECT).bin
 	$(call cmd_size,RO)
 	$(call cmd_size,RW)
 
+# Print the smallest spaces in flash
+stats: build_boards
+	$(call cmd_stats,RO)
+	$(call cmd_stats,RW)
+
 .SECONDARY:
 
 -include $(deps)
