@@ -83,12 +83,6 @@ void *heci_get_client_data(const heci_handle_t handle);
 /* send client msg */
 int heci_send_msg(const heci_handle_t handle, uint8_t *buf,
 		  const size_t buf_size);
-/*
- * send client msgs(using list of buffer&size).
- * heci_msg_item with size == 0 is not acceptable.
- */
-int heci_send_msgs(const heci_handle_t handle,
-		   const struct heci_msg_list *msg_list);
 /* send msg to fixed client(system level client) */
 int heci_send_fixed_client_msg(const uint8_t fw_addr, uint8_t *buf,
 			       const size_t buf_size);

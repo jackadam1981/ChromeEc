@@ -11,6 +11,7 @@
 #include "ipc_heci.h"
 #include "system_state.h"
 #include "task.h"
+#include "timer.h"
 #include "util.h"
 
 #ifdef DEBUG_IPC_HECI
@@ -58,7 +59,9 @@ struct heci_client_connect {
 	size_t  rx_msg_length;
 
 	uint32_t flow_ctrl_creds; /* flow control */
-	struct mutex lock; /* mutext for operation related with connection */
+	struct mutex lock; /* protects against 2 writers */
+	struct mutex cred_lock; /* protects flow ctrl */
+	int waiting_task;
 };
 
 struct heci_client_context {
@@ -275,6 +278,7 @@ int heci_send_msg(const heci_handle_t handle, uint8_t *buf,
 	struct heci_client_connect *connect;
 	struct heci_msg msg;
 	const uint8_t fw_addr = TO_FW_ADDR(handle);
+	int need_to_wait;
 
 	if (!heci_is_valid_handle(handle))
 		return -EC_ERROR_INVAL;
@@ -290,11 +294,29 @@ int heci_send_msg(const heci_handle_t handle, uint8_t *buf,
 		goto err_locked;
 	}
 
-	if (!connect->flow_ctrl_creds) {
-		CPRINTF("no cred\n");
-		ret = -HECI_ERR_NO_CRED_FROM_CLIENT_IN_HOST;
-		goto err_locked;
-	}
+	do {
+		mutex_lock(&connect->cred_lock);
+		need_to_wait = !connect->flow_ctrl_creds;
+		if (need_to_wait) {
+			connect->waiting_task = task_get_current();
+		} else {
+			connect->flow_ctrl_creds = 0;
+			connect->waiting_task = 0;
+		}
+		mutex_unlock(&connect->cred_lock);
+		if (need_to_wait) {
+			/*
+			 * A second is more than enough, otherwise if will
+			 * probably never happen.
+			 */
+			int ev = task_wait_event_mask(TASK_EVENT_IPC_READY,
+						      SECOND);
+			if (ev & TASK_EVENT_TIMER) {
+				ret = -HECI_ERR_NO_CRED_FROM_CLIENT_IN_HOST;
+				goto err_locked;
+			}
+		}
+	} while (need_to_wait);
 
 	msg.hdr.fw_addr = fw_addr;
 	msg.hdr.host_addr = connect->host_addr;
@@ -318,8 +340,6 @@ int heci_send_msg(const heci_handle_t handle, uint8_t *buf,
 		remain -= payload_size;
 		buf_offset += payload_size;
 	}
-
-	atomic_sub(&connect->flow_ctrl_creds, 1);
 	mutex_unlock(&connect->lock);
 
 	return buf_size;
@@ -328,117 +348,6 @@ err_locked:
 	mutex_unlock(&connect->lock);
 
 	return ret;
-}
-
-int heci_send_msgs(const heci_handle_t handle,
-		   const struct heci_msg_list *msg_list)
-{
-	struct heci_msg_item *cur_item;
-	int total_size = 0;
-	int i, msg_cur_pos, buf_size, copy_size, msg_sent;
-	struct heci_client_connect *connect;
-	struct heci_msg msg;
-	const uint8_t fw_addr = TO_FW_ADDR(handle);
-
-	if (!heci_is_valid_handle(handle))
-		return -EC_ERROR_INVAL;
-
-	for (i = 0; i < msg_list->num_of_items; i++) {
-		if (!msg_list->items[i]->size || !msg_list->items[i]->buf)
-			return -EC_ERROR_INVAL;
-
-		total_size += msg_list->items[i]->size;
-	}
-
-	if (total_size > HECI_MAX_MSG_SIZE)
-		return -EC_ERROR_OVERFLOW;
-
-	if (msg_list->num_of_items > HECI_MAX_MSGS)
-		return -HECI_ERR_TOO_MANY_MSG_ITEMS;
-
-	connect = heci_get_client_connect(fw_addr);
-	mutex_lock(&connect->lock);
-
-	if (!heci_is_client_connected(fw_addr)) {
-		total_size = -HECI_ERR_CLIENT_IS_NOT_CONNECTED;
-		goto err_locked;
-	}
-
-	if (!connect->flow_ctrl_creds) {
-		CPRINTF("no cred\n");
-		total_size = -HECI_ERR_NO_CRED_FROM_CLIENT_IN_HOST;
-		goto err_locked;
-	}
-
-	msg.hdr.fw_addr = fw_addr;
-	msg.hdr.host_addr = connect->host_addr;
-
-	i = 1;
-	msg_cur_pos = 0;
-	buf_size = 0;
-	cur_item = msg_list->items[0];
-	msg_sent = 0;
-	while (1) {
-		/* get next item if current item is consumed */
-		if (msg_cur_pos == cur_item->size) {
-			/*
-			 * break if no more item.
-			 * if "msg" contains data to be sent
-			 * it will be sent after break.
-			 */
-			if (i == msg_list->num_of_items)
-				break;
-
-			/* get next item and reset msg_cur_pos */
-			cur_item = msg_list->items[i++];
-			msg_cur_pos = 0;
-		}
-
-		/* send data in ipc buf if it's completely filled */
-		if (buf_size == HECI_IPC_PAYLOAD_SIZE) {
-			msg.hdr.length = buf_size;
-			msg_sent += buf_size;
-
-			/* no leftovers, send the last msg here */
-			if (msg_sent == total_size) {
-				msg.hdr.length |=
-					(uint16_t)1 << HECI_MSG_CMPL_SHIFT;
-			}
-
-			heci_send_heci_msg(&msg);
-			buf_size = 0;
-		}
-
-		/* fill ipc msg buffer */
-		if (cur_item->size - msg_cur_pos >
-		    HECI_IPC_PAYLOAD_SIZE - buf_size) {
-			copy_size = HECI_IPC_PAYLOAD_SIZE - buf_size;
-		} else {
-			copy_size = cur_item->size - msg_cur_pos;
-		}
-
-		memcpy(msg.payload + buf_size, cur_item->buf + msg_cur_pos,
-		       copy_size);
-
-		msg_cur_pos += copy_size;
-		buf_size += copy_size;
-	}
-
-	/* leftovers ? send last msg */
-	if (buf_size != 0) {
-		msg.hdr.length = buf_size;
-		msg.hdr.length |= (uint16_t)1 << HECI_MSG_CMPL_SHIFT;
-
-		heci_send_heci_msg(&msg);
-	}
-
-	atomic_sub(&connect->flow_ctrl_creds, 1);
-
-err_locked:
-	mutex_unlock(&connect->lock);
-
-	return total_size;
-
 }
 
 /* For now, we only support fixed client payload size < IPC payload size */
@@ -633,6 +542,7 @@ static int handle_client_connect_req(
 static int handle_flow_control_cmd(struct hbm_flow_control *flow_ctrl)
 {
 	struct heci_client_connect *connect;
+	int waiting_task;
 
 	if (!heci_is_valid_client_addr(flow_ctrl->fw_addr))
 		return -1;
@@ -641,7 +551,14 @@ static int handle_flow_control_cmd(struct hbm_flow_control *flow_ctrl)
 		return -1;
 
 	connect = heci_get_client_connect(flow_ctrl->fw_addr);
-	atomic_add(&connect->flow_ctrl_creds, 1);
+
+	mutex_lock(&connect->cred_lock);
+	connect->flow_ctrl_creds = 1;
+	waiting_task = connect->waiting_task;
+	mutex_unlock(&connect->cred_lock);
+
+	if (waiting_task)
+		task_set_event(waiting_task, TASK_EVENT_IPC_READY, 0);
 
 	return EC_SUCCESS;
 }
