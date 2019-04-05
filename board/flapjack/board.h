@@ -85,13 +85,23 @@
 
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
+/*
 #define CONFIG_ACCELGYRO_BMI160
+*/
 #define CONFIG_ACCEL_INTERRUPTS
+/*
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
+*/
 #define CONFIG_ALS
 #define ALS_COUNT 1
 #define CONFIG_ALS_OPT3001
+
+/* TSC3400 ALS */
+#define CONFIG_ALS_TCS3400
+#define CONFIG_ALS_TCS3400_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+
 /* LID_ALS needs to be polled */
 #define CONFIG_ACCEL_FORCE_MODE_MASK    BIT(LID_ALS)
 
@@ -255,10 +265,15 @@ enum power_signal {
 
 /* Motion sensors */
 enum sensor_id {
+/*
 	LID_ACCEL = 0,
 	LID_GYRO,
+*/
+	CLEAR_ALS = 0,
+	RGB_ALS,
 	LID_ALS,
 	VSYNC,
+	SENSOR_COUNT,
 };
 
 /* Batteries */
