@@ -16,6 +16,7 @@
 #include "cros_board_info.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_opt3001.h"
+#include "driver/als_tcs3400.h"
 #include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
 #include "driver/sync.h"
@@ -360,7 +361,10 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_P9221_INT_ODL);
 #endif
 	/* Enable interrupts from BMI160 sensor. */
-	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
+	/* gpio_enable_interrupt(GPIO_ACCEL_INT_ODL); */
+
+	/* Enable interrupt for the TCS3400 color light sensor */
+	gpio_enable_interrupt(GPIO_TCS3400_INT_ODL);
 
 	/* Enable interrupt for the camera vsync. */
 	gpio_enable_interrupt(GPIO_SYNC_INT);
@@ -391,13 +395,30 @@ void board_config_pre_init(void)
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW
+/*
 static struct mutex g_lid_mutex;
+*/
+static struct mutex g_tcs3400_mutex;
 
+/*
 static struct bmi160_drv_data_t g_bmi160_data;
+*/
 static struct opt3001_drv_data_t g_opt3001_data = {
 	.scale = 1,
 	.uscale = 0,
 	.offset = 0,
+};
+
+static struct tcs3400_drv_data_t g_tcs3400_data = {
+	.scale = 1,
+	.uscale = 0,
+	.offset = 0,
+};
+
+static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
+	.scale = 1,
+	.uscale = 0,
+	.offset = { 0, 0, 0 },
 };
 
 /* Matrix to rotate accelerometer into standard reference frame */
@@ -413,6 +434,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 * Requirement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
+#if 0
 	[LID_ACCEL] = {
 	 .name = "Accel",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
@@ -452,6 +474,53 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
+#else
+	[CLEAR_ALS] = {
+		.name = "Clear Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3400_drv,
+		.mutex = &g_tcs3400_mutex,
+		.drv_data = &g_tcs3400_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = TCS3400_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
+		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
+		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+
+	[RGB_ALS] = {
+		.name = "RGB Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.type = MOTIONSENSE_TYPE_LIGHT_EXT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3400_rgb_drv,
+		.mutex = &g_tcs3400_mutex,
+		.drv_data = &g_tcs3400_rgb_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = TCS3400_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
+		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
+		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+#endif
 	[LID_ALS] = {
 	.name = "Light",
 	.active_mask = SENSOR_ACTIVE_S0_S3,
