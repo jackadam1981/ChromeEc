@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f96f30f_4348a8a1",
+        "filename": "include/usb_tc_ctvpd_sm.h",
+        "patchSetId": 63
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-05T18:33:35Z",
+      "side": 1,
+      "message": "Not sure why the compiler didn\u0027t catch this uninitialized variable being used. This caused the tests to intermittently fail.",
+      "range": {
+        "startLine": 499,
+        "startChar": 5,
+        "endLine": 499,
+        "endChar": 22
+      },
+      "revId": "f8cd1672ba0ed03fccb9a2a9faced1f1a19e136c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
