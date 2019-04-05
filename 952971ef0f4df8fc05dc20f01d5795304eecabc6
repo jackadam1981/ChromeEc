@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "02e705f3_7e6f9bfc",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-05T23:50:21Z",
+      "side": 1,
+      "message": "Not on this chip, but we can theoretically read it on other chips (such as the L4). We don\u0027t have a use for it at the moment, but I put it there for completeness so I (or someone else) doesn\u0027t have to add it in six months for a different chip when I\u0027ve forgotten how it works.",
+      "parentUuid": "f9393ddc_2f1caf84",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003d65bb_e4dd0322",
         "filename": "util/stm32mon.c",
         "patchSetId": 6
@@ -70,6 +88,24 @@
       "writtenOn": "2019-04-05T23:32:38Z",
       "side": 1,
       "message": "Wow, this is terrible. But, well, if it works...",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb0a707_53dce18c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-05T23:50:21Z",
+      "side": 1,
+      "message": "Yes, I did get confirmation from ST that it should be ok...",
+      "parentUuid": "71622433_af39cca7",
       "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -150,6 +186,24 @@
       "writtenOn": "2019-04-05T23:32:38Z",
       "side": 1,
       "message": "I find `\u003d\u003d 0` a bit clearer.",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ece106_7beb4f8e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-05T23:50:21Z",
+      "side": 1,
+      "message": "Agreed, but I was trying to match existing style. :(\n\nThis file is due for a complete rewrite IMHO, but I think that should be a separate change. (No reason it can\u0027t be in C++11 either.)",
+      "parentUuid": "50cec771_7bb3c8f3",
       "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
