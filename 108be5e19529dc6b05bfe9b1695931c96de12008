@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7b3f022e_1e461d8e",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-05T21:31:09Z",
+      "side": 1,
+      "message": "It won\u0027t confuse people because CONFIG_THROTTLE_AP isn\u0027t defined here.\n\nAgain, it\u0027s explicitly undefined here so that we will never need to examine it again (to save more space).",
+      "parentUuid": "570137dc_0c064c93",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a5f70ff_e779a8f9",
         "filename": "board/flapjack/board.h",
         "patchSetId": 3
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "Ideally, PD FAFT should not use it in locked RO as locked RO should not perform any PD comm.\n\nHowever, it is used more like a workaround, like:\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/refs/heads/master/servo/drv/cros_ec_softrec_power.py#160",
       "parentUuid": "dfeef0e6_b8fe6797",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 20
+      },
+      "revId": "108be5e19529dc6b05bfe9b1695931c96de12008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea75798_f20a627c",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-05T21:31:09Z",
+      "side": 1,
+      "message": "That\u0027s a bad workaround because we can\u0027t swap data role in RO. We should instead make servo v4 connect as a sink when DUT is in recovery mode.",
+      "parentUuid": "fda75a83_e2f01653",
       "range": {
         "startLine": 196,
         "startChar": 0,
