@@ -70,6 +70,30 @@
       "revId": "66a429a97484bbde369e48a4507ee48aa20a9ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289e350d_b2568799",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-05T15:36:14Z",
+      "side": 1,
+      "message": "SGTM. In coreboot the configs are generated using Kconfig which generated the #define with value 1. Since the convention in the EC code is to #define to empty values we will just support that.",
+      "parentUuid": "2c5aebcd_a658ade5",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 27
+      },
+      "revId": "66a429a97484bbde369e48a4507ee48aa20a9ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
