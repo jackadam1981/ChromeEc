@@ -262,6 +262,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06457589_83e46d00",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-05T16:10:11Z",
+      "side": 1,
+      "message": "In the interest of moving this CL along, would you mind if we move this discussion onto a bug?  It\u0027s gotten larger than the scope of the initial fix.\n\nAt this point, if we do majorly change how the unlocked jumps work, I suspect that change will be large enough it would be a higher risk to take onto our firmware branch.  \n\nIf you think this will regress customer (locked) systems at all, then I don\u0027t want to commit it.  But otherwise I\u0027d like to get this fixed for the ODM having problems to enable their flow for now.  I know this isn\u0027t a perfect change, but it is an incremental improvement over the current state of things since no monitors/dongles currently work on unlocked RO-\u003eRW jumps right now, and this enables some of them to work.",
+      "parentUuid": "5bcf70e8_8ebef04f",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
