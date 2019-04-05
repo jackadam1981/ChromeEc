@@ -245,7 +245,7 @@ static struct pd_protocol {
 	 * cable attributes and it is cleared when the cable is disconnected.
 	 */
 	enum idh_ptype cable_type;
-
+	struct cable_vdo cable_attr;
 	/* Type of SOP* message to be transmitted */
 	enum tcpm_transmit_type msg_type;
 
@@ -257,6 +257,10 @@ static struct pd_protocol {
 	enum tcpm_transmit_type ca_type;
 	/* protocol revision */
 	uint8_t rev;
+	/* For USB PD REV3, active cable has 2 VDOs */
+	struct active_cable_vdo2 cable_attr_vdo2;
+	/* cable revision */
+	uint8_t cable_rev;
 #endif
 	/*
 	 * Some port partners are really chatty after an explicit contract is
@@ -774,9 +778,20 @@ static inline void set_state(int port, enum pd_states next_state)
 		pd[port].dev_id = 0;
 		pd[port].flags &= ~PD_FLAGS_RESET_ON_DISCONNECT_MASK;
 
-		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
 			/* Resetting cable type. */
 			pd[port].cable_type = IDH_PTYPE_UNDEF;
+
+			/* Resetting cable attributes */
+			pd[port].cable_attr.raw_value = 0;
+
+#ifdef CONFIG_USB_PD_REV30
+			/* Resetting cable revision */
+			pd[port].cable_rev = 0;
+			/* Resetting active cable vdo2 */
+			pd[port].cable_attr_vdo2.raw_value = 0;
+#endif
+		}
 
 #ifdef CONFIG_CHARGE_MANAGER
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
@@ -2033,11 +2048,27 @@ static void handle_request(int port, uint16_t head,
 
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
 		/* Check for discovery identity ack from the cable */
-		if (cnt > 1 && pd[port].msg_type == TCPC_TX_SOP_PRIME &&
+		if (cnt > 4 && pd[port].msg_type == TCPC_TX_SOP_PRIME &&
 		   (PD_VDO_CMD(payload[0]) == CMD_DISCOVER_IDENT) &&
-		   (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK))
+		   (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK)) {
 			pd[port].cable_type = PD_IDH_PTYPE(payload[1]);
+			pd[port].cable_attr.raw_value = payload[4];
+#ifdef CONFIG_USB_PD_REV30
+			pd[port].cable_rev = PD_HEADER_REV(head);
+			/*
+			 * Ref USB PD Spec 3.0  Pg 145
+			 * For active cable there are two VDOs. Hence storing
+			 * the second VDO.
+			 *
+			 * For USB PD 2.0, the cnt will be 4.
+			 */
+			if (cnt > 5 && pd[port].cable_rev == PD_REV30 &&
+			    pd[port].cable_type == IDH_PTYPE_ACABLE)
+				pd[port].cable_attr_vdo2.raw_value = payload[5];
+#endif /* CONFIG_USB_PD_REV30 */
+		}
 
+		/* Resetting the message type to SOP */
 		pd[port].msg_type = TCPC_TX_SOP;
 
 	} else
@@ -5132,6 +5163,301 @@ static int command_pd(int argc, char **argv)
 			default:
 				ccprintf("Invalid");
 			}
+	} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+		   !strcasecmp(argv[2], "cableattributes")) {
+		if (
+#ifdef CONFIG_USB_PD_REV30
+		    (pd[port].cable_rev == PD_REV20) &&
+#endif
+		    ((pd[port].cable_type == IDH_PTYPE_PCABLE) ||
+		    (pd[port].cable_type == IDH_PTYPE_ACABLE))) {
+			ccprintf("Cable type: ");
+			switch (pd[port].cable_attr.rev20.connector_type) {
+			case CONNECTOR_ATYPE:
+				ccprintf("A");
+				break;
+			case CONNECTOR_BTYPE:
+				ccprintf("B");
+				break;
+			case CONNECTOR_CTYPE:
+				ccprintf("C");
+				break;
+			default:
+				ccprintf("Undefined");
+			}
+			ccprintf("\n");
+
+			ccprintf("Latency: %dms\n",
+				  pd[port].cable_attr.rev20.cable_latency);
+
+			ccprintf("Cable termation type: ");
+			if (pd[port].cable_type == IDH_PTYPE_ACABLE)
+				ccprintf("Both ends active\n");
+			else
+				ccprintf("One end active\n");
+
+			ccprintf("Current handling capacity: ");
+			switch (pd[port].cable_attr.rev20.cable_current) {
+			case CABLE_CURRENT_3A:
+				ccprintf("3A");
+				break;
+			case CABLE_CURRENT_5A:
+				ccprintf("5A");
+				break;
+			default:
+				ccprintf("Invalid");
+			}
+
+			ccprintf("\n");
+
+			ccprintf("VBUS through the Cable: %s\n",
+					pd[port].cable_attr.rev20.cable_vbus ?
+								"Yes" : "No");
+
+			ccprintf("SOP\" controller: %sabled\n",
+				  pd[port].cable_attr.rev20.cable_controller ?
+								"En" : "Dis");
+
+			ccprintf("USB superspeed signalling support: ");
+			switch (pd[port].cable_attr.rev20.ss_support) {
+			case USB_SS_U2_ONLY:
+				ccprintf("USB 2.0");
+				break;
+			case USB_SS_U31_GEN1:
+				ccprintf("USB 3.1 Gen 1");
+				break;
+			case USB_SS_U31_GEN2:
+				ccprintf("USB 3.1 Gen 1 and Gen 2");
+				break;
+			default:
+				ccprintf("Invalid");
+			}
+			ccprintf("\n");
+#ifdef CONFIG_USB_PD_REV30
+			} else if (pd[port].cable_rev == PD_REV30 &&
+				   pd[port].cable_type == IDH_PTYPE_PCABLE)  {
+				ccprintf("Cable type: ");
+				switch (
+				  pd[port].cable_attr.p_rev30.connector_type) {
+				case CONNECTOR_CTYPE:
+					ccprintf("C");
+					break;
+				case CONNECTOR_CAPTIVE:
+					ccprintf("Captive");
+					break;
+				default:
+					ccprintf("Undefined");
+				}
+				ccprintf("\n");
+
+				ccprintf("Latency: %dms\n",
+				  pd[port].cable_attr.p_rev30.cable_latency);
+
+				ccprintf("Cable termation type: ");
+				if (pd[port].cable_type == IDH_PTYPE_ACABLE)
+					ccprintf("Both ends active\n");
+				else
+					ccprintf("One end active\n");
+
+				ccprintf("Maximum vbus voltage: ");
+				switch (pd[port].cable_attr.p_rev30.vbus_vtg) {
+				case CABLE_VBUS_20V:
+					ccprintf("20V");
+					break;
+				case CABLE_VBUS_30V:
+					ccprintf("30V");
+					break;
+				case CABLE_VBUS_40V:
+					ccprintf("40V");
+					break;
+				case CABLE_VBUS_50V:
+					ccprintf("50V");
+					break;
+				default:
+					ccprintf("Undefined");
+				}
+				ccprintf("\n");
+
+
+				ccprintf("Current handling capacity: ");
+				switch (
+				    pd[port].cable_attr.p_rev30.cable_current) {
+				case CABLE_CURRENT_3A:
+					ccprintf("3A");
+					break;
+				case CABLE_CURRENT_5A:
+					ccprintf("5A");
+					break;
+				default:
+					ccprintf("Invalid");
+				}
+
+				ccprintf("\n");
+
+				ccprintf("USB superspeed signalling support: ");
+				switch (
+				     pd[port].cable_attr.p_rev30.ss_support) {
+				case USB_SS_U2_ONLY:
+					ccprintf("USB 2.0");
+					break;
+				case USB_SS_U31_GEN1:
+					ccprintf("USB 3.1 Gen 1");
+					break;
+				case USB_SS_U31_GEN2:
+					ccprintf("USB 3.1 Gen 1 and Gen 2");
+					break;
+				default:
+					ccprintf("Invalid");
+				}
+				ccprintf("\n");
+			} else if (pd[port].cable_rev == PD_REV30 &&
+				   pd[port].cable_type == IDH_PTYPE_ACABLE)  {
+				ccprintf("Cable type: ");
+				switch (
+				  pd[port].cable_attr.a_rev30.connector_type) {
+				case CONNECTOR_CTYPE:
+					ccprintf("C");
+					break;
+				case CONNECTOR_CAPTIVE:
+					ccprintf("Captive");
+					break;
+				default:
+					ccprintf("Undefined");
+				}
+				ccprintf("\n");
+
+				ccprintf("Latency: %dms\n",
+				   pd[port].cable_attr.a_rev30.cable_latency);
+
+				ccprintf("Cable termation type: ");
+				if (pd[port].cable_type == IDH_PTYPE_ACABLE)
+					ccprintf("Both ends active\n");
+				else
+					ccprintf("One end active\n");
+
+				ccprintf("Maximum vbus voltage: ");
+				switch (pd[port].cable_attr.a_rev30.vbus_vtg) {
+				case CABLE_VBUS_20V:
+					ccprintf("20V");
+					break;
+				case CABLE_VBUS_30V:
+					ccprintf("30V");
+					break;
+				case CABLE_VBUS_40V:
+					ccprintf("40V");
+					break;
+				case CABLE_VBUS_50V:
+					ccprintf("50V");
+					break;
+				default:
+					ccprintf("Undefined");
+				}
+				ccprintf("\n");
+
+				if (pd[port].cable_attr.a_rev30.sbu_support) {
+					ccprintf("SBU: Supported\n");
+					ccprintf("SBU Type: %s\n",
+					pd[port].cable_attr.a_rev30.sbu_support
+						? "Active" : "Passive");
+				} else
+					ccprintf("SBU: Not supported\n");
+
+				ccprintf("Current handling capacity: ");
+				switch (
+				   pd[port].cable_attr.a_rev30.cable_current) {
+				case CABLE_CURRENT_3A:
+					ccprintf("3A");
+					break;
+				case CABLE_CURRENT_5A:
+					ccprintf("5A");
+					break;
+				default:
+					ccprintf("Invalid");
+				}
+				ccprintf("\n");
+
+				ccprintf("VBUS through the Cable: %s\n",
+				   pd[port].cable_attr.a_rev30.cable_vbus ?
+								"Yes" : "No");
+
+				ccprintf("SOP\" controller: %sabled\n",
+				 pd[port].cable_attr.a_rev30.cable_controller ?
+								"En" : "Dis");
+
+				ccprintf("U3 power: ");
+				switch (pd[port].cable_attr_vdo2.u3_power) {
+				case U3_POWER_10mW:
+					ccprintf(">10mW");
+					break;
+				case U3_POWER_5_10mW:
+					ccprintf("5mW - 10mW");
+					break;
+				case U3_POWER_1_5mW:
+					ccprintf("1mW - 5mW");
+					break;
+				case U3_POWER_0mW5_1:
+					ccprintf("0.5mW - 1mW");
+					break;
+				case U3_POWER_0mW2_0mW5:
+					ccprintf("0.2mW - 0.5mW");
+					break;
+				case U3_POWER_50uW_200uW:
+					ccprintf("50uW - 200uW");
+					break;
+				case U3_POWER_0_200uW:
+					ccprintf("<200uW");
+					break;
+				default:
+					ccprintf("Invalid");
+				}
+				ccprintf("\n");
+
+				ccprintf("U0 to U3 transition: %s\n",
+				pd[port].cable_attr_vdo2.u0u3_transition ?
+					"Through U3S" : "Direct");
+
+				ccprintf("USB 2.0 Hub Hops Consumed: %d\n",
+				    pd[port].cable_attr_vdo2.usb_2_hub_hops);
+
+				ccprintf("USB 2.0 Supported: %s\n",
+				     pd[port].cable_attr_vdo2.usb_2_support ?
+								"yes" : "no");
+
+				if (pd[port].cable_attr_vdo2.usb_ss_support) {
+					ccprintf("SuperSpeed Supported: Yes\n");
+					ccprintf("No of SS Lanes Supported:");
+					switch (
+					  pd[port].cable_attr_vdo2.ss_lanes) {
+					case USB_SS_ONE_LANE:
+						ccprintf("1");
+						break;
+					case USB_SS_TWO_LANES:
+						ccprintf("2");
+						break;
+					default:
+						ccprintf("Invalid");
+					}
+				ccprintf("\n");
+
+				} else
+					ccprintf("SuperSpeed Supported: No\n");
+
+				ccprintf("SuperSpeed Signaling :");
+				switch (
+				    pd[port].cable_attr_vdo2.ss_signaling) {
+				case USB_SS_GEN1:
+					ccprintf("Gen 1");
+					break;
+				case USB_SS_GEN2:
+					ccprintf("Gen 2");
+					break;
+				default:
+					ccprintf("Invalid");
+				}
+				ccprintf("\n");
+#endif
+		} else
+			ccprintf("Not an Emark cable\n");
 	} else {
 		return EC_ERROR_PARAM1;
 	}
@@ -5160,6 +5486,7 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 #ifdef CONFIG_USB_PD_DECODE_SOP
 			"\n\t<port> cabletype"
+			"\n\t<port> cableattributes"
 #endif /* CONFIG_USB_PD_DECODE_SOP */
 			,
 			"USB PD");
