@@ -129,6 +129,64 @@ USB_STREAM_CONFIG(ec_usb,
 		  ec_uart_to_usb)
 #endif
 
+#define Q_SIZE (1 << 9)
+#define Q_MASK (Q_SIZE - 1)
+
+static uint8_t ec_q[Q_SIZE];
+static uint32_t ec_q_head;
+static uint32_t ec_q_tail;
+
+static void add_to_ec_q(const uint8_t *data, size_t size)
+{
+	size_t q_room = (ec_q_tail - ec_q_head - 1) & Q_MASK;
+	size_t q_top;
+
+	if (q_room < size) {
+		/* Truncation! */
+		if (!q_room)
+			return;
+		size = q_room;
+	}
+
+	q_top = Q_SIZE - ec_q_head;
+	if (q_top > size) {
+		memcpy(ec_q + ec_q_head, data, size);
+		ec_q_head += size;
+		return;
+	}
+
+	memcpy(ec_q + ec_q_head, data, q_top);
+	if (q_top == size) {
+		ec_q_head = 0;
+		return;
+	}
+	size -= q_top; /* Still to go. */
+	memcpy(ec_q, data + q_top, size);
+	ec_q_head = size;
+}
+
+size_t read_ec_q(void *buf, size_t size)
+{
+	size_t q_taken = (ec_q_head - ec_q_tail) & Q_MASK;
+	size_t q_top;
+
+	if (q_taken < size)
+		size = q_taken;
+
+	if (size) {
+		q_top = Q_SIZE - ec_q_tail;
+
+		if (q_top <= size) {
+			memcpy(buf, ec_q + ec_q_tail, q_top);
+			ec_q_tail = 0;
+			return q_top;
+		}
+		memcpy(buf, ec_q + ec_q_tail, size);
+		ec_q_tail += size;
+	}
+
+	return size;
+}
 void get_data_from_usb(struct usart_config const *config)
 {
 	struct queue const *uart_out = config->consumer.queue;
@@ -154,8 +212,13 @@ void send_data_to_usb(struct usart_config const *config)
 
 	room = MIN(sizeof(buffer), queue_space(uart_in));
 	i = uartn_drain_rx_fifo(uart, buffer, room);
-	if (i)
-		QUEUE_ADD_UNITS(uart_in, buffer, i);
+	if (i) {
+		if (config->uart == 2) {
+			add_to_ec_q(buffer, i);
+			usb_stream_tx(&ec_usb);
+		} else
+			QUEUE_ADD_UNITS(uart_in, buffer, i);
+	}
 }
 
 static void uart_read(struct producer const *producer, size_t count)
