@@ -240,7 +240,7 @@ static struct pd_protocol {
 	 * attributes and it is cleared when the cable is disconnected.
 	 */
 	uint8_t cable_type;
-
+	uint32_t cable_attr;
 	/* Type of SOP* message to be transmitted */
 	enum tcpm_transmit_type msg_type;
 #endif
@@ -743,6 +743,8 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_USB_PD_DECODE_SOP
 		/* Resetting cable type. */
 		pd[port].cable_type = 0;
+		/* Restting cable attributes */
+		pd[port].cable_attr = 0;
 #endif
 #ifdef CONFIG_CHARGE_MANAGER
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
@@ -1959,11 +1961,13 @@ static void handle_request(int port, uint16_t head,
 	/* Check for discovery identity ack from the cable */
 	if (cnt > 0 && (PD_VDO_CMD(payload[0]) == CMD_DISCOVER_IDENT) &&
 	   (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK)) {
-		if (PD_IDH_PTYPE(payload[1]) == IDH_PTYPE_PCABLE)
+		if (PD_IDH_PTYPE(payload[1]) == IDH_PTYPE_PCABLE) {
 			pd[port].cable_type = IDH_PTYPE_PCABLE;
-		else if (PD_IDH_PTYPE(payload[1]) == IDH_PTYPE_ACABLE)
+			pd[port].cable_attr = payload[4];
+		} else if (PD_IDH_PTYPE(payload[1]) == IDH_PTYPE_ACABLE) {
 			pd[port].cable_type = IDH_PTYPE_ACABLE;
-		else
+			pd[port].cable_attr = payload[4];
+		} else
 			pd[port].cable_type = 0;
 	}
 #endif
@@ -4897,8 +4901,80 @@ static int command_pd(int argc, char **argv)
 
 #ifdef CONFIG_USB_PD_DECODE_SOP
 	} else if (!strcasecmp(argv[2], "cabletype")) {
-		ccprintf("Cable type for port%d is 0x%x\n",
-			port, pd[port].cable_type);
+		ccprintf("Cable type for port%d is: ", port);
+			switch (pd[port].cable_type) {
+			case IDH_PTYPE_PCABLE:
+				ccprintf("Passive");
+				break;
+			case IDH_PTYPE_ACABLE:
+				ccprintf("Active");
+				break;
+			default:
+				ccprintf("Invalid");
+
+	} else if (!strcasecmp(argv[2], "cableattributes")) {
+		if (pd[port].cable_type) {
+			ccprintf("Cable type: ");
+			switch (CABLE_TYPE(pd[port].cable_attr)) {
+			case CABLE_ATYPE:
+				ccprintf("A");
+				break;
+			case CABLE_BTYPE:
+				ccprintf("B");
+				break;
+			case CABLE_CTYPE:
+				ccprintf("C");
+				break;
+			default:
+				ccprintf("Undefined");
+			}
+			ccprintf("\n");
+			ccprintf("Latency: %dms\n",
+				  CABLE_LAT(pd[port].cable_attr));
+
+			if (pd[port].cable_type == IDH_PTYPE_ACABLE) {
+				ccprintf("Termination: %d end(s) active\n",
+					CABLE_TERM(pd[port].cable_attr));
+				ccprintf("Vconn: Required\n");
+			} else
+				ccprintf("Vconn :%s Required\n",
+				CABLE_TERM(pd[port].cable_attr) ? "" : "Not");
+
+			if (CABLE_VBUS(pd[port].cable_attr)) {
+				ccprintf("Current handling capacity: ");
+				switch (CABLE_CURR(pd[port].cable_attr)) {
+				case CABLE_CURR_3A:
+					ccprintf("3");
+					break;
+				case CABLE_CURR_5A:
+					ccprintf("5");
+					break;
+				default:
+					ccprintf("Invalid");
+				}
+			}
+			ccprintf("\n");
+			ccprintf("SOP\" controller: %sbled\n",
+				CABLE_CNTRL(pd[port].cable_attr) ?
+				"Ena" : "Dis");
+			ccprintf("USB superspeed signalling support: ");
+			switch (CABLE_USBSS(pd[port].cable_attr)) {
+			case CABLE_USBSS_U2_ONLY:
+				ccprintf("USB 2.0");
+				break;
+			case CABLE_USBSS_U31_GEN1:
+				ccprintf("USB 3.1 Gen 1");
+				break;
+			case CABLE_USBSS_U31_GEN2:
+				ccprintf("USB 3.1 Gen 1 and Gen 2");
+				break;
+			default:
+				ccprintf("Invalid");
+			}
+			ccprintf("\n");
+		} else
+			ccprintf("Not an Emark cable\n");
+		}
 #endif
 	} else {
 		return EC_ERROR_PARAM1;
@@ -4928,6 +5004,7 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 #ifdef CONFIG_USB_PD_DECODE_SOP
 			"\n\t<port> cabletype"
+			"\n\t<port> cableattributes"
 #endif /* CONFIG_USB_PD_DECODE_SOP */
 			,
 			"USB PD");
