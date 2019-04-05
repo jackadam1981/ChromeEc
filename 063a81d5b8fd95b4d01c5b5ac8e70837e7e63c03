@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3d2de67_372de0a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "Please try to flash an STM32H7 FPMCU (Tom Hughes can probably help, you need a reworked nocturne)",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd956adb_0c7861ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "iteflash? This is STM32 stuff.",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc699d2_253865a9",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "I love it, but I feel that RESP_ACK_DAMAGED is a better name ,-)",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62475141_c5cd31d3",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "super nit: comma at the end of comment",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d3141f_6c83ed6a",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "BUILD_ASSERT(ARRAY_SIZE(stat_resp) \u003d\u003d MAX_EVENT_IDX);",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a884d3_6d5a54a2",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "Since you\u0027re refactoring anyway, would a switch/case be more appropriate here?",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bb2cedc_b3331c97",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "EAGAIN /* Try again */ better matches what we do.\nEUCLEAN /* Structure needs cleaning */ is not quite what we see here.",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9852bcbd_db905703",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "Can you define what the variable means?",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9449b5c5_34b466dd",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "I feel like we could move the retry_on_ackish test here",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3bd01e9_334fba5d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "If the else branch has brackets, please add brackets for the if branch too",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebc6e1c_6ed5974e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "Please don\u0027t split error strings, it makes grepping hard.\n\nYou can go over 80 chars if you have to.",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5880b28b_17628ceb",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "Is this really necessary?",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aeb30e2_c79754aa",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T05:29:07Z",
+      "side": 1,
+      "message": "bracket please {}",
+      "revId": "063a81d5b8fd95b4d01c5b5ac8e70837e7e63c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
