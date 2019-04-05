@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61567ae0_12a90a96",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "nit: , at the end for consistency",
+      "range": {
+        "startLine": 179,
+        "startChar": 19,
+        "endLine": 179,
+        "endChar": 20
+      },
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9393ddc_2f1caf84",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "Do we _ever_ care about package? If not, and we can\u0027t read it anyway, maybe drop this field?",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003d65bb_e4dd0322",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": ",",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71622433_af39cca7",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "Wow, this is terrible. But, well, if it works...",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dddc271a_f6733696",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "Okay so we have:\n\t\t\t.otp_area \u003d {\n\t\t\t\t.addr \u003d 0x1FFF7800,\n\t\t\t\t.size_bytes \u003d 528,\n\t\t\t},\n\nand we want to read addr \u003d 0x1FFF7A10, size_bytes \u003d 12.\n\notp_end_addr \u003d 0x1FFF7800 + 528 - 1 \u003d 0x1fff7a0f;\noffset \u003d 0x1FFF7A10 - 0x1fff7a0f \u003d 1;\nread_size_bytes \u003d 1 + 12 \u003d 13;\n\nOkay, now I understand, you start from the last byte in OTP region, and overflow from there. Can you clarify a bit more in the explanation above?",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fc7e35_d0366bd3",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "I don\u0027t see how that can possibly be 0 (0 + 0 - 1?).",
+      "range": {
+        "startLine": 1019,
+        "startChar": 6,
+        "endLine": 1019,
+        "endChar": 18
+      },
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f44658c_7bfaf231",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "is res the number of bytes? If so, res \u003d\u003d read_size_bytes sounds better.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 8
+      },
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cec771_7bb3c8f3",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T23:32:38Z",
+      "side": 1,
+      "message": "I find `\u003d\u003d 0` a bit clearer.",
+      "revId": "952971ef0f4df8fc05dc20f01d5795304eecabc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
