@@ -16,6 +16,10 @@
 #include "power.h"
 #include "util.h"
 
+#define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
+#define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
+
 static uint32_t events;
 uint32_t mkbp_last_event_time;
 
@@ -35,25 +39,40 @@ static int event_is_set(uint8_t event_type)
 }
 
 #ifdef CONFIG_MKBP_USE_GPIO
-static void mkbp_set_host_active_via_gpio(int active)
+static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 {
+	if (timestamp) {
+		interrupt_disable();
+		*timestamp = __hw_clock_source_read();
+	}
+
 	gpio_set_level(GPIO_EC_INT_L, !active);
+
+	if (timestamp)
+		interrupt_enable();
+
+	return EC_SUCCESS;
 }
 #endif
 
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
-static void mkbp_set_host_active_via_event(int active)
+static int mkbp_set_host_active_via_event(int active, uint32_t *timestamp)
 {
+	/* This should be moved into host_set_single_event for more accuracy */
+	if (timestamp)
+		*timestamp = __hw_clock_source_read();
 	if (active)
 		host_set_single_event(EC_HOST_EVENT_MKBP);
+	return EC_SUCCESS;
 }
 #endif
 
 #ifdef CONFIG_MKBP_USE_HECI
-static void mkbp_set_host_active_via_heci(int active)
+static int mkbp_set_host_active_via_heci(int active, uint32_t *timestamp)
 {
 	if (active)
-		heci_send_mkbp_event();
+		return heci_send_mkbp_event(timestamp);
+	return EC_SUCCESS;
 }
 #endif
 
@@ -63,16 +82,16 @@ static void mkbp_set_host_active_via_heci(int active)
  *
  * @param active  1 if there is an event, 0 otherwise
  */
-static void mkbp_set_host_active(int active)
+static int mkbp_set_host_active(int active, uint32_t *timestamp)
 {
 #if defined(CONFIG_MKBP_USE_CUSTOM)
-	mkbp_set_host_active_via_custom(active);
+	return mkbp_set_host_active_via_custom(active, timestamp);
 #elif defined(CONFIG_MKBP_USE_HOST_EVENT)
-	mkbp_set_host_active_via_event(active);
+	return mkbp_set_host_active_via_event(active, timestamp);
 #elif defined(CONFIG_MKBP_USE_GPIO)
-	mkbp_set_host_active_via_gpio(active);
+	return mkbp_set_host_active_via_gpio(active, timestamp);
 #elif defined(CONFIG_MKBP_USE_HECI)
-	mkbp_set_host_active_via_heci(active);
+	return mkbp_set_host_active_via_heci(active, timestamp);
 #endif
 }
 
@@ -82,29 +101,19 @@ static void mkbp_set_host_active(int active)
 static void set_host_interrupt(int active)
 {
 	static int old_active;
-	/*
-	 * If we are going to perform a simple GPIO toggle, then pause
-	 * interrupts to let last_event_time marker have the best chance of
-	 * matching the time we toggle the GPIO pin.
-	 *
-	 * If we are passing mkbp events through host communication, then
-	 * pausing interrupts can have unintended consequences (say if that code
-	 * waits for a mutex and then de-schedules its tasks).
-	 */
-#ifdef CONFIG_MKBP_USE_GPIO
-	interrupt_disable();
-#endif
+	int rv;
 
-	if (old_active == 0 && active == 1)
-		mkbp_last_event_time = __hw_clock_source_read();
+	/* We only care about edge transitions */
+	if (active == old_active)
+		return;
 
-	mkbp_set_host_active(active);
-
-	old_active = active;
-
-#ifdef CONFIG_MKBP_USE_GPIO
-	interrupt_enable();
-#endif
+	/* We only care about take a timestamp on rising edge */
+	rv = mkbp_set_host_active(active,
+				  active ? &mkbp_last_event_time : NULL);
+	if (rv == EC_SUCCESS)
+		old_active = active;
+	else
+		CPRINTS("Could not toggle MKBP to %d (%d)", active, rv);
 }
 
 #ifdef CONFIG_MKBP_WAKEUP_MASK
