@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4f850ad9_0bad31b7",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T23:37:06Z",
+      "side": 1,
+      "message": "Actually, I need to keep this way.\nMy intention is to regard a damaged ack like other error if retry_on_damaged_ack is false.\nWill revert in the next patch.",
+      "parentUuid": "13b4af52_69fcc00c",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 22
+      },
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa584143_3b372da4",
         "filename": "util/stm32mon.c",
         "patchSetId": 9
