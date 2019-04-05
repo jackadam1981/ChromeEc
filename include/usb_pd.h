@@ -454,6 +454,14 @@ struct pd_policy {
 	 | ((cur) & 0x3) << 5 | (vps) << 4 | (sopp) << 3		\
 	 | ((usbss) & 0x7))
 
+#define CABLE_TYPE(vdo) (((vdo) >> 18) & 0x3)
+#define CABLE_LAT(vdo) (((vdo) >> 13) & 0x7)
+#define CABLE_TERM(vdo) (((vdo) >> 11) & 0x3)
+#define CABLE_CURR(vdo) (((vdo) >> 5) & 0x3)
+#define CABLE_VBUS(vdo) (((vdo) >> 4) & 0x1)
+#define CABLE_CNTRL(vdo) (((vdo) >> 3) & 0x1)
+#define CABLE_USBSS(vdo) ((vdo) & 0x3)
+
 /*
  * AMA VDO
  * ---------
