@@ -444,15 +444,15 @@ enum idh_ptype {
 #define PD_PRODUCT_PID(vdo) (((vdo) >> 16) & 0xffff)
 
 /*
- * Cable VDO
+ * Cable VDO (PD Spec 2.0)
  * ---------
  * <31:28> :: Cable HW version
  * <27:24> :: Cable FW version
- * <23:20> :: SBZ
- * <19:18> :: type-C to Type-A/B/C (00b == A, 01 == B, 10 == C)
- * <17>    :: Type-C to Plug/Receptacle (0b == plug, 1b == receptacle)
- * <16:13> :: cable latency (0001 == <10ns(~1m length))
- * <12:11> :: cable termination type (11b == both ends active VCONN req)
+ * <23:20> :: Reversed
+ * <19:18> :: Type-C to Type-A/B/C (00b == A, 01 == B, 10 == C)
+ * <17>    :: Reserved
+ * <16:13> :: Cable latency (0001 == <10ns(~1m length))
+ * <12:11> :: Cable termination type (11b == both ends active VCONN req)
  * <10>    :: SSTX1 Directionality support (0b == fixed, 1b == cfgable)
  * <9>     :: SSTX2 Directionality support
  * <8>     :: SSRX1 Directionality support
@@ -462,23 +462,211 @@ enum idh_ptype {
  * <3>     :: SOP" controller present? (0b == no, 1b == yes)
  * <2:0>   :: USB SS Signaling support
  */
-#define CABLE_ATYPE 0
-#define CABLE_BTYPE 1
-#define CABLE_CTYPE 2
-#define CABLE_PLUG       0
-#define CABLE_RECEPTACLE 1
-#define CABLE_CURR_1A5   0
-#define CABLE_CURR_3A    1
-#define CABLE_CURR_5A    2
-#define CABLE_USBSS_U2_ONLY  0
-#define CABLE_USBSS_U31_GEN1 1
-#define CABLE_USBSS_U31_GEN2 2
-#define VDO_CABLE(hw, fw, cbl, gdr, lat, term, tx1d, tx2d, rx1d, rx2d, cur, vps, sopp, usbss) \
-	(((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((cbl) & 0x3) << 18	\
-	 | (gdr) << 17 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11	\
-	 | (tx1d) << 10 | (tx2d) << 9 | (rx1d) << 8 | (rx2d) << 7	\
-	 | ((cur) & 0x3) << 5 | (vps) << 4 | (sopp) << 3		\
-	 | ((usbss) & 0x7))
+enum usb_ss_support {
+	USB_SS_U2_ONLY = 0,
+	USB_SS_U31_GEN1 = 1,
+	USB_SS_U31_GEN2 = 2,
+};
+
+enum cable_current_capacity {
+	CABLE_CURRENT_3A = 1,
+	CABLE_CURRENT_5A = 2,
+};
+
+enum cable_dir_support {
+	CABLE_FIXED = 0,
+	CABLE_CHANGEABLE = 1,
+};
+
+enum connector_type_support {
+	CONNECTOR_ATYPE = 0,
+	CONNECTOR_BTYPE = 1,
+	CONNECTOR_CTYPE = 2,
+	CONNECTOR_CAPTIVE = 3,
+};
+
+struct cable_vdo_rev20 {
+	enum usb_ss_support ss_support: 3;
+	uint8_t cable_controller : 1;
+	uint8_t cable_vbus : 1;
+	enum cable_current_capacity cable_current : 2;
+	enum cable_dir_support ssrx2 : 1;
+	enum cable_dir_support ssrx1 : 1;
+	enum cable_dir_support sstx2 : 1;
+	enum cable_dir_support sstx1 : 1;
+	uint8_t cable_termination_type : 2;
+	uint8_t cable_latency : 4;
+	uint8_t reserved0 : 1;
+	enum connector_type_support connector_type : 2;
+	uint8_t reserved1 : 4;
+	uint8_t cable_fw_version : 4;
+	uint8_t cable_hw_version : 4;
+};
+
+#define VDO_CABLE(hw, fw, cbl, lat, term, tx1d, tx2d, rx1d, rx2d, cur, vps, \
+		  sopp, usbss) \
+	 (((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((cbl) & 0x3) << 18	\
+	 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11 | (tx1d) << 10 \
+	 | (tx2d) << 9 | (rx1d) << 8 | (rx2d) << 7 | ((cur) & 0x3) << 5 \
+	 | (vps) << 4 | (sopp) << 3 | ((usbss) & 0x7))
+
+/*
+ * Passive Cable VDO (PD Spec 3.0)
+ * ---------
+ * <31:28> :: Cable HW version
+ * <27:24> :: Cable FW version
+ * <23:20> :: Reserved
+ * <19:18> :: Connector Type (10b == USB-C, 11b == Captive)
+ * <17>    :: Reserved
+ * <16:13> :: Cable latency (0001 == <10ns(~1m length))
+ * <12:11> :: Cable termination type (11b == both ends active VCONN req)
+ * <10:9>  :: Maximum cable vbus voltage
+ * <8:7>   :: Reserved
+ * <6:5>   :: Vbus current handling capability
+ * <4:3>   :: Reserved
+ * <2:0>   :: USB SS Signaling support
+ */
+enum cable_vbus_max {
+	CABLE_VBUS_20V = 0,
+	CABLE_VBUS_30V = 1,
+	CABLE_VBUS_40V = 2,
+	CABLE_VBUS_50V = 3,
+};
+
+struct passive_cable_vdo_rev30 {
+	enum usb_ss_support ss_support: 3;
+	uint8_t reserved0 : 2;
+	enum cable_current_capacity cable_current : 2;
+	uint8_t reserved1 : 2;
+	enum cable_vbus_max vbus_vtg : 2;
+	uint8_t cable_termination_type : 2;
+	uint8_t cable_latency : 4;
+	uint8_t reserved2 : 1;
+	enum connector_type_support connector_type : 2;
+	uint8_t reserved3 : 1;
+	uint8_t vdo_version : 3;
+	uint8_t cable_fw_version : 4;
+	uint8_t cable_hw_version : 4;
+};
+
+#define PASSIVE_VDO_CABLE_REV3(hw, fw, vdover, cbl, lat, term, vbusv, \
+			      cur, usbss) \
+	(((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((vdov & 0x7) << 21) \
+	| ((cbl) & 0x3) << 18 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11 \
+	| ((vbusv) & 0x3) << 9 | ((cur) & 0x3) << 5 | ((usbss) & 0x7))
+
+/*
+ * Active Cable VDO1 (PD Spec 3.0)
+ * ---------
+ * <31:28> :: Cable HW version
+ * <27:24> :: Cable FW version
+ * <23:21> :: VDO version
+ * <20>    :: Reserved
+ * <19:18> :: Connector Type (10b == USB-C, 11b == Captive)
+ * <17>    :: Reserved
+ * <16:13> :: Cable latency (0001 == <10ns(~1m length))
+ * <12:11> :: Cable termination type (11b == both ends active VCONN req)
+ * <10:9>  :: Maximum cable vbus voltage
+ * <8>     :: SBU Supported? (0b == no, 1b == yes)
+ * <7>     :: SBU Type (0b == passive, 1b == active)
+ * <6:5>   :: Vbus current handling capability
+ * <4>     :: Vbus through cable (0b == no, 1b == yes)
+ * <3>     :: SOP" controller present? (0b == no, 1b == yes)
+ * <2:0>   :: Reserved
+ */
+struct active_cable_vdo_rev30 {
+	uint8_t reserved0 : 3;
+	uint8_t cable_controller : 1;
+	uint8_t cable_vbus : 1;
+	enum cable_current_capacity cable_current : 2;
+	uint8_t sbu_type : 1;
+	uint8_t sbu_support : 1;
+	enum cable_vbus_max vbus_vtg : 2;
+	uint8_t cable_termination_type : 2;
+	uint8_t cable_latency : 4;
+	uint8_t reserved1 : 1;
+	enum connector_type_support connector_type : 2;
+	uint8_t reserved2 : 1;
+	uint8_t vdo_version : 3;
+	uint8_t cable_fw_version : 4;
+	uint8_t cable_hw_version : 4;
+};
+#define ACTIVE_VDO1_CABLE_REV3(hw, fw, vdover, cbl, lat, term, vbusv, sbus, \
+			       sbut, cur, vps, sopp) \
+	(((hw) & 0x7) << 28 | ((fw) & 0x7) << 24 | ((vdov & 0x7) << 21) \
+	| ((cbl) & 0x3) << 18 | ((lat) & 0x7) << 13 | ((term) & 0x3) << 11 \
+	| ((vbusv & 0x3) << 9 | ((cur) & 0x3) << 5 | (vps) << 4) | (sopp) << 3)
+
+struct cable_vdo {
+	union {
+		struct cable_vdo_rev20 rev20;
+		struct passive_cable_vdo_rev30 p_rev30;
+		struct active_cable_vdo_rev30 a_rev30;
+		uint32_t raw_value;
+	};
+};
+
+/*
+ * Active Cable VDO2(PD Spec 3.0)
+ * ---------
+ * <31:24> :: Maximum operating temperature
+ * <23:16> :: Shutdown temperature
+ * <15>    :: Reserved
+ * <14:12> :: USB3 power (000 == >10mW)
+ * <11>    :: U3 to U0 transition
+ * <10:8>  :: Reserved
+ * <7:6>   :: USB 2.0 Hub Hops Consumed
+ * <5>     :: USB 2.0 Supported? (0b == no, 1b == yes)
+ * <4>     :: SS Supported? (0b == no, 1b == yes)
+ * <3>     :: SS lanes supported (0b == one, 1b == two)
+ * <2>     :: Reserved
+ * <1:0>   :: SS signaling (0b == Gen1, 01b == Gen2)
+ */
+
+enum usb_ss_signaling {
+	USB_SS_GEN1 = 0,
+	USB_SS_GEN2 = 1,
+};
+
+enum usb_ss_lane_support {
+	USB_SS_ONE_LANE = 0,
+	USB_SS_TWO_LANES = 1,
+};
+
+enum u0u3_transition_mode {
+	U0_U3_DIRECT = 0,
+	U0_U3_U3S = 1,
+};
+
+enum u3_power_support {
+	U3_POWER_10mW = 0,
+	U3_POWER_5_10mW = 1,
+	U3_POWER_1_5mW = 2,
+	U3_POWER_0mW5_1 = 3,
+	U3_POWER_0mW2_0mW5 = 4,
+	U3_POWER_50uW_200uW = 5,
+	U3_POWER_0_200uW = 6,
+};
+
+struct active_cable_vdo2 {
+	union {
+		struct {
+			enum usb_ss_signaling ss_signaling: 2;
+			uint8_t reserved0 : 1;
+			enum usb_ss_lane_support ss_lanes : 1;
+			uint8_t usb_ss_support : 1;
+			uint8_t usb_2_support : 1;
+			uint8_t usb_2_hub_hops : 2;
+			uint8_t reserved1 : 3;
+			enum u0u3_transition_mode u0u3_transition : 1;
+			enum u3_power_support u3_power : 3;
+			uint8_t reserved2: 1;
+			uint8_t shutdown_temp;
+			uint8_t max_operating_temp;
+			};
+		uint32_t raw_value;
+	};
+};
 
 /*
  * AMA VDO
