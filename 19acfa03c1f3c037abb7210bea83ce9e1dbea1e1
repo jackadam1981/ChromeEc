@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d283759b_b4b630fe",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-05T18:07:05Z",
+      "side": 1,
+      "message": "Is ACK the only response that gets read late in this manner?  Never NACK or BUSY?",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6c8b7c_2f2b04bc",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-05T18:07:05Z",
+      "side": 1,
+      "message": "int is usually preferable for a boolean (in the absence of bool type).",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721a91d7_b737886c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-05T18:07:05Z",
+      "side": 1,
+      "message": "Any reason why this and other read_wrapper() failure branches return -EIO instead of returning the error from read_wrapper()?\n\nIs it because specific error numbers are used for different meanings here vs from syscalls?  E.g. EAGAIN being used to indicate damaged ACK instead of temporary unavailability.",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4fdad56_2b7daf16",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-05T18:07:05Z",
+      "side": 1,
+      "message": "Typically EAGAIN means the system call did *not* perform the requested action, because a resource involved was temporarily unavailable.\n\nLooking through this code I think this use is safe because the return values here never come from a system call, but this still feels a bit fragile.\n\nIf a system call return value were introduced in this path, and it returned EAGAIN, that would get mistakenly interpreted by wait_for_ack() caller as meaning damaged ACK i.e. success.\n\nWhat do you think of changing wait_for_ack() return value to an enum, making it clear that the values are not errno values?",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5cdced_2f28d361",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-05T18:07:05Z",
+      "side": 1,
+      "message": "nit: I\u0027d structure this as:\n\n\tif (res \u003d\u003d -EAGAIN) {\n\t\tif (retry_on_damaged_ack)\n\t\t\t++count_damaged_ack;\n\t} else if (res \u003c 0) {",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 22
+      },
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa584143_3b372da4",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-05T18:07:05Z",
+      "side": 1,
+      "message": "nit: I\u0027d make the same if () change here.",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 23
+      },
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
