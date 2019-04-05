@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4632e9f3_4375abfa",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-05T00:49:44Z",
+      "side": 0,
+      "message": "why can this and code in line 855 and on not use the common send_command/ack_poll approach?",
+      "range": {
+        "startLine": 820,
+        "startChar": 2,
+        "endLine": 827,
+        "endChar": 44
+      },
+      "revId": "3d6eccfb9ff17a5022522d2ae3d78dc42c73c4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

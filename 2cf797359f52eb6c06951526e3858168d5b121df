@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5625b02d_1fa169e1",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-05T00:49:44Z",
+      "side": 1,
+      "message": "nit: while the parens are not needed here, the code is better readable  with them, there is no need to change this line.",
+      "range": {
+        "startLine": 779,
+        "startChar": 3,
+        "endLine": 779,
+        "endChar": 52
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d2fb15_bc0e94e2",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-05T00:49:44Z",
+      "side": 1,
+      "message": "not for this patch, but a suggestion:\n\nit would be a smaller refactoring if you renamed \u0027send_command\u0027 into \u0027send_command_core\u0027 or something and called the wrapper \u0027send command\u0027, so none of the send_command() lines in the patch would change.\n\nin case when poll is needed there could be a separate wrapper to call, with the same function footprint, the separate wrapper would set \u0027ack_poll\u0027 internally.",
+      "range": {
+        "startLine": 791,
+        "startChar": 9,
+        "endLine": 793,
+        "endChar": 0
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c343f9bb_eb50834e",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-05T00:49:44Z",
+      "side": 1,
+      "message": "no need to touch this.",
+      "range": {
+        "startLine": 1058,
+        "startChar": 9,
+        "endLine": 1058,
+        "endChar": 26
+      },
+      "revId": "2cf797359f52eb6c06951526e3858168d5b121df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
