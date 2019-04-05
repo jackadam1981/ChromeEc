@@ -46,6 +46,29 @@
       "revId": "88021b97dd40ae797762d7b1dc99ac38ffc7005d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dc06880_c5069249",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-05T22:48:08Z",
+      "side": 1,
+      "message": "since we\u0027re about nits, either tabs or spaces, but be consistent",
+      "range": {
+        "startLine": 141,
+        "startChar": 22,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "88021b97dd40ae797762d7b1dc99ac38ffc7005d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
