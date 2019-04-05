@@ -1023,6 +1023,38 @@ DECLARE_SAFE_CONSOLE_COMMAND(sysrst, command_sys_rst,
 	"[pulse [time] | <BOOLEAN>]",
 	"Assert/deassert SYS_RST_L to reset the AP");
 
+#include "usb-stream.h"
+static int command_uus(int argc, char **argv)
+{
+	if (argc > 1) {
+		int count;
+		int i;
+
+		count = atoi(argv[1]);
+		for (i = 0; i < count; i++) {
+			if (!((i + 1) % 16)) {
+				ccprintf("\n");
+				cflush();
+			}
+			ccprintf( " %02x", (uint8_t)i);
+		}
+		ccprintf("\n");
+		return EC_SUCCESS;
+	}
+	ccprintf("max uart read:  %3u\n", uus.max_uart_read);
+	ccprintf("usb queue max:  %3u\n", uus.max_usb_q_count);
+	ccprintf("min queue room: %3u\n", uus.min_room);
+	ccprintf("got_from_ec:    %3u\n", uus.got_from_ec);
+	ccprintf("sent_to_usb:    %3u\n", uus.sent_to_usb);
+	ccprintf("dropped:        %3u\n", uus.dropped_chars);
+
+	memset(&uus, 0, sizeof(uus));
+	uus.min_room = 512;
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(uus, command_uus,	"", "");
+
 /*
  * Set RBOX register controlling EC reset and wait until RBOX updates the
  * output.

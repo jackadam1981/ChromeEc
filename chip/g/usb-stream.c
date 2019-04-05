@@ -6,6 +6,8 @@
 #include "registers.h"
 #include "usb-stream.h"
 
+struct usb_uart_stats uus;
+
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
 static void usb_enable_tx(struct usb_stream_config const *config, int len)
 {
@@ -126,6 +128,7 @@ void usb_stream_tx(struct usb_stream_config const *config)
 					   config->tx_size);
 	else {
 		count = read_ec_q(config->tx_ram, config->tx_size);
+		uus.sent_to_usb += count;
 	}
 	if (count)
 		usb_enable_tx(config, count);
@@ -178,6 +181,9 @@ static void usb_written(struct consumer const *consumer, size_t count)
 {
 	struct usb_stream_config const *config =
 		DOWNCAST(consumer, struct usb_stream_config, consumer);
+
+	if (config->endpoint == USB_EP_EC)
+		ec_txc++;
 
 	tx_stream_handler(config);
 }

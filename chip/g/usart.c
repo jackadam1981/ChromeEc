@@ -141,8 +141,11 @@ static void add_to_ec_q(const uint8_t *data, size_t size)
 	size_t q_room = (ec_q_tail - ec_q_head - 1) & Q_MASK;
 	size_t q_top;
 
+	if (q_room < uus.min_room)
+		uus.min_room = q_room;
 	if (q_room < size) {
 		/* Truncation! */
+		uus.dropped_chars += size - q_room;
 		if (!q_room)
 			return;
 		size = q_room;
@@ -215,6 +218,9 @@ void send_data_to_usb(struct usart_config const *config)
 	if (i) {
 		if (config->uart == 2) {
 			add_to_ec_q(buffer, i);
+			if (i > uus.max_uart_read)
+				uus.max_uart_read = i;
+			uus.got_from_ec += i;
 			usb_stream_tx(&ec_usb);
 		} else
 			QUEUE_ADD_UNITS(uart_in, buffer, i);

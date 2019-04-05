@@ -212,4 +212,15 @@ void usb_stream_tx(struct usb_stream_config const *config);
 void usb_stream_rx(struct usb_stream_config const *config);
 void usb_stream_reset(struct usb_stream_config const *config);
 
+struct usb_uart_stats {
+	uint32_t max_uart_read;
+	uint32_t max_usb_q_count;
+	uint32_t min_room;
+	uint32_t got_from_ec;
+	uint32_t sent_to_usb;
+	uint32_t dropped_chars;
+};
+
+extern struct usb_uart_stats uus;
+
 #endif /* __CROS_EC_USB_STREAM_H */
