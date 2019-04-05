@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "856fbd4c_bf1516eb",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T20:20:14Z",
+      "side": 1,
+      "message": "Damaged NACK or BUSY will be recognized as junk, and there will be another attempt to get ACK, which is likely to get the same response again.\nHowever, DAMAGED_ACK should not be treated as junk because device believes it sent ACK and waits for the next action. In my experiment, it didn\u0027t work, and put it worse.",
+      "parentUuid": "d283759b_b4b630fe",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad6c8b7c_2f2b04bc",
         "filename": "util/stm32mon.c",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6fbb54_e7657fa1",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T20:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6c8b7c_2f2b04bc",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5fd3b8aa_a57bdc65",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T20:20:14Z",
+      "side": 1,
+      "message": "That\u0027s my understanding too.",
+      "parentUuid": "721a91d7_b737886c",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4fdad56_2b7daf16",
         "filename": "util/stm32mon.c",
         "patchSetId": 9
@@ -67,6 +121,24 @@
       "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca6f216_45ffd29f",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T20:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4fdad56_2b7daf16",
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "13b4af52_69fcc00c",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T20:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa5cdced_2f28d361",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 22
+      },
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa584143_3b372da4",
         "filename": "util/stm32mon.c",
         "patchSetId": 9
@@ -113,6 +209,30 @@
       "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7872be3_6df5b44f",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T20:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa584143_3b372da4",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 23
+      },
+      "revId": "19acfa03c1f3c037abb7210bea83ce9e1dbea1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
