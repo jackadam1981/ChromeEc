@@ -92,8 +92,14 @@
 #define CONFIG_ALS
 #define ALS_COUNT 1
 #define CONFIG_ALS_OPT3001
-/* LID_ALS needs to be polled */
-#define CONFIG_ACCEL_FORCE_MODE_MASK    BIT(LID_ALS)
+
+/* TSC3400 ALS */
+#define CONFIG_ALS_TCS3400
+#define CONFIG_ALS_TCS3400_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+
+/* ALS needs to be polled */
+#define CONFIG_ACCEL_FORCE_MODE_MASK    BIT(CLEAR_ALS)
 
 /* Camera VSYNC */
 #define CONFIG_SYNC
@@ -279,8 +285,9 @@ enum power_signal {
 enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
-	LID_ALS,
+	CLEAR_ALS,
 	VSYNC,
+	SENSOR_COUNT,
 };
 
 /* Batteries */
