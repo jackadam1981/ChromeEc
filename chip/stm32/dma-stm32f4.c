@@ -236,6 +236,10 @@ void dma_test(enum dma_channel stream)
 
 void dma_init(void)
 {
+	/* Reset DMA engines */
+	STM32_RCC_AHB1RSTR |= STM32_RCC_HB1_DMA1 | STM32_RCC_HB1_DMA2;
+	STM32_RCC_AHB1RSTR &= ~(STM32_RCC_HB1_DMA1 | STM32_RCC_HB1_DMA2);
+	/* Enable DMA blocks */
 	STM32_RCC_AHB1ENR |= STM32_RCC_HB1_DMA1 | STM32_RCC_HB1_DMA2;
 }
 
