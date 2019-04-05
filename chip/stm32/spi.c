@@ -608,6 +608,9 @@ void spi_event(enum gpio_signal signal)
 	tx_status(EC_SPI_RX_BAD_DATA);
 	state = SPI_STATE_RX_BAD;
 	CPRINTS("SPI rx bad data");
+#ifdef CONFIG_DMA_HELP
+	dma_dump(STM32_DMAC_SPI1_RX);
+#endif /* CONFIG_DMA_HELP */
 
 	CPRINTF("in_msg=[");
 	for (i = 0; i < dma_bytes_done(rxdma, sizeof(in_msg)); i++)
@@ -646,10 +649,25 @@ static void spi_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, spi_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
+static void dump_spi_config(void)
+{
+#ifdef CHIP_FAMILY_STM32F4
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
+	CPRINTF("CR1=0x%x\n", spi->cr1);
+	CPRINTF("CR2=0x%x\n", spi->cr2);
+	CPRINTF("SR=0x%x\n", spi->sr);
+	CPRINTF("DR=0x%x\n", spi->dr);
+	CPRINTF("CRC=0x%x\n", spi->crcpr);
+	CPRINTF("RXCRC=0x%x\n", spi->rxcrcr);
+	CPRINTF("TXCRC=0x%x\n", spi->txcrcr);
+#endif /* CHIP_FAMILY_STM32F4 */
+}
+
 static void spi_init(void)
 {
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 	uint8_t was_enabled = enabled;
+	uint16_t cr2 __attribute__((unused)) = 0;
 
 	/* Reset the SPI Peripheral to clear any existing weird states. */
 	/* Fix for bug chrome-os-partner:31390 */
@@ -674,9 +692,6 @@ static void spi_init(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	dma_select_channel(STM32_DMAC_SPI1_TX, DMAMUX1_REQ_SPI1_TX);
 	dma_select_channel(STM32_DMAC_SPI1_RX, DMAMUX1_REQ_SPI1_RX);
-#elif defined(CHIP_FAMILY_STM32F4)
-	dma_select_channel(STM32_DMAC_SPI1_TX, STM32_SPI1_TX_REQ_CH);
-	dma_select_channel(STM32_DMAC_SPI1_RX, STM32_SPI1_RX_REQ_CH);
 #endif
 	/*
 	 * Enable rx/tx DMA and get ready to receive our first transaction and
@@ -690,6 +705,17 @@ static void spi_init(void)
 			STM32_SPI_CFG1_UDRCFG_CONST |
 			STM32_SPI_CFG1_UDRDET_BEGIN_FRM;
 	spi->cr1 = 0;
+#elif defined(CHIP_FAMILY_STM32F4)
+	cr2 |= STM32_SPI_CR2_RXDMAEN | STM32_SPI_CR2_FRXTH |
+		STM32_SPI_CR2_DATASIZE(8);
+	spi->cr2 = cr2;
+	dma_select_channel(STM32_DMAC_SPI1_TX, STM32_SPI1_TX_REQ_CH);
+	dma_select_channel(STM32_DMAC_SPI1_RX, STM32_SPI1_RX_REQ_CH);
+	cr2 |= STM32_SPI_CR2_TXDMAEN;
+	spi->cr2 = cr2;
+
+	/* Enable the SPI peripheral */
+	spi->cr1 |= STM32_SPI_CR1_SPE;
 #else /* !CHIP_FAMILY_STM32H7 */
 	spi->cr2 = STM32_SPI_CR2_RXDMAEN | STM32_SPI_CR2_TXDMAEN |
 		STM32_SPI_CR2_FRXTH | STM32_SPI_CR2_DATASIZE(8);
@@ -706,6 +732,7 @@ static void spi_init(void)
 	 */
 	if (was_enabled || chipset_in_state(CHIPSET_STATE_ON))
 		spi_chipset_startup();
+	dump_spi_config();
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
 
