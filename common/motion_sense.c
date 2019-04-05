@@ -500,6 +500,7 @@ static void motion_sense_switch_sensor_rate(void)
 	struct motion_sensor_t *sensor;
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
+		ccprintf("Sensor %d is %s\n", i, sensor->name);
 		if (SENSOR_ACTIVE(sensor)) {
 			/* Initialize or just back the odr previously set. */
 			if (sensor->state == SENSOR_INITIALIZED) {
@@ -1731,6 +1732,7 @@ static int command_accel_init(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	sensor = &motion_sensors[id];
+	ccprintf("%s: calling motion_sense_init(%s)\n", __func__, sensor->name);
 	ret = motion_sense_init(sensor);
 
 	ccprintf("%s: state %d - %d\n", sensor->name, sensor->state, ret);
