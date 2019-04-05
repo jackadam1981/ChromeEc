@@ -1642,3 +1642,48 @@ void clock_enable_module(enum module_id module, int enable)
 	 * function.
 	 */
 }
+
+static int command_chargen(int argc, char **argv)
+{
+	int wrap_value = 0;
+	int wrap_counter = 0;
+	uint8_t c;
+	int num_chars = -1;
+
+	while (uart_getc() != -1)
+		; /* Drain received characters, if any. */
+
+	if (argc > 1)
+		wrap_value = atoi(argv[1]);
+
+	if (argc > 2) {
+		num_chars =  atoi(argv[2]);
+		ccprintf("Generating %d characters\n", num_chars);
+	}
+	c = '0';
+	while (uart_getc() != 'x') {
+
+		if (wrap_value &&
+		    (wrap_counter++ == wrap_value)) {
+			c = '0' - 1;
+			wrap_counter = 0;
+		} else {
+			if (c == ('z' + 1))
+				c = '0';
+			else if (c == ('Z' + 1))
+				c = 'a';
+			else if (c  == ('9' + 1))
+				c = 'A';
+		}
+		while (!uart_tx_ready())
+			usleep(1000);
+		uart_putc(c++);
+
+		if (!num_chars--)
+			break;
+	}
+
+	return 0;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
+			     NULL, NULL);
