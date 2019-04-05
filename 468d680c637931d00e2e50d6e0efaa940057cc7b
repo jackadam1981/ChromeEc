@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "3fbbdc7d_822f8c3e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-05T00:15:18Z",
+      "side": 1,
+      "message": "Since, we are sending the SOP\u0027 before the PDO is in ready state, we need this to by-pass the 2103 line and transmit the packet",
+      "parentUuid": "1c06cf98_a31f2346",
+      "revId": "468d680c637931d00e2e50d6e0efaa940057cc7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "507e968e_5401e3fd",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 11
