@@ -181,9 +181,15 @@ $(out)/RO/common/aes-gcm.o: CFLAGS+=-std=c99 -Wno-declaration-after-statement
 ifneq ($(CONFIG_BOOTBLOCK),)
 build-util-bin += gen_emmc_transfer_data
 
+$(out)/bootblock.bin:
+	$(if $(BOOTBLOCK), \
+		cp $(BOOTBLOCK) $@, \
+		$(call cmd_dd_zero,$@,26))
+
 # Bootblock is only packed in RO image.
 $(out)/util/gen_emmc_transfer_data: BUILD_LDFLAGS += -DSECTION_IS_RO
-$(out)/bootblock_data.h: $(out)/util/gen_emmc_transfer_data $(out)/.bootblock
+$(out)/bootblock_data.h: $(out)/util/gen_emmc_transfer_data \
+			$(out)/.bootblock $(out)/bootblock.bin
 	$(call quiet,emmc_bootblock,BTBLK  )
 
 # We only want to repack the bootblock if: $(BOOTBLOCK) variable value has
