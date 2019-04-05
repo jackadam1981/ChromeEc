@@ -1,0 +1,37 @@
+#!/usr/bin/python
+
+import sys
+
+def chargen(modulo):
+    base = '0'
+    c = base
+    counter = 0
+    while True:
+        if (counter % modulo) == 0:
+            c = base
+        else:
+            if c == 'z':
+                c = base
+            elif c == 'Z':
+                c = 'a'
+            elif c == '9':
+                c = 'A'
+            else:
+                c = '%c' % (ord(c) + 1)
+        sys.stdout.write(c)
+        counter = counter + 1
+
+
+try:
+    modulo = int(sys.argv[1])
+except IndexError:
+    modulo = 0
+except ValueError:
+    sys.stderr.write('The parameter should be modulo for chargen sequence\n')
+    sys.exit(1)
+
+try:
+    chargen(modulo)
+except KeyboardInterrupt:
+    print
+    sys.exit(0)
