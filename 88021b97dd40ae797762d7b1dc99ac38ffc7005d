@@ -22,6 +22,30 @@
       "revId": "88021b97dd40ae797762d7b1dc99ac38ffc7005d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5304c1_fbaeb574",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-05T22:39:52Z",
+      "side": 1,
+      "message": "Google C style guide doesn\u0027t really specify this aplignment.\nhttp://go/cstyle#Enumerator_Names\nSo, so either comma alignment or first digit alignment is fine.\nI found a few codes which follows \u0027first-digit alignment\u0027 or no alignment.\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/chip/npcx/pwm.c?q\u003denum+file:%5Esrc/platform/ec/+package:%5Echromeos_public$\u0026l\u003d34\u0026dr\u003dC\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/chip/stm32/registers.h?q\u003denum+file:%5Esrc/platform/ec/+package:%5Echromeos_public$\u0026dr\u003dC\u0026l\u003d2509\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/include/ec_commands.h?q\u003denum+file:%5Esrc/platform/ec/+package:%5Echromeos_public$\u0026dr\u003dC\u0026l\u003d523\n\nI prefer to have one space between \u0027\u003d\u0027 and number.",
+      "parentUuid": "f2ebea3e_0fab776d",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 21
+      },
+      "revId": "88021b97dd40ae797762d7b1dc99ac38ffc7005d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
