@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "62166eb9_e96e88fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T18:21:00Z",
+      "side": 1,
+      "message": "Need more test. The flow of messages is change for all devices especially those that use event based MKBP. Check once of them (eve for instance) still work.",
+      "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab40a95b_6be146d9",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T18:21:00Z",
+      "side": 1,
+      "message": "given it is a static, you can remove this call and use heci_send_heci_msg_timestamp(msg, NULL) everywhere.",
+      "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a9d138_234c7015",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T18:21:00Z",
+      "side": 1,
+      "message": "heci is inconsistent with the rest of the code. File a bug, add a todo here.",
+      "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906407fd_0e8e6f6b",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T18:21:00Z",
+      "side": 1,
+      "message": "Change channel: CC_COMMAND maybe.",
+      "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0316aaa2_a8618944",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T18:21:00Z",
+      "side": 1,
+      "message": "add a todo",
+      "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "842dc3af_8c3944bd",
         "filename": "common/mkbp_event.c",
         "patchSetId": 3
@@ -19,6 +104,23 @@
         "endLine": 101,
         "endChar": 42
       },
+      "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37a74af_dcc632fa",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T18:21:00Z",
+      "side": 1,
+      "message": "it looks convoluted: why not always set timestamp to 7mkbp_last_event_time, but save it only when active is high in the callees?",
       "revId": "66f95f6dcabfcfaaa973c0c31f9e732b15ecdd78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
