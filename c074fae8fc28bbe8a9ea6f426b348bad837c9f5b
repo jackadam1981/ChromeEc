@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0160a7b0_4e56c1eb",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-08T21:51:00Z",
+      "side": 1,
+      "message": "This is okay, but maybe just do memset(\u0026ctx, 0, sizeof(ctx));\n\nSo, you don\u0027t have to worry about setting individual members every time?",
+      "revId": "c074fae8fc28bbe8a9ea6f426b348bad837c9f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
