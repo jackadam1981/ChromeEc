@@ -164,7 +164,7 @@ build_boards: | $(FAILED_BOARDS_DIR)
 	$(MAKE) try_build_boards
 
 .PHONY: buildall
-buildall: build_boards
+buildall: build_boards build_cros_ec_commands
 	$(MAKE) build_cts
 	$(MAKE) buildfuzztests
 	$(MAKE) runtests
@@ -741,6 +741,12 @@ analyzestack: $(out)/util/export_taskinfo.so
 # linker.
 size: $(out)/$(PROJECT).bin
 	$(call cmd_size)
+
+.PHONY: build_cros_ec_commands
+build_cros_ec_commands: build/kernel/include/linux/mfd/cros_ec_commands.h
+
+build/kernel/include/linux/mfd/cros_ec_commands.h: include/ec_commands.h
+	util/make_linux_ec_commands_h.sh $< $@
 
 .SECONDARY:
 
