@@ -22,6 +22,29 @@
       "revId": "512fef4d87008a82441fb62ddb72509c7ec024a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451bcbbd_1737fc0c",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-08T17:07:33Z",
+      "side": 1,
+      "message": "I realize it\u0027s not required (since it works), but for readability/consistency should we add the dma_select_channel that you had in earlier versions back? I\u0027m worried that when I or someone else is trying to track down a SPI-related bug in the future they will be thrown off by the fact that we don\u0027t call dma_select_channel for the F4 like we do with the other chips. (I suppose a comment would also be enough.)",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 6
+      },
+      "revId": "512fef4d87008a82441fb62ddb72509c7ec024a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
