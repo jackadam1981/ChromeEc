@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c99c262c_eba98291",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T15:57:18Z",
+      "side": 1,
+      "message": "Pre-change driver was not compiling standalone. \nOnce again, cal has to be defined for line 101 to compile, so line 95 must always been defined.",
+      "parentUuid": "63b8becd_64bbf9ad",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd4b6b61_7860edbf",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 8
@@ -107,6 +125,41 @@
     },
     {
       "key": {
+        "uuid": "58625863_8ce2947e",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T15:57:18Z",
+      "side": 1,
+      "message": "got it. Replace with #else, as CONFIG_MAG_LIS2MDL is always defined.",
+      "parentUuid": "8053992b_ea32892d",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ddc486_fb4ac8cb",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T15:57:18Z",
+      "side": 1,
+      "message": "fix comment",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7135df85_2a984d2f",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 8
@@ -154,6 +207,24 @@
       "side": 1,
       "message": "Since this magnometer doesn\u0027t have a HW Fifo, doesn\u0027t this sensor not get exposed to the sensor ring in the same way and only becomes an on-demand sensor?",
       "parentUuid": "061a0c99_9ebcbc74",
+      "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea35df54_8249bacc",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-08T15:57:18Z",
+      "side": 1,
+      "message": "- sensor data get exposed to the sensor ring: for irq less driver, motion sensor will take care of filling the host FIFO, see motion_sense_read() and motion_sense_process().\n\n- if we are not exposing the sensor to the host, the amount of test we can do is limited. The sensor will not be useful, as the EC is not using it internally.\n\n- when the sensor does not have internal fifo, the risk is the data being overwritten if the EC is too slow. But at 50Hz, it should be fine. \nWe can write an irq_handler without a FIFO (see driver/als_si114x.c). For this driver, the irq handler will read the vector at LIS2MDL_OUT_REG like read() does, and process and call motion_sense_fifo_add_data() with the timestamp the low level interrupt has collected.",
+      "parentUuid": "ab01808a_39cfbb9e",
       "revId": "8b4bc17bad790399d20fc326ee82b3efde24aeb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
