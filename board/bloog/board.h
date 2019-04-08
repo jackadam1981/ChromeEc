@@ -22,7 +22,7 @@
 #define CONFIG_CMD_ACCEL_INFO
 
 #define CONFIG_LED_COMMON
-#define OCTOPUS_POWER_LED
+#define CONFIG_LED_POWER_LED
 
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
