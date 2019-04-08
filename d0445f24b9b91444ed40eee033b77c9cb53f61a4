@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "159eaeec_3f2f3520",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-08T15:50:56Z",
+      "side": 1,
+      "message": "Why do you propose this change?\n\nThere is no advantage in keeping a device in hibernation after a battery is drained. Cutting off a battery can prevent a battery from permanently being damaged. When a battery is drained, EC rejects to boot AP. So, such devices require AC power anyway to be operational again.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "d0445f24b9b91444ed40eee033b77c9cb53f61a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
