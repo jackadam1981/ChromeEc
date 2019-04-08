@@ -310,6 +310,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b210ad_68c40e3f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-08T21:01:10Z",
+      "side": 1,
+      "message": "Yeah, there have been a few bugs I\u0027ve worked on where I\u0027ve wondered whether it was really worthwhile to maintain our state between RO-\u003eRW, just given how many other little things go into our current PD state (past bugs were around us maintaining Vconn state with hubs that like to Vconn swap: b/119540455, b/119742692).\n\nI\u0027ll take a look at EFS.  We definitely do have some interesting issues booting with low battery (b/128935567 for us right now...)\n\nThe ODM hitting this in their factory flow, where their systems are unlocked.  I\u0027m not totally certain how change-able that flow is.  I\u0027ll code up the exit mode before sysjump and see how it tests.",
+      "parentUuid": "e8abf9e4_b7da46cd",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
