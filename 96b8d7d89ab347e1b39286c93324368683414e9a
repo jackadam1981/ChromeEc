@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f2c4a853_ad88043e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-08T19:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d30a16a_6ef8a82e",
+      "revId": "96b8d7d89ab347e1b39286c93324368683414e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e9dd72f_8b0c311c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-08T19:33:57Z",
       "side": 1,
       "message": "are you using accel_read or new commands?",
+      "revId": "96b8d7d89ab347e1b39286c93324368683414e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1b7077_57af70f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-08T19:42:46Z",
+      "side": 1,
+      "message": "I\u0027m using accelread, here\u0027s an example:\n2019-04-08 13:38:57 \u003e accelread 3\n2019-04-08 13:39:03 Current data 3: 45    1672  -1094\n2019-04-08 13:39:03 Last calib. data 3: 45    1672  -1094",
+      "parentUuid": "2e9dd72f_8b0c311c",
       "revId": "96b8d7d89ab347e1b39286c93324368683414e9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "129fcf7c_6465cda6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-08T19:42:46Z",
+      "side": 1,
+      "message": "No, but I think this is the same bug that everyone is working on since I\u0027m not able to see accelerometer data either.",
+      "parentUuid": "55cb1362_ffe72482",
+      "revId": "54524470020019671059592ce6ed7cff2e400937",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7151c0c_b59eaec7",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 7
