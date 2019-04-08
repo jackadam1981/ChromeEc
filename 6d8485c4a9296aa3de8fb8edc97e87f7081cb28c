@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a3f2290_090959a2",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-08T21:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b205566_1cfd406a",
+      "revId": "6d8485c4a9296aa3de8fb8edc97e87f7081cb28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1215ca70_bbc43be7",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "6d8485c4a9296aa3de8fb8edc97e87f7081cb28c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1087ed31_d80bb5c9",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-08T21:27:54Z",
+      "side": 1,
+      "message": "Rest of ec codebase seems to follow this pattern, so I\u0027ll probably stick with it. Unless there\u0027s further objections from others...",
+      "parentUuid": "1215ca70_bbc43be7",
+      "revId": "6d8485c4a9296aa3de8fb8edc97e87f7081cb28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
