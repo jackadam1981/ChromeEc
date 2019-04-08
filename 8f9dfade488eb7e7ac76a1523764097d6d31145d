@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27b1f455_dc51a53f",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2019-04-08T17:52:49Z",
+      "side": 1,
+      "message": "(nit: this accesses argv[1] before checking |argc|.)",
+      "revId": "8f9dfade488eb7e7ac76a1523764097d6d31145d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748ba6ce_c0f590f7",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2019-04-08T17:52:49Z",
+      "side": 1,
+      "message": "nit: silently ignores additional arguments. Your call though.",
+      "revId": "8f9dfade488eb7e7ac76a1523764097d6d31145d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f498e2_19b45600",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2019-04-08T17:52:49Z",
+      "side": 1,
+      "message": "this suggests that the parameter is unencoded and cannot contain a NUL byte. For a command line tool, perhaps it would be easier to input as hex? I don\u0027t actually know the context for this code however.",
+      "revId": "8f9dfade488eb7e7ac76a1523764097d6d31145d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9667925_ed3880c0",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2019-04-08T17:52:49Z",
+      "side": 1,
+      "message": "nit: just return directly?",
+      "revId": "8f9dfade488eb7e7ac76a1523764097d6d31145d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
