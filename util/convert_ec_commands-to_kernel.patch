@@ -1,0 +1,17 @@
+--- build/kernel/include/linux/mfd/cros_ec_commands.h	2019-04-04 18:48:27.959851490 -0700
++++ build/kernel/include/linux/mfd/cros_ec_commands.h	2019-04-08 14:05:22.741859474 -0700
+@@ -1,6 +1,11 @@
+-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+- * Use of this source code is governed by a BSD-style license that can be
+- * found in the LICENSE file.
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Host communication command constants for ChromeOS EC
++ *
++ * Copyright (C) 2012 Google, Inc
++ *
++ * NOTE: This file is auto-generated from ChromeOS EC Open Source code from
++ * https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/ec_commands.h
+  */
+ 
+ /* Host communication command constants for Chrome EC */
