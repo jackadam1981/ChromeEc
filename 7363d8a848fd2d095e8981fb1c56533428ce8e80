@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e15026c_4fd93b63",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-04-08T23:23:58Z",
+      "side": 1,
+      "message": "Perhaps add a comment for the timestamp arg. Note that if active\u003d\u003d0 timestamp will be NULL (I was confused about some problems in the various implementations because I didn\u0027t know about this).",
+      "revId": "7363d8a848fd2d095e8981fb1c56533428ce8e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759875ef_d63159e8",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-04-08T23:23:58Z",
+      "side": 1,
+      "message": "BUG: if this guy takes a while to return after the AP started doing stuff about it, then it\u0027s possible set_host_interrupt(active\u003d0) will get called again before mkbp_set_host_active returns.\n\nset_host_interrupt is not really reentrant, because old_active \u003d active happens after this line.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 26
+      },
+      "revId": "7363d8a848fd2d095e8981fb1c56533428ce8e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
