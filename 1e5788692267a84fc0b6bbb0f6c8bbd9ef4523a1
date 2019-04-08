@@ -22,6 +22,30 @@
       "revId": "1e5788692267a84fc0b6bbb0f6c8bbd9ef4523a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f41119_fb8c2225",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-08T02:00:07Z",
+      "side": 1,
+      "message": "It implies this file is included only.\n\nI don\u0027t want to add another \u0027.c\u0027 file for the symbol reset_flag_descs.\nsystem.c/system.o is manually designed as a build target in many build.mk, and I don\u0027t want them to add another build target, e.g. system_flag.o, just for the symbol in the build.mk.\nUsing \u0027.inc\u0027 could be easier to maintain the symbol sharing across host ectool and device system runtime IMO.",
+      "parentUuid": "91f7d5c9_4a9c7920",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "1e5788692267a84fc0b6bbb0f6c8bbd9ef4523a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
