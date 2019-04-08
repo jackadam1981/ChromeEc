@@ -286,6 +286,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8abf9e4_b7da46cd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-08T19:34:56Z",
+      "side": 1,
+      "message": "\u003e Unlocked system EC reset:\n\u003e\n\u003e EC sourcing: During RO, we set CHECK_IDENTITY.  However, the call to pd_power_supply_reset() removes Vbus for the partner [..snip..]\n\nThis seems like a bug?\n\nLooking back, this soft reset feature was intended to allow systems to boot off of AC alone. Maybe adding the complexity to maintain the modes is not worth it.\n\nMaybe we should just exit all modes prior to sysjumping. My reading of the DP alt mode spec says that Exit Mode must be supported.\nSection 5.2.6 - \"The UFP_U that receives the Exit Mode VDM shall return to V CONN default power consumption,\nand exit the node, returning to normal USB operation. It shall then send the Responder ACK\nresponse. The device is not allowed to return either a Responder NAK or Responder BUSY.\"\n\n\u003e Would you mind clarifying what EFS means?  I haven\u0027t found this term in the type-c or PD spec.\n\nEFS is I believe \"Early Firmware Selection\". It basically allows the EC to verify its own RW and jump to it prior to booting the AP. It was necessary on PD chromeboxes (fizz) since they need \u003e15W to boot the AP.\n\nGoing forward, we may want to use that on every device as we have a lot of low battery booting problems across devices. But the problem is not every board uses it right now (I think only fizz and nami do).\n\nYou could also let the ODM know that their test case isn\u0027t supported. However, I think exiting the mode prior to sysjump might be the cleanest case.",
+      "parentUuid": "06457589_83e46d00",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
