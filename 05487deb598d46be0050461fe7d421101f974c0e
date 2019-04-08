@@ -22,6 +22,30 @@
       "revId": "05487deb598d46be0050461fe7d421101f974c0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f83f072_9779d0ef",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-08T19:07:36Z",
+      "side": 1,
+      "message": "I haven\u0027t verified whether replacing \u0027RW\u0027 with \u0027RO\u0027 makes sense or not. Since it\u0027s not needed now, I consider it as a TODO.",
+      "parentUuid": "e3d6f224_103cf261",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 6
+      },
+      "revId": "05487deb598d46be0050461fe7d421101f974c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
