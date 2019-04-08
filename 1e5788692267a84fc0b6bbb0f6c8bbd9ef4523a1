@@ -46,6 +46,53 @@
       "revId": "1e5788692267a84fc0b6bbb0f6c8bbd9ef4523a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fefabf2_96bc14a4",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-08T16:23:27Z",
+      "side": 1,
+      "message": "SGTM.\n\nIs system.inc too generic a name?\n\nAlso can you list only names? That\u0027ll allow including files to choose qualifiers and qualifiers are more visible to the developers:\n\n  static const char *const reset_flag_descs[] \u003d {\n  #include \"reset_flag_string.inc\"\n  }",
+      "parentUuid": "57f41119_fb8c2225",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "1e5788692267a84fc0b6bbb0f6c8bbd9ef4523a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e166b469_6b86777e",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-08T16:23:27Z",
+      "side": 1,
+      "message": "Please use \u003c and handle the case where RESET_FLAG_ is defined but a string is somehow missing (e.g. \"reset_unknown\").",
+      "range": {
+        "startLine": 803,
+        "startChar": 21,
+        "endLine": 803,
+        "endChar": 23
+      },
+      "revId": "1e5788692267a84fc0b6bbb0f6c8bbd9ef4523a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
