@@ -70,6 +70,30 @@
       "revId": "efc29ed4a7394fba193ed0b63f091d54d9b0af16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3252c85a_0c1fef48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-08T08:37:45Z",
+      "side": 1,
+      "message": "1. No, it can supply power to devices like keyboard.\n2. No.\n3. No, this is what I\u0027m trying to change here.\n4. Yes.\n\nI didn\u0027t aware of property 1 and 2. So yes, our use case is not a \"dedicated\" charger. Seems like I should define it as an usb pd port and handle some logic manually.",
+      "parentUuid": "4a7947e1_745bfe9a",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "efc29ed4a7394fba193ed0b63f091d54d9b0af16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
