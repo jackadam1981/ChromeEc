@@ -319,11 +319,20 @@ void post_reboot_request(void)
 /* Time to wait before initiating battery cutoff procedure. */
 #define CUTOFF_TIMEOUT_US (5 * SECOND)
 
+static uint32_t saved_override_state;
+
+static void ac_stay_disconnected_fail(void)
+{
+	CPRINTS("%s", __func__);
+
+	GREG32(RBOX, OVERRIDE_OUTPUT) = saved_override_state;
+	GREG32(RBOX, ASSERT_EC_RST) = 0;
+}
+DECLARE_DEFERRED(ac_stay_disconnected_fail);
+
 /* A timeout hook to run in the end of the 5 s interval. */
 static void ac_stayed_disconnected(void)
 {
-	uint32_t saved_override_state;
-
 	CPRINTS("%s", __func__);
 
 	/* assert EC_RST_L and deassert BAT_EN */
@@ -338,16 +347,12 @@ static void ac_stayed_disconnected(void)
 	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, OEN, 1);
 	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, EN, 1);
 
-
-	msleep(5000);
-
 	/*
 	 * The system was supposed to be shut down the moment battery
-	 * disconnect was asserted, but if we made it here we might as well
-	 * restore the original state.
+	 * disconnect was asserted. If we're still powered after 5 seconds,
+	 * the deferred function will restore the original state.
 	 */
-	GREG32(RBOX, OVERRIDE_OUTPUT) = saved_override_state;
-	GREG32(RBOX, ASSERT_EC_RST) = 0;
+	hook_call_deferred(&ac_stay_disconnected_fail_data, 5 * SECOND);
 }
 DECLARE_DEFERRED(ac_stayed_disconnected);
 
