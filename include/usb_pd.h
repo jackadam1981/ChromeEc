@@ -586,6 +586,10 @@ struct pd_policy {
 #define HPD_USTREAM_DEBOUNCE_IRQ (250)
 #define HPD_DSTREAM_DEBOUNCE_IRQ (500)  /* between 500-1000us */
 
+/* DisplayPort Connected Status */
+#define DP_STATUS_DFP_D_CONNECTED  (1 << 0)
+#define DP_STATUS_UFP_D_CONNECTED  (1 << 1)
+
 /*
  * DisplayPort Configure VDO
  * -------------------------
