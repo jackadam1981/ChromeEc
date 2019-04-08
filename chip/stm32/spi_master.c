@@ -161,8 +161,39 @@ static int spi_master_initialize(int port)
 		if ((spi_devices[i].port == port) &&
 		    (div < spi_devices[i].div))
 			div = spi_devices[i].div;
-	spi->cr1 = STM32_SPI_CR1_MSTR | STM32_SPI_CR1_SSM | STM32_SPI_CR1_SSI |
-		(div << 3);
+
+	/*
+	 * STM32F412
+	 * Section 26.3.5 Slave select (NSS) pin management and Figure 276
+	 * https://www.st.com/resource/en/reference_manual/dm00180369.pdf#page=817
+	 *
+	 * In slave mode, the NSS works as a standard "chip select" input and
+	 * lets the slave communicate with the master. In master mode, NSS can
+	 * be used either as output or input. As an input it can prevent
+	 * multimaster bus collision, and as an output it can drive a slave
+	 * select signal of a single slave.
+	 *
+	 * Software NSS management (SSM = 1): slave select is driven internally
+	 * by the SSI bit value in register SPIx_CR1. External NSS pin is free
+	 * for other application uses.
+	 *
+	 * Hardware NSS management (SSM = 0): Two possible configurations. The
+	 * config used depends on the NSS output configuration (SSOE bit in
+	 * register SPIx_CR1).
+	 *   - NSS output enable (SSM=0, SSOE=1). Only used when MCU is set as
+	 *     master. The NSS pin is managed by the hardware. THe NSS signal is
+	 *     drive low as soon as the SPI is enabled in master mode (SPE=1)
+	 *     and is kept low until the SPI is disabled (SPE=0).
+	 *
+	 *   - NSS output disable (SSM=0, SSOE=0): if the MCU is acting as
+	 *     master on the bus, this config allows multimaster capability. If
+	 *     the NSS pin is pulled low in this mode, the SPI enters master
+	 *     mode fault state and the device is automatically reocnfigured in
+	 *     slave mode.  In slave mdoe, the NSS pin works as a standard "chip
+	 *     select" input and the slave is selected whiel NSS lin is at low
+	 *     level.
+	 */
+	spi->cr1 = STM32_SPI_CR1_MSTR | (div << 3);
 
 #ifdef CHIP_FAMILY_STM32L4
 	dma_select_channel(dma_tx_option[port].channel, dma_req[port]);
@@ -173,7 +204,8 @@ static int spi_master_initialize(int port)
 	 * and enable NSS output
 	 */
 	spi->cr2 = STM32_SPI_CR2_TXDMAEN | STM32_SPI_CR2_RXDMAEN |
-			STM32_SPI_CR2_FRXTH | STM32_SPI_CR2_DATASIZE(8);
+			STM32_SPI_CR2_FRXTH | STM32_SPI_CR2_DATASIZE(8) |
+			STM32_SPI_CR2_SSOE;
 
 #ifdef CONFIG_SPI_HALFDUPLEX
 	spi->cr1 |= STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE;
