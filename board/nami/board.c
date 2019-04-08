@@ -1065,16 +1065,6 @@ void board_kblight_init(void)
 	}
 }
 
-enum critical_shutdown board_critical_shutdown_check(
-		struct charge_state_data *curr)
-{
-	if (oem == PROJECT_VAYNE)
-		return CRITICAL_SHUTDOWN_CUTOFF;
-	else
-		return CRITICAL_SHUTDOWN_HIBERNATE;
-
-}
-
 uint8_t board_set_battery_level_shutdown(void)
 {
 	if (oem == PROJECT_VAYNE)
