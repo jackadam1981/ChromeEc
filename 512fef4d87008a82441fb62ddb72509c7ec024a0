@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9cfdb4ef_a1805510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-04-08T17:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf351a6_37022f01",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "512fef4d87008a82441fb62ddb72509c7ec024a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "451bcbbd_1737fc0c",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "512fef4d87008a82441fb62ddb72509c7ec024a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9366c0ca_9dcc935d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-04-08T17:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "451bcbbd_1737fc0c",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 6
+      },
+      "revId": "512fef4d87008a82441fb62ddb72509c7ec024a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
