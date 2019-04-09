@@ -19,7 +19,7 @@
 #define CONFIG_I2C_MASTER
 #define CONFIG_I2C_VIRTUAL_BATTERY
 #define CONFIG_I2C_PASSTHRU_RESTRICTED
-#define CONFIG_LED_COMMON
+#undef CONFIG_LED_COMMON
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_POWER_COMMON
 #define CONFIG_SPI
@@ -51,7 +51,7 @@
 #define CONFIG_CMD_AP_RESET_LOG
 
 /* Required for FAFT */
-#define CONFIG_CMD_BUTTON
+#undef CONFIG_CMD_BUTTON
 
 /* By default, set hcdebug to off */
 #undef CONFIG_HOSTCMD_DEBUG_MODE
