@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4398cbe_211d0392",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-04-09T19:17:55Z",
+      "side": 1,
+      "message": "You cannot put the __hw_clock_source_read() call here. irq_handler() could happen a random amount of time (depending on what else the EC is doing, like talking to the AP) after the sensor recorded it. The most accurate time to do this is the first line of code in the real hard irq of the interrupt pin coming form the sensor (since the sensor will probably assert this the moment it integrates its new reading).\n\nCome to think of it, does arcada have such a int gpio coming from the magnetometer?",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 30
+      },
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
