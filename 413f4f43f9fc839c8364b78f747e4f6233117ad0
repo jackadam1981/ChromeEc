@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e26db9_b1c4014f",
+        "filename": "board/trembyle/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-09T18:04:23Z",
+      "side": 1,
+      "message": "Zork?\n\nNot a big issue, but I\u0027m not certain how worthwhile it is to carry forward the minimal stack analyzer setup since I don\u0027t know how useful it really is.  For an idea of how much effort/time it takes to make a full analyzestack.yaml, checkout out the one in board/fleex",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "413f4f43f9fc839c8364b78f747e4f6233117ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
