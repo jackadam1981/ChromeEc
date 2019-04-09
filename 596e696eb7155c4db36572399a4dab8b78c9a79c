@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ff16def_cb427e71",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1816a56b_127c2b34",
+      "range": {
+        "startLine": 942,
+        "startChar": 24,
+        "endLine": 942,
+        "endChar": 26
+      },
+      "revId": "596e696eb7155c4db36572399a4dab8b78c9a79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76d11f18_7b491940",
         "filename": "driver/wpc/p9221.h",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "596e696eb7155c4db36572399a4dab8b78c9a79c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf311cb5_928df412",
+        "filename": "driver/wpc/p9221.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d11f18_7b491940",
+      "range": {
+        "startLine": 285,
+        "startChar": 40,
+        "endLine": 285,
+        "endChar": 44
+      },
+      "revId": "596e696eb7155c4db36572399a4dab8b78c9a79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

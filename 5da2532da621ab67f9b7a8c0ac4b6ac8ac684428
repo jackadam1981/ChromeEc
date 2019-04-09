@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ab0d265_7aeca50e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "when we add log and see the wpc is BC12_SDP, maybe we need detect wpc before BC12 type, are you agree it.",
+      "parentUuid": "51b42659_1cf9af94",
+      "range": {
+        "startLine": 939,
+        "startChar": 9,
+        "endLine": 940,
+        "endChar": 26
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3001fd3_87f0a0d9",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac9114e_a06b6846",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3001fd3_87f0a0d9",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b53b6ba5_44867fb6",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b8be15_6ec15c68",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8608833_b4684082",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -82,6 +154,30 @@
       "writtenOn": "2019-04-04T17:22:37Z",
       "side": 1,
       "message": "BTY, I don\u0027t see these used anywhere.",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 22
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d899e6f_dd363b5e",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "with tx_busy/tx_done, i think it used for RX and TX communication, but now we haven\u0027t implement this funtion. do you think if we need communication functions?",
+      "parentUuid": "b8608833_b4684082",
       "range": {
         "startLine": 527,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "79fe5800_b5578469",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "have fixed it.",
+      "parentUuid": "4fe97f5a_039b372e",
+      "range": {
+        "startLine": 539,
+        "startChar": 30,
+        "endLine": 539,
+        "endChar": 33
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28f060b1_406d5176",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -131,6 +251,24 @@
       "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "715bc9a9_fc8c95a4",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28f060b1_406d5176",
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "3a6b177b_b1d01efe",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca611d15_43bba9b3",
+      "range": {
+        "startLine": 544,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 15
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dbb997a_185eeb86",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -168,6 +330,30 @@
       "writtenOn": "2019-04-04T17:38:21Z",
       "side": 1,
       "message": "What\u0027s the difference between this and p9221_is_online?",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 12
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb9c98f_214ab3fb",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "p9221_is_online means the TX and RX actual connected or not, wpc-\u003eonline is the status save this status. if wpc-\u003eonline is true, means VRECT INT has been occured, and no need process this intterrupt again. if  p9221_is_online  is true, we can distinguish if this VBUS is provide by WPC or USBPD.",
+      "parentUuid": "7dbb997a_185eeb86",
       "range": {
         "startLine": 687,
         "startChar": 1,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "4c453312_27919d95",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "If we attach the TX with RX, and soon detach the TX before VBUS is on, there wpc will be set online, and keep online in driver forever. so set offline if VBUS timeout, and if VBUS come in,\nset wpc online.",
+      "parentUuid": "68a4240c_f4ed692d",
+      "range": {
+        "startLine": 707,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 0
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5142b00_a9b756b2",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -223,6 +433,30 @@
       "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313f0f1b_29c1558a",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5142b00_a9b756b2",
+      "range": {
+        "startLine": 946,
+        "startChar": 1,
+        "endLine": 946,
+        "endChar": 39
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "8c971817_78ef32d4",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c27c1166_8ed07086",
+      "range": {
+        "startLine": 965,
+        "startChar": 1,
+        "endLine": 966,
+        "endChar": 11
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3e57f5b_b1e6e438",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -269,6 +527,30 @@
       "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c33262_5c507a5e",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e57f5b_b1e6e438",
+      "range": {
+        "startLine": 967,
+        "startChar": 2,
+        "endLine": 967,
+        "endChar": 38
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "c0ce8c08_24445e03",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dc3009f_984ec373",
+      "range": {
+        "startLine": 975,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 4
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d259e12_09688aa0",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -312,6 +618,24 @@
     },
     {
       "key": {
+        "uuid": "8fbe15a6_62d14507",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d259e12_09688aa0",
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98bb2b98_e19ec7be",
         "filename": "driver/wpc/p9221.h",
         "patchSetId": 14
@@ -323,6 +647,30 @@
       "writtenOn": "2019-04-04T17:38:21Z",
       "side": 1,
       "message": "When does it go online and when does it go offline?",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 44
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05dedbb5_6d410061",
+        "filename": "driver/wpc/p9221.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "online is means the TX is actual attached, offline means TX is detached.",
+      "parentUuid": "98bb2b98_e19ec7be",
       "range": {
         "startLine": 299,
         "startChar": 3,

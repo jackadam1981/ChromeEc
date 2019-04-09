@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "4a2704a0_603bfce4",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "add a wpc class as one of USB charger type or create a new sysfile node like /sys/class/power_supply/CROS_WPC_CHARGER, what would you like.",
+      "parentUuid": "64221a5c_136e2bc6",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de951ad6_e29701a2",
         "filename": "common/usb_charger.c",
         "patchSetId": 11
@@ -390,6 +414,24 @@
     },
     {
       "key": {
+        "uuid": "d336f04f_4d8536ae",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "082d663a_2a57af25",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c8d52ec_425897a0",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -437,6 +479,24 @@
       "side": 1,
       "message": "For now, it\u0027s probably better to focus on the stability and the functionality.\n\nHowever, due to the limited space, we should later try to make the driver include only r7 code. I guess it\u0027s possible to properly exclude lines by #ifdef ... #endif.",
       "parentUuid": "19f9450d_04631468",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb4b1a8_b4def1f7",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "i have delete the the non-r7 releated code , and only left the r7 code, if we need non-r7 in the \nfuture, and add it in that time.",
+      "parentUuid": "c8cff899_113a2779",
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -561,6 +621,30 @@
     },
     {
       "key": {
+        "uuid": "dd71dd65_4f412f1a",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "if we not need non-r7 code, the p9221_is_r7 can be delete.",
+      "parentUuid": "5bb28c32_92000d2e",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de56fe43_647839ef",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -581,6 +665,30 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9643c68_2186e37f",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de56fe43_647839ef",
+      "range": {
+        "startLine": 614,
+        "startChar": 12,
+        "endLine": 614,
+        "endChar": 27
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -654,6 +762,30 @@
     },
     {
       "key": {
+        "uuid": "9313fe2a_358ae641",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498fd3e4_8b79a459",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 14
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20342bbd_f18b7eeb",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -674,6 +806,30 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8ec3e0_f4a65b31",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20342bbd_f18b7eeb",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 10
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -700,6 +856,30 @@
     },
     {
       "key": {
+        "uuid": "a877ec82_1526c8db",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda767a2_ba65a6b8",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 10
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d3354b_e20f5ad6",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -723,6 +903,30 @@
     },
     {
       "key": {
+        "uuid": "364e211d_7d81194a",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d3354b_e20f5ad6",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 43
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfcd7c56_be955c88",
         "filename": "driver/wpc/p9221_r7.c",
         "patchSetId": 11
@@ -743,6 +947,30 @@
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a74449e_ee4d35c9",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfcd7c56_be955c88",
+      "range": {
+        "startLine": 677,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 37
+      },
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1005,6 +1233,24 @@
       "side": 1,
       "message": "Then we should not detect it at run-time. Otherwise, we have to carry the code of all other p9221 revisions. Once a board is manufactured this chip won\u0027t be swapped. We should statically set customer ID to a const variable (cust_id). We can check if they match at run-time.",
       "parentUuid": "9ee01c52_3f0a7de3",
+      "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1395093c_6510bdc4",
+        "filename": "driver/wpc/p9221_r7.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-04-09T02:49:07Z",
+      "side": 1,
+      "message": "we now only drive P9221-R7, and delete read customer id in every interrupt.",
+      "parentUuid": "4fcbb396_c2d6cec6",
       "revId": "0987ac04cbd1c54029010cea6d0843ed1750ffcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
