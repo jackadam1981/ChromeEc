@@ -46,46 +46,6 @@ void set_ioapic_redtbl_raw(const unsigned irq, const uint32_t val)
 	write_ioapic_reg(redtbl_hi, DEST_APIC_ID);
 }
 
-/**
- * bitmap for current IRQ's mask status
- * ISH support max 64 IRQs, 64 bit bitmap value is ok
- */
-#define ISH_MAX_IOAPIC_IRQS	(64)
-uint64_t ioapic_irq_mask_bitmap;
-
-/**
- * disable current all enabled intrrupts
- * return current irq mask bitmap
- * power management typically use 'disable_all_interrupts' to disable current
- * all interrupts and save current interrupts enabling settings before enter
- * low power state, and use 'restore_interrupts' to restore the interrupts
- * settings after exit low power state.
- */
-uint64_t disable_all_interrupts(void)
-{
-	uint64_t saved_map;
-	int i;
-
-	saved_map =  ioapic_irq_mask_bitmap;
-
-	for (i = 0; i < ISH_MAX_IOAPIC_IRQS; i++) {
-		if (((uint64_t)0x1 << i) & saved_map)
-			mask_interrupt(i);
-	}
-
-	return saved_map;
-}
-
-void restore_interrupts(uint64_t irq_map)
-{
-	int i;
-
-	for (i = 0; i < ISH_MAX_IOAPIC_IRQS; i++) {
-		if (((uint64_t)0x1 << i) & irq_map)
-			unmask_interrupt(i);
-	}
-}
-
 /*
  * Get lower 32bit of IOAPIC redirection table entry.
  *
@@ -115,7 +75,6 @@ void unmask_interrupt(uint32_t irq)
 	val = read_ioapic_reg(redtbl_lo);
 	val &= ~IOAPIC_REDTBL_MASK;
 	set_ioapic_redtbl_raw(irq, val);
-	ioapic_irq_mask_bitmap |= ((uint64_t)0x1) << irq;
 }
 
 void mask_interrupt(uint32_t irq)
@@ -126,8 +85,6 @@ void mask_interrupt(uint32_t irq)
 	val = read_ioapic_reg(redtbl_lo);
 	val |= IOAPIC_REDTBL_MASK;
 	set_ioapic_redtbl_raw(irq, val);
-
-	ioapic_irq_mask_bitmap &= ~(((uint64_t)0x1) << irq);
 }
 
 /* Maps IRQs to vectors. To be programmed in IOAPIC redirection table */
@@ -142,18 +99,7 @@ static const irq_desc_t system_irqs[] = {
 	LEVEL_INTR(ISH_HPET_TIMER0_IRQ, ISH_HPET_TIMER0_VEC),
 	LEVEL_INTR(ISH_HPET_TIMER1_IRQ, ISH_HPET_TIMER1_VEC),
 	LEVEL_INTR(ISH_DEBUG_UART_IRQ, ISH_DEBUG_UART_VEC),
-#ifdef CONFIG_ISH_PM_RESET_PREP
 	LEVEL_INTR(ISH_RESET_PREP_IRQ, ISH_RESET_PREP_VEC),
-#endif
-#ifdef CONFIG_ISH_PM_D0I1
-	LEVEL_INTR(ISH_PMU_WAKEUP_IRQ, ISH_PMU_WAKEUP_VEC),
-#endif
-#ifdef CONFIG_ISH_PM_D3
-	LEVEL_INTR(ISH_D3_RISE_IRQ, ISH_D3_RISE_VEC),
-	LEVEL_INTR(ISH_D3_FALL_IRQ, ISH_D3_FALL_VEC),
-	LEVEL_INTR(ISH_BME_RISE_IRQ, ISH_BME_RISE_VEC),
-	LEVEL_INTR(ISH_BME_FALL_IRQ, ISH_BME_FALL_VEC)
-#endif
 };
 
 /**
@@ -350,6 +296,29 @@ void unhandled_vector(void)
 	/* Put the vector number in eax so default_int_handler can use it */
 	asm("" : : "a" (vec));
 }
+
+int listrte(int argc, char *argv[])
+{
+	uint32_t ioapic_redtbl;
+	int entry;
+	unsigned num_system_irqs = ARRAY_SIZE(system_irqs);
+
+	CPRINTF("Scan RTE\n");
+
+	for (entry = 0; entry < num_system_irqs; entry++) {
+		ioapic_redtbl = get_ioapic_redtbl_lo(system_irqs[entry].irq);
+		CPRINTF("IRQ %d: 0x%08x\n", entry, ioapic_redtbl);
+		if (ioapic_redtbl & IOAPIC_REDTBL_IRR) {
+			CPRINTF("\t pending\n");
+		}
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(showrte, listrte,
+                        NULL,
+                        "show RTE table");
+
 
 /* This needs to be moved to link_defs.h */
 extern const struct irq_data __irq_data[], __irq_data_end[];
