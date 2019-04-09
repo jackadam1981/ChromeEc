@@ -13,8 +13,27 @@
 #include "host_command.h"
 #include "util.h"
 
+int adc_read_id(enum adc_channel ch, const struct adc_to_id *table, int size)
+{
+	int mv = adc_read_channel(ch);
+	int i;
+
+	if (mv == ADC_READ_ERROR) {
+		mv = adc_read_channel(ch);
+		if (mv == ADC_READ_ERROR)
+			return ADC_READ_ERROR;
+	}
+
+	for (i = 0; i < size; i++) {
+		if (mv < table[i].threshold_mv)
+			return table[i].id;
+	}
+
+	return ADC_READ_ERROR;
+}
+
 /* 'adc' console command is not supported in continuous mode */
-#ifndef CONFIG_ADC_PROFILE_FAST_CONTINUOUS
+#if defined(CONFIG_CMD_ADC) && !defined(CONFIG_ADC_PROFILE_FAST_CONTINUOUS)
 static enum adc_channel find_adc_channel_by_name(const char *name)
 {
 	const struct adc_t *ch = adc_channels;
@@ -85,4 +104,4 @@ static int hc_adc_read(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_ADC_READ, hc_adc_read, EC_VER_MASK(0));
-#endif /* CONFIG_ADC_PROFILE_FAST_CONTINUOUS */
+#endif /* CONFIG_CMD_ADC && !CONFIG_ADC_PROFILE_FAST_CONTINUOUS */
