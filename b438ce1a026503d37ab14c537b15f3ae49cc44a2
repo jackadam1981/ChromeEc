@@ -121,6 +121,24 @@
     },
     {
       "key": {
+        "uuid": "5d7ca372_f4ef4bfe",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T18:04:20Z",
+      "side": 1,
+      "message": "Found it the hard way and then confirmed with ST that it is a valid approach.",
+      "parentUuid": "ef064e87_8261779d",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3748ebfa_f4cbb815",
         "filename": "util/stm32mon.c",
         "patchSetId": 9
@@ -132,6 +150,24 @@
       "writtenOn": "2019-04-09T17:52:06Z",
       "side": 1,
       "message": "remove (void)",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e86b9a5_aed098d8",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T18:04:20Z",
+      "side": 1,
+      "message": "Any particular reason why? If we compile with \"-Wunused-result\" then not having the void would cause a warning. It\u0027s also intended to be self-documenting (someone reading it even without the comment can clearly see we didn\u0027t accidentally forget to check the return value).",
+      "parentUuid": "3748ebfa_f4cbb815",
       "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
