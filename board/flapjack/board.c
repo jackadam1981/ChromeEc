@@ -60,6 +60,15 @@ uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
 
+static const struct rt946x_init_setting battery_init_setting = {
+	.eoc_current = 150,
+	.mivr = 4000,
+	.ircmp_vclamp = 32,
+	.ircmp_res = 25,
+	.boost_voltage = 5050,
+	.boost_current = 1500,
+};
+
 int board_read_id(enum adc_channel ch, const struct mv_to_id *table, int size)
 {
 	int mv = adc_read_channel(ch);
@@ -74,6 +83,11 @@ int board_read_id(enum adc_channel ch, const struct mv_to_id *table, int size)
 	}
 
 	return ADC_READ_ERROR;
+}
+
+const struct rt946x_init_setting *board_rt946x_init_setting(void)
+{
+	return &battery_init_setting;
 }
 
 static void board_setup_panel(void)
