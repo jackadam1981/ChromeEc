@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eed0c0d1_bbe74e1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-09T15:04:16Z",
+      "side": 1,
+      "message": "configuration",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "edaf4395aab1a94e0797f2936da2bf326b4eabe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189fd1c9_f1c3c2e7",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-09T15:04:16Z",
+      "side": 1,
+      "message": "This seems like something that should go with the next CL in this series i.e. making tcpc_config separate for hatch and kohaku.\n\nAlso, this CL should be changing the flags for https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/hatch/baseboard.c#149",
+      "revId": "edaf4395aab1a94e0797f2936da2bf326b4eabe9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
