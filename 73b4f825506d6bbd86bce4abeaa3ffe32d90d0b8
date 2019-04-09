@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "5275a3ee_e1915a98",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-09T14:53:38Z",
+      "side": 1,
+      "message": "There is code that can handle in common on ToT.\n\nThis change to use 22OVP didn\u0027t happen",
+      "parentUuid": "336c69f4_01aee13b",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdd3d21e_2dcfdf3b",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
@@ -346,6 +370,30 @@
       "side": 1,
       "message": "Applying a resistor to both CC lines should happens only when there is no connection (when calling tcpci_tcpc_drp_toggle() ). Once there is a connection one CC line is used for communication and the other is used for Vconn (and therefore should be left Open).\nAnyhow I agree that the correct fix is to change the common code and then we will be able to fix and simplify this function.",
       "parentUuid": "16ee52ea_816dd1b2",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635162bd_55070cfa",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-09T14:53:38Z",
+      "side": 1,
+      "message": "Please open a crbug.com about the common code changes need, and reference that bug in a comment here saying this code will greatly simplying once that bug is fixed",
+      "parentUuid": "37a2807a_589ba4a0",
       "range": {
         "startLine": 143,
         "startChar": 11,
@@ -583,6 +631,30 @@
       "side": 1,
       "message": "We should update common code then to call auto discharge in the correct spot instead of implicitly doing in this driver",
       "parentUuid": "753e0cd3_b8c9d788",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 41
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d39de26c_dc11773a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-09T14:53:38Z",
+      "side": 1,
+      "message": "Please open a new crbug.com to place auto discharge in common code and add a comment here that says that this should be removed when common code add auto discharge correctly",
+      "parentUuid": "96815a8d_661bfdba",
       "range": {
         "startLine": 209,
         "startChar": 1,
