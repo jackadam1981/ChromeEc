@@ -351,6 +351,28 @@ void unhandled_vector(void)
 	asm("" : : "a" (vec));
 }
 
+int listrte(int argc, char *argv[])
+{
+	uint32_t ioapic_redtbl;
+	int entry;
+	unsigned num_system_irqs = ARRAY_SIZE(system_irqs);
+
+	CPRINTF("Scan RTE\n");
+
+	for (entry = 0; entry < num_system_irqs; entry++) {
+		ioapic_redtbl = get_ioapic_redtbl_lo(system_irqs[entry].irq);
+		CPRINTF("IRQ %d: 0x%08x\n", system_irqs[entry].irq, ioapic_redtbl);
+		if (ioapic_redtbl & IOAPIC_REDTBL_IRR) {
+			CPRINTF("\t pending\n");
+		}
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(showrte, listrte,
+			NULL,
+			"show RTE table");
+
 /* This needs to be moved to link_defs.h */
 extern const struct irq_data __irq_data[], __irq_data_end[];
 
