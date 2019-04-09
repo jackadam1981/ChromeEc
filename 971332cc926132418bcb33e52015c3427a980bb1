@@ -22,6 +22,23 @@
       "revId": "971332cc926132418bcb33e52015c3427a980bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ca6921_d106591d",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-09T19:18:44Z",
+      "side": 1,
+      "message": "you use the time collected when the interrupt handler is called.\nIt means you need hook the hanlder to a GPIO in board/arcada_ish/gpio.inc. Look for lsm6dsm_interrupt() as an example.\n\nI suggest to put that change in another CL, there is more work required.",
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
