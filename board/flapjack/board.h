@@ -248,8 +248,8 @@ enum sensor_id {
 
 /* Batteries */
 enum battery_type {
-	BATTERY_UNKNOWN = 0,
-	BATTERY_C18_ATL,
+	BATTERY_C18_ATL = 0,
+	BATTERY_UNKNOWN = BATTERY_C18_ATL, /* Default */
 	BATTERY_C19_ATL,
 	BATTERY_COUNT,
 };
