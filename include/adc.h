@@ -69,8 +69,8 @@ int adc_set_watchdog_delay(int delay_ms);
  * 	}
  *
  * adc_read_id returns:
- * 	0 <= mv < th1 --> id1
- * 	th1 <= mv < th2 --> id2
+ * 	0   <= reading < th1 --> id1
+ * 	th1 <= reading < th2 --> id2
  * 	...
  *
  * Note that thresholds must increase monotonically: th1 < th2 < ... and
@@ -81,7 +81,7 @@ int adc_set_watchdog_delay(int delay_ms);
  */
 struct adc_to_id {
 	int id;
-	int threshold;
+	int threshold_mv;
 };
 
 /**

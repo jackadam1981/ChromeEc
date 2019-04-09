@@ -25,7 +25,7 @@ int adc_read_id(enum adc_channel ch, const struct adc_to_id *table, int size)
 	}
 
 	for (i = 0; i < size; i++) {
-		if (mv < table[i].threshold)
+		if (mv < table[i].threshold_mv)
 			return table[i].id;
 	}
 
