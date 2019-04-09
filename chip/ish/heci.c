@@ -285,10 +285,22 @@ int heci_send_msg(const heci_handle_t handle, uint8_t *buf,
 	}
 
 	if (!connect->flow_ctrl_creds) {
-		CPRINTF("no cred\n");
+		CPRINTS("no cred");
+
+		if (IPC_PISR & BIT(0)) {
+			REG32(IOAPIC_EOI_REG) = ISH_IPC_VEC;
+			goto no_cred_corrected;
+		}
+		else if (IPC_BUSY_CLEAR & BIT(0)) {
+			REG32(IOAPIC_EOI_REG) = ISH_IPC_ISH2HOST_CLR_VEC;
+			goto no_cred_corrected;
+		}
+
 		ret = -HECI_ERR_NO_CRED_FROM_CLIENT_IN_HOST;
 		goto err_locked;
 	}
+
+cred_retry:
 
 	msg.hdr.fw_addr = fw_addr;
 	msg.hdr.host_addr = connect->host_addr;
@@ -317,6 +329,12 @@ int heci_send_msg(const heci_handle_t handle, uint8_t *buf,
 	mutex_unlock(&connect->lock);
 
 	return buf_size;
+
+no_cred_corrected:
+	/* Never reaching this for some reason */
+	CPRINTS("no cred sw workaround issued");
+	connect->flow_ctrl_creds = 1;
+	goto cred_retry;
 
 err_locked:
 	mutex_unlock(&connect->lock);
