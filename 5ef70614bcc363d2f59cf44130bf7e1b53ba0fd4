@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "feef24d3_5cd4e099",
+        "filename": "common/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T22:24:51Z",
+      "side": 1,
+      "message": "* If you want a strict matching, you need to define a dummy entry:\n *\n * \t{\n *\t\t{ BATTERY_1, 576 + 56 },\n *\t\t{ BATTERY_UNKNOWN, 900 - 56 },\n *\t\t{ BATTERY_2, 900 + 56 },\n *\t}\n *\n * Another member (e.g. margin_mv) is deliberately avoided to save ROM space.\n * If you have 16 entries, margin_mv would cost 16*4 bytes while you pay only 8\n * bytes per dummy.",
+      "parentUuid": "72dda73b_2ae2c932",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "5ef70614bcc363d2f59cf44130bf7e1b53ba0fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "080491cf_16769b73",
         "filename": "include/adc.h",
         "patchSetId": 2
