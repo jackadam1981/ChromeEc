@@ -331,8 +331,17 @@ int heci_send_msg_timestamp(const heci_handle_t handle, uint8_t *buf,
 		goto err_locked;
 	}
 
-	if (!wait_for_flow_ctrl_cred(connect)) {
-		CPRINTF("no cred\n");
+	if (!connect->flow_ctrl_creds) {
+		CPRINTS("no cred");
+
+		if (REG32(IPC_PISR) & BIT(0)) {
+			REG32(IOAPIC_EOI_REG) = ISH_IPC_VEC;
+			CPRINTS("no cred sw workaround issued");
+		} else if (REG32(IPC_BUSY_CLEAR) & BIT(0)) {
+			REG32(IOAPIC_EOI_REG) = ISH_IPC_ISH2HOST_CLR_VEC;
+			CPRINTS("no cred sw workaround issued");
+		}
+
 		ret = -HECI_ERR_NO_CRED_FROM_CLIENT_IN_HOST;
 		goto err_locked;
 	}
