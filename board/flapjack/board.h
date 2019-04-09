@@ -227,6 +227,8 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
+#define ADC_MARGIN_MV 56 /* Simply assume 1800/16/2 */
+
 /* power signal definitions */
 enum power_signal {
 	AP_IN_S3_L,
