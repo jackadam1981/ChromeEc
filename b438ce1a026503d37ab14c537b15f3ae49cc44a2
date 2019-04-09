@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "492ad1f9_4a80bdb6",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "put in another CLs, as it is currently unused.",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7e46a8_104a6ff2",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "put in another CLs, as it is currently unused.",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b7385bd_f4afe245",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "Looking at file:///usr/local/google/home/gwendal/Downloads/en.DM00119316.pdf, STM32F411 use the same address as STM32F412 for flashsize (section 24.2)",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b59f2e2_586f825a",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "Set to invalid value to 0. (remove as static are zero\u0027ed).",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d80d470_ad7b9c82",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b203e0_a7334dca",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "unused",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef064e87_8261779d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "is it documented or you found it the hard way?",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3748ebfa_f4cbb815",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "remove (void)",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87990d25_b39e2150",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "move to another CL? From line 192-194 it is not working for F412 anyway.",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8e4592_b26b50a8",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-09T17:52:06Z",
+      "side": 1,
+      "message": "remove (void)",
+      "revId": "b438ce1a026503d37ab14c537b15f3ae49cc44a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
