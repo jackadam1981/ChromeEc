@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9a19996_c4a655f2",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-09T15:11:02Z",
+      "side": 1,
+      "message": "This can be changed to a helper:\n\nstatic void reset_pd_port(int port, enum gpio_signal reset_gpio, int hold_delay, int finish_delay)\n{\n   if (battery_is_present() !\u003d BP_YES)\n       return;\n\n   ...\n}\n\nand called using:\nreset_pd_port(USB_PD_PORT_TCPC_0, GPIO_USB_C0_TCPC_RST, BOARD_TCPC_C0_RESET_HOLD_DELAY, BOARD_TCPC_C0_RESET_POST_DELAY);\nreset_pd_port(USB_PD_PORT_TCPC_1, GPIO_USB_C1_TCPC_RST, BOARD_TCPC_C1_RESET_HOLD_DELAY, BOARD_TCPC_C1_RESET_POST_DELAY);",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 2
+      },
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70bce52d_cbed37c5",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-09T15:11:02Z",
+      "side": 1,
+      "message": "Not for this change, but I think this check should be changed to:\n1. Is battery present? If yes, continue with the reset.\n2. If not, then is this port the charging port?\n3. If not, continue with the reset.",
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
