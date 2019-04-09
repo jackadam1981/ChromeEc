@@ -293,14 +293,22 @@ static int wait_for_flow_ctrl_cred(struct heci_client_connect *connect)
 		mutex_unlock(&connect->cred_lock);
 		if (need_to_wait) {
 			/*
-			 * A second is more than enough, otherwise if will
+			 * 100ms is more than enough, otherwise if will
 			 * probably never happen.
 			 */
 			int ev = task_wait_event_mask(TASK_EVENT_IPC_READY,
-						      SECOND);
+						      100 * MSEC);
 			if (ev & TASK_EVENT_TIMER) {
-				/* Return false, not able to get credit */
-				return 0;
+				/* Enact FW workaround that should unblock cred */
+				if (REG32(IPC_PISR) & BIT(0)) {
+					REG32(IOAPIC_EOI_REG) = ISH_IPC_VEC;
+					CPRINTS("no cred sw workaround issued PISR");
+				} else if (REG32(IPC_BUSY_CLEAR) & BIT(0)) {
+					REG32(IOAPIC_EOI_REG) = ISH_IPC_ISH2HOST_CLR_VEC;
+					CPRINTS("no cred sw workaround issued IBC");
+				} else {
+					return 0;
+				}
 			}
 		}
 	} while (need_to_wait);
