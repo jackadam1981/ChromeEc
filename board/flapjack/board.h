@@ -46,6 +46,7 @@
 
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
+#define CONFIG_LCD_ID_CUSTOM
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
 #define CONFIG_CHARGER_ILIM_PIN_DISABLED
 #define CONFIG_FORCE_CONSOLE_RESUME
@@ -262,6 +263,7 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 #endif
 
 void board_reset_pd_mcu(void);
+int get_lcd_id(void);
 
 #endif /* !__ASSEMBLER__ */
 

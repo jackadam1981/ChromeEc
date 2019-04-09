@@ -285,6 +285,61 @@ void board_config_pre_init(void)
 					  (3 << 20) | (3 << 24);
 }
 
+#define THRESHOLD_MV 56 /* Simply assume 1800/16/2 */
+#define PANEL_BOE_HIMAX8279D10P_ID 74
+#define PANEL_BOE_HIMAX8279D8P_ID 212
+#define BOARD_VERSION_UNKNOWN -1
+#define LCD_ID_UNKNOWN -1
+#define BOARD_VERSION_REV3 3
+#define BOARD_VERSION_REV3_MV 427	    /* 56K , 17.4K ohm */
+
+struct {
+	uint32_t lcd_id;
+	int expect_mv;
+} const lcd_ids[] = {
+	{ PANEL_BOE_HIMAX8279D10P_ID, 98 },
+	{ PANEL_BOE_HIMAX8279D8P_ID, 280 },
+};
+
+int get_lcd_id(void)
+{
+	static int lcd_id = LCD_ID_UNKNOWN;
+	static int version = BOARD_VERSION_UNKNOWN;
+	int mv;
+	int i;
+
+	if (lcd_id != LCD_ID_UNKNOWN)
+		return lcd_id;
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
+	/* Wait to allow cap charge */
+	msleep(10);
+	mv = adc_read_channel(ADC_BOARD_ID);
+
+	if (mv == ADC_READ_ERROR)
+		mv = adc_read_channel(ADC_BOARD_ID);
+
+	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
+
+	if (mv > BOARD_VERSION_REV3_MV - THRESHOLD_MV &&
+	    mv < BOARD_VERSION_REV3_MV + THRESHOLD_MV) {
+		/* P0B P0C use ADC_BOARD_ID pin for get board id */
+		version = BOARD_VERSION_REV3;
+
+		return version;
+	} else {
+		/* P0D and after use DC_BOARD_ID pin for get LCD id */
+		for (i = 0; i < ARRAY_SIZE(lcd_ids); ++i) {
+			if (mv < lcd_ids[i].expect_mv + THRESHOLD_MV / 2) {
+				lcd_id = lcd_ids[i].lcd_id;
+				break;
+			}
+		}
+
+		return lcd_id;
+	}
+}
+
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW

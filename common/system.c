@@ -1484,6 +1484,35 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
 		     EC_VER_MASK(0));
 #endif
 
+int system_get_lcd_id(void)
+{
+#if defined(CONFIG_LCD_ID_CUSTOM)
+	return get_lcd_id();
+#else
+	return 0;
+#endif
+}
+
+int host_command_get_lcd_id(struct host_cmd_handler_args *args)
+{
+	struct ec_response_lcd_id *r = args->response;
+	int lcd_id;
+
+	lcd_id = system_get_lcd_id();
+	if (lcd_id < 0) {
+		CPRINTS("Failed (%d) getting lcd id", -lcd_id);
+		return EC_RES_ERROR;
+	}
+
+	r->lcd_id = lcd_id;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_LCD_ID,
+		     host_command_get_lcd_id,
+		     EC_VER_MASK(0));
+
 #ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
 int host_command_vbnvcontext(struct host_cmd_handler_args *args)
 {

@@ -1087,6 +1087,16 @@ struct ec_response_get_chip_info {
 /* Get board HW version */
 #define EC_CMD_GET_BOARD_VERSION 0x0006
 
+#define EC_CMD_GET_LCD_ID 0x0122
+
+/**
+ * struct ec_response_lcd_id - Response to the lcd id command.
+ * @lcd_id: A monotonously incrementing number.
+ */
+struct ec_response_lcd_id{
+	uint16_t lcd_id;
+} __ec_align2;
+
 /**
  * struct ec_response_board_version - Response to the board version command.
  * @board_version: A monotonously incrementing number.
