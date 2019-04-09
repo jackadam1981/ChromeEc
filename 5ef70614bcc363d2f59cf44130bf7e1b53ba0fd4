@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "72dda73b_2ae2c932",
+        "filename": "common/adc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-04-09T18:37:29Z",
+      "side": 1,
+      "message": "Not sure if this is what we want? Say, we have two consecutive entries that\u0027s far apart, 576 and 900mv, and the margin is 56mv. If we read 738mv which should not be matched to either one but in this case we will be returning the 900mv entry.\n\nPerhaps defining the entry as { id, expected_mv, margin_mv } suit our purpose better?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "5ef70614bcc363d2f59cf44130bf7e1b53ba0fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "080491cf_16769b73",
         "filename": "include/adc.h",
         "patchSetId": 2
