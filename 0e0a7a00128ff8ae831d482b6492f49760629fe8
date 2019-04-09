@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc418069_afbea32c",
+        "filename": "board/hatch_fp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T22:06:53Z",
+      "side": 1,
+      "message": "Note for future readers. Even though Supa says this should be open drain, fpenroll doesn\u0027t seem to work (times out waiting for finger) when it\u0027s configured that way, so changing back to GPIO_OUT_HIGH.",
+      "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00aac5df_282a7d22",
         "filename": "board/hatch_fp/gpio.inc",
         "patchSetId": 2
@@ -22,6 +39,30 @@
       "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b429d4eb_ebdff65a",
+        "filename": "board/hatch_fp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T22:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00aac5df_282a7d22",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "c3c26508_7cf6ab1c",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T22:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86e0a2f_cd7a07c0",
+      "range": {
+        "startLine": 201,
+        "startChar": 57,
+        "endLine": 201,
+        "endChar": 69
+      },
+      "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd64e28_92cb410c",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -71,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "273fd1f8_c06fae51",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T22:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd64e28_92cb410c",
+      "range": {
+        "startLine": 202,
+        "startChar": 30,
+        "endLine": 202,
+        "endChar": 34
+      },
+      "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bf798e0_4f6473a6",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -91,6 +180,30 @@
       "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d4a3cd_a269b63b",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T22:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf798e0_4f6473a6",
+      "range": {
+        "startLine": 203,
+        "startChar": 48,
+        "endLine": 203,
+        "endChar": 53
+      },
+      "revId": "0e0a7a00128ff8ae831d482b6492f49760629fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
