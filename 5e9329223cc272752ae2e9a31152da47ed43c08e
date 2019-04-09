@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d5e3984_ee939120",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "Please make these uppercase for consistency.",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e8e614_bed6d500",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "Gerrit doesn\u0027t create a valid link for this. I don\u0027t know why.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00382d83_fb810b72",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "static. I think we should make board_setup_panel derive PANEL_ID from sku (sku \u003e\u003e PANEL_ID_BIT_POSITION) \u0026 0xf).\n\nnit: Also, I think \u0027pid\u0027 is commonly used for process id. Can you name it \u0027panel\u0027 or something else?",
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14020a52_5ba79834",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "Please add \u0027TODO: remove these when...\u0027",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 51
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1fab391_032f9c4b",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "We don\u0027t have this pin connected to ADC anymore. It\u0027s repurposed for ALS.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 40
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d75370_b8e513fb",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "Please use adc_read_id, which will be added by cl:1559104.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810604a0_38d65d6a",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "Please name it.",
+      "range": {
+        "startLine": 142,
+        "startChar": 42,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4578f9a5_50c20ab8",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "We try not to mention development phases in public.",
+      "range": {
+        "startLine": 232,
+        "startChar": 23,
+        "endLine": 232,
+        "endChar": 26
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe98fbb0_5dba1407",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-09T18:14:10Z",
+      "side": 1,
+      "message": "We don\u0027t use this any more. The pin is repurposed for ALS. Please remove.",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 19
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
