@@ -270,7 +270,7 @@ static uint64_t prev_timestamp;
 
 static int chunk_came_too_soon(uint32_t block_offset)
 {
-	int hard_reset = system_get_reset_flags() & RESET_FLAG_HARD;
+	int hard_reset = system_get_reset_flags() & EC_RESET_FLAG_HARD;
 
 	/*
 	 * If it has been BACKOFF_TIME since the last time we wrote to a block
