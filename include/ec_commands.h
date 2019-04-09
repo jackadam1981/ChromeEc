@@ -5,6 +5,9 @@
 
 /* Host communication command constants for Chrome EC */
 
+/* CHROMIUM_EC is expected to be defined when building images or utils in
+ * Chromium EC repository. */
+
 #ifndef __CROS_EC_EC_COMMANDS_H
 #define __CROS_EC_EC_COMMANDS_H
 
@@ -16,19 +19,18 @@
 extern "C"{
 #endif
 
+#ifdef CHROMIUM_EC
 /*
  * Include common.h for CONFIG_HOSTCMD_ALIGNED, if it's defined. This
  * generates more efficient code for accessing request/response structures on
  * ARM Cortex-M if the structures are guaranteed 32-bit aligned.
  */
-#ifdef CHROMIUM_EC
 #include "common.h"
-#endif
-
-#ifdef __KERNEL__
-#define BUILD_ASSERT(_cond)
-#else
 #include "compile_time_macros.h"
+#else
+#ifndef BUILD_ASSERT
+#define BUILD_ASSERT(_cond)
+#endif
 #endif
 
 /*
