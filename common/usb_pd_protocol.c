@@ -33,7 +33,7 @@
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, "PD " format, ## args)
 
 BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT <= EC_USB_PD_MAX_PORTS);
 
@@ -414,7 +414,7 @@ static void handle_device_access(int port)
 
 	pd[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
 	if (pd[port].flags & PD_FLAGS_LPM_ENGAGED) {
-		CPRINTS("TCPC p%d Exit Low Power Mode", port);
+		CPRINTS("p%d Exit Low Power Mode", port);
 		pd[port].flags &= ~(PD_FLAGS_LPM_ENGAGED |
 				    PD_FLAGS_LPM_REQUESTED);
 		/*
@@ -451,9 +451,9 @@ static int reset_device_and_notify(int port)
 	pd[port].flags &= ~PD_FLAGS_LPM_TRANSITION;
 
 	if (rv == EC_SUCCESS)
-		CPRINTS("TCPC p%d init ready", port);
+		CPRINTS("p%d init ready", port);
 	else
-		CPRINTS("TCPC p%d init failed!", port);
+		CPRINTS("p%d init failed!", port);
 
 	/*
 	 * Before getting the other tasks that are waiting, clear the reset
@@ -564,9 +564,9 @@ static int reset_device_and_notify(int port)
 	const int rv = tcpm_init(port);
 
 	if (rv == EC_SUCCESS)
-		CPRINTS("TCPC p%d init ready", port);
+		CPRINTS("p%d init ready", port);
 	else
-		CPRINTS("TCPC p%d init failed!", port);
+		CPRINTS("p%d init failed!", port);
 
 	return rv;
 }
@@ -595,7 +595,7 @@ static int pd_get_saved_port_flags(int port, uint8_t *flags)
 {
 	if (system_get_bbram(get_bbram_idx(port), flags) != EC_SUCCESS) {
 #ifndef CHIP_HOST
-		CPRINTS("PD NVRAM FAIL");
+		CPRINTS("NVRAM FAIL");
 #endif
 		return EC_ERROR_UNKNOWN;
 	}
@@ -607,7 +607,7 @@ static void pd_set_saved_port_flags(int port, uint8_t flags)
 {
 	if (system_set_bbram(get_bbram_idx(port), flags) != EC_SUCCESS) {
 #ifndef CHIP_HOST
-		CPRINTS("PD NVRAM FAIL");
+		CPRINTS("NVRAM FAIL");
 #endif
 	}
 }
@@ -2579,7 +2579,7 @@ static void pd_init_tasks(void)
 #endif
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_comm_enabled[i] = enable;
-	CPRINTS("PD comm %sabled", enable ? "en" : "dis");
+	CPRINTS("comm %sabled", enable ? "en" : "dis");
 
 	initialized = 1;
 }
@@ -2709,7 +2709,7 @@ void pd_task(void *u)
 		struct ec_response_pd_chip_info_v1 *info;
 
 		if (tcpm_get_chip_info(port, 0, &info) == EC_SUCCESS) {
-			CPRINTS("TCPC p%d VID:0x%x PID:0x%x DID:0x%x FWV:0x%lx",
+			CPRINTS("p%d VID:0x%x PID:0x%x DID:0x%x FWV:0x%lx",
 				port, info->vendor_id, info->product_id,
 				info->device_id, info->fw_version_number);
 		}
@@ -3532,7 +3532,7 @@ void pd_task(void *u)
 #ifndef CONFIG_USB_PD_TCPC
 			int rstatus;
 #endif
-			CPRINTS("TCPC p%d suspended!", port);
+			CPRINTS("p%d suspended!", port);
 			pd[port].req_suspend_state = 0;
 #ifdef CONFIG_USB_PD_TCPC
 			pd_rx_disable_monitoring(port);
@@ -3541,7 +3541,7 @@ void pd_task(void *u)
 #else
 			rstatus = tcpm_release(port);
 			if (rstatus != 0 && rstatus != EC_ERROR_UNIMPLEMENTED)
-				CPRINTS("TCPC p%d release failed!", port);
+				CPRINTS("p%d release failed!", port);
 #endif
 			/* Drain any outstanding software message queues. */
 			tcpm_clear_pending_messages(port);
@@ -3551,16 +3551,16 @@ void pd_task(void *u)
 				task_wait_event(-1);
 #ifdef CONFIG_USB_PD_TCPC
 			pd_hw_init(port, PD_ROLE_DEFAULT(port));
-			CPRINTS("TCPC p%d resumed!", port);
+			CPRINTS("p%d resumed!", port);
 #else
 			if (rstatus != EC_ERROR_UNIMPLEMENTED &&
 			    pd_restart_tcpc(port) != 0) {
 				/* stay in PD_STATE_SUSPENDED */
-				CPRINTS("TCPC p%d restart failed!", port);
+				CPRINTS("p%d restart failed!", port);
 				break;
 			}
 			set_state(port, PD_DEFAULT_STATE(port));
-			CPRINTS("TCPC p%d resumed!", port);
+			CPRINTS("p%d resumed!", port);
 #endif
 			break;
 		}
@@ -4257,7 +4257,7 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_LPM_TRANSITION;
 				tcpm_enter_low_power_mode(port);
 				pd[port].flags &= ~PD_FLAGS_LPM_TRANSITION;
-				CPRINTS("TCPC p%d Enter Low Power Mode", port);
+				CPRINTS("p%d Enter Low Power Mode", port);
 				timeout = -1;
 			} else if (timeout < 0 || timeout > time_left) {
 				timeout = time_left;
@@ -4338,7 +4338,7 @@ static void pd_chipset_resume(void)
 		pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
 	}
 
-	CPRINTS("PD:S3->S0");
+	CPRINTS("S3->S0");
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -4348,7 +4348,7 @@ static void pd_chipset_suspend(void)
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
-	CPRINTS("PD:S0->S3");
+	CPRINTS("S0->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -4364,7 +4364,7 @@ static void pd_chipset_startup(void)
 				       PD_EVENT_UPDATE_DUAL_ROLE,
 			       0);
 	}
-	CPRINTS("PD:S5->S3");
+	CPRINTS("S5->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -4379,7 +4379,7 @@ static void pd_chipset_shutdown(void)
 				       PD_EVENT_UPDATE_DUAL_ROLE,
 			       0);
 	}
-	CPRINTS("PD:S3->S5");
+	CPRINTS("S3->S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -4432,10 +4432,10 @@ void pd_set_suspend(int port, int enable)
 			msleep(1);
 		} while (--tries != 0);
 		if (!tries)
-			CPRINTS("TCPC p%d set_suspend failed!", port);
+			CPRINTS("p%d set_suspend failed!", port);
 	} else {
 		if (pd[port].task_state != PD_STATE_SUSPENDED)
-			CPRINTS("TCPC p%d suspend disable request "
+			CPRINTS("p%d suspend disable request "
 				"while not suspended!", port);
 		set_state(port, PD_DEFAULT_STATE(port));
 		/*
