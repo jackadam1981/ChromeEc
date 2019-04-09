@@ -22,6 +22,30 @@
       "revId": "1e3af1505617ee9b536ba6afb27a103466690627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "938e0ae8_fa815b46",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-04-09T19:15:55Z",
+      "side": 1,
+      "message": "Turns out docs are slightly confusing. See patchset 2 for updated description based on discussion with ST.",
+      "parentUuid": "74e1864f_e6b1a5d2",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "1e3af1505617ee9b536ba6afb27a103466690627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
