@@ -163,6 +163,9 @@ static void board_get_battery_type(void)
 	int id = board_read_id(ADC_BATT_ID, batteries, ARRAY_SIZE(batteries));
 	if (id != ADC_READ_ERROR)
 		batt_type = id;
+
+	/* njv hack - remove - hardcoded for use with fake battery */
+	batt_type = BATTERY_C18_ATL;
 	CPRINTS("Battery Type: %d", batt_type);
 }
 DECLARE_HOOK(HOOK_INIT, board_get_battery_type, HOOK_PRIO_FIRST);
