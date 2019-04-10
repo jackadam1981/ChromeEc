@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "0e2132af_b2e94488",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-10T15:58:33Z",
+      "side": 1,
+      "message": "After a thought, I think it\u0027s better to have a local API which deals with batt_id and panel_id. We can customize it to best suit the board (in terms of code size, error handling, etc.)",
+      "parentUuid": "26d75370_b8e513fb",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "810604a0_38d65d6a",
         "filename": "board/flapjack/board.c",
         "patchSetId": 4
