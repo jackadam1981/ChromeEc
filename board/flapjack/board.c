@@ -50,6 +50,13 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+const struct adc_to_id panels[] = {
+	{ PANEL_UNKNOWN,		98 - ADC_MARGIN_MV },
+	{ PANEL_BOE_HIMAX8279D10P,	98 + ADC_MARGIN_MV },
+	{ PANEL_UNKNOWN,		280 - ADC_MARGIN_MV },
+	{ PANEL_BOE_HIMAX8279D8P,	280 + ADC_MARGIN_MV },
+};
+
 uint16_t board_version;
 uint8_t oem;
 uint32_t sku;
@@ -59,9 +66,27 @@ static void board_setup_panel(void)
 	uint8_t channel;
 	uint8_t dim;
 	int rv = 0;
+	enum panel_id pnl_id = (sku >> PANEL_ID_BIT_POSITION) & 0xf;
 
-	channel = sku & SKU_ID_PANEL_SIZE_MASK ? 0xfe : 0xfa;
-	dim = sku & SKU_ID_PANEL_SIZE_MASK ? 0xc4 : 0xc8;
+	if (board_version >= 3) {
+		switch (pnl_id) {
+		case PANEL_BOE_HIMAX8279D8P:
+			channel = 0xfa;
+			dim = 0xc8;
+			break;
+		case PANEL_BOE_HIMAX8279D10P:
+			channel = 0xfe;
+			dim = 0xc4;
+			break;
+		default:
+			CPRINTS("Unrecognized panel %d\n", pnl_id);
+			return;
+		}
+	} else {
+		/* TODO: to be removed once the boards are deprecated. */
+		channel = sku & SKU_ID_PANEL_SIZE_MASK ? 0xfe : 0xfa;
+		dim = sku & SKU_ID_PANEL_SIZE_MASK ? 0xc4 : 0xc8;
+	}
 
 	rv |= i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, MT6370_BACKLIGHT_BLEN,
 		channel);
@@ -71,6 +96,18 @@ static void board_setup_panel(void)
 		0xac);
 	if (rv)
 		CPRINTS("Board setup panel failed\n");
+}
+
+static enum panel_id board_get_panel_id(void)
+{
+	int id = adc_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
+	enum panel_id pnl_id = PANEL_UNKNOWN;
+
+	if (id != ADC_READ_ERROR)
+		pnl_id = (enum panel_id)id;
+
+	CPRINTS("LCM ID: %d", pnl_id);
+	return pnl_id;
 }
 
 static void cbi_init(void)
@@ -87,6 +124,11 @@ static void cbi_init(void)
 
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
+
+	if (board_version >= 3)
+		/* Embed LCM_ID in sku_id bit[19-16] */
+		sku |= ((board_get_panel_id() & 0xf) << PANEL_ID_BIT_POSITION);
+
 	CPRINTS("SKU: 0x%08x", sku);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
@@ -106,7 +148,7 @@ static void gauge_interrupt(enum gpio_signal signal)
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] = {"BOARD_ID", 3300, 4096, 0, STM32_AIN(10)},
+	[ADC_LCM_ID] = {"LCM_ID", 3300, 4096, 0, STM32_AIN(10)},
 	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
 	[ADC_BATT_ID] = {"BATT_ID", 3300, 4096, 0, STM32_AIN(7)},
 	[ADC_USBC_THERM] = {"USBC_THERM", 3300, 4096, 0, STM32_AIN(14)},
