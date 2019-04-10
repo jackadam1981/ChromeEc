@@ -60,8 +60,10 @@ enum pd_rx_errors {
 #define PD_EVENT_SM			TASK_EVENT_CUSTOM_BIT(10)
 /* Prepare for sysjump */
 #define PD_EVENT_SYSJUMP		TASK_EVENT_CUSTOM_BIT(11)
+/* Receive hard reset */
+#define PD_EVENT_RCV_HARD_RESET		TASK_EVENT_CUSTOM_BIT(12)
 /* First free event on PD task */
-#define PD_EVENT_FIRST_FREE_BIT		12
+#define PD_EVENT_FIRST_FREE_BIT		13
 
 /* Ensure TCPC is out of low power mode before handling these events. */
 #define PD_EXIT_LOW_POWER_EVENT_MASK \
@@ -167,7 +169,7 @@ enum pd_rx_errors {
 #define PD_T_CHUNK_SENDER_RSP (24*MSEC) /* between 24ms and 30ms */
 #define PD_T_CHUNK_SENDER_REQ (24*MSEC) /* between 24ms and 30ms */
 #define PD_T_SEND_SOURCE_CAP  (100*MSEC) /* between 100ms and 200ms */
-#define PD_T_SINK_WAIT_CAP    (600*MSEC) /* between 310ms and 620ms */
+#define PD_T_SINK_WAIT_CAP    (475*MSEC) /* between 310ms and 620ms */
 #define PD_T_SINK_TRANSITION   (35*MSEC) /* between 20ms and 35ms */
 #define PD_T_SOURCE_ACTIVITY   (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SENDER_RESPONSE   (30*MSEC) /* between 24ms and 30ms */
