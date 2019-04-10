@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e275df7_d2746d0c",
+        "filename": "common/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-10T13:31:51Z",
+      "side": 1,
+      "message": "why the double read? if the first read not reliable?",
+      "revId": "15c68b7b0c0ef9078cd2679f625ef2b1af57c05b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
