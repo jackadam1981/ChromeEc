@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a776ef3e_e06ca480",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-10T21:31:19Z",
+      "side": 1,
+      "message": "no, we mark last_collection even when read() fails:\n1- some sensor in forced mode, for instance light sensor read() is just there to start the integration, we get a interrupt when the data is ready.\n2 - if the sensor start failing, motion sense would run in a tight loop.",
+      "revId": "d6e2da27e3e8951896198569bbd0c5a5d08c6b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3150c2f_b6fca686",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-10T21:31:19Z",
+      "side": 1,
+      "message": "remove, we can use read().",
+      "revId": "d6e2da27e3e8951896198569bbd0c5a5d08c6b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a04715_fc89397f",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-10T21:31:19Z",
+      "side": 1,
+      "message": "no irq handler.",
+      "revId": "d6e2da27e3e8951896198569bbd0c5a5d08c6b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
