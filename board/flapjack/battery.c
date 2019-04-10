@@ -179,6 +179,9 @@ static void board_get_battery_type(void)
 		}
 	}
 
+	/* njv hack - remove - hardcoded for use with fake battery */
+	batt_type = BATTERY_C18_ATL;
+
 	CPRINTS("Battery Type: %d", batt_type);
 }
 DECLARE_HOOK(HOOK_INIT, board_get_battery_type, HOOK_PRIO_FIRST);
