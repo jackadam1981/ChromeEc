@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d3c4ad2_adc402b3",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-10T15:39:24Z",
+      "side": 1,
+      "message": "can this be 10 or 15 ms due to resume latency?",
+      "range": {
+        "startLine": 92,
+        "startChar": 41,
+        "endLine": 92,
+        "endChar": 47
+      },
+      "revId": "cacba54b2fffb1eef28f31e09d30ad21015cf14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26566cfa_bac06158",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-10T15:39:24Z",
+      "side": 1,
+      "message": "can we make this 50 or 100 ms due to delay coming out of D0i3?",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 43
+      },
+      "revId": "cacba54b2fffb1eef28f31e09d30ad21015cf14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
