@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "eb3482c8_11c22997",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-10T16:27:32Z",
+      "side": 1,
+      "message": "For flapjack, yes.\n\nIt\u0027s kind of difficult to come up with a single API which suits all cases \u0026 needs. I would like to avoid code duplication as much as possible for flapjack but that\u0027ll make the API look too customized for other developers.\n\nAnyway, I uploaded cl:1559104. It has board_read_id (local) API. All you need is to replace adc_read_id with board_read_id and remove dummy entries from panels[].",
+      "parentUuid": "4b4dc32f_2d5bef76",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "5e9329223cc272752ae2e9a31152da47ed43c08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "810604a0_38d65d6a",
         "filename": "board/flapjack/board.c",
         "patchSetId": 4
