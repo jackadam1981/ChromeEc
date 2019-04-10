@@ -261,8 +261,31 @@ void board_tcpc_init(void)
 		const struct usb_mux *mux = &usb_muxes[port];
 		mux->hpd_update(port, 0, 0);
 	}
+
+	/* Enable sensors power supply */
+	board_sku_init();
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
+
+void board_sku_init(void)
+{
+	uint32_t sku_id;
+
+	cbi_get_sku_id(&sku_id);
+	switch (sku_id) {
+	case 0x2AE3:
+	case 0x2A67:
+	case 0x2A63:
+		gpio_set_level(GPIO_EN_PP1800_DX_SENSOR, 1);
+		break;
+	case 0x2863:
+	default:
+		gpio_set_level(GPIO_EN_PP1800_DX_SENSOR, 0);
+		motion_sensor_count = 0;
+		break;
+	}
+	CPRINTS("Motion Sensor Count: %d", motion_sensor_count);
+}
 
 uint16_t tcpc_get_alert_status(void)
 {
@@ -445,9 +468,6 @@ static void board_init(void)
 
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACPRESENT, extpower_is_present());
-
-	/* Enable sensors power supply */
-	gpio_set_level(GPIO_EN_PP1800_DX_SENSOR, 1);
 
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_DET_L);
@@ -675,7 +695,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
 #ifndef TEST_BUILD
