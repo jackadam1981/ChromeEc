@@ -1227,7 +1227,11 @@ enum i2c_channels {
 #define USBPD_REG_MASK_SW_RESET_TX_STAT        (1 << 3)
 #define USBPD_REG_MASK_TX_BUSY_STAT            (1 << 2)
 #define USBPD_REG_MASK_TX_DISCARD_STAT         (1 << 2)
+#ifdef IT83XX_PD_TX_ERROR_STATUS_BIT5
+#define USBPD_REG_MASK_TX_ERR_STAT             (1 << 5)
+#else
 #define USBPD_REG_MASK_TX_ERR_STAT             (1 << 1)
+#endif
 #define USBPD_REG_MASK_TX_START                (1 << 0)
 #define IT83XX_USBPD_MTSR0(p)     REG8(IT83XX_USBPD_BASE(p)+0x19)
 #define USBPD_REG_MASK_CABLE_ENABLE            (1 << 7)
