@@ -435,6 +435,8 @@ DECLARE_DEFERRED(board_pmic_init);
 /* Initialize board. */
 static void board_init(void)
 {
+	uint32_t val;
+
 	/*
 	 * This enables pull-down on F_DIO1 (SPI MISO), and F_DIO0 (SPI MOSI),
 	 * whenever the EC is not doing SPI flash transactions. This avoids
@@ -447,7 +449,18 @@ static void board_init(void)
 	gpio_set_level(GPIO_PCH_ACPRESENT, extpower_is_present());
 
 	/* Enable sensors power supply */
-	gpio_set_level(GPIO_EN_PP1800_DX_SENSOR, 1);
+	cbi_get_sku_id(&val);
+	switch (val) {
+	case 0x2AE3:
+	case 0x2A67:
+	case 0x2A63:
+		gpio_set_level(GPIO_EN_PP1800_DX_SENSOR, 1);
+		break;
+	case 0x2863:
+	default:
+		gpio_set_level(GPIO_EN_PP1800_DX_SENSOR, 0);
+		break;
+	}
 
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_DET_L);
