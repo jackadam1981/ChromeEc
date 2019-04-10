@@ -28,6 +28,7 @@
 #define CHARGE_PHASE_CHANGE_TRIP_VOLTAGE_MV 4200
 #define CHARGE_PHASE_CHANGE_HYSTERESIS_MV 50
 #define CHARGE_PHASE_CHANGED_CURRENT_MA 1800
+#define CHARGE_BURST_IBAT_TERMINAL_MA 1000
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
 
@@ -366,3 +367,12 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 {
 	return EC_RES_INVALID_PARAM;
 }
+
+static void board_protection_rt946x(void)
+{
+	struct charge_state_data curr;
+
+	battery_get_params(&curr.batt);
+	pd_limit_5v(curr.batt.current < CHARGE_BURST_IBAT_TERMINAL_MA);
+}
+DECLARE_HOOK(HOOK_SECOND, board_protection_rt946x, HOOK_PRIO_DEFAULT);
