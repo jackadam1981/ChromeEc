@@ -39,6 +39,48 @@
       "revId": "971332cc926132418bcb33e52015c3427a980bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9f781a_500cdbc7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-10T01:38:48Z",
+      "side": 1,
+      "message": "See comment below on Gwendal\u0027s comment.",
+      "parentUuid": "c4398cbe_211d0392",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 30
+      },
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18871d5_95b03ac5",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-10T01:38:48Z",
+      "side": 1,
+      "message": "So I was in the process of implementing an lis2mdl_interrupt() but I just realized I don\u0027t think that\u0027s right. The lsm6dsm makes sense. Data is read into the FIFO and an interrupt fires, at this point we want to store the timestamp since it\u0027s the closest to the sensor reading. The lis2mdl doesn\u0027t have a FIFO. So we should take the timestamp at read time. For example:\n\nSensor is running at 10Hz and interrupt fires, then the handler is called X milliseconds later. When the handler runs it performs a read, but the value may not be the one that was there when the interrupt fired depending on when the read took place relative to the sensor\u0027s cycles.\n\nI\u0027ll update this to take the timestamp closer to the read itself, but I think that\u0027s about as accurate as we can get.",
+      "parentUuid": "c8ca6921_d106591d",
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
