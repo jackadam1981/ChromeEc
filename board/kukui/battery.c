@@ -33,6 +33,7 @@
 #endif
 
 #define BAT_LEVEL_PD_LIMIT 85
+#define IBAT_PD_LIMIT 1000
 
 #define BATTERY_SIMPLO_CHARGE_MIN_TEMP 0
 #define BATTERY_SIMPLO_CHARGE_MAX_TEMP 60
@@ -239,12 +240,34 @@ static void pd_limit_5v(uint8_t en)
 		pd_set_external_voltage_limit(0, wanted_pd_voltage);
 }
 
-/* When battery level > BAT_LEVEL_PD_LIMIT, we limit PD voltage to 5V. */
+/* Forward declaration for self deferred call. */
+static void board_pd_voltage(void);
+DECLARE_DEFERRED(board_pd_voltage);
+
+/*
+ * When battery level > BAT_LEVEL_PD_LIMIT && IBAT < 1A, we limit PD voltage to
+ * 5V.
+ */
 static void board_pd_voltage(void)
 {
-	pd_limit_5v(charge_get_percent() > BAT_LEVEL_PD_LIMIT);
+	int ibat;
+	uint8_t en;
+
+	ibat = rt946x_get_ibat_current();
+
+	en = charge_get_percent() > BAT_LEVEL_PD_LIMIT && ibat <= IBAT_PD_LIMIT;
+
+	pd_limit_5v(en);
+
+	/*
+	 * If pd_limit_5v enabled, which means that the battery is almost fully
+	 * charged, then schedule the next check 60 seconds later to reduce
+	 * charging voltage ping-ponging.
+	 */
+	hook_call_deferred(&board_pd_voltage_data,
+			   en ? 60 * SECOND : 10 * SECOND);
 }
-DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_pd_voltage, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_pd_voltage, HOOK_PRIO_DEFAULT);
 
 /* Customs options controllable by host command. */
 #define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
