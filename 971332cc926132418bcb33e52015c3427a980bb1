@@ -81,6 +81,24 @@
       "revId": "971332cc926132418bcb33e52015c3427a980bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a26990_078632bc",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-10T05:29:08Z",
+      "side": 1,
+      "message": "Remove this irq_handler from this CL, and start another CL for interrupt handling. We/Intel can use the read() entry point. Having a working CL in the tree will make it easier to test in parallel.\n\nFirst, do you have an interrupt line between the magnetometer and the ISH. If not the case is close.\n\nSecond, once the GPIO is set as an interrupt and enabled in board.c, the [hard] interrupt handler, lis2mdl_interrupt(), will collect the timestamp when the sample are ready - last_interrupt_timestamp.\n\nThis timestamp is very precise, the time at which the motion_sense task is scheduled and irq_handler is called is not. That\u0027s why using __hw_clock_source_read() in irq_hanlder() does not offer much improvement over just using read() entry point.\n\nI agree that without a FIFO, the EC must trigger the motion_sense task with the sensor period, otherwise, we will lose samples. For the magnetometer, it is up to 20ms, it is doable.\nFor a accel or gyro at 200Hz, we only have 5ms, which would be very risky.",
+      "parentUuid": "e18871d5_95b03ac5",
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
