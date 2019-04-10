@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c1bccad_3af779d9",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-10T03:50:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11738e88_fbafccef",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "ad489685bc6c8495378f51fd4acf71c35ecfa955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d457a75d_6a1457f7",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-09T15:10:01Z",
       "side": 1,
       "message": "we should be using new BIT(5) macro now",
+      "range": {
+        "startLine": 1231,
+        "startChar": 47,
+        "endLine": 1231,
+        "endChar": 55
+      },
+      "revId": "ad489685bc6c8495378f51fd4acf71c35ecfa955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be1bdd5_7e5397c9",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-10T03:50:02Z",
+      "side": 1,
+      "message": "Yes. If chip Dx keeps using BIT(1), when our HW discards message, FW won\u0027t resend.",
+      "parentUuid": "d457a75d_6a1457f7",
       "range": {
         "startLine": 1231,
         "startChar": 47,
