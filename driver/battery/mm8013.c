@@ -46,7 +46,7 @@ static int battery_flag(int *flag)
 	return mm8013_read16(REG_FLAGS, flag);
 }
 
-static int battery_current(int *current)
+int mm8013_get_avg_current(int *current)
 {
 	int16_t tmp;
 	int rv;
@@ -199,7 +199,7 @@ void battery_get_params(struct batt_params *batt)
 	if (mm8013_read16(REG_VOLTAGE, &batt_new.voltage))
 		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
 
-	if (battery_current(&batt_new.current))
+	if (mm8013_get_avg_current(&batt_new.current))
 		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
 
 	batt_new.desired_voltage = battery_get_info()->voltage_max;

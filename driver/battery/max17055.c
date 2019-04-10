@@ -86,6 +86,18 @@ static int max17055_probe(void)
 	return 0;
 }
 
+int max17055_get_avg_current(int *current)
+{
+	int reg;
+
+	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+		return EC_ERROR_UNKNOWN;
+
+	*current = CURRENT_CONV((int16_t)reg);
+
+	return EC_SUCCESS;
+}
+
 int battery_device_name(char *device_name, int buf_size)
 {
 	int dev_id;
@@ -293,10 +305,10 @@ void battery_get_params(struct batt_params *batt)
 
 	batt_new.voltage = VOLTAGE_CONV(reg);
 
-	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+	if (max17055_get_avg_current(&reg))
 		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
 
-	batt_new.current = CURRENT_CONV((int16_t)reg);
+	batt_new.current = reg;
 
 	batt_new.desired_voltage = battery_get_info()->voltage_max;
 	batt_new.desired_current = BATTERY_DESIRED_CHARGING_CURRENT;

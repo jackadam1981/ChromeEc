@@ -246,5 +246,11 @@ struct max17055_alert_profile {
  * Return the battery/system's alert threshoulds that max17055 needs.
  */
 const struct max17055_alert_profile *max17055_get_alert_profile(void);
+
+/*
+ * Return the average current at battery cell.
+ */
+int max17055_get_avg_current(int *current);
+
 #endif /* CONFIG_BATTERY_MAX17055_ALERT */
 #endif /* __CROS_EC_MAX17055_H */

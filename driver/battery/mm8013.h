@@ -36,5 +36,9 @@
 /* Discharge */
 #define MM8013_FLAG_DSG             BIT(0)
 
+/*
+ * Return the average current at battery cell.
+ */
+int mm8013_get_avg_current(int *current);
 
 #endif /* __CROS_EC_MM8013_H */
