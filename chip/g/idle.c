@@ -89,6 +89,12 @@ static void prepare_to_sleep(void)
 	/* No task switching! */
 	interrupt_disable();
 
+	/*
+	 * Disable the rbox power button interrupt before entering deep sleep.
+	 * It causes cr50 to hang in brom on some devices (b/128735316)
+	 */
+	GWRITE_FIELD(RBOX, INT_ENABLE, INTR_PWRB_IN_FED, 0);
+
 	/* Enable all possible internal wake sources */
 	GR_PMU_EXITPD_MASK =
 		GC_PMU_EXITPD_MASK_PIN_PD_EXIT_MASK |
