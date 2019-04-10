@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "5bee6486_c2a93878",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-10T17:48:10Z",
+      "side": 1,
+      "message": "typo: baseboard",
+      "range": {
+        "startLine": 10,
+        "startChar": 55,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "168ce360_40a353d8",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-10T17:48:10Z",
+      "side": 1,
+      "message": "nit: nothing on the first line of multi-line comments. (also, now I see why you\u0027re adding the reset polarity)",
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9a19996_c4a655f2",
         "filename": "baseboard/hatch/baseboard.c",
         "patchSetId": 2
@@ -36,6 +76,24 @@
       "writtenOn": "2019-04-09T15:11:02Z",
       "side": 1,
       "message": "Not for this change, but I think this check should be changed to:\n1. Is battery present? If yes, continue with the reset.\n2. If not, then is this port the charging port?\n3. If not, continue with the reset.",
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9182b32e_b96d2e8a",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-10T17:48:10Z",
+      "side": 1,
+      "message": "Although this battery presence check is nice, I could see this leading to a recovery screen if you have a TCPC FW update for the PS8xxx TCPCs. Since in my testing, the PS8805 doesn\u0027t reload the new FW version until it\u0027s reset (which is what the driver currently uses to check if the update completed). Maybe it would end up being expected...\n\nAlthough, I think that may change in the future.",
+      "parentUuid": "70bce52d_cbed37c5",
       "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
