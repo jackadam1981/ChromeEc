@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7d0a818_88fdd2af",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-10T23:20:00Z",
+      "side": 1,
+      "message": "nit: superfluous whitespace",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 0
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a29ab7_ffdf38ba",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-10T23:20:00Z",
+      "side": 1,
+      "message": "blank line above?",
+      "range": {
+        "startLine": 747,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 30
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69fd7607_beb2f2f0",
+        "filename": "util/linux_ec_commands_h_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-10T23:20:00Z",
+      "side": 1,
+      "message": "maybe give a suggestion on the \u0027make\u0027 command to run, like presubmit_check.sh does? Same below.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eb50597_7844302e",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-10T23:20:00Z",
+      "side": 1,
+      "message": "could this go into a --help text or similar? and exit sanely if the args aren\u0027t provided",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b565f565_95965d8e",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-10T23:20:00Z",
+      "side": 1,
+      "message": "can you just inline this? e.g.:\n\npatch \"${ec_commands_file_out}\" \u003c\u003cEOF\n@@ -1,6 +1,11 @@\n-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.\n- * Use of this source code is governed by a BSD-style license that can be\n- * found in the LICENSE file.\n+/* SPDX-License-Identifier: GPL-2.0 */\n+/*\n+ * Host communication command constants for ChromeOS EC\n+ *\n+ * Copyright (C) 2012 Google, Inc\n+ *\n+ * NOTE: This file is auto-generated from ChromeOS EC Open Source code from\n+ * https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/ec_commands.h\n  */\n \n /* Host communication command constants for Chrome EC */\nEOF",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f2d60d_17e438ef",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-10T23:20:00Z",
+      "side": 1,
+      "message": "I\u0027ve never seen this tool, and it\u0027s not part of a standard gLinux install or CrOS SDK.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
