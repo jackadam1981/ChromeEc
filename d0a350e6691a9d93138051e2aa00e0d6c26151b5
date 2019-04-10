@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "957026b3_9c7a57d3",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-10T18:30:28Z",
+      "side": 0,
+      "message": "This looks like a workaround for b/78792296 originally applied Dru/Scarlet. Is it applicable to Kukui/Flapjack as well?\n\nIf the proposed patch is just \u0027loosening\u0027 the limit, aren\u0027t you basically saying the bug doesn\u0027t apply to Kukui? Then, why don\u0027t we simply increase BAT_LEVEL_PD_LIMIT? \"charge_get_percent() \u003e BAT_LEVEL_PD_LIMIT \u0026\u0026 ibat \u003c\u003d IBAT_PD_LIMIT\" is basically equivalent of \u0027soc \u003e 9x%\u0027, isn\u0027t it?",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 56
+      },
+      "revId": "d0a350e6691a9d93138051e2aa00e0d6c26151b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
