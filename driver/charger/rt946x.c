@@ -15,6 +15,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "task.h"
 #include "printf.h"
 #include "rt946x.h"
 #include "task.h"
@@ -72,7 +73,8 @@ enum rt946x_chg_stat {
 
 enum rt946x_adc_in_sel {
 	RT946X_ADC_VBUS_DIV5 = 1,
-	RT946X_ADC_VBUS_DIV2,
+	RT946X_ADC_VBUS_DIV2 = 2,
+	RT946X_ADC_IBAT = 9,
 };
 
 #if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
@@ -669,15 +671,18 @@ int charger_discharge_on_ac(int enable)
 	return rt946x_enable_hz(enable);
 }
 
-int charger_get_vbus_voltage(int port)
-{
-	int val;
-	static int vbus_mv;
-	int retries = 10;
 
-	/* Set VBUS as ADC input */
+#define ADC_READ_RETRIES_PER_MS 5
+static int rt946x_adc_read(enum rt946x_adc_in_sel sel, int timeout_ms, int *val)
+{
+	static struct mutex mtx;
+	int val_l, val_h;
+	int retries = timeout_ms / ADC_READ_RETRIES_PER_MS;
+
+	mutex_lock(&mtx);
+	/* Set ADC input */
 	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
-		RT946X_ADC_VBUS_DIV5 << RT946X_SHIFT_ADC_IN_SEL);
+			   sel << RT946X_SHIFT_ADC_IN_SEL);
 
 	/* Start ADC conversion */
 	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
@@ -685,29 +690,62 @@ int charger_get_vbus_voltage(int port)
 	/*
 	 * In practice, ADC conversion rarely takes more than 35ms.
 	 * However, according to the datasheet, ADC conversion may take
-	 * up to 200ms. But we can't wait for that long, otherwise
-	 * host command would time out. So here we set ADC timeout as 50ms.
-	 * If ADC times out, we just return the last read vbus_mv.
-	 *
-	 * TODO(chromium:820335): We may handle this more gracefully with
-	 * EC_RES_IN_PROGRESS.
+	 * up to 200ms.
 	 */
 	while (--retries) {
-		rt946x_read8(RT946X_REG_CHGSTAT, &val);
-		if (val & RT946X_MASK_ADC_STAT)
+		rt946x_read8(RT946X_REG_CHGSTAT, &val_l);
+		if (val_l & RT946X_MASK_ADC_STAT)
 			break;
-		msleep(5);
+		msleep(ADC_READ_RETRIES_PER_MS);
 	}
 
 	if (retries) {
 		/* Read measured results if ADC finishes in time. */
-		rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
-		rt946x_read8(RT946X_REG_ADCDATAH, &val);
-		vbus_mv |= (val << 8);
-		vbus_mv *= 25;
+		rt946x_read8(RT946X_REG_ADCDATAL, &val_l);
+		rt946x_read8(RT946X_REG_ADCDATAH, &val_h);
+		*val = val_l | (val_h << 8);
+		mutex_unlock(&mtx);
+		return EC_SUCCESS;
 	}
+	mutex_unlock(&mtx);
+
+	return EC_ERROR_TIMEOUT;
+}
+
+int charger_get_vbus_voltage(int port)
+{
+	int val;
+	static int vbus_mv;
+
+	 /* If ADC times out, we just return the last read vbus_mv. */
+	if (rt946x_adc_read(RT946X_ADC_VBUS_DIV5, 50, &val))
+		return vbus_mv;
+
+	vbus_mv = val * 25;
 
 	return vbus_mv;
+}
+
+int rt946x_get_ibat_current(void)
+{
+	static int ibat;
+	int val, ichg;
+
+	/* If read fails, just return the last read ibat. */
+	if (charger_get_current(&ichg))
+		return ibat;
+
+	 /* If ADC times out, we just return the last read ibat. */
+	if (rt946x_adc_read(RT946X_ADC_IBAT, 200, &val))
+		return ibat;
+
+	/* When Ichg >= 900mA, measurement range 0~5A. */
+	ibat = val * 50;
+	/* When Ichg < 900mA, measurement range 0~0.85A */
+	if (ichg < 900)
+		ibat = ibat * 536 / 1000;
+
+	return ibat;
 }
 
 /* Setup sourcing current to prevent overload */

@@ -550,6 +550,9 @@ int rt946x_cutoff_battery(void);
 /* Enable/Disable charge temination */
 int rt946x_enable_charge_termination(int en);
 
+/* Return IBAT current. */
+int rt946x_get_ibat_current(void);
+
 #ifdef CONFIG_CHARGER_MT6370
 
 /*
