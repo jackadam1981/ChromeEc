@@ -97,6 +97,24 @@
       "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b490df_05a54848",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-10T21:25:27Z",
+      "side": 1,
+      "message": "\u003e Although this battery presence check is nice, I could see this leading to a recovery screen if you have a TCPC FW update for the PS8xxx TCPCs. Since in my testing, the PS8805 doesn\u0027t reload the new FW version until it\u0027s reset (which is what the driver currently uses to check if the update completed). Maybe it would end up being expected...\n\u003e \n\nIsn\u0027t the firmware update skipped if TCPC port is actually the charging port? I thought we already had some logic to handle that case.",
+      "parentUuid": "9182b32e_b96d2e8a",
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
