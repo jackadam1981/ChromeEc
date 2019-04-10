@@ -93,6 +93,30 @@
       "revId": "ad489685bc6c8495378f51fd4acf71c35ecfa955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4588a330_117b68a6",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-10T10:08:51Z",
+      "side": 1,
+      "message": "Done (I have had repo sync my code base)",
+      "parentUuid": "1be1bdd5_7e5397c9",
+      "range": {
+        "startLine": 1231,
+        "startChar": 47,
+        "endLine": 1231,
+        "endChar": 55
+      },
+      "revId": "ad489685bc6c8495378f51fd4acf71c35ecfa955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
