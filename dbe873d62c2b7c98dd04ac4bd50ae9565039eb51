@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "236fd6b9_7c79aeaf",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2019-04-10T15:35:29Z",
+      "side": 1,
+      "message": "Could have used 16 bits so we have 64k rollover. 256 is ok too. Up to you.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "dbe873d62c2b7c98dd04ac4bd50ae9565039eb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
