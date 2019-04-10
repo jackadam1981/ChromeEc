@@ -64,8 +64,6 @@ default_int_handler:
 	cmpl $LAPIC_SPURIOUS_INT_VECTOR, %eax
 	je 1f				# No EOI for LAPIC_SPURIOUS_INT_VECTOR
 
-	movl %eax, IOAPIC_EOI_REG	# Indicate completion of servicing the
-					# interrupt to IOAPIC first
 	movl $0x00, LAPIC_EOI_REG	# Indicate completion of servicing the
 					# interrupt to LAPIC next
 	1:
