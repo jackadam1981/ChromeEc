@@ -121,6 +121,10 @@ int board_cut_off_battery(void)
 
 	return EC_SUCCESS;
 }
+enum battery_present battery_is_present(void)
+{
+	return BP_YES;
+}
 
 enum battery_disconnect_state battery_get_disconnect_state(void)
 {
