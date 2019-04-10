@@ -99,6 +99,24 @@
       "revId": "971332cc926132418bcb33e52015c3427a980bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27596e7_b03b1ef7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-10T13:41:38Z",
+      "side": 1,
+      "message": "Arcada does not have a physical interrupt line from the magnetometer to the ISH. The only connection is the i2c bus",
+      "parentUuid": "71a26990_078632bc",
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
