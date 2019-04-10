@@ -430,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "d9e2c931_3be983c3",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-10T13:42:54Z",
+      "side": 1,
+      "message": "crbug.com is correct. Once you file it, I should be able to edit any metadata fields at need to be updated, just try to get it as close as you can",
+      "parentUuid": "877be564_2bafa35f",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "73b4f825506d6bbd86bce4abeaa3ffe32d90d0b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e24afc39_3b2f1301",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 4
