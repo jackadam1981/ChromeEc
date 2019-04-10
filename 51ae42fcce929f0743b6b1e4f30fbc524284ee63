@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e1680cf_7d702b63",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-04-10T20:11:42Z",
+      "side": 1,
+      "message": "Throughout main(), any value besides STM32_SUCCESS is considered a failure.  Elsewhere, including anything using IS_STM32_ERROR(), only negative values are considered errors.  Any reason for the difference?",
+      "revId": "51ae42fcce929f0743b6b1e4f30fbc524284ee63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
