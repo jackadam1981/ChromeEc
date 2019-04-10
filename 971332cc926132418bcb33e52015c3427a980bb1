@@ -117,6 +117,24 @@
       "revId": "971332cc926132418bcb33e52015c3427a980bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86881110_0355cfbe",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-10T21:29:42Z",
+      "side": 1,
+      "message": "Uploaded another patch. Jett and I tried to debug this and it doesn\u0027t seem to make sense. If we don\u0027t read the values from the irq_handler we can\u0027t seem to get data through. I think at this point where we\u0027re padding CTS tests on the magnetometer and we\u0027re seeing it on Android apps we should commit this and improve later.",
+      "parentUuid": "a27596e7_b03b1ef7",
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
