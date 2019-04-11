@@ -2179,6 +2179,12 @@ int charge_is_consuming_full_input_current(void)
 	return chg_pct > 2 && chg_pct < 95;
 }
 
+int charge_is_voltage_low(void)
+{
+	return !(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
+		curr.batt.voltage < batt_info->voltage_min;
+}
+
 #ifdef CONFIG_CHARGER_OTG
 int charge_set_output_current_limit(int ma, int mv)
 {

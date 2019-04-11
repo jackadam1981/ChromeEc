@@ -3772,13 +3772,40 @@ void pd_task(void *u)
 			/* Wait for source cap expired only if we are enabled */
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_is_enabled(port)) {
+#ifdef CONFIG_CHARGER
+				/*
+				 * If the battery is not providing the minimum
+				 * voltage it should be, refrain from starting
+				 * the reset timers as a hard reset could brown
+				 * out the board.
+				 */
+				if (charge_is_voltage_low())
+					pd[port].flags |=
+						    PD_FLAGS_SNK_WAITING_BATT;
+				else
+					pd[port].flags &=
+						    ~PD_FLAGS_SNK_WAITING_BATT;
+#endif
+
+				if (pd[port].flags &
+						    PD_FLAGS_SNK_WAITING_BATT) {
+#ifdef CONFIG_CHARGE_MANAGER
+					/*
+					 * Configure this port as dedicated for
+					 * now, so it won't be de-selected by
+					 * the charge manager leaving safe mode.
+					 */
+					charge_manager_update_dualrole(port,
+								CAP_DEDICATED);
+#endif
 				/*
 				 * If VBUS has never been low, and we timeout
 				 * waiting for source cap, try a soft reset
 				 * first, in case we were already in a stable
 				 * contract before this boot.
 				 */
-				if (pd[port].flags & PD_FLAGS_VBUS_NEVER_LOW)
+				} else if (pd[port].flags &
+							PD_FLAGS_VBUS_NEVER_LOW)
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_SINK_WAIT_CAP,
@@ -3811,6 +3838,21 @@ void pd_task(void *u)
 					typec_curr = 0;
 #endif
 			}
+
+#if defined(CONFIG_CHARGER)
+			if (pd[port].flags & PD_FLAGS_SNK_WAITING_BATT &&
+			    !charge_is_voltage_low()) {
+				/*
+				 * Battery is ready to support the board, so
+				 * start the soft reset timer.
+				 */
+				set_state_timeout(port,
+						  get_time().val +
+						  PD_T_SINK_WAIT_CAP,
+						  PD_STATE_SOFT_RESET);
+				pd[port].flags &= ~PD_FLAGS_SNK_WAITING_BATT;
+			}
+#endif
 
 #if defined(CONFIG_CHARGE_MANAGER)
 			timeout = PD_T_SINK_ADJ - PD_T_DEBOUNCE;
