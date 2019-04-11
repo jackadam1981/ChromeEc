@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "788c816f_e626da92",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-11T21:02:45Z",
+      "side": 1,
+      "message": "Use the new IS_ENABLED macro if possible (https://chromium.googlesource.com/chromiumos/platform/ec/+/46e28e28c2973db09dd9a7a2c14db3cd2609905a)",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 6
+      },
+      "revId": "d4691652486b4dbb84f86441ac029d7c19ac742c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
