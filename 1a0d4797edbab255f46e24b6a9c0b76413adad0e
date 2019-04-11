@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9c914c_ee51a6b1",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-11T17:43:08Z",
+      "side": 1,
+      "message": "Can you explain why this was move up here?",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 33
+      },
+      "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
