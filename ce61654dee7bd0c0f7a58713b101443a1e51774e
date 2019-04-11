@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51ce5c51_63d3c294",
+        "filename": "board/bloog/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-11T16:08:04Z",
+      "side": 1,
+      "message": "We usually keep the \"_L\" extension to note that the signal is active low.  Otherwise, good clear naming",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 17
+      },
+      "revId": "ce61654dee7bd0c0f7a58713b101443a1e51774e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
