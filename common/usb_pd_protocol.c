@@ -2676,6 +2676,9 @@ void pd_task(void *u)
 	int caps_count = 0, hard_reset_sent = 0;
 	int snk_cap_count = 0;
 	int evt;
+#ifdef CONFIG_USB_PD_SNK_HARD_RESET_MIN_BATT
+	int batt_soc;
+#endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	/*
@@ -3753,9 +3756,34 @@ void pd_task(void *u)
 #endif
 			break;
 		case PD_STATE_SNK_DISCOVERY:
+#ifdef CONFIG_USB_PD_SNK_HARD_RESET_MIN_BATT
+#ifndef CONFIG_CHARGER
+			batt_soc = board_get_battery_soc();
+#else
+			batt_soc = charge_get_percent();
+#endif /* CONFIG_CHARGER */
+
+			/*
+			 * Start timers if we are enabled and have sufficient
+			 * battery to withstand Vbus loss.  Check this every
+			 * cycle until a timer begins.
+			 */
+			if (pd[port].timeout == 0 &&
+			    pd_comm_is_enabled(port)) {
+				if (batt_soc
+				    < CONFIG_USB_PD_SNK_HARD_RESET_MIN_BATT) {
+					/*
+					 * Treat chargers as dedicated until our
+					 * battery is sufficiently charged
+					 */
+					charge_manager_update_dualrole(port,
+								CAP_DEDICATED);
+				} else {
+#else /* CONFIG_USB_PD_SNK_HARD_RESET_MIN_BATT */
 			/* Wait for source cap expired only if we are enabled */
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_is_enabled(port)) {
+#endif
 				/*
 				 * If VBUS has never been low, and we timeout
 				 * waiting for source cap, try a soft reset
@@ -3795,6 +3823,9 @@ void pd_task(void *u)
 					typec_curr = 0;
 #endif
 			}
+#ifdef CONFIG_USB_PD_SNK_HARD_RESET_MIN_BATT
+			}
+#endif
 
 #if defined(CONFIG_CHARGE_MANAGER)
 			timeout = PD_T_SINK_ADJ - PD_T_DEBOUNCE;

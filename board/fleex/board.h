@@ -20,6 +20,11 @@
 #define CONFIG_LED_COMMON
 #define OCTOPUS_BATT_FUEL_LOW_LED 10
 
+/* Special case battery treatment to avoid brown outs */
+#undef CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC
+#define CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC 2
+#define CONFIG_USB_PD_SNK_HARD_RESET_MIN_BATT 2
+
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
