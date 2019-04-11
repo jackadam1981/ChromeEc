@@ -135,6 +135,48 @@
       "revId": "971332cc926132418bcb33e52015c3427a980bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c53740e_edd16a99",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-11T21:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba9f781a_500cdbc7",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 30
+      },
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "359d2ab5_65f7a9a6",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-11T21:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86881110_0355cfbe",
+      "revId": "971332cc926132418bcb33e52015c3427a980bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
