@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7faaff75_d4cc95be",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-11T17:43:47Z",
+      "side": 1,
+      "message": "Kukui moved it up next to usb_mux_set. Does it matter?",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 33
+      },
+      "revId": "90f5c704de0647b335cae7f733b025d4b58ff807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
