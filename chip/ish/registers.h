@@ -51,6 +51,7 @@ enum ish_i2c_port {
 /* HW interrupt pins mapped to IOAPIC, from I/O sources */
 #define ISH_I2C0_IRQ               0
 #define ISH_I2C1_IRQ               1
+#define ISH_FABRIC_IRQ             5
 #define ISH_I2C2_IRQ               40
 #define ISH_WDT_IRQ                6
 #define ISH_GPIO_IRQ               7
@@ -115,6 +116,7 @@ enum ish_i2c_port {
 #define ISH_D3_FALL_VEC            IRQ_TO_VEC(ISH_D3_FALL_IRQ)
 #define ISH_BME_RISE_VEC           IRQ_TO_VEC(ISH_BME_RISE_IRQ)
 #define ISH_BME_FALL_VEC           IRQ_TO_VEC(ISH_BME_FALL_IRQ)
+#define ISH_FABRIC_VEC             IRQ_TO_VEC(ISH_FABRIC_IRQ)
 
 #ifdef CONFIG_ISH_UART_0
 #define ISH_DEBUG_UART       		UART_PORT_0
@@ -239,6 +241,8 @@ enum ish_i2c_port {
 #define PMU_MASK_EVENT_BIT_SPI		(0x1 << 22)
 #define PMU_MASK_EVENT_BIT_UART		(0x1 << 23)
 #define PMU_MASK_EVENT_BIT_ALL		(0xffffffff)
+
+#define PMU_MASK_EVENT2		REG32(ISH_PMU_BASE + 0x4c)
 
 #define PMU_RF_ROM_PWR_CTRL	REG32(ISH_PMU_BASE + 0x30)
 

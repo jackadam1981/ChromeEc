@@ -34,6 +34,8 @@ int system_is_reboot_warm(void)
 
 void system_pre_init(void)
 {
+	task_enable_irq(ISH_FABRIC_IRQ);
+
 #ifdef CONFIG_LOW_POWER_IDLE
 	ish_pm_init();
 #endif
@@ -138,3 +140,17 @@ uint32_t system_get_lfw_address(void)
 void system_set_image_copy(enum system_image_copy_t copy)
 {
 }
+
+static void fabric_isr(void)
+{
+	uint32_t reg = 0x700000 + 0x7800 + 0x28;
+	uint32_t data;
+
+	data = REG32(reg);
+
+	if ( data & (1 << 29 | 1 << 28 | 1 << 24) ) {
+		REG32(reg) = data;
+	}
+}
+
+DECLARE_IRQ(ISH_FABRIC_IRQ, fabric_isr);
