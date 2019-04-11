@@ -133,6 +133,24 @@
       "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78005139_fc7a3382",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-11T17:04:02Z",
+      "side": 1,
+      "message": "Here it is for all TCPCs:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/e967ca090dbe414b2c5828b05f13d3554a978422/common/usb_pd_protocol.c#5310",
+      "parentUuid": "9091798c_10f2ed1a",
+      "revId": "2ad061f1690e3fac041c71c1f3dd0120e2a3d648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
