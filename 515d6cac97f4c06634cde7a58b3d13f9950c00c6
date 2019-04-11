@@ -22,6 +22,30 @@
       "revId": "515d6cac97f4c06634cde7a58b3d13f9950c00c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "865fdf1e_4704c3e9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-11T17:23:55Z",
+      "side": 1,
+      "message": "checkpatching cros_ec_commands.h is fine with it.",
+      "parentUuid": "eb2a04be_52da67e9",
+      "range": {
+        "startLine": 57,
+        "startChar": 40,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "515d6cac97f4c06634cde7a58b3d13f9950c00c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
