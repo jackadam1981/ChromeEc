@@ -82,11 +82,19 @@ enum tcs3400_mode {
 #endif
 
 #define TCS3400_DRV_DATA(_s) ((struct tcs3400_drv_data_t *)(_s)->drv_data)
+#define TCS3400_RGB_DRV_DATA(_s) \
+	((struct tcs3400_rgb_drv_data_t *)(_s)->drv_data)
 
 struct als_calibration_t {
 	int16_t scale;
 	int16_t uscale;
 	int16_t offset;
+};
+
+struct rgb_als_calibration_t {
+	int16_t scale;
+	int16_t uscale;
+	int16_t offset[3];
 };
 
 struct tcs3400_drv_data_t {
@@ -95,7 +103,14 @@ struct tcs3400_drv_data_t {
 	struct als_calibration_t als_cal;
 };
 
+struct tcs3400_rgb_drv_data_t {
+	int rate;
+	int last_value[3];
+	struct rgb_als_calibration_t rgb_cal;
+};
+
 extern const struct accelgyro_drv tcs3400_drv;
+extern const struct accelgyro_drv tcs3400_rgb_drv;
 
 void tcs3400_interrupt(enum gpio_signal signal);
 #endif /* __CROS_EC_ALS_TCS3400_H */
