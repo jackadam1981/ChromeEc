@@ -82,8 +82,10 @@ enum tcs3400_mode {
 #endif
 
 #define TCS3400_DRV_DATA(_s) ((struct tcs3400_drv_data_t *)(_s)->drv_data)
+#define TCS3400_RGB_DRV_DATA(_s) \
+	((struct tcs3400_rgb_drv_data_t *)(_s)->drv_data)
 
-/* Calibration data */
+/* ALS Calibration Data */
 struct als_calibration_t {
 	/*
 	 * Scale, uscale, and offset are used to correct the raw 16 bit ALS
@@ -96,14 +98,22 @@ struct als_calibration_t {
 	int16_t offset;
 };
 
-/* Private tcs3400 driver data */
+/* Private tcs3400 als driver data */
 struct tcs3400_drv_data_t {
-	int rate;        /* holds current sensor rate */
-	int last_value;  /* holds last als clear channel value */
-	struct als_calibration_t als_cal;	/* calibration data */
+	int rate;          /* holds current sensor rate */
+	int last_value;    /* holds last als clear channel value */
+	struct als_calibration_t als_cal;    /* calibration data */
+};
+
+/* Private tcs3400 rgb driver data */
+struct tcs3400_rgb_drv_data_t {
+	int rate;          /* holds current sensor rate */
+	int last_value[3]; /* holds last RGB values */
+	struct als_calibration_t als_cal[3]; /* calibration data */
 };
 
 extern const struct accelgyro_drv tcs3400_drv;
+extern const struct accelgyro_drv tcs3400_rgb_drv;
 
 void tcs3400_interrupt(enum gpio_signal signal);
 #endif /* __CROS_EC_ALS_TCS3400_H */
