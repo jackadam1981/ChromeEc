@@ -46,6 +46,30 @@
       "revId": "dbe873d62c2b7c98dd04ac4bd50ae9565039eb51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36a7285_8cacebee",
+        "filename": "chip/ish/host_command_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-11T16:08:51Z",
+      "side": 1,
+      "message": "The buffer sizes on both ISH and EC are only 8-32 deep, so 256 should be enough to address a saturated buffer on either side.\n\nI would rather leave the last byte reserved for anything we need in the future.",
+      "parentUuid": "ece3a30e_8ce5f34a",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "dbe873d62c2b7c98dd04ac4bd50ae9565039eb51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
