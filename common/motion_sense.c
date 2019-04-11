@@ -22,9 +22,10 @@
 #include "motion_lid.h"
 #include "power.h"
 #include "queue.h"
+#include "system.h"
 #include "tablet_mode.h"
-#include "timer.h"
 #include "task.h"
+#include "timer.h"
 #include "util.h"
 
 /* Console output macros */
@@ -1389,6 +1390,16 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		case 0:
 		case 1:
 			fifo_int_enabled = in->fifo_int_enable.enable;
+			/*
+			 * When fifo is on, we should not go into a lower power
+			 * mode which would affect how quickly we could take
+			 * timestamps after receiving a HW interrupt.
+			 */
+			if (fifo_int_enabled)
+				disable_sleep(SLEEP_MASK_FIFO_ACTIVE);
+			else
+				enable_sleep(SLEEP_MASK_FIFO_ACTIVE);
+
 			/* fallthrough */
 		case EC_MOTION_SENSE_NO_VALUE:
 			out->fifo_int_enable.ret = fifo_int_enabled;

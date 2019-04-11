@@ -440,6 +440,7 @@ enum {
 	SLEEP_MASK_ADC        = BIT(13), /* ADC conversion ongoing */
 	SLEEP_MASK_EMMC       = BIT(14), /* eMMC emulation ongoing */
 	SLEEP_MASK_FORCE_NO_DSLEEP    = BIT(15), /* Force disable. */
+	SLEEP_MASK_FIFO_ACTIVE = BIT(16), /* Sensor FIFO is on-going. */
 
 
 	/*
