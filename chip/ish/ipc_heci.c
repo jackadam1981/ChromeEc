@@ -51,27 +51,6 @@
 #define MNG_SYNC_FW_CLOCK               5
 #define MNG_ILLEGAL_CMD                 0xFF
 
-/* Peripheral Interrupt Satus Register */
-#define IPC_PISR_HOST2ISH_BIT		BIT(0)
-#define IPC_PISR_PMC2ISH_BIT		BIT(1)
-#define IPC_PISR_CSME2ISH_BIT		BIT(2)
-
-/* Peripheral Interrupt Mask Register */
-#define IPC_PIMR_HOST2ISH_BIT		BIT(0)
-#define IPC_PIMR_PMC2ISH_BIT		BIT(1)
-#define IPC_PIMR_CSME2ISH_BIT		BIT(2)
-
-#define IPC_PIMR_ISH2HOST_CLR_BIT	BIT(11)
-#define IPC_PIMR_ISH2PMC_CLR_BIT	BIT(12)
-#define IPC_PIMR_ISH2CSME_CLR_BIT	BIT(13)
-
-/* Peripheral Interrupt DB(DoorBell) Clear Status Register */
-#define IPC_DB_CLR_STS_ISH2HOST_BIT	BIT(0)
-#define IPC_DB_CLR_STS_ISH2ISP_BIT	BIT(2)
-#define IPC_DB_CLR_STS_ISH2AUDIO_BIT	BIT(3)
-#define IPC_DB_CLR_STS_ISH2PMC_BIT	BIT(8)
-#define IPC_DB_CLR_STS_ISH2CSME_BIT	BIT(16)
-
 /* Doorbell */
 #define IPC_DB_MSG_LENGTH_FIELD		0x3FF
 #define IPC_DB_MSG_LENGTH_SHIFT		0
@@ -169,7 +148,8 @@ struct ipc_if_ctx {
 	struct mutex write_lock;
 
 	struct queue tx_queue;
-	uint8_t is_tx_ipc_busy;
+	/* Used to signal state between interrupt and task context */
+	volatile uint32_t is_tx_ipc_busy;
 	uint8_t initialized;
 };
 
@@ -216,12 +196,6 @@ static inline void ipc_enable_pimr_clearing_interrupt(
 	REG32(IPC_PIMR) |= ctx->pimr_2host_clearing_bit;
 }
 
-static inline void ipc_disable_pimr_clearing_interrupt(
-						const struct ipc_if_ctx *ctx)
-{
-	REG32(IPC_PIMR) &= ~ctx->pimr_2host_clearing_bit;
-}
-
 static void write_payload_and_ring_drbl(const struct ipc_if_ctx *ctx,
 					uint32_t drbl,
 					const uint8_t *payload,
@@ -259,7 +233,6 @@ static int ipc_write_raw(struct ipc_if_ctx *ctx, uint32_t drbl,
 
 	mutex_lock(&ctx->write_lock);
 
-	ipc_disable_pimr_clearing_interrupt(ctx);
 	if (ctx->is_tx_ipc_busy) {
 		space = queue_space(q);
 		if (space) {
@@ -268,17 +241,28 @@ static int ipc_write_raw(struct ipc_if_ctx *ctx, uint32_t drbl,
 			msg->drbl = drbl;
 			memcpy(msg->payload, payload, payload_size);
 			queue_advance_tail(q, 1);
+
+			/*
+			 * The clearing interrupt can fire between when we
+			 * checked for busy and now. Ensure that it is still
+			 * processing the queue otherwise, we need to send
+			 * the data we just pushed on the queue.
+			 */
+			if (!ctx->is_tx_ipc_busy && queue_count(q) == 1) {
+				/* Remove our data and send it below */
+				queue_advance_head(q, 1);
+			} else {
+				/* Let the interrupt consume queue */
+				goto write_unlock;
+			}
 		} else {
 			CPRINTS("tx queue is full\n");
 			res = -IPC_ERR_TX_QUEUE_FULL;
+			goto write_unlock;
 		}
-
-		ipc_enable_pimr_clearing_interrupt(ctx);
-		goto write_unlock;
 	}
-	ctx->is_tx_ipc_busy = 1;
-	ipc_enable_pimr_clearing_interrupt(ctx);
 
+	ctx->is_tx_ipc_busy = 1;
 	write_payload_and_ring_drbl(ctx, drbl, payload, payload_size);
 
 write_unlock:
