@@ -401,6 +401,29 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 	.offset = 0,
 };
 
+static struct tcs3400_drv_data_t g_tcs3400_data = {
+	.als_cal.scale = 1,
+	.als_cal.uscale = 0,
+	.als_cal.offset = 0,
+};
+
+static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
+	.device_scale = 1,
+	.device_uscale = 0,
+	.rgb_cal[X] = {
+	  .scale = TCS3400_SCALE(1),
+	  .offset = 0,
+	},
+	.rgb_cal[Y] = {
+	  .scale = TCS3400_SCALE(1),
+	  .offset = 0,
+	},
+	.rgb_cal[Z] = {
+	  .scale = TCS3400_SCALE(1),
+	  .offset = 0,
+	},
+};
+
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t lid_standard_ref = {
 	{ 0,  FLOAT_TO_FP(-1), 0},

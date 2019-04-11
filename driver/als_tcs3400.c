@@ -61,15 +61,28 @@ unlock:
 	return ret;
 }
 
+static int tcs3400_rgb_read(const struct motion_sensor_t *s, intv3_t v)
+{
+	return EC_SUCCESS;
+}
+
 static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 {
+	/*
+	 * Rule says RGB sensor is right after ALS sensor, and this
+	 * routine will only get called from ALS sensor driver.
+	 */
+	struct motion_sensor_t *rgb_s = s + 1;
 	struct tcs3400_drv_data_t *drv_data = TCS3400_DRV_DATA(s);
+	struct tcs3400_rgb_drv_data_t *rgb_drv_data =
+			TCS3400_RGB_DRV_DATA(rgb_s);
 	struct ec_response_motion_sensor_data vector;
 	uint8_t light_data[TCS_RGBC_DATA_SIZE];
 	int *v = s->raw_xyz;
 	int retries = 20; /* 400 ms max */
+	int rgb_data[3];
 	int data = 0;
-	int ret;
+	int i, ret;
 
 	/* Make sure data is valid */
 	do {
@@ -97,6 +110,7 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	data = data * drv_data->als_cal.scale +
 			data * drv_data->als_cal.uscale / 10000;
 
+	/* Correct negative values to zero */
 	if (data < 0) {
 		CPRINTS("Negative clear val 0x%x set to 0", data);
 		data = 0;
@@ -118,6 +132,57 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 #endif
 	}
 
+	rgb_data[X] = ((light_data[3] << 8) | light_data[2]);
+	rgb_data[X] += rgb_drv_data->rgb_cal[X].offset;
+	rgb_data[X] *= rgb_drv_data->rgb_cal[X].scale / BIT(15);
+	rgb_data[X] = rgb_data[X] * rgb_drv_data->device_scale +
+			rgb_data[X] * rgb_drv_data->device_uscale / 10000;
+	rgb_data[Y] = ((light_data[5] << 8) | light_data[4]);
+	rgb_data[Y] += rgb_drv_data->rgb_cal[Y].offset;
+	rgb_data[Y] *= rgb_drv_data->rgb_cal[Y].scale / BIT(15);
+	rgb_data[Y] = rgb_data[Y] * rgb_drv_data->device_scale +
+			rgb_data[Y] * rgb_drv_data->device_uscale / 10000;
+	rgb_data[Z] = ((light_data[7] << 8) | light_data[6]);
+	rgb_data[Z] += rgb_drv_data->rgb_cal[Z].offset;
+	rgb_data[Z] *= rgb_drv_data->rgb_cal[Z].scale / BIT(15);
+	rgb_data[Z] = rgb_data[Z] * rgb_drv_data->device_scale +
+			rgb_data[Z] * rgb_drv_data->device_uscale / 10000;
+
+	/* Correct any negative values to zero */
+	for (i = 0; i < 3; i++) {
+		if (rgb_data[i] < 0) {
+			CPRINTS("Negative rgb channel #%d val 0x%x set to 0",
+				i, rgb_data[i]);
+			rgb_data[i] = 0;
+		}
+	}
+
+	/* If anything changed, transfer RGB data */
+	if ((rgb_drv_data->last_value[X] != rgb_data[X]) ||
+		(rgb_drv_data->last_value[Y] != rgb_data[Y]) ||
+		(rgb_drv_data->last_value[Z] != rgb_data[Z])) {
+		for (i = 0; i < 3; i++)
+			rgb_drv_data->last_value[i] = rgb_data[i];
+		v = rgb_s->raw_xyz;
+		vector.flags = 0;
+#ifdef CONFIG_ACCEL_SPOOF_MODE
+		if (rgb_s->in_spoof_mode)
+			v = rgb_s->spoof_xyz;
+#endif  /* defined(CONFIG_ACCEL_SPOOF_MODE) */
+		vector.data[X] = v[X] = rgb_data[X];
+		vector.data[Y] = v[Y] = rgb_data[Y];
+		vector.data[Z] = v[Z] = rgb_data[Z];
+		vector.sensor_num = rgb_s - motion_sensors;
+
+		CPRINTS("Sending RGB channel data (0x%x 0x%x 0x%x)",
+				v[X], v[Y], v[Z]);
+
+		motion_sense_fifo_add_data(&vector, rgb_s, 3, last_ts);
+	} else {
+		CPRINTS("RGB channel unchanged (0x%x 0x%x 0x%x)",
+			rgb_data[X], rgb_data[Y], rgb_data[Z]);
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -130,7 +195,7 @@ void tcs3400_interrupt(enum gpio_signal signal)
 		       CONFIG_ALS_TCS3400_INT_EVENT, 0);
 }
 
-/**
+/*
  * tcs3400_irq_handler - bottom half of the interrupt stack.
  * Ran from the motion_sense task, finds the events that raised the interrupt,
  * and posts those events via motion_sense_fifo_add_data()..
@@ -170,6 +235,77 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 unlock:
 	mutex_unlock(s->mutex);
 	return ret;
+}
+
+static int tcs3400_rgb_get_range(const struct motion_sensor_t *s)
+{
+	/* Currently, calibration info is same for all channels */
+	return (TCS3400_RGB_DRV_DATA(s)->device_scale << 16) |
+			TCS3400_RGB_DRV_DATA(s)->device_uscale;
+}
+
+static int tcs3400_rgb_set_range(const struct motion_sensor_t *s,
+				 int range,
+				 int rnd)
+{
+	TCS3400_RGB_DRV_DATA(s)->device_scale = range >> 16;
+	TCS3400_RGB_DRV_DATA(s)->device_uscale = range & 0xffff;
+	return EC_SUCCESS;
+}
+
+static int tcs3400_rgb_get_scale(const struct motion_sensor_t *s,
+				 uint16_t *scale,
+				 int16_t *temp)
+{
+	scale[X] = TCS3400_RGB_DRV_DATA(s)->rgb_cal[X].scale;
+	scale[Y] = TCS3400_RGB_DRV_DATA(s)->rgb_cal[Y].scale;
+	scale[Z] = TCS3400_RGB_DRV_DATA(s)->rgb_cal[Z].scale;
+	*temp = EC_MOTION_SENSE_INVALID_CALIB_TEMP;
+	return EC_SUCCESS;
+}
+
+static int tcs3400_rgb_set_scale(const struct motion_sensor_t *s,
+				 const uint16_t *scale,
+				 int16_t temp)
+{
+	TCS3400_RGB_DRV_DATA(s)->rgb_cal[X].scale = scale[X];
+	TCS3400_RGB_DRV_DATA(s)->rgb_cal[Y].scale = scale[Y];
+	TCS3400_RGB_DRV_DATA(s)->rgb_cal[Z].scale = scale[Z];
+	return EC_SUCCESS;
+}
+
+static int tcs3400_rgb_get_offset(const struct motion_sensor_t *s,
+				  int16_t *offset,
+				  int16_t *temp)
+{
+	offset[X] = TCS3400_RGB_DRV_DATA(s)->rgb_cal[X].offset;
+	offset[Y] = TCS3400_RGB_DRV_DATA(s)->rgb_cal[Y].offset;
+	offset[Z] = TCS3400_RGB_DRV_DATA(s)->rgb_cal[Z].offset;
+	*temp = EC_MOTION_SENSE_INVALID_CALIB_TEMP;
+	return EC_SUCCESS;
+}
+
+static int tcs3400_rgb_set_offset(const struct motion_sensor_t *s,
+				  const int16_t *offset,
+				  int16_t temp)
+{
+	TCS3400_RGB_DRV_DATA(s)->rgb_cal[X].offset = offset[X];
+	TCS3400_RGB_DRV_DATA(s)->rgb_cal[Y].offset = offset[Y];
+	TCS3400_RGB_DRV_DATA(s)->rgb_cal[Z].offset = offset[Z];
+	return EC_SUCCESS;
+}
+
+static int tcs3400_rgb_get_data_rate(const struct motion_sensor_t *s)
+{
+	return TCS3400_RGB_DRV_DATA(s)->rate;
+}
+
+static int tcs3400_rgb_set_data_rate(const struct motion_sensor_t *s,
+				     int rate,
+				     int rnd)
+{
+	TCS3400_RGB_DRV_DATA(s)->rate = rate;
+	return EC_SUCCESS;
 }
 
 static int tcs3400_get_range(const struct motion_sensor_t *s)
@@ -250,6 +386,12 @@ unlock:
 /**
  * Initialise TCS3400 light sensor.
  */
+static int tcs3400_rgb_init(const struct motion_sensor_t *s)
+{
+	CPRINTS();
+	return EC_SUCCESS;
+}
+
 static int tcs3400_init(const struct motion_sensor_t *s)
 {
 	/*
@@ -311,4 +453,17 @@ const struct accelgyro_drv tcs3400_drv = {
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = tcs3400_irq_handler,
 #endif
+};
+
+const struct accelgyro_drv tcs3400_rgb_drv = {
+	.init = tcs3400_rgb_init,
+	.read = tcs3400_rgb_read,
+	.set_range = tcs3400_rgb_set_range,
+	.get_range = tcs3400_rgb_get_range,
+	.set_offset = tcs3400_rgb_set_offset,
+	.get_offset = tcs3400_rgb_get_offset,
+	.set_scale = tcs3400_rgb_set_scale,
+	.get_scale = tcs3400_rgb_get_scale,
+	.set_data_rate = tcs3400_rgb_set_data_rate,
+	.get_data_rate = tcs3400_rgb_get_data_rate,
 };
