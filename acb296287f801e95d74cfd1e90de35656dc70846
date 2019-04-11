@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6858242c_d658c427",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-11T01:23:58Z",
+      "side": 1,
+      "message": "Do we have the BASE_ACCEL and BASE_GYRO for leona? If not, please add some code to switch it.",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 3
+      },
+      "revId": "acb296287f801e95d74cfd1e90de35656dc70846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
