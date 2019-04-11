@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9eba9d13_72c57af2",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-11T10:54:46Z",
+      "side": 1,
+      "message": "@yllin:\nWe probably don\u0027t need to remove all of these commands, please check if there\u0027s anything you want to keep.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 25
+      },
+      "revId": "3a5f752055e46af9ce08af9ed6a979e4f6652075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
