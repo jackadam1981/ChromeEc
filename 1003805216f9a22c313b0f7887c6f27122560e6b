@@ -281,6 +281,30 @@
       "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f0af22_9f500afe",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-11T17:49:53Z",
+      "side": 1,
+      "message": "Ack, didn\u0027t notice the CQ-DEPEND.",
+      "parentUuid": "21fb8ab7_81f2fa36",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "1003805216f9a22c313b0f7887c6f27122560e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

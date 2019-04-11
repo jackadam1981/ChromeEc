@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b7433fd_935827b0",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-11T17:49:53Z",
+      "side": 1,
+      "message": "I feel like these long variable names are only hurting readability. Can we just have \u0027in\u0027, \u0027out\u0027, and \u0027out_tmp\u0027 (or similar)? That way the important aspects are the focus, and not \u0027ec_commands_file_*\u0027 (which is obvious, because that\u0027s all this script is).",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "e061be492b7813be8c650d4d8c53d07de52e0f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301b4b46_ef50f908",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-11T17:49:53Z",
+      "side": 1,
+      "message": "-ne",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "e061be492b7813be8c650d4d8c53d07de52e0f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0601e4a9_bc82e404",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-11T17:49:53Z",
+      "side": 1,
+      "message": "you\u0027re repeating this phrase at line 40. variable? You also would want the \u0027mkdir -p\u0027 *before* you start \u0027mktemp\u0027ing in that directory.",
+      "range": {
+        "startLine": 30,
+        "startChar": 34,
+        "endLine": 30,
+        "endChar": 72
+      },
+      "revId": "e061be492b7813be8c650d4d8c53d07de52e0f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711eab5e_e8a6763e",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-11T17:49:53Z",
+      "side": 1,
+      "message": "Is the SPDX conversion queued anywhere? linux-next still shows the old header. Or are you just targeting this for the \"eventual future\"?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "e061be492b7813be8c650d4d8c53d07de52e0f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da1cd78_5187623d",
+        "filename": "util/make_linux_ec_commands_h.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-11T17:49:53Z",
+      "side": 1,
+      "message": "I assume this is a future change you expect to put into the upstream header. But are you intending to remove this, which is already upstream?\n\n * The ChromeOS EC multi function device is used to mux all the requests\n * to the EC device for its multiple features: keyboard controller,\n * battery charging and regulator control, firmware update.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 91
+      },
+      "revId": "e061be492b7813be8c650d4d8c53d07de52e0f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
