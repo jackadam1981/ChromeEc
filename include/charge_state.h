@@ -107,6 +107,16 @@ int charge_get_display_charge(void);
 int charge_is_consuming_full_input_current(void);
 
 /**
+ * Check if battery is providing the minimum voltage configured for it
+ *
+ * This returns true if the battery voltage is valid and below the voltage_min
+ * value set in the battery info.
+ *
+ * @return Battery is below minimum voltage
+ */
+int charge_is_voltage_low(void);
+
+/**
  * Return non-zero if discharging and battery so low we should shut down.
  */
 int charge_want_shutdown(void);
