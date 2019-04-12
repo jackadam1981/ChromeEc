@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17198f6e_573bf0be",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-12T07:14:32Z",
+      "side": 1,
+      "message": "you can just use extern keyword instead of moving whole part.",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 62
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a16513b_6115797c",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-12T07:14:32Z",
+      "side": 1,
+      "message": "motion_sensor_count \u003d 1;",
+      "range": {
+        "startLine": 560,
+        "startChar": 2,
+        "endLine": 560,
+        "endChar": 25
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91650cac_fe708275",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-12T07:14:32Z",
+      "side": 1,
+      "message": "You can put the whole part to board_tcpc_init()\nPlease rename the function name. Maybe board_sku_init().",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 58
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
