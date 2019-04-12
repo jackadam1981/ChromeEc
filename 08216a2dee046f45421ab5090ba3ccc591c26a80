@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f3b1b0_d18cb8bc",
+        "filename": "board/kukui_scp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-12T07:59:15Z",
+      "side": 1,
+      "message": "Per discussed with tzsungbi@, you may consider use IPI to communicate the buffer\u0027s location with AP, so you don\u0027t need to hard-coded the address here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "08216a2dee046f45421ab5090ba3ccc591c26a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
