@@ -70,6 +70,30 @@
       "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55377b1d_68b708dc",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-12T02:45:28Z",
+      "side": 1,
+      "message": "We set usb mux (to inform IT6505 turning on power) before asserting the HPD pins (interrupt IT6505): GPIO_USB_C0_HPD_OD and GPIO_USB_C0_DP_OE_L.",
+      "parentUuid": "b1aeaa4f_677baa7d",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 33
+      },
+      "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
