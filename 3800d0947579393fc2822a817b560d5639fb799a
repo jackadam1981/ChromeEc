@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d981d43_d9a7dc34",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-04-12T23:21:30Z",
+      "side": 1,
+      "message": "Sorry, I should have thought about that earlier. Maybe you can place that earlier? In case the various open_xxxx() functions fail.",
+      "range": {
+        "startLine": 1441,
+        "startChar": 1,
+        "endLine": 1441,
+        "endChar": 26
+      },
+      "revId": "3800d0947579393fc2822a817b560d5639fb799a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
