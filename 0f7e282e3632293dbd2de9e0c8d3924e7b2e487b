@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bc8a1f3_95bc6dee",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-12T16:12:01Z",
+      "side": 1,
+      "message": "Maybe I didn\u0027t make it clear. What I think is we should print \u0027no_desc\u0027 (probably better than \u0027unknown\u0027) when ec_reset_flags has BIT(19) (and anything above 19). Currently, it would look:\n\n  other | ap-watchdog\n\nInstead we should print:\n\n  other | ap-watchdog | no_desc",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 899,
+        "endChar": 2
+      },
+      "revId": "0f7e282e3632293dbd2de9e0c8d3924e7b2e487b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
