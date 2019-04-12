@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb304767_65caba5c",
+        "filename": "util/signer/bs",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-12T21:53:18Z",
+      "side": 1,
+      "message": "For \"bid_params[0] \u003d\u003d 0\" case, would you confirm that \"board_id : 0\", not \"board_id : 0x0\" is expected output here?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 55
+      },
+      "revId": "7dc58e49c70ccf045ddd68ea75c5bc65993cb0f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
