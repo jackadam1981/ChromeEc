@@ -22,6 +22,30 @@
       "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "409fbf30_3d171ffe",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-12T01:41:29Z",
+      "side": 1,
+      "message": "We would like to inform AP that DP plugged, so that it6505 driver can turn on the powerrail to catch interrupt.",
+      "parentUuid": "4b9c914c_ee51a6b1",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 33
+      },
+      "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
