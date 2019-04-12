@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56c3575e_0760a0c8",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-12T16:53:40Z",
+      "side": 1,
+      "message": "This should not be required since motion_sense_init calls motion_sense_set_data_rate() that will end up calling lsm6dsm_set_data_rate() to 0.",
+      "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7415963d_9a2412f7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2019-04-12T16:53:40Z",
+      "side": 1,
+      "message": "init_mag_cal really does not do much [setting a bunch of data structure to 0].\nCould it be what happen next (IDLE/RESET flag)?",
+      "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
