@@ -11,23 +11,6 @@
 #include "registers.h"
 #include "task_defs.h"
 
-#ifdef CONFIG_FPU
-#define save_fpu_ctx	"movl "USE_FPU_OFFSET_STR"(%eax), %ebx\n"	\
-			"test %ebx, %ebx\n"				\
-			"jz 9f\n"					\
-			"fnsave "FPU_CTX_OFFSET_STR"(%eax)\n"		\
-			"9:\n"
-
-#define rstr_fpu_ctx	"movl "USE_FPU_OFFSET_STR"(%eax), %ebx\n"	\
-			"test %ebx, %ebx\n"				\
-			"jz 9f\n"					\
-			"frstor "FPU_CTX_OFFSET_STR"(%eax)\n"		\
-			"9:\n"
-#else
-#define save_fpu_ctx
-#define rstr_fpu_ctx
-#endif
-
 #ifdef CONFIG_TASK_PROFILING
 #define task_start_irq_handler_call "call task_start_irq_handler\n"
 #else
@@ -51,10 +34,12 @@ struct irq_data {
  * __asm__
  * Note: currently we don't allow nested irq handling
  */
-#define DECLARE_IRQ(irq, routine) DECLARE_IRQ_(irq, routine, irq + 32 + 10)
+#define DECLARE_IRQ(irq, routine) DECLARE_IRQ_(irq ## _IRQ, routine, irq ## _VEC)
 /* Each irq has a irq_data structure placed in .rodata.irqs section,
  * to be used for dynamically setting up interrupt gates */
-#define DECLARE_IRQ_(irq, routine, vector)				\
+#define DECLARE_IRQ_(irq, routine, vector) DECLARE_IRQ__(irq, routine, vector)
+#define DECLARE_IRQ__(irq, routine, vector) DECLARE_IRQ___(irq, routine, vector)
+#define DECLARE_IRQ___(irq, routine, vector)				\
 	void __keep routine(void);					\
 	void IRQ_HANDLER(irq)(void); 					\
 	__asm__ (".section .rodata.irqs\n");				\
@@ -91,4 +76,21 @@ struct irq_data {
 			"popa\n"					\
 			"iret\n"					\
 		);
+
+#ifdef CONFIG_FPU
+#define save_fpu_ctx	"movl "USE_FPU_OFFSET_STR"(%eax), %ebx\n"	\
+			"test %ebx, %ebx\n"				\
+			"jz 9f\n"					\
+			"fnsave "FPU_CTX_OFFSET_STR"(%eax)\n"		\
+			"9:\n"
+
+#define rstr_fpu_ctx	"movl "USE_FPU_OFFSET_STR"(%eax), %ebx\n"	\
+			"test %ebx, %ebx\n"				\
+			"jz 9f\n"					\
+			"frstor "FPU_CTX_OFFSET_STR"(%eax)\n"		\
+			"9:\n"
+#else
+#define save_fpu_ctx
+#define rstr_fpu_ctx
+#endif
 #endif  /* __CROS_EC_IRQ_HANDLER_H */

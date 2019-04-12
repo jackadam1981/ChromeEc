@@ -23,8 +23,51 @@
 /* The IDT  - initialized in init.S */
 extern struct idt_entry __idt[NUM_VECTORS];
 
+const uint8_t VEC_TO_IRQ_ARRAY[256] = {
+	[ISH_I2C0_VEC] = ISH_I2C0_IRQ,
+	[ISH_I2C1_VEC] = ISH_I2C1_IRQ,
+	[ISH_I2C2_VEC] = ISH_I2C2_IRQ,
+	[ISH_WDT_VEC] = ISH_WDT_IRQ,
+	[ISH_GPIO_VEC] = ISH_GPIO_IRQ,
+	[ISH_HPET_TIMER0_VEC] = ISH_HPET_TIMER0_IRQ,
+	[ISH_HPET_TIMER1_VEC] = ISH_HPET_TIMER1_IRQ,
+	[ISH_HPET_TIMER2_VEC] = ISH_HPET_TIMER2_IRQ,
+	[ISH_IPC_ISH2HOST_CLR_VEC] = ISH_IPC_ISH2HOST_CLR_IRQ,
+	[ISH_UART0_VEC] = ISH_UART0_IRQ,
+	[ISH_UART1_VEC] = ISH_UART1_IRQ,
+	[ISH_IPC_HOST2ISH_VEC] = ISH_IPC_HOST2ISH_IRQ,
+	[ISH_RESET_PREP_VEC] = ISH_RESET_PREP_IRQ,
+	[ISH_PMU_WAKEUP_VEC] = ISH_PMU_WAKEUP_IRQ,
+	[ISH_D3_RISE_VEC] = ISH_D3_RISE_IRQ,
+	[ISH_D3_FALL_VEC] = ISH_D3_FALL_IRQ,
+	[ISH_BME_RISE_VEC] = ISH_BME_RISE_IRQ,
+	[ISH_BME_FALL_VEC] = ISH_BME_FALL_IRQ,
+};
+
+const uint8_t IRQ_TO_VEC_ARRAY[256] = {
+	[ISH_I2C0_IRQ] = ISH_I2C0_VEC,
+	[ISH_I2C1_IRQ] = ISH_I2C1_VEC,
+	[ISH_I2C2_IRQ] = ISH_I2C2_VEC,
+	[ISH_WDT_IRQ] = ISH_WDT_VEC,
+	[ISH_GPIO_IRQ] = ISH_GPIO_VEC,
+	[ISH_HPET_TIMER0_IRQ] = ISH_HPET_TIMER0_VEC,
+	[ISH_HPET_TIMER1_IRQ] = ISH_HPET_TIMER1_VEC,
+	[ISH_HPET_TIMER2_IRQ] = ISH_HPET_TIMER2_VEC,
+	[ISH_IPC_ISH2HOST_CLR_IRQ] = ISH_IPC_ISH2HOST_CLR_VEC,
+	[ISH_UART0_IRQ] = ISH_UART0_VEC,
+	[ISH_UART1_IRQ] = ISH_UART1_VEC,
+	[ISH_IPC_HOST2ISH_IRQ] = ISH_IPC_HOST2ISH_VEC,
+	[ISH_RESET_PREP_IRQ] = ISH_RESET_PREP_VEC,
+	[ISH_PMU_WAKEUP_IRQ] = ISH_PMU_WAKEUP_VEC,
+	[ISH_D3_RISE_IRQ] = ISH_D3_RISE_VEC,
+	[ISH_D3_FALL_IRQ] = ISH_D3_FALL_VEC,
+	[ISH_BME_RISE_IRQ] = ISH_BME_RISE_VEC,
+	[ISH_BME_FALL_IRQ] = ISH_BME_FALL_VEC,
+};
+
 /* To count the interrupt nesting depth. Usually it is not nested */
 volatile uint32_t __in_isr;
+
 
 void write_ioapic_reg(const uint32_t reg, const uint32_t val)
 {
@@ -138,7 +181,7 @@ static const irq_desc_t system_irqs[] = {
 	LEVEL_INTR(ISH_I2C2_IRQ, ISH_I2C2_VEC),
 	LEVEL_INTR(ISH_WDT_IRQ, ISH_WDT_VEC),
 	LEVEL_INTR(ISH_GPIO_IRQ, ISH_GPIO_VEC),
-	LEVEL_INTR(ISH_IPC_HOST2ISH_IRQ, ISH_IPC_VEC),
+	LEVEL_INTR(ISH_IPC_HOST2ISH_IRQ, ISH_IPC_HOST2ISH_VEC),
 	LEVEL_INTR(ISH_IPC_ISH2HOST_CLR_IRQ, ISH_IPC_ISH2HOST_CLR_VEC),
 	LEVEL_INTR(ISH_HPET_TIMER0_IRQ, ISH_HPET_TIMER0_VEC),
 	LEVEL_INTR(ISH_HPET_TIMER1_IRQ, ISH_HPET_TIMER1_VEC),
@@ -367,8 +410,13 @@ void init_interrupts(void)
 	unsigned max_entries = (read_ioapic_reg(IOAPIC_VERSION) >> 16) & 0xff;
 
 	/* Setup gates for IRQs declared by drivers using DECLARE_IRQ */
-	for (; p < __irq_data_end; p++)
+	for (; p < __irq_data_end; p++) {
+		int irq = p->irq;
+		int vec = IRQ_TO_VEC(irq);
+		int irq2 = VEC_TO_IRQ(vec);
+		CPRINTF("Set interrupt %d vector 0x%0x irq 0x%0x\n", irq, vec, irq2);
 		set_interrupt_gate(IRQ_TO_VEC(p->irq), p->routine, IDT_DESC_FLAGS);
+	}
 
 	/* Setup gate for LAPIC_LVT_ERROR vector */
 	set_interrupt_gate(LAPIC_LVT_ERROR_VECTOR, _lapic_error_handler,

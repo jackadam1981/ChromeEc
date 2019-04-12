@@ -619,7 +619,7 @@ static void pmu_wakeup_isr(void)
 	/* at current nothing need to do */
 }
 
-DECLARE_IRQ(ISH_PMU_WAKEUP_IRQ, pmu_wakeup_isr);
+DECLARE_IRQ(ISH_PMU_WAKEUP, pmu_wakeup_isr);
 
 #endif
 
@@ -653,7 +653,7 @@ static void reset_prep_isr(void)
 	__builtin_unreachable();
 }
 
-DECLARE_IRQ(ISH_RESET_PREP_IRQ, reset_prep_isr);
+DECLARE_IRQ(ISH_RESET_PREP, reset_prep_isr);
 
 #endif
 
@@ -718,9 +718,9 @@ static void bme_fall_isr(void)
 	handle_d3(ISH_BME_FALL_VEC);
 }
 
-DECLARE_IRQ(ISH_D3_RISE_IRQ, d3_rise_isr);
-DECLARE_IRQ(ISH_D3_FALL_IRQ, d3_fall_isr);
-DECLARE_IRQ(ISH_BME_RISE_IRQ, bme_rise_isr);
-DECLARE_IRQ(ISH_BME_FALL_IRQ, bme_fall_isr);
+DECLARE_IRQ(ISH_D3_RISE, d3_rise_isr);
+DECLARE_IRQ(ISH_D3_FALL, d3_fall_isr);
+DECLARE_IRQ(ISH_BME_RISE, bme_rise_isr);
+DECLARE_IRQ(ISH_BME_FALL, bme_fall_isr);
 
 #endif

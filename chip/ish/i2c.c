@@ -446,19 +446,19 @@ static void i2c_isr_bus0(void)
 {
 	i2c_interrupt_handler(&i2c_ctxs[0]);
 }
-DECLARE_IRQ(ISH_I2C0_IRQ, i2c_isr_bus0);
+DECLARE_IRQ(ISH_I2C0, i2c_isr_bus0);
 
 static void i2c_isr_bus1(void)
 {
 	i2c_interrupt_handler(&i2c_ctxs[1]);
 }
-DECLARE_IRQ(ISH_I2C1_IRQ, i2c_isr_bus1);
+DECLARE_IRQ(ISH_I2C1, i2c_isr_bus1);
 
 static void i2c_isr_bus2(void)
 {
 	i2c_interrupt_handler(&i2c_ctxs[2]);
 }
-DECLARE_IRQ(ISH_I2C2_IRQ, i2c_isr_bus2);
+DECLARE_IRQ(ISH_I2C2, i2c_isr_bus2);
 
 static void  i2c_config_speed(struct i2c_context *ctx, int kbps)
 {

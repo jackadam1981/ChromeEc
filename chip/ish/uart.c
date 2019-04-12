@@ -142,7 +142,7 @@ void uart_ec_interrupt(void)
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(ISH_DEBUG_UART_IRQ, uart_ec_interrupt);
+DECLARE_IRQ(ISH_DEBUG_UART, uart_ec_interrupt);
 #endif /* !defined(CONFIG_POLLING_UART) */
 
 static int uart_return_baud_rate_by_id(int baud_rate_id)

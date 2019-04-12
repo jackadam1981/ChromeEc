@@ -80,7 +80,7 @@ void watchdog_warning_irq(void)
 	__asm__ ("call watchdog_warning\n");
 	__builtin_unreachable();
 }
-DECLARE_IRQ(ISH_WDT_IRQ, watchdog_warning_irq);
+DECLARE_IRQ(ISH_WDT, watchdog_warning_irq);
 
 void watchdog_reload(void)
 {

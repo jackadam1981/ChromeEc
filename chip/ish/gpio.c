@@ -165,4 +165,4 @@ static void gpio_interrupt(void)
 		}
 	}
 }
-DECLARE_IRQ(ISH_GPIO_IRQ, gpio_interrupt);
+DECLARE_IRQ(ISH_GPIO, gpio_interrupt);

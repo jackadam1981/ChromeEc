@@ -25,6 +25,9 @@ enum ish_i2c_port {
 	I2C_PORT_COUNT,
 };
 
+extern const uint8_t VEC_TO_IRQ_ARRAY[256];
+extern const uint8_t IRQ_TO_VEC_ARRAY[256];
+
 #endif
 
 #define ISH_I2C_PORT_COUNT	I2C_PORT_COUNT
@@ -73,8 +76,16 @@ enum ish_i2c_port {
  */
 #define USER_VEC_START   32
 /* Map IRQs to vectors after offset 10 for certain APIC interrupts */
+
+/*
 #define IRQ_TO_VEC(irq)  ((irq) + USER_VEC_START + 10)
 #define VEC_TO_IRQ(vec)  ((vec) - USER_VEC_START - 10)
+*/
+
+#define DEFAULT_VEC(irq)  ((irq) + USER_VEC_START + 10)
+
+#define IRQ_TO_VEC(irq)  (IRQ_TO_VEC_ARRAY[irq])
+#define VEC_TO_IRQ(vec)  (VEC_TO_IRQ_ARRAY[vec])
 
 /* ISH GPIO Registers */
 #define ISH_GPIO_GCCR REG32(ISH_GPIO_BASE + 0x000) /* Direction lock */
@@ -97,24 +108,24 @@ enum ish_i2c_port {
 #define LAPIC_SPURIOUS_INT_VECTOR  0xff
 
 /* Interrupt to vector mapping. To be programmed into IOAPIC */
-#define ISH_I2C0_VEC               IRQ_TO_VEC(ISH_I2C0_IRQ)
-#define ISH_I2C1_VEC               IRQ_TO_VEC(ISH_I2C1_IRQ)
-#define ISH_I2C2_VEC               IRQ_TO_VEC(ISH_I2C2_IRQ)
-#define ISH_WDT_VEC                IRQ_TO_VEC(ISH_WDT_IRQ)
-#define ISH_GPIO_VEC               IRQ_TO_VEC(ISH_GPIO_IRQ)
-#define ISH_HPET_TIMER0_VEC        IRQ_TO_VEC(ISH_HPET_TIMER0_IRQ)
-#define ISH_HPET_TIMER1_VEC        IRQ_TO_VEC(ISH_HPET_TIMER1_IRQ)
-#define ISH_HPET_TIMER2_VEC        IRQ_TO_VEC(ISH_HPET_TIMER2_IRQ)
-#define ISH_IPC_ISH2HOST_CLR_VEC   IRQ_TO_VEC(ISH_IPC_ISH2HOST_CLR_IRQ)
-#define ISH_UART0_VEC              IRQ_TO_VEC(ISH_UART0_IRQ)
-#define ISH_UART1_VEC              IRQ_TO_VEC(ISH_UART1_IRQ)
-#define ISH_IPC_VEC                IRQ_TO_VEC(ISH_IPC_HOST2ISH_IRQ)
-#define ISH_RESET_PREP_VEC         IRQ_TO_VEC(ISH_RESET_PREP_IRQ)
-#define ISH_PMU_WAKEUP_VEC         IRQ_TO_VEC(ISH_PMU_WAKEUP_IRQ)
-#define ISH_D3_RISE_VEC            IRQ_TO_VEC(ISH_D3_RISE_IRQ)
-#define ISH_D3_FALL_VEC            IRQ_TO_VEC(ISH_D3_FALL_IRQ)
-#define ISH_BME_RISE_VEC           IRQ_TO_VEC(ISH_BME_RISE_IRQ)
-#define ISH_BME_FALL_VEC           IRQ_TO_VEC(ISH_BME_FALL_IRQ)
+#define ISH_I2C0_VEC               DEFAULT_VEC(ISH_I2C0_IRQ)
+#define ISH_I2C1_VEC               DEFAULT_VEC(ISH_I2C1_IRQ)
+#define ISH_I2C2_VEC               DEFAULT_VEC(ISH_I2C2_IRQ)
+#define ISH_WDT_VEC                DEFAULT_VEC(ISH_WDT_IRQ)
+#define ISH_GPIO_VEC               DEFAULT_VEC(ISH_GPIO_IRQ)
+#define ISH_HPET_TIMER0_VEC        DEFAULT_VEC(ISH_HPET_TIMER0_IRQ)
+#define ISH_HPET_TIMER1_VEC        DEFAULT_VEC(ISH_HPET_TIMER1_IRQ)
+#define ISH_HPET_TIMER2_VEC        DEFAULT_VEC(ISH_HPET_TIMER2_IRQ)
+#define ISH_IPC_ISH2HOST_CLR_VEC   0xf0 // DEFAULT_VEC(ISH_IPC_ISH2HOST_CLR_IRQ)
+#define ISH_UART0_VEC              DEFAULT_VEC(ISH_UART0_IRQ)
+#define ISH_UART1_VEC              DEFAULT_VEC(ISH_UART1_IRQ)
+#define ISH_IPC_HOST2ISH_VEC       0xe0 //DEFAULT_VEC(ISH_IPC_HOST2ISH_IRQ)
+#define ISH_RESET_PREP_VEC         0xd0 //DEFAULT_VEC(ISH_RESET_PREP_IRQ)
+#define ISH_PMU_WAKEUP_VEC         0xc0 //DEFAULT_VEC(ISH_PMU_WAKEUP_IRQ)
+#define ISH_D3_RISE_VEC            DEFAULT_VEC(ISH_D3_RISE_IRQ)
+#define ISH_D3_FALL_VEC            DEFAULT_VEC(ISH_D3_FALL_IRQ)
+#define ISH_BME_RISE_VEC           DEFAULT_VEC(ISH_BME_RISE_IRQ)
+#define ISH_BME_FALL_VEC           DEFAULT_VEC(ISH_BME_FALL_IRQ)
 
 #ifdef CONFIG_ISH_UART_0
 #define ISH_DEBUG_UART       		UART_PORT_0
