@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b56efdaa_70d60209",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-12T15:03:24Z",
+      "side": 1,
+      "message": "Let\u0027s open a new bug about init_mag_cal not working if called when odr is the same and put a comment reminder here.",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 18
+      },
+      "revId": "8eaf1d9b2e534ea7c310e3b784db5e6f720f31d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
