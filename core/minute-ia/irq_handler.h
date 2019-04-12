@@ -54,7 +54,9 @@ struct irq_data {
 #define DECLARE_IRQ(irq, routine) DECLARE_IRQ_(irq, routine, irq + 32 + 10)
 /* Each irq has a irq_data structure placed in .rodata.irqs section,
  * to be used for dynamically setting up interrupt gates */
-#define DECLARE_IRQ_(irq, routine, vector)				\
+#define DECLARE_IRQ_(irq, routine, vector) DECLARE_IRQ__(irq, routine, vector)
+#define DECLARE_IRQ__(irq, routine, vector) DECLARE_IRQ___(irq, routine, vector)
+#define DECLARE_IRQ___(irq, routine, vector)				\
 	void __keep routine(void);					\
 	void IRQ_HANDLER(irq)(void); 					\
 	__asm__ (".section .rodata.irqs\n");				\
