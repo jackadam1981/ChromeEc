@@ -73,8 +73,14 @@ enum ish_i2c_port {
  */
 #define USER_VEC_START   32
 /* Map IRQs to vectors after offset 10 for certain APIC interrupts */
+
+/*
 #define IRQ_TO_VEC(irq)  ((irq) + USER_VEC_START + 10)
 #define VEC_TO_IRQ(vec)  ((vec) - USER_VEC_START - 10)
+*/
+
+#define IRQ_TO_VEC(irq)  ((irq == ISH_IPC_HOST2ISH_IRQ) ? 0xe0 : ((irq == ISH_IPC_ISH2HOST_CLR_IRQ) ? 0xd0 : ((irq) + USER_VEC_START + 10)))
+#define VEC_TO_IRQ(vec)  ((vec == 0xe0) ? ISH_IPC_HOST2ISH_IRQ : ((vec == 0xd0) ? ISH_IPC_ISH2HOST_CLR_IRQ : ((vec) - USER_VEC_START - 10)))
 
 /* ISH GPIO Registers */
 #define ISH_GPIO_GCCR REG32(ISH_GPIO_BASE + 0x000) /* Direction lock */
