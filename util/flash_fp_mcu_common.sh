@@ -22,9 +22,32 @@ fi
 # /usr/bin installs
 echo "$(readlink -f "$0")"
 
+readonly CROS_EC_SPI_MODALIAS_REGEX='.*google,cros-ec-spi$'
+
 check_hardware_write_protect_disabled() {
   if ectool gpioget EC_WP_L | grep -q '= 0'; then
     echo "Please make sure WP is deasserted."
+    exit 1
+  fi
+}
+
+# Check that the device associated with the given spiid is really
+# a cros-ec-spi device
+check_spiid() {
+  local spiid="${1}"
+  local modalias_path="/sys/bus/spi/devices/${spiid}/modalias"
+  local modalias="$(cat "${modalias_path}")"
+  if [[ $? -ne 0 ]]; then
+    echo "Unable to read modalias for given spiid: ${modalias_path}"
+    exit 1
+  fi
+
+  # Example output:
+  # of:NcrfpTCgoogle,cros-ec-spi
+  echo "${modalias}" | grep -q "${CROS_EC_SPI_MODALIAS_REGEX}"
+  if [[ $? -ne 0 ]]; then
+    echo "modalias does not appear correct: ${modalias}"
+    echo "Check that spiid is correct: ${spiid}"
     exit 1
   fi
 }
@@ -56,6 +79,7 @@ flash_fp_mcu_stm32() {
   fi
 
   check_hardware_write_protect_disabled
+  check_spiid "${spiid}"
 
   # Ensure the ACPI is not cutting power when unloading cros-ec-spi
   if [[ -n "${gpio_pwren}" ]]; then
