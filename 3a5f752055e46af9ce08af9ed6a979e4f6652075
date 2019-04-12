@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7183b25d_d1129159",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-12T02:03:22Z",
+      "side": 1,
+      "message": "Drop this line. This is not enabled in kukui.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 21
+      },
+      "revId": "3a5f752055e46af9ce08af9ed6a979e4f6652075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69343b3e_a6859e47",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-12T02:03:22Z",
+      "side": 1,
+      "message": "Confirmed with Tony that we don\u0027t need this in RO from hardware perspective.\nBut not sure if this needed in other case, @ruben can you shed some light for us?",
+      "range": {
+        "startLine": 181,
+        "startChar": 7,
+        "endLine": 181,
+        "endChar": 21
+      },
+      "revId": "3a5f752055e46af9ce08af9ed6a979e4f6652075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9eba9d13_72c57af2",
         "filename": "board/kukui/board.h",
         "patchSetId": 1
