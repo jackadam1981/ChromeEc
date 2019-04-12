@@ -35,6 +35,7 @@
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
+#include "ec_version.h"
 
 #define KBYTES_TO_BYTES		1024
 
@@ -1256,6 +1257,7 @@ static const struct option longopts[] = {
 	{"spi", 1, 0, 's'},
 	{"unprotect", 0, 0, 'u'},
 	{"write", 1, 0, 'w'},
+	{"version", 0, 0, 'v'},
 	{NULL, 0, 0, 0}
 };
 
@@ -1265,7 +1267,7 @@ void display_usage(char *program)
 		"Usage: %s [-a <i2c_adapter> [-l address ]] | [-s]"
 		" [-d <tty>] [-b <baudrate>]] [-u] [-e] [-U]"
 		" [-r <file>] [-w <file>] [-o offset] [-n length] [-g] [-p]"
-		" [-L <log_file>] [-c]\n",
+		" [-L <log_file>] [-c] [-v]\n",
 		program);
 	fprintf(stderr, "Can access the controller via serial port or i2c\n");
 	fprintf(stderr, "Serial port mode:\n");
@@ -1293,8 +1295,14 @@ void display_usage(char *program)
 		"in a log file\n");
 	fprintf(stderr, "-c[r50_mode] : consider device to be a Cr50 interface,"
 		" no need to set UART port attributes\n");
+	fprintf(stderr, "--v[ersion] : print version and exit\n");
 
 	exit(2);
+}
+
+void display_version(void)
+{
+	fprintf(stderr, "%s\n", CROS_STM32MON_VERSION);
 }
 
 speed_t parse_baudrate(const char *value)
@@ -1325,7 +1333,7 @@ int parse_parameters(int argc, char **argv)
 	int flags = 0;
 	const char *log_file_name = NULL;
 
-	while ((opt = getopt_long(argc, argv, "a:l:b:cd:eghL:n:o:pr:s:w:uU?",
+	while ((opt = getopt_long(argc, argv, "a:l:b:cd:eghL:n:o:pr:s:w:uUv?",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'a':
@@ -1383,6 +1391,9 @@ int parse_parameters(int argc, char **argv)
 		case 'U':
 			flags |= FLAG_READ_UNPROTECT;
 			break;
+		case 'v':
+			display_version();
+			exit(0);
 		}
 	}
 
@@ -1424,6 +1435,10 @@ int main(int argc, char **argv)
 	}
 	if (ser < 0)
 		return 1;
+
+	fprintf(stderr, "stm32mon version: ");
+	display_version();
+
 	/* Trigger embedded monitor detection */
 	if (init_monitor(ser) < 0)
 		goto terminate;
