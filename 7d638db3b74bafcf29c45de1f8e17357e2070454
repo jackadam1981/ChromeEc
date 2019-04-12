@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5742e46a_f945de95",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-04-12T07:51:54Z",
+      "side": 1,
+      "message": "Ok, I will modify it.",
+      "parentUuid": "17198f6e_573bf0be",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 62
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a16513b_6115797c",
         "filename": "board/rammus/board.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0abe4725_f7460db5",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-04-12T07:51:54Z",
+      "side": 1,
+      "message": "I check Leona is not have LID_ACCEL. Is motion_sensor_count equal to zero?",
+      "parentUuid": "4a16513b_6115797c",
+      "range": {
+        "startLine": 560,
+        "startChar": 2,
+        "endLine": 560,
+        "endChar": 25
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91650cac_fe708275",
         "filename": "board/rammus/board.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-12T07:14:32Z",
       "side": 1,
       "message": "You can put the whole part to board_tcpc_init()\nPlease rename the function name. Maybe board_sku_init().",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 58
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17aacdd3_e4027a19",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-04-12T07:51:54Z",
+      "side": 1,
+      "message": "Thanks for you suggest.\nBut the motion sensor control is not about board_tcpc_init().\nIs keep the part in board_init()?\nI will rename the new function name. Thanks.",
+      "parentUuid": "91650cac_fe708275",
       "range": {
         "startLine": 550,
         "startChar": 0,
