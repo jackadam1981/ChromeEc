@@ -46,6 +46,30 @@
       "revId": "64b16a4ca9c353a29c3a3a0d2fa0c81a420bf8ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7276393_c3d84a1a",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-12T07:59:56Z",
+      "side": 1,
+      "message": "It seems that octopus left CONFIG_USB_PORT_POWER_SMART_PORT_COUNT to default value - 2 so we have 2 type-A ports. As a result, if you really need this feature then we need to take care two ports.",
+      "parentUuid": "f5890755_62b65210",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 31
+      },
+      "revId": "64b16a4ca9c353a29c3a3a0d2fa0c81a420bf8ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
