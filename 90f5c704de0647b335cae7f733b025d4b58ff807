@@ -22,6 +22,30 @@
       "revId": "90f5c704de0647b335cae7f733b025d4b58ff807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30184423_b6850ebe",
+        "filename": "board/flapjack/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1324980
+      },
+      "writtenOn": "2019-04-12T00:46:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7faaff75_d4cc95be",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 33
+      },
+      "revId": "90f5c704de0647b335cae7f733b025d4b58ff807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
