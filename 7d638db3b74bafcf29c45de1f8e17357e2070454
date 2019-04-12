@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2c08cd7c_8816d216",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-12T10:56:45Z",
+      "side": 1,
+      "message": "+Max@, is this true?",
+      "parentUuid": "0abe4725_f7460db5",
+      "range": {
+        "startLine": 560,
+        "startChar": 2,
+        "endLine": 560,
+        "endChar": 25
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91650cac_fe708275",
         "filename": "board/rammus/board.c",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Thanks for you suggest.\nBut the motion sensor control is not about board_tcpc_init().\nIs keep the part in board_init()?\nI will rename the new function name. Thanks.",
       "parentUuid": "91650cac_fe708275",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 58
+      },
+      "revId": "7d638db3b74bafcf29c45de1f8e17357e2070454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9198bb8f_c84c930d",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-12T10:56:45Z",
+      "side": 1,
+      "message": "You need to remove the sensor as early as possible. I think putting here is too late. Please dig more detail about the sensor initialization and check when the board_tcpc_init() be called.",
+      "parentUuid": "17aacdd3_e4027a19",
       "range": {
         "startLine": 550,
         "startChar": 0,
