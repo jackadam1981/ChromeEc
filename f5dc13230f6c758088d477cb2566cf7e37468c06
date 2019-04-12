@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17e9d87c_5ab7bdaa",
+        "filename": "board/bloog/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-12T04:45:12Z",
+      "side": 1,
+      "message": "This will be removed from baseboard/octopus/led_states.c so we should change it to CONFIG_LED_ONOFF_STATES_BAT_LOW? Same for other boards.",
+      "revId": "f5dc13230f6c758088d477cb2566cf7e37468c06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
