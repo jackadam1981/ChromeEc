@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "ec09fd39_ca9eac37",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-12T02:40:23Z",
+      "side": 1,
+      "message": "This might be useful to debug power issues, let\u0027s keep it unless we are _that_ short again?",
+      "revId": "3a5f752055e46af9ce08af9ed6a979e4f6652075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69343b3e_a6859e47",
         "filename": "board/kukui/board.h",
         "patchSetId": 1
@@ -42,6 +59,23 @@
         "endLine": 181,
         "endChar": 21
       },
+      "revId": "3a5f752055e46af9ce08af9ed6a979e4f6652075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6853320_3691b988",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-12T02:40:23Z",
+      "side": 1,
+      "message": "Well, this is broken with the dumb battery gauge anyway, so ok.",
       "revId": "3a5f752055e46af9ce08af9ed6a979e4f6652075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
