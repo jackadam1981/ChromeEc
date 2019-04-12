@@ -46,6 +46,30 @@
       "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1aeaa4f_677baa7d",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-12T02:36:30Z",
+      "side": 1,
+      "message": "My question is why this needs to be moved from line 359 to here.",
+      "parentUuid": "409fbf30_3d171ffe",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 33
+      },
+      "revId": "1a0d4797edbab255f46e24b6a9c0b76413adad0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
