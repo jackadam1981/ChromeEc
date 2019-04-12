@@ -22,6 +22,30 @@
       "revId": "2b4aa811fdb2ff03fd2cd219d36104f751b8924a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fbf8844_280ccb15",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-12T16:53:41Z",
+      "side": 1,
+      "message": "I think I only really had to do one it makes sure that the macros get fully expanded. I was trying to get line 54 to use the VEC_TO_IRQ macro but the compiler was not happy.",
+      "parentUuid": "cc4e9bf9_3b92f7d6",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "2b4aa811fdb2ff03fd2cd219d36104f751b8924a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
