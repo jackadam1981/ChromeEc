@@ -100,4 +100,59 @@ extern int audio_codec_dmic_get_gain_idx(uint8_t channel, uint8_t *gain);
 extern uint8_t audio_codec_dmic_max_gain;
 #endif
 
+
+/*
+ * I2S RX abstract layer
+ */
+
+/*
+ * Enables I2S RX.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ *   EC_ERROR_UNKNOWN if internal error.
+ *   EC_ERROR_BUSY if has enabled.
+ */
+extern int audio_codec_i2s_rx_enable(void);
+
+/*
+ * Disables I2S RX.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ *   EC_ERROR_UNKNOWN if internal error.
+ *   EC_ERROR_BUSY if has not enabled.
+ */
+extern int audio_codec_i2s_rx_disable(void);
+
+/*
+ * Sets I2S RX sample depth.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ *   EC_ERROR_UNKNOWN if internal error.
+ *   EC_ERROR_INVAL if depth does not look good.
+ */
+extern int audio_codec_i2s_rx_set_sample_depth(uint8_t depth);
+
+/*
+ * Sets I2S RX DAI format.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ *   EC_ERROR_UNKNOWN if internal error.
+ *   EC_ERROR_INVAL if daifmt does not look good.
+ */
+extern int audio_codec_i2s_rx_set_daifmt(uint8_t daifmt);
+
+/*
+ * Sets I2S RX BCLK.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ *   EC_ERROR_UNKNOWN if internal error.
+ *   EC_ERROR_INVAL if bclk does not look good.
+ */
+extern int audio_codec_i2s_rx_set_bclk(uint32_t bclk);
+
 #endif
