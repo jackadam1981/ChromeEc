@@ -4566,15 +4566,42 @@ enum mkbp_cec_event {
 
 /*****************************************************************************/
 
+/* Commands for DMIC on audio codec. */
+#define EC_CMD_EC_CODEC_DMIC 0x00BC
+
+enum ec_codec_dmic_subcmd {
+	EC_CODEC_DMIC_SET_GAIN = 0,
+	EC_CODEC_DMIC_GET_GAIN,
+	EC_CODEC_DMIC_SUBCMD_COUNT,
+};
+
+struct __ec_align4 ec_param_ec_codec_dmic {
+	/* enum ec_codec_dmic_subcmd */
+	uint8_t cmd;
+	uint8_t reserved[3];
+
+	union {
+		struct __ec_align1 ec_param_ec_codec_dmic_set_gain {
+			uint8_t left;
+			uint8_t right;
+		} set_gain_param;
+	};
+};
+
+struct __ec_align1 ec_response_ec_codec_dmic_get_gain {
+	uint8_t left;
+	uint8_t right;
+};
+
+/*****************************************************************************/
+
 /* Commands for I2S RX on audio codec. */
 
-#define EC_CMD_EC_CODEC_I2S_RX 0x00BC
+#define EC_CMD_EC_CODEC_I2S_RX 0x00BD
 
 enum ec_codec_i2s_rx_subcmd {
 	EC_CODEC_I2S_RX_ENABLE = 0,
 	EC_CODEC_I2S_RX_DISABLE,
-	EC_CODEC_I2S_RX_SET_GAIN,
-	EC_CODEC_I2S_RX_GET_GAIN,
 	EC_CODEC_I2S_RX_SET_SAMPLE_DEPTH,
 	EC_CODEC_I2S_RX_SET_DAIFMT,
 	EC_CODEC_I2S_RX_SET_BCLK,
@@ -4604,11 +4631,6 @@ struct __ec_align4 ec_param_ec_codec_i2s_rx {
 			uint8_t depth;
 		} set_sample_depth_param;
 
-		struct __ec_align1 ec_param_ec_codec_i2s_rx_set_gain {
-			uint8_t left;
-			uint8_t right;
-		} set_gain_param;
-
 		struct __ec_align1 ec_param_ec_codec_i2s_rx_set_daifmt {
 			uint8_t daifmt;
 		} set_daifmt_param;
@@ -4617,11 +4639,6 @@ struct __ec_align4 ec_param_ec_codec_i2s_rx {
 			uint32_t bclk;
 		} set_bclk_param;
 	};
-};
-
-struct __ec_align1 ec_response_ec_codec_i2s_rx_get_gain {
-	uint8_t left;
-	uint8_t right;
 };
 
 /*****************************************************************************/
