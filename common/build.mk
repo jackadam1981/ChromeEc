@@ -161,6 +161,7 @@ ifdef DEBUG_AUDIO_CODEC
 CFLAGS+=-DDEBUG_AUDIO_CODEC
 endif
 common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
+common-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
