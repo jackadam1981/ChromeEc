@@ -98,4 +98,24 @@ int audio_codec_set_gain_idx(uint8_t channel, uint8_t gain);
  */
 int audio_codec_get_gain_idx(uint8_t channel, uint8_t *gain);
 
+
+struct audio_codec_i2s_rx_driver {
+	int (*enable)(void);
+	int (*disable)(void);
+
+	int (*set_sample_depth)(uint8_t depth);
+	int (*set_daifmt)(uint8_t daifmt);
+	int (*set_bclk)(uint32_t bclk);
+	int (*set_tdm_config)(void);
+};
+
+/*
+ * Register I2S RX driver.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_register_i2s_rx_driver(
+	struct audio_codec_i2s_rx_driver *driver);
+
 #endif
