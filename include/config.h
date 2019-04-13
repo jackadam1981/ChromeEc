@@ -287,8 +287,10 @@
 /* Support AP Warm reset Interrupt. */
 #undef CONFIG_AP_WARM_RESET_INTERRUPT
 
-/* Support audio codec for WoV and I2S normal recording. */
+/* Support audio codec. */
 #undef CONFIG_AUDIO_CODEC
+/* Support audio codec on DMIC. */
+#undef CONFIG_AUDIO_CODEC_DMIC
 
 /*
  * Enable support for CPU caches behaving according to the ARMv7-M ISA.
