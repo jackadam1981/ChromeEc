@@ -281,6 +281,12 @@
  */
 #undef CONFIG_BACKLIGHT_REQ_GPIO
 
+/*
+ * Define if board file controls backlight on AP suspend notification
+ * instead of lid switch event.
+ */
+#undef CONFIG_BACKLIGHT_TRACKS_CHIPSET
+
 /* Support base32 text encoding */
 #undef CONFIG_BASE32
 

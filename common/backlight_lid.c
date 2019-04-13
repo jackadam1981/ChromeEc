@@ -6,11 +6,13 @@
 /* Backlight control based on lid and optional request signal from AP */
 
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /**
  * Activate/Deactivate the backlight GPIO pin considering active high or low.
@@ -22,6 +24,7 @@ void enable_backlight(int enabled)
 #else
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, enabled);
 #endif
+	CPRINTS("BL: %s\n", enabled? "on": "off");
 }
 
 /**
@@ -41,7 +44,10 @@ static void update_backlight(void)
 	enable_backlight(lid_is_open());
 #endif
 }
+#ifndef CONFIG_BACKLIGHT_TRACKS_CHIPSET
+%%%
 DECLARE_HOOK(HOOK_LID_CHANGE, update_backlight, HOOK_PRIO_DEFAULT);
+#endif
 
 /**
  * Initialize backlight module.
