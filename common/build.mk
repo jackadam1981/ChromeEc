@@ -157,6 +157,7 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
 common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
+common-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
