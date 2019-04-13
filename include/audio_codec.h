@@ -78,4 +78,24 @@ struct audio_codec_dmic_driver {
  */
 int audio_codec_register_dmic_driver(struct audio_codec_dmic_driver *driver);
 
+
+struct audio_codec_i2s_rx_driver {
+	int (*enable)(void);
+	int (*disable)(void);
+
+	int (*set_sample_depth)(uint8_t depth);
+	int (*set_daifmt)(uint8_t daifmt);
+	int (*set_bclk)(uint32_t bclk);
+	int (*set_tdm_config)(void);
+};
+
+/*
+ * Register I2S RX driver.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_register_i2s_rx_driver(
+	struct audio_codec_i2s_rx_driver *driver);
+
 #endif
