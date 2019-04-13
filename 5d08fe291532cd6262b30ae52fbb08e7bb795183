@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "547fe18d_a8d16ed4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "Did you test a USB-C charger and a WPC charger connected at the same time?\n\nUSB-C power is given a higher priority. There is no hardware which blocks power path from WPC. So, we need to make EC 1. disable WPC and 2. disconnect WPC if it\u0027s already connected.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb73a62b_3b26f648",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "VOUT_SET_REG falls through twice and becomes too large: 0.1 mill -\u003e uV -\u003e nV.",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec12abe1_695f7c99",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "We don\u0027t clear interrupts for other over-interrupts?",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 16
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e645814_1cc208dd",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "These are set even when p9221_block_read fails.",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 23
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5b5ba81_f5d36176",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "We enable interrupts here but don\u0027t disable them in p9221_set_offline. If we never disable them, can we enable them at task start-up?",
+      "range": {
+        "startLine": 563,
+        "startChar": 7,
+        "endLine": 563,
+        "endChar": 32
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2694602e_ccc79288",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "What does \u00271\u0027 mean in CSP?",
+      "range": {
+        "startLine": 754,
+        "startChar": 17,
+        "endLine": 754,
+        "endChar": 18
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

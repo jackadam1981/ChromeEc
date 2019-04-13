@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3fbbf5f8_59d88b9f",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "I wasn\u0027t able to locate such code which assumes a port can\u0027t be a sink and a source at the same time.\n\nWhen pd_task detects a OTG device, pd_set_power_supply_ready sets power path accordingly (EN_PP5000_USBC\u003don NCP3902_EN\u003doff).\n\ncharger_task recognizes where there is external power or not but doesn\u0027t seem to care which port the power comes from.",
+      "parentUuid": "c073bf50_e3d82563",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 5
+      },
+      "revId": "9ec2b24b02c29fbdb962fdf3110acc98418702ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e73375c5_89859a8b",
         "filename": "board/flapjack/board.c",
         "patchSetId": 7

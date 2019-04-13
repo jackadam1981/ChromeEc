@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a4d4a357_69f0185e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "How robust is this? Did you think of all corner cases? For example, what happens if you plug a BC 1.2 charger and a wireless charger at the same time?",
+      "parentUuid": "5ab0d265_7aeca50e",
+      "range": {
+        "startLine": 939,
+        "startChar": 9,
+        "endLine": 940,
+        "endChar": 26
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3001fd3_87f0a0d9",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "with tx_busy/tx_done, i think it used for RX and TX communication, but now we haven\u0027t implement this funtion. do you think if we need communication functions?",
       "parentUuid": "b8608833_b4684082",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 22
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18def7e_23bbc9fa",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "I think we can leave them alone.",
+      "parentUuid": "7d899e6f_dd363b5e",
       "range": {
         "startLine": 527,
         "startChar": 0,
@@ -354,6 +402,30 @@
       "side": 1,
       "message": "p9221_is_online means the TX and RX actual connected or not, wpc-\u003eonline is the status save this status. if wpc-\u003eonline is true, means VRECT INT has been occured, and no need process this intterrupt again. if  p9221_is_online  is true, we can distinguish if this VBUS is provide by WPC or USBPD.",
       "parentUuid": "7dbb997a_185eeb86",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 12
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21efa615_594c0547",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-13T02:29:18Z",
+      "side": 1,
+      "message": "p9221_is_online is just reading chip id over i2c. How can it imply VBUS is provided by WPC? Is the chip in stand-by mode?",
+      "parentUuid": "0eb9c98f_214ab3fb",
       "range": {
         "startLine": 687,
         "startChar": 1,
