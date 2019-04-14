@@ -321,14 +321,12 @@ void handle_lapic_lvt_error(void)
 				}
 			}
 		}
-		CPRINTF("LAPIC error ESR:0x%02x,count:%u IOAPIC pending "
-			"count:%u\n",
-			esr, lapic_lvt_error_count, ioapic_pending_count);
 	}
 
+	if (esr)
+		CPRINTS("LAPIC error ESR 0x%02x: %u; IOAPIC pending: %u", esr,
+			lapic_lvt_error_count, ioapic_pending_count);
 }
-/* TODO(b/129937881): Remove periodic check once root cause is determined */
-DECLARE_HOOK(HOOK_TICK, handle_lapic_lvt_error, HOOK_PRIO_DEFAULT);
 
 /* LAPIC LVT error is not an IRQ and can not use DECLARE_IRQ() to call. */
 void _lapic_error_handler(void);
@@ -342,6 +340,7 @@ __asm__ (
 		"push %eax\n"
 		"call handle_lapic_lvt_error\n"
 		"pop %esp\n"
+		"movl $0x00, (0xFEE000B0)\n"	/* Set EOI for LAPIC */
 		ASM_LOCK_PREFIX "subl $1, __in_isr\n"
 		"popa\n"
 		"iret\n"
@@ -370,7 +369,8 @@ void init_interrupts(void)
 	for (; p < __irq_data_end; p++)
 		set_interrupt_gate(IRQ_TO_VEC(p->irq), p->routine, IDT_DESC_FLAGS);
 
-	/* Setup gate for LAPIC_LVT_ERROR vector */
+	/* Setup gate for LAPIC_LVT_ERROR vector; clear any remnant error. */
+	REG32(LAPIC_ESR_REG) = 0;
 	set_interrupt_gate(LAPIC_LVT_ERROR_VECTOR, _lapic_error_handler,
 			   IDT_DESC_FLAGS);
 
