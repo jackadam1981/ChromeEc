@@ -342,6 +342,7 @@ __asm__ (
 		"push %eax\n"
 		"call handle_lapic_lvt_error\n"
 		"pop %esp\n"
+		"movl $0x00, (0xFEE000B0)\n"
 		ASM_LOCK_PREFIX "subl $1, __in_isr\n"
 		"popa\n"
 		"iret\n"
