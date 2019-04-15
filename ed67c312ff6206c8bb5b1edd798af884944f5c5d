@@ -69,6 +69,24 @@
       "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a963dc03_f783adac",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-15T15:58:26Z",
+      "side": 1,
+      "message": "Will handle in another CL",
+      "parentUuid": "db0a2fd7_b56d6b90",
+      "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
