@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a737857_ee64877b",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-15T09:05:30Z",
+      "side": 1,
+      "message": "Does the configuration apply quickly enough that we do not need a delay here?",
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef51d05b_1e525e46",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-15T09:05:30Z",
+      "side": 1,
+      "message": "Do you mind adding a comment above explaining what this does? I think I get it, but some explanation would be good.",
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8438edcf_e175ba89",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-15T09:05:30Z",
+      "side": 1,
+      "message": "Please describe (shortly) what the fields are.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afaff642_9c6fd0ac",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-15T09:05:30Z",
+      "side": 1,
+      "message": "Why not just return prev.freq?",
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
