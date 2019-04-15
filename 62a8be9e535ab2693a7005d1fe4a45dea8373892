@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b423aa6c_3919c164",
+        "filename": "board/kukui_scp/board_ipi_table.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-15T05:21:56Z",
+      "side": 1,
+      "message": "I know the count is variable, but otherwise, this doesn\u0027t seem very board-specific.\n\nCan we try to fix ipi_table.c to only generate the var/func that are needed for a given IPI_COUNT?",
+      "revId": "62a8be9e535ab2693a7005d1fe4a45dea8373892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
