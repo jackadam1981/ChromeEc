@@ -46,6 +46,30 @@
       "revId": "e3b31ad8596df03b58c03a40f405fc8cd2c0e452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81b70cd_6428d9e3",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-15T17:00:35Z",
+      "side": 1,
+      "message": "Sorry, CH. I was remembering incorrectly; we have common support for over current protection.\n\n6V will cause problems when someone tries to use this TCPC as we will try to negotiate up to 20V and default OVP will block the negotiation, unless the TCPC know to set its own OVP higher when it negotiates. If the TCPC automatically sets it OVP limit higher, then we can leave it out and I am sorry for wasting your time.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/c91a91b0f4fc5e171a766a1c55692504dbcf278e/driver/ppc/nx20p348x.c#61 for an example where we do this other places on init",
+      "parentUuid": "5aeed8f2_946e5418",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "e3b31ad8596df03b58c03a40f405fc8cd2c0e452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
