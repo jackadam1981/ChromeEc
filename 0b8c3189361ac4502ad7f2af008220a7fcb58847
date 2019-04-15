@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce6b6cc8_49e66b2a",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-15T04:50:29Z",
+      "side": 1,
+      "message": "nit: This can just be added to the top of board_reset_pd_mcu(). Then you don\u0027t have to check it for each port.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 9
+      },
+      "revId": "0b8c3189361ac4502ad7f2af008220a7fcb58847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d9856e_f3fd22a5",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-15T04:50:29Z",
+      "side": 1,
+      "message": "nit: space before TODO",
+      "range": {
+        "startLine": 244,
+        "startChar": 3,
+        "endLine": 244,
+        "endChar": 4
+      },
+      "revId": "0b8c3189361ac4502ad7f2af008220a7fcb58847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
