@@ -34,6 +34,24 @@
       "revId": "62a8be9e535ab2693a7005d1fe4a45dea8373892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a96ce2a_1ba83f1a",
+        "filename": "board/kukui_scp/board_ipi_table.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-15T05:35:03Z",
+      "side": 1,
+      "message": "Yes, it is pretty hard to auto generating a table according to the count by preprocessor.  But I think this is doable with a script with a makefile rule. (But it kind of hack as well).",
+      "parentUuid": "9af2a139_8aaab924",
+      "revId": "62a8be9e535ab2693a7005d1fe4a45dea8373892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
