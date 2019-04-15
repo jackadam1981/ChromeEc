@@ -58,4 +58,6 @@ const int ipi_wakeup_undefined;
 #undef PASS
 #define PASS 2
 #include "ipi_table.c"
+BUILD_ASSERT(ARRAY_SIZE(ipi_handler_table) == IPI_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(ipi_wakeup_table) == IPI_COUNT);
 #endif
