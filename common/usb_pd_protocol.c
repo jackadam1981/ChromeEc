@@ -2736,7 +2736,7 @@ void pd_task(void *u)
 	timestamp_t now;
 	uint64_t next_src_cap = 0;
 	int caps_count = 0, hard_reset_sent = 0;
-	int snk_cap_count = 0;
+	//int snk_cap_count = 0;
 	int evt;
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -3313,7 +3313,7 @@ void pd_task(void *u)
 				/* reset various counters */
 				caps_count = 0;
 				pd[port].msg_id = 0;
-				snk_cap_count = 0;
+				//snk_cap_count = 0;
 				set_state_timeout(
 					port,
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
@@ -3465,7 +3465,7 @@ void pd_task(void *u)
 				}
 				break;
 			}
-
+#if 0
 			/* Send get sink cap if haven't received it yet */
 			if (!(pd[port].flags & PD_FLAGS_SNK_CAP_RECVD)) {
 				if (++snk_cap_count <= PD_SNK_CAP_RETRIES) {
@@ -3486,7 +3486,7 @@ void pd_task(void *u)
 				pd[port].flags &= ~PD_FLAGS_CHECK_PR_ROLE;
 				break;
 			}
-
+#endif
 			/* Check data role policy, which may trigger a swap */
 			if (pd[port].flags & PD_FLAGS_CHECK_DR_ROLE) {
 				pd_check_dr_role(port, pd[port].data_role,
@@ -4093,7 +4093,7 @@ void pd_task(void *u)
 			}
 
 			/* Don't send GET_SINK_CAP on swap */
-			snk_cap_count = PD_SNK_CAP_RETRIES+1;
+			//snk_cap_count = PD_SNK_CAP_RETRIES+1;
 			caps_count = 0;
 			pd[port].msg_id = 0;
 			pd_set_power_role(port, PD_ROLE_SOURCE);

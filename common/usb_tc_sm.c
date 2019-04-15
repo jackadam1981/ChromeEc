@@ -90,6 +90,8 @@ BUILD_ASSERT(ARRAY_SIZE(tc_state_names) == TC_STATE_COUNT);
 #include "usb_tc_ctvpd_sm.h"
 #elif defined(CONFIG_USB_TYPEC_VPD)
 #include "usb_tc_vpd_sm.h"
+#elif defined(CONFIG_USB_TYPEC_DRP_ACC_TRYSRC)
+#include "usb_tc_drp_acc_trysrc_sm.h"
 #else
 #error "A USB Type-C State Machine must be defined."
 #endif
@@ -104,6 +106,11 @@ int tc_get_power_role(int port)
 int tc_get_data_role(int port)
 {
 	return tc[port].data_role;
+}
+
+void tc_set_power_role(int port, int role)
+{
+	tc[port].power_role = role;
 }
 
 void tc_set_timeout(int port, uint64_t timeout)
@@ -163,6 +170,9 @@ void pd_task(void *u)
 
 	tc_state_init(port);
 
+#ifdef CONFIG_USBC_PPC
+        ppc_init(port);
+#endif
 	while (1) {
 		/* wait for next event/packet or timeout expiration */
 		tc[port].evt = task_wait_event(tc[port].evt_timeout);
