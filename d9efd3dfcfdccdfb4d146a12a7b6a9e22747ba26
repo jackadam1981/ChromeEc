@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d63438e_a7daa271",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-15T15:02:16Z",
+      "side": 1,
+      "message": "s/2/TO/",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "d9efd3dfcfdccdfb4d146a12a7b6a9e22747ba26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66ff00f_df62c647",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-15T15:02:16Z",
+      "side": 1,
+      "message": "Why does a timestamp cause interrupts to be disabled? Should this be documented?",
+      "revId": "d9efd3dfcfdccdfb4d146a12a7b6a9e22747ba26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
