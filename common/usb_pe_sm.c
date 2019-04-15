@@ -7,6 +7,8 @@
 /* Include USB PD Policy Engine State Machine */
 #if defined(CONFIG_USB_TYPEC_VPD) || defined(CONFIG_USB_TYPEC_CTVPD)
 #include "usb_pe_ctvpd_sm.h"
+#elif defined(CONFIG_USB_TYPEC_DRP_ACC_TRYSRC)
+#include "usb_pe_drp_sm.h"
 #else
 #error "A USB PD Policy Engine State Machine must be defined."
 #endif
