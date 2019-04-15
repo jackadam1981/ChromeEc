@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2193e11a_fffba5c3",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-15T06:21:12Z",
+      "side": 1,
+      "message": "static void ...",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 25
+      },
+      "revId": "33c17fe50edb3e36fcfbbc51747984c1957d8ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3100a098_f637825d",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-15T06:21:12Z",
+      "side": 1,
+      "message": "Add a define for this bit. For example, SKU_ID_MASK_CONVERTIBLE",
+      "range": {
+        "startLine": 276,
+        "startChar": 15,
+        "endLine": 276,
+        "endChar": 21
+      },
+      "revId": "33c17fe50edb3e36fcfbbc51747984c1957d8ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56d2cb97_95733b0a",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-15T06:21:12Z",
+      "side": 1,
+      "message": "if (sku_id \u0026 0x0200)",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 32
+      },
+      "revId": "33c17fe50edb3e36fcfbbc51747984c1957d8ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2a3abd_bbd9e90c",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-15T06:21:12Z",
+      "side": 1,
+      "message": "else /* SKU is clamshell */ {",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 7
+      },
+      "revId": "33c17fe50edb3e36fcfbbc51747984c1957d8ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645e38d9_f079bd58",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-15T06:21:12Z",
+      "side": 1,
+      "message": "move this to board.c or rearrange the code",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 26
+      },
+      "revId": "33c17fe50edb3e36fcfbbc51747984c1957d8ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
