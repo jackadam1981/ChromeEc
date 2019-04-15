@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98393a3d_44d918f8",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-15T03:44:42Z",
+      "side": 1,
+      "message": "I think you can simplify this by checking the 9-th bit. If the 9-th bit is set, it is convertible. Otherwise, it is clamshell.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 2
+      },
+      "revId": "b9542f0f4f1fdef24e61c7f98c7e4b15b5d17c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
