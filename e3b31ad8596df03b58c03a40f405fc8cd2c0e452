@@ -22,6 +22,30 @@
       "revId": "e3b31ad8596df03b58c03a40f405fc8cd2c0e452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aeed8f2_946e5418",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-04-15T07:40:31Z",
+      "side": 1,
+      "message": "Hi Jett: the default OVP threshold is 6V. (Please refer to the register VBUS_OVP_THR_CFG in the section 3.1.2 Port Controller Vendor-Defined Registers in our datasheet.)\nWe definitely can set it to 21V. However, I would like to confirm that where the TCPM common code handles the OVP event?\nIn our TCPC, if the OVP is detected, it will set the\nInternal_or_External_OVP_VBUS_Over_Voltage_Protection_Fault bit (B2) in FAULT_STATUS register to 1. I further checked the common code in TOT (c91a91b0f4), it seems that it doesn\u0027t handle the fault status register (and also fault bit (B9) in the ALERT register.) I think the OVP event will not be handled. Do I miss something?",
+      "parentUuid": "db412ca6_d3c3ebff",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "e3b31ad8596df03b58c03a40f405fc8cd2c0e452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
