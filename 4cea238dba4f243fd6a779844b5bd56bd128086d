@@ -406,6 +406,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a3c4b7_6e547bbf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-15T21:55:42Z",
+      "side": 1,
+      "message": "Okay, I coded up a change to exit modes before sysjumping and confirmed on a PD analyzer the exit mode is being sent.  Then I tested it with every powered display dongle in my dongle testing pile.  \n\nResults: \n- 2 dongles will display after the RO-\u003eRW jump with the exit mode sent, though they also display without it (i.e. just with the check identity flag)\n- 1 dongle will not display after the RO-\u003eRW jump, both with the exit mode and without\n- 1 dongle always displays after the RO-\u003eRW jump, even without this change, because it doesn\u0027t send a SOURCE_CAP within PD_T_SINK_WAIT_CAP after our soft reset and so always ends up going through a full hard reset path in RW anyway\n\nBased on these results, I\u0027m not optimistic that the added complexity of adding the exit mode will practically translate to better performance for the unlocked RO-\u003eRW jump display.",
+      "parentUuid": "948d14d2_0067f4d5",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
