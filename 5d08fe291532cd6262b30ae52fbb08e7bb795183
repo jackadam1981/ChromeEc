@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8ffaa55b_e3fc9d73",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1137869
+      },
+      "writtenOn": "2019-04-15T18:27:56Z",
+      "side": 1,
+      "message": "This is correct, since the value you get from the register is in 0.1V units, so you multiply by 100 to get number of mV and then by 1000 to get uV, i.e.\n\n55 * 100 -\u003e 5500mV * 1000 -\u003e 5500000 uV\n\nMaybe the comment should be 0.1V -\u003e mV to make it clear, though I think it can go either way.",
+      "parentUuid": "fb73a62b_3b26f648",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec12abe1_695f7c99",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 17
@@ -59,6 +83,30 @@
       "writtenOn": "2019-04-13T02:29:18Z",
       "side": 1,
       "message": "We don\u0027t clear interrupts for other over-interrupts?",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 16
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817f77b9_35a184c9",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1137869
+      },
+      "writtenOn": "2019-04-15T18:27:56Z",
+      "side": 1,
+      "message": "All interrupts are cleared on line 821 in p9221_clear_interrupts.",
+      "parentUuid": "ec12abe1_695f7c99",
       "range": {
         "startLine": 346,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "074ea635_43c46ded",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1137869
+      },
+      "writtenOn": "2019-04-15T18:27:56Z",
+      "side": 1,
+      "message": "yes, I suppose that we should just say rx_done is true and return a 0 length or something like that but since the protocol has sequence and checksums it should be ok.",
+      "parentUuid": "1e645814_1cc208dd",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 23
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5b5ba81_f5d36176",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 17
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "e2c32247_77b6dcfd",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1137869
+      },
+      "writtenOn": "2019-04-15T18:27:56Z",
+      "side": 1,
+      "message": "You cannot since if you go out of field, you will not have interrupts enabled when you come back in field since the chip loses all power and register settings.",
+      "parentUuid": "e5b5ba81_f5d36176",
+      "range": {
+        "startLine": 563,
+        "startChar": 7,
+        "endLine": 563,
+        "endChar": 32
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2694602e_ccc79288",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 17
@@ -128,6 +224,30 @@
       "writtenOn": "2019-04-13T02:29:18Z",
       "side": 1,
       "message": "What does \u00271\u0027 mean in CSP?",
+      "range": {
+        "startLine": 754,
+        "startChar": 17,
+        "endLine": 754,
+        "endChar": 18
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b3f63a2_a3fe078d",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1137869
+      },
+      "writtenOn": "2019-04-15T18:27:56Z",
+      "side": 1,
+      "message": "CSP is charge status packet.  You should not hardcode 1, but the current SOC of the battery.",
+      "parentUuid": "2694602e_ccc79288",
       "range": {
         "startLine": 754,
         "startChar": 17,
