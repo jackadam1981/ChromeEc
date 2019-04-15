@@ -382,6 +382,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "948d14d2_0067f4d5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-15T19:57:49Z",
+      "side": 1,
+      "message": "I can give that a shot and update with results.  It would mean holding up the sysjump until the PD tasks signal that they\u0027re done with their transactions (on our boards, there are about 3 i2c calls involved in exiting a mode: changing the USB mux, the HPD signal, and sending the VDM).",
+      "parentUuid": "5304a5b2_ea604a64",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
