@@ -3006,6 +3006,18 @@ void pd_task(void *u)
 					break;
 #endif
 				pd[port].cc_state = PD_CC_NONE;
+
+				/*
+				 * When Try.SRC only one cc state is Rd.
+				 * Filter two Rd/Ra case.
+				 */
+				if ((pd[port].flags & PD_FLAGS_TRY_SRC) &&
+				    ((cc1 == TYPEC_CC_VOLT_RD &&
+				      cc2 == TYPEC_CC_VOLT_RD) ||
+				     (cc1 == TYPEC_CC_VOLT_RA &&
+				      cc2 == TYPEC_CC_VOLT_RA)))
+					break;
+
 				set_state(port,
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
 				break;
