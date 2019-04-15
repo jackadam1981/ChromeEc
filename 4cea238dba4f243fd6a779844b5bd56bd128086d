@@ -334,6 +334,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e6ef0d1_929746f2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-15T16:12:53Z",
+      "side": 1,
+      "message": "Looking at EFS, I\u0027d agree that it\u0027s probably the better approach to take on future devices.  But at this point octopus has shipping devices and we\u0027re well past the point of making such a large change in our firmware. \n\nI tried coding the sysjump path and ran across one snag: by the time we call HOOK_SYSJUMP in the current jump flow, the i2c controllers have all been locked down.  I confirmed that we can change the ordering of the i2c lockdown until after the hooks have run, but I\u0027m honestly pretty hesitant to alter our sysjump flow in order to improve the very specific unlocked-DUT-sourcing-DP-dongle case, especially considering this change by itself is sufficient to unblock the ODM\u0027s flow.",
+      "parentUuid": "51b210ad_68c40e3f",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
