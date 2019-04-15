@@ -46,6 +46,30 @@
       "revId": "39a02d6bbbeb565788ceaf739c0d676e8edf356f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bf7ea36_1d0ae0b6",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-15T23:46:20Z",
+      "side": 1,
+      "message": "Scott is currently OOO. So, I took over his CL and pushed the changes that you suggested.",
+      "parentUuid": "2806ac3d_acfa78c6",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 35
+      },
+      "revId": "39a02d6bbbeb565788ceaf739c0d676e8edf356f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
