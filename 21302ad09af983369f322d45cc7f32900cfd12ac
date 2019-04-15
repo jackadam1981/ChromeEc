@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26ef767_b8bc9097",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-15T13:40:10Z",
+      "side": 1,
+      "message": "Can you use LAPIC_EOI_REG instead?",
+      "range": {
+        "startLine": 345,
+        "startChar": 16,
+        "endLine": 345,
+        "endChar": 26
+      },
+      "revId": "21302ad09af983369f322d45cc7f32900cfd12ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
