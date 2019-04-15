@@ -22,6 +22,30 @@
       "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6dd4497_ed713257",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-04-15T23:34:54Z",
+      "side": 1,
+      "message": "that is the reason for the potential violation.  the AP\nsequences the two signals - then, if the EC controls\nthe backlight in the middle of that time window,\nthis sequencing is disturbed.",
+      "parentUuid": "8babe4fc_178e7eb4",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
