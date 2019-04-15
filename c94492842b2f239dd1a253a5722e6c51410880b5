@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8babe4fc_178e7eb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-15T17:26:00Z",
+      "side": 1,
+      "message": "What caused the timing violation? The backlight enable should just be anded in hardware.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
