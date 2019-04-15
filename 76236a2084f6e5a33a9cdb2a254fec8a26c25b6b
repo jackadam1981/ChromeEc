@@ -33,6 +33,29 @@
       "revId": "76236a2084f6e5a33a9cdb2a254fec8a26c25b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d61e86_9965965b",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-04-15T20:42:10Z",
+      "side": 1,
+      "message": "On cheza this gets spammed while device is on the recovery screen. It might cause usb type C bringup to be very annoying.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 58
+      },
+      "revId": "76236a2084f6e5a33a9cdb2a254fec8a26c25b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
