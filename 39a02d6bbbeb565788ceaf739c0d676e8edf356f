@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb223c2_505e04a9",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-15T16:52:18Z",
+      "side": 1,
+      "message": "I see why you added this: for more documenting code when people are declaring their flags.\n\nMy concern with this is that someone would accidentally use\n\n(flags \u0026 TCPC_FLAGS_ALERT_ACTIVE_LOW) and it won\u0027t give them the expected result.\n\nMaybe we can add a comment to all board.c files when it is active low (instead of using a define value)\n\n--\n\nAlso, we introduced the BIT(x) macro, can you switch to that?",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 35
+      },
+      "revId": "39a02d6bbbeb565788ceaf739c0d676e8edf356f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
