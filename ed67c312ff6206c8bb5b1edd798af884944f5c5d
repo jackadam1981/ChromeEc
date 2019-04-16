@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1339457a_4977d693",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-16T17:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508d5e91_04b21948",
+      "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56c3575e_0760a0c8",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 17
