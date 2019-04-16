@@ -126,20 +126,37 @@ static int is_pd_port(int port)
 	return 0 <= port && port < CONFIG_USB_PD_PORT_COUNT;
 }
 
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+static int is_dedicated_port(int port)
+{
+	return port <= CONFIG_USB_PD_PORT_COUNT && port < CHARGE_PORT_COUNT;
+}
+#endif
+
 static int is_sink(int port)
 {
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
-		/* Dedicated port is sink-only */
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_charge_port_is_sink(port);
+#else
 		return 1;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */
 	return pd_get_role(port) == PD_ROLE_SINK;
 }
 
 #ifndef TEST_BUILD
 static int is_connected(int port)
 {
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
-		/* Dedicated port is always connected */
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_charge_port_is_connected(port);
+#else
 		return 1;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */
 	return pd_is_connected(port);
 }
 #endif /* !TEST_BUILD */
@@ -225,8 +242,14 @@ static int charge_manager_is_seeded(void)
  */
 static int charge_manager_get_source_current(int port)
 {
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_get_source_current(port);
+#else
 		return 0;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */
 
 	switch (source_port_rp[port]) {
 	case TYPEC_RP_3A0:
@@ -448,8 +471,14 @@ void charge_manager_save_log(int port)
  */
 static void charge_manager_switch_to_source(int port)
 {
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		board_switch_to_source(port);
+#else
 		return;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */
 
 	/* If connected to dual-role device, then ask for a swap */
 	if (dualrole_capability[port] == CAP_DUALROLE && is_sink(port))
@@ -1197,11 +1226,11 @@ static int hc_override_dedicated_charger_limit(
 	 * Allow a change only if the dedicated charge port is used. Host needs
 	 * to apply a change every time a dedicated charger is plugged.
 	 */
-	if (charge_port != DEDICATED_CHARGE_PORT)
+	if (!is_dedicated_port(charge_port))
 		return EC_RES_UNAVAILABLE;
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &ci);
+				     charge_port, &ci);
 
 	return EC_RES_SUCCESS;
 }
