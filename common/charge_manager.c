@@ -30,7 +30,7 @@
 
 /* Charge supplier priority: lower number indicates higher priority. */
 test_mockable const int supplier_priority[] = {
-#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 	[CHARGE_SUPPLIER_DEDICATED] = 0,
 #endif
 	[CHARGE_SUPPLIER_PD] = 1,
@@ -126,23 +126,55 @@ static int is_pd_port(int port)
 	return 0 <= port && port < CONFIG_USB_PD_PORT_COUNT;
 }
 
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
+static int is_custom_port(int port)
+{
+	return port <= CONFIG_USB_PD_PORT_COUNT && port < CHARGE_PORT_COUNT;
+}
+#endif
+
 static int is_sink(int port)
 {
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
-		/* Dedicated port is sink-only */
-		return 1;
+		return board_charge_port_is_sink(port);
+#endif
 	return pd_get_role(port) == PD_ROLE_SINK;
 }
 
 #ifndef TEST_BUILD
 static int is_connected(int port)
 {
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
-		/* Dedicated port is always connected */
-		return 1;
+		return board_charge_port_is_connected(port);
+#endif
 	return pd_is_connected(port);
 }
 #endif /* !TEST_BUILD */
+
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
+__attribute__((weak)) int board_charge_port_is_sink(int port)
+{
+	return 1;
+}
+
+__attribute__((weak)) int board_charge_port_is_connected(int port)
+{
+	return 1;
+}
+
+#ifndef TEST_BUILD
+__attribute__((weak)) int board_get_source_current(int port)
+{
+	return 0;
+}
+#endif /* !TEST_BUILD */
+
+__attribute__((weak)) void board_switch_to_source(int port)
+{
+}
+#endif /* CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0 */
 
 #ifndef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 /**
@@ -225,8 +257,10 @@ static int charge_manager_is_seeded(void)
  */
 static int charge_manager_get_source_current(int port)
 {
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
-		return 0;
+		return board_get_source_current(port);
+#endif
 
 	switch (source_port_rp[port]) {
 	case TYPEC_RP_3A0:
@@ -338,7 +372,7 @@ static void charge_manager_fill_power_info(int port,
 			r->type = USB_CHG_TYPE_VBUS;
 			break;
 #endif
-#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 		case CHARGE_SUPPLIER_DEDICATED:
 			r->type = USB_CHG_TYPE_DEDICATED;
 			break;
@@ -448,8 +482,10 @@ void charge_manager_save_log(int port)
  */
 static void charge_manager_switch_to_source(int port)
 {
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 	if (!is_pd_port(port))
-		return;
+		board_switch_to_source(port);
+#endif
 
 	/* If connected to dual-role device, then ask for a swap */
 	if (dualrole_capability[port] == CAP_DUALROLE && is_sink(port))
@@ -1183,7 +1219,7 @@ DECLARE_HOST_COMMAND(EC_CMD_PD_CHARGE_PORT_OVERRIDE,
 		     hc_charge_port_override,
 		     EC_VER_MASK(0));
 
-#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 static int hc_override_dedicated_charger_limit(
 		struct host_cmd_handler_args *args)
 {
@@ -1197,11 +1233,11 @@ static int hc_override_dedicated_charger_limit(
 	 * Allow a change only if the dedicated charge port is used. Host needs
 	 * to apply a change every time a dedicated charger is plugged.
 	 */
-	if (charge_port != DEDICATED_CHARGE_PORT)
+	if (!is_custom_port(charge_port))
 		return EC_RES_UNAVAILABLE;
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &ci);
+				     charge_port, &ci);
 
 	return EC_RES_SUCCESS;
 }

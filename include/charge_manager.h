@@ -42,7 +42,7 @@ enum charge_supplier {
 	CHARGE_SUPPLIER_OTHER,
 	CHARGE_SUPPLIER_VBUS,
 #endif /* CHARGE_MANAGER_BC12 */
-#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
 	CHARGE_SUPPLIER_DEDICATED,
 #endif
 	CHARGE_SUPPLIER_COUNT
@@ -101,11 +101,7 @@ enum ceil_requestor {
 };
 
 #define CHARGE_PORT_COUNT \
-		(CONFIG_USB_PD_PORT_COUNT + CONFIG_DEDICATED_CHARGE_PORT_COUNT)
-#if (CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0) && !defined(DEDICATED_CHARGE_PORT)
-#error "DEDICATED_CHARGE_PORT must be defined"
-#endif
-
+		(CONFIG_USB_PD_PORT_COUNT + CONFIG_CUSTOM_CHARGE_PORT_COUNT)
 
 /**
  * Update charge ceiling for a given port. The ceiling can be set independently
@@ -237,5 +233,15 @@ int board_vbus_source_enabled(int port);
  */
 enum adc_channel board_get_vbus_adc(int port);
 #endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
+
+#if CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0
+int board_charge_port_is_sink(int port);
+
+int board_charge_port_is_connected(int port);
+
+int board_get_source_current(int port);
+
+void board_switch_to_source(int port);
+#endif /* CONFIG_CUSTOM_CHARGE_PORT_COUNT > 0 */
 
 #endif /* __CROS_EC_CHARGE_MANAGER_H */
