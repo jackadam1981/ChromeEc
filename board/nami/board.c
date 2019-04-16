@@ -1067,3 +1067,20 @@ enum critical_shutdown board_critical_shutdown_check(
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 
 }
+
+static void set_tcpc_aux_switch(void)
+{
+	const struct tcpc_config_t *conf = &tcpc_config[USB_PD_PORT_ANX7447];
+	const char buf[] = { 0xb6, 0x0c }; /* TODO: Use macros */
+	i2c_xfer(conf->i2c_host_port, conf->i2c_slave_addr,
+		 buf, sizeof(buf), NULL, 0, I2C_XFER_SINGLE);
+}
+DECLARE_DEFERRED(set_tcpc_aux_switch);
+
+void ccd_mode_isr(enum gpio_signal signal)
+{
+	CPRINTS("%s: %d", __func__, gpio_get_level(signal));
+	if (!gpio_get_level(signal))
+		hook_call_deferred(&set_tcpc_aux_switch_data, 0);
+	/* TODO: Revert to default on high */
+}
