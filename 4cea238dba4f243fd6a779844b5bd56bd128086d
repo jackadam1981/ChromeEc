@@ -478,6 +478,30 @@
       "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281d2e50_8e351ea3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2743,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-16T18:02:18Z",
+      "side": 1,
+      "message": "Based on our discussions, I can see some value to having a general architecture in place to do preparations for sysjump-ing from the PD task.  It may be that we decide to do something different with it in the future if we change our behavior, but it\u0027ll be there ready to go when that happens.",
+      "parentUuid": "eabea0c9_335bd375",
+      "range": {
+        "startLine": 2742,
+        "startChar": 26,
+        "endLine": 2743,
+        "endChar": 14
+      },
+      "revId": "4cea238dba4f243fd6a779844b5bd56bd128086d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
