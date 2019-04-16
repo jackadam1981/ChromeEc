@@ -105,6 +105,24 @@
       "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599b4913_bcd31508",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-16T16:57:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t crash, I\u0027m not even sure how to describe it. The values still enter the queue, are still read by the AP, but nothing seems to be working (Android apps are just always showing 0 for the magnetic field).",
+      "parentUuid": "21ebd227_425af43b",
+      "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
