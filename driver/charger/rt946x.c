@@ -1143,6 +1143,7 @@ static void usb_pd_connect(void)
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
 #endif
 
+<<<<<<< HEAD
 static int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
 {
 	int rv, i, adc_start, adc_result = 0;
@@ -1332,12 +1333,33 @@ static int mt6370_irq_handler(void)
 }
 #endif /* CONFIG_CHARGER_MT6370 */
 
+int rt946x_bc12_workaround(void)
+{
+	/*
+	 * There is a parasitic capacitance on D+,
+	 * which results in pulling D+ up too slow while detecting BC1.2.
+	 * So we try to fix this in two steps:
+	 * 1. Pull D+ up to a voltage under 0.6V
+	 * 2. re-toggling and pull D+ up to 0.6V (again)
+	 * and then detect the voltage of D-.
+	 */
+	int rv;
+
+	rv = rt946x_toggle_bc12_detection();
+	if (rv)
+		return rv;
+	msleep(10);
+	return rt946x_toggle_bc12_detection();
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
 	int chg_type;
 	int reg = 0;
+	int bc12_cnt = 0;
+	const int max_bc12_cnt = 3;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
@@ -1370,6 +1392,11 @@ void usb_charger_task(void *u)
 					p9221_notify_vbus_change(1);
 					CPRINTS("WPC ON");
 			}
+			if (bc12_type == CHARGE_SUPPLIER_BC12_SDP &&
+			    ++bc12_cnt < max_bc12_cnt) {
+				if (!rt946x_bc12_workaround())
+					continue;
+			}
 
 			charge_manager_update_charge(bc12_type, 0, &chg);
 bc12_none:
@@ -1380,6 +1407,7 @@ bc12_none:
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
 			CPRINTS("VBUS detached");
+			bc12_cnt = 0;
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
 			p9221_notify_vbus_change(0);
 #endif
