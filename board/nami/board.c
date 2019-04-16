@@ -1070,3 +1070,12 @@ enum critical_shutdown board_critical_shutdown_check(
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 
 }
+
+void ccd_mode_isr(enum gpio_signal signal)
+{
+#if 0
+	if (!gpio_get_level(signal))
+		hook_call_deferred(&set_tcpc_aux_switch_data, 0);
+	/* TODO: Revert to default on high */
+#endif
+}
