@@ -54,44 +54,11 @@ struct irq_data {
  * __asm__
  * Note: currently we don't allow nested irq handling
  */
-#define DECLARE_IRQ(irq, routine) DECLARE_IRQ_(irq, routine, irq + 32 + 10)
 /* Each irq has a irq_data structure placed in .rodata.irqs section,
  * to be used for dynamically setting up interrupt gates */
-#define DECLARE_IRQ_(irq, routine, vector)				\
+#define DECLARE_IRQ(irq, routine)					\
 	void __keep routine(void);					\
-	void IRQ_HANDLER(irq)(void); 					\
 	__asm__ (".section .rodata.irqs\n");				\
 	const struct irq_data __keep CONCAT4(__irq_, irq, _, routine)	\
-	__attribute__((section(".rodata.irqs")))= {IRQ_HANDLER(irq), irq};\
-	__asm__ (							\
-		".section .text._irq_"#irq"_handler\n"			\
-		"_irq_"#irq"_handler:\n"				\
-			"pusha\n"					\
-			ASM_LOCK_PREFIX "addl  $1, __in_isr\n"		\
-			"movl %esp, %eax\n"                             \
-			"movl $stack_end, %esp\n"                       \
-			"push %eax\n"                                   \
-			task_start_irq_handler_call(vector)		\
-			"call "#routine"\n"				\
-			"push $0\n"					\
-			"push $0\n"					\
-			"call switch_handler\n"				\
-			"addl $0x08, %esp\n"				\
-			"pop %esp\n"                                    \
-			"test %eax, %eax\n"				\
-			"je 1f\n"					\
-			"movl current_task, %eax\n"			\
-			save_fpu_ctx 					\
-			"movl %esp, (%eax)\n"				\
-			"movl next_task, %eax\n"			\
-			"movl %eax, current_task\n"			\
-			"movl (%eax), %esp\n"				\
-			rstr_fpu_ctx					\
-			"1:\n"						\
-			"movl $"#vector ", (0xFEC00040)\n"              \
-			"movl $0x00, (0xFEE000B0)\n" 			\
-			ASM_LOCK_PREFIX "subl  $1, __in_isr\n"		\
-			"popa\n"					\
-			"iret\n"					\
-		);
+	__attribute__((section(".rodata.irqs")))= { routine, irq};
 #endif  /* __CROS_EC_IRQ_HANDLER_H */

@@ -12,6 +12,7 @@
 #include "interrupts.h"
 #include "irq_handler.h"
 #include "registers.h"
+#include "task.h"
 #include "task_defs.h"
 #include "util.h"
 
@@ -369,6 +370,26 @@ void unhandled_vector(void)
 /* This needs to be moved to link_defs.h */
 extern const struct irq_data __irq_data[], __irq_data_end[];
 
+void call_irq_service_routine(int irq)
+{
+	const struct irq_data *p = __irq_data;
+
+	for (; p < __irq_data_end; p++)
+		if (p->irq == irq)
+			p->routine();
+}
+
+uint32_t handle_irq(void)
+{
+	uint32_t vec = get_current_interrupt_vector();
+
+	task_start_irq_handler((void*)vec);
+
+	call_irq_service_routine(VEC_TO_IRQ(vec));
+
+	return vec;
+}
+
 void init_interrupts(void)
 {
 	unsigned entry;
@@ -378,7 +399,8 @@ void init_interrupts(void)
 
 	/* Setup gates for IRQs declared by drivers using DECLARE_IRQ */
 	for (; p < __irq_data_end; p++)
-		set_interrupt_gate(IRQ_TO_VEC(p->irq), p->routine, IDT_DESC_FLAGS);
+		set_interrupt_gate(IRQ_TO_VEC(p->irq), ioapic_irq_handler,
+				   IDT_DESC_FLAGS);
 
 	/* Setup gate for LAPIC_LVT_ERROR vector; clear any remnant error. */
 	REG32(LAPIC_ESR_REG) = 0;
