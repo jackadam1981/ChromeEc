@@ -50,6 +50,7 @@ enum pd_rx_errors {
 #define PD_EVENT_POWER_STATE_CHANGE (1<<8) /* Chipset power state changed */
 #define PD_EVENT_SEND_HARD_RESET    (1<<9) /* Issue a Hard Reset. */
 #define PD_EVENT_SM                 (1<<10) /* PD State machine event */
+#define PD_EVENT_MAX                (1<<11) /* First free event on PD task */
 
 /* Ensure TCPC is out of low power mode before handling these events. */
 #define PD_EXIT_LOW_POWER_EVENT_MASK \
