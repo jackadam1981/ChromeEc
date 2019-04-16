@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cc56267_621394b2",
+        "filename": "chip/mt_scp/ipi_table.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-16T07:31:56Z",
+      "side": 1,
+      "message": "Add a small comment to explain how it\u0027s generated? So people don\u0027t waste time trying to figure out where that file is.",
+      "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db78d837_735d26fa",
+        "filename": "util/gen_ipi_table.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-16T07:31:56Z",
+      "side": 1,
+      "message": "I was hoping we could generate this in shell, but then it\u0027s tricky to extract IPI_COUNT...",
+      "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cdfca3_64da5d9f",
+        "filename": "util/gen_ipi_table.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-16T07:31:56Z",
+      "side": 1,
+      "message": "Is this really needed?",
+      "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
