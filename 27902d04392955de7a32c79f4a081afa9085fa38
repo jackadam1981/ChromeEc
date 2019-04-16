@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2c25a47_2c8cc30e",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-16T04:35:28Z",
+      "side": 1,
+      "message": "This one doesn\u0027t need to be static",
+      "range": {
+        "startLine": 30,
+        "startChar": 39,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "27902d04392955de7a32c79f4a081afa9085fa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4345c030_1a912acb",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-16T04:35:28Z",
+      "side": 1,
+      "message": "Explicitly initialize this (to maybe UNCHANGED).",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "27902d04392955de7a32c79f4a081afa9085fa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c9d402_88bbb338",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-16T04:35:28Z",
+      "side": 1,
+      "message": "Seems like this should be \"return\"",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "27902d04392955de7a32c79f4a081afa9085fa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
