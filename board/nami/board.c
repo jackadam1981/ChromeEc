@@ -306,6 +306,20 @@ void board_reset_pd_mcu(void)
 	msleep(2);
 }
 
+static void set_tcpc_aux_switch(void)
+{
+#if 1
+	const struct tcpc_config_t *conf = &tcpc_config[USB_PD_PORT_ANX7447];
+	const char buf[] = { 0xb6, 0x0c }; /* TODO: Use macros */
+	int rv;
+	rv = i2c_write8(conf->i2c_host_port, 0x52, 0xb6, 0xc);
+	CPRINTS("%s: 0x%x\n", __func__, rv);
+	rv = i2c_write8(conf->i2c_host_port, 0x53, 0xb6, 0xc);
+	CPRINTS("%s: 0x%x\n", __func__, rv);
+#endif
+}
+DECLARE_DEFERRED(set_tcpc_aux_switch);
+
 void board_tcpc_init(void)
 {
 	int port;
@@ -329,6 +343,8 @@ void board_tcpc_init(void)
 		const struct usb_mux *mux = &usb_muxes[port];
 		mux->hpd_update(port, 0, 0);
 	}
+
+	set_tcpc_aux_switch();
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
@@ -1066,4 +1082,13 @@ enum critical_shutdown board_critical_shutdown_check(
 	else
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 
+}
+
+void ccd_mode_isr(enum gpio_signal signal)
+{
+#if 0
+	if (!gpio_get_level(signal))
+		hook_call_deferred(&set_tcpc_aux_switch_data, 0);
+	/* TODO: Revert to default on high */
+#endif
 }

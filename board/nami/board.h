@@ -14,6 +14,8 @@
  */
 #define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
 
+#define CONFIG_I2C_DEBUG_PASSTHRU
+
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
@@ -339,6 +341,8 @@ extern uint8_t model;
 
 /* SKU_ID[24:31] are dedicated to OEM customization */
 #define CBI_SKU_CUSTOM_FIELD(val)	((val) >> 24)
+
+void ccd_mode_isr(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
