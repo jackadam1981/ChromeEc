@@ -1563,13 +1563,13 @@ int cmd_fp_mode(int argc, char *argv[])
 int cmd_fp_seed(int argc, char *argv[])
 {
 	struct ec_params_fp_seed p;
-	char *seed;
+	const char *seed = argv[1];
+	int rv;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <seed>\n", argv[0]);
+	if (argc == 1) {
+		printf("Missing seed argument.\n");
 		return 1;
 	}
-	seed = argv[1];
 	if (strlen(seed) != FP_CONTEXT_TPM_BYTES) {
 		printf("Invalid seed '%s' is %zd bytes long instead of %d.\n",
 		       seed, strlen(seed), FP_CONTEXT_TPM_BYTES);
@@ -1579,7 +1579,8 @@ int cmd_fp_seed(int argc, char *argv[])
 	p.struct_version = FP_TEMPLATE_FORMAT_VERSION;
 	memcpy(p.seed, seed, FP_CONTEXT_TPM_BYTES);
 
-	return ec_command(EC_CMD_FP_SEED, 0, &p, sizeof(p), NULL, 0);
+	rv = ec_command(EC_CMD_FP_SEED, 0, &p, sizeof(p), NULL, 0);
+	return rv;
 }
 
 int cmd_fp_stats(int argc, char *argv[])
@@ -6036,8 +6037,9 @@ int cmd_i2c_read(int argc, char *argv[])
 {
 	unsigned int port, addr;
 	int read_len, write_len;
-	uint8_t write_buf[1];
+	uint8_t write_buf[2];
 	uint8_t *read_buf = NULL;
+	uint16_t offset = 0;
 	char *e;
 	int rv;
 
@@ -6068,12 +6070,20 @@ int cmd_i2c_read(int argc, char *argv[])
 	/* Convert from 8-bit to 7-bit address */
 	addr = addr >> 1;
 
-	write_buf[0] = strtol(argv[4], &e, 0);
+        offset = strtol(argv[4], &e, 0);
+	if(strlen(argv[4]) == 6){
+                write_buf[0] = (offset >> 8) & 0xff;
+                write_buf[1] = offset & 0xff;
+                write_len = 2;
+        }else{
+                write_buf[0] = offset && 0xff;
+                write_len = 1;
+        }
+
 	if (e && *e) {
 		fprintf(stderr, "Bad offset.\n");
 		return -1;
 	}
-	write_len = 1;
 
 	rv = do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
 
@@ -6081,7 +6091,7 @@ int cmd_i2c_read(int argc, char *argv[])
 		return rv;
 
 	printf("Read from I2C port %d at 0x%x offset 0x%x = 0x%x\n",
-		port, addr, write_buf[0], *(uint16_t *)read_buf);
+		port, addr, offset, *(uint16_t *)read_buf);
 	return 0;
 }
 
@@ -6090,7 +6100,8 @@ int cmd_i2c_write(int argc, char *argv[])
 {
 	unsigned int port, addr;
 	int write_len;
-	uint8_t write_buf[3];
+	uint8_t write_buf[4];
+	uint16_t offset = 0;
 	char *e;
 	int rv;
 
@@ -6123,13 +6134,21 @@ int cmd_i2c_write(int argc, char *argv[])
 	/* Convert from 8-bit to 7-bit address */
 	addr = addr >> 1;
 
-	write_buf[0] = strtol(argv[4], &e, 0);
+	offset = strtol(argv[4], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad offset.\n");
 		return -1;
 	}
+        if(strlen(argv[4]) == 6){
+                write_len += 1;
+                write_buf[0] = (offset >> 8) & 0xff;
+                write_buf[1] = offset & 0xff;
+                *((uint16_t *)&write_buf[2]) = strtol(argv[5], &e, 0);
+        }else{
+                write_buf[0] = offset && 0xff;
+                *((uint16_t *)&write_buf[1]) = strtol(argv[5], &e, 0);
+        }
 
-	*((uint16_t *)&write_buf[1]) = strtol(argv[5], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad data.\n");
 		return -1;
