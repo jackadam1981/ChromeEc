@@ -263,6 +263,13 @@ DECLARE_CONSOLE_COMMAND(anx_ocm, command_anx_ocm,
 			"Print OCM status or erases OCM for a given port.");
 #endif
 
+static void anx7447_set_aux_switch(int port)
+{
+	CPRINTS("C%d: AUX_SW_SEL=0x%x", port, 0xc);
+	if (anx7447_reg_write(port, 0xb6, 0xc))
+		CPRINTS("C%d: Setting AUX_SW_SEL failed", port);
+}
+
 static int anx7447_init(int port)
 {
 	int rv, reg, i;
@@ -329,6 +336,7 @@ static int anx7447_init(int port)
 	anx7447_hpd_mode_en(port);
 	anx7447_set_hpd_level(port, 0);
 	anx7447_hpd_output_en(port);
+	anx7447_set_aux_switch(port);
 
 	return rv;
 }
