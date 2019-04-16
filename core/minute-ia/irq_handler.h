@@ -29,8 +29,8 @@
 #endif
 
 #ifdef CONFIG_TASK_PROFILING
-#define task_start_irq_handler_call(vector) \
-			"push $"#vector"\n"	\
+#define task_start_irq_handler_call(irq) \
+			"push $"#irq"\n"	\
 			"call task_start_irq_handler\n"	\
 			"addl $0x4, %esp\n"
 #else
@@ -40,6 +40,7 @@
 
 struct irq_data {
 	void (*routine)(void);
+	void (*ioapic_routine)(void);
 	int irq;
 };
 
@@ -62,7 +63,9 @@ struct irq_data {
 	void IRQ_HANDLER(irq)(void); 					\
 	__asm__ (".section .rodata.irqs\n");				\
 	const struct irq_data __keep CONCAT4(__irq_, irq, _, routine)	\
-	__attribute__((section(".rodata.irqs")))= {IRQ_HANDLER(irq), irq};\
+	__attribute__((section(".rodata.irqs"))) = { routine,		\
+						     IRQ_HANDLER(irq),	\
+						     irq};		\
 	__asm__ (							\
 		".section .text._irq_"#irq"_handler\n"			\
 		"_irq_"#irq"_handler:\n"				\
@@ -71,7 +74,7 @@ struct irq_data {
 			"movl %esp, %eax\n"                             \
 			"movl $stack_end, %esp\n"                       \
 			"push %eax\n"                                   \
-			task_start_irq_handler_call(vector)		\
+			task_start_irq_handler_call(irq)		\
 			"call "#routine"\n"				\
 			"push $0\n"					\
 			"push $0\n"					\

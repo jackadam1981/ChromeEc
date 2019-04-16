@@ -95,6 +95,7 @@ enum ish_i2c_port {
 /* APIC interrupt vectors */
 #define ISH_TS_VECTOR              0x20  /* Task switch vector */
 #define LAPIC_LVT_ERROR_VECTOR     0x21
+#define SOFTIRQ_VECTOR             0x22  /* handle s/w geneated IRQ */
 #define LAPIC_SPURIOUS_INT_VECTOR  0xff
 
 /* Interrupt to vector mapping. To be programmed into IOAPIC */

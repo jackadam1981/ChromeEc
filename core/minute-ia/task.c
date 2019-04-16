@@ -276,8 +276,7 @@ void __keep task_start_irq_handler(void *data)
 	 * pre-empted.
 	 */
 	uint32_t t = get_time().le.lo;
-	uint32_t vector = (uint32_t)data;
-	int irq = VEC_TO_IRQ(vector);
+	int irq = (int)data;
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
@@ -420,11 +419,25 @@ void task_clear_pending_irq(int irq)
 
 void task_trigger_irq(int irq)
 {
-	/* Writing to Local APIC Interrupt Command Register (ICR) causes an
-	 * IPI (Inter-processor interrupt) on the APIC bus. Here we direct the
-	 * IPI to originating prccessor to generate self-interrupt
+	/* ISR should be called before the first task is scheduled */
+	if (!task_start_called())
+		return;
+
+	/* we don't allow nested interrupt */
+	if (in_interrupt_context())
+		return;
+
+	/*
+	 * "int" instruction accepts vector only as immediate value.
+	 * so here, we use one vector(SOFTIRQ_VECTOR) and pass
+	 * the address of ISR of irq in ecx register.
 	 */
-	REG32(LAPIC_ICR_REG) = LAPIC_ICR_BITS | IRQ_TO_VEC(irq);
+	__asm__ __volatile__ (
+			"int %0\n"
+			:
+			: "i" (SOFTIRQ_VECTOR),
+			"c" (irq)
+			);
 }
 
 void mutex_lock(struct mutex *mtx)
