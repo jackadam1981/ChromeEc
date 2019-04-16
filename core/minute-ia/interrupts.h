@@ -50,6 +50,7 @@ typedef void (*isr_handler_t) (void);
 void init_interrupts(void);
 void mask_interrupt(unsigned int irq);
 void unmask_interrupt(unsigned int irq);
+void call_irq_service_routine(int irq);
 
 /**
  * disable current all enabled intrrupts

@@ -17,6 +17,7 @@
 .global __task_start
 .global __switchto
 .global default_int_handler
+.global ioapic_irq_handler
 
 # Start the task scheduling. Start current_task (hook_task)
 # This function is not an ISR but imitates the sequence.
@@ -68,6 +69,66 @@ default_int_handler:
 	popa
 	iret
 
+.endfunc
+
+.align 4
+.func ioapic_irq_handler
+ioapic_irq_handler:
+	pusha
+	ASM_LOCK_PREFIX addl $1, __in_isr
+
+	movl %esp, %eax
+	movl $stack_end, %esp		# use system stack
+	push %eax			# push sp of preempted context
+
+	call handle_irq			# call handle_irq
+					# handle_irq returns vector number
+
+	movl %eax, %ebx			# keep vector number
+
+	push $0
+	push $0
+	call switch_handler		# switch task if needed
+	addl $0x08, %esp
+
+	pop %esp			# restore sp of preempted context
+
+	test %eax, %eax			# Check if task switch required
+	jz 1f
+
+	movl current_task, %eax
+
+#ifdef CONFIG_FPU
+	movl USE_FPU_OFFSET(%eax), %ecx
+	test %ecx, %ecx
+	jz 2f
+	fnsave FPU_CTX_OFFSET(%eax) # Save current FPU context(current->fp_ctx)
+	2:
+#endif
+
+	# Save SP of current task and switch to new task
+	movl %esp, (%eax)
+	movl next_task, %eax
+	movl %eax, current_task
+	movl (%eax), %esp
+
+#ifdef CONFIG_FPU
+	movl USE_FPU_OFFSET(%eax), %ecx
+	test %ecx, %ecx
+	jz 1f
+	frstor FPU_CTX_OFFSET(%eax)		# Restore next FPU context
+#endif
+
+	1:
+	movl %ebx, IOAPIC_EOI_REG	# Indicate completion of servicing the
+					# interrupt to IOAPIC first
+	movl $0x00, LAPIC_EOI_REG	# Indicate completion of servicing the
+					# interrupt to LAPIC next
+
+	# Decrement ISR counter and restore general purpose registers.
+	ASM_LOCK_PREFIX subl $1, __in_isr
+	popa
+	iret
 .endfunc
 
 # Switches from one task to another if ready.

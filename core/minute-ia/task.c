@@ -420,11 +420,28 @@ void task_clear_pending_irq(int irq)
 
 void task_trigger_irq(int irq)
 {
-	/* Writing to Local APIC Interrupt Command Register (ICR) causes an
-	 * IPI (Inter-processor interrupt) on the APIC bus. Here we direct the
-	 * IPI to originating prccessor to generate self-interrupt
-	 */
-	REG32(LAPIC_ICR_REG) = LAPIC_ICR_BITS | IRQ_TO_VEC(irq);
+	int isr_flag;
+
+	/* ISR shouldn't be called before the first task is scheduled */
+	if (!task_start_called())
+		return;
+
+	isr_flag = in_interrupt_context();
+	if (!isr_flag) {
+		interrupt_disable();	/* disable interupt */
+		__in_isr++;		/* pretend to start interrupt context */
+
+		/* TODO: use system stack */
+	}
+
+	call_irq_service_routine(irq);
+
+	if (!isr_flag) {
+		__in_isr--;
+		interrupt_enable();
+
+		__schedule(0, 0);	/* schedule the top runnable */
+	}
 }
 
 void mutex_lock(struct mutex *mtx)
