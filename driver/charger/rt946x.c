@@ -841,7 +841,7 @@ static void rt946x_init(void)
 	int reg = 0xFFFFFFFF;
 
 	/* Check device id */
-	if (charger_device_id(&reg) || reg != RT946X_VENDOR_ID) {
+	if (charger_device_id(&reg) || (reg != RT946X_VENDOR_ID && reg != 0xf0)) {
 		CPRINTF("RT946X incorrect ID: 0x%02x\n", reg);
 		return;
 	}
@@ -915,6 +915,56 @@ void rt946x_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
+int rt946x_toggle_chgdet_flow(void)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(0);
+	if (rv)
+		return rv;
+	udelay(40);
+	return rt946x_enable_bc12_detection(1);
+}
+
+int rt946x_bc12_workaround(int *bc12_type_old)
+{
+	int rv;
+	int reg = 0;
+	int i, bc12_type, bc12_cnt = 0, max_wait_cnt = 25;
+	int vbus = 0;
+	while (bc12_cnt < 3) {
+		CPRINTF("%s: bc12_cnt = %d\n", __func__, bc12_cnt);
+		bc12_cnt++;
+		rv = rt946x_toggle_chgdet_flow();
+		if (rv)
+			return rv;
+		usleep(10*1000);
+		rv = rt946x_toggle_chgdet_flow();
+		for (i = 0; i < max_wait_cnt; i++) {
+			usleep(40*1000);
+			rt946x_read8(MT6370_REG_DPDMSTAT, &reg);
+			if (reg & RT946X_MASK_DPDMIRQ_ATTACH)
+				break;
+			vbus = charger_get_vbus_voltage(0);
+			CPRINTS("%s: VBUS attached: %dmV", __func__, vbus);
+			if (vbus < 3800) {
+				CPRINTS("%s: bad adapter\n", __func__);
+				return rv;
+			}
+		}
+		if (i == max_wait_cnt) {
+			CPRINTS("%s: timeout\n", __func__);
+			return rv;
+		}
+		bc12_type = rt946x_get_bc12_device_type();
+		CPRINTF("%s: bc12_type is %d\n", __func__, bc12_type);
+		if (bc12_type != CHARGE_SUPPLIER_BC12_SDP) {
+			*bc12_type_old = bc12_type;
+			return rv;
+		}
+	}
+	return rv;
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
@@ -923,6 +973,7 @@ void usb_charger_task(void *u)
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
+		CPRINTS("%s: entry\n", __func__);
 		rt946x_read8(RT946X_REG_DPDMIRQ, &reg);
 
 		/* VBUS attach event */
@@ -930,8 +981,9 @@ void usb_charger_task(void *u)
 			CPRINTS("VBUS attached: %dmV",
 					charger_get_vbus_voltage(0));
 			bc12_type = rt946x_get_bc12_device_type();
-
-			CPRINTS("BC12 type %d", bc12_type);
+			CPRINTF("%s: bc12_type is %d\n", __func__, bc12_type);
+			if (bc12_type == CHARGE_SUPPLIER_BC12_SDP)
+				rt946x_bc12_workaround(&bc12_type);
 			if (bc12_type != CHARGE_SUPPLIER_NONE) {
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
 				if ((bc12_type == CHARGE_SUPPLIER_BC12_SDP) &&
@@ -954,10 +1006,10 @@ void usb_charger_task(void *u)
 
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
-			CPRINTS("VBUS detached");
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
 			p9221_notify_vbus_change(0);
 #endif
+			CPRINTF("%s: vbus detach\n", __func__);
 			charge_manager_update_charge(bc12_type, 0, NULL);
 			rt946x_enable_bc12_detection(1);
 		}
