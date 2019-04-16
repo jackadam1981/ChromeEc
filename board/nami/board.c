@@ -979,6 +979,7 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+<<<<<<< HEAD   (38f43e USB-PD: Fix null-pointer dereference for svdm_rsp.amode)
 void board_bc12_enable(void)
 {
 	enum gpio_signal pin;
@@ -995,6 +996,26 @@ void board_bc12_enable(void)
 	}
 	gpio_set_level(pin, 1);
 	CPRINTS("BC12 enabled");
+=======
+static void anx7447_set_aux_switch(void)
+{
+	const int port = USB_PD_PORT_ANX7447;
+
+	/* Debounce */
+	if (gpio_get_level(GPIO_CCD_MODE_ODL))
+		return;
+
+	CPRINTS("C%d: AUX_SW_SEL=0x%x", port, 0xc);
+	if (tcpc_write(port, ANX7447_REG_TCPC_AUX_SWITCH, 0xc))
+		CPRINTS("C%d: Setting AUX_SW_SEL failed", port);
+}
+DECLARE_DEFERRED(anx7447_set_aux_switch);
+
+void ccd_mode_isr(enum gpio_signal signal)
+{
+	/* Wait 2 seconds until all mux setting is done by PD task */
+	hook_call_deferred(&anx7447_set_aux_switch_data, 2 * SECOND);
+>>>>>>> CHANGE (d46b2b Nami: Set TCPC_AUX_SWITCH to 0xC on Port 1 on CCD enable)
 }
 
 static void board_init(void)
@@ -1028,6 +1049,10 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+
+	/* Trigger once to set mux in case CCD cable is already connected. */
+	ccd_mode_isr(GPIO_CCD_MODE_ODL);
+	gpio_enable_interrupt(GPIO_CCD_MODE_ODL);
 
 	/* Enable Accel/Gyro interrupt for convertibles. */
 	if (sku & SKU_ID_MASK_CONVERTIBLE)
