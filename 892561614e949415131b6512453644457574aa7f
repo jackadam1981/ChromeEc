@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dd4cfe9_6ec8c020",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-16T17:35:19Z",
+      "side": 1,
+      "message": "You can just get rid of this completely. CONFIG_FANS is undef\u0027ed in include/config.h",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "892561614e949415131b6512453644457574aa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
