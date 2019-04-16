@@ -644,6 +644,9 @@
 /* Number of charge ports excluding type-c ports */
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 0
 
+/* Override the default properties of dedicated port */
+#undef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+
 /* Allow charge manager to default to charging from dual-role partners */
 #undef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 
