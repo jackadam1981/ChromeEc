@@ -914,11 +914,33 @@ void rt946x_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
+int rt946x_toggle_chgdet_flow(void)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(1);
+	if (rv)
+		return rv;
+	udelay(40);
+	return rt946x_enable_bc12_detection(0);
+}
+
+int rt946x_bc12_workaround(void)
+{
+	int rv;
+	CPRINTF("%s: ++\n", __func__);
+	rv = rt946x_toggle_chgdet_flow();
+	if (rv)
+		return rv;
+	udelay(10*1000);
+	return rt946x_toggle_chgdet_flow();
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
 	int reg = 0;
+	int bc12_cnt = 0;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
@@ -927,6 +949,12 @@ void usb_charger_task(void *u)
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
 			bc12_type = rt946x_get_bc12_device_type();
+			CPRINTF("%s: bc12_type is %d\n", __func__, bc12_type);
+			if (bc12_type == CHARGE_SUPPLIER_BC12_SDP &&
+				bc12_cnt < 3) {
+				rt946x_bc12_workaround();
+				bc12_cnt++;
+			}
 			if (bc12_type != CHARGE_SUPPLIER_NONE) {
 				chg.current = rt946x_get_bc12_ilim(bc12_type);
 				charge_manager_update_charge(bc12_type,
@@ -937,8 +965,10 @@ void usb_charger_task(void *u)
 
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
+			CPRINTF("%s: vbus detach\n", __func__);
 			charge_manager_update_charge(bc12_type, 0, NULL);
 			rt946x_enable_bc12_detection(1);
+			bc12_cnt = 0;
 		}
 
 		task_wait_event(-1);
