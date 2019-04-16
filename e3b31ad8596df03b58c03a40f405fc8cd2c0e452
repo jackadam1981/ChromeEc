@@ -70,6 +70,30 @@
       "revId": "e3b31ad8596df03b58c03a40f405fc8cd2c0e452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38df3e74_a0f29e58",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-04-16T02:39:35Z",
+      "side": 1,
+      "message": "Hi Jett: Thank you for your comments. It looks like the OVP is handled via the nxp ppc driver and no common TCPM driver will handle the OVP from TCPC. It will be better to disable it in our driver init. I will update an new patch set to disable it.",
+      "parentUuid": "a81b70cd_6428d9e3",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "e3b31ad8596df03b58c03a40f405fc8cd2c0e452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
