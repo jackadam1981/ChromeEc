@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "866c7e69_23a48c5a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-16T02:37:54Z",
+      "side": 1,
+      "message": "It would be nice to break that out into a separate variable so the logic is more easily visible.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 3,
+        "endLine": 1059,
+        "endChar": 0
+      },
+      "revId": "9aa65b83d384481b8b12e589f74f6facc9d855c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
