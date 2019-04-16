@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "826c2138_1ddeb019",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-16T07:22:42Z",
+      "side": 1,
+      "message": "since s/w generated UART irq is for TX\nI\u0027ll remove this if it works fine w/o this.",
+      "range": {
+        "startLine": 442,
+        "startChar": 16,
+        "endLine": 442,
+        "endChar": 34
+      },
+      "revId": "88a99947fd3b0fce3132cd1c9b84763ac94ba411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
