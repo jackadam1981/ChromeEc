@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f09a8b15_ffd1a810",
+        "filename": "chip/mt_scp/ipi_table.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-16T08:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc56267_621394b2",
+      "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db78d837_735d26fa",
         "filename": "util/gen_ipi_table.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-16T07:31:56Z",
       "side": 1,
       "message": "I was hoping we could generate this in shell, but then it\u0027s tricky to extract IPI_COUNT...",
+      "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78962907_f3c06b27",
+        "filename": "util/gen_ipi_table.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-16T08:15:49Z",
+      "side": 1,
+      "message": "Yes, so I would like to use a c program.",
+      "parentUuid": "db78d837_735d26fa",
       "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1e9314_d3e704bd",
+        "filename": "util/gen_ipi_table.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-16T08:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9cdfca3_64da5d9f",
+      "revId": "9db92a0ec4b6cc164192f78350ed0a2358de3770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
