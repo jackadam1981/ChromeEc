@@ -641,8 +641,27 @@
 /* Compile charge manager */
 #undef CONFIG_CHARGE_MANAGER
 
-/* Number of charge ports excluding type-c ports */
+/*
+ * Number of charge ports excluding type-c ports
+ *
+ * If defined, the board must define a macro DEDICATED_CHARGE_PORT indicates
+ * the dedicated port number, and following properties should hold:
+ *
+ * - dedicated port is sink only
+ * - dedicated port is always connected
+ * - dedicated port is given highest priority
+ * - there's only one dedicated port, its number is larger than PD port number
+ */
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 0
+
+/*
+ * Override the default (sink and connected) properties of dedicated port
+ *
+ * If defined, you must provide board_charge_port_is_sink(port),
+ * board_charge_port_is_connected(port), board_get_source_voltage(port),
+ * board_get_source_current(port) in your board.
+ */
+#undef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
 
 /* Allow charge manager to default to charging from dual-role partners */
 #undef CONFIG_CHARGE_MANAGER_DRP_CHARGING
