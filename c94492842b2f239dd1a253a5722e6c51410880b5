@@ -46,6 +46,30 @@
       "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc634932_d17e765a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-16T19:43:27Z",
+      "side": 1,
+      "message": "Is there an actual timing violation? What is the requirement?\n\nIf the lid is closed, why would the AP be trying to turn on the display?",
+      "parentUuid": "b6dd4497_ed713257",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
