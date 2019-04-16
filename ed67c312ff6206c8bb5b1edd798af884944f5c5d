@@ -87,6 +87,24 @@
       "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21ebd227_425af43b",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-16T02:07:43Z",
+      "side": 1,
+      "message": "Does the EC crash?",
+      "parentUuid": "db0a2fd7_b56d6b90",
+      "revId": "ed67c312ff6206c8bb5b1edd798af884944f5c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
