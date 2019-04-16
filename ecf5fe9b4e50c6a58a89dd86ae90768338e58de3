@@ -22,6 +22,30 @@
       "revId": "ecf5fe9b4e50c6a58a89dd86ae90768338e58de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb566d5_003e0608",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-16T20:16:35Z",
+      "side": 1,
+      "message": "I wanted to follow the style of the other code.\n\nI have another CL that I will send out that will fix this (these definitions should also be using TASK_EVENT_CUSTOM as well)",
+      "parentUuid": "79ef989d_cf3c788b",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "ecf5fe9b4e50c6a58a89dd86ae90768338e58de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
