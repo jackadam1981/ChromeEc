@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ce2b1ef_897afea2",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-16T00:04:24Z",
+      "side": 1,
+      "message": "Can you add a description (e.g. /* TCPC_FLAGS_* */)? Then, repeating /* Alert is active low ... */ in board.c doesn\u0027t seem very necessary.",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 16
+      },
+      "revId": "ae7c74c84914a83a53b464eb5212e5ec678e601e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
