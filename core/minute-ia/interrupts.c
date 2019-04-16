@@ -368,6 +368,34 @@ void unhandled_vector(void)
 /* This needs to be moved to link_defs.h */
 extern const struct irq_data __irq_data[], __irq_data_end[];
 
+void (*find_isr_routine(int irq))(void)
+{
+	const struct irq_data *p = __irq_data;
+
+	for (; p < __irq_data_end; p++)
+		if (p->irq == irq)
+			return  p->routine;
+
+	return NULL;
+}
+
+/*
+ * no need to save any register
+ * task_trigger_irq() will handle them
+ */
+void __handle_sw_irq(void);
+__asm__ (
+	"__handle_sw_irq:\n"
+		"push %ecx\n"
+		"call find_isr_routine\n"
+		"addl $0x04, %esp\n"
+		"test %eax, %eax\n"
+		"je 1f\n"
+		"jmp *%eax\n"
+		"1:\n"
+		"iret"
+	);
+
 void init_interrupts(void)
 {
 	unsigned entry;
@@ -399,6 +427,7 @@ void init_interrupts(void)
 				      system_irqs[entry].trigger);
 
 	set_interrupt_gate(ISH_TS_VECTOR, __switchto, IDT_DESC_FLAGS);
+	set_interrupt_gate(SOFTIRQ_VECTOR, __handle_sw_irq, IDT_DESC_FLAGS);
 
 	/* Bind exception handlers to print panic message */
 	set_interrupt_gate(0, exception_panic_0, IDT_DESC_FLAGS);
