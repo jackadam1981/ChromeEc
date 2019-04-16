@@ -10,16 +10,6 @@
 #define FPU_CTX_SZ		108  /* 28 bytes header + 80 bytes registers */
 #define USE_FPU_OFFSET		20   /* offsetof(task_, use_fpu */
 #define FPU_CTX_OFFSET		24   /* offsetof(task_, fp_ctx) */
-
-/*
- * defines for inline asm
- */
-#ifndef __ASSEMBLER__
-#include "common.h"
-
-#define USE_FPU_OFFSET_STR	STRINGIFY(USE_FPU_OFFSET)	/* "20" */
-#define FPU_CTX_OFFSET_STR	STRINGIFY(FPU_CTX_OFFSET)	/* "24" */
-#endif
 #endif /* CONFIG_FPU */
 
 #ifndef __ASSEMBLER__
@@ -42,6 +32,8 @@ typedef union {
 
 int __task_start(int *start_called);
 void __switchto(void);
+void hw_irq_handler(void);
+void sw_irq_handler(void);
 
 /* Only the IF bit is set so tasks start with interrupts enabled. */
 #define INITIAL_EFLAGS		(0x200UL)

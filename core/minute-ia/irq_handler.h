@@ -8,44 +8,11 @@
 #ifndef __CROS_EC_IRQ_HANDLER_H
 #define __CROS_EC_IRQ_HANDLER_H
 
-#include "registers.h"
-#include "task_defs.h"
-
-#ifdef CONFIG_FPU
-#define save_fpu_ctx	"movl "USE_FPU_OFFSET_STR"(%eax), %ebx\n"	\
-			"test %ebx, %ebx\n"				\
-			"jz 9f\n"					\
-			"fnsave "FPU_CTX_OFFSET_STR"(%eax)\n"		\
-			"9:\n"
-
-#define rstr_fpu_ctx	"movl "USE_FPU_OFFSET_STR"(%eax), %ebx\n"	\
-			"test %ebx, %ebx\n"				\
-			"jz 9f\n"					\
-			"frstor "FPU_CTX_OFFSET_STR"(%eax)\n"		\
-			"9:\n"
-#else
-#define save_fpu_ctx
-#define rstr_fpu_ctx
-#endif
-
-#ifdef CONFIG_TASK_PROFILING
-#define task_start_irq_handler_call(vector) \
-			"push $"#vector"\n"	\
-			"call task_start_irq_handler\n"	\
-			"addl $0x4, %esp\n"
-#else
-#define task_start_irq_handler_call(vector)
-#endif
-
-
 struct irq_data {
 	void (*routine)(void);
 	int irq;
 };
 
-/* Helper macros to build the IRQ handler and priority struct names */
-#define IRQ_HANDLER(irqname) CONCAT3(_irq_, irqname, _handler)
-#define IRQ_PRIORITY(irqname) CONCAT2(prio_, irqname)
 /*
  * Macro to connect the interrupt handler "routine" to the irq number "irq" and
  * ensure it is enabled in the interrupt controller with the right priority.
@@ -54,44 +21,11 @@ struct irq_data {
  * __asm__
  * Note: currently we don't allow nested irq handling
  */
-#define DECLARE_IRQ(irq, routine) DECLARE_IRQ_(irq, routine, irq + 32 + 10)
 /* Each irq has a irq_data structure placed in .rodata.irqs section,
  * to be used for dynamically setting up interrupt gates */
-#define DECLARE_IRQ_(irq, routine, vector)				\
+#define DECLARE_IRQ(irq, routine)					\
 	void __keep routine(void);					\
-	void IRQ_HANDLER(irq)(void); 					\
 	__asm__ (".section .rodata.irqs\n");				\
 	const struct irq_data __keep CONCAT4(__irq_, irq, _, routine)	\
-	__attribute__((section(".rodata.irqs")))= {IRQ_HANDLER(irq), irq};\
-	__asm__ (							\
-		".section .text._irq_"#irq"_handler\n"			\
-		"_irq_"#irq"_handler:\n"				\
-			"pusha\n"					\
-			ASM_LOCK_PREFIX "addl  $1, __in_isr\n"		\
-			"movl %esp, %eax\n"                             \
-			"movl $stack_end, %esp\n"                       \
-			"push %eax\n"                                   \
-			task_start_irq_handler_call(vector)		\
-			"call "#routine"\n"				\
-			"push $0\n"					\
-			"push $0\n"					\
-			"call switch_handler\n"				\
-			"addl $0x08, %esp\n"				\
-			"pop %esp\n"                                    \
-			"test %eax, %eax\n"				\
-			"je 1f\n"					\
-			"movl current_task, %eax\n"			\
-			save_fpu_ctx 					\
-			"movl %esp, (%eax)\n"				\
-			"movl next_task, %eax\n"			\
-			"movl %eax, current_task\n"			\
-			"movl (%eax), %esp\n"				\
-			rstr_fpu_ctx					\
-			"1:\n"						\
-			"movl $"#vector ", (0xFEC00040)\n"              \
-			"movl $0x00, (0xFEE000B0)\n" 			\
-			ASM_LOCK_PREFIX "subl  $1, __in_isr\n"		\
-			"popa\n"					\
-			"iret\n"					\
-		);
+	__attribute__((section(".rodata.irqs"))) = { routine, irq};
 #endif  /* __CROS_EC_IRQ_HANDLER_H */
