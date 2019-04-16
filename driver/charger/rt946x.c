@@ -952,11 +952,33 @@ static void usb_pd_connect(void)
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
 #endif
 
+int rt946x_bc12_workaround(int *bc12_type_old)
+{
+	int rv;
+	/*
+	 * There is a parasitic resistance on D+, which results in pulling D+ up too slow while detecting BC1.2.
+	 * So we try to fix this in two steps:
+	 * 1. Pull D+ up to a voltage under 0.6V
+	 * 2. re-toggling and pull D+ up to 0.6V (again)
+	 * and then detect the voltage of D-.
+	 */
+	rv = rt946x_toggle_bc12_detection();
+	if (rv)
+		return rv;
+	msleep(10);
+	rv = rt946x_toggle_bc12_detection();
+	if (rv)
+		return rv;
+	return rv;
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
 	int reg = 0;
+	int bc12_cnt = 0;
+	const int max_bc12_cnt = 3;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
@@ -967,9 +989,13 @@ void usb_charger_task(void *u)
 			CPRINTS("VBUS attached: %dmV",
 					charger_get_vbus_voltage(0));
 			bc12_type = rt946x_get_bc12_device_type();
-
 			CPRINTS("BC12 type %d", bc12_type);
-			if (bc12_type != CHARGE_SUPPLIER_NONE) {
+			if (bc12_type == CHARGE_SUPPLIER_BC12_SDP &&
+				bc12_cnt < max_bc12_cnt) {
+				if (rt946x_bc12_workaround(&bc12_type))
+					continue;
+				bc12_cnt++;
+			} else if (bc12_type != CHARGE_SUPPLIER_NONE) {
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
 				if ((bc12_type == CHARGE_SUPPLIER_BC12_SDP) &&
 						wpc_chip_is_online()) {
@@ -998,8 +1024,10 @@ void usb_charger_task(void *u)
 #endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
 
-			if (!IS_ENABLED(CONFIG_CHARGER_MT6370_BC12_GPIO))
+			if (!IS_ENABLED(CONFIG_CHARGER_MT6370_BC12_GPIO)) {
 				rt946x_enable_bc12_detection(1);
+				bc12_cnt = 0;
+			}
 		}
 
 		task_wait_event(-1);
