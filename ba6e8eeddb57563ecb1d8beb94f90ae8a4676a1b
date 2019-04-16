@@ -22,6 +22,30 @@
       "revId": "ba6e8eeddb57563ecb1d8beb94f90ae8a4676a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96508567_b9b42b89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-16T20:15:17Z",
+      "side": 1,
+      "message": "I can\u0027t really think of anything. It seems that some of our tests already make their individual tests non-static (most likely for this reason)",
+      "parentUuid": "540657d9_b4e4132b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "ba6e8eeddb57563ecb1d8beb94f90ae8a4676a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
