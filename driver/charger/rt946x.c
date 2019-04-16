@@ -927,11 +927,44 @@ void rt946x_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
+int rt946x_toggle_bc12_detection(void)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(0);
+	if (rv)
+		return rv;
+	udelay(40);
+	return rt946x_enable_bc12_detection(1);
+}
+
+int rt946x_bc12_workaround(int *bc12_type_old)
+{
+	int rv;
+	/*
+	 * We are try to resolve D+ is more increase time which caused by
+	 * high parasitic capacitance when do bc12 primary detection.
+	 * if we detect SDP, we will enable bc12 let DP pull-up a while,
+	 * then toggle it fast once to continue pull-up D+ to 0.6V,
+	 * then check D- voltage level. Therefore we can avoid
+	 * pull-up D+ too slow.
+	 */
+	rv = rt946x_toggle_bc12_detection();
+	if (rv)
+		return rv;
+	msleep(10);
+	rv = rt946x_toggle_bc12_detection();
+	if (rv)
+		return rv;
+	return rv;
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
 	int reg = 0;
+	int bc12_cnt = 0;
+	const int max_bc12_cnt = 3;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
@@ -942,9 +975,13 @@ void usb_charger_task(void *u)
 			CPRINTS("VBUS attached: %dmV",
 					charger_get_vbus_voltage(0));
 			bc12_type = rt946x_get_bc12_device_type();
-
 			CPRINTS("BC12 type %d", bc12_type);
-			if (bc12_type != CHARGE_SUPPLIER_NONE) {
+			if (bc12_type == CHARGE_SUPPLIER_BC12_SDP &&
+				bc12_cnt < max_bc12_cnt) {
+				if (rt946x_bc12_workaround(&bc12_type))
+					continue;
+				bc12_cnt++;
+			} else if (bc12_type != CHARGE_SUPPLIER_NONE) {
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
 				if ((bc12_type == CHARGE_SUPPLIER_BC12_SDP) &&
 						wpc_chip_is_online()) {
@@ -972,6 +1009,7 @@ void usb_charger_task(void *u)
 #endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
 			rt946x_enable_bc12_detection(1);
+			bc12_cnt = 0;
 		}
 
 		task_wait_event(-1);
