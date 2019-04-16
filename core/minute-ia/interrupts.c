@@ -368,6 +368,23 @@ void unhandled_vector(void)
 /* This needs to be moved to link_defs.h */
 extern const struct irq_data __irq_data[], __irq_data_end[];
 
+isr_handler_t find_isr_routine(int irq)
+{
+	const struct irq_data *p = __irq_data;
+
+	for (; p < __irq_data_end; p++)
+		if (p->irq == irq)
+			return  p->routine;
+
+	return NULL;
+}
+
+void __handle_sw_irq(void);
+__asm__ (
+	"__handle_sw_irq:\n"
+		"jmp *%ecx\n"
+	);
+
 void init_interrupts(void)
 {
 	unsigned entry;
@@ -399,6 +416,7 @@ void init_interrupts(void)
 				      system_irqs[entry].trigger);
 
 	set_interrupt_gate(ISH_TS_VECTOR, __switchto, IDT_DESC_FLAGS);
+	set_interrupt_gate(SOFTIRQ_VECTOR, __handle_sw_irq, IDT_DESC_FLAGS);
 
 	/* Bind exception handlers to print panic message */
 	set_interrupt_gate(0, exception_panic_0, IDT_DESC_FLAGS);
