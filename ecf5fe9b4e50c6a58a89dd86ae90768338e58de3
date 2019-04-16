@@ -46,6 +46,30 @@
       "revId": "ecf5fe9b4e50c6a58a89dd86ae90768338e58de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c0afa32_c1799e26",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-16T20:33:43Z",
+      "side": 1,
+      "message": "It might be worthwhile to roll the BIT portion into the macro as well.  I believe this should work for most cases, though it looks like board/twinkie/sniffer.c has kind of a weird task event usage (and the task itself doesn\u0027t appear to be reading the results of task_wait_event() anyway?)",
+      "parentUuid": "ffb566d5_003e0608",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "ecf5fe9b4e50c6a58a89dd86ae90768338e58de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
