@@ -42,6 +42,7 @@ typedef union {
 
 int __task_start(int *start_called);
 void __switchto(void);
+void sw_irq_handler(void);
 
 /* Only the IF bit is set so tasks start with interrupts enabled. */
 #define INITIAL_EFLAGS		(0x200UL)
