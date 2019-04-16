@@ -46,6 +46,30 @@
       "revId": "ba6e8eeddb57563ecb1d8beb94f90ae8a4676a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0c30ed4_71a563ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-16T20:51:03Z",
+      "side": 1,
+      "message": "Can you use __attribute__((unused))?\n\n  /* Use this only for test to make debugging easier... */\n  #define test_static __attribute__((unused))\n\nthen:\n\n  test_static int test_als_lightbar(void)\n  {",
+      "parentUuid": "96508567_b9b42b89",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "ba6e8eeddb57563ecb1d8beb94f90ae8a4676a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
