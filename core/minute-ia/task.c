@@ -15,10 +15,12 @@
 #include "atomic.h"
 #include "common.h"
 #include "console.h"
+#include "hwtimer.h"
 #include "link_defs.h"
 #include "panic.h"
 #include "task.h"
 #include "timer.h"
+#include "uart.h"
 #include "util.h"
 #include "task_defs.h"
 #include "interrupts.h"
@@ -420,11 +422,30 @@ void task_clear_pending_irq(int irq)
 
 void task_trigger_irq(int irq)
 {
-	/* Writing to Local APIC Interrupt Command Register (ICR) causes an
-	 * IPI (Inter-processor interrupt) on the APIC bus. Here we direct the
-	 * IPI to originating prccessor to generate self-interrupt
+	/*
+	 * we cannot use ICR due to IOAPIC IRQ clearing issue.
+	 * instead, we directly call the function that is called by ISR.
+	 * currently s/w triggered IRQs are UART TX and event timer.
 	 */
-	REG32(LAPIC_ICR_REG) = LAPIC_ICR_BITS | IRQ_TO_VEC(irq);
+
+	/* handling UART buffer should be done after the first task started */
+	if (task_start_called() != 1 && irq != ISH_HPET_TIMER1_IRQ)
+                return;
+
+        task_disable_irq(irq); 	/* do not accept the irq */
+        interrupt_disable();	/* disable interupt */
+        __in_isr++;		/* pretend to be interrupt context */
+
+        if (irq == ISH_HPET_TIMER1_IRQ)
+                process_timers(0);
+        else if (irq == ISH_DEBUG_UART_IRQ)
+                uart_process_output();
+
+        __in_isr--;
+        interrupt_enable();
+        task_enable_irq(irq);
+
+        __schedule(0, 0);	/* schedule the top runnable */
 }
 
 void mutex_lock(struct mutex *mtx)
