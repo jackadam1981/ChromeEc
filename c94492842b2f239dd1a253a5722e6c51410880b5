@@ -70,6 +70,30 @@
       "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d73333_b8ad286a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-04-16T22:07:11Z",
+      "side": 1,
+      "message": "the panel vendor wants a 10ms setup/hold time for the PWM\nsignal w.r.t. backlight enable.  i think it\u0027s intended to\navoid momentary display artifacts.",
+      "parentUuid": "bc634932_d17e765a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c94492842b2f239dd1a253a5722e6c51410880b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
