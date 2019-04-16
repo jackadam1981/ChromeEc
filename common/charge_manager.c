@@ -129,8 +129,12 @@ static int is_pd_port(int port)
 static int is_sink(int port)
 {
 	if (!is_pd_port(port))
-		/* Dedicated port is sink-only */
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_charge_port_is_sink(port);
+#else
 		return 1;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+
 	return pd_get_role(port) == PD_ROLE_SINK;
 }
 
@@ -138,8 +142,12 @@ static int is_sink(int port)
 static int is_connected(int port)
 {
 	if (!is_pd_port(port))
-		/* Dedicated port is always connected */
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_charge_port_is_connected(port);
+#else
 		return 1;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+
 	return pd_is_connected(port);
 }
 #endif /* !TEST_BUILD */
@@ -305,12 +313,27 @@ static void charge_manager_fill_power_info(int port,
 
 	if (sup == CHARGE_SUPPLIER_NONE ||
 	    r->role == USB_PD_PORT_POWER_SOURCE) {
-		r->type = USB_CHG_TYPE_NONE;
-		r->meas.voltage_max = 0;
-		r->meas.voltage_now = r->role == USB_PD_PORT_POWER_SOURCE ? 5000
-									  : 0;
-		r->meas.current_max = charge_manager_get_source_current(port);
-		r->max_power = 0;
+		if (is_pd_port(port)) {
+			r->type = USB_CHG_TYPE_NONE;
+			r->meas.voltage_max = 0;
+			r->meas.voltage_now =
+				r->role == USB_PD_PORT_POWER_SOURCE ? 5000 : 0;
+			r->meas.current_max =
+				charge_manager_get_source_current(port);
+			r->max_power = 0;
+		} else {
+			r->type = USB_CHG_TYPE_NONE;
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+			r->meas.voltage_now = 0;
+			r->meas.voltage_max = board_get_source_voltage(port);
+			r->meas.current_max = board_get_source_current(port);
+#else
+			r->meas.voltage_max = 0;
+			r->meas.voltage_now = 0;
+			r->meas.current_max = 0;
+#endif
+			r->max_power = 0;
+		}
 	} else {
 		int use_ramp_current;
 		switch (sup) {
