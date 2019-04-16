@@ -108,7 +108,7 @@ enum power_state power_handle_state(enum power_state state)
 	/*
 	 * Check if RSMRST_L signal state has changed and if so, pass the new
 	 * value along to the PCH. However, if the new transition of RSMRST_L
-	 * from the Sielgo is from low to high, then gate this transition to the
+	 * from the Silego is from low to high, then gate this transition to the
 	 * AP by the PP5000_A rail. If the new transition is from high to low,
 	 * then pass that through regardless of the PP5000_A value.
 	 *

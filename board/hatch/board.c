@@ -405,6 +405,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 	/* Select correct gpio signal for PP5000_A control */
 	board_gpio_set_pp5000();
+	/* Enable HDMI HPD interrupt. */
+	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -439,3 +441,8 @@ static void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
+
+/* GPIO to enable/disable the USB Type-A port. */
+const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
+	GPIO_EN_USB_A_5V,
+};

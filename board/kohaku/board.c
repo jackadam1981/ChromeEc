@@ -76,11 +76,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
-static void hdmi_hpd_interrupt(enum gpio_signal signal)
-{
-	baseboard_mst_enable_control(MST_HDMI, gpio_get_level(signal));
-}
-
 static void bc12_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
@@ -317,24 +312,9 @@ static void reset_gpio_flags(enum gpio_signal signal, int flags)
 	gpio_set_flags(signal, flags);
 }
 
-/* Runtime GPIO defaults */
-enum gpio_signal gpio_en_pp5000_a = GPIO_EN_PP5000_A_V1;
-
 static void board_gpio_set_pp5000(void)
 {
-	uint32_t board_id = 0;
-
-	/* Errors will count as board_id 0 */
-	cbi_get_board_version(&board_id);
-
-	if (board_id == 0) {
-		reset_gpio_flags(GPIO_EN_PP5000_A_V0, GPIO_OUT_LOW);
-		/* Change runtime default for V0 */
-		gpio_en_pp5000_a = GPIO_EN_PP5000_A_V0;
-	} else if (board_id >= 1) {
-		reset_gpio_flags(GPIO_EN_PP5000_A_V1, GPIO_OUT_LOW);
-	}
-
+	reset_gpio_flags(GPIO_EN_PP5000_A, GPIO_OUT_LOW);
 }
 
 static void board_init(void)
