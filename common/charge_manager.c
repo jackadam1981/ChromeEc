@@ -129,8 +129,12 @@ static int is_pd_port(int port)
 static int is_sink(int port)
 {
 	if (!is_pd_port(port))
-		/* Dedicated port is sink-only */
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_charge_port_is_sink(port);
+#else
 		return 1;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+
 	return pd_get_role(port) == PD_ROLE_SINK;
 }
 
@@ -138,8 +142,12 @@ static int is_sink(int port)
 static int is_connected(int port)
 {
 	if (!is_pd_port(port))
-		/* Dedicated port is always connected */
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_charge_port_is_connected(port);
+#else
 		return 1;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
+
 	return pd_is_connected(port);
 }
 #endif /* !TEST_BUILD */
@@ -226,7 +234,11 @@ static int charge_manager_is_seeded(void)
 static int charge_manager_get_source_current(int port)
 {
 	if (!is_pd_port(port))
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		return board_get_source_current(port);
+#else
 		return 0;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
 
 	switch (source_port_rp[port]) {
 	case TYPEC_RP_3A0:
@@ -449,7 +461,11 @@ void charge_manager_save_log(int port)
 static void charge_manager_switch_to_source(int port)
 {
 	if (!is_pd_port(port))
+#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM
+		board_switch_to_source(port);
+#else
 		return;
+#endif /* CONFIG_DEDICATED_CHARGE_PORT_CUSTOM */
 
 	/* If connected to dual-role device, then ask for a swap */
 	if (dualrole_capability[port] == CAP_DUALROLE && is_sink(port))
