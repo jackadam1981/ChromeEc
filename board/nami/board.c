@@ -1008,6 +1008,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 
+	gpio_enable_interrupt(GPIO_CCD_MODE_ODL);
+
 	/* Enable Accel/Gyro interrupt for convertibles. */
 	if (sku & SKU_ID_MASK_CONVERTIBLE)
 		gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
