@@ -17,7 +17,7 @@
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 defined(SECTION_IS_RO)))
-#define QUEUE_SIZE 64
+
 /*
  * Want to be able to accumulate larger amounts of data while USB is
  * momentarily stalled for whatever reason.
@@ -32,9 +32,7 @@ defined(SECTION_IS_RO)))
 #define QUEUE_SIZE_USB_IN  8192
 #define QUEUE_SIZE_UART_IN 1024
 #else
-#define QUEUE_SIZE_SIG_IN  QUEUE_SIZE
-#define QUEUE_SIZE_USB_IN  QUEUE_SIZE
-#define QUEUE_SIZE_UART_IN QUEUE_SIZE
+#define QUEUE_SIZE_UART_IN USB_MAX_PACKET_SIZE
 #endif
 
 
@@ -112,7 +110,8 @@ static struct queue const ec_uart_to_usb =
 	QUEUE_DIRECT(QUEUE_SIZE_UART_RX, uint8_t,
 		     ec_uart.producer, ec_usb.consumer);
 static struct queue const ec_usb_to_uart =
-	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
+	QUEUE_DIRECT(QUEUE_SIZE_UART_IN, uint8_t,
+		     ec_usb.producer, ec_uart.consumer);
 
 USART_CONFIG(ec_uart,
 	     UART_EC,

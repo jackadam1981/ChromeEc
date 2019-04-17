@@ -16,6 +16,8 @@
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 
+#define MAX_IN_DESC	2
+
 /*
  * Compile time Per-USB stream configuration stored in flash.  Instances of this
  * structure are provided by the user of the USB stream.  This structure binds
@@ -38,7 +40,6 @@ struct usb_stream_config {
 	int tx_size;
 	int rx_size;
 
-	uint8_t *tx_ram;
 	uint8_t *rx_ram;
 
 	struct consumer consumer;
@@ -46,6 +47,9 @@ struct usb_stream_config {
 
 	struct g_usb_desc *out_desc;
 	struct g_usb_desc *in_desc;
+
+	/* Number of buffer units in TX queue in transit */
+	size_t *tx_units;
 };
 
 /*
@@ -105,24 +109,23 @@ extern struct producer_ops const usb_stream_producer_ops;
 			       TX_QUEUE)				\
 									\
 	static struct g_usb_desc CONCAT2(NAME, _out_desc_);		\
-	static struct g_usb_desc CONCAT2(NAME, _in_desc_);		\
+	static struct g_usb_desc CONCAT2(NAME, _in_desc_)[MAX_IN_DESC];	\
 	static uint8_t CONCAT2(NAME, _buf_rx_)[RX_SIZE];		\
-	static uint8_t CONCAT2(NAME, _buf_tx_)[TX_SIZE];		\
 	static int CONCAT2(NAME, _is_reset_);				\
 	static void CONCAT2(NAME, _deferred_tx_)(void);			\
 	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_tx_));			\
 	static void CONCAT2(NAME, _deferred_rx_)(void);			\
 	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_rx_));			\
+	static size_t CONCAT2(NAME, _tx_units);				\
 	struct usb_stream_config const NAME = {				\
 		.endpoint     = ENDPOINT,				\
 		.is_reset     = &CONCAT2(NAME, _is_reset_),		\
-		.in_desc      = &CONCAT2(NAME, _in_desc_),		\
+		.in_desc      = &CONCAT2(NAME, _in_desc_)[0],		\
 		.out_desc     = &CONCAT2(NAME, _out_desc_),		\
 		.deferred_tx  = &CONCAT2(NAME, _deferred_tx__data),	\
 		.deferred_rx  = &CONCAT2(NAME, _deferred_rx__data),	\
 		.tx_size      = TX_SIZE,				\
 		.rx_size      = RX_SIZE,				\
-		.tx_ram       = CONCAT2(NAME, _buf_tx_),		\
 		.rx_ram       = CONCAT2(NAME, _buf_rx_),		\
 		.consumer  = {						\
 			.queue = &TX_QUEUE,				\
@@ -132,6 +135,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 			.queue = &RX_QUEUE,				\
 			.ops   = &usb_stream_producer_ops,		\
 		},							\
+		.tx_units     = &CONCAT2(NAME, _tx_units),		\
 	};								\
 	const struct usb_interface_descriptor				\
 	USB_IFACE_DESC(INTERFACE) = {					\
