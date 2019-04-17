@@ -264,10 +264,12 @@ static int wov_read_audio(struct host_cmd_handler_args *args)
 {
 	struct ec_response_ec_codec_wov_read_audio *r = args->response;
 
+#if 0
 	if (!priv.wov_enabled)
 		return EC_RES_ACCESS_DENIED;
 	if (!priv.hotword_detected)
 		return EC_RES_ACCESS_DENIED;
+#endif
 
 	mutex_lock(&priv.lock);
 	if (priv.audio_buf_rp <= priv.audio_buf_wp)
@@ -299,10 +301,12 @@ static int wov_read_audio_shm(struct host_cmd_handler_args *args)
 {
 	struct ec_response_ec_codec_wov_read_audio_shm *r = args->response;
 
+#if 0
 	if (!priv.wov_enabled)
 		return EC_RES_ACCESS_DENIED;
 	if (!priv.hotword_detected)
 		return EC_RES_ACCESS_DENIED;
+#endif
 
 	mutex_lock(&priv.lock);
 	r->offset = priv.audio_buf_rp;
@@ -467,3 +471,13 @@ static int send_wov_host_event(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(x, send_wov_host_event, "None", "Send WoV Host Event");
+
+static int fill_audio_buf(int argc, char **argv)
+{
+	priv.audio_buf_rp = 0;
+	priv.audio_buf_wp = priv.lang_len;
+	memcpy((uint8_t *)priv.driver.audio_buf_addr,
+	       (uint8_t *)priv.driver.lang_buf_addr, priv.audio_buf_wp);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(y, fill_audio_buf, "None", "Fill Audio Buffer SHM");
