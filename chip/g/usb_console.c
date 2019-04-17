@@ -69,7 +69,6 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) =
 	.bInterval          = 0
 };
 
-static uint8_t ep_buf_tx[USB_MAX_PACKET_SIZE];
 static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
 static struct g_usb_desc ep_out_desc;
 static struct g_usb_desc ep_in_desc;
@@ -77,6 +76,7 @@ static struct g_usb_desc ep_in_desc;
 static struct queue const tx_q = QUEUE_NULL(4096, uint8_t);
 static struct queue const rx_q = QUEUE_NULL(USB_MAX_PACKET_SIZE, uint8_t);
 
+static size_t tx_units_con;
 
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
 static void usb_enable_tx(int len)
@@ -167,11 +167,11 @@ DECLARE_DEFERRED(rx_fifo_handler);
 /* Rx/OUT interrupt handler */
 static void con_ep_rx(void)
 {
+	/* clear the RX/OUT interrupts */
+	GR_USB_DOEPINT(USB_EP_CONSOLE) = DOEPINT_ALLBITSET;
+
 	/* Wake up the Rx FIFO handler */
 	hook_call_deferred(&rx_fifo_handler_data, 0);
-
-	/* clear the RX/OUT interrupts */
-	GR_USB_DOEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
 /* True if the Tx/IN FIFO can take some bytes from us. */
 static inline int tx_fifo_is_ready(void)
@@ -181,9 +181,11 @@ static inline int tx_fifo_is_ready(void)
 }
 
 /* Try to send some bytes to the host */
+
 static void tx_fifo_handler(void)
 {
 	size_t count;
+	static size_t head_mask = tx_q.buffer_units - 1;
 
 	if (!is_reset)
 		return;
@@ -192,9 +194,24 @@ static void tx_fifo_handler(void)
 	if (!tx_fifo_is_ready())
 		return;
 
-	count = QUEUE_REMOVE_UNITS(&tx_q, ep_buf_tx, USB_MAX_PACKET_SIZE);
-	if (count)
+	/* handle the completion of the latest transfer */
+	if (tx_units_con > 0) {
+		queue_advance_head(&tx_q, tx_units_con);
+		tx_units_con = 0;
+	}
+
+	count = queue_count(&tx_q);
+	if (count > 0) {
+		size_t head;
+
+		head = tx_q.state->head & head_mask;
+		count = MIN(USB_MAX_PACKET_SIZE, count);
+		count = MIN(tx_q.buffer_units - head, count);
+		tx_units_con = count;
+
+		ep_in_desc.addr = (void *)(tx_q.buffer + head);
 		usb_enable_tx(count);
+	}
 }
 DECLARE_DEFERRED(tx_fifo_handler);
 
@@ -207,11 +224,11 @@ static void handle_output(void)
 /* Tx/IN interrupt handler */
 static void con_ep_tx(void)
 {
+	/* clear the Tx/IN interrupts */
+	GR_USB_DIEPINT(USB_EP_CONSOLE) = DIEPINT_ALLBITSET;
+
 	/* Wake up the Tx FIFO handler */
 	hook_call_deferred(&tx_fifo_handler_data, 0);
-
-	/* clear the Tx/IN interrupts */
-	GR_USB_DIEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
 
 static void ep_reset(void)
@@ -221,7 +238,8 @@ static void ep_reset(void)
 	ep_out_desc.addr = ep_buf_rx;
 	GR_USB_DOEPDMA(USB_EP_CONSOLE) = (uint32_t)&ep_out_desc;
 	ep_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;
-	ep_in_desc.addr = ep_buf_tx;
+	ep_in_desc.addr = NULL;
+	tx_units_con = 0;
 	GR_USB_DIEPDMA(USB_EP_CONSOLE) = (uint32_t)&ep_in_desc;
 	GR_USB_DOEPCTL(USB_EP_CONSOLE) = DXEPCTL_MPS(64) | DXEPCTL_USBACTEP |
 					 DXEPCTL_EPTYPE_BULK |
@@ -296,8 +314,7 @@ uint32_t usb_console_crc(void)
 
 static int __tx_char(void *context, int c)
 {
-	struct queue *state =
-			(struct queue *) context;
+	struct queue *state = (struct queue *) context;
 
 	if (c == '\n' && __tx_char(state, '\r'))
 		return 1;
@@ -331,7 +348,7 @@ int usb_getc(void)
 int usb_puts(const char *outstr)
 {
 	int ret;
-	struct queue state;
+	static struct queue state = tx_q;
 
 	if (!is_enabled)
 		return EC_SUCCESS;
@@ -340,7 +357,6 @@ int usb_puts(const char *outstr)
 	if (ret)
 		return ret;
 
-	state = tx_q;
 	while (*outstr)
 		if (__tx_char(&state, *outstr++))
 			break;
@@ -353,17 +369,17 @@ int usb_puts(const char *outstr)
 
 int usb_putc(int c)
 {
-	char string[2];
+	static char string[2] = { '\0', '\0' };
 
 	string[0] = c;
-	string[1] = '\0';
+
 	return usb_puts(string);
 }
 
 int usb_vprintf(const char *format, va_list args)
 {
 	int ret;
-	struct queue state;
+	static struct queue state = tx_q;
 
 	if (!is_enabled)
 		return EC_SUCCESS;
@@ -372,7 +388,6 @@ int usb_vprintf(const char *format, va_list args)
 	if (ret)
 		return ret;
 
-	state = tx_q;
 	ret = vfnprintf(__tx_char, &state, format, args);
 
 	if (queue_count(&state))
