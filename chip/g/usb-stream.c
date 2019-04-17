@@ -130,7 +130,7 @@ int tx_stream_handler(struct usb_stream_config const *config)
 	if (count > 0) {
 		size_t head;
 
-		head = tx_q->state->head & (tx_q->buffer_units - 1);
+		head = tx_q->state->head & tx_q->buffer_units_mask;
 		count = MIN(config->tx_size, count);
 		count = MIN(tx_q->buffer_units - head, count);
 		*(config->tx_units) = count;
