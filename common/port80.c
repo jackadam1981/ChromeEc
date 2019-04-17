@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "display_7seg.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "port80.h"
@@ -107,6 +108,9 @@ static void port80_dump_buffer(void)
 				cflush();
 			}
 			ccprintf(" %02x", e);
+#ifdef CONFIG_SEVEN_SEG_DISPLAY
+			display_7seg_write(SEVEN_SEG_PORT80_DISPLAY, e);
+#endif
 		}
 	}
 	ccputs(" <--new\n");
