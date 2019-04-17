@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da266ce4_d3d02ccf",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-04-17T19:13:57Z",
+      "side": 1,
+      "message": "We can call board_get_panel_id() here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 24
+      },
+      "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab37f2b_571f3b7c",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-04-17T19:13:57Z",
+      "side": 1,
+      "message": "I think we can move this into cbi_board_override() then there\u0027s no need to handle EC_ERROR_BUSY above.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
