@@ -22,6 +22,30 @@
       "revId": "b8083b36f653e686d0e1525e1e83e2174b79553d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b08642_18142802",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-17T07:17:41Z",
+      "side": 1,
+      "message": "This is aligned to the same function in common/system.c:\n\n\n         if (!reset_flags) {         \n                 CPUTS(\"unknown\");   \n                 return;             \n         }",
+      "parentUuid": "5a3c5357_d785461c",
+      "range": {
+        "startLine": 887,
+        "startChar": 10,
+        "endLine": 887,
+        "endChar": 17
+      },
+      "revId": "b8083b36f653e686d0e1525e1e83e2174b79553d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
