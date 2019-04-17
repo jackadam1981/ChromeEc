@@ -482,6 +482,7 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define DIEPINT_TXFEMP             BIT(GC_USB_DIEPINT0_TXFEMP_LSB)
 #define DIEPINT_TXFIFOUNDRN        BIT(GC_USB_DIEPINT0_TXFIFOUNDRN_LSB)
 #define DIEPINT_XFERCOMPL          BIT(GC_USB_DIEPINT0_XFERCOMPL_LSB)
+#define DIEPINT_MASK	          (0xffff)
 
 /* Device Endpoint-n OUT Interrupt Register bits */
 #define DOEPINT_AHBERR             BIT(GC_USB_DOEPINT0_AHBERR_LSB)
@@ -498,6 +499,7 @@ static inline int x_timehs_addr(unsigned int module, unsigned int timer,
 #define DOEPINT_STSPHSERCVD        BIT(GC_USB_DOEPINT0_STSPHSERCVD_LSB)
 #define DOEPINT_STUPPKTRCVD        BIT(GC_USB_DOEPINT0_STUPPKTRCVD_LSB)
 #define DOEPINT_XFERCOMPL          BIT(GC_USB_DOEPINT0_XFERCOMPL_LSB)
+#define DOEPINT_MASK	          (0xffff)
 
 #define DXEPCTL_EPTYPE_CTRL           (0 << GC_USB_DIEPCTL0_EPTYPE_LSB)
 #define DXEPCTL_EPTYPE_ISO            (1 << GC_USB_DIEPCTL0_EPTYPE_LSB)
