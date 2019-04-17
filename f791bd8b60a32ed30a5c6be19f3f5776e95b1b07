@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fcf9a177_6ba41ac4",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-04-17T19:57:43Z",
+      "side": 1,
+      "message": "With current board the provisioned size is 1. How do we make it backward compatible without affecting the functionality, at least in short term? Maybe just return EC_SUCCESS instead?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 25
+      },
+      "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da266ce4_d3d02ccf",
         "filename": "board/flapjack/board.c",
         "patchSetId": 6
