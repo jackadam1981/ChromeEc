@@ -36,7 +36,6 @@ static void led_set_battery(void)
 {
 	static enum charge_state prev = PWR_STATE_UNCHANGE;
 	static int battery_second;
-	int red = 0, grn = 0, blu = 0;
 
 	battery_second++;
 #ifndef DEBUG_LED
@@ -53,27 +52,39 @@ static void led_set_battery(void)
 	 */
 	switch (chstate) {
 	case PWR_STATE_CHARGE:
-		red = 0xf5;
-		grn = 0xf1;
+		/* RGB(current, duty) = (4mA,8/32) (4mA,1/32) (0mA,) */
+		mt6370_led_set_brightness(LED_RED, 1);
+		mt6370_led_set_brightness(LED_GRN, 1);
+		mt6370_led_set_brightness(LED_BLU, 0);
+		mt6370_led_set_pwm_dim_duty(LED_RED, 7);
+		mt6370_led_set_pwm_dim_duty(LED_GRN, 0);
 		break;
 	case PWR_STATE_DISCHARGE:
+		/* RGB(current, duty) = (0mA,) (0mA,) (0mA,) */
+		mt6370_led_set_brightness(LED_RED, 0);
+		mt6370_led_set_brightness(LED_GRN, 0);
+		mt6370_led_set_brightness(LED_BLU, 0);
 		break;
 	case PWR_STATE_ERROR:
-		red = 0xff;
+		/* RGB(current, duty) = (24mA,8/32) (0mA,) (0mA,) */
+		mt6370_led_set_brightness(LED_RED, 7);
+		mt6370_led_set_brightness(LED_GRN, 0);
+		mt6370_led_set_brightness(LED_BLU, 0);
+		mt6370_led_set_pwm_dim_duty(LED_RED, 7);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		red = 0xff;
-		grn = 0xff;
-		blu = 0xff;
+		/* RGB(current, duty) = (4mA,4/32) (4mA,2/32) (4mA,1/32) */
+		mt6370_led_set_brightness(LED_RED, 1);
+		mt6370_led_set_brightness(LED_GRN, 1);
+		mt6370_led_set_brightness(LED_BLU, 1);
+		mt6370_led_set_pwm_dim_duty(LED_RED, 3);
+		mt6370_led_set_pwm_dim_duty(LED_GRN, 1);
+		mt6370_led_set_pwm_dim_duty(LED_BLU, 0);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
 		return;
 	}
-
-	mt6370_led_set_brightness(LED_RED, red);
-	mt6370_led_set_brightness(LED_GRN, grn);
-	mt6370_led_set_brightness(LED_BLU, blu);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
@@ -99,11 +110,15 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 
 static void flapjack_led_init(void)
 {
-	const enum mt6370_led_dim_mode dim = MT6370_LED_DIM_MODE_REGISTER;
+	const enum mt6370_led_dim_mode dim = MT6370_LED_DIM_MODE_PWM;
+	const enum mt6370_led_pwm_freq freq = MT6370_LED_PWM_FREQ1000;
 	mt6370_led_set_color(LED_MASK_RED | LED_MASK_GRN | LED_MASK_BLU);
 	mt6370_led_set_dim_mode(LED_RED, dim);
 	mt6370_led_set_dim_mode(LED_GRN, dim);
 	mt6370_led_set_dim_mode(LED_BLU, dim);
+	mt6370_led_set_pwm_frequency(LED_RED, freq);
+	mt6370_led_set_pwm_frequency(LED_GRN, freq);
+	mt6370_led_set_pwm_frequency(LED_BLU, freq);
 }
 DECLARE_HOOK(HOOK_INIT, flapjack_led_init, HOOK_PRIO_DEFAULT);
 
