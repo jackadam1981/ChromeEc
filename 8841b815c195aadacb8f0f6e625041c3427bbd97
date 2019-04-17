@@ -22,6 +22,30 @@
       "revId": "8841b815c195aadacb8f0f6e625041c3427bbd97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a46e45_690ffb13",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-17T22:35:28Z",
+      "side": 0,
+      "message": "My confusion on the naming schemes... I\u0027ll change it back.",
+      "parentUuid": "711e4964_afbb6087",
+      "range": {
+        "startLine": 120,
+        "startChar": 35,
+        "endLine": 120,
+        "endChar": 37
+      },
+      "revId": "8841b815c195aadacb8f0f6e625041c3427bbd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
