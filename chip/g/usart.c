@@ -161,7 +161,7 @@ void send_data_to_usb(struct usart_config const *config)
 	room = MIN(sizeof(buffer), queue_space(uart_in));
 
 	while ((i < room) && uartn_rx_available(uart))
-		buffer[i++] = uartn_read_char(uart);
+		buffer[i++] = GR_UART_RDATA(uart);
 
 	if (i)
 		QUEUE_ADD_UNITS(uart_in, buffer, i);
