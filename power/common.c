@@ -10,6 +10,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "display_7seg.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -525,6 +526,9 @@ void chipset_task(void *u)
 		if (this_in_signals != last_in_signals || state != last_state) {
 			CPRINTS("power state %d = %s, in 0x%04x",
 				state, state_names[state], this_in_signals);
+#ifdef CONFIG_SEVEN_SEG_DISPLAY
+			seven_seg_display_write(SEVEN_SEG_EC_DISPLAY, state);
+#endif
 			last_in_signals = this_in_signals;
 			last_state = state;
 		}
