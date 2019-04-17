@@ -17,7 +17,7 @@
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 defined(SECTION_IS_RO)))
-#define QUEUE_SIZE 64
+
 /*
  * Want to be able to accumulate larger amounts of data while USB is
  * momentarily stalled for whatever reason.
@@ -28,13 +28,11 @@ defined(SECTION_IS_RO)))
 /*
  * When signing over streaming data, up the relevant queue sizes.
  */
-#define QUEUE_SIZE_SIG_IN  1024
-#define QUEUE_SIZE_USB_IN  8192
-#define QUEUE_SIZE_UART_IN 1024
+#define QUEUE_SIZE_SIG_TX  1024
+#define QUEUE_SIZE_USB_TX  8192
+#define QUEUE_SIZE_UART_TX 1024
 #else
-#define QUEUE_SIZE_SIG_IN  QUEUE_SIZE
-#define QUEUE_SIZE_USB_IN  QUEUE_SIZE
-#define QUEUE_SIZE_UART_IN QUEUE_SIZE
+#define QUEUE_SIZE_UART_TX USB_MAX_PACKET_SIZE
 #endif
 
 
@@ -55,10 +53,10 @@ struct usart_config const ap_uart;
  */
 struct signer_config const sig;
 static struct queue const ap_uart_output =
-	QUEUE_DIRECT(QUEUE_SIZE_SIG_IN, uint8_t, ap_uart.producer,
+	QUEUE_DIRECT(QUEUE_SIZE_SIG_TX, uint8_t, ap_uart.producer,
 		     sig.consumer);
 static struct queue const sig_to_usb =
-	QUEUE_DIRECT(QUEUE_SIZE_USB_IN, uint8_t, sig.producer,
+	QUEUE_DIRECT(QUEUE_SIZE_USB_TX, uint8_t, sig.producer,
 		     ap_usb.consumer);
 
 SIGNER_CONFIG(sig, stream_uart, sig_to_usb, ap_uart_output);
@@ -70,7 +68,7 @@ static struct queue const ap_uart_output =
 #endif
 
 static struct queue const ap_usb_to_uart =
-	QUEUE_DIRECT(QUEUE_SIZE_UART_IN, uint8_t, ap_usb.producer,
+	QUEUE_DIRECT(QUEUE_SIZE_UART_TX, uint8_t, ap_usb.producer,
 		     ap_uart.consumer);
 
 /*
@@ -112,7 +110,8 @@ static struct queue const ec_uart_to_usb =
 	QUEUE_DIRECT(QUEUE_SIZE_UART_RX, uint8_t,
 		     ec_uart.producer, ec_usb.consumer);
 static struct queue const ec_usb_to_uart =
-	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
+	QUEUE_DIRECT(QUEUE_SIZE_UART_TX, uint8_t,
+		     ec_usb.producer, ec_uart.consumer);
 
 USART_CONFIG(ec_uart,
 	     UART_EC,
@@ -153,18 +152,18 @@ void send_data_to_usb(struct usart_config const *config)
 	uint8_t buffer[50];
 	uint32_t i;
 	uint32_t room;
-	struct queue const *uart_in = config->producer.queue;
+	struct queue const *uart_tx = config->producer.queue;
 	int uart = config->uart;
 
 
 	i = 0;
-	room = MIN(sizeof(buffer), queue_space(uart_in));
+	room = MIN(sizeof(buffer), queue_space(uart_tx));
 
 	while ((i < room) && uartn_rx_available(uart))
 		buffer[i++] = uartn_read_char(uart);
 
 	if (i)
-		QUEUE_ADD_UNITS(uart_in, buffer, i);
+		QUEUE_ADD_UNITS(uart_tx, buffer, i);
 }
 
 static void uart_read(struct producer const *producer, size_t count)
