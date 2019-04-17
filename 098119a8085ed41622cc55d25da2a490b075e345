@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0069419a_15ca1744",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-17T19:25:39Z",
+      "side": 1,
+      "message": "I would guess this should be \"sniffer_task\"?  I believe it is the one receiving these events",
+      "parentUuid": "3b67dfad_f4669244",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "098119a8085ed41622cc55d25da2a490b075e345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e54131b3_4aa322dd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
