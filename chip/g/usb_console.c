@@ -184,7 +184,6 @@ static inline int tx_fifo_is_ready(void)
 static void tx_fifo_handler(void)
 {
 	size_t count;
-	static size_t head_mask = tx_q.buffer_units - 1;
 
 	if (!is_reset)
 		return;
@@ -203,7 +202,7 @@ static void tx_fifo_handler(void)
 	if (count > 0) {
 		size_t head;
 
-		head = tx_q.state->head & head_mask;
+		head = tx_q.state->head & tx_q.buffer_units_mask;
 		count = MIN(USB_MAX_PACKET_SIZE, count);
 		count = MIN(tx_q.buffer_units - head, count);
 		tx_units_con = count;
