@@ -2644,6 +2644,14 @@
 /* MAX695x 7 segment driver */
 #undef CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY
 
+/* Config for power states and port80 message to be displayed on 7 -segment */
+#undef CONFIG_SEVEN_SEG_DISPLAY
+
+#ifdef CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY
+#define CONFIG_SEVEN_SEG_DISPLAY
+#endif /* CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY */
+
+
 /* Compile common code to support power button debouncing */
 #undef CONFIG_POWER_BUTTON
 
