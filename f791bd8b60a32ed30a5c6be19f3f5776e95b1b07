@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "58716d75_025be1c7",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-17T21:11:24Z",
+      "side": 1,
+      "message": "That\u0027ll create an order dependency on cbi_get_board_version and cbi_get_sku_id because we want to check board_version \u003e\u003d 3 before calling board_get_panel_id.",
+      "parentUuid": "b839b58e_906e4bb1",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 24
+      },
+      "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ab37f2b_571f3b7c",
         "filename": "board/flapjack/board.c",
         "patchSetId": 6
