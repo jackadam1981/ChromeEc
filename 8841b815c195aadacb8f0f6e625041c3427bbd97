@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "711e4964_afbb6087",
+        "filename": "power/cometlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-17T21:58:58Z",
+      "side": 0,
+      "message": "Any reason why the _A suffix was removed? I believe this is supposed to be the enable for PP5000_A rail.",
+      "range": {
+        "startLine": 120,
+        "startChar": 35,
+        "endLine": 120,
+        "endChar": 37
+      },
+      "revId": "8841b815c195aadacb8f0f6e625041c3427bbd97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
