@@ -120,6 +120,14 @@ static enum panel_id board_get_panel_id(void)
 	return id;
 }
 
+void cbi_board_override_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	/* Override sku_id bit[19-16] to include LCM_ID. */
+	if ((board_version >= 3) && (tag == CBI_TAG_SKU_ID) &&
+	    (*size > (PANEL_ID_BIT_POSITION >> 3)))
+		buf[PANEL_ID_BIT_POSITION >> 3] = board_get_panel_id() & 0xf;
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -134,11 +142,6 @@ static void cbi_init(void)
 
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
-
-	if (board_version >= 3)
-		/* Embed LCM_ID in sku_id bit[19-16] */
-		sku |= ((board_get_panel_id() & 0xf) << PANEL_ID_BIT_POSITION);
-
 	CPRINTS("SKU: 0x%08x", sku);
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
