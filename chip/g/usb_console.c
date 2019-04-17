@@ -20,6 +20,10 @@
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 #define USB_CONSOLE_TIMEOUT_US (30 * MSEC)
+#define MAX_IN_DESC	2
+
+#define QUEUE_SIZE_UART_OUT    4096
+#define QUEUE_SIZE_UART_IN     USB_MAX_PACKET_SIZE
 
 static int last_tx_ok = 1;
 
@@ -69,20 +73,28 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) =
 	.bInterval          = 0
 };
 
-static uint8_t ep_buf_tx[USB_MAX_PACKET_SIZE];
 static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
 static struct g_usb_desc ep_out_desc;
-static struct g_usb_desc ep_in_desc;
+static struct g_usb_desc ep_in_desc[MAX_IN_DESC];
 
-static struct queue const tx_q = QUEUE_NULL(4096, uint8_t);
-static struct queue const rx_q = QUEUE_NULL(USB_MAX_PACKET_SIZE, uint8_t);
+static struct queue const tx_q = QUEUE_NULL(QUEUE_SIZE_UART_OUT, uint8_t);
+static struct queue const rx_q = QUEUE_NULL(QUEUE_SIZE_UART_IN, uint8_t);
 
+static size_t tx_units_intransit;
 
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
-static void usb_enable_tx(int len)
+static void usb_enable_tx(const int len[])
 {
-	ep_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC |
-			   DIEPDMA_TXBYTES(len);
+	const uint32_t flags = DIEPDMA_BS_HOST_RDY | DIEPDMA_IOC | DIEPDMA_LAST;
+	int idx = 0;
+
+	if (len[1]) {
+		ep_in_desc[idx].flags = DIEPDMA_TXBYTES(len[idx]) |
+					DIEPDMA_BS_HOST_RDY;
+		idx++;
+	}
+	ep_in_desc[idx].flags = DIEPDMA_TXBYTES(len[idx]) | flags;
+
 	GR_USB_DIEPCTL(USB_EP_CONSOLE) |= DXEPCTL_CNAK | DXEPCTL_EPENA;
 }
 
@@ -177,10 +189,17 @@ static void con_ep_rx(void)
 	/* clear the RX/OUT interrupts */
 	GR_USB_DOEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
+
 /* True if the Tx/IN FIFO can take some bytes from us. */
 static inline int tx_fifo_is_ready(void)
 {
-	uint32_t status = ep_in_desc.flags & DIEPDMA_BS_MASK;
+	uint32_t status;
+	struct g_usb_desc *in_desc = ep_in_desc;
+
+	while (!(in_desc->flags & DOEPDMA_LAST))
+		++in_desc;
+
+	status = in_desc->flags & DIEPDMA_BS_MASK;
 	return status == DIEPDMA_BS_DMA_DONE || status == DIEPDMA_BS_HOST_BSY;
 }
 
@@ -196,9 +215,47 @@ static void tx_fifo_handler(void)
 	if (!tx_fifo_is_ready())
 		return;
 
-	count = QUEUE_REMOVE_UNITS(&tx_q, ep_buf_tx, USB_MAX_PACKET_SIZE);
-	if (count)
-		usb_enable_tx(count);
+	/* handle the completion of the last transfer, if there was any. */
+	if (tx_units_intransit > 0) {
+		/*
+		 * Since tx completed, free the queue slots by advancing queue
+		 * head by the value of 'tx_units_intransit'.
+		 */
+		queue_advance_head(&tx_q, tx_units_intransit);
+		tx_units_intransit = 0;
+	}
+
+	/* setup to send bytes to the host */
+	count = MIN(queue_count(&tx_q), USB_MAX_PACKET_SIZE);
+	if (count > 0) {
+		size_t head = tx_q.state->head & (tx_q.buffer_units - 1);
+		int len[MAX_IN_DESC];
+
+		/*
+		 * If queue units are not physically continuous, then
+		 * setup transfer in two USB endpoint descriptors.
+		 *
+		 *      buffer                         buffer + buffer_units
+		 *      |     tail                head |
+		 *      |     |                   |    |
+		 *      V     V                   V    V
+		 * tx_q |xxxxxx___________________xxxxx|
+		 *       <---->                   <--->
+		 *      len[1]                    len[0]
+		 */
+		len[0] = MIN(count, tx_q.buffer_units - head);
+		len[1] = count - len[0];
+
+		/*
+		 * Store the amount to advance head when this transfer
+		 * completes.
+		 */
+		tx_units_intransit = count;
+
+		/* Setup in_desc endpoint with start memory address and count */
+		ep_in_desc[0].addr = (void *)tx_q.buffer + head;
+		usb_enable_tx(len);
+	}
 }
 DECLARE_DEFERRED(tx_fifo_handler);
 
@@ -224,8 +281,10 @@ static void ep_reset(void)
 			    DOEPDMA_LAST | DOEPDMA_BS_HOST_RDY | DOEPDMA_IOC;
 	ep_out_desc.addr = ep_buf_rx;
 	GR_USB_DOEPDMA(USB_EP_CONSOLE) = (uint32_t)&ep_out_desc;
-	ep_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;
-	ep_in_desc.addr = ep_buf_tx;
+	ep_in_desc[0].flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;
+	ep_in_desc[0].addr = NULL;
+	ep_in_desc[1].flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;
+	ep_in_desc[1].addr = (void *)tx_q.buffer;
 	GR_USB_DIEPDMA(USB_EP_CONSOLE) = (uint32_t)&ep_in_desc;
 	GR_USB_DOEPCTL(USB_EP_CONSOLE) = DXEPCTL_MPS(64) | DXEPCTL_USBACTEP |
 					 DXEPCTL_EPTYPE_BULK |
