@@ -69,7 +69,6 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) =
 	.bInterval          = 0
 };
 
-static uint8_t ep_buf_tx[USB_MAX_PACKET_SIZE];
 static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
 static struct g_usb_desc ep_out_desc;
 static struct g_usb_desc ep_in_desc;
@@ -77,6 +76,7 @@ static struct g_usb_desc ep_in_desc;
 static struct queue const tx_q = QUEUE_NULL(4096, uint8_t);
 static struct queue const rx_q = QUEUE_NULL(USB_MAX_PACKET_SIZE, uint8_t);
 
+static size_t tx_units_con;
 
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
 static void usb_enable_tx(int len)
@@ -167,11 +167,11 @@ DECLARE_DEFERRED(rx_fifo_handler);
 /* Rx/OUT interrupt handler */
 static void con_ep_rx(void)
 {
+	/* clear the RX/OUT interrupts */
+	GR_USB_DOEPINT(USB_EP_CONSOLE) = DOEPINT_MASK;
+
 	/* Wake up the Rx FIFO handler */
 	hook_call_deferred(&rx_fifo_handler_data, 0);
-
-	/* clear the RX/OUT interrupts */
-	GR_USB_DOEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
 /* True if the Tx/IN FIFO can take some bytes from us. */
 static inline int tx_fifo_is_ready(void)
@@ -192,9 +192,40 @@ static void tx_fifo_handler(void)
 	if (!tx_fifo_is_ready())
 		return;
 
-	count = QUEUE_REMOVE_UNITS(&tx_q, ep_buf_tx, USB_MAX_PACKET_SIZE);
-	if (count)
+	/* handle the completion of the last transfer, if there was any. */
+	if (tx_units_con > 0) {
+		/*
+		 * Since tx completed, free the queue slots by advancing queue
+		 * head by the value of 'tx_units_con'.
+		 */
+		queue_advance_head(&tx_q, tx_units_con);
+		tx_units_con = 0;
+	}
+
+	/* setup to send bytes to the host */
+	count = queue_count(&tx_q);
+	if (count > 0) {
+		size_t head;
+
+		/*
+		 * The amount of transfer should be the smallest between
+		 *  - USB_MAX_PACKET_SIZE and
+		 *  - the number of continuous queue units in tx_q, which is
+		 *    min(queue_count(&tx_q), tx-q.buffer_units - head)
+		 */
+		head = tx_q.state->head & (tx_q.buffer_units - 1);
+		count = MIN(USB_MAX_PACKET_SIZE, count);
+		count = MIN(tx_q.buffer_units - head, count);
+
+		/*
+		 * Store the amount to advance head when this transfer
+		 * completes.
+		 */
+		tx_units_con = count;
+
+		ep_in_desc.addr = (void *)(tx_q.buffer + head);
 		usb_enable_tx(count);
+	}
 }
 DECLARE_DEFERRED(tx_fifo_handler);
 
@@ -207,11 +238,11 @@ static void handle_output(void)
 /* Tx/IN interrupt handler */
 static void con_ep_tx(void)
 {
+	/* clear the Tx/IN interrupts */
+	GR_USB_DIEPINT(USB_EP_CONSOLE) = DIEPINT_MASK;
+
 	/* Wake up the Tx FIFO handler */
 	hook_call_deferred(&tx_fifo_handler_data, 0);
-
-	/* clear the Tx/IN interrupts */
-	GR_USB_DIEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
 
 static void ep_reset(void)
@@ -221,7 +252,7 @@ static void ep_reset(void)
 	ep_out_desc.addr = ep_buf_rx;
 	GR_USB_DOEPDMA(USB_EP_CONSOLE) = (uint32_t)&ep_out_desc;
 	ep_in_desc.flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;
-	ep_in_desc.addr = ep_buf_tx;
+	ep_in_desc.addr = NULL;
 	GR_USB_DIEPDMA(USB_EP_CONSOLE) = (uint32_t)&ep_in_desc;
 	GR_USB_DOEPCTL(USB_EP_CONSOLE) = DXEPCTL_MPS(64) | DXEPCTL_USBACTEP |
 					 DXEPCTL_EPTYPE_BULK |
