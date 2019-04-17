@@ -26,13 +26,17 @@ enum led_phase {
 
 /*
  * STATE_CHARGING_LVL_1 is when 0 <= charge_percentage < led_charge_level_1
- * STATE_CHARGING_LVL_2 is when led_chg_level_1 <= chg_% < led_charge_level_2
- * STATE_CHARGING_FULL_CHARGE is when led_charge_level_2 <= charge_% < 100
+ * STATE_CHARGING_LVL_2 is when led_charge_level_1 <= charge_percentage < led_charge_level_2
+ * STATE_CHARGING_FULL_CHARGE is when led_charge_level_2 <= charge_percentage < 100
+ *
+ * STATE_CHARGING_FULL_S5 is optional and state machine will fall back to
+ *	FULL_CHARGE if not defined
  */
 enum led_states {
 	STATE_CHARGING_LVL_1,
 	STATE_CHARGING_LVL_2,
 	STATE_CHARGING_FULL_CHARGE,
+	STATE_CHARGING_FULL_S5,
 	STATE_DISCHARGE_S0,
 	STATE_DISCHARGE_S0_BAT_LOW,
 	STATE_DISCHARGE_S3,
@@ -58,6 +62,21 @@ extern const int led_charge_lvl_1;
 /* Charging LED state level 2 - defined in board's led.c */
 extern const int led_charge_lvl_2;
 
+#ifdef HATCH_POWER_LED
+enum pwr_led_states {
+	PWR_LED_STATE_ON,
+	PWR_LED_STATE_SUSPEND_AC,
+	PWR_LED_STATE_SUSPEND_NO_AC,
+	PWR_LED_STATE_OFF,
+	PWR_LED_NUM_STATES
+};
+
+/* Power LED state table - defined in board's led.c */
+extern const struct led_descriptor
+			led_pwr_state_table[PWR_LED_NUM_STATES][LED_NUM_PHASES];
+
+#endif
+
 /**
  * Set battery LED color - defined in board's led.c
  *
@@ -65,5 +84,12 @@ extern const int led_charge_lvl_2;
  *
  */
 void led_set_color_battery(enum ec_led_colors color);
+
+#ifdef HATCH_POWER_LED
+/**
+ * Set power LED color - defined in board's led.c
+ */
+void led_set_color_power(enum ec_led_colors color);
+#endif
 
 #endif /* __CROS_EC_BASEBOARD_LED_H */

@@ -18,6 +18,7 @@
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
+#define HATCH_POWER_LED
 #define CONFIG_LOW_POWER_IDLE
 
 #define CONFIG_HOSTCMD_ESPI
@@ -62,7 +63,9 @@
 #define CONFIG_THERMISTOR
 #define CONFIG_THROTTLE_AP
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
-
+/* Battery W/A */
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
+#define CONFIG_I2C_XFER_BOARD_CALLBACK
 /* MST */
 /*
  * TDOD (b/124068003): This inherently assumes the MST chip is connected to only
@@ -85,6 +88,9 @@
 #define GPIO_PCH_SLP_S3_L GPIO_SLP_S3_L
 #define GPIO_PCH_SLP_S4_L GPIO_SLP_S4_L
 #define GPIO_EN_PP5000 GPIO_EN_PP5000_A
+#define GPIO_BAT_LED_RED_L GPIO_LED_1_L
+#define GPIO_PWR_LED_BLUE_L GPIO_LED_2_L
+#define GPIO_BAT_LED_GREEN_L GPIO_LED_3_L
 
 #ifndef __ASSEMBLER__
 
@@ -135,8 +141,7 @@ enum temp_sensor_id {
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_SMP_LIS,
-	BATTERY_SMP_SDI,
+	BATTERY_SDI,
 	BATTERY_TYPE_COUNT,
 };
 

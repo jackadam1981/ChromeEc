@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Battery LED state control for hatch boards
+ * Power and battery LED state control for hatch boards
  */
 
 #include "battery.h"
@@ -32,17 +32,30 @@ static enum led_states led_get_state(void)
 		else if (charge_lvl < led_charge_lvl_2)
 			new_state = STATE_CHARGING_LVL_2;
 		else
-			new_state = STATE_CHARGING_FULL_CHARGE;
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+				new_state = STATE_CHARGING_FULL_S5;
+			else
+				new_state = STATE_CHARGING_FULL_CHARGE;
 		break;
 	case PWR_STATE_DISCHARGE_FULL:
 		if (extpower_is_present()) {
-			new_state = STATE_CHARGING_FULL_CHARGE;
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+				new_state = STATE_CHARGING_FULL_S5;
+			else
+				new_state = STATE_CHARGING_FULL_CHARGE;
 			break;
 		}
 		/* Intentional fall-through */
 	case PWR_STATE_DISCHARGE /* and PWR_STATE_DISCHARGE_FULL */:
-		if (chipset_in_state(CHIPSET_STATE_ON))
-			new_state = STATE_DISCHARGE_S0;
+		if (chipset_in_state(CHIPSET_STATE_ON)) {
+#ifdef HATCH_BATT_FUEL_LOW_LED
+			if (charge_get_percent() <
+				OCTOPUS_BATT_FUEL_LOW_LED)
+				new_state = STATE_DISCHARGE_S0_BAT_LOW;
+			else
+#endif
+				new_state = STATE_DISCHARGE_S0;
+		}
 		else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
 			new_state = STATE_DISCHARGE_S3;
 		else
@@ -52,7 +65,10 @@ static enum led_states led_get_state(void)
 		new_state = STATE_BATTERY_ERROR;
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		new_state = STATE_CHARGING_FULL_CHARGE;
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			new_state = STATE_CHARGING_FULL_S5;
+		else
+			new_state = STATE_CHARGING_FULL_CHARGE;
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE */
 		if (charge_get_flags() & CHARGE_FLAG_FORCE_IDLE)
@@ -82,6 +98,14 @@ static void led_update_battery(void)
 	 * continue using the previous one.
 	 */
 	if (desired_state != led_state && desired_state < LED_NUM_STATES) {
+		/*
+		 * Allow optional CHARGING_FULL_S5 state to fall back to
+		 * FULL_CHARGE if not defined.
+		 */
+		if (desired_state == STATE_CHARGING_FULL_S5 &&
+		    led_bat_state_table[desired_state][LED_PHASE_0].time == 0)
+			desired_state = STATE_CHARGING_FULL_CHARGE;
+
 		/* State is changing */
 		led_state = desired_state;
 		/* Reset ticks and period when state changes */
@@ -112,6 +136,67 @@ static void led_update_battery(void)
 	led_set_color_battery(led_bat_state_table[led_state][phase].color);
 }
 
+#ifdef HATCH_POWER_LED
+static enum pwr_led_states pwr_led_get_state(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		if (extpower_is_present())
+			return PWR_LED_STATE_SUSPEND_AC;
+		else
+			return PWR_LED_STATE_SUSPEND_NO_AC;
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		return PWR_LED_STATE_OFF;
+	} else if (chipset_in_state(CHIPSET_STATE_ON)) {
+		return PWR_LED_STATE_ON;
+	}
+
+	return PWR_LED_NUM_STATES;
+}
+
+static void led_update_power(void)
+{
+	static uint8_t ticks, period;
+	static enum pwr_led_states led_state = PWR_LED_NUM_STATES;
+	int phase;
+	enum pwr_led_states desired_state = pwr_led_get_state();
+
+	/*
+	 * If we're in a new valid state, update our ticks and period info.
+	 * Otherwise, continue to use old state
+	 */
+	if (desired_state != led_state && desired_state < PWR_LED_NUM_STATES) {
+		/* State is changing */
+		led_state = desired_state;
+		/* Reset ticks and period when state changes */
+		ticks = 0;
+
+		period = led_pwr_state_table[led_state][LED_PHASE_0].time +
+			led_pwr_state_table[led_state][LED_PHASE_1].time;
+
+	}
+
+	/* If this state is undefined, turn the LED off */
+	if (period == 0) {
+		CPRINTS("Undefined LED behavior for power state %d,"
+			"turning off LED", led_state);
+		led_set_color_power(LED_OFF);
+		return;
+	}
+
+	/*
+	 * Determine which phase of the state table to use. The phase is
+	 * determined if it falls within first phase time duration.
+	 */
+	phase = ticks < led_pwr_state_table[led_state][LED_PHASE_0].time ?
+									0 : 1;
+	ticks = (ticks + 1) % period;
+
+	/* Set the color for the given state and phase */
+	led_set_color_power(led_pwr_state_table[led_state][phase].color);
+
+}
+#endif
+
 static void led_init(void)
 {
 	/* If battery LED is enabled, set it to "off" to start with */
@@ -129,5 +214,9 @@ static void led_update(void)
 	 */
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		led_update_battery();
+#ifdef HATCH_POWER_LED
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		led_update_power();
+#endif
 }
 DECLARE_HOOK(HOOK_TICK, led_update, HOOK_PRIO_DEFAULT);

@@ -12,7 +12,9 @@
 #include "console.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/sn5s330.h"
+#if !defined(VARIANT_HATCH_TCPC_0_PS8751)
 #include "driver/tcpm/anx7447.h"
+#endif
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -148,10 +150,16 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 /* USB-C TPCP Configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
-		.i2c_host_port = I2C_PORT_TCPC0,
+                .i2c_host_port = I2C_PORT_TCPC0,
+#if defined(VARIANT_HATCH_TCPC_0_PS8751)
+                .i2c_slave_addr = PS8751_I2C_ADDR1,
+                .drv = &ps8xxx_tcpm_drv,
+                .pol = TCPC_ALERT_ACTIVE_LOW
+#else
 		.i2c_slave_addr = AN7447_TCPC0_I2C_ADDR,
 		.drv = &anx7447_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
+#endif
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
@@ -180,8 +188,13 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
+#if defined(VARIANT_HATCH_TCPC_0_PS8751)
+                .driver = &tcpci_tcpm_usb_mux_driver,
+                .hpd_update = &ps8xxx_tcpc_update_hpd_status,
+#else
 		.driver = &anx7447_usb_mux_driver,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
+#endif
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
@@ -237,7 +250,11 @@ uint16_t tcpc_get_alert_status(void)
 	 * port 1 reset is active low.
 	 */
 	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
+#if defined(VARIANT_HATCH_TCPC_0_PS8751)
+                if (gpio_get_level(GPIO_USB_C0_TCPC_RST_ODL))
+#else
 		if (!gpio_get_level(GPIO_USB_C0_TCPC_RST))
+#endif
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
@@ -251,6 +268,21 @@ uint16_t tcpc_get_alert_status(void)
 
 void board_reset_pd_mcu(void)
 {
+#if defined(VARIANT_HATCH_TCPC_0_PS8751)
+        /*
+         * C0: Assert reset to TCPC0 (PS8751) for required delay if we have a
+         * battery
+         */
+        if (battery_is_present() == BP_YES) {
+                /*
+                 * TODO(crbug:846412): After refactor, ensure that battery has
+                 * enough charge to last the reboot as well
+                 */
+                gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 0);
+                msleep(PS8XXX_RESET_DELAY_MS);
+                gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 1);
+        }
+#else
 	/*
 	 * C0: Assert reset to TCPC0 (ANX7447) for required delay (1ms) only if
 	 * we have a battery
@@ -262,6 +294,7 @@ void board_reset_pd_mcu(void)
 		gpio_set_level(GPIO_USB_C0_TCPC_RST, 0);
 		msleep(ANX74XX_RESET_FINISH_MS);
 	}
+#endif
 	/*
 	 * C1: Assert reset to TCPC1 (PS8751) for required delay (1ms) only if
 	 * we have a battery, otherwise we may brown out the system.
