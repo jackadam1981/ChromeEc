@@ -460,3 +460,10 @@ void audio_codec_wov_task(void *arg)
 		mutex_unlock(&priv.lock);
 	}
 }
+
+static int send_wov_host_event(int argc, char **argv)
+{
+	host_set_single_event(EC_HOST_EVENT_WOV);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(x, send_wov_host_event, "None", "Send WoV Host Event");
