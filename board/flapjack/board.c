@@ -50,6 +50,9 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+#define SKU_ID_TO_LCM_ID(x)	((x >> PANEL_ID_BIT_POSITION) & 0xf)
+#define LCM_ID_TO_SKU_ID(x)	((x & 0xf) << PANEL_ID_BIT_POSITION)
+
 static const struct mv_to_id panels[] = {
 	{ PANEL_BOE_HIMAX8279D10P,	98 },
 	{ PANEL_BOE_HIMAX8279D8P,	280 },
@@ -58,7 +61,7 @@ BUILD_ASSERT(ARRAY_SIZE(panels) < PANEL_COUNT);
 
 uint16_t board_version;
 uint8_t oem;
-uint32_t sku;
+uint32_t sku = LCM_ID_TO_SKU_ID(PANEL_COUNT);
 
 int board_read_id(enum adc_channel ch, const struct mv_to_id *table, int size)
 {
@@ -83,7 +86,7 @@ static void board_setup_panel(void)
 	int rv = 0;
 
 	if (board_version >= 3) {
-		switch ((sku >> PANEL_ID_BIT_POSITION) & 0xf) {
+		switch (SKU_ID_TO_LCM_ID(sku)) {
 		case PANEL_BOE_HIMAX8279D8P:
 			channel = 0xfa;
 			dim = 0xc8;
@@ -120,9 +123,30 @@ static enum panel_id board_get_panel_id(void)
 	return id;
 }
 
+#define CBI_SKU_ID_SIZE 4
+
+int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	/* Override cached sku_id to include LCM_ID. */
+	switch (tag) {
+	case CBI_TAG_SKU_ID:
+		if (*size != CBI_SKU_ID_SIZE)
+			return EC_ERROR_INVAL;
+		if (SKU_ID_TO_LCM_ID(sku) == PANEL_COUNT)
+			/* Haven't read LCM_ID. UNKNOWN is acceptable result */
+			return EC_ERROR_BUSY;
+		buf[PANEL_ID_BIT_POSITION / 8] = SKU_ID_TO_LCM_ID((sku));
+		break;
+	default:
+		break;
+	}
+	return EC_SUCCESS;
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
+	int rv;
 
 	if (cbi_get_board_version(&val) == EC_SUCCESS && val <= UINT16_MAX)
 		board_version = val;
@@ -132,12 +156,13 @@ static void cbi_init(void)
 		oem = val;
 	CPRINTS("OEM: %d", oem);
 
-	if (cbi_get_sku_id(&val) == EC_SUCCESS)
+	rv = cbi_get_sku_id(&val);
+	if (rv == EC_SUCCESS || rv == EC_ERROR_BUSY)
 		sku = val;
 
 	if (board_version >= 3)
 		/* Embed LCM_ID in sku_id bit[19-16] */
-		sku |= ((board_get_panel_id() & 0xf) << PANEL_ID_BIT_POSITION);
+		sku |= LCM_ID_TO_SKU_ID(board_get_panel_id());
 
 	CPRINTS("SKU: 0x%08x", sku);
 }

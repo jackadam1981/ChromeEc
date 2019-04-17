@@ -46,6 +46,7 @@ struct cbi_data {
  *
  * @param version/sku_id/oem_id [OUT] Data read from EEPROM
  * @return EC_SUCCESS on success or EC_ERROR_* otherwise.
+ *         EC_ERROR_BUSY to indicate data is being composed.
  */
 int cbi_get_board_version(uint32_t *version);
 int cbi_get_sku_id(uint32_t *sku_id);
@@ -53,14 +54,24 @@ int cbi_get_oem_id(uint32_t *oem_id);
 int cbi_get_model_id(uint32_t *id);
 
 /**
- * Primitive accessors
+ * Get data from CBI store
+ *
+ * @param tag   Tag of the target data.
+ * @param buf   Buffer where data is passed.
+ * @param size  (IN) Size of <buf>. (OUT) Size of the data returned.
+ * @return EC_SUCCESS on success or EC_ERROR_* otherwise.
+ *         EC_ERROR_BUSY to indicate data is being composed.
+ */
+int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
+
+/**
+ * Set data in CBI store
  *
  * @param tag   Tag of the target data.
  * @param buf   Buffer where data is passed.
  * @param size  (IN) Size of <buf>. (OUT) Size of the data returned.
  * @return EC_SUCCESS on success or EC_ERROR_* otherwise.
  */
-int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
 int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size);
 
 /*
@@ -113,5 +124,16 @@ uint8_t *cbi_set_string(uint8_t *p, enum cbi_data_tag tag, const char *str);
  * @return	Pointer to the data or NULL if not found.
  */
 struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag);
+
+/**
+ * Callback implemented by board to compose data
+ *
+ * @param tag
+ * @param buf
+ * @param size
+ * @return EC_SUCCESS to indicate the data is ready.
+ *         EC_ERROR_BUSY to indicate data is not ready.
+ */
+int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
 
 #endif /* __CROS_EC_CROS_BOARD_INFO_H */
