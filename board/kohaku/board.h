@@ -62,7 +62,9 @@
 #define CONFIG_THERMISTOR
 #define CONFIG_THROTTLE_AP
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
-
+/* Battery W/A */
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
+#define CONFIG_I2C_XFER_BOARD_CALLBACK
 /* MST */
 /*
  * TDOD (b/124068003): This inherently assumes the MST chip is connected to only
@@ -135,8 +137,7 @@ enum temp_sensor_id {
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_SMP_LIS,
-	BATTERY_SMP_SDI,
+	BATTERY_SDI,
 	BATTERY_TYPE_COUNT,
 };
 
