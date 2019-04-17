@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a06d4e0_00b83cd0",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-04-17T17:41:21Z",
+      "side": 1,
+      "message": "I see HOOK_TICK_INTERVAL_MS as 200 in chip/npcx/config_chip.h. That means this LED will be on for 800 ms and off for 800 ms(not 1 s as mentioned in the commit message). Same goes for the charging LED as well. Please correct me if I am missing something.",
+      "range": {
+        "startLine": 181,
+        "startChar": 20,
+        "endLine": 181,
+        "endChar": 21
+      },
+      "revId": "517dbdb1c1b106f931cb13af66d75a50dcd039af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
