@@ -45,6 +45,30 @@
       "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "652619ea_7007c5cd",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-17T19:54:09Z",
+      "side": 1,
+      "message": "That works too but this demonstrates how developers can use the API without worrying about the call order (thanks to EC_ERROR_BUSY). It\u0027s obvious here in flapjack/board.c but it\u0027s not always obvious when other sources are accessed differently. So, this order flexibility is worth the demonstration.",
+      "parentUuid": "7ab37f2b_571f3b7c",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
