@@ -154,6 +154,11 @@ static int read_board_info(void)
 	return cached_read_result;
 }
 
+__attribute__((weak)) /* Can be overridden by board. */
+void cbi_board_override_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+}
+
 int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 {
 	const struct cbi_data *d;
@@ -174,6 +179,10 @@ int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
 	/* Copy the value */
 	memcpy(buf, d->value, d->size);
 	*size = d->size;
+
+	/* Board override, if any. */
+	cbi_board_override_info(tag, buf, size);
+
 	return EC_SUCCESS;
 }
 

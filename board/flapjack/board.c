@@ -120,6 +120,14 @@ static enum panel_id board_get_panel_id(void)
 	return id;
 }
 
+void cbi_board_override_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	/* Override cached sku_id to include LCM_ID. */
+	if ((tag == CBI_TAG_SKU_ID) && (*size == 4))
+		buf[PANEL_ID_BIT_POSITION / 8] =
+			(sku >> PANEL_ID_BIT_POSITION) & 0xf;
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
