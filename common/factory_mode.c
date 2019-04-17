@@ -15,34 +15,44 @@
 
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 
-static uint8_t ccd_hook_active;
+static uint8_t wait_for_factory_ccd_change;
 static uint8_t reset_required_;
 
-static void ccd_config_changed(void)
+static void reset_system(void)
 {
-	if (!ccd_hook_active)
-		return;
-
-	ccd_hook_active = 0;
-
-	if (!reset_required_)
-		return;
-
-	CPRINTS("%s: saved, rebooting\n", __func__);
 	cflush();
 	system_reset(SYSTEM_RESET_HARD);
 }
+
+static void ccd_config_changed(void)
+{
+	if (!wait_for_factory_ccd_change)
+		return;
+	wait_for_factory_ccd_change = 0;
+
+	CPRINTS("%s: factory mode saved%s", __func__,
+		reset_required_ ? ", rebooting" : "");
+
+	if (!reset_required_)
+		return;
+	reset_system();
+}
 DECLARE_HOOK(HOOK_CCD_CHANGE, ccd_config_changed, HOOK_PRIO_LAST);
 
-static void factory_enable_failed(void)
+static void ccd_reset_factory_failed(void)
 {
-	ccd_hook_active = 0;
-	CPRINTS("factory enable failed");
+	CPRINTS("%s", __func__);
 
+	/*
+	 * If a reset was requested, reset the system even though setting the
+	 * ccd config failed. We can't be sure what caused the failure or
+	 * how much of the config was set to factory mode. Reset the system to
+	 * make sure cr50 resets.
+	 */
 	if (reset_required_)
-		reset_required_ = 0;
+		reset_system();
 }
-DECLARE_DEFERRED(factory_enable_failed);
+DECLARE_DEFERRED(ccd_reset_factory_failed);
 
 /* The below time constants are way longer than should be required in practice:
  *
@@ -68,17 +78,19 @@ static void factory_enable_deferred(void)
 
 	CPRINTS("%s: TPM reset done, enabling factory mode", __func__);
 
-	ccd_hook_active = 1;
+	/* Reset once ccd_config saves the factory mode changes */
+	wait_for_factory_ccd_change = 1;
 	rv = ccd_reset_config(CCD_RESET_FACTORY);
 	if (rv != EC_SUCCESS)
-		factory_enable_failed();
+		ccd_reset_factory_failed();
 
 	if (reset_required_) {
 		/*
 		 * Cr50 will reset once factory mode is enabled. If it hasn't in
 		 * TPM_RESET_TIME, declare factory enable failed.
 		 */
-		hook_call_deferred(&factory_enable_failed_data, TPM_RESET_TIME);
+		hook_call_deferred(&ccd_reset_factory_failed_data,
+			TPM_RESET_TIME);
 	}
 }
 DECLARE_DEFERRED(factory_enable_deferred);
