@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6edf34b_71b78234",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-17T04:52:43Z",
+      "side": 1,
+      "message": "This is going away: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1551581\n\nCan you please rebase on top of that CL?",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "7a9d042b699a61a1d5bfeb8d4ffe58a88390f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
