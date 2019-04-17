@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84c959f6_e1c9d132",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-17T23:01:49Z",
+      "side": 1,
+      "message": "How can ccd_reset_config succeed without HOOK_CCD_CHANGE getting triggered?",
+      "range": {
+        "startLine": 84,
+        "startChar": 32,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "6cf397ce2fc74dadb324d9651465af61f3471202",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
