@@ -95,10 +95,10 @@ int rx_stream_handler(struct usb_stream_config const *config)
 /* Rx/OUT interrupt handler */
 void usb_stream_rx(struct usb_stream_config const *config)
 {
+	GR_USB_DOEPINT(config->endpoint) = DOEPINT_MASK;
+
 	/* Wake up the Rx FIFO handler */
 	hook_call_deferred(config->deferred_rx, 0);
-
-	GR_USB_DOEPINT(config->endpoint) = 0xffffffff;
 }
 
 /* True if the Tx/IN FIFO can take some bytes from us. */
@@ -112,6 +112,7 @@ static inline int tx_fifo_is_ready(struct usb_stream_config const *config)
 int tx_stream_handler(struct usb_stream_config const *config)
 {
 	size_t count;
+	struct queue const *tx_q = config->consumer.queue;
 
 	if (!*config->is_reset)
 		return 0;
@@ -119,33 +120,49 @@ int tx_stream_handler(struct usb_stream_config const *config)
 	if (!tx_fifo_is_ready(config))
 		return 0;
 
-	count = QUEUE_REMOVE_UNITS(config->consumer.queue, config->tx_ram,
-				   config->tx_size);
-	if (count)
+	/* handle the completion of the latest transfer */
+	count = *(config->tx_units);
+	if (count > 0) {
+		queue_advance_head(tx_q, count);
+		*(config->tx_units) = 0;
+	}
+
+	/* setup to send bytes to the host */
+	count = queue_count(tx_q);
+	if (count > 0) {
+		size_t head;
+
+		head = tx_q->state->head & (tx_q->buffer_units - 1);
+		count = MIN(config->tx_size, count);
+		count = MIN(tx_q->buffer_units - head, count);
+		*(config->tx_units) = count;
+
+		config->in_desc->addr = (void *)(tx_q->buffer + head);
 		usb_enable_tx(config, count);
+	}
 	return count;
 }
 
 /* Tx/IN interrupt handler */
 void usb_stream_tx(struct usb_stream_config const *config)
 {
+	/* clear the Tx/IN interrupts */
+	GR_USB_DIEPINT(config->endpoint) = DIEPINT_MASK;
+
 	/* Wake up the Tx FIFO handler */
 	hook_call_deferred(config->deferred_tx, 0);
-
-	/* clear the Tx/IN interrupts */
-	GR_USB_DIEPINT(config->endpoint) = 0xffffffff;
 }
 
 void usb_stream_reset(struct usb_stream_config const *config)
 {
-	config->out_desc->flags = DOEPDMA_RXBYTES(config->tx_size) |
+	config->out_desc->flags = DOEPDMA_RXBYTES(config->rx_size) |
 				  DOEPDMA_LAST | DOEPDMA_BS_HOST_RDY |
 				  DOEPDMA_IOC;
 	config->out_desc->addr = config->rx_ram;
 	GR_USB_DOEPDMA(config->endpoint) = (uint32_t)config->out_desc;
 	config->in_desc->flags = DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY |
 				 DIEPDMA_IOC;
-	config->in_desc->addr = config->tx_ram;
+	config->in_desc->addr = NULL;
 	GR_USB_DIEPDMA(config->endpoint) = (uint32_t)config->in_desc;
 	GR_USB_DOEPCTL(config->endpoint) = DXEPCTL_MPS(64) | DXEPCTL_USBACTEP |
 					   DXEPCTL_EPTYPE_BULK |
