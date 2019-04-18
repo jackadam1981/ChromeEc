@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "07e9c21d_d23d5577",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1309185
+      },
+      "writtenOn": "2019-04-18T22:16:26Z",
+      "side": 1,
+      "message": "Here is the register description. I will update register spec later (with other missed information)\n\nThe AGENT_STATUS register allows observation of the status of the agent and\nattached core. All fields in this register are read-only or write to clear.\n\n29 INBAND_ERROR_SECONDARY Error status for in-band errors with MErrSteer indicating a secondary error\n28 INBAND_ERROR_PRIMARY Error status for in-band errors with MErrSteer indicating a primary error (or if error steering is not enabled)\n24 MERROR MError assertion detected",
+      "parentUuid": "c7d979b2_b11e919e",
+      "range": {
+        "startLine": 282,
+        "startChar": 38,
+        "endLine": 282,
+        "endChar": 53
+      },
+      "revId": "9b8e41eb58a4ea653d99702f20c3e3900b84fc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85c3072e_dcaeb783",
         "filename": "chip/ish/system.c",
         "patchSetId": 2
