@@ -22,6 +22,30 @@
       "revId": "51bd68e21cb464d93ba768d92a9651b1343e440c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af862de7_36b97397",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 0,
+      "message": "Yeah, I realized that after it got merged.  Keep it here or move to new CL?",
+      "parentUuid": "170ea6da_ffda13f1",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "51bd68e21cb464d93ba768d92a9651b1343e440c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

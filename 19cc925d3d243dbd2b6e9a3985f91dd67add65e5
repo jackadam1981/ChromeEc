@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe729839_1a636deb",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 1,
+      "message": "I don\u0027t know.  Fair enough.  I\u0027ll file a bug and add a linked TODO.",
+      "parentUuid": "badb491d_0fe89cba",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 100
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adf13a30_e0a87641",
         "filename": "board/kohaku/gpio.inc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be08f0c_d5a18c8c",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 1,
+      "message": "Ok I\u0027ll leave it out for now and file a bug, since I don\u0027t know what the part is used for yet.",
+      "parentUuid": "adf13a30_e0a87641",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 97
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e144018f_07218c14",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 1,
+      "message": "At the time I was looking at the EC pinout doc, there were additional temp. channels but looks like they\u0027re gone now...",
+      "parentUuid": "40b48890_44014864",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 42
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2be351c_55d94ff3",
         "filename": "board/kohaku/gpio.inc",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d2e6e23_3d6a1f73",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2be351c_55d94ff3",
+      "range": {
+        "startLine": 140,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 42
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b0056295_1cf467b7",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 1,
+      "message": "My bad.",
+      "parentUuid": "87140bdf_84ffb7ad",
+      "range": {
+        "startLine": 141,
+        "startChar": 92,
+        "endLine": 141,
+        "endChar": 102
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71430e6b_dbe8d944",
         "filename": "board/kohaku/gpio.inc",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c88bb07e_4fdcde00",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-04-18T21:28:01Z",
+      "side": 1,
+      "message": "Sorry, I thought Furquan meant to just make sure all the GPIO pins were defined correctly for this bug.  I\u0027ll leave the ADC channels alone for now.",
+      "parentUuid": "71430e6b_dbe8d944",
+      "range": {
+        "startLine": 142,
+        "startChar": 29,
+        "endLine": 142,
+        "endChar": 41
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
