@@ -305,7 +305,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 		 * and the state machine.
 		 */
 		if (time_after(ts_now.le.lo,
-			       s->last_collection + SI114X_DENIED_THRESHOLD)) {
+			       s->next_collection + SI114X_DENIED_THRESHOLD)) {
 			int ret, val;
 
 			ret = raw_read8(s->port, s->addr,

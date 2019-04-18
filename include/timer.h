@@ -134,6 +134,22 @@ void force_time(timestamp_t ts);
 void timer_print_info(void);
 
 /**
+ * Returns a free running millisecond clock counter, which matches tpm2
+ * library expectations.
+ */
+clock_t clock(void);
+
+/**
+ * Compute how far b is from a with rollover taken into account
+ *
+ * Return us until b given a, if negative then b has passeed a.
+ */
+static inline int time_until(uint32_t a, uint32_t b)
+{
+	return (int32_t)(b - a);
+}
+
+/**
  * Returns the number of microseconds that have elapsed from a start time.
  *
  * This function is for timing short delays typically of a few milliseconds
@@ -147,14 +163,8 @@ void timer_print_info(void);
  */
 static inline unsigned time_since32(timestamp_t start)
 {
-	return get_time().le.lo - start.le.lo;
+	return time_until(start.le.lo, get_time().le.lo);
 }
-
-/**
- * Returns a free running millisecond clock counter, which matches tpm2
- * library expectations.
- */
-clock_t clock(void);
 
 /**
  * To compare time and deal with rollover
@@ -163,7 +173,7 @@ clock_t clock(void);
  */
 static inline int time_after(uint32_t a, uint32_t b)
 {
-	return (int32_t)(b - a) < 0;
+	return time_until(a, b) < 0;
 }
 
 #endif  /* __CROS_EC_TIMER_H */

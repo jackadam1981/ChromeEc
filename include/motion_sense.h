@@ -180,13 +180,15 @@ struct motion_sensor_t {
 	uint16_t lost;
 
 	/*
-	 * Time since last collection:
-	 * For sensor with hardware FIFO,  time since last sample
-	 * has move from the hardware FIFO to the FIFO (used if fifo rate != 0).
-	 * For sensor without FIFO, time since the last event was collect
-	 * from sensor registers.
+	 * For sensors in forced mode the ideal time to collect the next
+	 * measurement
 	 */
-	uint32_t last_collection;
+	uint32_t next_collection;
+
+	/*
+	 * The time in us between collection measurements
+	 */
+	uint32_t collection_rate;
 
 	/* Minimum supported sampling frequency in miliHertz for this sensor */
 	uint32_t min_frequency;
