@@ -661,7 +661,7 @@ static int p9221_reg_write_converted_r7(uint16_t reg, uint32_t val)
 		data = (val / (100 * 1000)) - 2;
 		break;
 	case P9221R7_VOUT_SET_REG:
-		/* uV -> 0.1V */
+		/* uV -> mV -> 0.1V */
 		val /= 1000;
 		if (val < 3500 || val > 9000)
 			return -EC_ERROR_INVAL;
@@ -763,6 +763,20 @@ static void p9221_detect_work(void)
 
 }
 DECLARE_DEFERRED(p9221_detect_work);
+
+int p9221_get_output_voltage(int *mv)
+{
+	uint32_t uv;
+	int rv = p9221_reg_read_converted(P9221R7_VOUT_SET_REG, &uv);
+	if (!rv)
+		*mv = uv / 1000;
+	return rv;
+}
+
+int p9221_set_output_voltage(int mv)
+{
+	return p9221_reg_write_converted_r7(P9221R7_VOUT_SET_REG, mv * 1000);
+}
 
 void p9221_notify_vbus_change(int vbus)
 {
