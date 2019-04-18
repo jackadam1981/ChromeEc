@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4dbff647_395925b3",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-18T02:00:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d979b2_b11e919e",
+      "range": {
+        "startLine": 282,
+        "startChar": 38,
+        "endLine": 282,
+        "endChar": 53
+      },
+      "revId": "9b8e41eb58a4ea653d99702f20c3e3900b84fc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85c3072e_dcaeb783",
         "filename": "chip/ish/system.c",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "9b8e41eb58a4ea653d99702f20c3e3900b84fc2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37811b9a_d49c4300",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-18T02:00:41Z",
+      "side": 1,
+      "message": "Ack.\ncreated a separated cros bug to track it: https://partnerissuetracker.corp.google.com/issues/130740646",
+      "parentUuid": "85c3072e_dcaeb783",
+      "range": {
+        "startLine": 147,
+        "startChar": 10,
+        "endLine": 147,
+        "endChar": 29
+      },
+      "revId": "9b8e41eb58a4ea653d99702f20c3e3900b84fc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
