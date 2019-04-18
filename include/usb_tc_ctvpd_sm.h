@@ -18,9 +18,6 @@
 /* Port default state at startup */
 #define PD_DEFAULT_STATE(port) tc_state_unattached_snk
 
-#define TC_OBJ(port)   (SM_OBJ(tc[port]))
-#define TC_TEST_OBJ(port) (SM_OBJ(tc[(port)].obj))
-
 #define SUPPORT_TIMER_RESET_INIT     0
 #define SUPPORT_TIMER_RESET_REQUEST  1
 #define SUPPORT_TIMER_RESET_COMPLETE 2
@@ -488,7 +485,7 @@ static unsigned int tc_state_unattached_snk_entry(int port)
 	if (tc[port].obj.last_state != tc_state_unattached_src)
 		CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
-	tc[port].flags &= ~TC_FLAGS_VCONN_ON;
+	TC_CLR_FLAG(port, TC_FLAGS_VCONN_ON);
 	tc[port].cc_state = PD_CC_UNSET;
 
 	return 0;
@@ -707,10 +704,10 @@ static unsigned int tc_state_attached_snk_run(int port)
 		return 0;
 
 	if (vpd_is_vconn_present()) {
-		if (!(tc[port].flags & TC_FLAGS_VCONN_ON)) {
+		if (!TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON)) {
 			/* VCONN detected. Remove RA */
 			vpd_host_set_pull(TYPEC_CC_RD, 0);
-			tc[port].flags |= TC_FLAGS_VCONN_ON;
+			TC_SET_FLAG(port, TC_FLAGS_VCONN_ON);
 		}
 
 		/*
