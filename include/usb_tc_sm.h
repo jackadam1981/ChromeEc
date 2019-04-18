@@ -69,6 +69,16 @@ int tc_get_data_role(int port);
 int tc_get_power_role(int port);
 
 /**
+ * Set the power role
+ * This function should be used to temporarily set the
+ * power role before communicating with a cable plug.
+ *
+ * @param port USB-C port number
+ * @param role power role
+ */
+void tc_set_power_role(int port, int role);
+
+/**
  * Set loop timeout value
  *
  * @param port USB-C port number
