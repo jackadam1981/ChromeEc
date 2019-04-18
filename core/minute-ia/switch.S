@@ -101,9 +101,9 @@ __switchto:
 	push %ecx
 	push %edx
 
-	# We don't push anything on the stack for start irq since the
-	# parameter is unused.
+	push $ISH_TS_VECTOR
 	task_start_irq_handler_call
+	addl $0x4, %esp
 
 	# Stack is already set up from previous pushes
 	call switch_handler
