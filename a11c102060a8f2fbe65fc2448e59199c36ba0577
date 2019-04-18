@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "820a77ab_2ea0fd8f",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:33:51Z",
+      "side": 1,
+      "message": "I see. CL:1535474 at least partly fixes that.",
+      "parentUuid": "d0dd0530_f9eb50eb",
+      "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1935a31_331c3e50",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 24
