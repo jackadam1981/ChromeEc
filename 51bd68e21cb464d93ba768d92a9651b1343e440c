@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b5127f7_633a294e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:52:52Z",
+      "side": 1,
+      "message": "nit: I think the CL subject is misleading. Prefer something such as \"remove dynamic GPIO configureation for EN_PP500_A",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "51bd68e21cb464d93ba768d92a9651b1343e440c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
