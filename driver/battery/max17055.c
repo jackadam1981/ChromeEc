@@ -325,13 +325,15 @@ batt_out:
 	memcpy(batt, &batt_new, sizeof(*batt));
 }
 
-#ifdef CONFIG_CMD_PWR_AVG
 int battery_get_avg_current(void)
 {
-	/* TODO(crbug.com/752320) implement this */
-	return EC_ERROR_UNIMPLEMENTED;
+	int val;
+	if (max17055_read(REG_AVERAGE_CURRENT, &val))
+		return -1;
+	return val;
 }
 
+#ifdef CONFIG_CMD_PWR_AVG
 int battery_get_avg_voltage(void)
 {
 	/* TODO(crbug.com/752320) implement this */

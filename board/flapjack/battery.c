@@ -337,35 +337,32 @@ int charger_profile_override(struct charge_state_data *curr)
 	return 0;
 }
 
-static void board_charge_termination(void)
+static void batt_soc_changed(void)
 {
 	static uint8_t te;
+	const struct batt_params *batt;
+	int target_voltage;
+
 	/* Enable charge termination when we are sure battery is present. */
 	if (!te && battery_is_present() == BP_YES) {
 		if (!rt946x_enable_charge_termination(1))
 			te = 1;
 	}
+
+	/* Limit input (=VBUS) to 5V when charge current is below 1A. */
+	batt = charger_current_battery_params();
+	if (!(batt->flags & BATT_FLAG_BAD_CURRENT) &&
+			charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
+			0 < batt->current && batt->current < 1000)
+		target_voltage = 5500;
+	else
+		target_voltage = PD_MAX_VOLTAGE_MV;
+
+	if (pd_get_max_voltage() != target_voltage)
+		pd_set_external_voltage_limit(0, target_voltage);
+	/* TODO: Apply this to WPC as well */
 }
-DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
-	     board_charge_termination,
-	     HOOK_PRIO_DEFAULT);
-
-static void pd_limit_5v(uint8_t en)
-{
-	int wanted_pd_voltage;
-
-	wanted_pd_voltage = en ? 5500 : PD_MAX_VOLTAGE_MV;
-
-	if (pd_get_max_voltage() != wanted_pd_voltage)
-		pd_set_external_voltage_limit(0, wanted_pd_voltage);
-}
-
-/* When battery level > BAT_LEVEL_PD_LIMIT, we limit PD voltage to 5V. */
-static void board_pd_voltage(void)
-{
-	pd_limit_5v(charge_get_percent() > BAT_LEVEL_PD_LIMIT);
-}
-DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_pd_voltage, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, batt_soc_changed, HOOK_PRIO_DEFAULT);
 
 /* Customs options controllable by host command. */
 #define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
