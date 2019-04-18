@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c49c9f_60de63bb",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-18T08:19:23Z",
+      "side": 1,
+      "message": "LED_TICKS_PER_CYCLE might be more close to what we need?",
+      "revId": "93a3da70994441f92bdb90e3ef5566fa8b4c546d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec99bca_bc5f20f2",
+        "filename": "board/bloog/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-18T08:19:23Z",
+      "side": 1,
+      "message": "nit: additional space",
+      "revId": "93a3da70994441f92bdb90e3ef5566fa8b4c546d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
