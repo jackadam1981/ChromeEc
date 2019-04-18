@@ -26,10 +26,6 @@
 /* Type-C Layer Flags */
 #define TC_FLAGS_VCONN_ON           (1 << 0)
 
-#undef PD_DEFAULT_STATE
-/* Port default state at startup */
-#define PD_DEFAULT_STATE(port) tc_unattached_snk
-
 #define SUPPORT_TIMER_RESET_INIT     0
 #define SUPPORT_TIMER_RESET_REQUEST  1
 #define SUPPORT_TIMER_RESET_COMPLETE 2
@@ -73,15 +69,19 @@ void tc_reset_support_timer(int port)
 	tc[port].support_timer_reset |= SUPPORT_TIMER_RESET_REQUEST;
 }
 
-void tc_state_init(int port)
+void tc_state_init(int port, enum typec_state_id start_state)
 {
 	int res = 0;
 	sm_state this_state;
 
 	res = tc_restart_tcpc(port);
+	if (res)
+		this_state = tc_disabled;
+	else
+		this_state = (start_state == UNATTACHED_SRC) ?
+				tc_unattached_src : tc_unattached_snk;
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
-	this_state = res ? tc_disabled : PD_DEFAULT_STATE(port);
 
 	init_state(port, TC_OBJ(port), this_state);
 
