@@ -16,12 +16,14 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "usb_pd.h"
 #include "util.h"
 #include "board.h"
 #include "adc.h"
 #include "adc_chip.h"
 #include "math_util.h"
+#include "p9221.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -385,35 +387,39 @@ int charger_profile_override(struct charge_state_data *curr)
 	return 0;
 }
 
-static void board_charge_termination(void)
+static void batt_soc_changed(void)
 {
 	static uint8_t te;
+	const struct batt_params *batt;
+	int target_voltage;
+	int val;
+
 	/* Enable charge termination when we are sure battery is present. */
 	if (!te && battery_is_present() == BP_YES) {
 		if (!rt946x_enable_charge_termination(1))
 			te = 1;
 	}
+
+	/* Limit input (=VBUS) to 5V when soc > 85% and charge current < 1A. */
+	batt = charger_current_battery_params();
+	if (!(batt->flags & BATT_FLAG_BAD_CURRENT) &&
+			charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
+			batt->current < 1000)
+		target_voltage = 5500;
+	else
+		target_voltage = PD_MAX_VOLTAGE_MV;
+
+	if (pd_get_max_voltage() != target_voltage)
+		pd_set_external_voltage_limit(0, target_voltage);
+
+	/* Need to use use raw i2c APIs because RO doesn't have p9221 driver */
+	if (i2c_read_offset16(I2C_PORT_WPC, P9221_R7_ADDR,
+			      P9221R7_VOUT_SET_REG, &val, 1) == EC_SUCCESS
+			&& val * 100 != target_voltage)
+		i2c_write_offset16(I2C_PORT_WPC, P9221_R7_ADDR,
+			      P9221R7_VOUT_SET_REG, target_voltage / 100, 1);
 }
-DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
-	     board_charge_termination,
-	     HOOK_PRIO_DEFAULT);
-
-static void pd_limit_5v(uint8_t en)
-{
-	int wanted_pd_voltage;
-
-	wanted_pd_voltage = en ? 5500 : PD_MAX_VOLTAGE_MV;
-
-	if (pd_get_max_voltage() != wanted_pd_voltage)
-		pd_set_external_voltage_limit(0, wanted_pd_voltage);
-}
-
-/* When battery level > BAT_LEVEL_PD_LIMIT, we limit PD voltage to 5V. */
-static void board_pd_voltage(void)
-{
-	pd_limit_5v(charge_get_percent() > BAT_LEVEL_PD_LIMIT);
-}
-DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_pd_voltage, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, batt_soc_changed, HOOK_PRIO_DEFAULT);
 
 /* Customs options controllable by host command. */
 #define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
