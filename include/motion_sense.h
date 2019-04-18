@@ -187,6 +187,10 @@ struct motion_sensor_t {
 	 */
 	uint32_t last_collection;
 
+	uint32_t next_collection;
+
+	uint32_t collection_rate;
+
 	/* Minimum supported sampling frequency in miliHertz for this sensor */
 	uint32_t min_frequency;
 

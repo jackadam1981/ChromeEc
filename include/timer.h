@@ -166,4 +166,9 @@ static inline int time_after(uint32_t a, uint32_t b)
 	return (int32_t)(b - a) < 0;
 }
 
+static inline int time_until(uint32_t a, uint32_t b)
+{
+	return (int32_t)(b - a);
+}
+
 #endif  /* __CROS_EC_TIMER_H */
