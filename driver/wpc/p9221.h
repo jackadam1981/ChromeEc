@@ -320,4 +320,13 @@ int board_get_epp_fod(uint8_t **fod);
  */
 int wpc_chip_is_online(void);
 
+/**
+ * Set/Get output voltage (Vout)
+ *
+ * @param mv: Output voltage to set or get
+ * @return EC_ERROR_* or EC_SUCCESS
+ */
+int p9221_set_output_voltage(int mv);
+int p9221_get_output_voltage(int *mv);
+
 #endif
