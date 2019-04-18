@@ -99,6 +99,24 @@ int tc_get_data_role(int port);
 int tc_get_power_role(int port);
 
 /**
+ * Set the power role
+ *
+ * @param port USB-C port number
+ * @param role power role
+ */
+void tc_set_power_role(int port, int role);
+
+/**
+ * Sets the USB Mux depending on current data role
+ *   Mux is connected except when:
+ *     1) PD is disconnected
+ *     2) Current data role is UFP and we only support DFP
+ *
+ *  @param port USB-C port number
+ */
+void set_usb_mux_with_current_data_role(int port);
+
+/**
  * Set loop timeout value
  *
  * @param port USB-C port number
