@@ -188,6 +188,17 @@ struct motion_sensor_t {
 	 */
 	uint32_t last_collection;
 
+	/*
+	 * For sensors in forced mode the ideal time to collect the next
+	 * measurement
+	 */
+	uint32_t next_collection;
+
+	/*
+	 * The time in us between collection measurements
+	 */
+	uint32_t collection_rate;
+
 	/* Minimum supported sampling frequency in miliHertz for this sensor */
 	uint32_t min_frequency;
 

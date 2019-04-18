@@ -45,11 +45,6 @@ const intv3_t orientation_modes[] = {
 };
 #endif
 
-/*
- * Sampling interval for measuring acceleration and calculating lid angle.
- */
-test_export_static unsigned int motion_interval;
-
 /* Delay between FIFO interruption. */
 static unsigned int motion_int_interval;
 
@@ -212,22 +207,14 @@ static inline int motion_sensor_in_forced_mode(
 #endif
 }
 
-
-
 /* Minimal amount of time since last collection before triggering a new one */
 static inline int motion_sensor_time_to_read(const timestamp_t *ts,
 		const struct motion_sensor_t *sensor)
 {
-	int rate_mhz = sensor->drv->get_data_rate(sensor);
-
-	if (rate_mhz == 0)
+	if (sensor->collection_rate == 0)
 		return 0;
-	/*
-	 * converting from mHz to us.
-	 * If within 95% of the time, check sensor.
-	 */
-	return time_after(ts->le.lo,
-			  sensor->last_collection + SECOND * 950 / rate_mhz);
+
+	return time_after(ts->le.lo, sensor->next_collection);
 }
 
 static enum sensor_config motion_sense_get_ec_config(void)
@@ -301,7 +288,10 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	 * Reset last collection: the last collection may be so much in the past
 	 * it may appear to be in the future.
 	 */
+	odr = sensor->drv->get_data_rate(sensor);
+	sensor->collection_rate = odr > 0 ? SECOND * 1000 / odr : 0;
 	sensor->last_collection = ts.le.lo;
+	sensor->next_collection = ts.le.lo + sensor->collection_rate;
 	sensor->oversampling = 0;
 	mutex_unlock(&g_sensor_mutex);
 	return 0;
@@ -407,9 +397,9 @@ static int motion_sense_ec_rate(struct motion_sensor_t *sensor)
  *
  * Note: Not static to be tested.
  */
-static int motion_sense_set_motion_intervals(void)
+static void motion_sense_set_motion_intervals(void)
 {
-	int i, sensor_ec_rate, ec_rate = 0, ec_int_rate = 0;
+	int i, sensor_ec_rate, ec_int_rate = 0;
 	struct motion_sensor_t *sensor;
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
@@ -420,19 +410,12 @@ static int motion_sense_set_motion_intervals(void)
 		    (sensor->drv->get_data_rate(sensor) == 0))
 			continue;
 
-		sensor_ec_rate = motion_sense_ec_rate(sensor);
-		if (sensor_ec_rate == 0)
-			continue;
-		if (ec_rate == 0 || sensor_ec_rate < ec_rate)
-			ec_rate = sensor_ec_rate;
-
 		sensor_ec_rate = motion_sense_select_ec_rate(
 				sensor, SENSOR_CONFIG_AP, 1);
 		if (ec_int_rate == 0 ||
 		    (sensor_ec_rate && sensor_ec_rate < ec_int_rate))
 			ec_int_rate = sensor_ec_rate;
 	}
-	motion_interval = ec_rate;
 
 	motion_int_interval =
 		MAX(0, ec_int_rate - MOTION_SENSOR_INT_ADJUSTMENT_US);
@@ -441,7 +424,6 @@ static int motion_sense_set_motion_intervals(void)
 	 * in account the new period right away.
 	 */
 	task_wake(TASK_ID_MOTIONSENSE);
-	return motion_interval;
 }
 
 static inline int motion_sense_init(struct motion_sensor_t *sensor)
@@ -759,7 +741,11 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 				motion_sense_fifo_add_data(&vector, sensor, 3,
 						   __hw_clock_source_read());
 			}
+
 			sensor->last_collection = ts->le.lo;
+			while (time_after(ts->le.lo, sensor->next_collection))
+				sensor->next_collection +=
+					sensor->collection_rate;
 		} else {
 			ret = EC_ERROR_BUSY;
 		}
@@ -778,6 +764,9 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 			/* Get latest data for local calculation */
 			ret = motion_sense_read(sensor);
 			sensor->last_collection = ts->le.lo;
+			while (time_after(ts->le.lo, sensor->next_collection))
+				sensor->next_collection +=
+					sensor->collection_rate;
 		} else {
 			ret = EC_ERROR_BUSY;
 		}
@@ -925,6 +914,7 @@ void motion_sense_task(void *u)
 {
 	int i, ret, wait_us;
 	timestamp_t ts_begin_task, ts_end_task;
+	int32_t time_diff;
 	uint32_t event = 0;
 	uint16_t ready_status;
 	struct motion_sensor_t *sensor;
@@ -933,7 +923,7 @@ void motion_sense_task(void *u)
 					    BIT(CONFIG_LID_ANGLE_SENSOR_LID));
 #endif
 #ifdef CONFIG_ACCEL_FIFO
-	timestamp_t ts_last_int;
+	uint32_t next_int;
 #endif
 #ifdef CONFIG_MOTION_FILL_LPC_SENSE_DATA
 	int sample_id = 0;
@@ -944,7 +934,7 @@ void motion_sense_task(void *u)
 #endif
 
 #ifdef CONFIG_ACCEL_FIFO
-	ts_last_int = get_time();
+	next_int = get_time().le.lo;
 #endif
 	while (1) {
 		ts_begin_task = get_time();
@@ -1011,12 +1001,11 @@ void motion_sense_task(void *u)
 			     TASK_EVENT_MOTION_FLUSH_PENDING) ||
 		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
 		    (motion_int_interval > 0 &&
-		     time_after(ts_end_task.le.lo,
-				ts_last_int.le.lo + motion_int_interval))) {
+		     time_after(ts_end_task.le.lo, next_int))) {
 			if ((event & TASK_EVENT_MOTION_FLUSH_PENDING) == 0)
 				motion_sense_insert_timestamp(
 					__hw_clock_source_read());
-			ts_last_int = ts_end_task;
+			next_int = ts_end_task.le.lo + motion_int_interval;
 			/*
 			 * Count the number of event the AP is allowed to
 			 * collect.
@@ -1038,27 +1027,48 @@ void motion_sense_task(void *u)
 				wake_up_needed = 0;
 			}
 #endif
+			ts_end_task = get_time();
 		}
 #endif
-		if (motion_interval > 0) {
-			/*
-			 * Delay appropriately to keep sampling time
-			 * consistent.
-			 */
-			wait_us = motion_interval -
-				(ts_end_task.val - ts_begin_task.val);
+		wait_us = -1;
 
-			/* and it cannnot be negative */
-			wait_us = MAX(wait_us, 0);
+#ifdef CONFIG_ACCEL_FIFO
+		if (motion_int_interval > 0) {
+			time_diff = time_until(ts_end_task.le.lo, next_int);
 
+			if (time_diff <= 0)
+				wait_us = 0;
+			else
+				wait_us = time_diff;
+		}
+#endif
+
+		for (i = 0; i < motion_sensor_count; ++i) {
+			struct motion_sensor_t *sensor = &motion_sensors[i];
+
+			if (!motion_sensor_in_forced_mode(sensor) ||
+			   sensor->collection_rate == 0)
+				continue;
+
+			time_diff = time_until(ts_end_task.le.lo,
+					       sensor->next_collection);
+
+			/* We missed our collection time so wake soon */
+			if (time_diff <= 0) {
+				wait_us = 0;
+				break;
+			}
+
+			if (wait_us == -1 || wait_us > time_diff)
+				wait_us = time_diff;
+		}
+
+		if (wait_us >= 0 && wait_us < motion_min_interval) {
 			/*
-			 * Guarantee some minimum delay to allow other lower
-			 * priority tasks to run.
-			 */
-			if (wait_us < motion_min_interval)
-				wait_us = motion_min_interval;
-		} else {
-			wait_us = -1;
+			* Guarantee some minimum delay to allow other lower
+			* priority tasks to run.
+			*/
+			wait_us = motion_min_interval;
 		}
 
 		event = task_wait_event(wait_us);
@@ -1666,7 +1676,6 @@ static int command_accel_data_rate(int argc, char **argv)
 			 sensor->drv->get_data_rate(sensor));
 		ccprintf("EC rate for sensor %d: %d\n", id,
 			 motion_sense_ec_rate(sensor));
-		ccprintf("Current EC rate: %d\n", motion_interval);
 		ccprintf("Current Interrupt rate: %d\n", motion_int_interval);
 	}
 
@@ -1743,7 +1752,6 @@ DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
 #ifdef CONFIG_CMD_ACCEL_INFO
 static int command_display_accel_info(int argc, char **argv)
 {
-	char *e;
 	int val, i, j;
 
 	if (argc > 3)
@@ -1778,21 +1786,6 @@ static int command_display_accel_info(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 
 		accel_disp = val;
-	}
-
-	/*
-	 * Second arg changes the accel task time interval. Note accel
-	 * sampling interval will be clobbered when chipset suspends or
-	 * resumes.
-	 */
-	if (argc > 2) {
-		val = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
-
-		motion_interval = val * MSEC;
-		task_wake(TASK_ID_MOTIONSENSE);
-
 	}
 
 	return EC_SUCCESS;

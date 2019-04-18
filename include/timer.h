@@ -157,13 +157,23 @@ static inline unsigned time_since32(timestamp_t start)
 clock_t clock(void);
 
 /**
+ * Compute how far b is from a with rollover taken into account
+ *
+ * Return us until b given a, if negative then b has passeed a.
+ */
+static inline int time_until(uint32_t a, uint32_t b)
+{
+	return (int32_t)(b - a);
+}
+
+/**
  * To compare time and deal with rollover
  *
  * Return true if a is after b.
  */
 static inline int time_after(uint32_t a, uint32_t b)
 {
-	return (int32_t)(b - a) < 0;
+	return time_until(a, b) < 0;
 }
 
 #endif  /* __CROS_EC_TIMER_H */
