@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26dddaf7_4c95caeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-18T16:40:59Z",
+      "side": 1,
+      "message": "This may cause the battery to never charge to full. It\u0027s a non-trivial bug. We may need to tweak the battery full factor (in powerd).",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae59313f_83c3eee0",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-18T16:40:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure if 10 seconds is too slow or not.\n\nBased on the information I\u0027m aware of, this patch looks a reasonable fix. As we know more about the condition in which this spike happens, we need to improve the fix.",
+      "range": {
+        "startLine": 268,
+        "startChar": 25,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
