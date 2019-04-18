@@ -99,6 +99,16 @@ int tc_get_data_role(int port);
 int tc_get_power_role(int port);
 
 /**
+ * Set the power role
+ *
+ * @param port USB-C port number
+ * @param role power role
+ */
+void tc_set_power_role(int port, int role);
+
+void set_usb_mux_with_current_data_role(int port);
+
+/**
  * Set loop timeout value
  *
  * @param port USB-C port number
