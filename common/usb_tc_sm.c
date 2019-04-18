@@ -40,6 +40,33 @@
 #define CPRINTS(format, args...)
 #endif
 
+#define TC_SET_FLAG(port, flag) atomic_or(&tc[port].flags, (flag))
+#define TC_CLR_FLAG(port, flag) atomic_clear(&tc[port].flags, (flag))
+#define TC_CHK_FLAG(port, flag) (tc[port].flags & (flag))
+
+/*
+ * TC_OBJ is a convenience macro to access struct sm_obj, which
+ * must be the first member of struct type_c.
+ */
+#define TC_OBJ(port)   (SM_OBJ(tc[port]))
+
+/*
+ * Type C supply voltage (mV)
+ *
+ * This is the maximum voltage a sink can request
+ * while charging.
+ */
+#define TYPE_C_VOLTAGE  5000 /* mV */
+
+/*
+ * Type C default sink current (mA)
+ *
+ * This is the maximum current a sink can draw if charging
+ * while in the Audio Accessory State.
+ */
+#define TYPE_C_CURRENT  500 /* mA */
+
+
 /* Private Function Prototypes */
 
 static inline int cc_is_rp(int cc);
@@ -90,6 +117,8 @@ BUILD_ASSERT(ARRAY_SIZE(tc_state_names) == TC_STATE_COUNT);
 #include "usb_tc_ctvpd_sm.h"
 #elif defined(CONFIG_USB_TYPEC_VPD)
 #include "usb_tc_vpd_sm.h"
+#elif defined(CONFIG_USB_TYPEC_DRP_ACC_TRYSRC)
+#include "usb_tc_drp_acc_trysrc_sm.h"
 #else
 #error "A USB Type-C State Machine must be defined."
 #endif
@@ -104,6 +133,11 @@ int tc_get_power_role(int port)
 int tc_get_data_role(int port)
 {
 	return tc[port].data_role;
+}
+
+void tc_set_power_role(int port, int role)
+{
+	tc[port].power_role = role;
 }
 
 void tc_set_timeout(int port, uint64_t timeout)
