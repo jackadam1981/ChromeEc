@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2adaeb8b_b803ff0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-18T02:06:15Z",
+      "side": 1,
+      "message": "I think you want this as \u0027none\u0027",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "b03c5f4d5e99972db8c60bc8666c99ad6f4231dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281af570_f299ed50",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-18T02:06:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 283,
+        "startChar": 26,
+        "endLine": 283,
+        "endChar": 36
+      },
+      "revId": "b03c5f4d5e99972db8c60bc8666c99ad6f4231dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "365fd46e_15d29934",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-18T02:06:15Z",
+      "side": 1,
+      "message": "nit: write as:\n\n    TODO(b:130740646): figure out why this issue happens",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 68
+      },
+      "revId": "b03c5f4d5e99972db8c60bc8666c99ad6f4231dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
