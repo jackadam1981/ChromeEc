@@ -144,6 +144,7 @@ common-$(CONFIG_USB_TYPEC_CTVPD)+=usb_pe_ctvpd_sm.o
 endif
 common-$(CONFIG_USB_TYPEC_VPD)+=usb_tc_vpd_sm.o
 common-$(CONFIG_USB_TYPEC_CTVPD)+=usb_tc_ctvpd_sm.o
+common-$(CONFIG_USB_TYPEC_DRP_ACC_TRYSRC)+=usb_tc_drp_acc_trysrc_sm.o
 endif
 common-$(CONFIG_USB_PD_LOGGING)+=event_log.o pd_log.o
 common-$(CONFIG_USB_PD_TCPC)+=usb_pd_tcpc.o
