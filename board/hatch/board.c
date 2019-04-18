@@ -394,7 +394,6 @@ static void board_gpio_set_pp5000(void)
 	} else if (board_id >= 1) {
 		reset_gpio_flags(GPIO_EN_PP5000_A_V1, GPIO_OUT_LOW);
 	}
-
 }
 
 static void board_init(void)
@@ -403,6 +402,8 @@ static void board_init(void)
 	setup_fans();
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+	/* Enable HDMI HPD interrupt. */
+	gpio_enable_interrupt(GPIO_HDMI_CONN_HPD);
 	/* Select correct gpio signal for PP5000_A control */
 	board_gpio_set_pp5000();
 }
