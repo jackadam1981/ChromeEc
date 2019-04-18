@@ -3007,6 +3007,19 @@ void pd_task(void *u)
 				if (pd_set_power_supply_ready(port))
 					break;
 #endif
+				/*
+				 * Exiting from Try.SRC State, the port shall
+				 * transition to Attached.SRC when the SRC.Rd
+				 * state is detected on exactly one of the CC1
+				 * or CC2 pins for at least tTryCCDebounce.
+				 */
+				if ((pd[port].flags & PD_FLAGS_TRY_SRC) &&
+				    ((cc1 == TYPEC_CC_VOLT_RD &&
+				      cc2 == TYPEC_CC_VOLT_RD) ||
+				     (cc1 == TYPEC_CC_VOLT_RA &&
+				      cc2 == TYPEC_CC_VOLT_RA)))
+					break;
+
 				pd[port].cc_state = PD_CC_NONE;
 				set_state(port,
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
