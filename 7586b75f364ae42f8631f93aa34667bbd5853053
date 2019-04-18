@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b148ab09_057e8479",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T18:01:01Z",
+      "side": 1,
+      "message": "Nit: I think the test criteria would be that USB-A port still works as expected on Hatch. The system booting doesn\u0027t require USB-A to be supported.",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "7586b75f364ae42f8631f93aa34667bbd5853053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
