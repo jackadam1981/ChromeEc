@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22880279_2a610e52",
+        "filename": "board/flapjack/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2019-04-18T02:45:15Z",
+      "side": 1,
+      "message": "Does it need \"mt6370_led_set_brightness(LED_, 1)\" as well? It seems that led_set_battery will disable PWM sometimes if I\u0027m reading it correctly..",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "24c7cd31ab8c14a474f947227ddc89ec1b886fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
