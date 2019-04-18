@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "396d9bba_24d1edf2",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-18T17:30:45Z",
+      "side": 1,
+      "message": "we don\u0027t want to push/pop the parameter when profiling is not enabled. do you think there is a clean way to add this to the task_start_irq_handler_call macro without overcomplicating the same macro for __switchto in switch.S? I also would not be opposed to getting rid of the macro and moving the ifdef into this definition.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "db24f652202a0149c2836f14b8b51c7f811f0f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b18cfc14_b278ee5b",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "this is a common function for all platform and its signature is defined in task.h.\nso we should stick to void *\n\nI\u0027ll change unused to data.\n\nI also believe the argument name in task.h should be changed(excep_return -\u003e data) since it\u0027s too ARM specific.\nvoid task_start_irq_handler(void *excep_return);",
       "parentUuid": "b18cfc14_b278ee5b",
+      "range": {
+        "startLine": 272,
+        "startChar": 41,
+        "endLine": 272,
+        "endChar": 47
+      },
+      "revId": "db24f652202a0149c2836f14b8b51c7f811f0f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6d52e88_252929d8",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-18T17:30:45Z",
+      "side": 1,
+      "message": "go ahead and change the name of the parameter in the signature, if you think that a better name would make sense for more architectures",
+      "parentUuid": "f25dd805_523124b6",
       "range": {
         "startLine": 272,
         "startChar": 41,
