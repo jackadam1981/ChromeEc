@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2896ec47_ad154b07",
+        "filename": "board/kukui_scp/venc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:35:09Z",
+      "side": 1,
+      "message": "This is in interrupt context, right? If so, you can\u0027t use mutexes",
+      "revId": "3383ba2ea3021fccf32ea38661a6d07ccfbb04fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
