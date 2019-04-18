@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e64d7d10_7dd5bdb3",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-18T01:22:23Z",
+      "side": 1,
+      "message": "Note to myself: \nThe thing is cbi_board_override is part of APIs which can be called in any order any time. \n\nIf cbi_get_sku_id is called first, we have to make a decision whether to get panel id from ADC or not before we know board_version. One option is to return EC_SUCCESS and leave SKU_ID alone. However, it can create a discrepancy between the first call and the 2nd call.\n\nSo, we should explicitly return EC_ERROR_BUSY. That\u0027ll make the APIs return consistent results. Once you return EC_SUCCESS, we have to keep returning the same data.\n\nUpdated the function description.",
+      "parentUuid": "58716d75_025be1c7",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 24
+      },
+      "revId": "f791bd8b60a32ed30a5c6be19f3f5776e95b1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ab37f2b_571f3b7c",
         "filename": "board/flapjack/board.c",
         "patchSetId": 6
