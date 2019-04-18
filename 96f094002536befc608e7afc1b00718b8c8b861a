@@ -433,6 +433,30 @@
       "revId": "96f094002536befc608e7afc1b00718b8c8b861a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1b283ca_39207788",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-18T00:43:04Z",
+      "side": 1,
+      "message": "For test points/NCs, boards have typically configured them as GPIO_INPUT|GPIO_PULL_UP: e.g. https://chromium-review.googlesource.com/714376",
+      "parentUuid": "049bd5ef_ec62cf89",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 55
+      },
+      "revId": "96f094002536befc608e7afc1b00718b8c8b861a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
