@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "badb491d_0fe89cba",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 1,
+      "message": "Do we know what how this is being used. I think this should be added along with how it\u0027s being used. Or at a minimum there should be an issue raised and linked here with a TODO so this feature can be completed.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 100
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf13a30_e0a87641",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 1,
+      "message": "Similar to above, I think this should be added along with the code that programs the MPS part. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1477344",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 97
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b48890_44014864",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 1,
+      "message": "were these removed in a previous CL? Hatch already had 2 temperature sensors.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 42
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2be351c_55d94ff3",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 1,
+      "message": "Same comment as in for charger_iadp",
+      "range": {
+        "startLine": 140,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 42
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87140bdf_84ffb7ad",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 1,
+      "message": "This should not be configured as an ADC. While the pin does have ADC as an alt function, this is the interrupt line to the ALS sesnor.",
+      "range": {
+        "startLine": 141,
+        "startChar": 92,
+        "endLine": 141,
+        "endChar": 102
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71430e6b_dbe8d944",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 1,
+      "message": "Are we using this functionality? I would expect this alt function to correspond to a feature and if the ADC functionality were needed, then there would be a corresponding addition to the list of ADC channels in board.c/.h",
+      "range": {
+        "startLine": 142,
+        "startChar": 29,
+        "endLine": 142,
+        "endChar": 41
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

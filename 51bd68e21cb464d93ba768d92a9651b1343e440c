@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "170ea6da_ffda13f1",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T20:51:07Z",
+      "side": 0,
+      "message": "I would have expected the fan enable and alt functions below for fan pwm/tach to have been part of the CL that removed fan support from board.c",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "51bd68e21cb464d93ba768d92a9651b1343e440c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
