@@ -22,6 +22,109 @@
       "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a6d35a_5c0ed3cc",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:32:35Z",
+      "side": 1,
+      "message": "Forward",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0dd0530_f9eb50eb",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:32:35Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand the point of this interface here, putting a function pointer in a message structure?\n\n3 things:\n 1. vdec_service should be renamed to vdec_msg or someting\n 2. Either set only .type here, and have the handler table somewhere elese\n 3. Or set only the .handler here.",
+      "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1935a31_331c3e50",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:32:35Z",
+      "side": 1,
+      "message": "Please check for bounds here:\nif (rsv_msg.type \u003c VDEC_MAX)",
+      "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f3b879_657c4c57",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:32:35Z",
+      "side": 1,
+      "message": "super nit: 2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc12e1b_cc7d3204",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-18T03:32:35Z",
+      "side": 1,
+      "message": "I thought we didn\u0027t have VP8/9?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "a11c102060a8f2fbe65fc2448e59199c36ba0577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
