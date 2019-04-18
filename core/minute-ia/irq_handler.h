@@ -68,7 +68,9 @@ struct irq_data {
 			"movl %esp, %eax\n"                             \
 			"movl $stack_end, %esp\n"                       \
 			"push %eax\n"                                   \
+			"push $"#vector"\n"				\
 			task_start_irq_handler_call			\
+			"addl $0x4, %esp\n"				\
 			"call "#routine"\n"				\
 			"push $0\n"					\
 			"push $0\n"					\
