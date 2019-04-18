@@ -4,6 +4,7 @@
  */
 
 #include "vpd_api.h"
+#include "usb_tc_sm.h"
 
 /* USB Type-C CTVPD module */
 
@@ -17,9 +18,6 @@
 #undef PD_DEFAULT_STATE
 /* Port default state at startup */
 #define PD_DEFAULT_STATE(port) tc_state_unattached_snk
-
-#define TC_OBJ(port)   (SM_OBJ(tc[port]))
-#define TC_TEST_OBJ(port) (SM_OBJ(tc[(port)].obj))
 
 #define SUPPORT_TIMER_RESET_INIT     0
 #define SUPPORT_TIMER_RESET_REQUEST  1
@@ -451,13 +449,14 @@ static unsigned int tc_state_error_recovery_entry(int port)
 	tc[port].state_id = ERROR_RECOVERY;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 	/* Use cc_debounce state variable for error recovery timeout */
-	tc[port].cc_debounce = get_time().val + PD_T_ERROR_RECOVERY;
+	START_TIMER(tc[port].cc_debounce, PD_T_ERROR_RECOVERY);
+
 	return 0;
 }
 
 static unsigned int tc_state_error_recovery_run(int port)
 {
-	if (get_time().val > tc[port].cc_debounce) {
+	if (CHECK_TIMER(tc[port].cc_debounce)) {
 		set_state(port, TC_OBJ(port), tc_state_unattached_snk);
 		return 0;
 	}
@@ -488,7 +487,7 @@ static unsigned int tc_state_unattached_snk_entry(int port)
 	if (tc[port].obj.last_state != tc_state_unattached_src)
 		CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
-	tc[port].flags &= ~TC_FLAGS_VCONN_ON;
+	TC_CLR_FLAG(port, TC_FLAGS_VCONN_ON);
 	tc[port].cc_state = PD_CC_UNSET;
 
 	return 0;
@@ -525,13 +524,13 @@ static unsigned int tc_state_unattached_snk_run(int port)
 	/* Debounce Charge-Through CC state */
 	if (tc[port].cc_state != new_cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
+		START_TIMER(tc[port].cc_debounce, PD_T_CC_DEBOUNCE);
 	}
 
 	/* If we are here, Host CC must be open */
 
 	/* Wait for Charge-Through CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
+	if (!CHECK_TIMER(tc[port].cc_debounce))
 		return 0;
 
 	/*
@@ -595,16 +594,16 @@ static unsigned int tc_state_attach_wait_snk_run(int port)
 	if (tc[port].host_cc_state != host_new_cc_state) {
 		tc[port].host_cc_state = host_new_cc_state;
 		if (host_new_cc_state == PD_CC_DFP_ATTACHED)
-			tc[port].host_cc_debounce = get_time().val +
-							PD_T_CC_DEBOUNCE;
+			START_TIMER(tc[port].host_cc_debounce,
+							PD_T_CC_DEBOUNCE);
 		else
-			tc[port].host_cc_debounce = get_time().val +
-							PD_T_PD_DEBOUNCE;
+			START_TIMER(tc[port].host_cc_debounce,
+							PD_T_PD_DEBOUNCE);
 		return 0;
 	}
 
 	/* Wait for Host CC debounce */
-	if (get_time().val < tc[port].host_cc_debounce)
+	if (!CHECK_TIMER(tc[port].host_cc_debounce))
 		return 0;
 
 	/*
@@ -657,7 +656,7 @@ static unsigned int tc_state_attached_snk_entry(int port)
 
 	/* Start Charge-Through support timer */
 	tc[port].support_timer_reset = SUPPORT_TIMER_RESET_INIT;
-	tc[port].support_timer = get_time().val + PD_T_AME;
+	START_TIMER(tc[port].support_timer, PD_T_AME);
 
 	/* Sample host CC every 2ms */
 	tc_set_timeout(port, 2*MSEC);
@@ -684,7 +683,7 @@ static unsigned int tc_state_attached_snk_run(int port)
 	 */
 	if (tc[port].support_timer_reset == SUPPORT_TIMER_RESET_REQUEST) {
 		tc[port].support_timer_reset |= SUPPORT_TIMER_RESET_COMPLETE;
-		tc[port].support_timer = get_time().val + PD_T_AME;
+		START_TIMER(tc[port].support_timer, PD_T_AME);
 	}
 
 	/* Check Host CC for connection */
@@ -698,19 +697,19 @@ static unsigned int tc_state_attached_snk_run(int port)
 	/* Debounce the Host CC state */
 	if (tc[port].host_cc_state != host_new_cc_state) {
 		tc[port].host_cc_state = host_new_cc_state;
-		tc[port].host_cc_debounce = get_time().val + PD_T_VPDCTDD;
+		START_TIMER(tc[port].host_cc_debounce, PD_T_VPDCTDD);
 		return 0;
 	}
 
 	/* Wait for Host CC debounce */
-	if (get_time().val < tc[port].host_cc_debounce)
+	if (!CHECK_TIMER(tc[port].host_cc_debounce))
 		return 0;
 
 	if (vpd_is_vconn_present()) {
-		if (!(tc[port].flags & TC_FLAGS_VCONN_ON)) {
+		if (!TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON)) {
 			/* VCONN detected. Remove RA */
 			vpd_host_set_pull(TYPEC_CC_RD, 0);
-			tc[port].flags |= TC_FLAGS_VCONN_ON;
+			TC_SET_FLAG(port, TC_FLAGS_VCONN_ON);
 		}
 
 		/*
@@ -726,7 +725,7 @@ static unsigned int tc_state_attached_snk_run(int port)
 	}
 
 	/* Check the Support Timer */
-	if (get_time().val > tc[port].support_timer &&
+	if (CHECK_TIMER(tc[port].support_timer) &&
 					!tc[port].billboard_presented) {
 		/*
 		 * Present USB Billboard Device Class interface
@@ -865,7 +864,7 @@ static unsigned int tc_state_unattached_src_entry(int port)
 		return 0;
 	}
 
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
+	START_TIMER(tc[port].next_role_swap, PD_T_DRP_SRC);
 
 	return 0;
 }
@@ -891,8 +890,7 @@ static unsigned int tc_state_unattached_src_run(int port)
 	 * Transition to Unattached.SNK within tDRPTransition or
 	 * if Charge-Through VBUS is removed.
 	 */
-	if (!vpd_is_ct_vbus_present() ||
-				get_time().val > tc[port].next_role_swap) {
+	if (!vpd_is_ct_vbus_present() || CHECK_TIMER(tc[port].next_role_swap)) {
 		set_state(port, TC_OBJ(port), tc_state_unattached_snk);
 		return 0;
 	}
@@ -956,12 +954,12 @@ static unsigned int tc_state_attach_wait_src_run(int port)
 	/* Debounce the Host CC state */
 	if (tc[port].host_cc_state != host_new_cc_state) {
 		tc[port].host_cc_state = host_new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
+		START_TIMER(tc[port].cc_debounce, PD_T_CC_DEBOUNCE);
 		return 0;
 	}
 
 	/* Wait for Host CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
+	if (!CHECK_TIMER(tc[port].cc_debounce))
 		return 0;
 
 	/*
@@ -1092,7 +1090,7 @@ static unsigned int tc_state_try_snk_entry(int port)
 	tc[port].host_cc_state = PD_CC_UNSET;
 
 	/* Using next_role_swap timer as try_src timer */
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_TRY;
+	START_TIMER(tc[port].next_role_swap, PD_T_DRP_TRY);
 
 	return 0;
 }
@@ -1106,7 +1104,7 @@ static unsigned int tc_state_try_snk_run(int port)
 	 * Wait for tDRPTry before monitoring the Charge-Through
 	 * port’s CC pins for the SNK.Rp
 	 */
-	if (get_time().val < tc[port].next_role_swap)
+	if (!CHECK_TIMER(tc[port].next_role_swap))
 		return 0;
 
 	/* Check Host CC for connection */
@@ -1120,12 +1118,12 @@ static unsigned int tc_state_try_snk_run(int port)
 	/* Debounce the Host CC state */
 	if (tc[port].host_cc_state != host_new_cc_state) {
 		tc[port].host_cc_state = host_new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_DEBOUNCE;
+		START_TIMER(tc[port].cc_debounce, PD_T_DEBOUNCE);
 		return 0;
 	}
 
 	/* Wait for Host CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
+	if (!CHECK_TIMER(tc[port].cc_debounce))
 		return 0;
 
 	/*
@@ -1170,7 +1168,7 @@ static unsigned int tc_state_try_wait_src_entry(int port)
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
 	tc[port].host_cc_state = PD_CC_UNSET;
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_TRY;
+	START_TIMER(tc[port].next_role_swap, PD_T_DRP_TRY);
 
 	return 0;
 }
@@ -1191,12 +1189,11 @@ static unsigned int tc_state_try_wait_src_run(int port)
 	/* Debounce the Host CC state */
 	if (tc[port].host_cc_state != host_new_cc_state) {
 		tc[port].host_cc_state = host_new_cc_state;
-		tc[port].host_cc_debounce =
-					get_time().val + PD_T_TRY_CC_DEBOUNCE;
+		START_TIMER(tc[port].host_cc_debounce, PD_T_TRY_CC_DEBOUNCE);
 		return 0;
 	}
 
-	if (get_time().val > tc[port].host_cc_debounce) {
+	if (CHECK_TIMER(tc[port].host_cc_debounce)) {
 		/*
 		 * A Charge-Through VCONN-Powered USB Device shall transition
 		 * to Attached.SRC when host-side VBUS is at vSafe0V and the
@@ -1210,7 +1207,7 @@ static unsigned int tc_state_try_wait_src_run(int port)
 		}
 	}
 
-	if (get_time().val > tc[port].next_role_swap) {
+	if (CHECK_TIMER(tc[port].next_role_swap)) {
 		/*
 		 * The Charge-Through VCONN-Powered USB Device shall transition
 		 * to Unattached.SNK after tDRPTry if the Host-side port’s CC
@@ -1253,7 +1250,7 @@ static unsigned int tc_state_ct_try_snk_entry(int port)
 	set_polarity(port, 0);
 
 	tc[port].cc_state = PD_CC_UNSET;
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_TRY;
+	START_TIMER(tc[port].next_role_swap, PD_T_DRP_TRY);
 
 	return 0;
 }
@@ -1268,7 +1265,7 @@ static unsigned int tc_state_ct_try_snk_run(int port)
 	 * Wait for tDRPTry before monitoring the Charge-Through
 	 * port’s CC pins for the SNK.Rp
 	 */
-	if (get_time().val < tc[port].next_role_swap)
+	if (!CHECK_TIMER(tc[port].next_role_swap))
 		return 0;
 
 	/* Check CT CC for connection */
@@ -1291,13 +1288,13 @@ static unsigned int tc_state_ct_try_snk_run(int port)
 	/* Debounce the CT CC state */
 	if (tc[port].cc_state != new_cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_DEBOUNCE;
-		tc[port].try_wait_debounce = get_time().val + PD_T_TRY_WAIT;
+		START_TIMER(tc[port].cc_debounce, PD_T_DEBOUNCE);
+		START_TIMER(tc[port].try_wait_debounce, PD_T_TRY_WAIT);
 
 		return 0;
 	}
 
-	if (get_time().val > tc[port].cc_debounce) {
+	if (CHECK_TIMER(tc[port].cc_debounce)) {
 		/*
 		 * The Charge-Through VCONN-Powered USB Device shall then
 		 * transition to CTAttached.VPD when the SNK.Rp state is
@@ -1312,7 +1309,7 @@ static unsigned int tc_state_ct_try_snk_run(int port)
 		}
 	}
 
-	if (get_time().val > tc[port].try_wait_debounce) {
+	if (CHECK_TIMER(tc[port].try_wait_debounce)) {
 		/*
 		 * A Charge-Through VCONN-Powered USB Device shall transition
 		 * to CTAttached.Unsupported if SNK.Rp state is not detected
@@ -1397,12 +1394,12 @@ static unsigned int tc_state_ct_attach_wait_unsupported_run(int port)
 	/* Debounce the cc state */
 	if (tc[port].cc_state != new_cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
+		START_TIMER(tc[port].cc_debounce, PD_T_CC_DEBOUNCE);
 		return 0;
 	}
 
 	/* Wait for CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
+	if (!CHECK_TIMER(tc[port].cc_debounce))
 		return 0;
 
 	/*
@@ -1525,7 +1522,7 @@ static unsigned int tc_state_ct_unattached_unsupported_entry(int port)
 	tc[port].pd_enable = 1;
 	set_polarity(port, 0);
 
-	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
+	START_TIMER(tc[port].next_role_swap, PD_T_DRP_SRC);
 
 	return 0;
 }
@@ -1564,7 +1561,7 @@ static unsigned int tc_state_ct_unattached_unsupported_run(int port)
 	 * A Charge-Through VCONN-Powered USB Device shall transition to
 	 * CTUnattached.VPD within tDRPTransition after dcSRC.DRP ∙ tDRP.
 	 */
-	if (get_time().val > tc[port].next_role_swap) {
+	if (CHECK_TIMER(tc[port].next_role_swap)) {
 		set_state(port, TC_OBJ(port), tc_state_ct_unattached_vpd);
 		return 0;
 	}
@@ -1654,11 +1651,11 @@ static unsigned int tc_state_ct_unattached_vpd_run(int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_DRP_SRC;
+		START_TIMER(tc[port].cc_debounce, PD_T_DRP_SRC);
 		return 0;
 	}
 
-	if (get_time().val < tc[port].cc_debounce)
+	if (!CHECK_TIMER(tc[port].cc_debounce))
 		return 0;
 
 	/*
@@ -1709,7 +1706,7 @@ static unsigned int tc_state_ct_disabled_vpd_entry(int port)
 	/* Get power from VBUS */
 	vpd_vconn_pwr_sel_odl(PWR_VBUS);
 
-	tc[port].next_role_swap = get_time().val + PD_T_VPDDISABLE;
+	START_TIMER(tc[port].next_role_swap, PD_T_VPDDISABLE);
 
 	return 0;
 }
@@ -1720,7 +1717,7 @@ static unsigned int tc_state_ct_disabled_vpd_run(int port)
 	 * A Charge-Through VCONN-Powered USB Device shall transition
 	 * to Unattached.SNK after tVPDDisable.
 	 */
-	if (get_time().val > tc[port].next_role_swap)
+	if (CHECK_TIMER(tc[port].next_role_swap))
 		set_state(port, TC_OBJ(port), tc_state_unattached_snk);
 
 	return 0;
@@ -1815,11 +1812,11 @@ static unsigned int tc_state_ct_attached_vpd_run(int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val + PD_T_VPDCTDD;
+		START_TIMER(tc[port].cc_debounce, PD_T_VPDCTDD);
 		return 0;
 	}
 
-	if (get_time().val < tc[port].pd_debounce)
+	if (!CHECK_TIMER(tc[port].pd_debounce))
 		return 0;
 
 	/*
@@ -1895,14 +1892,12 @@ static unsigned int tc_state_ct_attach_wait_vpd_run(int port)
 	/* Debounce the cc state */
 	if (new_cc_state != tc[port].cc_state) {
 		tc[port].cc_state = new_cc_state;
-		tc[port].cc_debounce = get_time().val +
-						PD_T_CC_DEBOUNCE;
-		tc[port].pd_debounce = get_time().val +
-						PD_T_PD_DEBOUNCE;
+		START_TIMER(tc[port].cc_debounce, PD_T_CC_DEBOUNCE);
+		START_TIMER(tc[port].pd_debounce, PD_T_PD_DEBOUNCE);
 		return 0;
 	}
 
-	if (get_time().val > tc[port].pd_debounce) {
+	if (CHECK_TIMER(tc[port].pd_debounce)) {
 		/*
 		 * A Charge-Through VCONN-Powered USB Device shall transition
 		 * to CTUnattached.VPD when the state of both the Charge-Through
@@ -1916,7 +1911,7 @@ static unsigned int tc_state_ct_attach_wait_vpd_run(int port)
 		}
 	}
 
-	if (get_time().val > tc[port].cc_debounce) {
+	if (CHECK_TIMER(tc[port].cc_debounce)) {
 		/*
 		 * A Charge-Through VCONN-Powered USB Device shall transition to
 		 * CTAttached.VPD after the state of only one of the

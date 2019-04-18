@@ -17,12 +17,6 @@
 /* Port default state at startup */
 #define PD_DEFAULT_STATE(port) tc_state_unattached_snk
 
-/*
- * TC_OBJ is a convenience macro to access struct sm_obj, which
- * must be the first member of struct type_c.
- */
-#define TC_OBJ(port)   (SM_OBJ(tc[port]))
-
 /**
  * This is the Type-C Port object that contains information needed to
  * implement a VCONN Powered Device.
@@ -372,10 +366,10 @@ static unsigned int tc_state_attached_snk_run(int port)
 	}
 
 	if (vpd_is_vconn_present()) {
-		if (!(tc[port].flags & TC_FLAGS_VCONN_ON)) {
+		if (!TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON)) {
 			/* VCONN detected. Remove RA */
 			vpd_host_set_pull(TYPEC_CC_RD, 0);
-			tc[port].flags |= TC_FLAGS_VCONN_ON;
+			TC_SET_FLAG(port, TC_FLAGS_VCONN_ON);
 		}
 	}
 
@@ -386,7 +380,7 @@ static unsigned int tc_state_attached_snk_exit(int port)
 {
 	/* Disable PD */
 	tc[port].pd_enable = 0;
-	tc[port].flags &= ~TC_FLAGS_VCONN_ON;
+	TC_CLR_FLAG(port, TC_FLAGS_VCONN_ON);
 
 	return 0;
 }

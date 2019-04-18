@@ -45,6 +45,35 @@ enum typec_state_id {
 	TC_STATE_COUNT,
 };
 
+#define START_TIMER(timer, expire) (timer = (get_time().val + (expire)))
+#define CHECK_TIMER(timer) (get_time().val > (timer))
+
+#define TC_SET_FLAG(port, flag) atomic_or(&tc[port].flags, (flag))
+#define TC_CLR_FLAG(port, flag) atomic_clear(&tc[port].flags, (flag))
+#define TC_CHK_FLAG(port, flag) (tc[port].flags & (flag))
+
+/*
+ * TC_OBJ is a convenience macro to access struct sm_obj, which
+ * must be the first member of struct type_c.
+ */
+#define TC_OBJ(port)   (SM_OBJ(tc[port]))
+
+/*
+ * Type C supply voltage (mV)
+ *
+ * This is the maximum voltage a sink can request
+ * while charging.
+ */
+#define TYPE_C_VOLTAGE  5000 /* mV */
+
+/*
+ * Type C default sink current (mA)
+ *
+ * This is the maximum current a sink can draw if charging
+ * while in the Audio Accessory State.
+ */
+#define TYPE_C_AUDIO_ACC_CURRENT  500 /* mA */
+
 /**
  * Get the id of the current Type-C state
  *
@@ -67,6 +96,14 @@ int tc_get_data_role(int port);
  * @return 0 for sink, 1 for source or vpd
  */
 int tc_get_power_role(int port);
+
+/**
+ * Set the power role
+ *
+ * @param port USB-C port number
+ * @param role power role
+ */
+void tc_set_power_role(int port, int role);
 
 /**
  * Set loop timeout value
