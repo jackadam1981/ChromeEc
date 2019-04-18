@@ -211,14 +211,20 @@ void __hw_clock_source_set(uint32_t ts)
 
 static void __hw_clock_source_irq(int timer_id)
 {
-	/* Clear interrupt */
-	HPET_INTR_CLEAR = BIT(timer_id);
-
 	/*
 	 * If IRQ is from timer 0, 2^32 us have elapsed (i.e. OS timer
 	 * overflowed).
 	 */
 	process_timers(timer_id == 0);
+
+	/*
+	 * clearing interrupt status before the main counter gets increased
+	 * generates extra interrupt.
+	 * Here, we clear the interrupt after processing and it's safe since
+	 * there's at least MINIMUM_EVENT_DELAY_US delay for the next event
+	 */
+	while (HPET_INTR_CLEAR & BIT(timer_id))
+		HPET_INTR_CLEAR = BIT(timer_id);
 }
 
 void __hw_clock_source_irq_0(void)
