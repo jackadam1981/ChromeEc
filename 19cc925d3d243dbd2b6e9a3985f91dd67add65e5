@@ -281,6 +281,30 @@
       "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6fcc0ab_de312f6f",
+        "filename": "board/kohaku/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-04-18T21:43:49Z",
+      "side": 1,
+      "message": "Both CHARGER_IADP and CHARGER_PMON could be defined as GPIO_INPUTs for now, but don\u0027t need the alt_function definition until the something is doing an ADC read on these channels. At least that\u0027s my opinion.",
+      "parentUuid": "c88bb07e_4fdcde00",
+      "range": {
+        "startLine": 142,
+        "startChar": 29,
+        "endLine": 142,
+        "endChar": 41
+      },
+      "revId": "19cc925d3d243dbd2b6e9a3985f91dd67add65e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
