@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a09a38e_cb8bd574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-18T01:57:24Z",
+      "side": 1,
+      "message": "Can you also test\n  1. Alt + brightness up/down works\n  2. After suspend-resume, brightness is restored\n  3. Lid close/open\n  4. After screen is off, keyboard backlight is turned off",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "f282750c40923409a34991a5588459cb995e4cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
