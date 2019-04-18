@@ -26,10 +26,6 @@
 /* Type-C Layer Flags */
 #define TC_FLAGS_VCONN_ON           BIT(0)
 
-#undef PD_DEFAULT_STATE
-/* Port default state at startup */
-#define PD_DEFAULT_STATE(port) tc_unattached_snk
-
 /**
  * This is the Type-C Port object that contains information needed to
  * implement a VCONN Powered Device.
@@ -47,7 +43,7 @@ DECLARE_STATE(tc, host_rard, NOOP_EXIT);
 DECLARE_STATE(tc, host_open, NOOP_EXIT);
 DECLARE_STATE(tc, vbus_cc_iso, NOOP_EXIT);
 
-void tc_state_init(int port)
+void tc_state_init(int port, enum typec_state_id start_state)
 {
 	int res = 0;
 	sm_state this_state;
@@ -55,7 +51,7 @@ void tc_state_init(int port)
 	res = tc_restart_tcpc(port);
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
-	this_state = res ? tc_disabled : PD_DEFAULT_STATE(port);
+	this_state = res ? tc_disabled : tc_unattached_snk;
 
 	/* Disable TCPC RX until connection is established */
 	tcpm_set_rx_enable(port, 0);
