@@ -5,6 +5,7 @@
 
 #include "registers.h"
 #include "usb-stream.h"
+#include "task.h"
 
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
 static void usb_enable_tx(struct usb_stream_config const *config,
@@ -127,14 +128,30 @@ static inline int tx_fifo_is_ready(struct usb_stream_config const *config)
 	return status == DIEPDMA_BS_DMA_DONE || status == DIEPDMA_BS_HOST_BSY;
 }
 
-/* Try to send some bytes to the host */
-void tx_stream_handler(struct usb_stream_config const *config)
+/* Tx/IN interrupt trigger */
+void tx_stream_trigger(struct usb_stream_config const *config)
+{
+	if (!*config->is_reset)
+		return;
+
+	if (!tx_fifo_is_ready(config))
+		return;
+
+	/* Set the SW-level interrupt status  */
+	usb_daint_sw |= DAINT_INEP(config->endpoint);
+	task_trigger_irq(GC_IRQNUM_USB0_USBINTR);
+}
+
+/* Tx/IN completion interrupt handler */
+void usb_stream_tx(struct usb_stream_config const *config)
 {
 	size_t count;
 	struct queue const *tx_q = config->consumer.queue;
 
-	if (!*config->is_reset)
-		return;
+	/* clear the Tx/IN interrupts */
+	GR_USB_DIEPINT(config->endpoint) = 0xffffffff;
+	/* Clear the SW-level interrupt status  */
+	usb_daint_sw &= ~DAINT_INEP(config->endpoint);
 
 	if (!tx_fifo_is_ready(config))
 		return;
@@ -197,16 +214,6 @@ void tx_stream_handler(struct usb_stream_config const *config)
 	}
 }
 
-/* Tx/IN interrupt handler */
-void usb_stream_tx(struct usb_stream_config const *config)
-{
-	/* Wake up the Tx FIFO handler */
-	hook_call_deferred(config->deferred_tx, 0);
-
-	/* clear the Tx/IN interrupts */
-	GR_USB_DIEPINT(config->endpoint) = 0xffffffff;
-}
-
 void usb_stream_reset(struct usb_stream_config const *config)
 {
 	config->out_desc->flags = DOEPDMA_RXBYTES(config->rx_size) |
@@ -238,7 +245,7 @@ void usb_stream_reset(struct usb_stream_config const *config)
 	*config->is_reset = 1;
 
 	/* Flush any queued data */
-	hook_call_deferred(config->deferred_tx, 0);
+	tx_stream_trigger(config);
 	hook_call_deferred(config->deferred_rx, 0);
 }
 
@@ -255,7 +262,7 @@ static void usb_written(struct consumer const *consumer, size_t count)
 	struct usb_stream_config const *config =
 		DOWNCAST(consumer, struct usb_stream_config, consumer);
 
-	hook_call_deferred(config->deferred_tx, 0);
+	tx_stream_trigger(config);
 }
 
 struct producer_ops const usb_stream_producer_ops = {
