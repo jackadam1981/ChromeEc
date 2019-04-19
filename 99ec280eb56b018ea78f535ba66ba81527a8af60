@@ -22,6 +22,30 @@
       "revId": "99ec280eb56b018ea78f535ba66ba81527a8af60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd4862d_03ae03cc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-19T03:56:34Z",
+      "side": 1,
+      "message": "Yes, it should be before pd_set_power_supply_ready. Thanks.",
+      "parentUuid": "1b9fd16f_0713dbc5",
+      "range": {
+        "startLine": 3016,
+        "startChar": 4,
+        "endLine": 3021,
+        "endChar": 11
+      },
+      "revId": "99ec280eb56b018ea78f535ba66ba81527a8af60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
