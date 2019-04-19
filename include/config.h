@@ -3697,6 +3697,12 @@
  */
 #undef CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
 
+/*
+ * Used for bc1.2 chips that need to be triggered from power role swaps instead
+ * of just VBUS changes.
+ */
+#undef CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER
+
 /* External BC1.2 charger detection devices. */
 #undef CONFIG_BC12_DETECT_MAX14637
 #undef CONFIG_BC12_DETECT_PI3USB9201
