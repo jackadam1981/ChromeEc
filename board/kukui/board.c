@@ -65,6 +65,7 @@ static void gauge_interrupt(enum gpio_signal signal)
 
 static void pogo_vbus_present(enum gpio_signal signal)
 {
+	CPRINTF("\x1b[1;33m%s: %d]\x1b[m\n", __func__, gpio_get_level(GPIO_POGO_VBUS_PRESENT));
 	if (gpio_get_level(GPIO_POGO_VBUS_PRESENT)) {
 		struct charge_port_info info = {
 			.voltage = 5000, .current = 1500};
@@ -187,12 +188,14 @@ int board_set_active_charge_port(int charge_port)
 	switch (charge_port) {
 	case CHARGE_PORT_USB_C:
 		/* Don't charge from a source port */
+		CPRINTS("\x1b[1;31mboard_set_active_charge_port(USBC)\x1b[m");
 		if (board_vbus_source_enabled(charge_port))
 			return -1;
 		gpio_set_level(GPIO_EN_POGO_CHARGE_L, 1);
 		gpio_set_level(GPIO_EN_USBC_CHARGE_L, 0);
 		break;
 	case CHARGE_PORT_POGO:
+		CPRINTS("\x1b[1;31mboard_set_active_charge_port(POGO)\x1b[m");
 		gpio_set_level(GPIO_EN_USBC_CHARGE_L, 1);
 		gpio_set_level(GPIO_EN_POGO_CHARGE_L, 0);
 		break;
@@ -202,6 +205,7 @@ int board_set_active_charge_port(int charge_port)
 		 * even when battery is disconnected, keep VBAT rail on but
 		 * set the charging current to minimum.
 		 */
+		CPRINTS("\x1b[1;31mboard_set_active_charge_port(NONE)\x1b[m");
 		gpio_set_level(GPIO_EN_POGO_CHARGE_L, 1);
 		gpio_set_level(GPIO_EN_USBC_CHARGE_L, 1);
 		charger_set_current(0);

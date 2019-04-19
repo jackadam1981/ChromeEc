@@ -43,7 +43,7 @@ GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_FALLING,
          hall_interrupt)
 GPIO_INT(GAUGE_INT_ODL,     PIN(C, 9),  GPIO_INT_FALLING | GPIO_PULL_UP,
          gauge_interrupt)
-GPIO_INT(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_INT_BOTH,
+GPIO_INT(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_OUTPUT | GPIO_INT_BOTH,
          pogo_vbus_present)
 
 /* Interrupts not implemented yet */

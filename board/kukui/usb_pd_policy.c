@@ -61,6 +61,7 @@ int board_vbus_source_enabled(int port)
 
 int pd_set_power_supply_ready(int port)
 {
+	CPRINTF("\x1b[1;32m%s\x1b[m\n", __func__);
 	if (port != CHARGE_PORT_USB_C)
 		return EC_ERROR_INVAL;
 
@@ -81,6 +82,7 @@ int pd_set_power_supply_ready(int port)
 void pd_power_supply_reset(int port)
 {
 	int prev_en;
+	CPRINTF("\x1b[1;32m%s\x1b[m\n", __func__);
 
 	if (port != CHARGE_PORT_USB_C)
 		return;
