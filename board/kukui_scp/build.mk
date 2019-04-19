@@ -9,3 +9,4 @@ CHIP:=mt_scp
 CHIP_VARIANT:=mt8183
 
 board-y=board.o
+board-y+=wov_test.o
