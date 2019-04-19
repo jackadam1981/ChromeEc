@@ -995,6 +995,14 @@ int rt946x_enable_charge_termination(int en)
 }
 
 #ifdef CONFIG_CHARGER_MT6370
+/* Hack to enable backlight on Krane. */
+void mt6370_enable_backlight(void)
+{
+	rt946x_write8(MT6370_BACKLIGHT_BLEN, 0xfe);
+	rt946x_write8(MT6370_BACKLIGHT_BLPWM, 0xac);
+}
+
+
 /* MT6370 LDO */
 
 int mt6370_set_ldo_voltage(int mv)

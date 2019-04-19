@@ -243,6 +243,9 @@ static void board_rev_init(void)
 {
 	/* Board revision specific configs. */
 	if (board_get_version() >= 2) {
+		/* Hack to enable backlight on Krane. */
+		mt6370_enable_backlight();
+
 		gpio_set_flags(GPIO_USBC_THERM, GPIO_ANALOG);
 
 		/*
