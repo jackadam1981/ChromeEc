@@ -80,6 +80,11 @@ int board_read_id(enum adc_channel ch, const struct mv_to_id *table, int size)
 	return ADC_READ_ERROR;
 }
 
+int max17055_load_batt_model(void)
+{
+	return max17055_load_batt_full_model();
+}
+
 static void board_setup_panel(void)
 {
 	uint8_t channel;
