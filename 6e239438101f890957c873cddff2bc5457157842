@@ -39,6 +39,24 @@
       "revId": "6e239438101f890957c873cddff2bc5457157842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c262836_a75a9dcf",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-19T23:09:05Z",
+      "side": 1,
+      "message": "Oh, I think I get it now. According to the spec Figure 5-6: exit mode can only be called when in USB Configuration. This means that my test is invalid. It also means that the MUX should not be changed in exit.\n\nThat explains why we see the mux change twice on a disconnect:\n[2646.829075 set_state: Disconnected, call exit]\n[2646.829524 pd_dfp_exit_mode: No SVID]\nsvdm_exit_dp_mode: port: 1\n[2646.830822 usb/dp mux: port(1) typec_mux(0) usb2(0) polarity(0)]\n[2646.832265 Disconnected: Disconnecting mux]\n[2646.833477 usb/dp mux: port(1) typec_mux(0) usb2(1) polarity(0)]\nC1 st14 SRC_DISCONNECTED\nC1 st38 DRP_AUTO_TOGGLE\n\n\nIn order to transition into USB Configuration mode, we need to go through a DP configure that requests USB Configuration and exists DisplayPort Configuration. i.e., Disconnect changing pins (Safe mode), issue change command, on ack reconnect the USB pins.",
+      "parentUuid": "a0c45fc2_09a8be5a",
+      "revId": "6e239438101f890957c873cddff2bc5457157842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
