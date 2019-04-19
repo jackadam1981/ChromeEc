@@ -5694,6 +5694,53 @@ struct ec_params_charger_control {
 	uint8_t allow_charging;
 } __ec_align_size1;
 
+/*
+ * 'dsleep' command, used to configure the deep sleep mode of ec.
+ */
+#define EC_CMD_DSLEEP            0x0603
+
+/* D0ix statistics data, including each state's count and total stay time */
+struct pm_statistics {
+	uint64_t d0i0_cnt;
+	uint64_t d0i0_time_us;
+
+	uint64_t d0i1_cnt;
+	uint64_t d0i1_time_us;
+
+	uint64_t d0i2_cnt;
+	uint64_t d0i2_time_us;
+
+	uint64_t d0i3_cnt;
+	uint64_t d0i3_time_us;
+
+} __ec_align4;
+
+enum ish_ec_cmd_dsleep {
+	DEEP_SLEEP_ENABLE = 0,
+	DEEP_SLEEP_DISABLE,
+	DEEP_SLEEP_GET_STATS
+};
+
+/*
+ * 'dsleep' command parameters
+ */
+struct ec_params_dsleep {
+	uint8_t cmd;      /* enum ish_ec_cmd_dsleep */
+} __ec_align4;
+
+/*
+ * 'dsleep' command response parameters
+ */
+struct ec_response_dsleep {
+	uint8_t status;
+	int aon_valid;
+	int dsleep_enabled;
+	uint32_t aon_error_count;
+	int aon_last_error;
+	uint64_t total_time;
+	struct pm_statistics pm_stats;
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or

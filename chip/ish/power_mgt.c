@@ -13,6 +13,8 @@
 #include "power_mgt.h"
 #include "watchdog.h"
 #include "ish_dma.h"
+#include "host_command.h"
+#include "ec_commands.h"
 
 #ifdef CONFIG_ISH_PM_DEBUG
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -57,36 +59,17 @@ struct pm_context {
 	timestamp_t console_expire_time;
 	/* console in use timeout */
 	int console_in_use_timeout_sec;
+	/* deep sleep enabled */
+	int dsleep_enabled;
 } __packed;
 
 static struct pm_context pm_ctx = {
 	.aon_valid = 0,
 	/* aon shared data located in the start of aon memory */
 	.aon_share = (struct ish_aon_share *)CONFIG_ISH_AON_SRAM_BASE_START,
-	.console_in_use_timeout_sec = 60
+	.console_in_use_timeout_sec = 60,
+	.dsleep_enabled = 1
 };
-
-/* D0ix statistics data, including each state's count and total stay time */
-struct pm_statistics {
-	uint64_t d0i0_cnt;
-	uint64_t d0i0_time_us;
-
-#ifdef CONFIG_ISH_PM_D0I1
-	uint64_t d0i1_cnt;
-	uint64_t d0i1_time_us;
-#endif
-
-#ifdef CONFIG_ISH_PM_D0I2
-	uint64_t d0i2_cnt;
-	uint64_t d0i2_time_us;
-#endif
-
-#ifdef CONFIG_ISH_PM_D0I3
-	uint64_t d0i3_cnt;
-	uint64_t d0i3_time_us;
-#endif
-
-} __packed;
 
 static struct pm_statistics pm_stats;
 
@@ -431,6 +414,9 @@ static int d0ix_decide(timestamp_t cur_time, uint32_t idle_us)
 {
 	int pm_state = ISH_PM_STATE_D0I0;
 
+	if (!pm_ctx.dsleep_enabled)
+		return pm_state;
+
 	if (DEEP_SLEEP_ALLOWED) {
 
 		/* check if the console use has expired. */
@@ -591,7 +577,7 @@ void __idle(void)
 /**
  * Print low power idle statistics
  */
-static int command_idle_stats(int argc, char **argv)
+static int print_pm_stats(void)
 {
 #if defined(CONFIG_ISH_PM_D0I2) || defined(CONFIG_ISH_PM_D0I3)
 	struct ish_aon_share *aon_share = pm_ctx.aon_share;
@@ -603,7 +589,9 @@ static int command_idle_stats(int argc, char **argv)
 	ccprintf("        counts: %ld\n", pm_stats.d0i0_cnt);
 	ccprintf("        time:   %.6lds\n", pm_stats.d0i0_time_us);
 
-	ccprintf("Deep sleep:\n");
+	ccprintf("Deep sleep (%s):\n",
+			pm_ctx.dsleep_enabled ? "enabled" : "disabled");
+
 #ifdef CONFIG_ISH_PM_D0I1
 	ccprintf("    D0i1:\n");
 	ccprintf("        counts: %ld\n", pm_stats.d0i1_cnt);
@@ -634,14 +622,10 @@ static int command_idle_stats(int argc, char **argv)
 	}
 #endif
 
-	ccprintf("Total time on: %.6lds\n", get_time().val);
+	ccprintf("Total time from boot: %.6lds\n", get_time().val);
 
 	return EC_SUCCESS;
 }
-
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
-			"Print last idle stats");
-
 
 #ifdef CONFIG_ISH_PM_D0I1
 
@@ -769,3 +753,87 @@ void ish_pm_refresh_console_in_use(void)
 	pm_ctx.console_expire_time.val +=
 				pm_ctx.console_in_use_timeout_sec * SECOND;
 }
+
+static inline void set_dsleep(int enable)
+{
+	if (enable) {
+		pm_ctx.dsleep_enabled = 1;
+		ccprints("Deep sleep enabled");
+	} else {
+		pm_ctx.dsleep_enabled = 0;
+		ccprints("Deep sleep disabled");
+	}
+}
+
+static inline void enable_dsleep(void)
+{
+	pm_ctx.dsleep_enabled = 1;
+	ccprints("Deep sleep enabled");
+}
+
+/**
+ * configure deep sleep.
+ */
+static int command_dsleep(int argc, char **argv)
+{
+	if (argc > 1) {
+		if (!strcasecmp(argv[1], "on"))
+			set_dsleep(1);
+		else if (!strcasecmp(argv[1], "off"))
+			set_dsleep(0);
+		else if (!strcasecmp(argv[1], "stats"))
+			print_pm_stats();
+		else
+			return EC_ERROR_PARAM1;
+	} else {
+		print_pm_stats();
+	}
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(dsleep, command_dsleep,
+			"[on | off | stats]",
+			"Deep sleep settings:"
+			"\nUse 'on' to enable deep sleep."
+			"\nUse 'off' to disable deep sleep."
+			"\nUse 'stats' or no parameter to print deep sleep"
+			"status and statistic data.");
+
+static int host_cmd_dsleep(struct host_cmd_handler_args *args)
+{
+	int ret = EC_RES_SUCCESS;
+	const struct ec_params_dsleep *p = args->params;
+	struct ec_response_dsleep *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+
+	switch (p->cmd) {
+	case DEEP_SLEEP_ENABLE:
+		set_dsleep(1);
+		break;
+	case DEEP_SLEEP_DISABLE:
+		set_dsleep(0);
+		break;
+	case DEEP_SLEEP_GET_STATS:
+		r->aon_valid = pm_ctx.aon_valid;
+		r->dsleep_enabled = pm_ctx.dsleep_enabled;
+		r->aon_error_count = pm_ctx.aon_share->error_count;
+		r->aon_last_error = pm_ctx.aon_share->error_count;
+		r->total_time = get_time().val;
+		r->pm_stats = pm_stats;
+		break;
+	default:
+		ret = EC_RES_INVALID_COMMAND;
+		break;
+	}
+
+	args->response_size = sizeof(*r);
+
+	return ret;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_DSLEEP,
+		     host_cmd_dsleep,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
+
