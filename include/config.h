@@ -738,6 +738,12 @@
 #undef CONFIG_CHARGER_MT6370_BC12_DETECT_GPIO
 
 /*
+ * MT6370 backlight control settings.
+ * If defined, Panel backlight power is controlled by MT6370.
+ */
+#undef CONFIG_CHARGER_MT6370_BACKLIGHT
+
+/*
  * Enable/disable system power monitor PSYS function: this enables output
  * from charger chip to SoC.
  */
