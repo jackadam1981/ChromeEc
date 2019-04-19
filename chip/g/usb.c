@@ -198,6 +198,14 @@ static void showregs(void)
 #define CONFIG_USB_BCD_DEV 0x0100		/* 1.00 */
 #endif
 
+/*
+ * SW-level interrupt status for all endpoints
+ * This is set in usb-stream.c to activate TX transfer.
+ * To trigger USB endpoint interrupt, mark the relevant bit in usb_daint_sw
+ * and call task_trigger_irq(GC_IRQNUM_USB0_USBINTR).
+ */
+uint32_t usb_daint_sw;
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -1157,11 +1165,18 @@ void usb_interrupt(void)
 	}
 
 	/* Endpoint interrupts */
+	/*
+	 * usb-stream.c might have marked any DAINT_INEP() bit in usb_daint_sw.
+	 */
+	iepint |= !!usb_daint_sw;
+
 	if (oepint || iepint) {
 		/* Note: It seems that the DAINT bits are only trustworthy for
 		 * identifying interrupts when selected by the corresponding
 		 * OEPINT and IEPINT bits from GINTSTS. */
 		uint32_t daint = GR_USB_DAINT;
+
+		daint |= usb_daint_sw;
 
 		print_later("  oepint%c iepint%c daint 0x%08x",
 			    oepint ? '!' : '_', iepint ? '!' : '_',
@@ -1370,9 +1385,6 @@ void usb_init(void)
 		configuration_value = 0;
 	}
 
-	/* Now that DCFG.DesDMA is accurate, prepare the FIFOs */
-	setup_data_fifos();
-
 	/* If resuming, reinitialize the endpoints now. For a cold boot we'll
 	 * do this as part of handling the host-driven reset. */
 	if (resume)
@@ -1389,6 +1401,9 @@ void usb_init(void)
 	GR_USB_DIEPMSK = DIEPMSK_EPDISBLDMSK | DIEPMSK_XFERCOMPLMSK;
 	GR_USB_DOEPMSK = DOEPMSK_EPDISBLDMSK | DOEPMSK_XFERCOMPLMSK |
 		DOEPMSK_SETUPMSK;
+
+	/* Now that DCFG.DesDMA is accurate, prepare the FIFOs */
+	setup_data_fifos();
 
 	/* Enable interrupt handlers */
 	task_enable_irq(GC_IRQNUM_USB0_USBINTR);
