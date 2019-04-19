@@ -198,6 +198,14 @@ static void showregs(void)
 #define CONFIG_USB_BCD_DEV 0x0100		/* 1.00 */
 #endif
 
+#ifdef CONFIG_STREAM_USB
+/*
+ * SW-level interrupt status for all endpoints
+ * This is set in usb-stream.c to activate TX transfer.
+ */
+uint32_t daint_sw;
+#endif
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -1157,12 +1165,21 @@ void usb_interrupt(void)
 	}
 
 	/* Endpoint interrupts */
+#ifdef CONFIG_STREAM_USB
+	/*
+	 * usb-stream.c might have marked any DAINT_INEP() bit in daint_sw.
+	 */
+	iepint |= !!daint_sw;
+#endif
 	if (oepint || iepint) {
 		/* Note: It seems that the DAINT bits are only trustworthy for
 		 * identifying interrupts when selected by the corresponding
 		 * OEPINT and IEPINT bits from GINTSTS. */
 		uint32_t daint = GR_USB_DAINT;
 
+#ifdef CONFIG_STREAM_USB
+		daint |= daint_sw;
+#endif
 		print_later("  oepint%c iepint%c daint 0x%08x",
 			    oepint ? '!' : '_', iepint ? '!' : '_',
 			    daint, 0, 0);
