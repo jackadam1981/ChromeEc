@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b762248_db608603",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T17:44:50Z",
+      "side": 1,
+      "message": "I think this entire procedure, minus retrieving ecx, can be implemented in C. To get ecx, you can use the technique like in line 98 (exception_panic) in core/minute-ia/panic.c",
+      "range": {
+        "startLine": 388,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 18
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00895c74_9762a38f",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T17:44:50Z",
+      "side": 1,
+      "message": "where did ecx come from? is this the irq number from \"int n\"?",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 12
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e61d9dc5_67748b82",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T17:44:50Z",
+      "side": 1,
+      "message": "It would have made sense here to me to use IRQ_TO_VEC(irq). Can you add a comment why we have to use SOFTIRQ_VECTOR rather than \"int irq\"?",
+      "range": {
+        "startLine": 440,
+        "startChar": 10,
+        "endLine": 440,
+        "endChar": 24
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
