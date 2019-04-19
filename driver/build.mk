@@ -140,3 +140,6 @@ driver-$(CONFIG_USBC_PPC_NX20P3483)+=ppc/nx20p348x.o
 
 # video converters
 driver-$(CONFIG_MCDP28X0)+=mcdp28x0.o
+
+# 7-segment display
+driver-$(CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY)+=max695x.o

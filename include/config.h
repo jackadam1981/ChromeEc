@@ -1108,6 +1108,7 @@
 #undef  CONFIG_CMD_PD_FLASH
 #undef  CONFIG_CMD_PLL
 #undef  CONFIG_CMD_PMU
+#undef	CONFIG_CMD_PORT80_DISPLAY
 #define CONFIG_CMD_POWERINDEBUG
 #undef  CONFIG_CMD_POWERLED
 #define CONFIG_CMD_PWR_AVG
@@ -2639,6 +2640,9 @@
  * this is disabled.
  */
 #define CONFIG_PORT80_PRINT_IN_INT 0
+
+/* MAX695x 7 segment driver for port 80 */
+#undef CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY
 
 /* Compile common code to support power button debouncing */
 #undef CONFIG_POWER_BUTTON
