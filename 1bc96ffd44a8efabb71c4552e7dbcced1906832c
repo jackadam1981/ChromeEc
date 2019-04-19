@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "dab951af_c70026f3",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T21:40:07Z",
+      "side": 1,
+      "message": "I don\u0027t think relying on relying the value we want happening to be in ecx is a good design... couldn\u0027t the compiler just put it in any other register? Even a global variable would be safer than this...",
+      "parentUuid": "3ce3d617_87587f99",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 12
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e61d9dc5_67748b82",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 10
