@@ -732,6 +732,12 @@
 #undef CONFIG_CHARGER_CURRENT_LIMIT
 
 /*
+ * MT6370 BC12 detection settings.
+ * If defined, BC12 detection enabling is controlled by GPIO_BC12_DET_EN.
+ */
+#undef CONFIG_CHARGER_MT6370_BC12_DETECT_GPIO
+
+/*
  * Enable/disable system power monitor PSYS function: this enables output
  * from charger chip to SoC.
  */
