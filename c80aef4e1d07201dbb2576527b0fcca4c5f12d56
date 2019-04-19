@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0228629_3144f709",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-19T09:13:13Z",
+      "side": 1,
+      "message": "Yilun: I can\u0027t test this on Kukui P2, but I think this is why you can\u0027t charge from pogo after reboot.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "c80aef4e1d07201dbb2576527b0fcca4c5f12d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
