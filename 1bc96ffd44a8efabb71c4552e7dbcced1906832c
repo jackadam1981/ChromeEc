@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "799b1fde_034d47b3",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-19T21:57:26Z",
+      "side": 1,
+      "message": "I\u0027m sorry I\u0027m not sure if I have clear understanding about your question.\nBut if I try, in task_trigger_irq, we assign address of isr routine into %ecx.\n\"c\" (isr_routine) \u003c\u003d\u003d this is how we assign the address to %ecx.",
+      "parentUuid": "dab951af_c70026f3",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 12
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e61d9dc5_67748b82",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 10
