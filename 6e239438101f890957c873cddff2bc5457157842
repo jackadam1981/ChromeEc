@@ -22,6 +22,23 @@
       "revId": "6e239438101f890957c873cddff2bc5457157842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c45fc2_09a8be5a",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-19T22:38:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure how much this matters right now since I can\u0027t seem to find a way to disable the display via the UI. But using ectool to exit DP mode:\n\n$ ectool pdsetmode 1 0xff01 1  0\n[698.437973 hc_remote_pd_set_amode: PD exit mode]\n[698.438429 pd_dfp_exit_mode: Normal exit!]\nsvdm_exit_dp_mode: port: 1\n[698.440643 usb/dp mux: p_mux(0) usb2(0) polarity(0)]\n[698.442887 hc_remote_pd_set_amode: Sending CMD_EXIT]\n[698.457900 ACK EXIT MODE]\n\nIt leaves the mux disconnected. I would imagine we would need a post_exit that sets the mux to USB for this to function correctly.\n\nIdeally if we were in DOCK and an exit was issued we would change the mux to USB.",
+      "revId": "6e239438101f890957c873cddff2bc5457157842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
