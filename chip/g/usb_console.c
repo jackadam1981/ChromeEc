@@ -77,8 +77,14 @@ USB_STREAM_CONFIG(usb_console,
 
 static inline void handle_output(void)
 {
-	/* Wake up the Tx FIFO handler */
-	hook_call_deferred(usb_console.deferred_tx, 0);
+	/*
+	 * Note:
+	 * Console UART activates the transfer by manually calling this
+	 * function. Because Console UART queue gets added by one char at
+	 * one time (in __tx_char()), it is not efficient to let queue_policty
+	 * function activate this.
+	 */
+	tx_stream_trigger(&usb_console);
 }
 
 static inline int tx_fifo_is_ready_(void)

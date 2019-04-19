@@ -34,7 +34,6 @@ struct usb_stream_config {
 	/*
 	 * Deferred function to call to handle USB and Queue request.
 	 */
-	const struct deferred_data *deferred_tx;
 	const struct deferred_data *deferred_rx;
 
 	int tx_size;
@@ -115,8 +114,6 @@ extern struct producer_ops const usb_stream_producer_ops;
 	static struct g_usb_desc CONCAT2(NAME, _in_desc_)[MAX_IN_DESC];	\
 	static uint8_t CONCAT2(NAME, _buf_rx_)[RX_SIZE];		\
 	static int CONCAT2(NAME, _is_reset_);				\
-	static void CONCAT2(NAME, _deferred_tx_)(void);			\
-	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_tx_));			\
 	static void CONCAT2(NAME, _deferred_rx_)(void);			\
 	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_rx_));			\
 	static int CONCAT2(NAME, _rx_handled);				\
@@ -126,7 +123,6 @@ extern struct producer_ops const usb_stream_producer_ops;
 		.is_reset     = &CONCAT2(NAME, _is_reset_),		\
 		.in_desc      = &CONCAT2(NAME, _in_desc_)[0],		\
 		.out_desc     = &CONCAT2(NAME, _out_desc_),		\
-		.deferred_tx  = &CONCAT2(NAME, _deferred_tx__data),	\
 		.deferred_rx  = &CONCAT2(NAME, _deferred_rx__data),	\
 		.tx_size      = TX_SIZE,				\
 		.rx_size      = RX_SIZE,				\
@@ -172,8 +168,6 @@ extern struct producer_ops const usb_stream_producer_ops;
 		.wMaxPacketSize   = RX_SIZE,				\
 		.bInterval        = 0,					\
 	};								\
-	static void CONCAT2(NAME, _deferred_tx_)(void)			\
-	{ tx_stream_handler(&NAME); }					\
 	static void CONCAT2(NAME, _deferred_rx_)(void)			\
 	{ rx_stream_handler(&NAME); }					\
 	static void CONCAT2(NAME, _ep_tx)(void)				\
@@ -214,11 +208,12 @@ extern struct producer_ops const usb_stream_producer_ops;
 			       RX_QUEUE,				\
 			       TX_QUEUE)
 
+extern uint32_t usb_daint_sw;
+
 /*
  * Handle USB and Queue request in a deferred callback.
  */
 void rx_stream_handler(struct usb_stream_config const *config);
-void tx_stream_handler(struct usb_stream_config const *config);
 
 /*
  * These functions are used by the trampoline functions defined above to
@@ -233,6 +228,11 @@ void usb_stream_reset(struct usb_stream_config const *config);
  * False if it is busy transferring data.
  */
 int tx_fifo_is_ready(struct usb_stream_config const *config);
+
+/*
+ * Activate USB Tx/IN transfer, if USB TX queue is non-empty.
+ */
+void tx_stream_trigger(struct usb_stream_config const *config);
 
 /*
  * Return 1 if the USB stream is reset or 0 otherwise
