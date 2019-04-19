@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eab6fbec_bb04b25e",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-19T18:05:40Z",
+      "side": 1,
+      "message": "I\u0027m sorry I don\u0027t understand what you mean.\nDo you want me to implement this in C but return with \"iret\" ?",
+      "parentUuid": "5b762248_db608603",
+      "range": {
+        "startLine": 388,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 18
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00895c74_9762a38f",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3ce3d617_87587f99",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-19T18:05:40Z",
+      "side": 1,
+      "message": "The ecx is from task_trigger_irq() and it\u0027s irq number",
+      "parentUuid": "00895c74_9762a38f",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 12
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e61d9dc5_67748b82",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849b52cb_f4d07f6a",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-19T18:05:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e61d9dc5_67748b82",
+      "range": {
+        "startLine": 440,
+        "startChar": 10,
+        "endLine": 440,
+        "endChar": 24
+      },
+      "revId": "1bc96ffd44a8efabb71c4552e7dbcced1906832c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
