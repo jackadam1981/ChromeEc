@@ -77,6 +77,7 @@
 #define CONFIG_CHARGER_OTG
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
+#define CONFIG_BC12_DETECT_GPIO
 
 /* Increase tx buffer size, as we'd like to stream EC log to AP. */
 #undef CONFIG_UART_TX_BUF_SIZE
@@ -126,6 +127,9 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USB_PD_COMM_LOCKED
+
+/* BC12 Config */
+#define CONFIG_CHARGER_MT6370_BC12_DETECT_GPIO
 
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_CUSTOM
@@ -211,7 +215,6 @@ enum adc_channel {
 	ADC_EC_SKU_ID,
 	ADC_BATT_ID,
 	ADC_POGO_ADC_INT_L,
-	ADC_USBC_THERM,
 	ADC_CH_COUNT
 };
 
