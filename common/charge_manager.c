@@ -559,6 +559,7 @@ static void charge_manager_get_best_charge_port(int *new_port,
 
 				candidate_port_power =
 					POWER(available_charge[i][j]);
+				CPRINTS("port (%d, %d) power %d\n", j, i, candidate_port_power);
 
 				/* Select if no supplier chosen yet. */
 				if (supplier == CHARGE_SUPPLIER_NONE ||
