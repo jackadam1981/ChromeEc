@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eee7bd3c_5f7a6c66",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-19T20:53:38Z",
+      "side": 0,
+      "message": "I think we still need this to comply with the PD spec? \n\nPD spec \"6.4.4.3.4 Enter Mode Command\":\nBefore entering a Mode, by sending the Enter Mode Command request, that requires the reconfiguring of any pins on\nentry to that Mode, the Initiator Shall ensure that those pins being reconfigured are placed into the USB Safe State. \n\nGranted, I\u0027m having trouble pinning down an exact definition for \"safe state\" (the Type-C spec references the PD one, PD references the Type-C spec), so I\"m unclear on whether this means we must have TYPEC_MUX_NONE set during enter mode, or whether TYPEC_MUX_USB is okay.  I\u0027ll try some more searching though...",
+      "range": {
+        "startLine": 264,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "f194cdcce858682bc4328e01475db8d6e37e0de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
