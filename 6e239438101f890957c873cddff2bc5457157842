@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e01684b9_c9f37a0b",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-04-19T17:21:55Z",
+      "side": 1,
+      "message": "This isn\u0027t defined on our firmware branch :( I guess I can test on master?",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 12
+      },
+      "revId": "6e239438101f890957c873cddff2bc5457157842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
