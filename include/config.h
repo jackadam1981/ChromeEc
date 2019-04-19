@@ -729,6 +729,11 @@
  * machine will not allow the battery to request more current than this.
  */
 #undef CONFIG_CHARGER_CURRENT_LIMIT
+/*
+ * MT6370 BC12 detection settings.
+ * If defined, BC12 detection enabling is controlled by GPIO_BC12_DET_EN.
+ */
+#undef CONFIG_CHARGER_MT6370_BC12_DETECT_GPIO
 
 /*
  * Enable/disable system power monitor PSYS function: this enables output
@@ -3630,7 +3635,6 @@
 #undef CONFIG_BC12_DETECT_PI3USB9281
 /* Number of Pericom PI3USB9281 chips present in system */
 #undef CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT
-
 
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE

@@ -13,6 +13,7 @@
 #include "compile_time_macros.h"
 #include "config.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
@@ -255,6 +256,9 @@ static int rt946x_reset_to_zero(void)
 static int rt946x_enable_bc12_detection(int en)
 {
 #if defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_MT6370)
+#if defined(CONFIG_CHARGER_MT6370_BC12_DETECT_GPIO)
+	gpio_set_level(GPIO_BC12_DET_EN, en);
+#endif /* CONFIG_CHARGER_MT6370_BC12_DETECT_GPIO */
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_DPDM1, RT946X_MASK_USBCHGEN);
 #endif
