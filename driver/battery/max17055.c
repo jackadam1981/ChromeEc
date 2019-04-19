@@ -64,7 +64,7 @@
 
 static int fake_state_of_charge = -1;
 
-static int max17055_read(int offset, int *data)
+int max17055_read(int offset, int *data)
 {
 	return i2c_read16(I2C_PORT_BATTERY, MAX17055_ADDR, offset, data);
 }
@@ -353,13 +353,67 @@ int battery_wait_for_stable(void)
 	return EC_SUCCESS;
 }
 
+static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
+{
+	int i;
+	int reg;
+	int retries = 20;
+
+	/* Unlock ocv table */
+	if (max17055_write(REG_LOCK1, 0x0059) ||
+	    max17055_write(REG_LOCK2, 0x00c4))
+		return EC_ERROR_UNKNOWN;
+
+	/* Write ocv data */
+	for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {
+		if(max17055_write(REG_OCV_TABLE_START + i, config->ocv_table[i]))
+			return EC_ERROR_UNKNOWN;
+	}
+
+	/* Read and compare ocv data */
+	for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {
+		reg = 0x0;
+		if(max17055_read(REG_OCV_TABLE_START + i, &reg) ||
+		    reg != config->ocv_table[i])
+			return EC_ERROR_UNKNOWN;
+	}
+
+	while(--retries) {
+		/* Lock ocv table */
+		if (max17055_write(REG_LOCK1, 0x0000) ||
+		    max17055_write(REG_LOCK2, 0x0000))
+			return EC_ERROR_UNKNOWN;
+
+		/* if the ocv table remains unlocked, the MAX17055 cannot monitor the capacity 
+		of the battery. Therefore, it is very critical that the ocv table is locked. To
+		verify it is locked, simply read back the values. However, this time, all values 
+		should be read as 0x0000 */
+		for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {
+			reg = 0xff;
+			if(max17055_read(REG_OCV_TABLE_START + i, &reg))
+				return EC_ERROR_UNKNOWN;
+			if(reg)
+				break;
+		}
+		if(i == MAX17055_OCV_TABLE_SIZE)
+			break;
+		msleep(20);
+	}
+
+	if (!retries)
+		return EC_ERROR_TIMEOUT;
+
+	msleep(200);
+
+	return EC_SUCCESS;
+}
+
+
 /* Configured MAX17055 with the battery parameters for optimal performance. */
 static int max17055_load_batt_model(void)
 {
 	int reg;
 	int hib_cfg;
-	int dqacc;
-	int dpacc;
 
 	int retries = 50;
 
@@ -367,64 +421,79 @@ static int max17055_load_batt_model(void)
 
 	config = max17055_get_batt_profile();
 
-	if (config->is_ez_config) {
-		dqacc = config->design_cap / 32;
-		/* Choose the model for charge voltage > 4.275V. */
-		dpacc = dqacc * 51200 / config->design_cap;
-	} else {
-		dqacc = config->design_cap / 16;
-		dpacc = config->dpacc;
-	}
-
-	if (max17055_write(REG_DESIGN_CAPACITY, config->design_cap) ||
-	    max17055_write(REG_DQACC, dqacc) ||
-	    max17055_write(REG_CHARGE_TERM_CURRENT, config->ichg_term) ||
-	    max17055_write(REG_EMPTY_VOLTAGE, config->v_empty_detect))
-		return EC_ERROR_UNKNOWN;
-
-	if (!config->is_ez_config) {
-		if (max17055_write(REG_LEARNCFG, config->learn_cfg))
-			return EC_ERROR_UNKNOWN;
-	}
-
 	/* Store the original HibCFG value. */
 	if (max17055_read(REG_HIBCFG, &hib_cfg))
 		return EC_ERROR_UNKNOWN;
 
-	/* Special sequence to exit hibernate mode. */
+	/* Force exit from hibernate */
 	if (max17055_write(0x60, 0x90) ||
 	    max17055_write(REG_HIBCFG, 0) ||
 	    max17055_write(0x60, 0))
 		return EC_ERROR_UNKNOWN;
 
-	if (max17055_write(REG_DPACC, dpacc) ||
-	    max17055_write(REG_MODELCFG, (MODELCFG_REFRESH | MODELCFG_VCHG)))
+	/* Write LearnCFG with LS 7 */
+	if(max17055_write(REG_LEARNCFG, config->learn_cfg | 0x0070))
 		return EC_ERROR_UNKNOWN;
 
-	/* Delay up to 500 ms until MODELCFG.REFRESH bit == 0. */
+	/* Unlock ocv table access, write/compare/verify custom ocv table,
+					  lock ocv table access */
+	max17055_load_ocv_table(config);
+
+	/* Write custom paramaters */
+	if (max17055_write(REG_DESIGN_CAPACITY, config->design_cap) ||
+	    max17055_write(REG_DQACC, config->design_cap >> 4) ||
+	    max17055_write(REG_DPACC, 0x0c80) ||
+	    max17055_write(REG_CHARGE_TERM_CURRENT, config->ichg_term) ||
+	    max17055_write(REG_EMPTY_VOLTAGE, config->v_empty_detect))
+		return EC_ERROR_UNKNOWN;
+
+	if (max17055_write(REG_RCOMP0, config->rcomp0) ||
+	    max17055_write(REG_TEMPCO, config->tempco) ||
+	    max17055_write(REG_QR_TABLE00, config->qr_table00) ||
+	    max17055_write(REG_QR_TABLE10, config->qr_table10))
+		return EC_ERROR_UNKNOWN;
+
+	/* Update required capacity registers */
+	if (max17055_write(REG_REMAINING_CAPACITY, 0x0000) ||
+	    max17055_read(REG_VFSOC, &reg))
+		return EC_ERROR_UNKNOWN;
+
+	if (max17055_write(REG_VFSOC0, reg) ||
+	    max17055_write(REG_FULL_CHARGE_CAPACITY, config->design_cap) ||
+	    max17055_write(REG_FULLCAPNOM, config->design_cap))
+		return EC_ERROR_UNKNOWN;
+
+	/* Prepare to Load Model */
+	if (max17055_write(REG_REMAINING_CAPACITY, 0x0000) ||
+	    max17055_write(REG_MIXCAP, config->design_cap))
+		return EC_ERROR_UNKNOWN;
+
+	/* Initiate model loading */
+	if (max17055_read(REG_CONFIG2, &reg) ||
+	    max17055_write(REG_CONFIG2, reg | CONFIG2_LDMDL))
+		return EC_ERROR_UNKNOWN;
+
 	while (--retries) {
-		if (max17055_read(REG_MODELCFG, &reg))
+		if (max17055_read(REG_CONFIG2, &reg))
 			return EC_ERROR_UNKNOWN;
-		if (!(MODELCFG_REFRESH & reg))
+		if (!(CONFIG2_LDMDL & reg))
 			break;
 		msleep(10);
 	}
+
 	if (!retries)
 		return EC_ERROR_TIMEOUT;
 
-	if (!config->is_ez_config) {
-		if (max17055_write(REG_RCOMP0, config->rcomp0) ||
-		    max17055_write(REG_TEMPCO, config->tempco) ||
-		    max17055_write(REG_QR_TABLE00, config->qr_table00) ||
-		    max17055_write(REG_QR_TABLE10, config->qr_table10) ||
-		    max17055_write(REG_QR_TABLE20, config->qr_table20) ||
-		    max17055_write(REG_QR_TABLE30, config->qr_table30))
-			return EC_ERROR_UNKNOWN;
-	}
+	/* Write LearnCFG with LS 0 */
+	if (max17055_write(REG_LEARNCFG, config->learn_cfg & 0xff8f) ||
+	    max17055_write(REG_QR_TABLE20, config->qr_table20) ||
+	    max17055_write(REG_QR_TABLE30, config->qr_table30))
+		return EC_ERROR_UNKNOWN;
 
-	/* Restore the original HibCFG value. */
+	/* Restore original HibCfg */
 	if (max17055_write(REG_HIBCFG, hib_cfg))
 		return EC_ERROR_UNKNOWN;
+
 	return EC_SUCCESS;
 }
 
@@ -471,10 +540,6 @@ static void max17055_init(void)
 			CPRINTS("max17055 configuration failed!");
 			return;
 		}
-
-		/* Clear POR bit */
-		MAX17055_READ_DEBUG(REG_STATUS, &reg);
-		MAX17055_WRITE_DEBUG(REG_STATUS, (reg & ~STATUS_POR));
 	} else {
 		const struct max17055_batt_profile *config;
 
@@ -512,7 +577,9 @@ static void max17055_init(void)
 	MAX17055_READ_DEBUG(REG_STATUS, &reg);
 	MAX17055_WRITE_DEBUG(REG_STATUS, reg & ~STATUS_ALL_ALRT);
 #endif
-
+	/* Clear POR bit */
+	MAX17055_READ_DEBUG(REG_STATUS, &reg);
+	MAX17055_WRITE_DEBUG(REG_STATUS, (reg & ~STATUS_POR));
 	CPRINTS("max17055 configuration succeeded!");
 }
 DECLARE_HOOK(HOOK_INIT, max17055_init, HOOK_PRIO_DEFAULT);
