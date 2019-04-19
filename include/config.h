@@ -3631,6 +3631,8 @@
 /* Number of Pericom PI3USB9281 chips present in system */
 #undef CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT
 
+/* BC1.2 detection enabling controlled by GPIO. */
+#undef CONFIG_BC12_DETECT_GPIO
 
 /* Enable USB serial console module. */
 #undef CONFIG_USB_CONSOLE
