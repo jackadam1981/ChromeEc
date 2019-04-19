@@ -16,6 +16,7 @@
 #include "hwtimer_chip.h"
 #include "registers.h"
 #include "rom_chip.h"
+#include "sib_chip.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
@@ -615,6 +616,52 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 #endif
 }
 
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
+=======
+void chip_pre_init(void)
+{
+	/* Setting for fixing JTAG issue */
+	NPCX_DBGCTRL = 0x04;
+	/* Enable automatic freeze mode */
+	CLEAR_BIT(NPCX_DBGFRZEN3, NPCX_DBGFRZEN3_GLBL_FRZ_DIS);
+
+	/*
+	 * Enable JTAG functionality by SW without pulling down strap-pin
+	 * nJEN0 or nJEN1 during ec POWERON or VCCRST reset occurs.
+	 * Please notice it will change pinmux to JTAG directly.
+	 */
+#ifdef NPCX_ENABLE_JTAG
+#if NPCX_JTAG_MODULE2
+	CLEAR_BIT(NPCX_DEVALT(ALT_GROUP_5), NPCX_DEVALT5_NJEN1_EN);
+#else
+	CLEAR_BIT(NPCX_DEVALT(ALT_GROUP_5), NPCX_DEVALT5_NJEN0_EN);
+#endif
+#endif
+
+#ifndef CONFIG_ENABLE_JTAG_SELECTION
+	/*
+	 * (b/129908668)
+	 * This is the workaround to disable the JTAG0 which is enabled
+	 * accidentally by a special key combination.
+	 */
+	if (!IS_BIT_SET(NPCX_DEVALT(5), NPCX_DEVALT5_NJEN0_EN)) {
+		int data;
+		/* Set DEVALT5.nJEN0_EN to disable JTAG0 */
+		SET_BIT(NPCX_DEVALT(5), NPCX_DEVALT5_NJEN0_EN);
+		/* Enable Core-to-Host Modules Access */
+		SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
+		/* Clear SIOCFD.JEN0_HSL to disable JTAG0 */
+		data = sib_read_reg(SIO_OFFSET, 0x2D);
+		data &= ~0x80;
+		sib_write_reg(SIO_OFFSET, 0x2D, data);
+		/* Disable Core-to-Host Modules Access */
+		CLEAR_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
+	}
+#endif
+
+}
+
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 void system_pre_init(void)
 {
 	/*

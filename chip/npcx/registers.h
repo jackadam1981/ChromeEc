@@ -63,6 +63,12 @@
 #define DEBUG_CLK                        0
 #define DEBUG_LPC                        0
 #define DEBUG_ESPI                       0
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
+=======
+#define DEBUG_WOV                        0
+#define DEBUG_CEC                        0
+#define DEBUG_SIB                        0
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 
 /* Modules Map */
 #define NPCX_MDC_BASE_ADDR               0x4000C000

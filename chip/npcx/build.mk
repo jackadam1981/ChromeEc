@@ -12,7 +12,12 @@ CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
 
 # Required chip modules
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
 chip-y=header.o clock.o gpio.o hwtimer.o jtag.o system.o uart.o
+=======
+chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o uartn.o sib.o
+chip-y+=system-$(CHIP_FAMILY).o
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 
 # Optional chip modules
 chip-$(CONFIG_ADC)+=adc.o

@@ -17,11 +17,10 @@
 #include "lpc.h"
 #include "lpc_chip.h"
 #include "port80.h"
-#include "pwm.h"
 #include "registers.h"
 #include "system.h"
+#include "sib_chip.h"
 #include "task.h"
-#include "timer.h"
 #include "uart.h"
 #include "util.h"
 #include "system_chip.h"
@@ -41,6 +40,7 @@
 #define PMC_ACPI     PM_CHAN_1
 #define PMC_HOST_CMD PM_CHAN_2
 
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
 /* Super-IO index and register definitions */
 #define SIO_OFFSET      0x4E
 #define INDEX_SID       0x20
@@ -61,6 +61,8 @@
 
 static uint32_t host_events;            /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];          /* Event masks for each type */
+=======
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 static struct	host_packet lpc_packet;
 static struct	host_cmd_handler_args host_cmd_args;
 static uint8_t	host_cmd_flags;         /* Flags from host command */
@@ -328,6 +330,7 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 	}
 }
 
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
 /*
  * Check host read is not in-progress and no timeout
  */
@@ -401,6 +404,8 @@ uint8_t lpc_sib_read_kbc_reg(uint8_t io_offset)
 	return data_value;
 }
 
+=======
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 void lpc_keyboard_clear_buffer(void)
 {
 	/* Clear OBF flag in host STATUS and HIKMST regs */
@@ -411,7 +416,7 @@ void lpc_keyboard_clear_buffer(void)
 		 * Emulate a host read to clear these two flags and also
 		 * deassert IRQ1
 		 */
-		lpc_sib_read_kbc_reg(0x0);
+		sib_read_kbc_reg(0x0);
 	}
 }
 
@@ -701,6 +706,7 @@ static void lpc_sysjump(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, lpc_sysjump, HOOK_PRIO_DEFAULT);
 
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
 /**
  * Restore event masks after a sysjump.
  */
@@ -805,33 +811,43 @@ uint8_t lpc_sib_read_reg(uint8_t io_offset, uint8_t index_value)
 	return data_value;
 }
 
+=======
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 /* For LPC host register initial via SIB module */
 void host_register_init(void)
 {
 	/* enable ACPI*/
-	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x11);
-	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	sib_write_reg(SIO_OFFSET, 0x07, 0x11);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	/* enable KBC*/
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
 	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x06);
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+=======
+#ifdef HAS_TASK_KEYPROTO
+	sib_write_reg(SIO_OFFSET, 0x07, 0x06);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+#endif
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 
 	/* Setting PMC2 */
 	/* LDN register = 0x12(PMC2) */
-	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x12);
+	sib_write_reg(SIO_OFFSET, 0x07, 0x12);
 	/* CMD port is 0x200 */
-	lpc_sib_write_reg(SIO_OFFSET, 0x60, 0x02);
-	lpc_sib_write_reg(SIO_OFFSET, 0x61, 0x00);
+	sib_write_reg(SIO_OFFSET, 0x60, 0x02);
+	sib_write_reg(SIO_OFFSET, 0x61, 0x00);
 	/* Data port is 0x204 */
-	lpc_sib_write_reg(SIO_OFFSET, 0x62, 0x02);
-	lpc_sib_write_reg(SIO_OFFSET, 0x63, 0x04);
+	sib_write_reg(SIO_OFFSET, 0x62, 0x02);
+	sib_write_reg(SIO_OFFSET, 0x63, 0x04);
 	/* enable PMC2 */
-	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	/* Setting SHM */
 	/* LDN register = 0x0F(SHM) */
-	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x0F);
+	sib_write_reg(SIO_OFFSET, 0x07, 0x0F);
 	/* WIN1&2 mapping to IO */
+<<<<<<< HEAD   (f117a5 FIXUP: sensor: Adjust max_frequency based on EC performance)
 	lpc_sib_write_reg(SIO_OFFSET, 0xF1,
 			lpc_sib_read_reg(SIO_OFFSET, 0xF1) | 0x30);
 	/* Host Command on the IO:0x0800 */
@@ -842,11 +858,18 @@ void host_register_init(void)
 	/* WIN1 as Host Command on the IO:0x0800 */
 	lpc_sib_write_reg(SIO_OFFSET, 0xFB, 0x00);
 	lpc_sib_write_reg(SIO_OFFSET, 0xFA, 0x00);
+=======
+	sib_write_reg(SIO_OFFSET, 0xF1,
+			sib_read_reg(SIO_OFFSET, 0xF1) | 0x30);
+	/* WIN1 as Host Command on the IO:0x0800 */
+	sib_write_reg(SIO_OFFSET, 0xF5, 0x08);
+	sib_write_reg(SIO_OFFSET, 0xF4, 0x00);
+>>>>>>> CHANGE (215e0f npcx: disable the selection of JTAG0 signals due to strap)
 	/* WIN2 as MEMMAP on the IO:0x900 */
-	lpc_sib_write_reg(SIO_OFFSET, 0xF9, 0x09);
-	lpc_sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
+	sib_write_reg(SIO_OFFSET, 0xF9, 0x09);
+	sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
 	/* enable SHM */
-	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	CPRINTS("Host settings are done!");
 
