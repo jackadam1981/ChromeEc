@@ -90,6 +90,8 @@ const char help_str[] =
 	"      Prints the last output to the EC debug console\n"
 	"  cec\n"
 	"      Read or write CEC messages and settings\n"
+	"  dsleep [on | off | stats]\n"
+	"      Enable/disable EC deep sleep, get deep sleep statistcs data \n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
 	"  eventclear <mask>\n"
@@ -333,7 +335,7 @@ int parse_bool(const char *s, int *dest)
 void print_help(const char *prog, int print_cmds)
 {
 	printf("Usage: %s [--dev=n] [--interface=dev|i2c|lpc] ", prog);
-	printf("[--name=cros_ec|cros_fp|cros_pd|cros_scp|cros_sh] [--ascii] ");
+	printf("[--name=cros_ec|cros_fp|cros_pd|cros_scp|cros_ish] [--ascii] ");
 	printf("<command> [params]\n\n");
 	if (print_cmds)
 		puts(help_str);
@@ -6339,6 +6341,82 @@ int cmd_charge_control(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_dsleep(int argc, char *argv[])
+{
+	struct ec_params_dsleep p;
+	struct ec_response_dsleep r;
+	int rv;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <on | off | stats>\n",
+			argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "on")) {
+		p.cmd = DEEP_SLEEP_ENABLE;
+	} else if (!strcasecmp(argv[1], "off")) {
+		p.cmd = DEEP_SLEEP_DISABLE;
+	} else if (!strcasecmp(argv[1], "stats")) {
+		p.cmd = DEEP_SLEEP_GET_STATS;
+	} else {
+		fprintf(stderr, "Bad value.\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_DSLEEP, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "Is AC connected?\n");
+		return rv;
+	}
+
+	if (p.cmd == DEEP_SLEEP_GET_STATS) {
+
+		struct pm_statistics *pm_stats = &r.pm_stats;
+
+		printf("Aontask exist: %s\n", r.aon_valid ? "Yes" : "No");
+		printf("Idle sleep:\n");
+		printf("    D0i0:\n");
+		printf("        counts: %ld\n", pm_stats->d0i0_cnt);
+		printf("        time:   %fs\n",
+				(double)pm_stats->d0i0_time_us/1000000);
+
+		printf("Deep sleep ( %s ):\n",
+				r.dsleep_enabled ? "enabled" : "disabled");
+
+		if (IS_ENABLED(CONFIG_ISH_PM_D0I1)) {
+			printf("    D0i1:\n");
+			printf("        counts: %ld\n", pm_stats->d0i1_cnt);
+			printf("        time:   %fs\n",
+					(double)pm_stats->d0i1_time_us/1000000);
+		}
+
+		if (IS_ENABLED(CONFIG_ISH_PM_D0I2) && r.aon_valid) {
+			printf("    D0i2:\n");
+			printf("        counts: %ld\n", pm_stats->d0i2_cnt);
+			printf("        time:   %fs\n",
+					(double)pm_stats->d0i2_time_us/1000000);
+		}
+
+		if (IS_ENABLED(CONFIG_ISH_PM_D0I3) && r.aon_valid) {
+			printf("    D0i3:\n");
+			printf("        counts: %ld\n", pm_stats->d0i3_cnt);
+			printf("        time:   %fs\n",
+					(double)pm_stats->d0i3_time_us/1000000);
+		}
+
+		if (IS_ENABLED(CONFIG_ISH_PM_AONTASK) && r.aon_valid) {
+			printf("    Aontask status:\n");
+			printf("        last error:   %d\n", r.aon_last_error);
+			printf("        error counts: %d\n", r.aon_error_count);
+		}
+
+		printf("Total time from boot: %fs\n",
+				(double)r.total_time/1000000);
+	}
+
+	return 0;
+}
 
 #define ST_CMD_SIZE ST_FLD_SIZE(ec_params_charge_state, cmd)
 #define ST_PRM_SIZE(SUBCMD) \
@@ -8547,6 +8625,7 @@ const struct command commands[] = {
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
 	{"cec", cmd_cec},
+	{"dsleep", cmd_dsleep},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},
