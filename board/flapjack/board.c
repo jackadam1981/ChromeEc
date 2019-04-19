@@ -94,6 +94,11 @@ const struct rt946x_init_setting *board_rt946x_init_setting(void)
 	return &battery_init_setting;
 }
 
+int max17055_load_batt_model(void)
+{
+	return max17055_load_batt_full_model();
+}
+
 static void board_setup_panel(void)
 {
 	uint8_t channel;
