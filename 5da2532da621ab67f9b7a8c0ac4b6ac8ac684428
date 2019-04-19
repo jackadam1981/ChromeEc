@@ -333,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "aa171ce5_a716e8cb",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1137869
+      },
+      "writtenOn": "2019-04-19T16:31:40Z",
+      "side": 1,
+      "message": "well, the length is encoded in the first byte of the PP but it is likely more correct to do if (res \u003d\u003d EC_SUCCESS) {line 542..546}\n\nThe more correct message should be \"failed to read PP, res\u003d%d\"",
+      "parentUuid": "ba7a9e58_2ab569ec",
+      "range": {
+        "startLine": 539,
+        "startChar": 30,
+        "endLine": 539,
+        "endChar": 33
+      },
+      "revId": "5da2532da621ab67f9b7a8c0ac4b6ac8ac684428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28f060b1_406d5176",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 14
