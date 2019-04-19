@@ -3002,6 +3002,19 @@ void pd_task(void *u)
 			     cc2 == TYPEC_CC_VOLT_RD) ||
 			    (cc1 == TYPEC_CC_VOLT_RA &&
 			     cc2 == TYPEC_CC_VOLT_RA)) {
+				/*
+				 * Exiting from Try.SRC State, the port shall
+				 * transition to Attached.SRC when the SRC.Rd
+				 * state is detected on exactly one of the CC1
+				 * or CC2 pins for at least tTryCCDebounce.
+				 */
+				if ((pd[port].flags & PD_FLAGS_TRY_SRC) &&
+				    ((cc1 == TYPEC_CC_VOLT_RD &&
+				      cc2 == TYPEC_CC_VOLT_RD) ||
+				     (cc1 == TYPEC_CC_VOLT_RA &&
+				      cc2 == TYPEC_CC_VOLT_RA)))
+					break;
+
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port))
