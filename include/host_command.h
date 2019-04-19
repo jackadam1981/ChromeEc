@@ -105,7 +105,7 @@ struct host_packet {
 	 * Note that while this holds an ec_status enum, we are intentionally
 	 * representing this field as a uint16_t, to prevent issues related to
 	 * compiler optimizations affecting the range of values representable
-	 * by this field.
+	 * by this field.platform/ec
 	 */
 	uint16_t driver_result;
 };

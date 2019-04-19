@@ -5723,6 +5723,7 @@ struct ec_params_charger_control {
 #define EC_CMD_BOARD_SPECIFIC_BASE 0x3E00
 #define EC_CMD_BOARD_SPECIFIC_LAST 0x3FFF
 
+
 /*
  * Given the private host command offset, calculate the true private host
  * command value.
