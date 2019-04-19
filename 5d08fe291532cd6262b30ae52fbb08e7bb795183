@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "344f7288_f259f70f",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-19T00:18:48Z",
+      "side": 1,
+      "message": "Thanks for clarification.",
+      "parentUuid": "8ffaa55b_e3fc9d73",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec12abe1_695f7c99",
         "filename": "driver/wpc/p9221.c",
         "patchSetId": 17
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "All interrupts are cleared on line 821 in p9221_clear_interrupts.",
       "parentUuid": "ec12abe1_695f7c99",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 16
+      },
+      "revId": "5d08fe291532cd6262b30ae52fbb08e7bb795183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bf12154_ee817404",
+        "filename": "driver/wpc/p9221.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-19T00:18:48Z",
+      "side": 1,
+      "message": "Thanks for clarification.",
+      "parentUuid": "817f77b9_35a184c9",
       "range": {
         "startLine": 346,
         "startChar": 0,
