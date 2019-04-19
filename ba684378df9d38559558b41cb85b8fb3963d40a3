@@ -16,6 +16,24 @@
       "revId": "ba684378df9d38559558b41cb85b8fb3963d40a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a7a56e_cce2ed18",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-19T16:42:38Z",
+      "side": 1,
+      "message": "If there is nothing to schedule we want wait_us to be -1.",
+      "parentUuid": "f77f1bb9_ba7285be",
+      "revId": "ba684378df9d38559558b41cb85b8fb3963d40a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
