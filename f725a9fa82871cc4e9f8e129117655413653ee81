@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aff8f7f9_a9c7b611",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-19T00:59:47Z",
+      "side": 1,
+      "message": "Since tx_size and rx_size are same and it doesn\u0027t make any difference, however rx_size is right for out_desc.",
+      "range": {
+        "startLine": 158,
+        "startChar": 51,
+        "endLine": 158,
+        "endChar": 58
+      },
+      "revId": "f725a9fa82871cc4e9f8e129117655413653ee81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
