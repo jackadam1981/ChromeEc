@@ -3320,6 +3320,10 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SRC_DISCOVERY:
 			now = get_time();
+#ifdef CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER
+			task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+				       USB_CHG_EVENT_PR_SOURCE, 0);
+#endif
 			if (pd[port].last_state != pd[port].task_state) {
 				caps_count = 0;
 				next_src_cap = now.val;
@@ -3858,6 +3862,10 @@ void pd_task(void *u)
 #endif
 			break;
 		case PD_STATE_SNK_DISCOVERY:
+#ifdef CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER
+			task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+				       USB_CHG_EVENT_PR_SINK, 0);
+#endif
 			/* Wait for source cap expired only if we are enabled */
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_is_enabled(port)) {
