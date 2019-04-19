@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "364f653a_ce2403ec",
+        "filename": "board/bobba/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-19T10:06:26Z",
+      "side": 1,
+      "message": "Checked the spec provided by partner in the issue, the register is 0x43, D-FET status is in bit 0 and off state is 0.",
+      "revId": "4a614000557b42245f60a90afe3a108415d0ceca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
