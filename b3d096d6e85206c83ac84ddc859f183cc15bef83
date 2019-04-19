@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ba1f328_7d03f5d9",
+        "filename": "chip/ish/ish_ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T20:55:37Z",
+      "side": 1,
+      "message": "Include these fields even if d0ix is not enabled. This makes the struct standardized in size regardless of configuration options.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "b3d096d6e85206c83ac84ddc859f183cc15bef83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c578fc_e2cad61b",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T20:55:37Z",
+      "side": 1,
+      "message": "Don\u0027t special case the \"dsleep\" command to ISH. It should be available on all boards, but error if the platform does not support the command.\n\nAlso, this command should be in alphabetical order like the rest.",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 6
+      },
+      "revId": "b3d096d6e85206c83ac84ddc859f183cc15bef83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f87f8f9e_bb70c5e0",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6356,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T20:55:37Z",
+      "side": 1,
+      "message": "Like above, let\u0027s not special case this command.",
+      "range": {
+        "startLine": 6356,
+        "startChar": 0,
+        "endLine": 6356,
+        "endChar": 15
+      },
+      "revId": "b3d096d6e85206c83ac84ddc859f183cc15bef83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8f908d_ef2a72d9",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6435,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T20:55:37Z",
+      "side": 1,
+      "message": "Use IS_ENABLED macro rather than the ifdefs here",
+      "range": {
+        "startLine": 6404,
+        "startChar": 1,
+        "endLine": 6435,
+        "endChar": 6
+      },
+      "revId": "b3d096d6e85206c83ac84ddc859f183cc15bef83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02534ce6_2400e967",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8755,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-19T20:55:37Z",
+      "side": 1,
+      "message": "Needs to be in alphabetical, don\u0027t special case to ISH.",
+      "range": {
+        "startLine": 8753,
+        "startChar": 0,
+        "endLine": 8755,
+        "endChar": 6
+      },
+      "revId": "b3d096d6e85206c83ac84ddc859f183cc15bef83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
