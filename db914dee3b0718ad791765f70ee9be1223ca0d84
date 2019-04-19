@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdd383df_95d760e4",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-19T22:39:49Z",
+      "side": 0,
+      "message": "Only Bit15~Bit0 (more specifically, fourteen bits in low two bytes) are defined.\nShould be 0xffff.",
+      "range": {
+        "startLine": 174,
+        "startChar": 34,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "db914dee3b0718ad791765f70ee9be1223ca0d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
