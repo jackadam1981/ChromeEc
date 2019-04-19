@@ -111,7 +111,7 @@ static inline int tx_fifo_is_ready(struct usb_stream_config const *config)
 }
 
 /* Try to send some bytes to the host */
-int tx_stream_handler(struct usb_stream_config const *config)
+static int tx_stream_handler(struct usb_stream_config const *config)
 {
 	size_t count;
 
@@ -131,11 +131,11 @@ int tx_stream_handler(struct usb_stream_config const *config)
 /* Tx/IN interrupt handler */
 void usb_stream_tx(struct usb_stream_config const *config)
 {
-	/* Wake up the Tx FIFO handler */
-	hook_call_deferred(config->deferred_tx, 0);
-
 	/* clear the Tx/IN interrupts */
 	GR_USB_DIEPINT(config->endpoint) = 0xffffffff;
+
+	/* Wake up the Tx FIFO handler */
+	tx_stream_handler(config);
 }
 
 void usb_stream_reset(struct usb_stream_config const *config)
@@ -161,7 +161,7 @@ void usb_stream_reset(struct usb_stream_config const *config)
 	*config->is_reset = 1;
 
 	/* Flush any queued data */
-	hook_call_deferred(config->deferred_tx, 0);
+	tx_stream_handler(config);
 	hook_call_deferred(config->deferred_rx, 0);
 }
 
@@ -178,7 +178,7 @@ static void usb_written(struct consumer const *consumer, size_t count)
 	struct usb_stream_config const *config =
 		DOWNCAST(consumer, struct usb_stream_config, consumer);
 
-	hook_call_deferred(config->deferred_tx, 0);
+	tx_stream_handler(config);
 }
 
 struct producer_ops const usb_stream_producer_ops = {
