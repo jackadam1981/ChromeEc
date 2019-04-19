@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15ae0c9a_e855d684",
+        "filename": "driver/max695x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1124804
+      },
+      "writtenOn": "2019-04-19T17:19:19Z",
+      "side": 1,
+      "message": "how about using all 4? we can append EC/AP for 2 scans and data for next 2",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "9f59c34e19c58c23bf8206d3f33a29257f2e4c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f237daff_0c61bef0",
+        "filename": "driver/max695x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1124804
+      },
+      "writtenOn": "2019-04-19T17:19:19Z",
+      "side": 1,
+      "message": "how about print all states of SOC?\nS3/S0iX/G3/S5?\nerror if power sequence fails?",
+      "revId": "9f59c34e19c58c23bf8206d3f33a29257f2e4c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
