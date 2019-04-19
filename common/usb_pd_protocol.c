@@ -1684,6 +1684,20 @@ static void pd_set_power_role(int port, int role)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_update_saved_port_flags(port, PD_BBRMFLG_POWER_ROLE, role);
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
+
+#ifdef CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER
+	/*
+	 * For BC1.2 detection that is triggered on power role change events
+	 * instead of VBUS changes, need to set an event to wake up the USB_CHG
+	 * task and indicate the current power role.
+	 */
+	if (role == PD_ROLE_SINK)
+		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+			       USB_CHG_EVENT_PR_SINK, 0);
+	else if (role == PD_ROLE_SOURCE)
+		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+			       USB_CHG_EVENT_PR_SOURCE, 0);
+#endif
 }
 
 static void pd_dr_swap(int port)
