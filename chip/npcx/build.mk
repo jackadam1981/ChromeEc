@@ -17,7 +17,11 @@ CHIP_FAMILY:=npcx5
 endif
 
 # Required chip modules
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o
+=======
+chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o uartn.o sib.o
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 chip-y+=system-$(CHIP_FAMILY).o
 
 # Optional chip modules

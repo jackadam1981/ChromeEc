@@ -17,11 +17,10 @@
 #include "lpc.h"
 #include "lpc_chip.h"
 #include "port80.h"
-#include "pwm.h"
 #include "registers.h"
 #include "system.h"
+#include "sib_chip.h"
 #include "task.h"
-#include "timer.h"
 #include "uart.h"
 #include "util.h"
 #include "system_chip.h"
@@ -39,6 +38,7 @@
 #define PMC_ACPI     PM_CHAN_1
 #define PMC_HOST_CMD PM_CHAN_2
 
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 /* Super-IO index and register definitions */
 #define SIO_OFFSET      0x4E
 #define INDEX_SID       0x20
@@ -57,6 +57,8 @@
 #define LPC_HOST_TRANSACTION_TIMEOUT_US 5
 #endif
 
+=======
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 static struct	host_packet lpc_packet;
 static struct	host_cmd_handler_args host_cmd_args;
 static uint8_t	host_cmd_flags;         /* Flags from host command */
@@ -326,6 +328,7 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 	}
 }
 
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 /*
  * Check host read is not in-progress and no timeout
  */
@@ -395,6 +398,8 @@ uint8_t lpc_sib_read_kbc_reg(uint8_t io_offset)
 	return data_value;
 }
 
+=======
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 void lpc_keyboard_clear_buffer(void)
 {
 	/* Clear OBF flag in host STATUS and HIKMST regs */
@@ -405,7 +410,7 @@ void lpc_keyboard_clear_buffer(void)
 		 * Emulate a host read to clear these two flags and also
 		 * deassert IRQ1
 		 */
-		lpc_sib_read_kbc_reg(0x0);
+		sib_read_kbc_reg(0x0);
 	}
 }
 
@@ -645,86 +650,6 @@ static void lpc_sysjump(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, lpc_sysjump, HOOK_PRIO_DEFAULT);
 
-/* Super-IO read/write function */
-void lpc_sib_write_reg(uint8_t io_offset, uint8_t index_value,
-		uint8_t io_data)
-{
-	/* Disable interrupts */
-	interrupt_disable();
-
-	/* Lock host CFG module */
-	SET_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
-	/* Enable Core access to CFG module */
-	SET_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
-	/* Verify Core read/write to host modules is not in progress */
-	lpc_sib_wait_host_read_done();
-	lpc_sib_wait_host_write_done();
-
-	/* Specify the io_offset A0 = 0. the index register is accessed */
-	NPCX_IHIOA = io_offset;
-	/* Write the data. This starts the write access to the host module */
-	NPCX_IHD = index_value;
-	/* Wait while Core write operation is in progress */
-	lpc_sib_wait_host_write_done();
-
-	/* Specify the io_offset A0 = 1. the data register is accessed */
-	NPCX_IHIOA = io_offset+1;
-	/* Write the data. This starts the write access to the host module */
-	NPCX_IHD = io_data;
-	/* Wait while Core write operation is in progress */
-	lpc_sib_wait_host_write_done();
-
-	/* Disable Core access to CFG module */
-	CLEAR_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
-	/* unlock host CFG  module */
-	CLEAR_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
-
-	/* Enable interrupts */
-	interrupt_enable();
-}
-
-uint8_t lpc_sib_read_reg(uint8_t io_offset, uint8_t index_value)
-{
-	uint8_t data_value;
-
-	/* Disable interrupts */
-	interrupt_disable();
-
-	/* Lock host CFG module */
-	SET_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
-	/* Enable Core access to CFG module */
-	SET_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
-	/* Verify Core read/write to host modules is not in progress */
-	lpc_sib_wait_host_read_done();
-	lpc_sib_wait_host_write_done();
-
-	/* Specify the io_offset A0 = 0. the index register is accessed */
-	NPCX_IHIOA = io_offset;
-	/* Write the data. This starts the write access to the host module */
-	NPCX_IHD = index_value;
-	/* Wait while Core write operation is in progress */
-	lpc_sib_wait_host_write_done();
-
-	/* Specify the io_offset A0 = 1. the data register is accessed */
-	NPCX_IHIOA = io_offset+1;
-	/* Start a Core read from host module */
-	SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD);
-	/* Wait while Core read operation is in progress */
-	lpc_sib_wait_host_read_done();
-	/* Read the data */
-	data_value = NPCX_IHD;
-
-	/* Disable Core access to CFG module */
-	CLEAR_BIT(NPCX_CRSMAE, NPCX_CRSMAE_CFGAE);
-	/* unlock host CFG  module */
-	CLEAR_BIT(NPCX_LKSIOHA, NPCX_LKSIOHA_LKCFG);
-
-	/* Enable interrupts */
-	interrupt_enable();
-
-	return data_value;
-}
-
 /* For LPC host register initial via SIB module */
 void host_register_init(void)
 {
@@ -732,29 +657,37 @@ void host_register_init(void)
 	SET_BIT(NPCX_SIBCTRL, NPCX_SIBCTRL_CSAE);
 
 	/* enable ACPI*/
-	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x11);
-	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	sib_write_reg(SIO_OFFSET, 0x07, 0x11);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	/* enable KBC*/
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x06);
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+=======
+#ifdef HAS_TASK_KEYPROTO
+	sib_write_reg(SIO_OFFSET, 0x07, 0x06);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+#endif
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 
 	/* Setting PMC2 */
 	/* LDN register = 0x12(PMC2) */
-	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x12);
+	sib_write_reg(SIO_OFFSET, 0x07, 0x12);
 	/* CMD port is 0x200 */
-	lpc_sib_write_reg(SIO_OFFSET, 0x60, 0x02);
-	lpc_sib_write_reg(SIO_OFFSET, 0x61, 0x00);
+	sib_write_reg(SIO_OFFSET, 0x60, 0x02);
+	sib_write_reg(SIO_OFFSET, 0x61, 0x00);
 	/* Data port is 0x204 */
-	lpc_sib_write_reg(SIO_OFFSET, 0x62, 0x02);
-	lpc_sib_write_reg(SIO_OFFSET, 0x63, 0x04);
+	sib_write_reg(SIO_OFFSET, 0x62, 0x02);
+	sib_write_reg(SIO_OFFSET, 0x63, 0x04);
 	/* enable PMC2 */
-	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	/* Setting SHM */
 	/* LDN register = 0x0F(SHM) */
-	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x0F);
+	sib_write_reg(SIO_OFFSET, 0x07, 0x0F);
 	/* WIN1&2 mapping to IO */
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 	lpc_sib_write_reg(SIO_OFFSET, 0xF1,
 			lpc_sib_read_reg(SIO_OFFSET, 0xF1) | 0x30);
 	/* Host Command on the IO:0x0800 */
@@ -765,11 +698,18 @@ void host_register_init(void)
 	/* WIN1 as Host Command on the IO:0x0800 */
 	lpc_sib_write_reg(SIO_OFFSET, 0xFB, 0x00);
 	lpc_sib_write_reg(SIO_OFFSET, 0xFA, 0x00);
+=======
+	sib_write_reg(SIO_OFFSET, 0xF1,
+			sib_read_reg(SIO_OFFSET, 0xF1) | 0x30);
+	/* WIN1 as Host Command on the IO:0x0800 */
+	sib_write_reg(SIO_OFFSET, 0xF5, 0x08);
+	sib_write_reg(SIO_OFFSET, 0xF4, 0x00);
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 	/* WIN2 as MEMMAP on the IO:0x900 */
-	lpc_sib_write_reg(SIO_OFFSET, 0xF9, 0x09);
-	lpc_sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
+	sib_write_reg(SIO_OFFSET, 0xF9, 0x09);
+	sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
 	/* enable SHM */
-	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
 	CPRINTS("Host settings are done!");
 

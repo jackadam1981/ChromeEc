@@ -63,6 +63,12 @@
 #define DEBUG_CLK                        0
 #define DEBUG_LPC                        0
 #define DEBUG_ESPI                       0
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
+=======
+#define DEBUG_WOV                        0
+#define DEBUG_CEC                        0
+#define DEBUG_SIB                        0
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 
 /* Modules Map */
 #define NPCX_ESPI_BASE_ADDR              0x4000A000

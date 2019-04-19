@@ -28,7 +28,12 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
 #define CONFIG_PWM_KBLIGHT
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 #define CONFIG_BOARD_VERSION
+=======
+#define CONFIG_BOARD_VERSION_GPIO
+#define CONFIG_ENABLE_JTAG_SELECTION
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 
 /* Optional features for test commands */
 #define CONFIG_CMD_TASKREADY

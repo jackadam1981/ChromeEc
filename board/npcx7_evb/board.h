@@ -19,7 +19,12 @@
 #define CONFIG_ESPI_VW_SIGNALS /* Use VW signals instead of GPIOs */
 
 /* Optional features */
+<<<<<<< HEAD   (4d450a coral:enable battery cutoff when shutdown_on_critical_batter)
 #define CONFIG_BOARD_VERSION
+=======
+#define CONFIG_ENABLE_JTAG_SELECTION
+#define CONFIG_BOARD_VERSION_GPIO
+>>>>>>> CHANGE (7a87d4 npcx: disable the selection of JTAG0 signals due to strap)
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_I2C_MASTER
 #define CONFIG_KEYBOARD_BOARD_CONFIG
