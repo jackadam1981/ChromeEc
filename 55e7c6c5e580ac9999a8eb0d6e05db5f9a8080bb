@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e62b62d_04cc2854",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "Please separate this CL . One is for MAX17055 support full model ZCV table. The other one is add battery ZCV table for flapjack.",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710315c4_08bf9d3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "Make sure in 80 chars",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56cf7806_32cd7e96",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "Could you use the precise battery model name?\n\nAlso please modify other battery model names",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74186493_2c3e1799",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08828b9c_5a0e6b10",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "Please don\u0027t modify this function. \n\nAdd another function eg. max17055_load_batt_full_model()",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02916bf8_b11d700d",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "Why ?",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5b3864_b3340d92",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-20T02:58:21Z",
+      "side": 1,
+      "message": "Change to pointer to save EC space for other board which does not use full model ZCV table",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
