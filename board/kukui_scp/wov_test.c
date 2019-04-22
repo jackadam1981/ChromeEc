@@ -58,12 +58,17 @@ static size_t wov_fifo_level(void)
 void wov_fifo_interrupt_handler(void)
 {
 	static size_t count = 0;
+	uint32_t fifo_status = SCP_VIF_FIFO_STATUS;
 
 	if (++count % 100000 == 0)
 		DBG("%s", __func__);
 
 	/* Read to clear */
 	SCP_VIF_FIFO_IRQ_STATUS;
+
+	if (fifo_status & VIF_FIFO_VALID)
+		SCP_VIF_FIFO_DATA;
+	task_clear_pending_irq(SCP_IRQ_MAD_FIFO);
 }
 DECLARE_IRQ(SCP_IRQ_MAD_FIFO, wov_fifo_interrupt_handler, 2);
 
