@@ -22,6 +22,30 @@
       "revId": "129de5a34b36c0643639286694fa6c468df4df61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa19c2a_1033af48",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T20:39:36Z",
+      "side": 1,
+      "message": "int instruction must take a literal. Option B would be to jump to an offset in a table of int instructions, but that\u0027s also a little yucky.",
+      "parentUuid": "ff550aba_afa9e727",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 25
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
