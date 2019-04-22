@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68005302_8c96fee0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T22:12:45Z",
+      "side": 1,
+      "message": "isn\u0027t the code detecting Rd on both pins here instead of only one pins like the comment is suggesting?",
+      "range": {
+        "startLine": 3012,
+        "startChar": 10,
+        "endLine": 3013,
+        "endChar": 33
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
