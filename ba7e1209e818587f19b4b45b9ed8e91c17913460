@@ -70,6 +70,30 @@
       "revId": "ba7e1209e818587f19b4b45b9ed8e91c17913460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f6abaa_7491ce71",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-22T16:17:06Z",
+      "side": 1,
+      "message": "Do you mean PANEL_KUKUI_INNOLUX ? \n\nor the panel name of PANEL_INX_OTA7290D10P ?  PANEL_INX_OTA7290D10P and PANEL_AUO_NT51021D8P are the 2nd source panel introduced by HQ to flapjack.  Actually the vendors of the two panels don\u0027t name them. We only have the vendor name and IC name.",
+      "parentUuid": "5ac7e382_cb6fc167",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 22
+      },
+      "revId": "ba7e1209e818587f19b4b45b9ed8e91c17913460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
