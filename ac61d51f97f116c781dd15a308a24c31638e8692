@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e91fe1b_f3d8af0d",
+        "filename": "extra/lightbar/simulation.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T15:59:55Z",
+      "side": 1,
+      "message": "That is what is was called before and I don\u0027t want developers to be confused between the old usage, TASK_EVENT_CUSTOM(BIT(4)), and the new usage: TASK_EVENT_CUSTOM_BIT(4).\n\nRenaming also ensures that I didn\u0027t miss touching any uses of TASK_EVENT_CUSTOM in this CL since it would not build",
+      "parentUuid": "9cc80324_9c210692",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 29
+      },
+      "revId": "ac61d51f97f116c781dd15a308a24c31638e8692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f878fbf9_23b9f490",
         "filename": "include/usb_charge.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "ac61d51f97f116c781dd15a308a24c31638e8692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e318cf_a580ece9",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T15:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f878fbf9_23b9f490",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "ac61d51f97f116c781dd15a308a24c31638e8692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
