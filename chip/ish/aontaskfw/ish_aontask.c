@@ -78,6 +78,8 @@
 
 static void handle_reset(int pm_state);
 
+extern struct ish_aon_share aon_share;
+
 /* ISR for PMU wakeup interrupt */
 static void pmu_wakeup_isr(void)
 {
@@ -102,13 +104,19 @@ static void reset_prep_isr(void)
 	PMU_RST_PREP = PMU_RST_PREP_INT_MASK;
 
 	/**
+	 * just record the status here, rest reset flow will be handled
+	 * in main loop.
+	 */
+	aon_share.pm_state = ISH_PM_STATE_RESET_PREP;
+
+	/**
 	 * Indicate completion of servicing the interrupt to IOAPIC first
 	 * then indicate completion of servicing the interrupt to LAPIC
 	 */
 	REG32(IOAPIC_EOI_REG) = ISH_RESET_PREP_VEC;
 	REG32(LAPIC_EOI_REG) = 0x0;
 
-	handle_reset(ISH_PM_STATE_RESET_PREP);
+	__asm__ volatile ("iret;");
 
 	__builtin_unreachable();
 }
@@ -631,11 +639,21 @@ void ish_aon_main(void)
 			break;
 		}
 
+		/* ish waked up */
+
 		/* check if D3 rising status */
 		if (PMU_D3_STATUS &
 		    (PMU_D3_BIT_RISING_EDGE_STATUS | PMU_D3_BIT_SET)) {
 			aon_share.pm_state = ISH_PM_STATE_D3;
 			handle_d3();
+		}
+
+		/**
+		 * check if need process reset_prep reset flow
+		 * (reset_prep interrupt triggered)
+		 */
+		if (aon_share.pm_state == ISH_PM_STATE_RESET_PREP) {
+			handle_reset(ISH_PM_STATE_RESET_PREP);
 		}
 
 		/* restore main FW's IDT and switch back to main FW */
