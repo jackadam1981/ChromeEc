@@ -101,6 +101,8 @@ static void reset_prep_isr(void)
 	/* mask reset prep avail interrupt */
 	PMU_RST_PREP = PMU_RST_PREP_INT_MASK;
 
+	handle_reset(ISH_PM_STATE_RESET_PREP);
+
 	/**
 	 * Indicate completion of servicing the interrupt to IOAPIC first
 	 * then indicate completion of servicing the interrupt to LAPIC
@@ -108,7 +110,7 @@ static void reset_prep_isr(void)
 	REG32(IOAPIC_EOI_REG) = ISH_RESET_PREP_VEC;
 	REG32(LAPIC_EOI_REG) = 0x0;
 
-	handle_reset(ISH_PM_STATE_RESET_PREP);
+	__asm__ volatile ("iret;");
 
 	__builtin_unreachable();
 }
