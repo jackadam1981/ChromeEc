@@ -93,6 +93,30 @@
       "revId": "129de5a34b36c0643639286694fa6c468df4df61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63dafe8d_7d4e846c",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T20:40:15Z",
+      "side": 1,
+      "message": "s/literal/immediate. I was thinking too much in terms of programming languages :P",
+      "parentUuid": "2fa19c2a_1033af48",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 25
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
