@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "28101a55_e75a9749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:47:32Z",
+      "side": 1,
+      "message": "According to test, the resistor in RC is not an NCT type. Frequency doesn\u0027t drift.",
+      "parentUuid": "9e149ad3_4f4ce075",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "692dbeab_6f210cbe",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fa3f4a_4156fc09",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "692dbeab_6f210cbe",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "759b7a82_753b6be2",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:47:32Z",
+      "side": 1,
+      "message": "Since the search space is small enough, switch to linear search. And frequency meter takes less than 1 ms to get stable count. So fast enough.",
+      "parentUuid": "58e7f044_f93368e2",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2712fc8c_74a5d388",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12bf16a_72e452dd",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2712fc8c_74a5d388",
+      "revId": "bae61c07926db9e683495fe5774a5702c5ab264b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
