@@ -72,7 +72,7 @@ int rx_stream_handler(struct usb_stream_config const *config)
 	rx_left = rx_in_fifo - rx_handled;
 
 	/* If we have some, try to shove them into the queue */
-	if (rx_left) {
+	if (rx_left && rx_left <= queue_space(config->producer.queue)) {
 		size_t added = QUEUE_ADD_UNITS(
 			config->producer.queue, config->rx_ram + rx_handled,
 			rx_left);
@@ -88,6 +88,8 @@ int rx_stream_handler(struct usb_stream_config const *config)
 	if (!rx_left) {
 		rx_handled = 0;
 		usb_enable_rx(config, config->rx_size);
+	} else {
+		hook_call_deferred(config->deferred_rx, 0);
 	}
 	return rx_handled;
 }
