@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54cd4042_efde832c",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2019-04-22T23:15:54Z",
+      "side": 0,
+      "message": "(Meant to mention this earlier:) I don\u0027t know any reason why these were redirecting stderr in the first place. So I suppose removing the redirection is fine?",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "1e243c3db465517d69bc2dff50ea889bf5684197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
