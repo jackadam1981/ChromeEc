@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2a69482_f76ace4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T22:19:00Z",
+      "side": 1,
+      "message": "we should be attaching these to bug if possible",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab0c02b4_9944ee13",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T22:19:00Z",
+      "side": 1,
+      "message": "why the while loop? Did it not work without it?\n\nAlso, should we bother clearing HPET_INTR_CLEAR at the beginning of the interrupt?",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
