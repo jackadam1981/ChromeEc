@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68966371_73cf48b3",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "nit: remove spaces inside parens",
+      "range": {
+        "startLine": 592,
+        "startChar": 23,
+        "endLine": 592,
+        "endChar": 27
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22265bf_257c81f4",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "Rather than writing two procedures, make a single set_dsleep with a single parameter of the value.",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 1
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5809fe_c1c1b95f",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "If no arguments are provided, it should show the current status, rather than do nothing?",
+      "range": {
+        "startLine": 781,
+        "startChar": 1,
+        "endLine": 781,
+        "endChar": 16
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81b9153_61b73c9d",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "If you make these into a single procedure, you can do set_dsleep(v)",
+      "range": {
+        "startLine": 783,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 21
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bad84e1_18094cc8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "Breaking string literal after \\n may make this easier to read",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 796,
+        "endChar": 43
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ef290d_378992f8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5728,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "value?",
+      "range": {
+        "startLine": 5728,
+        "startChar": 9,
+        "endLine": 5728,
+        "endChar": 12
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572548fe_d1b09f7a",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6382,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-22T15:38:36Z",
+      "side": 1,
+      "message": "SECOND?\n\nAlso, add spacing around operators.",
+      "range": {
+        "startLine": 6382,
+        "startChar": 35,
+        "endLine": 6382,
+        "endChar": 42
+      },
+      "revId": "1d3812bcb6089ddfaeefeffa4f0aaef591209f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
