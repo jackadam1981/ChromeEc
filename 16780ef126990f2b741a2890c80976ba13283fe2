@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95dca82b_34f7809f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-22T14:22:24Z",
+      "side": 1,
+      "message": "Not correct. \nYou changed all of the four battery parameters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "16780ef126990f2b741a2890c80976ba13283fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1fe829d_eea6c6bc",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-22T14:22:24Z",
+      "side": 1,
+      "message": "indent. \n\nAlso correct the below indent error",
+      "range": {
+        "startLine": 168,
+        "startChar": 13,
+        "endLine": 168,
+        "endChar": 16
+      },
+      "revId": "16780ef126990f2b741a2890c80976ba13283fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
