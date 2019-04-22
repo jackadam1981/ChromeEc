@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae4451ef_8f9deacb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:37:49Z",
+      "side": 1,
+      "message": "Can you stack these two CLs? That\u0027s simpler.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "f94fe9e7ec012af51d56854b0faeb5c4d9f6161e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa04c961_f4aaf4ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:37:49Z",
+      "side": 1,
+      "message": "Can you elaborate?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "f94fe9e7ec012af51d56854b0faeb5c4d9f6161e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba634d9_b2ff5a27",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:37:49Z",
+      "side": 1,
+      "message": "+80",
+      "range": {
+        "startLine": 172,
+        "startChar": 37,
+        "endLine": 172,
+        "endChar": 56
+      },
+      "revId": "f94fe9e7ec012af51d56854b0faeb5c4d9f6161e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c712ee_b196c821",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:37:49Z",
+      "side": 1,
+      "message": "How does this work? max17055_load_batt_model is defined in max17055.c.",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 28
+      },
+      "revId": "f94fe9e7ec012af51d56854b0faeb5c4d9f6161e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
