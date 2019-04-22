@@ -45,6 +45,30 @@
       "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "958c10d9_6e1321c3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-22T23:17:18Z",
+      "side": 1,
+      "message": "\u003e\u003e why the while loop? Did it not work without it?\nYes, I\u0027ve seen sometimes just one clear wasn\u0027t enough especially for timer 0, since CPU is relatively too fast.\n\n\u003e\u003e Also, should we bother clearing HPET_INTR_CLEAR at the beginning of the interrupt?\nHm.. I don\u0027t think there\u0027ll be any issue here but yeah, we can remove the clearing at the beginning.",
+      "parentUuid": "ab0c02b4_9944ee13",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
