@@ -78,6 +78,8 @@
 
 static void handle_reset(int pm_state);
 
+extern struct ish_aon_share aon_share;
+
 /* ISR for PMU wakeup interrupt */
 static void pmu_wakeup_isr(void)
 {
@@ -102,13 +104,19 @@ static void reset_prep_isr(void)
 	PMU_RST_PREP = PMU_RST_PREP_INT_MASK;
 
 	/**
+	 * just record the status here, rest reset flow will be handled
+	 * in main loop.
+	 */
+	aon_share.pm_state = ISH_PM_STATE_RESET_PREP;
+
+	/**
 	 * Indicate completion of servicing the interrupt to IOAPIC first
 	 * then indicate completion of servicing the interrupt to LAPIC
 	 */
 	REG32(IOAPIC_EOI_REG) = ISH_RESET_PREP_VEC;
 	REG32(LAPIC_EOI_REG) = 0x0;
 
-	handle_reset(ISH_PM_STATE_RESET_PREP);
+	__asm__ volatile ("iret;");
 
 	__builtin_unreachable();
 }
@@ -480,7 +488,7 @@ static void sram_power(int on)
 	}
 }
 
-static void handle_d0i2(void)
+static int enter_d0i2(void)
 {
 	/* set main SRAM into retention mode*/
 	PMU_LDO_CTRL = PMU_LDO_ENABLE_BIT
@@ -489,8 +497,11 @@ static void handle_d0i2(void)
 	/* delay some cycles before halt */
 	delay(SRAM_RETENTION_CYCLES_DELAY);
 
-	ish_mia_halt();
-	/* wakeup from PMU interrupt */
+	return AON_SUCCESS;
+}
+
+static void exit_d0i2(void)
+{
 
 	/* set main SRAM intto normal mode */
 	PMU_LDO_CTRL = PMU_LDO_ENABLE_BIT;
@@ -503,7 +514,7 @@ static void handle_d0i2(void)
 		continue;
 }
 
-static void handle_d0i3(void)
+static int enter_d0i3(void)
 {
 	int ret;
 
@@ -512,13 +523,17 @@ static void handle_d0i3(void)
 
 	/* if store main FW failed, then switch back to main FW */
 	if (ret != AON_SUCCESS)
-		return;
+		return ret;
 
 	/* power off main SRAM */
 	sram_power(0);
 
-	ish_mia_halt();
-	/* wakeup from PMU interrupt */
+	return AON_SUCCESS;
+}
+
+static void exit_d0i3(void)
+{
+	int ret;
 
 	/* power on main SRAM */
 	sram_power(1);
@@ -532,12 +547,16 @@ static void handle_d0i3(void)
 	}
 }
 
+__attribute__ ((noreturn))
 static void handle_d3(void)
 {
 	/* handle D3 */
 	handle_reset(ISH_PM_STATE_RESET);
+
+	__builtin_unreachable();
 }
 
+__attribute__ ((noreturn))
 static void handle_reset(int pm_state)
 {
 	/* disable CSME CSR irq */
@@ -567,16 +586,18 @@ static void handle_reset(int pm_state)
 	__builtin_unreachable();
 }
 
-static void handle_unknown_state(void)
+static int handle_unknown_state(void)
 {
 	aon_share.last_error = AON_ERROR_NOT_SUPPORT_POWER_MODE;
 	aon_share.error_count++;
 
 	/* switch back to main FW */
+	return AON_ERROR_NOT_SUPPORT_POWER_MODE;
 }
 
 void ish_aon_main(void)
 {
+	int ret = AON_SUCCESS;
 
 	/* set PMU wakeup interrupt gate using LDT code segment selector(0x4) */
 	aon_idt[0].dword_lo = GEN_IDT_DESC_LO(&pmu_wakeup_isr, 0x4,
@@ -611,31 +632,58 @@ void ish_aon_main(void)
 				);
 
 		aon_share.last_error = AON_SUCCESS;
+		ret = AON_SUCCESS;
 
 		switch (aon_share.pm_state) {
 		case ISH_PM_STATE_D0I2:
-			handle_d0i2();
+			ret = enter_d0i2();
 			break;
 		case ISH_PM_STATE_D0I3:
-			handle_d0i3();
+			ret = enter_d0i3();
 			break;
 		case ISH_PM_STATE_D3:
 			handle_d3();
+			/* no return here */
 			break;
 		case ISH_PM_STATE_RESET:
 		case ISH_PM_STATE_RESET_PREP:
 			handle_reset(aon_share.pm_state);
+			/* no return here */
 			break;
 		default:
-			handle_unknown_state();
+			ret = handle_unknown_state();
 			break;
 		}
 
-		/* check if D3 rising status */
-		if (PMU_D3_STATUS &
-		    (PMU_D3_BIT_RISING_EDGE_STATUS | PMU_D3_BIT_SET)) {
-			aon_share.pm_state = ISH_PM_STATE_D3;
-			handle_d3();
+		if (ret == AON_SUCCESS) {
+			/* halt ish and waiting interrupt */
+			ish_mia_halt();
+			/* wakeup from PMU interrupt or reset_prep interrupt */
+
+			/* check if D3 rising status */
+			if (PMU_D3_STATUS &
+			    (PMU_D3_BIT_RISING_EDGE_STATUS | PMU_D3_BIT_SET)) {
+				aon_share.pm_state = ISH_PM_STATE_D3;
+				handle_d3();
+				/* no return here */
+			}
+
+			/**
+			 * check if need process reset_prep reset flow
+			 * (reset_prep interrupt triggered)
+			 */
+			if (aon_share.pm_state == ISH_PM_STATE_RESET_PREP) {
+				handle_reset(ISH_PM_STATE_RESET_PREP);
+				/* no return here */
+			}
+
+			if (aon_share.pm_state == ISH_PM_STATE_D0I2) {
+				exit_d0i2();
+			}
+
+			if (aon_share.pm_state == ISH_PM_STATE_D0I3) {
+				exit_d0i3();
+			}
 		}
 
 		/* restore main FW's IDT and switch back to main FW */
