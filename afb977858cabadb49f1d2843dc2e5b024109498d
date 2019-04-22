@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d7e18cd_60bfd7e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-22T14:20:39Z",
+      "side": 1,
+      "message": "Please make sure this CL is not depend on other unmerged CL",
+      "revId": "afb977858cabadb49f1d2843dc2e5b024109498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a9e884_dc8b29a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-22T14:20:39Z",
+      "side": 1,
+      "message": "It\u0027s not for flapjack only. Please remove it.",
+      "revId": "afb977858cabadb49f1d2843dc2e5b024109498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325e2b21_81c95351",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-22T14:20:39Z",
+      "side": 1,
+      "message": "Please use more correct description for this CL",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "afb977858cabadb49f1d2843dc2e5b024109498d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
