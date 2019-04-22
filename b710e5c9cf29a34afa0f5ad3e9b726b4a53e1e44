@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d84beef8_46874867",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-22T08:51:19Z",
+      "side": 1,
+      "message": "f(div, cali) \u003d k1 * (div + k2) / (k3 / (1 + k4 * (cali - k4))) * C\n\nk1 * (div + k2) * (1 + k4 * (cali - k4)) / k3 * C\n\nSo the assumption here is that k1*div \u003e\u003e (1+k4*(cali-k4))?\n\nAlso, where does that formula come from?",
+      "revId": "b710e5c9cf29a34afa0f5ad3e9b726b4a53e1e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c55155_cf70fbc6",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-22T08:51:19Z",
+      "side": 1,
+      "message": "nit: desired",
+      "range": {
+        "startLine": 197,
+        "startChar": 62,
+        "endLine": 197,
+        "endChar": 68
+      },
+      "revId": "b710e5c9cf29a34afa0f5ad3e9b726b4a53e1e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1bc44a1_3a146b0e",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-22T08:51:19Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 56
+      },
+      "revId": "b710e5c9cf29a34afa0f5ad3e9b726b4a53e1e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f289fc28_4fb50c56",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-22T08:51:19Z",
+      "side": 1,
+      "message": "This is now dead code, might as well return 0.",
+      "revId": "b710e5c9cf29a34afa0f5ad3e9b726b4a53e1e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
