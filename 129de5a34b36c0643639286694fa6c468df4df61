@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75ec8c6d_55d78208",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-22T21:44:52Z",
+      "side": 1,
+      "message": "We are calling irq routine and every routine has EOI to both LAPIC and IOAPIC. Unlike using \"ICR\", using \"int N\" with EOI to both LAPIC and IOAPIC doesn\u0027t make any problem. That\u0027s why I mentioned like \"I\u0027m running test with int N. Let\u0027s see. I hope extra EOI to IOAPIC doesn\u0027t affect to the result.\" before, when I try \"int N\" instruction.\n\nI know what you expect but ,due to current implementation about DECLARE_IRQ(), every ISR routine already includes EOI to both LAPIC and IOAPIC. \n\nFor short, we need to re-define DECLARE_IRQ and add some more field to handle each case like \"EOI to LAPIC only\" and \"EOI to both LAPIC and IOAPIC\". But if we want to redefine the macro to handle things properly then it\u0027s better not to use \"ICR\" \"int N\" at all.",
+      "parentUuid": "8f049bd8_08884a63",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 15
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff550aba_afa9e727",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 14
@@ -117,6 +141,30 @@
       "revId": "129de5a34b36c0643639286694fa6c468df4df61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3692e6ef_f3f4ba8f",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-22T21:44:52Z",
+      "side": 1,
+      "message": "Jett,\n\nwe cannot skip EOI to IOAPIC unless we re-define DECLARE_IRQ() and if we want to redefine the macro then I prefer not to use \"ICR\" or \"int N\" instruction.",
+      "parentUuid": "63dafe8d_7d4e846c",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 25
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
