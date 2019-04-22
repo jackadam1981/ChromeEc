@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8f049bd8_08884a63",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T20:40:14Z",
+      "side": 1,
+      "message": "we still need to set EOI on the LAPIC for this",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 15
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff550aba_afa9e727",
         "filename": "core/minute-ia/task.c",
         "patchSetId": 14
@@ -36,6 +59,30 @@
       "writtenOn": "2019-04-22T20:39:36Z",
       "side": 1,
       "message": "int instruction must take a literal. Option B would be to jump to an offset in a table of int instructions, but that\u0027s also a little yucky.",
+      "parentUuid": "ff550aba_afa9e727",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 25
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c48c5381_b10b1ab2",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T20:40:14Z",
+      "side": 1,
+      "message": "Ah, I get it now. We need to add a comment saying we are doing this to skip the common DECLARE_IRQ code that will automatically acknowledge the vector on the IOAIC",
       "parentUuid": "ff550aba_afa9e727",
       "range": {
         "startLine": 443,
