@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "048b9349_ce9cdddf",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-04-22T06:21:04Z",
+      "side": 1,
+      "message": "\u003e Could you use the precise battery model name?\n\u003e \n\u003e Also please modify other battery model names\n\nCan I keep this name unchanged?\n1. The naming method reference to the board of the scarlet\n2. BATTERY_C19_SUNWODA and BATTERY_C18_ATL are defined in board.h(flapjack), which are No confusion",
+      "parentUuid": "56cf7806_32cd7e96",
+      "revId": "55e7c6c5e580ac9999a8eb0d6e05db5f9a8080bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74186493_2c3e1799",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 1
