@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c4d5e3b_9d629a5e",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:41:49Z",
+      "side": 1,
+      "message": "Don\u0027t need delay after update osc configuration.",
+      "parentUuid": "5a737857_ee64877b",
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef51d05b_1e525e46",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee0bec2_9f3a9c0c",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef51d05b_1e525e46",
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c834de76_39148dd8",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8438edcf_e175ba89",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afaff642_9c6fd0ac",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c710f62_1f958729",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2019-04-22T08:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afaff642_9c6fd0ac",
+      "revId": "09ae1319f3ccf324568e9c708e6fa0ee0b816fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
