@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac87117e_701b6f28",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:35:46Z",
+      "side": 1,
+      "message": "Please fix the column and length.",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 390,
+        "endChar": 29
+      },
+      "revId": "fe1ac56d3ab242edf11663d379079310766803c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a3f009_41345029",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:35:46Z",
+      "side": 1,
+      "message": "Can you name these?",
+      "range": {
+        "startLine": 427,
+        "startChar": 20,
+        "endLine": 427,
+        "endChar": 30
+      },
+      "revId": "fe1ac56d3ab242edf11663d379079310766803c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ef874c_0bf46c4e",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:35:46Z",
+      "side": 1,
+      "message": "Please make a sub-routine.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 26
+      },
+      "revId": "fe1ac56d3ab242edf11663d379079310766803c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe3fe6b_2c986c3e",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:35:46Z",
+      "side": 1,
+      "message": "Why no error check?",
+      "range": {
+        "startLine": 438,
+        "startChar": 1,
+        "endLine": 438,
+        "endChar": 24
+      },
+      "revId": "fe1ac56d3ab242edf11663d379079310766803c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d4f1570_81fcc8d1",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:35:46Z",
+      "side": 1,
+      "message": "This is probably better to be a sub-routine, too.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 26
+      },
+      "revId": "fe1ac56d3ab242edf11663d379079310766803c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5abab0a_b70a6637",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-22T19:35:46Z",
+      "side": 1,
+      "message": "Are we expecting run-time switch between short and full model? If not, we should just use CONFIG_ macros.",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 47
+      },
+      "revId": "fe1ac56d3ab242edf11663d379079310766803c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
