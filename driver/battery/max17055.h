@@ -10,7 +10,6 @@
 
 #define MAX17055_ADDR               0x6c
 #define MAX17055_DEVICE_ID          0x4010
-#define MAX17055_OCV_TABLE_SIZE     48
 
 #define REG_STATUS                  0x00
 #define REG_VALRTTH                 0x01
@@ -23,7 +22,6 @@
 #define REG_VOLTAGE                 0x09
 #define REG_CURRENT                 0x0a
 #define REG_AVERAGE_CURRENT         0x0b
-#define REG_MIXCAP                  0x0f
 #define REG_FULL_CHARGE_CAPACITY    0x10
 #define REG_TIME_TO_EMPTY           0x11
 #define REG_QR_TABLE00              0x12
@@ -39,7 +37,6 @@
 #define REG_TIME_TO_FULL            0x20
 #define REG_DEVICE_NAME             0x21
 #define REG_QR_TABLE10              0x22
-#define REG_FULLCAPNOM              0x23
 #define REG_LEARNCFG                0x28
 #define REG_QR_TABLE20              0x32
 #define REG_RCOMP0                  0x38
@@ -50,29 +47,24 @@
 #define REG_QR_TABLE30              0x42
 #define REG_DQACC                   0x45
 #define REG_DPACC                   0x46
-#define REG_VFSOC0                  0x48
-#define REG_LOCK1                   0x62
-#define REG_LOCK2                   0x63
-#define REG_OCV_TABLE_START         0x80
 #define REG_STATUS2                 0xb0
 #define REG_IALRTTH                 0xb4
 #define REG_HIBCFG                  0xba
 #define REG_CONFIG2                 0xbb
 #define REG_TIMERH                  0xbe
 #define REG_MODELCFG                0xdb
-#define REG_VFSOC                   0xff
 
 /* Status reg (0x00) flags */
-#define STATUS_POR                  BIT(1)
-#define STATUS_IMN                  BIT(2)
-#define STATUS_BST                  BIT(3)
-#define STATUS_IMX                  BIT(6)
-#define STATUS_VMN                  BIT(8)
-#define STATUS_TMN                  BIT(9)
-#define STATUS_SMN                  BIT(10)
-#define STATUS_VMX                  BIT(12)
-#define STATUS_TMX                  BIT(13)
-#define STATUS_SMX                  BIT(14)
+#define STATUS_POR                  (1 << 1)
+#define STATUS_IMN                  (1 << 2)
+#define STATUS_BST                  (1 << 3)
+#define STATUS_IMX                  (1 << 6)
+#define STATUS_VMN                  (1 << 8)
+#define STATUS_TMN                  (1 << 9)
+#define STATUS_SMN                  (1 << 10)
+#define STATUS_VMX                  (1 << 12)
+#define STATUS_TMX                  (1 << 13)
+#define STATUS_SMX                  (1 << 14)
 #define STATUS_ALL_ALRT                                                        \
 	(STATUS_IMN | STATUS_IMX | STATUS_VMN | STATUS_VMX | STATUS_TMN |      \
 	 STATUS_TMX | STATUS_SMN | STATUS_SMX)
@@ -84,20 +76,17 @@
 #define IALRT_DISABLE               0x7f80
 
 /* Config reg (0x1d) flags */
-#define CONF_AEN                    BIT(2)
-#define CONF_IS                     BIT(11)
-#define CONF_VS                     BIT(12)
-#define CONF_TS                     BIT(13)
-#define CONF_SS                     BIT(14)
-#define CONF_TSEL                   BIT(15)
+#define CONF_AEN                    (1 << 2)
+#define CONF_IS                     (1 << 11)
+#define CONF_VS                     (1 << 12)
+#define CONF_TS                     (1 << 13)
+#define CONF_SS                     (1 << 14)
+#define CONF_TSEL                   (1 << 15)
 #define CONF_ALL_STICKY             (CONF_IS | CONF_VS | CONF_TS | CONF_SS)
 
 /* FStat reg (0x3d) flags */
 #define FSTAT_DNR                   0x0001
 #define FSTAT_FQ                    0x0080
-
-/* Config2 reg (0xbb) flags */
-#define CONFIG2_LDMDL               BIT(5)
 
 /* ModelCfg reg (0xdb) flags */
 #define MODELCFG_REFRESH            0x8000
@@ -184,7 +173,6 @@ struct max17055_batt_profile {
 	 * and v_empty_detect to config max17055 (a.k.a. EZ-config).
 	 */
 	uint8_t is_ez_config;
-	uint16_t ocv_table[MAX17055_OCV_TABLE_SIZE];
 };
 
 /* Return the special battery parameters max17055 needs. */
