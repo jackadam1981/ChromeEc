@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c43bfe39_9e26be88",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-22T15:59:54Z",
+      "side": 1,
+      "message": "So one issue with merging this change is it\u0027ll break the ITE TCPCs because they\u0027re currently using one of the bits removed from the custom mask:\n\n./driver/tcpm/it83xx_pd.h:17:#define TASK_EVENT_PHY_TX_DONE TASK_EVENT_CUSTOM((1 \u003c\u003c 17))\n\nThis is being fixed on ToT here but is not merged yet: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1570607/3\n\nThe other issue is that the addition of the BIT macro comes with a lot of changes, which also experience merge conflicts (BIT macro added here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1518658/5",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "92c2601cd4eb5c01649bf501bc1a36c90792573d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006f96f3_ceecdf79",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-04-22T15:59:54Z",
+      "side": 1,
+      "message": "This event was added with a rather large change to create the new PD state machine: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1225250",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 72
+      },
+      "revId": "92c2601cd4eb5c01649bf501bc1a36c90792573d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
