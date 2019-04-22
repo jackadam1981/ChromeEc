@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff550aba_afa9e727",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-22T20:35:14Z",
+      "side": 1,
+      "message": "why not just fire the irq specified in the parameter with the asm int call? Why do we need to go through the soft irq vector?",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 25
+      },
+      "revId": "129de5a34b36c0643639286694fa6c468df4df61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
