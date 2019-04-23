@@ -70,6 +70,23 @@
       "revId": "6e628644b2732eaa74e8f7f40e854a81c748313d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f98cf8d_72ed412c",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-04-23T15:41:37Z",
+      "side": 1,
+      "message": "I would prefer to see definitions for these values.\n\nPresumably 0x16, 0xd3, and 0xd4 have some meaning that macros correspond to. We should have #defines for those.\n\nThere should also be a comment here about the intent. It would be impossible for anyone to tell what\u0027s happening here without reading the commit message.",
+      "revId": "6e628644b2732eaa74e8f7f40e854a81c748313d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
