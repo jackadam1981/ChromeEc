@@ -140,6 +140,30 @@
       "revId": "bdad39218800be2204fa004824c5c8476f6162c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ae154e_c69d34ce",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-23T16:06:53Z",
+      "side": 1,
+      "message": "For some reason I thought checkpatch complained ... fixed; I didn\u0027t like it either :)",
+      "parentUuid": "3c8bd35a_6b9ce11b",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "bdad39218800be2204fa004824c5c8476f6162c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
