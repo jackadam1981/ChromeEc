@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c4e537b_15fdfd4c",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-04-23T07:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b61207_4015d793",
+      "revId": "b62fe1b1e2dbc6a09c73b6ddd25cec35ca50a721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fccd07e9_173ec941",
         "filename": "chip/npcx/system.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b62fe1b1e2dbc6a09c73b6ddd25cec35ca50a721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8bc8bb2_f5d07fc3",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-04-23T07:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fccd07e9_173ec941",
+      "revId": "b62fe1b1e2dbc6a09c73b6ddd25cec35ca50a721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
