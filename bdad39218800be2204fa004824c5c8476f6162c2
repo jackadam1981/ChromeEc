@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2424acfd_8315aeee",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T14:59:35Z",
+      "side": 1,
+      "message": "we should also remove this parameter since no one is using it",
+      "range": {
+        "startLine": 53,
+        "startChar": 35,
+        "endLine": 53,
+        "endChar": 60
+      },
+      "revId": "bdad39218800be2204fa004824c5c8476f6162c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378eeedd_269f9aca",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T14:59:35Z",
+      "side": 1,
+      "message": "s/do/does/\ns/reset/resets/\n\nSince we are here already :)",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "bdad39218800be2204fa004824c5c8476f6162c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c8bd35a_6b9ce11b",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T14:59:35Z",
+      "side": 1,
+      "message": "subjective nit: when we have multiple clauses (if, else if, else) and one of them needs braces, I think it makes it more readable to add it to all of them (and the style checker does not complain)",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "bdad39218800be2204fa004824c5c8476f6162c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
