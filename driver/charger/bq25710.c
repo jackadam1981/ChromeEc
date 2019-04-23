@@ -143,17 +143,63 @@ static int bq25710_adc_start(int adc_en_mask)
 }
 #endif
 
-/* Disbale VDPM prochot profile at initialization */
-static void bq25710_disable_prochot_vdpm(void)
+static void bq25710_init(void)
 {
 	int reg;
+	int attempts = 4;
+
+	/*
+	 * Reset registers to their default settings. There is no reset pin for
+	 * this chip so without a full power cycle, some registers may not be at
+	 * their default values.
+	 */
+	if (!raw_read16(BQ25710_REG_CHARGE_OPTION_2, &reg)) {
+		reg |= BQ25710_CHARGE_OPTION_2_RESET_REG;
+		if (!raw_write16(BQ25710_REG_CHARGE_OPTION_2, reg)) {
+			while (attempts > 0) {
+				msleep(2);
+				raw_read16(BQ25710_REG_CHARGE_OPTION_2, &reg);
+				if (reg & BQ25710_CHARGE_OPTION_2_RESET_REG) {
+					CPRINTF("bq25710: reg reset done %d\n",
+						attempts);
+					break;
+				}
+				attempts--;
+			}
+		}
+	}
+	if (!attempts)
+		CPRINTF("bq25719: Failed to reset regss to default state\n");
 
 	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
-		raw_write16(BQ25710_REG_PROCHOT_OPTION_1,
-			    (reg & ~BQ25710_PROCHOT_PROFILE_VDPM));
+		/* Disbale VDPM prochot profile at initialization */
+		reg &= ~BQ25710_PROCHOT_PROFILE_VDPM;
+		/*
+		 * Enable PROCHOT to be asserted with VSYS min detection. Note
+		 * that when no battery is present, then VSYS will be set to the
+		 * value in register 0x3E (MinSysVoltage) which means that when
+		 * no battery is present prochot will continuosly be asserted.
+		 */
+		reg |= BQ25710_PROCHOT_PROFILE_VSYS;
+		raw_write16(BQ25710_REG_PROCHOT_OPTION_1, reg);
+	}
+
+	/* Reduce ILIM from default of 150% to 105% */
+	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_0, &reg)) {
+		reg &= ~BQ25710_PROCHOT0_ILIM_VTH_MASK;
+		raw_write16(BQ25710_REG_PROCHOT_OPTION_0, reg);
+	}
+
+	/*
+	 * Reduce peak power mode overload and relax cycle time from default 20
+	 * msec to the minimum of 5 msec.
+	 */
+	if (!raw_read16(BQ25710_REG_CHARGE_OPTION_2, &reg)) {
+		reg &= ~BQ25710_CHARGE_OPTION_2_TMAX_MASK;
+		raw_write16(BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, bq25710_disable_prochot_vdpm, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, bq25710_init, HOOK_PRIO_INIT_I2C + 1);
 
 /* Charger interfaces */
 const struct charger_info *charger_get_info(void)
@@ -172,8 +218,7 @@ int charger_post_init(void)
 	 *	discharge on AC     = disabled
 	 */
 
-	/* Set charger input current limit */
-	return charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	return EC_SUCCESS;
 }
 
 int charger_get_status(int *status)
