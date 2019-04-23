@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "106d775a_53de2b10",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T19:29:59Z",
+      "side": 1,
+      "message": "Only precharge_current is different. We should consolidate these and apply 294 or 327 at run-time. That can be a todo (when we need more space later).",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 26
+      },
+      "revId": "2784f6fbec05fbc76eecb0930106b11c615c30f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe274c7_99c7bbf2",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T19:29:59Z",
+      "side": 1,
+      "message": "These are pretty similar too. We can save some ROM space.",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 58
+      },
+      "revId": "2784f6fbec05fbc76eecb0930106b11c615c30f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
