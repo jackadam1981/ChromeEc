@@ -129,16 +129,20 @@ int strtoi(const char *nptr, char **endptr, int base)
 	while ((c = *nptr++) && isspace(c))
 		;
 
-	if (c == '0' && *nptr == 'x') {
+	if (c == '+') {
+		c = *nptr++;
+	} else if (c == '-') {
+		neg = 1;
+		c = *nptr++;
+	}
+	
+	if ((base == 0 || base == 16) && c == '0'
+	    && (*nptr == 'x' || *nptr == 'X')) {
 		base = 16;
 		c = nptr[1];
 		nptr += 2;
 	} else if (base == 0) {
-		base = 10;
-		if (c == '-') {
-			neg = 1;
-			c = *nptr++;
-		}
+		base = c == '0' ? 8 : 10;
 	}
 
 	while (c) {
@@ -170,14 +174,19 @@ uint64_t strtoul(const char *nptr, char **endptr, int base)
 	while ((c = *nptr++) && isspace(c))
 		;
 
-	if (c == '0' && *nptr == 'x') {
+	if (c == '+') {
+		c = *nptr++;
+	} else if (c == '-') {
+		return result;
+	}
+	
+	if ((base == 0 || base == 16) && c == '0'
+	    && (*nptr == 'x' || *nptr == 'X')) {
 		base = 16;
 		c = nptr[1];
 		nptr += 2;
 	} else if (base == 0) {
-		base = 10;
-		if (c == '-')
-			return result;
+		base = c == '0' ? 8 : 10;
 	}
 
 	while (c) {
