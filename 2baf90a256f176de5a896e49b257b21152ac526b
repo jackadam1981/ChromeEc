@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "015f993c_8974309f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T13:29:09Z",
+      "side": 1,
+      "message": "+1, how is this supposed to work. either we call iret or we call ish_mia_hast",
+      "parentUuid": "816934bc_95ac1b75",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "2baf90a256f176de5a896e49b257b21152ac526b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc4a5c1a_5178205b",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
