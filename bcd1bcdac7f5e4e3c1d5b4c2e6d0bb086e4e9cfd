@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b45f7f2c_268c8578",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-23T15:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "082d9e59_bca75009",
+      "range": {
+        "startLine": 253,
+        "startChar": 8,
+        "endLine": 253,
+        "endChar": 23
+      },
+      "revId": "bcd1bcdac7f5e4e3c1d5b4c2e6d0bb086e4e9cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c68b6743_e0bd45e7",
         "filename": "chip/ish/registers.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bcd1bcdac7f5e4e3c1d5b4c2e6d0bb086e4e9cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba14bcf_099f4965",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-23T15:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68b6743_e0bd45e7",
+      "range": {
+        "startLine": 255,
+        "startChar": 8,
+        "endLine": 255,
+        "endChar": 33
+      },
+      "revId": "bcd1bcdac7f5e4e3c1d5b4c2e6d0bb086e4e9cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
