@@ -210,9 +210,13 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
  */
 int board_is_convertible(void)
 {
-	/* Bloog: TBD */
-	/* Blooguard: TBD */
-	return sku_id == 255;
+	/*
+	 * Bloog: 33, 34, 35
+	 * Blooguard: 49, 50
+	 * Unprovisioned: 255
+	 */
+	return sku_id == 33 || sku_id == 34 || sku_id == 35 || sku_id == 49
+		|| sku_id == 50 || sku_id == 255;
 }
 
 static void board_update_sensor_config_from_sku(void)
@@ -248,8 +252,10 @@ void board_hibernate_late(void)
 
 	const uint32_t hibernate_pins[][2] = {
 		/* Turn off LEDs before going to hibernate */
-		{GPIO_BAT_LED_WHITE_L, GPIO_INPUT | GPIO_PULL_UP},
-		{GPIO_BAT_LED_AMBER_L, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_LED_WHITE_C0_L, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_LED_AMBER_C0_L, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_LED_WHITE_C1_L, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_LED_AMBER_C1_L, GPIO_INPUT | GPIO_PULL_UP},
 	};
 
 	for (i = 0; i < ARRAY_SIZE(hibernate_pins); ++i)

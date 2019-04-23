@@ -34,8 +34,6 @@ GPIO_INT(USB_C1_TCPC_INT_ODL,  PIN(F, 5), GPIO_INT_FALLING, tcpc_alert_event)
 GPIO_INT(USB_C0_BC12_INT_ODL,  PIN(9, 5), GPIO_INT_FALLING, bc12_interrupt)
 GPIO_INT(USB_C1_BC12_INT_ODL,  PIN(E, 4), GPIO_INT_FALLING, bc12_interrupt)
 
-GPIO_INT(HDMI_CONN_HPD,        PIN(7, 2), GPIO_INT_BOTH, hdmi_hpd_interrupt)
-
 /* Volume button interrupts */
 GPIO_INT(EC_VOLDN_BTN_ODL,     PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(EC_VOLUP_BTN_ODL,     PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
@@ -46,11 +44,11 @@ GPIO(PCH_WAKE_L,               PIN(7, 4), GPIO_ODR_HIGH)        /* EC_PCH_WAKE_O
 GPIO(PCH_PWRBTN_L,             PIN(C, 1), GPIO_ODR_HIGH)        /* EC_PCH_PWR_BTN_ODL */
 
 /* Power Sequencing Signals */
-GPIO(EN_PP5000_A_V1,           PIN(A, 4), GPIO_DEFAULT)
-GPIO(EN_PP5000_A_V0,           PIN(7, 3), GPIO_DEFAULT)
+GPIO(EN_PP5000_A,              PIN(A, 4), GPIO_OUT_LOW)
 GPIO(EN_A_RAILS,               PIN(A, 3), GPIO_OUT_LOW)
 GPIO(EC_PCH_RSMRST_L,          PIN(A, 6), GPIO_OUT_LOW)
 GPIO(EC_PROCHOT_ODL,           PIN(6, 3), GPIO_ODR_HIGH)
+GPIO(EC_PROCHOT_IN_OD,         PIN(3, 4), GPIO_INPUT)
 GPIO(PP5000_A_PG_OD,           PIN(D, 7), GPIO_INPUT)
 GPIO(EC_PCH_SYS_PWROK,         PIN(3, 7), GPIO_OUT_LOW)
 GPIO(CPU_C10_GATE_L,           PIN(6, 7), GPIO_INPUT)
@@ -62,19 +60,33 @@ GPIO(EC_INT_L,                 PIN(7, 0), GPIO_OUT_HIGH)
 GPIO(USB_C_OC_ODL,             PIN(B, 1), GPIO_ODR_HIGH)
 GPIO(USB_C0_TCPC_RST,          PIN(9, 7), GPIO_OUT_LOW)
 GPIO(USB_C1_TCPC_RST_ODL,      PIN(3, 2), GPIO_ODR_HIGH)
-GPIO(EN_USB_A_5V,              PIN(3, 5), GPIO_OUT_LOW)
-GPIO(EN_USB_A_LOW_PWR_OD,      PIN(9, 4), GPIO_OUT_LOW)
+GPIO(USB_C0_BC12_CHG_DET_L,    PIN(0, 6), GPIO_INPUT)
+GPIO(USB_C1_BC12_CHG_DET_L,    PIN(3, 5), GPIO_INPUT)
+GPIO(USB_C0_BC12_VBUS_ON,      PIN(9, 4), GPIO_OUT_LOW)
+GPIO(USB_C1_BC12_VBUS_ON,      PIN(C, 6), GPIO_OUT_LOW)
 
 /* Misc Signals */
 GPIO(EC_BATT_PRES_ODL,         PIN(E, 1), GPIO_INPUT)
 GPIO(LED_1_L,                  PIN(C, 4), GPIO_OUT_HIGH)        /* Yellow (hatch) */
 GPIO(LED_2_L,                  PIN(C, 3), GPIO_OUT_HIGH)        /* White (hatch) */
 GPIO(LED_3_L,                  PIN(C, 2), GPIO_OUT_HIGH)
-GPIO(LED_4_L,                  PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(EC_KB_BL_EN,              PIN(8, 6), GPIO_OUT_LOW)         /* Keyboard backlight */
-GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
 GPIO(EN_MST,                   PIN(9, 6), GPIO_OUT_LOW)
+GPIO(LID_ACCEL_INT_L,          PIN(5, 0), GPIO_INPUT |          /* Lid accelerometer */
+                                          GPIO_SEL_1P8V)
 
+/*
+ * TODO: b/130822500
+ * Configured as if it were NC for now
+ */
+GPIO(M2_SD_PLN,                PIN(A, 0), GPIO_INPUT |          /* Provide SSD a shutdown warning */
+                                          GPIO_PULL_UP)
+
+/*
+ * TODO: b/130824532
+ * Configured as if it were NC for now (but has external 1K pulldown)
+ */
+GPIO(IMVP8_PE,                 PIN(A, 7), GPIO_INPUT)          /* Pull high to flash MPS part */
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(I2C0_SCL,                 PIN(B, 5), GPIO_INPUT |
@@ -91,6 +103,20 @@ GPIO(I2C5_SCL,                 PIN(3, 3), GPIO_INPUT)           /* EC_I2C_POWER_
 GPIO(I2C5_SDA,                 PIN(3, 6), GPIO_INPUT)           /* EC_I2C_POWER_SDA */
 GPIO(I2C7_SCL,                 PIN(B, 3), GPIO_INPUT)           /* EC_I2C_EEPROM_SCL */
 GPIO(I2C7_SDA,                 PIN(B, 2), GPIO_INPUT)           /* EC_I2C_EEPROM_SDA */
+
+/* NC / TP */
+GPIO(TP62,                     PIN(7, 2), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP58,                     PIN(0, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP73,                     PIN(8, 2), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP17,                     PIN(B, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP18,                     PIN(C, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP54,                     PIN(4, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP56,                     PIN(6, 1), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP57,                     PIN(8, 1), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP55,                     PIN(7, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP59,                     PIN(B, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP64,                     PIN(D, 3), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(TP60,                     PIN(6, 0), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Keyboard pins */
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
@@ -115,8 +141,6 @@ ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)                            /* UA
 
 /* PWM */
 ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)                             /* PWM3 - Keyboard backlight */
-ALTERNATE(PIN_MASK(B, 0x80), 0, MODULE_PWM, 0)                             /* PWM5 - FAN */
-ALTERNATE(PIN_MASK(4, 0x01), 0, MODULE_PWM, 0)                             /* TA1 - Fan Tachometer */
 
 /* ADC */
 ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)                             /* ADC0-1 */

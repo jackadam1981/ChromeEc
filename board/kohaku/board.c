@@ -12,8 +12,9 @@
 #include "cros_board_info.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
-#include "driver/als_opt3001.h"
+#include "driver/als_bh1730.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/bc12/max14637.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
@@ -76,11 +77,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
-static void hdmi_hpd_interrupt(enum gpio_signal signal)
-{
-	baseboard_mst_enable_control(MST_HDMI, gpio_get_level(signal));
-}
-
 static void bc12_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
@@ -140,6 +136,20 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
+/* BC 1.2 chip Configuration */
+const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_COUNT] = {
+	{
+		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON,
+		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET_L,
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON,
+		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET_L,
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
+	},
+};
+
 /******************************************************************************/
 /* Sensors */
 /* Base Sensor mutex */
@@ -152,11 +162,8 @@ static struct bmi160_drv_data_t g_bmi160_data;
 /* BMA255 private data */
 static struct accelgyro_saved_data_t g_bma255_data;
 
-static struct opt3001_drv_data_t g_opt3001_data = {
-	.scale = 1,
-	.uscale = 0,
-	.offset = 0,
-};
+/* BH1730 private data */
+struct bh1730_drv_data_t g_bh1730_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 static const mat33_fp_t base_standard_ref = {
@@ -249,22 +256,22 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[LID_ALS] = {
 		.name = "Light",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_OPT3001,
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_BH1730,
 		.type = MOTIONSENSE_TYPE_LIGHT,
 		.location = MOTIONSENSE_LOC_LID,
-		.drv = &opt3001_drv,
-		.drv_data = &g_opt3001_data,
+		.drv = &bh1730_drv,
+		.drv_data = &g_bh1730_data,
 		.port = I2C_PORT_ACCEL,
-		.addr = OPT3001_I2C_ADDR,
+		.addr = BH1730_I2C_ADDR,
 		.rot_standard_ref = NULL,
-		.default_range = 0x2b11a1,
-		.min_frequency = OPT3001_LIGHT_MIN_FREQ,
-		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
+		.default_range = 65535,
+		.min_frequency = 10,
+		.max_frequency = 10,
 		.config = {
-			/* Run ALS sensor in S0 */
 			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 1000,
+				.odr = 100000,
+				.ec_rate = 0,
 			},
 		},
 	},
@@ -303,46 +310,12 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 
-/* Sets the gpio flags correct taking into account warm resets */
-static void reset_gpio_flags(enum gpio_signal signal, int flags)
-{
-	/*
-	 * If the system was already on, we cannot set the value otherwise we
-	 * may change the value from the previous image which could cause a
-	 * brownout.
-	 */
-	if (system_is_reboot_warm() || system_jumped_to_this_image())
-		flags &= ~(GPIO_LOW | GPIO_HIGH);
-
-	gpio_set_flags(signal, flags);
-}
-
-/* Runtime GPIO defaults */
-enum gpio_signal gpio_en_pp5000_a = GPIO_EN_PP5000_A_V1;
-
-static void board_gpio_set_pp5000(void)
-{
-	uint32_t board_id = 0;
-
-	/* Errors will count as board_id 0 */
-	cbi_get_board_version(&board_id);
-
-	if (board_id == 0) {
-		reset_gpio_flags(GPIO_EN_PP5000_A_V0, GPIO_OUT_LOW);
-		/* Change runtime default for V0 */
-		gpio_en_pp5000_a = GPIO_EN_PP5000_A_V0;
-	} else if (board_id >= 1) {
-		reset_gpio_flags(GPIO_EN_PP5000_A_V1, GPIO_OUT_LOW);
-	}
-
-}
+enum gpio_signal gpio_en_pp5000_a = GPIO_EN_PP5000_A;
 
 static void board_init(void)
 {
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
-	/* Select correct gpio signal for PP5000_A control */
-	board_gpio_set_pp5000();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

@@ -46,9 +46,15 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "driver/wpc/p9221.h"
+
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+/* LCM_ID is embedded in SKU_ID bit[19-16] */
+#define SKU_ID_TO_LCM_ID(x)	(((x) >> PANEL_ID_BIT_POSITION) & 0xf)
+#define LCM_ID_TO_SKU_ID(x)	(((x) & 0xf) << PANEL_ID_BIT_POSITION)
 
 static const struct mv_to_id panels[] = {
 	{ PANEL_BOE_HIMAX8279D10P,	98 },
@@ -58,7 +64,7 @@ BUILD_ASSERT(ARRAY_SIZE(panels) < PANEL_COUNT);
 
 uint16_t board_version;
 uint8_t oem;
-uint32_t sku;
+uint32_t sku = LCM_ID_TO_SKU_ID(PANEL_UNINITIALIZED);
 
 int board_read_id(enum adc_channel ch, const struct mv_to_id *table, int size)
 {
@@ -83,7 +89,7 @@ static void board_setup_panel(void)
 	int rv = 0;
 
 	if (board_version >= 3) {
-		switch ((sku >> PANEL_ID_BIT_POSITION) & 0xf) {
+		switch (SKU_ID_TO_LCM_ID(sku)) {
 		case PANEL_BOE_HIMAX8279D8P:
 			channel = 0xfa;
 			dim = 0xc8;
@@ -113,11 +119,36 @@ static void board_setup_panel(void)
 
 static enum panel_id board_get_panel_id(void)
 {
-	int id = board_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
-	if (id == ADC_READ_ERROR)
+	enum panel_id id;
+	if (board_version < 3) {
 		id = PANEL_UNKNOWN;
+	} else {
+		id  = board_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
+		if (id < PANEL_FIRST || PANEL_COUNT <= id)
+			id = PANEL_UNKNOWN;
+	}
 	CPRINTS("LCM ID: %d", id);
 	return id;
+}
+
+#define CBI_SKU_ID_SIZE 4
+
+int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	switch (tag) {
+	case CBI_TAG_SKU_ID:
+		if (*size != CBI_SKU_ID_SIZE)
+			/* For old boards (board_version < 3) */
+			return EC_SUCCESS;
+		if (SKU_ID_TO_LCM_ID(sku) == PANEL_UNINITIALIZED)
+			/* Haven't read LCM_ID */
+			return EC_ERROR_BUSY;
+		buf[PANEL_ID_BIT_POSITION / 8] = SKU_ID_TO_LCM_ID(sku);
+		break;
+	default:
+		break;
+	}
+	return EC_SUCCESS;
 }
 
 static void cbi_init(void)
@@ -132,12 +163,10 @@ static void cbi_init(void)
 		oem = val;
 	CPRINTS("OEM: %d", oem);
 
+	sku = LCM_ID_TO_SKU_ID(board_get_panel_id());
+
 	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
-
-	if (board_version >= 3)
-		/* Embed LCM_ID in sku_id bit[19-16] */
-		sku |= ((board_get_panel_id() & 0xf) << PANEL_ID_BIT_POSITION);
 
 	CPRINTS("SKU: 0x%08x", sku);
 }
@@ -246,8 +275,13 @@ int board_set_active_charge_port(int charge_port)
 
 	switch (charge_port) {
 	case 0:
-		/* Don't charge from a source port */
+		/* Don't charge from a source port except wireless charging*/
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+		if (board_vbus_source_enabled(charge_port)
+			&& !wpc_chip_is_online())
+#else
 		if (board_vbus_source_enabled(charge_port))
+#endif
 			return -1;
 		break;
 	case CHARGE_PORT_NONE:
@@ -275,14 +309,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 int extpower_is_present(void)
 {
-	/*
-	 * The charger will indicate VBUS presence if we're sourcing 5V,
-	 * so exclude such ports.
-	 */
-	if (board_vbus_source_enabled(0))
-		return 0;
-	else
-		return tcpm_get_vbus_level(0);
+	return tcpm_get_vbus_level(0);
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -328,6 +355,10 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
 
 #ifdef SECTION_IS_RW
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+	/* Enable Wireless charger interrupts */
+	gpio_enable_interrupt(GPIO_P9221_INT_ODL);
+#endif
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
@@ -468,3 +499,16 @@ int board_allow_i2c_passthru(int port)
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 }
+
+int board_get_fod(uint8_t **fod)
+{
+	*fod = NULL;
+	return 0;
+}
+
+int board_get_epp_fod(uint8_t **fod)
+{
+	*fod = NULL;
+	return 0;
+}
+
