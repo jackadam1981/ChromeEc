@@ -85,8 +85,8 @@ static void pmu_wakeup_isr(void)
 	 * Indicate completion of servicing the interrupt to IOAPIC first
 	 * then indicate completion of servicing the interrupt to LAPIC
 	 */
-	REG32(IOAPIC_EOI_REG) = ISH_PMU_WAKEUP_VEC;
-	REG32(LAPIC_EOI_REG) = 0x0;
+	IOAPIC_EOI_REG = ISH_PMU_WAKEUP_VEC;
+	LAPIC_EOI_REG = 0x0;
 
 	__asm__ volatile ("iret;");
 
@@ -105,8 +105,8 @@ static void reset_prep_isr(void)
 	 * Indicate completion of servicing the interrupt to IOAPIC first
 	 * then indicate completion of servicing the interrupt to LAPIC
 	 */
-	REG32(IOAPIC_EOI_REG) = ISH_RESET_PREP_VEC;
-	REG32(LAPIC_EOI_REG) = 0x0;
+	IOAPIC_EOI_REG = ISH_RESET_PREP_VEC;
+	LAPIC_EOI_REG = 0x0;
 
 	handle_reset(ISH_PM_STATE_RESET_PREP);
 
@@ -153,7 +153,6 @@ static struct idt_entry aon_idt[AON_IDT_ENTRY_VEC_LAST -
 				AON_IDT_ENTRY_VEC_FIRST + 1];
 
 static struct idt_header aon_idt_hdr = {
-
 	.limit = (sizeof(struct idt_entry) * (AON_IDT_ENTRY_VEC_LAST + 1)) - 1,
 	.entries = (struct idt_entry *)((uint32_t)&aon_idt -
 			(sizeof(struct idt_entry) * AON_IDT_ENTRY_VEC_FIRST))
@@ -541,7 +540,7 @@ static void handle_d3(void)
 static void handle_reset(int pm_state)
 {
 	/* disable CSME CSR irq */
-	REG32(IPC_PIMR) &= ~IPC_PIMR_CSME_CSR_BIT;
+	IPC_PIMR &= ~IPC_PIMR_CSME_CSR_BIT;
 
 	/* power off main SRAM */
 	sram_power(0);
@@ -549,10 +548,10 @@ static void handle_reset(int pm_state)
 	while (1) {
 
 		/* check if host ish driver already set the DMA enable flag */
-		if (REG32(IPC_ISH_RMP2) & DMA_ENABLED_MASK) {
+		if (IPC_ISH_RMP2 & DMA_ENABLED_MASK) {
 
 			/* clear ISH2HOST doorbell register */
-			REG32(IPC_ISH2HOST_DOORBELL) = 0;
+			IPC_ISH2HOST_DOORBELL = 0;
 
 			/* clear error register in MISC space */
 			MISC_ISH_ECC_ERR_SRESP = 1;

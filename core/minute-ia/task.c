@@ -424,7 +424,7 @@ void task_trigger_irq(int irq)
 	 * IPI (Inter-processor interrupt) on the APIC bus. Here we direct the
 	 * IPI to originating prccessor to generate self-interrupt
 	 */
-	REG32(LAPIC_ICR_REG) = LAPIC_ICR_BITS | IRQ_TO_VEC(irq);
+	LAPIC_ICR_REG = LAPIC_ICR_BITS | IRQ_TO_VEC(irq);
 }
 
 void mutex_lock(struct mutex *mtx)
