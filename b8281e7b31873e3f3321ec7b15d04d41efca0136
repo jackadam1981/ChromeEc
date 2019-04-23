@@ -69,6 +69,30 @@
       "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d7cf7ef_3c9ac5ef",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T16:17:42Z",
+      "side": 1,
+      "message": "Do we need to wait for the HPET to settle or something instead?\nAlso why would the bit get set again after calling process_timtes would should set the comparitor to a future value",
+      "parentUuid": "958c10d9_6e1321c3",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
