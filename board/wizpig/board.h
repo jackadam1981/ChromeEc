@@ -140,6 +140,11 @@ enum sensor_id {
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 
+#undef CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ
+
+/* Lower maximal ODR to 100Hz */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 100000
+
 /* power signal definitions */
 enum power_signal {
 	X86_ALL_SYS_PWRGD = 0,
