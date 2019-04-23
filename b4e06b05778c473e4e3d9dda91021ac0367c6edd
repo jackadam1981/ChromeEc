@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2c2bcd9_eb600106",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T16:21:42Z",
+      "side": 1,
+      "message": "on master first, but this should be:\n\nmux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);\nmux_write(port, PS8XXX_REG_MUX_DP_EQ_______, 0xc0);\n\n\nPlease also define what register 0xd4 is for please",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "b4e06b05778c473e4e3d9dda91021ac0367c6edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
