@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e602f87e_bb697feb",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-23T08:04:05Z",
+      "side": 1,
+      "message": "board_* will not exist when CONFIG_DEDICATED_CHARGER_PORT_CUSTOM not set.\nSo linker may complain about the function not defined.\n\n(Sometimes linker ignores the undefined function in dead branches, but I\u0027m not sure if we can generally do this).",
+      "parentUuid": "0f97deb1_2b5e20fe",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a7abe92_a805a891",
         "filename": "common/charge_manager.c",
         "patchSetId": 9
