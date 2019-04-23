@@ -48,8 +48,8 @@ typedef struct {
 typedef void (*isr_handler_t) (void);
 
 void init_interrupts(void);
-void mask_interrupt(unsigned int irq);
-void unmask_interrupt(unsigned int irq);
+void mask_interrupt(uint8_t irq);
+void unmask_interrupt(uint8_t irq);
 
 /**
  * disable current all enabled intrrupts

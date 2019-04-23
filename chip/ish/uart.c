@@ -46,6 +46,13 @@ static struct uart_ctx uart_ctx[UART_DEVICES] = {
 		.input_freq = UART_ISH_INPUT_FREQ,
 		.addr_interval = UART_ISH_ADDR_INTERVAL,
 		.uart_state = UART_STATE_CG,
+	},
+	{
+		.id = 2,
+		.base = UART2_BASE,
+		.input_freq = UART_ISH_INPUT_FREQ,
+		.addr_interval = UART_ISH_ADDR_INTERVAL,
+		.uart_state = UART_STATE_CG,
 	}
 };
 
@@ -62,7 +69,7 @@ void uart_tx_start(void)
 
 	enum UART_PORT id = ISH_DEBUG_UART; /* UART for ISH */
 
-	if (REG8(IER(id)) & IER_TDRQ)
+	if (IER(id) & IER_TDRQ)
 		return;
 
 	/* Do not allow deep sleep while transmit in progress */
@@ -70,7 +77,7 @@ void uart_tx_start(void)
 
 	/* TODO: disable low power mode while transmit */
 
-	REG8(IER(id)) |= IER_TDRQ;
+	IER(id) |= IER_TDRQ;
 
 	task_trigger_irq(ISH_DEBUG_UART_IRQ);
 
@@ -85,7 +92,7 @@ void uart_tx_stop(void)
 	/* Re-allow deep sleep */
 	enable_sleep(SLEEP_MASK_UART);
 
-	REG8(IER(id)) &= ~IER_TDRQ;
+	IER(id) &= ~IER_TDRQ;
 
 	/* TODO: re-enable low power mode */
 #endif
@@ -96,8 +103,8 @@ void uart_tx_flush(void)
 #if !defined(CONFIG_POLLING_UART)
 	enum UART_PORT id = ISH_DEBUG_UART; /* UART for ISH */
 
-	while (!(REG8(LSR(id)) & LSR_TEMT) )
-		;
+	while (!(LSR(id) & LSR_TEMT))
+		continue;
 #endif
 }
 
@@ -111,7 +118,7 @@ int uart_rx_available(void)
 #if !defined(CONFIG_POLLING_UART)
 	enum UART_PORT id = ISH_DEBUG_UART; /* UART for ISH */
 
-	return REG8(LSR(id)) & LSR_DR;
+	return LSR(id) & LSR_DR;
 #else
 	return 0;
 #endif
@@ -122,10 +129,10 @@ void uart_write_char(char c)
 	enum UART_PORT id = ISH_DEBUG_UART; /* UART for ISH */
 
 	/* Wait till reciever is ready */
-	while ((REG8(LSR(id)) & LSR_TEMT) == 0)
-		;
+	while ((LSR(id) & LSR_TEMT) == 0)
+		continue;
 
-	REG8(THR(id)) = c;
+	THR(id) = c;
 }
 
 #if !defined(CONFIG_POLLING_UART)
@@ -133,7 +140,7 @@ int uart_read_char(void)
 {
 	enum UART_PORT id = ISH_DEBUG_UART; /* UART for ISH */
 
-	return REG8(RBR(id));
+	return RBR(id);
 }
 
 void uart_ec_interrupt(void)
@@ -167,42 +174,43 @@ static void uart_hw_init(enum UART_PORT id)
 	/* Calculate baud rate divisor */
 	divisor = (ctx->input_freq / ctx->baud_rate) >> 4;
 
-	REG32(MUL(ctx->id)) = (divisor * ctx->baud_rate);
-	REG32(DIV(ctx->id)) = (ctx->input_freq / 16);
-	REG32(PS(ctx->id)) = 16;
+	MUL(ctx->id) = (divisor * ctx->baud_rate);
+	DIV(ctx->id) = (ctx->input_freq / 16);
+	PS(ctx->id) = 16;
 
 	/* Set the DLAB to access the baud rate divisor registers */
-	REG8(LCR(ctx->id)) = LCR_DLAB;
-	REG8(DLL(ctx->id)) = (divisor & 0xff);
-	REG8(DLH(ctx->id)) = ((divisor >> 8) & 0xff);
+	LCR(ctx->id) = LCR_DLAB;
+	DLL(ctx->id) = (divisor & 0xff);
+	DLH(ctx->id) = ((divisor >> 8) & 0xff);
 
 	/* 8 data bits, 1 stop bit, no parity, clear DLAB */
-	REG8(LCR(ctx->id)) = LCR_8BIT_CHR;
+	LCR(ctx->id) = LCR_8BIT_CHR;
 
 	if (ctx->client_flags & UART_CONFIG_HW_FLOW_CONTROL)
 		mcr = MCR_AUTO_FLOW_EN;
 
-	mcr |= MCR_INTR_ENABLE;	/* needs to be set regardless of flow control */
+	/* needs to be set regardless of flow control */
+	mcr |= MCR_INTR_ENABLE;
 
 	mcr |= (MCR_RTS | MCR_DTR);
-	REG8(MCR(ctx->id)) = mcr;
+	MCR(ctx->id) = mcr;
 
 	fcr = FCR_FIFO_SIZE_64 | FCR_ITL_FIFO_64_BYTES_1;
 
 	/* configure FIFOs */
-	REG8(FCR(ctx->id)) = (fcr | FCR_FIFO_ENABLE
-			      | FCR_RESET_RX | FCR_RESET_TX);
+	FCR(ctx->id) = (fcr | FCR_FIFO_ENABLE
+			| FCR_RESET_RX | FCR_RESET_TX);
 
 	/* enable UART unit */
-	REG32(ABR(ctx->id)) = ABR_UUE;
+	ABR(ctx->id) = ABR_UUE;
 
 	/* clear the port */
-	REG8(RBR(ctx->id));
-#ifdef CONFIG_POLLING_UART
-	REG8(IER(ctx->id)) = 0x00;
-#else
-	REG8(IER(ctx->id)) = IER_RECV;
-#endif
+	RBR(ctx->id);
+
+	if (IS_ENABLED(CONFIG_POLLING_UART))
+		IER(ctx->id) = 0x00;
+	else
+		IER(ctx->id) = IER_RECV;
 }
 
 static void uart_stop_hw(enum UART_PORT id)
@@ -213,20 +221,20 @@ static void uart_stop_hw(enum UART_PORT id)
 	/* Manually clearing the fifo from possible noise.
 	 * Entering D0i3 when fifo is not cleared may result in a hang.
 	 */
-	fifo_len = (REG32(FOR(id)) & FOR_OCCUPANCY_MASK) >> FOR_OCCUPANCY_OFFS;
+	fifo_len = (FOR(id) & FOR_OCCUPANCY_MASK) >> FOR_OCCUPANCY_OFFS;
 
 	for (i = 0; i < fifo_len; i++)
-		(void)REG8(RBR(id));
+		(void)RBR(id);
 
 	/* No interrupts are enabled */
-	REG8(IER(id)) = 0;
-	REG8(MCR(id)) = 0;
+	IER(id) = 0;
+	MCR(id) = 0;
 
 	/* Clear and disable FIFOs */
-	REG8(FCR(id)) = (FCR_RESET_RX | FCR_RESET_TX);
+	FCR(id) = (FCR_RESET_RX | FCR_RESET_TX);
 
 	/* Disable uart unit */
-	REG32(ABR(id)) = 0;
+	ABR(id) = 0;
 }
 
 static int uart_client_init(enum UART_PORT id, uint32_t baud_rate_id, int flags)
@@ -263,8 +271,8 @@ static void uart_drv_init(void)
 	/* Enable HSU global interrupts (DMA/U0/U1) and set PMEN bit
 	 * to allow PMU to clock gate ISH
 	 */
-	REG32(HSU_BASE + HSU_REG_GIEN) = (GIEN_DMA_EN | GIEN_UART0_EN
-					  | GIEN_UART1_EN | GIEN_PWR_MGMT);
+	HSU_REG_GIEN = (GIEN_DMA_EN | GIEN_UART0_EN
+			| GIEN_UART1_EN | GIEN_PWR_MGMT);
 
 	/* There is a by design HW "bug" where all UARTs are enabled by default
 	 * but they must be disbled to enter clock gating.
@@ -274,23 +282,20 @@ static void uart_drv_init(void)
 	 * not empty (we do the same for UART0 and 1 in "uart_stop_hw"
 	 */
 
-	fifo_len = (REG32(UART2_BASE + UART_REG_FOR)
+	fifo_len = (FOR(2)
 		    & FOR_OCCUPANCY_MASK) >> FOR_OCCUPANCY_OFFS;
 
 	for (i = 0; i < fifo_len; i++)
-		(void)REG8((UART2_BASE + UART_REG_RBR));
+		(void) RBR(2);
 
-	REG32(UART2_BASE + UART_REG_ABR) = 0;
+	ABR(2) = 0;
 
 	task_enable_irq(ISH_DEBUG_UART_IRQ);
 }
 
 void uart_init(void)
 {
-
 	uart_drv_init();
-
 	uart_client_init(ISH_DEBUG_UART, B115200, 0);
-
 	init_done = 1;
 }

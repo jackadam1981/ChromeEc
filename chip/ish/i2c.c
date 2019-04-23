@@ -106,12 +106,12 @@ static struct i2c_bus_info board_config[ISH_I2C_PORT_COUNT] = {
 static inline void i2c_mmio_write(uint32_t *base, uint8_t offset,
 				  uint32_t data)
 {
-	REG32((uint32_t) ((uint8_t *)base + offset)) = data;
+	base[offset / sizeof(uint32_t)] = data;
 }
 
 static inline uint32_t i2c_mmio_read(uint32_t *base, uint8_t offset)
 {
-	return REG32((uint32_t) ((uint8_t *)base + offset));
+	return base[offset / sizeof(uint32_t)];
 }
 
 static inline uint8_t i2c_read_byte(uint32_t *addr, uint8_t reg,
