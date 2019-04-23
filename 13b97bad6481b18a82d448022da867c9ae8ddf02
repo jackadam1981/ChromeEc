@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dd263716_69ae53ed",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T08:30:53Z",
+      "side": 1,
+      "message": "You are right.\nThis is actually complains from compiler. If the compiler optimize this out then it should be fine, but sadly it doesn\u0027t.\n\nOne approach to workaround this is use attribute __weak__, but I think we keep this function (board_*) as undefined would be better for error checking.",
+      "parentUuid": "e602f87e_bb697feb",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a7abe92_a805a891",
         "filename": "common/charge_manager.c",
         "patchSetId": 9

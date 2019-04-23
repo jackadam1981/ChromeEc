@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fcd6e94_a6667bc0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T08:30:53Z",
+      "side": 1,
+      "message": "How about move this out of the guard.\n\ne.g.\n\n\nr-\u003etype \u003d USB_CHG_TYPE_NONE;\nr-\u003emeas.voltage_now \u003d 0;\nr-\u003emax_power \u003d 0;\n#ifdef CONFIG_DEDICATED_CHARGE_PORT_CUSTOM;\n...\n#else\n...\n#endif",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 27
+      },
+      "revId": "41bb233c7208c6abe554dbe3aef38377c5db5283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c6f77f7_e906aff0",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T08:30:53Z",
+      "side": 1,
+      "message": "Would be better if the default property is mentioned[1], and list which of them can be overriden.\n\n[1]\n- dedicated port is sink only\n- dedicated port is always connected\n- dedicated port is given highest priority\n- dedicated port number is larger than PD port number",
+      "range": {
+        "startLine": 647,
+        "startChar": 16,
+        "endLine": 647,
+        "endChar": 23
+      },
+      "revId": "41bb233c7208c6abe554dbe3aef38377c5db5283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
