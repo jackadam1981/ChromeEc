@@ -92,6 +92,30 @@
       "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a2e35c_bb09bba3",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-23T08:11:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5992aa8b_c945063d",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
