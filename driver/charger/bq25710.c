@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "timer.h"
+#include "util.h"
 
 #ifndef CONFIG_CHARGER_NARROW_VDC
 #error "BQ25710 is a NVDC charger, please enable CONFIG_CHARGER_NARROW_VDC."
@@ -443,3 +444,31 @@ error:
 	return 0;
 }
 #endif /* CONFIG_CHARGE_RAMP_HW */
+
+/*** Console commands ***/
+#ifdef CONFIG_CMD_CHARGER_DUMP
+
+/* Dump all readable registers on bq25710 */
+static int console_bq25710_dump_regs(int argc, char **argv)
+{
+	int i;
+	uint8_t regs[] = { 0x12, 0x14, 0x15, 0x20, 0x21, 0x22, 0x23, 0x24,
+			   0x25, 0x26, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35,
+			   0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0xfe, 0xff };
+	int value;
+	int rv;
+
+	/* Retrieve and print 25710 registers */
+	for (i = 0; i < ARRAY_SIZE(regs); ++i) {
+		rv = raw_read16(regs[i], &value);
+		if (!rv)
+			ccprintf("25710 REG %4x:  %4x\n", regs[i], value);
+		cflush();
+	}
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(charger_dump, console_bq25710_dump_regs,
+			NULL,
+			"Dump all charger registers");
+#endif /* CONFIG_CMD_CHARGER_DUMP */
