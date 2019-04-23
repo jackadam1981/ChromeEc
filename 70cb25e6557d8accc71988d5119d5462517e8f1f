@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff14d3ec_7234b048",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T20:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "029634df_d48f6158",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23367251_92d2831a",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a9d11f99_23dfac6c",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T20:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23367251_92d2831a",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ccc57ea_f27ebbd8",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-23T02:10:47Z",
       "side": 1,
       "message": "can you elaborate this? What are other bytes (0, 2, 3) used for?\n\nAlso, we should check the 2nd byte (bit 8 through 11) of data if module is specified. The 2nd byte has to be zero. Maybe 3rd and 4th should be zero, too.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e265220_96d4ce54",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T20:58:52Z",
+      "side": 1,
+      "message": "For hex mode, max695x decoder ignores D7-D4. So the first two bytes are used to represent the module and the next two are used for data.",
+      "parentUuid": "8ccc57ea_f27ebbd8",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "33afcacd_aaf8b8fc",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T20:58:52Z",
+      "side": 1,
+      "message": "For same reason mentioned above, we can\u0027t directly send the data for a i2c_write32",
+      "parentUuid": "d36db4b7_eaef2a5f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54757cda_957a4004",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dec7c188_d7aeaf19",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T20:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54757cda_957a4004",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5deb1da4_99109418",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "724930d4_508e6423",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T20:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5deb1da4_99109418",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
