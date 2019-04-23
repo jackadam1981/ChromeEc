@@ -22,6 +22,30 @@
       "revId": "afac4fcd31a2e2ca4f8a995f113452c780924c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2473399_592dcecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-23T15:11:24Z",
+      "side": 1,
+      "message": "with this CL, we can easily get each power state\u0027s residency data from host during power measurement and with very little impact to current ish running and power status (only wakeup ish few times for ipc communication). and the DUT may not connected servo board for uart, host command is convenient.  \n\nit should be very useful for validation team, and also very convenient for debug/developer. \n\nso we still suggest this CL. Anyway, you\u0027re the boss, you make the decision. :)",
+      "parentUuid": "c37a86d7_bf2c9a87",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "afac4fcd31a2e2ca4f8a995f113452c780924c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
