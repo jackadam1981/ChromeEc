@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3cac7b1_ac1fb4f4",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T18:56:40Z",
+      "side": 1,
+      "message": "You need to read through the code and verify this won\u0027t break anything. Some code checks whether the port is sink or not. If it\u0027s not a sink, for example, the port may be requested to swap power role.\n\nWhat about duralrole_capability[]? Shall we assign CAP_DUALROLE or CAP_DEDICATED? Would anything break if the port returns 1 or 0 from here yet it\u0027s not marked as CAP_DUALROLE?\n\nThen, you need to document what features \u0026 behaviors are expected and allowed in charge_manager.h.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "c039b87e5d1c9e25c716a06e4f1787e04f8c7c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ebca018_d963c017",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T18:56:40Z",
+      "side": 1,
+      "message": "I think it\u0027s cleaner to call out to sub-routine: board_fill_source_power_info(port, r); and provide the default implementation as __attribute__((weak)).",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 6
+      },
+      "revId": "c039b87e5d1c9e25c716a06e4f1787e04f8c7c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
