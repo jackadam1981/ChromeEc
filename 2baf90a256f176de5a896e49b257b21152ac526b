@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7a4c529e_5809d1a0",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-23T15:36:07Z",
+      "side": 1,
+      "message": "handle_reset won\u0027t return, since for reset prep case, ish will go to reset, no need return. so the reset_prep_isr with no \u0027iret\u0027 is ok.  \n\nfor logic here is no problem, and this case also have been verified multiple times. \n\nbut for good coding style and make style consistency with the D3 process flow (pmu_wakeup_isr -\u003e back to main loop -\u003e handle_d3), we can just set ISH_PM_STATE_RESET_PREP pm state in reset_prep_isr, and iret to main loop, then check the pm state, and call handle_reset() in main loop. \n\nwill create a new patch for this.",
+      "parentUuid": "816934bc_95ac1b75",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "2baf90a256f176de5a896e49b257b21152ac526b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc4a5c1a_5178205b",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-04-22T15:23:32Z",
       "side": 1,
       "message": "\\n to stay in style with rest of asm",
+      "range": {
+        "startLine": 113,
+        "startChar": 24,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "2baf90a256f176de5a896e49b257b21152ac526b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad64c4bc_c4eb846b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-23T15:36:07Z",
+      "side": 1,
+      "message": "see above, reset_prep_isr can have no \u0027iret\u0027",
+      "parentUuid": "fc4a5c1a_5178205b",
       "range": {
         "startLine": 113,
         "startChar": 24,
