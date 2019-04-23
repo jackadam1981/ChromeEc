@@ -88,9 +88,6 @@ static void pwm_set_freq(enum pwm_channel ch, uint32_t freq)
 
 	/* Set PWM cycle time */
 	NPCX_CTR(mdl) = pwm_res[ch];
-
-	/* Set the duty cycle to 100% since DCR == CTR */
-	NPCX_DCR(mdl) = pwm_res[ch];
 }
 
 /**
@@ -243,8 +240,11 @@ static void pwm_init(void)
 
 	clock_enable_peripheral(CGC_OFFSET_PWM, pd_mask, CGC_MODE_ALL);
 
-	for (i = 0; i < PWM_CH_COUNT; i++)
+	for (i = 0; i < PWM_CH_COUNT; i++) {
 		pwm_config(i);
+		pwm_set_duty(i, 0);
+		pwm_enable(i, 1);
+	}
 }
 
 /* The chip-specific fan module initializes before this. */

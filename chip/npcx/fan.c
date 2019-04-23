@@ -181,6 +181,7 @@ static void fan_config(int ch, int enable_mft_read_rpm)
 
 	/* Setup pwm with fan spec. */
 	pwm_config(pwm_id);
+	pwm_set_duty(pwm_id, 100);
 
 	/* Need to initialize MFT or not */
 	if (enable_mft_read_rpm) {
