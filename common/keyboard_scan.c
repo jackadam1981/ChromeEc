@@ -480,51 +480,39 @@ static int check_keys_changed(uint8_t *state)
 		if (!diff)
 			continue;
 
+		/* Clear debouncing flag, if sufficient time has elapsed. */
 		for (i = 0; i < KEYBOARD_ROWS; i++) {
-			if (diff & BIT(i))
-				scan_edge_index[c][i] = scan_time_index;
+			if (!debouncing[c] & BIT(i))
+				continue;
+			if (tnow - scan_time[scan_edge_index[c][i]] <
+			    (prev_state[c] ? keyscan_config.debounce_down_us :
+					     keyscan_config.debounce_up_us))
+				continue;  /* Not done debouncing */
+			debouncing[c] &= ~BIT(i);
 		}
 
-		debouncing[c] |= diff;
-		prev_state[c] = new_state[c];
-	}
-
-	/* Check for keys which are done debouncing */
-	for (c = 0; c < keyboard_cols; c++) {
-		int debc = debouncing[c];
-
-		if (!debc)
+		/* Recognize change in state, unless debounce in effect. */
+		diff &= ~debouncing[c];
+		if (!diff)
 			continue;
-
 		for (i = 0; i < KEYBOARD_ROWS; i++) {
-			int mask = 1 << i;
-			int new_mask = new_state[c] & mask;
-
-			/* Are we done debouncing this key? */
-			if (!(debc & mask))
-				continue;  /* Not debouncing this key */
-			if (tnow - scan_time[scan_edge_index[c][i]] <
-			    (new_mask ? keyscan_config.debounce_down_us :
-					keyscan_config.debounce_up_us))
-				continue;  /* Not done debouncing */
-
-			debouncing[c] &= ~mask;
-
-			/* Did the key change from its previous state? */
-			if ((state[c] & mask) == new_mask)
-				continue;  /* No */
-
-			state[c] ^= mask;
+			if (!(diff & BIT(i)))
+				continue;
+			scan_edge_index[c][i] = scan_time_index;
 			any_change = 1;
 
 			/* Inform keyboard module if scanning is enabled */
-			if (keyboard_scan_is_enabled()) {
-				/* This is no-op for protocols that require a
-				 * full keyboard matrix (e.g., MKBP).
-				 */
-				keyboard_state_changed(i, c, new_mask ? 1 : 0);
-			}
+			if (!keyboard_scan_is_enabled())
+				continue;
+				      
+			/* This is no-op for protocols that require a
+			 * full keyboard matrix (e.g., MKBP).
+			 */
+			keyboard_state_changed(i, c, !!(new_state[c] & BIT(i)));
 		}
+
+		debouncing[c] |= diff;
+		prev_state[c] ^= diff;
 	}
 
 	if (any_change) {
