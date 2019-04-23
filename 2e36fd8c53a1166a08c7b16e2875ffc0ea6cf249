@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "0d4409b0_6c9f754e",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T20:01:55Z",
+      "side": 1,
+      "message": "Also, I think we should skip this call to get_current_interrupt_vector if we updated the DECLAR_IRQ to also push the irq number on the stack or put it in ecx similar to the sw register. I don\u0027t think we need to scan for it every time.",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "429205f1_732b7d9b",
         "filename": "core/minute-ia/switch.S",
         "patchSetId": 17
@@ -82,6 +105,30 @@
       "writtenOn": "2019-04-23T19:58:42Z",
       "side": 1,
       "message": "I think we should bill the IRQ that we are actually trying to service (so remove this push and corresponding addl to the SP)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe8aa72_adbd0c85",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T20:01:55Z",
+      "side": 1,
+      "message": "We should probably also change the interface for task_start_irq_handler to take in the irq instead of the vector",
+      "parentUuid": "960e0dfb_3f505040",
       "range": {
         "startLine": 88,
         "startChar": 1,
