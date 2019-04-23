@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ae293a0_afa19199",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-23T23:35:34Z",
+      "side": 1,
+      "message": "use git cherrypick -xs, git rm \u003cfiles  that are not in this branch\u003e",
+      "revId": "8606f9fd5e8436ba83b51b03a5832c1488db9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5063d8_baf006a8",
+        "filename": "board/wizpig/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-23T23:35:34Z",
+      "side": 1,
+      "message": "To avoid diverging, we can achieve similar result if we cherry pick: CL:753434",
+      "revId": "8606f9fd5e8436ba83b51b03a5832c1488db9dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
