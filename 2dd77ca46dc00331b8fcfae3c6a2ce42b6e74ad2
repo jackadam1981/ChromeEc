@@ -22,6 +22,30 @@
       "revId": "2dd77ca46dc00331b8fcfae3c6a2ce42b6e74ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce518654_ca0d71d4",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 0,
+      "message": "No it doesn\u0027t. Low power mode will be added later. I\u0027ll remove this macro for testing purposes.",
+      "parentUuid": "7e3cd380_613e796d",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 36
+      },
+      "revId": "2dd77ca46dc00331b8fcfae3c6a2ce42b6e74ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

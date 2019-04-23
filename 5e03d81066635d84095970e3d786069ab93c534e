@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e39cd1eb_af59a7ff",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89238611_dd66a3ef",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 56
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3ae9359_34279f30",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-23T14:09:29Z",
       "side": 1,
       "message": "why do we need to undef here?\n\nWe are going to get different behavior of this macro depending on the order of including header files. We should update the definition in usb_pd.h or we should use a different macro name",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e466cbb3_4cafbe94",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "I agree. I\u0027ll change the name.",
+      "parentUuid": "c3ae9359_34279f30",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4dea6e3a_e228095a",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b7d885d_1bbafe5c",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8baa3ad5_4a4be1ee",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-04-23T14:09:29Z",
       "side": 1,
       "message": "these defines should be somewhere else and more targeted (and descriptive). What are these used for (more comments needed)?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c489213f_be108c02",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "These are the default charger voltage and current for a TypeC port.",
+      "parentUuid": "8baa3ad5_4a4be1ee",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "321298af_7df10867",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "I tested this and the flash usage increased by 64-bytes and the ram stayed the same.",
+      "parentUuid": "57b3e3a8_f33aafd5",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd3e47a4_9b763df9",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-04-23T14:09:29Z",
       "side": 1,
       "message": "we have a lot of 64-bit timers, can we consolidate these into a next time (or last time) and a list of mode we are looking for? We can talk about this further in you want",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 22
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1000e556_623d3d01",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "This is a good idea and we should discuss how this can be done. My only concern is increasing flash size to save ram. From my testing on various devices, flash size has been the limiting factor.",
+      "parentUuid": "fd3e47a4_9b763df9",
       "range": {
         "startLine": 51,
         "startChar": 1,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "386ff8a2_cdc6e2a4",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "I didn\u0027t need to define all of these but some of the functions are called from various parts of the code base and I didn\u0027t want to modify those areas.",
+      "parentUuid": "ee73a0a8_6ec9d14a",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 338,
+        "endChar": 0
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "919fd5a6_d697e616",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2019-04-23T14:09:29Z",
       "side": 1,
       "message": "why only temporarily? Should we call it before and after communicating with cable plug?",
+      "range": {
+        "startLine": 73,
+        "startChar": 35,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098e81ca_f7ad2c16",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-23T18:04:49Z",
+      "side": 1,
+      "message": "Yes this was poorly commented.",
+      "parentUuid": "919fd5a6_d697e616",
       "range": {
         "startLine": 73,
         "startChar": 35,
