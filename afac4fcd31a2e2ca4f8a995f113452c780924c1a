@@ -46,6 +46,30 @@
       "revId": "afac4fcd31a2e2ca4f8a995f113452c780924c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43868198_ddd06455",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T21:23:34Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t think we should add this as an official host command.\n\nThere is a DECLARE_PRIVATE_HOST_COMMAND that we could use, but the AP side still needs to know how to interpret the results (so it is not all that useful for use)",
+      "parentUuid": "c2473399_592dcecb",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "afac4fcd31a2e2ca4f8a995f113452c780924c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
