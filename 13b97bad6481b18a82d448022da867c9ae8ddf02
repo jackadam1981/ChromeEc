@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f97deb1_2b5e20fe",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T07:47:44Z",
+      "side": 1,
+      "message": "Try to use IS_ENABLED if possible.\n\ne.g.:\n\nif (IS_ENABLED(CONFIG_DEDICATED_CHARGER_PORT_CUSTOM))\n        return board_charge_port_is_sink(port);\nelse\n        return 1;",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7abe92_a805a891",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T07:47:44Z",
+      "side": 1,
+      "message": "also, if(IS_ENABLED(...))",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 42
+      },
+      "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5992aa8b_c945063d",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T07:47:44Z",
+      "side": 1,
+      "message": "How about being consistent with the #endif part below.\n\n#endif /* !defined(DEDICATED_CHARGE_PORT) */",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "13b97bad6481b18a82d448022da867c9ae8ddf02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
