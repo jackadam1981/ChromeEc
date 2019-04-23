@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc4de428_c4c0032d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T21:53:32Z",
+      "side": 0,
+      "message": "I think we would want to keep these as this ensure we have volatile",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "404f52b2f899cd8ffe5ca149390ff9fc265e6ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1216d66_7f4f0456",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T21:53:32Z",
+      "side": 0,
+      "message": "these might be worth keeping, I am on the fence about it though",
+      "range": {
+        "startLine": 304,
+        "startChar": 12,
+        "endLine": 304,
+        "endChar": 17
+      },
+      "revId": "404f52b2f899cd8ffe5ca149390ff9fc265e6ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384a18b0_27f2a2e0",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T21:53:32Z",
+      "side": 0,
+      "message": "this one is probably worth keeping",
+      "range": {
+        "startLine": 280,
+        "startChar": 8,
+        "endLine": 280,
+        "endChar": 13
+      },
+      "revId": "404f52b2f899cd8ffe5ca149390ff9fc265e6ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
