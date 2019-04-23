@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c37a86d7_bf2c9a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T13:43:25Z",
+      "side": 1,
+      "message": "with the parent CL, I would think that we didn\u0027t need this CL as console will remain active while in use.\n\nOnce the console is not in use for 60 second, the the first character you type is going to get lost, but then the console should be in use again for 60 seconds.\n\nI would rather not add this host command since this is really only for the debug/developer use case. In that case where the console is becoming a problem, then the developer can easiler re-compile the ISH binary to remove low power mode",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "afac4fcd31a2e2ca4f8a995f113452c780924c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
