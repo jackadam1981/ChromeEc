@@ -46,6 +46,30 @@
       "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b096a2a9_40f7c3d6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:01:30Z",
+      "side": 1,
+      "message": "Ah, I am reading this better now.\n\nThis condition does not need to be nested within the Vnc if statement. Let\u0027s move this up before it. Let\u0027s also add a comment saying we should perform this check before we try to enable vbus.\n\nAlso, should we explicity set the state to PD_STATE_SRC_DISCONNECTED_DEBOUNCE so it is easier to track how we get to the AudioAccessory statet, etc.",
+      "parentUuid": "09a5fa77_ab1f29a1",
+      "range": {
+        "startLine": 3012,
+        "startChar": 10,
+        "endLine": 3013,
+        "endChar": 33
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
