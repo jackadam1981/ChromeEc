@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dcc0ef19_86c2e1f0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-23T09:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcd6e94_a6667bc0",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 27
+      },
+      "revId": "41bb233c7208c6abe554dbe3aef38377c5db5283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c6f77f7_e906aff0",
         "filename": "include/config.h",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "41bb233c7208c6abe554dbe3aef38377c5db5283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78fd09bc_2db67977",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-23T09:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c6f77f7_e906aff0",
+      "range": {
+        "startLine": 647,
+        "startChar": 16,
+        "endLine": 647,
+        "endChar": 23
+      },
+      "revId": "41bb233c7208c6abe554dbe3aef38377c5db5283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
