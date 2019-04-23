@@ -148,9 +148,24 @@ static void bq25710_disable_prochot_vdpm(void)
 {
 	int reg;
 
+	/* Enable PROCHOT to be pull with VSYS min detection */
 	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_1, &reg)) {
-		raw_write16(BQ25710_REG_PROCHOT_OPTION_1,
-			    (reg & ~BQ25710_PROCHOT_PROFILE_VDPM));
+		reg &= ~BQ25710_PROCHOT_PROFILE_VDPM;
+		reg |= BQ25710_PROCHOT_PROFILE_VSYS;
+		raw_write16(BQ25710_REG_PROCHOT_OPTION_1, reg);
+	}
+
+	/* Reduce ILIM from default of 150% to 105% */
+	if (!raw_read16(BQ25710_REG_PROCHOT_OPTION_0, &reg)) {
+		reg &= ~BQ25710_PROCHOT0_ILIM_VTH_MASK;
+		//reg |= (1 << BQ25710_PROCHOT0_ILIM_VTH_SHIFT);
+		raw_write16(BQ25710_REG_PROCHOT_OPTION_0, reg);
+	}
+
+	/* */
+	if (!raw_read16(BQ25710_REG_CHARGE_OPTION_2, &reg)) {
+		reg &= ~BQ25710_CHARGE_OPTION_2_TMAX_MASK;
+		raw_write16(BQ25710_REG_CHARGE_OPTION_2, reg);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, bq25710_disable_prochot_vdpm, HOOK_PRIO_INIT_I2C + 1);
@@ -172,8 +187,7 @@ int charger_post_init(void)
 	 *	discharge on AC     = disabled
 	 */
 
-	/* Set charger input current limit */
-	return charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	return EC_SUCCESS;
 }
 
 int charger_get_status(int *status)
