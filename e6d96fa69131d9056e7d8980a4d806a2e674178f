@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6766083c_5cf08328",
+        "filename": "driver/max695x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-04-23T21:09:28Z",
+      "side": 1,
+      "message": "this is more of of binary coded hexadecimal conversion, do you want to add this info?",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "e6d96fa69131d9056e7d8980a4d806a2e674178f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff48d967_a017f684",
+        "filename": "driver/max695x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-04-23T21:09:28Z",
+      "side": 1,
+      "message": "use BIT(*) for better readability on all applicable macro",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "e6d96fa69131d9056e7d8980a4d806a2e674178f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
