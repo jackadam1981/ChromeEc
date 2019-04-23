@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16b61207_4015d793",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-04-23T07:18:54Z",
+      "side": 1,
+      "message": "How about \"#include \"sib_chip.h\"\"?",
+      "revId": "b62fe1b1e2dbc6a09c73b6ddd25cec35ca50a721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fccd07e9_173ec941",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-04-23T07:18:54Z",
+      "side": 1,
+      "message": "Move this line to line 679?",
+      "revId": "b62fe1b1e2dbc6a09c73b6ddd25cec35ca50a721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
