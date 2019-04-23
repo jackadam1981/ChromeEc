@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41042686_6e7e7d5f",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:58:42Z",
+      "side": 1,
+      "message": "comment saying that vector is an output of this macro",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429205f1_732b7d9b",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:58:42Z",
+      "side": 1,
+      "message": "Add comment saying that the return value from get_current_interrupt_vector is return in eax please",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ef519e_8d31057e",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:58:42Z",
+      "side": 1,
+      "message": "comment saying irq in an input to this macro",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "960e0dfb_3f505040",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:58:42Z",
+      "side": 1,
+      "message": "I think we should bill the IRQ that we are actually trying to service (so remove this push and corresponding addl to the SP)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e02fb84_4bbf24a6",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:58:42Z",
+      "side": 1,
+      "message": "add the comment here saying we push resche and desched here so handler doesn\u0027t clobber them",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 14
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6668dbdc_9fd1d0fe",
+        "filename": "core/minute-ia/switch.S",
+        "patchSetId": 17
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T19:58:42Z",
+      "side": 1,
+      "message": "Let\u0027s call out that ecx is an input here and that task_trigger_irq sets it before calling \"int\" instruction",
+      "range": {
+        "startLine": 176,
+        "startChar": 41,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "2e36fd8c53a1166a08c7b16e2875ffc0ea6cf249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
