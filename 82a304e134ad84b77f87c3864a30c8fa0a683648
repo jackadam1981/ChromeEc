@@ -22,6 +22,30 @@
       "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a5fa77_ab1f29a1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-23T04:03:17Z",
+      "side": 1,
+      "message": "Yes, try.SRC destination is going to be Attached.SRC state (only one Rd on cc pin be detected). \nDetecting cc both Rd will transition to UnorientedDebugAccessory.SRC state, and cc both Ra will transition to AudioAccessory state, these two cases do not meet try.SRC behavior (should break, and keep detecting only one cc Rd).",
+      "parentUuid": "68005302_8c96fee0",
+      "range": {
+        "startLine": 3012,
+        "startChar": 10,
+        "endLine": 3013,
+        "endChar": 33
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
