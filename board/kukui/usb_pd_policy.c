@@ -27,6 +27,9 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
+
+#define POR 0
+
 const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
@@ -243,7 +246,7 @@ static void svdm_safe_dp_mode(int port)
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
 	usb_mux_set(port, TYPEC_MUX_NONE,
-		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+		    USB_SWITCH_CONNECT, POR);
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -306,7 +309,7 @@ static void svdm_dp_post_config(int port)
 
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 	gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
-	gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
+	gpio_set_level(GPIO_USB_C0_DP_POLARITY, POR);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -330,7 +333,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	}
 
 	usb_mux_set(port, lvl ? TYPEC_MUX_DP : TYPEC_MUX_NONE,
-		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+		    USB_SWITCH_CONNECT, POR);
 
 	mux->hpd_update(port, lvl, irq);
 
@@ -346,7 +349,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 
 		gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
-		gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
+		gpio_set_level(GPIO_USB_C0_DP_POLARITY, POR);
 
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -356,7 +359,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	} else {
 		gpio_set_level(GPIO_USB_C0_HPD_OD, lvl);
 		gpio_set_level(GPIO_USB_C0_DP_OE_L, !lvl);
-		gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
+		gpio_set_level(GPIO_USB_C0_DP_POLARITY, POR);
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 	}
