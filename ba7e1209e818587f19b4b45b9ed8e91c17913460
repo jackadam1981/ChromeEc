@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9733bc9a_c949cee7",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-23T02:41:50Z",
+      "side": 1,
+      "message": "In coreboot , flapjack and kukui share the same display panel driver.  \n\nThen coreboot needs to get the correct panel id, and then send corresponding init codes to display driver IC. \n\nOn Huaqin\u0027s Coreboot ToT,  we also have a enum panel_id including panels for Kukui and Flapjack.  Although Kukui does not read panel id in EC, in order to sync with coreboot code , we add PANEL_KUKUI_INNOLUX here. \n\nMTK is now working on the display driver of coreboot on coreboot.org.   We will upstream panel suuport for flapjack later.\n\nYou may refer to CL:1498995",
+      "parentUuid": "5fa3c915_69d782e9",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "ba7e1209e818587f19b4b45b9ed8e91c17913460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e5ed289_cd9b0c7d",
         "filename": "board/flapjack/board.h",
         "patchSetId": 4
