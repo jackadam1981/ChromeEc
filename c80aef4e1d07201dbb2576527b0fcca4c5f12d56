@@ -22,6 +22,29 @@
       "revId": "c80aef4e1d07201dbb2576527b0fcca4c5f12d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc3a6dc4_95f0c353",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-23T10:05:02Z",
+      "side": 1,
+      "message": "nit: A bug id here would be good.",
+      "range": {
+        "startLine": 513,
+        "startChar": 4,
+        "endLine": 513,
+        "endChar": 8
+      },
+      "revId": "c80aef4e1d07201dbb2576527b0fcca4c5f12d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
