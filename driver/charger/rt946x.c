@@ -16,6 +16,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
+#include "driver/wpc/p9221.h"
 #include "rt946x.h"
 #include "task.h"
 #include "timer.h"
@@ -24,6 +25,8 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, "CHG " format, ## args)
+
 
 /* Charger parameters */
 static const struct charger_info rt946x_charger_info = {
@@ -39,16 +42,7 @@ static const struct charger_info rt946x_charger_info = {
 	.input_current_step = INPUT_I_STEP,
 };
 
-struct charger_init_setting {
-	uint16_t eoc_current;
-	uint16_t mivr;
-	uint16_t ircmp_vclamp;
-	uint16_t ircmp_res;
-	uint16_t boost_voltage;
-	uint16_t boost_current;
-};
-
-static const struct charger_init_setting rt946x_charger_init_setting = {
+static const struct rt946x_init_setting default_init_setting = {
 	.eoc_current = 400,
 	.mivr = 4000,
 	.ircmp_vclamp = 32,
@@ -56,6 +50,12 @@ static const struct charger_init_setting rt946x_charger_init_setting = {
 	.boost_voltage = 5050,
 	.boost_current = 1500,
 };
+
+__attribute__((weak))
+const struct rt946x_init_setting *board_rt946x_init_setting(void)
+{
+	return &default_init_setting;
+}
 
 enum rt946x_ilmtsel {
 	RT946X_ILMTSEL_PSEL_OTG,
@@ -403,6 +403,7 @@ static int rt946x_init_setting(void)
 {
 	int rv = 0;
 	const struct battery_info *batt_info = battery_get_info();
+	const struct rt946x_init_setting *setting = board_rt946x_init_setting();
 
 #ifdef CONFIG_CHARGER_OTG
 	/*  Disable boost-mode output voltage */
@@ -430,24 +431,24 @@ static int rt946x_init_setting(void)
 	rv = rt946x_clr_bit(RT946X_REG_CHGCTRL12, RT946X_MASK_TMR_EN);
 	if (rv)
 		return rv;
-	rv = rt946x_set_mivr(rt946x_charger_init_setting.mivr);
+	rv = rt946x_set_mivr(setting->mivr);
 	if (rv)
 		return rv;
-	rv = rt946x_set_ieoc(rt946x_charger_init_setting.eoc_current);
+	rv = rt946x_set_ieoc(setting->eoc_current);
 	if (rv)
 		return rv;
 	rv = rt946x_set_boost_voltage(
-		rt946x_charger_init_setting.boost_voltage);
+		setting->boost_voltage);
 	if (rv)
 		return rv;
 	rv = rt946x_set_boost_current(
-		rt946x_charger_init_setting.boost_current);
+		setting->boost_current);
 	if (rv)
 		return rv;
-	rv = rt946x_set_ircmp_vclamp(rt946x_charger_init_setting.ircmp_vclamp);
+	rv = rt946x_set_ircmp_vclamp(setting->ircmp_vclamp);
 	if (rv)
 		return rv;
-	rv = rt946x_set_ircmp_res(rt946x_charger_init_setting.ircmp_res);
+	rv = rt946x_set_ircmp_res(setting->ircmp_res);
 	if (rv)
 		return rv;
 	rv = rt946x_set_vprec(batt_info->voltage_min);
@@ -926,17 +927,37 @@ void usb_charger_task(void *u)
 
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
+			CPRINTS("VBUS attached: %dmV",
+					charger_get_vbus_voltage(0));
 			bc12_type = rt946x_get_bc12_device_type();
+
+			CPRINTS("BC12 type %d", bc12_type);
 			if (bc12_type != CHARGE_SUPPLIER_NONE) {
-				chg.current = rt946x_get_bc12_ilim(bc12_type);
-				charge_manager_update_charge(bc12_type,
-							     0, &chg);
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+				if ((bc12_type == CHARGE_SUPPLIER_BC12_SDP) &&
+						wpc_chip_is_online()) {
+					p9221_notify_vbus_change(1);
+					CPRINTS("WPC ON");
+				} else {
+
+#endif
+					chg.current = rt946x_get_bc12_ilim(
+								bc12_type);
+					charge_manager_update_charge(bc12_type,
+								     0, &chg);
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+				}
+#endif
 				rt946x_enable_bc12_detection(0);
 			}
 		}
 
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
+			CPRINTS("VBUS detached");
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+			p9221_notify_vbus_change(0);
+#endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
 			rt946x_enable_bc12_detection(1);
 		}
@@ -1079,4 +1100,4 @@ int mt6370_led_set_pwm_frequency(enum mt6370_led_index index,
 			   freq << MT6370_SHIFT_RGBISNK_DIMFSEL);
 	return EC_SUCCESS;
 }
-#endif
+#endif /* CONFIG_CHARGER_MT6370 */
