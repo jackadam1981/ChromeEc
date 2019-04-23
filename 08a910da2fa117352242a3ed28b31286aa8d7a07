@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c70b1a6d_0ca8fce5",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T13:38:56Z",
+      "side": 1,
+      "message": "use CPRINTS here please so it can use the same channel as the other prints in this file",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 12
+      },
+      "revId": "08a910da2fa117352242a3ed28b31286aa8d7a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64fbab5_38e3c935",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-23T13:38:56Z",
+      "side": 1,
+      "message": "nit: let;s return ISH_PM_STATE_D0I0 explicitly since that is always what we are going to want (and it make the code easier to follow)",
+      "range": {
+        "startLine": 442,
+        "startChar": 11,
+        "endLine": 442,
+        "endChar": 19
+      },
+      "revId": "08a910da2fa117352242a3ed28b31286aa8d7a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
