@@ -117,6 +117,30 @@
       "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e9ecb25_99a41e55",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-23T18:46:53Z",
+      "side": 1,
+      "message": "looks like it\u0027s related with one of the power level D0i1. Hm.. looks like it\u0027s better go make a bug item on it. will be back with more testing",
+      "parentUuid": "8508758d_97e9bbf0",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
