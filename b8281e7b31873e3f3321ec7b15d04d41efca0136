@@ -93,6 +93,30 @@
       "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8508758d_97e9bbf0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-23T16:55:52Z",
+      "side": 1,
+      "message": "For timer 0, we don\u0027t set any.\n\nCurrently I\u0027m testing more on this since I\u0027ve never seen this before. I\u0027m not sure if it was there but we didn\u0027t see or some feature we just added made this problem.\n\nI don\u0027t know what makes difference but let me check if there\u0027s any other way to check if it\u0027s settled or not.",
+      "parentUuid": "1d7cf7ef_3c9ac5ef",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
