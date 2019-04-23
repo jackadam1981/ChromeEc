@@ -22,6 +22,30 @@
       "revId": "f9ec1902bcec177433b6f63e4859d3eb979adf20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bbff48d_aaf87f6a",
+        "filename": "driver/max695x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-23T22:56:57Z",
+      "side": 1,
+      "message": "For console command all the segments represent data",
+      "parentUuid": "3a76e19e_2dbaaffb",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "f9ec1902bcec177433b6f63e4859d3eb979adf20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
