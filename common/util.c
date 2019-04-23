@@ -136,7 +136,8 @@ int strtoi(const char *nptr, char **endptr, int base)
 		c = *nptr++;
 	}
 	
-	if ((base == 0 || base == 16) && c == '0' && *nptr == 'x') {
+	if ((base == 0 || base == 16) && c == '0'
+	    && (*nptr == 'x' || *nptr == 'X')) {
 		base = 16;
 		c = nptr[1];
 		nptr += 2;
@@ -179,7 +180,8 @@ uint64_t strtoul(const char *nptr, char **endptr, int base)
 		return result;
 	}
 	
-	if ((base == 0 || base == 16) && c == '0' && *nptr == 'x') {
+	if ((base == 0 || base == 16) && c == '0'
+	    && (*nptr == 'x' || *nptr == 'X')) {
 		base = 16;
 		c = nptr[1];
 		nptr += 2;
