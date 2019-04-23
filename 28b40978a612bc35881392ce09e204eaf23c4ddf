@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7656f5a4_53d6d160",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T17:33:50Z",
+      "side": 1,
+      "message": "Please remove this and do:\n\nstatic int max17055_load_batt_model(void)\n{\n\tif (IS_ENABLED(CONFIG_BATTERY_MAX17055_FULL_MODEL))\n\t\treturn max17055_load_batt_model_full();\n\telse\n\t\treturn max17055_load_batt_model_short();\n}",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 41
+      },
+      "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7284a72_889ab807",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T17:33:50Z",
+      "side": 1,
+      "message": "max17055_exit_hibernate",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 26
+      },
+      "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f991c51_69a8b70a",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-23T17:33:50Z",
+      "side": 1,
+      "message": "max17055_poll_flag_clear",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 26
+      },
+      "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
