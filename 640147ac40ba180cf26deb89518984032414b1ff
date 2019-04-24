@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d5ab32_5a57547c",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-24T14:24:57Z",
+      "side": 1,
+      "message": "Some external monitors can\u0027t display content normally (eg. ViewSonic VX2880).\nWe need to turn the mux for monitors to function normally.",
+      "revId": "640147ac40ba180cf26deb89518984032414b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86d770b1_4ea95c6d",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-24T14:24:57Z",
+      "side": 1,
+      "message": "As Jett mentioned, should leverage mux_write? Then slave address don\u0027t need to be specified.",
+      "revId": "640147ac40ba180cf26deb89518984032414b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73da1cab_e47f93b8",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-04-24T14:24:57Z",
+      "side": 1,
+      "message": "nit: space instead of a tab",
+      "revId": "640147ac40ba180cf26deb89518984032414b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
