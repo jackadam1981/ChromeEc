@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b2ba200_749d04ce",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "we can request up to 20V, I don\u0027t understand this. When can we only request 5v? It this non-PD max?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abfbd0e_a8998d5f",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "should we name the variable to include AUDIO or AUDIO_ACC since this comment make it seem highly correlate to that?",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125d5372_aeb48086",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "nit: this can be a ternary operation on the last parameter",
+      "range": {
+        "startLine": 338,
+        "startChar": 32,
+        "endLine": 338,
+        "endChar": 49
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35879bbe_5fc00d16",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "what do you think about using the new IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC) marco in an if statement? (it might now work though depending on availablity of the tcpm function though)",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 37
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec8c123_111f1e28",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "should the prefix be tc_ instead of pd_ since this is a type c connection not a pd connection?",
+      "range": {
+        "startLine": 369,
+        "startChar": 4,
+        "endLine": 369,
+        "endChar": 19
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c214799a_a818411a",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "I see this is a copy of the current version, what is our plan to keep these two version in sync (until the new statemachine fully takes over)?\n\nAlso this seems like it should go in a more general location instead of file for drp acc trysrc",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 46
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29fb03ae_45704a4d",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "we should be able to use the IS_ENABLED marco for this logic branch",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 33
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec27a17_a4b47f35",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "whoa, what is happening here? This is buried deeply in a header file.\n\nSo of the board.h includes this header file or not changes how the pd task is expressed?\n\nThis seems very hard to trace to figure what is going on and how things are complied.\n\nI would prefer not to see this, but if we really need this it should be at the top of the header file (again, let\u0027s try to obviate the need for this instead though)",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 38
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de6db30_a6c307fc",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "this kind of code belongs in a c file. Why is this in a header file?",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 1
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

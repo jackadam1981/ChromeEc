@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f8dd4c8b_49be2229",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "Interesting. Keeping this way works for me too",
+      "parentUuid": "321298af_7df10867",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd3e47a4_9b763df9",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 3
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "This is a good idea and we should discuss how this can be done. My only concern is increasing flash size to save ram. From my testing on various devices, flash size has been the limiting factor.",
       "parentUuid": "fd3e47a4_9b763df9",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 22
+      },
+      "revId": "5e03d81066635d84095970e3d786069ab93c534e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935fee62_8db8e7b6",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T17:28:16Z",
+      "side": 1,
+      "message": "We could have a timestamp of when the last transition occurred, and then when we compare the times to now we always add the appropriate offset (instead of adding the offset then storing it). Does that sound feasible?",
+      "parentUuid": "1000e556_623d3d01",
       "range": {
         "startLine": 51,
         "startChar": 1,
