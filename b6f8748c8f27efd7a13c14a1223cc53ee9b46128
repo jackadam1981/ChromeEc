@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4217a0e8_7c924bc0",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-04-24T20:50:31Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be better to query the current from the fuel gauge?  it\u0027s probably more accurate and doesn\u0027t interfere with VBUS readings",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 34
+      },
+      "revId": "b6f8748c8f27efd7a13c14a1223cc53ee9b46128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

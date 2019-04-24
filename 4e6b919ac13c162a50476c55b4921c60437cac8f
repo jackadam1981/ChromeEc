@@ -69,6 +69,30 @@
       "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a7f7252_17e347f5",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2019-04-24T20:50:31Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not sure if 10 seconds is too slow or not.\n\nI think the question that would determine the poll frequency would be:\n* With the highest Ibatt current that can trigger the shoot-through, how long would it take to advance charging from 1001mA (just above our detection threshold) into the danger zone?  (We should poll slightly more frequently than this.)  This would have to be the worst case across battery lifespan and temperature.\n\nI do not think Richtek/Mediatek has characterized the bug to the point where they can give you a reasonable answer to this.\n\nMy gut says 10s is reasonable, but I\u0027ve learned not to trust my gut when it comes to this silicon bug, since Richtek\u0027s understanding of the issue is deceptively shallow.",
+      "parentUuid": "9141cff2_9353811c",
+      "range": {
+        "startLine": 268,
+        "startChar": 25,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
