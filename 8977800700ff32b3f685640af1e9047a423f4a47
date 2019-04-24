@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9a90847_0aec8b30",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T16:41:10Z",
+      "side": 1,
+      "message": "nit: please remove extra white space",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 10
+      },
+      "revId": "8977800700ff32b3f685640af1e9047a423f4a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c70449_2b07c365",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T16:41:10Z",
+      "side": 1,
+      "message": "wrapping this in an if statement actually seems more appropriate than making the loop continue.\n\nIt is subjective so I could be convinced either way though.",
+      "range": {
+        "startLine": 508,
+        "startChar": 3,
+        "endLine": 511,
+        "endChar": 59
+      },
+      "revId": "8977800700ff32b3f685640af1e9047a423f4a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c1c4c2_3efe7916",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T16:41:10Z",
+      "side": 1,
+      "message": "can you add a comment above these lines saying something to the affect now that we have send the key press, we want to debounce the new state.",
+      "range": {
+        "startLine": 514,
+        "startChar": 2,
+        "endLine": 515,
+        "endChar": 24
+      },
+      "revId": "8977800700ff32b3f685640af1e9047a423f4a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
