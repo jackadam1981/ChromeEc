@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "c1760477_33427a33",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-24T16:34:50Z",
+      "side": 1,
+      "message": "It looks you fixed it in the newer patchsets.",
+      "parentUuid": "d7c3f96e_985aaac1",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36db4b7_eaef2a5f",
         "filename": "driver/max695x.c",
         "patchSetId": 2
