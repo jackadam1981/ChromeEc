@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b31c91e_9ccb7703",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-04-24T12:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7656f5a4_53d6d160",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 41
+      },
+      "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7284a72_889ab807",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8bae059d_1559f38d",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-04-24T12:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7284a72_889ab807",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 26
+      },
+      "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f991c51_69a8b70a",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ca7791_ae3281cf",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-04-24T12:05:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f991c51_69a8b70a",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 26
+      },
+      "revId": "28b40978a612bc35881392ce09e204eaf23c4ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
