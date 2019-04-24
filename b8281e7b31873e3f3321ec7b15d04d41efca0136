@@ -182,6 +182,30 @@
       "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0412e160_3daaad2c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-24T16:45:15Z",
+      "side": 1,
+      "message": "@Hebo (or Hyungwoo) can you send a CL to wait for settling instead please?",
+      "parentUuid": "ed3b2de8_1399bde1",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
