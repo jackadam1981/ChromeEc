@@ -22,6 +22,30 @@
       "revId": "c04a0865f98191c16c9254034f48bd9c46f483d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbf2a18_79da6f32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-24T16:59:56Z",
+      "side": 1,
+      "message": "It doesn\u0027t fix automatic signing. It\u0027s for manual siging.\nThe manifest for automatic signing sets the board id to FFFF:0:10000. We need to be able to override that when we do manual signing, so we can set the board id to 0:0:0. Using CR50_BOARD_ID\u003d0:0:0 doesn\u0027t work without this change.",
+      "parentUuid": "1b399c4f_b280db50",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "c04a0865f98191c16c9254034f48bd9c46f483d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
