@@ -42,6 +42,12 @@ test_mockable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_BC12_CDP] = 4,
 	[CHARGE_SUPPLIER_BC12_SDP] = 5,
 	[CHARGE_SUPPLIER_OTHER] = 6,
+	/*
+	 * USB-C spec 1.3 Table 4-17:
+	 * TYPEC 3.0A, 1.5A > BC1.2 > TYPEC under 1.5A.
+	 */
+	[CHARGE_SUPPLIER_TYPEC_UNDER_1_5A] = 6,
+	[CHARGE_SUPPLIER_TYPEC_DTS_UNDER_1_5A] = 6,
 	[CHARGE_SUPPLIER_VBUS] = 7,
 #endif
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
@@ -900,7 +906,17 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
 				   uint32_t supply_voltage)
 {
 	struct charge_port_info charge;
+	int i;
+	int supplier;
 	int dts = !!(max_ma & TYPEC_CURRENT_DTS_MASK);
+	static const enum charge_supplier typec_suppliers[] = {
+		CHARGE_SUPPLIER_TYPEC,
+		CHARGE_SUPPLIER_TYPEC_DTS,
+#ifdef CHARGE_MANAGER_BC12
+		CHARGE_SUPPLIER_TYPEC_UNDER_1_5A,
+		CHARGE_SUPPLIER_TYPEC_DTS_UNDER_1_5A,
+#endif
+	};
 
 	charge.current = max_ma & TYPEC_CURRENT_ILIM_MASK;
 	charge.voltage = supply_voltage;
@@ -913,19 +929,37 @@ void typec_set_input_current_limit(int port, typec_current_t max_ma,
 	if (dts)
 		charge.current = MIN(charge.current, 500);
 #endif
-	charge_manager_update_charge(dts ? CHARGE_SUPPLIER_TYPEC_DTS :
-					   CHARGE_SUPPLIER_TYPEC,
-					   port, &charge);
+
+#ifdef CHARGE_MANAGER_BC12
 
 	/*
-	 * Zero TYPEC / TYPEC-DTS when zero'ing the other, since they are
-	 * mutually exclusive and DTS status of port partner will no longer
-	 * be reflected on disconnect.
+	 * According to USB-C spec 1.3 Table 4-17 "Precedence of power source
+	 * usage", the priority should be: USB-C 3.0A, 1.5A > BC1.2 > USB-C
+	 * under 1.5A.  Choosed the corresponding supplier type to update
+	 * according to charge current and dts.
 	 */
-	if (max_ma == 0 || supply_voltage == 0)
-		charge_manager_update_charge(dts ? CHARGE_SUPPLIER_TYPEC :
-						   CHARGE_SUPPLIER_TYPEC_DTS,
-						   port, &charge);
+	if (dts)
+		supplier = charge.current < 1500
+				   ? CHARGE_SUPPLIER_TYPEC_DTS_UNDER_1_5A
+				   : CHARGE_SUPPLIER_TYPEC_DTS;
+	else
+		supplier = charge.current < 1500
+				   ? CHARGE_SUPPLIER_TYPEC_UNDER_1_5A
+				   : CHARGE_SUPPLIER_TYPEC;
+#else /* !CHARGE_MANAGER_BC12 */
+	supplier = dts ? CHARGE_SUPPLIER_TYPEC_DTS : CHARGE_SUPPLIER_TYPEC;
+#endif /* CHARGE_MANAGER_BC12 */
+
+	charge_manager_update_charge(supplier, port, &charge);
+
+	/*
+	 * TYPEC / TYPEC-DTS / TYPEC-UNDER_1_5A / TYPEC-DTS-UNDER_1_5A should
+	 * be mutually exclusive.  Zero'ing all the other suppliers.
+	 */
+	for (i = 0; i < ARRAY_SIZE(typec_suppliers); ++i)
+		if (supplier != typec_suppliers[i])
+			charge_manager_update_charge(typec_suppliers[i], port,
+						     NULL);
 }
 
 void charge_manager_update_charge(int supplier,
