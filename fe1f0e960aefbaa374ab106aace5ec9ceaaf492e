@@ -22,6 +22,30 @@
       "revId": "fe1f0e960aefbaa374ab106aace5ec9ceaaf492e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c645c363_174b2209",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-24T17:54:09Z",
+      "side": 0,
+      "message": "I don\u0027t think it\u0027s ever a valid reason. You can\u0027t set the password unless you open cr50, so saying you need a password to open cr50 isn\u0027t great.\n\nIf a password is set and you need to use it, then that will be handled by 904-923.",
+      "parentUuid": "cb376e9c_d7d1a1de",
+      "range": {
+        "startLine": 938,
+        "startChar": 7,
+        "endLine": 938,
+        "endChar": 23
+      },
+      "revId": "fe1f0e960aefbaa374ab106aace5ec9ceaaf492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
