@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47424ace_975640b1",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-24T03:43:31Z",
+      "side": 1,
+      "message": "CL:1498995 adds header file.",
+      "parentUuid": "7fdb67ec_549fbeb8",
+      "range": {
+        "startLine": 251,
+        "startChar": 48,
+        "endLine": 251,
+        "endChar": 55
+      },
+      "revId": "ba7e1209e818587f19b4b45b9ed8e91c17913460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa741d42_25ced580",
         "filename": "board/flapjack/board.h",
         "patchSetId": 4
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Are we going to use one panel ID mapping shared with Kukui? That forces us to reserve all IDs only used by Kukui. Is it scalable?\n\nSeparating the mapping is easy. Why do you want to give ourselves such restriction?",
       "parentUuid": "9733bc9a_c949cee7",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 20
+      },
+      "revId": "ba7e1209e818587f19b4b45b9ed8e91c17913460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2ab621_1e2b2406",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1311111
+      },
+      "writtenOn": "2019-04-24T03:43:31Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "03b9a2fe_e03df684",
       "range": {
         "startLine": 254,
         "startChar": 1,
