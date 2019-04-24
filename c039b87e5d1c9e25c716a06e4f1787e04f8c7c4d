@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0fcef86a_c165be6e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-24T11:26:42Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve checked all occurrences of is_sink and is_connected.\n\nduralrole_capability will remain the same: only allow CAP_DEDICATED, so the port won\u0027t do power role swap, nor go through the delayed override port mechanic.\nAnd charge supplier type will be CHARGE_SUPPLIER_DEDICATED only (to avoid charge ramp related things).\n\nWill document this in the header and add an extra check in charge_manager_update_dualrole().",
+      "parentUuid": "b3cac7b1_ac1fb4f4",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "c039b87e5d1c9e25c716a06e4f1787e04f8c7c4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ebca018_d963c017",
         "filename": "common/charge_manager.c",
         "patchSetId": 11
