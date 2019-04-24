@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dbd987be_bcdaa303",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-24T01:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c431077_d3b6be5b",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23367251_92d2831a",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "d7c3f96e_985aaac1",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-24T01:23:49Z",
+      "side": 1,
+      "message": "The first and the second byte is manipulated to represent module.",
+      "parentUuid": "21689802_4eeea55b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36db4b7_eaef2a5f",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "I meant\ni2c_write32(I2C_PORT_PORT80, PORT80_I2C_ADDR, MAX695X_DIGIT0_ADDR | I2C_FLAG_BIG_ENDIAN, data);",
       "parentUuid": "33afcacd_aaf8b8fc",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6f1368_fb34d68b",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-24T01:23:49Z",
+      "side": 1,
+      "message": "for i2c_write32 with the BIG_ENDIAN_FLAG, if the data is 0xEC34, it sends 0xEC as first byte and 0x34 as second byte. We need to send 0x0E as first, 0x0C as second and so on because the max695x decoder discards the upper nibble. \nIf we directly send the data using i2c_write, only alternate bits will get displayed.",
+      "parentUuid": "40f4d449_5aa7364f",
       "range": {
         "startLine": 51,
         "startChar": 0,
