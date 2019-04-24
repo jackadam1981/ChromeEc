@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6c431077_d3b6be5b",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-24T00:23:42Z",
+      "side": 1,
+      "message": "I meant driver/led/max695x.c.",
+      "parentUuid": "ff14d3ec_7234b048",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23367251_92d2831a",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "21689802_4eeea55b",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-24T00:23:42Z",
+      "side": 1,
+      "message": "If I read the code correctly, only the 2nd byte is manipulated to represent the module.",
+      "parentUuid": "0e265220_96d4ce54",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d36db4b7_eaef2a5f",
         "filename": "driver/max695x.c",
         "patchSetId": 2
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "For same reason mentioned above, we can\u0027t directly send the data for a i2c_write32",
       "parentUuid": "d36db4b7_eaef2a5f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "70cb25e6557d8accc71988d5119d5462517e8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f4d449_5aa7364f",
+        "filename": "driver/max695x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-24T00:23:42Z",
+      "side": 1,
+      "message": "I meant\ni2c_write32(I2C_PORT_PORT80, PORT80_I2C_ADDR, MAX695X_DIGIT0_ADDR | I2C_FLAG_BIG_ENDIAN, data);",
+      "parentUuid": "33afcacd_aaf8b8fc",
       "range": {
         "startLine": 51,
         "startChar": 0,
