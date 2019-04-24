@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2b6fce7_e9d1e5af",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-24T17:01:13Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 62
+      },
+      "revId": "a451d65be470ef981bdfb5e468d46504724bc4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e12b100_1233aeea",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-24T17:01:13Z",
+      "side": 1,
+      "message": "Realized that this is not necessary since QUEUE_ADD_UNITS() will accommodate data within queue_space() and return the amount of the added.",
+      "range": {
+        "startLine": 149,
+        "startChar": 12,
+        "endLine": 149,
+        "endChar": 45
+      },
+      "revId": "a451d65be470ef981bdfb5e468d46504724bc4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
