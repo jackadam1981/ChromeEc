@@ -1616,6 +1616,27 @@ static void handle_ext_request(int port, uint16_t head, uint32_t *payload)
 }
 #endif
 
+static void pd_mechanical_disconnect(int port)
+{
+	CPRINTS("C%d %s", port, __func__);
+	if (tcpm_set_cc(port, TYPEC_CC_OPEN) == EC_SUCCESS) {
+		/* Do not drive VBUS or VCONN. */
+		pd_power_supply_reset(port);
+		if (IS_ENABLED(CONFIG_USBC_VCONN))
+			set_vconn(port, 0);
+		usleep(PD_T_ERROR_RECOVERY);
+
+		/* Restore terminations. */
+		tcpm_set_cc(port,
+			    DUAL_ROLE_IF_ELSE(port, TYPEC_CC_RD, TYPEC_CC_RP));
+	}
+	set_state(port,
+		  DUAL_ROLE_IF_ELSE(port,
+				    PD_STATE_SNK_DISCONNECTED,
+				    PD_STATE_SRC_DISCONNECTED));
+	return;
+}
+
 static void handle_request(int port, uint16_t head,
 		uint32_t *payload)
 {
@@ -1650,22 +1671,7 @@ static void handle_request(int port, uint16_t head,
 		 * If the port doesn't support removing the terminations, just
 		 * go to the unattached state.
 		 */
-		if (tcpm_set_cc(port, TYPEC_CC_OPEN) == EC_SUCCESS) {
-			/* Do not drive VBUS or VCONN. */
-			pd_power_supply_reset(port);
-#ifdef CONFIG_USBC_VCONN
-			set_vconn(port, 0);
-#endif /* defined(CONFIG_USBC_VCONN) */
-			usleep(PD_T_ERROR_RECOVERY);
-
-			/* Restore terminations. */
-			tcpm_set_cc(port, DUAL_ROLE_IF_ELSE(port, TYPEC_CC_RD,
-							    TYPEC_CC_RP));
-		}
-		set_state(port,
-			  DUAL_ROLE_IF_ELSE(port,
-					    PD_STATE_SNK_DISCONNECTED,
-					    PD_STATE_SRC_DISCONNECTED));
+		pd_mechanical_disconnect(port);
 		return;
 	}
 
@@ -3743,20 +3749,16 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_startup(void)
 {
-	int i;
 	pd_set_dual_role(PD_DRP_TOGGLE_OFF);
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
-		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
 	CPRINTS("PD:S5->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_shutdown(void)
 {
-	int i;
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-			       PD_EVENT_DP_DISCONNECT, 0);
+	int p;
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++)
+		pd_mechanical_disconnect(p);
 	pd_set_dual_role(PD_DRP_FORCE_SINK);
 	CPRINTS("PD:S3->S5");
 }
