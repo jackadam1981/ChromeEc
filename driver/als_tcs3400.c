@@ -18,6 +18,9 @@
 static volatile uint32_t last_interrupt_timestamp;
 #endif
 
+/* Log ALS data to EC console */
+int gLogAlsData;
+
 static inline int tcs3400_i2c_read_port(uint8_t port, uint8_t addr,
 					const int reg, int *data_ptr)
 {
@@ -103,16 +106,15 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 		vector.data[Y] = v[Y] = 0;
 		vector.data[Z] = v[Z] = 0;
 		vector.sensor_num = s - motion_sensors;
-#ifdef LOG_DATA_FLOW
-		cprints(CC_TASK, "%s Sending Clear channel data (0x%x)",
-				__func__, data);
-#endif
+
+		if (gLogAlsData)
+			cprints(CC_TASK, "%s Sending Clear channel data"
+				" (0x%x)", __func__, data);
+
 		motion_sense_fifo_add_data(&vector, s, 3, last_ts);
-	} else {
-#ifdef LOG_DATA_FLOW
+	} else if (gLogAlsData) {
 		cprints(CC_TASK, "%s Clear channel data unchanged (0x%x)",
 				__func__, data);
-#endif
 	}
 
 	return EC_SUCCESS;
@@ -146,9 +148,9 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	ret = i2c_read8(s->port, s->addr, TCS_I2C_STATUS, &status);
 	if (ret)
 		goto unlock;
-#ifdef LOG_DATA_FLOW
-	cprints(CC_TASK, "%s: status=0x%x", __func__, status);
-#endif
+
+	if (gLogAlsData)
+		cprints(CC_TASK, "%s: status=0x%x", __func__, status);
 
 	/* Disable future interrupts */
 	ret = i2c_read8(s->port, s->addr, TCS_I2C_ENABLE, &status);
@@ -317,6 +319,19 @@ static int tcs3400_init(const struct motion_sensor_t *s)
 	tcs3400_set_range(s, s->default_range, 0);
 	return ret;
 }
+
+static int command_log_als_data(int argc, char **argv)
+{
+	/* toggle log state */
+	gLogAlsData = (gLogAlsData) ? 0 : 1;
+	cprints(CC_TASK, "%s ALS data logging now %sabled",
+			__func__, gLogAlsData ? "en" : "dis");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(alslog, command_log_als_data,
+	"",
+	"Toggle state of ALS data logging.");
+
 
 const struct accelgyro_drv tcs3400_drv = {
 	.init = tcs3400_init,
