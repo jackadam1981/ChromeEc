@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9255516e_60681535",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-24T05:08:10Z",
+      "side": 1,
+      "message": "And no side-effects seen in power state machine when powering off with and without PP5000 going away in S5/G3?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 41
+      },
+      "revId": "baf25b4219d61d049e88d0a0eaaafd5856c7a4aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
