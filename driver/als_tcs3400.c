@@ -16,6 +16,26 @@
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
 
+#ifdef CONFIG_CMD_ALSLOG
+static int gLogAlsData;
+static int command_log_als_data(int argc, char **argv)
+{
+	/* toggle log state */
+	gLogAlsData = (gLogAlsData) ? 0 : 1;
+	CPRINTS("ALS data logging now %sabled", gLogAlsData ? "en" : "dis");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(alslog, command_log_als_data,
+	"",
+	"Toggle state of ALS data logging.");
+
+#define ALSLOG(format, args...) do { if (gLogAlsData) \
+					CPRINTS(format, ## args); \
+				} while (0)
+#else
+#define ALSLOG(format, args...) { }
+#endif
+
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
 #endif
@@ -112,7 +132,7 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 
 	/* Correct negative values to zero */
 	if (data < 0) {
-		CPRINTS("Negative clear val 0x%x set to 0", data);
+		ALSLOG("Negative clear val 0x%x set to 0", data);
 		data = 0;
 	}
 
@@ -128,8 +148,11 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 		vector.data[Z] = v[Z] = 0;
 #ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = s - motion_sensors;
+		ALSLOG("Sending Clear channel data (0x%x)", data);
 		motion_sense_fifo_add_data(&vector, s, 3, last_ts);
 #endif
+	} else {
+		ALSLOG("Clear channel data unchanged (0x%x)", data);
 	}
 
 	rgb_data[X] = ((light_data[3] << 8) | light_data[2]);
@@ -173,7 +196,14 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 		vector.data[Y] = v[Y] = rgb_data[Y];
 		vector.data[Z] = v[Z] = rgb_data[Z];
 		vector.sensor_num = rgb_s - motion_sensors;
+
+		ALSLOG("Sending RGB channel data (0x%x 0x%x 0x%x)",
+				v[X], v[Y], v[Z]);
+
 		motion_sense_fifo_add_data(&vector, rgb_s, 3, last_ts);
+	} else {
+		ALSLOG("RGB channel unchanged (0x%x 0x%x 0x%x)",
+			rgb_data[X], rgb_data[Y], rgb_data[Z]);
 	}
 
 	return EC_SUCCESS;
@@ -205,6 +235,8 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &status);
 	if (ret)
 		goto unlock;
+
+	ALSLOG("status=0x%x", status);
 
 	/* Disable future interrupts */
 	ret = tcs3400_i2c_read8(s, TCS_I2C_ENABLE, &status);
