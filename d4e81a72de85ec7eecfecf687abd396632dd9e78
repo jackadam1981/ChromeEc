@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32480673_1d336fdc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-04-24T16:40:54Z",
+      "side": 1,
+      "message": "When I tested on my CL I found that things worked a bit better if you check sensor-\u003enext_collection - motion_min_interval. This is because if next_collection is 100ms but now is 98ms we\u0027d end up sleeping for 3ms and actually collecting about 3-4ms late.",
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
