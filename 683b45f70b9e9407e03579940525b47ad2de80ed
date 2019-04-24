@@ -22,6 +22,30 @@
       "revId": "683b45f70b9e9407e03579940525b47ad2de80ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da77fb36_6316cf88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-24T15:45:11Z",
+      "side": 1,
+      "message": "oops, scrape that, this is not an ebuild patch.",
+      "parentUuid": "7e32c1a3_ca06f1c9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "683b45f70b9e9407e03579940525b47ad2de80ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
