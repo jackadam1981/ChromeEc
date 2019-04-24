@@ -46,6 +46,30 @@
       "revId": "c04a0865f98191c16c9254034f48bd9c46f483d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fcff00_9b4679f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-24T17:28:52Z",
+      "side": 1,
+      "message": "ah, so the prod branch manifest should be fixed to set board ID to 0 instead of FFFF ascii (the flag part will still have to be handled manually for a bit longer).",
+      "parentUuid": "5dbf2a18_79da6f32",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "c04a0865f98191c16c9254034f48bd9c46f483d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
