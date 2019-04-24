@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3371d072_66b40968",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2019-04-24T15:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d5ab32_5a57547c",
+      "revId": "640147ac40ba180cf26deb89518984032414b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86d770b1_4ea95c6d",
         "filename": "board/ampton/board.c",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a4e84359_06403629",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2019-04-24T15:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d770b1_4ea95c6d",
+      "revId": "640147ac40ba180cf26deb89518984032414b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73da1cab_e47f93b8",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "640147ac40ba180cf26deb89518984032414b1ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e470b179_759b89e0",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2019-04-24T15:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73da1cab_e47f93b8",
+      "revId": "640147ac40ba180cf26deb89518984032414b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
