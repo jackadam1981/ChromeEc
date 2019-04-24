@@ -1903,20 +1903,6 @@ void pd_set_dual_role(int port, enum pd_dual_role_states state)
 			       PD_EVENT_UPDATE_DUAL_ROLE, 0);
 }
 
-static void exit_dp_mode(int port)
-{
-	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-	if (opos <= 0)
-		return;
-	CPRINTS("C%d Exiting DP mode", port);
-	if (!pd_dfp_exit_mode(port, USB_SID_DISPLAYPORT, opos))
-		return;
-	pd_send_vdm(port, USB_SID_DISPLAYPORT,
-		    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
-	pd_vdm_send_state_machine(port);
-	/* Have to wait for ACK */
-}
-
 void pd_update_dual_role_config(int port)
 {
 	/*
@@ -2419,8 +2405,6 @@ void pd_task(void *u)
 		evt = task_wait_event(timeout);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		if (evt & PD_EVENT_DP_DISCONNECT)
-			exit_dp_mode(port);
 		if (evt & PD_EVENT_UPDATE_DUAL_ROLE)
 			pd_update_dual_role_config(port);
 #endif
@@ -3772,11 +3756,8 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 static void pd_chipset_shutdown(void)
 {
 	int i;
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_set_dual_role(i, PD_DRP_FORCE_SINK);
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-			       PD_EVENT_DP_DISCONNECT, 0);
-	}
 	CPRINTS("PD:S3->S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
