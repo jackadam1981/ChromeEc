@@ -3744,11 +3744,8 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 static void pd_chipset_startup(void)
 {
 	int i;
-
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
-		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
-	}
 	CPRINTS("PD:S5->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
