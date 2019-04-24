@@ -163,6 +163,30 @@
       "revId": "5a7563c2a0e1420e9c543a51b3926ef88980b095",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2446a04_34eb39a6",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-24T02:03:23Z",
+      "side": 1,
+      "message": "unsigned, so 256. so overflow is not a concern with irq numbers.\n\nThen again, I did have this weird issue with HECI arise with the change as is, so hopefully this was not the culprit. We will see ;)",
+      "parentUuid": "1fe91021_b98597aa",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 14
+      },
+      "revId": "5a7563c2a0e1420e9c543a51b3926ef88980b095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
