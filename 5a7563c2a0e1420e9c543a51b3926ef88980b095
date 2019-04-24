@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8bc2892_db33bbc4",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-24T01:58:01Z",
+      "side": 1,
+      "message": "It was necessary to get rid of the REG32/REG8 in lines 277-283. I\u0027m considering moving these UART changes to a separate CL, as they are completely independent of the changes made in registers.h (uart_defs.h was where these REG32/8\u0027s got hidden)",
+      "parentUuid": "49ba9447_0c238607",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "5a7563c2a0e1420e9c543a51b3926ef88980b095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9db4af89_6a9d74ca",
         "filename": "chip/ish/uart_defs.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "82360e2d_defc61d9",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-24T01:58:01Z",
+      "side": 1,
+      "message": "Probably another good reason to split off UART changes to a different CL. I\u0027ll do it in that. There\u0027s a lot of other things I would like to do a general cleanup on in uart.c, so this will give me the opportunity to do that.",
+      "parentUuid": "9db4af89_6a9d74ca",
+      "range": {
+        "startLine": 85,
+        "startChar": 32,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "5a7563c2a0e1420e9c543a51b3926ef88980b095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fab18c7b_bca1d716",
         "filename": "chip/ish/uart_defs.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-23T21:53:32Z",
       "side": 1,
       "message": "what happened here (related to the other change I called out I am sure)",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 26
+      },
+      "revId": "5a7563c2a0e1420e9c543a51b3926ef88980b095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d24d0d_5784aa43",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-24T01:58:01Z",
+      "side": 1,
+      "message": "Yep, this is the size of the array that I had to change for removing the REG marcos at the bottom of uart.c.",
+      "parentUuid": "fab18c7b_bca1d716",
       "range": {
         "startLine": 181,
         "startChar": 8,
