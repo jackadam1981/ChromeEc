@@ -34,6 +34,11 @@ test_mockable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_DEDICATED] = 0,
 #endif
 	[CHARGE_SUPPLIER_PD] = 1,
+	/*
+	 * USB-C spec 1.3 Table 4-17:
+	 * TYPEC 3.0A, 1.5A > BC1.2 > TYPEC under 1.5A.
+	 * The priority comparsion should be done by priority_is_higher().
+	 */
 	[CHARGE_SUPPLIER_TYPEC] = 2,
 	[CHARGE_SUPPLIER_TYPEC_DTS] = 2,
 #ifdef CHARGE_MANAGER_BC12
@@ -165,6 +170,69 @@ static int charge_manager_spoof_dualrole_capability(void)
 }
 #endif /* !CONFIG_CHARGE_MANAGER_DRP_CHARGING */
 
+#ifdef CHARGE_MANAGER_BC12
+static int supplier_is_typec(int supplier)
+{
+	return supplier == CHARGE_SUPPLIER_TYPEC ||
+	       supplier == CHARGE_SUPPLIER_TYPEC_DTS;
+}
+
+static int supplier_is_bc12(int supplier)
+{
+	return supplier == CHARGE_SUPPLIER_BC12_DCP ||
+	       supplier == CHARGE_SUPPLIER_BC12_CDP ||
+	       supplier == CHARGE_SUPPLIER_BC12_SDP;
+}
+#endif
+
+#define SWAP(a, b) { int tmp; tmp = a; a = b; b = tmp; }
+
+/**
+ * Check if the priority of charge supplier 'a' is higher than 'b'.
+ * In most cases, we just simply compare the priority number of a and b.
+ * However, according to USB-C spec 1.3 Table 4-17 "Precedence of power source
+ * usage", the priority should be: USB-C 3.0A, 1.5A > BC1.2 > USB-C under 1.5A.
+ *
+ * @return	1 when the supplier's priority is higher, 0 otherwise.
+ */
+static int priority_is_higher(int a, int a_port, int b, int b_port)
+{
+#if !defined(CHARGE_MANAGER_BC12)
+	return supplier_priority[a] < supplier_priority[b];
+#else
+	int is_higher;
+	int reverse = 0;
+
+	if (supplier_priority[a] == supplier_priority[b])
+		return 0;
+
+	/*
+	 * The default priority of TYPEC is higher than BC1.2, so swap 'a' and
+	 * 'b' here to make sure TYPEC is 'a' and BC1.2 is 'b' (if we have both)
+	 * to simplify the following comparison.
+	 */
+	if (supplier_priority[a] > supplier_priority[b]) {
+		reverse = 1;
+		SWAP(a, b);
+		SWAP(a_port, b_port);
+	}
+
+	if (supplier_is_typec(a) && supplier_is_bc12(b)) {
+		if (available_charge[a][a_port].current < 1500)
+			is_higher = 0;
+		else
+			is_higher = 1;
+	} else {
+		is_higher = (supplier_priority[a] < supplier_priority[b]);
+	}
+
+	if (reverse)
+		is_higher = !is_higher;
+
+	return is_higher;
+#endif /* !CHARGE_MANAGER_BC12 */
+}
+
 /**
  * Initialize available charge. Run before board init, so board init can
  * initialize data, if needed.
@@ -255,10 +323,10 @@ static enum charge_supplier find_supplier(int port, enum charge_supplier sup,
 		if (sup == CHARGE_SUPPLIER_NONE)
 			/* Haven't found any yet. Take it unconditionally. */
 			sup = i;
-		else if (supplier_priority[sup] < supplier_priority[i])
+		else if (priority_is_higher(sup, port, i, port))
 			/* There is already a higher priority supplier. */
 			continue;
-		else if (supplier_priority[i] < supplier_priority[sup])
+		else if (priority_is_higher(i, port, sup, port))
 			/* This has a higher priority. Take it. */
 			sup = i;
 		else if (POWER(available_charge[i][port]) >
@@ -556,8 +624,7 @@ static void charge_manager_get_best_charge_port(int *new_port,
 				/* Select if no supplier chosen yet. */
 				if (supplier == CHARGE_SUPPLIER_NONE ||
 				/* ..or if supplier priority is higher. */
-				    supplier_priority[i] <
-				    supplier_priority[supplier] ||
+				    priority_is_higher(i, j, supplier, port) ||
 				/* ..or if this is our override port. */
 				   (j == override_port &&
 				    port != override_port) ||
