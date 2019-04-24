@@ -177,19 +177,23 @@ DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
+	int level;
 
 	/*
 	 * Check which port has the ALERT line set and ignore if that TCPC has
-	 * its reset line active. Note that port 0 reset is active high and
-	 * port 1 reset is active low.
+	 * its reset line active.
 	 */
 	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
-		if (!gpio_get_level(GPIO_USB_C0_TCPC_RST))
+		level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USB_C0_TCPC_RST) != level)
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
 	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C1_TCPC_RST_ODL))
+		level = !!(tcpc_config[USB_PD_PORT_TCPC_1].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USB_C1_TCPC_RST_ODL) != level)
 			status |= PD_STATUS_TCPC_ALERT_1;
 	}
 
