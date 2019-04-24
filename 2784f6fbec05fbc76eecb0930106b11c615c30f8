@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b453753_e54245e8",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-04-24T15:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "106d775a_53de2b10",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 26
+      },
+      "revId": "2784f6fbec05fbc76eecb0930106b11c615c30f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfe274c7_99c7bbf2",
         "filename": "board/flapjack/battery.c",
         "patchSetId": 16
@@ -45,6 +69,30 @@
       "revId": "2784f6fbec05fbc76eecb0930106b11c615c30f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6387668b_1b009b17",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-04-24T15:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe274c7_99c7bbf2",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 58
+      },
+      "revId": "2784f6fbec05fbc76eecb0930106b11c615c30f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
