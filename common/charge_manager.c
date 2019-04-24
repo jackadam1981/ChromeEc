@@ -38,16 +38,16 @@ test_mockable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_TYPEC_DTS] = 2,
 #ifdef CHARGE_MANAGER_BC12
 	[CHARGE_SUPPLIER_PROPRIETARY] = 2,
-	[CHARGE_SUPPLIER_BC12_DCP] = 3,
-	[CHARGE_SUPPLIER_BC12_CDP] = 4,
-	[CHARGE_SUPPLIER_BC12_SDP] = 5,
-	[CHARGE_SUPPLIER_OTHER] = 6,
-	[CHARGE_SUPPLIER_VBUS] = 7,
+	[CHARGE_SUPPLIER_BC12_DCP] = 2,
+	[CHARGE_SUPPLIER_BC12_CDP] = 3,
+	[CHARGE_SUPPLIER_BC12_SDP] = 4,
+	[CHARGE_SUPPLIER_OTHER] = 5,
+	[CHARGE_SUPPLIER_VBUS] = 6,
 #endif
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
-	[CHARGE_SUPPLIER_WPC_BPP] = 6,
-	[CHARGE_SUPPLIER_WPC_EPP] = 6,
-	[CHARGE_SUPPLIER_WPC_GPP] = 6,
+	[CHARGE_SUPPLIER_WPC_BPP] = 5,
+	[CHARGE_SUPPLIER_WPC_EPP] = 5,
+	[CHARGE_SUPPLIER_WPC_GPP] = 5,
 #endif
 
 };
@@ -564,14 +564,27 @@ static void charge_manager_get_best_charge_port(int *new_port,
 				/* ..or if priority is tied and.. */
 				   (supplier_priority[i] ==
 				    supplier_priority[supplier] &&
-				/* candidate port can supply more power or.. */
+				/* candidate port can supply more power */
 				   (candidate_port_power > best_port_power ||
+#ifdef CHARGE_MANAGER_BC12
 				/*
-				 * candidate port is the active port and can
-				 * supply the same amount of power.
+				 * ..or candidate port is Type-C >= 1.5A and
+				 * the supplier port is DCP.
+				 * USBC spec 1.2: USB Type-C 3.0 A & 1.5 A
+				 * takes precedence over BC1.2.
+				 */
+				   (supplier == CHARGE_SUPPLIER_BC12_DCP &&
+				    (i == CHARGE_SUPPLIER_TYPEC ||
+				     i == CHARGE_SUPPLIER_TYPEC_DTS) &&
+				    available_charge[i][j].current >= 1500) ||
+#endif
+				/*
+				 * ..or candidate port is the active port and
+				 * can supply the same amount of power.
 				 */
 				   (candidate_port_power == best_port_power &&
-				    charge_port == j)))) {
+				    charge_port == j)
+				   ))) {
 					supplier = i;
 					port = j;
 					best_port_power = candidate_port_power;
