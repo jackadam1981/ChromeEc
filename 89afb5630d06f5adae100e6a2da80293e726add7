@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cbc3bdf_107a9079",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "nit, use bullets for 1,2,3",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27553f1_3550a183",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "If we have to increase next_collection multiple times, we have a problem: the EC will not satisfy the contract to read the sensor as the requested ODR.\nWe should not be in this situation given we enforce the maximum ODR.",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff5d7a6b_77013bcb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "isn\u0027t it always true, given next_int is collected line 937?\n\nIn batch mode, we don\u0027t want to send events to AP too often.",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee8462aa_237e17d5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "why do we need to call it again (it is done line 991).",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10501beb_ee035ff2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "waking up on motion_int_interval is not necessary: motion sense task is woken up on interrupt from sensors or forced mode (see below). It decides if enough time has elapsed since the last interrupt to release FIFO events to the host.",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3c379c_99783dc1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "nit: i++, convention in the rest of the code.",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33452e0f_933dfbd2",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "last_collection is next_collection - collection_rate, remove.",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef5dcc1_ccc0109c",
+        "filename": "include/timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-24T00:31:34Z",
+      "side": 1,
+      "message": "can time_until be used here?",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
