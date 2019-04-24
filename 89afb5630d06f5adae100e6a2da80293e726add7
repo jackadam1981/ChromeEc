@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eb0497d5_ef4ca136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbc3bdf_107a9079",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f27553f1_3550a183",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d81e98_d4717e1f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Moved this to a function and print an error message if we have to increment more than once.",
+      "parentUuid": "f27553f1_3550a183",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "07c35344_73eef726",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Reverted to the old way now that the task is not waking explicitly for interrupts.",
+      "parentUuid": "ff5d7a6b_77013bcb",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee8462aa_237e17d5",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e4283c_a33fb5d8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "I wanted to make sure to account for any time needed to send the mkbp event when determining sleep time below. I change the interrupt to use the ts_begin_task instead which shouldn\u0027t make too much of a difference.",
+      "parentUuid": "ee8462aa_237e17d5",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "0be5acb7_3a7d3908",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10501beb_ee035ff2",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3c379c_99783dc1",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31aeea91_ee1e064d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a3c379c_99783dc1",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "a316dc8e_f0331491",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33452e0f_933dfbd2",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ef5dcc1_ccc0109c",
         "filename": "include/timer.h",
         "patchSetId": 2
@@ -135,6 +261,24 @@
       "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8544a16_614646be",
+        "filename": "include/timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-24T16:09:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef5dcc1_ccc0109c",
+      "revId": "89afb5630d06f5adae100e6a2da80293e726add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
