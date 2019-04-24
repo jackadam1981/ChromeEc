@@ -70,6 +70,30 @@
       "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64417ee_6de59408",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-24T06:37:48Z",
+      "side": 1,
+      "message": "This condition does not need to be nested within the Vnc if statement. Let\u0027s move this up before it. Let\u0027s also add a comment saying we should perform this check before we try to enable vbus.\n\u003d\u003e Done, but every time cc toggling (Not by PD_DUAL_ROLE_AUTO_TOGGLE config) will spend extra times to check PD_FLAG_TRY_SRC, is this better?\n\n\nAlso, should we explicity set the state to PD_STATE_SRC_DISCONNECTED_DEBOUNCE so it is easier to track how we get to the AudioAccessory state, etc.\n\u003d\u003e Detecting both Ra on cc (Not in try.SRC flow), we do set state to PD_STATE_SRC_DISCONNECTED_DEBOUNCE in current code. I\u0027m not clear where to track by set state to PD_STATE_SRC_DISCONNECTED_DEBOUNCE.",
+      "parentUuid": "b096a2a9_40f7c3d6",
+      "range": {
+        "startLine": 3012,
+        "startChar": 10,
+        "endLine": 3013,
+        "endChar": 33
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
