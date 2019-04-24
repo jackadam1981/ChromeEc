@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16915d2c_e0544848",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-04-24T14:55:53Z",
+      "side": 1,
+      "message": "enable backlight flow is according to EVB layout, it can be classify as initial setting.\nbut if kukui need support i2c mode and pwm mode by api for difference project, this change is not enough.\ndo we need consider serveral condition to satisfy this change?",
+      "range": {
+        "startLine": 999,
+        "startChar": 5,
+        "endLine": 999,
+        "endChar": 28
+      },
+      "revId": "bff113845d5a4b8877e48cebd1a00b4fd1a5ceec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
