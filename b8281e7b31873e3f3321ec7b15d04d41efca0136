@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "aa6f994f_7249a350",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-24T05:45:17Z",
+      "side": 1,
+      "message": "need wait the \u0027general interrupt status\u0027 bit cleared in HPET control and status register before write general interrupt status register.  \n\nthis is the wait HPET to settle Jett mentioned.",
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab0c02b4_9944ee13",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 4
@@ -132,6 +149,30 @@
       "side": 1,
       "message": "looks like it\u0027s related with one of the power level D0i1. Hm.. looks like it\u0027s better go make a bug item on it. will be back with more testing",
       "parentUuid": "8508758d_97e9bbf0",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 34
+      },
+      "revId": "b8281e7b31873e3f3321ec7b15d04d41efca0136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3b2de8_1399bde1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-24T05:45:17Z",
+      "side": 1,
+      "message": "see above comments.\n\nHPET_INTR_CLEAR \u003d BIT(timer_id); need wait to settle before,\n\nand the while loop check, I think should no need.\n\nthis should regardless to pm,  just the programing rules to HPET from ish4.0",
+      "parentUuid": "2e9ecb25_99a41e55",
       "range": {
         "startLine": 230,
         "startChar": 1,
