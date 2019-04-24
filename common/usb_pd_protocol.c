@@ -2996,6 +2996,22 @@ void pd_task(void *u)
 				break;
 			}
 #endif
+			/*
+			 * Perform this check before we try to enable vbus:
+			 * The port shall exit from Try.SRC State and
+			 * transition to Attached.SRC when the SRC.Rd
+			 * state is detected on exactly "one" of the CC1
+			 * or CC2 pins. Detecting cc both Rd
+			 * (UnorientedDebugAccessory.SRC state) and both
+			 * Ra (AudioAccessory state), these two cases do
+			 * not meet try.SRC behavior (break).
+			 */
+			if ((pd[port].flags & PD_FLAGS_TRY_SRC) &&
+			    ((cc1 == TYPEC_CC_VOLT_RD &&
+			      cc2 == TYPEC_CC_VOLT_RD) ||
+			     (cc1 == TYPEC_CC_VOLT_RA &&
+			      cc2 == TYPEC_CC_VOLT_RA)))
+				break;
 
 			/* Vnc monitoring */
 			if ((cc1 == TYPEC_CC_VOLT_RD ||
