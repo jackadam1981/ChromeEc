@@ -23,7 +23,6 @@ GPIO_INT(ROP_EC_ACOK,		PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	extpower_i
 /* misc interrupt handler section */
 GPIO_INT(EC_WP_L,		PIN(A, 1), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	lid_interrupt)
-GPIO_INT(ACCELGYRO3_INT_L,	PIN(4, 1), GPIO_INT_FALLING,			bmi160_interrupt)
 
 /* SoC section */
 GPIO(RSMRST_L,			PIN(3, 7), GPIO_OUT_LOW)			/* SOC Resume Reset */
@@ -34,6 +33,7 @@ GPIO(EC_PROCHOT_ODL,		PIN(3, 4), GPIO_ODR_HIGH | GPIO_SEL_1P8V)	/* SOC PROCHOT# 
 GPIO(SYS_RESET_L,		PIN(0, 2), GPIO_ODR_HIGH)			/* SOC reset */
 GPIO(USB_C0_DP_HPD,		PIN(C, 5), GPIO_INPUT)				/* C0 Hotplug Detect */
 GPIO(USB_C1_DP_HPD,		PIN(C, 6), GPIO_INPUT)				/* C1 Hotplug Detect */
+GPIO(ACCELGYRO3_INT_L,		PIN(4, 1), GPIO_INPUT)
 
 /* power seq section */
 GPIO(EC_PCH_ACPRESENT,		PIN(7, 3), GPIO_ODR_LOW)			/* ACOK to SOC */
