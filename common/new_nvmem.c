@@ -19,6 +19,7 @@
 #include "nvmem_vars.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "task.h"
 #include "timer.h"
 
 /*
@@ -314,6 +315,7 @@ static struct delete_candidates {
 static uint8_t page_list[NEW_NVMEM_TOTAL_PAGES];
 static uint8_t migration_in_progress;
 static uint32_t next_evict_obj_base;
+static struct mutex flash_mtx;
 
 /*
  * Total space taken by key, value pairs in flash. It is limited to give TPM
@@ -2459,7 +2461,7 @@ static enum ec_error_list save_new_object(uint16_t obj_base, void *buf)
 	return save_container(ch);
 }
 
-enum ec_error_list new_nvmem_save(void)
+static enum ec_error_list new_nvmem_save_(void)
 {
 	const void *fence_ph;
 	size_t i;
@@ -2570,6 +2572,17 @@ enum ec_error_list new_nvmem_save(void)
 	return EC_SUCCESS;
 }
 
+enum ec_error_list new_nvmem_save(void)
+{
+	enum ec_error_list rv;
+
+	mutex_lock(&flash_mtx);
+	rv = new_nvmem_save_();
+	mutex_unlock(&flash_mtx);
+
+	return rv;
+}
+
 /* Caller must free memory allocated by this function! */
 static struct max_var_container *find_var(const uint8_t *key, size_t key_len,
 					  struct access_tracker *at)
@@ -2615,7 +2628,9 @@ const struct tuple *getvar(const uint8_t *key, uint8_t key_len)
 	if (!key || !key_len)
 		return NULL;
 
+	mutex_lock(&flash_mtx);
 	vc = find_var(key, key_len, &at);
+	mutex_unlock(&flash_mtx);
 
 	if (vc)
 		return &vc->t_header;
@@ -2657,8 +2672,8 @@ static enum ec_error_list save_container(struct nn_container *nc)
 	return save_object(nc);
 }
 
-int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
-	   uint8_t val_len)
+static int setvar_(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+		   uint8_t val_len)
 {
 	enum ec_error_list rv;
 	int erase_request;
@@ -2741,6 +2756,18 @@ int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
 		if (rv == EC_SUCCESS)
 			total_var_space -= old_var_space;
 	}
+	return rv;
+}
+
+int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+	   uint8_t val_len)
+{
+	int rv;
+
+	mutex_lock(&flash_mtx);
+	rv = setvar_(key, key_len, val, val_len);
+	mutex_unlock(&flash_mtx);
+
 	return rv;
 }
 
