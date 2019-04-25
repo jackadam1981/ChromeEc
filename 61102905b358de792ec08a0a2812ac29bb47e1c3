@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d643904_3b5d45b4",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T13:36:48Z",
+      "side": 1,
+      "message": "nit: for multiline comments we typically express them as\n\n/*\n * First line HERE\n * More.\n */",
+      "range": {
+        "startLine": 514,
+        "startChar": 5,
+        "endLine": 514,
+        "endChar": 8
+      },
+      "revId": "61102905b358de792ec08a0a2812ac29bb47e1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
