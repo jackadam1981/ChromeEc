@@ -22,6 +22,30 @@
       "revId": "0f15b8e5a3583cac214ea93b97918e25d5ff88bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7b0677_77a840f3",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T19:44:19Z",
+      "side": 0,
+      "message": "Yeah, let\u0027s introduce PANEL_DEFAULT \u003d 0 for the reason you wrote. We can remove PANEL_UNKNOWN. I was trying to save some space in the arrays where LCM_ID is used as an index but it\u0027s probably not a big deal.",
+      "parentUuid": "1fb32a78_05c74e14",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 20
+      },
+      "revId": "0f15b8e5a3583cac214ea93b97918e25d5ff88bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
