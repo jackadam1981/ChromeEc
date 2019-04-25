@@ -184,7 +184,7 @@ uint16_t tcpc_get_alert_status(void)
 	 * port 1 reset is active low.
 	 */
 	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
-		if (!gpio_get_level(GPIO_USB_C0_TCPC_RST))
+		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_ODL))
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
