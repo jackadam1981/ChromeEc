@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d55ed66_77df095e",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Shall we do\n  tcs3400_i2c_read8(const struct motion_sensor_t *s, reg, *data)?\n\nOtherwise, I would just use i2c_read8 directly.",
+      "range": {
+        "startLine": 21,
+        "startChar": 40,
+        "endLine": 21,
+        "endChar": 67
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f53591_1867eca7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Is this right? You do uscale \u003d range \u0026 0xffff; at line 198.",
+      "range": {
+        "startLine": 93,
+        "startChar": 34,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1ead7d_894719f8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "you need to release mutex.",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 15
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4db6c41_56a9d53c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "here as well.",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30756202_6f8afc08",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "please remove",
+      "range": {
+        "startLine": 203,
+        "startChar": 10,
+        "endLine": 203,
+        "endChar": 12
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7abe9d6_adf293bb",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Can you merge these: TCS3400_GET_DATA(s)-\u003eals_cal.offset \u003d...?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 38
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01dc01f1_59eae8c7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "please merge.",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 23
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a51be3_1c1db518",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "nit: can you separate modification and write? \n\n  data \u003d (data \u0026 TCS_I2C_ENABLE_MASK) | mode;\n  tcs3400_i2c_write_port(..., data);",
+      "range": {
+        "startLine": 265,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 38
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62819371_a1220c38",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 280,
+        "startChar": 9,
+        "endLine": 280,
+        "endChar": 17
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e30475_969df8a0",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Can you define \u0027struct reg_data { uint8_t reg; uint8_t data; }\u0027 to increase readability?",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 8
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d1b80b_696bf7b3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Let\u0027s define CPRINTS and CPRINTF (like other drivers and modules).",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 296,
+        "endChar": 8
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c21bd11d_59d94f5a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Not sure if this is the best fit.",
+      "range": {
+        "startLine": 305,
+        "startChar": 18,
+        "endLine": 305,
+        "endChar": 31
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d219dbd_c43b6c99",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Then, this can be done by ARRAY_SIZE.",
+      "range": {
+        "startLine": 309,
+        "startChar": 15,
+        "endLine": 309,
+        "endChar": 56
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e438b8da_f8ec458e",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Please describe all these.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfd13e7c_5dcf4f9f",
+        "filename": "include/config.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T22:58:42Z",
+      "side": 1,
+      "message": "Please describe these (what would be included, what else needs to be set, etc.). The existing ones above aren\u0027t what we want to follow.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 35
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
