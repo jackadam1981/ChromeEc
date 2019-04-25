@@ -354,6 +354,30 @@
       "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8918c8be_fa901a81",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T21:46:34Z",
+      "side": 1,
+      "message": "I convinced looking at it again",
+      "parentUuid": "0848702b_9b3098f8",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
