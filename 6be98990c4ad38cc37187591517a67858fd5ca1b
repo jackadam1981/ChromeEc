@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e2f01d5_fff13526",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T17:39:57Z",
+      "side": 1,
+      "message": "See lines 277-283 below that make reference to UART2_BASE. We need the definition of UART2 even just to disable it (there\u0027s a nice comment above those lines about this). So this just cleans up manual calculation of the register addresses in this file.",
+      "parentUuid": "8bbfe200_1cc0888d",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c46f5ec_1b108723",
         "filename": "chip/ish/uart.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-25T17:14:16Z",
       "side": 1,
       "message": "isn\u0027t the above line doing just this?",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f087e74d_57b42fdb",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T17:39:57Z",
+      "side": 1,
+      "message": "Yes, looks like discussion of this never came up in https://crrev.com/c/644848, so I\u0027ll assume they forgot to remove the TODO. I\u0027ll remove...",
+      "parentUuid": "7c46f5ec_1b108723",
       "range": {
         "startLine": 75,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6b1a06a9_3023689c",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T17:39:57Z",
+      "side": 1,
+      "message": "Better to let the compiler (err... linker) remove unused definitions than have to carry around an ifdef with every funcall.",
+      "parentUuid": "31687018_a6763ea9",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 22
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0597b111_f44faa99",
         "filename": "chip/ish/uart_defs.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2019-04-25T17:14:16Z",
       "side": 1,
       "message": "BIT 6?",
+      "range": {
+        "startLine": 98,
+        "startChar": 18,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33043e33_f2681c8c",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T17:39:57Z",
+      "side": 1,
+      "message": "oops ... will fix in next patch set",
+      "parentUuid": "0597b111_f44faa99",
       "range": {
         "startLine": 98,
         "startChar": 18,
@@ -114,6 +210,30 @@
       "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a4a4f44_1bf696a6",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T17:39:57Z",
+      "side": 1,
+      "message": "We are not enabling the third uart device, this is simply to clean up how we disable UART2.",
+      "parentUuid": "029f4044_b630bfb9",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
