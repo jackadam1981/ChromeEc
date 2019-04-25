@@ -234,6 +234,30 @@
       "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32d426bc_09a077c7",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:45:01Z",
+      "side": 1,
+      "message": "With this change, we are now calling uart_stop_hw(2) and we were not before",
+      "parentUuid": "6a4a4f44_1bf696a6",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
