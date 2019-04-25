@@ -22,6 +22,30 @@
       "revId": "bff113845d5a4b8877e48cebd1a00b4fd1a5ceec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c233feb_f106f85b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-25T01:35:44Z",
+      "side": 1,
+      "message": "You say \"we can put it into initial setting\", does it imply that we don\u0027t need to turn it off when system goes into S3 or lower?",
+      "parentUuid": "16915d2c_e0544848",
+      "range": {
+        "startLine": 999,
+        "startChar": 5,
+        "endLine": 999,
+        "endChar": 28
+      },
+      "revId": "bff113845d5a4b8877e48cebd1a00b4fd1a5ceec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
