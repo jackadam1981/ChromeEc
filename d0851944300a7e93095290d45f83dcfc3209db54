@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff587eda_8043f588",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:40:46Z",
+      "side": 1,
+      "message": "can we just let the main FW handle the reset prep?",
+      "range": {
+        "startLine": 655,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 3
+      },
+      "revId": "d0851944300a7e93095290d45f83dcfc3209db54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
