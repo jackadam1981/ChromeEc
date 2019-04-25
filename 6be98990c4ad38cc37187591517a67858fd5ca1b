@@ -258,6 +258,30 @@
       "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96637edd_894022f5",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T17:52:28Z",
+      "side": 1,
+      "message": "It looks like the only difference between calling uart_stop_hw, and the logic at the bottom of uart_drv_init is these lines:\n\n\t/* No interrupts are enabled */\n\tIER(id) \u003d 0;\n\tMCR(id) \u003d 0;\n\n\t/* Clear and disable FIFOs */\n\tFCR(id) \u003d (FCR_RESET_RX | FCR_RESET_TX);\n\nLooking into see if these would have any meaningful side-effects, if not, I think we should just remove the UART2-specific code at the bottom of uart_drv_init and rely on uart_stop_hw to do what we want.",
+      "parentUuid": "32d426bc_09a077c7",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
