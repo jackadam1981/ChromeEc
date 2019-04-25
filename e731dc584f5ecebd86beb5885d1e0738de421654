@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc3806b_3a8ba402",
+        "filename": "baseboard/octopus/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T21:41:37Z",
+      "side": 1,
+      "message": "nit: can we re-write this as\n\nreturn pd_get_dual_role(port) \u003d\u003d PD_DRP_TOGGLE_ON || pd_get_role(port) \u003d\u003d PD_ROLE_SOURCE;",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 10
+      },
+      "revId": "e731dc584f5ecebd86beb5885d1e0738de421654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
