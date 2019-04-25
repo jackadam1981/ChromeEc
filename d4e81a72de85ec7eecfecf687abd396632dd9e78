@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3067e4f2_caf9bc63",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-25T15:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "615d027f_197f1569",
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8e84e08_89a0195c",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -57,6 +75,30 @@
       "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ddcaad6_459397f5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-25T15:27:56Z",
+      "side": 1,
+      "message": "It is tracking when to send events to the ap, I renamed the variable to make it more clear.",
+      "parentUuid": "e8e84e08_89a0195c",
+      "range": {
+        "startLine": 419,
+        "startChar": 1,
+        "endLine": 419,
+        "endChar": 20
+      },
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "b823634d_111070c7",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-25T15:27:56Z",
+      "side": 1,
+      "message": "I agree, I think that the current logic is wrong and the condition would never be met because the time is updated regardless if read succeeds. I am not comfortable taking it out so I filed https://crbug.com/956569 to track the issue.",
+      "parentUuid": "d1f8749b_91220542",
+      "range": {
+        "startLine": 308,
+        "startChar": 31,
+        "endLine": 308,
+        "endChar": 54
+      },
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "317256c1_a334ae68",
         "filename": "include/motion_sense.h",
         "patchSetId": 3
@@ -103,6 +169,30 @@
       "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f1abbe_e3bfe759",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-25T15:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317256c1_a334ae68",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "75f0df5c_58da9677",
+        "filename": "include/timer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-25T15:27:56Z",
+      "side": 1,
+      "message": "The diff is just strange. I moved time_since32 below time_until. This was always here.",
+      "parentUuid": "bae8fc4c_26274203",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "916dd839_8f930264",
         "filename": "include/timer.h",
         "patchSetId": 3
@@ -149,6 +263,30 @@
       "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e4cbad_822eb176",
+        "filename": "include/timer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-25T15:27:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916dd839_8f930264",
+      "range": {
+        "startLine": 147,
+        "startChar": 37,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
