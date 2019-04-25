@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "331e1443_ecc9d4b3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-25T08:18:50Z",
+      "side": 1,
+      "message": "I found this part is duplicated, remove this function. (there is another rt946x_get_bc12_device_type below).",
+      "parentUuid": "8b1ff24a_fcb5f9cb",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 34
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82f155d8_98a0c0d9",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 8
@@ -91,6 +115,30 @@
       "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0767dfde_c0f6defd",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-25T08:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82f155d8_98a0c0d9",
+      "range": {
+        "startLine": 905,
+        "startChar": 7,
+        "endLine": 905,
+        "endChar": 18
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -154,6 +202,24 @@
       "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5faf669_90fb4462",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-25T08:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f08712c_17111d75",
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
