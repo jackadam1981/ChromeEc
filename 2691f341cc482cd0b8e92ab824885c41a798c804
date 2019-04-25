@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bc35162_bdf71bf3",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "This is the default voltage when PD isn\u0027t enabled or available.\n\nFrom the Type-C spec, Release 1.4:\nThree current level advertisements at 5V VBUS are defined by USB Type-C Current:\n  1) Default is the as-configured for high-power operation current value as defined by a\nUSB Specification (500 mA for USB 2.0 ports; 900 mA or 1,500 mA for USB 3.2 ports\noperating in single-lane or dual-lane, respectively)\n  2) USB Type-C Current @ 1.5 A\n  3) USB Type-C Current @ 3.0 A\n\nSee Table 2-1 in the Type-C spec, Release 1.4 for more details.",
+      "parentUuid": "6b2ba200_749d04ce",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4abfbd0e_a8998d5f",
         "filename": "common/usb_tc_sm.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c199ac02_795fff1f",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4abfbd0e_a8998d5f",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "608f6b29_e7a9ea30",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125d5372_aeb48086",
+      "range": {
+        "startLine": 338,
+        "startChar": 32,
+        "endLine": 338,
+        "endChar": 49
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35879bbe_5fc00d16",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5aeea158_f0845373",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35879bbe_5fc00d16",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 37
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec8c123_111f1e28",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2019-04-24T17:28:16Z",
       "side": 1,
       "message": "should the prefix be tc_ instead of pd_ since this is a type c connection not a pd connection?",
+      "range": {
+        "startLine": 369,
+        "startChar": 4,
+        "endLine": 369,
+        "endChar": 19
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0ad280_a6c8809f",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Yes this would be better but I didn\u0027t want to modify the current api. Maybe it would be better if we changed pd_ to tc_ when the current stack is phased out.",
+      "parentUuid": "6ec8c123_111f1e28",
       "range": {
         "startLine": 369,
         "startChar": 4,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "786b48de_ffe04c30",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "I\u0027m open to suggestions on how to keep the two copies in sync. Or we just have to be mindful to update both copies which may not be that bad because this function shouldn\u0027t change that often.",
+      "parentUuid": "c214799a_a818411a",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 46
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29fb03ae_45704a4d",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181ba083_82c35d39",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29fb03ae_45704a4d",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 33
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "7748d1df_b0e38f49",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec27a17_a4b47f35",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 38
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1de6db30_a6c307fc",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 4
@@ -206,6 +398,30 @@
       "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce2773b_7eb6ce3e",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-04-25T18:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1de6db30_a6c307fc",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 1
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
