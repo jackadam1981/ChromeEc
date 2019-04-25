@@ -61,6 +61,7 @@ static const struct mv_to_id panels[] = {
 	{ PANEL_BOE_HIMAX8279D8P,	280 },
 };
 BUILD_ASSERT(ARRAY_SIZE(panels) < PANEL_COUNT);
+BUILD_ASSERT(PANEL_COUNT <= PANEL_UNINITIALIZED);
 
 uint16_t board_version;
 uint8_t oem;
@@ -121,11 +122,11 @@ static enum panel_id board_get_panel_id(void)
 {
 	enum panel_id id;
 	if (board_version < 3) {
-		id = PANEL_UNKNOWN;
+		id = PANEL_DEFAULT; /* No LCM_ID. */
 	} else {
 		id  = board_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
-		if (id < PANEL_FIRST || PANEL_COUNT <= id)
-			id = PANEL_UNKNOWN;
+		if (id < PANEL_DEFAULT || PANEL_COUNT <= id)
+			id = PANEL_DEFAULT;
 	}
 	CPRINTS("LCM ID: %d", id);
 	return id;
