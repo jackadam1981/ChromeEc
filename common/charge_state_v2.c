@@ -564,7 +564,7 @@ static void shutdown_on_critical_battery(void)
 		 * prevent from hibernating if battery
 		 * soc <= BATTERY_LEVEL_SHUTDOWN
 		 */
-		if (battery_is_cutoff_required()) {
+		   if (battery_is_cutoff_required() || nasher_sku_id()) {
 #endif
 			CPRINTS(
 			  "charge force battery cut-off due to critical level");
