@@ -1183,3 +1183,11 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+int nasher_sku_id(void)
+{
+	uint32_t sku_id = system_get_sku_id();
+	
+	return (sku_id >= 160 && sku_id <= 166);
+
+}
