@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "4322fc1a_d0cf6b3b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3025,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T21:47:51Z",
+      "side": 1,
+      "message": "Agreed, so let\u0027s update line 3014 to set_set correctly",
+      "parentUuid": "41097365_ccf167be",
+      "range": {
+        "startLine": 3024,
+        "startChar": 0,
+        "endLine": 3025,
+        "endChar": 41
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0b280cf_c932c1ae",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
