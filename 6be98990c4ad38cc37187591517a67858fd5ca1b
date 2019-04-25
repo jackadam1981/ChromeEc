@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bbfe200_1cc0888d",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:14:16Z",
+      "side": 1,
+      "message": "why is this added in this CL? The description doesn\u0027t mention adding the 3rd UART module. Do we really need to register this as no one is using it?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c46f5ec_1b108723",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:14:16Z",
+      "side": 1,
+      "message": "isn\u0027t the above line doing just this?",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31687018_a6763ea9",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:14:16Z",
+      "side": 1,
+      "message": "we don\u0027t need to define this method if we are polling either, or are we just letting the compiler remove the unused code for us",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 22
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0597b111_f44faa99",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:14:16Z",
+      "side": 1,
+      "message": "BIT 6?",
+      "range": {
+        "startLine": 98,
+        "startChar": 18,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "029f4044_b630bfb9",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-25T17:14:16Z",
+      "side": 1,
+      "message": "this change doesn\u0027t belong in this CL. We should enable a new INT device in a separate CL (if we even need to enable the 3 device)\n\nAlso why does UART_PORT_MAX (line 199) not change when this changes?\n\nThis also changes the behavior of uart_drv_init(coid)",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
