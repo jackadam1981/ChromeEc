@@ -118,6 +118,75 @@
       "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41097365_ccf167be",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3025,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-25T06:05:31Z",
+      "side": 1,
+      "message": "If in try.SRC state detect only one Rd on cc, we should transit to SRC_DISCONNECTED_DEBOUNCE state.",
+      "range": {
+        "startLine": 3024,
+        "startChar": 0,
+        "endLine": 3025,
+        "endChar": 41
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b280cf_c932c1ae",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3044,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-25T06:05:31Z",
+      "side": 1,
+      "message": "Or after the break case (both Rd or Ra), we should stay in try.SRC (SRC_DISCONNECT) state until tDRPTry (with Vbus \u003d 0) or tTryTimeout timeout should transit TryWait.SNK (SNK_DISCONNECT).",
+      "range": {
+        "startLine": 3038,
+        "startChar": 0,
+        "endLine": 3044,
+        "endChar": 5
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b1b659_dc74e7fb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-25T06:05:31Z",
+      "side": 1,
+      "message": "In SRC_DISCONNECTED_DEBOUNCE state, we should debounce at least tTryCCDebounce (PD_T_DEBOUNCE). If pass means we are in attached.SRC state, then do Vbus ON, etc..",
+      "range": {
+        "startLine": 3105,
+        "startChar": 4,
+        "endLine": 3107,
+        "endChar": 18
+      },
+      "revId": "82a304e134ad84b77f87c3864a30c8fa0a683648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
