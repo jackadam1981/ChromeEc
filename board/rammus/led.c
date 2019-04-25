@@ -16,6 +16,8 @@
 #include "led_common.h"
 #include "system.h"
 #include "util.h"
+#include "cros_board_info.h"
+#include "extpower.h"
 
 #define LED_ON 1
 #define LED_OFF 0
@@ -66,6 +68,16 @@ static const struct {
 	[LED_STATE_S5] = {LED_OFF}
 };
 
+static int SKU_ID_IS_LEONA(void)
+{
+	uint32_t sku_id;
+
+	cbi_get_sku_id(&sku_id);
+	if (sku_id == 0x2863)
+		return 1;
+	return 0;
+}
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	brightness_range[EC_LED_COLOR_WHITE] = 1;
@@ -75,8 +87,13 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	gpio_set_level(GPIO_PWR_LED, brightness[EC_LED_COLOR_WHITE]);
-	gpio_set_level(GPIO_CHG_LED1, brightness[EC_LED_COLOR_GREEN]);
+	if (SKU_ID_IS_LEONA()) {
+		gpio_set_level(GPIO_CHG_LED1, brightness[EC_LED_COLOR_WHITE]);
+	} else {
+		gpio_set_level(GPIO_PWR_LED, brightness[EC_LED_COLOR_WHITE]);
+		gpio_set_level(GPIO_CHG_LED1, brightness[EC_LED_COLOR_GREEN]);
+	}
+
 	gpio_set_level(GPIO_CHG_LED2, brightness[EC_LED_COLOR_AMBER]);
 
 	return EC_SUCCESS;
@@ -84,7 +101,11 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 
 void config_power_led(enum led_power_state state)
 {
-	gpio_set_level(GPIO_PWR_LED, led_pwr_state_table[state].led);
+	if (SKU_ID_IS_LEONA()) {
+		gpio_set_level(GPIO_CHG_LED1, led_pwr_state_table[state].led);
+		gpio_set_level(GPIO_CHG_LED2, LED_OFF);
+	} else
+		gpio_set_level(GPIO_PWR_LED, led_pwr_state_table[state].led);
 }
 
 void config_battery_led(enum led_charge_state state)
@@ -170,11 +191,16 @@ static void rammus_led_set_battery(void)
  */
 static void led_tick(void)
 {
+	if (SKU_ID_IS_LEONA()) {
+		if (extpower_is_present()) {
+			if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+				rammus_led_set_battery();
+			return;
+		}
+	} else if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+		rammus_led_set_battery();
+
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
 		rammus_led_set_power();
-
-	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
-		rammus_led_set_battery();
 }
-
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
