@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27553860_7f7c32e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-25T01:36:01Z",
+      "side": 1,
+      "message": "applied",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "096a8ddb12f15478535448b43f945a74f9c15ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731ec7d5_5ecac2f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-25T01:36:01Z",
+      "side": 1,
+      "message": "mcu",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "096a8ddb12f15478535448b43f945a74f9c15ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6ac9bf_117a3a12",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-04-25T01:36:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the name be changed accordingly to not encode polarity?",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 196,
+        "endChar": 45
+      },
+      "revId": "096a8ddb12f15478535448b43f945a74f9c15ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
