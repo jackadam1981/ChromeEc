@@ -121,7 +121,7 @@ static enum panel_id board_get_panel_id(void)
 {
 	enum panel_id id;
 	if (board_version < 3) {
-		id = PANEL_UNKNOWN;
+		id = PANEL_FIRST; /* No LCM_ID. */
 	} else {
 		id  = board_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
 		if (id < PANEL_FIRST || PANEL_COUNT <= id)
