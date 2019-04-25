@@ -19,6 +19,7 @@
 #include "nvmem_vars.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "task.h"
 #include "timer.h"
 
 /*
@@ -314,6 +315,28 @@ static struct delete_candidates {
 static uint8_t page_list[NEW_NVMEM_TOTAL_PAGES];
 static uint8_t migration_in_progress;
 static uint32_t next_evict_obj_base;
+
+/*
+ * Mutex to protect flash space containing NVMEM objects. All operations
+ * modifying the flash contents or relying on its consistency (like searching
+ * in the flash) should acquire this mutex before proceeding.
+ */
+static struct mutex flash_mtx;
+
+/*
+ * Wrappers around locking/unlocking mutex make it easier to debug issues by
+ * adding with minimal code changes like printouts of line numbers where the
+ * functions are invoked from.
+ */
+static void lock_mutex(int line_num)
+{
+	mutex_lock(&flash_mtx);
+}
+
+static void unlock_mutex(int line_num)
+{
+	mutex_unlock(&flash_mtx);
+}
 
 /*
  * Total space taken by key, value pairs in flash. It is limited to give TPM
@@ -1434,6 +1457,8 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 
 	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
 
+	lock_mutex(__LINE__);
+
 	/* Populate half of page_list with available page offsets. */
 	for (i = 0; i < ARRAY_SIZE(page_list) / 2; i++)
 		page_list[i] = flash_base / CONFIG_FLASH_BANK_SIZE + i;
@@ -1451,6 +1476,8 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 	shared_mem_release(ch);
 
 	add_final_delimiter();
+
+	unlock_mutex(__LINE__);
 
 	if (browse_flash_contents(0) != EC_SUCCESS)
 		/* Never returns. */
@@ -2159,6 +2186,8 @@ enum ec_error_list new_nvmem_init(void)
 	/* Initialize NVMEM indices. */
 	NvEarlyStageFindHandle(0);
 
+	lock_mutex(__LINE__);
+
 	init_page_list();
 
 	start = get_time();
@@ -2166,6 +2195,8 @@ enum ec_error_list new_nvmem_init(void)
 	rv = retrieve_nvmem_contents();
 
 	init = get_time();
+
+	unlock_mutex(__LINE__);
 
 	ccprintf("init took %d\n", (uint32_t)(init.val - start.val));
 
@@ -2459,7 +2490,7 @@ static enum ec_error_list save_new_object(uint16_t obj_base, void *buf)
 	return save_container(ch);
 }
 
-enum ec_error_list new_nvmem_save(void)
+static enum ec_error_list new_nvmem_save_(void)
 {
 	const void *fence_ph;
 	size_t i;
@@ -2570,6 +2601,17 @@ enum ec_error_list new_nvmem_save(void)
 	return EC_SUCCESS;
 }
 
+enum ec_error_list new_nvmem_save(void)
+{
+	enum ec_error_list rv;
+
+	lock_mutex(__LINE__);
+	rv = new_nvmem_save_();
+	unlock_mutex(__LINE__);
+
+	return rv;
+}
+
 /* Caller must free memory allocated by this function! */
 static struct max_var_container *find_var(const uint8_t *key, size_t key_len,
 					  struct access_tracker *at)
@@ -2615,7 +2657,9 @@ const struct tuple *getvar(const uint8_t *key, uint8_t key_len)
 	if (!key || !key_len)
 		return NULL;
 
+	lock_mutex(__LINE__);
 	vc = find_var(key, key_len, &at);
+	unlock_mutex(__LINE__);
 
 	if (vc)
 		return &vc->t_header;
@@ -2657,8 +2701,8 @@ static enum ec_error_list save_container(struct nn_container *nc)
 	return save_object(nc);
 }
 
-int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
-	   uint8_t val_len)
+static int setvar_(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+		   uint8_t val_len)
 {
 	enum ec_error_list rv;
 	int erase_request;
@@ -2744,6 +2788,18 @@ int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
 	return rv;
 }
 
+int setvar(const uint8_t *key, uint8_t key_len, const uint8_t *val,
+	   uint8_t val_len)
+{
+	int rv;
+
+	lock_mutex(__LINE__);
+	rv = setvar_(key, key_len, val, val_len);
+	unlock_mutex(__LINE__);
+
+	return rv;
+}
+
 static void dump_contents(const struct nn_container *ch)
 {
 	const uint8_t *buf = (const void *)ch;
@@ -2778,6 +2834,8 @@ int nvmem_erase_tpm_data(void)
 
 	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
 
+	lock_mutex(__LINE__);
+
 	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
 
 		if ((ch->container_type != NN_OBJ_TPM_RESERVED) &&
@@ -2786,6 +2844,8 @@ int nvmem_erase_tpm_data(void)
 
 		delete_object(&at, ch);
 	}
+
+	unlock_mutex(__LINE__);
 
 	shared_mem_release(ch);
 
@@ -2845,7 +2905,9 @@ int nvmem_erase_tpm_data(void)
 
 	} while (master_at.list_index != (saved_list_index + 1));
 
+	lock_mutex(__LINE__);
 	rv = compact_nvmem();
+	unlock_mutex(__LINE__);
 
 	if (rv == EC_SUCCESS)
 		rv = new_nvmem_init();
@@ -2868,6 +2930,7 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 	struct access_tracker at = {};
 
 	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
+	lock_mutex(__LINE__);
 
 	while ((rv = get_next_object(&at, ch, 1)) == EC_SUCCESS) {
 		uint8_t ctype = ch->container_type;
@@ -2934,6 +2997,8 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 			}
 		}
 	}
+
+	unlock_mutex(__LINE__);
 
 	shared_mem_release(ch);
 
