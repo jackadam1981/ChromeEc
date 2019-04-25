@@ -856,6 +856,19 @@ static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 			(uint8_t *)&length, sizeof(length));
 	length &= BMI160_FIFO_LENGTH_MASK;
 
+	if (!(data->flags &
+	     (BMI160_FIFO_ALL_MASK << BMI160_FIFO_FLAG_OFFSET))) {
+		/*
+		 * The FIFO was disabled while we were processing it.
+		 *
+		 * Flush potential left over:
+		 * When sensor is resumed, we won't read old data.
+		 */
+		raw_write8(s->port, s->addr, BMI160_CMD_REG,
+				BMI160_CMD_FIFO_FLUSH);
+		return EC_SUCCESS;
+	}
+
 	/*
 	 * We have not requested timestamp, no extra frame to read.
 	 * if we have too much to read, read the whole buffer.
@@ -871,19 +884,6 @@ static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 	if (length > sizeof(bmi160_buffer))
 		CPRINTS("unexpected large FIFO: %d", length);
 	length = MIN(length, sizeof(bmi160_buffer));
-
-	if (!(data->flags &
-	     (BMI160_FIFO_ALL_MASK << BMI160_FIFO_FLAG_OFFSET))) {
-		/*
-		 * The FIFO was disabled while we were processing it.
-		 *
-		 * Flush potential left over:
-		 * When sensor is resumed, we won't read old data.
-		 */
-		raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				BMI160_CMD_FIFO_FLUSH);
-		return EC_SUCCESS;
-	}
 
 
 	raw_read_n(s->port, s->addr, BMI160_FIFO_DATA, bmi160_buffer,
