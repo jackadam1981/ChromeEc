@@ -184,7 +184,7 @@ uint16_t tcpc_get_alert_status(void)
 	 * port 1 reset is active low.
 	 */
 	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
-		if (!gpio_get_level(GPIO_USB_C0_TCPC_RST))
+		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_ODL))
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
@@ -220,7 +220,7 @@ void board_reset_pd_mcu(void)
 		return;
 
 	/* Reset TCPC0 */
-	reset_pd_port(USB_PD_PORT_TCPC_0, GPIO_USB_C0_TCPC_RST,
+	reset_pd_port(USB_PD_PORT_TCPC_0, GPIO_USB_C0_TCPC_RST_ODL,
 		      BOARD_TCPC_C0_RESET_HOLD_DELAY,
 		      BOARD_TCPC_C0_RESET_POST_DELAY);
 
