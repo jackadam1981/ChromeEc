@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7aa6075a_18716042",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T19:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f087e74d_57b42fdb",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31687018_a6763ea9",
         "filename": "chip/ish/uart.c",
         "patchSetId": 2
@@ -187,6 +211,30 @@
       "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7de4fe_6fd06bcd",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T19:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33043e33_f2681c8c",
+      "range": {
+        "startLine": 98,
+        "startChar": 18,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +330,30 @@
       "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0848702b_9b3098f8",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-25T19:24:40Z",
+      "side": 1,
+      "message": "I confirmed on the data sheet that writing to these registers will have no effect for UART2, so we should be good to go with how it is in PS3.",
+      "parentUuid": "96637edd_894022f5",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "6be98990c4ad38cc37187591517a67858fd5ca1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
