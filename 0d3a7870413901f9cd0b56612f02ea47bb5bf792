@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "465d1d8f_38a3de8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T23:15:57Z",
+      "side": 1,
+      "message": "Please format it and BRANCH \u0026 TEST, following other CLs.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8931998e_40d7d268",
+        "filename": "common/util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-25T23:15:57Z",
+      "side": 1,
+      "message": "Can you put this in a sub-routine (e.g. find_base)?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
