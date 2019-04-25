@@ -22,6 +22,30 @@
       "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4321a774_bfa05ad9",
+        "filename": "common/port80.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-04-25T17:13:57Z",
+      "side": 1,
+      "message": "We need only the last message as it is easy to trace back the code with the last message.",
+      "parentUuid": "b73dc2b7_9b8d6f67",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
