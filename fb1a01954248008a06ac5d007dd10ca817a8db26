@@ -22,6 +22,30 @@
       "revId": "fb1a01954248008a06ac5d007dd10ca817a8db26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c995a6d8_6651ee76",
+        "filename": "board/npcx_evb_arm/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-04-25T02:47:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b21a88c7_fadd8896",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "fb1a01954248008a06ac5d007dd10ca817a8db26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
