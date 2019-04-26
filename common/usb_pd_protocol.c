@@ -3021,12 +3021,23 @@ void pd_task(void *u)
 				break;
 			}
 #endif
-
-			/* Vnc monitoring */
-			if ((cc1 == TYPEC_CC_VOLT_RD ||
-			     cc2 == TYPEC_CC_VOLT_RD) ||
-			    (cc1 == TYPEC_CC_VOLT_RA &&
-			     cc2 == TYPEC_CC_VOLT_RA)) {
+			/*
+			 * Transition to DEBOUNCE if we detect appropriate
+			 * signals
+			 *
+			 * If audio detected => DEBOUNCE  -or-
+			 * If Rd detected on at least one CC pin -and-
+			 *    we are not in try_src => DEBOUNCE -or-
+			 *    we are in try_src but only one pin Rd => DEBOUNCE
+			 *
+			 * try_src should not exit if both pins are Rd
+			 */
+			if ((cc1 == TYPEC_CC_VOLT_RA &&
+			     cc2 == TYPEC_CC_VOLT_RA) ||
+			    ((cc1 == TYPEC_CC_VOLT_RD ||
+			      cc2 == TYPEC_CC_VOLT_RD) &&
+			     (!(pd[port].flags & PD_FLAGS_TRY_SRC) ||
+			      cc1 != cc2))) {
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port))
