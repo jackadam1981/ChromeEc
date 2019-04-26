@@ -5342,6 +5342,24 @@ struct ec_response_rollback_info {
 /* Issue AP reset */
 #define EC_CMD_AP_RESET 0x0125
 
+/* Test result values for EC_CMD_CBI_CHECK */
+#define CBI_CHECK_RESULT_SUCCESS	0
+#define CBI_CHECK_RESULT_CANNOT_READ	1
+#define CBI_CHECK_RESULT_WP_DISABLED	2
+#define CBI_CHECK_RESULT_WP_NOT_PROTECT	3
+
+struct ec_params_cbi_check {
+	uint8_t bytes_to_check;
+} __ec_align4;
+
+struct ec_response_cbi_check {
+	uint8_t check_result;
+	uint8_t last_good_byte;
+} __ec_align4;
+
+/* Allow host-side testing of Cros Board Info EEPROM */
+#define EC_CMD_CBI_CHECK 0x0126
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 

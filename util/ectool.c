@@ -74,6 +74,8 @@ const char help_str[] =
 	"      Prints the board version\n"
 	"  cbi\n"
 	"      Get/Set Cros Board Info\n"
+	"  cbicheck\n"
+	"      Performs basic checks for Cros Board Info EEPROMs\n"
 	"  chargecurrentlimit\n"
 	"      Set the maximum battery charging current\n"
 	"  chargecontrol\n"
@@ -6947,6 +6949,72 @@ static void cmd_cbi_help(char *cmd)
 	"      10b: Set all fields to defaults first\n", cmd, cmd);
 }
 
+static void cmd_cbicheck_help(char *cmd)
+{
+	fprintf(stderr,
+		"  Usage: %s <num_bytes>\n"
+		"    <num_bytes> is the number of bytes to check for active "
+		"hardware write protection.\n",
+		cmd);
+}
+
+
+/*
+ * Write value to CBI
+ *
+ * TODO: Support asynchronous write
+ */
+static int cmd_cbicheck(int argc, char *argv[])
+{
+	char *e;
+	int rv;
+	struct ec_params_cbi_check p = {};
+	struct ec_response_cbi_check r = {};
+
+	if (argc < 2) {
+		fprintf(stderr, "Invalid number of params\n");
+		cmd_cbicheck_help(argv[0]);
+		return -1;
+	}
+
+	/* Size */
+	p.bytes_to_check = strtol(argv[1], &e, 0);
+	if ((e && *e) || p.bytes_to_check == 0)  {
+		fprintf(stderr, "Bad size. Must be >0 and <256\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_CBI_CHECK, 0, &p, sizeof(p),
+			&r, sizeof(r));
+
+	if (rv < 0) {
+		fprintf(stderr, "Error code: %d\n", rv);
+		return rv;
+	}
+
+	switch (r.check_result) {
+	case CBI_CHECK_RESULT_SUCCESS:
+		e = "Success.";
+		break;
+	case CBI_CHECK_RESULT_CANNOT_READ:
+		e = "Error, cannot read flash!";
+		break;
+	case CBI_CHECK_RESULT_WP_DISABLED:
+		e = "Error, write protect needs to be enabled first!";
+		break;
+	case CBI_CHECK_RESULT_WP_NOT_PROTECT:
+		e = "Error, write protect did not protect data!";
+		break;
+	default:
+		e = "Error, unknown!";
+		break;
+	}
+
+	printf("Test Result: %s\nLast good byte: %d\n", e, r.last_good_byte);
+	return 0;
+}
+
+
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
 	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME;
@@ -8539,6 +8607,7 @@ const struct command commands[] = {
 	{"batteryparam", cmd_battery_vendor_param},
 	{"boardversion", cmd_board_version},
 	{"cbi", cmd_cbi},
+	{"cbicheck", cmd_cbicheck},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},
 	{"chargeoverride", cmd_charge_port_override},

@@ -354,6 +354,63 @@ DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
 		     hc_cbi_set,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_CBI_HOST_CHECK
+static int cbi_check(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_cbi_check *p = args->params;
+	struct ec_response_cbi_check *r = args->response;
+	uint8_t before[EEPROM_PAGE_WRITE_SIZE], after[EEPROM_PAGE_WRITE_SIZE];
+	uint8_t offset, i;
+
+	args->response_size = sizeof(*r);
+	r->last_good_byte = 0;
+
+	if (!eeprom_is_write_protected()) {
+		r->check_result = CBI_CHECK_RESULT_WP_DISABLED;
+		return EC_RES_SUCCESS;
+	}
+
+	for (offset = 0; offset < p->bytes_to_check;
+	     offset += EEPROM_PAGE_WRITE_SIZE) {
+		if (read_eeprom(offset, before, EEPROM_PAGE_WRITE_SIZE)) {
+			r->check_result = CBI_CHECK_RESULT_CANNOT_READ;
+			return EC_RES_SUCCESS;
+		}
+
+		/* Flip all bits */
+		for (i = 0; i < EEPROM_PAGE_WRITE_SIZE; ++i)
+			after[i] = before[i] ^ 0xFF;
+
+		/* This write should fail since HW is write protected */
+		i2c_write_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM, offset,
+				after, EEPROM_PAGE_WRITE_SIZE);
+		/* Wait for internal write cycle completion */
+		msleep(EEPROM_PAGE_WRITE_MS);
+
+		if (read_eeprom(offset, after, EEPROM_PAGE_WRITE_SIZE)) {
+			r->check_result = CBI_CHECK_RESULT_CANNOT_READ;
+			return EC_RES_SUCCESS;
+		}
+
+		for (i = 0; i < EEPROM_PAGE_WRITE_SIZE; ++i) {
+			if (before[i] != after[i]) {
+				/* Leave CBI EEPROM in a good state */
+				i2c_write_block(I2C_PORT_EEPROM,
+						I2C_ADDR_EEPROM, offset, before,
+						EEPROM_PAGE_WRITE_SIZE);
+				r->check_result =
+					CBI_CHECK_RESULT_WP_NOT_PROTECT;
+				return EC_RES_SUCCESS;
+			}
+			r->last_good_byte = offset + i;
+		}
+	}
+	r->check_result = CBI_CHECK_RESULT_SUCCESS;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CBI_CHECK, cbi_check, EC_VER_MASK(0));
+#endif /* CONFIG_CBI_HOST_CHECK */
+
 #ifdef CONFIG_CMD_CBI
 static void dump_flash(void)
 {

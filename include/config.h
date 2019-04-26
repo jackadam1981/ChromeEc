@@ -3968,6 +3968,14 @@
  */
 #undef CONFIG_CROS_BOARD_INFO
 
+/*
+ * This define adds a host command that will verify that the EEPROM
+ * used for CBI is compliant. If CONFIG_CROS_BOARD_INFO is not defined, this
+ * define has no effect. If a board is tight on space, it can undef it in
+ * board.h file.
+ */
+#define CONFIG_CBI_HOST_CHECK
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
