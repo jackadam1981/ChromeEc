@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dde319fb_aa97b873",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "Use CPRINTS, \nUse CC_ACCEL (used for all sensors), no CC_TASK.",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31789aa4_cdda6318",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "fix",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6ea08f_66ca56ee",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "you need to call post_evetns to update s-\u003eraw_xyz\nPut the CONFIG_ACCEL_FIFO #ifdef deeper.",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d474da7e_4e5f9ebf",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240726cc_075b7280",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "Should be force mode (we trigger on read()).",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0446073c_6b362d9b",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "Describe meaning full values.",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9381a1_5477d06a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "use ARRAY_SIZE()",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906ae469_c5098110",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:19:02Z",
+      "side": 1,
+      "message": "Call sensor_init_done instead.",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
