@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca5c9aa8_45b37b65",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-26T15:32:38Z",
+      "side": 1,
+      "message": "I know you filed a bug on this, but I think this change does break this code.\n\nthis code applies to the FIFO case I am pretty sure and last_collection was updated before in the fifo case but it is not longer updated so this comparison it bad now\n\nI think we could just add a local static that tracks the first time ACCESS_DENIED was encountered and if that is THRESHOLD in the past and then perform the recovery operation",
+      "range": {
+        "startLine": 307,
+        "startChar": 2,
+        "endLine": 308,
+        "endChar": 58
+      },
+      "revId": "8fe9e789e97ffa946a57fe01d2b746911922a082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
