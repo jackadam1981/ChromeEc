@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4177c42b_0bad1d49",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-26T21:19:52Z",
+      "side": 1,
+      "message": "this line causes build breakage when compiling:\n\n  CC      RO/board/flapjack/board.o\nboard/flapjack/board.c: In function \u0027cbi_board_override\u0027:\nboard/flapjack/board.c:143:29: error: bitwise comparison always evaluates to false [-Werror\u003dtautological-compare]\n   if (SKU_ID_TO_LCM_ID(sku) \u003d\u003d PANEL_UNINITIALIZED)\n\n\nwas this a last minute change without trying to build or am I missing some other patch?",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 28
+      },
+      "revId": "6549da39d519b4d07e8bca7bef0393549765412b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
