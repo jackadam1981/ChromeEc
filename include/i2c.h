@@ -425,4 +425,15 @@ void i2c_end_xfer_notify(int port, int slave_addr);
  * host command or when sys_jump is disabld.
  */
 void i2c_passthru_protect_port(uint32_t port);
+
+/**
+ * Function to get the protect status of I2C port/tunnel. This is invoked to
+ * identify the status of the tunnel before performing FW update.
+ *
+ * @param port: I2C port number
+ *
+ * @return 0 if invalid port, else the port protect status.
+ */
+int i2c_passthru_protect_status(uint32_t port);
+
 #endif  /* __CROS_EC_I2C_H */

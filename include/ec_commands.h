@@ -4306,6 +4306,59 @@ struct ec_response_device_event {
 } __ec_align4;
 
 /*****************************************************************************/
+/* Chips requiring FW update */
+#define EC_CMD_AUX_FW_CHIP_LIST 0x00AB
+
+enum ec_aux_fw_chip_id {
+	EC_AUX_FW_PS8751_CHIP_ID = 1,
+	EC_AUX_FW_PS8805_CHIP_ID,
+	EC_AUX_FW_ANX3429_CHIP_ID,
+};
+
+enum ec_aux_fw_addl_info_type {
+	EC_AUX_FW_USB_PD_ID = 1,
+};
+
+struct usb_pd {
+	uint8_t id;
+};
+
+/*
+ * Data structure to identify the chip and their i2c port, to match them with
+ * the registered drivers.
+ */
+struct aux_fw_chip_info {
+	/* Chip ID that requires Aux FW update */
+	uint8_t chip_id;
+	/* Remote bus/port ID in which the chip is present */
+	uint8_t i2c_bus;
+	uint8_t port;
+	/*
+	 * Protect status of the tunnel for use by depthcharge to determine
+	 * if an EC reboot will be required to unprotect the tunnel.
+	 */
+	uint8_t port_protect_status;
+	/* Additional chip specific information */
+	uint8_t addl_info_type;
+	union {
+		/* USB PD ID required by TCPC chips */
+		struct usb_pd usb_pd;
+		/*
+		 * Reserved field so that this version of command can
+		 * sustain for a while before we need a uprev.
+		 */
+		uint8_t reserved[8];
+	};
+};
+
+struct ec_response_aux_fw_chip_info {
+	/* Number of valid Aux FW info in the response */
+	uint8_t num_aux_fw_chip;
+	/* Optional data containing the Aux FW info */
+	struct aux_fw_chip_info chip_info[];
+};
+
+/*****************************************************************************/
 /* Smart battery pass-through */
 
 /* Get / Set 16-bit smart battery registers */

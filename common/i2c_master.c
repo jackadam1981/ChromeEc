@@ -860,6 +860,14 @@ void i2c_passthru_protect_port(uint32_t port)
 		PTHRUPRINTF("Invalid I2C port %d to be protected\n", port);
 }
 
+int i2c_passthru_protect_status(uint32_t port)
+{
+	if (port < I2C_PORT_COUNT)
+		return port_protected[port];
+	PTHRUPRINTF("%s: Invalid I2C port %d\n", __func__, port);
+	return 0;
+}
+
 static int i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_passthru_protect *params = args->params;

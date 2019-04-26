@@ -330,6 +330,10 @@
 /* Support base32 text encoding */
 #undef CONFIG_BASE32
 
+/****************************************************************************/
+/* Aux FW Chip Info Command handler Config */
+#undef CONFIG_AUX_FW_CHIP_INFO
+
 /*****************************************************************************/
 /* Battery config */
 
