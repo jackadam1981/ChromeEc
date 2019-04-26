@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5045dbd3_02248315",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T22:09:43Z",
+      "side": 1,
+      "message": "replace scale/uscale/offset with an array als_calib[3].",
+      "revId": "78b7b15e5ee4b07afd4e4430a241ed5c0243543c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
