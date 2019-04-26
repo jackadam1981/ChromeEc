@@ -277,15 +277,12 @@ static void enter_d0i0(void)
 
 static void enter_d0i1(void)
 {
-	uint64_t current_irq_map;
-
 	timestamp_t t0, t1;
 	t0 = get_time();
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I1;
 
 	/* only enable PMU wakeup interrupt */
-	current_irq_map = disable_all_interrupts();
 	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
 #ifdef CONFIG_ISH_PM_RESET_PREP
@@ -303,7 +300,6 @@ static void enter_d0i1(void)
 
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
-	restore_interrupts(current_irq_map);
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
 
