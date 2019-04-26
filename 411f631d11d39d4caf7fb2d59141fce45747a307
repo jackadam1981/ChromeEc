@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "af1419cb_e000a3c7",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-26T18:40:49Z",
+      "side": 1,
+      "message": "I think it\u0027s better to move to exit of TCG.\nI\u0027m seeing there\u0027s timer 0 accumulator also need to be checked after TCG exit.",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 55
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a655553_c9cdffe9",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 2
