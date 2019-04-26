@@ -2875,6 +2875,8 @@ int nvmem_erase_tpm_data(void)
 	} while (master_at.list_index != (saved_list_index + 1));
 
 	rv = compact_nvmem();
+	if (rv == EC_SUCCESS)
+		rv = new_nvmem_init();
 	return rv;
 }
 
