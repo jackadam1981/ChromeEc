@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4b83a6d3_c487e377",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-26T18:58:46Z",
+      "side": 1,
+      "message": "yeah, I like the idea of moving this to the resume path as well",
+      "parentUuid": "af1419cb_e000a3c7",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 55
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a655553_c9cdffe9",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 2
