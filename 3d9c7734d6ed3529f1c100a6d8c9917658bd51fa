@@ -22,6 +22,29 @@
       "revId": "3d9c7734d6ed3529f1c100a6d8c9917658bd51fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845978a4_5f2dfde7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3050,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-26T14:58:23Z",
+      "side": 1,
+      "message": "this is a full logical superset of the above condition and each section does the exact same thing, so we really haven\u0027t change any logic in patch set 8 from the base. I am confused on what you are actually trying to accomplish now.\n\nThe previous condition of\nif ((cc1 \u003d\u003d TYPEC_CC_VOLT_RD ||\n     cc2 \u003d\u003d TYPEC_CC_VOLT_RD) ||\n    (cc1 \u003d\u003d TYPEC_CC_VOLT_RA \u0026\u0026\n     cc2 \u003d\u003d TYPEC_CC_VOLT_RA))\n\nwould also catch the case of TrySource enabled and only one of the CC pins is Rd. It would have forced the statemachine to go to SRC_DISCONNECTED_DEBOUNCE in that scenario previously too.",
+      "range": {
+        "startLine": 3047,
+        "startChar": 12,
+        "endLine": 3050,
+        "endChar": 35
+      },
+      "revId": "3d9c7734d6ed3529f1c100a6d8c9917658bd51fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
