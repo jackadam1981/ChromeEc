@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e744af5d_6eb6b297",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-04-26T17:36:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "465d1d8f_38a3de8c",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8931998e_40d7d268",
         "filename": "common/util.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-25T23:15:57Z",
       "side": 1,
       "message": "Can you put this in a sub-routine (e.g. find_base)?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae50406_30d10ef0",
+        "filename": "common/util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-04-26T17:36:13Z",
+      "side": 1,
+      "message": "I think that would be a rather ugly helper method, taking all of base, nptr and c by reference, in order to be able to update them all.\n\nvoid find_base(int *base, int *c, const char **nptr);\n\nIf we want to go this way, then I want to at least also move the parsing of sign and initial spaces into the helper.\n\nAlso, we could consider changing the convention that nptr point to the \"second next\" character after the one first in line to be processed next (which is stored in c), and instead have nptr point at the character first in line to be processed.  That would eliminate the need to pass c by reference to the helper (and eliminate some of the \" - 1\" that I have before each return statement.\n\nWith those two proposals, the interface would instead become:\nvoid parse_preamble(int *base, int *neg, const char **nptr);\n\nLet me know what you think.",
+      "parentUuid": "8931998e_40d7d268",
       "range": {
         "startLine": 136,
         "startChar": 0,
