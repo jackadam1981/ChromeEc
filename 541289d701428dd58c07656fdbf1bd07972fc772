@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2218d919_0453a346",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-26T16:04:55Z",
+      "side": 1,
+      "message": "Please add HPET_INTR_CLEAR_SETTLING as BIT(1) to hpet.h and use here instead.",
+      "range": {
+        "startLine": 216,
+        "startChar": 21,
+        "endLine": 216,
+        "endChar": 27
+      },
+      "revId": "541289d701428dd58c07656fdbf1bd07972fc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
