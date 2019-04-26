@@ -12,6 +12,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "timer.h"
 
 /* Reset causes */
@@ -645,5 +646,15 @@ int system_set_active_copy(enum system_image_copy_t copy);
  * @return     Flash offset of the slot storing <copy>
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy);
+
+/**
+ * Get chips requiring FW update
+ *
+ * @param chip_info	Out parameter to hold the return chip info.
+ * @return		-ve error codes on error, number of chips
+ *			requiring FW update on success.
+ */
+int board_get_aux_fw_chip_list(const struct aux_fw_chip_info **chip_info)
+						__attribute__((weak));
 
 #endif  /* __CROS_EC_SYSTEM_H */
