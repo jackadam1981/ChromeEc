@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "322d505b_521b4ee7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T19:47:56Z",
+      "side": 1,
+      "message": "The original code use 95% ratio, as documented in https://chromium-review.googlesource.com/312985",
+      "revId": "0155470232d945868926eb3183520ecf095b9fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
