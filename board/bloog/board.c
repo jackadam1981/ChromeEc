@@ -322,3 +322,16 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+/******************************************************************************/
+/* Aux FW Chip Configuration */
+const struct aux_fw_chip_info board_aux_fw_chip_info[] = {
+	{
+		.chip_id = EC_AUX_FW_PS8751_CHIP_ID,
+		.i2c_bus = PS8751_I2C_ADDR1,
+		.port = I2C_PORT_TCPC1,
+		.addl_info_type = EC_AUX_FW_USB_PD_ID,
+		.usb_pd.id = USB_PD_PORT_TCPC_1,
+	},
+};
+const unsigned int num_aux_fw_chip = ARRAY_SIZE(board_aux_fw_chip_info);

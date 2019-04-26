@@ -41,6 +41,9 @@
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
 #define CONFIG_I2C_XFER_BOARD_CALLBACK
 
+/* Aux FW Chip Info */
+#define CONFIG_AUX_FW_CHIP_INFO
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

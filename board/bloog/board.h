@@ -53,6 +53,9 @@
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
+/* Aux FW Chip Info */
+#define CONFIG_AUX_FW_CHIP_INFO
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

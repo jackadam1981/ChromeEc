@@ -58,6 +58,9 @@
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
 
+/* Aux FW Chip Info */
+#define CONFIG_AUX_FW_CHIP_INFO
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */
