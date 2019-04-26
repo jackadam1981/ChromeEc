@@ -102,6 +102,23 @@
     },
     {
       "key": {
+        "uuid": "1506d865_1e3b2e8c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-26T19:44:54Z",
+      "side": 1,
+      "message": "revert back to ts_end_task, we need to include the sensor processing time to decide if we need to send the events to AP.",
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1f8749b_91220542",
         "filename": "driver/als_si114x.c",
         "patchSetId": 3
