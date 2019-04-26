@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68820333_265a62e2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-26T13:59:54Z",
+      "side": 1,
+      "message": "this priority list seems like it is getting out of control.\n\nShould we have\nDedicated \u003d\u003e 0 (because this is better from a product/hardware design)\nPD \u003d\u003e 1 (there is potential for higher power even if it isn\u0027t currently there)\neverything else \u003d\u003e 2 (let the one with the max power decided)\n\nWe already have logic that picks the supplier with the highest power available (line ~270), why would we ever want to pick a supplier that offered lower total power (other than the 2 exception above for PD and dedicated)\n\n\n\n(The different values are still okay to have for all of these different types for tracking, but I don\u0027t think we should use that for priority unless we really have too)",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "90fd669794eda0e71d6f186a7e0db38bd492e2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
