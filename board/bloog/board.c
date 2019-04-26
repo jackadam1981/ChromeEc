@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "aux_fw_chip_info.h"
 #include "battery.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -321,4 +322,22 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
+}
+
+/******************************************************************************/
+/* Aux FW Chip Configuration */
+static const struct aux_fw_chip_info chip_cfg[] = {
+#ifdef VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+	{
+		.chip_string = EC_AUX_FW_PS8751_CHIP_ID,
+		.i2c_bus = PS8751_I2C_ADDR1,
+		.port = I2C_PORT_TCPC1,
+	},
+#endif
+};
+
+int board_get_aux_fw_chip_list(const struct aux_fw_chip_info **chip_info)
+{
+	*chip_info = chip_cfg;
+	return ARRAY_SIZE(chip_cfg);
 }

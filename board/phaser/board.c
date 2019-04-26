@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "aux_fw_chip_info.h"
 #include "button.h"
 #include "charge_state.h"
 #include "common.h"
@@ -16,6 +17,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
+#include "driver/tcpm/ps8xxx.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -295,4 +297,22 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
+}
+
+/******************************************************************************/
+/* Aux FW Chip Configuration */
+static const struct aux_fw_chip_info chip_cfg[] = {
+#ifdef VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+	{
+		.chip_string = EC_AUX_FW_PS8751_CHIP_ID,
+		.i2c_bus = PS8751_I2C_ADDR1,
+		.port = I2C_PORT_TCPC1,
+	},
+#endif
+};
+
+int board_get_aux_fw_chip_list(const struct aux_fw_chip_info **chip_info)
+{
+	*chip_info = chip_cfg;
+	return ARRAY_SIZE(chip_cfg);
 }
