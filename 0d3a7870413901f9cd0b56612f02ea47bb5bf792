@@ -93,6 +93,30 @@
       "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374731f4_f4d5ec40",
+        "filename": "common/util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T18:29:12Z",
+      "side": 1,
+      "message": "I would do \u0027int find_base(int *c, const char **nptr)\u0027 which is called as \u0027base \u003d find_base(\u0026c, \u0026nptr)\u0027. This subroutine explicitly shows strtoi and strtoul use identical logic in terms of determining the base.\n\nparse_preamble would be too hairly, strtoi and strtoul should have (by nature) different sign parse logic as their names indicate.",
+      "parentUuid": "eae50406_30d10ef0",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
