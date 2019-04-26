@@ -2899,6 +2899,9 @@ int nvmem_erase_tpm_data(void)
 	rv = compact_nvmem();
 	unlock_mutex(__LINE__);
 
+	if (rv == EC_SUCCESS)
+		rv = new_nvmem_init();
+
 	return rv;
 }
 
