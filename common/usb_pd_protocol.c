@@ -677,6 +677,14 @@ static inline int is_only_one_rd(int cc1, int cc2)
 	return is_at_least_one_rd(cc1, cc2) && cc1 != cc2;
 }
 
+/**
+ * Returns true if the port is currently in the try src state.
+ */
+static inline int is_try_src(int port)
+{
+	return pd[port].flags & PD_FLAGS_TRY_SRC;
+}
+
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
@@ -3050,17 +3058,29 @@ void pd_task(void *u)
 			 */
 			if (auto_toggle_supported &&
 			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
-			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
+			    !is_try_src(port) &&
 			    is_open(cc1, cc2)) {
 				set_state(port, PD_STATE_DRP_AUTO_TOGGLE);
 				timeout = 2*MSEC;
 				break;
 			}
 #endif
-
-			/* Vnc monitoring */
-			if (is_at_least_one_rd(cc1, cc2) ||
-			    is_audio_acc(cc1, cc2)) {
+			/*
+			 * Transition to DEBOUNCE if we detect appropriate
+			 * signals
+			 *
+			 * If try_src -and-
+			 *    have only one Rd (not both) => DEBOUNCE
+			 * If not try_src -and-
+			 *    have at least one Rd => DEBOUNCE -or-
+			 *    have audio access => DEBOUNCE
+			 *
+			 * try_src should not exit if both pins are Rd
+			 */
+			if ((is_try_src(port) && is_only_one_rd(cc1, cc2)) ||
+			    (!is_try_src(port) &&
+			     (is_at_least_one_rd(cc1, cc2) ||
+			      is_audio_acc(cc1, cc2)))) {
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port))
@@ -3081,7 +3101,7 @@ void pd_task(void *u)
 			 * (PD_T_TRY_TIMEOUT). Otherwise we should stay
 			 * within Try.SRC (break).
 			 */
-			if (pd[port].flags & PD_FLAGS_TRY_SRC) {
+			if (is_try_src(port)) {
 				if (now.val < pd[port].try_src_marker) {
 					break;
 				} else if (now.val < pd[port].try_timeout) {
@@ -3145,9 +3165,10 @@ void pd_task(void *u)
 
 			/* Set debounce timer */
 			if (new_cc_state != pd[port].cc_state) {
-				pd[port].cc_debounce = get_time().val +
-					(pd[port].flags & PD_FLAGS_TRY_SRC) ?
-					PD_T_DEBOUNCE : PD_T_CC_DEBOUNCE;
+				pd[port].cc_debounce =
+					get_time().val +
+					(is_try_src(port) ? PD_T_DEBOUNCE
+							  : PD_T_CC_DEBOUNCE);
 				pd[port].cc_state = new_cc_state;
 				break;
 			}
@@ -3620,7 +3641,7 @@ void pd_task(void *u)
 			 */
 			if (auto_toggle_supported &&
 			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
-			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
+			    !is_try_src(port) &&
 			    is_open(cc1, cc2)) {
 				set_state(port, PD_STATE_DRP_AUTO_TOGGLE);
 				timeout = 2*MSEC;
