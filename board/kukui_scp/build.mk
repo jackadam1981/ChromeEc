@@ -16,3 +16,6 @@ board-$(HAS_TASK_VENC_SERVICE)+=venc.o
 board-$(HAS_TASK_ISP_SERVICE)+=isp_p1_srv.o
 # FD
 board-y+=fd.o
+
+# ISP P2
+board-$(HAS_TASK_DIP_SERVICE)+=isp_p2_srv.o
