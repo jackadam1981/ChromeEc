@@ -2813,8 +2813,6 @@ static void dump_contents(const struct nn_container *ch)
  * objects, then compact the flash storage, removing all TPM related objects.
  * This would guarantee that all pages where TPM objecs were stored would be
  * erased.
- *
- * TODO(vbendeb): need to seed reserved objects after this is done.
  */
 int nvmem_erase_tpm_data(void)
 {
@@ -2902,6 +2900,9 @@ int nvmem_erase_tpm_data(void)
 	lock_mutex(__LINE__);
 	rv = compact_nvmem();
 	unlock_mutex(__LINE__);
+
+	if (rv == EC_SUCCESS)
+		rv = new_nvmem_init();
 
 	return rv;
 }
