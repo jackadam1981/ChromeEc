@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9768cd9f_29adb19c",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-04-26T08:05:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure why default value needs to be high, maybe should be low?",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "047da40e7a500b91f98ca9351d0dda72d8c259e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
