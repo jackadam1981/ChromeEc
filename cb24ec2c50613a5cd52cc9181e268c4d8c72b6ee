@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "082c47af_15494a3f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Scale and uscale is used to convert the values to 32 bit.  Scale starts off at 1 and uscale at 0.  When it is passed to this driver, the scale will be in the upper 16 bits and the uscale in the lower 16 bits.\n\nWhat you see on line 198 is where we save off the values for scale and uscale that were passed to us by the kernel.  Here we use those values.\n\nThis matches all of the other ALS drivers.",
+      "parentUuid": "cf7e0eb0_a75be7fb",
+      "range": {
+        "startLine": 93,
+        "startChar": 34,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a1ead7d_894719f8",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 17
@@ -213,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "7d5d90a8_2c151df6",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30756202_6f8afc08",
+      "range": {
+        "startLine": 203,
+        "startChar": 10,
+        "endLine": 203,
+        "endChar": 12
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7abe9d6_adf293bb",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 17
@@ -236,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "5878c166_f261969c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7abe9d6_adf293bb",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 38
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01dc01f1_59eae8c7",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 17
@@ -256,6 +328,30 @@
       "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4448435_3dbe38dd",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01dc01f1_59eae8c7",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 23
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -294,6 +390,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "35a51be3_1c1db518",
+      "range": {
+        "startLine": 265,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 38
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2c2478_ca3690c5",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd0197c7_269b5874",
       "range": {
         "startLine": 265,
         "startChar": 3,

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36a7be3a_5de33624",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Nice suggestion, I like it :)",
+      "parentUuid": "e0a0d0fa_52b0cb47",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "165d671f_7af7b06c",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 21
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6d5f910e_c3c50df4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165d671f_7af7b06c",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "945800aa_523388a7",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 21
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-26T17:21:27Z",
       "side": 1,
       "message": "If you care about accuracy, you should use get_time \u0026 timestamp_expired (instead of 20 * 20 \u003d 400).",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a4aad8_0a985f60",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Accuracy was not important here.  I didn\u0027t see any rules about the max amount of time we should wait for completion.  Other driver used 400ms, seemed like a sane value given this is not a synchronous routine with respect to the kernel.",
+      "parentUuid": "945800aa_523388a7",
       "range": {
         "startLine": 64,
         "startChar": 22,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4e54e77e_dccb4396",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Agreed.  Good catch.",
+      "parentUuid": "a855f2ab_2c81e4ea",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f0a2945_dc67adef",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 21
@@ -114,6 +210,30 @@
       "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b853274c_a9920a95",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0a2945_dc67adef",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d3db899c_88f7ccab",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3b2e28_c4131b2a",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55805a22_0ad9490f",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 21
@@ -160,6 +304,30 @@
       "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd77eb9_ebe3d3f3",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-26T19:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55805a22_0ad9490f",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
