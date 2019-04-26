@@ -708,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "13164bf9_075dac4d",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T20:46:14Z",
+      "side": 1,
+      "message": "These should be all described (including struct tcs3400_drv_data_t). Other drivers are just bad examples if their structs are not described.",
+      "parentUuid": "906c8ef3_7cf4bceb",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfd13e7c_5dcf4f9f",
         "filename": "include/config.h",
         "patchSetId": 17
