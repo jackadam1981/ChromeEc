@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20e34062_e0ce08f8",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-04-26T11:19:46Z",
+      "side": 1,
+      "message": "IIRC, this happened in BD99956@Reef ( https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/412382), i\u0027m not sure if this is the same case in ISL9238@Atlas ?",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "38a77e88cdc844f8b8bd9639f8163e3da92663fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
