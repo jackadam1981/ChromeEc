@@ -4304,6 +4304,43 @@ struct ec_response_device_event {
 } __ec_align4;
 
 /*****************************************************************************/
+/* Chips requiring FW update */
+#define EC_CMD_AUX_FW_CHIP_LIST 0x00AB
+
+#define EC_AUX_FW_PS8751_CHIP_ID "ps8751"
+#define EC_AUX_FW_PS8805_CHIP_ID "ps8805"
+#define EC_AUX_FW_ANX3429_CHIP_ID "anx3429"
+
+/*
+ * Data structure to identify the chip and their i2c port, to match them with
+ * the registered drivers.
+ */
+struct aux_fw_chip_info {
+	/* Name of the chip that requires Aux FW update */
+	char chip_string[16];
+	/* Remote bus/port ID in which the chip is present */
+	uint8_t i2c_bus;
+	uint8_t port;
+	/*
+	 * Protect status of the tunnel so that EC does not need to be
+	 * requested again for boards that support this command.
+	 */
+	uint8_t port_protect_status;
+};
+
+struct ec_params_aux_fw_chip_info {
+	/* Maximum number of Aux FW that can be handled */
+	uint8_t num_aux_fw_chip;
+};
+
+struct ec_response_aux_fw_chip_info {
+	/* Number of valid Aux FW info in the response */
+	uint8_t num_aux_fw_chip;
+	/* Optional data containing the Aux FW info */
+	struct aux_fw_chip_info chip_info[];
+};
+
+/*****************************************************************************/
 /* Smart battery pass-through */
 
 /* Get / Set 16-bit smart battery registers */
