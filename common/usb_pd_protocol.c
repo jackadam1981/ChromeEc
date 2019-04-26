@@ -3065,10 +3065,22 @@ void pd_task(void *u)
 				break;
 			}
 #endif
-
-			/* Vnc monitoring */
-			if (is_at_least_one_rd(cc1, cc2) ||
-			    is_audio_acc(cc1, cc2)) {
+			/*
+			 * Transition to DEBOUNCE if we detect appropriate
+			 * signals
+			 *
+			 * If try_src -and-
+			 *    have only one Rd (not both) => DEBOUNCE
+			 * If not try_src -and-
+			 *    have at least one Rd => DEBOUNCE -or-
+			 *    have audio access => DEBOUNCE
+			 *
+			 * try_src should not exit if both pins are Rd
+			 */
+			if ((is_try_src(port) && is_only_one_rd(cc1, cc2)) ||
+			    (!is_try_src(port) &&
+			     (is_at_least_one_rd(cc1, cc2) ||
+			      is_audio_acc(cc1, cc2)))) {
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port))
