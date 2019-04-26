@@ -22,6 +22,30 @@
       "revId": "047da40e7a500b91f98ca9351d0dda72d8c259e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620ea7d8_b0005396",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-26T08:18:57Z",
+      "side": 1,
+      "message": "I think it should be fine. rt946x_init() will pull it high on starting up.\nmt6370 will pull it down if port plugged (by usb_charger_task line:955), so it should be fine.",
+      "parentUuid": "9768cd9f_29adb19c",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "047da40e7a500b91f98ca9351d0dda72d8c259e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
