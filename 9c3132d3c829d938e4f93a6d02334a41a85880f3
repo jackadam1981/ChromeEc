@@ -94,6 +94,30 @@
       "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea6a37c_f66cf1c9",
+        "filename": "common/port80.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-04-26T19:32:47Z",
+      "side": 1,
+      "message": "also we can expand it to print any error# on the display if the code hangs",
+      "parentUuid": "1eb47c92_03d8c3f8",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
