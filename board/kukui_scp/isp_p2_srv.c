@@ -77,13 +77,8 @@ void dip_service_task(void *u)
 		ipi_enable_irq(SCP_IRQ_IPC0);
 
 		if (!size)
-        {
-            PRINTF_E("(!size)\n");
             task_wait_event(-1);
-        }
 		else
-        {
-			dip_msg_handler(&rsv_msg);
-        }
+            dip_msg_handler(&rsv_msg);
 	}
 }
