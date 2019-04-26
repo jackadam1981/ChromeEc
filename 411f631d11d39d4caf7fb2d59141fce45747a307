@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9f36b1a_bdbbec31",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-26T16:11:40Z",
+      "side": 1,
+      "message": "HPET_MAIN_COUNTER_VALID_SETTLING is probably a misnomer, as the register docs seem to indicate that bits 12 and 13 indicate validity, not settling. So remove the \"_SETTLING\"",
+      "parentUuid": "b5ef8fa0_047af38b",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 52
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b01aaa69_29746552",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c8a189f4_07a13c20",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-26T16:11:40Z",
+      "side": 1,
+      "message": "Bits 12 and 13 are not for settling (see comment above), so we should probably not make this change.",
+      "parentUuid": "b01aaa69_29746552",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a655553_c9cdffe9",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-04-26T15:12:03Z",
       "side": 1,
       "message": "what latency issue, can you explain this a little more please",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 43
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "132ee1cb_83061cae",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-26T16:11:40Z",
+      "side": 1,
+      "message": "https://crrev.com/c/1585386 is probably a better solution for this anyway",
+      "parentUuid": "1a655553_c9cdffe9",
       "range": {
         "startLine": 222,
         "startChar": 4,
