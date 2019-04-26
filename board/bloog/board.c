@@ -300,3 +300,21 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
 }
+
+/******************************************************************************/
+/* Aux FW Chip Configuration */
+static const struct aux_fw_chip_info chip_cfg[] = {
+#ifdef VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+	{
+		.chip_string = EC_CMD_AUX_FW_PS8751_CHIP_ID,
+		.i2c_bus = PS8751_I2C_ADDR1,
+		.port = I2C_PORT_TCPC1,
+	},
+#endif
+};
+
+int board_get_aux_fw_chip_list(const struct aux_fw_chip_info **chip_info)
+{
+	*chip_info = chip_cfg;
+	return ARRAY_SIZE(chip_cfg);
+}
