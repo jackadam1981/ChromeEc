@@ -70,6 +70,30 @@
       "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eb47c92_03d8c3f8",
+        "filename": "common/port80.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-04-26T19:30:58Z",
+      "side": 1,
+      "message": "1.only during init time there will be several port80 codes which naked eye can miss. But once DUT boots to OS frequency of port80 msg reduce so all the msg are readable easily.\n2. when the code hangs last msg is the easily noticeable msg \n3. during Soix \u0026 below EC status is clearly visible on display",
+      "parentUuid": "131b9642_bb45348c",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
