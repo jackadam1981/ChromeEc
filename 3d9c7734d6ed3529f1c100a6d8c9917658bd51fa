@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d196de23_8410ddb8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-26T06:42:46Z",
+      "side": 1,
+      "message": "I don\u0027t know what the case uses this define. Actually enable Vbus in here does not meet spec, when we are in try.SRC state. I think we can remove this in here.",
+      "range": {
+        "startLine": 3038,
+        "startChar": 0,
+        "endLine": 3042,
+        "endChar": 6
+      },
+      "revId": "3d9c7734d6ed3529f1c100a6d8c9917658bd51fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
