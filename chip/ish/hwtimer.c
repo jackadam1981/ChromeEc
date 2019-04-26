@@ -213,6 +213,7 @@ static void __hw_clock_source_irq(int timer_id)
 {
 	/* Clear interrupt */
 	HPET_INTR_CLEAR = BIT(timer_id);
+	wait_while_settling(BIT(1));
 
 	/*
 	 * If IRQ is from timer 0, 2^32 us have elapsed (i.e. OS timer
