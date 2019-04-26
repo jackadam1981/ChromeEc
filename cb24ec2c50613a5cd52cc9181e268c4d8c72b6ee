@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cf7e0eb0_a75be7fb",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "?",
+      "parentUuid": "b4f53591_1867eca7",
+      "range": {
+        "startLine": 93,
+        "startChar": 34,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a1ead7d_894719f8",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 17
@@ -528,6 +552,30 @@
       "writtenOn": "2019-04-25T22:58:42Z",
       "side": 1,
       "message": "Please describe all these.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "cb24ec2c50613a5cd52cc9181e268c4d8c72b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906c8ef3_7cf4bceb",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "?",
+      "parentUuid": "e438b8da_f8ec458e",
       "range": {
         "startLine": 80,
         "startChar": 0,

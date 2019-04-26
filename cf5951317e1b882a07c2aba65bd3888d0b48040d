@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0a0d0fa_52b0cb47",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "You probably like: #define CPRINTS(fmt, args...) cprints(CC_ALS, \"%s \" fmt, __func__, ## args)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165d671f_7af7b06c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "Not sure about this conversion. Can you add comment? EC_RES_* are for the host commands.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945800aa_523388a7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "If you care about accuracy, you should use get_time \u0026 timestamp_expired (instead of 20 * 20 \u003d 400).",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a855f2ab_2c81e4ea",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "nit: sizeof(light_data) is more robust (against future changes).",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 33
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0a2945_dc67adef",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "nit: redundant",
+      "range": {
+        "startLine": 89,
+        "startChar": 45,
+        "endLine": 89,
+        "endChar": 46
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3b2e28_c4131b2a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "No error checking?",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55805a22_0ad9490f",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-26T17:21:27Z",
+      "side": 1,
+      "message": "nit: \u0027DRV\u0027 seems a better fit.",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "cf5951317e1b882a07c2aba65bd3888d0b48040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
