@@ -22,6 +22,30 @@
       "revId": "5d868a77265927367c59b49c5a8b677bb8fefbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03b88f4_e6a8929e",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-26T11:14:42Z",
+      "side": 1,
+      "message": "oh, this one is just a variable name, not visible from outside.\n\nThings that user may see is in [1], it\u0027s some dummy value like \"\u003cunkn\u003e\"\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1469192/14/driver/battery/mm8013.c#119",
+      "parentUuid": "fb668150_7a53c67f",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "5d868a77265927367c59b49c5a8b677bb8fefbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
