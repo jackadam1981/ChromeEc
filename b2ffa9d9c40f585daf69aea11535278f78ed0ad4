@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a22085d_d27e714c",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "this is a huge script, can you please add a comment header describing what it does, it would make it much easier to review.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c0ab34_e983632a",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "why is this needed?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9bdc857_8fcda3ab",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "maybe just \tPTY_CR50\u003d$( dut-control cr50_uart_pty | sed \u0027s/.*://\u0027) so that there is no need for two asssignments?",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f42fa23c_100931f8",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "the decision if dut-contol supplied device or /dev/ttyUSBx will be used  should be done in one place.\n\ntechnically speaking hadcoding /dev/ttyUSB{0..2} is not guaranteed to work - I often have other USB to FTDI dongles plugged in, this messes up SuzyQ device assignment.\n\nIdeally proper /dev/ttyUSB needs to be discovered automatically, at least there should be a command line option to override the base device number, the rest should be derived from the base as +1 and +2",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3233b3a0_da8fe639",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0d630f_a3d08671",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "what does this do?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2c3344_ef80710e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "should use [[..]] throughout the file",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 5
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c10b4741_1e99e251",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "what does this do?",
+      "range": {
+        "startLine": 154,
+        "startChar": 24,
+        "endLine": 154,
+        "endChar": 26
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b63bab_cc67111a",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T00:48:53Z",
+      "side": 1,
+      "message": "what does this do?",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
