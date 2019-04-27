@@ -16,6 +16,24 @@
       "revId": "78b7b15e5ee4b07afd4e4430a241ed5c0243543c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad00c65_f16d405d",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T01:14:11Z",
+      "side": 1,
+      "message": "If each channel will have a scale (vs. a single scale to apply to R, G, and B), which scale should tcs3400_rgb_get_scale() return to the kernel?\n\nWill that interface be changed to allow passing down three different scale values?\n\nIf not, I can copy the scale to all three calibration records, but does it really make sense to have a separate scale and uscale for each channel for RGB if they aren\u0027t going to be different?",
+      "parentUuid": "5045dbd3_02248315",
+      "revId": "78b7b15e5ee4b07afd4e4430a241ed5c0243543c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
