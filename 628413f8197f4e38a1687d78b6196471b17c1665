@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7caaf1dc_ea427c31",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde319fb_aa97b873",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31789aa4_cdda6318",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 16
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "40e9a21e_c3ef2d1c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd6ea08f_66ca56ee",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d474da7e_4e5f9ebf",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 16
@@ -64,6 +100,24 @@
       "writtenOn": "2019-04-26T22:19:02Z",
       "side": 1,
       "message": "Why is this needed?",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a764a6d7_100665de",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "Not sure that it is needed, AICLEAR is written to below.",
+      "parentUuid": "d474da7e_4e5f9ebf",
       "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "bb7cfac3_371094b4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "FORCE mode wasn\u0027t working for me early on in development, perhaps it was failing for an unrelated reason.  I\u0027ll try using it again.",
+      "parentUuid": "240726cc_075b7280",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0446073c_6b362d9b",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 16
@@ -101,6 +173,24 @@
       "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5866573f_f449f61d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0446073c_6b362d9b",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "e413aa54_e2877749",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9381a1_5477d06a",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "906ae469_c5098110",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 16
@@ -135,6 +243,24 @@
       "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa839564_cc04c2eb",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-27T00:50:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906ae469_c5098110",
+      "revId": "628413f8197f4e38a1687d78b6196471b17c1665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
