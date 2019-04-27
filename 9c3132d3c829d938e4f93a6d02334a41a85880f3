@@ -118,6 +118,30 @@
       "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324fb5cd_169da30d",
+        "filename": "common/port80.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-27T00:14:59Z",
+      "side": 1,
+      "message": "Can you just do:\n\n  int last_e \u003d 0;\n  for (i \u003d tail; i \u003c head; i++) {\n  ...\n  default:\n    ...\n    ccprintf(\"%02x\", e);\n    last_e \u003d e;\n  }\n  if (last_e)\n    display_7seg_write(..., last_e);\n\nWith this, you still hold your point 1, 2, 3, right?",
+      "parentUuid": "bea6a37c_f66cf1c9",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 21
+      },
+      "revId": "9c3132d3c829d938e4f93a6d02334a41a85880f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
