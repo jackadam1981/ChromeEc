@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caa497c4_2d83c4c4",
+        "filename": "include/queue.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-27T01:24:36Z",
+      "side": 1,
+      "message": "I wonder how much trouble it would be if we replaced size_t with uint16_t here to save memory.\n\nAlso, every single use of this facility in the EC codebase uses unit type of uint8_t, doing away with using buffer_units and dropping unit_bytes field completely would speed things up - but this of course is for another patch/day.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "2038ad38a084e0d52ee597b7071adf6cb6d6a04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
