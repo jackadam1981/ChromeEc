@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86145908_f74a7c7b",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "Will do in next patch.",
+      "parentUuid": "6a22085d_d27e714c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89c0ab34_e983632a",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee03fe6_937c8b99",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "deleted.",
+      "parentUuid": "89c0ab34_e983632a",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "39f0cbdf_872a3ca3",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "Line 73 will handle this. #*: will delete the prefix ending :.",
+      "parentUuid": "f9bdc857_8fcda3ab",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f42fa23c_100931f8",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
@@ -82,6 +154,54 @@
       "writtenOn": "2019-04-27T00:48:53Z",
       "side": 1,
       "message": "the decision if dut-contol supplied device or /dev/ttyUSBx will be used  should be done in one place.\n\ntechnically speaking hadcoding /dev/ttyUSB{0..2} is not guaranteed to work - I often have other USB to FTDI dongles plugged in, this messes up SuzyQ device assignment.\n\nIdeally proper /dev/ttyUSB needs to be discovered automatically, at least there should be a command line option to override the base device number, the rest should be derived from the base as +1 and +2",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d25ac8_0acc3da0",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f42fa23c_100931f8",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "022d0c87_4aa421bb",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f42fa23c_100931f8",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -117,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "c52a06d6_adb987e7",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "deleted.",
+      "parentUuid": "3233b3a0_da8fe639",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad0d630f_a3d08671",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
@@ -137,6 +281,30 @@
       "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9ce559_129a0ce9",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "I intend to clean up the servod buffer since *_uart_capture:off doesn\u0027t clean it up.",
+      "parentUuid": "ad0d630f_a3d08671",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "00130dc6_ca425c5b",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb2c3344_ef80710e",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 5
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c10b4741_1e99e251",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
@@ -186,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "e0b64bb3_60952adc",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "^^ uppercases all characters. ,, lowercases all characters.\nservod control names are in lowercase, but my variables in this scripts are in uppercase.\nI used ^^ or ,, in each function when it matters, to tolerate any mistakes in passing argument in any cases.",
+      "parentUuid": "c10b4741_1e99e251",
+      "range": {
+        "startLine": 154,
+        "startChar": 24,
+        "endLine": 154,
+        "endChar": 26
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0b63bab_cc67111a",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
@@ -206,6 +422,30 @@
       "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea9570d0_f2715336",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-27T01:29:33Z",
+      "side": 1,
+      "message": "It is an indirect reference.\n\n${PTY} is \"PTY_CR50\".\n${!PTY} is the value of \"${PTY_CR50}\".",
+      "parentUuid": "b0b63bab_cc67111a",
+      "range": {
+        "startLine": 157,
+        "startChar": 16,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
