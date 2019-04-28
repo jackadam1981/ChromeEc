@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a0944592_6639bd86",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-28T22:43:49Z",
+      "side": 1,
+      "message": "confirmed this works fine.",
+      "parentUuid": "658796aa_0b590aa0",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 47
+      },
+      "revId": "e81c86acc45b4fbb641010a774edcb092b9b2a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f727e531_e1678afa",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -63,6 +87,24 @@
       "revId": "e81c86acc45b4fbb641010a774edcb092b9b2a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf87980_d11181b3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-04-28T22:43:49Z",
+      "side": 1,
+      "message": "I\u0027ve tested again. both(either before or after) of them are working fine.\nLet\u0027s remove this then",
+      "parentUuid": "f727e531_e1678afa",
+      "revId": "e81c86acc45b4fbb641010a774edcb092b9b2a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
