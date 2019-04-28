@@ -22,6 +22,47 @@
       "revId": "e81c86acc45b4fbb641010a774edcb092b9b2a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "658796aa_0b590aa0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-28T09:53:30Z",
+      "side": 1,
+      "message": "according HPET programing rules, need check WIP (Write in Process) status before write HPET registers, otherwise the value will not really update.\n\nso, this line is must needed.",
+      "parentUuid": "79993b0f_2883c172",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 47
+      },
+      "revId": "e81c86acc45b4fbb641010a774edcb092b9b2a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f727e531_e1678afa",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-28T09:53:30Z",
+      "side": 1,
+      "message": "we need check WIP status or wait settling before write registers, not after.",
+      "revId": "e81c86acc45b4fbb641010a774edcb092b9b2a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
