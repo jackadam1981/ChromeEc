@@ -35,6 +35,31 @@ enum {
 	ISH_PM_STATE_NUM
 };
 
+/* D0ix statistics data, including each state's count and total stay time */
+struct pm_statistics {
+	uint64_t d0i0_cnt;
+	uint64_t d0i0_time_us;
+
+#ifdef CONFIG_ISH_PM_D0I1
+	uint64_t d0i1_cnt;
+	uint64_t d0i1_time_us;
+#endif
+
+#ifdef CONFIG_ISH_PM_D0I2
+	uint64_t d0i2_cnt;
+	uint64_t d0i2_time_us;
+#endif
+
+#ifdef CONFIG_ISH_PM_D0I3
+	uint64_t d0i3_cnt;
+	uint64_t d0i3_time_us;
+#endif
+	/* for debug*/
+	int last_pm;
+	uint64_t last_pm_time;
+
+} __packed;
+
 /* halt ISH minute-ia cpu core */
 static inline void ish_mia_halt(void)
 {

@@ -12,6 +12,8 @@
 #include "registers.h"
 #include "task.h"
 #include "util.h"
+#include "math_util.h"
+#include "power_mgt.h"
 
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
@@ -19,11 +21,14 @@
 
 static uint32_t last_deadline;
 
+extern struct pm_statistics pm_stats;
+
 /*
  * Number of ticks for timer0 comparator representing 2^32 us seconds. SECONDS
  * represents the expected clock frequency of the OS (i.e. 1 Mhz).
  */
-#define ROLLOVER_CMP_VAL (((uint64_t)ISH_HPET_CLK_FREQ << 32) / SECOND)
+//#define ROLLOVER_CMP_VAL (((uint64_t)ISH_HPET_CLK_FREQ << 32) / SECOND)
+#define ROLLOVER_CMP_VAL (32768/20) //50ms
 
 /*
  * The ISH hardware needs at least 25 ticks of leeway to arms the timer.
@@ -141,7 +146,7 @@ static inline void wait_while_settling(uint32_t mask)
  * The 64-bit read on a 32-bit chip can tear during the read. Ensure that the
  * value returned for 64-bit didn't rollover while we were reading it.
  */
-static inline uint64_t read_main_timer(void)
+uint64_t read_main_timer(void)
 {
 	timestamp_t t;
 	uint32_t hi;
@@ -157,6 +162,9 @@ static inline uint64_t read_main_timer(void)
 
 	return t.val;
 }
+
+static volatile uint32_t last_timer1_compactor;
+static volatile uint64_t last_timer1_set;
 
 void __hw_clock_event_set(uint32_t deadline)
 {
@@ -176,7 +184,9 @@ void __hw_clock_event_set(uint32_t deadline)
 	 * every 10 seconds.
 	 */
 	wait_while_settling(HPET_T1_CMP_SETTLING);
-	HPET_TIMER_COMP(1) = read_main_timer() + scale_us2ticks(remaining_us);
+	last_timer1_set = read_main_timer();
+	last_timer1_compactor = last_timer1_set + scale_us2ticks(remaining_us);
+	HPET_TIMER_COMP(1) = last_timer1_compactor; 
 
 	wait_while_settling(HPET_T1_SETTLING);
 
@@ -213,8 +223,21 @@ void __hw_clock_source_set(uint32_t ts)
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
 
+static volatile uint64_t last_timer0_isr;
+
 static void __hw_clock_source_irq(int timer_id)
 {
+	uint64_t cur_time;
+	int sw_irq;
+
+	cur_time = read_main_timer();
+
+	if (HPET_INTR_CLEAR & BIT(timer_id)) {
+		sw_irq = 0; // hw irq;
+	} else {
+		sw_irq = 1; // sw irq;
+	}
+
 	/* Clear interrupt */
 	wait_while_settling(HPET_INT_STATUS_SETTLING);
 	HPET_INTR_CLEAR = BIT(timer_id);
@@ -223,7 +246,33 @@ static void __hw_clock_source_irq(int timer_id)
 	 * If IRQ is from timer 0, 2^32 us have elapsed (i.e. OS timer
 	 * overflowed).
 	 */
-	process_timers(timer_id == 0);
+	if (timer_id == 1) {
+
+
+		if (!sw_irq && 
+		    (ABS((int)((cur_time - last_timer1_set) - (last_timer1_compactor - (uint32_t)last_timer1_set))) > 10)) {
+			cprintf(CC_SYSTEM, "[%ld]exce T1? %ld : %d : %d : %ld (%d)\n", 
+					cur_time, (cur_time - last_timer1_set),
+					(last_timer1_compactor - (uint32_t)last_timer1_set), HPET_TIMER_COMP(1),
+					pm_stats.last_pm_time, pm_stats.last_pm);
+		}
+
+		process_timers(timer_id == 0);
+
+	} else {
+		if (ABS((int)((cur_time - last_timer0_isr) - ROLLOVER_CMP_VAL)) > 10) {
+			cprintf(CC_SYSTEM, "[%ld]exce T0? %ld : %ld : %ld (%d)\n", 
+					cur_time,
+					(cur_time - last_timer0_isr), (HPET_TIMER0_COMP_64 - cur_time),
+					pm_stats.last_pm_time, pm_stats.last_pm);
+		}
+
+		last_timer0_isr = cur_time;
+	}
+
+	if (HPET_INTR_CLEAR & BIT(timer_id)) {
+		cprintf(CC_SYSTEM, "[%ld] int still set, timer:%d\n", timer_id);
+	}
 }
 
 void __hw_clock_source_irq_0(void)
