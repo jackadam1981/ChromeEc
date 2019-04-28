@@ -151,9 +151,6 @@ uint64_t read_main_timer(void)
 	timestamp_t t;
 	uint32_t hi;
 
-	/* need check main counter if valid when exit low power TCG mode */
-	wait_while_settling(HPET_MAIN_COUNTER_VALID_SETTLING);
-
 	do {
 		t.le.hi = HPET_MAIN_COUNTER_64_HI;
 		t.le.lo = HPET_MAIN_COUNTER_64_LO;
@@ -183,7 +180,6 @@ void __hw_clock_event_set(uint32_t deadline)
 	 * of 12Mhz timer comparator value. Watchdog refresh happens at least
 	 * every 10 seconds.
 	 */
-	wait_while_settling(HPET_T1_CMP_SETTLING);
 	last_timer1_set = read_main_timer();
 	last_timer1_compactor = last_timer1_set + scale_us2ticks(remaining_us);
 	HPET_TIMER_COMP(1) = last_timer1_compactor; 
@@ -239,7 +235,6 @@ static void __hw_clock_source_irq(int timer_id)
 	}
 
 	/* Clear interrupt */
-	wait_while_settling(HPET_INT_STATUS_SETTLING);
 	HPET_INTR_CLEAR = BIT(timer_id);
 
 	/*
