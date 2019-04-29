@@ -207,6 +207,15 @@ enum temp_sensor_id {
 #define WIRELESS_GPIO_BLUETOOTH GPIO_RADIO_ENABLE_BT
 #define WIRELESS_GPIO_WLAN_POWER GPIO_ENABLE_WLAN
 
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+/*
+ * Return 1 if the given I2C command at the given port is allowed even when
+ * system is locked, or 0 otherwise.
+ */
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd);
+#endif
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

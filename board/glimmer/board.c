@@ -349,3 +349,10 @@ int fan_percent_to_rpm(int fan, int pct)
 	return new_rpm_target;
 }
 #endif  /* CONFIG_FAN_RPM_CUSTOM */
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd)
+{
+	return 0;
+}
+#endif

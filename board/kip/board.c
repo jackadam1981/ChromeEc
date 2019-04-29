@@ -249,3 +249,22 @@ void board_ap_warm_reset(void)
 {
 	modem_power_cycle();
 }
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+static struct {
+	uint8_t slave_addr;
+	uint8_t cmd;
+} i2c_cmd_whitelist[] = {
+	{0x0b, 0x70},	/* OEM Data, Battery CT LABEL */
+};
+
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd)
+{
+	int i;
+	for (i = 0; i < ARRAY_SIZE(i2c_cmd_whitelist); ++i)
+		if (i2c_cmd_whitelist[i].slave_addr == slave_addr &&
+		    i2c_cmd_whitelist[i].cmd == cmd)
+			return 1;
+	return 0;
+}
+#endif

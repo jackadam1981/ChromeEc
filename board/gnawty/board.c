@@ -223,3 +223,10 @@ int board_discharge_on_ac(int enable)
 {
 	return charger_discharge_on_ac(enable);
 }
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd)
+{
+	return 0;
+}
+#endif

@@ -47,6 +47,7 @@
 
 #ifndef __ASSEMBLER__
 
+#include "common.h"
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
@@ -189,6 +190,14 @@ enum temp_sensor_id {
 
 /* Discharge battery when on AC power for factory test. */
 int board_discharge_on_ac(int enable);
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+/*
+ * Return 1 if the given I2C command at the given port is allowed even when
+ * system is locked, or 0 otherwise.
+ */
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd);
+#endif
 
 #endif /* !__ASSEMBLER__ */
 
