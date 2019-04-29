@@ -376,6 +376,16 @@ SECTIONS
 	/* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
+    /*
+     * ld won't complain if LMA is overlapping.  Explicitly assert this case.
+     * 1. If __data_lma_start is larger than .bss, then they won't overlap.
+     * 2. else, we should check __data_lma_start + sizeof(.data) won't overlap
+     *    .bss.
+     */
+    ASSERT( __data_lma_start >= ADDR(.bss) ||
+           (__data_lma_start + __data_end - __data_start) < ADDR(.bss),
+           "Not enough space for data LMA.")
+
     ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
                (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
            "Not enough space for shared memory.")
