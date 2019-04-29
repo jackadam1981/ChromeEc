@@ -22,6 +22,30 @@
       "revId": "90fd669794eda0e71d6f186a7e0db38bd492e2af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af5076f4_f16a1087",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-29T02:38:56Z",
+      "side": 1,
+      "message": "Agreed.  This should be a better and simple approach.",
+      "parentUuid": "68820333_265a62e2",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "90fd669794eda0e71d6f186a7e0db38bd492e2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
