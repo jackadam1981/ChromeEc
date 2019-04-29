@@ -272,3 +272,10 @@ struct accel_orientation acc_orient = {
 };
 
 #endif /* HAS_TASK_MOTIONSENSE */
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd)
+{
+	return 0;
+}
+#endif

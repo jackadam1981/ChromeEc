@@ -200,6 +200,14 @@ int board_discharge_on_ac(int enable);
 /* Reset the modem when the AP is reset. */
 void board_ap_warm_reset(void);
 
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+/*
+ * Return 1 if the given I2C command at the given port is allowed even when
+ * system is locked, or 0 otherwise.
+ */
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd);
+#endif
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */

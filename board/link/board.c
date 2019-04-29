@@ -270,3 +270,10 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xc8  /* full set */
 	},
 };
+
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+int board_i2c_cmd_in_whitelist(unsigned int slave_addr, uint8_t cmd)
+{
+	return 0;
+}
+#endif
