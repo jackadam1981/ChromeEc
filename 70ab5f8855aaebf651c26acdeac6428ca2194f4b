@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6d79571_aad8450b",
+        "filename": "common/port80.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-29T23:04:16Z",
+      "side": 1,
+      "message": "Please remove this.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "70ab5f8855aaebf651c26acdeac6428ca2194f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab46800_7ac76cd6",
+        "filename": "common/port80.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-29T23:04:16Z",
+      "side": 1,
+      "message": "Please remove this.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "70ab5f8855aaebf651c26acdeac6428ca2194f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b1cf78_cf52575f",
+        "filename": "common/port80.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-29T23:04:16Z",
+      "side": 1,
+      "message": "Please remove this.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "70ab5f8855aaebf651c26acdeac6428ca2194f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df2a782_99f9c9a8",
+        "filename": "common/port80.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-29T23:04:16Z",
+      "side": 1,
+      "message": "Is this intended? This will create a discrepancy between what\u0027s on the console v.s. what\u0027s on the display.\n\nIf you aren\u0027t sure, please do:\n\n\tif (IS_ENABLED(CONFIG_SEVEN_SEG_DISPLAY) \u0026\u0026 last_e)\n\t\tdisplay_7seg_write(SEVEN_SEG_PORT80_DISPLAY, last_e);",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "70ab5f8855aaebf651c26acdeac6428ca2194f4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
