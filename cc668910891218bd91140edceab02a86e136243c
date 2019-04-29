@@ -68,6 +68,29 @@
       "revId": "cc668910891218bd91140edceab02a86e136243c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec8f332_92c02903",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-29T17:52:54Z",
+      "side": 1,
+      "message": "if the reset prep interrupt happens here right before link 690, we will miss it correct?\n\nCan we disable interrupts right after the is_mia_halt to ensure that we get the interrupt we need before checking the pm_state?",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 0
+      },
+      "revId": "cc668910891218bd91140edceab02a86e136243c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
