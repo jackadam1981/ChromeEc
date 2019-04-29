@@ -25,6 +25,28 @@ struct i2c_port_t {
 extern const struct i2c_port_t i2c_ports[];
 extern const unsigned int i2c_ports_used;
 
+/*
+ * Data structure to define I2C Parameters for a command
+ */
+struct i2c_param_t {
+	unsigned char port;        /* I2C port */
+	unsigned char cmd;         /* command ID */
+	unsigned short slave_addr; /* Slave address */
+	unsigned short leng_rd;    /* max byte length to allow for read*/
+	unsigned short leng_wr;    /* max byte length to allow for write*/
+};
+
+/*
+ * The list of commands that are allowed even when the system is locked.
+ * board/${BOARD}/board.c should define this.
+ */
+extern const struct i2c_param_t i2c_param_whitelist[];
+/*
+ * The number of commands in i2c_param_whitelist[].
+ * board/${BOARD}/board.c should define this as ARRAY_SIZE(i2c_param_whitelist)
+ */
+extern const unsigned int i2c_param_whitelist_size;
+
 /* Flags for i2c_xfer() */
 #define I2C_XFER_START (1 << 0)  /* Start smbus session from idle state */
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */
