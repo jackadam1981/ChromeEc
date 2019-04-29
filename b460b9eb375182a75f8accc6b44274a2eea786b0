@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "affee9c7_7428b4f5",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-29T18:00:52Z",
+      "side": 1,
+      "message": "Cr50 uart isn\u0027t connected/doesn\u0027t work half of the time. I think it should default to false. I kind of think all consoles should default false.",
+      "range": {
+        "startLine": 16,
+        "startChar": 43,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "b460b9eb375182a75f8accc6b44274a2eea786b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7031977f_9d9a994e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-04-29T18:00:52Z",
+      "side": 1,
+      "message": "These change. Can you find these by  using the device serialnumber to find the consoles in /sys/bus/usb/devices/",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "b460b9eb375182a75f8accc6b44274a2eea786b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
