@@ -91,10 +91,12 @@ static int host_command_get_uptime_info(struct host_cmd_handler_args *args)
 	 */
 	struct ec_response_uptime_info *r = args->response;
 	timestamp_t now = get_time();
-	uint32_t now_ms = (uint32_t)(now.val / MSEC);
+	uint32_t now_ms;
+	const uint32_t divisor = MSEC;
 	size_t log_address = 0;
 	size_t i = 0;
 
+	asm("divl %3" : "=a"(now_ms) : "d"(now.le.hi), "a"(now.le.lo), "rm"(divisor));
 	r->time_since_ec_boot_ms = now_ms;
 	r->ec_reset_flags = system_get_reset_flags();
 
