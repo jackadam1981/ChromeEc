@@ -242,6 +242,7 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+void pogo_adc_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
