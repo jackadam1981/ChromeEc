@@ -63,6 +63,16 @@ static void gauge_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_CHARGER);
 }
 
+static void pogo_adc_interrupt(enum gpio_signal signal)
+{
+	if (gpio_get_level(GPIO_POGO_ADC_INT_L)) {
+		gpio_set_level(GPIO_EN_PP3300_POGO, 0);
+	} else {
+		/* TODO(b:131389131): detect adc voltage */
+		gpio_set_level(GPIO_EN_PP3300_POGO, 1);
+	}
+}
+
 #include "gpio_list.h"
 
 /******************************************************************************/
