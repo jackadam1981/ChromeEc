@@ -45,6 +45,30 @@
       "revId": "3d9c7734d6ed3529f1c100a6d8c9917658bd51fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffa4056_6ed6a099",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3050,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-29T09:06:01Z",
+      "side": 1,
+      "message": "Yes, I know that each section does the exact same thing, so at the beginning (patchset 5) I code in the previous if condition. \n\nI am confused on what you are actually trying to accomplish now.\n\u003d\u003e This could check TypeC spec Figure 4-16 Connection State Diagram: DRP with Accessory and Try.SRC Support and ch4.5.2.2.10.2 Exiting from Try.SRC State： in try.src state detecting both Rd or Ra should still stay in try.src, this is what I want to implement. The previous if conditions detecting both Rd or Ra on the cc pins will go to SRC_DISCONNECTED_DEBOUNCE, but when we are in try.src state this transition happens too and does not meet spec (should stay in SRC_DISCONNECTED).  \n\nThis full logical superset is used for unattached.src state. In unattached.src state (TrySource disable in SRC_DISCONNECT) detect resistance of the previous if conditions, it should transit state to SRC_DISCONNECTED_DEBOUNCE. Also we embed try.src in SRC_DISCONNECT by TrySource flag enabled, but the only one Rd on cc pins can transit state to SRC_DISCONNECTED_DEBOUNCE.",
+      "parentUuid": "845978a4_5f2dfde7",
+      "range": {
+        "startLine": 3047,
+        "startChar": 12,
+        "endLine": 3050,
+        "endChar": 35
+      },
+      "revId": "3d9c7734d6ed3529f1c100a6d8c9917658bd51fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
