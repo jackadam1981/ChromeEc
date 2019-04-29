@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a58c3e38_903219c1",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-29T15:49:03Z",
+      "side": 1,
+      "message": "Can you use \\n to be consistent with the rest of the code?",
+      "range": {
+        "startLine": 119,
+        "startChar": 24,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "cc668910891218bd91140edceab02a86e136243c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8155dad8_fc6f7a5a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-29T15:49:03Z",
+      "side": 1,
+      "message": "Use __builtin_unreachable() rather than a comment",
+      "range": {
+        "startLine": 668,
+        "startChar": 4,
+        "endLine": 668,
+        "endChar": 24
+      },
+      "revId": "cc668910891218bd91140edceab02a86e136243c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e103fe4_dafa3b89",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-29T15:49:03Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 677,
+        "startChar": 4,
+        "endLine": 677,
+        "endChar": 24
+      },
+      "revId": "cc668910891218bd91140edceab02a86e136243c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
