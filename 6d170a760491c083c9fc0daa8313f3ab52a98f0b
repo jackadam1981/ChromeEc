@@ -22,6 +22,30 @@
       "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a006b240_6bc43523",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-29T22:54:35Z",
+      "side": 1,
+      "message": "it protects flash contents from concurrent modifications by functions/threads changing of TPM and (key,value) objects.\n\ngetvar() returns a buffer with a copy of the tuple, so flash modifications after getvar() exits will not affect the returned value.",
+      "parentUuid": "cbddc5d8_c3d97bd7",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 29
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
