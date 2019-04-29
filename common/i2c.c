@@ -403,6 +403,26 @@ DECLARE_HOST_COMMAND(EC_CMD_I2C_WRITE, i2c_command_write, EC_VER_MASK(0));
 #define PTHRUPRINTF(format, args...)
 #endif
 
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+static int check_i2c_params_in_whitelist(uint8_t port,
+						  uint8_t cmd,
+						  uint16_t flags)
+{
+	int i;
+	int8_t is_write = !(flags & EC_I2C_FLAG_READ);
+	uint8_t slave_addr = flags & EC_I2C_ADDR_MASK;
+
+	for (i = 0; i < i2c_param_whitelist_size; ++i)
+		if (i2c_param_whitelist[i].port == port &&
+		    i2c_param_whitelist[i].slave_addr == slave_addr &&
+		    i2c_param_whitelist[i].cmd == cmd &&
+		    i2c_param_whitelist[i].is_write == is_write)
+			return 1;
+
+	return 0;
+}
+#endif
+
 /**
  * Perform the voluminous checking required for this message
  *
@@ -437,6 +457,15 @@ static int check_i2c_params(const struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	}
 
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+	if (system_is_locked()) {
+		const uint8_t *out = args->params + size;
+
+		if (!check_i2c_params_in_whitelist(params->port,
+					out[0], params->msg->addr_flags))
+			return EC_RES_ACCESS_DENIED;
+	}
+#endif
 	/* Loop and process messages */;
 	for (msgnum = 0, msg = params->msg; msgnum < params->num_msgs;
 	     msgnum++, msg++) {
@@ -486,11 +515,6 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	const uint8_t *out;
 	int in_len;
 	int ret;
-
-#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
-	if (system_is_locked())
-		return EC_RES_ACCESS_DENIED;
-#endif
 
 	ret = check_i2c_params(args);
 	if (ret)

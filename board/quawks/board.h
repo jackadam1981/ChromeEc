@@ -47,6 +47,7 @@
 
 #ifndef __ASSEMBLER__
 
+#include "common.h"
 /* I2C ports */
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
