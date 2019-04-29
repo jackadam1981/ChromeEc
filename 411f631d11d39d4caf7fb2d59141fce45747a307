@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "f13ee03b_4658a75c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-29T07:22:34Z",
+      "side": 1,
+      "message": "I don\u0027t think we need CL1585600.\n\nI think, in most of time, this register check will return immediately, only when after exit TCG, may need some cycles, put this here can make sure each read of main counter is reliable, and keep pm flow clean. so, I still prefer put here. :)",
+      "parentUuid": "ed282239_3788fbed",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 55
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a655553_c9cdffe9",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 2
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "https://crrev.com/c/1585386 is probably a better solution for this anyway",
       "parentUuid": "1a655553_c9cdffe9",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 43
+      },
+      "revId": "411f631d11d39d4caf7fb2d59141fce45747a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982cb17b_505a4937",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-29T07:22:34Z",
+      "side": 1,
+      "message": "just for some delay, to make sure the interrupt status bit was cleared,\nseems we no needed this now, wait_while_settling() before HPET_INTR_CLEAR \u003d BIT(timer_id); is enough.\n\nwill move it",
+      "parentUuid": "132ee1cb_83061cae",
       "range": {
         "startLine": 222,
         "startChar": 4,
