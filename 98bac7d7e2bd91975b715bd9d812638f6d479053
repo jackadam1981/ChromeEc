@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e59a022b_0fafadc3",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-29T15:57:00Z",
+      "side": 1,
+      "message": "Makes sense, thanks",
+      "parentUuid": "468df86c_3a0f6906",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "98bac7d7e2bd91975b715bd9d812638f6d479053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c993ace_e2df8c05",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
