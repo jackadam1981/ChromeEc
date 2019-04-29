@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "acd0043f_5cd1d8ef",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-29T13:38:18Z",
+      "side": 1,
+      "message": "Can you elaborate a little more, please? It seems that the beginning of the loop iteration should decide the frequency of samples sent to the AP because we don\u0027t know how long processing will take.\n\nI can see an argument for comparing to a timestamp of now (closest to the comparison as possible) since the HW interrupt frequency is not necessarily tightly coupled with the motion sense wakeup frequency",
+      "parentUuid": "1506d865_1e3b2e8c",
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1f8749b_91220542",
         "filename": "driver/als_si114x.c",
         "patchSetId": 3

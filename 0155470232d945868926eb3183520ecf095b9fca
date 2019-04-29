@@ -16,6 +16,24 @@
       "revId": "0155470232d945868926eb3183520ecf095b9fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0095aac_9ac430ff",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-29T13:38:18Z",
+      "side": 1,
+      "message": "Using the motion_min_interval actually seems more accurate to me especially if the periods are large and a 5% scale would be overkill.\n\nIs there anything reason to use 5% other than to ensure that we get a sample every period? I know Mat and Yuval had better success with this change than adjusting the 95% factor.",
+      "parentUuid": "322d505b_521b4ee7",
+      "revId": "0155470232d945868926eb3183520ecf095b9fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
