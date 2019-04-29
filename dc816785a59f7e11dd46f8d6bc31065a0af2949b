@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcb68566_33f4ee13",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-29T22:24:25Z",
+      "side": 1,
+      "message": "Offset is not going to be used at this level, only comes into play when doing the XYZ translation, which will now occur in the kernel layer.\n\nGiven this, I removed the set/get_offset vectors for the RGB driver.\n\nNow that this only has a single field in it, I don\u0027t think this record structure makes sense anymore, and suggest we remove it and instead add a scale[] array to tcs3400_rgb_drv_data directly.\n\nThoughts?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "dc816785a59f7e11dd46f8d6bc31065a0af2949b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
