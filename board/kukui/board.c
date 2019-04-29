@@ -81,6 +81,16 @@ static void pogo_vbus_present(enum gpio_signal signal)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
+static void pogo_adc_interrupt(enum gpio_signal signal)
+{
+	if (gpio_get_level(GPIO_POGO_ADC_INT_L)) {
+		gpio_set_level(GPIO_EN_PP3300_POGO, 0);
+	} else {
+		/* TODO(b:131389131): detect adc voltage */
+		gpio_set_level(GPIO_EN_PP3300_POGO, 1);
+	}
+}
+
 #include "gpio_list.h"
 
 /******************************************************************************/
@@ -534,7 +544,6 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 
 int board_charge_port_is_sink(int port)
 {
-	/* TODO(b:128386458): Check POGO_ADC_INT_L */
 	return 1;
 }
 
