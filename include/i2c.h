@@ -25,6 +25,21 @@ struct i2c_port_t {
 extern const struct i2c_port_t i2c_ports[];
 extern const unsigned int i2c_ports_used;
 
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+/*
+ * Data structure to define I2C Parameters for a command
+ */
+struct i2c_param_t {
+	unsigned char port;       /* I2C port */
+	unsigned char slave_addr; /* Slave address */
+	unsigned char cmd;        /* command ID */
+	char is_write;            /* 1 if write command, or 0 otherwise */
+};
+
+extern const struct i2c_param_t i2c_param_whitelist[];
+extern const unsigned int i2c_param_whitelist_size;
+#endif
+
 /* Flags for i2c_xfer() */
 #define I2C_XFER_START (1 << 0)  /* Start smbus session from idle state */
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */

@@ -208,6 +208,16 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+/*
+ * Whitelist of I2C Passthru parameters that are allowed even when
+ * system is locked.
+ */
+const struct i2c_param_t i2c_param_whitelist[] = {
+};
+const unsigned int i2c_param_whitelist_size = ARRAY_SIZE(i2c_param_whitelist);
+#endif
+
 #define TEMP_PCH_REG_ADDR	((0x41 << 1) | I2C_FLAG_BIG_ENDIAN)
 #define TEMP_CHARGER_REG_ADDR	((0x43 << 1) | I2C_FLAG_BIG_ENDIAN)
 #define TEMP_USB_REG_ADDR	((0x46 << 1) | I2C_FLAG_BIG_ENDIAN)
