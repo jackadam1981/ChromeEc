@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e97f456f_b10034ba",
+        "filename": "common/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-29T07:21:46Z",
+      "side": 1,
+      "message": "chipset.c is common code for all architectures (arm and x86), we can\u0027t add architecture dependent asm code here.",
+      "revId": "0c3212ca35e1230388e5e8f65d6a1dbd473ebd3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
