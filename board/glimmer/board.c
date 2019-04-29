@@ -231,6 +231,14 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /*
+ * Whitelist of I2C Passthru parameters that are allowed even when
+ * system is locked.
+ */
+const struct i2c_param_t i2c_param_whitelist[] = {
+};
+const unsigned int i2c_param_whitelist_size = ARRAY_SIZE(i2c_param_whitelist);
+
+/*
  * Temperature sensors data; must be in same order as enum temp_sensor_id.
  * Sensor index and name must match those present in coreboot:
  *     src/mainboard/google/${board}/acpi/dptf.asl
