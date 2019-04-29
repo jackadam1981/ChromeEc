@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d25bd89d_44519873",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-29T19:34:38Z",
+      "side": 1,
+      "message": "Please move this to the bug or create a new bug.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "9acabed582c0825ea275f7ea7dd0d7ee759871b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abccc71a_91a2f601",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-29T19:34:38Z",
+      "side": 1,
+      "message": "This is being changed by CL:1586582. Please rebase your patch.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 27
+      },
+      "revId": "9acabed582c0825ea275f7ea7dd0d7ee759871b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
