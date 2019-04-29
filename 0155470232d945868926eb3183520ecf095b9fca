@@ -34,6 +34,24 @@
       "revId": "0155470232d945868926eb3183520ecf095b9fca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713d5ab3_e92f7c94",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-29T14:58:14Z",
+      "side": 1,
+      "message": "The 95% doesn\u0027t make sense anymore now that the loop sleep time is calculated based on the next collection time. The only time the motion_min_interval will come into play is if the task wakes up for some other reason, a different sensor needs polled or an interrupt occurs, this will prevent the loop from sleeping a very short time to be woken up again.",
+      "parentUuid": "f0095aac_9ac430ff",
+      "revId": "0155470232d945868926eb3183520ecf095b9fca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

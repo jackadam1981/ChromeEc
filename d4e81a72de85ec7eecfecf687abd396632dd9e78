@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "3413ab26_9532b1a1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1325305
+      },
+      "writtenOn": "2019-04-29T14:58:14Z",
+      "side": 1,
+      "message": "I thought that in patch set #2 we established that the event to the ap does not need to be overly percisce. There may be some cases where a few ms might make a difference in one iteration  but it will be made up for in the next loop iteration.",
+      "parentUuid": "acd0043f_5cd1d8ef",
+      "revId": "d4e81a72de85ec7eecfecf687abd396632dd9e78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1f8749b_91220542",
         "filename": "driver/als_si114x.c",
         "patchSetId": 3
