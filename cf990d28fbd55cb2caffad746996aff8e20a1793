@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75f537ad_034b3617",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-29T09:44:56Z",
+      "side": 1,
+      "message": "Why do you turn off CHG_LED2 here?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "cf990d28fbd55cb2caffad746996aff8e20a1793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e03206_b29308c8",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-29T09:44:56Z",
+      "side": 1,
+      "message": "Do we need to add a check here?\nif (SKU_ID_IS_LEONA()) {...}",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 64
+      },
+      "revId": "cf990d28fbd55cb2caffad746996aff8e20a1793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a91755b6_12f7a116",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2019-04-29T09:44:56Z",
+      "side": 1,
+      "message": "else if(...)",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 57
+      },
+      "revId": "cf990d28fbd55cb2caffad746996aff8e20a1793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
