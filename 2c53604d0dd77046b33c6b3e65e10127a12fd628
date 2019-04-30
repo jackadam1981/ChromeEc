@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "644db534_ebd0ef97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-30T14:01:40Z",
+      "side": 1,
+      "message": "I like the change in this CL, I think it makes it simpler. Thank you!\n\nCan we do a decent amount of manual testing with 2 different chargers, plugging in simultaneously since this is somewhat of a big change? Can you also record those results here (more explicitly), please?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "2c53604d0dd77046b33c6b3e65e10127a12fd628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afadac8e_1823c239",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-30T14:01:40Z",
+      "side": 1,
+      "message": "can we add a comment explaining our reasoning here. Something like:\n\n-Always pick dedicated charge if present since that is the best product decision\n-Pick PD negotiated chargers over everything else since they have the most power potential and they may not currently be negotiated at a high power (and they can at least provide 15W)\n-Then pick among the remaining chargers which ever has the highest available power",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "2c53604d0dd77046b33c6b3e65e10127a12fd628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
