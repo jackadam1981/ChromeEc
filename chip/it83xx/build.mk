@@ -6,8 +6,12 @@
 # IT83xx chip specific files build
 #
 
-# IT83xx SoC family has an Andes N801 core.
+# IT83xx SoC family has an Andes N801 or RISC-V core.
+ifeq ($(CHIP_FAMILY), it83202)
+CORE:=riscv-rv32i
+else
 CORE:=nds32
+endif
 
 # Required chip modules
 chip-y=hwtimer.o uart.o gpio.o system.o clock.o irq.o intc.o
