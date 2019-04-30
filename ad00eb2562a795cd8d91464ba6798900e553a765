@@ -22,6 +22,30 @@
       "revId": "ad00eb2562a795cd8d91464ba6798900e553a765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc393514_e4ed116d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-30T02:46:36Z",
+      "side": 1,
+      "message": "Yes, there is only one case that can be overlapping now.\n\n__data_lma_start will follows .rodata\u0027s ending address and be in .rodata\u0027s memory region.\nSo it could be in:\n\n1. IROM\n2. CDRAM \u003e AT FLASH\n3. FLASH\n\nand .bss is in IRAM and is also the first section of the IRAM region.\n\nSo there is only one case that can be overlapping. \n\na) __data_lma_start is before .bss.\ncould be overlapping (ld won\u0027t have error if LMA overlapping)\n\n\n  --------\n  ...\n  .rodata     IRAM\n  .data LMA   --------- \n  --------    .bss\n              ....\n              ---------\n\nb) data_lma_start is after .bss\ncan\u0027t be overlapping (or the ld should have error)\n\n  IRAM\n  ---------\n  .bss\n  ...\n  ---------\n\n\n  --------\n  ...\n  .rodata     \n  .data LMA    \n  --------",
+      "parentUuid": "b040db89_0a80dfc6",
+      "range": {
+        "startLine": 385,
+        "startChar": 32,
+        "endLine": 385,
+        "endChar": 42
+      },
+      "revId": "ad00eb2562a795cd8d91464ba6798900e553a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
