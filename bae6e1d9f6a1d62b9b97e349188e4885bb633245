@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e8fa05c_668c3932",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-30T12:16:04Z",
+      "side": 1,
+      "message": "I think we should have a debounce timing for setting the supplier info.",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "bae6e1d9f6a1d62b9b97e349188e4885bb633245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
