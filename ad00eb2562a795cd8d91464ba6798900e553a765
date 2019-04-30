@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6ad94534_e617b465",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-30T13:25:57Z",
+      "side": 1,
+      "message": "I thought this one of the main usecases for a linker was to check for overlapping and overly full regions and emit errors. Why do we need to check for this overlap explicitly?",
+      "range": {
+        "startLine": 380,
+        "startChar": 7,
+        "endLine": 380,
+        "endChar": 46
+      },
+      "revId": "ad00eb2562a795cd8d91464ba6798900e553a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b040db89_0a80dfc6",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
