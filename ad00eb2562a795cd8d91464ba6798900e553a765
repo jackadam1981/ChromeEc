@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b040db89_0a80dfc6",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-30T02:28:04Z",
+      "side": 1,
+      "message": "so it\u0027s ok not to add the length of .bss here?",
+      "range": {
+        "startLine": 385,
+        "startChar": 32,
+        "endLine": 385,
+        "endChar": 42
+      },
+      "revId": "ad00eb2562a795cd8d91464ba6798900e553a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
