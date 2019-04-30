@@ -22,6 +22,30 @@
       "revId": "75e6ae63db5c6cdd055f6eb24038886a60679389",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f6db55_c7ebcf58",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-30T15:52:58Z",
+      "side": 1,
+      "message": "Ah, this is complicated isn\u0027t it ;)\n\nThis should be the correct logic now. Can you test?",
+      "parentUuid": "f6e5fd31_d85f94e7",
+      "range": {
+        "startLine": 3033,
+        "startChar": 6,
+        "endLine": 3033,
+        "endChar": 49
+      },
+      "revId": "75e6ae63db5c6cdd055f6eb24038886a60679389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
