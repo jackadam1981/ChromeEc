@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f67ac2f_31069125",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-04-30T11:48:38Z",
+      "side": 1,
+      "message": "Looks line this line doesn\u0027t matter.\nWe can either move this to line 173 or just drop this line.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 21
+      },
+      "revId": "63f46ef0eb46b31cc6d525cba4072985e3c81aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
