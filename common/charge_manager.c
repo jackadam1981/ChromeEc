@@ -28,7 +28,18 @@
 #define POWER_SWAP_TIMEOUT (PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + \
 			    PD_T_SAFE_0V + 500 * MSEC)
 
-/* Charge supplier priority: lower number indicates higher priority. */
+/*
+ * Charge supplier priority: lower number indicates higher priority.
+ * - Always pick dedicated charge if present since that is the best product
+ *   decision.
+ * - Pick PD negotiated chargers over everything else since they have the most
+ *   power potential and they may not currently be negotiated at a high power.
+ *   (and they can at least provide 15W)
+ * - Then pick among the remaining chargers which ever has the highest
+ *   available power.
+ * - Last, pick wireless supplier since some board may assume it is low
+ *   priority.
+ */
 test_mockable const int supplier_priority[] = {
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
 	[CHARGE_SUPPLIER_DEDICATED] = 0,
@@ -38,16 +49,16 @@ test_mockable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_TYPEC_DTS] = 2,
 #ifdef CHARGE_MANAGER_BC12
 	[CHARGE_SUPPLIER_PROPRIETARY] = 2,
-	[CHARGE_SUPPLIER_BC12_DCP] = 3,
-	[CHARGE_SUPPLIER_BC12_CDP] = 4,
-	[CHARGE_SUPPLIER_BC12_SDP] = 5,
-	[CHARGE_SUPPLIER_OTHER] = 6,
-	[CHARGE_SUPPLIER_VBUS] = 7,
+	[CHARGE_SUPPLIER_BC12_DCP] = 2,
+	[CHARGE_SUPPLIER_BC12_CDP] = 2,
+	[CHARGE_SUPPLIER_BC12_SDP] = 2,
+	[CHARGE_SUPPLIER_OTHER] = 2,
+	[CHARGE_SUPPLIER_VBUS] = 2,
 #endif
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
-	[CHARGE_SUPPLIER_WPC_BPP] = 6,
-	[CHARGE_SUPPLIER_WPC_EPP] = 6,
-	[CHARGE_SUPPLIER_WPC_GPP] = 6,
+	[CHARGE_SUPPLIER_WPC_BPP] = 3,
+	[CHARGE_SUPPLIER_WPC_EPP] = 3,
+	[CHARGE_SUPPLIER_WPC_GPP] = 3,
 #endif
 
 };
