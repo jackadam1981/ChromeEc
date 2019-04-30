@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c156d7e_05652bff",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T22:15:22Z",
+      "side": 1,
+      "message": "nit: empty lines on both sides of \u0027case\u0027 to stay consistent?",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1928,
+        "endChar": 1
+      },
+      "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf647f4c_717e9bc0",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T22:15:22Z",
+      "side": 1,
+      "message": "can we please also add the tests:\n/* initialize: for (x : kv_pairs) setvar(x); */\nfailure_mode \u003d TEST_FAIL_FINALIZING_VAR;\nsetvar(kv_pairs[1].key, modified_var1);\nfailure_mode \u003d 0;\nsetvar(kv_pairs[1].key, NULL, 0); /* delete */\nt \u003d getvar(kv_pairs[1].key);\nTEST_ASSERT(t \u003d\u003d NULL); /* deleted successfully */",
+      "range": {
+        "startLine": 1333,
+        "startChar": 11,
+        "endLine": 1333,
+        "endChar": 35
+      },
+      "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa813d66_c495696d",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T22:15:22Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 1377,
+        "startChar": 14,
+        "endLine": 1377,
+        "endChar": 16
+      },
+      "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
