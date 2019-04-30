@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6e5fd31_d85f94e7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-04-30T09:58:41Z",
+      "side": 1,
+      "message": "try_src should not exit if both pins are Rd \"or Ra\"",
+      "range": {
+        "startLine": 3033,
+        "startChar": 6,
+        "endLine": 3033,
+        "endChar": 49
+      },
+      "revId": "75e6ae63db5c6cdd055f6eb24038886a60679389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
