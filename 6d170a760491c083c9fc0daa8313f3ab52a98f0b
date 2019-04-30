@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f80e2aaf_93123c10",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T23:16:07Z",
+      "side": 1,
+      "message": "I mean one simple solution is explicitly adding a comment to each function that is supposed to run with this mutex held (and thus won\u0027t acquire it internally). Will help with future changes to avoid not-acquiring or double-acquiring.",
+      "parentUuid": "baa74ea1_91c6674e",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 29
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bae6be81_76874369",
         "filename": "common/new_nvmem.c",
         "patchSetId": 4
