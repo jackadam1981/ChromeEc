@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a5cc8c0_1368ce1a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-04-30T12:56:52Z",
+      "side": 1,
+      "message": "I am still suggesting move this statement of wait WIP from before clearing interrupt to the after, the reasons are below:\n1: WIP means writing to corresponding register is not finish, so if no write before or pevious write already finish then this bit is cleared.\n2: this will make sure interrupt is actually cleared before further processing.\n3: since this is the only place to clear interrupt status (correct me if I am wrong) put wait WIP after clearing interrupt also guarantees next write is valid without need to wait for WIP and covers the effect of put wait WIP before clearing interrupt.",
+      "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
