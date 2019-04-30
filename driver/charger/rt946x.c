@@ -925,6 +925,7 @@ void usb_charger_task(void *u)
 	while (1) {
 		rt946x_read8(RT946X_REG_DPDMIRQ, &reg);
 
+		CPRINTS("DPDMIRQ=0x%x", reg);
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
 			CPRINTS("VBUS attached: %dmV",

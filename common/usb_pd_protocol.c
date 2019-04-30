@@ -3688,6 +3688,7 @@ void pd_task(void *u)
 			}
 
 			/* We are attached */
+			task_wake(TASK_ID_USB_CHG);
 			pd[port].polarity = get_snk_polarity(cc1, cc2);
 			set_polarity(port, pd[port].polarity);
 			/* reset message ID  on connection */
