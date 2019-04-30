@@ -95,9 +95,17 @@ void FLASH_DMA_CODE dma_reset_immu(int fill_immu)
 	/* Immu tag sram reset */
 	IT83XX_GCTRL_MCCR |= 0x10;
 	/* Make sure the immu(dynamic cache) is reset */
+#if defined(CHIP_CORE_NDS32)
 	asm volatile ("dsb");
+#elif defined(CHIP_CORE_RISCV)
+	asm volatile ("fence.i");
+#endif
 	IT83XX_GCTRL_MCCR &= ~0x10;
+#if defined(CHIP_CORE_NDS32)
 	asm volatile ("dsb");
+#elif defined(CHIP_CORE_RISCV)
+	asm volatile ("fence.i");
+#endif
 
 #ifdef IMMU_CACHE_TAG_INVALID
 	/*
@@ -595,6 +603,10 @@ int flash_pre_init(void)
 {
 	int32_t reset_flags, prot_flags, unwanted_prot_flags;
 
+#ifdef CHIP_CORE_RISCV
+	/* TODO: fix me... how to enable static cache on it83202. */
+	return EC_SUCCESS;
+#endif
 	flash_code_static_dma();
 
 	reset_flags = system_get_reset_flags();

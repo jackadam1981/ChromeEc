@@ -7,7 +7,23 @@
 #define __CROS_EC_CONFIG_CHIP_H
 
 /* CPU core BFD configuration */
+#if defined(CHIP_FAMILY_IT8320)
 #include "core/nds32/config_core.h"
+#define CHIP_CORE_NDS32
+#undef CHIP_CORE_RISCV
+#define CHIP_ILM_OFFSET 0x00000000
+#define CHIP_RAM_BASE   0x00080000
+#define CHIP_RAM_SIZE   0x0000C000
+#elif defined(CHIP_FAMILY_IT83202) /* RISCV core */
+#include "core/riscv-rv32i/config_core.h"
+#undef CHIP_CORE_NDS32
+#define CHIP_CORE_RISCV
+#define CHIP_ILM_OFFSET 0x80000000
+#define CHIP_RAM_BASE   0x80083000
+#define CHIP_RAM_SIZE   0x0003D000
+#else
+#error "Unsupported chip family!"
+#endif
 
 /* Number of IRQ vectors on the IVIC */
 #define CONFIG_IRQ_COUNT IT83XX_IRQ_COUNT
@@ -32,8 +48,8 @@
 /****************************************************************************/
 /* Memory mapping */
 
-#define CONFIG_RAM_BASE             0x00080000
-#define CONFIG_RAM_SIZE             0x0000C000
+#define CONFIG_RAM_BASE             (CHIP_RAM_BASE)
+#define CONFIG_RAM_SIZE             (CHIP_RAM_SIZE)
 
 /* System stack size */
 #define CONFIG_STACK_SIZE           1024
@@ -47,7 +63,7 @@
 /* Default task stack size */
 #define TASK_STACK_SIZE             512
 
-#define CONFIG_PROGRAM_MEMORY_BASE  0x00000000
+#define CONFIG_PROGRAM_MEMORY_BASE  (CHIP_ILM_OFFSET)
 #define CONFIG_FLASH_BANK_SIZE      0x00000800  /* protect bank size */
 #define CONFIG_FLASH_ERASE_SIZE     0x00000400  /* erase bank size */
 #define CONFIG_FLASH_WRITE_SIZE     0x00000004  /* minimum write size */
@@ -119,6 +135,27 @@
 #define IT83XX_INTC_GROUP_21_22_SUPPORT
 /* Enable detect type-c plug in interrupt. */
 #define IT83XX_INTC_PLUG_IN_SUPPORT
+#elif defined(CHIP_VARIANT_IT83202AX)
+/* TODO: enable properly chip config option. */
+#define CONFIG_FLASH_SIZE  0x00040000
+/* chip id is 3 bytes */
+#define IT83XX_CHIP_ID_3BYTES
+/*
+ * More GPIOs can be set as 1.8v input.
+ * Please refer to gpio_1p8v_sel[] for 1.8v GPIOs.
+ */
+#define IT83XX_GPIO_1P8V_PIN_EXTENDED
+/* All GPIOs support interrupt on rising, falling, and either edge. */
+#define IT83XX_GPIO_INT_FLEXIBLE
+/* Enable interrupts of group 21 and 22. */
+#define IT83XX_INTC_GROUP_21_22_SUPPORT
+/* Enable detect type-c plug in interrupt. */
+#define IT83XX_INTC_PLUG_IN_SUPPORT
+/*
+ * We also need to enable legacy IERs to ensure an interrupt is able to wake
+ * EC up from low power mode. (AX bug)
+ */
+#define IT83XX_INTC_LOW_POWER_WORKAROUND
 #else
 #error "Unsupported chip variant!"
 #endif
@@ -139,11 +176,19 @@
 /****************************************************************************/
 /* H2RAM memory mapping */
 
+#if defined(CHIP_CORE_NDS32)
 /*
  * Only it839x series and IT838x DX support mapping LPC I/O cycle 800h ~ 9FFh
  * to 0x8D800h ~ 0x8D9FFh of DLM13.
  */
 #define CONFIG_H2RAM_BASE               0x0008D000
+#elif defined(CHIP_CORE_RISCV)
+/*
+ * IT83202 series support mapping LPC/eSPI I/O cycle 800h ~ 9FFh
+ * to 0x80081800 ~ 0x800819FF of DLM1.
+ */
+#define CONFIG_H2RAM_BASE               0x80081000
+#endif
 #define CONFIG_H2RAM_SIZE               0x00001000
 #define CONFIG_H2RAM_HOST_LPC_IO_BASE   0x800
 
