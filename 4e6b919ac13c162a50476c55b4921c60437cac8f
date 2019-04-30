@@ -93,6 +93,30 @@
       "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0752de7_3236fc7b",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-04-30T09:00:37Z",
+      "side": 1,
+      "message": "Hi ALL,\npolling time 10secs is OK(reference to MTK platform setting)\nbecause we run vbus\u003d9V charing curve, imply ibat 1A to 500mA cost about 0.4hours\n\nand this issue is related with psk mode(PSM), 12V charging simulation enter psm mode in ibat \u003d 148mA, so the solution 10secs polling soc \u003e 85% and ibat \u003c 1A is available",
+      "parentUuid": "6a7f7252_17e347f5",
+      "range": {
+        "startLine": 268,
+        "startChar": 25,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
