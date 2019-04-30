@@ -45,6 +45,54 @@
       "revId": "60c8a8a4e66e2ccbb41a119cd3e27ec3b13c451d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71934321_08eaeb55",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-30T22:16:55Z",
+      "side": 1,
+      "message": "Implementation pattern in patch #4 is similar to \u0027temp_sensors[]\u0027 implementation.",
+      "parentUuid": "bf3f9fb2_f7bf4e48",
+      "range": {
+        "startLine": 445,
+        "startChar": 7,
+        "endLine": 445,
+        "endChar": 33
+      },
+      "revId": "60c8a8a4e66e2ccbb41a119cd3e27ec3b13c451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "277340c5_422c74eb",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-30T22:16:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "455dd13e_11afa2ef",
+      "range": {
+        "startLine": 445,
+        "startChar": 7,
+        "endLine": 445,
+        "endChar": 47
+      },
+      "revId": "60c8a8a4e66e2ccbb41a119cd3e27ec3b13c451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
