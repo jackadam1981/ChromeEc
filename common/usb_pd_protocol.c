@@ -628,6 +628,63 @@ static void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t val)
 }
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
 
+/**
+ * Returns whether the sink has detected a Rp resistor on the other side.
+ */
+static inline int cc_is_rp(int cc)
+{
+	return (cc == TYPEC_CC_VOLT_RP_DEF) || (cc == TYPEC_CC_VOLT_RP_1_5) ||
+	       (cc == TYPEC_CC_VOLT_RP_3_0);
+}
+
+/**
+ * Returns true if both CC lines are completely open.
+ */
+static inline int is_open(int cc1, int cc2)
+{
+	return cc1 == TYPEC_CC_VOLT_OPEN && cc2 == TYPEC_CC_VOLT_OPEN;
+}
+
+/**
+ * Returns true if we detect the port partner is a snk debug accessory.
+ */
+static inline int is_snk_dbg_acc(int cc1, int cc2)
+{
+	return cc1 == TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD;
+}
+
+/**
+ * Returns true if the port partner is an audio accessory.
+ */
+static inline int is_audio_acc(int cc1, int cc2)
+{
+	return cc1 == TYPEC_CC_VOLT_RA && cc2 == TYPEC_CC_VOLT_RA;
+}
+
+/**
+ * Returns true if the port partner is presenting at least one Rd
+ */
+static inline int is_at_least_one_rd(int cc1, int cc2)
+{
+	return cc1 == TYPEC_CC_VOLT_RD || cc2 == TYPEC_CC_VOLT_RD;
+}
+
+/**
+ * Returns true if the port partner is presenting Rd on only one CC line.
+ */
+static inline int is_only_one_rd(int cc1, int cc2)
+{
+	return is_at_least_one_rd(cc1, cc2) && cc1 != cc2;
+}
+
+/**
+ * Returns true if the port is currently in the try src state.
+ */
+static inline int is_try_src(int port)
+{
+	return pd[port].flags & PD_FLAGS_TRY_SRC;
+}
+
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
@@ -682,7 +739,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		 * Neither a debug accessory nor UFP attached.
 		 * Tell the PPC module that there is no sink connected.
 		 */
-		if (cc1 != TYPEC_CC_VOLT_RD && cc2 != TYPEC_CC_VOLT_RD) {
+		if (!is_at_least_one_rd(cc1, cc2)) {
 			ppc_sink_is_connected(port, 0);
 			/*
 			 * Clear the overcurrent event counter
@@ -2373,33 +2430,20 @@ static void pd_partner_port_reset(int port)
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
-/**
- * Returns whether the sink has detected a Rp resistor on the other side.
- */
-static inline int cc_is_rp(int cc)
-{
-	return (cc == TYPEC_CC_VOLT_RP_DEF) || (cc == TYPEC_CC_VOLT_RP_1_5) ||
-	       (cc == TYPEC_CC_VOLT_RP_3_0);
-}
-
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static enum pd_states drp_auto_toggle_next_state(int port, int cc1, int cc2)
 {
 	enum pd_states next_state;
 
 	/* Set to appropriate port state */
-	if (cc1 == TYPEC_CC_VOLT_OPEN &&
-	    cc2 == TYPEC_CC_VOLT_OPEN)
+	if (is_open(cc1, cc2))
 		/* nothing connected, keep toggling*/
 		next_state = PD_STATE_DRP_AUTO_TOGGLE;
 	else if ((cc_is_rp(cc1) || cc_is_rp(cc2)) &&
 		 drp_state[port] != PD_DRP_FORCE_SOURCE) {
 		/* SNK allowed unless ForceSRC */
 		next_state = PD_STATE_SNK_DISCONNECTED;
-	} else if ((cc1 == TYPEC_CC_VOLT_RD ||
-		   cc2 == TYPEC_CC_VOLT_RD) ||
-		  (cc1 == TYPEC_CC_VOLT_RA &&
-		   cc2 == TYPEC_CC_VOLT_RA)) {
+	} else if (is_at_least_one_rd(cc1, cc2) || is_audio_acc(cc1, cc2)) {
 		/*
 		 * SRC allowed unless ForceSNK or Toggle Off
 		 *
@@ -3014,9 +3058,8 @@ void pd_task(void *u)
 			 */
 			if (auto_toggle_supported &&
 			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
-			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
-			    (cc1 == TYPEC_CC_VOLT_OPEN &&
-			     cc2 == TYPEC_CC_VOLT_OPEN)) {
+			    !is_try_src(port) &&
+			    is_open(cc1, cc2)) {
 				set_state(port, PD_STATE_DRP_AUTO_TOGGLE);
 				timeout = 2*MSEC;
 				break;
@@ -3024,10 +3067,8 @@ void pd_task(void *u)
 #endif
 
 			/* Vnc monitoring */
-			if ((cc1 == TYPEC_CC_VOLT_RD ||
-			     cc2 == TYPEC_CC_VOLT_RD) ||
-			    (cc1 == TYPEC_CC_VOLT_RA &&
-			     cc2 == TYPEC_CC_VOLT_RA)) {
+			if (is_at_least_one_rd(cc1, cc2) ||
+			    is_audio_acc(cc1, cc2)) {
 #ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port))
@@ -3048,7 +3089,7 @@ void pd_task(void *u)
 			 * (PD_T_TRY_TIMEOUT). Otherwise we should stay
 			 * within Try.SRC (break).
 			 */
-			if (pd[port].flags & PD_FLAGS_TRY_SRC) {
+			if (is_try_src(port)) {
 				if (now.val < pd[port].try_src_marker) {
 					break;
 				} else if (now.val < pd[port].try_timeout) {
@@ -3094,16 +3135,13 @@ void pd_task(void *u)
 			timeout = 20*MSEC;
 			tcpm_get_cc(port, &cc1, &cc2);
 
-			if (cc1 == TYPEC_CC_VOLT_RD &&
-			    cc2 == TYPEC_CC_VOLT_RD) {
+			if (is_snk_dbg_acc(cc1, cc2)) {
 				/* Debug accessory */
 				new_cc_state = PD_CC_DEBUG_ACC;
-			} else if (cc1 == TYPEC_CC_VOLT_RD ||
-				   cc2 == TYPEC_CC_VOLT_RD) {
+			} else if (is_at_least_one_rd(cc1, cc2)) {
 				/* UFP attached */
 				new_cc_state = PD_CC_UFP_ATTACHED;
-			} else if (cc1 == TYPEC_CC_VOLT_RA &&
-				   cc2 == TYPEC_CC_VOLT_RA) {
+			} else if (is_audio_acc(cc1, cc2)) {
 				/* Audio accessory */
 				new_cc_state = PD_CC_AUDIO_ACC;
 			} else {
@@ -3115,9 +3153,10 @@ void pd_task(void *u)
 
 			/* Set debounce timer */
 			if (new_cc_state != pd[port].cc_state) {
-				pd[port].cc_debounce = get_time().val +
-					(pd[port].flags & PD_FLAGS_TRY_SRC) ?
-					PD_T_DEBOUNCE : PD_T_CC_DEBOUNCE;
+				pd[port].cc_debounce =
+					get_time().val +
+					(is_try_src(port) ? PD_T_DEBOUNCE
+							  : PD_T_CC_DEBOUNCE);
 				pd[port].cc_state = new_cc_state;
 				break;
 			}
@@ -3590,9 +3629,8 @@ void pd_task(void *u)
 			 */
 			if (auto_toggle_supported &&
 			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
-			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
-			    (cc1 == TYPEC_CC_VOLT_OPEN &&
-			     cc2 == TYPEC_CC_VOLT_OPEN)) {
+			    !is_try_src(port) &&
+			    is_open(cc1, cc2)) {
 				set_state(port, PD_STATE_DRP_AUTO_TOGGLE);
 				timeout = 2*MSEC;
 				break;
@@ -3600,8 +3638,7 @@ void pd_task(void *u)
 #endif
 
 			/* Source connection monitoring */
-			if (cc1 != TYPEC_CC_VOLT_OPEN ||
-			    cc2 != TYPEC_CC_VOLT_OPEN) {
+			if (!is_open(cc1, cc2)) {
 				pd[port].cc_state = PD_CC_NONE;
 				hard_reset_count = 0;
 				new_cc_state = PD_CC_NONE;
