@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cbb6e4f_cd7b5ab6",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-04-30T10:12:26Z",
+      "side": 0,
+      "message": "Should we still need to init everything to 0 on start?\n\nI wonder if kukui_led_set_battery may take a while to be called.",
+      "revId": "961c0d0fdc9cb981467ea1df9847032b1b770c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
