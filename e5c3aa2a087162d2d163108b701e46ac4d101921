@@ -16,6 +16,24 @@
       "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6947e105_fa2a9d92",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-04-30T15:59:58Z",
+      "side": 1,
+      "message": "I think we should put the wait for settle here before the write and at the end of the ISR (after process_timers)\n\nThis ensure that we don\u0027t write to a settling status bit (the very first time) nor do we call the ISR a second time while the status bit was settling.\n\nBoth waits should be a single reading in almost every scenario.\n\n(I don\u0027t think we should wait on settling right after the write as we can let that happen in parallel with the process_timers call)",
+      "parentUuid": "2a5cc8c0_1368ce1a",
+      "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
