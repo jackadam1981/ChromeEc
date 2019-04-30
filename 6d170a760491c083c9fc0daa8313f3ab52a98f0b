@@ -46,6 +46,76 @@
       "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378896d7_dd333c14",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T21:33:16Z",
+      "side": 1,
+      "message": "ah, right, we do getvar()-freevar().\n\nwhat\u0027s the list of the low-level functions that are included in the set, so that all functions that include them, must be protected? btw, it\u0027s not just modifications, of course, it\u0027s also retrieving data from the flash, so that we don\u0027t read while in the middle of modification.\ndoes it also protect master_at? anything else?\n\nI manually tried walking through the tree of function calls, and looks like everything is indeed covered, except for new_nvmem_migrate (which probably runs early enough so that there are no parallel ops, but we can still formally add a mutex there) and browse_flash_contents (which may need this protection, since console accesses can be parallel to some nvmem changes?). but it\u0027s quite fragile, esp to make sure we don\u0027t break anything during future changes.\nis it possible to group somehow all functions that (a) are assumed to be run with mutex already acquired (like nvmem_read_bytes or total_used_size or verif_*, update_*, process_*, save_*, etc), (b) are assumed to grab mutex internally. For group (a), at least we can add comments. This should simplify future changes?",
+      "parentUuid": "a006b240_6bc43523",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 29
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae6be81_76874369",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T21:33:16Z",
+      "side": 1,
+      "message": "does this one need to be protected by the new mutex?",
+      "range": {
+        "startLine": 1436,
+        "startChar": 19,
+        "endLine": 1436,
+        "endChar": 36
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8341b26b_8e35eff9",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2914,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-04-30T21:33:16Z",
+      "side": 1,
+      "message": "do we need to protect this one by mutex as well?",
+      "range": {
+        "startLine": 2914,
+        "startChar": 38,
+        "endLine": 2914,
+        "endChar": 59
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
