@@ -77,6 +77,24 @@ static const struct adc_profile_t profile = {
 };
 #endif
 
+static uint32_t get_adc_sample_rate (void)
+{
+	int i;
+	uint32_t max_sample = 0;
+
+	/*
+	 * adc_init only run once, when the adc_channels[i].sample_rate has
+	 * different value, set the smaple_rate is the max of all adc_channels,
+	 * to make all adc_channels read correct.
+	 * If all adc_channels[i].sample_rate not set, use default sample_rate.
+	 */
+	for (i = 0; i < ADC_CH_COUNT; i++)
+		if (max_sample < adc_channels[i].sample_rate)
+			max_sample = adc_channels[i].sample_rate;
+
+	return max_sample ? max_sample : profile.smpr_reg;
+}
+
 static void adc_init(const struct adc_t *adc)
 {
 	/*
@@ -101,7 +119,7 @@ static void adc_init(const struct adc_t *adc)
 	/* clock is ADCCLK (ADEN must be off when writing this reg) */
 	STM32_ADC_CFGR2 = profile.cfgr2_reg;
 	/* Sampling time */
-	STM32_ADC_SMPR = adc->sample_rate ? adc->sample_rate : profile.smpr_reg;
+	STM32_ADC_SMPR = get_adc_sample_rate();
 
 	/*
 	 * ADC enable (note: takes 4 ADC clocks between end of calibration
