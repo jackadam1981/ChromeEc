@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9cd2b46_4430dc1f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-30T21:44:34Z",
+      "side": 1,
+      "message": "[note to self]: The IFORCE register to force an interrupt is just for debugging and should never be used in the driver.",
+      "revId": "2ba57f98732ef762d69cbbd28c1df76a18a1e5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f2c8e4_9876e87c",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-30T21:44:34Z",
+      "side": 1,
+      "message": "TCS3400_MODE_CONTINUOUS is ambiguous, as the sensor is not working in continuous mode.\nUse TCS3400_MODE_COLLECTING or similar",
+      "revId": "2ba57f98732ef762d69cbbd28c1df76a18a1e5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "069d92ca_08d0f8ca",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-04-30T21:44:34Z",
+      "side": 1,
+      "message": "move it in include/accelgyro.h, there is a accelgyro_saved_data_t already there.",
+      "revId": "2ba57f98732ef762d69cbbd28c1df76a18a1e5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
