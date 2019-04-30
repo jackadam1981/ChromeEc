@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "baa74ea1_91c6674e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-30T23:05:48Z",
+      "side": 1,
+      "message": "I am not sure I understand what\u0027s required here and don\u0027t see a point in enumerating low level functions - the high level APIs need to be protected, setvar, getvar and nvmem_save.\n\nBrowsing flash is a secondary function, but it makes sense to enable protection in it as well just to be on the safe side.\n\nMigration is also unlikely to suffer from flash access concurrency issues, but since it is going away eventually I add the lock there as well.",
+      "parentUuid": "378896d7_dd333c14",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 29
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bae6be81_76874369",
         "filename": "common/new_nvmem.c",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "cc131835_8ceed253",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-30T23:05:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary, but it won\u0027t hurt, added.",
+      "parentUuid": "bae6be81_76874369",
+      "range": {
+        "startLine": 1436,
+        "startChar": 19,
+        "endLine": 1436,
+        "endChar": 36
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8341b26b_8e35eff9",
         "filename": "common/new_nvmem.c",
         "patchSetId": 4
@@ -107,6 +155,30 @@
       "writtenOn": "2019-04-30T21:33:16Z",
       "side": 1,
       "message": "do we need to protect this one by mutex as well?",
+      "range": {
+        "startLine": 2914,
+        "startChar": 38,
+        "endLine": 2914,
+        "endChar": 59
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2819942a_b5aef4ba",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2914,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-30T23:05:48Z",
+      "side": 1,
+      "message": "yes, good point, added.",
+      "parentUuid": "8341b26b_8e35eff9",
       "range": {
         "startLine": 2914,
         "startChar": 38,
