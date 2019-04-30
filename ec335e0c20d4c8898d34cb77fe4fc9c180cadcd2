@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0581d97_5cb2a5e3",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-04-30T09:46:06Z",
+      "side": 1,
+      "message": "This will create a unexpected result because we allow a board to set rate per channel but only uses the max value. Let\u0027s change the sampling rate at every read: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1589253.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 40
+      },
+      "revId": "ec335e0c20d4c8898d34cb77fe4fc9c180cadcd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
