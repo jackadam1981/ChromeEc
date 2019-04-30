@@ -16,6 +16,24 @@
       "revId": "2ba57f98732ef762d69cbbd28c1df76a18a1e5ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64234a5a_09743d80",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-30T23:35:07Z",
+      "side": 0,
+      "message": "I removed it for my reworked board, just didn\u0027t have full details for P1 board at the time I posted this).  I got full details, so latest CL set should be representative of P1 board.",
+      "parentUuid": "afaf72a7_3a718eca",
+      "revId": "2ba57f98732ef762d69cbbd28c1df76a18a1e5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -16,6 +16,24 @@
       "revId": "3b5d384b53de95a6e3fa642584e445338d6a4b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddba7805_442546fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-04-30T23:35:07Z",
+      "side": 1,
+      "message": "This CL is intended for checkin for the P1 build.  I\u0027ve adjusted it to remove modifications made for P0C board (added accel and gyro back in), and removed OPT ALS sensor.\n\nI have a P0C19 board that is wired close to the P1 that I have verified this change on.",
+      "parentUuid": "6c83f188_f9060e11",
+      "revId": "3b5d384b53de95a6e3fa642584e445338d6a4b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
