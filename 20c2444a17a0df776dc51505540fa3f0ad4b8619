@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0195ac4_fdc9b8dc",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-30T23:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c156d7e_05652bff",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1928,
+        "endChar": 1
+      },
+      "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf647f4c_717e9bc0",
         "filename": "test/nvmem.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3cc4d290_e94dd86f",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-30T23:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf647f4c_717e9bc0",
+      "range": {
+        "startLine": 1333,
+        "startChar": 11,
+        "endLine": 1333,
+        "endChar": 35
+      },
+      "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa813d66_c495696d",
         "filename": "test/nvmem.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e94ef0f_6c03c6eb",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-04-30T23:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa813d66_c495696d",
+      "range": {
+        "startLine": 1377,
+        "startChar": 14,
+        "endLine": 1377,
+        "endChar": 16
+      },
+      "revId": "20c2444a17a0df776dc51505540fa3f0ad4b8619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
