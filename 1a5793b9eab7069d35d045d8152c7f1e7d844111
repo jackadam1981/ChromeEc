@@ -16,6 +16,24 @@
       "revId": "1a5793b9eab7069d35d045d8152c7f1e7d844111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda95927_7f64d28f",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-04-30T10:19:39Z",
+      "side": 0,
+      "message": "Yes we still need this after CL:1569090 merged.\n\nThe latest patchset #5 is based on ToT, so it does not contain these new board_* functions introduced by CL:1569090.\nChange to board_charge_port_is_sink will be in another CL.",
+      "parentUuid": "067c6a7f_3f18469f",
+      "revId": "1a5793b9eab7069d35d045d8152c7f1e7d844111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
