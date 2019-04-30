@@ -34,6 +34,24 @@
       "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f080d7_37908f77",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-04-30T16:29:28Z",
+      "side": 1,
+      "message": "This is the only place we write HPET_INTR_CLEAR, besides at boot. So we should be safe to only check settling before write, as Jett describes above.",
+      "parentUuid": "6947e105_fa2a9d92",
+      "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
