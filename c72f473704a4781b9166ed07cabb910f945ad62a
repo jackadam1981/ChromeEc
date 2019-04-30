@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81378467_7428da77",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-04-30T21:02:24Z",
+      "side": 1,
+      "message": "nit:\n\n * checkpatch.pl errors/warnings\n            \n WARNING: static const char * array should probably be static const char * const\n #30: FILE: board/flapjack/battery.c:187:\n +\tstatic const char *name[] \u003d {",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "c72f473704a4781b9166ed07cabb910f945ad62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
