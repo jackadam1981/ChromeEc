@@ -150,6 +150,9 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef CHIP_FAMILY_IT83202
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
