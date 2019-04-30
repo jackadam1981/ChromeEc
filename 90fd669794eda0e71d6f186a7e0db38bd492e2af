@@ -46,6 +46,30 @@
       "revId": "90fd669794eda0e71d6f186a7e0db38bd492e2af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc129832_46f3f4d0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-04-30T03:43:41Z",
+      "side": 1,
+      "message": "Right, as long as we\u0027ll ramp BC1.2 before comparing power to TYPEC_1.5A type.\nLooks like a comprehensive idea, thanks.",
+      "parentUuid": "af5076f4_f16a1087",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "90fd669794eda0e71d6f186a7e0db38bd492e2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
