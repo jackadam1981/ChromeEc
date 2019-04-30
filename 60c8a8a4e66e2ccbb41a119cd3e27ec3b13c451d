@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "455dd13e_11afa2ef",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-30T17:45:51Z",
+      "side": 1,
+      "message": "This should take the port number into account as well. Also, let\u0027s include the addr_flags to check for writes vs. reads and the length.",
+      "range": {
+        "startLine": 445,
+        "startChar": 7,
+        "endLine": 445,
+        "endChar": 47
+      },
+      "revId": "60c8a8a4e66e2ccbb41a119cd3e27ec3b13c451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3f9fb2_f7bf4e48",
+        "filename": "common/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-30T17:45:51Z",
+      "side": 1,
+      "message": "To avoid touching all the board files, can we make a weakly defined default implementation here that denies everything, and add the prototype to i2c.h?",
+      "range": {
+        "startLine": 445,
+        "startChar": 7,
+        "endLine": 445,
+        "endChar": 33
+      },
+      "revId": "60c8a8a4e66e2ccbb41a119cd3e27ec3b13c451d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
