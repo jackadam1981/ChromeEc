@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2db90e9_94e42208",
+        "filename": "board/kip/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-30T23:41:10Z",
+      "side": 1,
+      "message": "Should this be 0?",
+      "range": {
+        "startLine": 229,
+        "startChar": 21,
+        "endLine": 229,
+        "endChar": 22
+      },
+      "revId": "1fac310490df3946f060148fa07fee4c5ec264c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a8c0d3d_d3971d48",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-04-30T23:41:10Z",
+      "side": 1,
+      "message": "what about the length?",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "1fac310490df3946f060148fa07fee4c5ec264c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
