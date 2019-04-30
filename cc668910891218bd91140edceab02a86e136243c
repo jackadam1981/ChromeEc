@@ -91,6 +91,30 @@
       "revId": "cc668910891218bd91140edceab02a86e136243c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38505956_f9a5cea8",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-30T05:14:05Z",
+      "side": 1,
+      "message": "yes, this case is possible, we can disable interrupt after halt for this. \n\nthe original version of aontask.c don\u0027t have this problem, that why I\u0027m not suggest this CL. :)   \n\nthis CL still need more coding check and verify.",
+      "parentUuid": "4ec8f332_92c02903",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 0
+      },
+      "revId": "cc668910891218bd91140edceab02a86e136243c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
