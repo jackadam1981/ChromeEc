@@ -22,6 +22,30 @@
       "revId": "2038ad38a084e0d52ee597b7071adf6cb6d6a04a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579f5158_4f09eb21",
+        "filename": "include/queue.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-04-30T17:15:15Z",
+      "side": 1,
+      "message": "I compared the RAM usage change with and without this CL based on buildall result (git hash e41539643 vs 7e392e802e).\n\nhttp://go/ec_queue_optimization\n\nThis CL doesn\u0027t change RAM usage for most of ECs including CR50. \narcada_ish, or fleex gets RAM usage increased by 32 bytes.\nThere are some ECs where RAM usage increased by 4 or 8 bytes.\n\nI repeated it again with uint16_t buffer_units_mask, and it didn\u0027t make any change for ECs except arcada_ish, which got 96 byte RAM usage increase.",
+      "parentUuid": "caa497c4_2d83c4c4",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "2038ad38a084e0d52ee597b7071adf6cb6d6a04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
