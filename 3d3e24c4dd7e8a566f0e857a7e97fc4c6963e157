@@ -22,6 +22,30 @@
       "revId": "3d3e24c4dd7e8a566f0e857a7e97fc4c6963e157",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d82b9d4c_f5c4e973",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-04-30T01:26:56Z",
+      "side": 1,
+      "message": "Done! good suggestion.",
+      "parentUuid": "154a0c5c_9605f77f",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "3d3e24c4dd7e8a566f0e857a7e97fc4c6963e157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
