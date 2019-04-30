@@ -117,6 +117,30 @@
       "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48044444_48f6767d",
+        "filename": "common/util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-04-30T17:37:33Z",
+      "side": 1,
+      "message": "I have created a separate method:\nint find_base(int base, int *c, const char **nptr)",
+      "parentUuid": "374731f4_f4d5ec40",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "0d3a7870413901f9cd0b56612f02ea47bb5bf792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
