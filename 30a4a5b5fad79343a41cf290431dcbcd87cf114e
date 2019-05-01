@@ -187,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "aa82278a_7859d197",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-01T18:13:42Z",
+      "side": 1,
+      "message": "I don\u0027t think they are. If I have 2 ftdi cables plugged in using /dev/ttyUSB0 and /dev/ttyUSB1. Unplug the one that is using /dev/ttyUSB0 and then plug in suzyq. I think the cr50 console would be /dev/ttyUSB0, 2, and 3.",
+      "parentUuid": "19778ee4_489c80ca",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b56b0a43_2d394f7f",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6

@@ -310,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "b325a41b_878b73e0",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-01T18:13:42Z",
+      "side": 1,
+      "message": "Sure if no serial is given and there\u0027s one cr50 device you can use the serial number from the only cr50 device plugged in.",
+      "parentUuid": "820652c0_eeb9f8a7",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3233b3a0_da8fe639",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
