@@ -93,6 +93,30 @@
       "revId": "4b90debb7e9b604e8e85fb2699a39978e7b35942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a71493_5cca890d",
+        "filename": "common/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T16:23:06Z",
+      "side": 1,
+      "message": "This branch, firmware-kip-5216.227.B, doesn\u0027t have IS_ENABLED yet in include/common.h.",
+      "parentUuid": "f3f89f7e_015097d7",
+      "range": {
+        "startLine": 460,
+        "startChar": 7,
+        "endLine": 460,
+        "endChar": 37
+      },
+      "revId": "4b90debb7e9b604e8e85fb2699a39978e7b35942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

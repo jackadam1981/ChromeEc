@@ -22,6 +22,30 @@
       "revId": "9014d2c5dee6dd3b23ef8934c7f9d2f4d8dca3ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61eb5268_54c04acf",
+        "filename": "board/clapper/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T16:23:06Z",
+      "side": 1,
+      "message": "I guarded i2c_param_whitelist[] with #ifdef statment because it is only used when CONFIG_I2C_PASSTHRU_RESTRICTED is defined. \n\nFrom the conversation with you, now I understand it is not necessary and that\u0027s the way usually done in platform/ec. Hence I agree to remove it from board.c.",
+      "parentUuid": "06185433_3a5a1ad3",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 36
+      },
+      "revId": "9014d2c5dee6dd3b23ef8934c7f9d2f4d8dca3ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
