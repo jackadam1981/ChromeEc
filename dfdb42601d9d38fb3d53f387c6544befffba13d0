@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0c1f4ee_84635fa9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T19:02:28Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 8
+      },
+      "revId": "dfdb42601d9d38fb3d53f387c6544befffba13d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34610473_a461b0d6",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T19:02:28Z",
+      "side": 1,
+      "message": "nit: if (raw_read16(regs[i], \u0026value) \u003d\u003d ec_success)",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 10
+      },
+      "revId": "dfdb42601d9d38fb3d53f387c6544befffba13d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "137a15a0_cc07ddad",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T19:02:28Z",
+      "side": 1,
+      "message": "Why not \u00270x%02x\u0027?",
+      "range": {
+        "startLine": 465,
+        "startChar": 24,
+        "endLine": 465,
+        "endChar": 26
+      },
+      "revId": "dfdb42601d9d38fb3d53f387c6544befffba13d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0082e5de_3805a0e9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T19:02:28Z",
+      "side": 1,
+      "message": "bq25710",
+      "range": {
+        "startLine": 465,
+        "startChar": 13,
+        "endLine": 465,
+        "endChar": 18
+      },
+      "revId": "dfdb42601d9d38fb3d53f387c6544befffba13d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c47b4b2_fe408c1b",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T19:02:28Z",
+      "side": 1,
+      "message": "This one too. Why not 0x%4x or 0x%04x?",
+      "range": {
+        "startLine": 465,
+        "startChar": 29,
+        "endLine": 465,
+        "endChar": 32
+      },
+      "revId": "dfdb42601d9d38fb3d53f387c6544befffba13d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
