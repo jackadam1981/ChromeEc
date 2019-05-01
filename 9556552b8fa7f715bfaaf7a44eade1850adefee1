@@ -22,6 +22,30 @@
       "revId": "9556552b8fa7f715bfaaf7a44eade1850adefee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8394a624_0341db13",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T18:54:55Z",
+      "side": 1,
+      "message": "Do you mean stm32/registers.h? It\u0027s moved from registers.h to adc_chip.h. It\u0027s converted to an enum. A macro which converts enum to bit position is provided instead in registers.h.",
+      "parentUuid": "63a21bd1_05a605a4",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "9556552b8fa7f715bfaaf7a44eade1850adefee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
