@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92c785a8_07ef641f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T01:33:00Z",
+      "side": 1,
+      "message": "Can you prefix all these names with \u0027cc_\u0027 so that they can be seen as a family (and searched easily)?\n\nAlso, maybe it\u0027s time to kick these utility functions out of usb_pd_protocol.c (to a new file e.g. usb_pd_utils.c). For example, I see usb_pd_tcpc.c can call cc_is_open.",
+      "range": {
+        "startLine": 643,
+        "startChar": 18,
+        "endLine": 643,
+        "endChar": 25
+      },
+      "revId": "3b54ad365322ea9e909276aa42f22558655fff13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
