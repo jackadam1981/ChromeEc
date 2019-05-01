@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "426f828e_fb4f56f5",
+        "filename": "board/kip/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T18:36:23Z",
+      "side": 1,
+      "message": "This notation is more commonly used (more readable, avoid mistakes):\n  .port \u003d 0x00,\n  .cmd \u003d 0x70,\n  ...",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 228,
+        "endChar": 26
+      },
+      "revId": "304b6243c5ebd46bf6f930d4ea25345f196cbf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc092a7a_db5ecac8",
+        "filename": "board/kip/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T18:36:23Z",
+      "side": 1,
+      "message": "nit: this is redundant.",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 28
+      },
+      "revId": "304b6243c5ebd46bf6f930d4ea25345f196cbf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993356db_9ca17302",
+        "filename": "common/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T18:36:23Z",
+      "side": 1,
+      "message": "If you do \u0027const struct i2c_param_t *param\u0027, it\u0027s more extensible.",
+      "range": {
+        "startLine": 412,
+        "startChar": 35,
+        "endLine": 416,
+        "endChar": 23
+      },
+      "revId": "304b6243c5ebd46bf6f930d4ea25345f196cbf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd15641_20d67068",
+        "filename": "include/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T18:36:23Z",
+      "side": 1,
+      "message": "uint8_t",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "304b6243c5ebd46bf6f930d4ea25345f196cbf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
