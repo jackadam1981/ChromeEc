@@ -52,6 +52,24 @@
       "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "590488a1_f69a4749",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-01T00:37:58Z",
+      "side": 1,
+      "message": "I didn\u0027t much care about this since we don\u0027t get any extra interrupt for timer 0 and extra \"timer 1\" interrupt doesn\u0027t cause any serious problem.\nBut I believe we just need to both clearing and settling after process_timers() and we don\u0027t need to worry about expiration during settling since we give 800us delay at least.\n\nStatus clearing before process_timers() will give us problem(actually just set the same value again so it\u0027s not serious problem. just give some more delay if the closet time is less than 800us).\n\u003d\u003e Just before timer 1 expires, s/w(timer_arm()) triggers IRQ.\n\u003d\u003e ISR(s/w triggered) is running and H/W timer 1 sets the status bit before new comparator value is set by process_timers().\n\u003d\u003e After process_timers(), comparator has new value but still the status bit is set.\n\nSo clearing status before processing_timers() will give us extra(?) timer 1 interrupt.",
+      "parentUuid": "57f080d7_37908f77",
+      "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
