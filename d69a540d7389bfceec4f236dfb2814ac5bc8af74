@@ -22,6 +22,30 @@
       "revId": "d69a540d7389bfceec4f236dfb2814ac5bc8af74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d19b45a_9ced118f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-01T15:57:22Z",
+      "side": 1,
+      "message": "The idea is to always have the test code available to make AVL testing easier.\n\nI think the passthru idea will be viable as long as we register a new virtual address like we did for battery.\n\nOnce concern I have with passthru approach is that a write error that happens for another reason other than write protect would be considered a pass to the AVL test (like an improperly formated i2cxfer command)",
+      "parentUuid": "ac3abaa1_cdd2f392",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "d69a540d7389bfceec4f236dfb2814ac5bc8af74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
