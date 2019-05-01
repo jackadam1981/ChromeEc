@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "141c3771_25d4cd79",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T16:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0bf5aa_6b3d30f0",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "f15fc2281e774489f9845818433f599d577b9d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a54f4834_c27da545",
         "filename": "include/i2c.h",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "f15fc2281e774489f9845818433f599d577b9d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6579ff4_ccba5fb8",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T16:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a54f4834_c27da545",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "f15fc2281e774489f9845818433f599d577b9d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
