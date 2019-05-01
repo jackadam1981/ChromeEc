@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fbf6452_97d63f5e",
+        "filename": "board/kip/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T03:46:53Z",
+      "side": 1,
+      "message": "I\u0027ve checked that this message has a pair of commands.\nThe first one is a write command with \"0x70\" command in the buffer.\nThe second one is a read command for the response.\n\n\nThis is EC UART log for the two commands.\n\n# ectool --ascii i2cxfer 0 0 0 0\n\n[27.070118 i2c passthru port\u003d0, write, addr\u003d0x00, len\u003d0x01]\n[27.070393 i2c passthru xfer port\u003d0, addr\u003d0, out\u003d2000280e, write_len\u003d1, data\u003d4008060a, read_len\u003d0, ]\n\n\n# ectool --ascii i2cxfer 0 0x0b 15 0x70\n\n[47.174360 i2c passthru port\u003d0, write, addr\u003d0x0b, len\u003d0x01]\n[47.175549 i2c passthru port\u003d0, read, addr\u003d0x0b, len\u003d0x0f]\n[47.175825 i2c passthru xfer port\u003d0, addr\u003d16, out\u003d20002812, write_len\u003d1, data\u003d4008060a, read_len\u003d0,]\n[47.176728 i2c passthru xfer port\u003d0, addr\u003d16, out\u003d20002813, write_len\u003d0, data\u003d4008060a, read_len\u003df,]\n[47.177305 I2C0 bad status 0x40, SCL\u003d0, SDA\u003d2]\n[47.355461 KB wait]",
+      "parentUuid": "b2db90e9_94e42208",
+      "range": {
+        "startLine": 229,
+        "startChar": 21,
+        "endLine": 229,
+        "endChar": 22
+      },
+      "revId": "1fac310490df3946f060148fa07fee4c5ec264c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a8c0d3d_d3971d48",
         "filename": "include/i2c.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "1fac310490df3946f060148fa07fee4c5ec264c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdcbf61f_5ba229d0",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T03:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a8c0d3d_d3971d48",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "1fac310490df3946f060148fa07fee4c5ec264c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
