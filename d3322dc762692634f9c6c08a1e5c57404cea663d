@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa182830_bea47223",
+        "filename": "common/util.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T01:43:46Z",
+      "side": 1,
+      "message": "nit: I think we can name it \u0027base\u0027 without losing readability.",
+      "range": {
+        "startLine": 118,
+        "startChar": 25,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "d3322dc762692634f9c6c08a1e5c57404cea663d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af35c17a_85b824b3",
+        "filename": "common/util.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T01:43:46Z",
+      "side": 1,
+      "message": "nit: I would update base in each case and return it from a single return.\n\n  if (...)\n    base \u003d 16;\n  else if (...)\n    base \u003d *c \u003d\u003d \u00270\u0027 ? 8 : 10;\n  return base;",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 12
+      },
+      "revId": "d3322dc762692634f9c6c08a1e5c57404cea663d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
