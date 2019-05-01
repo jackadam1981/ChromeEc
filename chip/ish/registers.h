@@ -340,10 +340,10 @@ enum ish_i2c_port {
 
 #if defined(CHIP_FAMILY_ISH3)
 /* on ISH3, reused ISH2PMC IPC message registers */
-#define SNOWBALL_BASE     IPC_ISH2PMC_MSG_REGS
+#define SNOWBALL_BASE			IPC_ISH2PMC_MSG_REGS
 #else
 /* from ISH4, used reserved rom part of AON memory */
-#define SNOWBALL_BASE     CONFIG_ISH_AON_SRAM_ROM_START
+#define SNOWBALL_BASE			CONFIG_AON_ROM_BASE
 #endif
 
 /**

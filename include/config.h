@@ -83,6 +83,12 @@
 #undef CONFIG_ACCELGYRO_LSM6DSM
 #undef CONFIG_ACCELGYRO_LSM6DSO
 
+/* Configuration for AON RAM and ROM memory layout */
+#undef CONFIG_AON_RAM_BASE
+#undef CONFIG_AON_RAM_SIZE
+#undef CONFIG_AON_ROM_BASE
+#undef CONFIG_AON_ROM_SIZE
+
 /* Add sensorhub function for LSM6DSM, required if 2nd device attached. */
 #undef CONFIG_SENSORHUB_LSM6DSM
 
@@ -2757,6 +2763,12 @@
 /* Support Real-Time Clock (RTC) */
 #undef CONFIG_RTC
 
+/* Size of each RAM bank in chip */
+#undef CONFIG_RAM_BANK_SIZE
+
+/* Number of RAM banks in chip */
+#undef CONFIG_RAM_BANKS
+
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
 
@@ -4013,6 +4025,16 @@
  */
 #ifndef CONFIG_DATA_RAM_SIZE
 #define CONFIG_DATA_RAM_SIZE	CONFIG_RAM_SIZE
+#endif
+
+/* Automatic configuration of RAM banks **************************************/
+/* Assume one RAM bank if not specified, auto-compute number of banks        */
+#ifndef CONFIG_RAM_BANK_SIZE
+#define CONFIG_RAM_BANK_SIZE	(1)
+#endif
+
+#ifndef CONFIG_RAM_BANKS
+#define CONFIG_RAM_BANKS	(CONFIG_RAM_SIZE / CONFIG_RAM_BANK_SIZE)
 #endif
 
 /******************************************************************************/
