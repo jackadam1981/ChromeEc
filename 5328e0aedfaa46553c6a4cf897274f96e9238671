@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b921ebec_47add9b1",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-01T16:46:14Z",
+      "side": 1,
+      "message": "We change this to\n\ni \u003c KEYBOARD_ROWS \u0026\u0026 debouncing[c]\n\nwith a comment that we can stop looping if there is nothing else to debounce.\n\nThen we can remove the early return condition on line 478 completely (and we are still very efficient) and the continue would occur at line 495.\n\nthoughts?",
+      "range": {
+        "startLine": 482,
+        "startChar": 14,
+        "endLine": 482,
+        "endChar": 31
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c5a7bd_332deaf9",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-01T16:46:14Z",
+      "side": 1,
+      "message": "good catch! this would have been really hard to track down later",
+      "range": {
+        "startLine": 483,
+        "startChar": 8,
+        "endLine": 483,
+        "endChar": 33
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6333fdd5_e7c11e04",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-01T16:46:14Z",
+      "side": 1,
+      "message": "there is some extra whitespace through out test file (3 total). I am surprise that repo upload didn\u0027t complain about these.\n\nremove please",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
