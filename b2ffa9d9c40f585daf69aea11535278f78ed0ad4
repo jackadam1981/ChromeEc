@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "350e82b2_06caccdb",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T02:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86145908_f74a7c7b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89c0ab34_e983632a",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
@@ -211,6 +235,30 @@
       "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d98f339_1455eb09",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-01T02:48:14Z",
+      "side": 1,
+      "message": "Line 120~141 in patch#5 scans CR50 device number, and line 162 will do +0, +1, or +2 respectively for each UART.",
+      "parentUuid": "e3d25ac8_0acc3da0",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
