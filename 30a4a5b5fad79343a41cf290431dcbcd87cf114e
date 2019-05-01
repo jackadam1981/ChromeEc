@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77fac819_7d5bd739",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-01T17:35:27Z",
+      "side": 1,
+      "message": "the /dev/ttyUSB devices aren\u0027t guaranteed to be continuous.\nRight now I have\nttyUSB0  ttyUSB1  ttyUSB2  ttyUSB7  ttyUSB8  ttyUSB9",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

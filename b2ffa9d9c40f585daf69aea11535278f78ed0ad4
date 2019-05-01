@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "107b9b0d_2416cfc9",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-01T17:35:27Z",
+      "side": 1,
+      "message": "They aren\u0027t guaranteed to be at +0 +1 and +2. Also servo micro might not have the same mapping. It\u0027d be nice if this could be used on any device. I have a lot of servo v4s and suzyqs plugged in. I don\u0027t want to just test the one with the lowest /dev/ttyUSBx.\n\nlook up /dev/ttyUSBx from /sys/bus/usb/devices based on the serial number. \n\nfind the bus\ndirname $(grep $SERIAL /sys/bus/usb/devices/*/name | cut -d : -f 1)\nThis will give you all of the consoles for that device and you can probably guess the consoles based on lowest to highest cr50 to ec.\nls ${BUS}*/ttyUSB* -d",
+      "parentUuid": "4d98f339_1455eb09",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3233b3a0_da8fe639",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
