@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac3abaa1_cdd2f392",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T02:15:03Z",
+      "side": 1,
+      "message": "When do we run this command? Once per hardware build on one unit? We should avoid carrying test-only code in a production image as much as possible (referring to #define CONFIG_CBI_HOST_CHECK).\n\nCan you do all these in cbi_check using the i2c pass-through? Can we write a test script to do the equivalent? We can run such a script in whatever test/AVL framework we already have.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "d69a540d7389bfceec4f236dfb2814ac5bc8af74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
