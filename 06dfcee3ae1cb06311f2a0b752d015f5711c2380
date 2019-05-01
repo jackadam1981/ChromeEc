@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a01627d_65e8934a",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 369,
+        "startChar": 8,
+        "endLine": 369,
+        "endChar": 9
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b981f6da_34860a4c",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "Better to explicitly crash:\n\n  ASSERT(config-\u003eocv_table)",
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c673e779_4065b622",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "+80",
+      "range": {
+        "startLine": 387,
+        "startChar": 66,
+        "endLine": 387,
+        "endChar": 67
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5504a5dd_b1ad0cd5",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 393,
+        "startChar": 5,
+        "endLine": 393,
+        "endChar": 11
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d3868c_c55ff274",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "what is this for? comment?",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 13
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1029d10f_a53e2bab",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 569,
+        "startChar": 1,
+        "endLine": 569,
+        "endChar": 3
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a3567f_51db03f6",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:45:21Z",
+      "side": 1,
+      "message": "why not CONFIG_BATTERY_MAX17055_FULL_MODEL or just remove it?",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 36
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
