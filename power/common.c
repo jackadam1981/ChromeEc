@@ -260,7 +260,7 @@ static void power_update_wake_mask_deferred(void)
 	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
 }
 
-static void power_set_active_wake_mask(void)
+void power_set_active_wake_mask(void)
 {
 	/*
 	 * Allow state machine to stabilize and update wake mask after 5msec. It
@@ -279,7 +279,7 @@ static void power_set_active_wake_mask(void)
 }
 
 #else
-static void power_set_active_wake_mask(void) { }
+void power_set_active_wake_mask(void) { }
 #endif
 
 __attribute__((weak))

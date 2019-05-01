@@ -146,6 +146,11 @@ void power_set_state(enum power_state new_state);
 enum power_state power_get_state(void);
 
 /**
+ * Set the wake mask to be consistent with the current power state.
+ */
+void power_set_active_wake_mask(void);
+
+/**
  * Chipset-specific initialization
  *
  * @return The state the chipset should start in.  Usually POWER_G3, but may
