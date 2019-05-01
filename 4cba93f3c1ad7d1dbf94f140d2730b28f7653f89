@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40ebf960_d188d91d",
+        "filename": "common/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T17:52:41Z",
+      "side": 1,
+      "message": "i think you should define an empty i2c_param_whitelist here weakly as the default:\n\n__attribute__((weak)) const struct i2c_param_t i2c_param_whitelist[] \u003d {\n};\n\nand override it in kip/board.c. The other board.c don\u0027t need to be changed.",
+      "revId": "4cba93f3c1ad7d1dbf94f140d2730b28f7653f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
