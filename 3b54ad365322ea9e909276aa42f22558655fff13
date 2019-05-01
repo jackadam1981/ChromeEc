@@ -22,6 +22,30 @@
       "revId": "3b54ad365322ea9e909276aa42f22558655fff13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be156b0b_786d7048",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-01T14:42:58Z",
+      "side": 1,
+      "message": "Added prefix, good idea.\n\nI move these to the header file that defines the TYPEC_CC enum.\n\nI also tried to find more instance where they could be used now.",
+      "parentUuid": "92c785a8_07ef641f",
+      "range": {
+        "startLine": 643,
+        "startChar": 18,
+        "endLine": 643,
+        "endChar": 25
+      },
+      "revId": "3b54ad365322ea9e909276aa42f22558655fff13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
