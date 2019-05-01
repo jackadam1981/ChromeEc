@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "ea4cc0fd_f31bc920",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-01T00:32:05Z",
+      "side": 1,
+      "message": "Frankly, I find this excessive and unnecessary: there are 81 functions in this file, probably 50 of them would have to be annotated with this comment, it would be just noise.\n\nI think it is more important to communicate that this mutex is for - I tried to improve the comment, but am open for suggestions on how to make it better.\n\nThe main point is that the highest level APIs need to protect from concurrent flash use/modification. The only non-high level function which needs it is browse_flash_contents().",
+      "parentUuid": "f80e2aaf_93123c10",
+      "range": {
+        "startLine": 320,
+        "startChar": 20,
+        "endLine": 320,
+        "endChar": 29
+      },
+      "revId": "6d170a760491c083c9fc0daa8313f3ab52a98f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bae6be81_76874369",
         "filename": "common/new_nvmem.c",
         "patchSetId": 4
