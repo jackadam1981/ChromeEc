@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc090c7e_aa1d9c5a",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-01T17:43:53Z",
+      "side": 1,
+      "message": "I got confirmation from TI that I don\u0027t need to poll for this bit to go back to zero, so I will remove this section and the check below.",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "70425b484912f3adbf4b591d6460a3e9ffbda198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
