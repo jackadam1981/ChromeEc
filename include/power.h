@@ -145,6 +145,11 @@ void power_set_state(enum power_state new_state);
  */
 enum power_state power_get_state(void);
 
+/*
+ * Set wake mask after according to the current power state.
+ */
+void power_update_wake_mask(void);
+
 /**
  * Chipset-specific initialization
  *
