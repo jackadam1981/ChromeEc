@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63a21bd1_05a605a4",
+        "filename": "chip/stm32/adc-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2019-05-01T17:22:24Z",
+      "side": 1,
+      "message": "I think you deleted this in the header?",
+      "range": {
+        "startLine": 57,
+        "startChar": 31,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "9556552b8fa7f715bfaaf7a44eade1850adefee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
