@@ -70,6 +70,24 @@
       "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0548d9ff_2586da2d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-01T16:21:15Z",
+      "side": 1,
+      "message": "NO.. Hm.. the scenario doesn\u0027t make sense since s/w isr is always triggered when it has to set lower value than the current event.\n\nBut in my test, sometimes, I still see an extra interrupt just set the same value to comparator after s/w triggered interrupt.",
+      "parentUuid": "590488a1_f69a4749",
+      "revId": "e5c3aa2a087162d2d163108b701e46ac4d101921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
