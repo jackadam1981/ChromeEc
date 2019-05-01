@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "bf77caaa_3a2edc55",
+        "filename": "board/kip/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-01T23:53:23Z",
+      "side": 1,
+      "message": "Can you change i2c_param_whitelist to i2c_whitelist as well?",
+      "parentUuid": "22506297_bd3b42cf",
+      "range": {
+        "startLine": 230,
+        "startChar": 23,
+        "endLine": 230,
+        "endChar": 28
+      },
+      "revId": "304b6243c5ebd46bf6f930d4ea25345f196cbf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "993356db_9ca17302",
         "filename": "common/i2c.c",
         "patchSetId": 9
