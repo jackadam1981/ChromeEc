@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "820652c0_eeb9f8a7",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-01T17:50:21Z",
+      "side": 1,
+      "message": "Frankly, I don\u0027t think this is a good idea to require the user to specify the serial number of the Cr50, this script should be able to figure out the case when a single SuzyQ is connected, and should give SuzyQ priority over servod, we want to be able to test bare CCD without servo/servod involved, this is where our problems are.",
+      "parentUuid": "107b9b0d_2416cfc9",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "b2ffa9d9c40f585daf69aea11535278f78ed0ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3233b3a0_da8fe639",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 1
