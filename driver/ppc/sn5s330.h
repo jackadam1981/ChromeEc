@@ -165,4 +165,6 @@ extern const struct ppc_drv sn5s330_drv;
  */
 void sn5s330_interrupt(int port);
 
+__attribute__((weak)) int board_sn5s330_get_deglitch_time(int port);
+
 #endif /* defined(__CROS_EC_SN5S330_H) */

@@ -342,3 +342,13 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+/* Some type-c dongle (eg. Hub-type-c-promate-0001) can't be detect
+ * when system resume from S5. After modulating PPC parameter
+ * PP1_ILIM_DEGLITCH_0 from 200us to 1ms, Hub-type-c-promate-0001
+ * can be detect work normally. */
+int board_sn5s330_get_deglitch_time(int port)
+{
+	return (PPX_ILIM_DEGLITCH_0_US_200 << 3) |
+		PPX_ILIM_DEGLITCH_0_US_1000;
+}
