@@ -98,6 +98,8 @@
 #define CONFIG_ISH_D0I2_MIN_USEC        (15*MSEC)	/* need final tune */
 #define CONFIG_ISH_D0I3_MIN_USEC        (100*MSEC)	/* need final tune */
 
+#define LSM6DSM_INTERRUPT_GPIO_L GPIO_ACCEL_GYRO_INT_L
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

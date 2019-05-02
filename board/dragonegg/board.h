@@ -54,6 +54,8 @@
 #define GPIO_PCH_SLP_S3_L GPIO_SLP_S3_L
 #define GPIO_PCH_SLP_S4_L GPIO_SLP_S4_L
 
+#define LSM6DSM_INTERRUPT_GPIO_L GPIO_BASE_SIXAXIS_INT_L
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
