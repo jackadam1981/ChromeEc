@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35661bb2_e92550a0",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T21:24:07Z",
+      "side": 1,
+      "message": "set to 0 to generate an error if access by itself.",
+      "revId": "adc38ccc1e9b9e59b7a4bf76a4ced1e3735acdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b550d9_cc1d9098",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T21:24:07Z",
+      "side": 1,
+      "message": "set to 0, to indicate we should not use the sensor directly.",
+      "revId": "adc38ccc1e9b9e59b7a4bf76a4ced1e3735acdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eaddf35_d81d69e4",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T21:24:07Z",
+      "side": 1,
+      "message": "set to 0, to indicate we should not use the sensor directly.",
+      "revId": "adc38ccc1e9b9e59b7a4bf76a4ced1e3735acdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
