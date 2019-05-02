@@ -20,6 +20,17 @@
 #define CONFIG_LED_COMMON
 #define CONFIG_LED_ONOFF_STATES_BAT_LOW 10
 
+/*
+ * Prevent boot up with low batteries since jumping to RW on a locked system
+ * may cause the board to brown out
+ */
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT 15000
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC 2
+
+#undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15001
+
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
