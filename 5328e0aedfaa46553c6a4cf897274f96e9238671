@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e4e521a5_e76f0485",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T13:30:49Z",
+      "side": 1,
+      "message": "Did you add the \" \u0026\u0026 !debouncing[c]\" clause to fix a subtle bug? I don\u0027t see the subtle bug that it addresses, can you elaborate a little more in comments so someone doesn\u0027t accidentally remove it?\n\nI would think it is okay to continue on iff there is !diff, since the only code that would have gotten run is the debounce clearing code, which should be okay to run much later in the future (assuming we don\u0027t run out of scan_time slots).",
+      "range": {
+        "startLine": 478,
+        "startChar": 12,
+        "endLine": 478,
+        "endChar": 29
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b921ebec_47add9b1",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -13,6 +36,30 @@
       "writtenOn": "2019-05-01T16:46:14Z",
       "side": 1,
       "message": "We change this to\n\ni \u003c KEYBOARD_ROWS \u0026\u0026 debouncing[c]\n\nwith a comment that we can stop looping if there is nothing else to debounce.\n\nThen we can remove the early return condition on line 478 completely (and we are still very efficient) and the continue would occur at line 495.\n\nthoughts?",
+      "range": {
+        "startLine": 482,
+        "startChar": 14,
+        "endLine": 482,
+        "endChar": 31
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c151630_d8b61424",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T13:30:49Z",
+      "side": 1,
+      "message": "Another thought is:\n\nint deb_check \u003d debouncing[c]\nwhile (deb_check) {\n  i \u003d __fls(deb_check)\n  deb_check \u0026\u003d ~BIT(i);\n  if (time_until(scan_time[scan_edge_index[c][i]], tnow) \u003e\u003d\n\t\t\t    (state[c] ? keyscan_config.debounce_down_us :\n\t\t\t\t\tkeyscan_config.debounce_up_us))\n    debouncing[c] \u0026\u003d ~BIT(i);\n}\n\n\nwhich will only check the set bits. Since the set columns are spare this will skip unnecessary loop iterations.\n\nThis is really more of a subjective call; I\u0027ll let you decide. I just wanted to give you the __fls option and time_until method choices :)",
+      "parentUuid": "b921ebec_47add9b1",
       "range": {
         "startLine": 482,
         "startChar": 14,
