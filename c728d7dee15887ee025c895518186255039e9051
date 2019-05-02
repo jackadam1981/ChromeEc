@@ -69,6 +69,30 @@
       "revId": "c728d7dee15887ee025c895518186255039e9051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef96fefd_6f88b6e9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-05-02T09:46:16Z",
+      "side": 1,
+      "message": "After I repo sync, there is no problem.",
+      "parentUuid": "421c41dd_06c5dd67",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 1
+      },
+      "revId": "c728d7dee15887ee025c895518186255039e9051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
