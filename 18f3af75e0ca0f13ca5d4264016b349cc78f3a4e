@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a127d5fb_60b7d9dd",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-02T17:06:09Z",
+      "side": 1,
+      "message": "Instead of setting the wake mask, can we just assert and de-assert the wake line? Basically setting of wake mask and then setting the host event bit is achieving the same thing. In order to ensure that HANG_DETECT gets reported, you will have to add it to ALWAYS_REPORT mask.\n\nThat way, we don\u0027t have to set the wake mask in different places i.e. one on sleep state transition and over here.",
+      "range": {
+        "startLine": 274,
+        "startChar": 18,
+        "endLine": 276,
+        "endChar": 11
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
