@@ -22,6 +22,53 @@
       "revId": "c728d7dee15887ee025c895518186255039e9051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337cb20a_ef57cb8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-05-02T06:25:21Z",
+      "side": 1,
+      "message": "OK, thanks.",
+      "parentUuid": "62773a4a_2dbceb97",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "c728d7dee15887ee025c895518186255039e9051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421c41dd_06c5dd67",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-05-02T06:25:21Z",
+      "side": 1,
+      "message": "This is previous definition in usb_pd_tcpm.h line 70. Shall we remove?",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 1
+      },
+      "revId": "c728d7dee15887ee025c895518186255039e9051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

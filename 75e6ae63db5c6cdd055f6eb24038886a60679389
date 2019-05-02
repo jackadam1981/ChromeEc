@@ -46,6 +46,30 @@
       "revId": "75e6ae63db5c6cdd055f6eb24038886a60679389",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37cb6440_ca601f5f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-05-02T06:25:21Z",
+      "side": 1,
+      "message": "Yes~ it is complicated~\n\nAmpton test with apple adapter by patch set 12： 1~3 try.src cycle (plug in/out 6 times)\nEllisys test： Doing this test needs go to Hsinchu city,  I will go maybe on 5/6 and once test finished I will reply.\n \nThank you Jett.",
+      "parentUuid": "92f6db55_c7ebcf58",
+      "range": {
+        "startLine": 3033,
+        "startChar": 6,
+        "endLine": 3033,
+        "endChar": 49
+      },
+      "revId": "75e6ae63db5c6cdd055f6eb24038886a60679389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
