@@ -2655,6 +2655,8 @@ void pd_interrupt_handler_task(void *p)
 }
 #endif /* HAS_TASK_PD_INT_C0 || HAS_TASK_PD_INT_C1 || HAS_TASK_PD_INT_C2 */
 
+int rt946x_toggle_bc12_detection(void);
+
 void pd_task(void *u)
 {
 	int head;
@@ -3688,6 +3690,7 @@ void pd_task(void *u)
 			}
 
 			/* We are attached */
+			rt946x_toggle_bc12_detection();
 			pd[port].polarity = get_snk_polarity(cc1, cc2);
 			set_polarity(port, pd[port].polarity);
 			/* reset message ID  on connection */
