@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790405d5_ab209fbc",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T18:42:32Z",
+      "side": 1,
+      "message": "use a for loop, consider SPOOF_MODE.",
+      "revId": "7bcdca7da68011406ad5b25b21ebd6d326516215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743b5994_d243e472",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T18:42:32Z",
+      "side": 1,
+      "message": "use a loop.",
+      "revId": "7bcdca7da68011406ad5b25b21ebd6d326516215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
