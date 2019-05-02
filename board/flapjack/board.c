@@ -21,6 +21,7 @@
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
 #include "driver/temp_sensor/tmp432.h"
+#include "driver/wpc/p9221.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -46,7 +47,6 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
-#include "driver/wpc/p9221.h"
 
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -396,6 +396,15 @@ static void board_init(void)
 	board_setup_panel();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+#ifdef SECTION_IS_RW
+static void usb_pd_connect(void)
+{
+	p9221_notify_vbus_change(0);
+	rt946x_toggle_bc12_detection();
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
+#endif
 
 void board_config_pre_init(void)
 {
