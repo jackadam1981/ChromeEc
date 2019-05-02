@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c4115ad_380ce749",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T22:17:16Z",
+      "side": 1,
+      "message": "Unfortuantely IS_ENABLED silently fails for defines that are defined to a number :(\n\nI talked with Raul about this and he has some ideas to make it work, but as of now this will always take the else branch",
+      "range": {
+        "startLine": 438,
+        "startChar": 5,
+        "endLine": 438,
+        "endChar": 56
+      },
+      "revId": "4094972406d6111b0e683a26d85b05a5f003452a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5f6414_1712c24b",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T22:17:16Z",
+      "side": 1,
+      "message": "I think this was missed (or the tab below is weird)",
+      "range": {
+        "startLine": 591,
+        "startChar": 7,
+        "endLine": 591,
+        "endChar": 28
+      },
+      "revId": "4094972406d6111b0e683a26d85b05a5f003452a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce1c2e0_b424f97b",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T22:17:16Z",
+      "side": 1,
+      "message": "why can\u0027t we put all of this code from here down in an c file?\n\nI don\u0027t understand why we need it in a header file.",
+      "range": {
+        "startLine": 745,
+        "startChar": 20,
+        "endLine": 745,
+        "endChar": 43
+      },
+      "revId": "4094972406d6111b0e683a26d85b05a5f003452a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

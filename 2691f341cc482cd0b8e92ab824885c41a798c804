@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "efeb1854_7fcf3082",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T22:17:16Z",
+      "side": 1,
+      "message": "Can we pull out function from the \"old\" stack into another c file and both implementations can reference the same code",
+      "parentUuid": "786b48de_ffe04c30",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 46
+      },
+      "revId": "2691f341cc482cd0b8e92ab824885c41a798c804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29fb03ae_45704a4d",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 4
