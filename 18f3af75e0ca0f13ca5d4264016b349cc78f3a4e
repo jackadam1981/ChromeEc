@@ -22,6 +22,30 @@
       "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863b75b5_2d867207",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-05-02T17:34:37Z",
+      "side": 1,
+      "message": "I could assert the line, delay for some amount of time (how much?) and then deassert the line. \n\nBut is that really cleaner? By manipulating the wake masks, I don\u0027t have to make a tradeoff of hanging the EC for some empirical amount of time that guarantees the AP will see the interrupt. This also honors the wake mask for s0ix, if for some reason the AP wanted to mask the hang detect interrupt. It also reuses the appropriate infrastructure for waking the AP via events, so if somehow that mechanism changed in future boards, I\u0027m not tied to a GPIO here.",
+      "parentUuid": "a127d5fb_60b7d9dd",
+      "range": {
+        "startLine": 274,
+        "startChar": 18,
+        "endLine": 276,
+        "endChar": 11
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
