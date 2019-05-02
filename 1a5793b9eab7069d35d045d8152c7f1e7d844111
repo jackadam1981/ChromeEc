@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "708a3e29_43529a73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-05-02T08:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4443fe1e_0047a26f",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "1a5793b9eab7069d35d045d8152c7f1e7d844111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e9c0e07_a2e339a6",
         "filename": "board/kukui/board.c",
         "patchSetId": 21
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-02T08:32:08Z",
       "side": 1,
       "message": "You don\u0027t need to set GPIO_EN_* pins here?",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "1a5793b9eab7069d35d045d8152c7f1e7d844111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f9bc26_88caf0cb",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-05-02T08:46:57Z",
+      "side": 1,
+      "message": "No, board_set_active_charge_port() (line 250) handles the gpio change.",
+      "parentUuid": "8e9c0e07_a2e339a6",
       "range": {
         "startLine": 242,
         "startChar": 2,
