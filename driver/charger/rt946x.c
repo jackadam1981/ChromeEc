@@ -853,7 +853,7 @@ static void rt946x_init(void)
 	int reg = 0xFFFFFFFF;
 
 	/* Check device id */
-	if (charger_device_id(&reg) || reg != RT946X_VENDOR_ID) {
+	if (charger_device_id(&reg) || (reg != RT946X_VENDOR_ID && reg != 0xf0)) {
 		CPRINTF("RT946X incorrect ID: 0x%02x\n", reg);
 		return;
 	}
