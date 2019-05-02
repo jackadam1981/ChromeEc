@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b095400e_d2a54f39",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T18:05:26Z",
+      "side": 1,
+      "message": "Ah, it looks likes linker scripts don\u0027t check for overflow if you are using a computed LMA addresses instead of specifying a section. See https://github.com/rust-embedded/cortex-m-rt/issues/86\n\nIs it possible for us to use a named section instead? (I remember the journey to were we are now though wasn\u0027t easy)\n\nIf not, this change is fine with me.",
+      "parentUuid": "643e4d1f_65c3e3b2",
+      "range": {
+        "startLine": 380,
+        "startChar": 7,
+        "endLine": 380,
+        "endChar": 46
+      },
+      "revId": "ad00eb2562a795cd8d91464ba6798900e553a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b040db89_0a80dfc6",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
