@@ -50,13 +50,20 @@ static const struct {
 #endif
 };
 
+int chip_get_intc_group(int irq)
+{
+	return irq_groups[irq / 8].cpu_int[irq % 8];
+}
+
 int chip_enable_irq(int irq)
 {
 	int group = irq / 8;
 	int bit = irq % 8;
 
 	IT83XX_INTC_REG(irq_groups[group].ier_off) |= 1 << bit;
+#ifdef CHIP_CORE_NDS32
 	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(group)) |= 1 << bit;
+#endif
 
 	return irq_groups[group].cpu_int[bit];
 }
@@ -67,7 +74,9 @@ int chip_disable_irq(int irq)
 	int bit = irq % 8;
 
 	IT83XX_INTC_REG(irq_groups[group].ier_off) &= ~BIT(bit);
+#ifdef CHIP_CORE_NDS32
 	IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(group)) &= ~BIT(bit);
+#endif
 
 	return -1; /* we don't want to mask other IRQs */
 }
@@ -98,6 +107,8 @@ void chip_init_irqs(void)
 	/* Clear all IERx and EXT_IERx */
 	for (i = 0; i < ARRAY_SIZE(irq_groups); i++) {
 		IT83XX_INTC_REG(irq_groups[i].ier_off) = 0;
+#if defined(CHIP_CORE_NDS32)
 		IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(i)) = 0;
+#endif
 	}
 }
