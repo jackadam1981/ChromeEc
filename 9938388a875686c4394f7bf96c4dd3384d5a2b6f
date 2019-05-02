@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b5e780a_0d6b9327",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T15:10:17Z",
+      "side": 1,
+      "message": "I don\u0027t think we should clear any flags if going from X_DEBOUCE \u003d\u003e X.\n\nCan we make this change more general",
+      "range": {
+        "startLine": 747,
+        "startChar": 2,
+        "endLine": 749,
+        "endChar": 36
+      },
+      "revId": "9938388a875686c4394f7bf96c4dd3384d5a2b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
