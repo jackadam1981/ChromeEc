@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "90c044f5_cef5653f",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-05-02T17:36:42Z",
+      "side": 1,
+      "message": "fwiw, i don\u0027t see how hmac_drbg_generate_p256 can wind up doing non-word writes. It explicitly writes to the word members of p256_int. Is it due to the __packed attribute and a compiler that assumes worst case w/o analysis?\n\nThat packed attribute is ill-advised on that struct in general, I/O marshaling needs to be explicit imo. Why are we confident that cp8w won\u0027t feel like using the same byte copy at some point?",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 25
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2a3a95a_c01cb2ac",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d9072c0d_40329ead",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-05-02T17:36:42Z",
+      "side": 1,
+      "message": "Depending on the physical threat model, there are more things to do here: permuted order copying and verifying created signatures and verify the k indeed got transferred correctly etc.",
+      "parentUuid": "c2a3a95a_c01cb2ac",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 823,
+        "endChar": 20
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb2c60b8_70654089",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -36,6 +83,30 @@
       "writtenOn": "2019-05-02T09:09:32Z",
       "side": 1,
       "message": "Sorry for the basic question but does pEcc-\u003ernd need to have a value? Can we skip that assignment?",
+      "range": {
+        "startLine": 826,
+        "startChar": 13,
+        "endLine": 826,
+        "endChar": 27
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb16d1c_2151e45f",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-05-02T17:36:42Z",
+      "side": 1,
+      "message": "pEcc-\u003ernd is used to help blind the computation (but not otherwise affect the values)",
+      "parentUuid": "cb2c60b8_70654089",
       "range": {
         "startLine": 826,
         "startChar": 13,
