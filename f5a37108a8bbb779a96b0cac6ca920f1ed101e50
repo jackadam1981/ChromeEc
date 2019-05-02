@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f406d81e_ef167f74",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-02T16:55:59Z",
+      "side": 1,
+      "message": "I wonder if it would be more readable (and potentially used by other boards) if it were moved into a helper shell script? i.e., something like\n  $(shell ./create_env_config.sh $(ENV_VARS))\n\n(Not tested, so not entirely sure if it works)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f5a37108a8bbb779a96b0cac6ca920f1ed101e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
