@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c7e29fe6_954835c9",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-02T19:57:10Z",
+      "side": 1,
+      "message": "Agree, current version is better.",
+      "parentUuid": "8f511a66_d001c374",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f5a37108a8bbb779a96b0cac6ca920f1ed101e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c199e16_14bca661",
         "filename": "board/cr50/build.mk",
         "patchSetId": 6
