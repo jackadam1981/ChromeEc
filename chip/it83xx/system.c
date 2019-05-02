@@ -82,6 +82,7 @@ static void check_reset_cause(void)
 
 static void system_reset_cause_is_unknown(void)
 {
+#if defined(CHIP_CORE_NDS32)
 	/* No reset cause and not sysjump. */
 	if (!system_get_reset_flags() && !system_jumped_to_this_image())
 		/*
@@ -91,6 +92,8 @@ static void system_reset_cause_is_unknown(void)
 		 */
 		ccprintf("===Unknown reset! jump from %x or %x===\n",
 				ec_reset_lp - 4, ec_reset_lp - 2);
+#elif defined(CHIP_CORE_RISCV)
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, system_reset_cause_is_unknown, HOOK_PRIO_FIRST);
 
@@ -230,9 +233,14 @@ uint32_t system_get_scratchpad(void)
 	return value;
 }
 
-static uint16_t system_get_chip_id(void)
+static uint32_t system_get_chip_id(void)
 {
+#ifdef IT83XX_CHIP_ID_3BYTES
+	return (IT83XX_GCTRL_CHIPID1 << 16) | (IT83XX_GCTRL_CHIPID2 << 8) |
+		IT83XX_GCTRL_CHIPID3;
+#else
 	return (IT83XX_GCTRL_CHIPID1 << 8) | IT83XX_GCTRL_CHIPID2;
+#endif
 }
 
 static uint8_t system_get_chip_version(void)
@@ -255,16 +263,29 @@ const char *system_get_chip_vendor(void)
 
 const char *system_get_chip_name(void)
 {
+#ifdef IT83XX_CHIP_ID_3BYTES
+	static char buf[8];
+#else
 	static char buf[7];
-	uint16_t chip_id = system_get_chip_id();
+#endif
+	uint32_t chip_id = system_get_chip_id();
 
 	buf[0] = 'i';
 	buf[1] = 't';
+#ifdef IT83XX_CHIP_ID_3BYTES
+	buf[2] = to_hex((chip_id >> 16) & 0xf);
+	buf[3] = to_hex((chip_id >> 12) & 0xf);
+	buf[4] = to_hex((chip_id >> 8) & 0xf);
+	buf[5] = to_hex((chip_id >> 4) & 0xf);
+	buf[6] = to_hex(chip_id & 0xf);
+	buf[7] = '\0';
+#else
 	buf[2] = to_hex((chip_id >> 12) & 0xf);
 	buf[3] = to_hex((chip_id >> 8) & 0xf);
 	buf[4] = to_hex((chip_id >> 4) & 0xf);
 	buf[5] = to_hex(chip_id & 0xf);
 	buf[6] = '\0';
+#endif
 	return buf;
 }
 
@@ -323,6 +344,7 @@ BUILD_ASSERT(EC_VBNV_BLOCK_SIZE <= BRAM_NVCONTEXT_SIZE);
 
 uintptr_t system_get_fw_reset_vector(uintptr_t base)
 {
+#if defined(CHIP_CORE_NDS32)
 	uintptr_t reset_vector, num;
 
 	num = *(uintptr_t *)base;
@@ -331,4 +353,7 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base)
 	reset_vector = ((reset_vector & 0xffffff) << 1) + base;
 
 	return reset_vector;
+#elif defined(CHIP_CORE_RISCV)
+	return base;
+#endif
 }
