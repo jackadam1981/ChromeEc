@@ -199,7 +199,7 @@ function dut_control_get() {
 	fi
 
 	local ARGS DUT_GETVAL RETVAL
-	ARGS=( "${DUT_CONTROL_CMD[@]}" "$1" )
+	ARGS=( "${DUT_CONTROL_CMD[@]}" "-o" "$1" )
 	RETVAL=0
 	# || statement is attached to avoid an exit if error exit is enabled.
 	DUT_GETVAL=$( "${ARGS[@]}" ) || RETVAL="$?"
@@ -208,7 +208,7 @@ function dut_control_get() {
 		return "${RETVAL}"
 	fi
 	# Remove the shortest prefix ending ':'
-	echo "${DUT_GETVAL#*:}"
+	echo "${DUT_GETVAL}"
 }
 
 BOARD=${FLAGS_board}
@@ -513,10 +513,7 @@ cleanup() {
 		fi
 	fi
 
-	if [ -n "${save}" ]; then
-		info "Restoring servo settings..."
-		servo_restore "$save"
-	fi
+	servo_restore
 
 	if [ "${CHIP}" = "stm32" -o "${CHIP}" = "npcx_uut" ]; then
 		# Reconnect the EC-3PO interpreter to the UART.
@@ -617,8 +614,8 @@ function servo_ec_uart() {
 
 # Not every control is supported on every servo type.  Therefore, define which
 # controls are supported by each servo type.
-servo_v2_VARS=( "jtag_buf_on_flex_en" "jtag_buf_en" "cold_reset" "spi1_vref" )
-servo_micro_VARS=( "cold_reset" "spi1_vref" )
+servo_v2_VARS=( "jtag_buf_on_flex_en" "jtag_buf_en" "cold_reset" )
+servo_micro_VARS=( "cold_reset" )
 servo_v4_with_ccd_cr50_VARS=( "cold_reset" )
 # Flashing an STM32 over the UART requires modifying the UART properties along
 # with the boot mode pin.
@@ -634,13 +631,7 @@ fi
 if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
 	servo_v2_VARS+=( "prog_en" )
 fi
-if [ "${CHIP}" = "npcx_uut" ] ; then
-	servo_v4_with_ccd_cr50_VARS+=( "ccd_keepalive_en" )
-fi
-if [[ "${CHIP}" == "npcx_int_spi" ]]; then
-	servo_v2_VARS+=( "fw_up" )
-	servo_micro_VARS+=( "fw_up" )
-fi
+
 # Some servo boards use the same controls.
 servo_v3_VARS=( "${servo_v2_VARS[@]}" )
 servo_v4_with_servo_micro_VARS=( "${servo_micro_VARS[@]}" )
@@ -655,19 +646,32 @@ function servo_save() {
 	local SERVO_VARS_NAME
 	SERVO_VARS_NAME="${SERVO_TYPE}_VARS[@]"
 	if [[ -n "${!SERVO_VARS_NAME}" ]]; then
-		"${DUT_CONTROL_CMD[@]}" "${!SERVO_VARS_NAME}"
+		save=$( "${DUT_CONTROL_CMD[@]}" "${!SERVO_VARS_NAME}" )
 	fi
 }
 
 function servo_restore() {
-	echo "$1" | while read line
-	do
-		dut_control "$line"
-	done
+	if [ -n "${save}" ]; then
+		info "Restoring servo settings..."
+
+		echo "${save}" | while read line
+		do
+			dut_control "$line"
+		done
+	fi
 
 	if [[ "${SERVO_TYPE}" == "servo_v2" ]]; then
 		dut_control i2c_mux_en:off
 	fi
+}
+
+function servo_save_add() {
+	if [[ -n ${save} ]] ; then
+		# Add a newline
+		save+=$'\n'
+	fi
+
+	save+="$( "${DUT_CONTROL_CMD[@]}" "$@" )"
 }
 
 function claim_pty() {
@@ -785,20 +789,28 @@ function flash_flashrom() {
 
 		# If spi flash is in npcx's ec, enable gang programer mode
 		if [[ "${CHIP}" == "npcx_int_spi" ]]; then
+			servo_save_add "fw_up"
+
 			# Set GP_SEL# as low then start ec
 			dut_control fw_up:on
 			sleep 0.1
 			dut_control cold_reset:off
 		fi
 
+		servo_save_add "spi1_vref"
+		servo_save_add "spi1_buf_en"
+
 		# Turn on SPI1 interface on servo for SPI Flash Chip
 		dut_control spi1_vref:${SPI_VOLTAGE} spi1_buf_en:on
 		if [[ ! "${SERVO_TYPE}" =~ "servo_micro" ]]; then
 			# Servo micro doesn't support this control.
+			servo_save_add "spi1_buf_on_flex_en"
 			dut_control spi1_buf_on_flex_en:on
 		fi
 	else
 		if [[ "${CHIP}" == "npcx_int_spi" ]]; then
+			servo_save_add "fw_up"
+
 			# Set GP_SEL# as low then start ec
 			dut_control cold_reset:on
 			dut_control fw_up:on
@@ -885,23 +897,9 @@ function flash_flashrom() {
 		sudo timeout -k 10 -s 9 "${FLAGS_timeout}" \
 			${FLASHROM_CMDLINE} -v "${T}"
 	fi
+
 	[[ -f "${T}" ]] && rm "${T}"
-
-	# Set GP_SEL# as default to disable GP mode when ec reboots
-	if [[ "${CHIP}" == "npcx_int_spi" ]]; then
-		dut_control fw_up:off
-	fi
-
-	if  ! on_raiden || [[ "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
-		# Turn off SPI1 interface on servo
-		dut_control spi1_vref:off spi1_buf_en:off
-		if [[ ! "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
-			dut_control spi1_buf_on_flex_en:off
-		fi
-
-	else
-		[[ -f "${L}" ]] && rm "${L}"
-	fi
+	[[ -f "${L}" ]] && rm "${L}"
 }
 
 function flash_stm32() {
@@ -1230,6 +1228,7 @@ function flash_npcx_uut() {
 	claim_pty ${EC_UART}
 
 	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		servo_save_add ccd_keepalive_en
 		dut_control ccd_keepalive_en:on
 	fi
 
