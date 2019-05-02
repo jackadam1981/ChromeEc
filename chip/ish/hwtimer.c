@@ -187,6 +187,12 @@ uint32_t __hw_clock_event_get(void)
 
 void __hw_clock_event_clear(void)
 {
+	/*
+	 * we get timer event at every new clk_high.
+	 * so when there's no event, last_dealine should be
+	 * the last value within current clk_high.
+	 */
+	last_deadline = 0xFFFFFFFF;
 	wait_while_settling(HPET_T1_SETTLING);
 	HPET_TIMER_CONF_CAP(1) &= ~HPET_Tn_INT_ENB_CNF;
 }
