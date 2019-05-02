@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2a3a95a_c01cb2ac",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-02T09:09:32Z",
+      "side": 1,
+      "message": "I guess we could just skip this call and perform an assignment, since we can know the alignment of the source - added it for consistency / to avoid any further/future problems. \n\nThoughts?",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 823,
+        "endChar": 20
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2c60b8_70654089",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-02T09:09:32Z",
+      "side": 1,
+      "message": "Sorry for the basic question but does pEcc-\u003ernd need to have a value? Can we skip that assignment?",
+      "range": {
+        "startLine": 826,
+        "startChar": 13,
+        "endLine": 826,
+        "endChar": 27
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
