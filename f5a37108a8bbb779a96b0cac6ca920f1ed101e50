@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8f511a66_d001c374",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-02T19:52:53Z",
+      "side": 1,
+      "message": "I tried, this is what I got down to:\n\n$(shell \\\n  stage_file\u003d$$(printf \u0027%s\u0027 $(env_config).$$$$); \\\n  [ -d $(out) ] || mkdir -p $(out); \\\n  for env_flag in $(ENV_VARS); do \\\n    printf \"/* %s\u003d%s */\\n\" $${env_flag} $${$${env_flag}} \u003e\u003e $${stage_file}; \\\n  done; \\\n  cmp -s $${stage_file} $${env_config} \u0026\u0026 rm -f $${stage_file} || \\\n    mv $${stage_file} $${env_config})\n\n\nthere is a problem with this line though:\n\nprintf \"/* %s\u003d%s */\\n\" $${env_flag} $${$${env_flag}} \u003e\u003e $${stage_file};\n\nsince env_flag is not a make variable any more, its expansion is not working, and since default make shell is sh, as opposed to bash, indirection ${!var_name} is not working either.\n\nOn top of that the original code is shorter, because it is using more succinct foreach() instead of for(); do : done and does not need so many end of line escapes.",
+      "parentUuid": "b4111106_567faa33",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "f5a37108a8bbb779a96b0cac6ca920f1ed101e50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c199e16_14bca661",
         "filename": "board/cr50/build.mk",
         "patchSetId": 6
