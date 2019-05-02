@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "45b459a8_2767f890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "rt946x",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fa0f153_bdc293a4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "High parasitic capacitance of D+ wire, may increase rising time of D+ when BC1.2 detection interval, Data contact detect debounce time is too short. (Spec is min 10ms.)",
       "parentUuid": "5fa0f153_bdc293a4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ea5366_c063ad6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "Where is the bug? Can you file one if it doesn\u0027t exist?",
+      "parentUuid": "f54565b3_452414ac",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -89,6 +136,260 @@
         "startChar": 6,
         "endLine": 12,
         "endChar": 15
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533feb7b_53650802",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "What do you mean? We need a correct bug.",
+      "parentUuid": "547dbf21_30f9d28e",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cbff2d8_484cf602",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "Please name it",
+      "range": {
+        "startLine": 844,
+        "startChar": 67,
+        "endLine": 844,
+        "endChar": 71
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c9596e_8220109c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "How about rt946x_toggle_bc12_detection?",
+      "range": {
+        "startLine": 918,
+        "startChar": 4,
+        "endLine": 918,
+        "endChar": 29
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e494e007_04a04bb2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 932,
+        "startChar": 33,
+        "endLine": 932,
+        "endChar": 45
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ba4d41_7c4a0932",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "msleep(10)",
+      "range": {
+        "startLine": 940,
+        "startChar": 2,
+        "endLine": 940,
+        "endChar": 17
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c92d8248_70e832bd",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "Can you add comment on this repetition? Why do you need to repeat it?",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 941,
+        "endChar": 35
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cea5a0_a215426b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "msleep(40)",
+      "range": {
+        "startLine": 943,
+        "startChar": 3,
+        "endLine": 943,
+        "endChar": 17
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68aa0167_468b8432",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "Is this necessary? Can you print it only for debugging?",
+      "range": {
+        "startLine": 976,
+        "startChar": 2,
+        "endLine": 976,
+        "endChar": 35
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef67971c_47a9cffc",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "Why did you change this?",
+      "range": {
+        "startLine": 984,
+        "startChar": 3,
+        "endLine": 984,
+        "endChar": 57
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ae7f2e_80f93971",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "no error check?",
+      "range": {
+        "startLine": 986,
+        "startChar": 4,
+        "endLine": 986,
+        "endChar": 26
+      },
+      "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b32bfa_f54dd73c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-02T17:04:23Z",
+      "side": 1,
+      "message": "Why did you change this (location, wording, __func__)?",
+      "range": {
+        "startLine": 1012,
+        "startChar": 3,
+        "endLine": 1012,
+        "endChar": 42
       },
       "revId": "e99ebffdf8d6d10d318f9a27a80573b5070e2f06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
