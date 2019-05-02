@@ -22,6 +22,30 @@
       "revId": "de87487a4c9341a935d78bbfd507bfe7decead76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b7142c8_3486144e",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-05-02T22:54:00Z",
+      "side": 1,
+      "message": "Yes, we would still need to keep the short/ez model.",
+      "parentUuid": "bc99aa57_1359f17c",
+      "range": {
+        "startLine": 522,
+        "startChar": 1,
+        "endLine": 522,
+        "endChar": 27
+      },
+      "revId": "de87487a4c9341a935d78bbfd507bfe7decead76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
