@@ -846,6 +846,16 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
  * TMPF=$(mktemp)
  * ascii-xfr -rdv ${TMPF}
  * display ${TMPF}
+ *
+ * Alternative (if you're using screen as your terminal):
+ *
+ * Install ascii-xfr: sudo apt-get install minicom
+ *
+ * Add the following to your $(HOME)/.screenrc:
+ *
+ * zmodem catch
+ * zmodem recvcmd '!!! bash -c "ascii-xfr -rdv /tmp/finger.pgm && display /tmp/finger.pgm"'
+ *
  */
 static void upload_pgm_image(uint8_t *frame)
 {
@@ -854,7 +864,7 @@ static void upload_pgm_image(uint8_t *frame)
 
 	/* fake Z-modem ZRQINIT signature */
 	ccprintf("#IGNORE for ZModem\r**\030B00");
-	msleep(100); /* let the download program start */
+	msleep(2000); /* let the download program start */
 	/* Print 8-bpp PGM ASCII header */
 	ccprintf("P2\n%d %d\n255\n", FP_SENSOR_RES_X, FP_SENSOR_RES_Y);
 
