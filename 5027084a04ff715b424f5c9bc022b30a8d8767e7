@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9d29a34_052e20e3",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T21:42:33Z",
+      "side": 1,
+      "message": "I don\u0027t know if these should be CONFIG_ proper since they really only apply to minute-ia cores\nwhere as the other configs in the file do seems to have broader means\n\n(also where ever we define the AON, we should spell out AON as Always-ON)\n\nWe should probably make these non CONFIG_ defines in registers.h for core/minute-ia",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "5027084a04ff715b424f5c9bc022b30a8d8767e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552eb97f_a26f166f",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2769,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T21:42:33Z",
+      "side": 1,
+      "message": "let\u0027s add a comment here saying that these will be auto defined if left undefined in chip and board configs (and specify their default values here too)",
+      "range": {
+        "startLine": 2766,
+        "startChar": 0,
+        "endLine": 2769,
+        "endChar": 33
+      },
+      "revId": "5027084a04ff715b424f5c9bc022b30a8d8767e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0236e0_a4d47396",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4050,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T21:42:33Z",
+      "side": 1,
+      "message": "nit: doesn\u0027t need ()",
+      "range": {
+        "startLine": 4050,
+        "startChar": 29,
+        "endLine": 4050,
+        "endChar": 32
+      },
+      "revId": "5027084a04ff715b424f5c9bc022b30a8d8767e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
