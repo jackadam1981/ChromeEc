@@ -15,6 +15,7 @@
 #include "hwtimer.h"
 #include "mag_cal.h"
 #include "math_util.h"
+#include "queue.h"
 #include "task.h"
 #include "timer.h"
 
@@ -24,6 +25,14 @@
 
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
+
+/**
+ * A queue for holding data from the FIFO as we read it. This will be used to
+ * spread the timestamps if more than one entry is available.
+ */
+static struct queue data_queue = QUEUE_NULL(256,
+		struct ec_response_motion_sensor_data);
+
 #endif
 
 /**
@@ -248,7 +257,7 @@ static int fifo_next(struct lsm6dsm_data *private)
  * push_fifo_data - Scan data pattern and push upside
  */
 static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
-			   uint16_t flen, uint32_t int_ts)
+			   uint16_t flen, int *sample_count)
 {
 	struct motion_sensor_t *s;
 	struct lsm6dsm_data *private = LSM6DSM_GET_DATA(accel);
@@ -298,7 +307,8 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 
 			vect.flags = 0;
 			vect.sensor_num = s - motion_sensors;
-			motion_sense_fifo_add_data(&vect, s, 3, int_ts);
+			queue_add_unit(&data_queue, &vect);
+			sample_count[vect.sensor_num]++;
 		}
 
 		fifo += OUT_XYZ_SIZE;
@@ -306,11 +316,24 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 	}
 }
 
-static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
+static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts,
+		     uint32_t *last_fifo_read_ts)
 {
-	uint32_t int_ts = last_interrupt_timestamp;
-	int err, left, length;
+	uint32_t int_ts[SENSOR_COUNT];
+	uint32_t fifo_read_start = *last_fifo_read_ts;
+	int sample_rate[SENSOR_COUNT];
+	int sample_count[SENSOR_COUNT];
+	int err, left, length, i, count;
 	uint8_t fifo[FIFO_READ_LEN];
+	struct ec_response_motion_sensor_data data;
+
+	/* Initialize timestamps, sample rates, and sample counts. */
+	int_ts[0] = last_interrupt_timestamp;
+	for (i = 0; i < SENSOR_COUNT; i++) {
+		int_ts[i] = int_ts[0];
+		sample_rate[i] = -1;
+		sample_count[i] = 0;
+	}
 
 	/*
 	 * DIFF[11:0] are number of unread uint16 in FIFO
@@ -338,6 +361,7 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 		err = st_raw_read_n_noinc(s->port, s->addr,
 					  LSM6DSM_FIFO_DATA_ADDR,
 					  fifo, length);
+		*last_fifo_read_ts = __hw_clock_source_read();
 		if (err != EC_SUCCESS)
 			return err;
 
@@ -348,24 +372,66 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 		 * where we empty the FIFO, and a new IRQ comes in between
 		 * reading the last sample and pushing it into the FIFO.
 		 */
-		push_fifo_data(s, fifo, length, int_ts);
+		push_fifo_data(s, fifo, length, sample_count);
 		left -= length;
 	} while (left > 0);
 
+	/* Compute the window length (ns) between the interrupt and the read. */
+	length = time_until(int_ts[0], fifo_read_start);
+	/* Get the event count. */
+	left = count = queue_count(&data_queue);
+
+	/*
+	 * Compute the sample rates based on the window length and sample count.
+	 */
+	for (i = 0; i < SENSOR_COUNT; i++) {
+		sample_rate[i] = sample_count[i] ? length / sample_count[i] : 0;
+		if (sample_rate[i]) {
+			int odr = motion_sensors[i].drv->get_data_rate(
+					motion_sensors + i);
+			odr = odr <= 0 ? 0 : SECOND * 1000 / odr;
+			if (odr && odr < sample_rate[i])
+				sample_rate[i] = odr;
+		}
+	}
+
+	/*
+	 * Spread timestamps if we have more than one reading for a given
+	 * sensor.
+	 */
+	while (left > 0) {
+		left--;
+		queue_remove_unit(&data_queue, &data);
+		motion_sense_fifo_add_data(&data,
+				&motion_sensors[data.sensor_num], 3,
+				int_ts[data.sensor_num]);
+		int_ts[data.sensor_num] += sample_rate[data.sensor_num];
+	}
+
 	return EC_SUCCESS;
 }
+
 #endif /* CONFIG_ACCEL_FIFO */
+
+static void handle_interrupt_for_fifo(uint32_t ts)
+{
+#ifdef CONFIG_ACCEL_FIFO
+	last_interrupt_timestamp = ts;
+#endif
+	task_set_event(TASK_ID_MOTIONSENSE,
+		       CONFIG_ACCEL_LSM6DSM_INT_EVENT, 0);
+}
 
 /**
  * lsm6dsm_interrupt - interrupt from int1/2 pin of sensor
  */
 void lsm6dsm_interrupt(enum gpio_signal signal)
 {
+	uint32_t ts;
 #ifdef CONFIG_ACCEL_FIFO
-	last_interrupt_timestamp = __hw_clock_source_read();
+	ts = __hw_clock_source_read();
 #endif
-	task_set_event(TASK_ID_MOTIONSENSE,
-		       CONFIG_ACCEL_LSM6DSM_INT_EVENT, 0);
+	handle_interrupt_for_fifo(ts);
 }
 
 /**
@@ -382,10 +448,12 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 #ifdef CONFIG_ACCEL_FIFO
 	{
 		struct fstatus fsts;
+		uint32_t last_fifo_read_ts;
 		/* Read how many data pattern on FIFO to read and pattern. */
 		ret = st_raw_read_n_noinc(s->port, s->addr,
 				LSM6DSM_FIFO_STS1_ADDR,
 				(uint8_t *)&fsts, sizeof(fsts));
+		last_fifo_read_ts = __hw_clock_source_read();
 		if (ret != EC_SUCCESS)
 			return ret;
 		if (fsts.len & (LSM6DSM_FIFO_DATA_OVR | LSM6DSM_FIFO_FULL)) {
@@ -393,7 +461,17 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 				s->name, fsts.len);
 		}
 		if (!(fsts.len & LSM6DSM_FIFO_EMPTY))
-			ret = load_fifo(s, &fsts);
+			ret = load_fifo(s, &fsts, &last_fifo_read_ts);
+
+		if (!gpio_get_level(GPIO_ACCEL_GYRO_INT_L)) {
+			/*
+			 * Interrupt signal is low, this means there's still
+			 * data and we should have gotten an interrupt. In the
+			 * long term it might be better to use the last spread
+			 * timestamp instead.
+			 */
+			handle_interrupt_for_fifo(last_fifo_read_ts);
+		}
 	}
 #endif
 	return ret;
