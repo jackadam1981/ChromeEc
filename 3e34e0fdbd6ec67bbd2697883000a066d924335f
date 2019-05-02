@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af9c494d_7dbe5d70",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:22:15Z",
+      "side": 1,
+      "message": "I wanted to make it a fixed size so that we could have a predictable memory map. What do you think of a BUILD_ASSERT that ensures:\n\n    CONFIG_PANIC_DATA_SIZE \u003e\u003d sizeof(struct panic_data)\n\n?",
+      "parentUuid": "f3b30dde_cc01867a",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "3e34e0fdbd6ec67bbd2697883000a066d924335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43e1b8a0_379a3564",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8cac1fc8_cd65e063",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:22:15Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "43e1b8a0_379a3564",
+      "range": {
+        "startLine": 2604,
+        "startChar": 3,
+        "endLine": 2604,
+        "endChar": 44
+      },
+      "revId": "3e34e0fdbd6ec67bbd2697883000a066d924335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f3348d9_c1f61134",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-02T21:38:24Z",
       "side": 1,
       "message": "should this be defined first and then CONFIG_PANIC_DATA_BASE uses this macro in its definition?",
+      "range": {
+        "startLine": 4074,
+        "startChar": 0,
+        "endLine": 4076,
+        "endChar": 6
+      },
+      "revId": "3e34e0fdbd6ec67bbd2697883000a066d924335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83b5349_2905bbec",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4076,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:22:15Z",
+      "side": 1,
+      "message": "Makes sense to me, I\u0027ll flip it around.",
+      "parentUuid": "7f3348d9_c1f61134",
       "range": {
         "startLine": 4074,
         "startChar": 0,
