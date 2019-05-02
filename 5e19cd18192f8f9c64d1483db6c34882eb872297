@@ -22,6 +22,30 @@
       "revId": "5e19cd18192f8f9c64d1483db6c34882eb872297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d88238_1ba3141e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-02T21:47:02Z",
+      "side": 1,
+      "message": "Done. I had realized that it was only under the SRC_DISCONNECTED state, so I wanted it to be consistent with the SNK_DISCONNECTED state as well.",
+      "parentUuid": "96ed6187_f5a3fcba",
+      "range": {
+        "startLine": 697,
+        "startChar": 2,
+        "endLine": 699,
+        "endChar": 56
+      },
+      "revId": "5e19cd18192f8f9c64d1483db6c34882eb872297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
