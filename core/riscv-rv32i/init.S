@@ -1,0 +1,343 @@
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * RISC-V CPU initialization
+ */
+
+#include "config.h"
+
+.macro vector name
+.set \name\()_handler, unhandled_ec_irq
+.weak \name\()_handler
+j __entry_\()\name
+.pushsection .text.vectirq
+.global __entry_\()\name
+__entry_\()\name:
+        j \name\()_handler
+.popsection
+.pushsection .rodata.vecthandlers
+.long \name\()_handler
+.popsection
+.endm
+
+.section .text.vecttable
+.align 2
+__startup:
+        j __reset       /* reset */
+__irq:
+        j __irq_isr     /* interrupts / exceptions */
+
+/* E-flash signature */
+.org 0x80
+.balign 16
+.global eflash_sig
+eflash_sig:
+.byte 0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5
+#ifdef CONFIG_HOSTCMD_ESPI
+.byte 0xA4 /* eSPI */
+#else
+.byte 0xA5 /* LPC */
+#endif
+.byte 0xB4 /* flag of signature */
+.byte 0x85, 0x12, 0x5A, 0x5A, 0xAA, 0xAA, 0x55, 0x55
+/* flags: internal oscillator + implicit location */
+
+/* Exceptions vector */
+.align 2
+/* The interrupt bit of mcause is 1 */
+__interrupt_vector:             /* Exception Code */
+        j unhandled_interrupt   /* 0: User software interrupt */
+        j unhandled_interrupt   /* 1: Supervisor software interrupt */
+        j unhandled_interrupt   /* 2: Hypervisor software interrupt */
+        j unhandled_interrupt   /* 3: Machine software interrupt */
+        j unhandled_interrupt   /* 4: User timer interrupt */
+        j unhandled_interrupt   /* 5: Supervisor timer interrupt */
+        j unhandled_interrupt   /* 6: Hypervisor timer interrupt */
+        j unhandled_interrupt   /* 7: Machine timer interrupt */
+        j unhandled_interrupt   /* 8: User external interrupt */
+        j unhandled_interrupt   /* 9: Supervisor external interrupt */
+        j unhandled_interrupt   /* 10: Hypervisor external interrupt */
+        j m_ext_interrupt       /* 11: Machine external interrupt */
+        j unhandled_interrupt   /* 12: Reserved */
+        j unhandled_interrupt   /* 13: Reserved */
+        j unhandled_interrupt   /* 14: Reserved */
+        j unhandled_interrupt   /* 15: Reserved */
+
+.align 2
+/* The interrupt bit of mcause is 0 */
+__exceptoin_vector:     /* Exception Code */
+        j excep_handler /* 0: Instruction address misaligned */
+        j excep_handler /* 1: Instruction access fault */
+        j excep_handler /* 2: Illegal instruction */
+        j excep_handler /* 3: Breakpoint */
+        j excep_handler /* 4: Load address misaligned */
+        j excep_handler /* 5: Load access fault */
+        j excep_handler /* 6: Store/AMO address misaligned */
+        j excep_handler /* 7: Store/AMO access fault */
+        j excep_handler /* 8: Environment call from U-mode */
+        j excep_handler /* 9: Environment call from S-mode */
+        j excep_handler /* 10: Environment call from H-mode */
+        j m_ecall       /* 11: Environment call from M-mode */
+        j excep_handler /* 12: Reserved */
+        j excep_handler /* 13: Reserved */
+        j excep_handler /* 14: Reserved */
+        j excep_handler /* 15: Reserved */
+
+.align 2
+__ec_intc:
+        vector irq_0    /* INT GROUP  0 */
+        vector irq_1    /* INT GROUP  1 */
+        vector irq_2    /* INT GROUP  2 */
+        vector irq_3    /* INT GROUP  3 */
+        vector irq_4    /* INT GROUP  4 */
+        vector irq_5    /* INT GROUP  5 */
+        vector irq_6    /* INT GROUP  6 */
+        vector irq_7    /* INT GROUP  7 */
+        vector irq_8    /* INT GROUP  8 */
+        vector irq_9    /* INT GROUP  9 */
+        vector irq_10   /* INT GROUP 10 */
+        vector irq_11   /* INT GROUP 11 */
+        vector irq_12   /* INT GROUP 12 */
+        vector irq_13   /* INT GROUP 13 */
+        vector irq_14   /* INT GROUP 14 */
+        vector irq_15   /* INT GROUP 15 */
+        vector syscall  /* system call (emulate INT GROUP 16) */
+
+.align 2
+m_ecall:
+m_ext_interrupt:
+        /* save return address */
+        addi sp,sp,-4
+        sw ra,0(sp)
+        jal start_irq_handler
+        /* EC ISR */
+        la t0, ec_int_group
+        lw t1, 0(t0)
+        slli t1, t1, 2
+        la t0, __ec_intc
+        add t0, t0, t1
+        jalr t0
+        /* restore return address */
+        lw ra,0(sp)
+        addi sp,sp,4
+        ret
+
+.align 2
+__irq_isr:
+        /* save t2 to scratch register */
+        csrw mscratch, t2
+        la t2, original_regs
+        sw sp, 0*4(t2)
+        sw ra, 1*4(t2)
+        sw t0, 2*4(t2)
+        sw t1, 3*4(t2)
+        /*restore t2 */
+        csrr t2, mscratch
+        /* save ra, a0-7, t0-t6 */
+        sw t6, -16*4(sp)
+        sw t5, -15*4(sp)
+        sw t4, -14*4(sp)
+        sw t3, -13*4(sp)
+        sw t2, -12*4(sp)
+        sw t1, -11*4(sp)
+        sw t0, -10*4(sp)
+        sw a7, -9*4(sp)
+        sw a6, -8*4(sp)
+        sw a5, -7*4(sp)
+        sw a4, -6*4(sp)
+        sw a3, -5*4(sp)
+        sw a2, -4*4(sp)
+        sw a1, -3*4(sp)
+        sw a0, -2*4(sp)
+        sw ra, -1*4(sp)
+        addi sp, sp, -16*4
+        /* save sp to scratch register */
+        csrw mscratch, sp
+
+        la t0, stack_end
+        bltu sp, t0, __no_adjust_sp
+        mv sp, t0
+__no_adjust_sp:
+        csrr t0, mcause
+        andi t1, t0, 0x1f
+        slli t1, t1, 2
+        bgez t0, __exceptoin_trap
+        la t0, __interrupt_vector
+        j __interrupt_trap
+__exceptoin_trap:
+        la t0, __exceptoin_vector
+__interrupt_trap:
+        add t0, t0, t1
+        jalr t0
+        /* check whether we need to change the scheduled task */
+        la t0, need_resched
+        lw t1, 0(t0)
+        bnez t1, __switch_task
+.global __isr_ret
+__isr_ret:
+        jal end_irq_handler
+        /* restore sp from scratch register */
+        csrr sp, mscratch
+        /* restore ra, a0-7, t0-t6 */
+        addi sp, sp, 16*4
+        lw t6, -16*4(sp)
+        lw t5, -15*4(sp)
+        lw t4, -14*4(sp)
+        lw t3, -13*4(sp)
+        lw t2, -12*4(sp)
+        lw t1, -11*4(sp)
+        lw t0, -10*4(sp)
+        lw a7, -9*4(sp)
+        lw a6, -8*4(sp)
+        lw a5, -7*4(sp)
+        lw a4, -6*4(sp)
+        lw a3, -5*4(sp)
+        lw a2, -4*4(sp)
+        lw a1, -3*4(sp)
+        lw a0, -2*4(sp)
+        lw ra, -1*4(sp)
+        mret
+
+.text
+.global __reset
+__reset:
+        /* disable interrupts */
+        csrw mie, zero
+        csrw mstatus, zero
+        /* Clear the link register */
+        li ra, 0
+        /* Clear the thread pointer register */
+        li tp, 0
+        /* GP register is used to access .data and .bss */
+        la gp, __bss_start
+        /* Set system stack pointer. */
+        la sp, stack_end
+        /* set machine trap-handler base address */
+        la t0, __irq
+        csrw mtvec, t0
+        /* reset scratch register */
+        csrw mscratch, zero
+        /* The M-mode handles interrupt/exception */
+        csrwi mideleg, 0
+        csrwi medeleg, 0
+        /* Clear BSS */
+        la t0, __bss_start
+        la t1, __bss_end
+bss_loop:
+        sw zero, 0(t0)
+        addi t0, t0, 4
+        bltu t0, t1, bss_loop
+        /* Copy initialized data to data section */
+        la t0, __data_start
+        la t1, __data_end
+        la t2, __data_lma_start
+data_loop:
+        lw t3, 0(t2)
+        sw t3, 0(t0)
+        addi t0, t0, 4
+        addi t2, t2, 4
+        bltu t0, t1, data_loop
+        /* clear BRAM if it is not valid */
+        jal chip_bram_valid
+        /* Jump to C routine */
+        jal main
+        /* That should not return.  If it does, loop forever. */
+        j .
+
+.global unhandled_ec_irq
+.global unhandled_interrupt
+unhandled_ec_irq:
+        li tp, 0xBAD1
+        j __unhandled_irq
+unhandled_interrupt:
+        li tp, 0xBAD0
+__unhandled_irq:
+        slli tp, tp, 8
+        csrr t0, mcause
+        add tp, tp, t0
+        j excep_handler /* display exception with TP 80bad[0|1]<irq> */
+
+.global excep_handler
+excep_handler:
+        csrw mscratch, t2
+        la t2, original_regs
+        lw sp, 0*4(t2)
+        lw ra, 1*4(t2)
+        lw t0, 2*4(t2)
+        lw t1, 3*4(t2)
+        csrr t2, mscratch
+        /* save sp to scratch register */
+        csrw mscratch, sp
+        la sp, saved_regs
+        sw s11, 0*4(sp)
+        sw s10, 1*4(sp)
+        sw s9, 2*4(sp)
+        sw s8, 3*4(sp)
+        sw s7, 4*4(sp)
+        sw s6, 5*4(sp)
+        sw s5, 6*4(sp)
+        sw s4, 7*4(sp)
+        sw s3, 8*4(sp)
+        sw s2, 9*4(sp)
+        sw s1, 10*4(sp)
+        sw s0, 11*4(sp)
+
+        sw t6, 12*4(sp)
+        sw t5, 13*4(sp)
+        sw t4, 14*4(sp)
+        sw t3, 15*4(sp)
+        sw t2, 16*4(sp)
+        sw t1, 17*4(sp)
+        sw t0, 18*4(sp)
+        sw a7, 19*4(sp)
+        sw a6, 20*4(sp)
+        sw a5, 21*4(sp)
+        sw a4, 22*4(sp)
+        sw a3, 23*4(sp)
+        sw a2, 24*4(sp)
+        sw a1, 25*4(sp)
+        sw a0, 26*4(sp)
+        sw tp, 27*4(sp)
+        sw gp, 28*4(sp)
+        sw ra, 29*4(sp)
+        la a0, saved_regs
+        csrr sp, mscratch
+        sw sp, 30*4(a0)
+        /* put a sane stack pointer */
+	la sp, stack_end
+	/* jump to panic dump C routine */
+	jal report_panic
+        j .
+
+.align 2
+_bss_start:
+.long __bss_start
+_bss_end:
+.long __bss_end
+_data_start:
+.long __data_start
+_data_end:
+.long __data_end
+_data_lma_start:
+.long __data_lma_start
+
+/* Reserve space for system stack */
+.section .bss.system_stack
+stack_start:
+.space CONFIG_STACK_SIZE, 0
+stack_end:
+.global stack_end
+
+/* sp, ra, t0, t1 registers state at isr entry */
+.global original_regs
+original_regs:
+.long 0, 0, 0, 0
+
+/* registers state at exception entry */
+.global saved_regs
+saved_regs:
+.long 0, 0, 0, 0, 0, 0, 0, 0
+.long 0, 0, 0, 0, 0, 0, 0, 0
+.long 0, 0, 0, 0, 0, 0, 0, 0
+.long 0, 0, 0, 0, 0, 0, 0, 0
