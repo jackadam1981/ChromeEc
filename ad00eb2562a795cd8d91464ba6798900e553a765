@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "643e4d1f_65c3e3b2",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-02T05:23:39Z",
+      "side": 1,
+      "message": "yeah, I am also surprised by this behavior.  I have an example CL to reproduce this error: https://crrev.com/c/1592972.\n\nPost the commit description here:\n\n-------------------------------------------------------------------------\n\nBuild with: make BOARD\u003dkukui_scp -j\n\nThis CL sets:\n\n  IROM at 0x0 ~ 0x7000\n  IRAM at 0x7000 ~\n\nand have a big array for data object.\n\nand from build/kukui_scp/RW/ec.RW.smap, we have:\n\n  00006c68 R __data_lma_start # IROM\n  00007000 B __bss_start      # IRAM start\n\n  0000a3e0 D __data_start     # .data VMA start\n  0000b530 D __data_end       # .data VMA end\n\nwhere __data_end - __data_start \u003d 0x1150\n\nIn theory, the .data LMA will be placed at 0x6c68 ~ 0x7db8 (0x1150),\nand this will be overlapping with IRAM section, so ld should fail in\nthis case.\nHowever, it doesn\u0027t.",
+      "parentUuid": "6ad94534_e617b465",
+      "range": {
+        "startLine": 380,
+        "startChar": 7,
+        "endLine": 380,
+        "endChar": 46
+      },
+      "revId": "ad00eb2562a795cd8d91464ba6798900e553a765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b040db89_0a80dfc6",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
