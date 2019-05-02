@@ -28,6 +28,7 @@
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power_button.h"
 #include "power.h"
@@ -456,6 +457,30 @@ void board_hibernate(void)
 		;
 }
 
+static int board_has_host_int(void)
+{
+#if 1 /* %%% */
+	return 1;
+#else
+	return system_get_board_version() >= ATLAS_REV_HAS_HOST_INT;
+#endif
+}
+
+void mkbp_set_host_active(int active)
+{
+	if (board_has_host_int())
+		mkbp_set_host_active_via_gpio(active);
+
+	/*
+	 * Always send the host event for compatibility.
+	 * Newer AP firmware is configured
+	 * to not actually trigger an SCI on MKBP events. This means that
+	 * the EC can send host event notifications without concern for the
+	 * board version and expect the right thing to happen.
+	 */
+	mkbp_set_host_active_via_event(active);
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -465,6 +490,14 @@ static void board_init(void)
 		CPRINTS("Applying EC_WP_L workaround");
 		dflags = gpio_get_default_flags(GPIO_EC_WP_L);
 		gpio_set_flags(GPIO_EC_WP_L, dflags | GPIO_PULL_UP);
+	}
+	if (board_has_host_int()) {
+		/* EC to AP interrupt */
+		gpio_set_flags(GPIO_EC_GPIO95, GPIO_ODR_HIGH | GPIO_PULL_UP);
+	} else {
+		CPRINTS("No EC_INT_L on this board");
+		/* NC */
+		gpio_set_flags(GPIO_EC_GPIO95, GPIO_INPUT | GPIO_PULL_UP);
 	}
 
 	/* Provide AC status to the PCH */

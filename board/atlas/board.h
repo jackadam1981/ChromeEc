@@ -109,7 +109,6 @@
 
 /* Sensor */
 #define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define ALS_COUNT 1
@@ -275,10 +274,12 @@ void board_reset_pd_mcu(void);
 #define GPIO_USB_C1_5V_EN	GPIO_EN_USB_C1_5V_OUT
 #define GPIO_USB_C1_PD_RST_L	GPIO_USB_PD_RST_L
 #define GPIO_WP_L		GPIO_EC_WP_L
+#define GPIO_EC_INT_L		GPIO_EC_GPIO95
 
 /* ps8751 requires 1ms reset down assertion */
 #define PS8XXX_RST_L_RST_H_DELAY_MS	1
 
 #define ATLAS_REV_FIXED_EC_WP	4
+#define ATLAS_REV_HAS_HOST_INT	6
 
 #endif /* __CROS_EC_BOARD_H */
