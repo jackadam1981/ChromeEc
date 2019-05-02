@@ -76,7 +76,7 @@ enum tcs3400_mode {
 
 /* Min and Max sampling frequency in mHz */
 #define TCS3400_LIGHT_MIN_FREQ              149
-#define TCS3400_LIGHT_MAX_FREQ              10000
+#define TCS3400_LIGHT_MAX_FREQ              1000
 #if (CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ <= TCS3400_LIGHT_MAX_FREQ)
 #error "EC too slow for light sensor"
 #endif

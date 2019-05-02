@@ -38,10 +38,9 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	int data;
 
 	/* Enable the ADC to start cycle */
-	mutex_lock(s->mutex);
 	ret = tcs3400_i2c_read8(s, TCS_I2C_ENABLE, &data);
 	if (ret)
-		goto unlock;
+		return ret;
 
 	/* mask value to assure writing 0 to reserved bits */
 	data = (data & ~TCS_I2C_ENABLE_MASK) | TCS3400_MODE_COLLECTING;
@@ -56,8 +55,6 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	if (ret == EC_SUCCESS)
 		ret = EC_RES_IN_PROGRESS;
 
-unlock:
-	mutex_unlock(s->mutex);
 	return ret;
 }
 
@@ -201,15 +198,14 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if (!(*event & CONFIG_ALS_TCS3400_INT_EVENT))
 		return EC_ERROR_NOT_HANDLED;
 
-	mutex_lock(s->mutex);
 	ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &status);
 	if (ret)
-		goto unlock;
+		return ret;
 
 	/* Disable future interrupts */
 	ret = tcs3400_i2c_read8(s, TCS_I2C_ENABLE, &status);
 	if (ret)
-		goto unlock;
+		return ret;
 
 	ret = tcs3400_i2c_write8(s, TCS_I2C_ENABLE,
 			(status & ~TCS_I2C_ENABLE_INT_ENABLE));
@@ -220,14 +216,10 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 		ret = tcs3400_post_events(s, last_interrupt_timestamp);
 		if (ret)
-			goto unlock;
+			return ret;
 	}
 
-	ret = tcs3400_i2c_write8(s, TCS_I2C_AICLEAR, 0);
-
-unlock:
-	mutex_unlock(s->mutex);
-	return ret;
+	return tcs3400_i2c_write8(s, TCS_I2C_AICLEAR, 0);
 }
 
 static int tcs3400_rgb_get_range(const struct motion_sensor_t *s)
@@ -348,7 +340,6 @@ static int tcs3400_set_data_rate(const struct motion_sensor_t *s,
 	int data;
 	int ret;
 
-	mutex_lock(s->mutex);
 	if (rate == 0) {
 		/* Suspend driver */
 		mode = TCS3400_MODE_SUSPEND;
@@ -358,22 +349,18 @@ static int tcs3400_set_data_rate(const struct motion_sensor_t *s,
 		 * integrating over 800ms.
 		 * Do not allow range higher than 1Hz.
 		 */
-		if (rate > 1000)
-			rate = 1000;
+		if (rate > TCS3400_LIGHT_MAX_FREQ)
+			rate = TCS3400_LIGHT_MAX_FREQ;
 		mode = TCS3400_MODE_COLLECTING;
 	}
 	TCS3400_DRV_DATA(s)->rate = rate;
 
 	ret = tcs3400_i2c_read8(s, TCS_I2C_ENABLE, &data);
 	if (ret)
-		goto unlock;
+		return ret;
 
 	data = (data & TCS_I2C_ENABLE_MASK) | mode;
-	ret = tcs3400_i2c_write8(s, TCS_I2C_ENABLE, data);
-
-unlock:
-	mutex_unlock(s->mutex);
-	return ret;
+	return tcs3400_i2c_write8(s, TCS_I2C_ENABLE, data);
 }
 
 /**
@@ -381,8 +368,7 @@ unlock:
  */
 static int tcs3400_rgb_init(const struct motion_sensor_t *s)
 {
-	CPRINTS();
-	return EC_SUCCESS;
+	return sensor_init_done(s);
 }
 
 static int tcs3400_init(const struct motion_sensor_t *s)
@@ -412,7 +398,6 @@ static int tcs3400_init(const struct motion_sensor_t *s)
 	int data = 0;
 	int ret;
 
-	CPRINTS();
 	ret = tcs3400_i2c_read8(s, TCS_I2C_ID, &data);
 	if (ret) {
 		CPRINTS("failed reading ID reg 0x%x, ret=%d", TCS_I2C_ID, ret);
@@ -422,7 +407,6 @@ static int tcs3400_init(const struct motion_sensor_t *s)
 		CPRINTS("no ID match, data = 0x%x", data);
 		return EC_ERROR_ACCESS_DENIED;
 	}
-
 	/* reset chip to default power-on settings, changes ATIME and CONTROL */
 	for (int x = 0; x < ARRAY_SIZE(defaults); x++) {
 		ret = tcs3400_i2c_write8(s, defaults[x].reg, defaults[x].data);
@@ -430,7 +414,6 @@ static int tcs3400_init(const struct motion_sensor_t *s)
 			return ret;
 	}
 
-	tcs3400_set_range(s, s->default_range, 0);
 	return sensor_init_done(s);
 }
 
