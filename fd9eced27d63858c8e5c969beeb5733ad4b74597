@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "35d24971_011ba37c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae721d38_64745932",
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cb5c771_9794c28f",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "56fbfbda_ce0c0c05",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cb5c771_9794c28f",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 927,
+        "endChar": 32
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27fbafe5_5797e735",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -76,6 +118,30 @@
       "writtenOn": "2019-04-16T03:17:06Z",
       "side": 1,
       "message": "drop this line",
+      "range": {
+        "startLine": 930,
+        "startChar": 1,
+        "endLine": 930,
+        "endChar": 31
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed6394d_9e90c80f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "ok, this is for debug log, i will drop this on final solution",
+      "parentUuid": "27fbafe5_5797e735",
       "range": {
         "startLine": 930,
         "startChar": 1,
@@ -135,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4831d825_12c69584",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ce8d6b9f_ecf03315",
+      "range": {
+        "startLine": 934,
+        "startChar": 8,
+        "endLine": 934,
+        "endChar": 15
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d0efbef_886c125c",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -146,6 +236,30 @@
       "writtenOn": "2019-04-16T03:17:06Z",
       "side": 1,
       "message": "drop this line.",
+      "range": {
+        "startLine": 952,
+        "startChar": 3,
+        "endLine": 952,
+        "endChar": 57
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2452992_d57a2eb5",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "ok, this is for debug log, i will drop this on final solution",
+      "parentUuid": "2d0efbef_886c125c",
       "range": {
         "startLine": 952,
         "startChar": 3,
@@ -204,6 +318,54 @@
     },
     {
       "key": {
+        "uuid": "bd0bde13_eb534272",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "thanks, i saw rt946x_toggle_chgdet_flow is wrong, need correct by set chgdet 1-\u003e0-\u003e1\nbut huaqin help to verify correct rt946x_toggle_chgdet_flow, still only trigger once irq at plug in once, how to receive irq after toggle chgdet flow?\ni expected flow is\n\u003e plug in adapter\n\u003e attachi irq occured\n\u003e bc12 detect SDP\n\u003e toggle chgdet flow once (usbchgen set 1-\u003e0-\u003e1)\n\u003e attachi irq occured\n\u003e bc12 detect SDP\n\u003e toggle chgdet flow twice\n...\n\u003e attachi irq occured\n\u003e bc12 detect DCP",
+      "parentUuid": "ed7f7867_1c653ac7",
+      "range": {
+        "startLine": 954,
+        "startChar": 4,
+        "endLine": 954,
+        "endChar": 16
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef902af6_5ca1b479",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df37f55f_9553d025",
+      "range": {
+        "startLine": 954,
+        "startChar": 4,
+        "endLine": 954,
+        "endChar": 16
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11a9e4f2_5d617b71",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -215,6 +377,30 @@
       "writtenOn": "2019-04-16T03:17:06Z",
       "side": 1,
       "message": "drop this line",
+      "range": {
+        "startLine": 968,
+        "startChar": 3,
+        "endLine": 968,
+        "endChar": 42
+      },
+      "revId": "fd9eced27d63858c8e5c969beeb5733ad4b74597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86391dc_60cff561",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-05-02T08:44:30Z",
+      "side": 1,
+      "message": "ok, this is for debug log, i will drop this on final solution",
+      "parentUuid": "11a9e4f2_5d617b71",
       "range": {
         "startLine": 968,
         "startChar": 3,
