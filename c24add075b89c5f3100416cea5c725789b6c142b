@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dba2842e_eb48a466",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T18:30:33Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "c24add075b89c5f3100416cea5c725789b6c142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b77d2ba8_e65af48d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-02T18:30:33Z",
+      "side": 1,
+      "message": "call sensor_init_done(s); instead.",
+      "revId": "c24add075b89c5f3100416cea5c725789b6c142b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
