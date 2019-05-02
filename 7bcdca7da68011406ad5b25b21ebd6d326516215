@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "526839b0_e57ad745",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-02T19:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790405d5_ab209fbc",
+      "revId": "7bcdca7da68011406ad5b25b21ebd6d326516215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "743b5994_d243e472",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 23
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-02T18:42:32Z",
       "side": 1,
       "message": "use a loop.",
+      "revId": "7bcdca7da68011406ad5b25b21ebd6d326516215",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1995762_7609f207",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-02T19:14:47Z",
+      "side": 1,
+      "message": "Do you want me to make all of them use loops (including other routines that set X,Y, and Z specifically instead of using a loop)?  \n\nIf so, should it use :\n  for (int i \u003d X; i \u003c\u003d Z; i++)  // assumes X, Y, and Z are consecutive integers\nor should it use\n  for (int i \u003d 0; i \u003c 3; i++)   // assumes that X\u003d0, Y\u003d1, and Z\u003d2",
+      "parentUuid": "743b5994_d243e472",
       "revId": "7bcdca7da68011406ad5b25b21ebd6d326516215",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
