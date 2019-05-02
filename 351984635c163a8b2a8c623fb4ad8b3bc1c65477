@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dbcd853_739c00ab",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-02T08:24:29Z",
+      "side": 0,
+      "message": "Can you please split this change in 2: one that removes USB_THERM, and a second one that adds the BC1.2 detection? Thanks.",
+      "revId": "351984635c163a8b2a8c623fb4ad8b3bc1c65477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
