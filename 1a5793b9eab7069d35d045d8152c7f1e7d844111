@@ -93,6 +93,30 @@
       "revId": "1a5793b9eab7069d35d045d8152c7f1e7d844111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf94702_d1791daa",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-02T09:04:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "10f9bc26_88caf0cb",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "1a5793b9eab7069d35d045d8152c7f1e7d844111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
