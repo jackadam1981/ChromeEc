@@ -22,6 +22,10 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
+#if defined(CONFIG_ACCEL_FIFO) && !defined(LSM6DSM_INTERRUPT_GPIO_L)
+#error "Must define LSM6DSM_INTERRUPT_GPIO_L if using LSM6DSM driver with fifo"
+#endif
+
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
 #endif
