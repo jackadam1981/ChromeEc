@@ -54,6 +54,16 @@ void pd_transition_voltage(int idx)
 }
 static uint8_t vbus_en;
 
+static int board_get_polarity(int port)
+{
+#ifdef BOARD_KRANE
+	/* Krane's aux mux polarity is reversed. Workaround to flip it back. */
+	if (board_get_version() == 3)
+		return !pd_get_polarity(port);
+#endif
+	return pd_get_polarity(port);
+}
+
 int board_vbus_source_enabled(int port)
 {
 	return vbus_en;
@@ -252,7 +262,7 @@ static void svdm_safe_dp_mode(int port)
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
 	usb_mux_set(port, TYPEC_MUX_NONE,
-		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+		    USB_SWITCH_CONNECT, board_get_polarity(port));
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -315,7 +325,7 @@ static void svdm_dp_post_config(int port)
 
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 	gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
-	gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
+	gpio_set_level(GPIO_USB_C0_DP_POLARITY, board_get_polarity(port));
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -339,7 +349,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	}
 
 	usb_mux_set(port, lvl ? TYPEC_MUX_DP : TYPEC_MUX_NONE,
-		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+		    USB_SWITCH_CONNECT, board_get_polarity(port));
 
 	mux->hpd_update(port, lvl, irq);
 
@@ -355,7 +365,8 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 
 		gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
-		gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
+		gpio_set_level(GPIO_USB_C0_DP_POLARITY,
+			       board_get_polarity(port));
 
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -365,7 +376,8 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	} else {
 		gpio_set_level(GPIO_USB_C0_HPD_OD, lvl);
 		gpio_set_level(GPIO_USB_C0_DP_OE_L, !lvl);
-		gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
+		gpio_set_level(GPIO_USB_C0_DP_POLARITY,
+			       board_get_polarity(port));
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 	}
