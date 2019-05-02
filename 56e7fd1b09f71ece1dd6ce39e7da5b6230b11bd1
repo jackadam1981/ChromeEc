@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02baa41a_91abbfe6",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-02T23:45:09Z",
+      "side": 1,
+      "message": "Yes I believe that is correct; compiler assumes that the k_out parameter may not be aligned and uses strb to write (see disassembly of p256_add_d() in the doc as an example)\n\nThat said, it seems that in practise, hmac_drbg_generate_p256() didn\u0027t suffer from this problem, but the previous (RFC6979) implementation did.",
+      "parentUuid": "90c044f5_cef5653f",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 25
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2a3a95a_c01cb2ac",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "275ec43f_61d2452a",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-02T23:45:09Z",
+      "side": 1,
+      "message": "Ok, perhaps those should come as a follow up? Would you be able to advise/review?",
+      "parentUuid": "d9072c0d_40329ead",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 823,
+        "endChar": 20
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb2c60b8_70654089",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "pEcc-\u003ernd is used to help blind the computation (but not otherwise affect the values)",
       "parentUuid": "cb2c60b8_70654089",
+      "range": {
+        "startLine": 826,
+        "startChar": 13,
+        "endLine": 826,
+        "endChar": 27
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c4db33_218a4b55",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-02T23:45:09Z",
+      "side": 1,
+      "message": "Ok thanks, perhaps a better question then is, do we need to clear rnd?\n\nI had thought a goal was to not leave the value of k hanging around, but on re-reading this the value of k itself (not rnd) is left untouched anyway, so I guess this is not important.",
+      "parentUuid": "5cb16d1c_2151e45f",
       "range": {
         "startLine": 826,
         "startChar": 13,
