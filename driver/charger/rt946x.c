@@ -927,6 +927,16 @@ void rt946x_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
+int rt946x_toggle_bc12_detection(void)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(0);
+	if (rv)
+		return rv;
+	udelay(40);
+	return rt946x_enable_bc12_detection(1);
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
