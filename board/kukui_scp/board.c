@@ -25,11 +25,28 @@ void eint_event(enum gpio_signal signal)
 	ccprintf("EINT event: %d\n", signal);
 }
 
+int arr[1024] = {
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15,
+};
+
 /* Initialize board.  */
 static void board_init(void)
 {
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(arr); ++i)
+		ccprintf("arr[%d] = %d\n", i, arr[i]);
+
 	gpio_enable_interrupt(GPIO_EINT5_TP);
 	gpio_enable_interrupt(GPIO_EINT6_TP);
 	gpio_enable_interrupt(GPIO_EINT7_TP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+

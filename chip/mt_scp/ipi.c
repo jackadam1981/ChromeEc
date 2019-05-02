@@ -268,6 +268,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, ipi_get_protocol_info,
 		     EC_VER_MASK(0));
 #endif
 
+extern int arr[1024];
 static void ipi_enable_ipc0_deferred(void)
 {
 	/* Clear IPC0 IRQs. */
@@ -283,6 +284,7 @@ static void ipi_enable_ipc0_deferred(void)
 	ipi_inform_ap();
 
 	CPRINTS("ipi init");
+	CPRINTS("arr=0x%x", arr);
 }
 DECLARE_DEFERRED(ipi_enable_ipc0_deferred);
 
