@@ -357,7 +357,7 @@
  * MAX17055 support alert on voltage, current, temperature, and state-of-charge.
  */
 #undef CONFIG_BATTERY_MAX17055_ALERT
-
+#undef CONFIG_BATTERY_MAX17055_FULL_MODEL
 
 /* Compile mock battery support; used by tests. */
 #undef CONFIG_BATTERY_MOCK
