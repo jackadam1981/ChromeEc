@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "672406c4_08a6a8e1",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:28:39Z",
+      "side": 1,
+      "message": "Isn\u0027t it quite possible for another chip manufacturer to implement the same thing? In which case, we should standardize the config names.\n\nThere is plenty of device-specific configuration names in this file, so it\u0027s also not that out-of-the-ordinary.",
+      "parentUuid": "c9d29a34_052e20e3",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "5027084a04ff715b424f5c9bc022b30a8d8767e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "552eb97f_a26f166f",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9fe24c46_5094b054",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2769,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:28:39Z",
+      "side": 1,
+      "message": "Makes sense to me... will add!",
+      "parentUuid": "552eb97f_a26f166f",
+      "range": {
+        "startLine": 2766,
+        "startChar": 0,
+        "endLine": 2769,
+        "endChar": 33
+      },
+      "revId": "5027084a04ff715b424f5c9bc022b30a8d8767e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f0236e0_a4d47396",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-02T21:42:33Z",
       "side": 1,
       "message": "nit: doesn\u0027t need ()",
+      "range": {
+        "startLine": 4050,
+        "startChar": 29,
+        "endLine": 4050,
+        "endChar": 32
+      },
+      "revId": "5027084a04ff715b424f5c9bc022b30a8d8767e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b0a900_189e6950",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4050,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:28:39Z",
+      "side": 1,
+      "message": "OK, will change. I also think we should make this default to CONFIG_RAM_SIZE instead; I have no idea what I was thinking when I thought 1 was a sane default (guess I must have been thinking upside-down!)...",
+      "parentUuid": "2f0236e0_a4d47396",
       "range": {
         "startLine": 4050,
         "startChar": 29,
