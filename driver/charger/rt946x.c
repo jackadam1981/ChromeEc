@@ -853,7 +853,7 @@ static void rt946x_init(void)
 	int reg = 0xFFFFFFFF;
 
 	/* Check device id */
-	if (charger_device_id(&reg) || reg != RT946X_VENDOR_ID) {
+	if (charger_device_id(&reg) || (reg != RT946X_VENDOR_ID && reg != 0xf0)) {
 		CPRINTF("RT946X incorrect ID: 0x%02x\n", reg);
 		return;
 	}
@@ -926,6 +926,23 @@ void rt946x_interrupt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_USB_CHG);
 }
+
+int rt946x_toggle_bc12_detection(void)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(0);
+	if (rv)
+		return rv;
+	udelay(40);
+	return rt946x_enable_bc12_detection(1);
+}
+
+static int rt946x_detect_bc12(int argc, char *argv[])
+{
+	rt946x_toggle_bc12_detection();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bc12, rt946x_detect_bc12, NULL, NULL);
 
 void usb_charger_task(void *u)
 {
