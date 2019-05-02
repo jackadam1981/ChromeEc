@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3b30dde_cc01867a",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T21:38:24Z",
+      "side": 1,
+      "message": "why 256 bytes instead of sizeof(panic_data) or MAX(sizeof(panic_data), 0xff)?",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "3e34e0fdbd6ec67bbd2697883000a066d924335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e1b8a0_379a3564",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T21:38:24Z",
+      "side": 1,
+      "message": "add to comment: will get automatically defined at the end of RAM if left unset",
+      "range": {
+        "startLine": 2604,
+        "startChar": 3,
+        "endLine": 2604,
+        "endChar": 44
+      },
+      "revId": "3e34e0fdbd6ec67bbd2697883000a066d924335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f3348d9_c1f61134",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4076,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T21:38:24Z",
+      "side": 1,
+      "message": "should this be defined first and then CONFIG_PANIC_DATA_BASE uses this macro in its definition?",
+      "range": {
+        "startLine": 4074,
+        "startChar": 0,
+        "endLine": 4076,
+        "endChar": 6
+      },
+      "revId": "3e34e0fdbd6ec67bbd2697883000a066d924335f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
