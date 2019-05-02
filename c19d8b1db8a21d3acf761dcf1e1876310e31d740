@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ce4cbab_33c5e890",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T20:11:24Z",
+      "side": 1,
+      "message": "Also, do you think this is related to Ampton only. Should we change the common code to de-glitch at 1ms?",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 74
+      },
+      "revId": "c19d8b1db8a21d3acf761dcf1e1876310e31d740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
