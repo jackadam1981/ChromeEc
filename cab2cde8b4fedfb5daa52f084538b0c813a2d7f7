@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05db1f0c_b38ece5a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T23:31:45Z",
+      "side": 1,
+      "message": "This should probably happen right before \"Enable interrupt\" comment above to prevent a race condition.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 28
+      },
+      "revId": "cab2cde8b4fedfb5daa52f084538b0c813a2d7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
