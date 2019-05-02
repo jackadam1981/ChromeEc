@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96ed6187_f5a3fcba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-02T20:16:07Z",
+      "side": 1,
+      "message": "can you add a comment here saying what you say in your commit description (X_debouce and X are really the same state).\n\nOtherwise LGTM\n\n\n(also just curious, why did you move it? - it is completely fine though)",
+      "range": {
+        "startLine": 697,
+        "startChar": 2,
+        "endLine": 699,
+        "endChar": 56
+      },
+      "revId": "5e19cd18192f8f9c64d1483db6c34882eb872297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
