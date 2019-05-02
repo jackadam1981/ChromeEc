@@ -46,6 +46,30 @@
       "revId": "c415409a1eaf474e9d2337f56e52a9bb6865e73f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d0f8b8f_19441ec4",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-02T19:04:11Z",
+      "side": 1,
+      "message": "Do you think we should add last_deadline \u003d 0xFFFFFFFF to init as well then?",
+      "parentUuid": "3a95a371_fdefa519",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 27
+      },
+      "revId": "c415409a1eaf474e9d2337f56e52a9bb6865e73f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
