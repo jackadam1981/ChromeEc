@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e560d8fe_db8c2a84",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-05-03T23:58:06Z",
+      "side": 1,
+      "message": "maybe put this in the no-connect group down below.\nprobably change the name as well\nwith the old pin name as a comment only\nand remove any code that might still be referencing the pin name.",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "d5468f66eee10e85cee673b9271511c67f28a377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
