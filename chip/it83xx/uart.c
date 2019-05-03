@@ -228,6 +228,8 @@ void uart_init(void)
 	uart_config();
 
 #ifdef CONFIG_UART_HOST
+	/* bit2: uart2 clock belongs to the EC side. */
+	IT83XX_GCTRL_RSTDMMC |= BIT(2);
 	/* bit2, reset UART2 */
 	IT83XX_GCTRL_RSTC4 |= BIT(2);
 	/* SIN1/SOUT1 of UART 2 is enabled. */

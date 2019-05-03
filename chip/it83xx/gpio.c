@@ -609,6 +609,13 @@ void gpio_pre_init(void)
 	}
 #endif
 
+#ifdef CONFIG_UART_HOST
+	/* disconnect PD port1 if we enable host uart */
+	IT83XX_USBPD_CCGCR(USBPD_PORT_B) = 0x1f;
+	IT83XX_USBPD_CCCSR(USBPD_PORT_B) = 0xff;
+	IT83XX_USBPD_CCPSR(USBPD_PORT_B) = 0x66;
+#endif
+
 #ifndef CONFIG_USB
 	/*
 	 * We need to enable USB's clock so we can config USB control register.
