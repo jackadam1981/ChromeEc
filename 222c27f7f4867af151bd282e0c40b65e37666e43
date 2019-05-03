@@ -70,6 +70,30 @@
       "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71aba260_bb88b6be",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-03T18:31:54Z",
+      "side": 1,
+      "message": "Now I\u0027m seeing this dongle loop intermittently without the patch as well, so this CL is probably innocent. \n\nI\u0027m still not totally certain whether flags should clear going from SRC_DISCONNECTED_DEBOUNCE -\u003e SNK_DISCONNECTED, but it\u0027s not causing the issue.",
+      "parentUuid": "13615ee7_1f41dedc",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 55
+      },
+      "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
