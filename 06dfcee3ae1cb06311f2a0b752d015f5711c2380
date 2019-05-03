@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "5695a56f_7138f667",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-03T17:03:24Z",
+      "side": 1,
+      "message": "This has to be justified. msleep(200) here has a direct impact to the boot time.",
+      "parentUuid": "46d3868c_c55ff274",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 13
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1029d10f_a53e2bab",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 8
