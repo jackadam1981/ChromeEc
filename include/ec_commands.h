@@ -2867,6 +2867,15 @@ struct ec_params_config_power_button {
 } __ec_align1;
 
 /*****************************************************************************/
+/* Configure the behavior of the power button */
+#define EC_CMD_GET_TIMESTAMP 0x002E
+
+struct ec_response_timestamp {
+	uint32_t ts1;
+	uint32_t ts2;
+} __ec_align1;
+
+/*****************************************************************************/
 /* USB charging control commands */
 
 /* Set USB port charging mode */

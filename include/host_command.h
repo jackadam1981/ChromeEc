@@ -56,6 +56,8 @@ struct host_cmd_handler_args {
 	 * by this field.
 	 */
 	uint16_t result;
+
+	uint32_t ts;
 };
 
 /* Args for host packet handler */
@@ -108,6 +110,8 @@ struct host_packet {
 	 * by this field.
 	 */
 	uint16_t driver_result;
+
+	uint32_t recv_ts;
 };
 
 /* Host command */

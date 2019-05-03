@@ -265,6 +265,10 @@ void host_packet_receive(struct host_packet *pkt)
 	/* Track the packet we're handling */
 	pkt0 = pkt;
 
+	if (!pkt->recv_ts) {
+		pkt->recv_ts = get_time().le.lo;
+	}
+
 	/* If driver indicates error, don't even look at the data */
 	if (pkt->driver_result) {
 		args0.result = pkt->driver_result;
@@ -355,6 +359,7 @@ void host_packet_receive(struct host_packet *pkt)
 		sizeof(struct ec_host_response);
 	args0.response_size = 0;
 	args0.result = EC_RES_SUCCESS;
+	args0.ts = pkt->recv_ts;
 
 	/* Chain to host command received */
 	host_command_received(&args0);

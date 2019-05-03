@@ -1523,7 +1523,6 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		break;
 	}
 #endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
-
 	default:
 		/* Call other users of the motion task */
 #ifdef CONFIG_LID_ANGLE
@@ -1539,6 +1538,20 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD,
 		     host_cmd_motion_sense,
 		     EC_VER_MASK(1) | EC_VER_MASK(2) | EC_VER_MASK(3));
+
+static int host_cmd_timestamp(struct host_cmd_handler_args *args)
+{
+	struct ec_response_timestamp *out = args->response;
+	out->ts1 = args->ts;
+	out->ts2 = get_time().le.lo;
+
+	args->response_size = sizeof(struct ec_response_timestamp);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_TIMESTAMP,
+		     host_cmd_timestamp,
+		     EC_VER_MASK(0));
 
 /*****************************************************************************/
 /* Console commands */

@@ -290,6 +290,8 @@ const char help_str[] =
 	"      Wait for the MKBP event of type and display it\n"
 	"  wireless <flags> [<mask> [<suspend_flags> <suspend_mask>]]\n"
 	"      Enable/disable WLAN/Bluetooth radio\n"
+	"  timestamp\n"
+	"      Get EC timestamps\n"
 	"";
 
 /* Note: depends on enum system_image_copy_t */
@@ -8214,6 +8216,18 @@ int cmd_tp_self_test(int argc, char* argv[])
 	return rv;
 }
 
+int cmd_timestamp(int argc, char* argv[])
+{
+	int rv;
+	struct ec_response_timestamp ts;
+
+	rv = ec_command(EC_CMD_GET_TIMESTAMP, 0, NULL, 0, &ts, sizeof(ts));
+	if (rv < 0)
+		return rv;
+
+	return rv;
+}
+
 int cmd_tp_frame_get(int argc, char* argv[])
 {
 	int i, j;
@@ -8635,6 +8649,7 @@ const struct command commands[] = {
 	{"test", cmd_test},
 	{"thermalget", cmd_thermal_get_threshold},
 	{"thermalset", cmd_thermal_set_threshold},
+	{"timestamp", cmd_timestamp},
 	{"tpselftest", cmd_tp_self_test},
 	{"tpframeget", cmd_tp_frame_get},
 	{"tmp006cal", cmd_tmp006cal},
