@@ -95,9 +95,13 @@ void FLASH_DMA_CODE dma_reset_immu(int fill_immu)
 	/* Immu tag sram reset */
 	IT83XX_GCTRL_MCCR |= 0x10;
 	/* Make sure the immu(dynamic cache) is reset */
+#if defined(CHIP_CORE_NDS32)
 	asm volatile ("dsb");
+#endif
 	IT83XX_GCTRL_MCCR &= ~0x10;
+#if defined(CHIP_CORE_NDS32)
 	asm volatile ("dsb");
+#endif
 
 #ifdef IMMU_CACHE_TAG_INVALID
 	/*
@@ -132,8 +136,8 @@ void FLASH_DMA_CODE dma_flash_follow_mode(void)
 
 void FLASH_DMA_CODE dma_flash_follow_mode_exit(void)
 {
-	/* Exit follow mode */
-	IT83XX_SMFI_ECINDAR3 = 0x00;
+	/* Exit follow mode, and keep the setting of selecting internal flash */
+	IT83XX_SMFI_ECINDAR3 = 0x40;
 	IT83XX_SMFI_ECINDAR2 = 0x00;
 }
 
@@ -559,12 +563,18 @@ static void flash_code_static_dma(void)
 	interrupt_disable();
 
 	/* invalid static DMA first */
+#ifdef CHIP_ILM_DLM_ORDER
+	IT83XX_GCTRL_MCCR3 &= ~BIT(2);
+#endif
 	IT83XX_SMFI_SCAR2H = 0x08;
 
 	/* Copy to DLM */
 	IT83XX_GCTRL_MCCR2 |= 0x20;
-	memcpy((void *)SCAR2_ILM2_DLM14, (const void *)FLASH_DMA_START,
+	memcpy((void *)CHIP_RAMCODE_BASE, (const void *)FLASH_DMA_START,
 		IT83XX_ILM_BLOCK_SIZE);
+#ifdef CHIP_ILM_DLM_ORDER
+	IT83XX_GCTRL_MCCR3 |= BIT(2);
+#endif
 	IT83XX_GCTRL_MCCR2 &= ~0x20;
 
 	/*
@@ -595,6 +605,8 @@ int flash_pre_init(void)
 {
 	int32_t reset_flags, prot_flags, unwanted_prot_flags;
 
+	/* By default, select internal flash for indirect fast read. */
+	IT83XX_SMFI_ECINDAR3 = 0x40;
 	flash_code_static_dma();
 
 	reset_flags = system_get_reset_flags();
