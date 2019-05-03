@@ -22,6 +22,30 @@
       "revId": "cab2cde8b4fedfb5daa52f084538b0c813a2d7f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9dee6ae_dd354bc7",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-03T00:48:25Z",
+      "side": 1,
+      "message": "I understand it is not properly located. maybe doesn\u0027t look good. but It\u0027s OK since interrupt should be enabled after OS scheduler and ,at least one task, is ready.",
+      "parentUuid": "05db1f0c_b38ece5a",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 28
+      },
+      "revId": "cab2cde8b4fedfb5daa52f084538b0c813a2d7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
