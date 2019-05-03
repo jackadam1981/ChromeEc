@@ -51,6 +51,7 @@ die() {
 # for the board, remove it from BOARDS_XXXX array below.
 BOARDS_IT83XX=(
 	glkrvp_ite
+	iclrvpy_ite
 	it83xx_evb
 	reef_it8320
 )
