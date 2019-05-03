@@ -102,6 +102,38 @@ static int tune_mux(int port)
 	return EC_SUCCESS;
 }
 /******************************************************************************/
+/* USB-C PPC Configuration */
+static int tune_ppc(int port);
+
+struct ppc_config_t ampton_ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
+	[USB_PD_PORT_ITE_0] = {
+		.i2c_port = I2C_PORT_USBC0,
+		.i2c_addr = SN5S330_ADDR0,
+		.drv = &sn5s330_drv,
+		.board_init = &tune_ppc
+	},
+	[USB_PD_PORT_ITE_1] = {
+		.i2c_port = I2C_PORT_USBC1,
+		.i2c_addr = SN5S330_ADDR0,
+		.drv = &sn5s330_drv,
+		.board_init = &tune_ppc
+	},
+};
+unsigned int ampton_ppc_cnt = ARRAY_SIZE(ampton_ppc_chips);
+
+/* Some type-c dongle (eg. Hub-type-c-promate-0001) can't be detect
+ * when system resume from S5. After modulating PPC parameter
+ * PP1_ILIM_DEGLITCH_0 from 200us to 1ms, Hub-type-c-promate-0001
+ * can be detect work normally. */
+static int tune_ppc(int port)
+{
+	return i2c_write8(ampton_ppc_chips[port].i2c_port,
+			  ampton_ppc_chips[port].i2c_addr,
+			  SN5S330_FUNC_SET11,
+			  (PPX_ILIM_DEGLITCH_0_US_200 << 3) |
+			  PPX_ILIM_DEGLITCH_0_US_1000);
+}
+/******************************************************************************/
 /* ADC channels */
 const struct adc_t adc_channels[] = {
 	/* Vbus C0 sensing (10x voltage divider). PPVAR_USB_C0_VBUS */
@@ -306,6 +338,11 @@ static void board_customize_usbc_mux(uint32_t board_version)
 	}
 }
 
+static void board_customize_ppc(void)
+{
+	memcpy(ppc_chips, ampton_ppc_chips, sizeof(ampton_ppc_chips));
+}
+
 /* Read CBI from i2c eeprom and initialize variables for board variants */
 static void cbi_init(void)
 {
@@ -322,6 +359,7 @@ static void cbi_init(void)
 		return;
 	ccprints("Board version: %d", val);
 	board_customize_usbc_mux(val);
+	board_customize_ppc();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 

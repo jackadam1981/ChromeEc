@@ -133,6 +133,14 @@ struct ppc_config_t {
 	int i2c_port;
 	int i2c_addr;
 	const struct ppc_drv *drv;
+
+	/**
+	 * Optional method for tuning for ppc during ppc->driver->init().
+	 *
+	 * @param port usb port of ppc
+	 * @return EC_SUCCESS on success, non-zero error code on failure.
+         */
+	int (*board_init)(int port);
 };
 
 extern struct ppc_config_t ppc_chips[];

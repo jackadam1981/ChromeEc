@@ -35,11 +35,20 @@ int ppc_init(int port)
 		return EC_ERROR_INVAL;
 
 	rv = ppc_chips[port].drv->init(port);
-	if (rv)
-		CPRINTS("p%d: PPC init failed! (%d)", port, rv);
-	else
-		CPRINTS("p%d: PPC init'd.", port);
 
+	if (rv) {
+		CPRINTS("p%d: PPC init failed! (%d)", port, rv);
+		return rv;
+	}
+
+	if (ppc_chips[port].board_init) {
+		rv = ppc_chips[port].board_init(port);
+
+		if (rv)
+			CPRINTS("Err: board_init ppc port(%d): %d", port, rv);
+	}
+
+	CPRINTS("p%d: PPC init'd.", port);
 	return rv;
 }
 
