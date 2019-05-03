@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12576941_8c649f86",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-03T22:21:30Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "b55ec63c0ff361a5a80c58a86b9270966871fdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac28a0d_34c71e21",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-03T22:21:30Z",
+      "side": 1,
+      "message": "nothing on the last line either.\n\n    \n/*\n * multi-line comment example\n */",
+      "revId": "b55ec63c0ff361a5a80c58a86b9270966871fdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
