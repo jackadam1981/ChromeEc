@@ -46,6 +46,76 @@
       "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c1eddd_2a9a7479",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-03T02:46:38Z",
+      "side": 1,
+      "message": "\u003e I could assert the line, delay for some amount of time (how much?) and then deassert the line. \n\nMinimum requirement would be 4us.\n\n\u003e But is that really cleaner? \n\nI don\u0027t think so. Both are equally hacky.\n\n\u003e By manipulating the wake masks, I don\u0027t have to make a tradeoff of hanging the EC for some empirical amount of time that guarantees the AP will see the interrupt. This also honors the wake mask for s0ix, if for some reason the AP wanted to mask the hang detect interrupt.\n\nCan we set only the HANG_DETECT mask in that case? Actually, I was thinking we can just get rid of the requirement of mainboards having to set this mask in coreboot. That is just yet another mask which can be easily missed.\n\n\u003e It also reuses the appropriate infrastructure for waking the AP via events, so if somehow that mechanism changed in future boards, I\u0027m not tied to a GPIO here.\n\nSG",
+      "parentUuid": "863b75b5_2d867207",
+      "range": {
+        "startLine": 274,
+        "startChar": 18,
+        "endLine": 276,
+        "endChar": 11
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a593fa21_8c1cadd7",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-03T02:46:38Z",
+      "side": 1,
+      "message": "Is this check essential?",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 37
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942aa042_ee2bd7c5",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-03T02:46:38Z",
+      "side": 1,
+      "message": "Any reason not to call lpc_set_host_event_mask() directly here just like it is done above but with 0?",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 27
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
