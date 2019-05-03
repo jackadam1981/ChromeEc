@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c61ed3af_4985259c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-03T16:53:33Z",
+      "side": 1,
+      "message": "This comment can be deleted now.",
+      "revId": "552227a88a4cc80224eb87d05d5a4b05460c8eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd387dcb_d038b68d",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-03T16:53:33Z",
+      "side": 1,
+      "message": "What do you think of making $save an array?  It would basically mean moving the read line part here.  It would simplify adding additional items to it (so long as it is declared an array unconditionally, so no need to check if it is empty or not when adding more items).\n\nThis change is optional, but I think the result might be slightly cleaner (in concept if not in syntax :-) .",
+      "revId": "552227a88a4cc80224eb87d05d5a4b05460c8eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a277a1_dd725cfd",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-03T16:53:33Z",
+      "side": 1,
+      "message": "No space before the semicolon.",
+      "range": {
+        "startLine": 669,
+        "startChar": 20,
+        "endLine": 669,
+        "endChar": 22
+      },
+      "revId": "552227a88a4cc80224eb87d05d5a4b05460c8eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "001e9c4d_e78d3f9b",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-03T16:53:33Z",
+      "side": 1,
+      "message": "Quote \"$save\" .  I know it\u0027s not strictly necessary with [[ ]], but I still prefer it.",
+      "range": {
+        "startLine": 669,
+        "startChar": 10,
+        "endLine": 669,
+        "endChar": 17
+      },
+      "revId": "552227a88a4cc80224eb87d05d5a4b05460c8eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
