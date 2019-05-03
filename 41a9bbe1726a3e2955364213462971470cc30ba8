@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "056801df_8a4c7e61",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-03T17:36:44Z",
+      "side": 1,
+      "message": "Can you make it a function to save some space?\n\n  static int get_supplier_priority(enum charge_supplier sup)\n  {\n    switch (sup) {\n    case ...:\n    default:\n    CHARGE_SUPPLIER_TYPEC:\n    ...\n    CHARGE_SUPPLIER_WPC_BPP:\n      return 2;\n  }",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "41a9bbe1726a3e2955364213462971470cc30ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
