@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc598f28_becae91f",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-03T00:09:52Z",
+      "side": 0,
+      "message": "This will be stored at line 800 in patch#2.",
+      "range": {
+        "startLine": 621,
+        "startChar": 33,
+        "endLine": 621,
+        "endChar": 42
+      },
+      "revId": "02f4e2d04df57464a9a3f7b72c3ad9aca2c372e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20a9931b_9a3bb7c7",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-03T00:09:52Z",
+      "side": 0,
+      "message": "This will be collected at line 1231 in patch#2.",
+      "range": {
+        "startLine": 638,
+        "startChar": 33,
+        "endLine": 638,
+        "endChar": 49
+      },
+      "revId": "02f4e2d04df57464a9a3f7b72c3ad9aca2c372e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beef3066_ccb64b76",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-03T00:09:52Z",
+      "side": 0,
+      "message": "fw_up shall be restored in servo_restore() at exit.",
+      "range": {
+        "startLine": 892,
+        "startChar": 14,
+        "endLine": 892,
+        "endChar": 23
+      },
+      "revId": "02f4e2d04df57464a9a3f7b72c3ad9aca2c372e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31ffd7be_8bfd319a",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-03T00:09:52Z",
+      "side": 0,
+      "message": "spi1_vref and spi1_buf_en shall be restored in servo_restore() at exit.",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 897,
+        "endChar": 43
+      },
+      "revId": "02f4e2d04df57464a9a3f7b72c3ad9aca2c372e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
