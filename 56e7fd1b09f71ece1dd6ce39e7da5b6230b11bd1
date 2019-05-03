@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fe2c92bd_42d0ac3c",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-03T02:00:26Z",
+      "side": 1,
+      "message": "Yes fair question. How about:\n\n- move DMEM_ecc and make it an opaque structure\n- provide utility functions to write into DMEM_ecc, implement these in assembly to guarantee word writes\n\nWe can do the same for other structs that are used to write to the dcrypto peripheral.\n\nI can put together a CL today to see what this would look like\n\nAdditionally, we should add some known answer tests",
+      "parentUuid": "26dad50f_39ac4192",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 25
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2a3a95a_c01cb2ac",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
@@ -236,6 +260,30 @@
       "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e120916_c308b786",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-03T02:00:26Z",
+      "side": 1,
+      "message": "Thanks - I think you answered my question :)",
+      "parentUuid": "8f927aa3_b56b5524",
+      "range": {
+        "startLine": 826,
+        "startChar": 13,
+        "endLine": 826,
+        "endChar": 27
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
