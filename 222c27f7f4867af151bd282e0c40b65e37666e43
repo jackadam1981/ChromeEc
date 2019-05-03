@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "347d96b8_53ae7aa4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-03T16:50:21Z",
+      "side": 1,
+      "message": "Is this check sufficient?  I was testing this out on an octopus with one of my pickiest powered dongles and it seems like it\u0027s looping through SRC_DISCONNECTED -\u003e SRC_DISCONNECTED_DEBOUNCE -\u003e SNK_DISCONNECTED -\u003e AUTO_TOGGLE.  I\u0027ll check it more, but just thought I\u0027d bring it up here while I debug.",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 55
+      },
+      "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
