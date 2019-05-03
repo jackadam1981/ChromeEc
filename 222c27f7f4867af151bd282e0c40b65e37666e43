@@ -94,6 +94,30 @@
       "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e66da3a_93e43614",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-03T21:56:55Z",
+      "side": 1,
+      "message": "Do we ever make that transition?",
+      "parentUuid": "71aba260_bb88b6be",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 55
+      },
+      "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
