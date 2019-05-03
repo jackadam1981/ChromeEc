@@ -22,6 +22,30 @@
       "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa5a0c8_77e1ad74",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-03T17:43:11Z",
+      "side": 1,
+      "message": "Are you basing this off of ToT? I noticed last night that my cable matters hub doesn\u0027t seem to resolve at all on ToT on my nocturne. (regardless of this patch). I think something\u0027s broken...",
+      "parentUuid": "347d96b8_53ae7aa4",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 55
+      },
+      "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
