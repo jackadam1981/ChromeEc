@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2b527497_e5c25969",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-03T21:28:57Z",
+      "side": 1,
+      "message": "Actually, I was thinking on the lines of not having the host to set this bit at all, but I see your point about host intentionally wanting to mask it out. Thinking out loud: What happens if hang detect is not set in wake mask, but EC hang detect logic is enabled. EC ends up setting the wake mask that was provided by host and set the hang detect host event bit. That will not wake the host up right away but it should anyways help wake the host when there is any kind of user event resulting in wake from other host event bits. Let\u0027s continue with this change to read out the wake mask and set it directly here.",
+      "parentUuid": "030d056e_4fb385ce",
+      "range": {
+        "startLine": 274,
+        "startChar": 18,
+        "endLine": 276,
+        "endChar": 11
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a593fa21_8c1cadd7",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Yep, that would be equivalent to what we had today. I was trying to route into common logic so that if someone added some new feature to manipulate the wake mask on resume later, it would only be reset in one common place rather than two. Do you think it\u0027s better to just set it to 0 directly?",
       "parentUuid": "942aa042_ee2bd7c5",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 27
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143bf8dd_f22ab3a2",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-03T21:28:57Z",
+      "side": 1,
+      "message": "So, one reason that I was thinking about is: power_set_active_wake_mask() sets a deferred call by default to ensure power signals have stabilized before setting the wake mask. In this case, where s0ix_complete_resume is called based on host command to indicate exit from S0ix:\n1. Deferred call is not necessary since we already know that power signals have stabilized and host is up.\n2. Since deferred call has lowest priority and if host ends up sending a host command to indicate entry into suspend state before EC gets to the deferred call, then the wake mask being set to non-zero can be interpreted very differently causing other side-effects.",
+      "parentUuid": "1c599fc9_ca1da1b0",
       "range": {
         "startLine": 318,
         "startChar": 1,
