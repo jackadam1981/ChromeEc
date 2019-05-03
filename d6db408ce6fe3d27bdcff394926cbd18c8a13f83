@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7c5c6b8_dddb9d31",
+        "filename": "chip/max32660/gpio_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "I have some comments in this file that I thought I wanted to mention.  But rather than blindly addressing each of them, please first take a look at my high-level comments in gpio_chip.c .",
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5c3e7d_c99fa6c1",
+        "filename": "chip/max32660/gpio_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "A table like this is useful, but this particular comment does not seem to correspond to what the function below is doing, since the table does not mention GPIO_EN2.",
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc3eb58_df46e48c",
+        "filename": "chip/max32660/gpio_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "I get the impression that MAX32660 does not support ALT4 function, and does not make use of GPIO_EN2 bit at all.\n\nIf that is the case, than the four cases above also should not assign to gpio-\u003een2_clr if TARGET_NUM \u003d\u003d 32660, and the GPIO_FUNC_ALT4 case below should return E_BAD_PARAM if TARGET_NUM \u003d\u003d 32660.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab356812_dff02a9f",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "After addressing the comments below, there should be no references to any of the GPIO_ methods from gpio_api.h, meaning that gpio_api.{h,c} can be removed altogether.",
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9e7497_d1c5bad4",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "Include \"max32660.h\" directly, then mxc_config.h, mxc_device.h, mxc_errors.h, mxc_pins.h can be deleted.",
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d702c5d_9cba3063",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "Unused include.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99c7ded_22744552",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "This function receives three arguments in registers, which it then goes on to store into a 10-byte structure allocated on the stack, before doing some indirect jumping to translate one enum into another, only then to delegate to another function that does the real work.  This seems wasteful on a system that runs with tight memory constraints.\n\nAlso, GPIO_Config is invoked in a way that is guaranteed to have it return E_BAD_PARAM (due to cfg.pad being -1), if someone later \"improves\" GPIO_Config by reversing the order of processing cfg.pad and cfg.func, then this function will stop working.\n\nI would suggest the implementation below, which also avoids touching the in/out configuration in GPIO mode.\nI agree that my proposal loses the support for other Maxim chips besides 32660, but this file sits in a max32660 directory, and I think that the downside to carrying forward generic implementations is outweighed by the drawbacks.\n\nvoid gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)\n{\n\tmxc_gpio_regs_t *gpio \u003d MXC_GPIO_GET_GPIO(cfg-\u003eport);\n\n\t// Set the GPIO alternative function\n\tswitch (cfg-\u003efunc) {\n\tcase 1:\n\t\tgpio-\u003een_clr \u003d cfg-\u003emask;\n\t\tgpio-\u003een1_clr \u003d cfg-\u003emask;\n\t\tbreak;\n\tcase 2:\n\t\tgpio-\u003een_clr \u003d cfg-\u003emask;\n\t\tgpio-\u003een1_set \u003d cfg-\u003emask;\n\t\tbreak;\n\tcase 3:\n\t\tgpio-\u003een_set \u003d cfg-\u003emask;\n\t\tgpio-\u003een1_set \u003d cfg-\u003emask;\n\t\tbreak;\n\tdefault:\n\t\tgpio-\u003een_set \u003d cfg-\u003emask;\n\t\tgpio-\u003een1_clr \u003d cfg-\u003emask;\n\t\tbreak;\n\t}\n}",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 72
+      },
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368b4300_fd77c3b7",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "This is exactly the kind of direct access to registers, that I would like to see.",
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d9ab7d0_d2fb171e",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "This method also translates into other enum types, which is then stored on the scarce stack space, and furthermore, this method may be called inside interrupt handlers, where each clock cycle counts.\n\nPlease change this into directly translating the ChromoOS flags into register accesses.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0af966_90dd1f16",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "This comment is an opinion, not a demand for change.  I could be convinced to keep it as is.\n\nThis function is an odd mix of either initializing pin by pin, or all pins on one port at a time.\n\nSince this function is only called once ever, performance is not a concern.\n\nHow about calling gpio_disable_interrupt(i) from within the second loop, then gpio_bases will not be referenced anywhere, and could be removed.",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 24
+      },
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ac50e8_d7b696d1",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-03T16:52:13Z",
+      "side": 1,
+      "message": "Is there any point of having the gpio_init() function, and registering it as a hook, if it does nothing?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 12
+      },
+      "revId": "d6db408ce6fe3d27bdcff394926cbd18c8a13f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
