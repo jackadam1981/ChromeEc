@@ -927,7 +927,7 @@ static int ftdi_send_special_waveform(struct common_hnd *chnd)
 
 static int send_special_waveform(struct common_hnd *chnd)
 {
-	const int max_iterations = 10;
+	const int max_iterations = 1000;
 	int ret;
 	int iterations;
 
@@ -2044,6 +2044,11 @@ int main(int argc, char **argv)
 		}
 	}
 
+	command_erase2(&chnd, chnd.flash_size, 0, 0);
+	write_flash2(&chnd, chnd.conf.output_filename, 0);
+	verify_flash(&chnd, chnd.conf.output_filename, 0);
+	goto return_after_init;
+
 	ret = post_waveform_work(&chnd);
 	if (ret)
 		goto return_after_init;
@@ -2081,7 +2086,7 @@ int main(int argc, char **argv)
 
  return_after_init:
 	/* Enable EC Host Global Reset to reset EC resource and EC domain. */
-	dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
+	//dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
 
 	if (chnd.conf.i2c_mux) {
 		printf("configuring I2C MUX to none.\n");
