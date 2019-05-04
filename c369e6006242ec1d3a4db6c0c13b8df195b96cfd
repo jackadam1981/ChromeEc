@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a4bdd18_097c65b4",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 45
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-04T05:41:04Z",
+      "side": 1,
+      "message": "remove fields \u003d 0, this is a static array.",
+      "revId": "c369e6006242ec1d3a4db6c0c13b8df195b96cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9112767_fd76418a",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 45
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-04T05:41:04Z",
+      "side": 1,
+      "message": "nit: never used. At least, add a BUILD_ASSERT() against motion_sensors_num.",
+      "revId": "c369e6006242ec1d3a4db6c0c13b8df195b96cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
