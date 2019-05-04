@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f942f4d_8832b3eb",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-04T05:37:46Z",
+      "side": 1,
+      "message": "nit: s# / BIT(15)# \u003e\u003e 15 @",
+      "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2911e05e_778a4209",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-04T05:37:46Z",
+      "side": 1,
+      "message": "What about overflow?",
+      "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bab02c_a91d9d6b",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-04T05:37:46Z",
+      "side": 1,
+      "message": "Next CL: make it generic, it is valid for all light sensors.\nx seems to always be 1.",
+      "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cdd1c0_2fa59f50",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-04T05:37:46Z",
+      "side": 1,
+      "message": "Next CL: this structure is also shared with other light sensors.",
+      "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
