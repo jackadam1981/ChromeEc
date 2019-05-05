@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6f22b05_443beea5",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-05T04:16:42Z",
+      "side": 1,
+      "message": "Will fix that nit in the next round that will include auto-compensation for saturation.",
+      "parentUuid": "1f942f4d_8832b3eb",
+      "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2911e05e_778a4209",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 30
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-04T05:37:46Z",
       "side": 1,
       "message": "What about overflow?",
+      "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5cfa7f_599dc83f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-05T04:16:42Z",
+      "side": 1,
+      "message": "My next CL set was going to add auto-compensation for saturation feature, wanted to focus on and get this in for the upcoming build first.  I\u0027ll make sure to address in the next round.",
+      "parentUuid": "2911e05e_778a4209",
       "revId": "46f2e249dff51b6a62eb8fc876f856a30d800895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
