@@ -236,6 +236,30 @@
       "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca8f784_bf8a694a",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-05-06T17:51:25Z",
+      "side": 1,
+      "message": "Good point. I will refactor out the guts of power_update_wake_mask_deferred() so I can call it directly and not have to wait for it to go through a deferred call.",
+      "parentUuid": "143bf8dd_f22ab3a2",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 27
+      },
+      "revId": "18f3af75e0ca0f13ca5d4264016b349cc78f3a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
