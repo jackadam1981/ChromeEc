@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e4f66a2b_796c245a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-06T19:07:02Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "5c8c83b9_51f0f797",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 67
+      },
+      "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e659c38_0c5efd07",
         "filename": "common/tablet_mode.c",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "082721e0_2d76e230",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-06T19:07:02Z",
+      "side": 1,
+      "message": "thanks. S is right. I will update",
+      "parentUuid": "c8be1ff0_48f56a84",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0e4f11_c13e4efc",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-06T19:07:02Z",
+      "side": 1,
+      "message": "Is your DUT on top of another DUT?\n\nWhat is the output of gpioget on the ISH console in various states?",
+      "parentUuid": "1e659c38_0c5efd07",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a26ef82_6566aaff",
         "filename": "common/tablet_mode.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d41c3d_d05063bd",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-06T19:07:02Z",
+      "side": 1,
+      "message": "It doesn\u0027t work because host_set_single_event does not exist when CONFIG_HOSTCMD_EVENTS is not defined",
+      "parentUuid": "7a26ef82_6566aaff",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
