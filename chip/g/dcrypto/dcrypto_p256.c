@@ -723,13 +723,11 @@ static const uint32_t IMEM_dcrypto[] = {
 };
 /* clang-format on */
 
-#define DMEM_CELL_SIZE 32
-#define DMEM_INDEX(p, f)                                                       \
-	(((const uint8_t *) &(p)->f - (const uint8_t *) (p)) / DMEM_CELL_SIZE)
-
 /*
  * This struct is "calling convention" for passing parameters into the
- * code block above for ecc operations.  Parameters start at &DMEM[0].
+ * code block above for ecc operations.  Writes to this struct should be done
+ * via the cp1w() and cp8w() functions to guarantee that word writes are used,
+ * as the dcrypto peripheral does not support byte writes.
  */
 struct DMEM_ecc {
 	uint32_t pK;
@@ -750,62 +748,84 @@ struct DMEM_ecc {
 	p256_int d;
 };
 
-static void dcrypto_ecc_init(void)
+#define DMEM_CELL_SIZE 32
+#define DMEM_OFFSET(p) (offsetof(struct DMEM_ecc, p))
+#define DMEM_INDEX(p) (DMEM_OFFSET(p) / DMEM_CELL_SIZE)
+
+/*
+ * Writes one word to DMEM, at the address derived from the base
+ * offset and number of words. These parameters can be used for example
+ * by specifying the offset of a p256_int, and the index of a word within
+ * that p256_int.
+ */
+static void cp1w(size_t base_offset, int word, const uint32_t src)
 {
-	struct DMEM_ecc *pEcc =
-	    (struct DMEM_ecc *) GREG32_ADDR(CRYPTO, DMEM_DUMMY);
+	/* Destination address, always 32-bit aligned. */
+	volatile uint32_t *dst =
+		REG32_ADDR((uint8_t *)GREG32_ADDR(CRYPTO, DMEM_DUMMY) +
+			   base_offset + (word * sizeof(uint32_t)));
 
-	dcrypto_imem_load(0, IMEM_dcrypto, ARRAY_SIZE(IMEM_dcrypto));
-
-	pEcc->pK = DMEM_INDEX(pEcc, k);
-	pEcc->pRnd = DMEM_INDEX(pEcc, rnd);
-	pEcc->pMsg = DMEM_INDEX(pEcc, msg);
-	pEcc->pR = DMEM_INDEX(pEcc, r);
-	pEcc->pS = DMEM_INDEX(pEcc, s);
-	pEcc->pX = DMEM_INDEX(pEcc, x);
-	pEcc->pY = DMEM_INDEX(pEcc, y);
-	pEcc->pD = DMEM_INDEX(pEcc, d);
-
-	/* (over)write first words to ensure pairwise mismatch. */
-	pEcc->k.a[0] = 1;
-	pEcc->rnd.a[0] = 2;
-	pEcc->msg.a[0] = 3;
-	pEcc->r.a[0] = 4;
-	pEcc->s.a[0] = 5;
-	pEcc->x.a[0] = 6;
-	pEcc->y.a[0] = 7;
-	pEcc->d.a[0] = 8;
+	*dst = src;
 }
 
 /*
- * Local copy function since for some reason we have p256_int as
- * packed structs.
- * This causes wrong writes (bytes vs. words) to the peripheral with
- * struct copies in case the src operand is unaligned.
- *
- * Our peripheral dst are always aligned correctly.
- * By making sure the src is aligned too, we get word copy behavior.
+ * Copies the contents of the src p256_int to the specified offset in DMEM.
+ * The src argument does not need to be aligned.
  */
-static inline void cp8w(p256_int *dst, const p256_int *src)
+static void cp8w(size_t offset, const p256_int *src)
 {
-	p256_int tmp;
+	int i;
 
-	tmp = *src;
-	*dst = tmp;
+	/*
+	 * If p256_int is packed (as it is on cr50), the compiler
+	 * cannot assume src will be aligned, and so performs
+	 * byte reads into a register before calling cp1w (which
+	 * is typically inlined).
+	 *
+	 * Note that the dcrypto peripheral supports byte reads,
+	 * so it is safe to specify a pointer based on the one
+	 * returned by dmem_read() as the src argument.
+	 */
+	for (i = 0; i < P256_NDIGITS; i++)
+		cp1w(offset, i, P256_DIGIT(src, i));
+}
+
+/*
+ * Returns a pointer to the DMEM_ecc struct, to be used for reads.
+ */
+static const struct DMEM_ecc *dmem_read(void)
+{
+	return (const struct DMEM_ecc *)GREG32_ADDR(CRYPTO, DMEM_DUMMY);
+}
+
+static void dcrypto_ecc_init(void)
+{
+	dcrypto_imem_load(0, IMEM_dcrypto, ARRAY_SIZE(IMEM_dcrypto));
+
+	cp1w(DMEM_OFFSET(pK), 0, DMEM_INDEX(k));
+	cp1w(DMEM_OFFSET(pRnd), 0, DMEM_INDEX(rnd));
+	cp1w(DMEM_OFFSET(pMsg), 0, DMEM_INDEX(msg));
+	cp1w(DMEM_OFFSET(pR), 0, DMEM_INDEX(r));
+	cp1w(DMEM_OFFSET(pS), 0, DMEM_INDEX(s));
+	cp1w(DMEM_OFFSET(pX), 0, DMEM_INDEX(x));
+	cp1w(DMEM_OFFSET(pY), 0, DMEM_INDEX(y));
+	cp1w(DMEM_OFFSET(pD), 0, DMEM_INDEX(d));
+
+	/* (over)write first words to ensure pairwise mismatch. */
+	cp1w(DMEM_OFFSET(k), 0, 1);
+	cp1w(DMEM_OFFSET(rnd), 0, 2);
+	cp1w(DMEM_OFFSET(msg), 0, 3);
+	cp1w(DMEM_OFFSET(r), 0, 4);
+	cp1w(DMEM_OFFSET(s), 0, 5);
+	cp1w(DMEM_OFFSET(x), 0, 6);
+	cp1w(DMEM_OFFSET(y), 0, 7);
+	cp1w(DMEM_OFFSET(d), 0, 8);
 }
 
 int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 			    const p256_int *message, p256_int *r, p256_int *s)
 {
 	int i, result;
-	struct DMEM_ecc *pEcc =
-	    (struct DMEM_ecc *) GREG32_ADDR(CRYPTO, DMEM_DUMMY);
-	/*
-	 * We can't allow other functions to write directly into DMEM_ecc,
-	 * as p256_int is a packed struct so those functions may perform
-	 * byte (as opposed to word) writes (in case the ptr operand is
-	 * unaligned), which are not compatible with the peripheral.
-	 */
 	p256_int rnd, k;
 
 	dcrypto_init_and_lock();
@@ -820,22 +840,26 @@ int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 
 	p256_add_d(&rnd, 1, &k);
 
-	cp8w(&pEcc->k, &k);
+	cp8w(DMEM_OFFSET(k), &k);
 
 	for (i = 0; i < 8; ++i)
-		rnd.a[i] = k.a[i] = pEcc->rnd.a[i] = rand();
+		cp1w(DMEM_OFFSET(rnd), i, rand());
 
-	cp8w(&pEcc->msg, message);
-	cp8w(&pEcc->d, key);
+	/* Wipe temp rnd,k */
+	rnd = dmem_read()->rnd;
+	k = dmem_read()->rnd;
+
+	cp8w(DMEM_OFFSET(msg), message);
+	cp8w(DMEM_OFFSET(d), key);
 
 	result |= dcrypto_call(CF_p256sign_adr);
 
-	cp8w(r, &pEcc->r);
-	cp8w(s, &pEcc->s);
+	*r = dmem_read()->r;
+	*s = dmem_read()->s;
 
 	/* Wipe d,k */
-	cp8w(&pEcc->d, &pEcc->rnd);
-	cp8w(&pEcc->k, &pEcc->rnd);
+	cp8w(DMEM_OFFSET(d), &rnd);
+	cp8w(DMEM_OFFSET(k), &rnd);
 
 	dcrypto_unlock();
 	return result == 0;
@@ -844,25 +868,23 @@ int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 int dcrypto_p256_base_point_mul(const p256_int *k, p256_int *x, p256_int *y)
 {
 	int i, result;
-	struct DMEM_ecc *pEcc =
-	    (struct DMEM_ecc *) GREG32_ADDR(CRYPTO, DMEM_DUMMY);
 
 	dcrypto_init_and_lock();
 	dcrypto_ecc_init();
 	result = dcrypto_call(CF_p256init_adr);
 
 	for (i = 0; i < 8; ++i)
-		pEcc->rnd.a[i] ^= rand();
+		cp1w(DMEM_OFFSET(rnd), i, dmem_read()->rnd.a[i] ^ rand());
 
-	cp8w(&pEcc->d, k);
+	cp8w(DMEM_OFFSET(d), k);
 
 	result |= dcrypto_call(CF_p256scalarbasemult_adr);
 
-	cp8w(x, &pEcc->x);
-	cp8w(y, &pEcc->y);
+	*x = dmem_read()->x;
+	*y = dmem_read()->y;
 
 	/* Wipe d */
-	cp8w(&pEcc->d, &pEcc->rnd);
+	cp8w(DMEM_OFFSET(d), &dmem_read()->rnd);
 
 	dcrypto_unlock();
 	return result == 0;
@@ -872,29 +894,27 @@ int dcrypto_p256_point_mul(const p256_int *k, const p256_int *in_x,
 			   const p256_int *in_y, p256_int *x, p256_int *y)
 {
 	int i, result;
-	struct DMEM_ecc *pEcc =
-	    (struct DMEM_ecc *) GREG32_ADDR(CRYPTO, DMEM_DUMMY);
 
 	dcrypto_init_and_lock();
 	dcrypto_ecc_init();
 	result = dcrypto_call(CF_p256init_adr);
 
 	for (i = 0; i < 8; ++i)
-		pEcc->rnd.a[i] ^= rand();
+		cp1w(DMEM_OFFSET(rnd), i, dmem_read()->rnd.a[i] ^ rand());
 
-	cp8w(&pEcc->k, k);
-	cp8w(&pEcc->x, in_x);
-	cp8w(&pEcc->y, in_y);
+	cp8w(DMEM_OFFSET(k), k);
+	cp8w(DMEM_OFFSET(x), in_x);
+	cp8w(DMEM_OFFSET(y), in_y);
 
 	result |= dcrypto_call(CF_p256scalarmult_adr);
 
-	cp8w(x, &pEcc->x);
-	cp8w(y, &pEcc->y);
+	*x = dmem_read()->x;
+	*y = dmem_read()->y;
 
 	/* Wipe k,x,y */
-	cp8w(&pEcc->k, &pEcc->rnd);
-	cp8w(&pEcc->x, &pEcc->rnd);
-	cp8w(&pEcc->y, &pEcc->rnd);
+	cp8w(DMEM_OFFSET(k), &dmem_read()->rnd);
+	cp8w(DMEM_OFFSET(x), &dmem_read()->rnd);
+	cp8w(DMEM_OFFSET(y), &dmem_read()->rnd);
 
 	dcrypto_unlock();
 	return result == 0;
@@ -905,23 +925,21 @@ int dcrypto_p256_ecdsa_verify(const p256_int *key_x, const p256_int *key_y,
 			      const p256_int *s)
 {
 	int i, result;
-	struct DMEM_ecc *pEcc =
-	    (struct DMEM_ecc *) GREG32_ADDR(CRYPTO, DMEM_DUMMY);
 
 	dcrypto_init_and_lock();
 	dcrypto_ecc_init();
 	result = dcrypto_call(CF_p256init_adr);
 
-	cp8w(&pEcc->msg, message);
-	cp8w(&pEcc->r, r);
-	cp8w(&pEcc->s, s);
-	cp8w(&pEcc->x, key_x);
-	cp8w(&pEcc->y, key_y);
+	cp8w(DMEM_OFFSET(msg), message);
+	cp8w(DMEM_OFFSET(r), r);
+	cp8w(DMEM_OFFSET(s), s);
+	cp8w(DMEM_OFFSET(x), key_x);
+	cp8w(DMEM_OFFSET(y), key_y);
 
 	result |= dcrypto_call(CF_p256verify_adr);
 
 	for (i = 0; i < 8; ++i)
-		result |= (pEcc->rnd.a[i] ^ r->a[i]);
+		result |= (dmem_read()->rnd.a[i] ^ r->a[i]);
 
 	dcrypto_unlock();
 	return result == 0;
@@ -930,20 +948,18 @@ int dcrypto_p256_ecdsa_verify(const p256_int *key_x, const p256_int *key_y,
 int dcrypto_p256_is_valid_point(const p256_int *x, const p256_int *y)
 {
 	int i, result;
-	struct DMEM_ecc *pEcc =
-	    (struct DMEM_ecc *) GREG32_ADDR(CRYPTO, DMEM_DUMMY);
 
 	dcrypto_init_and_lock();
 	dcrypto_ecc_init();
 	result = dcrypto_call(CF_p256init_adr);
 
-	cp8w(&pEcc->x, x);
-	cp8w(&pEcc->y, y);
+	cp8w(DMEM_OFFSET(x), x);
+	cp8w(DMEM_OFFSET(y), y);
 
 	result |= dcrypto_call(CF_p256isoncurve_adr);
 
 	for (i = 0; i < 8; ++i)
-		result |= (pEcc->r.a[i] ^ pEcc->s.a[i]);
+		result |= (dmem_read()->r.a[i] ^ dmem_read()->s.a[i]);
 
 	dcrypto_unlock();
 	return result == 0;
