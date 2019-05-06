@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbdb9685_cae8ac76",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-06T08:18:41Z",
+      "side": 1,
+      "message": "Consult with kuten@ about the GPIO status for SKUs without keyboard backlight and the NC of this pin should be fine for the control here.",
+      "revId": "6c76c66914f7a4d635bdee5ece0360ade4effd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
