@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9302b91_43878945",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-06T10:11:52Z",
+      "side": 1,
+      "message": "I\u0027d be grateful if someone can confirm my understanding of the \"memory\" clobber - specifically, that it is not needed here",
+      "range": {
+        "startLine": 773,
+        "startChar": 13,
+        "endLine": 773,
+        "endChar": 24
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b10914_489c4971",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-06T10:11:52Z",
+      "side": 1,
+      "message": "This assertion is based on experimentation, I would appreciate if someone with knowledge of the hardware can confirm this is as expected",
+      "range": {
+        "startLine": 790,
+        "startChar": 4,
+        "endLine": 792,
+        "endChar": 48
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
