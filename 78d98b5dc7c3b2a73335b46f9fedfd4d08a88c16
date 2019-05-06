@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "767ff973_0d4136cd",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-06T14:44:13Z",
+      "side": 1,
+      "message": "Yes that is correct, due to the __packed attribute on p256_int, and yes, I believe we could also solve this by casting to uint32_t*, but given how critical this is, and the fact that it fails silently if something goes wrong, I thought it was perhaps better to make it totally explicit, to avoid any regressions should any future compiler decide to do something strange (not that I would expect it to, but still..)\n\nAgree it looks a little odd though, definitely happy to defer to other\u0027s judgement as to the most appropriate fix.",
+      "parentUuid": "8ca0206a_43df1619",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 30
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9302b91_43878945",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
