@@ -118,6 +118,30 @@
       "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b365fd7d_268c347a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-06T17:43:22Z",
+      "side": 1,
+      "message": "My mistake, I mixed up my SRC and SNK state numbers.  The dongle is going from SNK_DISCONNECTED_DEBOUNCE -\u003e SRC_DISCONNECTED, which should be part of the try.src path.  And there we specifically set TRY_SRC after the set_state() call, I assume because the flag would have previously been cleared. \n\n2019-05-03 12:27:45 C1 st2\n2019-05-03 12:27:45 C1 st3\n2019-05-03 12:27:45 C1 st14\n2019-05-03 12:27:45 C1 st38\n2019-05-03 12:27:45 [73.516352 TCPC p1 Enter Low Power Mode]\n2019-05-03 12:27:45 [73.557284 TCPC p1 init ready]\n2019-05-03 12:27:45 [73.557700 TCPC p1 Exit Low Power Mode]",
+      "parentUuid": "5e66da3a_93e43614",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 55
+      },
+      "revId": "222c27f7f4867af151bd282e0c40b65e37666e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
