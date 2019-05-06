@@ -22,6 +22,30 @@
       "revId": "cd72422f774a748eb41ffcc3262384b489144d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fe6585_eb7dcda2",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-06T18:32:44Z",
+      "side": 1,
+      "message": "Sorry, just noticed the checkin summary that states no hardware pull-up.  Does the tcs3400 sensor get power cycled whenever the EC is reset or power-cycled?  And if EC power is off, is tcs3400 power rail also guaranteed to be off?\n\nI had soft-pull working on this line in earlier days, but eventually did run into some flakiness with the board, wasn\u0027t sure if there was a state where tcs3400 could be running when EC was not that might have been causing the flakiness I was experiencing.",
+      "parentUuid": "21ec22d8_aa5936b2",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "cd72422f774a748eb41ffcc3262384b489144d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
