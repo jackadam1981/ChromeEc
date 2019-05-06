@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8e56a693_839a3fa1",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-06T10:16:18Z",
+      "side": 1,
+      "message": "So I started implementing this and feels like having an opaque structure is a bit much.\n\nInstead, started implementing an alternative (have run out of time to finish today, will finish on Monday):\n\nNever have a non-const pointer to an instance of DMEM_ecc, instead:\n\n- dmem_read() - returns const pointer to DMEM_ecc struct\n- writes are done through cp8w() and cp1w() functions, guaranteed to write words; destination address calculated inside the function (possible since it\u0027s constant)",
+      "parentUuid": "fe2c92bd_42d0ac3c",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 25
+      },
+      "revId": "56e7fd1b09f71ece1dd6ce39e7da5b6230b11bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2a3a95a_c01cb2ac",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
