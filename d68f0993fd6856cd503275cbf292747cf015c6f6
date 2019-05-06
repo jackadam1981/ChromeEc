@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b483ee1_cda89caf",
+        "filename": "board/bloog/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-06T19:27:49Z",
+      "side": 1,
+      "message": "we should know if we are this variant in the leaf-node board.c files. Let\u0027s omit this ifdef please.\n\n\nOr you can define it in baseboard for the 3 different variations we know about (phaser, apel. casta). VARIANT_OCTOPUS_TCPC_0_PS8751, VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS, and VARIANT_OCTOPUS_USBC_EC_TCPCS would let you make a general one. (It might look really ugly, so your callon that)",
+      "range": {
+        "startLine": 330,
+        "startChar": 7,
+        "endLine": 330,
+        "endChar": 44
+      },
+      "revId": "d68f0993fd6856cd503275cbf292747cf015c6f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
