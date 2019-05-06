@@ -11,6 +11,7 @@
 #define __ISH_FWST_H
 
 #include "common.h"
+#include "console.h"
 #include "registers.h"
 
 /*
@@ -177,6 +178,8 @@ static inline void ish_fwst_set_fw_status(uint32_t val)
 
 	IPC_ISH_FWSTS = (fwst & ~IPC_ISH_FWSTS_FW_STATUS_MASK) |
 		(val << IPC_ISH_FWSTS_FW_STATUS_SHIFT);
+
+	ccprints("Firmware status is now %u", val);
 }
 
 /* get general fw status */
