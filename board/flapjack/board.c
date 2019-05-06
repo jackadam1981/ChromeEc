@@ -219,6 +219,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct i2c_port_t i2c_ports[] = {
 	{"charger",   I2C_PORT_CHARGER,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"tcpc0",     I2C_PORT_TCPC0,     400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+	{"als",       I2C_PORT_ALS,       400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"battery",   I2C_PORT_BATTERY,   400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"accelgyro", I2C_PORT_ACCEL,     400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"eeprom",    I2C_PORT_EEPROM,    400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
@@ -500,7 +501,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .location = MOTIONSENSE_LOC_LID,
 	 .drv = &tcs3400_drv,
 	 .drv_data = &g_tcs3400_data,
-	 .port = I2C_PORT_ACCEL,
+	 .port = I2C_PORT_ALS,
 	 .addr = TCS3400_I2C_ADDR,
 	 .rot_standard_ref = NULL,
 	 .default_range = 0x10000, /* scale = 1x, uscale = 0 */
@@ -521,12 +522,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .location = MOTIONSENSE_LOC_LID,
 	 .drv = &tcs3400_rgb_drv,
 	 .drv_data = &g_tcs3400_rgb_data,
-	 .port = 0,      /* set to 0 to generate an error if access by itself */
 	 .addr = TCS3400_I2C_ADDR,
 	 .rot_standard_ref = NULL,
 	 .default_range = 0x10000, /* scale = 1x, uscale = 0 */
-	 .min_frequency = 0, /* 0 indicates we should not use sensor directly */
-	 .max_frequency = 0, /* 0 indicates we should not use sensor directly */
 	},
 	[VSYNC] = {
 	 .name = "Camera vsync",
