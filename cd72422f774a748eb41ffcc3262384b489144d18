@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21ec22d8_aa5936b2",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-06T18:26:33Z",
+      "side": 1,
+      "message": "Does the new board not have a hardware pull-up on TCS3400_INT_ODL?",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "cd72422f774a748eb41ffcc3262384b489144d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
