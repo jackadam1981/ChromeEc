@@ -22,6 +22,30 @@
       "revId": "92b5f8218c27610e9d091b577dd0236805993d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5625662_5f25c58a",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-05-06T05:45:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "526f9e6d_a2ff6630",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "92b5f8218c27610e9d091b577dd0236805993d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
