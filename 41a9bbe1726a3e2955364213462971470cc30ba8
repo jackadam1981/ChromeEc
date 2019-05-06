@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ae91965f_5d1a6439",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-06T23:41:40Z",
+      "side": 1,
+      "message": "Can you set these to 3? If they\u0027re 2, it\u0027ll break wireless charging due to Flapjack\u0027s hardware design.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "41a9bbe1726a3e2955364213462971470cc30ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "056801df_8a4c7e61",
         "filename": "common/charge_manager.c",
         "patchSetId": 11
