@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "1e659c38_0c5efd07",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-06T17:47:24Z",
+      "side": 1,
+      "message": "I am getting spammed with this message whenever the lid angle is \u003c180 degrees. The message goes away (but we do not enter tablet mode) when we increase beyond 180 degrees.",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8be1ff0_48f56a84",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-06T17:47:24Z",
+      "side": 1,
+      "message": "CPRINTS?",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "6b6bed60f2de252500bef8f1740fe1f333d850bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a26ef82_6566aaff",
         "filename": "common/tablet_mode.c",
         "patchSetId": 1
