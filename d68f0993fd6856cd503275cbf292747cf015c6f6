@@ -22,6 +22,30 @@
       "revId": "d68f0993fd6856cd503275cbf292747cf015c6f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab28dd2_b478e924",
+        "filename": "board/bloog/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-06T19:48:23Z",
+      "side": 1,
+      "message": "It is a copy-paste issue. I initially defined it in baseboard, but it did not compile for ampton. Hence defined conditionally using #ifdef. But later on ended up copying it to individual variants without removing #ifdef. I will remove the #ifdef here. If I move to baseboard, then I have to conditionally define the chip info using #ifdef.",
+      "parentUuid": "1b483ee1_cda89caf",
+      "range": {
+        "startLine": 330,
+        "startChar": 7,
+        "endLine": 330,
+        "endChar": 44
+      },
+      "revId": "d68f0993fd6856cd503275cbf292747cf015c6f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
