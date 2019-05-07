@@ -16,6 +16,24 @@
       "revId": "8e3a151c8bd7bca1af14a9ddc8f6b1d15d62efbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b69fd8_0f9380f6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-07T23:42:50Z",
+      "side": 1,
+      "message": "Some boards don\u0027t even have hooks and CONFIG_COMMON_RUNTIME is the switch to enable it.",
+      "parentUuid": "c100ef8e_a2d925df",
+      "revId": "8e3a151c8bd7bca1af14a9ddc8f6b1d15d62efbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
