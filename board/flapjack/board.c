@@ -417,25 +417,25 @@ static struct mutex g_lid_mutex;
 
 static struct bmi160_drv_data_t g_bmi160_data;
 
-static struct tcs3400_drv_data_t g_tcs3400_data = {
+static struct als_drv_data_t g_tcs3400_data = {
 	.als_cal.scale = 1,
 	.als_cal.uscale = 0,
 	.als_cal.offset = 0,
 };
 
-static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
+static struct rgb_drv_data_t g_tcs3400_rgb_data = {
 	.device_scale = 1,
 	.device_uscale = 0,
 	.rgb_cal[X] = {
-		.scale = TCS3400_SCALE(1),
+		.scale = ALS_CHANNEL_SCALE(1),
 		.offset = 0,
 	},
 	.rgb_cal[Y] = {
-		.scale = TCS3400_SCALE(1),
+		.scale = ALS_CHANNEL_SCALE(1),
 		.offset = 0,
 	},
 	.rgb_cal[Z] = {
-		.scale = TCS3400_SCALE(1),
+		.scale = ALS_CHANNEL_SCALE(1),
 		.offset = 0,
 	},
 };
