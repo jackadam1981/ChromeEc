@@ -58,6 +58,8 @@
 
 enum tcs3400_mode {
 	TCS3400_MODE_SUSPEND = 0,
+	TCS3400_MODE_IDLE =       (TCS_I2C_ENABLE_POWER_ON |
+				   TCS_I2C_ENABLE_ADC_ENABLE),
 	TCS3400_MODE_COLLECTING = (TCS_I2C_ENABLE_POWER_ON |
 				   TCS_I2C_ENABLE_ADC_ENABLE |
 				   TCS_I2C_ENABLE_INT_ENABLE),
@@ -90,10 +92,35 @@ enum tcs3400_mode {
 #define TCS_MIN_ATIME           0x00            /* 712 ms */
 #define TCS_MAX_ATIME           0x70            /* 400 ms */
 #define TCS_DEFAULT_ATIME       TCS_MIN_ATIME   /* 712 ms */
+#define TCS_CALIBRATION_ATIME   TCS_MIN_ATIME
 
 #define TCS_MIN_AGAIN           0x00            /* 1x gain */
 #define TCS_MAX_AGAIN           0x03            /* 64x gain */
 #define TCS_DEFAULT_AGAIN       0x02            /* 16x gain */
+#define TCS_CALIBRATION_AGAIN   0x02            /* 16x gain */
+
+/* saturation auto-adjustment */
+struct tcs_saturation_t {
+	/*
+	 * Gain Scaling; must be value between 0 and 3
+	 *      0 - 1x scaling
+	 *      1 - 4x scaling
+	 *      2 - 16x scaling
+	 *      3 - 64x scaling
+	 */
+	uint8_t again;
+
+	/* Acquisition Time, controlled by the ATIME register */
+	uint8_t atime;             /* ATIME register setting */
+};
+
+enum xyz_coeff_index {
+	CLEAR_IDX = 0,
+	RED_IDX,
+	GREEN_IDX,
+	BLUE_IDX,
+	COEFF_CHANNEL_COUNT,
+};
 
 /* tcs3400 rgb als driver data */
 struct tcs3400_rgb_drv_data_t {
@@ -107,9 +134,11 @@ struct tcs3400_rgb_drv_data_t {
 	uint16_t device_scale;
 	uint16_t device_uscale;
 
-	int rate;          /* holds current sensor rate */
-	int last_value[3]; /* holds last RGB values */
-	struct rgb_calibration_t rgb_cal[3]; /* calibration data */
+	int rate;                /* holds current sensor rate */
+	uint8_t calibration_mode;/* 0 = normal mode, 1 = calibration mode */
+
+	struct rgb_calibration_t rgb_cal[3];    /* channel calibration data */
+	struct tcs_saturation_t saturation;     /* saturation adjustment */
 };
 
 extern const struct accelgyro_drv tcs3400_drv;
