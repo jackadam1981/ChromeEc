@@ -17,13 +17,15 @@ struct usb_endpoint {
 };
 
 /*
- * Find the requested USB endpoint, as determined by vid, pid, subclass and
- * protocol parameters. If found, fill up the uep structure. If succeeded,
+ * Find the requested USB endpoint. This finds the device from the serial
+ * number or the first device matching the vid and pid if no serial number is
+ * given.  The subclass and protocol are used to find the correct endpoint. If a
+ * matching endpoint is found, fill up the uep structure. If succeeded,
  * usb_shut_down() must be invoked before program exits.
  *
  * Return 0 on success, -1 on failure.
  */
-int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
+int usb_findit(char *serialno, uint16_t vid, uint16_t pid, uint16_t subclass,
 	       uint16_t protocol, struct usb_endpoint *uep);
 
 /*

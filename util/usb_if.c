@@ -66,10 +66,48 @@ out:
 	return iface_num;
 }
 
-int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
+static libusb_device_handle *check_device(libusb_device *dev,
+	uint16_t vid, uint16_t pid, char *serial)
+{
+	struct libusb_device_descriptor desc;
+	libusb_device_handle *handle = NULL;
+
+	if (libusb_get_device_descriptor(dev, &desc) < 0)
+		return NULL;
+
+	if (libusb_open(dev, &handle) != LIBUSB_SUCCESS)
+		return NULL;
+
+	/*
+	 * Use the serial number to find the device. Only check the VID PID if
+	 * serial isn't given.
+	 */
+	if (serial) {
+		char sn[256];
+
+		if (desc.iSerialNumber &&
+		    (libusb_get_string_descriptor_ascii(handle,
+							desc.iSerialNumber,
+							(unsigned char *)sn,
+							sizeof(sn)) > 0) &&
+		    !strcmp(sn, serial))
+			return handle;
+	} else if ((!vid || vid == desc.idVendor) &&
+		   (!pid || pid == desc.idProduct)) {
+		return handle;
+	}
+
+	libusb_close(handle);
+	return NULL;
+}
+
+int usb_findit(char *serial, uint16_t vid, uint16_t pid, uint16_t subclass,
 	       uint16_t protocol, struct usb_endpoint *uep)
 {
-	int iface_num, r;
+	int iface_num, r, i;
+	libusb_device **devs;
+	libusb_device_handle *devh = NULL;
+	ssize_t count;
 
 	memset(uep, 0, sizeof(*uep));
 
@@ -79,13 +117,31 @@ int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
 		goto terminate_usb_findit;
 	}
 
-	printf("open_device %04x:%04x\n", vid, pid);
-	/* NOTE: This doesn't handle multiple matches! */
-	uep->devh = libusb_open_device_with_vid_pid(NULL, vid, pid);
-	if (!uep->devh) {
+	printf("finding_device ");
+	if (serial)
+		printf("%s\n", serial);
+	else
+		printf("%04x:%04x\n", vid, pid);
+
+	count = libusb_get_device_list(NULL, &devs);
+	if (count < 0)
+		goto terminate_usb_findit;
+
+	for (i = 0; i < count; i++) {
+		devh = check_device(devs[i], vid, pid, serial);
+		if (devh) {
+			printf("Found device.\n");
+			break;
+		}
+	}
+
+	libusb_free_device_list(devs, 1);
+
+	if (!devh) {
 		fprintf(stderr, "Can't find device\n");
 		goto terminate_usb_findit;
 	}
+	uep->devh = devh;
 
 	iface_num = find_interface(subclass, protocol, uep);
 	if (iface_num < 0) {
