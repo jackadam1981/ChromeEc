@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deddd418_5457089b",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-07T18:06:46Z",
+      "side": 1,
+      "message": "move these after disable interrupts.",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3892bd_6f5ffc73",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-07T18:06:46Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9dd364_83f4d513",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-07T18:06:46Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
