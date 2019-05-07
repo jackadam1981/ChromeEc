@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2adf03a9_bc73373c",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-07T01:00:35Z",
+      "side": 1,
+      "message": "Mostly leaving this as a note for posterity, since this is a cherry-pick, but in C/C++ identifiers with a double underscore are reserved and should not be used.",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "05c0811b5ab15a5a980bd56e8149475dd60fc07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
