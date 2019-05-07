@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0369e72b_184f8523",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-07T03:57:20Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried about size not being last.\n\nAlso, don\u0027t we need utils to build some of the ro/rw stuff?\n\nIf build pass, we\u0027re probably fine, though...",
+      "range": {
+        "startLine": 307,
+        "startChar": 51,
+        "endLine": 307,
+        "endChar": 55
+      },
+      "revId": "b0ef936dbf4066d24c6d5e8bdcae1b3d16d7f00f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
