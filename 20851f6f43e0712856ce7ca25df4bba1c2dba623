@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a0a7b6e4_45edebca",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-07T18:45:47Z",
+      "side": 1,
+      "message": "Moved after in latest patch set.\n\nWhat is your concern with get_time? This looks like a simple procedure which will just use the main counter directly anyway. Should be safe to do in interrupt disabled section.",
+      "parentUuid": "24945187_9156cd30",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb3892bd_6f5ffc73",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b29a9b6d_a20ee0c9",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-07T18:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb3892bd_6f5ffc73",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d9dd364_83f4d513",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c63163_d902d559",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-07T18:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9dd364_83f4d513",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 389,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
