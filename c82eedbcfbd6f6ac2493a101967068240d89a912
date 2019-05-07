@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "6732dea3_28a3d809",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-05-07T14:27:54Z",
+      "side": 1,
+      "message": "nit, hook",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "201c0cba_d8f5d62c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +82,30 @@
       "writtenOn": "2019-05-07T02:28:15Z",
       "side": 1,
       "message": "That\u0027s a lot of SRAM. We really have that much available on servos?",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d69b92_3b224a89",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2019-05-07T14:27:54Z",
+      "side": 1,
+      "message": "From my build w/ this patch for servo_v4 said, \u00272336 bytes in RAM\u0027 remaining.  Solution remained robust for me stress testing down to 128 bytes as well.",
+      "parentUuid": "1c69fb53_7270c3d9",
       "range": {
         "startLine": 24,
         "startChar": 44,
