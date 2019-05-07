@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4350704_14b7a0c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-05-07T19:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d321e96_450685dc",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6732dea3_28a3d809",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f832f7d7_891be5c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-05-07T19:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6732dea3_28a3d809",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "201c0cba_d8f5d62c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95409bf_14d94f95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-05-07T19:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201c0cba_d8f5d62c",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +178,30 @@
       "side": 1,
       "message": "From my build w/ this patch for servo_v4 said, \u00272336 bytes in RAM\u0027 remaining.  Solution remained robust for me stress testing down to 128 bytes as well.",
       "parentUuid": "1c69fb53_7270c3d9",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "c82eedbcfbd6f6ac2493a101967068240d89a912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11dade61_92ab3d65",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-05-07T19:04:20Z",
+      "side": 1,
+      "message": "The remaining RAM space of the boards which have CONFIG_USB_CONSOLE enabled:\n  stm32f446e-eval 120444\n  twinkie 4620\n  polyberry 118780\n  pdeval-stm32f072 6556\n  tigertail 7068\n  servo_micro 3956\n  discovery-stm32f072 8732\n  sweetberry 114540\n  hammer 3660 (RO), 656 (RW)\n  servo_v4 2336\n\nChanging it to 128 bytes may drop too many chars and the interactive console may become useless. Each printf call is now async, not longer a blocking call. So the buffer grows faster. For example, the gpioget command returns a 1029-byte result, so 2048-byte is picked here.",
+      "parentUuid": "87d69b92_3b224a89",
       "range": {
         "startLine": 24,
         "startChar": 44,
