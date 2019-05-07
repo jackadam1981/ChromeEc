@@ -66,10 +66,53 @@ out:
 	return iface_num;
 }
 
-int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
-	       uint16_t protocol, struct usb_endpoint *uep)
+static libusb_device_handle *check_device(libusb_device *dev,
+	uint16_t vid, uint16_t pid, char *serial)
 {
-	int iface_num, r;
+	struct libusb_device_descriptor desc;
+	libusb_device_handle *handle = NULL;
+	char sn[256];
+	int ret;
+	int match = 1;
+	int snvalid = 0;
+
+	ret = libusb_get_device_descriptor(dev, &desc);
+	if (ret < 0)
+		return NULL;
+
+	ret = libusb_open(dev, &handle);
+
+	if (ret != LIBUSB_SUCCESS)
+		return NULL;
+
+	if (desc.iSerialNumber) {
+		ret = libusb_get_string_descriptor_ascii(handle,
+			desc.iSerialNumber, (unsigned char *)sn, sizeof(sn));
+		if (ret > 0)
+			snvalid = 1;
+	}
+
+	if (vid != 0 && vid != desc.idVendor)
+		match = 0;
+	if (pid != 0 && pid != desc.idProduct)
+		match = 0;
+	if (serial != NULL && (!snvalid || strstr(sn, serial) == NULL))
+		match = 0;
+
+	if (match)
+		return handle;
+
+	libusb_close(handle);
+	return NULL;
+}
+
+int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
+	       uint16_t protocol, struct usb_endpoint *uep, char *serial)
+{
+	int iface_num, r, i;
+	libusb_device **devs;
+	libusb_device_handle *devh = NULL;
+	ssize_t count;
 
 	memset(uep, 0, sizeof(*uep));
 
@@ -79,13 +122,27 @@ int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
 		goto terminate_usb_findit;
 	}
 
-	printf("open_device %04x:%04x\n", vid, pid);
-	/* NOTE: This doesn't handle multiple matches! */
-	uep->devh = libusb_open_device_with_vid_pid(NULL, vid, pid);
-	if (!uep->devh) {
+	printf("finding_device %04x:%04x %s\n", vid, pid, serial ? serial : "");
+
+	count = libusb_get_device_list(NULL, &devs);
+	if (count < 0)
+		goto terminate_usb_findit;
+
+	for (i = 0; devs[i]; i++) {
+		devh = check_device(devs[i], vid, pid, serial);
+		if (devh) {
+			printf("Found device.\n");
+			break;
+		}
+	}
+
+	libusb_free_device_list(devs, 1);
+
+	if (!devh) {
 		fprintf(stderr, "Can't find device\n");
 		goto terminate_usb_findit;
 	}
+	uep->devh = devh;
 
 	iface_num = find_interface(subclass, protocol, uep);
 	if (iface_num < 0) {

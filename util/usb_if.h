@@ -24,7 +24,7 @@ struct usb_endpoint {
  * Return 0 on success, -1 on failure.
  */
 int usb_findit(uint16_t vid, uint16_t pid, uint16_t subclass,
-	       uint16_t protocol, struct usb_endpoint *uep);
+	       uint16_t protocol, struct usb_endpoint *uep, char *serialno);
 
 /*
  * Actual USB transfer function, the 'allow_less' flag indicates that the

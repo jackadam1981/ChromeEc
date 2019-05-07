@@ -2535,7 +2535,7 @@ int main(int argc, char *argv[])
 	if (td.ep_type == usb_xfer) {
 		if (usb_findit(vid, pid, USB_SUBCLASS_GOOGLE_CR50,
 			       USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE,
-			       &td.uep))
+			       &td.uep, NULL))
 			exit(update_error);
 	} else if (td.ep_type == dev_xfer) {
 		td.tpm_fd = open("/dev/tpm0", O_RDWR);

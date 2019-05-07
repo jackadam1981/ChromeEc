@@ -810,7 +810,7 @@ static int connect_to_ccd_i2c_bridge(struct common_hnd *chnd)
 	int rv;
 
 	rv = usb_findit(chnd->conf.usb_vid, chnd->conf.usb_pid,
-			CR50_I2C_SUBCLASS, CR50_I2C_PROTOCOL, &chnd->uep);
+			CR50_I2C_SUBCLASS, CR50_I2C_PROTOCOL, &chnd->uep, NULL);
 
 	if (rv) {
 		fprintf(stderr, "%s: usb_findit returned error %d\n",
