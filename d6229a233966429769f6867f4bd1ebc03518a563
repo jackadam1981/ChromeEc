@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "e0305118_8c805f3f",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T01:05:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the config be selected at board level i.e. if there is a mix of variants that support/don\u0027t support the AUX FW update, then only the variants which support it should enable the CONFIG_*.\n\nBTW, I was wondering, do you really need a function callback for this? Or can it be just a global array and a global count variable that can be accessed directly in host_command_get_aux_fw_chip_list? I see that used commonly in EC e.g. motion_sensors[] in board.c",
+      "parentUuid": "07a6fe7d_0f32b99a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ca9d91_2f23e93b",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T01:05:03Z",
+      "side": 1,
+      "message": "Do we want to print an error in case the number of slots that host has is less than what the EC wants to tell about? Or set a bit indicating more slots available to host? I know this isn\u0027t a problem right now, but just wondering if that should be accounted for somewhere in the form of error or information.",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0abc363e_e6cb77ee",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
@@ -143,6 +190,29 @@
     },
     {
       "key": {
+        "uuid": "ea7db79c_2ad9500a",
+        "filename": "include/aux_fw_chip_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T01:05:03Z",
+      "side": 1,
+      "message": "Why is the declaration weak?",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1157a3ae_d795f15a",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -230,6 +300,29 @@
         "startChar": 33,
         "endLine": 4326,
         "endChar": 57
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7274ec65_b3914e92",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4333,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T01:05:03Z",
+      "side": 1,
+      "message": "Maybe use max here to make it clear that it is the max number of chips that the host can read info about.",
+      "range": {
+        "startLine": 4333,
+        "startChar": 9,
+        "endLine": 4333,
+        "endChar": 12
       },
       "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
