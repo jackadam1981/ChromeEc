@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91637390_e7bf6ad0",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T01:27:02Z",
+      "side": 1,
+      "message": "\"after\" not required?",
+      "range": {
+        "startLine": 149,
+        "startChar": 17,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "6905ad65c699b307a006860a91d4d716a06001ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed1d020a_533a4f3c",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T01:27:02Z",
+      "side": 1,
+      "message": "\"after\" not required.",
+      "range": {
+        "startLine": 226,
+        "startChar": 18,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "6905ad65c699b307a006860a91d4d716a06001ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
