@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "02044507_81613c36",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-07T01:09:13Z",
+      "side": 1,
+      "message": "Does this even need to be part of the API? Why not just send back as many records as you have... if that overflows the buffer on the other side, the host can detect that and decide how to deal with it.",
+      "parentUuid": "60ca9d91_2f23e93b",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0abc363e_e6cb77ee",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
