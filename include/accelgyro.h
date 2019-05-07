@@ -151,11 +151,45 @@ struct accelgyro_drv {
 #endif
 };
 
+/* Index values for rgb_calibration_t.coeff array */
+enum xyz_coeff_index {
+	TCS_CLEAR_COEFF_IDX = 0,
+	TCS_RED_COEFF_IDX,
+	TCS_GREEN_COEFF_IDX,
+	TCS_BLUE_COEFF_IDX,
+	COEFF_CHANNEL_COUNT,
+};
+
+/* Index values for rgb_scale array */
+enum rgb_index {
+	RED_RGB_IDX = 0,
+	GREEN_RGB_IDX,
+	BLUE_RGB_IDX,
+	RGB_CHANNEL_COUNT
+};
+
 /* Used to save sensor information */
 struct accelgyro_saved_data_t {
 	int odr;
 	int range;
 	uint16_t scale[3];
+};
+
+/* individual channel cover scaling and k factors */
+struct als_channel_scale_t {
+	/* channel scale factor */
+	uint16_t k_channel_scale;
+	uint16_t k_channel_uscale;
+
+	/* Cover compensation scale factor */
+	fp_t cover_scale;
+};
+
+struct crgb_channel_scale_t {
+	fp_t k_channel_scale;
+
+	/* Cover compensation scale factor */
+	fp_t cover_scale;
 };
 
 /* Calibration data */
@@ -169,18 +203,21 @@ struct als_calibration_t {
 	uint16_t scale;
 	uint16_t uscale;
 	int16_t offset;
+	struct crgb_channel_scale_t channel_scale;
 };
 
 /* RGB ALS Calibration Data */
 struct rgb_calibration_t {
 	/*
-	 * Each channel has a scaling factor for normalization, representing
-	 * a value between 0 and 2 (1 is translated as 1 << 15)
+	 * Each channel has scaling factor for normalization & cover
 	 */
-	uint16_t scale;
+	struct crgb_channel_scale_t scale;
 
 	/* Any offset to add to raw channel data */
 	int16_t offset;
+
+	/* Clear, R, G, and B coefficients for this channel */
+	fp_t coeff[COEFF_CHANNEL_COUNT];
 };
 
 /* als driver data */
@@ -195,5 +232,6 @@ struct als_drv_data_t {
 
 /* Individual channel scale value between 0 and 2 represented in 16 bits */
 #define ALS_CHANNEL_SCALE(_x) ((_x) << 15)
+#define ALS_APPLY_CHANNEL_SCALE(_x) ((_x) >> 15)
 
 #endif /* __CROS_EC_ACCELGYRO_H */
