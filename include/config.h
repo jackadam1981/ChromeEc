@@ -268,6 +268,9 @@
 /* Define to include the clear channel driver for the tcs3400 light sensor */
 #undef CONFIG_ALS_TCS3400
 
+/* Define to enable RGB to XYZ translation in tcs3400 light sensor driver */
+#undef CONFIG_RGB_XYZ_TRANSLATE
+
 /*
  * Define the event to raise when a sensor interrupt triggers.
  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
