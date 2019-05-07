@@ -4,7 +4,6 @@
  *
  * AMS TCS3400 light sensor driver
  */
-
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
@@ -13,6 +12,7 @@
 #include "i2c.h"
 #include "math_util.h"
 #include "task.h"
+#include "util.h"
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
 
@@ -35,6 +35,30 @@ static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 {
 	int ret;
+	const uint8_t calibration_mode =
+			TCS3400_RGB_DRV_DATA(s+1)->calibration_mode;
+	int atime, again;
+
+	/* Chip may have been off, make sure to to setup important registers */
+	if (calibration_mode) {
+		if (calibration_mode == CAL_MODE_SWITCH_PENDING) {
+			/* It's safe now to switch into calibration mode */
+			mutex_lock(s->mutex);
+			TCS3400_RGB_DRV_DATA(s+1)->calibration_mode = CAL_MODE;
+			mutex_unlock(s->mutex);
+		}
+		atime = TCS_CALIBRATION_ATIME;
+		again = TCS_CALIBRATION_AGAIN;
+	} else {
+		atime = TCS3400_RGB_DRV_DATA(s+1)->saturation.atime;
+		again = TCS3400_RGB_DRV_DATA(s+1)->saturation.again;
+	}
+	ret = tcs3400_i2c_write8(s, TCS_I2C_ATIME, atime);
+	if (ret)
+		return ret;
+	ret = tcs3400_i2c_write8(s, TCS_I2C_CONTROL, again);
+	if (ret)
+		return ret;
 
 	/* Enable power, ADC, and interrupt to start cycle */
 	ret = tcs3400_i2c_write8(s, TCS_I2C_ENABLE, TCS3400_MODE_COLLECTING);
@@ -56,23 +80,247 @@ static int tcs3400_rgb_read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
+/**
+ * At GAIN = 2 (16x), atime decrements of 5 equates to 2% of saturation.
+ */
+static void decrement_atime(struct tcs_saturation_t *sat_p, int percent)
+{
+	int steps = percent / TCS_PERCENT_PER_ATIME;
+	int atime = sat_p->atime - (TCS_ATIME_DEC_STEP * steps);
+
+	sat_p->atime = MAX(atime, TCS_MIN_ATIME);
+}
+
+static void increment_atime(struct tcs_saturation_t *sat_p)
+{
+	sat_p->atime = MIN(sat_p->atime + TCS_ATIME_INC_STEP, TCS_MAX_ATIME);
+}
+
+/*
+ * tcs3400_adjust_sensor_for_saturation() tries to keep CRGB values as
+ * close to saturation as possible without saturating by implementing
+ * the following logic:
+ *
+ * If any of the R, G, B, or C channels have saturated, then decrease AGAIN.
+ * If AGAIN is already at its minimum, increase ATIME if not at its max already.
+ *
+ * Else if none of the R, G, B, or C channels have saturated, and
+ * all samples read are less than 90% of saturation, then increase
+ * AGAIN if it is not already at its maximum, or if it is, decrease
+ * ATIME if it is not at it's minimum already.
+ */
+static int
+tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
+				     uint16_t *crgb_data)
+{
+	struct tcs_saturation_t *sat_p =
+			&TCS3400_RGB_DRV_DATA(s+1)->saturation;
+	const uint8_t save_again = sat_p->again;
+	const uint8_t save_atime = sat_p->atime;
+	uint16_t max_val =  0;
+	int ret = EC_SUCCESS;
+	int status = 0;
+
+	/* Adjust for saturation if needed */
+	ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &status);
+	if (ret)
+		return ret;
+
+	for (int x = 0; x < TCS_CHANNEL_COUNT; x++)
+		max_val = MAX(max_val, crgb_data[x]);
+
+	if ((status & TCS_I2C_STATUS_ALS_VALID) ||
+	    (max_val >= TCS_SATURATION_LEVEL)) {
+		/* Saturation occurred, decrease AGAIN if we can */
+		if (sat_p->again > TCS_MIN_AGAIN)
+			sat_p->again--;
+		else if (sat_p->atime < TCS_MAX_ATIME)
+			/* reduce accumulation time by incrementing ATIME reg */
+			increment_atime(sat_p);
+	} else if (max_val < ((TCS_SATURATION_LEVEL *
+				      TSC_SATURATION_LOW_BAND_PERCENT) / 100)) {
+		/* value < 90% saturation, try to increase sensitivity */
+		/* increase AGAIN if we can without saturating */
+		if (max_val <= TCS_GAIN_SAT_LEVEL) {
+			if (sat_p->again < TCS_MAX_AGAIN)
+				sat_p->again++;
+			else if (sat_p->atime > TCS_MIN_ATIME)
+				/* increase ATIME */
+				decrement_atime(sat_p,
+					TSC_SATURATION_LOW_BAND_PERCENT -
+					(max_val * 100 / TCS_SATURATION_LEVEL));
+
+		} else if (sat_p->atime > TCS_MIN_ATIME) {
+			/* increase ATIME */
+			decrement_atime(sat_p, TSC_SATURATION_LOW_BAND_PERCENT -
+					(max_val * 100 / TCS_SATURATION_LEVEL));
+		} else if (sat_p->again < TCS_MAX_AGAIN) {
+			/*
+			 * Although we're not at maximum gain yet, we
+			 * can't just increase gain because a 4x change
+			 * in gain under these light conditions would
+			 * saturate on the next sample.  What we can do
+			 * is to adjust atime to reduce sensitivity so
+			 * that we may increase gain without saturation.
+			 * This combination effectively acts as a half
+			 * gain increase (2x estimate) instead of a full
+			 * gain increase of 4x that would result in
+			 * saturation.
+			 */
+			sat_p->atime = TCS_GAIN_UPSHIFT_ATIME;
+			sat_p->again++;
+		}
+	}
+
+	/* If atime or gain setting changed, update atime and gain registers */
+	if (save_again != sat_p->again) {
+		ret = tcs3400_i2c_write8(s, TCS_I2C_CONTROL,
+				(sat_p->again & TCS_I2C_CONTROL_MASK));
+		if (ret)
+			return ret;
+	}
+
+	if (save_atime != sat_p->atime) {
+		ret = tcs3400_i2c_write8(s, TCS_I2C_CONTROL, sat_p->atime);
+		if (ret)
+			return ret;
+	}
+
+	return ret;
+}
+
+/**
+ * normalize_channel_data - normalize the light data to remove effect of
+ * different atime and again settings from the sample.
+ */
+static int normalize_channel_data(struct motion_sensor_t *s, int sample)
+{
+	struct tcs_saturation_t *sat_p =
+				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+	/* index of value = AGAIN register setting (eg. AGAIN=2 for 16x) */
+	const int tcs3400_agains[] = { 1, 4, 16, 64 };
+	const int cur_gain = tcs3400_agains[sat_p->again];
+	const int max_gain = 64;
+	const int max_atime = 256;
+
+	return(DIV_ROUND_NEAREST(sample * max_atime * max_gain,
+				(max_atime - sat_p->atime) * cur_gain));
+}
+
+
+static void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
+				     int32_t *crgb_data, int32_t *xyz_data)
+{
+	struct tcs3400_rgb_drv_data_t *rgb_drv_data = TCS3400_RGB_DRV_DATA(s+1);
+	int32_t crgb_prime[4];
+	int32_t IR;
+	int i;
+
+	/* IR removal */
+	IR = (crgb_data[1] + crgb_data[2] + crgb_data[3] - crgb_data[0]) / 2;
+
+	for (i = 0; i < ARRAY_SIZE(crgb_prime); i++) {
+		if (crgb_data[i] < IR)
+			crgb_prime[i] = 0;
+		else
+			crgb_prime[i] = crgb_data[i] - IR;
+	}
+
+	/* regression fit to XYZ space */
+	for (i = 0; i < 3; i++) {
+		const struct rgb_calibration_t *p = &rgb_drv_data->rgb_cal[i];
+
+		xyz_data[i] = p->offset +
+			fp_mul(p->coeff[RED_IDX], crgb_prime[RED_IDX]) +
+			fp_mul(p->coeff[GREEN_IDX], crgb_prime[GREEN_IDX]) +
+			fp_mul(p->coeff[BLUE_IDX], crgb_prime[BLUE_IDX]) +
+			fp_mul(p->coeff[CLEAR_IDX], crgb_prime[CLEAR_IDX]);
+
+		if (xyz_data[i] < 0)
+			xyz_data[i] = 0;
+	}
+}
+
+static void tcs3400_process_raw_data(struct motion_sensor_t *s,
+				    uint8_t *raw_data_buf,
+				    uint16_t *raw_light_data, fp_t *xyz_data)
+{
+	struct motion_sensor_t *rgb_s = s + 1;  /* rgb driver always at s+1 */
+	const uint8_t calibration_mode =
+			TCS3400_RGB_DRV_DATA(rgb_s)->calibration_mode;
+	int32_t crgb_data[4];
+	int32_t channel_scale = 1; /* 1x scale for clear channel */
+	int32_t device_scale = TCS3400_DRV_DATA(s)->als_cal.scale;
+	int32_t device_uscale = TCS3400_DRV_DATA(s)->als_cal.uscale;
+	int i;
+
+	/* adjust for calibration and scale data */
+	for (i = 0; i < 4; i++) {
+		int index = i * 2;
+
+		/* assemble the light value for this channel */
+		crgb_data[i] = raw_light_data[i] =
+			((raw_data_buf[index+1] << 8) | raw_data_buf[index]);
+
+		/* in calibration mode, we only assemble the raw data */
+		if (calibration_mode)
+			continue;
+
+		/* rgb data at index 1, 2, and 3 owned by rgb driver, not ALS */
+		if (i > 0) {
+			channel_scale =
+				TCS3400_RGB_DRV_DATA(rgb_s)->rgb_cal[i-1].scale;
+			/* convert scale format */
+			channel_scale = ALS_APPLY_CHANNEL_SCALE(channel_scale);
+			device_scale =
+				TCS3400_RGB_DRV_DATA(rgb_s)->device_scale;
+			device_uscale =
+				TCS3400_RGB_DRV_DATA(rgb_s)->device_uscale;
+
+		/* multiply by individual channel scale value (val 0..2) */
+		crgb_data[i] *= channel_scale;
+
+		/* compensate for the light cover */
+		crgb_data[i] = crgb_data[i] * device_scale +
+				crgb_data[i] * device_uscale / 10000;
+
+		/* normalize the data for atime and again changes */
+		crgb_data[i] = normalize_channel_data(s, crgb_data[i]);
+	}
+
+	if (calibration_mode == 0) {
+		tcs3400_translate_to_xyz(s, crgb_data, xyz_data);
+	} else {
+		/* calibration mode returns raw data */
+		for (i = 0; i < 3; i++)
+			xyz_data[i] = crgb_data[i+1];
+	}
+}
+
 static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 {
 	/*
-	 * Rule says RGB sensor is right after ALS sensor, and this
-	 * routine will only get called from ALS sensor driver.
+	 * Rule says RGB sensor is right after ALS sensor.
+	 * This routine will only get called from ALS sensor driver.
 	 */
 	struct motion_sensor_t *rgb_s = s + 1;
-	struct als_drv_data_t *drv_data = TCS3400_DRV_DATA(s);
-	struct tcs3400_rgb_drv_data_t *rgb_drv_data =
-			TCS3400_RGB_DRV_DATA(rgb_s);
+	const uint8_t calibration_mode =
+			TCS3400_RGB_DRV_DATA(rgb_s)->calibration_mode;
 	struct ec_response_motion_sensor_data vector;
-	uint8_t light_data[TCS_RGBC_DATA_SIZE];
-	int *v = s->raw_xyz;
-	int retries = 20; /* 400 ms max */
-	int rgb_data[3];
-	int data = 0;
-	int i, ret;
+	uint8_t buf[TCS_RGBC_DATA_SIZE]; /* holds raw data read from chip */
+	int32_t xyz_data[3] = { 0, 0, 0 };
+	uint16_t raw_data[4]; /* holds raw CRGB data assembled from buf[] */
+	int retries = 20;     /* 400 ms max */
+	int *last_v = s->raw_xyz;
+	int32_t data = 0;
+	int i, ret = EC_SUCCESS;
+
+	/*
+	 * if a switch to calibration mode was requested, abort reporting data
+	 * for this pass.
+	 */
+	if (calibration_mode == CAL_MODE_SWITCH_PENDING)
+		return EC_SUCCESS;
 
 	/* Make sure data is valid */
 	do {
@@ -90,40 +338,32 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 
 	/* Read the light registers */
 	ret = i2c_read_block(s->port, s->addr, TCS_DATA_START_LOCATION,
-			light_data, sizeof(light_data));
+			buf, sizeof(buf));
 	if (ret)
 		return ret;
 
-	/* Transfer Clear data into sensor struct and into fifo */
-	data = (light_data[1] << 8) | light_data[0];
-	data += drv_data->als_cal.offset;
-	data = data * drv_data->als_cal.scale +
-			data * drv_data->als_cal.uscale / 10000;
+	/* Process the raw light data, adjusting for scale and calibration */
+	tcs3400_process_raw_data(s, buf, raw_data, xyz_data);
 
-	/* Correct negative values to zero */
-	if (data < 0) {
-		CPRINTS("Negative clear val 0x%x set to 0", data);
-		data = 0;
-	}
-
-	if (data != drv_data->last_value) {
-		drv_data->last_value = data;
+	/* if clear channel data changed, send illuminance upstream */
+	if ((raw_data[CLEAR_IDX] != TCS_SATURATION_LEVEL) &&
+	    (last_v[X] != xyz_data[Y])) {
+		if (calibration_mode)
+			last_v[X] = raw_data[CLEAR_IDX];
+		else
+			last_v[X] = xyz_data[Y];
 		vector.flags = 0;
+		vector.data[X] = last_v[X];
+		vector.data[Y] = last_v[Y] = 0;
+		vector.data[Z] = last_v[Z] = 0;
+
 #ifdef CONFIG_ACCEL_SPOOF_MODE
+		/* If in spoof mode, replace actual data with our fake data */
 		if (s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) {
 			for (i = 0; i < 3; i++)
-				vector.data[i] = v[i] = s->spoof_xyz[i];
-			goto skip_clear_vector_load;
+				vector.data[i] = last_v[i] = s->spoof_xyz[i];
 		}
-#endif  /* defined(CONFIG_ACCEL_SPOOF_MODE) */
-
-		vector.data[X] = v[X] = data;
-		vector.data[Y] = v[Y] = 0;
-		vector.data[Z] = v[Z] = 0;
-
-#ifdef CONFIG_ACCEL_SPOOF_MODE
-skip_clear_vector_load:
-#endif
+#endif /* CONFIG_ACCEL_SPOOF_MODE */
 
 #ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = s - motion_sensors;
@@ -131,64 +371,46 @@ skip_clear_vector_load:
 #endif
 	}
 
-#ifdef CONFIG_ACCEL_SPOOF_MODE
-	if (s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) {
-		rgb_data[X] = s->spoof_xyz[X];
-		rgb_data[Y] = s->spoof_xyz[Y];
-		rgb_data[Z] = s->spoof_xyz[Z];
-		goto skip_rgb_load;
-	}
-#endif
-
-	for (i = 0; i < 3; i++) {
-		/* rgb data at indicies 2 thru 7 inclusive in light_data */
-		int index = 3 + (i * 2);
-
-		rgb_data[i] = ((light_data[index] << 8) | light_data[index-1]);
-		rgb_data[i] += rgb_drv_data->rgb_cal[i].offset;
-		rgb_data[i] *= rgb_drv_data->rgb_cal[i].scale >> 15;
-		rgb_data[i] = rgb_data[i] * rgb_drv_data->device_scale +
-			rgb_data[i] * rgb_drv_data->device_uscale / 10000;
-
-		/* Correct any negative values to zero */
-		if (rgb_data[i] < 0) {
-			CPRINTS("Negative rgb channel #%d val 0x%x set to 0",
-				i, rgb_data[i]);
-			rgb_data[i] = 0;
-		}
-	}
-
-#ifdef CONFIG_ACCEL_SPOOF_MODE
-skip_rgb_load:
-#endif
-	/* If anything changed, transfer RGB data */
-	if ((rgb_drv_data->last_value[X] != rgb_data[X]) ||
-		(rgb_drv_data->last_value[Y] != rgb_data[Y]) ||
-		(rgb_drv_data->last_value[Z] != rgb_data[Z])) {
-		for (i = 0; i < 3; i++)
-			rgb_drv_data->last_value[i] = rgb_data[i];
-		v = rgb_s->raw_xyz;
+	/*
+	 * If rgb channel data changed since last sample and didn't saturate,
+	 * send it upstream
+	 */
+	last_v = rgb_s->raw_xyz;
+	if (((last_v[X] != xyz_data[X]) || (last_v[Y] != xyz_data[Y]) ||
+		(last_v[Z] != xyz_data[Z])) &&
+		((raw_data[RED_IDX] != TCS_SATURATION_LEVEL) &&
+		(raw_data[BLUE_IDX] != TCS_SATURATION_LEVEL) &&
+		(raw_data[GREEN_IDX] != TCS_SATURATION_LEVEL))) {
 		vector.flags = 0;
+		if (calibration_mode) {
+			for (i = 0; i < 3; i++)
+				vector.data[i] = last_v[i] = raw_data[i+1];
+		} else {
+			for (i = 0; i < 3; i++)
+				vector.data[i] = last_v[i] = xyz_data[i];
+		}
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 		if (rgb_s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) {
-			for (i = 0; i < 3; i++)
-				vector.data[i] = v[i] = rgb_s->spoof_xyz[i];
-			goto skip_vector_load;
+			for (i = 0; i < 3; i++) {
+				vector.data[i] = last_v[i] =
+						rgb_s->spoof_xyz[i];
+			}
 		}
-#endif  /* defined(CONFIG_ACCEL_SPOOF_MODE) */
+#endif /* CONFIG_ACCEL_SPOOF_MODE */
 
-		vector.data[X] = v[X] = rgb_data[X];
-		vector.data[Y] = v[Y] = rgb_data[Y];
-		vector.data[Z] = v[Z] = rgb_data[Z];
-
-#ifdef CONFIG_ACCEL_SPOOF_MODE
-skip_vector_load:
-#endif
+#ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = rgb_s - motion_sensors;
 		motion_sense_fifo_stage_data(&vector, rgb_s, 3, last_ts);
+#endif
 	}
+#ifdef CONFIG_ACCEL_FIFO
 	motion_sense_fifo_commit_data();
-	return EC_SUCCESS;
+#endif
+
+	if (calibration_mode == CAL_RUN_MODE)
+		ret = tcs3400_adjust_sensor_for_saturation(s, raw_data);
+
+	return ret;
 }
 
 void tcs3400_interrupt(enum gpio_signal signal)
@@ -204,6 +426,11 @@ void tcs3400_interrupt(enum gpio_signal signal)
  * tcs3400_irq_handler - bottom half of the interrupt stack.
  * Ran from the motion_sense task, finds the events that raised the interrupt,
  * and posts those events via motion_sense_fifo_stage_data()..
+ *
+ * This routine will get called for the TCS3400 ALS driver, but NOT for the
+ * RGB driver.  We harvest data for both drivers in this routine.  The RGB
+ * driver is guaranteed to directly follow the ALS driver in the sensor list
+ * (i.e rgb's motion_sensor_t structure can be found at (s+1) ).
  */
 static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
@@ -311,6 +538,16 @@ static int tcs3400_rgb_set_data_rate(const struct motion_sensor_t *s,
 	return EC_SUCCESS;
 }
 
+/* Set driver into special factory calibration mode */
+static int tcs3400_rgb_perform_calib(const struct motion_sensor_t *s)
+{
+	/* Let driver know it's time to switch into calibration mode */
+	mutex_lock(s->mutex);
+	TCS3400_RGB_DRV_DATA(s+1)->calibration_mode = CAL_MODE_SWITCH_PENDING;
+	mutex_unlock(s->mutex);
+	return EC_SUCCESS;
+}
+
 static int tcs3400_get_range(const struct motion_sensor_t *s)
 {
 	return (TCS3400_DRV_DATA(s)->als_cal.scale << 16) |
@@ -411,7 +648,7 @@ static int tcs3400_init(const struct motion_sensor_t *s)
 		{ TCS_I2C_AIHTH, 0 },
 		{ TCS_I2C_PERS, 0 },
 		{ TCS_I2C_CONFIG, 0x40 },
-		{ TCS_I2C_CONTROL, (TCS_DEFAULT_AGAIN & TCS_I2C_CONTROL_MASK)},
+		{ TCS_I2C_CONTROL, (TCS_DEFAULT_AGAIN & TCS_I2C_CONTROL_MASK) },
 		{ TCS_I2C_AUX, 0 },
 		{ TCS_I2C_IR, 0 },
 		{ TCS_I2C_CICLEAR, 0 },
@@ -449,6 +686,7 @@ const struct accelgyro_drv tcs3400_drv = {
 	.get_offset = tcs3400_get_offset,
 	.set_data_rate = tcs3400_set_data_rate,
 	.get_data_rate = tcs3400_get_data_rate,
+	.perform_calib = tcs3400_rgb_perform_calib,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = tcs3400_irq_handler,
 #endif
