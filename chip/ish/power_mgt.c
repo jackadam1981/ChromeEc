@@ -316,15 +316,15 @@ static void enter_d0i1(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
+	/* collect statistics */
+	t1 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
+	pm_stats.d0i1_time_us += t1.val - t0.val;
+	pm_stats.d0i1_cnt++;
+
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
 	restore_interrupts(current_irq_map);
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
-
-	t1 = get_time();
-	pm_stats.d0i1_time_us += t1.val - t0.val;
-	pm_stats.d0i1_cnt++;
 }
 
 #endif
@@ -364,16 +364,15 @@ static void enter_d0i2(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
+	/* collect statistics */
+	t1 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
+	pm_stats.d0i2_time_us += t1.val - t0.val;
+	pm_stats.d0i2_cnt++;
+
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
 	restore_interrupts(current_irq_map);
-
-	t1 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
-
-	pm_stats.d0i2_time_us += t1.val - t0.val;
-	pm_stats.d0i2_cnt++;
 }
 
 #endif
@@ -413,16 +412,15 @@ static void enter_d0i3(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
+	/* collect statistics */
+	t1 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
+	pm_stats.d0i3_time_us += t1.val - t0.val;
+	pm_stats.d0i3_cnt++;
+
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
 	restore_interrupts(current_irq_map);
-
-	t1 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
-
-	pm_stats.d0i3_time_us += t1.val - t0.val;
-	pm_stats.d0i3_cnt++;
 }
 
 #endif
