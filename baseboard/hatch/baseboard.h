@@ -19,6 +19,7 @@
 
 /* Optional console commands */
 #define CONFIG_CMD_CHARGER_DUMP
+#define CONFIG_CMD_BATT_MFG_ACCESS
 
 /* EC Defines */
 #define CONFIG_ADC
