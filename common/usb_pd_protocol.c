@@ -102,6 +102,7 @@ static const int debug_level;
  * shown in the chrome OS UI.
  */
 #define SNK_READY_HOLD_OFF_US (200 * MSEC)
+#define SRC_READY_HOLD_OFF_US (200 * MSEC)
 
 enum vdm_states {
 	VDM_STATE_ERR_BUSY = -3,
@@ -255,6 +256,7 @@ static struct pd_protocol {
 	 * the port partner to send any messages in order to avoid a collision.
 	 */
 	uint64_t snk_ready_holdoff_timer;
+	uint64_t src_ready_holdoff_timer;
 } pd[CONFIG_USB_PD_PORT_COUNT];
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -693,6 +695,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif /* CONFIG_USBC_PPC */
 		/* Clear the SNK_READY holdoff timer. */
 		pd[port].snk_ready_holdoff_timer = 0;
+		pd[port].src_ready_holdoff_timer = 0;
 
 		/* Clear the input current limit */
 		pd_set_input_current_limit(port, 0, 0);
@@ -3350,6 +3353,14 @@ void pd_task(void *u)
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res >= 0) {
 				timeout = 10*MSEC;
+
+				/*
+				 * Give the sink some time to send any messages
+				 * before we may send messages of our own.
+				 */
+				pd[port].src_ready_holdoff_timer =
+					get_time().val + SRC_READY_HOLD_OFF_US;
+
 				/* it'a time to ping regularly the sink */
 				set_state(port, PD_STATE_SRC_READY);
 			} else {
@@ -3359,6 +3370,16 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SRC_READY:
 			timeout = PD_T_SOURCE_ACTIVITY;
+
+			/*
+			 * Don't send any traffic yet until our holdoff timer
+			 * has expired.  Some devices are chatty once we reach
+			 * the SRC_READY state and we may end up in a collision
+			 * of messages if we try to immediately send our
+			 * interrogations.
+			 */
+			if (get_time().val <= pd[port].src_ready_holdoff_timer)
+				break;
 
 			/*
 			 * Don't send any PD traffic if we woke up due to
