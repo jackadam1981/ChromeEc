@@ -293,19 +293,17 @@ static void enter_d0i0(void)
 static void enter_d0i1(void)
 {
 	uint64_t current_irq_map;
-
 	timestamp_t t0, t1;
-	t0 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I1;
 
 	/* only enable PMU wakeup interrupt */
 	current_irq_map = disable_all_interrupts();
 	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
-#ifdef CONFIG_ISH_PM_RESET_PREP
-	task_enable_irq(ISH_RESET_PREP_IRQ);
-#endif
+	t0 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I1;
+
+	if (IS_ENABLED(CONFIG_ISH_PM_RESET_PREP))
+		task_enable_irq(ISH_RESET_PREP_IRQ);
 
 	/* enable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 1;
@@ -316,15 +314,15 @@ static void enter_d0i1(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
+	/* collect statistics */
+	t1 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
+	pm_stats.d0i1_time_us += t1.val - t0.val;
+	pm_stats.d0i1_cnt++;
+
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
 	restore_interrupts(current_irq_map);
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
-
-	t1 = get_time();
-	pm_stats.d0i1_time_us += t1.val - t0.val;
-	pm_stats.d0i1_cnt++;
 }
 
 #endif
@@ -334,19 +332,17 @@ static void enter_d0i1(void)
 static void enter_d0i2(void)
 {
 	uint64_t current_irq_map;
-
 	timestamp_t t0, t1;
-	t0 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I2;
 
 	/* only enable PMU wakeup interrupt */
 	current_irq_map = disable_all_interrupts();
 	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
-#ifdef CONFIG_ISH_PM_RESET_PREP
-	task_enable_irq(ISH_RESET_PREP_IRQ);
-#endif
+	t0 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I2;
+
+	if (IS_ENABLED(CONFIG_ISH_PM_RESET_PREP))
+		task_enable_irq(ISH_RESET_PREP_IRQ);
 
 	/* enable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 1;
@@ -364,16 +360,15 @@ static void enter_d0i2(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
+	/* collect statistics */
+	t1 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
+	pm_stats.d0i2_time_us += t1.val - t0.val;
+	pm_stats.d0i2_cnt++;
+
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
 	restore_interrupts(current_irq_map);
-
-	t1 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
-
-	pm_stats.d0i2_time_us += t1.val - t0.val;
-	pm_stats.d0i2_cnt++;
 }
 
 #endif
@@ -385,17 +380,16 @@ static void enter_d0i3(void)
 	uint64_t current_irq_map;
 	timestamp_t t0, t1;
 
-	t0 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I3;
 
 	/* only enable PMU wakeup interrupt */
 	current_irq_map = disable_all_interrupts();
 	task_enable_irq(ISH_PMU_WAKEUP_IRQ);
 
-#ifdef CONFIG_ISH_PM_RESET_PREP
-	task_enable_irq(ISH_RESET_PREP_IRQ);
-#endif
+	t0 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I3;
+
+	if (IS_ENABLED(CONFIG_ISH_PM_RESET_PREP))
+		task_enable_irq(ISH_RESET_PREP_IRQ);
 
 	/* enable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 1;
@@ -413,16 +407,15 @@ static void enter_d0i3(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
+	/* collect statistics */
+	t1 = get_time();
+	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
+	pm_stats.d0i3_time_us += t1.val - t0.val;
+	pm_stats.d0i3_cnt++;
+
 	/* restore interrupts */
 	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
 	restore_interrupts(current_irq_map);
-
-	t1 = get_time();
-
-	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
-
-	pm_stats.d0i3_time_us += t1.val - t0.val;
-	pm_stats.d0i3_cnt++;
 }
 
 #endif
