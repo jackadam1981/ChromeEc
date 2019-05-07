@@ -76,6 +76,7 @@ enum tcs3400_mode {
 #define TCS_DATA_START_LOCATION             TCS_I2C_CDATAL
 #define TCS_CLEAR_DATA_SIZE                 2
 #define TCS_RGBC_DATA_SIZE                  8
+#define TCS_CHANNEL_COUNT                   4
 
 /* Min and Max sampling frequency in mHz */
 #define TCS3400_LIGHT_MIN_FREQ              149
@@ -91,11 +92,65 @@ enum tcs3400_mode {
 /* NOTE: The higher the ATIME value in reg, the shorter the accumulation time */
 #define TCS_MIN_ATIME           0x00            /* 712 ms */
 #define TCS_MAX_ATIME           0x70            /* 400 ms */
+#define TCS_SATURATION_LEVEL    0xffff          /* for 0 < atime < 0x70 */
 #define TCS_DEFAULT_ATIME       TCS_MIN_ATIME   /* 712 ms */
+#define TCS_CALIBRATION_ATIME   TCS_MIN_ATIME
+#define TCS_GAIN_UPSHIFT_ATIME  ((TCS_MAX_ATIME - TCS_MIN_ATIME) / 2)
 
 #define TCS_MIN_AGAIN           0x00            /* 1x gain */
 #define TCS_MAX_AGAIN           0x03            /* 64x gain */
-#define TCS_DEFAULT_AGAIN       0x02            /* 16x gain */
+#define TCS_CALIBRATION_AGAIN   0x02            /* 16x gain */
+#define TCS_DEFAULT_AGAIN       TCS_CALIBRATION_AGAIN
+
+#define TCS_ATIME_DEC_STEP      5
+#define TCS_ATIME_INC_STEP      TCS_GAIN_UPSHIFT_ATIME
+
+/*
+ * Factor to multiply light value by to determine if an increase in gain
+ * would cause the next value to saturate.
+ *
+ * On the TCS3400, gain increases 4x each time again register setting is
+ * incremented.  However, I see cases where values that are 24% of saturation
+ * go into saturation after increasing gain, causing a back-and-forth cycle to
+ * occur :
+ *
+ * [134.654994 tcs3400_adjust_sensor_for_saturation value=65535 100% Gain=2 ]
+ * [135.655064 tcs3400_adjust_sensor_for_saturation value=15750 24% Gain=1 ]
+ * [136.655107 tcs3400_adjust_sensor_for_saturation value=65535 100% Gain=2 ]
+ *
+ * To avoid this, we require value to be <= 20% of saturation level
+ * (TCS_GAIN_SAT_LEVEL) before allowing gain to be increased.
+ */
+#define TCS_GAIN_ADJUST_FACTOR 5
+#define TCS_GAIN_SAT_LEVEL     (TCS_SATURATION_LEVEL / TCS_GAIN_ADJUST_FACTOR)
+
+
+/*
+ * Percentage of saturation level that the auto-adjusting anti-saturation
+ * method will drive towards.
+ */
+#define TSC_SATURATION_LOW_BAND_PERCENT 90
+
+enum calibration_mode {
+	TCS_RUN_MODE = 0,
+	TCS_SWITCH_PENDING_MODE,
+	TCS_CAL_MODE,
+};
+
+/* saturation auto-adjustment */
+struct tcs_saturation_t {
+	/*
+	 * Gain Scaling; must be value between 0 and 3
+	 *      0 - 1x scaling
+	 *      1 - 4x scaling
+	 *      2 - 16x scaling
+	 *      3 - 64x scaling
+	 */
+	uint8_t again;
+
+	/* Acquisition Time, controlled by the ATIME register */
+	uint8_t atime;             /* ATIME register setting */
+};
 
 /* tcs3400 rgb als driver data */
 struct tcs3400_rgb_drv_data_t {
@@ -109,9 +164,11 @@ struct tcs3400_rgb_drv_data_t {
 	uint16_t device_scale;
 	uint16_t device_uscale;
 
-	int rate;          /* holds current sensor rate */
-	int last_value[3]; /* holds last RGB values */
-	struct rgb_calibration_t rgb_cal[3]; /* calibration data */
+	int rate;                /* holds current sensor rate */
+	uint8_t calibration_mode;/* 0 = normal mode, 1 = calibration mode */
+
+	struct rgb_calibration_t rgb_cal[3];    /* channel calibration data */
+	struct tcs_saturation_t saturation;     /* saturation adjustment */
 };
 
 extern const struct accelgyro_drv tcs3400_drv;
