@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "818aa486_3b6de3cb",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-05-07T12:14:07Z",
+      "side": 1,
+      "message": "Delay 200ms is to prepare the environment to load the custom battery parameters, otherwise the initialization operation has a very small probability of failure. In addition, the minimum value provided by the supplier is 180ms.",
+      "parentUuid": "5695a56f_7138f667",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 13
+      },
+      "revId": "06dfcee3ae1cb06311f2a0b752d015f5711c2380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1029d10f_a53e2bab",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 8
