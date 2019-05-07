@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "7fa2efb9_a057631b",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-07T21:09:44Z",
+      "side": 1,
+      "message": "Found that records up until args-\u003eresponse_max size can be copied over.\n\nAt the depthcharge side, all the 3 physical transports LPC, I2C, SPI check the response length and see if it can fit in the provided buffer. If the response length is too large, all of them return error to the caller of the ec_command. I hope the error won\u0027t stall the bus for future transactions.",
+      "parentUuid": "7f26250e_4951daf0",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0abc363e_e6cb77ee",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
