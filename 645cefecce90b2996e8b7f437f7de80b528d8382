@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b59b01a_4eaf7dcb",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-07T23:44:51Z",
+      "side": 1,
+      "message": "sn_valid  would be better readable",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe12c1f_a557b557",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-07T23:44:51Z",
+      "side": 1,
+      "message": "you are not using the value or \u0027ret\u0027 - no need in this variable.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74073ea8_29c3ac3b",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-07T23:44:51Z",
+      "side": 1,
+      "message": "I don\u0027t think it is particularly useful to specify vid/pid if serial number is given, sn should be used on its own.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545aac0e_3b842cc3",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-07T23:44:51Z",
+      "side": 1,
+      "message": "no need to say \u0027vid !\u003d 0\u0027 or \u0027serial !\u003d NULL\u0027\n\nif (vid \u0026\u0026 ...)\n\nworks just as well",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0b7427_295af084",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-07T23:44:51Z",
+      "side": 1,
+      "message": "no point to check the next condition if match is already 0, just goto line 105",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1f5cac_014a0e83",
+        "filename": "util/usb_if.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-07T23:44:51Z",
+      "side": 1,
+      "message": "Comment needs updating.",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
