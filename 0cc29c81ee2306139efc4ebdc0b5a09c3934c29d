@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51c13c81_cf40a9db",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-05-07T03:56:42Z",
+      "side": 1,
+      "message": "Done.. like this?",
+      "parentUuid": "2a29ac99_eadae368",
+      "range": {
+        "startLine": 307,
+        "startChar": 14,
+        "endLine": 307,
+        "endChar": 61
+      },
+      "revId": "0cc29c81ee2306139efc4ebdc0b5a09c3934c29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1cafe0c_471a56e8",
         "filename": "Makefile",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-07T02:12:58Z",
       "side": 1,
       "message": "The CONFIG options needs to be defined in include/config.h, with a short help text.",
+      "range": {
+        "startLine": 308,
+        "startChar": 8,
+        "endLine": 308,
+        "endChar": 28
+      },
+      "revId": "0cc29c81ee2306139efc4ebdc0b5a09c3934c29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b50109_544e55f0",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-05-07T03:56:42Z",
+      "side": 1,
+      "message": "it\u0027s documented in [1] (and already disabled in kukui_scp, so we don\u0027t need to add any change to our board).\n[1] https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/config.h#1773",
+      "parentUuid": "d1cafe0c_471a56e8",
       "range": {
         "startLine": 308,
         "startChar": 8,
