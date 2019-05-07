@@ -407,7 +407,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
 	/* Enable interrupt for the TCS3400 color light sensor */
-	if (board_version >= 5)
+	if (board_version >= 4)
 		gpio_enable_interrupt(GPIO_TCS3400_INT_ODL);
 
 	/* Enable interrupt for the camera vsync. */
@@ -465,15 +465,23 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 	.rgb_cal[X] = {
 		.scale = ALS_CHANNEL_SCALE(1),
 		.offset = 0,
+		.coeff = { FLOAT_TO_FP(2.05525307), FLOAT_TO_FP(-2.05205685),
+			   FLOAT_TO_FP(-1.6946458), FLOAT_TO_FP(-1.85571913) },
 	},
 	.rgb_cal[Y] = {
 		.scale = ALS_CHANNEL_SCALE(1),
 		.offset = 0,
+		.coeff = { FLOAT_TO_FP(0.59699702), FLOAT_TO_FP(-0.56134163),
+			   FLOAT_TO_FP(-0.11694474), FLOAT_TO_FP(-0.49391053) },
 	},
 	.rgb_cal[Z] = {
 		.scale = ALS_CHANNEL_SCALE(1),
 		.offset = 0,
+		.coeff = { FLOAT_TO_FP(6.54566672), FLOAT_TO_FP(-8.39352659),
+			   FLOAT_TO_FP(-4.52915818), FLOAT_TO_FP(-6.71489823) },
 	},
+	.saturation.again = TCS_DEFAULT_AGAIN,
+	.saturation.atime = TCS_DEFAULT_ATIME,
 };
 
 /* Matrix to rotate accelerometer into standard reference frame */
