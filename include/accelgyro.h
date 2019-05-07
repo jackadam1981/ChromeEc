@@ -175,6 +175,9 @@ struct rgb_calibration_t {
 
 	/* Any offset to add to raw channel data */
 	int16_t offset;
+
+	/* Clear, R, G, and B coefficients for this channel */
+	fp_t coeff[4];
 };
 
 /* als driver data */
@@ -189,5 +192,6 @@ struct als_drv_data_t {
 
 /* Individual channel scale value between 0 and 2 represented in 16 bits */
 #define ALS_CHANNEL_SCALE(_x) ((_x) << 15)
+#define ALS_APPLY_CHANNEL_SCALE(_x) ((_x) >> 15)
 
 #endif /* __CROS_EC_ACCELGYRO_H */
