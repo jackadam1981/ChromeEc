@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4b64d4ab_c00d1438",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-07T20:08:57Z",
+      "side": 1,
+      "message": "get_time uses clksrc_high and main counter.\n\nhigh 32bit(clksrc_high) is increased by interrupt(timer 0) but low 32bits is just from the current value of main counter.\n\nif timer 0 is expired just after interrupt disabled then we would read clksrc_high which is not yet increased(due to interrupt disabled) but low 32 bits is rolled over.",
+      "parentUuid": "a0a7b6e4_45edebca",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "20851f6f43e0712856ce7ca25df4bba1c2dba623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb3892bd_6f5ffc73",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
