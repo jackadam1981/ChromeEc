@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfc4ed93_d9edee33",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-07T18:42:12Z",
+      "side": 1,
+      "message": "Have you checked out \u0027chan\u0027 command? It can do more than alslog would do. Please refer to console_channel.inc as well.",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "b11ab68c44a5a1afc9cdf4f06e1332e6ab6a07d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
