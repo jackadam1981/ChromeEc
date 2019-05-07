@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "68e56ae1_7c61bff6",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-07T18:24:05Z",
+      "side": 1,
+      "message": "Will define the chip info config in a global array so that any board that enables the CONFIG should define it.",
+      "parentUuid": "e0305118_8c805f3f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60ca9d91_2f23e93b",
         "filename": "common/aux_fw_chip_info.c",
         "patchSetId": 2
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Yes. That should lead to a checksum error on the host side, I think (because it will only receive the top part of the packet)? And then it can still check num_aux_fw_chip in the response header and compare that to the buffer size it provided to find out that the result didn\u0027t fit.\n\nJust moves more error handling into the less constrained code base and saves a byte on the wire.",
       "parentUuid": "48960d91_afbaf05c",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f26250e_4951daf0",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-07T18:24:05Z",
+      "side": 1,
+      "message": "I am not sure where the space for the response buffer is allocated in EC. Won\u0027t copying irrespective of the buffer size lead to buffer overflow and memory corruption?",
+      "parentUuid": "2294ed2b_0e849f0d",
       "range": {
         "startLine": 37,
         "startChar": 22,
