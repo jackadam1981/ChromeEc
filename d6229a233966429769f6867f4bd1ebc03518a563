@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "2294ed2b_0e849f0d",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-07T01:26:56Z",
+      "side": 1,
+      "message": "Yes. That should lead to a checksum error on the host side, I think (because it will only receive the top part of the packet)? And then it can still check num_aux_fw_chip in the response header and compare that to the buffer size it provided to find out that the result didn\u0027t fit.\n\nJust moves more error handling into the less constrained code base and saves a byte on the wire.",
+      "parentUuid": "48960d91_afbaf05c",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0abc363e_e6cb77ee",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
