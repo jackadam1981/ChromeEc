@@ -165,6 +165,15 @@ struct als_calibration_t {
 	int16_t offset;
 };
 
+/* Index values for rgb_calibration_t.coeff field */
+enum xyz_coeff_index {
+	CLEAR_IDX = 0,
+	RED_IDX,
+	GREEN_IDX,
+	BLUE_IDX,
+	COEFF_CHANNEL_COUNT,
+};
+
 /* RGB ALS Calibration Data */
 struct rgb_calibration_t {
 	/*
@@ -175,6 +184,9 @@ struct rgb_calibration_t {
 
 	/* Any offset to add to raw channel data */
 	int16_t offset;
+
+	/* Clear, R, G, and B coefficients for this channel */
+	fp_t coeff[COEFF_CHANNEL_COUNT];
 };
 
 /* als driver data */
@@ -189,5 +201,6 @@ struct als_drv_data_t {
 
 /* Individual channel scale value between 0 and 2 represented in 16 bits */
 #define ALS_CHANNEL_SCALE(_x) ((_x) << 15)
+#define ALS_APPLY_CHANNEL_SCALE(_x) ((_x) >> 15)
 
 #endif /* __CROS_EC_ACCELGYRO_H */
