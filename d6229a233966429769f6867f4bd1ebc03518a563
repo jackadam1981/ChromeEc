@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "4ff7193e_c59ca746",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-07T22:29:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we would result in a buffer overflow on the host, it would mostly be an overflow on the EC side but that can be avoided by checking against response_max.",
+      "parentUuid": "3336b41a_bbfa9edc",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0abc363e_e6cb77ee",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
