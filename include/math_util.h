@@ -39,6 +39,7 @@ typedef int64_t fp_inter_t;
 #define FLOAT_TO_FP(x) ((fp_t)((x) * (float)(1<<FP_BITS)))
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x) / (float)(1<<FP_BITS))
+
 #endif
 
 /*
