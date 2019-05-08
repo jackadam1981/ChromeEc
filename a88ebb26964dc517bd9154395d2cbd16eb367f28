@@ -22,6 +22,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcd37d4_39367b0b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T21:26:28Z",
+      "side": 1,
+      "message": "I think an empty flag variable is better here (instead of returning out of this function early). We will want to apply Rp even if the BBRAM didn\u0027t return anything. we can just assume we don\u0027t have any port partners.",
+      "parentUuid": "96374d07_a4520869",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
