@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a3a561b5_c138cb87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-08T16:35:24Z",
+      "side": 1,
+      "message": "With this setting change, prochot will be asserted anytime VSYS is at VSYS_MIN. When the battery voltage is below VSYS_MIN, then PPVAR_VYSY will be regulated at VSYS_MIN, similar to when no battery is present. The charger is operating in precharge mode at this point and its bat FET acts like a linear regulator.",
+      "parentUuid": "946c5478_55cb66ef",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "093db5626136f1fac38572d884e929d9ceede472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5933f161_0fad9bb8",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6afdbfeb_b10fa6c6",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-08T16:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5933f161_0fad9bb8",
+      "range": {
+        "startLine": 164,
+        "startChar": 18,
+        "endLine": 164,
+        "endChar": 22
+      },
+      "revId": "093db5626136f1fac38572d884e929d9ceede472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c38c106_0910046d",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-08T03:01:19Z",
       "side": 1,
       "message": "Does the prochot then get deasserted when battery is plugged in? Or does it need to be de-asserted explicitly?",
+      "range": {
+        "startLine": 174,
+        "startChar": 50,
+        "endLine": 175,
+        "endChar": 64
+      },
+      "revId": "093db5626136f1fac38572d884e929d9ceede472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ca9a85_6fef796e",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-08T16:35:24Z",
+      "side": 1,
+      "message": "By default prochot is a pulse, where the pulse width can be modified via one of the registers. However, in pulse mode if the condition that triggered prochot persists, then the pulse is automatically extended until that condition is no longer present.\n\nThere is a control bit, that if set, would extend the prochot pulse always (independent of the triggering condition) and needs to be explicitly cleared by a write from the EC. But, we do not use this mode.",
+      "parentUuid": "8c38c106_0910046d",
       "range": {
         "startLine": 174,
         "startChar": 50,

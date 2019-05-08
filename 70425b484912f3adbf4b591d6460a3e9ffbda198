@@ -39,6 +39,24 @@
       "revId": "70425b484912f3adbf4b591d6460a3e9ffbda198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abebcae9_4714f965",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-08T16:35:24Z",
+      "side": 1,
+      "message": "Yes, I had this incorrect. But I have fixed it.",
+      "parentUuid": "bfa13d52_02bec61c",
+      "revId": "70425b484912f3adbf4b591d6460a3e9ffbda198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
