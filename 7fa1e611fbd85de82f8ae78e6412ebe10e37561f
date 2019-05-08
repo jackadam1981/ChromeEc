@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "721c4a82_ab80c9ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T19:48:57Z",
+      "side": 1,
+      "message": "driver/tcs3400 or just tcs3400",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "7fa1e611fbd85de82f8ae78e6412ebe10e37561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d98126e_b3d4467a",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T19:48:57Z",
+      "side": 1,
+      "message": "Please delete these. Or even better if you comment them out:\n\n/* .port \u003d I2C_PORT_ALS, */ /* Unused. RGB channels are read by CLEAR_ALS. */",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 27
+      },
+      "revId": "7fa1e611fbd85de82f8ae78e6412ebe10e37561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c371922_07245bf9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T19:48:57Z",
+      "side": 1,
+      "message": "This is better be EC_SUCCESS for readability. If it\u0027s ret, I need to trace what\u0027s in it.",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 197,
+        "endChar": 11
+      },
+      "revId": "7fa1e611fbd85de82f8ae78e6412ebe10e37561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4639efcb_4dbaac0f",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T19:48:57Z",
+      "side": 1,
+      "message": "You need (_x).",
+      "range": {
+        "startLine": 191,
+        "startChar": 31,
+        "endLine": 191,
+        "endChar": 33
+      },
+      "revId": "7fa1e611fbd85de82f8ae78e6412ebe10e37561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
