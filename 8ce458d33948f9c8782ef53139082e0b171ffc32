@@ -70,6 +70,30 @@
       "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0799db55_6de367b6",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T19:38:30Z",
+      "side": 0,
+      "message": "The failure to connect is in 816. !ret means there was no error connecting. We just ignored the serial number.",
+      "parentUuid": "364634f6_f91f5d9a",
+      "range": {
+        "startLine": 1669,
+        "startChar": 1,
+        "endLine": 1672,
+        "endChar": 2
+      },
+      "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
