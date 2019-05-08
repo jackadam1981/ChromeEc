@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "968594c7_4426c56e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Patch#7 runs either with or without servod.\nAdded \"min_char\" flag to specify the least amount of workload for each UART.",
+      "parentUuid": "f3282e4c_112f2b18",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f17ffb37_392798dc",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04be7f11_455d6df2",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17ffb37_392798dc",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "298f9f24_770d37e7",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98eabb29_e2c8755a",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2af6f98_24381201",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3fd8be_00aa9efd",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2af6f98_24381201",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 52
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fa020a50_8e4d541c",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f810bd85_4b263d06",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "805bf0ac_31dc83af",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a83754c_432e9fd4",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "805bf0ac_31dc83af",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -211,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "4598301f_3014bbf1",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "patch#7 line 105~123 greps \"ttyUSB[0-9]+\" and sort them, and assign each of them to cr50, cpu, and ec respectively.",
+      "parentUuid": "aa82278a_7859d197",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b56b0a43_2d394f7f",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -231,6 +399,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5bcf10e_bfe7d6a2",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b56b0a43_2d394f7f",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 22
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -257,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "cf74a7ae_c9ff6835",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "d3fa8118_83a1a8ab",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 24
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43959add_07c5f7f6",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -277,6 +493,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105a157d_19319ba6",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Added the function description above.",
+      "parentUuid": "43959add_07c5f7f6",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 13
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -303,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "5934f0c6_d1ad912e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f16d5c5_19958bd4",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcf59eb5_e6146dc5",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -317,6 +581,24 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d43e81_3db775aa",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf59eb5_e6146dc5",
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -343,6 +625,30 @@
     },
     {
       "key": {
+        "uuid": "85605328_4bae6e12",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ebd502f_3ed17c8b",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 1
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9881b192_323e66a7",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -363,6 +669,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1991ba_53a176cc",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9881b192_323e66a7",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 226,
+        "endChar": 24
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -389,6 +719,30 @@
     },
     {
       "key": {
+        "uuid": "b7f18ed4_8a22549b",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bcb6dd8_e8d1ee51",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 28
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9e46f2_68c314bb",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -409,6 +763,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65a3e02_f230a77e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9e46f2_68c314bb",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 36
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -435,6 +813,30 @@
     },
     {
       "key": {
+        "uuid": "9320d5e1_63603d6d",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d5d0cb_0a79fba9",
+      "range": {
+        "startLine": 340,
+        "startChar": 3,
+        "endLine": 340,
+        "endChar": 60
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45209ad3_3e493e98",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -455,6 +857,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81df36f6_19e33232",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45209ad3_3e493e98",
+      "range": {
+        "startLine": 363,
+        "startChar": 8,
+        "endLine": 364,
+        "endChar": 37
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -481,6 +907,30 @@
     },
     {
       "key": {
+        "uuid": "542e70d6_8168b593",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e068db24_4d8b77e1",
+      "range": {
+        "startLine": 367,
+        "startChar": 4,
+        "endLine": 367,
+        "endChar": 36
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2879dd02_e3e5a327",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -501,6 +951,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1d79ff_4fc267f7",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Noticed that dut-control spits out the captured data not at once.",
+      "parentUuid": "2879dd02_e3e5a327",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 48
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -527,6 +1001,30 @@
     },
     {
       "key": {
+        "uuid": "468affdc_3ee68383",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c772c656_49af50fe",
+      "range": {
+        "startLine": 543,
+        "startChar": 0,
+        "endLine": 545,
+        "endChar": 29
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2215e5a_e2f5226d",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 6
@@ -547,6 +1045,30 @@
       "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06334d8d_7ad6ed02",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-08T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2215e5a_e2f5226d",
+      "range": {
+        "startLine": 696,
+        "startChar": 36,
+        "endLine": 696,
+        "endChar": 46
+      },
+      "revId": "30a4a5b5fad79343a41cf290431dcbcd87cf114e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
