@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "620b42b5_752ca670",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-08T21:14:55Z",
+      "side": 1,
+      "message": "The \"or\" part of this is counter-intuitive to me.  Is there a reason for not requiring vid+pid match when they are given alongside serial number?  I don\u0027t see how there can be a guarantee of serial number uniqueness across different vid:pid.",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c28c11e_4ad2399c",
         "filename": "util/usb_if.h",
         "patchSetId": 4
