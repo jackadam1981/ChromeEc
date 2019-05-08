@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "790d2c1e_a1924a79",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T22:19:30Z",
+      "side": 1,
+      "message": "Yeah I know, but as we\u0027ve seen it\u0027s hard to get to usb_findit without passing in a vid and pid, so if they\u0027ve managed to pass in 0 0 NULL, think the user must have some plan.",
+      "parentUuid": "84c13767_29143aec",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d00ef973_13d93211",
         "filename": "util/usb_if.c",
         "patchSetId": 4
