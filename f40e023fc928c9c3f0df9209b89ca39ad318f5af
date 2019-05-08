@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2da034fb_f661e9ea",
+        "filename": "Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-05-08T15:58:20Z",
+      "side": 1,
+      "message": "Nit - can you change this to add a separator between the variable name and it\u0027s value in the output header?  Something like \n/* CR50_DEV\u003d1 */\nMakes the env_config.h a little easier to ready.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "f40e023fc928c9c3f0df9209b89ca39ad318f5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
