@@ -6,10 +6,18 @@
 # Cortex-M4 core OS files build
 #
 
+ifneq ($(BOARD),sweetberry)
 # Use coreboot-sdk
 $(call set-option,CROSS_COMPILE,\
 	$(CROSS_COMPILE_arm),\
 	/opt/coreboot-sdk/bin/arm-eabi-)
+else
+# TODO(b/132204142): Sweetberry's USB connection fails to initialize properly
+# when built using the 8.2.0 tool chain leave it with the 4.9.x. Note: This
+# build file is included after the Sweetberry build which is why the
+# declaration is located here.
+$(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_arm),arm-none-eabi-)
+endif
 
 # FPU compilation flags
 CFLAGS_FPU-$(CONFIG_FPU)=-mfpu=fpv4-sp-d16 -mfloat-abi=hard
