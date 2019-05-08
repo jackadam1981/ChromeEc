@@ -26,6 +26,8 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "keyboard_config.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
@@ -83,8 +85,8 @@ struct keyboard_scan_config keyscan_config = {
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
-		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+		0x1c, 0xfe, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfe, 0xff, 0xff, 0xff,  /* full set */
 	},
 };
 
@@ -368,3 +370,16 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
 }
+
+static void board_init(void)
+{
+	/* Disable scanning KSO13 & 14 if keypad isn't present. */
+	if (!(sku_id == 41 || sku_id == 42 || sku_id == 43 || sku_id == 44)) {
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+		keyscan_config.actual_key_mask[0] = 0x14;
+		keyscan_config.actual_key_mask[1] = 0xff;
+		keyscan_config.actual_key_mask[11] = 0xfa;
+		keyscan_config.actual_key_mask[12] = 0xca;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
