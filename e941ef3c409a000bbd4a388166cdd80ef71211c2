@@ -34,6 +34,24 @@
       "revId": "e941ef3c409a000bbd4a388166cdd80ef71211c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242fa1c6_6ee4cfa6",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-08T09:54:12Z",
+      "side": 0,
+      "message": "Blorb is the first model with keypad feature so yes, these 4 SKU IDs in Bobba board are the only ones to support keypad so far.",
+      "parentUuid": "fe03c773_777a3578",
+      "revId": "e941ef3c409a000bbd4a388166cdd80ef71211c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
