@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5244da82_49c90084",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T01:15:06Z",
+      "side": 1,
+      "message": "We may not need this at all. I\u0027m contacting IDT. Stay tuned.",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
