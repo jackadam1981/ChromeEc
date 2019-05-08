@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96374d07_a4520869",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T16:08:59Z",
+      "side": 1,
+      "message": "If you return on error here, don\u0027t you get the same result (as flags\u003d0)? I think it\u0027s more explicit (because you don\u0027t have to dig in pd_get_saved_port_flags and beyond).",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
