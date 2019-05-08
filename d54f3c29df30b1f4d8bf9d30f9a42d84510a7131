@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0a6e965_4fa85423",
+        "filename": "util/usb_if.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-08T23:15:39Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me that libusb_get_string_descriptor() is guaranteed to return a NULL-terminated string[1].  If for example strlen(serial) \u003e sizeof(sn), then in theory this could result in a false positive match.\n\nI think the safest option is to use the size returned by libusb_get_string_descriptor_ascii().\n\nsn_size \u003d libusb_get_string_descriptor_ascii(...);\nif (... || (serial \u0026\u0026 (!sn_size || retval !\u003d strlen(sn) || memcmp(sn, serial, retval)))) {\n  ...\n}\n\n\n[1] http://libusb.sourceforge.net/api-1.0/group__desc.html",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "d54f3c29df30b1f4d8bf9d30f9a42d84510a7131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
