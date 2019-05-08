@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34f6a76e_b2fb278e",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-08T09:52:16Z",
+      "side": 1,
+      "message": "KEYBOARD_COLS_NO_KEYPAD?",
+      "revId": "6743c5e334b8afa6a93a5f4547d8a8efafc50f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cf8334_442e1074",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-08T09:52:16Z",
+      "side": 1,
+      "message": "Is the comment correct? Or do you mean to move search key back to common position?",
+      "revId": "6743c5e334b8afa6a93a5f4547d8a8efafc50f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
