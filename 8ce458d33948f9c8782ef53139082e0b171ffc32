@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "610d7869_28eccf77",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T20:49:45Z",
+      "side": 1,
+      "message": "should the user be warned if they specified both serial number and vid/pid in the command line that only serial number will be honored?",
+      "range": {
+        "startLine": 2402,
+        "startChar": 3,
+        "endLine": 2402,
+        "endChar": 19
+      },
+      "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
