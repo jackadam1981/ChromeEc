@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfbf7a7b_01bcadb8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-08T15:00:32Z",
+      "side": 1,
+      "message": "can we remove the conditional compilation, or, at a minimum, define do-nothing functions in an else?",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 65
+      },
+      "revId": "fa7d17243afca5f6afdfa3cab1793c10370d158a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
