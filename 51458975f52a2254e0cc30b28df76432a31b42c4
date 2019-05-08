@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84e198c1_b550e692",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-08T19:25:44Z",
+      "side": 1,
+      "message": "Adding new I2C_PORT_ALS constant in follow-on CL (see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1601052).",
+      "parentUuid": "88d91f95_64b15a39",
+      "range": {
+        "startLine": 503,
+        "startChar": 10,
+        "endLine": 503,
+        "endChar": 24
+      },
+      "revId": "51458975f52a2254e0cc30b28df76432a31b42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bba8aca_ed434663",
         "filename": "board/flapjack/board.c",
         "patchSetId": 47
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1c2a28e2_9522e3ab",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-08T19:25:44Z",
+      "side": 1,
+      "message": "Yes, we want it to generate error if access by itself per Gwendal review input.",
+      "parentUuid": "9bba8aca_ed434663",
+      "range": {
+        "startLine": 524,
+        "startChar": 10,
+        "endLine": 524,
+        "endChar": 11
+      },
+      "revId": "51458975f52a2254e0cc30b28df76432a31b42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "203ea1c9_ba590efe",
         "filename": "board/flapjack/board.c",
         "patchSetId": 47
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-06T20:36:33Z",
       "side": 1,
       "message": "This should be written in motion_sense.h instead of repeated in each config.",
+      "range": {
+        "startLine": 528,
+        "startChar": 22,
+        "endLine": 528,
+        "endChar": 73
+      },
+      "revId": "51458975f52a2254e0cc30b28df76432a31b42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205ce9f7_a4dc7003",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-08T19:25:44Z",
+      "side": 1,
+      "message": "Plan is for next CL will remove min_frequency and max_frequency setting to zero, and will add the comment to min and max_frequency fields in motion_sense.h instead.",
+      "parentUuid": "203ea1c9_ba590efe",
       "range": {
         "startLine": 528,
         "startChar": 22,
