@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c309310b_7bd9eac4",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-05-08T21:11:41Z",
+      "side": 1,
+      "message": "I had it that way (commented out with comment explaining why) and was asked to remove the line completley.\nGwendal, are you ok with adding this back in, or if not, can you and Daisuke decide what is best?  I\u0027m fine either way.",
+      "parentUuid": "7652cd23_3f29f67d",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 27
+      },
+      "revId": "7fa1e611fbd85de82f8ae78e6412ebe10e37561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c371922_07245bf9",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 5
