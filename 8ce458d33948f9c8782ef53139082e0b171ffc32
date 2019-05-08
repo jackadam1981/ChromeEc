@@ -118,6 +118,30 @@
       "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2665a994_6eff3083",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-08T21:18:18Z",
+      "side": 0,
+      "message": "[marking resolved]",
+      "parentUuid": "be18b6c3_195b2355",
+      "range": {
+        "startLine": 1669,
+        "startChar": 1,
+        "endLine": 1672,
+        "endChar": 2
+      },
+      "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
