@@ -187,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "8d3bb753_9aead41a",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-08T21:38:10Z",
+      "side": 1,
+      "message": "I wouldn\u0027t require vid:pid alongside serialno.  I am saying if vid:pid are given, to respect them.",
+      "parentUuid": "75c51ba1_0d7e238c",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c28c11e_4ad2399c",
         "filename": "util/usb_if.h",
         "patchSetId": 4
