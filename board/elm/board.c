@@ -94,8 +94,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 int anx7688_passthru_allowed(const struct i2c_port_t *port, uint16_t address)
 {
-	/* Allow access to 0x2c (TCPC) */
-	if (address == 0x2c)
+	/* Allow access to TCPC */
+	if (address == CONFIG_TCPC_I2C_BASE_ADDR)
 		return 1;
 
 	CPRINTF("Passthru rejected on %x", address);
