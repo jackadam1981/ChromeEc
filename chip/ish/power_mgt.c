@@ -282,13 +282,60 @@ static void enter_d0i0(void)
 	pm_stats.d0i0_cnt++;
 }
 
+/**
+ * ISH PMU does not support both-edge interrupt triggered gpio configuration.
+ * If both edges are configured, then the ISH can't stay in low poer mode
+ * because it will exit immediately.
+ *
+ * As a workaround, we scan all gpio pins which have been configured as
+ * both-edge triggered, and then temporarily set each gpio pin to the single
+ * edge trigger that is opposite of its value, then restore the both-edge
+ * trigger configuration immediately after exiting low power mode.
+ */
+static uint32_t covert_both_edge_gpio_to_single_edge(void)
+{
+	uint32_t both_edge_pins = 0;
+	int i = 0;
+
+	/**
+	 * scan GPIO GFER, GRER and GIMR registers to find the both edge
+	 * interrupt trigger mode enabled pins.
+	 */
+	for (i = 0; i < 32; i++) {
+		if (ISH_GPIO_GIMR & BIT(i) &&
+		    ISH_GPIO_GRER & BIT(i) &&
+		    ISH_GPIO_GFER & BIT(i)) {
+
+			/* Record the pin so we can restore it later */
+			both_edge_pins |= BIT(i);
+
+			if (ISH_GPIO_GPLR & BIT(i)) {
+				/* pin is high, just keep falling edge mode */
+				ISH_GPIO_GRER &= ~BIT(i);
+			} else {
+				/* pin is low, just keep rising edge mode */
+				ISH_GPIO_GFER &= ~BIT(i);
+			}
+		}
+	}
+
+	return both_edge_pins;
+}
+
+static void restore_both_edge_gpio_config(uint32_t both_edge_pin_map)
+{
+	ISH_GPIO_GRER |= both_edge_pin_map;
+	ISH_GPIO_GFER |= both_edge_pin_map;
+}
+
 #ifdef CONFIG_ISH_PM_D0I1
 
 static void enter_d0i1(void)
 {
 	uint64_t current_irq_map;
-
+	uint32_t both_edge_gpio_pins;
 	timestamp_t t0, t1;
+
 	t0 = get_time();
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I1;
@@ -301,6 +348,8 @@ static void enter_d0i1(void)
 	task_enable_irq(ISH_RESET_PREP_IRQ);
 #endif
 
+	both_edge_gpio_pins = covert_both_edge_gpio_to_single_edge();
+
 	/* enable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 1;
 
@@ -310,15 +359,18 @@ static void enter_d0i1(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
-	/* restore interrupts */
-	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
-	restore_interrupts(current_irq_map);
+	restore_both_edge_gpio_config(both_edge_gpio_pins);
+
 
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0;
 
 	t1 = get_time();
 	pm_stats.d0i1_time_us += t1.val - t0.val;
 	pm_stats.d0i1_cnt++;
+
+	/* restore interrupts */
+	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
+	restore_interrupts(current_irq_map);
 }
 
 #endif
@@ -328,10 +380,10 @@ static void enter_d0i1(void)
 static void enter_d0i2(void)
 {
 	uint64_t current_irq_map;
-
+	uint32_t both_edge_gpio_pins;
 	timestamp_t t0, t1;
-	t0 = get_time();
 
+	t0 = get_time();
 	pm_ctx.aon_share->pm_state = ISH_PM_STATE_D0I2;
 
 	/* only enable PMU wakeup interrupt */
@@ -341,6 +393,8 @@ static void enter_d0i2(void)
 #ifdef CONFIG_ISH_PM_RESET_PREP
 	task_enable_irq(ISH_RESET_PREP_IRQ);
 #endif
+
+	both_edge_gpio_pins = covert_both_edge_gpio_to_single_edge();
 
 	/* enable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 1;
@@ -358,9 +412,7 @@ static void enter_d0i2(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
-	/* restore interrupts */
-	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
-	restore_interrupts(current_irq_map);
+	restore_both_edge_gpio_config(both_edge_gpio_pins);
 
 	t1 = get_time();
 
@@ -368,6 +420,10 @@ static void enter_d0i2(void)
 
 	pm_stats.d0i2_time_us += t1.val - t0.val;
 	pm_stats.d0i2_cnt++;
+
+	/* restore interrupts */
+	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
+	restore_interrupts(current_irq_map);
 }
 
 #endif
@@ -377,6 +433,7 @@ static void enter_d0i2(void)
 static void enter_d0i3(void)
 {
 	uint64_t current_irq_map;
+	uint32_t both_edge_gpio_pins;
 	timestamp_t t0, t1;
 
 	t0 = get_time();
@@ -391,6 +448,8 @@ static void enter_d0i3(void)
 	task_enable_irq(ISH_RESET_PREP_IRQ);
 #endif
 
+	both_edge_gpio_pins = covert_both_edge_gpio_to_single_edge();
+
 	/* enable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 1;
 
@@ -407,9 +466,7 @@ static void enter_d0i3(void)
 	/* disable Trunk Clock Gating (TCG) of ISH */
 	CCU_TCG_EN = 0;
 
-	/* restore interrupts */
-	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
-	restore_interrupts(current_irq_map);
+	restore_both_edge_gpio_config(both_edge_gpio_pins);
 
 	t1 = get_time();
 
@@ -417,6 +474,10 @@ static void enter_d0i3(void)
 
 	pm_stats.d0i3_time_us += t1.val - t0.val;
 	pm_stats.d0i3_cnt++;
+
+	/* restore interrupts */
+	task_disable_irq(ISH_PMU_WAKEUP_IRQ);
+	restore_interrupts(current_irq_map);
 }
 
 #endif
