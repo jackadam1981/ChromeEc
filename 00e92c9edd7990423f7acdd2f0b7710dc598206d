@@ -22,6 +22,30 @@
       "revId": "00e92c9edd7990423f7acdd2f0b7710dc598206d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f7c20d_a78a935f",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-08T15:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed814a65_2ace1a55",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 45
+      },
+      "revId": "00e92c9edd7990423f7acdd2f0b7710dc598206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
