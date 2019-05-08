@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d905774_379f089e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T19:14:34Z",
+      "side": 1,
+      "message": "What do you think about adding a command which returns a port and an address? I think it has a few advantages over a virtual port \u0026 address solution.\n\n1. Such a command can be used for other purposes. For example, a developer can see what other chips are on the bus. \n\n2. i2cprotect takes a port #. It doesn\u0027t use i2c passthrough.\n\n3. We can keep i2c_command_passthru simple (which is already complicated). Translation doesn\u0027t have to be repeated. If translation fails, we can know it explicitly (instead of receiving EC_RES_INVALID_PARAM).",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 1
+      },
+      "revId": "72f5b6a56b79cb435341881c5bf5691c21fe724c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
