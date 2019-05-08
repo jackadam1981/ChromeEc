@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee4d6f6e_dd1fba9e",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T19:31:01Z",
+      "side": 1,
+      "message": "this tab lines up correctly in both of my editors (Gerrit does make it look a little funny)",
+      "parentUuid": "0ee75da7_f688541b",
+      "range": {
+        "startLine": 304,
+        "startChar": 25,
+        "endLine": 304,
+        "endChar": 26
+      },
+      "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d34fe05_458da057",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9706bc5b_3de57ee7",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T19:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d34fe05_458da057",
+      "range": {
+        "startLine": 279,
+        "startChar": 50,
+        "endLine": 279,
+        "endChar": 56
+      },
+      "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
