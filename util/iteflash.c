@@ -106,7 +106,9 @@ struct iteflash_config {
 	int block_write_size;
 	int usb_interface;
 	int usb_vid;
+	int arg_set_vid;  /* boolean */
 	int usb_pid;
+	int arg_set_pid;  /* boolean */
 	char *usb_serial;
 	char *i2c_dev_path;
 	const struct i2c_interface *i2c_if;
@@ -1663,8 +1665,24 @@ static int linux_i2c_interface_shutdown(struct common_hnd *chnd)
 
 static int ccd_i2c_interface_init(struct common_hnd *chnd)
 {
-	chnd->conf.usb_vid = CR50_USB_VID;
-	chnd->conf.usb_pid = CR50_USB_PID;
+	/*
+	 * Default to the Cr50 vendor and product id if no device information
+	 * was given.
+	 * If only the serial number was given, that's enough to find the
+	 * device. Don't give a vendor or product id. The default VID:PID is
+	 * non-zero. We have to override them to zero, so they're ignored.
+	 */
+	int default_vid = chnd->conf.usb_serial ? 0 : CR50_USB_VID;
+	int default_pid = chnd->conf.usb_serial ? 0 : CR50_USB_PID;
+
+	/*
+	 * Set the vendor and product id if they weren't given by a command
+	 * line arg.
+	 */
+	if (!chnd->conf.arg_set_vid)
+		chnd->conf.usb_vid = default_vid;
+	if (!chnd->conf.arg_set_pid)
+		chnd->conf.usb_pid = default_pid;
 	return connect_to_ccd_i2c_bridge(chnd);
 }
 
@@ -1917,6 +1935,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 			break;
 		case 'p':
 			conf->usb_pid = strtol(optarg, NULL, 16);
+			conf->arg_set_pid = 1;
 			break;
 		case 'R':
 			ret = parse_range_options(optarg, conf);
@@ -1931,6 +1950,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 			break;
 		case 'v':
 			conf->usb_vid = strtol(optarg, NULL, 16);
+			conf->arg_set_vid = 1;
 			break;
 		case 'W':
 			if (!strcmp(optarg, "0") ||
