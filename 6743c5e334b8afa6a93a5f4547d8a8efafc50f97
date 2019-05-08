@@ -33,6 +33,24 @@
       "revId": "6743c5e334b8afa6a93a5f4547d8a8efafc50f97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264b1bc9_226df8db",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-05-08T10:16:52Z",
+      "side": 1,
+      "message": "Move search key back to common position(col\u003d1,row\u003d0).\nSearch key in keypad keyboard is col\u003d0,row\u003d3.",
+      "parentUuid": "e5cf8334_442e1074",
+      "revId": "6743c5e334b8afa6a93a5f4547d8a8efafc50f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
