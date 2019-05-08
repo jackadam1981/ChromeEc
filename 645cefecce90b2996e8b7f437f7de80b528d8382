@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e60c263_440f8044",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T00:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b59b01a_4eaf7dcb",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfe12c1f_a557b557",
         "filename": "util/usb_if.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "edd1f12d_11ed2563",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T00:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe12c1f_a557b557",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74073ea8_29c3ac3b",
         "filename": "util/usb_if.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-07T23:44:51Z",
       "side": 1,
       "message": "I don\u0027t think it is particularly useful to specify vid/pid if serial number is given, sn should be used on its own.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be13f96_fabc394f",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T00:30:54Z",
+      "side": 1,
+      "message": "For now I\u0027m going to leave it matching vid, pid, and serial number.\n\nScripts should be fixed if they don\u0027t give the correct VID PID. Right now they all supply VID PID correctly, so it shouldn\u0027t be a problem.\n\nWe can change it later if we only want to match serial number if given.",
+      "parentUuid": "74073ea8_29c3ac3b",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "32277caf_12c736ae",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T00:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "545aac0e_3b842cc3",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c0b7427_295af084",
         "filename": "util/usb_if.c",
         "patchSetId": 1
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c7af2d68_f19daf70",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T00:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0b7427_295af084",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e1f5cac_014a0e83",
         "filename": "util/usb_if.h",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668f146d_c0703f88",
+        "filename": "util/usb_if.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T00:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e1f5cac_014a0e83",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
