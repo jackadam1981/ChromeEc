@@ -38,8 +38,11 @@ struct i2c_port_t {
 	int kbps;             /* Speed in kbps */
 	enum gpio_signal scl; /* Port SCL GPIO line */
 	enum gpio_signal sda; /* Port SDA GPIO line */
-	/* When bus is protected, returns true if passthru allowed for address.
-	 * If the function is not defined, the default value is true. */
+	/*
+	 * When bus is protected, returns true if passthru allowed for address.
+	 * If the function is not defined, the default value is true.
+	 * Address is the 8-bit i2c address.
+	 */
 	int (*passthru_allowed)(const struct i2c_port_t *port,
 				uint16_t address);
 };

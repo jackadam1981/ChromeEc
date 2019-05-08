@@ -39,6 +39,14 @@ static uint32_t i2c_port_active_list;
 BUILD_ASSERT(I2C_CONTROLLER_COUNT < 32);
 static uint8_t port_protected[I2C_PORT_COUNT];
 
+/*
+ * Allows the host to specify a device without knowing the physical address
+ *
+ * Address are in 7-bit i2c address format.
+ */
+#define VIRTUAL_I2C_PORT		99
+#define VIRTUAL_I2C_CBI_EEPROM_ADR	1
+
 /**
  * Non-deterministically test the lock status of the port.  If another task
  * has locked the port and the caller is accessing it illegally, then this test
@@ -737,6 +745,31 @@ static int check_i2c_params(const struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+/**
+ * Takes in 7-bit address, and return 8-bit address
+ */
+static int translate_i2c_port_addr(int *port, int *addr)
+{
+	if (*port == VIRTUAL_I2C_PORT) {
+		switch (*addr) {
+#ifdef CONFIG_CROS_BOARD_INFO
+		case VIRTUAL_I2C_CBI_EEPROM_ADR:
+			*port = I2C_PORT_EEPROM;
+			*addr = I2C_ADDR_EEPROM;
+			break;
+#endif /* CONFIG_CROS_BOARD_INFO */
+		default:
+			PTHRUPRINTF("Unknown virtual address %d", addr);
+			return EC_ERROR_UNKNOWN;
+		}
+	} else {
+		/* Convert from 7-bit address to 8-bit */
+		*addr = *addr << 1;
+	}
+
+	return EC_SUCCESS;
+}
+
 static int i2c_command_passthru(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_passthru *params = args->params;
@@ -747,6 +780,16 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	int in_len;
 	int ret, i;
 	int port_is_locked = 0;
+	int port = -1;
+	/* Contains 8-bit address for each packet */
+	uint16_t msg_addr[4];
+
+	/*
+	 * We can only handle 4 messages in a single host command call. This is
+	 * enough to support all host ectool use cases.
+	 */
+	if (params->num_msgs > sizeof(msg_addr) || params->num_msgs <= 0)
+		return EC_RES_INVALID_PARAM;
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 	/*
@@ -756,18 +799,42 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
-	i2c_port = get_i2c_port(params->port);
-	if (!i2c_port)
-		return EC_RES_INVALID_PARAM;
-
 	ret = check_i2c_params(args);
 	if (ret)
 		return ret;
 
-	if (port_protected[params->port] && i2c_port->passthru_allowed) {
+	/*
+	 * Translate i2c addresses first. All virtual addresses must resolve
+	 * to the same physical port.
+	 *
+	 * This also sets up the msg_add array with the correct 8-bit i2c
+	 * addresses (for both virtual and non-virtual addresses).
+	 */
+	for (i = 0; i < params->num_msgs; i++) {
+		int temp_port = params->port;
+		int addr = params->msg[i].addr_flags & EC_I2C_ADDR_MASK;
+
+		if (translate_i2c_port_addr(&temp_port, &addr))
+			return EC_RES_INVALID_PARAM;
+
+		/* Seed port with first translated port */
+		if (port == -1)
+			port = temp_port;
+
+		/* Only a single physical port is allowed */
+		if (port != temp_port)
+			return EC_RES_INVALID_PARAM;
+
+		msg_addr[i] = addr;
+	}
+
+	i2c_port = get_i2c_port(port);
+	if (!i2c_port)
+		return EC_RES_INVALID_PARAM;
+
+	if (port_protected[port] && i2c_port->passthru_allowed) {
 		for (i = 0; i < params->num_msgs; i++) {
-			if (!i2c_port->passthru_allowed(i2c_port,
-				  params->msg[i].addr_flags & EC_I2C_ADDR_MASK))
+			if (!i2c_port->passthru_allowed(i2c_port, msg_addr[i]))
 				return EC_RES_ACCESS_DENIED;
 		}
 	}
@@ -777,11 +844,9 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	out = args->params + sizeof(*params) + params->num_msgs * sizeof(*msg);
 	in_len = 0;
 
-	for (resp->num_msgs = 0, msg = params->msg;
+	for (resp->num_msgs = 0, msg = params->msg, i = 0;
 	     resp->num_msgs < params->num_msgs;
-	     resp->num_msgs++, msg++) {
-		/* EC uses 8-bit slave address */
-		unsigned int addr = (msg->addr_flags & EC_I2C_ADDR_MASK) << 1;
+	     resp->num_msgs++, msg++, i++) {
 		int xferflags = I2C_XFER_START;
 		int read_len = 0, write_len = 0;
 		int rv = 1;
@@ -796,34 +861,33 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 			xferflags |= I2C_XFER_STOP;
 
 #if defined(VIRTUAL_BATTERY_ADDR) && defined(I2C_PORT_VIRTUAL_BATTERY)
-		if (params->port == I2C_PORT_VIRTUAL_BATTERY &&
-		    VIRTUAL_BATTERY_ADDR == addr) {
+		if (port == I2C_PORT_VIRTUAL_BATTERY &&
+		    msg_addr[i] == VIRTUAL_BATTERY_ADDR) {
 			if (virtual_battery_handler(resp, in_len, &rv,
-						xferflags, read_len,
-						write_len, out))
+						    xferflags, read_len,
+						    write_len, out))
 				break;
 		}
 #endif
 		/* Transfer next message */
 		PTHRUPRINTF("i2c passthru xfer port=%x, addr=%x, out=%p, "
 			    "write_len=%x, data=%p, read_len=%x, flags=%x",
-			    params->port, addr, out, write_len,
+			    port, msg_addr[i], out, write_len,
 			    &resp->data[in_len], read_len, xferflags);
 		if (rv) {
 #ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
 			if (system_is_locked() &&
-			    !board_allow_i2c_passthru(params->port)) {
+			    !board_allow_i2c_passthru(port)) {
 				if (port_is_locked)
-					i2c_lock(params->port, 0);
+					i2c_lock(port, 0);
 				return EC_RES_ACCESS_DENIED;
 			}
 #endif
 			if (!port_is_locked)
-				i2c_lock(params->port, (port_is_locked = 1));
-			rv = i2c_xfer_unlocked(params->port, addr,
-					       out, write_len,
-					       &resp->data[in_len], read_len,
-					       xferflags);
+				i2c_lock(port, (port_is_locked = 1));
+			rv = i2c_xfer_unlocked(port, msg_addr[i], out,
+					       write_len, &resp->data[in_len],
+					       read_len, xferflags);
 		}
 
 		if (rv) {
@@ -842,7 +906,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 
 	/* Unlock port */
 	if (port_is_locked)
-		i2c_lock(params->port, 0);
+		i2c_lock(port, 0);
 
 	/*
 	 * Return success even if transfer failed so response is sent.  Host
