@@ -46,6 +46,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f9b9358_bd6a6e27",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T21:36:39Z",
+      "side": 1,
+      "message": "In your patch, if pd_get_saved_port_flags fails, flags is 0, right? Then, it will return at line 2365 (it won\u0027t reach tcpm_set_cc).\n\nI\u0027m proposing:\n\n  if (pd_get_saved_port_flags(port, \u0026flags))\n    return;",
+      "parentUuid": "ebcd37d4_39367b0b",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
