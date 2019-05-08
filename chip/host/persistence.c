@@ -34,6 +34,7 @@ FILE *get_persistent_storage(const char *tag, const char *mode)
 {
 	char buf[PATH_MAX];
 	char path[PATH_MAX];
+	FILE *ret;
 
 	/*
 	 * The persistent storage with tag 'foo' for test 'bar' would
@@ -43,7 +44,13 @@ FILE *get_persistent_storage(const char *tag, const char *mode)
 	snprintf(path, PATH_MAX - 1, "%s_%s", buf, tag);
 	path[PATH_MAX - 1] = '\0';
 
-	return fopen(path, mode);
+	ret = fopen(path, mode);
+	if (!ret)
+		fprintf(stderr,
+			"Failed to open persistent storage %s (mode %s).\n",
+			path, mode);
+
+	return ret;
 }
 
 void release_persistent_storage(FILE *ps)
