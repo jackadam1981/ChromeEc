@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b9ef96f_41f2174c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-08T17:58:08Z",
+      "side": 1,
+      "message": "My concern was wrapping or running out of scan_time slots, if the debouncing flag of one column could be indefinitely postponed, until another key was pressed on that column.  I have not attempted to add a test case to demonstrate this flaw, though.",
+      "parentUuid": "e4e521a5_e76f0485",
+      "range": {
+        "startLine": 478,
+        "startChar": 12,
+        "endLine": 478,
+        "endChar": 29
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b921ebec_47add9b1",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed95dac_bcbcc1f2",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-05-08T17:58:08Z",
+      "side": 1,
+      "message": "I have taken the first approach, without __fls.  In the vast majority of cases, there will be no activity on any given keyboard column, so as long as that case is optimally efficient, I do not want to complicate the code by having an additional deb_check variable to optimize the odd case of recent activity on the column.",
+      "parentUuid": "8c151630_d8b61424",
+      "range": {
+        "startLine": 482,
+        "startChar": 14,
+        "endLine": 482,
+        "endChar": 31
+      },
+      "revId": "5328e0aedfaa46553c6a4cf897274f96e9238671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
