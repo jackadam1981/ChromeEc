@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2be36bd3_81d83f55",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T22:55:02Z",
+      "side": 1,
+      "message": "I read somewhere the string descriptor index is 0 if it\u0027s an empty string, but I am not sure if that\u0027s right.",
+      "parentUuid": "a48eb26e_ea68ab12",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2941a1a_a3686fe7",
         "filename": "util/usb_if.c",
         "patchSetId": 4
@@ -333,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "dcbfeae1_59a6375f",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T22:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2147e14_e6228344",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d00ef973_13d93211",
         "filename": "util/usb_if.c",
         "patchSetId": 4
@@ -523,6 +571,30 @@
     },
     {
       "key": {
+        "uuid": "bf3a2a42_e6516706",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T22:55:02Z",
+      "side": 1,
+      "message": "ok usb_findit now checks all non-zero args against each usb device until it finds a match.",
+      "parentUuid": "8b6962b7_7e02e287",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c28c11e_4ad2399c",
         "filename": "util/usb_if.h",
         "patchSetId": 4
@@ -543,6 +615,30 @@
       "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccad225f_c5ecc27e",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T22:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c28c11e_4ad2399c",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
