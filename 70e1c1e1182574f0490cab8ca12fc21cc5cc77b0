@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8722fd20_eed0f924",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-08T16:32:33Z",
+      "side": 1,
+      "message": "This feels a bit hacky. I believe that it works, but maybe it deserves a bit more comment in the code. Like \"we think doing this works because...\" and I think you and I both noticed some extra delay at ODR changes that would help justify doing this, so maybe mention that.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1433ac85_18855fc6",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-08T16:32:33Z",
+      "side": 1,
+      "message": "nit: this seems redundant over\n\n   int sample_count[SENSOR_COUNT] \u003d {0};",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 22
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954ea592_9c79f7d0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-08T16:32:33Z",
+      "side": 1,
+      "message": "This may largely be a matter of personal opinion, but can I suggest:\n\n     if (odr \u003e 0)\n        odr \u003d SECOND * 1000 / odr;\n     if (odr \u003e 0)\n        sample_rate[i] \u003d MIN(sample_rate[i], odr);",
+      "range": {
+        "startLine": 392,
+        "startChar": 3,
+        "endLine": 394,
+        "endChar": 25
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bcae008_6b6d92c4",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-08T16:32:33Z",
+      "side": 1,
+      "message": "This should probably be factored out to its own function?",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 2
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20a6df70_060b2150",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-08T16:32:33Z",
+      "side": 1,
+      "message": "Should this be outside the #ifdef?",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 26
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af841d09_73f6a712",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-08T16:32:33Z",
+      "side": 1,
+      "message": "Make a helper for this? Then you can say\n\n    if (is_interrupt_asserted()) {\n        ....",
+      "range": {
+        "startLine": 466,
+        "startChar": 7,
+        "endLine": 466,
+        "endChar": 43
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
