@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0d2c611_3bad75db",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61423a2a_f75d4695",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4455653f_281db9a6",
         "filename": "util/usb_if.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-08T20:49:33Z",
       "side": 1,
       "message": "this is a weird API to retrieve the serial number, one would thing that given handle they should have access to desc.iSerialNumber.\n\njust curious though, could desc.iSerialNumber ever be zero for a legitimate serial number case?",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4782c9cb_48009e96",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "I don\u0027t think there are any ccd devices with 0 as a valid serialnumber",
+      "parentUuid": "4455653f_281db9a6",
       "range": {
         "startLine": 89,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b13f4cdf_d3b0c6e4",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2941a1a_a3686fe7",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b01aac9e_c57499b6",
         "filename": "util/usb_if.c",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5b1f39eb_3ca5d559",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b01aac9e_c57499b6",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6badc524_dea5f4c7",
         "filename": "util/usb_if.c",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2019-05-08T20:49:33Z",
       "side": 1,
       "message": "this will yield \u0027true\u0027 if both vid and pid are set to zero.\n\nalso, will desc ever contain both desc.vid and desc.pid set to zero? \n\nMaybe no need to check if vid or pid  are zero?",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16e85c4_5de6de2e",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "I think if vid and pid are 0 and there\u0027s no serial, then just use the first device\n\nor should usb_findit fail if no device info is given?",
+      "parentUuid": "6badc524_dea5f4c7",
       "range": {
         "startLine": 96,
         "startChar": 13,
@@ -137,6 +257,30 @@
       "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d5a361_8819c501",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00ef973_13d93211",
+      "range": {
+        "startLine": 133,
+        "startChar": 13,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -222,6 +366,30 @@
       "writtenOn": "2019-05-08T21:41:41Z",
       "side": 1,
       "message": "I think this (allowing to give vid/pid along with sn) would complicate processing logic for no particularly good reason.\n\nHow about we should start without it and then add it if a need arises.",
+      "parentUuid": "8d3bb753_9aead41a",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ad109a_152ce85e",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-08T21:42:14Z",
+      "side": 1,
+      "message": "The issue is iteflash and gsctool default to non-zero vid pid. So to use those scripts we have to give the vid pid and serialnumber of the device to override those defaults.\n\nWe can change those scripts so the default vid pid is 0 if the user gives a serial number.",
       "parentUuid": "8d3bb753_9aead41a",
       "range": {
         "startLine": 20,
