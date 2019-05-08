@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8f84a88e_bbad0f0d",
+        "filename": "util/usb_if.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T00:41:24Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand this reasoning: serial number uniquely identifies a device, why would you look at vid/pid if serial number is given.\n\nThe scripts do not use serial number, so this keeps working the same way it did before your patch.\n\nI think serial number should be given precendence, and gsctool/iteflash user should be warned that vid/pid is ignored if they are given along with the serial number on the command line.",
+      "parentUuid": "3be13f96_fabc394f",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "645cefecce90b2996e8b7f437f7de80b528d8382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "545aac0e_3b842cc3",
         "filename": "util/usb_if.c",
         "patchSetId": 1
