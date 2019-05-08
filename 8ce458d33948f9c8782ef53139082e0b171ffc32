@@ -46,6 +46,30 @@
       "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364634f6_f91f5d9a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T19:32:57Z",
+      "side": 0,
+      "message": "right, it\u0027s just before this message was reporting a failure to connect, and now there is no indication of it, let\u0027s see what Matt thinks about the best way to go here",
+      "parentUuid": "a1d46ce8_2619fe89",
+      "range": {
+        "startLine": 1669,
+        "startChar": 1,
+        "endLine": 1672,
+        "endChar": 2
+      },
+      "revId": "8ce458d33948f9c8782ef53139082e0b171ffc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
