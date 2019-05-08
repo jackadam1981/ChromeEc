@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a48eb26e_ea68ab12",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T21:50:47Z",
+      "side": 1,
+      "message": "but desc.iSerialNumber is not the serial number, it is a byte size index into something where the serial number could be retrieved from, at least this is how I understand this.",
+      "parentUuid": "4782c9cb_48009e96",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2941a1a_a3686fe7",
         "filename": "util/usb_if.c",
         "patchSetId": 4
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "I think if vid and pid are 0 and there\u0027s no serial, then just use the first device\n\nor should usb_findit fail if no device info is given?",
       "parentUuid": "6badc524_dea5f4c7",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c13767_29143aec",
+        "filename": "util/usb_if.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T21:50:47Z",
+      "side": 1,
+      "message": "this would be the first device in the usb device list - it could be anything, most likely having nothing to do with CCD/testsing.\n\nSure, failing if no device info (neither serial number nor vid/pid) is given makes sense.",
+      "parentUuid": "f16e85c4_5de6de2e",
       "range": {
         "startLine": 96,
         "startChar": 13,
