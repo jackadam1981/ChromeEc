@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b343045_e5462a1f",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-08T08:50:39Z",
+      "side": 0,
+      "message": "Referring to your following CL in board - bobba, you adjust the key masks in board_init based on SKU ID. Based on this mechanism, probably we can set CONFIG_KEYBOARD_KEYPAD in baseboard.h and set key_mask to support keypad by default but in the new baseboard_init, to set key_mask 11/12 back to 0xfa/0xca and keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD). As a result, for most of boards we don\u0027t need to change them.\n\nFor bobba board, we can base on your current CL to support SKU IDs with keypad. We can also see what Diana suggests to.",
+      "revId": "e941ef3c409a000bbd4a388166cdd80ef71211c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
