@@ -336,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "971e9354_08823cdf",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-08T15:00:56Z",
+      "side": 1,
+      "message": "Yes, I meant the buffer overflow on the EC which can be handled with a check against response_max. Agree with removing the number of records field in the request and let the EC return as many as possible.",
+      "parentUuid": "9b6c887c_2dd74ee3",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "d6229a233966429769f6867f4bd1ebc03518a563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0abc363e_e6cb77ee",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
