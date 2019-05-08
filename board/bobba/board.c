@@ -26,6 +26,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
@@ -291,6 +292,21 @@ static void cbi_init(void)
 	board_update_sensor_config_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+
+static void board_init(void)
+{
+	if (!(sku_id == 41 || sku_id == 42 || sku_id == 43 || sku_id == 44)) {
+		/* Disable scanning KSO13 & 14 if keypad isn't present. */
+		keyboard_raw_set_cols(KEYBOARD_COLS_WITH_KEYPAD);
+		keyscan_config.actual_key_mask[11] = 0xfa;
+		keyscan_config.actual_key_mask[12] = 0xca;
+
+		/* Search key is moved to col=1,row=0 */
+		keyscan_config.actual_key_mask[0] = 0x14;
+		keyscan_config.actual_key_mask[1] = 0xff;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 uint32_t board_override_feature_flags0(uint32_t flags0)
 {
