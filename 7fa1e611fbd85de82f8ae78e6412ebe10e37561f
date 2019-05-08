@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7652cd23_3f29f67d",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T20:54:05Z",
+      "side": 1,
+      "message": "Can you do \n\n  /*.port\u003dI2C_PORT_ALS,*/ /* Unused. RGB channels are read by CLEAR_ALS. */\n\nI have a short memory.",
+      "parentUuid": "9ecfd5d9_85da672d",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 27
+      },
+      "revId": "7fa1e611fbd85de82f8ae78e6412ebe10e37561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c371922_07245bf9",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 5
