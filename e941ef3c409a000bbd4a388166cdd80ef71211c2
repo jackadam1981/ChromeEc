@@ -16,6 +16,24 @@
       "revId": "e941ef3c409a000bbd4a388166cdd80ef71211c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe03c773_777a3578",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-05-08T09:41:15Z",
+      "side": 0,
+      "message": "I didn\u0027t do this because I don\u0027t know the SKU IDs for keypad on other boards.\nBut If we can make sure these 4 IDs is support keypad only, I think we can keep it in baseboard.c.",
+      "parentUuid": "0b343045_e5462a1f",
+      "revId": "e941ef3c409a000bbd4a388166cdd80ef71211c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
