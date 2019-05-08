@@ -557,24 +557,20 @@ static void handle_reset(int pm_state)
 	/* power off main SRAM */
 	sram_power(0);
 
-	while (1) {
+	/* check if host ish driver already set the DMA enable flag */
+	if (IPC_ISH_RMP2 & DMA_ENABLED_MASK) {
 
-		/* check if host ish driver already set the DMA enable flag */
-		if (IPC_ISH_RMP2 & DMA_ENABLED_MASK) {
+		/* clear ISH2HOST doorbell register */
+		*IPC_ISH2HOST_DOORBELL_ADDR = 0;
 
-			/* clear ISH2HOST doorbell register */
-			*IPC_ISH2HOST_DOORBELL_ADDR = 0;
+		/* clear error register in MISC space */
+		MISC_ISH_ECC_ERR_SRESP = 1;
 
-			/* clear error register in MISC space */
-			MISC_ISH_ECC_ERR_SRESP = 1;
-
-			/* reset ISH minute-ia cpu core, will goto ISH ROM */
-			ish_mia_reset();
-		}
-
-		ish_mia_halt();
+		/* reset ISH minute-ia cpu core, will goto ISH ROM */
+		ish_mia_reset();
 	}
 
+	ish_mia_halt();
 	__builtin_unreachable();
 }
 
