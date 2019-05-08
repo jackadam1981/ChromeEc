@@ -22,6 +22,29 @@
       "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d34fe05_458da057",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-08T14:52:18Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 279,
+        "startChar": 50,
+        "endLine": 279,
+        "endChar": 56
+      },
+      "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
