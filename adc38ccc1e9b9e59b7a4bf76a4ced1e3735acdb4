@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "3905704c_8c209df9",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-08T19:50:21Z",
+      "side": 1,
+      "message": "Please look at my comment in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1601052/.",
+      "parentUuid": "21e9ccda_ed4e6e4b",
+      "revId": "adc38ccc1e9b9e59b7a4bf76a4ced1e3735acdb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67b550d9_cc1d9098",
         "filename": "board/flapjack/board.c",
         "patchSetId": 40
