@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fab91bf_e0109a22",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T17:00:09Z",
+      "side": 1,
+      "message": "why do you need to use different path depending on the current directory\n\nYou could use direct inside chroot path of /mnt/host/source/src/scripts",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34beeb6a_50a1f608",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T17:00:09Z",
+      "side": 1,
+      "message": "so, how should this script be invoked when connection is over SuzyQ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58348690_eb9593b2",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T17:00:09Z",
+      "side": 1,
+      "message": "still some mix of straight code and functions - why could not all functions be in the same section?\n\nalso, it is difficult to track changes between versions when the code is moved around. It would be useful to see separate patchsets where say functions are moved from place to place without any modifications and then the mods in the next patchset.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98f9aca5_a9ba7c25",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T17:00:09Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a good heuristic to decide which way to test, the user should be able to pick explicitly servod vs suzyQ.\n\nAlso, I can\u0027t help it but feel that this script is extremely complicated because it has to deal with all the variants of connectivity, control servo, etc, etc.\n\nIt would be much cleaner to have a script with is testing UARTs given the UART device names. This is all we need to test suzyQ case.\n\nOnce the actual test script is available we can use it right away with SuzyQ, and then there could be another script added which discovers the servo/suzyq, determines the uart device names and invokes the main test script.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
