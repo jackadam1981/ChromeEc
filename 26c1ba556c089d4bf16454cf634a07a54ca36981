@@ -211,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "39346819_3af0a73c",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-08T21:41:41Z",
+      "side": 1,
+      "message": "I think this (allowing to give vid/pid along with sn) would complicate processing logic for no particularly good reason.\n\nHow about we should start without it and then add it if a need arises.",
+      "parentUuid": "8d3bb753_9aead41a",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c28c11e_4ad2399c",
         "filename": "util/usb_if.h",
         "patchSetId": 4
