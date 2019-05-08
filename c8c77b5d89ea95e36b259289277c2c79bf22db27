@@ -46,6 +46,30 @@
       "revId": "c8c77b5d89ea95e36b259289277c2c79bf22db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38393aa_ceefba57",
+        "filename": "chip/ish/ish_fwst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-08T22:17:05Z",
+      "side": 1,
+      "message": "Actually I have patch for this in my local. I didn\u0027t push it because of the location.\n\nIn my patch, it is in host_command_heci.c since it\u0027s the one handle sensor data.",
+      "parentUuid": "21560be2_adc12826",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "c8c77b5d89ea95e36b259289277c2c79bf22db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
