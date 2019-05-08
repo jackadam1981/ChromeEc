@@ -6144,7 +6144,6 @@ int cmd_i2c_write(int argc, char *argv[])
 	return 0;
 }
 
-
 int cmd_i2c_xfer(int argc, char *argv[])
 {
 	unsigned int port, addr;
@@ -6218,6 +6217,42 @@ int cmd_i2c_xfer(int argc, char *argv[])
 		printf("Write successful.\n");
 	}
 
+	return 0;
+}
+
+int cmd_i2c_lookup(int argc, char *argv[])
+{
+	struct ec_params_i2c_lookup p;
+	struct ec_response_i2c_lookup r;
+	char *e;
+	int rv;
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <type>\n", argv[0]);
+		return -1;
+	}
+
+	p.type = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad type.\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_I2C_LOOKUP, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (r.i2c_addr == -1 && r.i2c_port == -1) {
+		fprintf(stderr, "Device not present.\n");
+		return -1;
+	}
+
+	/*
+	 * Do not change the format of this print. firmware_ECCbiEeprom FAFT
+	 * test depends on this, and will silently start skipping tests.
+	 */
+	printf("Port: %d; Address: 0x%02x (7-bit format)\n", r.i2c_port,
+	       r.i2c_addr);
 	return 0;
 }
 
@@ -8590,6 +8625,7 @@ const struct command commands[] = {
 	{"i2cread", cmd_i2c_read},
 	{"i2cwrite", cmd_i2c_write},
 	{"i2cxfer", cmd_i2c_xfer},
+	{"i2clookup", cmd_i2c_lookup},
 	{"infopddev", cmd_pd_device_info},
 	{"inventory", cmd_inventory},
 	{"led", cmd_led},

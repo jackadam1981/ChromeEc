@@ -5345,6 +5345,26 @@ struct ec_response_rollback_info {
 #define EC_CMD_AP_RESET 0x0125
 
 /*****************************************************************************/
+/* I2C lookup command */
+
+#define EC_CMD_I2C_LOOKUP 0x0126
+
+#define EC_I2C_LOOKUP_TYPE_CBI_EEPROM	1
+
+struct ec_params_i2c_lookup {
+	uint16_t type;		/* EC_I2C_LOOKUP_TYPE_* */
+	/* Used for type specific parameters in future */
+	union {
+		uint16_t reseved;
+	};
+} __ec_align2;
+
+struct ec_response_i2c_lookup {
+	uint16_t i2c_port;	/* Physical port for device, -1 for invalid */
+	uint16_t i2c_addr;	/* 7-bit (or 10-bit) address, -1 for invalid */
+} __ec_align1;
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/

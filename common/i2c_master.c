@@ -852,6 +852,34 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 
+static int i2c_command_lookup(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_lookup *params = args->params;
+	struct ec_response_i2c_lookup *resp = args->response;
+
+	/* Set good default values */
+	args->response_size = sizeof(*resp);
+	resp->i2c_port = -1;
+	resp->i2c_addr = -1;
+
+	switch (params->type) {
+	case EC_I2C_LOOKUP_TYPE_CBI_EEPROM:
+#ifdef CONFIG_CROS_BOARD_INFO
+		resp->i2c_port = I2C_PORT_EEPROM;
+		resp->i2c_addr = I2C_ADDR_EEPROM >> 1;
+#endif /* CONFIG_CROS_BOARD_INFO */
+		break;
+	default:
+		/* The type was unregonized */
+		return EC_RES_INVALID_PARAM;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_I2C_LOOKUP, i2c_command_lookup, EC_VER_MASK(0));
+/* If the params union expands in the future, need to bump EC_VER_MASK */
+BUILD_ASSERT(sizeof(struct ec_params_i2c_lookup) == 4);
+
 void i2c_passthru_protect_port(uint32_t port)
 {
 	if (port < I2C_PORT_COUNT)
