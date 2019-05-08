@@ -118,6 +118,30 @@
       "revId": "c8c77b5d89ea95e36b259289277c2c79bf22db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33acbd71_5cb4f422",
+        "filename": "chip/ish/ish_fwst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-05-08T22:44:05Z",
+      "side": 1,
+      "message": "Yes, it\u0027s for communicating with host.\n\nilup is for IPC link up \u003d\u003e ipc is ready\nhup is for HCEI up \u003d\u003e HECI over IPC is ready\nFWSTS is for current status.. and APP_LOADED is actually used by host driver to decide if host need to reset ISH or just send resume message to ISH FW.\n\nI\u0027ve put it in \"cros_ec_ishtp_subsys_initialize()\" but it didn\u0027t work. I didn\u0027t check why it is. but someone is resetting.\n\nFor now, I\u0027ve put it in \"cros_ec_ishtp_subsys_new_msg_received()\".. this is why I\u0027m saying my patch has it in wrong place. I\u0027ll check tomorrow(5/9)",
+      "parentUuid": "412a2b41_ef189e8c",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "c8c77b5d89ea95e36b259289277c2c79bf22db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
