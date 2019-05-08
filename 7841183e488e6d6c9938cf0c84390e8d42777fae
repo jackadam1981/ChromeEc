@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "32d5dd57_b708abde",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-08T19:39:46Z",
+      "side": 1,
+      "message": "The first tab is 9 columns wide since it starts in the 7/8th column. If you set up your editor for \"linux kernel style\" it should do this automatically.",
+      "parentUuid": "ee4d6f6e_dd1fba9e",
+      "range": {
+        "startLine": 304,
+        "startChar": 25,
+        "endLine": 304,
+        "endChar": 26
+      },
+      "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d34fe05_458da057",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 2
