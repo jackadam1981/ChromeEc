@@ -403,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "8b6962b7_7e02e287",
+        "filename": "util/usb_if.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-08T21:46:24Z",
+      "side": 1,
+      "message": "Just make sure the help output shows default values.  No need to change default vid:pid based on serialno being given.\n\nI think most of the time the user won\u0027t need to override them anyways even when giving a serial number.",
+      "parentUuid": "01ad109a_152ce85e",
+      "range": {
+        "startLine": 20,
+        "startChar": 36,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "26c1ba556c089d4bf16454cf634a07a54ca36981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c28c11e_4ad2399c",
         "filename": "util/usb_if.h",
         "patchSetId": 4
