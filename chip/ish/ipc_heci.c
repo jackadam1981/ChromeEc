@@ -705,6 +705,9 @@ void ipc_mng_task(void)
 
 	ipc_send_reset_notify(handle);
 
+	/* inform host firmware is running */
+	ish_fwst_set_fw_status(FWSTS_FW_IS_RUNNING);
+
 	while (1) {
 		payload_size = ipc_read(handle, &msg, sizeof(msg), -1);
 
