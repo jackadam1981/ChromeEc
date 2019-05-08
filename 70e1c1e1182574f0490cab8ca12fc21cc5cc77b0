@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "43cda4e9_2a485734",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T22:21:26Z",
+      "side": 1,
+      "message": "this is a huge data segment for most EC. I think we should pick something smaller. This is only used for a single fifo read between interrupt calls. This normally only needs 1 value per sensor (when the rate is slow). We probably get 2 - 3 value at more per sensor. \n\nCan we make this 2 * 8 \u003d\u003e 16 units big instead?\n\nLet\u0027s also add to the comment that the data here only needs to be as big as a single fifo read operation. Maybe we can even call it single_fifo_read_queue. I also think we can define it next to the only function that uses it (maybe even a local static variable within that function)",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1433ac85_18855fc6",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 0,
         "endLine": 335,
         "endChar": 22
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f670efe2_e4f2a642",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T22:21:26Z",
+      "side": 1,
+      "message": "isn\u0027t this touching sensor outside of this driver? If so, that doesn\u0027t seem right to me",
+      "range": {
+        "startLine": 390,
+        "startChar": 36,
+        "endLine": 390,
+        "endChar": 49
       },
       "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -117,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "955f125a_fcc439ca",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T22:21:26Z",
+      "side": 1,
+      "message": "passing unitizliat data around also seems weird even if we don\u0027t use it later. Let\u0027s improve the non CONFIG_ACCEL_FIFO code path",
+      "parentUuid": "20a6df70_060b2150",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 26
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af841d09_73f6a712",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
@@ -128,6 +198,30 @@
       "writtenOn": "2019-05-08T16:32:33Z",
       "side": 1,
       "message": "Make a helper for this? Then you can say\n\n    if (is_interrupt_asserted()) {\n        ....",
+      "range": {
+        "startLine": 466,
+        "startChar": 7,
+        "endLine": 466,
+        "endChar": 43
+      },
+      "revId": "70e1c1e1182574f0490cab8ca12fc21cc5cc77b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635223d1_4d9e766f",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-08T22:21:26Z",
+      "side": 1,
+      "message": "Ideally we make this a part of the sensor_config_t interface, and the board can set what the GPIO is.",
+      "parentUuid": "af841d09_73f6a712",
       "range": {
         "startLine": 466,
         "startChar": 7,
