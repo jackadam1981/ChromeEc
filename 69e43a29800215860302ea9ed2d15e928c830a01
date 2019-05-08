@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e77e1d4_2dd1742c",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-08T20:14:07Z",
+      "side": 1,
+      "message": "How should sku 255 be treated?  And consider a \"board_has_keypad\" function similar to the sensor functions, just for clarity",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 69
+      },
+      "revId": "69e43a29800215860302ea9ed2d15e928c830a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d338858c_b6a70c47",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-08T20:14:07Z",
+      "side": 1,
+      "message": "Should this be included as a part of the cbi_init hook above since it\u0027s a SKU customization?",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 55
+      },
+      "revId": "69e43a29800215860302ea9ed2d15e928c830a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
