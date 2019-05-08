@@ -2344,8 +2344,12 @@ static void pd_partner_port_reset(int port)
 {
 	uint64_t timeout;
 	int explicit_contract_in_place;
-	uint8_t flags;
+	uint8_t flags = 0;
 
+	/*
+	 * This may fail, in which case flags will stay 0, and we just
+	 * continue assuming there is no explicit contract in place.
+	 */
 	pd_get_saved_port_flags(port, &flags);
 	explicit_contract_in_place = (flags & PD_BBRMFLG_EXPLICIT_CONTRACT);
 
