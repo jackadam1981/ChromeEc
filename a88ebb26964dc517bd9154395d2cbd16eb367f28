@@ -94,6 +94,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b00e580_4e4ff569",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-09T01:45:38Z",
+      "side": 1,
+      "message": "I disagree. If we fail to read the flag, we should treat it as explicit_contract_in_place \u003d 0 (which is true, or, I mean, to the best of our knowledge, true), and let the rest of the code flow (I\u0027m happy to add a comment to explain a bit more clearly what the intent is, here).\n\nI don\u0027t see how adding another test makes the flow clearer, especially if we ended up changing the code below to, say, add some special cases.",
+      "parentUuid": "c353a11f_9871572f",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
