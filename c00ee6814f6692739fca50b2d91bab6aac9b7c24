@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f287f13_a9f9431a",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-09T05:23:45Z",
+      "side": 1,
+      "message": "Done!\ngood suggestions! yeah, the get_time() has high 32 bit part which relies on timer 0 interrupt.\n\njust changed to existing exposed __hw_clock_source_read() which just based on main counter.\n\n__hw_clock_source_read() returned uint32_t for micro seconds, I think its enough for each staying of low power mode state.",
+      "parentUuid": "917a9748_4de0740f",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 48
+      },
+      "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba1d1e35_7c5ff265",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bff682f5_5a25ebdb",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-09T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba1d1e35_7c5ff265",
+      "range": {
+        "startLine": 386,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 48
+      },
+      "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac80f02a_ee6d06e7",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94b0ce9_3a2456c2",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-09T05:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac80f02a_ee6d06e7",
+      "range": {
+        "startLine": 439,
+        "startChar": 1,
+        "endLine": 441,
+        "endChar": 48
+      },
+      "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "267f71d2_12a78ff2",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-09T05:23:45Z",
+      "side": 1,
+      "message": "Done!\n\nGWMR is for mask wake up from gpio pins,  default value is 0 (means not mask), if want mask it, should set it to 0xffffffff, but I think we don\u0027t need to do this here, we already set GRER/GRER/GIMR to disable gpio interrupts from the source, if a gpio interrupt occurs during this time, ish will wake up once then entered low power mode again (the while (1) loop), so its doesn\u0027t matter.",
+      "parentUuid": "c5453fbb_94c0bd4c",
+      "range": {
+        "startLine": 549,
+        "startChar": 4,
+        "endLine": 549,
+        "endChar": 31
+      },
+      "revId": "fa7d17243afca5f6afdfa3cab1793c10370d158a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfbf7a7b_01bcadb8",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Done.",
       "parentUuid": "bfbf7a7b_01bcadb8",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 65
+      },
+      "revId": "fa7d17243afca5f6afdfa3cab1793c10370d158a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18017c06_0b7b2bd3",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-09T05:23:45Z",
+      "side": 1,
+      "message": "if removed these conditions, build will failed (function defined but not used issues) if not configured D0i1, D0i2 and D0i3. \n\nwe have CONFIG_ISH_PM_D0I* configurations for config each low power mode states independently, so, we can just enable D0i1 and disable D0i2 and D0i3, or just enable D0i2 and D0i3.\n\nso suggest still keep these conditions in this CL, if no need so much configurations for each D0i* states, we can have a separated CL to do this.",
+      "parentUuid": "98caec7d_884f9099",
       "range": {
         "startLine": 285,
         "startChar": 0,
