@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fbb714d6_3728447d",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-09T06:27:57Z",
+      "side": 1,
+      "message": "I guess Diana told about a similar function to \"board_is_convertible\" for wrapping this SKU_ID checking.",
+      "parentUuid": "9bcbf412_386b4f5d",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 69
+      },
+      "revId": "69e43a29800215860302ea9ed2d15e928c830a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d338858c_b6a70c47",
         "filename": "board/bobba/board.c",
         "patchSetId": 2
