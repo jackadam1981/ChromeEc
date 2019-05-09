@@ -94,6 +94,30 @@
       "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da08dd8_c0ab205b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-09T17:53:58Z",
+      "side": 1,
+      "message": "So kind of what Nathan was suggesting and adding an element of randomness? If we vary the holdoff period, we *should* only run into 1 collision at most? (I don\u0027t think other devices do this.)",
+      "parentUuid": "a805a605_f30dfe66",
+      "range": {
+        "startLine": 3372,
+        "startChar": 0,
+        "endLine": 3376,
+        "endChar": 21
+      },
+      "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
