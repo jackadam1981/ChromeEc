@@ -760,6 +760,10 @@ host_command_entering_mode(struct host_cmd_handler_args *args)
 		(struct ec_params_entering_mode *)args->params;
 	args->response_size = 0;
 	g_vboot_mode = param->vboot_mode;
+
+	CPRINTF("TEST_ONLY HACK! Rebooting EC into RW since we saw EC_CMD_ENTERING_MODE.\n");
+	system_run_image_copy(SYSTEM_IMAGE_RW);
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_ENTERING_MODE,
