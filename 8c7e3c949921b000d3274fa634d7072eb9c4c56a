@@ -70,6 +70,30 @@
       "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a805a605_f30dfe66",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-09T17:28:00Z",
+      "side": 1,
+      "message": "For an idea, should we track the last timestamp of the last received packet and wait to send our packets after a certain quiet time has elapsed (or a maximum wait time).\n\nWe could wait for 50ms +- 10ms (+- depending on wall clock for randomness or something like that) after the last received packet to send our data\n\nThoughts?",
+      "parentUuid": "5746ee08_1f728fbb",
+      "range": {
+        "startLine": 3372,
+        "startChar": 0,
+        "endLine": 3376,
+        "endChar": 21
+      },
+      "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
