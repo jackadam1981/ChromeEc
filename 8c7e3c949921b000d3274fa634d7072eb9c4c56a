@@ -46,6 +46,30 @@
       "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5746ee08_1f728fbb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T01:29:44Z",
+      "side": 1,
+      "message": "This holdoff timer may just create new collision(s) which are currently working. So, I\u0027m not sure we\u0027re improving compatibility or decreasing it. \n\nWe should seek for a solution which avoids or resolves any collision (instead of fixing one particular collision) until we know this is a limitation for PD 2.0.",
+      "parentUuid": "cfa5ba8a_5d66dfe0",
+      "range": {
+        "startLine": 3372,
+        "startChar": 0,
+        "endLine": 3376,
+        "endChar": 21
+      },
+      "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
