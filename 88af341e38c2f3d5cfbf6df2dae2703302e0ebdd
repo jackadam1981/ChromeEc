@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8a71277_366c8df1",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-09T17:14:42Z",
+      "side": 1,
+      "message": "nit: I think keeping diff scope to the for loop makes more sense; you can still declare it without a value at the top of the for loop if you want",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 9
+      },
+      "revId": "88af341e38c2f3d5cfbf6df2dae2703302e0ebdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
