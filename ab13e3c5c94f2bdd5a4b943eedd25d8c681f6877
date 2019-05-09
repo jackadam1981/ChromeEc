@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "606de2bb_82a9404f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-05-09T00:56:16Z",
+      "side": 1,
+      "message": "probably should say servo as we want this to be cherry-pick into servo if we ever cherry-pick the other build tool changes too",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "ab13e3c5c94f2bdd5a4b943eedd25d8c681f6877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f760a8_93679344",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-05-09T00:56:16Z",
+      "side": 1,
+      "message": "is there a way to have this hack in the sweetberry\u0027s build.mk rather than the whole cortex-m file?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "ab13e3c5c94f2bdd5a4b943eedd25d8c681f6877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
