@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "993e3202_fe7363a4",
+        "filename": "util/usb_if.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-09T00:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48650888_9bf5f69e",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "3cf3655ce64763ff737b4db5f7c4ad16e4c8d5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a9a7fc_f3a02e2c",
         "filename": "util/usb_if.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "3cf3655ce64763ff737b4db5f7c4ad16e4c8d5e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88ccb5ec_15513ed9",
+        "filename": "util/usb_if.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-09T00:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a9a7fc_f3a02e2c",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "3cf3655ce64763ff737b4db5f7c4ad16e4c8d5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fa3bc946_4a79757e",
+        "filename": "util/usb_if.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-09T00:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4353757a_9fee59ba",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 15
+      },
+      "revId": "3cf3655ce64763ff737b4db5f7c4ad16e4c8d5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "145d34cd_7e284637",
         "filename": "util/usb_if.c",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2019-05-09T00:33:23Z",
       "side": 1,
       "message": "is this message needed? The fact that the program keeps running is a good indication that the device is found.",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 29
+      },
+      "revId": "3cf3655ce64763ff737b4db5f7c4ad16e4c8d5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d7bfb0_53e91136",
+        "filename": "util/usb_if.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-09T00:46:04Z",
+      "side": 1,
+      "message": "I like it because it makes it obvious the script didn\u0027t fail finding the device.",
+      "parentUuid": "145d34cd_7e284637",
       "range": {
         "startLine": 136,
         "startChar": 3,
