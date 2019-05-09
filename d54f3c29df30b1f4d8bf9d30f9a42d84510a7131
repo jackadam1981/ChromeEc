@@ -46,6 +46,30 @@
       "revId": "d54f3c29df30b1f4d8bf9d30f9a42d84510a7131",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b8c493_44386215",
+        "filename": "util/usb_if.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2019-05-09T18:32:02Z",
+      "side": 1,
+      "message": "Once you\u0027ve already established a common length, there is no need for stncmp().  memcmp() can be faster because it\u0027s not checking for NULL termination at every character.  Change to memcmp() before submitting.",
+      "parentUuid": "b8aed8db_2f27a13c",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "d54f3c29df30b1f4d8bf9d30f9a42d84510a7131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
