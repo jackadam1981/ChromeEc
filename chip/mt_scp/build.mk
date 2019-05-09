@@ -17,6 +17,10 @@ $(out)/RO/chip/$(CHIP)/ipi_table.o: $(out)/ipi_table_gen.inc
 $(out)/RW/chip/$(CHIP)/ipi_table.o: $(out)/ipi_table_gen.inc
 endif
 
+ifeq ($(CONFIG_AUDIO_CODEC_WOV),y)
+AUDIO_CODEC_HOTWORD_LIB=private/libcortexm4_google_hotword_dsp_api.a
+endif
+
 # Optional chip modules
 chip-$(CONFIG_COMMON_TIMER)+=hrtimer.o
 chip-$(CONFIG_I2C)+=i2c.o

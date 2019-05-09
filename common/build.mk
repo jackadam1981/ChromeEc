@@ -163,7 +163,15 @@ endif
 common-$(CONFIG_AUDIO_CODEC)+=audio_codec.o
 common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
 common-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
-common-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o sha256.o
+common-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o sha256.o hotword_dsp_api.o
+
+ifeq ($(CONFIG_AUDIO_CODEC_WOV),y)
+ifdef AUDIO_CODEC_HOTWORD_LIB
+ifneq ($(wildcard $(AUDIO_CODEC_HOTWORD_LIB)),)
+LDFLAGS_EXTRA+=$(AUDIO_CODEC_HOTWORD_LIB)
+endif
+endif
+endif
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
