@@ -13,6 +13,7 @@
 #include "compile_time_macros.h"
 #include "config.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
@@ -255,6 +256,9 @@ static int rt946x_reset_to_zero(void)
 static int rt946x_enable_bc12_detection(int en)
 {
 #if defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_MT6370)
+#if defined(CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER)
+	gpio_set_level(GPIO_BC12_DET_EN, en);
+#endif /* CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER */
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_DPDM1, RT946X_MASK_USBCHGEN);
 #endif
@@ -412,7 +416,7 @@ static int rt946x_init_setting(void)
 		return rv;
 #endif
 	/* Enable/Disable BC 1.2 detection */
-#ifdef HAS_TASK_USB_CHG
+#ifdef HAS_TASK_USB_CHG_P0
 	rv = rt946x_enable_bc12_detection(1);
 #else
 	rv = rt946x_enable_bc12_detection(0);
@@ -457,6 +461,15 @@ static int rt946x_init_setting(void)
 	rv = rt946x_set_iprec(batt_info->precharge_current);
 	if (rv)
 		return rv;
+
+#ifdef CONFIG_CHARGER_MT6370_BACKLIGHT
+	rt946x_write8(MT6370_BACKLIGHT_BLEN,
+		      MT6370_MASK_BLED_EXT_EN | MT6370_MASK_BLED_EN |
+			MT6370_MASK_BLED_1CH_EN | MT6370_MASK_BLED_2CH_EN |
+			MT6370_MASK_BLED_3CH_EN | MT6370_MASK_BLED_4CH_EN);
+	rt946x_update_bits(MT6370_BACKLIGHT_BLPWM, MT6370_MASK_BLPWM_BLED_PWM,
+			   BIT(MT6370_SHIFT_BLPWM_BLED_PWM));
+#endif
 
 	return rt946x_init_irq();
 }
@@ -861,7 +874,7 @@ static void rt946x_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 
-#ifdef HAS_TASK_USB_CHG
+#ifdef HAS_TASK_USB_CHG_P0
 static int rt946x_get_bc12_device_type(void)
 {
 	int reg;
@@ -912,7 +925,7 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 
 void rt946x_interrupt(enum gpio_signal signal)
 {
-	task_wake(TASK_ID_USB_CHG);
+	task_wake(TASK_ID_USB_CHG_P0);
 }
 
 void usb_charger_task(void *u)
@@ -920,9 +933,24 @@ void usb_charger_task(void *u)
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
 	int reg = 0;
+	uint32_t evt;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
+
+		evt = task_wait_event(-1);
+
+		if (IS_ENABLED(CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER)) {
+			if (evt & USB_CHG_EVENT_PR_SINK) {
+				rt946x_enable_bc12_detection(1);
+				/* Wait for BC12 detection finished signal. */
+				continue;
+			}
+
+			if (evt & USB_CHG_EVENT_PR_SOURCE)
+				rt946x_enable_bc12_detection(0);
+		}
+
 		rt946x_read8(RT946X_REG_DPDMIRQ, &reg);
 
 		/* VBUS attach event */
@@ -959,13 +987,13 @@ void usb_charger_task(void *u)
 			p9221_notify_vbus_change(0);
 #endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
-			rt946x_enable_bc12_detection(1);
-		}
 
-		task_wait_event(-1);
+			if (!IS_ENABLED(CONFIG_BC12_DETECT_POWER_ROLE_TRIGGER))
+				rt946x_enable_bc12_detection(1);
+		}
 	}
 }
-#endif /* HAS_TASK_USB_CHG */
+#endif /* HAS_TASK_USB_CHG_P0 */
 
 /* Non-standard interface functions */
 
