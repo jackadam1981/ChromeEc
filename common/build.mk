@@ -166,6 +166,10 @@ common-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
 common-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
 common-$(CONFIG_AUDIO_CODEC_WOV)+=audio_codec_wov.o sha256.o
 
+ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
+common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
+endif
+
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
 common-$(call not_cfg,$(CONFIG_MALLOC))+=shared_mem.o

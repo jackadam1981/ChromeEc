@@ -10,6 +10,7 @@
 #include "sha256.h"
 #include "system.h"
 
+#include "hotword_dsp_api.h"
 #include "audio_codec.h"
 
 static struct {
@@ -124,6 +125,9 @@ static int wov_enable(struct host_cmd_handler_args *args)
 	if (priv.driver.enable() != EC_SUCCESS)
 		return EC_RES_ERROR;
 
+	if (!GoogleHotwordDspInit((void *)priv.driver.lang_buf_addr))
+		return EC_RES_ERROR;
+
 	mutex_lock(&priv.lock);
 	priv.wov_enabled = 1;
 	priv.hotword_detected = 0;
@@ -169,6 +173,8 @@ static int wov_is_hotword_detected(struct host_cmd_handler_args *args)
 
 static int wov_reset(struct host_cmd_handler_args *args)
 {
+	GoogleHotwordDspReset();
+
 	mutex_lock(&priv.lock);
 	priv.hotword_detected = 0;
 	mutex_unlock(&priv.lock);
@@ -321,6 +327,7 @@ void audio_codec_wov_task(void *arg)
 {
 	uint32_t n, req;
 	uint8_t *p = (uint8_t *)priv.driver.audio_buf_addr;
+	int ret;
 
 	if (!priv.driver.read) {
 		ERR("read has not registered");
@@ -370,6 +377,11 @@ void audio_codec_wov_task(void *arg)
 			DBG("no data, sleep");
 			task_wait_event(-1);
 			continue;
+		}
+
+		if (GoogleHotwordDspProcess(p + priv.audio_buf_wp, n, &ret)) {
+			DBG("hotword detected");
+			host_set_single_event(EC_HOST_EVENT_WOV);
 		}
 
 		mutex_lock(&priv.lock);
