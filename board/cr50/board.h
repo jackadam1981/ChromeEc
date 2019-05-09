@@ -38,8 +38,12 @@
 #undef CONFIG_FLASH
 #endif
 
+#define CONFIG_CMD_SLEEP_DIAGNOSTICS
+#define CONFIG_BOARD_PRE_INIT
+
 /* Enable getting gpio flags to tell if open drain pins are asserted */
 #define CONFIG_GPIO_GET_EXTENDED
+
 
 /* Flash configuration */
 #undef CONFIG_FLASH_PSTATE

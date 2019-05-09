@@ -12,6 +12,7 @@
 #include "init_chip.h"
 #include "rdd.h"
 #include "registers.h"
+#include "sleep_diagnostics.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -115,6 +116,10 @@ static void prepare_to_sleep(void)
 		GC_PMU_LOW_POWER_DIS_VDDXO_MASK |
 		GC_PMU_LOW_POWER_DIS_JTR_RC_MASK;
 
+#ifdef CONFIG_CMD_SLEEP_DIAGNOSTICS
+	board_entered_sleep();
+#endif
+
 	/*
 	 * Deep sleep should only be enabled when the AP is off otherwise the
 	 * TPM state will lost.
@@ -147,6 +152,13 @@ static void prepare_to_sleep(void)
 		GWRITE_FIELD(USB, PCGCCTL, RSTPDWNMODULE, 1);
 		GWRITE_FIELD(USB, PCGCCTL, STOPPCLK, 1);
 
+#ifdef CONFIG_CMD_SLEEP_DIAGNOSTICS
+		/*
+		 * Set the source timer to 0, so we can read it to track deep
+		 * sleep.
+		 */
+		__hw_clock_source_set(0);
+#endif
 		/* Shut down one more power rail for deep sleep */
 		GR_PMU_LOW_POWER_DIS |=
 			GC_PMU_LOW_POWER_DIS_VDDL_MASK;
@@ -156,6 +168,7 @@ static void prepare_to_sleep(void)
 	GR_PMU_LOW_POWER_DIS |= GC_PMU_LOW_POWER_DIS_START_MASK;
 }
 
+
 /* This is for normal sleep only. Deep sleep resumes with a warm boot. */
 static void resume_from_sleep(void)
 {
@@ -164,6 +177,7 @@ static void resume_from_sleep(void)
 
 	/* Allow task switching again */
 	interrupt_enable();
+
 }
 
 
