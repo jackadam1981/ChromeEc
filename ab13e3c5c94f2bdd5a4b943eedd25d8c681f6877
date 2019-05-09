@@ -45,6 +45,30 @@
       "revId": "ab13e3c5c94f2bdd5a4b943eedd25d8c681f6877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56cf4956_5403f611",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2019-05-09T01:42:20Z",
+      "side": 1,
+      "message": "Example: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1072745/3/board/servo_v4/build.mk",
+      "parentUuid": "16f760a8_93679344",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "ab13e3c5c94f2bdd5a4b943eedd25d8c681f6877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
