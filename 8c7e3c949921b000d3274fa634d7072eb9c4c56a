@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bf3f12b_efb198e2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T00:38:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t look great. We are just trying to behave differently, wishing other devices don\u0027t do the same.\n\nI\u0027m questioning this holdoff timer now (including existing snk_ready_holdoff_timer). Are we really following the spec? Collision resolution is a part of the spec, isn\u0027t it?",
+      "range": {
+        "startLine": 3372,
+        "startChar": 0,
+        "endLine": 3376,
+        "endChar": 21
+      },
+      "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
