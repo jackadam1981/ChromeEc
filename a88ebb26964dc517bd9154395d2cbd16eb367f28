@@ -118,6 +118,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7d3849_4444ad4b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T02:15:53Z",
+      "side": 1,
+      "message": "The difference is if pd_get_saved_port_flags fails, we immediately return or we set explicit_contract_in_place to zero and return at 2365, right?\n\nIf we immediately return, there is no need to read the code below to learn we do nothing but return.",
+      "parentUuid": "7b00e580_4e4ff569",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
