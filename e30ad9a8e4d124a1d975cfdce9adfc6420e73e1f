@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44e358fc_2dd712a3",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98517c44_8638a40c",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05cd6b37_7003038a",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b145bca1_c782a253",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05cd6b37_7003038a",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ff009dd9_7fc97a17",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T18:03:30Z",
+      "side": 1,
+      "message": "I added \u0027lsof\u0027 at Line 294, patch#12.\nBTW, lsof doesn\u0027t display processes outside chroot.",
+      "parentUuid": "bad44510_7776d1f1",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b8b19ec_aa89041e",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 10
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c21dd647_efd47cb1",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8b19ec_aa89041e",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 0
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a8c2c3_3c5d879f",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 10
@@ -114,6 +210,30 @@
       "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079877f1_e616e67c",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T18:03:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a8c2c3_3c5d879f",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 2
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
