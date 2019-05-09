@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bcbf412_386b4f5d",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-05-09T01:25:08Z",
+      "side": 1,
+      "message": "It will set to no keypad. We only keep keypad function when it\u0027s keypad sku.\n\n\u003e\u003e And consider a \"board_has_keypad\" function similar to the sensor functions\nYou mean default is support and we use sku id to set correct setting?",
+      "parentUuid": "5e77e1d4_2dd1742c",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 69
+      },
+      "revId": "69e43a29800215860302ea9ed2d15e928c830a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d338858c_b6a70c47",
         "filename": "board/bobba/board.c",
         "patchSetId": 2
