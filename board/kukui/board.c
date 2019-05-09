@@ -490,6 +490,12 @@ int board_allow_i2c_passthru(int port)
 	return (port == I2C_PORT_VIRTUAL_BATTERY);
 }
 
+static void reboot_rw_after_a_while(void)
+{
+	system_run_image_copy(SYSTEM_IMAGE_RW);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, reboot_rw_after_a_while, HOOK_PRIO_DEFAULT);
+
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 }

@@ -337,6 +337,8 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 
+		system_run_image_copy(SYSTEM_IMAGE_RW);
+
 		/* Power up to next state */
 		return POWER_S0;
 
