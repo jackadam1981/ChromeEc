@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08757df9_98ce68e5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T00:49:37Z",
+      "side": 1,
+      "message": "I think one flag would be enough for both.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 16
+      },
+      "revId": "fc7d4b6dd227cbd99e9fc2a979cdff289891242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdbb5f24_d67e3fc6",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T00:49:37Z",
+      "side": 1,
+      "message": "could this be simplified: \n\n\nhave the command line parser set chnd-\u003econf.usb_vid/pid to zero if not explicitly set and then \n\nif (!chnd-\u003econf.usb_serial \u0026\u0026 !chnd-\u003econf.conf.usb_vid) {\n           chnd-\u003econf.usb_vid \u003d CR50_USB_VID;\n           chnd-\u003econf.usb_pid \u003d CR50_USB_PID;\n}\n\nno need in extra flags then?",
+      "range": {
+        "startLine": 1668,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 35
+      },
+      "revId": "fc7d4b6dd227cbd99e9fc2a979cdff289891242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db504d0a_03edb34c",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1938,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T00:49:37Z",
+      "side": 1,
+      "message": "I never noticed this before, but probably vid/pid should be passed as a single command line parameter, just a thought.",
+      "range": {
+        "startLine": 1936,
+        "startChar": 0,
+        "endLine": 1938,
+        "endChar": 25
+      },
+      "revId": "fc7d4b6dd227cbd99e9fc2a979cdff289891242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
