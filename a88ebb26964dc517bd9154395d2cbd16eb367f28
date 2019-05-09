@@ -70,6 +70,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c353a11f_9871572f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-09T01:32:53Z",
+      "side": 1,
+      "message": "If we assume there was no existing contract, we don\u0027t apply Rp, and we discover the source as usual.\n\n- If there actually was, we would HardRst which should cause SrcCaps to be sent again.\n- if there was no contract, we would either respond to a SrcCap or HardRst if we didn\u0027t receive one in time.\n\nIn my opinion, if we fail to read the flags, it\u0027s safer to assume that there was a contract and skip applying the Rp\u0027s. Daisuke\u0027s proposal makes that clearer.",
+      "parentUuid": "5f9b9358_bd6a6e27",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
