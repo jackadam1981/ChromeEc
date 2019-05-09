@@ -424,3 +424,9 @@ int board_get_battery_i2c(void)
 {
 	return board_get_version() >= 1 ? 2 : 1;
 }
+
+static void reboot_rw_after_a_while(void)
+{
+	system_run_image_copy(SYSTEM_IMAGE_RW);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, reboot_rw_after_a_while, HOOK_PRIO_DEFAULT);
