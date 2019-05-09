@@ -355,7 +355,7 @@ const uint8_t *system_get_jump_tag(uint16_t tag, int *version, int *size)
 	defined(CONFIG_I2C_MASTER)
 extern const struct tcpc_config_t tcpc_config[];
 
-static void system_protect_tcpc_i2c_ports(void)
+void system_protect_tcpc_i2c_ports(void)
 {
 	uint32_t locked = system_is_locked();
 	int i;
@@ -375,7 +375,7 @@ static void system_protect_tcpc_i2c_ports(void)
 
 #else
 
-static void system_protect_tcpc_i2c_ports(void)
+void system_protect_tcpc_i2c_ports(void)
 {
 }
 
@@ -963,7 +963,6 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
 	case EC_REBOOT_DISABLE_JUMP:
-		system_protect_tcpc_i2c_ports();
 		system_disable_jump();
 		return EC_SUCCESS;
 #ifdef CONFIG_HIBERNATE
@@ -1218,7 +1217,6 @@ static int command_sysjump(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 #endif
 	} else if (!strcasecmp(argv[1], "disable")) {
-		system_protect_tcpc_i2c_ports();
 		system_disable_jump();
 		return EC_SUCCESS;
 	}

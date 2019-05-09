@@ -890,6 +890,8 @@ static int i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 		args->response_size = sizeof(*resp);
 	} else if (params->subcmd == EC_CMD_I2C_PASSTHRU_PROTECT_ENABLE) {
 		i2c_passthru_protect_port(params->port);
+	} else if (params->subcmd == EC_CMD_I2C_PASSTHRU_PROTECT_ENABLE_ALL) {
+		system_protect_tcpc_i2c_ports();
 	} else {
 		return EC_RES_INVALID_COMMAND;
 	}

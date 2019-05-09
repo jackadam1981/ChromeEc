@@ -646,4 +646,9 @@ int system_set_active_copy(enum system_image_copy_t copy);
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy);
 
+/**
+ * Protect the I2C tunnels of all TCPC ports
+ */
+void system_protect_tcpc_i2c_ports(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */
