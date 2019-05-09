@@ -605,3 +605,9 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static void reboot_rw_after_a_while(void)
+{
+	system_run_image_copy(SYSTEM_IMAGE_RW);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, reboot_rw_after_a_while, HOOK_PRIO_DEFAULT);
