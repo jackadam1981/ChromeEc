@@ -22,6 +22,30 @@
       "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa5ba8a_5d66dfe0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-09T00:58:33Z",
+      "side": 1,
+      "message": "For PD 2.0, I\u0027m not aware of any collision avoidance at the protocol level, whereas PD 3.0 has the SinkTxOk/NG scheme. Essentially, the source adjusts the Rp to signal an atomic message sequence.\n\nThere\u0027s probably some collision avoidance when actually transmitting the messages at the PHY level for PD 2.0.\n\nAs for the hold off timer, I don\u0027t think we\u0027re breaking the spec. Once you\u0027ve established a contract, I\u0027m not aware of any required timing for future messages. For example, a DiscIdent message must be responded to, but I\u0027m not aware of any timing as to when it must be sent. Another example would be a PR swap which can happen at any time.\n\nBut, you\u0027re totally right. We\u0027re just hoping we don\u0027t collide by waiting a bit. It\u0027s entirely possible for another partner to wait this same time and we\u0027d just end up colliding with them.",
+      "parentUuid": "6bf3f12b_efb198e2",
+      "range": {
+        "startLine": 3372,
+        "startChar": 0,
+        "endLine": 3376,
+        "endChar": 21
+      },
+      "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
