@@ -31,6 +31,7 @@
 #include "gsctool.h"
 #include "misc_util.h"
 #include "signed_header.h"
+#include "sleep_diagnostics.h"
 #include "tpm_registers.h"
 #include "tpm_vendor_cmds.h"
 #include "upgrade_fw.h"
@@ -222,7 +223,7 @@ struct options_map {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikLMmO:oPpR:rS:stUuVvw";
+static char *short_opts = "aBbcd:F:fhIikLMmO:oPpR:rS:stUuVvwX";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -253,6 +254,7 @@ static const struct option long_opts[] = {
 	{"version",	                0,   NULL, 'v'},
 	{"wp",		                0,   NULL, 'w'},
 	{"upstart",	                0,   NULL, 'u'},
+	{"sleep-info",	                2,   NULL, 'X'},
 	{},
 };
 
@@ -597,6 +599,9 @@ static void usage(int errs)
 	       "  -V,--verbose             Enable debug messages\n"
 	       "  -v,--version             Report this utility version\n"
 	       "  -w,--wp                  Get the current wp setting\n"
+	       "  -X,--sleep-info [resetnext|reset|us|ms]\n"
+	       "                           Get sleep stats (only on DBG "
+	       "images)\n"
 	       "\n", progname, VID, PID);
 
 	exit(errs ? update_error : noop);
@@ -1711,6 +1716,77 @@ void poll_for_pp(struct transfer_descriptor *td,
 
 }
 
+static void get_saved_sleep_state(struct transfer_descriptor *td)
+{
+	struct sleep_info_response state;
+	uint8_t response[sizeof(struct sleep_info_response)];
+	size_t response_size = sizeof(response);
+	int rv = send_vendor_command(td, VENDOR_CC_GET_SLEEP_INFO, NULL, 0,
+				     &response, &response_size);
+	float total_time;
+	float sleep_time;
+	uint32_t scale;
+
+	if (rv != VENDOR_RC_SUCCESS) {
+		fprintf(stderr, "Error getting sleep state %d\n", rv);
+		exit(update_error);
+	}
+	if (response_size != sizeof(state)) {
+		fprintf(stderr, "Unexpected sleep info response size %zd\n",
+			response_size);
+		exit(update_error);
+	}
+
+	memcpy(&state, response, sizeof(state));
+	scale = be32toh(state.sleep_scale);
+	total_time = 1.0 * be32toh(state.total_time) / scale;
+	sleep_time = be32toh(state.total_sleep_time);
+	printf("deep sleep time: %u s\n", be32toh(state.ds_time));
+	printf("sleep time: %u %ss", be32toh(state.total_sleep_time),
+		scale == 1000 ? "m" : "u");
+	printf(" / %u us ", be32toh(state.total_time));
+
+	if (total_time)
+		printf("%.2f", (sleep_time / total_time) * 100);
+
+	printf("\n");
+}
+
+static void process_sleep_info_cmd(struct transfer_descriptor *td,
+				   const char *sleep_arg)
+{
+	uint8_t subcommand;
+	int rv;
+
+	if (!sleep_arg)
+		return get_saved_sleep_state(td);
+
+	if (!strcmp(sleep_arg, "us")) {
+		subcommand = SLEEPV_US;
+	} else if (!strcmp(sleep_arg, "ms")) {
+		subcommand = SLEEPV_MS;
+	} else if (!strcmp(sleep_arg, "reset")) {
+		subcommand = SLEEPV_RESET;
+	} else if (!strcmp(sleep_arg, "resetnext")) {
+		subcommand = SLEEPV_RESETNEXT;
+	} else {
+		fprintf(stderr, "%s: invalid sleep info command %s\n",
+			__func__, sleep_arg);
+		exit(update_error);
+	}
+
+	printf("%s: sending sleep cmd %d\n", __func__, subcommand);
+
+	rv = send_vendor_command(td, VENDOR_CC_SET_SLEEP_INFO, &subcommand,
+				 sizeof(subcommand), NULL, 0);
+	if (rv != VENDOR_RC_SUCCESS) {
+		fprintf(stderr, "Error getting sleep state %d\n", rv);
+		exit(update_error);
+	}
+}
+
+
+
 static void print_ccd_info(void *response, size_t response_size)
 {
 	struct ccd_info_response ccd_info;
@@ -2281,6 +2357,8 @@ int main(int argc, char *argv[])
 	int wp = 0;
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
+	int get_sleep_state = 0;
+	const char *sleep_arg = NULL;
 	bool show_machine_output = false;
 
 	const char *exclusive_opt_error =
@@ -2456,6 +2534,14 @@ int main(int argc, char *argv[])
 		case 'v':
 			report_version();  /* This will call exit(). */
 			break;
+		case 'X':
+			get_sleep_state = 1;
+			if (!optarg && argv[optind] && argv[optind][0] != '-')
+				/* optional argument present. */
+				optarg = argv[optind++];
+
+			sleep_arg = optarg;
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -2497,6 +2583,7 @@ int main(int argc, char *argv[])
 	    !sn_inc_rma &&
 	    !openbox_desc_file &&
 	    !tpm_mode &&
+	    !get_sleep_state &&
 	    !wp) {
 		if (optind >= argc) {
 			fprintf(stderr,
@@ -2571,6 +2658,9 @@ int main(int argc, char *argv[])
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
+
+	if (get_sleep_state)
+		process_sleep_info_cmd(&td, sleep_arg);
 
 	if (tpm_mode) {
 		int rv = process_tpm_mode(&td, tpm_mode_arg);

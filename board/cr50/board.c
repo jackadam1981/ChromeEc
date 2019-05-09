@@ -28,6 +28,7 @@
 #include "registers.h"
 #include "scratch_reg1.h"
 #include "signed_header.h"
+#include "sleep_diagnostics.h"
 #include "spi.h"
 #include "system.h"
 #include "system_chip.h"
@@ -478,6 +479,9 @@ void pmu_wakeup_interrupt(void)
 	/* Clear pmu reset */
 	GWRITE(PMU, CLRRST, 1);
 
+#ifdef CONFIG_CMD_SLEEP_DIAGNOSTICS
+	board_left_sleep();
+#endif
 	/*
 	 * This will print the next state of the "rotating wheel" every time
 	 * cr50 resumes from regular sleep (8 is the ASCII code for
