@@ -118,6 +118,30 @@
       "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14669b5d_3fda5d8a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-09T18:57:23Z",
+      "side": 1,
+      "message": "For whatever it\u0027s worth, this fix as it is does help with one of our octopus OEM hubs we\u0027ve had problems with (b/123326737).  However, varying the holdoff period would probably be a good general approach in order to reduce the probability of repeated collisions.",
+      "parentUuid": "1da08dd8_c0ab205b",
+      "range": {
+        "startLine": 3372,
+        "startChar": 0,
+        "endLine": 3376,
+        "endChar": 21
+      },
+      "revId": "8c7e3c949921b000d3274fa634d7072eb9c4c56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
