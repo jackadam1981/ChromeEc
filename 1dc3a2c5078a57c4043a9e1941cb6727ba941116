@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88ba831a_d8ce2e8e",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-09T22:10:08Z",
+      "side": 1,
+      "message": "Checkpatch.pl has warning for extern declarations in the .c file. Should I move it to a header file just for this? If so, is ec_commands.h the right candidate?",
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
