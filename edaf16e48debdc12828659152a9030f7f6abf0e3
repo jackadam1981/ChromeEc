@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "260da2a7_7e2a11d3",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T22:28:11Z",
+      "side": 1,
+      "message": "Can you do if (IS_ENABLED(CONFIG_CROS_BOARD_INFO) { ... } instead?",
+      "range": {
+        "startLine": 867,
+        "startChar": 1,
+        "endLine": 867,
+        "endChar": 29
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51a14fb_9a7b4273",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T22:28:11Z",
+      "side": 1,
+      "message": "note to myself: I thought somebody was about to remove 7-bit address support in i2c passthrough.",
+      "range": {
+        "startLine": 869,
+        "startChar": 34,
+        "endLine": 869,
+        "endChar": 39
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2d05b0_041d34c3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5352,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T22:28:11Z",
+      "side": 1,
+      "message": "We can still use enum within uint16_t:\n\n  enum i2c_device_type {\n    I2C_DEVICE_TYPE_CBI_EEPROM \u003d 1,\n    I2C_DEVICE_TYPE_COUNT,\n    I2C_DEVICE_TYPE_MAX \u003d 0xffff,\n  };",
+      "range": {
+        "startLine": 5352,
+        "startChar": 8,
+        "endLine": 5352,
+        "endChar": 37
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393ec111_411f6183",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6248,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-09T22:28:11Z",
+      "side": 1,
+      "message": "Can you explicitly handle lookup failure?\n\n\tif (rv \u003c 0) {\n\t\tif (rv \u003d\u003d -EC_RES_INVALID_PARAM - EECRESULT)\n\t\t\tfprintf(\"Device not present\");\n\t\treturn rv;\n\t}\n\nand get rid of \u0027-1\u0027 as an error mark?",
+      "range": {
+        "startLine": 6242,
+        "startChar": 0,
+        "endLine": 6248,
+        "endChar": 2
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
