@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3efa52c_38813616",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T00:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fab91bf_e0109a22",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34beeb6a_50a1f608",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45dd796f_77dbd18b",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T00:13:59Z",
+      "side": 1,
+      "message": "There are no difference in running with or without servod.\nuart_stress_tester.sh [--cr50] [--ec] [--cpu] is the common use form.\n\nAnyway, I am removing these.",
+      "parentUuid": "34beeb6a_50a1f608",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "92d143de_b4db72df",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T00:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58348690_eb9593b2",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98f9aca5_a9ba7c25",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb32d42a_91fc46d3",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-09T00:13:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98f9aca5_a9ba7c25",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "c88fc0cc0175d95c55594b4ab844da704588e053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
