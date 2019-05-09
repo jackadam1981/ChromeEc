@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98517c44_8638a40c",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T02:10:50Z",
+      "side": 1,
+      "message": "EC and Cr50",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cd6b37_7003038a",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T02:10:50Z",
+      "side": 1,
+      "message": "you could add $(basename ...) here instead of all places where ${SCRIPT} is used.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad44510_7776d1f1",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T02:10:50Z",
+      "side": 1,
+      "message": "could this be moved below all functions definitions.\n\nalso, how about running \u0027lsof \u003cdev\u003e\u0027 just in case the interface is taken by minicom or something like this?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8b19ec_aa89041e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T02:10:50Z",
+      "side": 1,
+      "message": "here and in other similar cases, could this be done using for loop?\n\nfor x in \"${PTY1}\" \"${PTY2}\" \"${PTY3}\"; do\n  [[ -n \"$x\" ]] \u0026\u0026 get_sample_txt \"$x\"\ndone",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 0
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a8c2c3_3c5d879f",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-09T02:10:50Z",
+      "side": 1,
+      "message": "I think this just wastes user time: he clearly indicated what he wanted to test by supplying the command line parameters, the script should not be doing anything extra.",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 2
+      },
+      "revId": "e30ad9a8e4d124a1d975cfdce9adfc6420e73e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
