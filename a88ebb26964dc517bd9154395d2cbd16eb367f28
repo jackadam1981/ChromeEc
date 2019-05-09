@@ -142,6 +142,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80ca326_009e3e85",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-09T18:41:20Z",
+      "side": 1,
+      "message": "Maybe it would help if I provided a brief background of why this function was modified in the first place.\n\nSince the introduction of H1, the battery present pin became the write protect pin. So to make the system unlocked, people would simply unplug the battery. Some tests would try to trigger a recovery boot (which requires `reboot ap-off, hostevent set ....`). Previously this function unconditionally applied Rp terminations to the CC lines, so this would cause the charger to stop providing power, and lead the board to brown out. When the board rebooted, it had forgotten all about the ap-off flag and the tests would fail.\n\nIf we assume there was no contract in place, we don\u0027t apply the Rp terminations and discover the source as usual. Plus, we don\u0027t brown out.\n\n    \n /*\n  * If we fail to read the BBRAM flags, let\u0027s assume that there was no\n  * contract.  Since there\u0027s no contract, there\u0027s no need to reset the\n  * partner.\n  */\n if (pd_get_saved_port_flags(port, \u0026flags))\n    return;\n\n\nI think it\u0027s clearer because you don\u0027t have to trace/read thru the rest of the function. If we wanted to expand upon it, we can just add braces.",
+      "parentUuid": "4a7d3849_4444ad4b",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
