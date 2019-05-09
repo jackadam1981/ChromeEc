@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8becd2d_be832e2c",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-09T20:55:05Z",
+      "side": 1,
+      "message": "nit:\n\n    #define FIFO_READ_QUEUE_SIZE SINGLE_FIFO_READ_QUEUE_SENSOR_COUNT*8\n\nand then use here\n\nAs-is, I found it slightly confusing on first read, \u0027cause I started assuming the length was 3 samples and went thinking \"seems low\".",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8ae962_ccdeccbc",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-09T20:55:05Z",
+      "side": 1,
+      "message": "Do negative values make sense here? If not uint8_t maybe?",
+      "range": {
+        "startLine": 269,
+        "startChar": 21,
+        "endLine": 269,
+        "endChar": 24
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266e1a26_2df60785",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-09T20:55:05Z",
+      "side": 1,
+      "message": "Should we drop the oldest event instead and add the new one?",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 51
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25def2e8_aa7088d2",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-09T20:55:05Z",
+      "side": 1,
+      "message": "Do you want all of these to be initialized to -1?\nIf so, this code won\u0027t do it.. this will initialize [0] to -1 and all other elements to 0",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 38
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
