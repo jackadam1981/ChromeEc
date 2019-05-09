@@ -117,6 +117,30 @@
       "revId": "fa7d17243afca5f6afdfa3cab1793c10370d158a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba46cdb4_903fddb9",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-09T15:00:18Z",
+      "side": 1,
+      "message": "add __unused in declaration.",
+      "parentUuid": "18017c06_0b7b2bd3",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 65
+      },
+      "revId": "fa7d17243afca5f6afdfa3cab1793c10370d158a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

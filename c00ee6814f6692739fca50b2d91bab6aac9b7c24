@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f128bbe8_02addfcd",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-09T15:00:18Z",
+      "side": 1,
+      "message": "Actually, we should be OK since 32-bit wrap around is also the arithmetic we are doing... just add a comment that the wrap around is safe because of this.",
+      "parentUuid": "b8efd727_ba0b800d",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 48
+      },
+      "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba1d1e35_7c5ff265",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
