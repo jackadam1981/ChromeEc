@@ -22,6 +22,30 @@
       "revId": "72f5b6a56b79cb435341881c5bf5691c21fe724c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c93512_0550ee44",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-09T19:19:16Z",
+      "side": 1,
+      "message": "Fair enough. Diana and I were talking about doing something like that too. I will add a new host command instead.",
+      "parentUuid": "6d905774_379f089e",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 1
+      },
+      "revId": "72f5b6a56b79cb435341881c5bf5691c21fe724c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
