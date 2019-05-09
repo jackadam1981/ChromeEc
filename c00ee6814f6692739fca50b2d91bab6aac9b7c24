@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "38d6f6f5_19e418e1",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-09T14:11:49Z",
+      "side": 1,
+      "message": "What happens if we wrap at 4096us and haven\u0027t realized the interrupt from HPET T0 yet? We should add a check that t0 \u003c\u003d t1, otherwise assume we wrapped once.\n\nCan this be abstracted into a separate procedure?",
+      "parentUuid": "0f287f13_a9f9431a",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 48
+      },
+      "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba1d1e35_7c5ff265",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
