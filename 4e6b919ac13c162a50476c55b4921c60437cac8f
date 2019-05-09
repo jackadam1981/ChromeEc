@@ -117,6 +117,30 @@
       "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c891d80_fb441617",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-09T08:35:55Z",
+      "side": 1,
+      "message": "Re Dai,  There is no such hook for charge start/stop, do you prefer to add such hooks?",
+      "parentUuid": "d0752de7_3236fc7b",
+      "range": {
+        "startLine": 268,
+        "startChar": 25,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "4e6b919ac13c162a50476c55b4921c60437cac8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

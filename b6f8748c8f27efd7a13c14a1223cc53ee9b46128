@@ -22,6 +22,30 @@
       "revId": "b6f8748c8f27efd7a13c14a1223cc53ee9b46128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57921e4f_696180a6",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-09T08:35:55Z",
+      "side": 1,
+      "message": "Done.  And I found that it\u0027s really more accurate.",
+      "parentUuid": "4217a0e8_7c924bc0",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 34
+      },
+      "revId": "b6f8748c8f27efd7a13c14a1223cc53ee9b46128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
