@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5ef817b9_c88cd2d4",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T20:17:13Z",
+      "side": 1,
+      "message": "talked offline, we will update the vim format file at the root.",
+      "parentUuid": "32d5dd57_b708abde",
+      "range": {
+        "startLine": 304,
+        "startChar": 25,
+        "endLine": 304,
+        "endChar": 26
+      },
+      "revId": "7841183e488e6d6c9938cf0c84390e8d42777fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d34fe05_458da057",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 2
