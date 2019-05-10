@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "e777c1f9_81585b1e",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-10T05:25:29Z",
+      "side": 1,
+      "message": "Done!\n\nyes, it\u0027s safe to use 32-bit wrap here.",
+      "parentUuid": "f128bbe8_02addfcd",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 48
+      },
+      "revId": "c00ee6814f6692739fca50b2d91bab6aac9b7c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba1d1e35_7c5ff265",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
