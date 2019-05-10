@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb2a131_b5983311",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-10T14:03:41Z",
+      "side": 1,
+      "message": "Should the values in \"curr\" be explicitly set to the precharge desired in this case?  \n\nAnd for the return value, I believe this indicates how long the charger_task should wait during its task_wait() call.  Is 1us correct here? \n * @return\n *   \u003e0    Desired time in usec for this poll period.\n *   0     Use the default poll period (which varies with the state).\n *  \u003c0     An error occurred. The poll time will be shorter than usual.\n *         Too many errors in a row may trigger some corrective action.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "724a6696a76611e7f86d9a49ada72cc8d781e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
