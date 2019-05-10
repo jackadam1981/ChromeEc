@@ -463,12 +463,15 @@ static int rt946x_init_setting(void)
 		return rv;
 
 #ifdef CONFIG_CHARGER_MT6370_BACKLIGHT
+#if 0
+	/* Comment out backlight setting */
 	rt946x_write8(MT6370_BACKLIGHT_BLEN,
 		      MT6370_MASK_BLED_EXT_EN | MT6370_MASK_BLED_EN |
 			MT6370_MASK_BLED_1CH_EN | MT6370_MASK_BLED_2CH_EN |
 			MT6370_MASK_BLED_3CH_EN | MT6370_MASK_BLED_4CH_EN);
 	rt946x_update_bits(MT6370_BACKLIGHT_BLPWM, MT6370_MASK_BLPWM_BLED_PWM,
 			   BIT(MT6370_SHIFT_BLPWM_BLED_PWM));
+#endif
 #endif
 
 	return rt946x_init_irq();
@@ -1128,4 +1131,17 @@ int mt6370_led_set_pwm_frequency(enum mt6370_led_index index,
 			   freq << MT6370_SHIFT_RGBISNK_DIMFSEL);
 	return EC_SUCCESS;
 }
+
+int rt946x_toggle_chgdet_flow(int argc, char **argv)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(0);
+	if (rv)
+		return rv;
+	udelay(40);
+	return rt946x_enable_bc12_detection(1);
+}
+DECLARE_CONSOLE_COMMAND(bc12, rt946x_toggle_chgdet_flow,
+			"",
+			"Toggle BC12 Detection");
 #endif /* CONFIG_CHARGER_MT6370 */
