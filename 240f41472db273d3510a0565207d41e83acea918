@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc58077_cb0fed37",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-05-10T20:42:12Z",
+      "side": 1,
+      "message": "we should really add an \"entropy\" or \"jitter\" function.\nthis won\u0027t be the only place where a bit of jitter is a good thing.\njitter may need to be disabled for reproducible\nautomated test results.",
+      "range": {
+        "startLine": 1755,
+        "startChar": 8,
+        "endLine": 1755,
+        "endChar": 16
+      },
+      "revId": "240f41472db273d3510a0565207d41e83acea918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
