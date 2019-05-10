@@ -5,9 +5,12 @@
 
 #include "adc.h"
 #include "board.h"
+#include "charge_manager.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "timer.h"
+#include "usb_pd.h"
+#include "util.h"
 
 /* Krane base detection code */
 
@@ -31,9 +34,30 @@
  * Minimum ADC value to indicate device is attached to a dock, or disconnected.
  * 3.3V, 10K + 100K ohm => 3V, +10% margin.
  */
-#define DOCK_DETECT_MIN_MV 2700
+#define DOCK_DETECT_MIN_MV 141
+#define DOCK_DETECT_MAX_MV 173
+
+#define DETACHED_MIN_MV 2700
 
 static uint64_t base_detect_debounce_time;
+
+static void pogo_charge_detect(int present)
+{
+	if (present) {
+		struct charge_port_info info = {
+			.voltage = 5000, .current = 1500};
+		/*
+		 * Set supplier type to PD to have same priority as type c
+		 * port.
+		 */
+		charge_manager_update_charge(
+			CHARGE_SUPPLIER_DEDICATED, CHARGE_PORT_POGO, &info);
+	} else {
+		charge_manager_update_charge(
+			CHARGE_SUPPLIER_DEDICATED, CHARGE_PORT_POGO, NULL);
+	}
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
 
 static void base_detect_deferred(void);
 DECLARE_DEFERRED(base_detect_deferred);
@@ -53,13 +77,9 @@ static void base_detect_deferred(void)
 	if (v == ADC_READ_ERROR)
 		return;
 
+	pogo_charge_detect(v >= DOCK_DETECT_MIN_MV && v <= DOCK_DETECT_MAX_MV);
 	if (v >= KEYBOARD_DETECT_MIN_MV && v <= KEYBOARD_DETECT_MAX_MV) {
 		gpio_set_level(GPIO_EN_PP3300_POGO, 1);
-		return;
-	}
-
-	if (v >= DOCK_DETECT_MIN_MV) {
-		gpio_set_level(GPIO_EN_PP3300_POGO, 0);
 		return;
 	}
 
