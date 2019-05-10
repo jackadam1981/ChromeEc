@@ -166,6 +166,30 @@
       "revId": "c8c77b5d89ea95e36b259289277c2c79bf22db27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f141955_8b4e6088",
+        "filename": "chip/ish/ish_fwst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T20:58:11Z",
+      "side": 1,
+      "message": "I we can just keep FW_IS_RUNNING in this CL now",
+      "parentUuid": "1ab60c5e_bebcf5bf",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "c8c77b5d89ea95e36b259289277c2c79bf22db27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
