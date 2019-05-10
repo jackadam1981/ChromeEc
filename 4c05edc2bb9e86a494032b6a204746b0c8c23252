@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c664146_45042df6",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-10T17:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8becd2d_be832e2c",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e8ae962_ccdeccbc",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635bb4a1_e5c13eee",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-10T17:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8ae962_ccdeccbc",
+      "range": {
+        "startLine": 269,
+        "startChar": 21,
+        "endLine": 269,
+        "endChar": 24
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fc2273f6_582851bf",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-10T17:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266e1a26_2df60785",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 51
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25def2e8_aa7088d2",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff945d76_449d5964",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-10T17:47:36Z",
+      "side": 1,
+      "message": "Thanks, I wasn\u0027t familiar with \u003d {0} spreading so I assumed {-1} would behave the same.",
+      "parentUuid": "25def2e8_aa7088d2",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 38
+      },
+      "revId": "4c05edc2bb9e86a494032b6a204746b0c8c23252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
