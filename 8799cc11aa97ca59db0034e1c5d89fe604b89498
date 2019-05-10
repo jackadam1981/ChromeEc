@@ -22,6 +22,30 @@
       "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f0a91e_e6cedcda",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-10T19:26:22Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/132287304",
+      "parentUuid": "5244da82_49c90084",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
