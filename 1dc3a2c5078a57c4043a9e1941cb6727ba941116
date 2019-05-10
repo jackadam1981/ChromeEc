@@ -16,6 +16,202 @@
       "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ce2b6f_50df71b8",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "I don\u0027t think ec_commands.h would be the right place to put it since we typically sync ec_commands.h with other projects like kernel, coreboot, depthcharge.\n\nI see at least some other instances of extern declaractions in .c file:\n$ git grep -e \"^extern \" *.c | wc -l\n36\n\nConsidering that I think its okay to leave it in here.",
+      "parentUuid": "88ba831a_d8ce2e8e",
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bba6616_ce1145e5",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "Don\u0027t you also need to consider the size of r-\u003enum_aux_fw_chip?",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e68cb18_727b47f0",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you still report the max here so that the host knows that it isn\u0027t getting all the info based on the size of the response?",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56eb20ba_bded94e5",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "Maybe put this around the for loop?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d1d4c54_6537a43f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4338,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "It would be good to indicate what values are valid and what each value means for port protect status.",
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110783fc_b96cf344",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "Why is this required? Shouldn\u0027t a driver on the host side be able to decode the bits correctly based on chip_id?",
+      "range": {
+        "startLine": 4342,
+        "startChar": 1,
+        "endLine": 4342,
+        "endChar": 24
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "896ae4f2_c25bd404",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4345,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "Does this have to be a struct since it just has a single member?",
+      "range": {
+        "startLine": 4345,
+        "startChar": 2,
+        "endLine": 4345,
+        "endChar": 15
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "205a235d_99862b8a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4350,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "Do we really need to reserve 8 bytes? Isn\u0027t that a lot of additional bytes on the EC-AP wire that is not required?",
+      "range": {
+        "startLine": 4350,
+        "startChar": 2,
+        "endLine": 4350,
+        "endChar": 21
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59110925_2025250f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4352,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T01:56:32Z",
+      "side": 1,
+      "message": "__ec_align?",
+      "range": {
+        "startLine": 4352,
+        "startChar": 1,
+        "endLine": 4352,
+        "endChar": 2
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
