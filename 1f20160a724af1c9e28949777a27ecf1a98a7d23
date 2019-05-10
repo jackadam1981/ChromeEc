@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "456ab2ad_a7a976a7",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T16:56:45Z",
+      "side": 1,
+      "message": "Done. Earlier only the I2C tunnels for TCPC were protected. Now by moving inside i2c_master.c, can protect all the tunnels.",
+      "parentUuid": "8a66bb2f_adf0de93",
+      "range": {
+        "startLine": 358,
+        "startChar": 5,
+        "endLine": 358,
+        "endChar": 34
+      },
+      "revId": "1f20160a724af1c9e28949777a27ecf1a98a7d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22f383d8_138696d8",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "1f20160a724af1c9e28949777a27ecf1a98a7d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6ced68_8cd5525e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T16:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b959ba5_82601e4c",
+      "range": {
+        "startLine": 4452,
+        "startChar": 42,
+        "endLine": 4452,
+        "endChar": 45
+      },
+      "revId": "1f20160a724af1c9e28949777a27ecf1a98a7d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
