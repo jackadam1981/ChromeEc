@@ -22,6 +22,30 @@
       "revId": "8827a41d8618eaba634347d675bfa959bb1d4a9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03646c8_1f05d4f3",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:59:42Z",
+      "side": 1,
+      "message": "tcpc_config includes only TCPC chips. It is not a big downside at the moment since the current usage is for TCPC chips. But later when non-TCPC use cases arise we may have to do some refactoring.\n\nEven within TCPC use-case, tcpc_config includes chips that don\u0027t require FW update like Analogix or ITE ECs. We need to identify a way to identify the chips that require FW update within the tcpc_config - probably a flag. Then add any additionally required information in the tcpc_config which might eventually even out.",
+      "parentUuid": "22b1c76e_6f8bf61c",
+      "range": {
+        "startLine": 353,
+        "startChar": 13,
+        "endLine": 353,
+        "endChar": 29
+      },
+      "revId": "8827a41d8618eaba634347d675bfa959bb1d4a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
