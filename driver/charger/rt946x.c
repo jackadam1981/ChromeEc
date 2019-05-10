@@ -857,6 +857,9 @@ static void rt946x_init(void)
 		CPRINTF("RT946X init failed\n");
 		return;
 	}
+
+	gpio_set_level(GPIO_BC12_DET_EN, 0);
+
 	CPRINTF("RT946X init succeeded\n");
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
