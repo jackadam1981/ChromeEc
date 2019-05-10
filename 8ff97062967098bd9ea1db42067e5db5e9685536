@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "870eb77f_e394d366",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-10T00:23:45Z",
+      "side": 1,
+      "message": "Moved into exit () function so that it can be the last output line.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 56
+      },
+      "revId": "8ff97062967098bd9ea1db42067e5db5e9685536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
