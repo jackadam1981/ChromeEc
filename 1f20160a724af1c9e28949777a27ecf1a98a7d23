@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42c93bcf_415f9074",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T02:00:58Z",
+      "side": 1,
+      "message": "Can this function be just moved to i2c_master.c?",
+      "range": {
+        "startLine": 358,
+        "startChar": 5,
+        "endLine": 358,
+        "endChar": 34
+      },
+      "revId": "1f20160a724af1c9e28949777a27ecf1a98a7d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f383d8_138696d8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T02:00:58Z",
+      "side": 1,
+      "message": "0x2?",
+      "range": {
+        "startLine": 4452,
+        "startChar": 42,
+        "endLine": 4452,
+        "endChar": 45
+      },
+      "revId": "1f20160a724af1c9e28949777a27ecf1a98a7d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
