@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "ef99d397_4936d3f1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-10T14:13:34Z",
+      "side": 1,
+      "message": "Can you add a \u0027flags\u0027 field so that we can return protect status?",
+      "range": {
+        "startLine": 5362,
+        "startChar": 7,
+        "endLine": 5362,
+        "endChar": 29
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "393ec111_411f6183",
         "filename": "util/ectool.c",
         "patchSetId": 3
