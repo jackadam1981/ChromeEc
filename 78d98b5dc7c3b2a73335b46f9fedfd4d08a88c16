@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8ca5e80e_8880ba60",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:54:50Z",
+      "side": 1,
+      "message": "maybe a cleaner way to enforce word accesses is to use an alternative structure declaration for this, p256_int_aligned or something.",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 12
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca0206a_43df1619",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
