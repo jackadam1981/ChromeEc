@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "01115535_75b3eef2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-10T15:31:57Z",
+      "side": 1,
+      "message": "I think we should replace i2cpassthru_protect with i2c_lookup. Currently, port numbers are hard-coded. So, each board has its own code to initialize TCPC interfaces. With i2c_lookup and flags here, we\u0027ll be able to simplify Depthcharge.\n\nI guess that\u0027s too much to change now. Maybe we can still add flags anyway. I see no harm.",
+      "parentUuid": "60931d56_7fd01669",
+      "range": {
+        "startLine": 5362,
+        "startChar": 7,
+        "endLine": 5362,
+        "endChar": 29
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "393ec111_411f6183",
         "filename": "util/ectool.c",
         "patchSetId": 3

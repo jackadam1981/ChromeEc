@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d93cd075_0c27b92e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-10T15:31:57Z",
+      "side": 1,
+      "message": "Can you add return description:\n\n/*\n * EC_RES_UNAVAILABLE: Lookup type is supported but not present on system.\n * EC_RES_INVALID_PARAM: The type was unrecognized \n */\n\nThat\u0027s what developers need where ec_commands.h is exported.",
+      "range": {
+        "startLine": 5350,
+        "startChar": 0,
+        "endLine": 5350,
+        "endChar": 32
+      },
+      "revId": "05544fd9d18e9e7f90ea4fba8dce2504ebcbf83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967907d9_95fb04d9",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-10T15:31:57Z",
+      "side": 1,
+      "message": "nit: I would put this before EECRESULT because most readers care about EC_RES_* more.",
+      "range": {
+        "startLine": 6243,
+        "startChar": 24,
+        "endLine": 6243,
+        "endChar": 44
+      },
+      "revId": "05544fd9d18e9e7f90ea4fba8dce2504ebcbf83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
