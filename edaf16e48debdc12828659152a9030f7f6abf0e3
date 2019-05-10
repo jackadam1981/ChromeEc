@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b4ff583_8c6f2d57",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T14:25:24Z",
+      "side": 1,
+      "message": "Unfortunately is doesn\u0027t work because I2C_(PORT|ADDR)_EEPROM aren\u0027t defined when !CONFIG_CROS_BOARD_INFO so it cannot compile (after which it would optimize it out)",
+      "parentUuid": "260da2a7_7e2a11d3",
+      "range": {
+        "startLine": 867,
+        "startChar": 1,
+        "endLine": 867,
+        "endChar": 29
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a51a14fb_9a7b4273",
         "filename": "common/i2c_master.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08258208_d592ba44",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T14:25:24Z",
+      "side": 1,
+      "message": "Yeah, I really don\u0027t like the we are using 7-bit addresses for host commands, but I want the host command interface to be consistent at least. Unfortunately the existing i2cpassthru command uses the 7-bit, and many scripts are using the 7-bit address, so it would be pretty difficult to remove support for [0]\n\n\n[0] https://cs.corp.google.com/search/?q\u003dectool+i2cxfer\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026type\u003dcs",
+      "parentUuid": "a51a14fb_9a7b4273",
+      "range": {
+        "startLine": 869,
+        "startChar": 34,
+        "endLine": 869,
+        "endChar": 39
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c99d9439_487adc05",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5352,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T14:25:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2d05b0_041d34c3",
+      "range": {
+        "startLine": 5352,
+        "startChar": 8,
+        "endLine": 5352,
+        "endChar": 37
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef99d397_4936d3f1",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "60931d56_7fd01669",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5362,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T14:25:24Z",
+      "side": 1,
+      "message": "I didn\u0027t want to add multiple correct ways to find protect status. Just like we left i2cpassthru alone, I also wanted to leave i2cpassthru_protect alone.",
+      "parentUuid": "ef99d397_4936d3f1",
+      "range": {
+        "startLine": 5362,
+        "startChar": 7,
+        "endLine": 5362,
+        "endChar": 29
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "393ec111_411f6183",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeded3ac_a8d1c987",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T14:25:24Z",
+      "side": 1,
+      "message": "I wanted to differentiate between Device not present, but lookup type is supported and lookup type is unsupported on currently running EC code.\n\nIf a new device type was added that an old EC didn\u0027t know about then INVALID_PARAM is returned. If the EC knows about the type but doesn\u0027t have the device, then -1s are returned (but that is changed now)\n\nI am now using EC_RES_UNAVAILABLE for the supported type but not present error case (instead of -1 for values)",
+      "parentUuid": "393ec111_411f6183",
+      "range": {
+        "startLine": 6242,
+        "startChar": 0,
+        "endLine": 6248,
+        "endChar": 2
+      },
+      "revId": "edaf16e48debdc12828659152a9030f7f6abf0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
