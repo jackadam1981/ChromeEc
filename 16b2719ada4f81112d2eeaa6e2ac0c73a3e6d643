@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4cfcf14_36f0aa97",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T22:03:11Z",
+      "side": 1,
+      "message": "why 64-bits instead of 32-bits\n\nCan you add a comment?",
+      "range": {
+        "startLine": 343,
+        "startChar": 14,
+        "endLine": 343,
+        "endChar": 15
+      },
+      "revId": "16b2719ada4f81112d2eeaa6e2ac0c73a3e6d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
