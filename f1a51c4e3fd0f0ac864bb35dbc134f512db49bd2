@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58a2163c_b681fe7b",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "is separating parameters by space in one case and by comma in another intentional? Why just not require the comma, no need in IFS tricks in that case.\n\nChanging logic of the script while addressing the comments makes it harder to review the next version and brings additional comments too - it\u0027s like reviewing a new script every time.\n\nYes, logic always could be improved, but improvements could come as separate patches after the original comments have been addressed and the patch has been merged.",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80279223_a18e027d",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "does this comment apply? Also, comments are supposed to be full sentences and end with a period.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea90ce0_29360c1e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "can this be \u0027rm -rf\u0027 - no need in \u0027|| :\u0027  in this case?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0c1edb_c4ed3604",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "not a big deal, but variables in [[ ]] do not have to be quoted.",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4efb987_75da69da",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "is this guaranteed to kill only processes started by this script?",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849e5fb9_08bd0a3a",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "waht about $1?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 12
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc57e33e_38ebc4b6",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "this is another case of a change which makes the review harder. \n\nPlease refrain from unrelated changes when patches are in review!",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c50bd512_510379a0",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "please keep local vars together in one block",
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f7e79c_19d4010e",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "please add empty line after local vars declaration",
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4217dd6f_b849fd8c",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-10T17:37:55Z",
+      "side": 1,
+      "message": "why is this sleep required, doesn\u0027t this greatly reduce the average character rate?",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 9
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
