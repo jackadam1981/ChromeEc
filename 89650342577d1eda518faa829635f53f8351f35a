@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06a6cce9_3f465cf7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T22:20:26Z",
+      "side": 1,
+      "message": "this is only TPCP tunnels not *all* tunnels. We also don\u0027t want to protect *all* tunnels. Maybe we just need to rename this sub command option\n\n(also super subjective nit, can we write these in decimal since hex makes me think they are flags?)",
+      "range": {
+        "startLine": 4452,
+        "startChar": 1,
+        "endLine": 4452,
+        "endChar": 39
+      },
+      "revId": "89650342577d1eda518faa829635f53f8351f35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
