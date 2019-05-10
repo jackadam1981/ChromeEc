@@ -45,8 +45,10 @@ GPIO_INT(GAUGE_INT_ODL,     PIN(C, 9),  GPIO_INT_FALLING | GPIO_PULL_UP,
          gauge_interrupt)
 GPIO_INT(POGO_ADC_INT_L,    PIN(A, 6),  GPIO_INT_BOTH | GPIO_ANALOG,
          pogo_adc_interrupt)
-GPIO_INT(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_INT_BOTH,
-         pogo_vbus_present)
+
+/* unused */
+GPIO(POGO_VBUS_PRESENT, PIN(A, 14), GPIO_INPUT)
+
 
 /* Reset pins */
 GPIO(AP_SYS_RST_L,         PIN(C, 11), GPIO_OUT_LOW)
