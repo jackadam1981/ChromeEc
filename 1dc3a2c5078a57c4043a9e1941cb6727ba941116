@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b830411c_60a31d42",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T21:43:47Z",
+      "side": 1,
+      "message": "Agreed, I would leave the extern here (if we already had a header file for aux_fw_chip_info, then I would put it there instead)",
+      "parentUuid": "18ce2b6f_50df71b8",
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bba6616_ce1145e5",
         "filename": "common/aux_fw_chip_info.c",
         "patchSetId": 3
@@ -178,6 +196,29 @@
     },
     {
       "key": {
+        "uuid": "60fb827c_b7455f11",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T21:43:47Z",
+      "side": 1,
+      "message": "add that we must define the X and Y variables when using this CONFIG_",
+      "range": {
+        "startLine": 334,
+        "startChar": 1,
+        "endLine": 334,
+        "endChar": 45
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d1d4c54_6537a43f",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -307,6 +348,30 @@
     },
     {
       "key": {
+        "uuid": "ff83242a_c2c6932c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4345,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T21:43:47Z",
+      "side": 1,
+      "message": "We would potentially have to bump the version mask that point unless all of the existing chip_id didn\u0027t make use of the new field within the struct.\n\nThat said, I am okay with an inline field or a structure",
+      "parentUuid": "a2aa1280_5823c0b2",
+      "range": {
+        "startLine": 4345,
+        "startChar": 2,
+        "endLine": 4345,
+        "endChar": 15
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "205a235d_99862b8a",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -342,6 +407,30 @@
       "side": 1,
       "message": "Felt 2 integers might be a reasonable expectation for some chips as an additional information, Hence added 8 bytes. Again open to adjusting the reserved space.",
       "parentUuid": "205a235d_99862b8a",
+      "range": {
+        "startLine": 4350,
+        "startChar": 2,
+        "endLine": 4350,
+        "endChar": 21
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b654b6_10b1189d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4350,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T21:43:47Z",
+      "side": 1,
+      "message": "Even though I recommended 8, we could probably bump this down to 4 reserved bytes, (then we are only wasting 3 bytes)",
+      "parentUuid": "39ffdb86_b17c366a",
       "range": {
         "startLine": 4350,
         "startChar": 2,
