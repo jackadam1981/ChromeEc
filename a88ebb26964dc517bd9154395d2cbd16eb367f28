@@ -166,6 +166,30 @@
       "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09223cf5_00bac8b2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-10T03:24:41Z",
+      "side": 1,
+      "message": "Ok, let me try to fix the function then, instead of patching over it...\n\nSo we have:\n\nif (explicit_contract_in_place \u0026\u0026 pd_comm_is_enabled(port))\n   return;\n\nif (!explicit_contract_in_place ||\n\t   system_get_reset_flags() \u0026\n\t   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))\n\t\treturn;\n\nwhich is equivalent to:\n\nif (explicit_contract_in_place \u0026\u0026 pd_comm_is_enabled(port))\n   return;\n\nif (!explicit_contract_in_place)\n   return;\n\nif (system_get_reset_flags() \u0026\n\t   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))\n   return;\n\n\u003d\u003e\n\nif (!explicit_contract_in_place)\n   return;\n\n/* explicit_contract_in_place is true from now on */\nif (pd_comm_is_enabled(port))\n   return;\n\nif (system_get_reset_flags() \u0026\n\t   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))\n   return;\n\nThen it\u0027s much easier to add the flags test in the first one:\n\nif (pd_get_saved_port_flags(port, \u0026flags) !\u003d EC_SUCCESS ||\n    !(flags \u0026 PD_BBRMFLG_EXPLICIT_CONTRACT))\n   return;",
+      "parentUuid": "a80ca326_009e3e85",
+      "range": {
+        "startLine": 2349,
+        "startChar": 1,
+        "endLine": 2349,
+        "endChar": 24
+      },
+      "revId": "a88ebb26964dc517bd9154395d2cbd16eb367f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
