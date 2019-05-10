@@ -66,7 +66,7 @@ void lis2mdl_normalize(const struct motion_sensor_t *s,
 
 static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 {
-	struct stprivate_data *data = s->drv_data;
+	struct stprivate_data *data = LIS2MDL_ST_DATA(s);
 
 	/* Range is fixed by hardware */
 	if (range != s->default_range)
@@ -78,7 +78,7 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 
 static int get_range(const struct motion_sensor_t *s)
 {
-	struct stprivate_data *data = s->drv_data;
+	struct stprivate_data *data = LIS2MDL_ST_DATA(s);
 
 	return data->base.range;
 }
@@ -258,6 +258,7 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 {
 	int ret = EC_ERROR_UNKNOWN, who_am_i, count = LIS2MDL_STARTUP_MS;
 	struct mag_cal_t *cal = LIS2MDL_CAL(s);
+	struct stprivate_data *data = LIS2MDL_ST_DATA(s);
 
 	/* Check who am I value */
 	do {
@@ -293,7 +294,8 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 
 	init_mag_cal(cal);
 	cal->radius = 0.0f;
-	LIS2MDL_ST_DATA(s)->base.odr = 0;
+	data->resol = LIS2DSL_RESOLUTION;
+	data->base.odr = 0;
 	return sensor_init_done(s);
 
 lis2mdl_init_error:

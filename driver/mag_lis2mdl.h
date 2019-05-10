@@ -66,11 +66,21 @@ struct lis2mdl_private_data {
 #endif
 };
 
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+#define LIS2MDL_GET_DATA(_s) \
+	((struct lis2mdl_private_data *)(_s->drv_data->compass))
+#else
 #define LIS2MDL_GET_DATA(_s) \
 	((struct lis2mdl_private_data *)(_s->drv_data))
+#endif
 
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+#define LIS2MDL_ST_DATA(_s) \
+	(&(_s->drv_data->st_data[2]))
+#else
 #define LIS2MDL_ST_DATA(_s) \
 	(&(LIS2MDL_GET_DATA(_s)->data))
+#endif
 
 #if !defined(CONFIG_LSM6DSM_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
 #define LIS2MDL_CAL(_s) (&LIS2MDL_GET_DATA(_s)->cal)
