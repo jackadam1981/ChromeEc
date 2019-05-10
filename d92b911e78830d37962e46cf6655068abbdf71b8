@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "852a83a1_ffb6d260",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-10T22:19:42Z",
+      "side": 1,
+      "message": "That\u0027s my \"fault\", I asked Yuval to split it this way.\n\nIf you feel strongly about a single condition, I won\u0027t object too loud, but to me this definitely looks more readable and coded to the intent.",
+      "parentUuid": "432563bd_fd82a0fe",
+      "range": {
+        "startLine": 422,
+        "startChar": 3,
+        "endLine": 424,
+        "endChar": 15
+      },
+      "revId": "d92b911e78830d37962e46cf6655068abbdf71b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07f37ebe_47a8c2f4",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-10T22:15:54Z",
       "side": 1,
       "message": "this isn\u0027t the typical name for this GPIO. See https://cs.corp.google.com/search/?q\u003dlsm6dsm_interrupt+f:platform/ec\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\n\nWe should make this part of the driver",
+      "range": {
+        "startLine": 464,
+        "startChar": 7,
+        "endLine": 464,
+        "endChar": 24
+      },
+      "revId": "d92b911e78830d37962e46cf6655068abbdf71b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed2ff32_802f8cd1",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-10T22:19:42Z",
+      "side": 1,
+      "message": "Ack, but this is not the name of a GPIO",
+      "parentUuid": "07f37ebe_47a8c2f4",
       "range": {
         "startLine": 464,
         "startChar": 7,
