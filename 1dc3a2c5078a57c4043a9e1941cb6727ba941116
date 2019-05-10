@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "bfd25231_291766f6",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Good catch. I will fix that.",
+      "parentUuid": "8bba6616_ce1145e5",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e68cb18_727b47f0",
         "filename": "common/aux_fw_chip_info.c",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2019-05-10T01:56:32Z",
       "side": 1,
       "message": "Shouldn\u0027t you still report the max here so that the host knows that it isn\u0027t getting all the info based on the size of the response?",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5925948_574f7b92",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Sure, I will return the max here.",
+      "parentUuid": "6e68cb18_727b47f0",
       "range": {
         "startLine": 28,
         "startChar": 2,
@@ -106,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "a8285275_797f00c6",
+        "filename": "common/aux_fw_chip_info.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "56eb20ba_bded94e5",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d1d4c54_6537a43f",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -123,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "725ba4d2_e163bbae",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4338,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "0d1d4c54_6537a43f",
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "110783fc_b96cf344",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -134,6 +224,30 @@
       "writtenOn": "2019-05-10T01:56:32Z",
       "side": 1,
       "message": "Why is this required? Shouldn\u0027t a driver on the host side be able to decode the bits correctly based on chip_id?",
+      "range": {
+        "startLine": 4342,
+        "startChar": 1,
+        "endLine": 4342,
+        "endChar": 24
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cc912c_cead6ce9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "I think chip_id is good enough to decode additional information.",
+      "parentUuid": "110783fc_b96cf344",
       "range": {
         "startLine": 4342,
         "startChar": 1,
@@ -169,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "a2aa1280_5823c0b2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4345,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Not necessarily. I added a struct such that if in future we need to add extra information then it is easy to organize under a structure. Otherwise nothing special about it.",
+      "parentUuid": "896ae4f2_c25bd404",
+      "range": {
+        "startLine": 4345,
+        "startChar": 2,
+        "endLine": 4345,
+        "endChar": 15
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "205a235d_99862b8a",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -192,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "39ffdb86_b17c366a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4350,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Felt 2 integers might be a reasonable expectation for some chips as an additional information, Hence added 8 bytes. Again open to adjusting the reserved space.",
+      "parentUuid": "205a235d_99862b8a",
+      "range": {
+        "startLine": 4350,
+        "startChar": 2,
+        "endLine": 4350,
+        "endChar": 21
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59110925_2025250f",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -203,6 +365,30 @@
       "writtenOn": "2019-05-10T01:56:32Z",
       "side": 1,
       "message": "__ec_align?",
+      "range": {
+        "startLine": 4352,
+        "startChar": 1,
+        "endLine": 4352,
+        "endChar": 2
+      },
+      "revId": "1dc3a2c5078a57c4043a9e1941cb6727ba941116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8158878_b2630b3e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4352,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-10T04:36:43Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "59110925_2025250f",
       "range": {
         "startLine": 4352,
         "startChar": 1,
