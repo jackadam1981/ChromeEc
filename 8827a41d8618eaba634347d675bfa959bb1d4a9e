@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22b1c76e_6f8bf61c",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-10T02:06:19Z",
+      "side": 1,
+      "message": "Just curious: Did you consider adding the required fields to tcpc_config[] since it already contains i2c_bus and port information? Are there any downsides of doing that?",
+      "range": {
+        "startLine": 353,
+        "startChar": 13,
+        "endLine": 353,
+        "endChar": 29
+      },
+      "revId": "8827a41d8618eaba634347d675bfa959bb1d4a9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
