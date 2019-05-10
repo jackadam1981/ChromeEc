@@ -22,6 +22,30 @@
       "revId": "16b2719ada4f81112d2eeaa6e2ac0c73a3e6d643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acca9216_550c5821",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-10T22:47:36Z",
+      "side": 1,
+      "message": "See the memory layout in b/132366384\n\nThe watchdog timer reset counter is going in the first 4 bytes before the panic data. I\u0027m working on this CL (as a child commit).",
+      "parentUuid": "d4cfcf14_36f0aa97",
+      "range": {
+        "startLine": 343,
+        "startChar": 14,
+        "endLine": 343,
+        "endChar": 15
+      },
+      "revId": "16b2719ada4f81112d2eeaa6e2ac0c73a3e6d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
