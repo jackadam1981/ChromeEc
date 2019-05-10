@@ -72,18 +72,28 @@ static uint32_t salt[8];
 static uint32_t salt_kek[8];
 static uint32_t salt_kh[8];
 static uint8_t u2f_mode = MODE_UNSET;
-static const uint8_t k_salt = NVMEM_VAR_U2F_SALT;
 
 static int load_state(void)
 {
-	const struct tuple *t_salt = getvar(&k_salt, sizeof(k_salt));
+	const struct tuple *t_salt;
+	uint8_t g2f_salt_key = NVMEM_VAR_U2F_SALT;
+
+	/* Try to load the legacy salt. */
+	t_salt = getvar(&g2f_salt_key, sizeof(g2f_salt_key));
 
 	if (!t_salt) {
-		/* create random salt */
+		/* Legacy salt not present, look for new salt. */
+		g2f_salt_key = NVMEM_VAR_G2F_SALT;
+		t_salt = getvar(&g2f_salt_key, sizeof(g2f_salt_key));
+	}
+
+	if (!t_salt) {
+		/* Legacy and new salt are both missing. */
+		/* Create random salt, store as new salt. */
 		if (!DCRYPTO_ladder_random(salt))
 			return 0;
-		if (setvar(&k_salt, sizeof(k_salt), (const uint8_t *)salt,
-			   sizeof(salt)))
+		if (setvar(&g2f_salt_key, sizeof(g2f_salt_key),
+			   (const uint8_t *)salt, sizeof(salt)))
 			return 0;
 	} else {
 		memcpy(salt, tuple_val(t_salt), sizeof(salt));
