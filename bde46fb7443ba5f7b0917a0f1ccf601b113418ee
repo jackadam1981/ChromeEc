@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed574901_9dacd1b6",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T19:56:59Z",
+      "side": 1,
+      "message": "we are using DMA_ENABLED as as proxy for the AP being in S0 (excluding S0ix)?\n\nIf there a better way to do this?",
+      "range": {
+        "startLine": 576,
+        "startChar": 6,
+        "endLine": 577,
+        "endChar": 65
+      },
+      "revId": "bde46fb7443ba5f7b0917a0f1ccf601b113418ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af6b3aa_e8299c16",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T19:56:59Z",
+      "side": 1,
+      "message": "ah this unreachable needs to move up to after the ish_mia_reset then",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 25
+      },
+      "revId": "bde46fb7443ba5f7b0917a0f1ccf601b113418ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
