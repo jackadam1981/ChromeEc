@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16115163_445ddbb2",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-10T21:58:32Z",
+      "side": 1,
+      "message": "this isn\u0027t correct for the CONFIG_MAG_LSM6DSM_LIS2MDL right?",
+      "range": {
+        "startLine": 69,
+        "startChar": 31,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "71c1b7385c824a80d70eb3f5781f5e8313880a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
