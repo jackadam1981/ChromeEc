@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2aa0c1e8_0fc2f552",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58a2163c_b681fe7b",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80279223_a18e027d",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60773de_14e8c4ea",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Removed the comment. The option to delete temperary files is removed in patch#9.",
+      "parentUuid": "80279223_a18e027d",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 46
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d84945b5_4aa81155",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eea90ce0_29360c1e",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e0c1edb_c4ed3604",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 13
@@ -91,6 +163,30 @@
       "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b460bc97_ab59d933",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0c1edb_c4ed3604",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "84fb45de_eb2d8816",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Found that background processes generated in this script has ppid as 1, and this line doesn\u0027t kill them. patch#14 has a global array for PIDs, and this trap function will kill them if any left (unexpectedly) in that array.",
+      "parentUuid": "b4efb987_75da69da",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "849e5fb9_08bd0a3a",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 13
@@ -137,6 +257,30 @@
       "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531996ac_5691b006",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849e5fb9_08bd0a3a",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 12
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f70ebdb2_0a5bfb7d",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc57e33e_38ebc4b6",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c50bd512_510379a0",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 13
@@ -180,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "9c72defc_31f0a2c9",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c50bd512_510379a0",
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7f7e79c_19d4010e",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 13
@@ -194,6 +380,24 @@
       "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9370605c_02764013",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f7e79c_19d4010e",
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -217,6 +421,30 @@
       "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ac6b52f_32a0a112",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-11T00:57:28Z",
+      "side": 1,
+      "message": "Without this, EC console gets choked, and watchdog displays messages, and reset EC",
+      "parentUuid": "4217dd6f_b849fd8c",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 9
+      },
+      "revId": "f1a51c4e3fd0f0ac864bb35dbc134f512db49bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
