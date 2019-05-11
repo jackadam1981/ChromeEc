@@ -22,6 +22,30 @@
       "revId": "3051c0a4827ab148c2492a399b635da6d4bc25a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fcf6ba_a5f84b97",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2019-05-11T06:20:23Z",
+      "side": 1,
+      "message": "Does the AP still receive the response to this command when the EC reboots? That might be somewhat important...",
+      "parentUuid": "0d55f68b_1b6882ff",
+      "range": {
+        "startLine": 758,
+        "startChar": 26,
+        "endLine": 758,
+        "endChar": 35
+      },
+      "revId": "3051c0a4827ab148c2492a399b635da6d4bc25a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
