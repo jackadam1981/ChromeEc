@@ -22,6 +22,30 @@
       "revId": "1b295a9fc9246d83d510818c2ac8e3140e4bfee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e0df185_f596dbe5",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-13T07:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889a2ed4_790c1c42",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 6
+      },
+      "revId": "1b295a9fc9246d83d510818c2ac8e3140e4bfee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
