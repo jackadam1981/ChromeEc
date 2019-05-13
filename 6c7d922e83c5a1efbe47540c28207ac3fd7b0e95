@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c84c3bc_bc1cb76f",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T18:01:25Z",
+      "side": 1,
+      "message": "this is for Icelake and successor RVPs.\nI will add this info in commit msg",
+      "parentUuid": "5033173a_934bdcb2",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47a3d022_b0a9d49a",
         "filename": "baseboard/intelrvp/baseboard.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-13T13:48:12Z",
       "side": 1,
       "message": "will you create partner bug for this and assigned it to yourself please (also update the comment with the bug number)",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 33
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dafdea6_baf80c6f",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T18:01:25Z",
+      "side": 1,
+      "message": "sure I will add it",
+      "parentUuid": "47a3d022_b0a9d49a",
       "range": {
         "startLine": 206,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "590c48b6_cce2d6a7",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T18:01:25Z",
+      "side": 1,
+      "message": "okay I will plan to make it generic so that any EC can be used",
+      "parentUuid": "20f9cd02_67a03e9b",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1b6d1db_d5bccc65",
         "filename": "baseboard/intelrvp/chg_usb_pd.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9bc543b2_7be518e7",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T18:01:25Z",
+      "side": 1,
+      "message": "okay I will plan to add TASK_ID_PD_CX",
+      "parentUuid": "d1b6d1db_d5bccc65",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08a3c2c6_a9c55d29",
         "filename": "baseboard/intelrvp/led_states.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-05-13T13:48:12Z",
       "side": 1,
       "message": "should not refer to octopus",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286754d0_4c3c62a1",
+        "filename": "baseboard/intelrvp/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T18:01:25Z",
+      "side": 1,
+      "message": "we will remove it",
+      "parentUuid": "08a3c2c6_a9c55d29",
       "range": {
         "startLine": 47,
         "startChar": 4,
