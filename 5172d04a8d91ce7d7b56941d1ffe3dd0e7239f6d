@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "58ddf545_36517fd0",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T23:27:48Z",
+      "side": 1,
+      "message": "We should probably rename it to IS_DEFINED if we want to evaluate 0 as true.  That\u0027ll also nicely make \u0027#ifdef IS_DEFINED(X)\u0027 look awkward.\n\nEven though I like such a macro, the proposed implementation is fragile. When gcc/clang needs to be updated and this assumption is broken, we\u0027ll be a blocker. What is scary is tests may just pass while production code comes out unexpectedly.",
+      "parentUuid": "919ac971_7636ce07",
+      "range": {
+        "startLine": 263,
+        "startChar": 15,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "5172d04a8d91ce7d7b56941d1ffe3dd0e7239f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35351b3a_bd1e46b7",
         "filename": "test/is_enabled.c",
         "patchSetId": 1
