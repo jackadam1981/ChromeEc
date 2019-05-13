@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1c67d2f_a6573563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T22:12:39Z",
+      "side": 1,
+      "message": "okay I will add it",
+      "parentUuid": "0b610b1f_601c2b4f",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d97ac54c_4e00c4d2",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-13T21:15:39Z",
       "side": 1,
       "message": "Need to populate the byte[0] with BB_RETIMER_READ_SIZE?",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8c2f6b_0586ce00",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T22:12:39Z",
+      "side": 1,
+      "message": "added at line 40, I will replace with macro BB_RETIMER_REG_SIZE",
+      "parentUuid": "d97ac54c_4e00c4d2",
       "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6f59a46f_0c2276d7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T22:12:39Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "2cb30cfb_5f2c6aed",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "943a591e_7337dadb",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2019-05-13T21:15:39Z",
       "side": 1,
       "message": "Can this be checked within previous condition statement. As Bit 10-11 is ignored if Bit 8 not set, from spec.",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02898e80_f3bd2f74",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-05-13T22:12:39Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "943a591e_7337dadb",
       "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
