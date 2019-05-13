@@ -20,6 +20,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "task.h"
 #include "registers.h"
@@ -32,6 +33,28 @@
 
 int watchdog_init(void)
 {
+	uint32_t reset_counter;
+
+	/* Restore reset counter from always-on memory */
+	reset_counter = ISH_WDT_RESET_COUNTER;
+
+	/* If the last reset was caused by watchdog expiration... */
+	if (system_get_reset_flags() & RESET_FLAG_WATCHDOG) {
+		/* then increment the watchdog reset counter */
+		reset_counter += 1;
+
+		if (reset_counter >= CONFIG_WATCHDOG_MAX_RETRIES) {
+			/* disable the watchdog if too many retries */
+			ccprints("Maximum retries exceeded for watchdog reset."
+				 " Watchdog disabled");
+			return EC_SUCCESS;
+		}
+	} else {
+		/* otherwise reset the counter to zero */
+		reset_counter = 0;
+	}
+	ISH_WDT_RESET_COUNTER = reset_counter;
+
 	/* Initialize WDT clock divider */
 	CCU_WDT_CD = WDT_CLOCK_HZ / 10; /* 10 Hz => 100 ms period */
 
