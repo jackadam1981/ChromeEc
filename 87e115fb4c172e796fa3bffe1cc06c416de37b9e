@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9279ce5_44c5b461",
+        "filename": "include/common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T22:57:08Z",
+      "side": 1,
+      "message": "Does \u0027any value\u0027 sounds more accurate?",
+      "range": {
+        "startLine": 277,
+        "startChar": 31,
+        "endLine": 277,
+        "endChar": 46
+      },
+      "revId": "87e115fb4c172e796fa3bffe1cc06c416de37b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d70e904_72a85a1c",
+        "filename": "test/is_enabled_error.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T22:57:08Z",
+      "side": 1,
+      "message": "Shall we do \u00270\u0027, instead? Also, shall we test a non-numeric value?",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "87e115fb4c172e796fa3bffe1cc06c416de37b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
