@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "0c2d71bc_5d121075",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-13T22:47:10Z",
+      "side": 1,
+      "message": "I do like the idea to keep it simple... what if we only have IS_ENABLED(CONFIG_x) expand to something truthy if CONFIG_x is defined?\n\nI was messing with this idea and came up with this:\n\n    #include \u003cstdio.h\u003e\n\n    #define _config_enabled(scfg, cfg) __config_enabled(scfg, #cfg)\n    #define __config_enabled(s1, s2) (s1 !\u003d s2)\n    #define IS_ENABLED(option) _config_enabled(#option, option)\n\n    #define CONFIG_ONE\n    #define CONFIG_TWO 0\n    #define CONFIG_THREE 1\n    #define CONFIG_FOUR \"CONFIG_FOUR\"\n    #define CONFIG_FIVE CONFIG_FIVE\n\n    int main(int argc, char *argv[])\n    {\n        if (IS_ENABLED(CONFIG_ONE))\n            puts(\"CONFIG_ONE enabled!\");\n        if (IS_ENABLED(CONFIG_TWO))\n            puts(\"CONFIG_TWO enabled!\");\n        if (IS_ENABLED(CONFIG_THREE))\n            puts(\"CONFIG_THREE enabled!\");\n        if (IS_ENABLED(CONFIG_FOUR))\n            puts(\"CONFIG_FOUR enabled!\");\n        if (IS_ENABLED(CONFIG_FIVE))\n            puts(\"CONFIG_FIVE enabled!\");\n        if (IS_ENABLED(CONFIG_SIX))\n            puts(\"CONFIG_SIX enabled!\");\n        return 0;\n    }\n\nThe main function macroexpands like this:\n\n    int main(int argc, char *argv[])\n    {\n        if ((\"CONFIG_ONE\" !\u003d \"\"))\n            puts(\"CONFIG_ONE enabled!\");\n        if ((\"CONFIG_TWO\" !\u003d \"0\"))\n            puts(\"CONFIG_TWO enabled!\");\n        if ((\"CONFIG_THREE\" !\u003d \"1\"))\n            puts(\"CONFIG_THREE enabled!\");\n        if ((\"CONFIG_FOUR\" !\u003d \"\\\"CONFIG_FOUR\\\"\"))\n            puts(\"CONFIG_FOUR enabled!\");\n        if ((\"CONFIG_FIVE\" !\u003d \"CONFIG_FIVE\"))\n            puts(\"CONFIG_FIVE enabled!\");\n        if ((\"CONFIG_SIX\" !\u003d \"CONFIG_SIX\"))\n            puts(\"CONFIG_SIX enabled!\");\n        return 0;\n    }\n\nAnd the relevant output:\n\n    CONFIG_ONE enabled!\n    CONFIG_TWO enabled!\n    CONFIG_THREE enabled!\n    CONFIG_FOUR enabled!\n\nThis banks on that the compiler will intern string literals and give equivalent literals the same address; hence, this becomes a pointer comparison between two equivalent addresses. This isn\u0027t part of any C standard to my knowledge, but any compiler that\u0027s mildly efficient should do this, including both GCC and clang. However, it\u0027s not compatible with a usage like this:\n\n    #ifdef IS_ENABLED(CONFIG_x)\n    ...\n    #endif\n\nIn this case, the programmer should just use defined instead of IS_ENABLED.\n\nAlso, does not work in the CONFIG_FIVE case above. Although, I don\u0027t expect we would see a case like this in real code anyway.\n\nThoughts?",
+      "parentUuid": "a5f7a80a_64065538",
+      "range": {
+        "startLine": 263,
+        "startChar": 15,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "5172d04a8d91ce7d7b56941d1ffe3dd0e7239f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35351b3a_bd1e46b7",
         "filename": "test/is_enabled.c",
         "patchSetId": 1
