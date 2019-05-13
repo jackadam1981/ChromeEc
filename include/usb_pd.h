@@ -1962,6 +1962,11 @@ int pd_is_vbus_present(int port);
  */
 uint8_t board_get_dp_pin_mode(int port);
 
+/**
+ * Protect all the TCPC I2C ports.
+ */
+void pd_protect_tcpc_i2c_ports(void);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

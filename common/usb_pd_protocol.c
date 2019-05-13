@@ -5419,3 +5419,22 @@ DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control, EC_VER_MASK(0));
 #endif /* CONFIG_CMD_PD_CONTROL */
 
 #endif /* CONFIG_COMMON_RUNTIME */
+
+#if !IS_ENABLED(CONFIG_USB_PD_TCPM_STUB) && IS_ENABLED(CONFIG_I2C_MASTER)
+void pd_protect_tcpc_i2c_ports(void)
+{
+	int i;
+
+	/*
+	 * If WP is not enabled i.e. system is not locked leave the tunnels open
+	 * so that factory line can do updates without a new RO BIOS.
+	 */
+	if (!system_is_locked()) {
+		CPRINTS("System unlocked, TCPC I2C tunnels may be unprotected");
+		return;
+	}
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		i2c_passthru_protect_port(tcpc_config[i].i2c_host_port);
+}
+#endif

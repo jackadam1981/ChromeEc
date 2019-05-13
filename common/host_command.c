@@ -16,6 +16,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "util.h"
 
 /* Console output macros */
@@ -747,14 +748,22 @@ DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_HOST_COMMAND_STATUS */
 
-
 static int host_command_entering_mode(struct host_cmd_handler_args *args)
 {
 	struct ec_params_entering_mode *param =
 		(struct ec_params_entering_mode *)args->params;
+
+#if IS_ENABLED(CONFIG_USB_POWER_DELIVERY) && \
+	!IS_ENABLED(CONFIG_USB_PD_TCPM_STUB) && IS_ENABLED(CONFIG_I2C_MASTER)
+	/*
+	 * All things related to EC SW Sync and TCPC FW update are done at this
+	 * time. So it is good to protect all the TCPC I2C tunnels.
+	 */
+	pd_protect_tcpc_i2c_ports();
+#endif
 	args->response_size = 0;
 	g_vboot_mode = param->vboot_mode;
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_ENTERING_MODE,
 		host_command_entering_mode, EC_VER_MASK(0));
