@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8e67f5f6_b606a3d8",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T17:52:07Z",
+      "side": 1,
+      "message": "I imagined we want this change because we can use IS_ENABLED for macros with numeric values. For example, if we accept 2, we can do:\n\n  if (IS_ENABLED(CONFIG_USB_PD_PORT_COUNT))\n    ...;\n\nIsn\u0027t it just a matter of adding __ARG_PLACEHOLDER_2? If we\u0027re accepting only 1, how would it be useful?",
+      "parentUuid": "6403bb84_7ba54c0c",
+      "range": {
+        "startLine": 263,
+        "startChar": 15,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "5172d04a8d91ce7d7b56941d1ffe3dd0e7239f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35351b3a_bd1e46b7",
         "filename": "test/is_enabled.c",
         "patchSetId": 1
