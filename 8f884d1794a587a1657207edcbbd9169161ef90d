@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "53b952bb_53842b49",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-13T21:09:15Z",
+      "side": 1,
+      "message": "The only scenario where it could not lock is if the system is already in an unlocked state. I dont think it is an error, rather a working as intended scenario.",
+      "parentUuid": "259f1ca2_2cc9d6c5",
+      "range": {
+        "startLine": 756,
+        "startChar": 7,
+        "endLine": 756,
+        "endChar": 11
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a739fc_04e13112",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-13T21:09:15Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "2cad2f19_5ef10040",
+      "range": {
+        "startLine": 756,
+        "startChar": 12,
+        "endLine": 756,
+        "endChar": 34
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9365223b_b8c09b7f",
         "filename": "common/host_command.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-13T19:50:51Z",
       "side": 1,
       "message": "nit: can you not use it?",
+      "range": {
+        "startLine": 758,
+        "startChar": 1,
+        "endLine": 758,
+        "endChar": 17
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b9e072_2dd2227f",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-13T21:09:15Z",
+      "side": 1,
+      "message": "Ok, I will remove it and check directly against system_is_locked().",
+      "parentUuid": "9365223b_b8c09b7f",
       "range": {
         "startLine": 758,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b48c0360_0c7a42a8",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-13T21:09:15Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "5b29ef6e_91faa608",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 27
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04de744a_6865e329",
         "filename": "common/host_command.c",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8cc52888_3c57a913",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-13T21:09:15Z",
+      "side": 1,
+      "message": "Yes, we want to protect the i2c ports in all the modes. If there is a requirement to leave it unprotected for some modes in the future, we can address it at that time.",
+      "parentUuid": "04de744a_6865e329",
+      "range": {
+        "startLine": 786,
+        "startChar": 1,
+        "endLine": 786,
+        "endChar": 26
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90ce62aa_03f9f0c7",
         "filename": "common/host_command.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-05-13T19:50:51Z",
       "side": 1,
       "message": "by the way, this should be EC_RES_SUCCESS.",
+      "range": {
+        "startLine": 790,
+        "startChar": 8,
+        "endLine": 790,
+        "endChar": 18
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91de8643_6d8dc05f",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-13T21:09:15Z",
+      "side": 1,
+      "message": "Sure, will fix that.",
+      "parentUuid": "90ce62aa_03f9f0c7",
       "range": {
         "startLine": 790,
         "startChar": 8,
