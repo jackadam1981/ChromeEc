@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "259f1ca2_2cc9d6c5",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T19:50:51Z",
+      "side": 1,
+      "message": "We should care whether it\u0027s locked successfully or not, right?",
+      "range": {
+        "startLine": 756,
+        "startChar": 7,
+        "endLine": 756,
+        "endChar": 11
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cad2f19_5ef10040",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T19:50:51Z",
+      "side": 1,
+      "message": "I think this should live in usb_pd_protocol.c and exported as an API.",
+      "range": {
+        "startLine": 756,
+        "startChar": 12,
+        "endLine": 756,
+        "endChar": 34
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9365223b_b8c09b7f",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T19:50:51Z",
+      "side": 1,
+      "message": "nit: can you not use it?",
+      "range": {
+        "startLine": 758,
+        "startChar": 1,
+        "endLine": 758,
+        "endChar": 17
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b29ef6e_91faa608",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T19:50:51Z",
+      "side": 1,
+      "message": "Can you use IS_ENABLED?",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 27
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04de744a_6865e329",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T19:50:51Z",
+      "side": 1,
+      "message": "Do we want to protect i2c ports conditionally (on vboot_mode)?",
+      "range": {
+        "startLine": 786,
+        "startChar": 1,
+        "endLine": 786,
+        "endChar": 26
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ce62aa_03f9f0c7",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T19:50:51Z",
+      "side": 1,
+      "message": "by the way, this should be EC_RES_SUCCESS.",
+      "range": {
+        "startLine": 790,
+        "startChar": 8,
+        "endLine": 790,
+        "endChar": 18
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
