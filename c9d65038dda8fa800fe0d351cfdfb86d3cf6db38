@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4739d3f_b531f634",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:40:51Z",
+      "side": 1,
+      "message": "let\u0027s exposed a specific function for this like pd_is_ufp(int port)\n\nand decrease the API surface by removing pd_get_cc_state(int port)",
+      "range": {
+        "startLine": 146,
+        "startChar": 5,
+        "endLine": 146,
+        "endChar": 35
+      },
+      "revId": "c9d65038dda8fa800fe0d351cfdfb86d3cf6db38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9199700a_fde49d92",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:40:51Z",
+      "side": 1,
+      "message": "this can be pd_is_debug_acc(int port)",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "c9d65038dda8fa800fe0d351cfdfb86d3cf6db38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8376b4fb_eebd98f3",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:40:51Z",
+      "side": 1,
+      "message": "please use BIT(0) here and other appropriate definitions in this file",
+      "range": {
+        "startLine": 22,
+        "startChar": 43,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "c9d65038dda8fa800fe0d351cfdfb86d3cf6db38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cfff5e9_02dbc2bd",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:40:51Z",
+      "side": 1,
+      "message": "Let\u0027s also add, that defining CONFIG_** requires the board to define this variable",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 70
+      },
+      "revId": "c9d65038dda8fa800fe0d351cfdfb86d3cf6db38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
