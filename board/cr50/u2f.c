@@ -28,9 +28,9 @@ static timestamp_t last_press;
 /* how long do we keep the last button press as valid presence */
 #define PRESENCE_TIMEOUT (10 * SECOND)
 
-void power_button_record(void)
+void power_button_record(int check_powerbtn)
 {
-	if (ap_is_on() && rbox_powerbtn_is_pressed()) {
+	if (ap_is_on() && (!check_powerbtn || rbox_powerbtn_is_pressed())) {
 		last_press = get_time();
 #ifdef CR50_DEV
 		CPRINTS("record pp");

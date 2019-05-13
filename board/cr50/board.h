@@ -327,7 +327,7 @@ int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
 
-void power_button_record(void);
+void power_button_record(int check_powerbtn);
 
 /**
  * Enable/disable power button release interrupt.

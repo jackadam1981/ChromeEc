@@ -56,6 +56,8 @@ static void power_button_press_enable_interrupt(int enable)
 	}
 }
 
+int check_powerbtn = 1;
+
 static void power_button_handler(void)
 {
 	CPRINTS("power button pressed");
@@ -64,7 +66,8 @@ static void power_button_handler(void)
 		/* Not consumed by physical detect */
 #ifdef CONFIG_U2F
 		/* Track last power button press for U2F */
-		power_button_record();
+		power_button_record(check_powerbtn);
+		check_powerbtn = 1;
 #endif
 	}
 
@@ -124,9 +127,16 @@ static int command_powerbtn(int argc, char **argv)
 	ccprintf("powerbtn: %s\n",
 		 rbox_powerbtn_is_pressed() ? "pressed" : "released");
 
+
+	if (argc > 1 && !strcasecmp("press", argv[1])) {
+		ccprintf("simulating power button press\n");
+		check_powerbtn = 0;
+		power_button_handler();
 #ifdef CR50_DEV
-	pop_check_presence(1);
+	} else {
+		pop_check_presence(1);
 #endif
+	}
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn, "",
