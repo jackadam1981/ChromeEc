@@ -3,24 +3,23 @@
  * found in the LICENSE file.
  */
 
-/* System module ISH (Not implemented) */
-
 #include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
+#include "interrupts.h"
 #include "ish_fwst.h"
+#include "power_mgt.h"
 #include "registers.h"
 #include "shared_mem.h"
+#include "spi.h"
 #include "system.h"
-#include "hooks.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "spi.h"
-#include "power_mgt.h"
 
 /* Indices for hibernate data registers (RAM backed by VBAT) */
 enum hibdata_index {
@@ -55,11 +54,38 @@ uint32_t chip_read_reset_flags(void)
 {
 	uint32_t flags = ISH_RESET_FLAGS;
 
-	if (flags)
-		return flags;
+	/*
+	 * Try to detect invalid reset flags, and if detected, assume
+	 * we came up from a cold reset
+	 */
+	if (!flags /* zero is not valid */
+	    || (flags >> 18) /* only bits 0-18 are valid */
+	    /* cannot be both soft and hard reset at the same time */
+	    || ((flags & RESET_FLAG_SOFT) && (flags & RESET_FLAG_HARD))
+	    /* other is mutually-exclusive */
+	    || ((flags & RESET_FLAG_OTHER) && (flags & ~RESET_FLAG_OTHER)))
+		return RESET_FLAG_POWER_ON;
 
-	/* Flags are zero? Assume we came up from a cold reset */
-	return RESET_FLAG_POWER_ON;
+	return flags;
+}
+
+/*
+ * Kill the Minute-IA core and don't come back alive.
+ *
+ * Used when the watchdog timer exceeds max retries and we want to
+ * disable ISH completely.
+ */
+__attribute__((noreturn))
+static void system_halt(void)
+{
+	while (1) {
+		disable_all_interrupts();
+		WDT_CONTROL = 0;
+		CCU_TCG_EN = 1;
+		__asm__ volatile (
+			"cli\n"
+			"hlt\n");
+	}
 }
 
 void system_reset(int flags)
@@ -68,8 +94,15 @@ void system_reset(int flags)
 
 	system_encode_save_flags(flags, &save_flags);
 
-	if (flags & SYSTEM_RESET_AP_WATCHDOG)
+	if (flags & SYSTEM_RESET_AP_WATCHDOG) {
 		save_flags |= RESET_FLAG_WATCHDOG;
+
+		ISH_WDT_RESET_COUNTER += 1;
+		if (ISH_WDT_RESET_COUNTER >= CONFIG_WATCHDOG_MAX_RETRIES) {
+			ccprints("Halting ISH due to max watchdog resets");
+			system_halt();
+		}
+	}
 
 	chip_save_reset_flags(save_flags);
 

@@ -20,6 +20,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "task.h"
 #include "registers.h"
@@ -32,6 +33,13 @@
 
 int watchdog_init(void)
 {
+	/*
+	 * Put reset counter back at zero if last reset was not caused
+	 * by watchdog
+	 */
+	if ((system_get_reset_flags() & RESET_FLAG_WATCHDOG) == 0)
+		ISH_WDT_RESET_COUNTER = 0;
+
 	/* Initialize WDT clock divider */
 	CCU_WDT_CD = WDT_CLOCK_HZ / 10; /* 10 Hz => 100 ms period */
 

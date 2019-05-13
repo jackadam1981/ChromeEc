@@ -342,6 +342,10 @@ enum ish_i2c_port {
 /* Persistent reset flags - placed directly at end of panic data */
 #define ISH_RESET_FLAGS		REG32(CONFIG_PANIC_DATA_BASE	\
 					      + CONFIG_PANIC_DATA_SIZE)
+/* Watchdog reset counter - directly after reset flags */
+#define ISH_WDT_RESET_COUNTER		REG32(CONFIG_PANIC_DATA_BASE	\
+					      + CONFIG_PANIC_DATA_SIZE	\
+					      + sizeof(uint32_t))
 
 #if defined(CHIP_FAMILY_ISH3)
 /* on ISH3, reused ISH2PMC IPC message registers */
