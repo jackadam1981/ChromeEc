@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "508d894c_1005d5d9",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-13T14:33:54Z",
+      "side": 1,
+      "message": "why is this called \u0027index\u0027 - this is the variable name, right?",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "f38d1ba109ac5330a83b45267d7b01dfd4ea3071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce166bb_96faa69f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-13T14:33:54Z",
+      "side": 1,
+      "message": "what is the point of setting this variable - it is not used anywhere?",
+      "revId": "f38d1ba109ac5330a83b45267d7b01dfd4ea3071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f28d57d_879f7ecb",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-13T14:33:54Z",
+      "side": 1,
+      "message": "so, if legacy variable is found, its value is changed, if not - a one with the new name is created instead - do I get this right?\n\nWhy not just create a new one and not worry about legacy, as suggested earlier?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 12
+      },
+      "revId": "f38d1ba109ac5330a83b45267d7b01dfd4ea3071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
