@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "32c142d6_68485f39",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-05-13T21:08:18Z",
+      "side": 1,
+      "message": "I added 0 and 1 because in the KConfig world all defines are set to 1 when set. So I was just trying to make that work. I feel like 0 and 1 are accepted magic values. If we start adding random magic values I think that just makes things confusing. If you feel strongly, I can remove 0 and 1 support. The real goal of this CL was to throw an error on an unknown value.",
+      "parentUuid": "8e67f5f6_b606a3d8",
+      "range": {
+        "startLine": 263,
+        "startChar": 15,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "5172d04a8d91ce7d7b56941d1ffe3dd0e7239f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35351b3a_bd1e46b7",
         "filename": "test/is_enabled.c",
         "patchSetId": 1
