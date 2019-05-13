@@ -21,6 +21,44 @@
 int watchdog_init(void);
 
 /**
+ * Watchdog reset counter.
+ *
+ * Chips which support an always-on section of memory may wish to save
+ * and restore a reset counter when the watchdog expires to prevent
+ * the watchdog from resetting too many times. Chips that support this
+ * will need to define the corresponding save/restore functions.
+ */
+
+
+#ifdef CONFIG_WATCHDOG
+/* defined under common/watchdog.c */
+void watchdog_set_reset_counter(uint32_t value);
+uint32_t watchdog_get_reset_counter(void);
+
+/* to be defined by chip */
+void watchdog_save_reset_counter(uint32_t value);
+uint32_t watchdog_restore_reset_counter(void);
+#else
+static __unused void watchdog_set_reset_counter(uint32_t value)
+{
+}
+
+static __unused uint32_t watchdog_get_reset_counter(void)
+{
+	return 0;
+}
+
+static __unused void watchdog_save_reset_counter(uint32_t value)
+{
+}
+
+static __unused uint32_t watchdog_restore_reset_counter(void)
+{
+	return 0;
+}
+#endif
+
+/**
  * Display a trace with information about an expired watchdog timer
  *
  * This shows the location in the code where the expiration happened.

@@ -20,6 +20,7 @@
 #include "util.h"
 #include "spi.h"
 #include "power_mgt.h"
+#include "watchdog.h"
 
 /* Indices for hibernate data registers (RAM backed by VBAT) */
 enum hibdata_index {
@@ -69,6 +70,7 @@ void system_reset(int flags)
 		save_flags |= RESET_FLAG_WATCHDOG;
 
 	chip_save_reset_flags(save_flags);
+	watchdog_save_reset_counter(watchdog_get_reset_counter());
 
 	/*
 	 * ish_pm_reset() does more (poweroff main SRAM, etc) than

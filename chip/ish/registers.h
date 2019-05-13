@@ -338,6 +338,9 @@ enum ish_i2c_port {
 
 /* Software defined registers */
 
+/* Watchdog max retries counter */
+#define ISH_WDT_RESET_COUNTER		REG32(CONFIG_PANIC_DATA_BASE	\
+					      - (4 * sizeof(uint32_t)))
 /* Persistent reset flags */
 #define ISH_RESET_FLAGS		REG32(CONFIG_PANIC_DATA_BASE	\
 					      - (2 * sizeof(uint32_t)))

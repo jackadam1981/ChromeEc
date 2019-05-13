@@ -3917,6 +3917,14 @@
  */
 #undef CONFIG_WATCHDOG_HELP
 
+/*
+ * The maximum number of times that the watchdog timer may reset
+ * before giving up and leaving the watchdog timer disabled.
+ *
+ * Default value: 4 retries
+ */
+#define CONFIG_WATCHDOG_MAX_RETRIES 4
+
 /* Watchdog period in ms; see also AUX_TIMER_PERIOD_MS */
 #define CONFIG_WATCHDOG_PERIOD_MS 1600
 
