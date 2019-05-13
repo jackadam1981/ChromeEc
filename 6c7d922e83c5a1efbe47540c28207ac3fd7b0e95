@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5033173a_934bdcb2",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:48:12Z",
+      "side": 1,
+      "message": "This isn\u0027t supported on some SoCs (like GLK).\n\nIs this baseboard definition only for ice lake or is it for all RVPs?",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a3d022_b0a9d49a",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:48:12Z",
+      "side": 1,
+      "message": "will you create partner bug for this and assigned it to yourself please (also update the comment with the bug number)",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 33
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f9cd02_67a03e9b",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:48:12Z",
+      "side": 1,
+      "message": "this is unexpected, are you using a ITE EC for all RVPs?",
+      "range": {
+        "startLine": 26,
+        "startChar": 10,
+        "endLine": 26,
+        "endChar": 25
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b6d1db_d5bccc65",
+        "filename": "baseboard/intelrvp/chg_usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:48:12Z",
+      "side": 1,
+      "message": "\u003e\u003d 2 to make it more resilient to future expansion",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 104,
+        "endChar": 33
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a3c2c6_a9c55d29",
+        "filename": "baseboard/intelrvp/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T13:48:12Z",
+      "side": 1,
+      "message": "should not refer to octopus",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "6c7d922e83c5a1efbe47540c28207ac3fd7b0e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
