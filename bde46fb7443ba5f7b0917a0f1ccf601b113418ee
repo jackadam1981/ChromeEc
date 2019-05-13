@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "798dd44a_fe6e1f5a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-13T05:02:05Z",
+      "side": 1,
+      "message": "Ack!\n\nthere\u0027re some history reasons, ISH BUP and heci host driver already used this proxy flag, and this is enough simple for ISH BUP loader and aontask to sync with host. it\u0027s not good for ISH BUP and aontask to using complex sync method. :)",
+      "parentUuid": "ed574901_9dacd1b6",
+      "range": {
+        "startLine": 576,
+        "startChar": 6,
+        "endLine": 577,
+        "endChar": 65
+      },
+      "revId": "bde46fb7443ba5f7b0917a0f1ccf601b113418ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af6b3aa_e8299c16",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "bde46fb7443ba5f7b0917a0f1ccf601b113418ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0af1a4_9b52404d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-05-13T05:02:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af6b3aa_e8299c16",
+      "range": {
+        "startLine": 603,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 25
+      },
+      "revId": "bde46fb7443ba5f7b0917a0f1ccf601b113418ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
