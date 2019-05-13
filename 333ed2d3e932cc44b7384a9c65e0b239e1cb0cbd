@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b610b1f_601c2b4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-05-13T21:15:39Z",
+      "side": 1,
+      "message": "Since the TBT specific bits (like Tbt type etc) are not added in this patch for the driver, do you want to call that out in the commit message?",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97ac54c_4e00c4d2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-05-13T21:15:39Z",
+      "side": 1,
+      "message": "Need to populate the byte[0] with BB_RETIMER_READ_SIZE?",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb30cfb_5f2c6aed",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-05-13T21:15:39Z",
+      "side": 1,
+      "message": "Can this be checked under the previous if statement. As Bit 7 is ignored if Bit 5 is not set.",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "943a591e_7337dadb",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2019-05-13T21:15:39Z",
+      "side": 1,
+      "message": "Can this be checked within previous condition statement. As Bit 10-11 is ignored if Bit 8 not set, from spec.",
+      "revId": "333ed2d3e932cc44b7384a9c65e0b239e1cb0cbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
