@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "a3232c09_077fb4ca",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-05-13T22:56:53Z",
+      "side": 1,
+      "message": "The compiler will issue a warning when comparing two string literals, which results in an error with -Werror. So you need to use strcmp. The compiler is smart enough to evaluate the built in and know the two strings are identical. This is essentially what this macro does.\n\nHaving #define FOO 0 and IS_ENABLED(FOO) evaluate to 0 I think is surprising.",
+      "parentUuid": "0c2d71bc_5d121075",
+      "range": {
+        "startLine": 263,
+        "startChar": 15,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "5172d04a8d91ce7d7b56941d1ffe3dd0e7239f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35351b3a_bd1e46b7",
         "filename": "test/is_enabled.c",
         "patchSetId": 1
