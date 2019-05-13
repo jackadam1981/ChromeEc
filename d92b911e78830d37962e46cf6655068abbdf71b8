@@ -93,6 +93,30 @@
       "revId": "d92b911e78830d37962e46cf6655068abbdf71b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41adb21b_09733591",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-13T14:02:35Z",
+      "side": 1,
+      "message": "I completely missing where I was typing my comment. This was supposed to be on line 447.\n\nGPIO_ACCEL_GYRO_INT_L is not the typeical name. We should make it a part of the driver",
+      "parentUuid": "bed2ff32_802f8cd1",
+      "range": {
+        "startLine": 464,
+        "startChar": 7,
+        "endLine": 464,
+        "endChar": 24
+      },
+      "revId": "d92b911e78830d37962e46cf6655068abbdf71b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
