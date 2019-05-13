@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87b0c1a6_e51f3d50",
+        "filename": "board/nami/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-13T17:21:48Z",
+      "side": 1,
+      "message": "This isn\u0027t ideal but it should work (now). I don\u0027t see a better option than this currently. This bug is for a debugging feature: it will be triggered only when CCD is detected (and ignored at line 985 otherwise).\n\nIn the future, we can make it deterministic (by hooking the moment MUX setting is finished).",
+      "range": {
+        "startLine": 996,
+        "startChar": 50,
+        "endLine": 996,
+        "endChar": 60
+      },
+      "revId": "d46b2be9057696cf471693c5016e4739c0354c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
