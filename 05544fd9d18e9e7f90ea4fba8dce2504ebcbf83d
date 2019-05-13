@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "6222c88e_cd14dc18",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6231,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-13T17:59:30Z",
+      "side": 1,
+      "message": "Would it be a good idea for the help to print what the enum values are (similar to how cmd_cbi_help() translates the tag numbers into something human-readable for those of us too lazy to look up the defines ;) )?",
+      "range": {
+        "startLine": 6231,
+        "startChar": 2,
+        "endLine": 6231,
+        "endChar": 49
+      },
+      "revId": "05544fd9d18e9e7f90ea4fba8dce2504ebcbf83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "967907d9_95fb04d9",
         "filename": "util/ectool.c",
         "patchSetId": 4
@@ -41,6 +64,29 @@
         "startChar": 24,
         "endLine": 6243,
         "endChar": 44
+      },
+      "revId": "05544fd9d18e9e7f90ea4fba8dce2504ebcbf83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36c39ceb_13192a44",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8634,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-13T17:59:30Z",
+      "side": 1,
+      "message": "nit: this list seems to be alphabetically organized, so this command would probably go before i2cprotect",
+      "range": {
+        "startLine": 8634,
+        "startChar": 1,
+        "endLine": 8634,
+        "endChar": 31
       },
       "revId": "05544fd9d18e9e7f90ea4fba8dce2504ebcbf83d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
