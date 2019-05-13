@@ -38,6 +38,21 @@ void power_button_record(void)
 	}
 }
 
+static int command_fake_u2f(int argc, char **argv)
+{
+	if (argc > 1) {
+		if (!strcasecmp(argv[1], "press")) {
+			ccprintf("Fake power button press\n");
+			last_press = get_time();
+		} else {
+			return EC_ERROR_PARAM1;
+		}
+	}
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(fake_u2f, command_fake_u2f, "",
+			     "Fake U2F press");
+
 enum touch_state pop_check_presence(int consume)
 {
 	int recent = ((last_press.val  > 0) &&
