@@ -10,12 +10,14 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "link_defs.h"
 #include "lpc.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 /* Console output macros */
@@ -747,11 +749,42 @@ DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_HOST_COMMAND_STATUS */
 
+#if defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USB_PD_TCPM_STUB) && \
+	defined(CONFIG_I2C_MASTER)
+extern const struct tcpc_config_t tcpc_config[];
+
+static void protect_tcpc_i2c_ports(void)
+{
+	uint32_t locked = system_is_locked();
+	int i;
+
+	/*
+	 * If WP is not enabled i.e. system is not locked leave the tunnels open
+	 * so that factory line can do updates without a new RO BIOS.
+	 */
+	if (!locked) {
+		CPRINTS("System unlocked, TCPC I2C tunnels may be unprotected");
+		return;
+	}
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		i2c_passthru_protect_port(tcpc_config[i].i2c_host_port);
+}
+#endif
 
 static int host_command_entering_mode(struct host_cmd_handler_args *args)
 {
 	struct ec_params_entering_mode *param =
 		(struct ec_params_entering_mode *)args->params;
+
+#if defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USB_PD_TCPM_STUB) && \
+	defined(CONFIG_I2C_MASTER)
+	/*
+	 * All things related to EC SW Sync and TCPC FW update are done at this
+	 * time. So it is good to protect all the TCPC I2C tunnels.
+	 */
+	protect_tcpc_i2c_ports();
+#endif
 	args->response_size = 0;
 	g_vboot_mode = param->vboot_mode;
 	return EC_SUCCESS;
