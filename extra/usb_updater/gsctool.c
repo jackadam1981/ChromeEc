@@ -222,7 +222,7 @@ struct options_map {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikLMmn:O:oPpR:rS:stUuVvw";
+static char *short_opts = "aBbcd:F:fhIikLMmn:O:oPpR:rS:sT:tUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -249,6 +249,7 @@ static const struct option long_opts[] = {
 	{"systemdev",	                0,   NULL, 's'},
 	{"serial",	                1,   NULL, 'n'},
 	{"tpm_mode",                    2,   NULL, 'm'},
+	{"tstamp",                      1,   NULL, 'T'},
 	{"trunks_send",	                0,   NULL, 't'},
 	{"verbose",	                0,   NULL, 'V'},
 	{"version",	                0,   NULL, 'v'},
@@ -591,6 +592,7 @@ static void usage(int errs)
 	       "                           Set Info1 SN bits fields.\n"
 	       "                           SN_BITS should be 96 bit hex.\n"
 	       "  -s,--systemdev           Use /dev/tpm0 (-d is ignored)\n"
+	       "  -T,--tstamp <stamp>      Set flash log timestamp base\n"
 	       "  -t,--trunks_send         Use `trunks_send --raw' "
 	       "(-d is ignored)\n"
 	       "  -U,--ccd_unlock          Start CCD unlock sequence\n"
@@ -2225,7 +2227,7 @@ static int process_get_flog(struct transfer_descriptor *td, uint32_t prev_stamp)
 		size_t i;
 
 		memcpy(&prev_stamp, &entry.r.timestamp, sizeof(prev_stamp));
-		printf("%08x:%02x", prev_stamp, entry.r.type);
+		printf("%10u:%02x", prev_stamp, entry.r.type);
 		for (i = 0; i < FLASH_LOG_PAYLOAD_SIZE(entry.r.size); i++)
 			printf(" %02x", entry.r.payload[i]);
 		printf("\n");
@@ -2234,6 +2236,32 @@ static int process_get_flog(struct transfer_descriptor *td, uint32_t prev_stamp)
 	}
 
 	return 0;
+}
+
+static int process_tstamp(struct transfer_descriptor *td,
+			  const char *tstamp_ascii)
+{
+	uint32_t tstamp;
+	uint32_t rv;
+	char *e;
+	uint8_t response;
+	size_t response_size = sizeof(response);
+
+	tstamp = strtoul(tstamp_ascii, &e, 10);
+	if (*e) {
+		fprintf(stderr, "invalid base timestamp value \"%s\"\n",
+			tstamp_ascii);
+		return -1;
+	}
+
+	tstamp = htobe32(tstamp);
+	rv = send_vendor_command(td, VENDOR_CC_FLOG_TIMESTAMP, &tstamp,
+				 sizeof(tstamp), &response, &response_size);
+
+	if (rv)
+		fprintf(stderr, "error: return value %d\n", rv);
+
+	return rv;
 }
 
 /*
@@ -2285,6 +2313,7 @@ int main(int argc, char *argv[])
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
 	bool show_machine_output = false;
+	const char *tstamp = NULL;
 
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -2460,6 +2489,9 @@ int main(int argc, char *argv[])
 			}
 			td.ep_type = ts_xfer;
 			break;
+		case 'T':
+			tstamp = optarg;
+			break;
 		case 'v':
 			report_version();  /* This will call exit(). */
 			break;
@@ -2512,6 +2544,7 @@ int main(int argc, char *argv[])
 	    !sn_bits &&
 	    !sn_inc_rma &&
 	    !openbox_desc_file &&
+	    !tstamp &&
 	    !tpm_mode &&
 	    !wp) {
 		if (optind >= argc) {
@@ -2593,6 +2626,9 @@ int main(int argc, char *argv[])
 
 		exit(rv);
 	}
+
+	if (tstamp)
+		return process_tstamp(&td, tstamp);
 
 	if (sn_bits)
 		process_sn_bits(&td, sn_bits_arg);
