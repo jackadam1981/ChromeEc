@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "919ac971_7636ce07",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-13T23:04:50Z",
+      "side": 1,
+      "message": "\u003e The compiler will issue a warning when comparing two string literals, which results in an error with -Werror. So you need to use strcmp. The compiler is smart enough to evaluate the built in and know the two strings are identical. This is essentially what this macro does.\n\nA minor adjustment can get around that:\n\n    #define _config_enabled(scfg, cfg) __config_enabled(scfg, #cfg)\n    #define __config_enabled(s1, s2) (\u0026(*s1) !\u003d \u0026(*s2))\n    #define IS_ENABLED(option) _config_enabled(#option, option)\n\n\u003e Having #define FOO 0 and IS_ENABLED(FOO) evaluate to 0 I think is surprising.\n\nIS_ENABLED(FOO) will evaluate truthy, which is sane (makes IS_ENABLED act just like defined)",
+      "parentUuid": "a3232c09_077fb4ca",
+      "range": {
+        "startLine": 263,
+        "startChar": 15,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "5172d04a8d91ce7d7b56941d1ffe3dd0e7239f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35351b3a_bd1e46b7",
         "filename": "test/is_enabled.c",
         "patchSetId": 1
