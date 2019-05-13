@@ -2214,7 +2214,16 @@ static void handle_new_power_state(int port)
 		exit_dp_mode(port);
 
 	/* Ensure mux is set properly after chipset transition */
+#ifdef VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
+	/*
+	 * Chipset transition up to S3 or down to S5 need set mux none and
+	 * disconnect in order to sync with LPM flag, other state needn't.
+	 */
+	usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+		    pd[port].polarity);
+#else
 	set_usb_mux_with_current_data_role(port);
+#endif
 }
 #endif /* CONFIG_POWER_COMMON */
 
