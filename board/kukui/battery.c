@@ -201,6 +201,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		break;
 	}
 #endif  /* CONFIG_BATTERY_MAX17055 */
+	/* TODO(b:131284131): Add battery configs for krane. */
 
 	/*
 	 * When the charger says it's done charging, even if fuel gauge says

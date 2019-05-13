@@ -8,6 +8,7 @@
 #include "backlight.h"
 #include "button.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
@@ -493,3 +494,17 @@ int board_allow_i2c_passthru(int port)
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 }
+
+#ifdef CONFIG_CHARGE_RAMP_SW
+/*
+ * Return if VBUS is sagging too low
+ */
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	/*
+	 * Though we have a more tolerant range (3.9V~13.4V), setting 4400 to
+	 * prevent from a bad charger crashed.
+	 */
+	return charger_get_vbus_voltage(port) < 4400;
+}
+#endif /* CONFIG_CHARGE_RAMP_SW */

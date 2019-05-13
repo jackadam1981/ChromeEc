@@ -921,8 +921,10 @@ static int rt946x_get_bc12_device_type(void)
 static int rt946x_get_bc12_ilim(int charge_supplier)
 {
 	switch (charge_supplier) {
-	case CHARGE_SUPPLIER_BC12_CDP:
 	case CHARGE_SUPPLIER_BC12_DCP:
+		if (IS_ENABLED(CONFIG_CHARGE_RAMP_SW))
+			return 3250;
+	case CHARGE_SUPPLIER_BC12_CDP:
 		return 1500;
 	case CHARGE_SUPPLIER_BC12_SDP:
 	default:
@@ -1021,6 +1023,23 @@ void usb_charger_task(void *u)
 		}
 	}
 }
+
+#ifdef CONFIG_CHARGE_RAMP_SW
+int usb_charger_ramp_allowed(int supplier)
+{
+
+	return supplier == CHARGE_SUPPLIER_BC12_CDP ||
+	       supplier == CHARGE_SUPPLIER_BC12_DCP ||
+	       supplier == CHARGE_SUPPLIER_BC12_SDP ||
+	       supplier == CHARGE_SUPPLIER_OTHER ||
+	       supplier == CHARGE_SUPPLIER_PROPRIETARY;
+}
+
+int usb_charger_ramp_max(int supplier, int sup_curr)
+{
+	return rt946x_get_bc12_ilim(supplier);
+}
+#endif /* CONFIG_CHARGE_RAMP_SW */
 #endif /* HAS_TASK_USB_CHG_P0 */
 
 /* Non-standard interface functions */
