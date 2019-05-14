@@ -1258,8 +1258,20 @@ static void set_usb_mux_with_current_data_role(int port)
 		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
 #else
-	usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
-		    pd[port].polarity);
+	/*
+	 * When chipset transition up, if pd task state in default need set mux
+	 * none mode and charger not provide vbus whether c-port is attached or
+	 * not. Prevent if c-port is nothing unattached and in usb mode,
+	 * then mux goes to low power state, and this cause we set mux usb
+	 * mode that mux respond i2C NAK at every first time plug-in
+	 * type-c usb device.
+	 */
+	if (pd[port].task_state == PD_DEFAULT_STATE(port))
+		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+			    pd[port].polarity);
+	else
+		usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
+			    pd[port].polarity);
 #endif /* CONFIG_USBC_SS_MUX_DFP_ONLY */
 #endif /* CONFIG_USBC_SS_MUX */
 }
