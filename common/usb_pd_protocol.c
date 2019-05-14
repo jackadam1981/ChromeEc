@@ -1258,8 +1258,18 @@ static void set_usb_mux_with_current_data_role(int port)
 		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
 #else
-	usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
-		    pd[port].polarity);
+	/*
+	 * When chipset transition up, if pd task state in default need set mux
+	 * none mode and charger not provide vbus. If c-port is attached, and
+	 * cc debounce pass, we will set mux usb mode in X_DEBOUNCE_DISCONNECT
+	 * state.
+	 */
+	if (pd[port].task_state == PD_DEFAULT_STATE(port))
+		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+			    pd[port].polarity);
+	else
+		usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
+			    pd[port].polarity);
 #endif /* CONFIG_USBC_SS_MUX_DFP_ONLY */
 #endif /* CONFIG_USBC_SS_MUX */
 }
