@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bd1832b_bd28a94e",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-14T16:26:42Z",
+      "side": 1,
+      "message": "the unfortunate part about this is that this sensor is actually the lid accel and lid gyro (not the base)\n\nLet\u0027s make a new config\nLSM6DSM_INTERRUPT_GPIO_L similar to how HALL_SENSOR_GPIO_L works.\n\nEach board would define their own alias, so arcada would specify:\n#define LSM6DMS_INTERRUPT_GPIO_L GPIO_ACCEL_GYRO_INT_L\n\nand the driver code would require this to be defined if CONFIG_FIFO was also defined.\n\n(\n#if defined(CONFIG_FIFO) \u0026\u0026 !defined(LSM6DMS_INTERRUPT_GPIO_L)\n#error Must define LSM6DMS_INTERRUPT_GPIO_L if using LSM6DSM driver with Fifo\n#endif\n)\n\n\nAdding the new config should be broken out into another parent CL.",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "a5151ef52ec9ec0000105d6e43ee7347fcc2b1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
