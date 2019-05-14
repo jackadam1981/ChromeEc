@@ -268,8 +268,8 @@ enum panel_id {
 	PANEL_DEFAULT = 0,
 	PANEL_BOE_TV101WUM_NG0,
 	PANEL_BOE_TV080WUM_NG0,
-	PANEL_INX_OTA7290D10P,
-	PANEL_AUO_NT51021D8P,
+	PANEL_STA_10P,
+	PANEL_STA_08P,
 	PANEL_COUNT,
 	PANEL_UNINITIALIZED = 0xf,
 };
@@ -321,6 +321,10 @@ struct mv_to_id {
 };
 
 int board_read_id(enum adc_channel, const struct mv_to_id *table, int size);
+
+extern uint16_t board_version;
+extern uint8_t oem;
+extern uint32_t sku;
 
 #endif /* !__ASSEMBLER__ */
 
