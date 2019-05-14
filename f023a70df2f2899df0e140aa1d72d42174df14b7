@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "e904779d_7c165e68",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-14T17:08:03Z",
+      "side": 1,
+      "message": "We can\u0027t defined the stprivate_data field first since the mag_cal_t already needs to be defined first (\"lsm6dsm_data union requires cal be first element\").\n\nI think we need to keep the forked defined in the header file for LIS2MDL_ST_DATA at least",
+      "parentUuid": "502ecc4d_fe8125d1",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e8ccb2c_424ff085",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
@@ -70,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "06df704d_e85aee0b",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-14T17:08:03Z",
+      "side": 1,
+      "message": "We don\u0027t need this define for this case",
+      "parentUuid": "5e8ccb2c_424ff085",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c86aa515_f561f768",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
@@ -81,6 +117,24 @@
       "writtenOn": "2019-05-14T08:36:10Z",
       "side": 1,
       "message": "Already defined in driver/accelgyro_lsm6dsm.h.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81659bfd_209b944b",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-14T17:08:03Z",
+      "side": 1,
+      "message": "I don\u0027t think this is already defined (the global version is though)\n\nThis should be defined as\n\n#define LIS2MDL_ST_DATA(_s) (\u0026s-\u003edrv_data)\n\nfor the fifo case as drv_data is already set to stprivate_data.",
+      "parentUuid": "c86aa515_f561f768",
       "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
