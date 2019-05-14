@@ -6,6 +6,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "backlight.h"
+#include "board.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -56,13 +57,24 @@
 #define SKU_ID_TO_LCM_ID(x)	(((x) >> PANEL_ID_BIT_POSITION) & 0xf)
 #define LCM_ID_TO_SKU_ID(x)	(((x) & 0xf) << PANEL_ID_BIT_POSITION)
 
-static const struct mv_to_id panels[] = {
-	{ PANEL_BOE_TV101WUM_NG0,	74 },
-	{ PANEL_BOE_TV080WUM_NG0,	212 },
-	{ PANEL_INX_OTA7290D10P,	1191 },
-	{ PANEL_AUO_NT51021D8P,		1027 },
+/* BOARD_VERSION < 5: Pull-up = 1800 mV. */
+static const struct mv_to_id panels0[] = {
+	{ PANEL_BOE_TV101WUM_NG0,	74 },	/* 2.68 kohm */
+	{ PANEL_BOE_TV080WUM_NG0,	212 },	/* 13.35 kohm */
+	{ PANEL_INX_OTA7290D10P,	1191 },	/* 195.6 kohm */
+	{ PANEL_AUO_NT51021D8P,		1027 },	/* 133 kohm */
 };
-BUILD_ASSERT(ARRAY_SIZE(panels) < PANEL_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(panels0) < PANEL_COUNT);
+
+/* BOARD_VERSION >= 5: Pull-up = 3300 mV. */
+static const struct mv_to_id panels1[] = {
+	{ PANEL_BOE_TV101WUM_NG0,	86 },	/* 2.68 kohm */
+	{ PANEL_BOE_TV080WUM_NG0,	389 },	/* 13.35 kohm */
+	{ PANEL_INX_OTA7290D10P,	2184 },	/* 195.6 kohm */
+	{ PANEL_AUO_NT51021D8P,		1884 },	/* 133 kohm */
+};
+BUILD_ASSERT(ARRAY_SIZE(panels1) < PANEL_COUNT);
+
 BUILD_ASSERT(PANEL_COUNT <= PANEL_UNINITIALIZED);
 
 uint16_t board_version;
@@ -139,10 +151,17 @@ static void board_setup_panel(void)
 static enum panel_id board_get_panel_id(void)
 {
 	enum panel_id id;
+
 	if (board_version < 3) {
 		id = PANEL_DEFAULT; /* No LCM_ID. */
 	} else {
-		id  = board_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
+		const struct mv_to_id *table = panels0;
+		int size = ARRAY_SIZE(panels0);
+		if (board_version >= 5) {
+			table = panels1;
+			size = ARRAY_SIZE(panels1);
+		}
+		id  = board_read_id(ADC_LCM_ID, table, size);
 		if (id < PANEL_DEFAULT || PANEL_COUNT <= id)
 			id = PANEL_DEFAULT;
 	}
