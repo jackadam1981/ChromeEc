@@ -22,6 +22,30 @@
       "revId": "a5151ef52ec9ec0000105d6e43ee7347fcc2b1c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9d2f11_147400ff",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T20:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd1832b_bd28a94e",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "a5151ef52ec9ec0000105d6e43ee7347fcc2b1c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

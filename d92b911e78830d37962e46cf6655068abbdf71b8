@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "16fb6be9_29ff476d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T20:35:13Z",
+      "side": 1,
+      "message": "I\u0027m assuming that since this hasn\u0027t been followed up on we leave it.",
+      "parentUuid": "02acf70e_ea41374a",
+      "range": {
+        "startLine": 422,
+        "startChar": 3,
+        "endLine": 424,
+        "endChar": 15
+      },
+      "revId": "d92b911e78830d37962e46cf6655068abbdf71b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07f37ebe_47a8c2f4",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 3
