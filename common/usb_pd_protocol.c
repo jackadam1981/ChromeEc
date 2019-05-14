@@ -1258,8 +1258,19 @@ static void set_usb_mux_with_current_data_role(int port)
 		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
 #else
-	usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
-		    pd[port].polarity);
+	/*
+	 * When PD stack is disconnected, then mux should be disconnected, which
+	 * is also want happens in the set_state disconnection code. Once the
+	 * PD state machine progresses out of disconnected, the MUX state will
+	 * be set correctly again.
+	 */
+	if (pd[port].task_state == PD_STATE_SNK_DISCONNECTED ||
+	    pd[port].task_state == PD_STATE_SRC_DISCONNECTED)
+		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+			    pd[port].polarity);
+	else
+		usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
+			    pd[port].polarity);
 #endif /* CONFIG_USBC_SS_MUX_DFP_ONLY */
 #endif /* CONFIG_USBC_SS_MUX */
 }
