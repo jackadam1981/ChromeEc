@@ -2186,10 +2186,8 @@ int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 	return 0;
 }
 
-#if defined(CONFIG_POWER_COMMON) || defined(CONFIG_USB_PD_ALT_MODE_DFP)
 static void exit_dp_mode(int port)
 {
-#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
 
 	if (opos <= 0)
@@ -2202,21 +2200,19 @@ static void exit_dp_mode(int port)
 		    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
 	pd_vdm_send_state_machine(port);
 	/* Have to wait for ACK */
-#endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 }
-#endif /* CONFIG_POWER_COMMON */
 
-#ifdef CONFIG_POWER_COMMON
 static void handle_new_power_state(int port)
 {
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		/* The SoC will negotiated DP mode again when it boots up */
-		exit_dp_mode(port);
+		if (IS_ENABLED(CONFIG_POWER_COMMON) &&
+				IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+			exit_dp_mode(port);
 
 	/* Ensure mux is set properly after chipset transition */
 	set_usb_mux_with_current_data_role(port);
 }
-#endif /* CONFIG_POWER_COMMON */
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 enum pd_dual_role_states pd_get_dual_role(int port)
@@ -2876,14 +2872,15 @@ void pd_task(void *u)
 		if (evt & PD_EVENT_DEVICE_ACCESSED)
 			handle_device_access(port);
 #endif
-#ifdef CONFIG_POWER_COMMON
-		if (evt & PD_EVENT_POWER_STATE_CHANGE)
-			handle_new_power_state(port);
-#endif
+		if (IS_ENABLED(CONFIG_POWER_COMMON))
+			if (evt & PD_EVENT_POWER_STATE_CHANGE)
+				handle_new_power_state(port);
 
 #if defined(CONFIG_USB_PD_ALT_MODE_DFP)
 		if (evt & PD_EVENT_SYSJUMP) {
-			exit_dp_mode(port);
+			if (IS_ENABLED(CONFIG_POWER_COMMON) &&
+					IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+				exit_dp_mode(port);
 			/*
 			 * If event was set from pd_prepare_sysjump, wake the
 			 * task waiting on us to complete.
