@@ -70,6 +70,30 @@
       "revId": "72f5b6a56b79cb435341881c5bf5691c21fe724c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6eb7b12d_f213cfde",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-14T19:43:36Z",
+      "side": 1,
+      "message": "I believe EC_CMD_I2C_LOOKUP will soon be widely used and become a semi-necessary command for developers. Basically, we will be able to ask EC \"I wanna read some registers of a gyro sensor on this random board by ectool. What\u0027s the port # and address?\". Currently, this requires the schematics or code search.\n\nAnd incidentally, scripts, BIOS, and tests will be built around it.",
+      "parentUuid": "18c399b7_67ca3559",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 1
+      },
+      "revId": "72f5b6a56b79cb435341881c5bf5691c21fe724c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
