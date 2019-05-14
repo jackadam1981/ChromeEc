@@ -72,7 +72,7 @@ static uint32_t salt[8];
 static uint32_t salt_kek[8];
 static uint32_t salt_kh[8];
 static uint8_t u2f_mode = MODE_UNSET;
-static const uint8_t k_salt = NVMEM_VAR_U2F_SALT;
+static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
 
 static int load_state(void)
 {
