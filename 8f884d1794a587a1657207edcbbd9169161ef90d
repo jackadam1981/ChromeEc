@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "74a2121f_ea670bf2",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-14T21:35:13Z",
+      "side": 1,
+      "message": "This is an example which shows multiple command approach prevails. We want to manage the security policy in a single place, which is Depthcharge (vboot_reference). If we use \u0027entering mode\u0027 and \u0027locking i2c\u0027 separately, Depthcharge can decide the timing (disable_jump v.s. enter_mode) and the policy (normal mode v.s. developer mode) based on GBB flags or whatever.",
+      "parentUuid": "8cc52888_3c57a913",
+      "range": {
+        "startLine": 786,
+        "startChar": 1,
+        "endLine": 786,
+        "endChar": 26
+      },
+      "revId": "8f884d1794a587a1657207edcbbd9169161ef90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90ce62aa_03f9f0c7",
         "filename": "common/host_command.c",
         "patchSetId": 3
