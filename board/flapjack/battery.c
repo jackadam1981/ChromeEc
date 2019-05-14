@@ -288,12 +288,14 @@ static enum battery_type batt_type = BATTERY_UNKNOWN;
 
 static void board_get_battery_type(void)
 {
-	int id = board_read_id(ADC_BATT_ID, batteries, ARRAY_SIZE(batteries));
+	int pull_up_mv = (get_board_version() <= 4) ? 1800 : 3300;
+	int id = board_read_id(ADC_BATT_ID, batteries,
+					ARRAY_SIZE(batteries), pull_up_mv);
 	if (id != ADC_READ_ERROR)
 		batt_type = id;
 	CPRINTS("Battery Type: %d", batt_type);
 }
-DECLARE_HOOK(HOOK_INIT, board_get_battery_type, HOOK_PRIO_FIRST);
+DECLARE_HOOK(HOOK_INIT, board_get_battery_type, HOOK_PRIO_FIRST + 4);
 
 const struct battery_info *battery_get_info(void)
 {

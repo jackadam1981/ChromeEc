@@ -78,16 +78,23 @@ static const struct rt946x_init_setting battery_init_setting = {
 	.boost_current = 1500,
 };
 
-int board_read_id(enum adc_channel ch, const struct mv_to_id *table, int size)
+uint16_t get_board_version(void)
+{
+	return board_version;
+}
+
+
+int board_read_id(enum adc_channel ch, const struct mv_to_id *table,
+			int size, int pull_up_mv)
 {
 	int mv = adc_read_channel(ch);
 	int i;
 
 	if (mv == ADC_READ_ERROR)
 		mv = adc_read_channel(ch);
-
 	for (i = 0; i < size; i++) {
-		if (ABS(mv - table[i].median_mv) < ADC_MARGIN_MV)
+		if (ABS(mv - table[i].median_mv *
+			pull_up_mv / ADC_DEFAULT_PULL_UP_MV) < ADC_MARGIN_MV)
 			return table[i].id;
 	}
 
@@ -139,10 +146,12 @@ static void board_setup_panel(void)
 static enum panel_id board_get_panel_id(void)
 {
 	enum panel_id id;
+	int pull_up_mv = (board_version <= 4) ? 1800 : 3300;
 	if (board_version < 3) {
 		id = PANEL_DEFAULT; /* No LCM_ID. */
 	} else {
-		id  = board_read_id(ADC_LCM_ID, panels, ARRAY_SIZE(panels));
+		id  = board_read_id(ADC_LCM_ID, panels,
+					ARRAY_SIZE(panels), pull_up_mv);
 		if (id < PANEL_DEFAULT || PANEL_COUNT <= id)
 			id = PANEL_DEFAULT;
 	}

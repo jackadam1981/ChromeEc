@@ -314,13 +314,17 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 void board_reset_pd_mcu(void);
 
 #define ADC_MARGIN_MV 56 /* Simply assume 1800/16/2 */
+#define ADC_DEFAULT_PULL_UP_MV 1800 /* adc default pull up use 1800 */
 
 struct mv_to_id {
 	int id;
 	int median_mv;
 };
 
-int board_read_id(enum adc_channel, const struct mv_to_id *table, int size);
+int board_read_id(enum adc_channel, const struct mv_to_id *table,
+			int size, int pull_up_mv);
+
+uint16_t get_board_version(void);
 
 #endif /* !__ASSEMBLER__ */
 
