@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d3930f92_e624e47d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T18:19:39Z",
+      "side": 1,
+      "message": "This seems out of scope considering the mag was pulled from meep/octopus and isn\u0027t even on the board. I do plan on taking a pass at that board and seeing if I can get the magnetometer to work on there once arcada is shipped.",
+      "parentUuid": "eba53cd3_5f915df8",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f23b5a_56914557",
         "filename": "board/arcada_ish/board.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f913c3_4e388a46",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T18:19:39Z",
+      "side": 1,
+      "message": "We talked about this on chat about a week ago, I compared using a compass app which was pointing north + total magnetic field but didn\u0027t think at the time to compare the raw values. You mentioned that the compass integrates with other sensors so it wasn\u0027t an accurate representation.",
+      "parentUuid": "45f23b5a_56914557",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "80b4dcc4_d841b669",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T18:19:39Z",
+      "side": 1,
+      "message": "This is a much deeper issue where our drivers have dependencies between them. For now I don\u0027t see another way around this. We define LIS2MDL_ST_DATA in the header and it has to be aware of whether or not the sensor is behind the fifo or not in order to find the stprivate_data for the magnetometer in the drv_data.",
+      "parentUuid": "e904779d_7c165e68",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e8ccb2c_424ff085",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
@@ -106,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "eb85d26f_4e6e68b2",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T18:19:39Z",
+      "side": 1,
+      "message": "You\u0027re right Jett",
+      "parentUuid": "06df704d_e85aee0b",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c86aa515_f561f768",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
@@ -138,6 +210,24 @@
       "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2d8617_e004ac21",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-14T18:19:39Z",
+      "side": 1,
+      "message": "If we\u0027re using the lis2mdl behind the lsm6dsm we\u0027re hitting http://cs/chromeos_public/src/platform/ec/driver/accelgyro_lsm6dsm.h?l\u003d320 which means that s-\u003edrv_data is `struct lsm6dsm_data` so to get the stprivate_data for the magnetometer we need to get st_data[2].",
+      "parentUuid": "81659bfd_209b944b",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
