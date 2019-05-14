@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eba53cd3_5f915df8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-14T08:36:10Z",
+      "side": 1,
+      "message": "you need to test on meep with CL for magnetometer support.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f23b5a_56914557",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-14T08:36:10Z",
+      "side": 1,
+      "message": "Use a different CL, not related to range.\nI thought you had tested the data output when testing CL:1534339.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "502ecc4d_fe8125d1",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-14T08:36:10Z",
+      "side": 1,
+      "message": "Not true, see how LIS2MDL_ST_DATA is used. drv_data is already set using this macro.\n\nin lis2mdl_private_data, you most likely need to specifiy struct stprivate_data data; as the first field, so that it is the first field either standalone or behind an IMU.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e8ccb2c_424ff085",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-14T08:36:10Z",
+      "side": 1,
+      "message": "Already defined in driver/accelgyro_lsm6dsm.h.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86aa515_f561f768",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-14T08:36:10Z",
+      "side": 1,
+      "message": "Already defined in driver/accelgyro_lsm6dsm.h.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
