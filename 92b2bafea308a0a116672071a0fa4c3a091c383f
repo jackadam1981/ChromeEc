@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2117cf8c_ef3d7971",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-14T17:03:36Z",
+      "side": 1,
+      "message": "More clear if you split the comment with the actions:\n\n    /* disable GPIO interrupts */\n    ISH_GPIO_GIMR \u003d 0;\n\n    /* clear pending GPIO interrupts */\n    ISH_GPIO_GISR \u003d ...",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 4
+      },
+      "revId": "92b2bafea308a0a116672071a0fa4c3a091c383f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
