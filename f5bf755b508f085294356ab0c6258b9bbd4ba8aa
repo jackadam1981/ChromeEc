@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36384426_17036916",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-14T06:09:48Z",
+      "side": 1,
+      "message": "I previously deleted the old one before storing the new one, due to a lack of space in nvram when pinweaver was in use (I discovered this when adding salt_kek - and being unable to do so, hence the alternate method of storing it used below)\n\nI assume that this is no longer an issue in the new nvram scheme?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "f5bf755b508f085294356ab0c6258b9bbd4ba8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
