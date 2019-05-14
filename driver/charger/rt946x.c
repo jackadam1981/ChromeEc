@@ -496,6 +496,7 @@ int charger_is_sourcing_otg_power(int port)
 
 int charger_set_input_current(int input_current)
 {
+	static int prv_input_current;
 	uint8_t reg_iin = 0;
 	const struct charger_info * const info = charger_get_info();
 
@@ -503,7 +504,11 @@ int charger_set_input_current(int input_current)
 		info->input_current_max, info->input_current_step,
 		input_current);
 
-	CPRINTF("%s iin = %d(0x%02X)\n", __func__, input_current, reg_iin);
+	if (prv_input_current != input_current) {
+		prv_input_current = input_current;
+		CPRINTF("%s iin = %d(0x%02X)\n", __func__, input_current,
+			reg_iin);
+	}
 
 	return rt946x_update_bits(RT946X_REG_CHGCTRL3, RT946X_MASK_AICR,
 		reg_iin << RT946X_SHIFT_AICR);
