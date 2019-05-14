@@ -22,6 +22,30 @@
       "revId": "f5bf755b508f085294356ab0c6258b9bbd4ba8aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6ea50d_bf9f886a",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-14T14:12:02Z",
+      "side": 1,
+      "message": "correct, the new scheme allows much more room for (key,value) pairs",
+      "parentUuid": "36384426_17036916",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 49
+      },
+      "revId": "f5bf755b508f085294356ab0c6258b9bbd4ba8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
