@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "363c69d6_3871b35a",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-05-14T18:21:42Z",
+      "side": 1,
+      "message": "AFAIK, P1 (board version# 4) will still be 1.8v, only powerboard or later (board version# \u003e\u003d 5) be 3.3v.",
+      "range": {
+        "startLine": 279,
+        "startChar": 19,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "481ee1bd877e27abc5fa35f0162e0e60b5586f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
