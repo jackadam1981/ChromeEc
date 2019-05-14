@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cff22a3_6b63d6f1",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-14T23:00:30Z",
+      "side": 1,
+      "message": "Instead of making a separate LAPIC_ISR_LAST_REG_ADDR, you can instead just use reference operator on LAPIC_ISR_LAST_REG in get_current_interrupt_vector",
+      "range": {
+        "startLine": 325,
+        "startChar": 8,
+        "endLine": 325,
+        "endChar": 57
+      },
+      "revId": "8a6f0145e980d0cf8a6508397aba7209deec3181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f97a68ed_751dd14a",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-14T23:00:30Z",
+      "side": 1,
+      "message": "write as \u0026LAPIC_ISR_LAST_REG",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 64
+      },
+      "revId": "8a6f0145e980d0cf8a6508397aba7209deec3181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
