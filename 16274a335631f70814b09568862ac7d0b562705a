@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3c3ba9e_b482d2d7",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2019-05-14T13:15:03Z",
+      "side": 1,
+      "message": "What are the board versions for the power board and P1? From the commit comment looks like only power board (assuming the board version is 4) will be using 3.3v but not P1?",
+      "range": {
+        "startLine": 291,
+        "startChar": 42,
+        "endLine": 291,
+        "endChar": 43
+      },
+      "revId": "16274a335631f70814b09568862ac7d0b562705a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
