@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd653300_d49ddf3e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2273,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-05-14T15:25:36Z",
+      "side": 1,
+      "message": "This block to get the battery value is getting repeated quite a bit. Maybe define a function?",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f92410_d453ddf9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3845,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-05-14T15:25:36Z",
+      "side": 1,
+      "message": "this else { and then an #endif is pretty tricky to read\nI hope this isn\u0027t common EC style",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
