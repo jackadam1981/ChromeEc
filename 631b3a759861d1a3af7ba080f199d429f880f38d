@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a926c0e_16354dd4",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-14T02:56:11Z",
+      "side": 1,
+      "message": "From my observation, raising this value to 4600 will stop ramping around 1.4A with my 5V/2.1A wall charger.",
+      "range": {
+        "startLine": 508,
+        "startChar": 41,
+        "endLine": 508,
+        "endChar": 45
+      },
+      "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
