@@ -33,6 +33,24 @@
       "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a5d8c58_86465f5c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3845,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-14T15:30:20Z",
+      "side": 1,
+      "message": "Take a look at set_state() in this file :)",
+      "parentUuid": "d2f92410_d453ddf9",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
