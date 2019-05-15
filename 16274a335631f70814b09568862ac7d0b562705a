@@ -22,6 +22,30 @@
       "revId": "16274a335631f70814b09568862ac7d0b562705a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd60ccb_a251b3db",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-05-15T03:56:46Z",
+      "side": 1,
+      "message": "P1 is 4, and the powerboard will up the boardversion based on P1.",
+      "parentUuid": "b3c3ba9e_b482d2d7",
+      "range": {
+        "startLine": 291,
+        "startChar": 42,
+        "endLine": 291,
+        "endChar": 43
+      },
+      "revId": "16274a335631f70814b09568862ac7d0b562705a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
