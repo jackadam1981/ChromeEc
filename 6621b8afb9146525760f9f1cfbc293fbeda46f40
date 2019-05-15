@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05e9c0ce_0aceb777",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "queue size is in power of 2:\nqueue.h:\n\t.buffer_units \u003d BUILD_CHECK_INLINE(SIZE, POWER_OF_TWO(SIZE)), \\\n\nThis code would not even compile.",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55af6f95_ffbe5aef",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "Already defined in accel_gyro_lsm6dsm.h as FIFO_DEV_NUM.",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d958c030_7a87167b",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "Why 8, explain in comment.",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a794ef8_5325f36e",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "Use queue_add_units(,,1), it does not care if the queue is full or not.",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118d4cf9_9e494529",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "SENSOR_COUNT is for all the sensors, not just the one in LSM6DSM. Use FIFO_DEV_NUM.",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3db6d4_b9a6a52a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "Is i indexing sensor using fifo order (see enum dev_fifo)",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0cf7dfd_9bea2a66",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "use ().\nWould it be cleaner to do:\nint_ts[0] \u003d last_interrupt_timestamp ;\nfor (i \u003d 1; ..)\n int_ts[i] \u003d int_ts[0];",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3173a00_03368df8",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "You know LSM6DSM fifo settings and how it collects the sensor data. You don\u0027t need to calculate the sample_rate every time you collect data.\nSee config.samples_in_pattern[].",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e49f410_7fa6db73",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T16:29:39Z",
+      "side": 1,
+      "message": "Instead of looking at the GPIO, why not rereading LSM6DSM_FIFO_STS1_ADDR? That\u0027s what bmi160 does. You will find out if you have fifo event available.",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
