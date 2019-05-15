@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "374a4447_8bb6e0ce",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-15T20:30:40Z",
+      "side": 1,
+      "message": "This is hardware specific. Theoretically we shouldn\u0027t need this, but for Arcada the 360 sensor is too sensitive. I made this a board override because other boards could have the inverse: the lid closed was too sensitive and the 360 was correct. In that case we would not want this change.",
+      "parentUuid": "a845ce72_1ab6cb40",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "1ee817f092c8d14b85166647efab5c87e1e6b3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105b430f_17145a13",
         "filename": "board/arcada_ish/gpio.inc",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "1ee817f092c8d14b85166647efab5c87e1e6b3d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437d32ad_288e523b",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-15T20:30:40Z",
+      "side": 1,
+      "message": "I have generally seen 80+ lines in gpio.inc specifically for this. This fits other gpio.inc formatting. I lean towards keeping this",
+      "parentUuid": "105b430f_17145a13",
+      "range": {
+        "startLine": 9,
+        "startChar": 70,
+        "endLine": 9,
+        "endChar": 89
+      },
+      "revId": "1ee817f092c8d14b85166647efab5c87e1e6b3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
