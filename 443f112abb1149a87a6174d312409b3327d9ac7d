@@ -22,6 +22,30 @@
       "revId": "443f112abb1149a87a6174d312409b3327d9ac7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed0b9ac_bbf2d6f5",
+        "filename": "chip/ish/aontaskfw/ish_aontask.ld.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-15T20:14:24Z",
+      "side": 1,
+      "message": "Per offline discussion, this is complicated enough we can merge without this, and handle later.\n\nhttp://b/132690500 will track the progress on handling this stuff in a linker script.",
+      "parentUuid": "2bf127f4_76661c7f",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "443f112abb1149a87a6174d312409b3327d9ac7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
