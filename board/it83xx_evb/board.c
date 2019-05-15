@@ -150,6 +150,9 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef CHIP_FAMILY_IT83202
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -205,6 +208,22 @@ const struct i2c_port_t i2c_ports[] = {
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+#ifdef CONFIG_FPU
+#define PRINTF_FLOAT(x)  ((int)((x) * 10000.0f))
+static int it83xx_fpu_mul(int argc, char **argv)
+{
+	volatile float a = 1.23f;
+	volatile float b = 4.56f;
+	volatile float c;
+
+	c = a * b;
+	ccprintf("__mulsf3: (%d)\n", PRINTF_FLOAT(c));
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fpu, it83xx_fpu_mul, "", "");
+#endif
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
