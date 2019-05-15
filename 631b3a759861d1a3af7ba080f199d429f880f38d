@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f41f115c_bf5933b8",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T01:35:12Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 498,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 28
+      },
+      "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a926c0e_16354dd4",
         "filename": "board/kukui/board.c",
         "patchSetId": 1
@@ -18,6 +41,52 @@
         "startChar": 41,
         "endLine": 508,
         "endChar": 45
+      },
+      "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7242c49a_03cc6576",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T01:35:12Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 1027,
+        "startChar": 0,
+        "endLine": 1027,
+        "endChar": 28
+      },
+      "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8727408_b8f1ecaa",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T01:35:12Z",
+      "side": 1,
+      "message": "Why not only CHARGE_SUPPLIER_BC12_DCP?",
+      "range": {
+        "startLine": 1031,
+        "startChar": 9,
+        "endLine": 1035,
+        "endChar": 48
       },
       "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
