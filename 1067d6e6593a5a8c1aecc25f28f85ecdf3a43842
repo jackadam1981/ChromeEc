@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2aeb6bf_ddbbd08f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2019-05-15T19:35:09Z",
+      "side": 1,
+      "message": "Please see b/128935567 for a concrete example where we\u0027re encountering this behavior.",
+      "parentUuid": "59baa485_ea16dec8",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd653300_d49ddf3e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
