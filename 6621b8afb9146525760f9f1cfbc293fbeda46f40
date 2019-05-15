@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d5adee0_44123ca2",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e9c0ce_0aceb777",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55af6f95_ffbe5aef",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf855cc0_52a402d0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55af6f95_ffbe5aef",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "702f21b3_1518a0ca",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d958c030_7a87167b",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a794ef8_5325f36e",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -67,6 +121,24 @@
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df4a8a4_4643268a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "Looking at queue_add_units it seems to simply override the old value, if we do that, it\u0027s important that we decrement the correct sample_count. I think this needs to stay as is.",
+      "parentUuid": "4a794ef8_5325f36e",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "4243b3d4_bf5d3899",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "See the updated comments, I\u0027m not sure it\u0027s a good idea to do this because we need to index these later by the sensor_num which is the board\u0027s sensor index. This means we\u0027ll have to remap back and forth. I\u0027m open to it if you can think of a clean way to do this.",
+      "parentUuid": "118d4cf9_9e494529",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea3db6d4_b9a6a52a",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -101,6 +191,24 @@
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e272ad07_6b8f8fda",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "ea3db6d4_b9a6a52a",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "ba3bd7d3_ee2217f3",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0cf7dfd_9bea2a66",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3173a00_03368df8",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -132,6 +258,24 @@
       "writtenOn": "2019-05-15T16:29:39Z",
       "side": 1,
       "message": "You know LSM6DSM fifo settings and how it collects the sensor data. You don\u0027t need to calculate the sample_rate every time you collect data.\nSee config.samples_in_pattern[].",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350470e6_ca76f05b",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow, if samples_in_pattern[0] \u003d 1, samples_in_pattern[1] \u003d 1, and total_samples_in_pattern \u003d 2 you can\u0027t know if the odr is 13Hz, 26Hz, 52Hz, 104Hz, or 208Hz. All you know is the ratio between the two.",
+      "parentUuid": "d3173a00_03368df8",
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -152,6 +296,24 @@
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0163b77a_37a174c6",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T21:36:46Z",
+      "side": 1,
+      "message": "We tried that, but reading the STS1_ADDR takes too long (1ms) this has the same effect and is much faster.",
+      "parentUuid": "4e49f410_7fa6db73",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
