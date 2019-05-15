@@ -22,6 +22,30 @@
       "revId": "b46538777f4a064941babe69d1ce8363679c131d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc4faaa_0777343b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-05-15T07:27:23Z",
+      "side": 1,
+      "message": "I didn\u0027t test all servos (only test this change on servo V2). And other types of servos should work as it was because we didn\u0027t change anything on flash_ec or iteflash.\n\nThis patch is used to fix the following symptom:\nWe flash a crashed image (panic is asserted continually) into the EC.\nAt previous implementation, we disable debug mode via SMBus(I2C) to ensure the soft reboot sequence won’t break. But this will also cause EC unable to recognize special waveform until we re-enable debug mode.\nUnder this condition, it will be hard to let EC enter DBGR mode when triggering reboot sequence continuously.",
+      "parentUuid": "c7f3142b_73abf552",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "b46538777f4a064941babe69d1ce8363679c131d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
