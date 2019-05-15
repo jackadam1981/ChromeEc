@@ -471,6 +471,21 @@ static int rt946x_init_setting(void)
 			MT6370_MASK_BLED_3CH_EN | MT6370_MASK_BLED_4CH_EN);
 	rt946x_update_bits(MT6370_BACKLIGHT_BLPWM, MT6370_MASK_BLPWM_BLED_PWM,
 			   BIT(MT6370_SHIFT_BLPWM_BLED_PWM));
+
+	rt946x_update_bits(MT6370_REG_DBVBST, MT6370_MASK_DB_VBST,
+			   rt946x_closest_reg(MT6370_DB_VBST_MIN,
+					      MT6370_DB_VBST_MAX,
+					      MT6370_DB_VBST_STEP, 6000));
+
+	rt946x_update_bits(MT6370_REG_DBVPOS, MT6370_MASK_DB_VPOS,
+			   rt946x_closest_reg(MT6370_DB_VPOS_MIN,
+					      MT6370_DB_VPOS_MAX,
+					      MT6370_DB_VPOS_STEP, 5800));
+
+	rt946x_update_bits(MT6370_REG_DBVNEG, MT6370_MASK_DB_VNEG,
+			   rt946x_closest_reg(MT6370_DB_VNEG_MIN,
+					      MT6370_DB_VNEG_MAX,
+					      MT6370_DB_VNEG_STEP, 5800));
 #endif
 
 	return rt946x_init_irq();
