@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "462e47de_56d2b05b",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-05-15T14:55:50Z",
+      "side": 1,
+      "message": "We need to return 0 here. svdm_dp_config_defer then needs to be the one that somehow calls queue_vdm with the config message.",
+      "revId": "4aadb398384cefd365d38798167f43db6031b9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
