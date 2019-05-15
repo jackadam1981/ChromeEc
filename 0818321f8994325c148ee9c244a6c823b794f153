@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e17ff56a_186ad637",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-05-15T22:17:36Z",
+      "side": 1,
+      "message": "just break out of the loop so you don\u0027t need this check",
+      "range": {
+        "startLine": 1214,
+        "startChar": 36,
+        "endLine": 1214,
+        "endChar": 54
+      },
+      "revId": "0818321f8994325c148ee9c244a6c823b794f153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
