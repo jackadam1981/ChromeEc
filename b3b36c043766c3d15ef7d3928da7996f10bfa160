@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "334e865b_3f16bbfd",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-15T08:25:31Z",
+      "side": 1,
+      "message": "static",
+      "revId": "b3b36c043766c3d15ef7d3928da7996f10bfa160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7655c4ce_c79d8cce",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-15T08:25:31Z",
+      "side": 1,
+      "message": "super nit, braces not really needed",
+      "range": {
+        "startLine": 51,
+        "startChar": 40,
+        "endLine": 51,
+        "endChar": 41
+      },
+      "revId": "b3b36c043766c3d15ef7d3928da7996f10bfa160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285ba802_01ebc5b6",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-15T08:25:31Z",
+      "side": 1,
+      "message": "? Why PD event? Seems weird.",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "b3b36c043766c3d15ef7d3928da7996f10bfa160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703fa405_2f58b289",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-15T08:25:31Z",
+      "side": 1,
+      "message": "handle this case in get_device_type?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 25
+      },
+      "revId": "b3b36c043766c3d15ef7d3928da7996f10bfa160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db32887_3b099b0a",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-15T08:25:31Z",
+      "side": 1,
+      "message": "switch/case is better",
+      "revId": "b3b36c043766c3d15ef7d3928da7996f10bfa160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
