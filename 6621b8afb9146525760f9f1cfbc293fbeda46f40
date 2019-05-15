@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "65f86dea_d159e02d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-15T21:52:36Z",
+      "side": 1,
+      "message": "If you remove an old sample *AND* add a new one, the sample count ends up staying the same at the end, right?",
+      "parentUuid": "7df4a8a4_4643268a",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "118d4cf9_9e494529",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7

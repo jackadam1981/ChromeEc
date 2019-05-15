@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c3c78de_3dda9b41",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-15T21:52:36Z",
+      "side": 1,
+      "message": "I assume this is debugging only, right?",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 53
+      },
+      "revId": "906aa153ccd5c7e88229e5ed0148e8ce78f77b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4dd5510_26c83646",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-15T21:52:36Z",
+      "side": 1,
+      "message": "What happens if while we are handling the FIFO, a new samples comes in again? Should this be a while?",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 48
+      },
+      "revId": "906aa153ccd5c7e88229e5ed0148e8ce78f77b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
