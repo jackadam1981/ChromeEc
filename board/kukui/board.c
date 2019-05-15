@@ -116,6 +116,21 @@ struct ec_thermal_config thermal_params[] = {
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 #endif
 
+/* Display bias configs. One should fill this according to panel spec. */
+struct display_bias_config {
+	int vbst;
+	int vpos;
+	int vneg;
+};
+
+#ifdef BOARD_KRANE
+static struct display_bias_config db_config = {
+	.vbst = 6000,
+	.vpos = 5800,
+	.vneg = 5800,
+};
+#endif /* BOARD_KRANE */
+
 /******************************************************************************/
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
@@ -242,6 +257,13 @@ static void board_init(void)
 
 	/* Enable pogo interrupt */
 	gpio_enable_interrupt(GPIO_POGO_ADC_INT_L);
+
+#ifdef BOARD_KRANE
+	/* Display bias settings */
+	mt6370_db_set_vbst(db_config.vbst);
+	mt6370_db_set_vpos(db_config.vpos);
+	mt6370_db_set_vneg(db_config.vneg);
+#endif /* BOARD_KRANE */ 
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
