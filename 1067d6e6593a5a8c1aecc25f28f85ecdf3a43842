@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "59baa485_ea16dec8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T16:09:35Z",
+      "side": 1,
+      "message": "Do you have a concrete example? A battery can solely sustain the system even on high load.",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd653300_d49ddf3e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -13,6 +36,29 @@
       "writtenOn": "2019-05-14T15:25:36Z",
       "side": 1,
       "message": "This block to get the battery value is getting repeated quite a bit. Maybe define a function?",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4bd66d4_36226d5b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3827,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T16:09:35Z",
+      "side": 1,
+      "message": "Can you use IS_ENABLED()?",
+      "range": {
+        "startLine": 3827,
+        "startChar": 8,
+        "endLine": 3827,
+        "endChar": 22
+      },
       "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -48,6 +94,24 @@
       "side": 1,
       "message": "Take a look at set_state() in this file :)",
       "parentUuid": "d2f92410_d453ddf9",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9188114e_20519c4d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3845,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T16:09:35Z",
+      "side": 1,
+      "message": "+1 for not using #ifdef breaking an if-statement structure. I agree set_state is worse.",
+      "parentUuid": "1a5d8c58_86465f5c",
       "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
