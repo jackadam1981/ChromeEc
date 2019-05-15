@@ -1116,6 +1116,34 @@ int mt6370_db_external_control(int en)
 				  en << MT6370_SHIFT_DB_EXT_EN);
 }
 
+/* set display bias VBST */
+int mt6370_db_set_vbst(int mv)
+{
+	return rt946x_update_bits(MT6370_REG_DBVBST, MT6370_MASK_DB_VBST,
+				  rt946x_closest_reg(MT6370_DB_VBST_MIN,
+						     MT6370_DB_VBST_MAX,
+						     MT6370_DB_VBST_STEP, mv));
+}
+
+/* set display bias VPOS */
+int mt6370_db_set_vpos(int mv)
+{
+	return rt946x_update_bits(
+		MT6370_REG_DBVPOS, MT6370_MASK_DB_VPOS,
+		rt946x_closest_reg(MT6370_DB_VPOS_MIN, MT6370_DB_VPOS_MAX,
+				   MT6370_DB_VPOS_STEP, mv));
+}
+
+
+/* set display bias VNEG */
+int mt6370_db_set_vneg(int mv)
+{
+	return rt946x_update_bits(MT6370_REG_DBVNEG, MT6370_MASK_DB_VNEG,
+				  rt946x_closest_reg(MT6370_DB_VNEG_MIN,
+						     MT6370_DB_VNEG_MAX,
+						     MT6370_DB_VNEG_STEP, mv));
+}
+
 /* MT6370 RGB LED */
 
 int mt6370_led_set_dim_mode(enum mt6370_led_index index,
