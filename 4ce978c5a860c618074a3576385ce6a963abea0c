@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14efb0f5_f980df56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-15T19:16:54Z",
+      "side": 1,
+      "message": "nit: missing \"on\" or \"for\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "4ce978c5a860c618074a3576385ce6a963abea0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40089162_7577a08c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-15T19:16:54Z",
+      "side": 1,
+      "message": "This statement implies that this code section is only required for ports that are currently in ALT-DP mode. Maybe make this a little more explicit?",
+      "range": {
+        "startLine": 13,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "4ce978c5a860c618074a3576385ce6a963abea0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
