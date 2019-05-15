@@ -1210,6 +1210,16 @@ function flash_npcx_uut() {
 		MON="$(dirname "$IMG")/npcx_monitor.bin"
 	fi
 
+  # If npcx_monitor.bin is not found in the same directory as the
+  # image, then try the build directories.
+  if [[ ! -f "$MON" ]]; then
+    MON="$(dirname "$LOCAL_BUILD")/npcx_monitor.bin"
+  fi
+
+  if [[ ! -f "$MON" ]]; then
+    MON="$(dirname "$EMERGE_BUILD")/npcx_monitor.bin"
+  fi
+
 	if [[ ! -f "$MON" ]]; then
 		echo "Failed to find npcx_monitor.bin"
 		exit 1
