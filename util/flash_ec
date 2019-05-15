@@ -623,7 +623,10 @@ declare -a save
 #######################################
 function servo_save_add() {
 	case $# in
-		1) save+=( "$( "${DUT_CONTROL_CMD[@]}" "$@" )" )
+		1) local CTRL_RESULT="$( "${DUT_CONTROL_CMD[@]}" "$@" )"
+		   if [[ -n ${CTRL_RESULT} ]]; then
+			save+=( "${CTRL_RESULT}" )
+		   fi
 		   ;;
 		2) save+=( "$1:$2" )
 		   ;;
@@ -650,7 +653,9 @@ function servo_save() {
 function servo_restore() {
 	info "Restoring servo settings..."
 	for ctrl in "${save[@]}"; do
-		dut_control "$ctrl"
+		if [[ -n ${ctrl} ]]; then
+			dut_control "$ctrl"
+		fi
 	done
 }
 
