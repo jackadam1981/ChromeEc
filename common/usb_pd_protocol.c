@@ -4393,10 +4393,11 @@ void pd_prepare_sysjump(void)
 	/* Exit modes before sysjump so we can cleanly enter again later */
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		/*
-		 * We can't be in an alternate mode if PD comm is disabled, so
-		 * no need to send the event
+		 * We can't be in an alternate mode if PD comm is disabled or
+		 * the port is suspended, so no need to send the event
 		 */
-		if (!pd_comm_is_enabled(i))
+		if (!pd_comm_is_enabled(i) ||
+				pd[i].task_state == PD_STATE_SUSPENDED)
 			continue;
 
 		sysjump_task_waiting = task_get_current();
