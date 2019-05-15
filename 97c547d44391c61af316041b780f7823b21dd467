@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aca497f1_f4c1f4d9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-05-15T16:45:58Z",
+      "side": 1,
+      "message": "Can we define an array of paths and loop over that instead?\nMONITOR_PATH\u003d(\n\"$foo\"\n\"$bar\"\n)",
+      "range": {
+        "startLine": 1207,
+        "startChar": 20,
+        "endLine": 1207,
+        "endChar": 21
+      },
+      "revId": "97c547d44391c61af316041b780f7823b21dd467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05987b4b_ce516435",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-05-15T16:45:58Z",
+      "side": 1,
+      "message": "Can you make this one come first. If we unpack a firmware tarball we should use the monitor.bin that came with it. Unless someone thinks otherwise.",
+      "range": {
+        "startLine": 1210,
+        "startChar": 19,
+        "endLine": 1210,
+        "endChar": 22
+      },
+      "revId": "97c547d44391c61af316041b780f7823b21dd467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
