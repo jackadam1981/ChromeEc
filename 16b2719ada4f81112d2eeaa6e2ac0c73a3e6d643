@@ -94,6 +94,30 @@
       "revId": "16b2719ada4f81112d2eeaa6e2ac0c73a3e6d643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7711e9_e0198d1f",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-15T20:16:18Z",
+      "side": 1,
+      "message": "Done. See http://b/132366384#comment3",
+      "parentUuid": "528ec376_c55da40d",
+      "range": {
+        "startLine": 343,
+        "startChar": 14,
+        "endLine": 343,
+        "endChar": 15
+      },
+      "revId": "16b2719ada4f81112d2eeaa6e2ac0c73a3e6d643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
