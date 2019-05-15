@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b8df63d_7c5e46a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-15T19:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14efb0f5_f980df56",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "4ce978c5a860c618074a3576385ce6a963abea0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40089162_7577a08c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4ce978c5a860c618074a3576385ce6a963abea0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9a0f41_52b7c431",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-15T19:33:35Z",
+      "side": 1,
+      "message": "Done.\n\nI suspect if more changes are added to the sysjump preparation, they\u0027re likely to also be N/A for suspended ports, by virtue of the fact that suspended ports can do almost nothing.  But it\u0027s good to note for future reference.",
+      "parentUuid": "40089162_7577a08c",
+      "range": {
+        "startLine": 13,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "4ce978c5a860c618074a3576385ce6a963abea0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
