@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "675d34a7_ef502e48",
+        "filename": "chip/ish/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-15T21:28:58Z",
+      "side": 1,
+      "message": "don\u0027t we want to halt here instead?",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "1e2a162ae460146713503725945dbb9bd6f496ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d823964_92e76237",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3939,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-15T21:28:58Z",
+      "side": 1,
+      "message": "and leaving the device off, right?",
+      "range": {
+        "startLine": 3939,
+        "startChar": 51,
+        "endLine": 3939,
+        "endChar": 59
+      },
+      "revId": "1e2a162ae460146713503725945dbb9bd6f496ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4dd2a8_3f918d91",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3941,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-15T21:28:58Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this comment since it define right below :)",
+      "range": {
+        "startLine": 3941,
+        "startChar": 3,
+        "endLine": 3941,
+        "endChar": 27
+      },
+      "revId": "1e2a162ae460146713503725945dbb9bd6f496ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
