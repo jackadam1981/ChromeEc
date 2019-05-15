@@ -78,6 +78,9 @@
 /* BC 1.2 */
 #define CONFIG_BC12_DETECT_MAX14637
 
+/* Charger features */
+#define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA 8192
+
 /* Volume Button feature */
 #define CONFIG_VOLUME_BUTTONS
 #define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
