@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0839bd44_e25bbd69",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-15T21:11:20Z",
+      "side": 0,
+      "message": "If it fails, \u0027save\u0027 has a \"\" in it.\nI happened to have this case with a misbehaving hatch, \"cold_reset\" failed for timeout.",
+      "range": {
+        "startLine": 626,
+        "startChar": 16,
+        "endLine": 626,
+        "endChar": 48
+      },
+      "revId": "1598a615eb150916ea323e212b87298c3a6fcfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f044b1_e0fce58e",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-15T21:11:20Z",
+      "side": 0,
+      "message": "dut_control \u0027\u0027 displays a error message, \"Problem with [\u0027\u0027] :: No control named . All controls:...\"",
+      "range": {
+        "startLine": 653,
+        "startChar": 2,
+        "endLine": 653,
+        "endChar": 21
+      },
+      "revId": "1598a615eb150916ea323e212b87298c3a6fcfb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
