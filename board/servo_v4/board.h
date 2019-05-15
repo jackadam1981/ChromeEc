@@ -89,6 +89,7 @@
 
 /* PD features */
 #define CONFIG_ADC
+#define CONFIG_INA231
 #define CONFIG_BOARD_PRE_INIT
 /*
  * If task profiling is enabled then the rx falling edge detection interrupts
