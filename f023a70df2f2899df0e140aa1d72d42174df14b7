@@ -161,6 +161,23 @@
     },
     {
       "key": {
+        "uuid": "2faae630_26e5441e",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-15T14:03:40Z",
+      "side": 1,
+      "message": "This structure is only needed in standalone mode. When behind LSM6DSN, the st_data array.",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e8ccb2c_424ff085",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
