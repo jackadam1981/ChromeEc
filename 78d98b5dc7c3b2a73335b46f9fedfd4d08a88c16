@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ae26672c_fa3c8abb",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-15T08:51:06Z",
+      "side": 1,
+      "message": "I definitely agree with that goal and approach [of explicitly copying the struct when required], and that is what I had in mind when writing this CL.\n\nMy only reservation about doing it using an aligned struct is that I was not confident that we could say for certain exactly what the compiled code would end up looking like, and that we could never have a regression through some change in toolchain, hence opting for this somewhat clumsy but explicit approach.\n\nThat said, I agree that if we can achieve the same level of certainty in C (John suggested compiler intrinsics, though we didn\u0027t find a suitable one yet) that would be nicer, I\u0027m just not sure how to do that :)",
+      "parentUuid": "5dd9fcde_37c4ac81",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 12
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca0206a_43df1619",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
