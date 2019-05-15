@@ -22,6 +22,30 @@
       "revId": "deaa1d9a23aea5075cf86297a66a7cd7298f8d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c030c7d_fdb40920",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T18:07:03Z",
+      "side": 1,
+      "message": "This patch was created as a poc. To make it right \u0026 tight, we need to understand (or revise) the definitions of these macros then untangle these #ifdef\u0027s. Please feel free to explore them.",
+      "parentUuid": "89b7305b_2d62b7ac",
+      "range": {
+        "startLine": 2210,
+        "startChar": 15,
+        "endLine": 2210,
+        "endChar": 41
+      },
+      "revId": "deaa1d9a23aea5075cf86297a66a7cd7298f8d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
