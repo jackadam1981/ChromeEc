@@ -22,6 +22,30 @@
       "revId": "2acb39152039ae7db7d56ae2f7cc7192d5cb0db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118d94b5_b007bc6d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-05-15T07:27:39Z",
+      "side": 1,
+      "message": "1,3,4 \u003d\u003e set usb mux with data role.\nBut 2 \u003d\u003e set usb mux with chipset power state, and there are more states to be considered about ex. s0-\u003es3/s0ix: PD_EVENT_POWER_STATE_CHANG not set, so keep original mux settings  \n    s3/s0ix-\u003es0: PD_EVENT_POWER_STATE_CHANG not set, so keep original mux settings\n    s3-\u003es5: PD_EVENT_POWER_STATE_CHANG set, should set mux none and not charge vbus \n    s5-\u003es3: PD_EVENT_POWER_STATE_CHANG set, should set mux none and not charge vbus",
+      "parentUuid": "52b18017_b624beba",
+      "range": {
+        "startLine": 1243,
+        "startChar": 12,
+        "endLine": 1243,
+        "endChar": 46
+      },
+      "revId": "2acb39152039ae7db7d56ae2f7cc7192d5cb0db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
