@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0ee4539_8c9d301f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-15T21:43:10Z",
+      "side": 1,
+      "message": "Please add bug number;\n\nalso BRANCH\u003darcada?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "2ad1551a5d454eadefab525bb7cd5df0d20c9c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d224721e_aafb6ef1",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-15T21:43:10Z",
+      "side": 1,
+      "message": "Is this value used anywhere?\n\nIt should probably be commented; also it looks like it\u0027s basically used iff int_signal !\u003d 0 ?",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "2ad1551a5d454eadefab525bb7cd5df0d20c9c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
