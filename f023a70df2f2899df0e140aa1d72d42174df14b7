@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "25ab4eff_b869526a",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-15T15:55:50Z",
+      "side": 1,
+      "message": "Seems more like technical debt so I changed it in another CL",
+      "parentUuid": "2faae630_26e5441e",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e8ccb2c_424ff085",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
