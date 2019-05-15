@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a845ce72_1ab6cb40",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T01:07:56Z",
+      "side": 1,
+      "message": "Can this be just a common implementation? What board doesn\u0027t have a lid switch with a 360 hinge? \n\nYou can use raw_lid_open to ambiguate GPIO_LID_OPEN.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "1ee817f092c8d14b85166647efab5c87e1e6b3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105b430f_17145a13",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-15T01:07:56Z",
+      "side": 1,
+      "message": "80+",
+      "range": {
+        "startLine": 9,
+        "startChar": 70,
+        "endLine": 9,
+        "endChar": 89
+      },
+      "revId": "1ee817f092c8d14b85166647efab5c87e1e6b3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
