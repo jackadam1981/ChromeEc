@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "561b18a2_e7ae6d9b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-05-15T05:40:56Z",
+      "side": 1,
+      "message": "Suggest changing to 2A in order to match the in-box charger (10W).\nAnd also lower the risk to be damaged by low quality chargers.",
+      "range": {
+        "startLine": 926,
+        "startChar": 10,
+        "endLine": 926,
+        "endChar": 14
+      },
+      "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7242c49a_03cc6576",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -82,6 +105,30 @@
       "writtenOn": "2019-05-15T01:35:12Z",
       "side": 1,
       "message": "Why not only CHARGE_SUPPLIER_BC12_DCP?",
+      "range": {
+        "startLine": 1031,
+        "startChar": 9,
+        "endLine": 1035,
+        "endChar": 48
+      },
+      "revId": "631b3a759861d1a3af7ba080f199d429f880f38d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625c1844_632b2bd3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2019-05-15T05:40:56Z",
+      "side": 1,
+      "message": "Right, i think ramping on DCP type only is just fine.",
+      "parentUuid": "f8727408_b8f1ecaa",
       "range": {
         "startLine": 1031,
         "startChar": 9,
