@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "422cc0d1_1a5fd6d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-16T03:13:14Z",
+      "side": 1,
+      "message": "Yes, we have a concrete example with one of the new fleex batteries when it\u0027s coming out of deep discharge.  With the current boot flow and reset timers, we end up in a brown out loop for a couple of minutes which is far from ideal.",
+      "parentUuid": "d2aeb6bf_ddbbd08f",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd653300_d49ddf3e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "27fd2c9d_c77b6a9c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2273,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-16T03:13:14Z",
+      "side": 1,
+      "message": "I will if we got back to using the battery percentage, but I\u0027m hoping the voltage will serve as a better indicator (and allow us to negotiate to a higher voltage more quickly)",
+      "parentUuid": "fd653300_d49ddf3e",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4bd66d4_36226d5b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -77,6 +119,30 @@
       "writtenOn": "2019-05-15T16:09:35Z",
       "side": 1,
       "message": "Can you use IS_ENABLED()?",
+      "range": {
+        "startLine": 3827,
+        "startChar": 8,
+        "endLine": 3827,
+        "endChar": 22
+      },
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d700a2_b40f7fde",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3827,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-16T03:13:14Z",
+      "side": 1,
+      "message": "I tried and got build errors :(\n\nUnfortunately, the IS_ENABLED() macro doesn\u0027t seem to work when a function is only defined when a particular config is set",
+      "parentUuid": "e4bd66d4_36226d5b",
       "range": {
         "startLine": 3827,
         "startChar": 8,
@@ -139,6 +205,24 @@
       "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbaffa3_db8292c9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3845,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-16T03:13:14Z",
+      "side": 1,
+      "message": "Changed around the if structure to use the flag in the minimum voltage implementation",
+      "parentUuid": "9188114e_20519c4d",
+      "revId": "1067d6e6593a5a8c1aecc25f28f85ecdf3a43842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
