@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "1ea7508a_f28a5c2f",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-16T01:56:24Z",
+      "side": 1,
+      "message": "The change was added in the previous CL for this sensors (CL:1534339), and it is trivial:\n#ifndef CONFIG_LSM6DSM_SEC_I2C\n  struct stprivate_data data;\n#endif",
+      "parentUuid": "25ab4eff_b869526a",
+      "revId": "f023a70df2f2899df0e140aa1d72d42174df14b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e8ccb2c_424ff085",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 2
