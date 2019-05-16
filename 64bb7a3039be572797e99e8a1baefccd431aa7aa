@@ -34,6 +34,24 @@
       "revId": "64bb7a3039be572797e99e8a1baefccd431aa7aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3adb6e93_5f801677",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-16T17:49:30Z",
+      "side": 1,
+      "message": "Yes, I needed a \u003c\u003c 1 here. I have corrected this and made a note about the 128 mA offset. I opted to not account for the offset as the limit is in 512 mA steps so subtracting the 128 mA could result in more error.",
+      "parentUuid": "8e39cf10_cd81ac41",
+      "revId": "64bb7a3039be572797e99e8a1baefccd431aa7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
