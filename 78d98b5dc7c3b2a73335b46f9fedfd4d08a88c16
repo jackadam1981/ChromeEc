@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "4febfe49_ed89085d",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-16T07:30:15Z",
+      "side": 1,
+      "message": "Yea agree it would be weird, but I think if we are going to trust the compiler with something this critical, we need to have some known answer tests or static analysis of the compiled code; both were discussed a bit and both are non-trivial..",
+      "parentUuid": "f5f04a59_2da60eee",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 12
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca0206a_43df1619",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
