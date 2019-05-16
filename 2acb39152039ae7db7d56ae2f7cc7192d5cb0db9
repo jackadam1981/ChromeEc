@@ -46,6 +46,30 @@
       "revId": "2acb39152039ae7db7d56ae2f7cc7192d5cb0db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00291dc6_4e942a9b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-05-16T03:52:22Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nI tried to separate it, but I found that line 1251 through 1255 can\u0027t be moved to handle_new_power_state. Becuase when chipset in G3 state plug-in type-c charger, the mux should disconnect.",
+      "parentUuid": "118d94b5_b007bc6d",
+      "range": {
+        "startLine": 1243,
+        "startChar": 12,
+        "endLine": 1243,
+        "endChar": 46
+      },
+      "revId": "2acb39152039ae7db7d56ae2f7cc7192d5cb0db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
