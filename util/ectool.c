@@ -6225,7 +6225,8 @@ static void cmd_i2c_lookup_help(const char *const cmd)
 	fprintf(stderr,
 		"Usage: %s <type>\n"
 		"  <type> is one of:\n"
-		"    1: CBI_EEPROM\n",
+		"    1: CBI_EEPROM\n"
+		"    2: TCPCs\n",
 		cmd);
 }
 
