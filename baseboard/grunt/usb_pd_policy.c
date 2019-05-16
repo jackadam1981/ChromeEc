@@ -238,14 +238,32 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
 static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 
+#include "hooks.h"
+int svdm_dp_defer_port;
+
+static void svdm_enter_dp_mode_defer(void)
+{
+	int port = svdm_dp_defer_port;
+	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+	ccprints("svdm_enter_dp_mode_defer");
+	pd_send_vdm(port, USB_SID_DISPLAYPORT,
+		    VDO_OPOS(opos) | CMD_ENTER_MODE, NULL, 0);
+
+}
+DECLARE_DEFERRED(svdm_enter_dp_mode_defer);
+
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
 
 	/* Only enter mode if device is DFP_D capable */
-	if (mode_caps & MODE_DP_SNK)
-		return 0;
+	if (mode_caps & MODE_DP_SNK) {
+		ccprints("svdm_enter_dp_mode");
+		svdm_dp_defer_port = port;
+		hook_call_deferred(&svdm_enter_dp_mode_defer_data, 1 * SECOND);
+		return -1;
+	}
 
 	return -1;
 }
