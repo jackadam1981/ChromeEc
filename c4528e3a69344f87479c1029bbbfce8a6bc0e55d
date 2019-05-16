@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "054d9cdf_e57d8aff",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-16T18:18:23Z",
+      "side": 1,
+      "message": "isn\u0027t BOARD always set to CR50?",
+      "range": {
+        "startLine": 543,
+        "startChar": 30,
+        "endLine": 543,
+        "endChar": 35
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
