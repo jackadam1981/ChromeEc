@@ -14,6 +14,7 @@
 #include "i2c.h"
 #include "system.h"
 #include "task.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 #include "watchdog.h"
 #include "virtual_battery.h"
@@ -856,6 +857,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 
+#ifdef CONFIG_HOSTCMD_I2CLOOKUP
 static int i2c_command_lookup(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_lookup *params = args->params;
@@ -864,6 +866,8 @@ static int i2c_command_lookup(struct host_cmd_handler_args *args)
 	switch (params->type) {
 	case I2C_LOOKUP_TYPE_CBI_EEPROM:
 #ifdef CONFIG_CROS_BOARD_INFO
+		if (params->index >= 1)
+			return EC_RES_OVERFLOW;
 		resp->i2c_port = I2C_PORT_EEPROM;
 		/* Convert from 8-bit address to 7-bit address */
 		resp->i2c_addr = I2C_ADDR_EEPROM >> 1;
@@ -871,6 +875,16 @@ static int i2c_command_lookup(struct host_cmd_handler_args *args)
 		/* Lookup type is supported, but not present on system. */
 		return EC_RES_UNAVAILABLE;
 #endif /* CONFIG_CROS_BOARD_INFO */
+		break;
+	case I2C_LOOKUP_TYPE_TCPC:
+#ifdef CONFIG_USB_PD_PORT_COUNT
+		if (params->index >= CONFIG_USB_PD_PORT_COUNT)
+			return EC_RES_OVERFLOW;
+		resp->i2c_port = tcpc_config[params->index].i2c_host_port;
+		resp->i2c_addr = tcpc_config[params->index].i2c_slave_addr;
+#else
+		return EC_RES_UNAVAILABLE;
+#endif /* CONFIG_USB_PD_PORT_COUNT */
 		break;
 	default:
 		/* The type was unrecognized */
@@ -882,7 +896,8 @@ static int i2c_command_lookup(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_LOOKUP, i2c_command_lookup, EC_VER_MASK(0));
 /* If the params union expands in the future, need to bump EC_VER_MASK */
-BUILD_ASSERT(sizeof(struct ec_params_i2c_lookup) == 4);
+BUILD_ASSERT(sizeof(struct ec_params_i2c_lookup) == 6);
+#endif /* CONFIG_HOSTCMD_I2CLOOKUP */
 
 void i2c_passthru_protect_port(uint32_t port)
 {
