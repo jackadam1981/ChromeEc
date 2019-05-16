@@ -211,6 +211,30 @@
       "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2313a989_fd48b211",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T18:52:11Z",
+      "side": 1,
+      "message": "Either option works for sure, but the weakly defined function suffer from silent failures and should be avoided for the most part.\n\nI am open to changing the config name if it is not descriptive enough. How does CONFIG_HALL_SENSOR_CUSTOM_VALUE sound? There is always a comment that describes what the config option does as well.",
+      "parentUuid": "1f4ff485_0e652047",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
