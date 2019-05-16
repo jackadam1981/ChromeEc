@@ -26,6 +26,7 @@
 #include "usb_charge.h"
 #include "usb_descriptor.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -62,6 +63,10 @@ const struct pwm_t pwm_channels[] = {
 	{STM32_TIM(15), STM32_TIM_CH(2), 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+	/* Dummy implementation for EC_CMD_I2C_LOOKUP. Not used. */
+};
 
 struct mutex pericom_mux_lock;
 struct pi3usb9281_config pi3usb9281_chips[] = {

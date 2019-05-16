@@ -14,6 +14,7 @@
 #include "i2c.h"
 #include "system.h"
 #include "task.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 #include "watchdog.h"
 #include "virtual_battery.h"
@@ -856,21 +857,36 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 
-static int i2c_command_lookup(struct host_cmd_handler_args *args)
+#ifdef CONFIG_HOSTCMD_LOCATE_CHIP
+static int hc_locate_chip(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_i2c_lookup *params = args->params;
-	struct ec_response_i2c_lookup *resp = args->response;
+	const struct ec_params_locate_chip *params = args->params;
+	struct ec_response_locate_chip *resp = args->response;
 
 	switch (params->type) {
-	case I2C_LOOKUP_TYPE_CBI_EEPROM:
+	case EC_CHIP_TYPE_CBI_EEPROM:
 #ifdef CONFIG_CROS_BOARD_INFO
-		resp->i2c_port = I2C_PORT_EEPROM;
+		if (params->index >= 1)
+			return EC_RES_OVERFLOW;
+		resp->bus_type = EC_BUS_TYPE_I2C;
+		resp->i2c_info.port = I2C_PORT_EEPROM;
 		/* Convert from 8-bit address to 7-bit address */
-		resp->i2c_addr = I2C_ADDR_EEPROM >> 1;
+		resp->i2c_info.addr = I2C_ADDR_EEPROM >> 1;
 #else
 		/* Lookup type is supported, but not present on system. */
 		return EC_RES_UNAVAILABLE;
 #endif /* CONFIG_CROS_BOARD_INFO */
+		break;
+	case EC_CHIP_TYPE_TCPC:
+#ifdef CONFIG_USB_PD_PORT_COUNT
+		if (params->index >= CONFIG_USB_PD_PORT_COUNT)
+			return EC_RES_OVERFLOW;
+		resp->bus_type = EC_BUS_TYPE_I2C;
+		resp->i2c_info.port = tcpc_config[params->index].i2c_host_port;
+		resp->i2c_info.addr = tcpc_config[params->index].i2c_slave_addr;
+#else
+		return EC_RES_UNAVAILABLE;
+#endif /* CONFIG_USB_PD_PORT_COUNT */
 		break;
 	default:
 		/* The type was unrecognized */
@@ -880,9 +896,10 @@ static int i2c_command_lookup(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*resp);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_I2C_LOOKUP, i2c_command_lookup, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_LOCATE_CHIP, hc_locate_chip, EC_VER_MASK(0));
 /* If the params union expands in the future, need to bump EC_VER_MASK */
-BUILD_ASSERT(sizeof(struct ec_params_i2c_lookup) == 4);
+BUILD_ASSERT(sizeof(struct ec_params_locate_chip) == 6);
+#endif /* CONFIG_HOSTCMD_LOCATE_CHIP */
 
 void i2c_passthru_protect_port(uint32_t port)
 {
