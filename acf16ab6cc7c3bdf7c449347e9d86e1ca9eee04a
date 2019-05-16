@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08bb3e6c_5463491d",
+        "filename": "baseboard/intelrvp/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T20:36:02Z",
+      "side": 1,
+      "message": "this doesn\u0027t match your enum definition (i.e. you define X86_SLP_S3_DEASSERTED regardless of VW_SLP_SIGNALS). We should make them in sync",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "acf16ab6cc7c3bdf7c449347e9d86e1ca9eee04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
