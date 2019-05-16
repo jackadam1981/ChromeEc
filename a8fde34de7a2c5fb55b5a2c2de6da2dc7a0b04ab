@@ -16,6 +16,24 @@
       "revId": "a8fde34de7a2c5fb55b5a2c2de6da2dc7a0b04ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13de54e8_e5bb3677",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-16T22:34:45Z",
+      "side": 1,
+      "message": "Yes, please see ectool.c. It basically reverses this computation.",
+      "parentUuid": "0c4add94_25f91d86",
+      "revId": "a8fde34de7a2c5fb55b5a2c2de6da2dc7a0b04ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
