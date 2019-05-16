@@ -6223,9 +6223,11 @@ int cmd_i2c_xfer(int argc, char *argv[])
 static void cmd_i2c_lookup_help(const char *const cmd)
 {
 	fprintf(stderr,
-		"Usage: %s <type>\n"
+		"Usage: %s <type> <index>\n"
 		"  <type> is one of:\n"
-		"    1: CBI_EEPROM\n",
+		"    1: CBI_EEPROM\n"
+		"    2: TCPCs\n"
+		"  <index> instance # of <type>\n",
 		cmd);
 }
 
@@ -6236,7 +6238,7 @@ int cmd_i2c_lookup(int argc, char *argv[])
 	char *e;
 	int rv;
 
-	if (argc != 2) {
+	if (argc != 3) {
 		cmd_i2c_lookup_help(argv[0]);
 		return -1;
 	}
@@ -6244,6 +6246,13 @@ int cmd_i2c_lookup(int argc, char *argv[])
 	p.type = strtol(argv[1], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad type.\n");
+		cmd_i2c_lookup_help(argv[0]);
+		return -1;
+	}
+
+	p.index = strtol(argv[2], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad index.\n");
 		cmd_i2c_lookup_help(argv[0]);
 		return -1;
 	}
@@ -6257,6 +6266,11 @@ int cmd_i2c_lookup(int argc, char *argv[])
 
 	if (rv == -EC_RES_UNAVAILABLE - EECRESULT) {
 		fprintf(stderr, "Device not found\n");
+		return rv;
+	}
+
+	if (rv == -EC_RES_OVERFLOW - EECRESULT) {
+		fprintf(stderr, "Index too large\n");
 		return rv;
 	}
 

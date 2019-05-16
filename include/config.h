@@ -2049,6 +2049,11 @@
 /* Set entry in PD MCU's device rw_hash table */
 #define CONFIG_HOSTCMD_RWHASHPD
 
+#if !defined(TEST_BUILD) && !defined(TEST_FUZZ)
+/* Enable EC_CMD_I2C_LOOKUP */
+#define CONFIG_HOSTCMD_I2CLOOKUP
+#endif
+
 /* List of host commands whose debug output will be suppressed */
 #undef CONFIG_SUPPRESSED_HOST_COMMANDS
 
