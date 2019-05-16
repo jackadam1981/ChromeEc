@@ -6232,9 +6232,10 @@ static void cmd_i2c_lookup_help(const char *const cmd)
 int cmd_i2c_lookup(int argc, char *argv[])
 {
 	struct ec_params_i2c_lookup p;
-	struct ec_response_i2c_lookup r;
+	struct ec_i2c_info *r = ec_inbuf;
 	char *e;
 	int rv;
+	int i;
 
 	if (argc != 2) {
 		cmd_i2c_lookup_help(argv[0]);
@@ -6248,7 +6249,7 @@ int cmd_i2c_lookup(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_I2C_LOOKUP, 0, &p, sizeof(p), &r, sizeof(r));
+	rv = ec_command(EC_CMD_I2C_LOOKUP, 0, &p, sizeof(p), r, ec_max_insize);
 
 	if (rv == -EC_RES_INVALID_PARAM - EECRESULT) {
 		fprintf(stderr, "Lookup type %d not supported.\n", p.type);
@@ -6267,8 +6268,9 @@ int cmd_i2c_lookup(int argc, char *argv[])
 	 * Do not change the format of this print. firmware_ECCbiEeprom FAFT
 	 * test depends on this, and will silently start skipping tests.
 	 */
-	printf("Port: %d; Address: 0x%02x (7-bit format)\n", r.i2c_port,
-	       r.i2c_addr);
+	for (i = 0; i < rv / sizeof(*r); i++)
+		printf("Port: %d; Address: 0x%02x (7-bit format)\n",
+		       r[i].i2c_port, r[i].i2c_addr);
 	return 0;
 }
 

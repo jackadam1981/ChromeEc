@@ -5368,10 +5368,10 @@ struct ec_params_i2c_lookup {
 	};
 } __ec_align2;
 
-struct ec_response_i2c_lookup {
+struct ec_i2c_info {
 	uint16_t i2c_port;	/* Physical port for device */
 	uint16_t i2c_addr;	/* 7-bit (or 10-bit) address */
-} __ec_align1;
+} __ec_align2;
 
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
