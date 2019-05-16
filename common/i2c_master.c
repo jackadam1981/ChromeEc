@@ -14,6 +14,7 @@
 #include "i2c.h"
 #include "system.h"
 #include "task.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 #include "watchdog.h"
 #include "virtual_battery.h"
@@ -852,6 +853,7 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 
+#ifdef CONFIG_HOSTCMD_I2CLOOKUP
 static int i2c_command_lookup(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_lookup *params = args->params;
@@ -871,6 +873,19 @@ static int i2c_command_lookup(struct host_cmd_handler_args *args)
 		return EC_RES_UNAVAILABLE;
 #endif /* CONFIG_CROS_BOARD_INFO */
 		break;
+	case I2C_LOOKUP_TYPE_TCPC:
+#ifdef CONFIG_USB_PD_PORT_COUNT
+		rsize = sizeof(*res) * CONFIG_USB_PD_PORT_COUNT;
+		if (rsize > args->response_max)
+			return EC_RES_OVERFLOW;
+		for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+			res[i].i2c_port = tcpc_config[i].i2c_host_port;
+			res[i].i2c_addr = tcpc_config[i].i2c_slave_addr;
+		}
+#else
+		return EC_RES_UNAVAILABLE;
+#endif
+		break;
 	default:
 		/* The type was unrecognized */
 		return EC_RES_INVALID_PARAM;
@@ -882,6 +897,7 @@ static int i2c_command_lookup(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_I2C_LOOKUP, i2c_command_lookup, EC_VER_MASK(0));
 /* If the params union expands in the future, need to bump EC_VER_MASK */
 BUILD_ASSERT(sizeof(struct ec_params_i2c_lookup) == 4);
+#endif
 
 void i2c_passthru_protect_port(uint32_t port)
 {
