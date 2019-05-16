@@ -46,6 +46,30 @@
       "revId": "a6c5d25f5b1bc265f1bd28c0798d8e940e648e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c1eede_456c5cd1",
+        "filename": "common/flash_log.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-16T18:47:45Z",
+      "side": 1,
+      "message": "I guess now I am understanding the target use case now. AP should request this with the current real time after a reset. This is not about factory reset or so.",
+      "parentUuid": "6d9d3278_b7e78033",
+      "range": {
+        "startLine": 498,
+        "startChar": 12,
+        "endLine": 498,
+        "endChar": 15
+      },
+      "revId": "a6c5d25f5b1bc265f1bd28c0798d8e940e648e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
