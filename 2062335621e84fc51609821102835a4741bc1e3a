@@ -22,6 +22,30 @@
       "revId": "2062335621e84fc51609821102835a4741bc1e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79e360c_cc3b704b",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-16T20:47:38Z",
+      "side": 1,
+      "message": "I once got 0xffffffff at this address as the result of an odd panic with an AP shutdown (I am guessing that some code I wrote while debugging thru my system_reboot implementation was the cause of it). Since the RESET_FLAG_WATCHDOG is used for resetting the following address to zero, it\u0027s kind of critical that these values be set to something which won\u0027t have that. (otherwise, we might accidentally lock up ISH after only one watchdog reset).\n\n\u003e what happens if someone adds a flag?\n\nMaybe this is better to implement as a function under common/? That way when flags change the person who changes those flags will have to change the corresponding function? what are your thoughts?",
+      "parentUuid": "9ea8fadf_a1dc8d53",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "2062335621e84fc51609821102835a4741bc1e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
