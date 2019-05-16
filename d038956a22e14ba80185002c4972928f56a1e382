@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cbf7049_2fc22ff5",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-16T18:06:50Z",
+      "side": 1,
+      "message": "I am curious: what if while p256_int is packed, the compiler could put it on the stack unaligned if the set of local variables includes one with a size not divisible by 4.\n\nIt seems to be that creating an unpacked equivalent of p256_int would be a more robust solution.\n\nNot sure how urgent this is: there is no imminent toolchain change in the near future.",
+      "range": {
+        "startLine": 809,
+        "startChar": 15,
+        "endLine": 809,
+        "endChar": 16
+      },
+      "revId": "d038956a22e14ba80185002c4972928f56a1e382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
