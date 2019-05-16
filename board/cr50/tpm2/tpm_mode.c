@@ -24,8 +24,8 @@ static void disable_tpm(void)
 {
 	nvmem_enable_commits();
 	tpm_stop();
-	DCRYPTO_ladder_revoke();
 	nvmem_clear_cache();
+	DCRYPTO_ladder_revoke();
 
 	if (board_uses_closed_source_set1())
 		close_source_set1_disable_tpm();
