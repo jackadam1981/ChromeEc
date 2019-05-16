@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e778ccea_da2819b0",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-16T16:43:42Z",
+      "side": 1,
+      "message": "Unless you intend to run it within dut only, it would be convenient to un-filter this command and VENDOR_CC_POP_LOG_ENTRY from USB.\n\nCan we add those two command cases in ec/common/extension.c?",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "8c8245c97fc35156593ee77a855b23c66821436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
