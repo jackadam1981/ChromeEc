@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89699b9e_608f3633",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-16T02:33:47Z",
+      "side": 1,
+      "message": "d",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d261b0_332927d5",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-16T02:33:47Z",
+      "side": 1,
+      "message": "Can you put this in the right place?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6545ea_adb645d3",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-16T02:33:47Z",
+      "side": 1,
+      "message": "These are totally redundant... They should be gone with your change anyway.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9dfdbb_4e5daa4b",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-16T02:33:47Z",
+      "side": 1,
+      "message": "I usually recommend to provide a default implementation weakly:\n\n  __attribute__((weak)) int board_sensor_at_360(void)\n  {\n    return !gpio_get_level(HALL_SENSOR_GPIO_L);\n  }\n\nAnd your board can implement board_sensor_at_360 normally.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
