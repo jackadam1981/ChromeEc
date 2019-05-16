@@ -22,6 +22,29 @@
       "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b4188f_167f6115",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-16T18:35:26Z",
+      "side": 1,
+      "message": "I\u0027m ok with this, but if we are changing, maybe change the U2F cert name as well?",
+      "range": {
+        "startLine": 543,
+        "startChar": 20,
+        "endLine": 543,
+        "endChar": 36
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
