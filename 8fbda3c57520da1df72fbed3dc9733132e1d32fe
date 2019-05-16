@@ -235,6 +235,30 @@
       "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9318975_6fe3d776",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-16T19:44:30Z",
+      "side": 1,
+      "message": "In this case, I think either approach works. See https://crbug.com/964060 if you\u0027re interested in an idea I had to make cases like this better in the future.",
+      "parentUuid": "2313a989_fd48b211",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
