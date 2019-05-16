@@ -70,6 +70,30 @@
       "revId": "2acb39152039ae7db7d56ae2f7cc7192d5cb0db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e63d88f_65966e6a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T21:13:34Z",
+      "side": 1,
+      "message": "I think it is easier to keep to logic consolidated. We have multiple trigger points where we might want to change state but should look at all the variables (like power state and PD connection together)",
+      "parentUuid": "00291dc6_4e942a9b",
+      "range": {
+        "startLine": 1243,
+        "startChar": 12,
+        "endLine": 1243,
+        "endChar": 46
+      },
+      "revId": "2acb39152039ae7db7d56ae2f7cc7192d5cb0db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
