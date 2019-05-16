@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ea8fadf_a1dc8d53",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T20:41:52Z",
+      "side": 1,
+      "message": "what happens if someone adds a flag?\n\nAre we worried about getting corrupt data?, why do we need this check?",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "2062335621e84fc51609821102835a4741bc1e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
