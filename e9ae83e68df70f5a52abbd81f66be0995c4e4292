@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9f6e2a99_d7ffa5fd",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-16T17:35:40Z",
+      "side": 1,
+      "message": "Doesn\u0027t this also need to check crypto_enabled(), since it is test_export_static and calls save_container() in line 903?",
+      "revId": "e9ae83e68df70f5a52abbd81f66be0995c4e4292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b8cc80_095cda44",
         "filename": "common/new_nvmem.c",
         "patchSetId": 1
