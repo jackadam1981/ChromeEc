@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "5afc2f10_fd2498bf",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-16T21:11:41Z",
+      "side": 1,
+      "message": "Be gentle with stack size, we are already the largest user.\nYou can use FIFO_DEV_NUM and as offset, the offset of the accelrometer (s - motion_sensors), given the sensors are tightly ordered: accel, gyro then mag.",
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cb79f1e_04d2a64b",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9

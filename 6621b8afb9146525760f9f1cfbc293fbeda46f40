@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "22931ba9_c85500b6",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-16T21:11:41Z",
+      "side": 1,
+      "message": "Could you have the queue_is_full situation altogether by processing single_fifo_read_queue when\n- at the end of the fifo processing (what you do today)\n- when the read_queue is full?",
+      "parentUuid": "65f86dea_d159e02d",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "118d4cf9_9e494529",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -300,6 +318,24 @@
     },
     {
       "key": {
+        "uuid": "94e29c42_4ed53dce",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-16T21:11:41Z",
+      "side": 1,
+      "message": "I would do the calculation in fifo_enable, not everytime. You just need to store the fifo frequency rate.",
+      "parentUuid": "350470e6_ca76f05b",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e49f410_7fa6db73",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
@@ -329,6 +365,24 @@
       "side": 1,
       "message": "We tried that, but reading the STS1_ADDR takes too long (1ms) this has the same effect and is much faster.",
       "parentUuid": "4e49f410_7fa6db73",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7ea766_22e1c135",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-16T21:11:41Z",
+      "side": 1,
+      "message": "This code may introduce some timestamp issue:\n[ a white board would help]\nImage you get an interrupt, process the entries and call is_fifo_empty:\nthe interrupt is raised, so you process the extra interrupt, all timestamp are good.\n\nBut the motion_task has been already scheduled, so we will call this function again, and LSM6DSM_FIFO_EMPTY will be set.\nIf an event show up between line 502 and 507, we tag the events with last_fifo_read_ts, which can be far[ish] in the past. [we could have been interrupted while in this function.",
+      "parentUuid": "0163b77a_37a174c6",
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
