@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c4add94_25f91d86",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-16T22:29:09Z",
+      "side": 1,
+      "message": "It seems the idea is to figure out the number of PD ports based on the size of the response received. Is that correct?",
+      "revId": "a8fde34de7a2c5fb55b5a2c2de6da2dc7a0b04ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
