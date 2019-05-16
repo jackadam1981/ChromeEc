@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c143236b_7bd994cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T13:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89699b9e_608f3633",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28d261b0_332927d5",
         "filename": "common/tablet_mode.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af54545_fc0ef381",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T13:50:58Z",
+      "side": 1,
+      "message": "Moved to header file",
+      "parentUuid": "28d261b0_332927d5",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8ec7ebb8_896dbed1",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T13:50:58Z",
+      "side": 1,
+      "message": "HALL_SENSOR_GPIO_L still needs to be defined so the init function can enable the interrupt appropriately (the comments in config.h are still valid)",
+      "parentUuid": "ad6545ea_adb645d3",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf9dfdbb_4e5daa4b",
         "filename": "common/tablet_mode.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2446cdd_dab50d17",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-16T13:50:58Z",
+      "side": 1,
+      "message": "I am of the strong opinion that we should use weak as infrequently as possible as it easily and silently breaks with renames or typos.\n\nI prefer to have a compile time error if the board doesn\u0027t provide the board override function and specifically wanted to apply an override",
+      "parentUuid": "bf9dfdbb_4e5daa4b",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 47
+      },
+      "revId": "8fbda3c57520da1df72fbed3dc9733132e1d32fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
