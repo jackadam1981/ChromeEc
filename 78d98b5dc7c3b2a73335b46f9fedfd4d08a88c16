@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "6fe69ce1_9225126e",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-16T18:09:44Z",
+      "side": 1,
+      "message": "I think we can trust the compiler with this (using operations of the operand size in case there is no packing required) - otherwise tons of things across all platforms would be break, not just this.",
+      "parentUuid": "4febfe49_ed89085d",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 12
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca0206a_43df1619",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
