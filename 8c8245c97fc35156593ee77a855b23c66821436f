@@ -22,6 +22,30 @@
       "revId": "8c8245c97fc35156593ee77a855b23c66821436f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292cac2e_3e0aa431",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-16T18:30:27Z",
+      "side": 1,
+      "message": "I guess being able to retrieve log without AP running would be useful.\n\nCan we do it and (and this if we decide that it is worth it) in a separate patch?",
+      "parentUuid": "e778ccea_da2819b0",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "8c8245c97fc35156593ee77a855b23c66821436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
