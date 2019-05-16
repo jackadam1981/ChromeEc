@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0e01fff_72bbf852",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-16T04:40:29Z",
+      "side": 1,
+      "message": "Yeah, in the old way with the #define we had the ability to use #error, now we can\u0027t. So I wanted to have some way to make it visible that we\u0027re going down a path we really shouldn\u0027t. I\u0027m fine taking this out if you\u0027d like.",
+      "parentUuid": "9c3c78de_3dda9b41",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 53
+      },
+      "revId": "906aa153ccd5c7e88229e5ed0148e8ce78f77b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4dd5510_26c83646",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "906aa153ccd5c7e88229e5ed0148e8ce78f77b7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4defa17e_c290bcfd",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-16T04:40:29Z",
+      "side": 1,
+      "message": "The idea here is we check if there\u0027s more stuff in the fifo, If so handle_interrupt_for_fifo just sets the last_interrupt_timestamp and adds the event. We\u0027ll then go through the motion sense loop and call the irq_handler. The idea is not to block other sensors.",
+      "parentUuid": "f4dd5510_26c83646",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 48
+      },
+      "revId": "906aa153ccd5c7e88229e5ed0148e8ce78f77b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
