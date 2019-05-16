@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9345ec_034a4a24",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2019-05-16T03:43:20Z",
+      "side": 1,
+      "message": "I suppose you want to set the IDCHG_VTH with 8192 mA(0010000000000000b).\nIDCHG_VTH is according to the value of bit10~bit15( 6 bit, range, range 0 A to 32256 mA, step 512 mA.) in ProchotOption1 Register, bit10~bit15 in 8192 mA is 001000b, 8(001000b)*512 mA\u003d 4096 mA.\nIn fact, we set the IDCHG_VTH with 4096 mA, May I right?",
+      "revId": "64bb7a3039be572797e99e8a1baefccd431aa7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
