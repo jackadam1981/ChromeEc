@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9b8cc80_095cda44",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3010,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-05-16T17:35:38Z",
+      "side": 1,
+      "message": "In new_nvmem.c this is called. If it doesn\u0027t return EC_SUCCESS, then cr50 reports a payload failure and reboots. Is this what we want?\n\nCr50 may also check the return code of the other functions and do the same thing.",
+      "range": {
+        "startLine": 3010,
+        "startChar": 0,
+        "endLine": 3010,
+        "endChar": 70
+      },
+      "revId": "e9ae83e68df70f5a52abbd81f66be0995c4e4292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
