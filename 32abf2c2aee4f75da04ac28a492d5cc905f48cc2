@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e91c841_dcfbdbb5",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-16T03:45:46Z",
+      "side": 1,
+      "message": "As I said earlier, the convention s-\u003edrv_data points to data.\nAs it stand,  -\u003eget_resolution call is broken.\n\nIf you follow the convention, you could use the common st_get_data_rate, and get_range could be shared among some st sensors.",
+      "revId": "32abf2c2aee4f75da04ac28a492d5cc905f48cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
