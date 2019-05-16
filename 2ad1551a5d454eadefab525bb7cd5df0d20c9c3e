@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd4c4281_803c0adb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-16T05:00:24Z",
+      "side": 1,
+      "message": "How are the branches determined for this? Would this not be applicable to all the branches? Or do we just put it in the one that needs it and cherry-pick when needed?",
+      "parentUuid": "a0ee4539_8c9d301f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "2ad1551a5d454eadefab525bb7cd5df0d20c9c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d224721e_aafb6ef1",
         "filename": "include/motion_sense.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-15T21:43:10Z",
       "side": 1,
       "message": "Is this value used anywhere?\n\nIt should probably be commented; also it looks like it\u0027s basically used iff int_signal !\u003d 0 ?",
+      "range": {
+        "startLine": 115,
+        "startChar": 8,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "2ad1551a5d454eadefab525bb7cd5df0d20c9c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e68085_3ba820f0",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-16T05:00:24Z",
+      "side": 1,
+      "message": "The value is used in the next CL. This was the best Jett and I could come up with Since GPIO value 0 is also valid. Two other options are:\n\nAdd GPIO_INVALID \u003d -1 to http://cs/chromeos_public/src/platform/ec/include/gpio_signal.h?l\u003d13. The down side here is that every motion_sensor_t would require initialization for the int_signal.\n\nAdd GPIO_INVALID at the top (would be a 0), but then GPIO_COUNT would be wrong.\n\nI\u0027m open to other ideas",
+      "parentUuid": "d224721e_aafb6ef1",
       "range": {
         "startLine": 115,
         "startChar": 8,
