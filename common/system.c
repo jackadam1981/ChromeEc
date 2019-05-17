@@ -92,6 +92,12 @@ static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
 
+static const char * const reset_flag_descs[] = {
+#define RESET_FLAG(identifier, desc) desc,
+#include "reset_flags.inc"
+#undef RESET_FLAG
+};
+
 #ifdef CONFIG_HIBERNATE
 static uint32_t hibernate_seconds;
 static uint32_t hibernate_microseconds;
@@ -268,9 +274,6 @@ void system_print_reset_flags(void)
 {
 	int count = 0;
 	int i;
-	static const char * const reset_flag_descs[] = {
-		#include "reset_flag_desc.inc"
-	};
 
 	if (!reset_flags) {
 		CPUTS("unknown");

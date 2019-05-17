@@ -34,6 +34,12 @@
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
 
+static const char * const reset_flag_descs[] = {
+#define RESET_FLAG(identifier, desc) desc,
+#include "reset_flags.inc"
+#undef RESET_FLAG
+};
+
 /* Command line options */
 enum {
 	OPT_DEV = 1000,
@@ -848,9 +854,6 @@ int cmd_uptimeinfo(int argc, char *argv[])
 	int i;
 	int flag_count;
 	uint32_t flag;
-	static const char * const reset_flag_descs[] = {
-		#include "reset_flag_desc.inc"
-	};
 
 	if (argc != 1) {
 		fprintf(stderr, "uptimeinfo takes no arguments");
