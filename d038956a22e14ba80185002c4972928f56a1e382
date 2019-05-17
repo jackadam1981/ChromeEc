@@ -22,6 +22,30 @@
       "revId": "d038956a22e14ba80185002c4972928f56a1e382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbabd309_19f43507",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-17T03:10:34Z",
+      "side": 1,
+      "message": "Yes I did wonder about this; I tried to do some reading but didn\u0027t get very far. Since that situation doesn\u0027t arise here, I thought it was a reasonable first step, before doing something more permanent (like an aligned p256_int as you suggest) in the follow up. \n\nHappy to skip this intermediate step and go straight to a more permanent solution if you\u0027d prefer.",
+      "parentUuid": "3cbf7049_2fc22ff5",
+      "range": {
+        "startLine": 809,
+        "startChar": 15,
+        "endLine": 809,
+        "endChar": 16
+      },
+      "revId": "d038956a22e14ba80185002c4972928f56a1e382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
