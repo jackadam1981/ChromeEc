@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7e5ad57_c24de0ab",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this should look at index (see comments below)",
+      "range": {
+        "startLine": 869,
+        "startChar": 2,
+        "endLine": 870,
+        "endChar": 26
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880aad46_08e153e9",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "need to convert from 8-bit (this) to 7-bit return style",
+      "range": {
+        "startLine": 884,
+        "startChar": 46,
+        "endLine": 884,
+        "endChar": 60
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a342f69_30f1780d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "we should be able to keep this at 4 (see comments in h file)",
+      "range": {
+        "startLine": 899,
+        "startChar": 47,
+        "endLine": 899,
+        "endChar": 54
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b415f794_6ea75a34",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "I realized this was wrong, should we just remove it? (count is 3 when it should be 2)",
+      "range": {
+        "startLine": 5360,
+        "startChar": 1,
+        "endLine": 5360,
+        "endChar": 22
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff387a8_508300ea",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5366,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "I think this should go in the union, and the I2C_LOOKUP_TYPE_TCPC should have a comment that index is a require input",
+      "range": {
+        "startLine": 5366,
+        "startChar": 1,
+        "endLine": 5366,
+        "endChar": 54
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455c492c_a91ca017",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6230,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "let\u0027s add \"if applicable\"",
+      "range": {
+        "startLine": 6230,
+        "startChar": 33,
+        "endLine": 6230,
+        "endChar": 34
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce519e2_9cfe0792",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6241,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:09:11Z",
+      "side": 1,
+      "message": "I think the instance number should be optional",
+      "range": {
+        "startLine": 6241,
+        "startChar": 1,
+        "endLine": 6241,
+        "endChar": 16
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
