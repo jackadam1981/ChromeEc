@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e076bf58_b28e1794",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Too many trains of thought, removing the define",
+      "parentUuid": "da3c0ba9_14865340",
+      "range": {
+        "startLine": 40,
+        "startChar": 56,
+        "endLine": 40,
+        "endChar": 58
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98ceb690_b8238639",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6c539ff9_3c51e5e0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Sorry, forgot, removing the whole thing in favor of the queue_add_units which will replace the tail.",
+      "parentUuid": "98ceb690_b8238639",
+      "range": {
+        "startLine": 320,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 12
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5afc2f10_fd2498bf",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -62,6 +110,24 @@
       "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98f3942_86c3dd37",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "I think I have a solution, I wrote it up but I want to re-run all the CTS tests in the AM before I upload for review.",
+      "parentUuid": "5afc2f10_fd2498bf",
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "8485f2b3_74381a8a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb79f1e_04d2a64b",
+      "range": {
+        "startLine": 355,
+        "startChar": 15,
+        "endLine": 355,
+        "endChar": 58
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae5990df_1dee1546",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -108,6 +198,30 @@
       "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5fb5b0d_43d01eef",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5990df_1dee1546",
+      "range": {
+        "startLine": 356,
+        "startChar": 13,
+        "endLine": 356,
+        "endChar": 37
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "65944d69_ac990d17",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca363c7_5854fcdf",
+      "range": {
+        "startLine": 404,
+        "startChar": 4,
+        "endLine": 405,
+        "endChar": 53
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c1b782f_05ab1a5a",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -154,6 +292,30 @@
       "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12459b9b_58b40b8d",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1b782f_05ab1a5a",
+      "range": {
+        "startLine": 411,
+        "startChar": 26,
+        "endLine": 411,
+        "endChar": 33
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "16a699d7_02b5c3fd",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Thanks for echoing this again, I don\u0027t know how I missed this, if odr \u003e 0 the first time it\u0027ll still be \u003e 0. Collapsing.",
+      "parentUuid": "571fe6f1_1794d560",
+      "range": {
+        "startLine": 432,
+        "startChar": 2,
+        "endLine": 432,
+        "endChar": 14
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fb540aa_260db9d4",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 9
@@ -191,6 +377,30 @@
       "writtenOn": "2019-05-16T20:54:28Z",
       "side": 1,
       "message": "this will be very spammy for device that don\u0027t support this. Can we print this only once (with a static variable) or remove it?",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 52
+      },
+      "revId": "9f723a3c1eb483f70d2397f3818390198644fdca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98af9ed0_de28ca34",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "See thread in patch 8. The original plan was to crash the build so I figured we REALLY want to catch this case. I\u0027m OK with removing this, let me know.",
+      "parentUuid": "6fb540aa_260db9d4",
       "range": {
         "startLine": 458,
         "startChar": 1,

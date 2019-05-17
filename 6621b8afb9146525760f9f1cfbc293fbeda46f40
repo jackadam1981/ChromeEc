@@ -336,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "a2484f7b_1d5ae838",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-17T04:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e29c42_4ed53dce",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e49f410_7fa6db73",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 7
