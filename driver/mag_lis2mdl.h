@@ -59,21 +59,22 @@
 struct lis2mdl_private_data {
 	/* lsm6dsm_data union requires cal be first element */
 	struct mag_cal_t cal;
-	struct stprivate_data data;
 #ifdef CONFIG_MAG_BMI160_LIS2MDL
 	intv3_t          hn;   /* last sample for offset compensation */
 	int              hn_valid;
+#else
+	struct stprivate_data data;
 #endif
 };
 
 #define LIS2MDL_GET_DATA(_s) \
 	((struct lis2mdl_private_data *)(_s->drv_data))
 
-#define LIS2MDL_ST_DATA(_s) \
-	(&(LIS2MDL_GET_DATA(_s)->data))
+#define LIS2MDL_ST_DATA(g) (&((g).data))
 
 #if !defined(CONFIG_LSM6DSM_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
-#define LIS2MDL_CAL(_s) (&LIS2MDL_GET_DATA(_s)->cal)
+#define LIS2MDL_CAL(_s) \
+	(&(DOWNCAST(s->drv_data, struct lis2mdl_private_data, data)->cal))
 #endif
 
 
