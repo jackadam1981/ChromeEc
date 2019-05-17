@@ -45,6 +45,54 @@
       "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c893517_ff610311",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-17T07:03:00Z",
+      "side": 1,
+      "message": "I was assuming this code could potentially be re-used by other H1 firmwares?",
+      "parentUuid": "054d9cdf_e57d8aff",
+      "range": {
+        "startLine": 543,
+        "startChar": 30,
+        "endLine": 543,
+        "endChar": 35
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141f9141_a75e8a2a",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-17T07:03:00Z",
+      "side": 1,
+      "message": "Yea good point; as discussed on IM will leave this for now (mainly to avoid deciding what to change it to :D) as it is not used (server-side), and is generated in u2fd in the new flow anyway.",
+      "parentUuid": "58b4188f_167f6115",
+      "range": {
+        "startLine": 543,
+        "startChar": 20,
+        "endLine": 543,
+        "endChar": 36
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
