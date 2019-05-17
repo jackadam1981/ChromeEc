@@ -46,6 +46,30 @@
       "revId": "d038956a22e14ba80185002c4972928f56a1e382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d3c2b9_88ded200",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-17T03:53:28Z",
+      "side": 1,
+      "message": "I wonder what others think. I personally would go for a duplicate structure, but if others think this is a good first step - it is fine with me.",
+      "parentUuid": "fbabd309_19f43507",
+      "range": {
+        "startLine": 809,
+        "startChar": 15,
+        "endLine": 809,
+        "endChar": 16
+      },
+      "revId": "d038956a22e14ba80185002c4972928f56a1e382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
