@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f682376_e9649175",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-17T07:43:12Z",
+      "side": 1,
+      "message": "AFAICT, this has nothing to do with backlight, and the parameters are definitely board-specfic. I think we need to export functions to board to set the correct values.",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 39
+      },
+      "revId": "509a0616a96f3d72378b18a3b8da28672af595f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
