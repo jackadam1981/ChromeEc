@@ -13,16 +13,6 @@
 #include "power_mgt.h"
 #include "ish_dma.h"
 
-#ifdef CONFIG_ISH_PM_DEBUG
-#define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
-#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ##args)
-#else
-#define CPUTS(outstr)
-#define CPRINTS(format, args...)
-#define CPRINTF(format, args...)
-#endif
-
 /* defined in link script: core/minute-ia/ec.lds.S */
 extern uint32_t __aon_ro_start;
 extern uint32_t __aon_ro_end;
@@ -194,17 +184,6 @@ static void init_aon_task(void)
 				     (uint32_t)&__aon_rw_start;
 
 	ish_dma_init();
-}
-
-static inline void check_aon_task_status(void)
-{
-	struct ish_aon_share *aon_share = pm_ctx.aon_share;
-
-	if (aon_share->last_error != AON_SUCCESS) {
-		CPRINTF("aontask has errors:\n");
-		CPRINTF("    last error:   %d\n", aon_share->last_error);
-		CPRINTF("    error counts: %d\n", aon_share->error_count);
-	}
 }
 
 static void switch_to_aontask(void)
@@ -532,11 +511,6 @@ static void pm_process(timestamp_t cur_time, uint32_t idle_us)
 		enter_d0i0();
 		break;
 	}
-
-#if defined(CONFIG_ISH_PM_D0I2) || defined(CONFIG_ISH_PM_D0I3)
-	if (decide == ISH_PM_STATE_D0I2 || decide == ISH_PM_STATE_D0I3)
-		check_aon_task_status();
-#endif
 }
 
 void ish_pm_init(void)
