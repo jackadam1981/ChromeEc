@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8360b67f_19143760",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3848,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-17T20:16:13Z",
+      "side": 1,
+      "message": "Can you make it shorter? (e.g. \u0027Battery low. Hold reset timer\u0027)",
+      "range": {
+        "startLine": 3847,
+        "startChar": 19,
+        "endLine": 3848,
+        "endChar": 30
+      },
+      "revId": "feae84a24927935610f913532f778151a78a5145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e81692_633743b6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3905,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-17T20:16:13Z",
+      "side": 1,
+      "message": "Here too. Do we even need this? Maybe we can push it to debug printf.",
+      "range": {
+        "startLine": 3904,
+        "startChar": 18,
+        "endLine": 3905,
+        "endChar": 32
+      },
+      "revId": "feae84a24927935610f913532f778151a78a5145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
