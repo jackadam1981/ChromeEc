@@ -248,6 +248,7 @@ static const struct option long_opts[] = {
 	{"systemdev",	                0,   NULL, 's'},
 	{"serial",	                1,   NULL, 'n'},
 	{"tpm_mode",                    2,   NULL, 'm'},
+	{"tstamp",                      2,   NULL, 'T'},
 	{"trunks_send",	                0,   NULL, 't'},
 	{"verbose",	                0,   NULL, 'V'},
 	{"version",	                0,   NULL, 'v'},
@@ -589,6 +590,7 @@ static void usage(int errs)
 	       "                           Set Info1 SN bits fields.\n"
 	       "                           SN_BITS should be 96 bit hex.\n"
 	       "  -s,--systemdev           Use /dev/tpm0 (-d is ignored)\n"
+	       "  -T,--tstamp [<stamp>]    Get or set flash log timestamp base\n"
 	       "  -t,--trunks_send         Use `trunks_send --raw' "
 	       "(-d is ignored)\n"
 	       "  -U,--ccd_unlock          Start CCD unlock sequence\n"
@@ -2223,7 +2225,7 @@ static int process_get_flog(struct transfer_descriptor *td, uint32_t prev_stamp)
 		size_t i;
 
 		memcpy(&prev_stamp, &entry.r.timestamp, sizeof(prev_stamp));
-		printf("%08x:%02x", prev_stamp, entry.r.type);
+		printf("%10u:%02x", prev_stamp, entry.r.type);
 		for (i = 0; i < FLASH_LOG_PAYLOAD_SIZE(entry.r.size); i++)
 			printf(" %02x", entry.r.payload[i]);
 		printf("\n");
@@ -2231,6 +2233,53 @@ static int process_get_flog(struct transfer_descriptor *td, uint32_t prev_stamp)
 		resp_size = sizeof(entry);
 	}
 
+	return 0;
+}
+
+static int process_tstamp(struct transfer_descriptor *td,
+			  const char *tstamp_ascii)
+{
+	char *e;
+	size_t expected_response_size;
+	size_t message_size;
+	size_t response_size;
+	uint32_t rv;
+	uint32_t tstamp = 0;
+	uint8_t max_response[sizeof(uint32_t)];
+
+	if (tstamp_ascii) {
+		tstamp = strtoul(tstamp_ascii, &e, 10);
+		if (*e) {
+			fprintf(stderr, "invalid base timestamp value \"%s\"\n",
+				tstamp_ascii);
+			return -1;
+		}
+		tstamp = htobe32(tstamp);
+		expected_response_size = 0;
+		message_size = sizeof(tstamp);
+	} else {
+		expected_response_size = 4;
+		message_size = 0;
+	}
+
+	response_size = sizeof(max_response);
+	rv = send_vendor_command(td, VENDOR_CC_FLOG_TIMESTAMP, &tstamp,
+				 message_size, max_response, &response_size);
+
+	if (rv) {
+		fprintf(stderr, "error: return value %d\n", rv);
+		return rv;
+	}
+	if (response_size != expected_response_size) {
+		fprintf(stderr, "error: got %zd bytes, expected %zd\n",
+			response_size, expected_response_size);
+		return -1; /* Should never happen. */
+	}
+
+	if (response_size) {
+		memcpy(&tstamp, max_response, sizeof(tstamp));
+		printf("Current H1 time is %d\n", be32toh(tstamp));
+	}
 	return 0;
 }
 
@@ -2343,6 +2392,8 @@ int main(int argc, char *argv[])
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
 	bool show_machine_output = false;
+	int tstamp = 0;
+	const char *tstamp_arg = NULL;
 
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -2494,6 +2545,10 @@ int main(int argc, char *argv[])
 			}
 			td.ep_type = ts_xfer;
 			break;
+		case 'T':
+			tstamp = 1;
+			tstamp_arg = optarg;
+			break;
 		case 'v':
 			report_version();  /* This will call exit(). */
 			break;
@@ -2546,6 +2601,7 @@ int main(int argc, char *argv[])
 	    !sn_bits &&
 	    !sn_inc_rma &&
 	    !openbox_desc_file &&
+	    !tstamp &&
 	    !tpm_mode &&
 	    !wp) {
 		if (optind >= argc) {
@@ -2627,6 +2683,9 @@ int main(int argc, char *argv[])
 
 		exit(rv);
 	}
+
+	if (tstamp)
+		return process_tstamp(&td, tstamp_arg);
 
 	if (sn_bits)
 		process_sn_bits(&td, sn_bits_arg);
