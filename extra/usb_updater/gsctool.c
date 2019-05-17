@@ -235,7 +235,7 @@ static const struct option long_opts[] = {
 	{"ccd_unlock",                  0,   NULL, 'U'},
 	{"corrupt",	                0,   NULL, 'c'},
 	{"device",	                1,   NULL, 'd'},
-	{"flog",	                0,   NULL, 'L'},
+	{"flog",	                2,   NULL, 'L'},
 	{"factory",	                1,   NULL, 'F'},
 	{"fwver",	                0,   NULL, 'f'},
 	{"help",	                0,   NULL, 'h'},
@@ -245,7 +245,7 @@ static const struct option long_opts[] = {
 	{"post_reset",	                0,   NULL, 'p'},
 	{"rma_auth",	                2,   NULL, 'r'},
 	{"sn_bits",	                1,   NULL, 'S'},
-	{"sn_rma_inc",	                1,   NULL, 'R'},
+	{"sn_rma_inc",	                2,   NULL, 'R'},
 	{"systemdev",	                0,   NULL, 's'},
 	{"serial",	                1,   NULL, 'n'},
 	{"tpm_mode",                    2,   NULL, 'm'},
@@ -1486,11 +1486,6 @@ static int parse_bid(const char *opt,
 	const char *param2;
 	size_t param1_length;
 
-	if (!opt) {
-		*bid_action = bid_get;
-		return 1;
-	}
-
 	/* Set it here to make bailing out easier later. */
 	bid->flags = DEFAULT_BOARD_ID_FLAG;
 
@@ -2256,6 +2251,19 @@ static int check_boolean(const struct options_map *omap, char option)
 	return 0;
 }
 
+/* Returns true if optional argument was found. */
+static int handle_optional_argument(char *argv[], uint32_t *value, int base)
+{
+	if (!optarg && argv[optind] && argv[optind][0] != '-')
+		/* optional argument present. */
+		optarg = argv[optind++];
+
+	if (optarg && value)
+		*value = strtoul(optarg, NULL, 16);
+
+	return !!optarg;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -2370,10 +2378,10 @@ int main(int argc, char *argv[])
 			usage(errorcnt);
 			break;
 		case 'i':
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
+			if (!handle_optional_argument(argv, NULL, -1)) {
+				bid_action = bid_get;
+				break;
+			}
 			if (!parse_bid(optarg, &bid, &bid_action)) {
 				fprintf(stderr,
 					"Invalid board id argument: \"%s\"\n",
@@ -2383,21 +2391,15 @@ int main(int argc, char *argv[])
 			break;
 		case 'L':
 			get_flog = 1;
-			if (!optarg && argv[optind] &&
-			    (argv[optind][0] != '-')) {
-				prev_log_entry =
-					strtoul(argv[optind++], NULL, 16);
-			}
+			handle_optional_argument(argv, &prev_log_entry, 16);
 			break;
 		case 'M':
 			show_machine_output = true;
 			break;
 		case 'm':
 			tpm_mode = 1;
-			if (!optarg && argv[optind] && argv[optind][0] != '-') {
-				optarg = argv[optind++];
-				tpm_mode_arg = optarg;
-			}
+			handle_optional_argument(argv, NULL, -1);
+			tpm_mode_arg = optarg;
 			break;
 		case 'n':
 			serial = optarg;
@@ -2407,19 +2409,13 @@ int main(int argc, char *argv[])
 			break;
 		case 'r':
 			rma = 1;
-
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
+			handle_optional_argument(argv, NULL, -1);
 			rma_auth_code = optarg;
 			break;
 		case 'R':
 			sn_inc_rma = 1;
-
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
+			if (!handle_optional_argument(argv, NULL, -1))
+				break;
 
 			if (!parse_sn_inc_rma(optarg, &sn_inc_rma_arg)) {
 				fprintf(stderr,
