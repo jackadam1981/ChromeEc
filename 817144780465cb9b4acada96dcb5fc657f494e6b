@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5facba42_01f8c3da",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-17T21:32:18Z",
+      "side": 1,
+      "message": "This should be __maybe_unused. It\u0027s being merged.",
+      "range": {
+        "startLine": 1246,
+        "startChar": 7,
+        "endLine": 1246,
+        "endChar": 30
+      },
+      "revId": "817144780465cb9b4acada96dcb5fc657f494e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
