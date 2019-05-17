@@ -58,4 +58,19 @@ int audio_codec_register_shm(uint8_t shm_id, uint8_t cap,
  */
 int audio_codec_register_driver(struct audio_codec_driver *driver);
 
+
+struct audio_codec_dmic_driver {
+	int (*get_max_gain)(uint8_t *max_gain);
+	int (*set_gain_idx)(uint8_t channel, uint8_t gain);
+	int (*get_gain_idx)(uint8_t channel, uint8_t *gain);
+};
+
+/*
+ * Register DMIC driver.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_register_dmic_driver(struct audio_codec_dmic_driver *driver);
+
 #endif
