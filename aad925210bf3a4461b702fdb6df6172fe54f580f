@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e7ec40e8_8c2ddc59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-17T21:00:12Z",
+      "side": 1,
+      "message": "Probably BRANCH\u003darcada?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68877a32_da0ecb35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-17T21:00:12Z",
+      "side": 1,
+      "message": "I assume this is on Arcada? The value as-is doesn\u0027t seem meaningful to me, so it\u0027s either board specific (and it should be pointed out as such), or it\u0027s some meaningful constant and maybe it would be worth mentioning that",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "193ca74b_40af7f20",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 1
@@ -19,6 +65,23 @@
         "endLine": 70,
         "endChar": 24
       },
+      "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa9aba5_6613a05c",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-17T21:00:12Z",
+      "side": 1,
+      "message": "Should this be\n   #ifdef CONFIG_MAG_BMI160_LIS2MDL\n   #define LIS2MDL...\n\nNot sure if it would work, but even better would be\n   #ifdef CONFIG_MAG_BMI160_LIS2MDL\n   #define LIS2MDL...\n   #else\n   #define LIS2MDL #error \"Only supported in standalone mode\"\n   #endif",
       "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
