@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "193ca74b_40af7f20",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T20:55:01Z",
+      "side": 1,
+      "message": "this macro isn\u0027t correct now, right? since drv_data now points to stprivate_data",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 24
+      },
+      "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
