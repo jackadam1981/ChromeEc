@@ -46,6 +46,30 @@
       "revId": "2062335621e84fc51609821102835a4741bc1e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702d5291_b6c0710e",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-17T22:10:58Z",
+      "side": 1,
+      "message": "I came up with https://crrev.com/c/1617895 as a nice way we can implement this. Given we get positive feedback on that review, I\u0027ll rebase on top of this.",
+      "parentUuid": "e79e360c_cc3b704b",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "2062335621e84fc51609821102835a4741bc1e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
