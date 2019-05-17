@@ -45,6 +45,30 @@
       "revId": "feae84a24927935610f913532f778151a78a5145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61fc59e3_ee1be143",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3905,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-17T20:21:38Z",
+      "side": 1,
+      "message": "I\u0027d like it in place for the ODM testing to measure the time it takes to hit this condition.  \n\nFor the final CL, I could go either way.  This should very hopefully be a condition which isn\u0027t hit often unless a battery is bouncing between being OK and low, so I don\u0027t anticipate it clogging up a normal EC console output.",
+      "parentUuid": "11e81692_633743b6",
+      "range": {
+        "startLine": 3904,
+        "startChar": 18,
+        "endLine": 3905,
+        "endChar": 32
+      },
+      "revId": "feae84a24927935610f913532f778151a78a5145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
