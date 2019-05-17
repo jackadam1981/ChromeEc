@@ -3554,6 +3554,9 @@
 /* Enable runtime config the TCPC */
 #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 
+/* Enable hard-coding the TCPC Chip Info in tcpc_config */
+#undef CONFIG_HARDCODE_USB_PD_TCPC_CHIP_INFO
+
 /*
  * Choose one of the following TCPMs (type-C port manager) to manage TCPC. The
  * TCPM stub is used to make direct function calls to TCPC when TCPC is on

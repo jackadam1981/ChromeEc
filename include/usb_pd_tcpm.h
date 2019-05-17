@@ -331,6 +331,10 @@ struct tcpc_config_t {
 	const struct tcpm_drv *drv;
 	/* See TCPC_FLAGS_* above */
 	uint32_t flags;
+#ifdef CONFIG_HARDCODE_USB_PD_TCPC_CHIP_INFO
+	uint16_t vendor_id;
+	uint16_t product_id;
+#endif
 };
 
 #ifndef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG

@@ -5297,6 +5297,17 @@ static int hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 	if (tcpm_get_chip_info(p->port, p->renew, &info))
 		return EC_RES_ERROR;
 
+#ifdef CONFIG_HARDCODE_USB_PD_TCPC_CHIP_INFO
+	/*
+	 * Copy the hard-coded chip information from tcpc_config under
+	 * bad or corrupt firmware situation (where all the ids are
+	 * zero'ed out).
+	 */
+	if (!info->vendor_id && !info->product_id) {
+		info->vendor_id = tcpc_config[p->port].vendor_id;
+		info->product_id = tcpc_config[p->port].product_id;
+	}
+#endif
 	/*
 	 * Take advantage of the fact that v0 and v1 structs have the
 	 * same layout for v0 data. (v1 just appends data)
