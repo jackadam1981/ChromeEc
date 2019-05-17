@@ -4617,8 +4617,13 @@ struct __ec_align4 ec_response_ec_codec_get_shm_addr {
 #define EC_CMD_EC_CODEC_DMIC 0x00BD
 
 enum ec_codec_dmic_subcmd {
-	EC_CODEC_DMIC_SET_GAIN = 0x0,
-	EC_CODEC_DMIC_GET_GAIN = 0x1,
+	EC_CODEC_DMIC_GET_MAX_GAIN = 0x0,
+	EC_CODEC_DMIC_SET_GAIN_IDX = 0x1,
+	EC_CODEC_DMIC_GET_GAIN_IDX = 0x2,
+	EC_CODEC_DMIC_SET_GAIN_MONO = 0x3,
+	EC_CODEC_DMIC_GET_GAIN_MONO = 0x4,
+	EC_CODEC_DMIC_SET_GAIN_DUAL = 0x5,
+	EC_CODEC_DMIC_GET_GAIN_DUAL = 0x6,
 	EC_CODEC_DMIC_SUBCMD_COUNT,
 };
 
@@ -4628,14 +4633,39 @@ struct __ec_align4 ec_param_ec_codec_dmic {
 	uint8_t reserved[3];
 
 	union {
-		struct __ec_align1 ec_param_ec_codec_dmic_set_gain {
+		struct __ec_align1 ec_param_ec_codec_dmic_set_gain_idx {
+			uint8_t channel;
+			uint8_t gain;
+		} set_gain_idx_param;
+
+		struct __ec_align1 ec_param_ec_codec_dmic_get_gain_idx {
+			uint8_t channel;
+		} get_gain_idx_param;
+
+		struct __ec_align1 ec_param_ec_codec_dmic_set_gain_mono {
+			uint8_t gain;
+		} set_gain_mono_param;
+
+		struct __ec_align1 ec_param_ec_codec_dmic_set_gain_dual {
 			uint8_t left;
 			uint8_t right;
-		} set_gain_param;
+		} set_gain_dual_param;
 	};
 };
 
-struct __ec_align1 ec_response_ec_codec_dmic_get_gain {
+struct __ec_align1 ec_response_ec_codec_dmic_get_max_gain {
+	uint8_t max_gain;
+};
+
+struct __ec_align1 ec_response_ec_codec_dmic_get_gain_idx {
+	uint8_t gain;
+};
+
+struct __ec_align1 ec_response_ec_codec_dmic_get_gain_mono {
+	uint8_t gain;
+};
+
+struct __ec_align1 ec_response_ec_codec_dmic_get_gain_dual {
 	uint8_t left;
 	uint8_t right;
 };
