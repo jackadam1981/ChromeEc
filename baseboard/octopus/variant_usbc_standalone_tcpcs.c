@@ -37,11 +37,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.drv = &ps8xxx_tcpm_drv,
 		/* Alert is active-low, push-pull */
 		.flags = 0,
+		.vendor_id = PS8XXX_VENDOR_ID,
+		.product_id = PS8XXX_PRODUCT_ID,
 #else
 		.i2c_slave_addr = AN7447_TCPC0_I2C_ADDR,
 		.drv = &anx7447_tcpm_drv,
 		/* Alert is active-low, push-pull */
 		.flags = 0,
+		.vendor_id = 0,
+		.product_id = 0,
 #endif
 	},
 	[USB_PD_PORT_TCPC_1] = {
@@ -50,6 +54,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.drv = &ps8xxx_tcpm_drv,
 		/* Alert is active-low, push-pull */
 		.flags = 0,
+		.vendor_id = PS8XXX_VENDOR_ID,
+		.product_id = PS8XXX_PRODUCT_ID,
 	},
 };
 

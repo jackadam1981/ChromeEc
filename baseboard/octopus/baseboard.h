@@ -55,6 +55,9 @@
 	/* EC variant determines USB-C variant */
 	#define VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
 
+	/* Enable hardcoding USB PD TCPC Chip Info */
+	#define CONFIG_HARDCODE_USB_PD_TCPC_CHIP_INFO
+
 	/* Allow the EC to enter deep sleep in S0 */
 	#define CONFIG_LOW_POWER_S0
 #elif defined(VARIANT_OCTOPUS_EC_ITE8320)
