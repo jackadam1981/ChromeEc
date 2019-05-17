@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "c330bd9d_f633baee",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-05-17T03:13:08Z",
+      "side": 1,
+      "message": "If you\u0027re confident in this then happy to defer to you :)\n\nI\u0027ll put together a separate CL with an aligned version of p256_int in the relevant places, and copies where needed (I will aim to write these in a way that is optimized away where it\u0027s not actually needed).",
+      "parentUuid": "6fe69ce1_9225126e",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 12
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ca0206a_43df1619",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
