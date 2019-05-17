@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "1b5c0460_bf131d61",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-17T22:03:04Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "193ca74b_40af7f20",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 24
+      },
+      "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa9aba5_6613a05c",
         "filename": "driver/mag_lis2mdl.h",
         "patchSetId": 1
@@ -85,6 +109,24 @@
       "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25cb83ca_3e3d70f6",
+        "filename": "driver/mag_lis2mdl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-17T22:03:04Z",
+      "side": 1,
+      "message": "LIS2MDL_ST_DATA is only valid in standalone mode. It will generate an error given .data is not defined when behind an IMU.",
+      "parentUuid": "aaa9aba5_6613a05c",
+      "revId": "aad925210bf3a4461b702fdb6df6172fe54f580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
