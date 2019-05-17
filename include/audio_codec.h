@@ -58,4 +58,18 @@ int audio_codec_register_shm(uint8_t shm_id, uint8_t cap,
  */
 int audio_codec_register_driver(struct audio_codec_driver *driver);
 
+
+struct audio_codec_dmic_driver {
+	int (*set_gain)(uint8_t left, uint8_t right);
+	int (*get_gain)(uint8_t *left, uint8_t *right);
+};
+
+/*
+ * Register DMIC driver.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_register_dmic_driver(struct audio_codec_dmic_driver *driver);
+
 #endif
