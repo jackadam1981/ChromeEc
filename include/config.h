@@ -297,6 +297,8 @@
 
 /* Support audio codec. */
 #undef CONFIG_AUDIO_CODEC
+/* Support audio codec on DMIC. */
+#undef CONFIG_AUDIO_CODEC_DMIC
 
 /*
  * Enable support for CPU caches behaving according to the ARMv7-M ISA.
