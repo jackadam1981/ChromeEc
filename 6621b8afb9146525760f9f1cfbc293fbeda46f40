@@ -404,6 +404,24 @@
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff322312_4ef1fb2f",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-17T21:14:41Z",
+      "side": 1,
+      "message": "That is a good point Gwendal, we should ensure that the interrupt_timestamp has not changed in addition to the fifo not being empty to loop again locally",
+      "parentUuid": "2b7ea766_22e1c135",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
