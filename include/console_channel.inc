@@ -110,3 +110,4 @@ CONSOLE_CHANNEL(CC_USBPD,        "usbpd")
 #endif
 CONSOLE_CHANNEL(CC_VBOOT,        "vboot")
 CONSOLE_CHANNEL(CC_HOOK,         "hook")
+CONSOLE_CHANNEL(CC_AUDIO_CODEC,  "audio_codec")
