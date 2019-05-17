@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "967e1a3b_774c8713",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-17T15:55:29Z",
+      "side": 1,
+      "message": "Can you describe what this patch is correcting?",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "509a0616a96f3d72378b18a3b8da28672af595f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f682376_e9649175",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
