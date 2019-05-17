@@ -222,7 +222,6 @@ struct options_map {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikLMmn:O:oPpR:rS:stUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -235,7 +234,7 @@ static const struct option long_opts[] = {
 	{"ccd_unlock",                  0,   NULL, 'U'},
 	{"corrupt",	                0,   NULL, 'c'},
 	{"device",	                1,   NULL, 'd'},
-	{"flog",	                0,   NULL, 'L'},
+	{"flog",	                2,   NULL, 'L'},
 	{"factory",	                1,   NULL, 'F'},
 	{"fwver",	                0,   NULL, 'f'},
 	{"help",	                0,   NULL, 'h'},
@@ -256,7 +255,6 @@ static const struct option long_opts[] = {
 	{"upstart",	                0,   NULL, 'u'},
 	{},
 };
-
 
 /* Helper to print debug messages when verbose flag is specified. */
 static void debug(const char *fmt, ...)
@@ -2256,6 +2254,66 @@ static int check_boolean(const struct options_map *omap, char option)
 	return 0;
 }
 
+static void set_short_opts(char *short_opts)
+{
+	int i;
+	int j;
+
+	for (i = j = 0; long_opts[i].name; i++) {
+		short_opts[j++]  = long_opts[i].val;
+		if (long_opts[i].has_arg == required_argument)
+			short_opts[j++] = ':';
+	}
+}
+
+static int get_longindex(int short_opt)
+{
+	int i;
+
+	for (i = 0; long_opts[i].name; i++)
+		if (long_opts[i].val == short_opt)
+			return i;
+
+	/*
+	 * We could never come here as the short options list is compiled
+	 * based on long options table.
+	 */
+	fprintf(stderr, "could not fine long opt table index for %d\n",
+		short_opt);
+	exit(1);
+
+	return -1; /* Not reached. */
+}
+
+static int getopt_all(int argc, char *argv[])
+{
+	int longindex = -1;
+	static char short_opts[2*ARRAY_SIZE(long_opts)] = {};
+	int i;
+
+	if (!short_opts[0])
+		set_short_opts(short_opts);
+
+	i = getopt_long(argc, argv, short_opts, long_opts, &longindex);
+	if (i != -1) {
+		if (longindex < 0)
+			longindex = get_longindex(i);
+
+		if (long_opts[longindex].has_arg == 2) {
+			/*
+			 * This command line option may include an argument,
+			 * let's check if it is there as the next token in the
+			 * command line.
+			 */
+			if (!optarg && argv[optind] && argv[optind][0] != '-')
+				/* Optional argument present. */
+				optarg = argv[optind++];
+		}
+	}
+
+	return i;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -2340,7 +2398,8 @@ int main(int argc, char *argv[])
 	bid_action = bid_none;
 	errorcnt = 0;
 	opterr = 0;				/* quiet, you */
-	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
+
+	while ((i = getopt_all(argc, argv)) != -1) {
 		if (check_boolean(omap, i))
 			continue;
 		switch (i) {
@@ -2370,10 +2429,6 @@ int main(int argc, char *argv[])
 			usage(errorcnt);
 			break;
 		case 'i':
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
 			if (!parse_bid(optarg, &bid, &bid_action)) {
 				fprintf(stderr,
 					"Invalid board id argument: \"%s\"\n",
@@ -2383,21 +2438,15 @@ int main(int argc, char *argv[])
 			break;
 		case 'L':
 			get_flog = 1;
-			if (!optarg && argv[optind] &&
-			    (argv[optind][0] != '-')) {
-				prev_log_entry =
-					strtoul(argv[optind++], NULL, 16);
-			}
+			if (optarg)
+				prev_log_entry = strtoul(optarg, NULL, 16);
 			break;
 		case 'M':
 			show_machine_output = true;
 			break;
 		case 'm':
 			tpm_mode = 1;
-			if (!optarg && argv[optind] && argv[optind][0] != '-') {
-				optarg = argv[optind++];
-				tpm_mode_arg = optarg;
-			}
+			tpm_mode_arg = optarg;
 			break;
 		case 'n':
 			serial = optarg;
@@ -2407,20 +2456,10 @@ int main(int argc, char *argv[])
 			break;
 		case 'r':
 			rma = 1;
-
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
 			rma_auth_code = optarg;
 			break;
 		case 'R':
 			sn_inc_rma = 1;
-
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
 			if (!parse_sn_inc_rma(optarg, &sn_inc_rma_arg)) {
 				fprintf(stderr,
 					"Invalid sn_rma_inc argument: \"%s\"\n",
@@ -2439,11 +2478,6 @@ int main(int argc, char *argv[])
 			break;
 		case 'S':
 			sn_bits = 1;
-
-			if (!optarg && argv[optind] && argv[optind][0] != '-')
-				/* optional argument present. */
-				optarg = argv[optind++];
-
 			if (!parse_sn_bits(optarg, sn_bits_arg)) {
 				fprintf(stderr,
 					"Invalid sn_bits argument: \"%s\"\n",
