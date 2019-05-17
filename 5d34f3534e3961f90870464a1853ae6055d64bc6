@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a5ca397_c369efb6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3812,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-17T02:25:33Z",
+      "side": 1,
+      "message": "Can you add } {?",
+      "revId": "5d34f3534e3961f90870464a1853ae6055d64bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed65deab_e4246dbb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3842,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-17T02:25:33Z",
+      "side": 1,
+      "message": "ifdef",
+      "range": {
+        "startLine": 3842,
+        "startChar": 1,
+        "endLine": 3842,
+        "endChar": 11
+      },
+      "revId": "5d34f3534e3961f90870464a1853ae6055d64bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
