@@ -93,6 +93,54 @@
       "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc28531b_47e2a24a",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-18T01:08:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "141f9141_a75e8a2a",
+      "range": {
+        "startLine": 543,
+        "startChar": 20,
+        "endLine": 543,
+        "endChar": 36
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e72ff66_ee912dcd",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-18T01:08:30Z",
+      "side": 1,
+      "message": "right, BOARD is always set to cr50.\nusing STRINGIFY(BOARD) was not added in this CL, it\u0027s how it was before it.\n\nbefore this CL it was\n - STRINGIFY(BOARD) for all certs\nthis CL changes it to:\n - STRINGIFY(BOARD) for U2F cert (no change)\n - \"CrOS\" for G2F cert.",
+      "parentUuid": "7c893517_ff610311",
+      "range": {
+        "startLine": 543,
+        "startChar": 30,
+        "endLine": 543,
+        "endChar": 35
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
