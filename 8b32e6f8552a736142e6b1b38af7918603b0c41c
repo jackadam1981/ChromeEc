@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e432097_0f9cf0e9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T17:59:40Z",
+      "side": 1,
+      "message": "You can use DUAL_ROLE_IF_ELSE.\n\nHow do you compare hooking pd_set_power_role v.s. hooking PD_CTRL_PR_SWAP in handle_ctrl_request?",
+      "range": {
+        "startLine": 1694,
+        "startChar": 0,
+        "endLine": 1696,
+        "endChar": 36
+      },
+      "revId": "8b32e6f8552a736142e6b1b38af7918603b0c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6cfb35_523e356e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T17:59:40Z",
+      "side": 1,
+      "message": "ifdef",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "8b32e6f8552a736142e6b1b38af7918603b0c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
