@@ -22,6 +22,29 @@
       "revId": "e5123687bde96939fd0418ad49481eba4f8d668d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60a4bac_cca738f3",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T19:29:47Z",
+      "side": 1,
+      "message": "Changing #define -\u003e enum:\n\n  enum reset_flag {\n    RESET_FLAG_OTHER \u003d BIT(0),\n    ...\n  }\n\nand add comments in reset_flag_desc.inc:\n\n  \"other\",  /* RESET_FLAG_OTHER */\n  ...\n\nis basically what we have for pd_state_names and enum pd_states. \n\nMacro crafting is something I think we want to avoid unless there is no other way to reduce code duplication significantly.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "e5123687bde96939fd0418ad49481eba4f8d668d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
