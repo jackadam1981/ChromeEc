@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482affb2_fc755fd3",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-20T08:28:32Z",
+      "side": 1,
+      "message": "const\n\nWith const, does the compiler optimizes this out? If not if might be best to do something simpler like:\n\tmt6370_db_set_vbst(6000);\n\tmt6370_db_set_vpos(5800);\n\tmt6370_db_set_vneg(5800);",
+      "revId": "10d241228ae907e0f5c0751660fbc223d7e45643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644c5959_ba9d3f7c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-20T08:28:32Z",
+      "side": 1,
+      "message": "Maybe a single function that does all 3 is fine? After all users are likely to change all 3.",
+      "revId": "10d241228ae907e0f5c0751660fbc223d7e45643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
