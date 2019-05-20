@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "4c22c134_cfbae113",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5360,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T20:25:16Z",
+      "side": 1,
+      "message": "Why don\u0027t we use zero for I2C_LOOKUP_TYPE_CBI_EEPROM?",
+      "parentUuid": "b415f794_6ea75a34",
+      "range": {
+        "startLine": 5360,
+        "startChar": 1,
+        "endLine": 5360,
+        "endChar": 22
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ff387a8_508300ea",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
@@ -151,6 +175,30 @@
       "writtenOn": "2019-05-17T21:09:11Z",
       "side": 1,
       "message": "I think the instance number should be optional",
+      "range": {
+        "startLine": 6241,
+        "startChar": 1,
+        "endLine": 6241,
+        "endChar": 16
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdd96c6_130621fa",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T20:25:16Z",
+      "side": 1,
+      "message": "I think we should assume all types may have multiple chips.\n\nI also think we should make i2c_lookup more generic. As Julius also pointed out, i2c_lookup has to deal with PD port numbers (instead of I2C port numbers) because if chips are in a hybrid bus topology, Depthcharge needs to know which [i2c_port, i2c_addr] belongs to which PD chip.\n\nSince i2c_lookup has to deal with PD port numbers, we should convert it to a generic lookup command returning bus type:\n\n\t#define EC_CMD_BUS_LOOKUP\n\tstruct ec_response_bus_lookup {\n\t\tuint8_t bus_type;  /* EC_BUS_TYPE_I2C, _SPI, ... */\n\t\tunion {\n\t\t\tstruct ec_i2c_info;\n\t\t\tstruct ec_spi_info;\n\t\t\t...\n\t\t}\n\t} __ec_align2;",
+      "parentUuid": "7ce519e2_9cfe0792",
       "range": {
         "startLine": 6241,
         "startChar": 1,
