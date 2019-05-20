@@ -164,6 +164,30 @@
       "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e87451c_04e1b9e3",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-20T21:26:51Z",
+      "side": 1,
+      "message": "yes, I see #define CONFIG_U2F, which includes this file into build, only for cr50. but if we keep it in common, we still want a followup CL to make sure we have a separate subject in the cert (which proved to be useful) for other future users.",
+      "parentUuid": "6631acf5_e038bbbe",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
