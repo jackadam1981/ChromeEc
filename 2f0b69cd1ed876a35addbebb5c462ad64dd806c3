@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0417956_2524abab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:52:16Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "3a6471d0_9a3cd2cb",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "118ae7e4_aadf9fbd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "184450ea_9f26b59b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:52:16Z",
+      "side": 1,
+      "message": "You are correct, I updated the short description",
+      "parentUuid": "118ae7e4_aadf9fbd",
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28f44adc_6e4560bf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -53,6 +95,24 @@
       "writtenOn": "2019-05-20T20:44:17Z",
       "side": 1,
       "message": "There is no associated bug with more background?",
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af5d7aa_cbbe8ce8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:52:16Z",
+      "side": 1,
+      "message": "@Rubin can you provide a bug",
+      "parentUuid": "28f44adc_6e4560bf",
       "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "b7c1b61e_14b69120",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:52:16Z",
+      "side": 1,
+      "message": "No :(\n\nThis is as pretty as I could get it and still have buildall work; it is still very ugly.",
+      "parentUuid": "3cf1b27e_70d5dbd2",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 30
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7bb9d48_9443dee1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d1a65335_247ea2c5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:52:16Z",
+      "side": 1,
+      "message": "This is for SS mux, yes.\n\nI switched the logic to more closely match the ToT.\n\nNow the logic is: If only support DFP \u0026\u0026 not DFP, then disconnect",
+      "parentUuid": "b7bb9d48_9443dee1",
+      "range": {
+        "startLine": 1280,
+        "startChar": 4,
+        "endLine": 1280,
+        "endChar": 51
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c490ac5_22213e65",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
@@ -125,6 +233,30 @@
       "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7104fa70_f73faa34",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:52:16Z",
+      "side": 1,
+      "message": "I updated the code anyway since (only support DFP \u0026\u0026 !DFP) seems to be a more natural condition",
+      "parentUuid": "3c490ac5_22213e65",
+      "range": {
+        "startLine": 1283,
+        "startChar": 2,
+        "endLine": 1283,
+        "endChar": 37
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
