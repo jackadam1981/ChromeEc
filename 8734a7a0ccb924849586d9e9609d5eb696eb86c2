@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3a01a1c_40d6242e",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-20T20:41:27Z",
+      "side": 1,
+      "message": "nit: this can be S3/S0ix.",
+      "range": {
+        "startLine": 532,
+        "startChar": 30,
+        "endLine": 532,
+        "endChar": 34
+      },
+      "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c864dea_af10ff61",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-20T20:41:27Z",
+      "side": 1,
+      "message": "S0 -\u003e S0ix/S3 or S3 -\u003e S5 in case of shutdown.",
+      "range": {
+        "startLine": 541,
+        "startChar": 22,
+        "endLine": 541,
+        "endChar": 26
+      },
+      "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e178a76_ed183459",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-20T20:41:27Z",
+      "side": 1,
+      "message": "nit: prochot",
+      "range": {
+        "startLine": 823,
+        "startChar": 14,
+        "endLine": 823,
+        "endChar": 22
+      },
+      "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
