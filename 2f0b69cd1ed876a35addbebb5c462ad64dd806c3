@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "26f83a99_3e975824",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T21:34:01Z",
+      "side": 1,
+      "message": "\u003e No :(\n\u003e \n\u003e This is as pretty as I could get it and still have buildall work; it is still very ugly.\n\nPD_STATE_SNK_DISCONNECTED should be defined in all configurations, right?",
+      "parentUuid": "b7c1b61e_14b69120",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 30
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7bb9d48_9443dee1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
