@@ -141,6 +141,29 @@
       "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6631acf5_e038bbbe",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-20T17:33:16Z",
+      "side": 1,
+      "message": "Actually, if this code is ever used outside cr50, we need something like\n\treturn DCRYPTO_x509_gen_u2f_cert_name(d, pk_x, pk_y, serial,\n#if BOARD \u003d\u003d cr50\n                                              G2F_CERT_NAME,\n#else\n                                              STRINGIFY(BOARD),\n#endif\n                                              cert, n);\n\nIf nobody but c50 uses it *at the moment*, this CL is fine to land as is, but we still may want a followup CL like that in case we add a 2nd user in the future.",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "c4528e3a69344f87479c1029bbbfce8a6bc0e55d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
