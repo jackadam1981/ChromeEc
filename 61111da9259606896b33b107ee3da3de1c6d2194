@@ -34,6 +34,24 @@
       "revId": "61111da9259606896b33b107ee3da3de1c6d2194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46101e80_587aaa3a",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-20T22:04:48Z",
+      "side": 1,
+      "message": "yes. Actually, data-\u003ebase.odr is not needed, drv_data is a static.\nWe did not see any error because we are not calling st_normalize where it is used.",
+      "parentUuid": "9b48ce61_3cbadece",
+      "revId": "61111da9259606896b33b107ee3da3de1c6d2194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
