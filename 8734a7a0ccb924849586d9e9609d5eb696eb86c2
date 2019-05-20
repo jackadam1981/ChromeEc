@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "098882b2_1941e759",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-20T20:59:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a01a1c_40d6242e",
+      "range": {
+        "startLine": 532,
+        "startChar": 30,
+        "endLine": 532,
+        "endChar": 34
+      },
+      "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c864dea_af10ff61",
         "filename": "driver/charger/bq25710.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bef37c27_15e779fd",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-20T20:59:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c864dea_af10ff61",
+      "range": {
+        "startLine": 541,
+        "startChar": 22,
+        "endLine": 541,
+        "endChar": 26
+      },
+      "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e178a76_ed183459",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da84f768_3ae9e64a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-20T20:59:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e178a76_ed183459",
+      "range": {
+        "startLine": 823,
+        "startChar": 14,
+        "endLine": 823,
+        "endChar": 22
+      },
+      "revId": "8734a7a0ccb924849586d9e9609d5eb696eb86c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
