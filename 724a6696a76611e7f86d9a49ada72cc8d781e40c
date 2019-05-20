@@ -22,6 +22,30 @@
       "revId": "724a6696a76611e7f86d9a49ada72cc8d781e40c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab30af68_d175f40f",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-05-20T07:12:08Z",
+      "side": 1,
+      "message": "I have changed return value to 0.\nThe charger profile override is for checking thermal condition.\nSo I think it is reasonable that override is skipped when battery is not responsible.",
+      "parentUuid": "dcb2a131_b5983311",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "724a6696a76611e7f86d9a49ada72cc8d781e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
