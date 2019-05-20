@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a6471d0_9a3cd2cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-05-20T20:44:17Z",
+      "side": 1,
+      "message": "The change doesn\u0027t look specific to PS8751",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118ae7e4_aadf9fbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-05-20T20:44:17Z",
+      "side": 1,
+      "message": "I find it hard to tell from this description what the change in behavior is. Looking at the code I think the goal is to set the mux to disconnected when PD is disconnected?",
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f44adc_6e4560bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-05-20T20:44:17Z",
+      "side": 1,
+      "message": "There is no associated bug with more background?",
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cf1b27e_70d5dbd2",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
