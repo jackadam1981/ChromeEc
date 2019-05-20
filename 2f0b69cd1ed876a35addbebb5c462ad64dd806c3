@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "5bd35155_00ed42b4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-20T22:00:24Z",
+      "side": 1,
+      "message": "I\u0027d say the build error is worthwhile to ensure we don\u0027t inadvertently call set_state() into an invalid state, but perhaps working with this file a lot has jaded me to worrying about \"ifdef\" statements everywhere",
+      "parentUuid": "f4f86aef_14a01b21",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 30
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7bb9d48_9443dee1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
