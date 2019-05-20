@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "78a922bc_383224f3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T20:58:28Z",
+      "side": 1,
+      "message": "We can. I just didn\u0027t, but I think we are close enough to the initial use that we can re-brand it. We need to update the Faft and ectool code then :)\n\nI just don\u0027t see the need for count (but I am not against re-number either); your choice",
+      "parentUuid": "4c22c134_cfbae113",
+      "range": {
+        "startLine": 5360,
+        "startChar": 1,
+        "endLine": 5360,
+        "endChar": 22
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ff387a8_508300ea",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
