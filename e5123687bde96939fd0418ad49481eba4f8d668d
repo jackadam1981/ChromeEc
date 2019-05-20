@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "895daafe_6428be61",
+        "filename": "include/reset_flags.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T17:12:55Z",
+      "side": 1,
+      "message": "My concern with this is that the flags values could change between RW and RO without realizing it (if a flag was inserted in the middle).\n\nI think just adding a\n#define RESET_FLAG_VALID_MASK (BIT(19) - 1)\n\nwould work since it would be right next to were you were adding a new flag.\n\n\nI feel like this is adding indirection (which make things more difficult to trace) without giving us too much in return. (we also have the valid mask in other places like TASK_EVENT_CUSTOM_BIT)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "e5123687bde96939fd0418ad49481eba4f8d668d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
