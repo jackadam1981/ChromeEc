@@ -45,6 +45,29 @@
       "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c490ac5_22213e65",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-20T19:51:16Z",
+      "side": 1,
+      "message": "This may not be totally equivalent to the previous \"if\" since data_role can also be PD_ROLE_DISCONNECTED, though looking at the code that data_role should hopefully track very closely to the disconnected states, in which case the first if will apply",
+      "range": {
+        "startLine": 1283,
+        "startChar": 2,
+        "endLine": 1283,
+        "endChar": 37
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
