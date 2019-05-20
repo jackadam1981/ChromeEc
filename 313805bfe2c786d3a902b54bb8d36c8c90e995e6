@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f598aa3d_1b30ebbd",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-20T20:12:18Z",
+      "side": 1,
+      "message": "nit: this is now unused? Do we need to omit the name of the argument?",
+      "range": {
+        "startLine": 391,
+        "startChar": 40,
+        "endLine": 391,
+        "endChar": 46
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6a3f011_828d78e2",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-20T20:12:18Z",
+      "side": 1,
+      "message": "It looks like this can safely go above line 416. You won\u0027t do anything with last_fifo_read_ts anyway",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 14
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e46d84_5f2b4478",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-20T20:12:18Z",
+      "side": 1,
+      "message": "Make a macro IS_LEN_EMPTY (or some better name), and then use both here and in is_fifo_empty.",
+      "range": {
+        "startLine": 423,
+        "startChar": 8,
+        "endLine": 423,
+        "endChar": 37
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ef3b78_d1cbfebb",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-20T20:12:18Z",
+      "side": 1,
+      "message": "I know what you\u0027re trying to say, but I think the wording is a bit ambiguous.\n\nMaybe mention that new samples have arrived since we calculated the FIFO size, that we didn\u0027t get a new interrupt, and thus we\u0027re trying to load them in one fell swoop instead of waiting for the next interrupt to come in much later.",
+      "range": {
+        "startLine": 427,
+        "startChar": 5,
+        "endLine": 428,
+        "endChar": 14
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
