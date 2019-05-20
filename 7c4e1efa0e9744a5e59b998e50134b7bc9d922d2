@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae61b2d8_b00b73d1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5300,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T16:30:14Z",
+      "side": 1,
+      "message": "I think we always want this, will it fit on all boards?\n\nAlso, I think the vendor id can be determined by the driver itself (i.e. the tcpc_config[port]-\u003edrv should know what the vendor is). The product id would have to be hard coded though.",
+      "range": {
+        "startLine": 5300,
+        "startChar": 7,
+        "endLine": 5300,
+        "endChar": 44
+      },
+      "revId": "7c4e1efa0e9744a5e59b998e50134b7bc9d922d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf791511_b13591fa",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T16:30:14Z",
+      "side": 1,
+      "message": "we should add comments that this is the XXX enum ec_commands.h",
+      "range": {
+        "startLine": 336,
+        "startChar": 10,
+        "endLine": 336,
+        "endChar": 20
+      },
+      "revId": "7c4e1efa0e9744a5e59b998e50134b7bc9d922d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
