@@ -297,6 +297,17 @@ void uart_init(void)
 		(STM32_RCC_CCIPR_UART_SYSCLK << STM32_RCC_CCIPR_LPUART1SEL_SHIFT);
 #endif /* CHIP_FAMILY_STM32F0 || CHIP_FAMILY_STM32F3 */
 
+#if defined(CHIP_FAMILY_STM32G0)
+/* Enable USART clock */
+#if (UARTN == 1)
+	STM32_RCC_APBENR2 |= STM32_RCC_USART1EN;
+#elif (UARTN == 2)
+	STM32_RCC_APBENR1 |= STM32_RCC_USART2EN;
+#elif (UARTN == 3)
+	STM32_RCC_APBENR1 |= STM32_RCC_USART3EN;
+#elif (UARTN == 4)
+	STM32_RCC_APBENR1 |= STM32_RCC_USART4EN;
+#else
 	/* Enable USART clock */
 #if (UARTN == 1)
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_USART1;
@@ -307,7 +318,8 @@ void uart_init(void)
 #else
 	STM32_RCC_APB1ENR |= CONCAT2(STM32_RCC_PB1_USART, UARTN);
 #endif
-
+#endif
+#endif
 	/*
 	 * For STM32F3, A delay of 1 APB clock cycles is needed before we
 	 * can access any USART register. Fortunately, we have
