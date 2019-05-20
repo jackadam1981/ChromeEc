@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eef58e69_e7a2b6bb",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-20T18:15:42Z",
+      "side": 1,
+      "message": "marking resolved, feel free to re-open as needed.",
+      "parentUuid": "e0e01fff_72bbf852",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 53
+      },
+      "revId": "906aa153ccd5c7e88229e5ed0148e8ce78f77b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4dd5510_26c83646",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 8

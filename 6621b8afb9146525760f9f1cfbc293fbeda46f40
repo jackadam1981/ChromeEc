@@ -422,6 +422,24 @@
       "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "542b14f6_cc61a6cd",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-20T18:15:42Z",
+      "side": 1,
+      "message": "Added a check to make sure that the new timestamp is newer than the previous. That should handle this case.",
+      "parentUuid": "ff322312_4ef1fb2f",
+      "revId": "6621b8afb9146525760f9f1cfbc293fbeda46f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
