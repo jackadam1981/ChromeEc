@@ -69,6 +69,30 @@
       "revId": "ab13e3c5c94f2bdd5a4b943eedd25d8c681f6877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4914da4_8ceba437",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345671
+      },
+      "writtenOn": "2019-05-20T16:09:10Z",
+      "side": 1,
+      "message": "I see now that the set-option is a special macro in the makefiles for this purpose by allowing default values if no special value is provided. Change will be made.",
+      "parentUuid": "56cf4956_5403f611",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "ab13e3c5c94f2bdd5a4b943eedd25d8c681f6877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
