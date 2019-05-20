@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d02375c8_76b6a570",
+        "filename": "baseboard/intelrvp/README",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T16:43:32Z",
+      "side": 1,
+      "message": "can you make this a README.md file please",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 4
+      },
+      "revId": "562f33847388b79dfe799822bd3f91bdf1a663ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff000ef_5c45d4a0",
+        "filename": "baseboard/intelrvp/README",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-20T16:43:32Z",
+      "side": 1,
+      "message": "can you help me understand this list better. Is this a list of everything a MECC card must handle to work with an RVP?\n\nMust the MECC hardware card have the H1 chip on it?\n\n\nIs this a check list for hardware or firmware, or both? (Or a checklist for board/* implementors)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "562f33847388b79dfe799822bd3f91bdf1a663ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
