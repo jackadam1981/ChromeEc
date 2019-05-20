@@ -11,9 +11,19 @@
 #include <stdint.h>
 #include "common.h"
 #include "ec_commands.h"
+#include "fpsensor_state.h"
+#include "link_defs.h"
 
 #ifndef SPI_FP_DEVICE
 #define SPI_FP_DEVICE (&spi_devices[0])
+#endif
+
+/* if no special memory regions are defined, fallback on regular SRAM */
+#ifndef FP_FRAME_SECTION
+#define FP_FRAME_SECTION
+#endif
+#ifndef FP_TEMPLATE_SECTION
+#define FP_TEMPLATE_SECTION
 #endif
 
 /*  Four-character-code */
@@ -22,6 +32,34 @@
 
 /* 8-bit greyscale pixel format as defined by V4L2 headers */
 #define V4L2_PIX_FMT_GREY FOURCC('G', 'R', 'E', 'Y')
+
+/* --- Global variables defined in fpsensor_state.c --- */
+
+/* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
+extern uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE] FP_FRAME_SECTION __aligned(4);
+/* Fingers templates for the current user */
+extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE]
+	FP_TEMPLATE_SECTION;
+/* Encryption/decryption buffer */
+/* TODO: On-the-fly encryption/decryption without a dedicated buffer */
+/*
+ * Store the encryption metadata at the beginning of the buffer containing the
+ * ciphered data.
+ */
+extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
+	FP_TEMPLATE_SECTION;
+/* Number of used templates */
+extern uint32_t templ_valid;
+/* Bitmap of the templates with local modifications */
+extern uint32_t templ_dirty;
+/* Current user ID */
+extern uint32_t user_id[FP_CONTEXT_USERID_WORDS];
+/* Part of the IKM used to derive encryption keys received from the TPM. */
+extern uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
+
+extern uint32_t fp_events;
+
+extern uint32_t sensor_mode;
 
 /* --- fonctions provided by the sensor-specific driver --- */
 
