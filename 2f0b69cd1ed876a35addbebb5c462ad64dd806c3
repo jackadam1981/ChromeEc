@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf1b27e_70d5dbd2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T19:00:59Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 30
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7bb9d48_9443dee1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-20T19:00:59Z",
+      "side": 1,
+      "message": "This looks contradicting. This is for SS mux, right?",
+      "range": {
+        "startLine": 1280,
+        "startChar": 4,
+        "endLine": 1280,
+        "endChar": 51
+      },
+      "revId": "2f0b69cd1ed876a35addbebb5c462ad64dd806c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
