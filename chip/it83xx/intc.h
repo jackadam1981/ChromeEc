@@ -30,6 +30,7 @@ void espi_interrupt(void);
 void espi_vw_interrupt(void);
 void espi_enable_pad(int enable);
 void espi_init(void);
+int chip_get_intc_group(int irq);
 
 #if defined(CONFIG_HOSTCMD_X86) && defined(HAS_TASK_KEYPROTO)
 void lpc_kbc_ibf_interrupt(void);
