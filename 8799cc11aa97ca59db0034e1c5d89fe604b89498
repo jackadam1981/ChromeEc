@@ -70,6 +70,30 @@
       "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "575c7ee1_6ea7cd70",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-21T01:44:55Z",
+      "side": 1,
+      "message": "We don\u0027t need EPP_EPP_SEL. This is connected to VOSET of P9221. It\u0027s used for controlling the input voltage before the device is powered. We can fix it to 5V/9V or 5V/12V. Once EC is up, EC overrules the output voltage by VOutSet register. The functionalities are exactly the same.",
+      "parentUuid": "9ea77a3c_f99881a0",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
