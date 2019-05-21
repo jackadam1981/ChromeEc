@@ -105,6 +105,9 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode,
 	if (port_id >= CONFIG_USB_PORT_POWER_SMART_PORT_COUNT)
 		return EC_ERROR_INVAL;
 
+	if (mode == USB_CHARGE_MODE_DEFAULT)
+		mode = CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE;
+
 	switch (mode) {
 	case USB_CHARGE_MODE_DISABLED:
 		usb_charge_set_enabled(port_id, 0);
