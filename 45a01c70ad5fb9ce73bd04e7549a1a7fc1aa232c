@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "844c0eef_8887f0e3",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-21T17:30:28Z",
+      "side": 1,
+      "message": "These aren\u0027t used anywhere else. Can you get rid of them? #define MT6370_MASK_BLED_4CH_EN BIT(2) is enough to keep the readability.",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 32
+      },
+      "revId": "45a01c70ad5fb9ce73bd04e7549a1a7fc1aa232c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
