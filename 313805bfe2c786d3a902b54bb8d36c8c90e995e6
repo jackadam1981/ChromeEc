@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40a5923f_3724fe0a",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-21T03:38:19Z",
+      "side": 1,
+      "message": "Signal was never used, but my understanding is that it\u0027s the expected signature from the GPIO macro at http://cs/chromeos_public/src/platform/ec/board/arcada_ish/gpio.inc?l\u003d8",
+      "parentUuid": "f598aa3d_1b30ebbd",
+      "range": {
+        "startLine": 391,
+        "startChar": 40,
+        "endLine": 391,
+        "endChar": 46
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6a3f011_828d78e2",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4633b9b0_dd1c4b57",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-21T03:38:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a3f011_828d78e2",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 14
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a50c20e9_ca16bdc0",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-21T03:38:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e46d84_5f2b4478",
+      "range": {
+        "startLine": 423,
+        "startChar": 8,
+        "endLine": 423,
+        "endChar": 37
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07ef3b78_d1cbfebb",
         "filename": "driver/accelgyro_lsm6dsm.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342d443c_9d4fb142",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-21T03:38:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07ef3b78_d1cbfebb",
+      "range": {
+        "startLine": 427,
+        "startChar": 5,
+        "endLine": 428,
+        "endChar": 14
+      },
+      "revId": "313805bfe2c786d3a902b54bb8d36c8c90e995e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
