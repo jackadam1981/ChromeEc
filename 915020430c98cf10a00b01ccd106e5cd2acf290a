@@ -46,6 +46,30 @@
       "revId": "915020430c98cf10a00b01ccd106e5cd2acf290a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb9b4dc2_6c43e5ea",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-21T20:58:09Z",
+      "side": 1,
+      "message": "There is actually a race that the interrupt could fire after we take the timestamp but before we check this interrupt, then we would be using too early of a timestamp",
+      "parentUuid": "0fd501f2_229f6249",
+      "range": {
+        "startLine": 425,
+        "startChar": 2,
+        "endLine": 426,
+        "endChar": 49
+      },
+      "revId": "915020430c98cf10a00b01ccd106e5cd2acf290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
