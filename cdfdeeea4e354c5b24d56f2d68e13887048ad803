@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b3d7ec8_623040bd",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-21T02:51:06Z",
+      "side": 1,
+      "message": "I would suggest add \n\nrt946x_read8(RT946X_REG_DPDMIRQ, \u0026reg);\n\nbefore this line to clear the bits so that it won\u0027t block sending interrupt.",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 12
+      },
+      "revId": "cdfdeeea4e354c5b24d56f2d68e13887048ad803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
