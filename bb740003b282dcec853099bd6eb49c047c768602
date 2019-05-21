@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6074bb27_8b6d2f76",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-21T20:18:02Z",
+      "side": 1,
+      "message": "Actually, this can be broken again. I\u0027ll make it overridden by boards.",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 28
+      },
+      "revId": "bb740003b282dcec853099bd6eb49c047c768602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
