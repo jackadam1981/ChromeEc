@@ -32,6 +32,8 @@ static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 	return i2c_write8(s->port, s->addr, reg, data);
 }
 
+static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts);
+
 static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 {
 	int ret;
@@ -43,7 +45,7 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 		return ret;
 
 	/* mask value to assure writing 0 to reserved bits */
-	data = (data & ~TCS_I2C_ENABLE_MASK) | TCS3400_MODE_COLLECTING;
+	data = (data & ~TCS_I2C_ENABLE_MASK) | TCS_I2C_ENABLE_POWER_ON | TCS_I2C_ENABLE_ADC_ENABLE;
 	ret = tcs3400_i2c_write8(s, TCS_I2C_ENABLE, data);
 
 	/*
@@ -54,6 +56,11 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	 */
 	if (ret == EC_SUCCESS)
 		ret = EC_RES_IN_PROGRESS;
+
+#ifndef CONFIG_ALS_TCS3400_INT_EVENT
+	last_interrupt_timestamp = __hw_clock_source_read();
+	tcs3400_post_events((struct motion_sensor_t *)s, last_interrupt_timestamp);
+#endif
 
 	return ret;
 }
@@ -134,6 +141,7 @@ skip_clear_vector_load:
 
 #ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = s - motion_sensors;
+		CPRINTS("\x1b[1;33mclear: %d, %d, %d\x1b[m", vector.data[X], vector.data[Y], vector.data[Z]);
 		motion_sense_fifo_add_data(&vector, s, 3, last_ts);
 #endif
 	}
@@ -193,10 +201,12 @@ skip_vector_load:
 #endif
 		vector.sensor_num = rgb_s - motion_sensors;
 		motion_sense_fifo_add_data(&vector, rgb_s, 3, last_ts);
+		CPRINTS("\x1b[1;32mrgb: %d, %d, %d\x1b[m", vector.data[X], vector.data[Y], vector.data[Z]);
 	}
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_ALS_TCS3400_INT_EVENT
 void tcs3400_interrupt(enum gpio_signal signal)
 {
 #ifdef CONFIG_ACCEL_FIFO
@@ -243,6 +253,7 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	return ret;
 }
+#endif
 
 static int tcs3400_rgb_get_range(const struct motion_sensor_t *s)
 {
@@ -453,7 +464,7 @@ const struct accelgyro_drv tcs3400_drv = {
 	.get_offset = tcs3400_get_offset,
 	.set_data_rate = tcs3400_set_data_rate,
 	.get_data_rate = tcs3400_get_data_rate,
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#if defined(CONFIG_ACCEL_INTERRUPTS) && defined(CONFIG_ALS_TCS3400_INT_EVENT)
 	.irq_handler = tcs3400_irq_handler,
 #endif
 };
