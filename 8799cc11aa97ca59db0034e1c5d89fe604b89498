@@ -46,6 +46,30 @@
       "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea77a3c_f99881a0",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-05-21T01:36:27Z",
+      "side": 1,
+      "message": "set pin PC15 GPIO_OUT_HIGH so that EPP can reach 9V, do you think ok?",
+      "parentUuid": "d8f0a91e_e6cedcda",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
