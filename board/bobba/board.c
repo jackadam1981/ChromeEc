@@ -22,6 +22,7 @@
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
+#include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"

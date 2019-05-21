@@ -8,11 +8,11 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
-#include "usb_charge.h"
 #include "util.h"
 
 #define CPUTS(outstr) cputs(CC_USBCHARGE, outstr)
