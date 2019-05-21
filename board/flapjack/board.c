@@ -81,6 +81,24 @@ uint8_t board_version;
 uint8_t oem;
 uint32_t sku = LCM_ID_TO_SKU_ID(PANEL_UNINITIALIZED);
 
+const int supplier_priority[] = {
+	[CHARGE_SUPPLIER_PD] = 1,
+	[CHARGE_SUPPLIER_TYPEC] = 2,
+	[CHARGE_SUPPLIER_TYPEC_DTS] = 2,
+	[CHARGE_SUPPLIER_PROPRIETARY] = 3,
+	[CHARGE_SUPPLIER_BC12_DCP] = 3,
+	[CHARGE_SUPPLIER_BC12_CDP] = 3,
+	[CHARGE_SUPPLIER_BC12_SDP] = 3,
+	[CHARGE_SUPPLIER_TYPEC_UNDER_1_5A] = 4,
+	[CHARGE_SUPPLIER_OTHER] = 4,
+	[CHARGE_SUPPLIER_VBUS] = 6,
+#ifdef SECTION_IS_RW
+	[CHARGE_SUPPLIER_WPC_BPP] = 5,
+	[CHARGE_SUPPLIER_WPC_EPP] = 5,
+	[CHARGE_SUPPLIER_WPC_GPP] = 5,
+#endif
+};
+
 static const struct rt946x_init_setting battery_init_setting = {
 	.eoc_current = 150,
 	.mivr = 4000,
