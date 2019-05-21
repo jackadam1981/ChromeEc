@@ -8,6 +8,7 @@
 #include "common.h"
 #include "console.h"
 #include "dptf.h"
+#include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -17,7 +18,6 @@
 #include "tablet_mode.h"
 #include "pwm.h"
 #include "timer.h"
-#include "usb_charge.h"
 #include "util.h"
 
 /* Console output macros */

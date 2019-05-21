@@ -15,39 +15,6 @@
 /* USB charger minimum current */
 #define USB_CHARGER_MIN_CURR_MA 500
 
-enum usb_charge_mode {
-	/* Disable USB port. */
-	USB_CHARGE_MODE_DISABLED,
-	/* Set USB port to Standard Downstream Port, USB 2.0 mode. */
-	USB_CHARGE_MODE_SDP2,
-	/* Set USB port to Charging Downstream Port, BC 1.2. */
-	USB_CHARGE_MODE_CDP,
-	/* Set USB port to Dedicated Charging Port, BC 1.2. */
-	USB_CHARGE_MODE_DCP_SHORT,
-	/* Enable USB port (for dumb ports). */
-	USB_CHARGE_MODE_ENABLED,
-
-	USB_CHARGE_MODE_COUNT
-};
-
-enum usb_suspend_charge {
-	/* Enable charging in suspend */
-	USB_ALLOW_SUSPEND_CHARGE,
-	/* Disable charging in suspend */
-	USB_DISALLOW_SUSPEND_CHARGE
-};
-
-/**
- * Set USB charge mode for the port.
- *
- * @param usb_port_id		Port to set.
- * @param mode			New mode for port.
- * @param inhibit_charge	Inhibit charging during system suspend.
- * @return EC_SUCCESS, or non-zero if error.
- */
-int usb_charge_set_mode(int usb_port_id, enum usb_charge_mode mode,
-			enum usb_suspend_charge inhibit_charge);
-
 #ifdef HAS_TASK_USB_CHG_P0
 #define USB_CHG_EVENT_BC12	TASK_EVENT_CUSTOM_BIT(0)
 #define USB_CHG_EVENT_VBUS	TASK_EVENT_CUSTOM_BIT(1)
