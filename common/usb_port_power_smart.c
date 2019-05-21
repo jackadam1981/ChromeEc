@@ -105,6 +105,9 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode,
 	if (port_id >= CONFIG_USB_PORT_POWER_SMART_PORT_COUNT)
 		return EC_ERROR_INVAL;
 
+	if (mode == USB_CHARGE_MODE_DEFAULT)
+		mode = CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE;
+
 	switch (mode) {
 	case USB_CHARGE_MODE_DISABLED:
 		usb_charge_set_enabled(port_id, 0);
@@ -181,6 +184,8 @@ DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
  *  1 = Standard downstream port.
  *  2 = Charging downstream port, BC 1.2.
  *  3 = Dedicated charging port, BC 1.2.
+ *  4 = Enable USB port for dump ports.
+ *  5 = Set port to CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE.
  * Inhibit Charge:
  *  0 = Enable charging during system suspend
  *  1 = Disable charging during system suspend
