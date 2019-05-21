@@ -73,8 +73,10 @@ static uint32_t templ_valid;
 static uint32_t templ_dirty;
 /* Current user ID */
 static uint32_t user_id[FP_CONTEXT_USERID_WORDS];
+#ifndef TEST_FPSENSOR
 /* Ready to encrypt a template. */
 static timestamp_t encryption_deadline;
+#endif
 /* Part of the IKM used to derive encryption keys received from the TPM. */
 static uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
 /* Flag indicating whether the seed has been initialised or not. */
@@ -102,6 +104,7 @@ static int fp_tpm_seed_is_set;
 #define FINGER_POLLING_DELAY (100*MSEC)
 
 static uint32_t fp_events;
+#ifndef TEST_FPSENSOR
 static uint32_t sensor_mode;
 
 /* Timing statistics. */
@@ -111,12 +114,22 @@ static uint32_t overall_time_us;
 static timestamp_t overall_t0;
 static uint8_t timestamps_invalid;
 static int8_t template_matched;
+#endif
 
 /* Forward declaration of static function */
 static void fp_clear_context(void);
 
 BUILD_ASSERT(sizeof(struct ec_fp_template_encryption_metadata) % 4 == 0);
 
+void fp_task_simulate(void)
+{
+	int timeout_us = -1;
+
+	while (1)
+		task_wait_event(timeout_us);
+}
+
+#ifndef TEST_FPSENSOR
 /* Interrupt line from the fingerprint sensor */
 void fps_event(enum gpio_signal signal)
 {
@@ -406,6 +419,7 @@ static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 
 	return EC_RES_SUCCESS;
 }
+#endif  /* !TEST_FPSENSOR */
 
 static void fp_clear_finger_context(int idx)
 {
@@ -436,6 +450,7 @@ static int fp_get_next_event(uint8_t *out)
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_FINGERPRINT, fp_get_next_event);
 
+#ifndef TEST_FPSENSOR
 static int fp_command_passthru(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_passthru *params = args->params;
@@ -790,6 +805,7 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
+#endif /* !TEST_FPSENSOR */
 
 static int fp_command_context(struct host_cmd_handler_args *args)
 {
@@ -822,6 +838,17 @@ static int fp_command_tpm_seed(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
+
+static int check_fp_tpm_seed_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_fp_seed_is_set *r = args->response;
+
+	r->seed_is_set = fp_tpm_seed_is_set;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_SEED_IS_SET, check_fp_tpm_seed_status,
+	EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_FPSENSOR_DEBUG
 /* --- Debug console commands --- */

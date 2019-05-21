@@ -75,6 +75,14 @@
 #define CONFIG_MAG_CALIBRATE
 #endif
 
+#ifdef TEST_FPSENSOR
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
+#define CONFIG_RNG
+#define CONFIG_SPI_FP_PORT 2
+#endif
+
 #if defined(TEST_MOTION_LID) || defined(TEST_MOTION_ANGLE) || \
 	defined(TEST_MOTION_ANGLE_TABLET)
 #define CONFIG_LID_ANGLE

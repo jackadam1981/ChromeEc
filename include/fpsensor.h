@@ -23,6 +23,9 @@
 /* 8-bit greyscale pixel format as defined by V4L2 headers */
 #define V4L2_PIX_FMT_GREY FOURCC('G', 'R', 'E', 'Y')
 
+/* Simulation for unit tests. */
+void fp_task_simulate(void);
+
 /* --- fonctions provided by the sensor-specific driver --- */
 
 /* Initialize the connected sensor hardware and put it in a low power mode. */
