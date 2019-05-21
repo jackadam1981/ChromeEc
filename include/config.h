@@ -286,6 +286,9 @@
  */
 #undef CONFIG_ALS_SI114X_POLLING
 
+/* Enable tcs3400 to operate in polling mode. */
+#undef CONFIG_ALS_TCS3400_POLLING
+
 /* Define which ALS sensor is used for dimming the lightbar when dark */
 #undef CONFIG_ALS_LIGHTBAR_DIMMING
 

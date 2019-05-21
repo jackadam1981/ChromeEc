@@ -9,10 +9,12 @@
 #include "common.h"
 #include "console.h"
 #include "driver/als_tcs3400.h"
+#include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
 #include "task.h"
+#include "timer.h"
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
 
@@ -31,6 +33,14 @@ static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 {
 	return i2c_write8(s->port, s->addr, reg, data);
 }
+
+#ifdef CONFIG_ALS_TCS3400_POLLING
+static void tcs3400_read_deferred(void)
+{
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ALS_TCS3400_INT_EVENT, 0);
+}
+DECLARE_DEFERRED(tcs3400_read_deferred);
+#endif
 
 static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 {
@@ -54,6 +64,11 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	 */
 	if (ret == EC_SUCCESS)
 		ret = EC_RES_IN_PROGRESS;
+
+#ifdef CONFIG_ALS_TCS3400_POLLING
+	hook_call_deferred(&tcs3400_read_deferred_data,
+			ALS_TCS3400_POLLING_DELAY);
+#endif
 
 	return ret;
 }
@@ -80,7 +95,9 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	int rgb_data[3];
 	int data = 0;
 	int i, ret;
+	timestamp_t start_read, end_read;
 
+	start_read = get_time();
 	/* Make sure data is valid */
 	do {
 		ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &data);
@@ -88,12 +105,16 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 			return ret;
 		if (!(data & TCS_I2C_STATUS_RGBC_VALID)) {
 			retries--;
-			if (retries == 0)
+			if (retries == 0) {
+				CPRINTS("unchanged\n");
 				return EC_ERROR_UNCHANGED;
+			}
 			CPRINTS("RGBC not valid (0x%x)", data);
 			msleep(20);
 		}
 	} while (!(data & TCS_I2C_STATUS_RGBC_VALID));
+	end_read = get_time();
+	CPRINTS("read time: %d, retries: %d", (int)(end_read.val - start_read.val), 20 - retries);
 
 	/* Read the light registers */
 	ret = i2c_read_block(s->port, s->addr, TCS_DATA_START_LOCATION,
@@ -134,6 +155,7 @@ skip_clear_vector_load:
 
 #ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = s - motion_sensors;
+		CPRINTS("\x1b[1;33mclear: %d, %d, %d\x1b[m", vector.data[X], vector.data[Y], vector.data[Z]);
 		motion_sense_fifo_add_data(&vector, s, 3, last_ts);
 #endif
 	}
@@ -193,6 +215,7 @@ skip_vector_load:
 #endif
 		vector.sensor_num = rgb_s - motion_sensors;
 		motion_sense_fifo_add_data(&vector, rgb_s, 3, last_ts);
+		CPRINTS("\x1b[1;32mrgb: %d, %d, %d\x1b[m", vector.data[X], vector.data[Y], vector.data[Z]);
 	}
 	return EC_SUCCESS;
 }
