@@ -22,6 +22,7 @@
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
+#include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -278,6 +279,22 @@ static void board_update_sensor_config_from_sku(void)
 	}
 }
 
+static void board_usb_charge_mode_init(void)
+{
+	/* Currently only blorb and droid support this feature. */
+	if ((sku_id < 32 || sku_id > 39) && (sku_id < 40 || sku_id > 47))
+		return;
+
+	/*
+	 * By default, turn the charging off when system suspends.
+	 * If system power on with connecting a USB device,
+	 * the OS must send an event to EC to clear the
+	 * inhibit_charging_in_suspend.
+	 */
+	usb_charge_set_mode(0, CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE,
+			USB_DISALLOW_SUSPEND_CHARGE);
+}
+
 /* Read CBI from i2c eeprom and initialize variables for board variants */
 static void cbi_init(void)
 {
@@ -289,6 +306,7 @@ static void cbi_init(void)
 	CPRINTSUSB("SKU: %d", sku_id);
 
 	board_update_sensor_config_from_sku();
+	board_usb_charge_mode_init();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
