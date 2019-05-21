@@ -15,6 +15,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_DPTF, outstr)
 #define CPRINTS(format, args...) cprints(CC_DPTF, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_DPTF, format, ## args)
 
 /*****************************************************************************/
 /* DPTF temperature thresholds */
@@ -59,6 +60,11 @@ static int dptf_check_temp_threshold(int sensor_id, int temp)
 	int tripped = 0;
 	int max, i;
 
+	if (sensor_id >= TEMP_SENSOR_COUNT) {
+		CPRINTS("DPTF: Invalid sensor ID");
+		return 0;
+	}
+
 	for (i = 0; i < DPTF_THRESHOLDS_PER_SENSOR; i++) {
 
 		max = dptf_threshold[sensor_id][i].temp;
@@ -91,6 +97,12 @@ void dptf_set_temp_threshold(int sensor_id, int temp, int idx, int enable)
 {
 	CPRINTS("DPTF sensor %d, threshold %d C, index %d, %sabled",
 		sensor_id, K_TO_C(temp), idx, enable ? "en" : "dis");
+
+	if ((sensor_id >= TEMP_SENSOR_COUNT) ||
+	    (idx >= DPTF_THRESHOLDS_PER_SENSOR)) {
+		CPRINTS("DPTF: Invalid sensor ID");
+		return;
+	}
 
 	if (enable) {
 		/* Don't update threshold condition if already enabled */
