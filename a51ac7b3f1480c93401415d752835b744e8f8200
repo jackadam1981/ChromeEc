@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a3dc442_36aa4520",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-21T01:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58174456_f9888054",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "a51ac7b3f1480c93401415d752835b744e8f8200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35cb9a0c_c2d1ece5",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "a51ac7b3f1480c93401415d752835b744e8f8200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8cd36fc_8e9d9f8d",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-21T01:37:20Z",
+      "side": 1,
+      "message": "I am reverting this change for RX stream, because it doesn\u0027t contribute to this deferred interrupt handling.",
+      "parentUuid": "35cb9a0c_c2d1ece5",
+      "revId": "a51ac7b3f1480c93401415d752835b744e8f8200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "a51ac7b3f1480c93401415d752835b744e8f8200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82309d30_9193fd5d",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-21T01:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6551fb_6350ec3c",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "a51ac7b3f1480c93401415d752835b744e8f8200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
