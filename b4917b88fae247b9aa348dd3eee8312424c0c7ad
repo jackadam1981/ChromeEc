@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ba7708a_bc8e26e4",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-21T02:54:23Z",
+      "side": 1,
+      "message": "Would you mind updating this comment? It took me a while to realize that what you\u0027re doing is checking to see if another sensor has a bigger ratio of unhandled sampled. The test here is comparing the ratio of remaining samples / total samples for the next_id sensor vs the other sensors and picking the largest.",
+      "range": {
+        "startLine": 240,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 18
+      },
+      "revId": "b4917b88fae247b9aa348dd3eee8312424c0c7ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
