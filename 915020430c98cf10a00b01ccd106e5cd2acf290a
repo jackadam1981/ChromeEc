@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f975dc8c_b6a966c1",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-21T17:05:56Z",
+      "side": 1,
+      "message": "I also think we should see if last_interrupt_timestamp is different before and after line 426. If the timestamp is different, then we don\u0027t need to manually call interrupt handler manually because the real ISR was called.",
+      "range": {
+        "startLine": 425,
+        "startChar": 2,
+        "endLine": 426,
+        "endChar": 49
+      },
+      "revId": "915020430c98cf10a00b01ccd106e5cd2acf290a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
