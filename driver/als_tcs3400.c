@@ -55,6 +55,10 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	if (ret == EC_SUCCESS)
 		ret = EC_RES_IN_PROGRESS;
 
+#ifdef CONFIG_ALS_TCS3400_POLLING
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ALS_TCS3400_INT_EVENT, 0);
+#endif
+
 	return ret;
 }
 
@@ -134,6 +138,7 @@ skip_clear_vector_load:
 
 #ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = s - motion_sensors;
+		CPRINTS("\x1b[1;33mclear: %d, %d, %d\x1b[m", vector.data[X], vector.data[Y], vector.data[Z]);
 		motion_sense_fifo_add_data(&vector, s, 3, last_ts);
 #endif
 	}
@@ -193,6 +198,7 @@ skip_vector_load:
 #endif
 		vector.sensor_num = rgb_s - motion_sensors;
 		motion_sense_fifo_add_data(&vector, rgb_s, 3, last_ts);
+		CPRINTS("\x1b[1;32mrgb: %d, %d, %d\x1b[m", vector.data[X], vector.data[Y], vector.data[Z]);
 	}
 	return EC_SUCCESS;
 }
