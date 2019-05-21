@@ -26,6 +26,8 @@ enum usb_charge_mode {
 	USB_CHARGE_MODE_DCP_SHORT,
 	/* Enable USB port (for dumb ports). */
 	USB_CHARGE_MODE_ENABLED,
+	/* Set USB port to CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE. */
+	USB_CHARGE_MODE_DEFAULT,
 
 	USB_CHARGE_MODE_COUNT
 };
