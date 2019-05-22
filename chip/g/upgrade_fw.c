@@ -263,36 +263,51 @@ static int contents_allowed(uint32_t block_offset,
 	return 1;
 }
 
-
-static uint32_t prev_offset;
+/*
+ * Previously written offsets, index 0 is for the RO section, index 1 - for
+ * RW. This allows to prevent flash destroying attacks when the perpetrator
+ * keeps repetitively writing to the same flash area.
+ *
+ * Need to preset the value for RO to the negative number so that the first
+ * attempt to write at offset zero do not get rejected.
+ */
+static int prev_offsets[2] = {-SIGNED_TRANSFER_SIZE};
 static uint64_t prev_timestamp;
 #define BACKOFF_TIME (60 * SECOND)
 
+static int offset_to_index(uint32_t block_offset)
+{
+	return (block_offset >= valid_sections.rw_base_offset) &&
+	       (block_offset < valid_sections.rw_top_offset);
+}
+
 static int chunk_came_too_soon(uint32_t block_offset)
 {
-	int hard_reset = system_get_reset_flags() & RESET_FLAG_HARD;
-
 	/*
 	 * If it has been BACKOFF_TIME since the last time we wrote to a block
 	 * or since the last boot, the write is ok.
 	 */
-	if ((get_time().val - prev_timestamp) > BACKOFF_TIME)
+	if ((get_time().val - prev_timestamp) > BACKOFF_TIME) {
+		prev_offsets[0] = -SIGNED_TRANSFER_SIZE;
 		return 0;
+	}
 
 	if (!prev_timestamp) {
+		int hard_reset = system_get_reset_flags() & RESET_FLAG_HARD;
+
 		/*
 		 * If we just recovered from a hard reset, we have to wait until
 		 * backoff time to accept an update. All other resets can accept
 		 * updates immediately.
 		 */
 		if (hard_reset)
-			CPRINTF("%s: rejecting a write after hard reset\n",
+			CPRINTF("%s: rejecting a write soon after hard reset\n",
 				__func__);
 		return hard_reset;
 	}
 
-	if (!prev_offset ||
-	    (block_offset >= (prev_offset + SIGNED_TRANSFER_SIZE)))
+	if ((int)block_offset >= (prev_offsets[offset_to_index(block_offset)] +
+				  SIGNED_TRANSFER_SIZE))
 		return 0;
 
 	CPRINTF("%s: rejecting a write to the same block\n", __func__);
@@ -302,7 +317,7 @@ static int chunk_came_too_soon(uint32_t block_offset)
 static void new_chunk_written(uint32_t block_offset)
 {
 	prev_timestamp = get_time().val;
-	prev_offset = block_offset;
+	prev_offsets[offset_to_index(block_offset)] = block_offset;
 }
 #else
 static int chunk_came_too_soon(uint32_t block_offset)
