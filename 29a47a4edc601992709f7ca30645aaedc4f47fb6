@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1d0b0abf_65416c37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T16:35:30Z",
+      "side": 1,
+      "message": "Can you specifically say this is for fixing slow plug-in?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90b022ea_35001401",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -17,6 +40,98 @@
         "startLine": 12,
         "startChar": 6,
         "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f53a6c_c4b5bd94",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T16:35:30Z",
+      "side": 1,
+      "message": "This isn\u0027t used. \n\nRT946X_VENDOR_ID is set to 0x80, 0x90, or 0xE0 depending on what variant is chosen by CONFIG_CHARGER. It\u0027s not working on your board?",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 29
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ff54a8_6f427c65",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T16:35:30Z",
+      "side": 1,
+      "message": "I\u0027m still having hard time. Can you rewrite it in plain English?",
+      "range": {
+        "startLine": 933,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 58
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2ecad5_d953c4bf",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T16:35:30Z",
+      "side": 1,
+      "message": "+80",
+      "range": {
+        "startLine": 965,
+        "startChar": 59,
+        "endLine": 965,
+        "endChar": 71
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027d9ebb_2ad03ca3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T16:35:30Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 967,
+        "startChar": 14,
+        "endLine": 967,
         "endChar": 15
       },
       "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
