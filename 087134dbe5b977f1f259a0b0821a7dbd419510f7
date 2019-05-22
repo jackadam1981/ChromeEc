@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "109d24b8_56d78a09",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-22T20:24:18Z",
+      "side": 1,
+      "message": "why is that important? if they were close enough they can have the same timestamp.",
+      "range": {
+        "startLine": 117,
+        "startChar": 70,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78255838_1b8bb8cc",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-22T20:24:18Z",
+      "side": 1,
+      "message": "can we move this check inside flash_log_get_tstamp()? we do a similar check in flash_log_set_tstamp(), so would be nice to make it symmetric.",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 314,
+        "endChar": 41
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8a55bd_b3a8b8e3",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-22T20:24:18Z",
+      "side": 1,
+      "message": "this will skew the actual timing of the events. not the end of the world, but do we even need it?",
+      "range": {
+        "startLine": 315,
+        "startChar": 22,
+        "endLine": 315,
+        "endChar": 27
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
