@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "295c8a2f_bfd5ab78",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T02:55:56Z",
+      "side": 1,
+      "message": "I think this whole thing is redundant because enum usb_charger_mode is properly commented. These will be out of sync easily (as it just happened).",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "cedb2b82cdf11945ed15b4eff8c2a219c1cfc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e60cf48_f3d5e048",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T02:55:56Z",
+      "side": 1,
+      "message": "This has to live in ec_commands.h. Can you move it there?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "cedb2b82cdf11945ed15b4eff8c2a219c1cfc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
