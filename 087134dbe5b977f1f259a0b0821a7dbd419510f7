@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50c5e3e8_1fb5a29e",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:38:57Z",
+      "side": 1,
+      "message": "The likelihood of two events logged at the same second is extremely low, OTOH the timestamp is used when iterating through the saved log, this is why it is important that entries have different timestamps.\n\nI feel that this compromise (risking an incorrect timestamp) is acceptable, since the events are supposed to be happening very seldom, seeing two events in the log one second apart would be a hint that the second (and  the following immediate events) could be logged at a time few seconds off.",
+      "parentUuid": "109d24b8_56d78a09",
+      "range": {
+        "startLine": 117,
+        "startChar": 70,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78255838_1b8bb8cc",
         "filename": "common/flash_log.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "23ddc307_2901128d",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:38:57Z",
+      "side": 1,
+      "message": "good idea, will do.",
+      "parentUuid": "78255838_1b8bb8cc",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 314,
+        "endChar": 41
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e8a55bd_b3a8b8e3",
         "filename": "common/flash_log.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-22T20:24:18Z",
       "side": 1,
       "message": "this will skew the actual timing of the events. not the end of the world, but do we even need it?",
+      "range": {
+        "startLine": 315,
+        "startChar": 22,
+        "endLine": 315,
+        "endChar": 27
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc03a1d_ac0ab7e7",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:38:57Z",
+      "side": 1,
+      "message": "this is a state where the wall clock on the H1 is wrong, we want each next entry in the log to have a later timestamp to simplify iteration.",
+      "parentUuid": "1e8a55bd_b3a8b8e3",
       "range": {
         "startLine": 315,
         "startChar": 22,
