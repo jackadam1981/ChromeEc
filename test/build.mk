@@ -28,6 +28,13 @@ test-list-host += entropy
 test-list-host += extpwr_gpio
 test-list-host += fan
 test-list-host += flash
+<<<<<<< HEAD   (ee6c7a usb-pd: Do not source Vconn in DTS)
+=======
+test-list-host += flash_log
+test-list-host += float
+test-list-host += fp
+test-list-host += fpsensor
+>>>>>>> CHANGE (8e7a7f fpsensor: Add API to check FP sensor encryption status.)
 test-list-host += hooks
 test-list-host += host_command
 test-list-host += inductive_charging
@@ -81,6 +88,11 @@ entropy-y=entropy.o
 extpwr_gpio-y=extpwr_gpio.o
 fan-y=fan.o
 flash-y=flash.o
+<<<<<<< HEAD   (ee6c7a usb-pd: Do not source Vconn in DTS)
+=======
+flash_log-y=flash_log.o
+fpsensor-y=fpsensor.o
+>>>>>>> CHANGE (8e7a7f fpsensor: Add API to check FP sensor encryption status.)
 hooks-y=hooks.o
 host_command-y=host_command.o
 host_command_fuzz-y=host_command_fuzz.o
