@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6d4eb7d_cff0f63c",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-22T09:10:51Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "295c8a2f_bfd5ab78",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "cedb2b82cdf11945ed15b4eff8c2a219c1cfc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e60cf48_f3d5e048",
         "filename": "include/usb_charge.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "cedb2b82cdf11945ed15b4eff8c2a219c1cfc772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d22901c_8283927a",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-22T09:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e60cf48_f3d5e048",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "cedb2b82cdf11945ed15b4eff8c2a219c1cfc772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
