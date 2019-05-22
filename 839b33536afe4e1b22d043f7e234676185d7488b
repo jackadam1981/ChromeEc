@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4dd8dd8_a9a80b92",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T16:48:17Z",
+      "side": 1,
+      "message": "Let\u0027s use _Static_assert:\n\n  _Static_assert(sizeof(__con_cmd_label_##NAME) \u003c 16, \"command name \" #NAME \" is too long\");",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 71
+      },
+      "revId": "839b33536afe4e1b22d043f7e234676185d7488b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
