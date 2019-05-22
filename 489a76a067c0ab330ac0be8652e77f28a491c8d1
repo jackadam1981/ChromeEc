@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9809d83d_2bdb1a8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-22T18:27:23Z",
+      "side": 1,
+      "message": "It can\u0027t really be tested with a highly depleted battery as the AP won\u0027t boot if the battery level too low.",
+      "parentUuid": "1014b960_180856bc",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e72be6ce_d5e0fa36",
         "filename": "board/hatch/board.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-22T18:18:14Z",
       "side": 1,
       "message": "How was this value determined for hatch?",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109c675f_543235ff",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-22T18:27:23Z",
+      "side": 1,
+      "message": "This is based on what the pack spec is. I think the pack supports a 6.3A discharge limit.",
+      "parentUuid": "e72be6ce_d5e0fa36",
       "range": {
         "startLine": 72,
         "startChar": 46,
