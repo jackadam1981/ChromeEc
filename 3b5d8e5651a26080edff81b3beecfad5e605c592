@@ -22,6 +22,30 @@
       "revId": "3b5d8e5651a26080edff81b3beecfad5e605c592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91cf877a_e1ff61f8",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-22T01:46:40Z",
+      "side": 1,
+      "message": "hmm~~~ My fault and would correct the condition statement, thanks.",
+      "parentUuid": "697d3592_84e34749",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "3b5d8e5651a26080edff81b3beecfad5e605c592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
