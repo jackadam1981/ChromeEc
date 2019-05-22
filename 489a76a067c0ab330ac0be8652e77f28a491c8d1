@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1014b960_180856bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-22T18:18:14Z",
+      "side": 1,
+      "message": "Was this tested with a highly depleted battery?",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72be6ce_d5e0fa36",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-22T18:18:14Z",
+      "side": 1,
+      "message": "How was this value determined for hatch?",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
