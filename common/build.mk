@@ -150,7 +150,10 @@ common-$(CONFIG_WIRELESS)+=wireless.o
 common-$(HAS_TASK_CHIPSET)+=chipset.o
 common-$(HAS_TASK_CONSOLE)+=console.o console_output.o uart_buffering.o
 common-$(CONFIG_CMD_MEM)+=memory_commands.o
-common-$(HAS_TASK_FPSENSOR)+=fpsensor.o fpsensor_state.o
+common-$(HAS_TASK_FPSENSOR)+=fpsensor_state.o
+ifneq ($(CONFIG_SPI_FP_PORT),)
+common-$(HAS_TASK_FPSENSOR)+=fpsensor.o
+endif
 common-$(HAS_TASK_HOSTCMD)+=host_command.o ec_features.o
 common-$(HAS_TASK_PDCMD)+=host_command_pd.o
 common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o

@@ -130,6 +130,8 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+	"  fpencstatus\n"
+	"      Prints status of Fingerprint sensor encryption engine\n"
 	"  fpframe\n"
 	"      Retrieve the finger image as a PGM image\n"
 	"  fpinfo\n"
@@ -1645,6 +1647,24 @@ int cmd_fp_info(int argc, char *argv[])
 	}
 
 	return 0;
+}
+
+int cmd_fp_enc_status(int argc, char *argv[])
+{
+	int rv;
+	struct ec_response_fp_encryption_status resp;
+
+	memset(&resp, 0, sizeof(resp));
+	rv = ec_command(EC_CMD_FP_ENC_STATUS, 0, NULL, 0, &resp, sizeof(resp));
+	if (rv < 0) {
+		printf("Get FP sensor encryption status failed.\n");
+	} else {
+		printf("FP encryption status:\n");
+		printf("FPTPM seed set:%lu\n",
+			resp.status & FP_ENC_STATUS_SEED_SET);
+		rv = 0;
+	}
+	return rv;
 }
 
 int cmd_fp_frame(int argc, char *argv[])
@@ -8625,6 +8645,7 @@ const struct command commands[] = {
 	{"flashspiinfo", cmd_flash_spi_info},
 	{"flashpd", cmd_flash_pd},
 	{"forcelidopen", cmd_force_lid_open},
+	{"fpencstatus", cmd_fp_enc_status},
 	{"fpframe", cmd_fp_frame},
 	{"fpinfo", cmd_fp_info},
 	{"fpmode", cmd_fp_mode},
