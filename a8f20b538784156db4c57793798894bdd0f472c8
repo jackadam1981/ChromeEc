@@ -45,6 +45,30 @@
       "revId": "a8f20b538784156db4c57793798894bdd0f472c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad5fb11_68943eb2",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-22T20:40:08Z",
+      "side": 0,
+      "message": "Agreed, this looks like a bug.  However, should fixing it be split into a separate CL with a clear commit message of the issue?",
+      "parentUuid": "92b24fc4_f8a4209d",
+      "range": {
+        "startLine": 231,
+        "startChar": 25,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "a8f20b538784156db4c57793798894bdd0f472c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
