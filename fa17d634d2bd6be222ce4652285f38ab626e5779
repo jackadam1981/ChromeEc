@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "743856d0_97caa7e0",
+        "filename": "chip/it83xx/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T19:13:38Z",
+      "side": 0,
+      "message": "did you meant to remove this hook?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 70
+      },
+      "revId": "fa17d634d2bd6be222ce4652285f38ab626e5779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
