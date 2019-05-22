@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ed8efc07_12aacbe1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-22T19:20:45Z",
+      "side": 1,
+      "message": "What is the check/min requirement for allowing AP to boot? I believe one of the things that we are aiming for on Hatch is to allow AP to boot as soon as AC is connected so that it can do early SW sync.",
+      "parentUuid": "9809d83d_2bdb1a8e",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e72be6ce_d5e0fa36",
         "filename": "board/hatch/board.h",
         "patchSetId": 3
