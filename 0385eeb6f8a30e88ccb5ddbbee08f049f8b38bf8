@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c3f8878a_9a7ccca5",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-22T20:20:02Z",
+      "side": 1,
+      "message": "don\u0027t we want to restart in case of timeout anymore? why did we switch to idle here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "0385eeb6f8a30e88ccb5ddbbee08f049f8b38bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c83ad19_24c903f6",
         "filename": "chip/g/trng.c",
         "patchSetId": 1
