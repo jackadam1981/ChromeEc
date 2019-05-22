@@ -1028,15 +1028,27 @@ function flash_stm32_dfu() {
 		die "too many dfu devices (${dev_cnt}). Disconnect all but one."
 	fi
 
+	# Note: DFU-UTIL reports other devices as potential targets if they have
+	# the DFU Runtime attribute and we need to tell to not connect to them
+	# or else it will detect multiple devices under the alt=0 attribute.
+	# The valid DFU devices are all in DFU mode which can be identified when
+	# doing the list operation. The awk command is used to identify the rows
+	# Which start with 'Found DFU:' and extracts the value stored within the
+	# parameter identified by 'serial="$SERIAL"' at the end of the line.
+	SERIAL=$(sudo $DFU_UTIL -a 0 -l | awk '{if (/^Found DFU:/) {
+		field = "serial=\""; serial_start = index($0, field) + length(field);
+		serial_length = length($0) - serial_start;
+		print substr($0, serial_start, serial_length);}}')
+
 	SIZE=$(wc -c ${IMG} | cut -d' ' -f1)
 	# Remove read protection
-	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		$DFU_UTIL -a 0 -s ${ADDR}:${SIZE}:force:unprotect -D "${IMG}"
+	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" $DFU_UTIL -a 0 -S "${SERIAL}" \
+		-s ${ADDR}:${SIZE}:force:unprotect -D "${IMG}"
 	# Wait for mass-erase and reboot after unprotection
 	sleep 1
 	# Actual image flashing
-	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		$DFU_UTIL -a 0 -s ${ADDR}:${SIZE} -D "${IMG}"
+	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" $DFU_UTIL -a 0 -S "${SERIAL}" \
+		-s ${ADDR}:${SIZE} -D "${IMG}"
 }
 
 # TODO(b/130165933): Implement a dut-control command to look up the correct
