@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c83ad19_24c903f6",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-05-22T20:01:14Z",
+      "side": 1,
+      "message": "Not too familiar w/ this routine. Does this cost a flash hit every call or is there some caching?\n\nThe FSM_IDLE state is rare but not unexpected, afaik; how rare depends on part trim and environment (temp, voltage, ..).",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "0385eeb6f8a30e88ccb5ddbbee08f049f8b38bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
