@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1607c75e_4c076712",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T21:30:02Z",
+      "side": 1,
+      "message": "done.\n\nCome to think of it, the beginning of each help line is duplicated in the long_opt structure, will address this in a different patch.",
+      "parentUuid": "77fcdf3b_ea9f0c0b",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 4
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "564b1288_d70fd548",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 4
