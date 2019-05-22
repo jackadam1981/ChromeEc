@@ -300,6 +300,7 @@ static void sps_advance_rx(int port, int data_size)
 	GREG32_I(SPS, port, RXFIFO_RPTR) = read_ptr & SPS_FIFO_PTR_MASK;
 }
 
+extern uint32_t int_ap_width;
 /*
  * Actual receive interrupt processing function. Invokes the callback passing
  * it a pointer to the linear space in the RX FIFO and the number of bytes
@@ -343,8 +344,14 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 			 * Signal the AP that this SPI frame processing is
 			 * completed.
 			 */
-			gpio_set_level(GPIO_INT_AP_L, 0);
-			gpio_set_level(GPIO_INT_AP_L, 1);
+
+			GR_GPIO_MASKLOWBYTE(0, 1) = 0;
+
+			/* Delay to keep this pulse */
+			for (volatile int i = 0; i < int_ap_width; i++);
+
+			GR_GPIO_MASKLOWBYTE(0, 1) = 1;
+
 			seen_data = 0;
 		}
 	}

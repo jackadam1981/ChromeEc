@@ -153,6 +153,13 @@ static void process_write_access(uint16_t reg_size, uint16_t tpm_reg,
 	tpm_register_put(tpm_reg, data, reg_size);
 }
 
+/*
+  const struct gpio_info *g = gpio_list + GPIO_INT_AP_L;
+  g->port = 0;
+  g->mask = 1;
+*/
+uint32_t int_ap_width;
+
 static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 {
 	size_t i;
@@ -207,8 +214,13 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	 * onther means of flow controlling the host. Let's generate a pulse
 	 * on the AP interrupt line for that.
 	 */
-	gpio_set_level(GPIO_INT_AP_L, 0);
-	gpio_set_level(GPIO_INT_AP_L, 1);
+
+	GR_GPIO_MASKLOWBYTE(0, 1) = 0;
+
+	/* Delay to keep this pulse */
+	for (volatile int i = 0; i < int_ap_width; i++);
+
+	GR_GPIO_MASKLOWBYTE(0, 1) = 1;
 }
 
 static void i2cs_if_stop(void)
@@ -259,3 +271,24 @@ static int command_i2cs(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(i2cstpm, command_i2cs,
 			     "reset",
 			     "Display fifo adjust count");
+
+static int command_set_int_ap_udelay(int argc, char **argv)
+{
+	if (argc > 1) {
+		uint32_t in_data;
+		char *e;
+
+		in_data = strtoi(argv[1], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		int_ap_width = in_data;
+	}
+
+	ccprintf("%d loop count\n", int_ap_width);
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(intap, command_set_int_ap_udelay,
+			     "",
+			     "Get or set INT_AP pulse delay in loop count");
