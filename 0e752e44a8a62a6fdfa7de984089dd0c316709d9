@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fec5ea10_911044a2",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T19:11:29Z",
+      "side": 1,
+      "message": "I think it\u0027s redundant and this can get out of sync. I would just update \u0027@param name\u0027 section (\u0027must be shorter than 15\u0027).",
+      "range": {
+        "startLine": 161,
+        "startChar": 47,
+        "endLine": 162,
+        "endChar": 31
+      },
+      "revId": "0e752e44a8a62a6fdfa7de984089dd0c316709d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
