@@ -22,6 +22,30 @@
       "revId": "df6471a559ae4f554f12f05f1024d66549b55cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f131e62_e2a1afcc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T21:39:50Z",
+      "side": 1,
+      "message": "TL;DR: I think the benefit of weak symbols is bigger than the risk.\n\nI would like to avoid #ifdef ... #endif because that\u0027ll reduce readability especially when they\u0027re nested (as you would see here). Also I think it\u0027s redundant to define CONFIG_I_HAVE_OVERRIDE_X and define X. It\u0027s not difficult to search for a override because in CrOS EC, config is per board. So, overrides should live in the board directory. So, I prefer weak symbols.\n\nOne scenario I\u0027m concerned is the following:\n\n1. A developer finds the default supplier_priority doesn\u0027t work. \n2. They override it to fix a bug but spell it as \u0027suppliers_priority\u0027 by mistake.\n3. Bug is not fixed.\n\nIt\u0027ll waste some time for careless developers but misspelled overrides are unlikely checked in and contaminate the codebase.\n\nIf supplier_priority is renamed, we\u0027ll need to take care of all overrides but that\u0027s rare and not difficult to do.\n\nAnother scenario is a developer chooses exactly the same variable name with exactly the same storage class and type and it breaks neither charge_manager nor the new code being added. It\u0027s possible but it doesn\u0027t seem very likely.",
+      "parentUuid": "ffbeb121_8ae5a4f2",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "df6471a559ae4f554f12f05f1024d66549b55cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
