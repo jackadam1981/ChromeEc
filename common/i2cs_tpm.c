@@ -208,6 +208,8 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	 * on the AP interrupt line for that.
 	 */
 	gpio_set_level(GPIO_INT_AP_L, 0);
+	/* Delay to keep this pulse at least 4 usec */
+	for (volatile int i = 0; i < 4; i++);
 	gpio_set_level(GPIO_INT_AP_L, 1);
 }
 

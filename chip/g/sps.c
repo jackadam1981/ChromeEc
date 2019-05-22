@@ -61,7 +61,7 @@ static uint32_t sps_tx_count, sps_rx_count, tx_empty_count, max_rx_batch;
 #define CPRINTS(format, args...) cprints(CC_SPS, format, ## args)
 
 /* Flag indicating if there has been any data received while CS was asserted. */
-static uint8_t seen_data;
+static volatile uint8_t seen_data;
 
 void sps_tx_status(uint8_t byte)
 {
@@ -344,8 +344,12 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 			 * completed.
 			 */
 			gpio_set_level(GPIO_INT_AP_L, 0);
-			gpio_set_level(GPIO_INT_AP_L, 1);
 			seen_data = 0;
+
+			/* Delay to keep this pulse at least 4 usec */
+			for (volatile int i = 0; i < 4; i++);
+
+			gpio_set_level(GPIO_INT_AP_L, 1);
 		}
 	}
 }
