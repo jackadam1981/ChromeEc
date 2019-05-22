@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "84ce54ca_5257eeed",
+        "filename": "common/flash_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:54:58Z",
+      "side": 1,
+      "message": "ah, actually no: flash_log_get_tstamp() is a global function and is used by the vendor command handler, it is expected to return current wall clock.",
+      "parentUuid": "23ddc307_2901128d",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 314,
+        "endChar": 41
+      },
+      "revId": "087134dbe5b977f1f259a0b0821a7dbd419510f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e8a55bd_b3a8b8e3",
         "filename": "common/flash_log.c",
         "patchSetId": 3
