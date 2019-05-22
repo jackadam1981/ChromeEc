@@ -46,6 +46,30 @@
       "revId": "0e752e44a8a62a6fdfa7de984089dd0c316709d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32514e8e_c68539ba",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T21:57:39Z",
+      "side": 1,
+      "message": "(adding to my last comment)\n\n/** ... */ section is a formal place where the proper usage of a macro, a function, a variable, etc. is described. So, it\u0027s much more closely monitored (thus less likely to be out of sync).",
+      "parentUuid": "cfa94cfb_600f72b1",
+      "range": {
+        "startLine": 161,
+        "startChar": 47,
+        "endLine": 162,
+        "endChar": 31
+      },
+      "revId": "0e752e44a8a62a6fdfa7de984089dd0c316709d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
