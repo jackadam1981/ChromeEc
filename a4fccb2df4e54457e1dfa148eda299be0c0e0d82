@@ -1,0 +1,648 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1a0a787_d83c9a6c",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "should this be it8xxx2 for RISC-V core (looking at naming of devices)\n\nIt would be helpful to add a comment here explain the different core types with there part numbers\n\nlike:\nit83XX is Andes\nit8XXX1 is Andes\nit8XXX2 is RISC",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6efcb57d_41c6d4c9",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "will there be another implementation for RISC? (maybe we need a comment here for why)",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e94025_f6a27831",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "nit: ifdef (since there is only one condition)\n\nAlso, can we add a comment of what \"dsb\" is doing while we are touching this code",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 28
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2129889_6bb4682e",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "we should be able to use the new IS_ENABLED() marco to make this code easier to read, for example\n\n\nif (IS_ENABLED(CHIP_CORE_NDS32)) {\n  asm(\"..\");\n} else if (IS_ENABLED(CHIP_CORE_RISC)) {\n  // comment\n IS_ENABLED(CHIP_VARIANT_IT3202AX) ? asm(\"..\") : asm(\"..\");\n}",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 6
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043fdfc8_f6b1118e",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "let\u0027s change this to builtin_unreachable();",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 0
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c5253d_b950af1b",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "this looks like it should be a function as this repeated from above",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 6
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c15d9d2_b0f89c1f",
+        "filename": "chip/it83xx/config_chip_it83202.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "can you create a issue for this and put the number here in the comments please?",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d6f1008_67ecf1b7",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CHIP...",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 6
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6929a0_bcc852af",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "these bit should be defined in a header file. Please define these bits when using them",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 29
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b833289_4b85f934",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "IS_ENABLED",
+      "range": {
+        "startLine": 566,
+        "startChar": 7,
+        "endLine": 566,
+        "endChar": 25
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee11b70_fa0b26c6",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "please define bit in header file",
+      "range": {
+        "startLine": 567,
+        "startChar": 24,
+        "endLine": 567,
+        "endChar": 27
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3597b18a_7a138049",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "needs bit definition in header file",
+      "range": {
+        "startLine": 609,
+        "startChar": 24,
+        "endLine": 609,
+        "endChar": 28
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bb6c328_47ef1917",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "Can you define this config_chip.h?",
+      "range": {
+        "startLine": 420,
+        "startChar": 8,
+        "endLine": 420,
+        "endChar": 24
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2447bc5d_2cb70579",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "why no code for the risc case?",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 29
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5912791f_1dd8b78e",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "Another option for the function:\n\nstatic char buf[8] \u003d { \u0027i\u0027, \u0027t\u0027 }\n\nint num \u003d IS_ENABLED(IT83XX_CHIP_ID_3BYTES) ? 5 : 4;\n\nfor (n \u003d 2; num \u003e 0; n++, num--) {\n buf[n] \u003d to_hex(chip_id \u003e\u003e (num - 1) * 4) \u0026 0x0F);\n}\n\nreturn buf;",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 6
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a66673_16016621",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "this doesn\u0027t see right. Should we be referencing base at least?",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 12
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9961d79_cbbc9fd1",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "Does the \u0027A\u0027 constraint mean the address of the memory location is held in a register? Why do we need to deference the address then?\n\n(not saying this is wrong, just trying to understand better)",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfccc261_5374592e",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "can we remove this indirection, and just specify ~bits\n\n(same for other atomic functions)",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca80638_ca13ee07",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "Reading the RISC manual, I am a little fuzzy on how rd works. From this code it looks like it is always the result of the initial read of rs1 (*addr), but the instruction set manual text makes me think rd could also how the result of the operation of rs1 AND rs2, which would always be 0 in this case. Can you confirm that ret is actually return the previous value please?\n\n\n\"These AMO instructions atomically load a data value from the address in rs1, place the value into register rd, apply a binary operator to the loaded value and the original value in rs2, then store the result back to the address in rs1.\"\n\nThe above text is what I am going off of. I can convince myself either way of the value of rd to being the original rs1 value or the post rs1 value (but I am now leaning towards it holding the original rs1 value - so your implementation would be correct)",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56a149a_4f770d43",
+        "filename": "core/riscv-rv32i/build.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "can you open a new issue for this please",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763b811e_454fb595",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "this should already be defined from config.h, please use STRINGIFY instead",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27cdfe21_d33542ee",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "I need to review file more",
+      "range": {
+        "startLine": 1,
+        "startChar": 22,
+        "endLine": 1,
+        "endChar": 30
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62983d4_55c5587c",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "what is this setting up, can you add comments above please?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f4f103_32eab3e2",
+        "filename": "core/riscv-rv32i/switch.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "I need to review file more",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75f7a7d_aff4b003",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "will come back and review this file more",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca89fc41_683d4b99",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "why a union?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54ee272_adfced79",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "this code has been repeated. let\u0027s make it a function instead",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e27cdd_8f6249de",
+        "filename": "include/panic.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T17:03:39Z",
+      "side": 1,
+      "message": "this bumps the panic structure size (which is okay if needed). Do we really need all of these registers?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "a4fccb2df4e54457e1dfa148eda299be0c0e0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
