@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92b24fc4_f8a4209d",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-22T11:15:43Z",
+      "side": 0,
+      "message": "It looks to me this is a bug because charge_mode was changed from a single variable in unit8_t to two bit wise variables in uint8_t. If we keep this code then the mode will always illegal when USB_DISALLOW_SUSPEND_CHARGE is set.",
+      "range": {
+        "startLine": 231,
+        "startChar": 25,
+        "endLine": 231,
+        "endChar": 32
+      },
+      "revId": "a8f20b538784156db4c57793798894bdd0f472c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f11933b_26b0ac75",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-22T11:15:43Z",
+      "side": 0,
+      "message": "And we should honor to the preserved data here as well",
+      "range": {
+        "startLine": 231,
+        "startChar": 34,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "a8f20b538784156db4c57793798894bdd0f472c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
