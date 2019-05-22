@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffbeb121_8ae5a4f2",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-22T19:09:54Z",
+      "side": 1,
+      "message": "I really wish we had the override keyword here.\n\nHow opposed are you to a new config option that requires to board to specify a supplier_priority, it wouldn\u0027t be that much extra code and gives up better compile-time safety",
+      "range": {
+        "startLine": 47,
+        "startChar": 32,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "df6471a559ae4f554f12f05f1024d66549b55cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
