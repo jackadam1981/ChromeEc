@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77fcdf3b_ea9f0c0b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:44:40Z",
+      "side": 1,
+      "message": "I just tried to maintain exactly the same --help output before and after this patch, will add some text.",
+      "parentUuid": "ee9bc201_a63660fd",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 4
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "564b1288_d70fd548",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-22T20:36:33Z",
       "side": 1,
       "message": "how comes we never used double :: in the original short_opts, though we had optional arguments there? -L, -m have optional_argument but in the old short_opts we had just \"...LMmn...\"",
+      "range": {
+        "startLine": 2305,
+        "startChar": 3,
+        "endLine": 2306,
+        "endChar": 25
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2197007d_e30733c9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:44:40Z",
+      "side": 1,
+      "message": "I think this was a mistake: to be honest when working on this was the first time I fully read man page for getops() :)\n\nThe for tpm mode was always checking out the next token in the command line, this worked fine even though getopt_long() did not event try to see if there is an optional argument.",
+      "parentUuid": "564b1288_d70fd548",
       "range": {
         "startLine": 2305,
         "startChar": 3,
