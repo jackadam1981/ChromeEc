@@ -22,6 +22,30 @@
       "revId": "0db82cdb996bd78fb9fea33e5f4e2969a9520931",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8489a30e_a40ae571",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2910,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-05-22T23:51:08Z",
+      "side": 1,
+      "message": "Yes, it make sense to consider \"exported to external projects\" and will address it in next patch set. Thanks.",
+      "parentUuid": "d90f8cfb_76f2a773",
+      "range": {
+        "startLine": 2901,
+        "startChar": 0,
+        "endLine": 2910,
+        "endChar": 43
+      },
+      "revId": "0db82cdb996bd78fb9fea33e5f4e2969a9520931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
