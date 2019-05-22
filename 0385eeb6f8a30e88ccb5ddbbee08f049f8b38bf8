@@ -45,6 +45,30 @@
       "revId": "0385eeb6f8a30e88ccb5ddbbee08f049f8b38bf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a78576_c11456c5",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:20:09Z",
+      "side": 1,
+      "message": "this call will trigger saving stuff in flash (writing a few bytes).\n\nThe intention is to collect some stats to see if this failure ever happens in the field.",
+      "parentUuid": "9c83ad19_24c903f6",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "0385eeb6f8a30e88ccb5ddbbee08f049f8b38bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
