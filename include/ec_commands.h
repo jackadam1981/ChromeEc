@@ -5636,6 +5636,21 @@ struct ec_params_fp_seed {
 	uint8_t seed[FP_CONTEXT_TPM_BYTES];
 } __ec_align4;
 
+#define EC_CMD_FP_ENC_STATUS 0x0409
+
+/* FP TPM seed has been set or not */
+#define FP_ENC_STATUS_SEED_SET BIT(0)
+
+struct ec_response_fp_encryption_status {
+	/*
+	 * Version of the structure format.
+	 * TODO(yichengli): Change version number to a bitmask.
+	 */
+	uint16_t struct_version;
+	/* Encryption engine status */
+	uint32_t status;
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 
