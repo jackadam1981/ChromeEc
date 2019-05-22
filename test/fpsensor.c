@@ -1,0 +1,77 @@
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "fpsensor_state.h"
+#include "common.h"
+#include "ec_commands.h"
+#include "host_command.h"
+#include "test_util.h"
+#include "util.h"
+
+static int check_fp_tpm_seed_not_set(void)
+{
+	int rv;
+	struct ec_response_fp_seed_is_set resp;
+
+	memset(&resp, 0, sizeof(resp));
+	/* Initially the seed should not have been set. */
+	rv = test_send_host_command(EC_CMD_FP_SEED_IS_SET, 0,
+				    NULL, 0,
+				    &resp, sizeof(resp));
+	if (rv != EC_RES_SUCCESS || resp.seed_is_set != 0) {
+		ccprintf("%s:%s(): rv = %d, seed_is_set = %d\n", __FILE__,
+			__func__, rv, resp.seed_is_set);
+		return -1;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+static int set_fp_tpm_seed(void)
+{
+	int rv;
+	struct ec_params_fp_seed params;
+	struct ec_response_fp_seed_is_set resp;
+
+	params.struct_version = FP_TEMPLATE_FORMAT_VERSION;
+	params.seed[0] = 0;
+
+	rv = test_send_host_command(EC_CMD_FP_SEED, 0,
+					&params, sizeof(params),
+					NULL, 0);
+	if (rv != EC_RES_SUCCESS) {
+		ccprintf("%s:%s(): rv = %d, set seed failed\n",
+			__FILE__, __func__, rv);
+		return -1;
+	}
+
+	memset(&resp, 0, sizeof(resp));
+	/* Now seed should have been set. */
+	rv = test_send_host_command(EC_CMD_FP_SEED_IS_SET, 0,
+					NULL, 0,
+					&resp, sizeof(resp));
+	if (rv != EC_RES_SUCCESS || resp.seed_is_set != 1) {
+		ccprintf("%s:%s(): rv = %d, seed_is_set = %d\n", __FILE__,
+			__func__, rv, resp.seed_is_set);
+		return -1;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+test_static int test_fpsensor(void)
+{
+	TEST_ASSERT(check_fp_tpm_seed_not_set() == EC_RES_SUCCESS);
+	TEST_ASSERT(set_fp_tpm_seed() == EC_RES_SUCCESS);
+
+	return EC_SUCCESS;
+}
+
+void run_test(void)
+{
+	RUN_TEST(test_fpsensor);
+
+	test_print_result();
+}

@@ -5611,6 +5611,11 @@ struct ec_params_fp_seed {
 	uint8_t seed[FP_CONTEXT_TPM_BYTES];
 } __ec_align4;
 
+#define EC_CMD_FP_SEED_IS_SET 0x0409
+struct ec_response_fp_seed_is_set {
+	uint8_t seed_is_set;
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 

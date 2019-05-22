@@ -43,6 +43,14 @@ uint32_t fp_events;
 
 uint32_t sensor_mode;
 
+void fp_task_simulate(void)
+{
+	int timeout_us = -1;
+
+	while (1)
+		task_wait_event(timeout_us);
+}
+
 void fp_clear_finger_context(int idx)
 {
 	memset(fp_template[idx], 0, sizeof(fp_template[0]));
@@ -96,6 +104,17 @@ int fp_tpm_seed_is_set(void)
 {
 	return fp_tpm_seed_set;
 }
+
+static int check_fp_tpm_seed_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_fp_seed_is_set *r = args->response;
+
+	r->seed_is_set = fp_tpm_seed_set;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_SEED_IS_SET, check_fp_tpm_seed_status,
+	EC_VER_MASK(0));
 
 static int validate_fp_mode(const uint32_t mode)
 {
