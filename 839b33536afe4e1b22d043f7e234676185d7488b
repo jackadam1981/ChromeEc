@@ -22,6 +22,30 @@
       "revId": "839b33536afe4e1b22d043f7e234676185d7488b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaf6f894_53f8d28e",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-22T17:07:50Z",
+      "side": 1,
+      "message": "It\u0027s a C11 feature but a source which is compiled with \u0027-std\u003dc99\u0027 still compiles.",
+      "parentUuid": "b4dd8dd8_a9a80b92",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 71
+      },
+      "revId": "839b33536afe4e1b22d043f7e234676185d7488b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
