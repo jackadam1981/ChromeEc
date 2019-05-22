@@ -140,6 +140,30 @@
       "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74feb846_c9c21832",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-05-22T18:50:43Z",
+      "side": 1,
+      "message": "I believe the part\u0027s IDCHG_LIMIT was only represented as powers of 2 + 128mA offset.  So the next step down would be 4096 mA (+ 128 offset).  Do we have any idea what max sustained current draw should be?",
+      "parentUuid": "813faa5f_4e694bf2",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
