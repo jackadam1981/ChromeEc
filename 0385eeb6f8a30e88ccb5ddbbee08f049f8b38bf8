@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e740d8ce_a8a12504",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-22T20:26:07Z",
+      "side": 1,
+      "message": "It\u0027s on the bug: chip designers suggest stat that IDLE would happen before timeout and this is the state to monitor and recover from.",
+      "parentUuid": "c3f8878a_9a7ccca5",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "0385eeb6f8a30e88ccb5ddbbee08f049f8b38bf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c83ad19_24c903f6",
         "filename": "chip/g/trng.c",
         "patchSetId": 1
