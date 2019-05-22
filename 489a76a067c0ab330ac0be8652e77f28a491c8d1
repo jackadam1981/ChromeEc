@@ -116,6 +116,30 @@
       "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813faa5f_4e694bf2",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-05-22T18:39:28Z",
+      "side": 1,
+      "message": "If so, shouldn\u0027t CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA be slightly lower than 6.3A to protect the battery?",
+      "parentUuid": "109c675f_543235ff",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
