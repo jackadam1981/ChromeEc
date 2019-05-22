@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee9bc201_a63660fd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-22T20:36:33Z",
+      "side": 1,
+      "message": "why don\u0027t document this one?",
+      "range": {
+        "startLine": 242,
+        "startChar": 2,
+        "endLine": 242,
+        "endChar": 4
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "564b1288_d70fd548",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-22T20:36:33Z",
+      "side": 1,
+      "message": "how comes we never used double :: in the original short_opts, though we had optional arguments there? -L, -m have optional_argument but in the old short_opts we had just \"...LMmn...\"",
+      "range": {
+        "startLine": 2305,
+        "startChar": 3,
+        "endLine": 2306,
+        "endChar": 25
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
