@@ -188,6 +188,30 @@
       "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0a793d_43b3684f",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-22T21:08:48Z",
+      "side": 1,
+      "message": "I think the 6.3A value is sustained discharge current. What this guards is helping against is peak current draw collapsing VSYS enough that the PP5000_A rail doesn\u0027t drop which I believe is leading to the AP reboot.\n\nThe setting granularity is 512mA, so the limit could be reduced by multiples of 512. This value should be revisited once we have better tuned the OS peak load so that this feature acts more like a backstop than something that\u0027s getting triggered frequently when running on battery only.",
+      "parentUuid": "74feb846_c9c21832",
+      "range": {
+        "startLine": 72,
+        "startChar": 46,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "489a76a067c0ab330ac0be8652e77f28a491c8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
