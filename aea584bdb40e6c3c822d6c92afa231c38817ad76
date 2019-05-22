@@ -22,6 +22,30 @@
       "revId": "aea584bdb40e6c3c822d6c92afa231c38817ad76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c932001e_68c14457",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2019-05-22T22:44:04Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s way easier and seems to work fine. Thanks!",
+      "parentUuid": "5501f9a6_59dd44db",
+      "range": {
+        "startLine": 1046,
+        "startChar": 47,
+        "endLine": 1046,
+        "endChar": 48
+      },
+      "revId": "aea584bdb40e6c3c822d6c92afa231c38817ad76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
