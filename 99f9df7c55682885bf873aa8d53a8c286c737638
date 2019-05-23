@@ -70,6 +70,30 @@
       "revId": "99f9df7c55682885bf873aa8d53a8c286c737638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1133fba_dbf7feec",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-23T02:53:13Z",
+      "side": 1,
+      "message": "So one reason to put these extern here is we do not want to expose these variables. Ideally these should be kept static in fpsensor_state.c and not accessible elsewhere, but fpsensor.c needs to access them, and it\u0027s the only exception. That\u0027s why initially I made fpsensor.h reference these variables like using \"extern\". Any ideas?",
+      "parentUuid": "ddcca057_b8e7ea3b",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "99f9df7c55682885bf873aa8d53a8c286c737638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
