@@ -177,6 +177,20 @@ void chipset_do_shutdown(void)
 	/* Disable 5.0V and 3.3V rails, and wait until they power down. */
 	power_5v_enable(task_get_current(), 0);
 
+#ifdef VARIANT_OCTOPUS_TCPC_0_PS8751
+	/*
+	 * Disconnect mux lines before shutting down the 3.3V rail when P8751 is
+	 * used on port 0.  Otherwise, the power draw of the chip may cause
+	 * PP3300_EC to briefly crater and trigger an EC reboot.
+	 *
+	 * Note: This issue arises in force_shutdown scenarios.  Otherwise, the
+	 * PD power change hooks would have disconnected the mux already.
+	 */
+	if (pd_is_connected(0))
+		usb_mux_set(0, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+							pd_get_polarity(0));
+#endif
+
 	/*
 	 * Shutdown the 3.3V rail and wait for it to go down. We cannot wait
 	 * for the 5V rail since other tasks may be using it.
