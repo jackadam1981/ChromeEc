@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "743e1ebb_3e348b3d",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-23T14:43:42Z",
+      "side": 1,
+      "message": "This should be done inside DCRYPTO_ladder_is_enabled() which is not part of this patch.\n\nAlso, this register access is pretty inexpensive compared to the rest of the processing, not sure this optimization is worth extra code and data space it requires (however small increment it is).",
+      "parentUuid": "a066574f_2a0aa5db",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "cec12d5d9509b188017a59a3f83e4ea21adb502e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98165ee4_51edde18",
         "filename": "test/build.mk",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-23T03:11:29Z",
       "side": 1,
       "message": "why? we don\u0027t have any new #include\u0027s.",
+      "range": {
+        "startLine": 155,
+        "startChar": 55,
+        "endLine": 155,
+        "endChar": 64
+      },
+      "revId": "cec12d5d9509b188017a59a3f83e4ea21adb502e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428e9841_a30803a6",
+        "filename": "test/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-23T14:43:42Z",
+      "side": 1,
+      "message": "this belongs in the next patch, moved.",
+      "parentUuid": "98165ee4_51edde18",
       "range": {
         "startLine": 155,
         "startChar": 55,
