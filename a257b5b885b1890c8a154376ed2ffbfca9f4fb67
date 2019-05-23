@@ -22,6 +22,30 @@
       "revId": "a257b5b885b1890c8a154376ed2ffbfca9f4fb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d2e2f8_8b914c55",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-23T21:26:33Z",
+      "side": 1,
+      "message": "Yes, we seem to be protecting the I2C tunnel 0(at least i2c_host_port is not configured in the case of ampton), which does not look correct. Need to identify a safety check for that.",
+      "parentUuid": "aa6f68a1_3bcf418e",
+      "range": {
+        "startLine": 924,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 58
+      },
+      "revId": "a257b5b885b1890c8a154376ed2ffbfca9f4fb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
