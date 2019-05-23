@@ -126,6 +126,23 @@
 #endif
 #endif
 
+/*
+ * Override checking.  Performed as a sanity check when compiling C files
+ *
+ * __overridable is used when declaring a prototype for a weak function
+ * __override_default is used for the default definition of a weak function
+ * __override is used for overriding a default function with this weak function
+ */
+#ifndef __OVERRIDE_CHECK
+#define __overridable
+#define __override_default __attribute__((weak))
+#define __override
+#else
+#define __overridable      __attribute__((overridable))
+#define __override_default __attribute__((override_default))
+#define __override         __attribute__((override))
+#endif
+
 /* There isn't really a better place for this */
 #define C_TO_K(temp_c) ((temp_c) + 273)
 #define K_TO_C(temp_c) ((temp_c) - 273)
