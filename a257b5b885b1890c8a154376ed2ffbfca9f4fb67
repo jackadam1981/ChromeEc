@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa6f68a1_3bcf418e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-23T21:11:18Z",
+      "side": 1,
+      "message": "What happens when this runs on ampton?  Do we end up marking port 0 as protected? (and, I suppose, have we already been doing that?)",
+      "range": {
+        "startLine": 924,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 58
+      },
+      "revId": "a257b5b885b1890c8a154376ed2ffbfca9f4fb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
