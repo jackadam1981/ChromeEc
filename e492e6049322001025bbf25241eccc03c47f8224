@@ -117,6 +117,30 @@
       "revId": "e492e6049322001025bbf25241eccc03c47f8224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8adb48c3_1cd5cb2f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-23T00:08:44Z",
+      "side": 1,
+      "message": "1) Yes, I guess, for all such cases the following code was dealing with it:\n  if (!optarg \u0026\u0026 argv[optind] \u0026\u0026 argv[optind][0] !\u003d \u0027-\u0027) {\n\toptarg \u003d argv[optind++];\n\ttpm_mode_arg \u003d optarg;\n  }\n\ngetopt() man I see identifies \u0027::\u0027 as GNU extension:\nIf an option character is followed by two colons (‘::’), its argument is optional; this is a GNU extension.\n\nI assume you tested that options like -m work fine, both with and without an optional arg, in the middle and at the end of the arg list. \n\n2) Based on item 1, do we need those special if (!optarg ...) blocks now for options with optional args? Can they be dropped from the source code?",
+      "parentUuid": "2197007d_e30733c9",
+      "range": {
+        "startLine": 2305,
+        "startChar": 3,
+        "endLine": 2306,
+        "endChar": 25
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
