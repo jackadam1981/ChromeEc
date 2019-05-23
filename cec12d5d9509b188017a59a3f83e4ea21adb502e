@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a066574f_2a0aa5db",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-23T03:11:29Z",
+      "side": 1,
+      "message": "nit: so, we read it from registers on every access. can we somehow just cache this flag in memory? e.g.set this flag in memory after reading once in DCRYPTO_ladder_is_enabled() and in DCRYPTO_ladder_revoke()?",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 33
+      },
+      "revId": "cec12d5d9509b188017a59a3f83e4ea21adb502e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98165ee4_51edde18",
+        "filename": "test/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-23T03:11:29Z",
+      "side": 1,
+      "message": "why? we don\u0027t have any new #include\u0027s.",
+      "range": {
+        "startLine": 155,
+        "startChar": 55,
+        "endLine": 155,
+        "endChar": 64
+      },
+      "revId": "cec12d5d9509b188017a59a3f83e4ea21adb502e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
