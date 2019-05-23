@@ -141,6 +141,30 @@
       "revId": "e492e6049322001025bbf25241eccc03c47f8224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7f9457_c91b4a32",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-23T00:24:02Z",
+      "side": 1,
+      "message": "ah, you are right, this is a gnu extension, do we want to rely on this?\n\nI tested -m as describe in the patch description, it all worked fine. Having -m as the last option in the command line is tricky though: if we want space separated optional argument to be acceptable, we can tell between it or the non optional argument (like file name for gsctool). \n\nThe way around it is to add -- in the command line after the last option and its optional argument, if any.",
+      "parentUuid": "8adb48c3_1cd5cb2f",
+      "range": {
+        "startLine": 2305,
+        "startChar": 3,
+        "endLine": 2306,
+        "endChar": 25
+      },
+      "revId": "e492e6049322001025bbf25241eccc03c47f8224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
