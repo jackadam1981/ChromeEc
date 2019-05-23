@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6855f4cb_8f19cb54",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-23T18:07:33Z",
+      "side": 1,
+      "message": "if (IS_ENABLED()) ...",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "def03a2df7662d63e44b61ad4f0bdcf034cdace2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d24eb09_dfaab90d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-23T18:07:33Z",
+      "side": 1,
+      "message": "MT6370_MASK_DB_VNEG_DISC",
+      "range": {
+        "startLine": 1155,
+        "startChar": 6,
+        "endLine": 1155,
+        "endChar": 36
+      },
+      "revId": "def03a2df7662d63e44b61ad4f0bdcf034cdace2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f02737_6abd9fab",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-23T18:07:33Z",
+      "side": 1,
+      "message": "Please remove these.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 35
+      },
+      "revId": "def03a2df7662d63e44b61ad4f0bdcf034cdace2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
