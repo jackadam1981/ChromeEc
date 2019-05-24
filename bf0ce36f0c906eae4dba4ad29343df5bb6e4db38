@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79baf1cd_09f45308",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T18:34:29Z",
+      "side": 1,
+      "message": "As far as I know, the callers of this function should be already filtering out redundant calls. In which call chain, do you see it generate noise?\n\nEven if you silence the log, the rest of the function is still executed (redundantly). So, I think we should fix the caller.",
+      "range": {
+        "startLine": 497,
+        "startChar": 4,
+        "endLine": 497,
+        "endChar": 29
+      },
+      "revId": "bf0ce36f0c906eae4dba4ad29343df5bb6e4db38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
