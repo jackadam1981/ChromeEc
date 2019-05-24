@@ -1043,6 +1043,20 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+
+void isl923x_charger_init(void)
+{
+	/* set ac prochot current, default 3072mA */
+	if (IS_ENABLED(CONFIG_AC_PROCHOT))
+		isl923x_set_ac_prochot(
+			/* set to 3328mA 0xD00*/
+			ISL923X_PROCHOT_CURRENT_256 |
+			ISL923X_PROCHOT_CURRENT_1024 |
+			ISL923X_PROCHOT_CURRENT_2048
+		);
+}
+DECLARE_HOOK(HOOK_INIT, isl923x_charger_init, HOOK_PRIO_INIT_I2C + 1);
+
 int board_is_lid_angle_tablet_mode(void)
 {
 	/* Boards with no GMR sensor use lid angles to detect tablet mode. */
