@@ -771,6 +771,11 @@ void p9221_notify_vbus_change(int vbus)
 	hook_call_deferred(&p9221_detect_work_data, P9221_NOTIFIER_DELAY_MS);
 }
 
+int p9221_vbus_status(void)
+{
+	return wpc->vbus_status;
+}
+
 void wireless_power_charger_task(void *u)
 {
 	while (1) {

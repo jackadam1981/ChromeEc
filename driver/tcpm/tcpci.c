@@ -564,6 +564,18 @@ static int register_mask_reset(int port)
  */
 #define MAX_ALLOW_FAILED_RX_READS 10
 
+int p9221_vbus_status(void);
+static int tcpc_vbus_status(uint8_t power_status)
+{
+	if (power_status & TCPC_REG_POWER_STATUS_VBUS_PRES) {
+#ifdef SECTION_IS_RW
+		if (!p9221_vbus_status())
+#endif
+			return 1;
+	}
+	return 0;
+}
+
 void tcpci_tcpc_alert(int port)
 {
 	int status = 0;
@@ -619,8 +631,7 @@ void tcpci_tcpc_alert(int port)
 		/* Read Power Status register */
 		tcpci_tcpm_get_power_status(port, &reg);
 		/* Update VBUS status */
-		tcpc_vbus[port] = reg &
-			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+		tcpc_vbus[port] = tcpc_vbus_status(reg);
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 		/* Update charge manager with new VBUS state */
 		usb_charger_vbus_change(port, tcpc_vbus[port]);
@@ -761,8 +772,8 @@ int tcpci_tcpm_init(int port)
 	/* Initialize power_status_mask */
 	init_power_status_mask(port);
 	/* Update VBUS status */
-	tcpc_vbus[port] = power_status &
-			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+	tcpc_vbus[port] = tcpc_vbus_status(power_status);
+
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 	/*
 	 * Set Vbus change now in case the TCPC doesn't send a power status
