@@ -299,9 +299,19 @@ int charger_post_init(void)
 	return EC_SUCCESS;
 }
 
+void isl923x_set_ac_prochot(void)
+{
+	if (raw_write16(ISL923X_REG_PROCHOT_AC, CONFIG_ISL923X_AC_PROCHOT))
+		CPRINTF("isl923x_init failed!");
+}
+
 static void isl923x_init(void)
 {
 	int reg;
+
+	/* set ac prochot current, default 3072mA */
+	if (IS_ENABLED(CONFIG_AC_PROCHOT))
+		isl923x_set_ac_prochot();
 
 #ifdef CONFIG_TRICKLE_CHARGING
 	const struct battery_info *bi = battery_get_info();

@@ -969,6 +969,10 @@
 /* Enable trickle charging */
 #undef CONFIG_TRICKLE_CHARGING
 
+/* Enable ac prochot */
+#undef CONFIG_AC_PROCHOT
+#undef CONFIG_ISL923X_AC_PROCHOT
+
 /*****************************************************************************/
 
 /*
