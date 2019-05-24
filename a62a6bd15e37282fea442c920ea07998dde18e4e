@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bf9f462_9bcfda07",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2331,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-24T01:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ea6b5d_00d85ef7",
+      "range": {
+        "startLine": 2331,
+        "startChar": 28,
+        "endLine": 2331,
+        "endChar": 32
+      },
+      "revId": "a62a6bd15e37282fea442c920ea07998dde18e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7a71c0a_b0f530e2",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-23T00:17:23Z",
       "side": 1,
       "message": "does it work even for options with required arguments (single :)?\nif we have case\n -d 18d1:5014 -m\nmy understanding, getopt_long() should return \u0027?\u0027 in such case and don\u0027t set longindex or optarg? since:\n - When getopt_long encounters a short option, it does the same thing that getopt would do: it returns the character code for the option, and stores the option’s argument (if it has one) in optarg.\n - If getopt finds [...] a missing option argument, it returns ‘?’ and sets the external variable optopt to the actual option character.",
+      "range": {
+        "startLine": 2352,
+        "startChar": 3,
+        "endLine": 2353,
+        "endChar": 31
+      },
+      "revId": "a62a6bd15e37282fea442c920ea07998dde18e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f07bd58_3045998c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-24T01:44:46Z",
+      "side": 1,
+      "message": "both \n\n ./extra/usb_updater/gsctool -d 18d1:5014 -m\n ./extra/usb_updater/gsctool -d 18d1:5014 -m enable\n\n\nwork as expected.",
+      "parentUuid": "f7a71c0a_b0f530e2",
       "range": {
         "startLine": 2352,
         "startChar": 3,
