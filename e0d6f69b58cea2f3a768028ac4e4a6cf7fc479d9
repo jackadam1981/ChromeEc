@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d5d8fa2_39fdcfc6",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T17:46:03Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_AC_PROCHOT)) {",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 24
+      },
+      "revId": "e0d6f69b58cea2f3a768028ac4e4a6cf7fc479d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ff3d5e_d28e7a54",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T17:46:03Z",
+      "side": 1,
+      "message": "Can you create a API (e.g. isl923x_set_ac_prochot) and make board_init call it?",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 17
+      },
+      "revId": "e0d6f69b58cea2f3a768028ac4e4a6cf7fc479d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da16d032_c9488d5f",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T17:46:03Z",
+      "side": 1,
+      "message": "BIT(7)",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "e0d6f69b58cea2f3a768028ac4e4a6cf7fc479d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
