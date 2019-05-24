@@ -9,12 +9,15 @@
 #include "common.h"
 #include "console.h"
 #include "driver/als_tcs3400.h"
+#include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
 #include "task.h"
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
+
+#define ALS_TCS3400_INT_EVENT_DELAY 0
 
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
@@ -31,6 +34,12 @@ static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 {
 	return i2c_write8(s->port, s->addr, reg, data);
 }
+
+static void tcs3400_read_deferred(void)
+{
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ALS_TCS3400_INT_EVENT, 0);
+}
+DECLARE_DEFERRED(tcs3400_read_deferred);
 
 static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 {
@@ -54,6 +63,10 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	 */
 	if (ret == EC_SUCCESS)
 		ret = EC_RES_IN_PROGRESS;
+
+	if (IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_INT_EVENT))
+		hook_call_deferred(&tcs3400_read_deferred_data,
+				ALS_TCS3400_INT_EVENT_DELAY);
 
 	return ret;
 }
