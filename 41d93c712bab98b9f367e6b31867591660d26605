@@ -256,6 +256,30 @@
       "revId": "41d93c712bab98b9f367e6b31867591660d26605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde87047_b974a47a",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T23:49:46Z",
+      "side": 1,
+      "message": "We don\u0027t have passthru for other bus now. Locating chips should be unified because one chip type can have hybrid topology. Passthru commands should be separated.",
+      "parentUuid": "0b2acea9_0164f86d",
+      "range": {
+        "startLine": 6241,
+        "startChar": 1,
+        "endLine": 6241,
+        "endChar": 16
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

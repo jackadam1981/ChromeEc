@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a7b9964_b9663a2f",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T23:49:46Z",
+      "side": 1,
+      "message": "I\u0027ll move this to host_command.c (or anywhere better).",
+      "range": {
+        "startLine": 861,
+        "startChar": 11,
+        "endLine": 861,
+        "endChar": 25
+      },
+      "revId": "1c9e5bef038a278b5b4bee49fd387a5ad601a106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
