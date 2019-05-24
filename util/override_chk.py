@@ -1,6 +1,6 @@
 def override_check(src):
     from pycparser import c_ast
-    from pycparserext.ext_c_parser import GnuCParser, FuncDeclExt
+    from pycparserext.ext_c_parser import GnuCParser, FuncDeclExt, AttributeSpecifier
 
     p = GnuCParser()
     ast = p.parse(src)
@@ -24,7 +24,7 @@ def override_check(src):
 
             # attributes can be in one of two places... so check both
             for funcspec in decl.funcspec:
-                if funcspec.exprlist is not None:
+                if type(funcspec) == AttributeSpecifier:
                     for expr in funcspec.exprlist.exprs:
                         if expr.name in ('override', 'overridable', 'override_default'):
                             entries[decl.name][expr.name] = 1
