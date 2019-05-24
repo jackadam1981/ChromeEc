@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "ee4ae072_9b1e2681",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-24T23:23:38Z",
+      "side": 1,
+      "message": "test_mockable is probably a safer (and more readable) pattern than mocking values needed for tests in the implementations.",
+      "parentUuid": "269cd9cd_5f5667fc",
+      "range": {
+        "startLine": 133,
+        "startChar": 52,
+        "endLine": 133,
+        "endChar": 62
+      },
+      "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff8e0dd1_75eb15af",
         "filename": "Makefile",
         "patchSetId": 2
