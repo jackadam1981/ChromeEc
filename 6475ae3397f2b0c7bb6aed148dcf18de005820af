@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ebb27b7_253034ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-24T19:15:42Z",
+      "side": 1,
+      "message": "This seems to be a common use case to me:\n\n    if (IS_ENABLED(CHIP_VARIANT_XXX)) {\n        /* CHIP_VARIANT_XXX has a special case we need to handle here */\n    }",
+      "parentUuid": "1c9e44d1_38875328",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbfc54b2_8875dfa5",
         "filename": "Makefile",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-24T18:55:41Z",
       "side": 1,
       "message": "Why not this and others?",
+      "range": {
+        "startLine": 133,
+        "startChar": 52,
+        "endLine": 133,
+        "endChar": 62
+      },
+      "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e784a32_7bc45b05",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-24T19:15:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good idea to be special casing if we are in a test in an implementation. Seems like it would be error prone.",
+      "parentUuid": "bbfc54b2_8875dfa5",
       "range": {
         "startLine": 133,
         "startChar": 52,
