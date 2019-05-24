@@ -61,6 +61,14 @@
 #define ISL9238_SYS_VOLTAGE_REG_MAX 18304
 #define ISL923X_SYS_VOLTAGE_REG_MIN 2048
 
+/* PROCHOT# adapter prochot current setting in mA */
+#define ISL923X_PROCHOT_CURRENT_128   (1 << 7)
+#define ISL923X_PROCHOT_CURRENT_256   (1 << 8)
+#define ISL923X_PROCHOT_CURRENT_512   (1 << 9)
+#define ISL923X_PROCHOT_CURRENT_1024  (1 << 10)
+#define ISL923X_PROCHOT_CURRENT_2048  (1 << 11)
+#define ISL923X_PROCHOT_CURRENT_4096  (1 << 12)
+
 /* PROCHOT# debounce time and duration time in micro seconds */
 #define ISL923X_PROCHOT_DURATION_10000  (0 << 6)
 #define ISL923X_PROCHOT_DURATION_20000  BIT(6)

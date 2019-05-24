@@ -303,6 +303,13 @@ static void isl923x_init(void)
 {
 	int reg;
 
+/* set ac prochot current, default 3072mA */
+#ifdef CONFIG_AC_PROCHOT
+
+	if (raw_write16(ISL923X_REG_PROCHOT_AC, CONFIG_AC_PROCHOT))
+		goto init_fail;
+#endif
+
 #ifdef CONFIG_TRICKLE_CHARGING
 	const struct battery_info *bi = battery_get_info();
 
