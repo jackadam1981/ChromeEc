@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ee6e77a_35e3018c",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T16:16:38Z",
+      "side": 1,
+      "message": "nit: It would make it easier to be cherry-picked if this change is separated.",
+      "revId": "720b859ad34b0c97b0d6ae0567884e6e1bc02a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60cf3bc_7820380f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T16:16:38Z",
+      "side": 1,
+      "message": "Please remove this. We should keep only one place to describe the API usage.",
+      "range": {
+        "startLine": 1119,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 3
+      },
+      "revId": "720b859ad34b0c97b0d6ae0567884e6e1bc02a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59057f81_1f2b3ec1",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T16:16:38Z",
+      "side": 1,
+      "message": "**\n\nPlease refer to mt6370_led_set_color as an example.",
+      "range": {
+        "startLine": 662,
+        "startChar": 1,
+        "endLine": 662,
+        "endChar": 2
+      },
+      "revId": "720b859ad34b0c97b0d6ae0567884e6e1bc02a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9e7014b_395516c1",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T16:16:38Z",
+      "side": 1,
+      "message": "Need to describe error code.",
+      "range": {
+        "startLine": 670,
+        "startChar": 10,
+        "endLine": 670,
+        "endChar": 32
+      },
+      "revId": "720b859ad34b0c97b0d6ae0567884e6e1bc02a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
