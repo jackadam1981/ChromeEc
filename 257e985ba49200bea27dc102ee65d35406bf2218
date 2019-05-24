@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34adc735_a6bacf97",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T20:36:54Z",
+      "side": 1,
+      "message": "That one is also probably unnecessary",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "257e985ba49200bea27dc102ee65d35406bf2218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a05191_6c454e99",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T20:36:54Z",
+      "side": 1,
+      "message": "Same as FP_FRAME_SECTION, not necessary in the header",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "257e985ba49200bea27dc102ee65d35406bf2218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
