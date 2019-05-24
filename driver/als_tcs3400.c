@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/als_tcs3400.h"
+#include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
@@ -32,6 +33,14 @@ static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 	return i2c_write8(s->port, s->addr, reg, data);
 }
 
+#ifdef CONFIG_ALS_TCS3400_POLLING
+static void tcs3400_read_deferred(void)
+{
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ALS_TCS3400_INT_EVENT, 0);
+}
+DECLARE_DEFERRED(tcs3400_read_deferred);
+#endif
+
 static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 {
 	int ret;
@@ -54,6 +63,11 @@ static int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)
 	 */
 	if (ret == EC_SUCCESS)
 		ret = EC_RES_IN_PROGRESS;
+
+#ifdef CONFIG_ALS_TCS3400_POLLING
+	hook_call_deferred(&tcs3400_read_deferred_data,
+			ALS_TCS3400_POLLING_DELAY);
+#endif
 
 	return ret;
 }
@@ -197,6 +211,7 @@ skip_vector_load:
 	return EC_SUCCESS;
 }
 
+#ifndef CONFIG_ALS_TCS3400_POLLING
 void tcs3400_interrupt(enum gpio_signal signal)
 {
 #ifdef CONFIG_ACCEL_FIFO
@@ -205,6 +220,7 @@ void tcs3400_interrupt(enum gpio_signal signal)
 	task_set_event(TASK_ID_MOTIONSENSE,
 		       CONFIG_ALS_TCS3400_INT_EVENT, 0);
 }
+#endif
 
 /*
  * tcs3400_irq_handler - bottom half of the interrupt stack.

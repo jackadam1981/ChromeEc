@@ -95,6 +95,8 @@ enum tcs3400_mode {
 #define TCS_MAX_AGAIN           0x03            /* 64x gain */
 #define TCS_DEFAULT_AGAIN       0x02            /* 16x gain */
 
+#define ALS_TCS3400_POLLING_DELAY 0
+
 /* tcs3400 rgb als driver data */
 struct tcs3400_rgb_drv_data_t {
 	/*
