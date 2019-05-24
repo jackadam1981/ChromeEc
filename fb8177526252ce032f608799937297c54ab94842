@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd53dad_06e13c76",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-05-24T22:57:19Z",
+      "side": 1,
+      "message": "Could you add a brief comment stating what this delay is? (why 40us?)",
+      "range": {
+        "startLine": 936,
+        "startChar": 8,
+        "endLine": 936,
+        "endChar": 10
+      },
+      "revId": "fb8177526252ce032f608799937297c54ab94842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
