@@ -12,7 +12,7 @@
 # target emulation `elf64-littleriscv' does not match `elf32-littleriscv'
 # Select RISC-V bare-metal toolchain
 $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_riscv),\
-	/opt/coreboot-sdk/bin/riscv64-elf-)
+	/opt/riscv/riscv/bin/riscv32-unknown-elf-)
 
 # CPU specific compilation flags
 CFLAGS_CPU+=-march=rv32imafc -mabi=ilp32f -Os
