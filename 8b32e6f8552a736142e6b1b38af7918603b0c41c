@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b127632_386a4f64",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-24T07:26:06Z",
+      "side": 1,
+      "message": "Take Aseda\u0027s comment, move these into {SRC,SNK}_DISCOVERY states.",
+      "parentUuid": "0e432097_0f9cf0e9",
+      "range": {
+        "startLine": 1694,
+        "startChar": 0,
+        "endLine": 1696,
+        "endChar": 36
+      },
+      "revId": "8b32e6f8552a736142e6b1b38af7918603b0c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a6cfb35_523e356e",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 16
@@ -45,6 +69,30 @@
       "revId": "8b32e6f8552a736142e6b1b38af7918603b0c41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae744e0_b8334744",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-24T07:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a6cfb35_523e356e",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "8b32e6f8552a736142e6b1b38af7918603b0c41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
