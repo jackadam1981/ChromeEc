@@ -299,6 +299,12 @@ int charger_post_init(void)
 	return EC_SUCCESS;
 }
 
+void isl923x_set_ac_prochot(uint16_t ac_prochot)
+{
+	if (raw_write16(ISL923X_REG_PROCHOT_AC, ac_prochot))
+		CPRINTF("%s failed!\n", __func__);
+}
+
 static void isl923x_init(void)
 {
 	int reg;
