@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bf3ba12_3f58829e",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-24T20:07:03Z",
+      "side": 1,
+      "message": "nit: can you add /* port */ to the calling site, please (here and usb_mux_set)",
+      "range": {
+        "startLine": 189,
+        "startChar": 21,
+        "endLine": 189,
+        "endChar": 22
+      },
+      "revId": "4d253f2a5678199a288e5cae5eae4be630885fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
