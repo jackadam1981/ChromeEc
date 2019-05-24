@@ -94,6 +94,30 @@
       "revId": "99f9df7c55682885bf873aa8d53a8c286c737638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb9712c_6af9e41b",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-05-24T16:41:25Z",
+      "side": 1,
+      "message": "You are saying that you want to just share these variables across fpsensor.c and fpsensor_state.c, since they were static in fpsensor.c before. I agree with you there, but I think you might be following a different header file convention.\n\nThe header file convention that seems to be prevalent in platform/ec + kernel (and which is the typical convention) is that you only specify interface functions, types, variables, and constants that you would want to show the world. Additionally, you only #include the minimal set of other headers to make those declarations valid on their own.\nThe source file includes all of the headers it needs on it\u0027s own. Yes, you typically include a source file\u0027s own header file in the source, but that is mainly to grab the type declarations and the function forward declarations.\n\nfpsensor.h look like it is the primary externally facing header file(and is included by private/ source files), so we probably don\u0027t want to place the externs in that one. fpsensor_state.h might be more appropriate, since those variables are defined in fpsensor_state.c, and fpsensor.c is the only source to include it, but I am not familiar with how fpsensor_state is being used.\n\nI yield to others would have more experience with style in platform/ec.",
+      "parentUuid": "e1133fba_dbf7feec",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "99f9df7c55682885bf873aa8d53a8c286c737638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
