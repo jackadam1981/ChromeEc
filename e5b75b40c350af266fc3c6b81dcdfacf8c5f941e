@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdf3fbca_555b261b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T16:56:15Z",
+      "side": 1,
+      "message": "Can you add a bit more context? For example the motivation behind the change.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "e5b75b40c350af266fc3c6b81dcdfacf8c5f941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7334c2f_fd13cab4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T16:56:15Z",
+      "side": 1,
+      "message": "s/none/nocturne/. We\u0027ll want to cherry-pick this CL to the nocturne FW branch too.",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "e5b75b40c350af266fc3c6b81dcdfacf8c5f941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64fa83b5_de9e52a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T16:56:15Z",
+      "side": 1,
+      "message": "Sadly that doesn\u0027t cover much (yet!). Can you test the various modes (enrollment, matching, multiple fingers) on a DUT?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "e5b75b40c350af266fc3c6b81dcdfacf8c5f941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "943053ab_fe259d86",
+        "filename": "common/fpsensor_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T16:56:15Z",
+      "side": 1,
+      "message": "nit: can you name that method fp_tpm_seed_is_set()? It follows a naming convention used elsewhere in the code (e.g. system_is_locked()). You can rename the static variable.",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 28
+      },
+      "revId": "e5b75b40c350af266fc3c6b81dcdfacf8c5f941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d733ca31_af22fe66",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T16:56:15Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to include fpsensor_state.h in fpsensor.c instead?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "e5b75b40c350af266fc3c6b81dcdfacf8c5f941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f09297_7d867f70",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-24T16:56:15Z",
+      "side": 1,
+      "message": "I think you don\u0027t need those in the header\nhttps://stackoverflow.com/questions/2708127/aligning-extern-constants-gcc",
+      "range": {
+        "startLine": 47,
+        "startChar": 47,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "e5b75b40c350af266fc3c6b81dcdfacf8c5f941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
