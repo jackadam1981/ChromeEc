@@ -232,6 +232,30 @@
       "revId": "41d93c712bab98b9f367e6b31867591660d26605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2acea9_0164f86d",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6241,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-24T19:53:16Z",
+      "side": 1,
+      "message": "Do we have passthru for spi or any other bus yet? I lean toward adding those as separate host command looks up when we need them.\n\nOn the other hand, I am not opposed to making a more generic lookup now (I just don\u0027t know how we would use it)",
+      "parentUuid": "2cdd96c6_130621fa",
+      "range": {
+        "startLine": 6241,
+        "startChar": 1,
+        "endLine": 6241,
+        "endChar": 16
+      },
+      "revId": "41d93c712bab98b9f367e6b31867591660d26605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
