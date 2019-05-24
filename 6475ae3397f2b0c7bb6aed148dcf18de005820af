@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "269cd9cd_5f5667fc",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T22:53:23Z",
+      "side": 1,
+      "message": "What do you mean by \u0027special casing\u0027? TEST_BUILD is used outside of test/ directory.",
+      "parentUuid": "4e784a32_7bc45b05",
+      "range": {
+        "startLine": 133,
+        "startChar": 52,
+        "endLine": 133,
+        "endChar": 62
+      },
+      "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff8e0dd1_75eb15af",
         "filename": "Makefile",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "writtenOn": "2019-05-24T20:13:27Z",
       "side": 1,
       "message": "we should add a comment here in the makefile that the \u003d makes the macro define to empty instead of 1 (here and the other places in the makefiles that we touched)",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 146,
+        "endChar": 22
+      },
+      "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f72a601b_59df1a20",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-24T22:53:23Z",
+      "side": 1,
+      "message": "I agree we need to comment about \u003d (as I commented above) but I want to avoid repeating it.\n\nWhat about defining a macro (e.g. \u0027define_empty\u0027) and use -D$(call define_empty,X)? Then, we can explain why we do \u003d in one place.\n\nCan anybody think of a cleaner way?",
+      "parentUuid": "ff8e0dd1_75eb15af",
       "range": {
         "startLine": 144,
         "startChar": 29,
