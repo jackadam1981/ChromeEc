@@ -41,6 +41,11 @@ endif
 
 PROJECT?=ec
 
+# command to define an empty string
+# "-DMACRO" leads to MACRO=1.  Define an empty string "-DMACRO=" to take
+# advantage of IS_ENABLED magic macro, which only allows an empty string.
+empty=
+
 # Output directory for build objects
 ifdef CTS_MODULE
 # CTS builds need different directories per board per suite.
@@ -98,7 +103,8 @@ endif
 # Baseboard directory
 ifneq (,$(BASEBOARD))
 BASEDIR:=baseboard/$(BASEBOARD)
-CFLAGS_BASEBOARD=-DHAS_BASEBOARD -DBASEBOARD_$(UC_BASEBOARD)
+CFLAGS_BASEBOARD=-DHAS_BASEBOARD=$(call empty) \
+		 -DBASEBOARD_$(UC_BASEBOARD)=$(call empty)
 include $(BASEDIR)/build.mk
 else
 # If BASEBOARD is not defined, then assign BASEDIR to BDIR. This avoids
@@ -141,9 +147,9 @@ else
 	_tsk_lst_flags:=
 endif
 
-_tsk_lst_flags+=-I$(BDIR) -DBOARD_$(UC_BOARD) -I$(BASEDIR) \
-		-DBASEBOARD_$(UC_BASEBOARD) -D_MAKEFILE \
-		-imacros $(_tsk_lst_file)
+_tsk_lst_flags+=-I$(BDIR) -DBOARD_$(UC_BOARD)=$(call empty) -I$(BASEDIR) \
+		-DBASEBOARD_$(UC_BASEBOARD)=$(call empty) \
+		-D_MAKEFILE -imacros $(_tsk_lst_file)
 
 _tsk_lst_ro:=$(shell $(CPP) -P -DSECTION_IS_RO \
 	$(_tsk_lst_flags) include/task_filter.h)
