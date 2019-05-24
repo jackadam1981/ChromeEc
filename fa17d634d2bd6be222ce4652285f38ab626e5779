@@ -46,6 +46,30 @@
       "revId": "fa17d634d2bd6be222ce4652285f38ab626e5779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a5cd489_65a16f1f",
+        "filename": "chip/it83xx/peci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-24T17:08:42Z",
+      "side": 0,
+      "message": "I didn\u0027t see anything that periodically update the cpu temp though. what replaces that or is it not needed?",
+      "parentUuid": "cb5649d3_4e17e8a1",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 70
+      },
+      "revId": "fa17d634d2bd6be222ce4652285f38ab626e5779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
