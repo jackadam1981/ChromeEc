@@ -117,7 +117,7 @@ include common/build.mk
 include driver/build.mk
 include power/build.mk
 -include private/build.mk
--include private-cr51/build.mk
+#-include private-cr51/build.mk
 include test/build.mk
 include util/build.mk
 include util/lock/build.mk
