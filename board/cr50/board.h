@@ -325,6 +325,8 @@ int board_uses_closed_loop_reset(void);
  */
 int board_has_ina_support(void);
 int board_id_is_mismatched(void);
+/* The board allows vendor commands to enable/disable tpm. */
+int board_tpm_mode_allowed(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
 
