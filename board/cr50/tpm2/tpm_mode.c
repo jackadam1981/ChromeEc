@@ -46,6 +46,9 @@ static enum vendor_cmd_rc process_tpm_mode(struct vendor_cmd_params *p)
 
 	p->out_size = 0;
 
+	if (!board_tpm_mode_allowed())
+		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
+
 	if (p->in_size > sizeof(uint8_t))
 		return VENDOR_RC_NOT_ALLOWED;
 
