@@ -22,6 +22,30 @@
       "revId": "bf0ce36f0c906eae4dba4ad29343df5bb6e4db38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d08286_31280bcc",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-27T03:34:27Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve seen many noises.  I\u0027ll try to clean up the caller instead.",
+      "parentUuid": "79baf1cd_09f45308",
+      "range": {
+        "startLine": 497,
+        "startChar": 4,
+        "endLine": 497,
+        "endChar": 29
+      },
+      "revId": "bf0ce36f0c906eae4dba4ad29343df5bb6e4db38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
