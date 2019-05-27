@@ -41,6 +41,8 @@
 #define REG_QR_TABLE10              0x22
 #define REG_FULLCAPNOM              0x23
 #define REG_LEARNCFG                0x28
+#define REG_TGAIN                   0x2C
+#define REG_TOFFSET                 0x2d
 #define REG_QR_TABLE20              0x32
 #define REG_RCOMP0                  0x38
 #define REG_TEMPCO                  0x39
@@ -57,6 +59,7 @@
 #define REG_OCV_TABLE_START         0x80
 #define REG_STATUS2                 0xb0
 #define REG_IALRTTH                 0xb4
+#define REG_TCURVE                  0xb9
 #define REG_HIBCFG                  0xba
 #define REG_CONFIG2                 0xbb
 #define REG_TIMERH                  0xbe
@@ -247,4 +250,20 @@ struct max17055_alert_profile {
  */
 const struct max17055_alert_profile *max17055_get_alert_profile(void);
 #endif /* CONFIG_BATTERY_MAX17055_ALERT */
+
+#ifdef CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE
+struct max17055_temp_calibrate_profile {
+	/* Temperature gain */
+	const uint16_t t_gain;
+	/* Temperature offset */
+	const uint16_t t_offset;
+	/* Temperature curve */
+	const uint16_t t_curve;
+};
+/*
+ * Return the battery/system's temprature calibrate data that max17055 needs.
+ */
+const struct max17055_temp_calibrate_profile
+	*max17055_get_temp_calibrate_profile(void);
+#endif /* CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE */
 #endif /* __CROS_EC_MAX17055_H */
