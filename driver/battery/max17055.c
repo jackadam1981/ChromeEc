@@ -604,6 +604,12 @@ static void max17055_init(void)
 		max17055_get_alert_profile();
 #endif
 
+#ifdef CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE
+		const struct max17055_temp_calibrate_profile *temp_calibrate_profile =
+			max17055_get_temp_calibrate_profile();
+#endif
+
+
 	if (!max17055_probe()) {
 		CPRINTS("Wrong max17055 id!");
 		return;
@@ -660,6 +666,15 @@ static void max17055_init(void)
 			}
 		}
 	}
+
+#ifdef CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE
+/* Set voltage alert range */
+MAX17055_WRITE_DEBUG(REG_TGAIN, temp_calibrate_profile->t_gain);
+/* Set temperature alert range */
+MAX17055_WRITE_DEBUG(REG_TOFFSET, temp_calibrate_profile->t_offset);
+/* Set state-of-charge alert range */
+MAX17055_WRITE_DEBUG(REG_TCURVE, temp_calibrate_profile->t_curve);
+#endif
 
 #ifdef CONFIG_BATTERY_MAX17055_ALERT
 	/* Set voltage alert range */

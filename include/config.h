@@ -346,6 +346,11 @@
 #undef CONFIG_BATTERY_MAX17055_ALERT
 
 /*
+ * MAX17055 support calibrate the temperature.
+ */
+#undef CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE
+
+/*
  * Enable full model driver of MAX17055.
  *
  * It provides a better soc estimation. ocv_table needs to be supplied.

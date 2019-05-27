@@ -233,6 +233,13 @@ static const struct max17055_alert_profile alert_profile[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(alert_profile) == BATTERY_COUNT);
 
+static const struct max17055_temp_calibrate_profile temp_calibrate_profile = {
+	.t_gain		 = 0xe8f8,
+	.t_offset	 = 0x2359,
+	.t_curve	 = 0x000c,
+};
+
+
 enum temp_zone {
 	TEMP_ZONE_0, /* t0 <= bat_temp_c < t1  */
 	TEMP_ZONE_1, /* t1 <= bat_temp_c < t2 */
@@ -310,6 +317,12 @@ const struct max17055_batt_profile *max17055_get_batt_profile(void)
 const struct max17055_alert_profile *max17055_get_alert_profile(void)
 {
 	return &alert_profile[batt_type];
+}
+
+const struct max17055_temp_calibrate_profile 
+		*max17055_get_temp_calibrate_profile(void)
+{
+	return &temp_calibrate_profile;
 }
 
 int get_battery_manufacturer_name(char *dest, int size)
