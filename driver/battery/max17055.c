@@ -346,6 +346,16 @@ int battery_wait_for_stable(void)
 	return EC_SUCCESS;
 }
 
+/*
+ * Return the battery/system's temprature calibrate data that max17055 needs.
+ */
+__attribute__((weak))
+const struct max17055_temp_profile
+		*max17055_get_temp_profile(void)
+{
+	return NULL;
+}
+
 static int max17055_poll_flag_clear(int regno, int mask, int timeout)
 {
 	int reg;
@@ -604,6 +614,11 @@ static void max17055_init(void)
 		max17055_get_alert_profile();
 #endif
 
+#ifdef CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE
+	const struct max17055_temp_profile *temp_profile =
+		max17055_get_temp_profile();
+#endif
+
 	if (!max17055_probe()) {
 		CPRINTS("Wrong max17055 id!");
 		return;
@@ -660,6 +675,15 @@ static void max17055_init(void)
 			}
 		}
 	}
+
+#ifdef CONFIG_BATTERY_MAX17055_TEMP_CALIBRATE
+	/* Calibrate the temprature of the MAX17055 */
+	if (temp_profile) {
+		MAX17055_WRITE_DEBUG(REG_TGAIN, temp_profile->t_gain);
+		MAX17055_WRITE_DEBUG(REG_TOFFSET, temp_profile->t_offset);
+		MAX17055_WRITE_DEBUG(REG_TCURVE, temp_profile->t_curve);
+	}
+#endif
 
 #ifdef CONFIG_BATTERY_MAX17055_ALERT
 	/* Set voltage alert range */
