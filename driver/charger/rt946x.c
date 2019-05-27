@@ -257,6 +257,9 @@ static int rt946x_reset_to_zero(void)
 static int rt946x_enable_bc12_detection(int en)
 {
 #if defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_MT6370)
+#ifdef CONFIG_CHARGER_MT6370_BC12_GPIO
+	gpio_set_level(GPIO_BC12_DET_EN, en);
+#endif /* CONFIG_CHARGER_MT6370_BC12_GPIO */
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_DPDM1, RT946X_MASK_USBCHGEN);
 #endif
@@ -938,6 +941,14 @@ int rt946x_toggle_bc12_detection(void)
 	return rt946x_enable_bc12_detection(1);
 }
 
+#ifdef CONFIG_CHARGER_MT6370_BC12_GPIO
+static void usb_pd_connect(void)
+{
+	rt946x_toggle_bc12_detection();
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
+#endif
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
@@ -982,7 +993,9 @@ void usb_charger_task(void *u)
 			p9221_notify_vbus_change(0);
 #endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
-			rt946x_enable_bc12_detection(1);
+
+			if (!IS_ENABLED(CONFIG_CHARGER_MT6370_BC12_GPIO))
+				rt946x_enable_bc12_detection(1);
 		}
 
 		task_wait_event(-1);
