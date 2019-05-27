@@ -95,9 +95,12 @@ void FLASH_DMA_CODE dma_reset_immu(int fill_immu)
 	/* Immu tag sram reset */
 	IT83XX_GCTRL_MCCR |= 0x10;
 	/* Make sure the immu(dynamic cache) is reset */
-	asm volatile ("dsb");
+	if (IS_ENABLED(CHIP_CORE_NDS32))
+		asm volatile ("dsb");
+
 	IT83XX_GCTRL_MCCR &= ~0x10;
-	asm volatile ("dsb");
+	if (IS_ENABLED(CHIP_CORE_NDS32))
+		asm volatile ("dsb");
 
 #ifdef IMMU_CACHE_TAG_INVALID
 	/*
@@ -123,7 +126,7 @@ void FLASH_DMA_CODE dma_reset_immu(int fill_immu)
 void FLASH_DMA_CODE dma_flash_follow_mode(void)
 {
 	/* Enter follow mode and FSCE# high level */
-	IT83XX_SMFI_ECINDAR3 = 0x4F;
+	IT83XX_SMFI_ECINDAR3 = (EC_INDIRECT_READ_INTERNAL_FLASH | 0xf);
 	IT83XX_SMFI_ECINDAR2 = 0xFF;
 	IT83XX_SMFI_ECINDAR1 = 0xFE;
 	IT83XX_SMFI_ECINDAR0 = 0x00;
@@ -132,8 +135,8 @@ void FLASH_DMA_CODE dma_flash_follow_mode(void)
 
 void FLASH_DMA_CODE dma_flash_follow_mode_exit(void)
 {
-	/* Exit follow mode */
-	IT83XX_SMFI_ECINDAR3 = 0x00;
+	/* Exit follow mode, and keep the setting of selecting internal flash */
+	IT83XX_SMFI_ECINDAR3 = EC_INDIRECT_READ_INTERNAL_FLASH;
 	IT83XX_SMFI_ECINDAR2 = 0x00;
 }
 
@@ -266,7 +269,7 @@ void FLASH_DMA_CODE dma_flash_cmd_aai_write(int addr, int wlen, uint8_t *wbuf)
 
 uint8_t FLASH_DMA_CODE dma_flash_indirect_fast_read(int addr)
 {
-	IT83XX_SMFI_ECINDAR3 = 0x40;
+	IT83XX_SMFI_ECINDAR3 = EC_INDIRECT_READ_INTERNAL_FLASH;
 	IT83XX_SMFI_ECINDAR2 = (addr >> 16) & 0xFF;
 	IT83XX_SMFI_ECINDAR1 = (addr >> 8) & 0xFF;
 	IT83XX_SMFI_ECINDAR0 = (addr & 0xFF);
@@ -559,12 +562,16 @@ static void flash_code_static_dma(void)
 	interrupt_disable();
 
 	/* invalid static DMA first */
+	if (IS_ENABLED(CHIP_ILM_DLM_ORDER))
+		IT83XX_GCTRL_MCCR3 &= ~ILMCR_ILM2_ENABLE;
 	IT83XX_SMFI_SCAR2H = 0x08;
 
 	/* Copy to DLM */
 	IT83XX_GCTRL_MCCR2 |= 0x20;
-	memcpy((void *)SCAR2_ILM2_DLM14, (const void *)FLASH_DMA_START,
+	memcpy((void *)CHIP_RAMCODE_BASE, (const void *)FLASH_DMA_START,
 		IT83XX_ILM_BLOCK_SIZE);
+	if (IS_ENABLED(CHIP_ILM_DLM_ORDER))
+		IT83XX_GCTRL_MCCR3 |= ILMCR_ILM2_ENABLE;
 	IT83XX_GCTRL_MCCR2 &= ~0x20;
 
 	/*
@@ -595,6 +602,8 @@ int flash_pre_init(void)
 {
 	int32_t reset_flags, prot_flags, unwanted_prot_flags;
 
+	/* By default, select internal flash for indirect fast read. */
+	IT83XX_SMFI_ECINDAR3 = EC_INDIRECT_READ_INTERNAL_FLASH;
 	flash_code_static_dma();
 
 	reset_flags = system_get_reset_flags();

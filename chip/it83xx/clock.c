@@ -141,7 +141,12 @@ void __ram_code clock_ec_pll_ctrl(enum ec_pll_ctrl mode)
 	IT83XX_ECPM_PLLCTRL = mode;
 	/* for deep doze / sleep mode */
 	IT83XX_ECPM_PLLCTRL = mode;
-	asm volatile ("dsb");
+	/*
+	 * barrier: ensure low power mode setting is taken into control
+	 * register before standby instruction.
+	 */
+	if (IS_ENABLED(CHIP_CORE_NDS32))
+		asm volatile ("dsb");
 }
 
 void __ram_code clock_pll_changed(void)
@@ -163,12 +168,21 @@ void __ram_code clock_pll_changed(void)
 	IT83XX_ECPM_SCDCR3 = (pll_div_jtag << 4) | pll_div_ec;
 	/* EC sleep after standby instruction */
 	clock_ec_pll_ctrl(EC_PLL_SLEEP);
-	/* Global interrupt enable */
-	asm volatile ("setgie.e");
-	/* EC sleep */
-	asm("standby wake_grant");
-	/* Global interrupt disable */
-	asm volatile ("setgie.d");
+	if (IS_ENABLED(CHIP_CORE_NDS32)) {
+		/* Global interrupt enable */
+		asm volatile ("setgie.e");
+		/* EC sleep */
+		asm("standby wake_grant");
+		/* Global interrupt disable */
+		asm volatile ("setgie.d");
+	} else if (IS_ENABLED(CHIP_CORE_RISCV)) {
+		/* Global interrupt enable */
+		asm volatile ("csrsi mstatus, 0x8");
+		/* EC sleep */
+		asm("wfi");
+		/* Global interrupt disable */
+		asm volatile ("csrci mstatus, 0x8");
+	}
 	/* New FND clock frequency */
 	IT83XX_ECPM_SCDCR0 = (pll_div_fnd << 4);
 	/* EC doze after standby instruction */
@@ -180,6 +194,10 @@ static void clock_set_pll(enum pll_freq_idx idx)
 {
 	int pll;
 
+#ifdef CHIP_VARIANT_IT83202AX
+	/* TODO: fix me... Changing PLL sequence is failed on it83202/ax */
+	return;
+#endif
 	pll_div_fnd  = clock_pll_ctrl[idx].div_fnd;
 	pll_div_ec   = clock_pll_ctrl[idx].div_ec;
 	pll_div_jtag = clock_pll_ctrl[idx].div_jtag;
@@ -401,6 +419,23 @@ int clock_ec_wake_from_sleep(void)
 	return ec_sleep;
 }
 
+void clock_cpu_standby(void)
+{
+	/* standby instruction */
+	if (IS_ENABLED(CHIP_CORE_NDS32))
+		asm("standby wake_grant");
+	else if (IS_ENABLED(CHIP_CORE_RISCV))
+#ifdef CHIP_VARIANT_IT83202AX
+		/*
+		 * An interrupt is not able to wake EC up from low power mode.
+		 * (AX bug)
+		 */
+		asm("nop");
+#else
+		asm("wfi");
+#endif
+}
+
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
@@ -455,11 +490,10 @@ defined(CONFIG_HOSTCMD_ESPI)
 	clock_ec_pll_ctrl(EC_PLL_SLEEP);
 	interrupt_enable();
 	/* standby instruction */
-	asm("standby wake_grant");
+	clock_cpu_standby();
 
 	/* we should never reach that point */
-	while (1)
-		;
+	__builtin_unreachable();
 }
 
 void clock_sleep_mode_wakeup_isr(void)
@@ -552,8 +586,7 @@ void __idle(void)
 			clock_ec_pll_ctrl(EC_PLL_DOZE);
 			idle_doze_cnt++;
 		}
-		/* standby instruction */
-		asm("standby wake_grant");
+		clock_cpu_standby();
 		interrupt_enable();
 	}
 }
