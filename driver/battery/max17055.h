@@ -41,6 +41,8 @@
 #define REG_QR_TABLE10              0x22
 #define REG_FULLCAPNOM              0x23
 #define REG_LEARNCFG                0x28
+#define REG_TGAIN                   0x2C
+#define REG_TOFFSET                 0x2d
 #define REG_QR_TABLE20              0x32
 #define REG_RCOMP0                  0x38
 #define REG_TEMPCO                  0x39
@@ -57,6 +59,7 @@
 #define REG_OCV_TABLE_START         0x80
 #define REG_STATUS2                 0xb0
 #define REG_IALRTTH                 0xb4
+#define REG_TCURVE                  0xb9
 #define REG_HIBCFG                  0xba
 #define REG_CONFIG2                 0xbb
 #define REG_TIMERH                  0xbe
@@ -247,4 +250,20 @@ struct max17055_alert_profile {
  */
 const struct max17055_alert_profile *max17055_get_alert_profile(void);
 #endif /* CONFIG_BATTERY_MAX17055_ALERT */
+
+struct max17055_temp_profile {
+	/*
+	 * The t_gain, t_offset, and t_curve registers are used to calculate
+	 * temperature from the measurement of the AIN pin over a range of
+	 * -40 degree to +85 degree.
+	 */
+	const uint16_t t_gain;
+	const uint16_t t_offset;
+	/*
+	 * The lower half of the t_curve register applies thermistor measurement
+	 * curvature correction to allow thermistor measurements to be accurate
+	 * over a wider temperature range.
+	 */
+	const uint16_t t_curve;
+};
 #endif /* __CROS_EC_MAX17055_H */
