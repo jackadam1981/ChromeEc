@@ -69,6 +69,30 @@
       "revId": "738a9a6d510f3cad09d58f1b15aee4fcf9c9f7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dadc584_2d4d3a63",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-28T19:22:24Z",
+      "side": 1,
+      "message": "good point, this way we can avoid the silly dst_addr src_addr mess below. will resolve",
+      "parentUuid": "43372c5d_52214117",
+      "range": {
+        "startLine": 87,
+        "startChar": 32,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "738a9a6d510f3cad09d58f1b15aee4fcf9c9f7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
