@@ -137,3 +137,12 @@ static void init_oz554(void)
 	gpio_enable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 }
 DECLARE_HOOK(HOOK_INIT, init_oz554, HOOK_PRIO_DEFAULT);
+
+__attribute__((weak))
+void oz554_board_init(void)
+{
+	/*
+	 * This should be overridden by a board specific function
+	 * if it is needed
+	 */
+}
