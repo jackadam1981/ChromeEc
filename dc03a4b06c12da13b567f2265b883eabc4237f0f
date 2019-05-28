@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a88276e4_041a8309",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T23:06:43Z",
+      "side": 1,
+      "message": "How likely is an ODM going to use a bad version? Once we uprev Octopus firmware to whatever contains locate_chip, wouldn\u0027t it make the probability almost zero? Even if we use 0x127, it would still make the current firmware a bad version (because it doesn\u0027t understand 0x127).",
+      "parentUuid": "568f9ce2_99d73cc5",
+      "range": {
+        "startLine": 5355,
+        "startChar": 0,
+        "endLine": 5355,
+        "endChar": 33
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "247e6f25_8c604c24",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
@@ -177,6 +201,24 @@
       "writtenOn": "2019-05-28T16:31:16Z",
       "side": 1,
       "message": "Uninitialized fields are most likely to have a value of \u00270\u0027. From that perspective, I would prefer to start at 1 than 0 and avoid any surprise. Again the same for ec_bus_type enum.",
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b458fa_1282a81a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5358,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T23:06:43Z",
+      "side": 1,
+      "message": "1. Uninitialized fields can have other values, too. So, we still need to write \u0026 review code carefully regardless what base we choose. 2. Choosing base\u003d1 makes EC_BUS_TYPE_COUNT inconsistent with the rest of the codebase. 3. We want to avoid defining a special value which has a different meaning from other values unless it\u0027s necessary.",
+      "parentUuid": "247e6f25_8c604c24",
       "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -288,6 +330,30 @@
       "side": 1,
       "message": "We can just make bus_type uint16_t then. no need for the extra field",
       "parentUuid": "993e2ff9_3e602a49",
+      "range": {
+        "startLine": 5390,
+        "startChar": 2,
+        "endLine": 5390,
+        "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb73625d_a86d28fa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T23:06:43Z",
+      "side": 1,
+      "message": "16 bits are too many for bus_type. How about renaming \u0027padding\u0027 to \u0027reserved\u0027 or \u0027flags\u0027?",
+      "parentUuid": "92279da7_e718947f",
       "range": {
         "startLine": 5390,
         "startChar": 2,
