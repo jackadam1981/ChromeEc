@@ -149,6 +149,7 @@ void chg_ramp_task(void *u)
 {
 	int task_wait_time = -1;
 	int i, lim;
+	uint8_t stable;
 	uint64_t detect_end_time_us = 0, time_us;
 	int last_active_port = CHARGE_PORT_NONE;
 
@@ -168,6 +169,7 @@ void chg_ramp_task(void *u)
 	while (1) {
 		ramp_st_new = ramp_st;
 		active_icl_new = active_icl;
+		stable = 0;
 		switch (ramp_st) {
 		case CHG_RAMP_DISCONNECTED:
 			/* Do nothing */
@@ -335,11 +337,19 @@ void chg_ramp_task(void *u)
 		active_icl = active_icl_new;
 
 		/*
+		 * If the status goes to stable state twice, which means
+		 * it hasn't changed since last time, then we don't neet to
+		 * set charge limit again.
+		 */
+		if (ramp_st == CHG_RAMP_STABLE && ramp_st == ramp_st_prev)
+			stable = 1;
+
+		/*
 		 * Don't perform any action unless something has changed.
 		 * Otherwise, when the task starts, we may try and set a current
 		 * limit that's invalid/uninitialized.
 		 */
-		if (values_have_changed_at_least_once) {
+		if (values_have_changed_at_least_once && !stable) {
 			/* Set the input current limit */
 			lim = chg_ramp_get_current_limit();
 			board_set_charge_limit(active_port, active_sup, lim,
