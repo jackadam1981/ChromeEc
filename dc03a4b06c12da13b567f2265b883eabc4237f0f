@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "568f9ce2_99d73cc5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T19:06:44Z",
+      "side": 1,
+      "message": "It has been built so it is possible for an ODM to choose a \"bad\" version of FW. It is not worth adding risk into that situation since it is very easy to mitigate, i.e. change this to x127.",
+      "parentUuid": "d042c05c_1ef40e25",
+      "range": {
+        "startLine": 5355,
+        "startChar": 0,
+        "endLine": 5355,
+        "endChar": 33
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "247e6f25_8c604c24",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
@@ -240,6 +264,30 @@
       "side": 1,
       "message": "Added uint8_t padding. This padding and __ec_align2 will guarantee the union members will be placed on 2-byte boundary.",
       "parentUuid": "2a2fd5db_65d97e79",
+      "range": {
+        "startLine": 5390,
+        "startChar": 2,
+        "endLine": 5390,
+        "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92279da7_e718947f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T19:06:44Z",
+      "side": 1,
+      "message": "We can just make bus_type uint16_t then. no need for the extra field",
+      "parentUuid": "993e2ff9_3e602a49",
       "range": {
         "startLine": 5390,
         "startChar": 2,
