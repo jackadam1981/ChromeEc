@@ -236,6 +236,30 @@
       "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f3f9f8_af888687",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T22:18:02Z",
+      "side": 1,
+      "message": "Can you explain why you chose $(call empty)? $(EMPTY) is shorter and looks cleaner to me.",
+      "parentUuid": "38becf30_990d4d36",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 146,
+        "endChar": 22
+      },
+      "revId": "6475ae3397f2b0c7bb6aed148dcf18de005820af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
