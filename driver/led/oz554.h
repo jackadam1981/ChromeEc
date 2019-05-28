@@ -10,7 +10,7 @@
 
 #include "gpio.h"
 
-void oz554_board_init(void) __attribute__((weak));
+void oz554_board_init(void);
 
 /**
  * Update oz554 configuration array (oz554_conf).
