@@ -1632,6 +1632,12 @@ const char *board_read_serial(void)
 {
 	return otp_read_serial();
 }
+#else
+__attribute__((weak))
+const char *board_read_serial(void)
+{
+	return "";
+}
 #endif
 
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
@@ -1645,6 +1651,12 @@ __attribute__((weak))
 int board_write_serial(const char *serialno)
 {
 	return otp_write_serial(serialno);
+}
+#else
+__attribute__((weak))
+int board_write_serial(const char *serialno)
+{
+	return 0;
 }
 #endif
 #endif  /* CONFIG_SERIALNO_LEN */
