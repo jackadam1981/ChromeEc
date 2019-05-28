@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6abbad0e_c010c9e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T22:13:54Z",
+      "side": 1,
+      "message": "I don\u0027t think having weak attribute on a declaration makes its all definitions weak.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62d3e9e_d0fe42bf",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T22:13:54Z",
+      "side": 1,
+      "message": "Can you move this to oz554.h? That\u0027s where APIs and overridables should be explained.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f6956ae_b0f8babc",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T22:13:54Z",
+      "side": 1,
+      "message": "Can we discuss the format first?\n\nHaving \u0027weak\u0027 sign here definitely helps developers realize this is overridable.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
