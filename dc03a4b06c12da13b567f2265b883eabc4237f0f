@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4a3539a_58ac386d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-28T16:31:16Z",
+      "side": 1,
+      "message": "+1. I feel we can define a new source file or move it to host_command.c itself",
+      "parentUuid": "5d3dbd2b_49c6a442",
+      "range": {
+        "startLine": 860,
+        "startChar": 7,
+        "endLine": 861,
+        "endChar": 25
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97c63f66_c6eac5a9",
         "filename": "common/i2c_master.c",
         "patchSetId": 12
@@ -88,6 +112,23 @@
         "endLine": 5355,
         "endChar": 33
       },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247e6f25_8c604c24",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5358,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-28T16:31:16Z",
+      "side": 1,
+      "message": "Uninitialized fields are most likely to have a value of \u00270\u0027. From that perspective, I would prefer to start at 1 than 0 and avoid any surprise. Again the same for ec_bus_type enum.",
       "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
