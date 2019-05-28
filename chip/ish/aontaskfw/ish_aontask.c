@@ -291,12 +291,12 @@ static int store_main_fw(void)
 	uint64_t imr_fw_rw_addr;
 
 	imr_fw_addr = ((uint64_t)SNOWBALL_UMA_BASE_HI << 32) +
-			SNOWBALL_UMA_BASE_LO +
-			SNOWBALL_FW_OFFSET +
-			ISH_FW_IMAGE_MANIFEST_HEADER_SIZE;
+		SNOWBALL_UMA_BASE_LO +
+		SNOWBALL_FW_OFFSET +
+		ISH_FW_IMAGE_MANIFEST_HEADER_SIZE;
 
 	imr_fw_rw_addr = (imr_fw_addr
-			  + aon_share.main_fw_rw_addr
+			  + (uint32_t)aon_share.main_fw_rw_addr
 			  - CONFIG_RAM_BASE);
 
 	/* disable BCG (Block Clock Gating) for DMA, DMA can be accessed now */
@@ -305,7 +305,7 @@ static int store_main_fw(void)
 	/* store main FW's read and write data region to IMR/UMA DDR */
 	ret = ish_dma_copy(
 		PAGING_CHAN,
-		imr_fw_rw_addr,
+		(uint32_t *)((uint32_t)imr_fw_rw_addr),
 		aon_share.main_fw_rw_addr,
 		aon_share.main_fw_rw_size,
 		SRAM_TO_UMA);
@@ -332,16 +332,16 @@ static int restore_main_fw(void)
 	uint64_t imr_fw_rw_addr;
 
 	imr_fw_addr = ((uint64_t)SNOWBALL_UMA_BASE_HI << 32) +
-			SNOWBALL_UMA_BASE_LO +
-			SNOWBALL_FW_OFFSET +
-			ISH_FW_IMAGE_MANIFEST_HEADER_SIZE;
+		SNOWBALL_UMA_BASE_LO +
+		SNOWBALL_FW_OFFSET +
+		ISH_FW_IMAGE_MANIFEST_HEADER_SIZE;
 
 	imr_fw_ro_addr = (imr_fw_addr
-			  + aon_share.main_fw_ro_addr
+			  + (uint32_t)aon_share.main_fw_ro_addr
 			  - CONFIG_RAM_BASE);
 
 	imr_fw_rw_addr = (imr_fw_addr
-			  + aon_share.main_fw_rw_addr
+			  + (uint32_t)aon_share.main_fw_rw_addr
 			  - CONFIG_RAM_BASE);
 
 	/* disable BCG (Block Clock Gating) for DMA, DMA can be accessed now */
@@ -351,12 +351,11 @@ static int restore_main_fw(void)
 	ret = ish_dma_copy(
 		PAGING_CHAN,
 		aon_share.main_fw_ro_addr,
-		imr_fw_ro_addr,
+		(uint32_t *)((uint32_t)imr_fw_ro_addr),
 		aon_share.main_fw_ro_size,
 		UMA_TO_SRAM);
 
 	if (ret != DMA_RC_OK) {
-
 		aon_share.last_error = AON_ERROR_DMA_FAILED;
 		aon_share.error_count++;
 
@@ -368,12 +367,11 @@ static int restore_main_fw(void)
 
 	/* restore main FW's read and write data region from IMR/UMA DDR */
 	ret = ish_dma_copy(
-			PAGING_CHAN,
-			aon_share.main_fw_rw_addr,
-			imr_fw_rw_addr,
-			aon_share.main_fw_rw_size,
-			UMA_TO_SRAM
-			);
+		PAGING_CHAN,
+		aon_share.main_fw_rw_addr,
+		(uint32_t *)((uint32_t)imr_fw_rw_addr),
+		aon_share.main_fw_rw_size,
+		UMA_TO_SRAM);
 
 	/* enable BCG for DMA, DMA can't be accessed now */
 	CCU_BCG_EN = CCU_BCG_EN | CCU_BCG_BIT_DMA;

@@ -84,9 +84,11 @@ void ish_dma_init(void)
 	dma_init_called = 1;
 }
 
-int ish_dma_copy(uint32_t chan, uint32_t dst, uint32_t src, uint32_t length,
+int ish_dma_copy(uint32_t chan, uint32_t *dst, uint32_t *src, uint32_t length,
 		 enum dma_mode mode)
 {
+	uint32_t dst_addr = (uint32_t)dst;
+	uint32_t src_addr = (uint32_t)src;
 	uint32_t chan_reg = DMA_REG_BASE + (DMA_CH_REGS_SIZE * chan);
 	int rc = DMA_RC_OK;
 	uint32_t eflags;
@@ -134,8 +136,8 @@ int ish_dma_copy(uint32_t chan, uint32_t dst, uint32_t src, uint32_t length,
 		MISC_CHID_CFG_REG = chan; /* Set channel to configure */
 		DMA_CTL_HIGH(chan_reg) =
 			chunk;		 /* Set number of bytes to transfer */
-		DMA_DAR(chan_reg) = dst; /* Destination address */
-		DMA_SAR(chan_reg) = src; /* Source address */
+		DMA_DAR(chan_reg) = dst_addr; /* Destination address */
+		DMA_SAR(chan_reg) = src_addr; /* Source address */
 		DMA_EN_REG = DMA_CH_EN_BIT(chan) |
 			     DMA_CH_EN_WE_BIT(chan); /* Enable the channel */
 		interrupt_unlock(eflags);
@@ -143,8 +145,8 @@ int ish_dma_copy(uint32_t chan, uint32_t dst, uint32_t src, uint32_t length,
 		rc = ish_wait_for_dma_done(
 			chan); /* Wait for trans completion */
 
-		dst += chunk;
-		src += chunk;
+		dst_addr += chunk;
+		src_addr += chunk;
 		length -= chunk;
 	}
 
@@ -181,36 +183,6 @@ void ish_dma_disable(void)
 int ish_wait_for_dma_done(uint32_t ch)
 {
 	return dma_poll(DMA_EN_REG_ADDR, 0, DMA_CH_EN_BIT(ch));
-}
-
-static int ish_dma_page_internal(uint32_t dst, uint32_t src, enum dma_mode mode)
-{
-	int rc;
-	uint32_t eflags = interrupt_lock();
-
-	if (!dma_init_called)
-		ish_dma_init();
-
-	/* Wait for DMA to be free */
-	rc = dma_poll(DMA_EN_REG_ADDR, 0,
-		      DMA_CH_EN_BIT(PAGING_CHAN) | DMA_CH_EN_BIT(KERNEL_CHAN));
-
-	if (rc == DMA_RC_OK)
-		rc = ish_dma_copy(PAGING_CHAN, dst, src, PAGE_SIZE, mode);
-
-	interrupt_unlock(eflags);
-	return rc;
-}
-
-/* DMA page between DRAM and SRAM. */
-int ish_dma_page(uint32_t dst, uint32_t src, int page_in)
-{
-	int ret = 0;
-
-	ret = ish_dma_page_internal(dst, src,
-				    (page_in ? UMA_TO_SRAM : SRAM_TO_UMA));
-
-	return ret;
 }
 
 void ish_dma_set_msb(uint32_t chan, uint32_t dst_msb, uint32_t src_msb)
