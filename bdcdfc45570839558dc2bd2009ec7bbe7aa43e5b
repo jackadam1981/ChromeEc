@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "73ff70df_4a60bf08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T23:34:11Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s right. Thanks for clarification.",
+      "parentUuid": "1b1757a0_3f0dc382",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e62d3e9e_d0fe42bf",
         "filename": "driver/led/oz554.c",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "A simple comment is all that is needed here. Adding __attribute__((weak)) here actually makes all files which #include this header and define oz554_board_init have it as weak.",
       "parentUuid": "4f6956ae_b0f8babc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a791ef7_28b2c246",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T23:34:11Z",
+      "side": 1,
+      "message": "Can we start using the keyboards proposed in https://crbug.com/964060?\n\nWe don\u0027t know exactly how we\u0027ll use them to fix the bug but for now we do:\n\n  #define __overridable\n  #define __override\n  #define __default      __attribute__((weak))\n\nthen in oz554.h:\n\n  __overridable void oz554_board_init(void);\n\nand in oz554.c:\n\n  __default void oz554_board_init(void)\n  {\n    ...\n  }\n\nas a start (and change them later as we wish).",
+      "parentUuid": "dfa0ada8_d52eb6ef",
       "range": {
         "startLine": 13,
         "startChar": 0,
