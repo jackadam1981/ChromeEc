@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f024114e_be7cbcd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-28T22:20:42Z",
+      "side": 1,
+      "message": "Most functions removed were because there is no need to support two possible pins for teh PP5000_A enable.",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "bc92e7fcc7e4b3bfb5b889bc460c30a8a9c7792e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1166935_73c25fc1",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-28T22:20:42Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 53
+      },
+      "revId": "bc92e7fcc7e4b3bfb5b889bc460c30a8a9c7792e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758a9d8c_4aef773a",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-28T22:20:42Z",
+      "side": 1,
+      "message": "This only needed to be GPIO_DEFAULT for the case when the code was supported two possible GPIO pins for this same signal. Since that is removed, this should be GPIO_OUT_LOW.",
+      "range": {
+        "startLine": 48,
+        "startChar": 42,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "bc92e7fcc7e4b3bfb5b889bc460c30a8a9c7792e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
