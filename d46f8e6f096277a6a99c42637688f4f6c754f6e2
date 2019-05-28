@@ -22,6 +22,30 @@
       "revId": "d46f8e6f096277a6a99c42637688f4f6c754f6e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8bca617_a6cd57c8",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-05-28T21:24:32Z",
+      "side": 1,
+      "message": "The previous code did not complain if the write operation was performed when it was not implemented by checking the function as existing or not and not calling it if it did not exist.  If EC_ERROR_UNIMPLEMENTED will cause a problem in the system then maybe EC_SUCCESS is the more correct way to stay compatible with what was there previously.",
+      "parentUuid": "5e4d220a_8af56de9",
+      "range": {
+        "startLine": 1644,
+        "startChar": 9,
+        "endLine": 1644,
+        "endChar": 10
+      },
+      "revId": "d46f8e6f096277a6a99c42637688f4f6c754f6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
