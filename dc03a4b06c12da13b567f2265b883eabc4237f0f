@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d3dbd2b_49c6a442",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T13:33:26Z",
+      "side": 1,
+      "message": "we should put this host command in another file now. Maybe lookup.c or something like that.",
+      "range": {
+        "startLine": 860,
+        "startChar": 7,
+        "endLine": 861,
+        "endChar": 25
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c63f66_c6eac5a9",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T13:33:26Z",
+      "side": 1,
+      "message": "Need to convert to 7-bit address",
+      "range": {
+        "startLine": 886,
+        "startChar": 8,
+        "endLine": 886,
+        "endChar": 65
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a063a7_92083efc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5353,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T13:33:26Z",
+      "side": 1,
+      "message": "add overflow here where index is out or range, please",
+      "range": {
+        "startLine": 5353,
+        "startChar": 2,
+        "endLine": 5353,
+        "endChar": 3
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a2fd5db_65d97e79",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T13:33:26Z",
+      "side": 1,
+      "message": "doesn\u0027t this need to be an align1 since uint8_t is first?",
+      "range": {
+        "startLine": 5390,
+        "startChar": 2,
+        "endLine": 5390,
+        "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
