@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "27c09688_3a5248dc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T14:09:03Z",
+      "side": 1,
+      "message": "since the original i2c change landed on the octopus firmware branch, we should bump this to 0x127",
+      "range": {
+        "startLine": 5355,
+        "startChar": 0,
+        "endLine": 5355,
+        "endChar": 33
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a2fd5db_65d97e79",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
@@ -87,6 +110,29 @@
         "startChar": 2,
         "endLine": 5390,
         "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a1a3e9_5de3a62f",
+        "filename": "util/ectool.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 6294,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T14:09:03Z",
+      "side": 1,
+      "message": "nit: Can you make it \"Bus\" to match Port and Address format",
+      "range": {
+        "startLine": 6294,
+        "startChar": 9,
+        "endLine": 6294,
+        "endChar": 12
       },
       "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
