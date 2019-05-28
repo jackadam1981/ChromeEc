@@ -232,6 +232,30 @@ enum ec_error_list {
 #endif
 
 /*
+ * Macros for weak symbols
+ *
+ * __overridable: declarations
+ * __override: non-default definitions
+ * __overridable_default: default (weak) definition
+ *
+ * For example, in foo.h:
+ *   __overridable void foo(void);
+ *
+ * and in foo.c:
+ *   __overridable_default void foo(void) {
+ *     ...
+ *   }
+ *
+ * and in board.c:
+ *   __override void foo(void) {
+ *     ...
+ *   }
+ */
+#define __overridable
+#define __override
+#define __overridable_default __attribute__((weak))
+
+/*
  * Mark functions that collide with stdlib so they can be hidden when linking
  * against libraries that require stdlib. HIDE_EC_STDLIB should be defined
  * before including common.h from code that links to cstdlib.
