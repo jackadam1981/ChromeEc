@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8437fac6_f3116426",
+        "filename": "board/flapjack/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T16:15:08Z",
+      "side": 1,
+      "message": "Vbus isn\u0027t 0 at this time right? (It is actually provided by both PD and wireless charging, right?)\n\nIf that is true, can you add a comment saying we are forcing the wireless subsystem to check vbus status again? (will wireless charge keep providing vbus after BC1.2 is connected)?",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 28
+      },
+      "revId": "fb8177526252ce032f608799937297c54ab94842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfd53dad_06e13c76",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 8
