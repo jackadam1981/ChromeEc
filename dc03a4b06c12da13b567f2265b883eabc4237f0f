@@ -94,6 +94,52 @@
     },
     {
       "key": {
+        "uuid": "021965d5_fd3a4eb4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5377,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T16:17:21Z",
+      "side": 1,
+      "message": "I am sold on always having index now",
+      "range": {
+        "startLine": 5377,
+        "startChar": 1,
+        "endLine": 5377,
+        "endChar": 15
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47b75843_88ae0b44",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5380,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T16:17:21Z",
+      "side": 1,
+      "message": "I just noticed that I misspelled this originally: can you update is to reserved?",
+      "range": {
+        "startLine": 5380,
+        "startChar": 11,
+        "endLine": 5380,
+        "endChar": 18
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a2fd5db_65d97e79",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
