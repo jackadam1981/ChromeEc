@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0d566e8_a7cad967",
+        "filename": "chip/mt_scp/memmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2019-05-28T09:17:51Z",
+      "side": 1,
+      "message": "/* Dummy read is necessary to confirm the invalidation finish. */",
+      "revId": "ba6fa672bf7ef309f6a3ae8ea909d7890ba3d90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
