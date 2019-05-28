@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b1757a0_3f0dc382",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-28T22:40:44Z",
+      "side": 1,
+      "message": "In fact, it does:\n\n    $ cat /tmp/test.c\n    void foo(void) __attribute__((weak));\n    void foo(void)\n    {\n    }\n    $ gcc /tmp/test.c -c -o /tmp/test.o\n    $ nm /tmp/test.o\n    0000000000000000 W foo",
+      "parentUuid": "6abbad0e_c010c9e5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e62d3e9e_d0fe42bf",
         "filename": "driver/led/oz554.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2019-05-28T22:13:54Z",
       "side": 1,
       "message": "Can we discuss the format first?\n\nHaving \u0027weak\u0027 sign here definitely helps developers realize this is overridable.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa0ada8_d52eb6ef",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-28T22:40:44Z",
+      "side": 1,
+      "message": "A simple comment is all that is needed here. Adding __attribute__((weak)) here actually makes all files which #include this header and define oz554_board_init have it as weak.",
+      "parentUuid": "4f6956ae_b0f8babc",
       "range": {
         "startLine": 13,
         "startChar": 0,
