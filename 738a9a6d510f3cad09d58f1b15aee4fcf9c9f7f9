@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfbc7962_2901b67e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T19:02:40Z",
+      "side": 1,
+      "message": "why do you need this cast?",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 16
+      },
+      "revId": "738a9a6d510f3cad09d58f1b15aee4fcf9c9f7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43372c5d_52214117",
+        "filename": "chip/ish/dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-28T19:02:40Z",
+      "side": 1,
+      "message": "if we were going to take in a pointer, it should probably be uint8_t since the pointer math for that is typically what we want when we are working with length (otherwise the length parameters is wrong).",
+      "range": {
+        "startLine": 87,
+        "startChar": 32,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "738a9a6d510f3cad09d58f1b15aee4fcf9c9f7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
