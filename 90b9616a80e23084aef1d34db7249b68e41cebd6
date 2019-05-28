@@ -45,6 +45,30 @@
       "revId": "90b9616a80e23084aef1d34db7249b68e41cebd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bc1a36_6a8cb2e4",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-28T22:47:52Z",
+      "side": 1,
+      "message": "Yes, we need to refactor that code to make it board, rather than platform specific. Tim has opened an issue (which should be listed next to this TODO(b/\u003cissue number\u003e): to track that effort.",
+      "parentUuid": "390c534a_6a0fed32",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "90b9616a80e23084aef1d34db7249b68e41cebd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
