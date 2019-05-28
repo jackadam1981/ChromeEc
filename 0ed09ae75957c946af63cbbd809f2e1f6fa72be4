@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268895f8_f564ae84",
+        "filename": "board/helios/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-28T20:18:56Z",
+      "side": 1,
+      "message": "This value shouldn\u0027t change. The battery management unit is Bq40z50 which is the TI version. The spec they provided doesn\u0027t give the charge/discharge FET status location, but for the TI BMU the discharge FET disabled bit is B13.",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "0ed09ae75957c946af63cbbd809f2e1f6fa72be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a3d409_3f80df73",
+        "filename": "board/helios/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-05-28T20:18:56Z",
+      "side": 1,
+      "message": "same comment as above",
+      "range": {
+        "startLine": 46,
+        "startChar": 22,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "0ed09ae75957c946af63cbbd809f2e1f6fa72be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
