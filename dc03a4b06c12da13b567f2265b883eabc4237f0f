@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "d042c05c_1ef40e25",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T17:18:09Z",
+      "side": 1,
+      "message": "I2C lookup command landed on 11297.66 but Octopus firmware hasn\u0027t been released. (the latest is 11297.65.) So, using the same number is still safe. We don\u0027t gain anything by preserving 0x126.",
+      "parentUuid": "27c09688_3a5248dc",
+      "range": {
+        "startLine": 5355,
+        "startChar": 0,
+        "endLine": 5355,
+        "endChar": 33
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "247e6f25_8c604c24",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
@@ -192,6 +216,30 @@
       "writtenOn": "2019-05-28T13:33:26Z",
       "side": 1,
       "message": "doesn\u0027t this need to be an align1 since uint8_t is first?",
+      "range": {
+        "startLine": 5390,
+        "startChar": 2,
+        "endLine": 5390,
+        "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993e2ff9_3e602a49",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-28T17:18:09Z",
+      "side": 1,
+      "message": "Added uint8_t padding. This padding and __ec_align2 will guarantee the union members will be placed on 2-byte boundary.",
+      "parentUuid": "2a2fd5db_65d97e79",
       "range": {
         "startLine": 5390,
         "startChar": 2,
