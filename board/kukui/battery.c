@@ -37,6 +37,8 @@
 
 #define BATTERY_SIMPLO_CHARGE_MIN_TEMP 0
 #define BATTERY_SIMPLO_CHARGE_MAX_TEMP 60
+#define BATTERY_MITSUMI_CHARGE_MIN_TEMP 0
+#define BATTERY_MITSUMI_CHARGE_MAX_TEMP 60
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
@@ -62,7 +64,7 @@ static const struct battery_info info[] = {
 	[BATTERY_MITSUMI] = {
 		.voltage_max		= 4400,
 		.voltage_normal		= 3850,
-		.voltage_min		= 3400,
+		.voltage_min		= 3000,
 		.precharge_current	= 256,
 		.start_charging_min_c	= 0,
 		.start_charging_max_c	= 45,
@@ -136,7 +138,7 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	static int previous_chg_limit_mv;
 	int chg_limit_mv;
-#ifdef CONFIG_BATTERY_MAX17055
+
 	/* battery temp in 0.1 deg C */
 	int bat_temp_c = curr->batt.temperature - 2731;
 
@@ -153,7 +155,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		TEMP_ZONE_2, /* t2 < bat_temp_c <= t3 */
 		TEMP_ZONE_COUNT
 	} temp_zone;
-
+#ifdef CONFIG_BATTERY_MAX17055
 	static struct {
 		int temp_min; /* 0.1 deg C */
 		int temp_max; /* 0.1 deg C */
@@ -172,6 +174,25 @@ int charger_profile_override(struct charge_state_data *curr)
 			/* unused */
 		},
 	};
+#endif/* CONFIG_BATTERY_MAX17055 */
+	/* TODO(b:131284131): Add battery configs for krane. */
+#ifdef CONFIG_BATTERY_MM8013
+	static struct {
+		int temp_min; /* 0.1 deg C */
+		int temp_max; /* 0.1 deg C */
+		int desired_current; /* mA */
+		int desired_voltage; /* mV */
+	} temp_zones[BATTERY_COUNT][TEMP_ZONE_COUNT] = {
+		[BATTERY_MITSUMI] = {
+			/* TEMP_ZONE_0 */
+			{BATTERY_SIMPLO_CHARGE_MIN_TEMP * 10, 150, 1400, 4400},
+			/* TEMP_ZONE_1 */
+			{150, 450, 3500, 4400},
+			/* TEMP_ZONE_2 */
+			{450, BATTERY_SIMPLO_CHARGE_MAX_TEMP * 10, 3500, 4200},
+		},
+	};
+#endif
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones[0]) == TEMP_ZONE_COUNT);
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones) == BATTERY_COUNT);
 
@@ -205,8 +226,6 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->state = ST_IDLE;
 		break;
 	}
-#endif  /* CONFIG_BATTERY_MAX17055 */
-	/* TODO(b:131284131): Add battery configs for krane. */
 
 	/* Limit input (=VBUS) to 5V when soc > 85% and charge current < 1A. */
 	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT) &&
