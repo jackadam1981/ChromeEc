@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20e85ce0_f7fdd587",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-29T00:56:55Z",
+      "side": 1,
+      "message": "stable or stabilized",
+      "range": {
+        "startLine": 152,
+        "startChar": 9,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "79c77fdce94bab5067620082f8e5d93d817368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "601fbc4b_1e481e63",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-29T00:56:55Z",
+      "side": 1,
+      "message": "What happens if we set values_have_changed_at_least_once to zero in each iteration? Would it fix the issue?",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 39
+      },
+      "revId": "79c77fdce94bab5067620082f8e5d93d817368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
