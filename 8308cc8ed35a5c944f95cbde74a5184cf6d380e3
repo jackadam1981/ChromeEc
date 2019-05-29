@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfc79903_58709de2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-29T19:58:04Z",
+      "side": 1,
+      "message": "Can you also add a command to ectool that queries whether the seed has been set or not? That could even be used by a future integration test which could run ectool to verify that the seed has been set",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de01ee5e_8df0682e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5614,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-29T19:58:04Z",
+      "side": 1,
+      "message": "Thinking about it again, rather than creating a host command specifically to check that the seed has been set, maybe we could make it a bit more generic to query the status of the \"FP encryption engine\". We could return, say a uint32_t and various bits would have status information. bit0 would fp_seed_is_set, in the future bit1 could be entropy_is_set or something similar, etc.\nDoes that make sense?\nIn that case we\u0027d probably want the first field of that struct to be a version number so we know the format of that structure. Or maybe even a separate command that queries the version of the \"FP encryption engine\", rather than having a \"version\" field in every structure. Wdyt?",
+      "range": {
+        "startLine": 5614,
+        "startChar": 8,
+        "endLine": 5614,
+        "endChar": 29
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee1e7fd_a8b55446",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-29T19:58:04Z",
+      "side": 1,
+      "message": "nit: can you sort the headers alphabetically?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d95d4e6_52ba7b9f",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-29T19:58:04Z",
+      "side": 1,
+      "message": "You could also test that when the user tries to set the seed twice:\n- the second time fails\n- the seed is still set\n\nI suppose that could be a nice follow-up CL, up to you whether you want to do that in this CL or a follow-up one :-)",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cadc7f_2e65d3e2",
+        "filename": "test/fpsensor.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-29T19:58:04Z",
+      "side": 1,
+      "message": "no \"(c)\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f9567c3_d87a2fdc",
+        "filename": "test/fpsensor.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-05-29T19:58:04Z",
+      "side": 1,
+      "message": "2019",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
