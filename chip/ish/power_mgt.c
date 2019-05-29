@@ -3,15 +3,16 @@
  * found in the LICENSE file.
  */
 
-#include <console.h>
-#include <task.h>
-#include <system.h>
-#include <hwtimer.h>
-#include <util.h>
-#include "interrupts.h"
 #include "aontaskfw/ish_aon_share.h"
-#include "power_mgt.h"
+#include "console.h"
+#include "hooks.h"
+#include "hwtimer.h"
+#include "interrupts.h"
 #include "ish_dma.h"
+#include "power_mgt.h"
+#include "system.h"
+#include "task.h"
+#include "util.h"
 
 #ifdef CONFIG_ISH_PM_DEBUG
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -538,7 +539,7 @@ static void pm_process(timestamp_t cur_time, uint32_t idle_us)
 #endif
 }
 
-void ish_pm_init(void)
+static void ish_pm_init(void)
 {
 	/* clear reset bit */
 	ISH_RST_REG = 0;
@@ -582,6 +583,7 @@ void ish_pm_init(void)
 #endif
 
 }
+DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, ish_pm_init, HOOK_PRIO_FIRST);
 
 __attribute__ ((noreturn))
 void ish_pm_reset(void)
