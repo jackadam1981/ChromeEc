@@ -414,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "abd47aa0_dd2dfb5a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T16:01:23Z",
+      "side": 1,
+      "message": "nevermind on the align1, but still consider changing to uint8_t",
+      "parentUuid": "381c97a2_6d57a23c",
+      "range": {
+        "startLine": 5390,
+        "startChar": 2,
+        "endLine": 5390,
+        "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59a1a3e9_5de3a62f",
         "filename": "util/ectool.c",
         "patchSetId": 12
