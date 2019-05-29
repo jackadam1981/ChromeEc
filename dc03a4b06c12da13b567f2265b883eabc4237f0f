@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "3571069d_9b5d842f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T15:52:32Z",
+      "side": 1,
+      "message": "I am going over the upgrade flow again, and we have a potential issue either way. You can leave it as x126 if you want then",
+      "parentUuid": "a88276e4_041a8309",
+      "range": {
+        "startLine": 5355,
+        "startChar": 0,
+        "endLine": 5355,
+        "endChar": 33
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "247e6f25_8c604c24",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
@@ -354,6 +378,30 @@
       "side": 1,
       "message": "16 bits are too many for bus_type. How about renaming \u0027padding\u0027 to \u0027reserved\u0027 or \u0027flags\u0027?",
       "parentUuid": "92279da7_e718947f",
+      "range": {
+        "startLine": 5390,
+        "startChar": 2,
+        "endLine": 5390,
+        "endChar": 13
+      },
+      "revId": "dc03a4b06c12da13b567f2265b883eabc4237f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "381c97a2_6d57a23c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5390,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T15:52:32Z",
+      "side": 1,
+      "message": "reserved sounds good to me\n\n(also, by this logic, we should change type and index in the params to uint8_t and use align1)",
+      "parentUuid": "bb73625d_a86d28fa",
       "range": {
         "startLine": 5390,
         "startChar": 2,
