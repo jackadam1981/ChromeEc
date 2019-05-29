@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ab5359e_d13aa8a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-29T20:58:43Z",
+      "side": 1,
+      "message": "This is the missing piece I was looking for! I was thinking about how to make Tast issue the command. Thanks!",
+      "parentUuid": "cfc79903_58709de2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de01ee5e_8df0682e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
