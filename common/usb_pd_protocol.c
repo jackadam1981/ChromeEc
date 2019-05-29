@@ -1907,6 +1907,11 @@ static void exit_dp_mode(int port)
 	pd_send_vdm(port, USB_SID_DISPLAYPORT,
 		    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
 	pd_vdm_send_state_machine(port);
+	if (pd[port].vdm_state == VDM_STATE_ERR_SEND) {
+		pd[port].vdm_state = VDM_STATE_READY;
+		pd_vdm_send_state_machine(port);
+	}
+
 	/* Have to wait for ACK */
 }
 
@@ -2392,6 +2397,10 @@ void pd_task(void *u)
 #endif
 		/* process VDM messages last */
 		pd_vdm_send_state_machine(port);
+		if (pd[port].vdm_state == VDM_STATE_ERR_SEND) {
+			pd[port].vdm_state = VDM_STATE_READY;
+			pd_vdm_send_state_machine(port);
+		}
 
 		/* Verify board specific health status : current, voltages... */
 		res = pd_board_checks();
