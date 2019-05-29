@@ -64,6 +64,7 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VOLUME_BUTTONS
 
+#define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_MT6370
 #define CONFIG_CHARGER_INPUT_CURRENT 512
@@ -140,6 +141,7 @@
 
 /* Battery parameters for max17055 ModelGauge m5 algorithm. */
 #define BATTERY_MAX17055_RSENSE             5     /* m-ohm */
+/* TODO(b:131284131): Set desired charging current for krane. */
 #define BATTERY_DESIRED_CHARGING_CURRENT    2000  /* mA */
 
 #define PD_OPERATING_POWER_MW 15000
