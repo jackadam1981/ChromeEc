@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "814bea3b_93ea379c",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-29T16:54:33Z",
+      "side": 1,
+      "message": "Initially I implemented a software timer routine that added a little more than 100 bytes to code size but I didn\u0027t think it was worth it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
