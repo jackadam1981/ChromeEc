@@ -22,6 +22,30 @@
       "revId": "a2d36d12f3048285f337b1d514513f491a90ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b372404_77ee2ff5",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-29T19:46:29Z",
+      "side": 1,
+      "message": "Yes, I was planning on keeping it updated. We are going to be moving the fingerprint files to its own subdirectory because there will be more coming soon. At that point we can migrate the OWNERS file to that subdirectory.\n\nThe fingerprint sensor isn\u0027t particularly special, but it\u0027s nice to have clear ownership of subsets so that if people end up needing to work on a particular subset that they don\u0027t normally work on they can find the relevant resources for review and/or questions.",
+      "parentUuid": "b1fab3f0_4d899451",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 95
+      },
+      "revId": "a2d36d12f3048285f337b1d514513f491a90ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
