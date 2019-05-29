@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69d95a91_63ec3cdc",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-29T01:21:11Z",
+      "side": 1,
+      "message": "This is longer than 80 characters, but I wasn\u0027t sure if the OWNERS file syntax allows for line continuations: https://gerrit.googlesource.com/plugins/find-owners/+/master/src/main/resources/Documentation/syntax.md",
+      "revId": "96c48b10316bd5e072f9b468ed4c325552d997dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
