@@ -164,6 +164,30 @@
       "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b413aa_c4c887c8",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-29T01:30:09Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1633911",
+      "parentUuid": "5a791ef7_28b2c246",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
