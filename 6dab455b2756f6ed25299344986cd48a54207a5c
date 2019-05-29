@@ -70,6 +70,30 @@
       "revId": "6dab455b2756f6ed25299344986cd48a54207a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0fdb86_62d30391",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2039,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-05-29T20:17:50Z",
+      "side": 1,
+      "message": "Agreed it would be good to add a unit test in a follow-up CL. \n\nI\u0027m not certain how much IS_ENABLED could be used to clean up this function though, given how many of these configs are number values we need to compare to.",
+      "parentUuid": "f7e7788f_e7179432",
+      "range": {
+        "startLine": 2039,
+        "startChar": 7,
+        "endLine": 2039,
+        "endChar": 39
+      },
+      "revId": "6dab455b2756f6ed25299344986cd48a54207a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
