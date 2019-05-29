@@ -310,6 +310,30 @@
       "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e2f5a21_07d923c4",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T22:26:18Z",
+      "side": 1,
+      "message": "One could interpret __default as the default attribute that is applied to functions when there nothing else to annotate. If could be a default annotation.\n\n__overridable_default or __overridable_base or even __virtual_base give more context.",
+      "parentUuid": "8aeae1c6_46d38f8e",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
