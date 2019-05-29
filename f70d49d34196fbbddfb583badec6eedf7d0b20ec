@@ -190,6 +190,30 @@
       "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570c8727_ed7b1683",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-29T19:17:33Z",
+      "side": 1,
+      "message": "Yes, I think __default is fine.\n\n__weak would be a misnomer, as in my plugin work right now, it is using it\u0027s own custom attribute, that while provides a weak symbol, also does a lot more (including name mangling).",
+      "parentUuid": "71ba7746_2edb8fc7",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
