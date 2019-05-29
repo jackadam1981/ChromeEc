@@ -46,6 +46,30 @@
       "revId": "a2d36d12f3048285f337b1d514513f491a90ae7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99934a0_206e152d",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-29T20:57:09Z",
+      "side": 1,
+      "message": "Why don\u0027t you migrate to a sub-directory now? It should be a pretty simple change.",
+      "parentUuid": "2b372404_77ee2ff5",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 95
+      },
+      "revId": "a2d36d12f3048285f337b1d514513f491a90ae7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
