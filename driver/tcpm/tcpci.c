@@ -414,10 +414,13 @@ void tcpci_tcpc_alert(int port)
 	 * completion events. This will send an event to the PD tasks
 	 * immediately
 	 */
-	if (status & TCPC_REG_ALERT_TX_COMPLETE)
+	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
+		if (status & TCPC_REG_ALERT_TX_DISCARDED)
+			CPRINTS("dn:TX_DISCARDED (0x%x)", status);
 		pd_transmit_complete(port, status & TCPC_REG_ALERT_TX_SUCCESS ?
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
+	}
 
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
