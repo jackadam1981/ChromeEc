@@ -206,4 +206,5 @@ SECTIONS
 
 	def_irq_low  = ABSOLUTE(default_int_handler) & 0xFFFF;
 	def_irq_high = ABSOLUTE(default_int_handler) >> 16;
+        ish_persistent_data = ABSOLUTE(CONFIG_AON_ROM_BASE);
 }

@@ -3,30 +3,23 @@
  * found in the LICENSE file.
  */
 
-/* System module ISH (Not implemented) */
-
 #include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "ish_fwst.h"
+#include "ish_persistent_data.h"
+#include "power_mgt.h"
 #include "registers.h"
 #include "shared_mem.h"
+#include "spi.h"
 #include "system.h"
-#include "hooks.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "spi.h"
-#include "power_mgt.h"
-
-/* Indices for hibernate data registers (RAM backed by VBAT) */
-enum hibdata_index {
-	HIBDATA_INDEX_SCRATCHPAD = 0,    /* General-purpose scratchpad */
-	HIBDATA_INDEX_SAVED_RESET_FLAGS  /* Saved reset flags */
-};
 
 int system_is_reboot_warm(void)
 {
@@ -48,17 +41,15 @@ void system_pre_init(void)
 
 void chip_save_reset_flags(uint32_t flags)
 {
-	ISH_RESET_FLAGS = flags;
+	ish_persistent_data.reset_flags = flags;
 }
 
 uint32_t chip_read_reset_flags(void)
 {
-	uint32_t flags = ISH_RESET_FLAGS;
+	if (ish_persistent_data_is_valid())
+		return ish_persistent_data.reset_flags;
 
-	if (flags)
-		return flags;
-
-	/* Flags are zero? Assume we came up from a cold reset */
+	/* Data is invalid? Assume we came up from a cold reset */
 	return RESET_FLAG_POWER_ON;
 }
 
@@ -66,21 +57,22 @@ void system_reset(int flags)
 {
 	uint32_t save_flags;
 
+	if (!IS_ENABLED(CONFIG_LOW_POWER_IDLE) || flags & SYSTEM_RESET_HARD)
+		ish_mia_reset();
+
 	system_encode_save_flags(flags, &save_flags);
 
 	if (flags & SYSTEM_RESET_AP_WATCHDOG)
 		save_flags |= RESET_FLAG_WATCHDOG;
 
 	chip_save_reset_flags(save_flags);
+	ish_persistent_data_mark_valid();
 
 	/*
 	 * ish_pm_reset() does more (poweroff main SRAM, etc) than
 	 * ish_mia_reset() which just resets the ISH minute-ia cpu core
 	 */
-	if (!IS_ENABLED(CONFIG_LOW_POWER_IDLE) || flags & SYSTEM_RESET_HARD)
-		ish_mia_reset();
-	else
-		ish_pm_reset();
+	ish_pm_reset();
 
 	__builtin_unreachable();
 }

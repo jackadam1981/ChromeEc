@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_POWER_MGT_H
 #define __CROS_EC_POWER_MGT_H
 
+#include "registers.h"
+
 /* power states for ISH */
 enum {
 	/* D0 state: active mode */
