@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "50efcdcb_7734af04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-05-29T16:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ff70df_4a60bf08",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e62d3e9e_d0fe42bf",
         "filename": "driver/led/oz554.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a386cc22_b6edab2f",
+        "filename": "driver/led/oz554.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-05-29T16:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62d3e9e_d0fe42bf",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +236,30 @@
       "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "980559e9_f2536ae1",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-05-29T16:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b413aa_c4c887c8",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "bdcdfc45570839558dc2bd2009ec7bbe7aa43e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
