@@ -334,6 +334,30 @@
       "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "953cdd14_6290641b",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-29T22:37:17Z",
+      "side": 1,
+      "message": "\u003e One could interpret __default as the default attribute that is applied to functions when there nothing else to annotate. If could be a default annotation.\n\nOnce I finish the GCC plugin, it will error at compile time if someone attempts this without an appropriate __overridable declaration.\n\n\u003e __overridable_default or __overridable_base or even __virtual_base give more context.\n\nthe *_base names aren\u0027t really clear that this is a default implementation (sort of makes sense, but it takes some thinking about).\n\n__overridable_default is OK, but is lengthy. Of course, people can define snippets in their editors to solve this (so only a minor cosmetic issue).\n\nI still think __default is not all that bad.\n\nIn any of the above cases, someone not familiar with the mechanism will end up code-searching the name, finding the comment here on how to use it, and will become familiar with it. So honestly I think this naming thing is the least of our concerns.",
+      "parentUuid": "6e2f5a21_07d923c4",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
