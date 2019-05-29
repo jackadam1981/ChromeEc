@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dc045df_b749390e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-29T02:50:06Z",
+      "side": 1,
+      "message": "I think these functions shouldn\u0027t behave differently from charger to charger. I think they and those defined in pi3usb9281.c should be consolidated and moved to charge_ramp.c. Then, we can allow boards to customize the behavior (by macros or overrides) and how conservative we want to be.",
+      "range": {
+        "startLine": 1013,
+        "startChar": 0,
+        "endLine": 1021,
+        "endChar": 1
+      },
+      "revId": "f1826bcabb806c5dd8aa261f6379d8e6716ba561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
