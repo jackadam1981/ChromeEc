@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8153a803_80e5a8c9",
+        "filename": "chip/ish/ish_persistent_data.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T22:18:29Z",
+      "side": 1,
+      "message": "let\u0027s add a comment saying that the AON page register is the only thing that survives MIA resets and that is only enabled when we have low power mode enabled\n\n(it isn\u0027t quite clear why this config option is guard this code)",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67397c90_a6425aba",
+        "filename": "chip/ish/ish_persistent_data.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T22:18:29Z",
+      "side": 1,
+      "message": "let\u0027s put some reserve space before panic_data since sizeof(panic_data) is variable-ish\n\nMaybe 5 more int32\u0027s of data?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d047eb4c_58cef93b",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T22:18:29Z",
+      "side": 1,
+      "message": "why did you move this up here?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9c17f5_9811a6bd",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-29T22:18:29Z",
+      "side": 1,
+      "message": "we should zero out the flags and mark them as valid when we start up in system_pre_init?",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
