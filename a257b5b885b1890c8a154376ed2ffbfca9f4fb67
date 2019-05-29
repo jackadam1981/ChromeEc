@@ -70,6 +70,30 @@
       "revId": "a257b5b885b1890c8a154376ed2ffbfca9f4fb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f30a6354_f4fb9773",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-05-29T15:37:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07197b9c_5ea73f7b",
+      "range": {
+        "startLine": 924,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 58
+      },
+      "revId": "a257b5b885b1890c8a154376ed2ffbfca9f4fb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
