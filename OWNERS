@@ -6,3 +6,6 @@ wfrichar@chromium.org
 
 # Don't inherit owners from elsewhere in the manifest
 set noparent
+
+# Fingerprint Sensor
+per-file include/fpsensor.h,common/fpsensor.c = norvez@chromium.org,tomhughes@chromium.org
