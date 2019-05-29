@@ -166,6 +166,30 @@
       "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ba7746_2edb8fc7",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-29T19:12:04Z",
+      "side": 1,
+      "message": "I still suggest __default because it\u0027s short and descriptive. If it\u0027s not liked, maybe we can simply use \u0027__weak\u0027.\n\nWe should optimize names for normal \u0026 experienced developers. (Imagine how many times you will grep for \u0027__default\u0027 v.s. \u0027__overridable_default\u0027?) These\u0027re pretty simple keywords. Once a new contributor looks it up, it\u0027ll  quickly make sense.",
+      "parentUuid": "c7e9aba3_08cf2e90",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
