@@ -16,6 +16,24 @@
       "revId": "96c48b10316bd5e072f9b468ed4c325552d997dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e00ef5d_8d35ff63",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-29T16:34:29Z",
+      "side": 1,
+      "message": "I tested line continuations and gerrit rejects it, so looks like we\u0027ll have to have long lines.",
+      "parentUuid": "69d95a91_63ec3cdc",
+      "revId": "96c48b10316bd5e072f9b468ed4c325552d997dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
