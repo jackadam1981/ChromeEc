@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30bda83d_9963bc24",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:05:35Z",
+      "side": 1,
+      "message": "I am a little confused here.\n\nI only see this function being called from test cases, and the documentation doesn\u0027t make it too clear to me how I would choose the value of offset in practical usage.\n\nIs this a function only meant for testing? If so, it might be good to document that fact. If not, is anywhere actively using this function at all?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 79
+      },
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
