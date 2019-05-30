@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df7a44a1_0e709a1d",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "This can\u0027t be static because usb_tc_sm needs to access this object and adding an accessor method increased code size by 92 bytes. I could change the name to something like tc_object or tc_sm_object and we\u0027d just have to be mindful as to when and where this object can be accessed.",
+      "parentUuid": "eaacb7c8_8ec91f18",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a042b81b_6cbfc207",
         "filename": "common/usb_tc_ctvpd_sm.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9bcb5db_048daa63",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Using macro in the below comment.",
+      "parentUuid": "a042b81b_6cbfc207",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6ca15b04_8282c63a",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917a1d49_5286f399",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af428daf_cd7593bd",
         "filename": "common/usb_tc_ctvpd_sm.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-05-30T15:00:23Z",
       "side": 1,
       "message": "who calls this?",
+      "range": {
+        "startLine": 364,
+        "startChar": 20,
+        "endLine": 364,
+        "endChar": 37
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb4725d_9c95c201",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Currently this is only executed on initialization if the tcpc fails to start. See line 337. In future CLs, the AP might also direct the TypeC to be disabled.",
+      "parentUuid": "af428daf_cd7593bd",
       "range": {
         "startLine": 364,
         "startChar": 20,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7ba801dd_b0537d1c",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Multiple state machines can be implemented in the same file and the second parameter is needed to distinguish between them.",
+      "parentUuid": "7f0b84ba_b4ff9cc4",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 10
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c24b3d04_c812cfc7",
         "filename": "common/usb_tc_sm.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-05-30T15:00:23Z",
       "side": 1,
       "message": "why not static still?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571d13ce_04d69bd6",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "The specific state machines needs access to this to print the state names.",
+      "parentUuid": "c24b3d04_c812cfc7",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "c7e40266_b1921f76",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c3e1b4_5e25825e",
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4cf5535_6580e11b",
         "filename": "common/usb_tc_vpd_sm.c",
         "patchSetId": 3
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "eef0192d_e76bea6a",
+        "filename": "common/usb_tc_vpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4cf5535_6580e11b",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "308388b9_79934c32",
         "filename": "common/usb_tc_vpd_sm.c",
         "patchSetId": 3
@@ -200,6 +386,30 @@
       "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3242768_ad8d8803",
+        "filename": "common/usb_tc_vpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "308388b9_79934c32",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +448,30 @@
       "side": 1,
       "message": "For future reference, breaking this timer change into its own CL would have been better. 1) A raw move where you don\u0027t change any code, then 2) a timer CL makes it easier to review.\n\nAs it is now, the timer related changes are getting lost in the sea of all of the code movement.",
       "parentUuid": "814bea3b_93ea379c",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8ba2e0_04e3a455",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-05-30T20:32:40Z",
+      "side": 1,
+      "message": "Yes this was my initial intention. If we\u0027er okay with this, I\u0027ll break it out into another CL.",
+      "parentUuid": "57ac0a5a_3d397d28",
       "range": {
         "startLine": 58,
         "startChar": 8,
