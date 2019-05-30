@@ -2,6 +2,207 @@
   "comments": [
     {
       "key": {
+        "uuid": "eaacb7c8_8ec91f18",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "can this be static? if not, we should consider making accessor method instead of exposing the raw object to everyone (that way we can limit access)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a042b81b_6cbfc207",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "now that these are all static within a c file, we can reduce the name a little since there won\u0027t be any global conflict\n\nmaybe tc_state_X to tc_X\n\n(this comment also may not matter if we create the macro in the below comment)",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917a1d49_5286f399",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "this almost seems like it is worth creating a macro for (and making every state have an exit (which can call do nothing if it needs)\n\nThen the form could be \n\nDECLARE_TC_STATE(disabled);\n\nwhich would expand to\n\nstatic unsigned int tc_state_disabled_entry(int port);\nstatic unsigned int tc_state_disabled_run(int port);\nstatic unsigned int tc_state_disabled_exit(int port);\nstatic const state_sig tc_state_disabled_sig[] \u003d {\n\ttc_state_disabled_entry,\n\ttc_state_disabled_run,\n\ttc_state_disabled_exit,\n\tget_super_state\n};",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af428daf_cd7593bd",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "who calls this?",
+      "range": {
+        "startLine": 364,
+        "startChar": 20,
+        "endLine": 364,
+        "endChar": 37
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0b84ba_b4ff9cc4",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "seems like set_state should take in port and new state (i.e. doesn\u0027t need the second parameter)",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 10
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24b3d04_c812cfc7",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "why not static still?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c3e1b4_5e25825e",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "we should pull out the common code between the old and new stack and put it in a common file (maybe usbc_utils) or something",
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4cf5535_6580e11b",
+        "filename": "common/usb_tc_vpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "should the be CC_USB instead?",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "308388b9_79934c32",
+        "filename": "common/usb_tc_vpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "what about boards that define their default state and what to keep that?",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "814bea3b_93ea379c",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 3
@@ -13,6 +214,30 @@
       "writtenOn": "2019-05-29T16:54:33Z",
       "side": 1,
       "message": "Initially I implemented a software timer routine that added a little more than 100 bytes to code size but I didn\u0027t think it was worth it.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ac0a5a_3d397d28",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T15:00:23Z",
+      "side": 1,
+      "message": "For future reference, breaking this timer change into its own CL would have been better. 1) A raw move where you don\u0027t change any code, then 2) a timer CL makes it easier to review.\n\nAs it is now, the timer related changes are getting lost in the sea of all of the code movement.",
+      "parentUuid": "814bea3b_93ea379c",
       "range": {
         "startLine": 58,
         "startChar": 8,
