@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b23809a_20fcd60c",
+        "filename": "common/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T21:45:48Z",
+      "side": 1,
+      "message": "you can remove this queue_is_full condition now since your queue_space condition serves the same purpose",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30bda83d_9963bc24",
         "filename": "include/queue.h",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 133,
         "endChar": 79
+      },
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296ce9b2_cd2bd338",
+        "filename": "test/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T21:45:48Z",
+      "side": 1,
+      "message": "this seems like an invalid way to call it. the offset should not be more than the size\n\n\nAlso can you test the same where we you are getting data from the beginning of the buffer when HEAD is in the middle?",
+      "range": {
+        "startLine": 318,
+        "startChar": 45,
+        "endLine": 319,
+        "endChar": 52
       },
       "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
