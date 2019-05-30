@@ -34,6 +34,24 @@
       "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cf6ec7_2650d136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-30T22:36:37Z",
+      "side": 1,
+      "message": "You mean shutdown before jumping? It does not handle the case of a EC crash.",
+      "parentUuid": "ad8de290_c9d0dc24",
+      "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
