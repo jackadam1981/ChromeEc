@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7632b26e_f2a77726",
+        "filename": "chip/ish/ish_persistent_data.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-30T17:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8153a803_80e5a8c9",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67397c90_a6425aba",
         "filename": "chip/ish/ish_persistent_data.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5219f093_d7f1e2a1",
+        "filename": "chip/ish/ish_persistent_data.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-30T17:42:59Z",
+      "side": 1,
+      "message": "We can always add more flags later without having to worry about reserving them before. Just change the magic number and... poof! The previous persistent_data region becomes invalid!\n\nI\u0027ll add a comment explaining that PERSISTENT_DATA_MAGIC can and should be changed to \"uprev\" the struct.",
+      "parentUuid": "67397c90_a6425aba",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "89c6b33b_0fea09ed",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-30T17:42:59Z",
+      "side": 1,
+      "message": "none of the below code (to save reset flags or mark the region valid) means anything if you do a ish_mia_reset... skip it.\n\nAlso, to simplify the boot flow when a hard reset is requested (e.g., by the panic handler catching a double panic). We want as little of chance of possible of a bad change causing a third panic after a double-panic.",
+      "parentUuid": "d047eb4c_58cef93b",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f9c17f5_9811a6bd",
         "filename": "chip/ish/system.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba53c4d_2da76dc7",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-05-30T17:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9c17f5_9811a6bd",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 31
+      },
+      "revId": "c5b852b44dd31aaf404871553b37e7c917857d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
