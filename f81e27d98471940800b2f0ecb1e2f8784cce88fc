@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f800d9f7_c35a97d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-30T03:03:33Z",
+      "side": 1,
+      "message": "You can get these three lines sticking together:\n\nBUG\u003db:\nBRANCH\u003d\nTEST\u003d\n\nalso, can you elaborate more about how you test it?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "f81e27d98471940800b2f0ecb1e2f8784cce88fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee595af_815c01fc",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-30T03:03:33Z",
+      "side": 1,
+      "message": "place an extra line",
+      "revId": "f81e27d98471940800b2f0ecb1e2f8784cce88fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21262e16_2c600af0",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-30T03:03:33Z",
+      "side": 1,
+      "message": "#elif defined(CONFIG_BATTERY_MM8013)",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "f81e27d98471940800b2f0ecb1e2f8784cce88fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f69c72_24d1481e",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-30T03:03:33Z",
+      "side": 1,
+      "message": "MITSUME? and also below",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 18
+      },
+      "revId": "f81e27d98471940800b2f0ecb1e2f8784cce88fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
