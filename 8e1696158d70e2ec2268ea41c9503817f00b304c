@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4c9ee8e_ab1f0472",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T01:36:38Z",
+      "side": 1,
+      "message": "It is a USB_MAX_PACKET_SIZE. Remove it.",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f612da11_fc9daa3b",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T01:36:38Z",
+      "side": 1,
+      "message": "Remove them since they are not used at all.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1407a73c_44a622f9",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T01:36:38Z",
+      "side": 1,
+      "message": "Undo it.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 49
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5d290d0_ec68a68b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T01:36:38Z",
+      "side": 1,
+      "message": "Undo it.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 49
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a7ee7cd_ffc8610d",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T01:36:38Z",
+      "side": 1,
+      "message": "Undo it.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "483daf53_11d15ed3",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T01:36:38Z",
+      "side": 1,
+      "message": "Undo it.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 47
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
