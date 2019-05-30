@@ -141,6 +141,30 @@
       "revId": "79c77fdce94bab5067620082f8e5d93d817368e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61b180a_0717adba",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-30T18:10:09Z",
+      "side": 1,
+      "message": "It doesn\u0027t make sense values_have_changed_at_least_once isn\u0027t reset to zero in the loop. I think we should set it to zero at line 357. Can you elaborate \u0027weird state\u0027?",
+      "parentUuid": "81b7787c_c4fecb73",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 39
+      },
+      "revId": "79c77fdce94bab5067620082f8e5d93d817368e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
