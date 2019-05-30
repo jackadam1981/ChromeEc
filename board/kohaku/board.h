@@ -146,6 +146,8 @@ enum sensor_id {
 	SENSOR_COUNT,
 };
 
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
+
 enum pwm_channel {
 	PWM_CH_KBLIGHT,
 	PWM_CH_COUNT

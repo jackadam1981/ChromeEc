@@ -119,6 +119,8 @@ enum sensor_id {
 	SENSOR_COUNT
 };
 
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

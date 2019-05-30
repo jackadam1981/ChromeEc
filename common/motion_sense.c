@@ -32,6 +32,10 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
 
+#ifndef CONFIG_MOTION_SENSOR_MAX_COUNT
+#error Must define CONFIG_MOTION_SENSOR_MAX_COUNT to use motion_sense
+#endif
+
 #ifdef CONFIG_ORIENTATION_SENSOR
 /*
  * Orientation mode vectors, must match sequential ordering of

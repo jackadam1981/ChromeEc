@@ -219,7 +219,10 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	SENSOR_COUNT,
 };
+
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
 
 /*
  * Matrix to rotate accelerators into the standard reference frame.  The default

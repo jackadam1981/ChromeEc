@@ -86,6 +86,8 @@ enum sensor_id {
 	SENSOR_COUNT
 };
 
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
+
 enum battery_type {
 	BATTERY_DANAPACK_COS,
 	BATTERY_DANAPACK_ATL,

@@ -97,6 +97,8 @@ enum sensor_id {
 	SENSOR_COUNT
 };
 
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
+
 /* List of possible batteries */
 enum battery_type {
 	BATTERY_TYPE_COUNT,

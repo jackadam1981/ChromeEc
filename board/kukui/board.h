@@ -243,7 +243,10 @@ enum sensor_id {
 	LID_GYRO,
 	LID_MAG,
 	VSYNC,
+	SENSOR_COUNT,
 };
+
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
 
 #include "gpio_signal.h"
 #include "registers.h"

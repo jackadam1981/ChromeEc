@@ -278,7 +278,10 @@ enum sensor_id {
 	BASE_MAG,
 	BASE_BARO,
 	LID_ALS,
+	SENSOR_COUNT,
 };
+
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
 
 enum reef_board_version {
 	BOARD_VERSION_UNKNOWN = -1,

@@ -232,7 +232,10 @@ enum sensor_id {
 	LID_GYRO,
 	LID_MAG,
 	LID_ALS,
+	SENSOR_COUNT,
 };
+
+#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT
 
 enum adc_channel {
 	ADC_BASE_DET,

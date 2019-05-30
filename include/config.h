@@ -1907,6 +1907,11 @@
 #define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US 0
 #define CONFIG_MOTION_SENSE_RESUME_DELAY_US 0
 
+/*
+ * The maximum number of sensors that this board may expose.
+ */
+#undef CONFIG_MOTION_SENSOR_MAX_COUNT
+
 /* Define motion sensor count in board layer */
 #undef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
