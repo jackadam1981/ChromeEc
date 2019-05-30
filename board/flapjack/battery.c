@@ -296,7 +296,7 @@ static const struct mv_to_id batteries1[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(batteries1) < BATTERY_COUNT);
 
-static enum battery_type batt_type = BATTERY_UNKNOWN;
+static enum battery_type batt_type = BATTERY_C18_SUNWODA;
 
 static void board_get_battery_type(void)
 {
