@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2580610f_45a080b6",
+        "filename": "chip/stm32/usart_tx_dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:01:09Z",
+      "side": 1,
+      "message": "Looks unrelated",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "acc8c1c0919c1f7d4e35081318679efc073b0a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "facdfbe1_5b26c0f4",
         "filename": "include/config.h",
         "patchSetId": 1
