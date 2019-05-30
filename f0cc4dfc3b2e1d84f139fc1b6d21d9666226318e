@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "821cd594_8b1ed891",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T22:35:03Z",
+      "side": 1,
+      "message": "nit: can this be located above \"board_id_is_mismatched()\" to have all board property related functions adjacent each other?",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 33
+      },
+      "revId": "f0cc4dfc3b2e1d84f139fc1b6d21d9666226318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98b051de_10a42f73",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T22:35:03Z",
+      "side": 1,
+      "message": "It should be about restricting \"changing TPM mode\" rather than \u0027changing and reading TPM mode\u0027.\nHow about the macro name, BOARD_ALLOW_CHANGE_TPM_MODE?",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "f0cc4dfc3b2e1d84f139fc1b6d21d9666226318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb76c17c_ed0f3cf4",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T22:35:03Z",
+      "side": 1,
+      "message": "We should allow \"reading\" TPM mode for any platforms.\nCoreboot in Atlas already sends VENDOR_CC_TPM_MODE to get TPM Mode.\n\nFor this reason, this line should be located between line 56 and 57.\n\nNIT: the return code, VENDOR_RC_NOT_ALLOWED, could be more relevant IMHO.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "f0cc4dfc3b2e1d84f139fc1b6d21d9666226318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
