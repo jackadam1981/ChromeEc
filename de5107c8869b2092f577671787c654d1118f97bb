@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "009b4204_1e9a7499",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-30T23:31:24Z",
+      "side": 1,
+      "message": "nit: deserves a comment or an self-documenting code.\n\nwhat implemented is \"is it a RW area\" check. what we return is \"an index in the offsets array\".\n\none way is:\nstatic int offset_to_index(uint32_t block_offset)\n{\n  int is_RW \u003d (block_offset \u003e\u003d valid_sections.rw_base_offset) \u0026\u0026 (block_offset \u003c valid_sections.rw_top_offset);\n  return is_RW ? 1 : 0;\n}\n\nI expect the compiler to be smart enough to optimize out the variable and ?:, but the intent behind the code becomes obvious.",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 7
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6b44b1_4b4d274a",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-30T23:31:24Z",
+      "side": 1,
+      "message": "shouldn\u0027t all prev_offset[] entries be reset at this point?\n\notherwise, we can\u0027t write to RW until reboot once we do it once?",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
