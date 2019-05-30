@@ -50,8 +50,8 @@
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
 #define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 2
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LTO
@@ -187,6 +187,15 @@ enum temp_sensor_id {
 
 	TEMP_SENSOR_COUNT
 };
+
+enum sensor_id {
+	BASE_ACCEL,
+	BASE_GYRO,
+	LID_ACCEL,
+	SENSOR_COUNT,
+};
+
+
 
 /* Light sensors */
 enum als_id {

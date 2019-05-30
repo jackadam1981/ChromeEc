@@ -68,7 +68,10 @@ enum adc_channel {
 enum sensor_id {
 	BASE_ACCEL = 0,
 	BASE_GYRO,
+	SENSOR_COUNT,
 };
+
+
 
 #include "gpio_signal.h"
 

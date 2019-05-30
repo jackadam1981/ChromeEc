@@ -197,7 +197,10 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
 	LID_ALS,
+	SENSOR_COUNT,
 };
+
+
 
 enum pwm_channel {
 	PWM_CH_DISPLIGHT,
