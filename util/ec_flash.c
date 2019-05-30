@@ -8,9 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "comm-host.h"
 #include "misc_util.h"
+
+static const uint32_t ERASE_ASYNC_TIMEOUT = 10000000;   /* 10 seconds */
+static const uint32_t ERASE_ASYNC_WAIT = 500000;        /* .5 seconds */
 
 int ec_flash_read(uint8_t *buf, int offset, int size)
 {
@@ -124,4 +128,29 @@ int ec_flash_erase(int offset, int size)
 	p.size = size;
 
 	return ec_command(EC_CMD_FLASH_ERASE, 0, &p, sizeof(p), NULL, 0);
+}
+
+int ec_flash_erase_async(int offset, int size)
+{
+	struct ec_params_flash_erase_v1 p = { 0 };
+	uint32_t timeout = 0;
+	int rc = 0;
+
+	p.cmd = FLASH_ERASE_SECTOR_ASYNC;
+	p.params.offset = offset;
+	p.params.size = size;
+
+	rc = ec_command(EC_CMD_FLASH_ERASE, 1, &p, sizeof(p), NULL, 0);
+
+	while (rc < 0 && timeout < ERASE_ASYNC_TIMEOUT) {
+		usleep(ERASE_ASYNC_WAIT);
+		timeout += ERASE_ASYNC_WAIT;
+		p.cmd = FLASH_ERASE_GET_RESULT;
+		rc = ec_command(EC_CMD_FLASH_ERASE, 1, &p, sizeof(p), NULL, 0);
+	}
+	if (rc < 0) {
+		fprintf(stderr, "Flash erase error at address 0x%x, rc=%d\n",
+			offset, rc);
+	}
+	return rc;
 }
