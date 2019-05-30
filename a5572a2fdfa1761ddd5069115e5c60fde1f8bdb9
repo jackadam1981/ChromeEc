@@ -16,6 +16,24 @@
       "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80519b0a_fc3260d5",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-05-30T09:59:52Z",
+      "side": 1,
+      "message": "\u003e What if the data is not ready after that time, do we still need to retry?\n\ntcs3400_post_events() has a busy loop that waits for 400ms maximum.\nAnd if data is still not ready, motion_sense will retry after 1 sec. \n\n\u003e Does integration time depend on brightness?\n\nNo, if I interpret the document correctly",
+      "parentUuid": "50fc7f55_dbf72b8d",
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
