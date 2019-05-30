@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bc53f071_63e2d10f",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T23:38:56Z",
+      "side": 1,
+      "message": "It was just for the micro delay.",
+      "parentUuid": "c72192b9_c68e9f00",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "3e5178628d50f99561a95cf606fc44427ef2dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "466248c9_11f7b606",
         "filename": "chip/g/sps.c",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "3e5178628d50f99561a95cf606fc44427ef2dfe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef62a2bd_9f109f1c",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T23:38:56Z",
+      "side": 1,
+      "message": "udelay(4) actually causes 14 usec delay as observed from logic analyzer.",
+      "parentUuid": "466248c9_11f7b606",
+      "range": {
+        "startLine": 350,
+        "startChar": 11,
+        "endLine": 350,
+        "endChar": 34
+      },
+      "revId": "3e5178628d50f99561a95cf606fc44427ef2dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
