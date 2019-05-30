@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fba3e59_2db062b9",
+        "filename": "chip/ish/ish_persistent_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T20:43:44Z",
+      "side": 1,
+      "message": "nit: we can make this static",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "fcc8283f8401ad0174ca97bb4d24875f9e7a2759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d058125a_072eb9f3",
+        "filename": "chip/ish/ish_persistent_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T20:43:44Z",
+      "side": 1,
+      "message": "this isn\u0027t the appropriate hook callback. The chipset hooks are for the AP chipset task. We need to come up with something else (maybe just call this method from system_pre_init)",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "fcc8283f8401ad0174ca97bb4d24875f9e7a2759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866eb478_a504f274",
+        "filename": "chip/ish/ish_persistent_data.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T20:43:44Z",
+      "side": 1,
+      "message": "let\u0027s keep this out of the header file. We only need to access this the c file",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "fcc8283f8401ad0174ca97bb4d24875f9e7a2759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee7263a_a9092093",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T20:43:44Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 586,
+        "startChar": 13,
+        "endLine": 586,
+        "endChar": 34
+      },
+      "revId": "fcc8283f8401ad0174ca97bb4d24875f9e7a2759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20867dd0_81a0fe1d",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T20:43:44Z",
+      "side": 1,
+      "message": "this isn\u0027t the right place for this hook. We are not in the (AP) chipset task.",
+      "revId": "fcc8283f8401ad0174ca97bb4d24875f9e7a2759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
