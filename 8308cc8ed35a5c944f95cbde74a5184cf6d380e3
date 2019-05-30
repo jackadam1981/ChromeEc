@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ed451dbd_a1955e5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-30T01:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ab5359e_d13aa8a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de01ee5e_8df0682e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb36373_d733e8a1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5614,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-30T01:03:27Z",
+      "side": 1,
+      "message": "I agree that making the struct generic would be nice. I think since we are using a struct, putting various information as fields in the struct would be more readable. The benefit of using various bits of a uint32_t is that information is more compact (seed_is_set now only needs one bit instead of a uint8_t).\n\nBut since the bit definition macros would live in this header as well, like FP_MODE_ENROLL_IMAGE, we still need to change ec_commands.h when we want to use a new bit. \n\nI don\u0027t want to introduce a separate command that just queries the version - this functionality seems small for a command. But I am not sure.\n\nI am going with bits in a uint32_t and a version number now.",
+      "parentUuid": "de01ee5e_8df0682e",
+      "range": {
+        "startLine": 5614,
+        "startChar": 8,
+        "endLine": 5614,
+        "endChar": 29
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "5051b1b1_9eb15b33",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-30T01:03:27Z",
+      "side": 1,
+      "message": "Okay. I was thinking the header of the module to be tested should come first. Turns out it\u0027s not the convention in here. Done.",
+      "parentUuid": "8ee1e7fd_a8b55446",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d95d4e6_52ba7b9f",
         "filename": "test/fpsensor.c",
         "patchSetId": 1
@@ -115,6 +187,30 @@
       "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9056e1c6_bfe9f0b3",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-30T01:03:27Z",
+      "side": 1,
+      "message": "I will do that in a follow-up CL. I am leaving a TODO here.",
+      "parentUuid": "5d95d4e6_52ba7b9f",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +257,54 @@
       "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fff5b1_c9d79ec0",
+        "filename": "test/fpsensor.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-30T01:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98cadc7f_2e65d3e2",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2424189_99d1c502",
+        "filename": "test/fpsensor.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-05-30T01:03:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9567c3_d87a2fdc",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "8308cc8ed35a5c944f95cbde74a5184cf6d380e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
