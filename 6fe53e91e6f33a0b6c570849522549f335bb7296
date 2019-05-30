@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2b673f3_f2367f6c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "bool? Also, document this above",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc47acca_67fe00bf",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "This could use a bit of comment, mostly around the fact that *somehow* the math will work out to be correct and we won\u0027t be overwriting anything in the memcpy(). This fact is not obviously true to me.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 58
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8f18c2_80f211f6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "Isn\u0027t \"time\" the timestamp of the data we\u0027re trying to insert already?",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 223,
+        "endChar": 47
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a8fbe4_668948f6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "Is there any way to check if \"offset\" is in bounds? And do you think it\u0027s worth it? Maybe it\u0027s at least worth a comment to the effect of \"this does not check bounds, caller beware\"?",
+      "range": {
+        "startLine": 230,
+        "startChar": 8,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527601cc_7026fd2b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "If we know that the format in the queue is always (timestamp, sample), could we just save the timestamp in a local and continue? Or is the guarantee just that any sample will have a timestamp right before it? Document these things :)",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 46
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3d7c314_a3761644",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "Is there any reason for renaming add_data to stage_data?",
+      "range": {
+        "startLine": 896,
+        "startChar": 4,
+        "endLine": 896,
+        "endChar": 32
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb17d1bf_b981187f",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-30T21:18:36Z",
+      "side": 1,
+      "message": "This needs to be documented",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 41
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
