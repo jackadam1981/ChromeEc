@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c33a63a_25d6be31",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-30T09:46:27Z",
+      "side": 1,
+      "message": "Add \n\nif (board_get_version() \u003d\u003d 3)\n\nPresumably we\u0027re going to fix this for the next revision",
+      "revId": "952b4a70103a7f8bcdb266975f34b15065f41bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
