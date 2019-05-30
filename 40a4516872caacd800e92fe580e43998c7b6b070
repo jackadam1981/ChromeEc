@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70af9b36_a19dad3c",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T16:35:04Z",
+      "side": 1,
+      "message": "This is to push any buffered TX data in device.",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 19
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -22,6 +22,29 @@
       "revId": "11a04de4df5f09f062e004c62880da7269f12c1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c93abaf_dc1aa552",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T16:35:04Z",
+      "side": 1,
+      "message": "Wrong description.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 45
+      },
+      "revId": "11a04de4df5f09f062e004c62880da7269f12c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
