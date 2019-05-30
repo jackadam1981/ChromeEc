@@ -49,18 +49,72 @@ enum sys_sleep_state {
 #endif
 };
 
-static const int sleep_sig[] = {
+/* GPIO for power signal */
 #ifdef CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS
-	[SYS_SLEEP_S3] = VW_SLP_S3_L,
-	[SYS_SLEEP_S4] = VW_SLP_S4_L,
+#define SLP_S3_SIGNAL_L VW_SLP_S3_L
+#define SLP_S4_SIGNAL_L VW_SLP_S4_L
 #else
-	[SYS_SLEEP_S3] = GPIO_PCH_SLP_S3_L,
-	[SYS_SLEEP_S4] = GPIO_PCH_SLP_S4_L,
+#define SLP_S3_SIGNAL_L GPIO_PCH_SLP_S3_L
+#define SLP_S4_SIGNAL_L GPIO_PCH_SLP_S4_L
 #endif
+
+static const int sleep_sig[] = {
+	[SYS_SLEEP_S3] = SLP_S3_SIGNAL_L,
+	[SYS_SLEEP_S4] = SLP_S4_SIGNAL_L,
 #ifdef CONFIG_POWER_S0IX
 	[SYS_SLEEP_S0IX] = GPIO_PCH_SLP_S0_L,
 #endif
 };
+
+#ifdef CONFIG_INTEL_POWER_SIGNALS_COMMON
+/* power signal list.  Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	[X86_SLP_S0_DEASSERTED] = {
+		GPIO_PCH_SLP_S0_L,
+		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
+		"SLP_S0_DEASSERTED",
+	},
+	[X86_SLP_S3_DEASSERTED] = {
+		SLP_S3_SIGNAL_L,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"SLP_S3_DEASSERTED",
+	},
+	[X86_SLP_S4_DEASSERTED] = {
+		SLP_S4_SIGNAL_L,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"SLP_S4_DEASSERTED",
+	},
+	[X86_RSMRST_L_PGOOD] = {
+		GPIO_RSMRST_L_PGOOD,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"RSMRST_L_PGOOD",
+	},
+	[X86_ALL_SYS_PWRGD] = {
+		GPIO_ALL_SYS_PWRGD,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"ALL_SYS_PWRGD",
+	},
+#if defined(CONFIG_CHIPSET_ICELAKE)
+	[X86_SLP_SUS_DEASSERTED] = {
+		GPIO_PCH_SLP_SUS_L,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"SLP_SUS_DEASSERTED",
+	},
+	[X86_DSW_DPWROK] = {
+		GPIO_PG_EC_DSW_PWROK,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"DSW_DPWROK",
+	},
+#elif defined(CONFIG_CHIPSET_COMETLAKE)
+	[PP5000_A_PGOOD] = {
+		GPIO_PP5000_A_PG_OD,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"PP5000_A_PGOOD",
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+#endif /* CONFIG_INTEL_POWER_SIGNALS_COMMON */
 
 static int power_s5_up;       /* Chipset is sequencing up or down */
 

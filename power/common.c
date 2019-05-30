@@ -23,6 +23,10 @@
 #include "util.h"
 #include "espi.h"
 
+#ifdef CONFIG_INTEL_POWER_SIGNALS_COMMON
+#include "intel_x86.h"
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)

@@ -1017,6 +1017,9 @@
 /* Shared chipset support; automatically gets defined below. */
 #undef CONFIG_CHIPSET_APL_GLK		/* Apollolake & Geminilake */
 
+/* Common power signals for Intel AP */
+#undef CONFIG_INTEL_POWER_SIGNALS_COMMON
+
 /* Support chipset throttling */
 #undef CONFIG_CHIPSET_CAN_THROTTLE
 
