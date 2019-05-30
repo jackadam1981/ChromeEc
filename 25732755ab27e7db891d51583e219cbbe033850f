@@ -22,6 +22,30 @@
       "revId": "25732755ab27e7db891d51583e219cbbe033850f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582d5e52_f1b054fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-30T18:55:34Z",
+      "side": 1,
+      "message": "With a single descriptor approach, I used to get a failure in flashrom or iteflash. For flashrom, the failure point is here:\n\nhttps://cs.corp.google.com/chromeos_public/src/third_party/flashrom/raiden_debug_spi.c?rcl\u003db2d845bfa49d65892135c6424d8a927017cea3c5\u0026l\u003d131\n\nAs I understand, libusb_bulk_transfer was expecting data chunk to be delivered with a 1 msec timeout constraint. Meanwhile, if data were located split in CR50 USB tx_q, then CR50 transfers two different time. As I measure, tx_stream_handler() time gap was 4.5 msec or more. \nJust for experiment, I increased the timeout constraint of libusb_bulk_transfer from 1 msec to 10 msec, and it passed, but got failed in another libusb functions. \n\nTo deliver data chunk without timeout violation, two descriptors are needed, I think.",
+      "parentUuid": "86ec4ddb_81fa9926",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
