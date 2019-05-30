@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facdfbe1_5b26c0f4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4543,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-30T20:50:55Z",
+      "side": 1,
+      "message": "To avoid touching all board.h, you can add here:\n\n#ifdef HAS_TASK_MOTION_SENSE\n#define CONFIG_MOTION_SENSOR_MAX_COUNT SENSOR_COUNT\n#endif\n\nIt will catch all board that do not have sensor count.",
+      "revId": "acc8c1c0919c1f7d4e35081318679efc073b0a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
