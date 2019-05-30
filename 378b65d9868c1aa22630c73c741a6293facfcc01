@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "975a68f6_930b6144",
+        "filename": "common/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-30T22:23:03Z",
+      "side": 1,
+      "message": "I see a problem when offset is greater than buffer_units:\nFor instance, assume the quee is 16 units long, has 4 space left, and we ask for offset 0,1,...,16:\n\n   H        T \n  |**********----|\n\nWe will get as a result:\n\noffse | buffer\n0     | tail + 0, count \u003d\u003d 4\n1     | tail + 1, count \u003d\u003d 3\n2     | tail + 2, count \u003d\u003d 2\n3     | tail + 3, count \u003d\u003d 1\n4     | count \u003d\u003d 0\n5     | count \u003d\u003d 0\n....\n15    | count \u003d\u003d 0\n16    | tail + 0, count \u003d\u003d 4    \nTo be consistent, we should keep return count \u003d\u003d 0.\n\nThe test should be \n(queue_space(q) \u003c\u003d offset)",
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30bda83d_9963bc24",
         "filename": "include/queue.h",
         "patchSetId": 1
