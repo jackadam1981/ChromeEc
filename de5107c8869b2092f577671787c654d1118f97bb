@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52aec3d6_47364940",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-30T23:43:41Z",
+      "side": 1,
+      "message": "I am not sure the suggested code is more obvious - checking boundaries for RW image seem to be self explanatory to me, Let me try adding a comment.",
+      "parentUuid": "009b4204_1e9a7499",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 7
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f6b44b1_4b4d274a",
         "filename": "chip/g/upgrade_fw.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-30T23:31:24Z",
       "side": 1,
       "message": "shouldn\u0027t all prev_offset[] entries be reset at this point?\n\notherwise, we can\u0027t write to RW until reboot once we do it once?",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ab5ceb_9d509241",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-30T23:43:41Z",
+      "side": 1,
+      "message": "setting the second value is not necessary, as it will be set below in new_chunk_written().\n\nThe first value needs to be set explicitly, because by the time we are trying to write the RO this timeout will not kick in, so the previous value in prev_offset[0] will be used below in line 309 and will cause a rejection.",
+      "parentUuid": "0f6b44b1_4b4d274a",
       "range": {
         "startLine": 291,
         "startChar": 2,
