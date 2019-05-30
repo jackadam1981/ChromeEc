@@ -72,9 +72,11 @@ static int accel_disp;
 static struct mutex g_sensor_mutex;
 
 /*
- * Current power level (S0, S3, S5, ...)
+ * Current power level (S0, S3, S5)
+ *
+ * See SENSOR_ACTIVE_S#
  */
-test_export_static enum chipset_state_mask sensor_active;
+test_export_static int sensor_active;
 
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 static void print_spoof_mode_status(int id);
@@ -558,13 +560,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
 
 static void motion_sense_suspend(void)
 {
-	/*
-	 *  If we are coming from S5, don't enter suspend:
-	 *  We will go in SO almost immediately.
-	 */
-	if (sensor_active == SENSOR_ACTIVE_S5)
-		return;
-
 	sensor_active = SENSOR_ACTIVE_S3;
 
 	/*
@@ -601,12 +596,12 @@ static void motion_sense_startup(void)
 	 * We may initialize the sensor 2 times (once in RO, another time in
 	 * RW), but it may be necessary if the init sequence has changed.
 	 */
-	if (chipset_in_state(SENSOR_ACTIVE_S0_S3_S5))
-		motion_sense_shutdown();
-	if (chipset_in_state(SENSOR_ACTIVE_S0_S3))
-		motion_sense_suspend();
-	if (chipset_in_state(SENSOR_ACTIVE_S0))
+	if (chipset_in_state(CHIPSET_STATE_ON))
 		motion_sense_resume();
+	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		motion_sense_suspend();
+	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		motion_sense_shutdown();
 }
 DECLARE_HOOK(HOOK_INIT, motion_sense_startup,
 	     MOTION_SENSE_HOOK_PRIO);
