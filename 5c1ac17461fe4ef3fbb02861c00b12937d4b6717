@@ -16,6 +16,24 @@
       "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8de290_c9d0dc24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T21:00:15Z",
+      "side": 1,
+      "message": "We need to call shutdown first, then resume when we jump?",
+      "parentUuid": "f09f93ba_88d469d0",
+      "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
