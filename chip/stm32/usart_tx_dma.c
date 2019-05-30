@@ -51,9 +51,9 @@ static void usart_tx_dma_start(struct usart_config const *config,
 	 * that would hold up any additional writes to the TX queue
 	 * unnecessarily.
 	 */
-	state->chunk.length = MIN(state->chunk.length, dma_config->max_bytes);
+	state->chunk.count = MIN(state->chunk.count, dma_config->max_bytes);
 
-	dma_prepare_tx(&options, state->chunk.length, state->chunk.buffer);
+	dma_prepare_tx(&options, state->chunk.count, state->chunk.buffer);
 
 	state->dma_active = 1;
 
@@ -90,11 +90,11 @@ void usart_tx_dma_interrupt(struct usart_config const *config)
 		 * units from the queue if we had an active DMA transfer.
 		 */
 		if (state->dma_active)
-			queue_advance_head(queue, state->chunk.length);
+			queue_advance_head(queue, state->chunk.count);
 
 		state->chunk = queue_get_read_chunk(queue);
 
-		if (state->chunk.length)
+		if (state->chunk.count)
 			usart_tx_dma_start(config, dma_config);
 		else
 			usart_tx_dma_stop(config, dma_config);
