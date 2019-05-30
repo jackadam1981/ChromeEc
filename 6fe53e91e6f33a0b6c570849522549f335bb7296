@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "922450c6_d2f8961f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-05-30T22:29:56Z",
+      "side": 1,
+      "message": "The code at line 131 is supposed to make space. \nIt is not working anymore since we are not committing right away.\n\nIt should be\n\nif (queue_space(\u0026motion_sense_fifo) \u003c\u003d fifo_staged.count)",
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc47acca_67fe00bf",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
