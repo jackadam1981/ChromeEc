@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee1cc624_eb847a5d",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-30T02:08:24Z",
+      "side": 1,
+      "message": "Why don\u0027t you make it uint16_t?",
+      "range": {
+        "startLine": 302,
+        "startChar": 28,
+        "endLine": 302,
+        "endChar": 32
+      },
+      "revId": "c5c3bb4d82706297da5993938e843a1feac30216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b922391b_a9540aae",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-30T02:08:24Z",
+      "side": 1,
+      "message": "Can you call it from board/nami/board.c?",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 0
+      },
+      "revId": "c5c3bb4d82706297da5993938e843a1feac30216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
