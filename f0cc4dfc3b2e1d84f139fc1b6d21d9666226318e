@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "795ed85f_fd052688",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-30T23:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821cd594_8b1ed891",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 33
+      },
+      "revId": "f0cc4dfc3b2e1d84f139fc1b6d21d9666226318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98b051de_10a42f73",
         "filename": "board/cr50/scratch_reg1.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "09e22810_c5b7477f",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-30T23:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98b051de_10a42f73",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "f0cc4dfc3b2e1d84f139fc1b6d21d9666226318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb76c17c_ed0f3cf4",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-30T22:35:03Z",
       "side": 1,
       "message": "We should allow \"reading\" TPM mode for any platforms.\nCoreboot in Atlas already sends VENDOR_CC_TPM_MODE to get TPM Mode.\n\nFor this reason, this line should be located between line 56 and 57.\n\nNIT: the return code, VENDOR_RC_NOT_ALLOWED, could be more relevant IMHO.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "f0cc4dfc3b2e1d84f139fc1b6d21d9666226318e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f389a58_725bba70",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-30T23:01:33Z",
+      "side": 1,
+      "message": "good point, I forgot about Atlas, done.",
+      "parentUuid": "bb76c17c_ed0f3cf4",
       "range": {
         "startLine": 48,
         "startChar": 0,
