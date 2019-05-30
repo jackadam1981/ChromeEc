@@ -41,13 +41,34 @@ struct rollback_data {
 };
 
 /* We need at least 2 erasable blocks in the rollback region. */
+#ifndef CONFIG_FLASH_MULTIPLE_REGION
 BUILD_ASSERT(CONFIG_ROLLBACK_SIZE >= ROLLBACK_REGIONS*CONFIG_FLASH_ERASE_SIZE);
 BUILD_ASSERT(sizeof(struct rollback_data) <= CONFIG_FLASH_ERASE_SIZE);
+#endif
 
-static uintptr_t get_rollback_offset(int region)
+static int get_rollback_offset(int region)
 {
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+	int rollback_start_bank = flash_bank_index(CONFIG_ROLLBACK_OFF);
+
+	return flash_bank_start_offset(rollback_start_bank + region);
+#else
 	return CONFIG_ROLLBACK_OFF + region * CONFIG_FLASH_ERASE_SIZE;
+#endif
 }
+
+#ifdef SECTION_IS_RO
+static int get_rollback_erase_size_bytes(int region)
+{
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+	int rollback_start_bank = flash_bank_index(CONFIG_ROLLBACK_OFF);
+
+	return flash_bank_erase_size(rollback_start_bank + region);
+#else
+	return CONFIG_FLASH_ERASE_SIZE;
+#endif
+}
+#endif
 
 /*
  * When MPU is available, read rollback with interrupts disabled, to minimize
@@ -71,7 +92,7 @@ static void unlock_rollback(void)
 
 static int read_rollback(int region, struct rollback_data *data)
 {
-	uintptr_t offset;
+	int offset;
 	int ret = EC_SUCCESS;
 
 	offset = get_rollback_offset(region);
@@ -248,8 +269,7 @@ static int rollback_update(int32_t next_min_version,
 			CONFIG_FLASH_WRITE_SIZE)];
 	struct rollback_data *data = (struct rollback_data *)block;
 	BUILD_ASSERT(sizeof(block) >= sizeof(*data));
-	uintptr_t offset;
-	int region, ret;
+	int erase_size, offset, region, ret;
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW)
 		return EC_ERROR_ACCESS_DENIED;
@@ -298,11 +318,16 @@ static int rollback_update(int32_t next_min_version,
 #endif
 	data->cookie = CROS_EC_ROLLBACK_COOKIE;
 
-	/* Offset should never be part of active image. */
-	if (system_unsafe_to_overwrite(offset, CONFIG_FLASH_ERASE_SIZE))
+	erase_size = get_rollback_erase_size_bytes(region);
+
+	if (erase_size < 0)
 		return EC_ERROR_UNKNOWN;
 
-	if (flash_erase(offset, CONFIG_FLASH_ERASE_SIZE))
+	/* Offset should never be part of active image. */
+	if (system_unsafe_to_overwrite(offset, erase_size))
+		return EC_ERROR_UNKNOWN;
+
+	if (flash_erase(offset, erase_size))
 		return EC_ERROR_UNKNOWN;
 
 	unlock_rollback();
