@@ -382,6 +382,30 @@
       "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88207250_1d914f9f",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-05-30T20:14:58Z",
+      "side": 1,
+      "message": "Does this work out better?\n/*\n * Macros for weak symbols\n *\n * __override_proto: declarations\n * __override: non-default definitions\n * __overridable: default (weak) definition\n *\n * For example, in foo.h:\n *   __override_proto void foo(void);\n *\n * and in foo.c:\n *   __overridable void foo(void) {\n *     ...\n *   }\n *\n * and in board.c:\n *   __override void foo(void) {\n *     ...\n *   }\n */",
+      "parentUuid": "6c875725_7303375f",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
