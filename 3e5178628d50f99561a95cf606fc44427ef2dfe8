@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c72192b9_c68e9f00",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-05-30T23:23:51Z",
+      "side": 1,
+      "message": "Is this needed? I get the idea you\u0027re going for is that this variable can be changed out from under sps_rx_interrupt(), so you want to make sure it really reloads from the global for if(seen_data). But the compiler knows its global, and because sps_rx_handler is a function pointer it can\u0027t possibly inline everything to be able to inspect and know that seen_data is not touched. So I think the compiler is always required to do the reload for if(seen_data), and volatile isn\u0027t needed. Or are you seeing an issue with it?",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "3e5178628d50f99561a95cf606fc44427ef2dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466248c9_11f7b606",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-05-30T23:23:51Z",
+      "side": 1,
+      "message": "isn\u0027t there a udelay() you can use?",
+      "range": {
+        "startLine": 350,
+        "startChar": 11,
+        "endLine": 350,
+        "endChar": 34
+      },
+      "revId": "3e5178628d50f99561a95cf606fc44427ef2dfe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
