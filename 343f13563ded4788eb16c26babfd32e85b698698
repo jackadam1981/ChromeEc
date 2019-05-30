@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33957453_7160f1d6",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-30T17:47:34Z",
+      "side": 1,
+      "message": "Now you don\u0027t even need this.",
+      "range": {
+        "startLine": 1050,
+        "startChar": 1,
+        "endLine": 1050,
+        "endChar": 35
+      },
+      "revId": "343f13563ded4788eb16c26babfd32e85b698698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44649555_81a2e1c4",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-30T17:47:34Z",
+      "side": 1,
+      "message": "This is the same as isl923x_init. Can we do this in board_init?",
+      "range": {
+        "startLine": 1058,
+        "startChar": 46,
+        "endLine": 1058,
+        "endChar": 68
+      },
+      "revId": "343f13563ded4788eb16c26babfd32e85b698698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47a11ed_75d0c553",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-05-30T17:47:34Z",
+      "side": 1,
+      "message": "Please use __func__.",
+      "range": {
+        "startLine": 305,
+        "startChar": 11,
+        "endLine": 305,
+        "endChar": 33
+      },
+      "revId": "343f13563ded4788eb16c26babfd32e85b698698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
