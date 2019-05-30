@@ -11,6 +11,11 @@
 
 #include "comm-host.h"
 #include "misc_util.h"
+#include "timer.h"
+
+static const uint32_t ERASE_ASYNC_TIMEOUT = 10 * SECOND;
+static const uint32_t ERASE_ASYNC_WAIT = 500 * MSEC;
+static const int FLASH_ERASE_BUSY_RV = -EECRESULT - EC_RES_BUSY;
 
 int ec_flash_read(uint8_t *buf, int offset, int size)
 {
@@ -124,4 +129,29 @@ int ec_flash_erase(int offset, int size)
 	p.size = size;
 
 	return ec_command(EC_CMD_FLASH_ERASE, 0, &p, sizeof(p), NULL, 0);
+}
+
+int ec_flash_erase_async(int offset, int size)
+{
+	struct ec_params_flash_erase_v1 p = { 0 };
+	uint32_t timeout = 0;
+	int rv = FLASH_ERASE_BUSY_RV;
+
+	p.cmd = FLASH_ERASE_SECTOR_ASYNC;
+	p.params.offset = offset;
+	p.params.size = size;
+
+	rv = ec_command(EC_CMD_FLASH_ERASE, 1, &p, sizeof(p), NULL, 0);
+
+	while (rv == FLASH_ERASE_BUSY_RV && timeout < ERASE_ASYNC_TIMEOUT) {
+		/*
+		 * The erase is not complete until FLASH_ERASE_GET_RESULT
+		 * returns success (or error other than EC_RES_BUSY).
+		 */
+		usleep(ERASE_ASYNC_WAIT);
+		timeout += ERASE_ASYNC_WAIT;
+		p.cmd = FLASH_ERASE_GET_RESULT;
+		rv = ec_command(EC_CMD_FLASH_ERASE, 1, &p, sizeof(p), NULL, 0);
+	}
+	return rv;
 }
