@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50fc7f55_dbf72b8d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-05-30T05:53:37Z",
+      "side": 1,
+      "message": "What if the data is not ready after that time, do we still need to retry?\n\nDoes integration time depend on brightness?",
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
