@@ -16,6 +16,24 @@
       "revId": "952b4a70103a7f8bcdb266975f34b15065f41bdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e864c9c_1ef97164",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-05-30T09:49:09Z",
+      "side": 1,
+      "message": "We have this at line 479. Or do you want to make this explicitly?",
+      "parentUuid": "6c33a63a_25d6be31",
+      "revId": "952b4a70103a7f8bcdb266975f34b15065f41bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
