@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "60f5c20f_0691e019",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-30T21:36:28Z",
+      "side": 1,
+      "message": "it does seem like we can use SENSOR_COUNT as the max count and let the other variable be dynamic",
+      "range": {
+        "startLine": 1913,
+        "startChar": 7,
+        "endLine": 1913,
+        "endChar": 37
+      },
+      "revId": "acc8c1c0919c1f7d4e35081318679efc073b0a22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "facdfbe1_5b26c0f4",
         "filename": "include/config.h",
         "patchSetId": 1
