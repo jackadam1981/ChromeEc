@@ -46,6 +46,30 @@
       "revId": "25732755ab27e7db891d51583e219cbbe033850f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0625fdd0_9c186e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-30T19:15:06Z",
+      "side": 1,
+      "message": "we should talk more offline, but why does it matter that the message wraps around the ring buffer, how is this different from the case where there is a chunk which happened to end right at the top of the buffer, and then there is a next chunk at the bottom.",
+      "parentUuid": "582d5e52_f1b054fe",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
