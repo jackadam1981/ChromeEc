@@ -165,6 +165,30 @@
       "revId": "de5107c8869b2092f577671787c654d1118f97bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6f18f7_a9f7924e",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-05-31T00:30:32Z",
+      "side": 1,
+      "message": "\u003e Does this address your concerns?\n\nsure. I\u0027d still honestly just treat RO and RW as two completely separate areas for the purposes of attack detection (and thus set them both to -SIZE initially and after the timeout). and not rely on order of writing or order in memory. simplifies thinking about it and thus improves maintainability at the cost of a single assignment on a non-time-sensitive path.\neach time we return to changing this code we\u0027ll have to spend time recalling why it\u0027s ok that only one offset is reset and risk recalling it all incorrectly.",
+      "parentUuid": "e3f4865b_8e7fcaf3",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
