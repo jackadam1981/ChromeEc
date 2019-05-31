@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "10a6fa56_144899b0",
+        "filename": "common/usb_tc_ctvpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T13:51:52Z",
+      "side": 1,
+      "message": "Can we expose a const type_c * version for other files to consume through an small accessory (inline method). I would think that the compiler with optimize that out.\n\nI think it is find for other files to read the state of this object, but it is not okay for them to modify it. Hopefully we can optimize for both encapsulation and code size.",
+      "parentUuid": "df7a44a1_0e709a1d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a042b81b_6cbfc207",
         "filename": "common/usb_tc_ctvpd_sm.c",
         "patchSetId": 3
@@ -413,6 +437,30 @@
     },
     {
       "key": {
+        "uuid": "f948b365_3e9b96ef",
+        "filename": "common/usb_tc_vpd_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T13:51:52Z",
+      "side": 1,
+      "message": "What changed?",
+      "parentUuid": "d3242768_ad8d8803",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "814bea3b_93ea379c",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 3
@@ -472,6 +520,30 @@
       "side": 1,
       "message": "Yes this was my initial intention. If we\u0027er okay with this, I\u0027ll break it out into another CL.",
       "parentUuid": "57ac0a5a_3d397d28",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "6e7a2a28455a42461a136ccd78bd2b12b14d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f3e0b86_53405f48",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T13:51:52Z",
+      "side": 1,
+      "message": "Definitely another CL, but I would still be curious to see the implementation that used\n\nSTART_TIMER(timer)\nCHECK_TIMER(timer, expire)\n\ninstead. 100 bytes might still be worth it",
+      "parentUuid": "7b8ba2e0_04e3a455",
       "range": {
         "startLine": 58,
         "startChar": 8,
