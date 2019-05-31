@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c046a059_129b5b83",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78e05e9_e0b0f032",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2b673f3_f2367f6c",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb4331b_ab91853c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Tried bool, compiler complains that it\u0027s not a defined type.",
+      "parentUuid": "b2b673f3_f2367f6c",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "25877c83_9c3ec0b1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2307fe4_0f0a6110",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95e5c3b7_13d0c0a7",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9cf1474f_2617da68",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e5c3b7_13d0c0a7",
+      "range": {
+        "startLine": 163,
+        "startChar": 9,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "922450c6_d2f8961f",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -108,6 +204,24 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0ea329_e68cb73a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "922450c6_d2f8961f",
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "6319aadd_3d2e9a9e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc47acca_67fe00bf",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 58
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f8f18c2_80f211f6",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -154,6 +292,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8aa70b2_e9329cfa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Right, updated the comment above in the struct. read_ts is the upper bound for spreading. Basically we know that the timestamps should be spread between the time argument to this function and the first entry\u0027s clock timestamp.",
+      "parentUuid": "2f8f18c2_80f211f6",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 223,
+        "endChar": 47
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "5d711801_dab49e5e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47a8fbe4_668948f6",
+      "range": {
+        "startLine": 230,
+        "startChar": 8,
+        "endLine": 230,
+        "endChar": 14
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b452da1_43b1a52c",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -200,6 +386,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4323c6c3_9b0d2940",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Yup, wrote this before I made that function and forgot to update. Thanks",
+      "parentUuid": "6b452da1_43b1a52c",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 37
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "395467a2_de8e0be1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27908bc_e3812009",
+      "range": {
+        "startLine": 241,
+        "startChar": 30,
+        "endLine": 241,
+        "endChar": 60
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af9f6ddb_9c2daeb0",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -246,6 +480,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27dedd2_47aed0ca",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Yup, you\u0027re correct.",
+      "parentUuid": "af9f6ddb_9c2daeb0",
+      "range": {
+        "startLine": 246,
+        "startChar": 15,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "91b08d82_4bdeed2d",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10130088_8b3a8533",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88dea344_8d6b4f87",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -292,6 +574,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe946ecf_e8c621c3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "This will happen 100% of the time if tight timestamps are off. Also if something goes horribly wrong (which I haven\u0027t seen yet): somehow we put two pieces of data back to back.",
+      "parentUuid": "88dea344_8d6b4f87",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 0
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "c268a128_29d4bc70",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Sorry, relic of old code that had this. Window can be 0 for force mode samples, but not negative.",
+      "parentUuid": "19e1683e_a6ed7b1b",
+      "range": {
+        "startLine": 280,
+        "startChar": 6,
+        "endLine": 280,
+        "endChar": 11
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72684b67_caab3b29",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -338,6 +668,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1016652_01f45a18",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "The protocol allows for more than 1 timestamp to be added back to back. For example: http://cs/chromeos_public/src/platform/ec/common/motion_sense.c?l\u003d1023 inserts just a timestamp. After which we might get a call to motion_sense_fifo_stage_data which would add another timestamp and data. I didn\u0027t want to have to keep track of how far into the future we looked.",
+      "parentUuid": "72684b67_caab3b29",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 12
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -388,6 +742,30 @@
     },
     {
       "key": {
+        "uuid": "3cd6d1fb_59036399",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "The pattern is (ts+, data). Added more comments.",
+      "parentUuid": "e18d5094_bc29ff2e",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 46
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9798643_e5584fcb",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -408,6 +786,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca007160_fc1adb11",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "We only need the mutex while we move the tail, this way the AP doesn\u0027t interrupt and read bad state of the fifo.",
+      "parentUuid": "c9798643_e5584fcb",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 11
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -434,6 +836,30 @@
     },
     {
       "key": {
+        "uuid": "8fc6712f_fd4b7be8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "582e4cc6_09773364",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 46
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3d7c314_a3761644",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -454,6 +880,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec49c03_e7708e0b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Mostly to avoid confusion and make sure that people that are familiar with the code base don\u0027t make bad assumptions. I didn\u0027t want someone that has already written code here to use add_data and assume things went well (since they wouldn\u0027t think to look for the commit_data call). With this change we get 2 things:\n1. It better reflects what we\u0027re doing. It\u0027s a bit like a repo. We stage data, commit it, then when the AP needs it we push it up stream.\n2. Users familiar with the code base that might have missed this CL and might use add_data will get a compile error and will be forced to read the new documentation on the stage variation.",
+      "parentUuid": "a3d7c314_a3761644",
+      "range": {
+        "startLine": 896,
+        "startChar": 4,
+        "endLine": 896,
+        "endChar": 32
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -480,6 +930,30 @@
     },
     {
       "key": {
+        "uuid": "0863cf6d_6eb4bfbe",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56273e15_c41fa03c",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 6
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65397293_6b12cd08",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -500,6 +974,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57bdac2_e1a28662",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65397293_6b12cd08",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -547,6 +1045,30 @@
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea5632d_566acddd",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T19:52:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98597235_263ac9b1",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 41
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
