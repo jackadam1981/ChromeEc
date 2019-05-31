@@ -5,9 +5,6 @@
  * Register map for STM32H7 family of processors
  */
 
-#define STM32_HAS_RTC
-#include "registers-common.h"
-
 /* IRQ numbers */
 #define STM32_IRQ_WWDG             0
 #define STM32_IRQ_PVD              1
