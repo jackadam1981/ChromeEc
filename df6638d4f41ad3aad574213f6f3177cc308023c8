@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b984ba72_0321df8c",
+        "filename": "common/peripheral.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T16:12:54Z",
+      "side": 1,
+      "message": "Thinking of the ITE case, we should ensure that i2c_slave_addr isn\u0027t 0 (since that is reserved on the i2c bus). If it is 0, then we should return EC_RES_UNAVAILABLE\n\n(This can be done in a follow up CL if this makes it through the CQ)",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "df6638d4f41ad3aad574213f6f3177cc308023c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
