@@ -454,6 +454,30 @@
       "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d192f66_0494277a",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T13:33:14Z",
+      "side": 1,
+      "message": "lgtm, Thanks Denis!",
+      "parentUuid": "4abc7164_d6e1edbf",
+      "range": {
+        "startLine": 256,
+        "startChar": 8,
+        "endLine": 256,
+        "endChar": 17
+      },
+      "revId": "f70d49d34196fbbddfb583badec6eedf7d0b20ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
