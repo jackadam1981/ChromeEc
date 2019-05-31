@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c78e05e9_e0b0f032",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "let\u0027s also add to comment, that this will be used as the upper bound for timestamp spreading since we know all of the staged measurements happened strictly before this timestamp",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2b673f3_f2367f6c",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -18,6 +41,52 @@
         "startChar": 1,
         "endLine": 114,
         "endChar": 8
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2307fe4_0f0a6110",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "seems like we should check if the AP needs the data before making room in the queue for the data.\n\n\nthe queue_space() \u003d\u003d 0 should be \u003c\u003d fifo_staged.count now (see Gwendal\u0027s comment too)",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e5c3b7_13d0c0a7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "we need comments to why it is okay to access this fifo without locking the mutex\n\n(e.g. motion sense task is the writer, and hostcommand is the reader)",
+      "range": {
+        "startLine": 163,
+        "startChar": 9,
+        "endLine": 163,
+        "endChar": 30
       },
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -111,6 +180,167 @@
     },
     {
       "key": {
+        "uuid": "6b452da1_43b1a52c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "can\u0027t we re-use queue_get_write_chunk(motion_sense_fifo, offset) and cast the queue_chunk.buffer pointer correctly?",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 37
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27908bc_e3812009",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "based on comments in earlier CLs, I think this can just be SENSOR_COUNT\n\nAlso say why static (if just trying to keep off the stack)",
+      "range": {
+        "startLine": 241,
+        "startChar": 30,
+        "endLine": 241,
+        "endChar": 60
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9f6ddb_9c2daeb0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "Nothing staged, no work to do\n\nWe can still call with without needing spreading right?",
+      "range": {
+        "startLine": 246,
+        "startChar": 15,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10130088_8b3a8533",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "Can we add \"If per-sensor\"",
+      "range": {
+        "startLine": 251,
+        "startChar": 4,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88dea344_8d6b4f87",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "can you add a comment for why? Also, we are still flushing right, we just aren\u0027t spreading?\n\nAlso how can this happen, is it a failure case? What if the next few samples are in the correct order?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 0
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e1683e_a6ed7b1b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "why would window be negative. This is a error right? Should we log it because something is not working correctly/.",
+      "range": {
+        "startLine": 280,
+        "startChar": 6,
+        "endLine": 280,
+        "endChar": 11
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72684b67_caab3b29",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "I would think we would stop of timestamps and peek into the future to see if the next sample is valid and pointed to a data value (that has a sensor number)",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 12
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "527601cc_7026fd2b",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -126,6 +356,76 @@
         "startLine": 296,
         "startChar": 0,
         "endLine": 296,
+        "endChar": 46
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18d5094_bc29ff2e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "+1,\n\nAre we always gunarteed now to have ts, data, ts, data instead of ts, data, data, data, ts, data?",
+      "parentUuid": "527601cc_7026fd2b",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 46
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9798643_e5584fcb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "why do we need the mutex here but not when we stage it?",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 11
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582e4cc6_09773364",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "add comment saying we are resetting all staged fifo information for the next stage flush cycle",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
         "endChar": 46
       },
       "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
@@ -157,6 +457,52 @@
     },
     {
       "key": {
+        "uuid": "56273e15_c41fa03c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "can we move this up into the post_events function instead?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 6
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65397293_6b12cd08",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "s/new actual//",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb17d1bf_b981187f",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -168,6 +514,30 @@
       "writtenOn": "2019-05-30T21:18:36Z",
       "side": 1,
       "message": "This needs to be documented",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 41
+      },
+      "revId": "6fe53e91e6f33a0b6c570849522549f335bb7296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98597235_263ac9b1",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:16:34Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "fb17d1bf_b981187f",
       "range": {
         "startLine": 250,
         "startChar": 0,
