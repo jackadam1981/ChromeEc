@@ -344,6 +344,7 @@ void chg_ramp_task(void *u)
 			lim = chg_ramp_get_current_limit();
 			board_set_charge_limit(active_port, active_sup, lim,
 					       lim, active_vtg);
+			values_have_changed_at_least_once = 0;
 		}
 
 		if (ramp_st == CHG_RAMP_STABILIZE)
