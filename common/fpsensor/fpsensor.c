@@ -99,6 +99,33 @@ static inline int is_test_capture(uint32_t mode)
  */
 static uint32_t enroll_session;
 
+/*
+ * Call to rand_finger_id() should be wrapped with init_trng() and exit_trng()
+ * because putting these two calls in the while loop here might cause the
+ * hardware trng to restart immediately after shutdown, thus wasting power.
+ */
+static int rand_finger_id(uint8_t *new_finger_id)
+{
+	int i;
+	int collision;
+	uint32_t timeout_ms = 1000;
+	clock_t t0 = clock();
+
+	CPRINTS("Generating random finger id ...");
+	do {
+		if (clock() - t0 > timeout_ms)
+			return EC_RES_ERROR;
+		collision = 0;
+		rand_bytes(new_finger_id, FP_FINGER_ID_BYTES);
+		for (i = 0; i < templ_valid; i++)
+			if (safe_memcmp(finger_id[i], new_finger_id,
+					FP_FINGER_ID_BYTES) == 0)
+				collision = 1;
+	} while (collision);
+
+	return EC_RES_SUCCESS;
+}
+
 static int hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size)
 {
 	int ret;
@@ -158,6 +185,50 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	return EC_RES_SUCCESS;
 }
 
+static int derive_pos_match_secret(uint8_t *output)
+{
+	int ret;
+	uint8_t new_pos_match_salt[FP_POS_MATCH_SALT_BYTES];
+	uint8_t new_finger_id[FP_FINGER_ID_BYTES];
+	uint8_t prk[SHA256_DIGEST_SIZE];
+
+	init_trng();
+	rand_bytes(new_pos_match_salt, FP_POS_MATCH_SALT_BYTES);
+	ret = rand_finger_id(new_finger_id);
+	exit_trng();
+
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Generating random finger id timed out.");
+		return EC_RES_ERROR;
+	}
+
+	/* "Extract" step of HKDF. */
+	ret = hkdf_extract(prk, new_pos_match_salt, FP_POS_MATCH_SALT_BYTES);
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Derive positive match secret: "
+			"failed to extract PRK: %d", ret);
+		return EC_RES_ERROR;
+	}
+
+	/*
+	 * Only 1 "expand" step of HKDF since the size of the output key
+	 * material (FP_POS_MATCH_SECRET_BYTES) is exactly SHA256_DIGEST_SIZE.
+	 * https://tools.ietf.org/html/rfc5869#section-2.3
+	 */
+	ret = hkdf_expand_one_step(output, FP_POS_MATCH_SECRET_BYTES,
+		prk, sizeof(prk), new_finger_id, sizeof(new_finger_id));
+
+	/* Write out only if derivation succeeds. */
+	if (ret == EC_RES_SUCCESS) {
+		memcpy(fp_pos_match_salt[templ_valid], new_pos_match_salt,
+			FP_POS_MATCH_SALT_BYTES);
+		memcpy(finger_id[templ_valid], new_finger_id,
+			FP_FINGER_ID_BYTES);
+	}
+
+	return ret;
+}
+
 static uint32_t fp_process_enroll(void)
 {
 	int percent = 0;
@@ -173,10 +244,17 @@ static uint32_t fp_process_enroll(void)
 	templ_dirty |= BIT(templ_valid);
 	if (percent == 100) {
 		res = fp_enrollment_finish(fp_template[templ_valid]);
-		if (res)
+		if (res) {
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
-		else
+		} else {
+			CPRINTS("Enrollment finished. "
+				"Deriving positive match secret ...");
+			derive_pos_match_secret(
+				fp_pos_match_secret[templ_valid]);
+			CPRINTS("Derived positive match secret for finger %d.",
+				templ_valid);
 			templ_valid++;
+		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
