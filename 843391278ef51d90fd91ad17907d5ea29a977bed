@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5b2caa6_97401ab9",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-05-31T00:58:28Z",
+      "side": 1,
+      "message": "How common is this table really? I see you did this for two platforms CML and ICL and we already have CONFIG checks for them. Additionally, what happens if you consider APL and KBL? I am worried that with more new platforms we would end up just adding a lot of CONFIGs here.\n\nI was just talking to Scott about this and we think it might be better to have this power_signal_list[] in each chipset rather than intel_x86.c. With that you don\u0027t have duplicated signals across all boards and you can still avoid lots of CONFIG checks.",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 40
+      },
+      "revId": "843391278ef51d90fd91ad17907d5ea29a977bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
