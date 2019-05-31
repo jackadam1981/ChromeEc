@@ -459,7 +459,7 @@ static void spi_send_response_packet(struct host_packet *pkt)
  * Handle an event on the NSS pin
  *
  * A falling edge of NSS indicates that the master is starting a new
- * transaction. A rising edge indicates that we have finsihed
+ * transaction. A rising edge indicates that we have finished.
  *
  * @param signal	GPIO signal for the NSS pin
  */
