@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd8d4d6c_5d61b14b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:36:29Z",
+      "side": 1,
+      "message": "if the shortest pulse needs to be even shorter:\n\nif (int_ap_width) {\n  GR_GPIO_MASKLOWBYTE(0, 1) \u003d 0;\n  for (volatile int i \u003d 0; i \u003c int_ap_width; i++);\n  GR_GPIO_MASKLOWBYTE(0, 1) \u003d 1;\n} else {\n  GR_GPIO_MASKLOWBYTE(0, 1) \u003d 0;\n  GR_GPIO_MASKLOWBYTE(0, 1) \u003d 1;\n}",
+      "revId": "2feb6315a7c36c335417e3263a71b30a6382d591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
