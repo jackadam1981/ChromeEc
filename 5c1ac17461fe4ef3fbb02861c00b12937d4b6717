@@ -52,6 +52,24 @@
       "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb488099_f3fa31f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T15:34:25Z",
+      "side": 1,
+      "message": "I am looking at the CL you provided and this code and I still cannot see the case where we need this call to shutdown on the RO/RW transition.\n\n\nThe way I see it, when we jump to RW all of the static variables will be 0 (so all sensor states are uninitialized and ap_interval is 0). Calling resume right after RW will initialize all of the sensors properly since they would be in the uninitialized state. What else is the shutdown call supposed to do (if we were to call if first)?",
+      "parentUuid": "71cf6ec7_2650d136",
+      "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
