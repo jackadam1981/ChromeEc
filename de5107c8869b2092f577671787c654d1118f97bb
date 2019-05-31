@@ -189,6 +189,30 @@
       "revId": "de5107c8869b2092f577671787c654d1118f97bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256bcbc9_07eacb46",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T00:36:33Z",
+      "side": 1,
+      "message": "But RW is protected by the virtue of the fact that it is never written to offset of zero, and the offset it was written to is always updated after the first block is written.\n\nI would rather not add unnecessary code both here and in line 274, this would be just a flash space waste, however small...\n\nLet me try documenting it, and if you still feel that this is not enough I can add extra initialization.",
+      "parentUuid": "6d6f18f7_a9f7924e",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
