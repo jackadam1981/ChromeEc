@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87eb7d2a_d45e72d0",
+        "filename": "common/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T16:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b23809a_20fcd60c",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975a68f6_930b6144",
         "filename": "common/queue.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7d4a16_20db17e7",
+        "filename": "common/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T16:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975a68f6_930b6144",
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "115bd53a_557a8871",
+        "filename": "include/queue.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T16:12:59Z",
+      "side": 1,
+      "message": "Updated the documentation. This is used in the next change.",
+      "parentUuid": "30bda83d_9963bc24",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 79
+      },
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "296ce9b2_cd2bd338",
         "filename": "test/queue.c",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fc5490_f2e8e54f",
+        "filename": "test/queue.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-05-31T16:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296ce9b2_cd2bd338",
+      "range": {
+        "startLine": 318,
+        "startChar": 45,
+        "endLine": 319,
+        "endChar": 52
+      },
+      "revId": "378b65d9868c1aa22630c73c741a6293facfcc01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
