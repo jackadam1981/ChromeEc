@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f5dab07_d48047b5",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-31T17:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5452a3fc_7577902c",
+      "range": {
+        "startLine": 16,
+        "startChar": 22,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "af28092293611e9e40387e879d2d676cdae1b791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80dac766_33b3e65b",
         "filename": "util/ec_flash.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2f848639_04e11fe0",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-31T17:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80dac766_33b3e65b",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "af28092293611e9e40387e879d2d676cdae1b791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a74f9f19_9164421b",
         "filename": "util/ec_flash.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "af28092293611e9e40387e879d2d676cdae1b791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e4a45b_9d293711",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-31T17:13:51Z",
+      "side": 1,
+      "message": "The error already gets printed in https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/comm-dev.c#160 so I removed the one here.",
+      "parentUuid": "a74f9f19_9164421b",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 65
+      },
+      "revId": "af28092293611e9e40387e879d2d676cdae1b791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
