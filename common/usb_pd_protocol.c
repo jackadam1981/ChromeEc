@@ -2812,8 +2812,10 @@ void pd_task(void *u)
 	 * still be valid.
 	 */
 	if (pd_comm_is_enabled(port) &&
-	    (pd_get_saved_port_flags(port, &saved_flgs) == EC_SUCCESS)) {
-		if (saved_flgs & PD_BBRMFLG_EXPLICIT_CONTRACT) {
+	    (pd_get_saved_port_flags(port, &saved_flgs) == EC_SUCCESS) &&
+	    (saved_flgs & PD_BBRMFLG_EXPLICIT_CONTRACT)) {
+		/* Only attempt to maintain previous sink contracts */
+		if ((saved_flgs & PD_BBRMFLG_POWER_ROLE) == PD_ROLE_SINK) {
 			pd_set_power_role(port,
 					  (saved_flgs & PD_BBRMFLG_POWER_ROLE) ?
 					  PD_ROLE_SOURCE : PD_ROLE_SINK);
@@ -2845,6 +2847,18 @@ void pd_task(void *u)
 			 * terminations, determine polarity, and enable RX so we
 			 * can hear back from our port partner.
 			 */
+			task_set_event(task_get_current(),
+				       PD_EVENT_TCPC_RESET,
+				       0);
+		} else {
+			/*
+			 * Vbus was turned off during the power supply reset
+			 * earlier, so clear the contract flag and re-start as
+			 * default role
+			 */
+			pd_update_saved_port_flags(port,
+					PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
+
 			task_set_event(task_get_current(),
 				       PD_EVENT_TCPC_RESET,
 				       0);
