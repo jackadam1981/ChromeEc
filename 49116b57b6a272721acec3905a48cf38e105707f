@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0af0dc26_d674eec3",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T16:06:13Z",
+      "side": 1,
+      "message": "we should probably do a cflush after this before the halt just so we know it will show up on the console",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "49116b57b6a272721acec3905a48cf38e105707f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5b6200_8fe856ed",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3971,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T16:06:13Z",
+      "side": 1,
+      "message": "dependent?",
+      "range": {
+        "startLine": 3971,
+        "startChar": 8,
+        "endLine": 3971,
+        "endChar": 19
+      },
+      "revId": "49116b57b6a272721acec3905a48cf38e105707f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
