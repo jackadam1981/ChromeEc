@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b802091_c9748750",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:33:24Z",
+      "side": 1,
+      "message": "? something looks missing here",
+      "range": {
+        "startLine": 194,
+        "startChar": 9,
+        "endLine": 194,
+        "endChar": 10
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3806a7_21c3cb63",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:33:24Z",
+      "side": 1,
+      "message": "This \u003d\u003d \"Case 2\", right?",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 8
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3607506a_85bcc6e0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:33:24Z",
+      "side": 1,
+      "message": "IS_TIMESTAMP here?",
+      "range": {
+        "startLine": 280,
+        "startChar": 5,
+        "endLine": 280,
+        "endChar": 52
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906249db_5658dde9",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:33:24Z",
+      "side": 1,
+      "message": "convenience",
+      "range": {
+        "startLine": 332,
+        "startChar": 30,
+        "endLine": 332,
+        "endChar": 41
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
