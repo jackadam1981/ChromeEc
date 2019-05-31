@@ -99,6 +99,102 @@ static inline int is_test_capture(uint32_t mode)
  */
 static uint32_t enroll_session;
 
+static void rand_finger_id(uint8_t *new_finger_id)
+{
+	int i;
+	int collision;
+
+	CPRINTS("Generating random finger id ...");
+	do {
+		collision = 0;
+		rand_bytes(new_finger_id, FP_FINGER_ID_BYTES);
+		for (i = 0; i < templ_valid; i++) {
+			if (safe_memcmp(finger_id[i], new_finger_id,
+					FP_FINGER_ID_BYTES) == 0) {
+				collision = 1;
+			}
+		}
+	} while (collision);
+}
+
+static int hkdf_extract(uint8_t *prk, uint8_t *salt, size_t salt_size)
+{
+	int ret;
+	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
+
+	if (!fp_tpm_seed_is_set()) {
+		CPRINTS("Seed hasn't been set.");
+		return EC_RES_ERROR;
+	}
+
+	/*
+	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
+	 * anti-rollback blocks.
+	 */
+	ret = rollback_get_secret(ikm);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to read rollback secret: %d", ret);
+		return EC_RES_ERROR;
+	}
+	/*
+	 * IKM is the concatenation of the rollback secret and the seed from
+	 * the TPM.
+	 */
+	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
+
+	/*
+	 * Derive a key with the "extract" step of HKDF
+	 * https://tools.ietf.org/html/rfc5869#section-2.2
+	 */
+	hmac_SHA256(prk, salt, salt_size, ikm, sizeof(ikm));
+	memset(ikm, 0, sizeof(ikm));
+
+	return EC_RES_SUCCESS;
+}
+
+static int derive_pos_match_secret(uint8_t *output)
+{
+	int ret;
+	uint8_t new_pos_match_salt[FP_POS_MATCH_SALT_BYTES];
+	uint8_t new_finger_id[FP_FINGER_ID_BYTES];
+	uint8_t prk[SHA256_DIGEST_SIZE];
+	uint8_t message[sizeof(new_finger_id) + 1];
+	uint8_t key_buf[FP_POS_MATCH_SECRET_BYTES];
+
+	init_trng();
+	rand_bytes(new_pos_match_salt, FP_POS_MATCH_SALT_BYTES);
+	rand_finger_id(new_finger_id);
+	exit_trng();
+
+	/* "Extract" step of HKDP. */
+	ret = hkdf_extract(prk, new_pos_match_salt, FP_POS_MATCH_SALT_BYTES);
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Derive positive match secret: "
+			"failed to extract PRK: %d", ret);
+		return EC_RES_ERROR;
+	}
+
+	/*
+	 * Only 1 "expand" step of HKDF since the size of the output key
+	 * material (FP_POS_MATCH_SECRET_BYTES) is exactly SHA256_DIGEST_SIZE.
+	 * https://tools.ietf.org/html/rfc5869#section-2.3
+	 */
+	memcpy(message, new_finger_id, sizeof(new_finger_id));
+	/* 1 step, set the counter byte to 1. */
+	message[sizeof(message) - 1] = 0x01;
+	hmac_SHA256(key_buf, prk, sizeof(prk), message, sizeof(message));
+	memset(prk, 0, sizeof(prk));
+	memcpy(output, key_buf, FP_POS_MATCH_SECRET_BYTES);
+	memset(key_buf, 0, sizeof(key_buf));
+
+	/* Write out only if derivation succeeds. */
+	memcpy(fp_pos_match_salt[templ_valid], new_pos_match_salt,
+		FP_POS_MATCH_SALT_BYTES);
+	memcpy(finger_id[templ_valid], new_finger_id, FP_FINGER_ID_BYTES);
+
+	return EC_RES_SUCCESS;
+}
+
 static uint32_t fp_process_enroll(void)
 {
 	int percent = 0;
@@ -114,10 +210,17 @@ static uint32_t fp_process_enroll(void)
 	templ_dirty |= BIT(templ_valid);
 	if (percent == 100) {
 		res = fp_enrollment_finish(fp_template[templ_valid]);
-		if (res)
+		if (res) {
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
-		else
+		} else {
+			CPRINTS("Enrollment finished. "
+				"Deriving positive match secret ...");
+			derive_pos_match_secret(
+				fp_pos_match_secret[templ_valid]);
+			CPRINTS("Derived positive match secret for finger %d.",
+				templ_valid);
 			templ_valid++;
+		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
@@ -301,38 +404,17 @@ static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 	uint8_t key_buf[SHA256_DIGEST_SIZE];
 	uint8_t prk[SHA256_DIGEST_SIZE];
 	uint8_t message[sizeof(user_id) + 1];
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
 
 	BUILD_ASSERT(SBP_ENC_KEY_LEN <= SHA256_DIGEST_SIZE);
 	BUILD_ASSERT(SBP_ENC_KEY_LEN <= CONFIG_ROLLBACK_SECRET_SIZE);
 	BUILD_ASSERT(sizeof(user_id) == SHA256_DIGEST_SIZE);
 
-	if (!fp_tpm_seed_is_set()) {
-		CPRINTS("Seed hasn't been set.");
+	/* "Extract step of HKDF. */
+	ret = hkdf_extract(prk, salt, FP_CONTEXT_SALT_BYTES);
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Failed to extract PRK: %d", ret);
 		return EC_RES_ERROR;
 	}
-
-	/*
-	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
-	 * anti-rollback blocks.
-	 */
-	ret = rollback_get_secret(ikm);
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to read rollback secret: %d", ret);
-		return EC_RES_ERROR;
-	}
-	/*
-	 * IKM is the concatenation of the rollback secret and the seed from
-	 * the TPM.
-	 */
-	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
-
-	/*
-	 * Derive a key with the "extract" step of HKDF
-	 * https://tools.ietf.org/html/rfc5869#section-2.2
-	 */
-	hmac_SHA256(prk, salt, FP_CONTEXT_SALT_BYTES, ikm, sizeof(ikm));
-	memset(ikm, 0, sizeof(ikm));
 
 	/*
 	 * Only 1 "expand" step of HKDF since the size of the "info" context
