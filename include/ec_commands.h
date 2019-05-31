@@ -3989,6 +3989,7 @@ struct ec_response_power_info {
 
 /* Read data; if not present, message is a write */
 #define EC_I2C_FLAG_READ	BIT(15)
+#define EC_I2C_FLAG_8BIT_ADDR	BIT(14)
 
 /* Mask for address */
 #define EC_I2C_ADDR_MASK	0x3ff
@@ -5388,6 +5389,7 @@ enum ec_chip_type {
 
 enum ec_bus_type {
 	EC_BUS_TYPE_I2C = 0,
+	EC_BUS_TYPE_EMBEDDED = 1,
 	EC_BUS_TYPE_COUNT,
 	EC_BUS_TYPE_MAX = 0xFF,
 };
