@@ -70,6 +70,69 @@
       "revId": "25732755ab27e7db891d51583e219cbbe033850f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be4a24ef_347f1c0a",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:31:26Z",
+      "side": 1,
+      "message": "a lot of copy and paste it looks like, I wonder if this could be consolidated?",
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99bb03ad_5a500a30",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:31:26Z",
+      "side": 1,
+      "message": "should you be checking only the last descriptor?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 0
+      },
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70f4808d_a663fa0f",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:31:26Z",
+      "side": 1,
+      "message": "why are you setting address to NULL?\n\nalso, do you need to set up the second descriptor, if the first one is marked as the end of chain?",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 27
+      },
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
