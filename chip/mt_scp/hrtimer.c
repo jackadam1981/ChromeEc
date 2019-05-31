@@ -27,8 +27,10 @@
 #define TIMER_SYSTEM 5
 #define TIMER_EVENT 3
 
+#define TIMER_CLOCK_MHZ 200
+
 /* Common timer overflows at 0x100000000 micro seconds */
-#define OVERFLOW_TICKS (26 * 0x100000000 - 1)
+#define OVERFLOW_TICKS (TIMER_CLOCK_MHZ * 0x100000000 - 1)
 
 static uint8_t sys_high;
 static uint8_t event_high;
@@ -44,7 +46,7 @@ static inline uint64_t timer_read_raw_system(void)
 	 * sys_high value.
 	 */
 	if (timer_ctrl & TIMER_IRQ_STATUS)
-		sys_high_adj = sys_high ? (sys_high - 1) : 25;
+		sys_high_adj = sys_high ? (sys_high - 1) : (TIMER_CLOCK_MHZ-1);
 
 	return OVERFLOW_TICKS - (((uint64_t)sys_high_adj << 32) |
 				 SCP_TIMER_VAL(TIMER_SYSTEM));
@@ -114,7 +116,7 @@ void __hw_clock_event_clear(void)
 
 void __hw_clock_event_set(uint32_t deadline)
 {
-	uint64_t deadline_raw = (uint64_t)deadline * 26;
+	uint64_t deadline_raw = (uint64_t)deadline * TIMER_CLOCK_MHZ;
 	uint64_t now_raw = timer_read_raw_system();
 	uint32_t event_deadline;
 
@@ -173,30 +175,37 @@ int __hw_clock_source_init(uint32_t start_t)
 	SCP_OSTIMER_CON |= 1;
 
 	/* System timestamp timer */
-	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_26M);
-	sys_high = 25;
+	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_PCLK);
+	sys_high = TIMER_CLOCK_MHZ-1;
 	timer_set_reset_value(TIMER_SYSTEM, 0xffffffff);
 	__hw_timer_enable_clock(TIMER_SYSTEM, 1);
 	task_enable_irq(IRQ_TIMER(TIMER_SYSTEM));
 	/* Event tick timer */
-	timer_set_clock(TIMER_EVENT, TIMER_CLK_26M);
+	timer_set_clock(TIMER_EVENT, TIMER_CLK_PCLK);
 	task_enable_irq(IRQ_TIMER(TIMER_EVENT));
+
+	/* Event tick timer */
+	timer_set_clock(4, TIMER_CLK_PCLK);
+	timer_set_reset_value(4, 200*1000*1000);
+	__hw_timer_enable_clock(4, 1);
+	task_enable_irq(IRQ_TIMER(4));
 
 	return IRQ_TIMER(TIMER_SYSTEM);
 }
 
 uint32_t __hw_clock_source_read(void)
 {
-	return timer_read_raw_system() / 26;
+	return timer_read_raw_system() / TIMER_CLOCK_MHZ;
 }
 
 uint32_t __hw_clock_event_get(void)
 {
-	return (timer_read_raw_event() + timer_read_raw_system()) / 26;
+	return (timer_read_raw_event() + timer_read_raw_system()) / TIMER_CLOCK_MHZ;
 }
 
 static void __hw_clock_source_irq(int n)
 {
+	static int scnt;
 	uint32_t timer_ctrl = SCP_TIMER_IRQ_CTRL(n);
 
 	/* Ack if we're hardware interrupt */
@@ -219,7 +228,7 @@ static void __hw_clock_source_irq(int n)
 				process_timers(0);
 			} else {
 				/* Overflow, reload system timer */
-				sys_high = 25;
+				sys_high = TIMER_CLOCK_MHZ-1;
 				process_timers(1);
 			}
 		} else {
@@ -227,6 +236,9 @@ static void __hw_clock_source_irq(int n)
 		}
 		break;
 	default:
+		scnt++;
+		timer_set_reset_value(4, 1*32000);
+		ccprints("T4 Tick %d!", scnt);
 		return;
 	}
 
@@ -234,7 +246,7 @@ static void __hw_clock_source_irq(int n)
 
 #define DECLARE_TIMER_IRQ(n) \
 	void __hw_clock_source_irq_##n(void) { __hw_clock_source_irq(n); } \
-	DECLARE_IRQ(IRQ_TIMER(n), __hw_clock_source_irq_##n, 2)
+	DECLARE_IRQ(IRQ_TIMER(n), __hw_clock_source_irq_##n, 0)
 
 DECLARE_TIMER_IRQ(0);
 DECLARE_TIMER_IRQ(1);

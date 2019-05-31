@@ -6,6 +6,7 @@
 /* Watchdog driver */
 
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "panic.h"
 #include "registers.h"
@@ -13,21 +14,22 @@
 
 void watchdog_reload(void)
 {
-	SCP_WDT_RELOAD = SCP_WDT_RELOAD_VALUE;
+//	SCP_WDT_RELOAD = SCP_WDT_RELOAD_VALUE;
+	ccprintf("t");
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
 int watchdog_init(void)
 {
-	const uint32_t watchdog_timeout =
-		SCP_WDT_PERIOD(CONFIG_WATCHDOG_PERIOD_MS);
+//	const uint32_t watchdog_timeout =
+//		SCP_WDT_PERIOD(CONFIG_WATCHDOG_PERIOD_MS);
 
 	/* Disable watchdog */
 	SCP_WDT_CFG = 0;
 	/* Enable watchdog */
-	SCP_WDT_CFG = SCP_WDT_ENABLE | watchdog_timeout;
+//	SCP_WDT_CFG = SCP_WDT_ENABLE | watchdog_timeout;
 	/* Reload watchdog */
-	watchdog_reload();
+//	watchdog_reload();
 
 	return EC_SUCCESS;
 }

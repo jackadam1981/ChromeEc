@@ -56,7 +56,9 @@ void uart_tx_stop(void)
 
 void uart_tx_flush(void)
 {
-	while (!(UART_LSR(UARTN) & UART_LSR_TEMT))
+	int timeout = 10000;
+
+	while (!(UART_LSR(UARTN) & UART_LSR_TEMT) && timeout--)
 		;
 }
 
@@ -74,7 +76,9 @@ int uart_rx_available(void)
 
 void uart_write_char(char c)
 {
-	while (!uart_tx_ready())
+	int timeout = 10000;
+
+	while (!uart_tx_ready() && timeout--)
 		;
 
 	UART_DATA(UARTN) = c;
