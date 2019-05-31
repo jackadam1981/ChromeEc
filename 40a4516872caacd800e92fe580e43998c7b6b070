@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8557610a_80e89b0a",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T02:36:16Z",
+      "side": 1,
+      "message": "In my experience, I sometimes wanted to compare the result among several trials, and it was hard to figure out them in the time sequence.\n\nActually, this style is inspired from autotest output:\n\"Logging the data into test_report.html file.\n18:58:24 INFO | Finished running tests. Results can be found in /tmp/test_that_results_octopus_pTl3qo or /tmp/test_that_latest\"",
+      "parentUuid": "0ca99e88_486b4918",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e861681_6cc00d29",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da701e03_571fda47",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T02:36:16Z",
+      "side": 1,
+      "message": "In patch 14, TOTAL_CH_EXPC didn\u0027t have chance to add \"$CH_EXPC\" to itself in case there was no loss, because the function returned by line 147 (in patch 14), and it made the avarage loss rate incorrect.\nI moved up TOTAL_CH_LOST together above for the readability. Even ${CH_LOST} is negative, it shouldn\u0027t matter because it dies anyway without displaying $TOTAL_CH_LOST.",
+      "parentUuid": "2e861681_6cc00d29",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "8f1d2472_cda45123",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T02:36:16Z",
+      "side": 1,
+      "message": "Without sleep, I used to observe the first few bytes missing, like sample out started with \"lp\" not \"help\".",
+      "parentUuid": "0652dc3c_725060ac",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 8
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ba07013_6e8c682d",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 19
@@ -105,6 +177,30 @@
       "writtenOn": "2019-05-31T02:06:52Z",
       "side": 1,
       "message": "as discussed, this is not related to review, you should hold it for the next update.\n\nAlso, I think \u0027s\u0027 is a perfect abbreviation for second (https://www.ewh.ieee.org/soc/ias/pub-dept/abbreviation.pdf)",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 72
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf934bd_3cd18be9",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T02:36:16Z",
+      "side": 1,
+      "message": "s/sec/s",
+      "parentUuid": "8ba07013_6e8c682d",
       "range": {
         "startLine": 337,
         "startChar": 0,
