@@ -326,8 +326,10 @@ struct tcpm_drv {
 #define TCPC_FLAGS_RESET_ACTIVE_HIGH	BIT(2)
 
 struct tcpc_config_t {
-	int i2c_host_port;
-	int i2c_slave_addr;
+	uint8_t bus_type;	/* enum ec_bus_type */
+	union {
+		struct ec_i2c_info i2c_info;
+	};
 	const struct tcpm_drv *drv;
 	/* See TCPC_FLAGS_* above */
 	uint32_t flags;

@@ -27,8 +27,8 @@
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 static inline int tcpc_write(int port, int reg, int val)
 {
-	return i2c_write8(tcpc_config[port].i2c_host_port,
-			  tcpc_config[port].i2c_slave_addr, reg, val);
+	return i2c_write8(tcpc_config[port].i2c_info.port,
+			  tcpc_config[port].i2c_info.addr, reg, val);
 }
 
 static inline int tcpc_write16(int port, int reg, int val)
