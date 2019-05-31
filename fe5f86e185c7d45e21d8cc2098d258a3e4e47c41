@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d008a5f1_4af5bb61",
+        "filename": "driver/led/oz554.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T16:14:54Z",
+      "side": 1,
+      "message": "__overridable (or just say default without the __)",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "fe5f86e185c7d45e21d8cc2098d258a3e4e47c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
