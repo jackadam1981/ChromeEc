@@ -276,6 +276,15 @@ static int nx20p348x_init(int port)
 	 */
 	nx20p348x_set_ovp_limit(port);
 
+	/* Find initial value for the source enabled flag */
+	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &reg);
+	if (rv)
+		return rv;
+
+	if ((reg & NX20P348X_SWITCH_STATUS_MASK) ==
+						NX20P348X_SWITCH_CONTROL_5VSRC)
+		flags[port] |= NX20P348X_FLAGS_SOURCE_ENABLED;
+
 	return EC_SUCCESS;
 }
 
