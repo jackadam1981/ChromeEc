@@ -141,6 +141,30 @@
       "revId": "de5107c8869b2092f577671787c654d1118f97bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3f4865b_8e7fcaf3",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T00:20:23Z",
+      "side": 1,
+      "message": "the whole premise of this patch is to support the case where we write the RW first even if its address is below RO, this is what is now enforced by gsctool.\n\nbefore gsctool change the image was written in the order of addresses, no special treatment was required (apart from updating RO_A, see below).\n\nThe case where only RW is updated will always work, because the check in line 290 will allow the first frame in no matter what its offset is, and then the proper offset would be set in line 320.\n\nThe same applies to the case where we write just the RO, no matter what RO it is, the first block will be allowed in after BACKOFF_TIME (unless it is at offset zero before this patch, see below :).\n\nTwo cases which need special treatment are:\n\n- the RO is below RW. Before this patch we\u0027d reject it because it is considered an attempt to write into the same space which could be a flash destruction attack.\n\n- RO_A is being updated, its base offset is zero, it is rejected because it is considered already written by the check in line 309 (this has been a problem all along).\n\nthis patch makes sure that the RO offset is compared to the value which allows even the offset of zero to pass, even in case if just RO_A is updated; and allows the RO which is below the RW still be written in the same update session because RO and RW are compared to different previous offsets.\n\nDoes this address your concerns?",
+      "parentUuid": "e2b8c571_e2e86cca",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "de5107c8869b2092f577671787c654d1118f97bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
