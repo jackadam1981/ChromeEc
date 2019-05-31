@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "6b3b7b7e_3f6052d0",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T17:42:11Z",
+      "side": 1,
+      "message": "Let me think whether usb_console.c can be converted to use \u0027struct usb_stream_config\", but it could be handled in another CL in future.",
+      "parentUuid": "be4a24ef_347f1c0a",
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99bb03ad_5a500a30",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 15
@@ -113,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "48ac32f0_b783b5b8",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T17:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99bb03ad_5a500a30",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 0
+      },
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70f4808d_a663fa0f",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 15
@@ -133,6 +175,30 @@
       "revId": "25732755ab27e7db891d51583e219cbbe033850f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11dbe5a8_d9e4aa1d",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-05-31T17:42:11Z",
+      "side": 1,
+      "message": "Line 287 and line 288 can be removed because they will be rset at each transfer transaction.\nBut I prefer to keep them, because the codes might look awful without them.\nI am concerned that code readers might regard it as a defect:\n\n\"ep_in_desc[0].flags \u003d DIEPDMA_LAST | DIEPDMA_BS_HOST_BSY | DIEPDMA_IOC;\n ep_in_desc[1].addr \u003d (void *)tx_q.buffer;\"\n\nep_in_desc[1].addr will be set in ep_reset() only, and won\u0027t be changed.",
+      "parentUuid": "70f4808d_a663fa0f",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 27
+      },
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
