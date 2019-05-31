@@ -22,6 +22,30 @@
       "revId": "f5b8b44cc8c81869704efb1e339a6425273a015a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "913d6069_477dd689",
+        "filename": "include/common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-05-31T13:29:03Z",
+      "side": 1,
+      "message": "I agree on where it belongs but do not feel comfortable updating Daisuke\u0027s CL.  He is aware of the changes that are needed, which should be the same or very close to what I have. Once he updates his CL, I will rebase mine onto his.  Since he has the -2 vote on my CL, I am at his mercy anyways on getting this pushed through.  If this is not the Google way, please let me know.",
+      "parentUuid": "27ffa96b_fe1d9a70",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 43
+      },
+      "revId": "f5b8b44cc8c81869704efb1e339a6425273a015a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
