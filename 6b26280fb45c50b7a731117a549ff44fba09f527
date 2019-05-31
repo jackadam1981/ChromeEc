@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87ac3f98_a082b70f",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:28:08Z",
+      "side": 1,
+      "message": "I assume \"x\" means \"written-to\" and \"-\" \"available\"?",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c771cc_a0f840c6",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:28:08Z",
+      "side": 1,
+      "message": "indices",
+      "range": {
+        "startLine": 140,
+        "startChar": 51,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228ee2e4_83d4cefa",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:28:08Z",
+      "side": 1,
+      "message": "Why? Does it loop around?",
+      "range": {
+        "startLine": 141,
+        "startChar": 29,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b577ba0_c205c791",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-05-31T21:28:08Z",
+      "side": 1,
+      "message": "It sounds like what one wants here is to find a contiguous chunk of queue space so that a copy of multiple elements can be optimized by a memcpy, right?\n\nIf so, is there any reason to pass an \"offset\" and why not instead just say queue_get_contiguous_writable_chunk(queue*, size_t count) which would return - if available - a contiguous chunk of at least \"count\" elements, regardless of offset?\n\nIt feels like a more natural design to me, but maybe I am missing something?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 79
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
