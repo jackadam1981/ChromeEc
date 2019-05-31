@@ -46,6 +46,30 @@
       "revId": "df6638d4f41ad3aad574213f6f3177cc308023c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47182d18_2d47f36e",
+        "filename": "common/peripheral.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-05-31T22:15:34Z",
+      "side": 1,
+      "message": "address of 0 is reserved on the i2c bus for general call and it not valid for a specific device (it is also the value we get if no one sets it). I think it is a good signal that the i2c address is invalid and not available. It is 0 in the ITE tpcp_config_t case [0]\n\n\n[0] https://chromium.googlesource.com/chromiumos/platform/ec/+/06b2bd507f7b64267d4e73885c354c917a9dfa5b/baseboard/octopus/variant_usbc_ec_tcpcs.c",
+      "parentUuid": "7df04ed5_d577e112",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "df6638d4f41ad3aad574213f6f3177cc308023c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
