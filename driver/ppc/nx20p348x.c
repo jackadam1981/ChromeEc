@@ -27,8 +27,9 @@ static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 #define NX20P348X_DB_EXIT_FAIL_THRESHOLD 10
 static int db_exit_fail_count[CONFIG_USB_PD_PORT_COUNT];
 
-#define NX20P348X_FLAGS_SOURCE_ENABLED BIT(0)
-static uint8_t flags[CONFIG_USB_PD_PORT_COUNT];
+static int8_t source_flag[CONFIG_USB_PD_PORT_COUNT] = {
+				[0 ... CONFIG_USB_PD_PORT_COUNT-1] = -1
+				};
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -68,7 +69,19 @@ static int nx20p348x_set_ovp_limit(int port)
 
 static int nx20p348x_is_sourcing_vbus(int port)
 {
-	return flags[port] & NX20P348X_FLAGS_SOURCE_ENABLED;
+	int reg;
+
+	/* Check switches for vbus level if the flag is uninitialized */
+	if (source_flag[port] < 0) {
+		read_reg(port, NX20P348X_SWITCH_STATUS_REG, &reg);
+		if ((reg & NX20P348X_SWITCH_STATUS_MASK) ==
+						NX20P348X_SWITCH_CONTROL_5VSRC)
+			source_flag[port] = 1;
+		else
+			source_flag[port] = 0;
+	}
+
+	return source_flag[port];
 }
 
 static int nx20p348x_set_vbus_source_current_limit(int port,
@@ -168,7 +181,7 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 {
 	int status;
 	int rv;
-	uint8_t previous_flags = flags[port];
+	int8_t previous_flag = source_flag[port];
 	int control = enable ? NX20P348X_SWITCH_CONTROL_5VSRC : 0;
 
 	enable = !!enable;
@@ -188,10 +201,7 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 		return rv;
 
 	/* Cache the anticipated Vbus state */
-	if (enable)
-		flags[port] |= NX20P348X_FLAGS_SOURCE_ENABLED;
-	else
-		flags[port] &= ~NX20P348X_FLAGS_SOURCE_ENABLED;
+	source_flag[port] = enable;
 
 	/*
 	 * Read switch status register. The bit definitions for switch control
@@ -202,12 +212,12 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
 	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
 	if (rv) {
-		flags[port] = previous_flags;
+		source_flag[port] = previous_flag;
 		return rv;
 	}
 
 	if ((status & NX20P348X_SWITCH_STATUS_MASK) != control) {
-		flags[port] = previous_flags;
+		source_flag[port] = previous_flag;
 		return EC_ERROR_UNKNOWN;
 	}
 
