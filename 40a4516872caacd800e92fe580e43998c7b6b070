@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0ca99e88_486b4918",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:06:52Z",
+      "side": 1,
+      "message": "isn\u0027t LINK_LATEST pointing at DIR_TMP? Why do you need to specify both?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e861681_6cc00d29",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:06:52Z",
+      "side": 1,
+      "message": "why did this have to change compared to the previously reviewed version (patchset 14)?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 62
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70af9b36_a19dad3c",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 19
@@ -22,6 +68,52 @@
       "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0652dc3c_725060ac",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:06:52Z",
+      "side": 1,
+      "message": "is this really needed? why a change compared to the previously reviewed version?",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 8
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba07013_6e8c682d",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-05-31T02:06:52Z",
+      "side": 1,
+      "message": "as discussed, this is not related to review, you should hold it for the next update.\n\nAlso, I think \u0027s\u0027 is a perfect abbreviation for second (https://www.ewh.ieee.org/soc/ias/pub-dept/abbreviation.pdf)",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 72
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
