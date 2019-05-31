@@ -70,6 +70,30 @@
       "revId": "89c1426fe857b1dbc084536d9a8d1ff2b5aee9e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51fa000e_951a9152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-05-31T23:37:07Z",
+      "side": 1,
+      "message": "It also includes a change for the test directory. And I didn\u0027t check all 469 files in the chip directory.",
+      "parentUuid": "742885c8_f6f83cef",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "89c1426fe857b1dbc084536d9a8d1ff2b5aee9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
