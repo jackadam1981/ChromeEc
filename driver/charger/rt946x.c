@@ -859,7 +859,7 @@ static void rt946x_init(void)
 	}
 	CPRINTF("RT946X init succeeded\n");
 }
-DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_DEFAULT);
 
 #ifdef HAS_TASK_USB_CHG
 static int rt946x_get_bc12_device_type(void)
