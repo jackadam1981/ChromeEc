@@ -59,6 +59,8 @@
 #include "config-stm32f03x.h"
 #elif defined(CHIP_VARIANT_STM32H7X3)
 #include "config-stm32h7x3.h"
+#elif defined(CHIP_VARIANT_STM32H7A3_B3)
+#include "config-stm32h7a3-b3.h"
 #else
 #error "Unsupported chip variant"
 #endif
