@@ -1,0 +1,4 @@
+#!/bin/bash
+
+set -x
+~/src/openocd/src/openocd -s ~/src/openocd/tcl -f nami_fpv2.cfg

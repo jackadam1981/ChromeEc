@@ -659,11 +659,63 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_SPI_SR_TXC                       BIT(12)
 
 /* --- Debug --- */
+
+#define STM32_DBGMCU_IDCODE         REG32(STM32_DBGMCU_BASE + 0x00)
+#define  STM32_DBGMCU_IDCODE_MASK_DEV   (BIT(12)-1)       /* 0:11  */
+#define  STM32_DBGMCU_IDCODE_MASK_REV   ((BIT(16)-1)<<16) /* 16:31 */
+#define STM32_DBGMCU_CR             REG32(STM32_DBGMCU_BASE + 0x04)
+#define  STM32_DBGMCU_CR_DBGSLEEP_CD    BIT(0)  /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_DBGSTOP_CD     BIT(1)  /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_DBGSTBY_CD     BIT(2)  /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_DBGSTOP_SRD    BIT(7)  /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_DBGSTBY_SRD    BIT(8)  /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_TRACECLKEN     BIT(20)
+#define  STM32_DBGMCU_CR_CDDBGCKEN      BIT(21) /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_SRDDBGCKEN     BIT(22) /* Set to 1 for debugging */
+#define  STM32_DBGMCU_CR_TRGOEN         BIT(28)
+#define  STM32_DBGMCU_CR_MASK_EZDEBUG   ( STM32_DBGMCU_CR_DBGSLEEP_CD \
+                                        | STM32_DBGMCU_CR_DBGSTOP_CD  \
+                                        | STM32_DBGMCU_CR_DBGSTBY_CD  \
+                                        | STM32_DBGMCU_CR_DBGSTOP_SRD \
+                                        | STM32_DBGMCU_CR_DBGSTBY_SRD \
+                                        | STM32_DBGMCU_CR_CDDBGCKEN   \
+                                        | STM32_DBGMCU_CR_SRDDBGCKEN  )
 #define STM32_DBGMCU_APB3FZ         REG32(STM32_DBGMCU_BASE + 0x34)
+#define  STM32_DBGMCU_APB3FZ_WWDG       BIT(6) /* Set to 1 for debugging */
 #define STM32_DBGMCU_APB1LFZ        REG32(STM32_DBGMCU_BASE + 0x3C)
-#define STM32_DBGMCU_APB1HFZ        REG32(STM32_DBGMCU_BASE + 0x44)
+#define  STM32_DBGMCU_APB1LFZ_TIM2      BIT(0)
+#define  STM32_DBGMCU_APB1LFZ_TIM3      BIT(1)
+#define  STM32_DBGMCU_APB1LFZ_TIM4      BIT(2)
+#define  STM32_DBGMCU_APB1LFZ_TIM5      BIT(3)
+#define  STM32_DBGMCU_APB1LFZ_TIM6      BIT(4)
+#define  STM32_DBGMCU_APB1LFZ_TIM7      BIT(5)
+#define  STM32_DBGMCU_APB1LFZ_TIM12     BIT(6)
+#define  STM32_DBGMCU_APB1LFZ_TIM13     BIT(7)
+#define  STM32_DBGMCU_APB1LFZ_TIM14     BIT(8)
+#define  STM32_DBGMCU_APB1LFZ_LPTIM1    BIT(9)
+#define  STM32_DBGMCU_APB1LFZ_I2C1      BIT(21)
+#define  STM32_DBGMCU_APB1LFZ_I2C2      BIT(22)
+#define  STM32_DBGMCU_APB1LFZ_I2C3      BIT(23)
 #define STM32_DBGMCU_APB2FZ         REG32(STM32_DBGMCU_BASE + 0x4C)
+#define  STM32_DBGMCU_APB2FZ_TIM1       BIT(0)
+#define  STM32_DBGMCU_APB2FZ_TIM8       BIT(1)
+#define  STM32_DBGMCU_APB2FZ_TIM15      BIT(16)
+#define  STM32_DBGMCU_APB2FZ_TIM16      BIT(17)
+#define  STM32_DBGMCU_APB2FZ_TIM17      BIT(18)
+#ifndef CHIP_VARIANT_STM32H7A
+#define  STM32_DBGMCU_APB2FZ_HRTIM      BIT(29)
+#endif
 #define STM32_DBGMCU_APB4FZ         REG32(STM32_DBGMCU_BASE + 0x54)
+#define  STM32_DBGMCU_APB4FZ_I2C4       BIT(7)
+#define  STM32_DBGMCU_APB4FZ_LPTIM2     BIT(9)
+#define  STM32_DBGMCU_APB4FZ_LPTIM3     BIT(10)
+#ifndef CHIP_VARIANT_STM32H7A
+#define  STM32_DBGMCU_APB4FZ_LPTIM4     BIT(11)
+#define  STM32_DBGMCU_APB4FZ_LPTIM5     BIT(12)
+#endif
+#define  STM32_DBGMCU_APB4FZ_RTC        BIT(16)
+#define  STM32_DBGMCU_APB4FZ_WDGLSCD    BIT(18) /* Set to 1 for debugging */
+
 /* Alias */
 #define STM32_DBGMCU_APB1FZ         STM32_DBGMCU_APB1LFZ
 
@@ -671,83 +723,142 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_FLASH_REG(bank, offset)     REG32(((bank) ? 0x100 : 0) + \
 					  STM32_FLASH_REGS_BASE + (offset))
 
-#define STM32_FLASH_ACR(bank)             STM32_FLASH_REG(bank, 0x00)
-#define STM32_FLASH_ACR_LATENCY_SHIFT (0)
-#define STM32_FLASH_ACR_LATENCY_MASK  (7 << STM32_FLASH_ACR_LATENCY_SHIFT)
-#define STM32_FLASH_ACR_WRHIGHFREQ_85MHZ  (0 << 4)
-#define STM32_FLASH_ACR_WRHIGHFREQ_185MHZ (1 << 4)
-#define STM32_FLASH_ACR_WRHIGHFREQ_285MHZ (2 << 4)
-#define STM32_FLASH_ACR_WRHIGHFREQ_385MHZ (3 << 4)
+#define STM32_FLASH_ACR(bank)            STM32_FLASH_REG(bank, 0x00)
+#define  STM32_FLASH_ACR_LATENCY_SHIFT       (0)
+#define  STM32_FLASH_ACR_LATENCY_MASK        (7<<STM32_FLASH_ACR_LATENCY_SHIFT)
+#define  STM32_FLASH_ACR_WRHIGHFREQ_85MHZ    (0 << 4)
+#define  STM32_FLASH_ACR_WRHIGHFREQ_185MHZ   (1 << 4)
+#define  STM32_FLASH_ACR_WRHIGHFREQ_285MHZ   (2 << 4)
+#define  STM32_FLASH_ACR_WRHIGHFREQ_385MHZ   (3 << 4)
 
-#define STM32_FLASH_KEYR(bank)            STM32_FLASH_REG(bank, 0x04)
-#define  FLASH_KEYR_KEY1                   0x45670123
-#define  FLASH_KEYR_KEY2                   0xCDEF89AB
-#define STM32_FLASH_OPTKEYR(bank)         STM32_FLASH_REG(bank, 0x08)
-#define  FLASH_OPTKEYR_KEY1                0x08192A3B
-#define  FLASH_OPTKEYR_KEY2                0x4C5D6E7F
-#define STM32_FLASH_CR(bank)              STM32_FLASH_REG(bank, 0x0C)
-#define  FLASH_CR_LOCK                     BIT(0)
-#define  FLASH_CR_PG                       BIT(1)
-#define  FLASH_CR_SER                      BIT(2)
-#define  FLASH_CR_BER                      BIT(3)
-#define  FLASH_CR_PSIZE_BYTE               (0 << 4)
-#define  FLASH_CR_PSIZE_HWORD              (1 << 4)
-#define  FLASH_CR_PSIZE_WORD               (2 << 4)
-#define  FLASH_CR_PSIZE_DWORD              (3 << 4)
-#define  FLASH_CR_PSIZE_MASK               (3 << 4)
-#define  FLASH_CR_FW                       BIT(6)
-#define  FLASH_CR_STRT                     BIT(7)
-#define  FLASH_CR_SNB(sec)                 (((sec) & 0x7) << 8)
-#define  FLASH_CR_SNB_MASK                FLASH_CR_SNB(0x7)
-#define STM32_FLASH_SR(bank)              STM32_FLASH_REG(bank, 0x10)
-#define  FLASH_SR_BUSY                     BIT(0)
-#define  FLASH_SR_WBNE                     BIT(1)
-#define  FLASH_SR_QW                       BIT(2)
-#define  FLASH_SR_CRC_BUSY                 BIT(3)
-#define  FLASH_SR_EOP                      BIT(16)
-#define  FLASH_SR_WRPERR                   BIT(17)
-#define  FLASH_SR_PGSERR                   BIT(18)
-#define  FLASH_SR_STRBERR                  BIT(19)
-#define  FLASH_SR_INCERR                   BIT(21)
-#define  FLASH_SR_OPERR                    BIT(22)
-#define  FLASH_SR_RDPERR                   BIT(23)
-#define  FLASH_SR_RDSERR                   BIT(24)
-#define  FLASH_SR_SNECCERR                 BIT(25)
-#define  FLASH_SR_DBECCERR                 BIT(26)
-#define  FLASH_SR_CRCEND                   BIT(27)
-#define STM32_FLASH_CCR(bank)             STM32_FLASH_REG(bank, 0x14)
+#define STM32_FLASH_KEYR(bank)           STM32_FLASH_REG(bank, 0x04)
+#define  FLASH_KEYR_KEY1                     0x45670123
+#define  FLASH_KEYR_KEY2                     0xCDEF89AB
+#define STM32_FLASH_OPTKEYR(bank)        STM32_FLASH_REG(bank, 0x08)
+#define  FLASH_OPTKEYR_KEY1                  0x08192A3B
+#define  FLASH_OPTKEYR_KEY2                  0x4C5D6E7F
+
+#define STM32_FLASH_CR(bank)             STM32_FLASH_REG(bank, 0x0C)
+#ifdef  CHIP_VARIANT_STM32H7A
+#define  FLASH_CR_LOCK                       BIT(0)
+#define  FLASH_CR_PG                         BIT(1)
+#define  FLASH_CR_SER                        BIT(2)
+#define  FLASH_CR_BER                        BIT(3)
+#define  FLASH_CR_FW                         BIT(4)
+// No PSIZE
+#define  FLASH_CR_STRT                       BIT(5)
+#define  FLASH_CR_SNB(sec)                   (((sec) & 0x7F) << 6)
+#define  FLASH_CR_SNB_MASK                   FLASH_CR_SNB(0x7F)
+#else
+#define  FLASH_CR_LOCK                       BIT(0)
+#define  FLASH_CR_PG                         BIT(1)
+#define  FLASH_CR_SER                        BIT(2)
+#define  FLASH_CR_BER                        BIT(3)
+#define  FLASH_CR_PSIZE_BYTE                 (0 << 4)
+#define  FLASH_CR_PSIZE_HWORD                (1 << 4)
+#define  FLASH_CR_PSIZE_WORD                 (2 << 4)
+#define  FLASH_CR_PSIZE_DWORD                (3 << 4)
+#define  FLASH_CR_PSIZE_MASK                 (3 << 4)
+#define  FLASH_CR_FW                         BIT(6)
+#define  FLASH_CR_STRT                       BIT(7)
+#define  FLASH_CR_SNB(sec)                   (((sec) & 0x7) << 8)
+#define  FLASH_CR_SNB_MASK                   FLASH_CR_SNB(0x7)
+#endif
+
+#define STM32_FLASH_SR(bank)             STM32_FLASH_REG(bank, 0x10)
+#define  FLASH_SR_BUSY                       BIT(0)
+#define  FLASH_SR_WBNE                       BIT(1)
+#define  FLASH_SR_QW                         BIT(2)
+#define  FLASH_SR_CRC_BUSY                   BIT(3)
+//       4:15 Reserved
+#define  FLASH_SR_EOP                        BIT(16)
+#define  FLASH_SR_WRPERR                     BIT(17)
+#define  FLASH_SR_PGSERR                     BIT(18)
+#define  FLASH_SR_STRBERR                    BIT(19)
+//       20 Reserved
+#define  FLASH_SR_INCERR                     BIT(21)
+#ifdef    CHIP_VARIANT_STM32H7A
+//       22 Reserved
+#else
+#define  FLASH_SR_OPERR                      BIT(22)
+#endif
+#define  FLASH_SR_RDPERR                     BIT(23)
+#define  FLASH_SR_RDSERR                     BIT(24)
+#define  FLASH_SR_SNECCERR                   BIT(25)
+#define  FLASH_SR_DBECCERR                   BIT(26)
+#define  FLASH_SR_CRCEND                     BIT(27)
+#ifdef    CHIP_VARIANT_STM32H7A
+#define  FLASH_SR_CRCRDERR                   BIT(28)
+#else
+//       28 Reserved
+#endif
+//       29:31 Reserved
+
+#define STM32_FLASH_CCR(bank)            STM32_FLASH_REG(bank, 0x14)
+#ifdef  CHIP_VARIANT_STM32H7A
+// FLASH_SR_EOP and FLASH_SR_CRCEND are completion indicators
+#define  FLASH_CCR_ERR_MASK              \
+					( FLASH_SR_WRPERR | FLASH_SR_PGSERR \
+					| FLASH_SR_STRBERR | FLASH_SR_INCERR \
+					| FLASH_SR_RDPERR \
+					| FLASH_SR_RDSERR | FLASH_SR_SNECCERR \
+					| FLASH_SR_DBECCERR \
+					| FLASH_SR_CRCRDERR )
+#else
 #define  FLASH_CCR_ERR_MASK              (FLASH_SR_WRPERR | FLASH_SR_PGSERR \
 					| FLASH_SR_STRBERR | FLASH_SR_INCERR \
 					| FLASH_SR_OPERR | FLASH_SR_RDPERR \
 					| FLASH_SR_RDSERR | FLASH_SR_SNECCERR \
 					| FLASH_SR_DBECCERR)
-#define STM32_FLASH_OPTCR(bank)           STM32_FLASH_REG(bank, 0x18)
-#define  FLASH_OPTCR_OPTLOCK              BIT(0)
-#define  FLASH_OPTCR_OPTSTART             BIT(1)
-#define STM32_FLASH_OPTSR_CUR(bank)       STM32_FLASH_REG(bank, 0x1C)
-#define STM32_FLASH_OPTSR_PRG(bank)       STM32_FLASH_REG(bank, 0x20)
-#define  FLASH_OPTSR_BUSY                 BIT(0)   /* only in OPTSR_CUR */
-#define  FLASH_OPTSR_RDP_MASK             (0xFF << 8)
-#define  FLASH_OPTSR_RDP_LEVEL_0          (0xAA << 8)
+#endif
+
+#define STM32_FLASH_OPTCR(bank)          STM32_FLASH_REG(bank, 0x18)
+#define  FLASH_OPTCR_OPTLOCK                 BIT(0)
+#define  FLASH_OPTCR_OPTSTART                BIT(1)
+//       - Missing
+
+#define STM32_FLASH_OPTSR_CUR(bank)      STM32_FLASH_REG(bank, 0x1C)
+#define STM32_FLASH_OPTSR_PRG(bank)      STM32_FLASH_REG(bank, 0x20)
+#define  FLASH_OPTSR_BUSY                    BIT(0)   /* only in OPTSR_CUR */
+//       1:7 Missing
+#define  FLASH_OPTSR_RDP_MASK                (0xFF << 8)
+#define  FLASH_OPTSR_RDP_LEVEL_0             (0xAA << 8)
 /* RDP Level 1: Anything but 0xAA/0xCC */
-#define  FLASH_OPTSR_RDP_LEVEL_1          (0x00 << 8)
-#define  FLASH_OPTSR_RDP_LEVEL_2          (0xCC << 8)
-#define  FLASH_OPTSR_RSS1                 BIT(26)
-#define  FLASH_OPTSR_RSS2                 BIT(27)
-#define STM32_FLASH_OPTCCR(bank)          STM32_FLASH_REG(bank, 0x24)
-#define STM32_FLASH_PRAR_CUR(bank)        STM32_FLASH_REG(bank, 0x28)
-#define STM32_FLASH_PRAR_PRG(bank)        STM32_FLASH_REG(bank, 0x2C)
-#define STM32_FLASH_SCAR_CUR(bank)        STM32_FLASH_REG(bank, 0x30)
-#define STM32_FLASH_SCAR_PRG(bank)        STM32_FLASH_REG(bank, 0x34)
-#define STM32_FLASH_WPSN_CUR(bank)        STM32_FLASH_REG(bank, 0x38)
-#define STM32_FLASH_WPSN_PRG(bank)        STM32_FLASH_REG(bank, 0x3C)
-#define STM32_FLASH_BOOT_CUR(bank)        STM32_FLASH_REG(bank, 0x40)
-#define STM32_FLASH_BOOT_PRG(bank)        STM32_FLASH_REG(bank, 0x44)
-#define STM32_FLASH_CRC_CR(bank)          STM32_FLASH_REG(bank, 0x50)
-#define STM32_FLASH_CRC_SADDR(bank)       STM32_FLASH_REG(bank, 0x54)
-#define STM32_FLASH_CRC_EADDR(bank)       STM32_FLASH_REG(bank, 0x58)
-#define STM32_FLASH_CRC_DATA(bank)        STM32_FLASH_REG(bank, 0x5C)
-#define STM32_FLASH_ECC_FA(bank)          STM32_FLASH_REG(bank, 0x60)
+#define  FLASH_OPTSR_RDP_LEVEL_1             (0x00 << 8)
+#define  FLASH_OPTSR_RDP_LEVEL_2             (0xCC << 8)
+//       - Missing
+#if 0
+// FIXME(hesling): These two constants are invalid for both MCUs,
+//                 but they are used in flash-stm32h7.c.
+// These are invalid for STM32H743 and STM32H7A
+#define  FLASH_OPTSR_RSS1                    BIT(26)
+#define  FLASH_OPTSR_RSS2                    BIT(27)
+#endif
+
+#define STM32_FLASH_OPTCCR(bank)         STM32_FLASH_REG(bank, 0x24)
+#define STM32_FLASH_PRAR_CUR(bank)       STM32_FLASH_REG(bank, 0x28)
+#define STM32_FLASH_PRAR_PRG(bank)       STM32_FLASH_REG(bank, 0x2C)
+#define STM32_FLASH_SCAR_CUR(bank)       STM32_FLASH_REG(bank, 0x30)
+#define STM32_FLASH_SCAR_PRG(bank)       STM32_FLASH_REG(bank, 0x34)
+/*
+ * Each bit of WPSGN for H743/H753 represents 1 sector (of 128k).
+ * Bits 0 through 8.
+ *
+ * Each bit of WPSGN for H7A3/H7B3 represents 4 consecutive sectors (of 8k).
+ * Bits 0 through 31.
+ * Bit 0 --> Sectors 0-3
+ * ...
+ * Bit 31 --> Sectors 124-127
+ */
+#define STM32_FLASH_WPSN_CUR(bank)       STM32_FLASH_REG(bank, 0x38)
+#define STM32_FLASH_WPSN_PRG(bank)       STM32_FLASH_REG(bank, 0x3C)
+#define STM32_FLASH_BOOT_CUR(bank)       STM32_FLASH_REG(bank, 0x40)
+#define STM32_FLASH_BOOT_PRG(bank)       STM32_FLASH_REG(bank, 0x44)
+#define STM32_FLASH_CRC_CR(bank)         STM32_FLASH_REG(bank, 0x50)
+#define STM32_FLASH_CRC_SADDR(bank)      STM32_FLASH_REG(bank, 0x54)
+#define STM32_FLASH_CRC_EADDR(bank)      STM32_FLASH_REG(bank, 0x58)
+#define STM32_FLASH_CRC_DATA(bank)       STM32_FLASH_REG(bank, 0x5C)
+#define STM32_FLASH_ECC_FA(bank)         STM32_FLASH_REG(bank, 0x60)
 
 /* --- External Interrupts --- */
 #define STM32_EXTI_RTSR1            REG32(STM32_EXTI_BASE + 0x00)

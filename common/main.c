@@ -40,6 +40,12 @@
 
 test_mockable __keep int main(void)
 {
+#ifdef CONFIG_DBG
+	CONFIG_DBG_SETUP();
+	CONFIG_DBG_STALL_WATCHDOG();
+	CONFIG_DBG_STALL_WATCHDOG_HELP();
+#endif
+
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
 		/*
 		 * Initialize tx buffer head and tail. This needs to be done
@@ -194,7 +200,6 @@ test_mockable __keep int main(void)
 #if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
 	button_init();
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
-
 #if defined(CONFIG_VBOOT_EFS)
 	/*
 	 * Execute PMIC reset in case we're here after watchdog reset to unwedge
