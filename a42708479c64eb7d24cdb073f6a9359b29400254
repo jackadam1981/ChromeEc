@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f89cfe3_da927c59",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-01T01:40:54Z",
+      "side": 1,
+      "message": "@Gwendal, should the RGB driver export this tcs3400_perform_calib vector as well, or just ALS?",
+      "range": {
+        "startLine": 644,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 40
+      },
+      "revId": "a42708479c64eb7d24cdb073f6a9359b29400254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
