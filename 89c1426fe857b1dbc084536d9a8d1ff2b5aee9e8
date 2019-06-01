@@ -94,6 +94,30 @@
       "revId": "89c1426fe857b1dbc084536d9a8d1ff2b5aee9e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fb44e2_2549633a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-01T00:17:56Z",
+      "side": 1,
+      "message": "I see. Then, can you list what words you scanned in the CL description body?\n\nWe may eventually create a list of typical typos (e.g. recieve) and run a simple word search from repohooks. I think a regular spell checker is too noisy. There may be already such a list. In other words, we should use a blacklist instead of a whitelist.\n\nIf spell errors bother you so much, it would be an interesting project to make all these automated. We have buildall to back you up.",
+      "parentUuid": "51fa000e_951a9152",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "89c1426fe857b1dbc084536d9a8d1ff2b5aee9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
