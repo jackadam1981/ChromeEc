@@ -56,7 +56,7 @@
 #endif
 #define PLL1_FREQ (STM32_HSI_CLOCK / PLL1_DIVM * PLL1_DIVN / PLL1_DIVP)
 
-/* Flash latency settings for AHB/ACLK at 64 Mhz and Vcore in VOS1 range */
+/* Flash latency settings for AHB/ACLK at 64 Mhz and Vcore in VOS3 range */
 #define FLASH_ACLK_64MHZ (STM32_FLASH_ACR_WRHIGHFREQ_85MHZ | \
 			  (0 << STM32_FLASH_ACR_LATENCY_SHIFT))
 /* Flash latency settings for AHB/ACLK at 200 Mhz and Vcore in VOS1 range */
@@ -98,9 +98,9 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 
 static void clock_flash_latency(uint32_t target_acr)
 {
-	STM32_FLASH_ACR(0) = target_acr;
-	while (STM32_FLASH_ACR(0) != target_acr)
-		;
+	// STM32_FLASH_ACR(0) = target_acr;
+	// while (STM32_FLASH_ACR(0) != target_acr)
+	// 	;
 }
 
 static void clock_enable_osc(enum clock_osc osc)
@@ -193,9 +193,9 @@ static void clock_set_osc(enum clock_osc osc)
 				| STM32_RCC_PLLCFG_DIVP1EN;
 		STM32_RCC_PLL1DIVR = STM32_RCC_PLLDIV_DIVP(PLL1_DIVP)
 				| STM32_RCC_PLLDIV_DIVN(PLL1_DIVN);
-		/* turn on PLL1 and wait that it's ready */
+		/* turn on PLL1 and wait until it's ready */
 		clock_enable_osc(OSC_PLL);
-		/* Put /2 on HPRE (AHB prescaler) to keep at the 200Mhz max */
+		/* Put /2 on HPRE (AHB prescaler) to keep at the 200MHz max */
 		STM32_RCC_D1CFGR = STM32_RCC_D1CFGR_HPRE_DIV2
 				 | STM32_RCC_D1CFGR_D1PPRE_DIV1
 				 | STM32_RCC_D1CFGR_D1CPRE_DIV1;
