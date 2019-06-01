@@ -17,7 +17,7 @@
 
 uint32_t rand(void)
 {
-	int tries = 300;
+	int tries = 3000;
 	/* Wait for a valid random number */
 	while (!(STM32_RNG_SR & STM32_RNG_SR_DRDY) && --tries)
 		;
