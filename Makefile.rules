@@ -692,6 +692,7 @@ help:
 	@echo "  CROSS_COMPILE_arch=  - Set the compiler for arch"
 	@echo "     The board picks its CROSS_COMPILE_arch if CROSS_COMPILE is not set."
 	@echo "     arch may be one of 'arm', 'i386', 'nds32'."
+	@echo "  CFLAGS_DEBUG_CHIP=   - Set optional debug flags"
 	@echo "Example:"
 	@echo "  make BOARD=reef CROSS_COMPILE_arm='arm-eabi-'"
 
