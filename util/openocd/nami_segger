@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#speed=4000
+#speed=8000
+speed=80000
+
+#device=CORTEX-M7
+device=STM32H743VI
+
+OPTIONS=( )
+OPTIONS+=( -noreset )
+OPTIONS+=( -excdbg )
+#OPTIONS+=( -nohalt )
+/opt/SEGGER/JLink/JLinkGDBServer -port 3333 -telnetport 4444 -device $device -if SWD -speed $speed "${OPTIONS[@]}"

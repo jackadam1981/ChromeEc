@@ -1547,6 +1547,12 @@
 /* Check for stack overflows on every context switch */
 #define CONFIG_DEBUG_STACK_OVERFLOW
 
+/* Install a breakpoint instruction in the exception handler */
+#undef CONFIG_DEBUG_EXCEPTION_BREAKPOINT
+
+/* Disable reboot on exception -- Loop forever */
+#undef CONFIG_DEBUG_EXCEPTION_HANG
+
 /*****************************************************************************/
 
 /* Support events from devices attached to the EC */
@@ -1654,6 +1660,8 @@
 #undef CONFIG_FLASH_DEFERRED_ERASE
 /* Flash must be selected for write/erase operations to succeed. */
 #undef CONFIG_FLASH_SELECT_REQUIRED
+/* The number of consecutive banks that share a write protect region */
+#undef CONFIG_FLASH_WP_BANKS
 
 /* Base address of program memory */
 #undef CONFIG_PROGRAM_MEMORY_BASE
