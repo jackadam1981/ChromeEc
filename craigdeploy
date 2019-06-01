@@ -1,0 +1,71 @@
+#!/bin/bash
+
+run() {
+	echo "$@"
+	"$@"
+	return $?
+}
+
+BOARD=${BOARD:-nami_fpv2}
+V=
+PRIVATE=yes
+#CFLAGS_DEBUG_CHIP="-ggdb"
+TARGETS=( all )
+
+for flag; do
+	case $flag in
+		v*|verbose)
+			V=1
+			;;
+		p*|private)
+			PRIVATE=yes
+			;;
+		nop*|noprivate)
+			PRIVATE=no
+			;;
+		de*|debug)
+			CFLAGS_DEBUG_CHIP+=" -ggdb"
+			;;
+		op*|optimization)
+			CFLAGS_DEBUG_CHIP+=" -O3"
+			;;
+		noop*|nooptimization)
+			CFLAGS_DEBUG_CHIP+=" -O0"
+			;;
+		test-*)
+			TARGETS+=( $flag )
+			;;
+	esac
+done
+
+echo "########## FLAGS #############"
+echo "BOARD=$BOARD"
+echo "V=$V"
+echo "PRIVATE=$PRIVATE"
+echo "CFLAGS_DEBUG_CHIP=$CFLAGS_DEBUG_CHIP"
+echo "##############################"
+
+#CFLAGS_DEBUG_CHIP="-ggdb -Og"
+#CFLAGS_DEBUG_CHIP="-ggdb"
+# run make -j BOARD=nami_fpv2 && scp build/nami_fpv2/ec.bin dut2:~/ && ssh dut2 'sync; source /root/sharedev/fwtmp/flash_lib; flash /root/ec.bin; in_direction in rst'
+
+if [ "$PRIVATE" = no ]; then
+  mv private private-hidden
+  trap 'mv private-hidden private' EXIT
+fi
+
+#run make BOARD= $BOARD clean
+run rm -rf build/
+if [ -n "$CFLAGS_DEBUG_CHIP" ]; then
+  if ! run make BOARD=$BOARD -j 72 V=$V CFLAGS_DEBUG_CHIP="$CFLAGS_DEBUG_CHIP" "${TARGETS[@]}"; then
+    exit $?
+  fi
+else
+  if ! run make BOARD=$BOARD -j 72 V=$V "${TARGETS[@]}"; then
+    exit $?
+  fi
+fi
+
+run ssh dut2 mount -oremount,rw /
+run scp build/$BOARD/**.bin dut2:~/
+run ssh dut2 sharedev/flash

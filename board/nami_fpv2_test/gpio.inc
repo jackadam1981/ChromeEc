@@ -1,0 +1,1 @@
+../nami_fpv2/gpio.inc

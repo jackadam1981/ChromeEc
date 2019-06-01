@@ -92,9 +92,9 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 
 static void clock_flash_latency(uint32_t target_acr)
 {
-	STM32_FLASH_ACR(0) = target_acr;
-	while (STM32_FLASH_ACR(0) != target_acr)
-		;
+	// STM32_FLASH_ACR(0) = target_acr;
+	// while (STM32_FLASH_ACR(0) != target_acr)
+	// 	;
 }
 
 static void clock_enable_osc(enum clock_osc osc)

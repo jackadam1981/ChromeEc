@@ -15,7 +15,6 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
-#include "watchdog.h"
 
 /* Whether bus fault is ignored */
 static int bus_fault_ignored;
@@ -348,8 +347,23 @@ void __keep report_panic(void)
 	 * exception happened in a handler's context.
 	 */
 #endif
+
+	task_print_list();
+
+#ifdef CONFIG_DEBUG_EXCEPTION_BREAKPOINT
+	panic_printf("\nBreakpoint - Hang for debugger\n");
+	asm volatile ("BKPT");
+#endif
+#ifndef CONFIG_DEBUG_EXCEPTION_HANG
 	panic_reboot();
+#else
+	for (;;) {
+		// nothing
+	}
+#endif
 }
+
+//#define SEGGER_DEBUG
 
 /**
  * Default exception handler, which reports a panic.
@@ -358,6 +372,13 @@ void __keep report_panic(void)
  */
 void exception_panic(void)
 {
+#ifdef SEGGER_DEBUG
+	__asm volatile (
+	 " bkpt 10 \n"
+	 " bx lr \n"
+	);
+	(void) pstack_addr;
+#else
 	/* Save registers and branch directly to panic handler */
 	asm volatile(
 		"mov r0, %[pregs]\n"
@@ -374,6 +395,7 @@ void exception_panic(void)
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
 			"r10", "r11", "cc", "memory"
 		);
+#endif
 }
 
 #ifdef CONFIG_SOFTWARE_PANIC
