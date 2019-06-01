@@ -1669,6 +1669,8 @@
 #undef CONFIG_FLASH_DEFERRED_ERASE
 /* Flash must be selected for write/erase operations to succeed. */
 #undef CONFIG_FLASH_SELECT_REQUIRED
+/* The number of consecutive banks that share a write protect region */
+#undef CONFIG_FLASH_WP_BANKS
 
 /* Base address of program memory */
 #undef CONFIG_PROGRAM_MEMORY_BASE
