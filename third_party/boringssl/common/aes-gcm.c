@@ -81,6 +81,23 @@ static inline void store_word_le(void *out, size_t v) {
   OPENSSL_memcpy(out, &v, sizeof(v));
 }
 
+//void gcm_init_v8(u128 Htable[16], const uint64_t Xi[2]) {
+//	for(;;) {
+//		// not used
+//	}
+//}
+//void gcm_gmult_v8(uint64_t Xi[2], const u128 Htable[16]) {
+//	for(;;) {
+//		// not used
+//	}
+//}
+//void gcm_ghash_v8(uint64_t Xi[2], const u128 Htable[16],
+//        const uint8_t *inp, size_t len) {
+//	for(;;) {
+//		// not used
+//	}
+//}
+
 #define PACK(s) ((size_t)(s) << (sizeof(size_t) * 8 - 16))
 #define REDUCE1BIT(V)                                                 \
   do {                                                                \

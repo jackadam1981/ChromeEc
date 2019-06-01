@@ -46,7 +46,11 @@
  */
 #define HWBANK_SIZE  (CONFIG_FLASH_SIZE / 2)
 #define BLOCKS_PER_HWBANK (HWBANK_SIZE / CONFIG_FLASH_ERASE_SIZE)
+#ifdef CHIP_VARIANT_STM32H7A
+#define BLOCKS_HWBANK_MASK (0xFFFFFFFF)
+#else
 #define BLOCKS_HWBANK_MASK (BIT(BLOCKS_PER_HWBANK) - 1)
+#endif
 
 /*
  * We can tune the power consumption vs erase/write speed
@@ -140,13 +144,33 @@ static int commit_optb(void)
 	return (timeout > 0) ? EC_SUCCESS : EC_ERROR_TIMEOUT;
 }
 
-static void protect_blocks(uint32_t blocks)
+/*
+ * Used first  BLOCKS_HWBANK_MASK bit for bank 1
+ * and the next BLOCKS_HWBANK_MASK bits for bank 2
+ */
+
+/* 
+ * Arg blocks is a combined banks bitmap for which block/block-group
+ * will have write protections enabled.
+ * STM32H743 has blocks of size 128kb. Each bit maps to a single block.
+ * STM32H7A has blocks of size 8kb. Each bit maps to four blocks.
+ */
+static void protect_blocks(uint64_t blocks)
 {
+	uint32_t bank1_mask = blocks & BLOCKS_HWBANK_MASK;
+	uint32_t bank2_mask = (blocks>>(BLOCKS_PER_HWBANK/CONFIG_FLASH_WP_BANKS)) & BLOCKS_HWBANK_MASK;
+
+	/* TODO(hesling): Fix this for the H7A
+	 * For STM32H7A each bit represents 4 flash sectors.
+	 * Bit 0 --> Sectors 0 to 3
+	 * Bit 1 --> Sectors 4 to 7
+	 * ...
+	 * Bit 31 --> Sectors 124 to 127
+	 */
 	if (unlock_optb())
 		return;
-	STM32_FLASH_WPSN_PRG(0) &= ~(blocks & BLOCKS_HWBANK_MASK);
-	STM32_FLASH_WPSN_PRG(1) &= ~((blocks >> BLOCKS_PER_HWBANK)
-				& BLOCKS_HWBANK_MASK);
+	STM32_FLASH_WPSN_PRG(0) &= ~(bank1_mask);
+	STM32_FLASH_WPSN_PRG(1) &= ~(bank2_mask);
 	commit_optb();
 }
 
@@ -225,9 +249,12 @@ int flash_physical_write(int offset, int size, const char *data)
 	/* Clear previous error status */
 	STM32_FLASH_CCR(bank) = FLASH_CCR_ERR_MASK;
 
+// TODO(hesling): Verify that we don't need this
+#ifndef CHIP_VARIANT_STM32H7A
 	/* select write parallelism */
 	STM32_FLASH_CR(bank) = (STM32_FLASH_CR(bank) & ~FLASH_CR_PSIZE_MASK)
 			| DEFAULT_PSIZE;
+#endif
 
 	/* set PG bit */
 	STM32_FLASH_CR(bank) |= FLASH_CR_PG;
@@ -239,7 +266,7 @@ int flash_physical_write(int offset, int size, const char *data)
 		 */
 		watchdog_reload();
 
-		/* write a 256-bit flash word */
+		/* write a CONFIG_FLASH_WRITE_SIZE flash word */
 		if (unaligned) {
 			for (i = 0; i < CONFIG_FLASH_WRITE_SIZE / 4; i++,
 								     data += 4)
@@ -300,9 +327,12 @@ int flash_physical_erase(int offset, int size)
 	/* Clear previous error status */
 	STM32_FLASH_CCR(bank) = FLASH_CCR_ERR_MASK;
 
+// TODO(hesling): Verify that we don't need this
+#ifndef CHIP_VARIANT_STM32H7A
 	/* select erase parallelism */
 	STM32_FLASH_CR(bank) = (STM32_FLASH_CR(bank) & ~FLASH_CR_PSIZE_MASK)
 			| DEFAULT_PSIZE;
+#endif
 
 	for (sect = offset / CONFIG_FLASH_ERASE_SIZE; sect < last; sect++) {
 		timestamp_t deadline;
@@ -359,7 +389,7 @@ exit_er:
 int flash_physical_get_protect(int block)
 {
 	int bank = block / BLOCKS_PER_HWBANK;
-	int index = block % BLOCKS_PER_HWBANK;
+	int index = (block % BLOCKS_PER_HWBANK) / CONFIG_FLASH_WP_BANKS;
 
 	return !(STM32_FLASH_WPSN_CUR(bank) & BIT(index));
 }
@@ -385,8 +415,19 @@ uint32_t flash_physical_get_protect_flags(void)
 	return flags;
 }
 
-#define WP_RANGE(start, count) (((1 << (count)) - 1) << (start))
-#define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
+static uint64_t wp_range(uint32_t block_off, uint32_t block_count) {
+	uint64_t block_mask;
+	block_off /= CONFIG_FLASH_WP_BANKS;
+	block_count /= CONFIG_FLASH_WP_BANKS;
+	// Compiler will complain if shift count is the same as bit width
+	block_mask = (block_count==64) ? (-1) : (BIT_ULL(block_count)-1);
+	block_mask <<= block_off;
+	return block_mask;
+}
+
+// #define WP_RANGE(start, count) (((1 << ((count))) - 1) << (start))
+// #define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
+#define RO_WP_RANGE wp_range(WP_BANK_OFFSET, WP_BANK_COUNT)
 
 int flash_physical_protect_now(int all)
 {

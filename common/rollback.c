@@ -453,6 +453,7 @@ hc_rollback_add_entropy(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_ADD_ENTROPY,
 		     hc_rollback_add_entropy,
 		     EC_VER_MASK(0));
+
 #endif /* CONFIG_RNG */
 #endif /* CONFIG_ROLLBACK_SECRET_SIZE */
 #endif /* CONFIG_ROLLBACK_UPDATE */
