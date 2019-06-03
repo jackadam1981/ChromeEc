@@ -3989,6 +3989,7 @@ struct ec_response_power_info {
 
 /* Read data; if not present, message is a write */
 #define EC_I2C_FLAG_READ	BIT(15)
+#define EC_I2C_FLAG_8BIT_ADDR	BIT(14)
 
 /* Mask for address */
 #define EC_I2C_ADDR_MASK	0x3ff
