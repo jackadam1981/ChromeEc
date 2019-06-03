@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c1c985c_13492898",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:08:20Z",
+      "side": 1,
+      "message": "I like reusing structs, but this is dangerous since the ec command interface uses 7-bit address and the rest of the code uses 8-bit addresses.\n\nWe should use keep with the i2c_host_port and i2c_slave_addr (and add a comment that they are 8-bit addresses)\n\nAlso, how did this change not break all board.c files since the i2c_host_port field no longer exists?",
+      "range": {
+        "startLine": 331,
+        "startChar": 21,
+        "endLine": 331,
+        "endChar": 29
+      },
+      "revId": "a880492eba281581ab0f0abae6cf2099b65894ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
