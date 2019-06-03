@@ -70,6 +70,30 @@
       "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653d005c_9ed2595f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5647,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T22:49:23Z",
+      "side": 1,
+      "message": "Okay since this CL is already big, I will change to a bitmask in the next CL. I am leaving a todo here.",
+      "parentUuid": "054af738_e399f6b3",
+      "range": {
+        "startLine": 5647,
+        "startChar": 10,
+        "endLine": 5647,
+        "endChar": 24
+      },
+      "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
