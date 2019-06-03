@@ -22,6 +22,30 @@
       "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23615399_c4e78213",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5647,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T17:19:56Z",
+      "side": 1,
+      "message": "The reason to use uint16_t struct_version is to be consistent with other struct formats we are using. It\u0027s not a solid reason.\n\nFor the bitmask approach I am not sure if at some point we would want to change the format of \"status\" (the \"status\" itself is a bitmask) like removing or reordering some status bits? If it\u0027s just adding status bits then the bitmask approach you mentioned would be clearer than a version number.",
+      "parentUuid": "00d8ccaf_70403e73",
+      "range": {
+        "startLine": 5647,
+        "startChar": 10,
+        "endLine": 5647,
+        "endChar": 24
+      },
+      "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
