@@ -710,10 +710,11 @@ static int check_i2c_params(const struct host_cmd_handler_args *args)
 	     msgnum++, msg++) {
 		unsigned int addr_flags = msg->addr_flags;
 
-		PTHRUPRINTS("port=%d, %s, addr=0x%x, len=%d",
+		PTHRUPRINTS("port=%d, %s, addr=0x%x(%d-bit), len=%d",
 			    params->port,
 			    addr_flags & EC_I2C_FLAG_READ ? "read" : "write",
 			    addr_flags & EC_I2C_ADDR_MASK,
+			    addr_flags & EC_I2C_FLAG_8BIT_ADDR ? 8 : 7,
 			    msg->len);
 
 		if (addr_flags & EC_I2C_FLAG_READ)
@@ -781,11 +782,13 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	for (resp->num_msgs = 0, msg = params->msg;
 	     resp->num_msgs < params->num_msgs;
 	     resp->num_msgs++, msg++) {
-		/* EC uses 8-bit slave address */
-		unsigned int addr = (msg->addr_flags & EC_I2C_ADDR_MASK) << 1;
+		unsigned int addr = msg->addr_flags & EC_I2C_ADDR_MASK;
 		int xferflags = I2C_XFER_START;
 		int read_len = 0, write_len = 0;
 		int rv = 1;
+		if (!(msg->addr_flags & EC_I2C_FLAG_8BIT_ADDR))
+			/* Supporting old clients who use 7-bit slave address */
+			addr = addr << 1;
 
 		if (msg->addr_flags & EC_I2C_FLAG_READ)
 			read_len = msg->len;
@@ -881,9 +884,9 @@ static void i2c_passthru_protect_tcpc_ports(void)
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		/* TCPC tunnel not configured. No need to protect anything */
-		if (!tcpc_config[i].i2c_slave_addr)
+		if (!tcpc_config[i].i2c_info.addr)
 			continue;
-		i2c_passthru_protect_port(tcpc_config[i].i2c_host_port);
+		i2c_passthru_protect_port(tcpc_config[i].i2c_info.port);
 	}
 #endif
 }
