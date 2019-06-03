@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "9680c9c4_9be97734",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:07:36Z",
+      "side": 1,
+      "message": "does HBM not have a valid context?\n\nit seems that any of the fixed bus addresses would not index into the client_ctxs correctly.\n\nWhy do we need this offset?",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fdcf7c7_0de01b0d",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -163,6 +186,52 @@
     },
     {
       "key": {
+        "uuid": "3a29b567_6a9193b3",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:07:36Z",
+      "side": 1,
+      "message": "this change makes me nervous because dropping a flow control send can cause the bus to lock up. Why not always send this? We can handle another message even if this one had a error.",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 24
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8aae552_388bbbe9",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:07:36Z",
+      "side": 1,
+      "message": "when would this error case happen? (I am okay with keep this check, I just want to understand better how often we expect this to occur)",
+      "range": {
+        "startLine": 792,
+        "startChar": 2,
+        "endLine": 792,
+        "endChar": 40
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "057b77c0_3c4f3239",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -209,6 +278,29 @@
     },
     {
       "key": {
+        "uuid": "f3b13755_efca7f06",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:07:36Z",
+      "side": 1,
+      "message": "Let\u0027s log an error to the console as this should never happen. (if this is for a fixed client, should we send flow control back anyway?)",
+      "range": {
+        "startLine": 964,
+        "startChar": 2,
+        "endLine": 969,
+        "endChar": 10
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12da453b_5f89c233",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -225,6 +317,29 @@
         "startChar": 4,
         "endLine": 974,
         "endChar": 5
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2b011a_a362cdda",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:07:36Z",
+      "side": 1,
+      "message": "technically isn\u0027t is only fw_addr \u003d\u003d 0 for hbm? And anything else is something we aren\u0027t handling (and could log an error)",
+      "range": {
+        "startLine": 975,
+        "startChar": 2,
+        "endLine": 975,
+        "endChar": 6
       },
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
