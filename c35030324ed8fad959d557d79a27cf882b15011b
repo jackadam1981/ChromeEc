@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d7bf02b_42f8bdd0",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-03T15:56:11Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be putting a trailing comma at the end of all of the SENSOR_COUNTs.\n\nThe theory behind trailing commas is that it makes it easy to add entries after it, which is not exactly what we want after the SENSOR_COUNT line ;)",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 14
+      },
+      "revId": "c35030324ed8fad959d557d79a27cf882b15011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faa01442_b2c30a7f",
         "filename": "board/elm/board.h",
         "patchSetId": 2
@@ -34,6 +57,46 @@
       "revId": "c35030324ed8fad959d557d79a27cf882b15011b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "549d933f_78ea2971",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-03T15:56:11Z",
+      "side": 1,
+      "message": "why the extra lines here?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 0
+      },
+      "revId": "c35030324ed8fad959d557d79a27cf882b15011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c8769e3_00ce5c3c",
+        "filename": "board/glados/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-03T15:56:11Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "c35030324ed8fad959d557d79a27cf882b15011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
