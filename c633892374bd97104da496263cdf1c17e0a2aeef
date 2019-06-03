@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f2568f3_95813755",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "if you change this to  d-\u003eflags, then all of the callsites can drop the *",
+      "range": {
+        "startLine": 88,
+        "startChar": 28,
+        "endLine": 88,
+        "endChar": 29
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932ef11f_7f11acea",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "super nit: can you tab over the 2nd lines of comments so only the @var is first, e.g.\n\n* @read_ts: This is\n*           text that continues",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb3921f_079a90da",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "let\u0027s add a comment to this function saying that it will pop data from HEAD even if that data is staged data (and will update any lost sample counters)",
+      "range": {
+        "startLine": 129,
+        "startChar": 12,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773d46c3_79eaa680",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "These advance head and tail operation should be guarded by the mutex.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136e9697_278d1bda",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "nit: can we make this --val \u003c 2 (just so we don\u0027t mis a boundary condition)\n\n\npost or pre increment is fine, just using the \u003c or \u003c\u003d is what I am really asking for",
+      "range": {
+        "startLine": 171,
+        "startChar": 50,
+        "endLine": 171,
+        "endChar": 52
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ba21fe_0be38590",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "since we have to recaluted this cache of requres_spreading, can we just calculate it once at flush instead?",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39712e9_f93ff923",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "if *all* the following",
+      "range": {
+        "startLine": 190,
+        "startChar": 29,
+        "endLine": 190,
+        "endChar": 45
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b802091_c9748750",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -96,6 +257,29 @@
     },
     {
       "key": {
+        "uuid": "4842d5b4_e73af1d8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "won\u0027t this never happen since motion_sense_fifo_ensure_space will always drop data to ensure there is at least one spot available?",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 2
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3607506a_85bcc6e0",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
@@ -140,6 +324,29 @@
       "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff6ec400_5c0077b6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T16:03:02Z",
+      "side": 1,
+      "message": "see comment about just calculating this during flush instead",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 37
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
