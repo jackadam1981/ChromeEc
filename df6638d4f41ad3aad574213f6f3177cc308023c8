@@ -94,6 +94,30 @@
       "revId": "df6638d4f41ad3aad574213f6f3177cc308023c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18e15139_bfdbdd81",
+        "filename": "common/peripheral.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-03T15:47:46Z",
+      "side": 1,
+      "message": "I think it\u0027s better to return addr\u003d0 instead of EC_RES_UNAVAILABLE. That\u0027ll help the caller know how exactly i2c setup is broken.\n\nI think we should make tcpc_config_t handle other bus types, including on-chip. Then, the caller won\u0027t be confused by ITE EC.",
+      "parentUuid": "ec976666_917dbb9e",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "df6638d4f41ad3aad574213f6f3177cc308023c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
