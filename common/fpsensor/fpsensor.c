@@ -99,6 +99,57 @@ static inline int is_test_capture(uint32_t mode)
  */
 static uint32_t enroll_session;
 
+static int hkdf_extract(uint8_t *prk, uint8_t *salt, size_t salt_size)
+{
+	int ret;
+	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
+
+	if (!fp_tpm_seed_is_set()) {
+		CPRINTS("Seed hasn't been set.");
+		return EC_RES_ERROR;
+	}
+
+	/*
+	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
+	 * anti-rollback blocks.
+	 */
+	ret = rollback_get_secret(ikm);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to read rollback secret: %d", ret);
+		return EC_RES_ERROR;
+	}
+	/*
+	 * IKM is the concatenation of the rollback secret and the seed from
+	 * the TPM.
+	 */
+	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
+
+	/*
+	 * Derive a key with the "extract" step of HKDF
+	 * https://tools.ietf.org/html/rfc5869#section-2.2
+	 */
+	hmac_SHA256(prk, salt, salt_size, ikm, sizeof(ikm));
+	memset(ikm, 0, sizeof(ikm));
+
+	return EC_RES_SUCCESS;
+}
+
+static void hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
+	uint8_t *prk, size_t prk_size, uint8_t *info, size_t info_size)
+{
+	uint8_t key_buf[SHA256_DIGEST_SIZE];
+	uint8_t message[info_size + 1];
+
+	memcpy(message, info, info_size);
+	/* 1 step, set the counter byte to 1. */
+	message[sizeof(message) - 1] = 0x01;
+	hmac_SHA256(key_buf, prk, prk_size, message, sizeof(message));
+
+	memset(prk, 0, prk_size);
+	memcpy(out_key, key_buf, out_key_size);
+	memset(key_buf, 0, sizeof(key_buf));
+}
+
 static uint32_t fp_process_enroll(void)
 {
 	int percent = 0;
@@ -298,55 +349,26 @@ void fp_task(void)
 static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 {
 	int ret;
-	uint8_t key_buf[SHA256_DIGEST_SIZE];
 	uint8_t prk[SHA256_DIGEST_SIZE];
-	uint8_t message[sizeof(user_id) + 1];
-	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
 
 	BUILD_ASSERT(SBP_ENC_KEY_LEN <= SHA256_DIGEST_SIZE);
 	BUILD_ASSERT(SBP_ENC_KEY_LEN <= CONFIG_ROLLBACK_SECRET_SIZE);
 	BUILD_ASSERT(sizeof(user_id) == SHA256_DIGEST_SIZE);
 
-	if (!fp_tpm_seed_is_set()) {
-		CPRINTS("Seed hasn't been set.");
+	/* "Extract step of HKDF. */
+	ret = hkdf_extract(prk, salt, FP_CONTEXT_SALT_BYTES);
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Failed to extract PRK: %d", ret);
 		return EC_RES_ERROR;
 	}
-
-	/*
-	 * The first CONFIG_ROLLBACK_SECRET_SIZE bytes of IKM are read from the
-	 * anti-rollback blocks.
-	 */
-	ret = rollback_get_secret(ikm);
-	if (ret != EC_SUCCESS) {
-		CPRINTS("Failed to read rollback secret: %d", ret);
-		return EC_RES_ERROR;
-	}
-	/*
-	 * IKM is the concatenation of the rollback secret and the seed from
-	 * the TPM.
-	 */
-	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
-
-	/*
-	 * Derive a key with the "extract" step of HKDF
-	 * https://tools.ietf.org/html/rfc5869#section-2.2
-	 */
-	hmac_SHA256(prk, salt, FP_CONTEXT_SALT_BYTES, ikm, sizeof(ikm));
-	memset(ikm, 0, sizeof(ikm));
 
 	/*
 	 * Only 1 "expand" step of HKDF since the size of the "info" context
 	 * (user_id in our case) is exactly SHA256_DIGEST_SIZE.
 	 * https://tools.ietf.org/html/rfc5869#section-2.3
 	 */
-	memcpy(message, user_id, sizeof(user_id));
-	/* 1 step, set the counter byte to 1. */
-	message[sizeof(message) - 1] = 0x01;
-	hmac_SHA256(key_buf, prk, sizeof(prk), message, sizeof(message));
-	memset(prk, 0, sizeof(prk));
-
-	memcpy(out_key, key_buf, SBP_ENC_KEY_LEN);
-	memset(key_buf, 0, sizeof(key_buf));
+	hkdf_expand_one_step(out_key, SBP_ENC_KEY_LEN, prk, sizeof(prk),
+		(uint8_t *)user_id, sizeof(user_id));
 
 	return EC_RES_SUCCESS;
 }
