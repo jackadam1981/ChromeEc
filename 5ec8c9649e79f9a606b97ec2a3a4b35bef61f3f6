@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "febcd3c5_a8cfc867",
+        "filename": "common/usb_tc_vpd_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-03T17:20:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccccea3_5b91b571",
+      "range": {
+        "startLine": 364,
+        "startChar": 20,
+        "endLine": 364,
+        "endChar": 35
+      },
+      "revId": "5ec8c9649e79f9a606b97ec2a3a4b35bef61f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4941cf8f_c1339d6d",
         "filename": "include/usb_sm.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "5ec8c9649e79f9a606b97ec2a3a4b35bef61f3f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "621c278f_af1a17a1",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-03T17:20:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4941cf8f_c1339d6d",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "5ec8c9649e79f9a606b97ec2a3a4b35bef61f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "11c3be68_a093af92",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-03T17:20:33Z",
+      "side": 1,
+      "message": "This is an array of function pointers that\u0027s indexed by one of the enum signals defined on line 78.",
+      "parentUuid": "1997e0df_c7e3770a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "5ec8c9649e79f9a606b97ec2a3a4b35bef61f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4a7e6f2_199952d6",
         "filename": "include/usbc_utils.h",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2019-05-31T13:51:52Z",
       "side": 1,
       "message": "let\u0027s add something like \"shared between the old and new USB-C state machine implementations\"\n\n(this should be in another CL though)",
+      "range": {
+        "startLine": 6,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "5ec8c9649e79f9a606b97ec2a3a4b35bef61f3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa0bf33_005eca88",
+        "filename": "include/usbc_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-03T17:20:33Z",
+      "side": 1,
+      "message": "I agree that this should be done in a separate CL.",
+      "parentUuid": "b4a7e6f2_199952d6",
       "range": {
         "startLine": 6,
         "startChar": 2,
