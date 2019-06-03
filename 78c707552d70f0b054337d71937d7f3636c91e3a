@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4be94b5_e44a0fa1",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:04:52Z",
+      "side": 1,
+      "message": "We may want to consider adding a timeout (and return failure in that case). It\u0027s unlikely that we\u0027d get into an infinite loop here, except in the case where the random number generator is broken. There\u0027s not much we can do in that case except return an error, but at least we can debug it via logging.",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d71b08a_0769711e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:04:52Z",
+      "side": 1,
+      "message": "nit: I generally prefer \"bool\" for booleans, though it\u0027s not widely used in the EC codebase. I think maybe that\u0027s because when it was first written they were targeting C90 (https://stackoverflow.com/a/1608350). If bool works with current compile flags, I would suggest that unless norvez@ or others think otherwise.",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c871ae4b_af50b52e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:04:52Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at the trng init/exit code, but in derive_pos_match_secret you wrap the rand_bytes with that. Does that need to be done here? If we need to call it every time maybe wrap it in a helper function. Otherwise, if we only need to init once maybe we just do it at the beginning of fp_sensor_task.",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1861f2e_831fe837",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:04:52Z",
+      "side": 1,
+      "message": "nit: In general, the EC codebase follows the Linux style, which doesn\u0027t use brackets for single-line statements (this if statement and also for loop above). Personally, I don\u0027t particularly like that style, but we should follow the conventions being used in the EC code. Did checkpatch generate a warning when you did the \"repo upload\"? (just curious)",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9ac1e7_50abd462",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:04:52Z",
+      "side": 1,
+      "message": "nit: typo: should be \"F\"",
+      "range": {
+        "startLine": 169,
+        "startChar": 25,
+        "endLine": 169,
+        "endChar": 26
+      },
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a2c80e_cace33ae",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:04:52Z",
+      "side": 1,
+      "message": "Can we make a generic hkdf_extract() method as well that could be shared with derive_encryption_key? (Similar to what you did with hdkf_extract)? You could then split this change into two commits: the first just adds the hkdf_* methods and the second builds on that to add the positive_match_secret logic.",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
