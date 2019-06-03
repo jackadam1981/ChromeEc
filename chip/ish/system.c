@@ -37,7 +37,11 @@ void system_pre_init(void)
 	ish_fwst_set_fw_status(FWSTS_FW_IS_RUNNING);
 	task_enable_irq(ISH_FABRIC_IRQ);
 	ish_pm_init();
+	CPRINTS("Magic number, before init: 0x%08X (should be value from before reset)",
+		REG32(CONFIG_AON_ROM_BASE));
 	ish_persistent_data_init();
+	CPRINTS("Magic number, after init: 0x%08X (should be zero)",
+		REG32(CONFIG_AON_ROM_BASE));
 }
 
 void chip_save_reset_flags(uint32_t flags)
@@ -98,7 +102,11 @@ void system_reset(int flags)
 
 	chip_save_reset_flags(save_flags);
 
+	CPRINTS("Magic number, before commit: 0x%08X (should be zero)",
+		REG32(CONFIG_AON_ROM_BASE));
 	ish_persistent_data_commit();
+	CPRINTS("Magic number, after commit: 0x%08X (should be 0x49534864)",
+		REG32(CONFIG_AON_ROM_BASE));
 	ish_pm_reset();
 	__builtin_unreachable();
 }
