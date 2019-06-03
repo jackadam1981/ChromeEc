@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00d8ccaf_70403e73",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5647,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-03T05:33:27Z",
+      "side": 1,
+      "message": "Any particular reason to use a version number, apart from templates using version numbers?\nInstead of managing another version number that ultimately maps to the set of fields that are supported, you could use another uint32_t that represents the bitmask of supported features (supported fields).\nThe flashprotect command may already do something similar.\n\nJust an idea if you weren\u0027t already married to the version number approach.",
+      "range": {
+        "startLine": 5647,
+        "startChar": 10,
+        "endLine": 5647,
+        "endChar": 24
+      },
+      "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
