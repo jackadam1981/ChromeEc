@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73971e72_cd3cb107",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T19:01:40Z",
+      "side": 0,
+      "message": "I think this comment is misleading, the reason to do only 1 expand step is the length of output key material (key_buf here) is SHA256_DIGEST_SIZE long, not because of \"info\" (also SHA256_DIGEST_SIZE long). The number of steps depend on the length of output key material, not length of info. Shall I change this comment?",
+      "range": {
+        "startLine": 338,
+        "startChar": 55,
+        "endLine": 338,
+        "endChar": 61
+      },
+      "revId": "ed78d3c473a1e08e181cdbe161a28d33ae9cae27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

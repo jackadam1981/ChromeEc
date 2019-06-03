@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "10a079f8_ab9210aa",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T19:01:40Z",
+      "side": 1,
+      "message": "To use trng\u0027s random functions you have to call init_trng/exit_trng, otherwise you get runtime error. You can\u0027t call it once at the beginning and leave it on because that wastes power: https://cs.corp.google.com/chromeos_public/src/platform/ec/include/trng.h?q\u003dtrng+file:%5Esrc/platform/ec/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d23\n\nIn derive_pos_match_secret I am wrapping both rand_bytes and rand_finger_id, so here I am already in trng context.\n\nI would prefer the current way of wrapping, because if you use a helper function to init/exit trng, when you want to execute rand_bytes multiple times at once like here (first new_pos_match_salt then finger_id) you are shutting down hardware trng then immediately reopening it, which makes me uncomfortable.",
+      "parentUuid": "c871ae4b_af50b52e",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1861f2e_831fe837",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -104,6 +122,30 @@
       "writtenOn": "2019-06-03T18:04:52Z",
       "side": 1,
       "message": "Can we make a generic hkdf_extract() method as well that could be shared with derive_encryption_key? (Similar to what you did with hdkf_extract)? You could then split this change into two commits: the first just adds the hkdf_* methods and the second builds on that to add the positive_match_secret logic.",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d4c6aa6_09a08c8d",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-03T19:01:40Z",
+      "side": 1,
+      "message": "Sure I will split this change into two and make hkdf_ helper functions first, but note that both here and in derive_encryption_key we are doing only 1 step of HKDF expand because of the chose output key size. Since I am writing hkdf_extract helper function, shall I support arbitrary key length (with more complex logic), although we don\u0027t need this support for now?",
+      "parentUuid": "60a2c80e_cace33ae",
       "range": {
         "startLine": 177,
         "startChar": 1,
