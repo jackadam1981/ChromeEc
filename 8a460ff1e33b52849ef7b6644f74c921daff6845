@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e366b90a_1d949971",
+        "filename": "common/queue.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-03T17:26:08Z",
+      "side": 1,
+      "message": "nit: add parenthesis here too please (since you are also touching the above line) for consistency.",
+      "range": {
+        "startLine": 100,
+        "startChar": 24,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "8a460ff1e33b52849ef7b6644f74c921daff6845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
