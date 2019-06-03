@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81962523_863cda53",
+        "filename": "common/queue.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-03T15:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40bbb3d2_2abf70b4",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd2820b0_3fbe800e",
         "filename": "common/queue.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5191592f_d286408d",
+        "filename": "common/queue.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-03T15:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2820b0_3fbe800e",
+      "range": {
+        "startLine": 86,
+        "startChar": 24,
+        "endLine": 86,
+        "endChar": 44
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d21c2315_bb8a23f2",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-03T15:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d221215_17b1dace",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30c771cc_a0f840c6",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -115,6 +187,30 @@
       "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad75af3_e44baeb9",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-03T15:55:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c771cc_a0f840c6",
+      "range": {
+        "startLine": 140,
+        "startChar": 51,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "9c89cc03_148203fc",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-03T15:55:08Z",
+      "side": 1,
+      "message": "Yup, that\u0027s the reason for adding the offset. Previously we couldn\u0027t get the writable chunk that was wrapped.",
+      "parentUuid": "228ee2e4_83d4cefa",
+      "range": {
+        "startLine": 141,
+        "startChar": 29,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b577ba0_c205c791",
         "filename": "include/queue.h",
         "patchSetId": 2
@@ -161,6 +281,30 @@
       "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a96c80_4bbc3281",
+        "filename": "include/queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-03T15:55:08Z",
+      "side": 1,
+      "message": "The memory might not always be continuous. In the example above we have indices 0, 1, 5, 6, 7 available to write. So if you want continuous memory you can either get 0,1 or 5,6,7. The previous implementation of this function always assumed continuous starting at the tail. For the next CL to work we needed to be able to wrap around using the offset.",
+      "parentUuid": "7b577ba0_c205c791",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 79
+      },
+      "revId": "6b26280fb45c50b7a731117a549ff44fba09f527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
