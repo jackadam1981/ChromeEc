@@ -70,6 +70,30 @@
       "revId": "e361d38062fac1a6854ad937b0dc27013d9a019c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cbc0c41_db799d57",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-03T18:29:27Z",
+      "side": 1,
+      "message": "Good catch, thanks.",
+      "parentUuid": "7f07e205_30d9906c",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 6
+      },
+      "revId": "e361d38062fac1a6854ad937b0dc27013d9a019c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
