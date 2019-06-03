@@ -5968,7 +5968,7 @@ int cmd_i2c_protect(int argc, char *argv[])
 }
 
 
-int do_i2c_xfer(unsigned int port, unsigned int addr,
+int do_i2c_xfer(unsigned int port, unsigned uint16_t addr,
 		uint8_t *write_buf, int write_len,
 		uint8_t **read_buf, int read_len) {
 	struct ec_params_i2c_passthru *p =
@@ -6037,12 +6037,17 @@ int cmd_i2c_read(int argc, char *argv[])
 	int read_len, write_len;
 	uint8_t write_buf[1];
 	uint8_t *read_buf = NULL;
+	int eight_bit_addr = 0;
 	char *e;
 	int rv;
 
-	if (argc != 5) {
-		fprintf(stderr, "Usage: %s <8 | 16> <port> <addr> <offset>\n",
-				argv[0]);
+	if (argc == 6) {
+		if (!strncmp(argv[5], "-8", 2))
+			eight_bit_addr = 1;
+	} else if (argc != 5) {
+		fprintf(stderr,
+			"Usage: %s <8 | 16> <port> <addr> <offset> [-8]\n",
+			argv[0]);
 		return -1;
 	}
 
@@ -6064,8 +6069,11 @@ int cmd_i2c_read(int argc, char *argv[])
 		fprintf(stderr, "Bad address.\n");
 		return -1;
 	}
-	/* Convert from 8-bit to 7-bit address */
-	addr = addr >> 1;
+	if (eight_bit_addr)
+		addr = addr | EC_I2C_FLAG_8BIT_ADDR;
+	else
+		/* Convert from 8-bit to 7-bit address */
+		addr = addr >> 1;
 
 	write_buf[0] = strtol(argv[4], &e, 0);
 	if (e && *e) {
@@ -6079,8 +6087,9 @@ int cmd_i2c_read(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("Read from I2C port %d at 0x%x offset 0x%x = 0x%x\n",
-		port, addr, write_buf[0], *(uint16_t *)read_buf);
+	printf("Read from I2C port %d at 0x%x(%d-bit) offset 0x%x = 0x%x\n",
+		port, addr & EC_I2C_ADDR_MASK, eight_bit_addr ? 8 : 7,
+		write_buf[0], *(uint16_t *)read_buf);
 	return 0;
 }
 
