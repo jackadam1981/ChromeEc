@@ -46,6 +46,30 @@
       "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "054af738_e399f6b3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5647,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-03T21:45:28Z",
+      "side": 1,
+      "message": "Both good suggestions, I\u0027m not married to either.\nThe bitmask option is probably good enough. I don\u0027t anticipate that we\u0027d re-arrange which bits mean what, I can\u0027t think of a reason to do that tbh.",
+      "parentUuid": "23615399_c4e78213",
+      "range": {
+        "startLine": 5647,
+        "startChar": 10,
+        "endLine": 5647,
+        "endChar": 24
+      },
+      "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
