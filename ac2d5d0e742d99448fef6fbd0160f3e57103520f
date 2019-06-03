@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9da0f545_cfd05922",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "yes, we don\u0027t maintain any client context for a fixed client.\nbut, In HECI spcec, bus addresses from 0x01 ~ 0x1F are reserved for fixed clients.\nSo dynamic client starts from 0x20 bus address and it uses the first(0th) client context element.",
+      "parentUuid": "9680c9c4_9be97734",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fdcf7c7_0de01b0d",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc15f5d1_86ff4c5d",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Oh.. yes.. ^.^;; how lazy.. \nThanks!!",
+      "parentUuid": "2fdcf7c7_0de01b0d",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9cc8ddd4_d0f17ec0",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "I\u0027ll make sure the second line aligned with open brace but I believe the operator should be at the end.",
+      "parentUuid": "744e790e_2b584a65",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f84c23a_48d59672",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -114,6 +186,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984242a1_d7a7cb2b",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f84c23a_48d59672",
+      "range": {
+        "startLine": 225,
+        "startChar": 16,
+        "endLine": 225,
+        "endChar": 17
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c1ef5705_d608438b",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "122bb0ca_f0d57c01",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 5
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4505211_8db34ca9",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -160,6 +280,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae872986_d63c0fea",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Let\u0027s have separate code clean up patch for these.",
+      "parentUuid": "b4505211_8db34ca9",
+      "range": {
+        "startLine": 668,
+        "startChar": 3,
+        "endLine": 668,
+        "endChar": 5
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "dbcce299_c528bda0",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "861dfa15_0d7b452a",
+      "range": {
+        "startLine": 681,
+        "startChar": 33,
+        "endLine": 681,
+        "endChar": 67
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a29b567_6a9193b3",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -206,6 +374,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7cd4462_cac9dfd2",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "This is about connection error between host client driver and fw client device.\nFlow control is only valid when there\u0027s connection established btw host and client.\nAfter the connection successfully created, each end should send flow control credit.",
+      "parentUuid": "3a29b567_6a9193b3",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 24
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "a98036ac_418fbad8",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "^.^;;; Honestly I can say this patch (most probably) fixes things we\u0027ve never seen and wouldn\u0027t see.\nperson who created the bug(https://partnerissuetracker.corp.google.com/issues/133300213) generated error pattern(which host driver never make) and directly injected to IPC to see FW can handle it since ,anyway, it\u0027s in HECI spec.",
+      "parentUuid": "c8aae552_388bbbe9",
+      "range": {
+        "startLine": 792,
+        "startChar": 2,
+        "endLine": 792,
+        "endChar": 40
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "057b77c0_3c4f3239",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -252,6 +468,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d369bcc_25ce594a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "same.",
+      "parentUuid": "057b77c0_3c4f3239",
+      "range": {
+        "startLine": 794,
+        "startChar": 4,
+        "endLine": 794,
+        "endChar": 5
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "9993c3d8_1e6dce2e",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a704ae6_cb45601b",
+      "range": {
+        "startLine": 963,
+        "startChar": 32,
+        "endLine": 963,
+        "endChar": 71
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3b13755_efca7f06",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -298,6 +562,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50897bea_76f92936",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "I\u0027ll add log. A fix client doesn\u0027t require connection and there\u0027s no flow control with it.",
+      "parentUuid": "f3b13755_efca7f06",
+      "range": {
+        "startLine": 964,
+        "startChar": 2,
+        "endLine": 969,
+        "endChar": 10
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "c73ff037_a2a4da73",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "12da453b_5f89c233",
+      "range": {
+        "startLine": 974,
+        "startChar": 4,
+        "endLine": 974,
+        "endChar": 5
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb2b011a_a362cdda",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -344,6 +656,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3739524_4afc743a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "I\u0027ll add printing error for the case, somehow, host has a fixed client driver but ISH fw doesn\u0027t have the corresponding fixed client device.",
+      "parentUuid": "eb2b011a_a362cdda",
+      "range": {
+        "startLine": 975,
+        "startChar": 2,
+        "endLine": 975,
+        "endChar": 6
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -370,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "b864c869_4ba2329b",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "No problem with this since it\u0027s aligned with open brace.",
+      "parentUuid": "1154af92_10244d7f",
+      "range": {
+        "startLine": 978,
+        "startChar": 4,
+        "endLine": 978,
+        "endChar": 5
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "569ccec0_e5bc2594",
         "filename": "chip/ish/heci.c",
         "patchSetId": 2
@@ -390,6 +750,30 @@
       "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55fd81c_5574be4c",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-03T21:25:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "569ccec0_e5bc2594",
+      "range": {
+        "startLine": 979,
+        "startChar": 10,
+        "endLine": 979,
+        "endChar": 38
+      },
+      "revId": "ac2d5d0e742d99448fef6fbd0160f3e57103520f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
