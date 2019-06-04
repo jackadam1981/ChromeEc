@@ -15,6 +15,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "power.h"
 #include "usb_pd.h"
 #include "util.h"
 
@@ -212,11 +213,14 @@ int charger_profile_override(struct charge_state_data *curr)
 			charge_get_percent() > BAT_LEVEL_PD_LIMIT &&
 			curr->batt.current < 1000)
 		chg_limit_mv = 5500;
+	/* TODO(b:134227872) quick fix */
+	else if (IS_ENABLED(BOARD_KRANE) && power_get_state() == POWER_S0)
+		chg_limit_mv = 5000;
 	else
 		chg_limit_mv = PD_MAX_VOLTAGE_MV;
 
 	if (chg_limit_mv != previous_chg_limit_mv)
-		CPRINTS("VBUS limited to %dmV", chg_limit_mv);
+		CPRINTS("\x1b[1;32mVBUS limited to %dmV\x1b[m", chg_limit_mv);
 	previous_chg_limit_mv = chg_limit_mv;
 
 	/* Pull down VBUS */
