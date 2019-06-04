@@ -94,6 +94,30 @@
       "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f619fc8f_16b1c78f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5647,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-04T20:26:33Z",
+      "side": 1,
+      "message": "You could also potentially use the EC command version.\n\nHere\u0027s an example:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/ec_commands.h#5522\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/ec_commands.h#5507\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/util/ectool.c#1616",
+      "parentUuid": "653d005c_9ed2595f",
+      "range": {
+        "startLine": 5647,
+        "startChar": 10,
+        "endLine": 5647,
+        "endChar": 24
+      },
+      "revId": "93fc4dd9f1fa037e47bfb54531a632491aea1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
