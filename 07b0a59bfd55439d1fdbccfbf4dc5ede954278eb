@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04853600_5961de4a",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-04T16:00:18Z",
+      "side": 1,
+      "message": "On page 1220 of the user manual, id 0x460 is used for STM32G071xx and STM32G081xx. Id 0x466 is used for STM32G031xx and STM32G041xx. Maybe we should change the name from STM32G0x1 to STM32G071xx and we\u0027ll just add another sections if any of the other parts STM32G031xx or STM32G041xx is used.",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 205,
+        "endChar": 21
+      },
+      "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "679d02c3_836d2a67",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-04T16:00:18Z",
+      "side": 1,
+      "message": "STM32G071xx has 128 KB, 0x20000",
+      "range": {
+        "startLine": 206,
+        "startChar": 16,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946ce4e3_c1bbedf8",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-04T16:00:18Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 240,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 6
+      },
+      "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
