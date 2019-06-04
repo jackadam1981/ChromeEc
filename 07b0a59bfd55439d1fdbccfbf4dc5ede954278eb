@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bf42770_72294988",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-04T16:39:17Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "04853600_5961de4a",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 205,
+        "endChar": 21
+      },
+      "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "679d02c3_836d2a67",
         "filename": "util/stm32mon.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "090f2b0d_e5ebe1b0",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-04T16:39:17Z",
+      "side": 1,
+      "message": "I see, thanks.  I do not know what this field is used for, though, when we also have flash_size_addr below.  I wonder whether STM32G081 and any future chip which may share the 0x460 code would all have 128kB, or whether we should set this field to zero, to emphasize that one needs to look at the content of a particular address, to find the size of the flash.\n\nThe STM32F412 has both a hard-coded value, and flash size address, so for now, I will do the same here.",
+      "parentUuid": "679d02c3_836d2a67",
+      "range": {
+        "startLine": 206,
+        "startChar": 16,
+        "endLine": 206,
+        "endChar": 24
+      },
+      "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "946ce4e3_c1bbedf8",
         "filename": "util/stm32mon.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef93a7cf_f7fa806b",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-04T16:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "946ce4e3_c1bbedf8",
+      "range": {
+        "startLine": 240,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 6
+      },
+      "revId": "07b0a59bfd55439d1fdbccfbf4dc5ede954278eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
