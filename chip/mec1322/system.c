@@ -369,13 +369,30 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	}
 
 	if (seconds || microseconds) {
+		/*
+		 * Disable BLOCK ENABLE Clr REGISTER bit17 to disabled to
+		 * assert an interrupt event to the EC
+		 */
+		MEC1322_INT_BLK_DIS |= 1 << 17;
+ 		/* clr GIRQ17 source bit 20 (HTIMER) */
+		MEC1322_INT_SOURCE(17) |= 1 << 20;
+ 		/* clr pending IRQ event number 38 */
+		task_clear_pending_irq(MEC1322_IRQ_HTIMER);
+		/*
+		 * Enable BLOCK ENABLE SET REGISTER (4000C200) bit17 to enabled
+		 * to assert an interrupt event to the EC
+		 */
 		MEC1322_INT_BLK_EN |= 1 << 17;
+		/* Enable GIRQ17 Enable Set Register(4000C0B8) bit 20 (HTIMER */
 		MEC1322_INT_ENABLE(17) |= 1 << 20;
 		interrupt_enable();
+		/* Send IRQ event number 38 */
 		task_enable_irq(MEC1322_IRQ_HTIMER);
 		if (seconds > 2) {
 			ASSERT(seconds <= 0xffff / 8);
+			/* Enable Hibernation Timer (40009804) */
 			MEC1322_HTIMER_CONTROL = 1;
+			/* Set HTimer x Preload Register (40009800) */
 			MEC1322_HTIMER_PRELOAD =
 				(seconds * 8 + microseconds / 125000);
 		} else {
