@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
+#include "uartn.h"
 
 /*
  * The Cr50's ARM core has two GPIO ports of 16 bits each. Each GPIO signal
@@ -43,6 +44,10 @@ void gpio_set_level(enum gpio_signal signal, int value)
 		if (value) {
 			GR_GPIO_CLRDOUTEN(g->port) = g->mask;
 			/* Don't ever set ODR output to HIGH. */
+#ifdef UART_EC
+			if (signal == GPIO_EC_TX_CR50_RX_OUT)
+				uartn_init(UART_EC);
+#endif
 			return;
 		}
 		GR_GPIO_SETDOUTEN(g->port) = g->mask;
