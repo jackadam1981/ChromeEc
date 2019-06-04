@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87bcec6c_a21a38fd",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "presubmit checks are failing here",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f12f69_1166d5bf",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "over-indented",
+      "range": {
+        "startLine": 568,
+        "startChar": 3,
+        "endLine": 568,
+        "endChar": 5
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e6dfc7_a0b5a709",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "over-indented",
+      "range": {
+        "startLine": 668,
+        "startChar": 3,
+        "endLine": 668,
+        "endChar": 5
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bb1e91_7e071b43",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "remove duplicate comment",
+      "range": {
+        "startLine": 683,
+        "startChar": 33,
+        "endLine": 683,
+        "endChar": 67
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f961ea1_e15b340d",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "over-indented",
+      "range": {
+        "startLine": 796,
+        "startChar": 4,
+        "endLine": 796,
+        "endChar": 5
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d516a41e_fe147f87",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "seems redundant with below comments",
+      "range": {
+        "startLine": 965,
+        "startChar": 1,
+        "endLine": 965,
+        "endChar": 70
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161240eb_e010721c",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "use CPRINTS instead",
+      "range": {
+        "startLine": 972,
+        "startChar": 3,
+        "endLine": 972,
+        "endChar": 10
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf08ca76_c1ec1af0",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "CPRINTS",
+      "range": {
+        "startLine": 985,
+        "startChar": 3,
+        "endLine": 985,
+        "endChar": 10
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bb4a44_b27fd909",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T00:11:25Z",
+      "side": 1,
+      "message": "put inside of else, and don\u0027t abbreviate, like this:\n\n    } else {\n            /* Message is for dynamic client */\n            ...",
+      "range": {
+        "startLine": 987,
+        "startChar": 1,
+        "endLine": 987,
+        "endChar": 46
+      },
+      "revId": "4af56e050d3bf57a79c9c7df37bf508398523801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
