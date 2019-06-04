@@ -247,6 +247,30 @@
       "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796781c7_6ed73ec4",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T17:25:39Z",
+      "side": 1,
+      "message": "I get why we would want to halt... the last_deadline won\u0027t be updated until we get another interrupt anyway, so wait until we get another interrupt.\n\nHowever, I think there has to be a better way to solve this. Perhaps could we change the definition of __hw_clock_event_get to never return times less than get_time().le.lo? This would also allow us to use a uint32_t like Jett mentioned.",
+      "parentUuid": "95c130b5_f09c0910",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
