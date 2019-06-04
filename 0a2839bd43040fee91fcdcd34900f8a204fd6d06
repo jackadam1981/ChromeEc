@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43072394_1e51581b",
+        "filename": "chip/it83xx/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Yes, I fixed it by removing unnecessary description.",
+      "parentUuid": "a346657b_51d6287c",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08bd9121_4e78e68d",
         "filename": "chip/it83xx/clock.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d59ed1_adc1ca6e",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Done. Thanks for your info.",
+      "parentUuid": "08bd9121_4e78e68d",
+      "range": {
+        "startLine": 428,
+        "startChar": 7,
+        "endLine": 428,
+        "endChar": 29
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2924db79_128d4c61",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Good idea, let\u0027s do it.",
+      "parentUuid": "0aad3612_914a99ba",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f500d921_eb025b71",
         "filename": "chip/it83xx/flash.c",
         "patchSetId": 14
@@ -91,6 +163,30 @@
       "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1880665_23a5d48d",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f500d921_eb025b71",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8436da12_b4a0a95a",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67febd6f_00ea2bf3",
+      "range": {
+        "startLine": 63,
+        "startChar": 47,
+        "endLine": 63,
+        "endChar": 55
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c577b8e1_e37ff483",
         "filename": "chip/it83xx/system.c",
         "patchSetId": 14
@@ -137,6 +257,30 @@
       "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37191dc8_b1bc7cc5",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c577b8e1_e37ff483",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 52
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "716b3185_2fb2c30b",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "We use this code to extract address field (bit23-0) from a jump instruction at the beginning of image copy (reset vector).\nActually this is not necessary, we will get the same result no matter it’s jumping to the reset vector or to the address. We can simplify it.",
+      "parentUuid": "fc8c434f_acd47265",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 22
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "773a7d73_e3936952",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 14
@@ -183,6 +351,30 @@
       "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71200d34_3ca34682",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "773a7d73_e3936952",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -229,6 +421,30 @@
       "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e4ec37_6e1a812e",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-04T07:38:49Z",
+      "side": 1,
+      "message": "Yes, we can. I change to use atomic operation instead of disabling interrupts.",
+      "parentUuid": "216518fb_49207879",
+      "range": {
+        "startLine": 548,
+        "startChar": 1,
+        "endLine": 548,
+        "endChar": 18
+      },
+      "revId": "0a2839bd43040fee91fcdcd34900f8a204fd6d06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
