@@ -161,22 +161,32 @@ static inline uint64_t read_main_timer(void)
 void __hw_clock_event_set(uint32_t deadline)
 {
 	uint32_t remaining_us;
+	uint32_t current_us;
+	uint64_t current_ticks;
 
-	last_deadline = deadline;
-
-	remaining_us = deadline - __hw_clock_source_read();
-
-	/* Ensure HW has enough time to react to new timer value */
-	remaining_us = MAX(remaining_us, MINIMUM_EVENT_DELAY_US);
+	/* 'current_ticks' is the current obsolute 64bit HW timer counter */
+	current_ticks = read_main_timer();
+	/*
+	 * 'current_us' is the low 32bit part of current time in 64bit micro
+	 * seconds format, it's can express 2^32 micro seconds in maximum.
+	 */
+	current_us = scale_ticks2us(current_ticks);
+	remaining_us = deadline - current_us;
 
 	/*
-	 * For ISH3, this assumes that remaining_us is less than 360 seconds
-	 * (2^32 us / 12Mhz), otherwise we would need to handle 32-bit rollover
-	 * of 12Mhz timer comparator value. Watchdog refresh happens at least
-	 * every 10 seconds.
+	 * Compute new last deadline time, to ensure HW has enough time to
+	 * react to the new timer value, we make remaining time not less than
+	 * 'MINIMUM_EVENT_DELAY_US'
 	 */
+	remaining_us = MAX(remaining_us, MINIMUM_EVENT_DELAY_US);
+	last_deadline = remaining_us + current_us;
+
 	wait_while_settling(HPET_T1_CMP_SETTLING);
-	HPET_TIMER_COMP(1) = read_main_timer() + scale_us2ticks(remaining_us);
+	/*
+	 * Set new 64bit obsolute timeout ticks to Timer 1 comparator
+	 * register
+	 */
+	HPET_TIMER_COMP(1) = current_ticks + scale_us2ticks(remaining_us);
 
 	wait_while_settling(HPET_T1_SETTLING);
 
