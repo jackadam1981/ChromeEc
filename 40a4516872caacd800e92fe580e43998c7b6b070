@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "e02c12a6_ed98c24d",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-04T18:56:18Z",
+      "side": 1,
+      "message": "Removed sleep. Add a few spaces instead, and strip the leading spaces from the captured file.\nTested it on cr50, ec, cpu console of bob.",
+      "parentUuid": "51f5d17a_3771ad7b",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 8
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ba07013_6e8c682d",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 19
@@ -258,6 +282,30 @@
       "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9f2b1a_7b7e83f3",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-04T18:56:18Z",
+      "side": 1,
+      "message": "Reverted this part (as in pathch#13), and will make another CL for this.",
+      "parentUuid": "e33ca493_50dbb387",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 72
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
