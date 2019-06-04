@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "51f5d17a_3771ad7b",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-04T16:26:48Z",
+      "side": 1,
+      "message": "Does this happen because H1 is falling asleep? Could this be alleviated by adding a couple of spaces before \u0027help\u0027?",
+      "parentUuid": "8f1d2472_cda45123",
+      "range": {
+        "startLine": 270,
+        "startChar": 3,
+        "endLine": 270,
+        "endChar": 8
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ba07013_6e8c682d",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 19
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "s/sec/s",
       "parentUuid": "8ba07013_6e8c682d",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 72
+      },
+      "revId": "40a4516872caacd800e92fe580e43998c7b6b070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33ca493_50dbb387",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-04T16:26:48Z",
+      "side": 1,
+      "message": "this does not fully address my comment. Why are you adding unrelated change to a patch under review, this makes review cycles longer and more complicated.\n\nIt is much better to add a small patch on top of the main one.",
+      "parentUuid": "1bf934bd_3cd18be9",
       "range": {
         "startLine": 337,
         "startChar": 0,
