@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "124e951d_61316ac5",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-04T16:05:16Z",
+      "side": 1,
+      "message": "nit: if this were a do ... while loop, then you wouldn\u0027t need to set rv in line 149. it would just work :)",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 2
+      },
+      "revId": "b3631ac3453f581d056ef559a8e1378bfad61c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
