@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51fc7fc8_6baa5fb2",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-04T16:36:47Z",
+      "side": 1,
+      "message": "this need a new issue to track and please put issue number in comments here",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "2b9065c9a12f36ae6eb74d05fabea0b9568817d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5237b3a0_c7202241",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-04T16:36:47Z",
+      "side": 1,
+      "message": "we should be able to implement this with an atomic compare exchange. Can you look at other implementations in core/* please",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 20
+      },
+      "revId": "2b9065c9a12f36ae6eb74d05fabea0b9568817d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
