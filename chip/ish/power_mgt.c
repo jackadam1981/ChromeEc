@@ -585,7 +585,24 @@ void __idle(void)
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
-		pm_process(t0, next_delay);
+		/*
+		 * In most time, 'next_delay' should be always positive, but
+		 * ISH HPET timer HW has some latency for interrupt, so it's
+		 * possible in some times when its very close to the expire
+		 * time of the event timer, the current time could advance the
+		 * 'last_deadline' which should be updated in event timer ISR,
+		 * in this case, 'next_delay' could be negative.
+		 *
+		 * We calibrated the 'last_deadline' in timer driver for
+		 * this interrupt latency impact.
+		 *
+		 * So, the negative case for 'next_delay' should be not happen.
+		 * If still happens, its doesn't matter, we can just ignore it,
+		 * and if not want to see this case, can adjust the
+		 * 'HPET_INT_LATENCY_TICKS' for new calibration till its not
+		 * happen anymore.
+		 */
+		pm_process(t0, MAX(0, next_delay));
 	}
 }
 
