@@ -22,6 +22,29 @@
       "revId": "43bdd0db7ea9fd6fa942c97175eb56922110965c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea65351_f0a47ccd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 5397,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-04T16:14:46Z",
+      "side": 1,
+      "message": "technically this would be a 11-bit address now",
+      "range": {
+        "startLine": 5397,
+        "startChar": 29,
+        "endLine": 5397,
+        "endChar": 35
+      },
+      "revId": "43bdd0db7ea9fd6fa942c97175eb56922110965c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
