@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "8a1a3f85_dc975b11",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-04T16:02:21Z",
+      "side": 1,
+      "message": "I think it would be better to remove it just so we don\u0027t think it is a valid or even rare condition that will be met.",
+      "parentUuid": "0549742d_e7badc48",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 2
+      },
+      "revId": "c633892374bd97104da496263cdf1c17e0a2aeef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3607506a_85bcc6e0",
         "filename": "common/motion_sense.c",
         "patchSetId": 3
