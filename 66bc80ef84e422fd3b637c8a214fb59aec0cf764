@@ -223,6 +223,30 @@
       "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c130b5_f09c0910",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-04T16:41:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be just make next_delay a uint32_t instead. There should not be a negative case. The negative case means that we are sleeping for a long time",
+      "parentUuid": "419cece2_9bf853f9",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
