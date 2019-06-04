@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1485aa02_ff7d3bf6",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-04T16:22:13Z",
+      "side": 1,
+      "message": "Yes, I meant to change this to a more descriptive name.",
+      "parentUuid": "50671884_f0f5cad4",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "ea2a51b185d35a7fe94947031a49e046b4634cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52b4f9c5_8e62e32f",
         "filename": "include/usb_tc_sm.h",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "ea2a51b185d35a7fe94947031a49e046b4634cff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a3aab1e_6608d154",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-04T16:22:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52b4f9c5_8e62e32f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "ea2a51b185d35a7fe94947031a49e046b4634cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
