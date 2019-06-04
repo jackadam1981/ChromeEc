@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e95a70f_0a378711",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "nit: remove extra line",
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd94d6bd_3d09d485",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "Comment probably needs updated to reflect the computation of last_deadline instead.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6ec8fd_b796f072",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "remove extra star",
+      "range": {
+        "startLine": 620,
+        "startChar": 4,
+        "endLine": 620,
+        "endChar": 5
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d51edc9_c6478c1b",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "cases. For example,",
+      "range": {
+        "startLine": 622,
+        "startChar": 31,
+        "endLine": 622,
+        "endChar": 45
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71c63fc_c44e73bc",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "missing: to be",
+      "range": {
+        "startLine": 622,
+        "startChar": 13,
+        "endLine": 622,
+        "endChar": 14
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b043409_121d407f",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "potentially switching",
+      "range": {
+        "startLine": 625,
+        "startChar": 30,
+        "endLine": 625,
+        "endChar": 54
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb59061_93546d21",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "handler. Since",
+      "range": {
+        "startLine": 626,
+        "startChar": 38,
+        "endLine": 626,
+        "endChar": 52
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5b03f0_2bef3c77",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "have advanced",
+      "range": {
+        "startLine": 629,
+        "startChar": 24,
+        "endLine": 629,
+        "endChar": 34
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7fd8f45_f6254dd1",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "remove: the",
+      "range": {
+        "startLine": 629,
+        "startChar": 50,
+        "endLine": 629,
+        "endChar": 53
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419cece2_9bf853f9",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-04T12:54:45Z",
+      "side": 1,
+      "message": "Why even halt at all in the negative case? It seems appropriate here to return to the top of the loop and try for a new next_delay again.",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
