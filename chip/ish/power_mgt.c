@@ -617,7 +617,26 @@ void __idle(void)
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
-		pm_process(t0, next_delay);
+		/**
+		 * In normal case, 'next_delay' should be positive, but it's
+		 * possible negative in some cases, such as some higher
+		 * priority interrupt coming with hw event timer interrupt
+		 * almost at same time, the high priority interrupt's handler
+		 * will be called at first, and it's could be switch to idle
+		 * task here at the end of this irq handler, since the event
+		 * timer interrupt has been delayed, and the next event time
+		 * via __hw_clock_event_get() hasn't been updated yet, the
+		 * current time could be advance, in this case, the 'next_delay'
+		 * chould be negative.
+		 *
+		 * We only handle low power process when 'next_delay' is
+		 * positive and just halt minute-ia core for negative case.
+		 *
+		 */
+		if (next_delay > 0)
+			pm_process(t0, next_delay);
+		else
+			ish_mia_halt();
 	}
 }
 

@@ -161,13 +161,15 @@ static inline uint64_t read_main_timer(void)
 void __hw_clock_event_set(uint32_t deadline)
 {
 	uint32_t remaining_us;
+	uint32_t current_us;
 
-	last_deadline = deadline;
-
-	remaining_us = deadline - __hw_clock_source_read();
+	current_us = __hw_clock_source_read();
+	remaining_us = deadline - current_us;
 
 	/* Ensure HW has enough time to react to new timer value */
 	remaining_us = MAX(remaining_us, MINIMUM_EVENT_DELAY_US);
+
+	last_deadline = remaining_us + current_us;
 
 	/*
 	 * For ISH3, this assumes that remaining_us is less than 360 seconds
@@ -176,7 +178,7 @@ void __hw_clock_event_set(uint32_t deadline)
 	 * every 10 seconds.
 	 */
 	wait_while_settling(HPET_T1_CMP_SETTLING);
-	HPET_TIMER_COMP(1) = read_main_timer() + scale_us2ticks(remaining_us);
+	HPET_TIMER_COMP(1) = scale_us2ticks(last_deadline);
 
 	wait_while_settling(HPET_T1_SETTLING);
 
