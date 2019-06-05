@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46d39d6a_0a7b934a",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:39:11Z",
+      "side": 1,
+      "message": "nit: can you make the entire i2c_info struct in each define section even though we will repeat the port. I think it will make it easier to read",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "265425af28264af28f2138d8f927c887f40e9b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17bfd921_2506e034",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:39:11Z",
+      "side": 1,
+      "message": "nit: we can use the actual enum here right since it is not on the host interface?",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 17
+      },
+      "revId": "265425af28264af28f2138d8f927c887f40e9b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
