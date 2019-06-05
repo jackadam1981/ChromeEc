@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "a7a69501_7bd926b6",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-05T13:02:27Z",
+      "side": 1,
+      "message": "ok, i will remove it",
+      "parentUuid": "c3f53a6c_c4b5bd94",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 29
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8623be7b_f5e83fdd",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
@@ -82,6 +106,30 @@
       "writtenOn": "2019-05-25T00:07:59Z",
       "side": 1,
       "message": "How did you come up with this delay?",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401fb0c9_d32d3094",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-05T13:02:27Z",
+      "side": 1,
+      "message": "HW tell me toggle bc12 need 40ms delay that bc12 will work",
+      "parentUuid": "8623be7b_f5e83fdd",
       "range": {
         "startLine": 925,
         "startChar": 1,
