@@ -45,6 +45,30 @@
       "revId": "eefb2fbf87ab53f94e8dab08772ce801c98e8afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d8de03_53af2781",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-05T06:07:00Z",
+      "side": 1,
+      "message": "btw, this fix should be only for krane rev3, so how about add a board_get_version() check here.",
+      "parentUuid": "2e82536c_4942ac7a",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 5
+      },
+      "revId": "eefb2fbf87ab53f94e8dab08772ce801c98e8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
