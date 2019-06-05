@@ -238,11 +238,14 @@ int DCRYPTO_ladder_random(void *output)
 {
 	int error = 1;
 	uint32_t tmp[8];
+#if 0
 	int i;
+#endif
 
 	if (!dcrypto_grab_sha_hw())
 		goto fail;
 
+#if 0
 	rand_bytes(tmp, sizeof(tmp));
 	error = ladder_step(KEYMGR_CERT_28, tmp);
 	if (error)
@@ -260,6 +263,7 @@ int DCRYPTO_ladder_random(void *output)
 		goto fail;
 	if (ladder_step(KEYMGR_CERT_34, ISR_SALT))
 		goto fail;
+#endif
 
 	rand_bytes(tmp, sizeof(tmp));
 	error = ladder_step(KEYMGR_CERT_27, tmp);
