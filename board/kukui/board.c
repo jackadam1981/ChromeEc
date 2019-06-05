@@ -441,6 +441,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
+#ifdef CONFIG_MAG_BMI160_BMM150
 	[LID_MAG] = {
 	 .name = "Lid Mag",
 	 .active_mask = SENSOR_ACTIVE_S0,
@@ -457,6 +458,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMM150_MAG_MIN_FREQ,
 	 .max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
 	},
+#endif
 	[VSYNC] = {
 	 .name = "Camera vsync",
 	 .active_mask = SENSOR_ACTIVE_S0,
