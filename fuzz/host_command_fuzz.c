@@ -13,6 +13,7 @@
 #include "host_command.h"
 #include "host_test.h"
 #include "task.h"
+#include "test/fpsensor_mock.h"
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"

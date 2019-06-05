@@ -6,6 +6,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "fpsensor_crypto.h"
+#include "fpsensor_mock.h"
 #include "fpsensor_state.h"
 #include "host_command.h"
 #include "test_util.h"
