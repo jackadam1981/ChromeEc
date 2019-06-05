@@ -19,6 +19,20 @@
 /* Panic data goes at the end of RAM. */
 static struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
 
+/* Common SW Panic reasons strings */
+#ifdef CONFIG_SOFTWARE_PANIC
+const char * const panic_sw_reasons[] = {
+	"PANIC_SW_DIV_ZERO",
+	"PANIC_SW_STACK_OVERFLOW",
+	"PANIC_SW_PD_CRASH",
+	"PANIC_SW_ASSERT",
+	"PANIC_SW_WATCHDOG",
+	"PANIC_SW_RNG",
+	"PANIC_SW_PMIC_FAULT",
+	NULL,
+};
+#endif
+
 /**
  * Add a character directly to the UART buffer.
  *
