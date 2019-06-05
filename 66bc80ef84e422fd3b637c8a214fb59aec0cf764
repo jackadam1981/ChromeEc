@@ -529,6 +529,30 @@
       "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa0fd091_61c45abc",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-05T18:58:50Z",
+      "side": 1,
+      "message": "If we make the timer interrupt highest priority, then will next_delay never be negative, anyway? What other paths could lead to next_delay being negative? (NMI?)",
+      "parentUuid": "346e2ab4_8d4e7cb0",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
