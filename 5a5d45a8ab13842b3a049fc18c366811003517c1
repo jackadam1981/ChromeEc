@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bccd7326_7e174c88",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-05T20:00:27Z",
+      "side": 1,
+      "message": "It\u0027s weird that there is a QUEUE_SIZE_UART_RX and QUEUE_SIZE_UART_IN variable. should this be QUEUE_SIZE_USB or QUEUE_SIZE_USB_TO_UART or something? I guess this isn\u0027t entirely necessary for the change since QUEUE_SIZE_UART_IN already existed, but these names are weird.",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

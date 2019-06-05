@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a059be07_987a3a70",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-05T20:00:27Z",
+      "side": 0,
+      "message": "I think this change increases the complexity of the tx fifo handler a lot. Are we having issues with the cr50 usb console dropping characters?\n\nI think we should remove the usb_console.c changes from this change. And just work on getting usb_console to use usb-stream later.",
+      "revId": "d54a230e9e9bf9ee83cd7022a03dffadd6d98e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
