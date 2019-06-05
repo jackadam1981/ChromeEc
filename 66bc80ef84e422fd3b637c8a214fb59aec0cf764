@@ -505,6 +505,30 @@
       "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "346e2ab4_8d4e7cb0",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "I do think we should make the timer interrupt higher priority to reduce the chances of this happening",
+      "parentUuid": "c8368737_afbe9ea7",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

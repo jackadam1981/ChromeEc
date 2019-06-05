@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9eaf0946_5a092a5f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "this is definitely a good change",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 43
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ea528e3_1fe61a6b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "this addition here was important for the case when the clock has rolled over 2^32 micros seconds. Scaling absolute value will not work. The line from ToT is correct (the comment you remove is try to make that clear, maybe we need to add more text)",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0119389_9b4f184d",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "s/chould/could/",
+      "range": {
+        "startLine": 630,
+        "startChar": 24,
+        "endLine": 630,
+        "endChar": 30
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57168f0a_6021e093",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "what about going into d0i0?",
+      "range": {
+        "startLine": 639,
+        "startChar": 3,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
