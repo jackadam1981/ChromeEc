@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a61f1326_baef60c7",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T19:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4be94b5_e44a0fa1",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d71b08a_0769711e",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39000534_72028746",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T19:55:14Z",
+      "side": 1,
+      "message": "\"bool\" is not recognized in the current compiling setting:\ncommon//fpsensor//fpsensor.c: In function \u0027rand_finger_id\u0027:                             \ncommon//fpsensor//fpsensor.c:110:2: error: unknown type name \u0027bool\u0027; did you mean \u0027_Bool\u0027?                                                 \n  bool collision;                                                                    \n  ^~~~                                                                                   \n  _Bool",
+      "parentUuid": "7d71b08a_0769711e",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "6aa6168e_a9137fbb",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T19:55:14Z",
+      "side": 1,
+      "message": "Done. I don\u0027t remember seeing a warning for that.",
+      "parentUuid": "e1861f2e_831fe837",
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e9ac1e7_50abd462",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -108,6 +162,30 @@
       "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a679aa26_a55e0d6e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T19:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e9ac1e7_50abd462",
+      "range": {
+        "startLine": 169,
+        "startChar": 25,
+        "endLine": 169,
+        "endChar": 26
+      },
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +233,30 @@
       "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f63ce9_0f4a927a",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T19:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d4c6aa6_09a08c8d",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "78c707552d70f0b054337d71937d7f3636c91e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
