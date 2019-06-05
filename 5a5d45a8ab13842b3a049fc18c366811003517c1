@@ -22,6 +22,30 @@
       "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f60527_0486e496",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-05T21:41:51Z",
+      "side": 1,
+      "message": "I agree that this is weird. \nHow about \u0027s/QUEUE_SIZE_UART_IN/QUEUE_SIZE_UART_TX\u0027 and do the same for macros in line 31~33?",
+      "parentUuid": "bccd7326_7e174c88",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
