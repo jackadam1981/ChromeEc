@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28d6496a_2c0ebc71",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1314116
+      },
+      "writtenOn": "2019-06-05T03:54:08Z",
+      "side": 0,
+      "message": "Why do we need to remove EC_HOST_EVENT_RTC here?",
+      "range": {
+        "startLine": 218,
+        "startChar": 22,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "03fdd40624e42fd9e156f76693f72d64bc509518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
