@@ -56,7 +56,12 @@ void fp_clear_finger_context(int idx)
 	memset(fp_template[idx], 0, sizeof(fp_template[0]));
 }
 
-void fp_clear_context(void)
+/**
+ * @warning |fp_buffer| contains data used by the matching algorithm that must
+ * be released by calling fp_sensor_deinit() first. Call
+ * fp_reset_and_clear_context instead of calling this directly.
+ */
+static void _fp_clear_context(void)
 {
 	int idx;
 
@@ -67,7 +72,14 @@ void fp_clear_context(void)
 	memset(user_id, 0, sizeof(user_id));
 	for (idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
-	/* TODO maybe shutdown and re-init the private libraries ? */
+}
+
+void fp_reset_and_clear_context()
+{
+	CPRINTS(__PRETTY_FUNCTION__);
+	(void)fp_sensor_deinit();  /* Not much we can do if this fails */
+	_fp_clear_context();
+	(void)fp_sensor_init();
 }
 
 int fp_get_next_event(uint8_t *out)
@@ -168,7 +180,7 @@ static int fp_command_context(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_context *params = args->params;
 
-	fp_clear_context();
+	fp_reset_and_clear_context();
 
 	memcpy(user_id, params->userid, sizeof(user_id));
 
