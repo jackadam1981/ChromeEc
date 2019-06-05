@@ -14,6 +14,9 @@
 #include "timer.h"
 #include "util.h"
 
+#define PANIC_SW_BASE_MASK	0xFFFFFFF8
+#define PANIC_SW_REASON_MASK	0x00000007
+
 /*
  * This array maps an interrupt vector number to the corresponding
  * exception name. See see "Intel 64 and IA-32 Architectures Software
@@ -43,6 +46,18 @@ const static char *panic_reason[] = {
 	"Virtualization Exception",
 };
 
+/* Software panic reasons */
+static const char * const panic_sw_reasons[8] = {
+	"PANIC_SW_DIV_ZERO",
+	"PANIC_SW_STACK_OVERFLOW",
+	"PANIC_SW_PD_CRASH",
+	"PANIC_SW_ASSERT",
+	"PANIC_SW_WATCHDOG",
+	"PANIC_SW_RNG",
+	"PANIC_SW_PMIC_FAULT",
+	NULL,
+};
+
 /*
  * Print panic data. This may be called either from the report_panic
  * procedure (below) while handling a panic, or from the panicinfo
@@ -54,6 +69,14 @@ void panic_data_print(const struct panic_data *pdata)
 		panic_printf("Reason: Watchdog Expiration\n");
 	else if (pdata->x86.vector <= 20)
 		panic_printf("Reason: %s\n", panic_reason[pdata->x86.vector]);
+	else if (IS_ENABLED(CONFIG_SOFTWARE_PANIC) &&
+		 (pdata->x86.vector & PANIC_SW_BASE_MASK) == PANIC_SW_BASE) {
+		panic_printf("Software panic reason %s\n",
+			     panic_sw_reasons[pdata->x86.vector &
+					      PANIC_SW_REASON_MASK]);
+		panic_printf("Software panic info 0x%x\n",
+			     pdata->x86.error_code);
+	}
 	else
 		panic_printf("Interrupt vector number: 0x%08X (unknown)\n",
 			     pdata->x86.vector);
@@ -139,6 +162,10 @@ __attribute__ ((noreturn)) void __keep exception_panic(
 	} else if (vector == ISH_WDT_VEC) {
 		panic_once = 1;
 		system_reset(SYSTEM_RESET_AP_WATCHDOG);
+	} else if (IS_ENABLED(CONFIG_SOFTWARE_PANIC) &&
+		   (vector & PANIC_SW_BASE_MASK) == PANIC_SW_BASE) {
+		panic_once = 1;
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
 	} else {
 		panic_once = 1;
 		system_reset(0);
@@ -150,16 +177,45 @@ __attribute__ ((noreturn)) void __keep exception_panic(
 #ifdef CONFIG_SOFTWARE_PANIC
 void software_panic(uint32_t reason, uint32_t info)
 {
-	/* TODO: store panic log */
+	uint16_t code_segment;
+	uint32_t instr_pointer;
+
+	/* Get the return address from the top of stack */
+	__asm__ volatile ("popl  %0":"=m" (instr_pointer));
+	__asm__ volatile ("pushl %0"::"m" (instr_pointer));
+
+	/* Get the current code segment */
+	__asm__ volatile ("movw  %%cs, %0":"=m" (code_segment));
+
+	exception_panic(reason, info, instr_pointer, code_segment, 0);
 	while (1)
 		continue;
 }
 
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 {
+	/* Setup panic data structure */
+	memset(PANIC_DATA_PTR, 0, sizeof(struct panic_data));
+	PANIC_DATA_PTR->magic = PANIC_DATA_MAGIC;
+	PANIC_DATA_PTR->struct_size = sizeof(struct panic_data);
+	PANIC_DATA_PTR->struct_version = 2;
+	PANIC_DATA_PTR->arch = PANIC_ARCH_X86;
+
+	/* Log panic cause */
+	PANIC_DATA_PTR->x86.vector = reason;
+	PANIC_DATA_PTR->x86.error_code = info;
+	PANIC_DATA_PTR->x86.eflags = exception;
 }
 
 void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 {
+	if (PANIC_DATA_PTR->magic == PANIC_DATA_MAGIC &&
+	    PANIC_DATA_PTR->struct_version == 2) {
+		*reason = PANIC_DATA_PTR->x86.vector;
+		*info = PANIC_DATA_PTR->x86.error_code;
+		*exception = PANIC_DATA_PTR->x86.eflags;
+	} else {
+		*reason = *info = *exception = 0;
+	}
 }
 #endif
