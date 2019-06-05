@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8f2c574_5231ac32",
+        "filename": "chip/g/usb-stream.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-05T22:32:55Z",
+      "side": 1,
+      "message": "Missed to convert this to int type.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "015f7215adff94bb27231b163725e9c0a6cc1787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
