@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d134a3fc_9a3f05e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-05T06:05:00Z",
+      "side": 1,
+      "message": "Elaborate more about how you test?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "eefb2fbf87ab53f94e8dab08772ce801c98e8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e82536c_4942ac7a",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-05T06:05:00Z",
+      "side": 1,
+      "message": "} else\nand also below, since we have braces.",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 5
+      },
+      "revId": "eefb2fbf87ab53f94e8dab08772ce801c98e8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
