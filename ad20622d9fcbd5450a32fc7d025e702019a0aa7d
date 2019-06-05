@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6444689f_00a430e5",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-05T15:52:25Z",
+      "side": 1,
+      "message": "Missed to put this flag in the previous patch.",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 12
+      },
+      "revId": "ad20622d9fcbd5450a32fc7d025e702019a0aa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
