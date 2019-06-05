@@ -163,7 +163,11 @@ static int command_crash(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	if (!strcasecmp(argv[1], "assert")) {
+#ifdef CONFIG_SOFTWARE_PANIC
+		software_panic(PANIC_SW_ASSERT, __LINE__);
+#else
 		ASSERT(0);
+#endif
 	} else if (!strcasecmp(argv[1], "divzero")) {
 		volatile int zero = 0;
 
