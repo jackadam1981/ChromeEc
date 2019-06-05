@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f5a142d_7a94b151",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-05T01:10:58Z",
+      "side": 1,
+      "message": "const uint8_t *\n\nprobably also have to change derive_encryption_key signature or the compiler will complain",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62e6a5b_4ccc8b83",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-05T01:10:58Z",
+      "side": 1,
+      "message": "Let\u0027s add an assert that out_key_size \u003c\u003d SHA256_DIGEST_SIZE to make sure that we don\u0027t accidentally try calling this with a larger key in the future (which would need more expand iterations).",
+      "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5202f078_05fe1013",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-05T01:10:58Z",
+      "side": 1,
+      "message": "nit: move up one line with a newline after so it\u0027s right after \"hmac_SHA256\" like it was before: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/fpsensor.c#346",
+      "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
