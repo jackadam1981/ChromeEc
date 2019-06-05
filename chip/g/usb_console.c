@@ -15,15 +15,17 @@
 #include "timer.h"
 #include "util.h"
 #include "usb_descriptor.h"
+#include "usb-stream.h"
 #include "usb_hw.h"
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 #define USB_CONSOLE_TIMEOUT_US (30 * MSEC)
 
-static int last_tx_ok = 1;
+#define QUEUE_SIZE_USB_TX     4096
+#define QUEUE_SIZE_USB_RX     USB_MAX_PACKET_SIZE
 
-static int is_reset;
+static int last_tx_ok = 1;
 
 /*
  * Start enabled, so we can queue early debug output before the board gets
@@ -36,6 +38,57 @@ static int is_enabled = 1;
  * decide that we're ready for it.
  */
 static int is_readonly = 1;
+
+#ifdef CONFIG_STREAM_USB
+struct usb_stream_config const console_usb;
+
+/*
+ * This is a console_usb producer policy, which wakes up CONSOLE task whenever
+ * rx_q gets new data added. This shall be called by rx_stream_handler() in
+ * usb-stream.c.
+ */
+static void console_usb_written(struct queue_policy const *policy, size_t count)
+{
+	task_wake(TASK_ID_CONSOLE);
+}
+
+static void console_uart_read(struct queue_policy const *policy, size_t count)
+{
+	/* do nothing */
+}
+
+static struct queue_policy const console_usb_policy = {
+	.add    = console_usb_written,
+	.remove = console_uart_read,
+};
+
+static struct queue const tx_q = QUEUE_NULL(QUEUE_SIZE_USB_TX, uint8_t);
+static struct queue const rx_q = QUEUE(QUEUE_SIZE_USB_RX, uint8_t,
+					console_usb_policy);
+
+USB_STREAM_CONFIG(console_usb,
+		  USB_IFACE_CONSOLE,
+		  USB_STR_CONSOLE_NAME,
+		  USB_EP_CONSOLE,
+		  USB_MAX_PACKET_SIZE,
+		  USB_MAX_PACKET_SIZE,
+		  rx_q,
+		  tx_q)
+
+static inline void handle_output(void)
+{
+	/* Wake up the Tx FIFO handler */
+	hook_call_deferred(console_usb.deferred_tx, 0);
+}
+
+static inline int tx_fifo_is_ready_(void)
+{
+	return tx_fifo_is_ready(&console_usb);
+}
+
+#else  /* #ifdef CONFIG_STREAM_USB ... */
+
+static int is_reset;
 
 /* USB-Serial descriptors */
 const struct usb_interface_descriptor USB_IFACE_DESC(USB_IFACE_CONSOLE) =
@@ -74,8 +127,8 @@ static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
 static struct g_usb_desc ep_out_desc;
 static struct g_usb_desc ep_in_desc;
 
-static struct queue const tx_q = QUEUE_NULL(4096, uint8_t);
-static struct queue const rx_q = QUEUE_NULL(USB_MAX_PACKET_SIZE, uint8_t);
+static struct queue const tx_q = QUEUE_NULL(QUEUE_SIZE_USB_TX, uint8_t);
+static struct queue const rx_q = QUEUE_NULL(QUEUE_SIZE_USB_RX, uint8_t);
 
 
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
@@ -177,8 +230,9 @@ static void con_ep_rx(void)
 	/* clear the RX/OUT interrupts */
 	GR_USB_DOEPINT(USB_EP_CONSOLE) = 0xffffffff;
 }
+
 /* True if the Tx/IN FIFO can take some bytes from us. */
-static inline int tx_fifo_is_ready(void)
+static inline int tx_fifo_is_ready_(void)
 {
 	uint32_t status = ep_in_desc.flags & DIEPDMA_BS_MASK;
 	return status == DIEPDMA_BS_DMA_DONE || status == DIEPDMA_BS_HOST_BSY;
@@ -193,7 +247,7 @@ static void tx_fifo_handler(void)
 		return;
 
 	/* If the HW FIFO isn't ready, then we can't do anything right now. */
-	if (!tx_fifo_is_ready())
+	if (!tx_fifo_is_ready_())
 		return;
 
 	count = QUEUE_REMOVE_UNITS(&tx_q, ep_buf_tx, USB_MAX_PACKET_SIZE);
@@ -245,13 +299,14 @@ static void ep_reset(void)
 
 
 USB_DECLARE_EP(USB_EP_CONSOLE, con_ep_tx, con_ep_rx, ep_reset);
+#endif  /* #ifdef CONFIG_STREAM_USB ... #else ... */
 
 static int usb_wait_console(void)
 {
 	timestamp_t deadline = get_time();
 	int wait_time_us = 1;
 
-	if (!is_enabled || !tx_fifo_is_ready())
+	if (!is_enabled || !tx_fifo_is_ready_())
 		return EC_SUCCESS;
 
 	deadline.val += USB_CONSOLE_TIMEOUT_US;
@@ -264,7 +319,13 @@ static int usb_wait_console(void)
 	 * we should wait so that we don't clobber the buffer.
 	 */
 	if (last_tx_ok) {
-		while (queue_space(&tx_q) < USB_MAX_PACKET_SIZE || !is_reset) {
+		while (queue_space(&tx_q) < USB_MAX_PACKET_SIZE ||
+#ifdef CONFIG_STREAM_USB
+			!usb_stream_is_reset(&console_usb)
+#else
+			!is_reset
+#endif
+		) {
 			if (timestamp_expired(deadline, NULL) ||
 			    in_interrupt_context()) {
 				last_tx_ok = 0;
@@ -276,12 +337,10 @@ static int usb_wait_console(void)
 				usleep(wait_time_us);
 			wait_time_us *= 2;
 		}
-
-		return EC_SUCCESS;
 	} else {
 		last_tx_ok = queue_space(&tx_q);
-		return EC_SUCCESS;
 	}
+	return EC_SUCCESS;
 }
 
 #ifdef CONFIG_USB_CONSOLE_CRC
