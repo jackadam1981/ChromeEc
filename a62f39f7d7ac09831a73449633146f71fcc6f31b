@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f64e4b94_c58212cc",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-06-05T20:56:48Z",
+      "side": 1,
+      "message": "There is hw bug in Haven B where an internal counter does not get reset. Consequently, one can only run 28 about 512 times max after hard reset.",
+      "range": {
+        "startLine": 250,
+        "startChar": 21,
+        "endLine": 250,
+        "endChar": 35
+      },
+      "revId": "a62f39f7d7ac09831a73449633146f71fcc6f31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064a3e72_092f79e5",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-06-05T20:56:48Z",
+      "side": 1,
+      "message": "I have no idea why this sequence is copy/pasta\u0027d here. This function is just to get some random words and mix in some keyladder RSR.\n\nDue to hw bug, we cannot effectively update the RSR state but running CERT_27 on the random bytes is harmless.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 12
+      },
+      "revId": "a62f39f7d7ac09831a73449633146f71fcc6f31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
