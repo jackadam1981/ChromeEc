@@ -248,6 +248,7 @@ void fp_task(void)
 			if (mode & FP_MODE_ANY_WAIT_IRQ) {
 				gpio_enable_interrupt(GPIO_FPS_INT);
 			} else if (mode & FP_MODE_RESET_SENSOR) {
+				fp_sensor_deinit();
 				fp_clear_context();
 				fp_sensor_init();
 				sensor_mode &= ~FP_MODE_RESET_SENSOR;
@@ -710,8 +711,11 @@ static void upload_pgm_image(uint8_t *frame)
 static int fp_console_action(uint32_t mode)
 {
 	int tries = 200;
-	ccprintf("Waiting for finger ...\n");
 	sensor_mode = mode;
+
+	if (!(sensor_mode & FP_MODE_RESET_SENSOR))
+		CPRINTS("Waiting for finger ...");
+
 	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG, 0);
 
 	while (tries--) {
@@ -806,8 +810,14 @@ DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, "", "");
 
 int command_fpclear(int argc, char **argv)
 {
-	fp_clear_context();
-	return EC_SUCCESS;
+	int rc = fp_console_action(FP_MODE_RESET_SENSOR);
+
+	if (rc < 0)
+		CPRINTS("Failed to clear fingerprint context: %d", rc);
+
+	atomic_read_clear(&fp_events);
+
+	return rc;
 }
 DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, "", "");
 
