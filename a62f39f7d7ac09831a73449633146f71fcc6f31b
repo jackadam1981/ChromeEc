@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dce1b363_82c79bd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T22:23:37Z",
+      "side": 1,
+      "message": "oops, I did not realize this was just for testing.",
+      "parentUuid": "df985d69_4a8cebc1",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "a62f39f7d7ac09831a73449633146f71fcc6f31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88dd6c5c_fdf2ba72",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 1
