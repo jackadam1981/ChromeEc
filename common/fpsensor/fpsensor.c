@@ -762,6 +762,12 @@ int command_fpenroll(int argc, char **argv)
 	if (system_is_locked())
 		return EC_RES_ACCESS_DENIED;
 
+	if (templ_valid >= FP_MAX_FINGER_COUNT) {
+		CPRINTS("Maximum number of fingers enrolled: %d",
+			FP_MAX_FINGER_COUNT);
+		return EC_RES_INVALID_PARAM;
+	}
+
 	do {
 		int tries = 1000;
 
