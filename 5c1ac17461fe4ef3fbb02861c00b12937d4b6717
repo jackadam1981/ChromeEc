@@ -70,6 +70,24 @@
       "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855a511a_4afb5975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T22:14:22Z",
+      "side": 1,
+      "message": "After talking, this CL seems like it is not breaking the RO/RW jump usecase",
+      "parentUuid": "cb488099_f3fa31f2",
+      "revId": "5c1ac17461fe4ef3fbb02861c00b12937d4b6717",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
