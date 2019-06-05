@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82d903f9_bca7b815",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-05T21:05:35Z",
+      "side": 1,
+      "message": "static inline function?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 70
+      },
+      "revId": "fdbc7f944d55393275e8392cd9c6595758dde17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239e87ce_389dae4a",
+        "filename": "driver/sync.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-05T21:05:35Z",
+      "side": 1,
+      "message": "Overindented... also, probably drop \u0026vector, s, 1 below",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 4
+      },
+      "revId": "fdbc7f944d55393275e8392cd9c6595758dde17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
