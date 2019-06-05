@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbbbb204_2977eca3",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-05T08:07:26Z",
+      "side": 1,
+      "message": "#endif /* CONFIG_MAG_BMI160_BMM150 */",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 6
+      },
+      "revId": "4660836f1c7a127fc6a6b79725ff9d921ab8b6a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4891ce54_f0f7dc52",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-05T08:07:26Z",
+      "side": 1,
+      "message": "nit: #endif /* CONFIG_MAG_BMI160_BMM150 */",
+      "revId": "4660836f1c7a127fc6a6b79725ff9d921ab8b6a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
