@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "37b0bf82_b3606a48",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-05T19:56:07Z",
+      "side": 1,
+      "message": "Then, can you change it to mdelay(40)?\n\nAre you talking about TVDPSRC_ON and TVDMSRC_ON in the spec?",
+      "parentUuid": "401fb0c9_d32d3094",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43ff54a8_6f427c65",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
