@@ -34,6 +34,14 @@
 
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15001
 
+/*
+ * Allow an additional second during power button init to let PD negotiation
+ * complete when we have no battery and need to meet
+ * CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+ */
+#undef CONFIG_POWER_BUTTON_INIT_TIMEOUT
+#define CONFIG_POWER_BUTTON_INIT_TIMEOUT 2
+
 /* Keyboard Backlight is unconnected in casta proto */
 #undef CONFIG_PWM
 #undef CONFIG_PWM_KBLIGHT
