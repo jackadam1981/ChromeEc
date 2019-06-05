@@ -329,7 +329,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
-#ifdef CONFIG_CHARGER
+#if 0 //def CONFIG_CHARGER
 		{
 		int tries = 0;
 
@@ -377,12 +377,12 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		 */
 		chipset_pre_init_callback();
 #endif
-
+#if 0
 		if (power_wait_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
 			return POWER_G3;
 		}
-
+#endif
 		power_s5_up = 1;
 		return POWER_S5;
 
