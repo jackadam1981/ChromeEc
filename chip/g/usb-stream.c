@@ -4,6 +4,7 @@
  */
 
 #include "registers.h"
+#include "task.h"
 #include "usb-stream.h"
 
 /* Let the USB HW IN-to-host FIFO transmit some bytes */
@@ -81,6 +82,12 @@ void rx_stream_handler(struct usb_stream_config const *config)
 		rx_left -= added;
 	}
 
+#ifdef USB_EP_CONSOLE
+	if (rx_handled)
+		if (config->endpoint == USB_EP_CONSOLE)
+			task_wake(TASK_ID_CONSOLE);
+#endif
+
 	/*
 	 * When we've handled all the bytes in the queue ("rx_in_fifo ==
 	 * rx_handled" and "rx_left == 0" indicate the same thing), we can
@@ -105,11 +112,15 @@ void usb_stream_rx(struct usb_stream_config const *config)
 	GR_USB_DOEPINT(config->endpoint) = 0xffffffff;
 }
 
-/* True if the Tx/IN FIFO can take some bytes from us. */
-static inline int tx_fifo_is_ready(struct usb_stream_config const *config)
+static inline int tx_fifo_is_ready_(struct usb_stream_config const *config)
 {
 	uint32_t status = config->in_desc->flags & DIEPDMA_BS_MASK;
 	return status == DIEPDMA_BS_DMA_DONE || status == DIEPDMA_BS_HOST_BSY;
+}
+
+int tx_fifo_is_ready(struct usb_stream_config const *config)
+{
+	return tx_fifo_is_ready_(config);
 }
 
 /* Try to send some bytes to the host */
@@ -120,7 +131,7 @@ void tx_stream_handler(struct usb_stream_config const *config)
 	if (!*config->is_reset)
 		return;
 
-	if (!tx_fifo_is_ready(config))
+	if (!tx_fifo_is_ready_(config))
 		return;
 
 	count = QUEUE_REMOVE_UNITS(config->consumer.queue, config->tx_ram,
@@ -189,3 +200,8 @@ struct producer_ops const usb_stream_producer_ops = {
 struct consumer_ops const usb_stream_consumer_ops = {
 	.written = usb_written,
 };
+
+int usb_stream_is_reset(struct usb_stream_config const *config)
+{
+	return !!(*config->is_reset);
+}
