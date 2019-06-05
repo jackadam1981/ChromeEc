@@ -1,9 +1,9 @@
-/* Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
- *
- * Software panic constants. This file must be parsable by the assembler.
  */
+
+/* Software panic constants. This file must be parsable by the assembler. */
 
 #ifndef __CROS_EC_SOFTWARE_PANIC_H
 #define __CROS_EC_SOFTWARE_PANIC_H
@@ -13,6 +13,7 @@
 #define SOFTWARE_PANIC_INFO_REG		r5
 
 #define PANIC_SW_BASE		0xDEAD6660
+#define PANIC_SW_BASE_MASK	0xFFFFFFF8
 
 /* Software panic reasons */
 #define PANIC_SW_DIV_ZERO		(PANIC_SW_BASE + 0)
@@ -22,5 +23,11 @@
 #define PANIC_SW_WATCHDOG		(PANIC_SW_BASE + 4)
 #define PANIC_SW_BAD_RNG		(PANIC_SW_BASE + 5)
 #define PANIC_SW_PMIC_FAULT		(PANIC_SW_BASE + 6)
+
+#ifndef __ASSEMBLER__
+#ifdef CONFIG_SOFTWARE_PANIC
+extern const char * const panic_sw_reasons[8];
+#endif
+#endif
 
 #endif  /* __CROS_EC_SOFTWARE_PANIC_H */
