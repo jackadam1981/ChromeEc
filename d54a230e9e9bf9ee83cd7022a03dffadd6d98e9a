@@ -52,6 +52,24 @@
       "revId": "d54a230e9e9bf9ee83cd7022a03dffadd6d98e9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d393d2f6_942ea2f4",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T21:43:11Z",
+      "side": 0,
+      "message": "why not consolidate processing first and then this change would apply to everything?",
+      "parentUuid": "9d386ab2_f538adbc",
+      "revId": "d54a230e9e9bf9ee83cd7022a03dffadd6d98e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
