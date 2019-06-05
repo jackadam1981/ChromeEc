@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc41b92c_e52fe2ff",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-05T23:58:27Z",
+      "side": 1,
+      "message": "We do the command on the fptask since console task doesn\u0027t have enough space. Also kind of nice to force things through the same code path that a host command would go through.",
+      "range": {
+        "startLine": 813,
+        "startChar": 1,
+        "endLine": 813,
+        "endChar": 50
+      },
+      "revId": "58f5ec5f413927a5ad6fb497f663590ea3a377f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
