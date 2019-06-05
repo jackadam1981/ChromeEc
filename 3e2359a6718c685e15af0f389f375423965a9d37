@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83ab9b5d_600d92fd",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T18:56:26Z",
+      "side": 1,
+      "message": "Done. The compiler does not complain if you don\u0027t change derive_encryption_key signature, but I changed that as well because the pointer is not changed there.",
+      "parentUuid": "1f5a142d_7a94b151",
+      "range": {
+        "startLine": 102,
+        "startChar": 38,
+        "endLine": 102,
+        "endChar": 51
+      },
+      "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62e6a5b_4ccc8b83",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e3f464be_363f45f7",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T18:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62e6a5b_4ccc8b83",
+      "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5202f078_05fe1013",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3560956f_59ab9dfe",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-05T18:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5202f078_05fe1013",
+      "revId": "3e2359a6718c685e15af0f389f375423965a9d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
