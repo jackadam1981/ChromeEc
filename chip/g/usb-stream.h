@@ -46,6 +46,8 @@ struct usb_stream_config {
 
 	struct g_usb_desc *out_desc;
 	struct g_usb_desc *in_desc;
+
+	size_t *rx_handled;
 };
 
 /*
@@ -113,6 +115,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_tx_));			\
 	static void CONCAT2(NAME, _deferred_rx_)(void);			\
 	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_rx_));			\
+	static size_t CONCAT2(NAME, _rx_handled);			\
 	struct usb_stream_config const NAME = {				\
 		.endpoint     = ENDPOINT,				\
 		.is_reset     = &CONCAT2(NAME, _is_reset_),		\
@@ -132,6 +135,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 			.queue = &RX_QUEUE,				\
 			.ops   = &usb_stream_producer_ops,		\
 		},							\
+		.rx_handled   = &CONCAT2(NAME, _rx_handled),		\
 	};								\
 	const struct usb_interface_descriptor				\
 	USB_IFACE_DESC(INTERFACE) = {					\

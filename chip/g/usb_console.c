@@ -120,7 +120,7 @@ static void rx_fifo_handler(void)
 	 * and ep_buf_rx remains valid and unchanged until software tells the
 	 * the hardware engine to accept more input.
 	 */
-	int rx_in_fifo, rx_left;
+	size_t rx_in_fifo, rx_left;
 
 	/*
 	 * The rx_handled variable tracks how many of the bytes in the HW FIFO
@@ -129,7 +129,7 @@ static void rx_fifo_handler(void)
 	 * the next time this function is called we can try to shove the rest
 	 * of the HW FIFO bytes into the queue.
 	 */
-	static int rx_handled;
+	static size_t rx_handled;
 
 	/* If the HW FIFO isn't ready, then we're waiting for more bytes */
 	if (!rx_fifo_is_ready())

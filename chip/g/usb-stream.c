@@ -46,7 +46,7 @@ int rx_stream_handler(struct usb_stream_config const *config)
 	 * and rx_ram remains valid and unchanged until software tells the
 	 * the hardware engine to accept more input.
 	 */
-	int rx_in_fifo, rx_left;
+	size_t rx_in_fifo, rx_left;
 
 	/*
 	 * The rx_handled variable tracks how many of the bytes in the HW FIFO
@@ -55,12 +55,13 @@ int rx_stream_handler(struct usb_stream_config const *config)
 	 * the next time this function is called we can try to shove the rest
 	 * of the HW FIFO bytes into the queue.
 	 */
-	static int rx_handled;
+	size_t rx_handled;
 
 	/* If the HW FIFO isn't ready, then we're waiting for more bytes */
 	if (!rx_fifo_is_ready(config))
 		return 0;
 
+	rx_handled = *(config->rx_handled);
 	/*
 	 * How many of the HW FIFO bytes have we not yet handled? We need to
 	 * know both where we are in the buffer and how many bytes we haven't
@@ -91,6 +92,8 @@ int rx_stream_handler(struct usb_stream_config const *config)
 	} else {
 		hook_call_deferred(config->deferred_rx, 0);
 	}
+
+	*(config->rx_handled) = rx_handled;
 	return rx_handled;
 }
 
