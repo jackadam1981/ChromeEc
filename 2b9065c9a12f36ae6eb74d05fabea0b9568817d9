@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a3606cd_bb7c315d",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-05T07:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51fc7fc8_6baa5fb2",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 68
+      },
+      "revId": "2b9065c9a12f36ae6eb74d05fabea0b9568817d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5237b3a0_c7202241",
         "filename": "core/riscv-rv32i/task.c",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "2b9065c9a12f36ae6eb74d05fabea0b9568817d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0972285_5b71594b",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-05T07:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5237b3a0_c7202241",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 20
+      },
+      "revId": "2b9065c9a12f36ae6eb74d05fabea0b9568817d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
