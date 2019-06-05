@@ -16,6 +16,24 @@
       "revId": "d54a230e9e9bf9ee83cd7022a03dffadd6d98e9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7089614d_b20996c3",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T21:04:21Z",
+      "side": 0,
+      "message": "as discussed offline, we should consolidate all uarts processing, the plan was that there would be a patch moving Cr50 console to this streaming option  which would allow dropping duplicated code in this file and then have the extra copy eliminated, which would apply to all uart streams.",
+      "parentUuid": "a059be07_987a3a70",
+      "revId": "d54a230e9e9bf9ee83cd7022a03dffadd6d98e9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
