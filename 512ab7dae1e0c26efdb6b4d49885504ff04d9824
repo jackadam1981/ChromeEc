@@ -22,6 +22,30 @@
       "revId": "512ab7dae1e0c26efdb6b4d49885504ff04d9824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb68e057_af2971cb",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-05T08:26:34Z",
+      "side": 1,
+      "message": "done. also changed these matrices to static so compiler will generate warning in the future.",
+      "parentUuid": "cdb4adf7_3f45dc62",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 2
+      },
+      "revId": "512ab7dae1e0c26efdb6b4d49885504ff04d9824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
