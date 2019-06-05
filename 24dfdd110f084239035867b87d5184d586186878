@@ -22,6 +22,30 @@
       "revId": "24dfdd110f084239035867b87d5184d586186878",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a4f86d_71e1158c",
+        "filename": "chip/g/upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T23:28:34Z",
+      "side": 1,
+      "message": "oh geez, of course, great catch!\n\nhow come the compiler does not warn about use of uninitialized variable...",
+      "parentUuid": "95d17b99_152f804d",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "24dfdd110f084239035867b87d5184d586186878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
