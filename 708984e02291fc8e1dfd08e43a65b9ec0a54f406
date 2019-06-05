@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eb2ebd3_a32aadaa",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T21:57:29Z",
+      "side": 1,
+      "message": "this function\u0027s return value is ignored, and returing rx_handled does not make much sense in the first place.\n\nturning this into void f() would make it a bit simpler and might save a few bytes.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "708984e02291fc8e1dfd08e43a65b9ec0a54f406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400b157d_a9e107dc",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T21:57:29Z",
+      "side": 1,
+      "message": "same here, let\u0027s not make drive by changes.",
+      "revId": "708984e02291fc8e1dfd08e43a65b9ec0a54f406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
