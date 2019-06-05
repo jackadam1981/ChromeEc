@@ -85,6 +85,30 @@
       "revId": "708984e02291fc8e1dfd08e43a65b9ec0a54f406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00685419_33fe4434",
+        "filename": "chip/g/usb-stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-05T22:10:44Z",
+      "side": 1,
+      "message": "this is a const structure, so the pointer is needed",
+      "parentUuid": "1200555c_ad432105",
+      "range": {
+        "startLine": 138,
+        "startChar": 18,
+        "endLine": 138,
+        "endChar": 45
+      },
+      "revId": "708984e02291fc8e1dfd08e43a65b9ec0a54f406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
