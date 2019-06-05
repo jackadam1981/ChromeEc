@@ -16,6 +16,98 @@
       "revId": "2feb6315a7c36c335417e3263a71b30a6382d591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d9177b_24895a3b",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-05T20:20:12Z",
+      "side": 1,
+      "message": "Can you add some comments in gpio.inc and maybe here that if the GPIO_INT_AP_L gpio is changed, then all of these need to be changed?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 14
+      },
+      "revId": "2feb6315a7c36c335417e3263a71b30a6382d591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb7800e_5f02ad04",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-05T20:20:12Z",
+      "side": 1,
+      "message": "Can this be moved to a common function board_pulse_int_ap?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "2feb6315a7c36c335417e3263a71b30a6382d591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a4258c_445c07f5",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-05T20:20:12Z",
+      "side": 1,
+      "message": "Can we check that this is within some reasonable range?",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 9
+      },
+      "revId": "2feb6315a7c36c335417e3263a71b30a6382d591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6230088c_690d317b",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-05T20:20:12Z",
+      "side": 1,
+      "message": "You should only be able to modify the pulse if cr50 is open. Or you should only be able to modify the width if cr50 is open.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 28
+      },
+      "revId": "2feb6315a7c36c335417e3263a71b30a6382d591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
