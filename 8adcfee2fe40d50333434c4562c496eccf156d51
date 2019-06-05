@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7c4f98_773d841d",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:34:14Z",
+      "side": 1,
+      "message": "why the value of 2 instead of 1? (either is fine, just wondering if you have a reason)",
+      "range": {
+        "startLine": 552,
+        "startChar": 11,
+        "endLine": 552,
+        "endChar": 12
+      },
+      "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ad3388_e416b765",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-05T17:34:14Z",
+      "side": 1,
+      "message": "We should read from waiters after giving back the lock, right? Otherwise there is a race between a new waiter in another task that is in the process of locking the mutex\n\nOnce we put the waite read after teh swap, should we make the swap .aqrl instead?",
+      "range": {
+        "startLine": 572,
+        "startChar": 1,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
