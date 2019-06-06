@@ -144,7 +144,7 @@ int strtoi(const char *nptr, char **endptr, int base)
 		neg = 1;
 		c = *nptr++;
 	}
-
+	
 	base = find_base(base, &c, &nptr);
 
 	while (c) {
