@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71aef9e8_1d556217",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-06T17:26:22Z",
+      "side": 0,
+      "message": "let\u0027s keep this comment above the setting of the _comp register (You can add it to your existing comment)",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 176,
+        "endChar": 21
+      },
+      "revId": "f23e57e73c38396ad89e58b7fc0918939e2ba372",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
