@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "75160cf8_ff07da11",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-06T17:41:44Z",
+      "side": 1,
+      "message": "Okay then I want to wait for https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1633272\nto be approved first (because that contains the unit test file), then make another commit to test this method, then deal with this one.",
+      "parentUuid": "4be91b75_61b46d23",
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03e5f061_084e7cf1",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 2
