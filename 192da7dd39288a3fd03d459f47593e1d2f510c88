@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33a095ce_6a639056",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5074,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-06T17:41:48Z",
+      "side": 1,
+      "message": "okay, added this weak implementation as this will be part of ectool functions.\nwould you prefer to add a CONFIG_ for this also?",
+      "parentUuid": "39d3ee4e_210579e8",
+      "range": {
+        "startLine": 5072,
+        "startChar": 0,
+        "endLine": 5074,
+        "endChar": 1
+      },
+      "revId": "192da7dd39288a3fd03d459f47593e1d2f510c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcf752c0_b4d2e417",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-06T17:18:36Z",
       "side": 1,
       "message": "who is going to be the caller of this v1 host command?\n\nAlso the description for git 0:3 doesn\u0027t actually tell enough to understand what data is getting backed back. How is the mapping serialized?",
+      "range": {
+        "startLine": 4878,
+        "startChar": 0,
+        "endLine": 4888,
+        "endChar": 0
+      },
+      "revId": "192da7dd39288a3fd03d459f47593e1d2f510c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed26c240_e7a5c1bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4888,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-06T17:41:48Z",
+      "side": 1,
+      "message": "Intel Virtual MUX configuration code in the Kernel will be using this command at probe registration.\nUSB2 port of Type-C goes to PCH,\nUSB3 port of Type-C goes to SOC.\nAs USB max ports are only 8, I used 1byte data to fit both USB2 \u0026 USB3 port numbers.\nI will add this info or we can have two separate variables for usb2 \u0026 usb3. Which one would you prefer?",
+      "parentUuid": "dcf752c0_b4d2e417",
       "range": {
         "startLine": 4878,
         "startChar": 0,
