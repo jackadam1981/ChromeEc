@@ -144,6 +144,15 @@ int strtoi(const char *nptr, char **endptr, int base)
 		neg = 1;
 		c = *nptr++;
 	}
+	
+	if ((base == 0 || base == 16) && c == '0'
+	    && (*nptr == 'x' || *nptr == 'X')) {
+		base = 16;
+		c = nptr[1];
+		nptr += 2;
+	} else if (base == 0) {
+		base = c == '0' ? 8 : 10;
+	}
 
 	base = find_base(base, &c, &nptr);
 
