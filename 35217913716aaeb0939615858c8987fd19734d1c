@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76f55911_b5f0be1b",
+        "filename": "board/max32660example/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-06-06T18:25:52Z",
+      "side": 1,
+      "message": "Please just delete code rather than putting it in `#if 0` blocks (throughout the CL).",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c484a8_87768317",
+        "filename": "board/max32660example/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-06-06T18:25:52Z",
+      "side": 1,
+      "message": "Nit: similarly to `#if 0`, just delete lines instead of commenting them out.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697c3bd3_d33d829b",
+        "filename": "chip/max32660/mxc_errors.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-06-06T18:25:52Z",
+      "side": 1,
+      "message": "Instead of having chip-specific error codes that get translated in some way to the EC ones, please use the EC ones (in include/common.h) throughout the code.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
