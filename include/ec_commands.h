@@ -4876,6 +4876,19 @@ struct ec_response_usb_pd_ports {
 	uint8_t num_ports;
 } __ec_align1;
 
+struct ec_response_usb_pd_ports_v1 {
+	uint8_t num_ports;
+	/*
+	 * USB port mapping for each of the USBC ports on the board.
+	 * These USB mapping are needed for configuring the Intel Virtual MUX,
+	 * as EC USBC port number may not match AP's USB2 & USB3 port numbers.
+	 * USB3 port mapping on SOC [1 to 15]
+	 * USB2 port mapping on PCH [1 to 15]
+	 */
+	uint8_t usb3_port_map[EC_USB_PD_MAX_PORTS];
+	uint8_t usb2_port_map[EC_USB_PD_MAX_PORTS];
+} __ec_align1;
+
 #define EC_CMD_USB_PD_POWER_INFO 0x0103
 
 #define PD_POWER_CHARGING_PORT 0xff
