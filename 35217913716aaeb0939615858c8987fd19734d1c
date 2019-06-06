@@ -36,6 +36,210 @@
     },
     {
       "key": {
+        "uuid": "7824a3f9_9b20f9e1",
+        "filename": "board/max32660example/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "There is something wrong here, both of the ALTERNATE declarations relate to P0.0 and P0.1 (they have same mask and same port bank.)",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c208dcbe_04fe7be0",
+        "filename": "chip/max32660/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "Remove this line, if we do not need it.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebe26be_eee922b0",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "This file is not referring to any UART (or console, or task, or ...) methods, nor should it ever, because the system timer needs to be configured before e.g. UART communication can be initialized.  Please clean up include directives in this file and others.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bcbd10b_67992f2e",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "Delete console macros (and any reference to console), they cannot be used before clock is initialized.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b11ae0_c9cf861a",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "Delete unused macros.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c852701_65d47485",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "Delete code that is not to be used.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3915734_a9544b32",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "This method cannot return anything other than E_NO_ERROR, make it \"void\" instead.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f4a8d6_cf71c101",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "If this method is not meant to be called from outside this file, then declare it static.  (Since its parameter is of a type that is not visible outside, I guess that is the case.)",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1494fb95_aaf61a30",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "This switch statement has only one case.  Do we foresee any reasons why future EC firmwares may want to use different clock source than the high frequency internal oscillator?  If not, then drop this switch, drop the sys_system_clock_t enum, and possible move all this code into clock_init itself.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "808d4a4d_21f9f047",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "I do not think there is any point in returning an error code from methods to be called in clock initialization.  If the clock settings to not cleanly apply, then entering an infinite loop is probably as good as anything else.\n\n(Harry, do you know what our code usually does in case of fatal errors during initialization?)\n\nActually, according to my prior comment, clock_timeout should return void (or probably be inlined here).  This branch can never be entered, and clock_timeout will already enter infinite loop as desired, in cases where the clock initialization does not work.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1f4566_60fe95c8",
+        "filename": "chip/max32660/flash_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "This method adds nothing, but throwing away of specific error codes.  After deleting mxc_errors.h, also delete this function.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1e2bcd_7dab38ad",
+        "filename": "chip/max32660/gpio_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "Are the declaration of this file used anywhere?  Certainly, since the gpio_api.c file is no longer part of the patch, none of the methods declared below could possibly be called from anywhere.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "697c3bd3_d33d829b",
         "filename": "chip/max32660/mxc_errors.h",
         "patchSetId": 3
@@ -47,6 +251,108 @@
       "writtenOn": "2019-06-06T18:25:52Z",
       "side": 1,
       "message": "Instead of having chip-specific error codes that get translated in some way to the EC ones, please use the EC ones (in include/common.h) throughout the code.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5809cf_77d918b5",
+        "filename": "chip/max32660/mxc_errors.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "We do not want code to translate from one set of error codes to another, please use the codes from ec/include/common.h throughout, and delete this file.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf70d496_dbabd498",
+        "filename": "chip/max32660/system_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "minor: Will the system not reset, unless the MXC_GCR register is read after writing it?  If it will reset in absence of reads, then why not enter the while (1); loop directly?",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29320d20_1c945ec5",
+        "filename": "chip/max32660/uart_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "What is UART_PARITY_EVEN_0?  A comment below indicates that the other UART_PARITY_EVEN_1 is \"conventional\", but what is this then?",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b29a974_40686020",
+        "filename": "chip/max32660/uart_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "The approach here seems to differ from the way that alternate functions of IO pins are configured on other chips in the EC codebase.\n\nUsually, if there is a choice of multiple pins to use for one UART, that choice is made through the ALTERNATE() macro in gpio.inc, and uart_init() would invoke gpio_config_module(MODULE_UART) at some point, to configure those pins.\n\nI think that uart_gpio_configure() needs to be removed, and replaced with proper use of ALTERNATE() in gpio.inc.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c60dcf_a17b6071",
+        "filename": "chip/max32660/uart_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "The EC is generally space constrained, so we do not want to include more code abstractions than necessary.\n\nWe support only one UART and which one it is is declared in a define UARTN.\n\nIf you look at e.g. ec/chip/stm32/uart.c, you will see that its code uses a series of #ifdef such that when compiling the EC code with any particular value of UARTN, then only the register addresses relevant to that particular uart gets compiled into the code.\n\nThis file on the other hand, has a bunch of methods which take uart number as an integer in their parameters, and do a table lookup using MXC_UART_GET_UART, meaning that any compiled EC image would have to include a table with addresses of all the UARTS in the chip, even all the ones that are not used.\n\nIdeally, I would like to see the mxc_uart_regs_t struct gone from the code.",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3003739_bbf8bab1",
+        "filename": "chip/max32660/wdt_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-06-06T18:57:17Z",
+      "side": 1,
+      "message": "I do not see this enum adding any value, how defining WATCHDOG_TIMER_PERIOD as below.  Or is there some subtle point of having WATCHDOG_TIMER_PERIOD be an enum constant, instead of possibly free-form compile-time constant arithmetic expression?\n\n#define WATCHDOG_TIMER_PERIOD MXC_S_WDT_CTRL_INT_PERIOD_WDT2POW29",
       "revId": "35217913716aaeb0939615858c8987fd19734d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
