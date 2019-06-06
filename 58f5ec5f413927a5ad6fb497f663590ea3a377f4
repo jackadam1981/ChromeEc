@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "fd9906cb_ce6279ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T00:12:58Z",
+      "side": 1,
+      "message": "Can you also test the flow through the host commands? That would include switching between users (or simply logging out and logging back in again)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "58f5ec5f413927a5ad6fb497f663590ea3a377f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dea6c0d_3e332646",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T00:12:58Z",
+      "side": 1,
+      "message": "This is also called in fp_command_context() which is called when switching users and I believe you\u0027ll need to deinit in that case too.\nMaybe you can add the call to fp_sensor_deinit() to fp_clear_context() itself?",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 20
+      },
+      "revId": "58f5ec5f413927a5ad6fb497f663590ea3a377f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc41b92c_e52fe2ff",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2019-06-05T23:58:27Z",
       "side": 1,
       "message": "We do the command on the fptask since console task doesn\u0027t have enough space. Also kind of nice to force things through the same code path that a host command would go through.",
+      "range": {
+        "startLine": 813,
+        "startChar": 1,
+        "endLine": 813,
+        "endChar": 50
+      },
+      "revId": "58f5ec5f413927a5ad6fb497f663590ea3a377f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ebd2a8_4e848bbc",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T00:12:58Z",
+      "side": 1,
+      "message": "Sounds like a good idea! Can you add this reasoning as a comment? It\u0027s super useful context.",
+      "parentUuid": "cc41b92c_e52fe2ff",
       "range": {
         "startLine": 813,
         "startChar": 1,
