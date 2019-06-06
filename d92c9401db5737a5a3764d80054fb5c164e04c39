@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5b7a9ce9_a3d0b690",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-06T06:46:46Z",
+      "side": 1,
+      "message": "Done！\nthanks for point out it!",
+      "parentUuid": "1ea528e3_1fe61a6b",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0119389_9b4f184d",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1b1fd516_58f61d30",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-06T06:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0119389_9b4f184d",
+      "range": {
+        "startLine": 630,
+        "startChar": 24,
+        "endLine": 630,
+        "endChar": 30
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57168f0a_6021e093",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
@@ -91,6 +139,30 @@
       "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e953da17_e5f6ce70",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-06T06:46:46Z",
+      "side": 1,
+      "message": "Ack\nI also used think about to go to d0i0.\nFinally, I think this is more like some exception, at best to separate to handle it, treat it as normal D0i0 cases seems not good.",
+      "parentUuid": "57168f0a_6021e093",
+      "range": {
+        "startLine": 639,
+        "startChar": 3,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "d92c9401db5737a5a3764d80054fb5c164e04c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
