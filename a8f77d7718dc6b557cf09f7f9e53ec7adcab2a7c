@@ -22,6 +22,30 @@
       "revId": "a8f77d7718dc6b557cf09f7f9e53ec7adcab2a7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b762e725_da55fe59",
+        "filename": "board/casta/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-06T17:41:25Z",
+      "side": 1,
+      "message": "Added the 1C difference to this comment block.  I think the reference to the above config and its comment block/commit message/bug should be sufficient to cover why we\u0027ve re-set CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON in the first place.",
+      "parentUuid": "8fb76753_2b777c62",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "a8f77d7718dc6b557cf09f7f9e53ec7adcab2a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
