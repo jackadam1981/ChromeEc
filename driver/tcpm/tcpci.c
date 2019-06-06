@@ -741,19 +741,20 @@ int tcpci_tcpm_init(int port)
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
 
-	while (1) {
+	while (tries) {
 		error = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
-		 * initalization is complete, clear all alert bits and write
+		 * initialization is complete, clear all alert bits and write
 		 * the initial alert mask.
 		 */
 		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
 			break;
-		else if (error && --tries == 0)
-			return error;
+		--tries;
 		msleep(10);
 	}
+	if (!tries)
+		return error ? error : EC_ERROR_TIMEOUT;
 
 	tcpc_write16(port, TCPC_REG_ALERT, 0xffff);
 	/* Initialize power_status_mask */
@@ -796,7 +797,7 @@ int tcpci_tcpm_mux_init(int port)
 		return EC_SUCCESS;
 
 	/* Wait for the device to exit low power state */
-	while (1) {
+	while (tries) {
 		error = mux_read(port, TCPC_REG_POWER_STATUS, &power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
@@ -804,10 +805,11 @@ int tcpci_tcpm_mux_init(int port)
 		 */
 		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
 			break;
-		else if (error && --tries == 0)
-			return error;
+		--tries;
 		msleep(10);
 	}
+	if (!tries)
+		return error ? error : EC_ERROR_TIMEOUT;
 
 	/* Turn off all alerts and acknowledge any pending IRQ */
 	error = mux_write16(port, TCPC_REG_ALERT_MASK, 0);
