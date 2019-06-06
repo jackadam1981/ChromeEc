@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "5dfa1274_cd2cdc95",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-06T18:10:11Z",
+      "side": 1,
+      "message": "Which page of the bc 1.2 spec show this 10ms delay? Is it figure 3-19 \"Detection Timing, CDP\"?",
+      "parentUuid": "2a48a2b6_2c0a38e9",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43ff54a8_6f427c65",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
