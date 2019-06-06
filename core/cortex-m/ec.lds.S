@@ -455,7 +455,7 @@ SECTIONS
         __dram_data_end = .;
     } > DRAM
 
-    .dram.bss : {
+    .dram.bss(NOLOAD) : {
         . = ALIGN(4);
         __dram_bss_start = .;
         *(SORT(.dram.bss*))
