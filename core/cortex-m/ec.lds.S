@@ -433,40 +433,43 @@ SECTIONS
 #endif /* CONFIG_CHIP_MEMORY_REGIONS */
 
 #ifdef CONFIG_DRAM_BASE
-    /*
-     * Allocate space for original copy of .data.dram (see .data_lma above).
-     * TODO(b:128269393): Remove .dram.data_lma sections to be compatible
-     * with clang.
-     */
-    .dram.data_lma : {
-        __dram_data_lma_start = .;
-        . += __dram_data_end - __dram_data_start;
+    .dram.text : {
+        . = ALIGN(4);
+        KEEP(*(SORT(.dram.text.keep.*)))
+        *(SORT(.dram.text.*))
+        /* Align for .dram.data LMA. */
+        . = ALIGN(4);
     } > DRAM
 
+    __dram_data_lma_start = ADDR(.dram.text) + SIZEOF(.dram.text);
+
+    /* Place .dram.data LMA in between .dram.text and .dram.data VMA. */
+#ifdef __clang__
     /*
-     * TODO(b:122058243): Both .dram.data and .dram.bss do not actually
-     * need to be in the final image, as we have a second copy of the data
-     * (just above), and dram.bss is zeroed anyway.
+     * The evaluation timing for SIZEOF() and symbols are different in
+     * ld and lld.
      */
-    .dram.data : AT(ADDR(.dram.data_lma)) {
+    .dram.data __dram_data_lma_start + SIZEOF(.dram.data) : {
+#else
+    .dram.data __dram_data_lma_start + (__dram_data_end - __dram_data_start) : {
+#endif /* !__CLANG__ */
         . = ALIGN(4);
         __dram_data_start = .;
         *(.dram.data*)
+        . = ALIGN(4);
         __dram_data_end = .;
-    } > DRAM
+    /*
+     * '> DRAM' places VMA at the address where section declaration specified.
+     * 'AT > DRAM' places LMA at the location counter's address.
+     */
+    } > DRAM AT > DRAM
 
     .dram.bss(NOLOAD) : {
         . = ALIGN(4);
         __dram_bss_start = .;
         *(SORT(.dram.bss*))
-        __dram_bss_end = .;
-    } > DRAM
-
-    /* Rest of DRAM sections, e.g. text. */
-    .dram : {
         . = ALIGN(4);
-        KEEP(*(SORT(.dram.keep.*)))
-        *(SORT(.dram.*))
+        __dram_bss_end = .;
     } > DRAM
 #endif
 
