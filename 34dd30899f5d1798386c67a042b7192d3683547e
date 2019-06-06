@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9843a7f8_6c1b1ea4",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T21:47:21Z",
+      "side": 1,
+      "message": "You need to explicitly memset() this variable to 0 once it\u0027s no longer used (both in success and failure cases) so secrets get cleared and are no longer accessible at all.",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 12
+      },
+      "revId": "34dd30899f5d1798386c67a042b7192d3683547e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c47d25f_6b9af448",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T21:47:21Z",
+      "side": 1,
+      "message": "nit: sizeof(new_pos_match_salt)",
+      "range": {
+        "startLine": 196,
+        "startChar": 32,
+        "endLine": 196,
+        "endChar": 55
+      },
+      "revId": "34dd30899f5d1798386c67a042b7192d3683547e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "992ad955_ea8ad24b",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T21:47:21Z",
+      "side": 1,
+      "message": "If that failed, you need a reliable way to keep track of that error state, make sure you don\u0027t end up with a stale fp_pos_match_secret, etc.).\nI\u0027d probably clear fp_pos_match_secret (and before reusing it I\u0027d always check that it\u0027s not all-zeros to avoid having an easy-to-guess \"secret\").\nTBD, waiting for the other CLs :-)",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 26
+      },
+      "revId": "34dd30899f5d1798386c67a042b7192d3683547e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
