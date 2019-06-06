@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39c7096e_e71e32e9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-06T18:46:42Z",
+      "side": 1,
+      "message": "there is an extra 10ms sleep we don\u0027t need for the last attempt\n\nif we changed it to \n\nif (--tries \u003c0)\n  return error ? error : EC_ERROR_TIMEOUT;\n\nwe could avoid it (and then we don\u0027t need the !tires check below",
+      "range": {
+        "startLine": 753,
+        "startChar": 2,
+        "endLine": 753,
+        "endChar": 10
+      },
+      "revId": "098e9ae80396dca190729c42057cd426be4705db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
