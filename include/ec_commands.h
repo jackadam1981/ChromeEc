@@ -4876,6 +4876,23 @@ struct ec_response_usb_pd_ports {
 	uint8_t num_ports;
 } __ec_align1;
 
+struct ec_response_usb_pd_ports_v1 {
+	uint8_t num_ports;
+	/*
+	 * USB port number for each of the EC's USB-C ports on the board.
+	 * These USB numbers are needed for configuring the Intel Virtual MUX,
+	 * as EC's USB-C port number may not be equal to AP's USB2 & USB3 port
+	 * numbers.
+	 * 1. Super-speed lines of USB-C are connected to Intel SOC.
+	 * 2. USB2 lines of USB-C are connected to Intel PCH.
+	 * 3. USBx ports are 1 to n based for respective USB-C EC's port.
+	 * USB3 port number on SOC [1 to 15]
+	 * USB2 port number on PCH [1 to 15]
+	 */
+	uint8_t usb3_port_num[EC_USB_PD_MAX_PORTS];
+	uint8_t usb2_port_num[EC_USB_PD_MAX_PORTS];
+} __ec_align1;
+
 #define EC_CMD_USB_PD_POWER_INFO 0x0103
 
 #define PD_POWER_CHARGING_PORT 0xff

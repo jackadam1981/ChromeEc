@@ -5069,17 +5069,38 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 
 #ifdef HAS_TASK_HOSTCMD
 
+__overridable int board_get_usb_port_numbers(uint8_t *usb3_port_num,
+					uint8_t *usb2_port_num)
+{
+	return EC_RES_UNAVAILABLE;
+}
+
 static int hc_pd_ports(struct host_cmd_handler_args *args)
 {
+	int ret = EC_RES_SUCCESS;
 	struct ec_response_usb_pd_ports *r = args->response;
+	struct ec_response_usb_pd_ports_v1 *r_v1 = args->response;
+
 	r->num_ports = CONFIG_USB_PD_PORT_COUNT;
 
-	args->response_size = sizeof(*r);
-	return EC_RES_SUCCESS;
+	switch (args->version) {
+	case 0:
+		args->response_size = sizeof(*r);
+		break;
+	case 1:
+		args->response_size = sizeof(*r_v1);
+		ret = board_get_usb_port_numbers(r_v1->usb3_port_num,
+					r_v1->usb2_port_num);
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+
+	return ret;
 }
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORTS,
 		     hc_pd_ports,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static const enum pd_dual_role_states dual_role_map[USB_PD_CTRL_ROLE_COUNT] = {
