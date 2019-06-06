@@ -6,7 +6,7 @@
 # STM32 chip specific files build
 #
 
-ifeq ($(CHIP_FAMILY),stm32f0)
+ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32f0 stm32g0))
 # STM32F0xx sub-family has a Cortex-M0 ARM core
 CORE:=cortex-m0
 # Force ARMv6-M ISA used by the Cortex-M0
@@ -84,6 +84,10 @@ chip-$(CONFIG_USB_HID)+=usb_hid.o
 chip-$(CONFIG_USB_HID_KEYBOARD)+=usb_hid_keyboard.o
 chip-$(CONFIG_USB_HID_TOUCHPAD)+=usb_hid_touchpad.o
 chip-$(CONFIG_USB_ISOCHRONOUS)+=usb_isochronous.o
+ifeq ($(CHIP_FAMILY),stm32g0)
+chip-$(CONFIG_USB_PD_TCPC)+=usb_pd_phy-stm32g0.o
+else
 chip-$(CONFIG_USB_PD_TCPC)+=usb_pd_phy.o
+endif
 chip-$(CONFIG_USB_SPI)+=usb_spi.o
 endif
