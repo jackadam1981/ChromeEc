@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dacd9e30_9f10eb24",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5074,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-06T19:42:44Z",
+      "side": 1,
+      "message": "okay will use __override_proto __overridable",
+      "parentUuid": "7321d72e_2fd48253",
+      "range": {
+        "startLine": 5072,
+        "startChar": 0,
+        "endLine": 5074,
+        "endChar": 1
+      },
+      "revId": "192da7dd39288a3fd03d459f47593e1d2f510c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcf752c0_b4d2e417",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "how about 2 different uint8_t variables: one for usb3 and one for usb2. bitX is port X. bitX is either set in usb2 or usb3 but not both so\n\nusb2 | usb3 \u003d\u003d (1 \u003c\u003c num_ports) - 1;\nusb2 \u0026 usb3 \u003d\u003d 0;\n\nin the case that a board provides this data,\n\nIf a board does not provide, then both variables will be 0\n\n(and we would need comments explain this encoding)",
       "parentUuid": "ed26c240_e7a5c1bf",
+      "range": {
+        "startLine": 4878,
+        "startChar": 0,
+        "endLine": 4888,
+        "endChar": 0
+      },
+      "revId": "192da7dd39288a3fd03d459f47593e1d2f510c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225422a8_7998a5a3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4888,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-06T19:42:44Z",
+      "side": 1,
+      "message": "looks good, however on PCH, USB2 port number can be 1 to 15 so we might have to use 2 variables or use 4-bits to provide this info.",
+      "parentUuid": "64e05091_c3602b72",
       "range": {
         "startLine": 4878,
         "startChar": 0,
