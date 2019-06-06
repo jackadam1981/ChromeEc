@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae161278_6f32aad1",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T18:29:56Z",
+      "side": 1,
+      "message": "You\u0027d also need to set struct_version (or the bitmask)",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 10
+      },
+      "revId": "9c95f2c955e529b51a9be943e385afcedcb72813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f8d50a_487627f6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5647,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T18:29:56Z",
+      "side": 1,
+      "message": "Normally I wouldn\u0027t mind too much, but that file also gets fed to the kernel semi-automatically, so changing binary compatibility with userspace is not great. Can you do the bitmask change in this CL?",
+      "range": {
+        "startLine": 5647,
+        "startChar": 4,
+        "endLine": 5647,
+        "endChar": 56
+      },
+      "revId": "9c95f2c955e529b51a9be943e385afcedcb72813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561250e9_2ca51315",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5649,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T18:29:56Z",
+      "side": 1,
+      "message": "This will go away with the bitmask, but otherwise it\u0027s nice to have a |uint16_t reserved| field for alignment",
+      "range": {
+        "startLine": 5649,
+        "startChar": 1,
+        "endLine": 5649,
+        "endChar": 25
+      },
+      "revId": "9c95f2c955e529b51a9be943e385afcedcb72813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994693ee_b3314efe",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T18:29:56Z",
+      "side": 1,
+      "message": "Can you also output the full value of resp.status?",
+      "range": {
+        "startLine": 1662,
+        "startChar": 31,
+        "endLine": 1662,
+        "endChar": 32
+      },
+      "revId": "9c95f2c955e529b51a9be943e385afcedcb72813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f43705_27bd9340",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T18:29:56Z",
+      "side": 1,
+      "message": "nit: can you output hexadecimal with 0x%08X instead? Easier to see individual bits than decode, say, 23 in base 10. Even though in that case you\u0027re writing only 1 bit, it\u0027s good practice to print out bitwise values as hexadecimal for consistency",
+      "range": {
+        "startLine": 1663,
+        "startChar": 25,
+        "endLine": 1663,
+        "endChar": 28
+      },
+      "revId": "9c95f2c955e529b51a9be943e385afcedcb72813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
