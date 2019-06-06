@@ -1962,6 +1962,19 @@ int pd_is_vbus_present(int port);
  */
 uint8_t board_get_dp_pin_mode(int port);
 
+/**
+ * Get board specific USB port mapping for the specified port.
+ *
+ * Board specific code needs to fill the array for all the port
+ * in the below order.
+ * Byte <n> = Port <n>
+ *          Bit 0:3 - USB3 port mapping of port <n>
+ *          Bit 4:7 - USB2 port mapping of port <n>
+ *
+ * @param USB port map pointer to board specific code
+ */
+void board_get_usb_port_mapping(uint8_t *usb_port_map);
+
 #ifdef CONFIG_USB_PD_RETIMER
 /**
  * Return true if specified PD port is UFP.
