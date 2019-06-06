@@ -8,7 +8,11 @@
 
 #ifndef __ASSEMBLER__
 
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 #include <stdint.h>
+=======
+#include "common.h"
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 
 
 /**

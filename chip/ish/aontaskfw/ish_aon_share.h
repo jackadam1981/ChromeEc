@@ -6,6 +6,7 @@
 #ifndef __CROS_EC_ISH_AON_SHARE_H
 #define __CROS_EC_ISH_AON_SHARE_H
 
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 #include "ia_structs.h"
 
 /* magic ID for valid aontask image sanity check */
@@ -22,6 +23,24 @@ struct ish_aon_share {
 	/* magic ID */
 	uint32_t magic_id;
 	/* last error */
+=======
+#include "common.h"
+#include "ia_structs.h"
+
+/* magic ID for valid aontask image sanity check */
+#define AON_MAGIC_ID			        0x544E4F41  /*"AONT"*/
+
+/* aontask error code  */
+#define AON_SUCCESS				0
+#define AON_ERROR_NOT_SUPPORT_POWER_MODE	1
+#define AON_ERROR_DMA_FAILED			2
+
+
+/* shared data structure between main FW and aontask */
+struct ish_aon_share {
+	/* magic ID */
+	uint32_t magic_id;
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 	/* error counter */
 	uint32_t error_count;
 	/* last error */

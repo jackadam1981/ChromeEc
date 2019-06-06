@@ -17,7 +17,11 @@ include core/$(CORE)/build.mk
 endif
 
 # Required chip modules
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 chip-y+=clock.o gpio.o system.o hwtimer.o uart.o flash.o
+=======
+chip-y+=clock.o gpio.o system.o hwtimer.o uart.o flash.o ish_persistent_data.o
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 chip-$(CONFIG_I2C)+=i2c.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(CONFIG_HOSTCMD_HECI)+=host_command_heci.o

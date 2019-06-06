@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 /* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -19,3 +20,5 @@
 	TASK_ALWAYS(PD_C0, pd_task, NULL, LARGER_TASK_STACK_SIZE) \
 	TASK_ALWAYS(PD_INT_C0, pd_interrupt_handler_task, 0, TASK_STACK_SIZE) \
 	TASK_ALWAYS(ALS, als_task, NULL, TASK_STACK_SIZE)
+=======
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)

@@ -14,7 +14,14 @@
 
 /* Task event bitmasks */
 /* Tasks may use the bits in TASK_EVENT_CUSTOM for their own events */
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 #define TASK_EVENT_CUSTOM(x)	(x & 0x0001ffff)
+=======
+#define TASK_EVENT_CUSTOM(x)	(x & 0x0000ffff)
+
+/* Used to signal that sysjump preparation has completed */
+#define TASK_EVENT_SYSJUMP_READY BIT(16)
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 
 /* Used to signal that IPC layer is available for sending new data */
 #define TASK_EVENT_IPC_READY	BIT(17)

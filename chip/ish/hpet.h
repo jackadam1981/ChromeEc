@@ -47,11 +47,23 @@
  * Use this register to see HPET timer are settled after a write.
  */
 #define HPET_CTRL_STATUS		REG32(ISH_HPET_BASE + 0x160)
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 #define HPET_T1_CMP_SETTLING		BIT(9)
 #define HPET_T0_CMP_SETTLING		(BIT(7) | BIT(8))
+=======
+#define HPET_INT_STATUS_SETTLING	BIT(1)
+#define HPET_MAIN_COUNTER_SETTLING	(BIT(2) | BIT(3))
+#define HPET_T0_CAP_SETTLING		BIT(4)
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 #define HPET_T1_CAP_SETTLING		BIT(5)
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 #define HPET_T0_CAP_SETTLING		BIT(4)
 #define HPET_MAIN_COUNTER_SETTLING	(BIT(2) | BIT(3))
+=======
+#define HPET_T0_CMP_SETTLING		(BIT(7) | BIT(8))
+#define HPET_T1_CMP_SETTLING		BIT(9)
+#define HPET_MAIN_COUNTER_VALID		BIT(13)
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 #define HPET_T1_SETTLING		(HPET_T1_CAP_SETTLING | \
 					 HPET_T1_CMP_SETTLING)
 #define HPET_T0_SETTLING		(HPET_T0_CAP_SETTLING | \

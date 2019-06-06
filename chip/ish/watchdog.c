@@ -20,8 +20,8 @@
  */
 
 #include "common.h"
-#include "console.h"
 #include "hooks.h"
+#include "ish_persistent_data.h"
 #include "task.h"
 #include "registers.h"
 #include "system.h"
@@ -33,6 +33,13 @@
 
 int watchdog_init(void)
 {
+	/*
+	 * Put reset counter back at zero if last reset was not caused
+	 * by watchdog
+	 */
+	if ((system_get_reset_flags() & RESET_FLAG_WATCHDOG) == 0)
+		ish_persistent_data.watchdog_counter = 0;
+
 	/* Initialize WDT clock divider */
 	CCU_WDT_CD = WDT_CLOCK_HZ / 10; /* 10 Hz => 100 ms period */
 
@@ -46,6 +53,7 @@ int watchdog_init(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 void watchdog_enable(void)
 {
 	WDT_CONTROL |= WDT_CONTROL_ENABLE_BIT;
@@ -82,6 +90,8 @@ void watchdog_warning_irq(void)
 }
 DECLARE_IRQ(ISH_WDT_IRQ, watchdog_warning_irq);
 
+=======
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 void watchdog_reload(void)
 {
 	/*
