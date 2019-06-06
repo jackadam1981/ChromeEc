@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39d3ee4e_210579e8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5074,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-06T17:18:36Z",
+      "side": 1,
+      "message": "we generally don\u0027t want to add new weak implementation, We prefer to add new CONFIG_ option when there is a new feature we want a board to support.",
+      "range": {
+        "startLine": 5072,
+        "startChar": 0,
+        "endLine": 5074,
+        "endChar": 1
+      },
+      "revId": "192da7dd39288a3fd03d459f47593e1d2f510c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf752c0_b4d2e417",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4888,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-06T17:18:36Z",
+      "side": 1,
+      "message": "who is going to be the caller of this v1 host command?\n\nAlso the description for git 0:3 doesn\u0027t actually tell enough to understand what data is getting backed back. How is the mapping serialized?",
+      "range": {
+        "startLine": 4878,
+        "startChar": 0,
+        "endLine": 4888,
+        "endChar": 0
+      },
+      "revId": "192da7dd39288a3fd03d459f47593e1d2f510c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
