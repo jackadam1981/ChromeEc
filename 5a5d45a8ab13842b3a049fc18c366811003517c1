@@ -46,6 +46,30 @@
       "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0539ce1d_2a919d5d",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-06T15:52:51Z",
+      "side": 1,
+      "message": "Changed queue names XXXX_IN to XXXX_RX. Please take a look at line 31~35.\n\nAlso changed variable name uart_in to uart_tx to be consistent in naming: line 155.",
+      "parentUuid": "79f60527_0486e496",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
