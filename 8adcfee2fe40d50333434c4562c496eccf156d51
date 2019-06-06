@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54ce787d_a8fd2dd6",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-06T10:14:26Z",
+      "side": 1,
+      "message": "I don\u0027t have any special reason. Just because the value is non-zero and we use it to indicate the lock field previously.",
+      "parentUuid": "1c7c4f98_773d841d",
+      "range": {
+        "startLine": 552,
+        "startChar": 11,
+        "endLine": 552,
+        "endChar": 12
+      },
+      "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ad3388_e416b765",
         "filename": "core/riscv-rv32i/task.c",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8562f9c2_0193ffbf",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-06T10:14:26Z",
+      "side": 1,
+      "message": "Done.\n\nUsing rl should be Okay because another task will get the locked state and suspend itself before this operation. Can you tell me the reason using aqrl here?",
+      "parentUuid": "e5ad3388_e416b765",
+      "range": {
+        "startLine": 572,
+        "startChar": 1,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
