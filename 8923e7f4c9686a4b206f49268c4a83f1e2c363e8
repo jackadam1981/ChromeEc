@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8942c70c_c2843027",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T01:00:18Z",
+      "side": 1,
+      "message": "That also includes https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1481652/, correct?\nIt\u0027s not worth re-doing it for this CL, but in the future it\u0027s better to cherry-pick the 2 CLs separately. First cherry-pick CL:1481652, then on top of it cherry-pick CL:1625774",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 69
+      },
+      "revId": "8923e7f4c9686a4b206f49268c4a83f1e2c363e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
