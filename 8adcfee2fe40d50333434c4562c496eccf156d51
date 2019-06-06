@@ -93,6 +93,30 @@
       "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c497c173_8b0d818d",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-06T18:21:01Z",
+      "side": 1,
+      "message": "If I understand setting the aq bit as \"If only the aq bit is set, the atomic memory operation is treated as an acquire access, i.e., no following memory operations on this RISC-V hart can be observed to take place before the acquire memory operation.\"\n\nIf we do not set the aq bit on the swap, then the read memory operation of waiters (even though it is after the swap call now) can be observed to happen before the swap operation, right?",
+      "parentUuid": "8562f9c2_0193ffbf",
+      "range": {
+        "startLine": 572,
+        "startChar": 1,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
