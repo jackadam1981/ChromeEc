@@ -5069,6 +5069,23 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 
 #ifdef HAS_TASK_HOSTCMD
 
+#ifdef CONFIG_HOSTCMD_INTEL_VIRTUAL_MUX
+static int hc_intel_virtual_mux(struct host_cmd_handler_args *args)
+{
+	struct ec_response_intel_virtual_mux *r = args->response;
+
+	r->num_ports = CONFIG_USB_PD_PORT_COUNT;
+	board_get_usb_port_numbers(r->usb3_port_num, r->usb2_port_num);
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_INTEL_VIRTUAL_MUX,
+		     hc_intel_virtual_mux,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_HOSTCMD_INTEL_VIRTUAL_MUX */
+
 static int hc_pd_ports(struct host_cmd_handler_args *args)
 {
 	struct ec_response_usb_pd_ports *r = args->response;

@@ -1962,6 +1962,23 @@ int pd_is_vbus_present(int port);
  */
 uint8_t board_get_dp_pin_mode(int port);
 
+#ifdef CONFIG_HOSTCMD_INTEL_VIRTUAL_MUX
+/**
+ * Get board specific USB port number info for the specified USB-C port.
+ *
+ * Board specific code needs to fill the array for all the USB-C ports.
+ * These USB numbers are needed for configuring the Intel Virtual MUX,
+ * as EC USB-C port number may not be equal to AP's USB2 & USB3 port
+ * numbers.
+ * USB3 port number on SOC [1 to 15]
+ * USB2 port number on PCH [1 to 15]
+ *
+ * @param usb3_port_num Pointer to USB3 port number of USB-C port <n>
+ * @param usb2_port_num Pointer to USB2 port number of USB-C port <n>
+ */
+void board_get_usb_port_numbers(uint8_t *usb3_port_num, uint8_t *usb2_port_num);
+#endif
+
 #ifdef CONFIG_USB_PD_RETIMER
 /**
  * Return true if specified PD port is UFP.

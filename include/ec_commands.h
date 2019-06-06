@@ -5417,6 +5417,42 @@ struct ec_response_locate_chip {
 } __ec_align2;
 
 /*****************************************************************************/
+#ifdef CONFIG_HOSTCMD_INTEL_VIRTUAL_MUX
+/* Host command to get data to configure Intel Virtual MUX */
+#define EC_CMD_INTEL_VIRTUAL_MUX 0x0127
+
+struct ec_response_intel_virtual_mux {
+	uint8_t num_ports;
+	/*
+	 * USB port number for each of the EC's USB-C ports on the board.
+	 * These USB numbers are needed for configuring the Intel Virtual MUX,
+	 * as EC's USB-C port number may not be equal to AP's USB2 & USB3 port
+	 * numbers.
+	 * 1. Super-speed lines of USB-C are connected to Intel SOC.
+	 * 2. USB2 lines of USB-C are connected to Intel PCH.
+	 * 3. USBx ports are 1 to n based for respective USB-C EC's port.
+	 * USB3 port number on SOC [1 to 15]
+	 * USB2 port number on PCH [1 to 15]
+	 *
+	 * Example: Kernel requests PMC for USB-C mux connection over IPC
+	 * in below format.
+	 * Byte 0: 0:3 -> Connection request [0]
+	 *         4:7 -> USB3 port number [1 to 15]
+	 * Byte 1: 0:3 -> USB2 port number [1 to 15]
+	 *           4 -> UFP/DFP [1/0]
+	 *           5 -> ORI-HSL [1/0]
+	 *           6 -> ORI-SBU [1/0]
+	 *           7 -> Dbg Acc [1/0]
+	 * As USB3 & USB2 port numbers are constants for a board these can be
+	 * requested from EC and stored in Kernel during the registration of
+	 * TCSS Kernel probe.
+	 */
+	uint8_t usb3_port_num[EC_USB_PD_MAX_PORTS];
+	uint8_t usb2_port_num[EC_USB_PD_MAX_PORTS];
+} __ec_align1;
+#endif /* CONFIG_HOSTCMD_INTEL_VIRTUAL_MUX */
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/
