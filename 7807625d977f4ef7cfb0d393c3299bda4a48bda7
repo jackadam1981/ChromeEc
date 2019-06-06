@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f51c016_ee77d9aa",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-06T17:33:04Z",
+      "side": 1,
+      "message": "nit: align arguments (with tabs):\n\n static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,\n\t\t\t \t uint8_t *prk, size_t prk_size, uint8_t *info,\n \t\t\t\t size_t info_size)\n\ntip: if using clion and have clang-format mode enabled (http://go/clion-for-chromeos#follow-clang-format-style) you can highlight the text and use \"Code-\u003eReformat Code\" to do it automatically (or \"gq\" if you\u0027re using IdeaVIM plugin).",
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccfb66da_95120296",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-06T17:33:04Z",
+      "side": 1,
+      "message": "Technically this should be prk_size. We can also change key_buf[SHA256_DIGEST_SIZE] to key_buf[prk_size].",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 38
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be91b75_61b46d23",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-06T17:33:04Z",
+      "side": 1,
+      "message": "I wonder if we could add a unit test that runs on the host (desktop) for this \nmethod? See test/aes.c as an example.\n\nThen we can verify that we get the same results before and after this change (when using same ikm and salt).",
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e5f061_084e7cf1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-06T17:33:04Z",
+      "side": 1,
+      "message": "nit: indent args like other comment:\n\n \treturn hkdf_expand_one_step(out_key, SBP_ENC_KEY_LEN, prk, sizeof(prk),\n\t\t\t\t    (uint8_t *)user_id, sizeof(user_id));",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
