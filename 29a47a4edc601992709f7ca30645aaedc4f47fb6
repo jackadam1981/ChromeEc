@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2a48a2b6_2c0a38e9",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-06T04:12:30Z",
+      "side": 1,
+      "message": "40us is mt6370 HW logic toggle bc12 flow minimum delay time\n10ms between toggle bc12 in rt946x_bc12_workaround is related to TVDPSRC_ON and TVDMSRC_ON in the spec, we pull-up D+ need 10ms, 40ms is spec check D- delay",
+      "parentUuid": "37b0bf82_b3606a48",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43ff54a8_6f427c65",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
