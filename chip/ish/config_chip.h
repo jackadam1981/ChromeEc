@@ -9,6 +9,11 @@
 /* CPU core BFD configuration */
 #include "core/minute-ia/config_core.h"
 
+#ifndef __ASSEMBLER__
+/* Needed for PANIC_DATA_BASE */
+#include "ish_persistent_data.h"
+#endif
+
 /* Number of IRQ vectors on the ISH */
 #define CONFIG_IRQ_COUNT	(VEC_TO_IRQ(255) + 1)
 
@@ -26,17 +31,16 @@
 /* this macro causes 'pause' and reduces loop counts inside loop. */
 #define CPU_RELAX() asm volatile("rep; nop" ::: "memory")
 
-/****************************************************************************/
-/* Memory mapping */
-/****************************************************************************/
+/*****************************************************************************/
+/*                               Memory Layout                               */
+/*****************************************************************************/
 
-/* Define our SRAM layout. */
-#define CONFIG_ISH_SRAM_BASE_START	0xFF000000
-#define CONFIG_ISH_SRAM_BASE_END	0xFF0A0000
-#define CONFIG_ISH_SRAM_SIZE		(CONFIG_ISH_SRAM_BASE_END - \
-					CONFIG_ISH_SRAM_BASE_START)
+#define CONFIG_RAM_BASE		0xFF000000
+#define CONFIG_RAM_SIZE		0x000A0000
+#define CONFIG_RAM_BANK_SIZE		0x00008000
 
 #if defined(CHIP_FAMILY_ISH3)
+<<<<<<< HEAD   (03172d ish: add missing EOI in LAPIC error irq handler)
 /* on ISH3, there is no seprated aon memory, using last 4KB of normal memory
  * without poweroff
  */
@@ -65,6 +69,29 @@
 /* Required for panic_output */
 #define CONFIG_RAM_SIZE			CONFIG_ISH_SRAM_SIZE
 #define CONFIG_RAM_BASE			CONFIG_ISH_SRAM_BASE_START
+=======
+/* On ISH3, there is no separate AON memory; use last 4KB of SRAM */
+#define CONFIG_AON_RAM_BASE		0xFF09F000
+#define CONFIG_AON_RAM_SIZE		0x00001000
+#elif defined(CHIP_FAMILY_ISH4)
+#define CONFIG_AON_RAM_BASE		0xFF800000
+#define CONFIG_AON_RAM_SIZE		0x00001000
+#elif defined(CHIP_FAMILY_ISH5)
+#define CONFIG_AON_RAM_BASE		0xFF800000
+#define CONFIG_AON_RAM_SIZE		0x00002000
+#else
+#error "CHIP_FAMILY_ISH(3|4|5) must be defined"
+#endif
+
+/* The end of the AON memory is reserved for read-only use */
+#define CONFIG_AON_ROM_SIZE		0x180
+#define CONFIG_AON_ROM_BASE		(CONFIG_AON_RAM_BASE	\
+					 + CONFIG_AON_RAM_SIZE	\
+					 - CONFIG_AON_ROM_SIZE)
+
+/* Store persistent panic data in AON memory. */
+#define CONFIG_PANIC_DATA_BASE		(&(ish_persistent_data.panic_data))
+>>>>>>> BRANCH (d1a903 arcada: use lid switch instead of gpio)
 
 /* System stack size */
 #define CONFIG_STACK_SIZE		1024
