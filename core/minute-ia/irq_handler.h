@@ -9,15 +9,10 @@
 #define __CROS_EC_IRQ_HANDLER_H
 
 #include "registers.h"
+#include "task.h"
 #include "task_defs.h"
 
 asm (".include \"core/minute-ia/irq_handler_common.S\"");
-
-struct irq_data {
-	void (*routine)(void);
-	void (*ioapic_routine)(void);
-	int irq;
-};
 
 /* Helper macros to build the IRQ handler and priority struct names */
 #define IRQ_HANDLER(irqname) CONCAT3(_irq_, irqname, _handler)
@@ -39,10 +34,10 @@ struct irq_data {
 	void __keep routine(void);					\
 	void IRQ_HANDLER(irq)(void);					\
 	__asm__ (".section .rodata.irqs\n");				\
-	const struct irq_data __keep CONCAT4(__irq_, irq, _, routine)	\
-		__attribute__((section(".rodata.irqs"))) = { routine,	\
-							     IRQ_HANDLER(irq), \
-							     irq};	\
+	const struct irq_def __keep CONCAT4(__irq_, irq, _, routine)	\
+	__attribute__((section(".rodata.irqs"))) = {			\
+		irq, routine, IRQ_HANDLER(irq)				\
+	};								\
 	__asm__ (							\
 		".section .text._irq_"#irq"_handler\n"			\
 		"_irq_"#irq"_handler:\n"				\
