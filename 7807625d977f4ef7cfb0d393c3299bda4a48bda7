@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "b46e18bb_5d824efd",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T21:02:25Z",
+      "side": 1,
+      "message": "Can you avoid using variable-length arrays? The kernel is removing them (https://lwn.net/Articles/749064/).",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ccfb66da_95120296",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 2
@@ -30,6 +53,30 @@
       "writtenOn": "2019-06-06T17:33:04Z",
       "side": 1,
       "message": "Technically this should be prk_size. We can also change key_buf[SHA256_DIGEST_SIZE] to key_buf[prk_size].",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 38
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a240af9_c8950140",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-06T21:02:25Z",
+      "side": 1,
+      "message": "I would avoid variable-length arrays, see above.",
+      "parentUuid": "ccfb66da_95120296",
       "range": {
         "startLine": 143,
         "startChar": 20,
