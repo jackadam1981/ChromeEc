@@ -1962,6 +1962,22 @@ int pd_is_vbus_present(int port);
  */
 uint8_t board_get_dp_pin_mode(int port);
 
+/**
+ * Get board specific USB port mapping for the specified USB-C port.
+ *
+ * Board specific code needs to fill the array for all the USB-C ports.
+ * These USB mapping are needed for configuring the Intel Virtual MUX,
+ * as EC USB-C port number may not match AP's USB2 & USB3 port numbers.
+ * USB3 port mapping on SOC [1 to 15]
+ * USB2 port mapping on PCH [1 to 15]
+ *
+ * @param usb3_port_map Pointer to USB3 port mapping of USB-C port <n>
+ * @param usb2_port_map Pointer to USB2 port mapping of USB-C port <n>
+ * @return EC_RES_UNAVAILABLE if not applicable to board else EC_RES_SUCCESS
+ */
+__override_proto int board_get_usb_port_mapping(uint8_t *usb3_port_map,
+						uint8_t *usb2_port_map);
+
 #ifdef CONFIG_USB_PD_RETIMER
 /**
  * Return true if specified PD port is UFP.
