@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9785ca1_06e5be7a",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-06T17:22:58Z",
+      "side": 1,
+      "message": "It is not a good idea to call interrupt handler directly.",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "4619709cadae11872d39338e1beb715b7c45b593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7da36d6_1a7b3627",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-06T17:22:58Z",
+      "side": 1,
+      "message": "Again, it is not good to call IRQ handler directly. usb_written is called through queue policy, but USB endpoint interrupt can happen in the middle of tx_stream_handler() running. \nThis line should be replaced to a call to trigger USB endpoint interrupt, if it is feasible.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 27
+      },
+      "revId": "4619709cadae11872d39338e1beb715b7c45b593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
