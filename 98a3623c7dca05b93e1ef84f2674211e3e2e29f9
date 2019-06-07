@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebd9d252_6be9154b",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T17:01:58Z",
+      "side": 1,
+      "message": "I put them initially in software_panic.h and the upload process complained that an existing copyright notice was present.  So I made them local instead.",
+      "parentUuid": "8b20605b_423605c7",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2fddd2f_f80df45f",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-07T16:48:26Z",
       "side": 1,
       "message": "Probably leave the size empty.",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0f1d25_35332f0c",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T17:01:58Z",
+      "side": 1,
+      "message": "This was brought in from another similar usage for another panic.c... Leaving the 8 performs a check to make sure we don\u0027t have too many strings in this array.",
+      "parentUuid": "d2fddd2f_f80df45f",
       "range": {
         "startLine": 50,
         "startChar": 43,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "91635ae9_a570641e",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T17:01:58Z",
+      "side": 1,
+      "message": "I will see if I can get around the copyright issue noted above",
+      "parentUuid": "95df0764_51e2952e",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05794ea5_38ea1895",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-06-07T16:48:26Z",
       "side": 1,
       "message": "Might we be getting a local var here? from my understanding, the best way might be to look right under EBP.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8dbd448_7ef8747d",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T17:01:58Z",
+      "side": 1,
+      "message": "I have not used the Intel assembly in many years. It sounded from the documentation that the return address would be on TOS and sometimes EBP would point to it instead but was not clear when this was true or not.  I will look deeper into EBP.",
+      "parentUuid": "05794ea5_38ea1895",
       "range": {
         "startLine": 184,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0e444ec0_337c8978",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T17:01:58Z",
+      "side": 1,
+      "message": "I will change this... followed the existing code in another panic.c",
+      "parentUuid": "25a54169_1875415d",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a306fd22_0f549a59",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-06-07T16:48:26Z",
       "side": 1,
       "message": "We shouldn\u0027t be initializing the structure here, as this happens during system initialization (from saved panic data). We don\u0027t want to eradicate that saved data.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ac72ed_bfacf39a",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T17:01:58Z",
+      "side": 1,
+      "message": "This is how all of the panic.c implementations do this.  Are you sure this is not what I want?",
+      "parentUuid": "a306fd22_0f549a59",
       "range": {
         "startLine": 198,
         "startChar": 1,
