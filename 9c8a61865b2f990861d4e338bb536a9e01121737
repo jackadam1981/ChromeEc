@@ -46,6 +46,52 @@
       "revId": "9c8a61865b2f990861d4e338bb536a9e01121737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c37a6_ee43a0aa",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:35:38Z",
+      "side": 1,
+      "message": "restoring this to the original name.",
+      "range": {
+        "startLine": 155,
+        "startChar": 21,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "9c8a61865b2f990861d4e338bb536a9e01121737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4729479_a30777b4",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:35:38Z",
+      "side": 1,
+      "message": "I renamed this from tx_units to tx_handled, so that it can get along with another member name, \u0027rx_handled\u0027.",
+      "range": {
+        "startLine": 143,
+        "startChar": 19,
+        "endLine": 143,
+        "endChar": 29
+      },
+      "revId": "9c8a61865b2f990861d4e338bb536a9e01121737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

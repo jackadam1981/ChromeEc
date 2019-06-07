@@ -70,6 +70,53 @@
       "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d1264b_633a82b9",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:35:38Z",
+      "side": 1,
+      "message": "Going to keep the original weird name combination, because I couldn\u0027t dispute the comment in patch#17 addressing that renaming long-lived variables (without good gains) do not help our productivity.",
+      "parentUuid": "0539ce1d_2a919d5d",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "263f4b72_7548b1c1",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:35:38Z",
+      "side": 1,
+      "message": "This should be buffer_units_mask, which is already calculated.",
+      "range": {
+        "startLine": 154,
+        "startChar": 36,
+        "endLine": 154,
+        "endChar": 60
+      },
+      "revId": "5a5d45a8ab13842b3a049fc18c366811003517c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
