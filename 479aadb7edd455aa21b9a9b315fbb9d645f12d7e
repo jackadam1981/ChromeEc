@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98e69cb3_4c718dda",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-07T18:24:08Z",
+      "side": 1,
+      "message": "CCD also plays an important role.",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d54cd00_0a3c8315",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-07T18:24:08Z",
+      "side": 1,
+      "message": "oo",
+      "range": {
+        "startLine": 79,
+        "startChar": 40,
+        "endLine": 79,
+        "endChar": 41
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73fadbd_c8bdf34b",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-07T18:24:08Z",
+      "side": 1,
+      "message": "run",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ce7b07_8aae24ed",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-07T18:24:08Z",
+      "side": 1,
+      "message": "sole",
+      "range": {
+        "startLine": 94,
+        "startChar": 22,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d79d37e_5f2f59d9",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-07T18:24:08Z",
+      "side": 1,
+      "message": "This will be out of sync. Comments are useful but they should be placed in a single location (where it\u0027s most expected).\n\nI would describe these in config.h (and add a pointer to it). Maybe it\u0027s time to create usbc_config.h.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 0
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
