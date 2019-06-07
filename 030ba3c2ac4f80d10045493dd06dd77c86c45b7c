@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1fa54d3_1219f759",
+        "filename": "common/software_panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T19:42:31Z",
+      "side": 1,
+      "message": "Let\u0027s put this in common/panic_output.c instead of making a new file just for it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3bc681_a78c1df7",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T19:42:31Z",
+      "side": 1,
+      "message": "This will never happen now that we adjust the vector in exception_panic",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04589e25_2ef873ee",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T19:42:31Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be putting #ifdefs in C source code (although it has historically been done quite frequently in EC codebase before we had IS_ENABLED). If you declare the symbol as extern in panic.h regardless of whether CONFIG_SOFTWARE_PANIC is defined, you should be able to use IS_ENABLED here.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e2b132_0d2cf0aa",
+        "filename": "include/software_panic.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T19:42:31Z",
+      "side": 1,
+      "message": "Why not we just test \u003e\u003d PANIC_SW_BASE and subtract PANIC_SW_BASE?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
