@@ -23,7 +23,25 @@
  */
 static uint8_t oc_event_cnt_tbl[CONFIG_USB_PD_PORT_COUNT];
 
+/* Indicator for whether the port's PPC driver has been initialized */
+static uint8_t driver_init[CONFIG_USB_PD_PORT_COUNT];
+
 static uint32_t connected_ports;
+
+/*
+ * Verify the PPC is init'd, and init if it isn't.  Should be run before any
+ * calls into the PPC driver.
+ */
+static int ppc_check_init(int port)
+{
+	if (driver_init[port])
+		return 1;
+
+	ppc_init(port);
+
+	return driver_init[port];
+}
+
 
 /* Simple wrappers to dispatch to the drivers. */
 
@@ -37,8 +55,10 @@ int ppc_init(int port)
 	rv = ppc_chips[port].drv->init(port);
 	if (rv)
 		CPRINTS("p%d: PPC init failed! (%d)", port, rv);
-	else
+	else {
 		CPRINTS("p%d: PPC init'd.", port);
+		driver_init[port] = 1;
+	}
 
 	return rv;
 }
@@ -103,6 +123,9 @@ int ppc_is_sourcing_vbus(int port)
 		return 0;
 	}
 
+	if (!ppc_check_init(port))
+		return 0;
+
 	return ppc_chips[port].drv->is_sourcing_vbus(port);
 }
 
@@ -111,6 +134,9 @@ int ppc_set_polarity(int port, int polarity)
 {
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
+
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
 
 	return ppc_chips[port].drv->set_polarity(port, polarity);
 }
@@ -121,6 +147,9 @@ int ppc_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp)
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
+
 	return ppc_chips[port].drv->set_vbus_source_current_limit(port, rp);
 }
 
@@ -128,6 +157,9 @@ int ppc_discharge_vbus(int port, int enable)
 {
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
+
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
 
 	return ppc_chips[port].drv->discharge_vbus(port, enable);
 }
@@ -145,6 +177,9 @@ int ppc_set_sbu(int port, int enable)
 {
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
+
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
 
 	return ppc_chips[port].drv->set_sbu(port, enable);
 }
@@ -165,6 +200,9 @@ int ppc_set_vconn(int port, int enable)
 	if (enable && ppc_is_port_latched_off(port))
 		return EC_ERROR_ACCESS_DENIED;
 
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
+
 	return ppc_chips[port].drv->set_vconn(port, enable);
 }
 #endif
@@ -182,6 +220,9 @@ int ppc_vbus_sink_enable(int port, int enable)
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
+
 	return ppc_chips[port].drv->vbus_sink_enable(port, enable);
 }
 
@@ -191,6 +232,9 @@ int ppc_enter_low_power_mode(int port)
 
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
+
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
 
 	ppc = &ppc_chips[port];
 
@@ -214,6 +258,9 @@ int ppc_vbus_source_enable(int port, int enable)
 	if (enable && ppc_is_port_latched_off(port))
 		return EC_ERROR_ACCESS_DENIED;
 
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
+
 	return ppc_chips[port].drv->vbus_source_enable(port, enable);
 }
 
@@ -224,6 +271,9 @@ int ppc_is_vbus_present(int port)
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return 0;
 	}
+
+	if (!ppc_check_init(port))
+		return EC_ERROR_UNKNOWN;
 
 	return ppc_chips[port].drv->is_vbus_present(port);
 }
