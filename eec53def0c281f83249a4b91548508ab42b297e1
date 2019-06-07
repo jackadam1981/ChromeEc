@@ -234,6 +234,30 @@
       "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d9858e_0ec8d3de",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-07T17:24:53Z",
+      "side": 1,
+      "message": "\"fpsensor_private.h\"?\n\nHopefully that makes it clear that other non-fpsensor code should not include it (in addition to it not being in the default include directory).",
+      "parentUuid": "ce3aa95e_5d00b990",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
