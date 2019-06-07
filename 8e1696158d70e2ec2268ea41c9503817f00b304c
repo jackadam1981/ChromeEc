@@ -137,6 +137,30 @@
       "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448fc911_b8f80f40",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T17:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "483daf53_11d15ed3",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 47
+      },
+      "revId": "8e1696158d70e2ec2268ea41c9503817f00b304c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

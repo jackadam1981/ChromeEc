@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "bd0f565a_2d2e9c31",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T17:13:30Z",
+      "side": 1,
+      "message": "This CL dropped usb_console.c change. Meanwhile the consolidation is handled in crrev.com/c/1648921.",
+      "parentUuid": "6b3b7b7e_3f6052d0",
+      "revId": "25732755ab27e7db891d51583e219cbbe033850f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99bb03ad_5a500a30",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 15
