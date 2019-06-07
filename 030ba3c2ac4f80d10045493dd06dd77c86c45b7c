@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a72d6221_d6a8dbe1",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T22:43:19Z",
+      "side": 1,
+      "message": "Another solution....\n\n    #if defined(CONFIG_WATCHDOG) \u0026\u0026 !defined(CONFIG_SOFTWARE_PANIC)\n    #error \"Watchdog requires CONFIG_SOFTWARE_PANIC\"\n    #endif\n\nat bottom of include/config.h?",
+      "parentUuid": "be3f60e2_e978f68a",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04589e25_2ef873ee",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 6
@@ -187,6 +211,30 @@
       "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1118c9e9_bec200c9",
+        "filename": "include/software_panic.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T22:43:19Z",
+      "side": 1,
+      "message": "What do you think of checking vector \u003e\u003d PANIC_SW_BASE, and vector - PANIC_SW_BASE \u003c ARRAY_SIZE(panic_sw_reasons)?\n\nWould have to remove the NULL from the end of the array.",
+      "parentUuid": "f9a10d83_b1b9f77c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
