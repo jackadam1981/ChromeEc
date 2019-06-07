@@ -22,6 +22,52 @@
       "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e30d088_9f02fd7f",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-07T16:00:44Z",
+      "side": 1,
+      "message": "Thanks for adding this.\n\nOne preference I personally have for function comments is to put them in the .c file. Theoretically/stylistically they should be in the header file, but I find that they almost always go stale/incorrect when one does that because they are not \"close\" to the code (i.e., you make some small change in the function, but since the comments are not there you forget to update them). Wrong comments can often be worse than no comments since it provides a false sense of confidence, so I like to minimize the chance of them getting out of sync. (Note: if we actually used doxygen to generate docs (I don\u0027t think we do?), either way would work.)\n\nnorvez@ Are you ok with moving them or do you have another preference?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14693809_58899bfe",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-07T16:00:44Z",
+      "side": 1,
+      "message": "nit: two asterisks in case we ever use doxygen: http://www.doxygen.nl/manual/docblocks.html\n\n /**\n  *\n  */",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
