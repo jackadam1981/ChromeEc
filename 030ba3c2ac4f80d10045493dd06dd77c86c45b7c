@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6440b4e_26eb6ada",
+        "filename": "common/software_panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T20:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1fa54d3_1219f759",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e3bc681_a78c1df7",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be3f60e2_e978f68a",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T20:34:55Z",
+      "side": 1,
+      "message": "If I map this to a SW Panic type and CONFIG_SOFTWARE_PANIC is not defined, then won\u0027t a dog bite look like an unknown? I will change the condition tree to look like the following.\n\n        if (!IS_ENABLED(CONFIG_SOFTWARE_PANIC) \u0026\u0026\n            pdata-\u003ex86.vector \u003d\u003d PANIC_SW_WATCHDOG)\n                panic_printf(\"Reason: Watchdog Expiration\\n\");\n        else if (pdata-\u003ex86.vector \u003c\u003d 20)\n                panic_printf(\"Reason: %s\\n\", panic_reason[pdata-\u003ex86.vector]);\n        else if (IS_ENABLED(CONFIG_SOFTWARE_PANIC) \u0026\u0026\n                 (pdata-\u003ex86.vector \u0026 PANIC_SW_BASE_MASK) \u003d\u003d PANIC_SW_BASE) {\n                panic_printf(\"Software panic reason %s\\n\",\n                             panic_sw_reasons[pdata-\u003ex86.vector -\n                                              PANIC_SW_BASE]);\n                panic_printf(\"Software panic info 0x%x\\n\",\n                             pdata-\u003ex86.error_code);\n        }\n        else\n                panic_printf(\"Interrupt vector number: 0x%08X (unknown)\\n\",\n                             pdata-\u003ex86.vector);",
+      "parentUuid": "4e3bc681_a78c1df7",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9bc19085_aef3d45f",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T20:34:55Z",
+      "side": 1,
+      "message": "I had it this way and conditionally externed panic_sw_reasons based on CONFIG_SOFTWARE_PANIC.  I removed that condition and will not have the problem I was seeing before, making IS_ENABLED easier to use in a generic way",
+      "parentUuid": "04589e25_2ef873ee",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e2b132_0d2cf0aa",
         "filename": "include/software_panic.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a10d83_b1b9f77c",
+        "filename": "include/software_panic.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-07T20:34:55Z",
+      "side": 1,
+      "message": "It just happens that the current magic number for PANIC_SW_BASE will work for every valid case, but if junk is passed we could get a really wrong answer instead of it showing up as unknown. I would prefer to leave this as it currently stands",
+      "parentUuid": "91e2b132_0d2cf0aa",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
