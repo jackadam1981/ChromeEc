@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e4279c9_bb0adb82",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-07T16:09:40Z",
+      "side": 1,
+      "message": "Both ciphertext_size and plaintext_size should be the same: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/third_party/boringssl/include/aes-gcm.h#129\n\nMaybe we could rename to \"cipher_and_plaintext_size\" and put all three on the same line (if they fit) to make it more obvious?",
+      "parentUuid": "3d6b0dc0_76417b6d",
+      "range": {
+        "startLine": 103,
+        "startChar": 33,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e30d088_9f02fd7f",
         "filename": "include/fpsensor_crypto.h",
         "patchSetId": 1
