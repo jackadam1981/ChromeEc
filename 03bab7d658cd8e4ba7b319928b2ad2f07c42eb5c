@@ -22,6 +22,98 @@
       "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e102a6c7_5664bd8b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T17:33:35Z",
+      "side": 1,
+      "message": "why is this code part of this patch?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f180ef_95a167d6",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T17:33:35Z",
+      "side": 1,
+      "message": "does this mean that in USB-\u003eUART direction the buffer is just one USB chunk worth of bytes?\n\nIf so, was it the same before this patch?",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f32d79_ead50936",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T17:33:35Z",
+      "side": 1,
+      "message": "iirc ANSI C standard discourages names starting with udnerscores, please use trailing underscore.",
+      "range": {
+        "startLine": 211,
+        "startChar": 18,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefc3d5b_ba56b9af",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T17:33:35Z",
+      "side": 1,
+      "message": "cah you leave the invariant part out of #if/#else/#endif?",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 6
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
