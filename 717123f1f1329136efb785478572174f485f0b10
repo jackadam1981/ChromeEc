@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd49b962_f57b82c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-06-07T10:36:40Z",
+      "side": 1,
+      "message": "in the bug you mention that it grows a bit, what gives? :-)\n\nIf the code size (and presumably code) doesn\u0027t change, this is a safe change. Otherwise it likely means that the toolchain builds without LTO in some place when the .o file also carries machine code.",
+      "range": {
+        "startLine": 14,
+        "startChar": 40,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "717123f1f1329136efb785478572174f485f0b10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
