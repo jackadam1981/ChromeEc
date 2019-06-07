@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "380e20a5_7719bac3",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-07T22:14:52Z",
+      "side": 1,
+      "message": "If you rename this as cipher_and_plain_text_size then the other one in aes_gcm_encrypt should be names as plain_and_cipher_text_size. So I would rather rename both as text_size and mention that it\u0027s the size of both cipher and plain texts in the comment of the parameter.",
+      "parentUuid": "3c8bdf50_ccd21c9e",
+      "range": {
+        "startLine": 103,
+        "startChar": 33,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f786f3d_aedddc0b",
         "filename": "include/fpsensor_crypto.h",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6554ce2c_9b160f92",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-07T22:14:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f786f3d_aedddc0b",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +211,30 @@
       "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eac69e9_0f16920e",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-07T22:14:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14693809_58899bfe",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -258,6 +330,30 @@
       "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e103c7b_041bec8e",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-07T22:14:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d9858e_0ec8d3de",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
