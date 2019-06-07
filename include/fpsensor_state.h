@@ -41,6 +41,9 @@
 #define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM_BIT(0)
 #define TASK_EVENT_UPDATE_CONFIG  TASK_EVENT_CUSTOM_BIT(1)
 
+#define CPRINTF(format, args...) cprintf(CC_FP, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_FP, format, ## args)
+
 /* --- Global variables defined in fpsensor_state.c --- */
 
 /* Last acquired frame (aligned as it is used by arbitrary binary libraries) */
