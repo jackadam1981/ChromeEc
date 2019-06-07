@@ -309,12 +309,13 @@ static int __tx_char(void *context, int c)
 #ifdef CONFIG_USB_CONSOLE_CRC
 	crc32_ctx_hash8(&usb_tx_crc_ctx, c);
 
-	while (QUEUE_ADD_UNITS(state, &c, 1) != 1)
+	while (queue_add_unit(state, &c) != 1)
 		usleep(500);
-#else
-	QUEUE_ADD_UNITS(state, &c, 1);
-#endif
+
 	return 0;
+#else
+	return queue_add_unit(state, &c) ? 0 : 1;
+#endif
 }
 
 /*
@@ -327,7 +328,7 @@ int usb_getc(void)
 	if (is_readonly || !is_enabled)
 		return -1;
 
-	if (QUEUE_REMOVE_UNITS(&rx_q, &c, 1))
+	if (queue_remove_unit(&rx_q, &c))
 		return c;
 	return -1;
 }
@@ -341,18 +342,17 @@ int usb_puts(const char *outstr)
 		return EC_SUCCESS;
 
 	ret  = usb_wait_console();
-	if (ret)
-		return ret;
+	if (!ret) {
+		state = tx_q;
+		while (*outstr && !__tx_char(&state, *outstr))
+			outstr++;
 
-	state = tx_q;
-	while (*outstr)
-		if (__tx_char(&state, *outstr++))
-			break;
+		ret = *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+	}
 
-	if (queue_count(&state))
-		handle_output();
+	handle_output();
 
-	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+	return ret;
 }
 
 int usb_putc(int c)
@@ -373,14 +373,12 @@ int usb_vprintf(const char *format, va_list args)
 		return EC_SUCCESS;
 
 	ret = usb_wait_console();
-	if (ret)
-		return ret;
+	if (!ret) {
+		state = tx_q;
+		ret = vfnprintf(__tx_char, &state, format, args);
+	}
 
-	state = tx_q;
-	ret = vfnprintf(__tx_char, &state, format, args);
-
-	if (queue_count(&state))
-		handle_output();
+	handle_output();
 
 	return ret;
 }
