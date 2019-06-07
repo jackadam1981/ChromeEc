@@ -251,9 +251,6 @@ static int usb_wait_console(void)
 	timestamp_t deadline = get_time();
 	int wait_time_us = 1;
 
-	if (!is_enabled || !tx_fifo_is_ready())
-		return EC_SUCCESS;
-
 	deadline.val += USB_CONSOLE_TIMEOUT_US;
 
 	/*
@@ -311,10 +308,12 @@ static int __tx_char(void *context, int c)
 
 	while (QUEUE_ADD_UNITS(state, &c, 1) != 1)
 		usleep(500);
+
+	return EC_SUCCESS;
 #else
-	QUEUE_ADD_UNITS(state, &c, 1);
+	return QUEUE_ADD_UNITS(state, &c, 1) ? EC_SUCCESS :
+					       EC_ERROR_OVERFLOW;
 #endif
-	return 0;
 }
 
 /*
@@ -341,18 +340,19 @@ int usb_puts(const char *outstr)
 		return EC_SUCCESS;
 
 	ret  = usb_wait_console();
-	if (ret)
-		return ret;
+	if (ret == EC_SUCCESS) {
+		state = tx_q;
+		while (*outstr) {
+			ret = __tx_char(&state, *outstr);
+			if (ret != EC_SUCCESS)
+				break;
+			outstr++;
+		}
 
-	state = tx_q;
-	while (*outstr)
-		if (__tx_char(&state, *outstr++))
-			break;
-
-	if (queue_count(&state))
 		handle_output();
+	}
 
-	return *outstr ? EC_ERROR_OVERFLOW : EC_SUCCESS;
+	return ret;
 }
 
 int usb_putc(int c)
@@ -373,14 +373,12 @@ int usb_vprintf(const char *format, va_list args)
 		return EC_SUCCESS;
 
 	ret = usb_wait_console();
-	if (ret)
-		return ret;
+	if (ret == EC_SUCCESS) {
+		state = tx_q;
+		ret = vfnprintf(__tx_char, &state, format, args);
 
-	state = tx_q;
-	ret = vfnprintf(__tx_char, &state, format, args);
-
-	if (queue_count(&state))
 		handle_output();
+	}
 
 	return ret;
 }
