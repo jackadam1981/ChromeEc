@@ -162,6 +162,30 @@
       "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9d94c2_7b7e4e46",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-07T16:47:00Z",
+      "side": 1,
+      "message": "Could we have an internal header that lives in the common/fpsensor directory for this? (i.e., a header file that all of our separate files could include, but any external files would not include since it\u0027s not in the \"global\" include directory.)",
+      "parentUuid": "3ad23625_24fd72e9",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 64
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
