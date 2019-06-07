@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bce07190_287d98bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "maybe \u0027usb_console.c and usb_stream.c include a significant amount of copied/pasted code.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9dca591_63815d18",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "this code conditional both at compile and run time seems awkward - can a policy instead be added to the queue in question?",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0458162_8afb5d3b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "why does this function need to be renamed and the wrapper below used?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8566d6a5_3397b746",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "Cr50 console does not generate a lot of traffic, I think 2K should be enough.",
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9e7c14_858a5f64",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "why is this attribute required?",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855c8409_64d5fa07",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "is it necessary to have two \u0027#ifdef CONFIG_STREAM_USB\u0027 blocks in this file -\n\ncan lines 86..109 be put above line 44 and line 44 replaced with \u0027#else\u0027 ?\n\nlines 83, 84 will also have to be moved of course.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4196e2e9_8840af40",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:52:59Z",
+      "side": 1,
+      "message": "closing parentheses and opening bracket could also be out of conditional compilation",
+      "range": {
+        "startLine": 300,
+        "startChar": 43,
+        "endLine": 300,
+        "endChar": 46
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
