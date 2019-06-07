@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "771a1705_e7dd12c3",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 1,
+      "message": "__tx_char() is designed to return 0 if succeeded, or 1 if failed.",
+      "range": {
+        "startLine": 314,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 46
+      },
+      "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

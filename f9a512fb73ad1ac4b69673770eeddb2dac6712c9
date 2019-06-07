@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d67b8d63_bd7dc025",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "\"if (!is_enabled)\" is already checked before usb_wait_console().\nPlease see line 340 and line 372 in base.\n\nI think either tx_fifo_is_ready() is true or false, usb_wait_console() should not return at all. It should run the next codes so that it can wait until tx_q has enough space. Otherwise, the caller - in base code  might attempt to put more characters into tx_q though tx_q doesn\u0027t have space if \"tx_fifo_is_ready()\" is true.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ab8a4e7_fbeb337e",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "It never returns 1 actually, because another recursive call __tx_char() will return 0.",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 11
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccd49355_12924b26",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "QUEUE_ADD_UNITS() might return 0 if it failed to push c into queue. It returns 1 if it succeeded.\nHowever, the base code always return 0.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 10
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1dfcf4a0_cc2631df",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "Though usb_wait_console() fails, it should run handle_output() before it returns, because the fail means that tx_q doesn\u0027t have enough space. Should activate tx transfer by calling handle_output().",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 13
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6072cba0_5d1ff24d",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "At this point, queue is mostly likely to be non-empty. I don\u0027t think it doesn\u0027t make any point to check queue_count() here.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 25
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a382f62_ee481318",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "If usb_wait_console() fails, then call handle_output() before it returns.",
+      "range": {
+        "startLine": 376,
+        "startChar": 2,
+        "endLine": 377,
+        "endChar": 13
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1a9b6b7_1110feff",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T23:25:04Z",
+      "side": 0,
+      "message": "At this point, the queue is likely to be non-empty.",
+      "range": {
+        "startLine": 382,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 25
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
