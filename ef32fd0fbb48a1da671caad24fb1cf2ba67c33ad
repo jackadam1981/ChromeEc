@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccf1ab70_11917a35",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-07T23:02:11Z",
+      "side": 1,
+      "message": "I think that one should be left in fpsensor.c, the trng() functions are still called from there",
+      "range": {
+        "startLine": 15,
+        "startChar": 51,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "ef32fd0fbb48a1da671caad24fb1cf2ba67c33ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
