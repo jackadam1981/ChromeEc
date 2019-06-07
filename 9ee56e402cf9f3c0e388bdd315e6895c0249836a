@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58df85ee_08fa1549",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T16:51:29Z",
+      "side": 1,
+      "message": "Looks like chip/g codes named their struct type name as \"g_XXX\", rather than variable name.\nI named cr50_usb after ap_usb and ec_usb in chip/g/usart.c.",
+      "parentUuid": "3bbd911b_c0dcc301",
+      "range": {
+        "startLine": 106,
+        "startChar": 26,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "9ee56e402cf9f3c0e388bdd315e6895c0249836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6fbd7a9_d71d382d",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-07T16:41:20Z",
       "side": 1,
       "message": "Can you just check cr50_usb.is_reset?",
+      "range": {
+        "startLine": 300,
+        "startChar": 10,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "9ee56e402cf9f3c0e388bdd315e6895c0249836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4e4b09_5310246f",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T16:51:29Z",
+      "side": 1,
+      "message": "It could be !(*cr50_usb.is_reset), but I intended to encapsulate usb_stream_config members.\njust like usart.c doesn\u0027t touch usb_stream_config members.",
+      "parentUuid": "a6fbd7a9_d71d382d",
       "range": {
         "startLine": 300,
         "startChar": 10,
