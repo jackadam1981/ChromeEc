@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0ea5f827_86324b8d",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T17:38:29Z",
+      "side": 1,
+      "message": "It looks like the copyright that was put there was malformed (they joined the copyright and the comment below). Go ahead and reformat it like this:\n\n    /* Copyright 2019 The Chromium OS Authors. All rights reserved.\n     * Use of this source code is governed by a BSD-style license that can be\n     * found in the LICENSE file.\n     */\n\n    /* Software panic constants. This file must be parsable by the assembler. */",
+      "parentUuid": "ebd9d252_6be9154b",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2fddd2f_f80df45f",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "This was brought in from another similar usage for another panic.c... Leaving the 8 performs a check to make sure we don\u0027t have too many strings in this array.",
       "parentUuid": "d2fddd2f_f80df45f",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3d3fe7_60de7436",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T17:38:29Z",
+      "side": 1,
+      "message": "Let\u0027s leave the hard-coded size out. If it is in include/software_panic.h, this should help ensure we have the right values in the right order.",
+      "parentUuid": "0d0f1d25_35332f0c",
       "range": {
         "startLine": 50,
         "startChar": 43,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "fd5bef80_9d4e3698",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T17:38:29Z",
+      "side": 1,
+      "message": "Since software_panic needs to be parsable by the assembler, let\u0027s guard it in an ndef __ASSEMBLER__ and defined(CONFIG_SOFTWARE_PANIC).",
+      "parentUuid": "91635ae9_a570641e",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05794ea5_38ea1895",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 3
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "I have not used the Intel assembly in many years. It sounded from the documentation that the return address would be on TOS and sometimes EBP would point to it instead but was not clear when this was true or not.  I will look deeper into EBP.",
       "parentUuid": "05794ea5_38ea1895",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ffe5e5_95835b8d",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T17:38:29Z",
+      "side": 1,
+      "message": "http://flint.cs.yale.edu/cs421/papers/x86-asm/asm.html\n\nThis guide is pretty useful, but I\u0027m not entirely sure if it 100% aligns with the conventions that GCC is using these days, so we should double check and verify a disassembly to make sure we\u0027re grabbing the right value.",
+      "parentUuid": "e8dbd448_7ef8747d",
       "range": {
         "startLine": 184,
         "startChar": 0,
@@ -272,6 +368,30 @@
       "side": 1,
       "message": "This is how all of the panic.c implementations do this.  Are you sure this is not what I want?",
       "parentUuid": "a306fd22_0f549a59",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090de165_97a875a0",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T17:38:29Z",
+      "side": 1,
+      "message": "The issue is here: https://crrev.com/f9a512fb73ad1ac4b69673770eeddb2dac6712c9/common/system.c#828\n\nPanic data persists just like reset flags in ISH, and the panic data will contain important info, such as the EIP when WDT IRQ happened.\n\nWe can probably get around this by setting the vector to PANIC_SW_WATCHDOG when the vector passed in is ISH_WDT_VEC in exception_panic, and that way the if statement in common/system.c will be false, and initializing the structure here should be OK.",
+      "parentUuid": "b3ac72ed_bfacf39a",
       "range": {
         "startLine": 198,
         "startChar": 1,
