@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3c8bdf50_ccd21c9e",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-07T17:21:02Z",
+      "side": 1,
+      "message": "The fact that they are the same length is additional knowledge about GCM128 and we shouldn\u0027t expect the code reader knows that. Then I\u0027ll rename it to \"cipher_and_plaintext_size\".\n\nThey will not fit in one line unless you name it as \"text_size\" or \"len\" but I think that\u0027s not as good as cipher_and_plaintext_size with two lines.",
+      "parentUuid": "0e4279c9_bb0adb82",
+      "range": {
+        "startLine": 103,
+        "startChar": 33,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "eec53def0c281f83249a4b91548508ab42b297e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f786f3d_aedddc0b",
         "filename": "include/fpsensor_crypto.h",
         "patchSetId": 1
