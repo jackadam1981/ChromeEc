@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cb22da4_460a4f1a",
+        "filename": "third_party/boringssl/common/aes-gcm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-07T23:15:14Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at the upstream code, so maybe we\u0027re trying to match something there to make future merges easier, but couldn\u0027t you just surround this block with:\n\n #if defined(OPENSSL_ARM_PMULL)\n\nso you don\u0027t need to define stubs?",
+      "revId": "4d4532b91554b474be6e22a8b884b4c1157df452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
