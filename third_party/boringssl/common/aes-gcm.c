@@ -304,18 +304,34 @@ void gcm_ghash_4bit_mmx(uint64_t Xi[2], const u128 Htable[16], const uint8_t *in
 #define GHASH_ASM_ARM
 #define GCM_FUNCREF_4BIT
 
-static int pmull_capable(void) {
-  return 0;
+#if defined(OPENSSL_ARM_PMULL)
+int gcm_pmull_capable(void) {
+  return CRYPTO_is_ARMv8_PMULL_capable();
 }
 
 void gcm_init_v8(u128 Htable[16], const uint64_t Xi[2]);
 void gcm_gmult_v8(uint64_t Xi[2], const u128 Htable[16]);
 void gcm_ghash_v8(uint64_t Xi[2], const u128 Htable[16], const uint8_t *inp,
                   size_t len);
+#else
+static int gcm_pmull_capable(void) {
+  return 0;
+}
+void gcm_init_v8(u128 Htable[16], const uint64_t Xi[2]) {
+
+}
+void gcm_gmult_v8(uint64_t Xi[2], const u128 Htable[16]) {
+
+}
+void gcm_ghash_v8(uint64_t Xi[2], const u128 Htable[16], const uint8_t *inp,
+                  size_t len) {
+
+}
+#endif
 
 #if defined(OPENSSL_ARM_NEON)
 // 32-bit ARM also has support for doing GCM with NEON instructions.
-static int neon_capable(void) {
+static int gcm_neon_capable(void) {
   return CRYPTO_is_NEON_capable();
 }
 
@@ -325,7 +341,7 @@ void gcm_ghash_neon(uint64_t Xi[2], const u128 Htable[16], const uint8_t *inp,
                     size_t len);
 #else
 // AArch64 only has the ARMv8 versions of functions.
-static int neon_capable(void) {
+static int gcm_neon_capable(void) {
   return 0;
 }
 static void gcm_init_neon(u128 Htable[16], const uint64_t Xi[2]) {
@@ -399,14 +415,14 @@ static void CRYPTO_ghash_init(gmult_func *out_mult, ghash_func *out_hash,
     return;
   }
 #elif defined(GHASH_ASM_ARM)
-  if (pmull_capable()) {
+  if (gcm_pmull_capable()) {
     gcm_init_v8(out_table, H.u);
     *out_mult = gcm_gmult_v8;
     *out_hash = gcm_ghash_v8;
     return;
   }
 
-  if (neon_capable()) {
+  if (gcm_neon_capable()) {
     gcm_init_neon(out_table, H.u);
     *out_mult = gcm_gmult_neon;
     *out_hash = gcm_ghash_neon;
