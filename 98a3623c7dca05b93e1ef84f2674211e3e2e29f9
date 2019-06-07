@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b20605b_423605c7",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T16:48:26Z",
+      "side": 1,
+      "message": "These should go in include/software_panic.h, but I\u0027d be more inclined to simply just check that vector \u003e\u003d PANIC_SW_BASE and get the reason by subtracting PANIC_SW_BASE.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 39
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2fddd2f_f80df45f",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T16:48:26Z",
+      "side": 1,
+      "message": "Probably leave the size empty.",
+      "range": {
+        "startLine": 50,
+        "startChar": 43,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95df0764_51e2952e",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T16:48:26Z",
+      "side": 1,
+      "message": "any chance we can move this to include/software_panic.h while we\u0027re here? It seems to be used by a lot of core implementations, and better to have this common.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05794ea5_38ea1895",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T16:48:26Z",
+      "side": 1,
+      "message": "Might we be getting a local var here? from my understanding, the best way might be to look right under EBP.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 52
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a54169_1875415d",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T16:48:26Z",
+      "side": 1,
+      "message": "__builtin_unreachable();",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a306fd22_0f549a59",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-07T16:48:26Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be initializing the structure here, as this happens during system initialization (from saved panic data). We don\u0027t want to eradicate that saved data.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "98a3623c7dca05b93e1ef84f2674211e3e2e29f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
