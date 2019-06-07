@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "59ed974c_537e35aa",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T17:04:41Z",
+      "side": 1,
+      "message": "Ah, now I got it. Fixed.",
+      "parentUuid": "f2f5741c_3f312f0e",
+      "range": {
+        "startLine": 106,
+        "startChar": 26,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "9ee56e402cf9f3c0e388bdd315e6895c0249836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6fbd7a9_d71d382d",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 1
