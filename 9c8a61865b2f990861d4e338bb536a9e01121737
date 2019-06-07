@@ -22,6 +22,30 @@
       "revId": "9c8a61865b2f990861d4e338bb536a9e01121737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2fab98_aab2c044",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T22:18:26Z",
+      "side": 1,
+      "message": "This rename was by the comment at line 113 in patch#16.\nThe original code had a pair of macro like QUEUE_SIZE_UART_RX and QUEUE_SIZE_UART_IN, \nand they don\u0027t look right or really like a pair. It didn\u0027t help me understand code.",
+      "parentUuid": "5f3885bd_5653168d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 31
+      },
+      "revId": "9c8a61865b2f990861d4e338bb536a9e01121737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
