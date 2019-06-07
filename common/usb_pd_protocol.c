@@ -2608,6 +2608,14 @@ void schedule_deferred_pd_interrupt(const int port)
 	task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT, 0);
 }
 
+/*
+ * Empirically, we haven't seen more than 20 interrupts/sec in a normal
+ * scenario. 40/second is an sustained average of 25ms per interrupt, which
+ * can starve the rest of the EC if we don't temporarily disable the port.
+ */
+#define ALERT_STORM_MAX_COUNT	40
+#define ALERT_STORM_INTERVAL	SECOND
+
 /**
  * Main task entry point that handles PD interrupts for a single port
  *
@@ -2618,6 +2626,10 @@ void pd_interrupt_handler_task(void *p)
 {
 	const int port = (int) p;
 	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
+	struct {
+		int count;
+		uint32_t time;
+	} storm_tracker[CONFIG_USB_PD_PORT_COUNT] = { 0 };
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
 
@@ -2639,8 +2651,30 @@ void pd_interrupt_handler_task(void *p)
 			 * PD_PROCESS_INTERRUPT to check if we missed anything.
 			 */
 			while ((tcpc_get_alert_status() & port_mask) &&
-			       pd_is_port_enabled(port))
+			       pd_is_port_enabled(port)) {
+				uint32_t now;
+
 				tcpc_alert(port);
+
+				now = get_time().le.lo;
+				if (time_after(now, storm_tracker[port].time)) {
+					storm_tracker[port].time =
+						now + ALERT_STORM_INTERVAL;
+					/*
+					 * Start at 1 since we are processing
+					 * an interrupt now
+					 */
+					storm_tracker[port].count = 1;
+				} else if (++storm_tracker[port].count >
+				    ALERT_STORM_MAX_COUNT) {
+					CPRINTS("C%d Interrupt storm detected. "
+						"Disabling port for 5 seconds.",
+						port);
+
+					pd_set_suspend(port, 1);
+					pd_deferred_resume(port);
+				}
+			}
 		}
 	}
 }
@@ -3517,6 +3551,11 @@ void pd_task(void *u)
 				CPRINTS("TCPC p%d restart failed!", port);
 				break;
 			}
+			/* Set the CC termination and state back to default */
+			tcpm_set_cc(port,
+				    PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE ?
+					TYPEC_CC_RP :
+					TYPEC_CC_RD);
 			set_state(port, PD_DEFAULT_STATE(port));
 			CPRINTS("TCPC p%d resumed!", port);
 #endif
@@ -4418,7 +4457,7 @@ DECLARE_DEFERRED(resume_pd_port);
 void pd_deferred_resume(int port)
 {
 	atomic_or(&pd_ports_to_resume, 1 << port);
-	hook_call_deferred(&resume_pd_port_data, SECOND);
+	hook_call_deferred(&resume_pd_port_data, 5 * SECOND);
 }
 
 #endif  /* CONFIG_USB_PD_DEFERRED_RESUME */
