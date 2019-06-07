@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33c86ebd_e66502fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T18:20:22Z",
+      "side": 1,
+      "message": "This is one of results with ToT (f9a512fb) on bob:\n\n$ /var/tmp/uart_stress_tester.sh --pty\u003d\"/dev/ttyUSB0 /dev/ttyUSB2 /dev/ttyUSB1\" --min_char 400000\nINFO    : ChromeOS UART stress test starts.\nINFO    : UART devices: /dev/ttyUSB0 /dev/ttyUSB2 /dev/ttyUSB1\n................ ......................................\nERROR   : /dev/ttyUSB0: 23203 lost / 483415 : 4.7 %\nERROR   : /dev/ttyUSB2: 279311 lost / 415835 : 67.1 %\nERROR   : /dev/ttyUSB1: 250598 lost / 400030 : 62.6 %\nINFO    : Test files are in /tmp/uart_stress_tester.sh_latest\nINFO    : and also in /tmp/tmp.PrCmrpP09M.uart_stress_tester.sh.\nERROR   : FAIL",
+      "parentUuid": "19fce296_37d349e0",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e102a6c7_5664bd8b",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a16301_2ad5f73c",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T18:20:22Z",
+      "side": 1,
+      "message": "This is from rx_fifo_handler(), usb-console.c.\nConsole USB queues are defined as QUEUE_NULL, which means no queue_policies.\nSo, \"QUEUE_ADD_UNITS\" won\u0027t wake up TASK_CONSOLE.",
+      "parentUuid": "e102a6c7_5664bd8b",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "caa3c07f_b3d6198c",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T18:20:22Z",
+      "side": 1,
+      "message": "Yes it is the same before this patch. Check the line 78 in base.\nI wanted to increase this, but thought it should be in another CL.",
+      "parentUuid": "90f180ef_95a167d6",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6f32d79_ead50936",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "203be3ba_51bf14d6",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T18:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f32d79_ead50936",
+      "range": {
+        "startLine": 211,
+        "startChar": 18,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aefc3d5b_ba56b9af",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ea77ec_dedec874",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-07T18:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aefc3d5b_ba56b9af",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 6
+      },
+      "revId": "03bab7d658cd8e4ba7b319928b2ad2f07c42eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
