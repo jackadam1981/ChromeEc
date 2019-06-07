@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bbd911b_c0dcc301",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-07T16:41:20Z",
+      "side": 1,
+      "message": "This is in g chips code, so maybe g_usb_console?",
+      "range": {
+        "startLine": 106,
+        "startChar": 26,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "9ee56e402cf9f3c0e388bdd315e6895c0249836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6fbd7a9_d71d382d",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-07T16:41:20Z",
+      "side": 1,
+      "message": "Can you just check cr50_usb.is_reset?",
+      "range": {
+        "startLine": 300,
+        "startChar": 10,
+        "endLine": 300,
+        "endChar": 40
+      },
+      "revId": "9ee56e402cf9f3c0e388bdd315e6895c0249836a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
