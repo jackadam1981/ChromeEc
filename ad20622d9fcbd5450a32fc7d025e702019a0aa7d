@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1c69ef5_efac72b2",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:59:21Z",
+      "side": 1,
+      "message": "just a nit: you could use\n\n[[ -z ${cmd} ]]",
+      "range": {
+        "startLine": 270,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 21
+      },
+      "revId": "ad20622d9fcbd5450a32fc7d025e702019a0aa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6444689f_00a430e5",
         "filename": "util/uart_stress_tester.sh",
         "patchSetId": 23
@@ -18,6 +41,76 @@
         "startChar": 8,
         "endLine": 271,
         "endChar": 12
+      },
+      "revId": "ad20622d9fcbd5450a32fc7d025e702019a0aa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46797fb7_64a91c6d",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:59:21Z",
+      "side": 1,
+      "message": "can you add a comment explaining why this is required?",
+      "parentUuid": "6444689f_00a430e5",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 12
+      },
+      "revId": "ad20622d9fcbd5450a32fc7d025e702019a0aa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ce24d7_389455ee",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:59:21Z",
+      "side": 1,
+      "message": "another nit:\n\ncould use\n\n[[ -n ${cmd} ]]",
+      "range": {
+        "startLine": 281,
+        "startChar": 8,
+        "endLine": 281,
+        "endChar": 22
+      },
+      "revId": "ad20622d9fcbd5450a32fc7d025e702019a0aa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c17224_f34fd112",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-07T22:59:21Z",
+      "side": 1,
+      "message": "what does this do? Please add a comment.",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 45
       },
       "revId": "ad20622d9fcbd5450a32fc7d025e702019a0aa7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
