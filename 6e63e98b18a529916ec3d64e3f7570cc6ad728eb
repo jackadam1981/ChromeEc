@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "63abb337_be3ffcba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-08T01:48:20Z",
+      "side": 1,
+      "message": "is this an improvement achieved by this patch? \n\nWhat was the number before? Maybe you can get a few samples of before and after to see the improvement (no need  to include complete output dumps, just average loss numbers across multiple runs before and after).",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "771a1705_e7dd12c3",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
@@ -22,6 +45,98 @@
       "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5999e400_4b52cae1",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-08T01:48:20Z",
+      "side": 1,
+      "message": "it would be more explicit to check\n\nif (ret \u003d\u003d EC_SUCCESS)",
+      "range": {
+        "startLine": 342,
+        "startChar": 4,
+        "endLine": 342,
+        "endChar": 12
+      },
+      "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcad92ad_2272c6c3",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-08T01:48:20Z",
+      "side": 1,
+      "message": "here also, check if return value of __tx_char() is EC_SUCCESS",
+      "range": {
+        "startLine": 344,
+        "startChar": 21,
+        "endLine": 344,
+        "endChar": 48
+      },
+      "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62edfe86_30200dcb",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-08T01:48:20Z",
+      "side": 1,
+      "message": "here we lose error value returned by __tx_char()",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 347,
+        "endChar": 49
+      },
+      "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1f57ed_bdbaf8c9",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-08T01:48:20Z",
+      "side": 1,
+      "message": "do you still need to call handle_output() if usb_console() failed?",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 15
+      },
+      "revId": "6e63e98b18a529916ec3d64e3f7570cc6ad728eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

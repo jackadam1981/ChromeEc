@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "95135071_e927d813",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-08T01:48:20Z",
+      "side": 0,
+      "message": "you mean before your fix in this patch, right?",
+      "parentUuid": "4ab8a4e7_fbeb337e",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 11
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccd49355_12924b26",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
