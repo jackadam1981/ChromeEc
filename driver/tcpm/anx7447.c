@@ -280,7 +280,7 @@ static int anx7447_init(int port)
 {
 	int rv, reg, i;
 
-	memset(&anx[port], 0, sizeof(struct anx_state));
+	anx[port].i2c_slave_addr = 0;
 
 	/*
 	 * find corresponding anx7447 SPI slave address according to
@@ -353,11 +353,6 @@ static int anx7447_init(int port)
 	reg &= ~ANX7447_REG_R_VCONN_PWR_PRT_INRUSH_TIME_MASK;
 	reg |= ANX7447_REG_R_VCONN_PWR_PRT_INRUSH_TIME_2430US;
 	rv = tcpc_write(port, ANX7447_REG_ANALOG_CTRL_10, reg);
-
-	/* init hpd status */
-	anx7447_hpd_mode_en(port);
-	anx7447_set_hpd_level(port, 0);
-	anx7447_hpd_output_en(port);
 
 	return rv;
 }
@@ -480,6 +475,13 @@ void anx7447_tcpc_clear_hpd_status(int port)
 #ifdef CONFIG_USB_PD_TCPM_MUX
 static int anx7447_mux_init(int port)
 {
+	anx[port].mux_state = 0;
+
+	/* init hpd status */
+	anx7447_hpd_mode_en(port);
+	anx7447_set_hpd_level(port, 0);
+	anx7447_hpd_output_en(port);
+
 	/*
 	 * ANX initializes its muxes to (MUX_USB_ENABLED | MUX_DP_ENABLED)
 	 * when reinitialized, we need to force initialize it to
