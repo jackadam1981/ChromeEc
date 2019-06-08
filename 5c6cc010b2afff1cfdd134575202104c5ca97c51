@@ -46,6 +46,30 @@
       "revId": "5c6cc010b2afff1cfdd134575202104c5ca97c51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a366d65_0f6017f0",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-08T00:16:08Z",
+      "side": 0,
+      "message": "Yes, it looks like what I said is what the EC code does: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/Makefile.toolchain#102",
+      "parentUuid": "e6273183_35dabdbc",
+      "range": {
+        "startLine": 61,
+        "startChar": 69,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "5c6cc010b2afff1cfdd134575202104c5ca97c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
