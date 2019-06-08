@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "206a3d46_246fd0f0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-08T21:59:07Z",
+      "side": 0,
+      "message": "Maybe there is some intentional point to clobbering the entire \"anx\" bitfield with 0b0\u0027s. Do we know why we did this? What are the other fields inside this STRUCT of importance?\n\nIn particular, see lines 478-484. Is the is the value of the ENUM named TYPE_C_MUX_NONE (mux isolating all the lines I presume) 0? If so, whoever wrote this \"memset\" should have set each sub-component individually for legibility.\n\n(Plus there is no guarantee the ENUM\u0027s value would be 0.)",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 49
+      },
+      "revId": "25c9cb9e94d2fe49eacc86d9bc478e0cb010aac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
