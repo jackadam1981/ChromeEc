@@ -272,7 +272,7 @@ static int usb_wait_console(void)
 	last_tx_ok = queue_space(&tx_q);
 	return EC_SUCCESS;
 }
-static int __tx_char(void *context, int c)
+static int __tx_char(const void *context, int c)
 {
 	struct queue *state =
 			(struct queue *) context;

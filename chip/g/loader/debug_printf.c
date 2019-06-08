@@ -9,7 +9,7 @@
 
 #include "stddef.h"
 
-static int printchar(void *context, int c)
+static int printchar(const void *context, int c)
 {
 	if (c == '\n')
 		uart_write_char('\r');

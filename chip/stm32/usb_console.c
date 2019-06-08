@@ -117,7 +117,7 @@ static void ep_event(enum usb_ep_event evt)
 
 USB_DECLARE_EP(USB_EP_CONSOLE, con_ep_tx, con_ep_rx, ep_event);
 
-static int __tx_char(void *context, int c)
+static int __tx_char(const void *context, int c)
 {
 	/* Do newline to CRLF translation */
 	if (c == '\n' && __tx_char(context, '\r'))

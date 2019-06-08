@@ -27,7 +27,7 @@ static struct panic_data * const pdata_ptr = PANIC_DATA_PTR;
  * @return 0 if the character was transmitted, 1 if it was dropped.
  */
 #ifndef CONFIG_DEBUG_PRINTF
-static int panic_txchar(void *context, int c)
+static int panic_txchar(const void *context, int c)
 {
 	if (c == '\n')
 		panic_txchar(context, '\r');

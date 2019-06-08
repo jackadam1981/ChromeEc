@@ -29,7 +29,7 @@ timestamp_t get_time(void)
 	return ret;
 }
 
-static int panic_txchar(void *context, int c)
+static int panic_txchar(const void *context, int c)
 {
 	if (c == '\n')
 		panic_txchar(context, '\r');

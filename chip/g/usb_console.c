@@ -298,7 +298,7 @@ uint32_t usb_console_crc(void)
 }
 #endif
 
-static int __tx_char(void *context, int c)
+static int __tx_char(const void *context, int c)
 {
 	struct queue *state =
 			(struct queue *) context;

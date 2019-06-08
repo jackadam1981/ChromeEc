@@ -11,7 +11,7 @@
 #include "registers.h"
 #include "util.h"
 
-static int debug_txchar(void *context, int c)
+static int debug_txchar(const void *context, int c)
 {
 	if (c == '\n') {
 		while (!(STM32_USART_SR(UARTN_BASE) & STM32_USART_SR_TXE))

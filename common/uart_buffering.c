@@ -57,7 +57,7 @@ static int tx_next_snapshot_head;
  * @param c		Character to write.
  * @return 0 if the character was transmitted, 1 if it was dropped.
  */
-static int __tx_char(void *context, int c)
+static int __tx_char(const void *context, int c)
 {
 	int tx_buf_next, tx_buf_new_tail;
 

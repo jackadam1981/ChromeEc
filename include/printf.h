@@ -70,8 +70,9 @@
  * @param args		Parameters
  * @return EC_SUCCESS, or non-zero if output was truncated.
  */
-__stdlib_compat int vfnprintf(int (*addchar)(void *context, int c),
-			      void *context, const char *format, va_list args);
+__stdlib_compat int vfnprintf(int (*addchar)(const void *context, int c),
+			      const void *context, const char *format,
+			      va_list args);
 
 /**
  * Print formatted outut to a string.

@@ -50,7 +50,7 @@ static int hexdigit(int c)
 #define PF_SIGN		BIT(2)  /* Add sign (+) for a positive number */
 #define PF_64BIT	BIT(3)  /* Number is 64-bit */
 
-int vfnprintf(int (*addchar)(void *context, int c), void *context,
+int vfnprintf(int (*addchar)(const void *context, int c), const void *context,
 	      const char *format, va_list args)
 {
 	/*
@@ -338,7 +338,7 @@ struct snprintf_context {
  * @param c		Character to add
  * @return 0 if character added, 1 if character dropped because no space.
  */
-static int snprintf_addchar(void *context, int c)
+static int snprintf_addchar(const void *context, int c)
 {
 	struct snprintf_context *ctx = (struct snprintf_context *)context;
 
