@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e6827eb_68049efc",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-10T22:14:15Z",
+      "side": 1,
+      "message": "I am not against this change, I just didn\u0027t see NOLOAD on any other bss. Why do we need it here and not other bss declarations?",
+      "range": {
+        "startLine": 458,
+        "startChar": 14,
+        "endLine": 458,
+        "endChar": 20
+      },
+      "revId": "1e6d51ebbb1e29eac0fc09c6bc26564c036188e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
