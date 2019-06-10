@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "51f30f01_a5602958",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T16:21:11Z",
+      "side": 1,
+      "message": "Can you explain why we\u0027re not doing what I (and Jett) suggested on May 20th? We should treat hard-coded data as a primary source.",
+      "range": {
+        "startLine": 5302,
+        "startChar": 0,
+        "endLine": 5304,
+        "endChar": 17
+      },
+      "revId": "7c4e1efa0e9744a5e59b998e50134b7bc9d922d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa69da81_eb541f44",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -41,6 +64,29 @@
         "startChar": 1,
         "endLine": 5309,
         "endChar": 2
+      },
+      "revId": "7c4e1efa0e9744a5e59b998e50134b7bc9d922d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36a79bd_8f62514f",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T16:21:11Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 334,
+        "startChar": 7,
+        "endLine": 334,
+        "endChar": 44
       },
       "revId": "7c4e1efa0e9744a5e59b998e50134b7bc9d922d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
