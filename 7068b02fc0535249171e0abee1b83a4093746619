@@ -94,6 +94,30 @@
       "revId": "7068b02fc0535249171e0abee1b83a4093746619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbff0dcb_f887edaf",
+        "filename": "common/panic_output.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-10T21:45:31Z",
+      "side": 1,
+      "message": "\u003e software_panic.h is included in panic.h\n\n#include it anyway (don\u0027t rely on it being included from another file)",
+      "parentUuid": "b5cc9c63_a6c85a3b",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "7068b02fc0535249171e0abee1b83a4093746619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
