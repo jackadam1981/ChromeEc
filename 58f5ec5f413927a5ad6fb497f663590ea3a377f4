@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "748356f5_2efbf66d",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-10T17:26:11Z",
+      "side": 1,
+      "message": "Correction to last comment based on discussion with vendor: clearing individual finger templates is fine. The problematic clear is https://chromium.googlesource.com/chromiumos/platform/ec/+/325d65d3b08903e7bd3c70d14875cc1dfbf1686d/common/fpsensor_state.c#57",
+      "parentUuid": "98d74d3f_ce7d7881",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 20
+      },
+      "revId": "58f5ec5f413927a5ad6fb497f663590ea3a377f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc41b92c_e52fe2ff",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 1
