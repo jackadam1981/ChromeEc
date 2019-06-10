@@ -187,6 +187,30 @@
       "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b2cf48a_8fa06a73",
+        "filename": "include/software_panic.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T16:57:46Z",
+      "side": 1,
+      "message": "I removed the 8 and I still get a compile error on ARRAY_SIZE in panic_output.c\n\nThe only way that I can see to get around this is to hard code the number of entries in the is_valid function but feel it is better to keep this closer to the reason definitions.",
+      "parentUuid": "d0449566_9a26f8c2",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
