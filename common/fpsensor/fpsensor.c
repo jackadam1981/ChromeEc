@@ -724,12 +724,23 @@ static void upload_pgm_image(uint8_t *frame)
 	CPRINTF("\x04"); /* End Of Transmission */
 }
 
-static int fp_console_action(uint32_t mode)
+static enum ec_error_list fp_console_action(uint32_t mode)
 {
 	int tries = 200;
-	ccprintf("Waiting for finger ...\n");
-	sensor_mode = mode;
-	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG, 0);
+	uint32_t mode_output = 0;
+	int rc = 0;
+
+	CPRINTS("Waiting for finger ...");
+
+	rc = fp_command_mode(mode, &mode_output);
+
+	if (rc != EC_RES_SUCCESS) {
+		/*
+		 * EC host command errors do not directly map to console command
+		 * errors.
+		 */
+		return EC_ERROR_UNKNOWN;
+	}
 
 	while (tries--) {
 		if (!(sensor_mode & FP_MODE_ANY_CAPTURE)) {
@@ -770,7 +781,7 @@ DECLARE_CONSOLE_COMMAND(fpcapture, command_fpcapture, "", "");
 
 int command_fpenroll(int argc, char **argv)
 {
-	int rc;
+	enum ec_error_list rc;
 	int percent = 0;
 	uint32_t event;
 	static const char * const enroll_str[] = {"OK", "Low Quality",

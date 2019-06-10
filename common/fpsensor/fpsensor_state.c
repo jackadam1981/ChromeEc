@@ -141,28 +141,41 @@ static int validate_fp_mode(const uint32_t mode)
 	return EC_SUCCESS;
 }
 
-static int fp_command_mode(struct host_cmd_handler_args *args)
+int fp_command_mode(uint32_t mode, uint32_t *mode_output)
 {
-	const struct ec_params_fp_mode *p = args->params;
-	struct ec_response_fp_mode *r = args->response;
 	int ret;
 
-	ret = validate_fp_mode(p->mode);
+	if (mode_output == NULL)
+		return EC_RES_INVALID_PARAM;
+
+	ret = validate_fp_mode(mode);
 	if (ret != EC_SUCCESS) {
-		CPRINTS("Invalid FP mode 0x%x", p->mode);
+		CPRINTS("Invalid FP mode 0x%x", mode);
 		return EC_RES_INVALID_PARAM;
 	}
 
-	if (!(p->mode & FP_MODE_DONT_CHANGE)) {
-		sensor_mode = p->mode;
+	if (!(mode & FP_MODE_DONT_CHANGE)) {
+		sensor_mode = mode;
 		task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG, 0);
 	}
 
-	r->mode = sensor_mode;
-	args->response_size = sizeof(*r);
+	*mode_output = sensor_mode;
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
+
+static int _fp_command_mode(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_mode *p = args->params;
+	struct ec_response_fp_mode *r = args->response;
+
+	int ret = fp_command_mode(p->mode, &r->mode);
+
+	if (ret == EC_RES_SUCCESS)
+		args->response_size = sizeof(*r);
+
+	return ret;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, _fp_command_mode, EC_VER_MASK(0));
 
 static int fp_command_context(struct host_cmd_handler_args *args)
 {
