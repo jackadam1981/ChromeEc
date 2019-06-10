@@ -117,6 +117,30 @@
       "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc52b5b_1fc3c4ee",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2019-06-10T09:43:23Z",
+      "side": 1,
+      "message": "Okay, let\u0027s ensure the read waiters operation is after the swap.",
+      "parentUuid": "c497c173_8b0d818d",
+      "range": {
+        "startLine": 572,
+        "startChar": 1,
+        "endLine": 577,
+        "endChar": 0
+      },
+      "revId": "8adcfee2fe40d50333434c4562c496eccf156d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
