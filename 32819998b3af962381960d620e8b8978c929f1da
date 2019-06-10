@@ -22,6 +22,30 @@
       "revId": "32819998b3af962381960d620e8b8978c929f1da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8358b4f7_e9c77196",
+        "filename": "common/panic_output.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T17:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41310dd1_b04a850a",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "32819998b3af962381960d620e8b8978c929f1da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
