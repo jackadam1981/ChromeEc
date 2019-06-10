@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22a89441_f335ebad",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-10T23:28:01Z",
+      "side": 1,
+      "message": "btw, __tx_char() in this file always gets a pointer to tx_q for context, how about ignoring the first parameter and using tx_q internally?",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "aa6da5212c69d7301f687a91b37c31cb4bd18904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
