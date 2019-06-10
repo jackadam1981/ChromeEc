@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f3c89c44_4ce543c0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T16:32:36Z",
+      "side": 1,
+      "message": "The priority is actually ok. We just need an option to get hardcoded info explicitly.",
+      "parentUuid": "51f30f01_a5602958",
+      "range": {
+        "startLine": 5302,
+        "startChar": 0,
+        "endLine": 5304,
+        "endChar": 17
+      },
+      "revId": "7c4e1efa0e9744a5e59b998e50134b7bc9d922d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa69da81_eb541f44",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
