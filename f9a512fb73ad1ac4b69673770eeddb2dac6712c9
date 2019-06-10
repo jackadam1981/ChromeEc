@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38004686_96eac829",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4563,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-10T20:48:21Z",
+      "side": 0,
+      "message": "The port gets stuck in SUSPENDED without this state change since it\u0027s looking for:\nwhile (pd[port].task_state \u003d\u003d PD_STATE_SUSPENDED)",
+      "range": {
+        "startLine": 4563,
+        "startChar": 2,
+        "endLine": 4563,
+        "endChar": 42
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
