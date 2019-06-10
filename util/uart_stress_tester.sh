@@ -225,6 +225,10 @@ stress_test() {
 
 	local TEST_PTYS=( "$@" )
 	local pd
+	local CHAR_CUR=0
+	local SECONDS_START
+	local SECONDS_END
+	local SECONDS_CUR
 
 	# Start to capture.
 	for pd in "${TEST_PTYS[@]}"; do
@@ -233,17 +237,25 @@ stress_test() {
 	done
 
 	# Generate traffic.
-	SECONDS_END=$(( SECONDS + FLAGS_time ))
-	while [ ${SECONDS} -lt ${SECONDS_END} ]; do
+	SECONDS_START=${SECONDS}
+	SECONDS_CUR=${SECONDS_START}
+	SECONDS_END=$(( SECONDS_START + FLAGS_time ))
+	while [ ${SECONDS_CUR} -lt ${SECONDS_END} ]; do
 		for pd in "${TEST_PTYS[@]}"; do
 			send_console_command "${CONSOLE_CMDS["${pd}"]}" "${pd}"
 		done
 
 		REPEATS=$(( REPEATS + 1 ))
-		(( REPEATS % 10 == 0 )) || continue
+		(( REPEATS % 10 == 0 )) && echo -n "."
 
-		echo -n "."
-		sleep 2
+		SECONDS_CUR=${SECONDS}
+		CHAR_CUR=$(( CHAR_CUR + CHAR_PER_ITER ))
+		SEC_EXP=$(( CHAR_CUR / TARGET_XFER_RATE ))
+		SEC_LAP=$(( SECONDS_CUR - SECONDS_START ))
+
+		if [[ ${SEC_EXP} -gt ${SEC_LAP} ]]; then
+			sleep $(( SEC_EXP - SEC_LAP ))
+		fi
 	done
 	echo
 
@@ -316,8 +328,10 @@ get_sample_txt() {
 
 		[[ ${NUM_CH} -gt 50 ]] || die "${pd} does not seem to respond"
 
+		CHAR_PER_ITER=$(( CHAR_PER_ITER + NUM_CH ))
 		FILE_SAMPLE["${pd}"]="${FILE_CAP}"
 	done
+	CHAR_PER_ITER=$(( CHAR_PER_ITER / $# ))
 }
 
 info "ChromeOS UART stress test starts."
@@ -326,8 +340,11 @@ declare -A CONSOLE_CMDS		# Console commands to test for each UART device
 declare -A FILE_SAMPLE		# Paths of each sample file
 declare -A FILE_RES		# Paths of each result file
 declare -A CH_EXPC		# Expected number of characters to receive
+
+TARGET_XFER_RATE=7200
 TOTAL_CH_LOST=0
 REPEATS=0
+CHAR_PER_ITER=0
 
 # Check whether the given devices are available.
 read -a PTYS <<< "${FLAGS_pty}"
