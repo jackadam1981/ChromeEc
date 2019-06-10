@@ -235,6 +235,30 @@
       "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ef36da_cb1255f4",
+        "filename": "include/software_panic.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T13:49:06Z",
+      "side": 1,
+      "message": "else if (IS_ENABLED(CONFIG_SOFTWARE_PANIC) \u0026\u0026\n         pdata-\u003ex86.vector \u003e\u003d PANIC_SW_BASE \u0026\u0026\n         (pdata-\u003ex86.vector - PANIC_SW_BASE) \u003c ARRAY_SIZE(panic_sw_reasons)) {\n\nor\n\nelse if (IS_ENABLED(CONFIG_SOFTWARE_PANIC) \u0026\u0026                                                                              \n         (pdata-\u003ex86.vector \u0026 PANIC_SW_BASE_MASK) \u003d\u003d PANIC_SW_BASE) {                                                      \n\nThe second one reads better to me.  Is this all just to save creating a define?  I don\u0027t get why you want this to happen.  Please explain",
+      "parentUuid": "1118c9e9_bec200c9",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
