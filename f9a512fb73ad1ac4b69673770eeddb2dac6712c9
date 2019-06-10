@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ccab1d63_36d7b303",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T18:08:28Z",
+      "side": 0,
+      "message": "Yes, before this patch, it never returns 1.",
+      "parentUuid": "95135071_e927d813",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 11
+      },
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccd49355_12924b26",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
