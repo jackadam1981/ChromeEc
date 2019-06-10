@@ -94,6 +94,30 @@
       "revId": "25c9cb9e94d2fe49eacc86d9bc478e0cb010aac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9950e6c9_8113861e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-10T19:39:29Z",
+      "side": 0,
+      "message": "+1 to both ideas. :)\n\nSimple change would really help unify grammar on dual-TCPC designs.",
+      "parentUuid": "357a8d56_ed921f4f",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 49
+      },
+      "revId": "25c9cb9e94d2fe49eacc86d9bc478e0cb010aac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
