@@ -259,6 +259,30 @@
       "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062b61e6_bfa3314f",
+        "filename": "include/software_panic.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-10T15:22:33Z",
+      "side": 1,
+      "message": "It\u0027s a matter of reducing error when changes are introduced in the future... in the 2st case, if a change were introduced that added more sw panic reasons, a new #define would be required, a new entry in the array, and potentially the mask would need to be updated too.\n\nIn the 1st case, the mask does not need updated for existing code to work properly, so there is less chance for error.",
+      "parentUuid": "a3ef36da_cb1255f4",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "030ba3c2ac4f80d10045493dd06dd77c86c45b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

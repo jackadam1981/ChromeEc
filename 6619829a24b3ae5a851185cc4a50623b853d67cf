@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3b101bf_bc00f2e1",
+        "filename": "common/panic_output.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-10T15:22:33Z",
+      "side": 1,
+      "message": "Not needed",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68700799_00b2f91b",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-10T15:22:33Z",
+      "side": 1,
+      "message": "Can we make CONFIG_WATCHDOG require CONFIG_SOFTWARE_PANIC?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c00e919_078b38fd",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-10T15:22:33Z",
+      "side": 1,
+      "message": "factor out?",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
