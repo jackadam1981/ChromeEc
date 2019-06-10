@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a01e8f0_24a335e3",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T20:06:06Z",
+      "side": 1,
+      "message": "int is probably more expected.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 4
+      },
+      "revId": "f1143e1a5755641c1da7cc7d3af954f593a45ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8cba55_fb17e271",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T20:06:06Z",
+      "side": 1,
+      "message": "Need a formal function description.",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 27
+      },
+      "revId": "f1143e1a5755641c1da7cc7d3af954f593a45ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6223270b_8e0da38c",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T20:06:06Z",
+      "side": 1,
+      "message": "ac_prochot or whatever name, which is consistent.",
+      "range": {
+        "startLine": 310,
+        "startChar": 37,
+        "endLine": 310,
+        "endChar": 44
+      },
+      "revId": "f1143e1a5755641c1da7cc7d3af954f593a45ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5564890_50f020cf",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T20:06:06Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 973,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 24
+      },
+      "revId": "f1143e1a5755641c1da7cc7d3af954f593a45ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
