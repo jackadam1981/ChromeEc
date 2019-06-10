@@ -22,6 +22,30 @@
       "revId": "a88c4624506c69d460b9c87f6a22c7b8292c4481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e64d2a_4357e4ae",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-10T21:41:22Z",
+      "side": 1,
+      "message": "on dragonegg it was always on\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/board/dragonegg/gpio.inc#62",
+      "parentUuid": "c3481a50_c0403808",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "a88c4624506c69d460b9c87f6a22c7b8292c4481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
