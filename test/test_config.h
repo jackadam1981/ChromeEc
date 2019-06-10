@@ -54,7 +54,35 @@
 #define CONFIG_MATH_UTIL
 #endif
 
+<<<<<<< HEAD   (ae164f nocturne: Only notify MKBP via hostevent in suspend)
 #ifdef TEST_MOTION_LID
+=======
+#ifdef TEST_FLOAT
+#define CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_FP
+#undef CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_FPSENSOR
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
+#define CONFIG_SHA256
+#endif
+
+#if defined(TEST_MOTION_LID) || defined(TEST_MOTION_ANGLE) || \
+	defined(TEST_MOTION_ANGLE_TABLET)
+enum sensor_id {
+	BASE,
+	LID,
+	SENSOR_COUNT,
+};
+
+>>>>>>> CHANGE (b5c6cf fpsensor: Add unit test for derive_encryption_key().)
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 #define CONFIG_LID_ANGLE_TABLET_MODE
