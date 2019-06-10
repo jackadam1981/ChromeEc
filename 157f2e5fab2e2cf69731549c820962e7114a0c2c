@@ -34,6 +34,24 @@
       "revId": "157f2e5fab2e2cf69731549c820962e7114a0c2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1faaac0_9fb3766f",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-10T17:07:01Z",
+      "side": 1,
+      "message": "I *think* a C-style cast will never warn about removing const, but if we compiled with the c++ compiler and were using static_cast here, it should warn: https://en.cppreference.com/w/cpp/language/static_cast\n\nThis is one reason (among many) that I\u0027m trying to build the fingerprint firmware with clang. I\u0027m not planning to use any crazy c++-ism\u0027s that bloat the code, but being able to take advantage of some newer language features like this is nice (with my clang changes, I can rename fpsensor.c to fpsensor.cc and start making these types of changes.)",
+      "parentUuid": "12b8b981_9282771e",
+      "revId": "157f2e5fab2e2cf69731549c820962e7114a0c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
