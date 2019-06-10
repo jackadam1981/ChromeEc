@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd883cb2_a2d9fcdb",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T19:58:33Z",
+      "side": 1,
+      "message": "Do you need this? Aren\u0027t you supposed to place .dram.data right after .dram.text?",
+      "range": {
+        "startLine": 452,
+        "startChar": 37,
+        "endLine": 452,
+        "endChar": 58
+      },
+      "revId": "c542c6c313c9f80b08f24e8c240763e8551a284a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
