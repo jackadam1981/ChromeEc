@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba83acc6_6f166eab",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-10T23:00:45Z",
+      "side": 1,
+      "message": "there is no meaningful changes in this file, is this right?",
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36dfb686_8bcb90a5",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-10T23:00:45Z",
+      "side": 1,
+      "message": "in other places in the code you assume that there would never be more than two descriptors - why complicate things here?\n\nJust check to see if you should be polling the first or the second descriptor, would this be not enough?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b8b8619_67e69286",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-10T23:00:45Z",
+      "side": 1,
+      "message": "I am not sure I understand why tx_handled variable is required. Is this just to know how much to advance the queue pointer?\n\nWhy not to use the descriptor\u0027s length field?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c44025_8b0ce790",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-10T23:00:45Z",
+      "side": 1,
+      "message": "please add a comment here mentioning that in_desc[1] will always point at the base of the queue buffer and is set only once.",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 26
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fd58f8_3fb036f8",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-10T23:00:45Z",
+      "side": 1,
+      "message": "why is it needed to set this to NULL?",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 32
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
