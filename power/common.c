@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lid_switch.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -183,8 +184,9 @@ static enum power_state power_common_state(enum power_state state)
 #ifdef CONFIG_LOW_POWER_PSEUDO_G3
 				enter_pseudo_g3();
 #else
-				CPRINTS("hibernating");
-				system_hibernate(0, 0);
+				if (!lid_is_open())
+					system_hibernate(CONFIG_HIBERNATE_PERIOD, 0);
+				CPRINTS("Lid is open. Skip hibernating");
 #endif
 				break;
 #ifdef CONFIG_BATTERY_CUT_OFF
