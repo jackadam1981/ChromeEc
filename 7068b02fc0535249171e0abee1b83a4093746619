@@ -46,6 +46,30 @@
       "revId": "7068b02fc0535249171e0abee1b83a4093746619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5cc9c63_a6c85a3b",
+        "filename": "common/panic_output.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T21:39:06Z",
+      "side": 1,
+      "message": "software_panic.h is included in panic.h\n\nI need to update the CL description. I left the remnants of PANIC_SW_BASE_MASK in there.",
+      "parentUuid": "2f0b32f6_c2ce0f40",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "7068b02fc0535249171e0abee1b83a4093746619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
