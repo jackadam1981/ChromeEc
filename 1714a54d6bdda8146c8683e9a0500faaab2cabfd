@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef4bdbdf_b0c75d17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce07190_287d98bd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9dca591_63815d18",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569828b5_927b83ce",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "Done.\n\nPlease take a look at line 43~62 of usb_console.c in patch#4.",
+      "parentUuid": "e9dca591_63815d18",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "45ae5f35_795af424",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "reverted.",
+      "parentUuid": "c0458162_8afb5d3b",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8566d6a5_3397b746",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
@@ -85,6 +157,24 @@
       "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19cb3400_a531ec24",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "I agree to that, but I think the adjustmet of buffer size deserve a CL.\nLet me do it in another patch including the size adjustment for QUEUE_SIZE_USB_RX, and report the impact on character loss",
+      "parentUuid": "8566d6a5_3397b746",
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "4c728d48_9cbf36bf",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "Moved the location into a \"#ifndef CONFIG_STREAM_USB - #endif\" nest.",
+      "parentUuid": "df9e7c14_858a5f64",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "855c8409_64d5fa07",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "53f8a3ef_4989067a",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "Rearranged the code so that it needs less \u0027#ifdef #else #endif\u0027 statements.",
+      "parentUuid": "855c8409_64d5fa07",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4196e2e9_8840af40",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
@@ -154,6 +292,30 @@
       "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c5d015_a71e9595",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-10T20:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4196e2e9_8840af40",
+      "range": {
+        "startLine": 300,
+        "startChar": 43,
+        "endLine": 300,
+        "endChar": 46
+      },
+      "revId": "1714a54d6bdda8146c8683e9a0500faaab2cabfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
