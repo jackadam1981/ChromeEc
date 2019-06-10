@@ -145,6 +145,9 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
+/* LED control */
+#define CONFIG_LED_ONOFF_STATES
+
 /* I2C Bus Configuration */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
