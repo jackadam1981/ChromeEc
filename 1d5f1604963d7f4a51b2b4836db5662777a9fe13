@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1c806f9_2533b1a7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-10T22:19:45Z",
+      "side": 0,
+      "message": "this was recently added by analogix I think it had something to do with the ANX not also being the MUX then we were in a non-ideal state.  I have to run now, but I will dig up more info tomorrow.",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 29
+      },
+      "revId": "1d5f1604963d7f4a51b2b4836db5662777a9fe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
