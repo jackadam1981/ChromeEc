@@ -40,6 +40,7 @@ SCRIPT_NAME="$(basename "$0")"
 # Flags
 DEFINE_string pty "" "List of UART device path(s) to test"
 DEFINE_integer min_char  "40000" "Minimum number of characters to generate."
+DEFINE_integer speed  "14400" "Minimum characters per second to test"
 
 FLAGS_HELP="usage: ${SCRIPT_NAME} [flags]
 example:
@@ -64,6 +65,7 @@ cleanup() {
 
 	[[ -e ${DIR_TMP} ]] && ln -snf "${DIR_TMP}" "${LINK_LATEST}"
 
+	info		# empty line
 	info "Test files are in ${LINK_LATEST}"
 	info "and also in ${DIR_TMP}."
 	${TEST_PASS} && info "PASS" || error "FAIL"
@@ -201,6 +203,25 @@ start_capture() {
 }
 
 #######################################
+# Send the UART console command to the given device.
+# Arguments:
+#   $2: UART console command to send
+#   $2: UART device path
+#######################################
+send_console_command() {
+	[[ $# -eq 2 ]] || die "${FUNCNAME[0]}: argument error: $*"
+
+	local ucmd="$1"
+	local pd="$2"
+
+	echo "${ucmd}" > "${pd}"
+	if [[ -n ${ucmd} ]]; then
+		# Let's reload watchdog.
+		echo "waitms 0" > "${pd}"
+	fi
+}
+
+#######################################
 # Run a UART stress test on target device(s).
 # Arguments:
 #   $1: Number of times to run a console command
@@ -214,6 +235,9 @@ stress_test() {
 	local TEST_PTYS=( "$@" )
 	local pd
 	local i
+	local CHAR_CUR=0
+	local MSEC_CUR
+	local MSEC_EXP
 
 	# Start to capture.
 	for pd in "${TEST_PTYS[@]}"; do
@@ -226,13 +250,20 @@ stress_test() {
 	# Generate traffic.
 	for (( i=1; i<=${ITER}; i++ )) do
 		for pd in "${TEST_PTYS[@]}"; do
-			echo "${CONSOLE_CMDS["${pd}"]}" > "${pd}"
+			send_console_command "${CONSOLE_CMDS["${pd}"]}" "${pd}"
 		done
 
-		(( i % 10 == 0 )) || continue
+		# Print status bar
+		(( i % 10 == 0 )) && echo -n "."
 
-		echo -n "."
-		sleep 2
+		# Control the speed
+		MSEC_CUR=$(( $(get_msecond) - TS_START ))
+		CHAR_CUR=$(( CHAR_CUR + CHAR_PER_ITER ))
+		MSEC_EXP=$(( CHAR_CUR * 1000 / FLAGS_speed ))
+
+		if [[ ${MSEC_EXP} -gt ${MSEC_CUR} ]]; then
+			sleep $(( (MSEC_EXP - MSEC_CUR) / 1000 ))
+		fi
 	done
 	DURATION=$(( $(get_msecond) - TS_START ))
 	echo
@@ -276,7 +307,7 @@ get_sample_txt() {
 				echo -n "    " > "${pd}"
 			fi
 
-			echo "${cmd}" > "${pd}"
+			send_console_command "${cmd}" "${pd}"
 
 			# Stop capturing
 			sleep 1
@@ -305,6 +336,7 @@ get_sample_txt() {
 			MIN_CHAR_SMPL=${NUM_CH}
 		fi
 
+		CHAR_PER_ITER=$(( CHAR_PER_ITER + NUM_CH ))
 		FILE_SAMPLE["${pd}"]="${FILE_CAP}"
 	done
 }
@@ -316,6 +348,7 @@ declare -A FILE_SAMPLE
 declare -A FILE_RES
 TOTAL_CH_LOST=0
 TOTAL_CH_EXPC=0
+CHAR_PER_ITER=0         # Number of expected characters per iteration
 
 # Check whether the given devices are available.
 read -a PTYS <<< "${FLAGS_pty}"
@@ -347,5 +380,23 @@ for pd in "${PTYS[@]}"; do
 	calc_char_loss_rate "${pd}" "${FILE_SAMPLE["${pd}"]}" \
 			"${FILE_RES["${pd}"]}" ${REPEATS}
 done
+
+# Print the total character loss rate
+if [[ ${#PTYS[@]} -gt 1 ]]; then
+	STR="Total       : ${TOTAL_CH_LOST} lost / ${TOTAL_CH_EXPC}"
+
+	if [[ ${TOTAL_CH_LOST} -eq 0 ]]; then
+		info "${STR} : 0 %"
+	else
+		# Calculate the character loss rate.
+		RATE=$( calc_percent ${TOTAL_CH_LOST} ${TOTAL_CH_EXPC} )
+		error "${STR} : ${RATE} %"
+	fi
+fi
+
+# Print the transfer speed tested.
+TEST_SPEED=$(( TOTAL_CH_EXPC * 1000 / DURATION ))
+TEST_SPEED_PER_DEV=$(( TEST_SPEED / ${#PTYS[@]} ))
+info "Tested speed: ${TEST_SPEED} char/s (${TEST_SPEED_PER_DEV} char/s per dev)"
 
 [[ ${TOTAL_CH_LOST} -eq 0 ]] && TEST_PASS=true
