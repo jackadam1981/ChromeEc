@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "37e56acd_f8f0e167",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2728,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-10T21:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6235003_1ae55b94",
+      "range": {
+        "startLine": 2728,
+        "startChar": 4,
+        "endLine": 2728,
+        "endChar": 6
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58c8dddd_ecd18b4a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -68,6 +92,30 @@
       "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "395dcaf8_38b710a4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2730,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-10T21:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58c8dddd_ecd18b4a",
+      "range": {
+        "startLine": 2730,
+        "startChar": 30,
+        "endLine": 2730,
+        "endChar": 38
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "344c36c0_31fe5db9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-10T21:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d685231_618ebba8",
+      "range": {
+        "startLine": 2731,
+        "startChar": 22,
+        "endLine": 2731,
+        "endChar": 33
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfc3c9e2_61214dd9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -114,6 +186,30 @@
       "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d254f1_5069ed95",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4626,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-10T21:25:08Z",
+      "side": 1,
+      "message": "I was thinking that most callers that wanted to resume the port at a later time probably all wanted the same timing (since it is for temporarily disabling the port). We can add it when multiple callers want different timings.\n\nThe other caller right now is a case that has never really been seen in the wild, it is just a precaution. Arguably, we would want to keep it from starving the EC just as much as this case.",
+      "parentUuid": "dfc3c9e2_61214dd9",
+      "range": {
+        "startLine": 4626,
+        "startChar": 5,
+        "endLine": 4626,
+        "endChar": 23
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
