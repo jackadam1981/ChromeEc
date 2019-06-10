@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eaedb804_beaae5eb",
+        "filename": "common/panic_output.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T16:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b101bf_bc00f2e1",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68700799_00b2f91b",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-10T15:22:33Z",
       "side": 1,
       "message": "Can we make CONFIG_WATCHDOG require CONFIG_SOFTWARE_PANIC?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73e7280_7aa3be27",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T16:37:43Z",
+      "side": 1,
+      "message": "Not all watchdogs are software panics... even if we end up mapping it to be one.  I would prefer to not require this, at least right now",
+      "parentUuid": "68700799_00b2f91b",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a03a1bd_9242ca30",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T16:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c00e919_078b38fd",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d9a6098_0ec0bd8a",
         "filename": "include/software_panic.h",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0449566_9a26f8c2",
+        "filename": "include/software_panic.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-10T16:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d9a6098_0ec0bd8a",
+      "range": {
+        "startLine": 28,
+        "startChar": 43,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "6619829a24b3ae5a851185cc4a50623b853d67cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
