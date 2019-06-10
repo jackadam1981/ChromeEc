@@ -22,6 +22,98 @@
       "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6235003_1ae55b94",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2728,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T21:10:09Z",
+      "side": 1,
+      "message": "It\u0027s better be \u0027else if\u0027 because you\u0027ll never hit it right after resetting the counter.",
+      "range": {
+        "startLine": 2728,
+        "startChar": 4,
+        "endLine": 2728,
+        "endChar": 6
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c8dddd_ecd18b4a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2730,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T21:10:09Z",
+      "side": 1,
+      "message": "This seems redundant. Also, can you print port #?",
+      "range": {
+        "startLine": 2730,
+        "startChar": 30,
+        "endLine": 2730,
+        "endChar": 38
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d685231_618ebba8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T21:10:09Z",
+      "side": 1,
+      "message": "\u0027for 5 sec\u0027 is more informative.",
+      "range": {
+        "startLine": 2731,
+        "startChar": 22,
+        "endLine": 2731,
+        "endChar": 33
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfc3c9e2_61214dd9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4626,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-10T21:10:09Z",
+      "side": 1,
+      "message": "Why don\u0027t we make it take \u0027int delay\u0027? (so that we can call it with ALERT_STORM_SUSPEND_SEC)",
+      "range": {
+        "startLine": 4626,
+        "startChar": 5,
+        "endLine": 4626,
+        "endChar": 23
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
