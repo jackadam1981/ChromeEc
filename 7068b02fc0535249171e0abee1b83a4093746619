@@ -22,6 +22,30 @@
       "revId": "7068b02fc0535249171e0abee1b83a4093746619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f0b32f6_c2ce0f40",
+        "filename": "common/panic_output.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-10T21:35:26Z",
+      "side": 1,
+      "message": "software_panic.h, which should probably be added to #includes",
+      "parentUuid": "6e66f74b_f39f3d5a",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "7068b02fc0535249171e0abee1b83a4093746619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
