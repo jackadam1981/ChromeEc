@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6727c9db_84b59f6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T18:24:29Z",
+      "side": 1,
+      "message": "Why do we need to separate .dram.data in LMA and VMA? Can we unite them (i.e. LMA\u003dVMA)? They both go to DRAM.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "4e8427db0b0717edfe5d355cf09f6dea3dde2e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
