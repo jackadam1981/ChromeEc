@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54e9b46f_e1f3c1fd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2579fcd2_d35ab4f0",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f96d8540_dbf40409",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c84aff6d_d4c8a07b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f96d8540_dbf40409",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 19
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60ecd173_a4286899",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -59,6 +107,30 @@
       "writtenOn": "2019-06-11T13:48:51Z",
       "side": 1,
       "message": "when? and why?\n\nAfter reading the reset of the code, I am not convinced we should have this state variable here. Can we not make pd_sed_vdm take in the tcpc_transmit_type we want to use instead?",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 45
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51fc3f1_132b6541",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "SOP and SOP\u0027 both send discover_identity command. Need to check from where I am receiving the acknowledgment from in the handle_request function. Not sure how we can check it otherwise if we don\u0027t store the type of SOP* message.",
+      "parentUuid": "60ecd173_a4286899",
       "range": {
         "startLine": 250,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8ac450f7_766da187",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f7d45e_32cc6a1a",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 31
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba250f55_bd517d53",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -114,6 +210,30 @@
       "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adc40cd_884877bb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done.\nAdding to check if the response is from the cable.",
+      "parentUuid": "ba250f55_bd517d53",
+      "range": {
+        "startLine": 2034,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 0
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0654ddc0_590b8ddf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2039,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "683175d1_36656e5c",
+      "range": {
+        "startLine": 2039,
+        "startChar": 19,
+        "endLine": 2039,
+        "endChar": 29
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92890b23_cbddc83d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -160,6 +304,30 @@
       "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489bd934_ee3c5217",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92890b23_cbddc83d",
+      "range": {
+        "startLine": 2045,
+        "startChar": 1,
+        "endLine": 2045,
+        "endChar": 2
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "13028c4d_9070067e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56558f7_90d34c08",
+      "range": {
+        "startLine": 2169,
+        "startChar": 0,
+        "endLine": 2176,
+        "endChar": 0
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8e2f81d_8068ef63",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 14
@@ -206,6 +398,30 @@
       "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f327d753_f18c00f7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e2f81d_8068ef63",
+      "range": {
+        "startLine": 2190,
+        "startChar": 0,
+        "endLine": 2195,
+        "endChar": 6
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "6b711a98_1a85a442",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b924c6_cf305877",
+      "range": {
+        "startLine": 542,
+        "startChar": 44,
+        "endLine": 542,
+        "endChar": 65
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4746433_44b68030",
         "filename": "include/ec_commands.h",
         "patchSetId": 14
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "f28b4fdc_0ab30a0d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4866,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4746433_44b68030",
+      "range": {
+        "startLine": 4866,
+        "startChar": 24,
+        "endLine": 4866,
+        "endChar": 46
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "333f285c_81a4275e",
         "filename": "include/usb_pd.h",
         "patchSetId": 14
@@ -275,6 +539,30 @@
       "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc52bd7_0925bc18",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-06-11T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333f285c_81a4275e",
+      "range": {
+        "startLine": 820,
+        "startChar": 7,
+        "endLine": 820,
+        "endChar": 31
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
