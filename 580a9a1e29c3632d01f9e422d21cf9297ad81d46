@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63bc32ab_0cddf1b2",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:31:35Z",
+      "side": 1,
+      "message": "we don\u0027t need this memset, static variable are guaranteed to be set to 0",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 51
+      },
+      "revId": "580a9a1e29c3632d01f9e422d21cf9297ad81d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

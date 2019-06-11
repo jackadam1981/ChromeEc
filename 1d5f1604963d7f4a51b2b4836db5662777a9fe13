@@ -22,6 +22,30 @@
       "revId": "1d5f1604963d7f4a51b2b4836db5662777a9fe13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46784985_c3e03dfd",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:31:35Z",
+      "side": 0,
+      "message": "I was thinking of CL:1476297 which is only on the Rammus branch.\n\nThey were having trouble with the default state of the mux after TCPC init (for Ramus, the TCPC is also the MUX). They needed to initialize it to None because the mux init wasn\u0027t getting run early enough.",
+      "parentUuid": "f1c806f9_2533b1a7",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 29
+      },
+      "revId": "1d5f1604963d7f4a51b2b4836db5662777a9fe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
