@@ -150,6 +150,15 @@ int uint64divmod(uint64_t *v, int by);
 int get_next_bit(uint32_t *mask);
 
 /**
+ * Check |buffer| is full of 0x00 or 0xff.
+ *
+ * @param buffer the buffer to check.
+ * @param size the number of bytes to check.
+ * @return 1 if |buffer| is full of 0x00 or 0xff, 0 otherwise.
+ */
+int bytes_are_trivial(const uint8_t *buffer, size_t size);
+
+/**
  * Reverse's the byte-order of the provided buffer.
  */
 void reverse(void *dest, size_t len);
