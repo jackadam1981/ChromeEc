@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac5523a5_756ae72e",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2019-06-11T05:23:00Z",
+      "side": 1,
+      "message": "Hi Daisuke, \n    I don\u0027t understand the reason that we use int in stead of void here. Since we are not return anything,should we leave it as it is now?",
+      "parentUuid": "4a01e8f0_24a335e3",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 4
+      },
+      "revId": "f1143e1a5755641c1da7cc7d3af954f593a45ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc8cba55_fb17e271",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 4
