@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c78c02e5_7a5114d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T00:12:48Z",
+      "side": 1,
+      "message": "as discussed, this test description does not tell much: did things improve, got worse,stayed approximately the same?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9550ffb8_d120bc6c",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T00:12:48Z",
+      "side": 1,
+      "message": "is this still needed?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe1ea7e_e8412c36",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T00:12:48Z",
+      "side": 1,
+      "message": "please add a comment explaining why this function is needed and when it is called, etc.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad2ab54_bdcd90be",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T00:12:48Z",
+      "side": 1,
+      "message": "can this be NULL so that you don\u0027t need to keep this empty function?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed2f698_89522b68",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T00:12:48Z",
+      "side": 1,
+      "message": "mention in the comment that CONFIG_STREAM_USB is defined above and not defined below",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6478db2_f5a7c307",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T00:12:48Z",
+      "side": 1,
+      "message": "this in fact is closing the case where CONFIG_STREAM_USB is not set.",
+      "range": {
+        "startLine": 297,
+        "startChar": 10,
+        "endLine": 297,
+        "endChar": 28
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
