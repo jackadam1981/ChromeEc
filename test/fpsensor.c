@@ -257,6 +257,72 @@ test_static int test_derive_encryption_key_failure_rollback_fail(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_derive_new_pos_match_secret(void)
+{
+	static const uint8_t expected[] = {
+		0xfb, 0x47, 0x07, 0x1e, 0x45, 0xfa, 0xba, 0x0b,
+		0x70, 0x71, 0x9f, 0xa0, 0x45, 0x3e, 0xed, 0x2b,
+		0x25, 0x42, 0x71, 0x03, 0x7c, 0x8d, 0x27, 0xe7,
+		0x33, 0xb4, 0xa9, 0x9c, 0x53, 0x3d, 0xb1, 0x49,
+	};
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+
+	/*
+	 * GIVEN that the TPM seed is set, and reading the rollback secret will
+	 * succeed.
+	 */
+	TEST_ASSERT(fp_tpm_seed_is_set() && !rollback_should_fail);
+
+	/*
+	 * GIVEN that generating random finger id will not fail due to
+	 * collision.
+	 */
+	fp_clear_context();
+
+	/* THEN generating positive match salt and finger id will succeed. */
+	TEST_ASSERT(generate_pos_match_salt_finger_id() == EC_RES_SUCCESS);
+	templ_valid++;
+
+	/* THEN the derivation will succeed. */
+	TEST_ASSERT(derive_pos_match_secret(output,
+					    fp_pos_match_salt[templ_valid - 1],
+					    finger_id[templ_valid - 1])
+		== EC_RES_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(output, expected, FP_POS_MATCH_SECRET_BYTES);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_derive_pos_match_secret_fail_seed_not_set(void)
+{
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+
+	/* GIVEN that seed is not set. */
+	TEST_ASSERT(!fp_tpm_seed_is_set());
+	/* THEN deriving positive match secret will fail. */
+	TEST_ASSERT(derive_pos_match_secret(output,
+					    fp_pos_match_salt[0],
+					    finger_id[0]) == EC_RES_ERROR);
+
+	return EC_SUCCESS;
+
+}
+
+test_static int test_derive_pos_match_secret_fail_rollback_fail(void)
+{
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+
+	/* GIVEN that rollback will fail. */
+	rollback_should_fail = 1;
+	/* THEN deriving positive match secret will fail. */
+	TEST_ASSERT(derive_pos_match_secret(output,
+					    fp_pos_match_salt[0],
+					    finger_id[0]) == EC_RES_ERROR);
+	rollback_should_fail = 0;
+
+	return EC_SUCCESS;
+}
+
 test_static int test_fp_tpm_seed_not_set(void)
 {
 	int rv;
@@ -381,12 +447,15 @@ void run_test(void)
 	RUN_TEST(test_fp_enc_status_valid_flags);
 	RUN_TEST(test_fp_tpm_seed_not_set);
 	RUN_TEST(test_derive_encryption_key_failure_seed_not_set);
+	RUN_TEST(test_derive_pos_match_secret_fail_seed_not_set);
 	RUN_TEST(test_set_fp_tpm_seed);
 	RUN_TEST(test_set_fp_tpm_seed_again);
 	RUN_TEST(test_derive_encryption_key);
 	RUN_TEST(test_derive_encryption_key_failure_rollback_fail);
 	RUN_TEST(test_fp_set_sensor_mode);
 	RUN_TEST(test_fp_rand_finger_id);
+	RUN_TEST(test_derive_new_pos_match_secret);
+	RUN_TEST(test_derive_pos_match_secret_fail_rollback_fail);
 
 	test_print_result();
 }
