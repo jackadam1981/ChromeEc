@@ -118,6 +118,80 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	return EC_RES_SUCCESS;
 }
 
+int derive_new_pos_match_secret(uint8_t *output)
+{
+	int ret;
+	uint8_t new_pos_match_salt[FP_POS_MATCH_SALT_BYTES];
+	uint8_t new_finger_id[FP_FINGER_ID_BYTES];
+
+	init_trng();
+	rand_bytes(new_pos_match_salt, sizeof(new_pos_match_salt));
+	ret = fp_rand_finger_id(new_finger_id);
+	exit_trng();
+
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Generating random finger id timed out.");
+		return EC_RES_ERROR;
+	}
+
+	ret = derive_pos_match_secret(output, new_pos_match_salt,
+				      new_finger_id);
+
+	/* Write out only if derivation succeeds. */
+	if (ret == EC_RES_SUCCESS) {
+		memcpy(fp_pos_match_salt[templ_valid], new_pos_match_salt,
+			FP_POS_MATCH_SALT_BYTES);
+		memcpy(finger_id[templ_valid], new_finger_id,
+			FP_FINGER_ID_BYTES);
+	}
+
+	return ret;
+}
+
+int derive_pos_match_secret(uint8_t *output, uint8_t *input_pos_match_salt,
+			    uint8_t *input_finger_id)
+{
+	int ret;
+	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
+	uint8_t prk[SHA256_DIGEST_SIZE];
+	uint8_t first;
+	uint8_t i;
+
+	ret = get_ikm(ikm);
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Failed to get IKM: %d", ret);
+		return EC_RES_ERROR;
+	}
+
+	/* "Extract" step of HKDF. */
+	hkdf_extract(prk, input_pos_match_salt, FP_POS_MATCH_SALT_BYTES,
+			   ikm, sizeof(ikm));
+	memset(ikm, 0, sizeof(ikm));
+
+	/*
+	 * Only 1 "expand" step of HKDF since the size of the output key
+	 * material (FP_POS_MATCH_SECRET_BYTES) is exactly SHA256_DIGEST_SIZE.
+	 * https://tools.ietf.org/html/rfc5869#section-2.3
+	 */
+	ret = hkdf_expand_one_step(output, FP_POS_MATCH_SECRET_BYTES,
+		prk, sizeof(prk), input_finger_id, FP_FINGER_ID_BYTES);
+	memset(prk, 0, sizeof(prk));
+
+	/* Check that secret is not full of 0x00 or 0xff. */
+	first = output[0];
+	if (first == 0x00 || first == 0xff) {
+		for (i = 1; i < FP_POS_MATCH_SECRET_BYTES; i++)
+			if (output[i] != first)
+				break;
+		if (i == FP_POS_MATCH_SECRET_BYTES) {
+			CPRINTS("Error: positive match secret is full of "
+				"0x%02x.", first);
+			ret = EC_RES_ERROR;
+		}
+	}
+	return ret;
+}
+
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 {
 	int ret;
