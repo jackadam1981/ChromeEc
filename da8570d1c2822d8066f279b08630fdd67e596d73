@@ -22,6 +22,53 @@
       "revId": "da8570d1c2822d8066f279b08630fdd67e596d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb28379_d1553029",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T19:50:16Z",
+      "side": 1,
+      "message": "It\u0027s talking about the write order: BLDIM2 first then BLDIM (instead of BLDIM first).",
+      "parentUuid": "168eaffe_4bd1683d",
+      "range": {
+        "startLine": 1110,
+        "startChar": 0,
+        "endLine": 1110,
+        "endChar": 55
+      },
+      "revId": "da8570d1c2822d8066f279b08630fdd67e596d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46706b23_b8aa5d22",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T19:50:16Z",
+      "side": 1,
+      "message": "What\u0027s the point of continuing if the write fails above?",
+      "range": {
+        "startLine": 1112,
+        "startChar": 4,
+        "endLine": 1112,
+        "endChar": 7
+      },
+      "revId": "da8570d1c2822d8066f279b08630fdd67e596d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
