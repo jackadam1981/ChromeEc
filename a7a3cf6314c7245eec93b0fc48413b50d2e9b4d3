@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7783ade_b8862de0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-11T17:22:45Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "a7a3cf6314c7245eec93b0fc48413b50d2e9b4d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391c3a67_701c1b7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-11T17:22:45Z",
+      "side": 1,
+      "message": "Ok not to break long links (even if checkpatch complains on upload): https://google.github.io/styleguide/cppguide.html#Line_Length",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "a7a3cf6314c7245eec93b0fc48413b50d2e9b4d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5522888f_517b0cd5",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-11T17:22:45Z",
+      "side": 1,
+      "message": "See other comment about URL. Also, usually best to specify the exact SHA1 when referring to a specific file and/or line in a repo at a given point in time since the master branch could change (move files around or add/subtract lines in a file).\n\nExample: https://boringssl.googlesource.com/boringssl/+/c0b4c72b6d4c6f4828a373ec454bd646390017d4/crypto/hkdf/hkdf_test.cc",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 36
+      },
+      "revId": "a7a3cf6314c7245eec93b0fc48413b50d2e9b4d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
