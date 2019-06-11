@@ -405,6 +405,56 @@ static int test_swap(void)
 	return EC_SUCCESS;
 }
 
+static int test_bytes_are_trivial(void)
+{
+	static const uint8_t all0x00[] = { 0x00, 0x00, 0x00 };
+	static const uint8_t all0xff[] = { 0xff, 0xff, 0xff, 0xff };
+	static const uint8_t nontrivial1[] = { 0x00, 0x01, 0x02 };
+	static const uint8_t nontrivial2[] = { 0xdd, 0xee, 0xff };
+	static uint8_t longbuffer[1024] = { 0 };
+	timestamp_t t0, t1;
+	uint64_t diff1, diff2, diff3, diff4;
+
+	TEST_ASSERT(bytes_are_trivial(all0x00, sizeof(all0x00)));
+	TEST_ASSERT(bytes_are_trivial(all0xff, sizeof(all0xff)));
+	TEST_ASSERT(!bytes_are_trivial(nontrivial1, sizeof(nontrivial1)));
+	TEST_ASSERT(!bytes_are_trivial(nontrivial2, sizeof(nontrivial2)));
+
+	t0 = get_time();
+	TEST_ASSERT(bytes_are_trivial(longbuffer, sizeof(longbuffer)));
+	t1 = get_time();
+	diff1 = t1.val - t0.val;
+
+	/* The first byte makes buffer non-trivial. */
+	longbuffer[0] = 0x01;
+	t0 = get_time();
+	TEST_ASSERT(!bytes_are_trivial(longbuffer, sizeof(longbuffer)));
+	t1 = get_time();
+	diff2 = t1.val - t0.val;
+
+	/* The last byte makes buffer non-trivial. */
+	memset(longbuffer, 0, sizeof(longbuffer));
+	longbuffer[sizeof(longbuffer) - 1] = 0x02;
+	t0 = get_time();
+	TEST_ASSERT(!bytes_are_trivial(longbuffer, sizeof(longbuffer)));
+	t1 = get_time();
+	diff3 = t1.val - t0.val;
+
+	/* The middle byte makes buffer non-trivial. */
+	memset(longbuffer, 0, sizeof(longbuffer));
+	longbuffer[sizeof(longbuffer) / 2] = 0x03;
+	t0 = get_time();
+	TEST_ASSERT(!bytes_are_trivial(longbuffer, sizeof(longbuffer)));
+	t1 = get_time();
+	diff4 = t1.val - t0.val;
+
+	TEST_ASSERT(diff1 == diff2);
+	TEST_ASSERT(diff2 == diff3);
+	TEST_ASSERT(diff3 == diff4);
+
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	test_reset();
@@ -422,6 +472,7 @@ void run_test(void)
 	RUN_TEST(test_cond_t);
 	RUN_TEST(test_mula32);
 	RUN_TEST(test_swap);
+	RUN_TEST(test_bytes_are_trivial);
 
 	test_print_result();
 }
