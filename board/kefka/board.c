@@ -284,5 +284,5 @@ DECLARE_HOOK(HOOK_INIT, get_motion_sensors_count, HOOK_PRIO_FIRST);
 uint8_t board_set_battery_level_shutdown(void)
 {
 	/* Cut off at 5% */
-	return 6;
+	return 10;
 }
