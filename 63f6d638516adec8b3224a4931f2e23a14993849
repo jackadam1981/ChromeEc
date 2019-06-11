@@ -22,6 +22,30 @@
       "revId": "63f6d638516adec8b3224a4931f2e23a14993849",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed25fbf3_7281d1e0",
+        "filename": "board/atlas/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-11T17:32:37Z",
+      "side": 1,
+      "message": "I want to refactor the way usb_pd_policy is done. Right now it\u0027s mostly copy/paste and makes fixes like these annoying to make for each board.",
+      "parentUuid": "391431fe_05a935db",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 0
+      },
+      "revId": "63f6d638516adec8b3224a4931f2e23a14993849",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
