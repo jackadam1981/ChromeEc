@@ -268,9 +268,13 @@ $(run-test-targets): run-%: host-%
 	@rm -f $(FAILED_BOARDS_DIR)/test-$*
 
 # Fuzzing tests
-
+ifeq ($(FUZZER),1)
 fuzz-test-targets=$(foreach t,$(fuzz-test-list-host),host-$(t))
 run-fuzz-test-targets=$(foreach t,$(fuzz-test-list-host),run-$(t))
+else
+fuzz-test-targets=
+run-fuzz-test-targets=
+endif
 
 .PHONY: $(fuzz-test-targets) $(run-fuzz-test-targets)
 

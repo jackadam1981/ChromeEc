@@ -15,6 +15,10 @@
 ARCH?=amd64
 BOARD ?= bds
 
+# FUZZER option controls buildall usage
+# Enabled by default
+FUZZER ?= 1
+
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
 # Private board directory
