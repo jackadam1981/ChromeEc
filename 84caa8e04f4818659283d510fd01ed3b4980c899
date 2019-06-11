@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49ccb6db_ad35339e",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-11T11:39:37Z",
+      "side": 1,
+      "message": "Do we need this to be active on S3? (and also below)",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 36
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44f601c_3938166e",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-11T11:39:37Z",
+      "side": 1,
+      "message": "spaces around \u0027 \u003d \u0027.",
+      "range": {
+        "startLine": 510,
+        "startChar": 9,
+        "endLine": 510,
+        "endChar": 10
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
