@@ -22,6 +22,30 @@
       "revId": "1e6d51ebbb1e29eac0fc09c6bc26564c036188e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22500a65_1629d651",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-11T03:22:13Z",
+      "side": 0,
+      "message": "It was used to place .dram.text, and now we explicitly name it as .dram.text.  No one is using section names other than .dram.text, .dram.bss and .dram.data.",
+      "parentUuid": "f9009480_04a2de7e",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 24
+      },
+      "revId": "1e6d51ebbb1e29eac0fc09c6bc26564c036188e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

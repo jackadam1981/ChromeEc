@@ -22,6 +22,30 @@
       "revId": "c542c6c313c9f80b08f24e8c240763e8551a284a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cd65fd_70f60f64",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-11T03:22:13Z",
+      "side": 1,
+      "message": "We want the layout to be:\n\n.dram.text\n.dram.data LMA\n.dram.data VMA\n\nWe need this to separate .dram.data\u0027s LMA and VMA.  Without this line, LMA will be the same address as VMA.",
+      "parentUuid": "cd883cb2_a2d9fcdb",
+      "range": {
+        "startLine": 452,
+        "startChar": 37,
+        "endLine": 452,
+        "endChar": 58
+      },
+      "revId": "c542c6c313c9f80b08f24e8c240763e8551a284a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
