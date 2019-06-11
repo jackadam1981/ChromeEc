@@ -41,6 +41,17 @@ int hkdf_expand(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
 
 /**
+ * Derive positive match secret from |input_encryption_salt| and
+ * SBP_Src_Key.
+ *
+ * @param output buffer to store positive match secret.
+ * @param input_encryption_salt the salt for deriving secret.
+ * @return EC_SUCCESS on success and error code otherwise.
+ */
+int derive_pos_match_secret(uint8_t *output,
+			    const uint8_t *input_encryption_salt);
+
+/**
  * Encrypt |plaintext| using AES-GCM128.
  *
  * @param key the key to use in AES.
