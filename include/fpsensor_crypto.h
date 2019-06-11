@@ -27,6 +27,13 @@ int fp_rand_finger_id(uint8_t *new_finger_id);
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
 
 /**
+ * Generate new positive match salt and finger id for the most recent finger.
+ *
+ * @return EC_RES_SUCCESS on success and EC_RES_ERROR otherwise.
+ */
+int generate_pos_match_salt_finger_id(void);
+
+/**
  * Encrypt |plaintext| using AES-GCM128.
  *
  * @param key the key to use in AES.

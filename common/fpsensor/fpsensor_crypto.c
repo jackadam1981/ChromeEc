@@ -32,7 +32,6 @@ int fp_rand_finger_id(uint8_t *new_finger_id)
 	timestamp_t now = get_time();
 
 	deadline.val = now.val + 100 * MSEC;
-	CPRINTS("Generating random finger id ...");
 	do {
 		if (timestamp_expired(deadline, &now)) {
 			memset(new_finger_id, 0, FP_FINGER_ID_BYTES);
@@ -116,6 +115,29 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	memset(key_buf, 0, sizeof(key_buf));
 
 	return EC_RES_SUCCESS;
+}
+
+int generate_pos_match_salt_finger_id(void)
+{
+	int ret;
+	uint8_t new_pos_match_salt[FP_POS_MATCH_SALT_BYTES];
+	uint8_t new_finger_id[FP_FINGER_ID_BYTES];
+
+	init_trng();
+	rand_bytes(new_pos_match_salt, sizeof(new_pos_match_salt));
+	ret = fp_rand_finger_id(new_finger_id);
+	exit_trng();
+
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("Generating random finger id timed out.");
+		return EC_RES_ERROR;
+	}
+
+	memcpy(fp_pos_match_salt[templ_valid], new_pos_match_salt,
+	       FP_POS_MATCH_SALT_BYTES);
+	memcpy(finger_id[templ_valid], new_finger_id, FP_FINGER_ID_BYTES);
+
+	return ret;
 }
 
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
