@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "21fc01ca_3d6467cf",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T18:49:57Z",
+      "side": 1,
+      "message": "You\u0027re saying:\n- we want to pull up D+ for more than 40 ms but the hardware doesn\u0027t support it.\n- we enable USBCHGEN, wait for 10 ms, disable, then re-enable USBCHGEN\n\nThis 10 ms is for dealing with a slowly inserted charger? If it\u0027s even more slowly inserted, what would happen?\n\nWould this affect DCP or CDP detection?",
+      "parentUuid": "3444bd8a_daa8cf02",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43ff54a8_6f427c65",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
