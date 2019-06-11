@@ -166,6 +166,29 @@
     },
     {
       "key": {
+        "uuid": "6ed76b0f_7c1a9074",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3713,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T20:43:10Z",
+      "side": 1,
+      "message": "You probably meant \u0027PD_ROLE_DEFAULT(port) \u003d\u003d PD_ROLE_SOURCE\u0027.",
+      "range": {
+        "startLine": 3713,
+        "startChar": 8,
+        "endLine": 3713,
+        "endChar": 31
+      },
+      "revId": "c5ba3234f0a0b9e95b18e7e35f4d9e0314fbd16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfc3c9e2_61214dd9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
