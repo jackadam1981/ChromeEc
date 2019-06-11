@@ -577,6 +577,30 @@
       "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52029d85_b4cf003c",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-11T00:55:39Z",
+      "side": 1,
+      "message": "I\u0027m sorry i just found this patch is about to be merged.\n\nI don\u0027t think this is about interrupt priority. Actually since we don\u0027t support nested interrupt, when ISR of low priority interrupt is running then high priority interrupt will be delayed.\n\nAnyway, the problem is HETP1 IRQ IS NOT DELIVERED when we execute \"t0 \u003d get_time();\".  In error case, \"get_time()\" clearly says it\u0027s already passed \"last_deadline\". The HPET1 interrupt should have come before get_time() because the time from get_time() is greater than the value from __hw_clock_event_get(). But we see it didn\u0027t happen even in between get_time() and  __hw_clock_event_get().\n\nI see error when\n- we set the tick value to HPET1 is grater than scale_us2ticks(last_deadline) \u003c\u003d I confirmed\n- we set the same tick with sacle_us_2tick(last_deadline) \u003c\u003d still too late due to interrupt latency.\n\nI didn\u0027t think about good solution on this. but it can be something like below\nor if we want to keep this patch then,at least, we should change the commit message since it\u0027s not related with interrupt priority.\n\nwith the following code, I only see 0 or higher.\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d event_set () \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nuint32_t remaining_us, current_us;\nuint32_t current_tick, comp_set_tick;\n\ncurrent_tick \u003d read_main_timer();\ncurrent_us \u003d scale_ticks2us(current_tick);\nremaining_us \u003d deadline - current_us;\n\n/* Ensure HW has enough time to react to new timer value */\nremaining_us \u003d MAX(remaining_us, MINIMUM_EVENT_DELAY_US);\n\ncomp_set_tick \u003d current_tick + scale_us2ticks(remaining_us);\nlast_deadline \u003d scale_ticks2us(comp_set_tick + 2);  \u003c\u003d add 2 ticks(60us) latency\n/*\n * For ISH3, this assumes that remaining_us is less than 360 seconds\n * (2^32 us / 12Mhz), otherwise we would need to handle 32-bit rollover\n * of 12Mhz timer comparator value. Watchdog refresh happens at least\n * every 10 seconds.\n */\nwait_while_settling(HPET_T1_CMP_SETTLING);\nHPET_TIMER_COMP(1) \u003d comp_set_tick;\n\nwait_while_settling(HPET_T1_SETTLING);\n\n/* Arm timer */\nHPET_TIMER_CONF_CAP(1) |\u003d HPET_Tn_INT_ENB_CNF;\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "parentUuid": "237bd82a_c968a056",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
