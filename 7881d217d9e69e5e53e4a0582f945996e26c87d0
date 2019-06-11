@@ -22,6 +22,30 @@
       "revId": "7881d217d9e69e5e53e4a0582f945996e26c87d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffbc11f_6109a590",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4885,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-11T14:59:54Z",
+      "side": 1,
+      "message": "Okay I will update the command\n1. USBC ports on the board \u003d EC port\n2. USB2 signals of USBC go to PCH\n3. Super-speed signals of USBC go to SOC (AP)\n4. These numbers are 1 to n (these are not bitwise)\nI have attached a document in crosbug b:134614710 and a picture of USBx port number request for each of the command types",
+      "parentUuid": "1b5506c4_67f64849",
+      "range": {
+        "startLine": 4885,
+        "startChar": 29,
+        "endLine": 4885,
+        "endChar": 38
+      },
+      "revId": "7881d217d9e69e5e53e4a0582f945996e26c87d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
