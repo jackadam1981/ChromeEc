@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0eadd9d_42c00628",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T15:06:20Z",
+      "side": 1,
+      "message": "if the problem is that last_deadline is in the past because HPET1 IRQ hasn\u0027t fired yet, then let\u0027s move\n\nlast_deadline \u003d scale_ticks2us(current_ticks + scalce_u2ticks(remaining_us)) right after we set the comp reg?\n\nWe can use a temporary variable to make it read nicer though",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "a6d2d43c6af05ae95c7d733b63e0c878d61dc9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
