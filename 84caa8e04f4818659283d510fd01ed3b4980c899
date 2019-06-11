@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "11e7c248_a28c6112",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-06-11T21:27:11Z",
+      "side": 1,
+      "message": "It depends on which power line the sensor is plugged in. If they are up in S3, then this setting correct.\nNot that in S3 the ODR is 0Hz, so the EC will not request any measurement.",
+      "parentUuid": "9de53cfa_77010da5",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 36
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d44f601c_3938166e",
         "filename": "board/kukui/board.c",
         "patchSetId": 3
