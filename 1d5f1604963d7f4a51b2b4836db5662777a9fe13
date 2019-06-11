@@ -46,6 +46,30 @@
       "revId": "1d5f1604963d7f4a51b2b4836db5662777a9fe13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67b858a_668a7abd",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-11T17:15:07Z",
+      "side": 0,
+      "message": "On the Rammus branch, couldn\u0027t the mux init function be called earlier instead of combining tcpc and mux init functionality?",
+      "parentUuid": "46784985_c3e03dfd",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 29
+      },
+      "revId": "1d5f1604963d7f4a51b2b4836db5662777a9fe13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -22,6 +22,30 @@
       "revId": "580a9a1e29c3632d01f9e422d21cf9297ad81d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e4dec8_bbc172a9",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-11T17:15:07Z",
+      "side": 1,
+      "message": "We should keep this so that mux state gets cleared when this function is called during run time.",
+      "parentUuid": "63bc32ab_0cddf1b2",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 51
+      },
+      "revId": "580a9a1e29c3632d01f9e422d21cf9297ad81d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
