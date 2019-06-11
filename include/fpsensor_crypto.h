@@ -8,9 +8,19 @@
 #ifndef __CROS_EC_FPSENSOR_CRYPTO_H
 #define __CROS_EC_FPSENSOR_CRYPTO_H
 
+#include <stdbool.h>
 #include <stddef.h>
 
 #include "sha256.h"
+
+/**
+ * Check |buffer| is not full of 0x00 or 0xff.
+ *
+ * @param buffer the buffer to check.
+ * @param size the number of bytes to check.
+ * @return true if |buffer| is not full of 0x00 or 0xff, false otherwise.
+ */
+bool bytes_nontrivial(const uint8_t *buffer, size_t size);
 
 /**
  * Expand hkdf pseudorandom key |prk| to length |out_key_size|.
@@ -34,6 +44,16 @@ int hkdf_expand(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
  * @return EC_SUCCESS on success and error code otherwise.
  */
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
+
+/**
+ * Derive positive match secret from |input_encryption_salt| and
+ * SBP_Src_Key.
+ *
+ * @param output buffer to store positive match secret.
+ * @param input_encryption_salt the salt for deriving secret.
+ * @return EC_SUCCESS on success and error code otherwise.
+ */
+int derive_pos_match_secret(uint8_t *output, uint8_t *input_encryption_salt);
 
 /**
  * Encrypt |plaintext| using AES-GCM128.

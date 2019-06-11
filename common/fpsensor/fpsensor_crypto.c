@@ -126,6 +126,60 @@ int hkdf_expand(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
 	return EC_SUCCESS;
 }
 
+bool bytes_nontrivial(const uint8_t *buffer, size_t size)
+{
+	uint8_t first = buffer[0];
+	size_t i;
+
+	if (first == 0x00 || first == 0xff) {
+		for (i = 1; i < size; i++)
+			if (buffer[i] != first)
+				break;
+		if (i == size)
+			return false;
+	}
+	return true;
+}
+
+int derive_pos_match_secret(uint8_t *output, uint8_t *input_encryption_salt)
+{
+	int ret;
+	uint8_t ikm[CONFIG_ROLLBACK_SECRET_SIZE + sizeof(tpm_seed)];
+	uint8_t prk[SHA256_DIGEST_SIZE];
+	static const char *info_prefix = "positive_match_secret for user ";
+	uint8_t info[strlen(info_prefix) + sizeof(user_id)];
+
+	ret = get_ikm(ikm);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to get IKM: %d", ret);
+		return ret;
+	}
+
+	/* "Extract" step of HKDF. */
+	if (!bytes_nontrivial(input_encryption_salt, FP_CONTEXT_SALT_BYTES))
+		return EC_ERROR_INVAL;
+	hkdf_extract(prk, input_encryption_salt, FP_CONTEXT_SALT_BYTES, ikm,
+		     sizeof(ikm));
+	memset(ikm, 0, sizeof(ikm));
+
+	/*
+	 * Only 1 "expand" step of HKDF since the size of the output key
+	 * material (FP_POS_MATCH_SECRET_BYTES) is exactly SHA256_DIGEST_SIZE.
+	 * https://tools.ietf.org/html/rfc5869#section-2.3
+	 */
+	memcpy(info, info_prefix, strlen(info_prefix));
+	memcpy(info + strlen(info_prefix), user_id, sizeof(user_id));
+
+	ret = hkdf_expand(output, FP_POS_MATCH_SECRET_BYTES, prk, sizeof(prk),
+			  info, sizeof(info));
+	memset(prk, 0, sizeof(prk));
+
+	/* Check that secret is not full of 0x00 or 0xff. */
+	if (!bytes_nontrivial(output, FP_POS_MATCH_SECRET_BYTES))
+		ret = EC_ERROR_HW_INTERNAL;
+	return ret;
+}
+
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 {
 	int ret;
