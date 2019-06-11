@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5e2a1f56_0c8f8281",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T01:19:04Z",
+      "side": 1,
+      "message": "Reverted the whole change of this file.",
+      "parentUuid": "ba83acc6_6f166eab",
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36dfb686_8bcb90a5",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 18
@@ -39,6 +57,30 @@
       "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1bf956_3976f69a",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T01:19:04Z",
+      "side": 1,
+      "message": "s/while/if.",
+      "parentUuid": "36dfb686_8bcb90a5",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "ea5f2b71_cf5eef15",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T01:19:04Z",
+      "side": 1,
+      "message": "Yes, this is to advance the queue pointer to prevent queue data from being overwritten until transfer is done.\n\nPer Table 10-4, on page 274, SynopsysCore USB programmer\u0027s Guide, the descriptor length field varies, and indicates the number of bytes to transfer.\nI checked that this field becomes zero when the transfer completes.",
+      "parentUuid": "6b8b8619_67e69286",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66c44025_8b0ce790",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 18
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "eff26c12_5d40feef",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T01:19:04Z",
+      "side": 1,
+      "message": "Added a comment in usb_stream_reset() function below.",
+      "parentUuid": "66c44025_8b0ce790",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 26
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7fd58f8_3fb036f8",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 18
@@ -108,6 +198,30 @@
       "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a3a7f4_6cd588ed",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T01:19:04Z",
+      "side": 1,
+      "message": "Removed, and added the comment.",
+      "parentUuid": "b7fd58f8_3fb036f8",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 32
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
