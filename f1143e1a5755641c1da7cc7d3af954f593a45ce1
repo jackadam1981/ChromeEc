@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a486289c_431671c2",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T18:29:37Z",
+      "side": 1,
+      "message": "Why don\u0027t you return the error code returned from raw_write16? \n\nIn general, which API do you like: one which silently fails or one which returns error code when it fails?",
+      "parentUuid": "ac5523a5_756ae72e",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 4
+      },
+      "revId": "f1143e1a5755641c1da7cc7d3af954f593a45ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc8cba55_fb17e271",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 4
