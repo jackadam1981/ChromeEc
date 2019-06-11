@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf58fc19_99d63b9d",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-11T07:52:50Z",
+      "side": 0,
+      "message": "I feel we should keep values_have_changed_at_least_once, since that it want to fix uninitialized value issue.\nRemove this, we might see the issue again.\n\nPlease see: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/463927/",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 42
+      },
+      "revId": "25c9cb9e94d2fe49eacc86d9bc478e0cb010aac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
