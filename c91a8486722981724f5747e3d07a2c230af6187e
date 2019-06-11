@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2579fcd2_d35ab4f0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "we can probably get away with always defining these variables, and not guarding them with this config option",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 31
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96d8540_dbf40409",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "please use an enum here",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 19
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ecd173_a4286899",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "when? and why?\n\nAfter reading the reset of the code, I am not convinced we should have this state variable here. Can we not make pd_sed_vdm take in the tcpc_transmit_type we want to use instead?",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 45
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f7d45e_32cc6a1a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "let\u0027s use\nif (IS_ENABLED(CONFIG..) {\n}\n\nhere",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 31
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba250f55_bd517d53",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "nit: we can use\nif (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) \u0026\u0026 cnt \u003e 0 \u0026\u0026 ...) {\n}\n\nnow",
+      "range": {
+        "startLine": 2034,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 0
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683175d1_36656e5c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2039,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "check that cnt is \u003e 1 if you are going to access this index",
+      "range": {
+        "startLine": 2039,
+        "startChar": 19,
+        "endLine": 2039,
+        "endChar": 29
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92890b23_cbddc83d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "we should add and else to set cable_type to 0",
+      "range": {
+        "startLine": 2045,
+        "startChar": 1,
+        "endLine": 2045,
+        "endChar": 2
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56558f7_90d34c08",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "floating if is not good. Please use if IS_ENABLED",
+      "range": {
+        "startLine": 2169,
+        "startChar": 0,
+        "endLine": 2176,
+        "endChar": 0
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e2f81d_8068ef63",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "IS_ENABLED",
+      "range": {
+        "startLine": 2190,
+        "startChar": 0,
+        "endLine": 2195,
+        "endChar": 6
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b924c6_cf305877",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "let rename this to\nTCPC_REG_TRANSMIT_SET_WITH_RETRY\n\nand create another one\n\nTCPC_REG_TRANSMIT_SET_WITHOUT_RETRY\n\n\nWe also don\u0027t need to guard the logic with the ifdef",
+      "range": {
+        "startLine": 542,
+        "startChar": 44,
+        "endLine": 542,
+        "endChar": 65
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4746433_44b68030",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4866,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "need to specify the enum values that are valid for this variale",
+      "range": {
+        "startLine": 4866,
+        "startChar": 24,
+        "endLine": 4866,
+        "endChar": 46
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333f285c_81a4275e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:48:51Z",
+      "side": 1,
+      "message": "drop the ifdef and always define this bit please",
+      "range": {
+        "startLine": 820,
+        "startChar": 7,
+        "endLine": 820,
+        "endChar": 31
+      },
+      "revId": "c91a8486722981724f5747e3d07a2c230af6187e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
