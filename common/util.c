@@ -513,6 +513,20 @@ int get_next_bit(uint32_t *mask)
 	return bit;
 }
 
+int bytes_are_trivial(const uint8_t *buffer, size_t size)
+{
+	uint8_t first = buffer[0];
+	size_t i;
+
+	if (first == 0x00 || first == 0xff) {
+		for (i = 1; i < size; i++)
+			if (buffer[i] != first)
+				break;
+		if (i == size)
+			return 1;
+	}
+	return 0;
+}
 
 /****************************************************************************/
 /* stateful conditional stuff */
