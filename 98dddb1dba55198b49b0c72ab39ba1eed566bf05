@@ -22,6 +22,30 @@
       "revId": "98dddb1dba55198b49b0c72ab39ba1eed566bf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90cba5b9_a6cdbb5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-11T22:11:15Z",
+      "side": 1,
+      "message": "It is so that the chromeos-ec ebuild can turn off fuzzer tests when the \"fuzzer\" USE flag is turned off: https://crrev.com/c/1652475",
+      "parentUuid": "1fff1545_4cc1fc1b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "98dddb1dba55198b49b0c72ab39ba1eed566bf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
