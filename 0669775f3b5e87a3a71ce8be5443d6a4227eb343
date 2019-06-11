@@ -143,6 +143,29 @@
     },
     {
       "key": {
+        "uuid": "51ded92e_08107163",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-11T22:16:31Z",
+      "side": 1,
+      "message": "Rename this to usb_console, so it\u0027s consistent with the rest of the usb_console names. Please also change the rest of the things named console_usb.",
+      "range": {
+        "startLine": 55,
+        "startChar": 33,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aad2ab54_bdcd90be",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 4
@@ -281,6 +304,29 @@
       "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e68fefb_7d77d5dd",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-11T22:16:31Z",
+      "side": 1,
+      "message": "Can we change this to check a function usb_console_is_reset()\nAnd define usb_console_is_reset to return is_reset if usb stream isn\u0027t defined and return usb_stream_is_reset if it is defined? I\u0027d prefer it if all of the usb_stream specific stuff were in one place.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 6
+      },
+      "revId": "0669775f3b5e87a3a71ce8be5443d6a4227eb343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
