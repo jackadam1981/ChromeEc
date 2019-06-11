@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "163b03c2_9fe8e95a",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-11T21:29:41Z",
+      "side": 1,
+      "message": "Include this in line 5. Is console.h actually needed?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dcf213c_d1ce3544",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-11T21:29:41Z",
+      "side": 1,
+      "message": "Why isn\u0027t this defined in usb-stream.h?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 18
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea03b179_e5eae5f3",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-11T21:29:41Z",
+      "side": 1,
+      "message": "Is there a reason why you\u0027re making this usb stream dependent? If usb stream isn\u0027t defined, then nothing will modify daint_sw. daint | 0 will be daint.",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 24
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a4cd54_b7902b4e",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-11T21:29:41Z",
+      "side": 1,
+      "message": "can you rename this to usb_daint_sw to be consistent with the register name and show it\u0027s usb specific.",
+      "range": {
+        "startLine": 1181,
+        "startChar": 11,
+        "endLine": 1181,
+        "endChar": 19
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
