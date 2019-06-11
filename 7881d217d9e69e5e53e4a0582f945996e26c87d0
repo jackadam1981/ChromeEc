@@ -46,6 +46,30 @@
       "revId": "7881d217d9e69e5e53e4a0582f945996e26c87d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caecaf90_1efc493c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4885,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T15:23:37Z",
+      "side": 1,
+      "message": "I am not understanding at all what this is trying to do. I look at the doc and it is referring to a request that doesn\u0027t match the params (i.e. none) for this host command\n\nYou don\u0027t have to put it all in comment in the file, but can you at least provide an example of what kind of data and what encoding you are using and expecting in a typical flow?",
+      "parentUuid": "6ffbc11f_6109a590",
+      "range": {
+        "startLine": 4885,
+        "startChar": 29,
+        "endLine": 4885,
+        "endChar": 38
+      },
+      "revId": "7881d217d9e69e5e53e4a0582f945996e26c87d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
