@@ -184,7 +184,7 @@ timestamp_t get_time(void)
 	return ts;
 }
 
-clock_t clock(void)
+test_mockable clock_t clock(void)
 {
 	/* __hw_clock_source_read() returns a microsecond resolution timer.*/
 	return (clock_t) __hw_clock_source_read() / 1000;
