@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64fbe140_da9a0a68",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:58:33Z",
+      "side": 1,
+      "message": "please use an enum here or at least specify what values should be expected",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "98c7c400f7a19a93ee984d2d511021b43c47ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4eaeadc_70f604a6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T13:58:33Z",
+      "side": 1,
+      "message": "This would benefit from a bit field definition at this point e.g.:\n\nenum usb_ss_support {\n  usb_ss_u2 _only \u003d 0\n  usb_ss_u31_gen1 \u003d 1\n  usb_ss_u31_gen1 \u003d 2\n}\n\nstruct cable_vdo {\n  union {\n    struct {\n       enum usb_ss_support ss_support : 3;\n       uint8_t sop_prime_present : 1;\n       .....\n    };\n    uint32_t raw_value;\n  };\n};\n\nThen we wouldn\u0027t need these shift access or macros, and it would be safer and easier to read :)",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 38
+      },
+      "revId": "98c7c400f7a19a93ee984d2d511021b43c47ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
