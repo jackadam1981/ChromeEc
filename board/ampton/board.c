@@ -19,6 +19,7 @@
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/usb_mux_it5205.h"
 #include "extpower.h"
+#include "ec_config.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -263,9 +264,13 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 static int board_is_convertible(void)
 {
-	/* SKU IDs of Ampton & unprovisioned: 1, 2, 3, 4, 255 */
-	return sku_id == 1 || sku_id == 2 || sku_id == 3 || sku_id == 4
-		|| sku_id == 255;
+	unsigned int i;
+
+	for (i = 0; i < NUM_SKUS; i++) {
+		if (ALL_SKUS[i].sku == sku_id)
+			return ALL_SKUS[i].is_lid_convertible;
+	}
+	return 0;
 }
 
 static int board_with_ar_cam(void)
