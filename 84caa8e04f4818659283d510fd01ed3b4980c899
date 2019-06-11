@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9de53cfa_77010da5",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-06-11T19:44:11Z",
+      "side": 1,
+      "message": "I agree with your concern, this should just be SENSOR_ACTIVE_S0.",
+      "parentUuid": "49ccb6db_ad35339e",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 36
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d44f601c_3938166e",
         "filename": "board/kukui/board.c",
         "patchSetId": 3
@@ -41,6 +65,29 @@
         "startChar": 9,
         "endLine": 510,
         "endChar": 10
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7402b352_582c59be",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-06-11T19:44:11Z",
+      "side": 1,
+      "message": "Nit: perhaps add a newline here.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 18
       },
       "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
