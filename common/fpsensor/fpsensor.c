@@ -108,10 +108,17 @@ static uint32_t fp_process_enroll(void)
 	templ_dirty |= BIT(templ_valid);
 	if (percent == 100) {
 		res = fp_enrollment_finish(fp_template[templ_valid]);
-		if (res)
+		if (res) {
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
-		else
+		} else {
+			CPRINTS("Enrollment finished. "
+				"Deriving positive match secret ...");
+			derive_pos_match_secret(
+				fp_pos_match_secret[templ_valid]);
+			CPRINTS("Derived positive match secret for finger %d.",
+				templ_valid);
 			templ_valid++;
+		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
