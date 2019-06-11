@@ -9,6 +9,7 @@
 #include "fpsensor_state.h"
 #include "host_command.h"
 #include "test_util.h"
+#include "trng.h"
 #include "util.h"
 
 static const uint8_t fake_rollback_secret[] = {
@@ -23,6 +24,11 @@ static const uint8_t fake_tpm_seed[] = {
 	0xf8, 0x5a, 0xa0, 0xa6, 0x2c, 0xb3, 0xf5, 0xe2,
 	0xeb, 0xb9, 0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79,
 	0x82, 0xce, 0x06, 0x3f, 0xcc, 0x23, 0xb9, 0xe7,
+};
+
+static const uint8_t fake_encryption_salt[] = {
+	0x04, 0x1f, 0x5a, 0xac, 0x5f, 0x79, 0x10, 0xaf,
+	0x04, 0x1d, 0x46, 0x3a, 0x5f, 0x08, 0xee, 0xcb,
 };
 
 static int rollback_should_fail;
@@ -223,6 +229,9 @@ static int test_derive_encryption_key_raw(const uint32_t *user_id_,
 	TEST_ASSERT(rv == EC_SUCCESS);
 	TEST_ASSERT_ARRAY_EQ(key, expected_key, sizeof(key));
 
+	/* Clear state to ensure test independence. */
+	memset(user_id, 0, sizeof(user_id));
+
 	return EC_SUCCESS;
 }
 
@@ -300,6 +309,80 @@ test_static int test_derive_encryption_key_failure_rollback_fail(void)
 	TEST_ASSERT(derive_encryption_key(unused_key, unused_salt) ==
 		EC_SUCCESS);
 
+	return EC_SUCCESS;
+}
+
+test_static int test_derive_new_pos_match_secret(void)
+{
+	/* The expected vector is obtained by running boringSSL locally. */
+	static const uint8_t expected[] = {
+		0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72,
+		0xd6, 0xdd, 0xa1, 0x4c, 0xb8, 0xa1, 0x76, 0x2b,
+		0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4, 0x74, 0x51,
+		0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
+	};
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+	/* GIVEN that the encryption salt is not trivial. */
+	TEST_ASSERT(!bytes_are_trivial(fake_encryption_salt,
+				       sizeof(fake_encryption_salt)));
+	/*
+	 * GIVEN that the TPM seed is set, and reading the rollback secret will
+	 * succeed.
+	 */
+	TEST_ASSERT(fp_tpm_seed_is_set() && !rollback_should_fail);
+
+	/* THEN the derivation will succeed. */
+	TEST_ASSERT(derive_pos_match_secret(output, fake_encryption_salt)
+		== EC_SUCCESS);
+	TEST_ASSERT_ARRAY_EQ(output, expected, FP_POS_MATCH_SECRET_BYTES);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_derive_pos_match_secret_fail_seed_not_set(void)
+{
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+
+	/* GIVEN that seed is not set. */
+	TEST_ASSERT(!fp_tpm_seed_is_set());
+	/* THEN EVEN IF the encryption salt is not trivial. */
+	TEST_ASSERT(!bytes_are_trivial(fake_encryption_salt,
+				       sizeof(fake_encryption_salt)));
+
+	/* Deriving positive match secret will fail. */
+	TEST_ASSERT(derive_pos_match_secret(output, fake_encryption_salt)
+		== EC_ERROR_ACCESS_DENIED);
+
+	return EC_SUCCESS;
+
+}
+
+test_static int test_derive_pos_match_secret_fail_rollback_fail(void)
+{
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+
+	/* GIVEN that reading secret from anti-rollback block will fail. */
+	rollback_should_fail = 1;
+	/* THEN EVEN IF the encryption salt is not trivial. */
+	TEST_ASSERT(!bytes_are_trivial(fake_encryption_salt,
+				       sizeof(fake_encryption_salt)));
+
+	/* Deriving positive match secret will fail. */
+	TEST_ASSERT(derive_pos_match_secret(output, fake_encryption_salt)
+		== EC_ERROR_HW_INTERNAL);
+	rollback_should_fail = 0;
+
+	return EC_SUCCESS;
+}
+
+test_static int test_derive_pos_match_secret_fail_salt_trivial(void)
+{
+	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
+	/* GIVEN that the salt is trivial. */
+	static const uint8_t salt[FP_CONTEXT_SALT_BYTES] = { 0 };
+
+	/* THEN deriving positive match secret will fail. */
+	TEST_ASSERT(derive_pos_match_secret(output, salt) == EC_ERROR_INVAL);
 	return EC_SUCCESS;
 }
 
@@ -419,20 +502,33 @@ test_static int test_fp_set_sensor_mode(void)
 	/* THEN sensor_mode is unchanged */
 	TEST_ASSERT(sensor_mode == 0);
 
+	/* Clear state to ensure test independence. */
+	templ_valid = 0;
+
 	return EC_SUCCESS;
 }
 
 void run_test(void)
 {
+	/* These are independent of global state. */
 	RUN_TEST(test_hkdf_expand);
+	RUN_TEST(test_fp_set_sensor_mode);
+
+	/* These must be run before tpm seed is set. */
 	RUN_TEST(test_fp_enc_status_valid_flags);
 	RUN_TEST(test_fp_tpm_seed_not_set);
 	RUN_TEST(test_derive_encryption_key_failure_seed_not_set);
+	RUN_TEST(test_derive_pos_match_secret_fail_seed_not_set);
+
 	RUN_TEST(test_set_fp_tpm_seed);
+
+	/* These must be run after tpm seed is set. */
 	RUN_TEST(test_set_fp_tpm_seed_again);
 	RUN_TEST(test_derive_encryption_key);
 	RUN_TEST(test_derive_encryption_key_failure_rollback_fail);
-	RUN_TEST(test_fp_set_sensor_mode);
+	RUN_TEST(test_derive_new_pos_match_secret);
+	RUN_TEST(test_derive_pos_match_secret_fail_rollback_fail);
+	RUN_TEST(test_derive_pos_match_secret_fail_salt_trivial);
 
 	test_print_result();
 }
