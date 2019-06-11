@@ -22,6 +22,30 @@
       "revId": "1e6d51ebbb1e29eac0fc09c6bc26564c036188e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d01b97d2_b8262050",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-11T03:23:40Z",
+      "side": 1,
+      "message": "It seems like ld won\u0027t read the section names (except .bss) to attach correct attributes.  So we have to explicitly add NOLOAD.  I can add a comment for this line.",
+      "parentUuid": "2e6827eb_68049efc",
+      "range": {
+        "startLine": 458,
+        "startChar": 14,
+        "endLine": 458,
+        "endChar": 20
+      },
+      "revId": "1e6d51ebbb1e29eac0fc09c6bc26564c036188e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
