@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0cc45801_2ea2de7d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T21:05:23Z",
+      "side": 1,
+      "message": "can you use \u0027if (IS_ENABLED(CONFIG_ALS_TCS3400_POLLING))\u0027 and remove #ifdef at line 36?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50fc7f55_dbf72b8d",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 6
@@ -31,6 +54,29 @@
       "side": 1,
       "message": "\u003e What if the data is not ready after that time, do we still need to retry?\n\ntcs3400_post_events() has a busy loop that waits for 400ms maximum.\nAnd if data is still not ready, motion_sense will retry after 1 sec. \n\n\u003e Does integration time depend on brightness?\n\nNo, if I interpret the document correctly",
       "parentUuid": "50fc7f55_dbf72b8d",
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2131182_d28c96b3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-11T21:05:23Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 34
+      },
       "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
