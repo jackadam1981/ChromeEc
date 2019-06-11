@@ -22,6 +22,30 @@
       "revId": "de5902c19a84910a40b5f90473d44a9dd0647e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2098e6ec_b8c24815",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-11T14:31:52Z",
+      "side": 1,
+      "message": "For all of the implementations I have seen, the actual HW GPIO interrupt is edge-based instead of level-based, which actually caused a problem when we didn\u0027t check if the line was still asserted at the end of the tcpc_alert function (which this while loop now does).\n\nSince the hardware is edge based, we don\u0027t get flooded with ISRs and disabling the port actually does prevent us from processing any more interrupts.\n\nWhen we enabled the port again, we proactively call schedule_deferred_pd_interrupt to ensure we start processing interrupts properly again.",
+      "parentUuid": "574de39f_ab731396",
+      "range": {
+        "startLine": 2717,
+        "startChar": 10,
+        "endLine": 2717,
+        "endChar": 28
+      },
+      "revId": "de5902c19a84910a40b5f90473d44a9dd0647e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
