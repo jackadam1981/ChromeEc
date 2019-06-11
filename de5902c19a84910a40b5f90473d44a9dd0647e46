@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "574de39f_ab731396",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-06-11T07:29:21Z",
+      "side": 1,
+      "message": "do we know if we\u0027re getting flogged by an interrupt storm\nfrom an enabled port or a disabled port?\n\ni suspect the (well, one) real problem is that we don\u0027t\nclear the interrupt source when we think the port is\ndisabled but the TCPC has other ideas.  we may still\nget stuck servicing interrupts from a disabled port.\n\nwe may want to turn off interrupts on the\nUSB_Cx_PD_INT_ODL pin if we can\u0027t convince the\nchip to stop.",
+      "range": {
+        "startLine": 2717,
+        "startChar": 10,
+        "endLine": 2717,
+        "endChar": 28
+      },
+      "revId": "de5902c19a84910a40b5f90473d44a9dd0647e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
