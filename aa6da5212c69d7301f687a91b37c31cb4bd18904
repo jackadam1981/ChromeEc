@@ -22,6 +22,30 @@
       "revId": "aa6da5212c69d7301f687a91b37c31cb4bd18904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9290e6c_4c47ac5f",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T00:35:09Z",
+      "side": 1,
+      "message": "I think this is the API design between __tx_char() and vfnprintf(). Unless we remove the first parameter, I doubt that there will be any performance gain from that ignorance.",
+      "parentUuid": "22a89441_f335ebad",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "aa6da5212c69d7301f687a91b37c31cb4bd18904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
