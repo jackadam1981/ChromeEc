@@ -46,6 +46,29 @@
       "revId": "de5902c19a84910a40b5f90473d44a9dd0647e46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9994cb74_4a377005",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3717,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-11T16:13:35Z",
+      "side": 1,
+      "message": "This is slightly different from what we were testing yesterday, which was a direct copy of the CC termination default around line 3000.  I believe PD_DEFAULT_STATE will always be non-zero",
+      "range": {
+        "startLine": 3717,
+        "startChar": 8,
+        "endLine": 3717,
+        "endChar": 30
+      },
+      "revId": "de5902c19a84910a40b5f90473d44a9dd0647e46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
