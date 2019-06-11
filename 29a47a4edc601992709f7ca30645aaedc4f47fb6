@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "3444bd8a_daa8cf02",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-11T06:26:33Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n10ms is not spec define,\nwe can\u0027t set mt6370 pull-up D+ time over 40ms because charger type detect is HW control DCD+primary detect+secondary detect,\nso we try to pull-up D+ 10ms then fast toggle bc12 to resolve with high parasitic capacitance case",
+      "parentUuid": "5dfa1274_cd2cdc95",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43ff54a8_6f427c65",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
