@@ -26,6 +26,14 @@ int fp_rand_finger_id(uint8_t *new_finger_id);
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt);
 
 /**
+ * Derive positive match secret for an enrolled finger.
+ *
+ * @param output buffer to store positive match secret.
+ * @return EC_RES_SUCCESS on success and EC_RES_ERROR otherwise.
+ */
+int derive_pos_match_secret(uint8_t *output);
+
+/**
  * Encrypt |plaintext| using AES-GCM128.
  *
  * @param key the key to use in AES.
