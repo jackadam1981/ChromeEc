@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "ab554c73_06605216",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-11T01:31:15Z",
+      "side": 1,
+      "message": "oh, wow, that\u0027s interesting. \n\nPlease add a comment explaining why you need to keep this variable instead of using the values in the descriptors.",
+      "parentUuid": "ea5f2b71_cf5eef15",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66c44025_8b0ce790",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 18
