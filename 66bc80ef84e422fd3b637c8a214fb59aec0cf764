@@ -601,6 +601,30 @@
       "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cde4fb1b_f3b415aa",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-11T01:16:13Z",
+      "side": 1,
+      "message": "hm... 2 ticks delay.. doesn\u0027t makes sense... should be 1 tick..\n\nthen the only thing I need to check something like below.. to see any bug in scaling.\n\nB_us \u003d scale_ticks2us(A_ticks)\nA_ticks !\u003d scale_us2ticks(B_us)  \u003c\u003d\u003d should be same.",
+      "parentUuid": "52029d85_b4cf003c",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 639,
+        "endChar": 18
+      },
+      "revId": "66bc80ef84e422fd3b637c8a214fb59aec0cf764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
