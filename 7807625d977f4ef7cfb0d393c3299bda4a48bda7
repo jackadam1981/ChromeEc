@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b631b11d_46434e9e",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-11T20:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f51c016_ee77d9aa",
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b46e18bb_5d824efd",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb881a1_889fb298",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-11T20:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46e18bb_5d824efd",
+      "range": {
+        "startLine": 141,
+        "startChar": 17,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "524d4c4b_c0903945",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-11T20:46:34Z",
+      "side": 1,
+      "message": "I think the number of HKDF expand steps is determined by dividing the output key length by the hash length, so should be SHA256_DIGEST_SIZE.",
+      "parentUuid": "7a240af9_c8950140",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 38
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4be91b75_61b46d23",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 2
@@ -124,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "eb87f52c_bb8be59a",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-11T20:46:34Z",
+      "side": 1,
+      "message": "Addressed in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1652495",
+      "parentUuid": "75160cf8_ff07da11",
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03e5f061_084e7cf1",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 2
@@ -144,6 +228,30 @@
       "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fb97e3_e1662a2d",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-11T20:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e5f061_084e7cf1",
+      "range": {
+        "startLine": 378,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "7807625d977f4ef7cfb0d393c3299bda4a48bda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
