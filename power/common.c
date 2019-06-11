@@ -184,7 +184,7 @@ static enum power_state power_common_state(enum power_state state)
 				enter_pseudo_g3();
 #else
 				CPRINTS("hibernating");
-				system_hibernate(0, 0);
+				system_hibernate(CONFIG_HIBERNATE_PERIOD, 0);
 #endif
 				break;
 #ifdef CONFIG_BATTERY_CUT_OFF
