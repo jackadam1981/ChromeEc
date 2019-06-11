@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b98e612_18b0dae1",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Since this patch might trigger this interrupt for other reasons than transfer completion, adding this to keep on-going transfer safe.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "efcc348d2dd25f0dfb4de71cb704890b509291c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

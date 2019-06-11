@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92e95be_caa827c6",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Removing this, because it will bet set in line 174.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 43
+      },
+      "revId": "2fc8ba690fa3f5aeb691f6fd016199bf420138a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd31fd90_67bc6854",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "This is a SW version of interrupt vector indicating which endpoints have events.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 17
+      },
+      "revId": "2fc8ba690fa3f5aeb691f6fd016199bf420138a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1b725c2_ce0baff8",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Merge the hw-version and the sw-version of daint (Device-All INTerrupt).",
+      "range": {
+        "startLine": 1181,
+        "startChar": 2,
+        "endLine": 1181,
+        "endChar": 20
+      },
+      "revId": "2fc8ba690fa3f5aeb691f6fd016199bf420138a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

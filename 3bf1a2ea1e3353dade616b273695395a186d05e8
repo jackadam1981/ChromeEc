@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "cec18b55_f58bd9ee",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163b03c2_9fe8e95a",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5da6c546_ff066ebe",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "NG",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dcf213c_d1ce3544",
         "filename": "chip/g/usb.c",
         "patchSetId": 5
@@ -45,6 +92,30 @@
       "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0f717d_38ae873b",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dcf213c_d1ce3544",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 18
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9ede9de3_15753c3d",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea03b179_e5eae5f3",
+      "range": {
+        "startLine": 1180,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 24
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5a4cd54_b7902b4e",
         "filename": "chip/g/usb.c",
         "patchSetId": 5
@@ -91,6 +186,53 @@
       "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38f663b1_200c4ddb",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a4cd54_b7902b4e",
+      "range": {
+        "startLine": 1181,
+        "startChar": 11,
+        "endLine": 1181,
+        "endChar": 19
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8eacd6f_5b6be856",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-11T23:29:20Z",
+      "side": 1,
+      "message": "It triggers USB TX Endpoint interrupt before endpoints are initialized in line 1396.\nBecause of this, /dev/ttyUSBx devices disappeared after cr50 fw update or cr50 reboot. Had to reconnect the cable to get them back.\nMoving it under USB endpoint initialization.",
+      "range": {
+        "startLine": 1390,
+        "startChar": 1,
+        "endLine": 1391,
+        "endChar": 20
+      },
+      "revId": "3bf1a2ea1e3353dade616b273695395a186d05e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
