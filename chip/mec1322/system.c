@@ -186,6 +186,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
 
+	ccprintf("%s for %11.6ld sec\n", __func__, seconds);
 	cflush();
 
 	if (board_hibernate)
