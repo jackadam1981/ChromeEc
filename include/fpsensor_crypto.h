@@ -9,6 +9,14 @@
 #define __CROS_EC_FPSENSOR_CRYPTO_H
 
 /**
+ * Generate random finger id.
+ *
+ * @param new_finger_id buffer to hold output finger id.
+ * @return EC_RES_SUCCESS on success and EC_RES_ERROR if timeout.
+ */
+int fp_rand_finger_id(uint8_t *new_finger_id);
+
+/**
  * Derive hardware encryption key from rollback secret and |salt|.
  *
  * @param outkey the pointer to buffer holding the output key.

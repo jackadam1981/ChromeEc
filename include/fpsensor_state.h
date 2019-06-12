@@ -32,6 +32,7 @@
 #define FP_ALGORITHM_TEMPLATE_SIZE 0
 #define FP_MAX_FINGER_COUNT 0
 #endif
+#define FP_FINGER_ID_BYTES 32
 #define SBP_ENC_KEY_LEN 16
 #define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
 	(FP_ALGORITHM_TEMPLATE_SIZE + \
@@ -54,6 +55,8 @@ extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
  * ciphered data.
  */
 extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+/* Enrolled finger ids for the current user */
+extern uint8_t finger_id[FP_MAX_FINGER_COUNT][FP_FINGER_ID_BYTES];
 /* Number of used templates */
 extern uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */

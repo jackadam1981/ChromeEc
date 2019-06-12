@@ -9,6 +9,7 @@
 #include "fpsensor_state.h"
 #include "host_command.h"
 #include "test_util.h"
+#include "timer.h"
 #include "util.h"
 
 static const uint8_t fake_rollback_secret[] = {
@@ -25,6 +26,11 @@ static const uint8_t fake_tpm_seed[] = {
 	0x82, 0xce, 0x06, 0x3f, 0xcc, 0x23, 0xb9, 0xe7,
 };
 
+static const uint8_t fake_rand_bytes[] = {
+	0xe5, 0x3d, 0x17, 0x86, 0x4d, 0x7d, 0x25, 0x88,
+	0x71, 0x53, 0xa9, 0x33, 0x6c, 0x39, 0x8c, 0x31,
+};
+
 static int rollback_should_fail;
 
 /* Mock the rollback for unit test. */
@@ -33,6 +39,57 @@ int rollback_get_secret(uint8_t *secret)
 	if (rollback_should_fail)
 		return EC_ERROR_UNKNOWN;
 	memcpy(secret, fake_rollback_secret, sizeof(fake_rollback_secret));
+	return EC_SUCCESS;
+}
+
+/* Mock the trng functions. */
+void init_trng(void) {}
+void exit_trng(void) {}
+void rand_bytes(void *buffer, size_t len)
+{
+	size_t advance;
+
+	while (len > 0) {
+		advance = (len <= sizeof(fake_rand_bytes)) ?
+			len : sizeof(fake_rand_bytes);
+		memcpy(buffer, fake_rand_bytes, advance);
+		buffer += advance;
+		len -= advance;
+	}
+}
+
+/* Mock the clock for testing timeout behavior. */
+
+static timestamp_t now;
+static const uint64_t timestamp_increment = SECOND / 100;
+
+timestamp_t get_time(void)
+{
+	timestamp_t now_val = now;
+
+	now.val += timestamp_increment;
+	return now_val;
+}
+
+test_static int test_fp_rand_finger_id(void)
+{
+	int rv;
+	uint8_t new_finger_id[FP_FINGER_ID_BYTES];
+
+	templ_valid = 0;
+	init_trng();
+	rv = fp_rand_finger_id(new_finger_id);
+	exit_trng();
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
+
+	memcpy(finger_id[templ_valid++], new_finger_id, sizeof(new_finger_id));
+	init_trng();
+	rv = fp_rand_finger_id(new_finger_id);
+	exit_trng();
+	/* Should timeout */
+	TEST_ASSERT(rv == EC_RES_ERROR);
+	templ_valid = 0;
+
 	return EC_SUCCESS;
 }
 
@@ -245,6 +302,7 @@ void run_test(void)
 	RUN_TEST(test_fpsensor_seed);
 	RUN_TEST(test_derive_encryption_key);
 	RUN_TEST(test_derive_encryption_key_failure_rollback_fail);
+	RUN_TEST(test_fp_rand_finger_id);
 
 	test_print_result();
 }
