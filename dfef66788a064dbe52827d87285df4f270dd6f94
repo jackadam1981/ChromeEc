@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14719fb0_8738fd52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:30:38Z",
+      "side": 1,
+      "message": "nocturne, correct? I\u0027m guessing we want to cherry-pick this CL to the nocturne branch",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "dfef66788a064dbe52827d87285df4f270dd6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39329343_95e2be70",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:30:38Z",
+      "side": 1,
+      "message": "The response on chatty was to use ec_status I think?",
+      "range": {
+        "startLine": 727,
+        "startChar": 12,
+        "endLine": 727,
+        "endChar": 25
+      },
+      "revId": "dfef66788a064dbe52827d87285df4f270dd6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a4671b_fc153de5",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:30:38Z",
+      "side": 1,
+      "message": "This is not really a command, so I\u0027d call that one fp_set_sensor_mode() or something",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "dfef66788a064dbe52827d87285df4f270dd6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10df4c0f_bf07d2ca",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:30:38Z",
+      "side": 1,
+      "message": "It would be nice to add a unit test for that function :-)",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 57
+      },
+      "revId": "dfef66788a064dbe52827d87285df4f270dd6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcca16ec_7701bc4d",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:30:38Z",
+      "side": 1,
+      "message": "I\u0027d keep the name fp_command_mode() for this one since it\u0027s the naming pattern (the DECLARE_HOST_COMMAND macro uses the corresponding fp_command_* function).",
+      "range": {
+        "startLine": 166,
+        "startChar": 11,
+        "endLine": 166,
+        "endChar": 27
+      },
+      "revId": "dfef66788a064dbe52827d87285df4f270dd6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
