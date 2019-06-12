@@ -45,6 +45,30 @@
       "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "381de32b_74fba5ce",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-12T23:23:47Z",
+      "side": 1,
+      "message": "That used to be sizeof(user_id) https://chromium.googlesource.com/chromiumos/platform/ec/+/eeefb4833ad233ae81f521504578c9311bbca960%5E%21/common/fpsensor.c\nNow since this hkdf_expand_one_step function needs to be called by other functions, I want to make this buffer length generic. Yes, SHA256_DIGEST_SIZE is enough for our purposes here, but I am not sure if we will want to use this function with longer info in the future. I can also put SHA256_DIGEST_SIZE here to save resources, and change it when we really need to.",
+      "parentUuid": "5b4491a6_d66d541c",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
