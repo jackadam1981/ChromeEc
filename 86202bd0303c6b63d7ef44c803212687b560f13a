@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b636bce6_25f61bd2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4311,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T19:50:33Z",
+      "side": 0,
+      "message": "can we somehow blacklist tcpcm_get_cc in this file maybe with a macro, so we don\u0027t skip calling pd_get_cc like we should",
+      "range": {
+        "startLine": 4311,
+        "startChar": 3,
+        "endLine": 4311,
+        "endChar": 14
+      },
+      "revId": "86202bd0303c6b63d7ef44c803212687b560f13a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

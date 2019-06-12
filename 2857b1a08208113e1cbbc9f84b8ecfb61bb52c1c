@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b326499d_b94bce68",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T19:50:33Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t need inline. compiler will put inline if it makes sense",
+      "range": {
+        "startLine": 659,
+        "startChar": 7,
+        "endLine": 659,
+        "endChar": 13
+      },
+      "revId": "2857b1a08208113e1cbbc9f84b8ecfb61bb52c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25136c24_2ec844d8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T19:50:33Z",
+      "side": 1,
+      "message": "nit:\nif (!cc_open \u0026\u0026 pd[port].cc_open)",
+      "range": {
+        "startLine": 673,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 45
+      },
+      "revId": "2857b1a08208113e1cbbc9f84b8ecfb61bb52c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
