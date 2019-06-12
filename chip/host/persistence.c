@@ -5,45 +5,56 @@
 
 /* Persistence module for emulator */
 
+/* Enable Linux-specific O_TMPFILE extension. */
+#define _GNU_SOURCE
+
 #include <linux/limits.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
-static void get_storage_path(char *out)
-{
-	char buf[PATH_MAX];
-	int sz;
-	char *current;
-
-	sz = readlink("/proc/self/exe", buf, PATH_MAX - 1);
-	buf[sz] = '\0';
-
-	/* replace / by underscores in the path to get the shared memory name */
-	current = strchr(buf, '/');
-	while (current) {
-		*current = '_';
-		current = strchr(current, '/');
-	}
-
-	snprintf(out, PATH_MAX - 1, "/dev/shm/EC_persist_%s", buf);
-	out[PATH_MAX - 1] = '\0';
-}
+/*
+ * Linked list of known persistence tags, each having a file descriptor
+ * referring to an inode that is not accessible by any name in the file system.
+ */
+struct persistent_record_t {
+	char *tag;
+	int fd;
+	struct persistent_record_t *next;
+};
+static struct persistent_record_t *persistent_record_head = NULL;
 
 FILE *get_persistent_storage(const char *tag, const char *mode)
 {
-	char buf[PATH_MAX];
-	char path[PATH_MAX];
+	struct persistent_record_t *record;
+	for (record = persistent_record_head; record; record = record->next) {
+		/* If we already have the tag, create and return a FILE object
+		 * from the file descriptor.  Duplicate so that we retain the
+		 * original descriptor, even after the fclose() closes the file
+		 * descriptor provided to fdopen().
+		 */
+		if (strcmp(record->tag, tag) == 0)
+			return fdopen(dup(record->fd), mode);
+	}
+
+	/* Create a new linked list record. */
+	record = (struct persistent_record_t *)malloc(sizeof(struct persistent_record_t));
+	record->next = persistent_record_head;
+	persistent_record_head = record;
+	record->tag = strdup(tag);
 
 	/*
-	 * The persistent storage with tag 'foo' for test 'bar' would
-	 * be named 'bar_persist_foo'
+	 * Open a file descriptor and inode on given file system, without
+	 * creating a directory entry.
 	 */
-	get_storage_path(buf);
-	snprintf(path, PATH_MAX - 1, "%s_%s", buf, tag);
-	path[PATH_MAX - 1] = '\0';
+	record->fd = open("/dev/shm", O_CREAT | O_TMPFILE | O_RDWR, 0600);
 
-	return fopen(path, mode);
+	/* Create FILE from the new file descriptor. */
+	return fdopen(dup(record->fd), mode);
 }
 
 void release_persistent_storage(FILE *ps)
@@ -53,12 +64,18 @@ void release_persistent_storage(FILE *ps)
 
 void remove_persistent_storage(const char *tag)
 {
-	char buf[PATH_MAX];
-	char path[PATH_MAX];
-
-	get_storage_path(buf);
-	snprintf(path, PATH_MAX - 1, "%s_%s", buf, tag);
-	path[PATH_MAX - 1] = '\0';
-
-	unlink(path);
+	/*
+	 * Remove the linked entry that matches the given tag.
+	 */
+	struct persistent_record_t **record;
+	for (record = &persistent_record_head; *record; record = &(*record)->next) {
+		if (strcmp((*record)->tag, tag) == 0) {
+			struct persistent_record_t *next = (*record)->next;
+			free((*record)->tag);
+			close((*record)->fd);
+			free(*record);
+			*record = next;
+			return;
+		}
+	}
 }
