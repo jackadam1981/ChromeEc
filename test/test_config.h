@@ -78,6 +78,7 @@
 #ifdef TEST_FPSENSOR
 #define CONFIG_AES
 #define CONFIG_AES_GCM
+#define CONFIG_RNG
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
 #define CONFIG_SHA256
 #endif
