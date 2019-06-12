@@ -114,6 +114,9 @@ void _system_reset(int flags, int wake_from_hibernate)
 	else
 		save_flags |= RESET_FLAG_SOFT;
 
+	if (MEC1322_INT_SOURCE(17) & MEC1322_INT_SOURCE_HTIMER)
+		save_flags |= RESET_FLAG_TIMER;
+
 	MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) = save_flags;
 
 	/* Trigger watchdog in 1ms */
