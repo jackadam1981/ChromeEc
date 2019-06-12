@@ -5158,9 +5158,17 @@ struct ec_response_usb_pd_mux_info {
 
 #define EC_CMD_PD_CHIP_INFO		0x011B
 
+enum ec_pd_chip_info_renew_type {
+	RENEW_LOCAL_DATA = 0,
+	RENEW_LIVE_DATA = 1,
+	RENEW_MAX = 0xFF,
+};
+
 struct ec_params_pd_chip_info {
 	uint8_t port;	/* USB-C port number */
-	uint8_t renew;	/* Force renewal */
+
+	/* PD Chip info type as enumerated in ec_pd_chip_info_renew_type */
+	uint8_t renew;
 } __ec_align1;
 
 struct ec_response_pd_chip_info {
