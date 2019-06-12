@@ -70,6 +70,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42871949_63fe6ec7",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T18:52:50Z",
+      "side": 1,
+      "message": "I agree that we will need build_packages.sh to be called first to get real data.\n\n\nMaybe we add a dummy baseboard/\u003cname\u003e/ec_config.c file that compiles and has no SKUs in it, so build all will continue to work. And if you appropriately run emerge, then you will see that file update.",
+      "parentUuid": "9786dea0_3b5c4aef",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
