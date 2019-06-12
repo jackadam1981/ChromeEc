@@ -10,11 +10,43 @@
 #include "fpsensor_state.h"
 #include "rollback.h"
 #include "sha256.h"
+#include "timer.h"
+#include "trng.h"
 
 #if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM) || \
-	!defined(CONFIG_ROLLBACK_SECRET_SIZE)
-#error "fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE"
+	!defined(CONFIG_ROLLBACK_SECRET_SIZE) || !defined(CONFIG_RNG)
+#error "fpsensor requires AES, AES_GCM, ROLLBACK_SECRET_SIZE and RNG"
 #endif
+
+/*
+ * Call to rand_finger_id() should be wrapped with init_trng() and exit_trng()
+ * because putting these two calls in the while loop here might cause the
+ * hardware trng to restart immediately after shutdown, thus wasting power.
+ */
+int rand_finger_id(uint8_t *new_finger_id)
+{
+
+	int i;
+	int collision;
+	timestamp_t deadline;
+	timestamp_t now = get_time();
+
+	deadline.val = now.val + SECOND / 10;
+	CPRINTS("Generating random finger id ...");
+	do {
+		if (timestamp_expired(deadline, &now))
+			return EC_RES_ERROR;
+		collision = 0;
+		rand_bytes(new_finger_id, FP_FINGER_ID_BYTES);
+		for (i = 0; i < templ_valid; i++)
+			if (safe_memcmp(finger_id[i], new_finger_id,
+					FP_FINGER_ID_BYTES) == 0)
+				collision = 1;
+		now = get_time();
+	} while (collision);
+
+	return EC_RES_SUCCESS;
+}
 
 static int get_ikm(uint8_t *ikm)
 {
