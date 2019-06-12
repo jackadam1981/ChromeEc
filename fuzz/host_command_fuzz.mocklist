@@ -3,4 +3,5 @@
  * found in the LICENSE file.
  */
 
- #define CONFIG_TEST_MOCK_LIST
+ #define CONFIG_TEST_MOCK_LIST \
+         MOCK(ROLLBACK)
