@@ -94,6 +94,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49b13d0_95f273f0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-06-12T19:05:19Z",
+      "side": 1,
+      "message": "If we put a dummy file, I worry that we\u0027ll get spurious bug reports from people using ec images built with make that don\u0027t incorporate the generated code. Is there a way to break cleanly if people try to actually use those images?\n\nAlso, the generated code is installed to the portage build directory for chromeos-ec under /build/[board], so even if you ran emerge-[board] chromeos-config and then ran make in chromeos/src/platform/ec, you\u0027d still get the dummy file.",
+      "parentUuid": "42871949_63fe6ec7",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
