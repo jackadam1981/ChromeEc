@@ -22,6 +22,30 @@
       "revId": "4e8427db0b0717edfe5d355cf09f6dea3dde2e17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e048d7b_392d41ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-12T06:50:50Z",
+      "side": 1,
+      "message": "I agree that, for now, .dram.data LMA is kind of useless:\n\n- We want to have a copy of .dram.data section (i.e. LMA), so that on resetting, we can restore the content of .dram.data.\n- However, we don\u0027t have a way to protect this section.  This will be only useful until we enable MPU to protect DRAM section (like what we do to IROM section).\n\nLast, we are still need this patch, at least if fixes wrong layout of \".flat.dram\".",
+      "parentUuid": "6727c9db_84b59f6e",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "4e8427db0b0717edfe5d355cf09f6dea3dde2e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
