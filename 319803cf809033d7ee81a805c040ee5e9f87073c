@@ -22,6 +22,30 @@
       "revId": "319803cf809033d7ee81a805c040ee5e9f87073c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f9e0d9_4ef8310e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-12T00:50:00Z",
+      "side": 1,
+      "message": "\u003e Does anybody know why fpc_timebase_get_tick doesn\u0027t call get_time?\n\nYes, jonas.thornblad@fingerprints.corp-partner.google.com said that the clock() more closely matched the value their library expects.",
+      "parentUuid": "b96ccd46_aa3a6735",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "319803cf809033d7ee81a805c040ee5e9f87073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
