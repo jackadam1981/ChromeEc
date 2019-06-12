@@ -309,7 +309,6 @@ __gdt:
 	# Flags: 0x93 (Data R/W, Present, DPL0, Acessed=1)
 	.long GEN_GDT_DESC_LO(0x0, 0xffffffff, GDT_DESC_DATA_FLAGS)
 	.long GEN_GDT_DESC_UP(0x0, 0xffffffff, GDT_DESC_DATA_FLAGS)
-#if defined(CONFIG_ISH_PM_AONTASK)
 	# placeholder entries, will be updated by init_aon_task()
 	# in power_mgt.c
 	# Entry 3: placeholder TSS descriptor for main FW
@@ -321,7 +320,6 @@ __gdt:
 	# Entry 5: placeholder LDT descriptor for aontask
 	.long 0x0
 	.long 0x0
-#endif
 
 #.section .data
 __idt_ptr:
