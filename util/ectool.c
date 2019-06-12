@@ -8253,7 +8253,10 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	int cmdver = 1;
 
 	if (argc < 2 || 3 < argc) {
-		fprintf(stderr, "Usage: %s <port> [renew(on/off)]\n", argv[0]);
+		fprintf(stderr, "Usage: %s <port> [<renew_type>]\n"
+			"Available renew types:\n"
+			"0 -> Renew chip info from the local copy\n"
+			"1 -> Renew chip info from the live chip\n", argv[0]);
 		return -1;
 	}
 
@@ -8263,14 +8266,13 @@ int cmd_pd_chip_info(int argc, char *argv[])
 		return -1;
 	}
 
-	p.renew = 0;
+	p.renew = RENEW_LOCAL_DATA;
 	if (argc == 3) {
-		int val;
-		if (!parse_bool(argv[2], &val)) {
+		p.renew = strtol(argv[2], &e, 0);
+		if (e && *e) {
 			fprintf(stderr, "invalid arg \"%s\"\n", argv[2]);
 			return -1;
 		}
-		p.renew = val;
 	}
 
 	if (!ec_cmd_version_supported(EC_CMD_PD_CHIP_INFO, cmdver))

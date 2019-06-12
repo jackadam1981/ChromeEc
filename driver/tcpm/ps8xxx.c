@@ -131,7 +131,7 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
-static int ps8xxx_get_chip_info(int port, int renew,
+static int ps8xxx_get_chip_info(int port, enum ec_pd_chip_info_renew_type renew,
 			struct ec_response_pd_chip_info_v1 **chip_info)
 {
 	int val;
@@ -141,7 +141,7 @@ static int ps8xxx_get_chip_info(int port, int renew,
 		return rv;
 
 	if ((*chip_info)->fw_version_number == 0 ||
-		(*chip_info)->fw_version_number == -1 || renew) {
+	    (*chip_info)->fw_version_number == -1 || renew == RENEW_LIVE_DATA) {
 		rv = tcpc_read(port, FW_VER_REG, &val);
 
 		if (rv)

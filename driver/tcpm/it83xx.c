@@ -577,7 +577,8 @@ static int it83xx_tcpm_transmit(int port,
 	return EC_SUCCESS;
 }
 
-static int it83xx_tcpm_get_chip_info(int port, int renew,
+static int it83xx_tcpm_get_chip_info(int port,
+			enum ec_pd_chip_info_renew_type renew,
 			struct ec_response_pd_chip_info_v1 **chip_info)
 {
 	static struct ec_response_pd_chip_info_v1 i;
