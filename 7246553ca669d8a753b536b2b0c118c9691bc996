@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "6875a548_37746022",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-12T16:01:45Z",
+      "side": 1,
+      "message": "clang (and apparently gcc) doesn\u0027t necessarily preserve system registers across inline assembly even if you specify it in the clobber list: https://reviews.llvm.org/D51165\n\nIn this case, we\u0027re not actually clobbering the register in our inline asm. I *think* the original intent was to try to tell the compiler not to modify R7 before entering our inline asm, but dnojiri@ might be the best person to ask since it looks like he wrote it.",
+      "parentUuid": "38964ff5_4cf0ae47",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a3e887d_a510de78",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 5
