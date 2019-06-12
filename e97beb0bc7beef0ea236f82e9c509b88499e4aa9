@@ -118,6 +118,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f87488c_96734254",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T19:56:03Z",
+      "side": 1,
+      "message": "I think the dummy file should act like SKU 255, which is the unprovisioned SKU that supports everything",
+      "parentUuid": "e49b13d0_95f273f0",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
