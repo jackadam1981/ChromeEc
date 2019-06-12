@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b8c4339_806462bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T01:31:58Z",
+      "side": 1,
+      "message": "flash size meaning the space taken by the image in flash? Why does this happen - it\u0027s a pretty important piece of information.",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f0716ba_2e478851",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T01:31:58Z",
+      "side": 1,
+      "message": "could cc-name be ever something else in addition to gcc and clang?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73264729_2267fc58",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T01:31:58Z",
+      "side": 1,
+      "message": "why is all this new section required? Should it be for clang only?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38964ff5_4cf0ae47",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T01:31:58Z",
+      "side": 1,
+      "message": "so why does clang warns about it, does it use R7 across this assembler code?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3e887d_a510de78",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T01:31:58Z",
+      "side": 1,
+      "message": "why is this conditional compilation necessary? Is it ignored by gcc but causes clang warnings? Should the compiler type be the condition in that case?",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
