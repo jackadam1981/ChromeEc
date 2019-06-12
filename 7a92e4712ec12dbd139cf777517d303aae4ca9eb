@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13868977_57688d10",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "Please create a separate patch for board/flapjack/*.",
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef00e81_ceadb7c0",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "can you define the default of this function?\n\n  override_proto const struct max17055_temp_profile \n  *max17055_get_temp_profile(void)\n  { return NULL; }\n\ntemp_profile should be set to NULL;",
+      "range": {
+        "startLine": 609,
+        "startChar": 2,
+        "endLine": 609,
+        "endChar": 37
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "103dd56a_b51f8de8",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "Then, this should be:\n\n  if (temp_profile) {\n    ...\n  }",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 45
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c76d2a9_4a10f02b",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 45
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d25f28b8_47bdddeb",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "This can be called max17055_temp_profile without ambiguity?",
+      "range": {
+        "startLine": 255,
+        "startChar": 7,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f1323f_2571d835",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "Can you add more details?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 24
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6237048f_b75ddec5",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:01:34Z",
+      "side": 1,
+      "message": "And we don\u0027t need this.",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 45
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
