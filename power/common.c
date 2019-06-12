@@ -187,9 +187,7 @@ static enum power_state power_common_state(enum power_state state)
 #ifdef CONFIG_LOW_POWER_PSEUDO_G3
 				enter_pseudo_g3();
 #else
-				if (!lid_is_open())
-					system_hibernate(CONFIG_HIBERNATE_PERIOD, 0);
-				CPRINTS("Lid is open. Skip hibernating");
+				system_hibernate(CONFIG_HIBERNATE_PERIOD, 0);
 #endif
 				break;
 #ifdef CONFIG_BATTERY_CUT_OFF
