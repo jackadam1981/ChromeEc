@@ -186,6 +186,8 @@ static struct pd_protocol {
 	enum pd_cc_states cc_state;
 	/* status of last transmit */
 	uint8_t tx_status;
+	/* CC lines both open */
+	int cc_open;
 
 	/* last requested voltage PDO index */
 	int requested_idx;
@@ -648,6 +650,31 @@ static inline int is_try_src(int port)
 	return pd[port].flags & PD_FLAGS_TRY_SRC;
 }
 
+static void pd_update_roles(int port)
+{
+	/* Notify TCPC of role update */
+	tcpm_set_msg_header(port, pd[port].power_role, pd[port].data_role);
+}
+
+static inline void pd_get_cc(int port, int *cc1, int *cc2)
+{
+	int cc_open;
+
+	if (tcpm_get_cc(port, cc1, cc2) != EC_SUCCESS) {
+		CPRINTS("TCPC p%d get CC failed!", port);
+		return;
+	}
+
+	/*
+	 * Write power and data roles to TCPC on transition from CC open to
+	 * connected.
+	 */
+	cc_open = cc_is_open(*cc1, *cc2);
+	if (!cc_open && cc_open != pd[port].cc_open)
+		pd_update_roles(port);
+	pd[port].cc_open = cc_open;
+}
+
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
@@ -697,7 +724,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_USBC_PPC
 		int cc1, cc2;
 
-		tcpm_get_cc(port, &cc1, &cc2);
+		pd_get_cc(port, &cc1, &cc2);
 		/*
 		 * Neither a debug accessory nor UFP attached.
 		 * Tell the PPC module that there is no sink connected.
@@ -882,7 +909,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 			int cc1;
 			int cc2;
 
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 			if (cc1 == TYPEC_CC_VOLT_RP_1_5 ||
 				cc2 == TYPEC_CC_VOLT_RP_1_5) {
 				/* Sink can't transmit now. */
@@ -936,7 +963,7 @@ static void pd_ca_send_pending(int port)
 	if (!pd[port].ca_buffered)
 		return;
 
-	tcpm_get_cc(port, &cc1, &cc2);
+	pd_get_cc(port, &cc1, &cc2);
 	if ((cc1 != TYPEC_CC_VOLT_RP_1_5) &&
 			(cc2 != TYPEC_CC_VOLT_RP_1_5))
 		if (pd_transmit(port, pd[port].ca_type,
@@ -948,12 +975,6 @@ static void pd_ca_send_pending(int port)
 	pd[port].ca_buffered = 0;
 }
 #endif
-
-static void pd_update_roles(int port)
-{
-	/* Notify TCPC of role update */
-	tcpm_set_msg_header(port, pd[port].power_role, pd[port].data_role);
-}
 
 static int send_control(int port, int type)
 {
@@ -2982,7 +3003,7 @@ void pd_task(void *u)
 					    TYPEC_CC_RP : TYPEC_CC_RD);
 
 				/* Determine the polarity. */
-				tcpm_get_cc(port, &cc1, &cc2);
+				pd_get_cc(port, &cc1, &cc2);
 				if (pd[port].power_role == PD_ROLE_SINK) {
 					pd[port].polarity =
 						get_snk_polarity(cc1, cc2);
@@ -3070,7 +3091,7 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SRC_DISCONNECTED:
 			timeout = 10*MSEC;
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 			/*
 			 * Attempt TCPC auto DRP toggle if it is
@@ -3168,7 +3189,7 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SRC_DISCONNECTED_DEBOUNCE:
 			timeout = 20*MSEC;
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 
 			if (cc_is_snk_dbg_acc(cc1, cc2)) {
 				/* Debug accessory */
@@ -3690,7 +3711,7 @@ void pd_task(void *u)
 #else
 			timeout = 10*MSEC;
 #endif
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 			/*
@@ -3746,7 +3767,7 @@ void pd_task(void *u)
 			}
 			break;
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 
 			if (cc_is_rp(cc1) && cc_is_rp(cc2)) {
 				/* Debug accessory */
@@ -3937,7 +3958,7 @@ void pd_task(void *u)
 			timeout = PD_T_SINK_ADJ - PD_T_DEBOUNCE;
 
 			/* Check if CC pull-up has changed */
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 			if (typec_curr != get_typec_current_limit(
 						pd[port].polarity, cc1, cc2)) {
 				/* debounce signal by requiring two reads */
@@ -4308,7 +4329,7 @@ void pd_task(void *u)
 #endif
 
 			/* Check for connection */
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 
 			next_state = drp_auto_toggle_next_state(port, cc1, cc2);
 
@@ -4396,7 +4417,7 @@ void pd_task(void *u)
 #endif
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			/* Source: detect disconnect by monitoring CC */
-			tcpm_get_cc(port, &cc1, &cc2);
+			pd_get_cc(port, &cc1, &cc2);
 			if (pd[port].polarity)
 				cc1 = cc2;
 			if (cc1 == TYPEC_CC_VOLT_OPEN) {
