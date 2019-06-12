@@ -520,10 +520,10 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 		return rv;
 
 	if (cnt > 0) {
-		tcpc_write_block(port, reg, (const uint8_t *)data, cnt);
+		rv = tcpc_write_block(port, reg, (const uint8_t *)data, cnt);
 	}
 
-	/* If tcpc read fails, return error */
+	/* If tcpc write fails, return error */
 	if (rv)
 		return rv;
 
