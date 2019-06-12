@@ -46,6 +46,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9786dea0_3b5c4aef",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-06-12T18:17:53Z",
+      "side": 1,
+      "message": "Doing it this way _will_ break make -j buildall.\n\nWe need the chromeos-config ebuild to run in order to generate the code. Unless we trigger the ebuild from the makefile or check in the generated code I don\u0027t see how a clean invocation of make could get this code. Is there something I\u0027m missing?\n\nas is, I think having the generated code go in baseboard instead of common makes sense, but we need to generate the code in the first place.",
+      "parentUuid": "a8b8636f_0673c673",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
