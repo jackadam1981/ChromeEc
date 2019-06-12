@@ -49,6 +49,259 @@
     },
     {
       "key": {
+        "uuid": "18ddc732_d18ad2d8",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "Uses. To me, I think of alternate modes when I hear modes.",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f5d667_42873baf",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "USB SuperSpeed",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd359af_93704ffe",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "USB SuperSpeed",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3ae359_060a5572",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "nit: \"DisplayPort Alternate\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a711b6ef_7c7165be",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "a separate microcontroller running cros-ec acted as the TCPC and the main EC acted as the TCPM.",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e96b38_43be62a3",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "no, just power path controller.",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a4fe31_f5b94940",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "\u0027SuperSpeed\u0027. High-speed is for USB 2.0.",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29554ac4_372ee575",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "USB",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "632545ba_09ab13a9",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "Dual Role Power port.",
+      "range": {
+        "startLine": 54,
+        "startChar": 18,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a749e12_6cae6be8",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "\u0027Upstream\u0027",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c076d959_efb4a1ef",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "\u0027Downstream\u0027",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d54cd00_0a3c8315",
         "filename": "docs/usbc.md",
         "patchSetId": 2
@@ -225,6 +478,30 @@
       "side": 1,
       "message": "I was worried about this getting out of sync as well. Do you think just a list of config options to consider here is helpful?",
       "parentUuid": "6d79d37e_5f2f59d9",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 0
+      },
+      "revId": "479aadb7edd455aa21b9a9b315fbb9d645f12d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8268212a_bf673e56",
+        "filename": "docs/usbc.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-12T22:04:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure how useful it is here. Maybe make a comment referring to config.h and that most relevant options will have the \"CONFIG_USB\" prefix.",
+      "parentUuid": "53ecce4c_59c86d16",
       "range": {
         "startLine": 175,
         "startChar": 0,
