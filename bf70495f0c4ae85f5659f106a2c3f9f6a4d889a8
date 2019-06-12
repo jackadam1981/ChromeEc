@@ -22,6 +22,30 @@
       "revId": "bf70495f0c4ae85f5659f106a2c3f9f6a4d889a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ab3835_ac6fd66c",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T18:20:53Z",
+      "side": 1,
+      "message": "Also, we should add a internal pull up or pull down to ensure that the net isn\u0027t floating",
+      "parentUuid": "1c72e7e6_1a65a1ee",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "bf70495f0c4ae85f5659f106a2c3f9f6a4d889a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
