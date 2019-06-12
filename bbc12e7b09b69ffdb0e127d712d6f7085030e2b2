@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c545bb89_23e6d096",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-12T23:32:52Z",
+      "side": 1,
+      "message": "In my current implementation it will be saved to a (global) finger_id only after the derivation succeeds. I can also change to storing it to finger_id directly then clearing it after failure if you think that\u0027s better?",
+      "parentUuid": "cbe515dc_70d29da4",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "bbc12e7b09b69ffdb0e127d712d6f7085030e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c44a7d80_6eb46fa3",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 1
