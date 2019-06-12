@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b4cc6ab_85c52981",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:32:25Z",
+      "side": 1,
+      "message": "nocturne",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "84b07d51a2c3bb4865be284646f97858eba9979f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32e970f_d3591d18",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T23:32:25Z",
+      "side": 1,
+      "message": "Can you add a unit test for that function?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 48
+      },
+      "revId": "84b07d51a2c3bb4865be284646f97858eba9979f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
