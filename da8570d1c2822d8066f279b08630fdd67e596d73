@@ -69,6 +69,30 @@
       "revId": "da8570d1c2822d8066f279b08630fdd67e596d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394dff7e_6c24f4f1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-12T02:29:45Z",
+      "side": 1,
+      "message": "I just don\u0027t want the returned value checking too permissive.  If you prefer that way, I can change this to the style.",
+      "parentUuid": "46706b23_b8aa5d22",
+      "range": {
+        "startLine": 1112,
+        "startChar": 4,
+        "endLine": 1112,
+        "endChar": 7
+      },
+      "revId": "da8570d1c2822d8066f279b08630fdd67e596d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
