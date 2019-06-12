@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "9eb6094e_00b3bbd0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-12T04:00:12Z",
+      "side": 1,
+      "message": "10ms is dealing for slowly inserted charger and high parasitic capacitance case\nbut slowly inserted charger root cause is vbus connected but D+D- is not connect,\nso we run bc12 will detect as SDP when primary detect D- is not logical high\nDCP\u0026CDP will be both affected",
+      "parentUuid": "21fc01ca_3d6467cf",
+      "range": {
+        "startLine": 925,
+        "startChar": 1,
+        "endLine": 925,
+        "endChar": 11
+      },
+      "revId": "29a47a4edc601992709f7ca30645aaedc4f47fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43ff54a8_6f427c65",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 4
