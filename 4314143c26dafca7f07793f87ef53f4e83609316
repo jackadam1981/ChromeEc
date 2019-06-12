@@ -203,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "c508c95d_946f0813",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-12T00:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4613aa_9b78c917",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66c44025_8b0ce790",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 18
@@ -262,6 +286,30 @@
       "side": 1,
       "message": "the reader looks at the code and sees that only one address is set, even though two descriptors are used.\n\nExplaining here that the second descriptor always points at the base of the queue buffer would help.",
       "parentUuid": "eff26c12_5d40feef",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 26
+      },
+      "revId": "4314143c26dafca7f07793f87ef53f4e83609316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fea45b50_e7d80e8d",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-12T00:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bcb3d03_9db0ca4b",
       "range": {
         "startLine": 181,
         "startChar": 2,
