@@ -46,6 +46,30 @@
       "revId": "fc27bf0a97bfea0576aa89b78e9040e6b0d940a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa8b4a5_501ee3cd",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-12T07:41:55Z",
+      "side": 1,
+      "message": "If so, could you move ALS_TCS3400_POLLING_DELAY into this file? It would be clearer in the same file.",
+      "parentUuid": "88064d3f_db17d519",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "fc27bf0a97bfea0576aa89b78e9040e6b0d940a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
