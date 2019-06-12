@@ -1163,6 +1163,10 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 			case CS_PARAM_CHG_OPTION:
 				val = curr.chg.option;
 				break;
+			case CS_PARAM_LIMIT_POWER:
+				if (system_get_reset_flags() & RESET_FLAG_TIMER)
+					val = 1;
+				break;
 			default:
 				rv = EC_RES_INVALID_PARAM;
 			}
