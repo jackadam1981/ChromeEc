@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c72e7e6_1a65a1ee",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-12T15:22:17Z",
+      "side": 1,
+      "message": "Should the names be changed to NC_35 so that we don\u0027t accidentally end up using this in common code some how?",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 16
+      },
+      "revId": "bf70495f0c4ae85f5659f106a2c3f9f6a4d889a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
