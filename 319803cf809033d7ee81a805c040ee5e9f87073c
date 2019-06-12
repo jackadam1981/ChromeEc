@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b96ccd46_aa3a6735",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T00:39:40Z",
+      "side": 1,
+      "message": "Do you mean fpc_timebase_get_tick? If not, you probably want to mock get_time. \n\nDoes anybody know why fpc_timebase_get_tick doesn\u0027t call get_time?",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "319803cf809033d7ee81a805c040ee5e9f87073c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
