@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f3e935_1cb7e343",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4069,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-12T10:52:40Z",
+      "side": 0,
+      "message": "Explanation from Caveh: \"timeout\" is not a hard delay -- it is an upper limit to sleep until another EVENT arrives. In some situations, sending a HARD_RESET will generate an immediate ALERT.\n\nUpon arrival of another ALERT \u003d\u003d(gpio reset, register cleared, converted to)\u003d\u003d\u003e EVENT \u003d\u003d\u003e PD-TASK call, this \"timeout\" is reduced to 0 and the loop resumes. It will then attempt to transmit another HARD_RESET, begin a 10ms \"timeout\", said HARD_RESET generates an immediate ALERT, \"timeout\" is reduced to 0, etc.\n\n(repeat ad nauseum).",
+      "revId": "e9fbc32f0939323c7effb49a3be2686318c8b01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
