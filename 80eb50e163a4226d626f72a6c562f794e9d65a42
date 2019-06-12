@@ -69,6 +69,30 @@
       "revId": "80eb50e163a4226d626f72a6c562f794e9d65a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4fcf5d_e154e008",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-12T21:36:31Z",
+      "side": 1,
+      "message": "Right system_print_extended_version_info is part of the version  console command output, so it should always be printed.",
+      "parentUuid": "3c95a014_cc9e2fa6",
+      "range": {
+        "startLine": 778,
+        "startChar": 2,
+        "endLine": 778,
+        "endChar": 39
+      },
+      "revId": "80eb50e163a4226d626f72a6c562f794e9d65a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
