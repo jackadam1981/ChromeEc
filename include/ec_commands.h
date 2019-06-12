@@ -5158,9 +5158,17 @@ struct ec_response_usb_pd_mux_info {
 
 #define EC_CMD_PD_CHIP_INFO		0x011B
 
+enum ec_pd_chip_info_src {
+	SRC_LOCAL_DATA = 0,
+	SRC_LIVE_DATA = 1,
+	SRC_MAX = 0xFF,
+};
+
 struct ec_params_pd_chip_info {
 	uint8_t port;	/* USB-C port number */
-	uint8_t renew;	/* Force renewal */
+
+	/* Source of the pd chip info as enumerated in ec_pd_chip_info_src */
+	uint8_t src;
 } __ec_align1;
 
 struct ec_response_pd_chip_info {
