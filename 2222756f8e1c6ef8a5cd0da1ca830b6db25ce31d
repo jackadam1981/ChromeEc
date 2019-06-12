@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9805d852_e713b4b0",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T22:38:35Z",
+      "side": 1,
+      "message": "I think it\u0027s better to keep that outside of a function called hkdf_extract(), since that naming kind of implies that IKM is passed as a parameter, as in https://tools.ietf.org/html/rfc5869#section-2.2",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4491a6_d66d541c",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T22:38:35Z",
+      "side": 1,
+      "message": "That was SHA256_DIGEST_SIZE before, I think?",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
