@@ -34,6 +34,24 @@
       "revId": "4d4532b91554b474be6e22a8b884b4c1157df452",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470c764a_cd9c727d",
+        "filename": "third_party/boringssl/common/aes-gcm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-12T23:53:53Z",
+      "side": 1,
+      "message": "Ok, looking at the gcm_*_neon, the change you made is symmetric, so agree better to follow same style.",
+      "parentUuid": "219d265d_4d55323e",
+      "revId": "4d4532b91554b474be6e22a8b884b4c1157df452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
