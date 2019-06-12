@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b942ac7_84e4b94d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:09:22Z",
+      "side": 1,
+      "message": "Aren\u0027t we supposed to read data repeatedly until it succeeds?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "28c69acfc3652974e907602928dfcea32400aad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86fcfe4b_849335c4",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T19:09:22Z",
+      "side": 1,
+      "message": "Can you describe the followings?\n- when/why we need this option\n- how the polling works",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 48
+      },
+      "revId": "28c69acfc3652974e907602928dfcea32400aad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
