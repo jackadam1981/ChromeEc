@@ -22,6 +22,30 @@
       "revId": "d3a50c7d69f07e67ca94ea8677e21777a9863644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a0e3f1_fe087b1e",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T15:23:58Z",
+      "side": 1,
+      "message": "(ramp_st_prev, ramp_st)\n(CHG_RAMP_STABLE, CHG_RAMP_STABLE) -\u003e skip\n(!CHG_RAMP_STABLE, CHG_RAMP_STABLE) -\u003e set\n(CHG_RAMP_STABLE, !CHG_RAMP_STABLE) -\u003e set\n(!CHG_RAMP_STABLE, !CHG_RAMP_STABLE) -\u003e set",
+      "parentUuid": "6d28b097_679d6668",
+      "range": {
+        "startLine": 336,
+        "startChar": 38,
+        "endLine": 336,
+        "endChar": 40
+      },
+      "revId": "d3a50c7d69f07e67ca94ea8677e21777a9863644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
