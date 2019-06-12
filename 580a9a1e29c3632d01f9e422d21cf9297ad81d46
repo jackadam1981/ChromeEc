@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "71c55099_0055d9fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T16:55:13Z",
+      "side": 1,
+      "message": "can you elaborate more here. What devices did you test this against and in what mode?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "580a9a1e29c3632d01f9e422d21cf9297ad81d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63bc32ab_0cddf1b2",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 2
@@ -46,6 +69,30 @@
       "revId": "580a9a1e29c3632d01f9e422d21cf9297ad81d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3ad78e_39de6034",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T16:55:13Z",
+      "side": 1,
+      "message": "I think it makes more sense to clear what is needed to clear at init since we might want state to transcend mux inits (since that happens often with plug and unplug events).\n\nJust my option though. not a show stopper.",
+      "parentUuid": "73e4dec8_bbc172a9",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 51
+      },
+      "revId": "580a9a1e29c3632d01f9e422d21cf9297ad81d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
