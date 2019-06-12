@@ -23,6 +23,7 @@
 #include "task.h"
 #include "timer.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 /*
  * ==== Overview
  *
@@ -373,7 +374,7 @@ static void report_failure(struct nvmem_failure_payload *payload,
 		payload_union_size +
 			offsetof(struct nvmem_failure_payload, size),
 		payload);
-	ccprintf("Logging failure %d\n", payload->failure_type);
+	CPRINTS("Logging failure %d", payload->failure_type);
 	cflush();
 	system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED | SYSTEM_RESET_HARD);
 }
@@ -411,8 +412,7 @@ static void *get_scratch_buffer(size_t size)
 		rv = shared_mem_acquire(size, &buf);
 		if (rv == EC_SUCCESS) {
 			if (i)
-				ccprintf("%s: waited %d cycles!\n", __func__,
-					 i);
+				CPRINTS("%s: waited %d cycles!", __func__, i);
 			return buf;
 		}
 		usleep(100 * MSEC);
@@ -764,7 +764,7 @@ test_export_static enum ec_error_list get_next_object(struct access_tracker *at,
 
 		/* And calculate hash. */
 		if (!container_is_valid(ch)) {
-			ccprintf("%s: container hash mismatch!\n", __func__);
+			CPRINTS("%s: container hash mismatch!\n", __func__);
 			return EC_ERROR_INVAL;
 		}
 
@@ -901,7 +901,7 @@ test_export_static enum ec_error_list compact_nvmem(void)
 		case NN_OBJ_TPM_EVICTABLE:
 			ch->generation++;
 			if (save_container(ch) != EC_SUCCESS) {
-				ccprintf("%s: Saving FAILED\n", __func__);
+				CPRINTS("%s: Saving FAILED", __func__);
 				shared_mem_release(ch);
 				return EC_ERROR_INVAL;
 			}
@@ -955,8 +955,8 @@ test_export_static enum ec_error_list compact_nvmem(void)
 	if (final_delimiter_needed)
 		add_final_delimiter();
 
-	ccprintf("Compaction done, went from %d to %d bytes\n", before,
-		 total_used_size());
+	CPRINTS("Compaction done, went from %d to %d bytes", before,
+		total_used_size());
 	return rv;
 }
 
@@ -1452,7 +1452,7 @@ static int erase_partition(unsigned int act_partition, int erase_backup)
 	rv = flash_physical_erase(flash_base, NVMEM_PARTITION_SIZE);
 
 	if (rv != EC_SUCCESS) {
-		ccprintf("%s: flash erase failed", __func__);
+		CPRINTS("%s: flash erase failed", __func__);
 		return -rv;
 	}
 
@@ -1480,7 +1480,7 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 	 */
 	flash_base = erase_partition(act_partition, 1);
 	if (flash_base < 0) {
-		ccprintf("%s: backup partition erase failed", __func__);
+		CPRINTS("%s: backup partition erase failed", __func__);
 		return -flash_base;
 	}
 
@@ -1510,8 +1510,8 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 		/* Never returns. */
 		report_no_payload_failure(NVMEMF_MIGRATION_FAILURE);
 
-	ccprintf("Migration success, used %d bytes of flash\n",
-		 total_used_size());
+	CPRINTS("Migration success, used %d bytes of flash",
+		total_used_size());
 
 	/*
 	 * Now we can erase the active partition and add its flash to the pool.
@@ -1539,8 +1539,7 @@ static void verify_empty_page(void *ph)
 
 	for (i = 0; i < (CONFIG_FLASH_BANK_SIZE / sizeof(*word_p)); i++) {
 		if (word_p[i] != (uint32_t)~0) {
-			ccprintf("%s: corrupted page at %p!\n", __func__,
-				 word_p);
+			CPRINTS("%s: corrupted page at %p!", __func__, word_p);
 			flash_physical_erase((uintptr_t)word_p -
 						     CONFIG_PROGRAM_MEMORY_BASE,
 					     CONFIG_FLASH_BANK_SIZE);
@@ -1619,7 +1618,7 @@ static void init_page_list(void)
 	}
 
 	if (!page_list_index) {
-		ccprintf("Init nvmem from scratch\n");
+		CPRINTS("Init nvmem from scratch");
 		set_first_page_header();
 		page_list_index++;
 	}
@@ -2221,7 +2220,7 @@ static enum ec_error_list retrieve_nvmem_contents(void)
 		 * Something is really messed up, need to wipe out and start
 		 * from scratch?
 		 */
-		ccprintf("%s:%d FAILURE!\n", __func__, __LINE__);
+		CPRINTS("%s:%d FAILURE!", __func__, __LINE__);
 	}
 
 	rv = verify_reserved(res_bitmap, nc);
@@ -2256,7 +2255,7 @@ enum ec_error_list new_nvmem_init(void)
 
 	unlock_mutex(__LINE__);
 
-	ccprintf("init took %d\n", (uint32_t)(init.val - start.val));
+	CPRINTS("init took %d", (uint32_t)(init.val - start.val));
 
 	return rv;
 }
@@ -2280,7 +2279,7 @@ test_export_static size_t init_object_offsets(uint16_t *offsets, size_t count)
 	while (next_obj_base && (next_obj_base <= s_evictNvEnd)) {
 		if (num_objects == count) {
 			/* What do we do here?! */
-			ccprintf("Too many objects!\n");
+			CPRINTS("Too many objects!");
 			break;
 		}
 
@@ -2590,8 +2589,8 @@ static enum ec_error_list new_nvmem_save_(void)
 			break;
 
 		if (rv != EC_SUCCESS) {
-			ccprintf("%s: failed to read flash when saving (%d)!\n",
-				 __func__, rv);
+			CPRINTS("%s: failed to read flash when saving (%d)!",
+				__func__, rv);
 			shared_mem_release(ch);
 			return rv;
 		}
@@ -2694,7 +2693,7 @@ static struct max_var_container *find_var(const uint8_t *key, size_t key_len,
 		/* Verify consistency, first that the sizes match */
 		if ((vc->t_header.key_len + vc->t_header.val_len +
 		     sizeof(vc->t_header)) != vc->c_header.size) {
-			ccprintf("%s: - inconsistent sizes!\n", __func__);
+			CPRINTS("%s: - inconsistent sizes!", __func__);
 			/* report error here. */
 			continue;
 		}
@@ -2986,9 +2985,9 @@ int nvmem_erase_tpm_data(void)
 			}
 		}
 		if (setvar(key, key_len, val, val_len) != EC_SUCCESS)
-			ccprintf("%s: adding var failed!\n", __func__);
+			CPRINTS("%s: adding var failed!", __func__);
 		if (setvar(key, key_len, NULL, 0) != EC_SUCCESS)
-			ccprintf("%s: deleting var failed!\n", __func__);
+			CPRINTS("%s: deleting var failed!", __func__);
 
 	} while (master_at.list_index != (saved_list_index + 1));
 
@@ -3017,7 +3016,7 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 	struct access_tracker at = {};
 
 	if (!crypto_enabled()) {
-		ccprintf("Crypto services not available\n");
+		CPRINTS("Crypto services not available");
 		return EC_ERROR_INVAL;
 	}
 
