@@ -198,6 +198,17 @@ static void showregs(void)
 #define CONFIG_USB_BCD_DEV 0x0100		/* 1.00 */
 #endif
 
+/*
+ * SW-level interrupt status for all endpoints
+ * This is set in usb-stream.c to activate TX transfer.
+ * To trigger USB endpoint interrupt, mark the relevant bit in usb_daint_sw
+ * and call task_trigger_irq(GC_IRQNUM_USB0_USBINTR).
+ */
+uint32_t usb_daint_sw;
+
+static const uint32_t mask_all_doep = 0xffff << GC_USB_DAINTMSK_OUTEPMSK0_LSB;
+static const uint32_t mask_all_diep = 0xffff << GC_USB_DAINTMSK_INEPMSK0_LSB;
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -1120,9 +1131,10 @@ static void usb_reset(void)
 void usb_interrupt(void)
 {
 	uint32_t status = GR_USB_GINTSTS;
-	uint32_t oepint = status & GINTSTS(OEPINT);
-	uint32_t iepint = status & GINTSTS(IEPINT);
-
+	uint32_t oepint = status & GINTSTS(OEPINT) ||
+			  usb_daint_sw & mask_all_doep;
+	uint32_t iepint = status & GINTSTS(IEPINT) ||
+			  usb_daint_sw & mask_all_diep;
 	int ep;
 
 	print_later("interrupt: GINTSTS 0x%08x", status, 0, 0, 0, 0);
@@ -1163,6 +1175,13 @@ void usb_interrupt(void)
 		 * OEPINT and IEPINT bits from GINTSTS. */
 		uint32_t daint = GR_USB_DAINT;
 
+		daint |= usb_daint_sw;
+
+		if (oepint == 0)
+			daint &= ~mask_all_doep;
+		if (iepint == 0)
+			daint &= ~mask_all_diep;
+
 		print_later("  oepint%c iepint%c daint 0x%08x",
 			    oepint ? '!' : '_', iepint ? '!' : '_',
 			    daint, 0, 0);
@@ -1170,10 +1189,8 @@ void usb_interrupt(void)
 		/* EP0 has a combined IN/OUT handler. Only call it once, but
 		 * let it know which direction(s) had an interrupt. */
 		if (daint & (DAINT_OUTEP(0) | DAINT_INEP(0))) {
-			uint32_t intr_on_out = (oepint &&
-						(daint & DAINT_OUTEP(0)));
-			uint32_t intr_on_in = (iepint &&
-					       (daint & DAINT_INEP(0)));
+			uint32_t intr_on_out = daint & DAINT_OUTEP(0);
+			uint32_t intr_on_in = daint & DAINT_INEP(0);
 			ep0_interrupt(intr_on_out, intr_on_in);
 		}
 
@@ -1181,10 +1198,10 @@ void usb_interrupt(void)
 		 * endpoints. Each handler must clear their own bits in
 		 * DIEPINTn/DOEPINTn. */
 		for (ep = 1; ep < USB_EP_COUNT; ep++) {
-			if (oepint && (daint & DAINT_OUTEP(ep)))
-				usb_ep_rx[ep]();
-			if (iepint && (daint & DAINT_INEP(ep)))
+			if (daint & DAINT_INEP(ep))
 				usb_ep_tx[ep]();
+			if (daint & DAINT_OUTEP(ep))
+				usb_ep_rx[ep]();
 		}
 	}
 
@@ -1370,9 +1387,6 @@ void usb_init(void)
 		configuration_value = 0;
 	}
 
-	/* Now that DCFG.DesDMA is accurate, prepare the FIFOs */
-	setup_data_fifos();
-
 	/* If resuming, reinitialize the endpoints now. For a cold boot we'll
 	 * do this as part of handling the host-driven reset. */
 	if (resume)
@@ -1389,6 +1403,9 @@ void usb_init(void)
 	GR_USB_DIEPMSK = DIEPMSK_EPDISBLDMSK | DIEPMSK_XFERCOMPLMSK;
 	GR_USB_DOEPMSK = DOEPMSK_EPDISBLDMSK | DOEPMSK_XFERCOMPLMSK |
 		DOEPMSK_SETUPMSK;
+
+	/* Now that DCFG.DesDMA is accurate, prepare the FIFOs */
+	setup_data_fifos();
 
 	/* Enable interrupt handlers */
 	task_enable_irq(GC_IRQNUM_USB0_USBINTR);
