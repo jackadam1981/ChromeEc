@@ -22,6 +22,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b8636f_0673c673",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T17:09:18Z",
+      "side": 1,
+      "message": "Ah, we use need to be using unibuild, and that the generated files is copied over during the chromeos-ec ebuild.\n\n\nHow will this work for people building this via make (i.e. without emerge)? That is a very comment developer flow for ec devs. We need to ensure that\n\nplatform/ec$ make -j buildall \n\nstill works.\n\n\nI almost think that the ec_config.c should go in board/ or baseboard/ directories instead of common otherwise building all of the board is not going to work right.",
+      "parentUuid": "4ee6426b_038b3984",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
