@@ -22,6 +22,30 @@
       "revId": "fc27bf0a97bfea0576aa89b78e9040e6b0d940a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88064d3f_db17d519",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-12T07:30:55Z",
+      "side": 1,
+      "message": "hmm.. I think a named constant is better.",
+      "parentUuid": "c2b48f75_8514100f",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "fc27bf0a97bfea0576aa89b78e9040e6b0d940a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
