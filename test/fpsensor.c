@@ -9,6 +9,7 @@
 #include "fpsensor_state.h"
 #include "host_command.h"
 #include "test_util.h"
+#include "timer.h"
 #include "util.h"
 
 static const uint8_t fake_rollback_secret[] = {
@@ -29,6 +30,48 @@ static const uint8_t fake_tpm_seed[] = {
 int rollback_get_secret(uint8_t *secret)
 {
 	memcpy(secret, fake_rollback_secret, sizeof(fake_rollback_secret));
+	return EC_SUCCESS;
+}
+
+/* Mock the trng functions. */
+void init_trng(void) {}
+void exit_trng(void) {}
+void rand_bytes(void *buffer, size_t len)
+{
+	memset(buffer, 0, len);
+}
+
+/* Mock the clock for testing timeout behavior. */
+static clock_t now;
+static const uint32_t increment_ms = 100;
+
+clock_t clock(void)
+{
+	clock_t timestamp = now;
+
+	now += increment_ms;
+	return timestamp;
+}
+
+test_static int test_rand_finger_id(void)
+{
+	int rv;
+	uint8_t new_finger_id[FP_FINGER_ID_BYTES];
+
+	templ_valid = 0;
+	init_trng();
+	rv = rand_finger_id(new_finger_id);
+	exit_trng();
+	TEST_ASSERT(rv == EC_RES_SUCCESS);
+
+	memcpy(finger_id[templ_valid++], new_finger_id, sizeof(new_finger_id));
+	init_trng();
+	rv = rand_finger_id(new_finger_id);
+	exit_trng();
+	/* Should timeout */
+	TEST_ASSERT(rv == EC_RES_ERROR);
+	templ_valid = 0;
+
 	return EC_SUCCESS;
 }
 
@@ -187,6 +230,7 @@ void run_test(void)
 {
 	RUN_TEST(test_fpsensor);
 	RUN_TEST(test_derive_encryption_key);
+	RUN_TEST(test_rand_finger_id);
 
 	test_print_result();
 }

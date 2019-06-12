@@ -26,6 +26,8 @@ uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE]
  */
 uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
 	FP_TEMPLATE_SECTION;
+/* Enrolled finger ids for the current user */
+uint8_t finger_id[FP_MAX_FINGER_COUNT][FP_FINGER_ID_BYTES];
 /* Number of used templates */
 uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */
@@ -52,6 +54,7 @@ void fp_task_simulate(void)
 void fp_clear_finger_context(int idx)
 {
 	memset(fp_template[idx], 0, sizeof(fp_template[0]));
+	memset(finger_id[idx], 0, sizeof(finger_id[0]));
 }
 
 void fp_clear_context(void)

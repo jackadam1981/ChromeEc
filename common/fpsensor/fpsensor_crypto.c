@@ -10,11 +10,40 @@
 #include "fpsensor_state.h"
 #include "rollback.h"
 #include "sha256.h"
+#include "timer.h"
+#include "trng.h"
 
 #if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM) || \
-	!defined(CONFIG_ROLLBACK_SECRET_SIZE)
-#error "fpsensor requires AES, AES_GCM and ROLLBACK_SECRET_SIZE"
+	!defined(CONFIG_ROLLBACK_SECRET_SIZE) || !defined(CONFIG_RNG)
+#error "fpsensor requires AES, AES_GCM, ROLLBACK_SECRET_SIZE and RNG"
 #endif
+
+/*
+ * Call to rand_finger_id() should be wrapped with init_trng() and exit_trng()
+ * because putting these two calls in the while loop here might cause the
+ * hardware trng to restart immediately after shutdown, thus wasting power.
+ */
+int rand_finger_id(uint8_t *new_finger_id)
+{
+	int i;
+	int collision;
+	uint32_t timeout_ms = 1000;
+	clock_t t0 = clock();
+
+	CPRINTS("Generating random finger id ...");
+	do {
+		if (clock() - t0 > timeout_ms)
+			return EC_RES_ERROR;
+		collision = 0;
+		rand_bytes(new_finger_id, FP_FINGER_ID_BYTES);
+		for (i = 0; i < templ_valid; i++)
+			if (safe_memcmp(finger_id[i], new_finger_id,
+					FP_FINGER_ID_BYTES) == 0)
+				collision = 1;
+	} while (collision);
+
+	return EC_RES_SUCCESS;
+}
 
 static int hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size)
 {
