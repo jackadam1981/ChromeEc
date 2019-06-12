@@ -102,6 +102,12 @@ static const int debug_level;
  */
 #define READY_HOLD_OFF_US (200 * MSEC)
 
+/*
+ * From PD 2.0 spec, section 6.5.11.1
+ * Figure 6.2.3 Hard/Cable Reset.
+ */
+#define HARD_RESET_COMPLETE_US (5 * MSEC)
+
 enum vdm_states {
 	VDM_STATE_ERR_BUSY = -3,
 	VDM_STATE_ERR_SEND = -2,
@@ -249,6 +255,8 @@ static struct pd_protocol {
 	 * of our own.
 	 */
 	uint64_t ready_state_holdoff_timer;
+
+	uint64_t hard_reset_timer;
 } pd[CONFIG_USB_PD_PORT_COUNT];
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -4022,6 +4030,7 @@ void pd_task(void *u)
 		case PD_STATE_SOFT_RESET:
 			if (pd[port].last_state != pd[port].task_state) {
 				/* Message ID of soft reset is always 0 */
+
 				pd[port].msg_id = 0;
 				res = send_control(port, PD_CTRL_SOFT_RESET);
 
@@ -4041,8 +4050,10 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_HARD_RESET_SEND:
 			hard_reset_count++;
-			if (pd[port].last_state != pd[port].task_state)
+			if (pd[port].last_state != pd[port].task_state) {
 				hard_reset_sent = 0;
+				pd[port].hard_reset_timer = 0;
+			}
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd[port].last_state == PD_STATE_SNK_DISCOVERY ||
 			    (pd[port].last_state == PD_STATE_SOFT_RESET &&
@@ -4064,11 +4075,20 @@ void pd_task(void *u)
 
 			/* try sending hard reset until it succeeds */
 			if (!hard_reset_sent) {
-				if (pd_transmit(port, TCPC_TX_HARD_RESET,
-						0, NULL) < 0) {
-					timeout = 10*MSEC;
+				if (get_time().val < pd[port].hard_reset_timer) {
+					CPRINTF("C%d: Waiting for hard reset timer\n",
+						port);
 					break;
 				}
+
+				if (pd_transmit(port, TCPC_TX_HARD_RESET,
+						0, NULL) < 0) {
+					timeout = HARD_RESET_COMPLETE_US;
+					pd[port].hard_reset_timer = get_time().val +
+						HARD_RESET_COMPLETE_US;
+					break;
+				}
+				pd[port].hard_reset_timer = 0;
 
 				/* successfully sent hard reset */
 				hard_reset_sent = 1;
