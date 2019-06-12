@@ -18,7 +18,6 @@
 /* ISH specific*/
 #undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
-#define CONFIG_ISH_UART_0
 /* EC */
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
@@ -92,9 +91,7 @@
 /* power management definitions */
 #define CONFIG_LOW_POWER_IDLE
 
-#define CONFIG_ISH_PM_D0I1
-#define CONFIG_ISH_PM_D0I2
-#define CONFIG_ISH_PM_D0I3
+#define CONFIG_ISH_PM_AONTASK
 #define CONFIG_ISH_PM_D3
 #define CONFIG_ISH_PM_RESET_PREP
 
