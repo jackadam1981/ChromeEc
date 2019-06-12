@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbe515dc_70d29da4",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T22:59:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure how you\u0027re planning to use that function, but if you end up saving it to a finger_id then it might be simpler to use a local variable and save the output to the correct finger_id directly?",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "bbc12e7b09b69ffdb0e127d712d6f7085030e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e9afae_18a75c7a",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T22:59:18Z",
+      "side": 1,
+      "message": "I think it would be better to prefix the names of those functions, maybe with fps_?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "bbc12e7b09b69ffdb0e127d712d6f7085030e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c44a7d80_6eb46fa3",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T22:59:18Z",
+      "side": 1,
+      "message": "Can you get_time() and timestamp_expired() to follow coding patterns? For example http://cs/chromeos_public/src/platform/ec/common/button.c?rcl\u003d95d7137407afa4e072261d2ce2f556f3499a7994\u0026l\u003d93",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "bbc12e7b09b69ffdb0e127d712d6f7085030e2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
