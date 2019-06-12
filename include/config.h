@@ -4092,6 +4092,17 @@
 
 /*****************************************************************************/
 /*
+ * ISH config defaults
+ */
+#undef CONFIG_ISH_D0I2_MIN_USEC
+#undef CONFIG_ISH_D0I3_MIN_USEC
+
+#undef CONFIG_ISH_PM_AONTASK
+#undef CONFIG_ISH_PM_D3
+#undef CONFIG_ISH_PM_RESET_PREP
+
+/*****************************************************************************/
+/*
  * Include board and core configs, since those hold the CONFIG_ constants for a
  * given configuration.  This guarantees they get included everywhere, and
  * fixes a fairly common bug where we gate out code with #ifndef
@@ -4642,18 +4653,13 @@
 
 /*****************************************************************************/
 /* ISH power management related definitions */
-#if defined(CONFIG_ISH_PM_D0I2) || \
-	defined(CONFIG_ISH_PM_D0I3) || \
+#if defined(CONFIG_ISH_PM_AONTASK) || \
 	defined(CONFIG_ISH_PM_D3) || \
 	defined(CONFIG_ISH_PM_RESET_PREP)
 
 #ifndef CONFIG_LOW_POWER_IDLE
 #error "Must define CONFIG_LOW_POWER_IDLE if enable ISH low power states"
 #endif
-
-#define CONFIG_ISH_PM_AONTASK
-
 #endif
-
 
 #endif  /* __CROS_EC_CONFIG_H */
