@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fefdd5eb_30d498a4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-12T07:07:10Z",
+      "side": 1,
+      "message": "Yes, you are right, it needs tcs3400_read_deferred_data.",
+      "parentUuid": "aedbf63b_86559fc1",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50fc7f55_dbf72b8d",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 6
