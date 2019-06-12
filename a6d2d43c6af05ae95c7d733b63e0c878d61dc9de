@@ -22,6 +22,30 @@
       "revId": "a6d2d43c6af05ae95c7d733b63e0c878d61dc9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2750c7a_ffbaa2ab",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-12T00:21:56Z",
+      "side": 1,
+      "message": "I think we have problem like below\n\n\nin __idle() task, we have following two lines and their execution time is extremely short and i confirmed it\u0027s 0 tick( I mean it\u0027s less than 1 tick( 1/32768 second ) )\n\nt0 \u003d get_time();\nnext_delay \u003d __hw_clock_event_get() - t0.le.lo;\n\nwhen I read the main counter as early as possible in ISR.(which is in irq_handler.h, just after pusha). the value has 3 ticks difference from the value we set in HPET1 comparator. So since I only have \"pusha\" and 2 \"movl\", IRQ latency for HPET TIMER1 is 2 ~ 3 ticks.\n\n\n\u003d\u003d so what happens \u003d\u003d\nstep 1. HPET TIMER1 is expired already but not yet dispatched to CPU due to interrupt latency.\nstep 2. t0 \u003d get_time(); \u003c\u003d\u003d we get the current time which is passed \"last_deadline\"\nstep 3. next_delay \u003d __hw_clock_event_get() - t0.le.lo; \u003c\u003d\u003d got \"last_deadline\"\nstep 4. ISR of HPET TIMER1 dispached so it updates \"last_deadline\"\n\n\nThis interrupt latency is not a problem in normal timer event handling but it is with \"last_deadline\" which doesn\u0027t allow any latency in OUR CURRENT implementation.\n\n\nPlease don\u0027t be confused with interrupt priority. If there was ISR of other IRQ running in step1 then ,in some cases, it may help for updating \"last_deadline\" like below.\n\nstep A. I2C IRQ occurred.\nAfter interrupt latency,\nstep B. CPU is about to call __hw_clock_event_get(), but __idle() is preempted by I2C ISR. so the ISR running.\nstep C. HPET TIMER1 is expired.\nstep D. I2C ISR ran for more than interrupt latency. so HPET TIMER1 IRQ is signalled to PIC.\nstep E. CPU executes \"iret\" at the end of I2C ISR. CPU processes any pending interrupt from PIC. here, it is HPET TIMER1. so \"last_deadline\" is updated.\nstep F. CPU resumes calling __hw_clock_event_get().\n\n\nFor short, I believe it\u0027s about interrupt latency(which is vary depending on source). So in our case, although it\u0027s not a big problem but \"last_deadline\" is only thing affected by the latency. so to fix this issue, I suggest \"last_deadline \u003d scale_ticks2us(tick_in_timer1_comparator + 2);\"",
+      "parentUuid": "b0eadd9d_42c00628",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "a6d2d43c6af05ae95c7d733b63e0c878d61dc9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
