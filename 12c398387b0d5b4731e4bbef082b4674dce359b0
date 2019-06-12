@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "675724bb_9d60421f",
+        "filename": "chip/stm32/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-12T22:42:46Z",
+      "side": 1,
+      "message": "nit: I\u0027d remove that comment, I didn\u0027t find an equivalent in other files and tbh the \"test_mockable\" naming is pretty self-explanatory",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "12c398387b0d5b4731e4bbef082b4674dce359b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
