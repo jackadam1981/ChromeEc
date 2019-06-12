@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cba77343_4a3804cc",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-12T02:12:29Z",
+      "side": 1,
+      "message": "should still guard DECLARE_DEFFERED(tcs3400_read_deferred) so that the final image won\u0027t have the hook entry.",
+      "parentUuid": "0cc45801_2ea2de7d",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50fc7f55_dbf72b8d",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 6
