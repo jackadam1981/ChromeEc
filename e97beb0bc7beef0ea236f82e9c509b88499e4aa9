@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ee6426b_038b3984",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T17:00:55Z",
+      "side": 1,
+      "message": "can you elaborate more on what ebuild dependency or USE flags are also need to start generating the ec_config.c? (or how it is already done for you)",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
