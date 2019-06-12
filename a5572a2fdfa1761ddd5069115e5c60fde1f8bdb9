@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aedbf63b_86559fc1",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-12T04:33:10Z",
+      "side": 1,
+      "message": "Done.\n\n@yilun: no we can\u0027t guard tcs3400_read_deferred and leave other things outside the define guard.\n(is this what you mean?)",
+      "parentUuid": "cba77343_4a3804cc",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50fc7f55_dbf72b8d",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 6
@@ -104,6 +128,30 @@
       "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816ebf19_9f862fbf",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-12T04:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2131182_d28c96b3",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 34
+      },
+      "revId": "a5572a2fdfa1761ddd5069115e5c60fde1f8bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
