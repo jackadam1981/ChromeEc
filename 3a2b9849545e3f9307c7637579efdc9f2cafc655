@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b798381d_60eda345",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-12T21:21:24Z",
+      "side": 1,
+      "message": "Jack, do I need to qualify on CONFIG_ISH_PM_AONTASK?  I don\u0027t see how pm_ctx.aon_valid can be set true if CONFIG_ISH_PM_AONTASK is not defined.",
+      "revId": "3a2b9849545e3f9307c7637579efdc9f2cafc655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
