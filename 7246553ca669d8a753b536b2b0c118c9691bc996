@@ -112,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "f19fd6e2_7f78b648",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-12T23:02:14Z",
+      "side": 1,
+      "message": "I think my intention was to prevent function entry code from clobbering the listed registers. From what I understand now, the clobber list is for showing consistent values to the external code not to the inline assembly.\n\nI kind of remember there is a function attribute to prevent its prologue from clobbering registers (\u0027naked\u0027 or \u0027interrupt\u0027?).\n\nIf we have that, we can get rid of the list, I think.\n\nWhat\u0027s special about R7? It seems it can be saved before inline asm and restored after inline asm like other registers. Maybe it\u0027s used to save \u0026 restore other registers.",
+      "parentUuid": "6875a548_37746022",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a3e887d_a510de78",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 5
