@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf0dd341_0486866c",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T20:17:16Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to check if vendor_id is valid, just if (src !\u003d SRC_LIVE_ONLY) only, right?\n\nWe want hard coded data to overwrite any runtime collected data since runtime data might be wrong",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 54
+      },
+      "revId": "2cad7b093a414abb46780c18ab8f320edd3455ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
