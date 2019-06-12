@@ -140,6 +140,11 @@ static int ps8xxx_get_chip_info(int port, int renew,
 	if (rv)
 		return rv;
 
+	if (renew == RENEW_LOCAL_DATA) {
+		(*chip_info)->vendor_id = PS8XXX_VENDOR_ID;
+		(*chip_info)->product_id = PS8XXX_PRODUCT_ID;
+	}
+
 	if ((*chip_info)->fw_version_number == 0 ||
 	    (*chip_info)->fw_version_number == -1 || renew == RENEW_LIVE_DATA) {
 		rv = tcpc_read(port, FW_VER_REG, &val);
