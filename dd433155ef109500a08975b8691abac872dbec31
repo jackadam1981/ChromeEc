@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e155013e_4503ced1",
+        "filename": "board/helios/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-12T15:23:13Z",
+      "side": 1,
+      "message": "This change will have to go with the first CL in this stack. Or you will need a Cq-Depend from that CL on this.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "dd433155ef109500a08975b8691abac872dbec31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
