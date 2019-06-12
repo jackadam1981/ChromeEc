@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "6ea404ff_c03895ee",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-12T04:39:17Z",
+      "side": 1,
+      "message": "confirmed with hw eng, the sensor is up in S3",
+      "parentUuid": "16d52426_ec7efc8c",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 36
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d44f601c_3938166e",
         "filename": "board/kukui/board.c",
         "patchSetId": 3
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "11b2c2ac_1750e4a2",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-12T04:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d44f601c_3938166e",
+      "range": {
+        "startLine": 510,
+        "startChar": 9,
+        "endLine": 510,
+        "endChar": 10
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7402b352_582c59be",
         "filename": "board/kukui/board.h",
         "patchSetId": 3
@@ -140,6 +188,30 @@
       "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa86500_7402742b",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-12T04:39:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7402b352_582c59be",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
