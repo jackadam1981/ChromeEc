@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+
 /* Configuration for Kukui */
 
 #ifndef __CROS_EC_BOARD_H
