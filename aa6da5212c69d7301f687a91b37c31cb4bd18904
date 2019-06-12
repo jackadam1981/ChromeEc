@@ -46,6 +46,30 @@
       "revId": "aa6da5212c69d7301f687a91b37c31cb4bd18904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14d9e6d2_6c33538f",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-12T17:32:46Z",
+      "side": 1,
+      "message": "I neglected that your comment was actually pointing the problem in line 344 or line 377.\nI made another CL to check the performance change from this idea: http://crrev.com/c/1654871.",
+      "parentUuid": "e9290e6c_4c47ac5f",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 0
+      },
+      "revId": "aa6da5212c69d7301f687a91b37c31cb4bd18904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
