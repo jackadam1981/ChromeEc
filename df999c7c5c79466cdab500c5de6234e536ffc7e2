@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f0fa6e4_6097293c",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T17:00:15Z",
+      "side": 1,
+      "message": "where is the ec_config.c file getting generated from. Is there and ebuild dependency somewhere?",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 29
+      },
+      "revId": "df999c7c5c79466cdab500c5de6234e536ffc7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97bdb39c_06fee16e",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-12T17:00:15Z",
+      "side": 1,
+      "message": "we should make this searching pattern something in the auto generated code since we will repeat this pattern multiple times",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 32
+      },
+      "revId": "df999c7c5c79466cdab500c5de6234e536ffc7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
