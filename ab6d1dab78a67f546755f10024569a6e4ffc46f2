@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37140fcb_b13cd9c0",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T21:00:00Z",
+      "side": 1,
+      "message": "this should be inside the if() scope, after line 407",
+      "revId": "ab6d1dab78a67f546755f10024569a6e4ffc46f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108e02ae_a6180aa6",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-12T21:00:00Z",
+      "side": 1,
+      "message": "this should be inside if() after line 440.",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 20
+      },
+      "revId": "ab6d1dab78a67f546755f10024569a6e4ffc46f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
