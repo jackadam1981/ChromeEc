@@ -16,6 +16,24 @@
       "revId": "e9fbc32f0939323c7effb49a3be2686318c8b01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f67ecee_0c00335c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4069,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-12T15:51:32Z",
+      "side": 0,
+      "message": "Yup, we\u0027ve definitely been bitten by assumptions about the \"timeout\" before, hence why we end up with things like the next_src_cap timer.",
+      "parentUuid": "67f3e935_1cb7e343",
+      "revId": "e9fbc32f0939323c7effb49a3be2686318c8b01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
