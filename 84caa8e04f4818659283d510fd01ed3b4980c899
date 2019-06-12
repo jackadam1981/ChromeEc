@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "16d52426_ec7efc8c",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-12T02:10:13Z",
+      "side": 1,
+      "message": "Ack. Thanks for the explanation.",
+      "parentUuid": "11e7c248_a28c6112",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 36
+      },
+      "revId": "84caa8e04f4818659283d510fd01ed3b4980c899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d44f601c_3938166e",
         "filename": "board/kukui/board.c",
         "patchSetId": 3
