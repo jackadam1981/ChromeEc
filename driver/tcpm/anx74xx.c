@@ -1109,7 +1109,7 @@ static int anx74xx_get_chip_info(int port, int renew,
 		return rv;
 
 	if ((*chip_info)->fw_version_number == 0 ||
-		(*chip_info)->fw_version_number == -1 || renew) {
+	    (*chip_info)->fw_version_number == -1 || renew == RENEW_LIVE_DATA) {
 		rv = tcpc_read(port, ANX74XX_REG_FW_VERSION, &val);
 
 		if (rv)

@@ -679,8 +679,8 @@ int tcpci_get_chip_info(int port, int renew,
 	if (chip_info)
 		*chip_info = i;
 
-	/* If already populated and renewal is not asked, return cache value */
-	if (i->vendor_id && !renew)
+	/* If already populated and local data is asked, return local data */
+	if (i->vendor_id && renew == RENEW_LOCAL_DATA)
 		return EC_SUCCESS;
 
 	error = tcpc_read16(port, TCPC_REG_VENDOR_ID, &val);
