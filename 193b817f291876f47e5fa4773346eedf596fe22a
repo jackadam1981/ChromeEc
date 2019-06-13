@@ -229,6 +229,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea01aae0_e054c7b6",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-13T19:40:25Z",
+      "side": 1,
+      "message": "I see no point of listing or describing config macros here. This list incur maintenance cost and will be out of sync.\n\n\"Most USB-C options will start with `CONFIG_USB_PD_` or `CONFIG_USBC_`\" and \"see [config.h](../include/config.h)\" are enough.\n\nIf there is a way to make config.h and usb-c.md include config_usb_pd.h, that\u0027s fine with me.\n\nYou may want to list quirks and caveats (and mention the related macros).",
+      "parentUuid": "b4ff2158_2046d5b1",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
