@@ -70,6 +70,30 @@
       "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d570c69a_355c4d99",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T19:54:03Z",
+      "side": 1,
+      "message": "taking off the gating for the calls",
+      "parentUuid": "54ab01b9_432701dd",
+      "range": {
+        "startLine": 517,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 37
+      },
+      "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
