@@ -118,6 +118,7 @@ struct common_hnd {
 	struct iteflash_config conf;
 	int flash_size;
 	int is8320dx;  /* boolean */
+	int isRISCV;  /* boolean */
 	union {
 		int i2c_dev_fd;
 		struct usb_endpoint uep;
@@ -514,9 +515,9 @@ static int config_i2c_mux(struct common_hnd *chnd, uint8_t cmd)
 /* Fills in chnd->flash_size */
 static int check_chipid(struct common_hnd *chnd)
 {
-	int ret;
+	int ret = 0;
 	uint8_t ver = 0xff;
-	uint16_t id = 0xffff;
+	uint32_t id = 0;
 	uint16_t DX[5] = {128, 192, 256, 384, 512};
 
 	/*
@@ -551,10 +552,14 @@ static int check_chipid(struct common_hnd *chnd)
 	ret = i2c_read_byte(chnd, 0x02, &ver);
 	if (ret < 0)
 		return ret;
+
 	if ((id & 0xff00) != (CHIP_ID & 0xff00)) {
-		fprintf(stderr, "Invalid chip id: %04x\n", id);
-		return -EINVAL;
+		printf("2 bytes chip id: %04x\n", id);
+		goto check_3bytes_id;
 	}
+
+	chnd->isRISCV = 0;
+
 	/* compute embedded flash size from CHIPVER field */
 	if ((ver & 0x0f) == 0x03)  {
 		chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
@@ -563,7 +568,28 @@ static int check_chipid(struct common_hnd *chnd)
 		chnd->flash_size = (128 + (ver & 0xF0)) * 1024;
 		chnd->is8320dx = 0;
 	}
-	printf("CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id, ver,
+
+	goto show_chip_id;
+
+check_3bytes_id:
+	ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x85);
+	ret = i2c_read_byte(chnd, 0x30, (uint8_t *)&id + 2);
+
+	/* For New RISC Chip 81202 83202 */
+	if (id == 0x081202 || id == 0x083202) {
+		printf("\n\rRISCV chip\n\r");
+		chnd->is8320dx = 1;
+		chnd->isRISCV = 1;
+		chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
+	} else {
+		fprintf(stderr, "Invalid chip id: %04x\n", id);
+		return -EINVAL;
+	}
+
+show_chip_id:
+	printf("CHIPID %06x, CHIPVER %02x, Flash size %d kB\n", id, ver,
 			chnd->flash_size / 1024);
 
 	return 0;
@@ -575,6 +601,9 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 	int ret = 0;
 
 	/* Reset CPU only, and we keep power state until flashing is done. */
+	if (chnd->isRISCV)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+
 	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
 	ret |= i2c_write_byte(chnd, 0x2e, 0x06);
 
@@ -594,6 +623,8 @@ static int dbgr_disable_watchdog(struct common_hnd *chnd)
 	int ret = 0;
 
 	printf("Disabling watchdog...\n");
+	if (chnd->isRISCV)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 
 	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
 	ret |= i2c_write_byte(chnd, 0x2e, 0x05);
@@ -611,6 +642,9 @@ static int dbgr_disable_protect_path(struct common_hnd *chnd)
 	int ret = 0, i;
 
 	printf("Disabling protect path...\n");
+
+	if (chnd->isRISCV)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 
 	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
 	for (i = 0; i < 32; i++) {
