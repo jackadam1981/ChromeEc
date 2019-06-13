@@ -82,10 +82,12 @@ static struct pm_statistics pm_stats;
  * t0: start time, in us
  * t1: end time, in us
  */
-static void log_pm_stat(struct pm_stat *stat, uint64_t t0, uint64_t t1)
+static void log_pm_stat(struct pm_stat *stat, uint32_t t0, uint32_t t1)
 {
-	stat->total_time_us += t1 - t0;
-	stat->count++;
+	if (t1 >= t0) {
+		stat->total_time_us += t1 - t0;
+		stat->count++;
+	}
 }
 
 #ifdef CONFIG_ISH_PM_AONTASK
