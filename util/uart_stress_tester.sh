@@ -38,12 +38,12 @@ SCRIPT_NAME="$(basename "$0")"
 . "/usr/share/misc/shflags" || exit 1
 
 # Flags
+DEFINE_string time "300" "Test duration in second"
 DEFINE_string pty "" "List of UART device path(s) to test"
-DEFINE_integer min_char  "40000" "Minimum number of characters to generate."
 
 FLAGS_HELP="usage: ${SCRIPT_NAME} [flags]
 example:
-  ${SCRIPT_NAME} --pty /dev/ttyUSB0 --min_char 100000
+  ${SCRIPT_NAME} --pty /dev/ttyUSB0 --time 3600
   ${SCRIPT_NAME} --pty=\"/dev/ttyUSB0 /dev/ttyUSB2\""
 
 FLAGS "$@" || exit 1
@@ -98,13 +98,6 @@ calc_percent() {
 }
 
 #######################################
-# Get time of the day in millisecond.
-#######################################
-get_msecond() {
-	date +%s%3N
-}
-
-#######################################
 # Calculate the character loss rate based on the given test files.
 # Arguments:
 #   $1: Device path
@@ -125,20 +118,19 @@ calc_char_loss_rate() {
 	if [[ ! -e ${FILE_BASE} ]]; then
 		local i
 
-		for (( i=1; i<=${REPEATS}; i++ )) do
+		for (( i=1; i<=REPEATS; i++ )) do
 			cat "${FILE_SPL}"
 		done > "${FILE_BASE}"
 	fi
 
 	# Count the characters in captured data files, and get the difference
 	# between them.
-	local CH_EXPC=$( get_num_char "${FILE_BASE}" )
+	CH_EXPC["${PTY}"]=$( get_num_char "${FILE_BASE}" )
 	local CH_RESL=$( get_num_char "${FILE_COMP}" )
-	local CH_LOST=$(( ${CH_EXPC} - ${CH_RESL} ))
-	local STR="${PTY}: ${CH_LOST} lost / ${CH_EXPC}"
+	local CH_LOST=$(( CH_EXPC["${PTY}"] - CH_RESL ))
+	local STR="${PTY} : ${CH_LOST} lost / ${CH_EXPC["${PTY}"]}"
 
-	TOTAL_CH_EXPC=$(( ${TOTAL_CH_EXPC} + ${CH_EXPC} ))
-	TOTAL_CH_LOST=$(( ${TOTAL_CH_LOST} + ${CH_LOST} ))
+	TOTAL_CH_LOST=$(( TOTAL_CH_LOST + CH_LOST ))
 
 	# Check if test output is not smaller than expected.
 	# If so, it must contain some other pattern.
@@ -146,7 +138,6 @@ calc_char_loss_rate() {
 		# If the sizes are same each other, then compare the text.
 		if diff --brief "${FILE_BASE}" "${FILE_COMP}"; then
 			info "${STR} : 0 %"
-			return
 		else
 			die "${FILE_COMP} does not match to ${FILE_BASE}"
 		fi
@@ -154,15 +145,19 @@ calc_char_loss_rate() {
 		# Calculate the character loss rate.
 		local RATE
 
-		RATE=$( calc_percent ${CH_LOST} ${CH_EXPC} )
+		RATE=$( calc_percent ${CH_LOST} ${CH_EXPC["${PTY}"]} )
 
 		error "${STR} : ${RATE} %"
 	else
 		error "Check console output channels are turned off."
 		error "Check uart_timestamp is off if servod is running."
 		echo
-		die "${FILE_COMP} corrupted: $(( -${CH_LOST} )) more found."
+		die "${FILE_COMP} corrupted: $(( -CH_LOST )) more found."
 	fi
+
+	# Print the transfer speed tested.
+	info "Transfer rate: $(( CH_EXPC["${PTY}"] / FLAGS_time )) char/s"
+	info		# empty line
 }
 
 #######################################
@@ -201,40 +196,55 @@ start_capture() {
 }
 
 #######################################
+# Send the UART console command to the given device.
+# Arguments:
+#   $1: UART console command to send
+#   $2: UART device path
+#######################################
+send_console_command() {
+	[[ $# -eq 2 ]] || die "${FUNCNAME[0]}: argument error: $*"
+
+	local ucmd="$1"
+	local pd="$2"
+
+	echo "${ucmd}" > "${pd}"
+	if [[ -n ${ucmd} ]]; then
+		# Let's reload watchdog.
+		echo "waitms 0" > "${pd}"
+	fi
+}
+
+#######################################
 # Run a UART stress test on target device(s).
 # Arguments:
-#   $1: Number of times to run a console command
+#   $@ : UART device path(s)
 #######################################
 stress_test() {
 	# Check the number of arguments.
-	[[ $# -gt 1 ]] || die "${FUNCNAME[0]}: wrong number of arguments: $*"
+	[[ $# -gt 0 ]] || die "${FUNCNAME[0]}: wrong number of arguments: $*"
 
-	local ITER=$1
-	shift
 	local TEST_PTYS=( "$@" )
 	local pd
-	local i
 
 	# Start to capture.
 	for pd in "${TEST_PTYS[@]}"; do
-		FILE_RES["${pd}"]="${DIR_TMP}/$(basename ${pd})_res_${ITER}.cap"
+		FILE_RES["${pd}"]="${DIR_TMP}/$(basename ${pd})_result.cap"
 		PIDS+=( $( start_capture "${pd}" "${FILE_RES["${pd}"]}" ) )
 	done
 
-	TS_START=$( get_msecond )
-
 	# Generate traffic.
-	for (( i=1; i<=${ITER}; i++ )) do
+	SECONDS_END=$(( SECONDS + FLAGS_time ))
+	while [ ${SECONDS} -lt ${SECONDS_END} ]; do
 		for pd in "${TEST_PTYS[@]}"; do
-			echo "${CONSOLE_CMDS["${pd}"]}" > "${pd}"
+			send_console_command "${CONSOLE_CMDS["${pd}"]}" "${pd}"
 		done
 
-		(( i % 10 == 0 )) || continue
+		REPEATS=$(( REPEATS + 1 ))
+		(( REPEATS % 10 == 0 )) || continue
 
 		echo -n "."
 		sleep 2
 	done
-	DURATION=$(( $(get_msecond) - TS_START ))
 	echo
 
 	# Stop capturing.
@@ -244,7 +254,6 @@ stress_test() {
 	PIDS=()
 }
 
-MIN_CHAR_SMPL=99999999
 #######################################
 # Choose a console command for sampling, and get a sample output.
 # Global Variables:
@@ -267,6 +276,10 @@ get_sample_txt() {
 		for cmd in "${CMDS[@]}"; do
 			# Start to capture
 			PID=$( start_capture "${pd}" "${FILE_CAP}" )
+			# Put PID into PIDS so that cleanup() can kill it
+			# just in case of an unexpected failure.
+			PIDS+=( ${PID} )
+
 			if [[ -n ${cmd} ]]; then
 				# Since it just started to capture, it might
 				# lose a few beginning bytes from echoed input
@@ -276,12 +289,14 @@ get_sample_txt() {
 				echo -n "    " > "${pd}"
 			fi
 
-			echo "${cmd}" > "${pd}"
+			send_console_command "${cmd}" "${pd}"
 
 			# Stop capturing
 			sleep 1
 			kill ${PID} &>/dev/null
 			wait
+			# Empty PIDS since PID got killed.
+			PIDS=()
 
 			if [[ -n ${cmd} ]]; then
 				# Remove any spaces that were attached
@@ -301,21 +316,18 @@ get_sample_txt() {
 
 		[[ ${NUM_CH} -gt 50 ]] || die "${pd} does not seem to respond"
 
-		if [[ ${NUM_CH} -lt ${MIN_CHAR_SMPL} ]]; then
-			MIN_CHAR_SMPL=${NUM_CH}
-		fi
-
 		FILE_SAMPLE["${pd}"]="${FILE_CAP}"
 	done
 }
 
 info "ChromeOS UART stress test starts."
 
-declare -A CONSOLE_CMDS
-declare -A FILE_SAMPLE
-declare -A FILE_RES
+declare -A CONSOLE_CMDS		# Console commands to test for each UART device
+declare -A FILE_SAMPLE		# Paths of each sample file
+declare -A FILE_RES		# Paths of each result file
+declare -A CH_EXPC		# Expected number of characters to receive
 TOTAL_CH_LOST=0
-TOTAL_CH_EXPC=0
+REPEATS=0
 
 # Check whether the given devices are available.
 read -a PTYS <<< "${FLAGS_pty}"
@@ -335,12 +347,9 @@ DIR_TMP="$( mktemp -d --suffix=.${SCRIPT_NAME} )"
 # Get sample output as base for comparison.
 get_sample_txt "${PTYS[@]}"
 
-# Calculate the iteration to run console command for traffic.
-REPEATS=$(( (${FLAGS_min_char} + ${MIN_CHAR_SMPL} - 1) / ${MIN_CHAR_SMPL} ))
-
 # Start the stress test
 info "UART devices: ${PTYS[*]}"
-stress_test ${REPEATS} "${PTYS[@]}"
+stress_test "${PTYS[@]}"
 
 # Calculate average rate calculation.
 for pd in "${PTYS[@]}"; do
