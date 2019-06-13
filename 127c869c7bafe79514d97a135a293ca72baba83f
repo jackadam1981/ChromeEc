@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f08a1b16_0bed68f7",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-13T19:23:32Z",
+      "side": 1,
+      "message": "Can you add \u0027.dram.data LMA is for preserving initialized data across resets\u0027?",
+      "range": {
+        "startLine": 438,
+        "startChar": 58,
+        "endLine": 438,
+        "endChar": 74
+      },
+      "revId": "127c869c7bafe79514d97a135a293ca72baba83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddff7427_3324e423",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-13T19:23:32Z",
+      "side": 1,
+      "message": "Not sure you meant it or DRAM.",
+      "range": {
+        "startLine": 446,
+        "startChar": 19,
+        "endLine": 446,
+        "endChar": 23
+      },
+      "revId": "127c869c7bafe79514d97a135a293ca72baba83f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
