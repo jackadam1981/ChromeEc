@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f29d5ada_a0ee0212",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-06-13T07:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef60f80_c538e550",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 41
+      },
+      "revId": "7ea26efdcd1d165fa3a839ebf8ee84c83244d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee8bcc89_c8d865c1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7ea26efdcd1d165fa3a839ebf8ee84c83244d2d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a786cbc_916282e9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2019-06-13T07:54:33Z",
+      "side": 1,
+      "message": "yes, but i\u0027m following the naming convention from the spec.",
+      "parentUuid": "ee8bcc89_c8d865c1",
+      "range": {
+        "startLine": 259,
+        "startChar": 10,
+        "endLine": 259,
+        "endChar": 26
+      },
+      "revId": "7ea26efdcd1d165fa3a839ebf8ee84c83244d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
