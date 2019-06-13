@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "015affe7_00bae082",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T15:40:18Z",
+      "side": 1,
+      "message": "By moving the ifdef just around the DECLARE_IRQ, it covers a smaller amount of vertical distance and becomes a bit easier to read.\n\nOn top of that, it ensures the ISR still compiles even if we aren\u0027t using it in a particular configuration.\n\nCompiler should strip out the definition anyway.",
+      "parentUuid": "33df2f8c_84e1a0af",
+      "range": {
+        "startLine": 668,
+        "startChar": 7,
+        "endLine": 668,
+        "endChar": 31
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f91f8070_5533b3dd",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 4
@@ -201,6 +225,30 @@
       "writtenOn": "2019-06-13T13:53:00Z",
       "side": 1,
       "message": "we need more of a description for each of these config options\n\n(A ISH section like you have is good though)",
+      "range": {
+        "startLine": 4097,
+        "startChar": 0,
+        "endLine": 4101,
+        "endChar": 23
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569bb100_7fad8c8a",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T15:40:18Z",
+      "side": 1,
+      "message": "The descriptions could be:\n\nμs before entering {D0i2,D0i3}\ndoes the ISH chip have the aontaskfw enabled\ndoes the ISH chip have D3 reset enabled\ndoes the ISH chip have a reset prep ISR",
+      "parentUuid": "8c43ae9c_4f4f66a5",
       "range": {
         "startLine": 4097,
         "startChar": 0,

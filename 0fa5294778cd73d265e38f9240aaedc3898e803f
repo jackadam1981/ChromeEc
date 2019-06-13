@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c3a4bfa_53fe5787",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T15:40:18Z",
+      "side": 0,
+      "message": "Shouldn\u0027t it be inconsequential having these placeholder entries here anyway?",
+      "parentUuid": "2300c5f0_67464843",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "0fa5294778cd73d265e38f9240aaedc3898e803f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a74d4ea_6c480239",
         "filename": "core/minute-ia/interrupts.c",
         "patchSetId": 4
@@ -107,6 +131,30 @@
       "writtenOn": "2019-06-13T15:38:25Z",
       "side": 0,
       "message": "Should I undo the removal of all of the D0Ix configs?  Atlas should not have to have code that it is not going to use included in their build",
+      "parentUuid": "5498818c_c6fe1f65",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "0fa5294778cd73d265e38f9240aaedc3898e803f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7289ff3b_dbf0676e",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T15:40:18Z",
+      "side": 0,
+      "message": "Yes, I had confused d0i0 and d0i1... oops.\n\nIs this an ISH3 specific detail, (in that, we could configure on CHIP_FAMILY_ISH3)?\n\nAt some point, it would be interesting to see if we can initialize this at chip init from the DECLARE_IRQ info. (out of scope for this CL)",
       "parentUuid": "5498818c_c6fe1f65",
       "range": {
         "startLine": 155,
