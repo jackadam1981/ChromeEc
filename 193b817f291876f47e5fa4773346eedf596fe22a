@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "5f27c7ab_0b8aacb0",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "nit: capitalize",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1a4cd76_5d54726b",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -232,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "e6dc5456_4e89f99a",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "I think it\u0027s a good idea. We may also want to add references to the Type-C spec.",
+      "parentUuid": "44e8d1da_de6309cd",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "469d231e_ea133982",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -248,6 +295,29 @@
         "startChar": 34,
         "endLine": 28,
         "endChar": 36
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd86edab_db69a487",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "This should be a link to the actual Type-C spec?",
+      "range": {
+        "startLine": 39,
+        "startChar": 53,
+        "endLine": 39,
+        "endChar": 64
       },
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -278,6 +348,29 @@
     },
     {
       "key": {
+        "uuid": "2221223a_6ffe1a87",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "\u0027Try.SRC\u0027",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d28b8c0b_8a56576e",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -294,6 +387,76 @@
         "startChar": 4,
         "endLine": 43,
         "endChar": 6
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63f5ea4_f062ec86",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "I\u0027ve never seen it in any official docs, but shurst@ has been using it a lot recently in his new stack.",
+      "parentUuid": "d28b8c0b_8a56576e",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614fa3bc_cf35d708",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "I would say for VBUS at a minimum. For example, the TI part is the most featured, but the Silergy and NXP parts are a bit more lacking.",
+      "range": {
+        "startLine": 46,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a7dfcf_92612c0c",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "nit: cuddle them; SuperSpeed",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 19
       },
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -363,6 +526,52 @@
         "startChar": 47,
         "endLine": 74,
         "endChar": 60
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285e6432_3d5f6ecf",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "\u0027Samus, the Google Chromebook Pixel 2\u0027.",
+      "range": {
+        "startLine": 76,
+        "startChar": 44,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35279881_e58ccc31",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "Try.SRC",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 37
       },
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -818,6 +1027,52 @@
         "startChar": 0,
         "endLine": 198,
         "endChar": 28
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f9bf5de_50fbf90f",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "nit: file bugs for these",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbfa4dcf_c577409d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:45:59Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 4
       },
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
