@@ -46,6 +46,52 @@
       "revId": "8923e7f4c9686a4b206f49268c4a83f1e2c363e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df47f429_8ae18c43",
+        "filename": "common/fpsensor_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T18:27:01Z",
+      "side": 1,
+      "message": "Technically, this should be 2019 since it is a new file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8923e7f4c9686a4b206f49268c4a83f1e2c363e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c03e4d85_48f75f09",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T18:27:01Z",
+      "side": 1,
+      "message": "Here too.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8923e7f4c9686a4b206f49268c4a83f1e2c363e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
