@@ -418,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "99178570_e36d23a5",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-13T21:55:15Z",
+      "side": 1,
+      "message": "It seems cryptic to me. I see older EC code using \"TYPEC\" and \"USBC\", which is only 2-3 more characters than \"TC\".",
+      "parentUuid": "a63f5ea4_f062ec86",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "614fa3bc_cf35d708",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
