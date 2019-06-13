@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "431045d3_6b84c35a",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T14:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39db61b3_31df08dd",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33bd7a25_c4cbd8ab",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b49b950b_731445a7",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T14:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33bd7a25_c4cbd8ab",
+      "range": {
+        "startLine": 285,
+        "startChar": 16,
+        "endLine": 285,
+        "endChar": 24
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "33df2f8c_84e1a0af",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T14:05:06Z",
+      "side": 1,
+      "message": "That is how the code was.  Jack requested this... Jack should comment on it",
+      "parentUuid": "8d489cc3_4fd4af92",
+      "range": {
+        "startLine": 668,
+        "startChar": 7,
+        "endLine": 668,
+        "endChar": 31
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f91f8070_5533b3dd",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2019-06-13T13:53:00Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 730,
+        "endChar": 23
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65db07b8_30d25f8d",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T14:05:06Z",
+      "side": 1,
+      "message": "Same reply.  Jack?",
+      "parentUuid": "f91f8070_5533b3dd",
       "range": {
         "startLine": 730,
         "startChar": 0,
