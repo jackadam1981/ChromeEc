@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ccf60c7b_5b21fdc3",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T15:51:31Z",
+      "side": 1,
+      "message": "Ideally, I think we should just move ish_aon_share.h into power_mgt.h at some point, and do include this header. So power_mgt.h being here is not bad, but we should make sure the includes are sorted and change the pointy brackets to quotes.",
+      "parentUuid": "8ba7ca2a_0b5d7dde",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33bd7a25_c4cbd8ab",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 4
