@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c850f5f5_d6134587",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-13T00:12:37Z",
+      "side": 1,
+      "message": "Correct, but that\u0027s when I change it everywhere (across all console commands in the entire codebase). I\u0027ll (eventually) do that in a separate change. In the meantime this makes it clear which one to be using (and generates compiler error if you use the wrong one).",
+      "parentUuid": "39329343_95e2be70",
+      "range": {
+        "startLine": 727,
+        "startChar": 12,
+        "endLine": 727,
+        "endChar": 25
+      },
+      "revId": "dfef66788a064dbe52827d87285df4f270dd6f94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40a4671b_fc153de5",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 1
