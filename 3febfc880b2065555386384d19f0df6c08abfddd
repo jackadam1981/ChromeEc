@@ -22,6 +22,30 @@
       "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb037b1d_d25cac53",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T19:35:36Z",
+      "side": 1,
+      "message": "You are right in that they can not happen... but the compiler does not know that. These will compile in with the IS_ENABLED and will make the enter_d0ix routines all link in.  Adding the IS_ENABLED should not add any code and don\u0027t have to worry about pushing off the else to enter_d0i0() because it really can\u0027t happen",
+      "parentUuid": "433ec8cc_9971a340",
+      "range": {
+        "startLine": 517,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 37
+      },
+      "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
