@@ -117,7 +117,8 @@ struct iteflash_config {
 struct common_hnd {
 	struct iteflash_config conf;
 	int flash_size;
-	int is8320dx;  /* boolean */
+	int is_new_flash_size;  /* boolean */
+	int is_dbgr_3bytes;  /* boolean */
 	union {
 		int i2c_dev_fd;
 		struct usb_endpoint uep;
@@ -511,17 +512,45 @@ static int config_i2c_mux(struct common_hnd *chnd, uint8_t cmd)
 	return 0;
 }
 
+/* Get 3 Byte Chip ID */
+static int get_3byte_chip_id(struct common_hnd *chnd, uint32_t *chip_id)
+{
+	int ret = 0;
+
+	ret = i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x85);
+	ret |= i2c_read_byte(chnd, 0x30, (uint8_t *)chip_id + 2);
+
+	ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x86);
+	ret |= i2c_read_byte(chnd, 0x30, (uint8_t *)chip_id + 1);
+
+	ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x87);
+	ret |= i2c_read_byte(chnd, 0x30, (uint8_t *)chip_id + 0);
+
+	if (ret < 0) {
+		fprintf(stderr, "Failed to get 3 byte id.");
+		return -EIO;
+	}
+
+	return ret;
+}
+
 /* Fills in chnd->flash_size */
 static int check_chipid(struct common_hnd *chnd)
 {
 	int ret;
 	uint8_t ver = 0xff;
-	uint16_t id = 0xffff;
+	uint32_t id = 0;
 	uint16_t DX[5] = {128, 192, 256, 384, 512};
 
 	/*
 	 * Chip Version is mapping from bit 3-0
-	 * Flash size is mapping from bit 7-4
+	 * New Flash size is mapping from bit 7-4
 	 *
 	 * Chip Version (bit 3-0)
 	 * 0: AX
@@ -551,19 +580,42 @@ static int check_chipid(struct common_hnd *chnd)
 	ret = i2c_read_byte(chnd, 0x02, &ver);
 	if (ret < 0)
 		return ret;
+
+	chnd->is_dbgr_3bytes = 0;
+
 	if ((id & 0xff00) != (CHIP_ID & 0xff00)) {
-		fprintf(stderr, "Invalid chip id: %04x\n", id);
-		return -EINVAL;
-	}
-	/* compute embedded flash size from CHIPVER field */
-	if ((ver & 0x0f) == 0x03)  {
-		chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
-		chnd->is8320dx = 1;
+		printf("2 bytes chip id: %04x\n", id);
+		ret = get_3byte_chip_id(chnd, (uint32_t *)&id);
+		printf("3 bytes chip id: %06x\n", id);
+		if (ret < 0) {
+			fprintf(stderr, "Invalid chip id: %06x\n", id);
+			return -EINVAL;
+		}
+
+		/* For New RISC Chip 81202 83202 */
+		/* Chip Valid for 8xxx1 & 8xxx2 */
+		if (((id & 0x080003) == (0x080001)) ||
+			((id & 0x080003) == (0x080002))) {
+			chnd->is_new_flash_size = 1;
+			chnd->is_dbgr_3bytes = 1;
+			chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
+		} else {
+			fprintf(stderr, "Invalid chip id: %04x\n", id);
+			return -EINVAL;
+		}
 	} else {
-		chnd->flash_size = (128 + (ver & 0xF0)) * 1024;
-		chnd->is8320dx = 0;
+
+		/* compute embedded flash size from CHIPVER field */
+		if ((ver & 0x0f) == 0x03)  {
+			chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
+			chnd->is_new_flash_size = 1;
+		} else {
+			chnd->flash_size = (128 + (ver & 0xF0)) * 1024;
+			chnd->is_new_flash_size = 0;
+		}
 	}
-	printf("CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id, ver,
+
+	printf("CHIPID %06x, CHIPVER %02x, Flash size %d kB\n", id, ver,
 			chnd->flash_size / 1024);
 
 	return 0;
@@ -575,6 +627,9 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 	int ret = 0;
 
 	/* Reset CPU only, and we keep power state until flashing is done. */
+	if (chnd->is_dbgr_3bytes)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+
 	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
 	ret |= i2c_write_byte(chnd, 0x2e, 0x06);
 
@@ -594,6 +649,8 @@ static int dbgr_disable_watchdog(struct common_hnd *chnd)
 	int ret = 0;
 
 	printf("Disabling watchdog...\n");
+	if (chnd->is_dbgr_3bytes)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 
 	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
 	ret |= i2c_write_byte(chnd, 0x2e, 0x05);
@@ -611,6 +668,9 @@ static int dbgr_disable_protect_path(struct common_hnd *chnd)
 	int ret = 0, i;
 
 	printf("Disabling protect path...\n");
+
+	if (chnd->is_dbgr_3bytes)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 
 	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
 	for (i = 0; i < 32; i++) {
@@ -2050,7 +2110,7 @@ int main(int argc, char **argv)
 	}
 
 	if (chnd.conf.erase) {
-		if (chnd.is8320dx)
+		if (chnd.is_new_flash_size)
 			/* Do Normal Erase Function */
 			command_erase2(&chnd, chnd.flash_size, 0, 0);
 		else
@@ -2060,7 +2120,7 @@ int main(int argc, char **argv)
 	}
 
 	if (chnd.conf.output_filename) {
-		if (chnd.is8320dx)
+		if (chnd.is_new_flash_size)
 			ret = write_flash2(&chnd, chnd.conf.output_filename, 0);
 		else
 			ret = write_flash(&chnd, chnd.conf.output_filename, 0);
