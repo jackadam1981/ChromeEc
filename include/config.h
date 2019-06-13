@@ -1231,6 +1231,9 @@
  */
 #undef CONFIG_COMMON_GPIO_SHORTNAMES
 
+/* Control the IO pins of IO expander via common IO Expander APIs */
+#undef CONFIG_COMMON_IO_EXPANDER
+
 /*
  * EC's supporting powering down GPIO pins.
  * Add flag GPIO_POWER_DOWN and additional API's.
@@ -2220,6 +2223,9 @@
 
 /* Support NXP PCA9534 I/O expander. */
 #undef CONFIG_IO_EXPANDER_PCA9534
+
+/* Number of IO Expander ports */
+#undef CONFIG_IO_EXPANDER_PORT_COUNT
 
 /*****************************************************************************/
 
