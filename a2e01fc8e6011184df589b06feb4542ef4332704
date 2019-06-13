@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1caab82d_2ee6ef22",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a728fe_255d8c09",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f758b6a_0932740c",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bbe8b4e5_cfc19d18",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "7f758b6a_0932740c",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 14
+      },
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bd3dec3_0c1fbf39",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "ec3bbf59_2115ba86",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "4bd3dec3_0c1fbf39",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3a8b1ee_1738dd58",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
@@ -79,6 +145,24 @@
       "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0004e7e3_044ac20f",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "f3a8b1ee_1738dd58",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "5dd81566_baa4b469",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "cb7df355_7cec566e",
+      "range": {
+        "startLine": 319,
+        "startChar": 9,
+        "endLine": 319,
+        "endChar": 14
+      },
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39ebee2a_808d7dd3",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
@@ -119,6 +227,24 @@
       "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7201d4b4_c7f4a799",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "This isn\u0027t needed. Removed.",
+      "parentUuid": "39ebee2a_808d7dd3",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "1eda8d9f_a5da9805",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e550e4c5_8101b41d",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43ad1089_526e8f93",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
@@ -150,6 +294,24 @@
       "writtenOn": "2019-06-13T01:47:53Z",
       "side": 1,
       "message": "Why do you decide to remove the terminations in the super state as opposed to the ErrorRecovery state itself? Additionally, I don\u0027t see an explicit call to turn off VBUS.",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be46777_97bd261e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "The terminations should be removed in the ErrorRecovery and Disabled states so I put the common functionality into a super state. I also added the VBUS off logic to the super state.",
+      "parentUuid": "43ad1089_526e8f93",
       "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -170,6 +332,24 @@
       "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a586ea57_6d8cc936",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-06-13T17:20:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "210546bb_639351fc",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
