@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c375987_4c700e69",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-13T21:59:00Z",
+      "side": 1,
+      "message": "I see ,once in 4 hours, huge number(due to negative) here like 0xFFFFFFF9. let\u0027s make it \"0\" if it\u0027s negative.",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "3313991c43f6dbc5a2bfed0d7132e96cc3f62823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2cff2e3_6c000e18",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 6
