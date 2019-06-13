@@ -443,8 +443,19 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	ASSERT(out || !out_bytes);
 	ASSERT(in || !in_bytes);
 
-	/* Clear status */
 	if (xfer_start) {
+		int isr = STM32_I2C_ISR(port);
+		if (isr & (STM32_I2C_ISR_BUSY | STM32_I2C_ISR_BERR
+				| STM32_I2C_ISR_ARLO)) {
+			int rv = i2c_unwedge(port);
+			CPRINTS("I2C-%d unwedged (%d) isr=0x%x", port, rv, isr);
+			/* Assume all ports on the same bus use the same bps */
+			i2c_init_port(get_i2c_port(port));
+			if (rv)
+				goto xfer_exit;
+		}
+
+		/* Clear status */
 		STM32_I2C_ICR(port) = STM32_I2C_ICR_ALL;
 		STM32_I2C_CR2(port) = 0;
 	}

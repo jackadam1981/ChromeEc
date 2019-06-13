@@ -426,4 +426,12 @@ void i2c_start_xfer_notify(int port, int slave_addr);
  */
 void i2c_end_xfer_notify(int port, int slave_addr);
 
+/**
+ * Find i2c_port_t data for given port
+ *
+ * @param port: I2C port number
+ * @return i2c_port_t data
+ */
+const struct i2c_port_t *get_i2c_port(int port);
+
 #endif  /* __CROS_EC_I2C_H */
