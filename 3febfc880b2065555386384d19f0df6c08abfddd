@@ -46,6 +46,30 @@
       "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54ab01b9_432701dd",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T19:38:13Z",
+      "side": 1,
+      "message": "all D0i{0,1,2,3} will be enabled on boards after the initial bringup phase, so it\u0027s OK having extra code here. The only reason to not include we be for bringup or debugging, in which size is less of a concern.",
+      "parentUuid": "bb037b1d_d25cac53",
+      "range": {
+        "startLine": 517,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 37
+      },
+      "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
