@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c081ccd7_4532cf0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-13T03:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "347874d7_00cff35c",
+      "range": {
+        "startLine": 25,
+        "startChar": 61,
+        "endLine": 25,
+        "endChar": 69
+      },
+      "revId": "4e8427db0b0717edfe5d355cf09f6dea3dde2e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6727c9db_84b59f6e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "079924dc_ff14417a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-13T03:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75d3682e_bd3e05d9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "4e8427db0b0717edfe5d355cf09f6dea3dde2e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49e25f67_2116c4a6",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 7
@@ -107,6 +155,30 @@
       "writtenOn": "2019-06-12T18:26:17Z",
       "side": 1,
       "message": "isn\u0027t \" \u003e DRAM AT \u003e DRAM\" the same as just \"\u003e DRAM\"? Isn\u0027t DRAM implied for the LMA if it is not specified?",
+      "range": {
+        "startLine": 465,
+        "startChar": 13,
+        "endLine": 465,
+        "endChar": 22
+      },
+      "revId": "4e8427db0b0717edfe5d355cf09f6dea3dde2e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db175cf_f315338b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-13T03:12:59Z",
+      "side": 1,
+      "message": "No, it\u0027s different if you have specified VMA address at the first line of section declaration.\n\nIf we are using \u0027\u003e DRAM\u0027 only, we have:\n\n$ arm-none-eabi-objdump -h build/kukui_scp/RW/ec.RW.elf\n\nIdx Name          Size      VMA       LMA       File off  Algn\n 5 .dram.text    00000048  10000000  10000000  00030000  2**3\n                 CONTENTS, ALLOC, LOAD, READONLY, CODE\n 6 .dram.data    00000014  1000005c  1000005c  0003005c  2**0\n                 CONTENTS, ALLOC, LOAD, DATA\n 7 .dram.bss     00000004  10000070  10000070  00030070  2**0\n                 ALLOC\n\nYou can see the .dram.data LMA and VMA are the same (0x1000005c).\n\nWhat we need is, they should be at the different address(VMA 0x1000005c, LMA 0x10000048).\n\n$ arm-none-eabi-objdump -h build/kukui_scp/RW/ec.RW.elf\n\nIdx Name          Size      VMA       LMA       File off  Algn\n  5 .dram.text    00000048  10000000  10000000  00030000  2**3 \n                  CONTENTS, ALLOC, LOAD, READONLY, CODE        \n  6 .dram.data    00000014  1000005c  10000048  0003005c  2**0 \n                  CONTENTS, ALLOC, LOAD, DATA                  \n  7 .dram.bss     00000004  10000070  10000070  00030070  2**0 \n                  ALLOC",
+      "parentUuid": "49e25f67_2116c4a6",
       "range": {
         "startLine": 465,
         "startChar": 13,
