@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22a728fe_255d8c09",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Prefer bugs over usernames.",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f758b6a_0932740c",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Prefer bugs over usernames.",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 14
+      },
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bd3dec3_0c1fbf39",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Why should input current limit be touched here?",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a8b1ee_1738dd58",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Same question here.",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7df355_7cec566e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 319,
+        "startChar": 9,
+        "endLine": 319,
+        "endChar": 14
+      },
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ebee2a_808d7dd3",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Why is this assumption made?",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e550e4c5_8101b41d",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "I would also add\n    \n#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT\n\t    \u0026\u0026 (battery_get_disconnect_state() !\u003d BATTERY_NOT_DISCONNECTED)\n#endif",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ad1089_526e8f93",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Why do you decide to remove the terminations in the super state as opposed to the ErrorRecovery state itself? Additionally, I don\u0027t see an explicit call to turn off VBUS.",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210546bb_639351fc",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T01:47:53Z",
+      "side": 1,
+      "message": "Missing comment describing function.",
+      "revId": "a2e01fc8e6011184df589b06feb4542ef4332704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
