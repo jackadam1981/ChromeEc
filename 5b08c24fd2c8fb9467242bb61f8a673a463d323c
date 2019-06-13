@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39db61b3_31df08dd",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 1,
+      "message": "let\u0027s remove this here since we aren\u0027t using it.\n\nI was thinking that power_mgt was getting complied for both normal and aon binaries, but it doesn\u0027t appear to be",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33bd7a25_c4cbd8ab",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 1,
+      "message": "we can probably remove this unused (and function below) now too",
+      "range": {
+        "startLine": 285,
+        "startChar": 16,
+        "endLine": 285,
+        "endChar": 24
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d489cc3_4fd4af92",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 1,
+      "message": "since we still have to use the #ifdef around the DECLARE_IRQ, we might as well put it around teh entire isr function and drop the maybe_unused attribute",
+      "range": {
+        "startLine": 668,
+        "startChar": 7,
+        "endLine": 668,
+        "endChar": 31
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91f8070_5533b3dd",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 730,
+        "endChar": 23
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c43ae9c_4f4f66a5",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 1,
+      "message": "we need more of a description for each of these config options\n\n(A ISH section like you have is good though)",
+      "range": {
+        "startLine": 4097,
+        "startChar": 0,
+        "endLine": 4101,
+        "endChar": 23
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2300c5f0_67464843",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 0,
+      "message": "we may want this guard for atlas_ish (e.g. non-AON builds)",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "0fa5294778cd73d265e38f9240aaedc3898e803f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a74d4ea_6c480239",
+        "filename": "core/minute-ia/interrupts.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T13:53:00Z",
+      "side": 0,
+      "message": "Is the thought there that non non lower mode device can still listen to this interrupt and do nothing?",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 25
+      },
+      "revId": "0fa5294778cd73d265e38f9240aaedc3898e803f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
