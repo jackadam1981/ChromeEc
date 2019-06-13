@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce7b6df4_46c9385e",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-13T17:40:18Z",
+      "side": 1,
+      "message": "Sorry to nitpick, but can you use a value that is not the same as fake_tpm_seed?\n\nI\u0027d suggest running `cat /dev/urandom` on your workstation, that will give you a pool of pseudo-random numbers. You can use them to set the various constants heres (fake_rollback_secret, fake_tpm_seed, user_id1, salt1, ...)",
+      "parentUuid": "4156bcaa_5ff24d56",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "f89101c51c1e5f9e756cd163a236a78b103d2068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c03737_edc22c40",
         "filename": "test/fpsensor.c",
         "patchSetId": 2

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "420d5932_e6fd7da8",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-13T17:40:18Z",
+      "side": 1,
+      "message": "Success in that case is not actually guaranteed without the implicit condition that fp_tpm_seed_is_set() will return true. The test should document that. For example:\n\n// GIVEN that the TPM Seed has been set\n// GIVEN that reading the rollback secret will succeed\n// THEN the derivation will succeed\n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/dev-util/+/1650716 for another example.\n\nCan you also do the same for the other tests?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 18
+      },
+      "revId": "bf685b9ce3eff161ea2a8613f8eae681f39cb00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
