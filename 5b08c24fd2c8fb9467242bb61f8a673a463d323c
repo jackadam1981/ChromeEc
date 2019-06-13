@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8ba7ca2a_0b5d7dde",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-13T15:48:10Z",
+      "side": 1,
+      "message": "I put this back in due to the usage of ISH_PM_STATE_RESET_PREP that is used in this file. I could include it conditionally but not sure this makes sense with our desire to remove #ifdef statements from the code.",
+      "parentUuid": "431045d3_6b84c35a",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "5b08c24fd2c8fb9467242bb61f8a673a463d323c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33bd7a25_c4cbd8ab",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 4
