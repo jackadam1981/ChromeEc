@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a219162c_426f3895",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-13T00:12:22Z",
+      "side": 1,
+      "message": "This will prevent watchdog from resetting EC.",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 27
+      },
+      "revId": "0038fc6abc40b1aa15ac532b23bbf66901e0a9ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

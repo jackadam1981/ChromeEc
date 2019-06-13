@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e25845_9a636bf1",
+        "filename": "util/uart_stress_tester.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-13T00:12:22Z",
+      "side": 0,
+      "message": "Reminder: this was to prevent EC reset for being chocked with heavy USB traffic.",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 9
+      },
+      "revId": "2fb0ff65ecac63829d93d1d9ae0994ebf7a5883d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
