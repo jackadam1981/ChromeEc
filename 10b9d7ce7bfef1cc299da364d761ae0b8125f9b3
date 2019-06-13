@@ -22,6 +22,30 @@
       "revId": "10b9d7ce7bfef1cc299da364d761ae0b8125f9b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d9d80d_267b7aaf",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-13T21:54:17Z",
+      "side": 1,
+      "message": "JFYI, the alignment below is the alignment used in board/flapjack/board.c (i.e. probably cherry-picked from flapjack)",
+      "parentUuid": "5ef032a6_4159fe46",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 2
+      },
+      "revId": "10b9d7ce7bfef1cc299da364d761ae0b8125f9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
