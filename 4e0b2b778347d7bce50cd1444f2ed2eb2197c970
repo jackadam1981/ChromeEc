@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec1d2887_f31fda80",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-13T00:46:26Z",
+      "side": 1,
+      "message": "enum ec_pd_chip_info_src. Here and everywhere else.",
+      "range": {
+        "startLine": 1102,
+        "startChar": 43,
+        "endLine": 1102,
+        "endChar": 46
+      },
+      "revId": "4e0b2b778347d7bce50cd1444f2ed2eb2197c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
