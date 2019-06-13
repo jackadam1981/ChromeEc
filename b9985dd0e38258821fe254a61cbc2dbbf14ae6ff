@@ -22,6 +22,30 @@
       "revId": "b9985dd0e38258821fe254a61cbc2dbbf14ae6ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffc4387_e053d507",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T22:19:27Z",
+      "side": 1,
+      "message": "Either way, we should not do this in a while loop as it starves the EC.\n\nI think the root cause for this occurring is actually the motion sense task not getting re-scheduled properly for a long time.\n\nI think we address more concerns in a follow up CL, but this should land",
+      "parentUuid": "0545301f_f2748c30",
+      "range": {
+        "startLine": 978,
+        "startChar": 16,
+        "endLine": 978,
+        "endChar": 60
+      },
+      "revId": "b9985dd0e38258821fe254a61cbc2dbbf14ae6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
