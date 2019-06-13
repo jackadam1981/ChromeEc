@@ -22,6 +22,30 @@
       "revId": "a659f9345b7212ab80d7f8485456b34865546bc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f5b4cc_c7023a13",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T21:01:37Z",
+      "side": 1,
+      "message": "You are right... if the time wraps while we are in idle, then subtracting the smaller number from the larger one will produce the correct wrapping for the difference :)",
+      "parentUuid": "49695686_80668a46",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "a659f9345b7212ab80d7f8485456b34865546bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
