@@ -16,6 +16,24 @@
       "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6449c2_9afe8078",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-13T15:25:27Z",
+      "side": 0,
+      "message": "This is left over from when the ish build.mk file was originally copied from another chip build.mk that used this concept. The ISH never used this concept",
+      "parentUuid": "abdb6113_bc301e8a",
+      "revId": "f9a512fb73ad1ac4b69673770eeddb2dac6712c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
