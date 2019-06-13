@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49695686_80668a46",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-13T20:56:44Z",
+      "side": 1,
+      "message": "you don\u0027t need to change these part.\nchanging uint64_t -\u003e uint32_t handles the overlap.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "a659f9345b7212ab80d7f8485456b34865546bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
