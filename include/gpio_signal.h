@@ -15,4 +15,14 @@ enum gpio_signal {
 	GPIO_COUNT
 };
 
+#ifdef CONFIG_COMMON_IO_EXPANDER
+#define IOEX(name, expin, flags) IOEX_##name,
+
+enum ioex_signal {
+	#include "gpio.wrap"
+	IOEX_COUNT
+};
+
+#endif
+
 #endif /* __CROS_EC_GPIO_SIGNAL_H */
