@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "62101c0d_2f5e2081",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-13T19:15:12Z",
+      "side": 1,
+      "message": "Then the CL description isn\u0027t right (and the config macro name is misleading). We poll even if the interrupt pin is available. You\u0027re just emulating interrupt by a deferred call.",
+      "parentUuid": "0721cc6a_d8a3a2a7",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "28c69acfc3652974e907602928dfcea32400aad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86fcfe4b_849335c4",
         "filename": "include/config.h",
         "patchSetId": 8
