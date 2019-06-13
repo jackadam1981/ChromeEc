@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "155ca2f0_e28ceac4",
+        "filename": "common/fpsensor_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-13T18:35:47Z",
+      "side": 1,
+      "message": "Can we avoid changing it as part of the cherry-pick? (i.e., separate commit in master that could then be cherry-picked here)\n\nI don\u0027t want to break the output of:\n\n git log --cherry cros/firmware-nocturne-10984.B...cros/master --author\u003dtomhughes --author\u003dnorvez --author\u003dyichengli --author\u003dhesling --pretty\u003doneline\n\nbecause the patch is different",
+      "parentUuid": "df47f429_8ae18c43",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8923e7f4c9686a4b206f49268c4a83f1e2c363e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c03e4d85_48f75f09",
         "filename": "include/fpsensor_state.h",
         "patchSetId": 2
