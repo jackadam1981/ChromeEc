@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "433ec8cc_9971a340",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-13T19:26:50Z",
+      "side": 1,
+      "message": "These are unnecessary, as d0ix_decide won\u0027t return ISH_PM_STATE_D0ix unless it is enabled.",
+      "range": {
+        "startLine": 517,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 37
+      },
+      "revId": "3febfc880b2065555386384d19f0df6c08abfddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
