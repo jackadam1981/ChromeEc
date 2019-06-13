@@ -52,3 +52,28 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
 #define PIN(a, b...) static const int _pin_ ## a ## _ ## b \
 	__attribute__((unused, section(".unused"))) = __LINE__;
 #include "gpio.wrap"
+
+#ifdef CONFIG_COMMON_IO_EXPANDER
+#include "ioexpander.h"
+#define IOEX(name, expin, flags) {#name, IOEX_##expin, flags},
+#define IOEX_UNIMPLEMENTED(name) {#name, 0, DUMMY_IOEX_BANK, 0, GPIO_DEFAULT},
+
+/* IO expander signal list. */
+const struct ioex_info ioex_list[] = {
+	#include "gpio.wrap"
+};
+BUILD_ASSERT(ARRAY_SIZE(ioex_list) == IOEX_COUNT);
+
+#define IOEX(name, expin, flags) expin
+
+/* The compiler will complain if we use the same name twice or the controller
+ * number declared is greater or equal to CONFIG_IO_EXPANDER_PORT_COUNT.
+ * The linker ignores anything that gets by.
+ */
+#define EXPIN(a, b, c...) \
+	static const int _expin_ ## a ## _ ## b  ## _ ## c \
+	__attribute__((unused, section(".unused"))) = __LINE__; \
+	BUILD_ASSERT(a < CONFIG_IO_EXPANDER_PORT_COUNT);
+
+#include "gpio.wrap"
+#endif
