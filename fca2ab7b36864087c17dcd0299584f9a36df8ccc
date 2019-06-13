@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c85e301_dd0bc142",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:17:49Z",
+      "side": 1,
+      "message": "Do you mean SOURCE device?",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "fca2ab7b36864087c17dcd0299584f9a36df8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16638ab4_221ce20e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:17:49Z",
+      "side": 1,
+      "message": "Similarly, should this be a SINK?",
+      "range": {
+        "startLine": 28,
+        "startChar": 31,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "fca2ab7b36864087c17dcd0299584f9a36df8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914a4286_273f460d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-13T21:17:49Z",
+      "side": 1,
+      "message": "After running the detection, shouldn\u0027t you disable the detector (regardless of what supplier was found)?",
+      "revId": "fca2ab7b36864087c17dcd0299584f9a36df8ccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
