@@ -14,6 +14,13 @@
 
 *   [USB Updater](./usb_updater.md)
 
+## Fingerprint MCU (FPMCU)
+
+*   [Overview](./fingerprint/overview.md)
+*   [Updating and Flashing](./fingerprint/updating_and_flashing.md)
+*   [Write Protection](./fingerprint/write_protection.md)
+*   [Keys and Signing](./fingerprint/keys_and_signing.md)
+
 ## Miscellaneous
 
 *   [Low Battery Startup](./low_battery_startup.md)
