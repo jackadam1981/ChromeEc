@@ -168,6 +168,7 @@ enum temp_sensor_id {
 enum battery_type {
 	BATTERY_SMP_LIS,
 	BATTERY_SMP_SDI,
+	BATTERY_LGC_AP18C8K,
 	BATTERY_TYPE_COUNT,
 };
 
