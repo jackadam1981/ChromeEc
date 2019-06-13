@@ -46,6 +46,30 @@
       "revId": "d3a50c7d69f07e67ca94ea8677e21777a9863644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3259cf2d_da18f93d",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-13T01:17:59Z",
+      "side": 1,
+      "message": "Yeah, you are right. eye-crossed.",
+      "parentUuid": "d1a0e3f1_fe087b1e",
+      "range": {
+        "startLine": 336,
+        "startChar": 38,
+        "endLine": 336,
+        "endChar": 40
+      },
+      "revId": "d3a50c7d69f07e67ca94ea8677e21777a9863644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
