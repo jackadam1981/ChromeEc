@@ -21,6 +21,9 @@
 #define BOARD_VERSION  2
 #endif
 
+#define CONFIG_COMMON_IO_EXPANDER
+#define CONFIG_IO_EXPANDER_NCT38XX
+#define CONFIG_IO_EXPANDER_PORT_COUNT 3
 /* EC modules */
 #define CONFIG_ADC
 #define CONFIG_PWM
