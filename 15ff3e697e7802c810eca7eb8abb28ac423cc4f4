@@ -46,6 +46,30 @@
       "revId": "15ff3e697e7802c810eca7eb8abb28ac423cc4f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6731dca_9272cec2",
+        "filename": "navbar.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2019-06-14T14:00:02Z",
+      "side": 1,
+      "message": "it\u0027s a bug in gitiles.  i\u0027d leave the navbar alone.\n\nhttps://crbug.com/gerrit/11023",
+      "parentUuid": "7b297fba_e81341ce",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "15ff3e697e7802c810eca7eb8abb28ac423cc4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
