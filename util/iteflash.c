@@ -51,7 +51,7 @@
 #define SDA_BIT        BIT(1)
 
 /* Chip ID register value */
-#define CHIP_ID 0x8380
+#define CHIP_ID 0x1202
 
 /* Embedded flash page size */
 #define PAGE_SIZE		(1<<8)
@@ -560,8 +560,8 @@ static int check_chipid(struct common_hnd *chnd)
 		chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
 		chnd->is8320dx = 1;
 	} else {
-		chnd->flash_size = (128 + (ver & 0xF0)) * 1024;
-		chnd->is8320dx = 0;
+		chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
+		chnd->is8320dx = 1;
 	}
 	printf("CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id, ver,
 			chnd->flash_size / 1024);
@@ -575,6 +575,7 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 	int ret = 0;
 
 	/* Reset CPU only, and we keep power state until flashing is done. */
+	ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
 	ret |= i2c_write_byte(chnd, 0x2e, 0x06);
 
@@ -595,6 +596,7 @@ static int dbgr_disable_watchdog(struct common_hnd *chnd)
 
 	printf("Disabling watchdog...\n");
 
+	ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 	ret |= i2c_write_byte(chnd, 0x2f, 0x1f);
 	ret |= i2c_write_byte(chnd, 0x2e, 0x05);
 	ret |= i2c_write_byte(chnd, 0x30, 0x30);
@@ -612,6 +614,7 @@ static int dbgr_disable_protect_path(struct common_hnd *chnd)
 
 	printf("Disabling protect path...\n");
 
+	ret |= i2c_write_byte(chnd, 0x80, 0xf0);
 	ret |= i2c_write_byte(chnd, 0x2f, 0x20);
 	for (i = 0; i < 32; i++) {
 		ret |= i2c_write_byte(chnd, 0x2e, 0xa0+i);
