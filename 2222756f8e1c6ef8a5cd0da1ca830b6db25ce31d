@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d3836e2_899e04e5",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-14T18:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9805d852_e713b4b0",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b4491a6_d66d541c",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9a9bf0_20ec9872",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-14T18:53:42Z",
+      "side": 1,
+      "message": "Changed it to SHA256_DIGEST_SIZE",
+      "parentUuid": "381de32b_74fba5ce",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "2222756f8e1c6ef8a5cd0da1ca830b6db25ce31d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
