@@ -46,6 +46,30 @@
       "revId": "23980925fbef33f441a002f8a3d6a7e3b68df4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed71373d_49156726",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-14T20:06:46Z",
+      "side": 1,
+      "message": "This type of comment for removal/change once power management is implemented exists 4 times in board/arcada_ish/board.c, 2 times in chip/ish/system_state_subsys.c and 2 times in chip/ish/ipc_heci.c",
+      "parentUuid": "f2ecc8b4_54e831ad",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 2
+      },
+      "revId": "23980925fbef33f441a002f8a3d6a7e3b68df4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
