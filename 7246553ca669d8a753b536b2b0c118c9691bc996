@@ -450,6 +450,30 @@
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fca5cd6_56ea51b7",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T21:26:25Z",
+      "side": 1,
+      "message": "Fixed in separate CL: https://crrev.com/c/1660017",
+      "parentUuid": "7e4dedc5_c998087c",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
