@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "907fbad9_4cc946ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-14T17:46:32Z",
+      "side": 1,
+      "message": "the change is much more than just replacing gcc with clang, command line options need to be tweaked, conditional compilation sections added, etc.\n\nAnd this will not eliminate the need for thorough testing before upreving the toolchain.\n\nAnd then again, as Patrick points out, we have periodic coverity scan results which greatly go ignored, but could be used to identify fix subtle problems.\n\nMy point is that the prod codebase should not be littered with the one off use case support.",
+      "parentUuid": "8362e427_9830d8a2",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
