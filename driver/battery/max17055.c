@@ -373,7 +373,7 @@ static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
 	/* Unlock ocv table */
 	if (max17055_write(REG_LOCK1, 0x0059) ||
 	    max17055_write(REG_LOCK2, 0x00c4))
-		return EC_ERROR_UNKNOWN;
+		return MAX17055_ERROR_OCV_UNLOCK;
 
 	ASSERT(config->ocv_table);
 
@@ -381,21 +381,21 @@ static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
 	for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {
 		if (max17055_write(REG_OCV_TABLE_START + i,
 				   config->ocv_table[i]))
-			return EC_ERROR_UNKNOWN;
+			return MAX17055_ERROR_OCV_WRITE;
 	}
 
 	/* Read and compare ocv data */
 	for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {
 		if (max17055_read(REG_OCV_TABLE_START + i, &reg) ||
 		    reg != config->ocv_table[i])
-			return EC_ERROR_UNKNOWN;
+			return MAX17055_ERROR_OCV_READ;
 	}
 
-	while (--retries) {
+	while (1) {
 		/* Lock ocv table */
 		if (max17055_write(REG_LOCK1, 0x0000) ||
 		    max17055_write(REG_LOCK2, 0x0000))
-			return EC_ERROR_UNKNOWN;
+			return MAX17055_ERROR_OCV_LOCK;
 
 		/*
 		 * If the ocv table remains unlocked, the MAX17055 cannot
@@ -413,10 +413,10 @@ static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
 		}
 		if (i == MAX17055_OCV_TABLE_SIZE)
 			break;
+		if (!--retries)
+			return EC_ERROR_TIMEOUT;
 		msleep(20);
 	}
-	if (!retries)
-		return EC_ERROR_TIMEOUT;
 
 	/*
 	 * Delay 180ms is to prepare the environment to load the custom
@@ -448,6 +448,7 @@ static int max17055_load_batt_model_full(void)
 {
 	int reg;
 	int hib_cfg;
+	int rv;
 
 	const struct max17055_batt_profile *config;
 
@@ -469,8 +470,11 @@ static int max17055_load_batt_model_full(void)
 	 * Unlock ocv table access, write/compare/verify custom ocv table,
 	 * lock ocv table access.
 	 */
-	if (max17055_load_ocv_table(config))
-		return EC_ERROR_UNKNOWN;
+	rv = max17055_load_ocv_table(config);
+	if (rv) {
+		CPRINTS("Failed to load ocv table (0x%x)", rv);
+		return rv;
+	}
 
 	/* Write custom parameters */
 	if (max17055_write(REG_DESIGN_CAPACITY, config->design_cap) ||
