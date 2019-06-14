@@ -22,6 +22,30 @@
       "revId": "12c398387b0d5b4731e4bbef082b4674dce359b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "983251d0_05eb513b",
+        "filename": "chip/stm32/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-06-14T19:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "675724bb_9d60421f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "12c398387b0d5b4731e4bbef082b4674dce359b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
