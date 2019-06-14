@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87ec117b_d985037d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "changed to \"EC Implementation of USB-C Power Deliver and Alternate Modes\"",
+      "parentUuid": "fd7cee0a_4fc0b6f2",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c318ce2_5ad2791e",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189ee30f_57b61acf",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c318ce2_5ad2791e",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 5
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ffc5a9b3_8a851b27",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "SoC is fine. AP in in the SoC. Why AP?\n\nTechnically I think it would be the PCH in the SoC not the AP",
+      "parentUuid": "33537ec4_80961d02",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d621813d_b0f5bffd",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670236f8_2c7bcc5c",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d621813d_b0f5bffd",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "32e633e8_58183711",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "I still think SuperSpeed (TM) signals are still high speed signals. Also it is possible to use USB 2.0 over a USB-C connection, so that may be HighSpeed (TM) signals or SuperSpeed (TM) signals. Both to me are high speed.",
+      "parentUuid": "219d68db_4076a049",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f27c7ab_0b8aacb0",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a8cd33_b71e03aa",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f27c7ab_0b8aacb0",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,54 @@
     },
     {
       "key": {
+        "uuid": "be1ad745_21c3c23f",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c810626_671978cb",
+      "range": {
+        "startLine": 17,
+        "startChar": 51,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af4943f7_8902d21a",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1a4cd76_5d54726b",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d51127d_e171c1da",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "def89ef7_64910bdb",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "I think it includes slight more, like DisplayPort Alternate mode",
+      "parentUuid": "6d51127d_e171c1da",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd05eb90_6aebb5c4",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -229,6 +445,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47e3db8_d057aed8",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd05eb90_6aebb5c4",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "ac0e2d21_e8f9447c",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Added a link to the TCPC spec.\n\nThe TypeC spec is in the bundle linked above under \"USB-C spec\"",
+      "parentUuid": "e6dc5456_4e89f99a",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "469d231e_ea133982",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -299,6 +563,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3007da8_3d873a8d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "469d231e_ea133982",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -325,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "dfb11150_f6d74aaa",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd86edab_db69a487",
+      "range": {
+        "startLine": 39,
+        "startChar": 53,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae3e1638_e5a27539",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -348,6 +660,30 @@
     },
     {
       "key": {
+        "uuid": "58ce47e8_e9233195",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3e1638_e5a27539",
+      "range": {
+        "startLine": 41,
+        "startChar": 20,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2221223a_6ffe1a87",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -368,6 +704,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88617fa6_260c87e5",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2221223a_6ffe1a87",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -442,6 +802,30 @@
     },
     {
       "key": {
+        "uuid": "9dcc3fa0_f31a7b37",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "It is all over in the new stack, but maybe we should change it. If we change in in the new stack then we can remove it here.",
+      "parentUuid": "99178570_e36d23a5",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614fa3bc_cf35d708",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -462,6 +846,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbc5cb3_0983575e",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614fa3bc_cf35d708",
+      "range": {
+        "startLine": 46,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -488,6 +896,30 @@
     },
     {
       "key": {
+        "uuid": "5d20f97c_8218c8dd",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "haha. Done",
+      "parentUuid": "a1a7dfcf_92612c0c",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2693931e_48e1ffda",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -508,6 +940,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e588a3_3804fb90",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2693931e_48e1ffda",
+      "range": {
+        "startLine": 66,
+        "startChar": 40,
+        "endLine": 66,
+        "endChar": 54
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -534,6 +990,30 @@
     },
     {
       "key": {
+        "uuid": "12e7dce7_ab8787e0",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e90cc8f1_bb901278",
+      "range": {
+        "startLine": 68,
+        "startChar": 57,
+        "endLine": 68,
+        "endChar": 70
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6266a5f5_f9b9d705",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -554,6 +1034,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f6eba9_60b4d3af",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6266a5f5_f9b9d705",
+      "range": {
+        "startLine": 74,
+        "startChar": 47,
+        "endLine": 74,
+        "endChar": 60
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -580,6 +1084,30 @@
     },
     {
       "key": {
+        "uuid": "d159c7c3_319709b0",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "285e6432_3d5f6ecf",
+      "range": {
+        "startLine": 76,
+        "startChar": 44,
+        "endLine": 76,
+        "endChar": 60
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35279881_e58ccc31",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -600,6 +1128,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ddb289_af43bb28",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35279881_e58ccc31",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -626,6 +1178,30 @@
     },
     {
       "key": {
+        "uuid": "ccf63f7d_081300e1",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b4ffc1_8e7d0c48",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65535df9_1b8bf982",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -649,6 +1225,30 @@
     },
     {
       "key": {
+        "uuid": "e7173d10_24c6b7fb",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65535df9_1b8bf982",
+      "range": {
+        "startLine": 92,
+        "startChar": 55,
+        "endLine": 92,
+        "endChar": 60
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36732f18_ad534061",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -669,6 +1269,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e284f57_1dee8e1b",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36732f18_ad534061",
+      "range": {
+        "startLine": 92,
+        "startChar": 69,
+        "endLine": 93,
+        "endChar": 13
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -718,6 +1342,54 @@
     },
     {
       "key": {
+        "uuid": "6c005f6d_af61c095",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f7871d_8681684f",
+      "range": {
+        "startLine": 95,
+        "startChar": 31,
+        "endLine": 95,
+        "endChar": 33
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3182451_132448ae",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "021ebaf4_dc9a2c69",
+      "range": {
+        "startLine": 95,
+        "startChar": 73,
+        "endLine": 95,
+        "endChar": 78
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e9834a_2be2adbe",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -738,6 +1410,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a49971d_a4921485",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51e9834a_2be2adbe",
+      "range": {
+        "startLine": 97,
+        "startChar": 48,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -764,6 +1460,30 @@
     },
     {
       "key": {
+        "uuid": "7c4bd80d_1bc005e9",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f70b9f1_d8dbe894",
+      "range": {
+        "startLine": 98,
+        "startChar": 41,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07755263_425aec95",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -775,6 +1495,30 @@
       "writtenOn": "2019-06-13T21:02:32Z",
       "side": 1,
       "message": "-\u003e \"to get a higher power contract than 15W in RO, before booting the AP to jump the EC to RW\"\n\nor did you mean something else?",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc65e84_e9d12ac9",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "If software sync is disabled, then we never jump to RW. Software sync is disabled at the beginning of the dev cycle typically.",
+      "parentUuid": "07755263_425aec95",
       "range": {
         "startLine": 108,
         "startChar": 23,
@@ -807,6 +1551,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf961c56_a4489ad7",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Add note. Thanks",
+      "parentUuid": "fafe650b_d6977fd3",
+      "range": {
+        "startLine": 114,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 65
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -850,6 +1618,48 @@
     },
     {
       "key": {
+        "uuid": "66e0aa60_d1a5268c",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5fca196_2ea2dfc5",
+      "range": {
+        "startLine": 119,
+        "startChar": 15,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f7e1a84_2ca7c28c",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "The RW -\u003e RO case would fall under here",
+      "parentUuid": "70a24a78_00140a6b",
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f251b4d_bb24dccd",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -870,6 +1680,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a46981_c20e7801",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f251b4d_bb24dccd",
+      "range": {
+        "startLine": 122,
+        "startChar": 48,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -896,6 +1730,30 @@
     },
     {
       "key": {
+        "uuid": "ee20e9cf_959f1a79",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6958965e_03a3b76d",
+      "range": {
+        "startLine": 125,
+        "startChar": 19,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "893c4163_fb727c22",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -916,6 +1774,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05dc6347_4a9dd7c4",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "893c4163_fb727c22",
+      "range": {
+        "startLine": 146,
+        "startChar": 55,
+        "endLine": 146,
+        "endChar": 61
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -942,6 +1824,30 @@
     },
     {
       "key": {
+        "uuid": "9824e28a_dfa79665",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6f20747_f654cf7e",
+      "range": {
+        "startLine": 157,
+        "startChar": 39,
+        "endLine": 157,
+        "endChar": 46
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cef5b6e0_aab73e85",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -962,6 +1868,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f9fa9e_6f31042f",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Added sentence",
+      "parentUuid": "cef5b6e0_aab73e85",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 10
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -988,6 +1918,30 @@
     },
     {
       "key": {
+        "uuid": "0b8104fb_e870f8a8",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db00ae1e_9974b2e9",
+      "range": {
+        "startLine": 167,
+        "startChar": 37,
+        "endLine": 167,
+        "endChar": 42
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "717a4e9f_d0b3b74c",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -1008,6 +1962,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec8dd7c_03106d64",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717a4e9f_d0b3b74c",
+      "range": {
+        "startLine": 179,
+        "startChar": 43,
+        "endLine": 179,
+        "endChar": 46
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1058,6 +2036,30 @@
     },
     {
       "key": {
+        "uuid": "b2a7fe30_b0ba4dcc",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "I have removed the list.\n\nMaybe we can add scenario specific config lists later for tricky scenarios. I don\u0027t want to double source the meaning config options, just wanted a helpful started list.",
+      "parentUuid": "ea01aae0_e054c7b6",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f9bf5de_50fbf90f",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -1081,6 +2083,30 @@
     },
     {
       "key": {
+        "uuid": "42f2a36c_5142f026",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f9bf5de_50fbf90f",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 4
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbfa4dcf_c577409d",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -1101,6 +2127,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18e7a87e_b40b6e74",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbfa4dcf_c577409d",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 4
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
