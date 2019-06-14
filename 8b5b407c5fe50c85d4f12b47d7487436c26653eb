@@ -16,6 +16,24 @@
       "revId": "8b5b407c5fe50c85d4f12b47d7487436c26653eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf30e417_4617ca2f",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-14T14:33:27Z",
+      "side": 1,
+      "message": "0 is the identity for bitwise or (x | 0 \u003d\u003d x)",
+      "parentUuid": "380580ec_249c0a06",
+      "revId": "8b5b407c5fe50c85d4f12b47d7487436c26653eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
