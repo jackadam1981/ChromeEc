@@ -165,8 +165,8 @@ __attribute__((noreturn)) void __keep exception_panic(
 	__builtin_unreachable();
 }
 
-#ifdef CONFIG_SOFTWARE_PANIC
-__attribute__((noreturn)) void software_panic(uint32_t reason, uint32_t info)
+__attribute__((noreturn))
+void software_panic(uint32_t reason, uint32_t info)
 {
 	uint16_t code_segment;
 
@@ -208,4 +208,3 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*reason = *info = *exception = 0;
 	}
 }
-#endif
