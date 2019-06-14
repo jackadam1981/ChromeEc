@@ -302,6 +302,9 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	if (!pin_mode)
 		return 0;
 
+	usb_mux_set(port, TYPEC_MUX_DP, USB_SWITCH_CONNECT,
+		    board_get_polarity(port));
+
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
 	payload[1] = VDO_DP_CFG(pin_mode,      /* pin mode */
