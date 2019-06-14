@@ -164,6 +164,8 @@ static struct pd_protocol {
 	uint8_t data_role;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
+	/* Lastly received message ID. */
+	uint8_t msg_rx_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
 	/* PD state for port */
@@ -1335,6 +1337,8 @@ void pd_execute_hard_reset(int port)
 		CPRINTF("C%d HARD RST RX\n", port);
 
 	pd[port].msg_id = 0;
+	pd[port].flags &= ~PD_FLAGS_RCV_MSG_RX_ID;
+	pd[port].msg_rx_id = 0;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	pd_dfp_exit_mode(port, 0, 0);
 #endif
@@ -1399,6 +1403,8 @@ void pd_execute_hard_reset(int port)
 static void execute_soft_reset(int port)
 {
 	pd[port].msg_id = 0;
+	pd[port].flags &= ~PD_FLAGS_RCV_MSG_RX_ID;
+	pd[port].msg_rx_id = 0;
 	set_state(port, DUAL_ROLE_IF_ELSE(port, PD_STATE_SNK_DISCOVERY,
 						PD_STATE_SRC_DISCOVERY));
 	CPRINTF("C%d Soft Rst\n", port);
@@ -2043,6 +2049,24 @@ static void handle_request(int port, uint16_t head,
 			  DUAL_ROLE_IF_ELSE(port,
 					    PD_STATE_SNK_DISCONNECTED,
 					    PD_STATE_SRC_DISCONNECTED));
+		return;
+	}
+
+	/*
+	 * Check if the message ID has been received, then we should drop the
+	 * message (except soft reset).
+	 */
+	if (!(pd[port].flags & PD_FLAGS_RCV_MSG_RX_ID)) {
+		/* This is the first time receive a msg ID, save it. */
+		pd[port].flags |= PD_FLAGS_RCV_MSG_RX_ID;
+		pd[port].msg_rx_id = PD_HEADER_ID(head);
+	} else if (PD_HEADER_ID(head) == pd[port].msg_rx_id && !cnt &&
+		   !PD_HEADER_EXT(head) &&
+		   PD_HEADER_TYPE(head) != PD_CTRL_SOFT_RESET) {
+		/*
+		 * Received the same msg ID, and it's not a PD_CTRL_SOFT_RESET.
+		 * Should only return GoodCRC and don't reply.
+		 */
 		return;
 	}
 
@@ -3965,6 +3989,8 @@ void pd_task(void *u)
 			set_polarity(port, pd[port].polarity);
 			/* reset message ID  on connection */
 			pd[port].msg_id = 0;
+			pd[port].flags &= ~PD_FLAGS_RCV_MSG_RX_ID;
+			pd[port].msg_rx_id = 0;
 			/* initial data role for sink is UFP */
 			pd_set_data_role(port, PD_ROLE_UFP);
 #if defined(CONFIG_CHARGE_MANAGER)
