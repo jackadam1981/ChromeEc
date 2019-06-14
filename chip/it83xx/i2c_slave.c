@@ -230,6 +230,7 @@ void i2c_slave_enable(int port, uint8_t slv_addr)
 	/* Enhanced I2C slave channel D, E, F DMA mode */
 	else {
 		int ch, idx;
+		uint32_t in_data_addr, out_data_addr;
 
 		/* Get enhanced i2c channel */
 		ch = i2c_slv_ctrl[port].offset / I2C_ENHANCED_CH_INTERVAL;
@@ -280,13 +281,27 @@ void i2c_slave_enable(int port, uint8_t slv_addr)
 		memset(in_data[idx], 0, I2C_MAX_BUFFER_SIZE);
 		memset(out_data[idx], 0, I2C_MAX_BUFFER_SIZE);
 
-		/* DMA write target address register */
-		IT83XX_I2C_RAMHA(ch) = ((uint32_t)in_data[idx] >> 8) & 0x0F;
-		IT83XX_I2C_RAMLA(ch) = (uint32_t)in_data[idx] & 0xFF;
+		in_data_addr = (uint32_t)in_data[idx];
+		out_data_addr = (uint32_t)out_data[idx];
 
-		/* DMA read target address register */
-		IT83XX_I2C_RAMHA2(ch) = ((uint32_t)out_data[idx] >> 8) & 0x0F;
-		IT83XX_I2C_RAMLA2(ch) = (uint32_t)out_data[idx] & 0xFF;
+		/* DMA write target address register */
+		IT83XX_I2C_RAMHA(ch) = (in_data_addr >> 8) & 0xFF;
+		IT83XX_I2C_RAMLA(ch) = in_data_addr & 0xFF;
+
+		if (IS_ENABLED(CHIP_ILM_DLM_ORDER)) {
+			/* DMA write target address register */
+			IT83XX_I2C_RAMH2A(ch) =	(in_data_addr >> 16) & 0xFF;
+			/* DMA read target address register */
+			IT83XX_I2C_CMD_ADDH2(ch) = (out_data_addr >> 16) & 0xFF;
+			IT83XX_I2C_CMD_ADDH(ch) = (out_data_addr >> 8) & 0xFF;
+			IT83XX_I2C_CMD_ADDL(ch) = out_data_addr & 0xFF;
+		} else {
+			/* DMA write target address register */
+			IT83XX_I2C_RAMHA(ch) = (in_data_addr >> 8) & 0x0F;
+			/* DMA read target address register */
+			IT83XX_I2C_RAMHA2(ch) =	(out_data_addr >> 8) & 0x0F;
+			IT83XX_I2C_RAMLA2(ch) = out_data_addr & 0xFF;
+		}
 
 		/* I2C module enable and command queue mode */
 		IT83XX_I2C_CTR1(ch) = IT83XX_I2C_COMQ_EN |
