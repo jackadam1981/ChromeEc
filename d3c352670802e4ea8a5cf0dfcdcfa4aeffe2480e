@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8de4cd18_cf014c9a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-14T18:24:46Z",
+      "side": 1,
+      "message": "It would be nice if we can clean up the code by using IS_ENABLED(CONFIG_TASK_PROFILING) where possible.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "d3c352670802e4ea8a5cf0dfcdcfa4aeffe2480e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
