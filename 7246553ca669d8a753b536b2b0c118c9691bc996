@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a7b6663e_e7498e34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-14T01:21:14Z",
+      "side": 1,
+      "message": "This probably has been discussed before, but do I get it right, that for production builds of nocturne_fp gcc is used, and you use clang only in development environment?\n\nIf this is the case, I can\u0027t help it but think  that this is an unnecessary and counterproductive complication of the already complex ec build system. It is counterproductive, because in case you use clang for iterations when developing, debugging,testing, you could miss issues which are there in gcc but not in clang.\n\nBut this is my personal opinion, if others don\u0027t see a problem with this, they should be the reviewers.",
+      "parentUuid": "e3c7ad43_61c8a622",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
