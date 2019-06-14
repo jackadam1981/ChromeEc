@@ -828,6 +828,9 @@ enum pd_states {
  */
 #define PD_FLAGS_SNK_WAITING_BATT BIT(20)
 
+/* Tracks whether received a message ID from port partner since last reset */
+#define PD_FLAGS_RCV_MSG_RX_ID     BIT(21)
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
