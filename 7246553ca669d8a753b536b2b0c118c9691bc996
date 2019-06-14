@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "50be68d9_2c3828e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-14T16:47:07Z",
+      "side": 1,
+      "message": "I think complicating the build system for this purpose is a too high a price to pay. Also, as most people are not using clang, this compilation mode is prone to getting broken every so often, it just is not viable.\n\nYou are saying it has not bitrotten yet and patches cleanly. Evne if this is merged, when someone makes an incompatible modification clang mode will get broken anyways and you\u0027d have to deal with it.",
+      "parentUuid": "f8ec0ffc_95a5da40",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
