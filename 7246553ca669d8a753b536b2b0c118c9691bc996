@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "2faa1fa9_ddca4e6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-06-14T17:55:00Z",
+      "side": 1,
+      "message": "Experience from coreboot shows that supporting both gcc and clang can be rather annoying, at least when the result is supposed to be buildable: firmware has way too many requirements on precise compiler behavior for that to be simple.\n\nWe still don\u0027t support clang fully in coreboot yet, we keep the infrastructure around, but we don\u0027t test it regularly: it would be too depressing.\n\nSomething \"half-way\" that we could set up is a scan-build run with gcc as base compiler, similar to https://coreboot.org/scan-build/: scan-build is a variant of clang that does coverity-style static analysis (but also complains if stuff isn\u0027t clang-aware). The important bit is that it only generates a report about stuff instead of failing on every error. Since the main build is conducted by gcc, the Makefiles are happy.",
+      "parentUuid": "907fbad9_4cc946ac",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
