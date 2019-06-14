@@ -167,8 +167,8 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-#ifdef HAS_TASK_CHIPSET
 /* TODO(b/122364080): replace when implement real chipset/power task */
+__maybe_unused
 int chipset_in_state(int state_mask)
 {
 	/* Until we know better, ISH assumes AP is always ON */
@@ -176,6 +176,7 @@ int chipset_in_state(int state_mask)
 }
 
 /* TODO(b/122364080): replace when implement real chipset/power task */
+__maybe_unused
 int chipset_in_or_transitioning_to_state(int state_mask)
 {
 	/* Until we know better, ISH assumes AP is always ON */
@@ -183,10 +184,10 @@ int chipset_in_or_transitioning_to_state(int state_mask)
 }
 
 /* TODO(b/122364080): replace when implement real chipset/power task */
+__maybe_unused
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 }
-#endif /* HAS_TASK_CHIPSET */
 
 /* TODO(b/122364080): remove when implement real chipset/power task */
 int board_idle_task(void *unused)

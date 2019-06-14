@@ -93,9 +93,8 @@ static void pmu_wakeup_isr(void)
 	__builtin_unreachable();
 }
 
-#ifdef CONFIG_ISH_PM_RESET_PREP
-
 /* ISR for reset prep interrupt */
+__maybe_unused
 static void reset_prep_isr(void)
 {
 	/* mask reset prep avail interrupt */
@@ -112,9 +111,6 @@ static void reset_prep_isr(void)
 
 	__builtin_unreachable();
 }
-
-#endif
-
 
 /**
  * Use a static data array for aon IDT, and setting IDT header for IDTR

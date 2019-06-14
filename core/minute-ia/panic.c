@@ -165,8 +165,8 @@ __attribute__((noreturn)) void __keep exception_panic(
 	__builtin_unreachable();
 }
 
-#ifdef CONFIG_SOFTWARE_PANIC
-__attribute__((noreturn)) void software_panic(uint32_t reason, uint32_t info)
+__maybe_unused __attribute__((noreturn))
+void software_panic(uint32_t reason, uint32_t info)
 {
 	uint16_t code_segment;
 
@@ -182,6 +182,7 @@ __attribute__((noreturn)) void software_panic(uint32_t reason, uint32_t info)
 	__builtin_unreachable();
 }
 
+__maybe_unused
 void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 {
 	/* Setup panic data structure */
@@ -197,6 +198,7 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	PANIC_DATA_PTR->x86.eflags = exception;
 }
 
+__maybe_unused
 void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 {
 	if (PANIC_DATA_PTR->magic == PANIC_DATA_MAGIC &&
@@ -208,4 +210,3 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 		*reason = *info = *exception = 0;
 	}
 }
-#endif
