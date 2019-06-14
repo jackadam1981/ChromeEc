@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "f8ec0ffc_95a5da40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T14:56:34Z",
+      "side": 1,
+      "message": "I don\u0027t mean that I\u0027m running production tests or doing daily feature development with it. I just want to be able to be able to easily verify that it still compiles and then run my script that checks that it runs on nocturne. It\u0027s much easier to do this when I don\u0027t have to switch branches, cherry-pick, etc.\n\nThe added benefit is that since clang emits more warnings than gcc, I can easily make sure we\u0027re not introducing real bugs in the code that gcc is not catching.",
+      "parentUuid": "e9b93e2d_92188757",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
