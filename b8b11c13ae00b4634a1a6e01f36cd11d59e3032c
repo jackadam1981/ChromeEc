@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1117f0cf_31c76ea9",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-14T01:41:57Z",
+      "side": 1,
+      "message": "Could you either move the comment to within the else block, or remove it? The else should be on the same line with the closing brace.",
+      "range": {
+        "startLine": 978,
+        "startChar": 0,
+        "endLine": 980,
+        "endChar": 8
+      },
+      "revId": "b8b11c13ae00b4634a1a6e01f36cd11d59e3032c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9593ea09_47922913",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-14T01:41:57Z",
+      "side": 1,
+      "message": "typo: \u0027Disable\u0027",
+      "range": {
+        "startLine": 1836,
+        "startChar": 4,
+        "endLine": 1836,
+        "endChar": 11
+      },
+      "revId": "b8b11c13ae00b4634a1a6e01f36cd11d59e3032c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
