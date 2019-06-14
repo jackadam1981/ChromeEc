@@ -181,6 +181,24 @@
     },
     {
       "key": {
+        "uuid": "0d869b03_e86ec2b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T18:01:10Z",
+      "side": 1,
+      "message": "The touchpad firmware is actually already built (and shipped) with clang. See why this is bad: http://b/76022938\n\nI think the issue mentioned there means we have to support clang. I\u0027m happy to help set up tooling to make testing it automated (which is part of the motivation mentioned in: https://groups.google.com/a/google.com/d/msg/chromeos-chatty-firmware/SqiiG0izA1A/B82hmMIgAwAJ)",
+      "parentUuid": "2faa1fa9_ddca4e6f",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
