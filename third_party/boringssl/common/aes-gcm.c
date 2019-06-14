@@ -95,9 +95,11 @@ static inline void store_word_le(void *out, size_t v) {
     }                                                                 \
   } while (0)
 
+#if defined(GHASH) || defined(GHASH_ASM)
 // kSizeTWithoutLower4Bits is a mask that can be used to zero the lower four
 // bits of a |size_t|.
 static const size_t kSizeTWithoutLower4Bits = (size_t) -16;
+#endif
 
 static void gcm_init_4bit(u128 Htable[16], uint64_t H[2]) {
   u128 V;
