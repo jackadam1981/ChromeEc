@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "2f1d53a1_19c70eae",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T22:39:52Z",
+      "side": 1,
+      "message": "The function already has\n\n  __attribute((naked))__\n\nin the declaration: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/77/1474577/5/core/cortex-m/panic-internal.h#9\n\nHere\u0027s what gcc produces with the clobber list:\n\n\t00000000 \u003cexception_panic\u003e:\n\t   0:\t4806      \tldr\tr0, [pc, #24]\t; (1c \u003cexception_panic+0x1c\u003e)\n\t   2:\tf8df c01c \tldr.w\tip, [pc, #28]\t; 20 \u003cexception_panic+0x20\u003e\n\t   6:\t4600      \tmov\tr0, r0\n\t   8:\tf3ef 8109 \tmrs\tr1, PSP\n\t   c:\tf3ef 8205 \tmrs\tr2, IPSR\n\t  10:\t466b      \tmov\tr3, sp\n\t  12:\te880 4ffe \tstmia.w\tr0, {r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}\n\t  16:\t46e5      \tmov\tsp, ip\n\t  18:\tf7ff fffe \tbl\t0 \u003cexception_panic\u003e\n\nHere\u0027s what gcc produces without the clobber list:\n\n\t00000000 \u003cexception_panic\u003e:\n\t   0:\t4b06      \tldr\tr3, [pc, #24]\t; (1c \u003cexception_panic+0x1c\u003e)\n\t   2:\t4a07      \tldr\tr2, [pc, #28]\t; (20 \u003cexception_panic+0x20\u003e)\n\t   4:\t4618      \tmov\tr0, r3\n\t   6:\tf3ef 8109 \tmrs\tr1, PSP\n\t   a:\tf3ef 8205 \tmrs\tr2, IPSR\n\t   e:\t466b      \tmov\tr3, sp\n\t  10:\te880 4ffe \tstmia.w\tr0, {r1, r2, r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}\n\t  14:\t4695      \tmov\tsp, r2\n\t  16:\tf7ff fffe \tbl\t0 \u003cexception_panic\u003e\n\t  1a:\tbf00      \tnop\n\nLooks like the difference is that before it uses R0/R12(IP) and after it uses R3/R2. I need to look at the assembly a bit more to see if that matters.",
+      "parentUuid": "273c3afb_cfc05e5e",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a3e887d_a510de78",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 5
