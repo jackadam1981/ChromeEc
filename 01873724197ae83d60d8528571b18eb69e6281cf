@@ -69,6 +69,30 @@
       "revId": "01873724197ae83d60d8528571b18eb69e6281cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86896ca_cfe6d724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T17:50:21Z",
+      "side": 1,
+      "message": "Let me see if I can find any details. I think it may be an optimization issue where gcc does optimizations before warning analysis, so the unused function is optimized out before warning analysis is done. We see what looks like similar behavior in https://crbug.com/972148.\n\nI\u0027m not entirely sure if clang does its pass before optimizations, but I\u0027ll see if I can find out.\n\nIn general clang has both more warnings and better (readable/actionable) messages when a warning is hit. The clang codebase (LLVM) itself is generally much easier to work with than gcc, which is why our toolchain team standardized on it rather than gcc.",
+      "parentUuid": "27eea1a2_17d3114a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "01873724197ae83d60d8528571b18eb69e6281cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
