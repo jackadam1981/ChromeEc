@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "i2c_slave.h"
 #include "intc.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -83,8 +84,9 @@ void board_pd_vbus_ctrl(int port, int enabled)
 }
 #else
 /* EC EVB */
-void pd_task(void)
+void pd_task(int p)
 {
+	ccprintf("This is PD task and ID:%d port:%d\n", task_get_current(), p);
 	while (1)
 		task_wait_event(-1);
 }
@@ -150,6 +152,9 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef CHIP_FAMILY_IT8XXX2
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -199,12 +204,53 @@ struct keyboard_scan_config keyscan_config = {
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"battery", IT83XX_I2C_CH_C, 100, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
+#if 0
 	{"evb-1",   IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
 	{"evb-2",   IT83XX_I2C_CH_B, 100, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
 	{"opt-4",   IT83XX_I2C_CH_E, 100, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
+#endif
 };
 
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* I2C slave address */
+#define I2C_SLAVE_ADDRA 0x52
+#define I2C_SLAVE_ADDRD 0x60
+#define I2C_SLAVE_ADDRE 0x62
+#define I2C_SLAVE_ADDRF 0x64
+
+/* I2C slave ports */
+const struct i2c_slv_port_t i2c_slv_ports[] = {
+	{"evb-a", IT83XX_I2C_CH_A, I2C_SLAVE_ADDRA},
+	{"evb-d", IT83XX_I2C_CH_D, I2C_SLAVE_ADDRD},
+	{"evb-e", IT83XX_I2C_CH_E, I2C_SLAVE_ADDRE},
+	{"evb-f", IT83XX_I2C_CH_F, I2C_SLAVE_ADDRF},
+};
+
+const unsigned int i2c_slvs_used = ARRAY_SIZE(i2c_slv_ports);
+
+
+#ifdef CONFIG_FPU
+#define PRINTF_FLOAT(x)  ((int)((x) * 10000.0f))
+static int it83202_fpu(int argc, char **argv)
+{
+	volatile float a = 1.23f;
+	volatile float b = 4.56f;
+	volatile float c;
+
+	c = a + b;
+	ccprintf("fp+: (%d)\n", PRINTF_FLOAT(c));
+	c = a - b;
+	ccprintf("fp-: (%d)\n", PRINTF_FLOAT(c));
+	c = a * b;
+	ccprintf("fpx: (%d)\n", PRINTF_FLOAT(c));
+	c = a / b;
+	ccprintf("fp/: (%d)\n", PRINTF_FLOAT(c));
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fpu, it83202_fpu, "", "");
+#endif
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
