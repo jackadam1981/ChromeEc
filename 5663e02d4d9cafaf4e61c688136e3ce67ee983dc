@@ -46,6 +46,30 @@
       "revId": "5663e02d4d9cafaf4e61c688136e3ce67ee983dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe3f39d_c33ac1cc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4892,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T20:16:35Z",
+      "side": 1,
+      "message": "The comments inline need to be enough to understand the encoding scheme. Not everyone will have access to that design doc",
+      "parentUuid": "b2713e13_ee7e6186",
+      "range": {
+        "startLine": 4882,
+        "startChar": 1,
+        "endLine": 4892,
+        "endChar": 44
+      },
+      "revId": "5663e02d4d9cafaf4e61c688136e3ce67ee983dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
