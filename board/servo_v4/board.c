@@ -29,6 +29,10 @@
 #include "usb-stream.h"
 #include "util.h"
 
+/* Forward declaration */
+static void vbus0_evt(enum gpio_signal signal);
+static void vbus1_evt(enum gpio_signal signal);
+
 #include "gpio_list.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -189,6 +193,20 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int usb_i2c_board_is_enabled(void) { return 1; }
+
+/******************************************************************************
+ * GPIO interrupt handlers.
+ */
+
+static void vbus0_evt(enum gpio_signal signal)
+{
+	task_wake(TASK_ID_PD_C0);
+}
+
+static void vbus1_evt(enum gpio_signal signal)
+{
+	task_wake(TASK_ID_PD_C1);
+}
 
 /******************************************************************************
  * Initialize board.
@@ -438,6 +456,10 @@ static void board_init(void)
 	 * DUT ports, so initially limit voltage to 5V.
 	 */
 	pd_set_max_voltage(PD_MIN_MV);
+
+	/* Enable VBUS detection to wake PD tasks fast enough */
+	gpio_enable_interrupt(GPIO_USB_DET_PP_CHG);
+	gpio_enable_interrupt(GPIO_USB_DET_PP_DUT);
 
 	hook_call_deferred(&ccd_measure_sbu_data, 1000 * MSEC);
 
