@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "fed44daf_4b6b5227",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-14T19:34:54Z",
+      "side": 1,
+      "message": "I think \"AP\" is used more generally in EC docs / comments to refer to the big chip running the OS.\nFor example, look for \"AP\" vs \"SoC\" in config.h comments.\nBut I don\u0027t feel very strongly about it.\nMuch more important is the missing \"the\".",
+      "parentUuid": "ffc5a9b3_8a851b27",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d621813d_b0f5bffd",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -234,6 +258,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b28eb49_82658f9d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-14T19:34:54Z",
+      "side": 1,
+      "message": "But these 4 differential pairs are only ever used for USB3 SuperSpeed (and DisplayPort), never for USB2 HighSpeed.",
+      "parentUuid": "32e633e8_58183711",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
