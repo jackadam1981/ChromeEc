@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "c8f286ee_4e69b316",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fed44daf_4b6b5227",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d621813d_b0f5bffd",
         "filename": "docs/usb-c.md",
         "patchSetId": 5
@@ -282,6 +306,30 @@
       "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cc11fb0_6bd3d150",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T19:43:41Z",
+      "side": 1,
+      "message": "Removed high speed and just calling them signals now.",
+      "parentUuid": "6b28eb49_82658f9d",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "193b817f291876f47e5fa4773346eedf596fe22a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
