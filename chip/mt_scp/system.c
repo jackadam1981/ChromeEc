@@ -87,8 +87,14 @@ void system_pre_init(void)
 	scp_enable_pirq();
 	/* Init dram mapping (and cache) */
 	scp_memmap_init();
-	/* Disable jump (mt_scp has only RW) and enable MPU. */
-	system_disable_jump();
+	/*
+	 * TODO(b:134365991): Though system_disable_jump() only updates
+	 * a static variable disable_jump if CONFIG_MPU disabled, but somehow,
+	 * then AP becomes very laggy.  This is just a workaround for MPU
+	 * disabled case.
+	 */
+	if (IS_ENABLED(CONFIG_MPU))
+		system_disable_jump();
 }
 
 void system_reset(int flags)
