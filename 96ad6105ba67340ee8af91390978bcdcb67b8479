@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "733609e7_4365b5ce",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T20:34:33Z",
+      "side": 1,
+      "message": "I like the idea of always calling init first.\n\nI was going to suggest that we remove the explicit ppc_init call, but the I found a comment that made me nervous: https://chromium.googlesource.com/chromiumos/platform/ec/+/21bf972bf93967fd3677a730b865dc80e3a235ae/common/usb_pd_protocol.c#2882\n\nI don\u0027t have any good ideas at the moment though :(",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "96ad6105ba67340ee8af91390978bcdcb67b8479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
