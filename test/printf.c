@@ -12,32 +12,32 @@
 #include "util.h"
 
 #define INIT_VALUE 0x5E
+#define NO_BYTES_TOUCHED NULL
 static const char err_str[] = "ERROR";
 static char output[1024];
 
-int run(const char *expect, size_t size_limit, int expect_ret,
-		const char *format, va_list args)
+int run(char *out, size_t out_size,
+		int expect_ret, const char *expect,
+		size_t size_limit, const char *format, va_list args)
 {
 	size_t expect_size = expect ? strlen(expect) + 1 : 0;
 	int rv;
 
 	ccprintf("\n");
-	ccprintf("expect='%s'\n", expect);
+	ccprintf("size_limit=%-4d | format='%s'\n", size_limit, format);
+	ccprintf("expect  ='%s'   | expect_status=%d\n", expect, expect_ret);
 
-	TEST_ASSERT(expect_size <= sizeof(output));
+	TEST_ASSERT(expect_size <= out_size);
 	TEST_ASSERT(expect_size <= size_limit);
-	memset(output, INIT_VALUE, sizeof(output));
+	memset(out, INIT_VALUE, out_size);
 
-	rv = vsnprintf(output, size_limit, format, args);
-	ccprintf("output='%s'\n", output);
+	rv = vsnprintf(out, size_limit, format, args);
+	ccprintf("received='%.*s'   | ret          =%d\n", MIN(out_size, 30), out, rv);
 
-	TEST_ASSERT_ARRAY_EQ(output, expect, expect_size);
-	TEST_ASSERT_MEMSET(&output[expect_size], INIT_VALUE,
-						sizeof(output)-expect_size);
+	TEST_ASSERT_ARRAY_EQ(out, expect, expect_size);
+	TEST_ASSERT_MEMSET(&out[expect_size], INIT_VALUE, out_size-expect_size);
 
 	if (rv >= 0) {
-		ccprintf("expect_size = %ld\n", expect_size);
-		ccprintf("rv = %d\n", rv);
 		TEST_ASSERT(rv == expect_size-1);
 		TEST_ASSERT(EC_SUCCESS == expect_ret);
 	} else {
@@ -53,20 +53,26 @@ int expect_success(const char *expect, const char *format, ...)
 	int rv;
 
 	va_start(args, format);
-	rv = run(expect, sizeof(output), EC_SUCCESS, format, args);
+	rv = run(output, sizeof(output),
+			EC_SUCCESS, expect,
+			sizeof(output), format, args);
 	va_end(args);
 
 	return rv;
 }
 
-int expect(int expect_ret, size_t size_limit, const char *expect,
-			const char *format, ...)
+
+int expect(char *out, size_t out_size,
+			int expect_ret, const char *expect,
+			size_t size_limit, const char *format, ...)
 {
 	va_list args;
 	int rv;
 
 	va_start(args, format);
-	rv = run(expect, size_limit, expect_ret, format, args);
+	rv = run(out, out_size,
+			expect_ret, expect,
+			size_limit, format, args);
 	va_end(args);
 
 	return rv;
@@ -78,8 +84,9 @@ test_static int test_vsnprintf_args(void)
 {
 	T(expect_success("",          ""));
 	T(expect_success("a",         "a"));
-	/* T(expect(NULL, 0,              EC_ERROR_INVAL,    "")); fail */
-	T(expect(EC_ERROR_OVERFLOW, 2, "a", "abc"));
+	T(expect(output, sizeof(output), EC_ERROR_INVAL, NO_BYTES_TOUCHED, 0, ""));
+	T(expect(output, sizeof(output), EC_SUCCESS, "", 1, ""));
+	T(expect(output, sizeof(output), EC_ERROR_OVERFLOW, "a", 2, "abc"));
 	return EC_SUCCESS;
 }
 
@@ -96,14 +103,17 @@ test_static int test_vsnprintf_int(void)
 	T(expect_success(" +123",     "%+5d",    123));
 	T(expect_success("00123",     "%05d",    123));
 	T(expect_success("00123",     "%005d",   123));
+	/* TODO(crbug.com/974084): This odd behavior should be fixed */
 	/* T(expect_success("+0123",     "%+05d",   123)); actual "0+123" */
 	/* T(expect_success("+0123",     "%+005d",  123)); actual "0+123" */
 
 	T(expect_success("  123",     "%*d",     5, 123));
 	T(expect_success(" +123",     "%+*d",    5, 123));
 	T(expect_success("00123",     "%0*d",    5, 123));
+	/* TODO(crbug.com/974084): This odd behavior should be fixed */
 	/* T(expect_success("00123",     "%00*d",   5, 123)); actual "ERROR" */
 	T(expect_success("0+123",     "%+0*d",   5, 123));
+	/* TODO(crbug.com/974084): This odd behavior should be fixed */
 	/* T(expect_success("0+123",     "%+00*d",  5, 123)); actual "ERROR" */
 
 	T(expect_success("123  ",     "%-5d",    123));
@@ -163,10 +173,25 @@ test_static int test_vsnprintf_strings(void)
 	T(expect_success("abc",       "%*s",     0, "abc"));
 	T(expect_success("a",         "%.1s",    "abc"));
 	T(expect_success("a",         "%.*s",    1, "abc"));
-	/* T(expect_success("",          "%.0s",    "abc"));    actual "abc" */
-	/* T(expect_success("",          "%.*s",    0, "abc")); actual "abc" */
-	T(expect_success("ab",        "%5.2s",   "abc")); /*    intentional  */
-	/* TODO(hesling): test for overruns on malformed strings */
+	T(expect_success("",          "%.0s",    "abc"));
+	T(expect_success("",          "%.*s",    0, "abc"));
+	/*
+	 * TODO(crbug.com/974084):
+	 * Ignoring the padding parameter is slightly odd behavior
+	 * and could use a review.
+	 */
+	T(expect_success("ab",        "%5.2s",   "abc"));
+	T(expect_success("abc",        "%.4s",   "abc"));
+
+	/*
+	 * Given a malformed string (address 0x1 is a good example),
+	 * if we ask for zero precision, expect no bytes to be read from
+	 * the malformed address and a blank output string.
+	 */
+	T(expect(output, sizeof(output),
+			EC_SUCCESS, "", sizeof(output),
+			"%.0s", (char *)1));
+
 	return EC_SUCCESS;
 }
 
@@ -176,16 +201,15 @@ test_static int test_vsnprintf_hexdump(void)
 
 	T(expect_success(err_str,     "%h",      bytes));
 	T(expect_success("005e",      "%.*h",    2, bytes));
-	/* T(expect_success("",          "%.*h",    0, bytes));  actual "ERROR" */
-	/* T(expect_success(" 005e",     "%5.*h",   2, bytes));  actual "005e"  */
-	/* T(expect_success("005e ",     "%-5.*h",  2, bytes));  actual "005e"  */
+	T(expect_success("",          "%.*h",    0, bytes));
+	T(expect_success(" 005e",     "%5.*h",   2, bytes));
+	T(expect_success("00",        "%0*.*h",  2, 0, bytes));
 	return EC_SUCCESS;
 }
 
 test_static int test_vsnprintf_combined(void)
 {
 	T(expect_success("abc", "%c%s", 'a', "bc"));
-	T(expect_success("12\tbc", "%d\t%s", 12, "bc"));
 	return EC_SUCCESS;
 }
 
