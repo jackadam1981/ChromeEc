@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e3c7ad43_61c8a622",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T00:08:27Z",
+      "side": 1,
+      "message": "I haven\u0027t investigated. It needs to be fixed, but I don\u0027t think it should prevent this change from landing since this change doesn\u0027t switch anything to clang; it just allows further development without carrying around patches.",
+      "parentUuid": "8b8c4339_806462bb",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "38ce28e1_1fe6c457",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T00:08:27Z",
+      "side": 1,
+      "message": "Not with the way we\u0027ve currently defined cc-name on line 24 (not written by me, just re-using that logic)",
+      "parentUuid": "8f0716ba_2e478851",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73264729_2267fc58",
         "filename": "core/cortex-m/build.mk",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2019-06-12T01:31:58Z",
       "side": 1,
       "message": "why is all this new section required? Should it be for clang only?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8d86d7_74e3e311",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T00:08:27Z",
+      "side": 1,
+      "message": "I will add a comment, but it\u0027s from the \"interesting\" macro in that file. I could make it for clang only.\n\nSnippet of first warning (repeated):\n\n\tIn file included from core/cortex-m/vecttable.c:385:\n\tcore/cortex-m/vecttable.c:275:2: error: initializer overrides prior initialization of this subobject [-Werror,-Winitializer-overrides]\n\t\tirq(150)\n\t\t^~~~~~~~\n\tcore/cortex-m/vecttable.c:102:84: note: expanded from macro \u0027irq\u0027\n\t#define irq(num) [num \u003c CONFIG_IRQ_COUNT ? num + IRQ_OFFSET : IRQ_UNUSED_OFFSET] \u003d vec(irq_ ## num)\n\t\t\t\t\t\t\t\t\t\t\t   ^~~~~~~~~~~~~~~~\n\tcore/cortex-m/vecttable.c:101:19: note: expanded from macro \u0027vec\u0027\n\t#define vec(name) name ## _handler,\n\t\t\t  ^~~~~~~~~~~~~~~~\n\t\u003cscratch space\u003e:207:1: note: expanded from here\n\tirq_150_handler\n\t^~~~~~~~~~~~~~~\n\tcore/cortex-m/vecttable.c:97:3: note: expanded from macro \u0027table\u0027\n\t\t\tx                                                               \\\n\t\t\t^\n\tcore/cortex-m/vecttable.c:117:2: note: previous initialization is here\n\t\tnull\n\t\t^~~~\n\tcore/cortex-m/vecttable.c:105:14: note: expanded from macro \u0027null\u0027\n\t#define null (void*)0,\n\t\t     ^~~~~~~~\n\tcore/cortex-m/vecttable.c:97:3: note: expanded from macro \u0027table\u0027\n\t\t\tx                                                               \\\n\t\t\t^\n\tcore/cortex-m/vecttable.c:276:2: error: initializer overrides prior initialization of this subobject [-Werror,-Winitializer-overrides]\n\t\tirq(151)\n\t\t^~~~~~~~",
+      "parentUuid": "73264729_2267fc58",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -136,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "273c3afb_cfc05e5e",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T00:08:27Z",
+      "side": 1,
+      "message": "RE: R7. It can be used as frame pointer for thumb targets (see section 6.2.5 of http://infocenter.arm.com/help/topic/com.arm.doc.espc0002/ATPCS.pdf) and clang matches gcc\u0027s buggy behavior and doesn\u0027t necessarily preserve the register even when it\u0027s in the clobber list:\n\n\u003e Currently, in line with GCC, when specifying reserved registers like sp or pc on an inline asm() clobber list, we don\u0027t always preserve the original value across the statement. And in general, overwriting reserved registers can have surprising results.\n\n\u003e r7 is used as the frame pointer for thumb targets, and this function needs to restore the SP from the FP because of the variable-length stack allocation a. r7 is clobbered by the inline assembly (and r7 is included in the clobber list), but LLVM does not preserve the value of the frame pointer across the assembly block.\n\nhttps://reviews.llvm.org/D51165\n\nI will double-check the function attribute for preventing register clobbering.",
+      "parentUuid": "f19fd6e2_7f78b648",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a3e887d_a510de78",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 5
@@ -147,6 +237,30 @@
       "writtenOn": "2019-06-12T01:31:58Z",
       "side": 1,
       "message": "why is this conditional compilation necessary? Is it ignored by gcc but causes clang warnings? Should the compiler type be the condition in that case?",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4dedc5_c998087c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-14T00:08:27Z",
+      "side": 1,
+      "message": "This function is only called when CONFIG_TASK_PROFILING is defined (line 272). clang warns about it, but gcc doesn\u0027t:\n\n  core/cortex-m/task.c:238:19: error: unused function \u0027get_interrupt_context\u0027 [-Werror,-Wunused-function]\nstatic inline int get_interrupt_context(void)\n                  ^\n\nThis should be the correct way to fix since it\u0027s not dependent on the compiler.",
+      "parentUuid": "2a3e887d_a510de78",
       "range": {
         "startLine": 238,
         "startChar": 1,
