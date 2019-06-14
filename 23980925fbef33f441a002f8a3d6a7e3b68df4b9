@@ -22,6 +22,30 @@
       "revId": "23980925fbef33f441a002f8a3d6a7e3b68df4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ecc8b4_54e831ad",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-14T18:55:02Z",
+      "side": 1,
+      "message": "Let\u0027s do this in a different CL",
+      "parentUuid": "5d8bcf3d_5066cf8b",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 2
+      },
+      "revId": "23980925fbef33f441a002f8a3d6a7e3b68df4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
