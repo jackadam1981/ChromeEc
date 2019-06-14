@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "8362e427_9830d8a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-14T17:34:50Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand that argument.\n\nYes, if someone makes an incompatible modification in the future, things will break. But it will be easier to fix it then and can quickly be done by anyone rather than the few people who do build with clang on the side and have to carry around out-of-tree patches.\n\nIf there\u0027s basic clang support checked in, it\u0027s also possible to add a test somewhere that builds the EC with clang to catch those breaking modifications automatically.\n\n\"complicating the build system\" mostly involves replacing hardcoded \"gcc\" and \"g++\" strings with $(cc-name) which should be done anyway.\n\nWe\u0027ve had P0s recently where toolchain uprevs broke the tree (e.g. https://docs.google.com/document/d/1EnlFniwIJwU9PkHw486nA2Jca1mbwczl6NnZEPzMZN0/edit?usp\u003dsharing), building with clang regularly might help find those problems earlier.\n\nCost/benefit ratio looks favourable to me :-)",
+      "parentUuid": "50be68d9_2c3828e4",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
