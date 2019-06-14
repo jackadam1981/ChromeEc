@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "d1281410_39eb11df",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-14T17:55:52Z",
+      "side": 1,
+      "message": "discussed offline today. converging on:\n\n1) do something like this to force the compiler to not optimize out the copy to the intermediate aligned location\nstatic void cp8w(size_t offset, const p256_int *src)\n{\n\tint i;\n        uint32_t word __attribute__((aligned(4)));  /* and/or set volatile? */\n        uint32_t *dst \u003d ... + base_offset;\n\n        for (i \u003d 0; i \u003c P256_NDIGITS; i++, dst++) {\n                word \u003d P256_DIGIT(src, i);\n                *dst \u003d word;\n        }\n}\n\nanother alt is to turn P256_DIGIT into a function returning uint32_t and somehow prevent the compiler from inlining it, so that we actually get an aligned uint32_t on stack and the compiler can use word-copy to *dst.\n\n2) this is probably sufficient to guarantee word-copies, but check with compiler guys if there\u0027s anything in the standard and what are the practical guarantees. we are probably not the first interested in this.",
+      "parentUuid": "767ff973_0d4136cd",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 30
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9302b91_43878945",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
