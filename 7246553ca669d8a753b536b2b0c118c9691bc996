@@ -199,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "574cead2_a8385feb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-14T18:07:23Z",
+      "side": 1,
+      "message": "\"the change is much more than just replacing gcc with clang, command line options need to be tweaked, conditional compilation sections added, etc.\"\n\nThe conditional compilation sections are a there because clang found a bug that gcc had not surfaced. That\u0027s an argument *for* supporting clang, it improves code health.\n\n\"And this will not eliminate the need for thorough testing before upreving the toolchain.\"\n\nNobody is claiming that it will eliminate the need to test the toolchain. On the contrary, supporting another compiler increases test coverage.\n\n\"\nwe have periodic coverity scan results which greatly go ignored, but could be used to identify fix subtle problems.\n\"\n\nUsing coverity more is great! Getting even more coverage with clang *on top of using coverity more* is even better.\n\n\"\nMy point is that the prod codebase should not be littered with the one off use case support.\n\"\n\nThis is not \"one-off\". And this does not \"litter\" the codebase, I see the addition of \"-Wno-initializer-overrides\" and \"-Wno-inline-asm\" to the Makefile and \"-Wno-ignored-attributes\" pending a cleanup CL. Add to that the removal of a pragma for GCC, it looks like it\u0027s actually removing litter from the codebase.",
+      "parentUuid": "907fbad9_4cc946ac",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
         "patchSetId": 5
