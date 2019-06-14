@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8bcf3d_5066cf8b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-14T18:42:45Z",
+      "side": 1,
+      "message": "I think we can actually remove this now, as D0i[123] are implemented.\n\nIf that seems to be causing issues, we can open a bug for this and leave it.",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 2
+      },
+      "revId": "23980925fbef33f441a002f8a3d6a7e3b68df4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

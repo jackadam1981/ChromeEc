@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd86b60a_753936b0",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-14T18:42:45Z",
+      "side": 0,
+      "message": "I think we need this in case CONFIG_ISH_PM_D0I1 is disabled (no boards with this config right now tho)",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 14
+      },
+      "revId": "32f88254973f2fc8eada1b80feea338ac8931731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742abecd_ab47c22c",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-14T18:42:45Z",
+      "side": 0,
+      "message": "probably need to keep this one too",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 14
+      },
+      "revId": "32f88254973f2fc8eada1b80feea338ac8931731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b208875_9eaa4aee",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-14T18:42:45Z",
+      "side": 0,
+      "message": "same with these (case !CONFIG_ISH_PM_D3)",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 680,
+        "endChar": 14
+      },
+      "revId": "32f88254973f2fc8eada1b80feea338ac8931731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
