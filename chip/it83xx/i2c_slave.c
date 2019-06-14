@@ -173,7 +173,7 @@ void i2c_slave_read_write_data(int port)
 			 * TODO(b:129360157): Handle master write
 			 * data by "in_data" array.
 			 */
-					CPRINTS("WData: %.*h\n",
+					CPRINTS("WData: %.*h",
 					I2C_MAX_BUFFER_SIZE, in_data[idx]);
 					wr_done[idx] = 0;
 				}
@@ -280,13 +280,31 @@ void i2c_slave_enable(int port, uint8_t slv_addr)
 		memset(in_data[idx], 0, I2C_MAX_BUFFER_SIZE);
 		memset(out_data[idx], 0, I2C_MAX_BUFFER_SIZE);
 
-		/* DMA write target address register */
-		IT83XX_I2C_RAMHA(ch) = ((uint32_t)in_data[idx] >> 8) & 0x0F;
-		IT83XX_I2C_RAMLA(ch) = (uint32_t)in_data[idx] & 0xFF;
+		if (IS_ENABLED(CHIP_CORE_NDS32)) {
+			/* DMA write target address register */
+			IT83XX_I2C_RAMHA(ch) =
+				((uint32_t)in_data[idx] >> 8) & 0x0F;
+			IT83XX_I2C_RAMLA(ch) = (uint32_t)in_data[idx] & 0xFF;
+			/* DMA read target address register */
+			IT83XX_I2C_RAMHA2(ch) =
+				((uint32_t)out_data[idx] >> 8) & 0x0F;
+			IT83XX_I2C_RAMLA2(ch) = (uint32_t)out_data[idx] & 0xFF;
 
-		/* DMA read target address register */
-		IT83XX_I2C_RAMHA2(ch) = ((uint32_t)out_data[idx] >> 8) & 0x0F;
-		IT83XX_I2C_RAMLA2(ch) = (uint32_t)out_data[idx] & 0xFF;
+		} else if (IS_ENABLED(CHIP_ILM_DLM_ORDER)) {
+			/* DMA write target address register */
+			IT83XX_I2C_RAMH2A(ch) =
+				((uint32_t)in_data[idx] >> 16) & 0xFF;
+			IT83XX_I2C_RAMHA(ch) =
+				((uint32_t)in_data[idx] >> 8) & 0xFF;
+			IT83XX_I2C_RAMLA(ch) = (uint32_t)in_data[idx] & 0xFF;
+			/* DMA read target address register */
+			IT83XX_I2C_CMD_ADDH2(ch) =
+				((uint32_t)out_data[idx] >> 16) & 0xFF;
+			IT83XX_I2C_CMD_ADDH(ch) =
+				((uint32_t)out_data[idx] >> 8) & 0xFF;
+			IT83XX_I2C_CMD_ADDL(ch) =
+				(uint32_t)out_data[idx] & 0xFF;
+		}
 
 		/* I2C module enable and command queue mode */
 		IT83XX_I2C_CTR1(ch) = IT83XX_I2C_COMQ_EN |
