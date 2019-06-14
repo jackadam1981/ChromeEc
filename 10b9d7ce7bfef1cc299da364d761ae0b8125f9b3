@@ -46,6 +46,30 @@
       "revId": "10b9d7ce7bfef1cc299da364d761ae0b8125f9b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d93253f_854d4bdc",
+        "filename": "board/hatch/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-14T23:33:56Z",
+      "side": 1,
+      "message": "Let\u0027s please fix the alignment before pushing this change in to keep this file consistent.",
+      "parentUuid": "62d9d80d_267b7aaf",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 297,
+        "endChar": 2
+      },
+      "revId": "10b9d7ce7bfef1cc299da364d761ae0b8125f9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
