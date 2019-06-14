@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7cee10f1_0c7f4e61",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-14T09:38:02Z",
+      "side": 1,
+      "message": "Ack.\n\nI don\u0027t think \u0027remaining_us\u0027 could be negative here, let\u0027s have a look: \n\nvoid process_timers(int overflow)\n{\n   if (overflow)\n         clksrc_high++;       \n   do {\n       now \u003d get_time();\n  \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n   if 2^32 us rollover happens here, but timer 0 IRQ hasn\u0027t \n   called yet, so \u0027clksrc_high\u0027 hasn\u0027t updated, get_time().le.lo will \n   rollover and close to 0, get_time().val will rollover to smaller   \n  \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d        \n       __hw_clock_event_set(next.le.lo);\n      \n   } while (next.val \u003c\u003d get_time().val);\n}\n\nvoid __hw_clock_event_set(uint32_t deadline)\n{\n     ...\n     current_ticks \u003d read_main_timer();\n     current_us \u003d scale_ticks2us(current_ticks);\n  \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n   if 2^32 us rollover happens here, but timer 0 IRQ hasn\u0027t \n   called yet (or happened on above comments point),  \n   scale_ticks2us(current_ticks) should be very close to 0, so, in this case \"deadline - current_us\" should not likely to be negative.   \n  \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d \n\n     remaining_us \u003d deadline - current_us;\n}  \n\nSo, Hyungwoo, why do you think the negative value could be happen here ? not very understand. :)",
+      "parentUuid": "5c375987_4c700e69",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "3313991c43f6dbc5a2bfed0d7132e96cc3f62823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2cff2e3_6c000e18",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2b5a321b_402857f9",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-14T09:38:02Z",
+      "side": 1,
+      "message": "Done!\n\nYeah, this make code more clear.",
+      "parentUuid": "d2cff2e3_6c000e18",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 57
+      },
+      "revId": "3313991c43f6dbc5a2bfed0d7132e96cc3f62823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4e913c4_738f4781",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "3313991c43f6dbc5a2bfed0d7132e96cc3f62823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3664e2a0_e4fc80ba",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-14T09:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e913c4_738f4781",
+      "range": {
+        "startLine": 632,
+        "startChar": 64,
+        "endLine": 633,
+        "endChar": 7
+      },
+      "revId": "3313991c43f6dbc5a2bfed0d7132e96cc3f62823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
