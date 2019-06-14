@@ -268,12 +268,17 @@ static void svdm_safe_dp_mode(int port)
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
-	/* Only enter mode if device is DFP_D capable */
-	if (mode_caps & MODE_DP_SNK) {
+	/* Doesn't support superspeed lanes. */
+	const uint32_t support_pin_mode = MODE_DP_PIN_C | MODE_DP_PIN_E;
+
+	/* Only enter mode if device is DFP_D and PIN_C, PIN_E capable */
+	if ((mode_caps & MODE_DP_SNK) &&
+	    (mode_caps & (support_pin_mode << MODE_DP_DFP_PIN_SHIFT))) {
 		svdm_safe_dp_mode(port);
 		return 0;
 	}
 
+	CPRINTS("ERR:DP mode 0x%x", mode_caps);
 	return -1;
 }
 
@@ -297,10 +302,15 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+	/* Doesn't support multi-function mode, mask it out. */
+	int status = dp_status[port] & ~PD_VDO_DPSTS_MF_MASK;
+	int pin_mode = pd_dfp_dp_get_pin_mode(port, status);
 
 	if (!pin_mode)
 		return 0;
+
+	usb_mux_set(port, TYPEC_MUX_DP, USB_SWITCH_CONNECT,
+		    board_get_polarity(port));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
@@ -348,9 +358,6 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
 		return 1;
 	}
-
-	usb_mux_set(port, lvl ? TYPEC_MUX_DP : TYPEC_MUX_NONE,
-		    USB_SWITCH_CONNECT, board_get_polarity(port));
 
 	mux->hpd_update(port, lvl, irq);
 
