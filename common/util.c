@@ -118,6 +118,7 @@ int atoi(const char *nptr)
 static int find_base(int base, int *c, const char **nptr) {
 	if ((base == 0 || base == 16) && *c == '0'
 	    && (**nptr == 'x' || **nptr == 'X')) {
+		asm("nop");
 		*c = (*nptr)[1];
 		(*nptr) += 2;
 		base = 16;
