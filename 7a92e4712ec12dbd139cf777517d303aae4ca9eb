@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f961c75a_4742af11",
+        "filename": "board/flapjack/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-14T02:48:22Z",
+      "side": 1,
+      "message": "done, another CL is :https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1660068",
+      "parentUuid": "13868977_57688d10",
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ef00e81_ceadb7c0",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f003aac_7ee3b41f",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-14T02:48:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "7ef00e81_ceadb7c0",
+      "range": {
+        "startLine": 609,
+        "startChar": 2,
+        "endLine": 609,
+        "endChar": 37
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f02fa004_65025369",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-14T02:48:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "103dd56a_b51f8de8",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 45
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c76d2a9_4a10f02b",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
@@ -85,6 +151,30 @@
       "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d551d11_5d6cd182",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-14T02:48:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8c76d2a9_4a10f02b",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 45
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "85d83aa7_73ea9ddd",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-14T02:48:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d25f28b8_47bdddeb",
+      "range": {
+        "startLine": 255,
+        "startChar": 7,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0f1323f_2571d835",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
@@ -131,6 +245,30 @@
       "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f958a7_5cb239ab",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-14T02:48:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "a0f1323f_2571d835",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 24
+      },
+      "revId": "7a92e4712ec12dbd139cf777517d303aae4ca9eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
