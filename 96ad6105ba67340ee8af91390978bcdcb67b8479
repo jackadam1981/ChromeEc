@@ -22,6 +22,30 @@
       "revId": "96ad6105ba67340ee8af91390978bcdcb67b8479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b5d7c2_47bf0f36",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-14T20:47:18Z",
+      "side": 1,
+      "message": "I think if we move down\n\npd_power_supply_reset(port);\nset_vconn(port, 0);\npd_is_vbus_present\n\nlines to after the ppc_init we would be better since any of those function can talk with the PPC",
+      "parentUuid": "733609e7_4365b5ce",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "96ad6105ba67340ee8af91390978bcdcb67b8479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
