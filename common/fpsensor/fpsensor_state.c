@@ -28,6 +28,8 @@ uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
 	FP_TEMPLATE_SECTION;
 /* Positive match secret (for each enrolled finger) for the current user */
 uint8_t fp_pos_match_secret[FP_MAX_FINGER_COUNT][FP_POS_MATCH_SECRET_BYTES];
+/* Flags indicating positive match secret can be read by biod */
+uint8_t fp_pos_match_secret_readable[FP_MAX_FINGER_COUNT];
 /* Positive match salt (for each enrolled finger) for the current user */
 uint8_t fp_pos_match_salt[FP_MAX_FINGER_COUNT][FP_POS_MATCH_SALT_BYTES];
 /* Enrolled finger ids for the current user */
@@ -202,3 +204,26 @@ static int fp_command_context(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_CONTEXT, fp_command_context, EC_VER_MASK(0));
+
+static int fp_command_read_match_secret(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_read_match_secret *params = args->params;
+	uint32_t fgr = params->fgr;
+
+	if (fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
+		CPRINTS("Invalid finger number %d", fgr);
+		return EC_RES_INVALID_PARAM;
+	}
+
+	if (!fp_pos_match_secret_readable[fgr])
+		return EC_RES_ACCESS_DENIED;
+
+	memcpy(args->response, fp_pos_match_secret[fgr],
+	       FP_POS_MATCH_SECRET_BYTES);
+	args->response_size = FP_POS_MATCH_SECRET_BYTES;
+	fp_pos_match_secret_readable[fgr] = 0;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
+		     EC_VER_MASK(0));
