@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91684653_4b471fa7",
+        "filename": "third_party/boringssl/common/aes-gcm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-15T00:10:16Z",
+      "side": 1,
+      "message": "Do you need this one? afaict kSizeTWithoutLower4Bits is used when GHASH is defined, so you should only check for GHASH.",
+      "range": {
+        "startLine": 98,
+        "startChar": 18,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "544a6f5c84c9854a7988c79d65edf6c6d4c13003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
