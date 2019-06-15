@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0f1551c_dd418dec",
+        "filename": "fuzz/rollback_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-15T00:39:15Z",
+      "side": 1,
+      "message": "uint8_t",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bbfd6c_a3ec380d",
+        "filename": "fuzz/rollback_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-15T00:39:15Z",
+      "side": 1,
+      "message": "There\u0027s already a very similar mock introduced by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1652495",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f6f20d9_6dab49a4",
+        "filename": "fuzz/rollback_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-15T00:39:15Z",
+      "side": 1,
+      "message": "To be consistent with the rest of the EC codebase, can you use something like:\n\nstatic int rollback_should_fail;",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
