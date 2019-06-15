@@ -120,6 +120,7 @@ static uint32_t fp_process_enroll(void)
 			if (derivation_res == EC_RES_SUCCESS) {
 				CPRINTS("Derived positive match secret for "
 					"finger %d.", templ_valid);
+				fp_pos_match_secret_readable[templ_valid] = 1;
 				templ_valid++;
 			} else {
 				res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
