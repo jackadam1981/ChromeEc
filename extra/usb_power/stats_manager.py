@@ -180,33 +180,65 @@ class StatsManager(object):
       for entry in headers[2:]:
         row.append('%.2f' % stats[entry.lower()])
       table.append(row)
+    message = NAN_DESCRIPTION if nan_in_output else None
 
+    return self.PrettyPrintTable(table, prefix=prefix, title=self._title,
+                                 message=message)
+
+  @staticmethod
+  def PrettyPrintTable(table, prefix='', title=None, message=None,
+                       align_config={}):
+    """Helper to pretty-print the table at |table|.
+
+    Args:
+      table: a list of rows (lists) of the elements content to print
+      prefix: a prefix to add to every line for formatting/grep-ability
+      title: an optional title to add as a banner on the top of the table
+      message: an optional message to append below the table
+      align_config: dict to indicate right or left align of column
+                    by default, all columns are right-aligned. If the user
+                    wishes to left-align a column, the align-config should have
+                    that column's name and a value of 'True'.
+                    a columns name is its first element i.e. table[0] is
+                    considered the header row for align config purposes.
+    Returns:
+      formatted summary string.
+    """
+    if prefix and not prefix.endswith(' '):
+      # Add a space to prefix for better formatting.
+      prefix = prefix + ' '
     max_col_width = []
     for col_idx in range(len(table[0])):
       col_item_widths = [len(row[col_idx]) for row in table]
       max_col_width.append(max(col_item_widths))
 
+    align_funcs = collections.defaultdict(lambda: str.rjust)
+    for col_idx, col_name in enumerate(table[0]):
+        if col_name in align_config and align_config[col_name]:
+          # This indicates that the user wishes that row to be left-aligned
+          # instead of right aligned.
+          align_funcs[col_idx] = str.ljust
+
     formatted_lines = []
     for row in table:
-      formatted_row = prefix + ' '
+      formatted_row = prefix
       for i in range(len(row)):
-        formatted_row += row[i].rjust(max_col_width[i] + 2)
+        formatted_row += align_funcs[i](row[i], max_col_width[i] + 2)
       formatted_lines.append(formatted_row)
-    if nan_in_output:
-      formatted_lines.append('%s %s' % (prefix, NAN_DESCRIPTION))
+    if message:
+      formatted_lines.append('%s%s' % (prefix, message))
 
-    if self._title:
+    if title:
       line_length = len(formatted_lines[0])
       dec_length = len(prefix)
       # trim title to be at most as long as the longest line without the prefix
-      title = self._title[:(line_length - dec_length)]
+      title = title[:(line_length - dec_length)]
       # line is a seperator line consisting of -----
       line = '%s%s' % (prefix, '-' * (line_length - dec_length))
       # prepend the prefix to the centered title
       padded_title = '%s%s' % (prefix, title.center(line_length)[dec_length:])
       formatted_lines = [line, padded_title, line] + formatted_lines + [line]
-    formatted_output = '\n'.join(formatted_lines)
-    return formatted_output
+    return '\n'.join(formatted_lines)
 
   def GetSummary(self):
     """Getter for summary."""
