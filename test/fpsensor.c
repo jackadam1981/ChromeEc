@@ -102,6 +102,15 @@ int rollback_get_secret(uint8_t *secret)
 	return EC_SUCCESS;
 }
 
+/* Mock the clock for testing timeout behavior. */
+
+static timestamp_t now;
+
+timestamp_t get_time(void)
+{
+	return now;
+}
+
 static int check_seed_set_result(const int rv, const uint32_t expected,
 			const struct ec_response_fp_encryption_status *resp)
 {
@@ -570,6 +579,170 @@ test_static int test_fp_set_sensor_mode(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_enable_positive_match_secret(void)
+{
+	struct positive_match_secret_state dumb_state = {
+		.template_matched = FP_NO_SUCH_TEMPLATE,
+		.readable = false,
+		.deadline.val = 0,
+	};
+	timestamp_t now = get_time();
+
+	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
+		EC_SUCCESS);
+	TEST_ASSERT(dumb_state.template_matched == 0);
+	TEST_ASSERT(dumb_state.readable == true);
+	TEST_ASSERT(dumb_state.deadline.val == now.val + (5 * SECOND));
+
+	/* Trying to enable again before reading secret should fail. */
+	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
+		EC_ERROR_UNKNOWN);
+	TEST_ASSERT(dumb_state.template_matched == FP_NO_SUCH_TEMPLATE);
+	TEST_ASSERT(dumb_state.readable == false);
+	TEST_ASSERT(dumb_state.deadline.val == 0);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_disable_positive_match_secret(void)
+{
+	struct positive_match_secret_state dumb_state;
+
+	TEST_ASSERT(fp_enable_positive_match_secret(0, &dumb_state) ==
+		EC_SUCCESS);
+	fp_disable_positive_match_secret(&dumb_state);
+	TEST_ASSERT(dumb_state.template_matched == FP_NO_SUCH_TEMPLATE);
+	TEST_ASSERT(dumb_state.readable == false);
+	TEST_ASSERT(dumb_state.deadline.val == 0);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_command_read_match_secret(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+	struct ec_response_fp_read_match_secret resp;
+
+	/* Invalid finger index should be rejected. */
+	params.fgr = -1;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+	params.fgr = FP_MAX_FINGER_COUNT;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	memset(&resp, 0, sizeof(resp));
+	/* GIVEN that finger index is valid. */
+	params.fgr = 0;
+
+	/* GIVEN that positive match secret is enabled. */
+	fp_enable_positive_match_secret(params.fgr,
+					&positive_match_secret_state);
+
+	/* GIVEN that salt is non-trivial. */
+	memcpy(fp_positive_match_salt[0], fake_positive_match_salt,
+	       sizeof(fp_positive_match_salt[0]));
+	/* THEN reading positive match secret should succeed. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), &resp, sizeof(resp));
+	if (rv != EC_RES_SUCCESS) {
+		ccprintf("%s:%s(): rv = %d\n", __FILE__, __func__, rv);
+		return -1;
+	}
+	/* AND the readable bit should be cleared after the read. */
+	TEST_ASSERT(positive_match_secret_state.readable == false);
+
+	TEST_ASSERT_ARRAY_EQ(resp.positive_match_secret,
+			     expected_positive_match_secret,
+			     sizeof(expected_positive_match_secret));
+
+	/*
+	 * Now try reading secret again.
+	 * EVEN IF the deadline has not passed.
+	 */
+	positive_match_secret_state.deadline.val = now.val + 1 * SECOND;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	/*
+	 * This time the command should fail because the
+	 * fp_pos_match_secret_readable bit is cleared when the secret was read
+	 * the first time.
+	 */
+	TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_command_read_match_secret_wrong_finger(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+
+	/* GIVEN that the finger is not the matched or enrolled finger. */
+	params.fgr = 0;
+	/*
+	 * GIVEN that positive match secret is enabled for a different
+	 * finger.
+	 */
+	fp_enable_positive_match_secret(params.fgr + 1,
+					&positive_match_secret_state);
+
+	/* Reading secret will fail. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+	return EC_SUCCESS;
+}
+
+test_static int test_command_read_match_secret_timeout(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+
+	params.fgr = 0;
+	/* GIVEN that the read is too late. */
+	fp_enable_positive_match_secret(params.fgr,
+					&positive_match_secret_state);
+	now = positive_match_secret_state.deadline;
+
+	/* EVEN IF encryption salt is non-trivial. */
+	memcpy(fp_positive_match_salt[0], fake_positive_match_salt,
+	       sizeof(fp_positive_match_salt[0]));
+	/* Reading secret will fail. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_TIMEOUT);
+	return EC_SUCCESS;
+}
+
+test_static int test_command_read_match_secret_unreadable(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+
+	params.fgr = 0;
+	/* GIVEN that the readable bit is not set. */
+	fp_enable_positive_match_secret(params.fgr,
+					&positive_match_secret_state);
+	positive_match_secret_state.readable = false;
+
+	/* EVEN IF the finger is just matched. */
+	TEST_ASSERT(positive_match_secret_state.template_matched
+		== params.fgr);
+
+	/* EVEN IF encryption salt is non-trivial. */
+	memcpy(fp_positive_match_salt[0], fake_positive_match_salt,
+	       sizeof(fp_positive_match_salt[0]));
+	/* Reading secret will fail. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	/* These are independent of global state. */
@@ -591,6 +764,12 @@ void run_test(void)
 	RUN_TEST(test_derive_new_pos_match_secret);
 	RUN_TEST(test_derive_positive_match_secret_fail_rollback_fail);
 	RUN_TEST(test_derive_positive_match_secret_fail_salt_trivial);
+	RUN_TEST(test_enable_positive_match_secret);
+	RUN_TEST(test_disable_positive_match_secret);
+	RUN_TEST(test_command_read_match_secret);
+	RUN_TEST(test_command_read_match_secret_wrong_finger);
+	RUN_TEST(test_command_read_match_secret_timeout);
+	RUN_TEST(test_command_read_match_secret_unreadable);
 
 	test_print_result();
 }
