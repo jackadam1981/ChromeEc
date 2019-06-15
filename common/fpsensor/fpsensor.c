@@ -21,7 +21,6 @@
 #include "system.h"
 #include "task.h"
 #include "trng.h"
-#include "timer.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -52,7 +51,6 @@ static uint32_t matching_time_us;
 static uint32_t overall_time_us;
 static timestamp_t overall_t0;
 static uint8_t timestamps_invalid;
-static int8_t template_matched;
 
 BUILD_ASSERT(sizeof(struct ec_fp_template_encryption_metadata) % 4 == 0);
 
@@ -125,20 +123,21 @@ static uint32_t fp_process_match(void)
 	timestamp_t t0 = get_time();
 	int res = -1;
 	uint32_t updated = 0;
-	int32_t fgr = -1;
+	int32_t fgr = FP_NO_SUCH_TEMPLATE;
 
 	/* match finger against current templates */
-	template_matched = -1;
+	fp_disable_positive_match_secret(&positive_match_secret_state);
 	CPRINTS("Matching/%d ...", templ_valid);
 	if (templ_valid) {
 		res = fp_finger_match(fp_template[0], templ_valid, fp_buffer,
 				      &fgr, &updated);
 		CPRINTS("Match =>%d (finger %d)", res, fgr);
-		if (res < 0) {
+		if (res < 0 || fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
 			res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
 			timestamps_invalid |= FPSTATS_MATCHING_INV;
 		} else {
-			template_matched = (int8_t)fgr;
+			fp_enable_positive_match_secret(fgr,
+				&positive_match_secret_state);
 		}
 		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 			templ_dirty |= updated;
@@ -419,9 +418,6 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		rand_bytes(enc_info->salt, FP_CONTEXT_SALT_BYTES);
 		exit_trng();
 
-		memcpy(fp_encryption_salt[fgr], enc_info->salt,
-		       sizeof(fp_encryption_salt[0]));
-
 		ret = derive_encryption_key(key, enc_info->salt);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", fgr);
@@ -439,6 +435,8 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_dirty &= ~BIT(fgr);
+		memcpy(fp_encryption_salt[fgr], enc_info->salt,
+		       sizeof(fp_encryption_salt[0]));
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
 	args->response_size = size;
@@ -457,7 +455,11 @@ static int fp_command_stats(struct host_cmd_handler_args *args)
 	r->overall_t0.lo = overall_t0.le.lo;
 	r->overall_t0.hi = overall_t0.le.hi;
 	r->timestamps_invalid = timestamps_invalid;
-	r->template_matched = template_matched;
+	/*
+	 * Note that this is set to FP_NO_SUCH_TEMPLATE when positive match
+	 * secret is read/disabled, and we are not using this field in biod.
+	 */
+	r->template_matched = positive_match_secret_state.template_matched;
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
@@ -530,6 +532,8 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_valid++;
+		memcpy(fp_encryption_salt[idx], enc_info->salt,
+		       sizeof(enc_info->salt));
 	}
 
 	return EC_RES_SUCCESS;
