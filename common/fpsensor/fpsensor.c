@@ -20,7 +20,6 @@
 #include "system.h"
 #include "task.h"
 #include "trng.h"
-#include "timer.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -51,7 +50,6 @@ static uint32_t matching_time_us;
 static uint32_t overall_time_us;
 static timestamp_t overall_t0;
 static uint8_t timestamps_invalid;
-static int8_t template_matched;
 
 BUILD_ASSERT(sizeof(struct ec_fp_template_encryption_metadata) % 4 == 0);
 
@@ -110,8 +108,11 @@ static uint32_t fp_process_enroll(void)
 		res = fp_enrollment_finish(fp_template[templ_valid]);
 		if (res)
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
-		else
+		else {
+			template_with_secret = (int8_t)templ_valid;
+			fp_enable_match_secret_for_finger(templ_valid);
 			templ_valid++;
+		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
@@ -133,11 +134,13 @@ static uint32_t fp_process_match(void)
 		res = fp_finger_match(fp_template[0], templ_valid, fp_buffer,
 				      &fgr, &updated);
 		CPRINTS("Match =>%d (finger %d)", res, fgr);
-		if (res < 0) {
+		if (res < 0 || fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
 			res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
 			timestamps_invalid |= FPSTATS_MATCHING_INV;
 		} else {
 			template_matched = (int8_t)fgr;
+			template_with_secret = (int8_t)fgr;
+			fp_enable_match_secret_for_finger(fgr);
 		}
 		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 			templ_dirty |= updated;
@@ -403,6 +406,9 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 	if (!offset) {
 		/* Host has requested the first chunk, do the encryption. */
 		timestamp_t now = get_time();
+		bool template_is_dirty = (templ_dirty & BIT(fgr)) != 0;
+		bool template_is_matched_and_updated =
+			(fgr == template_matched) && template_is_dirty;
 
 		/* b/114160734: Not more than 1 encrypted message per second. */
 		if (!timestamp_expired(encryption_deadline, &now))
@@ -437,6 +443,22 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_dirty &= ~BIT(fgr);
+
+		/*
+		 * If the template is matched and updated, then:
+		 * (1) If template_with_secret has been set to -1, this means
+		 * the secret has been read and it's not migration. In this
+		 * case, re-enable to allow biod to read the new secret.
+		 * (2) If template_with_secret is not -1, this means the secret
+		 * is not read yet and could be migration, where biod will read
+		 * template before secret. In this case we do not need to enable
+		 * secret because it's already enabled.
+		 */
+		if (template_is_matched_and_updated &&
+			(template_with_secret == -1)) {
+			template_with_secret = fgr;
+			fp_enable_match_secret_for_finger(fgr);
+		}
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
 	args->response_size = size;
@@ -514,6 +536,8 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			CPRINTS("fgr%d: Failed to derive key", idx);
 			return EC_RES_UNAVAILABLE;
 		}
+		memcpy(fp_encryption_salt[idx], enc_info->salt,
+		       sizeof(enc_info->salt));
 
 		ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, fp_template[idx],
 				      fp_enc_buffer + sizeof(*enc_info),
