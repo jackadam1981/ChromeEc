@@ -120,6 +120,8 @@ static uint32_t fp_process_enroll(void)
 				CPRINTS("Generated positive match salt and "
 					"finger id for finger %d.",
 					templ_valid);
+				fp_pos_match_secret_readable
+					|= BIT(templ_valid);
 				templ_valid++;
 			} else {
 				res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;

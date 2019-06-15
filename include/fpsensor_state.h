@@ -34,9 +34,6 @@
 #define FP_ALGORITHM_TEMPLATE_SIZE 0
 #define FP_MAX_FINGER_COUNT 5
 #endif
-#define FP_POS_MATCH_SECRET_BYTES SHA256_DIGEST_SIZE
-#define FP_POS_MATCH_SALT_BYTES 16
-#define FP_FINGER_ID_BYTES 32
 #define SBP_ENC_KEY_LEN 16
 #define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
 	(FP_ALGORITHM_TEMPLATE_SIZE + \
@@ -59,6 +56,8 @@ extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
  * ciphered data.
  */
 extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+/* Flags indicating positive match secret can be read by biod */
+extern uint8_t fp_pos_match_secret_readable;
 /* Positive match salt (for each enrolled finger) for the current user */
 extern uint8_t
 	fp_pos_match_salt[FP_MAX_FINGER_COUNT][FP_POS_MATCH_SALT_BYTES];
