@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c139df3_98395413",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-15T16:22:06Z",
+      "side": 1,
+      "message": "tInterframeGap governs the maximum possible USB-PD packets over PD. (Plus some additional math for minimum packet length itself.) Empirical measurements show 6.240ms for 3 packets + interframe gap. \n\nI believe this frequency should be set to be greater than the maximum possible valid physical traffic pattern. Otherwise anything that chats at \u003e40msg per second -- say, firmware update over PD, specific AltModes, or battery temperature reading -- will be broken.\n\nPD3.0 Extended Descriptors are another problem. Or Apple Charger serial number readout. Those get very chatty very quickly.\n\n(1 second / 6.240ms * 3 messages \u003d~ 481 messages/second max valid.)",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 35
+      },
+      "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
