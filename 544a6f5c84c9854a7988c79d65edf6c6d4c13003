@@ -22,6 +22,30 @@
       "revId": "544a6f5c84c9854a7988c79d65edf6c6d4c13003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba50068_4fe14fe8",
+        "filename": "third_party/boringssl/common/aes-gcm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-15T00:24:29Z",
+      "side": 1,
+      "message": "Unfortunately, GHASH is only defined later in the source based on whether GHASH_ASM is set. So, conditioning on GHASH doesn\u0027t work at this point in the source.\nIt turns out that you actually only need GHASH_ASM, but I figured I would future proof.",
+      "parentUuid": "91684653_4b471fa7",
+      "range": {
+        "startLine": 98,
+        "startChar": 18,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "544a6f5c84c9854a7988c79d65edf6c6d4c13003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
