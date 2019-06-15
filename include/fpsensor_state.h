@@ -8,10 +8,12 @@
 #ifndef __CROS_EC_FPSENSOR_STATE_H
 #define __CROS_EC_FPSENSOR_STATE_H
 
+#include <stdbool.h>
 #include <stdint.h>
 #include "common.h"
 #include "ec_commands.h"
 #include "link_defs.h"
+#include "timer.h"
 
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
@@ -33,7 +35,6 @@
 #define FP_ALGORITHM_TEMPLATE_SIZE 0
 #define FP_MAX_FINGER_COUNT 5
 #endif
-#define FP_POS_MATCH_SECRET_BYTES 32
 #define SBP_ENC_KEY_LEN 16
 #define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
 	(FP_ALGORITHM_TEMPLATE_SIZE + \
@@ -58,6 +59,12 @@ extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
 extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
 /* Salt used in derivation of encryption key and positive match secret. */
 extern uint8_t fp_encryption_salt[FP_MAX_FINGER_COUNT][FP_CONTEXT_SALT_BYTES];
+/* Index of the last matched template. */
+extern int8_t template_matched;
+/* Index of the template for which positive match secret can be read. */
+extern int8_t template_with_secret;
+/* Flag indicating positive match secret can be read. */
+extern bool fp_pos_match_secret_readable;
 /* Number of used templates */
 extern uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */
@@ -70,6 +77,8 @@ extern uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
 extern uint32_t fp_events;
 
 extern uint32_t sensor_mode;
+
+extern timestamp_t read_secret_deadline;
 
 /* Simulation for unit tests. */
 void fp_task_simulate(void);

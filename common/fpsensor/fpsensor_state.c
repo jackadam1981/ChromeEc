@@ -6,6 +6,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "fpsensor.h"
+#include "fpsensor_crypto.h"
 #include "fpsensor_private.h"
 #include "fpsensor_state.h"
 #include "host_command.h"
@@ -28,6 +29,12 @@ uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE]
 	FP_TEMPLATE_SECTION;
 /* Salt used in derivation of encryption key and positive match secret. */
 uint8_t fp_encryption_salt[FP_MAX_FINGER_COUNT][FP_CONTEXT_SALT_BYTES];
+/* Index of the last matched template. */
+int8_t template_matched = -1;
+/* Index of the template for which positive match secret can be read. */
+int8_t template_with_secret = -1;
+/* Flag indicating positive match secret can be read. */
+bool fp_pos_match_secret_readable;
 /* Number of used templates */
 uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */
@@ -42,6 +49,8 @@ static uint32_t fp_encryption_status;
 uint32_t fp_events;
 
 uint32_t sensor_mode;
+
+timestamp_t read_secret_deadline;
 
 void fp_task_simulate(void)
 {
@@ -63,6 +72,8 @@ void fp_clear_context(void)
 
 	templ_valid = 0;
 	templ_dirty = 0;
+	template_with_secret = -1;
+	fp_pos_match_secret_readable = false;
 	memset(fp_buffer, 0, sizeof(fp_buffer));
 	memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
 	memset(user_id, 0, sizeof(user_id));
@@ -196,3 +207,52 @@ static int fp_command_context(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_CONTEXT, fp_command_context, EC_VER_MASK(0));
+
+static int fp_command_read_match_secret(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_read_match_secret *params = args->params;
+	int8_t fgr = params->fgr;
+	timestamp_t now = get_time();
+
+	if (fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
+		CPRINTS("Invalid finger number %d", fgr);
+		return EC_RES_INVALID_PARAM;
+	}
+	if (timestamp_expired(read_secret_deadline, &now)) {
+		fp_pos_match_secret_readable = false;
+		template_with_secret = -1;
+		return EC_RES_TIMEOUT;
+	}
+	if (fgr != template_with_secret)
+		return EC_RES_ACCESS_DENIED;
+	if (fp_pos_match_secret_readable == false)
+		return EC_RES_ACCESS_DENIED;
+
+	fp_pos_match_secret_readable = false;
+	template_with_secret = -1;
+	if (derive_pos_match_secret(args->response, fp_encryption_salt[fgr])
+		!= EC_SUCCESS) {
+		CPRINTS("Failed to derive positive match secret for finger %d",
+			fgr);
+		/* Keep the template and encryption salt. */
+		return EC_RES_ERROR;
+	}
+	CPRINTS("Derived positive match secret for finger %d", fgr);
+	args->response_size = FP_POS_MATCH_SECRET_BYTES;
+
+	if (fgr == template_matched
+		&& (templ_dirty & BIT(template_matched)) != 0) {
+		/*
+		 * This template was just matched and updated, biod needs to
+		 * read the a new positive match secret, thus the updated
+		 * template is "with secret", but we only give one chance
+		 * to read it.
+		 */
+		template_with_secret = template_matched;
+		template_matched = -1;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
+		     EC_VER_MASK(0));

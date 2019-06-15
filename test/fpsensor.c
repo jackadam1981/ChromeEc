@@ -31,6 +31,14 @@ static const uint8_t fake_encryption_salt[] = {
 	0x04, 0x1d, 0x46, 0x3a, 0x5f, 0x08, 0xee, 0xcb,
 };
 
+/* The expected vector is obtained by running boringSSL locally. */
+static const uint8_t expected_pos_match_secret[] = {
+	0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72,
+	0xd6, 0xdd, 0xa1, 0x4c, 0xb8, 0xa1, 0x76, 0x2b,
+	0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4, 0x74, 0x51,
+	0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
+};
+
 static int rollback_should_fail;
 
 /* Mock the rollback for unit test. */
@@ -40,6 +48,15 @@ int rollback_get_secret(uint8_t *secret)
 		return EC_ERROR_UNKNOWN;
 	memcpy(secret, fake_rollback_secret, sizeof(fake_rollback_secret));
 	return EC_SUCCESS;
+}
+
+/* Mock the clock for testing timeout behavior. */
+
+static timestamp_t now;
+
+timestamp_t get_time(void)
+{
+	return now;
 }
 
 static int check_seed_set_result(const int rv, const uint32_t expected,
@@ -314,27 +331,22 @@ test_static int test_derive_encryption_key_failure_rollback_fail(void)
 
 test_static int test_derive_new_pos_match_secret(void)
 {
-	/* The expected vector is obtained by running boringSSL locally. */
-	static const uint8_t expected[] = {
-		0x8d, 0xc4, 0x5b, 0xdf, 0x55, 0x1e, 0xa8, 0x72,
-		0xd6, 0xdd, 0xa1, 0x4c, 0xb8, 0xa1, 0x76, 0x2b,
-		0xde, 0x38, 0xd5, 0x03, 0xce, 0xe4, 0x74, 0x51,
-		0x63, 0x6c, 0x6a, 0x26, 0xa9, 0xb7, 0xfa, 0x68,
-	};
 	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
-	/* GIVEN that the encryption salt is not trivial. */
-	TEST_ASSERT(!bytes_are_trivial(fake_encryption_salt,
-				       sizeof(fake_encryption_salt)));
+
 	/*
 	 * GIVEN that the TPM seed is set, and reading the rollback secret will
 	 * succeed.
 	 */
 	TEST_ASSERT(fp_tpm_seed_is_set() && !rollback_should_fail);
+	/* GIVEN that the encryption salt is not trivial. */
+	TEST_ASSERT(!bytes_are_trivial(fake_encryption_salt,
+				       sizeof(fake_encryption_salt)));
 
 	/* THEN the derivation will succeed. */
 	TEST_ASSERT(derive_pos_match_secret(output, fake_encryption_salt)
 		== EC_SUCCESS);
-	TEST_ASSERT_ARRAY_EQ(output, expected, FP_POS_MATCH_SECRET_BYTES);
+	TEST_ASSERT_ARRAY_EQ(output, expected_pos_match_secret,
+			     sizeof(expected_pos_match_secret));
 
 	return EC_SUCCESS;
 }
@@ -508,6 +520,107 @@ test_static int test_fp_set_sensor_mode(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_read_match_secret(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+	struct ec_response_fp_read_match_secret resp;
+
+	/* Invalid finger index should be rejected. */
+	params.fgr = -1;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+	params.fgr = FP_MAX_FINGER_COUNT;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_INVALID_PARAM);
+
+	/* GIVEN that finger index is valid. */
+	memset(&resp, 0, sizeof(resp));
+	params.fgr = 0;
+	/* GIVEN that the finger has just been enrolled or matched. */
+	template_with_secret = 0;
+	/* GIVEN that the readable bit is set. */
+	fp_pos_match_secret_readable = true;
+	/* GIVEN that encryption salt is non-trivial. */
+	memcpy(fp_encryption_salt[0], fake_encryption_salt,
+	       sizeof(fp_encryption_salt[0]));
+	/* GIVEN that the timing of reading secret is good. */
+	read_secret_deadline.val = 5 * SECOND;
+	now.val = read_secret_deadline.val - 1 * SECOND;
+	/* THEN reading positive match secret should succeed. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), &resp, sizeof(resp));
+	if (rv != EC_RES_SUCCESS) {
+		ccprintf("%s:%s(): rv = %d\n", __FILE__, __func__, rv);
+		return -1;
+	}
+	/* AND the readable bit should be cleared after the read. */
+	TEST_ASSERT(fp_pos_match_secret_readable == false);
+
+	TEST_ASSERT_ARRAY_EQ(resp.pos_match_secret, expected_pos_match_secret,
+			     sizeof(expected_pos_match_secret));
+
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	/*
+	 * This time the command should fail because the
+	 * fp_pos_match_secret_readable bit is cleared when the secret was read
+	 * the first time.
+	 */
+	TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+
+	return EC_SUCCESS;
+}
+
+test_static int test_command_read_match_secret_wrong_finger(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+
+	/* GIVEN that the finger is not the matched or enrolled finger. */
+	params.fgr = 0;
+	template_with_secret = 1;
+	/* EVEN IF the readable bit is set. */
+	fp_pos_match_secret_readable = true;
+	/* EVEN IF the timing of reading secret is good. */
+	read_secret_deadline.val = 5 * SECOND;
+	now.val = read_secret_deadline.val - 1 * SECOND;
+	/* Reading secret will fail. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+	/* Clear state. */
+	fp_pos_match_secret_readable = false;
+	return EC_SUCCESS;
+}
+
+test_static int test_command_read_match_secret_timeout(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+
+	/* GIVEN that the read is too late. */
+	read_secret_deadline.val = 5 * SECOND;
+	now = read_secret_deadline;
+	/* EVEN IF the finger has just been enrolled or matched. */
+	template_with_secret = 0;
+	params.fgr = 0;
+	/* EVEN IF the readable bit is set. */
+	fp_pos_match_secret_readable = true;
+	/* EVEN IF encryption salt is non-trivial. */
+	memcpy(fp_encryption_salt[0], fake_encryption_salt,
+	       sizeof(fp_encryption_salt[0]));
+	/* Reading secret will fail. */
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_TIMEOUT);
+	/* Clear state. */
+	fp_pos_match_secret_readable = false;
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	/* These are independent of global state. */
@@ -529,6 +642,9 @@ void run_test(void)
 	RUN_TEST(test_derive_new_pos_match_secret);
 	RUN_TEST(test_derive_pos_match_secret_fail_rollback_fail);
 	RUN_TEST(test_derive_pos_match_secret_fail_salt_trivial);
+	RUN_TEST(test_command_read_match_secret);
+	RUN_TEST(test_command_read_match_secret_wrong_finger);
+	RUN_TEST(test_command_read_match_secret_timeout);
 
 	test_print_result();
 }

@@ -20,7 +20,6 @@
 #include "system.h"
 #include "task.h"
 #include "trng.h"
-#include "timer.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -51,7 +50,6 @@ static uint32_t matching_time_us;
 static uint32_t overall_time_us;
 static timestamp_t overall_t0;
 static uint8_t timestamps_invalid;
-static int8_t template_matched;
 
 BUILD_ASSERT(sizeof(struct ec_fp_template_encryption_metadata) % 4 == 0);
 
@@ -110,8 +108,10 @@ static uint32_t fp_process_enroll(void)
 		res = fp_enrollment_finish(fp_template[templ_valid]);
 		if (res)
 			res = EC_MKBP_FP_ERR_ENROLL_INTERNAL;
-		else
+		else {
+			template_with_secret = (int8_t)templ_valid;
 			templ_valid++;
+		}
 		sensor_mode &= ~FP_MODE_ENROLL_SESSION;
 		enroll_session &= ~FP_MODE_ENROLL_SESSION;
 	}
@@ -133,11 +133,19 @@ static uint32_t fp_process_match(void)
 		res = fp_finger_match(fp_template[0], templ_valid, fp_buffer,
 				      &fgr, &updated);
 		CPRINTS("Match =>%d (finger %d)", res, fgr);
-		if (res < 0) {
+		if (res < 0 || fgr < 0 || fgr >= FP_MAX_FINGER_COUNT) {
 			res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
 			timestamps_invalid |= FPSTATS_MATCHING_INV;
 		} else {
+			timestamp_t now = get_time();
+
+			if (fp_pos_match_secret_readable)
+				CPRINTS("Error: positive match secret already "
+					"readable at match time!");
 			template_matched = (int8_t)fgr;
+			template_with_secret = (int8_t)fgr;
+			fp_pos_match_secret_readable = true;
+			read_secret_deadline.val = now.val + (5 * SECOND);
 		}
 		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 			templ_dirty |= updated;
@@ -437,6 +445,14 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			return EC_RES_UNAVAILABLE;
 		}
 		templ_dirty &= ~BIT(fgr);
+
+		if (fp_pos_match_secret_readable)
+			CPRINTS("Error: positive match secret already readable "
+				"when preparing new secret!");
+		if (fgr == template_with_secret) {
+			fp_pos_match_secret_readable = true;
+			read_secret_deadline.val = now.val + (5 * SECOND);
+		}
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
 	args->response_size = size;
@@ -514,6 +530,8 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			CPRINTS("fgr%d: Failed to derive key", idx);
 			return EC_RES_UNAVAILABLE;
 		}
+		memcpy(fp_encryption_salt[idx], enc_info->salt,
+		       sizeof(enc_info->salt));
 
 		ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, fp_template[idx],
 				      fp_enc_buffer + sizeof(*enc_info),
