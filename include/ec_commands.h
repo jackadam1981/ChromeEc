@@ -5672,6 +5672,18 @@ struct ec_response_fp_encryption_status {
 	uint32_t status;
 } __ec_align4;
 
+#define EC_CMD_FP_READ_MATCH_SECRET 0x040A
+struct ec_params_fp_read_match_secret {
+	uint32_t fgr;
+} __ec_align4;
+
+#define FP_POS_MATCH_SECRET_BYTES 32
+#define FP_POS_MATCH_SALT_BYTES 16
+#define FP_FINGER_ID_BYTES 32
+struct ec_response_fp_read_match_secret {
+	uint8_t pos_match_secret[FP_POS_MATCH_SECRET_BYTES];
+} __ec_align4;
+
 /*****************************************************************************/
 /* Touchpad MCU commands: range 0x0500-0x05FF */
 

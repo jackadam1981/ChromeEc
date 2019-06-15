@@ -31,6 +31,13 @@ static const uint8_t fake_rand_bytes[] = {
 	0x71, 0x53, 0xa9, 0x33, 0x6c, 0x39, 0x8c, 0x31,
 };
 
+static const uint8_t expected_pos_match_secret[] = {
+	0xfb, 0x47, 0x07, 0x1e, 0x45, 0xfa, 0xba, 0x0b,
+	0x70, 0x71, 0x9f, 0xa0, 0x45, 0x3e, 0xed, 0x2b,
+	0x25, 0x42, 0x71, 0x03, 0x7c, 0x8d, 0x27, 0xe7,
+	0x33, 0xb4, 0xa9, 0x9c, 0x53, 0x3d, 0xb1, 0x49,
+};
+
 static int rollback_should_fail;
 
 /* Mock the rollback for unit test. */
@@ -259,12 +266,6 @@ test_static int test_derive_encryption_key_failure_rollback_fail(void)
 
 test_static int test_derive_new_pos_match_secret(void)
 {
-	static const uint8_t expected[] = {
-		0xfb, 0x47, 0x07, 0x1e, 0x45, 0xfa, 0xba, 0x0b,
-		0x70, 0x71, 0x9f, 0xa0, 0x45, 0x3e, 0xed, 0x2b,
-		0x25, 0x42, 0x71, 0x03, 0x7c, 0x8d, 0x27, 0xe7,
-		0x33, 0xb4, 0xa9, 0x9c, 0x53, 0x3d, 0xb1, 0x49,
-	};
 	static uint8_t output[FP_POS_MATCH_SECRET_BYTES];
 
 	/*
@@ -288,7 +289,8 @@ test_static int test_derive_new_pos_match_secret(void)
 					    fp_pos_match_salt[templ_valid - 1],
 					    finger_id[templ_valid - 1])
 		== EC_RES_SUCCESS);
-	TEST_ASSERT_ARRAY_EQ(output, expected, FP_POS_MATCH_SECRET_BYTES);
+	TEST_ASSERT_ARRAY_EQ(output, expected_pos_match_secret,
+			     FP_POS_MATCH_SECRET_BYTES);
 
 	return EC_SUCCESS;
 }
@@ -442,6 +444,47 @@ test_static int test_fp_set_sensor_mode(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_command_read_match_secret(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+	struct ec_response_fp_read_match_secret resp;
+
+	fp_clear_context();
+	/* Simulate enrollment success. */
+	TEST_ASSERT(generate_pos_match_salt_finger_id() == EC_RES_SUCCESS);
+	fp_pos_match_secret_readable[templ_valid] = 1;
+	templ_valid++;
+
+	memset(&resp, 0, sizeof(resp));
+	params.fgr = 0;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), &resp, sizeof(resp));
+	if (rv != EC_RES_SUCCESS) {
+		ccprintf("%s:%s(): rv = %d\n", __FILE__, __func__, rv);
+		return -1;
+	}
+
+	TEST_ASSERT_ARRAY_EQ(resp.pos_match_secret, expected_pos_match_secret,
+			     FP_POS_MATCH_SECRET_BYTES);
+
+	return EC_RES_SUCCESS;
+}
+
+test_static int test_command_read_match_secret_again(void)
+{
+	int rv;
+	struct ec_params_fp_read_match_secret params;
+
+	TEST_ASSERT(templ_valid > 0);
+	params.fgr = 0;
+	rv = test_send_host_command(EC_CMD_FP_READ_MATCH_SECRET, 0, &params,
+				    sizeof(params), NULL, 0);
+	TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
+
+	return EC_RES_SUCCESS;
+}
+
 void run_test(void)
 {
 	RUN_TEST(test_fp_enc_status_valid_flags);
@@ -456,6 +499,8 @@ void run_test(void)
 	RUN_TEST(test_fp_rand_finger_id);
 	RUN_TEST(test_derive_new_pos_match_secret);
 	RUN_TEST(test_derive_pos_match_secret_fail_rollback_fail);
+	RUN_TEST(test_command_read_match_secret);
+	RUN_TEST(test_command_read_match_secret_again);
 
 	test_print_result();
 }
