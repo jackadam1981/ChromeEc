@@ -169,6 +169,8 @@ build_boards: | $(FAILED_BOARDS_DIR)
 
 .PHONY: buildall
 buildall: build_boards build_cros_ec_commands
+	@echo -n ' SANITIZE '; git grep CPRINTS | grep "\\\\n\"" \
+		&& exit 1 || echo "CPRINTS"
 	$(MAKE) build_cts
 	$(MAKE) buildfuzztests
 	$(MAKE) runtests
