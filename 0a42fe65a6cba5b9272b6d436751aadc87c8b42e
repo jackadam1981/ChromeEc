@@ -22,6 +22,30 @@
       "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb7b0fc_8d912660",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-17T16:30:31Z",
+      "side": 1,
+      "message": "Do you have suggestions of port partners to test with for verification of these scenarios?  \n\nWe try to read all Rx messages that are ready during tcpc_alert(), so there won\u0027t necessarily be a 1:1 ratio between the number of messages received and the number of times we need to call tcpc_alert()",
+      "parentUuid": "1c139df3_98395413",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 35
+      },
+      "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
