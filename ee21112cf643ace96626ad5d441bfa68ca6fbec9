@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c25d486_93b8d9b0",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T15:51:17Z",
+      "side": 1,
+      "message": "Why do you need to defer task_set_event? Can you call task_set_event here?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18caebfe_c51cb571",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T15:51:17Z",
+      "side": 1,
+      "message": "Let\u0027s use IRQ to avoid confusion. \u0027int\u0027 can mean integer.",
+      "range": {
+        "startLine": 296,
+        "startChar": 35,
+        "endLine": 296,
+        "endChar": 38
+      },
+      "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
