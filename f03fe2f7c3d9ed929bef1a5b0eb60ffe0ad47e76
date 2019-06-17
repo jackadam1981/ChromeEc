@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "770461eb_588dc020",
+        "filename": "common/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-17T18:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37cd2b5b_55d21bbf",
+      "revId": "f03fe2f7c3d9ed929bef1a5b0eb60ffe0ad47e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1fcd8d1_d9d4495c",
         "filename": "test/printf.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "01b84714_992e737a",
+        "filename": "test/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-17T18:27:37Z",
+      "side": 1,
+      "message": "This was because I needed a way to send NULL as the destination buffer to snprintf. Making output generic meant that I needed to make it\u0027s size generic.\n\nThis is now obsolete, since I now just pass a bool that toggles this behavior for testing.",
+      "parentUuid": "d1fcd8d1_d9d4495c",
+      "range": {
+        "startLine": 32,
+        "startChar": 25,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "f03fe2f7c3d9ed929bef1a5b0eb60ffe0ad47e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b1a256a_cf0674f9",
         "filename": "test/printf.c",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "f03fe2f7c3d9ed929bef1a5b0eb60ffe0ad47e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6783328f_330ab09f",
+        "filename": "test/printf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-17T18:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1a256a_cf0674f9",
+      "revId": "f03fe2f7c3d9ed929bef1a5b0eb60ffe0ad47e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
