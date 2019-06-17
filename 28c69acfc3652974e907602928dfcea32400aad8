@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "cde3a596_304a2642",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-17T09:49:39Z",
+      "side": 1,
+      "message": "Done, should be better now.",
+      "parentUuid": "62101c0d_2f5e2081",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "28c69acfc3652974e907602928dfcea32400aad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86fcfe4b_849335c4",
         "filename": "include/config.h",
         "patchSetId": 8
