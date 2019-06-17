@@ -22,6 +22,30 @@
       "revId": "67c7d647103ea88fa0957a0e9538316901828c64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7bd75c_8cba38ba",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-06-17T22:29:53Z",
+      "side": 1,
+      "message": "Followed other boards; put the implementations before \"#include \"gpio_list.h\".\n\nThese functions are only used by gpio_list.h. Moving them to board.h needs to make them non-static or duplicate the implementations in board.h.",
+      "parentUuid": "b8613efb_05d4d9e3",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "67c7d647103ea88fa0957a0e9538316901828c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
