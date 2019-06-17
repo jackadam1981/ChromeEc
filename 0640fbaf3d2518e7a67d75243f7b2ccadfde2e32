@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d22fa6_749d5a87",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T19:29:12Z",
+      "side": 1,
+      "message": "We need this to be written in plain English. Please ask somebody to translate it.",
+      "range": {
+        "startLine": 944,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 24
+      },
+      "revId": "0640fbaf3d2518e7a67d75243f7b2ccadfde2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796ed91f_948b736d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T19:29:12Z",
+      "side": 1,
+      "message": "Why do we repeat detection for SDP only?",
+      "range": {
+        "startLine": 979,
+        "startChar": 20,
+        "endLine": 979,
+        "endChar": 44
+      },
+      "revId": "0640fbaf3d2518e7a67d75243f7b2ccadfde2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b55ee0_01a4d09d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T19:29:12Z",
+      "side": 1,
+      "message": "What are you trying here? Why is bc12_cnt incremented at line 983? You\u0027re trying to run rt946x_bc12_workaround three times no matter how many times you fail in between (i.e. pass, fail, pass, fail, pass)?",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 15
+      },
+      "revId": "0640fbaf3d2518e7a67d75243f7b2ccadfde2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
