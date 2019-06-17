@@ -271,39 +271,50 @@ void __schedule(int desched, int resched)
 			     : "i"(ISH_TS_VECTOR), "d"(desched), "c"(resched));
 }
 
-#ifdef CONFIG_TASK_PROFILING
 void __keep task_start_irq_handler(void *data)
 {
 	/*
-	 * Get time before checking depth, in case this handler is
-	 * pre-empted.
+	 * Only perform task_start_irq_handler if profiling is enabled
+	 * Otherwise this is is NOP
 	 */
-	uint32_t t = get_time().le.lo;
-	int irq = (uint32_t)data;
-
-	/*
-	 * Track IRQ distribution.  No need for atomic add, because an IRQ
-	 * can't pre-empt itself. If less than 0, then the vector did not map
-	 * to an IRQ but was for a synchronous exception instead (TS_VECTOR)
-	 */
-	if (irq < CONFIG_IRQ_COUNT)
-		irq_dist[irq]++;
-	else
-		/* Track total number of service calls */
-		atomic_add(&svc_calls, 1);
-
-	/* Only the outer ISR should keep track of the ISR start time */
-	if (__in_isr == 1) {
-		exc_start_time = t;
+	if (IS_ENABLED(CONFIG_TASK_PROFILING)) {
+		/*
+		 * Get time before checking depth, in case this handler is
+		 * pre-empted.
+		 */
+		uint32_t t = get_time().le.lo;
+		int irq = (uint32_t)data;
 
 		/*
-		 * Bill the current task for time between the end of the last
-		 * interrupt and the start of this interrupt (now).
+		 * Track IRQ distribution.  No need for atomic add, because an
+		 * IRQ can't pre-empt itself. If less than 0, then the vector
+		 * did not map to an IRQ but was for a synchronous exception
+		 * instead (TS_VECTOR)
 		 */
-		current_task->runtime += (t - exc_end_time);
+		if (irq < CONFIG_IRQ_COUNT)
+			irq_dist[irq]++;
+		else
+			/* Track total number of service calls */
+			atomic_add(&svc_calls, 1);
+
+		/* Only the outer ISR should keep track of the ISR start time */
+		if (__in_isr == 1) {
+			exc_start_time = t;
+
+			/*
+			 * Bill the current task for time between the end of
+			 * the last interrupt and the start of this interrupt
+			 * (now).
+			 */
+			current_task->runtime += (t - exc_end_time);
+		}
 	}
 }
-#endif
+
+void task_end_irq_handler(void *data)
+{
+	/* Does nothing for this platform */
+}
 
 static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 {

@@ -173,7 +173,6 @@ void task_print_list(void);
  */
 const char *task_get_name(task_id_t tskid);
 
-#ifdef CONFIG_TASK_PROFILING
 /**
  * Start tracking an interrupt.
  *
@@ -182,9 +181,6 @@ const char *task_get_name(task_id_t tskid);
  */
 void task_start_irq_handler(void *excep_return);
 void task_end_irq_handler(void *excep_return);
-#else
-#define task_start_irq_handler(excep_return)
-#endif
 
 /**
  * Change the task scheduled to run after returning from the exception.
