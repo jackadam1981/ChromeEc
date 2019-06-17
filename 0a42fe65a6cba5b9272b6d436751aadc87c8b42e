@@ -70,6 +70,30 @@
       "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d676c72_dd3cb0c9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-17T18:05:41Z",
+      "side": 1,
+      "message": "I don\u0027t believe we have a Zinger without updated FW, so I took an opposite approach of testing \"how high can this number be before we hit watchdog resets with a known bad port partner?\"  \n\nOn phaser, we can definitely set this higher, possibly as high as 480.  I need to work through the reasoning and additional considerations for a good general number (ex. how many PD ports?  What other tasks are we starving periodically?)",
+      "parentUuid": "d3572227_d6788cde",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 35
+      },
+      "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
