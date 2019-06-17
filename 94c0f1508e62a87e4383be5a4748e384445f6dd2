@@ -22,6 +22,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee54aeb_6a466f4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-17T23:28:24Z",
+      "side": 1,
+      "message": "This is needed by Kernel to configure PMC.\nThere are no soft straps in BIOS to configure this information hence thought of providing the information from EC.\n* This remains constant for board. Can be hard coded in Kernel but it will have to be board specific config.\n* Info is needed by Kernel hence requested by AP\n* USBx information is needed by only AP.",
+      "parentUuid": "386e92b5_26167120",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
