@@ -47,6 +47,12 @@ typedef struct {
 
 typedef void (*isr_handler_t) (void);
 
+/**
+ * Symbol should be defined by chip implementation (only ISH exists at
+ * this time) if hardware watchdog interrupt is enabled.
+ */
+extern int mia_wdt_vec;
+
 void init_interrupts(void);
 void mask_interrupt(unsigned int irq);
 void unmask_interrupt(unsigned int irq);

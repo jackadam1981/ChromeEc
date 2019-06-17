@@ -21,6 +21,7 @@
 
 #include "common.h"
 #include "hooks.h"
+#include "interrupts.h"
 #include "ish_persistent_data.h"
 #include "task.h"
 #include "registers.h"
@@ -30,6 +31,8 @@
 /* Units are hundreds of milliseconds */
 #define WDT_T1_PERIOD		(100) /* 10 seconds */
 #define WDT_T2_PERIOD		(10)  /* 1 second */
+
+int mia_wdt_vec = ISH_WDT_VEC;
 
 int watchdog_init(void)
 {

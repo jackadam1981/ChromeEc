@@ -7,6 +7,8 @@
 #include "console.h"
 #include "cpu.h"
 #include "host_command.h"
+#include "interrupts.h"
+#include "mia_panic_internal.h"
 #include "panic.h"
 #include "printf.h"
 #include "software_panic.h"
@@ -90,7 +92,7 @@ void panic_data_print(const struct panic_data *pdata)
  * order pushed to the stack by hardware: see "Intel 64 and IA-32
  * Architectures Software Developer's Manual", Volume 3A, Figure 6-4.
  */
-__attribute__((noreturn)) void __keep exception_panic(
+void exception_panic(
 	uint32_t vector,
 	uint32_t error_code,
 	uint32_t eip,
@@ -121,10 +123,11 @@ __attribute__((noreturn)) void __keep exception_panic(
 	PANIC_DATA_PTR->x86.edi = edi;
 
 	/*
-	 * Convert ISH_WDT_VEC to be a SW Watchdog. This is for
-	 * code that is in system_common_pre_init
+	 * Convert watchdog timer vector number to be a SW
+	 * Watchdog. This is for code that is in
+	 * system_common_pre_init
 	 */
-	if (vector == ISH_WDT_VEC)
+	if (IS_ENABLED(CONFIG_WATCHDOG) && vector == mia_wdt_vec)
 		vector = PANIC_SW_WATCHDOG;
 
 	/* Save stack data to global panic structure */
