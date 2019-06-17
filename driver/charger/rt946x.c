@@ -27,7 +27,6 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, "CHG " format, ## args)
 
-
 /* Charger parameters */
 static const struct charger_info rt946x_charger_info = {
 	.name         = CHARGER_NAME,
@@ -73,6 +72,60 @@ enum rt946x_chg_stat {
 enum rt946x_adc_in_sel {
 	RT946X_ADC_VBUS_DIV5 = 1,
 	RT946X_ADC_VBUS_DIV2,
+	MT6370_ADC_TS_BAT = 6,
+	MT6370_ADC_IBUS = 8,
+	MT6370_ADC_TEMP_JC = 12,
+	MT6370_ADC_MAX,
+};
+
+/*
+ * Unit for each ADC parameter
+ * 0 stands for reserved
+ */
+static const int mt6370_adc_unit[MT6370_ADC_MAX] = {
+	0,
+	MT6370_ADC_UNIT_VBUS_DIV5,
+	MT6370_ADC_UNIT_VBUS_DIV2,
+	MT6370_ADC_UNIT_VSYS,
+	MT6370_ADC_UNIT_VBAT,
+	0,
+	MT6370_ADC_UNIT_TS_BAT,
+	0,
+	MT6370_ADC_UNIT_IBUS,
+	MT6370_ADC_UNIT_IBAT,
+	0,
+	MT6370_ADC_UNIT_CHG_VDDP,
+	MT6370_ADC_UNIT_TEMP_JC,
+};
+
+static const int mt6370_adc_offset[MT6370_ADC_MAX] = {
+	0,
+	MT6370_ADC_OFFSET_VBUS_DIV5,
+	MT6370_ADC_OFFSET_VBUS_DIV2,
+	MT6370_ADC_OFFSET_VSYS,
+	MT6370_ADC_OFFSET_VBAT,
+	0,
+	MT6370_ADC_OFFSET_TS_BAT,
+	0,
+	MT6370_ADC_OFFSET_IBUS,
+	MT6370_ADC_OFFSET_IBAT,
+	0,
+	MT6370_ADC_OFFSET_CHG_VDDP,
+	MT6370_ADC_OFFSET_TEMP_JC,
+};
+
+static int hidden_mode_cnt = 0;
+static struct mutex hidden_mode_lock;
+static struct mutex adc_access_lock;
+static const unsigned char mt6370_reg_en_hidden_mode[] = {
+	MT6370_REG_HIDDENPASCODE1,
+	MT6370_REG_HIDDENPASCODE2,
+	MT6370_REG_HIDDENPASCODE3,
+	MT6370_REG_HIDDENPASCODE4,
+};
+
+static const unsigned char mt6370_val_en_hidden_mode[] = {
+	0x96, 0x69, 0xC3, 0x3C,
 };
 
 #if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
@@ -124,7 +177,7 @@ enum rt946x_irq {
 };
 
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
-	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+	0xBF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFC, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF,
@@ -159,6 +212,12 @@ static int rt946x_block_write(int reg, const uint8_t *val, int len)
 			       reg, val, len);
 }
 
+static int rt946x_block_read(int reg, uint8_t *data, int len)
+{
+	return i2c_read_block(I2C_PORT_CHARGER, RT946X_ADDR_FLAGS,
+				reg, data, len);
+}
+
 static int rt946x_update_bits(int reg, int mask, int val)
 {
 	int rv;
@@ -183,6 +242,20 @@ static inline int rt946x_clr_bit(int reg, int mask)
 	return rt946x_update_bits(reg, mask, 0x00);
 }
 
+static inline int mt6370_pmu_reg_test_bit(int cmd, int shift, int *is_one)
+{
+	int rv, data;
+
+	rv = rt946x_read8(cmd, &data);
+	if (rv) {
+		*is_one = 0;
+		return rv;
+	}
+
+	*is_one = !!(data & BIT(shift));
+	return rv;
+}
+
 static inline uint8_t rt946x_closest_reg(uint16_t min, uint16_t max,
 					 uint16_t step, uint16_t target)
 {
@@ -191,6 +264,38 @@ static inline uint8_t rt946x_closest_reg(uint16_t min, uint16_t max,
 	if (target >= max)
 		return ((max - min) / step);
 	return (target - min) / step;
+}
+
+static int mt6370_enable_hidden_mode(int en)
+{
+	int rv = 0;
+
+	if (in_interrupt_context()) {
+		CPRINTS("Should not use lock in irq context");
+		return EC_ERROR_INVAL;
+        }
+
+	mutex_lock(&hidden_mode_lock);
+	if (en) {
+		if (hidden_mode_cnt == 0) {
+			rv = rt946x_block_write(mt6370_reg_en_hidden_mode[0],
+				mt6370_val_en_hidden_mode,
+				ARRAY_SIZE(mt6370_val_en_hidden_mode));
+			if (rv)
+				goto out;
+		}
+		hidden_mode_cnt++;
+	} else {
+		if (hidden_mode_cnt == 1) /* last one */
+			rv = rt946x_write8(mt6370_reg_en_hidden_mode[0], 0x00);
+		hidden_mode_cnt--;
+		if (rv)
+			goto out;
+	}
+
+out:
+	mutex_unlock(&hidden_mode_lock);
+	return rv;
 }
 
 static int rt946x_chip_rev(int *chip_rev)
@@ -686,47 +791,6 @@ int charger_discharge_on_ac(int enable)
 	return rt946x_enable_hz(enable);
 }
 
-int charger_get_vbus_voltage(int port)
-{
-	int val;
-	static int vbus_mv;
-	int retries = 10;
-
-	/* Set VBUS as ADC input */
-	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
-		RT946X_ADC_VBUS_DIV5 << RT946X_SHIFT_ADC_IN_SEL);
-
-	/* Start ADC conversion */
-	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
-
-	/*
-	 * In practice, ADC conversion rarely takes more than 35ms.
-	 * However, according to the datasheet, ADC conversion may take
-	 * up to 200ms. But we can't wait for that long, otherwise
-	 * host command would time out. So here we set ADC timeout as 50ms.
-	 * If ADC times out, we just return the last read vbus_mv.
-	 *
-	 * TODO(chromium:820335): We may handle this more gracefully with
-	 * EC_RES_IN_PROGRESS.
-	 */
-	while (--retries) {
-		rt946x_read8(RT946X_REG_CHGSTAT, &val);
-		if (!(val & RT946X_MASK_ADC_STAT))
-			break;
-		msleep(5);
-	}
-
-	if (retries) {
-		/* Read measured results if ADC finishes in time. */
-		rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
-		rt946x_read8(RT946X_REG_ADCDATAH, &val);
-		vbus_mv |= (val << 8);
-		vbus_mv *= 25;
-	}
-
-	return vbus_mv;
-}
-
 /* Setup sourcing current to prevent overload */
 #ifdef CONFIG_CHARGER_ILIM_PIN_DISABLED
 static int rt946x_enable_ilim_pin(int en)
@@ -953,6 +1017,234 @@ static void usb_pd_connect(void)
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_pd_connect, HOOK_PRIO_DEFAULT);
 #endif
 
+static int mt6370_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
+{
+	int rv, i, adc_start, adc_result = 0;
+	int adc_data_h, adc_data_l, aicr;
+	const int max_wait_times = 6;
+
+	if (in_interrupt_context()) {
+		CPRINTS("Should not use lock in irq context");
+		return EC_ERROR_INVAL;
+        }
+	mutex_lock(&adc_access_lock);
+	mt6370_enable_hidden_mode(1);
+
+	/* Select ADC to desired channel */
+	rv = rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
+					adc_sel << RT946X_SHIFT_ADC_IN_SEL);
+	if (rv)
+		goto out;
+
+	if (adc_sel == MT6370_ADC_IBUS) {
+		rv = charger_get_input_current(&aicr);
+		if (rv)
+			goto out;
+	}
+
+	/* Start ADC conversation */
+	rv = rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
+	if (rv)
+		goto out;
+
+	for (i = 0; i < max_wait_times; i++) {
+		msleep(35);
+		rv = mt6370_pmu_reg_test_bit(RT946X_REG_CHGADC,
+					      RT946X_SHIFT_ADC_START,
+					      &adc_start);
+		if (!adc_start && rv == 0)
+			break;
+	}
+	if (i == max_wait_times)
+		CPRINTS("%s: wait conversation failed, sel = %d, rv = %d",
+			__func__, adc_sel, rv);
+
+	/* Read ADC data */
+	rv = rt946x_read8(RT946X_REG_ADCDATAH, &adc_data_h);
+	rv = rt946x_read8(RT946X_REG_ADCDATAL, &adc_data_l);
+	if (rv)
+		goto out;
+
+	/* Calculate ADC value */
+	adc_result = adc_data_h * 256 + adc_data_l
+			* mt6370_adc_unit[adc_sel] + mt6370_adc_offset[adc_sel];
+
+	/* For TS_BAT/TS_BUS, the real unit is 0.25, here we use 25(unit) */
+	if (adc_sel == MT6370_ADC_TS_BAT)
+		adc_result /= 100;
+
+out:
+	if (adc_sel == MT6370_ADC_IBUS) {
+		if (aicr < 400) /* 400mA */
+			adc_result = adc_result * 67 / 100;
+	}
+
+	*adc_val = adc_result / 1000;
+	mt6370_enable_hidden_mode(0);
+	mutex_unlock(&adc_access_lock);
+	return rv;
+}
+
+int charger_get_vbus_voltage(int port)
+{
+	static int vbus_mv;
+
+	mt6370_get_adc(RT946X_ADC_VBUS_DIV5, &vbus_mv);
+	return vbus_mv;
+}
+
+static int mt6370_toggle_cfo(void)
+{
+	int rv, data;
+
+	rv = rt946x_read8(MT6370_REG_FLEDEN, &data);
+	if (rv)
+		goto out;
+
+	if (data & MT6370_STROBE_EN_MASK)
+		goto out;
+
+	/* read data */
+	rv = rt946x_read8(RT946X_REG_CHGCTRL2, &data);
+	if (rv)
+		goto out;
+
+	/* cfo off */
+	data &= ~RT946X_MASK_CFO_EN;
+	rv = rt946x_write8(RT946X_REG_CHGCTRL2, data);
+	if (rv)
+		goto out;
+
+	/* cfo on */
+	data |= RT946X_MASK_CFO_EN;
+	rv = rt946x_write8(RT946X_REG_CHGCTRL2, data);
+
+out:
+	return rv;
+}
+
+static int mt6370_pmu_chg_mivr_irq_handler(void)
+{
+	int rv, ibus = 0, mivr_stat;
+
+	rv = mt6370_pmu_reg_test_bit(MT6370_REG_CHGSTAT1,
+				MT6370_SHIFT_MIVR_STAT, &mivr_stat);
+	if (rv)
+		goto out;
+
+	if (!mivr_stat) {
+		CPRINTF("%s: mivr stat not act\n", __func__);
+		goto out;
+	}
+
+	rv = mt6370_get_adc(MT6370_ADC_IBUS, &ibus);
+	if (rv)
+		goto out;
+
+	if (ibus < 100) /* 100mA */
+		rv = mt6370_toggle_cfo();
+
+out:
+	return rv;
+}
+
+static int mt6370_pmu_attachi_irq_handler(void)
+{
+	return 0;
+}
+
+static int mt6370_pmu_detachi_irq_handler(void)
+{
+	return 0;
+}
+
+enum {
+	MT6370_MIVR_IRQ = 6,
+	MT6370_ATTACHI_IRQ = 48,
+	MT6370_DETACHI_IRQ = 49,
+	MT6370_IRQ_MAX = 128,
+};
+
+static const uint8_t mt6370_irqr_filter[RT946X_IRQ_COUNT] = {
+	0xF1, 0xF8, 0xF0, 0xF8, 0xFF, 0xE3, 0xFB, 0xF8,
+	0xF8, 0xCF, 0x3F, 0xE0, 0x80, 0xFF, 0xC0, 0xF8,
+};
+
+static const uint8_t mt6370_irqf_filter[RT946X_IRQ_COUNT] = {
+	0xF1, 0xF8, 0xF0, 0x80, 0x00, 0x00, 0x00, 0x00,
+	0xF8, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
+
+typedef int (*mt6370_irq_fptr)(void);
+static mt6370_irq_fptr mt6370_irq_handler_tbl[MT6370_IRQ_MAX] = {
+	[MT6370_MIVR_IRQ] = mt6370_pmu_chg_mivr_irq_handler,
+	[MT6370_ATTACHI_IRQ] = mt6370_pmu_attachi_irq_handler,
+	[MT6370_DETACHI_IRQ] = mt6370_pmu_detachi_irq_handler,
+};
+
+static int mt6370_irq_handler(void)
+{
+	uint8_t data[RT946X_IRQ_COUNT] = {0}, mask[RT946X_IRQ_COUNT] = {0};
+	uint8_t stat_chg[RT946X_IRQ_COUNT] = {0};
+	uint8_t stat_old[RT946X_IRQ_COUNT] = {0};
+	uint8_t stat_new[RT946X_IRQ_COUNT] = {0};
+	uint8_t valid_chg[RT946X_IRQ_COUNT] = {0};
+	int i, j, ret, reg_val;
+
+	ret = rt946x_write8(MT6370_REG_IRQMASK, 0xfe);
+	if (ret)
+		goto out_irq_handler;
+
+	ret = rt946x_read8(MT6370_REG_IRQIND, &reg_val);
+	if (ret)
+		goto out_irq_handler;
+
+	/* read stat before reading irq evt */
+	ret = rt946x_block_read(MT6370_REG_CHGSTAT1, stat_old, 16);
+	if (ret)
+		goto out_irq_handler;
+
+	/* workaround for irq, divided irq event into upper and lower */
+	ret = rt946x_block_read(MT6370_REG_CHGIRQ1, data, 5);
+	if (ret)
+		goto out_irq_handler;
+
+	ret = rt946x_block_read(RT946X_REG_DPDMIRQ, data + 6, 10);
+	if (ret)
+		goto out_irq_handler;
+
+	/* read stat after reading irq evt */
+	ret = rt946x_block_read(MT6370_REG_CHGSTAT1, stat_new, 16);
+	if (ret)
+		goto out_irq_handler;
+
+	ret = rt946x_block_read(MT6370_REG_CHGMASK1, mask, 16);
+	if (ret)
+		goto out_irq_handler;
+
+	ret = rt946x_write8(MT6370_REG_IRQMASK, 0x00);
+	if (ret)
+		goto out_irq_handler;
+
+	for (i = 0; i < 16; i++) {
+		stat_chg[i] = stat_old[i] ^ stat_new[i];
+		valid_chg[i] = (stat_new[i] & mt6370_irqr_filter[i]) |
+		    (~stat_new[i] & mt6370_irqf_filter[i]);
+		data[i] |= (stat_chg[i] & valid_chg[i]);
+		data[i] &= ~mask[i];
+		if (!data[i])
+			continue;
+		for (j = 0; j < 8; j++) {
+			if (!(data[i] & (1 << j)))
+				continue;
+			if (mt6370_irq_handler_tbl[i*8 + j])
+				ret = mt6370_irq_handler_tbl[i*8 + j]();
+		}
+	}
+out_irq_handler:
+	return ret;
+}
+
 void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
@@ -961,6 +1253,9 @@ void usb_charger_task(void *u)
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
+#ifdef CONFIG_CHARGER_MT6370
+		mt6370_irq_handler();
+#endif
 		rt946x_read8(RT946X_REG_DPDMIRQ, &reg);
 
 		/* VBUS attach event */
