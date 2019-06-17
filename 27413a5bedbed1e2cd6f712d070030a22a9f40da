@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f1f9a0af_e90f7b24",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-17T21:52:39Z",
+      "side": 1,
+      "message": "Will correct.",
+      "parentUuid": "da910eb5_df23f4b7",
+      "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02c97e75_cc3eeea6",
         "filename": "test/printf.c",
         "patchSetId": 2
@@ -53,6 +71,30 @@
       "writtenOn": "2019-06-17T21:40:50Z",
       "side": 1,
       "message": "here too. (are you trying to align the names?)",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059dc09e_22c6d822",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-17T21:52:39Z",
+      "side": 1,
+      "message": "Yeah, I went all in for alignment with clang-format.\nIf this is unappealing, I can remove.",
+      "parentUuid": "6d7ce2a3_00b92bc3",
       "range": {
         "startLine": 74,
         "startChar": 4,
