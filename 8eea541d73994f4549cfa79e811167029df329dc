@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7effb0b_656adf84",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T17:16:20Z",
+      "side": 1,
+      "message": "Please use \u0027overridable\u0027.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc81864_86df65ee",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T17:16:20Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 45
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "502ac125_8f472e25",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T17:16:20Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 45
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3d12888_380d0fe9",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-17T17:16:20Z",
+      "side": 1,
+      "message": "I don\u0027t think this is useful. Entire struct is defined as const.",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 6
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
