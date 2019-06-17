@@ -46,6 +46,30 @@
       "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3572227_d6788cde",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-17T17:31:27Z",
+      "side": 1,
+      "message": "Unfortunately the most chatty partners tend to be PD3.0 during \"Extended\" status queries, which is not currently supported on this platform.\n\nI would say the closest would be a Zinger 60w that hasn\u0027t been FW updated yet.\n\nFor another real-world example, you can the traffic between a Macbook and 87w charger when negotiating its serial number. There are a significant amount of back-and-forth queries in a short period, which is completely valid per the spec. (But again, we don\u0027t utilize this \"Apple\" AltMode, so it is informational only.)",
+      "parentUuid": "3fb7b0fc_8d912660",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 35
+      },
+      "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
