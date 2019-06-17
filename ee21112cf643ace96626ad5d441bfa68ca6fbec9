@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "23689461_b972449b",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2019-06-17T17:50:37Z",
+      "side": 1,
+      "message": "Delay of 0 won\u0027t work.  Current tcs3400 ec driver starts the collection process when read() is called, and that collection process will take between 400-712ms to complete.\n\nYou may have made the observation on a previous driver version that left the chip running after it generated a sample, but current version does not behave that way (based on recently merged https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1633270)\n\nTo best estimate when the data will be ready, look at the atime register setting to determine how long between when collection process is started and when the data will actually be ready (current driver takes 712ms for data to ready, but after the following CL goes in, that time will vary as atime will vary: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1633269",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c25d486_93b8d9b0",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 12
