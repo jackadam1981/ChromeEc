@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c325b16_b9c9352e",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-17T23:10:25Z",
+      "side": 1,
+      "message": "git grep \u0027CPRINTS(.*\\\\n\"\u0027\n\nwould be simpler and do the same, but I am not sure this is the best place to put this check to start with: this would be applied to the entire codebase each time make builall is invoked. \n\nA pre-upload check applying this to the patch diffs only would be much more efficient. \n\nIn any case, grep output should go into stderr, not stdout so that is it easy to spot even when someone redirects stdout \u003e /dev/null",
+      "range": {
+        "startLine": 172,
+        "startChar": 24,
+        "endLine": 172,
+        "endChar": 57
+      },
+      "revId": "e8f44b9a839216b7378b830708e2d987ab371ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
