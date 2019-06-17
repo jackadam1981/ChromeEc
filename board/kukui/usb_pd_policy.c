@@ -268,13 +268,18 @@ static void svdm_safe_dp_mode(int port)
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
-	/* Only enter mode if device is DFP_D capable */
-	if (mode_caps & MODE_DP_SNK) {
-		svdm_safe_dp_mode(port);
-		return 0;
-	}
+	/* Doesn't support superspeed lanes. */
+	const uint32_t support_pin_mode = MODE_DP_PIN_C | MODE_DP_PIN_E;
 
-	return -1;
+	/* Only enter mode if device is DFP_D, PIN_C, PIN_E capable */
+	if (!(mode_caps & MODE_DP_SNK))
+		return -1;
+
+	if (!(mode_caps & (support_pin_mode << MODE_DP_DFP_PIN_SHIFT)))
+		return -1;
+
+	svdm_safe_dp_mode(port);
+	return 0;
 }
 
 static int svdm_dp_status(int port, uint32_t *payload)
@@ -297,7 +302,9 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+	/* Doesn't support multi-function mode, mask it out. */
+	int status = dp_status[port] & ~PD_VDO_DPSTS_MF_MASK;
+	int pin_mode = pd_dfp_dp_get_pin_mode(port, status);
 
 	if (!pin_mode)
 		return 0;
