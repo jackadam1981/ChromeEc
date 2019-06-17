@@ -435,7 +435,7 @@ static void i2c_interrupt_handler(struct i2c_context *ctx)
 	ctx->interrupts = i2c_mmio_read(ctx->base, IC_INTR_STAT);
 	ctx->reason = (uint16_t) i2c_mmio_read(ctx->base, IC_TX_ABRT_SOURCE);
 #ifdef INTR_DEBUG
-	CPRINTS("INTR_STAT = 0x%04x, TX_ABORT_SRC = 0x%04x, RAW_INTR_STAT = 0x%04x\n",
+	CPRINTS("INTR_STAT = 0x%04x, TX_ABORT_SRC = 0x%04x, RAW_INTR_STAT = 0x%04x",
 			ctx->interrupts, ctx->reason, raw_intr);
 #endif
 	/* disable interrupts */
