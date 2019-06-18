@@ -22,6 +22,30 @@
       "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca1ac33_6249aace",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-18T18:22:08Z",
+      "side": 1,
+      "message": "In the child CL, they say that the board doesn\u0027t support superspeed. (This is why I was saying it can be merged with the child CL).",
+      "parentUuid": "93ee260d_c9d07935",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 32
+      },
+      "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
