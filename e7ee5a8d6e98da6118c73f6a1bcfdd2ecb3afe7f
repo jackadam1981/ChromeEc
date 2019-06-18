@@ -46,6 +46,30 @@
       "revId": "e7ee5a8d6e98da6118c73f6a1bcfdd2ecb3afe7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02de6ca1_6a198865",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-06-18T19:24:29Z",
+      "side": 1,
+      "message": "Makes sense, got it. I think we should just say\n\n   if (chunk.buffer) { ...\n\nChecking for data when we know it\u0027s necessarily not-NULL feels misleading",
+      "parentUuid": "46ea194e_12a8df87",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 25
+      },
+      "revId": "e7ee5a8d6e98da6118c73f6a1bcfdd2ecb3afe7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
