@@ -22,6 +22,30 @@
       "revId": "e8f44b9a839216b7378b830708e2d987ab371ba0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d48c29_5e597418",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-18T07:56:51Z",
+      "side": 1,
+      "message": "Yeah, agree, this belongs in pre-upload checks.",
+      "parentUuid": "2c325b16_b9c9352e",
+      "range": {
+        "startLine": 172,
+        "startChar": 24,
+        "endLine": 172,
+        "endChar": 57
+      },
+      "revId": "e8f44b9a839216b7378b830708e2d987ab371ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
