@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "046f5cac_32cbce71",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-18T13:26:23Z",
+      "side": 1,
+      "message": "won\u0027t this skew time?  I would think you would want to adjust what you are setting the hardware so when it interrupts it will allow for the expected latency and then will be on schedule.",
+      "revId": "01782b2e2610dfa7822a7c8aa0826eaa07d4d884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f17afbf_ec029c90",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 8
