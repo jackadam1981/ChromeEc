@@ -94,6 +94,30 @@
       "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5832d090_58678d2e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-18T01:26:21Z",
+      "side": 1,
+      "message": "In that case, I defer to your testing. My concerns are merely theoretical; yours are proven and practical.\n\nI defer to your position about setting a conservative limit. This can always be revisited later if issues arise.\n\nACKing the current limit until a specific DUT raises concern.",
+      "parentUuid": "4d676c72_dd3cb0c9",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 35
+      },
+      "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
