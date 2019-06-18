@@ -279,8 +279,10 @@ static void motion_sense_fifo_stage_unit(
 	 * be written to the next available block and this one will remain
 	 * staged.
 	 */
-	memcpy(chunk.buffer, data, motion_sense_fifo.unit_bytes);
-	fifo_staged.count++;
+	if (chunk.buffer && data) {
+		memcpy(chunk.buffer, data, motion_sense_fifo.unit_bytes);
+		fifo_staged.count++;
+	}
 	/*
 	 * If we're using tight timestamps, and the current entry isn't a
 	 * timestamp we'll increment the sample_count for the given sensor.
