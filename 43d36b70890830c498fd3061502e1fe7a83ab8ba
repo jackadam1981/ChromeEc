@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c904465_6a49e8ed",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T21:23:08Z",
+      "side": 1,
+      "message": "Do you still need this? Shouldn\u0027t \u0027status\u0027 have intended flags set whether an interrupt pin is used or not?",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 52
+      },
+      "revId": "43d36b70890830c498fd3061502e1fe7a83ab8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
