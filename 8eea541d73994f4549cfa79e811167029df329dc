@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6eb1a778_a1036871",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T17:47:25Z",
+      "side": 1,
+      "message": "I meant __overridable. It\u0027s defined in include/common.h.",
+      "parentUuid": "b59a69c3_5609c6d8",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fc81864_86df65ee",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 9
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "I think \"const\" has an effect on \"uint16_t t_gain\" in the \"const uint16_t t_gain\". But the \"const\" has an effect on \"struct max17055_temp_profile\" in the \"const struct max17055_temp_profile\".",
       "parentUuid": "a3d12888_380d0fe9",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 6
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b94b98b8_69d189ca",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T17:47:25Z",
+      "side": 1,
+      "message": "I assume we\u0027ll be defining struct max17055_temp_profile as const anyway. That\u0027s not the case?",
+      "parentUuid": "4eb3809b_4ea42257",
       "range": {
         "startLine": 260,
         "startChar": 1,
