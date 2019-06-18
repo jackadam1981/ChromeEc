@@ -230,7 +230,13 @@ void __hw_clock_event_clear(void)
 
 uint32_t __hw_clock_source_read(void)
 {
-	return scale_ticks2us(read_main_timer());
+	uint64_t main_counter = read_main_timer();
+
+	/* prevent roll over */
+	if (main_counter >= ROLLOVER_CMP_VAL)
+		main_counter = ROLLOVER_CMP_VAL;
+
+	return scale_ticks2us(main_counter);
 }
 
 void __hw_clock_source_set(uint32_t ts)
@@ -240,7 +246,8 @@ void __hw_clock_source_set(uint32_t ts)
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
 
 	HPET_MAIN_COUNTER_64 = scale_us2ticks(ts);
-	HPET_TIMER0_COMP_64 = ROLLOVER_CMP_VAL;
+	/* generates interrupt early due to minimum IRQ latency of HPET */
+	HPET_TIMER0_COMP_64 = ROLLOVER_CMP_VAL - HPET_INT_LATENCY_TICKS;
 
 	wait_while_settling(HPET_ANY_SETTLING);
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
@@ -261,6 +268,8 @@ static void __hw_clock_source_irq(int timer_id)
 
 void __hw_clock_source_irq_0(void)
 {
+	/* reset main counter & timer 0 comparator */
+	__hw_clock_source_set(0);
 	__hw_clock_source_irq(0);
 }
 DECLARE_IRQ(ISH_HPET_TIMER0_IRQ, __hw_clock_source_irq_0);
@@ -298,9 +307,8 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_INTR_CLEAR = BIT(0);
 	HPET_INTR_CLEAR = BIT(1);
 
-	/* Set comparator value for Timer 0 and enable periodic mode */
-	HPET_TIMER0_COMP_64 = ROLLOVER_CMP_VAL;
-	timer0_config |= HPET_Tn_TYPE_CNF;
+	/* Set comparator value(- interrupt latency) for Timer 0 */
+	HPET_TIMER0_COMP_64 = ROLLOVER_CMP_VAL - HPET_INT_LATENCY_TICKS;
 
 	/* Timer 0 - IRQ routing, no need IRQ set for HPET0 */
 	timer0_config &= ~HPET_Tn_INT_ROUTE_CNF_MASK;
