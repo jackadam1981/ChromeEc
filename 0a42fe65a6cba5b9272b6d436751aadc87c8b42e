@@ -118,6 +118,30 @@
       "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81d13d90_a14191ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-18T15:39:06Z",
+      "side": 1,
+      "message": "I believe this can be raised, which will limit the likelihood of interfering with a good port partner.  From testing on a phaser360 (2 PD ports, 3 sensors) with a single bad port partner:\n\n600 - watchdog resets occur\n400 - no watchdog resets occur, but sensor task reports reliably missing 4 data collections from lid accelerometer \n300 - no resets, lid sensor missing 2-3 collections, HDMI dongle in other port functions OK\n200 - no resets, lid sensor missing 0-1 collections, HDMI dongle in other port functions OK\n150 - no resets, lid sensor missing 0 collections, HDMI dongle in other port functions OK",
+      "parentUuid": "5832d090_58678d2e",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 35
+      },
+      "revId": "0a42fe65a6cba5b9272b6d436751aadc87c8b42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
