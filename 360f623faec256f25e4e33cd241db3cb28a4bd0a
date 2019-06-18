@@ -22,6 +22,30 @@
       "revId": "360f623faec256f25e4e33cd241db3cb28a4bd0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f79c2b_7bc40062",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-18T19:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3b8989_d0a05036",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 54
+      },
+      "revId": "360f623faec256f25e4e33cd241db3cb28a4bd0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
