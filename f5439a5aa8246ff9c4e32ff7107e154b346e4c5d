@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b37bde28_d2401a65",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T17:56:03Z",
+      "side": 1,
+      "message": "Can this be at line 163?\n\nWhat causes this interrupt to be disabled after sysjump?",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 48
+      },
+      "revId": "f5439a5aa8246ff9c4e32ff7107e154b346e4c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
