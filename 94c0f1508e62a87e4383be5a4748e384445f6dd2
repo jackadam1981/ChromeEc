@@ -46,6 +46,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a3b679_08657803",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T01:51:34Z",
+      "side": 1,
+      "message": "Then, we had better hardcode this in BIOS, kernel or device tree. Boards can be identified by OEM_ID, BOARD_VERSION, SKU_ID, etc.",
+      "parentUuid": "5ee54aeb_6a466f4c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
