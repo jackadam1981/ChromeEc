@@ -94,6 +94,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42eedd7f_2d8d57a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T21:18:25Z",
+      "side": 1,
+      "message": "For example, the mapping from type-c port # to a physical location is hardcoded in model.yaml:\n\nhttps://chromium.googlesource.com/chromiumos/overlays/board-overlays.git/+/master/overlay-nami/chromeos-base/chromeos-config-bsp-nami/files/model.yaml#50\n\nFYI: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1259322.",
+      "parentUuid": "258e87db_9195fcc2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
