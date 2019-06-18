@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db0705e6_83d30c2a",
+        "filename": "test/usb_prl.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-18T18:53:17Z",
+      "side": 1,
+      "message": "Made a new CL to do that in all files: https://crrev.com/c/1663262",
+      "parentUuid": "1e2313f1_73b0b1ca",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "07a33a517c88917e1ca3258c3ce0dc0edd8a521b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51348bc0_6d7b32b4",
         "filename": "test/usb_sm_framework_h3.tasklist",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6e5d66db_7f1d9f8c",
+        "filename": "test/usb_sm_framework_h3.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-18T18:53:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51348bc0_6d7b32b4",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "07a33a517c88917e1ca3258c3ce0dc0edd8a521b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ca7f513_8f5ff464",
         "filename": "test/usb_typec_ctvpd.tasklist",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "07a33a517c88917e1ca3258c3ce0dc0edd8a521b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde8739f_0a2c32ca",
+        "filename": "test/usb_typec_ctvpd.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-18T18:53:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ca7f513_8f5ff464",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "07a33a517c88917e1ca3258c3ce0dc0edd8a521b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
