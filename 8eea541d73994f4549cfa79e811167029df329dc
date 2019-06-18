@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b59a69c3_5609c6d8",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-18T06:22:36Z",
+      "side": 1,
+      "message": "Sorry, I try both \"override_proto const struct max17055_temp_profile\" and \"overridable const struct max17055_temp_profile\"are occur compile error. And I cannot find the usage of the \"override_proto\" and \"overridable\" in the project.",
+      "parentUuid": "c7effb0b_656adf84",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fc81864_86df65ee",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "8eea541d73994f4549cfa79e811167029df329dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a97966_68d2658f",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-18T06:22:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "4fc81864_86df65ee",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 45
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "110b8596_fbc913da",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-18T06:22:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "502ac125_8f472e25",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 679,
+        "endChar": 45
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3d12888_380d0fe9",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "8eea541d73994f4549cfa79e811167029df329dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb3809b_4ea42257",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-18T06:22:36Z",
+      "side": 1,
+      "message": "I think \"const\" has an effect on \"uint16_t t_gain\" in the \"const uint16_t t_gain\". But the \"const\" has an effect on \"struct max17055_temp_profile\" in the \"const struct max17055_temp_profile\".",
+      "parentUuid": "a3d12888_380d0fe9",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 6
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
