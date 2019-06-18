@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93ee260d_c9d07935",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T18:16:54Z",
+      "side": 1,
+      "message": "Why do we not check multi-function bit?",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 32
+      },
+      "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
