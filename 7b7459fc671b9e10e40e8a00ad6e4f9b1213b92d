@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e376ed83_d8456c64",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-18T16:38:19Z",
+      "side": 1,
+      "message": "can we move to ish_persistent_data.h?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "7b7459fc671b9e10e40e8a00ad6e4f9b1213b92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64697c1b_809a93a0",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-18T16:38:19Z",
+      "side": 1,
+      "message": "reserved is a better name?",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "7b7459fc671b9e10e40e8a00ad6e4f9b1213b92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027c770e_ca75bc90",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-18T16:38:19Z",
+      "side": 1,
+      "message": "needs to go right above RAM_BASE now due to alphabetical order",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 33
+      },
+      "revId": "7b7459fc671b9e10e40e8a00ad6e4f9b1213b92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
