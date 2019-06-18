@@ -31,7 +31,7 @@ int rand_finger_id(uint8_t *new_finger_id)
 	timestamp_t deadline;
 	timestamp_t now = get_time();
 
-	deadline.val = now.val + SECOND / 10;
+	deadline.val = now.val + SECOND;
 	CPRINTS("Generating random finger id ...");
 	do {
 		if (timestamp_expired(deadline, &now))

@@ -61,12 +61,13 @@ void rand_bytes(void *buffer, size_t len)
 /* Mock the clock for testing timeout behavior. */
 
 static timestamp_t now;
-static const uint64_t timestamp_increment = SECOND / 100;
+static const uint64_t timestamp_increment = SECOND * 50;
 
 timestamp_t get_time(void)
 {
 	timestamp_t now_val = now;
 
+	ccprintf("mock timer called====================\n");
 	now.val += timestamp_increment;
 	return now_val;
 }

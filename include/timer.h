@@ -114,7 +114,7 @@ static inline void sleep(unsigned sec)
 /**
  * Get the current timestamp from the system timer.
  */
-timestamp_t get_time(void);
+test_mockable timestamp_t get_time(void);
 
 /**
  * Force the current value of the system timer.
