@@ -118,6 +118,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22db9f65_d9b16d7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-18T22:24:58Z",
+      "side": 1,
+      "message": "thanks for the details. I am not familiar with yaml files.\nHow to access the this data from Kernel?\nif we add it in yaml file, is this info available by vboot to do OS loading from USB3/2 drive on USB-C connector (ctrl+u command)?",
+      "parentUuid": "42eedd7f_2d8d57a6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
