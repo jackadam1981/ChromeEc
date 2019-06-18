@@ -16,6 +16,44 @@
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
 
+enum alslog_level {
+	DISABLED = 0,
+	ERRORS = 1,
+	PRIORITY = 2,
+	RAW_DATA = 4,
+	SATURATION = 8,
+	DEBUG = 16,
+	VERBOSE = 32,
+	FLOW = 64,
+	GRAPH = 128,
+	SCALING = 256,
+	XYZ_XLATE = 512,
+};
+
+#ifdef CONFIG_CMD_ALSLOG
+static int gAlsLogMask;
+static int command_log_als_data(int argc, char **argv)
+{
+	/* toggle log state */
+	gAlsLogMask = (gAlsLogMask) ? DISABLED : PRIORITY;
+	CPRINTS("ALS data logging now %sabled", gAlsLogMask ? "en" : "dis");
+	if (argc > 1) {
+		gAlsLogMask = atoi(argv[1]);
+		CPRINTS("ALS data logging mask set to %d", gAlsLogMask);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(alslog, command_log_als_data,
+	"",
+	"Toggle state of ALS data logging.");
+
+#define ALSLOG(level, format, args...) do { if (gAlsLogMask & level) \
+					CPRINTS(format, ## args); \
+				} while (0)
+#else
+#define ALSLOG(level, format, args...) { }
+#endif
+
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
 #endif
@@ -83,12 +121,25 @@ static int tcs3400_rgb_read(const struct motion_sensor_t *s, intv3_t v)
 static void decrement_atime(struct tcs_saturation_t *sat_p)
 {
 	sat_p->atime = MAX(sat_p->atime - TCS_ATIME_DEC_STEP, TCS_MIN_ATIME);
+	ALSLOG((SATURATION|GRAPH), "decrement ATIME = %d", sat_p->atime);
 }
 
 static void increment_atime(struct tcs_saturation_t *sat_p)
 {
 	sat_p->atime = MIN(sat_p->atime + TCS_ATIME_INC_STEP, TCS_MAX_ATIME);
+	ALSLOG((SATURATION|GRAPH), "increment ATIME = %d", sat_p->atime);
 }
+
+#ifdef CONFIG_CMD_ALSLOG
+void log(uint16_t light_val, struct tcs_saturation_t *sat_p, uint16_t *raw_data)
+{
+	ALSLOG(GRAPH, "value: %d, %d%% saturation, GAIN: %d, ATIME: %d, "
+	       "[ 0x%x 0x%x 0x%x 0x%x ",
+	       light_val, light_val * 100 / TCS_SATURATION_LEVEL,
+	       sat_p->again, sat_p->atime,
+	       raw_data[0], raw_data[1], raw_data[2], raw_data[3]);
+}
+#endif
 
 /*
  * tcs3400_adjust_sensor_for_saturation() tries to keep CRGB values as
@@ -103,6 +154,7 @@ static void increment_atime(struct tcs_saturation_t *sat_p)
  * AGAIN if it is not already at its maximum, or if it is, decrease
  * ATIME if it is not at it's minimum already.
  */
+static uint32_t g_saturation_count;
 static int
 tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 				     uint16_t *crgb_data)
@@ -123,27 +175,63 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 	for (int x = 0; x < TCS_CHANNEL_COUNT; x++)
 		max_val = MAX(max_val, crgb_data[x]);
 
+#ifdef CONFIG_CMD_ALSLOG
+	log(max_val, sat_p, crgb_data);
+#endif
+	ALSLOG(SATURATION, "Saturation level=0x%x : "
+		"0x%x 0x%x 0x%x 0x%x",
+		TCS_SATURATION_LEVEL, crgb_data[0],
+		crgb_data[1], crgb_data[2], crgb_data[3]);
+
 	if ((status & TCS_I2C_STATUS_ALS_VALID) ||
 	    (max_val >= TCS_SATURATION_LEVEL)) {
 		/* Saturation occurred, decrease AGAIN if we can */
-		if (sat_p->again > TCS_MIN_AGAIN)
+		g_saturation_count++;
+		if (sat_p->again > TCS_MIN_AGAIN) {
 			sat_p->again--;
-		else if (sat_p->atime < TCS_MAX_ATIME)
+			ALSLOG(GRAPH, "decrement AGAIN = %d", sat_p->again);
+			ALSLOG(SATURATION, "Sat #%d reduce AGAIN to %d",
+			       g_saturation_count, sat_p->again);
+		} else if (sat_p->atime < TCS_MAX_ATIME) {
 			/* reduce accumulation time by incrementing ATIME reg */
 			increment_atime(sat_p);
+			ALSLOG(SATURATION, "Sat #%d increase ATIME to %d",
+			       g_saturation_count, sat_p->atime);
+		} else {
+			ALSLOG(SATURATION, "Sat #%d: can't fix, already at "
+			       "least sensitivity", g_saturation_count);
+		}
 	} else if (max_val < ((TCS_SATURATION_LEVEL *
-				      TSC_SATURATION_LOW_BAND_PERCENT) / 100)) {
+				TSC_SATURATION_LOW_BAND_PERCENT) / 100)) {
 		/* value < 90% saturation, try to increase sensitivity */
 		/* increase AGAIN if we can without saturating */
 		if (max_val <= TCS_GAIN_SAT_LEVEL) {
-			if (sat_p->again < TCS_MAX_AGAIN)
+			if (sat_p->again < TCS_MAX_AGAIN) {
 				sat_p->again++;
-			else if (sat_p->atime > TCS_MIN_ATIME)
+				ALSLOG(GRAPH, "increment AGAIN = %d",
+				       sat_p->again);
+				ALSLOG(SATURATION, "All < %dx of "
+				       "saturation, inc AGAIN to %d",
+				       TCS_GAIN_ADJUST_FACTOR,
+				       sat_p->again);
+			} else if (sat_p->atime > TCS_MIN_ATIME) {
 				/* increase ATIME */
 				decrement_atime(sat_p);
+				ALSLOG(SATURATION, "All < %dx of "
+				       "saturation, dec ATIME to %d",
+				       TCS_GAIN_ADJUST_FACTOR,
+				       sat_p->atime);
+			} else {
+				ALSLOG(SATURATION, "All < 90%% "
+					"saturation, can't adjust "
+					"(%d, %d)",
+					sat_p->again, sat_p->atime);
+			}
 		} else if (sat_p->atime > TCS_MIN_ATIME) {
 			/* increase ATIME */
 			decrement_atime(sat_p);
+			ALSLOG(SATURATION, "All < 90%% saturation, dec "
+			       "ATIME to %d", sat_p->atime);
 		} else if (sat_p->again < TCS_MAX_AGAIN) {
 			/*
 			 * Although we're not at maximum gain yet, we
@@ -159,7 +247,20 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 			 */
 			sat_p->atime = TCS_GAIN_UPSHIFT_ATIME;
 			sat_p->again++;
+			ALSLOG(GRAPH, "increment AGAIN = %d", sat_p->again);
+			ALSLOG(SATURATION, "All < 90%% saturation, "
+			       "upshift case (%d, %d)",
+			       sat_p->again, sat_p->atime);
+		} else {
+			ALSLOG(SATURATION, "All < 90%% saturation, "
+			       "can't adjust (%d, %d)",
+			       sat_p->again, sat_p->atime);
 		}
+	} else {
+		ALSLOG(SATURATION, "saturation sweet spot (0x%08x < "
+		       "0x%08x, sat = 0x%08x)", crgb_data[0],
+		       TCS_SATURATION_LEVEL, TCS_SATURATION_LEVEL * 100 /
+		       TSC_SATURATION_LOW_BAND_PERCENT);
 	}
 
 	/* If atime or gain setting changed, update atime and gain registers */
@@ -168,12 +269,14 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 				(sat_p->again & TCS_I2C_CONTROL_MASK));
 		if (ret)
 			return ret;
+		ALSLOG(SATURATION, "Set AGAIN = 0x%02x", sat_p->again);
 	}
 
 	if (save_atime != sat_p->atime) {
 		ret = tcs3400_i2c_write8(s, TCS_I2C_ATIME, sat_p->atime);
 		if (ret)
 			return ret;
+		ALSLOG(SATURATION, "Set ATIME = 0x%02x", sat_p->atime);
 	}
 
 	return ret;
@@ -206,19 +309,38 @@ static void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 	int32_t ir;
 	int i;
 
+	ALSLOG(XYZ_XLATE, "received crgb_data "
+	       "[ 0x%04x 0x%04x, 0x%04x, 0x%04x ]",
+	       crgb_data[0], crgb_data[1], crgb_data[2], crgb_data[3]);
+
 	/* IR removal */
 	ir = (crgb_data[1] + crgb_data[2] + crgb_data[3] - crgb_data[0]) / 2;
 
+	ALSLOG(XYZ_XLATE, "IR = %d + %d + %d - %d / 2 = %d (0x%04x + 0x%04x"
+			"+ 0x%04x - 0x%04x) = 0x%08x", crgb_data[1],
+			crgb_data[2], crgb_data[2], crgb_data[0], ir,
+			crgb_data[1], crgb_data[2], crgb_data[3],
+			crgb_data[0], ir);
+
 	for (i = 0; i < ARRAY_SIZE(crgb_prime); i++) {
-		if (crgb_data[i] < ir)
+		if (crgb_data[i] < ir) {
+			ALSLOG(ERRORS, "ERROR - IR > crgb_data[i] (0x%08x > "
+				"0x%08x)", ir, crgb_data[i]+ir);
 			crgb_prime[i] = 0;
-		else
+		} else {
 			crgb_prime[i] = crgb_data[i] - ir;
+		}
 	}
 
 	/* regression fit to XYZ space */
 	for (i = 0; i < 3; i++) {
 		const struct rgb_calibration_t *p = &rgb_drv_data->rgb_cal[i];
+
+		ALSLOG(XYZ_XLATE, "coeff[%d] = { %d.%d, %d.%d, %d.%d, %d.%d }",
+			i, p->coeff[RED_IDX]>>16, p->coeff[RED_IDX]&0xffff,
+			p->coeff[GREEN_IDX]>>16, p->coeff[GREEN_IDX]&0xffff,
+			p->coeff[BLUE_IDX]>>16, p->coeff[BLUE_IDX]&0xffff,
+			p->coeff[CLEAR_IDX]>>16, p->coeff[CLEAR_IDX]&0xffff);
 
 		xyz_data[i] = p->offset +
 			fp_mul(p->coeff[RED_IDX], crgb_prime[RED_IDX]) +
@@ -226,8 +348,23 @@ static void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 			fp_mul(p->coeff[BLUE_IDX], crgb_prime[BLUE_IDX]) +
 			fp_mul(p->coeff[CLEAR_IDX], crgb_prime[CLEAR_IDX]);
 
-		if (xyz_data[i] < 0)
+		ALSLOG(XYZ_XLATE, "xyz_data[%d] = %d + (%d * %d.%d) + "
+			"(%d * %d.%d) + (%d * %d.%d) + (%d * %d.%d)",
+			i, p->offset, crgb_prime[RED_IDX],
+			p->coeff[RED_IDX]>>16, p->coeff[RED_IDX]&0xffff,
+			crgb_prime[GREEN_IDX], p->coeff[GREEN_IDX]>>16,
+			p->coeff[GREEN_IDX]&0xffff, crgb_prime[BLUE_IDX],
+			p->coeff[BLUE_IDX]>>16, p->coeff[BLUE_IDX]&0xffff,
+			crgb_prime[CLEAR_IDX], p->coeff[CLEAR_IDX]>>16,
+			p->coeff[CLEAR_IDX]&0xffff);
+		ALSLOG(XYZ_XLATE, "xyz_data[%d] = %d.%d", i,
+			xyz_data[i]>>16, xyz_data[i]&0xffff);
+
+		if (xyz_data[i] < 0) {
+			ALSLOG(ERRORS, "ERROR - xyz_data[i] 0%08x negative, "
+				"setting to 0", xyz_data[i]);
 			xyz_data[i] = 0;
+		}
 	}
 }
 
@@ -243,6 +380,9 @@ static void tcs3400_process_raw_data(struct motion_sensor_t *s,
 	int32_t device_scale = TCS3400_DRV_DATA(s)->als_cal.scale;
 	int32_t device_uscale = TCS3400_DRV_DATA(s)->als_cal.uscale;
 	int i;
+#ifdef CONFIG_CMD_ALSLOG
+	int32_t old;
+#endif
 
 	/* adjust for calibration and scale data */
 	for (i = 0; i < TCS_CHANNEL_COUNT; i++) {
@@ -251,6 +391,8 @@ static void tcs3400_process_raw_data(struct motion_sensor_t *s,
 		/* assemble the light value for this channel */
 		crgb_data[i] = raw_light_data[i] =
 			((raw_data_buf[index+1] << 8) | raw_data_buf[index]);
+		ALSLOG(RAW_DATA, "raw: crgb_data[%d] = %d (0x%04x)",
+		       i, crgb_data[i], crgb_data[i]);
 
 		/* in calibration mode, we only assemble the raw data */
 		if (calibration_mode)
@@ -266,13 +408,27 @@ static void tcs3400_process_raw_data(struct motion_sensor_t *s,
 				TCS3400_RGB_DRV_DATA(rgb_s)->device_scale;
 			device_uscale =
 				TCS3400_RGB_DRV_DATA(rgb_s)->device_uscale;
+			ALSLOG(SCALING, "channel_scale = %d, device_scale = %d,"
+			       "uscale = %d", channel_scale, device_scale,
+			       device_uscale);
+		}
 
 		/* multiply by individual channel scale value (val 0..2) */
 		crgb_data[i] *= channel_scale;
+		ALSLOG(SCALING, "scale: crgb_data[%d] *= %d = %d (0x%04x)",
+		       i, channel_scale, crgb_data[i], crgb_data[i]);
 
 		/* compensate for the light cover */
+		#ifdef CONFIG_CMD_ALSLOG
+		old = crgb_data[i];
+		#endif
 		crgb_data[i] = crgb_data[i] * device_scale +
 				crgb_data[i] * device_uscale / 10000;
+
+		ALSLOG(SCALING, "cover: rgb_data[%d] = %d (0x%04x) * %d + %d "
+			"(0x%04x) * %d / 1000 = %d (0x%x)", i, old, old,
+			device_scale, old, old, device_uscale, crgb_data[i],
+			crgb_data[i]);
 
 		/* normalize the data for atime and again changes */
 		crgb_data[i] = normalize_channel_data(s, crgb_data[i]);
@@ -280,6 +436,8 @@ static void tcs3400_process_raw_data(struct motion_sensor_t *s,
 
 	if (calibration_mode == TCS_RUN_MODE) {
 		tcs3400_translate_to_xyz(s, crgb_data, xyz_data);
+		ALSLOG(SCALING, "xyz xlate to [ 0x%04x, 0x%04x, 0x%04x ]",
+			xyz_data[0], xyz_data[1], xyz_data[2]);
 	} else {
 		/* calibration mode returns raw data */
 		for (i = 0; i < 3; i++)
@@ -335,6 +493,11 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	/* Process the raw light data, adjusting for scale and calibration */
 	tcs3400_process_raw_data(s, buf, raw_data, xyz_data);
 
+	ALSLOG(GRAPH, "RAW VALUES : 0x%04x 0x%04x 0x%04x 0x%04x [%d, %d]",
+	       raw_data[0], raw_data[1], raw_data[2], raw_data[3],
+	       TCS3400_RGB_DRV_DATA(s+1)->saturation.again,
+	       TCS3400_RGB_DRV_DATA(s+1)->saturation.atime);
+
 	/* if clear channel data changed, send illuminance upstream */
 	if ((raw_data[CLEAR_IDX] != TCS_SATURATION_LEVEL) &&
 	    (last_v[X] != xyz_data[Y])) {
@@ -358,7 +521,22 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 #ifdef CONFIG_ACCEL_FIFO
 		vector.sensor_num = s - motion_sensors;
 		motion_sense_fifo_stage_data(&vector, s, 3, last_ts);
+		if (calibration_mode)
+			ALSLOG(PRIORITY, "Sending raw clear data [ 0x%04x ]",
+			       (unsigned short) vector.data[X]);
+		else
+			ALSLOG(PRIORITY, "Sending CLEAR data LUX = %d ",
+			       (unsigned short) vector.data[X]);
 #endif
+	} else {
+		if (raw_data[CLEAR_IDX] != TCS_SATURATION_LEVEL) {
+			ALSLOG(FLOW, "Clear channel data unchanged [ 0x%04x ]",
+			       (unsigned short) xyz_data[Y]);
+		} else {
+			ALSLOG((FLOW|GRAPH), "Clear channel data saturated "
+			       "[ 0x%04x ]",
+			       (unsigned short) raw_data[CLEAR_IDX]);
+		}
 	}
 
 	/*
@@ -389,9 +567,26 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 #endif /* CONFIG_ACCEL_SPOOF_MODE */
 
 #ifdef CONFIG_ACCEL_FIFO
+		ALSLOG(PRIORITY, "Sending %s data [ 0x%04x 0x%04x 0x%04x ]",
+			calibration_mode ? "raw RGB" : "RGB XYZ",
+			(unsigned short) vector.data[X],
+			(unsigned short) vector.data[Y],
+			(unsigned short) vector.data[Z]);
 		vector.sensor_num = rgb_s - motion_sensors;
 		motion_sense_fifo_stage_data(&vector, rgb_s, 3, last_ts);
 #endif
+	} else if ((raw_data[RED_IDX] != TCS_SATURATION_LEVEL) &&
+		(raw_data[BLUE_IDX] != TCS_SATURATION_LEVEL) &&
+		(raw_data[GREEN_IDX] != TCS_SATURATION_LEVEL)) {
+		ALSLOG(FLOW, "RGB channel unchanged [ 0x%04x 0x%04x 0x%04x ]",
+			(unsigned short) xyz_data[X],
+			(unsigned short) xyz_data[Y],
+			(unsigned short) xyz_data[Z]);
+	} else {
+		ALSLOG((FLOW|GRAPH), "RGB channel saturated "
+		       "[ 0x%04x 0x%04x 0x%04x ]",
+			raw_data[RED_IDX], raw_data[GREEN_IDX],
+			raw_data[BLUE_IDX]);
 	}
 #ifdef CONFIG_ACCEL_FIFO
 	motion_sense_fifo_commit_data();
@@ -433,6 +628,8 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	ret = tcs3400_i2c_read8(s, TCS_I2C_STATUS, &status);
 	if (ret)
 		return ret;
+
+	ALSLOG(DEBUG, "status=0x%x", status);
 
 	/* Disable future interrupts */
 	ret = tcs3400_i2c_write8(s, TCS_I2C_ENABLE, TCS3400_MODE_IDLE);
