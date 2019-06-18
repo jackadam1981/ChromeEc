@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b22a4f9b_d1a31fc0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-18T20:30:40Z",
+      "side": 1,
+      "message": "For this bug to have taken place the pop function had to fail. For that to happen we must have saturated the fifo with staged data. Hence the change to the if statement. This can happen if the AP never polls the data. From the bug, this must be what\u0027s happening in low power mode.",
+      "parentUuid": "e05c468a_17a2270c",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "56d3a943382a8c5a044bbaa432544c50bd5a671b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2d6f20d_39bd3d92",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-18T20:26:57Z",
       "side": 1,
       "message": "Should we check this for NULL?",
+      "range": {
+        "startLine": 285,
+        "startChar": 8,
+        "endLine": 285,
+        "endChar": 20
+      },
+      "revId": "56d3a943382a8c5a044bbaa432544c50bd5a671b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a2a7a0_127432c5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-06-18T20:30:40Z",
+      "side": 1,
+      "message": "We can, I\u0027m open to it and it was in my initial CL when migrating the timestamp spreading code along with error logging. We removed it on Jett\u0027s request since it should never happen and he preferred it crash the ec as to bring attention to it.",
+      "parentUuid": "e2d6f20d_39bd3d92",
       "range": {
         "startLine": 285,
         "startChar": 8,
