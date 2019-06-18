@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d64c3e0_b6540d10",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-06-18T17:44:39Z",
+      "side": 1,
+      "message": "I see quite a few places that dereference data above and below the lone check for if (data)\n\nAre you sure it\u0027s \"data\" that is NULL and not chunk.buffer? And if so, we should probably be checking data before any attempt at dereferencing it, not just this memcpy.",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 25
+      },
+      "revId": "e7ee5a8d6e98da6118c73f6a1bcfdd2ecb3afe7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
