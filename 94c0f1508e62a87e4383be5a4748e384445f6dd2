@@ -70,6 +70,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258e87db_9195fcc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-18T19:42:16Z",
+      "side": 1,
+      "message": "Okay.\nany reason for Keeping it in BIOS?\nI think it would be good if we keep the info in EC\n1. Kernel driver only has to depend on cros_ec_cmd*()\n2. Number of ports are requested from EC hence easy to maintain\n3. No dependency on Coreboot",
+      "parentUuid": "a5a3b679_08657803",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
