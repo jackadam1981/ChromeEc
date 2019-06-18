@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dc309af_71e5c030",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-18T17:55:39Z",
+      "side": 1,
+      "message": "I think this is not good to let usb-stream_reset() or usb_written() call usb_stream_tx() directly, because usb_stream_tx() calls could be overlapped.\n\nThis is the scenario that I am concerned.\nusb_stream_reset() can be called through this call path:\n  hook_task \u003e ccd_ext_detect() \u003e usb_init() \u003e usb_init_endpoints() \u003e usb_ep_reset[]() \u003d\u003d \n  usb_stream_reset() -\u003e usb_stream_tx()\n\nIn the middle of usb_stream_tx() in this path (somewhere between line 148 and 212), if EC or AP sends some UART data, then UART interrupt handler adds data into USB tx queue, and will call usb_written(). \nSo, in this scenario, usb_stream_tx() is not atomic.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 27
+      },
+      "revId": "f130f010d3324af70714781dff12b1d8f5df9865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
