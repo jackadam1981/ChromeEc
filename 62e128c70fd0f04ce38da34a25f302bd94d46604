@@ -46,6 +46,30 @@
       "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bf2556_68f51468",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T18:49:51Z",
+      "side": 1,
+      "message": "Can you merge the CLs?",
+      "parentUuid": "6ca1ac33_6249aace",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 32
+      },
+      "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
