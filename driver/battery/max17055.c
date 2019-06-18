@@ -368,14 +368,12 @@ static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
 {
 	int i;
 	int reg;
-	int retries = 3;
+	int retries = 20;
 
 	/* Unlock ocv table */
 	if (max17055_write(REG_LOCK1, 0x0059) ||
 	    max17055_write(REG_LOCK2, 0x00c4))
 		return EC_ERROR_UNKNOWN;
-
-	ASSERT(config->ocv_table);
 
 	/* Write ocv data */
 	for (i = 0; i < MAX17055_OCV_TABLE_SIZE; i++) {
@@ -391,6 +389,10 @@ static int max17055_load_ocv_table(const struct max17055_batt_profile *config)
 			return EC_ERROR_UNKNOWN;
 	}
 
+	/*
+	 * Retries is set to a larger value(20) in order to be able to
+	 * lock ocv table successfully in the event of an exception.
+	 */
 	while (--retries) {
 		/* Lock ocv table */
 		if (max17055_write(REG_LOCK1, 0x0000) ||
@@ -452,6 +454,8 @@ static int max17055_load_batt_model_full(void)
 	const struct max17055_batt_profile *config;
 
 	config = max17055_get_batt_profile();
+
+	ASSERT(config->ocv_table);
 
 	/* Store the original HibCFG value. */
 	if (max17055_read(REG_HIBCFG, &hib_cfg))
