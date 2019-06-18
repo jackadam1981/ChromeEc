@@ -101,8 +101,8 @@
  */
 #undef CONFIG_AON_RAM_BASE
 #undef CONFIG_AON_RAM_SIZE
-#undef CONFIG_AON_ROM_BASE
-#undef CONFIG_AON_ROM_SIZE
+#undef CONFIG_AON_PERSISTENT_BASE
+#undef CONFIG_AON_PERSISTENT_SIZE
 
 /* Add sensorhub function for LSM6DSM, required if 2nd device attached. */
 #undef CONFIG_SENSORHUB_LSM6DSM
