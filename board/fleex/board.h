@@ -30,6 +30,13 @@
 
 #define CONFIG_USB_PD_RESET_MIN_BATT_SOC 2
 
+/*
+ * Prevent power on until PD negotiation has been able to finish, or battery has
+ * charged to 2%
+ */
+#define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 2
+#define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15001
+
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
