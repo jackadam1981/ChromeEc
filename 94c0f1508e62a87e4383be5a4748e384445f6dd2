@@ -166,6 +166,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd840bc_924cd5c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-18T23:42:15Z",
+      "side": 1,
+      "message": "Adding info in multiple locations seems redundant and error prone.\nI still think EC is the right place to put the info as we are already getting #of USB-C ports info from EC.",
+      "parentUuid": "c11e2830_af8f56a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
