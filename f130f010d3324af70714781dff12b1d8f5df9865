@@ -22,6 +22,30 @@
       "revId": "f130f010d3324af70714781dff12b1d8f5df9865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96adc4ae_dcaeeb7b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-18T18:09:45Z",
+      "side": 1,
+      "message": "this is a valid concern. The suggestion is to come up with a scheme where the caller can tell if usb_stream_tx() needs to be invoked or not. If USB transmission is still in progress there is no need to do anything after adding UART data to the USB TX queue.\n\nthis will be less involved than keeping track of endpoints in a separate variable, or dealing with the case when USB packet transfer is in progress, but a SW interrupt comes and the USB IRQ sets up transferring the next batch while the current one is in progress.",
+      "parentUuid": "9dc309af_71e5c030",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 27
+      },
+      "revId": "f130f010d3324af70714781dff12b1d8f5df9865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
