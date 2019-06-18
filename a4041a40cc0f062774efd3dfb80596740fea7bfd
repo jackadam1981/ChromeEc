@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27fe35d6_8edd2358",
+        "filename": "fuzz/rollback_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-18T20:07:51Z",
+      "side": 1,
+      "message": "That\u0027s embarrassing.\nDone",
+      "parentUuid": "d0f1551c_dd418dec",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3bbfd6c_a3ec380d",
         "filename": "fuzz/rollback_mock.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-15T00:39:15Z",
       "side": 1,
       "message": "There\u0027s already a very similar mock introduced by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1652495",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1193d0a_74590331",
+        "filename": "fuzz/rollback_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-18T20:07:51Z",
+      "side": 1,
+      "message": "Right, I stole the original from there, but then modified it in a way that allows for reuse and standardization.\n\nThe idea is that I would then move this mock to a location that can be used by that original CL also.",
+      "parentUuid": "d3bbfd6c_a3ec380d",
       "range": {
         "startLine": 22,
         "startChar": 0,
