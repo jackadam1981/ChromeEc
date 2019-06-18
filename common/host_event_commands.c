@@ -149,6 +149,7 @@ int lpc_get_next_host_event(void)
 	if (evt_idx) {
 		host_event_set_bit(&ev, evt_idx);
 		host_clear_events(ev);
+		host_clear_events_b(ev);
 	}
 	return evt_idx;
 }
@@ -390,13 +391,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_HOST_EVENT64, host_get_next_event64);
 #endif
 #endif
 
-/**
- * Clear one or more host event bits from copy B.
- *
- * @param mask          Event bits to clear (use EC_HOST_EVENT_MASK()).
- *                      Write 1 to a bit to clear it.
- */
-static void host_clear_events_b(host_event_t mask)
+void host_clear_events_b(host_event_t mask)
 {
 	/* Only print if something's about to change */
 	if (events_copy_b & mask)
