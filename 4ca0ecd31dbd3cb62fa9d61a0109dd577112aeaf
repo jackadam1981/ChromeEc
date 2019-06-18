@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c04eda6e_9f67e58c",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-18T19:31:25Z",
+      "side": 1,
+      "message": "Though their values are same, it should be DIEPDMA_LAST.",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

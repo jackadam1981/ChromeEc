@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f6b541a_0f274120",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-18T19:31:25Z",
+      "side": 0,
+      "message": "Moving this to usb_written(), line 258, because it doesn\u0027t need to be checked on TX transfer completion interrupt.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "5e1a362271969d11d50ac27caa3c20edc5ef26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd0ff473_0f034cec",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-18T19:31:25Z",
+      "side": 0,
+      "message": "Moving under tx_stream_handler() call to prevent usb_written() from calling tx_stream_handler() while usb_stream_reset() is calling it.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 23
+      },
+      "revId": "5e1a362271969d11d50ac27caa3c20edc5ef26eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
