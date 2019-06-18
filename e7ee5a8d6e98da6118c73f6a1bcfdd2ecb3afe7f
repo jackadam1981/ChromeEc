@@ -22,6 +22,30 @@
       "revId": "e7ee5a8d6e98da6118c73f6a1bcfdd2ecb3afe7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ea194e_12a8df87",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-18T19:07:12Z",
+      "side": 1,
+      "message": "\u0027data\u0027 can\u0027t be null as far as the current callers are concerned.\n\nqueue_get_write_chunk can return \u0027chunk\u0027 with .buffer \u003d NULL, obviously. So, it has to be checked.",
+      "parentUuid": "3d64c3e0_b6540d10",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 25
+      },
+      "revId": "e7ee5a8d6e98da6118c73f6a1bcfdd2ecb3afe7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
