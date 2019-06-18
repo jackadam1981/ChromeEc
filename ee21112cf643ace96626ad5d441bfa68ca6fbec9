@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03b17c87_ef57cb6d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-18T12:03:37Z",
+      "side": 1,
+      "message": "Done, fixed by reading ATIME value.",
+      "parentUuid": "23689461_b972449b",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c25d486_93b8d9b0",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-17T15:51:17Z",
       "side": 1,
       "message": "Why do you need to defer task_set_event? Can you call task_set_event here?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4edda806_4387f243",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-18T12:03:37Z",
+      "side": 1,
+      "message": "In case we need a non-trivial delay time (and it just happens)",
+      "parentUuid": "1c25d486_93b8d9b0",
       "range": {
         "startLine": 68,
         "startChar": 2,
@@ -68,6 +116,30 @@
       "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73be87d_4cb4b380",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-18T12:03:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18caebfe_c51cb571",
+      "range": {
+        "startLine": 296,
+        "startChar": 35,
+        "endLine": 296,
+        "endChar": 38
+      },
+      "revId": "ee21112cf643ace96626ad5d441bfa68ca6fbec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
