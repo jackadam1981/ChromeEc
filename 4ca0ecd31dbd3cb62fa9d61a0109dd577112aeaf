@@ -22,6 +22,29 @@
       "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3242d8ba_bd18d082",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-19T17:30:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t act like a lock against usb_written() from the second USB reset, because \u0027is_reset\u0027 never gets zero back.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
