@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+
 /* Kukui SCP configuration */
 
 #ifndef __CROS_EC_BOARD_H
