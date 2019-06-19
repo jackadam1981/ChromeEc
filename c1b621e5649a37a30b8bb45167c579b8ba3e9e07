@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6ecb4d7_0601b328",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-19T22:25:36Z",
+      "side": 1,
+      "message": "Can the above block for ppc be just pulled down here?",
+      "revId": "c1b621e5649a37a30b8bb45167c579b8ba3e9e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae6bd97_345286d3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2484,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-19T22:25:36Z",
+      "side": 1,
+      "message": "nit: Can this be changed to just one switch block?\n\nswitch (drp_state[port]) {\ncase PD_DRP_TOGGLE_OFF:\n...\ncase PD_DRP_FORCE_SOURCE:\n...\ndefault:\n    next_state \u003d PD_STATE_DRP_AUTO_TOGGLE;\n}",
+      "range": {
+        "startLine": 2453,
+        "startChar": 2,
+        "endLine": 2484,
+        "endChar": 3
+      },
+      "revId": "c1b621e5649a37a30b8bb45167c579b8ba3e9e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
