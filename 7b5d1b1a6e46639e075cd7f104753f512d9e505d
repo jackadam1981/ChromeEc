@@ -22,6 +22,29 @@
       "revId": "7b5d1b1a6e46639e075cd7f104753f512d9e505d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5932f0_607b4f8f",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-19T09:37:59Z",
+      "side": 1,
+      "message": "I think we can print some logs (either here or at caller) on error or unknown devices for diagnosing POGO issues.",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "7b5d1b1a6e46639e075cd7f104753f512d9e505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
