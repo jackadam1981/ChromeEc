@@ -12,6 +12,7 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -148,6 +149,8 @@ void chipset_reset(enum chipset_reset_reason reason)
 	if (reason == CHIPSET_RESET_AP_WATCHDOG)
 		flags |= SYSTEM_RESET_AP_WATCHDOG;
 
+	/* Assume there is no more i2c transaction after this */
+	i2c_lock(I2C_PORT_EEPROM, 1);
 	system_reset(flags);
 
 	/* This should not be reachable. */
