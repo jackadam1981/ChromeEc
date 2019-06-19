@@ -45,6 +45,30 @@
       "revId": "7b5d1b1a6e46639e075cd7f104753f512d9e505d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e91641_e8c699bb",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-19T10:05:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5932f0_607b4f8f",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "7b5d1b1a6e46639e075cd7f104753f512d9e505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
