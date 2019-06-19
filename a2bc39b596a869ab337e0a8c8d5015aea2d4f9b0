@@ -22,6 +22,30 @@
       "revId": "a2bc39b596a869ab337e0a8c8d5015aea2d4f9b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a9b2ed_c911dc6b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-19T19:52:50Z",
+      "side": 1,
+      "message": "What do you think about just saying DP Alt Mode entry? Or printing the function name?",
+      "parentUuid": "d3ee484d_e602b04e",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "a2bc39b596a869ab337e0a8c8d5015aea2d4f9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
