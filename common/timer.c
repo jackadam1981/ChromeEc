@@ -17,7 +17,10 @@
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 
-/* High word of the 64-bit timestamp counter  */
+/*
+ * High word of the 64-bit timestamp counter. Not used if
+ * CONFIG_HWTIMER_64BIT is enabled.
+ */
 static volatile uint32_t clksrc_high;
 
 /* Bitmap of currently running timers */
@@ -56,7 +59,7 @@ void process_timers(int overflow)
 	timestamp_t next;
 	timestamp_t now;
 
-	if (overflow)
+	if (!IS_ENABLED(CONFIG_HWTIMER_64BIT) && overflow)
 		clksrc_high++;
 
 	do {
@@ -175,12 +178,18 @@ void usleep(unsigned us)
 timestamp_t get_time(void)
 {
 	timestamp_t ts;
-	ts.le.hi = clksrc_high;
-	ts.le.lo = __hw_clock_source_read();
-	if (ts.le.hi != clksrc_high) {
+
+	if (IS_ENABLED(CONFIG_HWTIMER_64BIT)) {
+		ts.val = __hw_clock_source_read64();
+	} else {
 		ts.le.hi = clksrc_high;
 		ts.le.lo = __hw_clock_source_read();
+		if (ts.le.hi != clksrc_high) {
+			ts.le.hi = clksrc_high;
+			ts.le.lo = __hw_clock_source_read();
+		}
 	}
+
 	return ts;
 }
 
@@ -192,11 +201,34 @@ clock_t clock(void)
 
 void force_time(timestamp_t ts)
 {
-	clksrc_high = ts.le.hi;
-	__hw_clock_source_set(ts.le.lo);
+	if (IS_ENABLED(CONFIG_HWTIMER_64BIT)) {
+		__hw_clock_source_set64(ts.val);
+	} else {
+		clksrc_high = ts.le.hi;
+		__hw_clock_source_set(ts.le.lo);
+	}
+
 	/* some timers might be already expired : process them */
 	task_trigger_irq(timer_irq);
 }
+
+/*
+ * Define versions of __hw_clock_source_read and __hw_clock_source_set
+ * that wrap the 64-bit versions for chips with CONFIG_HWTIMER_64BIT.
+ */
+#ifdef CONFIG_HWTIMER_64BIT
+uint32_t __hw_clock_source_read(void)
+{
+	return (uint32_t)__hw_clock_source_read64();
+}
+
+void __hw_clock_source_set(uint32_t ts)
+{
+	uint64_t current = __hw_clock_source_read64();
+
+	__hw_clock_source_set64(((current >> 32) << 32) | ts);
+}
+#endif /* CONFIG_HWTIMER_64BIT */
 
 #ifdef CONFIG_CMD_TIMERINFO
 void timer_print_info(void)
