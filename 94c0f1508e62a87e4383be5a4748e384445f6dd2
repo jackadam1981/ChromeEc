@@ -309,6 +309,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c6064b_1b08021a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5075,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-19T21:22:52Z",
+      "side": 1,
+      "message": "It can be common/peripheral.c. How about:\n\n  - Reuse ec_response_locate_chip.reserved (upper 4 bits for usb2 and lower 4 bits for usb3)\n  - Add uint8_t usb2 \u0026 usb3 to tcpc_config_t\n  - Enable all these only for CONFIG_INTEL_VIRTUAL_MUX\n\n?\n\nI don\u0027t mind adding EC_CMD_GET_TOPOLOGY as a new command. It may be extended for more generic purposes.",
+      "parentUuid": "4219a30d_86f10b11",
+      "range": {
+        "startLine": 5075,
+        "startChar": 8,
+        "endLine": 5075,
+        "endChar": 26
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
