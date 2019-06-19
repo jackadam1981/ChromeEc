@@ -22,6 +22,30 @@
       "revId": "9298eaa6adecccce8703edb3aac202b3082b960e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231c8e84_81607718",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-19T20:10:20Z",
+      "side": 1,
+      "message": "For my specific bad port partner combination, the ANX TCPC gets stuck in a state where it will constantly spam the EC with power status change interrupts.  So for that case, the PD task isn\u0027t doing much but the PD interrupt task is constantly busy. \n\nBased on the task times in the watchdog task dump from comment #2 on the linked atlas issue, I would guess it sees something similar though potentially with a different interrupt type.",
+      "parentUuid": "cde382dc_cfed06ee",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "9298eaa6adecccce8703edb3aac202b3082b960e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
