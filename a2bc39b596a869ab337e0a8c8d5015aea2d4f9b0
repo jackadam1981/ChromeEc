@@ -46,6 +46,30 @@
       "revId": "a2bc39b596a869ab337e0a8c8d5015aea2d4f9b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02eab116_737ed0a9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-19T20:02:27Z",
+      "side": 1,
+      "message": "\"Entering DP mode\" would probably be a good match to our existing \"Exiting DP mode\" print we do when shutting down, though I suppose more precisely it\u0027s \"Notifying AP of DP mode entry\".  The EC doesn\u0027t tend to have a lot of function name prints but I have noticed the cr50 often uses those.",
+      "parentUuid": "30a9b2ed_c911dc6b",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "a2bc39b596a869ab337e0a8c8d5015aea2d4f9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
