@@ -70,6 +70,30 @@
       "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe578136_0b3b1e07",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-19T01:50:00Z",
+      "side": 1,
+      "message": "Done https://crrev.com/c/1660524",
+      "parentUuid": "53bf2556_68f51468",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 32
+      },
+      "revId": "62e128c70fd0f04ce38da34a25f302bd94d46604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
