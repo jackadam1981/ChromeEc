@@ -61,6 +61,7 @@ static int test_main(void)
 		CPUTS("]\n");
 	}
 
+	CPRINTS("Emulator task_start");
 	task_start();
 
 	return 0;

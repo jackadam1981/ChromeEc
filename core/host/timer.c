@@ -8,11 +8,16 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <time.h>
+#include <stdbool.h>
 
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /*
  * For test that need to test for longer than the default time limit,
@@ -60,12 +65,38 @@ timestamp_t _get_time(void)
 	return ret;
 }
 
+#if 1
+extern bool use_fake_clock;
+
+#if 1
+static timestamp_t now;
+static const uint64_t timestamp_increment = SECOND * 50;
+
+static timestamp_t get_fake_time(void)
+{
+	timestamp_t now_val;
+	CPRINTS("Emulator get_fake_time");
+	now_val = now;
+	now.val += timestamp_increment;
+	return now_val;
+}
+#endif
+
 test_mockable timestamp_t get_time(void)
 {
-	timestamp_t ret = _get_time();
+	timestamp_t ret;
+#if 0
+	CPRINTS("Emulator get_time");
+#endif
+	if (use_fake_clock)
+		return get_fake_time();
+
+	ret = _get_time();
 	ret.val -= boot_time.val;
 	return ret;
 }
+#endif
+
 
 uint32_t __hw_clock_source_read(void)
 {
@@ -107,6 +138,9 @@ int timestamp_expired(timestamp_t deadline, const timestamp_t *now)
 
 void timer_init(void)
 {
+#if 1
+	CPRINTS("Emulator timer init");
+#endif
 	if (!time_set)
 		boot_time = _get_time();
 }

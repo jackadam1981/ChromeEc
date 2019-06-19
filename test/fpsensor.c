@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include <stdbool.h>
 #include "common.h"
 #include "ec_commands.h"
 #include "fpsensor_crypto.h"
@@ -11,6 +12,12 @@
 #include "test_util.h"
 #include "timer.h"
 #include "util.h"
+
+bool use_fake_clock = false;
+
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 static const uint8_t fake_rollback_secret[] = {
 	0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f,
@@ -67,7 +74,10 @@ timestamp_t get_time(void)
 {
 	timestamp_t now_val = now;
 
+#if 0
 	ccprintf("mock timer called====================\n");
+#endif
+	CPRINTS("Test get_time");
 	now.val += timestamp_increment;
 	return now_val;
 }
@@ -299,10 +309,14 @@ test_static int test_fpsensor_seed(void)
 
 void run_test(void)
 {
+	CPRINTS("fpsensor run_test");
+#if 0
 	RUN_TEST(test_derive_encryption_key_failure_seed_not_set);
 	RUN_TEST(test_fpsensor_seed);
 	RUN_TEST(test_derive_encryption_key);
 	RUN_TEST(test_derive_encryption_key_failure_rollback_fail);
+#endif
+	use_fake_clock = true;
 	RUN_TEST(test_rand_finger_id);
 
 	test_print_result();
