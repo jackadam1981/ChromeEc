@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f331dd58_3fb1259c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-19T22:48:06Z",
+      "side": 1,
+      "message": "You should generate interrupt when lower 32 bits is 0xFFFFFFFF to arm the next event with different high.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 48
+      },
+      "revId": "ffe7dfcd5a24e2cf36ffa574ffc70a5b985bb4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
