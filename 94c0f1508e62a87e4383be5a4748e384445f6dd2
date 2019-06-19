@@ -237,6 +237,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c9d100_be3b9807",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5075,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-19T17:28:01Z",
+      "side": 1,
+      "message": "I think we should have a new separate command, which is enabled by CONFIG_INTEL_VIRTUAL_MUX. It doesn\u0027t make sense to hide Intel specific code behind command version. Otherwise, non-intel boards call EC_CMD_USB_PD_PORTS v.1 and would get EC_RES_UNAVAILABLE.",
+      "parentUuid": "686cc4ba_4c146496",
+      "range": {
+        "startLine": 5075,
+        "startChar": 8,
+        "endLine": 5075,
+        "endChar": 26
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
