@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d77a31f9_3c389a52",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-19T03:20:45Z",
+      "side": 1,
+      "message": "Should there be a check here to ensure that the device is suspended before setting the host event? I don\u0027t think you intend to do this in S0?",
+      "revId": "b56e415f16dca58fea8c93b95bd4fee6c9b3c351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c1a5da_eeba5ddc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-19T03:20:45Z",
+      "side": 1,
+      "message": "I think it would be good to add a comment in ec_commands.h indicating the different cases where the mode change event could be triggered.\n\nJust a note to self: Since mode change is also used by tablet \u003c-\u003e clamshell mode or detached \u003c-\u003e attached mode, setting this host event in S0 can lead to reloading of DPTF tables on mode change. There should not be any side effect of doing that.",
+      "range": {
+        "startLine": 41,
+        "startChar": 23,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "b56e415f16dca58fea8c93b95bd4fee6c9b3c351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
