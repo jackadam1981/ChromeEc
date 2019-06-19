@@ -308,6 +308,16 @@ static void board_init(void)
 
 	/* Enable pogo charging signal */
 	gpio_enable_interrupt(GPIO_POGO_VBUS_PRESENT);
+
+	if (IS_ENABLED(BOARD_KRANE)) {
+		int data = 0;
+
+		i2c_read16(0, 0x7c, 0x00, &data);
+		if (data != 0x1212) {
+			i2c_write16(0, 0x7c, 0x00, 0x1212);
+			i2c_write8(0, 0x7c, 0xff, 0x80);
+		}
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
