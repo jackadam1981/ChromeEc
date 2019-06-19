@@ -190,6 +190,29 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad259aff_1cdbf0d7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5075,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-19T00:34:25Z",
+      "side": 1,
+      "message": "Is this really what to be returned? num_ports is valid.\n\nI guess you can assign 0xff and return EC_RES_SUCCESS. Port number 0 is not used but it\u0027s Intel specific numbering.",
+      "range": {
+        "startLine": 5075,
+        "startChar": 8,
+        "endLine": 5075,
+        "endChar": 26
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
