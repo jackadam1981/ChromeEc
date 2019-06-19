@@ -4,13 +4,22 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Verify there is no CPRINTS("....\n", ...) statements added to the code.
 upstream_branch="$(git rev-parse --abbrev-ref --symbolic-full-name @{u} \
     2>/dev/null)"
 if [[ -z ${upstream_branch} ]]; then
   echo "Current branch does not have an upstream branch" >&2
   exit 1
 fi
+
+# Verify there is no 'copyright (c)' string
+if git diff "${upstream_branch}" HEAD |
+    grep -i -e '^+\(.* copyright (c)\|++\)' |
+    grep -i -e ' copyright (c)' -B1 >&2 ; then
+  echo "error: Copyright strings should not include '(c)'" >&2
+  exit 1
+fi
+
+# Verify there is no CPRINTS("....\n", ...) statements added to the code.
 # This will print the offending CPRINTS invocations, if any, and the names of
 # the files they are in.
 if git diff "${upstream_branch}" HEAD | grep -e '^+\(.*CPRINTS(.*\\n"\|++\)' |
