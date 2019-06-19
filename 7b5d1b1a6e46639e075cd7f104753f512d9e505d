@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26ea8747_af4f37c4",
+        "filename": "board/kukui/base_detect_krane.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-19T09:34:41Z",
+      "side": 1,
+      "message": "ADC value of hammer keyboard is around 330, after discussed with HW engs, upper bound raised from 330 to 400.",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "7b5d1b1a6e46639e075cd7f104753f512d9e505d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
