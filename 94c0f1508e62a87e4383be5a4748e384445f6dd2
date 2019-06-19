@@ -213,6 +213,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686cc4ba_4c146496",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5075,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-19T14:16:12Z",
+      "side": 1,
+      "message": "EC_RES_UNAVAILABLE seems more appropriate for version 1 (also it was suggested by Aseda) as it is applicable only to boards with Intel virtual mux.\nWould you still want me to change it to 0xff and EC_RES_SUCCESS?",
+      "parentUuid": "ad259aff_1cdbf0d7",
+      "range": {
+        "startLine": 5075,
+        "startChar": 8,
+        "endLine": 5075,
+        "endChar": 26
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
