@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "142144d2_3c8c7044",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-19T02:32:40Z",
+      "side": 1,
+      "message": "Yes, the __overridable is defined in MASTER branch(we cannot found the define in P1 branch).\nNow, i have modify it already.",
+      "parentUuid": "6eb1a778_a1036871",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 21
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fc81864_86df65ee",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 9
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I assume we\u0027ll be defining struct max17055_temp_profile as const anyway. That\u0027s not the case?",
       "parentUuid": "4eb3809b_4ea42257",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 6
+      },
+      "revId": "8eea541d73994f4549cfa79e811167029df329dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "288bb481_eb15c183",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1335005
+      },
+      "writtenOn": "2019-06-19T02:32:40Z",
+      "side": 1,
+      "message": "Sorry, Maybe I didn\u0027t understand what you mean correctly, if this is the case, please give the implementation code. The following is my own understanding:\n\nThe usage of the const in the \"struct max17055_temp_profile\" is:\nstruct max17055_temp_profile {\n\tconst uint16_t t_gain;\n\tconst uint16_t t_offset;\n\tconst uint16_t t_curve;\n};\nconst struct max17055_temp_profile *temp_profile \u003d max17055_get_temp_profile();\n\nThe \"*temp_profile\" is a const, we cannot modify it\u0027s value except initialization. That is,the pointer \"temp_profile\" cannot pointer to another \"struct max17055_temp_profile\".\n\n\"const\" before \"uint16_t t_gain\" mean that we cannot modify it\u0027s value except initialization, which store the init value in ROM. Remove \"const\" before \"uint16_t t_gain\" mean that we can modify it\u0027s value any time, which store value in RAM.",
+      "parentUuid": "b94b98b8_69d189ca",
       "range": {
         "startLine": 260,
         "startChar": 1,
