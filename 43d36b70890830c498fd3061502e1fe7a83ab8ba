@@ -22,6 +22,30 @@
       "revId": "43d36b70890830c498fd3061502e1fe7a83ab8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea28ffbd_96937af7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-19T04:31:47Z",
+      "side": 1,
+      "message": "No if the estimated delay time is not accurate.\nFake IRQ event may trigger before *_VALID flags set. In this case, we have to poll the sensor in tcs3400_post_events(). Otherwise, the sensor will suspend immediately in line 260.\n\nThis should not happen since I set the delay time equals to integration time, just in case if some timing issue happens.",
+      "parentUuid": "2c904465_6a49e8ed",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 52
+      },
+      "revId": "43d36b70890830c498fd3061502e1fe7a83ab8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
