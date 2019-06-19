@@ -79,6 +79,14 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 #define BC12_I2C_ADDR_FLAGS PI3USB9201_I2C_ADDR_3_FLAGS
 
+#define NT50358A_I2C_ADDR 0x7c
+
+#define NT50358A_REG_AVDD_AVEE 0x00
+#define NT50358A_REG_MTP_WRITE 0xFF
+
+#define NT50358A_OUTPUT_5800_MV 0x1212 /* 0x12 for both AVDD/AVEE reg */
+#define NT50358A_MTP_WRITE_WED  BIT(7)
+
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_AP_IN_SLEEP_L,   POWER_SIGNAL_ACTIVE_LOW,  "AP_IN_S3_L"},
@@ -308,6 +316,21 @@ static void board_rev_init(void)
 			   PI3USB9201_REG_CTRL_1,
 			   (PI3USB9201_USB_PATH_ON <<
 			    PI3USB9201_REG_CTRL_1_MODE_SHIFT));
+	}
+
+	if (IS_ENABLED(BOARD_KRANE) && board_get_version() >= 4) {
+		int data = 0;
+
+		i2c_read16(I2C_PORT_LCD_POWER, NT50358A_I2C_ADDR,
+				NT50358A_REG_AVDD_AVEE, &data);
+		if (data != NT50358A_OUTPUT_5800_MV) {
+			i2c_write16(I2C_PORT_LCD_POWER, NT50358A_I2C_ADDR,
+					NT50358A_REG_AVDD_AVEE,
+					NT50358A_OUTPUT_5800_MV);
+			i2c_write8(I2C_PORT_LCD_POWER, NT50358A_I2C_ADDR,
+					NT50358A_REG_MTP_WRITE,
+					NT50358A_MTP_WRITE_WED);
+		}
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
