@@ -253,6 +253,15 @@ static void board_init(void)
 	if (IS_ENABLED(BOARD_KRANE))
 		/* Display bias settings.  */
 		mt6370_db_set_voltages(6000, 5800, 5800);
+
+	/* TODO: move this to a formal driver */
+	if (IS_ENABLED(BOARD_KRANE)) {
+		/* Try both ports, ignores any error */
+		i2c_write8(0, 0x7c, 0x00, 0x12);
+		i2c_write8(0, 0x7c, 0x01, 0x12);
+		i2c_write8(1, 0x7c, 0x00, 0x12);
+		i2c_write8(1, 0x7c, 0x01, 0x12);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
