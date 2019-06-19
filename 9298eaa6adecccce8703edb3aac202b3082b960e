@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cde382dc_cfed06ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2019-06-19T19:59:28Z",
+      "side": 1,
+      "message": "do we know what the pd_task() was doing at the time\nof the watchdog?  was a timeout getting cancelled\nthat was causing the pd_task to effectively spin\nand starve the watchdog?",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "9298eaa6adecccce8703edb3aac202b3082b960e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
