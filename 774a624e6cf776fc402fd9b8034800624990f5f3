@@ -22,6 +22,30 @@
       "revId": "774a624e6cf776fc402fd9b8034800624990f5f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21669ed_bbc3293d",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-19T17:39:25Z",
+      "side": 1,
+      "message": "I wanted to keep the policy out of the notification function to allow us to be more flexible on when we actually want to send the notification.",
+      "parentUuid": "45e5218d_bf5f76d2",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 50
+      },
+      "revId": "774a624e6cf776fc402fd9b8034800624990f5f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
