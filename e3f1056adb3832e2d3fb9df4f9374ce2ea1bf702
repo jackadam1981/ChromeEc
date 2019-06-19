@@ -73,6 +73,52 @@
     },
     {
       "key": {
+        "uuid": "039d1ba0_0f100eb8",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-19T23:37:44Z",
+      "side": 1,
+      "message": "This is inefficient with 64 bit timer. Let\u0027s introduce 64 bit way here.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ef9861_d3abd237",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-19T23:37:44Z",
+      "side": 1,
+      "message": "This is inefficient with 64 bit timer. Let\u0027s introduce 64 bit version here.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9649990f_c37b48bf",
         "filename": "common/timer.c",
         "patchSetId": 1
@@ -84,6 +130,30 @@
       "writtenOn": "2019-06-19T22:48:00Z",
       "side": 1,
       "message": "please handle the case, event should be reset.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "799f1471_b758dc6c",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-19T23:37:44Z",
+      "side": 1,
+      "message": "My comment can be confused. I\u0027m asking to handle the case that the event timer should be re-configured for 64bit",
+      "parentUuid": "9649990f_c37b48bf",
       "range": {
         "startLine": 130,
         "startChar": 1,
