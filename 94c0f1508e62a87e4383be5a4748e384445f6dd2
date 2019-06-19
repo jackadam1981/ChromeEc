@@ -285,6 +285,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4219a30d_86f10b11",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5075,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-19T17:40:19Z",
+      "side": 1,
+      "message": "one more thing:\nshould we add all intel specific mux things here?\n1. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1468049/18/common/usb_pd_protocol.c\n2. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1512134/17/common/usb_pd_protocol.c",
+      "parentUuid": "df49a466_c6d82a3c",
+      "range": {
+        "startLine": 5075,
+        "startChar": 8,
+        "endLine": 5075,
+        "endChar": 26
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
