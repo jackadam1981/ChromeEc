@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9386a7e5_055d8f3e",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8259,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-19T17:32:45Z",
+      "side": 1,
+      "message": "Nit: in terms of phrasing, \"return data from a local copy\" similar to the patch description would be more clear",
+      "range": {
+        "startLine": 8258,
+        "startChar": 3,
+        "endLine": 8259,
+        "endChar": 44
+      },
+      "revId": "4b2e73402ce2d427b1333bce92a04fda86a570b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
