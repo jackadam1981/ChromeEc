@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e05da995_9dbe8f09",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-06-19T22:57:45Z",
+      "side": 1,
+      "message": "/* Declare as extern so it will fail at link time if something tries to use it */\nThen it\u0027s not misleading ;)",
+      "parentUuid": "6d1506d7_35bcba9c",
+      "range": {
+        "startLine": 21,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9649990f_c37b48bf",
         "filename": "common/timer.c",
         "patchSetId": 1
