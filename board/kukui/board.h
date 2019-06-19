@@ -63,13 +63,14 @@
 #endif /* SECTION_IS_RW */
 
 /* I2C ports */
-#define I2C_PORT_CHARGER  0
-#define I2C_PORT_TCPC0    0
-#define I2C_PORT_BATTERY  1
+#define I2C_PORT_CHARGER   0
+#define I2C_PORT_TCPC0     0
+#define I2C_PORT_LCD_POWER 0
+#define I2C_PORT_BATTERY   1
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
-#define I2C_PORT_ACCEL    1
-#define I2C_PORT_BC12     1
-#define I2C_PORT_ALS      1
+#define I2C_PORT_ACCEL     1
+#define I2C_PORT_BC12      1
+#define I2C_PORT_ALS       1
 
 /* Route sbs host requests to virtual battery driver */
 #define VIRTUAL_BATTERY_ADDR_FLAGS 0x0B
