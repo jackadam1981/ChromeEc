@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5849a16_b0288fe7",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T01:42:21Z",
+      "side": 1,
+      "message": "note to self: it would be nice to pull these common stack-agnostic utilities into a separate file to prevent copy/paste.",
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf07a06_cd92c754",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T01:42:21Z",
+      "side": 1,
+      "message": "I think we need UnorientedDebugAccessory.SRC at a minimum. However, for chrome OS devices, I don\u0027t think we need OrientedDebugAccessory.SRC. No real configuration is done on the TS side, either servo_v4 handles it or the user flips SuzyQable.\n\nType-C Spec v1.4 Table 4-16 outlines the optional states. Note 6 says \"UnorientedDebugAccessory.SRC is required for any Source or DRP that supports Debug Accessory Mode. OrientedDebugAccessory.SRC is only required if orientation detection is necessary in Debug Accessory Mode.\"",
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
