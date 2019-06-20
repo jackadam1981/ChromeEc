@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55ee4979_f7a7394f",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T22:24:45Z",
+      "side": 1,
+      "message": "nit: Maybe say \u0027Kukui\u0027",
+      "revId": "b1614ee02ab8a2a5181a79d247e172eed2c3b099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d24088_b2c2f591",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T22:24:45Z",
+      "side": 1,
+      "message": "Could you make the message less cryptic? Maybe something like \"Mode C\u0026E missing! 0x%x\" ?",
+      "revId": "b1614ee02ab8a2a5181a79d247e172eed2c3b099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8d65c8_9537496b",
+        "filename": "board/kukui/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T22:24:45Z",
+      "side": 1,
+      "message": "nit: Maybe say \u0027Kukui\u0027",
+      "revId": "b1614ee02ab8a2a5181a79d247e172eed2c3b099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
