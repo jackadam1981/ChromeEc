@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b36ec8_faf90c63",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": "Most of the time",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 17
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f91cf60_6d54cf76",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": "will be",
+      "range": {
+        "startLine": 589,
+        "startChar": 32,
+        "endLine": 589,
+        "endChar": 48
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd04eedf_a7e72c41",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": "replace with just \"that\"",
+      "range": {
+        "startLine": 591,
+        "startChar": 14,
+        "endLine": 592,
+        "endChar": 29
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e22b12c6_b33df88c",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": "be greater than",
+      "range": {
+        "startLine": 592,
+        "startChar": 53,
+        "endLine": 592,
+        "endChar": 64
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9c8d8f_c75f84b3",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": ", causing next_delay to be negative",
+      "range": {
+        "startLine": 593,
+        "startChar": 21,
+        "endLine": 594,
+        "endChar": 49
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f8f8cf_832ec8cc",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": "This should be with the hwtimer code, not here.",
+      "range": {
+        "startLine": 595,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 35
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "131d4f17_82d0c1f2",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:22:36Z",
+      "side": 1,
+      "message": "This part seems irrelevant now.",
+      "range": {
+        "startLine": 599,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 20
+      },
+      "revId": "6b092141c34e28e1127ced3959a3b571ed9b6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
