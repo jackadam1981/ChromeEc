@@ -94,6 +94,30 @@
       "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f265df2_72e76620",
+        "filename": "board/flapjack/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-06-20T13:26:32Z",
+      "side": 1,
+      "message": "This CL just focus on WPC_EN_L fixed, we\u0027ll add EPP_EPP_SEL in the future if needed.\npls review it, thks.",
+      "parentUuid": "575c7ee1_6ea7cd70",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "8799cc11aa97ca59db0034e1c5d89fe604b89498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
