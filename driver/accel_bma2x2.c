@@ -184,7 +184,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
-static int perform_calib(const struct motion_sensor_t *s)
+static int perform_calib(const struct motion_sensor_t *s, int enable)
 {
 	int ret, val, status, rate, range, i;
 	timestamp_t deadline;
