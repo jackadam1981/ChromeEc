@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e13f44e_6fa8512e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T21:35:55Z",
+      "side": 1,
+      "message": "Could you add a comment stating that the reason we fake CC2 specifically, is because in SNK mode, we only apply Rd on CC1?",
+      "range": {
+        "startLine": 338,
+        "startChar": 21,
+        "endLine": 338,
+        "endChar": 29
+      },
+      "revId": "2e379f8cce54b9083a3741b6f5b09a04f36ef269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
