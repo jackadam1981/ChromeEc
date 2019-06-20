@@ -46,6 +46,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5607abd_41395529",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T00:34:16Z",
+      "side": 1,
+      "message": "Yes, that is an interesting point. We do not currently have AC insert/remove as wake events. Ravi -- is this something that can be detected by powerd? Probably powerd will have to worry about individual PD events here?",
+      "parentUuid": "642fc759_c3fde616",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
