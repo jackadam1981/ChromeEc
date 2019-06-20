@@ -46,6 +46,30 @@
       "revId": "3c45cb58e859571d9e44c2f3953fefc77bbb581e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3fcf42_24a08b50",
+        "filename": "board/kindred/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-06-20T03:20:44Z",
+      "side": 1,
+      "message": "Actually we only care DFET status.\nIt\u0027s used for prevent \"init power on\" if battery can\u0027t support power and type C doesn\u0027t have enough power to power on.",
+      "parentUuid": "73bbb713_5a1ec950",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "3c45cb58e859571d9e44c2f3953fefc77bbb581e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
