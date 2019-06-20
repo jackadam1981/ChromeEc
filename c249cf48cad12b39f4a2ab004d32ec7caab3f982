@@ -22,6 +22,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642fc759_c3fde616",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T00:14:22Z",
+      "side": 1,
+      "message": "I suppose it does make more sense to reuse this host event. But then, how do we avoid wakes from other \"PD MCU\" events such as simply plugging in a charger or removing a charger? Or do we let dark resume handle it?",
+      "parentUuid": "7a338a39_19d3cd7d",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
