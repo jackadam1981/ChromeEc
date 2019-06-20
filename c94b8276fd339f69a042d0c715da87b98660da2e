@@ -22,6 +22,30 @@
       "revId": "c94b8276fd339f69a042d0c715da87b98660da2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6589e7d9_9ebbe34a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1311150
+      },
+      "writtenOn": "2019-06-20T12:38:16Z",
+      "side": 1,
+      "message": "Use HOOK_PRIO_DEFAULT is good to me.",
+      "parentUuid": "ac9df6d9_2bb9073c",
+      "range": {
+        "startLine": 874,
+        "startChar": 37,
+        "endLine": 874,
+        "endChar": 59
+      },
+      "revId": "c94b8276fd339f69a042d0c715da87b98660da2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
