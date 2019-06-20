@@ -166,6 +166,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a60545e0_4b8306d1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T15:20:25Z",
+      "side": 1,
+      "message": "Ah yes. That is true. Makes sense. Aseda, can you please add a comment in usb_pd_policy.c about why PD_MCU was not used for DP Alt Mode. This discussion might potentially come back later.",
+      "parentUuid": "8584c283_6b7a161e",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
