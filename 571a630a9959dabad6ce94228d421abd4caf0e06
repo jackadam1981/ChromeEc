@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "448b4366_c88e46ed",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-06-20T19:41:14Z",
+      "side": 1,
+      "message": "use constants.",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8289cdfa_97949a9c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-06-20T19:41:14Z",
+      "side": 1,
+      "message": "I need to change the interface to perform_calin , to switch it on or off.",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f626a4_1ddd1a38",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-06-20T19:41:14Z",
+      "side": 1,
+      "message": "Use TCS_ prefix.",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6025ecdb_fe96cf18",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-06-20T19:41:14Z",
+      "side": 1,
+      "message": "does not match enum calibration_mode.",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
