@@ -22,6 +22,30 @@
       "revId": "3c45cb58e859571d9e44c2f3953fefc77bbb581e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47ca4c1_c7c897aa",
+        "filename": "board/kindred/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-06-20T01:17:26Z",
+      "side": 1,
+      "message": "From the update in the bug link (#5), reg_mask should be 0x0003 to cover DFET and CFET, right?",
+      "parentUuid": "73bbb713_5a1ec950",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "3c45cb58e859571d9e44c2f3953fefc77bbb581e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
