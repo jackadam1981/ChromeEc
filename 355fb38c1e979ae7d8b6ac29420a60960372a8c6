@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "285689b3_12517677",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-20T20:13:12Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right.\n\nI think the line 245 should be placed before line 218. Let me comment below.",
+      "parentUuid": "2e2207aa_6851a197",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e0311c2_6f096f99",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 12
@@ -255,6 +279,29 @@
         "startChar": 1,
         "endLine": 203,
         "endChar": 20
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4098f635_a6cdd2ad",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-20T20:13:12Z",
+      "side": 1,
+      "message": "Before initializing endpoint descriptors, this code should be placed to protect this from being overwritten by usb_written():\n\n        *config-\u003etx_in_progress \u003d 1;",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 61
       },
       "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
