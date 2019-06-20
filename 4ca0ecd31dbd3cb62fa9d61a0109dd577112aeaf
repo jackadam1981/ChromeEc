@@ -69,6 +69,30 @@
       "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e675571e_8574adff",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-20T16:31:30Z",
+      "side": 1,
+      "message": "tx_fifo_is_ready() isn\u0027t enough for gating. It checks the status of USB TX endpoint descriptor, but that status is changed in usb_enable_tx(). Any USB TX completion interrupt while hook_task is processing somewhere between line 136 and 192, can cause a problem by overwriting USB TX endpoint descriptor.",
+      "parentUuid": "21daaf81_64a279e3",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
