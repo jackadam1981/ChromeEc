@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ee0b728_4860551a",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-20T17:43:20Z",
+      "side": 1,
+      "message": "Since GPO35 is output only, I think it makes more sense to remove this entry entirely.",
+      "parentUuid": "bfb24ed5_c0879773",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "31c2e08e331ab194d3c0e8cb072adc73de4a1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a3d9316_323218e6",
         "filename": "board/helios/gpio.inc",
         "patchSetId": 4
@@ -68,6 +92,54 @@
       "revId": "31c2e08e331ab194d3c0e8cb072adc73de4a1306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d820dba0_f09fcb84",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-20T17:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27297f81_9897ebbe",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "31c2e08e331ab194d3c0e8cb072adc73de4a1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de0b726f_c45ed2f9",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-20T17:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3d9316_323218e6",
+      "range": {
+        "startLine": 63,
+        "startChar": 42,
+        "endLine": 63,
+        "endChar": 52
+      },
+      "revId": "31c2e08e331ab194d3c0e8cb072adc73de4a1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
