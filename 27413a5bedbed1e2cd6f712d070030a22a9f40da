@@ -104,6 +104,30 @@
       "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20683791_7af5a1e7",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T20:43:37Z",
+      "side": 1,
+      "message": "Yeah, in the name of consistency please do; the EC codebase doesn\u0027t do this.",
+      "parentUuid": "059dc09e_22c6d822",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
