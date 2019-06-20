@@ -52,6 +52,24 @@
       "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c9526b5_66fe1d90",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-20T06:21:20Z",
+      "side": 1,
+      "message": "Yes, main counter can be a bit delayed on every 4300 seconds but it\u0027s very tiny(and it depends on the interrupt latency at that time) so there\u0027ll be no issue.\n\nIt\u0027s just like other platforms that they re-set their counter on every clksrc_high increase.",
+      "parentUuid": "dda863e6_4ea2b2b0",
+      "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
