@@ -142,6 +142,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8584c283_6b7a161e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-06-20T01:20:25Z",
+      "side": 1,
+      "message": "I assume we want wake on dock feature to work irrespective of dark resume is enabled on the device or not. So on device without dark resume enabled, if the device wakes up, it will turn the display on. I don\u0027t that is a great idea to add a hard dependency on dark resume just for reusing a host event. Please correct me if I am missing something",
+      "parentUuid": "e9262def_20224b70",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
