@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "38b7b7ae_3ee21259",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e05da995_9dbe8f09",
+      "range": {
+        "startLine": 21,
+        "startChar": 46,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "039d1ba0_0f100eb8",
         "filename": "common/timer.c",
         "patchSetId": 1
@@ -116,6 +140,30 @@
       "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb5b403_0a59bcae",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:02:57Z",
+      "side": 1,
+      "message": "Let\u0027s just handle source timer 64-bit in this change. I agree we should handle event timer too, but the changes can be separated and will keep this CL from tumbling out of control.",
+      "parentUuid": "a6ef9861_d3abd237",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -166,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "d10cfa77_0a835030",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799f1471_b758dc6c",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d486df2_80b46f90",
         "filename": "common/timer.c",
         "patchSetId": 1
@@ -189,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "29eb37f4_2bbbb92d",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:02:57Z",
+      "side": 1,
+      "message": "Keeping event timer 32-bit, at least for this change.",
+      "parentUuid": "2d486df2_80b46f90",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 25
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "365374da_7733e84e",
         "filename": "common/timer.c",
         "patchSetId": 1
@@ -209,6 +305,30 @@
       "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5197670d_c787a700",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-20T17:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "365374da_7733e84e",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 40
+      },
+      "revId": "e3f1056adb3832e2d3fb9df4f9374ce2ea1bf702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
