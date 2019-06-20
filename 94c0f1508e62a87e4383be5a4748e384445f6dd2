@@ -333,6 +333,30 @@
       "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa037bcc_5dc80a69",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5075,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-06-20T18:28:39Z",
+      "side": 1,
+      "message": "Pls confirm if my understanding is correct:\n1. define EC_CMD_GET_TOPOLOGY for chipset specific data\n   add uint8_t usbx and send USBx info\n2. add uint8_t usbx to tcpc_config_t with CONFIG_INTEL_VIRTUAL_MUX",
+      "parentUuid": "52c6064b_1b08021a",
+      "range": {
+        "startLine": 5075,
+        "startChar": 8,
+        "endLine": 5075,
+        "endChar": 26
+      },
+      "revId": "94c0f1508e62a87e4383be5a4748e384445f6dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
