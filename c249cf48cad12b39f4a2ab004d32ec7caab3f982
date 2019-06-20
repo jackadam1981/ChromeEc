@@ -70,6 +70,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d121c60b_c74f20c3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T00:39:27Z",
+      "side": 1,
+      "message": "For what it\u0027s worth, after enabling wake on EC_HOST_EVENT_PD_MCU on my dark-resume enabled nocturne w/ Ravi\u0027s patches, the system does a dark resume for charger removal/insertion and then falls back asleep. It might not be obvious on a fanless unit without a power LED like nocturne.",
+      "parentUuid": "a5607abd_41395529",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
