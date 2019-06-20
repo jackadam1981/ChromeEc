@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6d7ec978_b090b113",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-20T19:21:58Z",
+      "side": 1,
+      "message": "tx_fifo_is_ready() is playing that kind of indication role already. But, there are time gaps between line 141 and 198. I think the lock to keep those area atomic.",
+      "parentUuid": "cc420609_db66baf1",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 9
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b09c4ceb_8f795b2e",
         "filename": "chip/g/usb-stream.c",
         "patchSetId": 12
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "but before calling tx_stream_handler() usb_tx_in_progress would be set, so, usb_written() would not call tx_stream_handler()\n\nThis function will be called on every USB packet interrupt, we should keep it as light as possible.",
       "parentUuid": "caf316a8_b8f45ffe",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa9aab0f_59fd4dae",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-20T19:21:58Z",
+      "side": 1,
+      "message": "Ok, now I catch that in your suggestion, usb_tx_in_progress is zero initially, and usb_reset() will set it 1 (in line 245) to indicate that it is going to setup transfer. If UART got some data while usb_reset() has not been called, then usb_written() would proceed assuming tx is not in progress. At this time USB TX endpoint descriptors is not initialized. \n\nHowever, in ToT code, tx_fifo_is_ready() will say \"No\" if it sees the uninitialized status has \"DIEPDMA_BS_HOST_RDY (0x0 \u003c\u003c 30)\". Are we ok with this?",
+      "parentUuid": "5c278107_cf857154",
       "range": {
         "startLine": 141,
         "startChar": 6,
@@ -349,6 +397,30 @@
       "side": 1,
       "message": "I am not sure tx_ep_writeable is as descriptive. Maybe \u0027tx_not_idle\u0027 is a better name if you don\u0027t like \u0027tx_in_progress\u0027",
       "parentUuid": "54126456_2071fc19",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4136e25a_d6935f6d",
+        "filename": "chip/g/usb-stream.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-20T19:21:58Z",
+      "side": 1,
+      "message": "I think the zero value should also indicate that \u0027endpoint is uninitialized\u0027, like \u0027is_reset\u0027 in ToT. I believe that this check should be in tx_stream_handler.\n\nThe status of USB endpoint descriptor is playing a lock role and represents the transfer status, and I intended this variable to be a lock for USB endpoint descriptor status.",
+      "parentUuid": "4c7f4aab_f9292ce8",
       "range": {
         "startLine": 32,
         "startChar": 1,
