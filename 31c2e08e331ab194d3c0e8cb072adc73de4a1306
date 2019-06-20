@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bfb24ed5_c0879773",
+        "filename": "board/helios/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T00:46:45Z",
+      "side": 1,
+      "message": "GPO35 seems to only support output functionality. What happens here if you set this as GPIO_INPUT?",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 52
+      },
+      "revId": "31c2e08e331ab194d3c0e8cb072adc73de4a1306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a3d9316_323218e6",
         "filename": "board/helios/gpio.inc",
         "patchSetId": 4
