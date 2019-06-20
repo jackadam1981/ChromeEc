@@ -45,6 +45,30 @@
       "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21daaf81_64a279e3",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:15:54Z",
+      "side": 1,
+      "message": "this is right that is_reset does not matter, the actual gating factor is the output of tx_fifo_is_ready() which returns false until usb_reset() finishes.",
+      "parentUuid": "3242d8ba_bd18d082",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "4ca0ecd31dbd3cb62fa9d61a0109dd577112aeaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
