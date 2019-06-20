@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50c83e85_0041d2c3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2019-06-20T08:27:48Z",
+      "side": 1,
+      "message": "in __hw_clock_source_set(uint32_t ts) function, the statement HPET_MAIN_COUNTER_64 \u003d scale_us2ticks(ts) assigns an initial value to main counte, so main_counter \u003e ROLLOVER_CMP_VAL may not mean rollover is approaching.",
+      "revId": "693a0793c3dc8dd5d976f6f75da9313d3c9dcdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
