@@ -94,6 +94,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c079e68_d0b7e5e8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T00:53:16Z",
+      "side": 1,
+      "message": "But does it behave differently if the EC_HOST_EVENT_PD_MCU triggers wake on DP Alt mode change? Probably not? I think you see the device falling back to sleep because powerd does not see PD as wake-capable device. Ravi can correct me if this is not true.",
+      "parentUuid": "d121c60b_c74f20c3",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
