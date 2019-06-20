@@ -16,6 +16,24 @@
       "revId": "693a0793c3dc8dd5d976f6f75da9313d3c9dcdc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61cd9f96_808810f2",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-20T17:04:20Z",
+      "side": 1,
+      "message": "It still means rollover is approaching. __hw_clock_source_set() is for setting lower 32 bit of get_time(). so maximum of \"ts\" is ROLLOVER_CMP_VAL.",
+      "parentUuid": "50c83e85_0041d2c3",
+      "revId": "693a0793c3dc8dd5d976f6f75da9313d3c9dcdc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
