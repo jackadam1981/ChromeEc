@@ -585,7 +585,14 @@ void __idle(void)
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
-		pm_process(t0, next_delay);
+		/*
+		 * The expected time from clock event could have already
+		 * passed due to latency. This really does not matter as
+		 * long as we don't let a negative number become a
+		 * really large unsigned number when passing this to
+		 * pm_process
+		 */
+		pm_process(t0, MAX(0, next_delay));
 	}
 }
 
