@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44c5c32c_dcb09d7c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-20T03:57:24Z",
+      "side": 1,
+      "message": "Do we still need check this? scale_ticks2us() will always return the low 32Bit micro seconds, and it\u0027s max value is 2^32 micro seconds which also defined by ROLLOVER_CMP_VAL (ticks format).",
+      "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
