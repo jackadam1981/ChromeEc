@@ -16,6 +16,24 @@
       "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3d5bed_aed98528",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2019-06-20T04:36:52Z",
+      "side": 1,
+      "message": "Yes, it should be. actually this is the most important part.\nThe meaning that you have the ticks bigger than ROLLOVER_CMP_VAL is lower 32 bits is rolled over without increasing clksrc_high so until we get clksrc_high increased and timer 0 comparator to be zero, we returns the max.\n\nI will change \u003e\u003d to \u003e since nothing neeeds to be done when they are same.",
+      "parentUuid": "44c5c32c_dcb09d7c",
+      "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
