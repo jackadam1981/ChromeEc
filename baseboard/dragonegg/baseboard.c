@@ -132,7 +132,7 @@ void board_hibernate(void)
 		timeout_ms--;
 	}
 	if (!timeout_ms)
-		CPRINTS("PP5000_PG didn't go low after 20 msec");
+		CPRINTS("PP5000_PG didn't go low after 20 msec\n");
 	gpio_set_level(GPIO_EN_PP3300_TCPC, 0);
 }
 /******************************************************************************/
