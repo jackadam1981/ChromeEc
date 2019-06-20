@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f9706440_c0ca8103",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-20T19:18:10Z",
+      "side": 1,
+      "message": "The above block is guarded by both CONFIG_USBC_PPC and CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE which isn\u0027t the same as what\u0027s used here. Am I missing something?",
+      "parentUuid": "a6ecb4d7_0601b328",
+      "revId": "c1b621e5649a37a30b8bb45167c579b8ba3e9e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ae6bd97_345286d3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-06-19T22:25:36Z",
       "side": 1,
       "message": "nit: Can this be changed to just one switch block?\n\nswitch (drp_state[port]) {\ncase PD_DRP_TOGGLE_OFF:\n...\ncase PD_DRP_FORCE_SOURCE:\n...\ndefault:\n    next_state \u003d PD_STATE_DRP_AUTO_TOGGLE;\n}",
+      "range": {
+        "startLine": 2453,
+        "startChar": 2,
+        "endLine": 2484,
+        "endChar": 3
+      },
+      "revId": "c1b621e5649a37a30b8bb45167c579b8ba3e9e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976cb9c1_75acccc2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2484,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-20T19:18:10Z",
+      "side": 1,
+      "message": "This is a good suggestion.",
+      "parentUuid": "8ae6bd97_345286d3",
       "range": {
         "startLine": 2453,
         "startChar": 2,
