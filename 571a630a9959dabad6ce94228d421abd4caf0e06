@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0fef3cf_397fe11a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-20T20:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448b4366_c88e46ed",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8289cdfa_97949a9c",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 17
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-20T19:41:14Z",
       "side": 1,
       "message": "I need to change the interface to perform_calin , to switch it on or off.",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dee3ba43_f834e5f3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-20T20:16:48Z",
+      "side": 1,
+      "message": "Last we talked, it was turned on and left on for the duration of that boot cycle.  Has that changed?  If so, I need to modify logic in this code accordingly.",
+      "parentUuid": "8289cdfa_97949a9c",
       "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cea0391e_5d605a3a",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-20T20:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1f626a4_1ddd1a38",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6025ecdb_fe96cf18",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 17
@@ -67,6 +121,24 @@
       "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910133d6_d9a75d8a",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-20T20:16:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6025ecdb_fe96cf18",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
