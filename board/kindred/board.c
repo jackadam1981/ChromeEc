@@ -46,6 +46,8 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+static uint8_t sku_id;
+
 /* GPIO to enable/disable the USB Type-A port. */
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_EN_USB_A_5V,
@@ -434,6 +436,24 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/* Read CBI from i2c eeprom and initialize variables for board variants */
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) != EC_SUCCESS || val > UINT8_MAX)
+		return;
+	sku_id = val;
+	CPRINTF("SKU: %d", sku_id);
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+
+static int board_is_convertible(void)
+{
+	/* SKU ID of Kled: 1,2,3,4 */
+	return sku_id == 1 || sku_id == 2 || sku_id == 3 || sku_id == 4;
+}
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Sanity check the port. */
@@ -443,3 +463,36 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC_ODL, !is_overcurrented);
 }
+
+uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	/*
+	 * Remove keyboard backlight feature for devices that don't support it.
+	 */
+	if ((sku_id == 21 || sku_id == 22))
+		return flags0;
+	else
+		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
+}
+
+uint32_t board_override_feature_flags1(uint32_t flags1)
+{
+	return flags1;
+}
+
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	if (board_is_convertible())
+		gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+	else
+		gpio_set_level(GPIO_EC_KB_BL_EN, 0) ;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
