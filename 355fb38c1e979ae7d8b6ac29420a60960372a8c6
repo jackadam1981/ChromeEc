@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73cd98fa_7ff3d15b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "I have an alternative suggestion, let\u0027s use this flag to indicate that USB transmitter is not yet idle. It would be set when data is added to the queue and cleared when there is no more data to queue.\n\nSo, no need to clear it here.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 9
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09c4ceb_8f795b2e",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "this check should be in usb_written(), this is the only place which can be called asynchronously (even though currently it is running in interrupt context).",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0311c2_6f096f99",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "here we would add\n} else {\nconfig-\u003etx_in_progress \u003d 0;\n}",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c465ac5_eb09dfa5",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "no need for this then.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 20
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb36a41_0d7872cf",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "here we would set -\u003etx_in_progress",
+      "range": {
+        "startLine": 245,
+        "startChar": 3,
+        "endLine": 245,
+        "endChar": 20
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8b470d_2bb518e5",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "here we should check if tx_in_progress is set, if so -just exit.\nthen check tx_fifo_is_ready() - if not - exit\nthen set tx_in_progress and call the handler.",
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ea51c3_844a0bb2",
+        "filename": "chip/g/usb-stream.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-20T16:34:43Z",
+      "side": 1,
+      "message": "this could be a byte pointer, no need to use 32 bits for a Boolean, also, the name is very obscure, something like \u0027tx_in_progress\u0027 would be much clearer.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "355fb38c1e979ae7d8b6ac29420a60960372a8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
