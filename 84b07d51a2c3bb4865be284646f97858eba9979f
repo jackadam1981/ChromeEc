@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "59771393_b086eb74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-20T23:14:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4cc6ab_85c52981",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "84b07d51a2c3bb4865be284646f97858eba9979f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a32e970f_d3591d18",
         "filename": "common/fpsensor/fpsensor_state.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "84b07d51a2c3bb4865be284646f97858eba9979f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6327bbc_32e477b3",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-20T23:14:44Z",
+      "side": 1,
+      "message": "Done in https://crrev.com/c/1670347",
+      "parentUuid": "a32e970f_d3591d18",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 48
+      },
+      "revId": "84b07d51a2c3bb4865be284646f97858eba9979f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
