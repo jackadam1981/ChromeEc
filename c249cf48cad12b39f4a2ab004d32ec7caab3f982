@@ -118,6 +118,30 @@
       "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9262def_20224b70",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-06-20T01:06:42Z",
+      "side": 1,
+      "message": "It doesn\u0027t fall back asleep, but only because a new display is detected.",
+      "parentUuid": "6c079e68_d0b7e5e8",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 21
+      },
+      "revId": "c249cf48cad12b39f4a2ab004d32ec7caab3f982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
