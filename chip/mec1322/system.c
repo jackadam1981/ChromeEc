@@ -107,18 +107,21 @@ void _system_reset(int flags, int wake_from_hibernate)
 	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
 		save_flags |= RESET_FLAG_AP_OFF;
 
-	if (wake_from_hibernate)
+	if (wake_from_hibernate) {
 		save_flags |= RESET_FLAG_HIBERNATE;
-	else if (flags & SYSTEM_RESET_HARD)
+		/* GPIO35: POWER_BUTTON_L */
+		if (MEC1322_INT_SOURCE(11) & (1 << 29)) {
+			save_flags |= RESET_FLAG_WAKE_PIN;
+			MEC1322_INT_SOURCE(11) |= (1 << 29);
+		} else if (MEC1322_INT_SOURCE(17) & MEC1322_INT_SOURCE_HTIMER) {
+			save_flags |= RESET_FLAG_TIMER;
+			/* Clear the bit */
+			MEC1322_INT_SOURCE(17) |= MEC1322_INT_SOURCE_HTIMER;
+		}
+	} else if (flags & SYSTEM_RESET_HARD)
 		save_flags |= RESET_FLAG_HARD;
 	else
 		save_flags |= RESET_FLAG_SOFT;
-
-	if (MEC1322_INT_SOURCE(17) & MEC1322_INT_SOURCE_HTIMER) {
-		save_flags |= RESET_FLAG_TIMER;
-		/* Clear the bit */
-		MEC1322_INT_SOURCE(17) |= MEC1322_INT_SOURCE_HTIMER;
-	}
 
 	MEC1322_VBAT_RAM(HIBDATA_INDEX_SAVED_RESET_FLAGS) = save_flags;
 
@@ -189,6 +192,8 @@ uint32_t system_get_scratchpad(void)
 {
 	return MEC1322_VBAT_RAM(HIBDATA_INDEX_SCRATCHPAD);
 }
+
+void uart_init(void);
 
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
@@ -271,14 +276,13 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 
 	if (hibernate_wake_pins_used > 0) {
 		for (i = 0; i < hibernate_wake_pins_used; ++i) {
-			const enum gpio_signal *pin = &hibernate_wake_pins[i];
-			gpio_set_flags_by_mask(gpio_list[*pin].port,
-					       gpio_list[*pin].mask,
-					       gpio_list[*pin].flags);
-			gpio_enable_interrupt(*pin);
+			const enum gpio_signal pin = hibernate_wake_pins[i];
+			gpio_set_flags_by_mask(gpio_list[pin].port,
+					       gpio_list[pin].mask,
+					       gpio_list[pin].flags);
+			gpio_enable_interrupt(pin);
 		}
 
-		interrupt_enable();
 		task_enable_irq(MEC1322_IRQ_GIRQ8);
 		task_enable_irq(MEC1322_IRQ_GIRQ9);
 		task_enable_irq(MEC1322_IRQ_GIRQ10);
@@ -289,7 +293,6 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	if (seconds || microseconds) {
 		MEC1322_INT_BLK_EN |= 1 << 17;
 		MEC1322_INT_ENABLE(17) |= MEC1322_INT_SOURCE_HTIMER;
-		interrupt_enable();
 		task_enable_irq(MEC1322_IRQ_HTIMER);
 		if (seconds > 2) {
 			ASSERT(seconds <= 0xffff / 8);
@@ -301,16 +304,25 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 			MEC1322_HTIMER_PRELOAD =
 				(seconds * 1000000 + microseconds) * 2 / 71;
 		}
-
-		asm("wfi");
-
-		/* Disable HTIMER interrupt */
-		MEC1322_INT_DISABLE(17) |= MEC1322_INT_SOURCE_HTIMER;
-		/* Disable hibernation counter */
-		MEC1322_HTIMER_PRELOAD = 0;
-	} else {
-		asm("wfi");
 	}
+
+	interrupt_enable();
+
+	asm("wfi");
+
+#if DEBUG_HIB_WAKE
+	{
+	uint32_t irq_src[24-8];
+	for (i = 8; i < 24; i++)
+		irq_src[i-8] = MEC1322_INT_SOURCE(i);
+	/* Enable UART */
+	uart_init();
+	ccprintf("woke-up\n");
+	for (i = 8; i < 24; i++)
+		ccprintf("INT_SRC(%02d)=0x%08x\n", i, irq_src[i-8]);
+	cflush();
+	}
+#endif
 
 	/* Use 48MHz clock to speed through wake-up */
 	MEC1322_PCR_PROC_CLK_CTL = 1;
