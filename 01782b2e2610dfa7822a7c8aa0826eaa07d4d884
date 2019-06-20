@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2c52eb4f_782dd19d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-20T02:11:17Z",
+      "side": 1,
+      "message": "Ack\n\nCalibrate \u0027last_deadline\u0027 with interrupt latency only impact the __idle task to compute the sleep time, this can make sure __idle task always get positive sleep time because of timer HW interrupt latency issue. There is no other impacts.  \n\nFor example: \nthe expired time we set to HW is T, due to timer HW interrupt latency, the expected time (\u0027last_deadline\u0027) we checked in code is T + HPET_INT_LATENCY_TICKS.\n\nSo, just as you say, yeah, we used this to allow the expected latency and make on schedule. \n\nInterrupt latency is the HW limitation, and also the HPET timer from ISH4 only have 32768 clock rate, so we couldn\u0027t get very high time precision (micro seconds level etc.), but for current applications, it\u0027s should enough, in fact, we keep minimal MINIMUM_EVENT_DELAY_US (800 us) expire time which can be set to the event timer. :)",
+      "parentUuid": "046f5cac_32cbce71",
+      "revId": "01782b2e2610dfa7822a7c8aa0826eaa07d4d884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f17afbf_ec029c90",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 8
