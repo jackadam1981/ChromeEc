@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bd87f36_1f590368",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2330,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T23:11:47Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 2330,
+        "startChar": 0,
+        "endLine": 2330,
+        "endChar": 4
+      },
+      "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e395ff9_10096b37",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2334,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T23:11:47Z",
+      "side": 1,
+      "message": "Add a check here to return early if battery soc is less then minimum required:\nif (batt_soc \u003c CONFIG_USB_PD_RESET_MIN_BATT_SOC)\n    return;",
+      "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29148ebe_6338a195",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2351,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-20T23:11:47Z",
+      "side": 1,
+      "message": "Do you need to update the dual role capability here?",
+      "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
