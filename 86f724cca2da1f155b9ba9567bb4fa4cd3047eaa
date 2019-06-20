@@ -34,6 +34,24 @@
       "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dda863e6_4ea2b2b0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-20T05:11:35Z",
+      "side": 1,
+      "message": "I see...\n\nThe main counter will be reset to 0 for each timer 0 interrupt. So here check the \u0027main_counter\u0027 if bigger than ROLLOVER_CMP_VAL can detect the rolled over case which clksrc_high hasn\u0027t increased yet. \n\nAnd in timer 0 isr, it will reset main counter to 0 firstly, then re-schedule timer 1 comparator, so, there should be no problem to timer 1 due to main counter reset.    \n\nBut I have little concern of changing main counter, since main counter is the base time reference, change it may make the timestamp not accurate (maybe very small) for long time running. \n\nAnyway, I don\u0027t see any big problem here :)",
+      "parentUuid": "5b3d5bed_aed98528",
+      "revId": "86f724cca2da1f155b9ba9567bb4fa4cd3047eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
