@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fde8a82_d5cf88bb",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-21T19:11:44Z",
+      "side": 1,
+      "message": "Can you also add a test for FP_MODE_DONT_CHANGE ? Verify that the mode of the sensor doesn\u0027t change in that case.",
+      "range": {
+        "startLine": 242,
+        "startChar": 16,
+        "endLine": 242,
+        "endChar": 39
+      },
+      "revId": "97f4f24cfc090d7861e7e4639de6efba700e9a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
