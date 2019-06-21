@@ -16,6 +16,24 @@
       "revId": "acf47715098230274aa0e4ae9e019eef385cbf26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b507a203_7b04b1df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-06-21T02:12:48Z",
+      "side": 1,
+      "message": "from David \"Yes, or you want us to submit to octopus branch directly?\":\n\nNo, I just mean your should specify it as \"BRANCH\u003doctopus\" to indicate that this CL targets to octopus branch after landing to ToT.",
+      "parentUuid": "2c63a6e3_803e7167",
+      "revId": "acf47715098230274aa0e4ae9e019eef385cbf26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
