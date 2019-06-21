@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e89cb2b_2ce23131",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:40:25Z",
+      "side": 1,
+      "message": "I think board_ioex_init() (setting the flags to the gpio.inc default values) should move from board.c to ioexpander.c so it isn\u0027t duplicated in each board.c.",
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d719ad44_b448260c",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:40:25Z",
+      "side": 1,
+      "message": "nit: change tab to space",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7f1c61_76a80968",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:40:25Z",
+      "side": 1,
+      "message": "nit: just do \"v \u003d\"",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3632fb0_5200705a",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:40:25Z",
+      "side": 1,
+      "message": "find_ioex_by_name() already checked this.",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d2afb93_d9d4c09d",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:40:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure how useful supporting IOEX_UNIMPLEMENTED is.\nPerhaps we could leave it out for the initial implementation and only add it later when someone needs it.\nThat would allow all the checks for mask \u003d\u003d 0 to be removed.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
