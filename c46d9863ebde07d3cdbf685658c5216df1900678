@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "753840ea_88fbff38",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-21T02:33:42Z",
+      "side": 1,
+      "message": "I am not sure if we have other better way to handle the IRQ disabling.\nThere are other tasks(venc/camera etc.) do similar things, and I wonder if this may enable the IRQ at sometime such that it triggers a dead lock.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "c46d9863ebde07d3cdbf685658c5216df1900678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "279c9db7_8e92aa2f",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-21T02:33:42Z",
+      "side": 1,
+      "message": "Maybe more descriptive:\n\nCPRINTS(\"vdec handler %d not exists.\", rsv_msg.type);\n\nand remove the \"\\n\" since it\u0027s appended by CPRINTS.",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 30
+      },
+      "revId": "c46d9863ebde07d3cdbf685658c5216df1900678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315764d7_78d8e0a3",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-21T02:33:42Z",
+      "side": 1,
+      "message": "Could you have a macro for this?",
+      "range": {
+        "startLine": 166,
+        "startChar": 26,
+        "endLine": 166,
+        "endChar": 30
+      },
+      "revId": "c46d9863ebde07d3cdbf685658c5216df1900678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
