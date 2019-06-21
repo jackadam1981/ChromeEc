@@ -931,6 +931,41 @@ __overridable int svdm_gfu_attention(int port, uint32_t *payload)
 	return 0;
 }
 
+__overridable int svdm_tbt_compat_enter_mode(int port, uint32_t mode_caps)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
+		/*
+		 * Before entering into alternate mode, state of the
+		 * USB-C MUX needs to be in safe mode
+		 * Ref: USB Type-C Cable and Connector Specification
+		 * Section E.2.2 Alternate Mode Electrical Requirements
+		 */
+		usb_mux_set(port, IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) ?
+			TYPEC_MUX_SAFE : TYPEC_MUX_NONE, USB_SWITCH_CONNECT,
+			pd_get_polarity(port));
+	}
+	return 0;
+}
+
+__overridable void svdm_tbt_compat_exit_mode(int port)
+{
+}
+
+__overridable int svdm_tbt_compat_status(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable int svdm_tbt_compat_config(int port, uint32_t *payload)
+{
+	return 0;
+}
+
+__overridable int svdm_tbt_compat_attention(int port, uint32_t *payload)
+{
+	return 0;
+}
+
 const struct svdm_amode_fx supported_modes[] = {
 	{
 		.svid = USB_SID_DISPLAYPORT,
@@ -949,7 +984,16 @@ const struct svdm_amode_fx supported_modes[] = {
 		.config = &svdm_gfu_config,
 		.attention = &svdm_gfu_attention,
 		.exit = &svdm_exit_gfu_mode,
-	}
+	},
+
+	{
+		.svid = USB_VID_INTEL,
+		.enter = &svdm_tbt_compat_enter_mode,
+		.status = &svdm_tbt_compat_status,
+		.config = &svdm_tbt_compat_config,
+		.attention = &svdm_tbt_compat_attention,
+		.exit = &svdm_tbt_compat_exit_mode,
+	},
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
