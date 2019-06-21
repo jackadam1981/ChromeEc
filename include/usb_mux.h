@@ -35,6 +35,7 @@ typedef uint8_t mux_state_t;
 #define MUX_DP_ENABLED         USB_PD_MUX_DP_ENABLED
 #define MUX_POLARITY_INVERTED  USB_PD_MUX_POLARITY_INVERTED
 #define MUX_SAFE_MODE          USB_PD_MUX_SAFE_MODE
+#define MUX_TBT_ENABLED        USB_PD_MUX_TBT_COMPAT_ENABLED,
 
 /* Mux modes, decoded to attributes */
 enum typec_mux {
@@ -44,6 +45,8 @@ enum typec_mux {
 	TYPEC_MUX_DOCK = MUX_USB_ENABLED | /* Both USB and DP */
 			 MUX_DP_ENABLED,
 	TYPEC_MUX_SAFE = MUX_SAFE_MODE,    /* Safe mode */
+	/* Thunderbolt-Compatible only */
+	TYPEC_MUX_TBT_COMPAT = MUX_TBT_ENABLED
 };
 
 /* Mux driver function pointers */
