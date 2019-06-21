@@ -244,4 +244,5 @@ size_t queue_peek_memcpy(struct queue const *q,
 		result;							\
 	})
 
+
 #endif /* __CROS_EC_QUEUE_H */
