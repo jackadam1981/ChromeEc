@@ -10,6 +10,7 @@
 #include "charge_state_v2.h"
 #include "chipset.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -79,6 +80,12 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /******************************************************************************/
 /* Chipset callbacks/hooks */
 
+__attribute__((weak)) void board_chipset_resume(void)
+{
+	/* Default Enable keyboard backlight */
+	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+}
+
 /* Called on AP S5 -> S3 transition */
 static void baseboard_chipset_startup(void)
 {
@@ -91,8 +98,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 static void baseboard_chipset_resume(void)
 {
 	/* TODD(b/122266850): Need to fill out this hook */
-	/* Enable keyboard backlight */
-	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+	board_chipset_resume();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -305,3 +311,23 @@ void lid_angle_peripheral_enable(int enable)
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+static uint32_t sku_id;
+
+uint32_t system_get_sku_id(void)
+{
+	return sku_id;
+}
+
+/* Read CBI from i2c eeprom and initialize variables for board variants */
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) != EC_SUCCESS || val > UINT8_MAX)
+		return;
+	sku_id = val;
+
+	CPRINTS("SKU: %d", sku_id);
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
