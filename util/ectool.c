@@ -5683,6 +5683,8 @@ int cmd_usb_pd_mux_info(int argc, char *argv[])
 		printf("HPD_IRQ=%d ", !!(r.flags & USB_PD_MUX_HPD_IRQ));
 		printf("HPD_LVL=%d ", !!(r.flags & USB_PD_MUX_HPD_LVL));
 		printf("SAFE=%d ", !!(r.flags & USB_PD_MUX_SAFE_MODE));
+		printf("TBT COMPAT =%d ", !!(r.flags &
+					       USB_PD_MUX_TBT_COMPAT_ENABLED));
 		printf("\n");
 	}
 

@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_PD_H
 
 #include "common.h"
+#include <stdbool.h>
 #include "usb_pd_tcpm.h"
 
 /* PD Host command timeout */
@@ -307,6 +308,7 @@ enum hpd_event {
 enum pd_alternate_modes {
 	PD_AMODE_GOOGLE,
 	PD_AMODE_DISPLAYPORT,
+	PD_AMODE_INTEL,
 	/* not a real mode */
 	PD_AMODE_COUNT,
 };
@@ -455,8 +457,9 @@ enum idh_ptype {
 	((usbh) << 31 | (usbd) << 30 | ((ptype) & 0x7) << 27	\
 	 | (is_modal) << 26 | ((vid) & 0xffff))
 
-#define PD_IDH_PTYPE(vdo) (((vdo) >> 27) & 0x7)
-#define PD_IDH_VID(vdo)   ((vdo) & 0xffff)
+#define PD_IDH_PTYPE(vdo)    (((vdo) >> 27) & 0x7)
+#define PD_IDH_IS_MODAL(vdo) (((vdo) >> 26) & 0x1)
+#define PD_IDH_VID(vdo)      ((vdo) & 0xffff)
 
 /*
  * Cert Stat VDO
@@ -716,6 +719,84 @@ struct active_cable_vdo2 {
 	};
 };
 
+/*
+ * Thunderbolt 3 Device Discover mode responses
+ * (Refernce: USB Type-C cable and connector specification, Table F-13)
+ * -------------------------------------------------------------
+ * <31>    : Intel control vendor specific B1 support (0b == No, 1b == yes)
+ * <30>    : Intel control vendor specific B0 support (0b == No, 1b == yes)
+ * <29:27> : Reserved
+ * <26>    : Intel specific B0 support (0b == No, 1b == yes)
+ * <25:17> : Reserved
+ * <16>    : TBT Adapter (0b == TBT2 Legacy, 1b == TBT3)
+ * <15:0>  : TBT Alternate mode
+ */
+enum tbt_adapter_type {
+	TBT_ADAPTER_LEGACY,
+	TBT_ADAPTER_TYPEC,
+};
+
+struct tbt_mode_resp_device {
+	union {
+		struct {
+			uint32_t tbt_alt_mode : 16;
+			enum tbt_adapter_type tbt_adapter : 1;
+			uint32_t reserved0 : 9;
+			uint32_t intel_spec_b0 : 1;
+			uint32_t reserved1 : 3;
+			uint32_t vendor_spec_b0 : 1;
+			uint32_t vendor_spec_b1 : 1;
+		};
+		uint32_t raw_value;
+	};
+};
+
+/*
+ * Thunderbolt 3 cable Discover mode responses
+ * (Refernce: USB Type-C cable and connector specification, Table F-14)
+ * -------------------------------------------------------------
+ * <31:24> : Reserved
+ * <23>    : Active cable plug link traning
+ *	     (0b == bi-directional, 1b == uni-directional)
+ * <22>    : Re-timer (0b == Not retimer, 1b == Retimer)
+ * <21>    : Cable type (0b == Non-optical, 1b == Optical)
+ * <20:19> : TBT Rounded Support (00b == 3rd Gen Non-Rounded TBT,
+ *           01b == 3rd & 4th Gen Rounded and Non-Rounded TBT,
+ *           10b...11b == Reserved)
+ * <18:16> : Cable Speed (001b = 10Gbps, 011b = 10/20Gbps)
+ * <15:0>  : TBT alternate mode
+ */
+enum tbt_compat_cable_speed {
+	TBT_GEN1 = 1,
+	TBT_GEN1_GEN2,
+	TBT_GEN2,
+};
+
+enum tbt_cable_type {
+	TBT_CABLE_ELECTRICAL,
+	TBT_CABLE_OPTICAL,
+};
+
+enum link_lsrx_comm {
+	BIDIR_LSRX_COMM,
+	UNIDIR_LSRX_COMM,
+};
+
+struct tbt_mode_resp_cable {
+	union {
+		struct {
+			uint32_t tbt_alt_mode : 16;
+			enum tbt_compat_cable_speed tbt_cable_speed : 3;
+			uint32_t tbt_rounded_support : 2;
+			enum tbt_cable_type tbt_cable : 1;
+			uint32_t tbt_retimer : 1;
+			enum link_lsrx_comm lsrx_comm : 1;
+			uint32_t reserved0 : 8;
+		};
+		uint32_t raw_value;
+	};
+};
+
 /* Cable structure for storing cable attributes */
 struct pd_cable {
 	uint8_t is_identified;
@@ -729,10 +810,22 @@ struct pd_cable {
 	uint8_t rev;
 	/* For USB PD REV3, active cable has 2 VDOs */
 	struct active_cable_vdo2 attr2;
+	/* For storing Discover mode response from device */
+	struct tbt_mode_resp_device dev_mode_resp;
+	/* For storing Discover mode response from cable */
+	struct tbt_mode_resp_cable cable_mode_resp;
 };
 
 /* Flag for sending SOP Prime packet */
-#define CABLE_FLAGS_SOP_PRIME_ENABLE	BIT(0)
+#define CABLE_FLAGS_SOP_PRIME_ENABLE	   BIT(0)
+/* Flag for sending SOP Prime Prime packet */
+#define CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE BIT(1)
+/* Check if TBT compatible mode enabled */
+#define CABLE_FLAGS_TBT_COMPAT_ENABLE	   BIT(2)
+/* Check if Enter compatible TBT mode */
+#define CABLE_FLAGS_TBT_COMPAT_READY       BIT(3)
+/* Flag to limit speed to TBT Gen 2 passive cable */
+#define CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED BIT(4)
 
 /*
  * AMA VDO
@@ -969,6 +1062,8 @@ struct pd_cable {
 #define USB_VID_APPLE  0x05ac
 #define USB_PID1_APPLE 0x1012
 #define USB_PID2_APPLE 0x1013
+
+#define USB_VID_INTEL  0x8087
 
 /* Timeout for message receive in microseconds */
 #define USB_PD_RX_TMOUT_US 1800
@@ -1786,6 +1881,13 @@ uint8_t is_sop_prime_ready(int port, uint8_t data_role, uint32_t pd_flags);
  */
 void reset_pd_cable(int port);
 
+/** Returns the current status of compatible thunderbolt flag
+ *
+ * @param port  USB-C port number
+ * @return      true if tbt_compat is enabled, false otherwise
+ */
+bool is_tbt_compat_enabled(int port);
+
 /**
  * Return the type of cable attached
  *
@@ -1793,6 +1895,13 @@ void reset_pd_cable(int port);
  * @return	cable type
  */
 enum idh_ptype get_usb_pd_mux_cable_type(int port);
+
+/**
+ * Update Mux on entering TBT mode
+ *
+ * @param port USB-C port number
+ */
+void set_tbt_compat_mode_ready(int port);
 
 /**
  * Store Device ID & RW hash of device
