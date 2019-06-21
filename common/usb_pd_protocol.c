@@ -2209,11 +2209,11 @@ static void pd_vdm_send_state_machine(int port)
 			 * If there is no ack from the cable, its a non-emark
 			 * cable and since, the pd flow should continue
 			 * irrespective of cable response, sending
-			 * discover_svid so the pd flow remains intact.
+			 * discover_identity so the pd flow remains intact.
 			 */
 			if (res < 0) {
 				pd[port].vdo_data[0] =
-					VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
+					VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
 				res = pd_transmit(port, TCPC_TX_SOP, header,
 						  pd[port].vdo_data);
 				reset_pd_cable(port);
@@ -2834,6 +2834,15 @@ void pd_interrupt_handler_task(void *p)
 	}
 }
 #endif /* HAS_TASK_PD_INT_C0 || HAS_TASK_PD_INT_C1 || HAS_TASK_PD_INT_C2 */
+
+#if defined(CONFIG_USBC_SS_MUX) && defined(CONFIG_USB_PD_TBT_COMPAT_MODE)
+void set_tbt_compat_mode_ready(int port)
+{
+	/* Set usb mux to thunderbolt compat mode */
+	usb_mux_set(port, TYPEC_MUX_TBT_COMPAT, USB_SWITCH_CONNECT,
+		pd[port].polarity);
+}
+#endif
 
 void pd_task(void *u)
 {
@@ -3653,6 +3662,8 @@ void pd_task(void *u)
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			    (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
 #ifndef CONFIG_USB_PD_SIMPLE_DFP
+				if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
+					enable_transmit_sop_prime(port);
 				pd_send_vdm(port, USB_SID_PD,
 					    CMD_DISCOVER_IDENT, NULL, 0);
 #endif
@@ -4243,6 +4254,8 @@ void pd_task(void *u)
 			/* If DFP, send discovery SVDMs */
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			     (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
+				if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
+					enable_transmit_sop_prime(port);
 				pd_send_vdm(port, USB_SID_PD,
 					    CMD_DISCOVER_IDENT, NULL, 0);
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
