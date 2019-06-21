@@ -22,6 +22,30 @@
       "revId": "a8f0a4643a80a143fe0fae96a105cfe88f8e2e3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a0ff97_fb3fc7e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-21T15:17:17Z",
+      "side": 1,
+      "message": "The board can boot fully to the OS, we\u0027re just testing if we can provide a good customer experience with only 15W until we hit 2% (ex. do we see issues with backlight dimness or sluggishness? do we risk a brown out if a customer plugs in peripherals?)",
+      "parentUuid": "4ad70c15_46cfae84",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "a8f0a4643a80a143fe0fae96a105cfe88f8e2e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
