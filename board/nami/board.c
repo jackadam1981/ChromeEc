@@ -1037,6 +1037,39 @@ static void board_init(void)
 		ISL923X_PROCHOT_CURRENT_256 |
 		ISL923X_PROCHOT_CURRENT_1024 |
 		ISL923X_PROCHOT_CURRENT_2048);
+
+	switch (oem) {
+	/*set dc prochot current according to different oem*/
+	case PROJECT_VAYNE:
+		isl923x_set_dc_prochot(
+		/* 11008mA 0x2B00 */
+			ISL923X_PROCHOT_CURRENT_256 |
+			ISL923X_PROCHOT_CURRENT_512 |
+			ISL923X_PROCHOT_CURRENT_2048  |
+			ISL923X_PROCHOT_CURRENT_8192);
+		break;
+	case PROJECT_PANTHEON:
+		isl923x_set_dc_prochot(
+		/* 9984mA 0x2700 */
+			ISL923X_PROCHOT_CURRENT_256 |
+			ISL923X_PROCHOT_CURRENT_512 |
+			ISL923X_PROCHOT_CURRENT_1024  |
+			ISL923X_PROCHOT_CURRENT_8192);
+		break;
+	case PROJECT_SONA:
+		isl923x_set_dc_prochot(
+		/* 5888mA 0x1700 */
+			ISL923X_PROCHOT_CURRENT_256 |
+			ISL923X_PROCHOT_CURRENT_512 |
+			ISL923X_PROCHOT_CURRENT_1024  |
+			ISL923X_PROCHOT_CURRENT_4096);
+		break;
+	case PROJECT_NAMI:
+	case PROJECT_AKALI:
+	/* default 4096mA 0x1000 */
+	default:
+		break;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

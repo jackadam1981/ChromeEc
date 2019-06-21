@@ -68,6 +68,7 @@
 #define ISL923X_PROCHOT_CURRENT_1024  BIT(10)
 #define ISL923X_PROCHOT_CURRENT_2048  BIT(11)
 #define ISL923X_PROCHOT_CURRENT_4096  BIT(12)
+#define ISL923X_PROCHOT_CURRENT_8192  BIT(13)
 
 /* PROCHOT# debounce time and duration time in micro seconds */
 #define ISL923X_PROCHOT_DURATION_10000  (0 << 6)
@@ -311,6 +312,8 @@ enum isl9237_fsm_state {
  * Initialize ac prochot to reach better performance
  *
  * @param ac_prochot: ISL923X_PROCHOT_CURRENT_*
+ * @param dc_prochot: ISL923X_PROCHOT_CURRENT_*
  * @return enum ec_error_list
  */
 int isl923x_set_ac_prochot(uint16_t ac_prochot);
+int isl923x_set_dc_prochot(uint16_t dc_prochot);

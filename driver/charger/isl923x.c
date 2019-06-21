@@ -307,6 +307,15 @@ int isl923x_set_ac_prochot(uint16_t ac_prochot)
 	return rv;
 }
 
+int isl923x_set_dc_prochot(uint16_t dc_prochot)
+{
+	int rv = raw_write16(ISL923X_REG_PROCHOT_DC, dc_prochot);
+
+	if (rv)
+		CPRINTF("%s failed\n", __func__);
+	return rv;
+}
+
 static void isl923x_init(void)
 {
 	int reg;
