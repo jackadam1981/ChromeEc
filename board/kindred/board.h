@@ -27,6 +27,7 @@
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
 /* Keyboard features */
+#define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
 
 /* Sensors */
