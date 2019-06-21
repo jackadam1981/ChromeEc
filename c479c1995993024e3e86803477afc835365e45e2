@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7239fa01_c7bd6175",
+        "filename": "board/kukui_scp/venc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-21T07:59:45Z",
+      "side": 1,
+      "message": "The same as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1644186/1/board/kukui_scp/vdec.c#92",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "c479c1995993024e3e86803477afc835365e45e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
