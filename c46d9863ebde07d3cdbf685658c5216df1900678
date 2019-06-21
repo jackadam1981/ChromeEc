@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79995081_9f079f9e",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-21T05:44:58Z",
+      "side": 1,
+      "message": "We should replace task_disable_irq/task_enable_irq to ipi_disable_irq/ipi_enable_irq (with https://crrev.com/c/1670650/2).\n\nand also remove all the mutex_lock. (e.g. line:60, line:82)",
+      "parentUuid": "753840ea_88fbff38",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "c46d9863ebde07d3cdbf685658c5216df1900678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "279c9db7_8e92aa2f",
         "filename": "board/kukui_scp/vdec.c",
         "patchSetId": 1
