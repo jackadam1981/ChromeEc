@@ -134,7 +134,9 @@ void uart_task(void)
 void uart_init(void)
 {
 	const uint32_t baud_rate = CONFIG_UART_BAUD_RATE;
-	const uint32_t uart_clock = 26000000;
+	/* 249: +2 good, +3 bad, -10 good (input ok too), -15 bad */
+	/* 257: +3 bad, +2 good (input ok), -10 good (input ok) */
+	const uint32_t uart_clock = 26000000/1000*1000;
 	const uint32_t div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16);
 
 	/* Init clock */

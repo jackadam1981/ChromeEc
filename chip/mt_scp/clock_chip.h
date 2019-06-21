@@ -13,7 +13,8 @@
 
 /* Default ULPOSC clock speed in MHz */
 #ifndef ULPOSC1_CLOCK_MHZ
-#define ULPOSC1_CLOCK_MHZ 248
+/* FIXME: For some 248 breaks UART RX after FW reload */
+#define ULPOSC1_CLOCK_MHZ 256
 #endif
 #ifndef ULPOSC2_CLOCK_MHZ
 #define ULPOSC2_CLOCK_MHZ 330
