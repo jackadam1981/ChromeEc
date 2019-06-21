@@ -408,14 +408,17 @@ struct pd_policy {
  * <25:16>  :: SBZ
  * <15:0>   :: USB-IF assigned VID for this cable vendor
  */
-#define IDH_PTYPE_UNDEF  0
-#define IDH_PTYPE_HUB    1
-#define IDH_PTYPE_PERIPH 2
-#define IDH_PTYPE_PCABLE 3
-#define IDH_PTYPE_ACABLE 4
-#define IDH_PTYPE_AMA    5
-#define IDH_PTYPE_VPD    6
 
+enum idh_ptype {
+	IDH_PTYPE_UNDEF,
+	IDH_PTYPE_HUB,
+	IDH_PTYPE_PERIPH,
+	IDH_PTYPE_PCABLE,
+	IDH_PTYPE_ACABLE,
+	IDH_PTYPE_AMA,
+	IDH_PTYPE_VPD,
+	IDH_PTYPE_COUNT,
+};
 #define VDO_IDH(usbh, usbd, ptype, is_modal, vid)		\
 	((usbh) << 31 | (usbd) << 30 | ((ptype) & 0x7) << 27	\
 	 | (is_modal) << 26 | ((vid) & 0xffff))
@@ -477,6 +480,23 @@ struct pd_policy {
 	 | (tx1d) << 10 | (tx2d) << 9 | (rx1d) << 8 | (rx2d) << 7	\
 	 | ((cur) & 0x3) << 5 | (vps) << 4 | (sopp) << 3		\
 	 | ((usbss) & 0x7))
+
+/* Cable structure for storing cable attributes */
+struct pd_cable {
+	/* Type of cable */
+	enum idh_ptype type;
+	/* Cable flags. See CABLE_FLAGS_* */
+	uint8_t flags;
+	/* Cable attribues */
+	struct cable_vdo attr;
+	/* Cable revision */
+	uint8_t rev;
+	/* For USB PD REV3, active cable has 2 VDOs */
+	struct active_cable_vdo2 attr2;
+};
+
+/* Flag for sending SOP Prime packet */
+#define CABLE_FLAGS_SOP_PRIME_ENABLE	BIT(0)
 
 /*
  * AMA VDO
@@ -1530,6 +1550,21 @@ uint16_t pd_get_identity_vid(int port);
  * @return      the USB Product Identifier or 0 if it doesn't exist
  */
 uint16_t pd_get_identity_pid(int port);
+
+/**
+ * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
+ *
+ * @param port	USB-C port number
+ * @return	1 if message being transmiited is SOP', 0 otherwise
+ */
+uint8_t is_transmit_message_type_sop_prime(int port);
+
+/**
+ * Reset Cable type, Cable attributes and cable flags
+ *
+ * @param port     USB-C port number
+ */
+void reset_pd_cable(int port);
 
 /**
  * Store Device ID & RW hash of device
