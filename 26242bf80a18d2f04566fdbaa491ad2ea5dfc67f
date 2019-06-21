@@ -22,6 +22,30 @@
       "revId": "26242bf80a18d2f04566fdbaa491ad2ea5dfc67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dbe2b8f_bdde474f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-21T00:19:45Z",
+      "side": 1,
+      "message": "One of them is MODULE_FAST_CPU during boot (\"7\"), and I don\u0027t think we want to add a separate config option to indicate whether we want to call this or not for each chip.",
+      "parentUuid": "2b44713d_adf26868",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "26242bf80a18d2f04566fdbaa491ad2ea5dfc67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
