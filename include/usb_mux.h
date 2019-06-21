@@ -44,6 +44,8 @@ enum typec_mux {
 	TYPEC_MUX_DOCK = MUX_USB_ENABLED | /* Both USB and DP */
 			 MUX_DP_ENABLED,
 	TYPEC_MUX_SAFE = MUX_SAFE_MODE,    /* Safe mode */
+	/* TBT compat only */
+	TYPEC_MUX_TBT_COMPAT = USB_PD_MUX_TBT_COMPAT_ENABLED,
 };
 
 /* Mux driver function pointers */
