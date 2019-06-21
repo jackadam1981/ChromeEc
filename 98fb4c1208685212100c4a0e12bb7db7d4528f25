@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01566118_218e63bd",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-21T07:08:07Z",
+      "side": 1,
+      "message": "unused argument",
+      "range": {
+        "startLine": 83,
+        "startChar": 58,
+        "endLine": 83,
+        "endChar": 71
+      },
+      "revId": "98fb4c1208685212100c4a0e12bb7db7d4528f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea6096c_c4c607e9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-21T07:08:07Z",
+      "side": 1,
+      "message": "should be TCS_I2C_ATIME?",
+      "range": {
+        "startLine": 178,
+        "startChar": 30,
+        "endLine": 178,
+        "endChar": 45
+      },
+      "revId": "98fb4c1208685212100c4a0e12bb7db7d4528f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c453e4e_4e2105e0",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-21T07:08:07Z",
+      "side": 1,
+      "message": "remove the parentheses",
+      "range": {
+        "startLine": 200,
+        "startChar": 7,
+        "endLine": 200,
+        "endChar": 8
+      },
+      "revId": "98fb4c1208685212100c4a0e12bb7db7d4528f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da39be9_04daea4f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-21T07:08:07Z",
+      "side": 1,
+      "message": "use lower case",
+      "range": {
+        "startLine": 210,
+        "startChar": 9,
+        "endLine": 210,
+        "endChar": 11
+      },
+      "revId": "98fb4c1208685212100c4a0e12bb7db7d4528f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e264dc4_f00fdc5f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-21T07:08:07Z",
+      "side": 1,
+      "message": "use TCS_RUN_MODE",
+      "range": {
+        "startLine": 285,
+        "startChar": 25,
+        "endLine": 285,
+        "endChar": 26
+      },
+      "revId": "98fb4c1208685212100c4a0e12bb7db7d4528f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
