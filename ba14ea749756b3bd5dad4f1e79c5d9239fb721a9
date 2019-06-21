@@ -46,6 +46,30 @@
       "revId": "ba14ea749756b3bd5dad4f1e79c5d9239fb721a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "319f5641_5e39a32b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-21T00:07:19Z",
+      "side": 1,
+      "message": "but what if an interrupt comes in after this line but before tx_fifo_is_ready() is called in the next line.\n\nThen tx_fifo_is_ready() will return false, and as a result tx_stream_handler() will never be called again until usb_reset()",
+      "parentUuid": "f4c403f3_4de74ba6",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "ba14ea749756b3bd5dad4f1e79c5d9239fb721a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
