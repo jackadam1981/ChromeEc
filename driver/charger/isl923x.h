@@ -307,10 +307,19 @@ enum isl9237_fsm_state {
 #define I2C_ADDR_CHARGER ISL923X_ADDR
 #endif /* __CROS_EC_ISL923X_H */
 
+enum isl923x_dc_prochot_current {
+	ISL923X_DC_PROCHOT_CURRENT_ZERO = 0,	/* Accepted */
+	ISL923X_DC_PROCHOT_CURRENT_MIN = 256,	/* mA */
+	/* Anything between MIN and MAX is accepted */
+	ISL923X_DC_PROCHOT_CURRENT_MAX = 12800,	/* mA */
+};
+
 /**
  * Initialize ac prochot to reach better performance
  *
  * @param ac_prochot: ISL923X_PROCHOT_CURRENT_*
+ * @param dc_prochot: ISL923X_PROCHOT_CURRENT_*
  * @return enum ec_error_list
  */
 int isl923x_set_ac_prochot(uint16_t ac_prochot);
+int isl923x_set_dc_prochot(enum isl923x_dc_prochot_current ma);

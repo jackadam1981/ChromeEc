@@ -307,6 +307,22 @@ int isl923x_set_ac_prochot(uint16_t ac_prochot)
 	return rv;
 }
 
+int isl923x_set_dc_prochot(enum isl923x_dc_prochot_current ma)
+{
+	int rv;
+
+	if (ma != 0 && (ma < ISL923X_DC_PROCHOT_CURRENT_MIN ||
+			ma > ISL923X_DC_PROCHOT_CURRENT_MAX)) {
+		CPRINTF("%s: current is out of range (%d mA)\n", __func__, ma);
+		return EC_ERROR_INVAL;
+	}
+
+	rv = raw_write16(ISL923X_REG_PROCHOT_DC, ma);
+	if (rv)
+		CPRINTF("%s failed\n", __func__);
+	return rv;
+}
+
 static void isl923x_init(void)
 {
 	int reg;
