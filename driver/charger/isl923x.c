@@ -299,11 +299,18 @@ int charger_post_init(void)
 	return EC_SUCCESS;
 }
 
-int isl923x_set_ac_prochot(uint16_t ac_prochot)
+int isl923x_set_ac_prochot(enum isl923x_prochot_current ma)
 {
-	int rv = raw_write16(ISL923X_REG_PROCHOT_AC, ac_prochot);
+	int rv;
+	if (ma != 0 && (ma < ISL923X_PROCHOT_CURRENT_MIN ||
+			ISL923X_PROCHOT_CURRENT_MAX < ma)) {
+		CPRINTF("%s: current is out of range (%d mA)\n", __func__, ma);
+		return EC_ERROR_INVAL;
+	}
+
+	rv = raw_write16(ISL923X_REG_PROCHOT_AC, ma);
 	if (rv)
-		CPRINTF("%s failed\n", __func__);
+		CPRINTF("%s failed (%d)\n", __func__, rv);
 	return rv;
 }
 
