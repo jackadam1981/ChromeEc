@@ -10,6 +10,7 @@
 #include "charge_state_v2.h"
 #include "chipset.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -31,6 +32,9 @@
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+static uint8_t sku_id;
+static uint8_t oem_id;
 
 /******************************************************************************/
 /* Wake up pins */
@@ -76,6 +80,13 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+static int board_is_convertible(void)
+{
+	/* SKU ID of Kled: 1,2,3,4 */
+	return (oem_id == 1) ? sku_id == 1 || sku_id == 2
+		|| sku_id == 3 || sku_id == 4 : 0;
+}
+
 /******************************************************************************/
 /* Chipset callbacks/hooks */
 
@@ -92,7 +103,8 @@ static void baseboard_chipset_resume(void)
 {
 	/* TODD(b/122266850): Need to fill out this hook */
 	/* Enable keyboard backlight */
-	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+	board_is_convertible() ? gpio_set_level(GPIO_EC_KB_BL_EN, 1) :
+	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -305,3 +317,36 @@ void lid_angle_peripheral_enable(int enable)
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	/*
+	 * Remove keyboard backlight feature for devices that don't support it.
+	 */
+	if (board_is_convertible())
+		return flags0;
+	else
+		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
+}
+
+uint32_t board_override_feature_flags1(uint32_t flags1)
+{
+	return flags1;
+}
+
+/* Read CBI from i2c eeprom and initialize variables for board variants */
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) != EC_SUCCESS || val > UINT8_MAX)
+		return;
+	sku_id = val;
+
+	if (cbi_get_oem_id(&val) != EC_SUCCESS || val > UINT8_MAX)
+		return;
+	oem_id = val;
+
+	CPRINTS("SKU: %d, OEM: %d", sku_id, oem_id);
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
