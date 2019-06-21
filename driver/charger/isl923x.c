@@ -34,6 +34,7 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 static int learn_mode;
 
@@ -305,13 +306,13 @@ int isl923x_set_ac_prochot(enum isl923x_prochot_current ma)
 
 	if (ma != 0 && (ma < ISL923X_PROCHOT_CURRENT_MIN ||
 			ISL923X_PROCHOT_CURRENT_MAX < ma)) {
-		CPRINTF("%s: current is out of range (%d mA)\n", __func__, ma);
+		CPRINTS("%s: current is out of range (%d mA)", __func__, ma);
 		return EC_ERROR_INVAL;
 	}
 
 	rv = raw_write16(ISL923X_REG_PROCHOT_AC, ma);
 	if (rv)
-		CPRINTF("%s failed (%d)\n", __func__, rv);
+		CPRINTS("%s failed (%d)", __func__, rv);
 	return rv;
 }
 
@@ -406,7 +407,7 @@ static void isl923x_init(void)
 
 	return;
 init_fail:
-	CPRINTF("isl923x_init failed!");
+	CPRINTS("%s failed!", __func__);
 }
 DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -562,7 +563,7 @@ int charger_get_system_power(void)
 
 static int console_command_psys(int argc, char **argv)
 {
-	ccprintf("PSYS = %d uW\n", charger_get_system_power());
+	CPRINTF("PSYS = %d uW\n", charger_get_system_power());
 	return 0;
 }
 DECLARE_CONSOLE_COMMAND(psys, console_command_psys,
@@ -620,7 +621,7 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 
 	adc = adc_read_channel(ADC_AMON_BMON);
 	curr = adc / resistor;
-	ccprintf("%cMON(%sharging): %d uV, %d mA\n", amon == AMON ? 'A' : 'B',
+	CPRINTF("%cMON(%sharging): %d uV, %d mA\n", amon == AMON ? 'A' : 'B',
 		direction ? "Disc" : "C", adc, curr);
 
 	return ret;
