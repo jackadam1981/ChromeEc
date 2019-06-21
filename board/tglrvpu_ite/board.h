@@ -90,6 +90,9 @@
 /* Enabling SOP* communication */
 #define CONFIG_USB_PD_DECODE_SOP
 
+/* Enabling Compatible Thunderbolt mode */
+#define CONFIG_USB_PD_TBT_COMPAT_MODE
+
 #ifndef __ASSEMBLER__
 
 enum tglrvp_charge_ports {
