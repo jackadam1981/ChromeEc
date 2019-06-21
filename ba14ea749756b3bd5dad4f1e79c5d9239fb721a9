@@ -94,6 +94,30 @@
       "revId": "ba14ea749756b3bd5dad4f1e79c5d9239fb721a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4051f82_26c3d4c0",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-21T15:52:53Z",
+      "side": 1,
+      "message": "Patchset 14 assumes that only (UART) IRQ handler would call usb_written().\nSo, it shouldn\u0027t be preemptive in usb_written(). \n\nIf this assumption is not valid, then line 260~269 should be moved inside tx_stream_handler().",
+      "parentUuid": "47613f86_fb2141e4",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "ba14ea749756b3bd5dad4f1e79c5d9239fb721a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
