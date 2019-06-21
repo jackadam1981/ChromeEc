@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5dbf8c0_a90a2378",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-21T00:00:56Z",
+      "side": 1,
+      "message": "I think this should be set in line 270, otherwise this function might exit in line 269",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 29
+      },
+      "revId": "ba14ea749756b3bd5dad4f1e79c5d9239fb721a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
