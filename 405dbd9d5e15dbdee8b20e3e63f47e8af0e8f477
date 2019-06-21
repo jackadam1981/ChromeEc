@@ -34,6 +34,24 @@
       "revId": "405dbd9d5e15dbdee8b20e3e63f47e8af0e8f477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ab8013_7a57bb72",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-21T00:02:24Z",
+      "side": 1,
+      "message": "Yes, I think this block should just be removed as in the nocturne branch it was \u0027flags_to_clear \u0026\u003d ~PD_FLAGS_LPM_REQUESTED;\u0027 Since flags_to_clear no longer exists in this function, then this becomes a do nothing.",
+      "parentUuid": "b5138c53_5d480e09",
+      "revId": "405dbd9d5e15dbdee8b20e3e63f47e8af0e8f477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
