@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd4e4b26_bb334809",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:41:02Z",
+      "side": 1,
+      "message": "return error?",
+      "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f332a6_da612412",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:41:02Z",
+      "side": 1,
+      "message": "Why not (flags \u0026 GPIO_INPUT)?\nCan this be merged with the other read/modify/write of NCT38XXX_REG_GPIO_DIR(port) below?",
+      "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6a0a4a_bbb52613",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-21T23:41:02Z",
+      "side": 1,
+      "message": "move #include inside #ifndef __CROS_EC_IOEXPANDER_NCT38XX_H",
+      "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
