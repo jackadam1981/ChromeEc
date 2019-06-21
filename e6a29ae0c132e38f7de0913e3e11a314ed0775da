@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4914d996_48720896",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2330,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-21T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd87f36_1f590368",
+      "range": {
+        "startLine": 2330,
+        "startChar": 0,
+        "endLine": 2330,
+        "endChar": 4
+      },
+      "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e395ff9_10096b37",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a1c044f1_3cc0d24b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2334,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-21T15:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e395ff9_10096b37",
+      "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29148ebe_6338a195",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -53,6 +95,24 @@
       "writtenOn": "2019-06-20T23:11:47Z",
       "side": 1,
       "message": "Do you need to update the dual role capability here?",
+      "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "546bd2a5_aba45f18",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2351,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-21T15:54:18Z",
+      "side": 1,
+      "message": "Currently, the plan is to keep the dual role capability coupled with the power state we end up in to minimize confusion.\n\nSo if we allow the board to boot to S0, then the customer can have peripherals drawing power.  And if we block booting to the OS, then we\u0027ll be in S5/G3 and the customer will be unable to have peripherals drawing power.",
+      "parentUuid": "29148ebe_6338a195",
       "revId": "e6a29ae0c132e38f7de0913e3e11a314ed0775da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
