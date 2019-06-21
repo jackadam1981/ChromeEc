@@ -2143,8 +2143,29 @@ static void pd_vdm_send_state_machine(int port)
 				   pd[port].data_role, pd[port].msg_id,
 				   (int)pd[port].vdo_count,
 				   pd_get_rev(port), 0);
-		res = pd_transmit(port, TCPC_TX_SOP, header,
-				  pd[port].vdo_data);
+
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+		    is_transmit_message_type_sop_prime(port)) {
+			res = pd_transmit(port, TCPC_TX_SOP_PRIME, header,
+					  pd[port].vdo_data);
+			/*
+			 * If there is no ack from the cable, its a non-emark
+			 * and since, the pd flow should continue irrespective
+			 * of cable response, sending discover_svid so the
+			 * pd flow remains intact.
+			 */
+			if (res < 0) {
+				pd[port].vdo_data[0] =
+					VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
+				res = pd_transmit(port, TCPC_TX_SOP, header,
+						  pd[port].vdo_data);
+				reset_pd_cable(port);
+			}
+
+		} else
+			res = pd_transmit(port, TCPC_TX_SOP, header,
+					  pd[port].vdo_data);
+
 		if (res < 0) {
 			pd[port].vdm_state = VDM_STATE_ERR_SEND;
 		} else {
@@ -3445,6 +3466,9 @@ void pd_task(void *u)
 			set_state(port, PD_STATE_SRC_STARTUP);
 			break;
 		case PD_STATE_SRC_STARTUP:
+			/* Reset cable attributes and flags */
+			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+				reset_pd_cable(port);
 			/* Wait for power source to enable */
 			if (pd[port].last_state != pd[port].task_state) {
 				pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
@@ -3982,6 +4006,10 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
 						  PD_FLAGS_CHECK_DR_ROLE |
 						  PD_FLAGS_CHECK_IDENTITY;
+				/* Reset cable attributes and flags */
+				if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+					reset_pd_cable(port);
+
 				if (new_cc_state == PD_CC_DEBUG_ACC)
 					pd[port].flags |=
 						PD_FLAGS_TS_DTS_PARTNER;
@@ -4681,6 +4709,9 @@ static void pd_chipset_startup(void)
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		pd_set_dual_role_no_wakeup(i, PD_DRP_TOGGLE_OFF);
 		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
+		/* Reset cable attributes and flags */
+		if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
+			reset_pd_cable(i);
 		task_set_event(PD_PORT_TO_TASK_ID(i),
 			       PD_EVENT_POWER_STATE_CHANGE |
 				       PD_EVENT_UPDATE_DUAL_ROLE,

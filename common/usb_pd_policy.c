@@ -325,6 +325,20 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	}
 }
 
+static struct pd_cable cable[CONFIG_USB_PD_PORT_COUNT];
+
+static void dfp_consume_cable_response(int port, int cnt, uint32_t *payload)
+{
+	if (cnt > 1)
+		cable[port].type = PD_IDH_PTYPE(payload[1]);
+}
+
+static int dfp_discover_ident(int port, uint32_t *payload)
+{
+	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
+	return 1;
+}
+
 static int dfp_discover_svids(int port, uint32_t *payload)
 {
 	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
@@ -682,6 +696,27 @@ DECLARE_CONSOLE_COMMAND(pe, command_pe,
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+uint8_t is_transmit_message_type_sop_prime(int port)
+{
+	return (cable[port].flags & CABLE_FLAGS_SOP_PRIME_ENABLE ? 1 : 0);
+}
+
+void reset_pd_cable(int port)
+{
+	cable[port].type = IDH_PTYPE_UNDEF;
+	cable[port].flags = 0;
+}
+
+static void enable_transmit_sop_prime(int port)
+{
+	cable[port].flags |= CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
+static void disable_transmit_sop_prime(int port)
+{
+	cable[port].flags &= ~CABLE_FLAGS_SOP_PRIME_ENABLE;
+}
+
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
@@ -754,8 +789,24 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		switch (cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			dfp_consume_identity(port, cnt, payload);
-			rsize = dfp_discover_svids(port, payload);
+			/* Received a SOP Prime Discover Ident msg */
+			if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+			    is_transmit_message_type_sop_prime(port)) {
+				/* Store cable type */
+				dfp_consume_cable_response(port, cnt, payload);
+				disable_transmit_sop_prime(port);
+				rsize = dfp_discover_svids(port, payload);
+			/* Received a SOP Discover Ident Message */
+			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+				dfp_consume_identity(port, cnt, payload);
+				rsize = dfp_discover_ident(port, payload);
+				/* Send SOP' Discover Ident message */
+				enable_transmit_sop_prime(port);
+			/* #undef CONFIG_USB_PD_DECODE_SOP */
+			} else {
+				dfp_consume_identity(port, cnt, payload);
+				rsize = dfp_discover_svids(port, payload);
+			}
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd_charge_from_device(pd_get_identity_vid(port),
 						  pd_get_identity_pid(port)))
