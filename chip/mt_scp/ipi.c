@@ -76,8 +76,10 @@ static inline void try_to_wakeup_ap(int32_t id)
 		return;
 #endif
 
+#if 0
 	if (*ipi_wakeup_table[id])
 		SCP_SPM_INT = SPM_INT_A2SPM;
+#endif
 }
 
 /* Send data from SCP to AP. */
