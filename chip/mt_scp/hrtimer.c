@@ -190,6 +190,12 @@ int __hw_clock_source_init(uint32_t start_t)
 	timer_set_clock(TIMER_EVENT, TIMER_CLK_BCLK);
 	task_enable_irq(IRQ_TIMER(TIMER_EVENT));
 
+	/* Event tick timer, FIXME: test only. */
+	timer_set_clock(4, TIMER_CLK_32K);
+	timer_set_reset_value(4, 32767);
+	__hw_timer_enable_clock(4, 1);
+	task_enable_irq(IRQ_TIMER(4));
+
 	return IRQ_TIMER(TIMER_SYSTEM);
 }
 
@@ -207,6 +213,7 @@ uint32_t __hw_clock_event_get(void)
 static void __hw_clock_source_irq(int n)
 {
 	uint32_t timer_ctrl = SCP_TIMER_IRQ_CTRL(n);
+	static timestamp_t last4;
 
 	/* Ack if we're hardware interrupt */
 	if (timer_ctrl & TIMER_IRQ_STATUS)
@@ -235,6 +242,15 @@ static void __hw_clock_source_irq(int n)
 			process_timers(0);
 		}
 		break;
+	case 4: {
+		unsigned int delta = time_since32(last4);
+
+		if (delta > 1000) {
+			last4 = get_time();
+			ccprints("T4 Tick %d", delta);
+		}
+		break;
+	}
 	default:
 		return;
 	}
