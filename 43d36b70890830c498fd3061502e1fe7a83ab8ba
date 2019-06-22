@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3ae455d7_ae520199",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-22T03:11:59Z",
+      "side": 1,
+      "message": "NOTE that this setting enables the interrupt, which I would think may cause noise on a board that doesn\u0027t have that pin hooked up to anything.  We may want to set this to TCS3400_MODE_EMULATED to avoid this :\n\nenum tcs3400_mode {\n        TCS3400_MODE_SUSPEND \u003d 0,\n        TCS3400_MODE_IDLE \u003d         (TCS_I2C_ENABLE_POWER_ON |\n                                     TCS_I2C_ENABLE_ADC_ENABLE),\n        TCS3400_MODE_IRQ_EMULATED \u003d (TCS_I2C_ENABLE_POWER_ON |\n                                     TCS_I2C_ENABLE_ADC_ENABLE),\n        TCS3400_MODE_COLLECTING \u003d   (TCS_I2C_ENABLE_POWER_ON |\n                                     TCS_I2C_ENABLE_ADC_ENABLE |\n                                     TCS_I2C_ENABLE_INT_ENABLE),\n};\n\nstatic int tcs3400_read(const struct motion_sensor_t *s, intv3_t v)\n{\n\tint ret;\n\n\tif (IS_ENABLED(CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT)) {\n\t\tint atime;\n\n\t\t/* Enable power, ADC, and interrupt to start cycle */\n\t\tret \u003d tcs3400_i2c_write8(s, TCS_I2C_ENABLE,\n\t\t\tTCS3400_MODE_IRQ_EMULATED);\n\t\tif (ret)\n\t\t\treturn ret;\n\n\t\tret \u003d tcs3400_i2c_read8(s, TCS_I2C_ATIME, \u0026atime);\n\t\tif (ret)\n\t\t\treturn ret;\n\n\t\thook_call_deferred(\u0026tcs3400_read_deferred_data,\n\t\t\t\ttcs3400_get_integration_time(atime));\n\t} else {\n\t\t/* Enable power, ADC, and interrupt to start cycle */\n\t\tret \u003d tcs3400_i2c_write8(s, TCS_I2C_ENABLE,\n\t\t\tTCS3400_MODE_COLLECTING);\n\t\tif (ret)\n\t\t\treturn ret;\n\t}\n\n\t/*\n\t * If write succeeded, we\u0027ve started the read process, but can\u0027t\n\t * complete it yet until data is ready, so pass back EC_RES_IN_PROGRESS\n\t * to inform upper level that read data process is under way and data\n\t * will be delivered when available.\n\t */\n\treturn EC_RES_IN_PROGRESS;\n}",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "43d36b70890830c498fd3061502e1fe7a83ab8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c904465_6a49e8ed",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 16
