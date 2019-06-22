@@ -173,6 +173,7 @@ const struct pi3usb2901_config_t pi3usb2901_bc12_chips[] = {
 /* Base Sensor mutex */
 static struct mutex g_base_mutex;
 static struct mutex g_lid_mutex;
+static struct mutex g_als_mutex;
 
 /* Base accel private data */
 static struct bmi160_drv_data_t g_bmi160_data;
@@ -300,6 +301,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.type = MOTIONSENSE_TYPE_LIGHT,
 		.location = MOTIONSENSE_LOC_LID,
 		.drv = &tcs3400_drv,
+		.mutex = &g_als_mutex,
 		.drv_data = &g_tcs3400_data,
 		.port = I2C_PORT_ALS,
 		.addr = TCS3400_I2C_ADDR,
