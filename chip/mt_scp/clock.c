@@ -13,6 +13,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "watchdog.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ## args)
 
@@ -333,9 +334,26 @@ DECLARE_IRQ(SCP_IRQ_CLOCK2, clock_fast_wakeup_irq, 3);
 /* Console command */
 int command_ulposc(int argc, char *argv[])
 {
-	if (argc > 1 && !strncmp(argv[1], "cal", 3)) {
-		scp_calibrate_ulposc(0, ULPOSC1_CLOCK_MHZ);
-		scp_calibrate_ulposc(1, ULPOSC2_CLOCK_MHZ);
+	if (argc > 1) {
+		if (!strncmp(argv[1], "cal", 3)) {
+			scp_calibrate_ulposc(0, ULPOSC1_CLOCK_MHZ);
+			scp_calibrate_ulposc(1, ULPOSC2_CLOCK_MHZ);
+		} else if (!strncmp(argv[1], "dump", 4)) {
+			int div, cali, freq;
+			int target = ULPOSC1_CLOCK_MHZ * 1024 / 26;
+			ccprintf("dump: target=%d\n", target);
+
+			for (div = 0; div < ULPOSC_DIV_MAX; div++) {
+				for (cali = 0; cali < ULPOSC_CALI_MAX; cali++) {
+					freq = scp_ulposc_config_measure(0, div, cali);
+					ccprintf("dump: %d,%d,%d\n", div, cali, freq);
+					cflush();
+					watchdog_reload();
+				}
+			}
+
+			scp_calibrate_ulposc(0, ULPOSC1_CLOCK_MHZ);
+		}
 	}
 
 	/* SCP clock meter counts every (26MHz / 1024) tick */
