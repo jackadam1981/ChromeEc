@@ -16,6 +16,24 @@
       "revId": "7064256fa132f7c04f01e2a1b26a2c230551a2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88824ee_2c93bba2",
+        "filename": "board/bobba/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-06-24T05:30:59Z",
+      "side": 1,
+      "message": "LGC battery didn\u0027t put D-FET status in spec.\nWe have confirm D-FET status by mail.\nAnd I upload to other issue.\nI will upload to issue later.",
+      "parentUuid": "b4c14523_b762705c",
+      "revId": "7064256fa132f7c04f01e2a1b26a2c230551a2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
