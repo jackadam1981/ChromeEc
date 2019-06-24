@@ -150,6 +150,8 @@ void __keep gpio_interrupt(void)
 	while (pending) {
 		bit = get_next_bit(&pending);
 		signal = exti_events[bit];
+		if (bit == 2)
+			ccprints("bit %d signal %d", bit, signal);
 		if (signal < GPIO_IH_COUNT)
 			gpio_irq_handlers[signal](signal);
 	}

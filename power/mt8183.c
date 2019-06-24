@@ -164,7 +164,7 @@ enum power_state power_chipset_init(void)
 	if (system_jumped_to_this_image()) {
 		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
 			disable_sleep(SLEEP_MASK_AP_RUN);
-			gpio_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
+//			gpio_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
