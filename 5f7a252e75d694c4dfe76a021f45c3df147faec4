@@ -94,6 +94,30 @@
       "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e80096_e6226fe0",
+        "filename": "board/helios/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-24T18:38:06Z",
+      "side": 1,
+      "message": "Philip -- for the long term, I think we should try to optimize this. As you pointed out, it doesn\u0027t make sense to keep adding duplicate battery information just because the manuf_name/device_name is different. Do you want to raise a bug and make an attempt at refactoring some of this code?",
+      "parentUuid": "2aedc44b_c21231fe",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 21
+      },
+      "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
