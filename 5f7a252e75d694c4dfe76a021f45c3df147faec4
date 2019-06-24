@@ -22,6 +22,30 @@
       "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5288ec2d_e7a0f130",
+        "filename": "board/helios/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1140729
+      },
+      "writtenOn": "2019-06-24T06:15:46Z",
+      "side": 1,
+      "message": "Yes, the C424 and C436 only manuf_name is different.\nI combine two battery parameters to one and using C436 manuf_name.",
+      "parentUuid": "41cf7fc3_465fa59e",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 21
+      },
+      "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
