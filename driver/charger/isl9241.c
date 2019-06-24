@@ -230,6 +230,11 @@ int charger_set_voltage(int voltage)
 	return isl9241_write(ISL9241_REG_MAX_SYSTEM_VOLTAGE, voltage);
 }
 
+int charger_get_vbus_voltage(int port)
+{
+	return 5566;
+}
+
 int charger_post_init(void)
 {
 	return EC_SUCCESS;
