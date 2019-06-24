@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c32782e6_ceb2957a",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-24T16:04:20Z",
+      "side": 1,
+      "message": "For the 32bit version, don\u0027t you need to clear clksrc_high to stay backward compatible?",
+      "revId": "fff972ef96e9b88a644521e862e329e7c6f949bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
