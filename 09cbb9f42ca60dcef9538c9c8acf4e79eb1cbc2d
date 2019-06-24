@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee755a38_7c83b71c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-24T17:25:05Z",
+      "side": 1,
+      "message": "can you take care of other ifdefs in the file?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "09cbb9f42ca60dcef9538c9c8acf4e79eb1cbc2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437aaa16_08323897",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-24T17:25:05Z",
+      "side": 1,
+      "message": "I think we should put these in a sub-routine (like other usb_charger_task).",
+      "range": {
+        "startLine": 967,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 0
+      },
+      "revId": "09cbb9f42ca60dcef9538c9c8acf4e79eb1cbc2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
