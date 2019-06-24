@@ -34,6 +34,24 @@
       "revId": "fff972ef96e9b88a644521e862e329e7c6f949bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32bb2c41_0449d8fd",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-06-24T16:19:18Z",
+      "side": 1,
+      "message": "got it... timer_init is always called solely at reboot.  thanks",
+      "parentUuid": "0b8ae2b7_c213f90a",
+      "revId": "fff972ef96e9b88a644521e862e329e7c6f949bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
