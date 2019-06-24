@@ -285,6 +285,11 @@ int charger_set_voltage(int voltage)
 	return isl9237_set_voltage(voltage);
 }
 
+int charger_get_vbus_voltage(int port)
+{
+	return 5566;
+}
+
 int charger_post_init(void)
 {
 	/*

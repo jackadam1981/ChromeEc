@@ -26,7 +26,6 @@
 #error Must define a VARIANT_KUKUI_BATTERY
 #endif /* VARIANT_KUKUI_BATTERY */
 
-
 /* Optional modules */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
