@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a3d40a5_e4a16319",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "It\u0027s better you can handle the calculation in mt6370_get_adc.",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45439f5f_12ba5d4e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "just\n\n  int rv, data;\n\ndon\u0027t need \u0027\u003d0\u0027, since they\u0027ll be assigned.",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 22
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d584a280_7d2cba24",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "what if rv \u003e 0?",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 11
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049350e0_c4a62060",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "Could be simplified to:\n\n  *is_one \u003d !!(data \u0026 BIT(shift));",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f36a8a1_998e781e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 277,
+        "startChar": 7,
+        "endLine": 277,
+        "endChar": 13
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a221967_c6412aa0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "CPRINTS(\"%s: en\u003d%d %s\", __func__, en, rv ? \"fail\" : \"\");",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 53
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f5525d_c95cb125",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:53:48Z",
+      "side": 1,
+      "message": "#define MT6370_REG_IRQIND\t\t0x0B\n#define MT6370_REG_IRQMASK\t\t0x0C\n#define MT6370_REG_OSCCTRL\t\t0x10",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 32
+      },
+      "revId": "6a3ac3f424d5aff3f6bad1768d5c24b433124be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
