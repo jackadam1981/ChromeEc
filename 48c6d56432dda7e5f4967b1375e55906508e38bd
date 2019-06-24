@@ -33,6 +33,24 @@
       "revId": "48c6d56432dda7e5f4967b1375e55906508e38bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb1abcf_d250a6dc",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-24T13:09:27Z",
+      "side": 1,
+      "message": "With the caveat that the MTP can only be programmed 100 times. So maybe we should just read back 0x00 and 0x01, and if the value is incorrect, change it and burn it.",
+      "parentUuid": "3330dc31_7d8466ce",
+      "revId": "48c6d56432dda7e5f4967b1375e55906508e38bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
