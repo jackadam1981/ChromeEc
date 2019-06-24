@@ -5,7 +5,6 @@
 
 #include "charger.h"
 #include "console.h"
-#include "driver/charger/rt946x.h"
 #include "gpio.h"
 #include "system.h"
 #include "timer.h"
@@ -43,15 +42,6 @@ int pd_is_valid_input_voltage(int mv)
 void pd_transition_voltage(int idx)
 {
 	/* No-operation: we are always 5V */
-}
-
-static int board_get_polarity(int port)
-{
-	/* Krane's aux mux polarity is reversed. Workaround to flip it back. */
-	if (IS_ENABLED(BOARD_KRANE) && board_get_version() == 3)
-		return !pd_get_polarity(port);
-
-	return pd_get_polarity(port);
 }
 
 static uint8_t vbus_en;
@@ -239,6 +229,15 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
 /* DP Status VDM as returned by UFP */
 static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
+
+static int board_get_polarity(int port)
+{
+	/* Krane's aux mux polarity is reversed. Workaround to flip it back. */
+	if (IS_ENABLED(BOARD_KRANE) && board_get_version() == 3)
+		return !pd_get_polarity(port);
+
+	return pd_get_polarity(port);
+}
 
 static void svdm_safe_dp_mode(int port)
 {
