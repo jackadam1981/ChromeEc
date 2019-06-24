@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b51350a1_19fd3764",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-24T12:18:37Z",
+      "side": 1,
+      "message": "I think it\u0027s ok not to have a driver for this.",
+      "revId": "48c6d56432dda7e5f4967b1375e55906508e38bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3330dc31_7d8466ce",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-24T12:18:37Z",
+      "side": 1,
+      "message": "Use the constants in the header file of course.\n\nYou should be able to write to 0x00 and 0x01 in 1 transaction:\n\ni2c_write16(0, 0x7c, 0x00, 0x1212);\n\n(or use i2c_write_block if you don\u0027t want to care about endianess, which does not matter here...)\n\nBut then, I\u0027d also do\n\ni2c_write8(x, 0x7c, 0xff, 0x80);\n\nto actually write the setting to EEPROM.",
+      "revId": "48c6d56432dda7e5f4967b1375e55906508e38bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
