@@ -22,6 +22,30 @@
       "revId": "f5439a5aa8246ff9c4e32ff7107e154b346e4c5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74184305_470f7acc",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-24T07:29:01Z",
+      "side": 1,
+      "message": "\u003e Can this be at line 163?\n\nNo, we only want the interrupt to be enabled when the system is in S0. (see the comment above chipset_watchdog_interrupt). \n\n\u003e What causes this interrupt to be disabled after sysjump?\n\nexti_events in chip/stm32/gpio.c is not restored, so the EC does not know which interrupt to call.\n\n\twhile (pending) {\n\t\tbit \u003d get_next_bit(\u0026pending);\n\t\tsignal \u003d exti_events[bit];\n\t\tif (bit \u003d\u003d 2)\n\t\t\tccprints(\"bit %d signal %d\", bit, signal);\n\t\tif (signal \u003c GPIO_IH_COUNT)\n\t\t\tgpio_irq_handlers[signal](signal);\n\t}\n\nIn RO:\n2019-06-24 15:13:40 [323.468323 bit 2 signal 7]\nIn RW:\n2019-06-24 15:17:36 [65.081743 bit 2 signal 0]\nso this ends up calling tcpc_alert_event\n2019-06-24 15:21:45 [56.694080 tcpc_alert_event 0]\n\nthat\u0027s... bad.\n\nI think it\u0027s ok that interrupts are not restored on sysjump, but we shouldn\u0027t be calling a random interrupt function.\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d977950",
+      "parentUuid": "b37bde28_d2401a65",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 48
+      },
+      "revId": "f5439a5aa8246ff9c4e32ff7107e154b346e4c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
