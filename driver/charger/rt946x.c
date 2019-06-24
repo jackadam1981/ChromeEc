@@ -969,33 +969,31 @@ void usb_charger_task(void *u)
 			bc12_type = rt946x_get_bc12_device_type();
 
 			CPRINTS("BC12 type %d", bc12_type);
-			if (bc12_type != CHARGE_SUPPLIER_NONE) {
-#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
-				if ((bc12_type == CHARGE_SUPPLIER_BC12_SDP) &&
-						wpc_chip_is_online()) {
-					p9221_notify_vbus_change(1);
-					CPRINTS("WPC ON");
-				} else {
 
-#endif
-					chg.current = rt946x_get_bc12_ilim(
-								bc12_type);
-					charge_manager_update_charge(bc12_type,
-								     0, &chg);
-#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
-				}
-#endif
+			if (bc12_type == CHARGE_SUPPLIER_NONE)
+				goto attach_evt_epilogue;
+
+			if (IS_ENABLED(CONFIG_WIRELESS_CHARGER_P9221_R7) &&
+			    bc12_type == CHARGE_SUPPLIER_BC12_SDP &&
+			    wpc_chip_is_online()) {
+				p9221_notify_vbus_change(1);
+				CPRINTS("WPC ON");
+			} else {
+				chg.current = rt946x_get_bc12_ilim(bc12_type);
+				charge_manager_update_charge(bc12_type, 0,
+							     &chg);
 			}
-
+attach_evt_epilogue:
 			rt946x_enable_bc12_detection(0);
 		}
 
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
 			CPRINTS("VBUS detached");
-#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
-			p9221_notify_vbus_change(0);
-#endif
+
+			if (IS_ENABLED(CONFIG_WIRELESS_CHARGER_P9221_R7))
+				p9221_notify_vbus_change(0);
+
 			charge_manager_update_charge(bc12_type, 0, NULL);
 
 			if (!IS_ENABLED(CONFIG_CHARGER_MT6370_BC12_GPIO))
