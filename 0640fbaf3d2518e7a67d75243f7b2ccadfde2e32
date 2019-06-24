@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "fcbe6bcc_94284306",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-24T07:55:33Z",
+      "side": 1,
+      "message": "primary phase detect SDP or Non-SDP, and this is primary detect pull-high to 0.6V problem",
+      "parentUuid": "796ed91f_948b736d",
+      "range": {
+        "startLine": 979,
+        "startChar": 20,
+        "endLine": 979,
+        "endChar": 44
+      },
+      "revId": "0640fbaf3d2518e7a67d75243f7b2ccadfde2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06b55ee0_01a4d09d",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2019-06-17T19:29:12Z",
       "side": 1,
       "message": "What are you trying here? Why is bc12_cnt incremented at line 983? You\u0027re trying to run rt946x_bc12_workaround three times no matter how many times you fail in between (i.e. pass, fail, pass, fail, pass)?",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 15
+      },
+      "revId": "0640fbaf3d2518e7a67d75243f7b2ccadfde2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcc74ad_afdc2cb4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-24T07:55:33Z",
+      "side": 1,
+      "message": "if real SDP : no matter pass or fail, it will be detected to SDP\nif non-SDP :\npass, fail, pass will be first pass will detect correct non-SDP type\nmaybe you means fail, pass, fail case\nfail, pass, fail will be first detect fail as SDP, but secondary detect will be detect correct non-SDP, no problem",
+      "parentUuid": "06b55ee0_01a4d09d",
       "range": {
         "startLine": 980,
         "startChar": 0,
