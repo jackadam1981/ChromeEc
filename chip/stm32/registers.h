@@ -1,3 +1,4 @@
+//# +all
 /* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -5,14 +6,18 @@
  * Register map for STM32 processor
  */
 
+//# -all +com
 #ifndef __CROS_EC_REGISTERS_H
 #define __CROS_EC_REGISTERS_H
 
 #include "common.h"
 #include "compile_time_macros.h"
 
-/* IRQ numbers */
+//# +all -com
+/* --- IRQ numbers --- */
+//# push -all
 #ifdef CHIP_FAMILY_STM32F0
+//# +f0
 #define STM32_IRQ_WWDG             0
 #define STM32_IRQ_PVD              1
 #define STM32_IRQ_RTC_WAKEUP       2
@@ -49,8 +54,9 @@
 /* aliases for easier code sharing */
 #define STM32_IRQ_COMP STM32_IRQ_ADC_COMP
 #define STM32_IRQ_USB_LP STM32_IRQ_USB
-
+//# -f0
 #else /* !CHIP_FAMILY_STM32F0 */
+//# pop push -f0
 #define STM32_IRQ_WWDG             0
 #define STM32_IRQ_PVD              1
 #define STM32_IRQ_TAMPER_STAMP     2
@@ -69,14 +75,17 @@
 #define STM32_IRQ_DMA_CHANNEL_5   15
 #define STM32_IRQ_DMA_CHANNEL_6   16
 #define STM32_IRQ_DMA_CHANNEL_7   17
-
+//# push -all +f3
 #ifdef CHIP_VARIANT_STM32F373
 #define STM32_IRQ_USB_HP          74
 #define STM32_IRQ_USB_LP          75
 #else
+//# pop push +f3
 #define STM32_IRQ_USB_HP          19
 #define STM32_IRQ_USB_LP          20
+//# pop push -all +f3
 #endif
+//# pop
 
 #define STM32_IRQ_ADC1            18 /* STM32L4 only */
 #define STM32_IRQ_CAN_TX          19 /* STM32F373 only */
@@ -84,15 +93,21 @@
 #define STM32_IRQ_DAC             21
 #define STM32_IRQ_CAN_RX1         21 /* STM32F373 only */
 
+//# push -all +f3
 #ifdef CHIP_VARIANT_STM32F373
 #define STM32_IRQ_COMP            64
 #else
+//# pop push +f3
 #define STM32_IRQ_COMP            22
+//# pop push -all +f3
 #endif
+//# pop
 
 #define STM32_IRQ_CAN_SCE         22 /* STM32F373 only */
 #define STM32_IRQ_EXTI9_5         23
+//# push -all
 #ifndef CHIP_FAMILY_STM32H7
+//# pop push -h7
 #define STM32_IRQ_LCD             24 /* STM32L15X only */
 #define STM32_IRQ_TIM15           24 /* STM32F373 only */
 #define STM32_IRQ_TIM9            25 /* STM32L15X only */
@@ -101,7 +116,9 @@
 #define STM32_IRQ_TIM17           26 /* STM32F373 only */
 #define STM32_IRQ_TIM11           27 /* STM32L15X only */
 #define STM32_IRQ_TIM18_DAC2      27 /* STM32F373 only */
+//# pop push -all
 #endif /* !CHIP_FAMILY_STM32H7 */
+//# pop
 #define STM32_IRQ_TIM2            28
 #define STM32_IRQ_TIM3            29
 #define STM32_IRQ_TIM4            30
@@ -151,7 +168,9 @@
 #define STM32_IRQ_RNG             80 /* STM32L4 only */
 #define STM32_IRQ_FPU             81 /* STM32F373 only */
 
+//# push -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 #define STM32_IRQ_LPTIM1         93
 #define STM32_IRQ_TIM15         116
 #define STM32_IRQ_TIM16         117
@@ -160,7 +179,9 @@
 #define STM32_IRQ_LPTIM3        139
 #define STM32_IRQ_LPTIM4        140
 #define STM32_IRQ_LPTIM5        141
+//# -h7
 #endif /* CHIP_FAMILY_STM32H7 */
+//# pop
 
 /* To simplify code generation, define DMA channel 9..10 */
 #define STM32_IRQ_DMA_CHANNEL_9    STM32_IRQ_DMA2_CHANNEL1
@@ -172,13 +193,19 @@
 #define STM32_IRQ_I2C1 STM32_IRQ_I2C1_EV
 #define STM32_IRQ_I2C2 STM32_IRQ_I2C2_EV
 #define STM32_IRQ_I2C3 STM32_IRQ_I2C3_EV
+//# -all
 #endif /* !CHIP_FAMILY_STM32F0 */
+//# pop
 
+//# push -all +f4
 #if defined(CHIP_VARIANT_STM32F411) || defined(CHIP_VARIANT_STM32F412)
 #define CHIP_VARIANT_STM32F41X
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
+//# +f4 +h7
 /*
  * STM32F4 introduces a concept of DMA stream to allow
  * fine allocation of a stream to a channel.
@@ -206,62 +233,104 @@
 #define STM32_IRQ_OTG_HS          77
 #define STM32_IRQ_OTG_FS          67
 #define STM32_IRQ_OTG_FS_WKUP     42
-
+//# -f4 -h7
 #endif
+//# pop
 
 /* Peripheral base addresses */
-
+//# push -all
 #ifndef CHIP_FAMILY_STM32H7
+//# pop push -h7
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_ADC1_BASE             0x40012000
 #define STM32_ADC_BASE              0x40012300
+//# -f4
 #else
+//# pop push -f4
 #define STM32_ADC1_BASE             0x40012400
 #define STM32_ADC_BASE              0x40012700 /* STM32L15X only */
+//# pop push -all
 #endif
+//# pop
 
 #define STM32_CEC_BASE              0x40007800 /* STM32F373 */
 #define STM32_CRC_BASE              0x40023000
 #define STM32_CRS_BASE              0x40006c00 /* STM32F0XX */
 #define STM32_DAC_BASE              0x40007400
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_COMP_BASE             0x40007C00
+//# -l
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+//# +f0 +f3
 #define STM32_COMP_BASE             0x40010000
+//# -f0 -f3
 #endif
+//# pop
 
+//# push -all
 #ifdef CHIP_FAMILY_STM32F0
+//# +f0
 #define STM32_DBGMCU_BASE           0x40015800
+//# -f0
 #else
+//# pop push -f0
 #define STM32_DBGMCU_BASE           0xE0042000
+//# -all
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_DMA1_BASE             0x40026000
+//# -l
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4)
+//# +f0 +f3 +l4
 #define STM32_DMA1_BASE             0x40020000
 #define STM32_DMA2_BASE             0x40020400
+//# -f0 -f3 -l4
 #elif defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_DMA1_BASE             0x40026000
 #define STM32_DMA2_BASE             0x40026400
+//# -f4
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_EXTI_BASE             0x40013C00
+//# -f4
 #else
+//# pop push -f4
 #define STM32_EXTI_BASE             0x40010400
+//# -all
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F4)
+//# +l +f4
 #define STM32_FLASH_REGS_BASE       0x40023c00
+//# -all
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4)
+//# +f0 +f3 +l4
 #define STM32_FLASH_REGS_BASE       0x40022000
+//# -all
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_GPIOA_BASE            0x40020000
 #define STM32_GPIOB_BASE            0x40020400
 #define STM32_GPIOC_BASE            0x40020800
@@ -270,7 +339,9 @@
 #define STM32_GPIOF_BASE            0x40021800 /* see RM0038 table 5 */
 #define STM32_GPIOG_BASE            0x40021C00
 #define STM32_GPIOH_BASE            0x40021400
+//# -l
 #elif defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_GPIOA_BASE            0x40020000
 #define STM32_GPIOB_BASE            0x40020400
 #define STM32_GPIOC_BASE            0x40020800
@@ -279,8 +350,10 @@
 #define STM32_GPIOF_BASE            0x40021400 /* see RM0402/0390 table 1 */
 #define STM32_GPIOG_BASE            0x40021800
 #define STM32_GPIOH_BASE            0x40021C00
+//# -f4
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4)
+//# +f0 +f3 +l4
 #define STM32_GPIOA_BASE            0x48000000
 #define STM32_GPIOB_BASE            0x48000400
 #define STM32_GPIOC_BASE            0x48000800
@@ -289,7 +362,9 @@
 #define STM32_GPIOF_BASE            0x48001400
 #define STM32_GPIOG_BASE            0x48001800 /* only for stm32l4x6 */
 #define STM32_GPIOH_BASE            0x48001C00 /* only for stm32l4 */
+//# -all
 #endif
+//# pop
 
 #define STM32_I2C1_BASE             0x40005400
 #define STM32_I2C2_BASE             0x40005800
@@ -299,26 +374,42 @@
 #define STM32_IWDG_BASE             0x40003000
 #define STM32_LCD_BASE              0x40002400
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_OPTB_BASE             0x1ff80000
+//# -l
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+//# +f0 +f3
 #define STM32_OPTB_BASE             0x1FFFF800
+//# -f0 -f3
 #elif defined(CHIP_FAMILY_STM32L4)
+//# +l4
 #define STM32_OPTB_BASE             0x1FFF7800
+//# -l4
 #elif defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_OPTB_BASE             0x1FFFC000
 #define STM32_OTP_BASE              0x1FFF7800
+//# -f4
 #endif
+//# pop
 
 #define STM32_PMSE_BASE             0x40013400
 #define STM32_PWR_BASE              0x40007000
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F4)
+//# +l +f4
 #define STM32_RCC_BASE              0x40023800
+//# -all
 #elif defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F0) || \
 	defined(CHIP_FAMILY_STM32F3)
+//# +l4 +f0 +f3
 #define STM32_RCC_BASE              0x40021000
+//# -all
 #endif
+//# pop
 
 #define STM32_RI_BASE               0x40007C00 /* STM32L1xx only */
 #define STM32_RNG_BASE              0x50060800 /* STM32L4 */
@@ -328,11 +419,17 @@
 #define STM32_SPI2_BASE             0x40003800
 #define STM32_SPI3_BASE             0x40003c00 /* STM32F373, STM32L4, STM32F7 */
 
+//# push -all
 #ifdef CHIP_FAMILY_STM32F4
+//# +f4
 #define STM32_SYSCFG_BASE           0x40013800
+//# -f4
 #else
+//# pop push -f4
 #define STM32_SYSCFG_BASE           0x40010000
+//# -all
 #endif
+//# pop
 
 #define STM32_TIM1_BASE             0x40012c00 /* STM32F373 */
 #define STM32_TIM2_BASE             0x40000000
@@ -341,15 +438,21 @@
 #define STM32_TIM5_BASE             0x40000c00 /* STM32F373 */
 #define STM32_TIM6_BASE             0x40001000
 #define STM32_TIM7_BASE             0x40001400
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_TIM9_BASE             0x40010800 /* STM32L15X only */
 #define STM32_TIM10_BASE            0x40010C00 /* STM32L15X only */
 #define STM32_TIM11_BASE            0x40011000 /* STM32L15X only */
+//# -l
 #elif defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_TIM9_BASE             0x40014000 /* STM32F41x only */
 #define STM32_TIM10_BASE            0x40014400 /* STM32F41x only */
 #define STM32_TIM11_BASE            0x40014800 /* STM32F41x only */
+//# -f4
 #endif /* TIM9-11 */
+//# pop
 #define STM32_TIM12_BASE            0x40001800 /* STM32F373 */
 #define STM32_TIM13_BASE            0x40001c00 /* STM32F373 */
 #define STM32_TIM14_BASE            0x40002000 /* STM32F373 */
@@ -359,33 +462,47 @@
 #define STM32_TIM18_BASE            0x40009c00 /* STM32F373 only */
 #define STM32_TIM19_BASE            0x40015c00 /* STM32F373 only */
 
+//# push -all
 #ifdef CHIP_FAMILY_STM32F4
+//# +f4
 #define STM32_UNIQUE_ID_BASE        0x1fff7a10
+//# -f4
 #else
+//# pop push -f4
 #define STM32_UNIQUE_ID_BASE        0x1ffff7ac
+//# -all
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_USART1_BASE           0x40011000
 #define STM32_USART2_BASE           0x40004400
 #define STM32_USART3_BASE           0x40004800
 #define STM32_USART4_BASE           0x40004c00
 #define STM32_USART5_BASE           0x40005000
 #define STM32_USART6_BASE           0x40011400
+//# -f4
 #else
+//# pop push -f4
 #define STM32_USART1_BASE           0x40013800
 #define STM32_USART2_BASE           0x40004400
 #define STM32_USART3_BASE           0x40004800
 #define STM32_USART4_BASE           0x40004c00
 #define STM32_USART9_BASE           0x40008000 /* LPUART */
+//# -all
 #endif
+//# pop
 
 #define STM32_USB_CAN_SRAM_BASE     0x40006000
 #define STM32_USB_FS_BASE           0x40005C00
 
 #define STM32_WWDG_BASE             0x40002C00
 
+//# -all
 #else  /* CHIP_FAMILY_STM32H7 */
+//# +h7
 
 #define STM32_GPV_BASE              0x51000000
 
@@ -461,20 +578,26 @@
 #define STM32_USART6_BASE           0x40011400
 #define STM32_USART7_BASE           0x40007800
 #define STM32_USART8_BASE           0x40007C00
-
+//#  -all
 #endif /* CHIP_FAMILY_STM32H7 */
+//# pop
+//# push +com
 
 #ifndef __ASSEMBLER__
 
 /* Register definitions */
 
 /* --- USART --- */
+//# -all +com
 #define STM32_USART_BASE(n)           CONCAT3(STM32_USART, n, _BASE)
 #define STM32_USART_REG(base, offset) REG32((base) + (offset))
 
+//# pop
+//# push -all +f4
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_VARIANT_STM32F76X) || \
 	defined(CHIP_FAMILY_STM32H7)
+//# +f0 +f3 +l4 +h7
 #define STM32_USART_CR1(base)      STM32_USART_REG(base, 0x00)
 #define STM32_USART_CR1_UE		BIT(0)
 #define STM32_USART_CR1_UESM            BIT(1)
@@ -514,8 +637,10 @@
 #define STM32_USART_SR_RXNE		BIT(5)
 #define STM32_USART_SR_TC		BIT(6)
 #define STM32_USART_SR_TXE		BIT(7)
+//# -all +f4
 #else
 /* !CHIP_FAMILY_STM32F0 && !CHIP_FAMILY_STM32F3 && !CHIP_FAMILY_STM32L4 */
+//# pop push -f0 -f3 -l4 -h7 +f4
 #define STM32_USART_SR(base)       STM32_USART_REG(base, 0x00)
 #define STM32_USART_SR_ORE		BIT(3)
 #define STM32_USART_SR_RXNE		BIT(5)
@@ -544,9 +669,12 @@
 /* register aliases */
 #define STM32_USART_TDR(base)      STM32_USART_DR(base)
 #define STM32_USART_RDR(base)      STM32_USART_DR(base)
+//# -all +f4
 #endif
 /* !CHIP_FAMILY_STM32F0 && !CHIP_FAMILY_STM32F3 && !CHIP_FAMILY_STM32L4 */
+//# pop
 
+//# push -all +com
 #define STM32_IRQ_USART(n)         CONCAT2(STM32_IRQ_USART, n)
 
 /* --- TIMERS --- */
@@ -658,8 +786,11 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_LPTIM_CNT(n)           STM32_LPTIM_REG(n, 0x1C)
 #define STM32_LPTIM_CFGR2(n)         STM32_LPTIM_REG(n, 0x24)
 
+//# pop
+//# push +com
 /* --- GPIO --- */
 
+//# -all +com
 #define GPIO_A                       STM32_GPIOA_BASE
 #define GPIO_B                       STM32_GPIOB_BASE
 #define GPIO_C                       STM32_GPIOC_BASE
@@ -674,8 +805,11 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #define DUMMY_GPIO_BANK GPIO_A
 
+//# pop
+//# push -all
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F4) || \
 	defined(CHIP_FAMILY_STM32H7)
+//# +l +f4 +h7
 
 #define STM32_GPIO_MODER(b)     REG32((b) + 0x00)
 #define STM32_GPIO_OTYPER(b)    REG16((b) + 0x04)
@@ -701,10 +835,10 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define GPIO_ALT_LCD                 0xB
 #define GPIO_ALT_RI                  0xE
 #define GPIO_ALT_EVENTOUT            0xF
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4)
-
+//# +f0 +f3 +l4
 #define STM32_GPIO_MODER(b)     REG32((b) + 0x00)
 #define STM32_GPIO_OTYPER(b)    REG16((b) + 0x04)
 #define STM32_GPIO_OSPEEDR(b)   REG32((b) + 0x08)
@@ -734,11 +868,15 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define GPIO_ALT_FD		0xD
 #define GPIO_ALT_FE		0xE
 #define GPIO_ALT_FF		0xF
+//# -all
 #else
 #error Unsupported chip variant
 #endif
+//# pop
+//# push +com
 
 /* --- I2C --- */
+//# -all +com
 #define STM32_I2C1_PORT             0
 #define STM32_I2C2_PORT             1
 #define STM32_I2C3_PORT             2
@@ -746,9 +884,11 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 
 #define stm32_i2c_reg(port, offset) \
 	((uint16_t *)((STM32_I2C1_BASE + ((port) * 0x400)) + (offset)))
-
+//# pop
+//# push -all
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) \
 	|| defined(CHIP_FAMILY_STM32L4)
+//# +f0 +f3 +l4
 #define STM32_I2C_CR1(n)            REG32(stm32_i2c_reg(n, 0x00))
 #define STM32_I2C_CR1_PE            BIT(0)
 #define STM32_I2C_CR1_TXIE          BIT(1)
@@ -799,7 +939,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_I2C_PECR(n)           REG32(stm32_i2c_reg(n, 0x20))
 #define STM32_I2C_RXDR(n)           REG32(stm32_i2c_reg(n, 0x24))
 #define STM32_I2C_TXDR(n)           REG32(stm32_i2c_reg(n, 0x28))
+//# -all
 #else /* !CHIP_FAMILY_STM32F0 && !CHIP_FAMILY_STM32F3 */
+//# pop push -f0 -f3 -l4
 #define STM32_I2C_CR1(n)            REG16(stm32_i2c_reg(n, 0x00))
 #define STM32_I2C_CR1_PE	BIT(0)
 #define STM32_I2C_CR1_START	BIT(8)
@@ -838,12 +980,14 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_I2C_CCR_DUTY	BIT(14)
 #define STM32_I2C_CCR_FM	BIT(15)
 #define STM32_I2C_TRISE(n)          REG16(stm32_i2c_reg(n, 0x20))
+//# -all
 /* !CHIP_FAMILY_STM32F0 && !CHIP_FAMILY_STM32F3 && !CHIP_FAMILY_STM32L4 */
 #endif
+//# pop
 
-
-
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_FMPI2C_CR1(n)        REG32(stm32_i2c_reg(n, 0x00))
 #define  FMPI2C_CR1_PE             BIT(0)
 #define  FMPI2C_CR1_TXDMAEN        BIT(14)
@@ -887,9 +1031,13 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_FMPI2C_PECR(n)       REG32(stm32_i2c_reg(n, 0x20))
 #define STM32_FMPI2C_RXDR(n)       REG32(stm32_i2c_reg(n, 0x24))
 #define STM32_FMPI2C_TXDR(n)       REG32(stm32_i2c_reg(n, 0x28))
+//# -all
 #endif
+//# pop
 
+//# push +com
 /* --- Power / Reset / Clocks --- */
+//# -all +com
 #define STM32_PWR_CR                REG32(STM32_PWR_BASE + 0x00)
 #define STM32_PWR_CR_LPSDSR		(1 << 0)
 #define STM32_PWR_CR_FLPS		(1 << 9)
@@ -898,12 +1046,18 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_CR_SVOS3		(3 << 14)
 #define STM32_PWR_CR_SVOS_MASK		(3 << 14)
 
+//# pop push -all
 #if defined(CHIP_FAMILY_STM32L4)
+//# +l4
 #define STM32_PWR_CR2               REG32(STM32_PWR_BASE + 0x04)
 #define STM32_PWR_CSR               REG32(STM32_PWR_BASE + 0x10)
+//# -all
 #else
+//# pop push -l4
 #define STM32_PWR_CSR               REG32(STM32_PWR_BASE + 0x04)
+//# push -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 #define STM32_PWR_CR2               REG32(STM32_PWR_BASE + 0x08)
 #define STM32_PWR_CR3               REG32(STM32_PWR_BASE + 0x0C)
 #define STM32_PWR_CR3_BYPASS        BIT(0)
@@ -933,9 +1087,16 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_WKUPCR            REG32(STM32_PWR_BASE + 0x20)
 #define STM32_PWR_WKUPFR            REG32(STM32_PWR_BASE + 0x24)
 #define STM32_PWR_WKUPEPR           REG32(STM32_PWR_BASE + 0x28)
+//# -all
 #endif /* CHIP_FAMILY_STM32H7 */
+//# pop
+//# -all
 #endif
+//# pop
+
+//# push -all
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+//# +f0 +f3
 #define STM32_PWR_CSR_EWUP1         BIT(8)
 #define STM32_PWR_CSR_EWUP2         BIT(9)
 #define STM32_PWR_CSR_EWUP3         BIT(10)
@@ -944,9 +1105,13 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_CSR_EWUP6         BIT(13) /* STM32F0xx only */
 #define STM32_PWR_CSR_EWUP7         BIT(14) /* STM32F0xx only */
 #define STM32_PWR_CSR_EWUP8         BIT(15) /* STM32F0xx only */
+//# -all
 #endif
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_RCC_CR                REG32(STM32_RCC_BASE + 0x00)
 #define STM32_RCC_CR_HSION		BIT(0)
 #define STM32_RCC_CR_HSIRDY		BIT(1)
@@ -995,8 +1160,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_SYSCFG_MEMRMP         REG32(STM32_SYSCFG_BASE + 0x00)
 #define STM32_SYSCFG_PMC            REG32(STM32_SYSCFG_BASE + 0x04)
 #define STM32_SYSCFG_EXTICR(n)      REG32(STM32_SYSCFG_BASE + 8 + 4 * (n))
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32L4)
+//# +l4
 #define STM32_RCC_CR			REG32(STM32_RCC_BASE + 0x00)
 #define STM32_RCC_CR_MSION		BIT(0)
 #define STM32_RCC_CR_MSIRDY		BIT(1)
@@ -1151,8 +1317,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_PB2_TIM8		BIT(13)
 
 #define STM32_SYSCFG_EXTICR(n)		REG32(STM32_SYSCFG_BASE + 8 + 4 * (n))
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+//# +f0 +f3
 #define STM32_CRS_CR                REG32(STM32_CRS_BASE + 0x00) /* STM32F0XX */
 #define STM32_CRS_CR_SYNCOKIE           BIT(0)
 #define STM32_CRS_CR_SYNCWARNIE         BIT(1)
@@ -1231,8 +1398,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_SYSCFG_CFGR1          REG32(STM32_SYSCFG_BASE + 0x00)
 #define STM32_SYSCFG_EXTICR(n)      REG32(STM32_SYSCFG_BASE + 8 + 4 * (n))
 #define STM32_SYSCFG_CFGR2          REG32(STM32_SYSCFG_BASE + 0x18)
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_RCC_CR                    REG32(STM32_RCC_BASE + 0x00)
 #define STM32_RCC_CR_HSION		BIT(0)
 #define STM32_RCC_CR_HSIRDY		BIT(1)
@@ -1425,8 +1593,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_SYSCFG_EXTICR(n)          REG32(STM32_SYSCFG_BASE + 8 + 4 * (n))
 #define STM32_SYSCFG_CMPCR              REG32(STM32_SYSCFG_BASE + 0x20)
 #define STM32_SYSCFG_CFGR               REG32(STM32_SYSCFG_BASE + 0x2C)
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32H7)
+//# +h7
 #define STM32_RCC_CR                REG32(STM32_RCC_BASE + 0x000)
 #define STM32_RCC_ICSCR             REG32(STM32_RCC_BASE + 0x004)
 #define STM32_RCC_CRRCR             REG32(STM32_RCC_BASE + 0x008)
@@ -1604,11 +1773,13 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_HB1_DMA2		BIT(1)
 #define STM32_RCC_HB3_MDMA		BIT(0)
 #define STM32_RCC_HB4_BDMA		BIT(21)
-
+//# -all
 #else
 #error Unsupported chip variant
 #endif
+//# pop
 
+//# push -all +com
 /* RTC domain control register */
 #define STM32_RCC_BDCR_BDRST		BIT(16)
 #define STM32_RCC_BDCR_RTCEN		BIT(15)
@@ -1619,8 +1790,11 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define  BDCR_SRC_LSE			0x1
 #define  BDCR_SRC_LSI			0x2
 #define  BDCR_SRC_HSE			0x3
+//# pop
 
+//# push +com
 /* Peripheral bits for RCC_APB/AHB and DBGMCU regs */
+//# -all +com
 #define STM32_RCC_PB1_TIM2		BIT(0)
 #define STM32_RCC_PB1_TIM3		BIT(1)
 #define STM32_RCC_PB1_TIM4		BIT(2)
@@ -1640,14 +1814,23 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_PB1_USART4		BIT(19)
 #define STM32_RCC_PB1_USART5		BIT(20)
 #define STM32_RCC_PB2_SPI1		BIT(12)
+//# -all
 #if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
+//# +f4 +h7
 #define STM32_RCC_PB2_USART1		BIT(4)
+//# -all
 #else
+//# pop push -f4 -h7
 #define STM32_RCC_PB2_USART1		BIT(14)
+//# -all
 #endif
+//# pop
 
+//# push +com
 /* Reset causes definitions */
+//# -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 #define STM32_RCC_RESET_CAUSE STM32_RCC_RSR
 #define  RESET_CAUSE_WDG                0x14000000
 #define  RESET_CAUSE_SFT                0x01000000
@@ -1660,8 +1843,9 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_RESET_CAUSE_CLR STM32_PWR_CPUCR
 #define  RESET_CAUSE_SBF                0x00000040
 #define  RESET_CAUSE_SBF_CLR            0x00000200
-
+//# -all
 #else  /* !CHIP_FAMILY_STM32H7 */
+//# pop push -h7
 /* Reset causes in RCC CSR register */
 #define STM32_RCC_RESET_CAUSE STM32_RCC_CSR
 #define  RESET_CAUSE_WDG                0x60000000
@@ -1675,9 +1859,13 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_RESET_CAUSE_CLR STM32_PWR_CR
 #define  RESET_CAUSE_SBF                0x00000002
 #define  RESET_CAUSE_SBF_CLR            0x00000004
+//# -all
 #endif /* !CHIP_FAMILY_STM32H7 */
+//# pop
+//# push +com
 
 /* --- Watchdogs --- */
+//# -all +com
 
 #define STM32_WWDG_CR               REG32(STM32_WWDG_BASE + 0x00)
 #define STM32_WWDG_CFR              REG32(STM32_WWDG_BASE + 0x04)
@@ -1698,12 +1886,15 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_IWDG_SR_RVU		BIT(1)
 #define STM32_IWDG_SR_PVU		BIT(0)
 #define STM32_IWDG_WINR             REG32(STM32_IWDG_BASE + 0x10)
+//# pop
+//# push +com
 
 /* --- Real-Time Clock --- */
-
+//# -all
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F0) || \
 	defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32L4) || \
 	defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
+//# +l +f0 +f3 +l4 +f4 +h7
 #define STM32_RTC_TR                REG32(STM32_RTC_BASE + 0x00)
 #define STM32_RTC_DR                REG32(STM32_RTC_BASE + 0x04)
 #define STM32_RTC_CR                REG32(STM32_RTC_BASE + 0x08)
@@ -1732,25 +1923,39 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RTC_BACKUP(n)         REG32(STM32_RTC_BASE + 0x50 + 4 * (n))
 
 #define STM32_BKP_DATA(n)           STM32_RTC_BACKUP(n)
+//# push -all
 #if defined(CHIP_FAMILY_STM32H7) || defined(CHIP_FAMILY_STM32L4)
+//# +h7 +l4
 #define STM32_BKP_BYTES             128
+//# -all
 #elif defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32L)
+//# +f4 +l
 #define STM32_BKP_BYTES             80
+//# -all
 #elif defined(CHIP_FAMILY_STM32F3)
+//# +f3
 #define STM32_BKP_BYTES             64
+//# -all
 #else
+//# pop push -h7 -l4 -f4 -l -f3
 #define STM32_BKP_BYTES             20
+//# -all
 #endif
+//# pop
+//# -all
 
 #else
 #error Unsupported chip variant
 #endif
+//# pop
 
 /* --- SPI --- */
 
 /* The SPI controller registers */
 struct stm32_spi_regs {
+//# push -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 	uint32_t cr1;
 	uint32_t cr2;
 	uint32_t cfg1;
@@ -1767,7 +1972,9 @@ struct stm32_spi_regs {
 	uint32_t rxcrcr;
 	uint32_t txcrcr;
 	uint32_t udrdr;
+//# -all
 #else  /* !CHIP_FAMILY_STM32H7 */
+//# pop push -h7
 	uint16_t cr1;
 	uint16_t _pad0;
 	uint16_t cr2;
@@ -1781,7 +1988,9 @@ struct stm32_spi_regs {
 	unsigned txcrcr;
 	unsigned i2scfgr;	/* STM32L only */
 	unsigned i2spr;		/* STM32L only */
+//# -all
 #endif /* !CHIP_FAMILY_STM32H7 */
+//# pop print
 };
 /* Must be volatile, or compiler optimizes out repeated accesses */
 typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
@@ -1791,7 +2000,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_SPI3_REGS ((stm32_spi_regs_t *)STM32_SPI3_BASE)
 #define STM32_SPI4_REGS ((stm32_spi_regs_t *)STM32_SPI4_BASE)
 
+//# push -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 #define STM32_SPI_CR1_SPE		BIT(0)
 #define STM32_SPI_CR1_CSTART		BIT(9)
 #define STM32_SPI_CR1_SSI		BIT(12)
@@ -1815,7 +2026,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_SPI_SR_UDR		BIT(5)
 #define STM32_SPI_SR_FRLVL		(3 << 13)
 #define STM32_SPI_SR_TXC		BIT(12)
+//# -all
 #else  /* !CHIP_FAMILY_STM32H7 */
+//# pop push -h7
 #define STM32_SPI_CR1_BIDIMODE		BIT(15)
 #define STM32_SPI_CR1_BIDIOE		BIT(14)
 #define STM32_SPI_CR1_CRCEN		BIT(13)
@@ -1843,16 +2056,22 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_SPI_SR_BSY		BIT(7)
 #define STM32_SPI_SR_FRLVL		(3 << 9)
 #define STM32_SPI_SR_FTLVL		(3 << 11)
+//# -all
 #endif /* !CHIP_FAMILY_STM32H7 */
-
+//# pop
+//# push +com
 /* --- Debug --- */
-
+//# -all +com
 #define STM32_DBGMCU_IDCODE         REG32(STM32_DBGMCU_BASE + 0x00)
 #define STM32_DBGMCU_CR             REG32(STM32_DBGMCU_BASE + 0x04)
+//# -all
 #ifndef CHIP_FAMILY_STM32H7
+//# pop push -h7
 #define STM32_DBGMCU_APB1FZ         REG32(STM32_DBGMCU_BASE + 0x08)
 #define STM32_DBGMCU_APB2FZ         REG32(STM32_DBGMCU_BASE + 0x0C)
+//# -all
 #else  /* CHIP_FAMILY_STM32H7 */
+//# +h7
 #define STM32_DBGMCU_APB3FZ         REG32(STM32_DBGMCU_BASE + 0x34)
 #define STM32_DBGMCU_APB1LFZ        REG32(STM32_DBGMCU_BASE + 0x3C)
 #define STM32_DBGMCU_APB1HFZ        REG32(STM32_DBGMCU_BASE + 0x44)
@@ -1860,11 +2079,14 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_DBGMCU_APB4FZ         REG32(STM32_DBGMCU_BASE + 0x54)
 /* Alias */
 #define STM32_DBGMCU_APB1FZ         STM32_DBGMCU_APB1LFZ
+//# -all
 #endif /* CHIP_FAMILY_STM32H7 */
+//# pop
 
 /* --- Flash --- */
-
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_FLASH_ACR             REG32(STM32_FLASH_REGS_BASE + 0x00)
 #define STM32_FLASH_ACR_LATENCY		BIT(0)
 #define STM32_FLASH_ACR_PRFTEN		BIT(1)
@@ -1899,8 +2121,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_OPTB_WRP2H                0x14
 #define STM32_OPTB_WRP3L                0x18
 #define STM32_OPTB_WRP3H                0x1c
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+//# +f0 +f3
 #define STM32_FLASH_ACR             REG32(STM32_FLASH_REGS_BASE + 0x00)
 #define STM32_FLASH_ACR_LATENCY_SHIFT (0)
 #define STM32_FLASH_ACR_LATENCY_MASK  (7 << STM32_FLASH_ACR_LATENCY_SHIFT)
@@ -1942,8 +2165,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_OPTB_WRP23                0x0c
 
 #define STM32_OPTB_COMPL_SHIFT      8
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32L4)
+//# +l4
 #define STM32_FLASH_ACR             REG32(STM32_FLASH_REGS_BASE + 0x00)
 #define STM32_FLASH_ACR_LATENCY_SHIFT (0)
 #define STM32_FLASH_ACR_LATENCY_MASK  (7 << STM32_FLASH_ACR_LATENCY_SHIFT)
@@ -1987,8 +2211,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_OPTB_USER_RDP         REG32(STM32_OPTB_BASE + 0x00)
 #define STM32_OPTB_WRP1AR           REG32(STM32_OPTB_BASE + 0x18)
 #define STM32_OPTB_WRP1BR           REG32(STM32_OPTB_BASE + 0x20)
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32F4)
+//# +f4
 #define STM32_FLASH_ACR             REG32(STM32_FLASH_REGS_BASE + 0x00)
 #define STM32_FLASH_ACR_SHIFT           0
 #define STM32_FLASH_ACR_LAT_MASK        0xf
@@ -2060,8 +2285,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_OTP_LOCK(_block) \
 	(STM32_OTP_LOCK_BASE + ((_block) / 4) * 4)
 #define STM32_OPT_LOCK_MASK(_block)    ((0xFF << ((_block) % 4) * 8))
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32H7)
+//# +h7
 #define STM32_FLASH_REG(bank, offset)     REG32(((bank) ? 0x100 : 0) + \
 					  STM32_FLASH_REGS_BASE + (offset))
 
@@ -2142,20 +2368,25 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_FLASH_CRC_EADDR(bank)       STM32_FLASH_REG(bank, 0x58)
 #define STM32_FLASH_CRC_DATA(bank)        STM32_FLASH_REG(bank, 0x5C)
 #define STM32_FLASH_ECC_FA(bank)          STM32_FLASH_REG(bank, 0x60)
-
+//# -all
 #else
 #error Unsupported chip variant
 #endif
+//# pop
 
 /* --- External Interrupts --- */
+//# push -all
 #ifndef CHIP_FAMILY_STM32H7
+//# pop push -h7
 #define STM32_EXTI_IMR              REG32(STM32_EXTI_BASE + 0x00)
 #define STM32_EXTI_EMR              REG32(STM32_EXTI_BASE + 0x04)
 #define STM32_EXTI_RTSR             REG32(STM32_EXTI_BASE + 0x08)
 #define STM32_EXTI_FTSR             REG32(STM32_EXTI_BASE + 0x0c)
 #define STM32_EXTI_SWIER            REG32(STM32_EXTI_BASE + 0x10)
 #define STM32_EXTI_PR               REG32(STM32_EXTI_BASE + 0x14)
+//# -all
 #else  /* CHIP_FAMILY_STM32H7 */
+//# +h7
 #define STM32_EXTI_RTSR1            REG32(STM32_EXTI_BASE + 0x00)
 #define STM32_EXTI_FTSR1            REG32(STM32_EXTI_BASE + 0x04)
 #define STM32_EXTI_SWIER1           REG32(STM32_EXTI_BASE + 0x08)
@@ -2190,15 +2421,23 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_EXTI_FTSR             STM32_EXTI_FTSR1
 #define STM32_EXTI_SWIER            STM32_EXTI_SWIER1
 #define STM32_EXTI_PR               STM32_EXTI_CPUPR1
+//# -all
 #endif /* CHIP_FAMILY_STM32H7 */
+//# pop
 
+//# push -all
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32F4)
+//# +f0 +f3 +f4
 #define EXTI_RTC_ALR_EVENT BIT(17)
+//# -all
 #endif
+//# pop
 
 /* --- ADC --- */
+//# push -all +f3
 #if defined(CHIP_VARIANT_STM32F373) || defined(CHIP_FAMILY_STM32F4)
+//# +f3 +f4
 #define STM32_ADC_SR               REG32(STM32_ADC1_BASE + 0x00)
 #define STM32_ADC_CR1              REG32(STM32_ADC1_BASE + 0x04)
 #define STM32_ADC_CR2              REG32(STM32_ADC1_BASE + 0x08)
@@ -2220,7 +2459,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_ADC_JSQR             REG32(STM32_ADC1_BASE + 0x38)
 #define STM32_ADC_JDR(n)           REG32(STM32_ADC1_BASE + 0x3C + ((n)&3) * 4)
 #define STM32_ADC_DR               REG32(STM32_ADC1_BASE + 0x4C)
+//# -all
 #elif defined(CHIP_FAMILY_STM32F0)
+//# +f0
 #define STM32_ADC_ISR              REG32(STM32_ADC1_BASE + 0x00)
 #define STM32_ADC_ISR_ADRDY        BIT(0)
 #define STM32_ADC_IER              REG32(STM32_ADC1_BASE + 0x04)
@@ -2272,7 +2513,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_ADC_CHSELR           REG32(STM32_ADC1_BASE + 0x28)
 #define STM32_ADC_DR               REG32(STM32_ADC1_BASE + 0x40)
 #define STM32_ADC_CCR              REG32(STM32_ADC1_BASE + 0x308)
+//# -all
 #elif defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_ADC_SR               REG32(STM32_ADC1_BASE + 0x00)
 #define STM32_ADC_CR1              REG32(STM32_ADC1_BASE + 0x04)
 #define STM32_ADC_CR2              REG32(STM32_ADC1_BASE + 0x08)
@@ -2301,10 +2544,14 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_ADC_SMPR0            REG32(STM32_ADC1_BASE + 0x5C)
 
 #define STM32_ADC_CCR              REG32(STM32_ADC_BASE + 0x04)
+//# -all +f3
 #endif
+//# pop
 
 /* --- Comparators --- */
+//# push -all
 #if defined(CHIP_FAMILY_STM32L)
+//# +l
 #define STM32_COMP_CSR              REG32(STM32_COMP_BASE + 0x00)
 
 #define STM32_COMP_OUTSEL_TIM2_IC4  (0 << 21)
@@ -2337,8 +2584,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_COMP_10KPD            BIT(2)
 #define STM32_COMP_400KPU           BIT(1)
 #define STM32_COMP_10KPU            BIT(0)
-
+//# -all
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3)
+//# +f0 +f3
 #define STM32_COMP_CSR              REG32(STM32_COMP_BASE + 0x1C)
 
 #define STM32_COMP_CMP2LOCK            BIT(31)
@@ -2353,15 +2601,19 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_COMP_CMP2OUTSEL_TIM3_IC1 (6 << 24)
 #define STM32_COMP_CMP2OUTSEL_TIM2_OCR (5 << 24)
 #define STM32_COMP_CMP2OUTSEL_TIM2_IC4 (4 << 24)
+//# -f0
 #ifdef CHIP_VARIANT_STM32F373
 #define STM32_COMP_CMP2OUTSEL_TIM4_OCR (3 << 24)
 #define STM32_COMP_CMP2OUTSEL_TIM4_IC1 (2 << 24)
 #define STM32_COMP_CMP2OUTSEL_TIM16_BRK (1 << 24)
 #else
+//# +f0
 #define STM32_COMP_CMP2OUTSEL_TIM1_OCR (3 << 24)
 #define STM32_COMP_CMP2OUTSEL_TIM1_IC1 (2 << 24)
 #define STM32_COMP_CMP2OUTSEL_TIM1_BRK (1 << 24)
+//# -f0
 #endif
+//# +f0
 #define STM32_COMP_CMP2OUTSEL_NONE     (0 << 24)
 #define STM32_COMP_WNDWEN              BIT(23)
 
@@ -2389,6 +2641,7 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_COMP_CMP1HYST_NO         (0 << 12)
 #define STM32_COMP_CMP1POL             BIT(11)
 
+//# -f0
 #ifdef CHIP_VARIANT_STM32F373
 #define STM32_COMP_CMP1OUTSEL_TIM5_OCR (7 << 8)
 #define STM32_COMP_CMP1OUTSEL_TIM5_IC4 (6 << 8)
@@ -2398,6 +2651,7 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_COMP_CMP1OUTSEL_TIM3_IC1 (2 << 8)
 #define STM32_COMP_CMP1OUTSEL_TIM15_BRK (1 << 8)
 #else
+//# +f0
 #define STM32_COMP_CMP1OUTSEL_TIM3_OCR (7 << 8)
 #define STM32_COMP_CMP1OUTSEL_TIM3_IC1 (6 << 8)
 #define STM32_COMP_CMP1OUTSEL_TIM2_OCR (5 << 8)
@@ -2405,7 +2659,9 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_COMP_CMP1OUTSEL_TIM1_OCR (3 << 8)
 #define STM32_COMP_CMP1OUTSEL_TIM1_IC1 (2 << 8)
 #define STM32_COMP_CMP1OUTSEL_TIM1_BRK (1 << 8)
+//# -f0
 #endif
+//# +f0
 #define STM32_COMP_CMP1OUTSEL_NONE     (0 << 8)
 
 #define STM32_COMP_CMP1INSEL_MASK      (7 << 4)
@@ -2424,7 +2680,11 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_COMP_CMP1MODE_HSPEED     (0 << 2)
 #define STM32_COMP_CMP1SW1             BIT(1)
 #define STM32_COMP_CMP1EN              BIT(0)
+//# -all
 #endif
+//# pop
+
+//# push -all +com
 /* --- Routing interface --- */
 /* STM32L1xx only */
 #define STM32_RI_ICR                REG32(STM32_COMP_BASE + 0x04)
@@ -2487,11 +2747,12 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_DAC_CR_TEN1          BIT(2)
 #define STM32_DAC_CR_BOFF1         BIT(1)
 #define STM32_DAC_CR_EN1           BIT(0)
+//# pop
 
 /* --- DMA --- */
-
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
-
+//# +f4 +h7
 /*
  * Available DMA streams, numbered from 0.
  *
@@ -2526,6 +2787,7 @@ enum dma_channel {
 	/* Legacy naming for uart.c */
 	STM32_DMAC_USART1_TX = STM32_DMAS_USART1_TX,
 	STM32_DMAC_USART1_RX = STM32_DMAS_USART1_RX,
+//# push -all +f4
 #if defined(CHIP_VARIANT_STM32F41X) || defined(CHIP_VARIANT_STM32F76X)
 	STM32_DMAS_USART2_TX = STM32_DMA1_STREAM6,
 	STM32_DMAS_USART2_RX = STM32_DMA1_STREAM5,
@@ -2534,7 +2796,9 @@ enum dma_channel {
 	STM32_DMAC_USART2_TX = STM32_DMAS_USART2_TX,
 	STM32_DMAC_USART2_RX = STM32_DMAS_USART2_RX,
 #endif
+//# pop
 
+//# push -all +f4
 #if defined(CHIP_VARIANT_STM32F41X) || defined(CHIP_VARIANT_STM32F76X)
 	STM32_DMAC_I2C1_TX = STM32_DMA1_STREAM1,
 	STM32_DMAC_I2C1_RX = STM32_DMA1_STREAM0,
@@ -2545,6 +2809,7 @@ enum dma_channel {
 	STM32_DMAC_I2C3_TX = STM32_DMA1_STREAM4,
 	STM32_DMAC_I2C3_RX = STM32_DMA1_STREAM2,
 #else
+//# pop push +f4
 	STM32_DMAC_I2C1_TX = STM32_DMA1_STREAM6,
 	STM32_DMAC_I2C1_RX = STM32_DMA1_STREAM0,
 
@@ -2553,7 +2818,9 @@ enum dma_channel {
 
 	STM32_DMAC_I2C3_TX = STM32_DMA1_STREAM4,
 	STM32_DMAC_I2C3_RX = STM32_DMA1_STREAM1,
+//# -all +f4
 #endif
+//# pop
 
 	STM32_DMAC_FMPI2C4_TX = STM32_DMA1_STREAM5,
 	STM32_DMAC_FMPI2C4_RX = STM32_DMA1_STREAM2,
@@ -2617,7 +2884,9 @@ struct stm32_dma_regs {
 	stm32_dma_stream_t stream[STM32_DMAS_COUNT];
 };
 
-#else  /* CHIP_FAMILY_STM32F4 */
+//# -all
+#else  /* CHIP_FAMILY_STM32F4 || CHIP_FAMILY_STM32H7 */
+//# pop push -f4 -h7
 
 /*
  * Available DMA channels, numbered from 0.
@@ -2660,6 +2929,7 @@ enum dma_channel {
 	STM32_DMAC_I2C2_RX = STM32_DMAC_CH5,
 	STM32_DMAC_USART1_TX = STM32_DMAC_CH4,
 	STM32_DMAC_USART1_RX = STM32_DMAC_CH5,
+// TODO(hesling): The following sections will need some manual fixing.
 #if !defined(CHIP_VARIANT_STM32F03X) && !defined(CHIP_VARIANT_STM32F05X)
 	STM32_DMAC_USART2_RX = STM32_DMAC_CH6,
 	STM32_DMAC_USART2_TX = STM32_DMAC_CH7,
@@ -2716,16 +2986,18 @@ struct stm32_dma_regs {
 	uint32_t	ifcr;
 	stm32_dma_chan_t chan[STM32_DMAC_COUNT];
 };
-#endif /* CHIP_FAMILY_STM32F4 */
+//# -all
+#endif /* CHIP_FAMILY_STM32F4 || CHIP_FAMILY_STM32H7 */
+//# pop
 
 /* Always use stm32_dma_regs_t so volatile keyword is included! */
 typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 
 #define STM32_DMA1_REGS ((stm32_dma_regs_t *)STM32_DMA1_BASE)
 
-
-
+//# push -all
 #if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
+//# +f4 +h7
 #define STM32_DMA2_REGS ((stm32_dma_regs_t *)STM32_DMA2_BASE)
 
 #define STM32_DMA_REGS(channel) \
@@ -2758,13 +3030,19 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_DMA_CCR_CT                BIT(19)
 #define STM32_DMA_CCR_PBURST(b_len)		 ((((b_len) - 4) / 4) << 21)
 #define STM32_DMA_CCR_MBURST(b_len)		 ((((b_len) - 4) / 4) << 21)
+//# push -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 #define STM32_DMA_CCR_CHANNEL_MASK		 (0 << 25)
 #define STM32_DMA_CCR_CHANNEL(channel)		 (0)
+//# -h7
 #else  /* !CHIP_FAMILY_STM32H7 */
+//# +f4
 #define STM32_DMA_CCR_CHANNEL_MASK		 (0x7 << 25)
 #define STM32_DMA_CCR_CHANNEL(channel)		 ((channel) << 25)
+//# -f4
 #endif /* !CHIP_FAMILY_STM32H7 */
+//# pop
 #define STM32_DMA_CCR_RSVD_MASK		(0xF0100000)
 
 
@@ -2805,9 +3083,14 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_DMA_TCIF                  BIT(5)
 #define STM32_DMA_ALL                   0x3d
 
-#else /* !CHIP_FAMILY_STM32F4 */
+//# -all
+#else /* !CHIP_FAMILY_STM32F4 || CHIP_FAMILY_STM32H7 */
+//# pop push -f4 -h7
+
 #define STM32_DMA_CCR_CHANNEL(channel)		 (0)
 
+//# push -all +f3 +l4 +f0
+// TODO(hesling): The following section will need some manual fixing.
 #if defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32L4) || \
 	defined(CHIP_VARIANT_STM32F09X)
 #define STM32_DMA2_REGS ((stm32_dma_regs_t *)STM32_DMA2_BASE)
@@ -2817,8 +3100,11 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 	REG32(((channel) < STM32_DMAC_PER_CTLR ? \
 			STM32_DMA1_BASE : STM32_DMA2_BASE)  + 0xA8)
 #else
+//# pop push
 #define STM32_DMA_REGS(channel) STM32_DMA1_REGS
+//# -all +f3 +l4 +f0
 #endif
+//# pop
 
 /* Bits for DMA controller regs (isr and ifcr) */
 #define STM32_DMA_CH_OFFSET(channel)   (4 * ((channel) % STM32_DMAC_PER_CTLR))
@@ -2874,9 +3160,13 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_DMA_CCR_PL_HIGH		(2 << 12)
 #define STM32_DMA_CCR_PL_VERY_HIGH	(3 << 12)
 #define STM32_DMA_CCR_MEM2MEM		BIT(14)
-#endif /* !CHIP_FAMILY_STM32F4 */
+//# -all
+#endif /* !CHIP_FAMILY_STM32F4 && !CHIP_FAMILY_STM32H7 */
+//# pop
 
+//# push -all
 #ifdef CHIP_FAMILY_STM32H7
+//# +h7
 /* The requests for the DMA1/DMA2 controllers are routed through DMAMUX1. */
 /* DMAMUX1/2 registers */
 #define DMAMUX1 0
@@ -2989,8 +3279,11 @@ enum dmamux1_request {
 	DMAMUX1_REQ_SAI3_B = 114,
 	DMAMUX1_REQ_ADC3 = 115,
 };
+//# -all
 #endif /* CHIP_FAMILY_STM32H7 */
+//# pop
 
+//# push +com
 /* --- CRC --- */
 #define STM32_CRC_DR                REG32(STM32_CRC_BASE + 0x0)
 #define STM32_CRC_DR32              REG32(STM32_CRC_BASE + 0x0)
@@ -3132,5 +3425,7 @@ enum dmamux1_request {
 #define STM32_UNIQUE_ID_LENGTH      (3 * 4)
 
 #endif /* !__ASSEMBLER__ */
+//# pop
+//# -all +com
 
 #endif /* __CROS_EC_REGISTERS_H */
