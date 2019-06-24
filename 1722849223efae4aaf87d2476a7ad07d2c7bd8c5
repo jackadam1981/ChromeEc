@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2930e86e_1390b6ce",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-24T18:38:27Z",
+      "side": 0,
+      "message": "This comment explains why the size of \u0027buffer\u0027 is 50, which is bigger than 32.\nThis patch should remove this comment along with \u0027buffer\u0027.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 4
+      },
+      "revId": "1722849223efae4aaf87d2476a7ad07d2c7bd8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
