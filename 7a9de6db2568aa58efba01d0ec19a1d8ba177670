@@ -22,6 +22,30 @@
       "revId": "7a9de6db2568aa58efba01d0ec19a1d8ba177670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d686d917_24947e96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-24T01:46:17Z",
+      "side": 1,
+      "message": "By looking at MTK\u0027s freertos code, and with the timer trick below (CL:1672651), the error was exactly 0.1%.\n\nErin can double-confirm.",
+      "parentUuid": "dcf0508e_c2216040",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "7a9de6db2568aa58efba01d0ec19a1d8ba177670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
