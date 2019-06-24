@@ -18,7 +18,6 @@
 #include "driver/als_tcs3400.h"
 #include "driver/battery/max17055.h"
 #include "driver/bc12/pi3usb9201.h"
-#include "driver/charger/rt946x.h"
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
