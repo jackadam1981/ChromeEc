@@ -52,6 +52,7 @@
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
+	ccprints("%s %d", __func__, signal);
 	schedule_deferred_pd_interrupt(0 /* port */);
 }
 
