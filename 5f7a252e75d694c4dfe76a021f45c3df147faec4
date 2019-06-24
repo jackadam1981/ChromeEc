@@ -70,6 +70,30 @@
       "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aedc44b_c21231fe",
+        "filename": "board/helios/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-06-24T18:22:40Z",
+      "side": 1,
+      "message": "Looking closer, if we want to reuse the framework defined in \"battery_fuel_gauge.h\", I don\u0027t find an easy way to reduce code redundancy. If we don\u0027t include \"battery_fuel_gauge.h\" and define board-specific board_batt_params, we may make batt_info a pointer in batt_params and let c424 and c436 share the same batt_info. However, if we go this route, we\u0027ll also need to add code for battery-cut-off-related functions. So this way probably ends up not saving code either.\n\nAnyway, sorry for the confusion, I agree we should just land the initial patch set.",
+      "parentUuid": "2a1f786c_f86f636f",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 21
+      },
+      "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
