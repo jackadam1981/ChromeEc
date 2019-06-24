@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f85009e_52e1d8cd",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:43:08Z",
+      "side": 1,
+      "message": "Change the order of comment and declaration. Also note the 80 characters per line.\n\n        /*\n\t * There is a parasitic resistance on D+, which results in pulling D+ up too slow while detecting BC1.2.\n\t * So we try to fix this in two steps:\n\t * 1. Pull D+ up to a voltage under 0.6V\n\t * 2. re-toggling and pull D+ up to 0.6V (again)\n\t * and then detect the voltage of D-.\n\t */\n\tint rv;\n\n        rv \u003d rt946x...",
+      "range": {
+        "startLine": 957,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 4
+      },
+      "revId": "532d876c18308e7726158f0d6c80cf6fd4b6bf64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78152c4_0077f9be",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-24T08:43:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this move out of the \u0027if\u0027?",
+      "range": {
+        "startLine": 1029,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 17
+      },
+      "revId": "532d876c18308e7726158f0d6c80cf6fd4b6bf64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
