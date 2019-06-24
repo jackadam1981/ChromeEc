@@ -1,0 +1,116 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Configuration for Kukui */
+
+#ifndef __CROS_EC_BOARD_H
+#define __CROS_EC_BOARD_H
+
+#define VARIANT_KUKUI_BATTERY_SMART
+
+#include "baseboard.h"
+
+/* FIXME */
+#undef CONFIG_LED_COMMON
+
+#define CONFIG_CHARGER_ISL9238
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20 /* BOARD_RS1 */
+#define CONFIG_CHARGER_SENSE_RESISTOR 10 /* BOARD_RS2 */
+
+#define CONFIG_BC12_DETECT_PI3USB9201
+
+/* Increase tx buffer size, as we'd like to stream EC log to AP. */
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 4096
+
+/* Motion Sensors */
+#ifdef SECTION_IS_RW
+#define CONFIG_MAG_BMI160_BMM150
+#define CONFIG_ACCELGYRO_SEC_ADDR BMM150_ADDR0  /* 8-bit address */
+#define CONFIG_MAG_CALIBRATE
+#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
+#define CONFIG_ALS
+
+#define ALS_COUNT 1
+#define CONFIG_ALS_TCS3400
+#define CONFIG_ALS_TCS3400_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+#define CONFIG_ALS_TCS3400_EMULATED_IRQ_EVENT
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(CLEAR_ALS)
+
+#endif /* SECTION_IS_RW */
+
+/* I2C ports */
+#define I2C_PORT_CHARGER  0
+#define I2C_PORT_BC12     0
+#define I2C_PORT_TCPC0    1
+#define I2C_PORT_BATTERY  1
+#define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
+#define I2C_PORT_ACCEL    1
+#define I2C_PORT_LIDACCEL 1
+
+/* Enable Accel over SPI */
+#define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
+
+#define CONFIG_KEYBOARD_PROTOCOL_MKBP
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+/* Define the MKBP events which are allowed to wakeup AP in S3. */
+#define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
+		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
+		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
+
+#ifndef __ASSEMBLER__
+
+enum adc_channel {
+	/* Real ADC channels begin here */
+	ADC_BOARD_ID = 0,
+	ADC_EC_SKU_ID,
+	ADC_BATT_ID,
+	ADC_CH_COUNT
+};
+
+/* power signal definitions */
+enum power_signal {
+	AP_IN_S3_L,
+	PMIC_PWR_GOOD,
+
+	/* Number of signals */
+	POWER_SIGNAL_COUNT,
+};
+
+/* Motion sensors */
+enum sensor_id {
+	LID_ACCEL = 0,
+	LID_GYRO,
+	LID_MAG,
+	CLEAR_ALS,
+	RGB_ALS,
+	VSYNC,
+	SENSOR_COUNT,
+};
+
+enum charge_port {
+	CHARGE_PORT_USB_C,
+};
+#include "gpio_signal.h"
+#include "registers.h"
+
+#ifdef SECTION_IS_RO
+/* Interrupt handler for emmc task */
+void emmc_cmd_interrupt(enum gpio_signal signal);
+#endif
+
+void board_reset_pd_mcu(void);
+int board_get_version(void);
+int board_is_sourcing_vbus(int port);
+void pogo_adc_interrupt(enum gpio_signal signal);
+
+#endif /* !__ASSEMBLER__ */
+
+#endif /* __CROS_EC_BOARD_H */
