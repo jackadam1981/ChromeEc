@@ -5,7 +5,6 @@
 
 #include "charger.h"
 #include "console.h"
-#include "driver/charger/rt946x.h"
 #include "gpio.h"
 #include "system.h"
 #include "timer.h"
