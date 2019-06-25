@@ -63,6 +63,29 @@
       "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cd55cf_81ed0d2f",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-25T18:27:23Z",
+      "side": 1,
+      "message": "Does this part contribute to performance?\nFrom reading the code, I understand this as that if queue_count(tx_q) is at least 511, then\nit will cancel the deferred call to kicker_handler.\n\nI think it is waiting too long to have the queue_count(tx_q) threshold as 511. Why not 64?\nEven with this threshold checking, it looks like duplicated checking to line 143. Line 143 sets up the next transfer if either kicker is running or queue_count(tx_q) is at least 64.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
