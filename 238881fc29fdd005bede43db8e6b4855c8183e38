@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd324fe8_f39edc62",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-25T23:14:54Z",
+      "side": 1,
+      "message": "the second command line parameter allows to specify exact number of characters to print.",
+      "parentUuid": "43e68523_5a683437",
+      "revId": "238881fc29fdd005bede43db8e6b4855c8183e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96c3d310_576a1986",
         "filename": "util/chargen",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2019-06-25T22:13:19Z",
       "side": 1,
       "message": "Likewise, how about displaying the number of characters generated?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "238881fc29fdd005bede43db8e6b4855c8183e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcc6811_44396dac",
+        "filename": "util/chargen",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-25T23:14:54Z",
+      "side": 1,
+      "message": "the same here: command line parameter is added to specify exact number of characters to print.",
+      "parentUuid": "96c3d310_576a1986",
       "range": {
         "startLine": 36,
         "startChar": 1,
