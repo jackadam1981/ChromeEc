@@ -23,7 +23,7 @@ static int mm8013_read16(int offset, int *data)
 	int rv;
 
 	*data = 0;
-	rv = i2c_read16(I2C_PORT_BATTERY, MM8013_ADDR, offset, data);
+	rv = i2c_read16__7b(I2C_PORT_BATTERY, MM8013_ADDR__7b, offset, data);
 	usleep(I2C_WAIT_TIME);
 	if (rv)
 		return rv;
@@ -34,7 +34,7 @@ static int mm8013_read_block(int offset, uint8_t *data, int len)
 {
 	int rv;
 
-	rv = i2c_read_block(I2C_PORT_BATTERY, MM8013_ADDR, offset, data, len);
+	rv = i2c_read_block__7b(I2C_PORT_BATTERY, MM8013_ADDR__7b, offset, data, len);
 	usleep(I2C_WAIT_TIME);
 	if (rv)
 		return rv;

@@ -131,7 +131,7 @@ struct motion_sensor_t {
 	/* i2c port */
 	uint8_t port;
 	/* i2c address or SPI slave logic GPIO. */
-	uint8_t addr;
+	uint8_t addr__8b;
 
 	/*
 	 * Various flags, see MOTIONSENSE_FLAG_*

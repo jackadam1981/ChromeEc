@@ -11,10 +11,10 @@
 #include "accelgyro.h"
 #include "mag_cal.h"
 
-#define BMM150_ADDR0             0x20
-#define BMM150_ADDR1             0x22
-#define BMM150_ADDR2             0x24
-#define BMM150_ADDR3             0x26
+#define BMM150_ADDR0__8b             0x20
+#define BMM150_ADDR1__8b             0x22
+#define BMM150_ADDR2__8b             0x24
+#define BMM150_ADDR3__8b             0x26
 
 #define BMM150_CHIP_ID           0x40
 #define BMM150_CHIP_ID_MAJOR     0x32

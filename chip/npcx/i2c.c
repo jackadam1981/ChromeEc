@@ -84,7 +84,7 @@ struct i2c_status {
 	uint16_t              sz_txbuf;  /* Size of Tx buffer in bytes */
 	uint16_t              sz_rxbuf;  /* Size of rx buffer in bytes */
 	uint16_t              idx_buf;   /* Current index of Tx/Rx buffer */
-	uint8_t               slave_addr;/* Target slave address */
+	uint8_t               slave_addr__8b;/* Target slave address */
 	enum smb_oper_state_t oper_state;/* Smbus operation state */
 	enum smb_error        err_code;  /* Error code */
 	int                   task_waiting; /* Task waiting on controller */
@@ -347,7 +347,7 @@ static void i2c_handle_sda_irq(int controller)
 	/* 1 Issue Start is successful ie. write address byte */
 	if (p_status->oper_state == SMB_MASTER_START
 			|| p_status->oper_state == SMB_REPEAT_START) {
-		uint8_t addr = p_status->slave_addr;
+		uint8_t addr = p_status->slave_addr__8b;
 		/* Prepare address byte */
 		if (p_status->sz_txbuf == 0) {/* Receive mode */
 			p_status->oper_state = SMB_READ_OPER;
@@ -380,7 +380,7 @@ static void i2c_handle_sda_irq(int controller)
 				i2c_done(controller);
 			/* need to restart & send slave address immediately */
 			else {
-				uint8_t addr_byte = p_status->slave_addr;
+				uint8_t addr_byte = p_status->slave_addr__8b;
 				/*
 				 * Prepare address byte
 				 * and start to receive bytes
@@ -609,7 +609,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int chip_i2c_xfer__7b(int port, int slave_addr__7b, const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
 	volatile struct i2c_status *p_status;
@@ -637,13 +637,8 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	p_status->sz_txbuf    = out_size;
 	p_status->rx_buf      = in;
 	p_status->sz_rxbuf    = in_size;
-#if I2C_7BITS_ADDR
-	/* Set slave address from 7-bits to 8-bits */
-	p_status->slave_addr  = (slave_addr<<1);
-#else
-	/* Set slave address (8-bits) */
-	p_status->slave_addr  = slave_addr;
-#endif
+	p_status->slave_addr__8b  = slave_addr__7b << 1;
+
 	/* Reset index & error */
 	p_status->idx_buf     = 0;
 	p_status->err_code    = SMB_OK;

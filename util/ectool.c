@@ -6032,7 +6032,7 @@ int do_i2c_xfer(unsigned int port, unsigned int addr,
 
 	pdata = (uint8_t *)p + size;
 	if (write_len) {
-		msg->addr_flags = addr;
+		msg->addr_flags__7b = addr;
 		msg->len = write_len;
 
 		memcpy(pdata, write_buf, write_len);
@@ -6040,7 +6040,7 @@ int do_i2c_xfer(unsigned int port, unsigned int addr,
 	}
 
 	if (read_len) {
-		msg->addr_flags = addr | EC_I2C_FLAG_READ;
+		msg->addr_flags__7b = addr | EC_I2C_FLAG_READ;
 		msg->len = read_len;
 	}
 
@@ -6341,7 +6341,7 @@ int cmd_locate_chip(int argc, char *argv[])
 	 * (firmware_ECCbiEeprom) still passes. It may silently skip the test.
 	 */
 	printf("Bus: %s; Port: %d; Address: 0x%02x (7-bit format)\n",
-	       bus_type[r.bus_type], r.i2c_info.port, r.i2c_info.addr);
+	       bus_type[r.bus_type], r.i2c_info.port, r.i2c_info.addr__7b);
 
 	printf("reserved: 0x%x\n", r.reserved);
 
