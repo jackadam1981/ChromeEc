@@ -22,6 +22,7 @@
 
 #include "compile_time_macros.h"
 #include "usb_if.h"
+#include "usb_i2c.h"
 
 /* Default FTDI device : Servo v2. */
 #define SERVO_USB_VID 0x18d1
@@ -36,7 +37,7 @@
 #define CR50_I2C_SUBCLASS  82
 #define CR50_I2C_PROTOCOL  1
 
-#define CROS_CMD_ADDR		0x78	/* USB_I2C_CMD_ADDR 0xF0 >> 1 */
+#define CROS_CMD_ADDR__7bf		USB_I2C_CMD_ADDR__7bf
 #define CROS_CMD_ITE_SYNC	0
 
 /* DBGR I2C addresses */
@@ -827,7 +828,7 @@ static int ccd_trigger_special_waveform(struct common_hnd *chnd)
 	size_t rsize;
 	uint8_t req[] = {
 		0, /* Port 0. Might be necessary to modify. */
-		CROS_CMD_ADDR, /* Chrome OS dedicated address. */
+		CROS_CMD_ADDR__7bf, /* Chrome OS dedicated address. */
 		1,	/* Will send a single byte command. */
 		0,	/* No need to read back anything. */
 		CROS_CMD_ITE_SYNC
