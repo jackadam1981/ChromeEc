@@ -161,8 +161,9 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 	struct i2c_bus_info *bus_info = &board_config[ctx->bus];
 	uint32_t clk_in_val = clk_in[bus_freq[ctx->bus]];
 
-	/* Convert 8-bit slave addrees to 7-bit for driver expectation*/
-	slave_addr >>= 1;
+	if (!IS_ENABLED(CONFIG_I2C_7BIT_EC_SLAVE))
+		/* Convert 8-bit slave address to 7-bit */
+		slave_addr >>= 1;
 
 	/* disable interrupts */
 	i2c_intr_switch(base, DISABLE_INT);
@@ -314,8 +315,15 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	 * Address cannot be any of the reserved address locations:
 	 * 0x00 to 0x07 or 0x78 to 0x7f.
 	 */
-	if (slave_addr <= 0x0F || (slave_addr >= 0xF0 && slave_addr <= 0xFF))
-		return EC_ERROR_INVAL;
+	if (IS_ENABLED(CONFIG_I2C_7BIT_EC_SLAVE)) {
+		if (slave_addr <= 0x07 ||
+		    (slave_addr >= 0x78 && slave_addr <= 0x7F))
+			return EC_ERROR_INVAL;
+	} else {
+		if (slave_addr <= 0x0F ||
+		    (slave_addr >= 0xF0 && slave_addr <= 0xFF))
+			return EC_ERROR_INVAL;
+	}
 
 	/* assume that if both out_size and in_size are not zero,
 	 * then, it is 'repeated Start' condition. */

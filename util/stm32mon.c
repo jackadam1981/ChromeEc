@@ -472,6 +472,7 @@ int open_i2c(const int port)
 		perror("Unable to open i2c adapter");
 		return -1;
 	}
+
 	if (ioctl(fd, I2C_SLAVE, i2c_slave_address >> 1) < 0) {
 		perror("Unable to select proper address");
 		close(fd);

@@ -22,6 +22,7 @@
 
 #include "compile_time_macros.h"
 #include "usb_if.h"
+#include "usb_i2c.h"
 
 /* Default FTDI device : Servo v2. */
 #define SERVO_USB_VID 0x18d1
@@ -36,7 +37,11 @@
 #define CR50_I2C_SUBCLASS  82
 #define CR50_I2C_PROTOCOL  1
 
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define CROS_CMD_ADDR		USB_I2C_CMD_ADDR
+#else
 #define CROS_CMD_ADDR		0x78	/* USB_I2C_CMD_ADDR 0xF0 >> 1 */
+#endif
 #define CROS_CMD_ITE_SYNC	0
 
 /* DBGR I2C addresses */
