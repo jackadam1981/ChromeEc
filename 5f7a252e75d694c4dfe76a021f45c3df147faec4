@@ -118,6 +118,30 @@
       "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01eac1de_837bfbfe",
+        "filename": "board/helios/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-06-25T01:59:42Z",
+      "side": 1,
+      "message": "sure, crbug 978294 filed.",
+      "parentUuid": "a9e80096_e6226fe0",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 21
+      },
+      "revId": "5f7a252e75d694c4dfe76a021f45c3df147faec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
