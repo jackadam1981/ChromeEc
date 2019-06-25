@@ -318,9 +318,18 @@ static struct {
 	uint8_t pulse;
 } tick[2];
 
-static void config_tick(enum ec_led_id id, const struct led_pattern *pattern)
+static int config_tick(enum ec_led_id id, const struct led_pattern *pattern)
 {
-	uint32_t stride = PULSE_INTERVAL(pattern->pulse);
+	static const struct led_pattern *patterns[2];
+	uint32_t stride;
+
+	if (pattern == patterns[id])
+		/* This pattern was already set */
+		return -1;
+
+	patterns[id] = pattern;
+
+	stride = PULSE_INTERVAL(pattern->pulse);
 	if (IS_PULSING(pattern->pulse)) {
 		tick[id].interval = LED_PULSE_TICK_US;
 		tick[id].duty_inc = 100 / (stride / LED_PULSE_TICK_US);
@@ -332,6 +341,8 @@ static void config_tick(enum ec_led_id id, const struct led_pattern *pattern)
 	tick[id].duty = 0;
 	tick[id].alternate = 0;
 	tick[id].pulse = pattern->pulse;
+
+	return 0;
 }
 
 /*
@@ -402,7 +413,11 @@ static void start_tick(enum ec_led_id id, const struct led_pattern *pattern)
 		return;
 	}
 
-	config_tick(id, pattern);
+	if (config_tick(id, pattern))
+		/* If this pattern is already active, ticking must have
+		 * started already, too. */
+		return;
+
 	if (id == EC_LED_ID_BATTERY_LED)
 		tick_battery();
 	else
