@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "154f9ceb_a1bb85b9",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-25T16:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f9a0af_e90f7b24",
+      "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02c97e75_cc3eeea6",
         "filename": "test/printf.c",
         "patchSetId": 2
@@ -57,6 +75,30 @@
       "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f182826_aa47b44f",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-25T16:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c97e75_cc3eeea6",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +194,30 @@
       "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611d38dd_40ba9f7b",
+        "filename": "test/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-25T16:33:37Z",
+      "side": 1,
+      "message": "Yep, I originally used those to enforce the alignment. I have reversed this.",
+      "parentUuid": "37f3c16c_2783086d",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "27413a5bedbed1e2cd6f712d070030a22a9f40da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
