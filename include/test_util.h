@@ -218,20 +218,20 @@ void test_reboot_to_next_step(enum test_state_t step);
 
 struct test_i2c_read_string_dev {
 	/* I2C string read handler */
-	int (*routine)(int port, int slave_addr, int offset, uint8_t *data,
+	int (*routine__7b)(int port, int slave_addr, int offset, uint8_t *data,
 		       int len);
 };
 
 struct test_i2c_xfer {
 	/* I2C xfer handler */
-	int (*routine)(int port, int slave_addr,
+	int (*routine__7b)(int port, int slave_addr,
 		       const uint8_t *out, int out_size,
 		       uint8_t *in, int in_size, int flags);
 };
 
 struct test_i2c_write_dev {
 	/* I2C write handler */
-	int (*routine)(int port, int slave_addr, int offset, int data);
+	int (*routine__7b)(int port, int slave_addr, int offset, int data);
 };
 
 /**

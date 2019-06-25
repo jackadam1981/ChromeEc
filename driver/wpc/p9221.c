@@ -98,33 +98,33 @@ static int p9221_reg_is_8_bit(uint16_t reg)
 
 static int p9221_read8(uint16_t reg, int *val)
 {
-	return i2c_read_offset16(wpc->i2c_port, P9221_R7_ADDR, reg, val, 1);
+	return i2c_read_offset16__7b(wpc->i2c_port, P9221_R7_ADDR__7b, reg, val, 1);
 }
 
 static int p9221_write8(uint16_t reg, int val)
 {
-	return i2c_write_offset16(wpc->i2c_port, P9221_R7_ADDR, reg, val, 1);
+	return i2c_write_offset16__7b(wpc->i2c_port, P9221_R7_ADDR__7b, reg, val, 1);
 }
 
 static int p9221_read16(uint16_t reg, int *val)
 {
-	return i2c_read_offset16(wpc->i2c_port, P9221_R7_ADDR, reg, val, 2);
+	return i2c_read_offset16__7b(wpc->i2c_port, P9221_R7_ADDR__7b, reg, val, 2);
 }
 
 static int p9221_write16(uint16_t reg, int val)
 {
-	return i2c_write_offset16(wpc->i2c_port, P9221_R7_ADDR, reg, val, 2);
+	return i2c_write_offset16__7b(wpc->i2c_port, P9221_R7_ADDR__7b, reg, val, 2);
 }
 
 static int p9221_block_read(uint16_t reg, uint8_t *data, int len)
 {
-	return i2c_read_offset16_block(wpc->i2c_port, P9221_R7_ADDR, reg, data,
+	return i2c_read_offset16_block__7b(wpc->i2c_port, P9221_R7_ADDR__7b, reg, data,
 				     len);
 }
 
 static int p9221_block_write(uint16_t reg, uint8_t *data, int len)
 {
-	return i2c_write_offset16_block(wpc->i2c_port, P9221_R7_ADDR, reg, data,
+	return i2c_write_offset16_block__7b(wpc->i2c_port, P9221_R7_ADDR__7b, reg, data,
 				      len);
 }
 

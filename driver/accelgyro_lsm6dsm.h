@@ -13,14 +13,14 @@
 #include "mag_bmm150.h"
 #include "mag_lis2mdl.h"
 
-#define LSM6DSM_I2C_ADDR(__x)		(__x << 1)
+#define LSM6DSM_I2C_ADDR__7b(__x)		(__x)
 
 /*
  * 7-bit address is 110101xb. Where 'x' is determined
  * by the voltage on the ADDR pin
  */
-#define LSM6DSM_ADDR0			LSM6DSM_I2C_ADDR(0x6a)
-#define LSM6DSM_ADDR1			LSM6DSM_I2C_ADDR(0x6b)
+#define LSM6DSM_ADDR0__7b			LSM6DSM_I2C_ADDR__7b(0x6a)
+#define LSM6DSM_ADDR1__7b			LSM6DSM_I2C_ADDR__7b(0x6b)
 
 /* COMMON DEFINE FOR ACCEL-GYRO SENSORS */
 #define LSM6DSM_EN_BIT			0x01
