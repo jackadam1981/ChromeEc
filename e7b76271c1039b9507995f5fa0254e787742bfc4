@@ -22,6 +22,47 @@
       "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be54dba0_8908d45b",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-25T17:46:07Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "3d40da4a_a3ed64c2",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12a6b5a_6e6050f8",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-25T17:46:07Z",
+      "side": 1,
+      "message": "config-\u003etx_handled represents that tx is in progress.\n\nhow about having \n\n    if (*config-\u003etx_handled)\n        return;",
+      "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
