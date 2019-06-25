@@ -604,3 +604,7 @@ int board_get_epp_fod(uint8_t **fod)
 	return 0;
 }
 
+void board_set_pmic_force_reset(int asserted)
+{
+	gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, !asserted);
+}

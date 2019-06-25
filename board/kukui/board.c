@@ -271,9 +271,9 @@ static void board_init(void)
 {
 	/* If the reset cause is external, pulse PMIC force reset. */
 	if (system_get_reset_flags() == RESET_FLAG_RESET_PIN) {
-		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
+		board_set_pmic_force_reset(1);
 		msleep(100);
-		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+		board_set_pmic_force_reset(0);
 	}
 
 	/* Set SPI1 PB13/14/15 pins to high speed */
@@ -670,4 +670,9 @@ void board_fill_source_power_info(int port,
 	r->meas.current_max = 1500;
 	r->meas.current_lim = 1500;
 	r->max_power = r->meas.voltage_now * r->meas.current_max;
+}
+
+void board_set_pmic_force_reset(int asserted)
+{
+	gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, !asserted);
 }

@@ -326,6 +326,8 @@ extern uint8_t board_version;
 extern uint8_t oem;
 extern uint32_t sku;
 
+void board_set_pmic_force_reset(int asserted);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
