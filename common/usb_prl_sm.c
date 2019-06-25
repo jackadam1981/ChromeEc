@@ -643,6 +643,14 @@ static void prl_tx_construct_message(int port)
 	/* Save SOP* so the correct msg_id_counter can be incremented */
 	prl_tx[port].sop = pdmsg[port].xmit_type;
 
+	/*
+	 * These flags could be set if this function is called before the
+	 * Policy Engine is informed of the previous transmission. Clear the
+	 * flags so that this message can be sent.
+	 */
+	prl_tx[port].xmit_status = TCPC_TX_UNSET;
+	pdmsg[port].status_flags &= ~PRL_FLAGS_TX_COMPLETE;
+
 	/* Pass message to PHY Layer */
 	tcpm_transmit(port, pdmsg[port].xmit_type, header,
 						pdmsg[port].chk_buf);
@@ -1803,6 +1811,17 @@ static unsigned int prl_rx_wait_for_phy_message(int port, int evt)
 			cnt = PD_HEADER_CNT(header);
 			msid = PD_HEADER_ID(header);
 			sop = PD_HEADER_GET_SOP(header);
+
+#if !defined(CONFIG_USB_TYPEC_CTVPD) && !defined(CONFIG_USB_TYPEC_VPD)
+			/*
+			 * Ignore messages sent to the cable from our
+			 * port parner.
+			 */
+			if ((PD_HEADER_GET_SOP(header) != PD_MSG_SOP) &&
+				(PD_HEADER_PROLE(header) == PD_PLUG_DFP_UFP)) {
+				return 0;
+			}
+#endif
 
 			if (cnt == 0 && type == PD_CTRL_SOFT_RESET) {
 				int i;
