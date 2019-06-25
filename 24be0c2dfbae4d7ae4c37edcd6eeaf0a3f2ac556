@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eb21acb_52e4bb10",
+        "filename": "chip/ish/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-06-25T01:37:02Z",
+      "side": 1,
+      "message": "at best use \u0027ISH_PM_STATE_RESET\u0027 here,  \u0027ISH_PM_STATE_RESET_PREP\u0027 is used for reset_prep interrupt only.\n\nalthough at current they\u0027re have exactly same operations in aon task, but in future, if need special HW operations for reset_prep interrupt process, \u0027ISH_PM_STATE_RESET_PREP\u0027 will have some different process in aon task.",
+      "revId": "24be0c2dfbae4d7ae4c37edcd6eeaf0a3f2ac556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
