@@ -35,12 +35,18 @@ test_mockable int sb_read(int cmd, int *param)
 	{
 		int rv;
 		uint16_t d16 = 0;
-		rv = smbus_read_word(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, &d16);
+		rv = smbus_read_word(I2C_PORT_BATTERY, BATTERY_ADDR__7b, cmd, &d16);
 		*param = d16;
 		return rv;
 	}
 #else
-	return i2c_read16(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, param);
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_read16(slave_addr, cmd, param);
+	}
 #endif
 }
 
@@ -54,9 +60,15 @@ test_mockable int sb_write(int cmd, int param)
 		return EC_RES_ACCESS_DENIED;
 #endif
 #ifdef CONFIG_SMBUS
-	return smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, param);
+	return smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR__7b, cmd, param);
 #else
-	return i2c_write16(I2C_PORT_BATTERY, BATTERY_ADDR, cmd, param);
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_write16(slave_addr, cmd, param);
+	}
 #endif
 }
 
@@ -70,11 +82,16 @@ int sb_read_string(int offset, uint8_t *data, int len)
 		return EC_RES_ACCESS_DENIED;
 #endif
 #ifdef CONFIG_SMBUS
-	return smbus_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
+	return smbus_read_string(I2C_PORT_BATTERY, BATTERY_ADDR__7b,
 				offset, data, len);
 #else
-	return i2c_read_string(I2C_PORT_BATTERY, BATTERY_ADDR,
-				offset, data, len);
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_read_string(slave_addr, offset, data, len);
+	}
 #endif
 }
 
@@ -119,8 +136,13 @@ int sb_write_block(int reg, const uint8_t *val, int len)
 #endif
 
 	/* TODO: implement smbus_write_block. */
-	return i2c_write_block(I2C_PORT_BATTERY, BATTERY_ADDR, reg, val, len);
-
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_write_block(slave_addr, reg, val, len);
+	}
 }
 
 int battery_get_mode(int *mode)

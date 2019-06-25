@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "i2c_chip.h"
+#include "i2c_spi_slave.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -84,7 +85,7 @@ struct i2c_status {
 	uint16_t              sz_txbuf;  /* Size of Tx buffer in bytes */
 	uint16_t              sz_rxbuf;  /* Size of rx buffer in bytes */
 	uint16_t              idx_buf;   /* Current index of Tx/Rx buffer */
-	uint8_t               slave_addr;/* Target slave address */
+	struct slave_addr_t   slave_addr;/* Target slave address */
 	enum smb_oper_state_t oper_state;/* Smbus operation state */
 	enum smb_error        err_code;  /* Error code */
 	int                   task_waiting; /* Task waiting on controller */
@@ -347,7 +348,7 @@ static void i2c_handle_sda_irq(int controller)
 	/* 1 Issue Start is successful ie. write address byte */
 	if (p_status->oper_state == SMB_MASTER_START
 			|| p_status->oper_state == SMB_REPEAT_START) {
-		uint8_t addr = p_status->slave_addr;
+		uint8_t addr__8b = p_status->slave_addr.i2c_addr__7b << 1;
 		/* Prepare address byte */
 		if (p_status->sz_txbuf == 0) {/* Receive mode */
 			p_status->oper_state = SMB_READ_OPER;
@@ -360,13 +361,13 @@ static void i2c_handle_sda_irq(int controller)
 				I2C_STALL(controller);
 
 			/* Write the address to the bus R bit*/
-			I2C_WRITE_BYTE(controller, (addr | 0x1));
+			I2C_WRITE_BYTE(controller, (addr__8b | 0x1));
 			CPRINTS("-ARR-0x%02x", addr);
 		} else {/* Transmit mode */
 			p_status->oper_state = SMB_WRITE_OPER;
 			/* Write the address to the bus W bit*/
-			I2C_WRITE_BYTE(controller, addr);
-			CPRINTS("-ARW-0x%02x", addr);
+			I2C_WRITE_BYTE(controller, addr__8b);
+			CPRINTS("-ARW-0x%02x", addr__8b);
 		}
 		/* Completed handling START condition */
 		return;
@@ -380,7 +381,9 @@ static void i2c_handle_sda_irq(int controller)
 				i2c_done(controller);
 			/* need to restart & send slave address immediately */
 			else {
-				uint8_t addr_byte = p_status->slave_addr;
+				uint8_t addr_byte__8b =
+					p_status->slave_addr.i2c_addr__7b << 1;
+
 				/*
 				 * Prepare address byte
 				 * and start to receive bytes
@@ -405,7 +408,7 @@ static void i2c_handle_sda_irq(int controller)
 					CPUTS("-GNA");
 				}
 				/* Write the address to the bus R bit*/
-				I2C_WRITE_BYTE(controller, (addr_byte | 0x1));
+				I2C_WRITE_BYTE(controller, (addr_byte__8b | 0x1));
 				CPUTS("-ARR");
 			}
 		}
@@ -609,11 +612,12 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int chip_i2c_xfer(const struct slave_addr_t slave_addr,
+		  const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
 	volatile struct i2c_status *p_status;
-	int ctrl = i2c_port_to_controller(port);
+	int ctrl = i2c_port_to_controller(slave_addr.port);
 
 	/* Return error if i2c_port_to_controller() returned an error */
 	if (ctrl < 0)
@@ -629,7 +633,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	p_status->task_waiting = task_get_current();
 
 	/* Select port for multi-ports i2c controller */
-	i2c_select_port(port);
+	i2c_select_port(slave_addr.port);
 
 	/* Copy data to controller struct */
 	p_status->flags       = flags;
@@ -637,34 +641,29 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	p_status->sz_txbuf    = out_size;
 	p_status->rx_buf      = in;
 	p_status->sz_rxbuf    = in_size;
-#if I2C_7BITS_ADDR
-	/* Set slave address from 7-bits to 8-bits */
-	p_status->slave_addr  = (slave_addr<<1);
-#else
-	/* Set slave address (8-bits) */
 	p_status->slave_addr  = slave_addr;
-#endif
+
 	/* Reset index & error */
 	p_status->idx_buf     = 0;
 	p_status->err_code    = SMB_OK;
 
 	/* Make sure we're in a good state to start */
 	if ((flags & I2C_XFER_START) &&
-	     /* Ignore busy bus for repeated start */
-	     p_status->oper_state != SMB_WRITE_SUSPEND &&
-	     (i2c_bus_busy(ctrl)
-	     || (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
+	    /* Ignore busy bus for repeated start */
+	    p_status->oper_state != SMB_WRITE_SUSPEND &&
+	    (i2c_bus_busy(ctrl)
+	     || (i2c_get_line_levels(slave_addr.port) != I2C_LINE_IDLE))) {
 		int ret;
 
 		/* Attempt to unwedge the i2c port */
-		ret = i2c_unwedge(port);
+		ret = i2c_unwedge(slave_addr.port);
 		if (ret)
 			return ret;
 		p_status->err_code = SMB_BUS_BUSY;
 		/* recover i2c controller */
 		i2c_recovery(ctrl, p_status);
 		/* Select port again for recovery */
-		i2c_select_port(port);
+		i2c_select_port(slave_addr.port);
 	}
 
 	CPUTS("\n");

@@ -25,10 +25,10 @@ enum sn5s330_pp_idx {
 	SN5S330_PP_COUNT,
 };
 
-#define SN5S330_ADDR0 0x80
-#define SN5S330_ADDR1 0x82
-#define SN5S330_ADDR2 0x84
-#define SN5S330_ADDR3 0x86
+#define SN5S330_ADDR0__7b 0x40
+#define SN5S330_ADDR1__7b 0x41
+#define SN5S330_ADDR2__7b 0x42
+#define SN5S330_ADDR3__7b 0x43
 
 #define SN5S330_FUNC_SET1  0x50
 #define SN5S330_FUNC_SET2  0x51

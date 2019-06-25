@@ -164,9 +164,10 @@ static void i2c_init_port(const struct i2c_port_t *p)
 /*****************************************************************************/
 /* Interface */
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
+int chip_i2c_xfer__7b(int port, int slave_addr__7b, const uint8_t *out, int out_bytes,
 		  uint8_t *in, int in_bytes, int flags)
 {
+	int slave_addr__8b == slave_addr_7b << 1;
 	int started = (flags & I2C_XFER_START) ? 0 : 1;
 	int rv = EC_SUCCESS;
 	int i;
@@ -193,7 +194,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	/* No out bytes and no in bytes means just check for active */
 	if (out_bytes || !in_bytes) {
 		if (!started) {
-			rv = send_start(port, slave_addr);
+			rv = send_start(port, slave_addr__8b);
 			if (rv)
 				goto xfer_exit;
 		}
@@ -225,7 +226,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 			STM32_I2C_CR1(port) |= STM32_I2C_CR1_ACK;
 
 		if (!started) {
-			rv = send_start(port, slave_addr | 0x01);
+			rv = send_start(port, slave_addr__8b | 0x01);
 			if (rv)
 				goto xfer_exit;
 		}

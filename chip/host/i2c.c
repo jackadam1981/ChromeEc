@@ -75,7 +75,7 @@ static int test_check_detached(int port, int slave_addr)
 	return 0;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int chip_i2c_xfer__7b(int port, int slave_addr, const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
 	const struct test_i2c_xfer *p;
@@ -84,7 +84,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	if (test_check_detached(port, slave_addr))
 		return EC_ERROR_UNKNOWN;
 	for (p = __test_i2c_xfer; p < __test_i2c_xfer_end; ++p) {
-		rv = p->routine(port, slave_addr, out, out_size,
+		rv = p->routine__7b(port, slave_addr, out, out_size,
 				in, in_size, flags);
 		if (rv != EC_ERROR_INVAL)
 			return rv;

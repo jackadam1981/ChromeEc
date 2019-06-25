@@ -17,7 +17,7 @@
  *   write 2 byte data + 1 byte pec
  */
 struct smbus_wr_word {
-	uint8_t slave_addr;/**< i2c_addr << 1 */
+	uint8_t slave_addr__8b;/**< i2c_addr << 1 */
 	uint8_t smbus_cmd; /**< smbus cmd */
 	uint8_t data[3];   /**< smbus data */
 } __packed;
@@ -27,7 +27,7 @@ struct smbus_wr_word {
  * smbus write 1 byte size + 32 byte data + 1 byte pec
  */
 struct smbus_wr_block {
-	uint8_t slave_addr;/**< i2c_addr << 1 */
+	uint8_t slave_addr__8b;/**< i2c_addr << 1 */
 	uint8_t smbus_cmd; /**< smbus cmd */
 	uint8_t size;      /**< write size */
 	uint8_t data[SMBUS_MAX_BLOCK_SIZE+1];
@@ -38,7 +38,7 @@ struct smbus_wr_block {
  * smbus read 2 byte + 1 pec
  */
 struct smbus_rd_word {
-	uint8_t slave_addr;   /**< i2c_addr << 1 */
+	uint8_t slave_addr__8b;   /**< i2c_addr << 1 */
 	uint8_t smbus_cmd;    /**< smbus cmd */
 	uint8_t slave_addr_rd;/**< (i2c_addr << 1) | 0x1 */
 	uint8_t data[3];      /**< smbus data */
@@ -49,7 +49,7 @@ struct smbus_rd_word {
  * smbus read 1 byte size + 32 byte data + 1 byte pec
  */
 struct smbus_rd_block {
-	uint8_t slave_addr;   /**< i2c_addr << 1 */
+	uint8_t slave_addr__8b;   /**< i2c_addr << 1 */
 	uint8_t smbus_cmd;    /**< smbus cmd */
 	uint8_t slave_addr_rd;/**< (i2c_addr << 1) | 0x1 */
 	uint8_t size;         /**< read block size */
@@ -68,7 +68,7 @@ struct smbus_rd_block {
  *       EC_ERROR_BUSY if interface is bussy
  *       none zero error code if fail
  */
-int smbus_write_word(uint8_t i2c_port, uint8_t slave_addr,
+int smbus_write_word__8b(uint8_t i2c_port, uint8_t slave_addr,
 			uint8_t smbus_cmd, uint16_t d16);
 
 /**
@@ -90,7 +90,7 @@ int smbus_write_word(uint8_t i2c_port, uint8_t slave_addr,
  *       EC_ERROR_BUSY if interface is bussy
  *       none zero error code if fail
  */
-int smbus_write_block(uint8_t i2c_port, uint8_t slave_addr,
+int smbus_write_block__8b(uint8_t i2c_port, uint8_t slave_addr,
 			uint8_t smbus_cmd, uint8_t *data, uint8_t len);
 
 /**
@@ -105,7 +105,7 @@ int smbus_write_block(uint8_t i2c_port, uint8_t slave_addr,
  *       EC_ERROR_BUSY if interface is bussy
  *       none zero error code if fail
  */
-int smbus_read_word(uint8_t i2c_port, uint8_t slave_addr,
+int smbus_read_word__8b(uint8_t i2c_port, uint8_t slave_addr,
 			uint8_t smbus_cmd, uint16_t *p16);
 
 /**
@@ -129,7 +129,7 @@ int smbus_read_word(uint8_t i2c_port, uint8_t slave_addr,
  *       EC_ERROR_BUSY if interface is busy
  *       none zero error code if fail
  */
-int smbus_read_block(uint8_t i2c_port, uint8_t slave_addr,
+int smbus_read_block__8b(uint8_t i2c_port, uint8_t slave_addr,
 			uint8_t smbus_cmd, uint8_t *data, uint8_t *plen);
 
 /**
@@ -152,7 +152,7 @@ int smbus_read_block(uint8_t i2c_port, uint8_t slave_addr,
  *       EC_ERROR_BUSY if interface is bussy
  *       none zero error code if fail
  */
-int smbus_read_string(int i2c_port, uint8_t slave_addr, uint8_t smbus_cmd,
+int smbus_read_string__8b(int i2c_port, uint8_t slave_addr, uint8_t smbus_cmd,
 			uint8_t *data, uint8_t len);
 
 #endif /* __CROS_EC_SMBUS_H */
