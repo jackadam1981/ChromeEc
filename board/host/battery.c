@@ -20,7 +20,7 @@ int sb_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	if (out_size == 0)
 		return EC_SUCCESS;
 
-	if (port != I2C_PORT_BATTERY || slave_addr != BATTERY_ADDR)
+	if (port != I2C_PORT_BATTERY || slave_addr != BATTERY_ADDR__7b)
 		return EC_ERROR_INVAL;
 	if (out[0]  >= ARRAY_SIZE(mock_smart_battery))
 		return EC_ERROR_UNIMPLEMENTED;
