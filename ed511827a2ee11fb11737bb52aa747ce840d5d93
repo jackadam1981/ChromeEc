@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8fc0e3b_0797d530",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-25T06:37:01Z",
+      "side": 1,
+      "message": "There is a chance that descriptors are overwritten:\nLet\u0027s assume that \"hook_task\" was executing tx_stream_kicker(), and it reached the line 171.\n- config-\u003ekicker_running is 1.\n- config-\u003etx_in_progress is 1.\n\nAt this point, \"UART TX FIFO IRQ handler\" calls usb_written(), and queue_count(tx_q) is 511 (tx_q-\u003ebuffer_units_mask). usb_writte() eventually calls tx_stream_handler() and also reaches to line 171, and executes the rest of this function, setting TX endpoint descriptors.\n- config-\u003ekicker_running is 0.\n- config-\u003etx_in_progress is 1.\n\nThe control comes back to \"hook_task\", line 171, and executes the rest of this function, overwriting TX endpoint descriptors, which is likely to be busy with previous setting.",
+      "revId": "ed511827a2ee11fb11737bb52aa747ce840d5d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
