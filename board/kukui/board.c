@@ -29,6 +29,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "mt8183.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -271,9 +272,9 @@ static void board_init(void)
 {
 	/* If the reset cause is external, pulse PMIC force reset. */
 	if (system_get_reset_flags() == RESET_FLAG_RESET_PIN) {
-		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
+		mt8183_set_pmic_force_reset(1);
 		msleep(100);
-		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+		mt8183_set_pmic_force_reset(0);
 	}
 
 	/* Set SPI1 PB13/14/15 pins to high speed */
