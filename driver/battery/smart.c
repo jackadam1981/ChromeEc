@@ -40,7 +40,13 @@ test_mockable int sb_read(int cmd, int *param)
 		return rv;
 	}
 #else
-	return i2c_read16__7b(I2C_PORT_BATTERY, BATTERY_ADDR__7b, cmd, param);
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_read16(slave_addr, cmd, param);
+	}
 #endif
 }
 
@@ -56,7 +62,13 @@ test_mockable int sb_write(int cmd, int param)
 #ifdef CONFIG_SMBUS
 	return smbus_write_word(I2C_PORT_BATTERY, BATTERY_ADDR__7b, cmd, param);
 #else
-	return i2c_write16__7b(I2C_PORT_BATTERY, BATTERY_ADDR__7b, cmd, param);
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_write16(slave_addr, cmd, param);
+	}
 #endif
 }
 
@@ -73,8 +85,13 @@ int sb_read_string(int offset, uint8_t *data, int len)
 	return smbus_read_string(I2C_PORT_BATTERY, BATTERY_ADDR__7b,
 				offset, data, len);
 #else
-	return i2c_read_string__7b(I2C_PORT_BATTERY, BATTERY_ADDR__7b,
-				offset, data, len);
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_read_string(slave_addr, offset, data, len);
+	}
 #endif
 }
 
@@ -119,8 +136,13 @@ int sb_write_block(int reg, const uint8_t *val, int len)
 #endif
 
 	/* TODO: implement smbus_write_block. */
-	return i2c_write_block__7b(I2C_PORT_BATTERY, BATTERY_ADDR__7b, reg, val, len);
-
+	{
+		const struct slave_addr_t slave_addr = {
+			.port = I2C_PORT_BATTERY,
+			.i2c_addr__7b = BATTERY_ADDR__7b,
+		};
+		return i2c_write_block(slave_addr, reg, val, len);
+	}
 }
 
 int battery_get_mode(int *mode)

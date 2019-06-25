@@ -23,12 +23,9 @@
 typedef uint8_t mux_state_t;
 
 /*
- * Packing and Unpacking defines used with USB_MUX_FLAG_NOT_TCPC
- * MUX_PORT takes in a USB-C port number and returns the I2C port number
+ * Access to the I2C/SPI Slave address information within the muxes
  */
-#define MUX_PORT_AND_ADDR(port, addr) ((port << 8) | (addr & 0xFF))
-#define MUX_PORT(port) (usb_muxes[port].port_addr__7b >> 8)
-#define MUX_ADDR__7b(port) (usb_muxes[port].port_addr__7b & 0xFF)
+#define MUX_SLAVE_ADDR(port) (usb_muxes[port].slave_addr)
 
 /* Mux state attributes */
 /* TODO: Directly use USB_PD_MUX_* everywhere and remove these 3 defines */
@@ -99,7 +96,7 @@ struct usb_mux {
 	 * MUX_PORT_AND_ADDR to pack the i2c port and i2c address into this
 	 * field and use the USB_MUX_FLAG_NOT_TCPC flag.
 	 */
-	const int port_addr__7b;
+	const struct slave_addr_t slave_addr;
 
 	/* Run-time flags with prefix USB_MUX_FLAG_ */
 	const uint32_t flags;
@@ -144,29 +141,29 @@ extern struct usb_mux usb_muxes[];
 static inline int mux_write(int port, int reg, int val)
 {
 	return usb_muxes[port].flags & USB_MUX_FLAG_NOT_TCPC
-		       ? i2c_write8__7b(MUX_PORT(port), MUX_ADDR__7b(port), reg, val)
-		       : tcpc_write(port, reg, val);
+		? i2c_write8(MUX_SLAVE_ADDR(port), reg, val)
+		: tcpc_write(port, reg, val);
 }
 
 static inline int mux_read(int port, int reg, int *val)
 {
 	return usb_muxes[port].flags & USB_MUX_FLAG_NOT_TCPC
-		       ? i2c_read8__7b(MUX_PORT(port), MUX_ADDR__7b(port), reg, val)
-		       : tcpc_read(port, reg, val);
+		? i2c_read8(MUX_SLAVE_ADDR(port), reg, val)
+		: tcpc_read(port, reg, val);
 }
 
 static inline int mux_write16(int port, int reg, int val)
 {
 	return usb_muxes[port].flags & USB_MUX_FLAG_NOT_TCPC
-		       ? i2c_write16__7b(MUX_PORT(port), MUX_ADDR__7b(port), reg, val)
-		       : tcpc_write16(port, reg, val);
+		? i2c_write16(MUX_SLAVE_ADDR(port), reg, val)
+		: tcpc_write16(port, reg, val);
 }
 
 static inline int mux_read16(int port, int reg, int *val)
 {
 	return usb_muxes[port].flags & USB_MUX_FLAG_NOT_TCPC
-		       ? i2c_read16__7b(MUX_PORT(port), MUX_ADDR__7b(port), reg, val)
-		       : tcpc_read16(port, reg, val);
+		? i2c_read16(MUX_SLAVE_ADDR(port), reg, val)
+		: tcpc_read16(port, reg, val);
 }
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 

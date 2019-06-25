@@ -64,12 +64,16 @@ static void unselect_chip(int port)
 static uint8_t pi3usb9281_do_read(int port, uint8_t reg, int with_lock)
 {
 	struct pi3usb9281_config *chip = &pi3usb9281_chips[port];
+	const struct slave_addr_t slave_addr = {
+		.port = chip->i2c_port,
+		.i2c_addr__7b = PI3USB9281_I2C_ADDR__7b,
+	};
 	int res, val;
 
 	if (with_lock)
 		select_chip(port);
 
-	res = i2c_read8__7b(chip->i2c_port, PI3USB9281_I2C_ADDR__7b, reg, &val);
+	res = i2c_read8(slave_addr, reg, &val);
 
 	if (with_lock)
 		unselect_chip(port);
@@ -94,12 +98,16 @@ static int pi3usb9281_do_write(
 	int port, uint8_t reg, uint8_t val, int with_lock)
 {
 	struct pi3usb9281_config *chip = &pi3usb9281_chips[port];
+	const struct slave_addr_t slave_addr = {
+		.port = chip->i2c_port,
+		.i2c_addr__7b = PI3USB9281_I2C_ADDR__7b,
+	};
 	int res;
 
 	if (with_lock)
 		select_chip(port);
 
-	res = i2c_write8__7b(chip->i2c_port, PI3USB9281_I2C_ADDR__7b, reg, val);
+	res = i2c_write8(slave_addr, reg, val);
 
 	if (with_lock)
 		unselect_chip(port);

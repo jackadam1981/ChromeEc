@@ -106,23 +106,23 @@ static int config_interrupt(const struct motion_sensor_t *accel)
 	int ret = EC_SUCCESS;
 	int int1_ctrl_val;
 
-	ret = st_raw_read8__8b(accel->port, accel->addr__8b, LSM6DSM_INT1_CTRL,
+	ret = st_raw_read8(accel->slave_addr, LSM6DSM_INT1_CTRL,
 			   &int1_ctrl_val);
 	if (ret != EC_SUCCESS)
 		return ret;
 
 #ifdef CONFIG_ACCEL_FIFO
 	/* As soon as one sample is ready, trigger an interrupt. */
-	ret = st_raw_write8__8b(accel->port, accel->addr__8b, LSM6DSM_FIFO_CTRL1_ADDR,
-			 OUT_XYZ_SIZE / sizeof(uint16_t));
+	ret = st_raw_write8(accel->slave_addr, LSM6DSM_FIFO_CTRL1_ADDR,
+			    OUT_XYZ_SIZE / sizeof(uint16_t));
 	if (ret != EC_SUCCESS)
 		return ret;
 	int1_ctrl_val |= LSM6DSM_INT_FIFO_TH | LSM6DSM_INT_FIFO_OVR |
 		LSM6DSM_INT_FIFO_FULL;
 #endif /* CONFIG_ACCEL_FIFO */
 
-	return st_raw_write8__8b(
-		accel->port, accel->addr__8b, LSM6DSM_INT1_CTRL, int1_ctrl_val);
+	return st_raw_write8(accel->slave_addr, LSM6DSM_INT1_CTRL,
+			     int1_ctrl_val);
 }
 
 
@@ -134,7 +134,7 @@ static int config_interrupt(const struct motion_sensor_t *accel)
  */
 static int fifo_disable(const struct motion_sensor_t *accel)
 {
-	return st_raw_write8__8b(accel->port, accel->addr__8b,
+	return st_raw_write8(accel->slave_addr,
 			     LSM6DSM_FIFO_CTRL5_ADDR, 0x00);
 }
 
@@ -194,7 +194,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	/* FIFO ODR must be set before the decimation factors */
 	odr_reg_val = LSM6DSM_ODR_TO_REG(max_odr) <<
 					LSM6DSM_FIFO_CTRL5_ODR_OFF;
-	err = st_raw_write8__8b(accel->port, accel->addr__8b, LSM6DSM_FIFO_CTRL5_ADDR,
+	err = st_raw_write8(accel->slave_addr, LSM6DSM_FIFO_CTRL5_ADDR,
 			    odr_reg_val);
 
 	/* Scan all sensors configuration to calculate FIFO decimator. */
@@ -212,11 +212,11 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 			private->config.samples_in_pattern[i] = 0;
 		}
 	}
-	st_raw_write8__8b(accel->port, accel->addr__8b, LSM6DSM_FIFO_CTRL3_ADDR,
+	st_raw_write8(accel->slave_addr, LSM6DSM_FIFO_CTRL3_ADDR,
 		      (decimators[FIFO_DEV_GYRO] << LSM6DSM_FIFO_DEC_G_OFF) |
 		      (decimators[FIFO_DEV_ACCEL] << LSM6DSM_FIFO_DEC_XL_OFF));
 #ifdef CONFIG_LSM6DSM_SEC_I2C
-	st_raw_write8__8b(accel->port, accel->addr__8b, LSM6DSM_FIFO_CTRL4_ADDR,
+	st_raw_write8__8b(accel->slave_addr, LSM6DSM_FIFO_CTRL4_ADDR,
 			decimators[FIFO_DEV_MAG]);
 
 	/*
@@ -252,7 +252,7 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	 * After ODR and decimation values are set, continuous mode can be
 	 * enabled
 	 */
-	err = st_raw_write8__8b(accel->port, accel->addr__8b, LSM6DSM_FIFO_CTRL5_ADDR,
+	err = st_raw_write8(accel->slave_addr, LSM6DSM_FIFO_CTRL5_ADDR,
 			    odr_reg_val | LSM6DSM_FIFO_MODE_CONTINUOUS_VAL);
 	if (err != EC_SUCCESS)
 		return err;
@@ -392,7 +392,7 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts,
 			length = left;
 
 		/* Read data and copy in buffer. */
-		err = st_raw_read_n_noinc__8b(s->port, s->addr__8b,
+		err = st_raw_read_n_noinc(s->slave_addr,
 					  LSM6DSM_FIFO_DATA_ADDR,
 					  fifo, length);
 		*last_fifo_read_ts = __hw_clock_source_read();
@@ -423,7 +423,7 @@ static int is_fifo_empty(struct motion_sensor_t *s, struct fstatus *fsts)
 	if (s->flags & MOTIONSENSE_FLAG_INT_SIGNAL)
 		return gpio_get_level(s->int_signal);
 	CPRINTS("Interrupt signal not set for %s", s->name);
-	res = st_raw_read_n_noinc__8b(s->port, s->addr__8b,
+	res = st_raw_read_n_noinc(s->slave_addr,
 			LSM6DSM_FIFO_STS1_ADDR,
 			(int8_t *)fsts, sizeof(*fsts));
 	/* If we failed to read the FIFO size assume empty. */
@@ -471,7 +471,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			last_interrupt_timestamp;
 
 		/* Read how many data pattern on FIFO to read and pattern. */
-		ret = st_raw_read_n_noinc__8b(s->port, s->addr__8b,
+		ret = st_raw_read_n_noinc(s->slave_addr,
 				LSM6DSM_FIFO_STS1_ADDR,
 				(uint8_t *)&fsts, sizeof(fsts));
 		if (ret != EC_SUCCESS)
@@ -653,7 +653,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
 
-	ret = st_raw_read8__8b(s->port, s->addr__8b, LSM6DSM_STATUS_REG, &tmp);
+	ret = st_raw_read8(s->slave_addr, LSM6DSM_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
 		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
 		return ret;
@@ -696,7 +696,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	xyz_reg = get_xyz_reg(s->type);
 
 	/* Read data bytes starting at xyz_reg. */
-	ret = st_raw_read_n_noinc__8b(s->port, s->addr__8b, xyz_reg, raw,
+	ret = st_raw_read_n_noinc(s->slave_addr, xyz_reg, raw,
 			OUT_XYZ_SIZE);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -712,7 +712,7 @@ static int init(const struct motion_sensor_t *s)
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val = 0;
 
-	ret = st_raw_read8__8b(s->port, s->addr__8b, LSM6DSM_WHO_AM_I_REG, &tmp);
+	ret = st_raw_read8(s->slave_addr, LSM6DSM_WHO_AM_I_REG, &tmp);
 	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
@@ -737,17 +737,17 @@ static int init(const struct motion_sensor_t *s)
 		ctrl_reg = LSM6DSM_ODR_REG(MOTIONSENSE_TYPE_ACCEL);
 
 		/* Power OFF gyro. */
-		ret = st_raw_write8__8b(s->port, s->addr__8b, LSM6DSM_CTRL2_ADDR, 0);
+		ret = st_raw_write8(s->slave_addr, LSM6DSM_CTRL2_ADDR, 0);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
 		/* Power ON Accel. */
-		ret = st_raw_write8__8b(s->port, s->addr__8b, ctrl_reg, reg_val);
+		ret = st_raw_write8(s->slave_addr, ctrl_reg, reg_val);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
 		/* Software reset. */
-		ret = st_raw_write8__8b(s->port, s->addr__8b, LSM6DSM_CTRL3_ADDR,
+		ret = st_raw_write8(s->slave_addr, LSM6DSM_CTRL3_ADDR,
 				LSM6DSM_SW_RESET);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
@@ -761,11 +761,11 @@ static int init(const struct motion_sensor_t *s)
 		 */
 
 		/* Power ON Accel. */
-		ret = st_raw_write8__8b(s->port, s->addr__8b, ctrl_reg, reg_val);
+		ret = st_raw_write8(s->slave_addr, ctrl_reg, reg_val);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
-		ret = st_raw_write8__8b(s->port, s->addr__8b, LSM6DSM_CTRL3_ADDR,
+		ret = st_raw_write8(s->slave_addr, LSM6DSM_CTRL3_ADDR,
 				LSM6DSM_BOOT);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
@@ -777,7 +777,7 @@ static int init(const struct motion_sensor_t *s)
 		msleep(15);
 
 		/* Power OFF Accel. */
-		ret = st_raw_write8__8b(s->port, s->addr__8b, ctrl_reg, 0);
+		ret = st_raw_write8(s->slave_addr, ctrl_reg, 0);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 #endif
@@ -786,7 +786,7 @@ static int init(const struct motion_sensor_t *s)
 		 * Output data not updated until have been read.
 		 * Prefer interrupt to be active low.
 		 */
-		ret = st_raw_write8__8b(s->port, s->addr__8b, LSM6DSM_CTRL3_ADDR,
+		ret = st_raw_write8(s->slave_addr, LSM6DSM_CTRL3_ADDR,
 				LSM6DSM_BDU | LSM6DSM_H_L_ACTIVE |
 				LSM6DSM_IF_INC);
 		if (ret != EC_SUCCESS)

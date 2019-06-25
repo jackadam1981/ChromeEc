@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_SPI_H
 #define __CROS_EC_SPI_H
 
+#include "i2c_spi_slave.h"
+
 /*
  * SPI Clock polarity and phase mode (0 - 3)
  * @code

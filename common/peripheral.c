@@ -35,9 +35,9 @@ static int hc_locate_chip(struct host_cmd_handler_args *args)
 		resp->bus_type = tcpc_config[params->index].bus_type;
 		if (resp->bus_type == EC_BUS_TYPE_I2C) {
 			resp->i2c_info.port =
-				tcpc_config[params->index].i2c_info.port;
+				tcpc_config[params->index].slave_addr.port;
 			resp->i2c_info.addr__7b =
-				tcpc_config[params->index].i2c_info.addr__7b;
+				tcpc_config[params->index].slave_addr.i2c_addr__7b;
 		}
 #ifdef CONFIG_INTEL_VIRTUAL_MUX
 		resp->reserved = tcpc_config[params->index].usb23;

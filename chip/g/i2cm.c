@@ -276,7 +276,7 @@ static uint32_t i2cm_create_inst__7b(int slave_addr__7b, int is_write,
 	return inst;
 }
 
-static int i2cm_execute_sequence(int port, int slave_addr, const uint8_t *out,
+static int i2cm_execute_sequence__7b(int port, int slave_addr__7b, const uint8_t *out,
 				 int out_size, uint8_t *in, int in_size,
 				 int flags)
 {
@@ -308,7 +308,7 @@ static int i2cm_execute_sequence(int port, int slave_addr, const uint8_t *out,
 			seq_flags &= ~I2C_XFER_STOP;
 
 		/* Build sequence instruction */
-		inst = i2cm_create_inst__7b(slave_addr, is_write,
+		inst = i2cm_create_inst__7b(slave_addr__7b, is_write,
 					batch_size, seq_flags);
 
 		/* If this is a write - copy data into the FIFO. */
