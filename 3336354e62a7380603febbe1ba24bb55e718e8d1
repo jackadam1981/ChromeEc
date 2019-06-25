@@ -70,6 +70,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2be34d6_08858a51",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-25T18:12:18Z",
+      "side": 1,
+      "message": "It seems like a risky idea to have FAFT intentionally corrupt TCPC FW.  Not all of the TCPCs are built with a lot of write cycles, and trying to ensure the test is corrupting the FW such that the product ID is bad but the chip is still okay to update back to good FW is likely beyond the scope of what we can reasonably do reliably.  \n\nAs another consideration, not all of the TCPCs are running update-able firmware so we wouldn\u0027t be able to use the corrupt FW path to test the hard coded value versus the chip\u0027s live ID for them.\n\nIt seems there are two callers (depthcharge and FAFT) which have good reason to care about whether the value returned is coming from the chip or an expected define.",
+      "parentUuid": "cfefb29e_796bb9b7",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
