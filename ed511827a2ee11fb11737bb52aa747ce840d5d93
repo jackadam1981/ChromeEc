@@ -16,6 +16,24 @@
       "revId": "ed511827a2ee11fb11737bb52aa747ce840d5d93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d9e264_7ee843d1",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-25T14:08:45Z",
+      "side": 1,
+      "message": "great point, I was thinking that there should be more attention paid to invoking this from hooks task.\n\nWill this concern be addressed by changing order of lines 384 and 385?\n\nWe should think more about corner cases like this.",
+      "parentUuid": "d8fc0e3b_0797d530",
+      "revId": "ed511827a2ee11fb11737bb52aa747ce840d5d93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
