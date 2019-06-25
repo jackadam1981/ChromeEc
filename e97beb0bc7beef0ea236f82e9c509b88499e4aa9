@@ -142,6 +142,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cfbc362_e99eaddb",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-06-25T01:26:18Z",
+      "side": 1,
+      "message": "Where does the dummy file live? Wouldn\u0027t we also need logic in ec Makefiles to copy installed /build/${BOARD}/.../ec_config.c to the WORKDIR where EC sources are compiled? If using emerge then it will have to be copied to somewhere under /build/${BOARD}/tmp/.../ whereas if using make then ec_config.c will have to be copied to EC directory i.e. ~/trunk/src/platform/ec/... Also, for make, if ec_config.c is not already installed then it can default to the dummy one as Jett indicated.\n\nThe other way to potentially do this is to enforce adding of ec_config.c manually as a CL any time model.yaml is updated. But, it is error prone(manual effort) since it requires synchronized updates across different repos.",
+      "parentUuid": "3f87488c_96734254",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
