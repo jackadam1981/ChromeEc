@@ -12,7 +12,22 @@
 
 static struct mutex dcrypto_mutex;
 static volatile task_id_t my_task_id;
-static int dcrypto_is_initialized;
+static volatile int dcrypto_is_initialized;
+
+static void dcrypto_reset_and_wipe(void)
+{
+	/* Reset. */
+	GREG32(CRYPTO, CONTROL) = GC_CRYPTO_CONTROL_RESET_MASK;
+	GREG32(CRYPTO, CONTROL) = 0;
+
+	/* Reset all the status bits. */
+	GREG32(CRYPTO, INT_STATE) = -1;
+
+	/* Wipe. */
+	GREG32(CRYPTO, WIPE_SECRETS) = 1;
+	while (GREAD_FIELD(CRYPTO, INT_STATE, DONE_WIPE_SECRETS) != 0)
+		;
+}
 
 void dcrypto_init_and_lock(void)
 {
@@ -29,9 +44,7 @@ void dcrypto_init_and_lock(void)
 	REG_WRITE_MLV(GR_PMU_PERICLKSET0, GC_PMU_PERICLKSET0_DCRYPTO0_CLK_MASK,
 		GC_PMU_PERICLKSET0_DCRYPTO0_CLK_LSB, 1);
 
-	/* Reset. */
-	REG_WRITE_MLV(GR_PMU_RST0, GC_PMU_RST0_DCRYPTO0_MASK,
-		GC_PMU_RST0_DCRYPTO0_LSB, 0);
+	dcrypto_reset_and_wipe();
 
 	/* Turn off random nops (which are enabled by default). */
 	GWRITE_FIELD(CRYPTO, RAND_STALL_CTL, STALL_EN, 0);
@@ -55,10 +68,6 @@ void dcrypto_init_and_lock(void)
 
 	task_enable_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
 
-	/* Reset. */
-	GREG32(CRYPTO, CONTROL) = 1;
-	GREG32(CRYPTO, CONTROL) = 0;
-
 	dcrypto_is_initialized = 1;
 }
 
@@ -72,7 +81,7 @@ void dcrypto_unlock(void)
 #endif
 /*
  * When running on Cr50 this event belongs in the TPM task event space. Make
- * sure there is no collision with events defined in ./common/tpm_regsters.c.
+ * sure there is no collision with events defined in ./common/tpm_registers.c.
  */
 #define TASK_EVENT_DCRYPTO_DONE  TASK_EVENT_CUSTOM_BIT(0)
 
@@ -94,6 +103,7 @@ uint32_t dcrypto_call(uint32_t adr)
 	case TASK_EVENT_DCRYPTO_DONE:
 		return 0;
 	default:
+		dcrypto_reset_and_wipe();
 		return 1;
 	}
 }
