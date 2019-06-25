@@ -2145,6 +2145,9 @@
 #undef CONFIG_I2C_PASSTHRU_RESTRICTED
 #undef CONFIG_I2C_VIRTUAL_BATTERY
 
+/* Temporary to limit having to change every board at the same time */
+#undef CONFIG_I2C_7BIT_EC_SLAVE
+
 /*
  * Define this option if an i2c bus may be unpowered at a certain point during
  * runtime.  An example could be, a sensor bus which is not needed in lower

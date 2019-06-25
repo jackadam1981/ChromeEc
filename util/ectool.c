@@ -6070,12 +6070,19 @@ int do_i2c_xfer(unsigned int port, unsigned int addr,
 static void cmd_i2c_help(void)
 {
 	fprintf(stderr,
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+	"  Usage: i2cread <8 | 16> <port> <addr7> <offset>\n"
+	"  Usage: i2cwrite <8 | 16> <port> <addr7> <offset> <data>\n"
+#else
 	"  Usage: i2cread <8 | 16> <port> <addr8> <offset>\n"
 	"  Usage: i2cwrite <8 | 16> <port> <addr8> <offset> <data>\n"
+#endif
 	"  Usage: i2cxfer <port> <addr7> <read_count> [bytes...]\n"
 	"    <port> i2c port number\n"
-	"    <addr8> 8-bit i2c address\n"
 	"    <addr7> 7-bit i2c address\n"
+#ifndef CONFIG_I2C_7BIT_EC_SLAVE
+	"    <addr8> 8-bit i2c address\n"
+#endif
 	"    <offset> offset to read from or write to\n"
 	"    <data> data to write\n"
 	"    <read_count> number of bytes to read\n"
@@ -6116,8 +6123,10 @@ int cmd_i2c_read(int argc, char *argv[])
 		fprintf(stderr, "Bad address.\n");
 		return -1;
 	}
+#ifndef CONFIG_I2C_7BIT_EC_SLAVE
 	/* Convert from 8-bit to 7-bit address */
 	addr = addr >> 1;
+#endif
 
 	write_buf[0] = strtol(argv[4], &e, 0);
 	if (e && *e) {
@@ -6169,8 +6178,10 @@ int cmd_i2c_write(int argc, char *argv[])
 		fprintf(stderr, "Bad address.\n");
 		return -1;
 	}
+#ifndef CONFIG_I2C_7BIT_EC_SLAVE
 	/* Convert from 8-bit to 7-bit address */
 	addr = addr >> 1;
+#endif
 
 	write_buf[0] = strtol(argv[4], &e, 0);
 	if (e && *e) {

@@ -8,7 +8,11 @@
 #ifndef __CROS_EC_TMP468_H
 #define __CROS_EC_TMP468_H
 
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define TMP468_I2C_ADDR (0x48 | I2C_FLAG_BIG_ENDIAN)
+#else
 #define TMP468_I2C_ADDR (0x90 | I2C_FLAG_BIG_ENDIAN)
+#endif
 #define TMP468_SHIFT1 7
 
 #define TMP468_LOCAL			0x00

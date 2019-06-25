@@ -106,8 +106,11 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 	/* Payload is ready to execute. */
 	uint32_t count      = usb_i2c_read_packet(config);
 	int portindex       = (config->buffer[0] >> 0) & 0xf;
-	/* Convert 7-bit slave address to chromium EC 8-bit address. */
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+	uint8_t slave_addr  = (config->buffer[0] >> 8) & 0x7f;
+#else
 	uint8_t slave_addr  = (config->buffer[0] >> 7) & 0xfe;
+#endif
 
 	int write_count     = ((config->buffer[0] << 4) & 0xf00) |
 		((config->buffer[1] >> 0) & 0xff);

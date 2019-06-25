@@ -265,7 +265,11 @@ enum interface_mode {
  * stm32f07xxx: 0x76
  * stm32f411xx: 0x72
  */
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define DEFAULT_I2C_SLAVE_ADDRESS 0x3B
+#else
 #define DEFAULT_I2C_SLAVE_ADDRESS 0x76
+#endif
 
 /* store custom parameters */
 speed_t baudrate = DEFAULT_BAUDRATE;
@@ -472,7 +476,11 @@ int open_i2c(const int port)
 		perror("Unable to open i2c adapter");
 		return -1;
 	}
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+	if (ioctl(fd, I2C_SLAVE, i2c_slave_address) < 0) {
+#else
 	if (ioctl(fd, I2C_SLAVE, i2c_slave_address >> 1) < 0) {
+#endif
 		perror("Unable to select proper address");
 		close(fd);
 		return -1;

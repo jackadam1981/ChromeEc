@@ -13,7 +13,11 @@
 #include "mag_bmm150.h"
 #include "mag_lis2mdl.h"
 
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define LSM6DSM_I2C_ADDR(__x)		(__x)
+#else
 #define LSM6DSM_I2C_ADDR(__x)		(__x << 1)
+#endif
 
 /*
  * 7-bit address is 110101xb. Where 'x' is determined

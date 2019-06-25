@@ -23,6 +23,7 @@
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_I2C_7BIT_EC_SLAVE
 
 #define CONFIG_ACCEL_LNG2DM		/* Base sensor: LNG2DM
 					 * (uses LIS2DH driver)
