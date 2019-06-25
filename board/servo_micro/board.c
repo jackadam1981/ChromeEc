@@ -248,8 +248,8 @@ DECLARE_CONSOLE_COMMAND(baud, command_uart_baud,
  * enable_ite_dfu stops working, or does not work on a new ITE EC chip revision.
  */
 
-#define ITE_DFU_I2C_CMD_ADDR 0xB4  /* 7 bit form is 0x5A */
-#define ITE_DFU_I2C_DATA_ADDR 0x6A  /* 7 bit form is 0x35 */
+#define ITE_DFU_I2C_CMD_ADDR__7b 0x5A
+#define ITE_DFU_I2C_DATA_ADDR__7b 0x35
 
 #define SMCLK_WAVEFORM_PERIOD_HZ (100 * KHz)
 #define SMDAT_WAVEFORM_PERIOD_HZ (200 * KHz)
@@ -287,13 +287,13 @@ static int ite_i2c_read_register(uint8_t register_offset, uint8_t *output)
 	 */
 	int ret;
 	/* Tell the ITE EC which register we want to read. */
-	ret = i2c_xfer_unlocked(I2C_PORT_MASTER, ITE_DFU_I2C_CMD_ADDR,
+	ret = i2c_xfer_unlocked__7b(I2C_PORT_MASTER, ITE_DFU_I2C_CMD_ADDR__7b,
 		&register_offset, sizeof(register_offset),
 		NULL, 0, I2C_XFER_SINGLE);
 	if (ret != EC_SUCCESS)
 		return ret;
 	/* Read in the 1 byte register value. */
-	ret = i2c_xfer_unlocked(I2C_PORT_MASTER, ITE_DFU_I2C_DATA_ADDR, NULL, 0,
+	ret = i2c_xfer_unlocked__7b(I2C_PORT_MASTER, ITE_DFU_I2C_DATA_ADDR__7b, NULL, 0,
 		output, sizeof(*output), I2C_XFER_SINGLE);
 	return ret;
 }
