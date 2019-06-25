@@ -16,7 +16,7 @@
 #include "driver/tcpm/tcpm.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "i2c_spi_slave.h"
+#include "i2c.h"
 #include "system.h"
 #include "tcpci.h"
 #include "usb_mux.h"
@@ -75,8 +75,11 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
-		.port_addr__7b = MUX_PORT_AND_ADDR(
-			I2C_PORT_USBC1, PS8751_I2C_ADDR1__7b),
+		.port_addr__7b = {
+			.slave_addr = {
+				.port = I2C_PORT_USBC1,
+				.i2c_addr = PS8751_I2C_ADDR1__7b,
+			},
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,

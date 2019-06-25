@@ -328,9 +328,7 @@ struct tcpm_drv {
 
 struct tcpc_config_t {
 	enum ec_bus_type bus_type;	/* enum ec_bus_type */
-	union {
-		struct i2c_info_t i2c_info;
-	};
+	struct slave_addr_t slave_addr;
 	const struct tcpm_drv *drv;
 	/* See TCPC_FLAGS_* above */
 	uint32_t flags;

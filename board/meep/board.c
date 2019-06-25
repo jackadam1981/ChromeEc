@@ -137,8 +137,10 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &kionix_accel_drv,
 		.mutex = &g_lid_mutex,
 		.drv_data = &kx022_data,
-		.port = I2C_PORT_SENSOR,
-		.addr__8b = KX022_ADDR1__7b << 1,
+		.slave_addr = {
+			.port = I2C_PORT_SENSOR,
+			.i2c_addr__7b = KX022_ADDR1__7b,
+		},
 		.rot_standard_ref = &lid_standrd_ref,
 		.default_range = 2, /* g */
 		.config = {
@@ -165,8 +167,10 @@ struct motion_sensor_t motion_sensors[] = {
 				MOTIONSENSE_TYPE_ACCEL),
 		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
 		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
-		.port = I2C_PORT_SENSOR,
-		.addr__8b = LSM6DSM_ADDR0__7b << 1,
+		.slave_addr = {
+			.port = I2C_PORT_SENSOR,
+			.i2c_addr__7b = LSM6DSM_ADDR0__7b,
+		},
 		.rot_standard_ref = &base_standard_ref,
 		.default_range = 2,  /* g */
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,
@@ -197,8 +201,10 @@ struct motion_sensor_t motion_sensors[] = {
 				MOTIONSENSE_TYPE_GYRO),
 		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
 		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
-		.port = I2C_PORT_SENSOR,
-		.addr__8b = LSM6DSM_ADDR0__7b << 1,
+		.slave_addr = {
+			.port = I2C_PORT_SENSOR,
+			.i2c_addr__7b = LSM6DSM_ADDR0__7b,
+		},
 		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,

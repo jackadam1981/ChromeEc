@@ -31,18 +31,20 @@ static int source_enabled[CONFIG_USB_PD_PORT_COUNT];
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
-	return i2c_read8__7b(ppc_chips[port].i2c_port,
-			 ppc_chips[port].i2c_addr__7b,
-			 reg,
-			 regval);
+	const struct slave_addr_t slave_addr = {
+		.port = ppc_chips[port].i2c_port,
+		.i2c_addr__7b = ppc_chips[port].i2c_addr__7b,
+	};
+	return i2c_read8(slave_addr, reg, regval);
 }
 
 static int write_reg(uint8_t port, int reg, int regval)
 {
-	return i2c_write8__7b(ppc_chips[port].i2c_port,
-			  ppc_chips[port].i2c_addr__7b,
-			  reg,
-			  regval);
+	const struct slave_addr_t slave_addr = {
+		.port = ppc_chips[port].i2c_port,
+		.i2c_addr__7b = ppc_chips[port].i2c_addr__7b,
+	};
+	return i2c_write8(slave_addr, reg, regval);
 }
 
 static int set_flags(const int port, const int addr, const int flags_to_set)
@@ -77,13 +79,11 @@ static int sn5s330_dump(int port)
 {
 	int i;
 	int data;
-	const int i2c_port = ppc_chips[port].i2c_port;
-	const int i2c_addr__7b = ppc_chips[port].i2c_addr__7b;
 
 	/* Flush after every set otherwise console buffer may get full. */
 
 	for (i = SN5S330_FUNC_SET1; i <= SN5S330_FUNC_SET12; i++) {
-		i2c_read8__7b(i2c_port, i2c_addr__7b, i, &data);
+		i2c_read8(ppc_chips[port].slave_addr, i, &data);
 		ccprintf("FUNC_SET%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_FUNC_SET1 + 1,
 			 i,
@@ -93,7 +93,7 @@ static int sn5s330_dump(int port)
 	cflush();
 
 	for (i = SN5S330_INT_STATUS_REG1; i <= SN5S330_INT_STATUS_REG4; i++) {
-		i2c_read8__7b(i2c_port, i2c_addr__7b, i, &data);
+		i2c_read8(ppc_chips[port].slave_addr, i, &data);
 		ccprintf("INT_STATUS_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_STATUS_REG1 + 1,
 			 i,
@@ -104,7 +104,7 @@ static int sn5s330_dump(int port)
 
 	for (i = SN5S330_INT_TRIP_RISE_REG1; i <= SN5S330_INT_TRIP_RISE_REG3;
 	     i++) {
-		i2c_read8__7b(i2c_port, i2c_addr__7b, i, &data);
+		i2c_read8(ppc_chips[port].slave_addr, i, &data);
 		ccprintf("INT_TRIP_RISE_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_TRIP_RISE_REG1 + 1,
 			 i,
@@ -115,7 +115,7 @@ static int sn5s330_dump(int port)
 
 	for (i = SN5S330_INT_TRIP_FALL_REG1; i <= SN5S330_INT_TRIP_FALL_REG3;
 	     i++) {
-		i2c_read8__7b(i2c_port, i2c_addr__7b, i, &data);
+		i2c_read8(ppc_chips[port].slave_addr, i, &data);
 		ccprintf("INT_TRIP_FALL_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_TRIP_FALL_REG1 + 1,
 			 i,
@@ -126,7 +126,7 @@ static int sn5s330_dump(int port)
 
 	for (i = SN5S330_INT_MASK_RISE_REG1; i <= SN5S330_INT_MASK_RISE_REG3;
 	     i++) {
-		i2c_read8__7b(i2c_port, i2c_addr__7b, i, &data);
+		i2c_read8(ppc_chips[port].slave_addr, i, &data);
 		ccprintf("INT_MASK_RISE_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_MASK_RISE_REG1 + 1,
 			 i,
@@ -137,7 +137,7 @@ static int sn5s330_dump(int port)
 
 	for (i = SN5S330_INT_MASK_FALL_REG1; i <= SN5S330_INT_MASK_FALL_REG3;
 	     i++) {
-		i2c_read8__7b(i2c_port, i2c_addr__7b, i, &data);
+		i2c_read8(ppc_chips[port].slave_addr, i, &data);
 		ccprintf("INT_MASK_FALL_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_MASK_FALL_REG1 + 1,
 			 i,
@@ -183,8 +183,10 @@ static int sn5s330_init(int port)
 	int status;
 	int retries;
 	int reg;
-	const int i2c_port  = ppc_chips[port].i2c_port;
-	const int i2c_addr__7b = ppc_chips[port].i2c_addr__7b;
+	const struct slave_addr_t slave_addr = {
+		.port = ppc_chips[port].i2c_port,
+		.i2c_addr__7b = ppc_chips[port].i2c_addr__7b,
+	};
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Set the sourcing current limit value. */
@@ -211,8 +213,7 @@ static int sn5s330_init(int port)
 	 */
 	retries = 0;
 	do {
-		status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET1,
-				    regval);
+		status = i2c_write8(slave_addr, SN5S330_FUNC_SET1, regval);
 		if (status) {
 			CPRINTS("ppc p%d: Failed to set FUNC_SET1! Retrying..",
 				port);
@@ -225,21 +226,21 @@ static int sn5s330_init(int port)
 
 	/* Set Vbus OVP threshold to ~22.325V. */
 	regval = 0x37;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET5, regval);
+	status = i2c_write8(slave_addr, SN5S330_FUNC_SET5, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to set FUNC_SET5!", port);
 		return status;
 	}
 
 	/* Set Vbus UVP threshold to ~2.75V. */
-	status = i2c_read8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET6, &regval);
+	status = i2c_read8(slave_addr, SN5S330_FUNC_SET6, &regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to read FUNC_SET6!", port);
 		return status;
 	}
 	regval &= ~0x3F;
 	regval |= 1;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET6, regval);
+	status = i2c_write8(slave_addr, SN5S330_FUNC_SET6, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write FUNC_SET6!", port);
 		return status;
@@ -247,7 +248,7 @@ static int sn5s330_init(int port)
 
 	/* Enable SBU Fets and set PP2 current limit to ~3A. */
 	regval = SN5S330_SBU_EN | 0x8;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET2, regval);
+	status = i2c_write8(slave_addr, SN5S330_FUNC_SET2, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to set FUNC_SET2!", port);
 		return status;
@@ -266,7 +267,7 @@ static int sn5s330_init(int port)
 	 * low voltage protection).
 	 */
 	regval = SN5S330_OVP_EN_CC | SN5S330_PP2_CONFIG | SN5S330_CONFIG_UVP;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET9, regval);
+	status = i2c_write8(slave_addr, SN5S330_FUNC_SET9, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to set FUNC_SET9!", port);
 		return status;
@@ -274,8 +275,7 @@ static int sn5s330_init(int port)
 
 	/* Set analog current limit delay to 200 us for both PP1 & PP2. */
 	regval = (PPX_ILIM_DEGLITCH_0_US_200 << 3) | PPX_ILIM_DEGLITCH_0_US_200;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET11,
-			    regval);
+	status = i2c_write8(slave_addr, SN5S330_FUNC_SET11, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to set FUNC_SET11", port);
 		return status;
@@ -288,14 +288,14 @@ static int sn5s330_init(int port)
 	 * reset default (20 us).
 	 */
 	regval = 0;
-	status = i2c_read8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET8, &regval);
+	status = i2c_read8(slave_addr, SN5S330_FUNC_SET8, &regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to read FUNC_SET8!", port);
 		return status;
 	}
 	regval &= ~SN5S330_VCONN_DEGLITCH_MASK;
 	regval |= SN5S330_VCONN_DEGLITCH_640_US;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_FUNC_SET8, regval);
+	status = i2c_write8(slave_addr, SN5S330_FUNC_SET8, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to set FUNC_SET8!", port);
 		return status;
@@ -347,8 +347,7 @@ static int sn5s330_init(int port)
 	 * is checked below.
 	 */
 	regval = SN5S330_DIG_RES | SN5S330_VSAFE0V_MASK;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_STATUS_REG4,
-			    regval);
+	status = i2c_write8(slave_addr, SN5S330_INT_STATUS_REG4, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_STATUS_REG4!", port);
 		return status;
@@ -365,30 +364,26 @@ static int sn5s330_init(int port)
 	 */
 
 	regval = ~SN5S330_ILIM_PP1_MASK;
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_MASK_RISE_REG1,
-			    regval);
+	status = i2c_write8(slave_addr, SN5S330_INT_MASK_RISE_REG1, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_RISE1!", port);
 		return status;
 	}
 
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_MASK_FALL_REG1,
-			    regval);
+	status = i2c_write8(slave_addr, SN5S330_INT_MASK_FALL_REG1, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_FALL1!", port);
 		return status;
 	}
 
 	/* Now mask all the other interrupts. */
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_MASK_RISE_REG2,
-			    0xFF);
+	status = i2c_write8(slave_addr, SN5S330_INT_MASK_RISE_REG2, 0xFF);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_RISE2!", port);
 		return status;
 	}
 
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_MASK_FALL_REG2,
-			    0xFF);
+	status = i2c_write8(slave_addr, SN5S330_INT_MASK_FALL_REG2, 0xFF);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_FALL2!", port);
 		return status;
@@ -401,15 +396,13 @@ static int sn5s330_init(int port)
 	regval = 0xFF;
 #endif  /* CONFIG_USB_PD_VBUS_DETECT_PPC && CONFIG_USB_CHARGER */
 
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_MASK_RISE_REG3,
-			    regval);
+	status = i2c_write8(slave_addr, SN5S330_INT_MASK_RISE_REG3, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_RISE3!", port);
 		return status;
 	}
 
-	status = i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_MASK_FALL_REG3,
-			    regval);
+	status = i2c_write8(slave_addr, SN5S330_INT_MASK_FALL_REG3, regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_FALL3!", port);
 		return status;
@@ -419,7 +412,7 @@ static int sn5s330_init(int port)
 	for (reg = SN5S330_INT_TRIP_RISE_REG1;
 	     reg <= SN5S330_INT_TRIP_FALL_REG3;
 	     reg++) {
-		status = i2c_write8__7b(i2c_port, i2c_addr__7b, reg, 0xFF);
+		status = i2c_write8(slave_addr, reg, 0xFF);
 		if (status) {
 			CPRINTS("ppc p%d: Failed to write reg 0x%2x!", port);
 			return status;
@@ -431,8 +424,7 @@ static int sn5s330_init(int port)
 	 * For PP2, check to see if we booted in dead battery mode.  If we
 	 * booted in dead battery mode, the PP2 FET will already be enabled.
 	 */
-	status = i2c_read8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_STATUS_REG4,
-			   &regval);
+	status = i2c_read8(slave_addr, SN5S330_INT_STATUS_REG4, &regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to read INT_STATUS_REG4!", port);
 		return status;
@@ -443,8 +435,7 @@ static int sn5s330_init(int port)
 		 * Clear the bit by writing 1 and keep vSafe0V_MASK
 		 * unchanged.
 		 */
-		i2c_write8__7b(i2c_port, i2c_addr__7b, SN5S330_INT_STATUS_REG4,
-			   regval);
+		i2c_write8(slave_addr, SN5S330_INT_STATUS_REG4, regval);
 
 		/* Turn on PP2 FET. */
 		status = sn5s330_pp_fet_enable(port, SN5S330_PP2, 1);
