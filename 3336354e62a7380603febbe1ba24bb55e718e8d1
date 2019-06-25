@@ -94,6 +94,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe58c51_c277684f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-25T22:18:01Z",
+      "side": 1,
+      "message": "When we test TCPC firmware update, we have to consume a write cycle anyway. We will just consume write cycles twice as fast: once for successful update and once for corruption. FYI, that\u0027s how we test firmware update for AP and EC. We don\u0027t trust firmware update unless corruption is tested.\n\n\u003e product ID is bad but the chip is still okay to update back to good FW\n\u003e is likely beyond the scope of what we can reasonably do reliably\n\nI believe we want any update failure to be recoverable, meaning we have an opportunity to try flashing again. If not, updating TCPC firmware itself is too risky to even try. So, we can entirely corrupt firmware to emulate failure in reading product_id. We don\u0027t have to craft binary and partially corrupt it.\n\nWrite cycle overflow is another corner case we ideally want to test. There will be some lines of code (and system states) which we would never exercise otherwise.",
+      "parentUuid": "e2be34d6_08858a51",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
