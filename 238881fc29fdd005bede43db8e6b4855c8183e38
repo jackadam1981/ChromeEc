@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43e68523_5a683437",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-25T22:13:19Z",
+      "side": 1,
+      "message": "How about displaying the number of characters generated?\n\nIt would be useful in calculating the character loss.",
+      "revId": "238881fc29fdd005bede43db8e6b4855c8183e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c3d310_576a1986",
+        "filename": "util/chargen",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-25T22:13:19Z",
+      "side": 1,
+      "message": "Likewise, how about displaying the number of characters generated?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "238881fc29fdd005bede43db8e6b4855c8183e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
