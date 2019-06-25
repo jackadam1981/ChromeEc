@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13e89d16_7de90b56",
+        "filename": "board/flapjack/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-25T15:18:13Z",
+      "side": 1,
+      "message": "This should be declared in a common header, where mt8183.c and */board.c can see.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 46
+      },
+      "revId": "78dddba004a212c41e57f7e22f889c63a4c2cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
