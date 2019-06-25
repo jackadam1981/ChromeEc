@@ -1056,6 +1056,7 @@ enum pd_rev_type {
  */
 #define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
+#define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
 #define PD_HEADER_REV(header)   (((header) >> 6) & 3)
 #define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
