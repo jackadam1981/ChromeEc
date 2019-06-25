@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "lid_switch.h"
+#include "mt8183.h"
 #include "power.h"
 #include "power_button.h"
 #include "system.h"
@@ -193,7 +194,7 @@ enum power_state power_chipset_init(void)
 static void release_pmic_force_reset(void)
 {
 	CPRINTS("Releasing PMIC force reset");
-	gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+	mt8183_set_pmic_force_reset(0);
 }
 DECLARE_DEFERRED(release_pmic_force_reset);
 
@@ -293,7 +294,7 @@ enum power_state power_handle_state(enum power_state state)
 		forcing_shutdown = 0;
 
 		hook_call_deferred(&release_pmic_force_reset_data, -1);
-		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+		mt8183_set_pmic_force_reset(0);
 
 		/* Power up to next state */
 		return POWER_S5;
@@ -428,7 +429,7 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		if (power_get_signals() & IN_PGOOD_PMIC) {
 			CPRINTS("Forcing PMIC off");
-			gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
+			mt8183_set_pmic_force_reset(1);
 			msleep(5);
 			hook_call_deferred(&release_pmic_force_reset_data,
 				PMIC_FORCE_RESET_TIME);
@@ -470,3 +471,8 @@ static void lid_changed(void)
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lid_changed, HOOK_PRIO_DEFAULT);
 #endif
+
+__overridable void mt8183_set_pmic_force_reset(int asserted)
+{
+	gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, !asserted);
+}
