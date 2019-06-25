@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7b13251_d17ee67a",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e89cb2b_2ce23131",
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d719ad44_b448260c",
         "filename": "common/ioexpander.c",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010e914b_a838b220",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d719ad44_b448260c",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c0fce507_84163c1a",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7f1c61_76a80968",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3632fb0_5200705a",
         "filename": "common/ioexpander.c",
         "patchSetId": 1
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "c4912e45_c1bafa79",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:32Z",
+      "side": 1,
+      "message": "Done by removing this checking.",
+      "parentUuid": "a3632fb0_5200705a",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d2afb93_d9d4c09d",
         "filename": "include/gpio_signal.h",
         "patchSetId": 1
@@ -108,6 +198,30 @@
       "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5c4841_431d46ba",
+        "filename": "include/gpio_signal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:32Z",
+      "side": 1,
+      "message": "ok. Let remove the IOEX_UNIMPLEMENTED in this file and also gpio_list.h.\nAll the checks for \"mask\u003d\u003d0\" are also removed in ioexpander.c.",
+      "parentUuid": "5d2afb93_d9d4c09d",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "3acac3c956b16abac7420b0f5fbadf841dd706e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
