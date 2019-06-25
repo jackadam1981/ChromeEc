@@ -671,3 +671,8 @@ void board_fill_source_power_info(int port,
 	r->meas.current_lim = 1500;
 	r->max_power = r->meas.voltage_now * r->meas.current_max;
 }
+
+void board_set_pmic_force_reset(int asserted)
+{
+	gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, !asserted);
+}

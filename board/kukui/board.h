@@ -289,6 +289,7 @@ int board_charge_port_is_sink(int port);
 int board_charge_port_is_connected(int port);
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
+void board_set_pmic_force_reset(int asserted);
 
 #endif /* !__ASSEMBLER__ */
 
