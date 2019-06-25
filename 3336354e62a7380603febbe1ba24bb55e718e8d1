@@ -118,6 +118,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "672f601f_85bc2f04",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-25T23:11:26Z",
+      "side": 1,
+      "message": "For reference, I believe the ANX chip on Eve only has ~9 write cycles before the chip is no longer able to update. This isn\u0027t something we can put in faft, at least for that device.\n\nThe way Karthik defined the meaning for 0 and 1, a FAFT test can get information for 0 and for 1 and compare the two. One will be live data (1) and the other will have the hard coded value (0). FAFT can assert that the values are the same",
+      "parentUuid": "ebe58c51_c277684f",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
