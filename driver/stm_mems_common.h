@@ -34,33 +34,33 @@
 /**
  * Read single register
  */
-static inline int st_raw_read8(const int port, const int addr, const int reg,
+static inline int st_raw_read8__8b(const int port, const int addr, const int reg,
 		     int *data_ptr)
 {
 	/* TODO: Implement SPI interface support */
-	return i2c_read8(port, addr, reg, data_ptr);
+	return i2c_read8__7b(port, addr >> 1, reg, data_ptr);
 }
 
 /**
  * Write single register
  */
-static inline int st_raw_write8(const int port, const int addr, const int reg,
+static inline int st_raw_write8__8b(const int port, const int addr, const int reg,
 		      int data)
 {
 	/* TODO: Implement SPI interface support */
-	return i2c_write8(port, addr, reg, data);
+	return i2c_write8__7b(port, addr >> 1, reg, data);
 }
 
 /**
  * st_raw_read_n - Read n bytes for read
  */
-int st_raw_read_n(const int port, const int addr, const uint8_t reg,
+int st_raw_read_n__8b(const int port, const int addr, const uint8_t reg,
 	       uint8_t *data_ptr, const int len);
 
 /**
  * st_raw_read_n_noinc - Read n bytes for read (no auto inc address)
  */
-int st_raw_read_n_noinc(const int port, const int addr, const uint8_t reg,
+int st_raw_read_n_noinc__8b(const int port, const int addr, const uint8_t reg,
 	       uint8_t *data_ptr, const int len);
 
  /**

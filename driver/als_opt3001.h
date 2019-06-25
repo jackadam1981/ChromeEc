@@ -8,11 +8,13 @@
 #ifndef __CROS_EC_ALS_OPT3001_H
 #define __CROS_EC_ALS_OPT3001_H
 
+#define OPT3001_I2C_ADDRESS__7b(_addr)	((_addr) >> 1)
+
 /* I2C interface */
-#define OPT3001_I2C_ADDR1		(0x44 << 1)
-#define OPT3001_I2C_ADDR2		(0x45 << 1)
-#define OPT3001_I2C_ADDR3		(0x46 << 1)
-#define OPT3001_I2C_ADDR4		(0x47 << 1)
+#define OPT3001_I2C_ADDR1__8b		(0x44 << 1)
+#define OPT3001_I2C_ADDR2__8b		(0x45 << 1)
+#define OPT3001_I2C_ADDR3__8b		(0x46 << 1)
+#define OPT3001_I2C_ADDR4__8b		(0x47 << 1)
 
 /* OPT3001 registers */
 #define OPT3001_REG_RESULT		0x00

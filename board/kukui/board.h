@@ -91,7 +91,7 @@
 #ifdef SECTION_IS_RW
 #ifndef BOARD_KRANE
 #define CONFIG_MAG_BMI160_BMM150
-#define CONFIG_ACCELGYRO_SEC_ADDR BMM150_ADDR0  /* 8-bit address */
+#define CONFIG_ACCELGYRO_SEC_ADDR__8b BMM150_ADDR0__8b  /* 8-bit address */
 #define CONFIG_MAG_CALIBRATE
 #endif /* !BOARD_KRANE */
 #define CONFIG_ACCELGYRO_BMI160
@@ -221,7 +221,7 @@
 #define I2C_PORT_ALS      1
 
 /* Route sbs host requests to virtual battery driver */
-#define VIRTUAL_BATTERY_ADDR 0x16
+#define VIRTUAL_BATTERY_ADDR__7b 0x16
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */

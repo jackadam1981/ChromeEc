@@ -236,7 +236,7 @@ static inline void push_in_buf(uint8_t **in, uint8_t val, int skip)
 	}
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int chip_i2c_xfer__7b(int port, int slave_addr, const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
 	int i;
