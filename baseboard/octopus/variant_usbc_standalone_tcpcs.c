@@ -15,6 +15,7 @@
 #include "driver/tcpm/tcpm.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c_spi_slave.h"
 #include "system.h"
 #include "tcpci.h"
 #include "usb_mux.h"
@@ -33,25 +34,25 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 #if defined(VARIANT_OCTOPUS_TCPC_0_PS8751)
 		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
+		.slave_addr = {
 			.port = I2C_PORT_TCPC0,
-			.addr__7b = PS8751_I2C_ADDR1__7b,
+			.i2c_addr__7b = PS8751_I2C_ADDR1__7b,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 #else
 		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
+		.slave_addr = {
 			.port = I2C_PORT_TCPC0,
-			.addr__7b = AN7447_TCPC0_I2C_ADDR__7b,
+			.i2c_addr__7b = AN7447_TCPC0_I2C_ADDR__7b,
 		},
 		.drv = &anx7447_tcpm_drv,
 #endif
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
+		.slave_addr = {
 			.port = I2C_PORT_TCPC1,
-			.addr__7b = PS8751_I2C_ADDR1__7b,
+			.i2c_addr__7b = PS8751_I2C_ADDR1__7b,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -90,13 +91,17 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 /* USB-C PPC Configuration */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
-		.i2c_port = I2C_PORT_TCPC0,
-		.i2c_addr__7b = NX20P3483_ADDR2__7b,
+		.slave_addr = {
+			.port = I2C_PORT_TCPC0,
+			.i2c_addr__7b = NX20P3483_ADDR2__7b,
+		},
 		.drv = &nx20p348x_drv,
 	},
 	[USB_PD_PORT_TCPC_1] = {
-		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr__7b = NX20P3483_ADDR2__7b,
+		.slave_addr = {
+			.port = I2C_PORT_TCPC1,
+			.i2c_addr__7b = NX20P3483_ADDR2__7b,
+		},
 		.drv = &nx20p348x_drv,
 	},
 };

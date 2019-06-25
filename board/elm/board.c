@@ -125,7 +125,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC,
-			.addr__7b = CONFIG_TCPC_I2C_BASE_ADDR__8b >> 1,
+			.addr__7b = CONFIG_TCPC_I2C_BASE_ADDR__7b,
 		},
 		.drv = &anx7688_tcpm_drv,
 	},

@@ -35,12 +35,20 @@ static int has_power(void)
 
 static int raw_read8(const int offset, int *data_ptr)
 {
-	return i2c_read8__7b(I2C_PORT_THERMAL, TMP432_I2C_ADDR__7b, offset, data_ptr);
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_THERMAL,
+		.i2c_addr__7b = TMP432_I2C_ADDR__7b,
+	};
+	return i2c_read8(slave_addr, offset, data_ptr);
 }
 
 static int raw_write8(const int offset, int data)
 {
-	return i2c_write8__7b(I2C_PORT_THERMAL, TMP432_I2C_ADDR__7b, offset, data);
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_THERMAL,
+		.i2c_addr__7b = TMP432_I2C_ADDR__7b,
+	};
+	return i2c_write8(slave_addr, offset, data);
 }
 
 static int get_temp(const int offset, int *temp_ptr)

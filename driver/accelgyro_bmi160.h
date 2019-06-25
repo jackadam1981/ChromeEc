@@ -28,8 +28,8 @@
 #define BMI160_I2C_ADDRESS__7b(_addr__8b)   ((_addr__8b) >> 1)
 
 /* I2C addresses */
-#define BMI160_ADDR0__8b             0xd0
-#define BMI160_ADDR1__8b             0xd2
+#define BMI160_ADDR0__7b             0x68
+#define BMI160_ADDR1__7b             0x69
 
 #define BMI160_CHIP_ID           0x00
 #define BMI160_CHIP_ID_MAJOR     0xd1

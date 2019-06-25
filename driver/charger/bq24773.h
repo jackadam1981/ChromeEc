@@ -105,23 +105,39 @@
 #ifdef CONFIG_CHARGER_BQ24773
 static inline int raw_read8(int offset, int *value)
 {
-	return i2c_read8__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_CHARGER,
+		.i2c_addr__7b = I2C_ADDR_CHARGER__7b,
+	};
+	return i2c_read8(slave_addr, offset, value);
 }
 
 static inline int raw_write8(int offset, int value)
 {
-	return i2c_write8__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_CHARGER,
+		.i2c_addr__7b = I2C_ADDR_CHARGER__7b,
+	};
+	return i2c_write8(slave_addr, offset, value);
 }
 #endif
 
 static inline int raw_read16(int offset, int *value)
 {
-	return i2c_read16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_CHARGER,
+		.i2c_addr__7b = I2C_ADDR_CHARGER__7b,
+	};
+	return i2c_read16(slave_addr, offset, value);
 }
 
 static inline int raw_write16(int offset, int value)
 {
-	return i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_CHARGER,
+		.i2c_addr__7b = I2C_ADDR_CHARGER__7b,
+	};
+	return i2c_write16(slave_addr, offset, value);
 }
 
 #endif /* __CROS_EC_BQ24773_H */

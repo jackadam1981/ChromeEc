@@ -41,6 +41,10 @@ static int pd_host_command_internal(int command, int version,
 	uint8_t sum = 0;
 	const uint8_t *c;
 	uint8_t *d;
+	const struct slave_addr_t slave_addr = {
+		.port = I2C_PORT_PD_MCU,
+		.i2c_addr__7b = CONFIG_USB_PD_I2C_SLAVE_ADDR__7b,
+	};
 
 	/* Fail if output size is too big */
 	if (outsize + sizeof(rq) > EC_LPC_HOST_PACKET_SIZE)
@@ -80,10 +84,9 @@ static int pd_host_command_internal(int command, int version,
 	 */
 	i2c_lock(I2C_PORT_PD_MCU, 1);
 	i2c_set_timeout(I2C_PORT_PD_MCU, PD_HOST_COMMAND_TIMEOUT_US);
-	ret = i2c_xfer_unlocked__7b(I2C_PORT_PD_MCU,
-			CONFIG_USB_PD_I2C_SLAVE_ADDR__8b >> 1,
-			&req_buf[0], outsize + sizeof(rq) + 1, &resp_buf[0],
-			2, I2C_XFER_START);
+	ret = i2c_xfer_unlocked(slave_addr,
+				&req_buf[0], outsize + sizeof(rq) + 1,
+				&resp_buf[0], 2, I2C_XFER_START);
 	i2c_set_timeout(I2C_PORT_PD_MCU, 0);
 	if (ret) {
 		i2c_lock(I2C_PORT_PD_MCU, 0);
@@ -95,9 +98,9 @@ static int pd_host_command_internal(int command, int version,
 
 	if (resp_len > (insize + sizeof(rs))) {
 		/* Do a dummy read to generate stop condition */
-		i2c_xfer_unlocked__7b(I2C_PORT_PD_MCU,
-			CONFIG_USB_PD_I2C_SLAVE_ADDR__8b >> 1,
-			0, 0, &resp_buf[2], 1, I2C_XFER_STOP);
+		i2c_xfer_unlocked(slave_addr,
+				  0, 0,
+				  &resp_buf[2], 1, I2C_XFER_STOP);
 		i2c_lock(I2C_PORT_PD_MCU, 0);
 		CPRINTF("[%T response size is too large %d > %d]\n",
 				resp_len, insize + sizeof(rs));
@@ -105,10 +108,9 @@ static int pd_host_command_internal(int command, int version,
 	}
 
 	/* Receive remaining data */
-	ret = i2c_xfer_unlocked__7b(I2C_PORT_PD_MCU,
-			CONFIG_USB_PD_I2C_SLAVE_ADDR__8b >> 1,
-			0, 0,
-			&resp_buf[2], resp_len, I2C_XFER_STOP);
+	ret = i2c_xfer_unlocked(slave_addr,
+				0, 0,
+				&resp_buf[2], resp_len, I2C_XFER_STOP);
 	i2c_lock(I2C_PORT_PD_MCU, 0);
 	if (ret) {
 		CPRINTF("[%T i2c transaction 2 failed: %d]\n", ret);

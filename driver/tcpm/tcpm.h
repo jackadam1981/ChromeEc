@@ -28,55 +28,47 @@
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 static inline int tcpc_write(int port, int reg, int val)
 {
-	return i2c_write8__7b(tcpc_config[port].i2c_info.port,
-			      tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_write8(tcpc_config[port].slave_addr, reg, val);
 }
 
 static inline int tcpc_write16(int port, int reg, int val)
 {
-	return i2c_write16__7b(tcpc_config[port].i2c_info.port,
-			       tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_write16(tcpc_config[port].slave_addr, reg, val);
 }
 
 static inline int tcpc_read(int port, int reg, int *val)
 {
-	return i2c_read8__7b(tcpc_config[port].i2c_info.port,
-			     tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_read8(tcpc_config[port].slave_addr, reg, val);
 }
 
 static inline int tcpc_read16(int port, int reg, int *val)
 {
-	return i2c_read16__7b(tcpc_config[port].i2c_info.port,
-			      tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_read16(tcpc_config[port].slave_addr, reg, val);
 }
 
 static inline int tcpc_xfer(int port, const uint8_t *out, int out_size,
 			    uint8_t *in, int in_size)
 {
-	return i2c_xfer__7b(tcpc_config[port].i2c_info.port,
-			    tcpc_config[port].i2c_info.addr__7b,
-			    out, out_size, in, in_size);
+	return i2c_xfer(tcpc_config[port].slave_addr,
+			out, out_size, in, in_size);
 }
 
 static inline int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 			    uint8_t *in, int in_size, int flags)
 {
-	return i2c_xfer_unlocked__7b(tcpc_config[port].i2c_info.port,
-				     tcpc_config[port].i2c_info.addr__7b,
-				     out, out_size, in, in_size, flags);
+	return i2c_xfer_unlocked(tcpc_config[port].slave_addr,
+				 out, out_size, in, in_size, flags);
 }
 
 static inline int tcpc_read_block(int port, int reg, uint8_t *in, int size)
 {
-	return i2c_read_block__7b(tcpc_config[port].i2c_info.port,
-				  tcpc_config[port].i2c_info.addr__7b, reg, in, size);
+	return i2c_read_block(tcpc_config[port].slave_addr, reg, in, size);
 }
 
 static inline int tcpc_write_block(int port, int reg,
 		const uint8_t *out, int size)
 {
-	return i2c_write_block__7b(tcpc_config[port].i2c_info.port,
-				   tcpc_config[port].i2c_info.addr__7b, reg, out, size);
+	return i2c_write_block(tcpc_config[port].slave_addr, reg, out, size);
 }
 
 #else /* !CONFIG_USB_PD_TCPC_LOW_POWER */

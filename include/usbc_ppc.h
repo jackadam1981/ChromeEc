@@ -7,6 +7,7 @@
 #define __CROS_EC_USBC_PPC_H
 
 #include "common.h"
+#include "i2c_spi_slave.h"
 #include "usb_pd_tcpm.h"
 
 /* Common APIs for USB Type-C Power Path Controllers (PPC) */
@@ -140,8 +141,7 @@ struct ppc_drv {
 };
 
 struct ppc_config_t {
-	int i2c_port;
-	int i2c_addr__7b;
+	struct slave_addr_t slave_addr;
 	const struct ppc_drv *drv;
 };
 

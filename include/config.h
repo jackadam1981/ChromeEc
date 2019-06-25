@@ -3580,7 +3580,7 @@
 #undef CONFIG_USB_PD_IDENTITY_SW_VERS
 
 /* USB PD MCU slave address for host commands */
-#define CONFIG_USB_PD_I2C_SLAVE_ADDR__8b 0x3C
+#define CONFIG_USB_PD_I2C_SLAVE_ADDR__7b 0x1E
 
 /* Define if using internal comparator for PD receive */
 #undef CONFIG_USB_PD_INTERNAL_COMP
@@ -3692,7 +3692,7 @@
 #undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 
 /* Define the type-c port controller I2C base address. */
-#define CONFIG_TCPC_I2C_BASE_ADDR__8b 0x9C
+#define CONFIG_TCPC_I2C_BASE_ADDR__7b 0x4E
 
 /* Use this option to enable Try.SRC mode for Dual Role devices */
 #undef CONFIG_USB_PD_TRY_SRC
