@@ -86,6 +86,30 @@
       "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ed69ef_b0003bd3",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-25T18:37:04Z",
+      "side": 1,
+      "message": "the idea is that we want to have enough time given to the background tasks to run, but not too much, so that in case the uart data keeps coming fast we do not risk overflow of the queue even if the deferred function is delayed.",
+      "parentUuid": "c5cd55cf_81ed0d2f",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "e7b76271c1039b9507995f5fa0254e787742bfc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
