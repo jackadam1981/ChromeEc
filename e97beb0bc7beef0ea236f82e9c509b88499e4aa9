@@ -166,6 +166,30 @@
       "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcef4e9_7a461b71",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1304283
+      },
+      "writtenOn": "2019-06-25T14:44:51Z",
+      "side": 1,
+      "message": "I spoke with Jett about this, and we came up with potential solution outlined here: http://go/ec-codegen-build. The gist of it is that the EC images built using make will not support using the generated code, whereas images built using portage will do it automatically. This won\u0027t require checking-in of ec_config.c",
+      "parentUuid": "4cfbc362_e99eaddb",
+      "range": {
+        "startLine": 1307,
+        "startChar": 3,
+        "endLine": 1307,
+        "endChar": 65
+      },
+      "revId": "e97beb0bc7beef0ea236f82e9c509b88499e4aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
