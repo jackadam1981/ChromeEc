@@ -44,6 +44,12 @@ static inline uint64_t scale_us2ticks(uint64_t us)
 	return us * CLOCK_FACTOR;
 }
 
+static inline uint32_t scale_us2ticks_32(uint32_t us)
+{
+	/* no optimization for ISH3 */
+	return us * CLOCK_FACTOR;
+}
+
 static inline uint64_t scale_ticks2us(uint64_t ticks)
 {
 	return ticks / CLOCK_FACTOR;
@@ -58,11 +64,32 @@ static inline void wait_while_settling(uint32_t mask)
 #define CLOCK_SCALE_BITS 15
 BUILD_ASSERT(BIT(CLOCK_SCALE_BITS) == ISH_HPET_CLK_FREQ);
 
+/* Slow version, for 64-bit precision */
 static inline uint64_t scale_us2ticks(uint64_t us)
 {
 	/* ticks = us * ISH_HPET_CLK_FREQ / SECOND */
 
 	return (us << CLOCK_SCALE_BITS) / SECOND;
+}
+
+/* Fast version, for 32-bit precision */
+static inline uint32_t scale_us2ticks_32(uint32_t us)
+{
+	/*
+	 * This is an approximation that will be (at most) 4 ticks off
+	 * for 32-bit inputs, and exactly equal for all 16-bit inputs.
+	 *
+	 * This works because:
+	 * x / y ≈ (x * (2^n / y)) / 2^n
+	 *
+	 * And will be exacly equal for all n ≤ 2^n.
+	 *
+	 * Use n = 16 so that all arithmetic can be done with 32-bit
+	 * integers.
+	 */
+	const uint32_t magic = (ISH_HPET_CLK_FREQ * BIT(16)) / SECOND;
+
+	return (us * magic) >> 16;
 }
 
 static inline uint64_t scale_ticks2us(uint64_t ticks)
@@ -139,7 +166,7 @@ void __hw_clock_event_set(uint32_t deadline)
 	 * every 10 seconds.
 	 */
 	wait_while_settling(HPET_T1_CMP_SETTLING);
-	HPET_TIMER_COMP(1) = current_ticks + scale_us2ticks(remaining_us);
+	HPET_TIMER_COMP(1) = current_ticks + scale_us2ticks_32(remaining_us);
 
 	/*
 	 * Update 'last_deadline' and add calibrate delta due to HPET timer
