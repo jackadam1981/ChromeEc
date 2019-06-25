@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09e3b054_51c6b0f3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-25T13:42:36Z",
+      "side": 1,
+      "message": "this operation also turned into an expensive, iterative __udivdi3 operation that takes many clock cycles. This isn\u0027t something we want on a critical path",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "52e914fa8e674f61b9602f124e998a74adbc2b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
