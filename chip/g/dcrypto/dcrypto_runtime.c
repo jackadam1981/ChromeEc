@@ -5,6 +5,7 @@
 #include "internal.h"
 
 #include "task.h"
+#include "trng.h"
 #include "registers.h"
 
 #define DMEM_NUM_WORDS 1024
@@ -12,13 +13,46 @@
 
 static struct mutex dcrypto_mutex;
 static volatile task_id_t my_task_id;
-static int dcrypto_is_initialized;
+static volatile int dcrypto_is_initialized;
 
-void dcrypto_init_and_lock(void)
+static const uint32_t wiped_value = 0xdddddddd;
+
+static void dcrypto_reset_and_wipe(void)
 {
 	int i;
 	volatile uint32_t *ptr;
 
+	/* Reset. */
+	GREG32(CRYPTO, CONTROL) = GC_CRYPTO_CONTROL_RESET_MASK;
+	GREG32(CRYPTO, CONTROL) = 0;
+
+	/* Reset all the status bits. */
+	GREG32(CRYPTO, INT_STATE) = -1;
+
+	/* Wipe state. */
+	GREG32(CRYPTO, WIPE_SECRETS) = 1;
+	while (GREAD_FIELD(CRYPTO, INT_STATE, DONE_WIPE_SECRETS) != 0)
+		;
+
+	/* Wipe DMEM. */
+	ptr = GREG32_ADDR(CRYPTO, DMEM_DUMMY);
+	for (i = 0; i < IMEM_NUM_WORDS; ++i)
+		*ptr++ = wiped_value;
+}
+
+static void dcrypto_wipe_imem(void)
+{
+	int i;
+	volatile uint32_t *ptr;
+
+	/* Wipe IMEM. */
+	ptr = GREG32_ADDR(CRYPTO, IMEM_DUMMY);
+	for (i = 0; i < IMEM_NUM_WORDS; ++i)
+		*ptr++ = wiped_value;
+}
+
+void dcrypto_init_and_lock(void)
+{
 	mutex_lock(&dcrypto_mutex);
 	my_task_id = task_get_current();
 
@@ -27,11 +61,10 @@ void dcrypto_init_and_lock(void)
 
 	/* Enable PMU. */
 	REG_WRITE_MLV(GR_PMU_PERICLKSET0, GC_PMU_PERICLKSET0_DCRYPTO0_CLK_MASK,
-		GC_PMU_PERICLKSET0_DCRYPTO0_CLK_LSB, 1);
+		      GC_PMU_PERICLKSET0_DCRYPTO0_CLK_LSB, 1);
 
-	/* Reset. */
-	REG_WRITE_MLV(GR_PMU_RST0, GC_PMU_RST0_DCRYPTO0_MASK,
-		GC_PMU_RST0_DCRYPTO0_LSB, 0);
+	dcrypto_reset_and_wipe();
+	dcrypto_wipe_imem();
 
 	/* Turn off random nops (which are enabled by default). */
 	GWRITE_FIELD(CRYPTO, RAND_STALL_CTL, STALL_EN, 0);
@@ -40,24 +73,10 @@ void dcrypto_init_and_lock(void)
 	/* Now turn on random nops. */
 	GWRITE_FIELD(CRYPTO, RAND_STALL_CTL, STALL_EN, 1);
 
-	/* Initialize DMEM. */
-	ptr = GREG32_ADDR(CRYPTO, DMEM_DUMMY);
-	for (i = 0; i < DMEM_NUM_WORDS; ++i)
-		*ptr++ = 0xdddddddd;
-
-	/* Initialize IMEM. */
-	ptr = GREG32_ADDR(CRYPTO, IMEM_DUMMY);
-	for (i = 0; i < IMEM_NUM_WORDS; ++i)
-		*ptr++ = 0xdddddddd;
-
-	GREG32(CRYPTO, INT_STATE) = -1;   /* Reset all the status bits. */
-	GREG32(CRYPTO, INT_ENABLE) = -1;  /* Enable all status bits. */
+	GREG32(CRYPTO, INT_STATE) = -1;	 /* Reset all the status bits. */
+	GREG32(CRYPTO, INT_ENABLE) = -1; /* Enable all status bits. */
 
 	task_enable_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
-
-	/* Reset. */
-	GREG32(CRYPTO, CONTROL) = 1;
-	GREG32(CRYPTO, CONTROL) = 0;
 
 	dcrypto_is_initialized = 1;
 }
@@ -68,13 +87,13 @@ void dcrypto_unlock(void)
 }
 
 #ifndef DCRYPTO_CALL_TIMEOUT_US
-#define DCRYPTO_CALL_TIMEOUT_US  (700 * 1000)
+#define DCRYPTO_CALL_TIMEOUT_US (700 * 1000)
 #endif
 /*
  * When running on Cr50 this event belongs in the TPM task event space. Make
- * sure there is no collision with events defined in ./common/tpm_regsters.c.
+ * sure there is no collision with events defined in ./common/tpm_registers.c.
  */
-#define TASK_EVENT_DCRYPTO_DONE  TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_DCRYPTO_DONE TASK_EVENT_CUSTOM_BIT(0)
 
 uint32_t dcrypto_call(uint32_t adr)
 {
@@ -92,8 +111,17 @@ uint32_t dcrypto_call(uint32_t adr)
 	/* TODO(ngm): switch return value to an enum. */
 	switch (event) {
 	case TASK_EVENT_DCRYPTO_DONE:
-		return 0;
+		/*
+		 * We expect only the CMD_RECV status bit to be set at this
+		 * point. CMD_DONE got cleared in the interrupt handler. Any and
+		 * all other bits are indicative of error.
+		 */
+		if (GREG32(CRYPTO, INT_STATE) ==
+		    GC_CRYPTO_INT_STATE_HOST_CMD_RECV_MASK)
+			return 0;
+		/* fall through */
 	default:
+		dcrypto_reset_and_wipe();
 		return 1;
 	}
 }
@@ -106,8 +134,7 @@ void __keep dcrypto_done_interrupt(void)
 }
 DECLARE_IRQ(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT, dcrypto_done_interrupt, 1);
 
-void dcrypto_imem_load(size_t offset, const uint32_t *opcodes,
-			size_t n_opcodes)
+void dcrypto_imem_load(size_t offset, const uint32_t *opcodes, size_t n_opcodes)
 {
 	size_t i;
 	volatile uint32_t *ptr = GREG32_ADDR(CRYPTO, IMEM_DUMMY);
@@ -124,11 +151,11 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 {
 	size_t i;
 	volatile uint32_t *ptr = GREG32_ADDR(CRYPTO, DMEM_DUMMY);
-	const uint32_t *src = (const uint32_t *) words;
-	struct access_helper *word_accessor = (struct access_helper *) src;
+	const uint32_t *src = (const uint32_t *)words;
+	struct access_helper *word_accessor = (struct access_helper *)src;
 	uint32_t diff = 0;
 
-	ptr += offset * 8;  /* Offset is in 256 bit addresses. */
+	ptr += offset * 8; /* Offset is in 256 bit addresses. */
 	for (i = 0; i < n_words; ++i) {
 		/*
 		 * The implementation of memcpy makes unaligned writes if src
@@ -142,3 +169,142 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 	}
 	return diff;
 }
+
+#if 0 /* manual console dcrypto_test command */
+
+/* AUTO-GENERATED.  DO NOT MODIFY. */
+/* clang-format off */
+static const uint32_t IMEM_test_hang[] = {
+/* @0x0: function forever[2] { */
+#define CF_forever_adr 0
+/*forever: */
+	0x10080000, /* b forever */
+	0x0c000000, /* ret */
+/* } */
+/* @0x2: function func17[2] { */
+#define CF_func17_adr 2
+	0x08000000, /* call &forever */
+	0x0c000000, /* ret */
+/* } */
+/* @0x4: function func16[2] { */
+#define CF_func16_adr 4
+	0x08000002, /* call &func17 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x6: function func15[2] { */
+#define CF_func15_adr 6
+	0x08000004, /* call &func16 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x8: function func14[2] { */
+#define CF_func14_adr 8
+	0x08000006, /* call &func15 */
+	0x0c000000, /* ret */
+/* } */
+/* @0xa: function func13[2] { */
+#define CF_func13_adr 10
+	0x08000008, /* call &func14 */
+	0x0c000000, /* ret */
+/* } */
+/* @0xc: function func12[2] { */
+#define CF_func12_adr 12
+	0x0800000a, /* call &func13 */
+	0x0c000000, /* ret */
+/* } */
+/* @0xe: function func11[2] { */
+#define CF_func11_adr 14
+	0x0800000c, /* call &func12 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x10: function func10[2] { */
+#define CF_func10_adr 16
+	0x0800000e, /* call &func11 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x12: function func9[2] { */
+#define CF_func9_adr 18
+	0x08000010, /* call &func10 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x14: function func8[2] { */
+#define CF_func8_adr 20
+	0x08000012, /* call &func9 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x16: function func7[2] { */
+#define CF_func7_adr 22
+	0x08000014, /* call &func8 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x18: function func6[2] { */
+#define CF_func6_adr 24
+	0x08000016, /* call &func7 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x1a: function func5[2] { */
+#define CF_func5_adr 26
+	0x08000018, /* call &func6 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x1c: function func4[2] { */
+#define CF_func4_adr 28
+	0x0800001a, /* call &func5 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x1e: function func3[2] { */
+#define CF_func3_adr 30
+	0x0800001c, /* call &func4 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x20: function func2[2] { */
+#define CF_func2_adr 32
+	0x0800001e, /* call &func3 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x22: function func1[2] { */
+#define CF_func1_adr 34
+	0x08000020, /* call &func2 */
+	0x0c000000, /* ret */
+/* } */
+/* @0x24: function test[2] { */
+#define CF_test_adr 36
+	0x08000022, /* call &func1 */
+	0x0c000000, /* ret */
+/* } */
+};
+/* clang-format on */
+
+#include "console.h"
+
+static int command_dcrypto_test(int argc, char *argv[])
+{
+	volatile uint32_t *ptr = GREG32_ADDR(CRYPTO, DMEM_DUMMY);
+	uint32_t expected = 0x1337babe;
+	int result;
+
+	dcrypto_init_and_lock();
+	dcrypto_imem_load(0, IMEM_test_hang, ARRAY_SIZE(IMEM_test_hang));
+
+	*ptr = ++expected;
+	result = dcrypto_call(CF_func2_adr); /* max stack, then hang */
+	if (result != 1 || *ptr != wiped_value)
+		ccprintf("dcrypto_test: fail1 %d,%08x\n", result, *ptr);
+
+	*ptr = ++expected;
+	result = dcrypto_call(CF_test_adr); /* stack overflow */
+	if (result != 1 || *ptr != wiped_value)
+		ccprintf("dcrypto_test: fail2 %d,%08x\n", result, *ptr);
+
+	*ptr = ++expected;
+	result = dcrypto_call(CF_test_adr + 1); /* simple ret */
+	if (result != 0 || *ptr != expected)
+		ccprintf("dcrypto_test: fail3 %d,%08x\n", result, *ptr);
+
+	dcrypto_unlock();
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(dcrypto_test, command_dcrypto_test, "",
+			     "dcrypto test");
+
+#endif
