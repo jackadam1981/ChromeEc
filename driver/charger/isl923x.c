@@ -56,17 +56,17 @@ static const struct charger_info isl9237_charger_info = {
 
 static inline int raw_read8(int offset, int *value)
 {
-	return i2c_read8(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+	return i2c_read8__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
 }
 
 static inline int raw_read16(int offset, int *value)
 {
-	return i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+	return i2c_read16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
 }
 
 static inline int raw_write16(int offset, int value)
 {
-	return i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, offset, value);
+	return i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, offset, value);
 }
 
 static int isl9237_set_current(uint16_t current)
@@ -572,7 +572,7 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 	int adc, curr, reg, ret;
 
 #ifdef CONFIG_CHARGER_ISL9238
-	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+	ret = i2c_read16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b,
 			ISL9238_REG_CONTROL3, &reg);
 	if (ret)
 		return ret;
@@ -582,7 +582,7 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 		reg |= ISL9238_C3_AMON_BMON_DIRECTION;
 	else
 		reg &= ~ISL9238_C3_AMON_BMON_DIRECTION;
-	ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+	ret = i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b,
 			ISL9238_REG_CONTROL3, reg);
 	if (ret)
 		return ret;
@@ -590,7 +590,7 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 
 	mutex_lock(&control1_mutex);
 
-	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+	ret = i2c_read16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b,
 			 ISL923X_REG_CONTROL1, &reg);
 	if (!ret) {
 		/* Switch between AMON/BMON */
@@ -601,7 +601,7 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 
 		/* Enable monitor */
 		reg &= ~ISL923X_C1_DISABLE_MON;
-		ret = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+		ret = i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b,
 				ISL923X_REG_CONTROL1, reg);
 	}
 

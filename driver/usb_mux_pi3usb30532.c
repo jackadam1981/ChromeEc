@@ -20,7 +20,7 @@ static int pi3usb30532_read(int port, uint8_t reg, uint8_t *val)
 	 * Second byte read will be vendor ID.
 	 * Third byte read will be selection control.
 	 */
-	res = i2c_read16(I2C_PORT_USB_MUX, MUX_ADDR(port), 0, &read);
+	res = i2c_read16__7b(I2C_PORT_USB_MUX, MUX_ADDR__7b(port), 0, &read);
 	if (res)
 		return res;
 
@@ -37,7 +37,7 @@ static int pi3usb30532_write(int port, uint8_t reg, uint8_t val)
 	if (reg != PI3USB30532_REG_CONTROL)
 		return EC_ERROR_UNKNOWN;
 
-	return i2c_write8(I2C_PORT_USB_MUX, MUX_ADDR(port), 0, val);
+	return i2c_write8__7b(I2C_PORT_USB_MUX, MUX_ADDR__7b(port), 0, val);
 }
 
 static int pi3usb30532_reset(int port)

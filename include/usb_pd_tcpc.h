@@ -18,9 +18,9 @@
 
 #ifdef TCPCI_I2C_SLAVE
 /* Convert TCPC address to type-C port number */
-#define TCPC_ADDR_TO_PORT(addr) (((addr) - CONFIG_TCPC_I2C_BASE_ADDR) >> 1)
+#define TCPC_ADDR_TO_PORT(addr) (((addr) - CONFIG_TCPC_I2C_BASE_ADDR__8b) >> 1)
 /* Check if the i2c address belongs to TCPC */
-#define ADDR_IS_TCPC(addr)      (((addr) & 0xfc) == CONFIG_TCPC_I2C_BASE_ADDR)
+#define ADDR_IS_TCPC(addr)      (((addr) & 0xfc) == CONFIG_TCPC_I2C_BASE_ADDR__8b)
 #endif
 
 /**

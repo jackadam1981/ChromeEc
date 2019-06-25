@@ -133,7 +133,7 @@ static int find_param_index(const int eng_val, const int round_up,
 /**
  * Read register from accelerometer.
  */
-static int raw_read8(const int port, const int addr, const int reg,
+static int raw_read8__8b(const int port, const int addr, const int reg,
 					 int *data_ptr)
 {
 	int rv = EC_ERROR_INVAL;
@@ -150,7 +150,9 @@ static int raw_read8(const int port, const int addr, const int reg,
 
 #endif
 	} else {
-		rv = i2c_read8(port, addr, reg, data_ptr);
+		rv = i2c_read8__7b(port,
+				   KIONIX_I2C_ADDRESS__7b(addr),
+				   reg, data_ptr);
 	}
 	return rv;
 }
@@ -158,7 +160,7 @@ static int raw_read8(const int port, const int addr, const int reg,
 /**
  * Write register from accelerometer.
  */
-static int raw_write8(const int port, const int addr, const int reg, int data)
+static int raw_write8__8b(const int port, const int addr, const int reg, int data)
 {
 	int rv = EC_ERROR_INVAL;
 
@@ -170,12 +172,14 @@ static int raw_write8(const int port, const int addr, const int reg, int data)
 				     cmd, 2, NULL, 0);
 #endif
 	} else {
-		rv = i2c_write8(port, addr, reg, data);
+		rv = i2c_write8__7b(port,
+				    KIONIX_I2C_ADDRESS__7b(addr),
+				    reg, data);
 	}
 	return rv;
 }
 
-static int raw_read_multi(const int port, int addr, uint8_t reg,
+static int raw_read_multi__8b(const int port, int addr, uint8_t reg,
 			  uint8_t *rxdata, int rxlen)
 {
 	int rv = EC_ERROR_INVAL;
@@ -187,7 +191,9 @@ static int raw_read_multi(const int port, int addr, uint8_t reg,
 				     &reg, 1, rxdata, rxlen);
 #endif
 	} else {
-		rv = i2c_read_block(port, addr, reg, rxdata, rxlen);
+		rv = i2c_read_block__7b(port,
+					KIONIX_I2C_ADDRESS__7b(addr),
+					reg, rxdata, rxlen);
 	}
 	return rv;
 }
@@ -215,13 +221,13 @@ static int disable_sensor(const struct motion_sensor_t *s, int *reg_val)
 	 * so that we can restore it later.
 	 */
 	for (i = 0; i < SENSOR_ENABLE_ATTEMPTS; i++) {
-		ret = raw_read8(s->port, s->addr, reg, reg_val);
+		ret = raw_read8__8b(s->port, s->addr__8b, reg, reg_val);
 		if (ret != EC_SUCCESS)
 			continue;
 
 		*reg_val &= ~pc1_field;
 
-		ret = raw_write8(s->port, s->addr, reg, *reg_val);
+		ret = raw_write8__8b(s->port, s->addr__8b, reg, *reg_val);
 		if (ret == EC_SUCCESS)
 			return EC_SUCCESS;
 	}
@@ -246,7 +252,7 @@ static int enable_sensor(const struct motion_sensor_t *s, int reg_val)
 	pc1_field = KIONIX_PC1_FIELD(V(s));
 
 	for (i = 0; i < SENSOR_ENABLE_ATTEMPTS; i++) {
-		ret = raw_read8(s->port, s->addr, reg, &reg_val);
+		ret = raw_read8__8b(s->port, s->addr__8b, reg, &reg_val);
 		if (ret != EC_SUCCESS)
 			continue;
 
@@ -257,7 +263,7 @@ static int enable_sensor(const struct motion_sensor_t *s, int reg_val)
 #endif
 
 		/* Enable accelerometer based on reg_val value. */
-		ret = raw_write8(s->port, s->addr, reg,
+		ret = raw_write8__8b(s->port, s->addr__8b, reg,
 				reg_val | pc1_field);
 
 		/* On first success, we are done. */
@@ -292,7 +298,7 @@ static int set_value(const struct motion_sensor_t *s, int reg, int val,
 
 	/* Determine new value of control reg and attempt to write it. */
 	reg_val_new = (reg_val & ~field) | val;
-	ret = raw_write8(s->port, s->addr, reg, reg_val_new);
+	ret = raw_write8__8b(s->port, s->addr__8b, reg, reg_val_new);
 
 	/* If successfully written, then save the range. */
 	if (ret == EC_SUCCESS)
@@ -433,7 +439,7 @@ static int check_orientation_locked(const struct motion_sensor_t *s)
 	int orientation, raw_orientation;
 	int ret;
 
-	ret = raw_read8(s->port, s->addr,
+	ret = raw_read8__8b(s->port, s->addr__8b,
 			KX022_TSCP, &raw_orientation);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -459,7 +465,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	/* Read 6 bytes starting at XOUT_L. */
 	reg = KIONIX_XOUT_L(V(s));
 	mutex_lock(s->mutex);
-	ret = raw_read_multi(s->port, s->addr, reg, acc, 6);
+	ret = raw_read_multi__8b(s->port, s->addr__8b, reg, acc, 6);
 #ifdef CONFIG_KX022_ORIENTATION_SENSOR
 	if ((s->location == MOTIONSENSE_LOC_LID) && (V(s) == 0) &&
 			(ret == EC_SUCCESS))
@@ -518,7 +524,7 @@ static int init(const struct motion_sensor_t *s)
 		do {
 			msleep(1);
 			/* Read WHO_AM_I to be sure the device has booted */
-			ret = raw_read8(s->port, s->addr, reg, &val);
+			ret = raw_read8__8b(s->port, s->addr__8b, reg, &val);
 			if (ret == EC_SUCCESS)
 				break;
 
@@ -531,15 +537,15 @@ static int init(const struct motion_sensor_t *s)
 	} else {
 		/* Write 0x00 to the internal register for KX022 */
 		reg = KX022_INTERNAL;
-		ret = raw_write8(s->port, s->addr, reg, 0x0);
+		ret = raw_write8__8b(s->port, s->addr__8b, reg, 0x0);
 		if (ret != EC_SUCCESS) {
 			/*
 			 * For I2C communication, if ACK was not received
 			 * from the first address, resend the command using
 			 * the second address.
 			 */
-			if (!KIONIX_IS_SPI(s->addr)) {
-				ret = raw_write8(s->port, s->addr & ~4, reg,
+			if (!KIONIX_IS_SPI(s->addr__8b)) {
+				ret = raw_write8__8b(s->port, s->addr__8b & ~4, reg,
 						 0x0);
 			}
 		}
@@ -557,21 +563,21 @@ static int init(const struct motion_sensor_t *s)
 		ret = disable_sensor(s, &val);
 		if (ret != EC_SUCCESS)
 			goto reset_failed;
-		ret = raw_read8(s->port, s->addr, reg, &val);
+		ret = raw_read8__8b(s->port, s->addr__8b, reg, &val);
 		if (ret != EC_SUCCESS)
 			goto reset_failed;
 
 		val |= reset_field;
 	} else {
 		/* Write 0 to CTRL2 for KX022 */
-		ret = raw_write8(s->port, s->addr, reg, 0x0);
+		ret = raw_write8__8b(s->port, s->addr__8b, reg, 0x0);
 		if (ret != EC_SUCCESS)
 			goto reset_failed;
 
 		val = reset_field;
 	}
 
-	ret = raw_write8(s->port, s->addr, reg, val);
+	ret = raw_write8__8b(s->port, s->addr__8b, reg, val);
 	if (ret != EC_SUCCESS)
 		goto reset_failed;
 
@@ -581,7 +587,7 @@ static int init(const struct motion_sensor_t *s)
 		do {
 			msleep(1);
 
-			ret = raw_read8(s->port, s->addr, reg, &val);
+			ret = raw_read8__8b(s->port, s->addr__8b, reg, &val);
 			/* Reset complete. */
 			if ((ret == EC_SUCCESS) && !(val & reset_field))
 				break;
@@ -596,7 +602,7 @@ static int init(const struct motion_sensor_t *s)
 		msleep(2);
 
 		reg = KX022_COTR;
-		ret = raw_read8(s->port, s->addr, reg, &val);
+		ret = raw_read8__8b(s->port, s->addr__8b, reg, &val);
 		if (val != KX022_COTR_VAL_DEFAULT) {
 			CPRINTF("[%s: the software reset failed]\n", s->name);
 			ret = EC_ERROR_HW_INTERNAL;
@@ -605,7 +611,7 @@ static int init(const struct motion_sensor_t *s)
 	}
 
 	reg = KIONIX_WHO_AM_I(V(s));
-	ret = raw_read8(s->port, s->addr, reg, &val);
+	ret = raw_read8__8b(s->port, s->addr__8b, reg, &val);
 	if (ret != EC_SUCCESS || val != KIONIX_WHO_AM_I_VAL(V(s))) {
 		ret = EC_ERROR_HW_INTERNAL;
 		goto reset_failed;
@@ -648,7 +654,7 @@ struct i2c_stress_test_dev kionix_i2c_stress_test_dev = {
 		.read_val = KIONIX_WHO_AM_I_VAL(V(s)),
 		.write_reg = KIONIX_ODR_REG(V(s)),
 	},
-	.i2c_read = &raw_read8,
-	.i2c_write = &raw_write8,
+	.i2c_read__8b = &raw_read8__8b,
+	.i2c_write__8b = &raw_write8__8b,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_ACCEL */

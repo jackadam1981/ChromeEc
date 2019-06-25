@@ -24,13 +24,13 @@ static volatile uint32_t last_interrupt_timestamp;
 static inline int tcs3400_i2c_read8(const struct motion_sensor_t *s,
 				    int reg, int *data)
 {
-	return i2c_read8(s->port, s->addr, reg, data);
+	return i2c_read8__7b(s->port, s->addr__8b >> 1, reg, data);
 }
 
 static inline int tcs3400_i2c_write8(const struct motion_sensor_t *s,
 				     int reg, int data)
 {
-	return i2c_write8(s->port, s->addr, reg, data);
+	return i2c_write8__7b(s->port, s->addr__8b >> 1, reg, data);
 }
 
 static void tcs3400_read_deferred(void)
@@ -112,7 +112,7 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	} while (!(data & TCS_I2C_STATUS_RGBC_VALID));
 
 	/* Read the light registers */
-	ret = i2c_read_block(s->port, s->addr, TCS_DATA_START_LOCATION,
+	ret = i2c_read_block__7b(s->port, s->addr__8b >> 1, TCS_DATA_START_LOCATION,
 			light_data, sizeof(light_data));
 	if (ret)
 		return ret;

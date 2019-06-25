@@ -49,6 +49,7 @@ extern const struct accelgyro_drv kionix_accel_drv;
  */
 #define KIONIX_IS_SPI(_addr)        ((_addr) & 1)
 #define KIONIX_SPI_ADDRESS(_addr)   ((_addr) >> 1)
+#define KIONIX_I2C_ADDRESS__7b(_addr)	((_addr) >> 1)
 
 #define KIONIX_CTRL1_REG(v) (KX022_CNTL1 +	\
 			     (v) * (KXCJ9_CTRL1 - KX022_CNTL1))
