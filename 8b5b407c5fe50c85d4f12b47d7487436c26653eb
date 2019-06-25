@@ -34,6 +34,24 @@
       "revId": "8b5b407c5fe50c85d4f12b47d7487436c26653eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf28893a_57961cd7",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-25T23:01:42Z",
+      "side": 1,
+      "message": "I think the code readability can be improved with Denis\u0027s suggestion of addition defines (or even an inline /* comment saying no flags */)",
+      "parentUuid": "cf30e417_4617ca2f",
+      "revId": "8b5b407c5fe50c85d4f12b47d7487436c26653eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
