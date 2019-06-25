@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8c2fa3b_021118a4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-25T21:47:43Z",
+      "side": 1,
+      "message": "This line shouldn\u0027t be added back.  It was removed in another CL (1591483)",
+      "range": {
+        "startLine": 775,
+        "startChar": 2,
+        "endLine": 775,
+        "endChar": 55
+      },
+      "revId": "3c0580a1c446366fb07b17cf8e4247326b8955ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3c2e2b_c6400fab",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-25T21:47:43Z",
+      "side": 1,
+      "message": "I\u0027m uncertain of how reliable of an indicator this is for the received message type, just for scenarios where we could have a SOP message queued to process first and re-set the msg_type with line 2041.  Would it be possible to check our somewhat non-conventional PD_MSG_SOP bits from the 32-bit header instead?",
+      "range": {
+        "startLine": 2036,
+        "startChar": 17,
+        "endLine": 2036,
+        "endChar": 55
+      },
+      "revId": "3c0580a1c446366fb07b17cf8e4247326b8955ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e47cde4_8dc271f9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 3909,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-25T21:47:43Z",
+      "side": 1,
+      "message": "It looks like we currently only send the cable identity check from SRC_DISCOVERY.  What\u0027s the motivation for setting this flag in this SNK state (or the above SNK state)?  Is it to cover power role swaps, because it seems that could be covered more directly by setting the flag in the power role swap path?",
+      "range": {
+        "startLine": 3908,
+        "startChar": 3,
+        "endLine": 3909,
+        "endChar": 50
+      },
+      "revId": "3c0580a1c446366fb07b17cf8e4247326b8955ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bbe896_c2303d20",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 4562,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-06-25T21:47:43Z",
+      "side": 1,
+      "message": "Why would it be necessary to re-check the cable here?  I believe the identity check flag is set because we may need to enter into DP mode again.  But for the cable, wouldn\u0027t we have already gathered the relevant information?",
+      "range": {
+        "startLine": 4560,
+        "startChar": 0,
+        "endLine": 4562,
+        "endChar": 46
+      },
+      "revId": "3c0580a1c446366fb07b17cf8e4247326b8955ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
