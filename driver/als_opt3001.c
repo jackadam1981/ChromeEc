@@ -17,7 +17,9 @@ static int opt3001_i2c_read(const int reg, int *data_ptr)
 {
 	int ret;
 
-	ret = i2c_read16(I2C_PORT_ALS, OPT3001_I2C_ADDR, reg, data_ptr);
+	ret = i2c_read16__7b(I2C_PORT_ALS,
+			     OPT3001_I2C_ADDRESS__7b(OPT3001_I2C_ADDR__8b),
+			     reg, data_ptr);
 	if (!ret)
 		*data_ptr = ((*data_ptr << 8) & 0xFF00) |
 				((*data_ptr >> 8) & 0x00FF);
@@ -31,7 +33,9 @@ static int opt3001_i2c_read(const int reg, int *data_ptr)
 static int opt3001_i2c_write(const int reg, int data)
 {
 	data = ((data << 8) & 0xFF00) | ((data >> 8) & 0x00FF);
-	return i2c_write16(I2C_PORT_ALS, OPT3001_I2C_ADDR, reg, data);
+	return i2c_write16__7b(I2C_PORT_ALS,
+			       OPT3001_I2C_ADDRESS__7b(OPT3001_I2C_ADDR__8b),
+			       reg, data);
 }
 
 /**
@@ -108,12 +112,12 @@ struct i2c_stress_test_dev opt3001_i2c_stress_test_dev = {
 /**
  *  Read register from OPT3001 light sensor.
  */
-static int opt3001_i2c_read(const int port, const int addr, const int reg,
-			    int *data_ptr)
+static int opt3001_i2c_read(const struct slave_addr_t slave_addr,
+			    const int reg, int *data_ptr)
 {
 	int ret;
 
-	ret = i2c_read16(port, addr, reg, data_ptr);
+	ret = i2c_read16(slave_addr, reg, data_ptr);
 	if (!ret)
 		*data_ptr = ((*data_ptr << 8) & 0xFF00) |
 				((*data_ptr >> 8) & 0x00FF);
@@ -124,11 +128,11 @@ static int opt3001_i2c_read(const int port, const int addr, const int reg,
 /**
  *  Write register to OPT3001 light sensor.
  */
-static int opt3001_i2c_write(const int port, const int addr, const int reg,
-			     int data)
+static int opt3001_i2c_write(const struct slave_addr_t slave_addr,
+			     const int reg, int data)
 {
 	data = ((data << 8) & 0xFF00) | ((data >> 8) & 0x00FF);
-	return i2c_write16(port, addr, reg, data);
+	return i2c_write16(slave_addr, reg, data);
 }
 
 /**
@@ -140,7 +144,7 @@ int opt3001_read_lux(const struct motion_sensor_t *s, intv3_t v)
 	int ret;
 	int data;
 
-	ret = opt3001_i2c_read(s->port, s->addr, OPT3001_REG_RESULT, &data);
+	ret = opt3001_i2c_read(s->slave_addr, OPT3001_REG_RESULT, &data);
 	if (ret)
 		return ret;
 
@@ -211,11 +215,11 @@ static int opt3001_set_data_rate(const struct motion_sensor_t *s,
 		if (rate > 1000)
 			rate = 1000;
 	}
-	rv = opt3001_i2c_read(s->port, s->addr, OPT3001_REG_CONFIGURE, &reg);
+	rv = opt3001_i2c_read(s->slave_addr, OPT3001_REG_CONFIGURE, &reg);
 	if (rv)
 		return rv;
 
-	rv = opt3001_i2c_write(s->port, s->addr, OPT3001_REG_CONFIGURE,
+	rv = opt3001_i2c_write(s->slave_addr, OPT3001_REG_CONFIGURE,
 			       (reg & OPT3001_MODE_MASK) |
 			       (mode << OPT3001_MODE_OFFSET));
 	if (rv)
@@ -262,13 +266,13 @@ static int opt3001_init(const struct motion_sensor_t *s)
 	int data;
 	int ret;
 
-	ret = opt3001_i2c_read(s->port, s->addr, OPT3001_REG_MAN_ID, &data);
+	ret = opt3001_i2c_read(s->slave_addr, OPT3001_REG_MAN_ID, &data);
 	if (ret)
 		return ret;
 	if (data != OPT3001_MANUFACTURER_ID)
 		return EC_ERROR_ACCESS_DENIED;
 
-	ret = opt3001_i2c_read(s->port, s->addr, OPT3001_REG_DEV_ID, &data);
+	ret = opt3001_i2c_read(s->slave_addr, OPT3001_REG_DEV_ID, &data);
 	if (ret)
 		return ret;
 	if (data != OPT3001_DEVICE_ID)
@@ -279,7 +283,7 @@ static int opt3001_init(const struct motion_sensor_t *s)
 	 * [11]   : 1b    Conversion time 800ms
 	 * [4]    : 1b    Latched window-style comparison operation
 	 */
-	opt3001_i2c_write(s->port, s->addr, OPT3001_REG_CONFIGURE, 0xC810);
+	opt3001_i2c_write(s->slave_addr, OPT3001_REG_CONFIGURE, 0xC810);
 
 	opt3001_set_range(s, s->default_range, 0);
 

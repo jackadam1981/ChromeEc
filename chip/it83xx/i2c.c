@@ -639,7 +639,7 @@ int i2c_is_busy(int port)
 	return (IT83XX_I2C_STR(p_ch) & E_HOSTA_BB);
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int chip_i2c_xfer__7b(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags)
 {
 	struct i2c_port_data *pd = pdata + port;

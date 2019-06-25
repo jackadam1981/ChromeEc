@@ -34,34 +34,34 @@
 /**
  * Read single register
  */
-static inline int st_raw_read8(const int port, const int addr, const int reg,
-		     int *data_ptr)
+static inline int st_raw_read8(const struct slave_addr_t slave_addr,
+			       const int reg, int *data_ptr)
 {
 	/* TODO: Implement SPI interface support */
-	return i2c_read8(port, addr, reg, data_ptr);
+	return i2c_read8(slave_addr, reg, data_ptr);
 }
 
 /**
  * Write single register
  */
-static inline int st_raw_write8(const int port, const int addr, const int reg,
-		      int data)
+static inline int st_raw_write8(const struct slave_addr_t slave_addr,
+				const int reg, int data)
 {
 	/* TODO: Implement SPI interface support */
-	return i2c_write8(port, addr, reg, data);
+	return i2c_write8(slave_addr, reg, data);
 }
 
 /**
  * st_raw_read_n - Read n bytes for read
  */
-int st_raw_read_n(const int port, const int addr, const uint8_t reg,
-	       uint8_t *data_ptr, const int len);
+int st_raw_read_n(const struct slave_addr_t slave_addr,
+		  const uint8_t reg, uint8_t *data_ptr, const int len);
 
 /**
  * st_raw_read_n_noinc - Read n bytes for read (no auto inc address)
  */
-int st_raw_read_n_noinc(const int port, const int addr, const uint8_t reg,
-	       uint8_t *data_ptr, const int len);
+int st_raw_read_n_noinc(const struct slave_addr_t slave_addr,
+			const uint8_t reg, uint8_t *data_ptr, const int len);
 
  /**
  * st_write_data_with_mask - Write register with mask

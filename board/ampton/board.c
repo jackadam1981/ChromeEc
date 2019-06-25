@@ -71,8 +71,10 @@ static int tune_mux(int port);
 struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		/* Use PS8751 as mux only */
-		.port_addr = MUX_PORT_AND_ADDR(
-			I2C_PORT_USBC0, PS8751_I2C_ADDR1),
+		.slave_addr = {
+			.port = I2C_PORT_USBC0,
+			.i2c_addr = PS8751_I2C_ADDR1__7b,
+		},
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -80,8 +82,10 @@ struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
-		.port_addr = MUX_PORT_AND_ADDR(
-			I2C_PORT_USBC1, PS8751_I2C_ADDR1),
+		.slave_addr = {
+			.port = I2C_PORT_USBC1,
+			.i2c_addr = PS8751_I2C_ADDR1__7b,
+		},
 		.flags = USB_MUX_FLAG_NOT_TCPC,
 		.driver = &ps8xxx_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -188,7 +192,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = KX022_ADDR1,
+	 .addr__8b = KX022_ADDR1__7b << 1,
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 4, /* g */
 	 .config = {
@@ -212,7 +216,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .addr__8b = BMI160_ADDR0__8b,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 4,  /* g */
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
@@ -240,7 +244,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .addr__8b = BMI160_ADDR0__8b,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &gyro_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,

@@ -2061,8 +2061,9 @@ static int command_display_accel_info(int argc, char **argv)
 		ccprintf("chip: %d\n", motion_sensors[i].chip);
 		ccprintf("type: %d\n", motion_sensors[i].type);
 		ccprintf("location: %d\n", motion_sensors[i].location);
-		ccprintf("port: %d\n", motion_sensors[i].port);
-		ccprintf("addr: %d\n", motion_sensors[i].addr);
+		ccprintf("port: %d\n", motion_sensors[i].slave_addr.port);
+		ccprintf("is_spi: %d\n", motion_sensors[i].slave_addr.is_spi);
+		ccprintf("addr: %d\n", motion_sensors[i].slave_addr.i2c_addr__7b);
 		ccprintf("range: %d\n", motion_sensors[i].default_range);
 		ccprintf("min_freq: %d\n", motion_sensors[i].min_frequency);
 		ccprintf("max_freq: %d\n", motion_sensors[i].max_frequency);
