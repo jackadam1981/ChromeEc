@@ -139,7 +139,7 @@
 #undef CONFIG_KX022_ORIENTATION_SENSOR
 
 /* Define the i2c address of the sensor behind the main sensor, if present. */
-#undef CONFIG_ACCELGYRO_SEC_ADDR
+#undef CONFIG_ACCELGYRO_SEC_ADDR__7bf
 
 /*
  * Define if either CONFIG_BMI160_ORIENTATION_SUPPORT or
@@ -601,7 +601,7 @@
 #undef CONFIG_BOARD_VERSION_GPIO
 
 /* EC responses to a board defined I2C slave address */
-#undef CONFIG_BOARD_I2C_SLAVE_ADDR
+#undef CONFIG_BOARD_I2C_SLAVE_ADDR__7bf
 
 /*
  * The board is unable to distinguish EC reset from power-on so it should treat
@@ -2030,7 +2030,7 @@
  * For ECs where the host command interface is I2C, slave
  * address which the EC will respond to.
  */
-#undef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
+#undef CONFIG_HOSTCMD_I2C_SLAVE_ADDR__7bf
 
 /*
  * Accept EC host commands over the SPI slave (SPS) interface.
@@ -2199,7 +2199,7 @@
  * transaction is done, the pin is set back to low.
  */
 #undef CONFIG_I2C_SCL_GATE_PORT
-#undef CONFIG_I2C_SCL_GATE_ADDR
+#undef CONFIG_I2C_SCL_GATE_ADDR__7bf
 #undef CONFIG_I2C_SCL_GATE_GPIO
 
 /*
@@ -3036,9 +3036,6 @@
 /* Emulate the CLZ (Count Trailing Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CTZ
 
-/* Support smbus interface */
-#undef CONFIG_SMBUS
-
 /* Support SPI interfaces */
 #undef CONFIG_SPI
 
@@ -3365,9 +3362,9 @@
 /* Enable Elan driver */
 #undef CONFIG_TOUCHPAD_ELAN
 
-/* Set I2C port and address (8-bit) */
+/* Set I2C port and address (7-bit) */
 #undef CONFIG_TOUCHPAD_I2C_PORT
-#undef CONFIG_TOUCHPAD_I2C_ADDR
+#undef CONFIG_TOUCHPAD_I2C_ADDR__7bf
 
 /*
  * Enable touchpad FW update over USB update protocol, and define touchpad
@@ -3578,7 +3575,7 @@
 #undef CONFIG_USB_PD_IDENTITY_SW_VERS
 
 /* USB PD MCU slave address for host commands */
-#define CONFIG_USB_PD_I2C_SLAVE_ADDR 0x3c
+#define CONFIG_USB_PD_I2C_SLAVE_ADDR__7bf 0x1E
 
 /* Define if using internal comparator for PD receive */
 #undef CONFIG_USB_PD_INTERNAL_COMP
@@ -3690,7 +3687,7 @@
 #undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 
 /* Define the type-c port controller I2C base address. */
-#define CONFIG_TCPC_I2C_BASE_ADDR 0x9c
+#define CONFIG_TCPC_I2C_BASE_ADDR__7bf 0x4E
 
 /* Use this option to enable Try.SRC mode for Dual Role devices */
 #undef CONFIG_USB_PD_TRY_SRC
@@ -4666,7 +4663,7 @@
 #if defined(CONFIG_MAG_BMI160_LIS2MDL) || \
 	defined(CONFIG_MAG_LSM6DSM_LIS2MDL)
 #define CONFIG_MAG_LIS2MDL
-#ifndef CONFIG_ACCELGYRO_SEC_ADDR
+#ifndef CONFIG_ACCELGYRO_SEC_ADDR__7bf
 #error "The i2c address of the magnetometer is not set."
 #endif
 #endif
@@ -4675,7 +4672,7 @@
 #if defined(CONFIG_MAG_BMI160_BMM150) || \
 	defined(CONFIG_MAG_LSM6DSM_BMM150)
 #define CONFIG_MAG_BMM150
-#ifndef CONFIG_ACCELGYRO_SEC_ADDR
+#ifndef CONFIG_ACCELGYRO_SEC_ADDR__7bf
 #error "The i2c address of the magnetometer is not set."
 #endif
 #endif
