@@ -116,6 +116,30 @@
       "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2244a2e3_75125fe7",
+        "filename": "fuzz/rollback_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-06-25T18:48:31Z",
+      "side": 1,
+      "message": "Any thoughts on this?",
+      "parentUuid": "4f6f20d9_6dab49a4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
