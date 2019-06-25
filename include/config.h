@@ -2146,6 +2146,12 @@
 #undef CONFIG_I2C_VIRTUAL_BATTERY
 
 /*
+ * Switch between 7 or 8 bit EC I2C slave addressing.  The desired addressing
+ * is to use 7 bit. 8 bit addressing should get converted to stay consistent.
+ */
+#undef CONFIG_I2C_7BIT_EC_SLAVE
+
+/*
  * Define this option if an i2c bus may be unpowered at a certain point during
  * runtime.  An example could be, a sensor bus which is not needed in lower
  * power states so the power rail for those sensors is completely disabled.

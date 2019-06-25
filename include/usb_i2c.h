@@ -218,7 +218,11 @@ int usb_i2c_board_is_enabled(void);
  * Special i2c address to use when the client is required to execute some
  * command which does not directly involve the i2c master driver.
  */
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define USB_I2C_CMD_ADDR 0x78
+#else
 #define USB_I2C_CMD_ADDR 0xf0
+#endif
 
 /*
  * Function to call to register a handler for commands sent to the special i2c

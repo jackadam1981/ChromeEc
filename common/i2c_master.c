@@ -781,11 +781,18 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 	for (resp->num_msgs = 0, msg = params->msg;
 	     resp->num_msgs < params->num_msgs;
 	     resp->num_msgs++, msg++) {
-		/* EC uses 8-bit slave address */
-		unsigned int addr = (msg->addr_flags & EC_I2C_ADDR_MASK) << 1;
+		unsigned int addr;
+
 		int xferflags = I2C_XFER_START;
 		int read_len = 0, write_len = 0;
 		int rv = 1;
+
+		if (IS_ENABLED(CONFIG_I2C_7BIT_EC_SLAVE))
+			/* EC uses 7-bit slave address */
+			addr = msg->addr_flags & EC_I2C_ADDR_MASK;
+		else
+			/* EC uses 8-bit slave address */
+			addr = (msg->addr_flags & EC_I2C_ADDR_MASK) << 1;
 
 		if (msg->addr_flags & EC_I2C_FLAG_READ)
 			read_len = msg->len;

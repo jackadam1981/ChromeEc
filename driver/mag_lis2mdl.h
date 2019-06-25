@@ -16,7 +16,11 @@
  * 8-bit address is 0011110Wb where the last bit represents whether the
  * operation is a read or a write.
  */
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define LIS2MDL_ADDR			0x1e
+#else
 #define LIS2MDL_ADDR			0x3c
+#endif
 
 #define LIS2MDL_STARTUP_MS		10
 

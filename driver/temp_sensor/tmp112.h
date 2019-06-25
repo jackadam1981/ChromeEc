@@ -8,7 +8,11 @@
 
 #include "i2c.h"
 
-#define TMP112_I2C_ADDR 0x90 | I2C_FLAG_BIG_ENDIAN
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define TMP112_I2C_ADDR (0x48 | I2C_FLAG_BIG_ENDIAN)
+#else
+#define TMP112_I2C_ADDR (0x90 | I2C_FLAG_BIG_ENDIAN)
+#endif
 
 #define TMP112_REG_TEMP	0x00
 #define TMP112_REG_CONF	0x01

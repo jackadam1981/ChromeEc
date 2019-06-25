@@ -16,8 +16,13 @@
  * 8-bit address is 0011 00XW b. Where 'X' is determined
  * by the voltage on the ADDR pin, and 'W' is read write bit
  */
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define LIS2DH_ADDR0		0x18
+#define LIS2DH_ADDR1		0x19
+#else
 #define LIS2DH_ADDR0		0x30
 #define LIS2DH_ADDR1		0x32
+#endif
 
 /*
  * LNG2DM:
@@ -25,8 +30,13 @@
  * 8-bit address is 0101 00XW b. Where 'X' is determined
  * by the voltage on the ADDR pin, and 'W' is read write bit
  */
+#ifdef CONFIG_I2C_7BIT_EC_SLAVE
+#define LNG2DM_ADDR0		0x28
+#define LNG2DM_ADDR1		0x29
+#else
 #define LNG2DM_ADDR0		0x50
 #define LNG2DM_ADDR1		0x52
+#endif
 
 /* Who Am I  */
 #define LIS2DH_WHO_AM_I_REG	0x0f
