@@ -3994,10 +3994,10 @@ struct ec_response_power_info {
 #define EC_CMD_I2C_PASSTHRU 0x009E
 
 /* Read data; if not present, message is a write */
-#define EC_I2C_FLAG_READ	BIT(15)
+#define EC_I2C_FLAG_READ	I2C_FLAG_READ_REQUEST
 
 /* Mask for address */
-#define EC_I2C_ADDR_MASK	0x3ff
+#define EC_I2C_ADDR_MASK	I2C_ADDR_MASK
 
 #define EC_I2C_STATUS_NAK	BIT(0) /* Transfer was not acknowledged */
 #define EC_I2C_STATUS_TIMEOUT	BIT(1) /* Timeout during transfer */
@@ -4006,7 +4006,7 @@ struct ec_response_power_info {
 #define EC_I2C_STATUS_ERROR	(EC_I2C_STATUS_NAK | EC_I2C_STATUS_TIMEOUT)
 
 struct ec_params_i2c_passthru_msg {
-	uint16_t addr_flags;	/* I2C slave address (7 or 10 bits) and flags */
+	uint16_t addr_flags__7bf;	/* I2C slave address and flags */
 	uint16_t len;		/* Number of bytes to read or write */
 } __ec_align2;
 
@@ -5401,7 +5401,7 @@ enum ec_bus_type {
 
 struct ec_i2c_info {
 	uint16_t port;	/* Physical port for device */
-	uint16_t addr;	/* 7-bit (or 10-bit) address */
+	uint16_t addr__7bf;	/* 7-bit (or 10-bit) address */
 };
 
 struct ec_params_locate_chip {
