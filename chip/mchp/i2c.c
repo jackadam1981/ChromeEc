@@ -716,8 +716,9 @@ static int i2c_mrx_data(int ctrl)
 /*
  * Called from common/i2c_master
  */
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
-		int out_size, uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer__7bf(int port, uint16_t i2c_addr__7bf,
+		  const uint8_t *out, int out_size,
+		  uint8_t *in, int in_size, int flags)
 {
 	int ctrl;
 	int ret_done;
@@ -740,7 +741,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 	cdata[ctrl].hwsts3 = 0;
 	cdata[ctrl].hwsts4 = 0;
 	cdata[ctrl].port = (uint8_t)(port & 0xff);
-	cdata[ctrl].slv_addr = (uint8_t)(slave_addr & 0xff);
+	cdata[ctrl].slv_addr = (uint8_t)I2C_ADDR__7b(i2c_addr__7bf);
 	cdata[ctrl].out_size = out_size;
 	cdata[ctrl].outp = out;
 	cdata[ctrl].in_size = in_size;
