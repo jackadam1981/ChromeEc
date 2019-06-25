@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5da75664_1e1b9c72",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-25T23:26:59Z",
+      "side": 1,
+      "message": "panic is pretty serious business for the EC. This will crash the entire system for normal ECs. I don\u0027t think that missing a fifo is worth crashing the entire system. We change this to a printf or kill the motion sense task event, but not kill the entire system",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "2d21c2e419c493afe175b9cc00ccd71a5857ce29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
