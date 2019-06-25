@@ -46,6 +46,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfefb29e_796bb9b7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-25T15:46:49Z",
+      "side": 1,
+      "message": "I think this command isn\u0027t still solid because we haven\u0027t thought through how to handle the case where live product_id !\u003d hardcoded product_id.\n\nOn start-up, we should make EC query all TCPCs to get all live data and cache them. If product_id doesn\u0027t match the hard-coded value, the live data should precede. If EC fails to get a live data, it should populate the cache with a hardcoded value.\n\nThis masks hardcoded data from FAFT. However, FAFT should corrupt TCPC firmware so that we can validate hardcoded data (and that\u0027s exactly how we want to use hardcoded data). In other words, if EC can\u0027t get a product_id when TCPC firmware is corrupted, FAFT should fail.\n\nWith all these, I think we should name uint8_t renew as \u0027renew\u0027 because it does renew the cache. If renew \u003d\u003d 0, it\u0027ll get a cached value. It\u0027s a switch for controlling cache not controlling the source. Whether a cache is populated from a live data or a hardcoded data is not a caller\u0027s concern.",
+      "parentUuid": "f756d8bc_fdbab6d6",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
