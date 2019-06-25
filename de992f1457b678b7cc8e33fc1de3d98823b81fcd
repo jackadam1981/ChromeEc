@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5e9c8fa_33e95b99",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4e4b26_bb334809",
+      "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f332a6_da612412",
         "filename": "driver/ioexpander_nct38xx.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "11802306_c8eb5611",
+        "filename": "driver/ioexpander_nct38xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:58Z",
+      "side": 1,
+      "message": "Indeed, the setting of register NCT38XXX_REG_GPIO_DIR(port) can be merged at the end of this functiion.",
+      "parentUuid": "12f332a6_da612412",
+      "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f6a0a4a_bbb52613",
         "filename": "driver/ioexpander_nct38xx.h",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2f81ab_e2ccb3fa",
+        "filename": "driver/ioexpander_nct38xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-06-25T10:11:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6a0a4a_bbb52613",
+      "revId": "de992f1457b678b7cc8e33fc1de3d98823b81fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
