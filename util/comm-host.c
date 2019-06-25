@@ -91,19 +91,14 @@ int comm_init_alt(int interfaces, const char *device_name)
 	    !comm_init_servo_spi(device_name))
 		return 0;
 
-	/* Do not fallback to other communication methods if target is not a
-	 * cros_ec device */
-	if (!strcmp(CROS_EC_DEV_NAME, device_name)) {
-		/* Fallback to direct LPC on x86 */
-		if ((interfaces & COMM_LPC) &&
-				comm_init_lpc && !comm_init_lpc())
-			return 0;
+	/* Fallback to direct LPC on x86, if target is not a cros_ec device */
+	if (!strcmp(CROS_EC_DEV_NAME, device_name) && (interfaces & COMM_LPC) &&
+			comm_init_lpc && !comm_init_lpc())
+		return 0;
 
-		/* Fallback to direct i2c on ARM */
-		if ((interfaces & COMM_I2C) &&
-				comm_init_i2c && !comm_init_i2c())
-			return 0;
-	}
+	/* Fallback to direct I2C */
+	if ((interfaces & COMM_I2C) && comm_init_i2c && !comm_init_i2c())
+		return 0;
 
 	/* Give up */
 	fprintf(stderr, "Unable to establish host communication\n");
