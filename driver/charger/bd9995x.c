@@ -131,7 +131,7 @@ static inline int ch_raw_read16(int cmd, int *param,
 	/* Map the Charge command code to appropriate region */
 	mutex_lock(&bd9995x_map_mutex);
 	if (charger_map_cmd != map_cmd) {
-		rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+		rv = i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b,
 				 BD9995X_CMD_MAP_SET, map_cmd);
 		if (rv) {
 			charger_map_cmd = BD9995X_INVALID_COMMAND;
@@ -141,7 +141,7 @@ static inline int ch_raw_read16(int cmd, int *param,
 		charger_map_cmd = map_cmd;
 	}
 
-	rv = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, cmd, param);
+	rv = i2c_read16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, cmd, param);
 
 bd9995x_read_cleanup:
 	mutex_unlock(&bd9995x_map_mutex);
@@ -157,7 +157,7 @@ static inline int ch_raw_write16(int cmd, int param,
 	/* Map the Charge command code to appropriate region */
 	mutex_lock(&bd9995x_map_mutex);
 	if (charger_map_cmd != map_cmd) {
-		rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+		rv = i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b,
 					BD9995X_CMD_MAP_SET, map_cmd);
 		if (rv) {
 			charger_map_cmd = BD9995X_INVALID_COMMAND;
@@ -167,7 +167,7 @@ static inline int ch_raw_write16(int cmd, int param,
 		charger_map_cmd = map_cmd;
 	}
 
-	rv = i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, cmd, param);
+	rv = i2c_write16__7b(I2C_PORT_CHARGER, I2C_ADDR_CHARGER__7b, cmd, param);
 
 bd9995x_write_cleanup:
 	mutex_unlock(&bd9995x_map_mutex);

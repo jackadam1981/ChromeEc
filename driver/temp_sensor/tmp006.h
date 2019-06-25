@@ -22,7 +22,7 @@
 
 struct tmp006_t {
 	const char *name;
-	int addr;          /* I2C address formed by TMP006_ADDR macro. */
+	int addr__7b;          /* I2C address formed by TMP006_ADDR macro. */
 };
 
 /* Names and addresses of the sensors we have */

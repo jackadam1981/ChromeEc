@@ -12,6 +12,7 @@
 #include "common.h"
 #include "ec_commands.h"
 #include "gpio.h"
+#include "i2c_spi_slave.h"
 #include "math_util.h"
 #include "queue.h"
 #include "timer.h"
@@ -128,10 +129,8 @@ struct motion_sensor_t {
 	/* Only valid if flags & MOTIONSENSE_FLAG_INT_SIGNAL is true. */
 	enum gpio_signal int_signal;
 
-	/* i2c port */
-	uint8_t port;
-	/* i2c address or SPI slave logic GPIO. */
-	uint8_t addr;
+	/* i2c port/address or SPI slave logic GPIO. */
+	struct slave_addr_t slave_addr;
 
 	/*
 	 * Various flags, see MOTIONSENSE_FLAG_*

@@ -125,7 +125,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC,
-			.addr = CONFIG_TCPC_I2C_BASE_ADDR,
+			.addr__7b = CONFIG_TCPC_I2C_BASE_ADDR__8b >> 1,
 		},
 		.drv = &anx7688_tcpm_drv,
 	},
@@ -466,7 +466,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &kionix_accel_drv,
 		.mutex = &g_kx022_mutex[0],
 		.drv_data = &g_kx022_data[0],
-		.addr = 1, /* SPI, device ID 0 */
+		.addr__8b = 1, /* SPI, device ID 0 */
 		.rot_standard_ref = &base_standard_ref,
 		.default_range = 2, /* g, enough for laptop. */
 		.min_frequency = KX022_ACCEL_MIN_FREQ,
@@ -489,7 +489,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &kionix_accel_drv,
 		.mutex = &g_kx022_mutex[1],
 		.drv_data = &g_kx022_data[1],
-		.addr = 3, /* SPI, device ID 1 */
+		.addr__8b = 3, /* SPI, device ID 1 */
 		.rot_standard_ref = &lid_standard_ref,
 		.default_range = 2, /* g, enough for laptop. */
 		.min_frequency = KX022_ACCEL_MIN_FREQ,

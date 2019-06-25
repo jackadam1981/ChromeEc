@@ -132,27 +132,27 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-#define TEMP_U40_REG_ADDR	((0x40 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U41_REG_ADDR	((0x44 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U42_REG_ADDR	((0x41 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U43_REG_ADDR	((0x45 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U115_REG_ADDR	((0x42 << 1) | I2C_FLAG_BIG_ENDIAN)
-#define TEMP_U116_REG_ADDR	((0x43 << 1) | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U40_REG_ADDR__7b	(0x40 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U41_REG_ADDR__7b	(0x44 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U42_REG_ADDR__7b	(0x41 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U43_REG_ADDR__7b	(0x45 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U115_REG_ADDR__7b	(0x42 | I2C_FLAG_BIG_ENDIAN)
+#define TEMP_U116_REG_ADDR__7b	(0x43 | I2C_FLAG_BIG_ENDIAN)
 
-#define TEMP_U40_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U40_REG_ADDR)
-#define TEMP_U41_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U41_REG_ADDR)
-#define TEMP_U42_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U42_REG_ADDR)
-#define TEMP_U43_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U43_REG_ADDR)
-#define TEMP_U115_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U115_REG_ADDR)
-#define TEMP_U116_ADDR TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U116_REG_ADDR)
+#define TEMP_U40_ADDR__7b TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U40_REG_ADDR__7b)
+#define TEMP_U41_ADDR__7b TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U41_REG_ADDR__7b)
+#define TEMP_U42_ADDR__7b TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U42_REG_ADDR__7b)
+#define TEMP_U43_ADDR__7b TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U43_REG_ADDR__7b)
+#define TEMP_U115_ADDR__7b TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U115_REG_ADDR__7b)
+#define TEMP_U116_ADDR__7b TMP006_ADDR(I2C_PORT_THERMAL, TEMP_U116_REG_ADDR__7b)
 
 const struct tmp006_t tmp006_sensors[TMP006_COUNT] = {
-	{"Charger", TEMP_U40_ADDR},
-	{"CPU", TEMP_U41_ADDR},
-	{"Left C", TEMP_U42_ADDR},
-	{"Right C", TEMP_U43_ADDR},
-	{"Right D", TEMP_U115_ADDR},
-	{"Left D", TEMP_U116_ADDR},
+	{"Charger", TEMP_U40_ADDR__7b},
+	{"CPU", TEMP_U41_ADDR__7b},
+	{"Left C", TEMP_U42_ADDR__7b},
+	{"Right C", TEMP_U43_ADDR__7b},
+	{"Right D", TEMP_U115_ADDR__7b},
+	{"Left D", TEMP_U116_ADDR__7b},
 };
 BUILD_ASSERT(ARRAY_SIZE(tmp006_sensors) == TMP006_COUNT);
 
@@ -326,7 +326,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_saved_data[0],
 	 .port = I2C_PORT_ACCEL,
-	 .addr = LSM6DS0_ADDR1,
+	 .addr__8b = LSM6DS0_ADDR1__7b << 1,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .min_frequency = LSM6DS0_ACCEL_MIN_FREQ,
@@ -358,7 +358,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_kxcj9_data,
 	 .port = I2C_PORT_ACCEL,
-	 .addr = KXCJ9_ADDR0,
+	 .addr__8b = KXCJ9_ADDR0__8b,
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
@@ -381,7 +381,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_saved_data[1],
 	 .port = I2C_PORT_ACCEL,
-	 .addr = LSM6DS0_ADDR1,
+	 .addr__8b = LSM6DS0_ADDR1__7b << 1,
 	 .rot_standard_ref = NULL,
 	 .default_range = 2000,  /* g, enough for laptop. */
 	 .min_frequency = LSM6DS0_GYRO_MIN_FREQ,

@@ -14,13 +14,17 @@
 static int pi3usb30532_read(int port, uint8_t reg, uint8_t *val)
 {
 	int read, res;
+	struct slave_addr_t slave_addr;
 
 	/*
 	 * First byte read will be slave address (ignored).
 	 * Second byte read will be vendor ID.
 	 * Third byte read will be selection control.
 	 */
-	res = i2c_read16(I2C_PORT_USB_MUX, MUX_ADDR(port), 0, &read);
+	slave_addr = MUX_SLAVE_ADDR(port);
+	slave_addr.port = I2C_PORT_USB_MUX;
+
+	res = i2c_read16(slave_addr, 0, &read);
 	if (res)
 		return res;
 
@@ -34,10 +38,15 @@ static int pi3usb30532_read(int port, uint8_t reg, uint8_t *val)
 
 static int pi3usb30532_write(int port, uint8_t reg, uint8_t val)
 {
+	struct slave_addr_t slave_addr;
+
 	if (reg != PI3USB30532_REG_CONTROL)
 		return EC_ERROR_UNKNOWN;
 
-	return i2c_write8(I2C_PORT_USB_MUX, MUX_ADDR(port), 0, val);
+	slave_addr = MUX_SLAVE_ADDR(port);
+	slave_addr.port = I2C_PORT_USB_MUX;
+
+	return i2c_write8(slave_addr, 0, val);
 }
 
 static int pi3usb30532_reset(int port)

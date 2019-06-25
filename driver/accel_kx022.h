@@ -12,8 +12,8 @@
  * 7-bit address is 001111Xb. Where 'X' is determined
  * by the voltage on the ADDR pin.
  */
-#define KX022_ADDR0		0x3c
-#define KX022_ADDR1		0x3e
+#define KX022_ADDR0__7b		0x1E
+#define KX022_ADDR1__7b		0x1F
 #define KX022_WHO_AM_I_VAL	0x14
 
 /* Chip-specific registers */
