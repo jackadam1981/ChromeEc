@@ -22,6 +22,30 @@
       "revId": "2e379f8cce54b9083a3741b6f5b09a04f36ef269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c6c1ffe_400f4f6e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-06-25T18:35:55Z",
+      "side": 1,
+      "message": "Yes, it is the reason. Added a comment. Will change it when it supports switching CC polarity.",
+      "parentUuid": "3e13f44e_6fa8512e",
+      "range": {
+        "startLine": 338,
+        "startChar": 21,
+        "endLine": 338,
+        "endChar": 29
+      },
+      "revId": "2e379f8cce54b9083a3741b6f5b09a04f36ef269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
