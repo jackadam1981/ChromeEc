@@ -2383,6 +2383,9 @@
  * Enable keypad (a palm-sized keyboard section usually placed on the far right)
  */
 #undef CONFIG_KEYBOARD_KEYPAD
+
+#undef CONFIG_EC_KEYBOARD
+#undef CONFIG_KBEXPANDER_IT8801
 /*****************************************************************************/
 
 /* Support common LED interface */
