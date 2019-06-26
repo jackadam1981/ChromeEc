@@ -279,8 +279,15 @@ static void motion_sense_fifo_stage_unit(
 	chunk = queue_get_write_chunk(
 			&motion_sense_fifo, fifo_staged.count);
 
-	if (!chunk.buffer)
-		panic("Failed to get write chunk for new fifo data");
+	if (!chunk.buffer) {
+		/*
+		 * This should never happen since we already ensured there was
+		 * space, but if there was a bug, we don't want to write to
+		 * address 0. Just don't add any data to the queue instead.
+		 */
+		CPRINTS("Failed to get write chunk for new fifo data!");
+		return;
+	}
 
 	/*
 	 * Save the data to the writable block and increment count. This data
