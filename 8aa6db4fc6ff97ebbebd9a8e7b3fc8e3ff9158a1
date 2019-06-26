@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00de262b_8959d973",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T23:00:30Z",
+      "side": 1,
+      "message": "though, moving related \"#define RSU_SALT_SIZE\" and BUILD_ASSERT inside the function looks ugly. I\u0027d rather keep it all here",
+      "parentUuid": "949ac8e0_79578f82",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cfc7aeb_9cf1c0be",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
