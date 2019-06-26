@@ -73,16 +73,16 @@ typedef struct {
  */
 #define MXC_R_PWRSEQ_LP_CTRL                                                   \
 	((uint32_t)0x00000000UL) /**< Offset from PWRSEQ Base Address: <tt> \  \
-				    \ \ 0x0000</tt> */
+				    \ \ \ 0x0000</tt> */
 #define MXC_R_PWRSEQ_LP_WAKEFL                                                 \
 	((uint32_t)0x00000004UL) /**< Offset from PWRSEQ Base Address: <tt> \  \
-				    \ \ 0x0004</tt> */
+				    \ \ \ 0x0004</tt> */
 #define MXC_R_PWRSEQ_LPWK_EN                                                   \
 	((uint32_t)0x00000008UL) /**< Offset from PWRSEQ Base Address: <tt> \  \
-				    \ \ 0x0008</tt> */
+				    \ \ \ 0x0008</tt> */
 #define MXC_R_PWRSEQ_LPMEMSD                                                   \
 	((uint32_t)0x00000040UL) /**< Offset from PWRSEQ Base Address: <tt> \  \
-				    \ \ 0x0040</tt> */
+				    \ \ \ 0x0040</tt> */
 /**@} end of group pwrseq_registers */
 
 /**
@@ -93,83 +93,87 @@ typedef struct {
  */
 #define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0_POS                                   \
 	0 /**< LP_CTRL_RAMRET_SEL0 Position */
-#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0                                             \
-	((uint32_t)(0x1UL                                                            \
-		    << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0_POS)) /**< \ \ \                                                                                   \
-								 LP_CTRL_RAMRET_SEL0 \
-								 \ \ \ Mask */
+#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0                                         \
+	((uint32_t)(                                                             \
+		0x1UL                                                            \
+		<< MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0_POS)) /**< \ \ \ \                                                                               \
+							     LP_CTRL_RAMRET_SEL0 \
+							     \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL0_DIS                                   \
 	((uint32_t)0x0UL) /**< LP_CTRL_RAMRET_SEL0_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL0_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL0_DIS                                  \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0_POS) /**< LP_CTRL_RAMRET_SEL0_DIS \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL0_EN                                    \
 	((uint32_t)0x1UL) /**< LP_CTRL_RAMRET_SEL0_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL0_EN                                    \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL0_EN                                   \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0_POS) /**< LP_CTRL_RAMRET_SEL0_EN  \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1_POS                                   \
 	1 /**< LP_CTRL_RAMRET_SEL1 Position */
-#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1                                             \
-	((uint32_t)(0x1UL                                                            \
-		    << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1_POS)) /**< \ \ \                                                                                   \
-								 LP_CTRL_RAMRET_SEL1 \
-								 \ \ \ Mask */
+#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1                                         \
+	((uint32_t)(                                                             \
+		0x1UL                                                            \
+		<< MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1_POS)) /**< \ \ \ \                                                                               \
+							     LP_CTRL_RAMRET_SEL1 \
+							     \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL1_DIS                                   \
 	((uint32_t)0x0UL) /**< LP_CTRL_RAMRET_SEL1_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL1_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL1_DIS                                  \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1_POS) /**< LP_CTRL_RAMRET_SEL1_DIS \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL1_EN                                    \
 	((uint32_t)0x1UL) /**< LP_CTRL_RAMRET_SEL1_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL1_EN                                    \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL1_EN                                   \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL1_POS) /**< LP_CTRL_RAMRET_SEL1_EN  \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2_POS                                   \
 	2 /**< LP_CTRL_RAMRET_SEL2 Position */
-#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2                                             \
-	((uint32_t)(0x1UL                                                            \
-		    << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2_POS)) /**< \ \ \                                                                                   \
-								 LP_CTRL_RAMRET_SEL2 \
-								 \ \ \ Mask */
+#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2                                         \
+	((uint32_t)(                                                             \
+		0x1UL                                                            \
+		<< MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2_POS)) /**< \ \ \ \                                                                               \
+							     LP_CTRL_RAMRET_SEL2 \
+							     \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL2_DIS                                   \
 	((uint32_t)0x0UL) /**< LP_CTRL_RAMRET_SEL2_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL2_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL2_DIS                                  \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2_POS) /**< LP_CTRL_RAMRET_SEL2_DIS \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL2_EN                                    \
 	((uint32_t)0x1UL) /**< LP_CTRL_RAMRET_SEL2_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL2_EN                                    \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL2_EN                                   \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL2_POS) /**< LP_CTRL_RAMRET_SEL2_EN  \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3_POS                                   \
 	3 /**< LP_CTRL_RAMRET_SEL3 Position */
-#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3                                             \
-	((uint32_t)(0x1UL                                                            \
-		    << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3_POS)) /**< \ \ \                                                                                   \
-								 LP_CTRL_RAMRET_SEL3 \
-								 \ \ \ Mask */
+#define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3                                         \
+	((uint32_t)(                                                             \
+		0x1UL                                                            \
+		<< MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3_POS)) /**< \ \ \ \                                                                               \
+							     LP_CTRL_RAMRET_SEL3 \
+							     \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL3_DIS                                   \
 	((uint32_t)0x0UL) /**< LP_CTRL_RAMRET_SEL3_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL3_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL3_DIS                                  \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3_POS) /**< LP_CTRL_RAMRET_SEL3_DIS \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL3_EN                                    \
 	((uint32_t)0x1UL) /**< LP_CTRL_RAMRET_SEL3_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RAMRET_SEL3_EN                                    \
 	(MXC_V_PWRSEQ_LP_CTRL_RAMRET_SEL3_EN                                   \
 	 << MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL3_POS) /**< LP_CTRL_RAMRET_SEL3_EN  \
-						     \ \ \ Setting */
+						     \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_OVR_POS 4 /**< LP_CTRL_OVR Position */
 #define MXC_F_PWRSEQ_LP_CTRL_OVR                                               \
@@ -193,73 +197,76 @@ typedef struct {
 
 #define MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS                              \
 	6 /**< LP_CTRL_VCORE_DET_BYPASS Position */
-#define MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS                                                  \
-	((uint32_t)(0x1UL                                                                      \
-		    << MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS)) /**< \ \ \                                                                                             \
-								      LP_CTRL_VCORE_DET_BYPASS \
-								      \ \ \                                                                                           \
-								      Mask */
+#define MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS                                              \
+	((uint32_t)(                                                                       \
+		0x1UL                                                                      \
+		<< MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS)) /**< \ \ \ \                                                                                         \
+								  LP_CTRL_VCORE_DET_BYPASS \
+								  \                        \
+								  \ \ \ \                                                                                         \
+								  Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_ENABLED                          \
 	((uint32_t)0x0UL) /**< LP_CTRL_VCORE_DET_BYPASS_ENABLED Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_ENABLED                                      \
 	(MXC_V_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_ENABLED                                     \
-	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS) /**< \ \ \                                                                                         \
+	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS) /**< \ \ \ \                                                                                         \
 							  LP_CTRL_VCORE_DET_BYPASS_ENABLED \
-							  \ \ \ Setting */
+							  \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_DISABLE                          \
 	((uint32_t)0x1UL) /**< LP_CTRL_VCORE_DET_BYPASS_DISABLE Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_DISABLE                                      \
 	(MXC_V_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_DISABLE                                     \
-	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS) /**< \ \ \                                                                                         \
+	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_DET_BYPASS_POS) /**< \ \ \ \                                                                                         \
 							  LP_CTRL_VCORE_DET_BYPASS_DISABLE \
-							  \ \ \ Setting */
+							  \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_RETREG_EN_POS                                     \
-	8 /**< LP_CTRL_RETREG_EN Position   \ \ \                                                                             \
+	8 /**< LP_CTRL_RETREG_EN Position   \ \ \ \                                                                             \
 	   */
 #define MXC_F_PWRSEQ_LP_CTRL_RETREG_EN                                         \
 	((uint32_t)(                                                           \
 		0x1UL                                                          \
 		<< MXC_F_PWRSEQ_LP_CTRL_RETREG_EN_POS)) /**< LP_CTRL_RETREG_EN \
-							   \ \ \ Mask */
+							   \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_RETREG_EN_DIS                                     \
 	((uint32_t)0x0UL) /**< LP_CTRL_RETREG_EN_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RETREG_EN_DIS                                     \
 	(MXC_V_PWRSEQ_LP_CTRL_RETREG_EN_DIS                                    \
 	 << MXC_F_PWRSEQ_LP_CTRL_RETREG_EN_POS) /**< LP_CTRL_RETREG_EN_DIS \ \ \
-						   \ Setting */
+						   \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_RETREG_EN_EN                                      \
 	((uint32_t)0x1UL) /**< LP_CTRL_RETREG_EN_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_RETREG_EN_EN                                      \
 	(MXC_V_PWRSEQ_LP_CTRL_RETREG_EN_EN                                     \
 	 << MXC_F_PWRSEQ_LP_CTRL_RETREG_EN_POS) /**< LP_CTRL_RETREG_EN_EN \ \  \
-						   \ Setting */
+						   \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN_POS                                    \
 	10 /**< LP_CTRL_FAST_WK_EN Position */
-#define MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN                                            \
-	((uint32_t)(0x1UL                                                          \
-		    << MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN_POS)) /**< \ \ \                                                                                 \
-								LP_CTRL_FAST_WK_EN \
-								\ \ \ Mask */
+#define MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN                                        \
+	((uint32_t)(                                                           \
+		0x1UL                                                          \
+		<< MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN_POS)) /**< \ \ \ \                                                                             \
+							    LP_CTRL_FAST_WK_EN \
+							    \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_FAST_WK_EN_DIS                                    \
 	((uint32_t)0x0UL) /**< LP_CTRL_FAST_WK_EN_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_FAST_WK_EN_DIS                                    \
 	(MXC_V_PWRSEQ_LP_CTRL_FAST_WK_EN_DIS                                   \
 	 << MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN_POS) /**< LP_CTRL_FAST_WK_EN_DIS \ \
-						    \ \ Setting */
+						    \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_FAST_WK_EN_EN                                     \
 	((uint32_t)0x1UL) /**< LP_CTRL_FAST_WK_EN_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_FAST_WK_EN_EN                                     \
 	(MXC_V_PWRSEQ_LP_CTRL_FAST_WK_EN_EN                                    \
 	 << MXC_F_PWRSEQ_LP_CTRL_FAST_WK_EN_POS) /**< LP_CTRL_FAST_WK_EN_EN \  \
-						    \ \ Setting */
+						    \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_BG_OFF_POS 11 /**< LP_CTRL_BG_OFF Position */
 #define MXC_F_PWRSEQ_LP_CTRL_BG_OFF                                            \
 	((uint32_t)(                                                           \
 		0x1UL << MXC_F_PWRSEQ_LP_CTRL_BG_OFF_POS)) /**< LP_CTRL_BG_OFF \
-							      \ \ \ Mask */
+							      \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_BG_OFF_ON                                         \
 	((uint32_t)0x0UL) /**< LP_CTRL_BG_OFF_ON Value */
 #define MXC_S_PWRSEQ_LP_CTRL_BG_OFF_ON                                         \
@@ -272,6 +279,7 @@ typedef struct {
 	 << MXC_F_PWRSEQ_LP_CTRL_BG_OFF_POS) /**< LP_CTRL_BG_OFF_OFF Setting \ \
 					      * \                              \
 					      * \ \                                                                             \
+					      * \ \ \                                                                             \
 					      */
 
 #define MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS                                 \
@@ -279,29 +287,29 @@ typedef struct {
 #define MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS                                           \
 	((uint32_t)(                                                                 \
 		0x1UL                                                                \
-		<< MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS)) /**< \ \ \                                                                                   \
+		<< MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS)) /**< \ \ \ \                                                                                   \
 							       LP_CTRL_VCORE_POR_DIS \
-							       \ \ \ Mask */
+							       \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_VCORE_POR_DIS_DIS                                 \
 	((uint32_t)0x0UL) /**< LP_CTRL_VCORE_POR_DIS_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VCORE_POR_DIS_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_VCORE_POR_DIS_DIS                                  \
-	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS) /**< \ \ \                                                                               \
+	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS) /**< \ \ \ \                                                                               \
 						       LP_CTRL_VCORE_POR_DIS_DIS \
-						       \ \ \ Setting */
+						       \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_VCORE_POR_DIS_EN                                  \
 	((uint32_t)0x1UL) /**< LP_CTRL_VCORE_POR_DIS_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VCORE_POR_DIS_EN                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_VCORE_POR_DIS_EN                                  \
-	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS) /**< \ \ \                                                                              \
+	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_POR_DIS_POS) /**< \ \ \ \                                                                              \
 						       LP_CTRL_VCORE_POR_DIS_EN \
-						       \ \ \ Setting */
+						       \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_LDO_DIS_POS 16 /**< LP_CTRL_LDO_DIS Position */
 #define MXC_F_PWRSEQ_LP_CTRL_LDO_DIS                                           \
 	((uint32_t)(0x1UL                                                      \
 		    << MXC_F_PWRSEQ_LP_CTRL_LDO_DIS_POS)) /**< LP_CTRL_LDO_DIS \
-							     \ \ \ Mask */
+							     \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_LDO_DIS_EN                                        \
 	((uint32_t)0x0UL) /**< LP_CTRL_LDO_DIS_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_LDO_DIS_EN                                        \
@@ -310,6 +318,7 @@ typedef struct {
 					       * \                             \
 					       * \ \                                                                             \
 					       * \ \ \                                                                             \
+					       * \ \ \ \                                                                             \
 					       */
 #define MXC_V_PWRSEQ_LP_CTRL_LDO_DIS_DIS                                       \
 	((uint32_t)0x1UL) /**< LP_CTRL_LDO_DIS_DIS Value */
@@ -319,6 +328,7 @@ typedef struct {
 					       * \                             \
 					       * \ \                                                                             \
 					       * \ \ \                                                                             \
+					       * \ \ \ \                                                                             \
 					       */
 
 #define MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS                                 \
@@ -326,46 +336,46 @@ typedef struct {
 #define MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS                                           \
 	((uint32_t)(                                                                 \
 		0x1UL                                                                \
-		<< MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS)) /**< \ \ \                                                                                   \
+		<< MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS)) /**< \ \ \ \                                                                                   \
 							       LP_CTRL_VCORE_SVM_DIS \
-							       \ \ \ Mask */
+							       \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_EN                                  \
 	((uint32_t)0x0UL) /**< LP_CTRL_VCORE_SVM_DIS_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_EN                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_EN                                  \
-	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS) /**< \ \ \                                                                              \
+	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS) /**< \ \ \ \                                                                              \
 						       LP_CTRL_VCORE_SVM_DIS_EN \
-						       \ \ \ Setting */
+						       \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_DIS                                 \
 	((uint32_t)0x1UL) /**< LP_CTRL_VCORE_SVM_DIS_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_DIS                                  \
-	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS) /**< \ \ \                                                                               \
+	 << MXC_F_PWRSEQ_LP_CTRL_VCORE_SVM_DIS_POS) /**< \ \ \ \                                                                               \
 						       LP_CTRL_VCORE_SVM_DIS_DIS \
-						       \ \ \ Setting */
+						       \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS                                 \
 	25 /**< LP_CTRL_VDDIO_POR_DIS Position */
 #define MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS                                           \
 	((uint32_t)(                                                                 \
 		0x1UL                                                                \
-		<< MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS)) /**< \ \ \                                                                                   \
+		<< MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS)) /**< \ \ \ \                                                                                   \
 							       LP_CTRL_VDDIO_POR_DIS \
-							       \ \ \ Mask */
+							       \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_EN                                  \
 	((uint32_t)0x0UL) /**< LP_CTRL_VDDIO_POR_DIS_EN Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_EN                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_EN                                  \
-	 << MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS) /**< \ \ \                                                                              \
+	 << MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS) /**< \ \ \ \                                                                              \
 						       LP_CTRL_VDDIO_POR_DIS_EN \
-						       \ \ \ Setting */
+						       \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_DIS                                 \
 	((uint32_t)0x1UL) /**< LP_CTRL_VDDIO_POR_DIS_DIS Value */
 #define MXC_S_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_DIS                                   \
 	(MXC_V_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_DIS                                  \
-	 << MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS) /**< \ \ \                                                                               \
+	 << MXC_F_PWRSEQ_LP_CTRL_VDDIO_POR_DIS_POS) /**< \ \ \ \                                                                               \
 						       LP_CTRL_VDDIO_POR_DIS_DIS \
-						       \ \ \ Setting */
+						       \ \ \ \ Setting */
 
 /**@} end of group PWRSEQ_LP_CTRL_Register */
 
@@ -380,7 +390,7 @@ typedef struct {
 	((uint32_t)(                                                           \
 		0x3FFFUL                                                       \
 		<< MXC_F_PWRSEQ_LP_WAKEFL_WAKEST_POS)) /**< LP_WAKEFL_WAKEST \ \
-							  \ \ Mask */
+							  \ \ \ Mask */
 
 /**@} end of group PWRSEQ_LP_WAKEFL_Register */
 
@@ -395,7 +405,7 @@ typedef struct {
 #define MXC_F_PWRSEQ_LPWK_EN_WAKEEN                                            \
 	((uint32_t)(0x3FFFUL                                                   \
 		    << MXC_F_PWRSEQ_LPWK_EN_WAKEEN_POS)) /**< LPWK_EN_WAKEEN \ \
-							    \ \ Mask */
+							    \ \ \ Mask */
 
 /**@} end of group PWRSEQ_LPWK_EN_Register */
 
@@ -406,92 +416,92 @@ typedef struct {
  * @{
  */
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF_POS                                     \
-	0 /**< LPMEMSD_SRAM0_OFF Position   \ \ \                                                                             \
+	0 /**< LPMEMSD_SRAM0_OFF Position   \ \ \ \                                                                             \
 	   */
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF                                         \
 	((uint32_t)(                                                           \
 		0x1UL                                                          \
 		<< MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF_POS)) /**< LPMEMSD_SRAM0_OFF \
-							   \ \ \ Mask */
+							   \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM0_OFF_NORMAL                                  \
 	((uint32_t)0x0UL) /**< LPMEMSD_SRAM0_OFF_NORMAL Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM0_OFF_NORMAL                                  \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM0_OFF_NORMAL                                 \
 	 << MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF_POS) /**< LPMEMSD_SRAM0_OFF_NORMAL  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM0_OFF_SHUTDOWN                                \
 	((uint32_t)0x1UL) /**< LPMEMSD_SRAM0_OFF_SHUTDOWN Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM0_OFF_SHUTDOWN                                \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM0_OFF_SHUTDOWN                               \
-	 << MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF_POS) /**< \ \ \                                                                             \
+	 << MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF_POS) /**< \ \ \ \                                                                             \
 						   LPMEMSD_SRAM0_OFF_SHUTDOWN  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM1_OFF_POS                                     \
-	1 /**< LPMEMSD_SRAM1_OFF Position   \ \ \                                                                             \
+	1 /**< LPMEMSD_SRAM1_OFF Position   \ \ \ \                                                                             \
 	   */
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM1_OFF                                         \
 	((uint32_t)(                                                           \
 		0x1UL                                                          \
 		<< MXC_F_PWRSEQ_LPMEMSD_SRAM1_OFF_POS)) /**< LPMEMSD_SRAM1_OFF \
-							   \ \ \ Mask */
+							   \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM1_OFF_NORMAL                                  \
 	((uint32_t)0x0UL) /**< LPMEMSD_SRAM1_OFF_NORMAL Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM1_OFF_NORMAL                                  \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM1_OFF_NORMAL                                 \
 	 << MXC_F_PWRSEQ_LPMEMSD_SRAM1_OFF_POS) /**< LPMEMSD_SRAM1_OFF_NORMAL  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM1_OFF_SHUTDOWN                                \
 	((uint32_t)0x1UL) /**< LPMEMSD_SRAM1_OFF_SHUTDOWN Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM1_OFF_SHUTDOWN                                \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM1_OFF_SHUTDOWN                               \
-	 << MXC_F_PWRSEQ_LPMEMSD_SRAM1_OFF_POS) /**< \ \ \                                                                             \
+	 << MXC_F_PWRSEQ_LPMEMSD_SRAM1_OFF_POS) /**< \ \ \ \                                                                             \
 						   LPMEMSD_SRAM1_OFF_SHUTDOWN  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM2_OFF_POS                                     \
-	2 /**< LPMEMSD_SRAM2_OFF Position   \ \ \                                                                             \
+	2 /**< LPMEMSD_SRAM2_OFF Position   \ \ \ \                                                                             \
 	   */
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM2_OFF                                         \
 	((uint32_t)(                                                           \
 		0x1UL                                                          \
 		<< MXC_F_PWRSEQ_LPMEMSD_SRAM2_OFF_POS)) /**< LPMEMSD_SRAM2_OFF \
-							   \ \ \ Mask */
+							   \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM2_OFF_NORMAL                                  \
 	((uint32_t)0x0UL) /**< LPMEMSD_SRAM2_OFF_NORMAL Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM2_OFF_NORMAL                                  \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM2_OFF_NORMAL                                 \
 	 << MXC_F_PWRSEQ_LPMEMSD_SRAM2_OFF_POS) /**< LPMEMSD_SRAM2_OFF_NORMAL  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM2_OFF_SHUTDOWN                                \
 	((uint32_t)0x1UL) /**< LPMEMSD_SRAM2_OFF_SHUTDOWN Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM2_OFF_SHUTDOWN                                \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM2_OFF_SHUTDOWN                               \
-	 << MXC_F_PWRSEQ_LPMEMSD_SRAM2_OFF_POS) /**< \ \ \                                                                             \
+	 << MXC_F_PWRSEQ_LPMEMSD_SRAM2_OFF_POS) /**< \ \ \ \                                                                             \
 						   LPMEMSD_SRAM2_OFF_SHUTDOWN  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM3_OFF_POS                                     \
-	3 /**< LPMEMSD_SRAM3_OFF Position   \ \ \                                                                             \
+	3 /**< LPMEMSD_SRAM3_OFF Position   \ \ \ \                                                                             \
 	   */
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM3_OFF                                         \
 	((uint32_t)(                                                           \
 		0x1UL                                                          \
 		<< MXC_F_PWRSEQ_LPMEMSD_SRAM3_OFF_POS)) /**< LPMEMSD_SRAM3_OFF \
-							   \ \ \ Mask */
+							   \ \ \ \ Mask */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM3_OFF_NORMAL                                  \
 	((uint32_t)0x0UL) /**< LPMEMSD_SRAM3_OFF_NORMAL Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM3_OFF_NORMAL                                  \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM3_OFF_NORMAL                                 \
 	 << MXC_F_PWRSEQ_LPMEMSD_SRAM3_OFF_POS) /**< LPMEMSD_SRAM3_OFF_NORMAL  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 #define MXC_V_PWRSEQ_LPMEMSD_SRAM3_OFF_SHUTDOWN                                \
 	((uint32_t)0x1UL) /**< LPMEMSD_SRAM3_OFF_SHUTDOWN Value */
 #define MXC_S_PWRSEQ_LPMEMSD_SRAM3_OFF_SHUTDOWN                                \
 	(MXC_V_PWRSEQ_LPMEMSD_SRAM3_OFF_SHUTDOWN                               \
-	 << MXC_F_PWRSEQ_LPMEMSD_SRAM3_OFF_POS) /**< \ \ \                                                                             \
+	 << MXC_F_PWRSEQ_LPMEMSD_SRAM3_OFF_POS) /**< \ \ \ \                                                                             \
 						   LPMEMSD_SRAM3_OFF_SHUTDOWN  \
-						   \ \ \ Setting */
+						   \ \ \ \ Setting */
 
 /**@} end of group PWRSEQ_LPMEMSD_Register */
 

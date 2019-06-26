@@ -14,9 +14,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "gpio_api.h"
 #include "registers.h"
-#include "mxc_errors.h"
+#include "gpio_regs.h"
 
 #define CPRINTF(format, args...) cprintf(CC_GPIO, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ##args)

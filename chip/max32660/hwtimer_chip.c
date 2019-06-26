@@ -15,7 +15,6 @@
 #include "registers.h"
 #include "tmr_regs.h"
 #include "gcr_regs.h"
-#include "mxc_errors.h"
 
 /* Define the rollover timer */
 #define TMR_ROLLOVER MXC_TMR0

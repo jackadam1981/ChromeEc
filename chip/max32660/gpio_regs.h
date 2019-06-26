@@ -98,6 +98,82 @@ typedef struct {
 	__IO uint32_t vssel; /**< <tt>\b 0xC0:<\tt> GPIO VSSEL Register */
 } mxc_gpio_regs_t;
 
+#define PIN_0 ((uint32_t)(1UL << 0))   /**< Pin 0 Define */
+#define PIN_1 ((uint32_t)(1UL << 1))   /**< Pin 1 Define */
+#define PIN_2 ((uint32_t)(1UL << 2))   /**< Pin 2 Define */
+#define PIN_3 ((uint32_t)(1UL << 3))   /**< Pin 3 Define */
+#define PIN_4 ((uint32_t)(1UL << 4))   /**< Pin 4 Define */
+#define PIN_5 ((uint32_t)(1UL << 5))   /**< Pin 5 Define */
+#define PIN_6 ((uint32_t)(1UL << 6))   /**< Pin 6 Define */
+#define PIN_7 ((uint32_t)(1UL << 7))   /**< Pin 7 Define */
+#define PIN_8 ((uint32_t)(1UL << 8))   /**< Pin 8 Define */
+#define PIN_9 ((uint32_t)(1UL << 9))   /**< Pin 9 Define */
+#define PIN_10 ((uint32_t)(1UL << 10)) /**< Pin 10 Define */
+#define PIN_11 ((uint32_t)(1UL << 11)) /**< Pin 11 Define */
+#define PIN_12 ((uint32_t)(1UL << 12)) /**< Pin 12 Define */
+#define PIN_13 ((uint32_t)(1UL << 13)) /**< Pin 13 Define */
+#define PIN_14 ((uint32_t)(1UL << 14)) /**< Pin 14 Define */
+#define PIN_15 ((uint32_t)(1UL << 15)) /**< Pin 15 Define */
+#define PIN_16 ((uint32_t)(1UL << 16)) /**< Pin 16 Define */
+#define PIN_17 ((uint32_t)(1UL << 17)) /**< Pin 17 Define */
+#define PIN_18 ((uint32_t)(1UL << 18)) /**< Pin 18 Define */
+#define PIN_19 ((uint32_t)(1UL << 19)) /**< Pin 19 Define */
+#define PIN_20 ((uint32_t)(1UL << 20)) /**< Pin 20 Define */
+#define PIN_21 ((uint32_t)(1UL << 21)) /**< Pin 21 Define */
+#define PIN_22 ((uint32_t)(1UL << 22)) /**< Pin 22 Define */
+#define PIN_23 ((uint32_t)(1UL << 23)) /**< Pin 23 Define */
+#define PIN_24 ((uint32_t)(1UL << 24)) /**< Pin 24 Define */
+#define PIN_25 ((uint32_t)(1UL << 25)) /**< Pin 25 Define */
+#define PIN_26 ((uint32_t)(1UL << 26)) /**< Pin 26 Define */
+#define PIN_27 ((uint32_t)(1UL << 27)) /**< Pin 27 Define */
+#define PIN_28 ((uint32_t)(1UL << 28)) /**< Pin 28 Define */
+#define PIN_29 ((uint32_t)(1UL << 29)) /**< Pin 29 Define */
+#define PIN_30 ((uint32_t)(1UL << 30)) /**< Pin 30 Define */
+#define PIN_31 ((uint32_t)(1UL << 31)) /**< Pin 31 Define */
+
+/**
+ * Enumeration type for the GPIO Function Type
+ */
+typedef enum {
+	GPIO_FUNC_IN,   /**< GPIO Input */
+	GPIO_FUNC_OUT,  /**< GPIO Output */
+	GPIO_FUNC_ALT1, /**< Alternate Function Selection */
+	GPIO_FUNC_ALT2, /**< Alternate Function Selection */
+	GPIO_FUNC_ALT3, /**< Alternate Function Selection */
+	GPIO_FUNC_ALT4, /**< Alternate Function Selection */
+} gpio_func_t;
+
+/**
+ * Enumeration type for the type of GPIO pad on a given pin.
+ */
+typedef enum {
+	GPIO_PAD_NONE,      /**< No pull-up or pull-down */
+	GPIO_PAD_PULL_UP,   /**< Set pad to weak pull-up */
+	GPIO_PAD_PULL_DOWN, /**< Set pad to weak pull-down */
+} gpio_pad_t;
+
+/**
+ * Structure type for configuring a GPIO port.
+ */
+typedef struct {
+	uint32_t port;    /**< Index of GPIO port */
+	uint32_t mask;    /**< Pin mask (multiple pins may be set) */
+	gpio_func_t func; /**< Function type */
+	gpio_pad_t pad;   /**< Pad type */
+} gpio_cfg_t;
+
+typedef enum { GPIO_INTERRUPT_LEVEL, GPIO_INTERRUPT_EDGE } gpio_int_mode_t;
+
+typedef enum {
+	GPIO_INTERRUPT_FALLING = 0, /**< Interrupt triggers on falling edge */
+	GPIO_INTERRUPT_HIGH = GPIO_INTERRUPT_FALLING, /**< Interrupt triggers
+							 when level is high */
+	GPIO_INTERRUPT_RISING, /**< Interrupt triggers on rising edge */
+	GPIO_INTERRUPT_LOW = GPIO_INTERRUPT_RISING, /**< Interrupt triggers when
+						       level is low */
+	GPIO_INTERRUPT_BOTH /**< Interrupt triggers on either edge */
+} gpio_int_pol_t;
+
 /* Register offsets for module GPIO */
 /**
  * @ingroup    gpio_registers

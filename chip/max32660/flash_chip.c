@@ -12,7 +12,7 @@
 #include "util.h"
 #include "watchdog.h"
 #include "registers.h"
-#include "mxc_errors.h"
+#include "common.h"
 #include "icc_regs.h"
 #include "flc_regs.h"
 
@@ -61,7 +61,7 @@ static int flash_init_controller(void)
 
 	/* Check if the flash controller is busy */
 	if (flash_busy()) {
-		return E_BUSY;
+		return EC_ERROR_BUSY;
 	}
 
 	/* Clear stale errors */
@@ -73,14 +73,14 @@ static int flash_init_controller(void)
 	MXC_FLC->cn = (MXC_FLC->cn & ~MXC_F_FLC_CN_UNLOCK) |
 		      MXC_S_FLC_CN_UNLOCK_UNLOCKED;
 
-	return E_NO_ERROR;
+	return EC_SUCCESS;
 }
 
 static int flash_device_page_erase(uint32_t address)
 {
 	int err;
 
-	if ((err = flash_init_controller()) != E_NO_ERROR)
+	if ((err = flash_init_controller()) != EC_SUCCESS)
 		return err;
 
 	// Align address on page boundary
@@ -103,22 +103,21 @@ static int flash_device_page_erase(uint32_t address)
 	/* Check access violations */
 	if (MXC_FLC->intr & MXC_F_FLC_INTR_AF) {
 		MXC_FLC->intr &= ~MXC_F_FLC_INTR_AF;
-		return E_BAD_STATE;
+		return EC_ERROR_UNKNOWN;
 	}
 
 	flash_operation();
 
-	return E_NO_ERROR;
+	return EC_SUCCESS;
 }
 
-static int flash_device_write(uint32_t address, uint32_t length,
-			      uint8_t *buffer)
+int flash_physical_write(int offset, int size, const char *data)
 {
 	int err;
 	uint32_t bytes_written;
 	uint8_t current_data[4];
 
-	if ((err = flash_init_controller()) != E_NO_ERROR)
+	if ((err = flash_init_controller()) != EC_SUCCESS)
 		return err;
 
 	// write in 32-bit units until we are 128-bit aligned
@@ -126,20 +125,20 @@ static int flash_device_write(uint32_t address, uint32_t length,
 	MXC_FLC->cn |= MXC_F_FLC_CN_WDTH;
 
 	// Align the address and read/write if we have to
-	if (address & 0x3) {
+	if (offset & 0x3) {
 
 		// Figure out how many bytes we have to write to round up the
 		// address
-		bytes_written = 4 - (address & 0x3);
+		bytes_written = 4 - (offset & 0x3);
 
 		// Save the data currently in the flash
-		memcpy(current_data, (void *)(address & (~0x3)), 4);
+		memcpy(current_data, (void *)(offset & (~0x3)), 4);
 
 		// Modify current_data to insert the data from buffer
-		memcpy(&current_data[4 - bytes_written], buffer, bytes_written);
+		memcpy(&current_data[4 - bytes_written], data, bytes_written);
 
 		// Write the modified data
-		MXC_FLC->addr = address - (address % 4);
+		MXC_FLC->addr = offset - (offset % 4);
 		memcpy((void *)&MXC_FLC->data[0], &current_data, 4);
 		MXC_FLC->cn |= MXC_F_FLC_CN_WR;
 
@@ -147,70 +146,70 @@ static int flash_device_write(uint32_t address, uint32_t length,
 		while (flash_busy())
 			;
 
-		address += bytes_written;
-		length -= bytes_written;
-		buffer += bytes_written;
+		offset += bytes_written;
+		size -= bytes_written;
+		data += bytes_written;
 	}
 
-	while ((length >= 4) && ((address & 0x1F) != 0)) {
-		MXC_FLC->addr = address;
-		memcpy((void *)&MXC_FLC->data[0], buffer, 4);
+	while ((size >= 4) && ((offset & 0x1F) != 0)) {
+		MXC_FLC->addr = offset;
+		memcpy((void *)&MXC_FLC->data[0], data, 4);
 		MXC_FLC->cn |= MXC_F_FLC_CN_WR;
 
 		/* Wait until flash operation is complete */
 		while (flash_busy())
 			;
 
-		address += 4;
-		length -= 4;
-		buffer += 4;
+		offset += 4;
+		size -= 4;
+		data += 4;
 	}
 
-	if (length >= 16) {
+	if (size >= 16) {
 
 		// write in 128-bit bursts while we can
 		MXC_FLC->cn &= ~MXC_F_FLC_CN_WDTH;
 
-		while (length >= 16) {
-			MXC_FLC->addr = address;
-			memcpy((void *)&MXC_FLC->data[0], buffer, 16);
+		while (size >= 16) {
+			MXC_FLC->addr = offset;
+			memcpy((void *)&MXC_FLC->data[0], data, 16);
 			MXC_FLC->cn |= MXC_F_FLC_CN_WR;
 
 			/* Wait until flash operation is complete */
 			while (flash_busy())
 				;
 
-			address += 16;
-			length -= 16;
-			buffer += 16;
+			offset += 16;
+			size -= 16;
+			data += 16;
 		}
 
 		// Return to 32-bit writes.
 		MXC_FLC->cn |= MXC_F_FLC_CN_WDTH;
 	}
 
-	while (length >= 4) {
-		MXC_FLC->addr = address;
-		memcpy((void *)&MXC_FLC->data[0], buffer, 4);
+	while (size >= 4) {
+		MXC_FLC->addr = offset;
+		memcpy((void *)&MXC_FLC->data[0], data, 4);
 		MXC_FLC->cn |= MXC_F_FLC_CN_WR;
 
 		/* Wait until flash operation is complete */
 		while (flash_busy())
 			;
 
-		address += 4;
-		length -= 4;
-		buffer += 4;
+		offset += 4;
+		size -= 4;
+		data += 4;
 	}
 
-	if (length > 0) {
+	if (size > 0) {
 		// Save the data currently in the flash
-		memcpy(current_data, (void *)(address), 4);
+		memcpy(current_data, (void *)(offset), 4);
 
-		// Modify current_data to insert the data from buffer
-		memcpy(current_data, buffer, length);
+		// Modify current_data to insert the data from data
+		memcpy(current_data, data, size);
 
-		MXC_FLC->addr = address;
+		MXC_FLC->addr = offset;
 		memcpy((void *)&MXC_FLC->data[0], current_data, 4);
 		MXC_FLC->cn |= MXC_F_FLC_CN_WR;
 
@@ -225,28 +224,16 @@ static int flash_device_write(uint32_t address, uint32_t length,
 	/* Check access violations */
 	if (MXC_FLC->intr & MXC_F_FLC_INTR_AF) {
 		MXC_FLC->intr &= ~MXC_F_FLC_INTR_AF;
-		return E_BAD_STATE;
+		return EC_ERROR_UNKNOWN;
 	}
 
 	flash_operation();
 
-	return E_NO_ERROR;
+	return EC_SUCCESS;
 }
 
 /*****************************************************************************/
 /* Physical layer APIs */
-
-int flash_physical_write(int offset, int size, const char *data)
-{
-	int error_status;
-
-	/* write 'size' number of bytes to address 'offset' */
-	error_status = flash_device_write(offset, size, (uint8_t *)data);
-	if (error_status != E_NO_ERROR) {
-		return EC_ERROR_UNKNOWN;
-	}
-	return EC_SUCCESS;
-}
 
 int flash_physical_erase(int offset, int size)
 {
@@ -264,7 +251,7 @@ int flash_physical_erase(int offset, int size)
 		/* erase the page after calculating the start address */
 		error_status = flash_device_page_erase(
 			offset + (i * CONFIG_FLASH_ERASE_SIZE));
-		if (error_status != E_NO_ERROR) {
+		if (error_status != EC_SUCCESS) {
 			return EC_ERROR_UNKNOWN;
 		}
 	}

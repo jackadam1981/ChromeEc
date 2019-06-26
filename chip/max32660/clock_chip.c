@@ -9,32 +9,18 @@
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "registers.h"
 #include "system.h"
-#include "task.h"
 #include "timer.h"
-#include "uart.h"
 #include "util.h"
 #include "watchdog.h"
-#include "registers.h"
+#include "tmr_regs.h"
 #include "gcr_regs.h"
 #include "pwrseq_regs.h"
-#include "tmr_regs.h"
-#include "wdt_regs.h"
-#include "mxc_errors.h"
 
 #define MAX32660_SYSTEMCLOCK SYS_CLOCK_HIRC
-
-/* Console output macros */
-#define CPUTS(outstr) cputs(CC_CLOCK, outstr)
-#define CPRINTS(format, args...) cprints(CC_CLOCK, format, ##args)
-
-/***** Definitions *****/
-#define SYS_CLOCK_TIMEOUT MXC_DELAY_MSEC(1)
-
-#define SYS_RTC_CLK 32768UL
 
 /** @brief Clock source */
 typedef enum {
@@ -51,21 +37,19 @@ typedef enum {
 static int clock_timeout(uint32_t ready)
 {
 	// Start timeout, wait for ready
-	//	mxc_delay_start(SYS_CLOCK_TIMEOUT);
 	do {
 		if (MXC_GCR->clkcn & ready) {
-			return E_NO_ERROR;
+			return EC_SUCCESS;
 		}
 	} while (1);
-	//	} while (mxc_delay_check() == E_NO_ERROR);
 
-	return E_NO_ERROR;
+	return EC_SUCCESS;
 }
 
 extern void (*const __isr_vector[])(void);
 uint32_t SystemCoreClock = HIRC96_FREQ;
 
-void clock_update(void)
+static void clock_update(void)
 {
 	uint32_t base_freq, divide, ovr;
 
@@ -88,8 +72,9 @@ void clock_update(void)
 	SystemCoreClock = base_freq >> divide;
 }
 
-int clock_select(sys_system_clock_t clock, mxc_tmr_regs_t *tmr)
+void clock_init(void)
 {
+	/* Switch system clock to HIRC */
 	uint32_t current_clock, ovr, divide;
 
 	// Save the current system clock
@@ -97,34 +82,28 @@ int clock_select(sys_system_clock_t clock, mxc_tmr_regs_t *tmr)
 	// Set FWS higher than what the minimum for the fastest clock is
 	MXC_GCR->memckcn = (MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 			   (0x5UL << MXC_F_GCR_MEMCKCN_FWS_POS);
-	switch (clock) {
 
-	case SYS_CLOCK_HIRC:
-		// Enable 96MHz Clock
-		MXC_GCR->clkcn |= MXC_F_GCR_CLKCN_HIRC_EN;
+	// Enable 96MHz Clock
+	MXC_GCR->clkcn |= MXC_F_GCR_CLKCN_HIRC_EN;
 
-		// Check if 96MHz clock is ready
-		if (clock_timeout(MXC_F_GCR_CLKCN_HIRC_RDY) != E_NO_ERROR) {
-			return E_TIME_OUT;
+	// Check if 96MHz clock is ready
+	if (clock_timeout(MXC_F_GCR_CLKCN_HIRC_RDY) != EC_SUCCESS) {
+		while (1) {
 		}
-
-		// Set 96MHz clock as System Clock
-		MXC_SETFIELD(MXC_GCR->clkcn, MXC_F_GCR_CLKCN_CLKSEL,
-			     MXC_S_GCR_CLKCN_CLKSEL_HIRC);
-
-		break;
-	default:
-		return E_BAD_PARAM;
 	}
 
+	// Set 96MHz clock as System Clock
+	MXC_SETFIELD(MXC_GCR->clkcn, MXC_F_GCR_CLKCN_CLKSEL,
+		     MXC_S_GCR_CLKCN_CLKSEL_HIRC);
+
 	// Wait for system clock to be ready
-	if (clock_timeout(MXC_F_GCR_CLKCN_CKRDY) != E_NO_ERROR) {
+	if (clock_timeout(MXC_F_GCR_CLKCN_CKRDY) != EC_SUCCESS) {
 
 		// Restore the old system clock if timeout
 		MXC_SETFIELD(MXC_GCR->clkcn, MXC_F_GCR_CLKCN_CLKSEL,
 			     current_clock);
-
-		return E_TIME_OUT;
+		while (1) {
+		}
 	}
 
 	// Update the system core clock
@@ -139,54 +118,38 @@ int clock_select(sys_system_clock_t clock, mxc_tmr_regs_t *tmr)
 
 	// Set flash wait settings
 	if (ovr == MXC_S_PWRSEQ_LP_CTRL_OVR_0_9V) {
-
 		if (divide == 0) {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x2UL << MXC_F_GCR_MEMCKCN_FWS_POS);
-
 		} else {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x1UL << MXC_F_GCR_MEMCKCN_FWS_POS);
 		}
-
 	} else if (ovr == MXC_S_PWRSEQ_LP_CTRL_OVR_1_0V) {
 		if (divide == 0) {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x2UL << MXC_F_GCR_MEMCKCN_FWS_POS);
-
 		} else {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x1UL << MXC_F_GCR_MEMCKCN_FWS_POS);
 		}
-
 	} else {
-
 		if (divide == 0) {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x4UL << MXC_F_GCR_MEMCKCN_FWS_POS);
-
 		} else if (divide == 1) {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x2UL << MXC_F_GCR_MEMCKCN_FWS_POS);
-
 		} else {
 			MXC_GCR->memckcn =
 				(MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 				(0x1UL << MXC_F_GCR_MEMCKCN_FWS_POS);
 		}
 	}
-
-	return E_NO_ERROR;
-}
-
-void clock_init(void)
-{
-	/* Switch system clock to HIRC */
-	clock_select(MAX32660_SYSTEMCLOCK, MXC_TMR0);
 }

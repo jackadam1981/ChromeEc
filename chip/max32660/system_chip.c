@@ -33,8 +33,6 @@ void system_pre_init(void)
 void system_reset(int flags)
 {
 	MXC_GCR->rstr0 = MXC_F_GCR_RSTR0_SYSTEM;
-	while (MXC_GCR->rstr0 != 0x0) {
-	}
 	while (1)
 		;
 }
