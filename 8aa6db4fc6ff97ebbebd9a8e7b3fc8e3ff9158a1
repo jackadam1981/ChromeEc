@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3271a699_43abbe9e",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T23:03:41Z",
+      "side": 1,
+      "message": "and the size is worse if moving inside the function.\n\nas now:\n*** 3516 bytes in flash and 5968 bytes in RAM still available on cr50 RW ****\n\nif moved inside:\n*** 3496 bytes in flash and 5968 bytes in RAM still available on cr50 RW ****\n\nso, let\u0027s keep as-is?",
+      "parentUuid": "00de262b_8959d973",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cfc7aeb_9cf1c0be",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
