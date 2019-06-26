@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "949ac8e0_79578f82",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T22:44:32Z",
+      "side": 1,
+      "message": "if there\u0027s a meaning, I don\u0027t know it. copied from the userland RSU Dev ID calculation.\n\njust following the convention to define all const at the start of the unit. I actually thought it is in the styleguide, but now couldn\u0027t find it when I searched there. if not in the styleguide, I\u0027m fine with declaring it inside the function, if you prefer.\nshall I move?",
+      "parentUuid": "d9a1195b_528f6c68",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cfc7aeb_9cf1c0be",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df7ca30_5ce9df39",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T22:44:32Z",
+      "side": 1,
+      "message": "I\u0027d keep it for a separate CL if we decide to do so. it\u0027d be easier to verify that we just moved stuff around w/o changes when done separately.",
+      "parentUuid": "8cfc7aeb_9cf1c0be",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a75e0a6f_90288445",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T22:44:32Z",
+      "side": 1,
+      "message": "right. the size is vetted in common _plat__NvVirtualMemoryRead before calling this handler, so we don\u0027t check it again here.",
+      "parentUuid": "2ecefdc5_685a4a28",
+      "range": {
+        "startLine": 366,
+        "startChar": 36,
+        "endLine": 366,
+        "endChar": 40
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7f48179_fa0ed7dd",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-06-26T20:24:07Z",
       "side": 1,
       "message": "does this not fit into one line?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c55ef2_b880942e",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T22:44:32Z",
+      "side": 1,
+      "message": "yes, following the style in all other such places, where it is two lines even if it fits.",
+      "parentUuid": "c7f48179_fa0ed7dd",
       "range": {
         "startLine": 368,
         "startChar": 0,
