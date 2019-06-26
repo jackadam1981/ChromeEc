@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a56515f7_96f30b1f",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T20:28:45Z",
+      "side": 1,
+      "message": "is this checking if the pointer is negative? Or did you mean to check the size?",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 19
+      },
+      "revId": "2f98c127044c7204fb05c64a74164cdc74efbe44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
