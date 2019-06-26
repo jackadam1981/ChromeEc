@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16c2e0c2_c1a0cadf",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-26T16:27:14Z",
+      "side": 1,
+      "message": "Why are these functions are not declared in ioexpander_it8801.h or marked static?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "693b11450a72a0fc89ac36451b53f6c81e22b56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
