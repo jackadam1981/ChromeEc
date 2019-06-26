@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b49d4b4f_9dbb5a1b",
+        "filename": "include/rma_auth.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T20:15:05Z",
+      "side": 1,
+      "message": "it would be safer and more explicit to pass the size as a parameter.",
+      "range": {
+        "startLine": 77,
+        "startChar": 11,
+        "endLine": 77,
+        "endChar": 57
+      },
+      "revId": "7e869bcb9483b0b8724175dfc9afd1068e000cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
