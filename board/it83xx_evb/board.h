@@ -33,6 +33,11 @@
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_UART_HOST
 #define CONFIG_HOSTCMD_LPC
+/* Use keyboard expander  */
+#define CONFIG_KB_EXPANDER_IT8801
+
+/* Setting master port */
+#define I2C_PORT_KB_EXPANDER 1
 
 #if IT83XX_PD_EVB
 /* PD */
