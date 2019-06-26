@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "950d0774_35efca92",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T20:31:02Z",
+      "side": 1,
+      "message": "this comment was somehow lost:\n\nbefore this refactoring the buffer size was known, now it is just a convention. I think it would be more robust to pass the buffer size as the second parameter.",
+      "range": {
+        "startLine": 170,
+        "startChar": 23,
+        "endLine": 170,
+        "endChar": 45
+      },
+      "revId": "7e869bcb9483b0b8724175dfc9afd1068e000cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b49d4b4f_9dbb5a1b",
         "filename": "include/rma_auth.h",
         "patchSetId": 3
