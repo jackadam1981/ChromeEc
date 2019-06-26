@@ -1890,6 +1890,22 @@ uint8_t is_tbt_compat_enabled(int port);
 uint8_t get_usb_pd_mux_cable_type(int port);
 
 /**
+ * Return the response of discover mode SOP prime, with SVID = 0x8087
+ *
+ * @param port	USB-C port number
+ * @return	cable mode response vdo
+ */
+struct tbt_mode_resp_cable get_tbt_cable_resp_vdo(int port);
+
+/**
+ * Return the response of discover mode SOP, with SVID = 0x8087
+ *
+ * @param port	USB-C port number
+ * @return	device mode response vdo
+ */
+struct tbt_mode_resp_device get_tbt_dev_resp_vdo(int port);
+
+/**
  * Update Mux on entering TBT mode
  *
  * @param port USB-C port number
