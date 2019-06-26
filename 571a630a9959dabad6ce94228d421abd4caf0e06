@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "2930d3e3_69d46733",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-06-26T01:08:22Z",
+      "side": 1,
+      "message": "I will change the code once the kernel side changes are ready.",
+      "parentUuid": "dee3ba43_f834e5f3",
+      "revId": "571a630a9959dabad6ce94228d421abd4caf0e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1f626a4_1ddd1a38",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 17
