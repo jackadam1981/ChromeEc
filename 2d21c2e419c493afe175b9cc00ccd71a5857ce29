@@ -46,6 +46,30 @@
       "revId": "2d21c2e419c493afe175b9cc00ccd71a5857ce29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c617ccda_77203b59",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-26T17:30:49Z",
+      "side": 1,
+      "message": "Sent out CL:1678254 just to be safe. If we can prevent a motion sense coding bug from crashing the entire system, I think we should.",
+      "parentUuid": "cda70ea4_7ee8bd50",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "2d21c2e419c493afe175b9cc00ccd71a5857ce29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
