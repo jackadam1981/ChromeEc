@@ -22,6 +22,30 @@
       "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf8e826_6a7a387d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-26T21:31:23Z",
+      "side": 1,
+      "message": "I think this is something that should be in both (most likely).\n\nOn of the purposes of this doc is going to be how to switch between the old and new implementation and what you need to consider at a high level. There will probably be more to it than config options changes, but this is what we have so far.",
+      "parentUuid": "6b0f36eb_5c99bf8d",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 54
+      },
+      "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
