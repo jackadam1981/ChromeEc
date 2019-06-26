@@ -22,6 +22,30 @@
       "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a655fead_30154d8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-06-26T19:11:40Z",
+      "side": 1,
+      "message": "My first thought for how to do something more unified would be to have IOEX() in gpio.inc add an entry into \"struct gpio_info gpio_list[]\", storing the ioex_port in a new field added to struct gpio_info.\n\nUnfortunately, the implementation of gpio_set/get_level() etc is spread among chip/*/gpio.c so all of those would need to be touched to add handling for the new IOEX signals. Maybe all those API functions should move up to common/gpio.c and then call down into either a per-chip driver (for GPIO signals) or the ioexpander_drv (for IOEX signals).",
+      "parentUuid": "1e1cf9f8_4dde34b6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
