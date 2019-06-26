@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b0f36eb_5c99bf8d",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-26T21:13:47Z",
+      "side": 1,
+      "message": "Why is this not described in include.h? I think CONFIG_ macros should be described in include.h. I don\u0027t think it\u0027s a good idea to split info in two places.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 54
+      },
+      "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
