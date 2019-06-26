@@ -152,3 +152,6 @@ driver-$(CONFIG_MCDP28X0)+=mcdp28x0.o
 
 # Wireless Power Chargers
 driver-$(HAS_TASK_WPC) += wpc/p9221.o
+
+# Keyboard expander
+driver-$(CONFIG_KBEXPANDER_IT8801) += kbexpander_it8801.o
