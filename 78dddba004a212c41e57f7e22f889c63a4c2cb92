@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ef1a2e38_9f66532f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-26T16:17:02Z",
+      "side": 1,
+      "message": "Can you elaborate it? What is the different method? A KB controller has a GPIO pin connected to PMIC_FORCE_RESET? A CL is coming to add IO Expander framework.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "78dddba004a212c41e57f7e22f889c63a4c2cb92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13e89d16_7de90b56",
         "filename": "board/flapjack/board.h",
         "patchSetId": 2
