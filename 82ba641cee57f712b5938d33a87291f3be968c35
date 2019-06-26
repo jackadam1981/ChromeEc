@@ -46,6 +46,30 @@
       "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07cb75b2_b3a01b94",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-26T21:55:18Z",
+      "side": 1,
+      "message": "Then, can you replace it with a pointer to the specific section in config.h?\n\n  \"Refer to XXX in config.h for how to use the newer PD stack.\"\n\nI would be nice if we can make a link pointing to a specific part of config.h (without pining to a specific version of config.h).",
+      "parentUuid": "bcf8e826_6a7a387d",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 54
+      },
+      "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
