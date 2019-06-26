@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "88a716ec_d99014e3",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T23:03:02Z",
+      "side": 1,
+      "message": "maybe it is worth commenting where else this salt is sued to keep in sync.",
+      "parentUuid": "00de262b_8959d973",
+      "range": {
+        "startLine": 137,
+        "startChar": 25,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cfc7aeb_9cf1c0be",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
