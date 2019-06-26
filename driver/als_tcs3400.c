@@ -15,8 +15,11 @@
 #include "task.h"
 #include "util.h"
 
+#define TEST_MODE
+
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
 
+#ifndef TEST_MODE
 /*
  * Stores the number of atime increments/decrements needed to change light value
  * by 1% of saturation for each gain setting for each predefined LUX range.
@@ -30,6 +33,7 @@ range_atime[TCS_MAX_AGAIN-TCS_MIN_AGAIN+1][TCS_MAX_ATIME_RANGES] = {
 { 11300, 11300, 3766, 2260, 1883, 1412, 1130, 1130, 869, 807, 706, 627 },
 { 11300, 1883, 807, 565, 418, 322, 264, 256, 203, 194, 187, 300 },
 { 3766, 418, 207, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+#endif /* TEST_MODE */
 
 enum alslog_level {
 	DISABLED = 0,
@@ -47,7 +51,7 @@ enum alslog_level {
 };
 
 #ifdef CONFIG_CMD_ALSLOG
-static int gAlsLogMask;
+static int gAlsLogMask = 1024;
 static int command_log_als_data(int argc, char **argv)
 {
 	/* toggle log state */
@@ -151,6 +155,7 @@ static int tcs3400_rgb_read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
+#ifndef TEST_MODE
 static void
 decrement_atime(struct tcs_saturation_t *sat_p, uint16_t cur_lux, int percent)
 {
@@ -171,17 +176,78 @@ static void increment_atime(struct tcs_saturation_t *sat_p)
 	sat_p->atime = MIN(sat_p->atime + TCS_ATIME_INC_STEP, TCS_MAX_ATIME);
 	ALSLOG((SATURATION|GRAPH), "increment ATIME = %d", sat_p->atime);
 }
+#endif
 
 #ifdef CONFIG_CMD_ALSLOG
 void log(uint16_t light_val, struct tcs_saturation_t *sat_p, uint16_t *raw_data)
 {
-	ALSLOG(GRAPH, "value: %d, %d%% saturation, GAIN: %d, ATIME: %d, "
+	ALSLOG((GRAPH|TEST), "value: %d, %d%% saturation, GAIN: %d, ATIME: %d, "
 	       "[ 0x%x 0x%x 0x%x 0x%x ",
 	       light_val, light_val * 100 / TCS_SATURATION_LEVEL,
 	       sat_p->again, sat_p->atime,
 	       raw_data[0], raw_data[1], raw_data[2], raw_data[3]);
 }
 #endif
+
+
+#ifdef TEST_MODE
+/*
+ * Run through each atime setting for each gain level
+ */
+#define TEST_MODE_START 0
+#define TEST_MODE_GAIN_WALK 1
+
+static int g_test_mode = TEST_MODE_START;
+
+static int next_test_setting(struct motion_sensor_t *s)
+{
+	struct tcs_saturation_t *sat_p =
+			&TCS3400_RGB_DRV_DATA(s+1)->saturation;
+	int ret = EC_SUCCESS;
+	uint16_t orig_atime = sat_p->atime;
+	uint16_t orig_again = sat_p->again;
+
+	switch (g_test_mode) {
+	case TEST_MODE_START:
+		sat_p->again = 0;
+		sat_p->atime = TCS_MAX_ATIME;
+		g_test_mode = TEST_MODE_GAIN_WALK;
+		break;
+
+	case TEST_MODE_GAIN_WALK:
+		if (sat_p->atime == TCS_MIN_ATIME) {
+			sat_p->atime = TCS_MAX_ATIME;
+			sat_p->again = (sat_p->again+1) % (TCS_MAX_AGAIN+1);
+		} else {
+			if (sat_p->again >= 2)
+				sat_p->atime = MAX(sat_p->atime -
+				   1, TCS_MIN_ATIME);
+			else
+				sat_p->atime = MAX(sat_p->atime -
+				   TCS_ATIME_DEC_STEP, TCS_MIN_ATIME);
+		}
+
+		if (orig_again != sat_p->again) {
+			ret = tcs3400_i2c_write8(s, TCS_I2C_CONTROL,
+				(sat_p->again & TCS_I2C_CONTROL_MASK));
+			if (ret)
+				return ret;
+		}
+
+		if (orig_atime != sat_p->atime) {
+			ret = tcs3400_i2c_write8(s, TCS_I2C_ATIME,
+						 sat_p->atime);
+			if (ret)
+				return ret;
+		}
+		break;
+	default:
+		break;
+	}
+	return ret;
+}
+
+#else
 
 /*
  * tcs3400_adjust_sensor_for_saturation() tries to keep CRGB values as
@@ -331,6 +397,7 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 
 	return ret;
 }
+#endif
 
 /**
  * normalize_channel_data - normalize the light data to remove effect of
@@ -635,8 +702,30 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 	motion_sense_fifo_commit_data();
 #endif
 
+#ifdef TEST_MODE
+	{
+		int max_val = 0;
+
+		for (int x = 0; x < TCS_CHANNEL_COUNT; x++)
+			max_val = MAX(max_val, raw_data[x]);
+
+		log(max_val, &TCS3400_RGB_DRV_DATA(s+1)->saturation, raw_data);
+		if ((raw_data[0] == 0xffff) ||
+		    (raw_data[1] == 0xffff) ||
+		    (raw_data[2] == 0xffff) ||
+		    (raw_data[3] == 0xffff)) {
+			/* wrap once we saturate */
+			TCS3400_RGB_DRV_DATA(s+1)->saturation.again = 0;
+			TCS3400_RGB_DRV_DATA(s+1)->saturation.atime =
+					TCS_MAX_ATIME;
+		} else {
+			next_test_setting(s);
+		}
+	}
+#else
 	if (calibration_mode == TCS_RUN_MODE)
 		ret = tcs3400_adjust_sensor_for_saturation(s, raw_data);
+#endif
 
 	return ret;
 }
