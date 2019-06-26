@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0edb2a59_535b8c1c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-26T16:38:13Z",
+      "side": 1,
+      "message": "this should be ccprintf since it is in response to a console command. (you don\u0027t want to miss the output if someone called `chan 0` before this command, which happens during faft, etc)",
+      "range": {
+        "startLine": 566,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 8
+      },
+      "revId": "f6e35fa5f37ba42c2eed92b322356af7a75a0c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
