@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e1cf9f8_4dde34b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-26T16:23:10Z",
+      "side": 1,
+      "message": "Obviously, there are lots of overlaps between the native GPIO framework and IO_Expander. How much thought did you put in more unified approach (meaning extending the native GPIO framework)? If we add a whole new set of APIs, it\u0027ll impact code size.\n\nAt this point, I\u0027m not convinced this is the right direction.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
