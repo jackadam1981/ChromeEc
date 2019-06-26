@@ -45,6 +45,30 @@
       "revId": "27fd0ba6a6bf21f68b120df7b976235ea1615523",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e487b2b2_fe01cc79",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-06-26T03:00:37Z",
+      "side": 1,
+      "message": "Most of the time I don\u0027t want to write just one field and leave rest as is, instead I want to define all fields in one go. Less code, more accurate.",
+      "parentUuid": "757e89df_921c94ba",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "27fd0ba6a6bf21f68b120df7b976235ea1615523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
