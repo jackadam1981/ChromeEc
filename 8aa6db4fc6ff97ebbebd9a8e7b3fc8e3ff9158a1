@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "e80b18c6_16b9b797",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T23:01:44Z",
+      "side": 1,
+      "message": "btw, what\u0027s the point of storing the hash instead of the value itself? It\u0027s still one to one mapping, the same size, no?\n\nMaybe hashing if necessary should be done by whoever retrieves this value?",
+      "parentUuid": "a75e0a6f_90288445",
+      "range": {
+        "startLine": 366,
+        "startChar": 36,
+        "endLine": 366,
+        "endChar": 40
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7f48179_fa0ed7dd",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "yes, following the style in all other such places, where it is two lines even if it fits.",
       "parentUuid": "c7f48179_fa0ed7dd",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ead4437_24fc4abd",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T23:01:44Z",
+      "side": 1,
+      "message": "ok, I think it should be unwrapped, but can be done in that separate CL which drops static declarations if it comes to it.",
+      "parentUuid": "c9c55ef2_b880942e",
       "range": {
         "startLine": 368,
         "startChar": 0,
