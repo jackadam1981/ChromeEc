@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "feaf208e_cce8a62f",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T23:12:02Z",
+      "side": 1,
+      "message": "RMA Device ID is 8 bytes. The hash (RSU Device ID) is 32 bytes.\nSomewhere in reviews it was decided that we shouldn\u0027t be sending the original device id, but only it\u0027s hmac. (security or privacy considerations iirc).\nAnd we can\u0027t be returning RMA Dev ID here and letting the userland do the hashing, since they need to send the cr50-attested value, so whatever is returned from here needs to be sent to the server, even if we send a hashed value in parallel.",
+      "parentUuid": "e80b18c6_16b9b797",
+      "range": {
+        "startLine": 366,
+        "startChar": 36,
+        "endLine": 366,
+        "endChar": 40
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7f48179_fa0ed7dd",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 3
@@ -331,6 +355,30 @@
       "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1958bb9_caedf889",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T23:12:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ead4437_24fc4abd",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 26
+      },
+      "revId": "8aa6db4fc6ff97ebbebd9a8e7b3fc8e3ff9158a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
