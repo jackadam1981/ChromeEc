@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b16e0df_3303f0c1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-26T17:06:20Z",
+      "side": 1,
+      "message": "nit: you can always define this with __maybe_unused now",
+      "range": {
+        "startLine": 2271,
+        "startChar": 0,
+        "endLine": 2272,
+        "endChar": 78
+      },
+      "revId": "c9df87d44f1633adfd976916b497eabc355381ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545d13be_b6c4a879",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2371,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-26T17:06:20Z",
+      "side": 1,
+      "message": "nit: DECLARE_HOOK, normally doesn\u0027t have the newline between it and its function",
+      "range": {
+        "startLine": 2370,
+        "startChar": 0,
+        "endLine": 2371,
+        "endChar": 2
+      },
+      "revId": "c9df87d44f1633adfd976916b497eabc355381ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
