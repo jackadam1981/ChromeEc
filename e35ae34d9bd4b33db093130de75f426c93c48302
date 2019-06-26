@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba0b71fc_f6eff477",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-26T15:25:46Z",
+      "side": 1,
+      "message": "both of these comments don\u0027t really make sense anymore. I would remove this one, and adjust the bottom one to make the bottom one a quick remark about legacy 8-bit.",
+      "range": {
+        "startLine": 791,
+        "startChar": 6,
+        "endLine": 791,
+        "endChar": 33
+      },
+      "revId": "e35ae34d9bd4b33db093130de75f426c93c48302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e03a4a9_6344f738",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-26T15:25:46Z",
+      "side": 1,
+      "message": "Perhaps this needs an explanation that the 7-bit address is stored after the first bit in buffer[0]?",
+      "range": {
+        "startLine": 116,
+        "startChar": 16,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "e35ae34d9bd4b33db093130de75f426c93c48302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20690f12_62996c48",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-06-26T15:25:46Z",
+      "side": 1,
+      "message": "extra noise?",
+      "revId": "e35ae34d9bd4b33db093130de75f426c93c48302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
