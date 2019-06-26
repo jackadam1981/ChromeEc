@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b0e02ad_d9bd7730",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:07:11Z",
+      "side": 1,
+      "message": "Should this be prefixed with CL:?",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "40cd0fbeb2aed7d53a19977d4336f0f4a92cff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94b2482_28d1778c",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:07:11Z",
+      "side": 1,
+      "message": "It looks like checkpatch.pl, which gets run as part of repo upload has a list that gets checked: https://chromium.googlesource.com/chromiumos/repohooks/+/bb06fc9c260c32080f29cf6146cc3ab4f815e68e/spelling.txt.\n\nLooks like it works without this change:\n\n       WARNING: \u0027abov\u0027 may be misspelled - perhaps \u0027above\u0027?\n            #25: FILE: chip/stm32/spi.c:355:\n            +   /* abov test */\n\n\nMaybe we can add to that so that it works for all the Chrome OS repos?",
+      "revId": "40cd0fbeb2aed7d53a19977d4336f0f4a92cff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
