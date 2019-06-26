@@ -28,6 +28,8 @@
 #define CONFIG_SWITCH
 #define CONFIG_WATCHDOG_HELP
 
+#define PD_TASK_STACK_SIZE 1280
+
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 
 #undef  CONFIG_UART_CONSOLE
