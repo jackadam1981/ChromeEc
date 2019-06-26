@@ -33,6 +33,11 @@
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_UART_HOST
 #define CONFIG_HOSTCMD_LPC
+/* Use I/O expander  */
+#define CONFIG_IO_EXPANDER_IT8801
+
+/* Setting master port */
+#define I2C_PORT_IO_EXPANDER 1
 
 #if IT83XX_PD_EVB
 /* PD */
