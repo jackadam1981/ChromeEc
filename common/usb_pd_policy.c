@@ -237,6 +237,21 @@ enum idh_ptype get_usb_pd_mux_cable_type(int port)
 	return cable[port].type;
 }
 
+struct tbt_mode_resp_cable get_tbt_cable_resp_vdo(int port)
+{
+	return cable[port].tbt_cable_resp;
+}
+
+struct tbt_mode_resp_device get_tbt_dev_resp_vdo(int port)
+{
+	return cable[port].tbt_dev_resp;
+}
+
+enum tbt_compat_cable_speed get_tbt_compat_cable_speed(int port)
+{
+	return cable[port].tbt_cable_resp.tbt_cable_speed;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
