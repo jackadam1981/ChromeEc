@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2be2757_ed2e6b8c",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "nit: I think \"100 * MSEC\" is a little easier to read.",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc27fecf_45bc87a1",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "EC_RES_TIMEOUT?",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81f1598_009c397c",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "micro-optimization: you could break out of the for loop as soon as a single collision occurs",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53635ffc_054213f2",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "Can you mention that the buffer must have size of at least FP_FINGER_ID_BYTES?",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 56
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e75356_e510a170",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "nit: maybe just use \"10\" with a comment next to it that it is microseconds?\n\nOr I suppose you could add:\n\n #define USEC 1\n\nto timer.h and then use \"10 * USEC\" here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 54
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0762d9_f2cb3e05",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "Suggest initializing to avoid confusion if ever debugging or printing the value (since garbage on the stack will look a lot like the random finger id).\n\n  uint8_t new_finger_id[FP_FINGER_ID_BYTES] \u003d { 0 };",
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "749cfb2b_e91caf61",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "Since we mocked rand_bytes, we should be able to add an assert that the contents of new_finger_id are exactly what we expect. That will verify that we actually called rand_bytes in fp_rand_finger_id and that fp_rand_finger_id actually fills the buffer.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "546d641b_dfb8d681",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "Might be good to add an\n\n   TEST_ASSERT(templ_valid \u003d\u003d 0);\n\nbefore this to make sure that the initial conditions still hold at this point (i.e., that templ_valid wasn\u0027t somehow changed by fp_rand_finger_id).",
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30cf8d83_66d60f42",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-26T23:57:44Z",
+      "side": 1,
+      "message": "I would just change to\n\n  TEST_ASSERT(templ_valid \u003d\u003d 0);\n\n\nAlso might be good to add an assert that finger_id[0] still matches new_finger_id (i.e., unchanged)",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
