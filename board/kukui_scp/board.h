@@ -15,6 +15,7 @@
 #define CONFIG_MKBP_EVENT
 /* Sent MKBP event via IPI. */
 #define CONFIG_MKBP_USE_CUSTOM
+#undef CONFIG_WATCHDOG
 
 /*
  * RW only, no flash
