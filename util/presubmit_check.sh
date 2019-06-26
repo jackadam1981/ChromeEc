@@ -28,6 +28,29 @@ if git diff "${upstream_branch}" HEAD | grep -e '^+\(.*CPRINTS(.*\\n"\|++\)' |
   exit 1
 fi
 
+common_typos=(
+  woud
+  setion
+  cleand
+  independantly
+  dedup
+  recieved
+  recieving
+  delaraction
+  finctionality
+  lastest
+  permanenlty
+  callabck
+)
+
+for typo in ${common_typos[@]}; do
+  if git diff "${upstream_branch}" HEAD |
+      grep -i -e "${typo}" | grep -i -e "${typo}" -B1 >&2; then
+    echo "error: typo" >&2
+    exit 1
+  fi
+done
+
 # Verify that all targets were built and all tests passed after the latest
 # source code modification.
 if [[ ! -e .tests-passed ]]; then
