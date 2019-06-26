@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c029cf9_28711ecd",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-26T16:40:53Z",
+      "side": 1,
+      "message": "this seems weird as an enum instead of just constants. The callers will rarely (or never) even use these values either.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 2
+      },
+      "revId": "b45f334156cc8e41202a5973c1f1b7c7742c91a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
