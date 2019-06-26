@@ -22,6 +22,30 @@
       "revId": "b612b77244a60b8cf93448f8522ddfbdb9418bd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04d13ab_7003b722",
+        "filename": "chip/g/usb-stream.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-26T01:43:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33a2a24d_4e32bfc5",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 17
+      },
+      "revId": "b612b77244a60b8cf93448f8522ddfbdb9418bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
