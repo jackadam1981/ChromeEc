@@ -22,6 +22,30 @@
       "revId": "2f98c127044c7204fb05c64a74164cdc74efbe44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9e80ee_4388b654",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-26T22:25:16Z",
+      "side": 1,
+      "message": "you are right, should be the size",
+      "parentUuid": "a56515f7_96f30b1f",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 19
+      },
+      "revId": "2f98c127044c7204fb05c64a74164cdc74efbe44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
