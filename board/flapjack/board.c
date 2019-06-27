@@ -29,6 +29,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "mt8183.h"
 #include "power.h"
 #include "power_button.h"
 #include "lid_switch.h"
