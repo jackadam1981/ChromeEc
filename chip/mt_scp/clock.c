@@ -21,10 +21,6 @@
 
 void clock_init(void)
 {
-	/* Set VREQ to HW mode */
-	SCP_CPU_VREQ = CPU_VREQ_HW_MODE;
-	SCP_SECURE_CTRL &= ~ENABLE_SPM_MASK_VREQ;
-
 	/* Set DDREN auto mode */
 	SCP_SYS_CTRL |= AUTO_DDREN;
 
@@ -282,7 +278,7 @@ void scp_enable_clock(void)
 	SCP_CLK_SEL = CLK_SEL_SYS_26M;
 
 	/* VREQ */
-	SCP_CPU_VREQ = 0x10001;
+	SCP_CPU_VREQ = 0x10000;
 	SCP_SECURE_CTRL &= ~ENABLE_SPM_MASK_VREQ;
 
 	/* DDREN auto mode */
