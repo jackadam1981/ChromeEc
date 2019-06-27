@@ -22,6 +22,30 @@
       "revId": "693b11450a72a0fc89ac36451b53f6c81e22b56f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aba2990_4201a1e9",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-27T02:24:09Z",
+      "side": 1,
+      "message": "Because they are declared in include/keyboard_raw.h. The keyboard scan task will invoke them while we wake it up.\n\nWe also need to figure out a way to exclude chip-level driver (keyboard_raw.c) if we want to use a expander to replace keyboard scan function. Do you have any suggestion?",
+      "parentUuid": "16c2e0c2_c1a0cadf",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "693b11450a72a0fc89ac36451b53f6c81e22b56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
