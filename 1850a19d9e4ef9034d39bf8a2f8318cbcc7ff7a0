@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7546a41b_32d90fa2",
+        "filename": "common/chargen.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-27T02:09:59Z",
+      "side": 1,
+      "message": "For CR50 chargen run in CCD, it works with the line below:\n\n       while (uart_getc() !\u003d \u0027x\u0027 \u0026\u0026 usb_getc() !\u003d \u0027x\u0027) {",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "1850a19d9e4ef9034d39bf8a2f8318cbcc7ff7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9260f3_e862a153",
+        "filename": "common/chargen.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-06-27T02:09:59Z",
+      "side": 1,
+      "message": "For CR50 chargen run in CCD, the char should be printed to USB as well as UART:\n    usb_putc(c);\n    uart_putc(c++);",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "1850a19d9e4ef9034d39bf8a2f8318cbcc7ff7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
