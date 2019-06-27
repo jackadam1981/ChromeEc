@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7508822a_038b56f5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-06-27T22:31:47Z",
+      "side": 1,
+      "message": "I am not sure if this section is required. This same step is done always in \u0027mux_init\u0027. Where this case would apply for cases where the TCPC is not being use as a mux only.",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 35
+      },
+      "revId": "319b2fb6031cfb444982bfba9723ba9da0608f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
