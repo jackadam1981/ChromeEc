@@ -59,7 +59,7 @@ static void dip_scp_ipi_handler(int id, void *data, uint32_t len)
 	if (!queue_add_unit(&event_dip_queue, &rsv_msg))
 		CPRINTS("Could not send dip %d to the queue.", id);
 }
-DECLARE_IPI(IPI_DIP, dip_scp_ipi_handler, 1);
+DECLARE_IPI(IPI_DIP, dip_scp_ipi_handler, 0);
 
 /* This function renames from dip_service_entry. */
 void dip_service_task(void *u)
