@@ -32,6 +32,8 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
+#include "driver/ioexpander_it8801.h"
+
 #if IT83XX_PD_EVB
 int board_get_battery_soc(void)
 {
