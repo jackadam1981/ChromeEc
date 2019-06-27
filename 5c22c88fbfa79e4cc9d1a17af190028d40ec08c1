@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3bd2b8d_c80dcb25",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-27T15:23:30Z",
+      "side": 1,
+      "message": "this should be sometihg like\n\n#ifdef DCRYPTO_RUNTIME_TEST\n\nso that the test could be enabled without editing the source file.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 47
+      },
+      "revId": "5c22c88fbfa79e4cc9d1a17af190028d40ec08c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
