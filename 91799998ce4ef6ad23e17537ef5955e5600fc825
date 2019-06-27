@@ -22,6 +22,30 @@
       "revId": "91799998ce4ef6ad23e17537ef5955e5600fc825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ff1ca3_3e6a23bb",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-27T18:29:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d90842d8_e302c13f",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 13
+      },
+      "revId": "91799998ce4ef6ad23e17537ef5955e5600fc825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
