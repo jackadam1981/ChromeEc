@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f40cc8b_9b5cc75c",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-27T09:51:58Z",
+      "side": 1,
+      "message": "(--ipc0_enabled_count) \u003d\u003d 0",
+      "revId": "ce6d492d396c05005072aec5d34c4e2ef7933fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81195507_98083813",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-27T09:51:58Z",
+      "side": 1,
+      "message": "? Why? You should now transition when the enabled_count becomes 1. So I\u0027d start with ipc0_enabled_count \u003d 0.\n\nSo I think it should be:\n\nif ((++ipc0_enabled_count) \u003d\u003d 1)",
+      "revId": "ce6d492d396c05005072aec5d34c4e2ef7933fd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
