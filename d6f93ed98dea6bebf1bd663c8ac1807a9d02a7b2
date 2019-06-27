@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d321c99d_b19de267",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-27T17:04:44Z",
+      "side": 1,
+      "message": "Why don\u0027t you leave this alone? You\u0027re going to implement a custom callback for kukui, right?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 32
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe68951_3881e85f",
+        "filename": "power/mt8183.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-27T17:04:44Z",
+      "side": 1,
+      "message": "\u0027__overridable\u0027",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 21
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73dc1b5b_1f630f8a",
+        "filename": "power/mt8183.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-27T17:04:44Z",
+      "side": 1,
+      "message": "I think it\u0027s better to be called mt8183_set_pmic_force_reset.",
+      "range": {
+        "startLine": 475,
+        "startChar": 27,
+        "endLine": 475,
+        "endChar": 33
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c6d248_f205afe8",
+        "filename": "power/mt8183.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-27T17:04:44Z",
+      "side": 1,
+      "message": "You need to add \u0027__override_proto\u0027.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
