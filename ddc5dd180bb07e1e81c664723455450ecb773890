@@ -22,6 +22,30 @@
       "revId": "ddc5dd180bb07e1e81c664723455450ecb773890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "401a5afa_f5cd710c",
+        "filename": "chip/it83xx/i2c_slave.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-27T09:53:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9abfa988_817d6177",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 38
+      },
+      "revId": "ddc5dd180bb07e1e81c664723455450ecb773890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
