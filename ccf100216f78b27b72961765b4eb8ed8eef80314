@@ -174,6 +174,29 @@
     },
     {
       "key": {
+        "uuid": "231a4141_f2496d09",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-27T00:09:46Z",
+      "side": 1,
+      "message": "Prefer ARRAY_SIZE(new_finger_id)\n\n\nhttps://stackoverflow.com/a/37539\nhttps://wiki.sei.cmu.edu/confluence/display/c/ARR01-C.+Do+not+apply+the+sizeof+operator+to+a+pointer+when+taking+the+size+of+an+array",
+      "range": {
+        "startLine": 85,
+        "startChar": 56,
+        "endLine": 85,
+        "endChar": 69
+      },
+      "revId": "ccf100216f78b27b72961765b4eb8ed8eef80314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30cf8d83_66d60f42",
         "filename": "test/fpsensor.c",
         "patchSetId": 5
