@@ -62,7 +62,7 @@ static void fd_ipi_handler(int id, void *data, uint32_t len)
 		CPRINTS("Could not send fd %d to the queue.", rsv_msg.type);
 	mutex_unlock(&fd_lock);
 }
-DECLARE_IPI(IPI_FD_CMD, fd_ipi_handler, 1);
+DECLARE_IPI(IPI_FD_CMD, fd_ipi_handler, 0);
 
 /* This function renames from fd_service_entry. */
 void fd_service_task(void *u)

@@ -102,9 +102,9 @@ static void mdp_ipi_handler(int id, void *data, unsigned int len)
 		CPRINTS("Could not send mdp id: %d to the queue.", id);
 	mutex_unlock(&mdp_lock);
 }
-DECLARE_IPI(IPI_MDP_INIT, mdp_ipi_handler, 1);
-DECLARE_IPI(IPI_MDP_FRAME, mdp_ipi_handler, 1);
-DECLARE_IPI(IPI_MDP_DEINIT, mdp_ipi_handler, 1);
+DECLARE_IPI(IPI_MDP_INIT, mdp_ipi_handler, 0);
+DECLARE_IPI(IPI_MDP_FRAME, mdp_ipi_handler, 0);
+DECLARE_IPI(IPI_MDP_DEINIT, mdp_ipi_handler, 0);
 
 /* This function renames from mdp_service_entry. */
 void mdp_service_task(void *u)

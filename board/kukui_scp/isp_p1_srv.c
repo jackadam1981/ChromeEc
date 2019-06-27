@@ -62,8 +62,8 @@ static void isp_ipi_msg_handler(int id, void *data, uint32_t len)
 		CPRINTS("Could not send isp %d to the queue.\n", id);
 	mutex_unlock(&isp_lock);
 }
-DECLARE_IPI(IPI_ISP_CMD, isp_ipi_msg_handler, 1);
-DECLARE_IPI(IPI_ISP_FRAME, isp_ipi_msg_handler, 1);
+DECLARE_IPI(IPI_ISP_CMD, isp_ipi_msg_handler, 0);
+DECLARE_IPI(IPI_ISP_FRAME, isp_ipi_msg_handler, 0);
 
 /* This function renames from isp_service_entry. */
 void isp_service_task(void *u)

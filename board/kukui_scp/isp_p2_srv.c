@@ -62,7 +62,7 @@ static void dip_scp_ipi_handler(int id, void *data, uint32_t len)
 		CPRINTS("Could not send dip %d to the queue.\n", id);
 	mutex_unlock(&dip_lock);
 }
-DECLARE_IPI(IPI_DIP, dip_scp_ipi_handler, 1);
+DECLARE_IPI(IPI_DIP, dip_scp_ipi_handler, 0);
 
 /* This function renames from dip_service_entry. */
 void dip_service_task(void *u)
