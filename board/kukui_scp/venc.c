@@ -60,7 +60,7 @@ static void venc_h264_ipi_handler(int id, void *data, uint32_t len)
 		CPRINTS("Could not send venc %d to the queue.", rsv_msg.type);
 	mutex_unlock(&venc_lock);
 }
-DECLARE_IPI(IPI_VENC_H264, venc_h264_ipi_handler, 1);
+DECLARE_IPI(IPI_VENC_H264, venc_h264_ipi_handler, 0);
 
 /* This function renames from venc_service_entry. */
 void venc_service_task(void *u)

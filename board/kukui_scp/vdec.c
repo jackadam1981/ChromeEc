@@ -62,7 +62,7 @@ static void vdec_h264_ipi_handler(int id, void *data, uint32_t len)
 		CPRINTS("Could not send vdec %d to the queue.", rsv_msg.type);
 	mutex_unlock(&vdec_lock);
 }
-DECLARE_IPI(IPI_VDEC_H264, vdec_h264_ipi_handler, 1);
+DECLARE_IPI(IPI_VDEC_H264, vdec_h264_ipi_handler, 0);
 
 /* This function renames from vdec_service_entry. */
 void vdec_service_task(void *u)
