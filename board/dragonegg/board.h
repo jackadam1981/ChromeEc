@@ -54,6 +54,8 @@
 #define GPIO_PCH_SLP_S3_L GPIO_SLP_S3_L
 #define GPIO_PCH_SLP_S4_L GPIO_SLP_S4_L
 
+#define CONFIG_EC_KEYBOARD
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
