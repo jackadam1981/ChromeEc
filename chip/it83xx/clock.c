@@ -212,7 +212,7 @@ static void clock_set_pll(enum pll_freq_idx idx)
 		task_clear_pending_irq(et_ctrl_regs[LOW_POWER_EXT_TIMER].irq);
 #ifdef CONFIG_HOSTCMD_ESPI
 		/*
-		 * Workaround for (b:70537592):
+		 * Workaround for (b/70537592):
 		 * We have to set chip select pin as input mode in order to
 		 * change PLL.
 		 */
@@ -232,7 +232,7 @@ static void clock_set_pll(enum pll_freq_idx idx)
 		/* Enable eSPI pad after changing PLL sequence. */
 		espi_enable_pad(1);
 #endif
-		/* (b:70537592) Change back to ESPI CS# function. */
+		/* (b/70537592) Change back to ESPI CS# function. */
 		IT83XX_GPIO_GPCRM5 &= ~0xc0;
 #endif
 	}
@@ -507,7 +507,7 @@ defined(CONFIG_HOSTCMD_ESPI)
 		 * Enable eSPI pad.
 		 * We will not need to enable eSPI pad here if Dx is able to
 		 * enable watchdog hardware reset function. But the function is
-		 * failed (b:111264984), so the following system reset is
+		 * failed (b/111264984), so the following system reset is
 		 * software reset (PLL setting is not reset).
 		 * We will not go into the change PLL sequence on reboot if PLL
 		 * setting is the same, so the operation of enabling eSPI pad we

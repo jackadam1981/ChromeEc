@@ -610,7 +610,7 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	 * Though we have a more tolerant range (3.9V~13.4V), setting 4400 to
 	 * prevent from a bad charger crashed.
 	 *
-	 * TODO(b:131284131): mt6370 VBUS reading is not accurate currently.
+	 * TODO(b/131284131): mt6370 VBUS reading is not accurate currently.
 	 * Vendor will provide a workaround solution to fix the gap between ADC
 	 * reading and actual voltage.  After the workaround applied, we could
 	 * try to raise this value to 4600.  (when it says it read 4400, it is
@@ -621,7 +621,7 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 
 int board_charge_port_is_sink(int port)
 {
-	/* TODO(b:128386458): Check POGO_ADC_INT_L */
+	/* TODO(b/128386458): Check POGO_ADC_INT_L */
 	return 1;
 }
 

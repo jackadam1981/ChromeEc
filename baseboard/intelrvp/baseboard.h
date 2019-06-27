@@ -184,7 +184,7 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
-/* TODO(b:132652892): Verify the below numbers. */
+/* TODO(b/132652892): Verify the below numbers. */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 

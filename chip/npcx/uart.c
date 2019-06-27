@@ -267,7 +267,7 @@ static void uart_set_pad(enum uart_pad newpad)
 	task_enable_irq(NPCX_IRQ_UART);
 }
 
-/* TODO(b:67026316): Remove this and replace with software flow control. */
+/* TODO(b/67026316): Remove this and replace with software flow control. */
 void uart_default_pad_rx_interrupt(enum gpio_signal signal)
 {
 	/*

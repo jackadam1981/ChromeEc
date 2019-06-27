@@ -179,7 +179,7 @@ static void fabric_isr(void)
 	/**
 	 * clear fabric error status, otherwise it will wakeup ISH immediately
 	 * when entered low power mode.
-	 * TODO(b:130740646): figure out why this issue happens.
+	 * TODO(b/130740646): figure out why this issue happens.
 	 */
 	if (FABRIC_AGENT_STATUS & FABRIC_MIA_STATUS_BIT_ERR)
 		FABRIC_AGENT_STATUS = FABRIC_AGENT_STATUS;

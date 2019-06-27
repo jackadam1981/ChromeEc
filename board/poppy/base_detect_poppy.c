@@ -48,7 +48,7 @@
  * When the base is connected in reverse, it presents a 100K pull-down,
  * so the ADC value should be around 100/(604+100)*3300 = 469
  *
- * TODO(b:64370797): Do something with these values.
+ * TODO(b/64370797): Do something with these values.
  */
 #define BASE_DETECT_REVERSE_MIN_MV 450
 #define BASE_DETECT_REVERSE_MAX_MV 500

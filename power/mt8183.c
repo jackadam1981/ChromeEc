@@ -316,7 +316,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* If EC is in RW, or has already booted once, reboot to RO. */
 		if (system_get_image_copy() != SYSTEM_IMAGE_RO || booted) {
 			/*
-			 * TODO(b:109850749): How quickly does the EC come back
+			 * TODO(b/109850749): How quickly does the EC come back
 			 * up? Would IN_PGOOD_PMIC be ready by the time we are
 			 * back? According to PMIC spec, it should take ~158 ms
 			 * after debounce (32 ms), minus PMIC_EN_PULSE_MS above.
@@ -376,7 +376,7 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
 		/*
-		 * TODO(b:109850749): Check if we need some delay here to
+		 * TODO(b/109850749): Check if we need some delay here to
 		 * "debounce" entering suspend (rk3399 uses 20ms delay).
 		 */
 

@@ -154,7 +154,7 @@ void i2c_slave_read_write_data(int port)
 			/* Master to read data */
 			if (slv_status & IT83XX_I2C_IDR_CLR) {
 			/*
-			 * TODO(b:129360157): Return buffer data by
+			 * TODO(b/129360157): Return buffer data by
 			 * "out_data" array.
 			 * Ex: Write data to buffer from 0x00 to 0xFF
 			 */
@@ -170,7 +170,7 @@ void i2c_slave_read_write_data(int port)
 			if (slv_status & IT83XX_I2C_P_CLR) {
 				if (wr_done[idx]) {
 			/*
-			 * TODO(b:129360157): Handle master write
+			 * TODO(b/129360157): Handle master write
 			 * data by "in_data" array.
 			 */
 					CPRINTS("WData: %.*h",

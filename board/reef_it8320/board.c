@@ -206,14 +206,14 @@ void chipset_pre_init_callback(void)
 	if (system_jumped_to_this_image() && gpio_get_level(GPIO_PMIC_EN))
 		return;
 
-	/* Enable PP5000 before PP3300 due to NFC: chrome-os-partner:50807 */
+	/* Enable PP5000 before PP3300 due to NFC: crosbug.com/p/50807 */
 	gpio_set_level(GPIO_EN_PP5000, 1);
 	while (!gpio_get_level(GPIO_PP5000_PG))
 		;
 
 	/*
 	 * To prevent SLP glitches, PMIC_EN (V5A_EN) should be enabled
-	 * at the same time as PP3300 (chrome-os-partner:51323).
+	 * at the same time as PP3300 (crosbug.com/p/51323).
 	 */
 	/* Enable 3.3V rail */
 	gpio_set_level(GPIO_EN_PP3300, 1);

@@ -10,7 +10,7 @@
 
 /* TODO: Remove CONFIG_SYSTEM_UNLOCKED prior to building MP FW. */
 #define CONFIG_SYSTEM_UNLOCKED
-/* TODO(b:63378217): Define FLASH_PSTATE_LOCKED prior to building MP FW. */
+/* TODO(b/63378217): Define FLASH_PSTATE_LOCKED prior to building MP FW. */
 #undef CONFIG_FLASH_PSTATE_LOCKED
 
 /* 48 MHz SYSCLK clock frequency */
@@ -73,7 +73,7 @@
 
 /* Optional features */
 /*
- * TODO(b:65697962): Reenable low-power-idle on wand without breaking EC-EC
+ * TODO(b/65697962): Reenable low-power-idle on wand without breaking EC-EC
  * communication
  */
 #ifndef BOARD_WAND

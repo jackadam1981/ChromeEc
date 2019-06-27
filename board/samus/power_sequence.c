@@ -537,7 +537,7 @@ int lb_power(int enabled)
 	 *
 	 * Also, the lightbar do not expect other i2c traffic while
 	 * being power up. Put a lock on the i2c bus.
-	 * see chrome-os-partner:45223.
+	 * see crosbug.com/p/45223.
 	 */
 	if (enabled) {
 		i2c_lock(I2C_PORT_LIGHTBAR, 1);

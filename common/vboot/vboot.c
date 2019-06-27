@@ -147,7 +147,7 @@ static int verify_and_jump(void)
 			/* Key error. The other slot isn't worth trying. */
 			return rv;
 		slot = system_get_update_copy();
-		/* TODO(chromium:767050): Skip reading key again. */
+		/* TODO(crbug.com/767050): Skip reading key again. */
 		rv = verify_slot(slot);
 		if (rv)
 			/* Both slots failed */

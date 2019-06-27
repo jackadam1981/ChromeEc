@@ -36,7 +36,7 @@ GPIO_INT(USB_C2_TCPC_INT_ODL,  PIN(K, 6), GPIO_INT_FALLING, tcpc_alert_event)
 /* Misc. interrupts */
 GPIO_INT(VOLUME_DOWN_L,    PIN(I, 6), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(VOLUME_UP_L,      PIN(I, 7), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-/* TODO (b:110947310) Uncomment this when sensor task is added to image */
+/* TODO (b/110947310) Uncomment this when sensor task is added to image */
 /* GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(J, 0), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt) */
 
 #ifdef CONFIG_HOSTCMD_ESPI
@@ -98,7 +98,7 @@ GPIO(EC_BATT_PRES_ODL,    PIN(H, 3), GPIO_INPUT)
 GPIO(ENTERING_RW,         PIN(G, 0), GPIO_OUT_LOW)   /* EC_ENTERING_RW */
 GPIO(EDP_BKTLEN_OD,       PIN(K, 4), GPIO_ODR_LOW)   /* Backlight Disable */
 GPIO(KB_BL_EN,            PIN(J, 3), GPIO_OUT_LOW)
-/* TODO (b:110947310) Convert this to interrupt when senor support is added */
+/* TODO (b/110947310) Convert this to interrupt when senor support is added */
 GPIO(LID_ACCEL_INT_L,     PIN(J, 1), GPIO_INPUT | GPIO_SEL_1P8V)
 
 /* Board ID */

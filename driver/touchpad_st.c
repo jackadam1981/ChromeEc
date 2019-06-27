@@ -1116,7 +1116,7 @@ static int st_tp_panel_init(int full)
 	st_tp_stop_scan();
 	ret = st_tp_reset();
 	/*
-	 * TODO(b:118312397): Figure out how to handle st_tp_reset errors (if
+	 * TODO(b/118312397): Figure out how to handle st_tp_reset errors (if
 	 * needed at all).
 	 */
 	CPRINTS("st_tp_reset ret=%d", ret);

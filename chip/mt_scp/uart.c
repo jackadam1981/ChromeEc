@@ -138,7 +138,7 @@ void uart_init(void)
 	/*
 	 * UART clock source is set to ULPOSC1 / 10 below.
 	 *
-	 * TODO(b:134035444): We could get slightly more precise frequency by
+	 * TODO(b/134035444): We could get slightly more precise frequency by
 	 * using the _measured_ ULPOSC1 frequency (instead of the target).
 	 */
 	const uint32_t uart_clock = ULPOSC1_CLOCK_MHZ * 1000 / 10 * 1000;

@@ -123,7 +123,7 @@ int retimer_set_state(int port, mux_state_t mux_state)
 		set_retimer_con |= BB_RETIMER_CONNECTION_ORIENTATION;
 
 	/*
-	 * TODO: b:129990370
+	 * TODO: b/129990370
 	 * Bit 2: ACTIVE_CABLE
 	 * 0 - Passive
 	 * 1 -TBT Active cable

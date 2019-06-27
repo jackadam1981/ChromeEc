@@ -117,7 +117,7 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 	if (!ipi_ready)
 		return EC_ERROR_BUSY;
 
-	/* TODO(b:117917141): Remove this check completely. */
+	/* TODO(b/117917141): Remove this check completely. */
 	if (in_interrupt_context()) {
 		CPRINTS("Err: invoke %s() in ISR CTX", __func__);
 		return EC_ERROR_BUSY;

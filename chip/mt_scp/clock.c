@@ -200,7 +200,7 @@ static int scp_calibrate_ulposc(int osc, int target_mhz)
 	 * frequency counter value. Then adjust cali to get a better result.
 	 * Note that this doesn't give optimal output frequency, but it's
 	 * usually close enough.
-	 * TODO(b:120176040): See if we can efficiently calibrate the clock with
+	 * TODO(b/120176040): See if we can efficiently calibrate the clock with
 	 * more precision by exploring more of the cali/div space.
 	 *
 	 * The frequency function follows. Note that f is positively correlated

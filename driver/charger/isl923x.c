@@ -131,7 +131,7 @@ out:
 }
 
 /*
- * TODO(b:67920792): OTG is not implemented for ISL9237 that has different
+ * TODO(b/67920792): OTG is not implemented for ISL9237 that has different
  * register scale and range.
  */
 int charger_set_otg_current_voltage(int output_current, int output_voltage)

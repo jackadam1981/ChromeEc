@@ -32,7 +32,7 @@ static int mt6370_init(int port)
 
 	rv = tcpc_read(port, MT6370_REG_IDLE_CTRL, &val);
 
-	/* Only do soft-reset in shipping mode. (b:122017882) */
+	/* Only do soft-reset in shipping mode. (b/122017882) */
 	if (!(val & MT6370_REG_SHIPPING_OFF)) {
 
 		/* Software reset. */

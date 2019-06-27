@@ -332,7 +332,7 @@ void emmc_task(void *u)
 		 */
 		if (in_msg[i] != 0xffffffff) {
 			CPRINTF("?");
-			/* TODO(b:110907438): We should probably just retry. */
+			/* TODO(b/110907438): We should probably just retry. */
 			continue;
 		}
 

@@ -49,4 +49,4 @@ int board_cut_off_battery(void)
 	return sb_write(SB_SHIP_MODE_REG, SB_SHUTDOWN_DATA);
 }
 
-/* TODO(b:66575472): Do we need to define functions like battery_is_present? */
+/* TODO(b/66575472): Do we need to define functions like battery_is_present? */

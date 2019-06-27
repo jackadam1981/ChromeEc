@@ -19,7 +19,7 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 /*
- * TODO(b:65697962): The packed structures below do not play well if we force EC
+ * TODO(b/65697962): The packed structures below do not play well if we force EC
  * host commands structures to be aligned on 32-bit boundary. There are ways to
  * fix that, possibly requiring copying data around, or modifying
  * uart_alt_pad_write_read API to write the actual slave response to a separate
@@ -121,7 +121,7 @@ static int write_command(uint16_t command,
 	 * Make sure there is a gap between each command, so that the slave
 	 * can recover its state machine after each command.
 	 *
-	 * TODO(b:65697962): We can be much smarter than this, and record the
+	 * TODO(b/65697962): We can be much smarter than this, and record the
 	 * last transaction time instead of just sleeping blindly.
 	 */
 	usleep(10*MSEC);

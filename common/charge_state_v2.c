@@ -183,7 +183,7 @@ static void problem(enum problem_type p, int v)
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 /*
  * Parameters for dual-battery policy.
- * TODO(b:71881017): This should be made configurable by AP in the future.
+ * TODO(b/71881017): This should be made configurable by AP in the future.
  */
 struct dual_battery_policy {
 	/*** Policies when AC is not connected. ***/
@@ -360,7 +360,7 @@ static void set_base_lid_current(int current_base, int allow_charge_base,
 	int lid_first;
 	int ret;
 
-	/* TODO(b:71881017): This is still quite verbose during charging. */
+	/* TODO(b/71881017): This is still quite verbose during charging. */
 	if (prev_current_base != current_base ||
 	    prev_allow_charge_base != allow_charge_base ||
 	    prev_current_lid != current_lid) {
@@ -495,7 +495,7 @@ static void charge_allocate_input_current_limit(void)
 			curr.desired_input_current * curr.input_voltage / 1000;
 
 	/*
-	 * TODO(b:71723024): We should be able to replace this test by curr.ac,
+	 * TODO(b/71723024): We should be able to replace this test by curr.ac,
 	 * but the value is currently wrong, especially during transitions.
 	 */
 	if (total_power <= 0) {
@@ -568,13 +568,13 @@ static void charge_allocate_input_current_limit(void)
 			 * Base battery is too low, apply power to it, and allow
 			 * it to charge if it is critically low.
 			 *
-			 * TODO(b:71881017): When suspended, this will make the
+			 * TODO(b/71881017): When suspended, this will make the
 			 * battery charge oscillate between 3 and 4 percent,
 			 * which might not be great for battery life. We need
 			 * some hysteresis.
 			 */
 			/*
-			 * TODO(b:71881017): Precompute (ideally, at build time)
+			 * TODO(b/71881017): Precompute (ideally, at build time)
 			 * the base_current, so we do not need to do a division
 			 * here.
 			 */
@@ -615,7 +615,7 @@ static void charge_allocate_input_current_limit(void)
 	prev_lid_system_power = lid_system_power;
 
 	/*
-	 * TODO(b:71881017): Smoothing the battery power isn't necessarily a
+	 * TODO(b/71881017): Smoothing the battery power isn't necessarily a
 	 * good idea: if the system takes up too much power, we may reduce the
 	 * estimate power too quickly, leading to oscillations when the system
 	 * power goes down. Instead, we should probably estimate the current
@@ -1576,7 +1576,7 @@ void charger_task(void *u)
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 		/*
 		 * When base is powering the system, make sure curr.ac stays 0.
-		 * TODO(b:71723024): Fix extpower_is_present() in hardware
+		 * TODO(b/71723024): Fix extpower_is_present() in hardware
 		 * instead.
 		 */
 		if (base_responsive && prev_current_base < 0)

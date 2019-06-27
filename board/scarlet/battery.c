@@ -160,7 +160,7 @@ int charger_profile_override(struct charge_state_data *curr)
 			{0, 100, 900, 4200}, /* TEMP_ZONE_0 */
 			{100, 200, 2700, 4350}, /* TEMP_ZONE_1 */
 			/*
-			 * TODO(b:70287349): Limit the charging current to
+			 * TODO(b/70287349): Limit the charging current to
 			 * 2A unless AE-Tech fix their battery pack.
 			 */
 			{200, 450, 2000, 4350}, /* TEMP_ZONE_2 */
@@ -254,7 +254,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->batt.state_of_charge = MAX(BATTERY_LEVEL_NEAR_FULL,
 						 curr->batt.state_of_charge);
 		/*
-		 * This is a workaround for b:78792296. When AP is off and
+		 * This is a workaround for b/78792296. When AP is off and
 		 * charge termination is detected, we disable idle mode.
 		 */
 		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))

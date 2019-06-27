@@ -705,7 +705,7 @@ int charger_get_vbus_voltage(int port)
 	 * host command would time out. So here we set ADC timeout as 50ms.
 	 * If ADC times out, we just return the last read vbus_mv.
 	 *
-	 * TODO(chromium:820335): We may handle this more gracefully with
+	 * TODO(crbug.com/820335): We may handle this more gracefully with
 	 * EC_RES_IN_PROGRESS.
 	 */
 	while (--retries) {

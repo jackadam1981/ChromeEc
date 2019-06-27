@@ -443,7 +443,7 @@ SECTIONS
      * .dram.data LMA | LOAD
      * .dram.data VMA |
      * .dram.bss      | NOLOAD
-     * TODO(b:123269246): Enable MPU protectable DRAM section.  This might
+     * TODO(b/123269246): Enable MPU protectable DRAM section.  This might
      * introduce a RO-DRAM section for .dram.text, .dram.rodata and
      * .dram.data LMA.
      */

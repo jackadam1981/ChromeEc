@@ -42,7 +42,7 @@
 #define IMMU_SIZE                 0x2000
 
 #if CONFIG_FLASH_SIZE == 0x80000
-/* Apply workaround of the issue (b:111808417) */
+/* Apply workaround of the issue (b/111808417) */
 #define IMMU_CACHE_TAG_INVALID
 #endif
 
@@ -103,7 +103,7 @@ void FLASH_DMA_CODE dma_reset_immu(int fill_immu)
 
 #ifdef IMMU_CACHE_TAG_INVALID
 	/*
-	 * Workaround for (b:111808417):
+	 * Workaround for (b/111808417):
 	 * After immu reset, we will fill the immu cache with 8KB data
 	 * that are outside address 0x7e000 ~ 0x7ffff.
 	 * When CPU tries to fetch contents from address 0x7e000 ~ 0x7ffff,

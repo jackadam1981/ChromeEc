@@ -359,7 +359,7 @@ static void spi_init(void);
 static void check_setup_transaction_later(void)
 {
 	if (setup_transaction_later) {
-		spi_init(); /* Fix for bug chrome-os-partner:31390 */
+		spi_init(); /* Fix for bug crosbug.com/p/31390 */
 		/*
 		 * 'state' is set to SPI_STATE_READY_TO_RX. Somehow AP
 		 * de-asserted the SPI NSS during the handler was running.
@@ -486,7 +486,7 @@ void spi_event(enum gpio_signal signal)
 		}
 
 		/* Set up for the next transaction */
-		spi_init(); /* Fix for bug chrome-os-partner:31390 */
+		spi_init(); /* Fix for bug crosbug.com/p/31390 */
 		return;
 	}
 	disable_sleep(SLEEP_MASK_SPI);
@@ -658,7 +658,7 @@ static void spi_init(void)
 	uint8_t was_enabled = enabled;
 
 	/* Reset the SPI Peripheral to clear any existing weird states. */
-	/* Fix for bug chrome-os-partner:31390 */
+	/* Fix for bug crosbug.com/p/31390 */
 	enabled = 0;
 	state = SPI_STATE_DISABLED;
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;

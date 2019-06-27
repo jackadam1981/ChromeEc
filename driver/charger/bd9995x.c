@@ -1534,7 +1534,7 @@ static int bd9995x_enable_psys(void)
 /**
  * Get system power.
  *
- * TODO(b:71520677): Implement charger_get_system_power, disable psys readout
+ * TODO(b/71520677): Implement charger_get_system_power, disable psys readout
  * when not needed (the code below leaves it enabled after the first access),
  * update "psys" console command to use charger_get_system_power and move it
  * to some common code.

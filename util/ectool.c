@@ -6856,7 +6856,7 @@ int cmd_battery(int argc, char *argv[])
 	}
 
 	/*
-	 * TODO(b:65697620): When supported/required, read battery 0 information
+	 * TODO(b/65697620): When supported/required, read battery 0 information
 	 * through EC commands as well.
 	 */
 

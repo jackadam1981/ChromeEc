@@ -175,7 +175,7 @@ static void board_init(void)
 		 * being detected as not have keyboard backlight. However, we
 		 * need to enable internal PD on the pin, otherwise backlight
 		 * will always be on.
-		 * TODO(b:67722756): Remove this hack when old boards are
+		 * TODO(b/67722756): Remove this hack when old boards are
 		 * deprecated.
 		 */
 		gpio_set_flags(GPIO_KEYBOARD_BACKLIGHT,

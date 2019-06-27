@@ -603,7 +603,7 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 	/*
-	 * TODO(b:110143516) Improve data rate selection:
+	 * TODO(b/110143516) Improve data rate selection:
 	 * Sensor is always running at 100Hz, even when not used.
 	 */
 	if (s->type == MOTIONSENSE_TYPE_MAG) {
