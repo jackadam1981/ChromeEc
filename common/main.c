@@ -39,6 +39,10 @@
 
 test_mockable __keep int main(void)
 {
+#ifdef CONFIG_MPU
+	int mpu_pre_init_rv = 0;
+#endif
+
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
 	 * Now that we have started execution, we no longer need the loader.
@@ -64,7 +68,7 @@ test_mockable __keep int main(void)
 #endif
 
 #ifdef CONFIG_MPU
-	mpu_pre_init();
+	mpu_pre_init_rv = mpu_pre_init();
 #endif
 
 	gpio_pre_init();
@@ -123,6 +127,12 @@ test_mockable __keep int main(void)
 
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
+
+#ifdef CONFIG_MPU
+	if (mpu_pre_init_rv != EC_SUCCESS) {
+		panic("No MPU. Disable CONFIG_MPU for your board.\n");
+	}
+#endif
 
 	/* be less verbose if we boot for USB resume to meet spec timings */
 	if (!(system_get_reset_flags() & RESET_FLAG_USB_RESUME)) {

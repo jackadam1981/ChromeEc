@@ -237,6 +237,10 @@ int mpu_pre_init(void)
 	int i;
 	uint32_t mpu_type = mpu_get_type();
 
+	if (mpu_type == 0) {
+		return EC_ERROR_HW_INTERNAL;
+	}
+
 	/* Supports MPU with 8 or 16 unified regions */
 	if ((mpu_type & MPU_TYPE_UNIFIED_MASK) ||
 	    (MPU_TYPE_REG_COUNT(mpu_type) != 8 &&

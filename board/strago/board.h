@@ -100,6 +100,7 @@
 #define CONFIG_ADC
 
 /* Modules we want to exclude */
+#undef CONFIG_MPU		/* not enough flash space */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_HOSTCMD
 #undef CONFIG_CMD_I2C_SCAN
