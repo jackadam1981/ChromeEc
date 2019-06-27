@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ae33cf7_1b5a9413",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-06-27T04:12:43Z",
+      "side": 1,
+      "message": "Nit: Is there anywhere else this (and the code below that uses it) could live? Currently this file is mostly free of index-specific code..\n\nIn this case it\u0027s not a big deal of course, just hoping we\u0027re not setting a precedent that results in lots of unrelated logic in this file",
+      "revId": "6278c7931673296cdc1b6bdd357c2a177f8ebb8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
