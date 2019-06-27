@@ -8,6 +8,7 @@
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
@@ -105,6 +106,13 @@ USB_STREAM_CONFIG(forward_usb,
 		  USB_STREAM_TX_SIZE,
 		  usb_to_usart,
 		  usart_to_usb)
+
+/******************************************************************************/
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	{"main",   I2C_PORT_MAIN,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /******************************************************************************
  * Handle button presses by cycling the LEDs on the board.  Also run a tick
