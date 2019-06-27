@@ -59,6 +59,12 @@
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH
 
+
+#define CONFIG_I2C
+#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_PASSTHRU_RESTRICTED
+#define I2C_PORT_MAIN 0
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.
