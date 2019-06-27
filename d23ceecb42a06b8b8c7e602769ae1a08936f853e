@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a067ef1d_3b4ff5ba",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-06-27T08:03:41Z",
+      "side": 1,
+      "message": "I am unfamiliar with the ENUMs, but does this leave a hole?\n\n6.2.1.7 Cable Plug\nThe 1-bit Cable Plug field Shall indicate whether this Message originated from a Cable Plug:\n0b Message originated from a DFP or UFP \u003c\u003d\u003d\u003d\u003d what you want to ignore (\"to the cable\")\n1b Message originated from a Cable Plug \u003c\u003d\u003d\u003d shouldn\u0027t we **also** ignore this, unless we\u0027re the ones asking?\n\nIs PD_PLUG_DFP_UFP is the mask for bit 8 (0x0100)? Or is it another value?\n(My apologies for not digging deeper into the code to find the returns manually.)\n\nIt might be more elegant to pass the SOP* role with the \"command\", and call a different function depending.\n(i.e. instead of \"ignoring\" the packet, have two separate functions SOP\u0027_SOFT_RESET and SOP_SOFT_RESET -- and #if-define the SOP\u0027 SOFT_RESET as a NOOP unless we\u0027re a VPD-CT/VPD.)",
+      "range": {
+        "startLine": 1820,
+        "startChar": 7,
+        "endLine": 1821,
+        "endChar": 48
+      },
+      "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
