@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c816fa22_7c9d1484",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-27T08:13:37Z",
+      "side": 1,
+      "message": "change it to ipc0_enabled_count;\n\nIt should be fine if we don\u0027t use it in a ISR context, but maybe I miss something...",
+      "parentUuid": "c6f02150_b100ab06",
+      "revId": "fc484e7ef9d098636bdb04cf1bfb6f8045a9afce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "695e71be_3b58dc78",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "fc484e7ef9d098636bdb04cf1bfb6f8045a9afce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6678eee5_1bd62d84",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-27T08:13:37Z",
+      "side": 1,
+      "message": "Done by initializing the counter to -1.",
+      "parentUuid": "695e71be_3b58dc78",
+      "revId": "fc484e7ef9d098636bdb04cf1bfb6f8045a9afce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
