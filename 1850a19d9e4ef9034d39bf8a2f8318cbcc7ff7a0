@@ -45,6 +45,30 @@
       "revId": "1850a19d9e4ef9034d39bf8a2f8318cbcc7ff7a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0476b9e8_428e992d",
+        "filename": "common/chargen.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-27T02:11:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027d want to include this in Cr50 image, so I would not worry about these.",
+      "parentUuid": "4c9260f3_e862a153",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 17
+      },
+      "revId": "1850a19d9e4ef9034d39bf8a2f8318cbcc7ff7a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
