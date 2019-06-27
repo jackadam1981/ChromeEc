@@ -22,6 +22,30 @@
       "revId": "2fbc8cd2dc42a896ee73c4b991b87d6c7a7cd567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d48ec7_ba53b61f",
+        "filename": "common/chargen.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-06-27T19:21:29Z",
+      "side": 1,
+      "message": "in fact \u0027chargen\u0027 even precedes charging, it is the name of a standard character generation protocol https://en.wikipedia.org/wiki/Character_Generator_Protocol. This stream used to be available on TCP  and UDP port 19 of pretty much any Unix host and was commonly named \u0027chargen\u0027",
+      "parentUuid": "5a87ee2a_f356b05a",
+      "range": {
+        "startLine": 97,
+        "startChar": 29,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "2fbc8cd2dc42a896ee73c4b991b87d6c7a7cd567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
