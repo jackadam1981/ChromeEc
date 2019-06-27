@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64030add_21a403b2",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-27T01:15:28Z",
+      "side": 1,
+      "message": "because what we have here is the output of system_get_chip_unique_id().\nthen we create RMA device id out of this chip id, and we do call it device id consistently after that step.\nin our case, rma_device_id\u003dHMAC(chip_unique_id, chip_unique_id)",
+      "parentUuid": "94f342d6_dc2b658c",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 0
+      },
+      "revId": "7f727344a4b93245324ee7f46e76370d714bc432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0882a2_c0f540af",
         "filename": "common/rma_auth.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-27T00:57:22Z",
       "side": 1,
       "message": "using sizeof(rma_device_id) could be safer, but I am not sure if it would turn out to be the pointer size instead of the array size. Seen this happen before :P",
+      "range": {
+        "startLine": 176,
+        "startChar": 28,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "7f727344a4b93245324ee7f46e76370d714bc432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1fc7f1_aee8446e",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-06-27T01:15:28Z",
+      "side": 1,
+      "message": "right",
+      "parentUuid": "4d0882a2_c0f540af",
       "range": {
         "startLine": 176,
         "startChar": 28,
