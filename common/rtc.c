@@ -4,7 +4,7 @@
  */
 
 /* RTC cross-platform code for Chrome EC */
-/* TODO(chromium:733844): Move this conversion to kernel rtc-cros-ec driver */
+/* TODO(crbug.com/733844): Move this conversion to kernel rtc-cros-ec driver */
 
 #include "rtc.h"
 

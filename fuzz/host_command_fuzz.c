@@ -80,7 +80,7 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	int req_size = 0;
 
 	/*
-	 * TODO(chromium:854975): We should probably malloc req_buf with the
+	 * TODO(crbug.com/854975): We should probably malloc req_buf with the
 	 * correct size, to make we do not read uninitialized req_buf data.
 	 */
 	memset(req_buf, 0, sizeof(req_buf));

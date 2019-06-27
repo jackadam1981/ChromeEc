@@ -374,7 +374,7 @@ class Cts(object):
 
     print self.formatted_results
 
-    # TODO(chromium:735652): Should set exit code for the shell
+    # TODO(crbug.com/735652): Should set exit code for the shell
 
 
 def main():
