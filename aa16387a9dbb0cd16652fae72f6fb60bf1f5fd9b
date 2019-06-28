@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31e53dac_0643f21a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-06-28T08:34:49Z",
+      "side": 1,
+      "message": "hand plug in DCP slowly to simulate high capacitance situation",
+      "parentUuid": "907afb1b_4fab667d",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "aa16387a9dbb0cd16652fae72f6fb60bf1f5fd9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb6d4f58_c0559e66",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 8
