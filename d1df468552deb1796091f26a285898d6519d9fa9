@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f4b8f08f_35b77528",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-06-28T01:38:26Z",
+      "side": 1,
+      "message": "Why is this here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af0143f8_76da516b",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 7
@@ -13,6 +36,24 @@
       "writtenOn": "2019-06-28T00:22:57Z",
       "side": 1,
       "message": "We want to use this together with the STM32 EC, so I\u0027m trying your patch together with a discovery-stm32f072 board.\n\nThe first problem I have enabling the KEYSCAN task is that the chip/stm32/keyboard_raw.c code assumes the gpios are directly connected to the EC(so it expects all gpios to be defined already).",
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd39be9_16b813de",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-06-28T01:38:26Z",
+      "side": 1,
+      "message": "Yep, we have to decouple chip intrinsic code from the KEYSCAN task, otherwise stuff won\u0027t be pretty.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1681036/2/chip/stm32/build.mk#b58\n\nThe reason your test code in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1677977/7 works, is because board/it83xx_evb already has an ec with a builtin keyboard peripheral in chip/.",
+      "parentUuid": "af0143f8_76da516b",
       "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
