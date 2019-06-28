@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "907afb1b_4fab667d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T07:33:16Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 13,
+        "startChar": 17,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "aa16387a9dbb0cd16652fae72f6fb60bf1f5fd9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6d4f58_c0559e66",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T07:33:16Z",
+      "side": 1,
+      "message": "nit: An empty line between declaration and statements.",
+      "range": {
+        "startLine": 965,
+        "startChar": 0,
+        "endLine": 966,
+        "endChar": 37
+      },
+      "revId": "aa16387a9dbb0cd16652fae72f6fb60bf1f5fd9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbf258d_29c8f43e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T07:33:16Z",
+      "side": 1,
+      "message": "Just\n\n return rv;\n\nOr\n\n return rt946x_toggle_bc12_detection();",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 11
+      },
+      "revId": "aa16387a9dbb0cd16652fae72f6fb60bf1f5fd9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
