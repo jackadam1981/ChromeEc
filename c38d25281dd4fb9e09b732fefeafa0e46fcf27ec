@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee0957a3_976c3170",
+        "filename": "board/kukui_scp/isp_p2_srv.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-28T05:59:20Z",
+      "side": 1,
+      "message": "This is only available on the private overlay. Public code should not depend on the private code.",
+      "revId": "c38d25281dd4fb9e09b732fefeafa0e46fcf27ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
