@@ -131,7 +131,7 @@ static void dut_allow_charge(void)
 	    pd_get_dual_role(DUT) != PD_DRP_FORCE_SOURCE) {
 		CPRINTS("Enable DUT charge through");
 		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
-		pd_config_init(DUT, PD_ROLE_SOURCE);
+		pd_set_host_mode(DUT, 1);
 		pd_update_contract(DUT);
 	}
 }
@@ -165,7 +165,7 @@ static void board_manage_dut_port(void)
 
 			/* Mark as SNK only. */
 			pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
-			pd_config_init(DUT, PD_ROLE_SINK);
+			pd_set_host_mode(DUT, 0);
 		} else {
 			/* Allow charge through after PD negotiate. */
 			hook_call_deferred(&dut_allow_charge_data, 2000 * MSEC);
@@ -750,9 +750,9 @@ static void do_cc(int disable_cc_new, int disable_dts_new, int allow_src_new)
 
 			/*
 			 * Present Rp or Rd on CC1 and CC2 based on
-			 * disable_dts_mode
+			 * chargeable or not.
 			 */
-			pd_config_init(DUT, dualrole);
+			pd_set_host_mode(DUT, dualrole);
 			pd_comm_enable(DUT, dualrole);
 		}
 	}
