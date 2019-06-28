@@ -44,6 +44,11 @@ int audio_codec_capable(uint8_t cap);
 int audio_codec_register_shm(uint8_t shm_id, uint8_t cap,
 		uintptr_t *addr, uint32_t *len, uint8_t type);
 
+/*
+ * Scales a S16_LE sample by multiplying scalar.
+ */
+int16_t audio_codec_s16_scale_and_clip(int16_t orig, uint8_t scalar);
+
 
 /*
  * DMIC abstract layer

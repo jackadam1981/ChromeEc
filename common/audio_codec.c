@@ -7,6 +7,7 @@
 #include "audio_codec.h"
 #include "console.h"
 #include "host_command.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_AUDIO_CODEC, format, ## args)
 
@@ -137,4 +138,14 @@ int audio_codec_register_shm(uint8_t shm_id, uint8_t cap,
 	shms[shm_id].type = type;
 
 	return EC_SUCCESS;
+}
+
+int16_t audio_codec_s16_scale_and_clip(int16_t orig, uint8_t scalar)
+{
+	int32_t val;
+
+	val = (int32_t)orig * (int32_t)(int8_t)scalar;
+	val = MIN(val, (int32_t)INT16_MAX);
+	val = MAX(val, (int32_t)INT16_MIN);
+	return val;
 }
