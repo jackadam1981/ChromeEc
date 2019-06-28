@@ -65,6 +65,12 @@
 #define CONFIG_I2C_PASSTHRU_RESTRICTED
 #define I2C_PORT_MAIN 0
 
+#define CONFIG_EC_KEYBOARD
+#define CONFIG_KEYBOARD_DEBUG
+#define CONFIG_IO_EXPANDER_IT8801
+#define I2C_PORT_IO_EXPANDER_IT8801 I2C_PORT_MAIN
+#define CONFIG_KEYBOARD_BOARD_CONFIG
+
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.

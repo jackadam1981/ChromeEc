@@ -8,7 +8,6 @@
 #include "driver/ioexpander_it8801.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "irq_chip.h"
 #include "i2c.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"

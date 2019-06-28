@@ -9,10 +9,12 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "keyboard_scan.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
+#include "timer.h"
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
@@ -20,6 +22,8 @@
 #include "usb_spi.h"
 #include "usb-stream.h"
 #include "util.h"
+
+#include "driver/ioexpander_it8801.h"
 
 /******************************************************************************
  * Build GPIO tables and expose a subset of the GPIOs over USB.
@@ -113,6 +117,20 @@ const struct i2c_port_t i2c_ports[] = {
 	{"main",   I2C_PORT_MAIN,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	.output_settle_us = 35,
+	.debounce_down_us = 5 * MSEC,
+	.debounce_up_us = 40 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+	},
+};
 
 /******************************************************************************
  * Handle button presses by cycling the LEDs on the board.  Also run a tick
@@ -215,3 +233,15 @@ static void board_init(void)
 	usb_spi_enable(&usb_spi, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+
+void clear_typematic_key(void)
+{ }
+
+void keyboard_clear_buffer(void)
+{
+}
+
+void keyboard_state_changed(int row, int col, int is_pressed)
+{
+}
