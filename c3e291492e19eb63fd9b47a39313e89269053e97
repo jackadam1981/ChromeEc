@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77d735f1_ee10a595",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-28T01:24:46Z",
+      "side": 1,
+      "message": "Using BIT() macro since it correctly uses an unsigned 1. I tried to add a BUILD_ASSERT here on info-\u003esize_exp to make sure we don\u0027t attempt to shift into the sign bit, but looks like that doesn\u0027t work inside a function. I\u0027ll see if I can do something else.",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "c3e291492e19eb63fd9b47a39313e89269053e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
