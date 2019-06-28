@@ -175,6 +175,8 @@ int audio_codec_register_dmic_driver(struct audio_codec_dmic_driver *driver)
 	if (!driver)
 		return EC_SUCCESS;
 
+	if (driver->max_gain)
+		priv.driver.max_gain = driver->max_gain;
 	if (driver->get_max_gain)
 		priv.driver.get_max_gain = driver->get_max_gain;
 	if (driver->set_gain_idx)
