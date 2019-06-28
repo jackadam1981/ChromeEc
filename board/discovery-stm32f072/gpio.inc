@@ -8,7 +8,8 @@
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
 
-GPIO_INT(USER_BUTTON, PIN(A, 0), GPIO_INT_FALLING, button_event)
+GPIO_INT(USER_BUTTON,    PIN(A, 0),  GPIO_INT_FALLING, button_event)
+GPIO_INT(IT8801_SMB_INT, PIN(A, 14), GPIO_INT_FALLING, io_expander_it8801_interrupt)
 
 /* Outputs */
 GPIO(LED_U, PIN(C, 6), GPIO_OUT_LOW)
