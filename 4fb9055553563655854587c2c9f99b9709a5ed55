@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "175e1f66_f6958e30",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-28T18:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15617ea8_2a63f650",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 12
+      },
+      "revId": "4fb9055553563655854587c2c9f99b9709a5ed55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "265bba5d_7822c88e",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-28T18:29:55Z",
       "side": 1,
       "message": "This part isn\u0027t actually necessary right?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "4fb9055553563655854587c2c9f99b9709a5ed55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062a2550_2744a9fb",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-06-28T18:47:55Z",
+      "side": 1,
+      "message": "It\u0027s necessary to get ccd working using servo v4.",
+      "parentUuid": "265bba5d_7822c88e",
       "range": {
         "startLine": 101,
         "startChar": 0,
