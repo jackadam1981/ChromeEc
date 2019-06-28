@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af0143f8_76da516b",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-06-28T00:22:57Z",
+      "side": 1,
+      "message": "We want to use this together with the STM32 EC, so I\u0027m trying your patch together with a discovery-stm32f072 board.\n\nThe first problem I have enabling the KEYSCAN task is that the chip/stm32/keyboard_raw.c code assumes the gpios are directly connected to the EC(so it expects all gpios to be defined already).",
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
