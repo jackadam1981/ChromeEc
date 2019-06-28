@@ -46,6 +46,29 @@
       "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09478062_d849e126",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-28T17:56:10Z",
+      "side": 1,
+      "message": "Can you describe them? What are the differences between these?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
