@@ -25,6 +25,121 @@
     },
     {
       "key": {
+        "uuid": "517ddad2_81643617",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T02:13:00Z",
+      "side": 1,
+      "message": "Just drop TODO.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f2b1b7_b65f5b75",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T02:13:00Z",
+      "side": 1,
+      "message": "also list this in header file?",
+      "range": {
+        "startLine": 51,
+        "startChar": 48,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d27a99_fd6872ec",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T02:13:00Z",
+      "side": 1,
+      "message": "Try using this instead:\n\n kso_mapping[] \u003d {\n ...\n };\n BUILD_ASSERT(ARRAY_SIZE(kso_mapping) \u003d\u003d 18);",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa479e6a_9a2e3244",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T02:13:00Z",
+      "side": 1,
+      "message": "It seems like all the keyboard drivers have this attribute, but I don\u0027t really understand why.\n\nFrom what I look in test_config.h, it doesn\u0027t build with any of the keyboard driver.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0827fa_f8a2c3bf",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-06-28T02:13:00Z",
+      "side": 1,
+      "message": "You don\u0027t need to init this.",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af0143f8_76da516b",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 7
