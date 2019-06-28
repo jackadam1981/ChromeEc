@@ -74,14 +74,36 @@ static size_t wov_fifo_level(void)
 	return VIF_FIFO_LEVEL(fifo_status);
 }
 
+#ifdef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
+static int16_t scale_and_clip(int16_t orig, uint8_t gain)
+{
+	int32_t val;
+
+	val = (int32_t)orig * (int32_t)(int8_t)gain;
+	val = MIN(val, INT16_MAX);
+	val = MAX(val, INT16_MIN);
+	return val;
+}
+#endif
+
 static int32_t wov_read(void *buf, uint32_t count)
 {
 	int16_t *out = buf;
+#ifdef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
+	uint8_t gain;
+
+	if (audio_codec_get_gain_idx(0, &gain) != EC_SUCCESS)
+		gain = 1;
+#endif
 
 	count >>= 1;
 
 	while (count-- && wov_fifo_level())
+#ifdef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
+		*out++ = scale_and_clip(SCP_VIF_FIFO_DATA, gain);
+#else
 		*out++ = SCP_VIF_FIFO_DATA;
+#endif
 
 	return (void *)out - buf;
 }
@@ -108,6 +130,12 @@ static struct audio_codec_driver driver = {
 	.translate_addr_ec_to_ap = memmap_scp_cache_to_ap,
 };
 
+static struct audio_codec_dmic_driver dmic_driver = {
+	.default_gain = 10,
+	.max_gain = 20,
+	.get_max_gain = audio_codec_get_max_gain,
+};
+
 static struct audio_codec_wov_driver wov_driver = {
 	.enable = wov_enable,
 	.disable = wov_disable,
@@ -121,6 +149,8 @@ static void chip_wov_init(void)
 {
 	if (audio_codec_register_driver(&driver) != EC_SUCCESS)
 		ERR("failed to register driver");
+	if (audio_codec_register_dmic_driver(&dmic_driver) != EC_SUCCESS)
+		ERR("failed to register dmic_driver");
 	if (audio_codec_register_wov_driver(&wov_driver) != EC_SUCCESS)
 		ERR("failed to register wov_driver");
 
