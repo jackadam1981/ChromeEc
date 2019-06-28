@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51c25073_b6422ace",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-28T12:52:28Z",
+      "side": 1,
+      "message": "Not Kukui, but yes, I\u0027m going to implement a custom callback for another board (CL:1673955).\n\nBut what\u0027s wrong with this line? Circular dependency?",
+      "parentUuid": "d321c99d_b19de267",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 32
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fe68951_3881e85f",
         "filename": "power/mt8183.c",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "ccc6ae3e_d24409f4",
+        "filename": "power/mt8183.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-28T12:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe68951_3881e85f",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 21
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3eff2ac3_64ebd822",
+        "filename": "power/mt8183.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-28T12:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73dc1b5b_1f630f8a",
+      "range": {
+        "startLine": 475,
+        "startChar": 27,
+        "endLine": 475,
+        "endChar": 33
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7c6d248_f205afe8",
         "filename": "power/mt8183.h",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7efc717_a6c71ef1",
+        "filename": "power/mt8183.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-06-28T12:52:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c6d248_f205afe8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "d6f93ed98dea6bebf1bd663c8ac1807a9d02a7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
