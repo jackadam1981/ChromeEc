@@ -32,6 +32,38 @@
 
 #define VBUS_UNCHANGED(curr, pend, new) (curr == new && pend == new)
 
+<<<<<<< HEAD   (51e054 servo_v4: Fake CC2 voltage when servo v4 as snk)
+=======
+/* Macros to config the PD role */
+#define CONFIG_SET_CLEAR(c, set, clear) ((c | (set)) & ~(clear))
+#define CONFIG_SRC(c) CONFIG_SET_CLEAR(c, \
+				CC_DISABLE_DTS | CC_ALLOW_SRC, \
+				CC_ENABLE_DRP)
+#define CONFIG_SNK(c) CONFIG_SET_CLEAR(c, \
+				CC_DISABLE_DTS, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SNK_WITH_PD)
+#define CONFIG_PDSNK(c) CONFIG_SET_CLEAR(c, \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP)
+#define CONFIG_DRP(c) CONFIG_SET_CLEAR(c, \
+				CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP, \
+				0)
+#define CONFIG_SRCDTS(c) CONFIG_SET_CLEAR(c, \
+				CC_ALLOW_SRC, \
+				CC_ENABLE_DRP | CC_DISABLE_DTS)
+#define CONFIG_SNKDTS(c) CONFIG_SET_CLEAR(c, \
+				0, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP | \
+				CC_DISABLE_DTS | CC_SNK_WITH_PD)
+#define CONFIG_PDSNKDTS(c) CONFIG_SET_CLEAR(c, \
+				CC_SNK_WITH_PD, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP | CC_DISABLE_DTS)
+#define CONFIG_DRPDTS(c) CONFIG_SET_CLEAR(c, \
+				CC_ALLOW_SRC | CC_ENABLE_DRP, \
+				CC_DISABLE_DTS)
+
+
+>>>>>>> CHANGE (7d29ac servo_v4: Support sink roles with PD comm enabled)
 /*
  * Dynamic PDO that reflects capabilities present on the CHG port. Allow for
  * multiple entries so that we can offer greater than 5V charging. The 1st
@@ -752,8 +784,24 @@ static void do_cc(int disable_cc_new, int disable_dts_new, int allow_src_new)
 			 * Present Rp or Rd on CC1 and CC2 based on
 			 * disable_dts_mode
 			 */
+<<<<<<< HEAD   (51e054 servo_v4: Fake CC2 voltage when servo v4 as snk)
 			pd_config_init(DUT, dualrole);
 			pd_comm_enable(DUT, dualrole);
+=======
+			if (dualrole != PD_DRP_TOGGLE_ON)
+				pd_set_host_mode(DUT, chargeable);
+
+			/*
+			 * For the normal lab use, emulating a sink has no PD
+			 * comm, like a passive hub. For the PD FAFT use, we
+			 * need to validate some PD behavior, so a flag
+			 * CC_SNK_WITH_PD to force enabling PD comm.
+			 */
+			if (cc_config & CC_SNK_WITH_PD)
+				pd_comm_enable(DUT, 1);
+			else
+				pd_comm_enable(DUT, chargeable);
+>>>>>>> CHANGE (7d29ac servo_v4: Support sink roles with PD comm enabled)
 		}
 	}
 }
@@ -790,8 +838,30 @@ static int command_cc(int argc, char **argv)
 		disable_dts_new = 0;
 		allow_src_new = 0;
 	} else {
+<<<<<<< HEAD   (51e054 servo_v4: Fake CC2 voltage when servo v4 as snk)
 		ccprintf("Try one of off, src, snk, srcdts, snkdts\n");
 		return EC_ERROR_PARAM2;
+=======
+		cc_config_new &= ~CC_DETACH;
+		if (!strcasecmp(argv[1], "src"))
+			cc_config_new = CONFIG_SRC(cc_config_new);
+		else if (!strcasecmp(argv[1], "snk"))
+			cc_config_new = CONFIG_SNK(cc_config_new);
+		else if (!strcasecmp(argv[1], "pdsnk"))
+			cc_config_new = CONFIG_PDSNK(cc_config_new);
+		else if (!strcasecmp(argv[1], "drp"))
+			cc_config_new = CONFIG_DRP(cc_config_new);
+		else if (!strcasecmp(argv[1], "srcdts"))
+			cc_config_new = CONFIG_SRCDTS(cc_config_new);
+		else if (!strcasecmp(argv[1], "snkdts"))
+			cc_config_new = CONFIG_SNKDTS(cc_config_new);
+		else if (!strcasecmp(argv[1], "pdsnkdts"))
+			cc_config_new = CONFIG_PDSNKDTS(cc_config_new);
+		else if (!strcasecmp(argv[1], "drpdts"))
+			cc_config_new = CONFIG_DRPDTS(cc_config_new);
+		else
+			return EC_ERROR_PARAM2;
+>>>>>>> CHANGE (7d29ac servo_v4: Support sink roles with PD comm enabled)
 	}
 	do_cc(disable_cc_new, disable_dts_new, allow_src_new);
 	print_cc_mode();
@@ -799,7 +869,12 @@ static int command_cc(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(cc, command_cc,
+<<<<<<< HEAD   (51e054 servo_v4: Fake CC2 voltage when servo v4 as snk)
 			"off|src|snk|srcdts|snkdts",
+=======
+			"[off|on|src|snk|pdsnk|drp|srcdts|snkdts|pdsnkdts|"
+			"drpdts]",
+>>>>>>> CHANGE (7d29ac servo_v4: Support sink roles with PD comm enabled)
 			"Servo_v4 DTS and CHG mode");
 
 static void fake_disconnect_end(void)

@@ -55,6 +55,16 @@
 /* use the hardware accelerator for CRC */
 #define CONFIG_HW_CRC
 
+<<<<<<< HEAD   (51e054 servo_v4: Fake CC2 voltage when servo v4 as snk)
+=======
+/* Servo v4 CC configuration */
+#define CC_DETACH	(1 << 0)   /* Emulate detach: both CC open */
+#define CC_DISABLE_DTS	(1 << 1)   /* Apply resistors to single or both CC? */
+#define CC_ALLOW_SRC	(1 << 2)   /* Allow charge through by policy? */
+#define CC_ENABLE_DRP	(1 << 3)   /* Enable dual-role port */
+#define CC_SNK_WITH_PD	(1 << 4)   /* Force enabling PD comm for sink role */
+
+>>>>>>> CHANGE (7d29ac servo_v4: Support sink roles with PD comm enabled)
 /* TX uses SPI1 on PB3-4 for CHG port, SPI2 on PB 13-14 for DUT port */
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
 static inline void spi_enable_clock(int port)
