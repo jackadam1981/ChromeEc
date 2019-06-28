@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec924fa9_3fa694ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-06-28T20:31:05Z",
+      "side": 1,
+      "message": "Will change to \"formatted\".\nI should also make it more clear that this mishandling of the 0 precision is a real thing and that, in one case, causes the fuzzer output parser to always think it found a runtime error.",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "63cc15a072eab6ff96f6c764f78fa3a2e599d78d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
