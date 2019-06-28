@@ -10,7 +10,7 @@
 #include "util.h"
 
 /*
- * Battery info for all Hatch battery types. Note that the fields
+ * Battery info for all kohaku battery types. Note that the fields
  * start_charging_min/max and charging_min/max are not used for the charger.
  * The effective temperature limits are given by discharging_min/max_c.
  *
@@ -32,34 +32,35 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
-	/* Dyna Battery Information */
-	[BATTERY_DYNA] = {
+	[BATTERY_SDI] = {
 		.fuel_gauge = {
-			.manuf_name = "Dyna",
+			.manuf_name = "SDI",
+			.device_name = "4404D62",
 			.ship_mode = {
-				.reg_addr = 0x0,
-				.reg_data = { 0x10, 0x10 },
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
-				.reg_addr = 0x0,
-				.reg_mask = 0x2000,
-				.disconnect_val = 0x2000,
+				.mfgacc_support = 0,
+				.reg_addr = 0x00,
+				.reg_mask = 0xc000,
+				.disconnect_val = 0x8000,
 			}
 		},
 		.batt_info = {
-			.voltage_max		= 8700,
-			.voltage_normal		= 7600, /* mV */
-			.voltage_min		= 6000, /* mV */
-			.precharge_current	= 150,	/* mA */
-			.start_charging_min_c	= 0,
-			.start_charging_max_c	= 45,
-			.charging_min_c		= 0,
-			.charging_max_c		= 60,
-			.discharging_min_c	= -20,
-			.discharging_max_c	= 60,
+			.voltage_max            = 8700,
+			.voltage_normal         = 7700, /* mV */
+			.voltage_min            = 6000, /* mV */
+			.precharge_current      = 200,  /* mA */
+			.start_charging_min_c   = 0,
+			.start_charging_max_c   = 45,
+			.charging_min_c         = 0,
+			.charging_max_c         = 50,
+			.discharging_min_c      = -20,
+			.discharging_max_c      = 70,
 		},
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
-const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_DYNA;
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SDI;

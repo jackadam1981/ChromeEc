@@ -132,6 +132,9 @@
 #define GPIO_PCH_SLP_S4_L GPIO_SLP_S4_L
 #define GPIO_EN_PP5000 GPIO_EN_PP5000_A
 
+/* Battery detect bug */
+#undef CONFIG_BATTERY_PRESENT_CUSTOM
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -170,7 +173,7 @@ enum temp_sensor_id {
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_DYNA,
+	BATTERY_SDI,
 	BATTERY_TYPE_COUNT,
 };
 
