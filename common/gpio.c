@@ -195,4 +195,61 @@ int gpio_power_down_module(enum module_id id)
 }
 #endif /* #ifdef CONFIG_GPIO_POWER_DOWN */
 
+/*
+ * This will be populated by gpio.wrap to create a global ID list
+ *
+ * e.g.:
+ *   GPIO(LID_OPEN, PIN(A, 4), GPIO_INPUT | IOEX_ID_NCT38XX)
+ *
+ * TODO: Handle two instances of the same chip (e.g. IOEX_ID_NCT38XX_0/1).
+ */
+enum ioex_index {
+	IOEX_ID_CHIP = 0,
+#ifdef CONFIG_NCT38XX
+	IOEX_ID_NCT38XX,
+#endif
+};
+
+const struct gpio_ops {
+	int (*init)(int expander);
+	int (*get_level)(int port, int mask, int *val);
+	int (*set_level)(int port, int mask, int val);
+	int (*get_flags_by_mask)(int port, int mask, int *flags);
+	int (*set_flags_by_mask)(int port, int mask, int flags);
+};
+
+/* Each chip and expander should define this */
+const struct gpio_ops chip_ops = {
+	//.init = chip_gpio_init,
+	.get_level = chip_gpio_get_level,
+	//.set_level = chip_gpio_set_level,
+};
+
+const struct ioex_info ioex_list[] = {
+	[0] = {
+		.op = chip_ops,
+		.location = {
+			.bus_type = EC_BUS_TYPE_EMBEDDED,
+		},
+	},
+#ifdef CONFIG_NCT38XX
+	[IOEX_ID_NCT38XX] = {
+		.op = nct38xx_ops,
+		.location = {
+			.bus_type = EC_BUS_TYPE_I2C,
+			.i2c_info = { .port = x, .addr = y, },
+		},
+	},
+#endif
+};
+
+/*
+ * Delete gpio_get_level from chip/x/gpio.c to transition each chip separately.
+ */
+__overridable int gpio_get_level(enum gpio_signal signal)
+{
+	int ioex_port = GPIO_IOEX_PORT(gpio_list[signal].flags);
+	return ioex_list[ioex_port].op->get_level(signal);
+}
+
 /*****************************************************************************/
