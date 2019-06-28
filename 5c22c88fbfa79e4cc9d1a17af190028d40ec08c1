@@ -22,6 +22,30 @@
       "revId": "5c22c88fbfa79e4cc9d1a17af190028d40ec08c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7aed543_29adc92d",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-06-28T02:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3bd2b8d_c80dcb25",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 47
+      },
+      "revId": "5c22c88fbfa79e4cc9d1a17af190028d40ec08c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
