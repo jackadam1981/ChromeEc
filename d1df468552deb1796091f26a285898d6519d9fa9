@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "131779d1_96d19ff4",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "f4b8f08f_35b77528",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "517ddad2_81643617",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-28T02:13:00Z",
       "side": 1,
       "message": "Just drop TODO.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f639a47_a562fcaf",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "517ddad2_81643617",
       "range": {
         "startLine": 26,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "967e6c3f_48abc9cf",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1f2b1b7_b65f5b75",
+      "range": {
+        "startLine": 51,
+        "startChar": 48,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88d27a99_fd6872ec",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2019-06-28T02:13:00Z",
       "side": 1,
       "message": "Try using this instead:\n\n kso_mapping[] \u003d {\n ...\n };\n BUILD_ASSERT(ARRAY_SIZE(kso_mapping) \u003d\u003d 18);",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b46845d_1524d0ae",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88d27a99_fd6872ec",
       "range": {
         "startLine": 71,
         "startChar": 21,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c126c08d_a173e5b9",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "These functions are declared in test/kb_scan.c. When the config of TEST_BUILD\nhas defined, these functions will be invoked.",
+      "parentUuid": "fa479e6a_9a2e3244",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 14
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e0827fa_f8a2c3bf",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2019-06-28T02:13:00Z",
       "side": 1,
       "message": "You don\u0027t need to init this.",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9ad097_aa611922",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0827fa_f8a2c3bf",
       "range": {
         "startLine": 82,
         "startChar": 12,
@@ -169,6 +313,24 @@
       "side": 1,
       "message": "Yep, we have to decouple chip intrinsic code from the KEYSCAN task, otherwise stuff won\u0027t be pretty.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1681036/2/chip/stm32/build.mk#b58\n\nThe reason your test code in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1677977/7 works, is because board/it83xx_evb already has an ec with a builtin keyboard peripheral in chip/.",
       "parentUuid": "af0143f8_76da516b",
+      "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470894cc_8a269e67",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-06-28T05:30:43Z",
+      "side": 1,
+      "message": "My test code in the board.h of it83xx_evb has defined CONFIG_IO_EXPANDER_IT8801 that is different from others in order to use the expander driver(ioexpander_it8801.c). Other boards are defined new config to run chip-level driver(keyboard_raw.c).",
+      "parentUuid": "0cd39be9_16b813de",
       "revId": "d1df468552deb1796091f26a285898d6519d9fa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
