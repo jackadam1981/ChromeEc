@@ -36,6 +36,7 @@
 #ifdef CONFIG_GPIO_POWER_DOWN
 #define GPIO_POWER_DOWN    BIT(20) /* Pin and pad is powered off */
 #endif
+#define GPIO_IOEX_FLAGS    (0xF << 28) /* 28 ~ 31: IO Expander port number */
 
 /* Common flag combinations */
 #define GPIO_OUT_LOW        (GPIO_OUTPUT | GPIO_LOW)
@@ -55,6 +56,8 @@
 /* Convert GPIO mask to GPIO number / index. */
 #define GPIO_MASK_TO_NUM(mask) (__fls(mask))
 
+#define GPIO_IOEX_PORT(flags) (((flags) >> 28) & 0xF)
+
 /* NOTE: This is normally included from board.h, thru config.h and common.h But,
  * some boards and unit tests don't have a gpio_signal enum defined, so we
  * define an emtpy one here.*/
@@ -64,13 +67,28 @@ enum gpio_signal {
 };
 #endif /* __CROS_EC_GPIO_SIGNAL_H */
 
+const struct gpio_ops {
+	int (*init)(int expander);
+	int (*get_level)(int port, int mask, int *val);
+	int (*set_level)(int port, int mask, int val);
+	int (*get_flags_by_mask)(int port, int mask, int *flags);
+	int (*set_flags_by_mask)(int port, int mask, int flags);
+};
+
+struct ioex_info {
+	struct gpio_ops op;
+};
+
 /* GPIO signal definition structure, for use by board.c */
 struct gpio_info {
 	/* Signal name */
 	const char *name;
 
-	/* Port base address */
-	uint32_t port;
+	union {
+		/* Port base address */
+		uint32_t port;
+		const struct ioex_funcs *io;
+	};
 
 	/* Bitmask on that port (1 << N; 0 = signal not implemented) */
 	uint32_t mask;
@@ -123,7 +141,15 @@ int gpio_config_pin(enum module_id id, enum gpio_signal signal, int enable);
  * @param signal	Signal to get
  * @return 0 if low, 1 if high.
  */
-int gpio_get_level(enum gpio_signal signal);
+__override_proto int gpio_get_level(enum gpio_signal signal);
+
+/**
+ * Get the current value of a signal.
+ *
+ * @param signal	Signal to get
+ * @return 0 if low, 1 if high.
+ */
+void chip_gpio_get_level(enum gpio_signal signal);
 
 /**
  * Read a ternary GPIO input, activating internal pull-down, then pull-up,
