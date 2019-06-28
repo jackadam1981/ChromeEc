@@ -606,9 +606,6 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 #ifdef BOARD_KRANE
 static void fix_krane(void)
 {
-	if (board_get_version() != 3)
-		return;
-
 	/*
 	 * Fix backlight led maximum current: tolerance 120mA * 0.75 = 90mA.
 	 * (b/133655155)
