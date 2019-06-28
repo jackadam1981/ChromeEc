@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2af93c0_92f86e7e",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-28T01:46:38Z",
+      "side": 0,
+      "message": "You probably want to make this a config option. CONFIG_KEYSCAN_STM32, or something. And make it the default.",
+      "revId": "053836dc95ffe9a68bb77117c4baf2962f94defc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
