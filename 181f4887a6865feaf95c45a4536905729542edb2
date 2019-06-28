@@ -22,6 +22,30 @@
       "revId": "181f4887a6865feaf95c45a4536905729542edb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "559184d5_5bba3d29",
+        "filename": "board/kindred/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-06-28T08:12:10Z",
+      "side": 1,
+      "message": "Yes.\nShould we remove it in this CL or upload another CL to remove it?",
+      "parentUuid": "366fe75a_b498496b",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 16
+      },
+      "revId": "181f4887a6865feaf95c45a4536905729542edb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
