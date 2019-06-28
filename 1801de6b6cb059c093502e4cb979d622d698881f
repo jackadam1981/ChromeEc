@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2c4e7e5_c24c0c96",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-28T18:56:45Z",
+      "side": 1,
+      "message": "do you think it is worth trying to round to the next 128ma value?",
+      "range": {
+        "startLine": 306,
+        "startChar": 5,
+        "endLine": 306,
+        "endChar": 41
+      },
+      "revId": "1801de6b6cb059c093502e4cb979d622d698881f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0264522_a32f0124",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-28T18:56:45Z",
+      "side": 1,
+      "message": "nit, can we call this INVALID_MASK",
+      "range": {
+        "startLine": 310,
+        "startChar": 8,
+        "endLine": 310,
+        "endChar": 39
+      },
+      "revId": "1801de6b6cb059c093502e4cb979d622d698881f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
