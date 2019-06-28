@@ -93,4 +93,11 @@ extern int audio_codec_dmic_set_gain_idx(uint8_t channel, uint8_t gain);
  */
 extern int audio_codec_dmic_get_gain_idx(uint8_t channel, uint8_t *gain);
 
+/*
+ * Maximum possible gain.
+ */
+#ifdef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
+extern uint8_t audio_codec_dmic_max_gain;
+#endif
+
 #endif

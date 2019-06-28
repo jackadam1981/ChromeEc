@@ -78,3 +78,35 @@ static int dmic_host_command(struct host_cmd_handler_args *args)
 	return EC_RES_INVALID_PARAM;
 }
 DECLARE_HOST_COMMAND(EC_CMD_EC_CODEC_DMIC, dmic_host_command, EC_VER_MASK(0));
+
+#ifdef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
+static uint8_t gains[EC_CODEC_DMIC_CHANNEL_COUNT];
+uint8_t audio_codec_dmic_max_gain;
+
+int audio_codec_dmic_get_max_gain(uint8_t *gain)
+{
+	*gain = audio_codec_dmic_max_gain;
+	return EC_SUCCESS;
+}
+
+int audio_codec_dmic_set_gain_idx(uint8_t channel, uint8_t gain)
+{
+	if (channel >= ARRAY_SIZE(gains))
+		return EC_ERROR_INVAL;
+
+	if (gain > audio_codec_dmic_max_gain)
+		return EC_ERROR_INVAL;
+
+	gains[channel] = gain;
+	return EC_SUCCESS;
+}
+
+int audio_codec_dmic_get_gain_idx(uint8_t channel, uint8_t *gain)
+{
+	if (channel >= ARRAY_SIZE(gains))
+		return EC_ERROR_INVAL;
+
+	*gain = gains[channel];
+	return EC_SUCCESS;
+}
+#endif
