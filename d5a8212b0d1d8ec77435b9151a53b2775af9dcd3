@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1384f768_07355655",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-28T01:16:17Z",
+      "side": 1,
+      "message": "Also see https://crrev.com/c/1680669, but this will work regardless of whether that lands.",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "d5a8212b0d1d8ec77435b9151a53b2775af9dcd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
