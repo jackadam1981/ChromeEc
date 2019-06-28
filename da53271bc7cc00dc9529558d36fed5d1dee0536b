@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "40b938b5_573df1f8",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-28T21:07:17Z",
+      "side": 1,
+      "message": "I think enabling MPU on a chip which doesn\u0027t support MPU is an error we should catch at build time (and we don\u0027t want to waste any run-time resource for catching it).\n\nconfig_chip.h is included before board.h. So, our option is to trap it in chip/*/system.c or somewhere which is always compiled.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975a59d6_9395f19a",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2019-06-28T16:05:06Z",
       "side": 1,
       "message": "I think this actually would get caught below in line 248. Should I remove it?",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 29
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7543ff7e_4c518893",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-28T21:07:17Z",
+      "side": 1,
+      "message": "Yeah, we can try to move it to line 248 to see if compiler optimize it. I\u0027m expecting we have source code change but no binary change. If it doesn\u0027t, I think we should add just a comment.",
+      "parentUuid": "975a59d6_9395f19a",
       "range": {
         "startLine": 241,
         "startChar": 2,
