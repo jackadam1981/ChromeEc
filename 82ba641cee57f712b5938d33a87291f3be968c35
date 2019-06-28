@@ -70,6 +70,30 @@
       "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80a2a4f6_4ccc3ce5",
+        "filename": "docs/usb-c.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-06-28T20:28:48Z",
+      "side": 1,
+      "message": "Moved this to config.h. I don\u0027t know of a good way to link into the middle of the file on master",
+      "parentUuid": "07cb75b2_b3a01b94",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 54
+      },
+      "revId": "82ba641cee57f712b5938d33a87291f3be968c35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
