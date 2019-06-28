@@ -10,7 +10,15 @@
 
 static struct {
 	struct audio_codec_dmic_driver driver;
-} priv;
+	uint8_t gains[8];
+} priv = {
+#ifdef CONFIG_AUDIO_CODEC_DMIC_SOFTWARE_GAIN
+	.driver = {
+		.set_gain_idx = audio_codec_set_gain_idx,
+		.get_gain_idx = audio_codec_get_gain_idx,
+	},
+#endif
+};
 
 static int dmic_get_max_gain(struct host_cmd_handler_args *args)
 {
@@ -174,5 +182,42 @@ int audio_codec_register_dmic_driver(struct audio_codec_dmic_driver *driver)
 	if (driver->get_gain_idx)
 		priv.driver.get_gain_idx = driver->get_gain_idx;
 
+	return EC_SUCCESS;
+}
+
+int audio_codec_get_max_gain(uint8_t *gain)
+{
+	*gain = priv.driver.max_gain;
+	return EC_SUCCESS;
+}
+
+int audio_codec_set_gain_idx(uint8_t channel, uint8_t gain)
+{
+	uint8_t max_gain;
+
+	if (!priv.driver.get_max_gain)
+		return EC_SUCCESS;
+
+	if (channel >= ARRAY_SIZE(priv.gains))
+		return EC_ERROR_PARAM1;
+
+	if (priv.driver.get_max_gain(&max_gain) != EC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+	if (gain > max_gain)
+		return EC_ERROR_PARAM2;
+
+	priv.gains[channel] = gain;
+	return EC_SUCCESS;
+}
+
+int audio_codec_get_gain_idx(uint8_t channel, uint8_t *gain)
+{
+	if (!priv.driver.get_max_gain)
+		return EC_SUCCESS;
+
+	if (channel >= ARRAY_SIZE(priv.gains))
+		return EC_ERROR_PARAM1;
+
+	*gain = priv.gains[channel];
 	return EC_SUCCESS;
 }

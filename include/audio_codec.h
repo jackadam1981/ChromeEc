@@ -60,6 +60,7 @@ int audio_codec_register_driver(struct audio_codec_driver *driver);
 
 
 struct audio_codec_dmic_driver {
+	uint8_t max_gain;
 	int (*get_max_gain)(uint8_t *max_gain);
 	int (*set_gain_idx)(uint8_t channel, uint8_t gain);
 	int (*get_gain_idx)(uint8_t channel, uint8_t *gain);
@@ -72,5 +73,29 @@ struct audio_codec_dmic_driver {
  *   EC_SUCCESS if success.
  */
 int audio_codec_register_dmic_driver(struct audio_codec_dmic_driver *driver);
+
+/*
+ * Default get_max_gain().
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_get_max_gain(uint8_t *gain);
+
+/*
+ * Default set_gain_idx() for software gain on DMIC.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_set_gain_idx(uint8_t channel, uint8_t gain);
+
+/*
+ * Default get_gain_idx() for software gain on DMIC.
+ *
+ * Returns:
+ *   EC_SUCCESS if success.
+ */
+int audio_codec_get_gain_idx(uint8_t channel, uint8_t *gain);
 
 #endif
