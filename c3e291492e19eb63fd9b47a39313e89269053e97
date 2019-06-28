@@ -70,6 +70,30 @@
       "revId": "c3e291492e19eb63fd9b47a39313e89269053e97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5179514d_e2c76b41",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-28T16:18:55Z",
+      "side": 1,
+      "message": "Nevermind, can\u0027t do this at build time.\n\nI was trying to be defensive and make sure that we don\u0027t end up with a size_exp of 31, which would result in (1 \u003c\u003c 31), which would be a negative return value since we\u0027re returning as signed int.\n\nWould you be ok with me adding a runtime panic since the flash configuration is constant for a chip? (i.e., you would never unexpectedly panic as long as the configuration worked once)",
+      "parentUuid": "0441fd29_30a30cfd",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "c3e291492e19eb63fd9b47a39313e89269053e97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
