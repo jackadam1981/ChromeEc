@@ -94,6 +94,30 @@
       "revId": "26242bf80a18d2f04566fdbaa491ad2ea5dfc67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858a5afa_3d099a62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-06-29T02:09:21Z",
+      "side": 1,
+      "message": "f3 is a symlink to f0 ,-P",
+      "parentUuid": "7f13ab31_2a443b94",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "26242bf80a18d2f04566fdbaa491ad2ea5dfc67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
