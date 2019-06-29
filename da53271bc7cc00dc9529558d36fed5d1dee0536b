@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8ce0f307_3ca172a2",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-06-29T00:34:34Z",
+      "side": 1,
+      "message": "I\u0027m saying MPU is a static \u0026 deterministic feature. We don\u0027t have to discover it at run-time (though we can by wasting run-time resources).",
+      "parentUuid": "82a78113_5dda27f9",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975a59d6_9395f19a",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
