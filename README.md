@@ -81,9 +81,19 @@ I2C/onewire LED controllers, and I2C temperature sensors.
 **util** - Host utilities and scripts for flashing the EC. Also includes
 “ectool” used to query and send commands to the EC from userspace.
 
-**test** - Unit tests for the EC. Use “make tests -j $jobs BOARD=$board” to run
-them against your build target. Set $jobs to the number of cores in your build
+**test** - Unit tests for the EC. Use `make tests -j $jobs BOARD=$board` to run
+them against your build target. Set `$jobs` to the number of cores in your build
 machine. Please contribute new tests if writing new functionality.
+* `make hosttests`
+* `make runhosttests`
+* `make host-<select_unit_test_name>`
+* `make run-<select_unit_test_name>`
+
+**fuzz** - Fuzzers
+* `make  runfuzztests`
+* `make buildfuzztests`
+* `make host-<select_fuzz_name>`
+* `make run-<select_fuzz_name>`
 
 ## Firmware Branches
 
