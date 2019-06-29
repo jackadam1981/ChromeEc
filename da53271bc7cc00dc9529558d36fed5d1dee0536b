@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82a78113_5dda27f9",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-06-29T00:10:09Z",
+      "side": 1,
+      "message": "I think it has to be done at runtime? MPU_TYPE is really a register access even though it looks like a constant.",
+      "parentUuid": "40b938b5_573df1f8",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975a59d6_9395f19a",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
