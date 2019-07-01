@@ -46,6 +46,30 @@
       "revId": "181f4887a6865feaf95c45a4536905729542edb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bef9645_1826218a",
+        "filename": "board/kindred/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-01T15:35:45Z",
+      "side": 1,
+      "message": "Another CL based on top of this one?",
+      "parentUuid": "559184d5_5bba3d29",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 16
+      },
+      "revId": "181f4887a6865feaf95c45a4536905729542edb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
