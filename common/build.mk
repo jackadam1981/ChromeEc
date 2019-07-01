@@ -172,6 +172,10 @@ common-$(HAS_TASK_TPM)+=tpm_registers.o
 
 CFLAGS+=$(AUDIO_CODEC_EXTRA_CFLAGS)
 
+ifneq ($(HAVE_PRIVATE_AUDIO_CODEC_WOV_LIBS),y)
+common-$(CONFIG_AUDIO_CODEC_WOV)+=hotword_dsp_api.o
+endif
+
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
 common-$(call not_cfg,$(CONFIG_MALLOC))+=shared_mem.o
