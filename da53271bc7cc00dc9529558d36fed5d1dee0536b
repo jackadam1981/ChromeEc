@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "3bf3ee82_e9566293",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-01T18:47:46Z",
+      "side": 1,
+      "message": "What about halting instead?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 7
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad52f3ab_c3fb0a4e",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-01T18:47:46Z",
+      "side": 1,
+      "message": "Can you make it short? Shall we print MPU_TYPE? (e.g. \"MPU init failed: type\u003d0x%x\")",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 53
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40b938b5_573df1f8",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -157,6 +203,30 @@
       "side": 1,
       "message": "Robust *and* future proof (i.e., when new chips are added).",
       "parentUuid": "ee69ded9_bde5418e",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eac81a4_3861f477",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-01T18:47:46Z",
+      "side": 1,
+      "message": "Ack.\n\nI still believe this should be done offline for the same reason for not checking ROM size, RAM size, or other static features of a chip. The run-time check is cheap. So, it\u0027s probably ok.",
+      "parentUuid": "9856d961_d39e76df",
       "range": {
         "startLine": 132,
         "startChar": 0,
