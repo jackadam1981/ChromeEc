@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "965d5850_ef147084",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T16:19:22Z",
+      "side": 1,
+      "message": "Correct. We do know it for each board. However, we use a lot of different boards and I don\u0027t personally have all of them (nor want to test all of them) by going through the documentation one-by-one. From what I\u0027ve found, almost all Cortex M4\u0027s should have an MPU, but it\u0027s not necessarily guaranteed as Aseda pointed out. It looks like it can even vary by \"chip\" (so you can\u0027t just blindly enable it for all STM32F4\u0027s for example).\n\nAdding a trivial runtime check seems like a good compromise; by default it will be enabled so boards get the security features of the MPU by default and if for some reason they have a board that doesn\u0027t support it, they get an obvious failure (and then disable it). Any board worried about code size can also choose to disable it, but it\u0027s an active choice in that case to disable the security features as opposed to the current default where you can accidentally forget to enable it (or not even know the feature exists).\n\nIf the runtime performance of a single if statement is truly detrimental to the performance, I can even add an \"__builtin_expect\" to encourage the branch predictor not to take the path (https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html).",
+      "parentUuid": "8ce0f307_3ca172a2",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975a59d6_9395f19a",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
