@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "e51bdd81_3c4e3b9d",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-01T23:28:55Z",
+      "side": 1,
+      "message": "Yeah it\u0027s a common pattern (we often make people remove them in kernel code, as the coding style there is _not_ to use those). I think it\u0027s usually better to let the compiler complain that the variable may be used uninitialized.",
+      "parentUuid": "09f1082c_d1d92c25",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70198df1_e78e60c9",
         "filename": "common/rollback.c",
         "patchSetId": 2
@@ -266,6 +290,24 @@
       "side": 1,
       "message": "get_rollback_erase_size_bytes returns -1 on failure (errors propogated up from flash_bank_index/flash_bank_erase_size).",
       "parentUuid": "79200165_58e8969d",
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e596389f_0f782268",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-01T23:28:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c843cb39_676ffe67",
       "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
