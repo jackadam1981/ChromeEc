@@ -6,12 +6,12 @@
  */
 
 GPIO_INT(LID_OPEN,          PIN(27),  GPIO_INT_BOTH | GPIO_PULL_UP,       lid_interrupt)            /* Lid switch */
-GPIO_INT(AC_PRESENT,        PIN(30),  GPIO_INT_BOTH | GPIO_PULL_UP | GPIO_PULL_DOWN, extpower_interrupt)     /* BC_ACOK / EC_ACIN - to know if battery or AC connected */
+GPIO_INT(AC_PRESENT,        PIN(30),  GPIO_INT_BOTH_DSLEEP | GPIO_PULL_UP | GPIO_PULL_DOWN, extpower_interrupt)     /* BC_ACOK / EC_ACIN - to know if battery or AC connected */
 #ifdef CONFIG_BUTTON_COUNT
 GPIO_INT(VOLUME_UP,         PIN(31),  GPIO_INT_BOTH,                      button_interrupt)         /* Volume up button */
 GPIO_INT(VOLUME_DOWN,       PIN(34),  GPIO_INT_BOTH,                      button_interrupt)         /* Volume down button */
 #endif
-GPIO_INT(POWER_BUTTON_L,    PIN(35),  GPIO_INT_BOTH,                      power_button_interrupt)   /* Power button */
+GPIO_INT(POWER_BUTTON_L,    PIN(35),  GPIO_INT_BOTH_DSLEEP,               power_button_interrupt)   /* Power button */
 GPIO_INT(RSMRST_L_PGOOD,    PIN(63),  GPIO_INT_BOTH,                      power_signal_interrupt)   /* RSMRST_N_PWRGD from power logic */
 GPIO_INT(ALL_SYS_PGOOD,     PIN(130), GPIO_INT_BOTH,                      power_signal_interrupt)   /* ALL_SYS_PWRGD from power logic */
 #ifdef CONFIG_LOW_POWER_IDLE
