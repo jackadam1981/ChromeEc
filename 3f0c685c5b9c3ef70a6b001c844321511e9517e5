@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3fe058d_3d3de5d3",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-01T16:30:37Z",
+      "side": 1,
+      "message": "to save an i2c write, we can do:\n\n/* Disable voltage regulation if enabled */\nif ((~reg \u0026 ISL9241_CONTROL0_INPUT_VTG_REGULATION) \u0026\u0026 isl9241_write(....)\n  goto int_fail;",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 315,
+        "endChar": 45
+      },
+      "revId": "3f0c685c5b9c3ef70a6b001c844321511e9517e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
