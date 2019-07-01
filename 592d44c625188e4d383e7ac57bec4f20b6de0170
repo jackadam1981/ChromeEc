@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3585376f_16f6b991",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-01T18:54:09Z",
+      "side": 1,
+      "message": "If we\u0027re not supporting v1, do we have to support v0? Is it clear from user\u0027s perspective, if v2 isn\u0027t supported, the command falls back to v0 (instead of v1)?\n\nFrom what I read the code, we can always call v0 because it can return write_size. Can you clarify why it has to be v2?",
+      "parentUuid": "eb58c9e1_e9a8e288",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7532ae5c_de96c1b8",
         "filename": "util/ec_flash.c",
         "patchSetId": 1
