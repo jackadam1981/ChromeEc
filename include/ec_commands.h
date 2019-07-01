@@ -23,13 +23,23 @@ extern "C"{
  * ARM Cortex-M if the structures are guaranteed 32-bit aligned.
  */
 #include "common.h"
-#endif
+#include "compile_time_macros.h"
+
+#else
 
 #ifdef __KERNEL__
 #define BUILD_ASSERT(_cond)
-#else
-#include "compile_time_macros.h"
 #endif
+
+#ifndef BIT
+#define BIT(nr)         (1UL << (nr))
+#endif
+
+#ifndef BIT_ULL
+#define BIT_ULL(nr)     (1ULL << (nr))
+#endif
+
+#endif  /* CHROMIUM_EC */
 
 /*
  * Current version of this protocol
