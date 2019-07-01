@@ -22,6 +22,30 @@
       "revId": "3f0c685c5b9c3ef70a6b001c844321511e9517e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d407fed1_1c9c8ab6",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2019-07-01T17:37:13Z",
+      "side": 1,
+      "message": "power on value of vtg regulation \u003d 0 so may be we can keep it same",
+      "parentUuid": "d3fe058d_3d3de5d3",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 315,
+        "endChar": 45
+      },
+      "revId": "3f0c685c5b9c3ef70a6b001c844321511e9517e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
