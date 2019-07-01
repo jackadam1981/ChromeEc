@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "eb58c9e1_e9a8e288",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T18:31:03Z",
+      "side": 1,
+      "message": "In my mind this isn\u0027t deprecating anything. It\u0027s adding support for the v2 command. If someone wants to add support and test the v1 command, the code is written in a way to make that easy. Incremental improvements to the code shouldn\u0027t force me to fix all the problems that others have introduced in the past (i.e., this should have been added when the command was added).",
+      "parentUuid": "552840d6_49cd6f36",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7532ae5c_de96c1b8",
         "filename": "util/ec_flash.c",
         "patchSetId": 1
