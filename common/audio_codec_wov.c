@@ -7,6 +7,7 @@
 #include "audio_codec.h"
 #include "console.h"
 #include "host_command.h"
+#include "hotword_dsp_api.h"
 #include "sha256.h"
 #include "system.h"
 #include "task.h"
@@ -53,6 +54,9 @@ static uint8_t hotword_detected;
  */
 static uint32_t audio_buf_rp, audio_buf_wp;
 #define IS_BUF_FULL() ((audio_buf_wp + 1) % AUDIO_BUF_LEN == audio_buf_rp)
+
+/* only used by host command */
+static uint8_t speech_lib_loaded;
 
 static int check_lang_buf(uint8_t *data, uint32_t len, const uint8_t *hash)
 {
@@ -114,6 +118,7 @@ static int wov_set_lang(struct host_cmd_handler_args *args)
 
 		memcpy(lang_hash, pp->hash, sizeof(lang_hash));
 		lang_len = pp->total_len;
+		speech_lib_loaded = 0;
 	}
 
 	args->response_size = 0;
@@ -138,6 +143,7 @@ static int wov_set_lang_shm(struct host_cmd_handler_args *args)
 
 	memcpy(lang_hash, pp->hash, sizeof(lang_hash));
 	lang_len = pp->total_len;
+	speech_lib_loaded = 0;
 
 	args->response_size = 0;
 	return EC_RES_SUCCESS;
@@ -161,6 +167,15 @@ static int wov_enable(struct host_cmd_handler_args *args)
 
 	if (audio_codec_wov_enable() != EC_SUCCESS)
 		return EC_RES_ERROR;
+
+	if (!speech_lib_loaded) {
+		if (!GoogleHotwordDspInit(
+				(void *)audio_codec_wov_lang_buf_addr))
+			return EC_RES_ERROR;
+		speech_lib_loaded = 1;
+	} else {
+		GoogleHotwordDspReset();
+	}
 
 	mutex_lock(&lock);
 	wov_enabled = 1;
@@ -319,6 +334,7 @@ void audio_codec_wov_task(void *arg)
 {
 	uint32_t n, req;
 	uint8_t *p;
+	int r;
 
 	while (1) {
 		mutex_lock(&lock);
@@ -355,6 +371,26 @@ void audio_codec_wov_task(void *arg)
 
 			task_wait_event(-1);
 			continue;
+		}
+
+		/*
+		 * GoogleHotwordDspProcess() needs number of samples.  In the
+		 * case, sample is S16_LE.  Thus, n / 2.
+		 */
+		if (GoogleHotwordDspProcess(p, n / 2, &r)) {
+			CPRINTS("hotword detected");
+
+			mutex_lock(&lock);
+			/* 0.8 second ahead */
+			audio_buf_rp = audio_buf_wp + n + 25600;
+			while (audio_buf_rp >= AUDIO_BUF_LEN)
+				audio_buf_rp -= AUDIO_BUF_LEN;
+
+			hotword_detected = 1;
+			mutex_unlock(&lock);
+
+			host_set_single_event(EC_HOST_EVENT_WOV);
+			GoogleHotwordDspReset();
 		}
 
 		mutex_lock(&lock);
