@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "ee69ded9_bde5418e",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T18:14:44Z",
+      "side": 1,
+      "message": "For the ST parts, the only documentation I\u0027ve found on whether an MPU is included is the datasheet for each variant:\nhttps://www.st.com/resource/en/datasheet/stm32f412ce.pdf\nhttps://www.st.com/resource/en/datasheet/stm32f373cc.pdf\n\n\nIt\u0027s possible that they all have MPUs (just like it\u0027s likely that all Cortex-M4\u0027s we use have an MPU), but rather than going through all the datasheets one-by-one it\u0027s more robust to have a simple one-line defensive check.",
+      "parentUuid": "0b55eefa_013aa7b4",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975a59d6_9395f19a",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
