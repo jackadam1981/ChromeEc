@@ -142,6 +142,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90268b8_4ac5ab79",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-01T18:04:48Z",
+      "side": 1,
+      "message": "\u003e ANX chip on Eve only has ~9 write cycles\n\u003e before the chip is no longer able to update.\n\nAre we going to update firmware on a chip which has only 9 write cycles? Can EC know the remaining write cycles?",
+      "parentUuid": "672f601f_85bc2f04",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
