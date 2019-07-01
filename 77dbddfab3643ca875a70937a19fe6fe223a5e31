@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2740938_45963487",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T19:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5312ad8b_781aabec",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 10
+      },
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8bfd8c8_ac614326",
         "filename": "common/flash.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7561c31_66703662",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T19:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8bfd8c8_ac614326",
+      "range": {
+        "startLine": 188,
+        "startChar": 11,
+        "endLine": 188,
+        "endChar": 15
+      },
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c86c64d1_cc452fa9",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T19:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c257cc65_0af4d1d0",
+      "range": {
+        "startLine": 189,
+        "startChar": 14,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e816811_f67c496a",
         "filename": "common/rollback.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f1082c_d1d92c25",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T19:19:27Z",
+      "side": 1,
+      "message": "Removed these, but FWIW I do this as a defensive programming method.",
+      "parentUuid": "5e816811_f67c496a",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c06aaccf_4c8d65d4",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T19:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70198df1_e78e60c9",
+      "range": {
+        "startLine": 60,
+        "startChar": 15,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79200165_58e8969d",
         "filename": "common/rollback.c",
         "patchSetId": 2
@@ -131,6 +251,24 @@
       "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c843cb39_676ffe67",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-01T19:19:27Z",
+      "side": 1,
+      "message": "get_rollback_erase_size_bytes returns -1 on failure (errors propogated up from flash_bank_index/flash_bank_erase_size).",
+      "parentUuid": "79200165_58e8969d",
+      "revId": "77dbddfab3643ca875a70937a19fe6fe223a5e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
