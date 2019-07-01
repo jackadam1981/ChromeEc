@@ -7,6 +7,7 @@
 #include "audio_codec.h"
 #include "console.h"
 #include "host_command.h"
+#include "hotword_dsp_api.h"
 #include "sha256.h"
 #include "system.h"
 #include "task.h"
@@ -30,6 +31,9 @@ static struct mutex lock;
 static uint8_t wov_enabled;
 static uint8_t hotword_detected;
 static uint32_t audio_buf_rp, audio_buf_wp;
+
+/* only used by host command */
+static uint8_t speech_lib_loaded;
 
 static int check_lang_hash(uint8_t *data, uint32_t len, const uint8_t *hash)
 {
@@ -81,6 +85,7 @@ static int wov_set_lang(struct host_cmd_handler_args *args)
 
 		memcpy(lang_hash, pp->hash, sizeof(lang_hash));
 		lang_len = pp->total_len;
+		speech_lib_loaded = 0;
 	}
 
 	args->response_size = 0;
@@ -104,6 +109,7 @@ static int wov_set_lang_shm(struct host_cmd_handler_args *args)
 
 	memcpy(lang_hash, pp->hash, sizeof(lang_hash));
 	lang_len = pp->total_len;
+	speech_lib_loaded = 0;
 
 	args->response_size = 0;
 	return EC_RES_SUCCESS;
@@ -126,6 +132,15 @@ static int wov_enable(struct host_cmd_handler_args *args)
 
 	if (audio_codec_wov_enable() != EC_SUCCESS)
 		return EC_RES_ERROR;
+
+	if (!speech_lib_loaded) {
+		if (!GoogleHotwordDspInit(
+				(void *)audio_codec_wov_lang_buf_addr))
+			return EC_RES_ERROR;
+		speech_lib_loaded = 1;
+	} else {
+		GoogleHotwordDspReset();
+	}
 
 	mutex_lock(&lock);
 	wov_enabled = 1;
@@ -263,6 +278,7 @@ void audio_codec_wov_task(void *arg)
 {
 	uint32_t n, req;
 	uint8_t *p = (uint8_t *)audio_codec_wov_audio_buf_addr;
+	int r;
 
 	while (1) {
 		if (!wov_enabled)
@@ -298,6 +314,13 @@ void audio_codec_wov_task(void *arg)
 
 			task_wait_event(-1);
 			continue;
+		}
+
+		if (GoogleHotwordDspProcess(p + audio_buf_wp, n / 2, &r)) {
+			CPRINTS("hotword detected");
+			hotword_detected = 1;
+			host_set_single_event(EC_HOST_EVENT_WOV);
+			GoogleHotwordDspReset();
 		}
 
 		mutex_lock(&lock);
