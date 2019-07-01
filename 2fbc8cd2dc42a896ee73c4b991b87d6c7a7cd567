@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6df06ac8_2cfaad38",
+        "filename": "common/chargen.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-01T02:31:21Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 4
+      },
+      "revId": "2fbc8cd2dc42a896ee73c4b991b87d6c7a7cd567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a87ee2a_f356b05a",
         "filename": "common/chargen.c",
         "patchSetId": 7
@@ -70,6 +93,29 @@
       "revId": "2fbc8cd2dc42a896ee73c4b991b87d6c7a7cd567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044ac0e1_bb09b3fa",
+        "filename": "util/chargen",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-01T02:31:21Z",
+      "side": 1,
+      "message": "nit: unify the indention for second line. (this one and below)",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "2fbc8cd2dc42a896ee73c4b991b87d6c7a7cd567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
