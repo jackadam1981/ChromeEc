@@ -22,6 +22,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6479ae4_206f45cf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-02T20:54:03Z",
+      "side": 1,
+      "message": "One reason is that the host event space is nearly full. Regarding the associated data, I could see this command possibly returning extra information once we start to add the USB-C connector class information needed by the kernel.",
+      "parentUuid": "42a59ad3_87c18b99",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
