@@ -94,6 +94,30 @@
       "revId": "181f4887a6865feaf95c45a4536905729542edb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2136c7c0_5729f1f1",
+        "filename": "board/kindred/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-07-02T02:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "288fdf71_26654696",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 16
+      },
+      "revId": "181f4887a6865feaf95c45a4536905729542edb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
