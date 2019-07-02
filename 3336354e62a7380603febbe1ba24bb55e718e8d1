@@ -166,6 +166,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3c036c_7598eded",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-02T15:10:21Z",
+      "side": 1,
+      "message": "I don\u0027t think the EC knows how many write cycles are left. We will update the TCPC firmware in the field, but sparingly. The ANX3429 is the TCPC that has limited write cycles because it uses One-Time Programmable (OTP) memory (See [0])\n\nMy comment is mainly around FAFT, that we should not be programming and re-programming the TCPC firmware for *all* devices. Maybe we can do it on a select few instead.\n\n\n[0] https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/dfeb5292901fc4dec96b689e424b5e8855ae82d6/src/drivers/ec/anx3429/anx3429.c#725",
+      "parentUuid": "e90268b8_4ac5ab79",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
