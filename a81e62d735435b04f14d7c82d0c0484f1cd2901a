@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "aeb30b94_aa43a15b",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-02T15:53:18Z",
+      "side": 1,
+      "message": "chargen is guaranteed to send a certain sequence of characters, its output should not be saved for comparing with the following output, the test should just check that all characters arrive in order.",
+      "parentUuid": "7033afb6_623c1bed",
+      "range": {
+        "startLine": 214,
+        "startChar": 26,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f824e3ab_f47325c4",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
