@@ -1868,7 +1868,7 @@ static inline uint8_t board_get_usb_pd_port_count(void)
 
 /*
  * Notify the AP that we have entered into DisplayPort Alternate Mode.  This
- * sets a MODE_CHANGE host event which may wake the AP.
+ * sets a DP_ALT_MODE_ENTERED MKBP event which may wake the AP.
  */
 void pd_notify_dp_alt_mode_entry(void);
 
