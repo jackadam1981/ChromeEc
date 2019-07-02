@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42a59ad3_87c18b99",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-02T20:50:37Z",
+      "side": 1,
+      "message": "Any reason why we are defining this as a mkbp event and not just another host event? I ask because all MKBP events here typically have some data associated with it which is queued for the host to read. That is not really true for EC_MKBP_EVENT_DP_ALT_MODE_ENTERED at least at this point. \n\nAlso, with host events, it should be possible for host (e.g. powerd) to simply enable or disable the mask as per user requirement i.e. have host event for this feature enabled/disabled as per the required selection.",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
