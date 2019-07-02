@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8381e06_c87f52f1",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "The output of gpioget may change. You might want to use help instead",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e58d815_98cbd6ce",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "No spaces around default args.",
+      "range": {
+        "startLine": 73,
+        "startChar": 44,
+        "endLine": 73,
+        "endChar": 47
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54ff5a9a_ae058b59",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "When does this happen? Should we print the error?",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b08bb70_cb6fb410",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "rename to device_profile or uart profile",
+      "range": {
+        "startLine": 169,
+        "startChar": 10,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfd5b23_8b6548e6",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "Put this message in the uart error",
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7033afb6_623c1bed",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "What if we happen to drop characters the first time we run chargen?",
+      "range": {
+        "startLine": 214,
+        "startChar": 26,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f824e3ab_f47325c4",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "Why do you use .format here instead of using %s to format the string?",
+      "range": {
+        "startLine": 322,
+        "startChar": 44,
+        "endLine": 322,
+        "endChar": 50
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d52d0737_d8d4ab34",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "No spaces",
+      "range": {
+        "startLine": 383,
+        "startChar": 48,
+        "endLine": 383,
+        "endChar": 51
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6efbf65_d03ce6c7",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "I think you want to use \u0027\"\"\"\u0027 here",
+      "range": {
+        "startLine": 434,
+        "startChar": 16,
+        "endLine": 434,
+        "endChar": 19
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa4bcdc9_3d5f4c41",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-02T15:29:36Z",
+      "side": 1,
+      "message": "I can\u0027t tell if the formatting is off here or it\u0027s just about how gerrit prints stuff.",
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
