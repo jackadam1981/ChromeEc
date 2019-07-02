@@ -2685,6 +2685,9 @@
  */
 #undef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK
 
+/* Define which MKBP events should wakeup the system in suspend. */
+#undef CONFIG_MKBP_WAKEUP_MASK
+
 /* Support memory protection unit (MPU) */
 #undef CONFIG_MPU
 
