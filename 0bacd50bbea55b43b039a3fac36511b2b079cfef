@@ -22,6 +22,30 @@
       "revId": "0bacd50bbea55b43b039a3fac36511b2b079cfef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc5c69f6_a82eab4b",
+        "filename": "common/chargen.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-02T18:28:27Z",
+      "side": 1,
+      "message": "good catch, let me fix this.",
+      "parentUuid": "361f17f6_dbb87fea",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "0bacd50bbea55b43b039a3fac36511b2b079cfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
