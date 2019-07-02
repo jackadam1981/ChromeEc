@@ -224,7 +224,9 @@ uint32_t system_get_scratchpad(void)
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
+	int htimer;
 
+<<<<<<< HEAD   (77481f kukui: add chargen to the set of CLI commands)
 #ifdef CONFIG_HOSTCMD_PD
 	/* Inform the PD MCU that we are going to hibernate. */
 	host_command_pd_request_hibernate();
@@ -232,6 +234,22 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	msleep(100);
 #endif
 
+=======
+	CPRINTS("%s(%d, %d)", __func__, seconds, microseconds);
+	if (seconds || microseconds) {
+		if (seconds > 2) {
+			MEC1322_HTIMER_CONTROL = 1;
+			htimer = seconds * 8 + microseconds / 125000;
+		} else {
+			MEC1322_HTIMER_CONTROL = 0;
+			htimer = (seconds * 1000000 + microseconds) * 2 / 71;
+		}
+		if (htimer > UINT16_MAX) {
+			CPRINTS("Invalid HTIMER_PRELOAD");
+			return;
+		}
+	}
+>>>>>>> CHANGE (f4de8a mec1322: Check HTIMER_PRELOAD in system_hibernate)
 	cflush();
 
 	if (board_hibernate)
@@ -322,11 +340,18 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 		task_enable_irq(MEC1322_IRQ_GIRQ20);
 	}
 
+<<<<<<< HEAD   (77481f kukui: add chargen to the set of CLI commands)
 	if (seconds || microseconds) {
 		MEC1322_INT_BLK_EN |= BIT(17);
 		MEC1322_INT_ENABLE(17) |= BIT(20);
 		interrupt_enable();
+=======
+	if (htimer) {
+		MEC1322_INT_BLK_EN |= 1 << 17;
+		MEC1322_INT_ENABLE(17) |= MEC1322_INT_SOURCE_HTIMER;
+>>>>>>> CHANGE (f4de8a mec1322: Check HTIMER_PRELOAD in system_hibernate)
 		task_enable_irq(MEC1322_IRQ_HTIMER);
+<<<<<<< HEAD   (77481f kukui: add chargen to the set of CLI commands)
 		if (seconds > 2) {
 			ASSERT(seconds <= 0xffff / 8);
 			MEC1322_HTIMER_CONTROL = 1;
@@ -337,6 +362,12 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 			MEC1322_HTIMER_PRELOAD =
 				(seconds * 1000000 + microseconds) * 2 / 71;
 		}
+=======
+		MEC1322_HTIMER_PRELOAD = htimer;
+		/* Clear source register so that we will know for sure we
+		 * woke up by *NEW* timer expiration. */
+		MEC1322_INT_SOURCE(17) |= MEC1322_INT_SOURCE_HTIMER;
+>>>>>>> CHANGE (f4de8a mec1322: Check HTIMER_PRELOAD in system_hibernate)
 	}
 
 	asm("wfi");
