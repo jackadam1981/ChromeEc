@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "memmap.h"
+#include "pmic.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -89,6 +90,8 @@ void system_pre_init(void)
 	scp_memmap_init();
 	/* Disable jump (mt_scp has only RW) and enable MPU. */
 	system_disable_jump();
+	/* Init scp voltage */
+	scp_pmic_init();
 }
 
 void system_reset(int flags)
