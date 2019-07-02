@@ -13,6 +13,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <signal.h>
 #include <stdbool.h>
 
 #include "anx74xx.h"
@@ -34,6 +35,11 @@
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
+
+/*
+ * Calculate the expected response for a hello ec command.
+ */
+#define HELLO_RESP(in_data) ((in_data) + 0x01020304)
 
 /* Command line options */
 enum {
@@ -256,6 +262,8 @@ const char help_str[] =
 	"      Run RW signature verification and get status.\n"
 	"  sertest\n"
 	"      Serial output test for COM2\n"
+	"  stress [reboot] [help]\n"
+	"      Stress test the ec host command interface.\n"
 	"  switches\n"
 	"      Prints current EC switch positions\n"
 	"  temps <sensorid>\n"
@@ -2170,6 +2178,31 @@ int cmd_port_80_flood(int argc, char *argv[])
 	return -1;
 }
 #endif
+
+/*
+ * This boolean variable and handler are used for
+ * catching signals that translate into a quit/shutdown
+ * of a runtime loop.
+ * This is used in cmd_stress_test.
+ */
+static bool sig_quit;
+static void sig_quit_handler(int sig)
+{
+	sig_quit = true;
+}
+
+int cmd_stress_test(int argc, char *argv[])
+{
+	int i = 0;
+	sig_quit = false;
+	signal(SIGINT, sig_quit_handler);
+	while (!sig_quit) {
+		i++;
+	}
+	(void) i;
+	printf("\n");
+	return 0;
+}
 
 int read_mapped_temperature(int id)
 {
@@ -8764,6 +8797,7 @@ const struct command commands[] = {
 	{"rwsigaction", cmd_rwsig_action},
 	{"rwsigstatus", cmd_rwsig_status},
 	{"sertest", cmd_serial_test},
+	{"stress", cmd_stress_test},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
 	{"temps", cmd_temperature},
