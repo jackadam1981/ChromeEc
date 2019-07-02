@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf8f7010_4dd0943a",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-02T20:55:13Z",
+      "side": 1,
+      "message": "You won\u0027t need this if you set both hostevent and assert GPIO to indicate MKBP event. On host side, SCI mask should not set MKBP (that ensures MKBP interrupts come in via a single path i.e. GPIO or SCI) and S3/S0IX mask should set MKBP. That will ensure MKBP events can be used as wake sources.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
