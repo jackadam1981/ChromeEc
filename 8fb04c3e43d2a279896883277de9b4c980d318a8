@@ -258,6 +258,29 @@
       "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca76400_2d730730",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-02T17:42:31Z",
+      "side": 1,
+      "message": "doesn\u0027t there need to be a:\n\nuint8_t pd_enable\n\nfield in here too?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
