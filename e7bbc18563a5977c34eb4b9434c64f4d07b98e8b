@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd3c9a25_daab6e08",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T23:23:05Z",
+      "side": 1,
+      "message": "Just for a quick note:\n(1) Removing \u0027sleep 1\u0027 does\u0027t change character loss.\n\n(2) I don\u0027t see any character loss with gsctool command instead of trunk_client.\n    Used \u0027gsctool -a -p /opt/google/cr50/firmware/cr50.bin.prod \u0026\u003e /dev/null\u0027 instead.",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
