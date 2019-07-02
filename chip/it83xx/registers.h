@@ -705,6 +705,7 @@ enum ec_pll_ctrl {
 #define IT83XX_ECPM_SCDCR2	REG8(IT83XX_ECPM_BASE+0x0e)
 #define IT83XX_ECPM_SCDCR3	REG8(IT83XX_ECPM_BASE+0x0f)
 #define IT83XX_ECPM_SCDCR4	REG8(IT83XX_ECPM_BASE+0x10)
+#define IT83XX_ECPM_CGCTRL6R	REG8(IT83XX_ECPM_BASE+0x15)
 
 /*
  * The clock gate offsets combine the register offset from ECPM_BASE and the

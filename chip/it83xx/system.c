@@ -119,6 +119,16 @@ void chip_pre_init(void)
 {
 	/* bit4, enable debug mode through SMBus */
 	IT83XX_SMB_SLVISELR &= ~BIT(4);
+
+	if (IS_ENABLED(CHIP_VARIANT_IT83201AX)) {
+		IT83XX_ECPM_CGCTRL6R &= ~BIT(1);
+		IT83XX_ECPM_CGCTRL6R |= BIT(1);
+	}
+
+#ifdef IT83XX_ETWD_HW_RESET_SUPPORT
+	/* System triggers a soft reset at default. */
+	IT83XX_GCTRL_ETWDUARTCR &= ~BIT(0);
+#endif
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
