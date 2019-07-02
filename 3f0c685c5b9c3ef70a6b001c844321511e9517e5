@@ -46,6 +46,30 @@
       "revId": "3f0c685c5b9c3ef70a6b001c844321511e9517e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31b56c0_7f69929e",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-02T14:59:12Z",
+      "side": 1,
+      "message": "fair enough",
+      "parentUuid": "d407fed1_1c9c8ab6",
+      "range": {
+        "startLine": 314,
+        "startChar": 5,
+        "endLine": 315,
+        "endChar": 45
+      },
+      "revId": "3f0c685c5b9c3ef70a6b001c844321511e9517e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
