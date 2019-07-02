@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0669271b_97924276",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c974a4a2_887483f0",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c689b8df_6f02b95d",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd8be46_b0b5b2c1",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c689b8df_6f02b95d",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "33044132_24569023",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7140a2f1_3ed5d599",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c4cef1f_9c49d645",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 15
@@ -91,6 +163,30 @@
       "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cb99cb_9bef4758",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4cef1f_9c49d645",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9cf8c9fd_5e7420a0",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1577a8e2_5837b94a",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 10
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20356750_ced8147d",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 15
@@ -128,6 +248,30 @@
       "writtenOn": "2019-06-28T19:58:09Z",
       "side": 1,
       "message": "why is this not a tc_is_connected?",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 19
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2010b2c3_4f649ea2",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "charge_manager.c and some board files call pd_is_connected.",
+      "parentUuid": "20356750_ced8147d",
       "range": {
         "startLine": 218,
         "startChar": 4,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "50252937_93426207",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "In another CL or 2, we should figure out what functions belong in usb_tc_sm.c and the yet to be created usb_util.c file.",
+      "parentUuid": "50aeea88_97e9ed7b",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 1
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "044bb5a6_5bc9a85c",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 15
@@ -174,6 +342,30 @@
       "writtenOn": "2019-06-28T19:58:09Z",
       "side": 1,
       "message": "common util code, right?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b29f02_ec740ebc",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "See above comment.",
+      "parentUuid": "044bb5a6_5bc9a85c",
       "range": {
         "startLine": 233,
         "startChar": 0,
@@ -221,6 +413,24 @@
     },
     {
       "key": {
+        "uuid": "49b07bad_b3544ee7",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "See above comment.",
+      "parentUuid": "10bb095e_f2818c4c",
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c027f33_43f29ffb",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 15
@@ -232,6 +442,30 @@
       "writtenOn": "2019-06-28T19:58:09Z",
       "side": 1,
       "message": "we really need to figure out the single sourcing strategy for this duplicated code, we should not be copying code. They will get out of sync quicker than we can keep up with.",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 1
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbfbcf7_4e84e3eb",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "See above comment.",
+      "parentUuid": "6c027f33_43f29ffb",
       "range": {
         "startLine": 639,
         "startChar": 0,
@@ -261,6 +495,24 @@
     },
     {
       "key": {
+        "uuid": "9cf6e452_ec49b278",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf07a06_cd92c754",
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fca76400_2d730730",
         "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
         "patchSetId": 15
@@ -272,6 +524,30 @@
       "writtenOn": "2019-07-02T17:42:31Z",
       "side": 1,
       "message": "doesn\u0027t there need to be a:\n\nuint8_t pd_enable\n\nfield in here too?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "8fb04c3e43d2a279896883277de9b4c980d318a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f587cfb_48a5dcd0",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-02T20:51:48Z",
+      "side": 1,
+      "message": "Yes but I removed it when I broke up the CLs. It will be added back in the next CL that adds PD functionality.",
+      "parentUuid": "fca76400_2d730730",
       "range": {
         "startLine": 17,
         "startChar": 0,
