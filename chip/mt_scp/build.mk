@@ -10,7 +10,7 @@ CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
 
 # Required chip modules
-chip-y=clock.o gpio.o memmap.o system.o uart.o
+chip-y=clock.o gpio.o memmap.o pmic.o system.o uart.o
 
 ifeq ($(CONFIG_IPI),y)
 $(out)/RO/chip/$(CHIP)/ipi_table.o: $(out)/ipi_table_gen.inc
