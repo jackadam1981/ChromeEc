@@ -46,6 +46,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e254649_fa9ea608",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-02T20:55:59Z",
+      "side": 1,
+      "message": "Host events are now 64-bits. So, we have atleast 33 bits available for host events. We can also possibly recycle some old host events if they are not used anymore.",
+      "parentUuid": "d6479ae4_206f45cf",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
