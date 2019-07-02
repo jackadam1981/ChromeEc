@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53fcbc53_46fd19f2",
+        "filename": "chip/max32660/flash_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-02T22:49:44Z",
+      "side": 1,
+      "message": "I think generally we should return `error_status` here, instead of rolling a whole bunch of different types of error from `flash_device_page_erase` into just `EC_ERROR_UNKNOWN`.",
+      "range": {
+        "startLine": 255,
+        "startChar": 10,
+        "endLine": 255,
+        "endChar": 26
+      },
+      "revId": "613f3e06116eab011452ab64243543e08711cfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b5d5ac_a45f669d",
+        "filename": "chip/max32660/pwrseq_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-02T22:49:44Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, Jes, but I\u0027m told that we use Kernel-doc style documentation comments (https://kernel.org/doc/html/latest/doc-guide/kernel-doc.html) in CrOS EC.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "613f3e06116eab011452ab64243543e08711cfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
