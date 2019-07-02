@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "361f17f6_dbb87fea",
+        "filename": "common/chargen.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T18:11:37Z",
+      "side": 1,
+      "message": "Kernel chargen and EC chargen generate different outputs.\n\n[kernel]\nlocalhost ~ # chargen 1 62                                                                                              \n00000000000000000000000000000000000000000000000000000000000000\n\n[ec]\n\u003e chargen 1 62\n01010101010101010101010101010101010101010101010101010101010101\n\nPerhaps, line 80 should be \n\"if (wrap_value \u0026\u0026 (++wrap_counter \u003d\u003d wrap_value)) {\"\nor\n\"if (wrap_value \u0026\u0026 (seq_counter % wrap_value) \u003d\u003d 0) {\"",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "0bacd50bbea55b43b039a3fac36511b2b079cfef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
