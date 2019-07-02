@@ -2674,6 +2674,17 @@
 /* MKBP events are sent by using GPIO */
 #undef CONFIG_MKBP_USE_GPIO
 
+/*
+ * MKBP events are notified by using both a GPIO and a host event.
+ *
+ * You should use this if you are using a GPIO to notify the AP of an MKBP
+ * event, and you need an MKBP event to wake the AP in suspend and the AP cannot
+ * wake from the GPIO.  Make sure to configure the host event sleep mask in
+ * coreboot to include MKBP events.  In order to prevent all MKBP events from
+ * waking the AP, use CONFIG_MKBP_EVENT_WAKEUP_MASK to filter the events.
+ */
+#undef CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT
+
 /* MKBP events are sent by using HECI on an ISH */
 #undef CONFIG_MKBP_USE_HECI
 
