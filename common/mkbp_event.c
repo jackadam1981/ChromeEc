@@ -83,6 +83,13 @@ static int mkbp_set_host_active_via_gpio(int active, uint32_t *timestamp)
 	}
 
 	gpio_set_level(GPIO_EC_INT_L, !active);
+#ifdef GPIO_PCH_WAKE_L
+	/*
+	 * In case EC_INT_L is not a wake pin, make sure that we also wake the
+	 * AP.
+	 */
+	gpio_set_level(GPIO_PCH_WAKE_L, !active);
+#endif /* GPIO_PCH_WAKE_L */
 
 	if (timestamp)
 		interrupt_enable();
