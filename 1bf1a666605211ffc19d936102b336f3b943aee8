@@ -70,6 +70,30 @@
       "revId": "1bf1a666605211ffc19d936102b336f3b943aee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612afc56_e4ec136e",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-02T02:04:55Z",
+      "side": 1,
+      "message": "In practice we can drop the while() in that routine as it should be really short.\nAnd rewrite the existing do {} while in dcrypto_call, if such loops are a concern.\n\nWould adding such flash_log here require other overlays to now also do flash_log? Or require them to now stub that out w/ flash_log overrides?",
+      "parentUuid": "34d8fb1e_daddde4c",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "1bf1a666605211ffc19d936102b336f3b943aee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
