@@ -36,6 +36,7 @@ CONSOLE_CHANNEL(CC_DMA,          "dma")
 #if defined(CONFIG_DEVICE_EVENT) || defined(CONFIG_HOSTCMD_EVENTS)
 CONSOLE_CHANNEL(CC_EVENTS,       "events")
 #endif
+CONSOLE_CHANNEL(CC_FLASH,        "flash")
 #ifdef HAS_TASK_FPSENSOR
 CONSOLE_CHANNEL(CC_FP,           "fingerprint")
 #endif

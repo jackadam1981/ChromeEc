@@ -4701,8 +4701,8 @@
 #error "Flash readout protection and PSTATE may not work as intended."
 #endif
 
-#ifndef CHIP_FAMILY_STM32H7
-#error "Flash readout protection only implemented on STM32H7."
+#if !defined(CHIP_FAMILY_STM32H7) && !defined(CHIP_FAMILY_STM32F4)
+#error "Flash readout protection only implemented on STM32H7 and STM32F4."
 #endif
 #endif /* CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE */
 
