@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "72962d9b_854cceb6",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "I am going to rename this file to \u0027chargen_tester.py\u0027 after resolving all comments  at the end.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8381e06_c87f52f1",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
@@ -22,6 +45,30 @@
       "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d629a82_2b38f75e",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Removed all non-chargen test cases per review comments.",
+      "parentUuid": "b8381e06_c87f52f1",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f2835544_ced939a7",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e58d815_98cbd6ce",
+      "range": {
+        "startLine": 73,
+        "startChar": 44,
+        "endLine": 73,
+        "endChar": 47
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54ff5a9a_ae058b59",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
@@ -68,6 +139,30 @@
       "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f860c0e_04236fb7",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Added a logger.error().",
+      "parentUuid": "54ff5a9a_ae058b59",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9a187b1c_64650426",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b08bb70_cb6fb410",
+      "range": {
+        "startLine": 169,
+        "startChar": 10,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bfd5b23_8b6548e6",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
@@ -108,6 +227,24 @@
       "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77db4d71_6a5e9e58",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bfd5b23_8b6548e6",
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +295,99 @@
     },
     {
       "key": {
+        "uuid": "0a7d257f_5f9e1e91",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "(1) Changed Line 209 so that it can check the chargen availability with shorter output.\n(2) Removed all file-related codes.",
+      "parentUuid": "7033afb6_623c1bed",
+      "range": {
+        "startLine": 214,
+        "startChar": 26,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b2a4d94_5935a161",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Deleted",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 34
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a7708b1_1f326e55",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Deleted for no use.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60fa62a7_7b1c664a",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Deleted for no use.",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 0
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f824e3ab_f47325c4",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
@@ -178,6 +408,30 @@
       "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd794ead_312c45bf",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "f824e3ab_f47325c4",
+      "range": {
+        "startLine": 322,
+        "startChar": 44,
+        "endLine": 322,
+        "endChar": 50
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +458,30 @@
     },
     {
       "key": {
+        "uuid": "a2995fc6_469a372a",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d52d0737_d8d4ab34",
+      "range": {
+        "startLine": 383,
+        "startChar": 48,
+        "endLine": 383,
+        "endChar": 51
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6efbf65_d03ce6c7",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
@@ -227,6 +505,30 @@
     },
     {
       "key": {
+        "uuid": "c2aacbbd_a962e2e2",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6efbf65_d03ce6c7",
+      "range": {
+        "startLine": 434,
+        "startChar": 16,
+        "endLine": 434,
+        "endChar": 19
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa4bcdc9_3d5f4c41",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
@@ -241,6 +543,24 @@
       "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d15df2f_b1124dad",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-02T22:44:15Z",
+      "side": 1,
+      "message": "RawTextHelpFormatter preseves line feeds in the original description text.",
+      "parentUuid": "fa4bcdc9_3d5f4c41",
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
