@@ -401,6 +401,30 @@
       "revId": "2e3a65e752060682e2269aa8427db785f3526e65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f98a239_b1f2f73a",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-02T01:12:32Z",
+      "side": 1,
+      "message": "yes, there is a tool that generates this, a custom \u0027assembler\u0027. Not open souce (yet?).\nNot sure what address helps here?",
+      "parentUuid": "3a9a0af2_296fdae0",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 174,
+        "endChar": 34
+      },
+      "revId": "2e3a65e752060682e2269aa8427db785f3526e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
