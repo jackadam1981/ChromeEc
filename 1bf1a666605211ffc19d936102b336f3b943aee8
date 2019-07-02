@@ -46,6 +46,30 @@
       "revId": "1bf1a666605211ffc19d936102b336f3b943aee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d8fb1e_daddde4c",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-02T01:18:20Z",
+      "side": 1,
+      "message": "If you insist I can add it myself, but my concern is that we add a new behavior here and might want to know if this ever happens. Say, if it gets stuck in dcrypto_reset_and_wipe() for whatever reason, the watchdog would bite, and the system would reset without any trace as of what happened.",
+      "parentUuid": "5ce6ec1d_c76d20d2",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "1bf1a666605211ffc19d936102b336f3b943aee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
