@@ -94,6 +94,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c281aa8b_700d0a62",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-02T21:23:13Z",
+      "side": 1,
+      "message": "Fair point. Not all old boards support 64-bit host events. And it might require a lot of coordination to get it backported to all old boards. Humm .. One option is to use event 31 since that is free on all boards (Older boards had it set to EC_HOST_EVENT_EXTENDED just in case and newer boards have it free). We can use that bit for old and new boards to indicate DP Alt mode.\n\nIf you think MKBP route is still the best way to handle this, we can do that. It just makes it more complicated with 2 different places handling wake events i.e. coreboot setting all masks and another set of mask within EC to control the lower layer of the events.",
+      "parentUuid": "b3c4da62_ab1548ba",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
