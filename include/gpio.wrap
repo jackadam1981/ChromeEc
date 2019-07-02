@@ -3,6 +3,8 @@
  * Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
+ *
+ * This file's role is to include the board specific gpio.inc file.
  */
 
 #ifndef GPIO_PIN
@@ -77,8 +79,8 @@
  * RO/RW pin macro.
  *
  * Some boards may have very different pin configurations between RO and RW, and
- * also may vary from revisions to revisions. The RO/RW pin macros can ease the
- * maintance effort.
+ * also may vary from revision to revision. The RO/RW pin macros can ease the
+ * maintenance effort.
  */
 
 #ifdef SECTION_IS_RO
