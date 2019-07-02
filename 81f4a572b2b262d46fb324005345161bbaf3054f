@@ -16,6 +16,24 @@
       "revId": "81f4a572b2b262d46fb324005345161bbaf3054f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb832a68_6624c7e6",
+        "filename": "board/kindred/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2019-07-02T16:14:13Z",
+      "side": 1,
+      "message": "A device name is only required if there are two batteries with the same manufacturer name.",
+      "parentUuid": "61f716eb_cc22fdbc",
+      "revId": "81f4a572b2b262d46fb324005345161bbaf3054f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
