@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb354a90_26760574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-03T01:04:10Z",
+      "side": 1,
+      "message": "Almost missed this.\nnit: This could be more clear.\n     make run-fpsensor -j",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "14fa6d9f822fc5d6d24045233a0e08ed755631a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f82cb2b5_149d31a9",
         "filename": "test/fpsensor.c",
         "patchSetId": 4
