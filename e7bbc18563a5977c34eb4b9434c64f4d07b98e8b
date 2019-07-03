@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "9109105d_142ec9ce",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "do we still need this? Maybe it is a good time to drop it.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 65
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d2a255c_90aa1619",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "s/to each UART device/on both EC and AP/",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc3f6903_7ed55366",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "this is not a standard Python module, requires\n\npip install pyserial\n\n\nyou might want to mention this in the prerequisite section.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6a66fea_5a60ce7a",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "please add comments for all these file scope variables.",
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537dda4c_d15200d3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "why are these called \u0027KERNEL_...\u0027 - should be CROS_...",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd3c9a25_daab6e08",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -18,6 +127,559 @@
         "startChar": 28,
         "endLine": 37,
         "endChar": 69
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9fd078_d68dbcd1",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "let\u0027s drop sleep 1 then?\n\nalso, how do you stop this, maybe something \n\nwhile [[ -f /tmp/xxx ]]; \n\n\nand then create /tmp/xxx before the test and delete it when need to finish the test?",
+      "parentUuid": "fd3c9a25_daab6e08",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dcedb2e_8f37e178",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "this is not a dictionary, this is a tuple, right?",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8521bca9_d4a7be39",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "again, kernel seems out of place here - the counterpart of EC is AP.\n\nAlso, from the way this object is is used, making it a dictionary where prompt value is the key could make things simpler, just a thought.",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b79a1e_ab8fcffd",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "this is not something we can change in Chrome OS, what\u0027s the point of using it in this object?",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 77
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454dc2e0_82c3c6b6",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "all object variables should have a comment describing their type and use.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b26b29ad_ebf9b5b0",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "does this work as expected, i.e. is cleanup() going to be invoked on each instance of UartSerial and have access to that instance state/vars?",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a14da00_d152f194",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "delay of one second after every command is excessive. Maybe default should be zero or maybe .1 second and only where its necessary it could be set to longer intervals",
+      "range": {
+        "startLine": 90,
+        "startChar": 39,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02860102_8bad9d8d",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "s/display/console/",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12d6469_024d43a7",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "each except: clause must include the exception type it is catching.",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006f0f3c_5f792e98",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "maybe \u0027Cleanup done\u0027 is more accurate.",
+      "range": {
+        "startLine": 119,
+        "startChar": 34,
+        "endLine": 119,
+        "endChar": 41
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f1bf44_06e35a0b",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "Iwhy is this additional \u0027while True\u0027 necessary? could it be the same as below,\n\nwhile self.serial.inWaiting(): ?\n\nmore than that, why do you need the check in line 129 - what would change if you dropeed line 129..130 and 136..138 and changed line 131 to \u0027while\u0027 ?",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc2becc_fafc16ac",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 38
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c291d6_bd4b8cb6",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "s/cannont not/can\u0027t be/",
+      "range": {
+        "startLine": 147,
+        "startChar": 44,
+        "endLine": 147,
+        "endChar": 55
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4783ccc_a01867c3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "could there  even be any data left after flushOutput()\n\ntmp_txt is not used, why is assigning needed?",
+      "range": {
+        "startLine": 156,
+        "startChar": 6,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34e971a_1ce43ffa",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "if prompt were used as the key this would have been\n\nif prompt_txt in self.TEST_PROFILE_DICT",
+      "range": {
+        "startLine": 164,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe75824_5e196c45",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "the error text should be more descriptive, if there is no output, it should say so, if there is unexpected output it should say \u0027received XXXX instead of YYYY\u0027",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 171,
+        "endChar": 42
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5386223_07245e15",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "btw, don\u0027t you need to hush AP console messages also, something like dmesg -n 7 - I am not sure exactly what it is, but we need to suppress kernel console output for the duration of the test.",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 64
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f957805a_d04bbcda",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "no need to assign",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 16
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0847e38_0eb9230f",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "this should mention what device is missing chargen command",
+      "range": {
+        "startLine": 207,
+        "startChar": 32,
+        "endLine": 207,
+        "endChar": 65
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3fcfdd_ab536fcd",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "no need to assign",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be339e35_c59055cb",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "adding \u0027touch /tmp/xxx\u0027 to the list of commands would be a more reliable means of stopping execution of the while loop.",
+      "range": {
+        "startLine": 221,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 49
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273dbbb8_ee66f710",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "bool() typecast is not needed, it is implicit.",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85925cc6_c510bd68",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "this is tricky, as you mentioned earlier - what if more than a full period was lost.\n\nThis makes me think: should we modify chargen to have  mode where it sends some say 5 symbol sequence number, it would make it easier for this test to determine how much exactly was lost.\n\nNot for this patch of course, something to consider.",
+      "range": {
+        "startLine": 260,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 74
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50970402_82b342c2",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-03T00:29:48Z",
+      "side": 1,
+      "message": "shouldn\u0027t the next character be\n\nCHARGEN_TXT[(ch_cap + 1) % len(CHARGEN_TXT))",
+      "range": {
+        "startLine": 266,
+        "startChar": 10,
+        "endLine": 273,
+        "endChar": 41
       },
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
