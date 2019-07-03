@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6f62c1b_593d5a54",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9109105d_142ec9ce",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 65
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d2a255c_90aa1619",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13326af1_a68704a4",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d2a255c_90aa1619",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a4906cd4_38ee1fff",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc3f6903_7ed55366",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6a66fea_5a60ce7a",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -85,6 +157,24 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5997845_510b3e27",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a66fea_5a60ce7a",
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +198,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff8ba7a_e50785ef",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537dda4c_d15200d3",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "b1a08dd9_afd3a602",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9fd078_d68dbcd1",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dcedb2e_8f37e178",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -178,6 +316,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5001c25_90d0eee3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dcedb2e_8f37e178",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "a1a6bb24_39e302ee",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8521bca9_d4a7be39",
+      "range": {
+        "startLine": 51,
+        "startChar": 23,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1b79a1e_ab8fcffd",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -224,6 +410,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f963f00_e95300e4",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "removed it.",
+      "parentUuid": "f1b79a1e_ab8fcffd",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 77
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -250,6 +460,30 @@
     },
     {
       "key": {
+        "uuid": "cbacc421_729393c7",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454dc2e0_82c3c6b6",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b26b29ad_ebf9b5b0",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -270,6 +504,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8eefde9_46eba75e",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Each cleanup runs its own test_cli[] commands.\nThis is a debugging log:\n\n[EC]\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 120:cleanup            | /dev/ttyUSB2: Closing...\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 110:run_command        | /dev/ttyUSB2: run chan restore\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 132:cleanup            | /dev/ttyUSB2: Cleanup done.\n\n\n[AP]\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 120:cleanup            | /dev/ttyUSB1: Closing...\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 110:run_command        | /dev/ttyUSB1: run rm -f /tmp/chargen_testing\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 110:run_command        | /dev/ttyUSB1: run logout\n2019-07-02 19:20:44 DEBUG  | UartSerial       | uart_stress_tester.py: 132:cleanup            | /dev/ttyUSB1: Cleanup done.",
+      "parentUuid": "b26b29ad_ebf9b5b0",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -296,6 +554,30 @@
     },
     {
       "key": {
+        "uuid": "9c2fb326_72f33ea3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a14da00_d152f194",
+      "range": {
+        "startLine": 90,
+        "startChar": 39,
+        "endLine": 90,
+        "endChar": 47
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02860102_8bad9d8d",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -316,6 +598,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45274506_93574bb4",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02860102_8bad9d8d",
+      "range": {
+        "startLine": 111,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -342,6 +648,30 @@
     },
     {
       "key": {
+        "uuid": "214c7cd3_b93e2a93",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e12d6469_024d43a7",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "006f0f3c_5f792e98",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -362,6 +692,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3c835e_246fece9",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "006f0f3c_5f792e98",
+      "range": {
+        "startLine": 119,
+        "startChar": 34,
+        "endLine": 119,
+        "endChar": 41
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -388,6 +742,30 @@
     },
     {
       "key": {
+        "uuid": "79d205ce_2dafd1da",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "65f1bf44_06e35a0b",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddc2becc_fafc16ac",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -408,6 +786,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d47a4443_ff0f7251",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "ddc2becc_fafc16ac",
+      "range": {
+        "startLine": 140,
+        "startChar": 11,
+        "endLine": 140,
+        "endChar": 38
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -434,6 +836,30 @@
     },
     {
       "key": {
+        "uuid": "7d3b8469_5c23245b",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8c291d6_bd4b8cb6",
+      "range": {
+        "startLine": 147,
+        "startChar": 44,
+        "endLine": 147,
+        "endChar": 55
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4783ccc_a01867c3",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -454,6 +880,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a6c7ad_73837222",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "flushOutput() resets the host buffer, but doesn\u0027t seem to drain data from the device.\nSometimes text from the previous run were captured at this point.",
+      "parentUuid": "d4783ccc_a01867c3",
+      "range": {
+        "startLine": 156,
+        "startChar": 6,
+        "endLine": 156,
+        "endChar": 35
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -480,6 +930,30 @@
     },
     {
       "key": {
+        "uuid": "4b08efc0_57435ae0",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "prompt_txt is longer than any prompt text in self.TEXT_PROFILE_DICT.",
+      "parentUuid": "a34e971a_1ce43ffa",
+      "range": {
+        "startLine": 164,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 15
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fe75824_5e196c45",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -500,6 +974,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b117d7a_85223ba3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fe75824_5e196c45",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 171,
+        "endChar": 42
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -526,6 +1024,30 @@
     },
     {
       "key": {
+        "uuid": "12f5f566_7282b1f6",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Added \u0027dmesg -D\u0027 in prepare command list, and \u0027demsg -E\u0027 in cleaup command list.",
+      "parentUuid": "d5386223_07245e15",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 64
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f957805a_d04bbcda",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -546,6 +1068,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a21f7fa0_12d95632",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f957805a_d04bbcda",
+      "range": {
+        "startLine": 194,
+        "startChar": 6,
+        "endLine": 194,
+        "endChar": 16
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -572,6 +1118,30 @@
     },
     {
       "key": {
+        "uuid": "8c77eb91_ee19665e",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0847e38_0eb9230f",
+      "range": {
+        "startLine": 207,
+        "startChar": 32,
+        "endLine": 207,
+        "endChar": 65
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d3fcfdd_ab536fcd",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -592,6 +1162,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b66e11_562c3812",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3fcfdd_ab536fcd",
+      "range": {
+        "startLine": 215,
+        "startChar": 6,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -618,6 +1212,30 @@
     },
     {
       "key": {
+        "uuid": "c280cd70_a178e0dc",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be339e35_c59055cb",
+      "range": {
+        "startLine": 221,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 49
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "273dbbb8_ee66f710",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -638,6 +1256,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757e83a4_abf7c6c6",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "273dbbb8_ee66f710",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -664,6 +1306,30 @@
     },
     {
       "key": {
+        "uuid": "4db4ad0a_286e065b",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "85925cc6_c510bd68",
+      "range": {
+        "startLine": 260,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 74
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50970402_82b342c2",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
@@ -684,6 +1350,30 @@
       "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e4c35b_dd5ff2ce",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T20:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50970402_82b342c2",
+      "range": {
+        "startLine": 266,
+        "startChar": 10,
+        "endLine": 273,
+        "endChar": 41
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
