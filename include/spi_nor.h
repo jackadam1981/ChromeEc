@@ -70,7 +70,9 @@ extern const unsigned int spi_nor_devices_used;
 #define SPI_NOR_OPCODE_FAST_READ 0x0b      /* Read data (high frequency) */
 #define SPI_NOR_OPCODE_SFDP 0x5a           /* Read JEDEC SFDP */
 #define SPI_NOR_OPCODE_JEDEC_ID 0x9f       /* Read JEDEC ID */
+#define SPI_NOR_OPCODE_WREAR 0xc5          /* Write extended address register */
 #define SPI_NOR_OPCODE_CHIP_ERASE 0xc7     /* Erase whole flash chip */
+#define SPI_NOR_OPCODE_RDEAR 0xc8          /* Write extended address register */
 
 /* Flags for SPI_NOR_OPCODE_READ_STATUS */
 #define SPI_NOR_STATUS_REGISTER_WIP BIT(0)  /* Write in progres */
@@ -167,5 +169,15 @@ int spi_nor_erase(const struct spi_nor_device_t *spi_nor_device,
  */
 int spi_nor_write(const struct spi_nor_device_t *spi_nor_device,
 		  uint32_t offset, size_t size, const uint8_t *data);
+
+/**
+ * Write to the extended address register.
+ * @param  spi_nor_device The Serial NOR Flash device to use.
+ * @param  value          The value to write.
+ * @return                ec_error_list (non-zero on error and timeout).
+ */
+int spi_nor_write_ear(const struct spi_nor_device_t *spi_nor_device,
+		      const uint8_t value);
+
 
 #endif  /* __CROS_EC_SPI_NOR_H */

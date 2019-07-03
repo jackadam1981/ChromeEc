@@ -89,6 +89,63 @@ static int spi_nor_write_enable(const struct spi_nor_device_t *spi_nor_device)
 	return rv;
 }
 
+static int spi_nor_read_ear(const struct spi_nor_device_t *spi_nor_device,
+			    uint8_t *value)
+{
+	uint8_t command = SPI_NOR_OPCODE_RDEAR;
+
+	return spi_transaction(&spi_devices[spi_nor_device->spi_master],
+			&command, 1, value, 1);
+}
+
+int spi_nor_write_ear(const struct spi_nor_device_t *spi_nor_device,
+		      const uint8_t value)
+{
+	uint8_t buf[2];
+	int rv = EC_SUCCESS;
+	uint8_t status_register_value;
+
+	mutex_lock(&driver_mutex);
+
+	rv = spi_nor_write_enable(spi_nor_device);
+	if (rv) {
+		DEBUG_CPRINTS_DEVICE(
+			spi_nor_device,
+			"Failed to write enable");
+		goto err_free;
+	}
+
+	buf[0] = SPI_NOR_OPCODE_WREAR;
+	buf[1] = value;
+
+	rv = spi_transaction(&spi_devices[spi_nor_device->spi_master],
+					buf, 2, NULL, 0);
+	if (rv) {
+		DEBUG_CPRINTS_DEVICE(
+			spi_nor_device,
+			"Failed to write EAR");
+		goto err_free;
+	}
+
+	rv = spi_nor_read_ear(spi_nor_device, &status_register_value);
+	if (rv) {
+		goto err_free;
+	}
+
+	if (status_register_value != value) {
+		DEBUG_CPRINTS_DEVICE(
+			spi_nor_device,
+			"Write EAR error: write=%d, read=%d", value,
+			status_register_value);
+		rv = EC_ERROR_UNKNOWN;  /* WEL not set but should be. */
+		goto err_free;
+	}
+
+err_free:
+	mutex_unlock(&driver_mutex);
+	return rv;
+}
+
 /**
  * Block until the Serial NOR Flash clears the BUSY/WIP bit in its status reg.
  */
