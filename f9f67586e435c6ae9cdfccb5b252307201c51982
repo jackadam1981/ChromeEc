@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "997c6e56_96c65276",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259159
+      },
+      "writtenOn": "2019-07-03T18:04:23Z",
+      "side": 1,
+      "message": "Why 2?  I think this is a 1-byte command with a 1-byte response.",
+      "range": {
+        "startLine": 101,
+        "startChar": 13,
+        "endLine": 101,
+        "endChar": 14
+      },
+      "revId": "f9f67586e435c6ae9cdfccb5b252307201c51982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0104c720_f181d6f1",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259159
+      },
+      "writtenOn": "2019-07-03T18:04:23Z",
+      "side": 1,
+      "message": "Adjust the indent (1 tab).",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 40
+      },
+      "revId": "f9f67586e435c6ae9cdfccb5b252307201c51982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e74d3f6_ad584564",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259159
+      },
+      "writtenOn": "2019-07-03T18:04:23Z",
+      "side": 1,
+      "message": "Use a /* ... */ style comment, and adjust the indent.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 38
+      },
+      "revId": "f9f67586e435c6ae9cdfccb5b252307201c51982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d102b282_bf883aa2",
+        "filename": "include/spi_nor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1259159
+      },
+      "writtenOn": "2019-07-03T18:04:23Z",
+      "side": 1,
+      "message": "Align this with the open paren on the previous line (here and below).",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 181,
+        "endChar": 3
+      },
+      "revId": "f9f67586e435c6ae9cdfccb5b252307201c51982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
