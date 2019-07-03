@@ -90,6 +90,67 @@ static int spi_nor_write_enable(const struct spi_nor_device_t *spi_nor_device)
 }
 
 /**
+ * Read the value from extended address register
+ */
+int spi_nor_read_ear(const struct spi_nor_device_t *spi_nor_device,
+			uint8_t *value)
+{
+	uint8_t command = SPI_NOR_OPCODE_RDEAR;
+
+	return spi_transaction(&spi_devices[spi_nor_device->spi_master],
+			&command, 2, value, 1);
+}
+
+/**
+ * Write to extended address register
+ */
+int spi_nor_write_ear(const struct spi_nor_device_t *spi_nor_device,
+			const uint8_t value)
+{
+	uint8_t buf[2];
+	int rv = EC_SUCCESS;
+	uint8_t status_register_value;
+
+	buf[0] = SPI_NOR_OPCODE_WREAR;
+	buf[1] = value;
+
+       /* Set the write enable latch. */
+	rv = spi_nor_write_enable(spi_nor_device);
+	if (rv) {
+		DEBUG_CPRINTS_DEVICE(
+			spi_nor_device,
+			"Failed to write enable");
+		return rv;
+	}
+
+	rv = spi_transaction(&spi_devices[spi_nor_device->spi_master],
+					buf, 2, NULL, 0);
+	if (rv) {
+		DEBUG_CPRINTS_DEVICE(
+			spi_nor_device,
+			"Failed to write EAR");
+
+		return rv;
+	}
+
+    // Read back the value and compare
+	rv = spi_nor_read_ear(spi_nor_device, &status_register_value);
+	if (rv) {
+		return rv;
+	}
+
+	if (status_register_value != value) {
+		DEBUG_CPRINTS_DEVICE(
+			spi_nor_device,
+			"Wrong EAR value, read value = %d", status_register_value);
+
+		return EC_ERROR_UNKNOWN;  /* WEL not set but should be. */
+	}
+
+	return rv;
+}
+
+/**
  * Block until the Serial NOR Flash clears the BUSY/WIP bit in its status reg.
  */
 static int spi_nor_wait(const struct spi_nor_device_t *spi_nor_device)
