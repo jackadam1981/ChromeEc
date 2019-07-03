@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "204a611f_b90d177e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-03T16:16:42Z",
+      "side": 1,
+      "message": "Yes, but since the binary Hebo posted to buganizer is working on my failed DUT, I think he must have just forgotten to add something when uploading this change.",
+      "parentUuid": "6f5c4636_3e29b561",
+      "range": {
+        "startLine": 595,
+        "startChar": 3,
+        "endLine": 603,
+        "endChar": 27
+      },
+      "revId": "8c50a28163086908379a5d29191d67236e9c26b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b78f254_cb290e11",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-03T16:13:49Z",
       "side": 1,
       "message": "we shouldn\u0027t\u0027 need this change right, can we keep system_reset instead?",
+      "range": {
+        "startLine": 677,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 0
+      },
+      "revId": "8c50a28163086908379a5d29191d67236e9c26b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb00737_345431b8",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-03T16:16:42Z",
+      "side": 1,
+      "message": "Correct, as aon firmware will not treat ISH_PM_STATE_RESET and ISH_PM_STATE_RESET_PREP any differently for issuing the reset, we should continue to keep system_reset here for now, as it\u0027ll make this change easier to merge into R75 and R76.\n\nI think we should use ISH_PM_STATE_RESET_PREP eventually, but let\u0027s separate that CL.",
+      "parentUuid": "1b78f254_cb290e11",
       "range": {
         "startLine": 677,
         "startChar": 1,
