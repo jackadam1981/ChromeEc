@@ -4,6 +4,7 @@
  */
 
 #include "dcrypto.h"
+#include "cryptoc/p256.h"
 
 #include <stdint.h>
 
@@ -426,7 +427,7 @@ int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 {
 	struct asn1 ctx = {cert, 0};
 	HASH_CTX sha;
-	p256_int h, r, s;
+	p256_int h, r, s, entropy, x, y;
 	struct drbg_ctx drbg;
 
 	SEQ_START(ctx, V_SEQ, SEQ_LARGE) {  /* outer seq */
@@ -517,7 +518,10 @@ int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 	HASH_update(&sha, body, (ctx.p + ctx.n) - body);
 	p256_from_bin(HASH_final(&sha), &h);
 	hmac_drbg_init_rfc6979(&drbg, d, &h);
-	if (!dcrypto_p256_ecdsa_sign(&drbg, d, &h, &r, &s))
+
+	dcrypto_p256_rnd(&entropy);
+
+	if (!dcrypto_p256_ecdsa_sign(&drbg, &entropy, &h, &r, &s, &x, &y))
 		return 0;
 
 	/* Append X509 signature */
