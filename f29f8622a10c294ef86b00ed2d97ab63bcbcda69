@@ -142,6 +142,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3b8747_aa76b76e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-03T17:22:22Z",
+      "side": 1,
+      "message": "\u003e Do you foresee any problems enabling MKBP on all systems?\n\nI believe MKBP events are mostly enabled on all platforms since they use sensor events via MKBP FIFO. But it would still be good to confirm on the oldest platforms that you intend to support.\n\n\u003e I\u0027m not sure why there are two approaches and I don\u0027t think there actually needs to be two.\n\nFor the x86 systems, there are multiple masks that are configured by the host and at different times in boot process SCI, SMI, S3/S0ix wake, S5 wake. Thus, it makes sense to keep all of these together in one place i.e. in coreboot and let it pass that information to EC when booting up. This also makes it easy to update any masks at any point in OS too. For ARM, I think we can potentially go down a similar route, but they do not have as many masks as the x86 platforms do.\n\n\u003e Why do we have both MKBP events and host events? \n\nHost events started out with x86. Keyboard events are passed via the 8042 interface. Anything other than the standard keyboard events was indicated using a host event. EC triggers SCI/SMI/wake depending upon the masks set and the state of the host. With SCI, the host uses its ACPI magic to read out the event from EC and notify appropriate drivers in the kernel. This allowed us to use the standard EC kernel driver for reading out host events (all tied to ACPI).\n\nARM systems started out with MKBP for keyboard since they did not use 8042 keyboard controllers. But as these systems needed non-keyboard events to be sent over to the host, MKBP events were introduced which basically allowed the EC to trigger an interrupt to the host and let it read the MKBP FIFO to identify the event and get more information about it. The MKBP host event part was kind of our solution to not having ACPI hostevent read support on ARM systems.\n\nAs systems evolved and there was need for more data/events to be passed from EC to host (e.g. sensor data), this could not be done within the boundaries of the ACPI driver that was used for reading out host events. Thus, MKBP events were enabled for x86 platforms too. Though not all events are passed via MKBP on x86 i.e. hostevents are never sent over MKBP -- they still use the ACPI model and that is to not break compatibility with older devices and also with the rest of the industry following this standard for reading EC events.\n\n\u003e Is it possible to have one set that serves all needs?\n\nMost likely not? since we want to support the ACPI way of host events and need the MKBP events for sensor data at least. Also, ARM systems will continue using MKBP events because of lack of ACPI support.",
+      "parentUuid": "85ba5e0e_ac4d9ced",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
