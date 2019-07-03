@@ -22,6 +22,30 @@
       "revId": "81a3a03fdbf06630958584fafea604c43ec04942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49ad107_95ff59bf",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T22:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1b0bc8_01060588",
+      "range": {
+        "startLine": 261,
+        "startChar": 6,
+        "endLine": 261,
+        "endChar": 31
+      },
+      "revId": "81a3a03fdbf06630958584fafea604c43ec04942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

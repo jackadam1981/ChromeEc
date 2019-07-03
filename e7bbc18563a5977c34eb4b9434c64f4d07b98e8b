@@ -1330,6 +1330,30 @@
     },
     {
       "key": {
+        "uuid": "14a323ea_5eeae370",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T22:29:27Z",
+      "side": 1,
+      "message": "Bringing this back. This is just to adjust the terminal condition. Even if more characters were lost than this adjustment, it is ok since the test shall be terminated either by CR/LF detection or by data starvation.",
+      "parentUuid": "4db4ad0a_286e065b",
+      "range": {
+        "startLine": 260,
+        "startChar": 11,
+        "endLine": 263,
+        "endChar": 74
+      },
+      "revId": "e7bbc18563a5977c34eb4b9434c64f4d07b98e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50970402_82b342c2",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 5
