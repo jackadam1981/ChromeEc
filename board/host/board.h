@@ -21,6 +21,13 @@
 
 #define CONFIG_WP_ACTIVE_HIGH
 
+/* EC rollback protection block */
+#define CONFIG_SHA256
+#define CONFIG_ROLLBACK
+#define CONFIG_ROLLBACK_OFF 0
+#define CONFIG_ROLLBACK_SIZE 64
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
+
 #include "gpio_signal.h"
 
 enum temp_sensor_id {
