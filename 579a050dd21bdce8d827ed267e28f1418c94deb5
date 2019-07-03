@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c4b99dd_9ba881cd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-03T16:02:40Z",
+      "side": 0,
+      "message": "will hosts still expect to receive this host event when DP Alt mode is entered? Should we still fire the MODE_CHANGE event in addition to the MKBP event (for backwards compatibility/transition period)?",
+      "range": {
+        "startLine": 625,
+        "startChar": 2,
+        "endLine": 625,
+        "endChar": 38
+      },
+      "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
