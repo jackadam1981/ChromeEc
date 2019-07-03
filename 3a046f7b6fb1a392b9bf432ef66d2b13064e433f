@@ -93,6 +93,30 @@
       "revId": "3a046f7b6fb1a392b9bf432ef66d2b13064e433f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212a4dc2_19d0021c",
+        "filename": "chip/host/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-03T16:15:01Z",
+      "side": 1,
+      "message": "if we don\u0027t touch the parameters, then we could easily miss a sub-function call that was taking in the parameter which needed to account for the 7b conversion",
+      "parentUuid": "d638d019_1e87948f",
+      "range": {
+        "startLine": 78,
+        "startChar": 36,
+        "endLine": 78,
+        "endChar": 46
+      },
+      "revId": "3a046f7b6fb1a392b9bf432ef66d2b13064e433f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
