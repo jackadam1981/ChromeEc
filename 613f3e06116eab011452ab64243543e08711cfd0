@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be912d77_3e961fcb",
+        "filename": "chip/max32660/flash_chip.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-07-03T16:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53fcbc53_46fd19f2",
+      "range": {
+        "startLine": 255,
+        "startChar": 10,
+        "endLine": 255,
+        "endChar": 26
+      },
+      "revId": "613f3e06116eab011452ab64243543e08711cfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b5d5ac_a45f669d",
         "filename": "chip/max32660/pwrseq_regs.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "613f3e06116eab011452ab64243543e08711cfd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "803daf67_6830b027",
+        "filename": "chip/max32660/pwrseq_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-07-03T16:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b5d5ac_a45f669d",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "613f3e06116eab011452ab64243543e08711cfd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
