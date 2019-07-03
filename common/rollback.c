@@ -54,7 +54,7 @@ static int get_rollback_offset(int region)
 #endif
 }
 
-#ifdef SECTION_IS_RO
+#ifdef CONFIG_ROLLBACK_UPDATE
 static int get_rollback_erase_size_bytes(int region)
 {
 	int erase_size;
@@ -71,7 +71,7 @@ static int get_rollback_erase_size_bytes(int region)
 	ASSERT(sizeof(struct rollback_data) <= erase_size);
 	return erase_size;
 }
-#endif
+#endif /* CONFIG_ROLLBACK_UPDATE */
 
 /*
  * When MPU is available, read rollback with interrupts disabled, to minimize
@@ -443,6 +443,7 @@ DECLARE_HOST_COMMAND(EC_CMD_ADD_ENTROPY,
 		     EC_VER_MASK(0));
 #endif /* CONFIG_RNG */
 #endif /* CONFIG_ROLLBACK_SECRET_SIZE */
+
 #endif /* CONFIG_ROLLBACK_UPDATE */
 
 static int command_rollback_info(int argc, char **argv)

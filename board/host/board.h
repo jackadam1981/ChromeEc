@@ -21,6 +21,22 @@
 
 #define CONFIG_WP_ACTIVE_HIGH
 
+/* EC rollback protection block */
+#define CONFIG_SHA256
+#define CONFIG_ROLLBACK
+#define CONFIG_ROLLBACK_OFF 0
+#define CONFIG_ROLLBACK_SIZE 64
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
+/*
+ * TODO(hesling): This change needs trng support. See the following gcc error message:
+ *   EXE     rma_auth.exe
+ * build/host/rma_auth/RO/common/rollback.o: In function `add_entropy_deferred':
+ * /home/hesling/trunk/src/platform/ec/common/rollback.c:404: undefined reference to `init_trng'
+ * /home/hesling/trunk/src/platform/ec/common/rollback.c:415: undefined reference to `exit_trng'
+ * collect2: error: ld returned 1 exit status
+ * make[2]: *** [Makefile.rules:483: build/host/rma_auth/rma_auth.exe] Error 1
+ */
+
 #include "gpio_signal.h"
 
 enum temp_sensor_id {
