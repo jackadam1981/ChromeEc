@@ -421,6 +421,15 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 
 	if (!offset) {
 		/* Host has requested the first chunk, do the encryption. */
+		/* Encrypted template is right after the medadata. */
+		uint8_t *output_encrypted_template
+			= fp_enc_buffer + sizeof(*enc_info);
+		/* Positive match salt is right after the template. */
+		uint8_t *output_positive_match_salt
+			= output_encrypted_template + sizeof(fp_template[0]);
+		/* Finger id is right after the salt. */
+		uint8_t *output_finger_id = output_positive_match_salt
+			+ sizeof(fp_pos_match_salt[0]);
 		timestamp_t now = get_time();
 
 		/* b/114160734: Not more than 1 encrypted message per second. */
@@ -444,7 +453,7 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		}
 
 		ret = aes_gcm_encrypt(key, SBP_ENC_KEY_LEN, fp_template[fgr],
-				      fp_enc_buffer + sizeof(*enc_info),
+				      output_encrypted_template,
 				      sizeof(fp_template[0]),
 				      enc_info->nonce, FP_CONTEXT_NONCE_BYTES,
 				      enc_info->tag, FP_CONTEXT_TAG_BYTES);
@@ -452,6 +461,9 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			CPRINTS("fgr%d: Failed to encrypt template", fgr);
 			return EC_RES_UNAVAILABLE;
 		}
+		memcpy(output_positive_match_salt, fp_pos_match_salt[fgr],
+		       sizeof(fp_pos_match_salt[0]));
+		memcpy(output_finger_id, finger_id[fgr], sizeof(finger_id[0]));
 		templ_dirty &= ~BIT(fgr);
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
@@ -517,6 +529,12 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 		 * The complete encrypted template has been received, start
 		 * decryption.
 		 */
+		uint8_t *input_encrypted_template
+			 = fp_enc_buffer + sizeof(*enc_info);
+		uint8_t *input_positive_match_salt
+			 = input_encrypted_template + sizeof(fp_template[0]);
+		uint8_t *input_finger_id = input_positive_match_salt
+			+ sizeof(fp_pos_match_salt[0]);
 		fp_clear_finger_context(idx);
 		/* The beginning of the buffer contains nonce/salt/tag. */
 		enc_info = (void *)fp_enc_buffer;
@@ -532,7 +550,7 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 		}
 
 		ret = aes_gcm_decrypt(key, SBP_ENC_KEY_LEN, fp_template[idx],
-				      fp_enc_buffer + sizeof(*enc_info),
+				      input_encrypted_template,
 				      sizeof(fp_template[0]),
 				      enc_info->nonce, FP_CONTEXT_NONCE_BYTES,
 				      enc_info->tag, FP_CONTEXT_TAG_BYTES);
@@ -542,6 +560,9 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			fp_clear_finger_context(idx);
 			return EC_RES_UNAVAILABLE;
 		}
+		memcpy(fp_pos_match_salt[idx], input_positive_match_salt,
+		       sizeof(fp_pos_match_salt[0]));
+		memcpy(finger_id[idx], input_finger_id, sizeof(finger_id[0]));
 		templ_valid++;
 	}
 
