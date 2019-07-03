@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "65ef92b6_853618d2",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T03:54:55Z",
+      "side": 1,
+      "message": "alphabetical order",
+      "revId": "257e391b433fa8bef72cd895f15b2ddfc1396bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e58cf414_cf70d110",
         "filename": "chip/mt_scp/pmic.c",
         "patchSetId": 3
@@ -19,6 +36,40 @@
         "endLine": 72,
         "endChar": 84
       },
+      "revId": "257e391b433fa8bef72cd895f15b2ddfc1396bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed00c36_ef83bbb5",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T03:54:55Z",
+      "side": 1,
+      "message": "I also wonder... shouldn\u0027t we just have coreboot initialize these properly? Then we don\u0027t need this driver at all, easier.\n\nOr are there any plans/ideas of modifying registers at runtime?",
+      "revId": "257e391b433fa8bef72cd895f15b2ddfc1396bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8423b24_0952a5af",
+        "filename": "chip/mt_scp/pmic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T03:54:55Z",
+      "side": 1,
+      "message": "Please move all these functions in pmic.c, since you don\u0027t use them anywhere else.",
       "revId": "257e391b433fa8bef72cd895f15b2ddfc1396bc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
