@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1b0bc8_01060588",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T21:31:45Z",
+      "side": 1,
+      "message": "This condition is not good enough. If CR and LF are lost, then this test doesn\u0027t end.\nThe condition should be based on time. \nWill update soon.",
+      "range": {
+        "startLine": 261,
+        "startChar": 6,
+        "endLine": 261,
+        "endChar": 31
+      },
+      "revId": "81a3a03fdbf06630958584fafea604c43ec04942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
