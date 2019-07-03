@@ -37,7 +37,9 @@
 #define SBP_ENC_KEY_LEN 16
 #define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
 	(FP_ALGORITHM_TEMPLATE_SIZE + \
-		sizeof(struct ec_fp_template_encryption_metadata))
+		sizeof(struct ec_fp_template_encryption_metadata) + \
+		FP_POS_MATCH_SALT_BYTES + \
+		FP_FINGER_ID_BYTES)
 
 /* Events for the FPSENSOR task */
 #define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM_BIT(0)
