@@ -450,6 +450,12 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 			CPRINTS("fgr%d: Failed to encrypt template", fgr);
 			return EC_RES_UNAVAILABLE;
 		}
+		memcpy(fp_enc_buffer + sizeof(*enc_info)
+			+ sizeof(fp_template[0]),
+		       fp_pos_match_salt[fgr], FP_POS_MATCH_SALT_BYTES);
+		memcpy(fp_enc_buffer + sizeof(*enc_info)
+			+ sizeof(fp_template[0]) + FP_POS_MATCH_SALT_BYTES,
+		       finger_id[fgr], FP_FINGER_ID_BYTES);
 		templ_dirty &= ~BIT(fgr);
 	}
 	memcpy(out, fp_enc_buffer + offset, size);
@@ -540,6 +546,23 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			fp_clear_finger_context(idx);
 			return EC_RES_UNAVAILABLE;
 		}
+		memcpy(fp_pos_match_salt[idx],
+		       fp_enc_buffer + sizeof(*enc_info)
+			+ sizeof(fp_template[0]),
+		       FP_POS_MATCH_SALT_BYTES);
+		memcpy(finger_id[idx],
+		       fp_enc_buffer + sizeof(*enc_info)
+			+ sizeof(fp_template[0])
+			+ FP_POS_MATCH_SALT_BYTES,
+		       FP_FINGER_ID_BYTES);
+	ret = derive_pos_match_secret(fp_pos_match_secret[idx],
+				      fp_pos_match_salt[idx],
+				      finger_id[idx]);
+	if (ret != EC_RES_SUCCESS) {
+		CPRINTS("fgr%d: Failed to re-derive positive match secret",
+			idx);
+		return EC_RES_UNAVAILABLE;
+	}
 		templ_valid++;
 	}
 
