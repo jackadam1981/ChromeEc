@@ -133,6 +133,9 @@ class Console(object):
     pending_oobm_cmd: A string containing the pending OOBM command.
     interrogation_mode: A string containing the current mode of whether
       interrogations are performed with the EC or not and how often.
+    raw_debug: Flag to indicate whether per interrupt data should be logged to
+      debug
+    output_line_log_buffer: buffer for lines coming from the EC to log to debug
   """
 
   def __init__(self, master_pty, user_pty, interface_pty, cmd_pipe, dbg_pipe,
@@ -179,6 +182,8 @@ class Console(object):
     self.interrogation_mode = 'auto'
     self.timestamp_enabled = True
     self.look_buffer = ''
+    self.raw_debug = False
+    self.output_line_log_buffer = ''
 
   def __str__(self):
     """Show internal state of Console object as a string."""
@@ -200,6 +205,28 @@ class Console(object):
     string.append('interrogation_mode: \'%s\'' % self.interrogation_mode)
     string.append('look_buffer: \'%s\'' % self.look_buffer)
     return '\n'.join(string)
+
+  def LogConsoleOutput(self, data):
+    """Log to debug user MCU output to master_pty when line is filled.
+
+    Args:
+      data: string received from MCU
+    """
+    output_data = '%s%s' % (self.output_line_log_buffer, data)
+    data_lines = output_data.splitlines()
+    # Output lines at newline or when they grow beyond the line_limit.
+    slim_data_line_sets = [re.findall('.{1,%d}' % self.line_limit, d)
+                           for d in data_lines]
+    slim_data_lines = [l for lines in slim_data_line_sets for l in lines]
+    if slim_data_lines:
+      for line in slim_data_lines[:-1]:
+        self.logger.debug(line)
+      last_line = slim_data_lines[-1]
+      if last_line[-1] == '\n':
+        self.logger.debug(last_line)
+        self.output_line_log_buffer = ''
+      else:
+        self.output_line_log_buffer = last_line
 
   def PrintHistory(self):
     """Print the history of entered commands."""
@@ -763,6 +790,12 @@ class Console(object):
       self.logger.info('%sabling uart timestamps.',
                        'En' if self.timestamp_enabled else 'Dis')
 
+    elif cmd[0] == 'rawdebug':
+      mode = cmd[1].lower()
+      self.raw_debug = mode == 'on'
+      self.logger.info('%sabling per interrupt debug logs.',
+                       'En' if self.raw_debug else 'Dis')
+
     elif cmd[0] == 'interrogate' and len(cmd) >= 2:
       enhanced = False
       mode = cmd[1]
@@ -939,9 +972,11 @@ def StartLoop(console, command_active, shutdown_pipe=None):
             continue_looping = False
           else:
             # Write it to the user console.
-            console.logger.debug('|CMD|-%s->\'%s\'',
-                ('u' if master_connected else '') +
-                ('i' if command_active.value else ''), data.strip())
+            if console.raw_debug:
+              console.logger.debug('|CMD|-%s->\'%s\'',
+                                   ('u' if master_connected else '') +
+                                   ('i' if command_active.value else ''),
+                                   data.strip())
             if master_connected:
               os.write(console.master_pty, data)
             if command_active.value:
@@ -958,10 +993,12 @@ def StartLoop(console, command_active, shutdown_pipe=None):
               # Search look buffer for enhanced EC image string.
               console.CheckBufferForEnhancedImage(data)
             # Write it to the user console.
-            if len(data) > 1:
+            if len(data) > 1 and console.raw_debug:
               console.logger.debug('|DBG|-%s->\'%s\'',
-                  ('u' if master_connected else '') +
-                  ('i' if command_active.value else ''), data.strip())
+                                   ('u' if master_connected else '') +
+                                   ('i' if command_active.value else ''),
+                                   data.strip())
+            console.LogConsoleOutput(data)
             if master_connected:
               end = len(data) - 1
               if console.timestamp_enabled:
@@ -984,7 +1021,6 @@ def StartLoop(console, command_active, shutdown_pipe=None):
               # timestamp required on next input
               if data[end] == '\n':
                 tm_req = True
-
               os.write(console.master_pty, data_tm)
             if command_active.value:
               os.write(console.interface_pty, data)
