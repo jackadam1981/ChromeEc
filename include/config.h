@@ -678,7 +678,7 @@
 /*****************************************************************************/
 
 /* Cli command for generating UART console traffic, used for testing. */
-#undef CONFIG_CHARGEN
+#undef CONFIG_CMD_CHARGEN
 
 /* Compile charge manager */
 #undef CONFIG_CHARGE_MANAGER
