@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "389eaab8_7dc77857",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1299975
+      },
+      "writtenOn": "2019-07-03T07:04:58Z",
+      "side": 1,
+      "message": "\u003e I also wonder... shouldn\u0027t we just have coreboot initialize these properly? Then we don\u0027t need this driver at all, easier.\n\u003e \n\u003e Or are there any plans/ideas of modifying registers at runtime?\n\nHi Nicolas,\nIn my opinion, these settings are belong to scp, so I suggest to put them in the scp initialization.\nIt is hard to know whether the project use scp image or not in the coreboot stage.\nIt needn\u0027t to do scp setting if we don\u0027t use scp image.\nAbout pmic driver, I am afriad that we have scp dvfs which uses pmic driver in the future, so I implement it here.",
+      "parentUuid": "3ed00c36_ef83bbb5",
+      "revId": "257e391b433fa8bef72cd895f15b2ddfc1396bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8423b24_0952a5af",
         "filename": "chip/mt_scp/pmic.h",
         "patchSetId": 3
