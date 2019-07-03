@@ -118,6 +118,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ba5e0e_ac4d9ced",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-03T00:56:05Z",
+      "side": 1,
+      "message": "I\u0027d prefer to have this as an MKBP event. Do you foresee any problems enabling MKBP on all systems? And yes, tracing through all the various events and methods was really quite confusing. On ARM systems, the host event wake mask is statically defined in the EC. But on x86 systems, it seems that the host event wake mask is statically defined in coreboot and then copied to the EC\u0027s SRAM. I\u0027m not sure why there are two approaches and I don\u0027t think there actually needs to be two. However, I could be missing something.\n\nIt would be nice to standardize on one approach and use that for all boards regardless of architecture.\n\nIt might be nice to go one step further and standardize on one type of events. Why do we have both MKBP events and host events? Is it possible to have one set that serves all needs?",
+      "parentUuid": "c281aa8b_700d0a62",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
