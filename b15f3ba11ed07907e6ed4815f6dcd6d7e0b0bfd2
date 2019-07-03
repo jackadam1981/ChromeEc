@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48b5f165_727a4f39",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-03T21:09:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be close to other CONFIG_CMD_ definitions below ?",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 25
+      },
+      "revId": "b15f3ba11ed07907e6ed4815f6dcd6d7e0b0bfd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
