@@ -22,7 +22,7 @@ extern "C" {
 #if defined(__CC_ARM)
 #pragma anon_unions
 #endif
-/// @cond
+
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -38,20 +38,17 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
 
 /* **** Definitions **** */
 
 /**
- * @ingroup     pwrseq
- * @defgroup    pwrseq_registers PWRSEQ_Registers
- * @brief       Registers, Bit Masks and Bit Positions for the PWRSEQ Peripheral
+ * mxc_pwrseq_regs_t
+ * Registers, Bit Masks and Bit Positions for the PWRSEQ Peripheral
  * Module.
- * @details Power Sequencer / Low Power Control Register.
  */
 
 /**
- * @ingroup pwrseq_registers
+ * pwrseq_registers
  * Structure type to access the PWRSEQ Registers.
  */
 typedef struct {
@@ -63,13 +60,9 @@ typedef struct {
 	__IO uint32_t lpmemsd; /**< <tt>\b 0x40:</tt> PWRSEQ LPMEMSD Register */
 } mxc_pwrseq_regs_t;
 
-/* Register offsets for module PWRSEQ */
 /**
- * @ingroup    pwrseq_registers
- * @defgroup   PWRSEQ_Register_Offsets Register Offsets
- * @brief      PWRSEQ Peripheral Register Offsets from the PWRSEQ Base
- * Peripheral Address.
- * @{
+ * Register offsets for module PWRSEQ
+ * PWRSEQ Peripheral Register Offsets from the PWRSEQ Base
  */
 #define MXC_R_PWRSEQ_LP_CTRL                                                   \
 	((uint32_t)0x00000000UL) /**< Offset from PWRSEQ Base Address: <tt> \  \
@@ -83,13 +76,10 @@ typedef struct {
 #define MXC_R_PWRSEQ_LPMEMSD                                                   \
 	((uint32_t)0x00000040UL) /**< Offset from PWRSEQ Base Address: <tt> \  \
 				    \ \ \ 0x0040</tt> */
-/**@} end of group pwrseq_registers */
 
 /**
- * @ingroup  pwrseq_registers
- * @defgroup PWRSEQ_LP_CTRL PWRSEQ_LP_CTRL
- * @brief    Low Power Control Register.
- * @{
+ * pwrseq_registers
+ * Low Power Control Register.
  */
 #define MXC_F_PWRSEQ_LP_CTRL_RAMRET_SEL0_POS                                   \
 	0 /**< LP_CTRL_RAMRET_SEL0 Position */
@@ -377,13 +367,9 @@ typedef struct {
 						       LP_CTRL_VDDIO_POR_DIS_DIS \
 						       \ \ \ \ Setting */
 
-/**@} end of group PWRSEQ_LP_CTRL_Register */
-
 /**
- * @ingroup  pwrseq_registers
- * @defgroup PWRSEQ_LP_WAKEFL PWRSEQ_LP_WAKEFL
- * @brief    Low Power Mode Wakeup Flags for GPIO0
- * @{
+ * pwrseq_registers
+ * Low Power Mode Wakeup Flags for GPIO0
  */
 #define MXC_F_PWRSEQ_LP_WAKEFL_WAKEST_POS 0 /**< LP_WAKEFL_WAKEST Position */
 #define MXC_F_PWRSEQ_LP_WAKEFL_WAKEST                                          \
@@ -392,14 +378,10 @@ typedef struct {
 		<< MXC_F_PWRSEQ_LP_WAKEFL_WAKEST_POS)) /**< LP_WAKEFL_WAKEST \ \
 							  \ \ \ Mask */
 
-/**@} end of group PWRSEQ_LP_WAKEFL_Register */
-
 /**
- * @ingroup  pwrseq_registers
- * @defgroup PWRSEQ_LPWK_EN PWRSEQ_LPWK_EN
- * @brief    Low Power I/O Wakeup Enable Register 0. This register enables low
+ * pwrseq_registers
+ * Low Power I/O Wakeup Enable Register 0. This register enables low
  * power wakeup functionality for GPIO0.
- * @{
  */
 #define MXC_F_PWRSEQ_LPWK_EN_WAKEEN_POS 0 /**< LPWK_EN_WAKEEN Position */
 #define MXC_F_PWRSEQ_LPWK_EN_WAKEEN                                            \
@@ -407,13 +389,9 @@ typedef struct {
 		    << MXC_F_PWRSEQ_LPWK_EN_WAKEEN_POS)) /**< LPWK_EN_WAKEEN \ \
 							    \ \ \ Mask */
 
-/**@} end of group PWRSEQ_LPWK_EN_Register */
-
 /**
- * @ingroup  pwrseq_registers
- * @defgroup PWRSEQ_LPMEMSD PWRSEQ_LPMEMSD
- * @brief    Low Power Memory Shutdown Control.
- * @{
+ * pwrseq_registers
+ * Low Power Memory Shutdown Control.
  */
 #define MXC_F_PWRSEQ_LPMEMSD_SRAM0_OFF_POS                                     \
 	0 /**< LPMEMSD_SRAM0_OFF Position   \ \ \ \                                                                             \
@@ -503,7 +481,6 @@ typedef struct {
 						   LPMEMSD_SRAM3_OFF_SHUTDOWN  \
 						   \ \ \ \ Setting */
 
-/**@} end of group PWRSEQ_LPMEMSD_Register */
 
 #ifdef __cplusplus
 }

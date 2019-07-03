@@ -252,7 +252,7 @@ int flash_physical_erase(int offset, int size)
 		error_status = flash_device_page_erase(
 			offset + (i * CONFIG_FLASH_ERASE_SIZE));
 		if (error_status != EC_SUCCESS) {
-			return EC_ERROR_UNKNOWN;
+			return error_status;
 		}
 	}
 	return EC_SUCCESS;
