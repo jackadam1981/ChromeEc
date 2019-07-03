@@ -835,7 +835,7 @@ static int command_hibernate(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hibernate, command_hibernate,
+DECLARE_CONSOLE_COMMAND(hib, command_hibernate,
 			"[sec] [usec]",
 			"Hibernate the EC",
 			NULL);

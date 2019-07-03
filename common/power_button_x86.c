@@ -260,7 +260,7 @@ static void set_initial_pwrbtn_state(void)
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 #else
 		CPRINTS("PB init-on");
-		pwrbtn_state = PWRBTN_STATE_INIT_ON;
+		pwrbtn_state = PWRBTN_STATE_IDLE;
 #endif
 	}
 }
