@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bb9ac35_a1c25ba3",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "return int",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6805407_011cebca",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "Question: how does this handle the case where both AP and SCP try to change PMIC registers at the same time? Is there a lock somewhere? It\u0027s not immediately obvious from the code.",
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5947ae_0ecfe573",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "not needed, same for the next 2.",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0256b211_aac9aa66",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "-EC_ERROR_TIMEOUT",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05197446_f6a0679e",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "I\u0027d just merge these 3 lines in 1.\n\nAnd maybe declare PMICW_WACS_CMD_WRITE_SHIFT and PMICW_WACS_CMD_ADR_SHIFT",
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d57389d0_c5b0a221",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "-EC_ERROR_TIMEOUT",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 38
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4266093f_52989448",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acf649e_06974ce1",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "nit: Blank line after declaration.",
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d0b415_fcab7a79",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "a single variable val is enough.",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac1e7d2_eab09d18",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-03T23:46:23Z",
+      "side": 1,
+      "message": "nit: Please chose easier upper or lower case, don\u0027t mix.",
+      "range": {
+        "startLine": 105,
+        "startChar": 18,
+        "endLine": 105,
+        "endChar": 24
+      },
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
