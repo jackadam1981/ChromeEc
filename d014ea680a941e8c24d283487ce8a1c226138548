@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f66f414c_1b46f289",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "technically this is file name, not file path.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fcf9b5d_4ee8485d",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "this fill fail if the user removed it before test ended,",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "673756dc_e8feeb2f",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "Changes like this should be avoided, they  addsa lot of noise to the diffs between patchsets. Please avoid doing it unless it is essential to the patch functionality.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8554eaf_a3101a77",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "class attributes are supposed to be described in the Attributes: section of the constructor\n\nhttps://engdoc.corp.google.com/eng/doc/devguide/py/style/index.md?cl\u003dhead#38-comments-and-docstrings\n\nI said \u0027should have comments\u0027 earlier, sorry, I meant they should be in the docstring.",
+      "range": {
+        "startLine": 92,
+        "startChar": 7,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e376ead0_12dcb296",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "didn\u0027t we agree that parity is not used and should not be a part of the UartSerial object.",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba31da1_dea99a41",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "Moving delay from default parameter to every call site does not make much difference.\n\nWhy is this delay needed?\n\nNormally this should not wait at all, what should happen is that the command is sent to the wirite() method, and then the read() should be scanned to see the command echoed, then all output \\n\u0027prompt\u0027 dropped.\n\nthis guarantees that the command was executed and does not waste any time.\n\n\nfor some commands you would care about their output, in that case you might watch for the command echo and then collect the output til the next prompts shows up.\n\nThis would make the system more robust, now your are waiting for LF and consider it the end of the command, it won\u0027t be necessary if the test makes sure that it gets the expected echo after the command is entered.",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab25747_95f6cb59",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "this is not what I meant, the except clause is supposed to use a particular exception it is catching, say\n\n  except IndexError as e:\n   ....",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c03674d_2e18444b",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "why is this wait needed?",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 19
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b3431c_9d525e64",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "can\u0027t be identified",
+      "range": {
+        "startLine": 184,
+        "startChar": 38,
+        "endLine": 184,
+        "endChar": 54
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecdb8d03_b9978a5d",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "is one line feed not enough?\n\nwould checking the coommand echo/wating for prompt make this more reliable?",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 197,
+        "endChar": 64
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1103cb_7e183729",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "this still does not make any difference between no prompt (failed to connect to the console maybe?) and unknown prompt - some unexpected string.\n\nIt is confusing to see a message of receiving an unknown promot, but not seeing any prompt.",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 211,
+        "endChar": 63
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d67122_cc2f0786",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "here and in other places where available, it would be good to report the devie type (AP vs EC) instead of the uart device name.",
+      "range": {
+        "startLine": 228,
+        "startChar": 31,
+        "endLine": 228,
+        "endChar": 47
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb89c0e_6baf3c5c",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "should this be time based? could it be that iterations happen faster on some machines compared to others, how long does it take to try 10 times?",
+      "range": {
+        "startLine": 271,
+        "startChar": 10,
+        "endLine": 275,
+        "endChar": 17
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c615553a_e32b2f1d",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "should the test be\n\nif (ch_cap not in CHARGEN_TEXT) or (self.num_ch_cap \u003e\u003d total_num_ch):",
+      "range": {
+        "startLine": 278,
+        "startChar": 9,
+        "endLine": 278,
+        "endChar": 67
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642152bb_925febbd",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "I think we should stop if we ever receive a character not from the set, so the edited line 278 would catch all problems.\n\nIf the target all of a sudden sends something other than test output, it will mess up the results anyways, we should just capture this and put it in the log for analysis.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 20
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

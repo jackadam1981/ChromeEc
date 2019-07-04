@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "79c0d7c6_96685398",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "runs \u0027on\u0027 EC and/or AP.",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "81a3a03fdbf06630958584fafea604c43ec04942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ff4a24_ab4d3faf",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-04T00:49:42Z",
+      "side": 1,
+      "message": "does pylint not complaint about line continuation esccapes? I vaguely remember that it was discouraged by the coding style.\n\nPlease check, and if so - please fix.",
+      "range": {
+        "startLine": 41,
+        "startChar": 64,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "81a3a03fdbf06630958584fafea604c43ec04942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d1b0bc8_01060588",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 7
