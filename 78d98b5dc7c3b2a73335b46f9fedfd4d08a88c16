@@ -288,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "12891a1c_caee4020",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-07-04T04:13:35Z",
+      "side": 1,
+      "message": "\u003e I looked a bit more at the problem, and I\u0027m convinced that the only issue was that we were copying from to p256_int* in cp8w, p256_add_d and similar functions in the past: while the functions were not inlined they only could rely on being passed an arbitrary p256_int* and used str.b. As soon as LTO led to inlining those, it saw that it was actually copying to an always aligned address and fixed the generated code. I suspect, it was actually inlining for cp8w that fixed the behavior. \n\nThe problem was that the hmac_drbg_generate_p256 and p256_add_d were writing directly into DMEM registers using a p256_int*. As described in the doc, it was the switch to the new DRBG implementation and inlining of p256_add_d that \u0027fixed\u0027 it.\n\nIt seems like these functions writing directly into DMEM registers was simply an oversight. All other writes into DMEM registers happen via cp8w, specifically because of this issue (this is why cp8w was written). AFAICT, cp8w has always worked as designed - the destination registers are always aligned, and the source register being on the stack was also always aligned. Out of interest, it seems that in 0.4.20 at least, cp8w is not inlined, and itself calls memcpy (which presumably is checking alignment and then using word stores).\n\nThe previous CL in this chain makes p256_add_d write into a temporary, and then copies with cp8w; this fixes the problem (tested on builds prior to LTO being enabled) in a way that is consistent with all other writes to DMEM registers.\n\nAny additional changes on top of that CL (the ones being discussed here) are IMO futureproofing / being additionally defensive. I think it\u0027s a good idea to do this, but I consider that somewhat orthogonal to the fix for the original bug.\n\nI\u0027m happy to replace the assembly with a simple write to a uint32_t*, and assume that the compiler won\u0027t/can\u0027t do anything weird (because why/how would it), though for the record, I\u0027m not sure I understand what the objection to this single line of assembly is. IMHO, if nothing else, it highlights a critical implementation detail and reduces the chance of someone mistakenly re-introducing the bug later.\n\nIf we land the fix for the original bug (the previous CL in the chain), and I replace the assembly with a simple write to a uint32_t*, then I\u0027m not sure this CL particularly strengthens the guarantees on the use of word writes - it would just replace the [implicit] use of memcpy with an explicit write to a uint32_t* - which I guess could eventually get somehow optimized away / substituted for something else (seems we have some ideas on how to prevent this, but no definite answer at the moment).\n\nThis CL would then be focused on removing the pointers to the DMEM registers, reducing the chances of them being misused in future. This seems reasonable, but not absolutely necessary - thoughts?",
+      "parentUuid": "6c28e3f9_e634f812",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 30
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9302b91_43878945",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
