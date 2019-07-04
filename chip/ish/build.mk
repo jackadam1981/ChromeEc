@@ -32,15 +32,40 @@ test-list-y=
 
 ifeq ($(CONFIG_ISH_PM_AONTASK),y)
 
-ish-aontask-fw=chip/ish/aontaskfw/ish_aontask
-ish-aontask-dma=chip/ish/dma
-ish-aontask-fw-bin=$(out)/$(ish-aontask-fw).bin
-PROJECT_EXTRA+=$(ish-aontask-fw-bin)
+ish-aon-fw=ish_aontask
+ish-aon-fw-out=$(out)/aontaskfw
+ish-aon-fw-elf=$(ish-aon-fw-out)/$(ish-aon-fw).elf
+ish-aon-fw-map=$(ish-aon-fw-out)/$(ish-aon-fw).map
+ish-aon-fw-bin=$(ish-aon-fw-out)/$(ish-aon-fw).bin
+ish-aon-fw-lds=$(ish-aon-fw-out)/$(ish-aon-fw).ld
+ish-aon-fw-lds-templet=chip/ish/aontaskfw/ish_aontask.ld.in
+ish-aon-fw-srcs=chip/ish/aontaskfw/ish_aontask.c chip/ish/dma.c
+ish-aon-fw-objs=$(foreach o,$(subst .c,.o,$(ish-aon-fw-srcs)),$(ish-aon-fw-out)/$(o))
+ish-aon-fw-deps=$(addsuffix .d, $(ish-aon-fw-objs))
 
-_aon_size_str=$(shell stat -L -c %s $(ish-aontask-fw-bin))
+PROJECT_EXTRA+=$(ish-aon-fw-bin)
+deps += $(ish-aon-fw-deps)
+
+_aon_size_str=$(shell stat -L -c %s $(ish-aon-fw-bin))
 _aon_size=$(shell echo "$$(($(_aon_size_str)))")
 
-$(out)/$(PROJECT).bin: $(ish-aontask-fw-bin) $(out)/RW/$(PROJECT).RW.flat
+$(out)/$(PROJECT).bin: $(ish-aon-fw-bin) $(out)/RW/$(PROJECT).RW.flat
+
+# rules for building ISH aon task fw
+$(ish-aon-fw-bin): $(ish-aon-fw-lds) $(ish-aon-fw-objs)
+	$(if $(V),,@echo '  EXTBIN ' $(subst $(out)/,,$@) ; )
+	-@ $(CC) $(ish-aon-fw-objs)   $(LDFLAGS)                 \
+		-o $(ish-aon-fw-elf) -Wl,-T,$(ish-aon-fw-lds)    \
+		-Wl,-Map,$(ish-aon-fw-map)
+	-@ $(OBJCOPY) -O binary $(ish-aon-fw-elf)  $@
+
+$(ish-aon-fw-lds): $(ish-aon-fw-lds-templet)
+	-@ mkdir -p $(@D)
+	@ $(CC) $(CFLAGS) -x assembler-with-cpp -E -P $< -o $@
+
+$(ish-aon-fw-out)/%.o: %.c
+	-@ mkdir -p $(@D)
+	$(call quiet,c_to_o,CC)
 
 endif
 
@@ -58,7 +83,7 @@ ifeq ($(CONFIG_ISH_PM_AONTASK),y)
 cmd_obj_to_bin = ${SCRIPTDIR}/pack_ec.py -o $@.tmp \
 		 -k $(out)/RW/$(PROJECT).RW.flat \
 		 --kernel-size $(_kernel_size) \
-		 -a $(ish-aontask-fw-bin)  \
+		 -a $(ish-aon-fw-bin)  \
 		 --aon-size $(_aon_size);
 else
 cmd_obj_to_bin = ${SCRIPTDIR}/pack_ec.py -o $@.tmp \
