@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8653e91_f8ba0dad",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-04T06:03:18Z",
+      "side": 1,
+      "message": "drop the braces",
+      "range": {
+        "startLine": 84,
+        "startChar": 45,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "3834cba1e40d57c0d464beb4fc3a365e30dcf63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b762953_4ccb6c28",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-04T06:03:18Z",
+      "side": 1,
+      "message": "use spaces for indention.",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "3834cba1e40d57c0d464beb4fc3a365e30dcf63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2246674e_cbae7ad9",
+        "filename": "chip/mt_scp/ipi_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-04T06:03:18Z",
+      "side": 1,
+      "message": "BIT(4)",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "3834cba1e40d57c0d464beb4fc3a365e30dcf63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
