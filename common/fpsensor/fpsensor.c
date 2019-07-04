@@ -157,6 +157,8 @@ static uint32_t fp_process_match(void)
 			timestamps_invalid |= FPSTATS_MATCHING_INV;
 		} else {
 			template_matched = (int8_t)fgr;
+			if (fgr >= 0 && fgr < FP_MAX_FINGER_COUNT)
+				fp_pos_match_secret_readable |= BIT(fgr);
 		}
 		if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 			templ_dirty |= updated;
