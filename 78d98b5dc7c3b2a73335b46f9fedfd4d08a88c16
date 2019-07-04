@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "6c28e3f9_e634f812",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-04T00:10:03Z",
+      "side": 1,
+      "message": "I looked a bit more at the problem, and I\u0027m convinced that the only issue was that we were copying from to p256_int* in cp8w, p256_add_d and similar functions in the past: while the functions were not inlined they only could rely on being passed an arbitrary p256_int* and used str.b. As soon as LTO led to inlining those, it saw that it was actually copying to an always aligned address and fixed the generated code. I suspect, it was actually inlining for cp8w that fixed the behavior. \n\nI.e. as long as the compiler sees that it copies to an aligned unit32_t*, we shall be ok.\nAlthough, I couldn\u0027t find a concrete guarantee that llvm always generates str.w in case of seeing \"store i32 %word, i32* %dst align 4\", places like this [https://llvm.org/docs/Frontend/PerformanceTips.html#when-to-specify-alignment] came close enough to confirming that, so I personally am convinced str.w is guaranteed w/o writing an explicit assembly when the destination is aligned.\n\nAnd if so, having \nstatic void cp1w(...) {\n        uint32_t *dst \u003d ...;\n\n        for (i \u003d 0; i \u003c P256_NDIGITS; i++, dst++) {\n                *dst \u003d P256_DIGIT(src, i);\n        }\n}\nshould be enough in the new approach where we switch to offsets instead of p256_int* pointers.\nShall we do just that? Unf, I couldn\u0027t find a way to enforce aligned accesses for a specific type or structure w/o global -mno-unaligned-access, which we can\u0027t set.\n\nAn alt approach is using __aeabi_memcpy4, in place of hand-written assembly, which should also do the right thing if clang properly supports it [http://infocenter.arm.com/help/topic/com.arm.doc.faqs/ka3934.html]. \n    uint32_t word \u003d P256_DIGIT(src, i);\n    __aeabi_memcpy4(dst, \u0026word, 4);\nThis may force the creation of aligned |word| that can\u0027t be optimized out since we need its address.",
+      "parentUuid": "d1281410_39eb11df",
+      "range": {
+        "startLine": 769,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 30
+      },
+      "revId": "78d98b5dc7c3b2a73335b46f9fedfd4d08a88c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9302b91_43878945",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 1
