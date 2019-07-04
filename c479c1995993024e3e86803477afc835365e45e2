@@ -22,6 +22,30 @@
       "revId": "c479c1995993024e3e86803477afc835365e45e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518ee69b_cfd438f6",
+        "filename": "board/kukui_scp/venc.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2019-07-04T05:47:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7239fa01_c7bd6175",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "c479c1995993024e3e86803477afc835365e45e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
