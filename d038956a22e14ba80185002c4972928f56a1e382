@@ -70,6 +70,30 @@
       "revId": "d038956a22e14ba80185002c4972928f56a1e382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d907520_af91a240",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2019-07-04T03:26:09Z",
+      "side": 1,
+      "message": "The discussion on the follow-up CL is not resolved, but it seems we are just deciding how to guarantee cp8w works as intended, so I think we can go ahead with this change, as it\u0027ll be needed regardless of the outcome of that discussion.\n\nDoes that sound ok?",
+      "parentUuid": "06d3c2b9_88ded200",
+      "range": {
+        "startLine": 809,
+        "startChar": 15,
+        "endLine": 809,
+        "endChar": 16
+      },
+      "revId": "d038956a22e14ba80185002c4972928f56a1e382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
