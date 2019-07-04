@@ -316,7 +316,7 @@ endif
 ro-deps := $(addsuffix .d, $(ro-objs))
 rw-deps := $(addsuffix .d, $(rw-objs))
 
-deps := $(ro-deps) $(rw-deps) $(deps-y)
+deps += $(ro-deps) $(rw-deps) $(deps-y)
 
 .PHONY: ro rw
 $(config): $(out)/$(PROJECT).bin
