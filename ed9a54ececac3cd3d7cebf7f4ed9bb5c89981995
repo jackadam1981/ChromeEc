@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f84b178f_82924017",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-04T00:29:11Z",
+      "side": 1,
+      "message": "Should be guarded by BOARD_KRANE, unless this will be ported to all the followers.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 69
+      },
+      "revId": "ed9a54ececac3cd3d7cebf7f4ed9bb5c89981995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8e5840e_bfa45a76",
         "filename": "board/kukui/board.c",
         "patchSetId": 6
@@ -13,6 +36,30 @@
       "writtenOn": "2019-07-02T15:44:50Z",
       "side": 1,
       "message": "Add bug to track?",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 8
+      },
+      "revId": "ed9a54ececac3cd3d7cebf7f4ed9bb5c89981995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8434d74e_4f8a1b22",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-04T00:29:11Z",
+      "side": 1,
+      "message": "If this needs a revision check, then it\u0027s better putting in another hook after ADC inited.",
+      "parentUuid": "c8e5840e_bfa45a76",
       "range": {
         "startLine": 321,
         "startChar": 4,
