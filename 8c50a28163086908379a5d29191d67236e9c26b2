@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9150ea13_58da4ace",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-04T01:49:02Z",
+      "side": 1,
+      "message": "Ack!\nThe fix only have one code line in aon task,  and it\u0027s indeed in the gerrit.\n\nHi Jack, when you apply the patch,  have you clean the build before new build ?   I found the build system have problem on TOT,  if aon task code have updated,  just increase build without a clean will not build the aon task,  so, for this case,  the fix will not build into the image.\n\nI noticed this build issue when I update the source code and start debug this issue.\n\nNow, I\u0027m investigating the build system and makefiles,  why aon task not get auto build. \n\nAnd will workout the fix for the build",
+      "parentUuid": "204a611f_b90d177e",
+      "range": {
+        "startLine": 595,
+        "startChar": 3,
+        "endLine": 603,
+        "endChar": 27
+      },
+      "revId": "8c50a28163086908379a5d29191d67236e9c26b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b78f254_cb290e11",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "8c50a28163086908379a5d29191d67236e9c26b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a30bacb_2e6e62ec",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-04T01:49:02Z",
+      "side": 1,
+      "message": "Ack!\n\nAgree with Jack, updated this CL, and removed the changes of this.\nthe fix for this issue is only single code line in aon task.",
+      "parentUuid": "bbb00737_345431b8",
+      "range": {
+        "startLine": 677,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 0
+      },
+      "revId": "8c50a28163086908379a5d29191d67236e9c26b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
