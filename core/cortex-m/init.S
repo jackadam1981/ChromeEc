@@ -26,6 +26,12 @@ reset:
 	msr control, r0
 	isb                  @ ensure the write is done
 
+	mov r1, #0
+	ldr r2, =0x405c4080
+	str r1, [r2]
+	ldr r2, =0x405c4094
+	str r1, [r2]
+
 	/* Set the vector table on our current code */
 	ldr r1, =vectors
 	ldr r2, =0xE000ED08   /* VTABLE register in SCB*/
