@@ -188,6 +188,23 @@
       "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03a32b8e_63b05c95",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-05T07:15:28Z",
+      "side": 1,
+      "message": "Would it be possible to move this above scp_enable_clock? As long as SCP_CPU_VREQ is not set to 0, that could prevent the (rare, but possible) race condition that Yilun mentions.",
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
