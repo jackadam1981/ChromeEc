@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "655667f9_3c5a7cc1",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-05T07:16:43Z",
+      "side": 1,
+      "message": "This looks like debug strings, please remove.",
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdac26c9_6d900c1a",
         "filename": "chip/mt_scp/pmic.c",
         "patchSetId": 5
@@ -64,6 +81,29 @@
         "startChar": 6,
         "endLine": 32,
         "endChar": 36
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9573dc89_789cfc9e",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-05T07:16:43Z",
+      "side": 1,
+      "message": "nit: space before (",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 4
       },
       "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
