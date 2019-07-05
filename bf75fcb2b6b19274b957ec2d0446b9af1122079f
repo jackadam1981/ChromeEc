@@ -22,6 +22,46 @@
       "revId": "bf75fcb2b6b19274b957ec2d0446b9af1122079f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb519ba2_3085218c",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:42:08Z",
+      "side": 1,
+      "message": "vdec_service_msg or vdec_msg",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "bf75fcb2b6b19274b957ec2d0446b9af1122079f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb22cc2_0e7658a9",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:42:08Z",
+      "side": 1,
+      "message": "Please add check here:\n\nBUILD_ASSERT(sizeof(struct vdec_msg) \u003c\u003d CONFIG_IPC_SHARED_OBJ_BUF_SIZE);",
+      "revId": "bf75fcb2b6b19274b957ec2d0446b9af1122079f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
