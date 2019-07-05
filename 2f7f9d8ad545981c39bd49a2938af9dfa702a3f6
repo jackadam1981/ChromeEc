@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a04fcbd4_7776c353",
+        "filename": "board/kukui_scp/isp_p1_srv.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-07-05T03:55:36Z",
+      "side": 1,
+      "message": "Sorry, we can\u0027t get the point about one handler?\nCould you provide the detail how to do?\nSince we have two different IPI commands, both commands use the same isp_ipi_msg_handler handler function. \n\nFor the second part, the non-wake-up source has be fixed.",
+      "parentUuid": "bcc2fa0d_ea81dcbe",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 51
+      },
+      "revId": "2f7f9d8ad545981c39bd49a2938af9dfa702a3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5b8ca8d_b2fecef7",
         "filename": "board/kukui_scp/isp_p1_srv.h",
         "patchSetId": 21
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ab3500aa_c82b992f",
+        "filename": "board/kukui_scp/isp_p1_srv.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-07-05T03:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5b8ca8d_b2fecef7",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "2f7f9d8ad545981c39bd49a2938af9dfa702a3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39da4e32_2a532346",
         "filename": "board/kukui_scp/isp_p1_srv.h",
         "patchSetId": 21
@@ -62,6 +110,24 @@
       "revId": "2f7f9d8ad545981c39bd49a2938af9dfa702a3f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e37c3ac_b6896ff4",
+        "filename": "board/kukui_scp/isp_p1_srv.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306927
+      },
+      "writtenOn": "2019-07-05T03:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39da4e32_2a532346",
+      "revId": "2f7f9d8ad545981c39bd49a2938af9dfa702a3f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
