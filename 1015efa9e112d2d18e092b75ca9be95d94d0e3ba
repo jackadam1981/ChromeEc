@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "37e665ad_b1f37e8f",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-05T00:28:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1c05c8f_10d270df",
+      "revId": "1015efa9e112d2d18e092b75ca9be95d94d0e3ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5947ae_0ecfe573",
         "filename": "chip/mt_scp/pmic.c",
         "patchSetId": 4
