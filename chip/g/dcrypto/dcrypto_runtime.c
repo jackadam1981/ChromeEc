@@ -6,6 +6,8 @@
 
 #include "task.h"
 #include "registers.h"
+#include "dcrypto.h"
+#include "trng.h"
 
 #define DMEM_NUM_WORDS 1024
 #define IMEM_NUM_WORDS 1024
@@ -142,3 +144,131 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 	}
 	return diff;
 }
+
+#ifdef DCRYPTO_RUNTIME_TEST
+
+#include "console.h"
+#include "shared_mem.h"
+
+#define ECDSA_SIGN_TEST_ITERATION 1000
+
+static const p256_int r_golden = {
+	.a = {0x0DF84892, 0xAE1D98DF, 0xADE31F0F, 0x4CD7EC0E, 0x51866245,
+	      0x8D96ABFC, 0x11FA2A69, 0xA86D8EF5},
+};
+static const p256_int s_golden = {
+	.a = {0xF7561D34, 0x3BB0A846, 0x6D3D1B8D, 0x97CF3327, 0x27765E36,
+	      0x166071E5, 0xDE738760, 0x73184B4E},
+};
+
+static int call_on_bigger_stack(uint32_t stack,
+				int (*func)(p256_int *, p256_int *),
+				p256_int *r, p256_int *s)
+{
+	int result = 0;
+
+	/* Move to new stack and call the function */
+	__asm__ volatile("mov r4, sp\n"
+			 "mov sp, %[new_stack]\n"
+			 "mov r0, %[r]\n"
+			 "mov r1, %[s]\n"
+			 "blx %[func]\n"
+			 "mov sp, r4\n"
+			 "mov %[result], r0\n"
+			 : [result] "=r"(result) /* output */
+			 : [new_stack] "r"(stack), [r] "r"(r), [s] "r"(s),
+			   [func] "r"(func) /* input */
+			 : "r0", "r1", "r2", "r3", "r4",
+			   "lr" /* clobbered registers */
+	);
+
+	return result;
+}
+
+static int ecdsa_sign_go(p256_int *r, p256_int *s)
+{
+	struct drbg_ctx drbg;
+	p256_int d;
+	uint32_t zeros[8] = {0};
+	p256_int message = *s;
+
+	/* drbg init with same entropy */
+	hmac_drbg_init(&drbg, r->a, sizeof(r->a), zeros, 32, zeros, 32);
+
+	/* pick a key */
+	hmac_drbg_generate_p256(&drbg, &d);
+
+	/* drbg_reseed with entropy and message */
+	hmac_drbg_reseed(&drbg, r->a, sizeof(r->a), s->a, sizeof(s->a), zeros,
+			 32);
+
+	return dcrypto_p256_ecdsa_sign(&drbg, &d, &message, r, s);
+}
+
+static int command_dcrypto_ecdsa(int argc, char *argv[])
+{
+	p256_int entropy, message, r, s;
+	LITE_SHA256_CTX hsh;
+	int result = 0;
+	char *new_stack;
+	const uint32_t new_stack_size = 2 * 1024;
+
+	/* start with some known value for a message */
+	const uint8_t ten = 0x0A;
+
+	for (uint8_t i = 0; i < 8; i++)
+		entropy.a[i] = rand();
+
+	DCRYPTO_SHA256_init(&hsh, 0);
+	HASH_update(&hsh, &ten, sizeof(ten));
+	p256_from_bin(HASH_final(&hsh), &message);
+
+	r = entropy;
+	s = message;
+
+	result = shared_mem_acquire(new_stack_size, &new_stack);
+
+	if (result != EC_SUCCESS)
+		return result;
+
+	for (uint32_t i = 0; i < ECDSA_SIGN_TEST_ITERATION; i++) {
+
+		result = call_on_bigger_stack((uint32_t)new_stack +
+						      new_stack_size,
+					      ecdsa_sign_go, &r, &s);
+
+		if (!result) {
+			ccprintf("ECDSA TEST fail: %d\n", result);
+			return EC_ERROR_INVAL;
+		}
+
+		/* TODO bkrykpayev: add the signverify call and compare results
+		 */
+	}
+
+	shared_mem_release(new_stack);
+
+	/* compare to the golden r and s values */
+	for (uint8_t i = 0; i < 8; i++) {
+		if (r.a[i] != r_golden.a[i]) {
+			ccprintf("ECDSA TEST r does not match with golden at "
+				 "%d: %08x != %08x\n",
+				 i, r.a[i], r_golden.a[i]);
+			return EC_ERROR_INVAL;
+		}
+		if (s.a[i] != s_golden.a[i]) {
+			ccprintf("ECDSA TEST s does not match with golden at "
+				 "%d: %08x != %08x\n",
+				 i, s.a[i], s_golden.a[i]);
+			return EC_ERROR_INVAL;
+		}
+	}
+
+	ccprintf("ECDSA TEST success!!!\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(dcrypto_ecdsa, command_dcrypto_ecdsa, "",
+			     "dcrypto ecdsa test");
+
+#endif
