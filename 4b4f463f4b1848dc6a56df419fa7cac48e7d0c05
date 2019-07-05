@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44689f1a_8dc4d11d",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "80 characters per line.\n\nAlso, could you elaborate more about this function in comment?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 83
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d0471b_36fe3903",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "timeout \u003d 0xff;\n\nand drop line:15",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdac26c9_6d900c1a",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "You read this register twice in the same loop iteration, which could result to two different values.\nQuestion:\n1. do you mean to do this?\n2. if not, surprising things might happen, could you change it to:\n\n uint32_t wacs_fsm \u003d GET_WACS_FSM(PMICW_WACS_RDATA);\n switch (wacs_fsm) {\n ...\n default:\n         break;\n }\n\n if (wacs_fsm !\u003d WACS_FSM_IDLE)\n         ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356cff24_d110c813",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "Please also revisit the usage of this function.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e3469a7_318a6ae8",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33f38fd_194205ff",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66927ff6_6a3e19ca",
+        "filename": "chip/mt_scp/pmic.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "UART is initialized after this function, so it won\u0027t print any output on the first load. (and yes, it still has output with the following reboot).\n\nSince this isn\u0027t a really important message (CHIP ID), please just drop this to save some image size.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 83
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6e365e_dd1422df",
+        "filename": "chip/mt_scp/pmic.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "80 characters per line.",
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7662b709_3ae3c69d",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T01:22:16Z",
+      "side": 1,
+      "message": "you don\u0027t need parenthesis.",
+      "range": {
+        "startLine": 478,
+        "startChar": 28,
+        "endLine": 478,
+        "endChar": 39
+      },
+      "revId": "4b4f463f4b1848dc6a56df419fa7cac48e7d0c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
