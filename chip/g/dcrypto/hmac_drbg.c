@@ -134,11 +134,19 @@ int hmac_drbg_generate(struct drbg_ctx *ctx,
 	return 0;
 }
 
-void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out)
+int hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out)
 {
-	hmac_drbg_generate(ctx,
-			   k_out->a, sizeof(k_out->a),
-			   NULL, 0);
+	p256_int tmp;
+	int ret;
+
+	ret = hmac_drbg_generate(ctx, &tmp.a, sizeof(tmp.a), NULL, 0);
+
+	if (ret)
+		return ret;
+
+	*k_out = tmp;
+
+	return ret;
 }
 
 void drbg_exit(struct drbg_ctx *ctx)
