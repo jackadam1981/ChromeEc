@@ -80,6 +80,24 @@
       "revId": "bf75fcb2b6b19274b957ec2d0446b9af1122079f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fcf83f0_b7d6b2eb",
+        "filename": "board/kukui_scp/vdec.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:50:50Z",
+      "side": 1,
+      "message": "You can do this by:\n\n#include \"compile_time_macros.h\"\n\nBUILD_ASSERT(member_size(struct vdec_msg, msg) \u003c\u003d CONFIG_IPC_SHARED_OBJ_BUF_SIZE);",
+      "parentUuid": "12ca9e5e_10ade953",
+      "revId": "bf75fcb2b6b19274b957ec2d0446b9af1122079f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
