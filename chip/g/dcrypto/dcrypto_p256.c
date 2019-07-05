@@ -750,6 +750,20 @@ struct DMEM_ecc {
 	p256_int d;
 };
 
+/* p256 elliptic curve characteristics */
+static const p256_int SECP256r1_nMin1 = {
+	{
+		0xfc632551 - 1,
+		0xf3b9cac2,
+		0xa7179e84,
+		0xbce6faad,
+		-1,
+		-1,
+		0,
+		-1,
+	},
+};
+
 static void dcrypto_ecc_init(void)
 {
 	struct DMEM_ecc *pEcc =
@@ -792,6 +806,19 @@ static inline void cp8w(p256_int *dst, const p256_int *src)
 
 	tmp = *src;
 	*dst = tmp;
+}
+
+/* Return -1 if a < b */
+static int p256_lt(const p256_int *a, const p256_int *b)
+{
+	p256_sddigit borrow = 0;
+
+	for (int i = 0; i < P256_NDIGITS; ++i) {
+		/* TODO(mschilder): blind? */
+		borrow += (p256_sddigit)P256_DIGIT(a, i) - P256_DIGIT(b, i);
+		borrow >>= P256_BITSPERDIGIT;
+	}
+	return (int)borrow;
 }
 
 int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
@@ -938,4 +965,23 @@ int dcrypto_p256_is_valid_point(const p256_int *x, const p256_int *y)
 
 	dcrypto_unlock();
 	return result == 0;
+}
+
+int dcrypto_p256_pick(struct drbg_ctx *drbg, p256_int *output)
+{
+	int result = 0;
+
+	dcrypto_p256_rnd(output);
+	do {
+		result |= hmac_drbg_generate_p256(drbg, output);
+		if (result)
+			break;
+	} while (p256_lt(output, &SECP256r1_nMin1) >= 0);
+	return result;
+}
+
+void dcrypto_p256_rnd(p256_int *output)
+{
+	for (int i = 0; i < 8; ++i)
+		output->a[i] = rand();
 }
