@@ -150,7 +150,7 @@ int hmac_drbg_generate(struct drbg_ctx *ctx,
 		       void *out, size_t out_len,
 		       const void *input, size_t input_len);
 /* Generate p256, with no additional input. */
-void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
+int hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out);
 void drbg_exit(struct drbg_ctx *ctx);
 
 /*
@@ -171,6 +171,15 @@ int dcrypto_p256_ecdsa_verify(const p256_int *key_x, const p256_int *key_y,
 	__attribute__((warn_unused_result));
 int dcrypto_p256_is_valid_point(const p256_int *x, const p256_int *y)
 	__attribute__((warn_unused_result));
+
+/* Pick a p256 number between 1 < k < |p256| */
+int dcrypto_p256_pick(struct drbg_ctx *drbg, p256_int *output);
+
+/* Overwrite with random p256 value */
+void dcrypto_p256_rnd(p256_int *output);
+
+/* b = a - d. Returns borrow: 0 or -1. */
+int dcrypto_p256_sub_d(const p256_int *a, const p256_digit d, p256_int *b);
 
 /*
  * Accelerator runtime.
