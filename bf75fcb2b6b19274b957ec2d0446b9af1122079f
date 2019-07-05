@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f647fde_5907e532",
+        "filename": "board/kukui_scp/vdec.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:25:47Z",
+      "side": 1,
+      "message": "Should this need to be a wake-up source? I think it doesn\u0027t a need.",
+      "range": {
+        "startLine": 62,
+        "startChar": 50,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "bf75fcb2b6b19274b957ec2d0446b9af1122079f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
