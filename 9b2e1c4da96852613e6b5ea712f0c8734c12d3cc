@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4ff13a7_9dcbd04e",
+        "filename": "board/kukui_scp/venc.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:54:50Z",
+      "side": 1,
+      "message": "also this. I think it doesn\u0027t need to be a wake-up source.",
+      "range": {
+        "startLine": 60,
+        "startChar": 50,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "9b2e1c4da96852613e6b5ea712f0c8734c12d3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9193d55c_9f0f7bbe",
+        "filename": "board/kukui_scp/venc.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:54:50Z",
+      "side": 1,
+      "message": "venc_service_msg or venc_msg",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "9b2e1c4da96852613e6b5ea712f0c8734c12d3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b036e985_7918a323",
+        "filename": "board/kukui_scp/venc.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T02:54:50Z",
+      "side": 1,
+      "message": "BUILD_ASSERT(member_size(struct venc_msg, msg) \u003c\u003d CONFIG_IPC_SHARED_OBJ_BUF_SIZE);",
+      "revId": "9b2e1c4da96852613e6b5ea712f0c8734c12d3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
