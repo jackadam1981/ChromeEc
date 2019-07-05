@@ -6,6 +6,8 @@
 
 #include "task.h"
 #include "registers.h"
+#include "dcrypto.h"
+#include "trng.h"
 
 #define DMEM_NUM_WORDS 1024
 #define IMEM_NUM_WORDS 1024
@@ -142,3 +144,64 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 	}
 	return diff;
 }
+
+/* #ifdef DCRYPTO_RUNTIME_TEST */
+#include "console.h"
+#define ECDSA_SIGN_TEST_ITERATION 10
+
+static int ecdsa_sign_test(const p256_int *entropy, const p256_int *message,
+			   p256_int *r, p256_int *s)
+{
+	struct drbg_ctx drbg;
+	p256_int d, key;
+
+	/* drbg init with same entropy */
+	hmac_drbg_init(&drbg, entropy->a, sizeof(entropy->a), NULL, 0, NULL, 0);
+
+	/* pick k */
+	hmac_drbg_generate_p256(&drbg, &d);
+
+	/* drbg_reseed with entropy and message */
+	hmac_drbg_reseed(&drbg, entropy->a, sizeof(entropy->a), message->a,
+			 sizeof(message->a), NULL, 0);
+
+	/* make k-1 to be in line with requirements */
+	p256_add_d(&d, -1, &key);
+
+	return dcrypto_p256_ecdsa_sign(&drbg, &d, message, r, s);
+}
+
+static int command_dcrypto_ecdsa(int argc, char *argv[])
+{
+	p256_int r, s, en, message;
+	LITE_SHA256_CTX hsh;
+	int result = 0;
+
+	const uint8_t ten = 0x0A;
+
+	for (uint8_t i = 0; i < 8; i++)
+		en.a[i] = rand();
+
+	DCRYPTO_SHA256_init(&hsh, 0);
+	HASH_update(&hsh, &ten, sizeof(ten));
+	p256_from_bin(HASH_final(&hsh), &message);
+
+	for (uint32_t i = 0; i < ECDSA_SIGN_TEST_ITERATION; i++) {
+		int ret = ecdsa_sign_test(&en, &message, &r, &s);
+
+		ccprintf("Result: %d\n", ret);
+
+		/* get the signverify result and compare */
+		en = r;
+		message = s;
+	}
+
+	/* compare to the final expected value */
+
+	ccprintf("success? %d\n", result);
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(dcrypto_ecdsa, command_dcrypto_ecdsa, "",
+			     "dcrypto ecdsa test");
+
+/* #endif */
