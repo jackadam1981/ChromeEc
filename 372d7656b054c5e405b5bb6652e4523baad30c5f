@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e12ce45_664d8df8",
+        "filename": "board/kukui_scp/build.mk",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T03:01:16Z",
+      "side": 1,
+      "message": "$(HAS_TASK_FD_SERVICE)",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "372d7656b054c5e405b5bb6652e4523baad30c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc99d544_977fdc9e",
+        "filename": "board/kukui_scp/fd.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T03:01:16Z",
+      "side": 1,
+      "message": "It doesn\u0027t need to be a wake-up source, mark it 0.",
+      "range": {
+        "startLine": 61,
+        "startChar": 40,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "372d7656b054c5e405b5bb6652e4523baad30c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c120265e_36cc21c1",
+        "filename": "board/kukui_scp/fd.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T03:01:16Z",
+      "side": 1,
+      "message": "fd_service_msg or fd_msg",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "372d7656b054c5e405b5bb6652e4523baad30c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd74f24_f6614206",
+        "filename": "board/kukui_scp/fd.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-05T03:01:16Z",
+      "side": 1,
+      "message": "#include \"compile_time_macros.h\"\n\nBUILD_ASSERT(member_size(struct fd_msg, msg) \u003c\u003d CONFIG_IPC_SHARED_OBJ_BUF_SIZE);",
+      "revId": "372d7656b054c5e405b5bb6652e4523baad30c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
