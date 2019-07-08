@@ -293,6 +293,6 @@ void pd_task(void *u)
 #endif /* CONFIG_USB_PRL_SM */
 
 		/* run state machine */
-		exe_state(port, TC_OBJ(port), RUN_SIG);
+		exe_state(port, TC_CTX(port));
 	}
 }

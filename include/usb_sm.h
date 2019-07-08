@@ -64,10 +64,27 @@ DECLARE_SM_SIG_(prefix, name, exit), \
 get_super_state \
 }
 
-#define SM_OBJ(smo)    ((struct sm_obj *)&smo)
-#define SUPER(r, sig, s)  ((((r) == 0) || ((sig) == ENTRY_SIG) || \
-			((sig) == EXIT_SIG)) ? 0 : ((uintptr_t)(s)))
-#define RUN_SUPER	1
+
+typedef void (*state_execution)(int port);
+
+
+struct usb_state {
+	const state_execution entry;
+	const state_execution run;
+	const state_execution exit;
+	const usb_state *parent;
+};
+
+/* in C file */
+
+
+struct sm_ctx {
+	struct usb_state *current;
+	struct usb_state *previous;
+};
+
+
+#define SM_CTX(smo)    ((struct sm_ctx *)&smo)
 
 /* Local state machine states */
 enum sm_local_state {
@@ -76,64 +93,23 @@ enum sm_local_state {
 	SM_PAUSED
 };
 
-/* State Machine signals */
-enum signal {
-	ENTRY_SIG = 0,
-	RUN_SIG,
-	EXIT_SIG,
-	SUPER_SIG,
-};
-
-typedef unsigned int (*state_sig)(int port);
-typedef unsigned int (*sm_state)(int port, enum signal sig);
-
-struct sm_obj {
-	sm_state task_state;
-	sm_state last_state;
-};
-
-/**
- * Initialize a State Machine
- *
- * @param port   USB-C port number
- * @param obj    State machine object
- * @param target Initial state of state machine
- */
-void init_state(int port, struct sm_obj *obj, sm_state target);
-
 /**
  * Changes a state machines state
  *
  * @param port   USB-C port number
- * @param obj    State machine object
+ * @param ctx    State machine context
  * @param target State to transition to
  * @return 0
  */
-int set_state(int port, struct sm_obj *obj, sm_state target);
+int set_state(int port, struct sm_ctx *ctx, sm_state target);
 
 /**
  * Executes a state machine
  *
  * @param port USB-C port number
- * @param obj  State machine object
+ * @param ctx  State machine context
  * @param sig  State machine signal
  */
-void exe_state(int port, struct sm_obj *obj, enum signal sig);
-
-/**
- * Substitute this function for states that do not implement an exit state.
- *
- * @param port USB-C port number
- * @return 0
- */
-unsigned int do_nothing_exit(int port);
-
-/**
- * Called by the state machine framework to execute a states super state.
- *
- * @param port USB-C port number
- * @return RUN_SUPER
- */
-unsigned int get_super_state(int port);
+void exe_state(int port, struct sm_ctx *ctx, enum signal sig);
 
 #endif /* __CROS_EC_USB_SM_H */

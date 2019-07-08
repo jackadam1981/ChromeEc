@@ -17,6 +17,29 @@
 #include "usb_tc_sm.h"
 #include "usbc_ppc.h"
 
+
+enum usb_tc_state {
+	TC_CC_OPEN,
+	TC_CC_RD,
+	TC_CC_RP,
+	TC_DISABLED,
+	TC_ERROR_RECOVERY,
+	TC_UNATTACHED_SNK,
+	TC_ATTACH_WAIT_SNK,
+	TC_ATTACHED_SNK,
+	TC_UNORIENTED_DB_ACC_SRC,
+	TC_AUDIO_ACC,
+	TC_DBG_ACC_SNK,
+	TC_UNATTACHED_SRC,
+	TC_ATTACH_WAIT_SRC,
+	TC_ATTACHED_SRC,
+	TC_TRY_SRC,
+	TC_TRY_WAIT_SNK,
+};
+
+const usb_states tc_states[];
+
+
 /*
  * USB Type-C DRP with Accessory and Try.SRC module
  *   See Figure 4-16 in Release 1.4 of USB Type-C Spec.
@@ -61,62 +84,6 @@ static void tc_set_data_role(int port, int role);
 static uint8_t pd_try_src_enable;
 static void pd_update_try_source(void);
 #endif
-
-/*
- * Type-C states
- */
-DECLARE_STATE(tc, disabled, WITH_EXIT);
-DECLARE_STATE(tc, error_recovery, NOOP_EXIT);
-DECLARE_STATE(tc, unattached_snk, NOOP_EXIT);
-DECLARE_STATE(tc, attach_wait_snk, NOOP_EXIT);
-DECLARE_STATE(tc, attached_snk, WITH_EXIT);
-DECLARE_STATE(tc, dbg_acc_snk, NOOP_EXIT);
-DECLARE_STATE(tc, unattached_src, NOOP_EXIT);
-DECLARE_STATE(tc, attach_wait_src, NOOP_EXIT);
-DECLARE_STATE(tc, attached_src, WITH_EXIT);
-DECLARE_STATE(tc, audio_acc, WITH_EXIT);
-DECLARE_STATE(tc, unoriented_dbg_acc_src, NOOP_EXIT);
-
-#ifdef CONFIG_USB_PD_TRY_SRC
-DECLARE_STATE(tc, try_src, NOOP_EXIT);
-DECLARE_STATE(tc, try_wait_snk, NOOP_EXIT);
-#endif
-
-/* Super States */
-/* NOTE: DECLARE_STATE macros are not used below because
- *       the do_nothing function is used in place of the
- *       run functions to save space.
- */
-/*TODO(b/135190769): Rename do_nothing_exit to do_nothing_function */
-static unsigned int tc_cc_rd(int port, enum signal sig);
-static unsigned int tc_cc_rd_entry(int port);
-
-static const state_sig tc_cc_rd_sig[] = {
-	tc_cc_rd_entry,
-	do_nothing_exit,
-	do_nothing_exit,
-	get_super_state
-};
-
-static unsigned int tc_cc_rp(int port, enum signal sig);
-static unsigned int tc_cc_rp_entry(int port);
-
-static const state_sig tc_cc_rp_sig[] = {
-	tc_cc_rp_entry,
-	do_nothing_exit,
-	do_nothing_exit,
-	get_super_state
-};
-
-static unsigned int tc_cc_open(int port, enum signal sig);
-static unsigned int tc_cc_open_entry(int port);
-
-static const state_sig tc_cc_open_sig[] = {
-	tc_cc_open_entry,
-	do_nothing_exit,
-	do_nothing_exit,
-	get_super_state
-};
 
 /*
  * Public Functions
@@ -750,35 +717,83 @@ void pd_prevent_low_power_mode(int port, int prevent)
  * TYPE-C State Implementations
  */
 
+
+/**
+ * Super State CC_OPEN
+ */
+static void tc_cc_open_entry(const int port)
+{
+	/* Disable VBUS */
+	pd_power_supply_reset(port);
+
+	/* Disable VCONN */
+	if (IS_ENABLED(CONFIG_USBC_VCONN))
+		set_vconn(port, 0);
+
+	/* Remove terminations from CC */
+	tcpm_set_cc(port, TYPEC_CC_OPEN);
+}
+
+/**
+ * Super State CC_RD
+ */
+static void tc_cc_rd_entry(const int port)
+{
+	/* Disable VCONN */
+	if (IS_ENABLED(CONFIG_USBC_VCONN))
+		set_vconn(port, 0);
+
+	/*
+	 * Both CC1 and CC2 pins shall be independently terminated to
+	 * ground through Rd.
+	 */
+	tcpm_set_cc(port, TYPEC_CC_RD);
+
+	/* Set power role to sink */
+	tc_set_power_role(port, PD_ROLE_SINK);
+	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
+}
+
+/**
+ * Super State CC_RP
+ */
+static void tc_cc_rp_entry(const int port)
+{
+	/* Disable VCONN */
+	if (IS_ENABLED(CONFIG_USBC_VCONN))
+		set_vconn(port, 0);
+
+	/* Set power role to source */
+	tc_set_power_role(port, PD_ROLE_SOURCE);
+
+	/*
+	 * Both CC1 and CC2 pins shall be independently terminated to
+	 * ground through Rp.
+	 */
+	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	tcpm_set_cc(port, TYPEC_CC_RP);
+
+	return 0;
+}
+
 /**
  * Disabled
  *
  * Super State Entry Actions:
  *   Remove the terminations from CC
  */
-static unsigned int tc_disabled(int port, enum signal sig)
-{
-	int ret = 0;
-
-	ret = (*tc_disabled_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_open);
-}
-
-static unsigned int tc_disabled_entry(int port)
+static void tc_disabled_entry(const int port)
 {
 	tc[port].state_id = DISABLED;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
-
-	return 0;
 }
 
-static unsigned int tc_disabled_run(int port)
+static void tc_disabled_run(const int port)
 {
 	task_wait_event(-1);
-	return RUN_SUPER;
 }
 
-static unsigned int tc_disabled_exit(int port)
+static void tc_disabled_exit(const int port)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_TCPC)) {
 		if (tc_restart_tcpc(port) != 0) {
@@ -788,8 +803,6 @@ static unsigned int tc_disabled_exit(int port)
 	}
 
 	CPRINTS("TCPC p%d resumed!", port);
-
-	return 0;
 }
 
 /**
@@ -798,31 +811,20 @@ static unsigned int tc_disabled_exit(int port)
  * Super State Entry Actions:
  *   Remove the terminations from CC
  */
-static unsigned int tc_error_recovery(int port, enum signal sig)
-{
-	int ret = 0;
-
-	ret = (*tc_error_recovery_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_open);
-}
-
-static unsigned int tc_error_recovery_entry(int port)
+static void tc_error_recovery_entry(const int port)
 {
 	tc[port].state_id = ERROR_RECOVERY;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
 	tc[port].timeout = get_time().val + PD_T_ERROR_RECOVERY;
-	return 0;
 }
 
-static unsigned int tc_error_recovery_run(int port)
+static void tc_error_recovery_run(const int port)
 {
 	if (tc[port].timeout > 0 && get_time().val > tc[port].timeout) {
 		tc[port].timeout = 0;
 		tc_state_init(port);
 	}
-
-	return 0;
 }
 
 /**
@@ -833,15 +835,7 @@ static unsigned int tc_error_recovery_run(int port)
  *   Place Rd on CC
  *   Set power role to SINK
  */
-static unsigned int tc_unattached_snk(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_unattached_snk_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rd);
-}
-
-static unsigned int tc_unattached_snk_entry(int port)
+static void tc_unattached_snk_entry(const int port)
 {
 	tc[port].state_id = UNATTACHED_SNK;
 	if (tc[port].obj.last_state != tc_unattached_src)
@@ -856,11 +850,9 @@ static unsigned int tc_unattached_snk_entry(int port)
 	 */
 	pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SNK;
-
-	return 0;
 }
 
-static unsigned int tc_unattached_snk_run(int port)
+static void tc_unattached_snk_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -885,7 +877,7 @@ static unsigned int tc_unattached_snk_run(int port)
 		set_state(port, TC_OBJ(port), tc_unattached_src);
 	}
 
-	return 0;
+	return;
 }
 
 /**
@@ -896,24 +888,15 @@ static unsigned int tc_unattached_snk_run(int port)
  *   Place Rd on CC
  *   Set power role to SINK
  */
-static unsigned int tc_attach_wait_snk(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_attach_wait_snk_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rd);
-}
-
-static unsigned int tc_attach_wait_snk_entry(int port)
+static void tc_attach_wait_snk_entry(const int port)
 {
 	tc[port].state_id = ATTACH_WAIT_SNK;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
 	tc[port].cc_state = PD_CC_UNSET;
-	return 0;
 }
 
-static unsigned int tc_attach_wait_snk_run(int port)
+static void tc_attach_wait_snk_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -934,7 +917,7 @@ static unsigned int tc_attach_wait_snk_run(int port)
 		tc[port].cc_debounce = get_time().val + PD_T_CC_DEBOUNCE;
 		tc[port].pd_debounce = get_time().val + PD_T_PD_DEBOUNCE;
 		tc[port].cc_state = new_cc_state;
-		return 0;
+		return;
 	}
 
 	/*
@@ -945,12 +928,12 @@ static unsigned int tc_attach_wait_snk_run(int port)
 				get_time().val > tc[port].pd_debounce) {
 		/* We are detached */
 		set_state(port, TC_OBJ(port), tc_unattached_src);
-		return 0;
+		return;
 	}
 
 	/* Wait for CC debounce */
 	if (get_time().val < tc[port].cc_debounce)
-		return 0;
+		return;
 
 	/*
 	 * The port shall transition to Attached.SNK after the state of only one
@@ -979,22 +962,12 @@ static unsigned int tc_attach_wait_snk_run(int port)
 			set_state(port, TC_OBJ(port), tc_dbg_acc_snk);
 		}
 	}
-
-	return RUN_SUPER;
 }
 
 /**
  * Attached.SNK
  */
-static unsigned int tc_attached_snk(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_attached_snk_sig[sig])(port);
-	return SUPER(ret, sig, 0);
-}
-
-static unsigned int tc_attached_snk_entry(int port)
+static void tc_attached_snk_entry(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1024,15 +997,14 @@ static unsigned int tc_attached_snk_entry(int port)
 
 	tc[port].timeout = 0;
 	tc[port].cc_debounce = 0;
-	return 0;
 }
 
-static unsigned int tc_attached_snk_run(int port)
+static void tc_attached_snk_run(const int port)
 {
 	/* Detach detection */
 	if (!pd_is_vbus_present(port)) {
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
-		return 0;
+		return;
 	}
 
 	/*
@@ -1062,12 +1034,12 @@ static unsigned int tc_attached_snk_run(int port)
 			tc[port].cc_state = new_cc_state;
 			tc[port].cc_debounce =
 					get_time().val + PD_T_RP_VALUE_CHANGE;
-			return 0;
+			return;
 		}
 
 		if (tc[port].cc_debounce == 0 ||
 					get_time().val < tc[port].cc_debounce)
-			return 0;
+			return;
 
 		tc[port].cc_debounce = 0;
 
@@ -1081,11 +1053,9 @@ static unsigned int tc_attached_snk_run(int port)
 			charge_manager_update_dualrole(port, CAP_DEDICATED);
 		}
 	}
-
-	return 0;
 }
 
-static unsigned int tc_attached_snk_exit(int port)
+static void tc_attached_snk_exit(const int port)
 {
 	/* Stop drawing power */
 	pd_set_input_current_limit(port, 0, 0);
@@ -1095,8 +1065,6 @@ static unsigned int tc_attached_snk_exit(int port)
 		charge_manager_set_ceil(port,
 				CEIL_REQUESTOR_PD, CHARGE_CEIL_NONE);
 	}
-
-	return 0;
 }
 
 /**
@@ -1107,15 +1075,7 @@ static unsigned int tc_attached_snk_exit(int port)
  *  Place Rp on CC
  *  Set power role to SOURCE
  */
-static unsigned int tc_unoriented_dbg_acc_src(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_unoriented_dbg_acc_src_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rp);
-}
-
-static unsigned int tc_unoriented_dbg_acc_src_entry(int port)
+static void tc_unoriented_dbg_acc_src_entry(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1134,11 +1094,9 @@ static unsigned int tc_unoriented_dbg_acc_src_entry(int port)
 	/*
 	 * WHAT UNORIENTED DEBUG SETUP SHOULD BE DONE?
 	 */
-
-	return 0;
 }
 
-static unsigned int tc_unoriented_dbg_acc_src_run(int port)
+static void tc_unoriented_dbg_acc_src_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1161,8 +1119,6 @@ static unsigned int tc_unoriented_dbg_acc_src_run(int port)
 
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
 	}
-
-	return 0;
 }
 
 /**
@@ -1173,25 +1129,15 @@ static unsigned int tc_unoriented_dbg_acc_src_run(int port)
  *   Place Rp on CC
  *   Set power role to SOURCE
  */
-static unsigned int tc_audio_acc(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_audio_acc_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rp);
-}
-
-static unsigned int tc_audio_acc_entry(int port)
+static void tc_audio_acc_entry(const int port)
 {
 	tc[port].state_id = AUDIO_ACCESSORY;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
 	tc[port].cc_state = PD_CC_UNSET;
-
-	return 0;
 }
 
-static unsigned int tc_audio_acc_run(int port)
+static void tc_audio_acc_run(const int port)
 {
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		/*
@@ -1227,7 +1173,7 @@ static unsigned int tc_audio_acc_run(int port)
 			tc[port].cc_state = new_cc_state;
 			tc[port].cc_debounce =
 					get_time().val + PD_T_CC_DEBOUNCE;
-			return 0;
+			return;
 		}
 
 		/*
@@ -1240,19 +1186,15 @@ static unsigned int tc_audio_acc_run(int port)
 			set_state(port, TC_OBJ(port), tc_unattached_src);
 		}
 	}
-
-	return 0;
 }
 
-static unsigned int tc_audio_acc_exit(int port)
+static void tc_audio_acc_exit(const int port)
 {
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		typec_set_input_current_limit(port, 0, 0);
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 							CHARGE_CEIL_NONE);
 	}
-
-	return 0;
 }
 
 /**
@@ -1263,15 +1205,7 @@ static unsigned int tc_audio_acc_exit(int port)
  *   Place Rd on CC
  *   Set power role to SINK
  */
-static unsigned int tc_dbg_acc_snk(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_dbg_acc_snk_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rd);
-}
-
-static unsigned int tc_dbg_acc_snk_entry(int port)
+static void tc_dbg_acc_snk_entry(const int port)
 {
 	tc[port].state_id = DEBUG_ACCESSORY_SNK;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
@@ -1279,16 +1213,12 @@ static unsigned int tc_dbg_acc_snk_entry(int port)
 	/*
 	 * SETUP FOR DEBUG ACCESSORY
 	 */
-
-	return 0;
 }
 
-static unsigned int tc_dbg_acc_snk_run(int port)
+static void tc_dbg_acc_snk_run(const int port)
 {
 	if (!pd_is_vbus_present(port))
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
-
-	return 0;
 }
 
 /**
@@ -1299,15 +1229,7 @@ static unsigned int tc_dbg_acc_snk_run(int port)
  *   Place Rp on CC
  *   Set power role to SOURCE
  */
-static unsigned int tc_unattached_src(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_unattached_src_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rp);
-}
-
-static unsigned int tc_unattached_src_entry(int port)
+static void tc_unattached_src_entry(const int port)
 {
 	tc[port].state_id = UNATTACHED_SRC;
 	if (tc[port].obj.last_state != tc_unattached_snk)
@@ -1325,11 +1247,9 @@ static unsigned int tc_unattached_src_entry(int port)
 	pd_execute_data_swap(port, PD_ROLE_DISCONNECTED);
 
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
-
-	return 0;
 }
 
-static unsigned int tc_unattached_src_run(int port)
+static void tc_unattached_src_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1350,8 +1270,6 @@ static unsigned int tc_unattached_src_run(int port)
 		set_state(port, TC_OBJ(port), tc_attach_wait_src);
 	else if (get_time().val > tc[port].next_role_swap)
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
-
-	return RUN_SUPER;
 }
 
 /**
@@ -1362,25 +1280,15 @@ static unsigned int tc_unattached_src_run(int port)
  *   Place Rp on CC
  *   Set power role to SOURCE
  */
-static unsigned int tc_attach_wait_src(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_attach_wait_src_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rp);
-}
-
-static unsigned int tc_attach_wait_src_entry(int port)
+static void tc_attach_wait_src_entry(const int port)
 {
 	tc[port].state_id = ATTACH_WAIT_SRC;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
 	tc[port].cc_state = PD_CC_UNSET;
-
-	return 0;
 }
 
-static unsigned int tc_attach_wait_src_run(int port)
+static void tc_attach_wait_src_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1402,7 +1310,7 @@ static unsigned int tc_attach_wait_src_run(int port)
 	} else {
 		/* No UFP */
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
-		return 0;
+		return;
 	}
 
 	/* Debounce the cc state */
@@ -1414,7 +1322,7 @@ static unsigned int tc_attach_wait_src_run(int port)
 
 	/* Wait for CC debounce */
 	if (get_time().val < tc[port].cc_debounce)
-		return 0;
+		return;
 
 	/*
 	 * The port shall transition to Attached.SRC when VBUS is at vSafe0V
@@ -1429,11 +1337,11 @@ static unsigned int tc_attach_wait_src_run(int port)
 	if (!pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_UFP_ATTACHED) {
 			set_state(port, TC_OBJ(port), tc_attached_src);
-			return 0;
+			return;
 		} else if (new_cc_state == PD_CC_DEBUG_ACC) {
 			set_state(port, TC_OBJ(port),
 					tc_unoriented_dbg_acc_src);
-			return 0;
+			return;
 		}
 	}
 
@@ -1444,22 +1352,12 @@ static unsigned int tc_attach_wait_src_run(int port)
 	 */
 	if (new_cc_state == PD_CC_AUDIO_ACC)
 		set_state(port, TC_OBJ(port), tc_audio_acc);
-
-	return 0;
 }
 
 /**
  * Attached.SRC
  */
-static unsigned int tc_attached_src(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_attached_src_sig[sig])(port);
-	return SUPER(ret, sig, 0);
-}
-
-static unsigned int tc_attached_src_entry(int port)
+static void tc_attached_src_entry(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1495,11 +1393,9 @@ static unsigned int tc_attached_src_entry(int port)
 			usb_mux_set(port, TYPEC_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 	}
-
-	return 0;
 }
 
-static unsigned int tc_attached_src_run(int port)
+static void tc_attached_src_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1526,13 +1422,10 @@ static unsigned int tc_attached_src_run(int port)
 #else
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
 #endif
-		return 0;
 	}
-
-	return 0;
 }
 
-static unsigned int tc_attached_src_exit(int port)
+static void tc_attached_src_exit(const int port)
 {
 	/*
 	 * A port that is supplying VCONN shall cease to supply it within
@@ -1548,8 +1441,6 @@ static unsigned int tc_attached_src_exit(int port)
 	 * Attached.SRC.
 	 */
 	tc_src_power_off(port);
-
-	return 0;
 }
 
 /**
@@ -1561,15 +1452,7 @@ static unsigned int tc_attached_src_exit(int port)
  *   Set power role to SOURCE
  */
 #ifdef CONFIG_USB_PD_TRY_SRC
-static unsigned int tc_try_src(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_try_src_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rp);
-}
-
-static unsigned int tc_try_src_entry(int port)
+static void tc_try_src_entry(const int port)
 {
 	tc[port].state_id = TRY_SRC;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
@@ -1577,10 +1460,9 @@ static unsigned int tc_try_src_entry(int port)
 	tc[port].cc_state = PD_CC_UNSET;
 	tc[port].try_wait_debounce = get_time().val + PD_T_DRP_TRY;
 	tc[port].timeout = get_time().val + PD_T_TRY_TIMEOUT;
-	return 0;
 }
 
-static unsigned int tc_try_src_run(int port)
+static void tc_try_src_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1623,8 +1505,6 @@ static unsigned int tc_try_src_run(int port)
 			set_state(port, TC_OBJ(port), tc_try_wait_snk);
 		}
 	}
-
-	return 0;
 }
 
 /**
@@ -1635,26 +1515,16 @@ static unsigned int tc_try_src_run(int port)
  *   Place Rd on CC
  *   Set power role to SINK
  */
-static unsigned int tc_try_wait_snk(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_try_wait_snk_sig[sig])(port);
-	return SUPER(ret, sig, tc_cc_rd);
-}
-
-static unsigned int tc_try_wait_snk_entry(int port)
+static void tc_try_wait_snk_entry(const int port)
 {
 	tc[port].state_id = TRY_WAIT_SNK;
 	CPRINTS("C%d: %s", port, tc_state_names[tc[port].state_id]);
 
 	tc[port].cc_state = PD_CC_UNSET;
 	tc[port].try_wait_debounce = get_time().val + PD_T_CC_DEBOUNCE;
-
-	return 0;
 }
 
-static unsigned int tc_try_wait_snk_run(int port)
+static void tc_try_wait_snk_run(const int port)
 {
 	int cc1;
 	int cc2;
@@ -1682,7 +1552,7 @@ static unsigned int tc_try_wait_snk_run(int port)
 	if ((get_time().val > tc[port].pd_debounce) &&
 						(new_cc_state == PD_CC_NONE)) {
 		set_state(port, TC_OBJ(port), tc_unattached_snk);
-		return 0;
+		return;
 	}
 
 	/*
@@ -1693,94 +1563,92 @@ static unsigned int tc_try_wait_snk_run(int port)
 					pd_is_vbus_present(port)) {
 		set_state(port, TC_OBJ(port), tc_attached_snk);
 	}
-
-	return 0;
 }
 
 #endif
 
-/**
- * Super State CC_RD
+
+/*
+ * Type-C states
  */
-static unsigned int tc_cc_rd(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_cc_rd_sig[sig])(port);
-	return SUPER(ret, sig, 0);
-}
-
-static unsigned int tc_cc_rd_entry(int port)
-{
-	/* Disable VCONN */
-	if (IS_ENABLED(CONFIG_USBC_VCONN))
-		set_vconn(port, 0);
-
-	/*
-	 * Both CC1 and CC2 pins shall be independently terminated to
-	 * ground through Rd.
-	 */
-	tcpm_set_cc(port, TYPEC_CC_RD);
-
-	/* Set power role to sink */
-	tc_set_power_role(port, PD_ROLE_SINK);
-	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
-
-	return 0;
-}
-
-/**
- * Super State CC_RP
- */
-static unsigned int tc_cc_rp(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_cc_rp_sig[sig])(port);
-	return SUPER(ret, sig, 0);
-}
-
-static unsigned int tc_cc_rp_entry(int port)
-{
-	/* Disable VCONN */
-	if (IS_ENABLED(CONFIG_USBC_VCONN))
-		set_vconn(port, 0);
-
-	/* Set power role to source */
-	tc_set_power_role(port, PD_ROLE_SOURCE);
-
-	/*
-	 * Both CC1 and CC2 pins shall be independently terminated to
-	 * ground through Rp.
-	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_cc(port, TYPEC_CC_RP);
-
-	return 0;
-}
-
-/**
- * Super State CC_OPEN
- */
-static unsigned int tc_cc_open(int port, enum signal sig)
-{
-	int ret;
-
-	ret = (*tc_cc_open_sig[sig])(port);
-	return SUPER(ret, sig, 0);
-}
-
-static unsigned int tc_cc_open_entry(int port)
-{
-	/* Disable VBUS */
-	pd_power_supply_reset(port);
-
-	/* Disable VCONN */
-	if (IS_ENABLED(CONFIG_USBC_VCONN))
-		set_vconn(port, 0);
-
-	/* Remove terminations from CC */
-	tcpm_set_cc(port, TYPEC_CC_OPEN);
-
-	return 0;
-}
+/* At botton so no need to forward declare all static methods */
+const usb_states tc_states[] = {
+	[TC_CC_OPEN] = {
+		.entry 	= tc_cc_open_entry,
+	},
+	[TC_CC_RD] = {
+		.entry 	= tc_cc_rd_entry,
+	},
+	[TC_CC_RP] = {
+		.entry 	= tc_cc_rp_entry,
+	},
+	[TC_DISABLED] = {
+		.entry 	= tc_disabled_entry,
+		.run 	= tc_disabled_run,
+		.exit 	= tc_disabled_exit,
+		.parent = &tc_states[TC_CC_OPEN],
+	},
+	[TC_ERROR_RECOVERY] = {
+		.entry 	= tc_error_recovery_entry,
+		.run 	= tc_error_recovery_run,
+		.parent = &tc_states[TC_CC_OPEN],
+	},
+	[TC_UNATTACHED_SNK] = {
+		.entry 	= tc_unattached_snk_entry,
+		.run 	= tc_unattached_snk_run,
+		.parent = &tc_states[TC_CC_RD],
+	},
+	[TC_ATTACH_WAIT_SNK] = {
+		.entry 	= tc_attach_wait_snk_entry,
+		.run 	= tc_attach_wait_snk_run,
+		.parent = &tc_states[TC_CC_RD],
+	},
+	[TC_ATTACHED_SNK] = {
+		.entry 	= tc_attached_snk_entry,
+		.run 	= tc_attached_snk_run,
+		.exit 	= tc_attached_snk_exit,
+	},
+	[TC_UNORIENTED_DB_ACC_SRC] = {
+		.entry 	= tc_unoriented_dbg_acc_src_entry,
+		.run 	= tc_unoriented_dbg_acc_src_run,
+		.parent = &tc_states[TC_CC_RP],
+	},
+	[TC_AUDIO_ACC] = {
+		.entry 	= tc_audio_acc_entry,
+		.run 	= tc_audio_acc_run,
+		.exit 	= tc_audio_acc_exit,
+		.parent = &tc_states[TC_CC_RP],
+	},
+	[TC_DBG_ACC_SNK] = {
+		.entry 	= tc_dbg_acc_snk_entry,
+		.run 	= tc_dbg_acc_snk_run,
+		.parent = &tc_states[TC_CC_RD],
+	},
+	[TC_UNATTACHED_SRC] = {
+		.entry 	= tc_unattached_src_entry,
+		.run 	= tc_unattached_src_run,
+		.parent = &tc_states[TC_CC_RP],
+	},
+	[TC_ATTACH_WAIT_SRC] = {
+		.entry 	= tc_attach_wait_src_entry,
+		.run 	= tc_attach_wait_src_run,
+		.parent = &tc_states[TC_CC_RP],
+	},
+	[TC_ATTACHED_SRC] = {
+		.entry 	= tc_attached_src_entry,
+		.run 	= tc_attached_src_run,
+		.exit 	= tc_attached_src_exit,
+	},
+#ifdef CONFIG_USB_PD_TRY_SRC
+	[TC_TRY_SRC] = {
+		.entry 	= tc_try_src_entry,
+		.run 	= tc_try_src_run,
+		.parent = &tc_states[TC_CC_RP],
+	},
+	[TC_TRY_WAIT_SNK] = {
+		.entry 	= tc_try_wait_snk_entry,
+		.run 	= tc_try_wait_snk_run,
+		.parent = &tc_states[TC_CC_RD],
+	},
+#endif /* CONFIG_USB_PD_TRY_SRC */
+};

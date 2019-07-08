@@ -20,7 +20,7 @@ struct type_c {
 	 * object that keeps track of the current and last state
 	 * of the state machine.
 	 */
-	struct sm_obj obj;
+	struct sm_ctx ctx;
 	/* state id */
 	enum typec_state_id state_id;
 	/* current port power role (SOURCE or SINK) */

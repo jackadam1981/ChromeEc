@@ -68,6 +68,22 @@ DECLARE_STATE(tc, host_rp3_ct_rd, NOOP_EXIT);
 DECLARE_STATE(tc, host_rp3_ct_rpu, NOOP_EXIT);
 DECLARE_STATE(tc, host_rpu_ct_rd, NOOP_EXIT);
 
+
+/* I didn't convert the above DECLARE_STATE into this form. See common/usb_tc_drp_acc_trysrc_sm.c */
+enum usb_tc_state {
+	TC_CC_OPEN,
+	TC_CC_RD,
+	TC_CC_RP,
+	TC_DISABLED,
+	TC_ERROR_RECOVERY,
+	TC_UNATTACHED_SNK,
+	TC_ATTACH_WAIT_SNK,
+	TC_ATTACHED_SNK,
+	//...
+};
+
+const usb_states tc_states[];
+
 void tc_reset_support_timer(int port)
 {
 	tc[port].support_timer_reset |= SUPPORT_TIMER_RESET_REQUEST;
@@ -76,14 +92,14 @@ void tc_reset_support_timer(int port)
 void tc_state_init(int port)
 {
 	int res = 0;
-	sm_state this_state;
+	enum usb_tc_state this_state;
 
 	res = tc_restart_tcpc(port);
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
-	this_state = res ? tc_disabled : PD_DEFAULT_STATE(port);
+	this_state = res ? TC_DISABLED : PD_DEFAULT_STATE(port);
 
-	init_state(port, TC_OBJ(port), this_state);
+	set_state(port, TC_OBJ(port), &tc_states[this_state]);
 
 	/* Disable pd state machines */
 	tc[port].pd_enable = 0;
