@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "049a4823_404c29b3",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-08T13:33:28Z",
+      "side": 1,
+      "message": "if we use deps-$(CONFIG_ISH_PM_AONTASK)+\u003d \nhere instead, then we don\u0027t need to change the Makefile in the root directory\n\nWe might also not need the surrounding \"ifeq ($(CONFIG_ISH_PM_AONTASK),y)\" for most of these rules then either",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "d9e8bb49f6e0687f7a73b85f21671eaf6ac3c80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
