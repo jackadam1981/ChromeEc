@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ab42ec4_84653434",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-08T20:25:01Z",
+      "side": 1,
+      "message": "Why do you have this?",
+      "range": {
+        "startLine": 955,
+        "startChar": 32,
+        "endLine": 955,
+        "endChar": 45
+      },
+      "revId": "cf48ba19e670177dbf12b76aaca328ed2730f101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e55a111_9ffdfc9b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-08T20:25:01Z",
+      "side": 1,
+      "message": "not capacitance?",
+      "range": {
+        "startLine": 958,
+        "startChar": 25,
+        "endLine": 958,
+        "endChar": 35
+      },
+      "revId": "cf48ba19e670177dbf12b76aaca328ed2730f101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca8df40_89f7126f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-08T20:25:01Z",
+      "side": 1,
+      "message": "This makes a SDP charger attempted always 3 times. It doesn\u0027t seem right. Don\u0027t we want to retry detection only when there is an error?",
+      "range": {
+        "startLine": 992,
+        "startChar": 0,
+        "endLine": 993,
+        "endChar": 30
+      },
+      "revId": "cf48ba19e670177dbf12b76aaca328ed2730f101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
