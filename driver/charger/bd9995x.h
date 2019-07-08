@@ -8,8 +8,8 @@
 #ifndef __CROS_EC_BD9995X_H
 #define __CROS_EC_BD9995X_H
 
-#define BD9995X_ADDR__7b		0x09
-#define I2C_ADDR_CHARGER__7b	BD9995X_ADDR__7b
+#define BD9995X_ADDR__7bf		0x09
+#define I2C_ADDR_CHARGER__7bf	BD9995X_ADDR__7bf
 
 #define BD9995X_CHARGER_NAME	"bd9995x"
 #define BD99955_CHIP_ID		0x221

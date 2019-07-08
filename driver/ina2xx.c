@@ -17,15 +17,15 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
 /* I2C base address */
-#define INA2XX_I2C_ADDR__7b (0x40)
+#define INA2XX_I2C_ADDR__7bf 0x40
 
 uint16_t ina2xx_read(uint8_t idx, uint8_t reg)
 {
 	int res;
 	int val;
-	uint8_t addr__7b = INA2XX_I2C_ADDR__7b | idx;
 
-	res = i2c_read16__7b(I2C_PORT_MASTER, addr__7b, reg, &val);
+	res = i2c_read16__7bf(I2C_PORT_MASTER, INA2XX_I2C_ADDR__7bf | idx,
+			 reg, &val);
 	if (res) {
 		CPRINTS("INA2XX I2C read failed");
 		return 0x0bad;
@@ -36,10 +36,10 @@ uint16_t ina2xx_read(uint8_t idx, uint8_t reg)
 int ina2xx_write(uint8_t idx, uint8_t reg, uint16_t val)
 {
 	int res;
-	uint8_t addr__7b = INA2XX_I2C_ADDR__7b | idx;
 	uint16_t be_val = (val >> 8) | ((val & 0xff) << 8);
 
-	res = i2c_write16__7b(I2C_PORT_MASTER, addr__7b, reg, be_val);
+	res = i2c_write16__7bf(I2C_PORT_MASTER, INA2XX_I2C_ADDR__7bf | idx,
+			  reg, be_val);
 	if (res)
 		CPRINTS("INA2XX I2C write failed");
 	return res;

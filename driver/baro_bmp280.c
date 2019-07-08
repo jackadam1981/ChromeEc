@@ -98,7 +98,7 @@ static int bmp280_get_calib_param(const struct motion_sensor_t *s)
 	uint8_t a_data_u8[BMP280_CALIB_DATA_SIZE] = {0};
 	struct bmp280_drv_data_t *data = BMP280_GET_DATA(s);
 
-	ret = i2c_read_block__7b(s->port, s->addr__8b >> 1,
+	ret = i2c_read_block__7bf(s->port, s->i2c_spi_addr__7bf,
 			BMP280_TEMPERATURE_CALIB_DIG_T1_LSB_REG,
 			a_data_u8, BMP280_CALIB_DATA_SIZE);
 
@@ -129,7 +129,7 @@ static int bmp280_read_uncomp_pressure(const struct motion_sensor_t *s,
 	int ret;
 	uint8_t a_data_u8[BMP280_PRESSURE_DATA_SIZE] = {0};
 
-	ret = i2c_read_block__7b(s->port, s->addr__8b >> 1,
+	ret = i2c_read_block__7bf(s->port, s->i2c_spi_addr__7bf,
 			BMP280_PRESSURE_MSB_REG,
 			a_data_u8, BMP280_PRESSURE_DATA_SIZE);
 
@@ -218,13 +218,13 @@ static int bmp280_set_standby_durn(const struct motion_sensor_t *s,
 {
 	int ret, val;
 
-	ret = i2c_read8__7b(s->port, s->addr__8b >> 1,
+	ret = i2c_read8__7bf(s->port, s->i2c_spi_addr__7bf,
 			BMP280_CONFIG_REG, &val);
 
 	if (ret == EC_SUCCESS) {
 		val = (val & 0xE0) | ((durn << 5) & 0xE0);
 		/* write the standby duration*/
-		ret = i2c_write8__7b(s->port, s->addr__8b >> 1,
+		ret = i2c_write8__7bf(s->port, s->i2c_spi_addr__7bf,
 			   BMP280_CONFIG_REG, val);
 	}
 
@@ -239,7 +239,8 @@ static int bmp280_set_power_mode(const struct motion_sensor_t *s,
 	val = (BMP280_OVERSAMP_TEMP << 5) +
 		(BMP280_OVERSAMP_PRES << 2) + power_mode;
 
-	return i2c_write8__7b(s->port, s->addr__8b >> 1, BMP280_CTRL_MEAS_REG, val);
+	return i2c_write8__7bf(s->port, s->i2c_spi_addr__7bf,
+			  BMP280_CTRL_MEAS_REG, val);
 }
 
 static int bmp280_set_range(const struct motion_sensor_t *s,
@@ -277,7 +278,7 @@ static int bmp280_init(const struct motion_sensor_t *s)
 		return EC_ERROR_INVAL;
 
 	/* Read chip id */
-	ret = i2c_read8__7b(s->port, s->addr__8b >> 1,
+	ret = i2c_read8__7bf(s->port, s->i2c_spi_addr__7bf,
 				BMP280_CHIP_ID_REG, &val);
 	if (ret)
 		return ret;
@@ -368,16 +369,16 @@ static int bmp280_get_data_rate(const struct motion_sensor_t *s)
 }
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
-static int raw_read8__8b(const int port, const int addr__8b,
-			    const int reg, int *data)
+static int raw_read8__7bf(const int port, const uint16_t i2c_addr__7bf,
+		     const int reg, int *data)
 {
-	return i2c_read8__7b(port, addr__8b >> 1, reg, data);
+	return i2c_read8__7bf(port, i2c_addr__7bf, reg, data);
 }
 
-static int raw_write8__8b(const int port, const int addr__8b,
-			    const int reg, int data)
+static int raw_write8__7bf(const int port, const uint16_t i2c_addr__7bf,
+		      const int reg, int data)
 {
-	return i2c_write8__7b(port, addr__8b >> 1, reg, data);
+	return i2c_write8__7bf(port, i2c_addr__7bf, reg, data);
 }
 #endif
 
@@ -397,7 +398,7 @@ struct i2c_stress_test_dev bmp280_i2c_stress_test_dev = {
 		.read_val = BMP280_CHIP_ID,
 		.write_reg = BMP280_CONFIG_REG,
 	},
-	.i2c_read__8b = &raw_read8__8b,
-	.i2c_write__8b = &raw_write8__8b,
+	.i2c_read__7bf = &raw_read8__7bf,
+	.i2c_write__7bf = &raw_write8__7bf,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_ACCEL */

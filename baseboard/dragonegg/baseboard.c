@@ -158,7 +158,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USBC1C2,
-			.addr__7b = TUSB422_I2C_ADDR__7b,
+			.addr__7bf = TUSB422_I2C_ADDR__7bf,
 		},
 		.drv = &tusb422_tcpm_drv,
 		/* Alert is active-low, push-pull */
@@ -171,19 +171,19 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.i2c_port = I2C_PORT_USBC0,
-		.i2c_addr__7b = SN5S330_ADDR0__7b,
+		.i2c_addr__7bf = SN5S330_ADDR0__7bf,
 		.drv = &sn5s330_drv
 	},
 
 	[USB_PD_PORT_ITE_1] = {
 		.i2c_port = I2C_PORT_USBC1C2,
-		.i2c_addr__7b = SYV682X_ADDR0__7b,
+		.i2c_addr__7bf = SYV682X_ADDR0__7bf,
 		.drv = &syv682x_drv
 	},
 
 	[USB_PD_PORT_TUSB422_2] = {
 		.i2c_port = I2C_PORT_USBC1C2,
-		.i2c_addr__7b = NX20P3481_ADDR2__7b,
+		.i2c_addr__7bf = NX20P3481_ADDR2__7bf,
 		.drv = &nx20p348x_drv,
 	},
 };
@@ -201,7 +201,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 
 	[USB_PD_PORT_TUSB422_2] = {
-		.port_addr__7b = 0,
+		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},

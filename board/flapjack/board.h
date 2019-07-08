@@ -225,10 +225,10 @@
 #define I2C_PORT_EEPROM		1
 
 /* I2C addresses */
-#define I2C_ADDR_EEPROM__7b		0x50
+#define I2C_ADDR_EEPROM__7bf		0x50
 
 /* Route sbs host requests to virtual battery driver */
-#define VIRTUAL_BATTERY_ADDR__7b 0x16
+#define VIRTUAL_BATTERY_ADDR__7bf	0x16
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */

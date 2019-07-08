@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_ANX7447_H
 #define __CROS_EC_USB_PD_TCPM_ANX7447_H
 
+#include "common.h"
+
 /* Registers: TCPC slave address used */
 #define ANX7447_REG_TCPC_SWITCH_0	0xB4
 #define ANX7447_REG_TCPC_SWITCH_1	0xB5
@@ -91,19 +93,19 @@
 /* End of defines used for CONFIG_USB_PD_TCPM_ANX7447_OCM_ERASE_COMMAND */
 
 struct anx7447_i2c_addr {
-	int tcpc_slave_addr__7b;
-	int spi_slave_addr__7b;
+	uint16_t	tcpc_slave_addr__7bf;
+	uint16_t	spi_slave_addr__7bf;
 };
 
-#define AN7447_TCPC0_I2C_ADDR__7b 0x2C
-#define AN7447_TCPC1_I2C_ADDR__7b 0x2B
-#define AN7447_TCPC2_I2C_ADDR__7b 0x2A
-#define AN7447_TCPC3_I2C_ADDR__7b 0x29
+#define AN7447_TCPC0_I2C_ADDR__7bf	(0x2C)
+#define AN7447_TCPC1_I2C_ADDR__7bf	(0x2B)
+#define AN7447_TCPC2_I2C_ADDR__7bf	(0x2A)
+#define AN7447_TCPC3_I2C_ADDR__7bf	(0x29)
 
-#define AN7447_SPI0_I2C_ADDR__7b 0x3F
-#define AN7447_SPI1_I2C_ADDR__7b 0x37
-#define AN7447_SPI2_I2C_ADDR__7b 0x32
-#define AN7447_SPI3_I2C_ADDR__7b 0x31
+#define AN7447_SPI0_I2C_ADDR__7bf	(0x3F)
+#define AN7447_SPI1_I2C_ADDR__7bf	(0x37)
+#define AN7447_SPI2_I2C_ADDR__7bf	(0x32)
+#define AN7447_SPI3_I2C_ADDR__7bf	(0x31)
 
 /*
  * Time TEST_R must be held high for a reset

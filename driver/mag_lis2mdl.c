@@ -148,7 +148,7 @@ int lis2mdl_thru_lsm6dsm_init(const struct motion_sensor_t *s)
 	/* Magnetometer in cascade mode */
 	ret = sensorhub_check_and_rst(
 			LSM6DSM_MAIN_SENSOR(s),
-			CONFIG_ACCELGYRO_SEC_ADDR__8b,
+			CONFIG_ACCELGYRO_SEC_ADDR__7bf,
 			LIS2MDL_WHO_AM_I_REG, LIS2MDL_WHO_AM_I,
 			LIS2MDL_CFG_REG_A_ADDR, LIS2MDL_FLAG_SW_RESET);
 	if (ret != EC_SUCCESS)
@@ -156,7 +156,7 @@ int lis2mdl_thru_lsm6dsm_init(const struct motion_sensor_t *s)
 
 	ret = sensorhub_config_ext_reg(
 			LSM6DSM_MAIN_SENSOR(s),
-			CONFIG_ACCELGYRO_SEC_ADDR__8b,
+			CONFIG_ACCELGYRO_SEC_ADDR__7bf,
 			LIS2MDL_CFG_REG_A_ADDR,
 			LIS2MDL_ODR_50HZ | LIS2MDL_MODE_CONT);
 	if (ret != EC_SUCCESS)
@@ -164,7 +164,7 @@ int lis2mdl_thru_lsm6dsm_init(const struct motion_sensor_t *s)
 
 	ret = sensorhub_config_slv0_read(
 			LSM6DSM_MAIN_SENSOR(s),
-			CONFIG_ACCELGYRO_SEC_ADDR__8b,
+			CONFIG_ACCELGYRO_SEC_ADDR__7bf,
 			LIS2MDL_OUT_REG, OUT_XYZ_SIZE);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
@@ -200,7 +200,8 @@ static int lis2mdl_is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
 
-	ret = st_raw_read8__8b(s->port, s->addr__8b, LIS2MDL_STATUS_REG, &tmp);
+	ret = st_raw_read8__7bf(s->port, s->i2c_spi_addr__7bf,
+			   LIS2MDL_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
 		*ready = 0;
 		return ret;
@@ -241,8 +242,8 @@ int lis2mdl_read(const struct motion_sensor_t *s, intv3_t v)
 	}
 
 	mutex_lock(s->mutex);
-	ret = st_raw_read_n__8b(s->port, s->addr__8b, LIS2MDL_OUT_REG, raw,
-			    OUT_XYZ_SIZE);
+	ret = st_raw_read_n__7bf(s->port, s->i2c_spi_addr__7bf,
+			    LIS2MDL_OUT_REG, raw, OUT_XYZ_SIZE);
 	mutex_unlock(s->mutex);
 	if (ret == EC_SUCCESS) {
 		lis2mdl_normalize(s, v, raw);
@@ -262,8 +263,8 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 
 	/* Check who am I value */
 	do {
-		ret = st_raw_read8__8b(s->port, LIS2MDL_ADDR__7b << 1, LIS2MDL_WHO_AM_I_REG,
-				   &who_am_i);
+		ret = st_raw_read8__7bf(s->port, LIS2MDL_ADDR__7bf,
+				   LIS2MDL_WHO_AM_I_REG, &who_am_i);
 		if (ret != EC_SUCCESS) {
 			/* Make sure we wait for the chip to start up. Sleep 1ms
 			 * and try again.
@@ -282,7 +283,8 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 	mutex_lock(s->mutex);
 
 	/* Reset the sensor */
-	ret = st_raw_write8__8b(s->port, LIS2MDL_ADDR__7b << 1, LIS2MDL_CFG_REG_A_ADDR,
+	ret = st_raw_write8__7bf(s->port, LIS2MDL_ADDR__7bf,
+			    LIS2MDL_CFG_REG_A_ADDR,
 			    LIS2MDL_FLAG_SW_RESET);
 	if (ret != EC_SUCCESS)
 		goto lis2mdl_init_error;
@@ -361,13 +363,13 @@ int lis2mdl_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 	mutex_lock(s->mutex);
 	if (rate <= 0) {
-		ret = st_raw_write8__8b(s->port, LIS2MDL_ADDR__7b << 1,
+		ret = st_raw_write8__7bf(s->port, LIS2MDL_ADDR__7bf,
 				    LIS2MDL_CFG_REG_A_ADDR,
 				    LIS2MDL_FLAG_SW_RESET);
 	} else {
 		/* Add continuous and temp compensation flags */
 		reg_val |= LIS2MDL_MODE_CONT | LIS2MDL_FLAG_TEMP_COMPENSATION;
-		ret = st_raw_write8__8b(s->port, LIS2MDL_ADDR__7b << 1,
+		ret = st_raw_write8__7bf(s->port, LIS2MDL_ADDR__7bf,
 				    LIS2MDL_CFG_REG_A_ADDR, reg_val);
 	}
 

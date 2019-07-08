@@ -130,7 +130,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr__7b = AN7447_TCPC0_I2C_ADDR__7b,
+			.addr__7bf = AN7447_TCPC0_I2C_ADDR__7bf,
 		},
 		.drv = &anx7447_tcpm_drv,
 		.flags = TCPC_FLAGS_RESET_ACTIVE_HIGH,
@@ -139,7 +139,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC1,
-			.addr__7b = PS8751_I2C_ADDR1__7b,
+			.addr__7bf = PS8751_I2C_ADDR1__7bf,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 		.flags = 0,
@@ -160,12 +160,12 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 const struct pi3usb2901_config_t pi3usb2901_bc12_chips[] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.i2c_port = I2C_PORT_PPC0,
-		.i2c_addr__7b = PI3USB9201_I2C_ADDR_3__7b,
+		.i2c_addr__7bf = PI3USB9201_I2C_ADDR_3__7bf,
 	},
 
 	[USB_PD_PORT_TCPC_1] = {
 		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr__7b = PI3USB9201_I2C_ADDR_3__7b,
+		.i2c_addr__7bf = PI3USB9201_I2C_ADDR_3__7bf,
 	},
 };
 
@@ -216,7 +216,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_lid_mutex,
 		.drv_data = &g_bma255_data,
 		.port = I2C_PORT_ACCEL,
-		.addr__8b = BMA2x2_I2C_ADDR1__7b << 1,
+		.i2c_spi_addr__7bf = BMA2x2_I2C_ADDR1__7bf,
 		.rot_standard_ref = &lid_standard_ref,
 		.min_frequency = BMA255_ACCEL_MIN_FREQ,
 		.max_frequency = BMA255_ACCEL_MAX_FREQ,
@@ -243,7 +243,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_ACCEL,
-		.addr__8b = BMI160_ADDR0__8b,
+		.i2c_spi_addr__7bf = BMI160_ADDR0__7bf,
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI160_ACCEL_MIN_FREQ,
 		.max_frequency = BMI160_ACCEL_MAX_FREQ,
@@ -269,7 +269,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_ACCEL,
-		.addr__8b = BMI160_ADDR0__8b,
+		.i2c_spi_addr__7bf = BMI160_ADDR0__7bf,
 		.default_range = 1000, /* dps */
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI160_GYRO_MIN_FREQ,
@@ -285,7 +285,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &opt3001_drv,
 		.drv_data = &g_opt3001_data,
 		.port = I2C_PORT_ACCEL,
-		.addr__8b = OPT3001_I2C_ADDR__8b,
+		.i2c_spi_addr__7bf = OPT3001_I2C_ADDR__7bf,
 		.rot_standard_ref = NULL,
 		.default_range = 0x2b11a1,
 		.min_frequency = OPT3001_LIGHT_MIN_FREQ,

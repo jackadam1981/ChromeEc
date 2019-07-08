@@ -12,7 +12,7 @@
 #include "util.h"
 
 /* I2C address */
-#define LP5562_I2C_ADDR__7b (0x30)
+#define LP5562_I2C_ADDR__7bf (0x30)
 
 inline int lp5562_write(uint8_t reg, uint8_t val)
 {

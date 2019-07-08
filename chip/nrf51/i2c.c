@@ -141,13 +141,13 @@ static void handle_i2c_error(int port, int rv)
 	i2c_recover(port);
 }
 
-static int i2c_master_write__7b(int port, int slave_addr__7b, const uint8_t *data,
-	     int size, int stop)
+static int i2c_master_write__7bf(const int port, const uint16_t i2c_addr__7bf,
+			    const uint8_t *data, int size, int stop)
 {
 	int bytes_sent;
 	int timeout = I2C_TIMEOUT;
 
-	NRF51_TWI_ADDRESS__7b(port) = slave_addr__7b;
+	NRF51_TWI_ADDRESS__7b(port) = I2C_ADDR__7b(i2c_addr__7bf) << 1;
 
 	/* Clear the sent bit */
 	NRF51_TWI_TXDSENT(port) = 0;
@@ -187,12 +187,13 @@ static int i2c_master_write__7b(int port, int slave_addr__7b, const uint8_t *dat
 	return EC_SUCCESS;
 }
 
-static int i2c_master_read__7b(int port, int slave_addr__7b, uint8_t *data, int size)
+static int i2c_master_read__7bf(const int port, const uint16_t i2c__addr__7bf,
+			   uint8_t *data, int size)
 {
 	int curr_byte;
 	int timeout = I2C_TIMEOUT;
 
-	NRF51_TWI_ADDRESS__7b(port) = slave_addr__7b;
+	NRF51_TWI_ADDRESS__7b(port) = I2C_ADDR__7b(i2c_addr__7bf) << 1;
 
 	if (size == 1) /* Last byte: stop after this one. */
 		NRF51_PPI_TEP(i2c_ppi_chan[port]) =
@@ -252,7 +253,8 @@ static int i2c_master_read__7b(int port, int slave_addr__7b, uint8_t *data, int 
 	return EC_SUCCESS;
 }
 
-int chip_i2c_xfer__7b(int port, int slave_addr__7b, const uint8_t *out, int out_bytes,
+int chip_i2c_xfer__7bf(const int port, const uint_t i2c_addr__7bf,
+		  const uint8_t *out, int out_bytes,
 		  uint8_t *in, int in_bytes, int flags)
 {
 	int rv = EC_SUCCESS;
@@ -261,10 +263,10 @@ int chip_i2c_xfer__7b(int port, int slave_addr__7b, const uint8_t *out, int out_
 	ASSERT(in || !in_bytes);
 
 	if (out_bytes)
-		rv = i2c_master_write__7b(port, slave_addr__7b, out, out_bytes,
+		rv = i2c_master_write__7bf(port, i2c_addr__7bf, out, out_bytes,
 				 in_bytes ? 0 : 1);
 	if (rv == EC_SUCCESS && in_bytes)
-		rv = i2c_master_read__7b(port, slave_addr__7b, in, in_bytes);
+		rv = i2c_master_read__7bf(port, i2c_addr__7bf, in, in_bytes);
 
 	handle_i2c_error(port, rv);
 

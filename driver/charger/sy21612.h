@@ -10,8 +10,8 @@
 
 #include "gpio.h"
 
-#ifndef SY21612_ADDR__7b
-#define SY21612_ADDR__7b		0x71
+#ifndef SY21612_ADDR__7bf
+#define SY21612_ADDR__7bf		0x71
 #endif
 
 enum sy21612_switching_freq {

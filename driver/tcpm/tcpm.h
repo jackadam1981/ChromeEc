@@ -27,55 +27,61 @@
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 static inline int tcpc_write(int port, int reg, int val)
 {
-	return i2c_write8__7b(tcpc_config[port].i2c_info.port,
-			      tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_write8__7bf(tcpc_config[port].i2c_info.port,
+			  tcpc_config[port].i2c_info.addr__7bf,
+			  reg, val);
 }
 
 static inline int tcpc_write16(int port, int reg, int val)
 {
-	return i2c_write16__7b(tcpc_config[port].i2c_info.port,
-			       tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_write16__7bf(tcpc_config[port].i2c_info.port,
+			   tcpc_config[port].i2c_info.addr__7bf,
+			   reg, val);
 }
 
 static inline int tcpc_read(int port, int reg, int *val)
 {
-	return i2c_read8__7b(tcpc_config[port].i2c_info.port,
-			     tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_read8__7bf(tcpc_config[port].i2c_info.port,
+			 tcpc_config[port].i2c_info.addr__7bf,
+			 reg, val);
 }
 
 static inline int tcpc_read16(int port, int reg, int *val)
 {
-	return i2c_read16__7b(tcpc_config[port].i2c_info.port,
-			      tcpc_config[port].i2c_info.addr__7b, reg, val);
+	return i2c_read16__7bf(tcpc_config[port].i2c_info.port,
+			  tcpc_config[port].i2c_info.addr__7bf,
+			  reg, val);
 }
 
 static inline int tcpc_xfer(int port, const uint8_t *out, int out_size,
 			    uint8_t *in, int in_size)
 {
-	return i2c_xfer__7b(tcpc_config[port].i2c_info.port,
-			    tcpc_config[port].i2c_info.addr__7b,
-			    out, out_size, in, in_size);
+	return i2c_xfer__7bf(tcpc_config[port].i2c_info.port,
+			tcpc_config[port].i2c_info.addr__7bf,
+			out, out_size, in, in_size);
 }
 
 static inline int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 			    uint8_t *in, int in_size, int flags)
 {
-	return i2c_xfer_unlocked__7b(tcpc_config[port].i2c_info.port,
-				     tcpc_config[port].i2c_info.addr__7b,
-				     out, out_size, in, in_size, flags);
+	return i2c_xfer_unlocked__7bf(tcpc_config[port].i2c_info.port,
+				 tcpc_config[port].i2c_info.addr__7bf,
+				 out, out_size, in, in_size, flags);
 }
 
 static inline int tcpc_read_block(int port, int reg, uint8_t *in, int size)
 {
-	return i2c_read_block__7b(tcpc_config[port].i2c_info.port,
-				  tcpc_config[port].i2c_info.addr__7b, reg, in, size);
+	return i2c_read_block__7bf(tcpc_config[port].i2c_info.port,
+			      tcpc_config[port].i2c_info.addr__7bf,
+			      reg, in, size);
 }
 
 static inline int tcpc_write_block(int port, int reg,
 		const uint8_t *out, int size)
 {
-	return i2c_write_block__7b(tcpc_config[port].i2c_info.port,
-				   tcpc_config[port].i2c_info.addr__7b, reg, out, size);
+	return i2c_write_block__7bf(tcpc_config[port].i2c_info.port,
+			       tcpc_config[port].i2c_info.addr__7bf,
+			       reg, out, size);
 }
 
 #else /* !CONFIG_USB_PD_TCPC_LOW_POWER */
@@ -94,7 +100,7 @@ int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 
 static inline void tcpc_lock(int port, int lock)
 {
-	i2c_lock(port, lock);
+	i2c_lock(tcpc_config[port].i2c_info.port, lock);
 }
 
 /* TCPM driver wrapper function */
@@ -219,13 +225,13 @@ static inline int tcpm_enter_low_power_mode(int port)
 #endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
-static inline int tcpc_i2c_read__8b(const int port, const int addr,
+static inline int tcpc_i2c_read__7bf(const int port, const uint16_t addr__7bf,
 				const int reg, int *data)
 {
 	return tcpc_read(port, reg, data);
 }
 
-static inline int tcpc_i2c_write__8b(const int port, const int addr,
+static inline int tcpc_i2c_write__7bf(const int port, const uint16_t addr__7bf,
 				 const int reg, int data)
 {
 	return tcpc_write(port, reg, data);

@@ -37,7 +37,7 @@
 #define CR50_I2C_SUBCLASS  82
 #define CR50_I2C_PROTOCOL  1
 
-#define CROS_CMD_ADDR__7b		USB_I2C_CMD_ADDR__7b
+#define CROS_CMD_ADDR__7bf		USB_I2C_CMD_ADDR__7bf
 #define CROS_CMD_ITE_SYNC	0
 
 /* DBGR I2C addresses */
@@ -828,7 +828,7 @@ static int ccd_trigger_special_waveform(struct common_hnd *chnd)
 	size_t rsize;
 	uint8_t req[] = {
 		0, /* Port 0. Might be necessary to modify. */
-		CROS_CMD_ADDR__7b, /* Chrome OS dedicated address. */
+		CROS_CMD_ADDR__7bf, /* Chrome OS dedicated address. */
 		1,	/* Will send a single byte command. */
 		0,	/* No need to read back anything. */
 		CROS_CMD_ITE_SYNC
