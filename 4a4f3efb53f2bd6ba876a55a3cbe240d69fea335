@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d4bdb3e_1a4482ac",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-08T20:08:45Z",
+      "side": 1,
+      "message": "this only initializes the first word, no?",
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5697e93c_569eeef2",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-08T20:08:45Z",
+      "side": 1,
+      "message": "So in your upcoming verisign cl, you also have these zeros passed in? Why?\nCan you not just pass in NULL, 0 here? Zero entropy is zero.",
+      "range": {
+        "startLine": 169,
+        "startChar": 24,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97eae689_aa3280ba",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-08T20:08:45Z",
+      "side": 1,
+      "message": "Did you verify against it yet? It\u0027ll be more convincing to first land the test, and then land the verisign code w/ zero changes to the test ;-)",
+      "range": {
+        "startLine": 204,
+        "startChar": 5,
+        "endLine": 204,
+        "endChar": 9
+      },
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
