@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b06e99cf_f1da5caf",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-08T22:56:40Z",
+      "side": 1,
+      "message": "Happened to notice that EC recognized \u0027restore\u0027 only. \nConsidering the reason of double linefeed at line 209~2010, it seems that there is a bug in EC UART input.",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe5c191_7c1bb0b4",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-08T22:56:40Z",
+      "side": 1,
+      "message": "Let it increase only if it gets an expected character to avoid a false pass judgement.",
+      "range": {
+        "startLine": 338,
+        "startChar": 10,
+        "endLine": 338,
+        "endChar": 30
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
