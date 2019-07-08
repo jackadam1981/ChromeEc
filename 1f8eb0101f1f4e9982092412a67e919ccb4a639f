@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feeab692_19f9d098",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-08T14:54:41Z",
+      "side": 1,
+      "message": "Can you show what like 10 lines of servod debug output looked like before and after?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "1f8eb0101f1f4e9982092412a67e919ccb4a639f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "427ffbae_41bc1000",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-08T14:54:41Z",
+      "side": 1,
+      "message": "raw_debug",
+      "range": {
+        "startLine": 812,
+        "startChar": 36,
+        "endLine": 812,
+        "endChar": 53
+      },
+      "revId": "1f8eb0101f1f4e9982092412a67e919ccb4a639f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
