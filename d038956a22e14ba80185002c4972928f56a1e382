@@ -94,6 +94,30 @@
       "revId": "d038956a22e14ba80185002c4972928f56a1e382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6cdb5c_05459dd5",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-08T18:20:22Z",
+      "side": 1,
+      "message": "I still don\u0027t see this to be adding much safety and feel that a non packed equivalent structure is needed.",
+      "parentUuid": "0d907520_af91a240",
+      "range": {
+        "startLine": 809,
+        "startChar": 15,
+        "endLine": 809,
+        "endChar": 16
+      },
+      "revId": "d038956a22e14ba80185002c4972928f56a1e382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
