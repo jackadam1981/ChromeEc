@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "c9f03c54_494e7dff",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-08T20:14:05Z",
+      "side": 1,
+      "message": "This picks raw 256 bit; there needs to be p256_pick and loop to make sure output x is 0 \u003c x \u003c p-1",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5697e93c_569eeef2",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 2
