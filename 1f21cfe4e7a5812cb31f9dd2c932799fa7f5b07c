@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6e75e819_ddf4255f",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-09T23:57:04Z",
+      "side": 1,
+      "message": "If CONFIG_IO_EXPANDER isn\u0027t defined, we can resurrect the definition in the chip gpio.c to get rid of the common layer:\n\n  #ifndef CONFIG_IO_EXPANDER\n  __override int gpio_get_level(enum gpio_signal signal)\n  {\n     ...\n  }\n  #endif\n\nor \n\n  #define gpio_get_level(x) chip_gpio_get_level(x)\n\nas you described in gpio.h.\n\nI doubt LTO can get rid of run-time overhead because \u0027signal\u0027 is run-time knowledge. The code size increases by 64 bytes (for get_level with CONFIG_LTO npcx5):\n\n  ldr     r3, [pc, #24]\n  ldr     r2, [pc, #28]\n  add.w   r3, r3, r0, lsl #4\n  movs    r1, #12\n  ldr     r3, [r3, #12]\n  lsrs    r3, r3, #28\n  mla     r3, r1, r3, r2\n  ldr.w   r3, [r3, #504]  ; 0x1f8\n  ldr     r3, [r3, #4]\n  bx      r3\n\nIs the overhead significant? What are the operations which you suspect may break because of this overhead? If that\u0027s not on a primary path, I would like to make the indirection as default and introduce CONFIG_FAST_GPIO or something for direct calls.",
+      "parentUuid": "230955de_bde0f598",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 1
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f30d78b_23c033a0",
         "filename": "include/gpio.h",
         "patchSetId": 3
