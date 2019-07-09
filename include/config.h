@@ -2492,7 +2492,15 @@
  * Enable keypad (a palm-sized keyboard section usually placed on the far right)
  */
 #undef CONFIG_KEYBOARD_KEYPAD
-/*****************************************************************************/
+
+/*
+ * Enables the directly connected keyboard pins and drivers on a particular
+ * chip. You might want this disabled if the keyboard is indirectly connected
+ * to the EC, perhaps through an I2C controller.
+ */
+#ifdef HAS_TASK_KEYSCAN
+#define CONFIG_KEYBOARD_RAW
+#endif
 
 /* Support common LED interface */
 #undef CONFIG_LED_COMMON

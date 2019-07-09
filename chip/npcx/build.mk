@@ -35,7 +35,7 @@ chip-$(CONFIG_CEC)+=cec.o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
-chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
+chip-$(CONFIG_KEYBOARD_RAW)+=keyboard_raw.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=apm.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=wov.o
 
