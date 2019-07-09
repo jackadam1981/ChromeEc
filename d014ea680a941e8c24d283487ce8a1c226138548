@@ -520,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "56b69e14_7ef49003",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T22:18:38Z",
+      "side": 1,
+      "message": "This is to wake up NPCX7 from its deep sleep.\nGrunt and Octopus has CONFIG_LOW_POWER_S0, which allows EC a deep sleep even AP is in S0.\nFrom my manual experiment, NPCX7 falls in deep sleep after 15 second idle time.\nOnce it is in deep sleep, the first one or two bytes from UART input wake up EC, but they are broken, like \u0027A\u0027(0x41) is recognized as 0xD0.\n\nI tested it with a EC binary without CONFIG_LOW_POWER_S0, and this loss didn\u0027t occur while AP is on.",
+      "parentUuid": "fbc7154f_1d62334f",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 197,
+        "endChar": 64
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1103cb_7e183729",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 8

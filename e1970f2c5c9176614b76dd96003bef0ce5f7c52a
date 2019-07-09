@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "44eb3094_aa88031e",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T22:18:38Z",
+      "side": 1,
+      "message": "This is to wake up EC from its deep sleep.\nEC might be in deep sleep when the test is doing a cleanup at the end. Once EC finished chargen output transfer, then it has an idle time until it gets the cleanup commands, and sometimes it is long enough to fall in deep sleep. \n\nTested without CONFIG_LOW_POWER_S0, and without the wake up command \u0027\u0027, \u0027chan restore\u0027 was performed well.",
+      "parentUuid": "b59d63c2_66711420",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63d36075_00b67d53",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
