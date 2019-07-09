@@ -16,6 +16,24 @@
       "revId": "053836dc95ffe9a68bb77117c4baf2962f94defc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8215ca50_1096aeea",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-09T22:36:52Z",
+      "side": 0,
+      "message": "Moved this change in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1693862",
+      "parentUuid": "b2af93c0_92f86e7e",
+      "revId": "053836dc95ffe9a68bb77117c4baf2962f94defc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
