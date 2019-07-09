@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc922e60_0def5440",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-09T23:11:35Z",
+      "side": 1,
+      "message": "this needs to be xor rnd",
+      "range": {
+        "startLine": 964,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 28
+      },
+      "revId": "1d26b85d46c618e8326d594ddcdcb90585cb68b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48224dba_7b12c3dc",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-09T23:11:35Z",
+      "side": 1,
+      "message": "this needs to (d - 1) xor rnd. Not seeing that be done here?",
+      "range": {
+        "startLine": 970,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 21
+      },
+      "revId": "1d26b85d46c618e8326d594ddcdcb90585cb68b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee23336f_49e35e85",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-09T23:11:35Z",
+      "side": 1,
+      "message": "needs for be (k -1 ) xor rnd",
+      "range": {
+        "startLine": 998,
+        "startChar": 0,
+        "endLine": 998,
+        "endChar": 19
+      },
+      "revId": "1d26b85d46c618e8326d594ddcdcb90585cb68b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c400481_a924bd63",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-09T23:11:35Z",
+      "side": 1,
+      "message": "needs to be (k - 1) xor rnd",
+      "range": {
+        "startLine": 1026,
+        "startChar": 0,
+        "endLine": 1026,
+        "endChar": 19
+      },
+      "revId": "1d26b85d46c618e8326d594ddcdcb90585cb68b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
