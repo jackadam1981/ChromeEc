@@ -1,8 +1,14 @@
 /* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
+ */
+
+/**
+ * @file  registers.h
+ * @brief Register map for the STM32 family of chips
  *
- * Register map for STM32 processor
+ * This file holds the common STM32 register definitions
+ * and then includes the family specific registers file.
  */
 
 #ifndef __CROS_EC_REGISTERS_H
