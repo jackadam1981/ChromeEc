@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c097ce0_5b4d566e",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T18:19:41Z",
+      "side": 1,
+      "message": "Default read/write timeout is 1 second by line 93 and line 122.\nThis should affect readline or read call.\nLine 177 is reading data as much as available in the input buffer, and it shouldn\u0027t get a timeout.",
+      "parentUuid": "2d060ac0_0ad523f7",
+      "range": {
+        "startLine": 120,
+        "startChar": 31,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "981e1682_8a1b4162",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa9787f_159406c0",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T18:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981e1682_8a1b4162",
+      "range": {
+        "startLine": 148,
+        "startChar": 24,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2a3649fe_334f0a00",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T18:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f88c1b_0b06e4d5",
+      "range": {
+        "startLine": 213,
+        "startChar": 33,
+        "endLine": 216,
+        "endChar": 49
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74e38fa4_64e38041",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 11
@@ -91,6 +163,30 @@
       "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871c7dfe_ff2583a3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T18:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e38fa4_64e38041",
+      "range": {
+        "startLine": 218,
+        "startChar": 52,
+        "endLine": 220,
+        "endChar": 53
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

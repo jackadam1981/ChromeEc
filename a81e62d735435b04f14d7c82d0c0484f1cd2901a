@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "148cbf6a_99c86814",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T18:19:41Z",
+      "side": 1,
+      "message": "going to keep the name as uart_stress_tester.",
+      "parentUuid": "72962d9b_854cceb6",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "a81e62d735435b04f14d7c82d0c0484f1cd2901a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8381e06_c87f52f1",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 2
