@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7180fec4_95722456",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "there is no need in parens if the string fits into one line, please restore these.",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b06e99cf_f1da5caf",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
@@ -18,6 +41,191 @@
         "startChar": 24,
         "endLine": 89,
         "endChar": 28
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea8dc8c2_02d1a9c1",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "what bug is there in EC UART input, can you please elaborate.",
+      "parentUuid": "b06e99cf_f1da5caf",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d36075_00b67d53",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "let\u0027s leave this as an enhancement for follow up patches, but my poiint is that there should be no need to wait arbitrary time when a command is issued:\n\none should wait for the command echo and then for the prompt which is issued after the command has finished (be it a CLI prompt or\u0027Password\u0027 in case of login, etc.",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 25
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0eb917_5d49d12b",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "I don\u0027t understand this - if you don\u0027t expect exceptions, why does this have to be \u0027try/finally\u0027",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 39
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff6a7ff_833a8307",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "the fact that you need to send two line feeds means that sometimes your test is getting out of sync with the target.\n\nLet\u0027s fix it in a follow up patch.",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 210,
+        "endChar": 32
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773f7828_5dd680b5",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "I don\u0027t get this: what is self.logger set to before line 233? Why does it have to be reassigned? Please add a comment.",
+      "range": {
+        "startLine": 232,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4f5634_866f30ff",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "if get_output waits for a second there sure no need to try 10 times, it just adds to test execution time for no good reason. 1 second is plenty in this case, so maybe count to two?",
+      "range": {
+        "startLine": 295,
+        "startChar": 9,
+        "endLine": 295,
+        "endChar": 36
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37a3082_4e34a25a",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "checking for isalnum()  is not future proof, in case chargen output set changes. You should check if the character is included in CHARGEN_TEXT - this way only one place would have to change.",
+      "range": {
+        "startLine": 310,
+        "startChar": 9,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3614cb37_a11af2c8",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "why is this compare against zero needed?",
+      "range": {
+        "startLine": 311,
+        "startChar": 12,
+        "endLine": 311,
+        "endChar": 30
       },
       "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

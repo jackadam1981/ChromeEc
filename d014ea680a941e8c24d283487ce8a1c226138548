@@ -728,6 +728,30 @@
       "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d03048d7_70ee335f",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-09T00:05:19Z",
+      "side": 1,
+      "message": "detecting a character not from the set is not an indication of a loss, it is an indication that something is wrong with the test setup. You stop it if you see a CR/LF, why is it different from seeing anything else not from the set?",
+      "parentUuid": "b6c4c027_03a5a510",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 20
+      },
+      "revId": "d014ea680a941e8c24d283487ce8a1c226138548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
