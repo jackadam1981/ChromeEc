@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b430cd0f_9184ae7b",
+        "filename": "board/jacuzzi/emmc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-09T22:19:43Z",
+      "side": 1,
+      "message": "We eventually want to move this to common code.",
+      "revId": "bb8f827ea9fe292132d1ccf558870d53b7aea86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b70981e_5ce63cf9",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-09T22:19:43Z",
+      "side": 1,
+      "message": "Some of these signals are pretty important to be able to use the board (like booting a usb flash drive), yet we don\u0027t have the gpio functionality of the it8801 ready.\n\nWe might need to do raw i2c commands to get that working.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "bb8f827ea9fe292132d1ccf558870d53b7aea86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202b83a2_01197439",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-09T22:19:43Z",
+      "side": 1,
+      "message": "EN_PP5000_USBC",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 28
+      },
+      "revId": "bb8f827ea9fe292132d1ccf558870d53b7aea86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
