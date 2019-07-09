@@ -15,10 +15,10 @@ $(call set-option,CROSS_COMPILE,\
 CFLAGS_CPU+=-mthumb -Os -mno-sched-prolog
 CFLAGS_CPU+=-mno-unaligned-access
 
-ifneq ($(CONFIG_LTO),)
-CFLAGS_CPU+=-flto
-LDFLAGS_EXTRA+=-flto
-endif
+# ifneq ($(CONFIG_LTO),)
+# CFLAGS_CPU+=-flto
+# LDFLAGS_EXTRA+=-flto
+# endif
 
 core-y=cpu.o init.o thumb_case.o div.o lmul.o ldivmod.o mula.o uldivmod.o
 core-y+=vecttable.o
