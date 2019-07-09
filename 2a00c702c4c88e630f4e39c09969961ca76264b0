@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afaf64e1_be0a98e4",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-09T19:44:38Z",
+      "side": 1,
+      "message": "nit: Just for consistency, can you remove this from the license comment and create a separate comment?\n\nPerhaps using the doxygen style so that it will show up in generated doxygen when we get to that:\n\nhttp://www.doxygen.nl/manual/commands.html#cmdfile\n\n /**\n * @file\n * Includes the board-specific gpio.inc file.\n */",
+      "revId": "2a00c702c4c88e630f4e39c09969961ca76264b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
