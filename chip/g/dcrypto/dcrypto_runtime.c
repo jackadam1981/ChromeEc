@@ -176,6 +176,7 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 #include "trng.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "watchdog.h"
 
 /* AUTO-GENERATED.  DO NOT MODIFY. */
 /* clang-format off */
@@ -430,6 +431,7 @@ static int command_dcrypto_ecdsa(int argc, char *argv[])
 			return EC_ERROR_INVAL;
 		}
 
+		watchdog_reload();
 		delay_sleep_by(ECDSA_TEST_SLEEP_DELAY_IN_US);
 	}
 
