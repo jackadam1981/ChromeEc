@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62f96b1d_e166b5e8",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-07-09T22:23:53Z",
+      "side": 1,
+      "message": "Seems like the index should be in board.h, not here.  Otherwise this will be full of #ifdefs, and can\u0027t handle multiple of the same expander.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230955de_bde0f598",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-07-09T22:23:53Z",
+      "side": 1,
+      "message": "What happens if there is no IO expander (for example, all existing boards)?\n\nDoes link-time optimization get rid of this lookup step?  Or does this bloat code and slow runtime?",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 1
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f30d78b_23c033a0",
+        "filename": "include/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-07-09T22:23:53Z",
+      "side": 1,
+      "message": "/* If no expander, call the chip functions directly to avoid indirection overhead */\n#ifndef CONFIG_IOEX\n#define gpio_get_level(x) chip_gpio_get_level(x)\n#endif",
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
