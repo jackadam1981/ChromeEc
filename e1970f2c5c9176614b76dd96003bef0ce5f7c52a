@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e5cda5d_4d7183fc",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7180fec4_95722456",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b06e99cf_f1da5caf",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "what bug is there in EC UART input, can you please elaborate.",
       "parentUuid": "b06e99cf_f1da5caf",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59d63c2_66711420",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Either right after CCD cable connection or after being idle for 15 seconds or more, I see the first one or two input characters are lost. \nStill working on it.",
+      "parentUuid": "ea8dc8c2_02d1a9c1",
       "range": {
         "startLine": 89,
         "startChar": 24,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "24b085b1_dce6975c",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf0eb917_5d49d12b",
+      "range": {
+        "startLine": 160,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 39
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eff6a7ff_833a8307",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
@@ -164,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "63cf8d85_8e801638",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "This is to replace the display text in logging: replace UART port filename with AP|EC.\n\n2019-07-08 19:00:22 INFO   | UartSerial| /dev/ttyUSB3  | uart_stress_tester.py: 222:prepare            | Detected as AP UART\n2019-07-08 19:00:22 DEBUG  | UartSerial| AP            | uart_stress_tester.py: 148:run_command        | run \u0027root\u0027",
+      "parentUuid": "773f7828_5dd680b5",
+      "range": {
+        "startLine": 232,
+        "startChar": 6,
+        "endLine": 234,
+        "endChar": 67
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "000f2248_78066cd8",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
@@ -184,6 +280,30 @@
       "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f8e7b88_e3e33098",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "000f2248_78066cd8",
+      "range": {
+        "startLine": 275,
+        "startChar": 11,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "466bad6b_2aeda31d",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e4f5634_866f30ff",
+      "range": {
+        "startLine": 295,
+        "startChar": 9,
+        "endLine": 295,
+        "endChar": 36
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d37a3082_4e34a25a",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
@@ -233,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "02ad56f7_87a7c311",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d37a3082_4e34a25a",
+      "range": {
+        "startLine": 310,
+        "startChar": 9,
+        "endLine": 310,
+        "endChar": 34
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3614cb37_a11af2c8",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
@@ -253,6 +421,30 @@
       "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a44aa910_6048185c",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-09T02:08:38Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "3614cb37_a11af2c8",
+      "range": {
+        "startLine": 311,
+        "startChar": 12,
+        "endLine": 311,
+        "endChar": 30
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
