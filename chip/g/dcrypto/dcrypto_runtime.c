@@ -150,6 +150,7 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 #include "console.h"
 #include "shared_mem.h"
 #include "system.h"
+#include "watchdog.h"
 
 #define ECDSA_TEST_ITERATIONS 1000
 
@@ -252,6 +253,7 @@ static int command_dcrypto_ecdsa(int argc, char *argv[])
 			return EC_ERROR_INVAL;
 		}
 
+		watchdog_reload();
 		delay_sleep_by(ECDSA_TEST_SLEEP_DELAY_IN_US);
 	}
 
