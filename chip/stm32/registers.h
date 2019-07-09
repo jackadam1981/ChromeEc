@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Register map for STM32 processor
+ * Register map for STM32 chips
  */
 
 #ifndef __CROS_EC_REGISTERS_H
