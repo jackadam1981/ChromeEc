@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1e3a0b87_b3521d65",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-07-09T15:49:02Z",
+      "side": 1,
+      "message": "it does initialize the first element, but other elements are implicitly initialized to zero. also, i am discarding it",
+      "parentUuid": "6d4bdb3e_1a4482ac",
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9f03c54_494e7dff",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c9314103_6105af98",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-07-09T15:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f03c54_494e7dff",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 24
+      },
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5697e93c_569eeef2",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6096b2c7_402e5537",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-07-09T15:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5697e93c_569eeef2",
+      "range": {
+        "startLine": 169,
+        "startChar": 24,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "4a4f3efb53f2bd6ba876a55a3cbe240d69fea335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
