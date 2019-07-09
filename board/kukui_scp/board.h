@@ -52,7 +52,7 @@
 #define CONFIG_IPI
 #define CONFIG_RPMSG_NAME_SERVICE
 
-#define CONFIG_LTO
+/* #define CONFIG_LTO */
 
 /* IPI ID should be in sync across kernel and EC. */
 #define IPI_SCP_INIT 0

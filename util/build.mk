@@ -49,7 +49,7 @@ deps-$(CONFIG_USB_POWER_DELIVERY) += $(genvif-pd-objs:%.o=%.o.d)
 
 $(out)/util/genvif: $(genvif-pd-objs) board/$(BOARD)/board.h \
 			include/usb_pd.h include/usb_pd_tcpm.h
-$(out)/util/genvif: BUILD_LDFLAGS+=$(genvif-pd-objs) -flto
+$(out)/util/genvif: BUILD_LDFLAGS+=$(genvif-pd-objs)
 
 STANDALONE_FLAGS=-ffreestanding -fno-builtin -nostdinc \
 			-Ibuiltin/ -D"__keep= " -DVIF_BUILD=$(EMPTY)

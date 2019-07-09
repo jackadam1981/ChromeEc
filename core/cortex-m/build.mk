@@ -19,10 +19,10 @@ CFLAGS_CPU+=-mthumb -Os -mno-sched-prolog
 CFLAGS_CPU+=-mno-unaligned-access
 CFLAGS_CPU+=$(CFLAGS_FPU-y)
 
-ifneq ($(CONFIG_LTO),)
-CFLAGS_CPU+=-flto
-LDFLAGS_EXTRA+=-flto
-endif
+# ifneq ($(CONFIG_LTO),)
+# CFLAGS_CPU+=-flto
+# LDFLAGS_EXTRA+=-flto
+# endif
 
 core-y=cpu.o init.o ldivmod.o llsr.o uldivmod.o vecttable.o
 core-$(CONFIG_AES)+=aes.o
