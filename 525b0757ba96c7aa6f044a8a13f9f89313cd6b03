@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c55b961_a144f8b5",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-09T14:41:03Z",
+      "side": 1,
+      "message": "All these end-of-line comments are not necessary, the GPIO name has the color in it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 51,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "525b0757ba96c7aa6f044a8a13f9f89313cd6b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
