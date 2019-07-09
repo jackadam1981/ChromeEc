@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d060ac0_0ad523f7",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-09T17:08:18Z",
+      "side": 1,
+      "message": "I think there are some cases where serial.read() will wait forever waiting for the correct number of bytes to come in. I don\u0027t think this should happen with how this is implemented, but you may want to add a really long timeout just in case to guarantee we don\u0027t get into that situation.",
+      "range": {
+        "startLine": 120,
+        "startChar": 31,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "981e1682_8a1b4162",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-09T17:08:18Z",
+      "side": 1,
+      "message": "logger.debug(\u0027run %r\u0027, cli) will print the same thing and it\u0027s cleaner",
+      "range": {
+        "startLine": 148,
+        "startChar": 24,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06f88c1b_0b06e4d5",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-09T17:08:18Z",
+      "side": 1,
+      "message": "\u0027%s: Got an unknown prompt text %r\\n Check manually whether %s is available\u0027 % all the args",
+      "range": {
+        "startLine": 213,
+        "startChar": 33,
+        "endLine": 216,
+        "endChar": 49
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e38fa4_64e38041",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-09T17:08:18Z",
+      "side": 1,
+      "message": "You don\u0027t need the +s.\n\nCan you go through and change all of the string formatting, so you use a format string and then the variables instead of \u0027+\u0027 unless it\u0027s really basic. Errors need \u0027% (args)\u0027 to format the string you just separate the variables with \",\"s when when you\u0027re using the logger.",
+      "range": {
+        "startLine": 218,
+        "startChar": 52,
+        "endLine": 220,
+        "endChar": 53
+      },
+      "revId": "c1c2226e0ea0ed5bc8e42cd4750397e61d0ff0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
