@@ -87,7 +87,16 @@
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON))
 
+<<<<<<< HEAD   (9ef1b5 driver/ioexpander_it8801: add I/O expander driver for keyboa)
 #define PD_OPERATING_POWER_MW 30000
+=======
+#define CONFIG_EC_KEYBOARD
+#define CONFIG_KEYBOARD_DEBUG
+#define CONFIG_KEYBOARD_NOT_RAW
+#define CONFIG_IO_EXPANDER_IT8801
+#define CONFIG_KEYBOARD_BOARD_CONFIG
+#define CONFIG_KEYBOARD_COL2_INVERTED
+>>>>>>> CHANGE (941fb7 jacuzzi: Add keyboard functionality)
 
 #ifndef __ASSEMBLER__
 
