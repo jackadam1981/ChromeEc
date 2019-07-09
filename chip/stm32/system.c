@@ -417,6 +417,15 @@ void system_reset(int flags)
 		STM32_FLASH_OPTKEYR = FLASH_OPTKEYR_KEY2;
 		STM32_FLASH_CR |= FLASH_CR_OBL_LAUNCH;
 #else
+		/*
+		 * This shouldn't be necessary since the IWDG only needs to be
+		 * started once, but STM32F412 hangs unless this is added.
+		 *
+		 * See http://b/137045370 and
+		 * https://www.st.com/resource/en/reference_manual/dm00314099.pdf#page=1881
+		 */
+		STM32_IWDG_KR = STM32_IWDG_KR_START;
+
 		/* Ask the watchdog to trigger a hard reboot */
 		STM32_IWDG_KR = STM32_IWDG_KR_UNLOCK;
 		STM32_IWDG_RLR = 0x1;
