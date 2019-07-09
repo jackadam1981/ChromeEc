@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "afa77023_32c98440",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-09T20:56:22Z",
+      "side": 1,
+      "message": "Note that in the STM32H7 logic, it looks like the equivalent function will only set to Level 1, but not back to Level 0. Not sure if that\u0027s intentional or a bug (the RSS1 bit logic lets you toggle back and forth).\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/stm32/flash-stm32h7.c#183",
+      "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e1e7b39_0c940deb",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 1
