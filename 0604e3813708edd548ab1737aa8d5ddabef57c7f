@@ -738,6 +738,98 @@
     },
     {
       "key": {
+        "uuid": "6d97efd3_2727e2ba",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-09T16:34:53Z",
+      "side": 1,
+      "message": "let\u0027s just remove this layer of indirection",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "0604e3813708edd548ab1737aa8d5ddabef57c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e7378aa_7c7b0e1e",
+        "filename": "driver/accelgyro_lsm6dso.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-09T16:34:53Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "0604e3813708edd548ab1737aa8d5ddabef57c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6435dc64_13b53231",
+        "filename": "driver/als_opt3001.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-09T16:34:53Z",
+      "side": 1,
+      "message": "remove and add \u003e\u003e 1 inline when necessary",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "0604e3813708edd548ab1737aa8d5ddabef57c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10737e8_411e7abc",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-09T16:34:53Z",
+      "side": 1,
+      "message": "needs __7b suffix\n\nLooks like this CONFIG_SMBUS compile path isn\u0027t building. It doesn\u0027t look like there is a board that uses that config. Maybe we temporarily add it to a board ( like phaser) to ensure that code path is built; or maybe we just remove smbus.c and config option and paths completely instead.\n\nI just created crbug.com/982316 for removing SMBus :)",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "0604e3813708edd548ab1737aa8d5ddabef57c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d81b0d3f_2b10bebd",
         "filename": "include/ec_commands.h",
         "patchSetId": 6

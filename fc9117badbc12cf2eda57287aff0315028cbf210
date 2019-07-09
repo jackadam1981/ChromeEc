@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d21855ec_ab1e6a3d",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-09T16:34:53Z",
+      "side": 0,
+      "message": "the tcpc port and i2c port are not the same. You need to revert this change.\n\nUSB-C port 0 might be on I2C port 3",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "fc9117badbc12cf2eda57287aff0315028cbf210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
