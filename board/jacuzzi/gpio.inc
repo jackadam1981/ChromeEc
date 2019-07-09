@@ -29,10 +29,11 @@ GPIO_INT(SPI1_NSS,          PIN(A, 15), GPIO_INT_BOTH,
          spi_event) /* SPI_AP_EC_CS_L */
 GPIO_INT(LID_OPEN,          PIN(C, 5),  GPIO_INT_BOTH,
          lid_interrupt)
+GPIO_INT(IT8801_SMB_INT,    PIN(A, 8),  GPIO_INT_FALLING | GPIO_PULL_UP,
+         io_expander_it8801_interrupt) /* KB_INT_ODL */
 
 /* Unimplemented interrupts */
 GPIO(ACOK_OD,              PIN(A, 6),  GPIO_INPUT)
-GPIO(KB_INT_ODL,           PIN(A, 8),  GPIO_INPUT)
 GPIO(BC12_EC_INT_ODL,      PIN(C, 9),  GPIO_INPUT)
 GPIO(ALS_RGB_INT_ODL,      PIN(C, 10), GPIO_INPUT)
 GPIO(TABLET_MODE_L,        PIN(B, 11), GPIO_INPUT)
