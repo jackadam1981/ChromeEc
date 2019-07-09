@@ -16,10 +16,10 @@ $(call set-option,CROSS_COMPILE,$(CROSS_COMPILE_nds32),$(NDS32_DEFAULT_COMPILE))
 CFLAGS_CPU+=-march=v3m -Os
 LDFLAGS_EXTRA+=-mrelax
 
-ifneq ($(CONFIG_LTO),)
-CFLAGS_CPU+=-flto
-LDFLAGS_EXTRA+=-flto
-endif
+# ifneq ($(CONFIG_LTO),)
+# CFLAGS_CPU+=-flto
+# LDFLAGS_EXTRA+=-flto
+# endif
 
 core-y=cpu.o init.o panic.o task.o switch.o __muldi3.o math.o __builtin.o
 core-y+=__divdi3.o __udivdi3.o

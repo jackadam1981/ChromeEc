@@ -22,10 +22,10 @@ CFLAGS_CPU+=-O2 -fomit-frame-pointer -mno-accumulate-outgoing-args	\
 
 CFLAGS_CPU+=$(CFLAGS_FPU-y)
 
-ifneq ($(CONFIG_LTO),)
-CFLAGS_CPU+=-flto
-LDFLAGS_EXTRA+=-flto
-endif
+# ifneq ($(CONFIG_LTO),)
+# CFLAGS_CPU+=-flto
+# LDFLAGS_EXTRA+=-flto
+# endif
 
 core-y=cpu.o init.o interrupts.o
 core-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic.o

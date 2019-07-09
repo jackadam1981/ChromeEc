@@ -95,7 +95,7 @@
 #define CONFIG_I2C_MASTER
 
 #define CONFIG_LID_SWITCH
-#define CONFIG_LTO
+/* #define CONFIG_LTO */
 
 #define CONFIG_LOW_POWER_IDLE
 
