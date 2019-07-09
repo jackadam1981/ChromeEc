@@ -55,6 +55,17 @@
 /* use the hardware accelerator for CRC */
 #define CONFIG_HW_CRC
 
+<<<<<<< HEAD   (c36216 servo_v4: Minor update the PD policy and comments)
+=======
+/* Servo v4 CC configuration */
+#define CC_DETACH	(1 << 0)   /* Emulate detach: both CC open */
+#define CC_DISABLE_DTS	(1 << 1)   /* Apply resistors to single or both CC? */
+#define CC_ALLOW_SRC	(1 << 2)   /* Allow charge through by policy? */
+#define CC_ENABLE_DRP	(1 << 3)   /* Enable dual-role port */
+#define CC_SNK_WITH_PD	(1 << 4)   /* Force enabling PD comm for sink role */
+#define CC_POLARITY	(1 << 5)   /* CC polarity */
+
+>>>>>>> CHANGE (83fea7 servo_v4: Support changing CC polarity)
 /* TX uses SPI1 on PB3-4 for CHG port, SPI2 on PB 13-14 for DUT port */
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
 static inline void spi_enable_clock(int port)
