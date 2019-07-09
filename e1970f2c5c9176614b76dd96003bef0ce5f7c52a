@@ -164,6 +164,29 @@
     },
     {
       "key": {
+        "uuid": "000f2248_78066cd8",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-07-09T01:00:10Z",
+      "side": 1,
+      "message": "Can you use serial.readline() to read the first line instead? And then get_output can be simplified to serial.read(serial.inwaiting()) or something.",
+      "range": {
+        "startLine": 275,
+        "startChar": 11,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "e1970f2c5c9176614b76dd96003bef0ce5f7c52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e4f5634_866f30ff",
         "filename": "util/uart_stress_tester.py",
         "patchSetId": 10
