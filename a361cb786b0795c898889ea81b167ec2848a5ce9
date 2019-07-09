@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee403412_6f9583c4",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "where is ish-aon-y used?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a6207e_acaf4a39",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "is this a typo?",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253e63aa_a973c834",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "I don\u0027t think we needed to conditionalize each of these variables based on CONFIG_ISH_PM_AONTASK. Simply the last dependency of ish-aon-bin-y on $(out)/$(PROJECT).bin, right?",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3cf22c_aa0c8f8c",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "can we use the $(call quiet,...) pattern instead?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 54
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52b2193_0e82c862",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "$* instead?",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1acde54b_cae1ed05",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "$@ instead? Once you separate the rules?",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d849d6_26aabff6",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "can this be split into a separate rule? is there a rule under the Makefile.rules which would OBJCOPY for you?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd6d095_319662c6",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "can we instead make the directory an order only prerequisite?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142c4b0d_1618dcde",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "any chance we can just call cmd_lds here instead?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c240311_c1fdfd12",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "do we even need a separate rule for this, or are the rules already defined under Makefile.rules sufficient?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2776734f_b9332f5b",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-09T15:07:59Z",
+      "side": 1,
+      "message": "order only prerequisite?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
