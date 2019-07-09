@@ -178,6 +178,9 @@ int dcrypto_p256_pick(struct drbg_ctx *drbg, p256_int *output);
 /* Overwrite with random p256 value */
 void dcrypto_p256_rnd(p256_int *output);
 
+/* b = a - d. Returns borrow: 0 or -1. */
+int dcrypto_p256_sub_d(const p256_int *a, const p256_digit d, p256_int *b);
+
 /*
  * Accelerator runtime.
  *
