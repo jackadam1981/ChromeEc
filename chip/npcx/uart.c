@@ -127,6 +127,13 @@ void uart_tx_stop(void)
 
 	sleep_ena = (pad == UART_DEFAULT_PAD) ? 1 : 0;
 	uartn_tx_stop(CONSOLE_UART, sleep_ena);
+#ifdef CONFIG_LOW_POWER_IDLE
+	/*
+	 * Delay the console expiration time so that data in UART TX FIFO
+	 * can be transferred before EC enters into deep sleep mode.
+	 */
+	clock_refresh_console_in_use();
+#endif
 }
 
 void uart_tx_flush(void)
