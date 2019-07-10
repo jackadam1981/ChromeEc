@@ -986,6 +986,77 @@ int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 	return result == 0;
 }
 
+int dcrypto_p256_ecdsa_verisign(struct drbg_ctx *drbg, const p256_int *entropy,
+				const p256_int *message, p256_int *r,
+				p256_int *s, p256_int *x, p256_int *y)
+{
+	struct DMEM_ecc *pEcc =
+		(struct DMEM_ecc *)GREG32_ADDR(CRYPTO, DMEM_DUMMY);
+	p256_int rnd, tmp, k, d;
+
+	int result = 0;
+
+	dcrypto_init_and_lock();
+	dcrypto_ecc_init();
+	dcrypto_p256_rnd(&rnd);
+
+	result |= dcrypto_p256_pick(drbg, &tmp);
+	dcrypto_p256_sub_d(&tmp, 1, &d);
+	dcrypto_p256_permuted_blinded_copy(&pEcc->d, &d, &rnd);
+
+	/* Churn entropy and msg into same drbg before generating k */
+	hmac_drbg_reseed(drbg, entropy, sizeof(p256_int), message,
+			 sizeof(p256_int), NULL, 0);
+
+	/* Pull k out of stirred up drbg */
+	result |= dcrypto_p256_pick(drbg, &k);
+	dcrypto_p256_permuted_blinded_copy(&pEcc->k, &k, &rnd);
+
+	dcrypto_p256_rnd(&tmp); /* wipe tmp */
+
+	if (result == 0) {
+		pEcc->rnd = rnd;
+		pEcc->msg = *message;
+
+		dcrypto_p256_rnd(&rnd); /* wipe rnd */
+
+		result |= dcrypto_call(CF_p256verisign_adr);
+
+		/* wipe state */
+		pEcc->d = rnd;
+		pEcc->k = rnd;
+
+		if (result == 0) {
+			*r = pEcc->r;
+			*s = pEcc->s;
+
+			if (x)
+				*x = pEcc->x;
+			if (y)
+				*y = pEcc->y;
+		}
+	}
+
+	/* wipe state again */
+	dcrypto_p256_rnd(&rnd);
+	k = rnd;
+	pEcc->d = rnd;
+	pEcc->k = rnd;
+	if (result != 0) {
+		/* trash answers (could been glitched above) */
+		*r = rnd;
+		*s = rnd;
+		if (x)
+			*x = rnd;
+		if (y)
+			*y = rnd;
+	}
+
+	dcrypto_unlock();
+
+	return result;
+}
+
 int dcrypto_p256_base_point_mul(const p256_int *k, p256_int *x, p256_int *y)
 {
 	int i, result;
@@ -1120,13 +1191,44 @@ void dcrypto_p256_rnd(p256_int *output)
 int dcrypto_p256_sub_d(const p256_int *a, const p256_digit d, p256_int *b)
 {
 	int i;
+	p256_int tmp;
 	p256_sddigit borrow = d;
 
 	for (i = 0; i < P256_NDIGITS; ++i) {
 		borrow = (p256_sddigit)P256_DIGIT(a, i) - borrow;
-		if (b)
-			P256_DIGIT(b, i) = (p256_digit)borrow;
+		P256_DIGIT(&tmp, i) = (p256_digit)borrow;
 		borrow >>= P256_BITSPERDIGIT;
 	}
+
+	if (b)
+		*b = tmp;
+
 	return (int)borrow;
+}
+
+void dcrypto_p256_permuted_blinded_copy(p256_int *dst, const p256_int *src,
+					const p256_int *blinder)
+{
+	uint8_t _idx[] = {5, 4, 3, 7, 1, 0, 6, 2};
+	uint32_t r = rand();
+	p256_int rnd;
+
+	/* pre-randomize Hamming delta w/ dst */
+	dcrypto_p256_rnd(&rnd);
+
+	/* permute order by random swaps */
+	for (int i = 0; i < 8; ++i) {
+		uint8_t tmp = _idx[i];
+
+		_idx[i] = _idx[r & 7];
+		_idx[r & 7] = tmp;
+		r >>= 3;
+	}
+
+	/* copy w/ optional xor in permuted order */
+	for (int i = 0; i < 8; ++i) {
+		rnd.a[_idx[i]] = src->a[_idx[i]] ^
+				 (blinder != NULL ? blinder->a[_idx[i]] : 0);
+	}
+	cp8w(dst, &rnd);
 }
