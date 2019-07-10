@@ -22,6 +22,30 @@
       "revId": "caea8a1c3c370b650fa21467ed267609076e987b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c80e2c8_7012f626",
+        "filename": "board/helios/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1275769
+      },
+      "writtenOn": "2019-07-10T06:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a2bdde5_d0073e42",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "caea8a1c3c370b650fa21467ed267609076e987b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
