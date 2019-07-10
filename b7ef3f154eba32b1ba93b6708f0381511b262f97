@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7084d6b6_f6c38519",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-10T21:47:57Z",
+      "side": 1,
+      "message": "We\u0027re working on a new way to probe hardware properties through cros_config binding.\nSo this will be not needed soon.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 1
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
