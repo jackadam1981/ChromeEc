@@ -159,6 +159,13 @@ void drbg_exit(struct drbg_ctx *ctx);
 int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 			    const p256_int *message, p256_int *r, p256_int *s)
 	__attribute__((warn_unused_result));
+
+/* Produces message signature and also verifies the signature */
+int dcrypto_p256_ecdsa_verisign(struct drbg_ctx *drbg, const p256_int *entropy,
+				const p256_int *message, p256_int *r,
+				p256_int *s, p256_int *x, p256_int *y)
+	__attribute__((warn_unused_result));
+
 int dcrypto_p256_base_point_mul(const p256_int *k, p256_int *x, p256_int *y)
 	 __attribute__((warn_unused_result));
 int dcrypto_p256_point_mul(const p256_int *k,
@@ -180,6 +187,10 @@ void dcrypto_p256_rnd(p256_int *output);
 
 /* b = a - d. Returns borrow: 0 or -1. */
 int dcrypto_p256_sub_d(const p256_int *a, const p256_digit d, p256_int *b);
+
+/* Perform permuted and blind data transfer */
+void dcrypto_p256_permuted_blinded_copy(p256_int *dst, const p256_int *src,
+					const p256_int *blinder);
 
 /*
  * Accelerator runtime.
