@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "926c9989_ae5ffb0f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-10T22:01:54Z",
+      "side": 1,
+      "message": "Actually, id should be 0xffff here, and it should have \u0027id |\u003d 0xff0000;\u0027 between line 579 and 580. That will print the chip id without any unnecessary preceding 0xF either in two-byte or three-byte format.",
+      "parentUuid": "9b93cd98_99598baf",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b3bec53_bbb501bb",
         "filename": "util/iteflash.c",
         "patchSetId": 5
