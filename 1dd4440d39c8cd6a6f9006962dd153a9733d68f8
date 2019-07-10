@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af3cd34a_1d497d9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-10T17:15:38Z",
+      "side": 1,
+      "message": "Updated the text.\nIt used to fail for the last 10 or less characters broken.",
+      "parentUuid": "73b54c3c_1845877f",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "1dd4440d39c8cd6a6f9006962dd153a9733d68f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e19fa1a0_02ca16df",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-10T16:54:37Z",
       "side": 1,
       "message": "does it have to be conditionally compiled? The code would look cleaner without #if/#endif. Just a thought, let\u0027s see what others think.",
+      "revId": "1dd4440d39c8cd6a6f9006962dd153a9733d68f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fee35ea_3771b086",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-10T17:15:38Z",
+      "side": 1,
+      "message": "In chip/npcx, clock_refresh_console_in_use() is conditionally defined, and codes call it in this way as in line 159~167. \nShould this #ifdef guard be removed, I can define a weak function of clock_refresh_console_in_use() (perhaps  in common/system.c).",
+      "parentUuid": "e19fa1a0_02ca16df",
       "revId": "1dd4440d39c8cd6a6f9006962dd153a9733d68f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
