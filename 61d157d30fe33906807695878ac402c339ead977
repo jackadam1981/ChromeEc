@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4009ea00_20f408cb",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T21:21:27Z",
+      "side": 1,
+      "message": "typo: \"least\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "61d157d30fe33906807695878ac402c339ead977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0852880_5725c7c2",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T21:21:27Z",
+      "side": 1,
+      "message": "EC_RES_TIMEOUT\n\nFWIW, this is why I usually put the comments in the file that has the function definition (more likely to notice it). For now continue to follow the style that the rest of the EC code uses. I will bring up a discussion on the list to see if we others oppose to us keeping comments above definition in the future.",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 53
+      },
+      "revId": "61d157d30fe33906807695878ac402c339ead977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264839d4_f5cd0cc4",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T21:21:27Z",
+      "side": 1,
+      "message": "Might be good to add:\n\n  TEST_ASSERT(sizeof(new_finger_id) \u003d\u003d 2 * sizeof(fake_rand_bytes));\n\njust to make it a little more obvious why you are doing the check twice below.",
+      "revId": "61d157d30fe33906807695878ac402c339ead977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967c7829_fac57fad",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T21:21:27Z",
+      "side": 1,
+      "message": "Just to avoid accidentally using a duplicate value and to make it obvious that the value is not valid, can we clear the buffer (new_finger_id) in fp_rand_finger_id on timeout?\n\nAnd then check that it\u0027s all 0 here?",
+      "revId": "61d157d30fe33906807695878ac402c339ead977",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
