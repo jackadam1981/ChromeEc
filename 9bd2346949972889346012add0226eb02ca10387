@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e8e27027_e6584517",
+        "filename": "docs/fingerprint/overview.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T16:46:20Z",
+      "side": 1,
+      "message": "I\u0027m hoping we can move things around in a future change. I\u0027m trying to share this information with two vendors.",
+      "parentUuid": "3806ed3e_3abccd79",
+      "revId": "9bd2346949972889346012add0226eb02ca10387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36668caa_03620fd2",
         "filename": "docs/fingerprint/overview.md",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6c32b534_be7f0983",
+        "filename": "docs/fingerprint/overview.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T16:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36668caa_03620fd2",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 57
+      },
+      "revId": "9bd2346949972889346012add0226eb02ca10387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ab3892_217a964d",
         "filename": "docs/fingerprint/write_protection.md",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "9bd2346949972889346012add0226eb02ca10387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a83574_ee8492e5",
+        "filename": "docs/fingerprint/write_protection.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T16:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ab3892_217a964d",
+      "range": {
+        "startLine": 17,
+        "startChar": 63,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "9bd2346949972889346012add0226eb02ca10387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
