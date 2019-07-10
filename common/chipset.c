@@ -63,7 +63,7 @@ static struct mutex reset_log_mutex;
 static int next_reset_log;
 static uint32_t ap_resets_since_ec_boot;
 /* keep reset_logs size a power of 2 */
-static struct ap_reset_log_entry reset_logs[4];
+static struct ap_reset_log_entry __attribute__((section(".reset_logs")))reset_logs[4];
 
 void report_ap_reset(enum chipset_shutdown_reason reason)
 {

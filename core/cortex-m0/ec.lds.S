@@ -192,6 +192,25 @@ SECTIONS
     } > FLASH
     __data_lma_start = . ;
 
+    .tx_buff(NOLOAD) : {
+    	. = ALIGN(8);
+	__tx_buf_start = .;
+ 
+        *(SORT(.tx))
+ 
+	. = ALIGN(8);
+	__tx_buf_end = .;
+	
+    } > IRAM
+    
+    
+    .reset_logs(NOLOAD) : {
+	__reset_logs_start = .;
+	*(.reset_logs)
+	__reset_logs_end = .;
+    } > IRAM
+    
+
     .bss : {
 	/*
 	 * Vector table must be at the beginning of bss section. The vector
