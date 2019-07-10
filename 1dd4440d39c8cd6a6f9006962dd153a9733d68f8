@@ -81,6 +81,24 @@
       "revId": "1dd4440d39c8cd6a6f9006962dd153a9733d68f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19448016_228a3063",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T17:18:09Z",
+      "side": 1,
+      "message": "If the function is conditionally compiled then I have no  problem with this #ifdef/#endif",
+      "parentUuid": "0fee35ea_3771b086",
+      "revId": "1dd4440d39c8cd6a6f9006962dd153a9733d68f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
