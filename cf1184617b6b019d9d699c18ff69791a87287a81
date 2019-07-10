@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e957e782_eee8a6b7",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-10T20:09:11Z",
+      "side": 1,
+      "message": "I think \"@a\" would also work here, so we should probably use it everywhere for consistency: https://stackoverflow.com/a/39370024\n\nBut it looks like this is just italicizing, and recent versions of doxygen (1.8.0 or newer) say they support Markdown, so it\u0027s probably easier and more consistent with the rest of the documentation to use Markdown for styling: http://www.doxygen.nl/manual/markdown.html.\n\nhttps://chromium.googlesource.com/chromiumos/overlays/portage-stable/+/28345925d59aab8fb0448b3c12f10d3d67ea44f0/app-doc/doxygen\n\nNote: I haven\u0027t tested Markdown in doxygen though.",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "cf1184617b6b019d9d699c18ff69791a87287a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
