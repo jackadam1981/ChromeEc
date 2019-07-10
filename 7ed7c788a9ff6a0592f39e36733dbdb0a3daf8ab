@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b95bd0fd_c700ece9",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-10T19:24:14Z",
+      "side": 1,
+      "message": "This values means that the logic in led_onoff_states.c (deciding led_state) corresponding to STATE_CHARGING_LVL_1 will never be returned.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
