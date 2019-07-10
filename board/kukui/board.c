@@ -341,6 +341,14 @@ static void board_rev_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
 
+volatile int __attribute__((section(".sram"))) shanncTest;
+
+static void board_kk(void)
+{
+  ccprints("%s(): %d", __func__, shanncTest);
+}
+DECLARE_HOOK(HOOK_TICK, board_kk, HOOK_PRIO_DEFAULT);
+
 void board_config_pre_init(void)
 {
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
@@ -558,7 +566,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = I2C_PORT_ALS,
 	 .addr = TCS3400_I2C_ADDR,
 	 .rot_standard_ref = NULL,
-	 .default_range = 0x10000, /* scale = 1x, uscale = 0 */
+
+    .default_range = 0x10000, /* scale = 1x, uscale = 0 */
 	 .min_frequency = TCS3400_LIGHT_MIN_FREQ,
 	 .max_frequency = TCS3400_LIGHT_MAX_FREQ,
 	 .config = {

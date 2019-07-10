@@ -192,13 +192,21 @@ SECTIONS
     } > FLASH
     __data_lma_start = . ;
 
+    .sram (NOLOAD) : {
+	. = ALIGN(8);
+	__tx_buf_start = .;
+	*(SORT(.sram))
+	. = ALIGN(8);
+	__tx_buf_end = .;
+    } > IRAM
+
     .bss : {
 	/*
 	 * Vector table must be at the beginning of bss section. The vector
 	 * table section contains a RAM copy of the vector table used on
 	 * STM chips for relocating the vector table.
 	 */
-	. = ALIGN(8);
+	. = ALIGN(512);
 	__bss_start = .;
 	*(.bss.vector_table)
 	/* Stacks must be 64-bit aligned */

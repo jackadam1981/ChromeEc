@@ -20,7 +20,8 @@
 	STRINGIFY(FW_FILE(FINAL_OUTDIR,PROJECT,sect,suffix,.dram))
 #define FW_IMAGE_SIGN(sect,suffix) \
 	STRINGIFY(FW_FILE(FINAL_OUTDIR,PROJECT,sect,suffix,.sig))
-
+#define FW_IMAGE_SRAM(sect,suffix) \
+	STRINGIFY(FW_FILE(FINAL_OUTDIR,PROJECT,sect,suffix,.sram))
 /* Read Only firmware */
 #ifdef CONFIG_FW_INCLUDE_RO
 .section .image.RO, "ax"
@@ -62,6 +63,12 @@
 /* Read Write firmware in DRAM */
 .section .image.RW.dram, "ax"
 .incbin FW_IMAGE_DRAM(RW,)
+#endif
+
+#ifdef CONFIG_RAM_BASE
+/* Read Write firmware in SRAM*/
+.section .image.RW.sram, "a"
+.incbin FW_IMAGE_SRAM(RW,)
 #endif
 
 #ifdef CONFIG_RW_B

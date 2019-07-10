@@ -43,6 +43,9 @@ MEMORY
 #ifdef CONFIG_DRAM_BASE
     DRAM (rx) : ORIGIN = CONFIG_DRAM_BASE_LOAD, LENGTH = CONFIG_DRAM_SIZE
 #endif
+#ifdef CONFIG_RAM_BASE
+    IRAM (rw) : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
+#endif
 }
 SECTIONS
 {
@@ -96,4 +99,9 @@ SECTIONS
         *(.image.RW.dram)
     } > DRAM =0x00
 #endif
+#ifdef CONFIG_RAM_BASE
+    .image.RW.sram : AT(CONFIG_RAM_BASE_LOAD) {
+        *(.image.RW.sram)
+    } > IRAM =0x00
+#endif 
 }
