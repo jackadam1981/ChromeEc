@@ -6,12 +6,17 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
+#include "charge_state.h"
 #include "common.h"
 #include "system.h"
 #include "util.h"
 
+#define CHARGING_VOLTAGE_MV_SAFE        8300
+#define CHARGING_CURRENT_MA_SAFE        1869
+
 /*
- * Battery info for all Hatch battery types. Note that the fields
+ * Battery info for all kohaku battery types. Note that the fields
  * start_charging_min/max and charging_min/max are not used for the charger.
  * The effective temperature limits are given by discharging_min/max_c.
  *
@@ -33,7 +38,6 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
-	/* Dyna Battery Information */
 	[BATTERY_DYNA] = {
 		.fuel_gauge = {
 			.manuf_name = "Dyna",
@@ -105,4 +109,97 @@ enum battery_present variant_battery_present(void)
 	 * case the battery is not really present.
 	 */
 	return BP_YES;
+}
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	int current;
+	int voltage;
+	/* battery temp in 0.1 deg C */
+	int bat_temp_c;
+
+	/*
+	 * Keep track of battery temperature range:
+	 *
+	 *     ZONE_0  ZONE_1   ZONE_2  ZONE_3
+	 * ---+------+--------+--------+------+--- Temperature (C)
+	 *    0      5        12       45     50
+	 */
+	enum {
+		TEMP_ZONE_0, /* 0 <= bat_temp_c <= 5 */
+		TEMP_ZONE_1, /* 5 < bat_temp_c <= 12 */
+		TEMP_ZONE_2, /* 12 < bat_temp_c <= 45 */
+		TEMP_ZONE_3, /* 45 < bat_temp_c <= 50 */
+		TEMP_ZONE_COUNT,
+		TEMP_OUT_OF_RANGE = TEMP_ZONE_COUNT
+	} temp_zone;
+
+	/*
+	 * Precharge must be executed when communication is failed on
+	 * dead battery.
+	 */
+	if (!(curr->batt.flags & BATT_FLAG_RESPONSIVE))
+		return 0;
+
+	current = curr->requested_current;
+	voltage = curr->requested_voltage;
+	bat_temp_c = curr->batt.temperature - 2731;
+
+	/*
+	 * If the temperature reading is bad, assume the temperature
+	 * is out of allowable range.
+	 */
+	if ((curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE) ||
+	    (bat_temp_c < 0) || (bat_temp_c > 500))
+		temp_zone = TEMP_OUT_OF_RANGE;
+	else if (bat_temp_c <= 50)
+		temp_zone = TEMP_ZONE_0;
+	else if (bat_temp_c <= 120)
+		temp_zone = TEMP_ZONE_1;
+	else if (bat_temp_c <= 450)
+		temp_zone = TEMP_ZONE_2;
+	else
+		temp_zone = TEMP_ZONE_3;
+
+	switch (temp_zone) {
+	case TEMP_ZONE_0:
+		voltage = CHARGING_VOLTAGE_MV_SAFE;
+		current = CHARGING_CURRENT_MA_SAFE;
+		break;
+	case TEMP_ZONE_1:
+		current = CHARGING_CURRENT_MA_SAFE;
+		break;
+	case TEMP_ZONE_2:
+		break;
+	case TEMP_ZONE_3:
+		voltage = CHARGING_VOLTAGE_MV_SAFE;
+		break;
+	case TEMP_OUT_OF_RANGE:
+		/* Don't charge if outside of allowable temperature range */
+		current = 0;
+		voltage = 0;
+		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+		curr->state = ST_IDLE;
+		break;
+	}
+
+	curr->requested_voltage = MIN(curr->requested_voltage, voltage);
+	curr->requested_current = MIN(curr->requested_current, current);
+
+	return 0;
+}
+
+/* Customs options controllable by host command. */
+#define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
 }

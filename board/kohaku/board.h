@@ -101,6 +101,7 @@
  * for the AP is completed.
  */
 #define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA 8192
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
 
 /* Volume Button feature */
 #define CONFIG_VOLUME_BUTTONS
