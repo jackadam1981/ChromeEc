@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7eff4f9_6281f0ef",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "is this a TODO or the real serial number?",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e735f37_cdebac9f",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "nit: can you use .field_name \u003d notation here. It makes it clear that the 3300 is the voltage and 4096 is the max count",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 67
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d0da5c_74655d84",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": ".field_name \u003d notation here please too",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9ed1760_460189f9",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "what is the zZZ? (is it sleeping?)",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2eab0e_00244f92",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "this is also 0/1 right?",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302931d8_b2e38005",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "can you make a define for PORT 1, please",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "654c27ea_685e3514",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "use write_ioexpander?",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e6fb6e5_9eb90384",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "BIT(0)",
+      "range": {
+        "startLine": 258,
+        "startChar": 26,
+        "endLine": 258,
+        "endChar": 29
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499eecbf_0f5937f5",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "gpio_set_level already handles non-one values, no need for !!",
+      "range": {
+        "startLine": 259,
+        "startChar": 19,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce4d6c0_218ca92d",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "is the user supposed to unplug something here, or is this just a normal disconnect discharge timer?",
+      "range": {
+        "startLine": 287,
+        "startChar": 22,
+        "endLine": 287,
+        "endChar": 28
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3686080_d7dc7a79",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "can you explain these numbers and calculations please",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 0
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880c88ba_891211ce",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "we could simplify this as follows:\n\n\t\tenum led_chan max_on_exclusive \u003d LED_5V;\n\t\tif (vbus_mv \u003e\u003d 2405) {\n\t\t\tmax_on_exclusive \u003d LED_COUNT;\n\t\t} else if (vbus_mv \u003e\u003d 1788) {\n\t\t\tmax_on_exclusive \u003d LED_20V;\n\t\t} else if (vbus_mv \u003e\u003d 1417) {\n\t\t\tmax_on_exclusive \u003d LED_15V;\n\t\t} else if (vbus_mv \u003e\u003d 1047) {\n\t\t\tmax_on_exclusive \u003d LED_12V;\n\t\t} else if (vbus_mv \u003e\u003d 553) {\n\t\t\tmax_on_exclusive \u003d LED_9V;\n\t\t}\n\t\tfor (i \u003d 0; i \u003c LED_COUNT; i++)\n\t\t\t\tset_led(i, i \u003c max_on_exclusive);",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 0
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4507ac3_4aa6b30e",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "can we just use the HOOK_TICKS instead of scheduling ourselves?",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8f6e446_29543637",
+        "filename": "board/fluffy/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "nit: can you move this to the top, just so it doesn\u0027t get lost in the middle of the file?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "536302f4_458253dc",
+        "filename": "board/fluffy/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-10T19:25:03Z",
+      "side": 1,
+      "message": "I think we removed all of these right?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
