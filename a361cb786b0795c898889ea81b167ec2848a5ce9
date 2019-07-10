@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6800980e_5eb01a50",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\u0027ish-aon-y\u0027is used in below definitions: \n\nish-aon-objs\u003d$(call objs_from_dir,$(ish-aon-out)/chip/$(CHIP),ish-aon)\n\nthe \u0027objs_from_dir\u0027 cmd will add \u0027-y\u0027 to \u0027ish-aon\u0027 parameter.",
+      "parentUuid": "ee403412_6f9583c4",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3a6207e_acaf4a39",
         "filename": "chip/ish/build.mk",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3466b3_7606fb7d",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\nyes, it\u0027s a typo, now simplified the rules, no need this variable anymore.",
+      "parentUuid": "c3a6207e_acaf4a39",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d1144473_b99a6856",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\nyes, logically, we only need CONFIG_ISH_PM_AONTASK for ish-aon-bin. \nI tried below rules (very simple and clean): \n\nish-aon-out\u003d$(out)/aontaskfw\nish-aon-bin-$(CONFIG_ISH_PM_AONTASK)\u003d$(ish-aon-out)/$(ish-aon-name).bin\nish-aon-elf\u003d$(ish-aon-out)/$(ish-aon-name).elf\nish-aon-lds\u003d$(ish-aon-out)/$(ish-aon-name).lds\n\t\n...\nPROJECT_EXTRA+\u003d$(ish-aon-bin-y)\n...\n\n$(ish-aon-bin-y): $(ish-aon-elf)\n\t$(call quiet,elf_to_bin,EXTBIN )\n\t\n$(ish-aon-elf): $(ish-aon-lds) $(ish-aon-objs)\n\t$(call quiet,ish_aon_elf,LD     )\n\t\n$(ish-aon-lds): chip/$(CHIP)/aontaskfw/ish_aontask.lds.S\n\t-@ mkdir -p $(@D)\n\t$(call quiet,lds,LDS    )\n...\n\nbut always get below warnings (everything works good, just have warning messages when make): \n\nchip/ish/build.mk:58: warning: overriding recipe for target \u0027build/arcada_ish/aontaskfw/ish_aontask.elf\u0027\nchip/ish/build.mk:58: warning: ignoring old recipe for target \u0027build/arcada_ish/aontaskfw/ish_aontask.elf\u0027\nchip/ish/build.mk:61: warning: overriding recipe for target \u0027build/arcada_ish/aontaskfw/ish_aontask.lds\u0027\nchip/ish/build.mk:61: warning: ignoring old recipe for target \u0027build/arcada_ish/aontaskfw/ish_aontask.lds\u0027\n\nnot very understand why these warning happens, so, I still keep using CONFIG_ISH_PM_AONTASK for \u0027ish-aon-elf\u0027 and \u0027ish-aon-lds\u0027, then no any warnings.\n\non the other hand, we only want define valid targets (elf, lds) when CONFIG_ISH_PM_AONTASK defined, so using CONFIG_ISH_PM_AONTASK for \u0027ish-aon-elf\u0027 and \u0027ish-aon-lds\u0027 is also make sense.",
+      "parentUuid": "253e63aa_a973c834",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e3cf22c_aa0c8f8c",
         "filename": "chip/ish/build.mk",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b985be36_566e7d44",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e3cf22c_aa0c8f8c",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 54
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "511063b4_164b9477",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\nused $(call quiet,...) pattern instead.",
+      "parentUuid": "a52b2193_0e82c862",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acde54b_cae1ed05",
         "filename": "chip/ish/build.mk",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fddfb1ea_d3b1336c",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\nused $(call quiet,...) pattern instead.",
+      "parentUuid": "1acde54b_cae1ed05",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "eafc8c47_5abe26cb",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\nsplit into a separate rule for elf to binary, and added a \u0027cmd_elf_to_bin\u0027 in the Makefile.rules",
+      "parentUuid": "20d849d6_26aabff6",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbd6d095_319662c6",
         "filename": "chip/ish/build.mk",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c2c187_0efd6e8c",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dbd6d095_319662c6",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "77d80942_88179aca",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142c4b0d_1618dcde",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c240311_c1fdfd12",
         "filename": "chip/ish/build.mk",
         "patchSetId": 4
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "c7a6798d_ff80d47c",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\nyes, we need it, the rules in Makefile.rules not suitable for aon task build, since we need put all objects files for aon task in a separated build folder: $(ish-aon-out)",
+      "parentUuid": "6c240311_c1fdfd12",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2776734f_b9332f5b",
         "filename": "chip/ish/build.mk",
         "patchSetId": 4
@@ -252,6 +492,30 @@
       "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5590b089_fd3ae1a4",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1319706
+      },
+      "writtenOn": "2019-07-10T14:48:54Z",
+      "side": 1,
+      "message": "Ack!\n\nI think it\u0027s very clear and simple here, maybe no need order-only prerequisite. :)",
+      "parentUuid": "2776734f_b9332f5b",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "a361cb786b0795c898889ea81b167ec2848a5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
