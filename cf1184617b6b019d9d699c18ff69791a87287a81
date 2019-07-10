@@ -22,6 +22,30 @@
       "revId": "cf1184617b6b019d9d699c18ff69791a87287a81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b9ee25b_0a4a34da",
+        "filename": "include/gpio.wrap",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-10T21:20:01Z",
+      "side": 1,
+      "message": "Sure, you can use @a, but the idea is that formatters inside the block use more latex modifier style(since it is common to just plop latex where necessary).\n\nBut, Markdown works too and is a happy/nice middle ground. Checkout the latest PS.",
+      "parentUuid": "e957e782_eee8a6b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "cf1184617b6b019d9d699c18ff69791a87287a81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
