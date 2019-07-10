@@ -10,11 +10,6 @@
 
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -30,18 +25,8 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
 
 /**
- * @ingroup     wdt
- * @defgroup    wdt_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the WDT Peripheral
- * Module.
- * @description Watchdog Timer 0
- */
-
-/**
- * @ingroup wdt_registers
  * Structure type to access the WDT Registers.
  */
 typedef struct {
@@ -49,13 +34,9 @@ typedef struct {
 	__O uint32_t rst;   /**< <tt>\b 0x04:<\tt> WDT RST Register */
 } mxc_wdt_regs_t;
 
-/* Register offsets for module WDT */
 /**
- * @ingroup    wdt_registers
- * @defgroup   WDT_Register_Offsets Register Offsets
- * @brief      WDT Peripheral Register Offsets from the WDT Base Peripheral
+ * WDT Peripheral Register Offsets from the WDT Base Peripheral
  * Address.
- * @{
  */
 #define MXC_R_WDT_CTRL                                                         \
 	((uint32_t)0x00000000UL) /**< Offset from WDT Base Address: <tt>       \
@@ -66,10 +47,7 @@ typedef struct {
 				 /**@} end of group wdt_registers */
 
 /**
- * @ingroup  wdt_registers
- * @defgroup CTRL_Register
- * @brief    Watchdog Timer Control Register.
- * @{
+ * Watchdog Timer Control Register.
  */
 #define MXC_F_WDT_CTRL_INT_PERIOD_POS 0 /**< CTRL_INT_PERIOD Position */
 #define MXC_F_WDT_CTRL_INT_PERIOD                                              \
@@ -357,13 +335,8 @@ typedef struct {
 	 << MXC_F_WDT_CTRL_RST_FLAG_POS) /**< CTRL_RST_FLAG_OCCURRED Setting   \
 					  */
 
-/**@} end of group CTRL_Register */
-
 /**
- * @ingroup  wdt_registers
- * @defgroup RST_Register
- * @brief    Watchdog Timer Reset Register.
- * @{
+ * Watchdog Timer Reset Register.
  */
 #define MXC_F_WDT_RST_WDT_RST_POS 0 /**< RST_WDT_RST Position */
 #define MXC_F_WDT_RST_WDT_RST                                                  \
@@ -379,11 +352,5 @@ typedef struct {
 #define MXC_S_WDT_RST_WDT_RST_SEQ1                                             \
 	(MXC_V_WDT_RST_WDT_RST_SEQ1                                            \
 	 << MXC_F_WDT_RST_WDT_RST_POS) /**< RST_WDT_RST_SEQ1 Setting */
-
-/**@} end of group RST_Register */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* _WDT_REGS_H_ */

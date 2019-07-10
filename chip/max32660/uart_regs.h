@@ -11,11 +11,6 @@
 /* **** Includes **** */
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -31,20 +26,8 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
-
-/* **** Definitions **** */
 
 /**
- * @ingroup     uart
- * @defgroup    uart_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the UART Peripheral
- * Module.
- * @description UART
- */
-
-/**
- * @ingroup uart_registers
  * Structure type to access the UART Registers.
  */
 typedef struct {
@@ -61,13 +44,9 @@ typedef struct {
 	__IO uint32_t tx_fifo; /**< <tt>\b 0x24:<\tt> UART TX_FIFO Register */
 } mxc_uart_regs_t;
 
-/* Register offsets for module UART */
 /**
- * @ingroup    uart_registers
- * @defgroup   UART_Register_Offsets Register Offsets
- * @brief      UART Peripheral Register Offsets from the UART Base Peripheral
+ * UART Peripheral Register Offsets from the UART Base Peripheral
  * Address.
- * @{
  */
 #define MXC_R_UART_CTRL                                                        \
 	((uint32_t)0x00000000UL) /**< Offset from UART Base Address: <tt>      \
@@ -102,10 +81,7 @@ typedef struct {
 				 /**@} end of group uart_registers */
 
 /**
- * @ingroup  uart_registers
- * @defgroup CTRL_Register
- * @brief    Control Register.
- * @{
+ * Control Register.
  */
 #define MXC_F_UART_CTRL_ENABLE_POS 0 /**< CTRL_ENABLE Position */
 #define MXC_F_UART_CTRL_ENABLE                                                 \
@@ -330,13 +306,8 @@ typedef struct {
 	((uint32_t)(                                                           \
 		0xFFUL << MXC_F_UART_CTRL_RX_TO_POS)) /**< CTRL_RX_TO Mask */
 
-/**@} end of group CTRL_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup THRESH_CTRL_Register
- * @brief    Threshold Control register.
- * @{
+ * Threshold Control register.
  */
 #define MXC_F_UART_THRESH_CTRL_RX_FIFO_THRESH_POS                              \
 	0 /**< THRESH_CTRL_RX_FIFO_THRESH Position */
@@ -365,13 +336,8 @@ typedef struct {
 								   THRESH_CTRL_RTS_FIFO_THRESH \
 								   Mask */
 
-/**@} end of group THRESH_CTRL_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup STATUS_Register
- * @brief    Status Register.
- * @{
+ * Status Register.
  */
 #define MXC_F_UART_STATUS_TX_BUSY_POS 0 /**< STATUS_TX_BUSY Position */
 #define MXC_F_UART_STATUS_TX_BUSY                                              \
@@ -443,13 +409,8 @@ typedef struct {
 	((uint32_t)(0x1UL                                                      \
 		    << MXC_F_UART_STATUS_RX_TO_POS)) /**< STATUS_RX_TO Mask */
 
-/**@} end of group STATUS_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup INT_EN_Register
- * @brief    Interrupt Enable Register.
- * @{
+ * Interrupt Enable Register.
  */
 #define MXC_F_UART_INT_EN_RX_FRAME_ERROR_POS                                   \
 	0 /**< INT_EN_RX_FRAME_ERROR Position */
@@ -529,13 +490,8 @@ typedef struct {
 		<< MXC_F_UART_INT_EN_LAST_BREAK_POS)) /**< INT_EN_LAST_BREAK   \
 							 Mask */
 
-/**@} end of group INT_EN_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup INT_FL_Register
- * @brief    Interrupt Status Flags.
- * @{
+ * Interrupt Status Flags.
  */
 #define MXC_F_UART_INT_FL_RX_FRAME_ERROR_POS                                   \
 	0 /**< INT_FL_RX_FRAME_ERROR Position */
@@ -615,13 +571,8 @@ typedef struct {
 		<< MXC_F_UART_INT_FL_LAST_BREAK_POS)) /**< INT_FL_LAST_BREAK   \
 							 Mask */
 
-/**@} end of group INT_FL_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup BAUD0_Register
- * @brief    Baud rate register. Integer portion.
- * @{
+ * Baud rate register. Integer portion.
  */
 #define MXC_F_UART_BAUD0_IBAUD_POS 0 /**< BAUD0_IBAUD Position */
 #define MXC_F_UART_BAUD0_IBAUD                                                 \
@@ -653,39 +604,25 @@ typedef struct {
 	(MXC_V_UART_BAUD0_FACTOR_16                                            \
 	 << MXC_F_UART_BAUD0_FACTOR_POS) /**< BAUD0_FACTOR_16 Setting */
 
-/**@} end of group BAUD0_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup BAUD1_Register
- * @brief    Baud rate register. Decimal Setting.
- * @{
+ * Baud rate register. Decimal Setting.
  */
 #define MXC_F_UART_BAUD1_DBAUD_POS 0 /**< BAUD1_DBAUD Position */
 #define MXC_F_UART_BAUD1_DBAUD                                                 \
 	((uint32_t)(0xFFFUL                                                    \
 		    << MXC_F_UART_BAUD1_DBAUD_POS)) /**< BAUD1_DBAUD Mask */
 
-/**@} end of group BAUD1_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup FIFO_Register
- * @brief    FIFO Data buffer.
- * @{
+ * FIFO Data buffer.
  */
 #define MXC_F_UART_FIFO_FIFO_POS 0 /**< FIFO_FIFO Position */
 #define MXC_F_UART_FIFO_FIFO                                                   \
 	((uint32_t)(0xFFUL << MXC_F_UART_FIFO_FIFO_POS)) /**< FIFO_FIFO Mask   \
 							  */
 
-/**@} end of group FIFO_Register */
 
 /**
- * @ingroup  uart_registers
- * @defgroup DMA_Register
- * @brief    DMA Configuration.
- * @{
+ * DMA Configuration.
  */
 #define MXC_F_UART_DMA_TDMA_EN_POS 0 /**< DMA_TDMA_EN Position */
 #define MXC_F_UART_DMA_TDMA_EN                                                 \
@@ -730,23 +667,12 @@ typedef struct {
 		    << MXC_F_UART_DMA_RXDMA_LEVEL_POS)) /**< DMA_RXDMA_LEVEL   \
 							   Mask */
 
-/**@} end of group DMA_Register */
-
 /**
- * @ingroup  uart_registers
- * @defgroup TX_FIFO_Register
- * @brief    Transmit FIFO Status register.
- * @{
+ * Transmit FIFO Status register.
  */
 #define MXC_F_UART_TX_FIFO_DATA_POS 0 /**< TX_FIFO_DATA Position */
 #define MXC_F_UART_TX_FIFO_DATA                                                \
 	((uint32_t)(0x7FUL                                                     \
 		    << MXC_F_UART_TX_FIFO_DATA_POS)) /**< TX_FIFO_DATA Mask */
-
-/**@} end of group TX_FIFO_Register */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* _UART_REGS_H_ */

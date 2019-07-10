@@ -12,11 +12,6 @@
 /* **** Includes **** */
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -32,7 +27,6 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
 
 /* **** Definitions **** */
 
@@ -914,30 +908,20 @@ typedef enum {
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_EN1_SET_ALL_POS)) /**< EN1_SET_ALL Mask */
 
-/**@} end of group EN1_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN1_CLR_Register
- * @brief    GPIO Alternate Function Clear. Writing a 1 to one or more bits in
+ * GPIO Alternate Function Clear. Writing a 1 to one or more bits in
  * this register clears the bits in the same positions in GPIO_EN1 to 0, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_EN1_CLR_ALL_POS 0 /**< EN1_CLR_ALL Position */
 #define MXC_F_GPIO_EN1_CLR_ALL                                                 \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_EN1_CLR_ALL_POS)) /**< EN1_CLR_ALL Mask */
 
-/**@} end of group EN1_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN2_Register
- * @brief    GPIO Alternate Function Enable Register. Each bit in this register
+ * GPIO Alternate Function Enable Register. Each bit in this register
  * selects between primary/secondary functions for the associated GPIO pin in
  * this port.
- * @{
  */
 #define MXC_F_GPIO_EN2_GPIO_EN2_POS 0 /**< EN2_GPIO_EN2 Position */
 #define MXC_F_GPIO_EN2_GPIO_EN2                                                \
@@ -955,45 +939,30 @@ typedef enum {
 	 << MXC_F_GPIO_EN2_GPIO_EN2_POS) /**< EN2_GPIO_EN2_SECONDARY Setting   \
 					  */
 
-/**@} end of group EN2_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN2_SET_Register
- * @brief    GPIO Alternate Function 2 Set. Writing a 1 to one or more bits in
+ * GPIO Alternate Function 2 Set. Writing a 1 to one or more bits in
  * this register sets the bits in the same positions in GPIO_EN2 to 1, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_EN2_SET_ALL_POS 0 /**< EN2_SET_ALL Position */
 #define MXC_F_GPIO_EN2_SET_ALL                                                 \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_EN2_SET_ALL_POS)) /**< EN2_SET_ALL Mask */
 
-/**@} end of group EN2_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN2_CLR_Register
- * @brief    GPIO Wake Alternate Function Clear. Writing a 1 to one or more bits
+ * GPIO Wake Alternate Function Clear. Writing a 1 to one or more bits
  * in this register clears the bits in the same positions in GPIO_EN2 to 0,
  * without affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_EN2_CLR_ALL_POS 0 /**< EN2_CLR_ALL Position */
 #define MXC_F_GPIO_EN2_CLR_ALL                                                 \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_EN2_CLR_ALL_POS)) /**< EN2_CLR_ALL Mask */
 
-/**@} end of group EN2_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup DS_Register
- * @brief    GPIO Drive Strength  Register. Each bit in this register selects
+ * GPIO Drive Strength  Register. Each bit in this register selects
  * the drive strength for the associated GPIO pin in this port. Refer to the
  * Datasheet for sink/source current of GPIO pins in each mode.
- * @{
  */
 #define MXC_F_GPIO_DS_DS_POS 0 /**< DS_DS Position */
 #define MXC_F_GPIO_DS_DS                                                       \
@@ -1005,51 +974,30 @@ typedef enum {
 #define MXC_S_GPIO_DS_DS_HD                                                    \
 	(MXC_V_GPIO_DS_DS_HD << MXC_F_GPIO_DS_DS_POS) /**< DS_DS_HD Setting */
 
-/**@} end of group DS_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup DS1_Register
- * @brief    GPIO Drive Strength 1 Register. Each bit in this register selects
+ * GPIO Drive Strength 1 Register. Each bit in this register selects
  * the drive strength for the associated GPIO pin in this port. Refer to the
  * Datasheet for sink/source current of GPIO pins in each mode.
- * @{
  */
 #define MXC_F_GPIO_DS1_ALL_POS 0 /**< DS1_ALL Position */
 #define MXC_F_GPIO_DS1_ALL                                                     \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_DS1_ALL_POS)) /**< DS1_ALL Mask */
 
-/**@} end of group DS1_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup PS_Register
- * @brief    GPIO Pull Select Mode.
- * @{
+ * GPIO Pull Select Mode.
  */
 #define MXC_F_GPIO_PS_ALL_POS 0 /**< PS_ALL Position */
 #define MXC_F_GPIO_PS_ALL                                                      \
 	((uint32_t)(0xFFFFFFFFUL << MXC_F_GPIO_PS_ALL_POS)) /**< PS_ALL Mask   \
 							     */
 
-/**@} end of group PS_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup VSSEL_Register
- * @brief    GPIO Voltage Select.
- * @{
+ * GPIO Voltage Select.
  */
 #define MXC_F_GPIO_VSSEL_ALL_POS 0 /**< VSSEL_ALL Position */
 #define MXC_F_GPIO_VSSEL_ALL                                                   \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_VSSEL_ALL_POS)) /**< VSSEL_ALL Mask */
-
-/**@} end of group VSSEL_Register */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* _GPIO_REGS_H_ */

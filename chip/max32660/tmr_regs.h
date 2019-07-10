@@ -36,16 +36,11 @@ extern "C" {
 /* **** Definitions **** */
 
 /**
- * @ingroup     tmr
- * @defgroup    tmr_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the TMR Peripheral
- * Module.
- * @description 32-bit reloadable timer that can be used for timing and event
+ * 32-bit reloadable timer that can be used for timing and event
  * counting.
  */
 
 /**
- * @ingroup tmr_registers
  * Structure type to access the TMR Registers.
  */
 typedef struct {
@@ -57,13 +52,9 @@ typedef struct {
 	__IO uint32_t nolcmp; /**< <tt>\b 0x14:<\tt> TMR NOLCMP Register */
 } mxc_tmr_regs_t;
 
-/* Register offsets for module TMR */
 /**
- * @ingroup    tmr_registers
- * @defgroup   TMR_Register_Offsets Register Offsets
- * @brief      TMR Peripheral Register Offsets from the TMR Base Peripheral
+ * TMR Peripheral Register Offsets from the TMR Base Peripheral
  * Address.
- * @{
  */
 #define MXC_R_TMR_CNT                                                          \
 	((uint32_t)0x00000000UL) /**< Offset from TMR Base Address: <tt>       \
@@ -86,11 +77,8 @@ typedef struct {
 				 /**@} end of group tmr_registers */
 
 /**
- * @ingroup  tmr_registers
- * @defgroup INTR_Register
- * @brief    Clear Interrupt. Writing a value (0 or 1) to a bit in this register
+ * Clear Interrupt. Writing a value (0 or 1) to a bit in this register
  * clears the associated interrupt.
- * @{
  */
 #define MXC_F_TMR_INTR_IRQ_CLR_POS 0 /**< INTR_IRQ_CLR Position */
 #define MXC_F_TMR_INTR_IRQ_CLR                                                 \
@@ -100,10 +88,7 @@ typedef struct {
 /**@} end of group INTR_Register */
 
 /**
- * @ingroup  tmr_registers
- * @defgroup CN_Register
- * @brief    Timer Control Register.
- * @{
+ * Timer Control Register.
  */
 #define MXC_F_TMR_CN_TMODE_POS 0 /**< CN_TMODE Position */
 #define MXC_F_TMR_CN_TMODE                                                     \
@@ -277,13 +262,8 @@ typedef struct {
 	(MXC_V_TMR_CN_PWMCKBD_EN                                               \
 	 << MXC_F_TMR_CN_PWMCKBD_POS) /**< CN_PWMCKBD_EN Setting */
 
-/**@} end of group CN_Register */
-
 /**
- * @ingroup  tmr_registers
- * @defgroup NOLCMP_Register
- * @brief    Timer Non-Overlapping Compare Register.
- * @{
+ * Timer Non-Overlapping Compare Register.
  */
 #define MXC_F_TMR_NOLCMP_NOLLCMP_POS 0 /**< NOLCMP_NOLLCMP Position */
 #define MXC_F_TMR_NOLCMP_NOLLCMP                                               \
@@ -296,8 +276,6 @@ typedef struct {
 	((uint32_t)(                                                           \
 		0xFFUL                                                         \
 		<< MXC_F_TMR_NOLCMP_NOLHCMP_POS)) /**< NOLCMP_NOLHCMP Mask */
-
-/**@} end of group NOLCMP_Register */
 
 #ifdef __cplusplus
 }

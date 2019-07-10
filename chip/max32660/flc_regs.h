@@ -16,7 +16,6 @@
 extern "C" {
 #endif
 
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -32,20 +31,15 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
 
 /* **** Definitions **** */
 
 /**
- * @ingroup     flc
- * @defgroup    flc_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the FLC Peripheral
+ * Registers, Bit Masks and Bit Positions for the FLC Peripheral
  * Module.
- * @description Flash Memory Control.
  */
 
 /**
- * @ingroup flc_registers
  * Structure type to access the FLC Registers.
  */
 typedef struct {
@@ -61,11 +55,8 @@ typedef struct {
 
 /* Register offsets for module FLC */
 /**
- * @ingroup    flc_registers
- * @defgroup   FLC_Register_Offsets Register Offsets
- * @brief      FLC Peripheral Register Offsets from the FLC Base Peripheral
+ * FLC Peripheral Register Offsets from the FLC Base Peripheral
  * Address.
- * @{
  */
 #define MXC_R_FLC_ADDR                                                         \
 	((uint32_t)0x00000000UL) /**< Offset from FLC Base Address: <tt>       \
@@ -85,27 +76,18 @@ typedef struct {
 #define MXC_R_FLC_ACNTL                                                        \
 	((uint32_t)0x00000040UL) /**< Offset from FLC Base Address: <tt>       \
 				    0x0x040 */
-				 /**@} end of group flc_registers */
 
 /**
- * @ingroup  flc_registers
- * @defgroup ADDR_Register
- * @brief    Flash Write Address.
- * @{
+ * Flash Write Address.
  */
 #define MXC_F_FLC_ADDR_ADDR_POS 0 /**< ADDR_ADDR Position */
 #define MXC_F_FLC_ADDR_ADDR                                                    \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_FLC_ADDR_ADDR_POS)) /**< ADDR_ADDR Mask */
 
-/**@} end of group ADDR_Register */
-
 /**
- * @ingroup  flc_registers
- * @defgroup CLKDIV_Register
- * @brief    Flash Clock Divide. The clock (PLL0) is divided by this value to
+ * Flash Clock Divide. The clock (PLL0) is divided by this value to
  * generate a 1 MHz clock for Flash controller.
- * @{
  */
 #define MXC_F_FLC_CLKDIV_CLKDIV_POS 0 /**< CLKDIV_CLKDIV Position */
 #define MXC_F_FLC_CLKDIV_CLKDIV                                                \
@@ -113,13 +95,8 @@ typedef struct {
 		0xFFUL                                                         \
 		<< MXC_F_FLC_CLKDIV_CLKDIV_POS)) /**< CLKDIV_CLKDIV Mask */
 
-/**@} end of group CLKDIV_Register */
-
 /**
- * @ingroup  flc_registers
- * @defgroup CN_Register
- * @brief    Flash Control Register.
- * @{
+ * Flash Control Register.
  */
 #define MXC_F_FLC_CN_WR_POS 0 /**< CN_WR Position */
 #define MXC_F_FLC_CN_WR                                                        \
@@ -229,13 +206,8 @@ typedef struct {
 	(MXC_V_FLC_CN_UNLOCK_UNLOCKED                                          \
 	 << MXC_F_FLC_CN_UNLOCK_POS) /**< CN_UNLOCK_UNLOCKED Setting */
 
-/**@} end of group CN_Register */
-
 /**
- * @ingroup  flc_registers
- * @defgroup INTR_Register
- * @brief    Flash Interrupt Register.
- * @{
+ * Flash Interrupt Register.
  */
 #define MXC_F_FLC_INTR_DONE_POS 0 /**< INTR_DONE Position */
 #define MXC_F_FLC_INTR_DONE                                                    \
@@ -283,38 +255,26 @@ typedef struct {
 #define MXC_F_FLC_INTR_AFIE                                                    \
 	((uint32_t)(0x1UL << MXC_F_FLC_INTR_AFIE_POS)) /**< INTR_AFIE Mask */
 
-/**@} end of group INTR_Register */
-
 /**
- * @ingroup  flc_registers
- * @defgroup DATA_Register
- * @brief    Flash Write Data.
- * @{
+ * Flash Write Data.
  */
 #define MXC_F_FLC_DATA_DATA_POS 0 /**< DATA_DATA Position */
 #define MXC_F_FLC_DATA_DATA                                                    \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_FLC_DATA_DATA_POS)) /**< DATA_DATA Mask */
 
-/**@} end of group DATA_Register */
-
 /**
- * @ingroup  flc_registers
- * @defgroup ACNTL_Register
- * @brief    Access Control Register. Writing the ACNTL register with the
+ * Access Control Register. Writing the ACNTL register with the
  * following values in the order shown, allows read and write access to the
  * system and user Information block: pflc-acntl = 0x3a7f5ca3; pflc-acntl =
  * 0xa1e34f20; pflc-acntl = 0x9608b2c1. When unlocked, a write of any word will
  * disable access to system and user information block. Readback of this
  * register is always zero.
- * @{
  */
 #define MXC_F_FLC_ACNTL_ACNTL_POS 0 /**< ACNTL_ACNTL Position */
 #define MXC_F_FLC_ACNTL_ACNTL                                                  \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_FLC_ACNTL_ACNTL_POS)) /**< ACNTL_ACNTL Mask */
-
-/**@} end of group ACNTL_Register */
 
 #ifdef __cplusplus
 }

@@ -12,11 +12,6 @@
 /* **** Includes **** */
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -32,20 +27,15 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
 
 /* **** Definitions **** */
 
 /**
- * @ingroup     gcr
- * @defgroup    gcr_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the GCR Peripheral
+ * Registers, Bit Masks and Bit Positions for the GCR Peripheral
  * Module.
- * @description Global Control Registers.
  */
 
 /**
- * @ingroup gcr_registers
  * Structure type to access the GCR Registers.
  */
 typedef struct {
@@ -71,13 +61,9 @@ typedef struct {
 	__IO uint32_t syssie;   /**< <tt>\b 0x54:<\tt> GCR SYSSIE Register */
 } mxc_gcr_regs_t;
 
-/* Register offsets for module GCR */
 /**
- * @ingroup    gcr_registers
- * @defgroup   GCR_Register_Offsets Register Offsets
- * @brief      GCR Peripheral Register Offsets from the GCR Base Peripheral
+ * GCR Peripheral Register Offsets from the GCR Base Peripheral
  * Address.
- * @{
  */
 #define MXC_R_GCR_SCON                                                         \
 	((uint32_t)0x00000000UL) /**< Offset from GCR Base Address: <tt>       \
@@ -133,10 +119,7 @@ typedef struct {
 				 /**@} end of group gcr_registers */
 
 /**
- * @ingroup  gcr_registers
- * @defgroup SCON_Register
- * @brief    System Control.
- * @{
+ * System Control.
  */
 #define MXC_F_GCR_SCON_SBUSARB_POS 1 /**< SCON_SBUSARB Position */
 #define MXC_F_GCR_SCON_SBUSARB                                                 \
@@ -225,13 +208,8 @@ typedef struct {
 	(MXC_V_GCR_SCON_SWD_DIS_DISABLE                                        \
 	 << MXC_F_GCR_SCON_SWD_DIS_POS) /**< SCON_SWD_DIS_DISABLE Setting */
 
-/**@} end of group SCON_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup RSTR0_Register
- * @brief    Reset.
- * @{
+ * Reset Register 0.
  */
 #define MXC_F_GCR_RSTR0_DMA_POS 0 /**< RSTR0_DMA Position */
 #define MXC_F_GCR_RSTR0_DMA                                                    \
@@ -614,13 +592,8 @@ typedef struct {
 	(MXC_V_GCR_RSTR0_SYSTEM_BUSY                                           \
 	 << MXC_F_GCR_RSTR0_SYSTEM_POS) /**< RSTR0_SYSTEM_BUSY Setting */
 
-/**@} end of group RSTR0_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup CLKCN_Register
- * @brief    Clock Control.
- * @{
+ * Clock Control.
  */
 #define MXC_F_GCR_CLKCN_PSC_POS 6 /**< CLKCN_PSC Position */
 #define MXC_F_GCR_CLKCN_PSC                                                    \
@@ -787,13 +760,8 @@ typedef struct {
 	 << MXC_F_GCR_CLKCN_LIRC8K_RDY_POS) /**< CLKCN_LIRC8K_RDY_READY        \
 					       Setting */
 
-/**@} end of group CLKCN_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup PM_Register
- * @brief    Power Management.
- * @{
+ * Power Management.
  */
 #define MXC_F_GCR_PM_MODE_POS 0 /**< PM_MODE Position */
 #define MXC_F_GCR_PM_MODE                                                      \
@@ -861,13 +829,8 @@ typedef struct {
 	(MXC_V_GCR_PM_HIRCPD_DEEPSLEEP                                         \
 	 << MXC_F_GCR_PM_HIRCPD_POS) /**< PM_HIRCPD_DEEPSLEEP Setting */
 
-/**@} end of group PM_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup PCKDIV_Register
- * @brief    Peripheral Clock Divider.
- * @{
+ * Peripheral Clock Divider.
  */
 #define MXC_F_GCR_PCKDIV_AONCD_POS 0 /**< PCKDIV_AONCD Position */
 #define MXC_F_GCR_PCKDIV_AONCD                                                 \
@@ -894,13 +857,8 @@ typedef struct {
 	(MXC_V_GCR_PCKDIV_AONCD_DIV_32                                         \
 	 << MXC_F_GCR_PCKDIV_AONCD_POS) /**< PCKDIV_AONCD_DIV_32 Setting */
 
-/**@} end of group PCKDIV_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup PERCKCN0_Register
- * @brief    Peripheral Clock Disable.
- * @{
+ * Peripheral Clock Disable.
  */
 #define MXC_F_GCR_PERCKCN0_GPIO0D_POS 0 /**< PERCKCN0_GPIO0D Position */
 #define MXC_F_GCR_PERCKCN0_GPIO0D                                              \
@@ -1075,13 +1033,8 @@ typedef struct {
 	(MXC_V_GCR_PERCKCN0_I2C1D_DIS                                          \
 	 << MXC_F_GCR_PERCKCN0_I2C1D_POS) /**< PERCKCN0_I2C1D_DIS Setting */
 
-/**@} end of group PERCKCN0_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup MEMCKCN_Register
- * @brief    Memory Clock Control Register.
- * @{
+ * Memory Clock Control Register.
  */
 #define MXC_F_GCR_MEMCKCN_FWS_POS 0 /**< MEMCKCN_FWS Position */
 #define MXC_F_GCR_MEMCKCN_FWS                                                  \
@@ -1186,13 +1139,8 @@ typedef struct {
 	 << MXC_F_GCR_MEMCKCN_ICACHELS_POS) /**< MEMCKCN_ICACHELS_LIGHT_SLEEP  \
 					       Setting */
 
-/**@} end of group MEMCKCN_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup MEMZCN_Register
- * @brief    Memory Zeroize Control.
- * @{
+ * Memory Zeroize Control.
  */
 #define MXC_F_GCR_MEMZCN_SRAM0Z_POS 0 /**< MEMZCN_SRAM0Z Position */
 #define MXC_F_GCR_MEMZCN_SRAM0Z                                                \
@@ -1226,13 +1174,8 @@ typedef struct {
 	(MXC_V_GCR_MEMZCN_ICACHEZ_START                                        \
 	 << MXC_F_GCR_MEMZCN_ICACHEZ_POS) /**< MEMZCN_ICACHEZ_START Setting */
 
-/**@} end of group MEMZCN_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup SYSST_Register
- * @brief    System Status Register.
- * @{
+ * System Status Register.
  */
 #define MXC_F_GCR_SYSST_ICECLOCK_POS 0 /**< SYSST_ICECLOCK Position */
 #define MXC_F_GCR_SYSST_ICECLOCK                                               \
@@ -1285,13 +1228,8 @@ typedef struct {
 	(MXC_V_GCR_SYSST_SCMEMF_MEMORY                                         \
 	 << MXC_F_GCR_SYSST_SCMEMF_POS) /**< SYSST_SCMEMF_MEMORY Setting */
 
-/**@} end of group SYSST_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup RSTR1_Register
- * @brief    Reset 1.
- * @{
+ * Reset Register.
  */
 #define MXC_F_GCR_RSTR1_I2C1_POS 0 /**< RSTR1_I2C1 Position */
 #define MXC_F_GCR_RSTR1_I2C1                                                   \
@@ -1313,13 +1251,8 @@ typedef struct {
 	(MXC_V_GCR_RSTR1_I2C1_BUSY                                             \
 	 << MXC_F_GCR_RSTR1_I2C1_POS) /**< RSTR1_I2C1_BUSY Setting */
 
-/**@} end of group RSTR1_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup PERCKCN1_Register
- * @brief    Peripheral Clock Disable.
- * @{
+ * Peripheral Clock Disable.
  */
 #define MXC_F_GCR_PERCKCN1_FLCD_POS 3 /**< PERCKCN1_FLCD Position */
 #define MXC_F_GCR_PERCKCN1_FLCD                                                \
@@ -1355,13 +1288,8 @@ typedef struct {
 	 << MXC_F_GCR_PERCKCN1_ICACHED_POS) /**< PERCKCN1_ICACHED_DIS Setting  \
 					     */
 
-/**@} end of group PERCKCN1_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup EVTEN_Register
- * @brief    Event Enable Register.
- * @{
+ * Event Enable Register.
  */
 #define MXC_F_GCR_EVTEN_DMAEVENT_POS 0 /**< EVTEN_DMAEVENT Position */
 #define MXC_F_GCR_EVTEN_DMAEVENT                                               \
@@ -1375,13 +1303,8 @@ typedef struct {
 		0x1UL                                                          \
 		<< MXC_F_GCR_EVTEN_RXEVENT_POS)) /**< EVTEN_RXEVENT Mask */
 
-/**@} end of group EVTEN_Register */
-
 /**
- * @ingroup  gcr_registers
- * @defgroup REVISION_Register
- * @brief    Revision Register.
- * @{
+ * Revision Register.
  */
 #define MXC_F_GCR_REVISION_REVISION_POS 0 /**< REVISION_REVISION Position */
 #define MXC_F_GCR_REVISION_REVISION                                            \
@@ -1393,10 +1316,7 @@ typedef struct {
 /**@} end of group REVISION_Register */
 
 /**
- * @ingroup  gcr_registers
- * @defgroup SYSSIE_Register
- * @brief    System Status Interrupt Enable Register.
- * @{
+ * System Status Interrupt Enable Register.
  */
 #define MXC_F_GCR_SYSSIE_ICEULIE_POS 0 /**< SYSSIE_ICEULIE Position */
 #define MXC_F_GCR_SYSSIE_ICEULIE                                               \
@@ -1444,11 +1364,5 @@ typedef struct {
 #define MXC_S_GCR_SYSSIE_SCMFIE_EN                                             \
 	(MXC_V_GCR_SYSSIE_SCMFIE_EN                                            \
 	 << MXC_F_GCR_SYSSIE_SCMFIE_POS) /**< SYSSIE_SCMFIE_EN Setting */
-
-/**@} end of group SYSSIE_Register */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* _GCR_REGS_H_ */

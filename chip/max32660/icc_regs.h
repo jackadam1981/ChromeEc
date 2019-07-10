@@ -11,11 +11,6 @@
 /* **** Includes **** */
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -31,20 +26,8 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
-
-/* **** Definitions **** */
 
 /**
- * @ingroup     icc
- * @defgroup    icc_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the ICC Peripheral
- * Module.
- * @description Instruction Cache Controller Registers
- */
-
-/**
- * @ingroup icc_registers
  * Structure type to access the ICC Registers.
  */
 typedef struct {
@@ -58,13 +41,9 @@ typedef struct {
 		invalidate; /**< <tt>\b 0x0700:<\tt> ICC INVALIDATE Register */
 } mxc_icc_regs_t;
 
-/* Register offsets for module ICC */
 /**
- * @ingroup    icc_registers
- * @defgroup   ICC_Register_Offsets Register Offsets
- * @brief      ICC Peripheral Register Offsets from the ICC Base Peripheral
+ * ICC Peripheral Register Offsets from the ICC Base Peripheral
  * Address.
- * @{
  */
 #define MXC_R_ICC_CACHE_ID                                                     \
 	((uint32_t)0x00000000UL) /**< Offset from ICC Base Address: <tt>       \
@@ -78,13 +57,9 @@ typedef struct {
 #define MXC_R_ICC_INVALIDATE                                                   \
 	((uint32_t)0x00000700UL) /**< Offset from ICC Base Address: <tt>       \
 				    0x0x700 */
-				 /**@} end of group icc_registers */
 
 /**
- * @ingroup  icc_registers
- * @defgroup CACHE_ID_Register
- * @brief    Cache ID Register.
- * @{
+ * Cache ID Register.
  */
 #define MXC_F_ICC_CACHE_ID_RELNUM_POS 0 /**< CACHE_ID_RELNUM Position */
 #define MXC_F_ICC_CACHE_ID_RELNUM                                              \
@@ -104,13 +79,8 @@ typedef struct {
 		0x3FUL                                                         \
 		<< MXC_F_ICC_CACHE_ID_CCHID_POS)) /**< CACHE_ID_CCHID Mask */
 
-/**@} end of group CACHE_ID_Register */
-
 /**
- * @ingroup  icc_registers
- * @defgroup MEMCFG_Register
- * @brief    Memory Configuration Register.
- * @{
+ * Memory Configuration Register.
  */
 #define MXC_F_ICC_MEMCFG_CCHSZ_POS 0 /**< MEMCFG_CCHSZ Position */
 #define MXC_F_ICC_MEMCFG_CCHSZ                                                 \
@@ -122,13 +92,8 @@ typedef struct {
 	((uint32_t)(0xFFFFUL                                                   \
 		    << MXC_F_ICC_MEMCFG_MEMSZ_POS)) /**< MEMCFG_MEMSZ Mask */
 
-/**@} end of group MEMCFG_Register */
-
 /**
- * @ingroup  icc_registers
- * @defgroup CACHE_CTRL_Register
- * @brief    Cache Control and Status Register.
- * @{
+ * Cache Control and Status Register.
  */
 #define MXC_F_ICC_CACHE_CTRL_CACHE_EN_POS                                      \
 	0 /**< CACHE_CTRL_CACHE_EN Position                                    \
@@ -174,11 +139,5 @@ typedef struct {
 	 << MXC_F_ICC_CACHE_CTRL_CACHE_RDY_POS) /**<                           \
 						   CACHE_CTRL_CACHE_RDY_READY  \
 						   Setting */
-
-/**@} end of group CACHE_CTRL_Register */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* _ICC_REGS_H_ */
