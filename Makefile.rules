@@ -675,6 +675,10 @@ help:
 	@echo "Example:"
 	@echo "  make BOARD=reef CROSS_COMPILE_arm='arm-eabi-'"
 
+.PHONY: docs
+docs:
+	doxygen
+
 .PHONY: savesizes
 savesizes:
 	@grep . build/*/*/space_free_*.txt | \
