@@ -979,6 +979,33 @@ static int p256_lt(const p256_int *a, const p256_int *b)
 	return (int)borrow;
 }
 
+static void dmem_permuted_blinded_copy(size_t offset, const p256_int *src,
+				       const p256_int *blinder)
+{
+	uint8_t _idx[] = { 5, 4, 3, 7, 1, 0, 6, 2 };
+	uint32_t r = rand();
+
+	/* pre-randomize Hamming delta w/ dst */
+	for (int i = 0; i < 8; i++)
+		cp1w(offset, i, rand());
+
+	/* permute order by random swaps */
+	for (int i = 0; i < 8; ++i) {
+		uint8_t tmp = _idx[i];
+
+		_idx[i] = _idx[r & 7];
+		_idx[r & 7] = tmp;
+		r >>= 3;
+	}
+
+	/* copy w/ optional xor in permuted order */
+	for (int i = 0; i < 8; ++i) {
+		cp1w(offset, _idx[i],
+		     src->a[_idx[i]] ^
+			     (blinder != NULL ? blinder->a[_idx[i]] : 0));
+	}
+}
+
 int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 			    const p256_int *message, p256_int *r, p256_int *s)
 {
@@ -1023,6 +1050,79 @@ int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 
 	dcrypto_unlock();
 	return result == 0;
+}
+
+int dcrypto_p256_ecdsa_verisign(struct drbg_ctx *drbg, const p256_int *entropy,
+				const p256_int *message, p256_int *r,
+				p256_int *s, p256_int *x, p256_int *y)
+{
+	p256_int rnd, k, d;
+
+	int result = 0;
+
+	dcrypto_init_and_lock();
+	dcrypto_ecc_init();
+	result = dcrypto_call(CF_p256init_adr);
+	dcrypto_p256_rnd(&rnd);
+
+	/* Generate a key */
+	result |= dcrypto_p256_pick(drbg, &d);
+	dmem_permuted_blinded_copy(DMEM_OFFSET(d), &d, &rnd);
+
+	/* Churn entropy and msg into same drbg before generating k */
+	hmac_drbg_reseed(drbg, entropy, sizeof(p256_int), message,
+			 sizeof(p256_int), NULL, 0);
+
+	/* Pull k out of stirred up drbg */
+	result |= dcrypto_p256_pick(drbg, &k);
+	dmem_permuted_blinded_copy(DMEM_OFFSET(k), &k, &rnd);
+
+	/* Wipe k, d */
+	dcrypto_p256_rnd(&k);
+	dcrypto_p256_rnd(&d);
+
+	if (result == 0) {
+		CP8W(rnd, &rnd);
+		CP8W(msg, message);
+
+		dcrypto_p256_rnd(&rnd); /* wipe rnd */
+
+		result |= dcrypto_call(CF_p256verisign_adr);
+
+		/* wipe state */
+		CP8W(d, &rnd);
+		CP8W(k, &rnd);
+
+		if (result == 0) {
+			*r = dmem_ecc->r;
+			*s = dmem_ecc->s;
+
+			if (x)
+				*x = dmem_ecc->x;
+			if (y)
+				*y = dmem_ecc->y;
+		}
+	}
+
+	/* wipe state again */
+	dcrypto_p256_rnd(&rnd);
+	CP8W(d, &rnd);
+	CP8W(k, &rnd);
+	CP8W(rnd, &rnd);
+
+	if (result != 0) {
+		/* trash answers (could been glitched above) */
+		*r = rnd;
+		*s = rnd;
+		if (x)
+			*x = rnd;
+		if (y)
+			*y = rnd;
+	}
+
+	dcrypto_unlock();
+
+	return result;
 }
 
 int dcrypto_p256_base_point_mul(const p256_int *k, p256_int *x, p256_int *y)
@@ -1167,5 +1267,6 @@ int dcrypto_p256_sub_d(const p256_int *a, const p256_digit d, p256_int *b)
 			P256_DIGIT(b, i) = (p256_digit)borrow;
 		borrow >>= P256_BITSPERDIGIT;
 	}
+
 	return (int)borrow;
 }
