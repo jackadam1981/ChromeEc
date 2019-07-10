@@ -25,6 +25,76 @@
     },
     {
       "key": {
+        "uuid": "dd1166ea_1cfd2d5b",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:17:15Z",
+      "side": 1,
+      "message": "I don\u0027t understand the intent of this enum, can you please elaborate.",
+      "parentUuid": "62f96b1d_e166b5e8",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 2
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7dbd2f_466b91cf",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:17:15Z",
+      "side": 1,
+      "message": "shouldn\u0027t this structure be provided by the chip source file?",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b705bb_59c39407",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:17:15Z",
+      "side": 1,
+      "message": "is this for the case where there are two different gpio controllers?\n\nmaybe these structures should be placed in a dedicated text segment, and then the init function could create an array of pointers to them, making sure that pointers are sorted to match chip indices.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 2
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "230955de_bde0f598",
         "filename": "common/gpio.c",
         "patchSetId": 3
