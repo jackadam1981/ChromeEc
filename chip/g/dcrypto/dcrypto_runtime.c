@@ -410,9 +410,26 @@ exit:
 	return ret;
 }
 
+static int ecdsa_verisign_go(p256_int *r, p256_int *s)
+{
+	struct drbg_ctx drbg;
+	p256_int entropy = *r;
+	p256_int message = *s;
+	int ret = 0;
+
+	/* drbg init with same entropy */
+	hmac_drbg_init(&drbg, r->a, sizeof(r->a), NULL, 0, NULL, 0);
+
+	ret = dcrypto_p256_ecdsa_verisign(&drbg, &entropy, &message, r, s, NULL,
+					  NULL);
+	drbg_exit(&drbg);
+
+	return ret;
+}
+
 static int command_dcrypto_ecdsa_test(int argc, char *argv[])
 {
-	p256_int entropy, message, r, s;
+	p256_int entropy, message, r_sign, s_sign, r_verisign, s_verisign;
 	LITE_SHA256_CTX hsh;
 	int result = 0;
 	char *new_stack;
@@ -428,8 +445,10 @@ static int command_dcrypto_ecdsa_test(int argc, char *argv[])
 	HASH_update(&hsh, &ten, sizeof(ten));
 	p256_from_bin(HASH_final(&hsh), &message);
 
-	r = entropy;
-	s = message;
+	r_sign = entropy;
+	s_sign = message;
+	r_verisign = entropy;
+	s_verisign = message;
 
 	result = shared_mem_acquire(new_stack_size, &new_stack);
 
@@ -441,10 +460,19 @@ static int command_dcrypto_ecdsa_test(int argc, char *argv[])
 	for (uint32_t i = 0; i < ECDSA_TEST_ITERATIONS; i++) {
 		result = call_on_bigger_stack((uint32_t)new_stack +
 						      new_stack_size,
-					      ecdsa_sign_go, &r, &s);
+					      ecdsa_sign_go, &r_sign, &s_sign);
 
 		if (!result) {
-			ccprintf("ECDSA TEST fail: %d\n", result);
+			ccprintf("ECDSA SIGN TEST fail: %d\n", result);
+			return EC_ERROR_INVAL;
+		}
+
+		result = call_on_bigger_stack(
+			(uint32_t)new_stack + new_stack_size, ecdsa_verisign_go,
+			&r_verisign, &s_verisign);
+
+		if (result != EC_SUCCESS) {
+			ccprintf("ECDSA VERISIGN TEST fail: %d\n", result);
 			return EC_ERROR_INVAL;
 		}
 
@@ -456,16 +484,22 @@ static int command_dcrypto_ecdsa_test(int argc, char *argv[])
 
 	/* compare to the golden r and s values */
 	for (uint8_t i = 0; i < 8; i++) {
-		if (r.a[i] != r_golden.a[i]) {
-			ccprintf("ECDSA TEST r does not match with golden at "
-				 "%d: %08x != %08x\n",
-				 i, r.a[i], r_golden.a[i]);
+		if (r_sign.a[i] != r_golden.a[i] ||
+		    r_verisign.a[i] != r_golden.a[i]) {
+			ccprintf("ECDSA TEST r does not match at %d: "
+				 "r_sign=%08x, r_verisign=%08x, r_golden= "
+				 "%08x\n",
+				 i, r_sign.a[i], r_verisign.a[i],
+				 r_golden.a[i]);
 			return EC_ERROR_INVAL;
 		}
-		if (s.a[i] != s_golden.a[i]) {
-			ccprintf("ECDSA TEST s does not match with golden at "
-				 "%d: %08x != %08x\n",
-				 i, s.a[i], s_golden.a[i]);
+		if (s_sign.a[i] != s_golden.a[i] ||
+		    s_verisign.a[i] != s_golden.a[i]) {
+			ccprintf("ECDSA TEST s does not match at %d: "
+				 "s_sign=%08x, s_verisign=%08x, s_golden= "
+				 "%08x\n",
+				 i, s_sign.a[i], s_verisign.a[i],
+				 s_golden.a[i]);
 			return EC_ERROR_INVAL;
 		}
 	}
