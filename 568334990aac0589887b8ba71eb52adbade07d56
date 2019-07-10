@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4f4333e_4ffad51e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:48:40Z",
+      "side": 1,
+      "message": "what exactly does this mean? Did you verify that programming with both servo and SuzyQ of both types of chips succeeds?\n\nCan you please describe the test in more details.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb33abee_37135c68",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:48:40Z",
+      "side": 1,
+      "message": "this should be named get_3rd_chip_id_byte",
+      "range": {
+        "startLine": 516,
+        "startChar": 11,
+        "endLine": 516,
+        "endChar": 28
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684ddb8d_3512b987",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:48:40Z",
+      "side": 1,
+      "message": "should this be initialized to ~0?",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3bec53_bbb501bb",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-10T14:48:40Z",
+      "side": 1,
+      "message": "is this supposed to override the byte set in line 572?",
+      "range": {
+        "startLine": 580,
+        "startChar": 2,
+        "endLine": 580,
+        "endChar": 42
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
