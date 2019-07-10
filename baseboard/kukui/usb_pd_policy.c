@@ -7,7 +7,6 @@
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
-#include "driver/charger/rt946x.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
