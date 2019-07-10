@@ -14,6 +14,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <signal.h>
 
 #include "anx74xx.h"
 #include "battery.h"
@@ -31,6 +32,10 @@
 #include "panic.h"
 #include "ps8xxx.h"
 #include "usb_pd.h"
+
+/*
+ * This has no functional difference!
+ */
 
 /* Maximum flash size (16 MB, conservative) */
 #define MAX_FLASH_SIZE 0x1000000
