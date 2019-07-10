@@ -22,6 +22,7 @@ from chromite.lib import cros_logging as logging
 
 import argparse
 import atexit
+import os
 import serial
 import sys
 import threading
@@ -249,7 +250,11 @@ class UartSerial(object):
       self.serial.close()
 
   def stress_test_thread(self):
-    """Test thread"""
+    """Test thread
+
+    Raises:
+      ChargenTestError: if broken character is found.
+    """
     try:
       self.serial.open()
       self.serial.flushInput()
@@ -293,9 +298,11 @@ class UartSerial(object):
             # If it is not alpha-numeric, terminate the test.
             if ch_cap not in CRLF:
               # If it is neither a CR nor LF, then it is an error case.
-              self.logger.error(err_msg, 'Broken char captured',
-                                ch_exp, hex(ord(ch_cap)), self.num_ch_cap)
               self.logger.error('Whole captured characters: %r', captured)
+              raise ChargenTestError(err_msg % ('Broken char captured', ch_exp,
+                                                hex(ord(ch_cap)),
+                                                self.num_ch_cap))
+
             # Set the loop termination condition true.
             total_num_ch = self.num_ch_cap
 
@@ -385,6 +392,9 @@ class ChargenTest(object):
 
     # Save the arguments
     self.ports = ports
+    for port in ports:
+      if not os.path.exists(port):
+        raise ChargenTestError('%s does not exist.' % port)
 
     if duration <= 0:
       raise ChargenTestError('Input error: duration is not positive.')
@@ -409,7 +419,11 @@ class ChargenTest(object):
     self.logger.info('Ports are ready to test')
 
   def print_result(self):
-    """Display the test result for each UART port"""
+    """Display the test result for each UART port
+
+    Returns:
+      char_lost: Total number of characters lost
+    """
     char_lost = 0
     for _, ser in self.serials.items():
       (tmp_lost, _, _) = ser.get_result()
@@ -422,8 +436,14 @@ class ChargenTest(object):
     else:
       self.logger.info('PASS: %s', msg)
 
+    return char_lost
+
   def run(self):
-    """Run the stress test on UART port(s)"""
+    """Run the stress test on UART port(s)
+
+    Raises:
+      ChargenTestError: If any characters are lost.
+    """
 
     # Detect UART source type, and decide which command to test.
     self.prepare()
@@ -438,9 +458,12 @@ class ChargenTest(object):
       ser.wait_test_done()
 
     # Print the result.
-    self.print_result()
-    self.logger.info('Test is done')
+    char_lost = self.print_result()
+    if char_lost:
+      raise ChargenTestError('Test failed for losing %d character(s)' %
+                             char_lost)
 
+    self.logger.info('Test is done')
 
 def parse_args(cmdline):
   """Parse command line arguments.
