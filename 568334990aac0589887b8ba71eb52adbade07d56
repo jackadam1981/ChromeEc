@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "a28b8722_176f9edd",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-10T21:42:05Z",
+      "side": 1,
+      "message": "Is there any datasheet available for reference?\nLooks like (CMD:0x80, DATA:0xF0) is a prefix command for 3-byte addressing.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 41
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "684ddb8d_3512b987",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -71,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "9b93cd98_99598baf",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-10T21:42:05Z",
+      "side": 1,
+      "message": "I think it should be 0xF FFFF or it should have \u0027id \u0026\u003d 0xf000f;\u0027 between line 580 and 581 to have exact id value printed by line 585 and 601.",
+      "parentUuid": "684ddb8d_3512b987",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b3bec53_bbb501bb",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -82,6 +129,30 @@
       "writtenOn": "2019-07-10T14:48:40Z",
       "side": 1,
       "message": "is this supposed to override the byte set in line 572?",
+      "range": {
+        "startLine": 580,
+        "startChar": 2,
+        "endLine": 580,
+        "endChar": 42
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39a5756_d10f8a0d",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-10T21:42:05Z",
+      "side": 1,
+      "message": "Have the same question.\n\nOtherwise, could it be like this?\nline 523: ret |\u003d i2c_read_byte(chnd, 0x30, chip_id);\nline 580: get_3byte_chip_id(chnd, (uint8_t *)\u0026id + 2);",
+      "parentUuid": "2b3bec53_bbb501bb",
       "range": {
         "startLine": 580,
         "startChar": 2,
