@@ -244,7 +244,6 @@ int comm_init_dev(const char *device_name)
 	char version[80];
 	char device[80] = "/dev/";
 	int r;
-	char *s;
 
 	strncat(device, (device_name ? device_name : CROS_EC_DEV_NAME), 40);
 	fd = open(device, O_RDWR);
@@ -255,14 +254,6 @@ int comm_init_dev(const char *device_name)
 	if (r <= 0) {
 		close(fd);
 		return 2;
-	}
-	version[r] = '\0';
-	s = strchr(version, '\n');
-	if (s)
-		*s = '\0';
-	if (strcmp(version, CROS_EC_DEV_VERSION)) {
-		close(fd);
-		return 3;
 	}
 
 	if (ec_dev_is_v2()) {
