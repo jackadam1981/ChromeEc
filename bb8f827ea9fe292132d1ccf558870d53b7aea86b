@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2fba5954_52b8338b",
+        "filename": "board/jacuzzi/emmc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-10T12:27:09Z",
+      "side": 1,
+      "message": "Yes, I\u0027m adding a baseboard/kukui for putting common files",
+      "parentUuid": "b430cd0f_9184ae7b",
+      "revId": "bb8f827ea9fe292132d1ccf558870d53b7aea86b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b70981e_5ce63cf9",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 4
