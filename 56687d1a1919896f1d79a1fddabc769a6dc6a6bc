@@ -34,6 +34,24 @@
       "revId": "56687d1a1919896f1d79a1fddabc769a6dc6a6bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba5992a_75555b6e",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1299975
+      },
+      "writtenOn": "2019-07-11T05:34:32Z",
+      "side": 1,
+      "message": "Sorry, I miss the voltage adjustment of scp. \nSCP still needs to set hw mode of VREQ in order to use correct core power during suspend mode.\nSo we cannot set sw mode of vreq.\nThis is still necessary for our project.",
+      "parentUuid": "2b09d5d0_7d30ee41",
+      "revId": "56687d1a1919896f1d79a1fddabc769a6dc6a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
