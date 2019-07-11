@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c0956f3_b7688a2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "You need BUG, BRANCH, TEST fields. Please run repo upload --verify.",
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22852b2e_943c4bb1",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "WYH: Can you rename it CPRINTS?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70be7d2a_c2e333ef",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "FMI: We never disable it...",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac5d7ee_f168ae29",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "Can you remove this? This file has all APIs decorated by redundant descriptions, which should be all removed.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33f4a06_ef9877c0",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "Please remove this.",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc16ecc0_9e98138b",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "nit: I would put these after line 124.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810a7c43_c28aab27",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "It seems you have to grab a mutex.",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648c04a0_0c7fb184",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "Please remove {}.",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d993fdf_9e465090",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:52:45Z",
+      "side": 1,
+      "message": "80+",
+      "range": {
+        "startLine": 145,
+        "startChar": 39,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
