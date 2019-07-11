@@ -9,6 +9,7 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Pins for internal flash testing */
+
 GPIO_INT(RECOVERY_L,       PIN(0, 3), GPIO_INT_BOTH | GPIO_PULL_UP, switch_interrupt)
 GPIO_INT(WP_L,             PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, switch_interrupt)
 
@@ -50,6 +51,55 @@ GPIO(I2C7_SCL0,            PIN(B, 3), GPIO_ODR_HIGH)
 GPIO(BOARD_VERSION1,       PIN(6, 4), GPIO_INPUT)
 GPIO(BOARD_VERSION2,       PIN(6, 5), GPIO_INPUT)
 GPIO(BOARD_VERSION3,       PIN(6, 6), GPIO_INPUT)
+#ifdef CONFIG_COMMON_IO_EXPANDER
+/* GPIO declaration for NCT3807 */
+/* GPIO group 0 */
+GPIO(3807_G0_00,           EXPIN(0, 0, 0), GPIO_OUT_HIGH)
+GPIO(3807_G0_01,           EXPIN(0, 0, 1), GPIO_OUT_HIGH)
+GPIO(3807_G0_02,           EXPIN(0, 0, 2), GPIO_OUT_HIGH)
+GPIO(3807_G0_03,           EXPIN(0, 0, 3), GPIO_OUT_HIGH)
+GPIO(3807_G0_04,           EXPIN(0, 0, 4), GPIO_OUT_HIGH)
+GPIO(3807_G0_05,           EXPIN(0, 0, 5), GPIO_OUT_HIGH)
+GPIO(3807_G0_06,           EXPIN(0, 0, 6), GPIO_OUT_HIGH)
+GPIO(3807_G0_07,           EXPIN(0, 0, 7), GPIO_OUT_HIGH)
+/* GPIO group 1 */
+GPIO(3807_G1_00,           EXPIN(0, 1, 0), GPIO_INPUT)
+GPIO(3807_G1_01,           EXPIN(0, 1, 1), GPIO_INPUT)
+GPIO(3807_G1_02,           EXPIN(0, 1, 2), GPIO_INPUT)
+GPIO(3807_G1_03,           EXPIN(0, 1, 3), GPIO_INPUT)
+GPIO(3807_G1_04,           EXPIN(0, 1, 4), GPIO_ODR_HIGH)
+GPIO(3807_G1_05,           EXPIN(0, 1, 5), GPIO_ODR_HIGH)
+GPIO(3807_G1_06,           EXPIN(0, 1, 6), GPIO_ODR_HIGH)
+GPIO(3807_G1_07,           EXPIN(0, 1, 7), GPIO_ODR_HIGH)
+
+#if (CONFIG_IO_EXPANDER_PORT_COUNT >= 2)
+/* GPIO declaration for NCT3808 Port 0 */
+/* Unsupported GPIO on GPIO group 0 */
+//GPIO(3808_P0_00,            EXPIN(1, 0, 0), GPIO_OUT_HIGH)
+
+/* Supported GPIO on GPIO0 */
+GPIO(3808_P0_02,            EXPIN(1, 0, 2), GPIO_OUT_HIGH)
+GPIO(3808_P0_03,            EXPIN(1, 0, 3), GPIO_OUT_HIGH)
+GPIO(3808_P0_04,            EXPIN(1, 0, 4), GPIO_INPUT)
+GPIO(3808_P0_06,            EXPIN(1, 0, 6), GPIO_INPUT)
+GPIO(3808_P0_07,            EXPIN(1, 0, 7), GPIO_ODR_HIGH)
+
+/* Unsupported GPIO group 1 */
+//GPIO(3808_P0_17,            EXPIN(1, 1, 7), GPIO_OUT_HIGH)
+#endif
+
+#if (CONFIG_IO_EXPANDER_PORT_COUNT >= 3)
+/* GPIO declaration for NCT3808 Port 1 */
+GPIO(3808_P1_02,        EXPIN(2, 0, 2), GPIO_OUT_HIGH)
+GPIO(3808_P1_03,        EXPIN(2, 0, 3), GPIO_OUT_HIGH)
+GPIO(3808_P1_04,        EXPIN(2, 0, 4), GPIO_INPUT)
+GPIO(3808_P1_06,        EXPIN(2, 0, 6), GPIO_INPUT)
+GPIO(3808_P1_07,        EXPIN(2, 0, 7), GPIO_ODR_HIGH)
+/* Unsupported GPIO on GPIO group 0 */
+//GPIO(3808_P1_05,        EXPIN(2, 0, 5), GPIO_OUT_HIGH)
+
+#endif
+#endif
 
 /*********************** Alternate pins for npcx7 series **********************/
 #if (CONFIG_CONSOLE_UART == 0)
