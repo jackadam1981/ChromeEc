@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "e5c6bc38_d862f2f1",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-11T19:51:37Z",
+      "side": 1,
+      "message": "I think the way I suggested will work since it will generate a compile error if it gets included a second time (the \"#error\" message).",
+      "parentUuid": "6a8f244c_f84a0677",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
