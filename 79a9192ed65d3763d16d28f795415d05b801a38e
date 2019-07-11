@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "6a8f244c_f84a0677",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T19:35:09Z",
+      "side": 1,
+      "message": "Ahh, I see how that could be annoying for file renaming, but then someone could include this registers file directly without getting an error. Include both?\n\nOr, better yet, just explicitly set a different macro in registers.h that surrounds the family specific include section.\n\nSo, in registers.h:\n\n#define __REGISTERS_MASTER__\n\n#if define(FAMILY1)\n#   include \u003cregister-fam1.h\u003e\n#elif define(FAMILY2)\n#   include \u003cregister-fam2.h\u003e\n#endif\n\n#undef __REGISTERS_MASTER__\n\n\nIn registers-stm32f0.h:\n\n#ifndef __REGISTERS_FAMILY_SPECIFIC__\n#error \"\"\n#endif",
+      "parentUuid": "e55abf31_22aec6c7",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "This isn\u0027t important. Please ignore.",
       "parentUuid": "412a01e4_7bf952c0",
+      "range": {
+        "startLine": 243,
+        "startChar": 40,
+        "endLine": 243,
+        "endChar": 47
+      },
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a187535d_29f8e2f2",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T19:35:09Z",
+      "side": 1,
+      "message": "Oh, do you mean instead of (1\u003c\u003c21) or BIT(21) ?\n\nYeah, not sure exactly why it is written like this.",
+      "parentUuid": "3a105fe4_84d85441",
       "range": {
         "startLine": 243,
         "startChar": 40,
