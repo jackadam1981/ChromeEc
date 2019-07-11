@@ -9,6 +9,7 @@
 #define __CROS_EC_GPIO_H
 
 #include "common.h"
+#include "ioexpander.h"
 
 /* Flag definitions for gpio_info and gpio_alt_func */
 /* The following are valid for both gpio_info and gpio_alt_func: */
