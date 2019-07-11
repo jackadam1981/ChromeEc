@@ -4,21 +4,39 @@
  */
 
 #include "console.h"
+<<<<<<< HEAD   (39c240 Nami: Clear EC_FEATURE_PWM_KEYB for the sku not supporting k)
 #include "gpio.h"
+=======
+>>>>>>> CHANGE (bff877 tablet-mode: Disable tablet mode in recovery boot)
 #include "hooks.h"
+<<<<<<< HEAD   (39c240 Nami: Clear EC_FEATURE_PWM_KEYB for the sku not supporting k)
 #include "lid_angle.h"
 #include "tablet_mode.h"
 #include "timer.h"
+=======
+#include "tablet_mode.h"
+>>>>>>> CHANGE (bff877 tablet-mode: Disable tablet mode in recovery boot)
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ## args)
 
+<<<<<<< HEAD   (39c240 Nami: Clear EC_FEATURE_PWM_KEYB for the sku not supporting k)
 /* 1: in tablet mode. 0: otherwise */
 static int tablet_mode = 1;
+=======
+/* 1: in tablet mode; 0: notebook mode; -1: uninitialized  */
+static int tablet_mode = -1;
+
+/*
+ * 1: all calls to tablet_set_mode are ignored and tablet_mode if forced to 0
+ * 0: all calls to tablet_set_mode are honored
+ */
+static int disabled;
+>>>>>>> CHANGE (bff877 tablet-mode: Disable tablet mode in recovery boot)
 
 int tablet_get_mode(void)
 {
-	return tablet_mode;
+	return !!tablet_mode;
 }
 
 void tablet_set_mode(int mode)
@@ -26,11 +44,20 @@ void tablet_set_mode(int mode)
 	if (tablet_mode == mode)
 		return;
 
+<<<<<<< HEAD   (39c240 Nami: Clear EC_FEATURE_PWM_KEYB for the sku not supporting k)
+=======
+	if (disabled) {
+		CPRINTS("Tablet mode set while disabled (ignoring)!");
+		return;
+	}
+
+>>>>>>> CHANGE (bff877 tablet-mode: Disable tablet mode in recovery boot)
 	tablet_mode = mode;
 	CPRINTS("tablet mode %sabled", mode ? "en" : "dis");
 	hook_notify(HOOK_TABLET_MODE_CHANGE);
 }
 
+<<<<<<< HEAD   (39c240 Nami: Clear EC_FEATURE_PWM_KEYB for the sku not supporting k)
 /* This ifdef can be removed once we clean up past projects which do own init */
 #ifdef CONFIG_TABLET_SWITCH
 #ifndef TABLET_MODE_GPIO_L
@@ -69,3 +96,10 @@ static void tablet_mode_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, tablet_mode_init, HOOK_PRIO_DEFAULT);
 #endif
+=======
+void tablet_disable(void)
+{
+	tablet_mode = 0;
+	disabled = 1;
+}
+>>>>>>> CHANGE (bff877 tablet-mode: Disable tablet mode in recovery boot)

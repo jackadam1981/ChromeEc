@@ -10,6 +10,7 @@ int tablet_get_mode(void);
 void tablet_set_mode(int mode);
 
 /**
+<<<<<<< HEAD   (39c240 Nami: Clear EC_FEATURE_PWM_KEYB for the sku not supporting k)
  * Interrupt service routine for tablet switch.
  *
  * TABLET_MODE_GPIO_L must be defined.
@@ -17,3 +18,8 @@ void tablet_set_mode(int mode);
  * @param signal: GPIO signal
  */
 void tablet_mode_isr(enum gpio_signal signal);
+=======
+ * Disable tablet mode
+ */
+void tablet_disable(void);
+>>>>>>> CHANGE (bff877 tablet-mode: Disable tablet mode in recovery boot)
