@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c119507_e133ed04",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T05:01:06Z",
+      "side": 1,
+      "message": "Is this still required now that we don\u0027t really use the pwrap?",
+      "revId": "56687d1a1919896f1d79a1fddabc769a6dc6a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
