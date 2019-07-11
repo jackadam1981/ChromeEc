@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dcb5f3e_706516fe",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2671,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-11T19:43:29Z",
+      "side": 1,
+      "message": "I might be worth filling more descriptions for the bare host event and gpio ones.",
+      "range": {
+        "startLine": 2671,
+        "startChar": 0,
+        "endLine": 2671,
+        "endChar": 46
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc20bbdd_fbb4b7a8",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2682,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-11T19:43:29Z",
+      "side": 1,
+      "message": "Is this true, or do we keep wanting to use this #define after combining the EC_INT with WAKE?",
+      "range": {
+        "startLine": 2681,
+        "startChar": 71,
+        "endLine": 2682,
+        "endChar": 21
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
