@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ff24e04b_42c3c878",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T19:22:47Z",
+      "side": 1,
+      "message": "+1 on Tom\u0027s idea.",
+      "parentUuid": "e55abf31_22aec6c7",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "I\u0027m not sure I understand what you are pointing out.\nThe \"(2 \u003c\u003c 20)\" was present in the previous version, no?",
       "parentUuid": "72f16716_93d44f2c",
+      "range": {
+        "startLine": 243,
+        "startChar": 40,
+        "endLine": 243,
+        "endChar": 47
+      },
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a105fe4_84d85441",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T19:22:47Z",
+      "side": 1,
+      "message": "This isn\u0027t important. Please ignore.",
+      "parentUuid": "412a01e4_7bf952c0",
       "range": {
         "startLine": 243,
         "startChar": 40,
