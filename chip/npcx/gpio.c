@@ -31,6 +31,7 @@
 #define CPUTS(outstr) cputs(CC_GPIO, outstr)
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 #endif
+#define CPRINTF(format, args...) cprintf(CC_GPIO, format, ## args)
 
 /* Constants for GPIO interrupt mapping */
 #define GPIO_INT(name, pin, flags, signal) NPCX_WUI_GPIO_##pin,
@@ -38,6 +39,9 @@
 /* Extend gpio_wui_table for the bypass of better power consumption */
 #define GPIO(name, pin, flags) NPCX_WUI_GPIO_##pin,
 #define UNIMPLEMENTED(name) WUI_NONE,
+#ifdef CONFIG_IO_EXPANDER
+#define NPCX_WUI_GPIO_EXPIN(ioex, port, index) WUI_NONE
+#endif
 #else
 /* Ignore GPIO and UNIMPLEMENTED definitions if not using lower power idle */
 #define GPIO(name, pin, flags)
@@ -319,11 +323,39 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
+#ifdef CONFIG_IO_EXPANDER
+	const struct gpio_info *g = gpio_list + signal;
+
+	if (IS_IOEX_PIN(g->port)) {
+		int val, ioex, p, rv;
+
+		ioex = IOEX_CHIP_PORT_NUM(g->port);
+		p = IOEX_IO_PORT_NUM(g->port);
+		rv = ioex_config[ioex].drv->get_level(ioex, p, g->mask, &val);
+		if (rv)
+			CPRINTF("Fail to get level of IOEX\n");
+		return val;
+	}
+#endif
 	return !!(NPCX_PDIN(gpio_list[signal].port) & gpio_list[signal].mask);
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
+#ifdef CONFIG_IO_EXPANDER
+	const struct gpio_info *g = gpio_list + signal;
+
+	if (IS_IOEX_PIN(g->port)) {
+		int ioex, p, rv;
+
+		ioex = IOEX_CHIP_PORT_NUM(g->port);
+		p = IOEX_IO_PORT_NUM(g->port);
+		rv = ioex_config[ioex].drv->set_level(ioex, p, g->mask, value);
+		if (rv)
+			CPRINTF("Fail to set level of IOEX\n");
+		return;
+	}
+#endif
 	if (value)
 		NPCX_PDOUT(gpio_list[signal].port) |=  gpio_list[signal].mask;
 	else
@@ -335,6 +367,19 @@ int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
 {
 	uint32_t flags = 0;
 
+#ifdef CONFIG_IO_EXPANDER
+	if (IS_IOEX_PIN(port)) {
+		int ioex, p, rv;
+
+		ioex = IOEX_CHIP_PORT_NUM(port);
+		p = IOEX_IO_PORT_NUM(port);
+		rv = ioex_config[ioex].drv->get_flags_by_mask(ioex, p, mask,
+						&flags);
+		if (rv)
+			CPRINTF("Fail to get flags of IOEX\n");
+		return flags;
+	}
+#endif
 	if (NPCX_PDIR(port) & mask)
 		flags |= GPIO_OUTPUT;
 	else
@@ -371,6 +416,20 @@ int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
+#ifdef CONFIG_IO_EXPANDER
+	if (IS_IOEX_PIN(port)) {
+		int ioex, p, rv;
+
+		ioex = IOEX_CHIP_PORT_NUM(port);
+		p = IOEX_IO_PORT_NUM(port);
+		rv = ioex_config[ioex].drv->set_flags_by_mask(ioex, p, mask,
+						flags);
+		if (rv)
+			CPRINTF("Fail to set flags of IOEX\n");
+		return;
+	}
+#endif
+
 	/* If all GPIO pins are locked, return directly */
 #if defined(CHIP_FAMILY_NPCX7)
 	if ((NPCX_PLOCK_CTL(port) & mask) == mask)
@@ -490,6 +549,33 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_IO_EXPANDER
+static void gpio_ioex_init_default(void)
+{
+	int i;
+	const struct gpio_info *g = gpio_list;
+	const struct ioexpander_drv *drv;
+
+	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+		drv = ioex_config[i].drv;
+		if (drv->init != NULL)
+			drv->init(i);
+	}
+	/*
+	 * Set all IO expander GPIOs to default flags according to the setting
+	 * in gpio.inc
+	 */
+	for (i = 0; i < GPIO_COUNT; i++, g++) {
+		if (g->mask && !(g->flags & GPIO_DEFAULT) &&
+					IS_IOEX_PIN(g->port)) {
+			gpio_set_flags_by_mask(g->port, g->mask, g->flags);
+		}
+	}
+
+}
+DECLARE_HOOK(HOOK_INIT, gpio_ioex_init_default, HOOK_PRIO_INIT_I2C + 1);
+#endif
+
 void gpio_pre_init(void)
 {
 	const struct gpio_info *g = gpio_list;
@@ -564,6 +650,10 @@ void gpio_pre_init(void)
 
 		if (flags & GPIO_DEFAULT)
 			continue;
+#ifdef CONFIG_IO_EXPANDER
+		if (IS_IOEX_PIN(g->port))
+			continue;
+#endif
 		/*
 		 * If this is a warm reboot, don't set the output levels or
 		 * we'll shut off the AP.
