@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4c9e0ce_76992ee8",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-11T18:39:11Z",
+      "side": 1,
+      "message": "This logic is ~roughly in dcrypto_call in my other dcrypto_runtime cl that is pending.\nAssume that cl makes it in",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 962,
+        "endChar": 0
+      },
+      "revId": "0da11b051109bf3c7f5d45124f403c3bfc36b77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a3e6cc_699133eb",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2019-07-11T18:39:11Z",
+      "side": 1,
+      "message": "yeah remove this. Cr50 uses interrupts, not polling so this is redundant here.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 0,
+        "endLine": 1054,
+        "endChar": 51
+      },
+      "revId": "0da11b051109bf3c7f5d45124f403c3bfc36b77f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
