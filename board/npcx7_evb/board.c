@@ -15,6 +15,8 @@
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "ioexpander_nct38xx.h"
+#include "ioexpander.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -83,8 +85,8 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 /******************************************************************************/
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master0-0", NPCX_I2C_PORT0_0, 100, GPIO_I2C0_SCL0, GPIO_I2C0_SDA0},
-	{"master1-0", NPCX_I2C_PORT1_0, 100, GPIO_I2C1_SCL0, GPIO_I2C1_SDA0},
+	{"master0-0", NPCX_I2C_PORT0_0, 400, GPIO_I2C0_SCL0, GPIO_I2C0_SDA0},
+	{"master1-0", NPCX_I2C_PORT1_0, 400, GPIO_I2C1_SCL0, GPIO_I2C1_SDA0},
 	{"master2-0", NPCX_I2C_PORT2_0, 100, GPIO_I2C2_SCL0, GPIO_I2C2_SDA0},
 	{"master3-0", NPCX_I2C_PORT3_0, 100, GPIO_I2C3_SCL0, GPIO_I2C3_SDA0},
 	{"master7-0", NPCX_I2C_PORT7_0, 100, GPIO_I2C7_SCL0, GPIO_I2C7_SDA0},
@@ -121,3 +123,37 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xc8  /* full set */
 	},
 };
+
+/* IO expander configuration */
+#ifdef CONFIG_IO_EXPANDER
+#define IO_EXPANDER_PORT_0 0
+#define IO_EXPANDER_PORT_1 1
+#define IO_EXPANDER_PORT_2 2
+struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
+	/* Port 0 for NCT3807, use I2C port0_0 with address 0xE0 */
+	[IO_EXPANDER_PORT_0] = {
+		.i2c_host_port = NPCX_I2C_PORT0_0,
+		.i2c_slave_addr = NCT38xx_I2C_ADDR1_1,
+		.chip_info = -1,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+#if (CONFIG_IO_EXPANDER_PORT_COUNT >= 2)
+	/* Port 1 for NCT3808 port 1, use I2C port1_0 with address 0xE0 */
+	[IO_EXPANDER_PORT_1] = {
+		.i2c_host_port = NPCX_I2C_PORT1_0,
+		.i2c_slave_addr = NCT38xx_I2C_ADDR1_1,
+		.chip_info = -1,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+#endif
+#if (CONFIG_IO_EXPANDER_PORT_COUNT >= 3)
+	/* Port 2 for NCT3808 port 2, use I2C port1_0 with address 0xE8 */
+	[IO_EXPANDER_PORT_2] = {
+		.i2c_host_port = NPCX_I2C_PORT1_0,
+		.i2c_slave_addr = NCT38xx_I2C_ADDR2_1,
+		.chip_info = -1,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+#endif
+};
+#endif
