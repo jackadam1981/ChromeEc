@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "ed22e9ea_9bd788fb",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T21:05:43Z",
+      "side": 1,
+      "message": "Can we reuse __CROS_EC_REGISTERS_H (instead of adding __REGISTERS_MASTER__)?\n\nIn registers-x.h, we add:\n  #ifndef __CROS_EC_REGISTERS_H\n  #error\n  #endif\n\nIn this way, registers-x.h can be included only by registers.h, right?\n\nSince registers.h is guarded by __CROS_EC_REGISTERS_H for repeated inclusion, we don\u0027t need __CROS_EC_REGISTERS_X_H in registers-x.h.\n\n\u003e to include registers-stm32f0.h directly without registers.h\n\nLet\u0027s force all inclusions to be through registers.h.",
+      "parentUuid": "22921ab0_40bd5852",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
