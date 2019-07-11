@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bf52a8b_83ca0f5d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T19:17:29Z",
+      "side": 1,
+      "message": "To avoid repeating the history, we should state something like:\n\n\"This file should not have any model specific macros (i.e. #ifdef CHIP_FAMAILY_STM32X #define X #endif). All model specific macros should live in the dedicated header.\"\n\nYou may want to also explain how bad it was to have all macros in a single file. In the future, somebody may claim \"4 out of 5 models have macro X thus having X here reduces duplicates.\" We should explain that\u0027s how we ended up the unreadable header, which is fixed by this CL.",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "50e80780a774af7bc4dfea727d08979f283af068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
