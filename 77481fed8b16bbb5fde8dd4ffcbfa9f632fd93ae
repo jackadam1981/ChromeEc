@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d54de84_23463269",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T00:41:38Z",
+      "side": 0,
+      "message": "Can you remove this from cros_ec_dev.h?",
+      "range": {
+        "startLine": 263,
+        "startChar": 21,
+        "endLine": 263,
+        "endChar": 40
+      },
+      "revId": "77481fed8b16bbb5fde8dd4ffcbfa9f632fd93ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
