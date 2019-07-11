@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c098a782_11ba2a61",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T04:43:26Z",
+      "side": 1,
+      "message": "Can you make this section name a bit more specific? Like, uart_buffer or something.",
+      "range": {
+        "startLine": 40,
+        "startChar": 45,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "0667cde868c5391b889f4d47b57f799158f18ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0168d33_83a6b203",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T04:43:26Z",
+      "side": 1,
+      "message": "Now that these values are retained on reset, they may be totally invalid/random.\n\nCan we sanitize them at boot time?",
+      "revId": "0667cde868c5391b889f4d47b57f799158f18ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57cf0d2_f1d92324",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T04:43:26Z",
+      "side": 1,
+      "message": "nit: use tabs everywhere, no space/tab at the beginning of blank lines.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "0667cde868c5391b889f4d47b57f799158f18ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36cecf34_369a1bba",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T04:43:26Z",
+      "side": 1,
+      "message": "Also, I don\u0027t think you need ALIGN(8)? 4 should be good enough.",
+      "revId": "0667cde868c5391b889f4d47b57f799158f18ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f835961_8a30668d",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T04:43:26Z",
+      "side": 1,
+      "message": "I don\u0027t think you need these.",
+      "revId": "0667cde868c5391b889f4d47b57f799158f18ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ef61668_bd902c2c",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T04:43:26Z",
+      "side": 1,
+      "message": "This linker script is already _so_ big... Can we please put both set of variables into the same section?",
+      "revId": "0667cde868c5391b889f4d47b57f799158f18ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
