@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7338cc35_a7b5f50a",
+        "filename": "util/ecst.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-11T17:56:09Z",
+      "side": 1,
+      "message": "Isn\u0027t the better solution to this is to switch to using %u?  strlen() can\u0027t return a negative number (size_t).  I\u0027m going to guess by the name, resultsz should probably be unsigned as well...",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 53
+      },
+      "revId": "f4206e9eaaff1b185748abc25cfffa6ff2e4f3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
