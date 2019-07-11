@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72f16716_93d44f2c",
+        "filename": "chip/stm32/registers-stm32h7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T01:01:05Z",
+      "side": 1,
+      "message": "Is this intentional?",
+      "range": {
+        "startLine": 243,
+        "startChar": 40,
+        "endLine": 243,
+        "endChar": 47
+      },
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0f3ccc_a3db052e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T01:01:05Z",
+      "side": 1,
+      "message": "Do you know why this is necessary? I want to avoid any redundancy. Is there any doxygen macro similar to __FILE__?",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
