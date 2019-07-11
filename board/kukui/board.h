@@ -8,20 +8,21 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#ifdef BOARD_KRANE
+#define VARIANT_KUKUI_BATTERY_MM8013
+#else
+#define VARIANT_KUKUI_BATTERY_MAX17055
+#endif
+
 #include "baseboard.h"
 
 #define CONFIG_CHARGER_MT6370
 
 #ifdef BOARD_KRANE
-#define CONFIG_BATTERY_MM8013
 #define CONFIG_CHARGER_MT6370_BACKLIGHT
-#else
-#define CONFIG_BATTERY_MAX17055
-#define CONFIG_BATTERY_MAX17055_ALERT
 #endif
 
 /* Battery parameters for max17055 ModelGauge m5 algorithm. */
-#define BATTERY_MAX17055_RSENSE             5     /* m-ohm */
 #ifdef BOARD_KRANE
 #define BATTERY_DESIRED_CHARGING_CURRENT    3500  /* mA */
 #else
