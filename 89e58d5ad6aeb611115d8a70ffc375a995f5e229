@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7451c95f_290de444",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T14:59:06Z",
+      "side": 1,
+      "message": "at least these 2 don\u0027t belong in the baseboard.\n\nGenerally, please trim the include list.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "89e58d5ad6aeb611115d8a70ffc375a995f5e229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179b892b_ba55f221",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-11T14:59:06Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be in the #else branch above?",
+      "revId": "89e58d5ad6aeb611115d8a70ffc375a995f5e229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
