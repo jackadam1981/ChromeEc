@@ -6,32 +6,20 @@
  */
 
 #include "battery.h"
-#include "battery_smart.h"
 #include "charge_state.h"
 #include "console.h"
+#include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
-#include "extpower.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "power.h"
 #include "usb_pd.h"
 #include "util.h"
 
-#if defined(CONFIG_BATTERY_MAX17055)
-#include "driver/battery/max17055.h"
-#elif defined(CONFIG_BATTERY_MM8013)
-#include "driver/battery/mm8013.h"
-#endif
-
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
 
-#if defined(BOARD_KRANE)
-#define BATT_ID 1
-#else
 #define BATT_ID 0
-#endif
 
 #define BAT_LEVEL_PD_LIMIT 85
 #define IBAT_PD_LIMIT 1000
@@ -43,7 +31,6 @@
 
 enum battery_type {
 	BATTERY_SIMPLO = 0,
-	BATTERY_SCUD,
 	BATTERY_COUNT
 };
 
@@ -60,25 +47,7 @@ static const struct battery_info info[] = {
 		.discharging_min_c	= -20,
 		.discharging_max_c	= 60,
 	},
-	[BATTERY_SCUD] = {
-		.voltage_max		= 4400,
-		.voltage_normal		= 3850,
-		.voltage_min		= 3400,
-		.precharge_current	= 256,
-		.start_charging_min_c	= 0,
-		.start_charging_max_c	= 45,
-		.charging_min_c		= 0,
-		.charging_max_c		= 50,
-		.discharging_min_c	= -20,
-		.discharging_max_c	= 60,
-	},
 };
-
-#ifdef CONFIG_BATTERY_MAX17055
-
-#if BATT_ID == 1
-#error "Battery profile for Mitsumi battery not available"
-#endif
 
 static const struct max17055_batt_profile batt_profile[] = {
 	[BATTERY_SIMPLO] = {
@@ -109,7 +78,6 @@ const struct max17055_alert_profile *max17055_get_alert_profile(void)
 {
 	return &alert_profile[BATT_ID];
 }
-#endif  /* CONFIG_BATTERY_MAX17055 */
 
 const struct battery_info *battery_get_info(void)
 {
@@ -137,7 +105,6 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	static int previous_chg_limit_mv;
 	int chg_limit_mv;
-#ifdef CONFIG_BATTERY_MAX17055
 	/* battery temp in 0.1 deg C */
 	int bat_temp_c = curr->batt.temperature - 2731;
 
@@ -168,9 +135,6 @@ int charger_profile_override(struct charge_state_data *curr)
 			{150, 450, 4020, 4376},
 			/* TEMP_ZONE_2 */
 			{450, BATTERY_SIMPLO_CHARGE_MAX_TEMP * 10, 3350, 4300},
-		},
-		[BATTERY_SCUD] = {
-			/* unused */
 		},
 	};
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones[0]) == TEMP_ZONE_COUNT);
@@ -206,8 +170,6 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->state = ST_IDLE;
 		break;
 	}
-#endif  /* CONFIG_BATTERY_MAX17055 */
-	/* TODO(b:131284131): Add battery configs for krane. */
 
 	/* Limit input (=VBUS) to 5V when soc > 85% and charge current < 1A. */
 	if (!(curr->batt.flags & BATT_FLAG_BAD_CURRENT) &&
