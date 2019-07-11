@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cc30cedb_bc531413",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T18:25:14Z",
+      "side": 1,
+      "message": "I added this and similar fixes to the last \"Formatting\" CL in the series.",
+      "parentUuid": "1827207d_d17b86e2",
+      "range": {
+        "startLine": 733,
+        "startChar": 1,
+        "endLine": 733,
+        "endChar": 11
+      },
+      "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d77baef7_d8008846",
         "filename": "chip/stm32/registers-stm32f4.h",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-11T15:44:39Z",
       "side": 1,
       "message": "This file is for stm32f4, isn\u0027t it?",
+      "range": {
+        "startLine": 234,
+        "startChar": 25,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd15d03_d415048d",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T18:25:14Z",
+      "side": 1,
+      "message": "That\u0027s right, but someone has mocked up the STM32F76X variant in combination with the STM32F4 family.\nI tried to maintain this association.\n\nThere are no boards that invoke this combination.",
+      "parentUuid": "d77baef7_d8008846",
       "range": {
         "startLine": 234,
         "startChar": 25,
