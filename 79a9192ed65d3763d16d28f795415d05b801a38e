@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e55abf31_22aec6c7",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-11T18:47:53Z",
+      "side": 1,
+      "message": "I like that idea. Maybe slightly different way that would be safe against someone renaming __CROS_EC_REGISTERS_H would be (in each registers file like this one):\n\n #ifndef __REGISTERS_BLAH_H\n #define __REGISTERS_BLAH_H\n\n #else\n #error \"Do not include this file directly. It is only included by the top-level registers header\"\n #endif /* __REGISTERS_BLAH_H */\n\nOr maybe invert the if statement so that the error is at the top of the file and easier to see.",
+      "parentUuid": "ff7ce2b3_c50bff7a",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
