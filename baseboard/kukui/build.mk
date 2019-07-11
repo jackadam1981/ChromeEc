@@ -11,6 +11,8 @@ baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
 baseboard-$(CONFIG_BOOTBLOCK)+=emmc.o
 
 # TODO(b:137172860) split battery.c into variant_battery_xxx.c */
-baseboard-y+=battery.o
+baseboard-$(VARIANT_KUKUI_BATTERY_MAX17055)+=battery.o
+baseboard-$(VARIANT_KUKUI_BATTERY_MM8013)+=battery.o
+baseboard-$(VARIANT_KUKUI_BATTERY_SMART)+=battery_smart.o
 
 $(out)/RO/baseboard/$(BOARD)/emmc.o: $(out)/bootblock_data.h
