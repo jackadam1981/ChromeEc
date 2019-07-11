@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "db13d607_121a122c",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:31:17Z",
+      "side": 1,
+      "message": "Can you remove it?",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "643b2859_410853aa",
         "filename": "util/ec_flash.c",
         "patchSetId": 1
@@ -162,6 +185,53 @@
         "startChar": 1,
         "endLine": 115,
         "endChar": 43
+      },
+      "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f585dae_a898759a",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:31:17Z",
+      "side": 1,
+      "message": "Ack. Let\u0027s keep v0 support.",
+      "parentUuid": "9a460efd_6ec3d7f0",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01bd7641_6dc3b25e",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-11T22:31:17Z",
+      "side": 1,
+      "message": "This is redundant. It makes me read the following code as such.",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 19
       },
       "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
