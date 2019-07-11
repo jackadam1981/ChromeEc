@@ -22,6 +22,30 @@
       "revId": "69e01d1517cc2d573ccf451465e67a7a9c0e0d6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94621423_88f01b80",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-11T09:12:38Z",
+      "side": 1,
+      "message": "done, also removed VOLUME_BUTTON and DEDICATED_CHARGE_PORT",
+      "parentUuid": "15c07967_3da3d8a8",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "69e01d1517cc2d573ccf451465e67a7a9c0e0d6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
