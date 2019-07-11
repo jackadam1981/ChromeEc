@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ac3fc595_f9e86f8c",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-11T17:25:54Z",
+      "side": 1,
+      "message": "Should all the board-specific files have include guards to prevent accidental multiple inclusion?",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
