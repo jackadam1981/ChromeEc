@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "22921ab0_40bd5852",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T20:12:13Z",
+      "side": 1,
+      "message": "I see that, but what are the chances that someone would include registers.h and registers-stm32f0.h, at the same time?\nAre you suggesting that it should be okay for someone to include registers-stm32f0.h directly without registers.h? Or, is this a decision of trying to reduce complexity?\n\nChecking for __REGISTERS_MASTER__ in family specific headers is pretty fool proof.\n-\u003e registers.h already has header guard\n-\u003e including a specific registers header would always be disallowed",
+      "parentUuid": "e5c6bc38_d862f2f1",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
