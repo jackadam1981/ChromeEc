@@ -25,8 +25,8 @@
 #define CPUTS(...)
 #define CPRINTS(...)
 #else
-#define CPUTS(outstr) cputs(CC_WOV, outstr)
-#define CPRINTS(format, args...) cprints(CC_WOV, format, ## args)
+#define CPUTS(outstr) ccputs(outstr)
+#define CPRINTS(format, args...) ccprints(format, ## args)
 #endif
 
 /* WOV FIFO status. */
