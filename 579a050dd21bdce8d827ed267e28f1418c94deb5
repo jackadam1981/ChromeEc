@@ -94,6 +94,30 @@
       "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e543c2b_4bf609a5",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-11T21:15:06Z",
+      "side": 1,
+      "message": "Is there a difference in coreboot masks between devices that only do sci (eve, so mkbp over sci) and devices that do both sci and gpio (where mkbp goes only over the gpio, everything else still goes over sci)?",
+      "parentUuid": "c54f6e19_33fc40c7",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

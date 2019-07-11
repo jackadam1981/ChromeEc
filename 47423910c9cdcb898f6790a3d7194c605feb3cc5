@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e82280d4_95c79865",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2671,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-11T21:15:06Z",
+      "side": 1,
+      "message": "Something like?\n\nCONFIG_MKBP_USE_HOST_EVENT:\nSend MKBP event over the only communication method available: inband eSPI/LPC notification which eventually triggers an SCI event. This is to be done only when there\u0027s no GPIO available on older boards. Warning: A high jitter to be expected by using this method.\n\n\nCONFIG_MKBP_USE_GPIO:\nSend MKBP event over a GPIO. Usually used in systems where the EC-AP protocol is simple (SPI or I2C). The GPIO doubles as a wake from S3.\n\n(last sentence pending our other conversation)",
+      "parentUuid": "6109c222_aa561f24",
+      "range": {
+        "startLine": 2671,
+        "startChar": 0,
+        "endLine": 2671,
+        "endChar": 46
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc20bbdd_fbb4b7a8",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I think it\u0027s true. If we were to combine EC_INT and WAKE, I think CONFIG_MKBP_USE_GPIO would suffice. (aka the ARM way today)",
       "parentUuid": "fc20bbdd_fbb4b7a8",
+      "range": {
+        "startLine": 2681,
+        "startChar": 71,
+        "endLine": 2682,
+        "endChar": 21
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2be6931_54b05c48",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2682,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-11T21:15:06Z",
+      "side": 1,
+      "message": "But that means that your way of doing both GPIOs at the same time would work right now.\n\nWouldn\u0027t we want the extra WAKE filtering that the lpc/ code activated by HOST_EVENT at that point too?",
+      "parentUuid": "b73267e9_a8c36aa5",
       "range": {
         "startLine": 2681,
         "startChar": 71,
