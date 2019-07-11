@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2ce43770_cd2c5a3c",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-11T22:57:03Z",
+      "side": 1,
+      "message": "Do we really want to add another config option? I ask because we already have too many options and it gets confusing to users when to use which option. Here we know that for x86 platforms going forward we should always be setting the GPIO if it is available. Can we refactor this function to be something like:\n\nstatic int mkbp_set_host_active(int active, uint32_t *timestamp)\n{\n        int ret \u003d EC_SUCCESS;\n\n#if defined(CONFIG_MKBP_USE_CUSTOM)\n\tret |\u003d mkbp_set_host_active_via_custom(active, timestamp);\n#endif\n\n#if defined(CONFIG_MKBP_USE_HECI)\n\tret |\u003d mkbp_set_host_active_via_heci(active, timestamp);\n#endif\n\n#if defined(CONFIG_MKBP_USE_GPIO)\n\tret |\u003d mkbp_set_host_active_via_gpio(active, timestamp);\n#endif\n\n#if defined(CONFIG_MKBP_USE_HOST_EVENT)\n\tret |\u003d mkbp_set_host_active_via_event(active, timestamp);\n#endif\n\n        return ret;\n}",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dcb5f3e_706516fe",
         "filename": "include/config.h",
         "patchSetId": 2
