@@ -186,6 +186,7 @@ static int bc12_detect_start(int port)
 {
 	int rv;
 
+	CPRINTS("\x1b[1;33m%s\x1b[m", __func__);
 	/*
 	 * Read both status registers to ensure that all interrupt indications
 	 * are cleared prior to starting bc1.2 detection.
@@ -206,6 +207,7 @@ static int bc12_detect_start(int port)
 
 static void bc12_power_down(int port)
 {
+	CPRINTS("\x1b[1;33m%s\x1b[m", __func__);
 	/* Put pi3usb9201 into its power down mode */
 	pi3usb9201_set_mode(port, PI3USB9201_POWER_DOWN);
 	/* The start bc1.2 bit does not auto clear */

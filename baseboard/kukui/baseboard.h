@@ -8,6 +8,36 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+/*
+ * Variant battery defines, pick one:
+ * VARIANT_KUKUI_BATTERY_MAX17055
+ * VARIANT_KUKUI_BATTERY_MM8013
+ * VARIANT_KUKUI_BATTERY_SMART
+ */
+#if defined(VARIANT_KUKUI_BATTERY_MAX17055)
+#define CONFIG_BATTERY_MAX17055
+#define CONFIG_BATTERY_MAX17055_ALERT
+#define BATTERY_MAX17055_RSENSE             5     /* m-ohm */
+#elif defined(VARIANT_KUKUI_BATTERY_MM8013)
+#define CONFIG_BATTERY_MM8013
+#elif defined(VARIANT_KUKUI_BATTERY_SMART)
+#define CONFIG_BATTERY_SMART
+#else
+#error Must define a VARIANT_KUKUI_BATTERY
+#endif /* VARIANT_KUKUI_BATTERY */
+
+/* Variant charger defines, pick one:
+ * VARIANT_KUKUI_CHARGER_MT6370
+ */
+#if defined(VARIANT_KUKUI_CHARGER_MT6370)
+#define CONFIG_CHARGER_MT6370
+#define CONFIG_CHARGE_RAMP_SW
+#define CONFIG_CHARGER_OTG
+#define CONFIG_USB_PD_TCPM_MT6370
+#else
+#error Must define a VARIANT_KUKUI_CHARGER
+#endif
+
 /* Optional modules */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
