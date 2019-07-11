@@ -16,6 +16,24 @@
       "revId": "56687d1a1919896f1d79a1fddabc769a6dc6a6bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b09d5d0_7d30ee41",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1299975
+      },
+      "writtenOn": "2019-07-11T05:23:39Z",
+      "side": 1,
+      "message": "Yes, it is necessary.\nBecause VREQ is set to hw mode, so scp will wake up pwrap during suspend mode.\nWe still needs to set pwrap clock from 26mhz to ulposc if pwrap is under normal mode.\nAnother option is to set sw mode of VREQ, SCP_CPU_VREQ \u003d 0x10000, so the scp won\u0027t wake up pwrap.",
+      "parentUuid": "2c119507_e133ed04",
+      "revId": "56687d1a1919896f1d79a1fddabc769a6dc6a6bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
