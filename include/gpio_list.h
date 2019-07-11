@@ -51,4 +51,16 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
  */
 #define PIN(a, b...) static const int _pin_ ## a ## _ ## b \
 	__attribute__((unused, section(".unused"))) = __LINE__;
+
+#ifdef CONFIG_COMMON_IO_EXPANDER
+/* The compiler will complain if we use the same name twice or the controller
+ * number declared is greater or equal to CONFIG_IO_EXPANDER_PORT_COUNT.
+ * The linker ignores anything that gets by.
+ */
+#define EXPIN(a, b, c...) \
+	static const int _expin_ ## a ## _ ## b  ## _ ## c \
+	__attribute__((unused, section(".unused"))) = __LINE__; \
+	BUILD_ASSERT(a >= 0 && a < CONFIG_IO_EXPANDER_PORT_COUNT);
+
+#endif
 #include "gpio.wrap"
