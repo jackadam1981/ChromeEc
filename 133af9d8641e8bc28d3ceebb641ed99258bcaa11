@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e88a1b42_27edd8e2",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T19:38:03Z",
+      "side": 1,
+      "message": "Alright",
+      "parentUuid": "d842e9d9_69503f13",
+      "range": {
+        "startLine": 234,
+        "startChar": 25,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7725f81_c59fa701",
         "filename": "chip/stm32/registers-stm32f4.h",
         "patchSetId": 8
@@ -131,6 +155,30 @@
       "writtenOn": "2019-07-11T19:18:35Z",
       "side": 1,
       "message": "Can you remove this?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 74
+      },
+      "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35040dff_7b2bbe3c",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-11T19:38:03Z",
+      "side": 1,
+      "message": "It is removed in the formatting CL.",
+      "parentUuid": "c7725f81_c59fa701",
       "range": {
         "startLine": 275,
         "startChar": 0,
