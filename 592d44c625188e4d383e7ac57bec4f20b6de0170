@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "9a460efd_6ec3d7f0",
+        "filename": "util/ec_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-11T21:30:31Z",
+      "side": 1,
+      "message": "We don\u0027t have to support v0. I was just being cautious and trying not to break anyone that is relying on it.\n\nIn my case, I was trying to reproduce an issue that I was seeing with the STM32F412 when using flashrom. It was somewhat hard to debug with flashrom, so I wanted to use ectool to repro, which required using the same EC_CMD_FLASH_INFO version as flashrom).\n\nWould you prefer to remove the v0 command completely from ectool?",
+      "parentUuid": "3585376f_16f6b991",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 43
+      },
+      "revId": "592d44c625188e4d383e7ac57bec4f20b6de0170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7532ae5c_de96c1b8",
         "filename": "util/ec_flash.c",
         "patchSetId": 1
