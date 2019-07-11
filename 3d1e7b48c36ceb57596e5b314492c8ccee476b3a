@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba70e1ba_7bbe2835",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Just a temporary placeholder. The serial number is fluffy specific and is actually written using the `serialno` console command.",
+      "parentUuid": "a7eff4f9_6281f0ef",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e735f37_cdebac9f",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5cb0852_687f2c5e",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e735f37_cdebac9f",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 67
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b4e74e80_01b42340",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57d0da5c_74655d84",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ed1760_460189f9",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-10T19:25:03Z",
       "side": 1,
       "message": "what is the zZZ? (is it sleeping?)",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1629f961_90bcbbbc",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Yep, sleeping with nothing to do. :)",
+      "parentUuid": "f9ed1760_460189f9",
       "range": {
         "startLine": 60,
         "startChar": 29,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "41836613_d1ba2017",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "It\u0027s \"on, enable, true, yes\" / \"off, disable, false, no\".",
+      "parentUuid": "dd2eab0e_00244f92",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "302931d8_b2e38005",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46168760_c233cbd5",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "302931d8_b2e38005",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e5737dc2_e6c59f45",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "654c27ea_685e3514",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e6fb6e5_9eb90384",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c1dd59_ea5d2e91",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e6fb6e5_9eb90384",
+      "range": {
+        "startLine": 258,
+        "startChar": 26,
+        "endLine": 258,
+        "endChar": 29
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "eab09ce7_424c301d",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "499eecbf_0f5937f5",
+      "range": {
+        "startLine": 259,
+        "startChar": 19,
+        "endLine": 259,
+        "endChar": 22
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ce4d6c0_218ca92d",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -220,6 +436,30 @@
       "writtenOn": "2019-07-10T19:25:03Z",
       "side": 1,
       "message": "is the user supposed to unplug something here, or is this just a normal disconnect discharge timer?",
+      "range": {
+        "startLine": 287,
+        "startChar": 22,
+        "endLine": 287,
+        "endChar": 28
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9850a108_340a9c07",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Just the latter.",
+      "parentUuid": "6ce4d6c0_218ca92d",
       "range": {
         "startLine": 287,
         "startChar": 22,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "5ce27986_fae2fd48",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3686080_d7dc7a79",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 0
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "880c88ba_891211ce",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "e2bf3a65_565dc305",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s much nicer! Thanks, Done.",
+      "parentUuid": "880c88ba_891211ce",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 0
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4507ac3_4aa6b30e",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -289,6 +577,30 @@
       "writtenOn": "2019-07-10T19:25:03Z",
       "side": 1,
       "message": "can we just use the HOOK_TICKS instead of scheduling ourselves?",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98965834_32835408",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "I could, but I wanted to do the LED sweep prior to showing the voltage.",
+      "parentUuid": "e4507ac3_4aa6b30e",
       "range": {
         "startLine": 393,
         "startChar": 1,
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "0d27b45d_118388d4",
+        "filename": "board/fluffy/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f6e446_29543637",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "536302f4_458253dc",
         "filename": "board/fluffy/ec.tasklist",
         "patchSetId": 3
@@ -344,6 +680,30 @@
       "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0b90ec_d131532b",
+        "filename": "board/fluffy/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T06:22:18Z",
+      "side": 1,
+      "message": "Ah, I think I started this prior to the removal. Done.",
+      "parentUuid": "536302f4_458253dc",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
