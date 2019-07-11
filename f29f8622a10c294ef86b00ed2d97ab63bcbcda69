@@ -166,6 +166,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54244f02_5182b077",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T18:34:01Z",
+      "side": 1,
+      "message": "Thanks for the explanations (both on and offline)! I still don\u0027t quite understand why the SCI/SMI/sleep wake masks have to be in coreboot though? We have host commands to modify them, the defaults could just be in the EC.\n\nAck on having both ACPI and MKBP events though. Kind of unfortunate, but I guess that\u0027s just how things are.",
+      "parentUuid": "aa3b8747_aa76b76e",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

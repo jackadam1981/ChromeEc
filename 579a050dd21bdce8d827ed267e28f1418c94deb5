@@ -22,6 +22,30 @@
       "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a474776c_36d372af",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-11T18:34:01Z",
+      "side": 0,
+      "message": "No, currently no one is/was consuming that event for DP alt mode entry.",
+      "parentUuid": "8c4b99dd_9ba881cd",
+      "range": {
+        "startLine": 625,
+        "startChar": 2,
+        "endLine": 625,
+        "endChar": 38
+      },
+      "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
