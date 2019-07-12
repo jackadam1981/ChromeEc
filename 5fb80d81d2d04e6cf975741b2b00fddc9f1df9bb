@@ -72,6 +72,23 @@
     },
     {
       "key": {
+        "uuid": "dad35410_97d4e047",
+        "filename": "chip/max32660/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-12T22:49:03Z",
+      "side": 1,
+      "message": "This is defined by default here (and in a bunch of other chip definitions), but explicitly `#undef`ed in the board definition. If I try to define a board without `#undef`ing it, I get some linker errors:\n\n\u003e /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/poli/RO/common/switch.o: in function `command_mmapinfo\u0027:\n\u003e /home/hcutts/trunk/src/platform/ec/common/switch.c:112: undefined reference to `host_get_memmap\u0027\n\u003e /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/poli/RO/common/switch.o: in function `switch_update\u0027:\n\u003e /home/hcutts/trunk/src/platform/ec/common/switch.c:41: undefined reference to `power_button_is_pressed\u0027\n\u003e /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/poli/RO/common/switch.o: in function `switch_init\u0027:\n\u003e /home/hcutts/trunk/src/platform/ec/common/switch.c:78: undefined reference to `host_get_memmap\u0027\n\u003e /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: \u003e /home/hcutts/trunk/src/platform/ec/common/switch.c:84: undefined reference to `host_get_memmap\u0027\n\u003e collect2: error: ld returned 1 exit status\n\u003e /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld:make: *** [Makefile.rules:448: build/poli/RO/ec.RO.elf] Error 1\n\nAm I doing something wrong, or should this just not be defined here in the first place?",
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12414dca_dab6b13c",
         "filename": "chip/max32660/flash_chip.c",
         "patchSetId": 6
