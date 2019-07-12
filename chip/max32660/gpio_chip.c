@@ -31,27 +31,20 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 	case 1:
 		gpio->en_clr = mask;
 		gpio->en1_clr = mask;
-		gpio->en2_clr = mask;
 		break;
 	case 2:
 		gpio->en_clr = mask;
 		gpio->en1_set = mask;
-		gpio->en2_clr = mask;
 		break;
 	case 3:
 		gpio->en_set = mask;
 		gpio->en1_set = mask;
 		break;
-	case 4:
-		gpio->en_clr = mask;
-		gpio->en1_set = mask;
-		gpio->en2_set = mask;
-		break;
 	default:
+	    /* Default as input */
 		gpio->out_en_clr = mask;
 		gpio->en_set = mask;
 		gpio->en1_clr = mask;
-		gpio->en2_clr = mask;
 		break;
 	}
 }

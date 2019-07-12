@@ -34,16 +34,14 @@ typedef enum {
 } sys_system_clock_t;
 
 /***** Functions ******/
-static int clock_timeout(uint32_t ready)
+static void clock_wait_ready(uint32_t ready)
 {
 	// Start timeout, wait for ready
 	do {
 		if (MXC_GCR->clkcn & ready) {
-			return EC_SUCCESS;
+			return;
 		}
 	} while (1);
-
-	return EC_SUCCESS;
 }
 
 extern void (*const __isr_vector[])(void);
@@ -75,10 +73,8 @@ static void clock_update(void)
 void clock_init(void)
 {
 	/* Switch system clock to HIRC */
-	uint32_t current_clock, ovr, divide;
+	uint32_t ovr, divide;
 
-	// Save the current system clock
-	current_clock = MXC_GCR->clkcn & MXC_F_GCR_CLKCN_CLKSEL;
 	// Set FWS higher than what the minimum for the fastest clock is
 	MXC_GCR->memckcn = (MXC_GCR->memckcn & ~(MXC_F_GCR_MEMCKCN_FWS)) |
 			   (0x5UL << MXC_F_GCR_MEMCKCN_FWS_POS);
@@ -86,25 +82,15 @@ void clock_init(void)
 	// Enable 96MHz Clock
 	MXC_GCR->clkcn |= MXC_F_GCR_CLKCN_HIRC_EN;
 
-	// Check if 96MHz clock is ready
-	if (clock_timeout(MXC_F_GCR_CLKCN_HIRC_RDY) != EC_SUCCESS) {
-		while (1) {
-		}
-	}
+	// Wait for the 96MHz clock
+	clock_wait_ready(MXC_F_GCR_CLKCN_HIRC_RDY);
 
 	// Set 96MHz clock as System Clock
 	MXC_SETFIELD(MXC_GCR->clkcn, MXC_F_GCR_CLKCN_CLKSEL,
 		     MXC_S_GCR_CLKCN_CLKSEL_HIRC);
 
 	// Wait for system clock to be ready
-	if (clock_timeout(MXC_F_GCR_CLKCN_CKRDY) != EC_SUCCESS) {
-
-		// Restore the old system clock if timeout
-		MXC_SETFIELD(MXC_GCR->clkcn, MXC_F_GCR_CLKCN_CLKSEL,
-			     current_clock);
-		while (1) {
-		}
-	}
+	clock_wait_ready(MXC_F_GCR_CLKCN_CKRDY);
 
 	// Update the system core clock
 	clock_update();
