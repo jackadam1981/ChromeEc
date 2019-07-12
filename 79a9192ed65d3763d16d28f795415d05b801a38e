@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "3a911dea_773c8bf2",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T00:32:05Z",
+      "side": 1,
+      "message": "We can. To rephrase Tom\u0027s point, using that macro would inadvertently tie each of the family specific files to the registers.h file name.\nTrue, it is annoying to change tons of files, simply because you renamed a file.\nBut, I\u0027d rather that vs. a system that catches a misuse some of the time.\n\nThus, the middle ground of introducing a new non-file-name-based macro seems fitting, but I understand not wanting to introduce a new macro.",
+      "parentUuid": "ed22e9ea_9bd788fb",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
