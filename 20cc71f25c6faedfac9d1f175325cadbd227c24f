@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5b5053bc_e11eff8c",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:29:53Z",
+      "side": 1,
+      "message": "cap \u003d\u003d 0 means it doesn\u0027t need any cap, grant all",
+      "parentUuid": "d3cf5ed7_d930eed0",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db50aa15_d6dcc26a",
         "filename": "common/audio_codec.c",
         "patchSetId": 9
@@ -64,6 +82,24 @@
       "writtenOn": "2019-07-12T08:28:29Z",
       "side": 1,
       "message": "Just priv.driver \u003d driver?\n\nThere may be more functions later...",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "441fe33b_13e5fa35",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:29:53Z",
+      "side": 1,
+      "message": "This is intended.  Both chip and board could register the same driver.  Use this way to gracefully override the existing ones.",
+      "parentUuid": "f7620e92_c60cfa6c",
       "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
