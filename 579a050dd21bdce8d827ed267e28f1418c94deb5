@@ -118,6 +118,30 @@
       "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb166c48_0619391e",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-12T01:02:24Z",
+      "side": 1,
+      "message": "There is no difference. Here are the masks for eve for example: http://shortn/_hq85q6xLEU",
+      "parentUuid": "6e543c2b_4bf609a5",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "579a050dd21bdce8d827ed267e28f1418c94deb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
