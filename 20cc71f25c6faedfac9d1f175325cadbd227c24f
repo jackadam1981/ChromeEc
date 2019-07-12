@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b78fd90_0abe583c",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "alphabetical order?",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3cf5ed7_d930eed0",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "So basically bit(0) is always part of the capability set?",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db50aa15_d6dcc26a",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of these \"register\" functions in the EC (yes, that\u0027s how the kernel is structure, but they don\u0027t have such space constraints):\n 1. They take up code space for little value (and prevent LTO inlining)\n 2. They break stack analyzer (or we need to add some annotations)\n\nCan you just call audio_codec_translate_addr_ec_to_ap(), and have the relevant audio codec driver define that function? This assumes there is a single audio codec per board, of course.",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7620e92_c60cfa6c",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "Just priv.driver \u003d driver?\n\nThere may be more functions later...",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19c83a15_6a3b954c",
+        "filename": "common/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea2baac_581c73f5",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "If this is really needed, please move to audio_codec.c .",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ba4956_bbd92836",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "This sounds like generic debugging code that\u0027d be better in some common include file.\n\n(or just move to audio_codec.c)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b014a8c_2764397b",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:28:29Z",
+      "side": 1,
+      "message": "Alphabetical order please",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
