@@ -5,7 +5,7 @@
 
 #include "dcrypto.h"
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_HKDF
 
 #include "extension.h"
 
@@ -90,4 +90,4 @@ static void hkdf_command_handler(void *cmd_body,
 
 DECLARE_EXTENSION_COMMAND(EXTENSION_HKDF, hkdf_command_handler);
 
-#endif   /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_TPM2_HKDF */

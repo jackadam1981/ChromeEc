@@ -143,7 +143,7 @@ uint32_t dcrypto_dmem_load(size_t offset, const void *words, size_t n_words)
 	return diff;
 }
 
-#ifdef DCRYPTO_RUNTIME_TEST
+#ifdef CRYPTO_TEST_ECDSA
 
 #include "dcrypto.h"
 #include "trng.h"
@@ -229,7 +229,7 @@ static int ecdsa_verisign_go(p256_int *r, p256_int *s)
 	return ret;
 }
 
-static int command_dcrypto_ecdsa(int argc, char *argv[])
+static int cmd_crypto_test_ecdsa(int argc, char *argv[])
 {
 	p256_int entropy, message, r_sign, s_sign, r_verisign, s_verisign;
 	LITE_SHA256_CTX hsh;
@@ -310,7 +310,7 @@ static int command_dcrypto_ecdsa(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(dcrypto_ecdsa, command_dcrypto_ecdsa, "",
-			     "dcrypto ecdsa test");
+DECLARE_SAFE_CONSOLE_COMMAND(crt_ecdsa, cmd_crypto_test_ecdsa, "",
+			     "crypto ecdsa test");
 
 #endif

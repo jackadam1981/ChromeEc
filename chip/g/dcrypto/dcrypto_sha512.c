@@ -9,7 +9,7 @@
 
 #include "cryptoc/sha512.h"
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_SHA512
 
 /* test and benchmark */
 #include "common.h"
@@ -31,12 +31,12 @@ static uint32_t t_hw;
 static uint32_t t_transform;
 static uint32_t t_dcrypto;
 
-#else /* CRYPTO_TEST_SETUP */
+#else /* CRYPTO_TEST_SHA512 */
 
 #define START_PROFILE(x)
 #define END_PROFILE(x)
 
-#endif /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_SHA512 */
 
 /* auto-generated from go test haven -test.run=TestSha512 -test.v */
 /* clang-format off */
@@ -655,7 +655,7 @@ void DCRYPTO_SHA512_init(LITE_SHA512_CTX *ctx)
 	ctx->f = &dcrypto_SHA512_VTAB;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_SHA512
 
 static uint32_t msg[256]; // 1KB
 static int msg_len;
@@ -706,7 +706,7 @@ static void run_sha512_cmd(void)
 }
 DECLARE_DEFERRED(run_sha512_cmd);
 
-static int cmd_sha512_bench(int argc, char *argv[])
+static int cmd_crypto_test_sha512_bench(int argc, char *argv[])
 {
 	const int max_time = 1000000;
 	uint32_t events;
@@ -733,7 +733,8 @@ static int cmd_sha512_bench(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(sha512_bench, cmd_sha512_bench, NULL, NULL);
+DECLARE_SAFE_CONSOLE_COMMAND(crt_sha512_b, cmd_crypto_test_sha512_bench, NULL,
+			     "crypto sha512 bench test");
 
 static void run_sha512_test(void)
 {
@@ -761,12 +762,13 @@ static void run_sha512_test(void)
 }
 DECLARE_DEFERRED(run_sha512_test);
 
-static int cmd_sha512_test(int argc, char *argv[])
+static int cmd_crypto_test_sha512(int argc, char *argv[])
 {
 	hook_call_deferred(&run_sha512_test_data, 0);
 	task_wait_event_mask(TASK_EVENT_CUSTOM_BIT(0), 1000000);
 	return EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(sha512_test, cmd_sha512_test, NULL, NULL);
+DECLARE_SAFE_CONSOLE_COMMAND(crt_sha512, cmd_crypto_test_sha512, NULL,
+			     "crypto sha512 test");
 
-#endif /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_SHA512 */

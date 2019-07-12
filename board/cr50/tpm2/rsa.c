@@ -299,7 +299,7 @@ static int generate_prime(struct LITE_BIGNUM *b, TPM_ALG_ID hashing,
 	return 0;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_RSA
 static const uint8_t VERIFY_SEED[32] = {
 	0x54, 0xef, 0xe3, 0xe9, 0x1e, 0xfa, 0xad, 0x9b,
 	0x18, 0x3f, 0x27, 0x12, 0xfd, 0xe7, 0xfb, 0xc6,
@@ -388,7 +388,7 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 	/* Hash down the primary seed for RSA key generation, so that
 	 * the derivation tree is distinct from ECC key derivation.
 	 */
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_RSA
 	if (seed->size == sizeof(VERIFY_SEED) &&
 		DCRYPTO_equals(seed->buffer, VERIFY_SEED, seed->size)) {
 		/* Test seed has already been hashed down. */
@@ -456,7 +456,7 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 	return CRYPT_SUCCESS;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TMP2_RSA
 
 #include "extension.h"
 
@@ -1171,4 +1171,4 @@ static void rsa_command_handler(void *cmd_body,
 
 DECLARE_EXTENSION_COMMAND(EXTENSION_RSA, rsa_command_handler);
 
-#endif   /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_TPM2_RSA */

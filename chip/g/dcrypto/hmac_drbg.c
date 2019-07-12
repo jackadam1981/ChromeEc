@@ -143,7 +143,7 @@ void drbg_exit(struct drbg_ctx *ctx)
 	always_memset(ctx->v,  0x00, sizeof(ctx->v));
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_HMAC_DRBG
 
 /*
  * from the RFC 6979 A.2.5 example:
@@ -166,7 +166,7 @@ void drbg_exit(struct drbg_ctx *ctx)
  * r = EFD48B2AACB6A8FD1140DD9CD45E81D69D2C877B56AAF991C34D0EA84EAF3716
  * s = F7CB1C942D657C41D436C7A1B6E29F65F3E900DBB9AFF4064DC4AB2F843ACDA8
  */
-static int cmd_rfc6979(int argc, char **argv)
+static int cmd_crypto_test_hmac_drbg_rfc6979(int argc, char **argv)
 {
 	static p256_int h1;
 	static p256_int k;
@@ -206,7 +206,8 @@ static int cmd_rfc6979(int argc, char **argv)
 
 	return result ? EC_ERROR_INVAL : EC_SUCCESS;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(rfc6979, cmd_rfc6979, NULL, NULL);
+DECLARE_SAFE_CONSOLE_COMMAND(crt_hdrbg_6979, cmd_crypto_test_hmac_drbg_rfc6979,
+			     NULL, "crypto test hmac drbg rfc6979");
 
 /*
  * Test vectors from the NIST Cryptographic Algorithm Validation Program.
@@ -215,7 +216,7 @@ DECLARE_SAFE_CONSOLE_COMMAND(rfc6979, cmd_rfc6979, NULL, NULL);
  * resistance, and with reseed supported.
  */
 #define HMAC_TEST_COUNT 2
-static int cmd_hmac_drbg(int argc, char **argv)
+static int cmd_crypto_test_hmac_drbg(int argc, char **argv)
 {
 	static struct drbg_ctx ctx;
 
@@ -327,12 +328,13 @@ static int cmd_hmac_drbg(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(hmac_drbg, cmd_hmac_drbg, NULL, NULL);
+DECLARE_SAFE_CONSOLE_COMMAND(crt_hdrbg, cmd_crypto_test_hmac_drbg, NULL,
+			     "crypto hmac drbg test");
 
 /*
  * Sanity check to exercise random initialization.
  */
-static int cmd_hmac_drbg_rand(int argc, char **argv)
+static int cmd_crypto_test_hmac_drbg_rand(int argc, char **argv)
 {
 	static struct drbg_ctx ctx;
 	static uint8_t output[128];
@@ -351,5 +353,6 @@ static int cmd_hmac_drbg_rand(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(hmac_drbg_rand, cmd_hmac_drbg_rand, NULL, NULL);
-#endif /* CRYPTO_TEST_SETUP */
+DECLARE_SAFE_CONSOLE_COMMAND(crt_hdrbg_rand, cmd_crypto_test_hmac_drbg_rand,
+			     NULL, "crypto hmac drbg rand test");
+#endif /* CRYPTO_TEST_HMAC_DRBG */

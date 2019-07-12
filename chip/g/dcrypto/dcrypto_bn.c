@@ -1410,7 +1410,7 @@ int dcrypto_modexp_word(struct LITE_BIGNUM *output,
 	return result == 0;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_BN
 #include "console.h"
 #include "shared_mem.h"
 #include "timer.h"
@@ -1473,7 +1473,7 @@ static int call_on_bigger_stack(int (*func)(void))
 	return result;
 }
 
-static int command_genp(int argc, char **argv)
+static int cmd_crypto_test_bn(int argc, char **argv)
 {
 	int result;
 
@@ -1491,5 +1491,6 @@ static int command_genp(int argc, char **argv)
 
 	return result;
 }
-DECLARE_CONSOLE_COMMAND(genp, command_genp, "[seed]", "Generate prng prime");
+DECLARE_CONSOLE_COMMAND(crt_bn, cmd_crypto_test_bn, "[seed]",
+			"Generate prng prime - test big numbers");
 #endif
