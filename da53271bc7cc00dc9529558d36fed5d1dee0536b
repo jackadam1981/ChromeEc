@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1369da7d_d140ec53",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T21:13:26Z",
+      "side": 1,
+      "message": "I\u0027m ok with halting. The only caveat I was thinking is that if for some reason you don\u0027t have the UART console connected when first running (i.e., you connect after or it\u0027s already flashed and you power on), you would miss the console message. With the panic you end up busy looping, so you\u0027ll see it whenever you connect. This would only really apply during bringup though I think (e.g., when I have the bare board connected to servo v2).\n\nWhat is your preference?",
+      "parentUuid": "3bf3ee82_e9566293",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 7
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40b938b5_573df1f8",
         "filename": "common/main.c",
         "patchSetId": 2
