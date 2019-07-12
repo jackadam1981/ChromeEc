@@ -23,9 +23,13 @@ static int done_uart_init_yet;
 #endif
 
 #if (UARTN == 0)
+#define MXC_UART MXC_UART0
 #define EC_UART_IRQn EC_UART0_IRQn
-#else
+#elif (UARTN == 1)
+#define MXC_UART MXC_UART1
 #define EC_UART_IRQn EC_UART1_IRQn
+#else
+#error "MAX32660 supports only UART 0 or 1 for EC console"
 #endif
 
 #define UART_BAUD 115200
@@ -53,7 +57,7 @@ static int done_uart_init_yet;
 #define UART_RX_THRESHOLD_LEVEL 1
 
 /**
- * @brief      Alternate clock rate. (7.3728MHz) */
+ * Alternate clock rate. (7.3728MHz) */
 #define UART_ALTERNATE_CLOCK_HZ 7372800
 
 /* ************************************************************************* */
@@ -129,15 +133,15 @@ void uartn_write_char(int uart_num, char c)
 	mxc_uart_regs_t *uart;
 
 	uart = MXC_UART_GET_UART(uart_num);
-	// Refill the TX FIFO
+	/* Refill the TX FIFO */
 	avail = uart_number_write_available(uart);
 
-	// wait until there is room in the fifo
+	/* wait until there is room in the fifo */
 	while (avail == 0) {
 		avail = uart_number_write_available(uart);
 	}
 
-	// stuff the fifo with the character
+	/* stuff the fifo with the character */
 	uart->fifo = c;
 }
 
@@ -242,48 +246,41 @@ DECLARE_IRQ(EC_UART_IRQn, uart_rxtx_interrupt, 1);
 void uart_init(void)
 {
 	uint32_t flags;
-	mxc_uart_regs_t *uart;
 	uint32_t baud0 = 0, baud1 = 0, div;
 	int32_t factor = -1;
 
 	/* Init the GPIO Port Mapping */
 	gpio_config_module(MODULE_UART, 1);
 
-#if (UARTN == 0)
-	uart = MXC_UART0;
-#else
-	uart = MXC_UART1;
-#endif
+	/* Drain FIFOs and enable UART and set configuration */
+	MXC_UART->ctrl = (MXC_F_UART_CTRL_ENABLE | MXC_S_UART_CTRL_CHAR_SIZE_8 | 1);
 
-	// Drain FIFOs and enable UART and set configuration
-	uart->ctrl = (MXC_F_UART_CTRL_ENABLE | MXC_S_UART_CTRL_CHAR_SIZE_8 | 1);
-
-	// Set the baud rate
-	div = PeripheralClock / (UART_BAUD); // constant part of DIV (i.e. DIV
-					     // * (Baudrate*factor_int))
+	/* Set the baud rate */
+	div = PeripheralClock / (UART_BAUD); 	// constant part of DIV (i.e. DIV
+					     					// * (Baudrate*factor_int))
 
 	do {
 		factor += 1;
-		baud0 = div >> (7 - factor); // divide by 128,64,32,16 to
-					     // extract integer part
+		baud0 = div >> (7 - factor); 	// divide by 128,64,32,16 to
+					     				// extract integer part
 		baud1 = ((div << factor) -
-			 (baud0 << 7)); // subtract factor corrected div -
-					// integer parts
+			 (baud0 << 7)); 			// subtract factor corrected div -
+										// integer parts
 
 	} while ((baud0 == 0) && (factor < 4));
 
-	uart->baud0 = ((factor << MXC_F_UART_BAUD0_FACTOR_POS) | baud0);
-	uart->baud1 = baud1;
+	MXC_UART->baud0 = ((factor << MXC_F_UART_BAUD0_FACTOR_POS) | baud0);
+	MXC_UART->baud1 = baud1;
 
-	uart->thresh_ctrl = UART_RX_THRESHOLD_LEVEL
+	MXC_UART->thresh_ctrl = UART_RX_THRESHOLD_LEVEL
 			    << MXC_F_UART_THRESH_CTRL_RX_FIFO_THRESH_POS;
 
-	// Clear Interrupt Flags
-	flags = uart->int_fl;
-	uart->int_fl = flags;
+	/* Clear Interrupt Flags */
+	flags = MXC_UART->int_fl;
+	MXC_UART->int_fl = flags;
 
-	// Enable the RX interrupts
-	uart->int_en |= UART_RX_IE;
+	/* Enable the RX interrupts */
+	MXC_UART->int_en |= UART_RX_IE;
 
 	/* Enable the IRQ */
 	task_enable_irq(EC_UART_IRQn);

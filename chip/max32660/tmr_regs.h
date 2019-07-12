@@ -15,7 +15,6 @@
 extern "C" {
 #endif
 
-/// @cond
 /*
     If types are not defined elsewhere (CMSIS) define them here
 */
@@ -31,7 +30,6 @@ extern "C" {
 #ifndef __R
 #define __R volatile const
 #endif
-/// @endcond
 
 /* **** Definitions **** */
 
@@ -74,7 +72,6 @@ typedef struct {
 #define MXC_R_TMR_NOLCMP                                                       \
 	((uint32_t)0x00000014UL) /**< Offset from TMR Base Address: <tt>       \
 				    0x0x014 */
-				 /**@} end of group tmr_registers */
 
 /**
  * Clear Interrupt. Writing a value (0 or 1) to a bit in this register
@@ -84,8 +81,6 @@ typedef struct {
 #define MXC_F_TMR_INTR_IRQ_CLR                                                 \
 	((uint32_t)(0x1UL                                                      \
 		    << MXC_F_TMR_INTR_IRQ_CLR_POS)) /**< INTR_IRQ_CLR Mask */
-
-/**@} end of group INTR_Register */
 
 /**
  * Timer Control Register.

@@ -28,9 +28,6 @@
 #define MXC_FLASH_PAGE_ADDR(page)                                              \
 	(MXC_FLASH_MEM_BASE + ((unsigned long)page * MXC_FLASH_PAGE_SIZE))
 
-#pragma GCC push_options /* Save current optimization level */
-#pragma GCC optimize(                                                          \
-	"O0") /* Set optimization level to none for this function */
 void flash_operation(void)
 {
 	volatile uint32_t *line_addr;
