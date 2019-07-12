@@ -26,7 +26,7 @@ endif
 #   Yes -> use <obj_name>-rw
 # Otherwise use <obj_name>-y
 cr50_fuzz-rw = cr50_fuzz.o pinweaver_model.o mem_hash_tree.o nvmem_tpm2_mock.o
-host_command_fuzz-y = host_command_fuzz.o rollback_mock.o
+host_command_fuzz-y = host_command_fuzz.o rollback_mock.o fp_sensor_mock.o mkbp_events_mock.o
 usb_pd_fuzz-y = usb_pd_fuzz.o
 
 CR50_PROTO_HEADERS := $(out)/gen/fuzz/cr50_fuzz.pb.h \
