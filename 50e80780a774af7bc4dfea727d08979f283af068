@@ -22,6 +22,30 @@
       "revId": "50e80780a774af7bc4dfea727d08979f283af068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4b9412_d37e0b8b",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T00:30:45Z",
+      "side": 1,
+      "message": "Very reasonable.\n\nThis CL is about being a pure separation after using the split tool. I have included this in the \"Manually Fix\" CL.\nLet me know is that is acceptable.",
+      "parentUuid": "4bf52a8b_83ca0f5d",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "50e80780a774af7bc4dfea727d08979f283af068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
