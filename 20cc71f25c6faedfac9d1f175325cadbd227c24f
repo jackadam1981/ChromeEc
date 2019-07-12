@@ -141,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "45497fbf_3cee35d4",
+        "filename": "common/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:39:59Z",
+      "side": 1,
+      "message": "for debug purpose: e.g.\nmake AUDIO_CODEC_EXTRA_CFLAGS\u003d\u0027-DDEBUG_AUDIO_CODEC\u003dy\u0027",
+      "parentUuid": "19c83a15_6a3b954c",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fea2baac_581c73f5",
         "filename": "include/audio_codec.h",
         "patchSetId": 9
@@ -152,6 +170,30 @@
       "writtenOn": "2019-07-12T08:28:29Z",
       "side": 1,
       "message": "If this is really needed, please move to audio_codec.c .",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2917b24b_e3b4068e",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:39:59Z",
+      "side": 1,
+      "message": "Any audio_codec_xxx.c include this header could use them.",
+      "parentUuid": "fea2baac_581c73f5",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -187,6 +229,30 @@
     },
     {
       "key": {
+        "uuid": "4918bd5d_7272fa00",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:39:59Z",
+      "side": 1,
+      "message": "Any audio_codec_xxx.c include this header could use them.",
+      "parentUuid": "79ba4956_bbd92836",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b014a8c_2764397b",
         "filename": "include/console_channel.inc",
         "patchSetId": 9
@@ -198,6 +264,24 @@
       "writtenOn": "2019-07-12T08:28:29Z",
       "side": 1,
       "message": "Alphabetical order please",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597ea94f_7bd4e427",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:39:59Z",
+      "side": 1,
+      "message": "I notice that, but current list is not sorted",
+      "parentUuid": "8b014a8c_2764397b",
       "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
