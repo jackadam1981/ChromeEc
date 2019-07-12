@@ -27,7 +27,6 @@
 #define ROLLOVER_EVENT 1
 #define NOT_ROLLOVER_EVENT 0
 
-//#define TMR_PRESCALER MXC_V_TMR_CN_PRES_DIV64
 #define TMR_PRESCALER MXC_V_TMR_CN_PRES_DIV8
 #define TMR_DIV (1 << TMR_PRESCALER)
 
@@ -113,12 +112,9 @@ void __hw_clock_event_set(uint32_t deadline)
 	event_time_ticks = usecs_to_ticks(event_time_us) + 1;
 
 	/* set the event time into the timer compare */
-	// TMR_SetCompare(TMR_EVENT, event_time_ticks);
 	TMR_EVENT->cmp = event_time_ticks;
 	/* zero out the timer */
-	// TMR_SetCount(TMR_EVENT, 0x0);
 	TMR_EVENT->cnt = 0;
-	// TMR_Enable();
 	TMR_EVENT->cn |= MXC_F_TMR_CN_TEN;
 }
 
@@ -129,7 +125,6 @@ uint32_t __hw_clock_event_get(void)
 
 void __hw_clock_event_clear(void)
 {
-	// TMR_Disable(TMR_EVENT);
 	TMR_EVENT->cn &= ~(MXC_F_TMR_CN_TEN);
 }
 
@@ -155,11 +150,9 @@ void __hw_clock_source_set(uint32_t ts)
 static void __timer_event_isr(void)
 {
 	/* Clear the event timer */
-	// TMR_IntClear(TMR_EVENT);
 	TMR_EVENT->intr = MXC_F_TMR_INTR_IRQ_CLR;
 	/* Process the timer, pass in that this was NOT a rollover event */
 	if (TMR_ROLLOVER->intr) {
-		// TMR_IntClear(TMR_ROLLOVER);
 		TMR_ROLLOVER->intr = MXC_F_TMR_INTR_IRQ_CLR;
 		process_timers(ROLLOVER_EVENT);
 	} else {
@@ -175,26 +168,26 @@ static void init_timer(mxc_tmr_regs_t *timer, enum tmr_pres prescaler,
 	timer->cn &= ~(MXC_F_TMR_CN_TEN);
 
 	if (timer == MXC_TMR0) {
-		// SYS_ClockEnable(SYS_PERIPH_CLOCK_T0);
+		/* Enable Timer 0 Clock */
 		MXC_GCR->perckcn0 &= ~(MXC_F_GCR_PERCKCN0_T0D);
 	} else if (timer == MXC_TMR1) {
-		// SYS_ClockEnable(SYS_PERIPH_CLOCK_T1);
+		/* Enable Timer 1 Clock */
 		MXC_GCR->perckcn0 &= ~(MXC_F_GCR_PERCKCN0_T1D);
 	} else if (timer == MXC_TMR2) {
-		// SYS_ClockEnable(SYS_PERIPH_CLOCK_T2);
+		/* Enable Timer 2 Clock */
 		MXC_GCR->perckcn0 &= ~(MXC_F_GCR_PERCKCN0_T2D);
 	}
 
-	// Disable timer and clear settings
+	/* Disable timer and clear settings */
 	timer->cn = 0;
 
-	// Clear interrupt flag
+	/* Clear interrupt flag */
 	timer->intr = MXC_F_TMR_INTR_IRQ_CLR;
 
-	// Set the prescaler
+	/* Set the prescaler */
 	timer->cn = (prescaler << MXC_F_TMR_CN_PRES_POS);
 
-	// Configure the timer
+	/* Configure the timer */
 	timer->cn = (timer->cn & ~(MXC_F_TMR_CN_TMODE | MXC_F_TMR_CN_TPOL)) |
 		    ((mode << MXC_F_TMR_CN_TMODE_POS) & MXC_F_TMR_CN_TMODE) |
 		    ((0 << MXC_F_TMR_CN_TPOL_POS) & MXC_F_TMR_CN_TPOL);
@@ -213,9 +206,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	__hw_clock_source_set(start_t);
 
 	/* Enable the timers */
-	// TMR_Enable(TMR_ROLLOVER);
 	TMR_ROLLOVER->cn |= MXC_F_TMR_CN_TEN;
-	// TMR_Enable(TMR_EVENT);
 	TMR_EVENT->cn |= MXC_F_TMR_CN_TEN;
 
 	/* Enable the IRQ */
