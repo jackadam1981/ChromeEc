@@ -34,6 +34,24 @@
       "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b0af60_a7085e5d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4571,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T10:31:44Z",
+      "side": 0,
+      "message": "Is that code upstreamed yet? If so, it might be a bit tricky to upstream the change (but hopefully upstream will accept a breaking change if we can convinced them we never released HW with the old interface)",
+      "parentUuid": "a7169138_9debafe3",
+      "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
