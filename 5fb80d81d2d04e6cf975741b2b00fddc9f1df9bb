@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "406b6f3a_44868417",
+        "filename": "board/max32660-eval/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-12T22:04:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be UART1 (or UART1A)? The mask is for pins 10 \u0026 11 on port 0, which the chip data sheet calls UART1, and the card which came with my evaluation kit calls UART 1A.",
+      "range": {
+        "startLine": 18,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b15d8bfb_f7f6f1cd",
         "filename": "chip/max32660/clock_chip.c",
         "patchSetId": 6
