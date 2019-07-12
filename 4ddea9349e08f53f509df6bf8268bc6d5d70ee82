@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38f9bfa0_672b6dc5",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-07-12T23:11:56Z",
+      "side": 1,
+      "message": "agreed, fair point",
+      "parentUuid": "a5a6e2ad_e2d596d3",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 70
+      },
+      "revId": "4ddea9349e08f53f509df6bf8268bc6d5d70ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8c1d044_36c6ed98",
         "filename": "util/ec3po/console.py",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2990db35_1b9b8013",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-07-12T23:11:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c1d044_36c6ed98",
+      "range": {
+        "startLine": 220,
+        "startChar": 23,
+        "endLine": 220,
+        "endChar": 72
+      },
+      "revId": "4ddea9349e08f53f509df6bf8268bc6d5d70ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de7e2e14_41431b2f",
         "filename": "util/ec3po/console.py",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-12T22:53:25Z",
       "side": 1,
       "message": "can you just do\nlast_line \u003d \u0027\u0027\nif \u0027\\n\u0027 in output_data:\n  lines, last_line \u003d output_data.rsplit(\u0027\\n\u0027, 1)\nfor line in output_data.splitlines():\n  self.logger.debug(line) \nself.output_line_log_buffer \u003d last_line",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 47
+      },
+      "revId": "4ddea9349e08f53f509df6bf8268bc6d5d70ee82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "031509c8_3b3a5f04",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2019-07-12T23:11:56Z",
+      "side": 1,
+      "message": "I did something similar in the new patch, again thanks for pointing out this was becoming convoluted for no reason",
+      "parentUuid": "de7e2e14_41431b2f",
       "range": {
         "startLine": 216,
         "startChar": 0,
