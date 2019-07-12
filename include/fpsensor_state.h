@@ -23,10 +23,12 @@
 
 #if defined(HAVE_PRIVATE) && !defined(TEST_BUILD)
 #define HAVE_FP_PRIVATE_DRIVER
+/* Include the device specific header file */
 #define PRIV_HEADER(header) STRINGIFY(header)
 #include PRIV_HEADER(FP_SENSOR_PRIVATE)
 #else
 /* These values are used by the host (emulator) tests. */
+#define HAVE_FP_PRIVATE_DRIVER /* This represents the private mock */
 #define FP_SENSOR_IMAGE_SIZE 0
 #define FP_SENSOR_RES_X 0
 #define FP_SENSOR_RES_Y 0
