@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "827e10c9_3c247819",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:33:31Z",
+      "side": 1,
+      "message": "What\u0027s the point of these functions? They take up space... can\u0027t we just have the kernel call the basic SET_GAIN_IDX twice? Or just have SET_GAIN_DUAL?",
+      "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639bcf3e_8dcaf431",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 4627,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:33:31Z",
+      "side": 1,
+      "message": "Could you describe what these mean?",
+      "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
