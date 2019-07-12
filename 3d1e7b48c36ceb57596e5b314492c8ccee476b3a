@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "27423c98_1a26bdd5",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T21:39:11Z",
+      "side": 1,
+      "message": "Can we make this empty string then (and add a comment that this gets filled in at run time)",
+      "parentUuid": "ba70e1ba_7bbe2835",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e735f37_cdebac9f",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -601,6 +625,30 @@
       "side": 1,
       "message": "I could, but I wanted to do the LED sweep prior to showing the voltage.",
       "parentUuid": "e4507ac3_4aa6b30e",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a84e1d8_56d7a91e",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T21:39:11Z",
+      "side": 1,
+      "message": "good enough reason for me, can you add that as a comment please?",
+      "parentUuid": "98965834_32835408",
       "range": {
         "startLine": 393,
         "startChar": 1,
