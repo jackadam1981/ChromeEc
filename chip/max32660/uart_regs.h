@@ -78,7 +78,6 @@ typedef struct {
 #define MXC_R_UART_TX_FIFO                                                     \
 	((uint32_t)0x00000024UL) /**< Offset from UART Base Address: <tt>      \
 				    0x0x024 */
-				 /**@} end of group uart_registers */
 
 /**
  * Control Register.

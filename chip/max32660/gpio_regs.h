@@ -31,15 +31,12 @@
 /* **** Definitions **** */
 
 /**
- * @ingroup     gpio
- * @defgroup    gpio_registers Registers
- * @brief       Registers, Bit Masks and Bit Positions for the GPIO Peripheral
- * Module.
- * @description Individual I/O for each GPIO
+ * gpio
+ * Individual I/O for each GPIO
  */
 
 /**
- * @ingroup gpio_registers
+ * gpio_registers
  * Structure type to access the GPIO Registers.
  */
 typedef struct {
@@ -169,13 +166,6 @@ typedef enum {
 } gpio_int_pol_t;
 
 /* Register offsets for module GPIO */
-/**
- * @ingroup    gpio_registers
- * @defgroup   GPIO_Register_Offsets Register Offsets
- * @brief      GPIO Peripheral Register Offsets from the GPIO Base Peripheral
- * Address.
- * @{
- */
 #define MXC_R_GPIO_EN                                                          \
 	((uint32_t)0x00000000UL) /**< Offset from GPIO Base Address: <tt>      \
 				    0x0x000 */
@@ -281,14 +271,10 @@ typedef enum {
 #define MXC_R_GPIO_VSSEL                                                       \
 	((uint32_t)0x000000C0UL) /**< Offset from GPIO Base Address: <tt>      \
 				    0x0x0C0 */
-				 /**@} end of group gpio_registers */
 
 /**
- * @ingroup  gpio_registers
- * @defgroup EN_Register
- * @brief    GPIO Function Enable Register. Each bit controls the GPIO_EN
+ * GPIO Function Enable Register. Each bit controls the GPIO_EN
  * setting for one GPIO pin on the associated port.
- * @{
  */
 #define MXC_F_GPIO_EN_GPIO_EN_POS 0 /**< EN_GPIO_EN Position */
 #define MXC_F_GPIO_EN_GPIO_EN                                                  \
@@ -305,44 +291,29 @@ typedef enum {
 	(MXC_V_GPIO_EN_GPIO_EN_GPIO                                            \
 	 << MXC_F_GPIO_EN_GPIO_EN_POS) /**< EN_GPIO_EN_GPIO Setting */
 
-/**@} end of group EN_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN_SET_Register
- * @brief    GPIO Set Function Enable Register. Writing a 1 to one or more bits
+ * GPIO Set Function Enable Register. Writing a 1 to one or more bits
  * in this register sets the bits in the same positions in GPIO_EN to 1, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_EN_SET_ALL_POS 0 /**< EN_SET_ALL Position */
 #define MXC_F_GPIO_EN_SET_ALL                                                  \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_EN_SET_ALL_POS)) /**< EN_SET_ALL Mask */
 
-/**@} end of group EN_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN_CLR_Register
- * @brief    GPIO Clear Function Enable Register. Writing a 1 to one or more
+ * GPIO Clear Function Enable Register. Writing a 1 to one or more
  * bits in this register clears the bits in the same positions in GPIO_EN to 0,
  * without affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_EN_CLR_ALL_POS 0 /**< EN_CLR_ALL Position */
 #define MXC_F_GPIO_EN_CLR_ALL                                                  \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_EN_CLR_ALL_POS)) /**< EN_CLR_ALL Mask */
 
-/**@} end of group EN_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup OUT_EN_Register
- * @brief    GPIO Output Enable Register. Each bit controls the GPIO_OUT_EN
+ * GPIO Output Enable Register. Each bit controls the GPIO_OUT_EN
  * setting for one GPIO pin in the associated port.
- * @{
  */
 #define MXC_F_GPIO_OUT_EN_GPIO_OUT_EN_POS                                      \
 	0 /**< OUT_EN_GPIO_OUT_EN Position                                     \
@@ -365,15 +336,10 @@ typedef enum {
 	 << MXC_F_GPIO_OUT_EN_GPIO_OUT_EN_POS) /**< OUT_EN_GPIO_OUT_EN_EN      \
 						  Setting */
 
-/**@} end of group OUT_EN_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup OUT_EN_SET_Register
- * @brief    GPIO Output Enable Set Function Enable Register. Writing a 1 to one
+ * GPIO Output Enable Set Function Enable Register. Writing a 1 to one
  * or more bits in this register sets the bits in the same positions in
  * GPIO_OUT_EN to 1, without affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_OUT_EN_SET_ALL_POS 0 /**< OUT_EN_SET_ALL Position */
 #define MXC_F_GPIO_OUT_EN_SET_ALL                                              \
@@ -381,15 +347,10 @@ typedef enum {
 		0xFFFFFFFFUL                                                   \
 		<< MXC_F_GPIO_OUT_EN_SET_ALL_POS)) /**< OUT_EN_SET_ALL Mask */
 
-/**@} end of group OUT_EN_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup OUT_EN_CLR_Register
- * @brief    GPIO Output Enable Clear Function Enable Register. Writing a 1 to
+ * GPIO Output Enable Clear Function Enable Register. Writing a 1 to
  * one or more bits in this register clears the bits in the same positions in
  * GPIO_OUT_EN to 0, without affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_OUT_EN_CLR_ALL_POS 0 /**< OUT_EN_CLR_ALL Position */
 #define MXC_F_GPIO_OUT_EN_CLR_ALL                                              \
@@ -397,15 +358,10 @@ typedef enum {
 		0xFFFFFFFFUL                                                   \
 		<< MXC_F_GPIO_OUT_EN_CLR_ALL_POS)) /**< OUT_EN_CLR_ALL Mask */
 
-/**@} end of group OUT_EN_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup OUT_Register
- * @brief    GPIO Output Register. Each bit controls the GPIO_OUT setting for
+ * GPIO Output Register. Each bit controls the GPIO_OUT setting for
  * one pin in the associated port.  This register can be written either
  * directly, or by using the GPIO_OUT_SET and GPIO_OUT_CLR registers.
- * @{
  */
 #define MXC_F_GPIO_OUT_GPIO_OUT_POS 0 /**< OUT_GPIO_OUT Position */
 #define MXC_F_GPIO_OUT_GPIO_OUT                                                \
@@ -422,15 +378,10 @@ typedef enum {
 	(MXC_V_GPIO_OUT_GPIO_OUT_HIGH                                          \
 	 << MXC_F_GPIO_OUT_GPIO_OUT_POS) /**< OUT_GPIO_OUT_HIGH Setting */
 
-/**@} end of group OUT_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup OUT_SET_Register
- * @brief    GPIO Output Set. Writing a 1 to one or more bits in this register
+ * GPIO Output Set. Writing a 1 to one or more bits in this register
  * sets the bits in the same positions in GPIO_OUT to 1, without affecting other
  * bits in that register.
- * @{
  */
 #define MXC_F_GPIO_OUT_SET_GPIO_OUT_SET_POS                                    \
 	0 /**< OUT_SET_GPIO_OUT_SET Position */
@@ -452,16 +403,10 @@ typedef enum {
 	(MXC_V_GPIO_OUT_SET_GPIO_OUT_SET_SET                                   \
 	 << MXC_F_GPIO_OUT_SET_GPIO_OUT_SET_POS) /**< OUT_SET_GPIO_OUT_SET_SET \
 						    Setting */
-
-/**@} end of group OUT_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup OUT_CLR_Register
- * @brief    GPIO Output Clear. Writing a 1 to one or more bits in this register
+ * GPIO Output Clear. Writing a 1 to one or more bits in this register
  * clears the bits in the same positions in GPIO_OUT to 0, without affecting
  * other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_OUT_CLR_GPIO_OUT_CLR_POS                                    \
 	0 /**< OUT_CLR_GPIO_OUT_CLR Position */
@@ -472,28 +417,18 @@ typedef enum {
 							    OUT_CLR_GPIO_OUT_CLR \
 							    Mask */
 
-/**@} end of group OUT_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup IN_Register
- * @brief    GPIO Input Register. Read-only register to read from the logic
+ * GPIO Input Register. Read-only register to read from the logic
  * states of the GPIO pins on this port.
- * @{
  */
 #define MXC_F_GPIO_IN_GPIO_IN_POS 0 /**< IN_GPIO_IN Position */
 #define MXC_F_GPIO_IN_GPIO_IN                                                  \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_IN_GPIO_IN_POS)) /**< IN_GPIO_IN Mask */
 
-/**@} end of group IN_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_MOD_Register
- * @brief    GPIO Interrupt Mode Register. Each bit in this register controls
+ * GPIO Interrupt Mode Register. Each bit in this register controls
  * the interrupt mode setting for the associated GPIO pin on this port.
- * @{
  */
 #define MXC_F_GPIO_INT_MOD_GPIO_INT_MOD_POS                                    \
 	0 /**< INT_MOD_GPIO_INT_MOD Position */
@@ -518,15 +453,10 @@ typedef enum {
 						    INT_MOD_GPIO_INT_MOD_EDGE  \
 						    Setting */
 
-/**@} end of group INT_MOD_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_POL_Register
- * @brief    GPIO Interrupt Polarity Register. Each bit in this register
+ * GPIO Interrupt Polarity Register. Each bit in this register
  * controls the interrupt polarity setting for one GPIO pin in the associated
  * port.
- * @{
  */
 #define MXC_F_GPIO_INT_POL_GPIO_INT_POL_POS                                    \
 	0 /**< INT_POL_GPIO_INT_POL Position */
@@ -551,14 +481,9 @@ typedef enum {
 						    INT_POL_GPIO_INT_POL_RISING \
 						    Setting */
 
-/**@} end of group INT_POL_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_EN_Register
- * @brief    GPIO Interrupt Enable Register. Each bit in this register controls
+ * GPIO Interrupt Enable Register. Each bit in this register controls
  * the GPIO interrupt enable for the associated pin on the GPIO port.
- * @{
  */
 #define MXC_F_GPIO_INT_EN_GPIO_INT_EN_POS                                      \
 	0 /**< INT_EN_GPIO_INT_EN Position                                     \
@@ -581,15 +506,10 @@ typedef enum {
 	 << MXC_F_GPIO_INT_EN_GPIO_INT_EN_POS) /**< INT_EN_GPIO_INT_EN_EN      \
 						  Setting */
 
-/**@} end of group INT_EN_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_EN_SET_Register
- * @brief    GPIO Interrupt Enable Set. Writing a 1 to one or more bits in this
+ * GPIO Interrupt Enable Set. Writing a 1 to one or more bits in this
  * register sets the bits in the same positions in GPIO_INT_EN to 1, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_INT_EN_SET_GPIO_INT_EN_SET_POS                              \
 	0 /**< INT_EN_SET_GPIO_INT_EN_SET Position */
@@ -613,16 +533,10 @@ typedef enum {
 	 << MXC_F_GPIO_INT_EN_SET_GPIO_INT_EN_SET_POS) /**<                              \
 							  INT_EN_SET_GPIO_INT_EN_SET_SET \
 							  Setting */
-
-/**@} end of group INT_EN_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_EN_CLR_Register
- * @brief    GPIO Interrupt Enable Clear. Writing a 1 to one or more bits in
+ * GPIO Interrupt Enable Clear. Writing a 1 to one or more bits in
  * this register clears the bits in the same positions in GPIO_INT_EN to 0,
  * without affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_INT_EN_CLR_GPIO_INT_EN_CLR_POS                              \
 	0 /**< INT_EN_CLR_GPIO_INT_EN_CLR Position */
@@ -646,15 +560,9 @@ typedef enum {
 	 << MXC_F_GPIO_INT_EN_CLR_GPIO_INT_EN_CLR_POS) /**<                                \
 							  INT_EN_CLR_GPIO_INT_EN_CLR_CLEAR \
 							  Setting */
-
-/**@} end of group INT_EN_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_STAT_Register
- * @brief    GPIO Interrupt Status Register. Each bit in this register contains
+ * GPIO Interrupt Status Register. Each bit in this register contains
  * the pending interrupt status for the associated GPIO pin in this port.
- * @{
  */
 #define MXC_F_GPIO_INT_STAT_GPIO_INT_STAT_POS                                  \
 	0 /**< INT_STAT_GPIO_INT_STAT Position */
@@ -679,29 +587,19 @@ typedef enum {
 						      INT_STAT_GPIO_INT_STAT_PENDING \
 						      Setting */
 
-/**@} end of group INT_STAT_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_CLR_Register
- * @brief    GPIO Status Clear. Writing a 1 to one or more bits in this register
+ * GPIO Status Clear. Writing a 1 to one or more bits in this register
  * clears the bits in the same positions in GPIO_INT_STAT to 0, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_INT_CLR_ALL_POS 0 /**< INT_CLR_ALL Position */
 #define MXC_F_GPIO_INT_CLR_ALL                                                 \
 	((uint32_t)(0xFFFFFFFFUL                                               \
 		    << MXC_F_GPIO_INT_CLR_ALL_POS)) /**< INT_CLR_ALL Mask */
 
-/**@} end of group INT_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup WAKE_EN_Register
- * @brief    GPIO Wake Enable Register. Each bit in this register controls the
+ * GPIO Wake Enable Register. Each bit in this register controls the
  * PMU wakeup enable for the associated GPIO pin in this port.
- * @{
  */
 #define MXC_F_GPIO_WAKE_EN_GPIO_WAKE_EN_POS                                    \
 	0 /**< WAKE_EN_GPIO_WAKE_EN Position */
@@ -724,15 +622,10 @@ typedef enum {
 	 << MXC_F_GPIO_WAKE_EN_GPIO_WAKE_EN_POS) /**< WAKE_EN_GPIO_WAKE_EN_EN  \
 						    Setting */
 
-/**@} end of group WAKE_EN_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup WAKE_EN_SET_Register
- * @brief    GPIO Wake Enable Set. Writing a 1 to one or more bits in this
+ * GPIO Wake Enable Set. Writing a 1 to one or more bits in this
  * register sets the bits in the same positions in GPIO_WAKE_EN to 1, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_WAKE_EN_SET_ALL_POS 0 /**< WAKE_EN_SET_ALL Position */
 #define MXC_F_GPIO_WAKE_EN_SET_ALL                                             \
@@ -740,15 +633,10 @@ typedef enum {
 		    << MXC_F_GPIO_WAKE_EN_SET_ALL_POS)) /**< WAKE_EN_SET_ALL   \
 							   Mask */
 
-/**@} end of group WAKE_EN_SET_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup WAKE_EN_CLR_Register
- * @brief    GPIO Wake Enable Clear. Writing a 1 to one or more bits in this
+ * GPIO Wake Enable Clear. Writing a 1 to one or more bits in this
  * register clears the bits in the same positions in GPIO_WAKE_EN to 0, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_WAKE_EN_CLR_ALL_POS 0 /**< WAKE_EN_CLR_ALL Position */
 #define MXC_F_GPIO_WAKE_EN_CLR_ALL                                             \
@@ -756,14 +644,9 @@ typedef enum {
 		    << MXC_F_GPIO_WAKE_EN_CLR_ALL_POS)) /**< WAKE_EN_CLR_ALL   \
 							   Mask */
 
-/**@} end of group WAKE_EN_CLR_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup INT_DUAL_EDGE_Register
- * @brief    GPIO Interrupt Dual Edge Mode Register. Each bit in this register
+ * GPIO Interrupt Dual Edge Mode Register. Each bit in this register
  * selects dual edge mode for the associated GPIO pin in this port.
- * @{
  */
 #define MXC_F_GPIO_INT_DUAL_EDGE_GPIO_INT_DUAL_EDGE_POS                        \
 	0 /**< INT_DUAL_EDGE_GPIO_INT_DUAL_EDGE Position */
@@ -789,14 +672,9 @@ typedef enum {
 								INT_DUAL_EDGE_GPIO_INT_DUAL_EDGE_EN \
 								Setting */
 
-/**@} end of group INT_DUAL_EDGE_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup PAD_CFG1_Register
- * @brief    GPIO Input Mode Config 1. Each bit in this register enables the
+ * GPIO Input Mode Config 1. Each bit in this register enables the
  * weak pull-up for the associated GPIO pin in this port.
- * @{
  */
 #define MXC_F_GPIO_PAD_CFG1_GPIO_PAD_CFG1_POS                                  \
 	0 /**< PAD_CFG1_GPIO_PAD_CFG1 Position */
@@ -828,14 +706,9 @@ typedef enum {
 						      PAD_CFG1_GPIO_PAD_CFG1_PD \
 						      Setting */
 
-/**@} end of group PAD_CFG1_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup PAD_CFG2_Register
- * @brief    GPIO Input Mode Config 2. Each bit in this register enables the
+ * GPIO Input Mode Config 2. Each bit in this register enables the
  * weak pull-up for the associated GPIO pin in this port.
- * @{
  */
 #define MXC_F_GPIO_PAD_CFG2_GPIO_PAD_CFG2_POS                                  \
 	0 /**< PAD_CFG2_GPIO_PAD_CFG2 Position */
@@ -867,15 +740,10 @@ typedef enum {
 						      PAD_CFG2_GPIO_PAD_CFG2_PD \
 						      Setting */
 
-/**@} end of group PAD_CFG2_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN1_Register
- * @brief    GPIO Alternate Function Enable Register. Each bit in this register
+ * GPIO Alternate Function Enable Register. Each bit in this register
  * selects between primary/secondary functions for the associated GPIO pin in
  * this port.
- * @{
  */
 #define MXC_F_GPIO_EN1_GPIO_EN1_POS 0 /**< EN1_GPIO_EN1 Position */
 #define MXC_F_GPIO_EN1_GPIO_EN1                                                \
@@ -893,15 +761,10 @@ typedef enum {
 	 << MXC_F_GPIO_EN1_GPIO_EN1_POS) /**< EN1_GPIO_EN1_SECONDARY Setting   \
 					  */
 
-/**@} end of group EN1_Register */
-
 /**
- * @ingroup  gpio_registers
- * @defgroup EN1_SET_Register
- * @brief    GPIO Alternate Function Set. Writing a 1 to one or more bits in
+ * GPIO Alternate Function Set. Writing a 1 to one or more bits in
  * this register sets the bits in the same positions in GPIO_EN1 to 1, without
  * affecting other bits in that register.
- * @{
  */
 #define MXC_F_GPIO_EN1_SET_ALL_POS 0 /**< EN1_SET_ALL Position */
 #define MXC_F_GPIO_EN1_SET_ALL                                                 \

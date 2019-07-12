@@ -116,7 +116,6 @@ typedef struct {
 #define MXC_R_GCR_SYSSIE                                                       \
 	((uint32_t)0x00000054UL) /**< Offset from GCR Base Address: <tt>       \
 				    0x0x054 */
-				 /**@} end of group gcr_registers */
 
 /**
  * System Control.
@@ -1312,8 +1311,6 @@ typedef struct {
 		0xFFFFUL                                                       \
 		<< MXC_F_GCR_REVISION_REVISION_POS)) /**< REVISION_REVISION    \
 							Mask */
-
-/**@} end of group REVISION_Register */
 
 /**
  * System Status Interrupt Enable Register.

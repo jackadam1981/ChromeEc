@@ -44,7 +44,6 @@ typedef struct {
 #define MXC_R_WDT_RST                                                          \
 	((uint32_t)0x00000004UL) /**< Offset from WDT Base Address: <tt>       \
 				    0x0x004 */
-				 /**@} end of group wdt_registers */
 
 /**
  * Watchdog Timer Control Register.
