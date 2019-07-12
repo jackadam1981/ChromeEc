@@ -395,6 +395,12 @@ enum gpio_signal gpio_en_pp5000_a = GPIO_EN_PP5000_A;
 
 static void board_init(void)
 {
+	/* BATT_PRES_ODL isn't working on board id 1,
+	 * so we assume that battery is always connected
+	 * on PreEVT */
+	if (system_get_board_version() < 2) {
+                gpio_set_flags(GPIO_EC_BATT_PRES_ODL, GPIO_OUT_LOW);
+        }
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 	/* Enable gpio interrupt for camera vsync */
