@@ -22,6 +22,30 @@
       "revId": "48022500a2b41a8735c6fd58040316e18e8fd599",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482eabfe_a166282b",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T17:46:29Z",
+      "side": 1,
+      "message": "Done.\n\nChanged this and another typo. Self +2\u0027ing.",
+      "parentUuid": "02b89e85_e79bd142",
+      "range": {
+        "startLine": 40,
+        "startChar": 38,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "48022500a2b41a8735c6fd58040316e18e8fd599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
