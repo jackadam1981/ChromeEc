@@ -34,6 +34,24 @@
       "revId": "66af18a3da4477a68a57b879bf70fc16be5d6634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f87d9d8c_c218eb9d",
+        "filename": "chip/stm32/registers-stm32f7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T20:51:05Z",
+      "side": 1,
+      "message": "All of the comments next to registers that mention which boards they apply to are pretty useless, since I can\u0027t trust them, I can\u0027t verify them, but they might be useful to someone who wrote them.",
+      "parentUuid": "7a8242e0_d0e027a8",
+      "revId": "66af18a3da4477a68a57b879bf70fc16be5d6634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
