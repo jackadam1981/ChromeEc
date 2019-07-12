@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "47c0405e_b400c4c6",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-12T01:15:15Z",
+      "side": 1,
+      "message": "\u003e the timestamps will get messed up.\n\nYep. The timestamp pointer will get set in gpio, and that\u0027s the value we care about. Then it could get overwritten by host_event.",
+      "parentUuid": "10483160_d172aed2",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dcb5f3e_706516fe",
         "filename": "include/config.h",
         "patchSetId": 2
