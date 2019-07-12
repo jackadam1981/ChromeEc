@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c57b0de_bd3f42bd",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:52:40Z",
+      "side": 1,
+      "message": "Nobody uses bool in EC code, maybe let\u0027s not start now? Returning an int is perfectly fine.",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e7e3e4_788bba82",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:52:40Z",
+      "side": 1,
+      "message": "I prefer either:\nif (enable)\n  level \u003d\nelse\n  level \u003d\n\nor\n\nlevel \u003d enable ? ... : ...;\n\nI find this one a bit harder to read...",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31dc41fa_685c3b34",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:52:40Z",
+      "side": 1,
+      "message": "This seems quite closely related to flash_physical_protect_at_boot, can you fold it in the function below?",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4363fdbc_6f579b60",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:52:40Z",
+      "side": 1,
+      "message": "these 2 are internal functions (at least right now), can you just have them as static functions in the c file?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacc8ce5_ae51face",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T08:52:40Z",
+      "side": 1,
+      "message": "we never do this anywhere in registers.h, which is this necessary now?",
+      "range": {
+        "startLine": 2037,
+        "startChar": 45,
+        "endLine": 2037,
+        "endChar": 46
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
