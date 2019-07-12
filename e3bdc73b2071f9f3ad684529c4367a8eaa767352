@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f16322d_3f752a2a",
+        "filename": "board/kukui_scp/isp_p1_srv.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:49:14Z",
+      "side": 1,
+      "message": "Could we reduce this value to save some spaces?",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "e3bdc73b2071f9f3ad684529c4367a8eaa767352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21571488_a75bb603",
+        "filename": "board/kukui_scp/isp_p1_srv.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:49:14Z",
+      "side": 1,
+      "message": "don\u0027t need \"\\n\" with CPRINTS",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "e3bdc73b2071f9f3ad684529c4367a8eaa767352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3cc978_26b7d572",
+        "filename": "board/kukui_scp/isp_p1_srv.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:49:14Z",
+      "side": 1,
+      "message": "80 characters per line.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 81
+      },
+      "revId": "e3bdc73b2071f9f3ad684529c4367a8eaa767352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
