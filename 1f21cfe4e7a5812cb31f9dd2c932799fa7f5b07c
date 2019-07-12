@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "68b0a7de_55c68692",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T21:21:32Z",
+      "side": 1,
+      "message": "what is this defined twice?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 2
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a7dbd2f_466b91cf",
         "filename": "common/gpio.c",
         "patchSetId": 3
@@ -65,6 +88,29 @@
         "startChar": 1,
         "endLine": 226,
         "endChar": 2
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eddcaf1c_3dddbc53",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T21:21:32Z",
+      "side": 1,
+      "message": "having gpio\u0027s over i2c will break assumptions about being able to use gpio_get and gpio_set in interrupt contexts.\n\nShould we make a separate path (i.e. parallel gpio function paths) for IO expanders since we want the caller to know they are potentially calling into an external peripheral?",
+      "range": {
+        "startLine": 240,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 41
       },
       "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
