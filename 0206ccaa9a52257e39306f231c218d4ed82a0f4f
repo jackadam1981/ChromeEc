@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6c808f9_5875b15b",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:43:11Z",
+      "side": 1,
+      "message": "TODO: move read pointer to a reasonable position (e.g. 1.2 seconds ahead)",
+      "revId": "0206ccaa9a52257e39306f231c218d4ed82a0f4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
