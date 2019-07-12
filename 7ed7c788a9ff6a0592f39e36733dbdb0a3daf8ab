@@ -22,6 +22,30 @@
       "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b585bb4_d3e9cfd2",
+        "filename": "board/kohaku/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2019-07-12T02:23:36Z",
+      "side": 1,
+      "message": "We will modify this value after testing charging \u0026 power on",
+      "parentUuid": "b95bd0fd_c700ece9",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "7ed7c788a9ff6a0592f39e36733dbdb0a3daf8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
