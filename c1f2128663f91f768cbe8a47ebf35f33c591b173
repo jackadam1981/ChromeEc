@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1d0e39a_c4dba7e9",
+        "filename": "board/kukui_scp/isp_p2_srv.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:58:45Z",
+      "side": 1,
+      "message": "Drop newline. You don\u0027t need this with CPRINTS",
+      "range": {
+        "startLine": 60,
+        "startChar": 46,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "c1f2128663f91f768cbe8a47ebf35f33c591b173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8852707_c6313e33",
         "filename": "board/kukui_scp/isp_p2_srv.c",
         "patchSetId": 26
