@@ -46,6 +46,30 @@
       "revId": "50e80780a774af7bc4dfea727d08979f283af068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cacdab7_d345e36c",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-12T01:04:37Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "2f4b9412_d37e0b8b",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "50e80780a774af7bc4dfea727d08979f283af068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
