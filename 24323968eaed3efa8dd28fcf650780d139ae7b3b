@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a493632_c6bc5661",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T16:29:56Z",
+      "side": 1,
+      "message": "We have stdbool, so it seems like it should be fine to use it. Using a bool makes it clear to the reader that we only expect true/false.\n\nExample:\n\n int some_var;\n\n some_var \u003d some_func();\n\nvs\n\n  bool some_var;\n\n  some_var \u003d some_func();\n\nIn the latter I can easily tell that it\u0027s safe to write\n\n  if (some_var) {\n    // do something\n  }\n\nwithout worrying that some_func potentially returns negative values, which would be interpreted as true in the if statement.\n\nI\u0027ll ask on chatty-firmware to see if there are any other reasons it\u0027s not used. My guess is that it\u0027s just a side effect of using C89, which doesn\u0027t include it by default. (Another future project of mine is to switch to std\u003dC11 so that we can use static_assert: https://en.wikipedia.org/wiki/C11_(C_standard_revision))",
+      "parentUuid": "4c57b0de_bd3f42bd",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21e7e3e4_788bba82",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "84fa6eab_74897e77",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T16:29:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e7e3e4_788bba82",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31dc41fa_685c3b34",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2019-07-12T08:52:40Z",
       "side": 1,
       "message": "This seems quite closely related to flash_physical_protect_at_boot, can you fold it in the function below?",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3360f2_4774712e",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T16:29:56Z",
+      "side": 1,
+      "message": "It is related, but I\u0027m trying to get away from the \"long function combined with #ifdef\" style that\u0027s pervasive in the EC code. It\u0027s really hard to read and hard to test. By separating out into a separate function like this it\u0027s easy to add a unit test for this specific function.",
+      "parentUuid": "31dc41fa_685c3b34",
       "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "32c752f7_37581c59",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T16:29:56Z",
+      "side": 1,
+      "message": "If I move them to the .c file it requires forward declarations in the .c file (so I can keep the \"high level\" vs \"physical layer\" functions together) and many more #ifdefs since the compiler will start to complain when it can\u0027t find the flash_physical_get_rdp_level/flash_physical_set_rdp_level functions for certain boards (they aren\u0027t actually called in that case because the call site is guarded by CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE. This is fine for the compiler when it\u0027s a non-static forward declaration, but not when it becomes static).\n\nI think adding a bunch more ifdefs ends up making the code a lot harder to read. Is it ok to keep as-is so we don\u0027t have to do that?",
+      "parentUuid": "4363fdbc_6f579b60",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bacc8ce5_ae51face",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 3
@@ -87,6 +165,30 @@
       "writtenOn": "2019-07-12T08:52:40Z",
       "side": 1,
       "message": "we never do this anywhere in registers.h, which is this necessary now?",
+      "range": {
+        "startLine": 2037,
+        "startChar": 45,
+        "endLine": 2037,
+        "endChar": 46
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0877b69b_2ce857dc",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T16:29:56Z",
+      "side": 1,
+      "message": "Same rationale as the BIT() macro change, which is to make sure that constants that might be used when shifting or with bitwise operations are unsigned.\n\nhttps://rules.sonarsource.com/c/RSPEC-854\nhttps://clang.llvm.org/extra/clang-tidy/checks/hicpp-signed-bitwise.html\nhttps://www.perforce.com/resources/qac/high-integrity-c-coding-standard-expressions\n\nHere\u0027s an example where a bug was found: https://crrev.com/c/1518660\n\nWe should do a large scale change to fix this, but I tend to get lots of push back whenever trying that.",
+      "parentUuid": "bacc8ce5_ae51face",
       "range": {
         "startLine": 2037,
         "startChar": 45,

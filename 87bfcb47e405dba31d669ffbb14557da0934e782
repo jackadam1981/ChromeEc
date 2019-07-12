@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b7bb3b6d_87033dd9",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-12T16:29:56Z",
+      "side": 1,
+      "message": "It will do mass erase of flash when the level changes, which will happen on reset.",
+      "parentUuid": "607cd869_6d4d899d",
+      "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e1e7b39_0c940deb",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 1
