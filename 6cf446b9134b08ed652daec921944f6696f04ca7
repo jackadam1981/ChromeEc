@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "551ac925_8081642a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4587,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-12T14:21:09Z",
+      "side": 0,
+      "message": "I think it\u0027s better to keep explicit values in the header file, this this becomes an API.",
+      "range": {
+        "startLine": 4587,
+        "startChar": 26,
+        "endLine": 4587,
+        "endChar": 29
+      },
+      "revId": "6cf446b9134b08ed652daec921944f6696f04ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
