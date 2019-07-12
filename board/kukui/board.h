@@ -13,6 +13,7 @@
 #undef  CONFIG_ADC_WATCHDOG
 #define CONFIG_CHIPSET_MT8183
 #define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_EMULATED_SYSRQ
 #undef  CONFIG_HIBERNATE
 #define CONFIG_I2C
@@ -290,6 +291,21 @@ int board_charge_port_is_sink(int port);
 int board_charge_port_is_connected(int port);
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
+
+/* Enable double tap detection */
+#define CONFIG_GESTURE_DETECTION
+//#define CONFIG_GESTURE_SW_DETECTION
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_SENSOR_BATTERY_TAP 0
+#define CONFIG_GESTURE_SAMPLING_INTERVAL_MS 5
+#define CONFIG_GESTURE_TAP_THRES_MG 100
+#define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T 500
+#define CONFIG_GESTURE_DETECTION_MASK \
+	 BIT(CONFIG_GESTURE_SENSOR_BATTERY_TAP)
+/* Define for sensor tasks */
+#define CONFIG_GESTURE_TAP_OUTER_WINDOW_T 200
+#define CONFIG_GESTURE_TAP_INNER_WINDOW_T 30
+#define CONFIG_GESTURE_TAP_MIN_INTERSTICE_T 120
 
 #endif /* !__ASSEMBLER__ */
 

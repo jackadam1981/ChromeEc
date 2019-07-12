@@ -23,6 +23,7 @@
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
 #include "extpower.h"
+#include "gesture.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -399,6 +400,11 @@ int board_get_version(void)
 	return version;
 }
 
+void sensor_board_proc_double_tap(void)
+{
+	CPRINTS("====== DO WAKE UP DEVICE ======");
+}
+
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW
@@ -462,7 +468,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 */
 	[LID_ACCEL] = {
 	 .name = "Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
@@ -478,7 +484,17 @@ struct motion_sensor_t motion_sensors[] = {
 	 .config = {
 		 /* Enable accel in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
+			 .odr = TAP_ODR,
+			 .ec_rate = 100 * MSEC,
+		 },
+		 /* For double taps detection */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = TAP_ODR,
+			 .ec_rate = 100 * MSEC,
+		 },
+		 /* For double taps detection */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = TAP_ODR,
 			 .ec_rate = 100 * MSEC,
 		 },
 	 },
