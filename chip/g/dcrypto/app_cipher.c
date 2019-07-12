@@ -167,7 +167,7 @@ int DCRYPTO_app_cipher(enum dcrypto_appid appid, const void *salt,
 	return 1;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_CIPHER
 
 #include "common.h"
 #include "console.h"
@@ -417,7 +417,7 @@ static void run_cipher_cmd(void)
 }
 DECLARE_DEFERRED(run_cipher_cmd);
 
-static int cmd_cipher(int argc, char **argv)
+static int cmd_crypto_test_cipher(int argc, char **argv)
 {
 	uint32_t events;
 	uint32_t max_time;
@@ -448,5 +448,6 @@ static int cmd_cipher(int argc, char **argv)
 
 	return result;
 }
-DECLARE_SAFE_CONSOLE_COMMAND(cipher, cmd_cipher, NULL, NULL);
+DECLARE_SAFE_CONSOLE_COMMAND(crt_cipher, cmd_crypto_test_cipher, NULL,
+			     "crypto cipher test");
 #endif

@@ -359,7 +359,7 @@ CRYPT_RESULT _cpri__GetEphemeralEcc(TPMS_ECC_POINT *q, TPM2B_ECC_PARAMETER *d,
 	}
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_ECC
 
 #include "extension.h"
 
@@ -615,4 +615,4 @@ static void ecc_command_handler(void *cmd_body, size_t cmd_size,
 
 DECLARE_EXTENSION_COMMAND(EXTENSION_ECC, ecc_command_handler);
 
-#endif   /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_TPM2_ECC */
