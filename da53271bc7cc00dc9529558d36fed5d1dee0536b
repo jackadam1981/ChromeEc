@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f9b330b4_d53d3e45",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-12T22:38:47Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 43,
+        "startChar": 20,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "947141d6_dfe759af",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-12T22:38:47Z",
+      "side": 1,
+      "message": "can you use if (IS_ENABLED(...))?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bf3ee82_e9566293",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -60,6 +106,30 @@
       "side": 1,
       "message": "I\u0027m ok with halting. The only caveat I was thinking is that if for some reason you don\u0027t have the UART console connected when first running (i.e., you connect after or it\u0027s already flashed and you power on), you would miss the console message. With the panic you end up busy looping, so you\u0027ll see it whenever you connect. This would only really apply during bringup though I think (e.g., when I have the bare board connected to servo v2).\n\nWhat is your preference?",
       "parentUuid": "3bf3ee82_e9566293",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 7
+      },
+      "revId": "da53271bc7cc00dc9529558d36fed5d1dee0536b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6311f74_f24ceae2",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-12T22:38:47Z",
+      "side": 1,
+      "message": "panic is ok, then.\n\nCan you make the error message shorter? You can describe more about the panic as a comment. It\u0027s easy to find the line.",
+      "parentUuid": "1369da7d_d140ec53",
       "range": {
         "startLine": 133,
         "startChar": 2,
