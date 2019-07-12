@@ -214,6 +214,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb53c5c_7d875ace",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2019-07-12T21:27:53Z",
+      "side": 1,
+      "message": "\u003e\u003eOn start-up, we should make EC query all TCPCs to get all live data and cache them. If product_id doesn\u0027t match the hard-coded value, the live data should precede. If EC fails to get a live data, it should populate the cache with a hardcoded value.\n\nIf the live data precedes the hard-coded when the product_id does not match, then depthcharge will not be able to identify the chip when the FW is bad/corrupt. Also to maintain the backwards compatibility, renew \u003d 0 will return hardcoded value(before update) and renew \u003d 1 will return live data(after update).\n\nI am not sure if you are looking for a response for anything specific in that comment.",
+      "parentUuid": "0c9d02e2_01076ed5",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
