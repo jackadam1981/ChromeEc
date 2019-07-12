@@ -16,6 +16,24 @@
       "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7169138_9debafe3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4571,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-12T10:22:04Z",
+      "side": 0,
+      "message": "No.  Only sound/soc/codecs/cros_ec_codec.c in kernel uses it.  It is not released so that we can rearrange them.",
+      "parentUuid": "0b623c37_f885a6a1",
+      "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
