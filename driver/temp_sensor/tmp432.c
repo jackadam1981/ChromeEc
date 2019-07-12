@@ -101,6 +101,18 @@ static int tmp432_set_therm_mode(void)
 	return EC_SUCCESS;
 }
 
+int tmp432_shutdown(void)
+{
+	int data;
+	int ret;
+
+	ret = raw_read8(TMP432_CONFIGURATION1_R, &data);
+	if (ret)
+		return EC_ERROR_UNKNOWN;
+	data |= (1 << 6);
+	return raw_write8(TMP432_CONFIGURATION1_W, data);
+}
+
 int tmp432_set_therm_limit(int channel, int limit_c, int hysteresis)
 {
 	int ret = 0;

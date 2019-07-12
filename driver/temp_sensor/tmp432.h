@@ -122,4 +122,6 @@ enum tmp432_channel_id {
  */
 int tmp432_set_therm_limit(int channel, int limit_c, int hysteresis);
 
+int tmp432_shutdown(void);
+
 #endif /* __CROS_EC_TMP432_H */

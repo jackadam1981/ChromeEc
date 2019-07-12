@@ -21,6 +21,7 @@
 #include "timer.h"
 #include "util.h"
 #include "spi.h"
+#include "tmp432.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
@@ -238,12 +239,76 @@ static void check_battery(void)
 	 */
 }
 
+struct gpio_hib {
+	struct {
+		int port;
+		int mask;
+	} pin;
+	uint32_t flags;
+};
+
+static void system_set_gpio_power(void)
+{
+	int i;
+
+	const struct gpio_hib pins[] = {
+		/* LPC */
+		{{11, 1}, GPIO_INPUT | GPIO_PULL_UP},
+		{{11, 2}, GPIO_INPUT | GPIO_PULL_UP},
+		{{11, 3}, GPIO_INPUT | GPIO_PULL_UP},
+		{{11, 4}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 1, 4}, GPIO_INPUT | GPIO_PULL_UP},
+		/* KSO */
+		{{ 0, 0}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 0}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 1}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 2}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 3}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 4}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 1}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 2}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 3}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 6}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 4}, GPIO_INPUT | GPIO_PULL_UP},
+		{{10, 7}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 5}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 6}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 0, 7}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 1, 0}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 1, 1}, GPIO_INPUT | GPIO_PULL_UP},
+		{{ 1, 2}, GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_TRACKPAD_PWREN), GPIO_OUT_LOW},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_WLAN_OFF_L), GPIO_OUT_LOW},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_PWR_BTN_SELECT), GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_PCH_PWRBTN_L), GPIO_INPUT | GPIO_PULL_UP},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_STRAP_L), GPIO_INPUT},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_EC_BL_DISABLE_L), GPIO_INPUT|GPIO_PULL_UP},
+		{GPIO_TO_PORT_MASK_PAIR(GPIO_KBD_IRQ_L), GPIO_INPUT|GPIO_PULL_UP},
+
+		/* Problematic */
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_TS_RST_L), GPIO_OUT_LOW},
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_USB_ILIM_SEL), GPIO_INPUT|GPIO_PULL_UP},
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_USB1_ENABLE), GPIO_OUT_LOW},
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_USB2_ENABLE), GPIO_OUT_LOW},
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_USB_CTL1), GPIO_OUT_LOW},
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_PCH_SYS_PWROK), GPIO_INPUT | GPIO_PULL_UP},
+		//{GPIO_TO_PORT_MASK_PAIR(GPIO_EC_HIB_L), GPIO_INPUT | GPIO_PULL_UP},
+	};
+
+	for (i = 0; i < ARRAY_SIZE(pins); i++)
+		gpio_set_flags_by_mask(pins[i].pin.port, 1 << pins[i].pin.mask,
+				       pins[i].flags);
+}
+
 void system_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
 	int htimer = 0;
 
 	CPRINTS("%s(%d, %d)", __func__, seconds, microseconds);
+
+	tmp432_shutdown();
+
 	if (seconds || microseconds) {
 		if (seconds > 2) {
 			MEC1322_HTIMER_CONTROL = 1;
@@ -283,7 +348,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 0);
 #endif
 #endif /* CONFIG_USB_PD_PORT_COUNT */
-
+	system_set_gpio_power();
 	if (hibernate_wake_pins_used > 0) {
 		for (i = 0; i < hibernate_wake_pins_used; ++i) {
 			const enum gpio_signal *pin = &hibernate_wake_pins[i];
