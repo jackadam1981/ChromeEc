@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f315e250_14d4873a",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T17:45:01Z",
+      "side": 1,
+      "message": "Done. See https://crrev.com/c/1700167/1",
+      "parentUuid": "e88a1b42_27edd8e2",
+      "range": {
+        "startLine": 234,
+        "startChar": 25,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7725f81_c59fa701",
         "filename": "chip/stm32/registers-stm32f4.h",
         "patchSetId": 8
@@ -188,6 +212,30 @@
       "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6d9960_e60a5a77",
+        "filename": "chip/stm32/registers-stm32f4.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T17:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35040dff_7b2bbe3c",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 74
+      },
+      "revId": "133af9d8641e8bc28d3ceebb641ed99258bcaa11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
