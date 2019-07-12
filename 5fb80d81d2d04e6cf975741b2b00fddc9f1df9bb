@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b15d8bfb_f7f6f1cd",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "clock_timeout can never return anything but EC_SUCCESS.\n\nChange clock_timeout() to return void, and remove the if statements around its two invocations.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12414dca_dab6b13c",
+        "filename": "chip/max32660/flash_chip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "The comment indicates that the -O0 should apply only to one function, however, I do not see #pragma GCC pop_options  before the next function.\n\nAlso, is it really not possible to guarantee the desired behavior using standard C volatile modifiers?  Are there particular timing requirements between the reads of MXC_FLASH_MEM_BASE and MXC_FLASH_MEM_BASE + MXC_FLASH_PAGE_SIZE?",
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982e2830_a9fa88c1",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "It seems to me that en2_clr \u003d mask is missing in this case (3).  As is, I am not sure it will work if the pin it first set to alternate function 4, and later set to alternate function 3.\n\nActually, the datasheet https://datasheets.maximintegrated.com/en/ds/MAX32660.pdf mentions only alternate functions 1, 2, and 3.  So as far as I can tell, the case 4 should be removed, and then all references to en2_clr could be removed, as there is no way the bit will ever be set (does the chip even have a en2 bit, if it has only three alternate functions per pin.)",
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6025cf4c_4cc4cd54",
+        "filename": "chip/max32660/hwtimer_chip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "I think this comment, (and other similar ones in this file), only has meaning to people familiar with the Maxim library that we are trying to remove from the code.  I think these comments should be removed, if each line need further explanation beyond \"Enable the timers\", then add more comments in prose.",
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1928e9f8_eb6417d5",
+        "filename": "chip/max32660/uart_chip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "I would prefer that all the assignments conditional on UARTN were bunched together at the top of the file, so that we have only one #if (UARTN \u003d\u003d 0) directive.\n\n#if (UARTN \u003d\u003d 0)\n#define MXC_UART MXC_UART0\n#define EC_UART_IRQn EC_UART0_IRQn\n#elif (UARTN \u003d\u003d 1)\n#define MXC_UART MXC_UART1\n#define EC_UART_IRQn EC_UART1_IRQn\n#else\n#error \"MAX32660 supports only UART 0 or 1 for EC console\"\n#endif\n\n...\n\n        MXC_UART-\u003ectrl \u003d ....\n\nThe compiler may optimize mxc_uart_regs_t *uart away, saving stack space in the current code, but with the define instead, we are sure that it will not waste stack space.",
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

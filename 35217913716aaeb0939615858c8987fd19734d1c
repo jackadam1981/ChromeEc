@@ -335,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "576d38f7_6b8f0e3a",
+        "filename": "chip/max32660/clock_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "You state \"done\", but as far as I can tell, the method still returns an int (always EC_SUCCESS, instead of always E_NO_ERROR).  There are further benefits to making it void, in that it saves some code at the caller sites.",
+      "parentUuid": "0132bbff_e6a14e17",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0f4a8d6_cf71c101",
         "filename": "chip/max32660/clock_chip.c",
         "patchSetId": 3
@@ -615,6 +633,24 @@
     },
     {
       "key": {
+        "uuid": "6e2b2c97_bc2d6fbd",
+        "filename": "chip/max32660/system_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf70d496_dbabd498",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29320d20_1c945ec5",
         "filename": "chip/max32660/uart_chip.c",
         "patchSetId": 3
@@ -731,6 +767,24 @@
       "writtenOn": "2019-06-06T18:57:17Z",
       "side": 1,
       "message": "I do not see this enum adding any value, how defining WATCHDOG_TIMER_PERIOD as below.  Or is there some subtle point of having WATCHDOG_TIMER_PERIOD be an enum constant, instead of possibly free-form compile-time constant arithmetic expression?\n\n#define WATCHDOG_TIMER_PERIOD MXC_S_WDT_CTRL_INT_PERIOD_WDT2POW29",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28bbbb45_ad5da274",
+        "filename": "chip/max32660/wdt_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-12T17:47:23Z",
+      "side": 1,
+      "message": "Please respond to this comment, several other files have enum types which declare other names of existing defines, I would like to know what the advantage of doing so is.  If the advantage does not apply to our situation, I would strongly prefer that we ditch the enums, and use the defines directly in the code.\n\n(In the future, you can click \"Comment Threads\", next to \"Change log\", in order to check that you have draft replies to every open comment in the review.)",
+      "parentUuid": "f3003739_bbf8bab1",
       "revId": "35217913716aaeb0939615858c8987fd19734d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
