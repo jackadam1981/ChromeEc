@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cfc8148_bd3ef7e8",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Are the partner RW hashes more related to the PD code than just the type-c states since they come from VDMs?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 26
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "728a30e9_a793130e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Will this be okay with CCD mode?  For our old stack, we ended up needing to use CONFIG_USB_PD_PULLUP for initial connections to avoid port partners presenting Ra from triggering CCD (CL:1487116)",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe851a4_88082fee",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Would it be possible to share this between the old stack and new stack?  Our try.src logic is more tied to board configs and battery level than the actual PD stack running",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 38
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15e8ccb_b82fec00",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "This function also seems as if it would be stack agnostic?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 46
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431ad9bd_1c553c37",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "And also don\u0027t drive Vbus/Vconn?",
+      "range": {
+        "startLine": 757,
+        "startChar": 5,
+        "endLine": 757,
+        "endChar": 36
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badf108a_688ce7ae",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 799,
+        "startChar": 5,
+        "endLine": 799,
+        "endChar": 36
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa83cf4f_25383573",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "It looks like this function will go to unattached_snk, but should this state machine be going to unattached src instead?\n\n\"A DRP with Accessory and Try.SRC Support (Figure 4-16) shall transition to Unattached.SRC\nafter tErrorRecovery.\"",
+      "range": {
+        "startLine": 822,
+        "startChar": 2,
+        "endLine": 822,
+        "endChar": 22
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eac484f_8b015c56",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Definitely no need to address this in this review, but we might want a TODO to ensure we wait before sampling the CC status after role changes.  Nathan has the appropriate timing quoted from the TCPI spec in b/136337527",
+      "range": {
+        "startLine": 867,
+        "startChar": 0,
+        "endLine": 869,
+        "endChar": 31
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a9abe5_6851bd0e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Should this more precisely check if Rp is detected on a pin?",
+      "range": {
+        "startLine": 880,
+        "startChar": 1,
+        "endLine": 880,
+        "endChar": 60
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a302e63_bb012641",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Should this be an enum type?",
+      "range": {
+        "startLine": 920,
+        "startChar": 1,
+        "endLine": 920,
+        "endChar": 18
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad32b73_edb7f06a",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "How does this work with the PR_swap/hard reset/FR_Swap transitions?",
+      "range": {
+        "startLine": 1031,
+        "startChar": 1,
+        "endLine": 1033,
+        "endChar": 33
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5ac6e0_21377de0",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "This will fill in cc_state with an enum tcpc_cc_voltage_status from the above if/else tree when I believe it should be a PD_CC_* value",
+      "range": {
+        "startLine": 1062,
+        "startChar": 3,
+        "endLine": 1062,
+        "endChar": 36
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a42f10_5e2e0dcc",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Where do we turn Vconn off during the attached.snk exit? (assuming we\u0027re not power role swapping, of course)",
+      "range": {
+        "startLine": 1088,
+        "startChar": 19,
+        "endLine": 1088,
+        "endChar": 40
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d460db42_7b40d4a9",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Does this check need to run on both pins then if the exit requirement is that open be on either?",
+      "range": {
+        "startLine": 1156,
+        "startChar": 1,
+        "endLine": 1156,
+        "endChar": 31
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f2ab57_7890a63f",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Are we currently supporting audio accessories on any chromebooks?  It may be best to leave this state as TODO(s) if they can\u0027t be tested.",
+      "range": {
+        "startLine": 1169,
+        "startChar": 1,
+        "endLine": 1169,
+        "endChar": 18
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5449a5f9_fff0c231",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Does this need a bug and TODO?",
+      "range": {
+        "startLine": 1280,
+        "startChar": 4,
+        "endLine": 1280,
+        "endChar": 29
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83738292_52dce4b9",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Should we stay in attached.src if we fail to source Vbus?  I\u0027m not sure I see a specific clause in the spec states saying what to do if you fail to supply Vbus.  It looks like the old state machine doesn\u0027t proceed to the SRC_STARTUP in this condition",
+      "range": {
+        "startLine": 1490,
+        "startChar": 2,
+        "endLine": 1490,
+        "endChar": 41
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5057050f_b1bbf791",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "I know we need Rd on exactly one pin, but can the other pin be Ra as well as open?",
+      "range": {
+        "startLine": 1592,
+        "startChar": 33,
+        "endLine": 1592,
+        "endChar": 58
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afb383d_1c2d3503",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-12T21:13:08Z",
+      "side": 1,
+      "message": "Do we need a tcpm_set_msg_header here as well?",
+      "range": {
+        "startLine": 1749,
+        "startChar": 0,
+        "endLine": 1750,
+        "endChar": 41
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
