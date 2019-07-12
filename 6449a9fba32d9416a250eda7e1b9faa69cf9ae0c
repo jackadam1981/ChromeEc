@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8f968a3_2dfbffca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T22:12:26Z",
+      "side": 1,
+      "message": "There are good usage examples, we should add this to an .md doc and link to it from the code",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5701eb_1537e750",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T22:12:26Z",
+      "side": 1,
+      "message": "inclusive or exclusive (please add comment to both)",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9517d44c_b2cf9489",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T22:12:26Z",
+      "side": 1,
+      "message": "since this will potentially be a lot of data, can we shorten it. Maybe\n\ni2c: 0:0x5A \u003d\u003e 0x12 0x34\n\ni2c: 0:0x5A \u003c\u003d 0x12 0x34\n\n\nfor reading and writing to port 0 address 0x5a? Thoughts?",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca72dfd_f701ac72",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T22:12:26Z",
+      "side": 1,
+      "message": "replace",
+      "range": {
+        "startLine": 103,
+        "startChar": 48,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bc7242_846bc0b9",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-12T22:12:26Z",
+      "side": 1,
+      "message": "what does beginning/end of i2cxfer mean?\n\n--\n\nI see now that I have read the code. I think we should just remove the (statements)",
+      "range": {
+        "startLine": 436,
+        "startChar": 34,
+        "endLine": 436,
+        "endChar": 57
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
