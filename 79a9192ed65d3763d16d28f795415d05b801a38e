@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "1cf9b1d3_f7151333",
+        "filename": "chip/stm32/registers-stm32f0.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-12T01:43:54Z",
+      "side": 1,
+      "message": "I think it\u0027s unlikely registers.h will be renamed. Even if it\u0027s renamed, it\u0027ll be caught by buildall because registers-x.h will all break and replacing __CROS_EC_REGISTERS_H in several files is trivial.\n\nIt\u0027s nice to have __CROS_EC_REGISTERS_H in registers-x.h because it clarifies the tie.",
+      "parentUuid": "3a911dea_773c8bf2",
+      "revId": "79a9192ed65d3763d16d28f795415d05b801a38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72f16716_93d44f2c",
         "filename": "chip/stm32/registers-stm32h7.h",
         "patchSetId": 9
