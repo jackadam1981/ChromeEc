@@ -202,7 +202,7 @@ CRYPT_RESULT _cpri__AESEncryptOFB(
 	return CRYPT_SUCCESS;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_AES
 
 #include "console.h"
 #include "extension.h"
@@ -536,4 +536,4 @@ static void aes_command_handler(void *cmd_body,
 
 DECLARE_EXTENSION_COMMAND(EXTENSION_AES, aes_command_handler);
 
-#endif   /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_TPM2_AES */
