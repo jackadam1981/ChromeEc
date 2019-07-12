@@ -16,6 +16,24 @@
       "revId": "66af18a3da4477a68a57b879bf70fc16be5d6634",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8242e0_d0e027a8",
+        "filename": "chip/stm32/registers-stm32f7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-12T20:46:29Z",
+      "side": 1,
+      "message": "This was simply extracted manually from the F4 family file.\n\n* Copy over registers-stm32f4.h\n* Remove blocks that would be ignored if CHIP_VARIANT_STM32F76X was not set.\n\nI drew a hard line on not including other generic stm32f4 family code (in the non-CHIP_VARIANT_STM32F76X case) because I noticed that the section where clock registers are configured had logic that forced a preprocessor error if the chip variant wasn\u0027t matched exactly (now line 405 of this file). Thus, it was safe to assume that only the CHIP_VARIANT_STM32F76X of the f7 series was targeted.",
+      "parentUuid": "7eb02726_0dc34a0e",
+      "revId": "66af18a3da4477a68a57b879bf70fc16be5d6634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
