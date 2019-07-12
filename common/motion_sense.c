@@ -1133,13 +1133,14 @@ static void check_and_queue_gestures(uint32_t *event)
 		 * AP is ignoring double tap event, do no wake up and no
 		 * automatic disable.
 		 */
-		vector.flags = 0;
+		vector.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP;
 		vector.activity = MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
 		vector.state = 1; /* triggered */
 		vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
 		motion_sense_fifo_stage_data(&vector, NULL, 0,
 					     __hw_clock_source_read());
 		motion_sense_fifo_commit_data();
+		CPRINTF("===== DOUBLE TAP =====\n");
 #endif
 		/* Call board specific function to process tap */
 		sensor_board_proc_double_tap();

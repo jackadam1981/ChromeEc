@@ -301,22 +301,25 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, gesture_chipset_suspend,
 void gesture_calc(uint32_t *event)
 {
 	/* Only check for gesture if lid is closed and tap detection is on */
-	if (!tap_detection || lid_is_open())
+/*  if (!tap_detection || lid_is_open())*/
+	if (!tap_detection)
 		return;
 
-	if (gesture_tap_for_battery())
+	if (gesture_tap_for_battery()) {
+		CPRINTF("==== Detect double taps ====\n");
 		*event |= TASK_EVENT_MOTION_ACTIVITY_INTERRUPT(
 				MOTIONSENSE_ACTIVITY_DOUBLE_TAP);
+  }
 }
 
 /*****************************************************************************/
 /* Console commands */
 static int command_tap_info(int argc, char **argv)
 {
-	int val;
+  int val;
 
-	ccprintf("tap:   %s\n", (tap_detection && !lid_is_open()) ?
-					"on" : "off");
+  ccprintf("tap:   %s\n", (tap_detection && !lid_is_open()) ?
+          "on" : "off");
 
 	if (argc > 1) {
 		if (!parse_bool(argv[1], &val))
@@ -325,11 +328,12 @@ static int command_tap_info(int argc, char **argv)
 	}
 
 	ccprintf("debug: %s\n", tap_debug ? "on" : "off");
-	ccprintf("odr:   %d\n", sensor->drv->get_data_rate(sensor));
+/*  ccprintf("odr:   %d\n", sensor->drv->get_data_rate(sensor));*/
 
 	return EC_SUCCESS;
 }
+
 DECLARE_CONSOLE_COMMAND(tapinfo, command_tap_info,
-			"debug on/off",
-			"Print tap information");
+      "debug on/off",
+      "Print tap information");
 

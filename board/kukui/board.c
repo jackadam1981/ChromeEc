@@ -23,6 +23,7 @@
 #include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
 #include "extpower.h"
+#include "gesture.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -399,6 +400,11 @@ int board_get_version(void)
 	return version;
 }
 
+void sensor_board_proc_double_tap(void)
+{
+	CPRINTS("====== DO WAKE UP DEVICE ======");
+}
+
 /* Motion sensors */
 /* Mutexes */
 #ifdef SECTION_IS_RW
@@ -480,6 +486,11 @@ struct motion_sensor_t motion_sensors[] = {
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
 			 .ec_rate = 100 * MSEC,
+		 },
+		 /* For double taps detection */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = TAP_ODR,
+			.ec_rate = 100 * MSEC,
 		 },
 	 },
 	},
