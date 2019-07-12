@@ -788,6 +788,24 @@
       "revId": "35217913716aaeb0939615858c8987fd19734d1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfca8407_cd65ce2d",
+        "filename": "chip/max32660/wdt_chip.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-07-12T21:37:33Z",
+      "side": 1,
+      "message": "I believe the library writers would argue that clarity is added by redefining the CMSIS notation to something clearer.\nWDT_PERIOD_2_31 vs MXC_S_WDT_CTRL_INT_PERIOD_WDT2POW31\nThe CMSIS version is heavily influenced (and mostly defined) by our chip design team.\n\nRandomly pulled CMSIS define: MXC_F_UART_THRESH_CTRL_RTS_FIFO_THRESH\nIf this constant was used in the api, the library team may wish to simplify it by another #define.\n\nUltimately we are trying to make this code fit into your EC framework so we can change to your liking.\nWhat you suggested:\n#define WATCHDOG_TIMER_PERIOD MXC_S_WDT_CTRL_INT_PERIOD_WDT2POW29\nis the simplest solution.",
+      "parentUuid": "28bbbb45_ad5da274",
+      "revId": "35217913716aaeb0939615858c8987fd19734d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

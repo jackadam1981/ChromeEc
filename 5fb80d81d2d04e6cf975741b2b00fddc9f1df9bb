@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "dc41febb_bd0fd241",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1345609
+      },
+      "writtenOn": "2019-07-12T21:37:33Z",
+      "side": 1,
+      "message": "You are correct, en2 does not even exist for this chip!",
+      "parentUuid": "982e2830_a9fa88c1",
+      "revId": "5fb80d81d2d04e6cf975741b2b00fddc9f1df9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6025cf4c_4cc4cd54",
         "filename": "chip/max32660/hwtimer_chip.c",
         "patchSetId": 6
