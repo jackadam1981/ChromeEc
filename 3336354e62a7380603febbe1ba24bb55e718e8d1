@@ -190,6 +190,30 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9d02e2_01076ed5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-12T21:01:10Z",
+      "side": 1,
+      "message": "FAFT is one thing. I raised other concerns above (timestamped 6/25, 8:46AM). Do you have any response to them?",
+      "parentUuid": "3c3c036c_7598eded",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
