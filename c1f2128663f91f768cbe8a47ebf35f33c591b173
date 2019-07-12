@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8852707_c6313e33",
+        "filename": "board/kukui_scp/isp_p2_srv.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:54:31Z",
+      "side": 1,
+      "message": "use CPRINTS.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "c1f2128663f91f768cbe8a47ebf35f33c591b173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1513944f_71fb8415",
+        "filename": "board/kukui_scp/isp_p2_srv.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:54:31Z",
+      "side": 1,
+      "message": "Use tab width \u003d 8 for indention.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "c1f2128663f91f768cbe8a47ebf35f33c591b173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26f7e81_a5a95412",
+        "filename": "board/kukui_scp/isp_p2_srv.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:54:31Z",
+      "side": 1,
+      "message": "Add BUILD_ASSERT for dip_msg_service.msg",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "c1f2128663f91f768cbe8a47ebf35f33c591b173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b63285_04bcd93c",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-12T08:54:31Z",
+      "side": 1,
+      "message": "This is way too huge, could we reduce this value?",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "c1f2128663f91f768cbe8a47ebf35f33c591b173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
