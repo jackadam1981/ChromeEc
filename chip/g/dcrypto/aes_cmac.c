@@ -151,7 +151,7 @@ int DCRYPTO_aes_cmac_verify(const uint8_t *key, const uint8_t *M, const int len,
 	return match;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_AES_CMAC
 static int check_answer(const uint32_t expected[4], uint32_t actual[4])
 {
 	int i;
@@ -173,7 +173,7 @@ static int check_answer(const uint32_t expected[4], uint32_t actual[4])
 	return success;
 }
 
-static int command_test_aes_block(int argc, char **argv)
+static int cmd_crypto_test_aes_cmac_block(int argc, char **argv)
 {
 	uint32_t actual[4];
 	const uint32_t zero[4] = {0, 0, 0, 0};
@@ -187,10 +187,10 @@ static int command_test_aes_block(int argc, char **argv)
 	return 0;
 }
 
-DECLARE_SAFE_CONSOLE_COMMAND(test_aesbk, command_test_aes_block, NULL,
+DECLARE_SAFE_CONSOLE_COMMAND(crt_aes_c_bl, cmd_crypto_test_aes_cmac_block, NULL,
 			     "Test AES block in AES-CMAC subkey generation");
 
-static int command_test_subkey_gen(int argc, char **argv)
+static int cmd_crypto_aes_cmac_subkey_gen(int argc, char **argv)
 {
 	uint32_t k1[4];
 	uint32_t k2[4];
@@ -215,8 +215,8 @@ static int command_test_subkey_gen(int argc, char **argv)
 	return 0;
 }
 
-DECLARE_SAFE_CONSOLE_COMMAND(test_skgen, command_test_subkey_gen, NULL,
-			     "Test AES-CMAC subkey generation");
+DECLARE_SAFE_CONSOLE_COMMAND(crt_aes_c_skey, cmd_crypto_aes_cmac_subkey_gen,
+			     NULL, "Test AES-CMAC subkey generation");
 
 struct cmac_test_param {
 	uint32_t len;
@@ -286,7 +286,7 @@ const struct cmac_test_param rfctests[4] = {
 	  },
 };
 
-static int command_test_aes_cmac(int argc, char **argv)
+static int cmd_crypto_test_aes_cmac(int argc, char **argv)
 {
 	int i;
 	uint32_t T[4];
@@ -308,11 +308,11 @@ static int command_test_aes_cmac(int argc, char **argv)
 	return 0;
 }
 
-DECLARE_SAFE_CONSOLE_COMMAND(test_cmac, command_test_aes_cmac,
-		"[test cases (1-4)]",
-		"Test AES-CMAC with RFC examples");
+DECLARE_SAFE_CONSOLE_COMMAND(crt_aes_c, cmd_crypto_test_aes_cmac,
+			     "[test cases (1-4)]",
+			     "Test AES-CMAC with RFC examples");
 
-static int command_test_verify(int argc, char **argv)
+static int cmd_crypto_test_aes_cmac_verify(int argc, char **argv)
 {
 	int i;
 	int testN;
@@ -340,7 +340,7 @@ static int command_test_verify(int argc, char **argv)
 	return 0;
 }
 
-DECLARE_SAFE_CONSOLE_COMMAND(test_cmac_ver, command_test_verify,
-		"[test cases (1-4)]",
-		"Test AES-CMAC-verify with RFC examples");
-#endif /* CRYPTO_TEST_SETUP */
+DECLARE_SAFE_CONSOLE_COMMAND(crt_aes_c_v, cmd_crypto_test_aes_cmac_verify,
+			     "[test cases (1-4)]",
+			     "Test AES-CMAC-verify with RFC examples");
+#endif /* CRYPTO_TEST_AEC_CMAC */

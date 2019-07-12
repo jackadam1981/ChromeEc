@@ -101,6 +101,12 @@ CFLAGS += -DEMBEDDED_MODE=1
 # Configure cryptoc headers to handle unaligned accesses.
 CFLAGS += -DSUPPORT_UNALIGNED=1
 
+# Configure dcrypto testing if required.
+CRYPTO_TEST ?=
+ifneq ($(CRYPTO_TEST),)
+	CFLAGS += -DCRYPTO_TEST_$(CRYPTO_TEST)
+endif
+
 TPM2_OBJS = $(shell find $(out)/tpm2 -name '*.cp.o')
 # Add dependencies on that library
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += $(TPM2_OBJS)

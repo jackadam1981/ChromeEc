@@ -148,7 +148,7 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 	return out_len;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_HASH
 
 #include "console.h"
 #include "extension.h"
@@ -370,4 +370,4 @@ static void hash_command_handler(void *cmd_body,
 
 DECLARE_EXTENSION_COMMAND(EXTENSION_HASH, hash_command_handler);
 
-#endif   /* CRYPTO_TEST_SETUP */
+#endif /* CRYPTO_TEST_TPM2_HASH */

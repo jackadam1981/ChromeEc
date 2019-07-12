@@ -5,7 +5,7 @@
 
 #include "dcrypto.h"
 
-#ifdef CRYPTO_TEST_SETUP
+#ifdef CRYPTO_TEST_TPM2_ECIES
 
 #include "extension.h"
 
@@ -122,5 +122,4 @@ static void ecies_command_handler(void *cmd_body, size_t cmd_size,
 
 DECLARE_EXTENSION_COMMAND(EXTENSION_ECIES, ecies_command_handler);
 
-#endif   /* CRYPTO_TEST_SETUP */
-
+#endif /* CRYPTO_TEST_TPM2_ECIES */
