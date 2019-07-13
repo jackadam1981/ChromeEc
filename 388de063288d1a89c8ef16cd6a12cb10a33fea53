@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80dd3fc8_b407cdab",
+        "filename": "core/cortex-m/config_core.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-13T00:47:04Z",
+      "side": 1,
+      "message": "We should turn on MPU at chip level (i.e. chip_config.h). It\u0027s also about region sizes being power of 2. So, we can\u0027t enable it for all chips without verifying it. The chips which currently don\u0027t use MPU may have a reason not to do so.\n\nI recommend you enable MPU for the chip of your concern (unless you verify MPU functionality on a representative device of each chip).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "388de063288d1a89c8ef16cd6a12cb10a33fea53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
