@@ -190,6 +190,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518114d5_4eca6046",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-13T04:25:13Z",
+      "side": 1,
+      "message": "\u003e Thanks for the explanations (both on and offline)! I still don\u0027t quite understand why the SCI/SMI/sleep wake masks have to be in coreboot though? We have host commands to modify them, the defaults could just be in the EC.\n\u003e \n\nOne of the reasons would be that SCI/SMI masks are directly related to the ACPI mode in the OS i.e. if ACPI mode is disabled, SMI mask is set, whereas if ACPI mode is enabled, SCI mask is set. We can come up with host commands to relay that information to EC, but that would be as good as sending masks over. Additionally, it gives more control/flexibility for the host to provide that information (especially if it decides to change masks based on certain conditions). \n\n\u003e Ack on having both ACPI and MKBP events though. Kind of unfortunate, but I guess that\u0027s just how things are.\n\nSo, going back to the original question: Do you think adding this new event to MKBP would be the right thing? I don\u0027t foresee any problem other than having to maintain another config and mask on the EC.",
+      "parentUuid": "54244f02_5182b077",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
