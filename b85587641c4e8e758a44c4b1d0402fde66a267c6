@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9656b3ec_d96d4e9d",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-13T04:56:12Z",
+      "side": 1,
+      "message": "You will have to add HOST_SLEEP_EVENT_S0IX_SUSPEND if this has to be used for x86 platforms. In fact, why is this sleep_state check needed if we are already checking chipset_in_state(...) above in line 147.",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 45
+      },
+      "revId": "b85587641c4e8e758a44c4b1d0402fde66a267c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
