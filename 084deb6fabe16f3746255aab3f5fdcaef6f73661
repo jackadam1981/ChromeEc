@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bc4c07f5_05a666cc",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-13T00:50:57Z",
+      "side": 1,
+      "message": "What about this? CPRINTS and CPRINTF are the standard printf macros we use.",
+      "parentUuid": "22852b2e_943c4bb1",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70be7d2a_c2e333ef",
         "filename": "common/spi_nor.c",
         "patchSetId": 2
