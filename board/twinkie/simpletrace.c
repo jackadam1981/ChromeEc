@@ -111,6 +111,9 @@ static void print_packet(int head, uint32_t *payload)
 	const char *prole;
 
 	if (trace_mode == TRACE_MODE_RAW) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		ccprintf("%T[%04x]", head);
 		for (i = 0; i < cnt; i++)
 			ccprintf(" %08x", payload[i]);
@@ -120,6 +123,7 @@ static void print_packet(int head, uint32_t *payload)
 	name = cnt ? data_msg_name[typ] : ctrl_msg_name[typ];
 	prole = head & (PD_ROLE_SOURCE << 8) ? "SRC" : "SNK";
 	ccprintf("%T %s/%d [%04x]%s", prole, id, head, name);
+#pragma GCC diagnostic pop
 	if (!cnt) { /* Control message : we are done */
 		ccputs("\n");
 		return;
@@ -149,6 +153,9 @@ static void print_packet(int head, uint32_t *payload)
 
 static void print_error(enum pd_rx_errors err)
 {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	if (err == PD_RX_ERR_INVAL)
 		ccprintf("%T TMOUT\n");
 	else if (err == PD_RX_ERR_HARD_RESET)
@@ -157,6 +164,7 @@ static void print_error(enum pd_rx_errors err)
 		ccprintf("%T SOP*\n");
 	else
 		ccprintf("ERR %d\n", err);
+#pragma GCC diagnostic pop
 }
 
 /* keep track of RX edge timing in order to trigger receive */

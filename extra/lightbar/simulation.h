@@ -54,7 +54,10 @@ int fake_consolecmd_lightbar(int argc, char *argv[]);
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
 /* Non-standard standard library functions */
+__attribute__((__format__(__printf__, 2, 3)))
 void cprintf(int zero, const char *fmt, ...);
+
+__attribute__((__format__(__printf__, 2, 3)))
 void cprints(int zero, const char *fmt, ...);
 #define ccprintf(fmt...) cprintf(0, fmt)
 #define strtoi strtol

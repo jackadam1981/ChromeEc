@@ -601,7 +601,11 @@ static void dump_host_command_suppressed(int force)
 	if (!force && !timestamp_expired(suppressed_cmd_deadline, NULL))
 		return;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("[%T HC Suppressed:");
+#pragma GCC diagnostic pop
 	for (i = 0; i < ARRAY_SIZE(hc_suppressed_cmd); i++) {
 		CPRINTF(" 0x%x=%d", hc_suppressed_cmd[i], hc_suppressed_cnt[i]);
 		hc_suppressed_cnt[i] = 0;
@@ -662,11 +666,16 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		hc_prev_cmd = args->command;
 	}
 
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
 		CPRINTS("HC 0x%02x.%d:%.*h", args->command,
 			args->version, args->params_size, args->params);
 	else
 		CPRINTS("HC 0x%02x", args->command);
+#pragma GCC diagnostic pop
 }
 
 uint16_t host_command_process(struct host_cmd_handler_args *args)
@@ -704,12 +713,17 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 			rv = cmd->handler(args);
 	}
 
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 	if (rv != EC_RES_SUCCESS)
 		CPRINTS("HC 0x%02x err %d", args->command, rv);
 
 	if (hcdebug >= HCDEBUG_PARAMS && args->response_size)
 		CPRINTS("HC resp:%.*h", args->response_size,
 			args->response);
+#pragma GCC diagnostic pop
 
 	return rv;
 }
@@ -882,12 +896,17 @@ static int command_host_command(int argc, char **argv)
 
 	res = host_command_process(&args);
 
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 	if (res != EC_RES_SUCCESS)
 		ccprintf("Command returned %d\n", res);
 	else if (args.response_size)
 		ccprintf("Response: %.*h\n", args.response_size, cmd_params);
 	else
 		ccprintf("Command succeeded; no response.\n");
+#pragma GCC diagnostic pop
 
 	shared_mem_release(cmd_params);
 	return EC_SUCCESS;

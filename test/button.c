@@ -146,7 +146,11 @@ static void button_test_init(void)
 {
 	int i;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	ccprintf("[%T Setting button GPIOs to inactive state.]\n");
+#pragma GCC diagnostic pop
 	for (i = 0; i < BUTTON_COUNT; i++)
 		gpio_set_level(buttons[i].gpio,
 			       !(buttons[i].flags & BUTTON_FLAG_ACTIVE_HIGH));

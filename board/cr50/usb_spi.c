@@ -753,10 +753,15 @@ static int hash_command_wrapper(int argc, char *argv[])
 	} else {
 		rv = EC_SUCCESS;
 
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		if (req.subcmd == SPI_HASH_SUBCMD_DUMP)
 			ccprintf("data: %.*h\n", req.size, p);
 		else if (req.subcmd == SPI_HASH_SUBCMD_SHA256)
 			ccprintf("hash: %.32h\n", p);
+#pragma GCC diagnostic pop
 	}
 
 	return rv;

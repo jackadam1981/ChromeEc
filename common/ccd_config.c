@@ -714,7 +714,12 @@ static int command_ccd_info(void)
 	ccprintf("Password: %s\n", raw_has_password() ? "set" : "none");
 	ccprintf("Flags: 0x%06x\n", raw_get_flags());
 
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 	ccprintf("Capabilities: %.8h\n", config.capabilities);
+#pragma GCC diagnostic pop
 	for (i = 0; i < CCD_CAP_COUNT; i++) {
 		int c = raw_get_cap(i, 0);
 

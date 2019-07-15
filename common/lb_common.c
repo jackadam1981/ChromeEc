@@ -287,7 +287,11 @@ void lb_init(int use_lock)
 {
 	int i;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("[%T LB_init_vals ");
+#pragma GCC diagnostic pop
 	for (i = 0; i < ARRAY_SIZE(init_vals); i++) {
 		CPRINTF("%c", '0' + i % 10);
 		if (use_lock)

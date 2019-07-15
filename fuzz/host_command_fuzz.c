@@ -113,8 +113,13 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	 * issues.
 	 */
 	if (first) {
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		ccprintf("Request: cmd=%04x data=%.*h\n",
 			req->command, req_size, req_buf);
+#pragma GCC diagnostic pop
 		first = 0;
 	}
 

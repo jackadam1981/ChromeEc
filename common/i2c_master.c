@@ -1087,7 +1087,12 @@ static int command_i2cxfer(int argc, char **argv)
 		rv = i2c_xfer(port, slave_addr, (uint8_t *)&offset, 1, data, v);
 
 		if (!rv)
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 			ccprintf("Data: %.*h\n", v, data);
+#pragma GCC diagnostic pop
 
 	} else if (strcasecmp(argv[1], "w") == 0) {
 		/* 8-bit write */

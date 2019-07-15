@@ -52,10 +52,14 @@ void port_80_write(int data)
 	 * 0x100). This is because only 8-bit port80 messages are assumed to be
 	 * coming from the host.
 	 */
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	if (print_in_int)
 		CPRINTF("%c[%T Port 80: 0x%02x]", scroll ? '\n' : '\r', data);
 	else if (data < 0x100)
 		hook_call_deferred(&port80_dump_buffer_data, 4 * SECOND);
+#pragma GCC diagnostic pop
 
 	/* Save current port80 code if system is resetting */
 	if (data == PORT_80_EVENT_RESET && writes) {

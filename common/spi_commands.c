@@ -45,8 +45,13 @@ static int command_spixfer(int argc, char **argv)
 
 		rv = spi_transaction(&spi_devices[dev_id], &cmd, 1, data, v);
 
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		if (!rv)
 			ccprintf("Data: %.*h\n", v, data);
+#pragma GCC diagnostic pop
 
 	} else if (strcasecmp(argv[1], "w") == 0) {
 		/* 8-bit write */

@@ -548,7 +548,7 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 		return ret;
 
 #ifdef CONFIG_CONSOLE_VERBOSE
-	CPRINTS("%s ODR: %d - roundup %d from config %d [AP %d]",
+	CPRINTS("%s ODR: %d - roundup %d from config %d [AP %ld]",
 		sensor->name, odr, roundup, config_id,
 		BASE_ODR(sensor->config[SENSOR_CONFIG_AP].odr));
 #else
@@ -1272,7 +1272,11 @@ void motion_sense_task(void *u)
 #endif
 #ifdef CONFIG_CMD_ACCEL_INFO
 		if (accel_disp) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 			CPRINTF("[%T event 0x%08x ", event);
+#pragma GCC diagnostic pop
 			for (i = 0; i < motion_sensor_count; ++i) {
 				sensor = &motion_sensors[i];
 				CPRINTF("%s=%-5d, %-5d, %-5d ", sensor->name,
@@ -2068,7 +2072,7 @@ static int command_display_accel_info(int argc, char **argv)
 		ccprintf("max_freq: %d\n", motion_sensors[i].max_frequency);
 		ccprintf("config:\n");
 		for (j = 0; j < SENSOR_CONFIG_MAX; j++) {
-			ccprintf("%d - odr: %umHz, ec_rate: %uus\n", j,
+			ccprintf("%d - odr: %lumHz, ec_rate: %uus\n", j,
 				motion_sensors[i].config[j].odr &
 				~ROUND_UP_FLAG,
 				motion_sensors[i].config[j].ec_rate);

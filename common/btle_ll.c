@@ -644,7 +644,7 @@ void print_connection_state(void)
 	CPRINTF("interval(hex): %x\n", conn_params.interval);
 	CPRINTF("latency(hex): %x\n", conn_params.latency);
 	CPRINTF("timeout(hex): %x\n", conn_params.timeout);
-	CPRINTF("channel_map(hex): %lx\n", conn_params.channel_map);
+	CPRINTF("channel_map(hex): %llx\n", conn_params.channel_map);
 	CPRINTF("hop(hex): %x\n", conn_params.hop_increment);
 	CPRINTF("SCA(hex): %x\n", conn_params.sleep_clock_accuracy);
 	CPRINTF("transmitWindowOffset: %d\n", conn_params.transmitWindowOffset);
@@ -846,7 +846,7 @@ void bluetooth_ll_task(void)
 
 			if (ll_state == STANDBY) {
 				CPRINTF("Exiting connection state/Entering "
-					"Standby state after %d connections ",
+					"Standby state after %d connections "
 					"events\n", ll_conn_events);
 				print_connection_state();
 			}

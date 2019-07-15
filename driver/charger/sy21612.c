@@ -195,10 +195,15 @@ static int command_sy21612(int argc, char **argv)
 	for (i = 0; i < 9; i++) {
 		ccprintf("[%02x] ", i);
 		rv = sy21612_read(i, &val);
+/* %b is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		if (rv)
 			ccprintf(" x (%d)\n", rv);
 		else
 			ccprintf("%02x - %08b\n", val, val);
+#pragma GCC diagnostic pop
 	}
 
 	ccprintf("vbat voltage: %d mV\n", sy21612_get_vbat_voltage());

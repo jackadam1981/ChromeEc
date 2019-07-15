@@ -65,6 +65,7 @@ extern bool console;
  *		black background.
  *--------------------------------------------------------------------------
  */
+__attribute__((__format__(__printf__, 2, 3)))
 void display_color_msg(bool success, char *fmt, ...);
 
 #ifdef __cplusplus

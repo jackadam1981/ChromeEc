@@ -190,7 +190,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 			    (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
 		uint32_t tpr = LM4_I2C_MTPR(port);
 
-		CPRINTS("I2C%d Addr:%02X bad status 0x%02x, SCL=%d, SDA=%d",
+		CPRINTS("I2C%d Addr:%02X bad status 0x%02x, SCL=%ld, SDA=%ld",
 				port,
 				slave_addr,
 				reg_mcs,

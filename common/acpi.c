@@ -308,7 +308,11 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			 * does a lot of keyboard backlights and it scrolls the
 			 * debug console.
 			 */
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 			CPRINTF("\r[%T ACPI kblight %d]", data);
+#pragma GCC diagnostic pop
 			kblight_set(data);
 			break;
 #endif

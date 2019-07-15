@@ -344,7 +344,7 @@ int pd_board_checks(void)
 				break;
 		/* trigger the slow OCP iff all 4 samples are above the max */
 		if (count == 3) {
-			debug_printf("OCP %d mA\n",
+			debug_printf("OCP %ld mA\n",
 			  vbus_amp * VDDA_MV / CURR_GAIN * 1000
 				   / R_SENSE / ADC_SCALE);
 			pd_log_event(PD_EVENT_PS_FAULT, 0, PS_FAULT_OCP, NULL);
@@ -375,7 +375,7 @@ int pd_board_checks(void)
 	if ((output_is_enabled() && (vbus_volt > voltages[ovp_idx].ovp)) ||
 	    (fault && (vbus_volt > voltages[ovp_idx].ovp_rec))) {
 		if (!fault) {
-			debug_printf("OVP %d mV\n",
+			debug_printf("OVP %ld mV\n",
 				     ADC_TO_VOLT_MV(vbus_volt));
 			pd_log_event(PD_EVENT_PS_FAULT, 0, PS_FAULT_OVP, NULL);
 		}
@@ -395,7 +395,7 @@ int pd_board_checks(void)
 		discharge_disable();
 		/* enable over-current monitoring */
 		adc_enable_watchdog(ADC_CH_A_SENSE, MAX_CURRENT_FAST, 0);
-		debug_printf("Disch FAIL %d mV\n",
+		debug_printf("Disch FAIL %ld mV\n",
 			     ADC_TO_VOLT_MV(vbus_volt));
 		pd_log_event(PD_EVENT_PS_FAULT, 0, PS_FAULT_DISCH, NULL);
 		fault = FAULT_DISCHARGE;
@@ -533,7 +533,11 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	if (PD_VDO_VID(payload[0]) != USB_VID_GOOGLE || !gfu_mode)
 		return 0;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	debug_printf("%T] VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
+#pragma GCC diagnostic pop
 	*rpayload = payload;
 
 	rsize = pd_custom_flash_vdm(port, cnt, payload);

@@ -304,7 +304,11 @@ static void ccd_state_change_hook(void)
 	if (flags_now == flags_want)
 		return;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("[%T CCD state:");
+#pragma GCC diagnostic pop
 	print_state_flags(CC_USB, flags_want);
 	CPRINTF("]\n");
 

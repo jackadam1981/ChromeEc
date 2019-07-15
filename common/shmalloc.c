@@ -377,10 +377,10 @@ static int command_shmem(int argc, char **argv)
 
 	mutex_unlock(&shmem_lock);
 
-	ccprintf("Total:         %6d\n", allocated_size + free_size);
-	ccprintf("Allocated:     %6d\n", allocated_size);
-	ccprintf("Free:          %6d\n", free_size);
-	ccprintf("Max free buf:  %6d\n", max_free);
+	ccprintf("Total:         %6zu\n", allocated_size + free_size);
+	ccprintf("Allocated:     %6zu\n", allocated_size);
+	ccprintf("Free:          %6zu\n", free_size);
+	ccprintf("Max free buf:  %6zu\n", max_free);
 	ccprintf("Max allocated: %6d\n", max_allocated_size);
 	return EC_SUCCESS;
 }

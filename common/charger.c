@@ -128,7 +128,12 @@ void print_charger_debug(void)
 	/* option */
 	print_item_name("Option:");
 	if (check_print_error(charger_get_option(&d)))
+/* %b is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		ccprintf("%016b (0x%04x)\n", d, d);
+#pragma GCC diagnostic pop
 
 	/* manufacturer id */
 	print_item_name("Man id:");

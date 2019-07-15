@@ -141,7 +141,12 @@ static void vboot_hash_next_chunk(void)
 	if (curr_pos >= data_size) {
 		/* Store the final hash */
 		hash = SHA256_final(&ctx);
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		CPRINTS("hash done %.*h", SHA256_PRINT_SIZE, hash);
+#pragma GCC diagnostic pop
 
 		in_progress = 0;
 
@@ -323,9 +328,14 @@ static int command_hash(int argc, char **argv)
 	char *e;
 
 	if (argc == 1) {
+
 		ccprintf("Offset: 0x%08x\n", data_offset);
 		ccprintf("Size:   0x%08x (%d)\n", data_size, data_size);
 		ccprintf("Digest: ");
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		if (want_abort)
 			ccprintf("(aborting)\n");
 		else if (in_progress)
@@ -334,6 +344,7 @@ static int command_hash(int argc, char **argv)
 			ccprintf("%.*h\n", SHA256_DIGEST_SIZE, hash);
 		else
 			ccprintf("(invalid)\n");
+#pragma GCC diagnostic pop
 
 		return EC_SUCCESS;
 	}

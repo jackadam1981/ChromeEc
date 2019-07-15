@@ -350,7 +350,11 @@ unsigned u2f_apdu_rcv(uint8_t *buf, unsigned in_len, unsigned max_len)
 		apdu.data += 2;
 	}
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("%T/%d U2F APDU ", apdu.len);
+#pragma GCC diagnostic pop
 	/* Is the APDU well-formed including its payload ? */
 	if (in_len < 4 || (apdu.len > in_len - (apdu.data - buf))) {
 		sw = U2F_SW_WRONG_LENGTH;

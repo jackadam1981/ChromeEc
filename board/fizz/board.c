@@ -816,10 +816,14 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	previous_pct = pct;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	if (fan_table[current_level].rpm !=
 		fan_get_rpm_target(FAN_CH(fan)))
 		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
 			fan_table[current_level].rpm);
+#pragma GCC diagnostic pop
 
 	return fan_table[current_level].rpm;
 }

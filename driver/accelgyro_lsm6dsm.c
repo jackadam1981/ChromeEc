@@ -284,7 +284,11 @@ static int fifo_next(struct lsm6dsm_data *private)
 		 * Not expected we are supposed to be called to process FIFO
 		 * data.
 		 */
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		CPRINTF("[%T FIFO empty pattern]\n");
+#pragma GCC diagnostic pop
 		return FIFO_DEV_INVALID;
 	}
 
@@ -478,8 +482,12 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			return ret;
 		last_fifo_read_ts = __hw_clock_source_read();
 		if (fsts.len & (LSM6DSM_FIFO_DATA_OVR | LSM6DSM_FIFO_FULL)) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 			CPRINTF("[%T %s FIFO Overrun: %04x]\n",
 				s->name, fsts.len);
+#pragma GCC diagnostic pop
 		}
 		if (!IS_FSTS_EMPTY(fsts))
 			ret = load_fifo(s, &fsts, &last_fifo_read_ts);
@@ -655,7 +663,11 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 
 	ret = st_raw_read8(s->port, s->addr, LSM6DSM_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
+#pragma GCC diagnostic pop
 		return ret;
 	}
 
@@ -813,7 +825,11 @@ static int init(const struct motion_sensor_t *s)
 
 err_unlock:
 	mutex_unlock(s->mutex);
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("[%T %s: MS Init type:0x%X Error]\n", s->name, s->type);
+#pragma GCC diagnostic pop
 
 	return ret;
 }

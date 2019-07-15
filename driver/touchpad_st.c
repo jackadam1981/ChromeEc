@@ -539,13 +539,15 @@ static int st_tp_read_system_info(int reload)
 	memcpy(&system_info.scr_res_x, ptr, ST_TP_SYSTEM_INFO_PART_2_SIZE);
 
 #define ST_TP_SHOW(attr) CPRINTS(#attr ": %04x", system_info.attr)
+#define ST_TP_SHOW64(attr) CPRINTS(#attr ": %04llx", system_info.attr)
 	ST_TP_SHOW(chip0_id[0]);
 	ST_TP_SHOW(chip0_id[1]);
 	ST_TP_SHOW(chip0_ver);
 	ST_TP_SHOW(scr_tx_len);
 	ST_TP_SHOW(scr_rx_len);
-	ST_TP_SHOW(release_info);
+	ST_TP_SHOW64(release_info);
 #undef ST_TP_SHOW
+#undef ST_TP_SHOW64
 	return ret;
 }
 
@@ -600,6 +602,10 @@ static void dump_memory(void)
 				(uint8_t *)&rx_buf, rx_len);
 
 		for (i = 0; i < rx_len - ST_TP_DUMMY_BYTE; i += 32) {
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 			CPRINTF("%.4h %.4h %.4h %.4h %.4h %.4h %.4h %.4h\n",
 				rx_buf.bytes + i + 4 * 0,
 				rx_buf.bytes + i + 4 * 1,
@@ -609,6 +615,7 @@ static void dump_memory(void)
 				rx_buf.bytes + i + 4 * 5,
 				rx_buf.bytes + i + 4 * 6,
 				rx_buf.bytes + i + 4 * 7);
+#pragma GCC diagnostic pop
 			msleep(8);
 		}
 	}
@@ -1264,7 +1271,12 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		*data_size = 8;
 		st_tp_read_host_buffer_header();
 		memcpy(buf, rx_buf.bytes, *data_size);
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		CPRINTS("header: %.*h", *data_size, buf);
+#pragma GCC diagnostic pop
 		return EC_SUCCESS;
 	case ST_TP_DEBUG_CMD_READ_EVENTS:
 		num_events = st_tp_read_all_events(0);
@@ -1752,7 +1764,7 @@ static int st_tp_usb_set_interface(usb_uint alternate_setting,
 	if (alternate_setting == 1) {
 		if ((system_info.release_info & 0xFF) <
 		    ST_TP_MIN_HEATMAP_VERSION) {
-			CPRINTS("release version %04x doesn't support heatmap",
+			CPRINTS("release version %04llx doesn't support heatmap",
 				system_info.release_info);
 			/* Heatmap mode is not supported in this version. */
 			return -1;

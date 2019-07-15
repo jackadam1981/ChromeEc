@@ -287,6 +287,10 @@ static int print_status(void)
 
 	ccprintf("\n");
 
+/* %b is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 	if (raw_read8(TMP432_STATUS, &value) == EC_SUCCESS)
 		ccprintf("STATUS:  %08b\n", value);
 
@@ -295,6 +299,7 @@ static int print_status(void)
 
 	if (raw_read8(TMP432_CONFIGURATION2_R, &value) == EC_SUCCESS)
 		ccprintf("CONFIG2: %08b\n", value);
+#pragma GCC diagnostic pop
 
 	return EC_SUCCESS;
 }
@@ -345,7 +350,12 @@ static int command_tmp432(int argc, char **argv)
 		rv = raw_read8(offset, &data);
 		if (rv < 0)
 			return rv;
+/* %b is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 		ccprintf("Byte at offset 0x%02x is %08b\n", offset, data);
+#pragma GCC diagnostic pop
 		return rv;
 	}
 

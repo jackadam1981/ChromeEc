@@ -185,7 +185,7 @@ static int check_fp_tpm_seed_not_set(void)
 				    NULL, 0,
 				    &resp, sizeof(resp));
 	if (rv != EC_RES_SUCCESS || resp.status & FP_ENC_STATUS_SEED_SET) {
-		ccprintf("%s:%s(): rv = %d, seed is set: %d\n", __FILE__,
+		ccprintf("%s:%s(): rv = %d, seed is set: %ld\n", __FILE__,
 			 __func__, rv, resp.status & FP_ENC_STATUS_SEED_SET);
 		return -1;
 	}
@@ -221,7 +221,7 @@ static int set_fp_tpm_seed(void)
 				    NULL, 0,
 				    &resp, sizeof(resp));
 	if (rv != EC_RES_SUCCESS || !(resp.status & FP_ENC_STATUS_SEED_SET)) {
-		ccprintf("%s:%s(): rv = %d, seed is set: %d\n", __FILE__,
+		ccprintf("%s:%s(): rv = %d, seed is set: %ld\n", __FILE__,
 			 __func__, rv, resp.status & FP_ENC_STATUS_SEED_SET);
 		return -1;
 	}

@@ -257,12 +257,16 @@ static int gesture_tap_for_battery(void)
 	    (state != state_p ||
 	     (state_cnt % 10000 == 9999))) {
 		/* make sure we don't divide by 0 */
-		if (delta_z_outer == 0 || delta_xy_inner == 0)
+		if (delta_z_outer == 0 || delta_xy_inner == 0) {
 			CPRINTS("tap st %d->%d, error div by 0",
 				state_p, state);
-		else
+		} else {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 			CPRINTF("[%T tap st %d->%d, st_cnt %-3d ",
 				state_p, state, state_cnt);
+#pragma GCC diagnostic pop
 			CPRINTF("Z_in:Z_out %-3d, Z_in:XY_in %-3d ",
 				delta_z_inner / delta_z_outer,
 				delta_z_inner / delta_xy_inner);
@@ -270,6 +274,7 @@ static int gesture_tap_for_battery(void)
 				"dZ_out %-8.3d]\n",
 				delta_z_inner, delta_z_inner_max,
 				delta_z_outer);
+		}
 	}
 
 	return ret;

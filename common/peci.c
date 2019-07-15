@@ -140,7 +140,12 @@ static int peci_cmd(int argc, char **argv)
 		ccprintf("PECI transaction error\n");
 		return EC_ERROR_UNKNOWN;
 	}
+/* %h is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wformat-extra-args"
 	ccprintf("PECI read data: %.*h\n", peci.r_len, r_buf);
+#pragma GCC diagnostic pop
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(peci, peci_cmd,

@@ -150,7 +150,11 @@ static void print_state(const uint8_t *state, const char *msg)
 {
 	int c;
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("[%T KB %s:", msg);
+#pragma GCC diagnostic pop
 	for (c = 0; c < keyboard_cols; c++) {
 		if (state[c])
 			CPRINTF(" %02x", state[c]);

@@ -2474,7 +2474,7 @@ static void pd_partner_port_reset(int port)
 	pd_update_saved_port_flags(port, PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
 
 	/* Provide Rp for 200 msec. or until we no longer have VBUS. */
-	CPRINTF("C%d Apply Rp!\n");
+	CPRINTF("C%d Apply Rp!\n", port);
 	cflush();
 	tcpm_set_cc(port, TYPEC_CC_RP);
 	timeout = get_time().val + 200 * MSEC;
@@ -2881,7 +2881,7 @@ void pd_task(void *u)
 		struct ec_response_pd_chip_info_v1 *info;
 
 		if (tcpm_get_chip_info(port, 0, &info) == EC_SUCCESS) {
-			CPRINTS("TCPC p%d VID:0x%x PID:0x%x DID:0x%x FWV:0x%lx",
+			CPRINTS("TCPC p%d VID:0x%x PID:0x%x DID:0x%x FWV:0x%" PRIx64,
 				port, info->vendor_id, info->product_id,
 				info->device_id, info->fw_version_number);
 		}

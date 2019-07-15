@@ -123,6 +123,9 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 
 	ret = st_raw_read8(s->port, s->addr, LIS2DH_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
 		return ret;
 	}
@@ -156,6 +159,9 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	ret = st_raw_read_n(s->port, s->addr, LIS2DH_OUT_X_L_ADDR, raw,
 			 OUT_XYZ_SIZE);
 	if (ret != EC_SUCCESS) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		CPRINTF("[%T %s type:0x%X RD XYZ Error]",
 			s->name, s->type);
 		return ret;
@@ -241,7 +247,11 @@ static int init(const struct motion_sensor_t *s)
 
 err_unlock:
 	mutex_unlock(s->mutex);
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	CPRINTF("[%T %s: MS Init type:0x%X Error]\n", s->name, s->type);
+#pragma GCC diagnostic pop
 
 	return ret;
 }

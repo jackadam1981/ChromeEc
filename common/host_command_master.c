@@ -84,6 +84,9 @@ static int pd_host_command_internal(int command, int version,
 			&req_buf[0], outsize + sizeof(rq) + 1, &resp_buf[0],
 			2, I2C_XFER_START);
 	i2c_set_timeout(I2C_PORT_PD_MCU, 0);
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 	if (ret) {
 		i2c_lock(I2C_PORT_PD_MCU, 0);
 		CPRINTF("[%T i2c transaction 1 failed: %d]\n", ret);
@@ -155,6 +158,7 @@ static int pd_host_command_internal(int command, int version,
 			"%d]\n", command, sum);
 		return -EC_RES_INVALID_CHECKSUM;
 	}
+#pragma GCC diagnostic pop
 
 	/* Return output buffer size */
 	return resp_len;

@@ -955,8 +955,8 @@ test_export_static enum ec_error_list compact_nvmem(void)
 	if (final_delimiter_needed)
 		add_final_delimiter();
 
-	CPRINTS("Compaction done, went from %d to %d bytes", before,
-		total_used_size());
+	CPRINTS("Compaction done, went from %d to %d bytes", (int)before,
+		(int)total_used_size());
 	return rv;
 }
 
@@ -1510,7 +1510,7 @@ enum ec_error_list new_nvmem_migrate(unsigned int act_partition)
 		/* Never returns. */
 		report_no_payload_failure(NVMEMF_MIGRATION_FAILURE);
 
-	CPRINTS("Migration success, used %d bytes of flash",
+	CPRINTS("Migration success, used %zd bytes of flash",
 		total_used_size());
 
 	/*

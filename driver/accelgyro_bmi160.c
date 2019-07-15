@@ -928,7 +928,7 @@ static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 	 */
 	if (beginning == 0x84848484 ||
 			(beginning & 0xdcdcdcdc) == 0x40404040) {
-		CPRINTS("Suspended FIFO: accel ODR/rate: %d/%d: 0x%08x",
+		CPRINTS("Suspended FIFO: accel ODR/rate: %ld/%d: 0x%08x",
 				BASE_ODR(s->config[SENSOR_CONFIG_AP].odr),
 				get_data_rate(s),
 				beginning);
@@ -957,7 +957,7 @@ static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 				state = FIFO_DATA_CONFIG;
 				break;
 			default:
-				CPRINTS("Unknown header: 0x%02x @ %d",
+				CPRINTS("Unknown header: 0x%02x @ %zd",
 						hdr, bp - bmi160_buffer);
 				raw_write8(s->port, s->addr,
 						BMI160_CMD_REG,
@@ -967,14 +967,14 @@ static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 			break;
 		}
 		case FIFO_DATA_SKIP:
-			CPRINTS("@ %d - %d, skipped %d frames",
-					bp - bmi160_buffer, length, *bp);
+			CPRINTS("@ %zd - %d, skipped %d frames",
+				bp - bmi160_buffer, length, *bp);
 			bp++;
 			state = FIFO_HEADER;
 			break;
 		case FIFO_DATA_CONFIG:
-			CPRINTS("@ %d - %d, config change: 0x%02x",
-					bp - bmi160_buffer, length, *bp);
+			CPRINTS("@ %zd - %d, config change: 0x%02x",
+				bp - bmi160_buffer, length, *bp);
 			bp++;
 			state = FIFO_HEADER;
 			break;

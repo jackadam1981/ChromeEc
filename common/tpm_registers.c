@@ -603,6 +603,9 @@ static void tpm_init(void)
 		_plat__SetNvAvail();
 		endorse_result = tpm_endorse();
 
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		ccprintf("[%T Endorsement %s]\n",
 			 (endorse_result == mnf_success) ?
 			 "succeeded" : "failed");
@@ -614,6 +617,7 @@ static void tpm_init(void)
 				 underrun_char);
 			sps_tx_status(underrun_char);
 		}
+#pragma GCC diagnostic pop
 	} else {
 		if (chip_factory_mode())
 			sps_tx_status(underrun_char | mnf_manufactured);

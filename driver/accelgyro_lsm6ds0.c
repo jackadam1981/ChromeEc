@@ -306,7 +306,11 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 	ret = raw_read8(s->port, s->addr, LSM6DS0_STATUS_REG, &tmp);
 
 	if (ret != EC_SUCCESS) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
+#pragma GCC diagnostic pop
 		return ret;
 	}
 
@@ -346,8 +350,12 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	ret = i2c_read_block(s->port, s->addr, xyz_reg, raw, 6);
 
 	if (ret != EC_SUCCESS) {
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 		CPRINTF("[%T %s type:0x%X RD XYZ Error]",
 			s->name, s->type);
+#pragma GCC diagnostic pop
 		return ret;
 	}
 

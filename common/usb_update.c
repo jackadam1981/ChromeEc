@@ -223,7 +223,11 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 
 		switch (subcommand) {
 		case UPDATE_EXTRA_CMD_IMMEDIATE_RESET:
+/* %T is not a standard specifier. Consider removing it. */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat"
 			CPRINTF("[%T Rebooting!]\n\n\n");
+#pragma GCC diagnostic pop
 			cflush();
 			system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
 			/* Unreachable, unless something bad happens. */
