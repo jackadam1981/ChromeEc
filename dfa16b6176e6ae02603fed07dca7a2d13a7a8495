@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f14e226_b5bfc05e",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "we don\u0027t want to use the MUX_PORT_AND_ADDR here",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c1a4ac4_75b81cd8",
+        "filename": "board/chell/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "nice catch! (2 \u003d\u003e 1)",
+      "range": {
+        "startLine": 122,
+        "startChar": 16,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f0a2803_2806175d",
+        "filename": "board/chell/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "let\u0027s not introduce the MUX_PORT_AND_ADDER here",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8daf7c7a_a15643a7",
+        "filename": "board/elm/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "Much better having these defines. Thanks!",
+      "range": {
+        "startLine": 470,
+        "startChar": 23,
+        "endLine": 470,
+        "endChar": 45
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcd72e3d_a3227eb5",
+        "filename": "board/oak/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "Here too\n\n(I will stop commentting on them from now on)",
+      "range": {
+        "startLine": 179,
+        "startChar": 15,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9080f766_3e2e536d",
+        "filename": "driver/accel_bma2x2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "0x0B\n\n?\n\nOr what the existing code wrong?",
+      "range": {
+        "startLine": 26,
+        "startChar": 49,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30463e31_e3a9c9ac",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "you translated this correctly, and I am not asking you to change it here. This is bonkers",
+      "range": {
+        "startLine": 558,
+        "startChar": 4,
+        "endLine": 561,
+        "endChar": 10
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "690696b2_37066c8c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3997,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "we don\u0027t want to change this. It is an ABI change between two version of firmware. We still need this to be BIT(15)\n\nAlso ec_command.h shouldn\u0027t depend on defines in other parts of the codebase because copies of this are using the kernel and coreboot\n\nI think this flag just won\u0027t get unified and the addr_flags just won\u0027t support SPI or BIG_ENDIAN passed between firmware/kernel. Let\u0027s say they only deal in __7b not __7bf",
+      "range": {
+        "startLine": 3997,
+        "startChar": 25,
+        "endLine": 3997,
+        "endChar": 46
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8963cfe5_235cf0c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 4011,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-15T22:09:53Z",
+      "side": 1,
+      "message": "clever :) (In a good way)",
+      "range": {
+        "startLine": 4011,
+        "startChar": 11,
+        "endLine": 4011,
+        "endChar": 26
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
