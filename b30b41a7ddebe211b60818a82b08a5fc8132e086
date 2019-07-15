@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3967cc61_50817935",
+        "filename": "chip/max32660/gpio_chip.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2019-07-15T20:25:30Z",
+      "side": 1,
+      "message": "As en2 does not exist for this chip, please remove this reference, as well as any others.",
+      "revId": "b30b41a7ddebe211b60818a82b08a5fc8132e086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
