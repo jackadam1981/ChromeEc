@@ -33,6 +33,18 @@ void __hw_clock_event_clear(void);
  */
 uint32_t __hw_clock_source_read(void);
 
+#ifdef CONFIG_HW_SRC_RAW_READ
+/**
+ * Get the ticks value of the free-running counter used as clock
+ *
+ * The value returned is in ticks.
+ *
+ * @return current counter value in ticks
+ */
+uint32_t __hw_clock_source_raw_read(void);
+#endif
+
+
 /**
  * Override the current value of the hardware counter
  *

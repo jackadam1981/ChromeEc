@@ -2114,6 +2114,9 @@
 /* Use a hardware specific udelay(). */
 #undef CONFIG_HW_SPECIFIC_UDELAY
 
+/* Read ticks directly from the TIMELS_SOURCE register. */
+#undef CONFIG_HW_SRC_RAW_READ
+
 /*****************************************************************************/
 /* I2C configuration */
 

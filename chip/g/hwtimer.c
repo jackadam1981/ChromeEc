@@ -103,6 +103,17 @@ void __hw_clock_event_irq(void)
 }
 DECLARE_IRQ(GC_IRQNUM_TIMELS0_TIMINT1, __hw_clock_event_irq, 1);
 
+#ifdef CONFIG_HW_SRC_RAW_READ
+uint32_t __hw_clock_source_raw_read(void)
+{
+	/*
+	 * Return the current time in ticks. Since the counter counts down,
+	 * we have to invert the value.
+	 */
+	return TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE));
+}
+#endif
+
 uint32_t __hw_clock_source_read(void)
 {
 	/*
