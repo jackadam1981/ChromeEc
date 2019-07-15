@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "ece3bec1_22782f13",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-15T22:04:37Z",
+      "side": 1,
+      "message": "I would prefer if they\u0027re kept close together.\n\nMoving it to a function is probably fine for timing, assuming the time to call that function is constant (not some scheduling delay). But it would introduce a risk of future refactoring that might break that requirement. Keeping them close together, in the same function, makes it more obvious that the 2 operations are important to run almost at the same time.\n\nBesides that, there\u0027s also the interrupts to consider. Interrupts need to be disabled between __hw_clock_source_read and gpio_set_level. Disabling interrupts across a function call is probably not great practice.",
+      "parentUuid": "dbc0aeed_e8cb9b14",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "47423910c9cdcb898f6790a3d7194c605feb3cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dcb5f3e_706516fe",
         "filename": "include/config.h",
         "patchSetId": 2
