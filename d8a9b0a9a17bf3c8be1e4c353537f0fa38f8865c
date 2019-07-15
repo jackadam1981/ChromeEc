@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a15a5a94_86c8af9a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4600,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-15T23:33:30Z",
+      "side": 1,
+      "message": "This force the kernel to be recompile to support the new EC: and older image with a newer EC would break. Is it acceptable?",
+      "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
