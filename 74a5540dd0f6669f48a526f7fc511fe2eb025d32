@@ -46,6 +46,30 @@
       "revId": "74a5540dd0f6669f48a526f7fc511fe2eb025d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4cbed30_55876193",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1323691
+      },
+      "writtenOn": "2019-07-15T22:45:11Z",
+      "side": 1,
+      "message": "Ew... I completely missed that this isn\u0027t in private-cr51.\n\nI\u0027m thinking we should just bail on this. We don\u0027t need this change, IMO.",
+      "parentUuid": "48b5911b_f8b5f2a2",
+      "range": {
+        "startLine": 107,
+        "startChar": 9,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "74a5540dd0f6669f48a526f7fc511fe2eb025d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
