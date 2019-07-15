@@ -22,6 +22,30 @@
       "revId": "899f95b6037a559fcd7d661dbc5cff7870b3d343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd849b4_07b004a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-15T22:40:38Z",
+      "side": 1,
+      "message": "So looking back at the implementation of battery_check_present_status(), it looks like battery_init() and battery_status() would still fail even if we return battery_hw_present() as true always. Is that your observation as well? i.e. if you disconnect battery, does it fail in battery_init()?",
+      "parentUuid": "25b968d3_850a7bb1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "899f95b6037a559fcd7d661dbc5cff7870b3d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
