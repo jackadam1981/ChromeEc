@@ -176,11 +176,13 @@
 /* Thermal */
 #define CONFIG_TEMP_SENSOR_SB_TSI
 
+#define CONFIG_ACCEL_FIFO
+
 /* FIFO size is a power of 2. */
-#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_SIZE 256
 
 /* Depends on how fast the AP boots and typical ODRs. */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 #define USB_PD_PORT_ANX74XX	0
 #define USB_PD_PORT_PS8751	1

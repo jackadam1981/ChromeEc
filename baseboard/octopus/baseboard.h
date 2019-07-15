@@ -276,10 +276,11 @@
  * and the lid sensor is polled real-time (in forced mode).
  */
 #define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCEL_FIFO
 /* Power of 2 - Too large of a fifo causes too much timestamp jitter */
-#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_SIZE 256
 /* Depends on how fast the AP boots and typical ODRs */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 #endif /* VARIANT_OCTOPUS_NO_SENSORS */
 
 /*

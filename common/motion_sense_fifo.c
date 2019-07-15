@@ -25,7 +25,7 @@ int wake_up_needed;
 int fifo_queue_count;
 int fifo_int_enabled;
 
-struct queue motion_sense_fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO,
+struct queue motion_sense_fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO_SIZE,
 		struct ec_response_motion_sensor_data);
 int motion_sense_fifo_lost;
 
@@ -397,4 +397,10 @@ void motion_sense_get_fifo_info(
 	fifo_info->total_lost = motion_sense_fifo_lost;
 	mutex_unlock(&g_sensor_mutex);
 	fifo_info->timestamp = mkbp_last_event_time;
+}
+
+inline int motion_sense_fifo_is_wake_up_needed(void)
+{
+	return queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
+			wake_up_needed;
 }

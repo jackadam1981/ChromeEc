@@ -99,8 +99,9 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
 
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_SIZE 256
 #define CONFIG_ACCEL_FIFO_THRES 10
 
 /* USB PD config */
