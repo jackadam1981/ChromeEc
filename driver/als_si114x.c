@@ -158,6 +158,10 @@ static int si114x_read_results(struct motion_sensor_t *s, int nb)
 		 * TODO: get time at a more accurate spot.
 		 * Like in si114x_interrupt
 		 */
+	} else {
+		mutex_lock(s->mutex);
+		memcpy(s->xyz, s->raw_xyz, sizeof(s->xyz));
+		mutex_unlock(s->mutex);
 	}
 	/* else... We need to copy raw_xyz into xyz with mutex */
 	return EC_SUCCESS;
