@@ -22,6 +22,30 @@
       "revId": "b85587641c4e8e758a44c4b1d0402fde66a267c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a7fa00_659f6fdb",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-15T17:47:10Z",
+      "side": 1,
+      "message": "Ack. I think this is needed in case chipset_in_state() doesn\u0027t reflect the intention of the AP yet. i.e. host is *preparing* to suspend (and is technically still in S0), but an event has just come in.",
+      "parentUuid": "9656b3ec_d96d4e9d",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 45
+      },
+      "revId": "b85587641c4e8e758a44c4b1d0402fde66a267c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
