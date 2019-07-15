@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "30c8c5b3_ac5200c9",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-15T17:53:32Z",
+      "side": 1,
+      "message": "We found that presenting Rp 3.0A on initial connections before Vconn was sourced could trigger CCD mode, causing failures to communicate with DP dongles that present Ra.  Instead, we wait to present Rp 3.0A after the connection is established and Vconn is being sourced on the old stack.\n\nYou can see b/124531988 and b/123063171 for more details.",
+      "parentUuid": "bccd7f11_eedf4f25",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afe851a4_88082fee",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -566,6 +590,30 @@
     },
     {
       "key": {
+        "uuid": "b09c6ed6_14822780",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-15T17:53:32Z",
+      "side": 1,
+      "message": "The enum mixing seems dangerous, particularly for a global which is carried between the various states. Could a static track the cc voltage debounce, since it\u0027s only needed in this function?",
+      "parentUuid": "4c66ca38_a1e22d26",
+      "range": {
+        "startLine": 1062,
+        "startChar": 3,
+        "endLine": 1062,
+        "endChar": 36
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0a42f10_5e2e0dcc",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -601,6 +649,30 @@
       "side": 1,
       "message": "The super state of unattached.snk, tc_cc_rd, disables VCONN if it\u0027s ON.",
       "parentUuid": "c0a42f10_5e2e0dcc",
+      "range": {
+        "startLine": 1088,
+        "startChar": 19,
+        "endLine": 1088,
+        "endChar": 40
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971a9622_33c27a0b",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-15T17:53:32Z",
+      "side": 1,
+      "message": "This seems a bit inconsistent with tc_attached_src_exit which turns off its own Vconn.  Generally, do we expect super states to always handle Vconn transitions?",
+      "parentUuid": "1fccb115_6327c5ef",
       "range": {
         "startLine": 1088,
         "startChar": 19,
@@ -707,6 +779,30 @@
     },
     {
       "key": {
+        "uuid": "a64591c6_d197ce1d",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-15T17:53:32Z",
+      "side": 1,
+      "message": "If it\u0027s tested, then it should be good.  I\u0027m uncertain if hatch is wired for audio accessories; I know octopus was not since we had a dedicated headphone jack.",
+      "parentUuid": "dfaff978_8252c57a",
+      "range": {
+        "startLine": 1169,
+        "startChar": 1,
+        "endLine": 1169,
+        "endChar": 18
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5449a5f9_fff0c231",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -789,6 +885,30 @@
       "side": 1,
       "message": "Unless anyone else can make a better suggestion, let\u0027s mimic the original state machine and stay in attached.src if VBUS fails to turn ON.",
       "parentUuid": "83738292_52dce4b9",
+      "range": {
+        "startLine": 1490,
+        "startChar": 2,
+        "endLine": 1490,
+        "endChar": 41
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44811ab6_2e90b0f3",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-15T17:53:32Z",
+      "side": 1,
+      "message": "It looks like the old stack hangs out in PD_STATE_SRC_DISCONNECTED_DEBOUNCE in this scenario, but since the spec doesn\u0027t seem to address what to do we could just leave this and change it later if we find issues.",
+      "parentUuid": "fa91eb8f_df083454",
       "range": {
         "startLine": 1490,
         "startChar": 2,
