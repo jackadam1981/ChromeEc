@@ -44,11 +44,11 @@
  * BOARD_*, CHIP_*, and CHIP_FAMILY_*.
  */
 
-/*
- * Add support for sensor FIFO:
- * define the size of the global fifo, must be a power of 2.
- */
+/* Add support for sensor FIFO */
 #undef CONFIG_ACCEL_FIFO
+
+/* define the size of the global fifo, must be a power of 2. */
+#undef CONFIG_ACCEL_FIFO_SIZE
 
 /* The amount of free entries that trigger an interrupt to the AP. */
 #undef CONFIG_ACCEL_FIFO_THRES
