@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c15d4474_ca716950",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-15T23:37:50Z",
+      "side": 1,
+      "message": "Just a final thought: If you name this CONFIG_MKBP_WAKE_USE_HOST_EVENT, then you don\u0027t need to add check for both CONFIG_MKBP_USE_GPIO and CONFIG_MKBP_USE_GPIO_AND_HOST_EVENT in all the places. For x86 boards you can also auto define CONFIG_MKBP_WAKE_USE_HOST_EVENT if CONFIG_MKBP_USE_GPIO is set since we know that for x86 it is required to set the host event to cause a wake.\n\nJust trying to avoid having too many options for MKBP_USE since it can get confusing when adding new boards. I will leave it upto you to make the final call.",
+      "range": {
+        "startLine": 2686,
+        "startChar": 7,
+        "endLine": 2686,
+        "endChar": 42
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
