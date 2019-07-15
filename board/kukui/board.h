@@ -119,9 +119,11 @@
 #define CONFIG_TABLET_MODE_SWITCH
 #define GPIO_LID_OPEN GPIO_HALL_INT_L
 
+#ifdef SECTION_IS_RW
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 256
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#endif /* SECTION_IS_RW */
 
 /* USB PD config */
 #define CONFIG_CHARGE_MANAGER
