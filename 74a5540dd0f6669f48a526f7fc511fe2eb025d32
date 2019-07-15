@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c62721c_358244e2",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1210905
+      },
+      "writtenOn": "2019-07-15T20:31:52Z",
+      "side": 1,
+      "message": "I think in this CL, we need to wrap/modify the code that is writing to the timer count register, timer.c(process_timer()).\n\nI suspect doing this will snowball a bit. WDET?",
+      "range": {
+        "startLine": 107,
+        "startChar": 9,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "74a5540dd0f6669f48a526f7fc511fe2eb025d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
