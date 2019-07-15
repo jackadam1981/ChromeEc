@@ -19,12 +19,14 @@
 	do { \
 		ccprintf("Running %s...", #n); \
 		cflush(); \
+		before_test(); \
 		if (n() == EC_SUCCESS) { \
 			ccputs("OK\n"); \
 		} else { \
 			ccputs("Fail\n"); \
 			__test_error_count++; \
 		} \
+		after_test(); \
 	} while (0)
 
 #define TEST_ASSERT(n) \
@@ -35,6 +37,23 @@
 			return EC_ERROR_UNKNOWN; \
 		} \
 	} while (0)
+
+#define TEST_OPERATOR(a, b, op, fmt) \
+	do { \
+		if (!((a) op (b))) { \
+			ccprintf("%d: ASSERSION failed: %s " #op " %s\n", \
+				 __LINE__, #a, #b); \
+			ccprintf("\t\tEVAL: " #fmt " " #op " " #fmt "\n", \
+				 a, b); \
+			task_dump_trace(); \
+			return EC_ERROR_UNKNOWN; \
+		} \
+	} while (0)
+
+#define TEST_EQUAL(a, b, fmt) TEST_OPERATOR(a, b, ==, fmt)
+#define TEST_NEQUAL(a, b, fmt) TEST_OPERATOR(a, b, !=, fmt)
+#define TEST_HASBITS(a, bits) TEST_OPERATOR(a & bits, bits, ==, %u)
+#define TEST_NHASBITS(a, bits) TEST_OPERATOR(a & bits, 0, ==, %u)
 
 #define __ABS(n) ((n) > 0 ? (n) : -(n))
 
@@ -106,6 +125,12 @@ void register_test_end_hook(void);
  * all _init() calls.
  */
 void test_init(void);
+
+/** Called before each test. Used for initialization. */
+void before_test(void);
+
+/** Called after each test. Used to clean up. */
+void after_test(void);
 
 /* Test entry point */
 void run_test(void);
