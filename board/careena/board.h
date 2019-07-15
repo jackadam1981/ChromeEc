@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_GRUNT_NO_SENSORS
 #include "baseboard.h"
 
 /*

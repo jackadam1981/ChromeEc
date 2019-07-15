@@ -13,6 +13,7 @@
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "motion_sense_fifo.h"
 #include "task.h"
 
 #define CPRINTS(fmt, args...) cprints(CC_ACCEL, "%s "fmt, __func__, ## args)
