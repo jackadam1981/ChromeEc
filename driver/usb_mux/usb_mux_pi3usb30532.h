@@ -5,8 +5,8 @@
  * Pericom PI3USB30532 USB port switch driver.
  */
 
-#ifndef __CROS_EC_PI3USB30532_H
-#define __CROS_EC_PI3USB30532_H
+#ifndef __CROS_EC_USB_MUX_PI3USB30532_H
+#define __CROS_EC_USB_MUX_PI3USB30532_H
 
 #include "usb_pd.h"
 
@@ -62,4 +62,4 @@
 #define PI3USB30532_MODE_DP_USB_SWAP (PI3USB30532_MODE_DP_USB | \
 				      PI3USB30532_BIT_SWAP)
 
-#endif /* __CROS_EC_PI3USB30532_H */
+#endif /* __CROS_EC_USB_MUX_PI3USB30532_H */

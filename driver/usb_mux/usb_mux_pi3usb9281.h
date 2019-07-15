@@ -5,8 +5,8 @@
  * Pericom PI3USB9281 USB port switch.
  */
 
-#ifndef __CROS_EC_PI3USB9281_H
-#define __CROS_EC_PI3USB9281_H
+#ifndef __CROS_EC_USB_MUX_PI3USB9281_H
+#define __CROS_EC_USB_MUX_PI3USB9281_H
 
 #define PI3USB9281_REG_DEV_ID       0x01
 #define PI3USB9281_REG_CONTROL      0x02
@@ -79,4 +79,4 @@ int pi3usb9281_enable_interrupts(int port);
 /* Get the device type */
 int pi3usb9281_get_device_type(int port);
 
-#endif /* __CROS_EC_PI3USB9281_H */
+#endif /* __CROS_EC_USB_MUX_PI3USB9281_H */
