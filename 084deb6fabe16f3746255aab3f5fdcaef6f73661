@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c2e1c43b_68ac2c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0956f3_b7688a2b",
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22852b2e_943c4bb1",
         "filename": "common/spi_nor.c",
         "patchSetId": 2
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "cfdd195b_30264c88",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4c07f5_05a666cc",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70be7d2a_c2e333ef",
         "filename": "common/spi_nor.c",
         "patchSetId": 2
@@ -86,6 +128,30 @@
       "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e59c624_529d6b39",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Ack. I guess this code is just there in case write is ever disabled in future code.",
+      "parentUuid": "70be7d2a_c2e333ef",
+      "range": {
+        "startLine": 72,
+        "startChar": 15,
+        "endLine": 72,
+        "endChar": 42
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "991095e5_7607630f",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac5d7ee_f168ae29",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f33f4a06_ef9877c0",
         "filename": "common/spi_nor.c",
         "patchSetId": 2
@@ -132,6 +222,30 @@
       "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5826e9_2f8fa8b9",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f33f4a06_ef9877c0",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 20
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "28ecb531_8a697792",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc16ecc0_9e98138b",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810a7c43_c28aab27",
         "filename": "common/spi_nor.c",
         "patchSetId": 2
@@ -178,6 +316,30 @@
       "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874ec1ee_11cff63a",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810a7c43_c28aab27",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "af87f7af_979e706b",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648c04a0_0c7fb184",
+      "range": {
+        "startLine": 138,
+        "startChar": 9,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d993fdf_9e465090",
         "filename": "common/spi_nor.c",
         "patchSetId": 2
@@ -224,6 +410,30 @@
       "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d74d63_a463b4a8",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-15T22:01:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d993fdf_9e465090",
+      "range": {
+        "startLine": 145,
+        "startChar": 39,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "084deb6fabe16f3746255aab3f5fdcaef6f73661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
