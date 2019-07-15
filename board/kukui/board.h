@@ -17,6 +17,10 @@
 #define VARIANT_KUKUI_CHARGER_MT6370
 #define VARIANT_KUKUI_DP_MUX_GPIO
 
+#ifndef SECTION_IS_RW
+#define VARIANT_KUKUI_NO_SENSORS
+#endif /* SECTION_IS_RW */
+
 #include "baseboard.h"
 
 #define CONFIG_VOLUME_BUTTONS
@@ -61,6 +65,105 @@
 #define CONFIG_SYNC_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 #endif /* SECTION_IS_RW */
+
+/* To be able to indicate the device is in tablet mode. */
+#define CONFIG_TABLET_MODE
+#define CONFIG_TABLET_MODE_SWITCH
+#define GPIO_LID_OPEN GPIO_HALL_INT_L
+
+#ifdef SECTION_IS_RW
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#endif /* SECTION_IS_RW */
+
+/* USB PD config */
+#define CONFIG_CHARGE_MANAGER
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_LOGGING
+#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_TCPM_MT6370
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_PD_5V_EN_CUSTOM
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+#define CONFIG_USB_PD_COMM_LOCKED
+
+#define CONFIG_BATTERY_CUT_OFF
+#define CONFIG_BATTERY_PRESENT_CUSTOM
+#define CONFIG_BATTERY_REVIVE_DISCONNECT
+#ifdef BOARD_KRANE
+#define CONFIG_BATTERY_MM8013
+#define CONFIG_CHARGER_MT6370_BACKLIGHT
+#else
+#define CONFIG_BATTERY_MAX17055
+#define CONFIG_BATTERY_MAX17055_ALERT
+#endif
+
+/* Battery parameters for max17055 ModelGauge m5 algorithm. */
+#define BATTERY_MAX17055_RSENSE             5     /* m-ohm */
+#ifdef BOARD_KRANE
+#define BATTERY_DESIRED_CHARGING_CURRENT    3500  /* mA */
+#else
+#define BATTERY_DESIRED_CHARGING_CURRENT    2000  /* mA */
+#endif
+
+#define PD_OPERATING_POWER_MW 15000
+#define PD_MAX_POWER_MW       ((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
+#define PD_MAX_CURRENT_MA     3000
+
+/*
+ * The Maximum input voltage is 13.5V, need another 5% tolerance.
+ * 12.85V * 1.05 = 13.5V
+ */
+#define PD_MAX_VOLTAGE_MV     12850
+
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000  /* us */
+#define PD_VCONN_SWAP_DELAY 5000 /* us */
+
+/* Timer selection */
+#define TIM_CLOCK32  2
+#define TIM_WATCHDOG 7
+
+/* 48 MHz SYSCLK clock frequency */
+#define CPU_CLOCK 48000000
+
+/* Optional for testing */
+#undef  CONFIG_PECI
+#undef  CONFIG_PSTORE
+
+/* Modules we want to exclude */
+#undef CONFIG_CMD_BATTFAKE
+#undef CONFIG_CMD_FLASH
+#undef CONFIG_CMD_HASH
+#undef CONFIG_CMD_MD
+#undef CONFIG_CMD_POWERINDEBUG
+#undef CONFIG_CMD_TIMERINFO
+
+#ifdef SECTION_IS_RO
+#undef CONFIG_CMD_APTHROTTLE
+#undef CONFIG_CMD_MMAPINFO
+#undef CONFIG_CMD_PWR_AVG
+#undef CONFIG_CMD_REGULATOR
+#undef CONFIG_CMD_RW
+#undef CONFIG_CMD_SHMEM
+#undef CONFIG_CMD_SLEEPMASK
+#undef CONFIG_CMD_SLEEPMASK_SET
+#undef CONFIG_CMD_SYSLOCK
+#undef CONFIG_HOSTCMD_FLASHPD
+#undef CONFIG_HOSTCMD_RWHASHPD
+#endif
+
+#define CONFIG_TASK_PROFILING
 
 /* I2C ports */
 #define I2C_PORT_CHARGER  0
