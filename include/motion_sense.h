@@ -229,32 +229,6 @@ extern unsigned int motion_min_interval;
  */
 #define MOTION_SENSE_HOOK_PRIO (HOOK_PRIO_DEFAULT)
 
-#ifdef CONFIG_ACCEL_FIFO
-extern struct queue motion_sense_fifo;
-
-/**
- * Stage data to the fifo, including a timestamp. This data will not be
- * available to the AP until motion_sense_fifo_commit_data is called.
- *
- * @param data data to insert in the FIFO
- * @param sensor sensor the data comes from
- * @param valid_data data should be copied into the public sensor vector
- * @param time accurate time (ideally measured in an interrupt) the sample
- *             was taken at
- */
-void motion_sense_fifo_stage_data(struct ec_response_motion_sensor_data *data,
-				  struct motion_sensor_t *sensor,
-				  int valid_data,
-				  uint32_t time);
-
-/**
- * Commits all staged data to the fifo. If multiple readings were placed using
- * the same timestamps, they will be spread out.
- */
-void motion_sense_fifo_commit_data(void);
-
-#endif
-
 /**
  * Take actions at end of sensor initialization:
  * - print init done status to console,
