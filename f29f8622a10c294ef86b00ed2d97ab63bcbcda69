@@ -214,6 +214,30 @@
       "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c265f3_1406e880",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-15T17:42:18Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t know that about ACPI mode. Because that configuration needs to be done anyways by the AP, I guess it\u0027s fine to keep the defaults there as well.\n\n\u003e So, going back to the original question: Do you think adding this new event to MKBP would be the right thing? I don\u0027t foresee any problem other than having to maintain another config and mask on the EC.\n\nYeah, I think keeping it as an MKBP event should be fine. It\u0027ll be easier to backport and MKBP needed an event mask anyways.",
+      "parentUuid": "518114d5_4eca6046",
+      "range": {
+        "startLine": 3475,
+        "startChar": 1,
+        "endLine": 3475,
+        "endChar": 40
+      },
+      "revId": "f29f8622a10c294ef86b00ed2d97ab63bcbcda69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
