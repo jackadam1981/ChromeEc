@@ -46,6 +46,30 @@
       "revId": "6cf446b9134b08ed652daec921944f6696f04ca7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdce2753_9d712ed7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4587,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-15T23:37:00Z",
+      "side": 0,
+      "message": "Yes, all enumerations in this file. (it does not matter for enumerations that are internal to the EC only).",
+      "parentUuid": "6b280569_95300398",
+      "range": {
+        "startLine": 4587,
+        "startChar": 26,
+        "endLine": 4587,
+        "endChar": 29
+      },
+      "revId": "6cf446b9134b08ed652daec921944f6696f04ca7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
