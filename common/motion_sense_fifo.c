@@ -405,3 +405,8 @@ static int motion_sense_get_next_event(uint8_t *out)
 
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SENSOR_FIFO, motion_sense_get_next_event);
 
+inline int motion_sense_fifo_is_wake_up_needed(void)
+{
+	return queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
+			wake_up_needed;
+}
