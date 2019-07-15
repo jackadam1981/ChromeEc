@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f50eb46e_bf9a9d50",
+        "filename": "baseboard/kukui/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-07-15T06:08:11Z",
+      "side": 1,
+      "message": "Hi Ting Shen, there would be $(BASEBOARD) not be $(BOARD).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "b34b2dc6ae778d77f0499f0e990b4427b649e68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
