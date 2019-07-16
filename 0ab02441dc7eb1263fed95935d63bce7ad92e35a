@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "274a9c41_a42b311c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T23:27:22Z",
+      "side": 1,
+      "message": "Can you make it return const char * so that we can do \n\n  CPRINTS(\"CCD state: %s\", print_state_flags(flags_want));\n\n?",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b01b0b1_c8b7b35c",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T23:27:22Z",
+      "side": 1,
+      "message": "Can we do:\n\n  rv \u003d cprintf(channel, \"[%.6lu \", get_time().val);\n\n?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3fde805_095595e5",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T23:27:22Z",
+      "side": 1,
+      "message": "If we get rid of CONFIG_CONSOLE_VERBOSE, do we still need this function?\n\nEven with it we can set precision statically:\n\n  cprintf(channel, \"[%.*lu \",\n          _TIMESTAMP_PRECISION_, get_time().val/_TIMESTAMP_DENOM_);",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95201111_1ba807f0",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T23:27:22Z",
+      "side": 1,
+      "message": "I think we can get rid of this. Nobody is undefining it.",
+      "range": {
+        "startLine": 129,
+        "startChar": 7,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ebf9452_74287130",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T23:27:22Z",
+      "side": 1,
+      "message": "Can you do something like:\n\n  CPRINTF(\"[%.6ld HC Suppressed:\", get_time().val);\n\n?",
+      "range": {
+        "startLine": 604,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 28
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
