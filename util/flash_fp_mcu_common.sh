@@ -46,6 +46,32 @@ get_spiid() {
   exit 1
 }
 
+get_platform_name() {
+  # "declare -l" converts to lowercase and limits scope to function
+  # https://www.tldp.org/LDP/abs/html/declareref.html
+  declare -l platform_name="$(cros_config /identity platform-name)"
+
+  # TODO(https://crbug.com/984629): cros_config should handle this for us based
+  # on /etc/lsb-release
+  if [[ "${platform_name}" == "" ]]; then
+    # nocturne does not have unibuild
+    platform_name="$(cat /etc/lsb-release | grep CHROMEOS_RELEASE_BOARD | sed -E 's/^CHROMEOS_RELEASE_BOARD=(.*)$/\1/')"
+    if [[ "${platform_name}" != "nocturne" ]]; then
+      exit 1
+    fi
+  fi
+
+  echo "${platform_name}"
+}
+
+check_gpio_chip_exists() {
+  local gpiochip="$1"
+  if [[ ! -e "/sys/class/gpio/${gpiochip}" ]]; then
+    echo "Cannot find GPIO chip: ${gpiochip}"
+    exit 1
+  fi
+}
+
 flash_fp_mcu_stm32() {
   local spidev="${1}"
   local gpio_nrst="${2}"
