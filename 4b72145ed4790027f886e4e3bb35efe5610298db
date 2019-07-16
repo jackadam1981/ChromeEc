@@ -22,6 +22,30 @@
       "revId": "4b72145ed4790027f886e4e3bb35efe5610298db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6be9bc_772cba21",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T17:22:45Z",
+      "side": 1,
+      "message": "Filed https://crbug.com/984623.",
+      "parentUuid": "123aa28e_66609a4b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "4b72145ed4790027f886e4e3bb35efe5610298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
