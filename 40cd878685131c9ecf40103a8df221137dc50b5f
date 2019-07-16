@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f98eed7_b2d70942",
+        "filename": "include/i2c.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T16:53:33Z",
+      "side": 1,
+      "message": "nit: let\u0027s use just addr_8bit",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "40cd878685131c9ecf40103a8df221137dc50b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

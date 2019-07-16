@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "623eaa23_3ecdcd74",
+        "filename": "driver/accel_bma2x2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T16:53:33Z",
+      "side": 1,
+      "message": "Just confirmed with BMA255 datasheet (page 101) that there are all supposed to be the 7-bit address.",
+      "parentUuid": "5c1cecb1_f6b8ac2b",
+      "range": {
+        "startLine": 26,
+        "startChar": 49,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30463e31_e3a9c9ac",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 18
