@@ -46,6 +46,30 @@
       "revId": "899f95b6037a559fcd7d661dbc5cff7870b3d343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e07f19_a79c62b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2019-07-16T00:40:23Z",
+      "side": 1,
+      "message": "The BATT_PRES is connected to battery disable pin on kohaku(board ID \u003d 1). So the BATT_PRES is always high although battery is attached. i.e battery_hw_present() always returns BP_NO. \nIt means that we have no chance to check battery communication on battery_check_present_status().",
+      "parentUuid": "fbd849b4_07b004a9",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "899f95b6037a559fcd7d661dbc5cff7870b3d343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
