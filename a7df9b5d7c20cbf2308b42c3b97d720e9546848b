@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "d2071249_8eaea76f",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-16T23:52:53Z",
+      "side": 1,
+      "message": "Should this file error out if being compiled without CONFIG_ACCEL_FIFO?",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "560888f8_43c53f5d",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -41,6 +58,52 @@
         "startChar": 0,
         "endLine": 30,
         "endChar": 27
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5876be7e_6f124dd5",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-16T23:52:53Z",
+      "side": 1,
+      "message": "Is this going to conflict with the definition in motion_sense.c?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d72ce6_f93c1872",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-16T23:52:53Z",
+      "side": 1,
+      "message": "I know this is largely a copy-paste, but would it be outlandish of me to ask to rename this to motion_sense_fifo_stage_async_event?\n\nFeel free to do it in a follow-up CL",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 36
       },
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
