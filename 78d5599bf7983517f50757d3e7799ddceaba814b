@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "508216c5_98f2bd69",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-16T00:51:19Z",
+      "side": 1,
+      "message": "Remove the weak symbol so this function can override the one defined in baseboard.",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "78d5599bf7983517f50757d3e7799ddceaba814b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de594423_1b6ea63d",
         "filename": "board/kohaku/battery.c",
         "patchSetId": 1
