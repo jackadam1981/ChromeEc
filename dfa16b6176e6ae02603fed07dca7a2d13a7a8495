@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e834ab21_b24dff16",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "It comes out to the same thing and thought it would show I was converting a __7bf to a port.  I will undo the places that I added it.",
+      "parentUuid": "5f14e226_b5bfc05e",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c1a4ac4_75b81cd8",
         "filename": "board/chell/board.c",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-15T22:09:53Z",
       "side": 1,
       "message": "nice catch! (2 \u003d\u003e 1)",
+      "range": {
+        "startLine": 122,
+        "startChar": 16,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6af79e3_ac8d4406",
+        "filename": "board/chell/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c1a4ac4_75b81cd8",
       "range": {
         "startLine": 122,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bc508470_6acf7499",
+        "filename": "board/chell/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f0a2803_2806175d",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8daf7c7a_a15643a7",
         "filename": "board/elm/board.c",
         "patchSetId": 18
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-15T22:09:53Z",
       "side": 1,
       "message": "Much better having these defines. Thanks!",
+      "range": {
+        "startLine": 470,
+        "startChar": 23,
+        "endLine": 470,
+        "endChar": 45
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11aa0016_22be8034",
+        "filename": "board/elm/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8daf7c7a_a15643a7",
       "range": {
         "startLine": 470,
         "startChar": 23,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a4829bb1_f4aa0c6d",
+        "filename": "board/oak/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcd72e3d_a3227eb5",
+      "range": {
+        "startLine": 179,
+        "startChar": 15,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9080f766_3e2e536d",
         "filename": "driver/accel_bma2x2.h",
         "patchSetId": 18
@@ -128,6 +248,30 @@
       "writtenOn": "2019-07-15T22:09:53Z",
       "side": 1,
       "message": "0x0B\n\n?\n\nOr what the existing code wrong?",
+      "range": {
+        "startLine": 26,
+        "startChar": 49,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1cecb1_f6b8ac2b",
+        "filename": "driver/accel_bma2x2.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Only Addr1 is being used... Since 0x19 is odd, it can not be an 8bit address, so assumed the rest were previously 7bit and only Addr1 got converted to be an 8bit.  Unless you see a reason to believe otherwise, I will leave Addr2-4 as is",
+      "parentUuid": "9080f766_3e2e536d",
       "range": {
         "startLine": 26,
         "startChar": 49,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "2ce83ff9_1fdec48a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30463e31_e3a9c9ac",
+      "range": {
+        "startLine": 558,
+        "startChar": 4,
+        "endLine": 561,
+        "endChar": 10
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "690696b2_37066c8c",
         "filename": "include/ec_commands.h",
         "patchSetId": 18
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "2057fe19_eff95f6a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 3997,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "I will remove the READ flag from the normal I2C, it does not make any sense in the normal situation and I added it to handle EC_COMMANDS.  I will also clean up common/i2c_master.c to pull off the overlapped flag bits by turning it into a __7b and this will be assigned to a __7bf in order to pass this on to the rest of the EC system code",
+      "parentUuid": "690696b2_37066c8c",
+      "range": {
+        "startLine": 3997,
+        "startChar": 25,
+        "endLine": 3997,
+        "endChar": 46
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8963cfe5_235cf0c6",
         "filename": "include/ec_commands.h",
         "patchSetId": 18
@@ -197,6 +389,30 @@
       "writtenOn": "2019-07-15T22:09:53Z",
       "side": 1,
       "message": "clever :) (In a good way)",
+      "range": {
+        "startLine": 4011,
+        "startChar": 11,
+        "endLine": 4011,
+        "endChar": 26
+      },
+      "revId": "dfa16b6176e6ae02603fed07dca7a2d13a7a8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68158655_ceae8bbb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 4011,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T13:43:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8963cfe5_235cf0c6",
       "range": {
         "startLine": 4011,
         "startChar": 11,
