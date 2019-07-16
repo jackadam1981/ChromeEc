@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b96b926a_acd8dc7c",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-16T08:57:55Z",
+      "side": 1,
+      "message": "shouldn\u0027t we move this to a common file?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "b34b2dc6ae778d77f0499f0e990b4427b649e68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e840cb93_c74a783a",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-16T08:57:55Z",
+      "side": 1,
+      "message": "We should keep this in kukui common file",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 10
+      },
+      "revId": "b34b2dc6ae778d77f0499f0e990b4427b649e68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f50eb46e_bf9a9d50",
         "filename": "baseboard/kukui/build.mk",
         "patchSetId": 11
