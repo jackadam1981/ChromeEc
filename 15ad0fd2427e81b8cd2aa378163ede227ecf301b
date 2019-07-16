@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef095d67_5e896ba2",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-16T01:45:43Z",
+      "side": 0,
+      "message": "If you get rid of this, you will be breaking boards with id 0. I think its best to support both BATTER_DYNA and BATTERY_SDI at least for some time until board id 0 is deprecated.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "15ad0fd2427e81b8cd2aa378163ede227ecf301b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
