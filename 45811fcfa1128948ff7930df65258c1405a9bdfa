@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f356fb52_bfec7366",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T20:45:03Z",
+      "side": 1,
+      "message": "Makes sense. I think we should update the config.h description to include that (add a comment there)",
+      "parentUuid": "b9ef102c_d24cf31f",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 44
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cef90622_850eb2ea",
         "filename": "common/mkbp_event.c",
         "patchSetId": 3
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "8e7caae8_ae593010",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T20:45:03Z",
+      "side": 1,
+      "message": "When we make external calls (i.e. host_set_single_event in this case) when interrupts are disabled, we cannot guarantee that the implementation does not call into task scheduling (and deschedules itself in a some code path).\n\nIf we deschedule our task while interrupts are off, then we are in a scheduling deadlock.\n\nThis happened with ISH and mkbp_set_host_active_via_heci\n\nBasically my new rule for disabling interrupts is to ensure that the enabling/disabling code reasonably controls all code paths in a way that won\u0027t call into task scheduling.",
+      "parentUuid": "fee6e5da_e2b7bacd",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c15d4474_ca716950",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "I thought in the near future, some x86 boards could also wake from the MKBP GPIO? If that\u0027s the case, then they would only need to define CONFIG_MKBP_USE_GPIO.\n\nIf we\u0027ll never do that for x86 boards, then maybe I can auto define it.",
       "parentUuid": "c15d4474_ca716950",
+      "range": {
+        "startLine": 2686,
+        "startChar": 7,
+        "endLine": 2686,
+        "endChar": 42
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bb29d0_9589d3be",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T20:45:03Z",
+      "side": 1,
+      "message": "Can we also add a blurb here about the MKBP mask for host events in S0 shoudl also be unset when using the option otherwise the same MKBP event will get delivered twice in S0.",
+      "parentUuid": "e0974380_4124a9c4",
       "range": {
         "startLine": 2686,
         "startChar": 7,
