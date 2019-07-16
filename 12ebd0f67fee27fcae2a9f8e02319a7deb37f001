@@ -45,6 +45,29 @@
       "revId": "12ebd0f67fee27fcae2a9f8e02319a7deb37f001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e573a8_2a873176",
+        "filename": "board/kohaku/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-16T23:05:46Z",
+      "side": 1,
+      "message": "I am not completely convinced we need this. Does the FG not request the correct votlage/current?",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "12ebd0f67fee27fcae2a9f8e02319a7deb37f001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
