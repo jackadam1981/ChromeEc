@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "134c1917_dd536a5d",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T16:29:01Z",
+      "side": 1,
+      "message": "EC_SUCCESS",
+      "range": {
+        "startLine": 398,
+        "startChar": 10,
+        "endLine": 398,
+        "endChar": 11
+      },
+      "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8143c24_147adf0f",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T16:29:01Z",
+      "side": 1,
+      "message": "Is this PS8XXX_REG_MUX_USB_C2SS_HS_THRESHOLD?",
+      "range": {
+        "startLine": 401,
+        "startChar": 24,
+        "endLine": 401,
+        "endChar": 28
+      },
+      "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "538b913a_a0acb968",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T16:29:01Z",
+      "side": 1,
+      "message": "This whole thing can be written:\n\n  return port \u003d\u003d USB_PD_PORT_TCPC_1 ?\n      tcpc_write(port, ...) : EC_SUCCESS;",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 11
+      },
+      "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
