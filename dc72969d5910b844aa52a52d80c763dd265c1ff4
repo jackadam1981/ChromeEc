@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43281d45_0545f1f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-16T18:07:25Z",
+      "side": 1,
+      "message": "\u0027becomes\u0027",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f6d074_acf5533a",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-16T18:07:25Z",
+      "side": 1,
+      "message": "I think it is not necessary here.\n\nIf CONFIG_UART_PAD_SWITCH is defined, then it won\u0027t come here, since it returns at Line 208.\nIf CONFIG_UART_PAD_SWITCH is not defined, then pad is always UART_DEFAULT_PAD by Line 66.\nIf it must be checked here, then I have another question, why Line 135 couldn\u0027t be like\n\n    wait_stop \u003d (pad \u003d\u003d UART_DEFAULT_PAD);\n\n, which looks more symmetric to Line 139.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 31
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "812a5072_97107d1d",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-16T18:07:25Z",
+      "side": 1,
+      "message": "Would you confirm that this CL intend to clear bit[0:5] and to set bit 6:7 ?\n\nConsidering Line 134 used to set bit 6 only, I am just curious (without knowing much about other bits effect) why it couldn\u0027t be done by simply adding another lines under Line 134 like\n\n#ifdef NPCX_UART_FIFO_SUPPORT\n      NPCX_UART_TX_NXMIP_INT_EN(uart_num)\n#endif",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516eb22a_b601da7d",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-16T18:07:25Z",
+      "side": 1,
+      "message": "In this CL, I see only one spot calling this function with \u0027enable\u0027 0. \nFunction name implies \"enabling\" but this is able to disable as well.\nWhy don\u0027t we have just uartn_disable_tx_complete_int() only for now?",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 67
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
