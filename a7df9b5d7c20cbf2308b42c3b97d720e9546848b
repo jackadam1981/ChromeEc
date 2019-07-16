@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b95daf4_11d08f97",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T22:01:08Z",
+      "side": 1,
+      "message": "how does this work, don\u0027t we need an extern for the else case or is the g_sensor_mutex not needed from the fifo file?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560888f8_43c53f5d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T22:01:08Z",
+      "side": 1,
+      "message": "can we make these static?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
