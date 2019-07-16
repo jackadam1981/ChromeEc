@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "123aa28e_66609a4b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T17:17:16Z",
+      "side": 1,
+      "message": "This makes foreign projects not include it. We have to check all foreign projects can still compile. In my search, I found attestation, biod, g2f_tools, and trunks depend on chromeos-ec-headers, which installs compile_time_macros.h under /usr/include/chromeos/ec/.\n\nThe only macro ec_commands.h needs compile_time_macros.h for is BIT(), which is now defined here for foreign projects. So, I think this change is still good (even it breaks a foreign project).\n\nIf a foreign project breaks because of this change, it\u0027s broken legitimately. We should make such a project include a proper header file. For example, if biod uses ARRAY_SIZE, it should be defined locally not by EC\u0027s compile_time_macros.h.\n\nChromium EC should export only its commands not generic compile time macros.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "4b72145ed4790027f886e4e3bb35efe5610298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
