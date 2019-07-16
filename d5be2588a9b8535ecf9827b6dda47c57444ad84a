@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "26c9f2a6_4a76fba1",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T22:07:37Z",
+      "side": 1,
+      "message": "add more comments here like\n\n/* Define CONFIG_ACCEL_FIFO to get an EC fifo for the AP to query. Must also define CONFIG_ACCEL_FIFO_SIZE to size of the fifo */",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 1
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bfbc9bc_1fb6e92b",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -59,6 +82,47 @@
       "writtenOn": "2019-07-16T16:50:03Z",
       "side": 1,
       "message": "Only somewhat related to this patch...\n\nThis is really ugly now with 5 levels of indentation.  Maybe consider refactoring into separate functions?\n\nJust a thought.",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49252662_130d9c21",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T22:07:37Z",
+      "side": 1,
+      "message": "I agree that the indent level is a little much here. Is this code changing in the child CL to move to sub-functions etc?",
+      "parentUuid": "bfd288ce_11853f12",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589aa969_a03726d8",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T22:07:37Z",
+      "side": 1,
+      "message": "let\u0027s invert this\n\nif (!IS_ENA)\n  return EC_SUCCESS;\n\n\nkeep indent level of before",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 37
+      },
       "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
