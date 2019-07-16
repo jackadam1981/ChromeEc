@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06fb7d01_2f764237",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd5ae381_f3c137ee",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed174271_918005c2",
         "filename": "common/spi_nor.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc641ef_2a8bf3bd",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Ack. However, spi_nor_device is used all over this file. I hesitate to change it.",
+      "parentUuid": "ed174271_918005c2",
+      "range": {
+        "startLine": 70,
+        "startChar": 63,
+        "endLine": 70,
+        "endChar": 77
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a9d519e_88f2fe8e",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e730ab0_0a0396e3",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8463416_bdd4f2e4",
         "filename": "common/spi_nor.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4df37f4_058e8979",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8463416_bdd4f2e4",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5cc86063_44ee0a5a",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a76bb5_c1b2eb65",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ae8085a_bcd14f8b",
         "filename": "common/spi_nor.c",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "90f64df1_50a1b499",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ae8085a_bcd14f8b",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbc25a29_a75218df",
         "filename": "include/spi_nor.h",
         "patchSetId": 7
@@ -160,6 +304,30 @@
       "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cfcc443_c897d10a",
+        "filename": "include/spi_nor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1356136
+      },
+      "writtenOn": "2019-07-16T17:26:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbc25a29_a75218df",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
