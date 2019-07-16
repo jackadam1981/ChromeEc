@@ -392,3 +392,13 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC_ODL, !is_overcurrented);
 }
+
+int board_tcpc_post_init(int port)
+{
+	int rv = 0;
+
+	if (port == USB_PD_PORT_TCPC_1)
+		rv = tcpc_write(port, 0xE8, 0x80);
+
+	return rv;
+}
