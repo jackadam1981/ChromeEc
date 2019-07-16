@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd5ae381_f3c137ee",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "nit: You should abstract this (e.g. dev, (dev)-\u003ename).",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed174271_918005c2",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "wyh: It would be nice if you could shorten spi_nor_device to spi_nor, device, or snd.",
+      "range": {
+        "startLine": 70,
+        "startChar": 63,
+        "endLine": 70,
+        "endChar": 77
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e730ab0_0a0396e3",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "nit: sizeof(command)",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8463416_bdd4f2e4",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "nit: can you use a shorter name? (e.g. ear)",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15a76bb5_c1b2eb65",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "Please join them.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae8085a_bcd14f8b",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "Do you want to print rv?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbc25a29_a75218df",
+        "filename": "include/spi_nor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T01:59:21Z",
+      "side": 1,
+      "message": "nit: Register offset macros and values are aligned in most files.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "8b65c7cba8ca1b17896de63be1ee9db01481bd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
