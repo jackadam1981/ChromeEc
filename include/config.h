@@ -3036,9 +3036,6 @@
 /* Emulate the CLZ (Count Trailing Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CTZ
 
-/* Support smbus interface */
-#undef CONFIG_SMBUS
-
 /* Support SPI interfaces */
 #undef CONFIG_SPI
 
