@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "568820f1_600e8295",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T16:38:29Z",
+      "side": 1,
+      "message": "If the devices is in S0, won\u0027t this make the AP think that there are 2 events waiting? (one from the GPIO and one from the host events sub-system) How does this interact with the AP taking a timestamp close to when an MKBP event is receive (for tight timestamp support)?",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 44
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef90622_850eb2ea",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-16T16:38:29Z",
+      "side": 1,
+      "message": "we also should not have interrupts disabled while sending a host event. We can get in a scheduling deadlock. Please move this up before calling into host_set_single_event",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c15d4474_ca716950",
         "filename": "include/config.h",
         "patchSetId": 3
