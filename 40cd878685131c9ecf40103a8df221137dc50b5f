@@ -22,6 +22,30 @@
       "revId": "40cd878685131c9ecf40103a8df221137dc50b5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1d9c93_842f7959",
+        "filename": "include/i2c.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-16T19:42:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f98eed7_b2d70942",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "40cd878685131c9ecf40103a8df221137dc50b5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
