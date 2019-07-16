@@ -22,6 +22,30 @@
       "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0974380_4124a9c4",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-16T16:12:28Z",
+      "side": 1,
+      "message": "I thought in the near future, some x86 boards could also wake from the MKBP GPIO? If that\u0027s the case, then they would only need to define CONFIG_MKBP_USE_GPIO.\n\nIf we\u0027ll never do that for x86 boards, then maybe I can auto define it.",
+      "parentUuid": "c15d4474_ca716950",
+      "range": {
+        "startLine": 2686,
+        "startChar": 7,
+        "endLine": 2686,
+        "endChar": 42
+      },
+      "revId": "45811fcfa1128948ff7930df65258c1405a9bdfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
