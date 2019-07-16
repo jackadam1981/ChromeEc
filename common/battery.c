@@ -305,9 +305,9 @@ static void pending_cutoff_deferred(void)
 	rv = board_cut_off_battery();
 
 	if (rv == EC_RES_SUCCESS)
-		CPRINTF("[%T Battery cut off succeeded.]\n");
+		CPRINTS("Battery cut off succeeded.");
 	else
-		CPRINTF("[%T Battery cut off failed!]\n");
+		CPRINTS("Battery cut off failed!");
 }
 DECLARE_DEFERRED(pending_cutoff_deferred);
 
@@ -350,7 +350,7 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
 static void check_pending_cutoff(void)
 {
 	if (battery_cutoff_state == BATTERY_CUTOFF_STATE_PENDING) {
-		CPRINTF("[%T Cutting off battery in %d second(s)]\n",
+		CPRINTS("Cutting off battery in %d second(s)",
 			CONFIG_BATTERY_CUTOFF_DELAY_US / SECOND);
 		hook_call_deferred(&pending_cutoff_deferred_data,
 				   CONFIG_BATTERY_CUTOFF_DELAY_US);
@@ -373,7 +373,7 @@ static int command_cutoff(int argc, char **argv)
 
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
-		ccprintf("[%T Battery cut off]\n");
+		ccprints("Battery cut off");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 		return EC_SUCCESS;
 	}

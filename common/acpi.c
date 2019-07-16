@@ -24,6 +24,7 @@
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
 #define CPRINTF(format, args...) cprintf(CC_LPC, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_LPC)
 
 /* Last received ACPI command */
 static uint8_t __bss_slow acpi_cmd;
@@ -308,7 +309,9 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			 * does a lot of keyboard backlights and it scrolls the
 			 * debug console.
 			 */
-			CPRINTF("\r[%T ACPI kblight %d]", data);
+			CPRINTF("\r[");
+			CPRINT_TIMESTAMP();
+			CPRINTF(" ACPI kblight %d]", data);
 			kblight_set(data);
 			break;
 #endif

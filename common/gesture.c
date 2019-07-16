@@ -21,6 +21,7 @@
 #define CPUTS(outstr) cputs(CC_GESTURE, outstr)
 #define CPRINTS(format, args...) cprints(CC_GESTURE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_GESTURE, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_GESTURE)
 
 
 /*
@@ -260,8 +261,10 @@ static int gesture_tap_for_battery(void)
 		if (delta_z_outer == 0 || delta_xy_inner == 0)
 			CPRINTS("tap st %d->%d, error div by 0",
 				state_p, state);
-		else
-			CPRINTF("[%T tap st %d->%d, st_cnt %-3d ",
+		else {
+			CPRINTF("[");
+			CPRINT_TIMESTAMP();
+			CPRINTF(" tap st %d->%d, st_cnt %-3d ",
 				state_p, state, state_cnt);
 			CPRINTF("Z_in:Z_out %-3d, Z_in:XY_in %-3d ",
 				delta_z_inner / delta_z_outer,
@@ -270,6 +273,7 @@ static int gesture_tap_for_battery(void)
 				"dZ_out %-8.3d]\n",
 				delta_z_inner, delta_z_inner_max,
 				delta_z_outer);
+		}
 	}
 
 	return ret;

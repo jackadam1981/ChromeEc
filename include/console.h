@@ -86,7 +86,7 @@ int cprintf(enum console_channel channel, const char *format, ...);
 
 /**
  * Print formatted output with timestamp. This is like:
- *   cprintf(channel, "[%T " + format + "]\n", ...)
+ *   cprintf(channel, "[%s " + format + "]\n", timestamp, ...)
  *
  * @param channel	Output channel
  * @param format	Format string; see printf.h for valid formatting codes
@@ -94,6 +94,15 @@ int cprintf(enum console_channel channel, const char *format, ...);
  * @return non-zero if output was truncated.
  */
 int cprints(enum console_channel channel, const char *format, ...);
+
+/**
+ * Print just a timestamp.
+ *
+ * @param channel	Output channel
+ *
+ * @return non-zero if output was truncated.
+ */
+int cprint_timestamp(enum console_channel channel);
 
 /**
  * Flush the console output for all channels.
@@ -109,6 +118,7 @@ void cflush(void);
  * http://gcc.gnu.org/onlinedocs/gcc/Variadic-Macros.html */
 #define ccprintf(format, args...) cprintf(CC_COMMAND, format, ## args)
 #define ccprints(format, args...) cprints(CC_COMMAND, format, ## args)
+#define ccprint_timestamp() cprint_timestamp(CC_COMMAND)
 
 /**
  * Called by UART when a line of input is pending.

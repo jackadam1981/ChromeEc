@@ -6,7 +6,6 @@
 /* Printf-like functionality for Chrome EC */
 
 #include "printf.h"
-#include "timer.h"
 #include "util.h"
 
 static const char error_str[] = "ERROR";
@@ -189,17 +188,7 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 				c = *format++;
 			}
 
-			/* Special-case: %T = current time */
-			if (c == 'T') {
-				v = get_time().val;
-				flags |= PF_64BIT;
-#ifdef CONFIG_CONSOLE_VERBOSE
-				precision = 6;
-#else
-				precision = 3;
-				v /= 1000;
-#endif
-			} else if (flags & PF_64BIT) {
+			if (flags & PF_64BIT) {
 				v = va_arg(args, uint64_t);
 			} else {
 				v = va_arg(args, uint32_t);
@@ -233,7 +222,6 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 				}
 				break;
 			case 'u':
-			case 'T':
 				break;
 			case 'X':
 			case 'x':

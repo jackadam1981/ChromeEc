@@ -22,6 +22,7 @@
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
 #define CPRINTF(format, args...) cprintf(CC_HOSTCMD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_HOSTCMD)
 
 #define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM_BIT(0)
 
@@ -601,7 +602,9 @@ static void dump_host_command_suppressed(int force)
 	if (!force && !timestamp_expired(suppressed_cmd_deadline, NULL))
 		return;
 
-	CPRINTF("[%T HC Suppressed:");
+	CPRINTF("[");
+	CPRINT_TIMESTAMP();
+	CPRINTF(" HC Suppressed:");
 	for (i = 0; i < ARRAY_SIZE(hc_suppressed_cmd); i++) {
 		CPRINTF(" 0x%x=%d", hc_suppressed_cmd[i], hc_suppressed_cnt[i]);
 		hc_suppressed_cnt[i] = 0;

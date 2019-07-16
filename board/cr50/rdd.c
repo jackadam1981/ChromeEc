@@ -25,6 +25,7 @@ USB_SPI_CONFIG(ccd_usb_spi, USB_IFACE_SPI, USB_EP_SPI);
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_USB)
 
 static enum device_state state = DEVICE_STATE_INIT;
 
@@ -304,7 +305,9 @@ static void ccd_state_change_hook(void)
 	if (flags_now == flags_want)
 		return;
 
-	CPRINTF("[%T CCD state:");
+	CPRINTF("[");
+	CPRINT_TIMESTAMP();
+	CPRINTF(" CCD state:");
 	print_state_flags(CC_USB, flags_want);
 	CPRINTF("]\n");
 

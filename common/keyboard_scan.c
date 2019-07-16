@@ -28,6 +28,7 @@
 #define CPUTS(outstr) cputs(CC_KEYSCAN, outstr)
 #define CPRINTF(format, args...) cprintf(CC_KEYSCAN, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_KEYSCAN, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_KEYSCAN)
 
 #ifdef CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYSCAN, outstr)
@@ -150,7 +151,9 @@ static void print_state(const uint8_t *state, const char *msg)
 {
 	int c;
 
-	CPRINTF("[%T KB %s:", msg);
+	CPRINTF("[");
+	CPRINT_TIMESTAMP();
+	CPRINTF(" KB %s:", msg);
 	for (c = 0; c < keyboard_cols; c++) {
 		if (state[c])
 			CPRINTF(" %02x", state[c]);
@@ -528,7 +531,9 @@ static int check_keys_changed(uint8_t *state)
 
 #ifdef CONFIG_KEYBOARD_PRINT_SCAN_TIMES
 		/* Print delta times from now back to each previous scan */
-		CPRINTF("[%T kb deltaT");
+		CPRINTF("[");
+		CPRINT_TIMESTAMP();
+		CPRINTF(" kb deltaT");
 		for (i = 0; i < SCAN_TIME_COUNT; i++) {
 			int tnew = scan_time[
 				(SCAN_TIME_COUNT + scan_time_index - i) %

@@ -103,6 +103,7 @@
 #define CPUTS(outstr) cputs(CC_LIGHTBAR, outstr)
 #define CPRINTF(format, args...) cprintf(CC_LIGHTBAR, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_LIGHTBAR, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_LIGHTBAR)
 
 /******************************************************************************/
 /* How to talk to the controller */
@@ -287,7 +288,9 @@ void lb_init(int use_lock)
 {
 	int i;
 
-	CPRINTF("[%T LB_init_vals ");
+	CPRINTF("[");
+	CPRINT_TIMESTAMP();
+	CPRINTF(" LB_init_vals ");
 	for (i = 0; i < ARRAY_SIZE(init_vals); i++) {
 		CPRINTF("%c", '0' + i % 10);
 		if (use_lock)

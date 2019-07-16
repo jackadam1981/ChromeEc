@@ -301,7 +301,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 	ret = raw_read8(s->port, s->addr, L3GD20_STATUS_REG, &tmp);
 
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
+		CPRINTS("%s type:0x%X RS Error", s->name, s->type);
 		return ret;
 	}
 
@@ -338,8 +338,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	i2c_block_read(s->port, s->addr, xyz_reg, raw, 6);
 
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RD XYZ Error]",
-			s->name, s->type);
+		CPRINTS("%s type:0x%X RD XYZ Error", s->name, s->type);
 		return ret;
 	}
 

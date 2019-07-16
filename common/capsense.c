@@ -14,6 +14,7 @@
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_KEYBOARD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_KEYBOARD)
 
 #define CAPSENSE_I2C_ADDR 0x08
 #define CAPSENSE_MASK_BITS 8
@@ -52,7 +53,9 @@ static void capsense_change_deferred(void)
 
 	new_val = capsense_read_bitmask();
 	if (new_val != cur_val) {
-		CPRINTF("[%T capsense 0x%02x: ", new_val);
+		CPRINTF("[");
+		CPRINT_TIMESTAMP();
+		CPRINTF(" capsense 0x%02x: ", new_val);
 		for (i = 0; i < CAPSENSE_MASK_BITS; i++) {
 			/* See what changed */
 			n = (new_val >> i) & 0x01;

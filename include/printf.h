@@ -49,10 +49,6 @@
  *   - 'x' - unsigned integer, print as lower-case hexadecimal
  *   - 'X' - unsigned integer, print as upper-case hexadecimal
  *   - 'b' - unsigned integer, print as binary
- *
- * Special format codes:
- *   - "%T" - current time in seconds - interpreted as "%.6T" for precision.
- *           This does NOT use up any arguments.
  */
 
 #ifndef HIDE_EC_STDLIB

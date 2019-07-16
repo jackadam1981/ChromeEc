@@ -16,6 +16,7 @@
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_PORT80, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_PORT80)
 
 static uint16_t __bss_slow history[CONFIG_PORT80_HISTORY_LEN];
 static int __bss_slow writes;    /* Number of port 80 writes so far */
@@ -52,10 +53,14 @@ void port_80_write(int data)
 	 * 0x100). This is because only 8-bit port80 messages are assumed to be
 	 * coming from the host.
 	 */
-	if (print_in_int)
-		CPRINTF("%c[%T Port 80: 0x%02x]", scroll ? '\n' : '\r', data);
-	else if (data < 0x100)
+	if (print_in_int) {
+		CPRINTF("%c[", scroll ? '\n' : '\r');
+		CPRINT_TIMESTAMP();
+		CPRINTF(" Port 80: 0x%02x]", data);
+
+	} else if (data < 0x100) {
 		hook_call_deferred(&port80_dump_buffer_data, 4 * SECOND);
+	}
 
 	/* Save current port80 code if system is resetting */
 	if (data == PORT_80_EVENT_RESET && writes) {

@@ -533,7 +533,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	if (PD_VDO_VID(payload[0]) != USB_VID_GOOGLE || !gfu_mode)
 		return 0;
 
-	debug_printf("%T] VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
+	debug_printf("VDM/%d [%d] %08x\n", cnt, cmd, payload[0]);
 	*rpayload = payload;
 
 	rsize = pd_custom_flash_vdm(port, cnt, payload);

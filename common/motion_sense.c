@@ -31,6 +31,7 @@
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_MOTION_SENSE)
 
 #ifdef CONFIG_ORIENTATION_SENSOR
 /*
@@ -1272,7 +1273,9 @@ void motion_sense_task(void *u)
 #endif
 #ifdef CONFIG_CMD_ACCEL_INFO
 		if (accel_disp) {
-			CPRINTF("[%T event 0x%08x ", event);
+			CPRINTF("[");
+			CPRINT_TIMESTAMP();
+			CPRINTF(" event 0x%08x ", event);
 			for (i = 0; i < motion_sensor_count; ++i) {
 				sensor = &motion_sensors[i];
 				CPRINTF("%s=%-5d, %-5d, %-5d ", sensor->name,

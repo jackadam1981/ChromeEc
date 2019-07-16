@@ -284,7 +284,7 @@ static int fifo_next(struct lsm6dsm_data *private)
 		 * Not expected we are supposed to be called to process FIFO
 		 * data.
 		 */
-		CPRINTF("[%T FIFO empty pattern]\n");
+		CPRINTS("FIFO empty pattern");
 		return FIFO_DEV_INVALID;
 	}
 
@@ -478,8 +478,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			return ret;
 		last_fifo_read_ts = __hw_clock_source_read();
 		if (fsts.len & (LSM6DSM_FIFO_DATA_OVR | LSM6DSM_FIFO_FULL)) {
-			CPRINTF("[%T %s FIFO Overrun: %04x]\n",
-				s->name, fsts.len);
+			CPRINTS("%s FIFO Overrun: %04x", s->name, fsts.len);
 		}
 		if (!IS_FSTS_EMPTY(fsts))
 			ret = load_fifo(s, &fsts, &last_fifo_read_ts);
@@ -655,7 +654,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 
 	ret = st_raw_read8(s->port, s->addr, LSM6DSM_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
+		CPRINTS("%s type:0x%X RS Error", s->name, s->type);
 		return ret;
 	}
 
@@ -813,7 +812,7 @@ static int init(const struct motion_sensor_t *s)
 
 err_unlock:
 	mutex_unlock(s->mutex);
-	CPRINTF("[%T %s: MS Init type:0x%X Error]\n", s->name, s->type);
+	CPRINTS("%s: MS Init type:0x%X Error", s->name, s->type);
 
 	return ret;
 }

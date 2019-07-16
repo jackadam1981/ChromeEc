@@ -19,6 +19,7 @@
 #define G2F_CERT_NAME "CrOS"
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ##args)
+#define CPRINT_TIMESTAMP() cprint_timestamp(CC_EXTENSION)
 
 /* Crypto parameters */
 #define AES_BLOCK_LEN 16
@@ -350,7 +351,8 @@ unsigned u2f_apdu_rcv(uint8_t *buf, unsigned in_len, unsigned max_len)
 		apdu.data += 2;
 	}
 
-	CPRINTF("%T/%d U2F APDU ", apdu.len);
+	CPRINT_TIMESTAMP();
+	CPRINTF("/%d U2F APDU ", apdu.len);
 	/* Is the APDU well-formed including its payload ? */
 	if (in_len < 4 || (apdu.len > in_len - (apdu.data - buf))) {
 		sw = U2F_SW_WRONG_LENGTH;
