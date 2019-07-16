@@ -46,6 +46,51 @@ get_spiid() {
   exit 1
 }
 
+# Taken verbatim from
+# https://chromium.googlesource.com/chromiumos/docs/+/master/lsb-release.md#shell
+# This should not be used by anything except get_platform_name.
+# See https://crbug.com/98462.
+lsbval() {
+  local key="$1"
+  local lsbfile="${2:-/etc/lsb-release}"
+
+  if ! echo "${key}" | grep -Eq '^[a-zA-Z0-9_]+$'; then
+    return 1
+  fi
+
+  sed -E -n -e \
+    "/^[[:space:]]*${key}[[:space:]]*=/{
+      s:^[^=]+=[[:space:]]*::
+      s:[[:space:]]+$::
+      p
+    }" "${lsbfile}"
+}
+
+get_platform_name() {
+  # "-l" converts to lowercase
+  local -l platform_name="$(cros_config /identity platform-name)"
+
+  # TODO(https://crbug.com/984629): cros_config should handle this for us based
+  # on /etc/lsb-release
+  if [[ "${platform_name}" == "" ]]; then
+    # nocturne does not have unibuild
+    platform_name="$(lsbval "CHROMEOS_RELEASE_BOARD")"
+    if [[ "${platform_name}" != "nocturne" ]]; then
+      exit 1
+    fi
+  fi
+
+  echo "${platform_name}"
+}
+
+check_gpio_chip_exists() {
+  local gpiochip="$1"
+  if [[ ! -e "/sys/class/gpio/${gpiochip}" ]]; then
+    echo "Cannot find GPIO chip: ${gpiochip}"
+    exit 1
+  fi
+}
+
 flash_fp_mcu_stm32() {
   local spidev="${1}"
   local gpio_nrst="${2}"
