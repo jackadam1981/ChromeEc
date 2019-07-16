@@ -31,6 +31,10 @@
 
 static int init_done;
 
+#ifdef NPCX_UART_FIFO_SUPPORT
+static int wait_stop;
+#endif
+
 #ifdef CONFIG_UART_PAD_SWITCH
 
 /* Current pad: 0 for default pad, 1 for alternate. */
@@ -117,16 +121,24 @@ void uart_tx_start(void)
 		task_enable_irq(NPCX_IRQ_UART);
 	}
 #endif
+#ifdef NPCX_UART_FIFO_SUPPORT
+	wait_stop = 0;
+#endif
 
 	uartn_tx_start(CONSOLE_UART);
 }
 
 void uart_tx_stop(void)
 {
+#ifdef NPCX_UART_FIFO_SUPPORT
+	uartn_tx_stop(CONSOLE_UART, 0);
+	wait_stop = 1;
+#else
 	uint8_t sleep_ena;
 
 	sleep_ena = (pad == UART_DEFAULT_PAD) ? 1 : 0;
 	uartn_tx_stop(CONSOLE_UART, sleep_ena);
+#endif
 }
 
 void uart_tx_flush(void)
@@ -194,6 +206,15 @@ void uart_ec_interrupt(void)
 				uart_tx_stop();
 		}
 		return;
+	}
+#endif
+#ifdef NPCX_UART_FIFO_SUPPORT
+	if (!uartn_tx_in_progress(CONSOLE_UART)) {
+		if (wait_stop) {
+			uartn_enable_tx_complete_int(CONSOLE_UART, 0);
+			if (pad == UART_DEFAULT_PAD)
+				enable_sleep(SLEEP_MASK_UART);
+		}
 	}
 #endif
 

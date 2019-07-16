@@ -28,6 +28,13 @@
 /* True if the Tx FIFO is not completely full */
 #define NPCX_UART_TX_IS_READY(n)          \
 		(!(GET_FIELD(NPCX_UFTSTS(n), NPCX_UFTSTS_TEMPTY_LVL) == 0))
+
+/* Enable UART Tx "not" in transmittion interrupt */
+#define NPCX_UART_TX_NXMIP_INT_EN(n)      \
+		(SET_BIT(NPCX_UFTCTL(n), NPCX_UFTCTL_NXIMPEN))
+/* Disable UART Tx "not" in transmittion interrupt */
+#define NPCX_UART_TX_NXMIP_INT_DIS(n)      \
+		(CLEAR_BIT(NPCX_UFTCTL(n), NPCX_UFTCTL_NXIMPEN))
 /*
  * True if Tx is in progress
  * (i.e. FIFO is not empty or last byte in TSFT (Transmit Shift register)
@@ -120,10 +127,23 @@ void uartn_tx_start(uint8_t uart_num)
 	 * UART where the FIFO only triggers the interrupt when its
 	 * threshold is _crossed_, not just met.
 	 */
+#ifdef NPCX_UART_FIFO_SUPPORT
+	NPCX_UFTCTL(uart_num) = BIT(NPCX_UFTCTL_TEMPTY_EN) |
+				BIT(NPCX_UFTCTL_NXIMPEN);
+#else
 	NPCX_UART_TX_EMPTY_INT_EN(uart_num);
+#endif
 
 	task_trigger_irq(uart_cfg[uart_num].irq);
 }
+
+#ifdef NPCX_UART_FIFO_SUPPORT
+void uartn_enable_tx_complete_int(uint8_t uart_num, uint8_t enable)
+{
+	enable ? NPCX_UART_TX_NXMIP_INT_EN(uart_num) :
+		NPCX_UART_TX_NXMIP_INT_DIS(uart_num);
+}
+#endif
 
 void uartn_tx_stop(uint8_t uart_num, uint8_t sleep_ena)
 {
