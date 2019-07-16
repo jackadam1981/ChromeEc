@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8da038d8_340a36e3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-16T02:07:26Z",
+      "side": 1,
+      "message": "We\u0027d better describe its proper usage here. We don\u0027t want it to be abused.  It\u0027s not so obvious it\u0027s for distinguishing foreign projects.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 18
+      },
+      "revId": "d8af457a845928760983c8c2c16fe1c14d3ce42c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
