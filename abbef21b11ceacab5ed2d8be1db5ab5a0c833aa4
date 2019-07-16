@@ -22,6 +22,30 @@
       "revId": "abbef21b11ceacab5ed2d8be1db5ab5a0c833aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56661c6f_53edea73",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-16T20:57:08Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, but I don\u0027t think it\u0027s necessary. Fluffy is using such little power that I don\u0027t think it makes a difference. I quickly measured and it\u0027s using less than 100mW as is.",
+      "parentUuid": "a1ecbc7e_e30c774a",
+      "range": {
+        "startLine": 385,
+        "startChar": 3,
+        "endLine": 385,
+        "endChar": 36
+      },
+      "revId": "abbef21b11ceacab5ed2d8be1db5ab5a0c833aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

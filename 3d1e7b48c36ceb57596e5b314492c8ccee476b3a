@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a39960c0_472cf80b",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-16T20:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27423c98_1a26bdd5",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e735f37_cdebac9f",
         "filename": "board/fluffy/board.c",
         "patchSetId": 3
@@ -658,6 +682,30 @@
       "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65bcfa3_27cf2c0b",
+        "filename": "board/fluffy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-16T20:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a84e1d8_56d7a91e",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "3d1e7b48c36ceb57596e5b314492c8ccee476b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
