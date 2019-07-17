@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6dde99d9_252a2b40",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:01:31Z",
+      "side": 1,
+      "message": "See other comment about \"name\" vs \"platform-name\". If we have to further distinguish, then \"config_hatch\" (or whatever board has changes) can have an additional query to get the specific derivative. Right now they appear to be all the same (thankfully).",
+      "parentUuid": "1e57e10f_ef02e13e",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 12
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e919ca99_d22121a5",
         "filename": "util/flash_fp_mcu_common.sh",
         "patchSetId": 1
@@ -64,6 +88,30 @@
         "startChar": 2,
         "endLine": 52,
         "endChar": 9
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264d8410_a6627ac5",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:01:31Z",
+      "side": 1,
+      "message": "\"name\" gives \"kohaku\" vs \"hatch\". So far the GPIOs for all hatch boards are the same. If we have to further identify in the future, we can add \"name\".",
+      "parentUuid": "e919ca99_d22121a5",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 65
       },
       "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
