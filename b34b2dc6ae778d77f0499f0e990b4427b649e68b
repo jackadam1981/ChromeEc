@@ -68,6 +68,30 @@
       "revId": "b34b2dc6ae778d77f0499f0e990b4427b649e68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6875d1b7_f34df27e",
+        "filename": "baseboard/kukui/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-17T06:46:32Z",
+      "side": 1,
+      "message": "Done, fixed in CL:1695562",
+      "parentUuid": "f50eb46e_bf9a9d50",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 60
+      },
+      "revId": "b34b2dc6ae778d77f0499f0e990b4427b649e68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
