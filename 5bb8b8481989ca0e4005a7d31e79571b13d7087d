@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83643abc_10bafb75",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-17T07:23:02Z",
+      "side": 1,
+      "message": "I\u0027m not sure to follow, here...\n\nSo we have\u003d\n 1. SCP_GIPC_IN \u0026 SCP_GIPC_IN_CLEAR_IPCN(0) is true\n 2. ipi_handler() is called, so pending_ipc will probably always be true, and we re-trigger the interrupt (task_trigger_irq(irq);)\n 3. we clear just SCP_GIPC_IN_CLEAR_IPCN(0)\n 4. we clear all the other bits\n\nThe gap between 3 and 4 is so short that I don\u0027t understand how this makes a difference? Or maybe it just does because we re-trigger the interrupt twice every single time?\n\nWould swapping 2 and 3 make more sense?",
+      "revId": "5bb8b8481989ca0e4005a7d31e79571b13d7087d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
