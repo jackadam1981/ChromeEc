@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6cb766_13e91e67",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T00:57:28Z",
+      "side": 1,
+      "message": "nit: move the printf before get_time(). It could take a little time to do that, so it\u0027s better to have your start time after the logging operation.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "9fdc1d804a9db5c7acf2b5624f9afbeea01cef6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
