@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f867769f_7c4025cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-17T07:16:42Z",
+      "side": 1,
+      "message": "There are several new chip from ITE.\nThe Chip ID as I know: 81201 81202 83201 83202\nAfter discussing with Dino, \nwe temporarily defined it as it8xxx1 and it8xxx2 series.\nThe new chip id is from 2 bytes to 3 bytes.\n\nWe verify it ok from servo V2 + ITE evboard.",
+      "parentUuid": "b4f4333e_4ffad51e",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb33abee_37135c68",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1f954a5c_2c18e972",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-17T07:16:42Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "cb33abee_37135c68",
+      "range": {
+        "startLine": 516,
+        "startChar": 11,
+        "endLine": 516,
+        "endChar": 28
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a28b8722_176f9edd",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "568334990aac0589887b8ba71eb52adbade07d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea06c15_1d459801",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-17T07:16:42Z",
+      "side": 1,
+      "message": "Yes,we have the data sheet just like \"IT83201_A_V0.3.1_20190628.pdf\".",
+      "parentUuid": "a28b8722_176f9edd",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 41
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "3d5bb4cd_92b15241",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-17T07:16:42Z",
+      "side": 1,
+      "message": "id and ver will read back by i2c_read_byte.\nI think it can initialized to 0.",
+      "parentUuid": "926c9989_ae5ffb0f",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b3bec53_bbb501bb",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -186,6 +282,30 @@
       "revId": "568334990aac0589887b8ba71eb52adbade07d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c74672d_c38a6539",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-17T07:16:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e39a5756_d10f8a0d",
+      "range": {
+        "startLine": 580,
+        "startChar": 2,
+        "endLine": 580,
+        "endChar": 42
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
