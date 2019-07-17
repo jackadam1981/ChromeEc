@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57746fde_372afec1",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T01:17:12Z",
+      "side": 1,
+      "message": "Is that really necessary? If possible it\u0027s better if unit tests don\u0027t leave state behind.",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 12
+      },
+      "revId": "fa93c9925c1230bf028b8a88b612b697e58f89f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a319946_71f7f365",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T01:17:12Z",
+      "side": 1,
+      "message": "nit: the comment is a bit confusing. Reading the secret from the rollback (really anti-rollback) block can fail, but we\u0027re not rolling back anything",
+      "range": {
+        "startLine": 315,
+        "startChar": 10,
+        "endLine": 315,
+        "endChar": 33
+      },
+      "revId": "fa93c9925c1230bf028b8a88b612b697e58f89f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
