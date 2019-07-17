@@ -22,6 +22,30 @@
       "revId": "a281b49b507b9bbdd02bf6875b83fa2708d4b480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5997d972_0a577f0b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3072,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-17T14:49:03Z",
+      "side": 1,
+      "message": "This was added for Daisuke who now holds a CR-2 until this was added.",
+      "parentUuid": "741e13c6_b0610112",
+      "range": {
+        "startLine": 3055,
+        "startChar": 0,
+        "endLine": 3072,
+        "endChar": 25
+      },
+      "revId": "a281b49b507b9bbdd02bf6875b83fa2708d4b480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
