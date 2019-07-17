@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6f439700_f8784ebf",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T16:49:46Z",
+      "side": 1,
+      "message": "It seems that the consensus on chatty-firmware is that we should be using stdbool: https://groups.google.com/a/google.com/d/msg/chromeos-chatty-firmware/ESHmZYBRays/hm0TqBVbDAAJ",
+      "parentUuid": "2a493632_c6bc5661",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e7e3e4_788bba82",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 3
