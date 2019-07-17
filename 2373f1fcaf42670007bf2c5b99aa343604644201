@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a614afa_bd26450e",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1275769
+      },
+      "writtenOn": "2019-07-17T02:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134c1917_dd536a5d",
+      "range": {
+        "startLine": 398,
+        "startChar": 10,
+        "endLine": 398,
+        "endChar": 11
+      },
+      "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8143c24_147adf0f",
         "filename": "board/helios/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-16T16:29:01Z",
       "side": 1,
       "message": "Is this PS8XXX_REG_MUX_USB_C2SS_HS_THRESHOLD?",
+      "range": {
+        "startLine": 401,
+        "startChar": 24,
+        "endLine": 401,
+        "endChar": 28
+      },
+      "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "957b08fd_5824f06a",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1275769
+      },
+      "writtenOn": "2019-07-17T02:53:32Z",
+      "side": 1,
+      "message": "Yes,it is.",
+      "parentUuid": "a8143c24_147adf0f",
       "range": {
         "startLine": 401,
         "startChar": 24,
@@ -68,6 +116,30 @@
       "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be30489b_bb383eeb",
+        "filename": "board/helios/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1275769
+      },
+      "writtenOn": "2019-07-17T02:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "538b913a_a0acb968",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 11
+      },
+      "revId": "2373f1fcaf42670007bf2c5b99aa343604644201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
