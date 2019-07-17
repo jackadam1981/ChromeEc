@@ -4,8 +4,8 @@
  */
 
 /* Header for tablet_mode.c */
-
-#ifdef CONFIG_TABLET_MODE
+#ifndef __CROS_EC_TABLET_MODE_H
+#define __CROS_EC_TABLET_MODE_H
 
 /* Return 1 if in tablet mode, 0 otherwise */
 int tablet_get_mode(void);
@@ -37,4 +37,4 @@ void hall_sensor_disable(void);
  */
 int board_sensor_at_360(void);
 
-#endif
+#endif /* __CROS_EC_TABLET_MODE_H */
