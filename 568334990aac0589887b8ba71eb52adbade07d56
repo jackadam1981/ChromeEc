@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "e7a700a6_ba7dd89d",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-17T16:13:41Z",
+      "side": 1,
+      "message": "If (id \u0026 0xff00) \u003d\u003d (CHIP_ID \u0026 0xff00) then,\nThe third byte, which is (uint8_t *)\u0026id +2, won\u0027t have any chance to be read nor initialized.\nHowever, it shall be accessed for output at line 601.\n\nPlease initialize id.",
+      "parentUuid": "3d5bb4cd_92b15241",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b3bec53_bbb501bb",
         "filename": "util/iteflash.c",
         "patchSetId": 5
