@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17991a75_322b062a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T16:24:57Z",
+      "side": 1,
+      "message": "Hm, that\u0027s a little tricky without carving out enough memory on the stack to store the max length string. One thing I was considering was to let CPRINT_TIMESTAMP() take a prefix string, so it would save you a line, like:\nCPRINT_TIMESTAMP(\"[\");\nCPRINTF(\" CCD state:\");\nprint_state_flags(CC_USB, flags_want);\nCPRINTF(\"]\\n\");",
+      "parentUuid": "274a9c41_a42b311c",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5112eb0b_f78182bc",
         "filename": "common/acpi.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-17T14:09:40Z",
       "side": 1,
       "message": "I don\u0027t think we want to standardize another copy-paste console output macro.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8068d857_82353ac4",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T16:24:57Z",
+      "side": 1,
+      "message": "What did you have in mind instead?",
+      "parentUuid": "5112eb0b_f78182bc",
       "range": {
         "startLine": 27,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b6a29784_c33eb666",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T16:24:57Z",
+      "side": 1,
+      "message": "I think so, if we do the static #define of precision/denominato.",
+      "parentUuid": "4b01b0b1_c8b7b35c",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3fde805_095595e5",
         "filename": "common/console_output.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-16T23:27:22Z",
       "side": 1,
       "message": "If we get rid of CONFIG_CONSOLE_VERBOSE, do we still need this function?\n\nEven with it we can set precision statically:\n\n  cprintf(channel, \"[%.*lu \",\n          _TIMESTAMP_PRECISION_, get_time().val/_TIMESTAMP_DENOM_);",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c15d7bb_a5718aa0",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T16:24:57Z",
+      "side": 1,
+      "message": "Sure, I like the idea of defining precision/denominator statically. But if we remove this function, I worry we\u0027ll end up bloating code size, as this code would copy/paste to all the callers. I have 68 hits in my codebase (though this includes #define and the definition itself).",
+      "parentUuid": "c3fde805_095595e5",
       "range": {
         "startLine": 118,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d8ff432c_5fcf5535",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T16:24:57Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "313702d5_5c46d3e3",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 29
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95201111_1ba807f0",
         "filename": "common/console_output.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2019-07-16T23:27:22Z",
       "side": 1,
       "message": "I think we can get rid of this. Nobody is undefining it.",
+      "range": {
+        "startLine": 129,
+        "startChar": 7,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13a26157_510d4473",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-17T16:24:57Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "95201111_1ba807f0",
       "range": {
         "startLine": 129,
         "startChar": 7,
