@@ -16,6 +16,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbccb9c4_f556c8ba",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 0,
+      "message": "This needed to move because we won\u0027t always have CONFIG_ACCEL_FIFO_THRES here anymore since we\u0027re no longer guarded by the pre-processor. Before, this code would never hit the compiler. Now the code is only removed by the optimizer when we don\u0027t have CONFIG_ACCEL_FIFO defined.",
+      "parentUuid": "01890106_584b1fdf",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

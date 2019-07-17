@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9be643b_7387e7d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95308f8e_4a770502",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bce4a0de_26c4ac71",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "90647840_67d85b85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27ba2d4_12ae9298",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26c9f2a6_4a76fba1",
         "filename": "baseboard/grunt/baseboard.h",
         "patchSetId": 1
@@ -80,6 +122,30 @@
       "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8ec856_6b5ccbb8",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c9f2a6_4a76fba1",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 1
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "106b5736_625c0201",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d20fba80_2236bed6",
+      "range": {
+        "startLine": 643,
+        "startChar": 5,
+        "endLine": 643,
+        "endChar": 23
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfd288ce_11853f12",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -165,6 +255,24 @@
     },
     {
       "key": {
+        "uuid": "b20f53ff_93191593",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Yes, there\u0027s actually quite a bit of common code. I wanted to stick to the point with the CL which is swap out ifdef with IS_ENABLED. Later CL moves this common code into a new function.",
+      "parentUuid": "49252662_130d9c21",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feaf0b25_d502d207",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -176,6 +284,30 @@
       "writtenOn": "2019-07-17T14:11:46Z",
       "side": 1,
       "message": "Funky indendation (see Kindent script from Linux kernel)",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 30
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af3d8eb_3de14799",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Sorry, not seeing it. 2 tabs continuation from the (",
+      "parentUuid": "feaf0b25_d502d207",
       "range": {
         "startLine": 703,
         "startChar": 0,
@@ -208,6 +340,30 @@
       "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfa7061_e9aefddf",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589aa969_a03726d8",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
