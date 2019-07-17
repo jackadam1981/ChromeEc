@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d28b9f92_e4360d9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-17T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43281d45_0545f1f5",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9f6d074_acf5533a",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-16T18:07:25Z",
       "side": 1,
       "message": "I think it is not necessary here.\n\nIf CONFIG_UART_PAD_SWITCH is defined, then it won\u0027t come here, since it returns at Line 208.\nIf CONFIG_UART_PAD_SWITCH is not defined, then pad is always UART_DEFAULT_PAD by Line 66.\nIf it must be checked here, then I have another question, why Line 135 couldn\u0027t be like\n\n    wait_stop \u003d (pad \u003d\u003d UART_DEFAULT_PAD);\n\n, which looks more symmetric to Line 139.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 31
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1930065_b4412892",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-17T09:33:36Z",
+      "side": 1,
+      "message": "Yes, you\u0027r right. the (pad \u003d\u003d UART_ALTERNATE_PAD) is already checked at line 194 and return at line 208. The check (pad \u003d\u003dUART_ALTERNATE_PAD) should be removed here.",
+      "parentUuid": "f9f6d074_acf5533a",
       "range": {
         "startLine": 215,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e75ec20f_302c315d",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-17T09:33:36Z",
+      "side": 1,
+      "message": "Indeed, I should not clear bit[0:5] though they are not used in the driver.\nIt will be better only to enable bit[6:7] here.",
+      "parentUuid": "812a5072_97107d1d",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "516eb22a_b601da7d",
         "filename": "chip/npcx/uartn.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-16T18:07:25Z",
       "side": 1,
       "message": "In this CL, I see only one spot calling this function with \u0027enable\u0027 0. \nFunction name implies \"enabling\" but this is able to disable as well.\nWhy don\u0027t we have just uartn_disable_tx_complete_int() only for now?",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 67
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb257252_94e013e4",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-17T09:33:36Z",
+      "side": 1,
+      "message": "In this low level driver (uartn.c), I want to create a generic function which can enable/disable \nNXMIP interrupt depending on the \"enable\" parameter passed by its caller.\nIt seems that it is a normal function naming (i.e. xxx_enable_xxx(enable)) used everywhere in the EC source to enable/disable something.",
+      "parentUuid": "516eb22a_b601da7d",
       "range": {
         "startLine": 141,
         "startChar": 5,
