@@ -16,6 +16,24 @@
       "revId": "5bb8b8481989ca0e4005a7d31e79571b13d7087d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8aed4c_e10ee8c1",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-17T07:39:24Z",
+      "side": 1,
+      "message": "Swapping 2. and 3. doesn\u0027t make any difference, since\na. \"ipc_handler\" is in ISR (so does \"ipi_handler\"), so nothing should be preempted in between register clearance and ipi_handler()\nb. ipi_enable_irq() should only be called when it is _not_ in ISR.\n\n\n\nfor 3. and 4., I just want to make sure the bit is cleared only when \"ipi_handler\" is executed.\nSince that we want to prevent AP calling other IPC (e.g. IPC2), and we falsely clear the IPC0 bit. (but this case shouldn\u0027t happen on kukui)",
+      "parentUuid": "83643abc_10bafb75",
+      "revId": "5bb8b8481989ca0e4005a7d31e79571b13d7087d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
