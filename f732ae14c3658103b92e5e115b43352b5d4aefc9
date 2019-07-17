@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e57e10f_ef02e13e",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T17:39:44Z",
+      "side": 1,
+      "message": "How does that work for Hatch derivatives?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 12
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e919ca99_d22121a5",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T17:39:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t work on my device, let\u0027s chat offline\n\nEither way, https://chromium.googlesource.com/chromiumos/docs/+/master/os_config.md#detect-device has a slightly different command",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 65
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406a7ac6_ef2bf86a",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T17:39:44Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/docs/+/master/lsb-release.md\n\n\"you must not use CHROMEOS_RELEASE_BOARD from this file\"\n\nWe may not have a choice, but rather than custom parsing we should at least use the documented way to parse https://chromium.googlesource.com/chromiumos/docs/+/master/lsb-release.md#shell",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
