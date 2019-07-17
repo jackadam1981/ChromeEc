@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "014edcfa_c41c38a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:19:39Z",
+      "side": 1,
+      "message": "open a bug?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa365183_3fbf2614",
         "filename": "baseboard/octopus/baseboard.h",
         "patchSetId": 1
@@ -59,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "dc1d6993_cf710d52",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:19:39Z",
+      "side": 1,
+      "message": "Yes, making extern will cause (intentional) linker errors if g_sensor_mutex gets used without CONFIG_ACCEL_FIFO",
+      "parentUuid": "5b95daf4_11d08f97",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f49a1c92_f62b496d",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -90,6 +137,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5a2d39_175cc678",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:19:39Z",
+      "side": 1,
+      "message": "Actually, there should be no line with just /* at the top. Pretty sure presubmit checks will nag at your suggestion.",
+      "parentUuid": "bacedba2_c0759ff4",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +198,30 @@
     },
     {
       "key": {
+        "uuid": "7eaf06b0_56ff526b",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:19:39Z",
+      "side": 1,
+      "message": "Funky indentation here. Compare with kindent script from kernel",
+      "parentUuid": "560888f8_43c53f5d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5876be7e_6f124dd5",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -156,6 +245,29 @@
     },
     {
       "key": {
+        "uuid": "ca0fbe60_3763255f",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:19:39Z",
+      "side": 1,
+      "message": "Can you avoid the conditional compilation?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 6
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72d72ce6_f93c1872",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -172,6 +284,29 @@
         "startChar": 5,
         "endLine": 247,
         "endChar": 36
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e772eb3_a07d9e28",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:19:39Z",
+      "side": 1,
+      "message": "Think this does not line up...",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 9
       },
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
