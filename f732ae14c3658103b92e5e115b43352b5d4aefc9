@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "9e01359d_588265ba",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-17T17:43:50Z",
+      "side": 1,
+      "message": "nit: local keyword can be used here with -l",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721d3c3e_1f01d6af",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-17T17:43:50Z",
+      "side": 1,
+      "message": "nit: If you want a shorter line:\ngrep CHROMEOS_RELEASE_BOARD /etc/lsb-release | cut -d\u003d -f2",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 118
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "406a7ac6_ef2bf86a",
         "filename": "util/flash_fp_mcu_common.sh",
         "patchSetId": 1
