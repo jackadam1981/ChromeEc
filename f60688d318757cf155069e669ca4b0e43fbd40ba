@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edb77c90_5a9dc598",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:55:47Z",
+      "side": 1,
+      "message": "I\u0027d validate the value of |fgr| earlier (before using it in |template_matched|).\n\nif (res \u003c 0 || fgr \u003c 0 || fgr \u003e\u003d FP_MAX_FINGER_COUNT) {\n\n}",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "f60688d318757cf155069e669ca4b0e43fbd40ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
