@@ -495,6 +495,10 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 static int validate_template_format(
 	struct ec_fp_template_encryption_metadata *enc_info)
 {
+	if (enc_info->struct_version == 3 && FP_TEMPLATE_FORMAT_VERSION == 4)
+	/* The host requested migration to v4. */
+		return EC_RES_SUCCESS;
+
 	if (enc_info->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
 		CPRINTS("Invalid template format %d", enc_info->struct_version);
 		return EC_RES_INVALID_PARAM;
@@ -562,9 +566,27 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 			fp_clear_finger_context(idx);
 			return EC_RES_UNAVAILABLE;
 		}
-		memcpy(fp_pos_match_salt[idx], input_positive_match_salt,
-		       sizeof(fp_pos_match_salt[0]));
-		memcpy(finger_id[idx], input_finger_id, sizeof(finger_id[0]));
+		if (enc_info->struct_version == 3
+			&& FP_TEMPLATE_FORMAT_VERSION == 4) {
+			if (generate_pos_match_salt_finger_id()
+				== EC_RES_SUCCESS) {
+				fp_pos_match_secret_readable
+					|= BIT(templ_valid);
+				templ_dirty |= BIT(templ_valid);
+			} else {
+				CPRINTS("Generating positive match salt and "
+					"finger id for finger %d failed.",
+					templ_valid);
+				fp_clear_finger_context(templ_valid);
+				return EC_RES_ERROR;
+			}
+		} else {
+			memcpy(fp_pos_match_salt[idx],
+			       input_positive_match_salt,
+			       sizeof(fp_pos_match_salt[0]));
+			memcpy(finger_id[idx], input_finger_id,
+			       sizeof(finger_id[0]));
+		}
 		templ_valid++;
 	}
 
