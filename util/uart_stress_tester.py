@@ -23,6 +23,7 @@ from chromite.lib import cros_logging as logging
 import argparse
 import atexit
 import serial
+import os
 import sys
 import threading
 import time
@@ -381,10 +382,16 @@ class ChargenTest(object):
       ports: List of UART ports to test.
       duration: Time to keep testing in seconds.
       cr50_workload: True if a workload should be generated on cr50
+
+    Raises:
+      ChargenTestError: if any of ports does not exist.
     """
 
     # Save the arguments
     self.ports = ports
+    for port in ports:
+      if not os.path.exists(port):
+        raise ChargenTestError('%s does not exist.' % port)
 
     if duration <= 0:
       raise ChargenTestError('Input error: duration is not positive.')
