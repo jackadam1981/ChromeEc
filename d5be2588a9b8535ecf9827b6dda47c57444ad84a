@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "bce4a0de_26c4ac71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T03:08:26Z",
+      "side": 1,
+      "message": "For changes that spans several CLs, it is easier to tack with a bug.",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26c9f2a6_4a76fba1",
         "filename": "baseboard/grunt/baseboard.h",
         "patchSetId": 1
