@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c2c4fa20_43d2af64",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T08:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5701eb_1537e750",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9517d44c_b2cf9489",
         "filename": "common/i2c_trace.c",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "00aa6e75_fed3d480",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T08:58:56Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of making people figure out the ASCII art arrows, so I kept \"read\"/\"write\", but went with a more compact format.",
+      "parentUuid": "9517d44c_b2cf9489",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca72dfd_f701ac72",
         "filename": "common/i2c_trace.c",
         "patchSetId": 1
@@ -91,6 +139,30 @@
       "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3711eb93_dde6d968",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T08:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca72dfd_f701ac72",
+      "range": {
+        "startLine": 103,
+        "startChar": 48,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
