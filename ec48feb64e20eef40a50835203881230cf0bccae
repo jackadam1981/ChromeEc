@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "e97eb633_34a2b089",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 1,
+      "message": "common: sense:",
+      "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ce989e_d3226e1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 1,
+      "message": "Split the CLs in 3:\n- function names [mechanical change]\n- unit tests that passes without bug fixes\n- bug fixes out the CL to be clearly visible + associated unit tests.",
+      "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a979dfd_306f14eb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 1,
+      "message": "idem.",
+      "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad58368_b7868c65",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 1,
+      "message": "Missing \"motion_sense_fifo_commit_data()\"? I don\u0027t see it in motion_sense_fifo_stage_data().\nDo you assume there will be another call when processing the fifo that will call commit_data()?",
+      "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4fe8486_97d198af",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -232,6 +300,23 @@
     },
     {
       "key": {
+        "uuid": "11098679_061eb925",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "836c0605_130b42d1",
         "filename": "include/motion_sense_fifo.h",
         "patchSetId": 1
@@ -272,6 +357,23 @@
         "endLine": 55,
         "endChar": 17
       },
+      "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86914a07_9abbace1",
+        "filename": "include/tablet_mode.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 1,
+      "message": "File a separate CL.",
       "revId": "ec48feb64e20eef40a50835203881230cf0bccae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

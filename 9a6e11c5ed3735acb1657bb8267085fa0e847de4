@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bb9868c9_58a78a0b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-17T15:52:21Z",
+      "side": 0,
+      "message": "This was added 3 cls ago. Do not add that #ifndef in the first place.",
+      "revId": "9a6e11c5ed3735acb1657bb8267085fa0e847de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47181edb_8cb87281",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
