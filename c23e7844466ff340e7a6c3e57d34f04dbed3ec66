@@ -46,6 +46,30 @@
       "revId": "c23e7844466ff340e7a6c3e57d34f04dbed3ec66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd900831_51a76919",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:33:16Z",
+      "side": 1,
+      "message": "I am actually thinking it\u0027s better to format in a get_time() than make a separated function",
+      "parentUuid": "dd8bf909_d0838f17",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "c23e7844466ff340e7a6c3e57d34f04dbed3ec66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
