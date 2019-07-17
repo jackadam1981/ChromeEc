@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2442088f_1830f52c",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:35:59Z",
+      "side": 1,
+      "message": "Can you clear that in fp_clear_context()?",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "008db98f040f7953400bd4e31b6e59fd4613411e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "410d8ce9_57dc757a",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:35:59Z",
+      "side": 1,
+      "message": "Can you move this right after line 217? It less likely to be accidentally forgotten if there\u0027s a new code path in the future.",
+      "range": {
+        "startLine": 223,
+        "startChar": 2,
+        "endLine": 223,
+        "endChar": 44
+      },
+      "revId": "008db98f040f7953400bd4e31b6e59fd4613411e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163d5dbb_3e5cb4cd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5680,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:35:59Z",
+      "side": 1,
+      "message": "Can you add a comment saying that\u0027s the length of the SHA256 digest?",
+      "range": {
+        "startLine": 5680,
+        "startChar": 34,
+        "endLine": 5680,
+        "endChar": 36
+      },
+      "revId": "008db98f040f7953400bd4e31b6e59fd4613411e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25a96ad2_d680754e",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:35:59Z",
+      "side": 1,
+      "message": "Can you also test that this has be unset after the call?",
+      "range": {
+        "startLine": 456,
+        "startChar": 1,
+        "endLine": 456,
+        "endChar": 29
+      },
+      "revId": "008db98f040f7953400bd4e31b6e59fd4613411e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5095729_41067a50",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:35:59Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why the command is expected to fail and return EC_RES_ACCESS_DENIED?\n\nIt would be nice to also have unit tests that verify that invalid values of the finger index are caught",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 41
+      },
+      "revId": "008db98f040f7953400bd4e31b6e59fd4613411e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
