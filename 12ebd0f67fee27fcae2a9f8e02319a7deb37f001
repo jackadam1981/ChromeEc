@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e359de1_6371f0fa",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-07-17T15:00:45Z",
+      "side": 1,
+      "message": "This entry conflicts with the entry below, which uses the same designated initializer (BATTERY_SID), the same .manuf_name and .device_name, but has slightly different characteristics, such as .voltage_max 8700 here, but 8800 below.",
+      "revId": "12ebd0f67fee27fcae2a9f8e02319a7deb37f001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4eda7546_80d19b49",
         "filename": "board/kohaku/battery.c",
         "patchSetId": 3
