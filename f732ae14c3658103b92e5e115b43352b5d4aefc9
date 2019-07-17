@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b5cff549_607d3d83",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dde99d9_252a2b40",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 12
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e919ca99_d22121a5",
         "filename": "util/flash_fp_mcu_common.sh",
         "patchSetId": 1
@@ -119,6 +143,54 @@
     },
     {
       "key": {
+        "uuid": "3b224c2b_f26980ac",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e01359d_588265ba",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41359a58_f3ab7b9e",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "264d8410_a6627ac5",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 65
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "721d3c3e_1f01d6af",
         "filename": "util/flash_fp_mcu_common.sh",
         "patchSetId": 1
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "4d32b664_632d50af",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:30:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "721d3c3e_1f01d6af",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 118
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406a7ac6_ef2bf86a",
         "filename": "util/flash_fp_mcu_common.sh",
         "patchSetId": 1
@@ -162,6 +258,30 @@
       "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e684073a_ba58e7de",
+        "filename": "util/flash_fp_mcu_common.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-17T18:30:57Z",
+      "side": 1,
+      "message": "I\u0027ll change it to match the suggested method. I filed https://crbug.com/984629 because I don\u0027t think we have a choice unless there\u0027s some other way to get the info on nocturne.",
+      "parentUuid": "406a7ac6_ef2bf86a",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "f732ae14c3658103b92e5e115b43352b5d4aefc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
