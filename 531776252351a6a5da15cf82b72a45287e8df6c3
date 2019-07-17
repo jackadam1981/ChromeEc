@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b7308d4_89057c21",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-17T21:37:56Z",
+      "side": 1,
+      "message": "This matches datasheet.",
+      "parentUuid": "f1d5ddce_8f2c41f3",
+      "range": {
+        "startLine": 79,
+        "startChar": 29,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "531776252351a6a5da15cf82b72a45287e8df6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af41f749_220298ec",
         "filename": "board/kohaku/battery.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-16T23:07:36Z",
       "side": 1,
       "message": "This too.",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 31
+      },
+      "revId": "531776252351a6a5da15cf82b72a45287e8df6c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7331bb32_e6bba5da",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-17T21:37:56Z",
+      "side": 1,
+      "message": "This matches datasheet.",
+      "parentUuid": "af41f749_220298ec",
       "range": {
         "startLine": 88,
         "startChar": 29,
