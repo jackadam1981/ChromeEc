@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f5333a4e_97e242e1",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-17T16:20:57Z",
+      "side": 1,
+      "message": "Could you share the doc with us please? \nI can\u0027t find it in Google drive for ITE datasheets.",
+      "parentUuid": "bea06c15_1d459801",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 41
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "684ddb8d_3512b987",
         "filename": "util/iteflash.c",
         "patchSetId": 5
