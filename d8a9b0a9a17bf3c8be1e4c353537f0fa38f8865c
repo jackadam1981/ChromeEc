@@ -52,6 +52,24 @@
       "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1065d8fc_37ba29e5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4571,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-17T02:18:26Z",
+      "side": 0,
+      "message": "Yes, it has upstreamed and I will try to convince maintainers...to tell them in our case, it won\u0027t affect any real user.",
+      "parentUuid": "e4b0af60_a7085e5d",
+      "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
