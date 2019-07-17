@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0394eb9a_a644adf1",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-17T20:21:05Z",
+      "side": 1,
+      "message": "I have not seen this issue with the DP dongles I\u0027ve been using but I\u0027d like to do a few more test.",
+      "parentUuid": "30c8c5b3_ac5200c9",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afe851a4_88082fee",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -614,6 +638,30 @@
     },
     {
       "key": {
+        "uuid": "742cf17d_5ebb5e7f",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b09c6ed6_14822780",
+      "range": {
+        "startLine": 1062,
+        "startChar": 3,
+        "endLine": 1062,
+        "endChar": 36
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0a42f10_5e2e0dcc",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -682,6 +730,30 @@
       "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc081029_7a3df2cc",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-17T20:21:05Z",
+      "side": 1,
+      "message": "I see your point. To be consistent, I\u0027ll remove the Vconn Off from attached.src exit.",
+      "parentUuid": "971a9622_33c27a0b",
+      "range": {
+        "startLine": 1088,
+        "startChar": 19,
+        "endLine": 1088,
+        "endChar": 40
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -847,6 +919,30 @@
       "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbde304_9d158282",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-17T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415d75bf_9072fa76",
+      "range": {
+        "startLine": 1280,
+        "startChar": 4,
+        "endLine": 1280,
+        "endChar": 29
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
