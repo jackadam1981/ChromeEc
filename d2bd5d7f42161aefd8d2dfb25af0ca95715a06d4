@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0eabdb_baf4f0e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "Please describe these in the code as well.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0a555ff_a4633aae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "How do you like naming this just \u0027ioex\u0027? I think that increases the readability without losing the concept.",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d48e673c_0828179a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "This doesn\u0027t look used. What is this for?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630a6f1f_62054c41",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "can you do \u0027g-\u003eport\u0027 \u0026 \u0027g-\u003emask\u0027 (and get line 327 out of the cage)?",
+      "range": {
+        "startLine": 340,
+        "startChar": 47,
+        "endLine": 340,
+        "endChar": 69
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60fc76a_9c94d294",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "and these, too?",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 0
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289e6634_c9326d4e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "Do you need to say common?",
+      "range": {
+        "startLine": 1263,
+        "startChar": 14,
+        "endLine": 1263,
+        "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8fb595e_d0806ab9",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "Do you need this guard?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bcd4dd_a3a911fe",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe62002_de8765c8",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577334b7_aeb5bd63",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a64f212_367338ce",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "Please describe these.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ce3e80_2f3f6575",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-17T01:05:25Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
