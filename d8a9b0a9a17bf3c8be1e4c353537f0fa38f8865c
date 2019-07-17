@@ -16,6 +16,24 @@
       "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647fb389_9fdc303a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4600,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-17T02:18:15Z",
+      "side": 1,
+      "message": "The old EC codec on NPCX has not released, although part of them has merged and upstreamed.\n\nIt should break something WIP (I will address them in the future), but I think it should be acceptable.  No real user would be affected.",
+      "parentUuid": "a15a5a94_86c8af9a",
+      "revId": "d8a9b0a9a17bf3c8be1e4c353537f0fa38f8865c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
