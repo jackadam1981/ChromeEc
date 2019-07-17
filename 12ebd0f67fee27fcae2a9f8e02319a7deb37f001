@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c73470f_c4982cc2",
+        "filename": "board/kohaku/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-17T21:33:57Z",
+      "side": 1,
+      "message": "This issue comes from a bad conflict resolving while I tried to stack YB\u0027s CL on mine.\nI\u0027ll fix it.",
+      "parentUuid": "9e359de1_6371f0fa",
+      "revId": "12ebd0f67fee27fcae2a9f8e02319a7deb37f001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4eda7546_80d19b49",
         "filename": "board/kohaku/battery.c",
         "patchSetId": 3
