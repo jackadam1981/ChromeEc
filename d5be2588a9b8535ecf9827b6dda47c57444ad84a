@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "e27ba2d4_12ae9298",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:11:46Z",
+      "side": 1,
+      "message": "use https://crbug.com/981990",
+      "parentUuid": "bce4a0de_26c4ac71",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26c9f2a6_4a76fba1",
         "filename": "baseboard/grunt/baseboard.h",
         "patchSetId": 1
@@ -88,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "d20fba80_2236bed6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:11:46Z",
+      "side": 1,
+      "message": "That\u0027s a consideration... rrangel recently (this spring) added this macro to our codebase. I\u0027d be interested in his (and your) opinion if this is worth changing, but don\u0027t think it\u0027s up to this CL to refactor a macro.",
+      "parentUuid": "4bfbc9bc_1fb6e92b",
+      "range": {
+        "startLine": 643,
+        "startChar": 5,
+        "endLine": 643,
+        "endChar": 23
+      },
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfd288ce_11853f12",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -117,6 +159,29 @@
       "side": 1,
       "message": "I agree that the indent level is a little much here. Is this code changing in the child CL to move to sub-functions etc?",
       "parentUuid": "bfd288ce_11853f12",
+      "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feaf0b25_d502d207",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:11:46Z",
+      "side": 1,
+      "message": "Funky indendation (see Kindent script from Linux kernel)",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 30
+      },
       "revId": "d5be2588a9b8535ecf9827b6dda47c57444ad84a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
