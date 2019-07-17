@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "679840ff_4192e6bc",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:51:39Z",
+      "side": 1,
+      "message": "nit: can you use a local variable with a descriptive name for that pointer? Same for the finger_id. Since we now have lots of offset computations, it\u0027s easier to keep track.\n\nSay for example:\n\n/* Positive match salt is right after the encrypted template. */\nuint8_t *positive_match_salt \u003d fp_enc_buffer + sizeof(*enc_info) + sizeof(fp_template[0]);\n/* Finger ID is right after the salt. */\nuint8_t *finger_id \u003d positive_match_salt + sizeof(fp_pos_match_salt[0]);\n\n\nNote: it might be a good idea to also have\n\nuint8_t *encrypted_template \u003d fp_enc_buffer + sizeof(*enc_info);",
+      "range": {
+        "startLine": 455,
+        "startChar": 9,
+        "endLine": 456,
+        "endChar": 27
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d548e51f_65175f39",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:51:39Z",
+      "side": 1,
+      "message": "sizeof(fp_pos_match_salt[0])",
+      "range": {
+        "startLine": 457,
+        "startChar": 33,
+        "endLine": 457,
+        "endChar": 56
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef17661_9315228e",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:51:39Z",
+      "side": 1,
+      "message": "sizeof(finger_id[0])",
+      "range": {
+        "startLine": 460,
+        "startChar": 25,
+        "endLine": 460,
+        "endChar": 43
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8174e6c3_06e9376b",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:51:39Z",
+      "side": 1,
+      "message": "sizeof(fp_pos_match_salt[0])",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643ef035_af74b53e",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-17T16:51:39Z",
+      "side": 1,
+      "message": "sizeof(finger_id[0])",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
