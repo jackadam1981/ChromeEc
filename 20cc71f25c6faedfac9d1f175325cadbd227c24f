@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6eb782af_fa336edd",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-17T02:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b78fd90_0abe583c",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3cf5ed7_d930eed0",
         "filename": "common/audio_codec.c",
         "patchSetId": 9
@@ -51,6 +69,24 @@
       "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b21e85_469c9b91",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-17T02:18:39Z",
+      "side": 1,
+      "message": "I was misunderstanding something.  Fixed.",
+      "parentUuid": "5b5053bc_e11eff8c",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -124,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "9e6dd5b7_7213c2aa",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-17T02:18:39Z",
+      "side": 1,
+      "message": "What I want is creating a \"overlay\"-like concept.  Chip could provide some common implementations and boards are able to override them if any changes.\n\nFor example, suppose chip A usually map 0x100 to 0x600, but derived board B can map 0x100 to 0x800.",
+      "parentUuid": "4648f7a8_99977d1a",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19c83a15_6a3b954c",
         "filename": "common/build.mk",
         "patchSetId": 9
@@ -153,6 +207,24 @@
       "side": 1,
       "message": "for debug purpose: e.g.\nmake AUDIO_CODEC_EXTRA_CFLAGS\u003d\u0027-DDEBUG_AUDIO_CODEC\u003dy\u0027",
       "parentUuid": "19c83a15_6a3b954c",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e50c280d_af295912",
+        "filename": "common/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-17T02:18:39Z",
+      "side": 1,
+      "message": "I was thinking that: EC codebase should have such variable to accept additional CFLAGS, so that when people want to build with debug feature they don\u0027t need to modify the source code and recompile.  Just use: -DXXXXXX\u003dy or -DYYYYYY\u003d1 with `make`.",
+      "parentUuid": "45497fbf_3cee35d4",
       "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
