@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c0587c5c_026b963a",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-17T15:20:52Z",
+      "side": 1,
+      "message": "fair enough. Thanks for making it shorter",
+      "parentUuid": "00aa6e75_fed3d480",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 46
+      },
+      "revId": "6449a9fba32d9416a250eda7e1b9faa69cf9ae0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca72dfd_f701ac72",
         "filename": "common/i2c_trace.c",
         "patchSetId": 1
