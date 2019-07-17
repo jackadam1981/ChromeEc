@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ce967b9_125e9e52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "014edcfa_c41c38a8",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa365183_3fbf2614",
         "filename": "baseboard/octopus/baseboard.h",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e847ac4_d85ddc8d",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa365183_3fbf2614",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +148,30 @@
     },
     {
       "key": {
+        "uuid": "4b8247fc_00602c27",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "For the case where CONFIG_ACCEL_FIFO is defined we\u0027ll compile the g_sensor_mutex from motion_sense_fifo.c. This is just needed when we\u0027re not compiling that unit.",
+      "parentUuid": "dc1d6993_cf710d52",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 6
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f49a1c92_f62b496d",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -120,6 +186,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87917bd5_4692bb52",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f49a1c92_f62b496d",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -175,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "c3638296_96791764",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2071249_8eaea76f",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "560888f8_43c53f5d",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -222,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "fda591b9_95d99b2d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Can\u0027t make these static as they\u0027re referenced in motion_sense.c. This is later fixed in the refactor CL at the end.",
+      "parentUuid": "7eaf06b0_56ff526b",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5876be7e_6f124dd5",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -242,6 +368,30 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de8ba43_d448bfba",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Nope, the motion_sense.c one only is included if we\u0027re not building this file.",
+      "parentUuid": "5876be7e_6f124dd5",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -268,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "922d93b7_216048f2",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Done in a later CL",
+      "parentUuid": "ca0fbe60_3763255f",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 6
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72d72ce6_f93c1872",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -291,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "67b8734e_a9d186cd",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "The later CL changes all the names here to motion_sense_fifo_* to keep the scoping logical.",
+      "parentUuid": "72d72ce6_f93c1872",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 36
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e772eb3_a07d9e28",
         "filename": "common/motion_sense_fifo.c",
         "patchSetId": 1
@@ -311,6 +509,30 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c9e45e_ce558309",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-17T19:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e772eb3_a07d9e28",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 9
+      },
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
