@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4f938fa4_674aba13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-17T14:30:32Z",
+      "side": 1,
+      "message": "open one?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "9a6e11c5ed3735acb1657bb8267085fa0e847de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0ae047d_5e4d40d0",
         "filename": "include/test_util.h",
         "patchSetId": 1
