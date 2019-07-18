@@ -73,6 +73,12 @@ enum rt946x_chg_stat {
 enum rt946x_adc_in_sel {
 	RT946X_ADC_VBUS_DIV5 = 1,
 	RT946X_ADC_VBUS_DIV2,
+	RT946X_ADC_VSYS,
+	RT946X_ADC_TSBAT = 6,
+	RT946X_ADC_IBUS = 8,
+	RT946X_ADC_IBAT,
+	RT946X_ADC_CHG_VDDP = 11,
+	RT946X_ADC_TEMP_JC,
 };
 
 #if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
@@ -685,18 +691,48 @@ int charger_discharge_on_ac(int enable)
 	return rt946x_enable_hz(enable);
 }
 
-int charger_get_vbus_voltage(int port)
+int rt946x_adc_read(enum rt946x_adc_in_sel adc, int *data, int timeout)
 {
+	static struct mutex mtx;
 	int val;
-	static int vbus_mv;
-	int retries = 10;
+	int data_l, data_h;
+	const int retry_interval = 5;
 
-	/* Set VBUS as ADC input */
+	mutex_lock(&mtx);
+
+	/* Set ADC input */
 	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
-		RT946X_ADC_VBUS_DIV5 << RT946X_SHIFT_ADC_IN_SEL);
+		adc << RT946X_SHIFT_ADC_IN_SEL);
 
 	/* Start ADC conversion */
 	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
+
+	while (timeout >= 0) {
+		rt946x_read8(RT946X_REG_CHGSTAT, &val);
+		if (val & RT946X_MASK_ADC_STAT)
+			break;
+		msleep(retry_interval);
+		timeout -= retry_interval;
+	}
+
+	if (timeout >= 0) {
+		/* Read measured results if ADC finishes in time. */
+		rt946x_read8(RT946X_REG_ADCDATAL, &data_l);
+		rt946x_read8(RT946X_REG_ADCDATAH, &data_h);
+		mutex_unlock(&mtx);
+		*data = (data_h << 8) | data_l;
+
+		return EC_SUCCESS;
+	}
+
+	mutex_unlock(&mtx);
+	return EC_ERROR_TIMEOUT;
+}
+
+int charger_get_vbus_voltage(int port)
+{
+	int data;
+	static int vbus_mv;
 
 	/*
 	 * In practice, ADC conversion rarely takes more than 35ms.
@@ -704,24 +740,9 @@ int charger_get_vbus_voltage(int port)
 	 * up to 200ms. But we can't wait for that long, otherwise
 	 * host command would time out. So here we set ADC timeout as 50ms.
 	 * If ADC times out, we just return the last read vbus_mv.
-	 *
-	 * TODO(chromium:820335): We may handle this more gracefully with
-	 * EC_RES_IN_PROGRESS.
 	 */
-	while (--retries) {
-		rt946x_read8(RT946X_REG_CHGSTAT, &val);
-		if (val & RT946X_MASK_ADC_STAT)
-			break;
-		msleep(5);
-	}
-
-	if (retries) {
-		/* Read measured results if ADC finishes in time. */
-		rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
-		rt946x_read8(RT946X_REG_ADCDATAH, &val);
-		vbus_mv |= (val << 8);
-		vbus_mv *= 25;
-	}
+	if (!rt946x_adc_read(RT946X_ADC_VBUS_DIV5, &data, 50))
+		vbus_mv = data * 25;
 
 	return vbus_mv;
 }
