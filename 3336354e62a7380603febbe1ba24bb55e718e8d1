@@ -238,6 +238,53 @@
       "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef206f6_14ca3264",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T06:52:39Z",
+      "side": 1,
+      "message": "I think Depthcharge should always treat hardcoded PID/VID as expected values. This premise makes chip values used only for verification after update. If Depthcharge finds hardcoded_value !\u003d chip_value (after update), it treats the last update as a failure. It should probably retry update.\n\nFAFT shouldn\u0027t treat either hardcoded_value or chip_value as an expected value. If they differ, it could be because of wrong (or missing) hardcoded_value or invalid chip_value.\n\nWe still need to make FAFT exercise aux firmware update. We should test how we recover from update failure. It\u0027s not realistic to update a chip whose write cycle is limited so low. So, we should be able to assume update test can be run repeatedly. That is, we don\u0027t update ANX3429 unless the update is critical.\n\nRegarding renaming, I think renew is not proper because it doesn\u0027t renew cache for PID/VID. We won\u0027t even have cache for them. \u0027source\u0027 isn\u0027t accurate either because if cache is missed, EC retrieves a firmware version from a chip.\n\nNeither renew nor source reflect the new behavior perfectly. Can you rename it \u0027live\u0027? Calling it live allows us to ambiguate what data will be returned when live \u003d\u003d 0. It would lure developers into reading the API description.",
+      "parentUuid": "7cb53c5c_7d875ace",
+      "range": {
+        "startLine": 5161,
+        "startChar": 0,
+        "endLine": 5165,
+        "endChar": 2
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf7d5ed_d66047f9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 5170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T06:52:39Z",
+      "side": 1,
+      "message": "Please describe precisely what data will be returned:\n\n  /*\n   * 0: hardcoded value for PID/VID, cached value for FWV\n   * 1: live value for PID/VID/FWV\n   */",
+      "range": {
+        "startLine": 5170,
+        "startChar": 1,
+        "endLine": 5170,
+        "endChar": 68
+      },
+      "revId": "3336354e62a7380603febbe1ba24bb55e718e8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

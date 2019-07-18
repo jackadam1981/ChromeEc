@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7132cbf_a7661b46",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 5168,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T06:52:39Z",
+      "side": 1,
+      "message": "We should just use 1 or 0 (instead of RENEW or LOCAL) if we rename it \u0027live\u0027.",
+      "range": {
+        "startLine": 5167,
+        "startChar": 0,
+        "endLine": 5168,
+        "endChar": 26
+      },
+      "revId": "52c73f946fbc59e7bf56e44b5d583eb7b89f99a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
