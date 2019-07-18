@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "fd3ac287_5e1b7a88",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T20:11:41Z",
+      "side": 1,
+      "message": "This isn\u0027t a big deal. Please ignore it and comment on line 360.",
+      "parentUuid": "630a6f1f_62054c41",
+      "range": {
+        "startLine": 340,
+        "startChar": 47,
+        "endLine": 340,
+        "endChar": 69
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f60fc76a_9c94d294",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
