@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "cd20e9b3_d000c35f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-18T06:14:48Z",
+      "side": 1,
+      "message": "I don\u0027t know how to share the doc to you. (which google drive ? or by email ?)\nI will ask our PM for help it.\nITE PM Eddie will share the datasheet to you later. (eddie.chi@ite.com.tw)\nIf there are still any request, please let us know.",
+      "parentUuid": "f5333a4e_97e242e1",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 41
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "684ddb8d_3512b987",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -283,6 +307,30 @@
       "revId": "568334990aac0589887b8ba71eb52adbade07d56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f454a6_a3d4a0f2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-18T06:14:48Z",
+      "side": 1,
+      "message": "Do you mean id should initialize to 0 or 0xffff or 0xffffff ?\nIf (uint32_t)id is initialize to 0xffff , (uint8_t)id+2 is 0.\nThe third byte is default to 0.",
+      "parentUuid": "e7a700a6_ba7dd89d",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
