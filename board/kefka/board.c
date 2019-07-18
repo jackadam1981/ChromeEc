@@ -287,3 +287,8 @@ uint8_t board_set_battery_level_shutdown(void)
 	/* Cut off at 5% */
 	return 6;
 }
+
+void board_set_gpio_hibernate_state(void)
+{
+	gpio_set_level(GPIO_WLAN_OFF_L, 0);
+}
