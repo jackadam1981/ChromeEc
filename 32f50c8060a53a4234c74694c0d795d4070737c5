@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b2987e01_b66d5162",
+        "filename": "docs/fingerprint/updating_and_flashing.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T00:16:28Z",
+      "side": 1,
+      "message": "It seems like it\u0027s a caching issue: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1658525/5#message-8aa5bdba98d803d2af5755c8f48edefbc5482b6f",
+      "parentUuid": "0121025c_a6656ed4",
+      "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "619cccd1_6d2d7f8c",
         "filename": "docs/fingerprint/write_protection.md",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2b0377_6726a793",
+        "filename": "docs/fingerprint/write_protection.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T00:16:28Z",
+      "side": 1,
+      "message": "I moved it to a separate \"Write Protection\" doc since it\u0027s more generic.",
+      "parentUuid": "619cccd1_6d2d7f8c",
+      "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "df3f2747_f9106873",
+        "filename": "docs/fingerprint/write_protection.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T00:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec6cc76_9a5e65fc",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 46
+      },
+      "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfe88a8b_9d0ea073",
         "filename": "docs/fingerprint/write_protection.md",
         "patchSetId": 5
@@ -70,6 +130,30 @@
       "writtenOn": "2019-07-16T22:48:47Z",
       "side": 1,
       "message": "Hmm... this isn\u0027t right.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23212bf8_14bf08a2",
+        "filename": "docs/fingerprint/write_protection.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T00:16:28Z",
+      "side": 1,
+      "message": "Can you elaborate? Where does the write protect signal not go?",
+      "parentUuid": "dfe88a8b_9d0ea073",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -102,6 +186,30 @@
       "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0da04a9_be20bf64",
+        "filename": "docs/sitemap.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T00:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201fa25d_0aaeda0a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 57
+      },
+      "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
