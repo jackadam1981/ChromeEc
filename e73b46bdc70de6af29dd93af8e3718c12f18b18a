@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa8a5a9c_f92c4fae",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-18T02:51:14Z",
+      "side": 1,
+      "message": "Merge these two cases, e.g.:\n\n\tcase PWR_STATE_CHARGE:\n        case PWR_STATE_CHARGE_NEAR_FULL:\n\t\tbr[EC_LED_COLOR_BLUE] \u003d 1;\n\t\tbr[EC_LED_COLOR_GREEN] \u003d 1;\n\t\tbr[EC_LED_COLOR_RED] \u003d 1;\n\t\tbreak;",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "e73b46bdc70de6af29dd93af8e3718c12f18b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
