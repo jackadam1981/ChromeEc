@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9b00c48_159012b3",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-18T02:08:08Z",
+      "side": 1,
+      "message": "sorry, I meant to send the error message to both the console and the log file. Will the user see the message on the console if it is sent to the log only?",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 25
+      },
+      "revId": "b54e24b4e7dd67188ec468a98785b281d6258148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
