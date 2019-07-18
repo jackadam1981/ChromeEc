@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92118fd1_f1138544",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2884,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T23:10:20Z",
+      "side": 1,
+      "message": "You can join the lines (\u003drevert the change).",
+      "range": {
+        "startLine": 2882,
+        "startChar": 0,
+        "endLine": 2884,
+        "endChar": 19
+      },
+      "revId": "e0ba270489e6de8f0680db27910948f426f14447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3592ae57_05b3c63f",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T23:10:20Z",
+      "side": 1,
+      "message": "Can you add \u0027see struct ec_params_pd_chip_info for detail\u0027?",
+      "range": {
+        "startLine": 273,
+        "startChar": 11,
+        "endLine": 273,
+        "endChar": 64
+      },
+      "revId": "e0ba270489e6de8f0680db27910948f426f14447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
