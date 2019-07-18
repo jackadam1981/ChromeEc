@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5ce3ef0_b880c7d3",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-18T01:36:19Z",
+      "side": 1,
+      "message": "You don\u0027t need this newline.",
+      "range": {
+        "startLine": 287,
+        "startChar": 24,
+        "endLine": 287,
+        "endChar": 26
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ab9764_bf5538d4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-18T01:36:19Z",
+      "side": 1,
+      "message": "The adc read function is here.",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 812,
+        "endChar": 2
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac97310_fe8bd0de",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-18T01:36:19Z",
+      "side": 1,
+      "message": "We already have a function: charger_get_vbus_voltage, and it uses adc.\nCould you refactor the function as well, and use a mutex to lock the access, since there is a VBUS adc usage.",
+      "range": {
+        "startLine": 1060,
+        "startChar": 25,
+        "endLine": 1060,
+        "endChar": 42
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e46b8a4_dd670e2b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-18T01:36:19Z",
+      "side": 1,
+      "message": "Please drop all \u0027\\n\u0027 in a CPRINTS",
+      "range": {
+        "startLine": 1183,
+        "startChar": 15,
+        "endLine": 1183,
+        "endChar": 17
+      },
+      "revId": "391755eaf555eab686f6865a8c65a38a85601995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
