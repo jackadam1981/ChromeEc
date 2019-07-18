@@ -52,6 +52,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38fb2a30_f3c574af",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-18T16:50:46Z",
+      "side": 0,
+      "message": "Sorry, I\u0027m not seeing how it is changing the behavior.\n\n1. Previously, if CONFIG_ACCEL_FIFO wasn\u0027t defined we never compile this code. Now if CONFIG_ACCEL_FIFO isn\u0027t defined we\u0027ll remove this code in optimization (so far it\u0027s the same).\n\n2. Assuming CONFIG_ACCEL_FIFO is there, we would check if wake_up_needed isn\u0027t 0 || queue_space(\u0026motion_sense_fifo) \u003c CONFIG_ACCEL_FIFO_THRES; note that the rest of the checks aren\u0027t changed so I\u0027m not looking into them. In the new code, we replace that wake_up_needed || queue_space(\u0026motion_sense_fifo) \u003c CONFIG_ACCEL_FIFO_THRES with a call to motion_sense_fifo_is_wake_up_needed() which does exactly that, see https://crrev.com/c/1704164/1/common/motion_sense_fifo.c#402",
+      "parentUuid": "55071c2b_14d93093",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
