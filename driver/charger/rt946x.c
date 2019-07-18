@@ -940,7 +940,7 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 	case CHARGE_SUPPLIER_BC12_DCP:
 		if (IS_ENABLED(CONFIG_CHARGE_RAMP_SW))
 			/* A conservative value to prevent a bad charger. */
-			return 2000;
+			return 2250;
 	case CHARGE_SUPPLIER_BC12_CDP:
 		return 1500;
 	case CHARGE_SUPPLIER_BC12_SDP:
