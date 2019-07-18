@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8caa81d8_f0eb6aee",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-18T00:25:29Z",
+      "side": 1,
+      "message": "should the exception handler also add the error to the log so it is clear from looking at the log that the test failed?",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 28
+      },
+      "revId": "4ad66cae1624d96ad3639aa6cbea5d7e8f2e7850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
