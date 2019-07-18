@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "e0ec7e6e_ea122766",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T23:22:31Z",
+      "side": 1,
+      "message": "I understand what you meant by the stack now. Please ignore my suggestion. Thanks,",
+      "parentUuid": "55287736_041872c3",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5112eb0b_f78182bc",
         "filename": "common/acpi.c",
         "patchSetId": 1
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Hm, so we\u0027re really sure there\u0027s no form of the EC codebase that might want less precision? I was hoping to keep this change mostly to be a refactoring, and (try to) not let larger feature-level decisions creep in. My vote would be to keep it the way I have it for now, and then later we can look at the value of CONFIG_CONSOLE_VERBOSE and remove it as a separate change. Is there a reason I\u0027m missing why an additional subroutine is bad?",
       "parentUuid": "2bb674ca_19955c56",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c556508_34a5755c",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T23:22:31Z",
+      "side": 1,
+      "message": "I don\u0027t like this sequence:\n\n\tCPRINTF(\"[\");\n\tCPRINT_TIMESTAMP();\n\tCPRINTF(\" ...\", ...);\n\nbecause it can be:\n\n\tCPRINTF(\"[%.6lu ...\", get_time().val, ...);\n\nMaybe we can do:\n\n\t#define _TIMESTAMP_ PRECISION, get_time().val/10^(6-PRECISION), \n\nThen,\n\n\tCPRINTF(\"[%.*lu ...\", _TIMESTAMP_, ...);\n\nOr you may have a better idea?",
+      "parentUuid": "969eec3c_b5b6a42d",
       "range": {
         "startLine": 118,
         "startChar": 4,
