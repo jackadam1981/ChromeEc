@@ -16,6 +16,24 @@
       "revId": "75d4b9ab572b90abdff125537200f9ac26ca9200",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940c3e22_3192ea12",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-18T05:58:17Z",
+      "side": 1,
+      "message": "Indeed, checking if uart_buffer_empty() seems sufficient. No need to maintain another global variable.",
+      "parentUuid": "70d219f9_dab0b380",
+      "revId": "75d4b9ab572b90abdff125537200f9ac26ca9200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

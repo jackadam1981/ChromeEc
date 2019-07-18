@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b553f75b_a006cb6b",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-18T05:58:17Z",
+      "side": 1,
+      "message": "Actually, enabling bit[7] like you mentioned above is enough and simple.",
+      "parentUuid": "e75ec20f_302c315d",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "516eb22a_b601da7d",
         "filename": "chip/npcx/uartn.c",
         "patchSetId": 1
