@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ae0a0b7_1d4db946",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T07:07:10Z",
+      "side": 1,
+      "message": "What about TEST_EQ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 13,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "ace112fa00c3d4cd2131077e477478fd140261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041674d1_f027a670",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T07:07:10Z",
+      "side": 1,
+      "message": "What about TEST_NEQ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 13,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "ace112fa00c3d4cd2131077e477478fd140261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd0f5a7f_bad1f636",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T07:07:10Z",
+      "side": 1,
+      "message": "What about TEST_BITS_SET?",
+      "range": {
+        "startLine": 55,
+        "startChar": 13,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ace112fa00c3d4cd2131077e477478fd140261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc96eac_c0b575df",
+        "filename": "include/test_util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T07:07:10Z",
+      "side": 1,
+      "message": "What about TEST_BITS_CLEARED?",
+      "range": {
+        "startLine": 56,
+        "startChar": 13,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "ace112fa00c3d4cd2131077e477478fd140261af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
