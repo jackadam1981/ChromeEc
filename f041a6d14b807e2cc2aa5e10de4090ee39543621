@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04ac6804_efc02b9d",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-18T17:41:03Z",
+      "side": 0,
+      "message": "Why did you remove this?",
+      "revId": "f041a6d14b807e2cc2aa5e10de4090ee39543621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e933894_0a7acdf9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-18T17:41:03Z",
+      "side": 0,
+      "message": "Same as other file; why the removal of this #ifdef?",
+      "revId": "f041a6d14b807e2cc2aa5e10de4090ee39543621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
