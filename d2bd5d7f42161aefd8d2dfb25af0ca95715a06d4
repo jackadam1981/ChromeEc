@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "724f6309_ec731123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T17:32:21Z",
+      "side": 1,
+      "message": "typo: \u0027remote\u0027",
+      "range": {
+        "startLine": 20,
+        "startChar": 43,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0a555ff_a4633aae",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -186,6 +209,23 @@
     },
     {
       "key": {
+        "uuid": "dab1a0f5_335db9b5",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T17:32:21Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fe62002_de8765c8",
         "filename": "include/gpio_list.h",
         "patchSetId": 1
@@ -225,6 +265,98 @@
         "startChar": 0,
         "endLine": 9,
         "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841ea69e_aa5cd7fb",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T17:32:21Z",
+      "side": 1,
+      "message": "nit: \u0027of an IO\u0027",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8d13ee_86a03371",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T17:32:21Z",
+      "side": 1,
+      "message": "typo: \u0027field\u0027",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0c15b3_6286c962",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T17:32:21Z",
+      "side": 1,
+      "message": "typo: \u0027field\u0027",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b6cd40_7def49ac",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T17:32:21Z",
+      "side": 1,
+      "message": "nit: The new practice these days is to use the BIT(...) macro.",
+      "range": {
+        "startLine": 24,
+        "startChar": 39,
+        "endLine": 24,
+        "endChar": 53
       },
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
