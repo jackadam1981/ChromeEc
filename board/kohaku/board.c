@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "battery_smart.h"
 #include "button.h"
 #include "common.h"
 #include "cros_board_info.h"
@@ -412,4 +413,47 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC_ODL, !is_overcurrented);
+}
+
+/*
+ * I2C callbacks to ensure bus free time for battery I2C transactions is at
+ * least 5ms.
+ */
+#define BATTERY_FREE_MIN_DELTA_US               (5 * MSEC)
+static timestamp_t battery_last_i2c_time;
+
+static int is_battery_i2c(int port, int slave_addr)
+{
+        return (port == I2C_PORT_BATTERY) && (slave_addr == BATTERY_ADDR);
+}
+
+static int is_battery_port(int port)
+{
+        return (port == I2C_PORT_BATTERY);
+}
+
+void i2c_start_xfer_notify(int port, int slave_addr)
+{
+        unsigned int time_delta_us;
+
+        if (!is_battery_i2c(port, slave_addr))
+                return;
+
+        time_delta_us = time_since32(battery_last_i2c_time);
+        if (time_delta_us >= BATTERY_FREE_MIN_DELTA_US)
+                return;
+
+        usleep(BATTERY_FREE_MIN_DELTA_US - time_delta_us);
+}
+
+void i2c_end_xfer_notify(int port, int slave_addr)
+{
+        /*
+         * The bus free time needs to be maintained from last transaction
+         * on I2C bus to any device on it to the next transaction to battery.
+         */
+        if (!is_battery_port(port))
+                return;
+
+        battery_last_i2c_time = get_time();
 }
