@@ -22,6 +22,30 @@
       "revId": "26f22c41030ea1c6189892f28ef4b89cfd0fad01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc84a79_05af6b91",
+        "filename": "board/kohaku/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2019-07-18T16:44:44Z",
+      "side": 1,
+      "message": "s/potentially dangerous/dangerous/\n\nAlso, can impact the user\u0027s experience by slowing response times.",
+      "parentUuid": "7351b8df_3c6b72de",
+      "range": {
+        "startLine": 446,
+        "startChar": 8,
+        "endLine": 446,
+        "endChar": 58
+      },
+      "revId": "26f22c41030ea1c6189892f28ef4b89cfd0fad01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
