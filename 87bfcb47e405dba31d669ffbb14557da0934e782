@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "58a8197a_15f67391",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Yeah, it seems reasonable to prevent that from accidentally happening. I thought I\u0027d seen a mass erase triggered when disabling hardware write protect in the past. See the warning I wrote here (early on): http://go/cros-fingerprint-write-protection#software-write-protect.",
+      "parentUuid": "621750b2_5fbbda3a",
+      "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1e7b39_0c940deb",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 1
@@ -96,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "cc92a7f2_c2acda8a",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1e7b39_0c940deb",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 39
+      },
+      "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d174b7c_48e8fcdb",
         "filename": "chip/stm32/flash-f.h",
         "patchSetId": 1
@@ -110,6 +152,24 @@
       "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9a3a08_573edaf5",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d174b7c_48e8fcdb",
+      "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -133,6 +193,30 @@
       "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5d1755_2f6d219a",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c695b1_3259f8b6",
+      "range": {
+        "startLine": 2037,
+        "startChar": 41,
+        "endLine": 2037,
+        "endChar": 46
+      },
+      "revId": "87bfcb47e405dba31d669ffbb14557da0934e782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

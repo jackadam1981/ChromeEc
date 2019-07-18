@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "1093fca7_d64cddd6",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "I do have long-term plans for unit-testing that I\u0027ll be sharing in the coming weeks.\n\nBasically, set up a lab of ST Nucleo boards (or other easy-to-get dev boards). Certain subsets of functionality is relatively easy to test in this manner (read/writing/erasing flash is a good candidate).\n\nShort functions are also usually help with readability: https://google.github.io/styleguide/cppguide.html#Write_Short_Functions",
+      "parentUuid": "a3b5a62c_c75d9d8c",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4363fdbc_6f579b60",
         "filename": "chip/stm32/flash-f.h",
         "patchSetId": 3
@@ -229,6 +247,30 @@
       "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbee7d48_3f23317b",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c06c496_4258bbfc",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -303,6 +345,30 @@
     },
     {
       "key": {
+        "uuid": "73b996e7_036a0110",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll remove it for now and we can have a broader discussion on chatty-firmware.",
+      "parentUuid": "927aaf2e_dce20c44",
+      "range": {
+        "startLine": 2037,
+        "startChar": 45,
+        "endLine": 2037,
+        "endChar": 46
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70e25fad_f66dc02d",
         "filename": "include/console_channel.inc",
         "patchSetId": 3
@@ -317,6 +383,24 @@
       "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2c8bef_83639011",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-18T20:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e25fad_f66dc02d",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
