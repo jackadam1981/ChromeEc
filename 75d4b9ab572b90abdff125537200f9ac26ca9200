@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70d219f9_dab0b380",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2019-07-18T02:45:39Z",
+      "side": 1,
+      "message": "Does it have the opportunity to replace wait_stop with uart_buffer_empty()? If so, it looks clearer.",
+      "revId": "75d4b9ab572b90abdff125537200f9ac26ca9200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
