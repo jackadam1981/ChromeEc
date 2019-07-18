@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d87365d6_a32f5210",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-18T15:19:51Z",
+      "side": 1,
+      "message": "what exactly is the test sequence, how does one run this test?\n\nALso, should this test be available over USB, controlled by the host?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "96e591f489551dcd0544f8dce51e1056c1f3026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cf27fb_6b3482e6",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-18T15:19:51Z",
+      "side": 1,
+      "message": "what is this? A comment is required.",
+      "range": {
+        "startLine": 753,
+        "startChar": 1,
+        "endLine": 753,
+        "endChar": 41
+      },
+      "revId": "96e591f489551dcd0544f8dce51e1056c1f3026e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
