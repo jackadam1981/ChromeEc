@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "58e6a49a_72ced4db",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-18T16:05:21Z",
+      "side": 1,
+      "message": "What I meant was like this:\n\n#ifdef NPCX_UART_FIFO_SUPPORT\n      NPCX_UART_TX_NXMIP_INT_EN(uart_num)\n#endif\n      NPCX_UART_TX_EMPTY_INT_EN(uart_num);\n\nBut I see that patchset#3 replaces\u0027setting bit[6]\u0027 with \u0027setting bit[7]\u0027 only. If it is enough, then would you update the comment in line 124~129 with some explanation?",
+      "parentUuid": "b553f75b_a006cb6b",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 5
+      },
+      "revId": "dc72969d5910b844aa52a52d80c763dd265c1ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "516eb22a_b601da7d",
         "filename": "chip/npcx/uartn.c",
         "patchSetId": 1
