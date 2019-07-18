@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "a8ac3997_af723ac7",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-18T15:50:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd20e9b3_d000c35f",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 41
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "684ddb8d_3512b987",
         "filename": "util/iteflash.c",
         "patchSetId": 5
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "Do you mean id should initialize to 0 or 0xffff or 0xffffff ?\nIf (uint32_t)id is initialize to 0xffff , (uint8_t)id+2 is 0.\nThe third byte is default to 0.",
       "parentUuid": "e7a700a6_ba7dd89d",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2fd6b8d_3e765e88",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-18T15:50:08Z",
+      "side": 1,
+      "message": "Why don\u0027t we keep line 535~536 in patchset#5, and have \"id |\u003d 0xFF0000;\" between line 579 and 580?",
+      "parentUuid": "60f454a6_a3d4a0f2",
       "range": {
         "startLine": 536,
         "startChar": 15,
