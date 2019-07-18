@@ -34,6 +34,24 @@
       "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55071c2b_14d93093",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-18T15:45:39Z",
+      "side": 0,
+      "message": "But you are changing the behavior if we are testing up to this CL.\nOne way to avoid the problem is to add at the end of include/config.h:\n\n#ifndef CONFIG_ACCEL_FIFO\n#  define CONFIG_ACCEL_FIFO_THRES 0\n#endif\n\nbonus point: you will catch boards where CONFIG_ACCEL_FIFO_THRES is defined but not CONFIG_ACCEL_FIFO.",
+      "parentUuid": "dbccb9c4_f556c8ba",
+      "revId": "a7df9b5d7c20cbf2308b42c3b97d720e9546848b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
