@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5f890346_81fbf72b",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T07:41:20Z",
+      "side": 1,
+      "message": "Why do you need to be concerned about the stack? I meant:\n\n\tstatic const char *print_state_flags(uint32_t flags)\n\t\tif (flags \u0026 CCD_ENABLE_UART_AP)\n\t\t\treturn \" UARTAP\";\n\t\tif (flags \u0026 CCD_ENABLE_UART_AP_TX)\n\t\t\treturn \"+TX\";\n\t\t...\n\t}",
+      "parentUuid": "17991a75_322b062a",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5112eb0b_f78182bc",
         "filename": "common/acpi.c",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Sure, I like the idea of defining precision/denominator statically. But if we remove this function, I worry we\u0027ll end up bloating code size, as this code would copy/paste to all the callers. I have 68 hits in my codebase (though this includes #define and the definition itself).",
       "parentUuid": "c3fde805_095595e5",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb674ca_19955c56",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-18T07:41:20Z",
+      "side": 1,
+      "message": "I think we should get rid of CONFIG_CONSOLE_VERBOSE and let timestamp be printed as:\n\n  CPRINTF(\"[%.6lu ...\", get_time().val, ...);\n\nwhere open-ending printf is needed. I think this is a piece of code naturally duplicated.",
+      "parentUuid": "7c15d7bb_a5718aa0",
       "range": {
         "startLine": 118,
         "startChar": 4,
