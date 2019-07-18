@@ -128,6 +128,9 @@
 #define GPIO_PCH_SLP_S4_L GPIO_SLP_S4_L
 #define GPIO_EN_PP5000 GPIO_EN_PP5000_A
 
+/* Battery W/A */
+#define CONFIG_I2C_XFER_BOARD_CALLBACK
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
