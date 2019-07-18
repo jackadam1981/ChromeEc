@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32b792a_bd6b5638",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T22:01:37Z",
+      "side": 1,
+      "message": "instead of these fixed strings, what about just having the user pass in the number desired? (also, the 9V and 15V power roles are missing)\n\nDoes the interface need to be tied to the plankton interface?",
+      "revId": "c700e0434da92f9bccf466ea6bd81ac084498450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
