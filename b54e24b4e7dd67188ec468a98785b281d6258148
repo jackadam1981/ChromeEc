@@ -22,6 +22,30 @@
       "revId": "b54e24b4e7dd67188ec468a98785b281d6258148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95bde4c_c2fcaa90",
+        "filename": "util/uart_stress_tester.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-18T16:11:01Z",
+      "side": 1,
+      "message": "Yes, this will print an message to stdout.\n\nuart_stress_tester.py /dev/pts/14 /dev/pts/12 -t 46800\n2019-07-18 09:10:10 INFO   | ChargenTest               | Prepare ports for test\n2019-07-18 09:10:10 INFO   | UartSerial| /dev/pts/12   | Preparing...\n2019-07-18 09:10:12 ERROR  | root                      | /dev/pts/12: Got no input. Close any other connections to this port, and try it again.",
+      "parentUuid": "e9b00c48_159012b3",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 25
+      },
+      "revId": "b54e24b4e7dd67188ec468a98785b281d6258148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
