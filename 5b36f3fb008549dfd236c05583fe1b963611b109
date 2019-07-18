@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b830766e_352b5f77",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-18T22:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c201e035_6b0640c8",
+      "range": {
+        "startLine": 784,
+        "startChar": 1,
+        "endLine": 784,
+        "endChar": 4
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7bce91c_59229e4d",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 20
@@ -45,6 +69,30 @@
       "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e587e4b9_d8daaa04",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-18T22:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7bce91c_59229e4d",
+      "range": {
+        "startLine": 803,
+        "startChar": 0,
+        "endLine": 804,
+        "endChar": 44
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c2005c6e_1524b123",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-18T22:49:31Z",
+      "side": 1,
+      "message": "I tested this on the compliance tester and it worked but it could be a problem on other devices. I\u0027ll put the original code back in place.",
+      "parentUuid": "c55a0148_8a1cea7e",
+      "range": {
+        "startLine": 1508,
+        "startChar": 0,
+        "endLine": 1510,
+        "endChar": 39
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2602c42_9e5f9a10",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 20
@@ -91,6 +163,30 @@
       "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1737558e_d8ed564a",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-18T22:49:31Z",
+      "side": 1,
+      "message": "Yes this is a debounce. I saw some noise on the CC line that was triggering a disconnect and from the spec.: the Source should detect the SRC.Open state as quickly as \"practical\". Table 4-27",
+      "parentUuid": "f2602c42_9e5f9a10",
+      "range": {
+        "startLine": 1562,
+        "startChar": 2,
+        "endLine": 1562,
+        "endChar": 62
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
