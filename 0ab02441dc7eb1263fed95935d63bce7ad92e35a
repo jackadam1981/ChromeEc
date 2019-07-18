@@ -334,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "11c7fa2d_f876c4c5",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-18T23:50:58Z",
+      "side": 1,
+      "message": "Hm, actually I do have one idea. %p is the allowable way to extend printf. So you could use %pT to do all the same timestamping tricks we do today. The only difference is you need to pass a void pointer as an argument. So we could make the semantics this: pass NULL and printf will go get the current timestamp for you, or pass a pointer to a 64-bit timestamp you want to print.\n\nThere will still be changes though, since I need to convert every instance of %T to %pT, and pass a NULL along with it. But maybe that\u0027s better than the function call?",
+      "parentUuid": "9c556508_34a5755c",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313702d5_5c46d3e3",
         "filename": "common/console_output.c",
         "patchSetId": 1
