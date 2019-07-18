@@ -22,6 +22,30 @@
       "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6614d6_17bd9e8f",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T19:56:26Z",
+      "side": 1,
+      "message": "If the message is not an SOP, then it is either SOP\u0027 or SOP\", meaning  that the field should be treated as Cable Plug.\n\nBut if it\u0027s not SOP, then shouldn\u0027t we be ignoring the entire message? i.e.:\n\n    \n#if !defined(CONFIG_USB_TYPEC_CTVPD) \u0026\u0026 !defined(CONFIG_USB_TYPEC_VPD)\n    /* Ignore non SOP messages. */\n    if ((PD_HEADER_GET_SOP(header) !\u003d PD_MSG_SOP)\n        return 0;\n#endif /* !defined(CONFIG_USB_TYPEC_CTVPD) \u0026\u0026 !defined(CONFIG_USB_TYPEC_VPD) */\n\n\nMaybe not in this CL, but it might be cleaner if we introduced some config_* options that could automatically be defined based on what device it is. These config_* options would be CONFIG_USB_PD_REPLIES_TO_SOP_ONLY, CONFIG_USB_PD_REPLIES_TO_SOP_PRIMES or similar. Just a thought.",
+      "parentUuid": "a067ef1d_3b4ff5ba",
+      "range": {
+        "startLine": 1820,
+        "startChar": 7,
+        "endLine": 1821,
+        "endChar": 48
+      },
+      "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
