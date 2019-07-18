@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "55287736_041872c3",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-18T22:41:22Z",
+      "side": 1,
+      "message": "I think that would change the desired outcome of the function. The function seems to be written such that any combination of flags can be set. The change you have above would exit on the first flag set.",
+      "parentUuid": "5f890346_81fbf72b",
+      "range": {
+        "startLine": 311,
+        "startChar": 1,
+        "endLine": 311,
+        "endChar": 18
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5112eb0b_f78182bc",
         "filename": "common/acpi.c",
         "patchSetId": 1
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I think we should get rid of CONFIG_CONSOLE_VERBOSE and let timestamp be printed as:\n\n  CPRINTF(\"[%.6lu ...\", get_time().val, ...);\n\nwhere open-ending printf is needed. I think this is a piece of code naturally duplicated.",
       "parentUuid": "7c15d7bb_a5718aa0",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969eec3c_b5b6a42d",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-18T22:41:22Z",
+      "side": 1,
+      "message": "Hm, so we\u0027re really sure there\u0027s no form of the EC codebase that might want less precision? I was hoping to keep this change mostly to be a refactoring, and (try to) not let larger feature-level decisions creep in. My vote would be to keep it the way I have it for now, and then later we can look at the value of CONFIG_CONSOLE_VERBOSE and remove it as a separate change. Is there a reason I\u0027m missing why an additional subroutine is bad?",
+      "parentUuid": "2bb674ca_19955c56",
       "range": {
         "startLine": 118,
         "startChar": 4,
