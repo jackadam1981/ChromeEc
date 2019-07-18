@@ -270,7 +270,7 @@ struct ish_aon_share aon_share = {
 };
 
 /* snowball structure */
-__attribute__((section(".data.snowball"))) volatile
+__attribute__((section(".data.snowball")))
 struct snowball_struct snowball;
 
 /* In IMR DDR, ISH FW image has a manifest header */
