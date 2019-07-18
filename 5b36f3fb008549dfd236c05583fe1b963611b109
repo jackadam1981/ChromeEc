@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c201e035_6b0640c8",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-18T20:14:39Z",
+      "side": 1,
+      "message": "enum tcpc_cc_voltage_status?",
+      "range": {
+        "startLine": 784,
+        "startChar": 1,
+        "endLine": 784,
+        "endChar": 4
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7bce91c_59229e4d",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-18T20:14:39Z",
+      "side": 1,
+      "message": "No longer applicable",
+      "range": {
+        "startLine": 803,
+        "startChar": 0,
+        "endLine": 804,
+        "endChar": 44
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55a0148_8a1cea7e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-18T20:14:39Z",
+      "side": 1,
+      "message": "Do we no longer need to worry about sourcing Vconn first to make the 2ms tVconnOn window?",
+      "range": {
+        "startLine": 1508,
+        "startChar": 0,
+        "endLine": 1510,
+        "endChar": 39
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2602c42_9e5f9a10",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-18T20:14:39Z",
+      "side": 1,
+      "message": "Is this a debounce?  I\u0027d read the spec to mean that we should exit as soon as we get OPEN\n\n\"The Source shall detect the SRC.Open state within\ntSRCDisconnect, but should detect it as quickly as possible.\"",
+      "range": {
+        "startLine": 1562,
+        "startChar": 2,
+        "endLine": 1562,
+        "endChar": 62
+      },
+      "revId": "5b36f3fb008549dfd236c05583fe1b963611b109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
