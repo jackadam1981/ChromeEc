@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d6c4596_a90bcb06",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-07-18T23:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783a00cc_78b4e6ce",
+      "range": {
+        "startLine": 778,
+        "startChar": 58,
+        "endLine": 778,
+        "endChar": 62
+      },
+      "revId": "82ae310156942806bc5596b8ec87c4f3454a9b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fa5681d_60469337",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "82ae310156942806bc5596b8ec87c4f3454a9b39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc9a7f4_16dce2b8",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-07-18T23:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa5681d_60469337",
+      "range": {
+        "startLine": 779,
+        "startChar": 9,
+        "endLine": 779,
+        "endChar": 13
+      },
+      "revId": "82ae310156942806bc5596b8ec87c4f3454a9b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
