@@ -16,6 +16,24 @@
       "revId": "c700e0434da92f9bccf466ea6bd81ac084498450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46fc779e_de74a1af",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2019-07-18T23:25:56Z",
+      "side": 1,
+      "message": "Servo v4 doesn\u0027t have this limitation. It depends on the external charger, so any voltage is possible.\n\nThis is not necessary to tie with plankton interface but needs some refactoring is needed on the test and servod sides. If servo v4 has its own interface, probably to reuse the cc command to specify this voltage limit, like \"cc srcdts9v\", \"cc src5v\", \"cc src\" (default to 20V). Is it OK?\n\nAt this point, I\u0027d prefer to keep both \"usbc_action\" and \"cc\" having the same functions. \"usbc_action\" is plankton-compatible and \"cc\" is servo v4 only. After the test/servod refactoring is done, we can deprecate the \"usbc_action\" command.",
+      "parentUuid": "a32b792a_bd6b5638",
+      "revId": "c700e0434da92f9bccf466ea6bd81ac084498450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
