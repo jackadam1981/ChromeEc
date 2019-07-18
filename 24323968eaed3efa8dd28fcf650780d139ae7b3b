@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ebf822b5_8ed951ac",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-18T00:15:21Z",
+      "side": 1,
+      "message": "I don\u0027t think anybody looked at code size. Just curious (the way I understand it passing bool may introduce some extra !! to convert to 0/1).",
+      "parentUuid": "6f439700_f8784ebf",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e7e3e4_788bba82",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 3
@@ -125,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "a3b5a62c_c75d9d8c",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-18T00:15:21Z",
+      "side": 1,
+      "message": "I\u0027m curious how you\u0027re going to write a unit test for this. But, ok.",
+      "parentUuid": "1c3360f2_4774712e",
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4363fdbc_6f579b60",
         "filename": "chip/stm32/flash-f.h",
         "patchSetId": 3
@@ -160,6 +196,30 @@
       "side": 1,
       "message": "If I move them to the .c file it requires forward declarations in the .c file (so I can keep the \"high level\" vs \"physical layer\" functions together) and many more #ifdefs since the compiler will start to complain when it can\u0027t find the flash_physical_get_rdp_level/flash_physical_set_rdp_level functions for certain boards (they aren\u0027t actually called in that case because the call site is guarded by CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE. This is fine for the compiler when it\u0027s a non-static forward declaration, but not when it becomes static).\n\nI think adding a bunch more ifdefs ends up making the code a lot harder to read. Is it ok to keep as-is so we don\u0027t have to do that?",
       "parentUuid": "4363fdbc_6f579b60",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c06c496_4258bbfc",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-18T00:15:21Z",
+      "side": 1,
+      "message": "It\u0027s weird to have a function in a header file that is not used externally.\n\nAlso if you don\u0027t have LTO that\u0027d prevent the function from being inlined?",
+      "parentUuid": "32c752f7_37581c59",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -213,6 +273,47 @@
         "endLine": 2037,
         "endChar": 46
       },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927aaf2e_dce20c44",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-18T00:15:21Z",
+      "side": 1,
+      "message": "Not a very good argument, but I don\u0027t think the kernel adds U (that\u0027s something I sometimes tell vendors to remove in the register definitions).",
+      "parentUuid": "0877b69b_2ce857dc",
+      "range": {
+        "startLine": 2037,
+        "startChar": 45,
+        "endLine": 2037,
+        "endChar": 46
+      },
+      "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e25fad_f66dc02d",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-18T00:15:21Z",
+      "side": 1,
+      "message": "console channels take up flash space, can you please reuse another one?",
       "revId": "24323968eaed3efa8dd28fcf650780d139ae7b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
