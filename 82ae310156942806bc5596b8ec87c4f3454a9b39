@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "783a00cc_78b4e6ce",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T22:17:23Z",
+      "side": 1,
+      "message": "could you name this as CC2?",
+      "range": {
+        "startLine": 778,
+        "startChar": 58,
+        "endLine": 778,
+        "endChar": 62
+      },
+      "revId": "82ae310156942806bc5596b8ec87c4f3454a9b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa5681d_60469337",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-18T22:17:23Z",
+      "side": 1,
+      "message": "and CC1 here? I think it\u0027d be clearer.",
+      "range": {
+        "startLine": 779,
+        "startChar": 9,
+        "endLine": 779,
+        "endChar": 13
+      },
+      "revId": "82ae310156942806bc5596b8ec87c4f3454a9b39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
