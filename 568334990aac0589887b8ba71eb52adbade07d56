@@ -382,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "f0a98edb_13389f5e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-19T06:38:47Z",
+      "side": 1,
+      "message": "Got it! I can keep line 535,536 in patchset#5 later.\nBut if add \"id |\u003d 0xFF0000;\" between line 579 and 580.\nline 583 cannot match the flash_cmd_v2 condition.\n\nOr we can add \"id |\u003d 0xF000F;\" between line 579 and 580.\nline 583 can change to the below line ? \n      if ( (id \u003d\u003d 0x80001) || (id \u003d\u003d 0x80002) ) {",
+      "parentUuid": "f2fd6b8d_3e765e88",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 22
+      },
+      "revId": "568334990aac0589887b8ba71eb52adbade07d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b3bec53_bbb501bb",
         "filename": "util/iteflash.c",
         "patchSetId": 5
