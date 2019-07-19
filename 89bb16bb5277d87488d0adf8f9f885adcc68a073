@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "d2b956eb_c380efba",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-07-19T21:33:39Z",
+      "side": 1,
+      "message": "This stack is intended for global use, far into the future, in the most general sense. I don\u0027t think we should delete (valid) general functionality code to suit a workaround for a single bug.\n\nThat said, I 100% agree that we need to implement the workaround. I agree with Sam in keeping the code as-is, but perhaps by adding another #ifdef CCD_DETECT_WORKAROUND_CL1487116 to make it explicit that is why we are doing this.\n\nIn the future, when boards have hardware that doesn\u0027t exhibit that issue, or don\u0027t use that hardware in the first place, they can unset that macro as appropriate.\n\nWould that approach be acceptable?",
+      "parentUuid": "542af5e4_7fa2afca",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afe851a4_88082fee",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
