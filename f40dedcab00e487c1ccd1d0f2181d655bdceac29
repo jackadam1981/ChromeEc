@@ -22,6 +22,29 @@
       "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d973c0af_8ae14241",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-19T07:50:22Z",
+      "side": 1,
+      "message": "Maybe this shouldn\u0027t be hex. The pin names on the schematic seem to be in decimal. It would be easier if the code had them in decimal too.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
