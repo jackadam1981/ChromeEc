@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "003abedf_4df7e43f",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2019-07-19T15:26:33Z",
+      "side": 1,
+      "message": "Suggest adding:\n\nWARNING: Make sure none of these GPIOs are accessed at interrupt level / with interrupts disabled.  Doing so may hang the EC because IO expanders may rely on I2C interrupts",
+      "range": {
+        "startLine": 1262,
+        "startChar": 0,
+        "endLine": 1262,
+        "endChar": 64
+      },
+      "revId": "c472d01d37a2cd60ddc947c3fcf8abcbf0676ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
