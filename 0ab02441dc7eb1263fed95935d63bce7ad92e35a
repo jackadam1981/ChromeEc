@@ -358,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "2ac03883_0d672c96",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T00:20:33Z",
+      "side": 1,
+      "message": "Can you show me that as a new patchset or a WIP CL? You don\u0027t have to replace all %T yet. I just want to see one example and how it looks.",
+      "parentUuid": "11c7fa2d_f876c4c5",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313702d5_5c46d3e3",
         "filename": "common/console_output.c",
         "patchSetId": 1
