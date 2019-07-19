@@ -22,6 +22,52 @@
       "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281faa54_bef4b475",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-19T23:13:53Z",
+      "side": 1,
+      "message": "Here and below, should we check that only the event we want is actually set?, e.g.\n\n     TEST_BIT_CLEAR(flags, ASYNC_EVENT_ODR)",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ebda63a_c8d586a6",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2019-07-19T23:13:53Z",
+      "side": 1,
+      "message": "Why is now not a constant well-known value, e.g. 0? (let me guess: we don\u0027t have a way to mock-the-clock)",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 47
+      },
+      "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
