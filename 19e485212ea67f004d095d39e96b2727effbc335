@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "067f23f0_44286d0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-19T15:57:58Z",
+      "side": 1,
+      "message": "The easy way would be to type \u0027reboot\u0027 at ISH console, and see that reset flags are now \u0027soft\u0027 instead of \u0027power-on\u0027.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "19e485212ea67f004d095d39e96b2727effbc335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
