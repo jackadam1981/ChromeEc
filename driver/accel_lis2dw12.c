@@ -463,7 +463,8 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 				  LIS2DW12_OUT_X_L_ADDR, raw,
 				  OUT_XYZ_SIZE);
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RD XYZ Error]", s->name, s->type);
+		CPRINTF("[%pT %s type:0x%X RD XYZ Error]",
+			PRINTF_TIMESTAMP_NOW, s->name, s->type);
 		return ret;
 	}
 
@@ -559,7 +560,8 @@ static int init(const struct motion_sensor_t *s)
 
 err_unlock:
 	mutex_unlock(s->mutex);
-	CPRINTF("[%T %s: MS Init type:0x%X Error]\n", s->name, s->type);
+	CPRINTF("[%pT %s: MS Init type:0x%X Error]\n",
+		PRINTF_TIMESTAMP_NOW, s->name, s->type);
 
 	return EC_ERROR_UNKNOWN;
 }
