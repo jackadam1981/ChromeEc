@@ -22,6 +22,53 @@
       "revId": "9fdc1d804a9db5c7acf2b5624f9afbeea01cef6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f045d22_5554c959",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-19T03:28:57Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7a6cb766_13e91e67",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "9fdc1d804a9db5c7acf2b5624f9afbeea01cef6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88040044_b746a995",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-19T03:28:57Z",
+      "side": 1,
+      "message": "Probably came too late, but now we have emulated trng in chip/host.\ncrrev.com/c/1684223",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "9fdc1d804a9db5c7acf2b5624f9afbeea01cef6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
