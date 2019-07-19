@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f644e26_2825a12a",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T21:43:40Z",
+      "side": 1,
+      "message": "Just a note, `make clobber` will do this for you.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03f1f82_363889f4",
+        "filename": "docs/write_protection.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T21:43:40Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb991c6_8ae5661a",
+        "filename": "docs/write_protection.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T21:43:40Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 76
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ac4fb2_ae6e8de8",
+        "filename": "docs/write_protection.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T21:43:40Z",
+      "side": 1,
+      "message": "Instead of \"all ECs\", I would just list the places. In addition to the EC it\u0027s also connected to the AP SPI flash, EC SPI flash, EEPROM*, and FPMCU*. \n\n* - for those designs that use one.",
+      "range": {
+        "startLine": 28,
+        "startChar": 28,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "203ea595_5d07134a",
+        "filename": "docs/write_protection.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T21:43:40Z",
+      "side": 1,
+      "message": "everything connected to this signal.",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 75
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1cc4661_f1fc0615",
+        "filename": "docs/write_protection.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T21:43:40Z",
+      "side": 1,
+      "message": "nit: chrome OS devices",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
