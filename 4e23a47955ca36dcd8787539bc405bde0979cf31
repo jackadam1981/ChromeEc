@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e5f8a0c_5c35ae3e",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-19T15:56:17Z",
+      "side": 1,
+      "message": "Was accel always powered in S5 or a board change? If the later, olfer board will not work anymore.",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91bc944d_23cae267",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-19T15:56:17Z",
+      "side": 1,
+      "message": "Still needed? It takes valuable space.",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd55dab6_860c8a4a",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-19T15:56:17Z",
+      "side": 1,
+      "message": "needs to be renamed",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407ea4c6_be7e9cb1",
+        "filename": "common/gesture.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-19T15:56:17Z",
+      "side": 1,
+      "message": "remove all changes.",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f5c7c1a_5b889099",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-19T15:56:17Z",
+      "side": 1,
+      "message": "make it a conditional via CONFIG_ for instance: wakeup is not needed if double tap is used just for battery led.\nOr you can wake up the device in the board specific function.",
+      "revId": "4e23a47955ca36dcd8787539bc405bde0979cf31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
