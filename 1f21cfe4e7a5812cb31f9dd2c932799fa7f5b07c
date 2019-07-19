@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f5f96c4d_61a56925",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T16:55:20Z",
+      "side": 1,
+      "message": "I wrote my essay on https://bugs.chromium.org/p/chromium/issues/detail?id\u003d985540.",
+      "parentUuid": "4fa0cfaf_7889f747",
+      "range": {
+        "startLine": 240,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 41
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79b705bb_59c39407",
         "filename": "common/gpio.c",
         "patchSetId": 3
