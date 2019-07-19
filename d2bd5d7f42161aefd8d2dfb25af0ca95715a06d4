@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bfb3f17_06863a3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "I add this description in file include/ioexpander.h.",
+      "parentUuid": "1b0eabdb_baf4f0e6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "724f6309_ec731123",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189af1da_4d5b6bca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "724f6309_ec731123",
+      "range": {
+        "startLine": 20,
+        "startChar": 43,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "411b32dc_8392be89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0a555ff_a4633aae",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d48e673c_0828179a",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4782f395_3c311372",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "In NPCX GPIO driver, we maintain a MIWU table to lookup the MIWU info of a GPIO pin.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/bb5f16bd8b4b20182b2b426f0c0fd2f7953fe004/chip/npcx/gpio.c#46\nFor these GPIOs which do not support MIWU function should be declared as WUI_NONE.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/bb5f16bd8b4b20182b2b426f0c0fd2f7953fe004/chip/npcx/gpio_chip-npcx7.h#172.\nBecause we borrow the GPIO macro to declare IOEX pins, they are included in the MIWU table as well. We have to define their MIWU info as WUI_NONE.",
+      "parentUuid": "d48e673c_0828179a",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "561d7504_983df72c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "630a6f1f_62054c41",
+      "range": {
+        "startLine": 340,
+        "startChar": 47,
+        "endLine": 340,
+        "endChar": 69
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f60fc76a_9c94d294",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -161,6 +281,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1c6b3e_5248f436",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "This is not changed according to the comment above.",
+      "parentUuid": "f60fc76a_9c94d294",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 0
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "ee2f6382_6e2dc9ab",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "The COMMON word is removed in all files which use this config.",
+      "parentUuid": "289e6634_c9326d4e",
+      "range": {
+        "startLine": 1263,
+        "startChar": 14,
+        "endLine": 1263,
+        "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8fb595e_d0806ab9",
         "filename": "include/gpio.h",
         "patchSetId": 1
@@ -207,6 +375,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69696a22_c91ea3e9",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "This is removed in the patchset 2.",
+      "parentUuid": "c8fb595e_d0806ab9",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "30afc7b5_1543a790",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77bcd4dd_a3a911fe",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dab1a0f5_335db9b5",
         "filename": "include/gpio_list.h",
         "patchSetId": 1
@@ -247,6 +463,24 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b936e2d4_3439cb28",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab1a0f5_335db9b5",
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -273,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "2d38093a_a23be452",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe62002_de8765c8",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "577334b7_aeb5bd63",
         "filename": "include/ioexpander.h",
         "patchSetId": 1
@@ -293,6 +551,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de5505d_257577ef",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "This is unused and removed in patchset 2.",
+      "parentUuid": "577334b7_aeb5bd63",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -319,6 +601,30 @@
     },
     {
       "key": {
+        "uuid": "acc468d2_88a4a35d",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "841ea69e_aa5cd7fb",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c8d13ee_86a03371",
         "filename": "include/ioexpander.h",
         "patchSetId": 1
@@ -339,6 +645,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "235b532d_c7ef6a33",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8d13ee_86a03371",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -365,6 +695,30 @@
     },
     {
       "key": {
+        "uuid": "1d13d276_f3cffc5d",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0c15b3_6286c962",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1b6cd40_7def49ac",
         "filename": "include/ioexpander.h",
         "patchSetId": 1
@@ -385,6 +739,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b019719_31e71d51",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1b6cd40_7def49ac",
+      "range": {
+        "startLine": 24,
+        "startChar": 39,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -411,6 +789,30 @@
     },
     {
       "key": {
+        "uuid": "8786b9e2_ee4d6013",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a64f212_367338ce",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8ce3e80_2f3f6575",
         "filename": "include/ioexpander.h",
         "patchSetId": 1
@@ -431,6 +833,30 @@
       "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e05cec_cea415d7",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-19T08:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8ce3e80_2f3f6575",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "d2bd5d7f42161aefd8d2dfb25af0ca95715a06d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
