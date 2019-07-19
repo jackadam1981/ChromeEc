@@ -49,6 +49,145 @@
     },
     {
       "key": {
+        "uuid": "7161680a_ed08c9d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "I\u0027m convinced this is a better direction. I wrote my rationale on https://bugs.chromium.org/p/chromium/issues/detail?id\u003d985540.",
+      "parentUuid": "a655fead_30154d8d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7016aa09_44f1251c",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "Do you need this check?",
+      "range": {
+        "startLine": 160,
+        "startChar": 11,
+        "endLine": 160,
+        "endChar": 20
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66692af_5acf951d",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "nit: Please surround them by {}.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 12
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d19d79_efb052a6",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "Please join them.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 11
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e04ba88_f5b4bd12",
+        "filename": "include/gpio_list.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "Do you need this guard?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd7c8d3_a09ddcf7",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "Can this be simply \u0027ioex\u0027 without confusion?",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09478062_d849e126",
         "filename": "include/ioexpander.h",
         "patchSetId": 5
@@ -89,6 +228,69 @@
         "startChar": 0,
         "endLine": 39,
         "endChar": 15
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a93f0f_115a54cd",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "Please describe these.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df6f3ce_dc089c10",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c08112_bd294b63",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T17:18:11Z",
+      "side": 1,
+      "message": "Please document these.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 51
       },
       "revId": "298693410b30e5738daf331193b9bdeb8e6c4c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
