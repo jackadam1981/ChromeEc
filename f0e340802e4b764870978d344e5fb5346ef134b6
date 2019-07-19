@@ -16,6 +16,24 @@
       "revId": "f0e340802e4b764870978d344e5fb5346ef134b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb5b09c_0e4c9341",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-19T02:06:26Z",
+      "side": 1,
+      "message": "Fixed by replacing to CC_AUDIO_CODEC.",
+      "parentUuid": "e2a033bd_0c021787",
+      "revId": "f0e340802e4b764870978d344e5fb5346ef134b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
