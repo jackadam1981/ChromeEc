@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27666aa8_5d035b69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-19T20:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb44932_d137bf57",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "452ca1090797db59100366f261e7b78c38b5e307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "235b02c4_3e7a736e",
         "filename": "Makefile.rules",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "452ca1090797db59100366f261e7b78c38b5e307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222db489_cac72239",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-19T20:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "235b02c4_3e7a736e",
+      "range": {
+        "startLine": 680,
+        "startChar": 10,
+        "endLine": 680,
+        "endChar": 20
+      },
+      "revId": "452ca1090797db59100366f261e7b78c38b5e307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
