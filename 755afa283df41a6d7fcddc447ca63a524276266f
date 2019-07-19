@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69ddc191_4cb1e31b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-19T16:13:52Z",
+      "side": 1,
+      "message": "Can we add a IS_ENABLED(CONFIG_MKBP_EVENT) to the if and remove the ifdef, that way fifo_int_enabled does not have to be maybe_unused?",
+      "range": {
+        "startLine": 916,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 24
+      },
+      "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
