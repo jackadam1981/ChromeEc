@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51a2dccc_58bc9c11",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-19T17:18:41Z",
+      "side": 1,
+      "message": "Would this be call_entry_methods() or a similarly named function which isn\u0027t defined in this CL?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "5560496a7e151c2a0bded9b76b8cc5e645066f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6439deff_e492f356",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-19T17:18:41Z",
+      "side": 1,
+      "message": "Does this need the logic from the other method to not exit/enter a shared parent state when transitioning?  (ex. going from UNATTACHED_SNK to ATTACH_WAIT_SNK wouldn\u0027t need to call the RD entry again?)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "5560496a7e151c2a0bded9b76b8cc5e645066f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
