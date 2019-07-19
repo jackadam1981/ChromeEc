@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e8bc9b5_6951b03a",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-19T07:51:12Z",
+      "side": 1,
+      "message": "why not just cprints? (also below)",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "1c61512d032f5869cd4a5316ceda13cc315fe424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda9fcb2_321ebf42",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-19T07:51:12Z",
+      "side": 1,
+      "message": "add a guard for the channel?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 47
+      },
+      "revId": "1c61512d032f5869cd4a5316ceda13cc315fe424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eef860c_472bbc3d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 4592,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-19T07:51:12Z",
+      "side": 1,
+      "message": "perhaps putting this aside \u0027cmd\u0027, it would be clearer.",
+      "range": {
+        "startLine": 4592,
+        "startChar": 4,
+        "endLine": 4592,
+        "endChar": 25
+      },
+      "revId": "1c61512d032f5869cd4a5316ceda13cc315fe424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
