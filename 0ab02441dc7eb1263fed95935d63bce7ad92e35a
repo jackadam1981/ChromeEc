@@ -430,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "f7809dec_6937d138",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-19T17:47:00Z",
+      "side": 1,
+      "message": "Yes, would not be an issue if we don\u0027t want compile-time printf optimizations ever.\n\nI\u0027m more so a fan of the TIMESTAMP_FORMAT and get_time().val option though. Minimal extra typing while also not needing (yet another) custom format. Either choice is definitely better than CPRINT_TIMESTAMP",
+      "parentUuid": "95fff087_3af8e2ad",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313702d5_5c46d3e3",
         "filename": "common/console_output.c",
         "patchSetId": 1
