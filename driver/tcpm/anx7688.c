@@ -25,6 +25,12 @@
 #define ANX7688_REG_RAMCTRL		0xe7
 #define ANX7688_REG_RAMCTRL_BOOT_DONE	BIT(6)
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
+	defined(CONFIG_USB_PD_TCPC_LOW_POWER) || \
+	defined(CONFIG_USBC_PPC)
+#error "Unsupported config options of anx7688 PD driver"
+#endif
+
 static int anx7688_init(int port)
 {
 	int rv = 0;
