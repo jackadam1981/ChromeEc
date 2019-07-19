@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "0aa70de7_6f39dd7a",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-19T02:06:14Z",
+      "side": 1,
+      "message": "Did you mean: let it have only one audio_codec_translate_addr_ec_to_ap() symbol when linking?\n\u003d\u003e if so, the method sounds fragile to me\n\nI am wondering if it is possible to add some constrains to keep these register_* functions:\n1. arrange register_* functions in .init section\n2. only .init section can use register_* functions\n3. after initialization, the .init section will be freed (and available)\n\nIn my original plan, I would only wish only HOOK_INIT calls these register_* functions but not in any runtime (see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1424041/30/board/kukui_scp/audio_codec_wov.c#53).\n\nNote: the .init section mechanism is similar to kernel",
+      "parentUuid": "db50aa15_d6dcc26a",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7620e92_c60cfa6c",
         "filename": "common/audio_codec.c",
         "patchSetId": 9
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "What I want is creating a \"overlay\"-like concept.  Chip could provide some common implementations and boards are able to override them if any changes.\n\nFor example, suppose chip A usually map 0x100 to 0x600, but derived board B can map 0x100 to 0x800.",
       "parentUuid": "4648f7a8_99977d1a",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67ff336_d86104b2",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-19T02:06:14Z",
+      "side": 1,
+      "message": "The same as above comment, I would only wish these register_* functions be called during initialization but not any runtime.",
+      "parentUuid": "9e6dd5b7_7213c2aa",
       "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

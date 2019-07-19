@@ -22,6 +22,30 @@
       "revId": "22196e75c698fb578c1cb05845adba117e63193c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cfa48ae_66b01933",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-19T02:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f1254b_a16444cb",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "22196e75c698fb578c1cb05845adba117e63193c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
