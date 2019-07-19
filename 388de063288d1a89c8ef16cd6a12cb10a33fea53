@@ -46,6 +46,30 @@
       "revId": "388de063288d1a89c8ef16cd6a12cb10a33fea53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d6c850e_192544ed",
+        "filename": "core/cortex-m/config_core.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-19T00:13:33Z",
+      "side": 1,
+      "message": "Ok, then it will have to be conditional in config_chip.h since some STM32 chips have Cortex-M0, which doesn\u0027t have MPU: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/stm32/build.mk#10\n\nI will look at the region size being a power of 2. That requirement is for \"size\" argument in mpu_config_region, right?\n\nIt looks like I might be able to a BUILD_ASSERT everywhere that calls that since it\u0027s using build-time constants.",
+      "parentUuid": "344cee06_716486e4",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "388de063288d1a89c8ef16cd6a12cb10a33fea53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
