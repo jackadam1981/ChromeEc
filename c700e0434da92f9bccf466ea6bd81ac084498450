@@ -34,6 +34,24 @@
       "revId": "c700e0434da92f9bccf466ea6bd81ac084498450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7f9185_4a2d2b6e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T22:19:09Z",
+      "side": 1,
+      "message": "Okay, that sounds good to me. Maybe we can file a bug so that we don\u0027t forget.",
+      "parentUuid": "46fc779e_de74a1af",
+      "revId": "c700e0434da92f9bccf466ea6bd81ac084498450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
