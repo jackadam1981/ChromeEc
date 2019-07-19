@@ -454,6 +454,30 @@
     },
     {
       "key": {
+        "uuid": "9a0503df_3539444d",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-19T18:04:45Z",
+      "side": 1,
+      "message": "\u003e CPRINTF(\"[%pT This is my print]\\n\", NULL);\n\nMaybe\n\n  #define NOW NULL\n  CPRINTF(\"[%pT This is my print]\\n\", NOW);\n\n\u003e the only reason I didn\u0027t do it is I thought people wouldn\u0027t like\n\u003e the NULL arguments that are required to go along with it\n\nWhether it\u0027s NULL or NOW, this is the cost for the compile time check. I\u0027ve seen too many printf statements with missing arguments. I\u0027m happy to pay the cost to end it.",
+      "parentUuid": "f7809dec_6937d138",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313702d5_5c46d3e3",
         "filename": "common/console_output.c",
         "patchSetId": 1
