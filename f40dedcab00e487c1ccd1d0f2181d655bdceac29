@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1499fee4_5f9bc39d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-19T08:27:24Z",
+      "side": 1,
+      "message": "I also have added the GPIO expander function in the driver, but this CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1697881/3\nneeds to be uploaded first.",
+      "parentUuid": "8ce16545_e1abaf25",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d973c0af_8ae14241",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 9
