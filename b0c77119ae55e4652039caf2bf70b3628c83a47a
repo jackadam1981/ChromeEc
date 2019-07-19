@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "354db464_91bde591",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-19T16:10:35Z",
+      "side": 1,
+      "message": "Can we add a check at the bottom, something like this:\n\n   #ifdef CONFIG_ACCEL_FIFO\n   #if !defined(CONFIG_ACCEL_FIFO_SIZE) || !defined(CONFIG_ACCEL_FIFO_THRES)\n   #error \"For CONFIG_ACCEL_FIFO CONFIG_ACCEL_FIFO_SIZE and CONFIG_ACCEL_FIFO_THRES must also be defined\"\n   ....",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "b0c77119ae55e4652039caf2bf70b3628c83a47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
