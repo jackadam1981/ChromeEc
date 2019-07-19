@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "4fa0cfaf_7889f747",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-19T01:31:29Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s a good point. I\u0027m assuming he means separate function calls (e.g. gpio_ioex_set_level vs gpio_set_level)?\n\nAlternatively, one could assert if it\u0027s called within interrupt_context(). Not sure how mean that would be... But just something to get the attention of the author.",
+      "parentUuid": "4d1bef4b_b9e620ba",
+      "range": {
+        "startLine": 240,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 41
+      },
+      "revId": "1f21cfe4e7a5812cb31f9dd2c932799fa7f5b07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79b705bb_59c39407",
         "filename": "common/gpio.c",
         "patchSetId": 3
