@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2adffbe_73f2f24f",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-19T02:06:03Z",
+      "side": 1,
+      "message": "They are just \"shortcuts\" and yes we can remove all but leave the fundamental ones (SET_GAIN_IDX and GET_GAIN_IDX).",
+      "parentUuid": "827e10c9_3c247819",
+      "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "639bcf3e_8dcaf431",
         "filename": "include/ec_commands.h",
         "patchSetId": 17
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-12T08:33:31Z",
       "side": 1,
       "message": "Could you describe what these mean?",
+      "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8dd3707_31c747e2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 4627,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-19T02:06:03Z",
+      "side": 1,
+      "message": "We support up to 8-channel [0~7].\n\n_MONO manipulates the [0] one.\n_DUAL manipulates the [0] and [1].",
+      "parentUuid": "639bcf3e_8dcaf431",
       "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
