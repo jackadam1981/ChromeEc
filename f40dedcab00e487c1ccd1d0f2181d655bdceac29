@@ -45,6 +45,30 @@
       "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefb43f9_168cfbc4",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-19T08:11:39Z",
+      "side": 1,
+      "message": "It should actually look like:\n\n\t0, 1, 2, 3, 4, 5,\n\t6, 17, 18, 16, 15, 11,\n\t12, 13, 14, 0xff, 0xff, 0xff\n\nBut I\u0027m not really sure what 0xff is supposed to be, we have no KSO15-onwards on jacuzzi.",
+      "parentUuid": "d973c0af_8ae14241",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
