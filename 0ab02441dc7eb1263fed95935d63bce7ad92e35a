@@ -382,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "01238657_a4bdc783",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-19T15:46:34Z",
+      "side": 1,
+      "message": "Apologies for hopping on this late...\n\nIsn\u0027t it pretty standard to have something like this:\n\n    #define TIMESTAMP_FORMAT \"%.6lu\"\n\nThen use like so:\n\n    CPRINTF(\"[\" TIMESTAMP_FORMAT \" ...\", get_time().val, ...)\n\nTIMESTAMP_FORMAT can then be redefined as needed...\n\n%p is not a great idea, as the only reason the compile-time format checker works is that the following chars are assumed to be part of the output. See https://gcc.gnu.org/bugzilla/show_bug.cgi?id\u003d47781#c18 for further discussion of this.\n\nFurther, if we ever wish to change to glibc (or any other standard implementation of) printf, the TIMESTAMP_FORMAT would work with that as well.",
+      "parentUuid": "2ac03883_0d672c96",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313702d5_5c46d3e3",
         "filename": "common/console_output.c",
         "patchSetId": 1
