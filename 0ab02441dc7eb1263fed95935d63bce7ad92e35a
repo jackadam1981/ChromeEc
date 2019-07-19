@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "95fff087_3af8e2ad",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-19T17:18:13Z",
+      "side": 1,
+      "message": "Daisuke,\nSure, I can make a WIP CL as well, but for folks using %T explicitly instead of this:\nCPRINTF(\"[\");\nCPRINT_TIMESTAMP();\nCPRINTF(\" This is my print]\\n\");\n\nIt would look like this:\nCPRINTF(\"[%pT This is my print]\\n\", NULL);\n\nJack,\nI don\u0027t see a problem with %p and the comment you linked to. The compile-time checker doesn\u0027t give up on the entire format string if it sees a %p. It simply enforces that the corresponding argument passed is the size of a void pointer. The comment you link to talks about how a compile-time snprintf optimization pass wouldn\u0027t know the output size of the final string, since the output from %p is implementation defined. But that\u0027s not what we\u0027re turning on here.\n\nAs a heads up, %p is also in fact my plan for the next phases: %ph for our hex byte buffers and %pb for our binary int format. So it would make sense for %T too, the only reason I didn\u0027t do it is I thought people wouldn\u0027t like the NULL arguments that are required to go along with it. But it sounds like the CPRINT_TIMESTAMP() is worse, so maybe I should switch to it.",
+      "parentUuid": "01238657_a4bdc783",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "0ab02441dc7eb1263fed95935d63bce7ad92e35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313702d5_5c46d3e3",
         "filename": "common/console_output.c",
         "patchSetId": 1
