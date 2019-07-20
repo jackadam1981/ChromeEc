@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc655495_18042059",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-20T02:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb83eb2b_80d3d673",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "679840ff_4192e6bc",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcffebce_70d1e34f",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-20T02:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679840ff_4192e6bc",
+      "range": {
+        "startLine": 455,
+        "startChar": 9,
+        "endLine": 456,
+        "endChar": 27
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1815b4bb_9ecf9fc1",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-20T02:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d548e51f_65175f39",
+      "range": {
+        "startLine": 457,
+        "startChar": 33,
+        "endLine": 457,
+        "endChar": 56
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fef17661_9315228e",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b7ae395f_59bba9fd",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-20T02:13:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fef17661_9315228e",
+      "range": {
+        "startLine": 460,
+        "startChar": 25,
+        "endLine": 460,
+        "endChar": 43
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8174e6c3_06e9376b",
         "filename": "include/fpsensor_state.h",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2019-07-17T16:51:39Z",
       "side": 1,
       "message": "sizeof(fp_pos_match_salt[0])",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "4c4d879e701198e44a3b2a3efc6c285db1f82a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b6922b_286879f3",
+        "filename": "include/fpsensor_state.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-20T02:13:42Z",
+      "side": 1,
+      "message": "This would require moving this macro after the extern uint8_t fp_pos_match_salt[...] which comes below. Do we want to do that?",
+      "parentUuid": "8174e6c3_06e9376b",
       "range": {
         "startLine": 41,
         "startChar": 2,
