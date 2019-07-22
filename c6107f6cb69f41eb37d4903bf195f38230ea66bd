@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f25ca93f_61684c3e",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T16:13:56Z",
+      "side": 1,
+      "message": "I think these should be between line 12 and 14 for visibility.",
+      "parentUuid": "1d06fb37_c169df98",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "c6107f6cb69f41eb37d4903bf195f38230ea66bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0104d1fa_1798888f",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 2
