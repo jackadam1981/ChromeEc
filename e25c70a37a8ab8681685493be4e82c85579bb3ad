@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "951acec6_049507e2",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T15:54:09Z",
+      "side": 1,
+      "message": "nit: BIT(i%8)",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "e25c70a37a8ab8681685493be4e82c85579bb3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93dfedc6_6e081ab2",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T15:54:09Z",
+      "side": 1,
+      "message": "We need much more description than this. We need to explain how to write gpio.inc, limitations, warnings, and why we prefer a separate API set.",
+      "range": {
+        "startLine": 1234,
+        "startChar": 0,
+        "endLine": 1234,
+        "endChar": 61
+      },
+      "revId": "e25c70a37a8ab8681685493be4e82c85579bb3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f79666_97eeef07",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T15:54:09Z",
+      "side": 1,
+      "message": "Does this need to be here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 64
+      },
+      "revId": "e25c70a37a8ab8681685493be4e82c85579bb3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c094e3cf_877e07ba",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T15:54:09Z",
+      "side": 1,
+      "message": "Please use the standard format, which describes parameters and return values.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "e25c70a37a8ab8681685493be4e82c85579bb3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
