@@ -9,6 +9,7 @@
 #include "clock.h"
 #include "common.h"
 #include "console.h"
+#include "driver/ioexpander_it8801.h"
 #include "it83xx_pd.h"
 #include "fan.h"
 #include "gpio.h"
@@ -178,6 +179,16 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+/* Column mapping to KSO of IT8801 */
+#ifdef CONFIG_KEYBOARD_KSO_IT8801
+const uint8_t kso_mapping[] = {
+	0, 1, 2, 3, 4, 5,
+	6, 18, 19, 20, 21, 11,
+	12, 13, 14, 0xff, 0xff, 0xff
+};
+BUILD_ASSERT(ARRAY_SIZE(kso_mapping) == 18);
+#endif
 
 /*
  * I2C channels (A, B, and C) are using the same timing registers (00h~07h)
