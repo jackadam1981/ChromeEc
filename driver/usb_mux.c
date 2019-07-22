@@ -92,6 +92,8 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	const int should_enter_low_power_mode =
 		mux_mode == TYPEC_MUX_NONE && usb_mode == USB_SWITCH_DISCONNECT;
 
+	CPRINTS("USM: p%d mm %d us %d", port, mux_mode, usb_mode);
+
 #ifdef CONFIG_USB_CHARGER
 	/* Configure USB2.0 */
 	usb_charger_set_switches(port, usb_mode);
@@ -102,8 +104,12 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	 * flag is only set if the mux set() operation succeeded previously for
 	 * the same disconnected state.
 	 */
-	if (should_enter_low_power_mode && (flags[port] & USB_MUX_FLAG_IN_LPM))
+#if 1
+	if (should_enter_low_power_mode && (flags[port] & USB_MUX_FLAG_IN_LPM)) {
+		CPRINTS("USM: p%d already in LPM", port);
 		return;
+	}
+#endif
 
 	exit_low_power_mode(port);
 

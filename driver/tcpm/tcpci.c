@@ -823,6 +823,8 @@ int tcpci_tcpm_mux_set(int port, mux_state_t mux_state)
 	int reg = 0;
 	int rv;
 
+	CPRINTS("MSET: p%d ms %02x", port, mux_state);
+
 	/* Parameter is port only */
 	rv = mux_read(port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
@@ -838,6 +840,10 @@ int tcpci_tcpm_mux_set(int port, mux_state_t mux_state)
 		reg |= TCPC_REG_CONFIG_STD_OUTPUT_CONNECTOR_FLIPPED;
 
 	/* Parameter is port only */
+
+	CPRINTS("MSET: p%d w %02x %02x",
+		port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
+
 	return mux_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 

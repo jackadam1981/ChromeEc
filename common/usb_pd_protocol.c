@@ -4387,6 +4387,9 @@ static void pd_chipset_resume(void)
 			pd[i].flags |= PD_FLAGS_CHECK_PR_ROLE |
 				       PD_FLAGS_CHECK_DR_ROLE;
 		pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
+#if 0
+		set_usb_mux_with_current_data_role(i);
+#endif
 	}
 
 	CPRINTS("PD:S3->S0");
@@ -4397,8 +4400,15 @@ static void pd_chipset_suspend(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+
+#if 0
+		usb_mux_set(i, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+			    pd[i].polarity);
+#endif
+
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
+	}
 	CPRINTS("PD:S0->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
@@ -4424,6 +4434,9 @@ static void pd_chipset_shutdown(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+
+		//usb_mux_set(i, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT);
+
 		pd_set_dual_role_no_wakeup(i, PD_DRP_FORCE_SINK);
 		task_set_event(PD_PORT_TO_TASK_ID(i),
 			       PD_EVENT_POWER_STATE_CHANGE |

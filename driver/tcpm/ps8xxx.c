@@ -18,6 +18,12 @@
 #include "timer.h"
 #include "usb_pd.h"
 
+#include "console.h"
+
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
+
 #if !defined(CONFIG_USB_PD_TCPM_PS8751) && \
 	!defined(CONFIG_USB_PD_TCPM_PS8805)
 #error "Unsupported PS8xxx TCPC."
@@ -230,6 +236,8 @@ static int ps8xxx_mux_init(int port)
 
 static int ps8xxx_mux_enter_low_power_mode(int port)
 {
+	CPRINTS("ps8xxx: p%d LPM", port);
+
 	mux_write(port, TCPC_REG_ROLE_CTRL,
 		TCPC_REG_ROLE_CTRL_SET(0, 0, TYPEC_CC_RP, TYPEC_CC_RP));
 	return tcpci_tcpm_mux_enter_low_power(port);
