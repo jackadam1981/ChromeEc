@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29f8659f_d2627872",
+        "filename": "docs/fingerprint/fingerprint.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-22T16:44:06Z",
+      "side": 1,
+      "message": "Thanks! I missed that one. I\u0027m used to \"make clean\" doing that but if you don\u0027t specify BOARD, \"make clean\", will just do \"rm -rf build/bds\"...",
+      "parentUuid": "2f644e26_2825a12a",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "c4024c60eb69db73790c4154eceb86b2ca4dd444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a03f1f82_363889f4",
         "filename": "docs/write_protection.md",
         "patchSetId": 8
