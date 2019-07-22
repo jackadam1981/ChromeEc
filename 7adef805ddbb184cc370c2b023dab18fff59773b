@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e6df0103_598ee6dd",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-22T16:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2adffbe_73f2f24f",
+      "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "639bcf3e_8dcaf431",
         "filename": "include/ec_commands.h",
         "patchSetId": 17
@@ -69,6 +87,24 @@
       "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d79db89_b6584104",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 4627,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-22T16:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8dd3707_31c747e2",
+      "revId": "7adef805ddbb184cc370c2b023dab18fff59773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

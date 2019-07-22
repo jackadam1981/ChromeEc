@@ -22,6 +22,30 @@
       "revId": "e04351b3feb0ead6198878cc84a6dee941441fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde0d5c4_08cd7fa8",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-22T16:09:19Z",
+      "side": 1,
+      "message": "NAck, I like current style more.",
+      "parentUuid": "6e3e4bdd_d58d86be",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 63
+      },
+      "revId": "e04351b3feb0ead6198878cc84a6dee941441fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
