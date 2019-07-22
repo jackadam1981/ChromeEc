@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "47696c9e_3e6584ab",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-07-22T09:31:25Z",
+      "side": 1,
+      "message": "Include sku_id\u003d0?\nCurrent sku_id don\u0027t have sku_id\u003d0, should we use sku_id\u003c\u003d4?",
+      "parentUuid": "814139dc_ce7db326",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 65
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7084d6b6_f6c38519",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
@@ -106,6 +130,30 @@
       "writtenOn": "2019-07-19T06:10:23Z",
       "side": 1,
       "message": "Why no KB BL for clamshell?",
+      "range": {
+        "startLine": 458,
+        "startChar": 4,
+        "endLine": 458,
+        "endChar": 72
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f401895_3682fe2a",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-07-22T09:31:25Z",
+      "side": 1,
+      "message": "This is based on SKU define.\nCurrently only define supoort KB BL on convertible.",
+      "parentUuid": "1f2f57f7_e567d9f6",
       "range": {
         "startLine": 458,
         "startChar": 4,
