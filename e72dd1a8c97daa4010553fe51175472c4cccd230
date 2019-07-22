@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2875e781_cc93852a",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "Why do we look at both CC lines? Should we only be looking at the one that we saved in .polarity?",
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5209d5_f7843caa",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "There\u0027s no orientation; both CC lines would be terminated with Rd.",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1165,
+        "endChar": 39
+      },
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86581dc_16e46f5a",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "This would be board specific. For chrome OS devices, nothing needed; cr50 would also detect this case and assert CCD_MODE_ODL.\n\nBut for debug devices like servo_v4, servo_v4 may want to determine the orientation and configure the SBU mux.",
+      "range": {
+        "startLine": 1170,
+        "startChar": 0,
+        "endLine": 1172,
+        "endChar": 4
+      },
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e876cd5_19fcc1d0",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "Again, there\u0027s no polarity, so we should be checking both pins.",
+      "range": {
+        "startLine": 1185,
+        "startChar": 0,
+        "endLine": 1192,
+        "endChar": 33
+      },
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1839a56e_e85705f8",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "I don\u0027t think chrome OS devices support this.",
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57929ff_803519b1",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "Again, it\u0027s likely board specific. Cr50 does the detection for us and drives CCD_MODE_ODL which configures the SBU bypass hardware.\n\nHmm, but actually I heard there were rumors of putting the PPC in front of cr50, so it might require the EC to configure the SBU FETs for the PPC.\n\nSo yeah, board specific. We can cross that bridge once we get to it though.",
+      "range": {
+        "startLine": 1315,
+        "startChar": 0,
+        "endLine": 1319,
+        "endChar": 0
+      },
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64700309_7c353b01",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "If using a PPC, you will want to call `ppc_sink_is_connected(port, 0)` and ppc_clear_oc_event_counter(port).",
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211c4006_d602d7fe",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "If a board is using a PPC, you will want to call `ppc_sink_is_connected(port, 1)`.",
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4249bb_09db3d3d",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "I think you\u0027ll want to debounce the full time (tCCDebounce) in addition to waiting for VBUS before transitioning to Attached.SNK. As written here, you\u0027ll transition to Attached.SNK regardless of VBUS presence.",
+      "range": {
+        "startLine": 1741,
+        "startChar": 0,
+        "endLine": 1745,
+        "endChar": 0
+      },
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1071a961_1b0eded9",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "If using a PPC, you will want to call `ppc_sink_is_connected(port, 0)` and ppc_clear_oc_event_counter(port).",
+      "revId": "e72dd1a8c97daa4010553fe51175472c4cccd230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

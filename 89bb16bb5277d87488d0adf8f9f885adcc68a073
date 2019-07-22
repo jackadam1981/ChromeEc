@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "75d426c8_d9d38b16",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "I would say take Nathan\u0027s approach (but with a less verbose config_* option).",
+      "parentUuid": "d2b956eb_c380efba",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afe851a4_88082fee",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
@@ -911,6 +935,30 @@
       "side": 1,
       "message": "If it\u0027s tested, then it should be good.  I\u0027m uncertain if hatch is wired for audio accessories; I know octopus was not since we had a dedicated headphone jack.",
       "parentUuid": "dfaff978_8252c57a",
+      "range": {
+        "startLine": 1169,
+        "startChar": 1,
+        "endLine": 1169,
+        "endChar": 18
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecd47c5c_6936a79d",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-22T23:44:51Z",
+      "side": 1,
+      "message": "Was it actually an analog audio accessory? I have one that I tried with my atlas and it didn\u0027t. My understanding was that no chrome OS device actually implemented the hardware to support analog audio accessory via Type-C.",
+      "parentUuid": "a64591c6_d197ce1d",
       "range": {
         "startLine": 1169,
         "startChar": 1,
