@@ -85,6 +85,11 @@
 #undef CONFIG_ACCEL_LNG2DM
 #undef CONFIG_ACCEL_LIS2D_COMMON
 
+/* Though lis2dwl has a similar name as li2dh/lis2de, it has a different
+ * register interface and resolution, so it get an independent driver.
+ */
+#undef CONFIG_ACCEL_LIS2DWL
+
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DS0
 /* Use CONFIG_ACCELGYRO_LSM6DSM for LSM6DSL, LSM6DSM, and/or LSM6DS3 */
