@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "093849f6_2a8758ed",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-22T00:56:06Z",
+      "side": 1,
+      "message": "\u003e Did you mean: let it have only one audio_codec_translate_addr_ec_to_ap() symbol when linking?\n\u003e \u003d\u003e if so, the method sounds fragile to me\n\nWell, that\u0027s how EC code generally works.\n\n\u003e 3. after initialization, the .init section will be freed (and available)\n\nThere is no concept of \"freeing memory\" in EC. No malloc, no free.\n\nYes, kernel does this too, but kernel doesn\u0027t care about code size (or doesn\u0027t care as much), we do.",
+      "parentUuid": "0aa70de7_6f39dd7a",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7620e92_c60cfa6c",
         "filename": "common/audio_codec.c",
         "patchSetId": 9
@@ -214,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "299490a5_f51d7981",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-22T00:56:06Z",
+      "side": 1,
+      "message": "\u003e What I want is creating a \"overlay\"-like concept.  Chip could provide some common implementations and boards are able to override them if any changes.\n\u003e For example, suppose chip A usually map 0x100 to 0x600, but derived board B can map 0x100 to 0x800.\n\nIs this a real problem? Or just conjecture? If it\u0027s just conjecture, please implement the simple, space-saving method first, then you can make it more complicated if needed.",
+      "parentUuid": "f67ff336_d86104b2",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19c83a15_6a3b954c",
         "filename": "common/build.mk",
         "patchSetId": 9
@@ -267,6 +303,24 @@
     },
     {
       "key": {
+        "uuid": "c461d3ec_3f495288",
+        "filename": "common/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-22T00:56:06Z",
+      "side": 1,
+      "message": "Please don\u0027t.",
+      "parentUuid": "e50c280d_af295912",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fea2baac_581c73f5",
         "filename": "include/audio_codec.h",
         "patchSetId": 9
@@ -302,6 +356,30 @@
       "side": 1,
       "message": "Any audio_codec_xxx.c include this header could use them.",
       "parentUuid": "fea2baac_581c73f5",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5603e5d_578ddb0e",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-22T00:56:06Z",
+      "side": 1,
+      "message": "Right so now this is going to polute the namespace for anything that uses audio_codec.h...",
+      "parentUuid": "2917b24b_e3b4068e",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -390,6 +468,24 @@
       "side": 1,
       "message": "I notice that, but current list is not sorted",
       "parentUuid": "8b014a8c_2764397b",
+      "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2db78ca_d6081661",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-22T00:56:06Z",
+      "side": 1,
+      "message": "Looks mostly sorted to me. Add between CC_ACCEL and CC_BLUETOOTH_LE.\n\nAlso, please protect with ifdef.",
+      "parentUuid": "597ea94f_7bd4e427",
       "revId": "20cc71f25c6faedfac9d1f175325cadbd227c24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
