@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cd12aed_2beb6409",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4593,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-07-22T07:10:51Z",
+      "side": 1,
+      "message": "I think we can also remove these two since we are not using TDM.",
+      "revId": "222ce6c2632fcde4714e9c20b1efbbfa7d540e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
