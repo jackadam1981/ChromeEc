@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae1414be_9bd6dca0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "Can this check embedded in is_transmit_message_type_sop_prime?",
+      "range": {
+        "startLine": 793,
+        "startChar": 7,
+        "endLine": 793,
+        "endChar": 43
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a28d79d_13e6db1c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "!",
+      "range": {
+        "startLine": 805,
+        "startChar": 6,
+        "endLine": 805,
+        "endChar": 13
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec60fe04_a9483489",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "Where is the check for Vconn source?",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2150,
+        "endChar": 26
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ac182a_3d71fc06",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3470,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "can you embed this check in reset_pd_cable?",
+      "range": {
+        "startLine": 3470,
+        "startChar": 3,
+        "endLine": 3470,
+        "endChar": 44
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c698140b_f780f25a",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "(type)",
+      "range": {
+        "startLine": 120,
+        "startChar": 50,
+        "endLine": 120,
+        "endChar": 54
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f65d62f_c9e0432a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 485,
+        "startChar": 6,
+        "endLine": 485,
+        "endChar": 7
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d92290_f63e8e6b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T20:03:22Z",
+      "side": 1,
+      "message": "Can you add description? Also, it\u0027s better be placed near struct pd_cable?",
+      "range": {
+        "startLine": 841,
+        "startChar": 8,
+        "endLine": 841,
+        "endChar": 36
+      },
+      "revId": "63d3de836d478b60d4cd267bb6468637433ce286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
