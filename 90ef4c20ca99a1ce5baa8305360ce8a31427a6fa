@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17a4d3ca_2005401b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4587,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-07-22T07:42:40Z",
+      "side": 1,
+      "message": "I think you need uin8_t reserved[2] here so ec_param_ec_codec_dmic takes the size of 4*N bytes.",
+      "revId": "90ef4c20ca99a1ce5baa8305360ce8a31427a6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
