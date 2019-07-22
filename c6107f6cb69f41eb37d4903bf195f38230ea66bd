@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63bb4d0a_39fe4da7",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-22T06:33:01Z",
+      "side": 1,
+      "message": "I think we should put this include/config.h, (at least that\u0027s how other configs does)\n\nSome example:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/473bd883b60fd5b00377766dae2bacad246de0d2/include/config.h#4393",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "c6107f6cb69f41eb37d4903bf195f38230ea66bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
