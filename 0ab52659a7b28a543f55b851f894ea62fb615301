@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b008627_5c3ec561",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-22T03:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1643977f_5e983c57",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "0ab52659a7b28a543f55b851f894ea62fb615301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a3c172_cb2c78cc",
         "filename": "chip/npcx/uartn.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0ab52659a7b28a543f55b851f894ea62fb615301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f8dda7_5b1230ad",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-22T03:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a3c172_cb2c78cc",
+      "range": {
+        "startLine": 32,
+        "startChar": 27,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "0ab52659a7b28a543f55b851f894ea62fb615301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9c33f964_49893e7c",
+        "filename": "chip/npcx/uartn.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-22T03:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1773bb39_5a63e551",
+      "range": {
+        "startLine": 35,
+        "startChar": 28,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "0ab52659a7b28a543f55b851f894ea62fb615301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "414ea81a_8e08dfd5",
         "filename": "chip/npcx/uartn.h",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "0ab52659a7b28a543f55b851f894ea62fb615301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5dcb10_a758b75a",
+        "filename": "chip/npcx/uartn.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2019-07-22T03:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "414ea81a_8e08dfd5",
+      "revId": "0ab52659a7b28a543f55b851f894ea62fb615301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
