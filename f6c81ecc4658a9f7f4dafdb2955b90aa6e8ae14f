@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5a99489_ce44c342",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "casting not needed, crgb_data is a uint32_t already.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f3bc99_f6e81530",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "Should be fp_t",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f303861d_d08b5188",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "In normal mode, is ALS X always equal to RGB Y? \nI thought ALS X was always the clear channel, but it may not be a useful data.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c3d208_3f9590c7",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "use memcpy.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e076141a_546eeabf",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "why setting last_v, it is not used anymore.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59550bd3_5aeb5a08",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "Apply your change on top of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1702543 to set/reset calibration_mode.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5e6cc2_08aee34a",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "put it in mathutil.h it is not tcs3400 specific.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b03e4766_a8153cf1",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-22T23:01:00Z",
+      "side": 1,
+      "message": "It needs to work with float as well.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
