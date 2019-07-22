@@ -964,6 +964,7 @@ void usb_charger_task(void *u)
 
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
+			hook_notify(HOOK_AC_CHANGE);
 			CPRINTS("VBUS attached: %dmV",
 					charger_get_vbus_voltage(0));
 			bc12_type = rt946x_get_bc12_device_type();
@@ -992,6 +993,7 @@ void usb_charger_task(void *u)
 
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
+			hook_notify(HOOK_AC_CHANGE);
 			CPRINTS("VBUS detached");
 #ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
 			p9221_notify_vbus_change(0);
