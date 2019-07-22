@@ -140,6 +140,30 @@
       "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f8f71ab_93d59a49",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-22T09:34:58Z",
+      "side": 1,
+      "message": "I would like to confirm the index of \"kso_mapping\" from 7 to 10. Are there pins of kso mapping to 17, 18, 16, 15?",
+      "parentUuid": "cefb43f9_168cfbc4",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
