@@ -22,6 +22,53 @@
       "revId": "c6107f6cb69f41eb37d4903bf195f38230ea66bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d06fb37_c169df98",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T16:11:36Z",
+      "side": 1,
+      "message": "I think this is a better place because when anx7688.c is removed, this check will be removed automatically (and config.h is simply too big). So, I think we should move similar checks from config.h to driver files.",
+      "parentUuid": "63bb4d0a_39fe4da7",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "c6107f6cb69f41eb37d4903bf195f38230ea66bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0104d1fa_1798888f",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-22T16:11:36Z",
+      "side": 1,
+      "message": "What about CONFIG_USBC_PPC?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "c6107f6cb69f41eb37d4903bf195f38230ea66bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
