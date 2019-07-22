@@ -2424,6 +2424,7 @@
  */
 #undef CONFIG_KEYBOARD_KSO_CUSTOM
 
+#undef CONFIG_EC_KEYBOARD
 /*****************************************************************************/
 
 /* Support common LED interface */
