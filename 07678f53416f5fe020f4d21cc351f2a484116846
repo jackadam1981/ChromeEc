@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e93bd98_23d6e864",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-22T02:58:06Z",
+      "side": 1,
+      "message": "The hook runs immediately right? I think it sounds better to put the call at the end of the if block. ditto below.",
+      "revId": "07678f53416f5fe020f4d21cc351f2a484116846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
