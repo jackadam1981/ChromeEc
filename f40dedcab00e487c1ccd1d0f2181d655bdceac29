@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "aa977015_9033c000",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-22T07:39:52Z",
+      "side": 1,
+      "message": "Could you upload your changes? Maybe rebase your CL on top of that one? (make sure git log doesn\u0027t show a changed hash for the CL that\u0027s not yours)",
+      "parentUuid": "1499fee4_5f9bc39d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d26e78_7c5d3166",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-22T07:39:52Z",
+      "side": 1,
+      "message": "I didn\u0027t have much luck with row 2. It doesn\u0027t seem to work on my board. Still looking at it.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "f40dedcab00e487c1ccd1d0f2181d655bdceac29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d973c0af_8ae14241",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 9
