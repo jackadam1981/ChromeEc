@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5b05f69_567cdd65",
+        "filename": "util/iteflash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-22T15:38:50Z",
+      "side": 1,
+      "message": "This is corrupting the first byte of id, which was already read in line 571.\nIt should be like \nid |\u003d 0xFF0000;\n\nBesides, line 579 and line 580 should be swapped.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 16
+      },
+      "revId": "60caba678274ded47bc0ab74ff3356855ac21364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e858f0d8_c114ce63",
+        "filename": "util/iteflash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-22T15:38:50Z",
+      "side": 1,
+      "message": "Please explain why this line should be changed.\nIs it guaranteed that the first byte of id is always either 0x01 or 0x02?\nIs it guaranteed that the second byte of id is zero?\nIs it guaranteed that get_3rd_chip_id_byte would fill 0x08, and nothing else, in the third byte of id?",
+      "range": {
+        "startLine": 584,
+        "startChar": 2,
+        "endLine": 584,
+        "endChar": 39
+      },
+      "revId": "60caba678274ded47bc0ab74ff3356855ac21364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
