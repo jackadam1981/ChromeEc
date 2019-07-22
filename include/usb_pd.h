@@ -1793,6 +1793,8 @@ void pd_rx_disable_monitoring(int port);
 /* get time since last RX edge interrupt */
 uint64_t get_time_since_last_edge(int port);
 
+int pd_read_cc_status(int port, int cc);
+
 /**
  * Deinitialize the hardware used for PD.
  *
