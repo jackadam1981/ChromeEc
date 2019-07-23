@@ -158,6 +158,8 @@ common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
 
 # Mocks
+common-$(HAS_MOCK_FP_SENSOR)+=mock/fp_sensor_mock.o
+common-$(HAS_MOCK_MKBP_EVENTS)+=mock/mkbp_events_mock.o
 common-$(HAS_MOCK_ROLLBACK)+=mock/rollback_mock.o
 
 ifneq ($(CONFIG_COMMON_RUNTIME),)
