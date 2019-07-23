@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "d1fa1d00_2706687a",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-23T15:30:01Z",
+      "side": 1,
+      "message": "As far as I know, the issue could apply to any board which has Haven doing CCD detection.  I believe Daisuke ran into it on vayne (CL:1121339) and then I hit a corner case of it on octopus.",
+      "parentUuid": "75d426c8_d9d38b16",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "afe851a4_88082fee",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
