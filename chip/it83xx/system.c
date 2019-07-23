@@ -119,6 +119,15 @@ void chip_pre_init(void)
 {
 	/* bit4, enable debug mode through SMBus */
 	IT83XX_SMB_SLVISELR &= ~BIT(4);
+
+	if (IS_ENABLED(CHIP_VARIANT_IT83201AX)) {
+		IT83XX_ECPM_CGCTRL6R &= ~BIT(1);
+		IT83XX_ECPM_CGCTRL6R |= BIT(1);
+	}
+
+	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
+		/* System triggers a soft reset at default. */
+		IT83XX_GCTRL_ETWDUARTCR &= ~ETWD_HW_RST_EN;
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
@@ -194,7 +203,7 @@ void system_reset(int flags)
 	/* bit0: enable watchdog hardware reset. */
 #ifdef IT83XX_ETWD_HW_RESET_SUPPORT
 	if (flags & SYSTEM_RESET_HARD)
-		IT83XX_GCTRL_ETWDUARTCR |= BIT(0);
+		IT83XX_GCTRL_ETWDUARTCR |= ETWD_HW_RST_EN;
 #endif
 	/*
 	 * Writing invalid key to watchdog module triggers a soft or hardware
