@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "499df3cd_9cd7a567",
+        "filename": "driver/tcpm/anx7688.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-23T01:17:27Z",
+      "side": 1,
+      "message": "SG.",
+      "parentUuid": "f25ca93f_61684c3e",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "c6107f6cb69f41eb37d4903bf195f38230ea66bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0104d1fa_1798888f",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 2
