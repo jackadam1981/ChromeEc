@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85c10d2a_595efbc7",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "Oh, since you\u0027re into packing and alignment, you can save a few bytes of SRAM by moving cap and type next to each other.",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2936a126_d952d0cb",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "This assignment is useless in the EC_CODEC_SHM_TYPE_SYSTEM_RAM case.\n\n(also is the cast really needed?)\n\nI\u0027d do:\n\nif (EC_CODEC_SHM_TYPE_SYSTEM_RAM) {\n    audio_codec_translate_addr_ec_to_ap(shms[shm_id].addr, \u0026addr);\n    r-\u003ephys_addr \u003d addr;\n} else {\n    r-\u003ephys_addr \u003d shms[shm_id].addr;\n}",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a60c19fd_81ddb2ae",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "I know this is debugging code, but to avoid potential issues in the future\n\nBUILD_ASSERT(ARRAY_SIZE(sub_cmds) \u003d\u003d ARRAY_SIZE(strcmd))",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3596c9_b3144bb7",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "capability",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8413f96c_591d1cf3",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "1 if audio codec capabilities include cap passed as parameter.",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b30061_67256a1d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4600,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "Do you really need to pad here? I think it\u0027s ok if the structure ends up being shorter than a multiple of 4, right?",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700ebf8a_9da4fa3d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4613,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:12:43Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
