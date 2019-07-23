@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "01ea06c8_6b598222",
+        "filename": "util/iteflash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2019-07-23T16:14:23Z",
+      "side": 1,
+      "message": "I meant that Line 580 corrupted the first byte by BIT-ORing 0xf00\"0f\".\n\nAnyway, patch#10 looks good.",
+      "parentUuid": "1807de33_0ecbbc3a",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 16
+      },
+      "revId": "60caba678274ded47bc0ab74ff3356855ac21364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e858f0d8_c114ce63",
         "filename": "util/iteflash.c",
         "patchSetId": 9
