@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce92f5e_9aae4e8f",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "Can you wrap these i2c reads and writes in local subroutines?\n\n  static int it8801_i2c_read8(...)",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d29bf98_2cbe791d",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "I think we should use \u0027__overridable\u0027 (and remove CONFIG_IT8801_KSO_BOARD_CONFIG). A board can define \u0027__override const uint8_t kso_mapping[]\u0027.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 7
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4abeb0d_c6dc4677",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "We can return random data if this fails.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e86c00a_8f8fb2ab",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "~data doesn\u0027t work?",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622cdd6d_ef09a5c8",
+        "filename": "driver/ioexpander_it8801.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "7?",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31dc0b14_1592b566",
+        "filename": "driver/ioexpander_it8801.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "This isn\u0027t register, is it? So, it should be just ADDR or I2C_ADDR.",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6c9504_b04bb13b",
+        "filename": "driver/ioexpander_it8801.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T18:01:32Z",
+      "side": 1,
+      "message": "can you remove this guard?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
