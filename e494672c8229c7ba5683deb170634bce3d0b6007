@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecfb92a6_d87a49c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-23T23:23:36Z",
+      "side": 1,
+      "message": "300ms?",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c0ef22_a358b675",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-23T23:23:36Z",
+      "side": 1,
+      "message": "Not for this change, but I wonder if this should be part of some common code to ensure AP is shutdown.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
