@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1133b97e_b6309654",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:26:19Z",
+      "side": 1,
+      "message": "does not really feel like the right error code...\n\nEC_RES_BUSY sounds a bit better (e.g. EBUSY may be good in userspace/kernel, but the description does not match... (\"/* Up but too busy.  Should retry */\")).",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "571c4d5ca2273644b829668e3c1c814829f63eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca4ddc42_25ea71a9",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:26:19Z",
+      "side": 1,
+      "message": "Can this be replaced by a range check? if (pp-\u003edepth \u003e EC_CODEC_I2S_RX_SAMPLE_DEPTH_COUNT) or something",
+      "revId": "571c4d5ca2273644b829668e3c1c814829f63eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d89f93_c0cd4535",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:26:19Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "571c4d5ca2273644b829668e3c1c814829f63eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
