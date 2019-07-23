@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9576cb24_a6664109",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T16:43:10Z",
+      "side": 1,
+      "message": "This means SOP\u0027 identity is queried every time a UFP is swapped. Ideally, we want to query cable identity only once per cable attach. Do you have any thoughts on it? Please also see my comment below in \u0027case CMD_DISCOVER_IDENT\u0027 section.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50445e69_e160d6bf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T16:43:10Z",
+      "side": 1,
+      "message": "nit: This can be cnt \u003e VDO_INDEX_IDH but it\u0027s a bit misleading. Maybe we can do:\n\n  if (is_vdo_present(cnt, VDO_INDEX_IDH))\n\njust for a minor readability improvement.",
+      "range": {
+        "startLine": 332,
+        "startChar": 5,
+        "endLine": 332,
+        "endChar": 12
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f81e87_2887dc06",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T16:43:10Z",
+      "side": 1,
+      "message": "VDO_INDEX_IDH",
+      "range": {
+        "startLine": 333,
+        "startChar": 42,
+        "endLine": 333,
+        "endChar": 43
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529c3064_e047aa24",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T16:43:10Z",
+      "side": 1,
+      "message": "return !!(cable[port].flags \u0026 CABLE_FLAGS_SOP_PRIME_ENABLE);",
+      "range": {
+        "startLine": 702,
+        "startChar": 9,
+        "endLine": 702,
+        "endChar": 58
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af85fa8_98bba106",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T16:43:10Z",
+      "side": 1,
+      "message": "If we check whether cable[port] is cleared or not here, we can avoid redundantly querying an identity? If we\u0027re properly resetting cable[port] (by reset_pd_cable), it should be empty only when a new cable is attached.",
+      "range": {
+        "startLine": 803,
+        "startChar": 14,
+        "endLine": 803,
+        "endChar": 49
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
