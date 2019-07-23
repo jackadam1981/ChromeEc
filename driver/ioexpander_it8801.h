@@ -39,4 +39,23 @@ void io_expander_it8801_interrupt(enum gpio_signal signal);
 extern const uint8_t kso_mapping[];
 #endif
 
+/* General Purpose I/O Port (GPIO) */
+#define IT8801_SUPPORT_GPIO_FLAGS (GPIO_OPEN_DRAIN | GPIO_INPUT | \
+		GPIO_OUTPUT | GPIO_LOW | GPIO_HIGH)
+#define IT8801_REG_MASK_GPIOAFS_FUNC1   (0x00 << 7)
+#define IT8801_REG_GPIO_DATA_IN(n)      (0x00 + n)
+#define IT8801_REG_GPIO_DATA_OUT(n)     (0x05 + n)
+#define IT8801_REG_GPIOXXCR(n)          (0x0a + (n * 8))
+#define IT8801_REG_GPIODIR              BIT(5)
+#define IT8801_REG_GPIOOT               BIT(4)
+
+#define IT8801_CHIP_INFO                0
+
+/* IT8801 only supports GPIO 0/1/2 */
+#define IT8801_VALID_GPIO_G0_MASK       0xDB
+#define IT8801_VALID_GPIO_G1_MASK       0x3F
+#define IT8801_VALID_GPIO_G2_MASK       0x0F
+
+extern const struct ioexpander_drv it8801_ioexpander_drv;
+
 #endif /* __CROS_EC_KBEXPANDER_IT8801_H */
