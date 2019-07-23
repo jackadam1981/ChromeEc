@@ -741,3 +741,12 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+void chipset_set_pmic_slp_sus_l(int level)
+{
+	if(pd_is_snk_dbg_acc(USB_PD_PORT_ANX7447)) {
+		CPRINTS("Keep the power on including 5V");
+		gpio_set_level(GPIO_PMIC_SLP_SUS_L, 1);
+	} else
+		gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);
+}

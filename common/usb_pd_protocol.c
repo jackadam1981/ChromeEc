@@ -369,6 +369,13 @@ int pd_is_vbus_present(int port)
 #endif
 }
 
+int pd_is_snk_dbg_acc(int port)
+{
+	return pd_is_connected(port) &&
+		pd[port].power_role == PD_ROLE_SOURCE &&
+		pd[port].cc_state == PD_CC_DEBUG_ACC;
+}
+
 static void set_polarity(int port, int polarity)
 {
 	tcpm_set_polarity(port, polarity);

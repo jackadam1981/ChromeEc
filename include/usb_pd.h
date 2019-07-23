@@ -1831,6 +1831,14 @@ int pd_capable(int port);
  */
 int pd_is_vbus_present(int port);
 
+/**
+ * Return true if the connected device is in debug accessory mode
+ * and the power role is sink.
+ *
+ * @param port USB-C port number
+ */
+int pd_is_snk_dbg_acc(int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
