@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e717e56c_0ffe1a16",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-23T19:11:57Z",
+      "side": 1,
+      "message": "please add a comment mentioning the opening variable name.",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 6
+      },
+      "revId": "136f6481a344feb1260cba791c08d1e8f297e844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

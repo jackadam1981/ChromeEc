@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57a451d2_fde0639e",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-23T19:11:57Z",
+      "side": 0,
+      "message": "before this patch there was a PMU reset in the beginning and this logical reset in the end of the init sequence. Is this logical reset not required any more?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "9be52b960b3e25ccc8ef0fc4c15db5bc918a9965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
