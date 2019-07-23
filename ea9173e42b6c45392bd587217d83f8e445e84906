@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d8fdfc9_cc0d6b14",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-23T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d2e9df_791333f8",
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5644299e_bef52069",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 26
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "0e1e0448_a35bb1bf",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-23T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5644299e_bef52069",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e8a7e1c_6d03d7e5",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 26
@@ -56,6 +98,24 @@
       "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92221524_fb28177e",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-23T06:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e8a7e1c_6d03d7e5",
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a752ca8c_81c5aee3",
+        "filename": "common/build.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-23T06:24:09Z",
+      "side": 1,
+      "message": "in which config.h (include/config.h undef everything)",
+      "parentUuid": "ab18bc6c_daf480a1",
+      "range": {
+        "startLine": 33,
+        "startChar": 52,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19203dc6_af9921db",
         "filename": "include/ec_commands.h",
         "patchSetId": 26
@@ -93,6 +177,30 @@
       "writtenOn": "2019-07-23T01:38:26Z",
       "side": 1,
       "message": "SHA256 is quite expensive (code and time), do you really need such a strong hash? If it\u0027s just for integrity, the host command protocol is already protected by a checksum.",
+      "range": {
+        "startLine": 4744,
+        "startChar": 0,
+        "endLine": 4744,
+        "endChar": 20
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3946ca_b4adf0be",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 4744,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-23T06:24:09Z",
+      "side": 1,
+      "message": "if AP finds hash of language model doesn\u0027t change, AP won\u0027t transfer the model to EC codec (which should save lots of host commands when in \"packet mode\").  Roughly, 70kB / 100 \u003d 700 host commands.\n\nthe hash in the message here is not for integrity of this \"packet\" but for whole language model",
+      "parentUuid": "19203dc6_af9921db",
       "range": {
         "startLine": 4744,
         "startChar": 0,
