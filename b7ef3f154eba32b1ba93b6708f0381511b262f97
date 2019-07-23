@@ -356,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "a95611b0_68335b0d",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-23T23:41:08Z",
+      "side": 1,
+      "message": "I believe Tim\u0027s comment here was referring to moving cbi_init() to baseboard. Rest of the stuff can just live in board/kindred. Also, you can add a board_get_sku_id() that baseboard/hatch can provide and it can return the sku_id that was saved by cbi_init.",
+      "parentUuid": "2361bc52_e1a44f9f",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 58
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "994e12f3_6e534cca",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
