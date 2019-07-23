@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b96b74d5_6b52148a",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-23T05:34:48Z",
+      "side": 1,
+      "message": "Scott/Furquan/Tim:\nIs \"no KB BL for clamshell\" true only for Kindred/Kled or for any devices?",
+      "parentUuid": "8f401895_3682fe2a",
+      "range": {
+        "startLine": 458,
+        "startChar": 4,
+        "endLine": 458,
+        "endChar": 72
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81dd2536_e9ef808d",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
