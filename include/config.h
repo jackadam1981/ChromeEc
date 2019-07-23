@@ -2297,6 +2297,17 @@
 /* Keyboard config */
 
 /*
+ * Support IT8801 I/O expander.
+ */
+#undef CONFIG_IO_EXPANDER_IT8801
+
+/*
+ * KSO config of IT8801 is in board.c. If this is not defined,
+ * default values from driver/ioexpander_it8801.c will be used.
+ */
+#undef CONFIG_IT8801_KSO_BOARD_CONFIG
+
+/*
  * The Silego reset chip sits in between the EC and the physical keyboard on
  * column 2.  To save power in low-power modes, some Silego variants require
  * the signal to be inverted so that the open-drain output from the EC isn't
@@ -2419,6 +2430,7 @@
  * Enable keypad (a palm-sized keyboard section usually placed on the far right)
  */
 #undef CONFIG_KEYBOARD_KEYPAD
+
 /*****************************************************************************/
 
 /* Support common LED interface */
