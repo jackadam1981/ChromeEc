@@ -457,7 +457,7 @@ static struct bmi160_drv_data_t g_bmi160_data;
 static struct als_drv_data_t g_tcs3400_data = {
 	.als_cal.offset = 0,
 	.als_cal.channel_scale = {
-		.k_channel_scale = FLOAT_TO_FP(1.0),   /* kc from VPD */
+		.k_channel_scale = FLOAT_TO_FP(1.007), /* kc from VPD */
 		.cover_scale = FLOAT_TO_FP(0.9),       /* CT */
 	},
 };
@@ -466,7 +466,7 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 	.device_scale = 1,
 	.device_uscale = 0,
 	.rgb_scale[RED_RGB_IDX] = {
-		.k_channel_scale = FLOAT_TO_FP(1.0),   /* kr */
+		.k_channel_scale = FLOAT_TO_FP(1.001), /* kr */
 		.cover_scale = FLOAT_TO_FP(0.6)
 	},
 	.rgb_scale[GREEN_RGB_IDX] = {
@@ -474,7 +474,7 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 		.cover_scale = FLOAT_TO_FP(1.0)
 	},
 	.rgb_scale[BLUE_RGB_IDX] = {
-		.k_channel_scale = FLOAT_TO_FP(1.0),   /* kb */
+		.k_channel_scale = FLOAT_TO_FP(1.007), /* kb */
 		.cover_scale = FLOAT_TO_FP(1.5)
 	},
 	.rgb_cal[X] = {
