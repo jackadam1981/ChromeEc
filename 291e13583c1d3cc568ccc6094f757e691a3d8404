@@ -16,6 +16,24 @@
       "revId": "291e13583c1d3cc568ccc6094f757e691a3d8404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079d67d7_f784b56d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-23T05:11:09Z",
+      "side": 1,
+      "message": "\u003e interrupt from KX022 working (why do we need this pin again?)\n\nYep, this is useless. We don\u0027t need this pin. Driver doesn\u0027t have any provision for it.",
+      "parentUuid": "985cf741_1f6b84f1",
+      "revId": "291e13583c1d3cc568ccc6094f757e691a3d8404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
