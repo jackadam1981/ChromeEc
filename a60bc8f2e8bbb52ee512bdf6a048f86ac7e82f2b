@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fe9501b_bc8e3d83",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:20:38Z",
+      "side": 1,
+      "message": "is this cast really needed?",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "a60bc8f2e8bbb52ee512bdf6a048f86ac7e82f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb142243_97611b70",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:20:38Z",
+      "side": 1,
+      "message": "not needed, an error is printed anyway in the console.",
+      "revId": "a60bc8f2e8bbb52ee512bdf6a048f86ac7e82f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab57fc9f_915b0919",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:20:38Z",
+      "side": 1,
+      "message": "no space at the end of the line",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "a60bc8f2e8bbb52ee512bdf6a048f86ac7e82f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2029a250_aad4ce61",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 4660,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:20:38Z",
+      "side": 1,
+      "message": "ditto, I don\u0027t think any of this padding is required.",
+      "revId": "a60bc8f2e8bbb52ee512bdf6a048f86ac7e82f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
