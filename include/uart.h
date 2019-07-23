@@ -352,3 +352,18 @@ int uart_console_read_buffer(uint8_t type,
 			     uint16_t *write_count);
 
 #endif  /* __CROS_EC_UART_H */
+
+/**
+ * Calculate checksum for tx buffer head and tail
+ */
+int updated_checksum(void);
+
+/**
+ * Reset checksum when the head and tail values are invalid
+ */
+void reset_checksum(void);
+
+/**
+ * Get the previous checksum
+ */
+int pre_checksum(void);

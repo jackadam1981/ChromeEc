@@ -3504,6 +3504,11 @@
  */
 #undef CONFIG_UART_PAD_SWITCH
 
+/**
+ * Preserve EC reset logs on DRAM so that the reset logs will be preserved after
+ * EC shutting down.
+ */
+#undef CONFIG_UART_RESET_LOG
 /*
  * UART receive buffer size in bytes.  Must be a power of 2 for macros in
  * common/uart_buffering.c to work properly.  Must be larger than

@@ -36,10 +36,18 @@
 #define RX_DMA_RECHECK_INTERVAL (HOOK_TICK_INTERVAL /			\
 				 (CONFIG_UART_RX_DMA_RECHECKS + 1))
 
+/* Macros to set section attribute*/
+#ifdef CONFIG_UART_RESET_LOG
+	#define UART_BUF_SECT __attribute__((section(".uart_buffer")))
+#else
+	#undef UART_BUF_SECT
+	#define UART_BUF_SECT
+#endif
+
 /* Transmit and receive buffers */
-static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
-static volatile int tx_buf_head;
-static volatile int tx_buf_tail;
+static volatile char UART_BUF_SECT tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
+static volatile int UART_BUF_SECT tx_buf_head;
+static volatile int UART_BUF_SECT tx_buf_tail;
 static volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE] __uncached;
 static volatile int rx_buf_head;
 static volatile int rx_buf_tail;
@@ -47,6 +55,33 @@ static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int tx_last_snapshot_head;
 static int tx_next_snapshot_head;
+static int UART_BUF_SECT checksum;
+
+/**
+ * Calculate updated checksum for tx head and tail
+ */
+int updated_checksum(void)
+{
+	return tx_buf_head ^ tx_buf_tail;
+}
+
+/**
+ * Reset checksum when the head and tail values are invalid
+ */
+void reset_checksum(void)
+{
+	tx_buf_head = 0;
+	tx_buf_tail = 0;
+	checksum = 0;
+}
+
+/**
+ * Get previous checksum value
+ */
+int pre_checksum(void)
+{
+	return checksum;
+}
 
 /**
  * Put a single character into the transmit buffer.
@@ -92,6 +127,9 @@ static int __tx_char(void *context, int c)
 
 	tx_buf[tx_buf_head] = c;
 	tx_buf_head = tx_buf_next;
+
+	/* Update checksum*/
+	checksum = updated_checksum();
 #endif
 	return 0;
 }
@@ -121,6 +159,9 @@ void uart_process_output(void)
 		tx_buf_tail = (tx_buf_tail + tx_dma_in_progress) &
 			(CONFIG_UART_TX_BUF_SIZE - 1);
 		tx_dma_in_progress = 0;
+
+		/*Update Checksum*/
+		checksum = updated_checksum();
 	}
 
 	/* Disable DMA-done interrupt if nothing to send */
@@ -147,6 +188,9 @@ void uart_process_output(void)
 	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
 		uart_write_char(tx_buf[tx_buf_tail]);
 		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
+
+		/*Update checksum*/
+		checksum = updated_checksum();
 	}
 
 	/* If output buffer is empty, disable transmit interrupt */

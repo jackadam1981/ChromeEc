@@ -33,6 +33,7 @@
 #undef  CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
 #define CONFIG_UART_RX_DMA
+#define CONFIG_UART_RESET_LOG
 
 /* Bootblock */
 #ifdef SECTION_IS_RO

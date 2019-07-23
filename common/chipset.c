@@ -19,6 +19,13 @@
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
+/* Macros to set section attribute*/
+#ifdef CONFIG_UART_RESET_LOG
+	#define UART_BUF_SECT __attribute__((section(".uart_buffer")))
+#else
+	#undef UART_BUF_SECT
+	#define UART_BUF_SECT
+#endif
 /*****************************************************************************/
 /* Console commands */
 
@@ -63,7 +70,7 @@ static struct mutex reset_log_mutex;
 static int next_reset_log;
 static uint32_t ap_resets_since_ec_boot;
 /* keep reset_logs size a power of 2 */
-static struct ap_reset_log_entry reset_logs[4];
+static struct ap_reset_log_entry UART_BUF_SECT reset_logs[4];
 
 void report_ap_reset(enum chipset_shutdown_reason reason)
 {

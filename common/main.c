@@ -39,6 +39,13 @@
 
 test_mockable __keep int main(void)
 {
+#ifdef CONFIG_UART_RESET_LOG
+	/*
+	 * Reset tx buffer head and tail if the values are invalid
+	 */
+	if (updated_checksum() != pre_checksum())
+		reset_checksum();
+#endif
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
 	 * Now that we have started execution, we no longer need the loader.
