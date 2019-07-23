@@ -1,0 +1,527 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45350d3c_b7d0fa27",
+        "filename": "common/build.mk",
+        "patchSetId": 23
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "These file names are all so cryptic. Less abbreviated names help more developers get involved. How about usbc_*? e.g. usbc_state_machine.o.\n\nWe should also consider hosting all these under a sub-directory (e.g. common/usbc).",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 51
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f792b1ea_17b07078",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "You can probably uncage all these if you use is_enabled.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dde59a7_6a04f444",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "These are all local, right? Can you get rid of \u0027tc_\u0027?\n\nWhere is this \u0027prefix\u0027 needed anyway?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec5c3dc_4fbada5e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "Can you describe the hierarchy?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b1d190_cbb73d3c",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "Why are these not declared by DECLARE_STATE? Maybe we should define DECLARE_STATE(prefix, name, run, exit)?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736baf7f_521a17d9",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "Can you annotate these?\n\n  [ENTRY_SIG] \u003d tc_cc_rd_entry,\n\netc.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b817cf_e834686a",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "Why are these all returning unsigned int (instead of int)?",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba9cdd7_101fbf17",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "Why is this explicitly set to zero but other fields are not?",
+      "range": {
+        "startLine": 294,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 20
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce03e5c_a068ee18",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "cc_is_at_least_one_rd",
+      "range": {
+        "startLine": 1288,
+        "startChar": 5,
+        "endLine": 1288,
+        "endChar": 57
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "941b84b6_4be0761e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "cc_is_audio_acc",
+      "range": {
+        "startLine": 1289,
+        "startChar": 4,
+        "endLine": 1289,
+        "endChar": 55
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd597e45_eef21ad4",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "cc_is_snk_dbg_acc",
+      "range": {
+        "startLine": 1338,
+        "startChar": 5,
+        "endLine": 1338,
+        "endChar": 55
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c2cc45_cbf2b237",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "cc_is_at_least_one_rd",
+      "range": {
+        "startLine": 1341,
+        "startChar": 11,
+        "endLine": 1342,
+        "endChar": 27
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d67a1c_615763bc",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "can you join them?",
+      "range": {
+        "startLine": 1347,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 11
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1d8bcdc_8877c439",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "I think you can use is_enabled (and get rid of the guard at line 1514).",
+      "range": {
+        "startLine": 1484,
+        "startChar": 7,
+        "endLine": 1484,
+        "endChar": 28
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "954680a5_b9b5ff26",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "pulled up",
+      "range": {
+        "startLine": 1709,
+        "startChar": 49,
+        "endLine": 1710,
+        "endChar": 10
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdddc3e9_e237b2d8",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "There is no state machine in this file, right? Why don\u0027t we name it usbc_engine or usbc_task?",
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6527f3f6_2d9dd010",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "is_enabled",
+      "range": {
+        "startLine": 256,
+        "startChar": 7,
+        "endLine": 256,
+        "endChar": 22
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6171d0fe_900a922d",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "wyh: is_enabled",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 23
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1303e801_184ed0f4",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "This name is too generic.",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 287,
+        "endChar": 15
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f30902e_eac6b89f",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "wyh: is_enabled",
+      "range": {
+        "startLine": 290,
+        "startChar": 7,
+        "endLine": 290,
+        "endChar": 24
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a874f546_5b646647",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "This one is too generic, too.",
+      "range": {
+        "startLine": 292,
+        "startChar": 2,
+        "endLine": 292,
+        "endChar": 16
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d757bc_3c427358",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "And this.",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 11
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46eea8d6_818f9ded",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T22:23:36Z",
+      "side": 1,
+      "message": "Do you need pd_enable?",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
