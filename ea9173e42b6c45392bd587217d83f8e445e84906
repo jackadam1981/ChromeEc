@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d2e9df_791333f8",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:38:26Z",
+      "side": 1,
+      "message": "Is this a constant? If so add \"const\"",
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5644299e_bef52069",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:38:26Z",
+      "side": 1,
+      "message": "SHA256_DIGEST_SIZE?",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8a7e1c_6d03d7e5",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:38:26Z",
+      "side": 1,
+      "message": "please describe what this locks",
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab18bc6c_daf480a1",
+        "filename": "common/build.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:38:26Z",
+      "side": 1,
+      "message": "no. Have some magic in config.h to enable CONFIG_SHA256 if CONFIG_AUDIO_CODEC_WOV is enabled.",
+      "range": {
+        "startLine": 33,
+        "startChar": 52,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19203dc6_af9921db",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 4744,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:38:26Z",
+      "side": 1,
+      "message": "SHA256 is quite expensive (code and time), do you really need such a strong hash? If it\u0027s just for integrity, the host command protocol is already protected by a checksum.",
+      "range": {
+        "startLine": 4744,
+        "startChar": 0,
+        "endLine": 4744,
+        "endChar": 20
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
