@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d279c575_2753ec77",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-23T20:48:24Z",
+      "side": 0,
+      "message": "As a general rule we\u0027re trying to avoid conditionally including variables. Instead letting the optimizer remove them when unused.",
+      "parentUuid": "8f117708_e6bb9ef8",
+      "revId": "f041a6d14b807e2cc2aa5e10de4090ee39543621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e933894_0a7acdf9",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 3
@@ -69,6 +87,24 @@
       "revId": "f041a6d14b807e2cc2aa5e10de4090ee39543621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6b6135_fd2a38f4",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-23T20:48:24Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "66eeb864_5bd89ba7",
+      "revId": "f041a6d14b807e2cc2aa5e10de4090ee39543621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
