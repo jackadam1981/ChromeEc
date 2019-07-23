@@ -993,6 +993,10 @@ static void scan_bus(int port, const char *desc)
 	}
 
 	for (a = 0; a < 0x100; a += 2) {
+		if (a < 0x10) {
+			ccputs(",");
+			continue;
+		}
 		watchdog_reload();  /* Otherwise a full scan trips watchdog */
 		ccputs(".");
 
