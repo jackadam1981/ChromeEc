@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8d8a58e_3e55bcbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T17:55:53Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9d616f_87ebc3a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T17:55:53Z",
+      "side": 1,
+      "message": "JFYI, this holds true for the rgb driver, but not for the generic ALS (clear) driver.  The ALS driver returns raw clear channel data when in calibration mode, and returns LUX (RGB Y) when in normal mode.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5a55f4_d8fbe183",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T17:55:53Z",
+      "side": 1,
+      "message": "Might be safer to add a \"if (!enable) return EC_SUCCESS\" as the first line of code in this routine.  Otherwise, it will perform this calibration operation both when it is enabled and disabled.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7816587e_d0f1b784",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T17:55:53Z",
+      "side": 1,
+      "message": "Might be safer to add a \"if (!enable) return EC_SUCCESS\" as the first line of code in this routine.  Otherwise, it will perform this calibration operation both when it is enabled and disabled.",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 645,
+        "endChar": 1
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350a6b59_8442aa36",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T17:55:53Z",
+      "side": 1,
+      "message": "How does the kernel know which drivers are one-shot and which need to be enabled/disabled?  Or does the kernel not care and it\u0027s up to a user-space script driving the /sys entries to enable/disable calibration?",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
