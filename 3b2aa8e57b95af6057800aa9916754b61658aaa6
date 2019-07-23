@@ -22,6 +22,30 @@
       "revId": "3b2aa8e57b95af6057800aa9916754b61658aaa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d43d422_1b0ee0fb",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-23T21:01:18Z",
+      "side": 1,
+      "message": "I suppose that makes more sense, sure.  The chipset_force_shutdown() function operates differently in cometlake than in apollolake.  The way it\u0027s currently written, there shouldn\u0027t be the need to check the current task it\u0027s called from, I think.",
+      "parentUuid": "be033355_c08e3625",
+      "range": {
+        "startLine": 123,
+        "startChar": 24,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "3b2aa8e57b95af6057800aa9916754b61658aaa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
