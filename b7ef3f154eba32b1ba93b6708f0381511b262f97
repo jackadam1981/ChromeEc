@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9a43cf1e_4ea4f8ee",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-23T15:12:12Z",
+      "side": 1,
+      "message": "Right now, we have 1-4 allocated for Kled.",
+      "parentUuid": "f1d39150_53be6c89",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 65
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7084d6b6_f6c38519",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
@@ -238,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "0ac10034_87cacfe7",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-23T15:12:12Z",
+      "side": 1,
+      "message": "AFAIK Helios will have a KB BL",
+      "parentUuid": "b96b74d5_6b52148a",
+      "range": {
+        "startLine": 458,
+        "startChar": 4,
+        "endLine": 458,
+        "endChar": 72
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81dd2536_e9ef808d",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
@@ -261,6 +309,29 @@
     },
     {
       "key": {
+        "uuid": "2361bc52_e1a44f9f",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-23T15:12:12Z",
+      "side": 1,
+      "message": "This seems possibly useful enough to move to hatch baseboard.",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 58
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "994e12f3_6e534cca",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
@@ -272,6 +343,29 @@
       "writtenOn": "2019-07-19T05:46:47Z",
       "side": 1,
       "message": "It seems to conflict with baseboard_chipset_suspend() and baseboard_chipset_resume().\nWe might want to refactor the baseboard code...\nCould you leave it to another CL?",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 496,
+        "endChar": 77
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6cfeb84_3581b50e",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-23T15:12:12Z",
+      "side": 1,
+      "message": "Agreed, we should refactor the Hatch baseboard to allow for board-specific hooks here.",
       "range": {
         "startLine": 483,
         "startChar": 0,
