@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25a05ba0_4f2837fe",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T17:00:10Z",
+      "side": 1,
+      "message": "can you name it?",
+      "range": {
+        "startLine": 335,
+        "startChar": 40,
+        "endLine": 335,
+        "endChar": 41
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64507ee0_e2695a13",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T17:00:10Z",
+      "side": 1,
+      "message": "I think you can use IS_ENABLED(CONFIG_USB_PD_REV30).",
+      "range": {
+        "startLine": 337,
+        "startChar": 7,
+        "endLine": 337,
+        "endChar": 26
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7ea488_f31c8561",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T17:00:10Z",
+      "side": 1,
+      "message": "You can use is_vdo_present(). Please see the comment in CL:1707851.",
+      "range": {
+        "startLine": 345,
+        "startChar": 5,
+        "endLine": 345,
+        "endChar": 12
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1146921b_0cceaeb7",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T17:00:10Z",
+      "side": 1,
+      "message": "can you name it?",
+      "range": {
+        "startLine": 347,
+        "startChar": 40,
+        "endLine": 347,
+        "endChar": 41
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
