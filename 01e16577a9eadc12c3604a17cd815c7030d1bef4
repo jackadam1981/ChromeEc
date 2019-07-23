@@ -114,6 +114,29 @@
       "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b78071d_7e5537aa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-23T20:00:50Z",
+      "side": 1,
+      "message": "Doesn\u0027t this depend on spec version we\u0027re using?  From the PD 3.0 spec:\n\n\"When an Explicit Contract is in place the Vconn Source (either the DFP or the UFP) can communicate with the Cable\nPlug(s) using SOP’/SOP’’ Packets\"\n\nFrom PD 2.0:\n\n\"When an Explicit Contract is in place the DFP (either the Source or the Sink) can communicate with the Cable Plug(s)\nusing SOP’/SOP” Packets\"",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2152,
+        "endChar": 26
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
