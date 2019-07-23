@@ -31,11 +31,13 @@
 #define CONFIG_MAG_BMI160_BMM150
 #define CONFIG_ACCELGYRO_SEC_ADDR_FLAGS BMM150_ADDR0_FLAGS
 #define CONFIG_MAG_CALIBRATE
-#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCEL_KX022	/* Lid accel */
+#define CONFIG_ACCELGYRO_BMI160 /* Base accel */
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 #define CONFIG_ALS
+#define CONFIG_CMD_ACCEL_INFO
 
 #define ALS_COUNT 1
 #define CONFIG_ALS_TCS3400
@@ -50,6 +52,7 @@
 #define I2C_PORT_BC12               0
 #define I2C_PORT_TCPC0              0
 #define I2C_PORT_USB_MUX            0
+#define I2C_PORT_ACCEL              1
 #define I2C_PORT_CHARGER            1
 #define I2C_PORT_BATTERY            1
 #define I2C_PORT_VIRTUAL_BATTERY    1
@@ -88,8 +91,9 @@ enum power_signal {
 /* Motion sensors */
 enum sensor_id {
 	LID_ACCEL = 0,
-	LID_GYRO,
-	LID_MAG,
+	BASE_ACCEL,
+	BASE_GYRO,
+	BASE_MAG,
 	CLEAR_ALS,
 	RGB_ALS,
 	VSYNC,
