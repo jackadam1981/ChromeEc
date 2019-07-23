@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "bddc1144_5dabecf3",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-23T17:15:25Z",
+      "side": 1,
+      "message": "The code has been changed to use CONFIG_USB_PD_PULLUP for initial connections.",
+      "parentUuid": "d1fa1d00_2706687a",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 45
+      },
+      "revId": "89bb16bb5277d87488d0adf8f9f885adcc68a073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afe851a4_88082fee",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 17
