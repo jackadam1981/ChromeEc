@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a000d163_b425eff1",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-23T23:38:44Z",
+      "side": 1,
+      "message": "Let\u0027s not check OEM ID here. We are using independent EC images for each device. I think its better to just do this in board/${BOARD}/board.c\n\nThat reminds me, we need to have a discussion about OEM ID.",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "d97817a879f0d3af1eccb09d76c77ab8bd580203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ee89ca0_279c23e9",
         "filename": "baseboard/hatch/baseboard.c",
         "patchSetId": 7
@@ -31,6 +54,29 @@
       "side": 1,
       "message": "We can\u0027t see this issue.\nI\u0027m not sure it relevant now.",
       "parentUuid": "5ee89ca0_279c23e9",
+      "revId": "d97817a879f0d3af1eccb09d76c77ab8bd580203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4da4437_583afa58",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-23T23:38:44Z",
+      "side": 1,
+      "message": "I don\u0027t think baseboard is the right place to put this since this might be specific to one hatch device but not necessarily apply to all. Please move this to board/kindred as you had earlier.",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 329,
+        "endChar": 60
+      },
       "revId": "d97817a879f0d3af1eccb09d76c77ab8bd580203",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

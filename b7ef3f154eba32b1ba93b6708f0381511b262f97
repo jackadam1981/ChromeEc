@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "10a934af_635a269d",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-23T23:38:44Z",
+      "side": 1,
+      "message": "Let\u0027s not make the assumption since it can vary based on board.",
+      "parentUuid": "0ac10034_87cacfe7",
+      "range": {
+        "startLine": 458,
+        "startChar": 4,
+        "endLine": 458,
+        "endChar": 72
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81dd2536_e9ef808d",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
