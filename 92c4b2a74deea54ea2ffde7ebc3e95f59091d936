@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92bf255a_e16f2a84",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "Do you mean\n\n\tif (cnt \u003e 1) {\n\t\tcable[port].type \u003d PD_IDH_PTYPE(payload[1]);\n\t\tif (cnt \u003e 4)\n\t\t\tcable[port].attr.raw_value \u003d payload[4];\n\t}\n\n?",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0cb8c88_3b3bdbcf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "can you use memset?",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 33
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868371fc_fc1e5ecf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "This check isn\u0027t enough. Maybe you should just let NULL printed for undefined values.",
+      "range": {
+        "startLine": 994,
+        "startChar": 2,
+        "endLine": 994,
+        "endChar": 57
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044c682c_d3b92667",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "ss",
+      "range": {
+        "startLine": 998,
+        "startChar": 56,
+        "endLine": 998,
+        "endChar": 59
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6738569_78c50d43",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "nit: how about\n\n  \"SOP\u0027\u0027 Controller: %s present\", cable[p].attr.rev20.controller ? \"\" : \"Not\"\n\n?",
+      "range": {
+        "startLine": 1013,
+        "startChar": 10,
+        "endLine": 1013,
+        "endChar": 44
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89125009_91f2be86",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "what about pdcable or usbcable?",
+      "range": {
+        "startLine": 1038,
+        "startChar": 24,
+        "endLine": 1038,
+        "endChar": 29
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8580834a_8f65275e",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "Can it be just CONFIG_CMD_USB_PD_CABLE?",
+      "range": {
+        "startLine": 1226,
+        "startChar": 31,
+        "endLine": 1226,
+        "endChar": 36
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5705ee1e_ecfaa7c7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "How about usb_ss_support?",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 15
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63fa77d_84ec70db",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "This isn\u0027t very unique, either.",
+      "range": {
+        "startLine": 477,
+        "startChar": 5,
+        "endLine": 477,
+        "endChar": 16
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d64aeca_1ffdb5a5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeafb61a_1b6ea7d5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "These look \u0027reserved\u0027 on the spec I\u0027m reading. Where are they from?",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 17
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684d9fd8_bc42683a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "It\u0027s safer to prefix these. How about \n\nenum usb_ss_signal {\n  USB_SS_SIGNAL_SS_GEN1,\n  USB_SS_SIGNAL_SS_GEN2,\n}",
+      "range": {
+        "startLine": 636,
+        "startChar": 1,
+        "endLine": 636,
+        "endChar": 12
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c782b442_bd248902",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T00:02:50Z",
+      "side": 1,
+      "message": "Can you define a struct?",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 5
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
