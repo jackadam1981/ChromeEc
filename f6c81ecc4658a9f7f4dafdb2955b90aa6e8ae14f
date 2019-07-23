@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08bdd409_d7a016f0",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "crgb_data is an int32_t, not a uint32_t, but not casting would work since fp is already a 32-bit value, so there wouldn\u0027t be any sign extension anyway.",
+      "parentUuid": "e5a99489_ce44c342",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4f3bc99_f6e81530",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 30
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1f550bb0_32686a81",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4f3bc99_f6e81530",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f303861d_d08b5188",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 30
@@ -47,6 +83,24 @@
       "writtenOn": "2019-07-22T23:01:00Z",
       "side": 1,
       "message": "In normal mode, is ALS X always equal to RGB Y? \nI thought ALS X was always the clear channel, but it may not be a useful data.",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99be195c_f9b7f8d9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that RGB Y is LUX, and ALS drivers return lux value in v[0].  Am I wrong?",
+      "parentUuid": "f303861d_d08b5188",
       "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "92a0add7_3a173e61",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "It was a shorter variable name to use than rgb_s-\u003eraw_xyz, but last_v points to rgb_s-\u003eraw_xyz at this point, so this is effectively storing off this round of raw xyz data in rgb_s-\u003eraw_xyz.",
+      "parentUuid": "e076141a_546eeabf",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59550bd3_5aeb5a08",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 30
@@ -101,6 +173,24 @@
       "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60c9a8e_6f069ec8",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59550bd3_5aeb5a08",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "222eef06_32e153be",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5e6cc2_08aee34a",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03e4766_a8153cf1",
         "filename": "driver/als_tcs3400.h",
         "patchSetId": 30
@@ -135,6 +243,24 @@
       "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887dc190_c84d52f8",
+        "filename": "driver/als_tcs3400.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-23T06:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b03e4766_a8153cf1",
+      "revId": "f6c81ecc4658a9f7f4dafdb2955b90aa6e8ae14f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
