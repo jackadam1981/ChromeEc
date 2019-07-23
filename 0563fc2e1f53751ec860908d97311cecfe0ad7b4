@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f5fb071_f1ea7008",
+        "filename": "baseboard/hatch/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-23T15:53:31Z",
+      "side": 1,
+      "message": "Do these need to be defined for something else?  I suspect you could just use the GPIO name as-is that hatch uses, unless you have variants with different GPIO naming",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 54
+      },
+      "revId": "0563fc2e1f53751ec860908d97311cecfe0ad7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
