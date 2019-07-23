@@ -54,9 +54,9 @@
 
 /* Bootblock */
 #ifdef SECTION_IS_RO
-#define CONFIG_BOOTBLOCK
+/*#define CONFIG_BOOTBLOCK
 
-#define EMMC_SPI_PORT 2
+#define EMMC_SPI_PORT 2*/
 #endif
 
 /* Optional features */

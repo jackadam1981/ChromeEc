@@ -1217,8 +1217,10 @@ static int init(const struct motion_sensor_t *s)
 	struct accelgyro_saved_data_t *saved_data = BMI160_GET_SAVED_DATA(s);
 
 	ret = raw_read8(s->port, s->addr, BMI160_CHIP_ID, &tmp);
-	if (ret)
+	CPRINTS("bmi160 chip id ret=%d tmp=%d", ret, tmp);
+	if (ret) {
 		return EC_ERROR_UNKNOWN;
+	}
 
 	if (tmp != BMI160_CHIP_ID_MAJOR && tmp != BMI168_CHIP_ID_MAJOR) {
 		/* The device may be lock on paging mode. Try to unlock it. */
