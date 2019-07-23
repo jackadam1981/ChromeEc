@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "34630f74_e555af0a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0cb8c88_3b3bdbcf",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 33
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "868371fc_fc1e5ecf",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 9
@@ -163,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "cb69e8b0_727a54ff",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8580834a_8f65275e",
+      "range": {
+        "startLine": 1226,
+        "startChar": 31,
+        "endLine": 1226,
+        "endChar": 36
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5705ee1e_ecfaa7c7",
         "filename": "include/usb_pd.h",
         "patchSetId": 9
@@ -183,6 +231,30 @@
       "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a72200a1_be5ec861",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5705ee1e_ecfaa7c7",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 15
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +298,48 @@
     },
     {
       "key": {
+        "uuid": "e82a7078_41ff44b8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Which line is extra?",
+      "parentUuid": "2d64aeca_1ffdb5a5",
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be28e04_8bcc3dc7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63fa77d_84ec70db",
+      "range": {
+        "startLine": 477,
+        "startChar": 5,
+        "endLine": 477,
+        "endChar": 16
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeafb61a_1b6ea7d5",
         "filename": "include/usb_pd.h",
         "patchSetId": 9
@@ -237,6 +351,30 @@
       "writtenOn": "2019-07-23T00:02:50Z",
       "side": 1,
       "message": "These look \u0027reserved\u0027 on the spec I\u0027m reading. Where are they from?",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 17
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a5d7b7_2da244e9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "USB_PD 2.0 : Table 6-28 Passive Cable VDO and Table 6-29 Active Cable VDO",
+      "parentUuid": "aeafb61a_1b6ea7d5",
       "range": {
         "startLine": 483,
         "startChar": 0,
@@ -272,6 +410,30 @@
     },
     {
       "key": {
+        "uuid": "c498a79a_d1e41dc0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "684d9fd8_bc42683a",
+      "range": {
+        "startLine": 636,
+        "startChar": 1,
+        "endLine": 636,
+        "endChar": 12
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c782b442_bd248902",
         "filename": "include/usb_pd.h",
         "patchSetId": 9
@@ -292,6 +454,30 @@
       "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633a65da_f155731a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-23T02:19:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c782b442_bd248902",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 5
+      },
+      "revId": "92c4b2a74deea54ea2ffde7ebc3e95f59091d936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
