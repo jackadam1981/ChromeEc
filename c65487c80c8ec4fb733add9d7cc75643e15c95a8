@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e672ffe5_0837c7cb",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-23T20:37:54Z",
+      "side": 1,
+      "message": "I don\u0027t really have a strong opinion. Do you think is worth undeffing if neither CONFIG..MASK is defined?\n\n(You seemed to do that for the console command)",
+      "range": {
+        "startLine": 397,
+        "startChar": 11,
+        "endLine": 397,
+        "endChar": 28
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465dcdab_04071ad1",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-23T20:37:54Z",
+      "side": 1,
+      "message": "do you think it is also worth printing the old value too?",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 50
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b9525c9_c11c9d73",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7748,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-23T20:37:54Z",
+      "side": 1,
+      "message": "should this be moved/combined with the first argc \u003c 2 check?",
+      "range": {
+        "startLine": 7744,
+        "startChar": 1,
+        "endLine": 7748,
+        "endChar": 1
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6aa9ec7_8cb65775",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7776,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-23T20:37:54Z",
+      "side": 1,
+      "message": "do you want to compare rv to -EECRESULT-EC_RES_INVALID_PARAM to let the ectool user know that the EC supports the command but does not support the mask?",
+      "range": {
+        "startLine": 7775,
+        "startChar": 1,
+        "endLine": 7776,
+        "endChar": 12
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
