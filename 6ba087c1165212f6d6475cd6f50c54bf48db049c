@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f862c549_efe6b566",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:22:48Z",
+      "side": 1,
+      "message": "channel_gain maybe?",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 20
+      },
+      "revId": "6ba087c1165212f6d6475cd6f50c54bf48db049c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ede64a_c74b3163",
+        "filename": "common/audio_codec_dmic.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-23T01:22:48Z",
+      "side": 1,
+      "message": "Since this is a software gain, is there really a point to make it configurable? Maybe just pick 255 always?",
+      "revId": "6ba087c1165212f6d6475cd6f50c54bf48db049c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
