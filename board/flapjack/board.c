@@ -459,8 +459,8 @@ static struct als_drv_data_t g_tcs3400_data = {
 	.als_cal.uscale = 0,
 	.als_cal.offset = 0,
 	.als_cal.channel_scale = {
-		.k_channel_scale = ALS_CHANNEL_SCALE(1.0),   /* kc from VPD */
-		.cover_scale = ALS_CHANNEL_SCALE(0.9),       /* CT */
+		.k_channel_scale = ALS_CHANNEL_SCALE(1.007), /* kc from VPD */
+		.cover_scale = FLOAT_TO_FP(0.9),       /* CT */
 	},
 };
 
@@ -472,7 +472,7 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(-0.05885579),
 		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0.12021096),
 		.scale = {
-			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kr */
+			.k_channel_scale = ALS_CHANNEL_SCALE(1.001), /* kr */
 			.cover_scale = ALS_CHANNEL_SCALE(0.6)
 		}
 	},
@@ -494,7 +494,7 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(-0.01858507),
 		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(-0.01793189),
 		.scale = {
-			.k_channel_scale = ALS_CHANNEL_SCALE(1.0),   /* kb */
+			.k_channel_scale = ALS_CHANNEL_SCALE(1.007), /* kb */
 			.cover_scale = ALS_CHANNEL_SCALE(1.5)
 		}
 	},
