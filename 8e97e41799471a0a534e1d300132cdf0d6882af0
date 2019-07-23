@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ee7d0ce_9b035a4d",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T23:26:44Z",
+      "side": 1,
+      "message": "Can you double check this isn\u0027t \u00270x78\u0027? It looks like one of the places missed when we transitioned from 8 to 7-bit addres.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 38,
+        "endLine": 1037,
+        "endChar": 42
+      },
+      "revId": "8e97e41799471a0a534e1d300132cdf0d6882af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28aeb8ac_af806301",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-23T23:26:44Z",
+      "side": 1,
+      "message": "nit: It seems worth a macro or enum. It can be used in other places.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 19,
+        "endLine": 1037,
+        "endChar": 23
+      },
+      "revId": "8e97e41799471a0a534e1d300132cdf0d6882af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
