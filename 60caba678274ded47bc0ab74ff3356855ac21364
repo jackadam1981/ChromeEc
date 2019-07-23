@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1807de33_0ecbbc3a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-23T06:29:38Z",
+      "side": 1,
+      "message": "line 571 set (uint8_t *)\u0026id+0\nline 568 set (uint8_t *)\u0026id+1\nline 579 set (uint8_t *)\u0026id+2\n\nIn my opion,\nline 579 only change the third byte of id.\nIt did not corrupting the first byte of id.\nDo I miss anything?\n\nOthers, I follow your suggestion in next patch.",
+      "parentUuid": "c5b05f69_567cdd65",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 16
+      },
+      "revId": "60caba678274ded47bc0ab74ff3356855ac21364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e858f0d8_c114ce63",
         "filename": "util/iteflash.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "60caba678274ded47bc0ab74ff3356855ac21364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e3fe33_daa088b1",
+        "filename": "util/iteflash.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-23T06:29:38Z",
+      "side": 1,
+      "message": "OK.\nI revert the change.\nI don\u0027t know if it will change in the future.\nCurrently, first byte of id is always 0x01 or 0x02.\nThe third byte of id is always 0x08.\n\nThe id format is 8xxx1 or 8xxx2.",
+      "parentUuid": "e858f0d8_c114ce63",
+      "range": {
+        "startLine": 584,
+        "startChar": 2,
+        "endLine": 584,
+        "endChar": 39
+      },
+      "revId": "60caba678274ded47bc0ab74ff3356855ac21364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
