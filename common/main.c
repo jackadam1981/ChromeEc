@@ -39,6 +39,13 @@
 
 test_mockable __keep int main(void)
 {
+#ifdef CONFIG_PRESERVE_LOGS
+	/*
+	 * Initialize tx buffer head and tail
+	 */
+	uart_init_buffer();
+#endif
+
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
 	 * Now that we have started execution, we no longer need the loader.

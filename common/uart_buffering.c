@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "link_defs.h"
+#include "math_util.h"
 #include "printf.h"
 #include "system.h"
 #include "task.h"
@@ -37,9 +38,10 @@
 				 (CONFIG_UART_RX_DMA_RECHECKS + 1))
 
 /* Transmit and receive buffers */
-static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
-static volatile int tx_buf_head;
-static volatile int tx_buf_tail;
+static volatile char PRESERVE_LOGS_SECT
+			tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
+static volatile int PRESERVE_LOGS_SECT tx_buf_head;
+static volatile int PRESERVE_LOGS_SECT tx_buf_tail;
 static volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE] __uncached;
 static volatile int rx_buf_head;
 static volatile int rx_buf_tail;
@@ -47,6 +49,30 @@ static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int tx_last_snapshot_head;
 static int tx_next_snapshot_head;
+static int PRESERVE_LOGS_SECT checksum;
+
+/**
+ * Calculate updated checksum for tx head and tail
+ */
+static int uart_buffer_update_checksum(void)
+{
+	return tx_buf_head ^ tx_buf_tail;
+}
+
+/**
+ * Initialize tx bufer head and tail
+ */
+void uart_init_buffer(void)
+{
+	int tx_buf_range = tx_buf_tail - tx_buf_head;
+
+	if (checksum != uart_buffer_update_checksum() ||
+	    ABS(tx_buf_range) > CONFIG_UART_TX_BUF_SIZE) {
+		tx_buf_head = 0;
+		tx_buf_tail = 0;
+		checksum = 0;
+	}
+}
 
 /**
  * Put a single character into the transmit buffer.
@@ -92,6 +118,9 @@ static int __tx_char(void *context, int c)
 
 	tx_buf[tx_buf_head] = c;
 	tx_buf_head = tx_buf_next;
+
+	/* Update checksum */
+	checksum = uart_buffer_update_checksum();
 #endif
 	return 0;
 }
@@ -121,6 +150,9 @@ void uart_process_output(void)
 		tx_buf_tail = (tx_buf_tail + tx_dma_in_progress) &
 			(CONFIG_UART_TX_BUF_SIZE - 1);
 		tx_dma_in_progress = 0;
+
+		/* Update checksum */
+		checksum = uart_buffer_update_checksum();
 	}
 
 	/* Disable DMA-done interrupt if nothing to send */
@@ -147,6 +179,9 @@ void uart_process_output(void)
 	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
 		uart_write_char(tx_buf[tx_buf_tail]);
 		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
+
+		/* Update checksum */
+		checksum = uart_buffer_update_checksum();
 	}
 
 	/* If output buffer is empty, disable transmit interrupt */

@@ -10,6 +10,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "link_defs.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -18,7 +19,6 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
-
 /*****************************************************************************/
 /* Console commands */
 
@@ -63,7 +63,7 @@ static struct mutex reset_log_mutex;
 static int next_reset_log;
 static uint32_t ap_resets_since_ec_boot;
 /* keep reset_logs size a power of 2 */
-static struct ap_reset_log_entry reset_logs[4];
+static struct ap_reset_log_entry PRESERVE_LOGS_SECT reset_logs[4];
 
 void report_ap_reset(enum chipset_shutdown_reason reason)
 {
