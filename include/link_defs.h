@@ -134,3 +134,10 @@ extern void *__dram_bss_end;
 #endif
 
 #endif /* __CROS_EC_LINK_DEFS_H */
+
+/* Preserve log section */
+#ifdef CONFIG_PRESERVE_LOGS
+#define PRESERVE_LOGS_SECT __attribute__((section(".preserve_logs")))
+#else
+#define PRESERVE_LOGS_SECT
+#endif

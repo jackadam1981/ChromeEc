@@ -28,6 +28,9 @@
 #define TX_BUF_DIFF(i, j) (((i) - (j)) & (CONFIG_UART_TX_BUF_SIZE - 1))
 #define RX_BUF_DIFF(i, j) (((i) - (j)) & (CONFIG_UART_RX_BUF_SIZE - 1))
 
+/* Macro to check if the value is in range */
+#define IN_RANGE(x, min, max) (x >= 0 && x < max)
+
 /*
  * Interval between rechecking the receive DMA head pointer, after a character
  * of input has been detected by the normal tick task.  There will be
@@ -37,9 +40,10 @@
 				 (CONFIG_UART_RX_DMA_RECHECKS + 1))
 
 /* Transmit and receive buffers */
-static volatile char tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
-static volatile int tx_buf_head;
-static volatile int tx_buf_tail;
+static volatile char PRESERVE_LOGS_SECT
+			tx_buf[CONFIG_UART_TX_BUF_SIZE] __uncached;
+static volatile int PRESERVE_LOGS_SECT tx_buf_head;
+static volatile int PRESERVE_LOGS_SECT tx_buf_tail;
 static volatile char rx_buf[CONFIG_UART_RX_BUF_SIZE] __uncached;
 static volatile int rx_buf_head;
 static volatile int rx_buf_tail;
@@ -47,6 +51,29 @@ static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int tx_last_snapshot_head;
 static int tx_next_snapshot_head;
+static int PRESERVE_LOGS_SECT tx_checksum;
+
+/**
+ * Calculate updated checksum for tx head and tail
+ */
+static int uart_buffer_calc_checksum(void)
+{
+	return tx_buf_head ^ tx_buf_tail;
+}
+
+/**
+ * Initialize tx bufer head and tail
+ */
+void uart_init_buffer(void)
+{
+	if (tx_checksum != uart_buffer_calc_checksum() ||
+	    !IN_RANGE(tx_buf_head, 0, CONFIG_UART_TX_BUF_SIZE) ||
+	    !IN_RANGE(tx_buf_tail, 0, CONFIG_UART_TX_BUF_SIZE)) {
+		tx_buf_head = 0;
+		tx_buf_tail = 0;
+		tx_checksum = 0;
+	}
+}
 
 /**
  * Put a single character into the transmit buffer.
@@ -92,6 +119,9 @@ static int __tx_char(void *context, int c)
 
 	tx_buf[tx_buf_head] = c;
 	tx_buf_head = tx_buf_next;
+
+	/* Update checksum */
+	tx_checksum = uart_buffer_calc_checksum();
 #endif
 	return 0;
 }
@@ -121,6 +151,9 @@ void uart_process_output(void)
 		tx_buf_tail = (tx_buf_tail + tx_dma_in_progress) &
 			(CONFIG_UART_TX_BUF_SIZE - 1);
 		tx_dma_in_progress = 0;
+
+		/* Update checksum */
+		tx_checksum = uart_buffer_calc_checksum();
 	}
 
 	/* Disable DMA-done interrupt if nothing to send */
@@ -147,6 +180,9 @@ void uart_process_output(void)
 	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
 		uart_write_char(tx_buf[tx_buf_tail]);
 		tx_buf_tail = TX_BUF_NEXT(tx_buf_tail);
+
+		/* Update checksum */
+		tx_checksum = uart_buffer_calc_checksum();
 	}
 
 	/* If output buffer is empty, disable transmit interrupt */

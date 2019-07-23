@@ -192,15 +192,37 @@ SECTIONS
     } > FLASH
     __data_lma_start = . ;
 
-    .bss : {
+#ifdef CONFIG_PRESERVE_LOGS
+    .vtable : {
 	/*
-	 * Vector table must be at the beginning of bss section. The vector
+	 * Vector table must be at the base of SRAM. The vector
 	 * table section contains a RAM copy of the vector table used on
 	 * STM chips for relocating the vector table.
 	 */
+        . = ALIGN(8);
+        *(.bss.vector_table)
+	. = ALIGN(8);
+    } > IRAM
+    .preserve_logs(NOLOAD) : {
+	/*
+	 * The size of the vector table is fixed. Thus, the address of
+	 * the preserved logs is also fixed.
+	 */
+        . = ALIGN(8);
+        *(.preserve_logs)
+        . = ALIGN(8);
+    } > IRAM
+#endif
+
+    .bss : {
 	. = ALIGN(8);
 	__bss_start = .;
-	*(.bss.vector_table)
+
+	#ifndef CONFIG_PRESERVE_LOGS
+	/* Vector table must be at the beginning of bss section. */
+        *(.bss.vector_table)
+	#endif
+
 	/* Stacks must be 64-bit aligned */
         . = ALIGN(8);
         *(.bss.system_stack)

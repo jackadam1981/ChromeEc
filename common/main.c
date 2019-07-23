@@ -39,6 +39,22 @@
 
 test_mockable __keep int main(void)
 {
+#ifdef CONFIG_PRESERVE_LOGS
+	/*
+	 * Initialize tx buffer head and tail. This needs to be done before
+	 * any updates of uart tx input because we need to
+	 * verify if the values remain the same after every EC reset.
+	 */
+	uart_init_buffer();
+
+	/*
+	 * Initialize reset logs. Needs to be done before any updates of
+	 * reset logs because we need to verify if the values remain the same
+	 * after every EC reset.
+	 */
+	init_reset_log();
+#endif
+
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
 	 * Now that we have started execution, we no longer need the loader.
