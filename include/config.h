@@ -2431,6 +2431,7 @@
  */
 #undef CONFIG_IT8801_KSO_BOARD_CONFIG
 
+#undef CONFIG_EC_KEYBOARD
 /*****************************************************************************/
 
 /* Support common LED interface */
