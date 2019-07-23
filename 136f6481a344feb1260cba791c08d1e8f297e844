@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1b3b50e7_cd744174",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-23T19:30:13Z",
+      "side": 1,
+      "message": "BTW, looks like this is not necessary as long as line 138 removes the interrupt request.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "136f6481a344feb1260cba791c08d1e8f297e844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e717e56c_0ffe1a16",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 10
