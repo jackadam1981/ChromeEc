@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8cfd3c2_05194274",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-23T21:02:15Z",
+      "side": 1,
+      "message": "I was trying to keep this scope down. I\u0027ll do it in another CL.",
+      "parentUuid": "69ddc191_4cb1e31b",
+      "range": {
+        "startLine": 916,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 24
+      },
+      "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "281faa54_bef4b475",
         "filename": "test/motion_sense_fifo.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "21173d20_4a62b3a6",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-23T21:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281faa54_bef4b475",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ebda63a_c8d586a6",
         "filename": "test/motion_sense_fifo.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816a8da3_451ec04f",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-23T21:02:15Z",
+      "side": 1,
+      "message": "Yup, I\u0027m working on that but it seemed out of scope for this change.",
+      "parentUuid": "5ebda63a_c8d586a6",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 47
+      },
+      "revId": "755afa283df41a6d7fcddc447ca63a524276266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
