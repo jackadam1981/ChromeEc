@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4cc23f1_33093300",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-23T04:38:45Z",
+      "side": 1,
+      "message": "I\u0027m still not happy about these extra 0xffs. We should figure out why this needs to be 18 length.",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "bae7244bf75f6c4552e57b1f64ea943cac9c939b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cb5a12_a6870058",
+        "filename": "include/config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 2300,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-23T04:38:45Z",
+      "side": 1,
+      "message": "I would have preferred it at the  end.",
+      "range": {
+        "startLine": 2300,
+        "startChar": 0,
+        "endLine": 2300,
+        "endChar": 31
+      },
+      "revId": "bae7244bf75f6c4552e57b1f64ea943cac9c939b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
