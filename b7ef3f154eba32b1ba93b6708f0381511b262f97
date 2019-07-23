@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f1d39150_53be6c89",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2019-07-23T05:15:03Z",
+      "side": 1,
+      "message": "Or, if you care about sku_id \u003d\u003d 0, maybe return sku_id \u0026\u0026 sku_id \u003c\u003d 4?",
+      "parentUuid": "29f96564_761f97ed",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 65
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7084d6b6_f6c38519",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
