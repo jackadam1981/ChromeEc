@@ -13,7 +13,13 @@
 #include "uartn.h"
 #include "util.h"
 
-static uint8_t done_uart_init_yet;
+enum INIT_VALUES {
+	INIT_NOT_START,
+	INIT_IN_PROGRESS,
+	INIT_DONE
+};
+
+static enum INIT_VALUES done_uart_init_yet;
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 			       defined(SECTION_IS_RO)))
@@ -23,7 +29,7 @@ static uint8_t done_uart_init_yet;
 
 int uart_init_done(void)
 {
-	return done_uart_init_yet;
+	return (done_uart_init_yet == INIT_DONE);
 }
 
 void uart_tx_start(void)
@@ -108,6 +114,16 @@ void uart_init(void)
 #ifdef UART_EC
 	uartn_init(UART_EC);
 #endif
+	done_uart_init_yet = INIT_IN_PROGRESS;
+	/**
+	 * Don't mark UART init done if pinhold is set since UART won't work.
+	 * We'd rather wait until pinhold is disengaged then enable UART.
+	 */
+	uart_init_check_pinhold();
+}
 
-	done_uart_init_yet = 1;
+void uart_init_check_pinhold(void)
+{
+	if (!GREAD(PINMUX, HOLD) && done_uart_init_yet == INIT_IN_PROGRESS)
+		done_uart_init_yet = INIT_DONE;
 }

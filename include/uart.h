@@ -18,6 +18,11 @@
 void uart_init(void);
 
 /**
+ * Mark UART init done only when PINHOLD is not set.
+ */
+void uart_init_check_pinhold(void);
+
+/**
  * Return non-zero if UART init has completed.
  */
 int uart_init_done(void);

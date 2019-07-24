@@ -14,6 +14,7 @@
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
+#include "uart.h"
 #include "version.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
@@ -103,6 +104,7 @@ void system_pre_init(void)
 void system_pinhold_disengage(void)
 {
 	GREG32(PINMUX, HOLD) = 0;
+	uart_init_check_pinhold();
 }
 
 void system_pinhold_on_reset_enable(void)
