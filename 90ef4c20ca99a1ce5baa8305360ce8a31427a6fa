@@ -34,6 +34,24 @@
       "revId": "90ef4c20ca99a1ce5baa8305360ce8a31427a6fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "437468d5_44af8674",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4587,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-24T22:37:51Z",
+      "side": 1,
+      "message": "Sorry I think I commented in a few other places. There is no requirement that the size is a multiple of 4. We just want to structure to be aligned on a 4-byte boundary.",
+      "parentUuid": "72abb4e1_3bac5a56",
+      "revId": "90ef4c20ca99a1ce5baa8305360ce8a31427a6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
