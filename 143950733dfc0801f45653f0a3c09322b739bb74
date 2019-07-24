@@ -1,0 +1,386 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c251545_890b3d7c",
+        "filename": "board/max32660-eval/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Since this refers to a piece of hardware that\u0027s not on the eval board, it shouldn\u0027t be in this definition.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aca8f75_bbdaef15",
+        "filename": "board/max32660-eval/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "As discussed, let\u0027s include details on how you tested the host command support in the commit message.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbfe6e1_8aca4b23",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "The indentation and wrapping here needs fixing. (Lines should be wrapped to 80 characters.)",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044cd59a_72296933",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "We prefer C-style (/* ... */) comments in CrOS EC.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8811f7e_538e16e7",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Expanding a lot of these abbreviations (e.g. ckl and ckh) would make the calculations more readable. Also, please use snake case (e.g. targ_bus_freq) instead of camel case.",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 76
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58100522_43509551",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Some spaces have snuck in to the indentation here.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15441d74_d7f8f139",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "If these lines aren\u0027t needed let\u0027s remove them completely instead of commenting them out.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072292af_f1b98e45",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Since the EC error constants are positive, we won\u0027t be able to distinguish a successful call returning a length from an erroneous one returning an error. I\u0027d suggest just returning EC_SUCCESS here.",
+      "range": {
+        "startLine": 323,
+        "startChar": 8,
+        "endLine": 323,
+        "endChar": 16
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab79033d_4fd46554",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "As above.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfa7b45_e4ae1d75",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "The indentation inside this `if ... else` is getting quite deep, which makes it harder to read (especially once the lines are wrapped to 80 characters). Maybe extracting a method for the `if` body and another for the `else` would make things clearer (especially since you could then use an early return for the `rx_remain !\u003d 0` check).",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fad4ad_8ac80da4",
+        "filename": "chip/max32660/i2c_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Similarly, the nesting here is getting deep. It might be worth extracting methods as above, and you could also change this statement to `if (states[i2c_num].slave_state !\u003d I2C_SLAVE_ADDR_MATCH) return;` to save an indent on all the lines below.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261ee7d3_39c1738b",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Please use Kernel-doc style for your documentation comments (see https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html#structure-union-and-enumeration-documentation). For example, the comment for this enum might look something like this:\n\n  /**\n   * i2c_speed_t - I2C speed modes\n   * @I2C_STD_MODE: 100KHz bus speed\n   * @I2C_FAST_MODE: [...]\n   */",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62342ab7_a35e0214",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "We recently standardised CrOS EC to use 7-bit addresses right-aligned (i.e. occupying bits 6 to 0), so please refactor this CL to do the same. (https://crrev.com/c/1699893 and https://crrev.com/c/1704792 are the original refactor CLs.)",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b393bcc0_6defd46e",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "It looks like these functions don\u0027t use Maxim error codes any more.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8334f4_e5eb963e",
+        "filename": "chip/max32660/i2c_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Left-over comment?",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af75513f_19646553",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "What is this? I don\u0027t see any other defines for this in the codebase.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "780d1e7f_cb035ac5",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "In my work so far, I\u0027ve had to change this to 1 so that we get a repeated start between the write and the read, as one of our peripherals doesn\u0027t respond properly without it. Looking at the STM32 implementation of `chip_i2c_xfer` (in chip/stm32/i2c-stm32f4.c), I think repeated start should be the default.",
+      "range": {
+        "startLine": 67,
+        "startChar": 108,
+        "endLine": 67,
+        "endChar": 109
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac9ca85_942df086",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "As it is, this will never be true after a successful write (since the write will return a non-zero length, and EC_SUCCESS \u003d\u003d 0). If we change `I2C_Api_MasterWrite` to not return the length (as I suggested above) this should be fixed.",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d6c406_ea1bb997",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Indentation is misaligned on these `DECLARE_CONSOLE_COMMAND`s.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018f28c0_afe0446a",
+        "filename": "chip/max32660/i2c_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2019-07-24T18:39:03Z",
+      "side": 1,
+      "message": "Again, misaligned indentation.",
+      "revId": "143950733dfc0801f45653f0a3c09322b739bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
