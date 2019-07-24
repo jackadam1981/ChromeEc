@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac68732a_0b4f77aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-24T00:34:10Z",
+      "side": 1,
+      "message": "Touche`",
+      "parentUuid": "ecfb92a6_d87a49c6",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4c0ef22_a358b675",
         "filename": "baseboard/hatch/baseboard.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e5276f_4c364fd2",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-24T00:34:10Z",
+      "side": 1,
+      "message": "Agreed, seems like it would have to be necessary for all chipsets?  They must all shutdown when the EC hibernates.",
+      "parentUuid": "b4c0ef22_a358b675",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
