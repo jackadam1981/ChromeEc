@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05a9db8f_52273d81",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-24T15:53:02Z",
+      "side": 1,
+      "message": "I see that this is externed in kindred/board.c  Can you please add a \"getter\" function instead?  Externing global variables from another file makes me nervous.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "d1032c62fcc1b464df8677cbe2bc7ffe6f9cdbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff1e519_538e5021",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-24T15:53:02Z",
+      "side": 1,
+      "message": "See comments from baseboard.c",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "d1032c62fcc1b464df8677cbe2bc7ffe6f9cdbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
