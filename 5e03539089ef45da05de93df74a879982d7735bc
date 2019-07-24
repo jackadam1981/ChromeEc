@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17188dc0_4175d0b0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-24T16:14:06Z",
+      "side": 1,
+      "message": "compare indentation to Kindent",
+      "range": {
+        "startLine": 1279,
+        "startChar": 0,
+        "endLine": 1282,
+        "endChar": 28
+      },
+      "revId": "5e03539089ef45da05de93df74a879982d7735bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bd35a3_8c258dae",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-24T16:14:06Z",
+      "side": 1,
+      "message": "This no longer aligns with the (",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 216,
+        "endChar": 44
+      },
+      "revId": "5e03539089ef45da05de93df74a879982d7735bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1c46c2_4b2e46ba",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-24T16:14:06Z",
+      "side": 1,
+      "message": "compare with Kindent",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 2
+      },
+      "revId": "5e03539089ef45da05de93df74a879982d7735bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
