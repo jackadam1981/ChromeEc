@@ -8,15 +8,9 @@
 #include "fpsensor_crypto.h"
 #include "fpsensor_state.h"
 #include "host_command.h"
+#include "mock_util.h"
 #include "test_util.h"
 #include "util.h"
-
-static const uint8_t fake_rollback_secret[] = {
-	0xcf, 0xe3, 0x23, 0x76, 0x35, 0x04, 0xc2, 0x0f,
-	0x0d, 0xb6, 0x02, 0xa9, 0x68, 0xba, 0x2a, 0x61,
-	0x86, 0x2a, 0x85, 0xd1, 0xca, 0x09, 0x54, 0x8a,
-	0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d, 0x59, 0x14,
-};
 
 static const uint8_t fake_tpm_seed[] = {
 	0xd9, 0x71, 0xaf, 0xc4, 0xcd, 0x36, 0xe3, 0x60,
@@ -24,17 +18,6 @@ static const uint8_t fake_tpm_seed[] = {
 	0xeb, 0xb9, 0xd8, 0x2f, 0xb5, 0x78, 0x5c, 0x79,
 	0x82, 0xce, 0x06, 0x3f, 0xcc, 0x23, 0xb9, 0xe7,
 };
-
-static int rollback_should_fail;
-
-/* Mock the rollback for unit test. */
-int rollback_get_secret(uint8_t *secret)
-{
-	if (rollback_should_fail)
-		return EC_ERROR_UNKNOWN;
-	memcpy(secret, fake_rollback_secret, sizeof(fake_rollback_secret));
-	return EC_SUCCESS;
-}
 
 static int check_seed_set_result(const int rv, const uint32_t expected,
 			const struct ec_response_fp_encryption_status *resp)
@@ -157,7 +140,8 @@ test_static int test_derive_encryption_key(void)
 	 * GIVEN that the TPM seed is set, and reading the rollback secret will
 	 * succeed.
 	 */
-	TEST_ASSERT(fp_tpm_seed_is_set() && !rollback_should_fail);
+	TEST_ASSERT(fp_tpm_seed_is_set() &&
+		(mock_ctrl_rollback.get_secret_fail == false));
 
 	/* THEN the derivation will succeed. */
 	TEST_ASSERT(test_derive_encryption_key_raw(user_id1, salt1, key1) ==
@@ -175,13 +159,13 @@ test_static int test_derive_encryption_key_failure_rollback_fail(void)
 	static const uint8_t unused_salt[FP_CONTEXT_SALT_BYTES] = { 0 };
 
 	/* GIVEN that reading the rollback secret will fail. */
-	rollback_should_fail = 1;
+	mock_ctrl_rollback.get_secret_fail = true;
 	/* THEN the derivation will fail. */
 	TEST_ASSERT(derive_encryption_key(unused_key, unused_salt) ==
 		EC_RES_ERROR);
 
 	/* GIVEN that reading the rollback secret will succeed. */
-	rollback_should_fail = 0;
+	mock_ctrl_rollback.get_secret_fail = false;
 	/* GIVEN that the TPM seed has been set. */
 	TEST_ASSERT(fp_tpm_seed_is_set());
 	/* THEN the derivation will succeed. */

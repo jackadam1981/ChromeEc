@@ -173,8 +173,10 @@ endif
 
 ifeq ($(CTS_MODULE),)
 common-$(TEST_BUILD)+=test_util.o
+common-$(TEST_BUILD)+=mock_util.o
 else
 common-y+=test_util.o
+common-y+=mock_util.o
 endif
 
 ifneq ($(CONFIG_RSA_OPTIMIZED),)
