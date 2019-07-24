@@ -22,6 +22,30 @@
       "revId": "eeaef4c54ac24de828edb3e2a6a4ac4a3a7e9dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdad8c52_8ac7f2d4",
+        "filename": "include/test_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-24T17:22:29Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, but the point here would be to initialize for a specific test? No testing framework I know of does this and the reason is that if you\u0027re going to have specific initialization for a single test you should do it in that test. I\u0027m open to it if you\u0027ve thought of another use case.",
+      "parentUuid": "3bfab6bb_e5c013b3",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "eeaef4c54ac24de828edb3e2a6a4ac4a3a7e9dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
