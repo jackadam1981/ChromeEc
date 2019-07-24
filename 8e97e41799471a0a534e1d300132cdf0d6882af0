@@ -45,6 +45,54 @@
       "revId": "8e97e41799471a0a534e1d300132cdf0d6882af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3514e64f_5d20ca71",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-24T13:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28aeb8ac_af806301",
+      "range": {
+        "startLine": 1037,
+        "startChar": 19,
+        "endLine": 1037,
+        "endChar": 23
+      },
+      "revId": "8e97e41799471a0a534e1d300132cdf0d6882af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76a64795_bce0f7c8",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-24T13:47:11Z",
+      "side": 1,
+      "message": "The conversion from 8-bit to 7-bit was correct, but the original version was incorrect.\n\nhttps://chromium.git.corp.google.com/chromiumos/platform/ec/+/1f14229fa7e499dfcee07d17add187598ff0a46c/common/i2c_master.c#995\n\n\nThe value 0x78 is correct, and I have updated the code. Thanks for catching that!",
+      "parentUuid": "2ee7d0ce_9b035a4d",
+      "range": {
+        "startLine": 1037,
+        "startChar": 38,
+        "endLine": 1037,
+        "endChar": 42
+      },
+      "revId": "8e97e41799471a0a534e1d300132cdf0d6882af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
