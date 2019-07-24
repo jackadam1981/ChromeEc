@@ -137,6 +137,30 @@
       "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25757712_89c279e2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-24T15:39:55Z",
+      "side": 1,
+      "message": "I think so.\n\nFrom PD 2.0 v 1.3 page 149:\n\n\"Before communicating with a Cable Plug a Port Should ensure that it is the Vconn Source and that the Cable Plugs are powered by performing a Vconn swap if necessary. Since it cannot be guaranteed that the present Vconn Source is supplying Vconn, the only means to ensure that the Cable Plugs are powered is for a Port wishing to communicate with a Cable Plug to become the Vconn Source.\"\n\nI think we need to additionally check DFP for PD 2.0. That is, we still check PD_FLAGS_VCONN_ON for both cases but for PD 2.0 we need to be DFP.\n\nCan you create a sub-routine (e.g. is_sop_prime_ready) and add checks for PD 3.0 and 2.0 (i.e. pd[port].data_role \u003d\u003d PD_ROLE_DFP)?\n\nThis also means if we\u0027re a UFP, we have to swap data role first. So, we need to find another location where we initiate cable discovery.",
+      "parentUuid": "1b78071d_7e5537aa",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2152,
+        "endChar": 26
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
