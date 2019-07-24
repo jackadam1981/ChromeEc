@@ -91,6 +91,98 @@
       "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea3d3ed_e7ef1412",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-24T13:59:08Z",
+      "side": 1,
+      "message": "11b is reserved in passive VDO",
+      "range": {
+        "startLine": 525,
+        "startChar": 38,
+        "endLine": 525,
+        "endChar": 72
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f088f01d_da8d46a1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-24T13:59:08Z",
+      "side": 1,
+      "message": "Looks like it\u0027s the opposite in the spec (0b \u003d\u003d connections supported, 1b \u003d\u003d not)",
+      "range": {
+        "startLine": 573,
+        "startChar": 30,
+        "endLine": 573,
+        "endChar": 49
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b417a5_f07979b7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-24T13:59:08Z",
+      "side": 1,
+      "message": "Opposite (0 \u003d\u003d supported, 1 \u003d\u003d not)",
+      "range": {
+        "startLine": 623,
+        "startChar": 34,
+        "endLine": 623,
+        "endChar": 53
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2bd736_1901b817",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2019-07-24T13:59:08Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 624,
+        "startChar": 29,
+        "endLine": 624,
+        "endChar": 48
+      },
+      "revId": "f3d2c5d5b2d6c9d9c61788271ced08c59a77cbb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
