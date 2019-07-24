@@ -22,6 +22,30 @@
       "revId": "1ddbfba6b0207ee4b8cc817fbc7cf17d56ea0443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30f1830_24bb9ba5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2019-07-24T03:45:42Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "be99ea4e_d342b091",
+      "range": {
+        "startLine": 579,
+        "startChar": 8,
+        "endLine": 579,
+        "endChar": 16
+      },
+      "revId": "1ddbfba6b0207ee4b8cc817fbc7cf17d56ea0443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
