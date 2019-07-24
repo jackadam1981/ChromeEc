@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c6c42d_37ee02c2",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T09:15:11Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05db754_a8e0acdd",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T09:15:11Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbff70da_7c29b942",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T09:15:11Z",
+      "side": 1,
+      "message": "Enable FIFO.",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02778193_96705531",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T09:15:11Z",
+      "side": 1,
+      "message": "is it an interrupt for the EC or just the AP?",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b016a4_584222aa",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T09:15:11Z",
+      "side": 1,
+      "message": "remove line, use #elif",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4c8087_c1ac39fe",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T09:15:11Z",
+      "side": 1,
+      "message": "remove debug",
+      "revId": "54dabc12320370c7db818dfd79c2acaf4a45430f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
