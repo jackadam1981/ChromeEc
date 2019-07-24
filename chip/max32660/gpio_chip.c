@@ -21,7 +21,7 @@
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ##args)
 
 /* 0-terminated list of GPIO base addresses */
-static mxc_gpio_regs_t *gpio_bases[] = {MXC_GPIO0, 0};
+static mxc_gpio_regs_t *gpio_bases[] = { MXC_GPIO0, 0 };
 
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 {
@@ -41,7 +41,7 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 		gpio->en1_set = mask;
 		break;
 	default:
-	    /* Default as input */
+		/* Default as input */
 		gpio->out_en_clr = mask;
 		gpio->en_set = mask;
 		gpio->en1_clr = mask;
@@ -206,13 +206,13 @@ static void gpio_interrupt(int port, uint32_t mis)
  * Handlers for each GPIO port.  These read and clear the interrupt bits for
  * the port, then call the master handler above.
  */
-#define GPIO_IRQ_FUNC(irqfunc, gpiobase)                                       \
-	void irqfunc(void)                                                     \
-	{                                                                      \
-		mxc_gpio_regs_t *gpio = MXC_GPIO_GET_GPIO(gpiobase);           \
-		uint32_t mis = gpio->int_stat;                                 \
-		gpio->int_clr = mis;                                           \
-		gpio_interrupt(gpiobase, mis);                                 \
+#define GPIO_IRQ_FUNC(irqfunc, gpiobase)                             \
+	void irqfunc(void)                                           \
+	{                                                            \
+		mxc_gpio_regs_t *gpio = MXC_GPIO_GET_GPIO(gpiobase); \
+		uint32_t mis = gpio->int_stat;                       \
+		gpio->int_clr = mis;                                 \
+		gpio_interrupt(gpiobase, mis);                       \
 	}
 
 GPIO_IRQ_FUNC(__gpio_0_interrupt, PORT_0);
