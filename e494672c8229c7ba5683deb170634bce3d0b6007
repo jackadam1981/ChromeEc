@@ -93,6 +93,30 @@
       "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "536884ed_71b583e1",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-24T01:23:21Z",
+      "side": 1,
+      "message": "That is my understanding. I have seen similar bugs being raised for at least 3 different platforms now with different chipsets :). You might have to check board_hibernate() implementation for different boards to see if there is an opportunity to move this to common code.",
+      "parentUuid": "a4e5276f_4c364fd2",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "e494672c8229c7ba5683deb170634bce3d0b6007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
