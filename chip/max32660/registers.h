@@ -143,6 +143,25 @@ extern uint32_t SystemCoreClock; /*!< System Clock Frequency (Core Clock)  */
 
 #define DUMMY_GPIO_BANK GPIO_0
 
+/******************************************************************************/
+/*                                                                        I2C */
+#define MXC_I2C_INSTANCES (2)
+#define MXC_I2C_FIFO_DEPTH (8)
+
+#define MXC_BASE_I2C0 ((uint32_t)0x4001D000UL)
+#define MXC_I2C0 ((mxc_i2c_regs_t *)MXC_BASE_I2C0)
+#define MXC_BASE_I2C1 ((uint32_t)0x4001E000UL)
+#define MXC_I2C1 ((mxc_i2c_regs_t *)MXC_BASE_I2C1)
+
+#define MXC_I2C_GET_IRQ(i) (IRQn_Type)((i) == 0 ? I2C0_IRQn : (i) == 1 ? I2C1_IRQn : 0)
+
+#define MXC_I2C_GET_BASE(i) ((i) == 0 ? MXC_BASE_I2C0 : (i) == 1 ? MXC_BASE_I2C1 : 0)
+
+#define MXC_I2C_GET_I2C(i) ((i) == 0 ? MXC_I2C0 : (i) == 1 ? MXC_I2C1 : 0)
+
+#define MXC_I2C_GET_IDX(p) ((p) == MXC_I2C0 ? 0 : (p) == MXC_I2C1 ? 1 : -1)
+
+
 #define MXC_CFG_TMR_INSTANCES (3)
 
 #define MXC_BASE_TMR0 ((uint32_t)0x40010000UL)
