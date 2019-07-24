@@ -232,6 +232,29 @@
     },
     {
       "key": {
+        "uuid": "c00341de_59a0ae6e",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-24T01:06:09Z",
+      "side": 1,
+      "message": "I wouldn\u0027t do this, otherwise you\u0027ll bounce between Unattached.SRC and AttachWait.SRC constantly if an audio accessory is plugged in. I would simply remain in this state instead.",
+      "range": {
+        "startLine": 1333,
+        "startChar": 0,
+        "endLine": 1335,
+        "endChar": 35
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd597e45_eef21ad4",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 23
@@ -316,6 +339,29 @@
         "startLine": 1484,
         "startChar": 7,
         "endLine": 1484,
+        "endChar": 28
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2f236a_4c233e15",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-24T01:06:09Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary. You could keep the initial setting of the debounce timeout upon entry, but just defer the decision to transition to Attached.SNK after the timestamp expires (and then checking for VBUS presence.)\n\n    \nif ((get_time().val \u003e tc[port].try_wait_debounce))\n    if (pd_is_vbus_present(port))\n        set_state(port, TC_OBJ(port), tc_attached_snk);",
+      "range": {
+        "startLine": 1644,
+        "startChar": 37,
+        "endLine": 1645,
         "endChar": 28
       },
       "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
