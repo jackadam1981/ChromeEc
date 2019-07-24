@@ -46,6 +46,30 @@
       "revId": "eeaef4c54ac24de828edb3e2a6a4ac4a3a7e9dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "325ece67_7f64a82c",
+        "filename": "include/test_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-24T19:18:51Z",
+      "side": 1,
+      "message": "If there is a test series such as\n\n  RUN_TEST(a);\n  RUN_TEST(b);\n  RUN_TEST(c);\n  RUN_TEST(d);\n\nwhere we want to skip before_test(b), we can do\n\n  void before_test(const char *name)\n  {\n    if (!strcmp(\"b\", name))\n      return;\n    /* Do test set up */\n  }\n\nWe can add it when we need it.",
+      "parentUuid": "fdad8c52_8ac7f2d4",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "eeaef4c54ac24de828edb3e2a6a4ac4a3a7e9dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
