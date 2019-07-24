@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0da14b0_d67b90a2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-24T21:07:42Z",
+      "side": 1,
+      "message": "Why not CPRINTS?",
+      "range": {
+        "startLine": 4245,
+        "startChar": 4,
+        "endLine": 4245,
+        "endChar": 11
+      },
+      "revId": "c6681523d863712b4afc5a44e79ec4a83a699afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117ae650_27d65ad6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-24T21:07:42Z",
+      "side": 1,
+      "message": "What happens if we keep failing here? Where do we check hard_reset_count in this (\u003dPD_STATE_HARD_RESET_SEND) loop?",
+      "range": {
+        "startLine": 4251,
+        "startChar": 7,
+        "endLine": 4252,
+        "endChar": 17
+      },
+      "revId": "c6681523d863712b4afc5a44e79ec4a83a699afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
