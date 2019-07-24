@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4737495_11a889ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T15:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d8a58e_3e55bcbd",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf9d616f_87ebc3a5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-23T17:55:53Z",
       "side": 1,
       "message": "JFYI, this holds true for the rgb driver, but not for the generic ALS (clear) driver.  The ALS driver returns raw clear channel data when in calibration mode, and returns LUX (RGB Y) when in normal mode.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa9096b_eed1bae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T15:21:17Z",
+      "side": 1,
+      "message": "Let\u0027s make sure that make sense. (That\u0027s another CL).",
+      "parentUuid": "cf9d616f_87ebc3a5",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b8465189_d09e3ab3",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T15:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f5a55f4_d8fbe183",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7816587e_d0f1b784",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "33e9230c_67e2d1d4",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T15:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7816587e_d0f1b784",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 645,
+        "endChar": 1
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "350a6b59_8442aa36",
         "filename": "include/accelgyro.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-07-23T17:55:53Z",
       "side": 1,
       "message": "How does the kernel know which drivers are one-shot and which need to be enabled/disabled?  Or does the kernel not care and it\u0027s up to a user-space script driving the /sys entries to enable/disable calibration?",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "7281ef474a8fc825f7fc16960620f5b6c0ee44df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01992a17_c6644671",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-24T15:21:17Z",
+      "side": 1,
+      "message": "The kernel just passes the information, it does not care.",
+      "parentUuid": "350a6b59_8442aa36",
       "range": {
         "startLine": 111,
         "startChar": 4,
