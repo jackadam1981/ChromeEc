@@ -380,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "bf2e0db5_853c24de",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-24T01:04:36Z",
+      "side": 1,
+      "message": "Exactly.",
+      "parentUuid": "a95611b0_68335b0d",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 58
+      },
+      "revId": "b7ef3f154eba32b1ba93b6708f0381511b262f97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "994e12f3_6e534cca",
         "filename": "board/kindred/board.c",
         "patchSetId": 6
