@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a20eb18_fc32a33f",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-25T04:12:51Z",
+      "side": 1,
+      "message": "I wanted to give a hint to the user if they tried to set it from userspace, that they need to enable the config_* option first.",
+      "parentUuid": "e672ffe5_0837c7cb",
+      "range": {
+        "startLine": 397,
+        "startChar": 11,
+        "endLine": 397,
+        "endChar": 28
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "465dcdab_04071ad1",
         "filename": "common/mkbp_event.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c768115d_e18dc945",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-25T04:12:51Z",
+      "side": 1,
+      "message": "I guess it doesn\u0027t hurt. Done.",
+      "parentUuid": "465dcdab_04071ad1",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 50
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e4513ba_08b7c483",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7748,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-25T04:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b9525c9_c11c9d73",
+      "range": {
+        "startLine": 7744,
+        "startChar": 1,
+        "endLine": 7748,
+        "endChar": 1
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6aa9ec7_8cb65775",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d01771_c6b23ca7",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 7776,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-25T04:12:51Z",
+      "side": 1,
+      "message": "Yep, that was my intent, but I guess I didn\u0027t make it obvious to userspace. Done.",
+      "parentUuid": "d6aa9ec7_8cb65775",
+      "range": {
+        "startLine": 7775,
+        "startChar": 1,
+        "endLine": 7776,
+        "endChar": 12
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
