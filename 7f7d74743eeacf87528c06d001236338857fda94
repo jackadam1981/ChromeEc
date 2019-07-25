@@ -22,6 +22,30 @@
       "revId": "7f7d74743eeacf87528c06d001236338857fda94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79012778_2cf1ec6a",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-25T20:31:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "757f17f8_3157a69b",
+      "range": {
+        "startLine": 2319,
+        "startChar": 30,
+        "endLine": 2319,
+        "endChar": 36
+      },
+      "revId": "7f7d74743eeacf87528c06d001236338857fda94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
