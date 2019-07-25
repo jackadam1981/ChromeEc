@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "54824ba9_8698dca3",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-25T02:53:45Z",
+      "side": 1,
+      "message": "That or you would need a callback --\u003e board_has_kb_backlight() which can have a weak implementation returning 1 and kindred can provide its own implementation based on board_is_convertible().",
+      "parentUuid": "c2826b08_9bf7526c",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "d1032c62fcc1b464df8677cbe2bc7ffe6f9cdbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ff1e519_538e5021",
         "filename": "board/kindred/board.c",
         "patchSetId": 8
@@ -87,6 +111,29 @@
         "startChar": 0,
         "endLine": 49,
         "endChar": 23
+      },
+      "revId": "d1032c62fcc1b464df8677cbe2bc7ffe6f9cdbb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "251e8843_5e0245b5",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-25T02:53:45Z",
+      "side": 1,
+      "message": "Why is it being set to 0? Default state would be 0, right?",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 461,
+        "endChar": 0
       },
       "revId": "d1032c62fcc1b464df8677cbe2bc7ffe6f9cdbb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
