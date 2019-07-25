@@ -163,6 +163,24 @@
       "revId": "a60bc8f2e8bbb52ee512bdf6a048f86ac7e82f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23cfc2cb_950e3c17",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 4660,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T00:17:45Z",
+      "side": 1,
+      "message": "Well the only member is a uint8_t, so it does not matter how the structure is aligned.",
+      "parentUuid": "d1d370ab_421bff94",
+      "revId": "a60bc8f2e8bbb52ee512bdf6a048f86ac7e82f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
