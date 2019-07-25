@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
- #define CONFIG_TEST_MOCK_LIST \
-	MOCK(ROLLBACK)        \
+#define CONFIG_TEST_MOCK_LIST \
 	MOCK(FP_SENSOR)       \
 	MOCK(MKBP_EVENTS)
