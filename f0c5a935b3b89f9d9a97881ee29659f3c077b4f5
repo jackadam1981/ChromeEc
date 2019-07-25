@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7293adf_e99fec4c",
+        "filename": "chip/mt_scp/audio_codec_wov.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:51:30Z",
+      "side": 1,
+      "message": "comment not needed, that\u0027s what the code says too",
+      "revId": "f0c5a935b3b89f9d9a97881ee29659f3c077b4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b999c33_27222a1e",
+        "filename": "chip/mt_scp/audio_codec_wov.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:51:30Z",
+      "side": 1,
+      "message": "Simpler: (RXIF_CFG0_RESET_VAL \u0026 ~RXIF_RGDL2_MASK) | RXIF_RGDL2_DMIC_16K;",
+      "revId": "f0c5a935b3b89f9d9a97881ee29659f3c077b4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdf9a9a_c46afe13",
+        "filename": "chip/mt_scp/audio_codec_wov.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:51:30Z",
+      "side": 1,
+      "message": "Same as usual, do you really need callbacks? Or you can just call the right function. (e.g. just wake the WOV task?)",
+      "revId": "f0c5a935b3b89f9d9a97881ee29659f3c077b4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d58ebd3_3329c889",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:51:30Z",
+      "side": 1,
+      "message": "0x1 \u003c\u003c 8\n(same for the ones below)",
+      "revId": "f0c5a935b3b89f9d9a97881ee29659f3c077b4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aff45d5_f15cae54",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:51:30Z",
+      "side": 1,
+      "message": "You probably want to define RXIF_RGDL2_MASK (0xf \u003c\u003c 8)",
+      "revId": "f0c5a935b3b89f9d9a97881ee29659f3c077b4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8ec701_8cb17d9f",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:51:30Z",
+      "side": 1,
+      "message": "I think this is 9 bits. So 0x1ff",
+      "revId": "f0c5a935b3b89f9d9a97881ee29659f3c077b4f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
