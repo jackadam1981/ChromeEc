@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbf9198f_a9ea1b98",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T10:17:29Z",
+      "side": 1,
+      "message": "super nit, you could make this a const, too.",
+      "revId": "d18c1a47eed6ec97da4ac743b07bde970f80748a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
