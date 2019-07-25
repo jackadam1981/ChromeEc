@@ -27,6 +27,10 @@
 
 #define CONFIG_USB_MUX_IT5205
 
+#define CONFIG_EXTPOWER_GPIO
+#undef	CONFIG_EXTPOWER_DEBOUNCE_MS
+#define	CONFIG_EXTPOWER_DEBOUNCE_MS 200
+
 /* Increase tx buffer size, as we'd like to stream EC log to AP. */
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
