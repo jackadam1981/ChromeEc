@@ -102,17 +102,11 @@ int pd_set_power_supply_ready(int port)
 
 void pd_power_supply_reset(int port)
 {
-	int prev_en;
-
-	prev_en = vbus_en[port];
-
 	/* Disable VBUS */
 	vbus_en[port] = 0;
 	board_vbus_update_source_current(port);
 
-	/* Enable discharge if we were previously sourcing 5V */
-	if (prev_en)
-		pd_set_vbus_discharge(port, 1);
+	pd_set_vbus_discharge(port, 1);
 
 	/* Give back the current quota we are no longer using */
 	charge_manager_source_port(port, 0);
