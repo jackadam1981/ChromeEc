@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d34f3f5_3bc6a71a",
+        "filename": "chip/mt_scp/audio_codec_wov.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed86e45_1d1df04a",
+      "range": {
+        "startLine": 88,
+        "startChar": 35,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "93f7f0bde89949b0373bd708ee4bac9357015353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c515b57_e6a9a4ad",
         "filename": "common/audio_codec.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-25T01:56:20Z",
       "side": 1,
       "message": "that should not be needed?",
+      "range": {
+        "startLine": 131,
+        "startChar": 32,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "93f7f0bde89949b0373bd708ee4bac9357015353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9a22b9d_8d7b8314",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:39Z",
+      "side": 1,
+      "message": "From previous experiences, implicit casting \"could\" introduce very-hard-to-debug bug (depends on compiler\u0027s behavior).\n\nWhen casting between: signed vs. unsigned, and different bit lengths, I usually explicit specify them (and cast step by step).\n\n  s8 \u003c---\u003e u8\n   ^        ^\n   |        |\n   v        v\n  s32 \u003c---\u003e u32\n\nIn short: I usually don\u0027t cast \"cross\" the graph (e.g. u8-\u003es32), instead u8-\u003es8-\u003es32.\n\nIn some use cases, UBSAN would complain (e.g. left shift on signed integer).",
+      "parentUuid": "0c515b57_e6a9a4ad",
       "range": {
         "startLine": 131,
         "startChar": 32,
