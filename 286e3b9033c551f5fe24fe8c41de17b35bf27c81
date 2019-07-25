@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ba02de3_7d0eba71",
+        "filename": ".clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-25T17:38:36Z",
+      "side": 0,
+      "message": "this gets dropped - I guess because we now explicitly spell out many parameters.",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 4,
+        "endChar": 14
+      },
+      "revId": "286e3b9033c551f5fe24fe8c41de17b35bf27c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ebdd898_51c1736d",
+        "filename": ".clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-25T17:38:36Z",
+      "side": 0,
+      "message": "this gets changed from \u0027Linux\u0027 to \u0027custom\u0027 - just curious, what does this entail.",
+      "range": {
+        "startLine": 5,
+        "startChar": 43,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "286e3b9033c551f5fe24fe8c41de17b35bf27c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
