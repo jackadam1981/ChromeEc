@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a489fad4_d1a8623b",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663a7fdf_2babf7cc",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "292d77d7_abae1306",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 28
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-25T01:27:23Z",
       "side": 1,
       "message": "no cast",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e267aeb_533fa9fd",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "I would like to preserve *pp here, or the following...(too many pp-\u003e access).\n\nThis is another good case to show that *pp could save some stack variables and some assignment instructions.",
+      "parentUuid": "292d77d7_abae1306",
       "range": {
         "startLine": 59,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "247d2bb6_ade623a0",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61decec7_478a5553",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "440c8ad6_7cb80d07",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 28
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-25T01:27:23Z",
       "side": 1,
       "message": "no cast",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011dfc9c_5a952931",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "same reason, could we preserve *pp and casting here?",
+      "parentUuid": "440c8ad6_7cb80d07",
       "range": {
         "startLine": 92,
         "startChar": 15,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "068db1ff_16efd6f6",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad2e9dbd_06f1e1f2",
+      "range": {
+        "startLine": 104,
+        "startChar": 29,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2e145f2_a6ec864f",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 28
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0fd0b45b_6c1a0edf",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e145f2_a6ec864f",
+      "range": {
+        "startLine": 115,
+        "startChar": 28,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5569c62c_fe1cbca6",
         "filename": "include/audio_codec.h",
         "patchSetId": 28
@@ -151,6 +295,24 @@
       "writtenOn": "2019-07-25T01:27:23Z",
       "side": 1,
       "message": "Can this be a config option?",
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32dabe3f_b339941a",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:51:14Z",
+      "side": 1,
+      "message": "so that we could save 4 bytes?\n\nsame as audio_buf_type, lang_buf_len, lang_buf_type.",
+      "parentUuid": "5569c62c_fe1cbca6",
       "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
