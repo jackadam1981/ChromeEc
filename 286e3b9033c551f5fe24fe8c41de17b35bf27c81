@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f348217_8a2808bf",
+        "filename": ".clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-25T19:01:19Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "4ba02de3_7d0eba71",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 4,
+        "endChar": 14
+      },
+      "revId": "286e3b9033c551f5fe24fe8c41de17b35bf27c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ebdd898_51c1736d",
         "filename": ".clang-format",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "286e3b9033c551f5fe24fe8c41de17b35bf27c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e4cb49_52d7d61b",
+        "filename": ".clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-25T19:01:19Z",
+      "side": 0,
+      "message": "For C, it will be exactly the same. For C++, it appears that this will differ in that there is no break after class declarations, whereas clang-format\u0027s \u0027Linux\u0027 style would have this break.",
+      "parentUuid": "0ebdd898_51c1736d",
+      "range": {
+        "startLine": 5,
+        "startChar": 43,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "286e3b9033c551f5fe24fe8c41de17b35bf27c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
