@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ee5cfe_4b2b97fa",
+        "filename": "core/cortex-m0/__builtin.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-25T01:24:22Z",
+      "side": 1,
+      "message": "Should we mark it as keep? I think it won\u0027t be garbage-collected by linker if using __keep.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
