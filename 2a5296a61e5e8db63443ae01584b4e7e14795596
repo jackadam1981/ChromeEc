@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b30fa6e_923f4207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-25T02:12:28Z",
+      "side": 1,
+      "message": "ST_DISCHARGE",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f2901e_13f4bd32",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-25T02:12:28Z",
+      "side": 1,
+      "message": "nit: space before (",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbaad962_932a4181",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-25T02:12:28Z",
+      "side": 1,
+      "message": "I know this is not added in this CL, but shouldn\u0027t this be calling set_charge_state() instead of directly updating the state here since the charge state machine updates prev_state which is then later used to decide if prev_charge and other params need to be updated and if HOOK_BATTERY_SOC_CHANGE needs to be triggered.",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
