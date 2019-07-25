@@ -2419,6 +2419,8 @@
  */
 #undef CONFIG_IO_EXPANDER_IT8801
 
+#undef CONFIG_EC_KEYBOARD
+
 /*****************************************************************************/
 
 /* Support common LED interface */
