@@ -85,7 +85,7 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
-const struct pi3usb2901_config_t pi3usb2901_bc12_chips[] = {
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	{
 		.i2c_port = I2C_PORT_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
