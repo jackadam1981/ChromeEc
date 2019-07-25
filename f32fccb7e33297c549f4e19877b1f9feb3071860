@@ -16,6 +16,29 @@
       "revId": "f32fccb7e33297c549f4e19877b1f9feb3071860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d70b4b_00c52a93",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T16:02:42Z",
+      "side": 1,
+      "message": "Please follow CL:1669796. We decided to check the max but truncate lower bits.\n\n/**\n * Initialize AC prochot threshold\n *\n * @param\tPorchot threshold current in mA: multiple of 128 up to 6400 mA\n * \t\tBits below 128mA are truncated (ignored).\n * @return enum ec_error_list\n */\nint isl923x_set_ac_prochot(uint16_t ma);\n\n#define ISL923X_AC_PROCHOT_CURRENT_MAX\t6400\t/* mA */",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 325,
+        "endChar": 26
+      },
+      "revId": "f32fccb7e33297c549f4e19877b1f9feb3071860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
