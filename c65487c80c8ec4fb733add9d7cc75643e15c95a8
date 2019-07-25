@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a265fb68_4598cbd3",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-25T14:40:46Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "2a20eb18_fc32a33f",
+      "range": {
+        "startLine": 397,
+        "startChar": 11,
+        "endLine": 397,
+        "endChar": 28
+      },
+      "revId": "c65487c80c8ec4fb733add9d7cc75643e15c95a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "465dcdab_04071ad1",
         "filename": "common/mkbp_event.c",
         "patchSetId": 3
