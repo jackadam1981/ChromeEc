@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a3e38d4c_9ff87743",
+        "filename": "common/build.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:27:23Z",
+      "side": 1,
+      "message": "See the magic all the way to the bottom of config.h.",
+      "parentUuid": "a752ca8c_81c5aee3",
+      "range": {
+        "startLine": 33,
+        "startChar": 52,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19203dc6_af9921db",
         "filename": "include/ec_commands.h",
         "patchSetId": 26
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "if AP finds hash of language model doesn\u0027t change, AP won\u0027t transfer the model to EC codec (which should save lots of host commands when in \"packet mode\").  Roughly, 70kB / 100 \u003d 700 host commands.\n\nthe hash in the message here is not for integrity of this \"packet\" but for whole language model",
       "parentUuid": "19203dc6_af9921db",
+      "range": {
+        "startLine": 4744,
+        "startChar": 0,
+        "endLine": 4744,
+        "endChar": 20
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37e2828_ba8a35ab",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 4744,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:27:23Z",
+      "side": 1,
+      "message": "Right, what I\u0027m trying to say here is that maybe it\u0027s ok to just use a simpler, weaker hash/checksum (like crc32), if you don\u0027t need something strong (and the only purpose is to check if the language model is the same).\n\nNow if the language model is essentially code, it might be safer to use a strong hash (like sha256).",
+      "parentUuid": "2d3946ca_b4adf0be",
       "range": {
         "startLine": 4744,
         "startChar": 0,
