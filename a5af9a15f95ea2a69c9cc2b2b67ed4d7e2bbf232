@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fda378cf_1b493969",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-25T03:55:40Z",
+      "side": 1,
+      "message": "also need to check reset_logs, by ectool uptimeinfo",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1d80412_3b70cdce",
         "filename": "common/chipset.c",
         "patchSetId": 1
@@ -13,6 +36,52 @@
       "writtenOn": "2019-07-25T02:44:31Z",
       "side": 1,
       "message": "nit: We don\u0027t usually indent ifdefs.",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4496a752_1db62c01",
+        "filename": "common/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-25T03:55:40Z",
+      "side": 1,
+      "message": "I would prefer some other naming, since reset_logs and uart_buffer both share the same section.\n\nBut I don\u0027t have a better naming in my mind yet... (.preserved? not descriptive enough...)",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 59
+      },
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b47c96_345bd061",
+        "filename": "common/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-25T03:55:40Z",
+      "side": 1,
+      "message": "I think this and the one in uart_buffering.c:40 should be kept in the same place. i.e. only one \"define\" for the same macro.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 22
+      },
       "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
