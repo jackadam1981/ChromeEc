@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32d5429e_7a99a767",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a43132_0e58ef7b",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f3d25e_18d0ed33",
         "filename": "baseboard/kukui/baseboard.h",
         "patchSetId": 31
@@ -45,6 +69,30 @@
       "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "274b0b0f_5cd298f0",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f3d25e_18d0ed33",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c8daf89f_ae3a9cb3",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b6ed4f8_220b49d6",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628f10e3_e1a559d1",
         "filename": "board/jacuzzi/board.h",
         "patchSetId": 31
@@ -91,6 +163,30 @@
       "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335ef2d5_5212136c",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628f10e3_e1a559d1",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "19eb132c_2712877d",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5eb1d99_311da436",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff179a94_1716cf10",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 31
@@ -131,6 +251,24 @@
       "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae39fd63_ef32e297",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 31
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff179a94_1716cf10",
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -154,6 +292,30 @@
       "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf0c8c5_6fc1abcf",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 31
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T08:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0728a15c_7c29e652",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 55
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
