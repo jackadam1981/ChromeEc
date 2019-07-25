@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "09864d42_13950735",
+        "filename": "common/build.mk",
+        "patchSetId": 23
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Since these are hosted under common/usbc, how about the following?\n\n  usb_sm.o -\u003e usb_state_machine.o\n  usb_tc_sm.o -\u003e tcpm_task.o (or just tcpm.o)\n  usb_prl_sm.o -\u003e pd_protocol.o\n  usb_pe_ctvpd_sm.o -\u003e ct_vpd_policy_engine.o\n  usb_tc_vpd_sm.o -\u003e vpd.o\n  usb_tc_ctvpd_sm.o -\u003e ct_vpd.o\n  usb_tc_drp_acc_trysrc_sm.o -\u003e drp_accessory_try_src.o\n\nI don\u0027t think we need to explicitly say _sm.",
+      "parentUuid": "1bad4254_a1aa2d0f",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 51
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f792b1ea_17b07078",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 23
@@ -660,6 +684,30 @@
     },
     {
       "key": {
+        "uuid": "e0378664_2d3c38f7",
+        "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "All the similar lines below too.",
+      "parentUuid": "179357f9_16e57610",
+      "range": {
+        "startLine": 1347,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 11
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1d8bcdc_8877c439",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 23
@@ -918,6 +966,30 @@
       "side": 1,
       "message": "It seems IS_ENABLED does not function the same as #ifdef. For example\n\n#undef SOME_MACRO\n\n/* THIS WILL NOT THROW AN ERROR */\n#ifdef SOME_MACRO\n    sldkf\n#endif\n\n/* THIS WILL GENERATE A COMPILE TIME ERROR */\nif (IS_ENABLED(SOME_MACRO)) {\n    sldkf\n}\n\nWhen is IS_ENABLED appropriate to use?",
       "parentUuid": "6171d0fe_900a922d",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 23
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88dce3a4_5b7436a4",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "I think we can do either:\n1. Add pd_enabled to struct type_c \n2. Don\u0027t pass pd_enable (and evt because tc is global)",
+      "parentUuid": "57fb4cf4_2b72890a",
       "range": {
         "startLine": 285,
         "startChar": 7,

@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdba6f8c_0f966aac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Why don\u0027t you define these in usb_tc_sm.h?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270db51a_b882dde7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "I assume this is reflecting some diagram in the spec. Can you point me to it?\n\nIf I read the code correctly, tc_cc_rp_entry will be called whenever we enter unattached.src, attachwait.src. These two are next to each other. I\u0027m trying to understand how this hierarchy makes the code more readable (by calling tc_cc_rp_entry twice in a row).",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 27
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f0a61a_815e5557",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c81d664_da6eee27",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "#ifndef",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c5a7b0_bd5f9ced",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 28
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd34f9f5_4e14e247",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "is_enabled",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 6
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4888af_a64692a6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "You can probably remove this now because you used IS_ENABLED where set_vconn is called.\n\nPlease revisit other #ifdef guards. You might be get rid of some similarly by using IS_ENABLED at caller sites.",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 24
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2a66ac_e673db23",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Please also describe Run \u0026 Exit actions (here and in all other states).",
+      "range": {
+        "startLine": 892,
+        "startChar": 0,
+        "endLine": 899,
+        "endChar": 3
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4278fae2_9199ad81",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Can you consolidate these? I don\u0027t think you need to distinguish NOOP_RUN and NOOP_EXIT, for example.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af6ef9d_2ed5258d",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "sm_signal",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22582a0_dca8ffce",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "SM_SIGNAL_ENTRY",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e6103a_88152d06",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "These are APIs. Following the convention, I think we should add prefix:\n\n  sm_init\n  sm_set\n  sm_run\n  sm_noop\n  sm_get_super_state\n\nThis state machine API set may be generalized in the future for non-usb state machines.",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 13
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d9887b_96125afc",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "sm_do_nothing",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 19
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3629bc5d_37c68c58",
+        "filename": "include/usb_tc_drp_acc_trysrc_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "Have you thought about having one struct definition for all device classes (drp_acc_trysrc, ctvpd, vpd) in a hierarchical way? We should use structs to group related fields. There are common fields between ctvpd and vpd, for example. VPD fields should be just shared between VPD and CTVPD class.\n\nRoughly speaking, I\u0027m expecting something like:\n\n  struct type_c {\n     struct sm_obj obj;\n     ... common fields ...\n     struct vpd {\n        struct charge_through ct;\n        ... fields common in vpd and ctvpd ...\n     } vpd;\n     struct drp_acc_try_src drp;\n  }\n\nWhat\u0027s the design rationale about this flat \u0026 duplicated struct?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6cf5dd7_0a85205b",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T00:10:30Z",
+      "side": 1,
+      "message": "I think these should have a prefix. DISABLED is too generic. Having prefix makes these unique thus increases their visibility by text search.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "84b915262e850ef85e0f4aa72d23b12142926f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
