@@ -22,6 +22,30 @@
       "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe76ed51_3bc11126",
+        "filename": "core/cortex-m0/__builtin.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T01:26:46Z",
+      "side": 1,
+      "message": "I was wondering the same thing. It\u0027s weird that this function will be compiled in even if not used.\n\nOther boards seem to have the same though though, so i\u0027m inclined to say we should land as is for now.",
+      "parentUuid": "a1ee5cfe_4b2b97fa",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
