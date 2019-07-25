@@ -22,6 +22,30 @@
       "revId": "26521a4da2ee0871e7845c0d3731172720a089ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7300904_ea46b45c",
+        "filename": ".clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-25T17:36:42Z",
+      "side": 1,
+      "message": "The Linux kernel\u0027s .clang-format has this too. I presume it\u0027s harmless. But we can remove it.",
+      "parentUuid": "1ad70675_6f305112",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "26521a4da2ee0871e7845c0d3731172720a089ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
