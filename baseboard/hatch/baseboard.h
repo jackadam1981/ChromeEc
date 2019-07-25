@@ -180,7 +180,7 @@ enum mst_source {
 /* Forward declare common (within Hatch) board-specific functions */
 void board_reset_pd_mcu(void);
 void baseboard_mst_enable_control(enum mst_source, int level);
-
+int get_board_sku(void);
 
 /* Check with variant about battery presence. */
 enum battery_present variant_battery_present(void);
