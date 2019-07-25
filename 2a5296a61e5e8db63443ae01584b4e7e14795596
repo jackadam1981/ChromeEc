@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "641e9583_e3123915",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-25T14:38:52Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b1f2901e_13f4bd32",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbaad962_932a4181",
         "filename": "board/casta/battery.c",
         "patchSetId": 2
@@ -92,6 +116,30 @@
       "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc1ffae_f93f50ec",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2019-07-25T14:38:52Z",
+      "side": 1,
+      "message": "After looking at the code more and as weird as it seems, calling set_charge_state here would actually mess up the previous state variable. This board override is called after the previous code has already called set_charge_state which set the previous state correctly, so this function should really just set the curr-\u003estate variable (like it is doing).",
+      "parentUuid": "aca8bf9f_29bd515f",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
