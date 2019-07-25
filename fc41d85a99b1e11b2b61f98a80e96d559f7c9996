@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fda3eaf8_93d59637",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "I think you should move this to line 80.",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf0aeef_fce1d504",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "Can you define CPRINTF and CPRINTS?",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6b3839_615d17d5",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "You\u0027d better print something before returning.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84cbd5c8_27fa4cec",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "Isn\u0027t this redundant because you call keyboard_raw_enable_interrupt(1) below?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9751ea54_6e0dd782",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "can you join the lines?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99e47b7_b043017e",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "Please give it a name.",
+      "range": {
+        "startLine": 118,
+        "startChar": 40,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faab894c_13c9dc64",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "The recovery entry is probably broken because boot keys are scanned before hook_task is started. Filed b/138384267.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

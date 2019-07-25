@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "df2e2b23_c66e0e9b",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "Sorry, do you mind renaming them it8801_read8/write8?",
+      "parentUuid": "4de45fbe_278c523d",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d29bf98_2cbe791d",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -237,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "57900d06_675e0276",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "You\u0027re not checking whether a call is successful or not. What I mean is if the call fails, \u0027data\u0027 will hold a random value on the stack. Isn\u0027t it an issue?",
+      "parentUuid": "42bd7b3a_a672b2c8",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e86c00a_8f8fb2ab",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -272,6 +320,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "0e86c00a_8f8fb2ab",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a92eb63_6e35c83c",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T17:28:26Z",
+      "side": 1,
+      "message": "What do you mean? I still see the same.",
+      "parentUuid": "867d586a_fa9ff3bd",
       "range": {
         "startLine": 138,
         "startChar": 8,
