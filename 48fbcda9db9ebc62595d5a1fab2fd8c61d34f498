@@ -46,6 +46,30 @@
       "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0990b625_cb85c6b1",
+        "filename": "core/cortex-m0/__builtin.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:31:51Z",
+      "side": 1,
+      "message": "Maybe the right solution here is to define __builtin_ffs on cortex-m0 as something that does not rely on __ffssi2? (or define a wrapper that\u0027d call __builtin_ffs on most arch, but use this on cortex-m0?)\n\n(maybe protected by some config option similar to CONFIG_ASSEMBLY_MULA32)",
+      "parentUuid": "fe76ed51_3bc11126",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
