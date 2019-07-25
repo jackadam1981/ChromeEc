@@ -83,10 +83,19 @@ void board_pd_vbus_ctrl(int port, int enabled)
 }
 #else
 /* EC EVB */
-void pd_task(void)
+void pd_task(void *u)
 {
 	while (1)
 		task_wait_event(-1);
+}
+
+/*
+ * To prevent cc pins leakage, disables integrated cc module and disconnect 5.1K
+ * dead battery resistor.
+ */
+void it83xx_disable_cc_module(int port)
+{
+	/* Do nothing */
 }
 #endif
 

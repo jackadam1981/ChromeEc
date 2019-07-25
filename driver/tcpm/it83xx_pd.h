@@ -327,6 +327,8 @@ enum usbpd_power_role {
 #elif defined(CONFIG_USB_PD_TCPM_ITE83XX_V2)
 	USBPD_POWER_ROLE_SNK,
 	USBPD_POWER_ROLE_SRC,
+#else
+	NOTHING,
 #endif
 };
 
