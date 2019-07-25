@@ -217,10 +217,12 @@ void lpc_s3_resume_clear_masks(void)
  * The primary copy is mirrored in mapped memory and used to trigger interrupts
  * on the host via ACPI/SCI/SMI/GPIO.
  *
- * The secondary (B) copy is used to track events at a non-interrupt level (for
- * example, so a user-level process can find out what events have happened
- * since the last call, even though a kernel-level process is consuming events
- * from the first copy).
+ * The secondary (B) copy is used by entities other than ACPI to query the state
+ * of host events on EC. Currently events_copy_b is used for
+ *      1. Logging recovery mode switch in coreboot.
+ *      2. Used by depthcharge on devices with no 8042 and no MKBP interrupt.
+ *      3. Logging wake reason by coreboot.
+ * Further uses of b copy should make sure none of these use cases are broken.
  *
  * Setting an event sets both copies.  Copies are cleared separately.
  */
@@ -417,6 +419,35 @@ test_mockable void host_throttle_cpu(int throttle)
 	else
 		host_set_single_event(EC_HOST_EVENT_THROTTLE_STOP);
 }
+
+/*
+ * Events copy b is used by coreboot for logging the wake reason. For this to
+ * work, events_copy_b needs to be cleared on every suspend.
+ */
+void clear_events_copy_b(void)
+{
+	events_copy_b = 0;
+}
+
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clear_events_copy_b, HOOK_PRIO_DEFAULT);
+
+/*
+ * Clear events that are not part of SCI/SMI mask so as to prevent
+ * premature wakes on next suspend. This is needed because A.P only queries
+ * SCI events after resume.
+ * For events that are not set in SCI mask but are part of WAKE(S0ix/S3)
+ * masks, kernel drivers should have other ways (physical/virtual interrupt)
+ * pin to identify when they trigger wakes. Please look at
+ * http://go/hostevent-refactor for more details.
+ */
+void clear_non_sci_events(void)
+{
+	host_clear_events(~lpc_host_event_mask[LPC_HOST_EVENT_SCI] &
+                          ~lpc_host_event_mask[LPC_HOST_EVENT_SMI]);
+}
+
+
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clear_non_sci_events, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Console commands */
