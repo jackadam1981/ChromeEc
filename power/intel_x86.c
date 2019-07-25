@@ -671,9 +671,17 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 		 */
 		s0ix_notify = S0IX_NOTIFY_RESUME;
 		task_wake(TASK_ID_CHIPSET);
-		/* clear host events */
-		while (lpc_get_next_host_event() != 0)
-			;
+		/*
+		 * On devices that use 8042 interface, keypress is set in the
+		 * wake mask but not in SCI mask. Thus if key press triggers a
+		 * wake, it should then be cleared after A.P. woke up.
+		 * Otherwise, A.P will wake up immediately on next suspend as
+		 * the event will stick. This should not hinder A.P in
+		 * identifying wakes from keyboard as 8042 driver will receive
+		 * an interrupt on wakeup due to IBF.
+		 */
+		host_clear_events(
+			EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED));
 		lpc_s0ix_resume_restore_masks();
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 		s0ix_complete_resume(ctx);
