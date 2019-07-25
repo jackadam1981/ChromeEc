@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1de96b32_1b8357be",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-25T08:24:17Z",
+      "side": 1,
+      "message": "If return data uses \"~data\", the data will be 0xffffff00(data type is INT) in initial state to return. There will cause that KSI signal presents continued.",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 20
+      },
+      "revId": "63367fe45ae063eff299232dff442bd242c3cd2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
