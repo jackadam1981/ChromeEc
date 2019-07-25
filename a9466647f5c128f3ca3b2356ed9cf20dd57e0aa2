@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9b490174_d6187037",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-25T08:50:12Z",
+      "side": 1,
+      "message": "I see.\n\nWhat I\u0027m trying to say is: it seems there is an implicit \"__attribute__((aligned(4)))\" if we don\u0027t specify. (i.e. struct shm { ... }; )",
+      "parentUuid": "d3274e48_76ebfcde",
+      "revId": "a9466647f5c128f3ca3b2356ed9cf20dd57e0aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2936a126_d952d0cb",
         "filename": "common/audio_codec.c",
         "patchSetId": 12
