@@ -340,6 +340,24 @@
       "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b0acc4_ff6709a2",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T10:19:18Z",
+      "side": 1,
+      "message": "Yeah save some bytes, automatically inline the value in all the code, etc.",
+      "parentUuid": "32dabe3f_b339941a",
+      "revId": "0a8e4355d657e38ce40295dee477a76e768076db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
