@@ -135,28 +135,44 @@ includes+=cts/$(CTS_MODULE) cts
 endif
 ifeq "$(TEST_BUILD)" "y"
 	_tsk_lst_file:=ec.tasklist
-	_tsk_lst_flags:=$(if $(TEST_FUZZ),-Ifuzz,-Itest) -DTEST_BUILD=$(EMPTY) \
-			-imacros $(PROJECT).tasklist
+	_lst_flags:=$(if $(TEST_FUZZ),-Ifuzz,-Itest) -DTEST_BUILD=$(EMPTY)
+
+	_tsk_lst_flags:=$(_lst_flags) -imacros $(PROJECT).tasklist
+	_mock_lst_flags:=$(_lst_flags) -imacros $(PROJECT).mocklist
 else ifdef CTS_MODULE
 	_tsk_lst_file:=ec.tasklist
-	_tsk_lst_flags:=-I cts/$(CTS_MODULE) -Icts -DCTS_MODULE=$(CTS_MODULE) \
-			-imacros cts.tasklist
+	_lst_flags:=-I cts/$(CTS_MODULE) -Icts -DCTS_MODULE=$(CTS_MODULE)
+
+	_tsk_lst_flags:=$(_lst_flags) -imacros cts.tasklist
+	_mock_lst_flags:=
 else
 	_tsk_lst_file:=$(PROJECT).tasklist
 	_tsk_lst_flags:=
+	_mock_lst_flags:=
 endif
 
-_tsk_lst_flags+=-I$(BDIR) -DBOARD_$(UC_BOARD)=$(EMPTY) -I$(BASEDIR) \
+
+_tsk_lst_flags += -I$(BDIR) -DBOARD_$(UC_BOARD)=$(EMPTY) -I$(BASEDIR) \
 		-DBASEBOARD_$(UC_BASEBOARD)=$(EMPTY) \
 		-D_MAKEFILE=$(EMPTY) -imacros $(_tsk_lst_file)
+
+_mock_lst_flags += -I$(BDIR) -DBOARD_$(UC_BOARD)=$(EMPTY) -I$(BASEDIR) \
+		-DBASEBOARD_$(UC_BASEBOARD)=$(EMPTY) \
+		-D_MAKEFILE=$(EMPTY)
 
 _tsk_lst_ro:=$(shell $(CPP) -P -DSECTION_IS_RO=$(EMPTY) \
 	$(_tsk_lst_flags) include/task_filter.h)
 _tsk_lst_rw:=$(shell $(CPP) -P -DSECTION_IS_RW=$(EMPTY) \
 	$(_tsk_lst_flags) include/task_filter.h)
 
+_mock_lst:=
+ifneq ($(wildcard $(if $(TEST_FUZZ),fuzz,test)/$(PROJECT).mocklist),)
+_mock_lst+=$(shell $(CPP) -P $(_mock_lst_flags) include/mock_filter.h)
+endif
+
 _tsk_cfg_ro:=$(foreach t,$(_tsk_lst_ro) ,HAS_TASK_$(t))
 _tsk_cfg_rw:=$(foreach t,$(_tsk_lst_rw) ,HAS_TASK_$(t))
+_mock_cfg:=$(foreach t,$(_mock_lst) ,HAS_MOCK_$(t))
 
 _tsk_cfg:= $(filter $(_tsk_cfg_ro), $(_tsk_cfg_rw))
 _tsk_cfg_ro:= $(filter-out $(_tsk_cfg), $(_tsk_cfg_ro))
@@ -167,6 +183,7 @@ CPPFLAGS_RO+=$(foreach t,$(_tsk_cfg_ro),-D$(t)=$(EMPTY)) \
 CPPFLAGS_RW+=$(foreach t,$(_tsk_cfg_rw),-D$(t)=$(EMPTY)) \
 		$(foreach t,$(_tsk_cfg_ro),-D$(t)_RO=$(EMPTY))
 CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t)=$(EMPTY))
+CPPFLAGS+=$(foreach t,$(_mock_cfg),-D$(t)=$(EMPTY))
 ifneq ($(ENV_VARS),)
 CPPFLAGS += -DINCLUDE_ENV_CONFIG=$(EMPTY)
 CFLAGS += -I$(realpath $(out))
@@ -187,6 +204,7 @@ _flag_cfg_rw:= $(filter-out $(_flag_cfg), $(_flag_cfg_rw))
 $(foreach c,$(_tsk_cfg_rw) $(_flag_cfg_rw),$(eval $(c)=rw))
 $(foreach c,$(_tsk_cfg_ro) $(_flag_cfg_ro),$(eval $(c)=ro))
 $(foreach c,$(_tsk_cfg) $(_flag_cfg),$(eval $(c)=y))
+$(foreach c,$(_mock_cfg),$(eval $(c)=y))
 
 ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
 	_irq_list:=$(shell $(CPP) $(CPPFLAGS) -P -Ichip/$(CHIP) -I$(BASEDIR) \
