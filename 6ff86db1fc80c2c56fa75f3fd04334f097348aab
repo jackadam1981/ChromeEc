@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2afd4a27_6af34c00",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-25T10:46:33Z",
+      "side": 1,
+      "message": "Add vendor id to verify. If vendor id checks fail, it will return error message.",
+      "parentUuid": "2a5ff62c_2f7dc072",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 57
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d29bf98_2cbe791d",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -130,6 +154,30 @@
       "writtenOn": "2019-07-24T09:25:24Z",
       "side": 1,
       "message": "you can\u0027t just invert kso2 here.\n\nkso_val contains the index number for the row to select. It\u0027s not a mask.\n\nSo if keyboard_raw_drive_column() gets called with col\u003d\u003d2,\nline 106: kso_val \u003d 2;\nline 111: (kso_val ^\u003d 2) \u003d\u003d 0\n\nAlso... i just noticed now, why is it ^\u003d instead of just ^\n\nStill no luck on getting this working though.\n\nWhat I think I need is a configuration like this:\nKSO0 selected:\nKSO0 - output low\nKSO1 - hiz or pullup\nKSO0 - hiz or pull down\nKSO3 - hiz or pullup\n\nKSO2 selected:\nKSO0 - hiz or pullup\nKSO1 - hiz or pullup\nKSO0 - output high\nKSO3 - hiz or pullup",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650c9cff_9b21676e",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-25T10:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26120a96_b3c5f5ff",
       "range": {
         "startLine": 111,
         "startChar": 22,
