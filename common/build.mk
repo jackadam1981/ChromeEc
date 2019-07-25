@@ -167,6 +167,9 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
 
+# Mocks
+common-$(HAS_MOCK_ROLLBACK)+=mock/rollback_mock.o
+
 ifneq ($(CONFIG_COMMON_RUNTIME),)
 common-$(CONFIG_MALLOC)+=shmalloc.o
 common-$(call not_cfg,$(CONFIG_MALLOC))+=shared_mem.o
