@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1522bfa_fd17f9e2",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T00:21:30Z",
+      "side": 1,
+      "message": "no cast",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "a81422bc7cd7f595ed33e07e5e9d7261a82434a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aea63ad_145ef7f7",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T00:21:30Z",
+      "side": 1,
+      "message": "no cast",
+      "range": {
+        "startLine": 63,
+        "startChar": 13,
+        "endLine": 63,
+        "endChar": 30
+      },
+      "revId": "a81422bc7cd7f595ed33e07e5e9d7261a82434a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab3d2b7_7b05c45e",
+        "filename": "common/audio_codec_i2s_rx.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T00:21:30Z",
+      "side": 1,
+      "message": "no cast",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 27
+      },
+      "revId": "a81422bc7cd7f595ed33e07e5e9d7261a82434a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
