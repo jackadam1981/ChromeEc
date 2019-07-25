@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a43132_0e58ef7b",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "you moved these lines by mistake.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f3d25e_18d0ed33",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "Perhaps do this in the previous cl",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6ed4f8_220b49d6",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "move to previous CL",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628f10e3_e1a559d1",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "pls rename to I2C_PORT_IO_EXPANDER_IT8801",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5eb1d99_311da436",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "remove pls, or if you want to use it match what https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1677976 calls it.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff179a94_1716cf10",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 31
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "pls add TODO, use the new ioex gpio stuff.",
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0728a15c_7c29e652",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 31
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-25T05:00:08Z",
+      "side": 1,
+      "message": "Just remove this for now.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 55
+      },
+      "revId": "8ebdeb737d21c11b39bb8398ea89a346af822f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
