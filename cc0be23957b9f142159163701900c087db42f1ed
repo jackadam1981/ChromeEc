@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c7467ee_536fe1ca",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-25T15:57:08Z",
+      "side": 1,
+      "message": "You probably want to revert this condition so that you can see \"SKU: 0\" when something goes wrong.",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 59
+      },
+      "revId": "cc0be23957b9f142159163701900c087db42f1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
