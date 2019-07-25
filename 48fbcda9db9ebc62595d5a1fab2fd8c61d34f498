@@ -70,6 +70,30 @@
       "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbed1947_2cb9c862",
+        "filename": "core/cortex-m0/__builtin.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T07:37:14Z",
+      "side": 1,
+      "message": "yllin \u0026 amstan: __keep is necessary because the only reference to __ffssi2 seems to be in a inline assembly, and LTO can\u0027t handle this case.\n\ndrinkcat: or maybe follow the CONFIG_SOFTWARE_CTZ way?",
+      "parentUuid": "0990b625_cb85c6b1",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "48fbcda9db9ebc62595d5a1fab2fd8c61d34f498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
