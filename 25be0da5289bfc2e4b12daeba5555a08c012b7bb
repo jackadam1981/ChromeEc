@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c8b6906_20aac0f4",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T04:14:04Z",
+      "side": 1,
+      "message": "This is a result of rebase, I didn\u0027t change this line.\n(you can verify this by diff this patchset with base)",
+      "parentUuid": "3f720b90_c3a46c97",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "25be0da5289bfc2e4b12daeba5555a08c012b7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c80e13d3_7625dc96",
         "filename": "board/kukui/board.h",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-25T03:09:53Z",
       "side": 1,
       "message": "unrelated",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "25be0da5289bfc2e4b12daeba5555a08c012b7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183a6533_1bc42646",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-25T04:14:04Z",
+      "side": 1,
+      "message": "same here",
+      "parentUuid": "c80e13d3_7625dc96",
       "range": {
         "startLine": 71,
         "startChar": 55,
