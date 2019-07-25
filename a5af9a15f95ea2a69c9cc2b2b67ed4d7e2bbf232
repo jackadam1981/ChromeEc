@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1d80412_3b70cdce",
+        "filename": "common/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "nit: We don\u0027t usually indent ifdefs.",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d08981_b5dcb06d",
+        "filename": "common/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100ab3a2_9595cb3e",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "Can you do that in a uart_init_buffer() function instead?\n\nYou should also sanity check the pointer addresses are within the acceptable range: the last thing we want is a bug that\u0027d cause the EC to reboot continuously: that\u0027s essentially brick the device.",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "725f14c2_4368b000",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "some nit, no indent.",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950a934d_92aba457",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "uart_buffer_update_checksum",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215c52c0_feeb4029",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "(you won\u0027t need this one if you move all the init code to a function in this file)\n\nThen the rest of the functions can be static.",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e86fc3c_0f793a8a",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "nit, space before *",
+      "range": {
+        "startLine": 131,
+        "startChar": 19,
+        "endLine": 131,
+        "endChar": 20
+      },
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d1e4b01_2a7abb11",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "Err but now .bss.vector_table is not in bss? So it won\u0027t get cleared on init?",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56443794_c6855a76",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "Add a note above saying the vector_table does not change size, so essentially the buffer is now at a fixed address.\n\nBut TBH I wonder if you\u0027re not better having the UART buffer at the _end_ of the SRAM?",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65aa3b7a_ccfa9b2a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3509,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "Preserve EC logs in SRAM across EC resets/sysjump.\n\nDid you check that it works across sysjump too?",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a9e2ea_5882ab62",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3511,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T02:44:31Z",
+      "side": 1,
+      "message": "Not a big fan of the option name. Maybe CONFIG_UART_PRESERVE_LOG?\n\nnit: blank line after",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
