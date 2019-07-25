@@ -352,6 +352,7 @@ enum power_state power_chipset_init(void)
 	return POWER_G3;
 }
 
+
 enum power_state common_intel_x86_power_handle_state(enum power_state state)
 {
 	switch (state) {
@@ -671,9 +672,11 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 		 */
 		s0ix_notify = S0IX_NOTIFY_RESUME;
 		task_wake(TASK_ID_CHIPSET);
-		/* clear host events */
-		while (lpc_get_next_host_event() != 0)
-			;
+		/*
+		 * Clear events that are not part of SCI mask so as to prevent
+		 * premature wakes on next suspend.
+		 */
+		host_clear_events(~backup_sci_mask);
 		lpc_s0ix_resume_restore_masks();
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 		s0ix_complete_resume(ctx);
