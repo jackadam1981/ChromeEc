@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "087f8107_3b425919",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-25T21:47:59Z",
+      "side": 1,
+      "message": "I think the function returns EC_ERROR_ACCESS_DENIED in that case, right? If yes, it\u0027s better to test the return value explicitly since it\u0027s technically part of the API. Same for a few other calls",
+      "range": {
+        "startLine": 91,
+        "startChar": 60,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "97c86927093890bb33e482e4520494a2dc851c26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
