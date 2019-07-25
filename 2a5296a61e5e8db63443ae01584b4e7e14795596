@@ -68,6 +68,30 @@
       "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca8bf9f_29bd515f",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2019-07-25T04:21:11Z",
+      "side": 1,
+      "message": "set_charge_state() is defined as static so it can be called in charge_state_v2.c. Could I remove \u0027static\u0027 keyword?",
+      "parentUuid": "fbaad962_932a4181",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
