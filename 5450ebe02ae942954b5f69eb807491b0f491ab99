@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "120a66be_069619aa",
+        "filename": "board/kukui_scp/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-25T01:57:37Z",
+      "side": 1,
+      "message": "This is going to be a problem if we want WoV to work in S3.",
+      "revId": "5450ebe02ae942954b5f69eb807491b0f491ab99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
