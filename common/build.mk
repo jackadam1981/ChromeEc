@@ -255,3 +255,10 @@ $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a
 endif
 
 include $(_common_dir)fpsensor/build.mk
+<<<<<<< HEAD   (942b9f Revert "Reland "nocturne: Add doze support"")
+=======
+include $(_common_dir)usbc/build.mk
+
+include $(_common_dir)mock/build.mk
+common-y+=$(foreach m,$(mock-y),mock/$(m))
+>>>>>>> CHANGE (09d463 mock: Add mock structure for fuzzers and tests)
