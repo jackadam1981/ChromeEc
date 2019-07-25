@@ -55,6 +55,8 @@ extern uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
  * ciphered data.
  */
 extern uint8_t fp_enc_buffer[FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE];
+/* Salt used in derivation of encryption key and positive match secret. */
+extern uint8_t fp_encryption_salt[FP_MAX_FINGER_COUNT][FP_CONTEXT_SALT_BYTES];
 /* Number of used templates */
 extern uint32_t templ_valid;
 /* Bitmap of the templates with local modifications */
