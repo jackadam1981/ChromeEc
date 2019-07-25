@@ -419,6 +419,9 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		rand_bytes(enc_info->salt, FP_CONTEXT_SALT_BYTES);
 		exit_trng();
 
+		memcpy(fp_encryption_salt[fgr], enc_info->salt,
+		       sizeof(fp_encryption_salt[0]));
+
 		ret = derive_encryption_key(key, enc_info->salt);
 		if (ret != EC_SUCCESS) {
 			CPRINTS("fgr%d: Failed to derive key", fgr);
