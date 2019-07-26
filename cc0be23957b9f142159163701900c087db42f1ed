@@ -22,6 +22,30 @@
       "revId": "cc0be23957b9f142159163701900c087db42f1ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406f7d77_8513eae7",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2019-07-26T02:00:37Z",
+      "side": 1,
+      "message": "Currently we don\u0027t have any action to handle sku_id \u003d 0.\nShould we do anything if we get this?",
+      "parentUuid": "8c7467ee_536fe1ca",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 59
+      },
+      "revId": "cc0be23957b9f142159163701900c087db42f1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
