@@ -287,3 +287,25 @@ uint8_t board_set_battery_level_shutdown(void)
 	/* Cut off at 5% */
 	return 6;
 }
+
+enum critical_shutdown board_system_is_idle(uint64_t last_shutdown_time,
+					    uint64_t *target, uint64_t now)
+{
+	if (now < *target)
+		/* It's not idle yet */
+		return CRITICAL_SHUTDOWN_IGNORE;
+	/*
+	 * We're idle. We check soc, and
+	 *
+	 *   1. if it's above 25%, EC does Pseudo G3
+	 *   2. if it's below 25%, EC does deep sleep
+	 *
+	 * In case 1, EC never wakes up but according to our power measurement,
+	 * PG3 should give us more than 90 days with 25% battery.
+	 *
+	 * In case 2, system consumes more power but EC eventually will cut off
+	 * a battery (at 5%).
+	 */
+	return charge_get_percent() >= 25 ?
+			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
+}
