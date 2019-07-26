@@ -92,6 +92,13 @@ int charger_profile_override(struct charge_state_data *curr)
 	bat_temp_c = curr->batt.temperature - 2731;
 
 	/*
+	 * Precharge must be executed when communication is failed on
+	 * dead battery.
+	 */
+	if(!(curr->batt.flags & BATT_FLAG_RESPONSIVE))
+		return 0;
+
+	/*
 	 * If the temperature reading is bad, assume the temperature
 	 * is out of allowable range.
 	 */
