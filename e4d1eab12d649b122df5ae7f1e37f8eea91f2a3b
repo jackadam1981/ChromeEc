@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97820d5a_83c51548",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-26T17:53:01Z",
+      "side": 1,
+      "message": "These reads are slow, you can move this out of the loop and read in pieces. See http://cs/chromeos_public/src/platform/ec/driver/accelgyro_lsm6dsm.c?l\u003d478 for reference.",
+      "revId": "e4d1eab12d649b122df5ae7f1e37f8eea91f2a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a909b1a_08f26f49",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-26T17:53:01Z",
+      "side": 1,
+      "message": "Before returning, you should check that there are no samples. We\u0027ve run into this with the lsm6dsm before:\n1. Check status register, get N readings\n2. Read N readings\n3. While you were reading you got a new sample, this means that the interrupt never triggered and you missed updating last_interrupt_timestamp\n\nThe fix is to re-check the count. If you still have values, update the last_interrupt_timestamp and set the task event (basically a fake call to lis2dw12_interrupt). See http://cs/chromeos_public/src/platform/ec/driver/accelgyro_lsm6dsm.c?l\u003d496 for reference.",
+      "revId": "e4d1eab12d649b122df5ae7f1e37f8eea91f2a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ecc003e_85db49bf",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-26T17:53:01Z",
+      "side": 1,
+      "message": "Remove, optimizer will remove the function if not used",
+      "revId": "e4d1eab12d649b122df5ae7f1e37f8eea91f2a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4afb3e97_2a5f963b",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-26T17:53:01Z",
+      "side": 1,
+      "message": "FIFO_THRES is used to trigger the motion_sense wake up event. Watermarks should be set at 1 like all the other sensors.",
+      "range": {
+        "startLine": 111,
+        "startChar": 10,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "e4d1eab12d649b122df5ae7f1e37f8eea91f2a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94af34b7_c214e0d2",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2019-07-26T17:53:01Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_ACCEL_INTERRUPTS))",
+      "range": {
+        "startLine": 465,
+        "startChar": 7,
+        "endLine": 465,
+        "endChar": 30
+      },
+      "revId": "e4d1eab12d649b122df5ae7f1e37f8eea91f2a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
