@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd416944_13da039e",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-26T08:42:17Z",
+      "side": 1,
+      "message": "want to shorten the variable names (or existing code is easily greater than 80 columns)\n\nbad idea?",
+      "parentUuid": "e9e12c45_80888ed3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b9e8cef_77f964eb",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -179,6 +203,47 @@
     },
     {
       "key": {
+        "uuid": "a87dcfd8_23bc08f0",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-26T08:42:17Z",
+      "side": 1,
+      "message": "It is a bad and confused optimization.  I should fix it.\n\n\nwp is moved by:\n- wov task (i.e. itself)\n- host command task: when change from enable to disable\n\nI thought if WoV disabled, it should have no side effect to execute the following code.\n\n\nBut after re-thinking it again, there is an edge case: if wov disabled, and the wov task is going to \"task_wait_event(-1)\", it is possible wov task will never wake-up (may depend on the underlying chip design).\n\nIf we wake up wov task when change from disable to enable, it could mitigate...",
+      "parentUuid": "9989ef31_46d21c36",
+      "range": {
+        "startLine": 285,
+        "startChar": 41,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ba0ced_1b9e775a",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-26T08:42:17Z",
+      "side": 1,
+      "message": "can be remove, old comment",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e29a0e5b_13a0b354",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -213,6 +278,24 @@
       "writtenOn": "2019-07-26T07:50:19Z",
       "side": 1,
       "message": "err, no, task_wait_event  here too.\n\nAnd wake the task when you enable wov.",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec447cc_2b337ee8",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-26T08:42:17Z",
+      "side": 1,
+      "message": "no, cannot task_wait_event() here\n\nwov task tries to read from chip as soon as possible when wov enabling\n\n\nI guess we will need to separate \"enabled\" and \"disabled\" cases here.  If wov disabled, wov task can task_wait_event() until wov enabled.",
+      "parentUuid": "3256938d_39180546",
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
