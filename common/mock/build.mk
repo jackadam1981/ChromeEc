@@ -4,5 +4,5 @@
 
 # See common/mock/README.md for more information.
 
-# Example:
-# mock-$(HAS_MOCK_ROLLBACK) += rollback_mock.o
+mock-$(HAS_MOCK_ROLLBACK) += rollback_mock.o
+
