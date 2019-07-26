@@ -23,6 +23,7 @@
 
 #if defined(HAVE_PRIVATE) && !defined(TEST_BUILD)
 #define HAVE_FP_PRIVATE_DRIVER
+/* Include the device specific header file */
 #define PRIV_HEADER(header) STRINGIFY(header)
 #include PRIV_HEADER(FP_SENSOR_PRIVATE)
 #else
@@ -34,6 +35,12 @@
 #define FP_MAX_FINGER_COUNT 5
 #endif
 #define FP_POSITIVE_MATCH_SECRET_BYTES 32
+
+#ifdef TEST_BUILD
+/* This represents the mock of the private */
+#define HAVE_FP_PRIVATE_DRIVER
+#endif
+
 #define SBP_ENC_KEY_LEN 16
 #define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
 	(FP_ALGORITHM_TEMPLATE_SIZE + \
