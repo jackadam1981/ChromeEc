@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include <stdbool.h>
 
 #include "aes.h"
 #include "aes-gcm.h"
@@ -9,7 +10,6 @@
 #include "fpsensor_private.h"
 #include "fpsensor_state.h"
 #include "rollback.h"
-#include "sha256.h"
 
 #if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM) || \
 	!defined(CONFIG_ROLLBACK_SECRET_SIZE)
@@ -86,6 +86,61 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	memcpy(out_key, key_buf, out_key_size);
 	always_memset(key_buf, 0, sizeof(key_buf));
 
+	return EC_SUCCESS;
+}
+
+int hkdf_expand(uint8_t *out_key, size_t out_key_size, const uint8_t *prk,
+		size_t prk_size, const uint8_t *info, size_t info_size)
+{
+	/*
+	 * "Expand" step of HKDF.
+	 * https://tools.ietf.org/html/rfc5869#section-2.2
+	 */
+	uint8_t count = 1;
+	const uint8_t *T = out_key;
+	size_t T_len = 0;
+	uint8_t T_buffer[SHA256_DIGEST_SIZE];
+	const uint32_t num_blocks = (out_key_size / SHA256_DIGEST_SIZE) +
+		(out_key_size % SHA256_DIGEST_SIZE ? 1 : 0);
+	uint8_t info_buffer[SHA256_DIGEST_SIZE + HKDF_MAX_INFO_SIZE + 1];
+	bool arguments_valid = false;
+
+	if (out_key == NULL || out_key_size == 0)
+		CPRINTS("HKDF expand: output buffer not valid.");
+	else if (prk == NULL)
+		CPRINTS("HKDF expand: prk is NULL.");
+	else if (info == NULL && info_size > 0)
+		CPRINTS("HKDF expand: info is NULL but info size is not zero.");
+	else if (info_size > HKDF_MAX_INFO_SIZE)
+		CPRINTF("HKDF expand: info size larger than %d bytes.\n",
+			HKDF_MAX_INFO_SIZE);
+	else if (num_blocks > HKDF_SHA256_MAX_BLOCK_COUNT)
+		CPRINTS("HKDF expand: output key size too large.");
+	else
+		arguments_valid = true;
+
+	if (!arguments_valid)
+		return EC_ERROR_INVAL;
+
+	while (out_key_size > 0) {
+		const size_t block_size = out_key_size < SHA256_DIGEST_SIZE ?
+			out_key_size : SHA256_DIGEST_SIZE;
+
+		memcpy(info_buffer, T, T_len);
+		memcpy(info_buffer + T_len, info, info_size);
+		info_buffer[T_len + info_size] = count;
+		hmac_SHA256(T_buffer, prk, prk_size, info_buffer,
+			    T_len + info_size + 1);
+		memcpy(out_key, T_buffer, block_size);
+
+		T += T_len;
+		T_len = SHA256_DIGEST_SIZE;
+		count++;
+		out_key += block_size;
+		out_key_size -= block_size;
+	}
+	always_memset(T_buffer, 0, sizeof(T_buffer));
+	always_memset(info_buffer, 0, sizeof(info_buffer));
 	return EC_SUCCESS;
 }
 
