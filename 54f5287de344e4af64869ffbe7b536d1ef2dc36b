@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "082dc3dd_8c5c41fc",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-26T14:35:26Z",
+      "side": 1,
+      "message": "val is a uint8_t, this condition will never be true.",
+      "range": {
+        "startLine": 359,
+        "startChar": 40,
+        "endLine": 359,
+        "endChar": 58
+      },
+      "revId": "54f5287de344e4af64869ffbe7b536d1ef2dc36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
