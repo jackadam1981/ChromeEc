@@ -188,6 +188,30 @@
       "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e50b5a28_82f867f3",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-26T22:41:11Z",
+      "side": 1,
+      "message": "Ah okay. Thanks for checking the details Jett!",
+      "parentUuid": "c3daf23c_655ce389",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "2a5296a61e5e8db63443ae01584b4e7e14795596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
