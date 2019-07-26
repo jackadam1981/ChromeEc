@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e9cdef0_bae11326",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-26T17:35:56Z",
+      "side": 1,
+      "message": "These ports look off for keyboard scan masks",
+      "revId": "e3534ef13af42ffd2a627ae0ddb620ab4f161a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6c0eb3_27c21f23",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-26T17:35:56Z",
+      "side": 1,
+      "message": "Do you need to add KSO_13 to this one?",
+      "revId": "e3534ef13af42ffd2a627ae0ddb620ab4f161a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
