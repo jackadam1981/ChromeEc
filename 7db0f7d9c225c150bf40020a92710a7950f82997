@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3f1bbaa_98642a2f",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 85,
+        "startChar": 34,
+        "endLine": 85,
+        "endChar": 37
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30db2820_e03af691",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "Since it\u0027s relatively generic (afaict the only \"hardcoded\" thing is we\u0027re using HMAC-SHA256) would it make sense to move this function somewhere else? In a standalone file maybe?\nOpen question :-)",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54717fc3_22c6e920",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 86,
+        "startChar": 37,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881fa269_006bb52d",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 5
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83576bf2_afc71d1e",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 4
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d2306f_080591de",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 9
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c0c7e2_a04069d1",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "Can you avoid using variable-length arrays? The kernel is removing them (https://lwn.net/Articles/749064/).",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f83b730_7b73436a",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3abd143_2af628e8",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "info_buffer[T_len + info_size] \u003d count ?",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 53
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f059ead_5ed50df7",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "nit: ++",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "745850e2_cc15eaa3",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "I\u0027d use an explicit local pointer rather than the argument of the function.\n\nI\u0027m less picky about integers (out_key_size) somehow, but you may consider using a local copy explicitly too",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a565d654_0e76a1c2",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T16:25:10Z",
+      "side": 1,
+      "message": "Can you also test the validation of the function arguments?",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "7db0f7d9c225c150bf40020a92710a7950f82997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
