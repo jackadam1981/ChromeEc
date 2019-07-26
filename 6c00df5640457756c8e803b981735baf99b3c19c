@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "651d97da_9b5a048d",
+        "filename": "common/fpsensor/fpsensor_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-26T15:55:06Z",
+      "side": 1,
+      "message": "Can you clear it in fp_clear_finger_context()?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "6c00df5640457756c8e803b981735baf99b3c19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
