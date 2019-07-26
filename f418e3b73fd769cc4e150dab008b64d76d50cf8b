@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9e12c45_80888ed3",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9e8cef_77f964eb",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "If you want to be a bit more safe, can you blank the whole audio_codec_wov_lang_buf_addr region to 0 when pp-\u003eoffset \u003d\u003d 0?",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66290e85_016f7bfb",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "well that\u0027s not really that the parameter is invalid... Is there a better error code you can use?",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f84e869_06696120",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "I would also check that the rest of the audio_codec_wov_lang_buf is blank for extra security (we don\u0027t want \"code\" to be left there.",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02dcf065_72563fc1",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a294707e_0d02299d",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "ditto about checking blank",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72384aae_6f6fcff2",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "sizeof",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004616e8_39a04643",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "You can simplify this a tiny bit.\n\nif ()\n  rlen \u003d audio_buf_wp - audio_buf_rp;\nelse\n  rlen \u003d AUDIO_CODEC_WOV_AUDIO_BUF_LEN - audio_buf_rp;\n\nr-\u003elen \u003d MIN(sizeof(r-\u003ebuf), rlen);",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9989ef31_46d21c36",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "should this be locked, too?",
+      "range": {
+        "startLine": 285,
+        "startChar": 41,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29a0e5b_13a0b354",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "why is this not locked?",
+      "range": {
+        "startLine": 289,
+        "startChar": 31,
+        "endLine": 289,
+        "endChar": 43
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3256938d_39180546",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-26T07:50:19Z",
+      "side": 1,
+      "message": "err, no, task_wait_event  here too.\n\nAnd wake the task when you enable wov.",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
