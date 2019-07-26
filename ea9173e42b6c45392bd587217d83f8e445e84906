@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "db9facea_ef064cb5",
+        "filename": "common/build.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-26T07:00:35Z",
+      "side": 1,
+      "message": "I found it (really some magic..)",
+      "parentUuid": "a3e38d4c_9ff87743",
+      "range": {
+        "startLine": 33,
+        "startChar": 52,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19203dc6_af9921db",
         "filename": "include/ec_commands.h",
         "patchSetId": 26
@@ -258,6 +282,30 @@
       "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb78e950_007b8908",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 4744,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-26T07:00:35Z",
+      "side": 1,
+      "message": "Gotcha.\n\nAnd yes, language model is code.  We keep using sha256 here.",
+      "parentUuid": "d37e2828_ba8a35ab",
+      "range": {
+        "startLine": 4744,
+        "startChar": 0,
+        "endLine": 4744,
+        "endChar": 20
+      },
+      "revId": "ea9173e42b6c45392bd587217d83f8e445e84906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
