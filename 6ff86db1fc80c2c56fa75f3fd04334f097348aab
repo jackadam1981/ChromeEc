@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c3471c73_e94461e7",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2e2b23_c66e0e9b",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d29bf98_2cbe791d",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -285,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "e64bbe40_d70865e7",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "To declare the data initial value to 0, if the call fails, it will return 0.",
+      "parentUuid": "57900d06_675e0276",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e86c00a_8f8fb2ab",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -344,6 +392,30 @@
       "side": 1,
       "message": "What do you mean? I still see the same.",
       "parentUuid": "867d586a_fa9ff3bd",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7c561d_1f14ada3",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "In patch 16 I have modified it to \"~data\", but found a problem as follows, patch 17 has changed back.\n\nIf return data uses \"~data\", the data will be 0xffffff00(data type is INT) to return in initial state. There will cause that KSI signal presents continued.",
+      "parentUuid": "0a92eb63_6e35c83c",
       "range": {
         "startLine": 138,
         "startChar": 8,

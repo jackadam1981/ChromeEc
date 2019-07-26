@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "ccbcb8a9_e7f7c243",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acf0aeef_fce1d504",
+      "range": {
+        "startLine": 65,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a957b2f8_51e2c5c5",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda3eaf8_93d59637",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 49
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e6b3839_615d17d5",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 18
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-25T17:28:26Z",
       "side": 1,
       "message": "You\u0027d better print something before returning.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80c80b1_ade23b94",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e6b3839_615d17d5",
       "range": {
         "startLine": 80,
         "startChar": 2,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b2e51e15_d1de9ff4",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "This is different from it. One is for \"IT8801_REG_KSIIER\" to enable the interrupt of KSI and \nthe other is for \"IT8801_REG_KSIEER\" to write clear of keyboard scan in edge event.",
+      "parentUuid": "84cbd5c8_27fa4cec",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 44
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9751ea54_6e0dd782",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 18
@@ -105,6 +201,30 @@
       "writtenOn": "2019-07-25T17:28:26Z",
       "side": 1,
       "message": "can you join the lines?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c2e800_cec18104",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9751ea54_6e0dd782",
       "range": {
         "startLine": 111,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c8efe8a5_597063a9",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99e47b7_b043017e",
+      "range": {
+        "startLine": 118,
+        "startChar": 40,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faab894c_13c9dc64",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 18
@@ -160,6 +304,30 @@
       "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cec1c6f_8719fe5a",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T06:33:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "faab894c_13c9dc64",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
