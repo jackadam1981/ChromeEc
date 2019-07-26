@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b7f1209_c416aa48",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-26T17:47:33Z",
+      "side": 1,
+      "message": "Please remove it and similar ones above APIs.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5033a516_71942861",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-26T17:47:33Z",
+      "side": 1,
+      "message": "You probably want CPRINTS.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfbe61e_1e9bd720",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-26T17:47:33Z",
+      "side": 1,
+      "message": "Please join the lines.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 33
+      },
+      "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd9e569a_b103412c",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 19
@@ -42,6 +111,29 @@
         "startChar": 4,
         "endLine": 173,
         "endChar": 39
+      },
+      "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e73322_343ec1b1",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-26T17:47:33Z",
+      "side": 1,
+      "message": "You\u0027re picking a random value from the stack.",
+      "range": {
+        "startLine": 173,
+        "startChar": 12,
+        "endLine": 173,
+        "endChar": 13
       },
       "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
