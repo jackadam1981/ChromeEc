@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd9e569a_b103412c",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-26T07:39:46Z",
+      "side": 1,
+      "message": "In this state, the current action is not correct. Now, I am looking for a method to pull low output of selected kso_val and KSO[2] at same time.",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 39
+      },
+      "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
