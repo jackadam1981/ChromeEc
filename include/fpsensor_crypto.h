@@ -9,6 +9,20 @@
 #define __CROS_EC_FPSENSOR_CRYPTO_H
 
 /**
+ * Expand hkdf pseudorandom key |prk| to length |out_key_size|.
+ *
+ * @param out_key the buffer to hold output key material.
+ * @param out_key_size length of output key in bytes.
+ * @param prk pseudorandom key.
+ * @param prk_size length of |prk| in bytes.
+ * @param info optional context.
+ * @param info_size size of |info| in bytes.
+ * @return EC_SUCCESS on success and error code otherwise.
+ */
+int hkdf_expand(uint8_t *out_key, int out_key_size, const uint8_t *prk,
+		int prk_size, const uint8_t *info, int info_size);
+
+/**
  * Derive hardware encryption key from rollback secret and |salt|.
  *
  * @param outkey the pointer to buffer holding the output key.

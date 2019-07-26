@@ -82,6 +82,47 @@ static int hkdf_expand_one_step(uint8_t *out_key, size_t out_key_size,
 	return EC_SUCCESS;
 }
 
+int hkdf_expand(uint8_t *out_key, int out_key_size, const uint8_t *prk,
+		int prk_size, const uint8_t *info, int info_size)
+{
+	uint8_t count = 1;
+	const uint8_t *T = out_key;
+	int T_len = 0;
+	uint8_t T_buffer[SHA256_DIGEST_SIZE] = { 0 };
+	uint32_t num_blocks = (out_key_size / SHA256_DIGEST_SIZE) +
+		(out_key_size % SHA256_DIGEST_SIZE ? 1 : 0);
+	uint8_t info_buffer[SHA256_DIGEST_SIZE + info_size + 1];
+
+	if (out_key == NULL || out_key_size == 0)
+		return EC_ERROR_INVAL;
+	if (prk == NULL)
+		return EC_ERROR_INVAL;
+	if (info == NULL && info_size > 0)
+		return EC_ERROR_INVAL;
+	if (num_blocks > 255)
+		return EC_ERROR_INVAL;
+
+	while (out_key_size > 0) {
+		const int block_size = out_key_size < SHA256_DIGEST_SIZE ?
+			out_key_size : SHA256_DIGEST_SIZE;
+
+		memset(info_buffer, 0, sizeof(info_buffer));
+		memcpy(info_buffer, T, T_len);
+		memcpy(info_buffer + T_len, info, info_size);
+		memcpy(info_buffer + T_len + info_size, &count, 1);
+		hmac_SHA256(T_buffer, prk, prk_size, info_buffer,
+			    T_len + info_size + 1);
+		memcpy(out_key, T_buffer, block_size);
+
+		T += T_len;
+		T_len = SHA256_DIGEST_SIZE;
+		count += 1;
+		out_key += block_size;
+		out_key_size -= block_size;
+	}
+	return EC_SUCCESS;
+}
+
 int derive_encryption_key(uint8_t *out_key, const uint8_t *salt)
 {
 	int ret;
