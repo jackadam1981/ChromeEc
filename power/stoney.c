@@ -75,6 +75,13 @@ void chipset_throttle_cpu(int throttle)
 		gpio_set_level(GPIO_CPU_PROCHOT, throttle);
 }
 
+#ifdef CONFIG_HOSTCMD_ESPI
+/* TODO: Create the real chipset_handle_espi_reset_assert function */
+void chipset_handle_espi_reset_assert(void)
+{
+}
+#endif /* CONFIG_HOSTCMD_ESPI */
+
 enum power_state power_chipset_init(void)
 {
 	/* Pause in S5 when shutting down. */
