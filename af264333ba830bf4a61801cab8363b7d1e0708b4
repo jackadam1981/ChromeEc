@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cbb501d_7b11714a",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-27T01:31:50Z",
+      "side": 1,
+      "message": "Indicates that disabled in a one way: only a EC reboot will re-enable tablet mode.",
+      "revId": "af264333ba830bf4a61801cab8363b7d1e0708b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
