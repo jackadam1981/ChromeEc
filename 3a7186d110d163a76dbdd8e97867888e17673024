@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "600f4f53_e5775884",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-27T21:29:24Z",
+      "side": 1,
+      "message": "Use SENSOR_APPLY_SCALE instead. We just need to cat to uint64_t to avoid overflow:\n#define SENSOR_APPLY_SCALE(_input, _scale) \\                                                                                   \n        (((_input) * (uint64_t)(_scale)) / MOTION_SENSE_DEFAULT_SCALE)",
+      "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1603696_3676b07b",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-27T21:29:24Z",
+      "side": 1,
+      "message": "k_channel_scale is only used once, in tcs3400_process_raw_data.\nLeave is as a scale_t (see CL: ), no need to convert to fp_t.",
+      "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89816b07_f9cce77d",
+        "filename": "include/config.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2019-07-27T21:29:24Z",
+      "side": 1,
+      "message": "s/XLATE/TRANSLATE/",
+      "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
