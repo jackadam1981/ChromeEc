@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1458011f_3ed21af9",
+        "filename": "chip/host/trng.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T01:15:01Z",
+      "side": 1,
+      "message": "Can you add a compilation failure if it\u0027s not a test, maybe with TEST_BUILD unset or something like that? So this implementation doesn\u0027t accidentally end up included in a build?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "dca00fcd76546d28f64dfc805c548d9fb34a7ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
