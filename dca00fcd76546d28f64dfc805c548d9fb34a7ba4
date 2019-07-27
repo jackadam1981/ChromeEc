@@ -22,6 +22,30 @@
       "revId": "dca00fcd76546d28f64dfc805c548d9fb34a7ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def0c9e9_113826a6",
+        "filename": "chip/host/trng.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-27T02:36:29Z",
+      "side": 1,
+      "message": "That\u0027s reasonable. Checkout crrev.com/c/1722182",
+      "parentUuid": "1458011f_3ed21af9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "dca00fcd76546d28f64dfc805c548d9fb34a7ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
