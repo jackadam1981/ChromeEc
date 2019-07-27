@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ada9067e_b16766be",
+        "filename": "common/build.mk",
+        "patchSetId": 23
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2019-07-27T07:02:16Z",
+      "side": 1,
+      "message": "+1 on Daisuke\u0027s comment on developer involvement. USB-C can be a pretty steep wall. I think one of the beautiful things about Sam\u0027s stack is how readable it is to a layperson such as myself.\n\nHowever I also agree with Sam that the names are explicit (i.e. \"PRL_\" and \"PE_\" are clear signifiers to Ctrl+F to specific pages from the spec.\n\nWould it be inappropriate to suggest a balance by merely including #comments with plain English description like at Line #185?",
+      "parentUuid": "49092157_b9bf3514",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 51
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f792b1ea_17b07078",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 23
