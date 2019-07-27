@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab379c1_44f3e049",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "nit: naming. Can you add HKDF, maybe HKDF_MAX_INFO_SIZE? And maybe a short comment?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b34af9_d842ebd2",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "Can you clear this buffer once you\u0027re done with the computation?",
+      "range": {
+        "startLine": 92,
+        "startChar": 9,
+        "endLine": 92,
+        "endChar": 17
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd5542a_4069b522",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "Can you clear this buffer at the end too?",
+      "range": {
+        "startLine": 95,
+        "startChar": 9,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acdfe51_fe9c6650",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "Can you add logs to those error cases? They shouldn\u0027t happen, so it\u0027s nice to catch the programming error :-)",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eb1a06e_d65e9a3d",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "That memset is not required, I think?",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 46
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325f85e9_98ec0b25",
+        "filename": "include/fpsensor_crypto.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "Can you mention the maximum size?",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe7f62e_604b418e",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "size_t (same for other arguments)",
+      "range": {
+        "startLine": 78,
+        "startChar": 52,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf736917_7be42ea2",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-27T00:43:11Z",
+      "side": 1,
+      "message": "You\u0027re missing test case #3 I think?",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "904a81aaae664399edae868ccc255df52293956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
