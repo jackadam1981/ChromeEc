@@ -200,6 +200,11 @@ buildalltests: | $(FAILED_BOARDS_DIR)
 	$(MAKE) try_build_tests
 	@echo "$@ completed successfully!"
 
+# The showboards target is used for scripts. Please don't delete it.
+.PHONY: showboards
+showboards:
+	@echo $(sort $(boards))
+
 .PHONY: print-boards
 print-boards:
 	$(call cmd_pretty_print_list,\
