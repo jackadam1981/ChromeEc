@@ -255,3 +255,8 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+void empty_task(void* u)
+{
+	while (1) task_wait_event(-1);
+}
