@@ -34,6 +34,24 @@
       "revId": "d65c321db891b4da75e44417882fff56d906918b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e26f68_95dbeec4",
+        "filename": "board/trembyle/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-29T19:51:28Z",
+      "side": 1,
+      "message": "there are a couple of things checkpatch has complained about that I have not agreed with... this is definitely one of them.  Thanks for telling me what this statement is doing.",
+      "parentUuid": "2e1e379e_ffe7a3ef",
+      "revId": "d65c321db891b4da75e44417882fff56d906918b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
