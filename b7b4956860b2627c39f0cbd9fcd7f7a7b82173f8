@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df4ad346_98218b08",
+        "filename": "board/meep/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-07-29T10:21:24Z",
+      "side": 1,
+      "message": "We might want to keep the terminology consistent so the model here in ChromeOS means a device / project in uni-build v1. Suggest to still use SKUs instead of models.",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 10
+      },
+      "revId": "b7b4956860b2627c39f0cbd9fcd7f7a7b82173f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2bfd7a_651e8073",
+        "filename": "board/meep/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2019-07-29T10:21:24Z",
+      "side": 1,
+      "message": "\"return (flags0 \u0026 ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));\" is enough but not that matter.",
+      "revId": "b7b4956860b2627c39f0cbd9fcd7f7a7b82173f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
