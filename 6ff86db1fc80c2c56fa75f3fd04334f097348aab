@@ -333,6 +333,29 @@
     },
     {
       "key": {
+        "uuid": "2bff08f2_93191125",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-29T16:20:36Z",
+      "side": 1,
+      "message": "This one too. You\u0027re writing a random value to IT8801_REG_KSIEER if this read fails.",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e86c00a_8f8fb2ab",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -440,6 +463,30 @@
       "side": 1,
       "message": "Can you do \u0027uint8_t data \u003d 0\u0027, then? it8801_read8/write8 should take uint8_t.",
       "parentUuid": "aa7c561d_1f14ada3",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddc1fad_7a1698f6",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-29T16:20:36Z",
+      "side": 1,
+      "message": "what about this?",
+      "parentUuid": "5d6eabe4_8fc1af2c",
       "range": {
         "startLine": 138,
         "startChar": 8,

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2f24793_f5ba21ed",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-29T16:20:36Z",
+      "side": 1,
+      "message": "I see you remove it here but there are more below. Please remove all redundant descriptions like this from the APIs.",
+      "parentUuid": "7b7f1209_c416aa48",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "835392475c12cdf5a461e2525ae03eab441ea496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5033a516_71942861",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 19
