@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe7eea59_f78f1796",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281be7a8_a93f3a4a",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6005c6d_8cdea49d",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 10
@@ -69,6 +93,30 @@
       "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11be22ce_4b71b2b6",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Okay utils.c also has non-standard functions, I\u0027m putting this one there.",
+      "parentUuid": "a41cbf45_2e15aa40",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +166,54 @@
     },
     {
       "key": {
+        "uuid": "9409edf0_8d5f82e6",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1efc08c8_4be28d23",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 24
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2aeaa04_c00d4463",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "325e1703_95670715",
+      "range": {
+        "startLine": 160,
+        "startChar": 9,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4096f4ec_1c2d4ba4",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 10
@@ -138,6 +234,30 @@
       "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daaee9eb_b9b0bab5",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4096f4ec_1c2d4ba4",
+      "range": {
+        "startLine": 179,
+        "startChar": 2,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "ed1b6292_0c7d5b97",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Done. See the new test function below.",
+      "parentUuid": "d202eddc_245de16f",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 50
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b36237dc_9954df0f",
         "filename": "test/fpsensor.c",
         "patchSetId": 10
@@ -184,6 +328,30 @@
       "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b219d654_f80e10c8",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b36237dc_9954df0f",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 17
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "3a447814_0b681975",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "As discussed offline, replaced with known bytes.",
+      "parentUuid": "8b4fe73e_d03b9046",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 38
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6984dfef_850a739d",
         "filename": "test/fpsensor.c",
         "patchSetId": 10
@@ -230,6 +422,30 @@
       "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f883a459_8a5a2e25",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T21:36:07Z",
+      "side": 1,
+      "message": "This was to clear fp_encryption_salt[0] to ensure statelessness. Now using a local salt instead.",
+      "parentUuid": "6984dfef_850a739d",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 17
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
