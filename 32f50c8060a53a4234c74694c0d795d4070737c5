@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b26fb85b_f012c09d",
+        "filename": "docs/fingerprint/write_protection.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2019-07-29T23:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23212bf8_14bf08a2",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "32f50c8060a53a4234c74694c0d795d4070737c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "201fa25d_0aaeda0a",
         "filename": "docs/sitemap.md",
         "patchSetId": 5
