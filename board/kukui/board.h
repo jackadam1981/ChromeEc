@@ -18,6 +18,7 @@
 
 #include "baseboard.h"
 
+#define CONFIG_USB_MUX_VIRTUAL
 #define CONFIG_VOLUME_BUTTONS
 
 /* Battery */
