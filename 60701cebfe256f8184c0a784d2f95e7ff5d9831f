@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c0ddf32c_b088c424",
+        "filename": "common/build.mk",
+        "patchSetId": 23
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-29T14:37:17Z",
+      "side": 1,
+      "message": "My idea was to make it easy for anyone to map these files to the proper TypeC/PD spec as described in the design doc.",
+      "parentUuid": "ada9067e_b16766be",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 51
+      },
+      "revId": "60701cebfe256f8184c0a784d2f95e7ff5d9831f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f792b1ea_17b07078",
         "filename": "common/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 23
