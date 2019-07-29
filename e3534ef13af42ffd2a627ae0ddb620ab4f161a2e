@@ -51,6 +51,24 @@
       "revId": "e3534ef13af42ffd2a627ae0ddb620ab4f161a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16bc40f3_d629fd9a",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-29T19:24:51Z",
+      "side": 1,
+      "message": "Will create bug to fix up keyboard matrix details.",
+      "parentUuid": "5d6c0eb3_27c21f23",
+      "revId": "e3534ef13af42ffd2a627ae0ddb620ab4f161a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
