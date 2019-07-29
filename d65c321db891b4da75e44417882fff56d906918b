@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0702588d_916f6901",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-29T20:48:15Z",
+      "side": 1,
+      "message": "I\u0027ll try it, did anyone else yet?",
+      "parentUuid": "f46b1a55_ede0d50f",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "d65c321db891b4da75e44417882fff56d906918b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6851f726_1abca58f",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-29T20:29:37Z",
       "side": 1,
       "message": "This isn\u0027t accurate - when using the [PWM_CH_KBLIGHT] designator, order in the array doesn\u0027t matter.",
+      "range": {
+        "startLine": 88,
+        "startChar": 17,
+        "endLine": 88,
+        "endChar": 73
+      },
+      "revId": "d65c321db891b4da75e44417882fff56d906918b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c78528_4de1d317",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-29T20:48:15Z",
+      "side": 1,
+      "message": "True, will delete comment.",
+      "parentUuid": "6851f726_1abca58f",
       "range": {
         "startLine": 88,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7a216d70_6a7c3882",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-29T20:48:15Z",
+      "side": 1,
+      "message": "Yup, will move.",
+      "parentUuid": "e409b746_704ca84c",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "d65c321db891b4da75e44417882fff56d906918b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "778bbb7a_3d2da1ce",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-29T20:29:37Z",
       "side": 1,
       "message": "Fan PWM?  Is this handled somewhere else or will it be added with another CL?",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "d65c321db891b4da75e44417882fff56d906918b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbad4891_e5178dbd",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-29T20:48:15Z",
+      "side": 1,
+      "message": "Will add as follow-on task.",
+      "parentUuid": "778bbb7a_3d2da1ce",
       "range": {
         "startLine": 198,
         "startChar": 0,
