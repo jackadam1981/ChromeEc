@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe63868e_932f7007",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2019-07-29T14:23:13Z",
+      "side": 1,
+      "message": "It would be useful for debugging to include the erroneous SKU value in this print statement.",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 28
+      },
+      "revId": "aaef44d03d097de0328623f07fea1ccac95413db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
