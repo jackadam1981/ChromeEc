@@ -22,6 +22,30 @@
       "revId": "261a5f242ba9388dea299212041978ae7f883186",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9842b0_9f3ac705",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-29T07:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d24b3f_ea95ff6a",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "261a5f242ba9388dea299212041978ae7f883186",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
