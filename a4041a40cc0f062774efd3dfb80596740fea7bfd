@@ -164,6 +164,30 @@
       "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2472407d_c0353688",
+        "filename": "fuzz/rollback_mock.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-29T20:23:32Z",
+      "side": 1,
+      "message": "Access to these controls will be needed by future test and fuzz CLs (in this chain).",
+      "parentUuid": "b0a33687_2828d1db",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "a4041a40cc0f062774efd3dfb80596740fea7bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
