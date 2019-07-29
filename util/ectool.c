@@ -4679,6 +4679,9 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_LPS22HB:
 			printf("lps22hb\n");
 			break;
+		case MOTIONSENSE_CHIP_LPS22HH:
+			printf("lps22hh\n");
+			break;
 		default:
 			printf("unknown\n");
 		}
