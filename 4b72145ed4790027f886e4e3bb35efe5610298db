@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "946d72e9_2c464759",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-29T23:34:07Z",
+      "side": 1,
+      "message": "Can you add a link here (crbug.com/984623)?",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "4b72145ed4790027f886e4e3bb35efe5610298db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "123aa28e_66609a4b",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
