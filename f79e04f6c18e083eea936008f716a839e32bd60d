@@ -22,6 +22,30 @@
       "revId": "f79e04f6c18e083eea936008f716a839e32bd60d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f4f3e6_912d2e22",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2019-07-29T15:06:35Z",
+      "side": 1,
+      "message": "I guarded it because the existing stoney code uses LPC for host command and zork uses eSPI. Don\u0027t know if it is required but shows the intent on this only being used when eSPI is enabled.",
+      "parentUuid": "436b09e5_d3f827be",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "f79e04f6c18e083eea936008f716a839e32bd60d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
