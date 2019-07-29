@@ -72,8 +72,15 @@ CFLAGS_TEST=$(if $(TEST_BUILD),-DTEST_BUILD=$(EMPTY) \
             $(if $(TEST_UBSAN),$(UBSAN_FLAGS)) \
             $(if $(TEST_FUZZ),-fsanitize=fuzzer-no-link \
                        -fno-experimental-new-pass-manager -DTEST_FUZZ=$(EMPTY))
+
+ifeq ($(cc-name),clang)
+CFLAGS_COVERAGE=$(if $(TEST_COVERAGE),-fprofile-instr-generate -fcoverage-mapping \
+				      -DTEST_COVERAGE=$(EMPTY),)
+else
 CFLAGS_COVERAGE=$(if $(TEST_COVERAGE),-fprofile-arcs -ftest-coverage \
 				      -DTEST_COVERAGE=$(EMPTY),)
+endif
+
 CFLAGS_DEFINE=-DOUTDIR=$(out)/$(BLD) -DCHIP=$(CHIP) -DBOARD_TASKFILE=$(_tsk_lst_file) \
               -DBOARD=$(BOARD) -DCORE=$(CORE) -DPROJECT=$(PROJECT) \
               -DCHIP_VARIANT=$(CHIP_VARIANT) -DCHIP_FAMILY=$(CHIP_FAMILY) \
@@ -140,11 +147,16 @@ ifneq (${SYSROOT},)
 endif
 LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
+ifeq ($(cc-name),clang)
+LDLAGS_COVERAGE:=-fprofile-instr-generate -fcoverage-mapping
+else
+LDLAGS_COVERAGE:=-fprofile-arcs
+endif
 BUILD_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
 		  -fuse-ld=bfd \
-		  $(if $(TEST_COVERAGE),-fprofile-arcs,) \
+		  $(if $(TEST_COVERAGE),$(LDLAGS_COVERAGE)) \
 		  $(if $(TEST_ASAN), -fsanitize=address) \
 		  $(if $(TEST_MSAN), -fsanitize=memory) \
 		  $(if $(TEST_UBSAN), ${UBSAN_FLAGS}) \
