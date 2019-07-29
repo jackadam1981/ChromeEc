@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a41cbf45_2e15aa40",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2019-07-29T18:27:50Z",
+      "side": 1,
+      "message": "I cannot put it in rollback.c because it will not be linked when running fpsensor unittest.\nI don\u0027t want to put it in common/fpsensor/ because it\u0027s weird to have rollback.c include a fpsensor header just for this funciton.\nI don\u0027t want to put it in common/util.c because that seems like a place for more standard C functions.\n\nWhere should I put this?",
+      "parentUuid": "e6005c6d_8cdea49d",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "fd3b4a446bfb4a7fa3e733c0e220dd2221d415fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "325e1703_95670715",
         "filename": "common/fpsensor/fpsensor_crypto.c",
         "patchSetId": 10
