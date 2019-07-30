@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b8a3ea3e_2d0aa769",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T12:03:38Z",
+      "side": 1,
+      "message": "No.  All SHMs should be statically allocated.  This function doesn\u0027t allocate anything (thus, we don\u0027t need release them), instead, it provides a method for \"chips\" and \"boards\" to fill their SHM details.",
+      "parentUuid": "cbe60a78_ce39eb04",
+      "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef4687d7_54a2c7f2",
         "filename": "include/audio_codec.h",
         "patchSetId": 17
@@ -33,6 +51,24 @@
       "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88534a6b_3ca3302a",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T12:03:38Z",
+      "side": 1,
+      "message": "audio_codec_translate_addr_ec_to_ap() defines the memory mapping from EC address space to AP address space.\n\nUsually, \"chips\" need to implement (define) the function if there are shared memory on system RAM.  Otherwise, linker errors.\n\nThis CL describes an abstract layer, won\u0027t know the mapping details.",
+      "parentUuid": "ef4687d7_54a2c7f2",
+      "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
