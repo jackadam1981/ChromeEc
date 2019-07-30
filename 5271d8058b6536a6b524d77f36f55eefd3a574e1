@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "57dc8237_48b7afb0",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-07-30T17:13:05Z",
+      "side": 1,
+      "message": "This looks correct to me.  Schematic indicates ADDR is pulled to GND, PI3USB9201 datasheet indicates this sets 7-bit address 0x5F.",
+      "parentUuid": "3dde7ed7_c1176740",
+      "revId": "5271d8058b6536a6b524d77f36f55eefd3a574e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19cfba7c_9fa0e844",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 4
