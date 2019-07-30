@@ -270,12 +270,16 @@ static void it83xx_enable_vconn(enum usbpd_port port, int enabled)
 				& ~USBPD_REG_MASK_DISCONNECT_POWER_CC1)
 				| USBPD_REG_MASK_DISCONNECT_POWER_CC2;
 		}
+		/* Enable receive SOP' packet */
+		IT83XX_USBPD_PDMSR(port) |= USBPD_REG_MASK_SOPP_ENABLE;
 	} else {
 		/* Enable cc1 and cc2 */
 		IT83XX_USBPD_CCCSR(port) &= ~0xaa;
 		IT83XX_USBPD_CCPSR(port) |=
 			(USBPD_REG_MASK_DISCONNECT_POWER_CC1 |
 			USBPD_REG_MASK_DISCONNECT_POWER_CC2);
+		/* Disable receive SOP' packet */
+		IT83XX_USBPD_PDMSR(port) &= ~USBPD_REG_MASK_SOPP_ENABLE;
 	}
 }
 
