@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6401f5_6d264ea9",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-07-30T15:37:49Z",
+      "side": 1,
+      "message": "Reserved only in proto, unlikely will be needed.\nIn fact we are thinking to repurpose it to be bitbang BATT_SDA",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b45fc0dd_1142f797",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-07-30T15:37:49Z",
+      "side": 1,
+      "message": "Reserved only in proto, unlikely will be needed.\nWe are thinking to repurpose it to be bitbang BATT_SCL",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313f65a8_628e50eb",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-07-30T15:37:49Z",
+      "side": 1,
+      "message": "Not sure why this is set this way, did I miss anything?\nMy understanding is that PB6 will serve as USB_C0_DISCHARGE in following phases, see b:137939749 and jacuzii EC pinmux table",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
