@@ -5,10 +5,12 @@
 
 #include "mock/rollback_mock.h"
 
+#include <stddef.h>
 #include <stdint.h>
 #include <string.h>
 
 #include "common.h"
+#include "util.h"
 
 struct mock_ctrl_rollback mock_ctrl_rollback = MOCK_CTRL_DEFAULT_ROLLBACK;
 
@@ -18,6 +20,14 @@ static const uint8_t fake_rollback_secret[] = {
 	0x86, 0x2a, 0x85, 0xd1, 0xca, 0x09, 0x54, 0x8a,
 	0x6b, 0xe2, 0xe3, 0x38, 0xde, 0x5d, 0x59, 0x14,
 };
+
+size_t mock_ctrl_fill_rollback(const uint8_t *data, size_t size)
+{
+	size_t copy_size = MIN(sizeof(mock_ctrl_rollback), size);
+
+	memcpy(&mock_ctrl_rollback, data, copy_size);
+	return copy_size;
+}
 
 /* Mock the rollback for unit or fuzz tests. */
 int rollback_get_secret(uint8_t *secret)
