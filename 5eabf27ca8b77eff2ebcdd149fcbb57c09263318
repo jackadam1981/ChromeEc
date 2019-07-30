@@ -46,6 +46,30 @@
       "revId": "5eabf27ca8b77eff2ebcdd149fcbb57c09263318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7226a86a_2c94f9b0",
+        "filename": "common/mock/rollback_mock.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-30T22:02:49Z",
+      "side": 1,
+      "message": "Right.\n\nOriginally I was thinking it would be nice to allow people to override individual functions, but I think it would be better to have people modify the core mock instead.\nPlus, you don\u0027t want to run into the scenario where all function definitions are \"weak\".",
+      "parentUuid": "28ac20ff_3e3f83b7",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "5eabf27ca8b77eff2ebcdd149fcbb57c09263318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
