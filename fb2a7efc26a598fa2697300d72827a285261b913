@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c95929a6_495c4505",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-07-30T18:06:13Z",
+      "side": 1,
+      "message": "nit: Not really never entered right ? Even if the system has entered S0iX, power/common.c has a deffered task that resets wake mask to 0 after 5msecs of  SYS_SLEEP_S0IX being deasserted right ? Or Am I missing something ?",
+      "range": {
+        "startLine": 274,
+        "startChar": 31,
+        "endLine": 274,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2e93d60_21302130",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-07-30T18:06:13Z",
+      "side": 1,
+      "message": "What if the host has set a active wake mask during boot ? Are you not overwriting it and break it ? Or we dont really care about supporting that use case ?",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
