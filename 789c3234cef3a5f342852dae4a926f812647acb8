@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "3327c9db_bbf2226e",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-07-30T11:23:45Z",
+      "side": 1,
+      "message": "Schematic netname: SPI_AP_EC_CS_L",
+      "parentUuid": "cd86a1f4_f0af8b3c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86aa1690_b9700d84",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 34
@@ -351,6 +375,30 @@
       "writtenOn": "2019-07-30T04:27:40Z",
       "side": 1,
       "message": "What pin is this? EC-AP host interface?\n\nAre you sure this is right? I don\u0027t think that we use any CS as a real hardware CS, it\u0027s always just an ordinary interrupt gpio.\n\nOn this note, please recheck the alternate number for these pins. The one you used to have for the sensors spi master was wrong.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b47b23_e2a8d2de",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2019-07-30T11:23:45Z",
+      "side": 1,
+      "message": "Re 1st part of questions: PA15 is CS pin for EC-AP host interface",
+      "parentUuid": "b73c6e5a_4d6ae633",
       "range": {
         "startLine": 113,
         "startChar": 0,
