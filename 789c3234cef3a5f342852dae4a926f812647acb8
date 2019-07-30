@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "65f00eb7_7256699d",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Moved to CL:1725387",
+      "parentUuid": "29c16e13_2cd23360",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c49d5814_7ac1ad45",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 34
@@ -50,6 +68,24 @@
       "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7dd5b64_adce9e17",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c49d5814_7ac1ad45",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "dcd74b31_75d5c227",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "218f834d_c2a4af23",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 41
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975f5017_12d44b1f",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 34
@@ -96,6 +156,30 @@
       "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e36c4d_8029ec41",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "975f5017_12d44b1f",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "5a33e5aa_0ad1a026",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387e5656_ad83c4ab",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 43
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29edaf80_7698e40f",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 34
@@ -142,6 +250,30 @@
       "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be2d1fb_e079801f",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29edaf80_7698e40f",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 26
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +300,30 @@
     },
     {
       "key": {
+        "uuid": "372f5f45_a50701cf",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "done, bug number changed",
+      "parentUuid": "00e0639f_313c7f1d",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2d1ffae_bf2cedfd",
         "filename": "board/jacuzzi/board.h",
         "patchSetId": 34
@@ -179,6 +335,24 @@
       "writtenOn": "2019-07-30T04:27:40Z",
       "side": 1,
       "message": "from line 21 to 29 you have a lot of newlines. Are they actually supposed to be new paragraphs just grouped very shortly?",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2579e90a_5ffc131f",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Yes these are intended (except the newline between USB_PD_DISCHARGE_GPIO and USB_PD_VBUS_MEASURE_NOT_PRESENT). Just trying to group them by components.",
+      "parentUuid": "e2d1ffae_bf2cedfd",
       "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -208,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "6855191a_8b9e96a9",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd9f3da0_2f9d33b4",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804b40b9_0de99901",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 34
@@ -222,6 +420,24 @@
       "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "728e25da_25941040",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804b40b9_0de99901",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +488,30 @@
     },
     {
       "key": {
+        "uuid": "39057f87_f19757d2",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Comment added, the name SPI1_NSS is hard-coded in stm32/spi.c. can\u0027t change this.",
+      "parentUuid": "cd86a1f4_f0af8b3c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86aa1690_b9700d84",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 34
@@ -295,6 +535,30 @@
     },
     {
       "key": {
+        "uuid": "8cec662f_b05b7187",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86aa1690_b9700d84",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c7876cd_d535b0e6",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 34
@@ -306,6 +570,30 @@
       "writtenOn": "2019-07-30T04:27:40Z",
       "side": 1,
       "message": "Temporarily until when? Are there follower CLs that add it back? Why can\u0027t it be here right now? Are they not actual pins?\nBug just links to the big ec bringup meta bug.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 80
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d36fe334_c76f650f",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Actually I haven\u0027t figured out what\u0027s the best way to handle these yet.\nMaybe leave them here, or refactor usb_pd_policy.c or maybe jacuzzi will have its own usb_pd_policy.",
+      "parentUuid": "9c7876cd_d535b0e6",
       "range": {
         "startLine": 86,
         "startChar": 0,
@@ -341,6 +629,30 @@
     },
     {
       "key": {
+        "uuid": "4abd5e53_c5931ad6",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe9c4db8_3c89e713",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 43
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c147d1_1efb5f87",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 34
@@ -352,6 +664,30 @@
       "writtenOn": "2019-07-30T04:27:40Z",
       "side": 1,
       "message": "I find the categorization here a little weird.\n\nI don\u0027t think it matters if the pin is new on jacuzzi, is TODO or is \"other\". Maybe you should just put them in a bigger block.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ace260c_fd368e1d",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "done, merged with \"new on jacuzzi\" above.",
+      "parentUuid": "24c147d1_1efb5f87",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -398,6 +734,30 @@
       "writtenOn": "2019-07-30T11:23:45Z",
       "side": 1,
       "message": "Re 1st part of questions: PA15 is CS pin for EC-AP host interface",
+      "parentUuid": "b73c6e5a_4d6ae633",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b2886f_73653a0a",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-30T12:30:01Z",
+      "side": 1,
+      "message": "Can\u0027t answer the question about hardware CS right now, the only thing I know is it comes from scarlet / kukui.",
       "parentUuid": "b73c6e5a_4d6ae633",
       "range": {
         "startLine": 113,
