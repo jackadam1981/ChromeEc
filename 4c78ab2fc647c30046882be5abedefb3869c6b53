@@ -22,6 +22,30 @@
       "revId": "4c78ab2fc647c30046882be5abedefb3869c6b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9804651c_61f33f22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2019-07-30T21:00:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we have an issue right now, but this change prevents issues that can occur with LTO. If the problem happens depends on the symbol resolution order in the linker, and since with LTO the work can be split across multiple processes, it might depend on lots of factors including the number of CPUs on your build system.",
+      "parentUuid": "bae14040_a83e8862",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "4c78ab2fc647c30046882be5abedefb3869c6b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
