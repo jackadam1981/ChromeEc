@@ -22,6 +22,52 @@
       "revId": "45c1c285d8e5ec8a42673b0afd616af7ea4c1cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8371920c_7de9799e",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-30T17:52:01Z",
+      "side": 1,
+      "message": "nit: I think that\u0027s not necessary",
+      "range": {
+        "startLine": 91,
+        "startChar": 37,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "45c1c285d8e5ec8a42673b0afd616af7ea4c1cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "750027d6_725ecc78",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-30T17:52:01Z",
+      "side": 1,
+      "message": "nit: I think that\u0027s not necessary",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "45c1c285d8e5ec8a42673b0afd616af7ea4c1cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
