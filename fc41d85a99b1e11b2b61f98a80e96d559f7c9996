@@ -352,6 +352,30 @@
       "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce8b20ec_e8bee0e0",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-30T07:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e228da86_144eca09",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 64
+      },
+      "revId": "fc41d85a99b1e11b2b61f98a80e96d559f7c9996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

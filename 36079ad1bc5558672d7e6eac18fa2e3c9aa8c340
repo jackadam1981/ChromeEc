@@ -16,6 +16,24 @@
       "revId": "36079ad1bc5558672d7e6eac18fa2e3c9aa8c340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9037552_6b0a96c5",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-30T07:27:52Z",
+      "side": 1,
+      "message": "Renamed. Will this become not consistent? Because the other vendors are named ioexpander_xxx.c",
+      "parentUuid": "4b47e3ea_7ef80cb1",
+      "revId": "36079ad1bc5558672d7e6eac18fa2e3c9aa8c340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

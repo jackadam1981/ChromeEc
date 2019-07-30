@@ -356,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "3b4ea741_1c384ca6",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-30T07:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bff08f2_93191125",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e86c00a_8f8fb2ab",
         "filename": "driver/ioexpander_it8801.c",
         "patchSetId": 15
@@ -487,6 +511,30 @@
       "side": 1,
       "message": "what about this?",
       "parentUuid": "5d6eabe4_8fc1af2c",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 19
+      },
+      "revId": "6ff86db1fc80c2c56fa75f3fd04334f097348aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c626b64_8f1864a5",
+        "filename": "driver/ioexpander_it8801.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2019-07-30T07:27:52Z",
+      "side": 1,
+      "message": "I have tried to declare \u0027uint8_t data __aligned(4)\u003d0\u0027(In this case, the data has to align to 4-byte, otherwise there will enter exception handler), but it8801_read8 to get and invert the data is still 0xffffff00. If the data uses \u0027~data\u0027 to return, it has to do \u0027\u0026 0xff\u0027.",
+      "parentUuid": "0ddc1fad_7a1698f6",
       "range": {
         "startLine": 138,
         "startChar": 8,
