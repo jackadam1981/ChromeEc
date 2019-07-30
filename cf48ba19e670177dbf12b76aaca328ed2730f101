@@ -68,6 +68,30 @@
       "revId": "cf48ba19e670177dbf12b76aaca328ed2730f101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4dfb8a_474481da",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1337210
+      },
+      "writtenOn": "2019-07-30T07:13:39Z",
+      "side": 1,
+      "message": "right, side effect is real SDP will detect 3 times\nbecause we can\u0027t know whether power supply plug in",
+      "parentUuid": "2ca8df40_89f7126f",
+      "range": {
+        "startLine": 992,
+        "startChar": 0,
+        "endLine": 993,
+        "endChar": 30
+      },
+      "revId": "cf48ba19e670177dbf12b76aaca328ed2730f101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
