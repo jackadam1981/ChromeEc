@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "88424690_2c6d4aef",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c5fd9ff_1411b705",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b9e8cef_77f964eb",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -87,6 +111,24 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4017361_cf16f3fd",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b9e8cef_77f964eb",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "2b4bfabc_76b36f92",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "I guess this may not the \"checksum\" in EC host command/response.  But we could use EC_RES_INVALID_CHECKSUM for the case.",
+      "parentUuid": "66290e85_016f7bfb",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f84e869_06696120",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -121,6 +181,24 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228aea54_304d9368",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f84e869_06696120",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "fd49ce9f_c7502e02",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02dcf065_72563fc1",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a294707e_0d02299d",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -161,6 +263,24 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d86b096_b49d958b",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a294707e_0d02299d",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "5b52a386_7109ba73",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72384aae_6f6fcff2",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "004616e8_39a04643",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -201,6 +345,24 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15cd62d_c5005cc3",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "004616e8_39a04643",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -251,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "aab49df4_713fc314",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a87dcfd8_23bc08f0",
+      "range": {
+        "startLine": 285,
+        "startChar": 41,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75ba0ced_1b9e775a",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 30
@@ -265,6 +451,24 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd34c341_deabccec",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ba0ced_1b9e775a",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -288,6 +492,30 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124d1636_306239d2",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29a0e5b_13a0b354",
+      "range": {
+        "startLine": 289,
+        "startChar": 31,
+        "endLine": 289,
+        "endChar": 43
+      },
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +569,24 @@
       "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125e6e52_28451345",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-30T02:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6336a6_b3313acb",
+      "revId": "f418e3b73fd769cc4e150dab008b64d76d50cf8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
