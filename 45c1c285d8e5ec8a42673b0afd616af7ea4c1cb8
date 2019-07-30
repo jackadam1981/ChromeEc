@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "079624dc_012564e0",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-30T16:24:53Z",
+      "side": 1,
+      "message": "nit: Can you add a link to the RFC https://tools.ietf.org/html/rfc5869#section-2.3, same as hkdf_extract() ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "45c1c285d8e5ec8a42673b0afd616af7ea4c1cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
