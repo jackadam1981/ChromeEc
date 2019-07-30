@@ -11,6 +11,9 @@
 #ifndef __MOCK_FP_SENSOR_MOCK_H
 #define __MOCK_FP_SENSOR_MOCK_H
 
+#include <stddef.h>
+#include <stdint.h>
+
 #include "common.h"
 #include "fpsensor.h"
 
@@ -42,5 +45,7 @@ struct mock_ctrl_fp_sensor {
 }
 
 extern struct mock_ctrl_fp_sensor mock_ctrl_fp_sensor;
+
+size_t mock_ctrl_fill_fp_sensor(const uint8_t *data, size_t size);
 
 #endif /* __MOCK_FP_SENSOR_MOCK_H */
