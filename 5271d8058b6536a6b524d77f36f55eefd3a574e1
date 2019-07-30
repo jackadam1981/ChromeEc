@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dde7ed7_c1176740",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-30T16:18:49Z",
+      "side": 1,
+      "message": "Does this addr agree with schematic?",
+      "revId": "5271d8058b6536a6b524d77f36f55eefd3a574e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19cfba7c_9fa0e844",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-30T16:18:49Z",
+      "side": 1,
+      "message": "Suggest removing I2C_PORT_PPC0 and just using I2C_PORT_TCPC0.",
+      "revId": "5271d8058b6536a6b524d77f36f55eefd3a574e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665e2de2_60f68df7",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-30T16:18:49Z",
+      "side": 1,
+      "message": "These can stay in .c I think",
+      "revId": "5271d8058b6536a6b524d77f36f55eefd3a574e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
