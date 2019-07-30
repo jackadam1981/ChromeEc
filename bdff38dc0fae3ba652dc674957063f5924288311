@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2bfeefd3_144b9bfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:32:07Z",
+      "side": 1,
+      "message": "a space after \u0027:\u0027\n\nuart: Pre...\n\nor\n\nlog: Pres....",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04cdd0ac_5ed5d22f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:32:07Z",
+      "side": 1,
+      "message": "Make a bullet:\n\n TEST\u003d1. on kukui ...\n\n      2. Reset reasons can be viewed with ectool uptimeinfo",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "567e2107_8dfc5b89",
         "filename": "common/main.c",
         "patchSetId": 2
