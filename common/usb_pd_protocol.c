@@ -2148,6 +2148,7 @@ static void pd_vdm_send_state_machine(int port)
 
 		if ((pd[port].flags & PD_FLAGS_VCONN_ON) &&
 		    is_transmit_message_type_sop_prime(port)) {
+			header &= ~(BIT(5) | BIT(8));
 			res = pd_transmit(port, TCPC_TX_SOP_PRIME, header,
 					  pd[port].vdo_data);
 			/*
