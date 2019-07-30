@@ -2432,6 +2432,12 @@
  * Enable keypad (a palm-sized keyboard section usually placed on the far right)
  */
 #undef CONFIG_KEYBOARD_KEYPAD
+
+/*
+ * Support IT8801 I/O expander.
+ */
+#undef CONFIG_IO_EXPANDER_IT8801
+
 /*****************************************************************************/
 
 /* Support common LED interface */
