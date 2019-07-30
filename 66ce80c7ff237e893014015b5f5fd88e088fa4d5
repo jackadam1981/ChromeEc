@@ -22,6 +22,30 @@
       "revId": "66ce80c7ff237e893014015b5f5fd88e088fa4d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30819dd3_985456b5",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-30T23:51:54Z",
+      "side": 1,
+      "message": "The NCT3807 is both TCPC and IO expander in one.",
+      "parentUuid": "f567e5cd_fd83d03e",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "66ce80c7ff237e893014015b5f5fd88e088fa4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
