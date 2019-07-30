@@ -46,6 +46,30 @@
       "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd1d61b_2444bafa",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2019-07-30T23:16:57Z",
+      "side": 1,
+      "message": "Aseda, as per our conversation and my testing, the code is correct as is.",
+      "parentUuid": "bf6614d6_17bd9e8f",
+      "range": {
+        "startLine": 1820,
+        "startChar": 7,
+        "endLine": 1821,
+        "endChar": 48
+      },
+      "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
