@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f013c1e_d9a39e43",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-30T22:54:54Z",
+      "side": 1,
+      "message": "What error do you get if you use IS_ENABLED?",
+      "range": {
+        "startLine": 343,
+        "startChar": 7,
+        "endLine": 343,
+        "endChar": 26
+      },
+      "revId": "329a9bc7b4ae532b59c3abd379f5d11cd2216ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58cba39a_4faaa0e5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-30T22:54:54Z",
+      "side": 1,
+      "message": "This check isn\u0027t enough because you have [0] undefined for cable_curr. That\u0027s why I suggested you should just let ccprintf print \u0027null\u0027 for undefined fields.",
+      "range": {
+        "startLine": 1017,
+        "startChar": 2,
+        "endLine": 1017,
+        "endChar": 57
+      },
+      "revId": "329a9bc7b4ae532b59c3abd379f5d11cd2216ce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
