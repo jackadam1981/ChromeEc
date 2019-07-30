@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79218034_1e499f6e",
+        "filename": "common/fpsensor/fpsensor_crypto.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-30T16:18:29Z",
+      "side": 1,
+      "message": "Can you avoid the variable length array? For a defined string sizeof() should be strlen()+1, maybe you can use that instead. We\u0027d have to find a reasonable way to ensure that we don\u0027t break  the day a well-intentioned soul changes info_prefix to a string not defined at compilation time.",
+      "range": {
+        "startLine": 144,
+        "startChar": 14,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "24ed2a637f47308efd0a0308d582180b1ef0e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2b4b4f_d2f14d43",
+        "filename": "test/fpsensor.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2019-07-30T16:18:29Z",
+      "side": 1,
+      "message": "I\u0027d use a known non-trivial salt rather than use rand_bytes. Or log the state of the rng to debug that something went wrong in the random number generation.\n\nIIUC you\u0027re just interested in the fact that the salt is non-trivial, so you can remove the dependency on the RNG altogether I think by hardcoding a fixed non-trivial salt",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "24ed2a637f47308efd0a0308d582180b1ef0e51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
