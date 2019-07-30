@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a4306cdc_a65dd746",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-30T03:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600f4f53_e5775884",
+      "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1603696_3676b07b",
         "filename": "include/accelgyro.h",
         "patchSetId": 38
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "33bb605d_5de2bcff",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-30T03:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1603696_3676b07b",
+      "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89816b07_f9cce77d",
         "filename": "include/config.h",
         "patchSetId": 38
@@ -50,6 +86,24 @@
       "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06491d43_24c19275",
+        "filename": "include/config.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-30T03:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89816b07_f9cce77d",
+      "revId": "3a7186d110d163a76dbdd8e97867888e17673024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
