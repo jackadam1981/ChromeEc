@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbe60a78_ce39eb04",
+        "filename": "common/audio_codec.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-07-30T06:59:58Z",
+      "side": 1,
+      "message": "Do you need API to release the registered shm ?",
+      "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4687d7_54a2c7f2",
+        "filename": "include/audio_codec.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2019-07-30T06:59:58Z",
+      "side": 1,
+      "message": "There is no implementation in this CL for audio_codec_translate_addr_ec_to_ap.\nI think it should be in audio_codec.c ?",
+      "revId": "56df9c516690fb798b22a0b88e901db6cae00441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
