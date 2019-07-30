@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "567e2107_8dfc5b89",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "One-line comment should be sufficient.\n\n/* Initialize tx buffer head and tail */\n\n\nBut I think this should be documented more clearly.\n\ne.g. Why this need to do here before everything else?\n\nThis should be done before any new uart tx input and reset logs ... bra bra bra.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e78620_e74cfdc6",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "tx_checksum would be more decsriptive.",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482a7d56_db3e256d",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "This doesn\u0027t update the checksum, it just calculate it.",
+      "range": {
+        "startLine": 57,
+        "startChar": 11,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ae65f2_676b4b18",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "Besides uart_tx, you should also verify reset_logs.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7447a75c_edf348e5",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "I would also check if\n\n 0 \u003c\u003d tx_buf_tail, tx_buf_head \u003c CONFIG_UART_TX_BUF_SIZE",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36a48b7_e3a4d681",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "maybe also change naming here, since it\u0027s not in .bss anymore.",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 202,
+        "endChar": 7
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7e46f9_bdcf678a",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "An empty line between these two lines.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3df3596_8c0c6761",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3508,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "SRAM or IRAM",
+      "range": {
+        "startLine": 3508,
+        "startChar": 29,
+        "endLine": 3508,
+        "endChar": 33
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cfb4fb_9c2cf11c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3509,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-30T09:28:20Z",
+      "side": 1,
+      "message": "Maybe more story/background of this config, and why we need it.",
+      "range": {
+        "startLine": 3508,
+        "startChar": 0,
+        "endLine": 3509,
+        "endChar": 20
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
