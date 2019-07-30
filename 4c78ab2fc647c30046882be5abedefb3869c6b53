@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae14040_a83e8862",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-30T16:38:14Z",
+      "side": 1,
+      "message": "it is not clear what problem this patch is fixing - did branch instructions not point at the right functions before this patch?\n\nOr do you mean that merging this patch would allow enabling LTO on more targets?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "4c78ab2fc647c30046882be5abedefb3869c6b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
