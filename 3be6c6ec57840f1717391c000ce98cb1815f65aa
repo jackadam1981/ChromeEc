@@ -16,6 +16,24 @@
       "revId": "3be6c6ec57840f1717391c000ce98cb1815f65aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df69af75_88c56b80",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-07-30T18:20:12Z",
+      "side": 1,
+      "message": "according to Marius - less leakage and the ability to modify it easier/faster in future (blinding for ex.)",
+      "parentUuid": "e46e7249_05a1bbe1",
+      "revId": "3be6c6ec57840f1717391c000ce98cb1815f65aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
