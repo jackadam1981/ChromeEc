@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "205608a5_32dff52e",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-30T20:14:19Z",
+      "side": 1,
+      "message": "I think you\u0027re going to need to explain this. So this is because samples are 16-bit?",
+      "range": {
+        "startLine": 345,
+        "startChar": 33,
+        "endLine": 345,
+        "endChar": 38
+      },
+      "revId": "7a600adf9e9ca26db609d62c0f30d785b49493e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
