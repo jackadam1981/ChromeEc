@@ -68,6 +68,29 @@
       "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f204c2c_eb2d66ad",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T22:41:30Z",
+      "side": 1,
+      "message": "So is this ok then? Doesn\u0027t usb_pd_policy not like that? Or do you plan to remove them later?\n\nHow about ifdef in usb_pd_policy.c so they\u0027re not needed?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
