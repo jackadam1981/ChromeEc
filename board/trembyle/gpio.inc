@@ -46,9 +46,28 @@ GPIO(USB_C1_TCPC_RST_L,		PIN(F, 0), GPIO_OUT_HIGH)			/* C1 TCPC Reset */
 GPIO(LED_FULL_L,		PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(LED_CHRG_L,		PIN(C, 0), GPIO_OUT_HIGH)
 
-/* IOEX(EN_USB_A0_5V,		EXPIN(0, 1, 5), GPIO_OUT_LOW) */		/* Enable A0 5V Charging */
-/* IOEX(EN_USB_A1_5V,		EXPIN(1, 1, 6), GPIO_OUT_LOW) */		/* Enable A1 5V Charging */
-/* IOEX(KB_BL_EN,		EXPIN(0, 1, 3), GPIO_OUT_LOW) */		/* Enable KB Backlight */
+/* IOEX(USB_A0_RETIMER_EN,	EXPIN(0, 0, 0), GPIO_OUT_HIGH) */		/* A0 USB3 Retimer Enable */
+/* IOEX(USB_A0_RETIMER_RST,	EXPIN(0, 0, 1), GPIO_OUT_LOW)  */		/* A0 USB3 Retimer Reset */
+/* IOEX(EC_CLR_CMOS,		EXPIN(0, 0, 2), GPIO_OUT_LOW)  */		/* Clear SOC CMOS */
+/* IOEX(USB_C0_FAULT_ODL,	EXPIN(0, 1, 1), GPIO_ODR_HIGH) */		/* C0 Fault to SOC */
+/* IOEX(USB_C1_FAULT_ODL,	EXPIN(0, 1, 2), GPIO_ODR_HIGH) */		/* C1 Fault to SOC */
+IOEX(KB_BL_EN,			EXPIN(0, 1, 3), GPIO_OUT_LOW)			/* KB Backlight Enable */
+/* IOEX(USB_C0_DATA_EN,		EXPIN(0, 1, 4), GPIO_OUT_LOW)  */		/* C0 USB3 Redriver Enable */
+IOEX(EN_USB_A0_5V,		EXPIN(0, 1, 5), GPIO_OUT_LOW)			/* A0 5V Source Enable */
+IOEX(USB_A0_CHARGE_EN_L,	EXPIN(0, 1, 6), GPIO_OUT_HIGH)			/* A0 5V High Current Enable */
+
+/* IOEX(USB_A1_RETIMER_EN,	EXPIN(1, 0, 0), GPIO_OUT_HIGH) */		/* A1 USB3 Retimer Enable */
+/* IOEX(USB_A1_RETIMER_RST,	EXPIN(1, 0, 1), GPIO_OUT_LOW)  */		/* A1 USB3 Retimer Reset */
+/* IOEX(MST_HPD_IN,		EXPIN(1, 0, 2), GPIO_OUT_LOW)  */		/* HPD to HDMI Hub (DB-OPT3) */
+/* IOEX(MST_HPD_OUT,		EXPIN(1, 0, 3), GPIO_INPUT)    */		/* HPD from HDMI Hub (DB-OPT3) */
+/* IOEX(HDMI_CONN_HPD,		EXPIN(1, 1, 0), GPIO_INPUT)    */		/* HPD from HDMI Connector (DB-OPT1) */
+/* IOEX(USB_C1_MUX_RST,		EXPIN(1, 1, 1), GPIO_OUT_LOW)  */		/* C1 Mux Reset (DB-OPT2/3) */
+/* IOEX(USB_C1_SBU_FAULT_ODL,	EXPIN(1, 1, 2), GPIO_INPUT)    */		/* C1 SBU Fault */
+/* IOEX(USB_C1_EN,		EXPIN(1, 1, 3), GPIO_OUT_LOW)  */		/* C1 PPC Enable */
+/* IOEX(USB_C1_FRS_EN,		EXPIN(1, 1, 4), GPIO_OUT_LOW)  */		/* C1 PPC FRS Enable */
+/* IOEX(USB_C1_DATA_EN,		EXPIN(1, 1, 5), GPIO_OUT_LOW)  */		/* C1 HDMI Retimer (DB-OPT1) */
+IOEX(EN_USB_A1_5V,		EXPIN(1, 1, 6), GPIO_OUT_LOW)			/* A1 5V Source Enable */
+IOEX(USB_A1_CHARGE_EN_L,	EXPIN(1, 1, 7), GPIO_OUT_HIGH)			/* A1 5V High Current Enable */
 
 /*
  * The NPCX LPC driver configures and controls SCI, so PCH_SCI_ODL [PIN(7, 6)]
