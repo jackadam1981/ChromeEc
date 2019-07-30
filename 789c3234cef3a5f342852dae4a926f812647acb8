@@ -1,0 +1,365 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d7b240e_e736f4f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Please make this prettier and more detailed. What works, what doesn\u0027t, what\u0027s todo. Special care required? Of course.. while trying not to leak things.",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29c16e13_2cd23360",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Please see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1697781/22/baseboard/kukui/battery_smart.c",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c49d5814_7ac1ad45",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "TODO: to be added once sensors land via CL:1714436",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218f834d_c2a4af23",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Maybe add a TODO?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 41
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975f5017_12d44b1f",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t add more than what the code is saying.\nWhich port is this (between the type C and type A)?\n\nWhy is it only 2A?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387e5656_ad83c4ab",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "TODO: to be added once sensors land via CL:1714436",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 43
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29edaf80_7698e40f",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "do you have a plan? Bug or CL that adds this? Short why on why it\u0027s annoying to do it now.\n\nEx: \"this depends on driver being done, to be submitted in CL:000000\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 26
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e0639f_313c7f1d",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "This is just the main jacuzzi bringup bug, and i don\u0027t see anything about leds in there. What is the actual todo here? Either make a new bug or describe it in more detail here.",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d1ffae_bf2cedfd",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "from line 21 to 29 you have a lot of newlines. Are they actually supposed to be new paragraphs just grouped very shortly?",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9f3da0_2f9d33b4",
+        "filename": "board/jacuzzi/board.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "I2C_PORT_IO_EXPANDER_IT8801 to match:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1677976/21/driver/ioexpander_it8801.c#33",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804b40b9_0de99901",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Why do you have these newlines? Is it supposed to signify some grouping?",
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd86a1f4_f0af8b3c",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Is this the actual net name?\nWith the schematics not handy I find it hard to know what this is right away.\n\nOh... this looks like the pin coming from the AP. You really should document it better.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86aa1690_b9700d84",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "\"On IT88801 expander, To be readded once IT8801 driver and gpio expander framework has landed.\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7876cd_d535b0e6",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Temporarily until when? Are there follower CLs that add it back? Why can\u0027t it be here right now? Are they not actual pins?\nBug just links to the big ec bringup meta bug.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 80
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe9c4db8_3c89e713",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "Maybe \"to be added in later versions\".\n\nThe comment should describe why it\u0027s not unimplemented (and if forgotten, what we\u0027re going to do about it). Does \"not exist\" just repeats what \"UNIMPLEMENTED\" already says.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 43
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c147d1_1efb5f87",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "I find the categorization here a little weird.\n\nI don\u0027t think it matters if the pin is new on jacuzzi, is TODO or is \"other\". Maybe you should just put them in a bigger block.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73c6e5a_4d6ae633",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2019-07-30T04:27:40Z",
+      "side": 1,
+      "message": "What pin is this? EC-AP host interface?\n\nAre you sure this is right? I don\u0027t think that we use any CS as a real hardware CS, it\u0027s always just an ordinary interrupt gpio.\n\nOn this note, please recheck the alternate number for these pins. The one you used to have for the sensors spi master was wrong.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "789c3234cef3a5f342852dae4a926f812647acb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
