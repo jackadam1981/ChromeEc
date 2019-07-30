@@ -291,16 +291,35 @@ enum ec_error_list {
 #define __ARG_PLACEHOLDER_ _, 1,
 #define _config_enabled(cfg, value) \
 	__config_enabled(__ARG_PLACEHOLDER_##value, cfg, value)
-#define __config_enabled(arg1_or_junk, cfg, value) ___config_enabled( \
-	arg1_or_junk _,\
-	({ \
-		int __undefined = __builtin_strcmp(cfg, #value) == 0; \
-		extern int IS_ENABLED_BAD_ARGS(void) __attribute__(( \
-			error(cfg " must be <blank>, or not defined.")));\
-		if (!__undefined) \
-			IS_ENABLED_BAD_ARGS(); \
-		0; \
-	}))
+#ifdef __clang__
+/*
+ * The clang compiler does not feature the error(...) attribute on
+ * functions, so the best we are able to do is give a linker error :(
+ */
+#define __config_enabled(arg1_or_junk, cfg, value)			\
+	___config_enabled(						\
+		arg1_or_junk _,						\
+		({							\
+			int __undefined = __builtin_strcmp(cfg, #value) == 0; \
+			extern int IS_ENABLED_BAD_ARGS(void);		\
+			if (!__undefined)				\
+				IS_ENABLED_BAD_ARGS();			\
+			0;						\
+		}))
+#else /* We are using a real compiler */
+#define __config_enabled(arg1_or_junk, cfg, value)			\
+	___config_enabled(						\
+		arg1_or_junk _,						\
+		({							\
+			int __undefined = __builtin_strcmp(cfg, #value) == 0; \
+			extern int IS_ENABLED_BAD_ARGS(void) __attribute__( \
+				(error(cfg				\
+				       " must be <blank>, or not defined."))); \
+			if (!__undefined)				\
+				IS_ENABLED_BAD_ARGS();			\
+			0;						\
+		}))
+#endif
 #define ___config_enabled(__ignored, val, ...) val
 
 /**
