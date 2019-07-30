@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e371df4_adf0c795",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2019-07-30T03:34:16Z",
+      "side": 1,
+      "message": "I will break up this CL and move this define out of here and into the board.h file where it should be.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "6905fdd485235c7301e6a86ae53d95dd66a5762f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
