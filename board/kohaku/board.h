@@ -51,6 +51,8 @@
 #define CONFIG_ALS_TCS3400
 #define CONFIG_ALS_TCS3400_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+#define CONFIG_RGB_XYZ_TRANSLATE
+
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK \

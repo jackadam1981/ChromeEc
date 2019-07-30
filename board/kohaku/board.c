@@ -178,7 +178,7 @@ static struct als_drv_data_t g_tcs3400_data = {
 	.als_cal.offset = 0,
 	.als_cal.channel_scale = {
 		.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kc from VPD */
-		.cover_scale = ALS_CHANNEL_SCALE(1.0),     /* CT */
+		.cover_scale = ALS_CHANNEL_SCALE(0.6208),  /* CT */
 	},
 };
 
