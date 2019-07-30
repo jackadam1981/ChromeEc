@@ -8,13 +8,24 @@
  * @brief Mock fpsensor private driver
  */
 
-#include <stdlib.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <string.h>
 
 #include "common.h"
 #include "fpsensor.h"
+#include "util.h"
 #include "mock/fp_sensor_mock.h"
 
 struct mock_ctrl_fp_sensor mock_ctrl_fp_sensor = MOCK_CTRL_DEFAULT_FP_SENSOR;
+
+size_t mock_ctrl_fill_fp_sensor(const uint8_t *data, size_t size)
+{
+	size_t copy_size = MIN(sizeof(mock_ctrl_fp_sensor), size);
+
+	memcpy(&mock_ctrl_fp_sensor, data, copy_size);
+	return copy_size;
+}
 
 int fp_sensor_init(void)
 {
