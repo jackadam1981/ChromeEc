@@ -22,6 +22,30 @@
       "revId": "5eabf27ca8b77eff2ebcdd149fcbb57c09263318",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ac20ff_3e3f83b7",
+        "filename": "common/mock/rollback_mock.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-30T21:46:08Z",
+      "side": 1,
+      "message": "This isn\u0027t needed right?",
+      "parentUuid": "60e9c4f0_3c7d1ace",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "5eabf27ca8b77eff2ebcdd149fcbb57c09263318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
