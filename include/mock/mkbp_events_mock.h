@@ -6,6 +6,9 @@
 #ifndef __MOCK_MKBP_EVENTS_MOCK_H
 #define __MOCK_MKBP_EVENTS_MOCK_H
 
+#include <stddef.h>
+#include <stdint.h>
+
 struct mock_ctrl_mkbp_events {
 	int mkbp_send_event_return;
 };
@@ -16,5 +19,7 @@ struct mock_ctrl_mkbp_events {
 }
 
 extern struct mock_ctrl_mkbp_events mock_ctrl_mkbp_events;
+
+size_t mock_ctrl_fill_mkbp_events(const uint8_t *data, size_t size);
 
 #endif /* __MOCK_MKBP_EVENTS_MOCK_H */
