@@ -24,6 +24,8 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "ioexpander.h"
+#include "ioexpander_nct38xx.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -95,9 +97,6 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-#define USB_PD_PORT_TCPC_0	0
-#define USB_PD_PORT_TCPC_1	1
-
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -129,11 +128,26 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
+struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
+	[USB_PD_PORT_TCPC_0] = {
+		.i2c_host_port = I2C_PORT_TCPC0,
+		.i2c_slave_addr = NCT38xx_I2C_ADDR1_1_FLAGS,
+		.chip_info = -1,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+	[USB_PD_PORT_TCPC_1] = {
+		.i2c_host_port = I2C_PORT_TCPC1,
+		.i2c_slave_addr = NCT38xx_I2C_ADDR1_1_FLAGS,
+		.chip_info = -1,
+		.drv = &nct38xx_ioexpander_drv,
+	},
+};
+
 static void baseboard_chipset_suspend(void)
 {
 	/* Disable display and keyboard backlights. */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
-	/* TODO gpio_set_level(GPIO_KB_BL_EN, 0); */
+	ioex_set_level(IOEX_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
@@ -142,7 +156,7 @@ static void baseboard_chipset_resume(void)
 {
 	/* Enable display and keyboard backlights. */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
-	/* TODO gpio_set_level(GPIO_KB_BL_EN, 1); */
+	ioex_set_level(IOEX_KB_BL_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
