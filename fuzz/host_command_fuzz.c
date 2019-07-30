@@ -12,6 +12,9 @@
 #include "console.h"
 #include "host_command.h"
 #include "host_test.h"
+#include "mock/fp_sensor_mock.h"
+#include "mock/mkbp_events_mock.h"
+#include "mock/rollback_mock.h"
 #include "task.h"
 #include "test_util.h"
 #include "timer.h"
@@ -63,12 +66,24 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	const int data_len_offset = offsetof(struct ec_host_request, data_len);
 	const int data_len_size = sizeof(req->data_len);
 
+	/*
+	 * Layout regions(chunks) of the request to clobber with input data.
+	 * The regions corespond to field(s) of the request's struct
+	 * ec_host_request header and following data payload.
+	 * We avoid writing to the checksum(between chunk 0 and 1) and
+	 * data_len(between chunks 1 and 2) fields .
+	 */
 	struct chunk chunks[3];
 
+	/* struct field: version */
 	chunks[0].start = 0;
 	chunks[0].size = checksum_offset;
+	/* step around checksum field */
+	/* struct fields: command, command_version, reserved (NOT data_len) */
 	chunks[1].start = chunks[0].start + chunks[0].size + checksum_size;
 	chunks[1].size = data_len_offset - chunks[1].start;
+	/* step around data_len field */
+	/* data payload past header struct (remaining space in req payload) */
 	chunks[2].start = chunks[1].start + chunks[1].size + data_len_size;
 	chunks[2].size = sizeof(req_buf) - chunks[2].start;
 #else
@@ -102,6 +117,17 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	/* Not enough space in req_buf. */
 	if (ipos != size)
 		return -1;
+
+	/*
+	 * Fill remaining device input state.
+	 */
+	/*
+	 *  TODO(hesling): These are totally ineffective, since
+	 *                 it returns above if ipos!=size.
+	 */
+	ipos += mock_ctrl_fill_fp_sensor(data+ipos, size-ipos);
+	ipos += mock_ctrl_fill_mkbp_events(data+ipos, size-ipos);
+	ipos += mock_ctrl_fill_rollback(data+ipos, size-ipos);
 
 	pkt.request_size = req_size;
 	req->data_len = req_size - sizeof(*req);
