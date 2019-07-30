@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc00bda0_1677fd64",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-07-30T06:14:36Z",
+      "side": 1,
+      "message": "If using smart battery, there will build error. How about adding another config for smart battery?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "409ab69088acbb70374a1eb6ef91a048ce049c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
