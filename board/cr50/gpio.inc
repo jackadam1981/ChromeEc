@@ -67,6 +67,8 @@
  * GPIO1.2   detect_ec_uart
  * GPIO1.3   detect_servo
  * GPIO1.4   detect_tpm_rst_asserted
+ * GPIO1.5   unwedge_i2cs_scl
+ * GPIO1.6   unwedge_i2cs_sda
  * GPIO1.11  ec_tx_cr50_rx_in
  * GPIO1.12  strap_a0
  * GPIO1.13  strap_a1
@@ -152,6 +154,9 @@ GPIO(STRAP_A0,        PIN(1, 12), GPIO_INPUT)
 GPIO(STRAP_A1,        PIN(1, 13), GPIO_INPUT)
 GPIO(STRAP_B0,        PIN(1, 14), GPIO_INPUT)
 GPIO(STRAP_B1,        PIN(1, 15), GPIO_INPUT)
+
+GPIO(UNWEDGE_I2CS_SCL, PIN(1, 5), GPIO_OUT_HIGH)
+GPIO(UNWEDGE_I2CS_SDA, PIN(1, 6), GPIO_ODR_HIGH | GPIO_PULL_UP)
 
 /*
  * If you change the names of EN_PP3300_INA_L, I2C_SCL_INA, or I2C_SDA_INA,
