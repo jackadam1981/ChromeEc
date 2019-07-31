@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf17bed4_de911a6a",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "this sounds wrong. imagine \na \u003d { 0, ..., 0, 1, 100 };\nb \u003d { 0, ..., 0, 2, 0 };\n\nfor i \u003d 0..5, a[i] \u003d\u003d b[i] \u003d\u003d 0, so borrow is 0.\nfor i\u003d6, a[i] \u003d\u003d 1, b[i] \u003d\u003d 2, so, borrow is -1. so far, so good.\nfor i\u003d7, a[i] \u003d\u003d 100, b[i] \u003d\u003d 0, so borrow becomes (-1 + 100) \u003e\u003e 32 \u003d 0.\nAnd we get 0, while it should have been -1.",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 819,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d769af55_5debe6d0",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "so, just\n  result \u003d hmac_drbg_generate_p256(drbg, output);\n  if (result)\n    return result;\nthen?",
+      "range": {
+        "startLine": 976,
+        "startChar": 2,
+        "endLine": 978,
+        "endChar": 9
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61da3176_b0bfadc1",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "why are we changing the macro name that was just added in https://crrev.com/c/1677229?",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 24
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd40509_586cac22",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "1) nit naming: ecdsa_sign_go -\u003e ecdsa_sign_test, because that\u0027s what it does?\n2) worth describing the arguments for the function: what\u0027s IN, what\u0027s OUT.",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 369,
+        "endChar": 24
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cd93ce_4c52f9c5",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "shall it be\n  ret \u003d dcrypto_p256_pick(...);\n  if (ret)\n    goto exit;\n\nwhere exit is at srbg_exit() line?",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 18
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37327e27_d3190e46",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "nit naming: command_dcrypto_ecdsa_test",
+      "range": {
+        "startLine": 395,
+        "startChar": 11,
+        "endLine": 395,
+        "endChar": 32
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d76857_8cb21c94",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "I\u0027d at least ccprint something in this case, to avoid surprising test failures caused by low memory",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 5
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855e9de1_034fc909",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "why do we need to zero the stack? shouldn\u0027t it work on uninitialized memory?",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 421,
+        "endChar": 7
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97f1aa1_44959fa7",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "why do we need a bigger stack? is the console stack too small for dcrypto_p256_ecdsa_sign() + a couple calls on top? if so, shall we move this out of the for loop and just call it once for command_dcrypto_ecdsa logic.",
+      "range": {
+        "startLine": 424,
+        "startChar": 11,
+        "endLine": 424,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e071a19e_a055d013",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "any good reason we don\u0027t just do memcmp? and then print entire x.a and x_golden.a in case of mismatch?",
+      "range": {
+        "startLine": 439,
+        "startChar": 1,
+        "endLine": 439,
+        "endChar": 34
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72b23561_ebc11193",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "nit naming: dcrypto_ecdsa_test",
+      "range": {
+        "startLine": 458,
+        "startChar": 29,
+        "endLine": 458,
+        "endChar": 42
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afaa73c9_74f2f8e9",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:08:53Z",
+      "side": 1,
+      "message": "why do we start propagating the possible error here? sounds reasonable to care, but in practice we ignore it anyways, so don\u0027t quite understand why this change is necessary. if we start returning an error, let\u0027s start checking for it.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 7
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
