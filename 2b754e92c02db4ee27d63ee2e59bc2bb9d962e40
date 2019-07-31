@@ -22,6 +22,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6369543_566845cf",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-31T23:18:58Z",
+      "side": 1,
+      "message": "What happens when we add another %p extension (like %pF, for example) and something which expected it to be a pointer followed by \u0027F\u0027 is now broken? This is why I was thinking making %p on it\u0027s own being invalid was a good idea.",
+      "parentUuid": "f24f15df_ab79b328",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
