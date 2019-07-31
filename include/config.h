@@ -4817,5 +4817,7 @@
 
 #endif
 
+/* Board is Helios */
+#undef CONFIG_BOARD_IS_HELIOS
 
 #endif  /* __CROS_EC_CONFIG_H */
