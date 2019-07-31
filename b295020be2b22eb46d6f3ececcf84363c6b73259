@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77fd8729_825f6e30",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-31T10:32:22Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "bc6401f5_6d264ea9",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b45fc0dd_1142f797",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 37
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-30T15:37:49Z",
       "side": 1,
       "message": "Reserved only in proto, unlikely will be needed.\nWe are thinking to repurpose it to be bitbang BATT_SCL",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34f212e_93024ec5",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-31T10:32:22Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "b45fc0dd_1142f797",
       "range": {
         "startLine": 67,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "83bd86a0_5a616662",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-31T10:32:22Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "313f65a8_628e50eb",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f204c2c_eb2d66ad",
         "filename": "board/jacuzzi/gpio.inc",
         "patchSetId": 37
@@ -91,6 +163,30 @@
       "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce817fd7_8267ef21",
+        "filename": "board/jacuzzi/gpio.inc",
+        "patchSetId": 37
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2019-07-31T10:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f204c2c_eb2d66ad",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "b295020be2b22eb46d6f3ececcf84363c6b73259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
