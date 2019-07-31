@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdbe8769_c2bce8d5",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T21:33:52Z",
+      "side": 1,
+      "message": "or is it the other way around: LSB first? then looks ok.",
+      "parentUuid": "cf17bed4_de911a6a",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 819,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d769af55_5debe6d0",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 14
