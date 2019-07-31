@@ -34,14 +34,19 @@ static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-int tcpc_write(int port, int reg, int val)
+int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
 	int rv;
 
 	pd_wait_exit_low_power(port);
 
+<<<<<<< HEAD   (bd42a8 ps8xxx: stub out enter_low_power_mode)
 	rv = i2c_write8(tcpc_config[port].i2c_host_port,
 			tcpc_config[port].i2c_slave_addr, reg, val);
+=======
+	rv = i2c_write8(tcpc_config[port].i2c_info.port,
+			i2c_addr, reg, val);
+>>>>>>> CHANGE (ce1a0c ps8xxx: disable DCI mode)
 
 	pd_device_accessed(port);
 	return rv;
@@ -60,14 +65,19 @@ int tcpc_write16(int port, int reg, int val)
 	return rv;
 }
 
-int tcpc_read(int port, int reg, int *val)
+int tcpc_addr_read(int port, int i2c_addr, int reg, int *val)
 {
 	int rv;
 
 	pd_wait_exit_low_power(port);
 
+<<<<<<< HEAD   (bd42a8 ps8xxx: stub out enter_low_power_mode)
 	rv = i2c_read8(tcpc_config[port].i2c_host_port,
 		       tcpc_config[port].i2c_slave_addr, reg, val);
+=======
+	rv = i2c_read8(tcpc_config[port].i2c_info.port,
+		       i2c_addr, reg, val);
+>>>>>>> CHANGE (ce1a0c ps8xxx: disable DCI mode)
 
 	pd_device_accessed(port);
 	return rv;
