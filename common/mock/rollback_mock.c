@@ -3,6 +3,11 @@
  * found in the LICENSE file.
  */
 
+/**
+ * @file
+ * @brief Mock rollback block library
+ */
+
 #include "mock/rollback_mock.h"
 
 #include <stdint.h>
