@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91879044_569f89d3",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T22:27:06Z",
+      "side": 1,
+      "message": "1) I\u0027m not qualified and have to reasonable way to verify this generated assembly, so would need a +2 from mschilder@ or ngm@ to land.\n2) what do we gain by changing the name IMEM_dcrypto -\u003e IMEM_dcrypto_p256?",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "ce20e8b106d184b826c440b109ce6c53a4afd6d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca0bbbfd_16a4240f",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T22:27:06Z",
+      "side": 1,
+      "message": "for my understanding: why do we now need to XOR k with rnd here? what\u0027s the point?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 2,
+        "endLine": 1036,
+        "endChar": 33
+      },
+      "revId": "ce20e8b106d184b826c440b109ce6c53a4afd6d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345c1fcd_f24ba124",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T22:27:06Z",
+      "side": 1,
+      "message": "shall it be moved to CL:1689274? or only needed with the new sequences?",
+      "range": {
+        "startLine": 434,
+        "startChar": 2,
+        "endLine": 434,
+        "endChar": 17
+      },
+      "revId": "ce20e8b106d184b826c440b109ce6c53a4afd6d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
