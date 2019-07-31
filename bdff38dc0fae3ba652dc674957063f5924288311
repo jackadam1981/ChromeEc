@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "c35a67cb_d6d58cc7",
+        "filename": "common/chipset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2019-07-31T02:11:29Z",
+      "side": 1,
+      "message": "you might also need to preserve this.",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "bdff38dc0fae3ba652dc674957063f5924288311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "567e2107_8dfc5b89",
         "filename": "common/main.c",
         "patchSetId": 2
