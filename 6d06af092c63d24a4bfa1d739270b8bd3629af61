@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4627dfc0_689d65fd",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2019-07-31T01:58:45Z",
+      "side": 1,
+      "message": "Kodama will use SMP and Celxpert smart battery, charging voltage is 4.4V and cut off command is different. How about using template for battery info as below?\nconst struct board_batt_params board_battery_info[] \u003d {\n\t[BATTERY_SIMPLO] \u003d {\n\t\t.fuel_gauge \u003d {\n\t\t\t.manuf_name \u003d \"SMP\",\n\t\t\t.ship_mode \u003d {\n\t\t\t\t.reg_addr \u003d 0x34,\n\t\t\t\t.reg_data \u003d { 0x0000, 0x1000 },\n\t\t\t},\n\t\t\t.fet \u003d {\n\t\t\t\t.reg_addr \u003d 0x34,\n\t\t\t\t.reg_mask \u003d 0x0100,\n\t\t\t\t.disconnect_val \u003d 0x0100,\n\t\t\t}\n\t\t},\n\t\t.batt_info \u003d {\n\t\t\t.voltage_max\t        \u003d 4400, /* mV */\n\t\t\t.voltage_normal\t\t\u003d 3860, /* mV */\n\t\t\t.voltage_min\t\t\u003d 3000, /* mV */\n\t\t\t.precharge_current\t\u003d 256,  /* mA */\n\t\t\t.start_charging_min_c\t\u003d 0,\n\t\t\t.start_charging_max_c\t\u003d 45,\n\t\t\t.charging_min_c\t\t\u003d 0,\n\t\t\t.charging_max_c\t\t\u003d 60,\n\t\t\t.discharging_min_c\t\u003d -20,\n\t\t\t.discharging_max_c\t\u003d 60,\n\t\t},\n\t},\n};",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "6d06af092c63d24a4bfa1d739270b8bd3629af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be73dcc0_18324d32",
         "filename": "baseboard/kukui/battery_smart.c",
         "patchSetId": 2
