@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaf3757_66c4fc93",
+        "filename": ".checkpatch.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T23:14:48Z",
+      "side": 1,
+      "message": "We still get compile time check for printf statements by matching %* and arguments, right? We\u0027re just giving up %p*? Can you clarify?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "ab1248a43519de6500798f35f16e8bce3abf91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
