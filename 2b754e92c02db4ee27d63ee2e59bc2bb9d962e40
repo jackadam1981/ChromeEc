@@ -70,6 +70,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a59fe7_86605e8c",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T23:30:36Z",
+      "side": 1,
+      "message": "Isn\u0027t it something like this?\n\n\tif (ptrspec \u003d\u003d \u0027T\u0027) {\n\t\t...\n\t} else {\n\t\tif (ptrspec !\u003d \u0027P\u0027)\n\t\t\tformat--;\n\t\t/* Print a raw pointer. */\n\t\tv \u003d (unsigned long)ptrval;\n\t\tif (sizeof(unsigned long) \u003d\u003d sizeof(uint64_t))\n\t\t\tflags |\u003d PF_64B\n\t}",
+      "parentUuid": "1390f327_d636410d",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
