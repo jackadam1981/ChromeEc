@@ -115,6 +115,7 @@
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_PS8751
 #define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USBC_SS_MUX
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
@@ -235,6 +236,7 @@ void board_reset_pd_mcu(void);
 /* Common definition for the USB PD interrupt handlers. */
 void tcpc_alert_event(enum gpio_signal signal);
 void bc12_interrupt(enum gpio_signal signal);
+void ppc_interrupt(enum gpio_signal signal);
 
 int board_is_convertible(void);
 void board_update_sensor_config_from_sku(void);
