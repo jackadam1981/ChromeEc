@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f603b47_e18bd178",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-31T00:33:36Z",
+      "side": 1,
+      "message": "Don\u0027t modify the copyright header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "08d4dd8dfbdf0567724997ea363480b3b8b8eb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13151352_b0d6694a",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-31T00:33:36Z",
+      "side": 1,
+      "message": "Should we get this from the command line instead?",
+      "range": {
+        "startLine": 391,
+        "startChar": 37,
+        "endLine": 391,
+        "endChar": 61
+      },
+      "revId": "08d4dd8dfbdf0567724997ea363480b3b8b8eb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940e1369_ff083aea",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-31T00:33:36Z",
+      "side": 1,
+      "message": "This is incorrect. If a board supports BC 1.2 detection, they will have CONFIG_USB_CHARGER defined. For the USB Type-C ports, I don\u0027t think we yet support BC 1.2 advertisement.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 0
+      },
+      "revId": "08d4dd8dfbdf0567724997ea363480b3b8b8eb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c2430f_3219526c",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-07-31T00:33:36Z",
+      "side": 1,
+      "message": "typo: \u0027twinkie\u0027",
+      "range": {
+        "startLine": 968,
+        "startChar": 9,
+        "endLine": 968,
+        "endChar": 15
+      },
+      "revId": "08d4dd8dfbdf0567724997ea363480b3b8b8eb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
