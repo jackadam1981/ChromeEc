@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "001fa373_fbee3e27",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T00:40:14Z",
+      "side": 1,
+      "message": "I suppose you can put these in another macro (e.g. IS_ENABLED_ERROR_MSG) and  undefine it for __clang__? Or maybe you can\u0027t because of \u0027cfg\u0027?",
+      "range": {
+        "startLine": 315,
+        "startChar": 40,
+        "endLine": 317,
+        "endChar": 49
+      },
+      "revId": "969744f4878048d49531934e0008fed440e6298a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
