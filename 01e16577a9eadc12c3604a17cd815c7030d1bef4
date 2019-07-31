@@ -329,6 +329,30 @@
       "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98fb7449_1dc613b9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2019-07-31T16:37:45Z",
+      "side": 1,
+      "message": "Where do you think will be an apt location to initiate cable discovery in this situation?\n\nI can add a flag that checks if the cable responded before and avoid re-discovery again. But in the situation where the swap fails, this might not work.",
+      "parentUuid": "89675f62_ffe64388",
+      "range": {
+        "startLine": 2149,
+        "startChar": 0,
+        "endLine": 2152,
+        "endChar": 26
+      },
+      "revId": "01e16577a9eadc12c3604a17cd815c7030d1bef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
