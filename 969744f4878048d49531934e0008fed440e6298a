@@ -22,6 +22,30 @@
       "revId": "969744f4878048d49531934e0008fed440e6298a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff6e370_f72c797c",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2019-07-31T14:48:33Z",
+      "side": 1,
+      "message": "+1 that would make it easier to read and reason about the differences.",
+      "parentUuid": "001fa373_fbee3e27",
+      "range": {
+        "startLine": 315,
+        "startChar": 40,
+        "endLine": 317,
+        "endChar": 49
+      },
+      "revId": "969744f4878048d49531934e0008fed440e6298a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
