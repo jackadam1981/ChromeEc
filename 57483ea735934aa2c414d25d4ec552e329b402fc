@@ -93,6 +93,30 @@
       "revId": "57483ea735934aa2c414d25d4ec552e329b402fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa4eb41_09f852ac",
+        "filename": "common/mock/README.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T18:03:09Z",
+      "side": 1,
+      "message": "Actually, that was a question for README markdown. A snippet like this is another place to update when something around the mock framework changes. So, I was wondering if we can do something like \u0027\u003cfuzz/fpsensor.mocklist\u003e\u0027 to include a fpsensor.mocklist and the markdown engine can merge fpsensor.mocklist into the README.md.",
+      "parentUuid": "1b0c574f_b86db772",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "57483ea735934aa2c414d25d4ec552e329b402fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
