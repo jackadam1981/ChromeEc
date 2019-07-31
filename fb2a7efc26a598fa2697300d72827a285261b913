@@ -45,6 +45,30 @@
       "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3405093_a2a52b83",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-31T02:39:48Z",
+      "side": 1,
+      "message": "Ideally yes, we should be checking if there is an active wake mask set and not update it with s0ix lazy mask.\n\nIn practice, it probably does not make a lot of difference because we are anyways waking the host for hang detect event.",
+      "parentUuid": "e2e93d60_21302130",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
