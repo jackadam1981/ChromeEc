@@ -34,15 +34,20 @@ static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-int tcpc_write(int port, int reg, int val)
+int tcpc_slave_write(int port, int i2c_slave_addr, int reg, int val)
 {
 	int rv;
 
 	pd_wait_exit_low_power(port);
 
+<<<<<<< HEAD   (dbe44d mkbp_event: Only notify MKBP via hostevent in suspend)
 	rv = i2c_write8(tcpc_config[port].i2c_info.port,
 			tcpc_config[port].i2c_info.addr_flags,
 			reg, val);
+=======
+	rv = i2c_write8(tcpc_config[port].i2c_host_port,
+			i2c_slave_addr, reg, val);
+>>>>>>> CHANGE (af90bc WIP: ps8xxx: disable DCI mode)
 
 	pd_device_accessed(port);
 	return rv;
@@ -62,15 +67,20 @@ int tcpc_write16(int port, int reg, int val)
 	return rv;
 }
 
-int tcpc_read(int port, int reg, int *val)
+int tcpc_slave_read(int port, int i2c_slave_addr, int reg, int *val)
 {
 	int rv;
 
 	pd_wait_exit_low_power(port);
 
+<<<<<<< HEAD   (dbe44d mkbp_event: Only notify MKBP via hostevent in suspend)
 	rv = i2c_read8(tcpc_config[port].i2c_info.port,
 		       tcpc_config[port].i2c_info.addr_flags,
 		       reg, val);
+=======
+	rv = i2c_read8(tcpc_config[port].i2c_host_port,
+		       i2c_slave_addr, reg, val);
+>>>>>>> CHANGE (af90bc WIP: ps8xxx: disable DCI mode)
 
 	pd_device_accessed(port);
 	return rv;

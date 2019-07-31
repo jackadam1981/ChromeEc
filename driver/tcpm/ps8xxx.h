@@ -9,10 +9,18 @@
 #define __CROS_EC_USB_PD_TCPM_PS8XXX_H
 
 /* I2C interface */
+<<<<<<< HEAD   (dbe44d mkbp_event: Only notify MKBP via hostevent in suspend)
 #define PS8751_I2C_ADDR1_FLAGS 0x0B
 #define PS8751_I2C_ADDR2_FLAGS 0x1B
 #define PS8751_I2C_ADDR3_FLAGS 0x2B
 #define PS8751_I2C_ADDR4_FLAGS 0x4B
+=======
+#define PS8751_I2C_ADDR1    0x16
+#define PS8751_I2C_ADDR1_P1 0x12
+#define PS8751_I2C_ADDR2    0x36
+#define PS8751_I2C_ADDR3    0x56
+#define PS8751_I2C_ADDR4    0x96
+>>>>>>> CHANGE (af90bc WIP: ps8xxx: disable DCI mode)
 
 /* Minimum Delay for reset assertion */
 #define PS8XXX_RESET_DELAY_MS 1
@@ -29,11 +37,16 @@
 
 #define PS8XXX_VENDOR_ID  0x1DA0
 #define PS8XXX_REG_I2C_DEBUGGING_ENABLE         0xA0
+#define PS8XXX_REG_I2C_DEBUGGING_ENABLE_ON      0x30
+#define PS8XXX_REG_I2C_DEBUGGING_ENABLE_OFF     0x31    /* default */
 #define PS8XXX_REG_BIST_CONT_MODE_BYTE0         0xBC
 #define PS8XXX_REG_BIST_CONT_MODE_BYTE1         0xBD
 #define PS8XXX_REG_BIST_CONT_MODE_BYTE2         0xBE
 #define PS8XXX_REG_BIST_CONT_MODE_CTR           0XBF
 #define PS8XXX_REG_DET_CTRL0                    0x08
+
+#define PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK	0xc0
+#define PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF	0x80
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
@@ -60,6 +73,9 @@
 #define HPD_IRQ BIT(1)
 
 #endif
+
+#define PS8751_REG_MUX_USB_DCI_CFG              0xED
+#define PS8805_P1_REG_MUX_USB_DCI_CFG           0x4B    /* on page 1 (0x12) */
 
 extern const struct tcpm_drv ps8xxx_tcpm_drv;
 void ps8xxx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq);
