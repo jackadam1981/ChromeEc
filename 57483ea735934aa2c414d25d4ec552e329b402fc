@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab766060_b1e4e7f8",
+        "filename": "common/mock/README.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-31T17:46:47Z",
+      "side": 1,
+      "message": "We can, checkout the latest PS.",
+      "parentUuid": "c5ea4e89_6eca7039",
+      "range": {
+        "startLine": 22,
+        "startChar": 19,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "57483ea735934aa2c414d25d4ec552e329b402fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ad1052f_dcd51f71",
         "filename": "common/mock/README.md",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-30T23:39:55Z",
       "side": 1,
       "message": "There is no function to include a (part of) file?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "57483ea735934aa2c414d25d4ec552e329b402fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b0c574f_b86db772",
+        "filename": "common/mock/README.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2019-07-31T17:46:47Z",
+      "side": 1,
+      "message": "There is currently no way to add part of a file, say one function, yet.\nThis could be added in the future, but I didn\u0027t see a reason to add function granularity yet.\n\nJust to be clear, this scheme does allow selecting individual files tho, so ROLLBACK would indicate the file(s) that pertain to rollback mock support.",
+      "parentUuid": "8ad1052f_dcd51f71",
       "range": {
         "startLine": 39,
         "startChar": 0,
