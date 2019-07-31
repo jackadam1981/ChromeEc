@@ -29,26 +29,10 @@ int board_is_sourcing_vbus(int port)
 	return 0;
 }
 
-void board_reset_pd_mcu(void)
-{
-	/* TODO */
-}
-
 uint32_t system_get_sku_id(void)
 {
 	/* TODO */
 	return 0;
-}
-
-uint16_t tcpc_get_alert_status(void)
-{
-	/* TODO */
-	return 0;
-}
-
-void tcpc_alert_event(enum gpio_signal signal)
-{
-	/* TODO */
 }
 
 int charger_get_vbus_voltage(int port)
