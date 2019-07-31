@@ -29,11 +29,16 @@
 
 #define PS8XXX_VENDOR_ID  0x1DA0
 #define PS8XXX_REG_I2C_DEBUGGING_ENABLE         0xA0
+#define PS8XXX_REG_I2C_DEBUGGING_ENABLE_ON      0x30
+#define PS8XXX_REG_I2C_DEBUGGING_ENABLE_OFF     0x31    /* default */
 #define PS8XXX_REG_BIST_CONT_MODE_BYTE0         0xBC
 #define PS8XXX_REG_BIST_CONT_MODE_BYTE1         0xBD
 #define PS8XXX_REG_BIST_CONT_MODE_BYTE2         0xBE
 #define PS8XXX_REG_BIST_CONT_MODE_CTR           0XBF
 #define PS8XXX_REG_DET_CTRL0                    0x08
+
+#define PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK	0xc0
+#define PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF	0x80
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
@@ -59,6 +64,9 @@
 #define HPD_IRQ (1 << 1)
 
 #endif
+
+#define PS8751_REG_MUX_USB_DCI_CFG              0xED
+#define PS8805_P1_REG_MUX_USB_DCI_CFG           0x4B    /* on page 1 (0x12) */
 
 extern const struct tcpm_drv ps8xxx_tcpm_drv;
 void ps8xxx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq);
