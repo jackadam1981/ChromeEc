@@ -142,6 +142,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e656c0e_7742199d",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-31T23:38:54Z",
+      "side": 1,
+      "message": "Yes, and now that format string that printed a pointer followed by FOO just broke:\n\n    CPRINTF(\"%pFOO\", some_pointer);\n\nHence, disallowing %p on it\u0027s own allows us to make extensions in the future.",
+      "parentUuid": "b7bb89ae_edd6d9eb",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
