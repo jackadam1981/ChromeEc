@@ -15,11 +15,6 @@
 #include "switch.h"
 #include "usb_charge.h"
 
-static void ppc_interrupt(enum gpio_signal signal)
-{
-	/* TODO */
-}
-
 #include "gpio_list.h"
 
 void board_update_sensor_config_from_sku(void)

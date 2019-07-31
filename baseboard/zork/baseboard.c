@@ -19,6 +19,7 @@
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
+#include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "ec_commands.h"
@@ -167,6 +168,37 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv
+	},
+
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv
+	},
+};
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+void ppc_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_USB_C0_PPC_INT_ODL:
+		sn5s330_interrupt(0);
+		break;
+
+	case GPIO_USB_C1_PPC_INT_ODL:
+		sn5s330_interrupt(1);
+		break;
+
+	default:
+		break;
+	}
+}
+
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USBC_PORT_C0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -260,6 +292,14 @@ static void baseboard_chipset_resume(void)
 	ioex_set_level(IOEX_KB_BL_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
+
+int ppc_get_alert_status(int port)
+{
+	if (port == USBC_PORT_C0)
+		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
+	else
+		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
+}
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
@@ -510,4 +550,20 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
+}
+
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+	switch (port) {
+	case USBC_PORT_C0:
+		gpio_set_level(IOEX_USB_C0_FAULT_ODL, is_overcurrented);
+		break;
+
+	case USBC_PORT_C1:
+		gpio_set_level(IOEX_USB_C1_FAULT_ODL, is_overcurrented);
+		break;
+
+	default:
+		break;
+	}
 }
