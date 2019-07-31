@@ -46,6 +46,29 @@
       "revId": "66ce80c7ff237e893014015b5f5fd88e088fa4d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a19fc48_82ff0720",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-07-31T15:33:01Z",
+      "side": 1,
+      "message": "Is it possible to use USB_PD_PORT_TCPC_0 here instead?  Not sure if the order of includes will generate correct macro expansion.  At a minimum, I\u0027d like a comment that ties together the hard-coded values back to the USB_PD_PORT_TCPC_n macros.",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "66ce80c7ff237e893014015b5f5fd88e088fa4d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
