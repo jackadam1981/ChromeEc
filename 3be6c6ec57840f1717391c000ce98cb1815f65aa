@@ -34,6 +34,24 @@
       "revId": "3be6c6ec57840f1717391c000ce98cb1815f65aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c2e671d_4c9f57ea",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1307278
+      },
+      "writtenOn": "2019-07-31T22:48:56Z",
+      "side": 1,
+      "message": "hmm I don\u0027t see it.. only one line difference.. I will ask him in DM lol",
+      "parentUuid": "df69af75_88c56b80",
+      "revId": "3be6c6ec57840f1717391c000ce98cb1815f65aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
