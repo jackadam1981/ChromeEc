@@ -46,6 +46,30 @@
       "revId": "b928ad4d9228a9536f1d18345849dcd8566b831e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dac3e5d_4408af46",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4901,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T00:28:46Z",
+      "side": 1,
+      "message": "Hmm..., I haven\u0027t seen it. What about:\n\n  Sensor %d:\n  (uint16):\n\n?",
+      "parentUuid": "3632f078_03c55437",
+      "range": {
+        "startLine": 4901,
+        "startChar": 15,
+        "endLine": 4901,
+        "endChar": 20
+      },
+      "revId": "b928ad4d9228a9536f1d18345849dcd8566b831e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
