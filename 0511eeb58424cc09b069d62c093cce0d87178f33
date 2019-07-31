@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eb12716_888f6fd5",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2019-07-31T17:02:47Z",
+      "side": 1,
+      "message": "Can you make this an enum now?  This will allow BUILD_ASSERTS on the tcpc_config, usb_muxes, and ioex_config arrays.\n\nAlso, change the names to include the \"USB_C0\" \"USB_C1\" names  found in the schematic. Maybe USB_PD_PORT_C0/C1, USB_NTC3807_C0/C1, or even USB_C0/C1_NTC3807  - but I\u0027m open to suggestions.\n \nAlso make sure to set CONFIG_IO_EXPANDER_PORT_COUNT to the COUNT value from the enum.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "0511eeb58424cc09b069d62c093cce0d87178f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
