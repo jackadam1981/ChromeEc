@@ -22,6 +22,30 @@
       "revId": "3ea584177eb2763b09a5eb276a0cd65a97b00a12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670e6066_adec82de",
+        "filename": "board/trembyle/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-31T18:20:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47848c97_4c589d44",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 71
+      },
+      "revId": "3ea584177eb2763b09a5eb276a0cd65a97b00a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
