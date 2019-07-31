@@ -485,6 +485,8 @@ static int command_pinmux(int argc, char **argv)
 		show_pinmux("DIOA", i, 0x28);
 	for (i = 0; i <= 7; i++)
 		show_pinmux("DIOB", i, 0xa0);
+	for (i = 0; i <= 1; i++)
+		show_pinmux("DIOV", i, 0xe8);
 
 	ccprintf("\n");
 

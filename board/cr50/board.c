@@ -1690,3 +1690,43 @@ void board_start_ite_sync(void)
 	/* Let the usb reply to make it to the host. */
 	hook_call_deferred(&deferred_ite_sync_reset_data, 10 * MSEC);
 }
+
+void board_unwedge_i2cs(void)
+{
+	int i;
+
+	/* Create connection between i2cs and the 'unwedge' GPIOs. */
+	/* First, disconnect the external pins from the i2cs controller. */
+	GWRITE(PINMUX, DIOA1_SEL, 0);
+	GWRITE(PINMUX, DIOA9_SEL, 0);
+
+	/* Connect the 'unwedge' GPIOs to the i2cs controller. */
+	GWRITE(PINMUX, VIO0_SEL, GC_PINMUX_I2CS0_SDA_SEL);
+	GWRITE(PINMUX, VIO1_SEL, GC_PINMUX_I2CS0_SCL_SEL);
+	GWRITE(PINMUX, GPIO1_GPIO5_SEL, GC_PINMUX_VIO0_SEL);
+	GWRITE(PINMUX, GPIO1_GPIO6_SEL, GC_PINMUX_VIO1_SEL);
+
+	gpio_set_level(GPIO_UNWEDGE_I2CS_SCL, 1);
+
+	/* 10 pulses should be more than enough in any case. */
+	for (i = 0; i < 20; i++) {
+		usleep(2);
+		gpio_set_level(GPIO_UNWEDGE_I2CS_SCL, i & 1);
+	}
+
+	/* Now create the 'stop' condition. */
+	gpio_set_level(GPIO_UNWEDGE_I2CS_SCL, 0);
+	gpio_set_level(GPIO_UNWEDGE_I2CS_SDA, 0);
+	usleep(2);
+	gpio_set_level(GPIO_UNWEDGE_I2CS_SCL, 1);
+	usleep(2);
+	gpio_set_level(GPIO_UNWEDGE_I2CS_SDA, 1);
+
+	/* Disconnect virtual pads. */
+	GWRITE(PINMUX, VIO0_SEL, 0);
+	GWRITE(PINMUX, VIO1_SEL, 0);
+
+	/* Restore external pins' connection to the i2cs controller. */
+	GWRITE(PINMUX, DIOA1_SEL, GC_PINMUX_I2CS0_SDA_SEL);
+	GWRITE(PINMUX, DIOA9_SEL, GC_PINMUX_I2CS0_SCL_SEL);
+}
