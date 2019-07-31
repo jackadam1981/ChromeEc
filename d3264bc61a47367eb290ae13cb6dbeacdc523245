@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0d1fbdad_95caa9dc",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T23:34:40Z",
+      "side": 1,
+      "message": "\u003e isn\u0027t \u0027borrow\u0027 fully wiped out in every two iterations - it is a 64 bit value each cycle shifted by 32 bits.\n\nthe important property of the right shift of signed integers is that it keeps the sign, so (-100 \u003e\u003e\u003d32) or  (-1 \u003e\u003e\u003d 32) will still be -1. this way it keeps -1 through cycles until there\u0027s a positive difference between a and b. so, this algo works when a[0] is the least significant word of the value (which I now realize it is). we go from least significant to most significant, and on each step get a negative value if a[i] \u003c b[i], preserve negatives as -1 when a[i] \u003d\u003d b[i], and drop |borrow| to 0 if a[i] \u003e b[i].",
+      "parentUuid": "cf6d62fa_77f0c8e7",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 819,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d769af55_5debe6d0",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 14
