@@ -136,8 +136,120 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+<<<<<<< HEAD   (ae164f nocturne: Only notify MKBP via hostevent in suspend)
+=======
+static int ps8xxx_get_chip_info(int port, int live,
+			struct ec_response_pd_chip_info_v1 **chip_info)
+{
+	int val;
+	int rv = tcpci_get_chip_info(port, live, chip_info);
+
+	if (rv)
+		return rv;
+
+	if (!live) {
+		(*chip_info)->vendor_id = PS8XXX_VENDOR_ID;
+		(*chip_info)->product_id = PS8XXX_PRODUCT_ID;
+	}
+
+	if ((*chip_info)->fw_version_number == 0 ||
+	    (*chip_info)->fw_version_number == -1 || live) {
+		rv = tcpc_read(port, FW_VER_REG, &val);
+
+		if (rv)
+			return rv;
+
+		(*chip_info)->fw_version_number = val;
+	}
+
+#if defined(CONFIG_USB_PD_TCPM_PS8751) && \
+	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC)
+	/*
+	 * Min firmware version of PS8751 to ensure that it can detect Vbus
+	 * properly. See b/109769787#comment7
+	 */
+	(*chip_info)->min_req_fw_version_number = 0x39;
+#endif
+
+	return rv;
+}
+
+
+/*
+ * DCI is enabled by default and burns about 40 mW when the port is in
+ * USB2 mode or when a C-to-A dongle is attached, so force it off.
+ */
+
+static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
+{
+	int status;
+	int dci;
+
+	status = tcpc_addr_read(port, i2c_addr, i2c_reg, &dci);
+	if (status != EC_SUCCESS)
+		return status;
+	if ((dci & PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK) !=
+	    PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF) {
+		dci &= ~PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK;
+		dci |= PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF;
+		if (tcpc_addr_write(port, i2c_addr, i2c_reg, dci) != EC_SUCCESS)
+			return status;
+	}
+	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_USB_PD_TCPM_PS8805
+static int ps8xxx_dci_disable(int port)
+{
+	int status, e;
+	int p1_addr;
+
+	status = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
+			    PS8XXX_REG_I2C_DEBUGGING_ENABLE_ON);
+	if (status != EC_SUCCESS)
+		return status;
+
+	p1_addr = tcpc_config[port].i2c_info.addr_flags -
+		(PS8751_I2C_ADDR1_FLAGS - PS8751_I2C_ADDR1_P1_FLAGS);
+	status = ps8xxx_addr_dci_disable(port, p1_addr,
+					 PS8805_P1_REG_MUX_USB_DCI_CFG);
+
+	e = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
+		       PS8XXX_REG_I2C_DEBUGGING_ENABLE_OFF);
+	if (e != EC_SUCCESS) {
+		if (status == EC_SUCCESS)
+			status = e;
+	}
+
+	return status;
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8805 */
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+static int ps8xxx_dci_disable(int port)
+{
+	int p3_addr;
+
+	p3_addr = tcpc_config[port].i2c_info.addr_flags;
+	return ps8xxx_addr_dci_disable(port, p3_addr,
+				       PS8751_REG_MUX_USB_DCI_CFG);
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8751 */
+
+static int ps8xxx_tcpm_init(int port)
+{
+	int status;
+
+	status = tcpci_tcpm_init(port);
+	if (status != EC_SUCCESS)
+		return status;
+
+	return ps8xxx_dci_disable(port);
+}
+
+>>>>>>> CHANGE (31b3a9 WIP: ps8xxx: disable DCI mode)
 const struct tcpm_drv ps8xxx_tcpm_drv = {
-	.init			= &tcpci_tcpm_init,
+	.init			= &ps8xxx_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
