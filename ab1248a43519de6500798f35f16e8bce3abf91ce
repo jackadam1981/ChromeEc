@@ -22,6 +22,30 @@
       "revId": "ab1248a43519de6500798f35f16e8bce3abf91ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039aeec5_a922dd68",
+        "filename": ".checkpatch.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T23:29:45Z",
+      "side": 1,
+      "message": "We are giving up on using Linux\u0027s checkpatch.pl for verifying printf %p. We had no %p extensions before, so this check did nothing in the past. Now because %pT doesn\u0027t exist in Linux, checkpatch.pl complains.\n\nMy goal is to turn on the format checking in the compiler, The compiler punts on %p for the most part, other than to validate that you do in fact pass a pointer. But given that we don\u0027t make any effort to match Linux\u0027s behavior for %p extensions, using checkpatch.pl to validate %p doesn\u0027t make sense either way.",
+      "parentUuid": "7aaf3757_66c4fc93",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "ab1248a43519de6500798f35f16e8bce3abf91ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
