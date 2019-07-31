@@ -22,6 +22,30 @@
       "revId": "b29533097408bbc72dde6bb897458fe1e89070ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83c3086_b7eb4cfb",
+        "filename": "common/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T22:23:34Z",
+      "side": 1,
+      "message": "Oops, you can tell I\u0027m a kernel developer :)",
+      "parentUuid": "73e6cecb_017c5954",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 38
+      },
+      "revId": "b29533097408bbc72dde6bb897458fe1e89070ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
