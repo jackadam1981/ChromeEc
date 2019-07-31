@@ -20,6 +20,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -173,17 +174,17 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = NCT38xx_I2C_ADDR1_1_FLAGS,
 		},
-		.drv = &ps8xxx_tcpm_drv,
+		.drv = &nct38xx_tcpm_drv,
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC1,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = NCT38xx_I2C_ADDR1_1_FLAGS,
 		},
-		.drv = &ps8xxx_tcpm_drv,
+		.drv = &nct38xx_tcpm_drv,
 	},
 };
 
@@ -198,6 +199,101 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
 };
+
+/* Power Delivery and charging functions */
+void baseboard_tcpc_init(void)
+{
+	/* Enable PPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+
+	/* Enable BC 1.2 interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int level;
+
+	/*
+	 * Check which port has the ALERT line set and ignore if that TCPC has
+	 * its reset line active.
+	 */
+	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USB_C0_TCPC_RST_L) != level)
+			status |= PD_STATUS_TCPC_ALERT_0;
+	}
+
+	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_TCPC_1].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USB_C1_TCPC_RST_L) != level)
+			status |= PD_STATUS_TCPC_ALERT_1;
+	}
+
+	return status;
+}
+
+static void reset_pd_port(int port, enum gpio_signal reset_gpio,
+			  int hold_delay, int finish_delay)
+{
+	int level = !!(tcpc_config[port].flags & TCPC_FLAGS_RESET_ACTIVE_HIGH);
+
+	gpio_set_level(reset_gpio, level);
+	msleep(hold_delay);
+	gpio_set_level(reset_gpio, !level);
+	if (finish_delay)
+		msleep(finish_delay);
+}
+
+void board_reset_pd_mcu(void)
+{
+	/*
+	 * TODO(b/130194590): This should be replaced with a common function
+	 * once the gpio signal and delays are added to tcpc_config struct.
+	 */
+
+	/* Assert reset to TCPC for required delay if we have a battery. */
+	if (battery_is_present() != BP_YES)
+		return;
+
+	/* Reset TCPC0 */
+	reset_pd_port(USB_PD_PORT_TCPC_0, GPIO_USB_C0_TCPC_RST_L,
+		      BOARD_TCPC_C0_RESET_HOLD_DELAY,
+		      BOARD_TCPC_C0_RESET_POST_DELAY);
+
+	/* Reset TCPC1 */
+	reset_pd_port(USB_PD_PORT_TCPC_1, GPIO_USB_C1_TCPC_RST_L,
+		      BOARD_TCPC_C1_RESET_HOLD_DELAY,
+		      BOARD_TCPC_C1_RESET_POST_DELAY);
+}
+
+void tcpc_alert_event(enum gpio_signal signal)
+{
+	int port = -1;
+
+	switch (signal) {
+	case GPIO_USB_C0_TCPC_INT_ODL:
+		port = 0;
+		break;
+	case GPIO_USB_C1_TCPC_INT_ODL:
+		port = 1;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
+}
 
 void bc12_interrupt(enum gpio_signal signal)
 {
