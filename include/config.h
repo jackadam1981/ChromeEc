@@ -4817,5 +4817,4 @@
 
 #endif
 
-
 #endif  /* __CROS_EC_CONFIG_H */
