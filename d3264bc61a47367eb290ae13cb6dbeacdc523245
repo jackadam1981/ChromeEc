@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cf6d62fa_77f0c8e7",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-31T22:08:11Z",
+      "side": 1,
+      "message": "I still don\u0027t get this: isn\u0027t \u0027borrow\u0027 fully wiped out in every two iterations - it is a 64 bit value each cycle shifted by 32 bits.\n\nI.e. if the difference is more than two digits away from the MSB, it will be lost?",
+      "parentUuid": "fdbe8769_c2bce8d5",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 819,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d769af55_5debe6d0",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 14
@@ -60,6 +84,30 @@
       "writtenOn": "2019-07-31T21:08:53Z",
       "side": 1,
       "message": "so, just\n  result \u003d hmac_drbg_generate_p256(drbg, output);\n  if (result)\n    return result;\nthen?",
+      "range": {
+        "startLine": 976,
+        "startChar": 2,
+        "endLine": 978,
+        "endChar": 9
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7286b117_8fc969bd",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2019-07-31T22:08:11Z",
+      "side": 1,
+      "message": "or even\n\ndo {\n\t\tresult \u003d hmac_drbg_generate_p256(drbg, output);\n\n} while (!result \u0026\u0026 (p256_lt(output, \u0026SECP256r1_nMin1) \u003e\u003d 0));",
+      "parentUuid": "d769af55_5debe6d0",
       "range": {
         "startLine": 976,
         "startChar": 2,
