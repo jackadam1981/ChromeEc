@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "950da8fe_e17677c5",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-31T03:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d999fe2_fc51ee7a",
+      "range": {
+        "startLine": 18,
+        "startChar": 41,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51d15bf9_e8f59b24",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 34
@@ -45,6 +69,30 @@
       "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7b0e532_0777eb8a",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-31T03:44:16Z",
+      "side": 1,
+      "message": "Done by changed the function name.",
+      "parentUuid": "51d15bf9_e8f59b24",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6e9c5a01_3a760a64",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-31T03:44:16Z",
+      "side": 1,
+      "message": "[obsolete] add comment: audio_buf_rp is only written by host command task, no need to lock\n\nbut I want to simplify the function a bit",
+      "parentUuid": "23bfec39_af905fb3",
+      "range": {
+        "startLine": 204,
+        "startChar": 52,
+        "endLine": 204,
+        "endChar": 64
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb44019d_74e0100a",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 34
@@ -82,6 +154,30 @@
       "writtenOn": "2019-07-30T18:09:24Z",
       "side": 1,
       "message": "Do you really need to -1 here?\n\ne.g. if:\n - wp \u003d 0\n - rp \u003d 10\n\nThen it should be safe to request 10 bytes, right? (indexes 0 to 9)",
+      "range": {
+        "startLine": 304,
+        "startChar": 37,
+        "endLine": 304,
+        "endChar": 40
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0e77d1b_6ce542f4",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-31T03:44:16Z",
+      "side": 1,
+      "message": "We need to waste one byte space to separate:\n- empty\n- full\n\nOverrun is bad.  The code here tries to give AP one more chance (~1ms) to read to avoid overrun.",
+      "parentUuid": "cb44019d_74e0100a",
       "range": {
         "startLine": 304,
         "startChar": 37,
@@ -114,6 +210,30 @@
       "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665892ee_c7a889c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 4815,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2019-07-31T03:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47c0bb05_3223d727",
+      "range": {
+        "startLine": 4815,
+        "startChar": 7,
+        "endLine": 4815,
+        "endChar": 18
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
