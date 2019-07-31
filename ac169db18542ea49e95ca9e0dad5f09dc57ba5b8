@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5e20234a_4a5adc37",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-31T15:56:08Z",
+      "side": 1,
+      "message": "Sorry, merging the 2 functions is better. Everytime you call check_lang_hash you also call check_lang_buf_tail_zero...",
+      "parentUuid": "f7b0e532_0777eb8a",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23bfec39_af905fb3",
         "filename": "common/audio_codec_wov.c",
         "patchSetId": 34
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "We need to waste one byte space to separate:\n- empty\n- full\n\nOverrun is bad.  The code here tries to give AP one more chance (~1ms) to read to avoid overrun.",
       "parentUuid": "cb44019d_74e0100a",
+      "range": {
+        "startLine": 304,
+        "startChar": 37,
+        "endLine": 304,
+        "endChar": 40
+      },
+      "revId": "ac169db18542ea49e95ca9e0dad5f09dc57ba5b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a916726_44f5e9c6",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-31T15:56:08Z",
+      "side": 1,
+      "message": "You need to document this in the code, this was not clear to me. Maybe at the top of the file where you describe what rp/wp is.",
+      "parentUuid": "f0e77d1b_6ce542f4",
       "range": {
         "startLine": 304,
         "startChar": 37,

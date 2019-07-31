@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d208eab1_59a069e8",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-31T15:56:08Z",
+      "side": 1,
+      "message": "Ok, so there is an overrun if audio_buf_rp \u003d\u003d audio_buf_wp + 1 .\n\nBut what if audio_buf_rp \u003d 0 and audio_buf_wp \u003d AUDIO_BUF_LEN - 1? In this case req \u003d 1 and you don\u0027t detect the overrun. Is that a problem?",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ca1735d_58fb5aee",
+        "filename": "common/audio_codec_wov.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2019-07-31T15:56:08Z",
+      "side": 1,
+      "message": "Is it really necessary to sleep in this case? I mean, you know there is more data to be read already.",
+      "revId": "5116c2dc9a1ddf8adc0c6232aed2824c73a7b44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
