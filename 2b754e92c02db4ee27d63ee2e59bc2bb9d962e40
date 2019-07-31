@@ -46,6 +46,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1390f327_d636410d",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T23:25:02Z",
+      "side": 1,
+      "message": "Yeah, as Jack said, if you want %p to work by itself then you\u0027ll need to be comfortable with the idea that anything except for a space after %p might quietly break someday. Disallowing %p with an unknown character after it does change behavior, but ensures you won\u0027t hit that problem when you extend %p in the future.",
+      "parentUuid": "a6369543_566845cf",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
