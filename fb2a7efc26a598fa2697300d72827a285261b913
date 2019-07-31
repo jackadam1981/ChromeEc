@@ -117,6 +117,30 @@
       "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d5d8c7_8a608e56",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2019-07-31T18:14:22Z",
+      "side": 1,
+      "message": "@fruquan\nThink of this scenario. Mkbp event is not part of lazy mask. It is later set as part of active mask at boot. You see hang_detect \u003d\u003d\u003e you overwrite active mask with lazy wake mask. From now on mkbp events will not wake the device anymore. Or am I missing something ?",
+      "parentUuid": "4d28cf05_715ee6ca",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
