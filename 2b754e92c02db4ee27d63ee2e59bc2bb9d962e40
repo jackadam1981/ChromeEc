@@ -94,6 +94,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb592af_3f2d4301",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-31T23:33:30Z",
+      "side": 1,
+      "message": "Yes, but this causes the extensibility issues mentioned above. We won\u0027t be able to (safely) go add more %p extensions in the future without sorting thru a lot of printf usages if we do this...",
+      "parentUuid": "32a59fe7_86605e8c",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
