@@ -175,8 +175,40 @@ static int ps8xxx_enter_low_power_mode(int port)
 }
 #endif
 
+static int ps8xxx_tcpm_init(int port)
+{
+	int status;
+
+	status = tcpci_tcpm_init(port);
+	if (status != EC_SUCCESS)
+		return status;
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	{
+	int dci;
+
+	status = tcpc_read(port, PS8XXX_REG_MUX_USB_DCI_CFG, &dci);
+	if (status != EC_SUCCESS) {
+		ccprintf("p%d read DCI_CFG failed", port);
+		return status;
+	}
+	if ((dci & PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK) !=
+	    PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF) {
+		dci &= ~PS8XXX_REG_MUX_USB_DCI_CFG_MODE_MASK;
+		dci |= PS8XXX_REG_MUX_USB_DCI_CFG_MODE_OFF;
+		if (tcpc_write(port, PS8XXX_REG_MUX_USB_DCI_CFG, dci) !=
+		    EC_SUCCESS) {
+			ccprintf("p%d write DCI_CFG failed", port);
+			return status;
+		}
+	}
+	}
+#endif /* CONFIG_USB_PD_TCPM_PS8751 */
+	return EC_SUCCESS;
+}
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
-	.init			= &tcpci_tcpm_init,
+	.init			= &ps8xxx_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
