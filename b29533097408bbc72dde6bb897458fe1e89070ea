@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73e6cecb_017c5954",
+        "filename": "common/printf.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-31T22:14:08Z",
+      "side": 1,
+      "message": "as in if (IS_ENABLED(CONFIG_CONSOLE_VERBOSE)) { ... }\n\nMacro was not meant to be used like this with preprocessor.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 38
+      },
+      "revId": "b29533097408bbc72dde6bb897458fe1e89070ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
