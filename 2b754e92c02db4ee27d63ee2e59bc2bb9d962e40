@@ -190,6 +190,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a325fbb6_f6ac4f3a",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2019-07-31T23:55:46Z",
+      "side": 1,
+      "message": "We could (very) easily miss a case written like this:\n\n    CPRINTF(\"%p\"\n            \"FOO\");\n\ndisallowing %p is not so bad... compared to the alternatives here.",
+      "parentUuid": "93744317_c088cc81",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
