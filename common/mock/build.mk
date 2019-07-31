@@ -4,4 +4,6 @@
 
 # See common/mock/README.md for more information.
 
+mock-$(HAS_MOCK_FP_SENSOR) += fp_sensor_mock.o
+mock-$(HAS_MOCK_MKBP_EVENTS) += mkbp_events_mock.o
 mock-$(HAS_MOCK_ROLLBACK) += rollback_mock.o
