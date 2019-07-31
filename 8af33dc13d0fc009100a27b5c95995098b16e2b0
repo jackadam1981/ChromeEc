@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baabf9a7_d1822787",
+        "filename": "common/mock/rollback_mock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T18:12:24Z",
+      "side": 1,
+      "message": "It\u0027s an interesting prototype. How do we avoid overflowing a buffer pointed by \u003csecret\u003e?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "8af33dc13d0fc009100a27b5c95995098b16e2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9412c12_ac4f751e",
+        "filename": "fuzz/host_command_fuzz.mocklist",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T18:12:24Z",
+      "side": 1,
+      "message": "The filename should include \u0027fp\u0027, right?",
+      "revId": "8af33dc13d0fc009100a27b5c95995098b16e2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
