@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c45023a5_6883229d",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T21:56:56Z",
+      "side": 1,
+      "message": "Yes, sorry I missed that in your previous feedback.",
+      "parentUuid": "b4e7a486_206ed7e6",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 6
+      },
+      "revId": "b3a71498d3d0419bde7a1150c60d5fd2e0457a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed0c5499_0b34299e",
         "filename": "common/printf.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "bae0b7f7_79827a5e",
+        "filename": "common/printf.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T21:56:56Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll disallow %p\u003cinvalid\u003e, and have %pP for raw pointers.",
+      "parentUuid": "6c323021_c72ec836",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "b3a71498d3d0419bde7a1150c60d5fd2e0457a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b309ef8e_0edcaf06",
         "filename": "include/console.h",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2019-07-20T00:29:59Z",
       "side": 1,
       "message": "What about PRINTF_TIMESTAMP?",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "b3a71498d3d0419bde7a1150c60d5fd2e0457a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0449f55e_2a86c771",
+        "filename": "include/console.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T21:56:56Z",
+      "side": 1,
+      "message": "I find that weird. What you\u0027re supposed to pass as the printf argument is a pointer of type timestamp. This define is a special value of that type that represents \"now\". So when you see printf(\"%pT\", PRINTF_TIMESTAMP), it\u0027s kinda weird, since you\u0027d be passing something whose name is the type, the equivalent in weirdness of printf(\"%d\", PRINTF_INT). If it\u0027s okay with you to keep the _now, it makes more sense to me since it\u0027s saying \"print a timestamp, and use the special value that translates to \u0027now\u0027\".",
+      "parentUuid": "b309ef8e_0edcaf06",
       "range": {
         "startLine": 13,
         "startChar": 8,
