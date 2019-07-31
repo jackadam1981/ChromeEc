@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "85ca867b_2e299707",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1357421
+      },
+      "writtenOn": "2019-07-31T10:29:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100ab3a2_9595cb3e",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "725f14c2_4368b000",
         "filename": "common/uart_buffering.c",
         "patchSetId": 1
@@ -349,6 +367,24 @@
       "writtenOn": "2019-07-25T02:44:31Z",
       "side": 1,
       "message": "Preserve EC logs in SRAM across EC resets/sysjump.\n\nDid you check that it works across sysjump too?",
+      "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634d9121_798c005f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3509,
+      "author": {
+        "id": 1357421
+      },
+      "writtenOn": "2019-07-31T10:29:56Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "65aa3b7a_ccfa9b2a",
       "revId": "a5af9a15f95ea2a69c9cc2b2b67ed4d7e2bbf232",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
