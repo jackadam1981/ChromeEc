@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4766ee23_58a5241e",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-07-31T06:05:36Z",
+      "side": 1,
+      "message": "Since the only change is frequency, you can add a macro VARIANT_I2C_SPEED which can be set to 98 for helios.\n\nAnd in baseboard you can have a DEFAULT_I2C_SPEED as 100. And finally I2C_SPEED can be set to VARIANT_I2C_SPEED if it is defined, else to DEFAULT_I2C_SPEED. And use I2C_SPEED in i2c_ports[] here.",
+      "range": {
+        "startLine": 80,
+        "startChar": 31,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "e9e4162ebb9d2e2b4fa6394c5b7cb5d4dec81a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
