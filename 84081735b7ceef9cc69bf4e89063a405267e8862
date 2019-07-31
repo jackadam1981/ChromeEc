@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46f75e4d_cf0c4629",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T22:34:09Z",
+      "side": 1,
+      "message": "for my understanding: why do we care about the copy order permutation? what is the side channel we are defeating this way?",
+      "range": {
+        "startLine": 1222,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 36
+      },
+      "revId": "84081735b7ceef9cc69bf4e89063a405267e8862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519f42ce_3c34909b",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2019-07-31T22:34:09Z",
+      "side": 1,
+      "message": "nit: signature?",
+      "range": {
+        "startLine": 163,
+        "startChar": 20,
+        "endLine": 163,
+        "endChar": 27
+      },
+      "revId": "84081735b7ceef9cc69bf4e89063a405267e8862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
