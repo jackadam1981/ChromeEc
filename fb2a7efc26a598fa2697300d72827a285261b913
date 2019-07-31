@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7eee28b8_23569593",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T18:08:51Z",
+      "side": 1,
+      "message": "Are you saying you\u0027re worried about the timeout firing on resume, where we exited S0ix but never got the resume message? So the system\u0027s in S0, power_update_wake_mask() thinks it\u0027s cleared it, and then we end up clobbering it here?\n\nWe call power_update_wake_mask() again from s0ix_complete_resume(), so when the host finally does wake up and send us the resume message, we sync up the wake mask with the power state (S0) again.",
+      "parentUuid": "c95929a6_495c4505",
+      "range": {
+        "startLine": 274,
+        "startChar": 31,
+        "endLine": 274,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2e93d60_21302130",
         "filename": "power/intel_x86.c",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Ideally yes, we should be checking if there is an active wake mask set and not update it with s0ix lazy mask.\n\nIn practice, it probably does not make a lot of difference because we are anyways waking the host for hang detect event.",
       "parentUuid": "e2e93d60_21302130",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d28cf05_715ee6ca",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2019-07-31T18:08:51Z",
+      "side": 1,
+      "message": "Yeah, I think this is not the only place where who really owns the wake mask seems a bit fuzzy.",
+      "parentUuid": "f3405093_a2a52b83",
       "range": {
         "startLine": 281,
         "startChar": 2,
