@@ -25,6 +25,64 @@
     },
     {
       "key": {
+        "uuid": "cde07992_5e6fc1e2",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-07-31T03:31:22Z",
+      "side": 1,
+      "message": "If battery info of each project is different from other boards. How about move battery info to corresponding board like other baseboards(for example: Hatch, Octopus).",
+      "parentUuid": "4627dfc0_689d65fd",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "6d06af092c63d24a4bfa1d739270b8bd3629af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b733459_6e8d36e6",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-07-31T03:31:22Z",
+      "side": 1,
+      "message": "Should we use a function like battery_get_disconnect_state() in battery_fuel_gauge.c?\n.fet \u003d {\n\t\t\t\t.reg_addr \u003d 0x34,\n\t\t\t\t.reg_mask \u003d 0x0100,\n\t\t\t\t.disconnect_val \u003d 0x0100,\n\t\t\t}\n\t\t},",
+      "revId": "6d06af092c63d24a4bfa1d739270b8bd3629af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a0581a_bbd41c51",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2019-07-31T03:31:22Z",
+      "side": 1,
+      "message": "Also the ship mode(battery cutoff )\n.ship_mode \u003d {\n\t\t\t\t.reg_addr \u003d 0x34,\n\t\t\t\t.reg_data \u003d { 0x0000, 0x1000 },\n\t\t\t},\nSB_SHIP_MODE_REG is 0x34, SB_SHUTDOWN_DATA is first write 0x0000,then 0x1000 \nlike battery_fuel_gauge.c do?",
+      "revId": "6d06af092c63d24a4bfa1d739270b8bd3629af61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be73dcc0_18324d32",
         "filename": "baseboard/kukui/battery_smart.c",
         "patchSetId": 2
