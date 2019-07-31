@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be878779_2f2e8d15",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-31T20:16:00Z",
+      "side": 1,
+      "message": "I think we\u0027re ok to assume GPIO_USB_C0_TCPC_RST_L is active low, and skip looking at TCPC_FLAGS_RESET_ACTIVE_HIGH",
+      "revId": "edb293b0f3606a820a631552d891bf9dae4944a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd12306_f6a9dec9",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-31T20:16:00Z",
+      "side": 1,
+      "message": "Don\u0027t think b/130194590 applies, since we can assume all variants use same TCPC configuration.",
+      "revId": "edb293b0f3606a820a631552d891bf9dae4944a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5ba5d7_c5e63eb0",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-31T20:16:00Z",
+      "side": 1,
+      "message": "Let\u0027s try without this condition: it wasn\u0027t needed on Grunt.",
+      "revId": "edb293b0f3606a820a631552d891bf9dae4944a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad874a4_7104d9f1",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-07-31T20:16:00Z",
+      "side": 1,
+      "message": "Can assume NCT3807 in baseboard.c to avoid this.",
+      "revId": "edb293b0f3606a820a631552d891bf9dae4944a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
