@@ -166,6 +166,30 @@
       "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93744317_c088cc81",
+        "filename": "common/printf.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2019-07-31T23:52:38Z",
+      "side": 1,
+      "message": "I see. \n\nWhen we add %pF, we\u0027ll just change all %pF to %pPF (if there is any). The 2nd option I prefer is to go back to ps2. I think least preferred option is disallowing %p. That would make our printf look odd, wouldn\u0027t it?",
+      "parentUuid": "5e656c0e_7742199d",
+      "range": {
+        "startLine": 250,
+        "startChar": 5,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "2b754e92c02db4ee27d63ee2e59bc2bb9d962e40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
