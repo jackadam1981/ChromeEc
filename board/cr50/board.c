@@ -777,6 +777,12 @@ static void board_init(void)
 		GWRITE_FIELD(RBOX, INT_ENABLE, INTR_BUTTON_COMBO0_RDY, 1);
 	}
 
+	/* Create a flash region window for INFO1 access. */
+	GREG32(GLOBALSEC, FLASH_REGION7_BASE_ADDR) = FLASH_INFO_MEMORY_BASE;
+	GREG32(GLOBALSEC, FLASH_REGION7_SIZE) = FLASH_INFO_SIZE - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION7_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION7_CTRL, RD_EN, 1);
+
 	/*
 	 * Note that the AP, EC, and servo state machines do not have explicit
 	 * init_xxx_state() functions, because they don't need to configure
