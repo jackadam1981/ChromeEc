@@ -113,6 +113,7 @@ static void init_port(int port, int rev)
 	pd_port[port].data_role = PD_ROLE_UFP;
 	pd_port[port].msg_tx_id = 0;
 	pd_port[port].msg_rx_id = 0;
+
 	tcpm_init(port);
 	tcpm_set_polarity(port, 0);
 	tcpm_set_rx_enable(port, 0);
@@ -736,6 +737,21 @@ static int test_initial_states(void)
 	return EC_SUCCESS;
 }
 
+static int test_prl_reset(void)
+{
+	int port = PORT0;
+
+	enable_prl(port, 1);
+	prl_reset(port);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(10 * MSEC);
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
 static int test_send_ctrl_msg(void)
 {
 	int i;
@@ -1316,6 +1332,7 @@ void run_test(void)
 
 	/* Test PD 2.0 Protocol */
 	init_port(PORT0, PD_REV20);
+	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_initial_states);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
@@ -1333,6 +1350,7 @@ void run_test(void)
 
 	/* Test PD 3.0 Protocol */
 	init_port(PORT0, PD_REV30);
+	RUN_TEST(test_prl_reset);
 	RUN_TEST(test_initial_states);
 	RUN_TEST(test_send_ctrl_msg);
 	RUN_TEST(test_send_ctrl_msg_with_retry_and_fail);
