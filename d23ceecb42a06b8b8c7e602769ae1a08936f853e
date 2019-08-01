@@ -70,6 +70,30 @@
       "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1f3a763_3d1c0d15",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2019-08-01T18:05:41Z",
+      "side": 1,
+      "message": "Yes, the eMarker replies to a DiscIdent message with an SOP\u0027 header. However, I think we still need to consider our Vconn source role. We should ignore SOP\u0027/SOP\" if we are not the Vconn source.",
+      "parentUuid": "7fd1d61b_2444bafa",
+      "range": {
+        "startLine": 1820,
+        "startChar": 7,
+        "endLine": 1821,
+        "endChar": 48
+      },
+      "revId": "d23ceecb42a06b8b8c7e602769ae1a08936f853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
