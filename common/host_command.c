@@ -776,6 +776,30 @@ DECLARE_HOST_COMMAND(EC_CMD_TEST_PROTOCOL,
 		     host_command_test_protocol,
 		     EC_VER_MASK(0));
 
+#if defined(SECTION_IS_RW)
+static int host_command_test_max_transfer(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_max_transfer *p = args->params;
+	struct ec_response_max_transfer *r = args->response;
+	int p_size = args->params_size;
+
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+
+	if (p_size > args->response_max)
+		return EC_RES_OVERFLOW;
+
+	/* Copy input to response */
+	memcpy(r->data, p->data, p_size);
+
+	args->response_size = p_size;
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_TEST_MAX_TRANSFER, host_command_test_max_transfer,
+		     EC_VER_MASK(EC_VER_TEST_MAX_TRANSFER));
+#endif
+
 /* Returns supported features. */
 static int host_command_get_features(struct host_cmd_handler_args *args)
 {

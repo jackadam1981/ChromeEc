@@ -273,6 +273,10 @@ const char help_str[] =
 	"      Print temperature.\n"
 	"  tempsinfo <sensorid>\n"
 	"      Print temperature sensor info.\n"
+	"  test result length [version]\n"
+	"      test EC command protocol\n"
+	"  testmaxtransfer\n"
+	"      Test sending/receiving max data that protocol/bus supports\n"
 	"  thermalget <platform-specific args>\n"
 	"      Get the threshold temperature values from the thermal engine.\n"
 	"  thermalset <platform-specific args>\n"
@@ -1107,6 +1111,44 @@ int cmd_flash_info(int argc, char *argv[])
 		/* Fields added in ver.1 available */
 		printf("WriteIdealSize %d\nFlags 0x%x\n",
 		       r.write_ideal_size, r.flags);
+	}
+
+	return 0;
+}
+
+int cmd_test_max_transfer(int argc, char **argv)
+{
+	struct ec_params_max_transfer *p;
+	struct ec_response_max_transfer *r;
+	size_t p_size;
+	size_t r_size;
+	int rv;
+	int i;
+
+	p = ec_outbuf;
+	p_size = ec_max_outsize;
+	r = ec_inbuf;
+	r_size = ec_max_insize;
+
+	fprintf(stderr, "Testing with param size: %zu, response size: %zu\n",
+		p_size, r_size);
+
+	/* Not truly random, but we just want non-zero data. */
+	for (i = 0; i < p_size; i++)
+		p->data[i] = rand();
+	memset(r, 0, r_size);
+
+	rv = ec_command(EC_CMD_TEST_MAX_TRANSFER, EC_VER_TEST_MAX_TRANSFER, p,
+			p_size, r, r_size);
+
+	if (rv < 0) {
+		fprintf(stderr, "Max transfer command failed\n");
+		return -1;
+	}
+
+	if (memcmp(p, r, p_size) != 0) {
+		fprintf(stderr, "Returned value does not match\n");
+		return -1;
 	}
 
 	return 0;
@@ -9017,6 +9059,7 @@ const struct command commands[] = {
 	{"temps", cmd_temperature},
 	{"tempsinfo", cmd_temp_sensor_info},
 	{"test", cmd_test},
+	{"testmaxtransfer", cmd_test_max_transfer},
 	{"thermalget", cmd_thermal_get_threshold},
 	{"thermalset", cmd_thermal_set_threshold},
 	{"tpselftest", cmd_tp_self_test},

@@ -1750,6 +1750,21 @@ struct ec_params_flash_select {
 } __ec_align4;
 
 
+
+#define EC_CMD_TEST_MAX_TRANSFER	0x001B
+#define EC_VER_TEST_MAX_TRANSFER 0
+
+struct ec_params_max_transfer {
+	uint8_t data[0];
+} __ec_align4;
+
+struct ec_response_max_transfer {
+	uint8_t data[0];
+} __ec_align4;
+
+BUILD_ASSERT(sizeof(struct ec_response_max_transfer) == 0);
+BUILD_ASSERT(sizeof(struct ec_params_max_transfer) == 0);
+
 /*****************************************************************************/
 /* PWM commands */
 
