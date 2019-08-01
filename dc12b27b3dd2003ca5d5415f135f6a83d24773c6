@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "20be7bcd_973b485e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2019-08-01T23:59:49Z",
+      "side": 1,
+      "message": "Oh, I meant trim down the description.",
+      "parentUuid": "d9cf3938_8613a516",
+      "revId": "dc12b27b3dd2003ca5d5415f135f6a83d24773c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48b3cefd_f8ec717b",
         "filename": "baseboard/zork/baseboard.c",
         "patchSetId": 7
