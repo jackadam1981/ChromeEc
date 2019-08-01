@@ -141,6 +141,30 @@
       "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc97be32_85e5d296",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2019-08-01T02:43:27Z",
+      "side": 1,
+      "message": "The reason this code is taking over the wake mask is to set the hang detect bit to wake the system right away. Once the system wakes up, the active mask will anyways be reset to 0.",
+      "parentUuid": "78d5d8c7_8a608e56",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "fb2a7efc26a598fa2697300d72827a285261b913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
