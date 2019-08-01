@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d59713c8_5cd9d106",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-08-01T09:56:45Z",
+      "side": 1,
+      "message": "I can convert this to IS_ENABLED.\nBut, because all the set_vconn() are behind CONFIG_USBC_VCONN in common level, shall we remove this config in driver level?",
+      "parentUuid": "b2b77928_a5716e36",
+      "range": {
+        "startLine": 490,
+        "startChar": 7,
+        "endLine": 490,
+        "endChar": 24
+      },
+      "revId": "0f4a357af58b50df093b83417160bd90924f5b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d72defe_16e17cef",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-31T21:05:03Z",
       "side": 1,
       "message": "Can you elaborate this? Is it referring to line 276?",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 55
+      },
+      "revId": "0f4a357af58b50df093b83417160bd90924f5b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7615cf56_f8763a73",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2019-08-01T09:56:45Z",
+      "side": 1,
+      "message": "Done.\nYes.",
+      "parentUuid": "2d72defe_16e17cef",
       "range": {
         "startLine": 515,
         "startChar": 5,
