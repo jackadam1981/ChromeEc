@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13bc9857_9299b051",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1705,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-01T17:17:11Z",
+      "side": 1,
+      "message": "In gpio.inc SCL is gpio1.5 and SDA is 1.6.\n\nThey\u0027re flipped here.",
+      "range": {
+        "startLine": 1705,
+        "startChar": 42,
+        "endLine": 1705,
+        "endChar": 45
+      },
+      "revId": "8ab733557ddb842812887cc2c8abd09f331edd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63aa9cc7_03396434",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-01T17:17:11Z",
+      "side": 1,
+      "message": "Do these need to be disconnected at the end of unwedge?\n\nCan we always keep the virtual pads connected to the sda and scl gpios? And can we set them up in gpio.inc?",
+      "range": {
+        "startLine": 1706,
+        "startChar": 0,
+        "endLine": 1707,
+        "endChar": 53
+      },
+      "revId": "8ab733557ddb842812887cc2c8abd09f331edd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e30fe2_891c1f5b",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2019-08-01T17:17:11Z",
+      "side": 1,
+      "message": "Why is one signal open drain?",
+      "revId": "8ab733557ddb842812887cc2c8abd09f331edd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
