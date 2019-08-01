@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c389f0fb_38f3d3e4",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "yeah, least significant word is first",
+      "parentUuid": "0d1fbdad_95caa9dc",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 819,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d769af55_5debe6d0",
         "filename": "chip/g/dcrypto/dcrypto_p256.c",
         "patchSetId": 14
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "97cf726e_f5507bbe",
+        "filename": "chip/g/dcrypto/dcrypto_p256.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "Done. went with later option.",
+      "parentUuid": "7286b117_8fc969bd",
+      "range": {
+        "startLine": 976,
+        "startChar": 2,
+        "endLine": 978,
+        "endChar": 9
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61da3176_b0bfadc1",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 14
@@ -164,6 +212,30 @@
       "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47a53405_25953516",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "so there were already some tests for dcrypto functionality like:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/g/dcrypto/dcrypto_sha512.c#658\n\nor \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/g/dcrypto/hmac_drbg.c#148\n\nall bundled under \"CRYPTO_TEST_SETUP\"\n\nVadim reintroduced this flag in the https://crrev.com/c/1704608\n\nSince both tests here are for crypto functionality they were placed under the same macro. \n\nAs i think about it the ecdsa test is probably should be moved into under dcrypto_p256.",
+      "parentUuid": "61da3176_b0bfadc1",
+      "range": {
+        "startLine": 172,
+        "startChar": 7,
+        "endLine": 172,
+        "endChar": 24
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "2f7c8295_d4df2ba4",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "1) technically this function sets up and runs one instance of the ecdsa_sign function, and then bubbles up results to the test function.\n2) done",
+      "parentUuid": "9dd40509_586cac22",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 369,
+        "endChar": 24
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cd93ce_4c52f9c5",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 14
@@ -210,6 +306,30 @@
       "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5815d711_2b537d57",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9cd93ce_4c52f9c5",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 18
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "1d1c8564_d903fffb",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37327e27_d3190e46",
+      "range": {
+        "startLine": 395,
+        "startChar": 11,
+        "endLine": 395,
+        "endChar": 32
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2d76857_8cb21c94",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 14
@@ -256,6 +400,30 @@
       "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a908eaa5_a7fd2e76",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "added",
+      "parentUuid": "e2d76857_8cb21c94",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 5
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "31a20ee4_e0ef2b0c",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "yeah, this is legacy of the call_on_bigger_stack code, removed.",
+      "parentUuid": "855e9de1_034fc909",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 421,
+        "endChar": 7
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97f1aa1_44959fa7",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 14
@@ -293,6 +485,30 @@
       "writtenOn": "2019-07-31T21:08:53Z",
       "side": 1,
       "message": "why do we need a bigger stack? is the console stack too small for dcrypto_p256_ecdsa_sign() + a couple calls on top? if so, shall we move this out of the for loop and just call it once for command_dcrypto_ecdsa logic.",
+      "range": {
+        "startLine": 424,
+        "startChar": 11,
+        "endLine": 424,
+        "endChar": 31
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf3c98f_0c9ff1ef",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "yup, ecdsa_sign overflows the console stack. it can be done, but not sure what the benefit compared to the current way?",
+      "parentUuid": "d97f1aa1_44959fa7",
       "range": {
         "startLine": 424,
         "startChar": 11,
@@ -328,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "81de6c41_0a96e354",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "mostly to spot off-by-one errors which were source of confusion during the dev. also printing still requires a for loop anyways",
+      "parentUuid": "e071a19e_a055d013",
+      "range": {
+        "startLine": 439,
+        "startChar": 1,
+        "endLine": 439,
+        "endChar": 34
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72b23561_ebc11193",
         "filename": "chip/g/dcrypto/dcrypto_runtime.c",
         "patchSetId": 14
@@ -351,6 +591,30 @@
     },
     {
       "key": {
+        "uuid": "59861e83_6c73b55b",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "unfortunately, there is a limit on the cmd names (16 ch max)",
+      "parentUuid": "72b23561_ebc11193",
+      "range": {
+        "startLine": 458,
+        "startChar": 29,
+        "endLine": 458,
+        "endChar": 42
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afaa73c9_74f2f8e9",
         "filename": "chip/g/dcrypto/hmac_drbg.c",
         "patchSetId": 14
@@ -371,6 +635,30 @@
       "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a439dc_e9d9cb7d",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308870
+      },
+      "writtenOn": "2019-08-01T15:58:56Z",
+      "side": 1,
+      "message": "we do check for this propagated error in the newly added code.",
+      "parentUuid": "afaa73c9_74f2f8e9",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 7
+      },
+      "revId": "d3264bc61a47367eb290ae13cb6dbeacdc523245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
