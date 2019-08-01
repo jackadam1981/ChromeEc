@@ -201,6 +201,8 @@ enum pd_rx_errors {
 #define PD_T_SWAP_SOURCE_START     (25*MSEC) /* Min of 20ms */
 #define PD_T_RP_VALUE_CHANGE       (20*MSEC) /* 20ms */
 #define PD_T_SRC_DISCONNECT        (15*MSEC) /* 15ms */
+#define PD_T_VCONN_STABLE          (50*MSEC) /* 50ms */
+#define PD_T_DISCOVER_IDENTITY     (45*MSEC) /* between 40ms and 50ms */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
@@ -308,7 +310,7 @@ struct pd_policy {
  * VDO : Vendor Defined Message Object
  * VDM object is minimum of VDM header + 6 additional data objects.
  */
-
+#define VDO_HDR_SIZE 1
 #define VDO_MAX_SIZE 7
 
 #define VDM_VER10 0
@@ -784,6 +786,11 @@ struct pd_cable {
 #define PD_VDO_SVID_SVID0(vdo) ((vdo) >> 16)
 #define PD_VDO_SVID_SVID1(vdo) ((vdo) & 0xffff)
 
+#define VPD_VDO_MAX_VBUS(vdo) (((vdo) >> 15) & 0x3)
+#define VPD_VDO_VBUS_IMP(vdo) (((vdo) >> 7) & 0x3f)
+#define VPD_VDO_GND_IMP(vdo)  (((vdo) >> 1) & 0x3f)
+#define VPD_VDO_CTS(vdo)      ((vdo) & 1)
+
 /*
  * Google modes capabilities
  * <31:8> : reserved
@@ -1224,15 +1231,22 @@ enum pd_rev_type {
 };
 
 /* Power role */
-#define PD_ROLE_SINK   0
-#define PD_ROLE_SOURCE 1
+enum pd_power_role {
+	PD_ROLE_SINK,
+	PD_ROLE_SOURCE
+};
+
+/* Data role */
+enum pd_data_role {
+	PD_ROLE_UFP,
+	PD_ROLE_DFP,
+	PD_ROLE_DISCONNECTED
+};
+
 /* Cable plug */
 #define PD_PLUG_DFP_UFP   0
 #define PD_PLUG_CABLE_VPD 1
-/* Data role */
-#define PD_ROLE_UFP          0
-#define PD_ROLE_DFP          1
-#define PD_ROLE_DISCONNECTED 2
+
 /* Vconn role */
 #define PD_ROLE_VCONN_OFF 0
 #define PD_ROLE_VCONN_ON  1
@@ -1284,6 +1298,7 @@ enum pd_rev_type {
  */
 #define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
+#define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
 #define PD_HEADER_REV(header)   (((header) >> 6) & 3)
 #define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
